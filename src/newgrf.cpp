@@ -2075,9 +2075,18 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				statspec->cargo_threshold = buf.ReadWord();
 				break;
 
-			case 0x11: // Pylon placement
-				statspec->pylons = buf.ReadByte();
+			case 0x11: { // Pylon placement
+				uint8_t pylons = buf.ReadByte();
+				if (statspec->tileflags.size() < 8) statspec->tileflags.resize(8);
+				for (int j = 0; j < 8; ++j) {
+					if (HasBit(pylons, j)) {
+						statspec->tileflags[j] |= StationSpec::TileFlags::Pylons;
+					} else {
+						statspec->tileflags[j] &= ~StationSpec::TileFlags::Pylons;
+					}
+				}
 				break;
+			}
 
 			case 0x12: // Cargo types for random triggers
 				if (_cur.grffile->grf_version >= 7) {
@@ -2091,13 +2100,31 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				statspec->flags = buf.ReadByte();
 				break;
 
-			case 0x14: // Overhead wire placement
-				statspec->wires = buf.ReadByte();
+			case 0x14: { // Overhead wire placement
+				uint8_t wires = buf.ReadByte();
+				if (statspec->tileflags.size() < 8) statspec->tileflags.resize(8);
+				for (int j = 0; j < 8; ++j) {
+					if (HasBit(wires, j)) {
+						statspec->tileflags[j] |= StationSpec::TileFlags::NoWires;
+					} else {
+						statspec->tileflags[j] &= ~StationSpec::TileFlags::NoWires;
+					}
+				}
 				break;
+			}
 
-			case 0x15: // Blocked tiles
-				statspec->blocked = buf.ReadByte();
+			case 0x15: { // Blocked tiles
+				uint8_t blocked = buf.ReadByte();
+				if (statspec->tileflags.size() < 8) statspec->tileflags.resize(8);
+				for (int j = 0; j < 8; ++j) {
+					if (HasBit(blocked, j)) {
+						statspec->tileflags[j] |= StationSpec::TileFlags::Blocked;
+					} else {
+						statspec->tileflags[j] &= ~StationSpec::TileFlags::Blocked;
+					}
+				}
 				break;
+			}
 
 			case 0x16: // Animation info
 				statspec->animation.frames = buf.ReadByte();
@@ -2148,6 +2175,13 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 			case 0x1D: // Station Class name
 				AddStringForMapping(buf.ReadWord(), [statspec](StringID str) { StationClass::Get(statspec->class_index)->name = str; });
 				break;
+
+			case 0x1E: { // Extended tile flags (replaces prop 11, 14 and 15)
+				uint16_t tiles = buf.ReadExtendedByte();
+				auto flags = reinterpret_cast<const StationSpec::TileFlags *>(buf.ReadBytes(tiles));
+				statspec->tileflags.assign(flags, flags + tiles);
+				break;
+			}
 
 			default:
 				ret = CIR_UNKNOWN;
