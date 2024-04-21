@@ -1294,6 +1294,14 @@ static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag fl
 	return cost;
 }
 
+StationSpec::TileFlags GetStationTileFlags(TileIndex tile, const StationSpec *statspec)
+{
+	const StationGfx gfx = GetStationGfx(tile);
+	/* Default stations do not draw pylons under roofs (gfx >= 4) */
+	if (statspec == nullptr || gfx >= statspec->tileflags.size()) return gfx < 4 ? StationSpec::TileFlags::Pylons : StationSpec::TileFlags::None;
+	return statspec->tileflags[gfx];
+}
+
 /**
  * Set rail station tile flags for the given tile.
  * @param tile Tile to set flags on.
@@ -1301,15 +1309,10 @@ static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag fl
  */
 void SetRailStationTileFlags(TileIndex tile, const StationSpec *statspec)
 {
-	const StationGfx gfx = GetStationGfx(tile);
-	bool blocked = statspec != nullptr && HasBit(statspec->blocked, gfx);
-	/* Default stations do not draw pylons under roofs (gfx >= 4) */
-	bool pylons = statspec != nullptr ? HasBit(statspec->pylons, gfx) : gfx < 4;
-	bool wires = statspec == nullptr || !HasBit(statspec->wires, gfx);
-
-	SetStationTileBlocked(tile, blocked);
-	SetStationTileHavePylons(tile, pylons);
-	SetStationTileHaveWires(tile, wires);
+	auto flags = GetStationTileFlags(tile, statspec);
+	SetStationTileBlocked(tile, (flags & StationSpec::TileFlags::Blocked) == StationSpec::TileFlags::Blocked);
+	SetStationTileHavePylons(tile, (flags & StationSpec::TileFlags::Pylons) == StationSpec::TileFlags::Pylons);
+	SetStationTileHaveWires(tile, (flags & StationSpec::TileFlags::NoWires) != StationSpec::TileFlags::NoWires);
 }
 
 /**
