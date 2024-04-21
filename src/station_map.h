@@ -44,7 +44,7 @@ static const int GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET =  4; ///< The offset for the
 inline StationType GetStationType(Tile t)
 {
 	assert(IsTileType(t, MP_STATION));
-	return (StationType)GB(t.m6(), 3, 3);
+	return (StationType)GB(t.m6(), 3, 4);
 }
 
 /**
@@ -362,7 +362,7 @@ inline void SetStationTileBlocked(Tile t, bool b)
 inline bool CanStationTileHaveWires(Tile t)
 {
 	assert(HasStationRail(t));
-	return HasBit(t.m6(), 6);
+	return HasBit(t.m6(), 1);
 }
 
 /**
@@ -374,7 +374,7 @@ inline bool CanStationTileHaveWires(Tile t)
 inline void SetStationTileHaveWires(Tile t, bool b)
 {
 	assert(HasStationRail(t));
-	SB(t.m6(), 6, 1, b ? 1 : 0);
+	SB(t.m6(), 1, 1, b ? 1 : 0);
 }
 
 /**
@@ -632,7 +632,7 @@ inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t 
 	t.m4() = 0;
 	t.m5() = section;
 	SB(t.m6(), 2, 1, 0);
-	SB(t.m6(), 3, 3, st);
+	SB(t.m6(), 3, 4, st);
 	t.m7() = 0;
 	t.m8() = 0;
 }

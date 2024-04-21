@@ -381,6 +381,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_COMPANY_ALLOW_LIST,                 ///< 335  PR#12337 Saving of list of client keys that are allowed to join this company.
 	SLV_GROUP_NUMBERS,                      ///< 336  PR#12297 Add per-company group numbers.
+	SLV_INCREASE_STATION_TYPE_FIELD_SIZE,   ///< 337  PR#12572 Increase size of StationType field in map array
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
