@@ -2563,6 +2563,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 					} else {
 						housespec->accepts_cargo[j] = cargo;
 					}
+					housespec->accepts_cargo_label[j] = CT_INVALID;
 				}
 				break;
 			}
@@ -3299,6 +3300,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 				uint16_t acctp = buf->ReadWord();
 				tsp->accepts_cargo[prop - 0x0A] = GetCargoTranslation(GB(acctp, 0, 8), _cur.grffile);
 				tsp->acceptance[prop - 0x0A] = Clamp(GB(acctp, 8, 8), 0, 16);
+				tsp->accepts_cargo_label[prop - 0x0A] = CT_INVALID;
 				break;
 			}
 
