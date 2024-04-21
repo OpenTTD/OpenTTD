@@ -2588,9 +2588,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}ساخت دنیا
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}ساخت رودخانه
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}ساختن درخت
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}ساختن اشیاء
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}ساختن مناطق ناهموار و صخره ها
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}ساختن اشیاء
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}ساختن درخت
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}راه اندازی بازی
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}اجرای حلقه قطعه ها
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}کدهای در حال اجرا

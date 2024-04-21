@@ -3108,9 +3108,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}உலகம் உருவாக்குதல்
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}ஆறு உருவாக்குதல்
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}மரங்கள் உருவாக்குதல்
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}பொருள் உருவாக்குதல்
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}சமமில்லாத மற்றும் கல்லான பகுதி உருவாக்குதல்
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}பொருள் உருவாக்குதல்
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}மரங்கள் உருவாக்குதல்
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}ஆட்டம் அமைக்கப்படுகின்றது
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}வரிவடிவம் செயல்படுத்தப்படுகின்றது
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}ஆட்டம் தயாராகிறது

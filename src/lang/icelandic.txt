@@ -2691,9 +2691,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% t
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Sköpun heims
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Bý til ár
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Gróðursetning trjáa
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Staðsetning fastra hluta
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Hrjúft og grýtt landslag
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Staðsetning fastra hluta
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Gróðursetning trjáa
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Set upp leik
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Keyri reitalykkju
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Keyri forskrift

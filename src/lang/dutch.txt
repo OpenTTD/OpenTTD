@@ -3394,9 +3394,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wereldontwikkeling
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Rivierplaatsing
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaatsing
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ontwikkeling van onverplaatsbare objecten
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ontwikkeling van ruig en rotsachtig gebied
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ontwikkeling van onverplaatsbare objecten
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaatsing
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spel wordt geconfigureerd
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Bezig met tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script loopt

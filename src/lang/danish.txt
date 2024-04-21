@@ -3394,9 +3394,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% f
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Verdensgenerering
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Flod-generering
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trægenerering
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikke-flytbar generering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generer råt og stenet område
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikke-flytbar generering
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trægenerering
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargør spil
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kører felt-løkken
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kørende script

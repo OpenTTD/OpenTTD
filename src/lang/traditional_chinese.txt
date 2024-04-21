@@ -3280,9 +3280,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}完成 {
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}產生世界
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}產生河流
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}產生樹木
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}無法移動
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}產生粗地與岩石區域
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}無法移動
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}產生樹木
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}設定遊戲
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}執行單格迴圈中
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}正在運行腳本

@@ -3455,9 +3455,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% k
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Világ létrehozása
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Folyó generálás
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Fák generálása
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Mozgathatatlan létesítmények létrehozása
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Durva és köves területek generálása
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Mozgathatatlan létesítmények létrehozása
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Fák generálása
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Játék beállítása
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Mezők véglegesítése
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Futó szkript

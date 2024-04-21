@@ -3396,9 +3396,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NB
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generer en verden
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Skap elver
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tregenerering
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objektgenerering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generering av ulendt og steinete område
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objektgenerering
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tregenerering
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargjør spillet
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kjører ruteløkke
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kjører skript

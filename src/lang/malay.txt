@@ -2587,9 +2587,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% s
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Penjanaan dunia
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Penjanaan sungai
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Penjanaan pokok
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Penjanaan objek-objek yang tidak boleh digerakkan
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Penjanaan kawasan berbatu dan tanah kasar
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Penjanaan objek-objek yang tidak boleh digerakkan
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Penjanaan pokok
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Permainan sedang diuruskan
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Lingkaran petak sedang dijalankan
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Skrip sedang berjalan

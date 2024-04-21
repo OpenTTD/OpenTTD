@@ -3774,9 +3774,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}Ukończo
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tworzenie świata
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generator rzek
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tworzenie drzew
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Tworzenie obiektów
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Tworzenie terenów skalistych i nierówności
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Tworzenie obiektów
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tworzenie drzew
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ustawianie gry
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Uaktywnianie pól
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Uruchamianie skryptu

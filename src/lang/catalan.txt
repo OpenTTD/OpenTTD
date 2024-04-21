@@ -3395,9 +3395,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NB
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generació del món
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generació de rius
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generació d'arbres
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generació inamovible
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generació d'una àrea escarpada i rocosa
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generació inamovible
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generació d'arbres
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurant la partida
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Passant el bucle de cel·les
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Executant l'script
@@ -5287,6 +5287,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Canvia l
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Encara no hi ha vehicles disponibles
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Inicieu una partida nova després de {DATE_SHORT} o useu un NewGRF que proporcioni vehicles primerencs.
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Les poblacions no disposen de tipus de carretera que puguin construir.
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Canvieu la configuració dels NewGRF
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Encara no hi ha tipus de carretera disponibles per a les poblacions.
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Comenceu una partida nova després del {DATE_SHORT} o feu servir un NewGRF que proporcioni tipus de carretera que puguin construir les poblacions.
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No pots fer que un tren passi d'una senyal amb perill...

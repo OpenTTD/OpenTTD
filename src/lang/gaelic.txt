@@ -3097,9 +3097,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Gin saoghal
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Gin aibhnichean
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Gin craobhan
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Gin oibseactan
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Gin raon garbh is creagach
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Gin oibseactan
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Gin craobhan
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}A' suidheachadh a' gheama
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}A' ruith lùb-lice
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}A' ruith sgriobt

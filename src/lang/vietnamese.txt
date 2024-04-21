@@ -3394,9 +3394,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% h
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tạo màn
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Khởi tạo sông suối
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trồng cây
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Sinh đối tượng cứng
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Sinh đá và sự gồ ghề
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Sinh đối tượng cứng
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trồng cây
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Thiết lập ván chơi
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Đang chạy sinh tile
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Đang chạy tập lệnh

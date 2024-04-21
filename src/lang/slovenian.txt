@@ -2995,9 +2995,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% n
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Ustvarjanje sveta
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Ustvarjanje reke
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ustvarjanje dreves
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ustvarjanje zgradbe
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generiranje grobih in skalnatih tal
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ustvarjanje zgradbe
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ustvarjanje dreves
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavljanje igre
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Zagnano ponavljanje polj
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Poganjam skripto

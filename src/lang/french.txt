@@ -3395,9 +3395,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NB
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Création du monde
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Création des rivières
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Création des arbres
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Création des objets inamovibles
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Création des zones rugueuses et rocheuses
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Création des objets inamovibles
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Création des arbres
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configuration du jeu
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Rafraîchissement du terrain
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Exécution du script

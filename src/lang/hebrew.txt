@@ -2981,9 +2981,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% :
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}יצור עולם
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}יצירת נהרות
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}יצירת עצים
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}יצירת מבנים בלתי ניידים
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}יצירת איזורים סלעיים
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}יצירת מבנים בלתי ניידים
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}יצירת עצים
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}קביעת הגדרות המשחק
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}מריץ לולאה על כל המשבצות
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}מריץ סקריפט

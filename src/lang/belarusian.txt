@@ -3723,9 +3723,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Стварэньне сусьвету
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Стварэньне рэк
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Высаджваньне лясоў
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ґенэрацыя нерухомасьці
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Расстаноўка дэкарацыяў і камянёў
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ґенэрацыя нерухомасьці
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Высаджваньне лясоў
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Наладка гульні
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Падрыхтоўка да запуску...
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Выконваецца скрыпт

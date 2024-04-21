@@ -2930,9 +2930,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}เครื่องมือสร้างแผนที่
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}สร้างแม่น้ำ
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}สร้างต้นไม่
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}สร้างวัตถุ
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}สร้างพื้นหิน
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}สร้างวัตถุ
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}สร้างต้นไม่
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}ตั้งค่าให้กับเกม
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Running tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Running script

@@ -2963,9 +2963,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Генерация на свят
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Създаване на река
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Генерация на дърва
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генерация на статични
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Създаване на твърда и скална повърност
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генерация на статични
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Генерация на дърва
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Настройка на играта
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Изпълняване цикъл на плочките
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Пускане на програмен език

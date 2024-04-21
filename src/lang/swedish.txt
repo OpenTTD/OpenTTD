@@ -3394,9 +3394,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% f
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generera värld
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generera Flod
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generera Träd
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generera objekt
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Svår och stenig markgenerering
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generera objekt
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generera Träd
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ställer in spel
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kör tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kör skript

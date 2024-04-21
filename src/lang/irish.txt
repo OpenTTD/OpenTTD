@@ -3116,9 +3116,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Domhan a chruthú
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Giniúint aibhneacha
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Crainn a chruthú
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Cruthú oibiachtaí
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Limistear garbh agus carraigeach a chruthú
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Cruthú oibiachtaí
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Crainn a chruthú
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Cluiche á chumrú
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Lúb tíleanna á rith
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script reatha

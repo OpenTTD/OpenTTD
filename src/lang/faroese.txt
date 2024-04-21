@@ -2583,9 +2583,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% l
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Heims framleiðsla
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Løks framleiðsla
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Træ framleiðsla
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Luta framleiðsla
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Framleiðsa av harrendum og grýtutum øki
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Luta framleiðsla
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Træ framleiðsla
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ger spæli klárt
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Koyrir punta sloyfu
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Koyrir skript

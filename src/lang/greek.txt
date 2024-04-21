@@ -3486,9 +3486,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Δημιουργία κόσμου
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Δημιουργία ποταμού
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημιουργία δέντρων
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Δημιουργία μη μετακινούμενων
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Δημιουργία άγριας και πετρώδης περιοχής
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Δημιουργία μη μετακινούμενων
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημιουργία δέντρων
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ρύθμιση παιχνιδιού
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Εκτέλεση βρόχου τετραγωνίδιων
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Τρέχουσα δέσμη ενεργειών
@@ -5384,8 +5384,12 @@ STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... όλ
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Δεν θα είναι κανένα όχημα διαθέσιμο
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Αλλάξτε τις ρύθμισεις NewGRF σας
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Κανένα όχημα δεν είναι διαθέσιμο ακόμη
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Ξεκινήστε ένα νέο παιχνίδι αργότερα από {DATE_SHORT} η χρησιμοποιήστε ένα NewGRF το οποίο προσφέρει νωρίτερα οχήματα
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Ξεκινήστε ένα νέο παιχνίδι αργότερα από {DATE_SHORT} η χρησιμοποιήστε ένα NewGRF το οποίο προσφέρει πρώιμα οχήματα
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Δεν υπάρχουν διαθέσιμοι τύποι δρόμων που μπορούν να κατασκευαστούν από πόλη
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Αλλάξτε τις ρύθμισεις NewGRF σας
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Δεν υπάρχουν διαθέσιμοι τύποι δρόμων που μπορούν να κατασκευαστούν από πόλη ακόμη
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Ξεκινήστε ένα νέο παιχνίδι μετά από την {DATE_SHORT} ή χρησιμοποιήστε ένα NewGRF που παρέχει πρώιμους τύπους δρόμων που μπορούν να κατασκευαστούν από πόλη
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Δεν μπορεί το τρένο να περάσει σήμα με κίνδυνο...

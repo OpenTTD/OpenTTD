@@ -3394,9 +3394,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}已完�
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}地图生成
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}生成河流
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}生成树木
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}生成固定设施
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}生成岩石地貌
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}生成固定设施
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}生成树木
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}设置游戏
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}地貌细节生成
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}当前脚本

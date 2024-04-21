@@ -3534,9 +3534,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Створення світу
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Генерація річок
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Насадження дерев
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генерація нерухомості
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Розкидати каміння
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генерація нерухомості
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Насадження дерев
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Налаштування гри
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Виконуємо цикл
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Виконується скрипт

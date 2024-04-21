@@ -3398,9 +3398,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% p
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Pasaules radīšana
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Upes radīšana
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Koka radīšana
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekta radīšana
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Nelīdzena un akmeņaina apvidus radīšana
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekta radīšana
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Koka radīšana
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Iestatīt spēli
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Skrejošs nosaukums
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Strādājošs skripts

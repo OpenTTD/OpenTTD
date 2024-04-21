@@ -3393,9 +3393,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Xeración do mundo
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Xeración de ríos
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Xeración de árbores
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Xeración de obxectos
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Xeración de áreas rochosas e escarpadas
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Xeración de obxectos
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Xeración de árbores
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurando partida
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Executando bucle de cadros
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Executando script

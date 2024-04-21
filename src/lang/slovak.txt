@@ -3462,9 +3462,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% h
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generovanie sveta
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generovanie riek
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generovanie stromov
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generovanie objektov
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generovanie nerovností a skál
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generovanie objektov
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generovanie stromov
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavovanie hry
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Spúšťanie políčkového cyklu
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Spúšťanie skriptu

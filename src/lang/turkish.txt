@@ -3393,9 +3393,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}%{NUM} t
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Harita üretimi
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Nehir oluşturma
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ağaç üretimi
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nesne oluşturma
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Engebeli ve kayalık alan oluştur
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nesne oluşturma
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ağaç üretimi
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Oyun ayarlanıyor
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}tile-loop çalıştırılıyor
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Betik çalıştırılıyor
