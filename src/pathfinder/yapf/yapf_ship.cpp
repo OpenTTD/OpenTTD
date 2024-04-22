@@ -204,8 +204,11 @@ public:
 
 		if (path_cache.empty()) return INVALID_TRACKDIR;
 
-		const Trackdir result = path_cache.front();
-		path_cache.pop_front();
+		/* Reverse the path so we can take from the end. */
+		std::reverse(std::begin(path_cache), std::end(path_cache));
+
+		const Trackdir result = path_cache.back().trackdir;
+		path_cache.pop_back();
 		return result;
 	}
 
@@ -258,7 +261,7 @@ public:
 				/* The cached path must always lead to a region patch that's on the high level path.
 				 * This is what can happen when that's not the case https://github.com/OpenTTD/OpenTTD/issues/12176. */
 				if (add_full_path || !node_water_patch_on_high_level_path || node_water_patch == start_water_patch) {
-					path_cache.push_front(node->GetTrackdir());
+					path_cache.push_back(node->GetTrackdir());
 				} else {
 					path_cache.clear();
 				}
@@ -278,8 +281,8 @@ public:
 			if (path_cache.empty()) return CreateRandomPath(v, path_cache, 1);
 
 			/* Take out the last trackdir as the result. */
-			const Trackdir result = path_cache.front();
-			path_cache.pop_front();
+			const Trackdir result = path_cache.back().trackdir;
+			path_cache.pop_back();
 
 			/* Clear path cache when in final water region patch. This is to allow ships to spread over different docking tiles dynamically. */
 			if (start_water_patch == end_water_patch) path_cache.clear();
