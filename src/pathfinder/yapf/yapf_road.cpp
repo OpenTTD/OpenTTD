@@ -401,8 +401,7 @@ public:
 			while (pNode->parent != nullptr) {
 				steps--;
 				if (pNode->GetIsChoice() && steps < YAPF_ROADVEH_PATH_CACHE_SEGMENTS) {
-					path_cache.td.push_front(pNode->GetTrackdir());
-					path_cache.tile.push_front(pNode->GetTile());
+					path_cache.emplace_back(pNode->GetTrackdir(), pNode->GetTile());
 				}
 				pNode = pNode->parent;
 			}
@@ -410,13 +409,9 @@ public:
 			Node &best_next_node = *pNode;
 			assert(best_next_node.GetTile() == tile);
 			next_trackdir = best_next_node.GetTrackdir();
-			/* remove last element for the special case when tile == dest_tile */
-			if (path_found && !path_cache.empty() && tile == v->dest_tile) {
-				path_cache.td.pop_back();
-				path_cache.tile.pop_back();
-			}
 
-			/* Check if target is a station, and cached path ends within 8 tiles of the dest tile */
+			/* Check if target is a station, and cached path leads to within YAPF_ROADVEH_PATH_CACHE_DESTINATION_LIMIT
+			 * tiles of the dest tile */
 			const Station *st = Yapf().GetDestinationStation();
 			if (st) {
 				const RoadStop *stop = st->GetPrimaryRoadStop(v);
@@ -425,10 +420,10 @@ public:
 					 * trim end of path cache within a number of tiles of road stop tile area */
 					TileArea non_cached_area = v->IsBus() ? st->bus_station : st->truck_station;
 					non_cached_area.Expand(YAPF_ROADVEH_PATH_CACHE_DESTINATION_LIMIT);
-					while (!path_cache.empty() && non_cached_area.Contains(path_cache.tile.back())) {
-						path_cache.td.pop_back();
-						path_cache.tile.pop_back();
-					}
+
+					/* Find the first tile not contained by the non-cachable area, and remove from the cache. */
+					auto it = std::find_if(std::begin(path_cache), std::end(path_cache), [&non_cached_area](const auto &pc) { return !non_cached_area.Contains(pc.tile); });
+					path_cache.erase(std::begin(path_cache), it);
 				}
 			}
 		}

@@ -16,7 +16,15 @@
 void GetShipSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 WaterClass GetEffectiveWaterClass(TileIndex tile);
 
-typedef std::deque<Trackdir> ShipPathCache;
+/** Element of the ShipPathCache. */
+struct ShipPathElement {
+	Trackdir trackdir; ///< Trackdir for this element.
+
+	constexpr ShipPathElement() : trackdir(INVALID_TRACKDIR) {}
+	constexpr ShipPathElement(Trackdir trackdir) : trackdir(trackdir) {}
+};
+
+using ShipPathCache = std::vector<ShipPathElement>;
 
 /**
  * All ships have this type.

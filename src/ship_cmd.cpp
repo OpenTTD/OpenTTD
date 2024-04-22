@@ -506,10 +506,10 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, TrackBits tracks)
 	} else {
 		/* Attempt to follow cached path. */
 		if (!v->path.empty()) {
-			track = TrackdirToTrack(v->path.front());
+			track = TrackdirToTrack(v->path.back().trackdir);
 
 			if (HasBit(tracks, track)) {
-				v->path.pop_front();
+				v->path.pop_back();
 				/* HandlePathfindResult() is not called here because this is not a new pathfinder result. */
 				return track;
 			}
@@ -854,7 +854,7 @@ static void ShipController(Ship *v)
 
 			/* Ship is back on the bridge head, we need to consume its path
 			 * cache entry here as we didn't have to choose a ship track. */
-			if (!v->path.empty()) v->path.pop_front();
+			if (!v->path.empty()) v->path.pop_back();
 		}
 
 		/* update image of ship, as well as delta XY */
