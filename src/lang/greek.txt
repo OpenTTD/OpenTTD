@@ -3485,8 +3485,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Σίγ�
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% ολοκληρώθηκε
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Δημιουργία κόσμου
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Δημιουργία τοπίου
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Δημιουργία ποταμού
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Δημιουργία άγριας και πετρώδης περιοχής
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Δημιουργία πόλης
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Δημιουργία βιομηχανίας
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Δημιουργία μη μετακινούμενων
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημιουργία δέντρων
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ρύθμιση παιχνιδιού

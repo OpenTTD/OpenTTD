@@ -2602,6 +2602,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :geçersiz ya da
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :yanlış düzeltme
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :isim kullanımda
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :yanlış parola
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :izin verilenler listesinde değil
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand için yanlış company-id
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :sunucu tarafından atıldı
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :hile yapmaya çalıştı
@@ -3392,8 +3393,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Oluştu
 STR_GENERATION_PROGRESS                                         :{WHITE}%{NUM} tamamlandı
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Harita üretimi
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Peyzaj oluşumu
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Nehir oluşturma
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Engebeli ve kayalık alan oluştur
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Kasaba Oluşumu
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Endüstri Oluşumu
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nesne oluşturma
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ağaç üretimi
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Oyun ayarlanıyor
@@ -3487,6 +3491,7 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Yol türü:
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF değişkeni 60+x parametresi (onaltılı)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Hizalanan Görüntü: ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sonraki nesne
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Tüm sahte/yeniden renklendirme/yazı tipi nesnelerini ve sondaki nesneden atlayarak bir sonraki normal nesneye geç
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Nesneye git
@@ -5279,6 +5284,8 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Yeni New
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Henüz hiçbir araç kullanılabilir değil
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SHORT} sonra yeni bir oyun başlat veya erken araç sağlayan NewGRF kullan
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Kasabada inşa edilebilir yol türleri mevcut değil
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}NewGRF Yapılandırma Ayarlarını Değiştir
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tehlikedeki tren sinyali geçemez...

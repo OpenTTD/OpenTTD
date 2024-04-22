@@ -2378,7 +2378,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kartan k
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kartan koko{}Valitse lajitellaksesi koon mukaan
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Päiväys
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Nykyinen päivämäärä
-STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}min
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}{NBSP}h {NUM}{NBSP}min
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Peliaika
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Pelaamisaika, kun{}peli ei ole ollut pysäytettynä
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Kieli, palvelimen versio, jne.
@@ -3393,8 +3393,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Haluatk
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NBSP}% valmiina
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM}/{NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Maailman luominen
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Maaston luominen
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Jokien luominen
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Karun ja kivisen alueen luominen
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Kuntien luominen
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Tuotantolaitosten luominen
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Siirtämättömän luominen
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puiden luominen
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Valmistellaan peliä
@@ -4916,7 +4919,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ei saatavilla>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Peli tallennettiin versiossa, joka ei tue raitiovaunuja. Kaikki raitiovaunut on poistettu
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartan generointi peruutettu...{}... ei kelvollisia kuntien sijainteja
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartan luominen peruutettu…{}… ei kelvollisia kuntien sijainteja
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... tässä skenaariossa ei ole yhtään kuntaa
 
 STR_ERROR_PNGMAP                                                :{WHITE}Maastoa ei voida ladata PNG-tiedostosta...

@@ -3568,8 +3568,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Вы д
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% готово
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Создание мира
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Создание ландшафта
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Создание рек
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Расстановка декораций и камней
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Создание городов
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Создание предприятий
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Создание объектов
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Высадка лесов
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Настройка
