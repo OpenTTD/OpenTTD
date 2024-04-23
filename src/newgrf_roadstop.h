@@ -62,6 +62,7 @@ enum RoadStopDrawMode : uint8_t {
 	ROADSTOP_DRAW_MODE_NONE        = 0,
 	ROADSTOP_DRAW_MODE_ROAD        = 1 << 0, ///< Bay stops: Draw the road itself
 	ROADSTOP_DRAW_MODE_OVERLAY     = 1 << 1, ///< Drive-through stops: Draw the road overlay, e.g. pavement
+	ROADSTOP_DRAW_MODE_WAYP_GROUND = 1 << 2, ///< Waypoints: Draw the sprite layout ground tile (on top of the road)
 };
 DECLARE_ENUM_AS_BIT_SET(RoadStopDrawMode)
 
@@ -72,6 +73,7 @@ enum RoadStopSpecFlags {
 	RSF_NO_AUTO_ROAD_CONNECTION = 4, ///< No auto road connection.
 	RSF_BUILD_MENU_ROAD_ONLY    = 5, ///< Only show in the road build menu (not tram).
 	RSF_BUILD_MENU_TRAM_ONLY    = 6, ///< Only show in the tram build menu (not road).
+	RSF_DRAW_MODE_REGISTER      = 8, ///< Read draw mode from register 0x100.
 };
 
 enum RoadStopView {
@@ -143,7 +145,7 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 	RoadStopAvailabilityType stop_type = ROADSTOPTYPE_ALL;
 	RoadStopDrawMode draw_mode = ROADSTOP_DRAW_MODE_ROAD | ROADSTOP_DRAW_MODE_OVERLAY;
 	uint8_t callback_mask = 0;
-	uint8_t flags = 0;
+	uint16_t flags = 0;
 
 	CargoTypes cargo_triggers = 0; ///< Bitmask of cargo types which cause trigger re-randomizing
 
