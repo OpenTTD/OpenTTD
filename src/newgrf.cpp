@@ -4818,7 +4818,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 				break;
 
 			case 0x0C: // The draw mode
-				rs->draw_mode = (RoadStopDrawMode)buf.ReadByte();
+				rs->draw_mode = static_cast<RoadStopDrawMode>(buf.ReadByte());
 				break;
 
 			case 0x0D: // Cargo types for random triggers
@@ -4843,7 +4843,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 				break;
 
 			case 0x12: // General flags
-				rs->flags = (uint8_t)buf.ReadDWord(); // Future-proofing, size this as 4 bytes, but we only need one byte's worth of flags at present
+				rs->flags = (uint16_t)buf.ReadDWord(); // Future-proofing, size this as 4 bytes, but we only need two byte's worth of flags at present
 				break;
 
 			case 0x15: // Cost multipliers

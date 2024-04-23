@@ -32,6 +32,7 @@
 #include "dropdown_func.h"
 #include "engine_base.h"
 #include "station_base.h"
+#include "waypoint_base.h"
 #include "strings_func.h"
 #include "core/geometry_func.hpp"
 #include "station_cmd.h"
@@ -51,6 +52,7 @@
 
 static void ShowRVStationPicker(Window *parent, RoadStopType rs);
 static void ShowRoadDepotPicker(Window *parent);
+static void ShowBuildRoadWaypointPicker(Window *parent);
 
 static bool _remove_button_clicked;
 static bool _one_way_button_clicked;
@@ -63,6 +65,12 @@ static bool _place_road_end_half;
 static RoadType _cur_roadtype;
 
 static DiagDirection _road_depot_orientation;
+
+struct RoadWaypointPickerSelection {
+	RoadStopClassID sel_class; ///< Selected road waypoint class.
+	uint16_t sel_type; ///< Selected road waypoint type within the class.
+};
+static RoadWaypointPickerSelection _waypoint_gui; ///< Settings of the road waypoint picker.
 
 struct RoadStopPickerSelection {
 	RoadStopClassID sel_class; ///< Selected road stop class.
@@ -536,8 +544,9 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case WID_ROT_BUILD_WAYPOINT:
+				this->last_started_action = widget;
 				if (HandlePlacePushButton(this, WID_ROT_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, HT_RECT)) {
-					this->last_started_action = widget;
+					ShowBuildRoadWaypointPicker(this);
 				}
 				break;
 
@@ -757,13 +766,12 @@ struct BuildRoadToolbarWindow : Window {
 							TileArea ta(start_tile, end_tile);
 							Axis axis = select_method == VPM_X_LIMITED ? AXIS_X : AXIS_Y;
 							bool adjacent = _ctrl_pressed;
-							uint16_t waypoint_type = 0;
 
 							auto proc = [=](bool test, StationID to_join) -> bool {
 								if (test) {
-									return Command<CMD_BUILD_ROAD_WAYPOINT>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_ROAD_WAYPOINT>()), ta.tile, axis, ta.w, ta.h, ROADSTOP_CLASS_WAYP, waypoint_type, INVALID_STATION, adjacent).Succeeded();
+									return Command<CMD_BUILD_ROAD_WAYPOINT>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_ROAD_WAYPOINT>()), ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, INVALID_STATION, adjacent).Succeeded();
 								} else {
-									return Command<CMD_BUILD_ROAD_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, axis, ta.w, ta.h, ROADSTOP_CLASS_WAYP, waypoint_type, to_join, adjacent);
+									return Command<CMD_BUILD_ROAD_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, to_join, adjacent);
 								}
 							};
 
@@ -1589,10 +1597,126 @@ static void ShowRVStationPicker(Window *parent, RoadStopType rs)
 	new BuildRoadStationWindow(RoadTypeIsRoad(_cur_roadtype) ? _road_station_picker_desc : _tram_station_picker_desc, parent, rs);
 }
 
+class RoadWaypointPickerCallbacks : public PickerCallbacksNewGRFClass<RoadStopClass> {
+public:
+	RoadWaypointPickerCallbacks() : PickerCallbacksNewGRFClass<RoadStopClass>("fav_road_waypoints") {}
+
+	StringID GetClassTooltip() const override { return STR_PICKER_WAYPOINT_CLASS_TOOLTIP; }
+	StringID GetTypeTooltip() const override { return STR_PICKER_WAYPOINT_TYPE_TOOLTIP; }
+
+	bool IsActive() const override
+	{
+		for (const auto &cls : RoadStopClass::Classes()) {
+			if (!IsWaypointClass(cls)) continue;
+			for (const auto *spec : cls.Specs()) {
+				if (spec != nullptr) return true;
+			}
+		}
+		return false;
+	}
+
+	bool HasClassChoice() const override
+	{
+		return std::count_if(std::begin(RoadStopClass::Classes()), std::end(RoadStopClass::Classes()), IsWaypointClass) > 1;
+	}
+
+	void Close(int) override { ResetObjectToPlace(); }
+	int GetSelectedClass() const override { return _waypoint_gui.sel_class; }
+	void SetSelectedClass(int id) const override { _waypoint_gui.sel_class = this->GetClassIndex(id); }
+
+	StringID GetClassName(int id) const override
+	{
+		const auto *sc = GetClass(id);
+		if (!IsWaypointClass(*sc)) return INVALID_STRING_ID;
+		return sc->name;
+	}
+
+	int GetSelectedType() const override { return _waypoint_gui.sel_type; }
+	void SetSelectedType(int id) const override { _waypoint_gui.sel_type = id; }
+
+	StringID GetTypeName(int cls_id, int id) const override
+	{
+		const auto *spec = this->GetSpec(cls_id, id);
+		return (spec == nullptr) ? STR_STATION_CLASS_WAYP_WAYPOINT : spec->name;
+	}
+
+	bool IsTypeAvailable(int cls_id, int id) const override
+	{
+		return IsRoadStopAvailable(this->GetSpec(cls_id, id), STATION_ROADWAYPOINT);
+	}
+
+	void DrawType(int x, int y, int cls_id, int id) const override
+	{
+		const auto *spec = this->GetSpec(cls_id, id);
+		if (spec == nullptr) {
+			StationPickerDrawSprite(x, y, STATION_ROADWAYPOINT, INVALID_RAILTYPE, _cur_roadtype, RSV_DRIVE_THROUGH_X);
+		} else {
+			DrawRoadStopTile(x, y, _cur_roadtype, spec, STATION_ROADWAYPOINT, RSV_DRIVE_THROUGH_X);
+		}
+	}
+
+	void FillUsedItems(std::set<PickerItem> &items) override
+	{
+		for (const Waypoint *wp : Waypoint::Iterate()) {
+			if (wp->owner != _local_company || !HasBit(wp->waypoint_flags, WPF_ROAD)) continue;
+			items.insert({0, 0, ROADSTOP_CLASS_WAYP, 0}); // We would need to scan the map to find out if default is used.
+			for (const auto &sm : wp->roadstop_speclist) {
+				if (sm.spec == nullptr) continue;
+				items.insert({sm.grfid, sm.localidx, sm.spec->class_index, sm.spec->index});
+			}
+		}
+	}
+
+	static RoadWaypointPickerCallbacks instance;
+};
+/* static */ RoadWaypointPickerCallbacks RoadWaypointPickerCallbacks::instance;
+
+struct BuildRoadWaypointWindow : public PickerWindow {
+	BuildRoadWaypointWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, TRANSPORT_ROAD, RoadWaypointPickerCallbacks::instance)
+	{
+		this->ConstructWindow();
+		this->InvalidateData();
+	}
+
+	static inline HotkeyList hotkeys{"buildroadwaypoint", {
+		Hotkey('F', "focus_filter_box", PCWHK_FOCUS_FILTER_BOX),
+	}};
+};
+
+/** Nested widget definition for the build NewGRF road waypoint window */
+static constexpr NWidgetPart _nested_build_road_waypoint_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_WAYPOINT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_DEFSIZEBOX, COLOUR_DARK_GREEN),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidgetFunction(MakePickerClassWidgets),
+		NWidgetFunction(MakePickerTypeWidgets),
+	EndContainer(),
+};
+
+static WindowDesc _build_road_waypoint_desc(
+	WDP_AUTO, "build_road_waypoint", 0, 0,
+	WC_BUILD_WAYPOINT, WC_BUILD_TOOLBAR,
+	WDF_CONSTRUCTION,
+	_nested_build_road_waypoint_widgets,
+	&BuildRoadWaypointWindow::hotkeys
+);
+
+static void ShowBuildRoadWaypointPicker(Window *parent)
+{
+	if (!RoadWaypointPickerCallbacks::instance.IsActive()) return;
+	new BuildRoadWaypointWindow(_build_road_waypoint_desc, parent);
+}
+
 void InitializeRoadGui()
 {
 	_road_depot_orientation = DIAGDIR_NW;
 	_roadstop_gui.orientation = DIAGDIR_NW;
+	_waypoint_gui.sel_class = RoadStopClassID::ROADSTOP_CLASS_WAYP;
+	_waypoint_gui.sel_type = 0;
 }
 
 /**

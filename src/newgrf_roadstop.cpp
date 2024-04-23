@@ -119,6 +119,15 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 		/* Animation frame */
 		case 0x49: return this->tile == INVALID_TILE ? 0 : this->st->GetRoadStopAnimationFrame(this->tile);
 
+		/* Misc info */
+		case 0x50: {
+			uint32_t result = 0;
+			if (this->tile == INVALID_TILE) {
+				SetBit(result, 4);
+			}
+			return result;
+		}
+
 		/* Variables which use the parameter */
 		/* Variables 0x60 to 0x65 and 0x69 are handled separately below */
 
@@ -284,7 +293,19 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 	SpriteID image = dts->ground.sprite;
 	PaletteID pal  = dts->ground.pal;
 
-	if (GB(image, 0, SPRITE_WIDTH) != 0) {
+	RoadStopDrawMode draw_mode;
+	if (HasBit(spec->flags, RSF_DRAW_MODE_REGISTER)) {
+		draw_mode = static_cast<RoadStopDrawMode>(GetRegister(0x100));
+	} else {
+		draw_mode = spec->draw_mode;
+	}
+
+	if (type == STATION_ROADWAYPOINT) {
+		DrawSprite(SPR_ROAD_PAVED_STRAIGHT_X, PAL_NONE, x, y);
+		if ((draw_mode & ROADSTOP_DRAW_MODE_WAYP_GROUND) && GB(image, 0, SPRITE_WIDTH) != 0) {
+			DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
+		}
+	} else if (GB(image, 0, SPRITE_WIDTH) != 0) {
 		DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
 	}
 
@@ -293,7 +314,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 		uint sprite_offset = 5 - view;
 
 		/* Road underlay takes precedence over tram */
-		if (spec->draw_mode & ROADSTOP_DRAW_MODE_OVERLAY) {
+		if (type == STATION_ROADWAYPOINT || draw_mode & ROADSTOP_DRAW_MODE_OVERLAY) {
 			if (rti->UsesOverlay()) {
 				SpriteID ground = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_GROUND);
 				DrawSprite(ground + sprite_offset, PAL_NONE, x, y);
@@ -306,7 +327,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 		}
 	} else {
 		/* Bay stop */
-		if ((spec->draw_mode & ROADSTOP_DRAW_MODE_ROAD) && rti->UsesOverlay()) {
+		if ((draw_mode & ROADSTOP_DRAW_MODE_ROAD) && rti->UsesOverlay()) {
 			SpriteID ground = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_ROADSTOP);
 			DrawSprite(ground + view, PAL_NONE, x, y);
 		}

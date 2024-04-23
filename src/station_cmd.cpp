@@ -3293,7 +3293,7 @@ draw_default_foundation:
 		draw_ground = true;
 	}
 
-	if (draw_ground && !IsStationRoadStop(ti->tile)) {
+	if (draw_ground && !IsAnyRoadStop(ti->tile)) {
 		SpriteID image = t->ground.sprite;
 		PaletteID pal  = t->ground.pal;
 		RailTrackOffset overlay_offset;
@@ -3320,7 +3320,7 @@ draw_default_foundation:
 
 	if (HasStationRail(ti->tile) && HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
 
-	if (IsStationRoadStop(ti->tile)) {
+	if (IsAnyRoadStop(ti->tile)) {
 		RoadType road_rt = GetRoadTypeRoad(ti->tile);
 		RoadType tram_rt = GetRoadTypeTram(ti->tile);
 		const RoadTypeInfo *road_rti = road_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(road_rt);
@@ -3331,13 +3331,21 @@ draw_default_foundation:
 		StationType type = GetStationType(ti->tile);
 
 		const RoadStopSpec *stopspec = GetRoadStopSpec(ti->tile);
+		RoadStopDrawMode stop_draw_mode{};
 		if (stopspec != nullptr) {
+			stop_draw_mode = stopspec->draw_mode;
 			int view = dir;
 			if (IsDriveThroughStopTile(ti->tile)) view += 4;
 			st = BaseStation::GetByTile(ti->tile);
 			RoadStopResolverObject object(stopspec, st, ti->tile, INVALID_ROADTYPE, type, view);
 			const SpriteGroup *group = object.Resolve();
 			if (group != nullptr && group->type == SGT_TILELAYOUT) {
+				if (HasBit(stopspec->flags, RSF_DRAW_MODE_REGISTER)) {
+					stop_draw_mode = static_cast<RoadStopDrawMode>(GetRegister(0x100));
+				}
+				if (type == STATION_ROADWAYPOINT && (stop_draw_mode & ROADSTOP_DRAW_MODE_WAYP_GROUND)) {
+					draw_ground = true;
+				}
 				t = ((const TileLayoutSpriteGroup *)group)->ProcessRegisters(nullptr);
 			}
 		}
@@ -3354,14 +3362,15 @@ draw_default_foundation:
 		}
 
 		if (IsDriveThroughStopTile(ti->tile)) {
-			uint sprite_offset = axis == AXIS_X ? 1 : 0;
-
-			DrawRoadOverlays(ti, PAL_NONE, road_rti, tram_rti, sprite_offset, sprite_offset);
+			if (type != STATION_ROADWAYPOINT && (stopspec == nullptr || (stop_draw_mode & ROADSTOP_DRAW_MODE_OVERLAY) != 0)) {
+				uint sprite_offset = axis == AXIS_X ? 1 : 0;
+				DrawRoadOverlays(ti, PAL_NONE, road_rti, tram_rti, sprite_offset, sprite_offset);
+			}
 		} else {
 			/* Non-drivethrough road stops are only valid for roads. */
 			assert(road_rt != INVALID_ROADTYPE && tram_rt == INVALID_ROADTYPE);
 
-			if ((stopspec == nullptr || (stopspec->draw_mode & ROADSTOP_DRAW_MODE_ROAD) != 0) && road_rti->UsesOverlay()) {
+			if ((stopspec == nullptr || (stop_draw_mode & ROADSTOP_DRAW_MODE_ROAD) != 0) && road_rti->UsesOverlay()) {
 				SpriteID ground = GetCustomRoadSprite(road_rti, ti->tile, ROTSG_ROADSTOP);
 				DrawGroundSprite(ground + dir, PAL_NONE);
 			}
@@ -3429,7 +3438,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	}
 
 	/* Default waypoint has no railtype specific sprites */
-	DrawRailTileSeqInGUI(x, y, t, st == STATION_WAYPOINT ? 0 : total_offset, 0, pal);
+	DrawRailTileSeqInGUI(x, y, t, (st == STATION_WAYPOINT || st == STATION_ROADWAYPOINT) ? 0 : total_offset, 0, pal);
 }
 
 static int GetSlopePixelZ_Station(TileIndex tile, uint, uint, bool)
