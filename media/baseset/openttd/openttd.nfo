@@ -98,3 +98,4 @@
 #include "mono.nfo"
 #include "tunnel_portals.nfo"
 #include "palette.nfo"
+#include "road_waypoints.nfo"
