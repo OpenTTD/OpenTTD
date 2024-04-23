@@ -876,6 +876,22 @@
      <li>m2: index into the array of stations</li>
      <li>m3 bits 7..4: persistent random data for railway stations/waypoints and airports)</li>
      <li>m3 bits 7..4: <a href="#OwnershipInfo">owner</a> of tram tracks (road stop)</li>
+     <li>m3 bits 3..2: ground type (road waypoints)
+      <table>
+       <tr>
+        <td><tt>0</tt>&nbsp; </td>
+        <td>on bare land</td>
+       </tr>
+       <tr>
+        <td><tt>1</tt>&nbsp; </td>
+        <td>on grass</td>
+       </tr>
+       <tr>
+        <td><tt>2</tt>&nbsp; </td>
+        <td>paved</td>
+       </tr>
+      </table>
+     </li>
      <li>m4: custom station id; 0 means standard graphics</li>
      <li>m4: <a href="#RoadType">Roadtype</a> for road stops</li>
      <li>m5: graphics index (range from 0..255 for each station type):
@@ -997,6 +1013,7 @@
 
      <li>m7 bits 4..0: <a href="#OwnershipInfo">owner</a> of road (road stops)</li>
      <li>m7: animation frame (railway stations/waypoints, airports)</li>
+     <li>m8 bit 15: Snow or desert present (road waypoints)</li>
      <li>m8 bits 11..6: <a href="#TramType">Tramtype</a></li>
      <li>m8 bits 5..0: <a href="#TrackType">track type</a> for railway stations/waypoints</li>
      <li>m8 bits 5..0: custom road stop id; 0 means standard graphics</li>
