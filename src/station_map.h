@@ -281,6 +281,49 @@ inline bool IsDriveThroughStopTile(Tile t)
 StationGfx GetTranslatedAirportTileID(StationGfx gfx);
 
 /**
+ * Get the decorations of a road waypoint.
+ * @param tile The tile to query.
+ * @return The road decoration of the tile.
+ */
+static inline Roadside GetRoadWaypointRoadside(Tile tile)
+{
+	assert(IsRoadWaypointTile(tile));
+	return (Roadside)GB(tile.m3(), 2, 2);
+}
+
+/**
+ * Set the decorations of a road waypoint.
+ * @param tile The tile to change.
+ * @param s    The new road decoration of the tile.
+ */
+static inline void SetRoadWaypointRoadside(Tile tile, Roadside s)
+{
+	assert(IsRoadWaypointTile(tile));
+	SB(tile.m3(), 2, 2, s);
+}
+
+/**
+ * Check if a road waypoint tile has snow/desert.
+ * @param t The tile to query.
+ * @return True if the tile has snow/desert.
+ */
+static inline bool IsRoadWaypointOnSnowOrDesert(Tile t)
+{
+	assert(IsRoadWaypointTile(t));
+	return HasBit(t.m8(), 15);
+}
+
+/**
+ * Toggle the snow/desert state of a road waypoint tile.
+ * @param t The tile to change.
+ */
+static inline void ToggleRoadWaypointOnSnowOrDesert(Tile t)
+{
+	assert(IsRoadWaypointTile(t));
+	ToggleBit(t.m8(), 15);
+}
+
+/**
  * Get the station graphics of this airport tile
  * @param t the tile to query
  * @pre IsAirport(t)

@@ -1359,13 +1359,13 @@ static uint GetRoadSpriteOffset(Slope slope, RoadBits bits)
  * By default, roads are always drawn as unpaved if they are on desert or
  * above the snow line, but NewGRFs can override this for desert.
  *
- * @param tile The tile the road is on
+ * @param snow_or_desert Is snowy or desert tile
  * @param roadside What sort of road this is
  * @return True if snow/desert road sprites should be used.
  */
-static bool DrawRoadAsSnowDesert(TileIndex tile, Roadside roadside)
+static bool DrawRoadAsSnowDesert(bool snow_or_desert, Roadside roadside)
 {
-	return (IsOnSnow(tile) &&
+	return (snow_or_desert &&
 			!(_settings_game.game_creation.landscape == LT_TROPIC && HasGrfMiscBit(GMB_DESERT_PAVED_ROADS) &&
 				roadside != ROADSIDE_BARREN && roadside != ROADSIDE_GRASS && roadside != ROADSIDE_GRASS_ROAD_WORKS));
 }
@@ -1556,13 +1556,14 @@ void DrawRoadOverlays(const TileInfo *ti, PaletteID pal, const RoadTypeInfo *roa
  * @param roadside Road side type
  * @param rti Road type info
  * @param offset Road sprite offset
+ * @param snow_or_desert Whether to get snow/desert ground sprite
  * @param[out] pal Palette to draw.
  */
-static SpriteID GetRoadGroundSprite(const TileInfo *ti, Roadside roadside, const RoadTypeInfo *rti, uint offset, PaletteID *pal)
+static SpriteID GetRoadGroundSprite(const TileInfo *ti, Roadside roadside, const RoadTypeInfo *rti, uint offset, bool snow_or_desert, PaletteID *pal)
 {
 	/* Draw bare ground sprite if no road or road uses overlay system. */
 	if (rti == nullptr || rti->UsesOverlay()) {
-		if (DrawRoadAsSnowDesert(ti->tile, roadside)) {
+		if (DrawRoadAsSnowDesert(snow_or_desert, roadside)) {
 			return SPR_FLAT_SNOW_DESERT_TILE + SlopeToSpriteOffset(ti->tileh);
 		}
 
@@ -1577,7 +1578,7 @@ static SpriteID GetRoadGroundSprite(const TileInfo *ti, Roadside roadside, const
 
 	/* Draw original road base sprite */
 	SpriteID image = SPR_ROAD_Y + offset;
-	if (DrawRoadAsSnowDesert(ti->tile, roadside)) {
+	if (DrawRoadAsSnowDesert(snow_or_desert, roadside)) {
 		image += 19;
 	} else {
 		switch (roadside) {
@@ -1589,6 +1590,30 @@ static SpriteID GetRoadGroundSprite(const TileInfo *ti, Roadside roadside, const
 	}
 
 	return image;
+}
+
+/**
+ * Draw road ground sprites.
+ * @param ti TileInfo
+ * @param road Road bits
+ * @param tram Tram bits
+ * @param road_rti Road road type information
+ * @param tram_rti Tram road type information
+ * @param roadside Roadside type
+ * @param snow_or_desert Whether to draw snow/desert ground sprites
+ */
+void DrawRoadGroundSprites(const TileInfo *ti, RoadBits road, RoadBits tram, const RoadTypeInfo *road_rti, const RoadTypeInfo *tram_rti, Roadside roadside, bool snow_or_desert)
+{
+	/* Determine sprite offsets */
+	uint road_offset = GetRoadSpriteOffset(ti->tileh, road);
+	uint tram_offset = GetRoadSpriteOffset(ti->tileh, tram);
+
+	/* Draw baseset underlay */
+	PaletteID pal = PAL_NONE;
+	SpriteID image = GetRoadGroundSprite(ti, roadside, road_rti, road == ROAD_NONE ? tram_offset : road_offset, snow_or_desert, &pal);
+	DrawGroundSprite(image, pal);
+
+	DrawRoadOverlays(ti, pal, road_rti, tram_rti, road_offset, tram_offset);
 }
 
 /**
@@ -1610,18 +1635,7 @@ static void DrawRoadBits(TileInfo *ti)
 		/* DrawFoundation() modifies ti. */
 	}
 
-	/* Determine sprite offsets */
-	uint road_offset = GetRoadSpriteOffset(ti->tileh, road);
-	uint tram_offset = GetRoadSpriteOffset(ti->tileh, tram);
-
-	/* Draw baseset underlay */
-	Roadside roadside = GetRoadside(ti->tile);
-
-	PaletteID pal = PAL_NONE;
-	SpriteID image = GetRoadGroundSprite(ti, roadside, road_rti, road == ROAD_NONE ? tram_offset : road_offset, &pal);
-	DrawGroundSprite(image, pal);
-
-	DrawRoadOverlays(ti, pal, road_rti, tram_rti, road_offset, tram_offset);
+	DrawRoadGroundSprites(ti, road, tram, road_rti, tram_rti, GetRoadside(ti->tile), IsOnSnow(ti->tile));
 
 	/* Draw one way */
 	if (road_rti != nullptr) {
@@ -1654,6 +1668,7 @@ static void DrawRoadBits(TileInfo *ti)
 	if (!HasBit(_display_opt, DO_FULL_DETAIL) || _cur_dpi->zoom > ZOOM_LVL_DETAIL) return;
 
 	/* Do not draw details (street lights, trees) under low bridge */
+	Roadside roadside = GetRoadside(ti->tile);
 	if (IsBridgeAbove(ti->tile) && (roadside == ROADSIDE_TREES || roadside == ROADSIDE_STREET_LIGHTS)) {
 		int height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 		int minz = GetTileMaxZ(ti->tile) + 2;
@@ -1712,7 +1727,7 @@ static void DrawTile_Road(TileInfo *ti)
 				SpriteID image = SPR_ROAD_Y + axis;
 
 				Roadside roadside = GetRoadside(ti->tile);
-				if (DrawRoadAsSnowDesert(ti->tile, roadside)) {
+				if (DrawRoadAsSnowDesert(IsOnSnow(ti->tile), roadside)) {
 					image += 19;
 				} else {
 					switch (roadside) {
@@ -1728,7 +1743,7 @@ static void DrawTile_Road(TileInfo *ti)
 				if (IsCrossingBarred(ti->tile)) image += 2;
 
 				Roadside roadside = GetRoadside(ti->tile);
-				if (DrawRoadAsSnowDesert(ti->tile, roadside)) {
+				if (DrawRoadAsSnowDesert(IsOnSnow(ti->tile), roadside)) {
 					image += 8;
 				} else {
 					switch (roadside) {
