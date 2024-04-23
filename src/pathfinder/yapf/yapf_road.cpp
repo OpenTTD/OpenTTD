@@ -75,11 +75,11 @@ protected:
 						/* Increase the cost for drive-through road stops */
 						cost += Yapf().PfGetSettings().road_stop_penalty;
 						DiagDirection dir = TrackdirToExitdir(trackdir);
-						if (!RoadStop::IsDriveThroughRoadStopContinuation(tile, tile - TileOffsByDiagDir(dir))) {
-							/* When we're the first road stop in a 'queue' of them we increase
-							 * cost based on the fill percentage of the whole queue. */
+						if (Yapf().PfDetectDestinationTile(tile, trackdir)){
+							/* We've found the destination file so get the occupied
+							 * level from the Entry object. */
 							const RoadStop::Entry *entry = rs->GetEntry(dir);
-							cost += entry->GetOccupied() * Yapf().PfGetSettings().road_stop_occupied_penalty / entry->GetLength();
+							cost += entry->GetOccupied(rs, dir) * Yapf().PfGetSettings().road_stop_occupied_penalty / entry->GetLength();
 						}
 					} else {
 						/* Increase cost for filled road stops */

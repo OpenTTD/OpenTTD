@@ -88,8 +88,6 @@ void RoadStop::MakeDriveThrough()
 		if (south && rs_south->east != nullptr) { // (east != nullptr) == (west != nullptr)
 			/* There more southern tiles too, they must 'join' us too */
 			ClrBit(rs_south->status, RSSFB_BASE_ENTRY);
-			this->east->occupied += rs_south->east->occupied;
-			this->west->occupied += rs_south->west->occupied;
 
 			/* Free the now unneeded entry structs */
 			delete rs_south->east;
@@ -175,12 +173,7 @@ void RoadStop::ClearDriveThrough()
 				rs_north = RoadStop::GetByTile(north_tile, rst);
 			}
 
-			/* We have to rebuild the entries because we cannot easily determine
-			 * how full each part is. So instead of keeping and maintaining a list
-			 * of vehicles and using that to 'rebuild' the occupied state we just
-			 * rebuild it from scratch as that removes lots of maintenance code
-			 * for the vehicle list and it's faster in real games as long as you
-			 * do not keep split and merge road stop every tick by the millions. */
+			/* We have to rebuild the entries to determine the length of the roadstop. */
 			rs_south_base->east->Rebuild(rs_south_base);
 			rs_south_base->west->Rebuild(rs_south_base);
 
@@ -219,9 +212,6 @@ void RoadStop::Leave(RoadVehicle *rv)
 		/* Vehicle is leaving a road stop tile, mark bay as free */
 		this->FreeBay(HasBit(rv->state, RVS_USING_SECOND_BAY));
 		this->SetEntranceBusy(false);
-	} else {
-		/* Otherwise just leave the drive through's entry cache. */
-		this->GetEntry(DirToDiagDir(rv->direction))->Leave(rv);
 	}
 }
 
@@ -248,9 +238,6 @@ bool RoadStop::Enter(RoadVehicle *rv)
 		return true;
 	}
 
-	/* Vehicles entering a drive-through stop from the 'normal' side use first bay (bay 0). */
-	this->GetEntry(DirToDiagDir(rv->direction))->Enter(rv);
-
 	/* Indicate a drive-through stop */
 	SetBit(rv->state, RVS_IN_DT_ROAD_STOP);
 	return true;
@@ -274,28 +261,6 @@ bool RoadStop::Enter(RoadVehicle *rv)
 }
 
 /**
- * Leave the road stop
- * @param rv the vehicle that leaves the stop
- */
-void RoadStop::Entry::Leave(const RoadVehicle *rv)
-{
-	this->occupied -= rv->gcache.cached_total_length;
-	assert(this->occupied >= 0);
-}
-
-/**
- * Enter the road stop
- * @param rv the vehicle that enters the stop
- */
-void RoadStop::Entry::Enter(const RoadVehicle *rv)
-{
-	/* we cannot assert on this->occupied < this->length because of the
-	 * remote possibility that RVs are running through each other when
-	 * trying to prevention an infinite jam. */
-	this->occupied += rv->gcache.cached_total_length;
-}
-
-/**
  * Checks whether the 'next' tile is still part of the road same drive through
  * stop 'rs' in the same direction for the same vehicle.
  * @param rs   the road stop tile to check against
@@ -311,67 +276,88 @@ void RoadStop::Entry::Enter(const RoadVehicle *rv)
 			IsDriveThroughStopTile(next);
 }
 
-typedef std::list<const RoadVehicle *> RVList; ///< A list of road vehicles
-
-/** Helper for finding RVs in a road stop. */
-struct RoadStopEntryRebuilderHelper {
-	RVList vehicles;   ///< The list of vehicles to possibly add to.
-	DiagDirection dir; ///< The direction the vehicle has to face to be added.
-};
-
-/**
- * Add road vehicles to the station's list if needed.
- * @param v the found vehicle
- * @param data the extra data used to make our decision
- * @return always nullptr
- */
-Vehicle *FindVehiclesInRoadStop(Vehicle *v, void *data)
-{
-	RoadStopEntryRebuilderHelper *rserh = (RoadStopEntryRebuilderHelper*)data;
-	/* Not a RV or not in the right direction or crashed :( */
-	if (v->type != VEH_ROAD || DirToDiagDir(v->direction) != rserh->dir || !v->IsPrimaryVehicle() || (v->vehstatus & VS_CRASHED) != 0) return nullptr;
-
-	RoadVehicle *rv = RoadVehicle::From(v);
-	/* Don't add ones not in a road stop */
-	if (rv->state < RVSB_IN_ROAD_STOP) return nullptr;
-
-	/* Do not add duplicates! */
-	for (const auto &it : rserh->vehicles) {
-		if (rv == it) return nullptr;
-	}
-
-	rserh->vehicles.push_back(rv);
-	return nullptr;
-}
-
 /**
  * Rebuild, from scratch, the vehicles and other metadata on this stop.
  * @param rs   the roadstop this entry is part of
- * @param side the side of the road stop to look at
  */
-void RoadStop::Entry::Rebuild(const RoadStop *rs, int side)
+void RoadStop::Entry::Rebuild(const RoadStop *rs)
 {
 	assert(HasBit(rs->status, RSSFB_BASE_ENTRY));
 
 	DiagDirection dir = GetRoadStopDir(rs->xy);
-	if (side == -1) side = (rs->east == this);
-
-	RoadStopEntryRebuilderHelper rserh;
-	rserh.dir = side ? dir : ReverseDiagDir(dir);
 
 	this->length = 0;
 	TileIndexDiff offset = abs(TileOffsByDiagDir(dir));
 	for (TileIndex tile = rs->xy; IsDriveThroughRoadStopContinuation(rs->xy, tile); tile += offset) {
 		this->length += TILE_SIZE;
-		FindVehicleOnPos(tile, &rserh, FindVehiclesInRoadStop);
-	}
-
-	this->occupied = 0;
-	for (const auto &it : rserh.vehicles) {
-		this->occupied += it->gcache.cached_total_length;
 	}
 }
 
+struct TileDataHelper
+{
+	TileIndex tile;        ///< The tile we are working on.
+	DiagDirection dir;     ///< The direction the tile is oriented following Trackdir.
+	uint free = TILE_SIZE;
+};
+
+/* Find the amount of free space in this tile, measured from the direction of entry. */
+Vehicle *FindTileFreeSpace(Vehicle *v, void *data)
+{
+	TileDataHelper *tdh = (TileDataHelper*)data;
+
+	/* Exclude if not a RV, not travelling in the Trackdir direction */
+	if (v->type != VEH_ROAD || DirToDiagDir(v->direction) != tdh->dir) return nullptr;
+
+	RoadVehicle *rv = RoadVehicle::From(v);
+
+	uint veh_pos = DiagDirToAxis(tdh->dir) == AXIS_X ? rv->x_pos : rv->y_pos;
+	uint tile_pos = DiagDirToAxis(tdh->dir) == AXIS_X ? TileX(tdh->tile) : TileY(tdh->tile);
+	uint tile_free_space = TILE_SIZE;
+
+	switch (tdh->dir) {
+		case DIAGDIR_NE:
+		case DIAGDIR_NW:
+			tile_free_space = veh_pos % tile_pos < TILE_SIZE / 2 ? TILE_SIZE / 2 : 0;
+			tdh->free = std::min(tdh->free, tile_free_space);
+			break;
+		case DIAGDIR_SE:
+		case DIAGDIR_SW:
+			tile_free_space = veh_pos % tile_pos < TILE_SIZE / 2 ? 0 : TILE_SIZE / 2;
+			tdh->free = std::min(tdh->free, tile_free_space);
+			break;
+		default:
+			return nullptr;
+	}
+	return nullptr;
+}
+
+
+/**
+ * Get the amount of occupied space in this drive through stop.
+ * @param rs the roadstop this entry is part of
+ * @return the occupied space in tile units.
+ */
+int RoadStop::Entry::GetOccupied(const RoadStop *rs, const DiagDirection dir) const
+{
+	const RoadStop::Entry *entry = rs->GetEntry(dir);
+
+	TileDataHelper tdh;
+	tdh.dir = dir;
+
+	int free = 0;
+	TileIndexDiff offset = TileOffsByDiagDir(dir);
+
+	for (TileIndex tile = rs->xy; RoadStop::IsDriveThroughRoadStopContinuation(rs->xy, tile); tile += offset) {
+		tdh.tile = tile;
+		FindVehicleOnPos(tile, &tdh, FindTileFreeSpace);
+		free += tdh.free;
+
+		// Tile contains a vehicle - no need to keep calculating.
+		if (tdh.free < TILE_SIZE) break;
+	};
+
+	return entry->GetLength() - free;
+}
 
 /**
  * Check the integrity of the data in this struct.
@@ -385,6 +371,6 @@ void RoadStop::Entry::CheckIntegrity(const RoadStop *rs) const
 	assert(!IsDriveThroughRoadStopContinuation(rs->xy, rs->xy - abs(TileOffsByDiagDir(GetRoadStopDir(rs->xy)))));
 
 	Entry temp;
-	temp.Rebuild(rs, rs->east == this);
-	if (temp.length != this->length || temp.occupied != this->occupied) NOT_REACHED();
+	temp.Rebuild(rs);
+	if (temp.length != this->length) NOT_REACHED();
 }
