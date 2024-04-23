@@ -763,6 +763,20 @@ static const DrawTileSeqStruct _station_display_datas_0171[] = {
 	TILE_SEQ_END()
 };
 
+/* road waypoint X */
+static const DrawTileSeqStruct _station_display_datas_road_waypoint_X[] = {
+	TILE_SEQ_LINE( 0,  0,  0,  16,  3, 16, SPR_ROAD_WAYPOINT_X_W | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE( 0, 13,  0,  16,  3, 16, SPR_ROAD_WAYPOINT_X_E | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_END()
+};
+
+/* road waypoint Y */
+static const DrawTileSeqStruct _station_display_datas_road_waypoint_Y[] = {
+	TILE_SEQ_LINE(13,  0,  0,  3,  16, 16, SPR_ROAD_WAYPOINT_Y_W | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE( 0,  0,  0,  3,  16, 16, SPR_ROAD_WAYPOINT_Y_E | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_END()
+};
+
 static const DrawTileSeqStruct _station_display_datas_waypoint_X[] = {
 	TILE_SEQ_LINE( 0,  0,  0, 16,  5, 23, SPR_WAYPOINT_X_1 | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_LINE( 0, 11,  0, 16,  5, 23, SPR_WAYPOINT_X_2 | (1U << PALETTE_MODIFIER_COLOUR))
@@ -956,12 +970,12 @@ static const DrawTileSprites _station_display_datas_bus[] = {
 };
 
 static const DrawTileSprites _station_display_datas_road_waypoint[] = {
-	TILE_SPRITE_LINE(SPR_BUS_STOP_NE_GROUND   | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_71)
-	TILE_SPRITE_LINE(SPR_BUS_STOP_SE_GROUND   | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_72)
-	TILE_SPRITE_LINE(SPR_BUS_STOP_SW_GROUND   | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_73)
-	TILE_SPRITE_LINE(SPR_BUS_STOP_NW_GROUND   | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_74)
-	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_X,      _station_display_datas_0170)
-	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_Y,      _station_display_datas_0171)
+	TILE_SPRITE_LINE(0, nullptr)
+	TILE_SPRITE_LINE(0, nullptr)
+	TILE_SPRITE_LINE(0, nullptr)
+	TILE_SPRITE_LINE(0, nullptr)
+	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_X,      _station_display_datas_road_waypoint_X)
+	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_Y,      _station_display_datas_road_waypoint_Y)
 };
 
 static const DrawTileSprites _station_display_datas_oilrig[] = {
