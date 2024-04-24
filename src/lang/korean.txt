@@ -3394,8 +3394,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}세계 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% 완료
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}지형 만드는 중
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}지형 생성
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}강 제작
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}거친 암석지대 만드는 중
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}도시 생성
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}산업시설 생성
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}움직일수 없는 객체 만드는 중
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}나무 심는 중
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}게임 설정 중

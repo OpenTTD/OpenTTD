@@ -3773,11 +3773,14 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Czy na 
 STR_GENERATION_PROGRESS                                         :{WHITE}Ukończono w {NUM}%
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tworzenie świata
-STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generator rzek
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Tworzenie krajobrazu
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Tworzenie rzek
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Tworzenie terenów skalistych i nierówności
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Tworzenie obiektów
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tworzenie drzew
-STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ustawianie gry
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Tworzenie miast
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Rozmieszczanie przedsiębiorstw
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Rozmieszczanie obiektów
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Rozmieszczanie drzew
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Konfigurowanie rozgrywki
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Uaktywnianie pól
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Uruchamianie skryptu
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Przygotowywanie gry

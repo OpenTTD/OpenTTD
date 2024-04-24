@@ -3394,8 +3394,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Realmen
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NBSP}% complet
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generació del món
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Generació del terreny
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generació de rius
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generació d'una àrea escarpada i rocosa
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Generació de poblacions
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Generació d'indústries
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generació inamovible
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generació d'arbres
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurant la partida
