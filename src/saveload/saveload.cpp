@@ -599,17 +599,25 @@ static uint8_t GetSavegameFileType(const SaveLoad &sld)
  */
 static inline uint SlCalcConvMemLen(VarType conv)
 {
-	static const uint8_t conv_mem_size[] = {1, 1, 1, 2, 2, 4, 4, 8, 8, 0};
-
 	switch (GetVarMemType(conv)) {
+		case SLE_VAR_BL: return sizeof(bool);
+		case SLE_VAR_I8: return sizeof(int8_t);
+		case SLE_VAR_U8: return sizeof(uint8_t);
+		case SLE_VAR_I16: return sizeof(int16_t);
+		case SLE_VAR_U16: return sizeof(uint16_t);
+		case SLE_VAR_I32: return sizeof(int32_t);
+		case SLE_VAR_U32: return sizeof(uint32_t);
+		case SLE_VAR_I64: return sizeof(int64_t);
+		case SLE_VAR_U64: return sizeof(uint64_t);
+		case SLE_VAR_NULL: return 0;
+
 		case SLE_VAR_STR:
 		case SLE_VAR_STRQ:
 			return SlReadArrayLength();
 
+		case SLE_VAR_NAME:
 		default:
-			uint8_t type = GetVarMemType(conv) >> 4;
-			assert(type < lengthof(conv_mem_size));
-			return conv_mem_size[type];
+			NOT_REACHED();
 	}
 }
 
@@ -621,17 +629,24 @@ static inline uint SlCalcConvMemLen(VarType conv)
  */
 static inline uint8_t SlCalcConvFileLen(VarType conv)
 {
-	static const uint8_t conv_file_size[] = {0, 1, 1, 2, 2, 4, 4, 8, 8, 2};
-
 	switch (GetVarFileType(conv)) {
+		case SLE_FILE_END: return 0;
+		case SLE_FILE_I8: return sizeof(int8_t);
+		case SLE_FILE_U8: return sizeof(uint8_t);
+		case SLE_FILE_I16: return sizeof(int16_t);
+		case SLE_FILE_U16: return sizeof(uint16_t);
+		case SLE_FILE_I32: return sizeof(int32_t);
+		case SLE_FILE_U32: return sizeof(uint32_t);
+		case SLE_FILE_I64: return sizeof(int64_t);
+		case SLE_FILE_U64: return sizeof(uint64_t);
+		case SLE_FILE_STRINGID: return sizeof(uint16_t);
+
 		case SLE_FILE_STRING:
 			return SlReadArrayLength();
 
+		case SLE_FILE_STRUCT:
 		default:
-			uint8_t type = GetVarFileType(conv);
-			if (type >= lengthof(conv_file_size)) fmt::println("{}", type);
-			assert(type < lengthof(conv_file_size));
-			return conv_file_size[type];
+			NOT_REACHED();
 	}
 }
 
