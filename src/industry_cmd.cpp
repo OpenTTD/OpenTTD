@@ -82,9 +82,9 @@ void ResetIndustries()
 	auto industry_insert = std::copy(std::begin(_origin_industry_specs), std::end(_origin_industry_specs), std::begin(_industry_specs));
 	std::fill(industry_insert, std::end(_industry_specs), IndustrySpec{});
 
-	for (IndustryType i = 0; i < lengthof(_origin_industry_specs); i++) {
-		/* Enable only the current climate industries */
-		_industry_specs[i].enabled = HasBit(_industry_specs[i].climate_availability, _settings_game.game_creation.landscape);
+	/* Enable only the current climate industries */
+	for (auto it = std::begin(_industry_specs); it != industry_insert; ++it) {
+		it->enabled = HasBit(it->climate_availability, _settings_game.game_creation.landscape);
 	}
 
 	auto industry_tile_insert = std::copy(std::begin(_origin_industry_tile_specs), std::end(_origin_industry_tile_specs), std::begin(_industry_tile_specs));
