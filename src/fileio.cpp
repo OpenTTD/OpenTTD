@@ -473,17 +473,14 @@ bool TarScanner::AddFile(Subdirectory sd, const std::string &filename)
  * header contains garbage and is malicious. So, we cannot rely on the string
  * being properly terminated.
  * As such, do not use strlen to determine the actual length (explicitly or
- * implictly via the std::string constructor), but also do not create a string
- * of the buffer length as that makes the string contain essentially garbage.
+ * implictly via the std::string constructor), but pass the buffer bounds
+ * explicitly.
  * @param buffer The buffer to read from.
- * @param buffer_length The length of the buffer to read from.
  * @return The string data.
  */
-static std::string ExtractString(char *buffer, size_t buffer_length)
+static std::string ExtractString(std::span<char> buffer)
 {
-	size_t length = 0;
-	for (; length < buffer_length && buffer[length] != '\0'; length++) {}
-	return StrMakeValid(std::string_view(buffer, length));
+	return StrMakeValid(std::string_view(buffer.begin(), buffer.end()));
 }
 
 bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] const std::string &tar_filename)
@@ -557,15 +554,15 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 		/* The prefix contains the directory-name */
 		if (th.prefix[0] != '\0') {
-			name = ExtractString(th.prefix, lengthof(th.prefix));
+			name = ExtractString(th.prefix);
 			name += PATHSEP;
 		}
 
 		/* Copy the name of the file in a safe way at the end of 'name' */
-		name += ExtractString(th.name, lengthof(th.name));
+		name += ExtractString(th.name);
 
 		/* The size of the file, for some strange reason, this is stored as a string in octals. */
-		std::string size = ExtractString(th.size, lengthof(th.size));
+		std::string size = ExtractString(th.size);
 		size_t skip = size.empty() ? 0 : std::stoul(size, nullptr, 8);
 
 		switch (th.typeflag) {
@@ -591,7 +588,7 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 			case '1': // hard links
 			case '2': { // symbolic links
 				/* Copy the destination of the link in a safe way at the end of 'linkname' */
-				std::string link = ExtractString(th.linkname, lengthof(th.linkname));
+				std::string link = ExtractString(th.linkname);
 
 				if (name.empty() || link.empty()) break;
 
