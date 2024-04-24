@@ -99,7 +99,7 @@ static uint16_t ParseCode(const char *start, const char *end)
 	assert(start <= end);
 	while (start < end && *start == ' ') start++;
 	while (end > start && *end == ' ') end--;
-	std::string_view str{start, static_cast<size_t>(end - start)};
+	std::string_view str{start, end};
 	for (const auto &kn : _keycode_to_name) {
 		if (StrEqualsIgnoreCase(str, kn.name)) {
 			return kn.keycode;
