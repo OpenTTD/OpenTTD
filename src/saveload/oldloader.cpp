@@ -33,12 +33,24 @@ static inline OldChunkType GetOldChunkType(OldChunkType type)     {return (OldCh
 static inline OldChunkType GetOldChunkVarType(OldChunkType type)  {return (OldChunkType)(GB(type, 8, 8) << 8);}
 static inline OldChunkType GetOldChunkFileType(OldChunkType type) {return (OldChunkType)(GB(type, 16, 8) << 16);}
 
+/**
+ * Return expected size in bytes of a OldChunkType
+ * @param type OldChunkType to get size of.
+ * @return size of type in bytes.
+ */
 static inline uint8_t CalcOldVarLen(OldChunkType type)
 {
-	static const uint8_t type_mem_size[] = {0, 1, 1, 2, 2, 4, 4, 8};
-	uint8_t length = GB(type, 8, 8);
-	assert(length != 0 && length < lengthof(type_mem_size));
-	return type_mem_size[length];
+	switch (GetOldChunkVarType(type)) {
+		case OC_VAR_I8: return sizeof(int8_t);
+		case OC_VAR_U8: return sizeof(uint8_t);
+		case OC_VAR_I16: return sizeof(int16_t);
+		case OC_VAR_U16: return sizeof(uint16_t);
+		case OC_VAR_I32: return sizeof(int32_t);
+		case OC_VAR_U32: return sizeof(uint32_t);
+		case OC_VAR_I64: return sizeof(int64_t);
+		case OC_VAR_U64: return sizeof(uint64_t);
+		default: NOT_REACHED();
+	}
 }
 
 /**
