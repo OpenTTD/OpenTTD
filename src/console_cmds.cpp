@@ -2049,9 +2049,16 @@ DEF_CONSOLE_CMD(ConNetworkAuthorizedKey)
 /** Resolve a string to a content type. */
 static ContentType StringToContentType(const char *str)
 {
-	static const char * const inv_lookup[] = { "", "base", "newgrf", "ai", "ailib", "scenario", "heightmap" };
-	for (uint i = 1 /* there is no type 0 */; i < lengthof(inv_lookup); i++) {
-		if (StrEqualsIgnoreCase(str, inv_lookup[i])) return (ContentType)i;
+	static const std::initializer_list<std::pair<std::string_view, ContentType>> content_types = {
+		{"base",      CONTENT_TYPE_BASE_GRAPHICS},
+		{"newgrf",    CONTENT_TYPE_NEWGRF},
+		{"ai",        CONTENT_TYPE_AI},
+		{"ailib",     CONTENT_TYPE_AI_LIBRARY},
+		{"scenario",  CONTENT_TYPE_SCENARIO},
+		{"heightmap", CONTENT_TYPE_HEIGHTMAP},
+	};
+	for (const auto &ct : content_types) {
+		if (StrEqualsIgnoreCase(str, ct.first)) return ct.second;
 	}
 	return CONTENT_TYPE_END;
 }
