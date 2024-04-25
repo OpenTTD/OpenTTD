@@ -839,7 +839,7 @@ public:
 	 */
 	void ScrollTowards(size_type position)
 	{
-		if (position < this->GetPosition()) {
+		if (position <= this->GetPosition()) {
 			/* scroll up to the item */
 			this->SetPosition(position);
 		} else if (position >= this->GetPosition() + this->GetCapacity()) {
