@@ -1095,7 +1095,7 @@ public:
 	}
 
 	/** Filter station classes by class name. */
-	static bool CDECL TagNameFilter(StationClassID const * sc, StringFilter &filter)
+	static bool TagNameFilter(StationClassID const * sc, StringFilter &filter)
 	{
 		filter.ResetState();
 		filter.AddLine(GetString(StationClass::Get(*sc)->name));

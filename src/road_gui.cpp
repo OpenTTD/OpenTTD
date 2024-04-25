@@ -1246,7 +1246,7 @@ public:
 	}
 
 	/** Filter classes by class name. */
-	static bool CDECL TagNameFilter(RoadStopClassID const *sc, StringFilter &filter)
+	static bool TagNameFilter(RoadStopClassID const *sc, StringFilter &filter)
 	{
 		filter.ResetState();
 		filter.AddLine(GetString(RoadStopClass::Get(*sc)->name));

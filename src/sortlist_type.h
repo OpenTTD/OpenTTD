@@ -47,7 +47,7 @@ template <typename T, typename P = std::nullptr_t, typename F = const char*>
 class GUIList : public std::vector<T> {
 public:
 	using SortFunction = std::conditional_t<std::is_same_v<P, std::nullptr_t>, bool (const T&, const T&), bool (const T&, const T&, const P)>; ///< Signature of sort function.
-	typedef bool CDECL FilterFunction(const T*, F); ///< Signature of filter function.
+	using FilterFunction = bool(const T*, F); ///< Signature of filter function.
 
 protected:
 	std::span<SortFunction * const> sort_func_list;     ///< the sort criteria functions
