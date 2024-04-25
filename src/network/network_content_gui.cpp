@@ -464,7 +464,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	}
 
 	/** Filter content by tags/name */
-	static bool CDECL TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
+	static bool TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
 	{
 		if ((*a)->state == ContentInfo::SELECTED || (*a)->state == ContentInfo::AUTOSELECTED) return true;
 
@@ -476,7 +476,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	}
 
 	/** Filter content by type, but still show content selected for download. */
-	static bool CDECL TypeOrSelectedFilter(const ContentInfo * const *a, ContentListFilterData &filter)
+	static bool TypeOrSelectedFilter(const ContentInfo * const *a, ContentListFilterData &filter)
 	{
 		if (filter.types.none()) return true;
 		if (filter.types[(*a)->type]) return true;

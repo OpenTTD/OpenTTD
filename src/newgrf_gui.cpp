@@ -1458,7 +1458,7 @@ private:
 	}
 
 	/** Filter grfs by tags/name */
-	static bool CDECL TagNameFilter(const GRFConfig * const *a, StringFilter &filter)
+	static bool TagNameFilter(const GRFConfig * const *a, StringFilter &filter)
 	{
 		filter.ResetState();
 		filter.AddLine((*a)->GetName());

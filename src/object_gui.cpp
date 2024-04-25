@@ -129,7 +129,7 @@ public:
 	}
 
 	/** Filter object classes by class name. */
-	static bool CDECL TagNameFilter(ObjectClassID const *oc, StringFilter &filter)
+	static bool TagNameFilter(ObjectClassID const *oc, StringFilter &filter)
 	{
 		ObjectClass *objclass = ObjectClass::Get(*oc);
 
