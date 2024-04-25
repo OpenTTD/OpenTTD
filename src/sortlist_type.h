@@ -50,8 +50,8 @@ public:
 	typedef bool CDECL FilterFunction(const T*, F); ///< Signature of filter function.
 
 protected:
-	SortFunction * const *sort_func_list;     ///< the sort criteria functions
-	FilterFunction * const *filter_func_list; ///< the filter criteria functions
+	std::span<SortFunction * const> sort_func_list;     ///< the sort criteria functions
+	std::span<FilterFunction * const> filter_func_list; ///< the filter criteria functions
 	SortListFlags flags;                      ///< used to control sorting/resorting/etc.
 	uint8_t sort_type;                          ///< what criteria to sort on
 	uint8_t filter_type;                        ///< what criteria to filter on
@@ -85,8 +85,8 @@ public:
 	/* If sort parameters are not used then we don't require a reference to the params. */
 	template <typename T_ = T, typename P_ = P, typename _F = F, std::enable_if_t<std::is_same_v<P_, std::nullptr_t>>* = nullptr>
 	GUIList() :
-		sort_func_list(nullptr),
-		filter_func_list(nullptr),
+		sort_func_list({}),
+		filter_func_list({}),
 		flags(VL_NONE),
 		sort_type(0),
 		filter_type(0),
@@ -97,8 +97,8 @@ public:
 	/* If sort parameters are used then we require a reference to the params. */
 	template <typename T_ = T, typename P_ = P, typename _F = F, std::enable_if_t<!std::is_same_v<P_, std::nullptr_t>>* = nullptr>
 	GUIList(const P &params) :
-		sort_func_list(nullptr),
-		filter_func_list(nullptr),
+		sort_func_list({}),
+		filter_func_list({}),
 		flags(VL_NONE),
 		sort_type(0),
 		filter_type(0),
@@ -123,6 +123,7 @@ public:
 	 */
 	void SetSortType(uint8_t n_type)
 	{
+		assert(n_type < std::size(this->sort_func_list));
 		if (this->sort_type != n_type) {
 			SETBITS(this->flags, VL_RESORT);
 			this->sort_type = n_type;
@@ -175,6 +176,7 @@ public:
 	 */
 	void SetFilterType(uint8_t n_type)
 	{
+		assert(n_type < std::size(this->filter_func_list));
 		if (this->filter_type != n_type) {
 			this->filter_type = n_type;
 		}
@@ -288,11 +290,11 @@ public:
 	}
 
 	/**
-	 * Hand the array of sort function pointers to the sort list
+	 * Hand the sort function pointers to the GUIList.
 	 *
-	 * @param n_funcs The pointer to the first sort func
+	 * @param n_funcs Span covering the sort function pointers.
 	 */
-	void SetSortFuncs(SortFunction * const *n_funcs)
+	void SetSortFuncs(std::span<SortFunction * const> n_funcs)
 	{
 		this->sort_func_list = n_funcs;
 	}
@@ -305,7 +307,8 @@ public:
 	 */
 	bool Sort()
 	{
-		assert(this->sort_func_list != nullptr);
+		if (this->sort_func_list.empty()) return false;
+		assert(this->sort_type < this->sort_func_list.size());
 		return this->Sort(this->sort_func_list[this->sort_type]);
 	}
 
@@ -359,11 +362,11 @@ public:
 	}
 
 	/**
-	 * Hand the array of filter function pointers to the sort list
+	 * Hand the filter function pointers to the GUIList.
 	 *
-	 * @param n_funcs The pointer to the first filter func
+	 * @param n_funcs Span covering the filter function pointers.
 	 */
-	void SetFilterFuncs(FilterFunction * const *n_funcs)
+	void SetFilterFuncs(std::span<FilterFunction * const> n_funcs)
 	{
 		this->filter_func_list = n_funcs;
 	}
@@ -376,7 +379,8 @@ public:
 	 */
 	bool Filter(F filter_data)
 	{
-		if (this->filter_func_list == nullptr) return false;
+		if (this->filter_func_list.empty()) return false;
+		assert(this->filter_type < this->filter_func_list.size());
 		return this->Filter(this->filter_func_list[this->filter_type], filter_data);
 	}
 

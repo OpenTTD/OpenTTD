@@ -62,8 +62,8 @@ protected:
 
 	StoryPageElementID active_button_id; ///< Which button element the player is currently using
 
-	static GUIStoryPageList::SortFunction * const page_sorter_funcs[];
-	static GUIStoryPageElementList::SortFunction * const page_element_sorter_funcs[];
+	static const std::initializer_list<GUIStoryPageList::SortFunction * const> page_sorter_funcs;
+	static const std::initializer_list<GUIStoryPageElementList::SortFunction * const> page_element_sorter_funcs;
 
 	/** (Re)Build story page list. */
 	void BuildStoryPageList()
@@ -939,11 +939,11 @@ public:
 	}
 };
 
-GUIStoryPageList::SortFunction * const StoryBookWindow::page_sorter_funcs[] = {
+const std::initializer_list<GUIStoryPageList::SortFunction * const> StoryBookWindow::page_sorter_funcs = {
 	&PageOrderSorter,
 };
 
-GUIStoryPageElementList::SortFunction * const StoryBookWindow::page_element_sorter_funcs[] = {
+const std::initializer_list<GUIStoryPageElementList::SortFunction * const> StoryBookWindow::page_element_sorter_funcs = {
 	&PageElementOrderSorter,
 };
 

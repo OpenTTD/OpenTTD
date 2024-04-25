@@ -78,7 +78,7 @@ static bool VehicleIndividualToGroupSorterWrapper(GUIVehicleGroup const &a, GUIV
 	return func(*(a.vehicles_begin), *(b.vehicles_begin));
 }
 
-BaseVehicleListWindow::VehicleGroupSortFunction * const BaseVehicleListWindow::vehicle_group_none_sorter_funcs[] = {
+const std::initializer_list<BaseVehicleListWindow::VehicleGroupSortFunction * const> BaseVehicleListWindow::vehicle_group_none_sorter_funcs = {
 	&VehicleIndividualToGroupSorterWrapper<VehicleNumberSorter>,
 	&VehicleIndividualToGroupSorterWrapper<VehicleNameSorter>,
 	&VehicleIndividualToGroupSorterWrapper<VehicleAgeSorter>,
@@ -128,7 +128,7 @@ const StringID BaseVehicleListWindow::vehicle_group_none_sorter_names_wallclock[
 	INVALID_STRING_ID
 };
 
-BaseVehicleListWindow::VehicleGroupSortFunction * const BaseVehicleListWindow::vehicle_group_shared_orders_sorter_funcs[] = {
+const std::initializer_list<BaseVehicleListWindow::VehicleGroupSortFunction * const> BaseVehicleListWindow::vehicle_group_shared_orders_sorter_funcs = {
 	&VehicleGroupLengthSorter,
 	&VehicleGroupTotalProfitThisYearSorter,
 	&VehicleGroupTotalProfitLastYearSorter,

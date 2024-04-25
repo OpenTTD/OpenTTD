@@ -76,7 +76,7 @@ private:
 
 	/* Constants for sorting the bridges */
 	static const StringID sorter_names[];
-	static GUIBridgeList::SortFunction * const sorter_funcs[];
+	static const std::initializer_list<GUIBridgeList::SortFunction * const> sorter_funcs;
 
 	/* Internal variables */
 	TileIndex start_tile;
@@ -298,7 +298,7 @@ public:
 Listing BuildBridgeWindow::last_sorting = {true, 2};
 
 /** Available bridge sorting functions. */
-GUIBridgeList::SortFunction * const BuildBridgeWindow::sorter_funcs[] = {
+const std::initializer_list<GUIBridgeList::SortFunction * const> BuildBridgeWindow::sorter_funcs = {
 	&BridgeIndexSorter,
 	&BridgePriceSorter,
 	&BridgeSpeedSorter

@@ -103,8 +103,8 @@ struct BaseVehicleListWindow : public Window {
 	static const StringID vehicle_group_none_sorter_names_wallclock[];
 	static const StringID vehicle_group_shared_orders_sorter_names_calendar[];
 	static const StringID vehicle_group_shared_orders_sorter_names_wallclock[];
-	static VehicleGroupSortFunction * const vehicle_group_none_sorter_funcs[];
-	static VehicleGroupSortFunction * const vehicle_group_shared_orders_sorter_funcs[];
+	static const std::initializer_list<VehicleGroupSortFunction * const> vehicle_group_none_sorter_funcs;
+	static const std::initializer_list<VehicleGroupSortFunction * const> vehicle_group_shared_orders_sorter_funcs;
 
 	BaseVehicleListWindow(WindowDesc *desc, WindowNumber wno);
 
@@ -126,7 +126,7 @@ struct BaseVehicleListWindow : public Window {
 
 	const StringID *GetVehicleSorterNames();
 
-	VehicleGroupSortFunction * const *GetVehicleSorterFuncs()
+	std::span<VehicleGroupSortFunction * const> GetVehicleSorterFuncs()
 	{
 		switch (this->grouping) {
 			case GB_NONE:

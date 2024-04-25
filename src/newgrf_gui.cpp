@@ -609,8 +609,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 	static Listing   last_sorting;   ///< Default sorting of #GUIGRFConfigList.
 	static Filtering last_filtering; ///< Default filtering of #GUIGRFConfigList.
-	static GUIGRFConfigList::SortFunction   * const sorter_funcs[]; ///< Sort functions of the #GUIGRFConfigList.
-	static GUIGRFConfigList::FilterFunction * const filter_funcs[]; ///< Filter functions of the #GUIGRFConfigList.
+	static const std::initializer_list<GUIGRFConfigList::SortFunction   * const> sorter_funcs; ///< Sort functions of the #GUIGRFConfigList.
+	static const std::initializer_list<GUIGRFConfigList::FilterFunction * const> filter_funcs; ///< Filter functions of the #GUIGRFConfigList.
 
 	GUIGRFConfigList avails;    ///< Available (non-active) grfs.
 	const GRFConfig *avail_sel; ///< Currently selected available grf. \c nullptr is none is selected.
@@ -1586,11 +1586,11 @@ void ShowMissingContentWindow(const GRFConfig *list)
 Listing NewGRFWindow::last_sorting     = {false, 0};
 Filtering NewGRFWindow::last_filtering = {false, 0};
 
-NewGRFWindow::GUIGRFConfigList::SortFunction * const NewGRFWindow::sorter_funcs[] = {
+const std::initializer_list<NewGRFWindow::GUIGRFConfigList::SortFunction * const> NewGRFWindow::sorter_funcs = {
 	&NameSorter,
 };
 
-NewGRFWindow::GUIGRFConfigList::FilterFunction * const NewGRFWindow::filter_funcs[] = {
+const std::initializer_list<NewGRFWindow::GUIGRFConfigList::FilterFunction * const> NewGRFWindow::filter_funcs = {
 	&TagNameFilter,
 };
 

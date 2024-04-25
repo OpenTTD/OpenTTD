@@ -334,8 +334,8 @@ class NetworkContentListWindow : public Window, ContentCallback {
 
 	static Listing last_sorting;     ///< The last sorting setting.
 	static Filtering last_filtering; ///< The last filtering setting.
-	static GUIContentList::SortFunction * const sorter_funcs[];   ///< Sorter functions
-	static GUIContentList::FilterFunction * const filter_funcs[]; ///< Filter functions.
+	static const std::initializer_list<GUIContentList::SortFunction * const> sorter_funcs;   ///< Sorter functions
+	static const std::initializer_list<GUIContentList::FilterFunction * const> filter_funcs; ///< Filter functions.
 	GUIContentList content;      ///< List with content
 	bool auto_select;            ///< Automatically select all content when the meta-data becomes available
 	ContentListFilterData filter_data; ///< Filter for content list
@@ -1010,13 +1010,13 @@ public:
 Listing NetworkContentListWindow::last_sorting = {false, 1};
 Filtering NetworkContentListWindow::last_filtering = {false, 0};
 
-NetworkContentListWindow::GUIContentList::SortFunction * const NetworkContentListWindow::sorter_funcs[] = {
+const std::initializer_list<NetworkContentListWindow::GUIContentList::SortFunction * const> NetworkContentListWindow::sorter_funcs = {
 	&StateSorter,
 	&TypeSorter,
 	&NameSorter,
 };
 
-NetworkContentListWindow::GUIContentList::FilterFunction * const NetworkContentListWindow::filter_funcs[] = {
+const std::initializer_list<NetworkContentListWindow::GUIContentList::FilterFunction * const> NetworkContentListWindow::filter_funcs = {
 	&TagNameFilter,
 	&TypeOrSelectedFilter,
 };
