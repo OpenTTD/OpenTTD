@@ -285,7 +285,7 @@ static Amplitude GetAmplitude(int frequency)
 	int smoothness = _settings_game.game_creation.tgen_smoothness;
 
 	/* Get the table index, and return that value if possible. */
-	int index = frequency - MAX_TGP_FREQUENCIES + lengthof(amplitudes[smoothness]);
+	int index = frequency - MAX_TGP_FREQUENCIES + static_cast<int>(std::size(amplitudes[smoothness]));
 	Amplitude amplitude = amplitudes[smoothness][std::max(0, index)];
 	if (index >= 0) return amplitude;
 
@@ -560,20 +560,9 @@ static void HeightMapCurves(uint level)
 	const ControlPoint curve_map_4[] = { { F(0.0), F(0.0) }, { F(0.4),  F(0.3)  }, { F(0.7), F(0.8)  }, { F(0.92), F(0.99) }, { F(1.0), F(0.99) } };
 #undef F
 
-	/** Helper structure to index the different curve maps. */
-	struct ControlPointList {
-		size_t length;            ///< The length of the curve map.
-		const ControlPoint *list; ///< The actual curve map.
-	};
-	static const ControlPointList curve_maps[] = {
-		{ lengthof(curve_map_1), curve_map_1 },
-		{ lengthof(curve_map_2), curve_map_2 },
-		{ lengthof(curve_map_3), curve_map_3 },
-		{ lengthof(curve_map_4), curve_map_4 },
-	};
+	static const std::span<const ControlPoint> curve_maps[] = { curve_map_1, curve_map_2, curve_map_3, curve_map_4 };
 
-	Height ht[lengthof(curve_maps)];
-	MemSetT(ht, 0, lengthof(ht));
+	std::array<Height, std::size(curve_maps)> ht{};
 
 	/* Set up a grid to choose curve maps based on location; attempt to get a somewhat square grid */
 	float factor = sqrt((float)_height_map.size_x / (float)_height_map.size_y);
@@ -582,7 +571,7 @@ static void HeightMapCurves(uint level)
 	std::vector<uint8_t> c(static_cast<size_t>(sx) * sy);
 
 	for (uint i = 0; i < sx * sy; i++) {
-		c[i] = Random() % lengthof(curve_maps);
+		c[i] = RandomRange(static_cast<uint32_t>(std::size(curve_maps)));
 	}
 
 	/* Apply curves */
@@ -642,12 +631,12 @@ static void HeightMapCurves(uint level)
 			*h -= I2H(1);
 
 			/* Apply all curve maps that are used on this tile. */
-			for (uint t = 0; t < lengthof(curve_maps); t++) {
-				if (!HasBit(corner_bits, t)) continue;
+			for (size_t t = 0; t < std::size(curve_maps); t++) {
+				if (!HasBit(corner_bits, static_cast<uint8_t>(t))) continue;
 
 				[[maybe_unused]] bool found = false;
-				const ControlPoint *cm = curve_maps[t].list;
-				for (uint i = 0; i < curve_maps[t].length - 1; i++) {
+				auto &cm = curve_maps[t];
+				for (size_t i = 0; i < cm.size() - 1; i++) {
 					const ControlPoint &p1 = cm[i];
 					const ControlPoint &p2 = cm[i + 1];
 
