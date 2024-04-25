@@ -334,7 +334,7 @@ static bool CargoFilter(const GUIVehicleGroup *vehgroup, const CargoID cid)
 	return false;
 }
 
-static GUIVehicleGroupList::FilterFunction * const _filter_funcs[] = {
+static GUIVehicleGroupList::FilterFunction * const _vehicle_group_filter_funcs[] = {
 	&CargoFilter,
 };
 
@@ -359,7 +359,7 @@ void BaseVehicleListWindow::SetCargoFilter(CargoID cid)
 void BaseVehicleListWindow::SetCargoFilterArray()
 {
 	this->cargo_filter_criteria = CargoFilterCriteria::CF_ANY;
-	this->vehgroups.SetFilterFuncs(_filter_funcs);
+	this->vehgroups.SetFilterFuncs(_vehicle_group_filter_funcs);
 	this->vehgroups.SetFilterState(this->cargo_filter_criteria != CargoFilterCriteria::CF_ANY);
 }
 
