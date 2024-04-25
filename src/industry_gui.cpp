@@ -1310,7 +1310,7 @@ static bool CDECL CargoFilter(const Industry * const *industry, const std::pair<
 	return accepted_cargo_matches && produced_cargo_matches;
 }
 
-static GUIIndustryList::FilterFunction * const _filter_funcs[] = { &CargoFilter };
+static GUIIndustryList::FilterFunction * const _industry_filter_funcs[] = { &CargoFilter };
 
 /** Enum referring to the Hotkeys in the industry directory window */
 enum IndustryDirectoryHotkeys {
@@ -1398,7 +1398,7 @@ protected:
 		this->produced_cargo_filter_criteria = CargoFilterCriteria::CF_ANY;
 		this->accepted_cargo_filter_criteria = CargoFilterCriteria::CF_ANY;
 
-		this->industries.SetFilterFuncs(_filter_funcs);
+		this->industries.SetFilterFuncs(_industry_filter_funcs);
 
 		bool is_filtering_necessary = this->produced_cargo_filter_criteria != CargoFilterCriteria::CF_ANY || this->accepted_cargo_filter_criteria != CargoFilterCriteria::CF_ANY;
 

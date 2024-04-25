@@ -550,7 +550,7 @@ static bool CDECL CargoAndEngineFilter(const GUIEngineListItem *item, const Carg
 	}
 }
 
-static GUIEngineList::FilterFunction * const _filter_funcs[] = {
+static GUIEngineList::FilterFunction * const _engine_filter_funcs[] = {
 	&CargoAndEngineFilter,
 };
 
@@ -1312,7 +1312,7 @@ struct BuildVehicleWindow : Window {
 		this->cargo_filter_criteria = _engine_sort_last_cargo_criteria[this->vehicle_type];
 		if (this->cargo_filter_criteria < NUM_CARGO && !HasBit(_standard_cargo_mask, this->cargo_filter_criteria)) this->cargo_filter_criteria = CargoFilterCriteria::CF_ANY;
 
-		this->eng_list.SetFilterFuncs(_filter_funcs);
+		this->eng_list.SetFilterFuncs(_engine_filter_funcs);
 		this->eng_list.SetFilterState(this->cargo_filter_criteria != CargoFilterCriteria::CF_ANY);
 	}
 
