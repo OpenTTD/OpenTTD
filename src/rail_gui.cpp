@@ -964,8 +964,8 @@ private:
 
 	static Listing   last_sorting;           ///< Default sorting of #GUIStationClassList.
 	static Filtering last_filtering;         ///< Default filtering of #GUIStationClassList.
-	static GUIStationClassList::SortFunction * const sorter_funcs[];   ///< Sort functions of the #GUIStationClassList.
-	static GUIStationClassList::FilterFunction * const filter_funcs[]; ///< Filter functions of the #GUIStationClassList.
+	static const std::initializer_list<GUIStationClassList::SortFunction * const> sorter_funcs;   ///< Sort functions of the #GUIStationClassList.
+	static const std::initializer_list<GUIStationClassList::FilterFunction * const> filter_funcs; ///< Filter functions of the #GUIStationClassList.
 	GUIStationClassList station_classes;     ///< Available station classes.
 	StringFilter string_filter;              ///< Filter for available station classes.
 	QueryString filter_editbox;              ///< Filter editbox.
@@ -1571,11 +1571,11 @@ public:
 Listing BuildRailStationWindow::last_sorting = { false, 0 };
 Filtering BuildRailStationWindow::last_filtering = { false, 0 };
 
-BuildRailStationWindow::GUIStationClassList::SortFunction * const BuildRailStationWindow::sorter_funcs[] = {
+const std::initializer_list<BuildRailStationWindow::GUIStationClassList::SortFunction * const> BuildRailStationWindow::sorter_funcs = {
 	&StationClassIDSorter,
 };
 
-BuildRailStationWindow::GUIStationClassList::FilterFunction * const BuildRailStationWindow::filter_funcs[] = {
+const std::initializer_list<BuildRailStationWindow::GUIStationClassList::FilterFunction * const> BuildRailStationWindow::filter_funcs = {
 	&TagNameFilter,
 };
 

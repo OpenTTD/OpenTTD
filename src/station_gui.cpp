@@ -245,7 +245,7 @@ protected:
 
 	/* Constants for sorting stations */
 	static const StringID sorter_names[];
-	static GUIStationList::SortFunction * const sorter_funcs[];
+	static const std::initializer_list<GUIStationList::SortFunction * const> sorter_funcs;
 
 	FilterState filter;
 	GUIStationList stations{filter.cargoes};
@@ -720,7 +720,7 @@ public:
 };
 
 /* Available station sorting functions */
-GUIStationList::SortFunction * const CompanyStationsWindow::sorter_funcs[] = {
+const std::initializer_list<GUIStationList::SortFunction * const> CompanyStationsWindow::sorter_funcs = {
 	&StationNameSorter,
 	&StationTypeSorter,
 	&StationWaitingTotalSorter,

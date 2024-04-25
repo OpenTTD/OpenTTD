@@ -721,7 +721,7 @@ private:
 
 	/* Constants for sorting towns */
 	static const StringID sorter_names[];
-	static GUITownList::SortFunction * const sorter_funcs[];
+	static const std::initializer_list<GUITownList::SortFunction * const> sorter_funcs;
 
 	StringFilter string_filter;             ///< Filter for towns
 	QueryString townname_editbox;           ///< Filter editbox
@@ -1054,7 +1054,7 @@ const StringID TownDirectoryWindow::sorter_names[] = {
 };
 
 /** Available town directory sorting functions. */
-GUITownList::SortFunction * const TownDirectoryWindow::sorter_funcs[] = {
+const std::initializer_list<GUITownList::SortFunction * const> TownDirectoryWindow::sorter_funcs = {
 	&TownNameSorter,
 	&TownPopulationSorter,
 	&TownRatingSorter,

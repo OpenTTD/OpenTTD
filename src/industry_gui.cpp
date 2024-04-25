@@ -1326,7 +1326,7 @@ protected:
 
 	/* Constants for sorting industries */
 	static const StringID sorter_names[];
-	static GUIIndustryList::SortFunction * const sorter_funcs[];
+	static const std::initializer_list<GUIIndustryList::SortFunction * const> sorter_funcs;
 
 	GUIIndustryList industries{IndustryDirectoryWindow::produced_cargo_filter};
 	Scrollbar *vscroll;
@@ -1902,7 +1902,7 @@ public:
 Listing IndustryDirectoryWindow::last_sorting = {false, 0};
 
 /* Available station sorting functions. */
-GUIIndustryList::SortFunction * const IndustryDirectoryWindow::sorter_funcs[] = {
+const std::initializer_list<GUIIndustryList::SortFunction * const> IndustryDirectoryWindow::sorter_funcs = {
 	&IndustryNameSorter,
 	&IndustryTypeSorter,
 	&IndustryProductionSorter,
