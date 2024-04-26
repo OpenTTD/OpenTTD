@@ -504,7 +504,7 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 
 /* virtual */ const SpriteGroup *StationResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
-	if (this->station_scope.st == nullptr || this->station_scope.statspec->cls_id == STAT_CLASS_WAYP) {
+	if (this->station_scope.st == nullptr || !Station::IsExpected(this->station_scope.st)) {
 		return group->loading[0];
 	}
 
