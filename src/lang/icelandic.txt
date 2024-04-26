@@ -1502,7 +1502,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Sjálfgefið mi
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Stilltu sjálfgefið millibil fyrir þjónustu hjá nýjum flugvélum, á við ef ekkert tiltekið millibil er stillt fyrir farartækið
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Sjálfgefið millibil fyrir þjónustu hjá skipum: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Stilltu sjálfgefið millibil fyrir þjónustu hjá nýjum skipum, á við ef ekkert tiltekið millibil er stillt fyrir farartækið
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 ur ar}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Óvirkt
 

@@ -1831,7 +1831,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard Revisi
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Definéiert de Standardrevisiounsintervall fir nei Fligeren, wann keen expliziten Revisiounsintervall uginn ass
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard Revisiounsintervall fir Schëffer: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Definéiert de Standardrevisiounsintervall fir nei Schëffer, wann keen expliziten Revisiounsintervall uginn ass
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}D{P 0 ag eeg}/Minutt{P 0 "" en}%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Ausgeschalt
 

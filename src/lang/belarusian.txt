@@ -2145,7 +2145,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Iнтэрвал
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Усталяваць міжсэрвісны інтэрвал для новых паветраных суднаў, калі пэўны інтэрвал ня вызначаны для канкрэтнага судна.
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Iнтэрвал абслугоўваньня для караблёў: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Усталяваць міжсэрвісны інтэрвал для новых караблёў, калі пэўны інтэрвал ня вызначаны для канкрэтнага судна.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}д{P зень днi дзён}/хвілін{P а ы ""}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :адключана
 

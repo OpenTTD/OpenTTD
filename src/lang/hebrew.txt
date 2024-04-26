@@ -1612,7 +1612,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :ברירת מח
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :קבע את ברירת המחדל למרווח הזמן בין תחזוקות עבור מטוסים חדשים, אם לא נקבע באופן מפורש מרווח זמן עבור כלי הרכב
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :ברירת מחדל למרווח הזמן בין תחזוקות עבור אוניות: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :קבע את ברירת המחדל למרווח הזמן בין תחזוקות עבור אוניות חדשות, אם לא נקבע באופן מפורש מרווח זמן עבור כלי הרכב
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{P 0 "יום " ""}{COMMA}{P "" " ימים"}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :מבוטל
 

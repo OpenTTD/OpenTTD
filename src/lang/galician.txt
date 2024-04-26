@@ -1833,7 +1833,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de ma
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Fixa o intervalo de mantemento por defecto para avións novos, o cal se empregará no caso de que non se defina explicitamente un novo intervalo de mantemento para o vehículo
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo de mantemento por defecto para navíos: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Fixa o intervalo de mantemento por defecto para navíos novos, o cal se empregará no caso de que non se defina explicitamente un novo intervalo de mantemento para o vehículo
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Día{P 0 "" s}/Minuto{P 0 "" s}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desactivado
 

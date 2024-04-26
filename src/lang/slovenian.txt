@@ -1719,7 +1719,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Privzeto servis
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Nastavitev privzetega obdobja servisiranja za letala, razen če ni izjemno nastavljeno obdobje za posamično letalo.
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Privzeto servisno obdobje ladij: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Nastavitev privzetega obdobja servisiranja za ladje, razen če ni izjemno nastavljeno obdobje za posamično ladjo.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} d{P 0 an neva dni dni}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Onemogočeno
 

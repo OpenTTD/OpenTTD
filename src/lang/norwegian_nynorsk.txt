@@ -1512,7 +1512,8 @@ STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard vedlik
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standard vedlikehaldsintervall for veg-køyrety: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard vedlikehaldsintervall for fly: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard vedlikehaldsintervall for skip: {STRING}
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" s}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktivert
 

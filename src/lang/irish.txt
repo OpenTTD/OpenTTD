@@ -1648,7 +1648,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Eatramh seirbh�
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Socraigh an t-eatramh seirbhísithe réamhshocraithe d'aerárthaigh nua, mura bhfuil eatramh seirbhísithe sainráite socraithe don fheithicil
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Eatramh seirbhíse réamhshocraithe do longa: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Socraigh an t-eatramh seirbhísithe réamhshocraithe do longa nua, mura bhfuil eatramh seirbhísithe sainráite socraithe don fheithicil
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}lá/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Díchumasaithe
 

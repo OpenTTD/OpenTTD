@@ -1841,7 +1841,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Defaŭlta prise
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Elektu la defaŭltan priservintervalon por novaj aviadiloj, se ne estas eksplicite agordita priservintervalo por la veturilo
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Defaŭlta priservintervalo por ŝipoj: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Elektu la defaŭltan priservintervalon por novaj ŝipoj, se ne estas eksplicite agordita priservintervalo por la veturilo
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}tago{P 0 "" j}/minuto{P 0 "" j}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Malaktiva
 

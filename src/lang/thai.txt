@@ -1575,7 +1575,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :ตั้งค
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :ตั้งค่าแรกเริ่มสำหรับการเข้าซ่อมบำรุงสำหรับอากาศยาน เป็นหน่วยวัน หรือหากเลือกการตั้งค่าโดยคิดจากเปอร์เซนต์ของประสิทธิภาพ จะเปลี่ยนไปใช้่หน่วยเปอร์เซนต์แทน
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :ตั้งค่าแรกเริ่มสำหรับการเข้าซ่อมบำรุงของพาหนะทางน้ำ: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :ตั้งค่าแรกเริ่มสำหรับการเข้าซ่อมบำรุงสำหรับพาหนะทางน้ำ เป็นหน่วยวัน หรือหากเลือกการตั้งค่าโดยคิดจากเปอร์เซนต์ของประสิทธิ์ภาพ จะเปลี่ยนไปใช้่หน่วยเปอร์เซนต์แทน
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} วัน/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :ไม่ตั้ง
 

@@ -1769,7 +1769,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Tricead bunaite
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Tagh dè cho tric ’s a thèid obair-chàraidh a dhèanamh air carbadan-adhair ùra mura deach tricead a’ chàraidh sònraichte a shuidheachadh airson a' charbaid
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Tricead bunaiteach na h-obrach-càraidh air longan: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Tagh dè cho tric ’s a thèid obair-chàraidh a dhèanamh air longan ùra mura deach tricead a’ chàraidh sònraichte a shuidheachadh airson na luinge
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}{P 0 latha latha làithean latha}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :À comas
 

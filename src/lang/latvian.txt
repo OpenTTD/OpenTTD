@@ -1834,7 +1834,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Lidaparātu apk
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Izvēlēties jauniem lidaparātiem apkopju noklusējuma starplaiku, ja transportlīdzeklim tas nav noteikts
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Kuģu apkopju noklusējuma starplaiks: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Izvēlēties jauniem kuģiem apkopju noklusējuma starplaiku, ja transportlīdzeklim tas nav noteikts
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Dien{P 0 a as u}/Minūt{P 0 e es es}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :izslēgts
 

@@ -1832,7 +1832,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Ystod gwasanaet
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Gosod yr ystod gwasanaethu rhagosodedig ar gyfer awyrennau newydd, os na ddynodir ystod gwasanaethu penodol ar gyfer y cerbyd
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Ystod gwasanaethu rhagosodedig ar gyfer llongau: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Gosod yr ystod gwasanaethu rhagosodedig ar gyfer llongau newydd, os na ddynodir ystod gwasanaethu penodol ar gyfer y cerbyd
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Diwrnod{P 0 "" ""}/Munud{P 0 "" ""}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Analluogwyd
 

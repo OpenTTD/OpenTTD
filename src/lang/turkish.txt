@@ -1833,7 +1833,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Hava araçları
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Yeni hava araçları için varsayılan bakım aralığını ayarlar, eğer araç için özel bir bakım aralığı belirtilmemişse geçerlidir
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Gemiler için varsayılan bakım aralığı: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Yeni gemiler için varsayılan bakım aralığını ayarlar, eğer araç için özel bir bakım aralığı belirtilmemişse geçerlidir
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}%gün/dakika
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Etkisiz
 

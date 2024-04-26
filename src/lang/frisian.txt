@@ -1570,7 +1570,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standert repara
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Stel it standert reparaasjeskema yn foar nije fleantugen dy't gjin eigen reparaasjeskema kenne
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standerd reparaasjeskema foar skippen: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Stel it standerd reparaasjeskema yn foar nije skippen dy't gjin eigen reparaasjeskema kenne
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}{P 0 dei dagen}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Útskeakele
 

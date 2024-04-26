@@ -1705,7 +1705,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :航空機の点
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :個別に指定されていない場合の、航空機の点検周期を設定します
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :船舶の点検周期: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :個別に指定されていない場合の、船舶の点検周期を設定します
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} 日/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :点検なし
 

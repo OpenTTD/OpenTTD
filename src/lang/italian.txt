@@ -1867,7 +1867,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervallo manu
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Imposta l'intervallo di manutenzione predefinito per i nuovi aeromobili, quando non viene impostato nessun intervallo esplicito
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervallo manutenzione predefinito navi: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Imposta l'intervallo di manutenzione predefinito per le nuove navi, quando non viene impostato nessun intervallo esplicito
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Giorn{P 0 o i}/Minut{P 0 o i}%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Disabilitato
 

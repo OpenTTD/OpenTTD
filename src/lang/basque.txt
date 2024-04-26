@@ -1522,7 +1522,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Hegazkinen mant
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Ezarri hegazkin berrientzako lehenetsiko diren mantenimendu denbora tarteak, ez bada ezartzen denbora tarte esplizituak ezarriko dira
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Itsaontzien mantenimendurako lehenetsitako denbora tarteak: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Ezarri itsasontzi berrientzako lehenetsiko diren mantenimendu denbora tarteak, ez bada ezartzen denbora tarte esplizituak ezarriko dira
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}egun{P 0 "" ak}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desgaitua
 

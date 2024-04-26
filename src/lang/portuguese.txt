@@ -1833,7 +1833,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de ma
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Definir o intervalo de manutenção por omissão para novas aeronaves, se não for configurado um intervalo de manutenção explícito para o veículo
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo de serviço para navios por omissão: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Definir o intervalo de manutenção por omissão para novos navios, se não for configurado um intervalo de manutenção explícito para o veículo
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Dia{P 0 "" s}/Minuto{P 0 "" s}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desativado
 

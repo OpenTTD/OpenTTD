@@ -1503,7 +1503,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Vanligur eftirl
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Áset vanliga eftirlits títtleikan hjá nýggjumf logførum, um eingin skilligur eftirlits títtleiki er ásettur fyri flutningstóli
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Vanligur eftirlits títtleiki fyri skip: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Áset vanliga eftirlits títtleikan hjá nýggjum skipum, um eingin skilligur eftirlits títtleiki er ásettur fyri flutningstóli
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" ar}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Ikki sligi til
 

@@ -1888,7 +1888,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Õhusõidukite 
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Määrab uute õhusõidukite hooldusvälba, kui sõidukile eraldi hooldusvälpa ei määrata
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Laevade hooldusvälba vaikeväärtus: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Määrab uute laevade hooldusvälba, kui sõidukile eraldi hooldusvälpa ei määrata
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Päev{P 0 "" a}/Minut{P 0 "" it}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Väljas
 

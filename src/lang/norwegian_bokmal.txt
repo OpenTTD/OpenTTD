@@ -1834,7 +1834,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard vedlik
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Angi standard vedlikeholdsintervall for nye fly, hvis det ikke er angitt noe vedlikeholdsintervall for flyet
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard vedlikeholdsintervall for skip: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Angi standard vedlikeholdsintervall for nye skip, hvis det ikke er angitt noe vedlikeholdsintervall for fartøyet
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Dag{P 0 "" er}/Minutt{P 0 "" er}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktivert
 

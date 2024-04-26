@@ -1705,7 +1705,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Zadani interval
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Postavi osnovni interval servisa za nove zrakoplove, ako nije postavljen drugi specifični interval za određeno vozilo
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Zadani interval servisiranja za brodove: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Postavi osnovni interval servisa za nove brodove, ako nije postavljen drugi specifični interval za određeno vozilo
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}dan{P 0 "" a a}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Isključeno
 

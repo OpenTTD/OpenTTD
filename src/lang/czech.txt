@@ -1916,7 +1916,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Základní serv
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Nastaví defaultní servisní interval pro letadla, pokud letadlo nemá nastaveno jiný servisní interval
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Základní servisní interval pro lodě: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Nastaví defaultní servisní interval pro lodě pokud loď nemá nastaven jiný servisní interval
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}D{P en ní ""}/Minut{P a y ""}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Vypnuto
 

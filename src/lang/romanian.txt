@@ -1829,7 +1829,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalul de �
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Alege perioada de întreținere implicită pentru noi aeronave, dacă nu există un interval de întreținere stabilit pentru aeronave
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalul de întreținere implicit al navelor: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Alege perioada de întreținere implicită pentru noi nave, dacă nu există un interval de întreținere stabilit pentru nave
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}{P 0 zi zile "de zile"}/{P 0 minut minute minute}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dezactivat
 

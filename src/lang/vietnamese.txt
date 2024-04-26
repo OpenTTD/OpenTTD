@@ -1832,7 +1832,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Tần suất b�
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Thiết lập khoảng thời gian bảo trì tùy chọn đối với các máy bay, nếu phương tiện không có riêng thời gian bảo trì này
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Tần suất bảo trì mặc định đối với tàu thủy: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Thiết lập khoảng thời gian bảo trì tùy chọn đối với các tàu thủy, nếu phương tiện không có riêng thời gian bảo trì này
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}ngày/phút/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :tắt
 
@@ -2223,7 +2224,7 @@ STR_QUIT_YES                                                    :{BLACK}Đồng 
 STR_QUIT_NO                                                     :{BLACK}Không đồng ý
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Bỏ Màn Chơi
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Loại bỏ Game
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bạn có chắc chắn muốn bỏ màn chơi này không?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bạn có chắc bạn muốn bỏ màn chơi kịch bản này?
 
@@ -3393,8 +3394,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Bạn c
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% hoàn thành
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tạo màn
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Khởi tạo cảnh quan
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Khởi tạo sông suối
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Sinh đá và sự gồ ghề
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Khởi tạo thị trấn
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Khởi tạo nhà máy
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Sinh đối tượng cứng
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trồng cây
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Thiết lập ván chơi
@@ -3488,6 +3492,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Loại đườn
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Biến số NewGRF là 60+x (dạng hexa)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Căn chỉnh hình sprite: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Căn chỉnh hình sprite: Hành động 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Căn chỉnh hình sprite: Hành động 0x5, loại {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite tiếp
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Chuyển tới sprite bình thường kế tiếp, bỏ qua các loại sprite và căn theo điểm kết thúc
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Đi tới sprite
@@ -3496,6 +3503,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite t
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Xử lý sprite bình thường ở trước, bỏ qua các loại pseudo/recolour/font sprite căn theo điểm bắt đầu
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Theo những thông tin của sprite đã chọn. Thì việc căn chỉnh khi vẽ đối với sprite này sẽ bị bỏ qua
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Di chuyển sprite xung quanh, thay đổi X và Y offsets. Ctrl+Click để di chuyển sprite tám đơn vị một lúc
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Toạ độ về trung tâm
@@ -4898,7 +4906,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Thu nh�
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Đang lưu vào đĩa,{}hãy chờ cho đến khi hoàn thành!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Tự lưu gặp lỗi
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Không đọc được đĩa
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Lưu game thất bại...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Không thể xoá file
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Khởi động game thất bại...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Lỗi kỹ thuật: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bản lưu ván chơi bị hỏng - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Bản lưu ván chơi dành cho phiên bản mới hơn
@@ -5280,6 +5290,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Thay đ�
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Chưa có phương tiện nào có sẵn
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Bắt đầu một màn chơi mới sau {DATE_SHORT} hoặc sử dụng một NewGRF cung cấp sớm phương tiện
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Không có sẵn loại đường có thể xây dựng được trong thị trấn
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Thay đổi cấu hình NewGRF của bạn
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Hiện tại chưa có các loại đường thị trấn
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Hãy bắt đầu trò chơi mới sau {DATE_SHORT} hoặc sử dụng NewGRF khác có hỗ trợ xây dựng sớm các loại đường đô thị
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Không thể để tàu hoả qua tín hiệu đèn khi nguy hiểm...
@@ -5831,6 +5845,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

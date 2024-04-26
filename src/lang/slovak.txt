@@ -1900,7 +1900,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Predvolený int
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Nastav predvolený interval pre nové lietadlá. Ak nie je nastavený podrobnejší interval.
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Predvolený interval servisu pre lode: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Nastav predvolený interval pre nové lode. Ak nie je nastavený podrobnejší interval.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}D{P eň ni ní}/min{P utu uty út}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :vypnuté
 

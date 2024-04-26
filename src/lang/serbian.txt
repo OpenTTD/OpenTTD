@@ -1988,7 +1988,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Podrazumevani s
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Postavi podrazumevani servisni interval za nove letelice, ukoliko nema zadatog servisnog intervala za vozilo
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Podrazumevani servisni interval za brodove: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Postavi podrazumevani servisni interval za nove brodove, ukoliko nema zadatog servisnog intervala za vozilo
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dan{P 0 "" a a}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Onemogućeno
 

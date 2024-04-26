@@ -1767,7 +1767,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervallum min
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Eligere solitum intervallum ministrationis novis aeroplanis, si non est proprium intervallum ministrationis vehiculo
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervallum ministrationis solitum navibus: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Eligere solitum intervallum ministrationis novis navibus, si non est proprium intervallum ministrationis vehiculo
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}die{P 0 m s}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Neglectum
 

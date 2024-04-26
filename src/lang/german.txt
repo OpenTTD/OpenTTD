@@ -1833,7 +1833,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard-Wartun
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Setze das Standardwartungsintervall für Luftfahrzeuge. Dieses Wartungsintervall wird von allen Luftfahrzeugen eingehalten, denen kein individuelles Wartungsintervall zugewiesen worden ist
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard-Wartungsintervall für Schiffe: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Setze das Standardwartungsintervall für Schiffe. Dieses Wartungsintervall wird von allen Schiffen eingehalten, denen kein individuelles Wartungsintervall zugewiesen worden ist
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Tag{P 0 "" e}/Minute{P 0 "" n}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktiviert
 

@@ -2212,7 +2212,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Domyślny inter
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Ustaw domyślny okres serwisowania dla nowych maszyn latających, jeśli takowy nie istnieje dla określonego pojazdu
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Domyślny interwał serwisowania statków: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Ustaw domyślny okres serwisowania dla nowych statków, jeśli takowy nie istnieje dla określonego pojazdu
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}D{P zień ni ni}/Minut{P a y ""}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Wyłączone
 

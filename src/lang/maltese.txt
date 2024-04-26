@@ -665,6 +665,8 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 
 
 
+###length 3
+
 ###setting-zero-is-special
 
 

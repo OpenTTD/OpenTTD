@@ -1983,7 +1983,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Интерва�
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Настройка периодичности технического обслуживания для новых воздушных судов
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Интервал ТО по умолчанию для судов: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Настройка периодичности технического обслуживания для новых судов
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}д{P ень ня ней}/минут{P а ы ""}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :отключен
 

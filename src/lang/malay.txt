@@ -1437,7 +1437,8 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Pilih sama ada 
 
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Tetapkan selang masa servis untuk pesawat baru kepada tetapan asal jika tiada selang masa servis yang jelas ditetapkan untuk pesawat tersebut
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Tetapkan selang masa servis untuk kapal baru kepada tetapan asal jika tiada selang masa servis yang jelas ditetapkan untuk kapal tersebut
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}hari{P 0 "" s}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dilumpuhkan
 

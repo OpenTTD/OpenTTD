@@ -1832,7 +1832,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Default service
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Set the default service interval for new aircraft, if no explicit service interval is set for the vehicle
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Default service interval for ships: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Set the default service interval for new ships, if no explicit service interval is set for the vehicle
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Day{P 0 "" s}/Minute{P 0 "" s}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Disabled
 

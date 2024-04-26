@@ -1832,7 +1832,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :飞机默认保
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :如果没有为飞机指定保养周期，设定飞机的默认保养周期
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :船只默认保养周期：{STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :如果没有为船只设定保养周期，按照这里设定的默认保养周期执行
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}日 / 分钟 / %
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :关闭
 

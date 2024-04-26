@@ -1590,7 +1590,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standaard diens
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Kies die standaard diensskedule vir nuwe vliegtuie as geen diensskedule aangedui is nie
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standaard diens interval vir bote: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Kies die standaard diensskedule vir nuwe skepe as geen diensskedule aangedui is nie
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}da{P g e}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Gedeaktiveer
 

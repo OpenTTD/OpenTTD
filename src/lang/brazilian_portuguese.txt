@@ -1833,7 +1833,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo padr�
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Definir o intervalo padrão de manutenção para novas aeronaves, se um intervalo de manutenção não for explicitamente configurado para o veículo
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo padrão de manutenção para embarcações: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Definir o intervalo padrão de manutenção para novas embarcações, se um intervalo de manutenção não for explicitamente configurado para o veículo
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Dia{P 0 "" s}/Minuto{P 0 "" s}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desativado
 
@@ -2373,7 +2374,7 @@ STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nome
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Nome do jogo
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Clientes
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Clientes conectados / máx. clientes{}Empresas / máx. empresas
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Clientes conectados / máx. clientes{}Empresas ativas / máx. empresas
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Tamanho do mapa
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Tamanho do mapa do jogo{}Clique para ordenar por área
@@ -3461,7 +3462,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatí
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Salvar predefinição
-STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista de predefinições disponíveis, selecione uma para copiar o nome e usar na gravação abaixo
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista de predefinições disponíveis, selecione uma usar o nome na gravação abaixo
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Introduza um nome para a predefinição
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nome que está selecionado para salvar a predefinição
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancelar

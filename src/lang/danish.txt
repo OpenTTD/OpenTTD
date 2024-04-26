@@ -1832,7 +1832,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard servic
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Sæt serviceintervallets standardværdi for nye fly.
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard serviceinterval for skibe: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Sæt serviceintervallets standardværdi for nye skibe.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}dag{P 0 "" s}/Minute{P 0 "" r}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktiveret
 

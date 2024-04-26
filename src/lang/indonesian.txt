@@ -1791,7 +1791,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Interval perbai
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Setel interval perbaikan untuk pesawat baru, jika tidak ada interval asli yang disetel
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Interval dasar untuk kapal: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Mengatur interval perbaikan untuk kapal baru, jika tidak ada interval perbaikan, setelan dasar akan diatur untuk kendaraan
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}hari/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Di non-aktifkan
 

@@ -1329,6 +1329,8 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :اسکرپٹس 
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :مرمتی وقفے فیصد میں ہیں: {STRING}
 
+###length 3
+
 ###setting-zero-is-special
 
 STR_CONFIG_SETTING_NOSERVICE                                    :گاڑیوں کی خرابی غیر فعال ہونے کی صورت میں مرمت بھی غیر فعال کر دیں: {STRING}

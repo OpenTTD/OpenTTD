@@ -1833,7 +1833,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :항공기에 �
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :항공기에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :선박에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :선박에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}일/분/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :사용 안 함
 

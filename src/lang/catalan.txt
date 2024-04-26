@@ -1833,7 +1833,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Interval per de
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Estableix l'interval de revisió predeterminat pels nous avions, si no hi ha un interval de revisió explícit pel vehicle
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Interval per defecte de servei per als vaixells: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Estableix l'interval de revisió predeterminat pels vaixells que es comprin, si no hi ha un interval de revisió explícit pel vehicle.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}di{P 0 a es}/minut{P 0 "" s}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desactivat
 

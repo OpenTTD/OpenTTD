@@ -1759,7 +1759,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :預設的飛機
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :設定預設的飛機維護作業時距。所有沒有指定維護作業時距的飛機都會使用這個預設值。
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :預設的船舶維護作業時距：{STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :設定預設的船舶維護作業時距。所有沒有指定維護作業時距的船舶都會使用這個預設值。
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}日/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :停用
 

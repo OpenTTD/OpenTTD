@@ -1513,6 +1513,8 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :فترات ال
 
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :مدة فحص الإفتراضي للطائرة: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :مدة فحص الإفتراضي للسفن: {STRING}
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :غير مفعل
 

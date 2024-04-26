@@ -1832,7 +1832,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standaardonderh
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Standaardonderhoudsterrmijn voor nieuwe vliegtuigen als er geen expliciete onderhoudstermijn is ingesteld voor het voertuig
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standaardonderhoudstermijn voor schepen: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Standaardonderhoudstermijn voor nieuwe schepen als er geen expliciete onderhoudstermijn is ingesteld voor het voertuig
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}dag{P 0 "" en}/minu{P 0 ut ten}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Uitgeschakeld
 
