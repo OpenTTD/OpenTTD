@@ -127,7 +127,6 @@ struct RoadStopSpec {
 	 */
 	GRFFilePropsBase<NUM_CARGO + 3> grf_prop;
 	RoadStopClassID cls_id;     ///< The class to which this spec belongs.
-	int spec_id;                ///< The ID of this spec inside the class.
 	StringID name;              ///< Name of this stop
 
 	RoadStopAvailabilityType stop_type = ROADSTOPTYPE_ALL;
