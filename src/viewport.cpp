@@ -2887,19 +2887,18 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 	if (swap) Swap(start_tile, end_tile);
 
 	switch (style & HT_DRAG_MASK) {
-		case HT_RECT: {
-			static const TileIndexDiffC heightdiff_area_by_dir[] = {
-				/* Start */ {1, 0}, /* Dragging east */ {0, 0}, // Dragging south
-				/* End   */ {0, 1}, /* Dragging east */ {1, 1}  // Dragging south
-			};
-
+		case HT_RECT:
 			/* In the case of an area we can determine whether we were dragging south or
 			 * east by checking the X-coordinates of the tiles */
-			uint8_t style_t = (uint8_t)(TileX(end_tile) > TileX(start_tile));
-			start_tile = TileAdd(start_tile, ToTileIndexDiff(heightdiff_area_by_dir[style_t]));
-			end_tile   = TileAdd(end_tile, ToTileIndexDiff(heightdiff_area_by_dir[2 + style_t]));
+			if (TileX(end_tile) > TileX(start_tile)) {
+				/* Dragging south does not need to change the start tile. */
+				end_tile = TileAddByDir(end_tile, DIR_S);
+			} else {
+				/* Dragging east. */
+				start_tile = TileAddByDir(start_tile, DIR_SW);
+				end_tile = TileAddByDir(end_tile, DIR_SE);
+			}
 			[[fallthrough]];
-		}
 
 		case HT_POINT:
 			h0 = TileHeight(start_tile);
@@ -2909,18 +2908,28 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			static const HighLightStyle flip_style_direction[] = {
 				HT_DIR_X, HT_DIR_Y, HT_DIR_HL, HT_DIR_HU, HT_DIR_VR, HT_DIR_VL
 			};
-			static const TileIndexDiffC heightdiff_line_by_dir[] = {
-				/* Start */ {1, 0}, {1, 1}, /* HT_DIR_X  */ {0, 1}, {1, 1}, // HT_DIR_Y
-				/* Start */ {1, 0}, {0, 0}, /* HT_DIR_HU */ {1, 0}, {1, 1}, // HT_DIR_HL
-				/* Start */ {1, 0}, {1, 1}, /* HT_DIR_VL */ {0, 1}, {1, 1}, // HT_DIR_VR
-
-				/* Start */ {0, 1}, {0, 0}, /* HT_DIR_X  */ {1, 0}, {0, 0}, // HT_DIR_Y
-				/* End   */ {0, 1}, {0, 0}, /* HT_DIR_HU */ {1, 1}, {0, 1}, // HT_DIR_HL
-				/* End   */ {1, 0}, {0, 0}, /* HT_DIR_VL */ {0, 0}, {0, 1}, // HT_DIR_VR
+			static const std::pair<TileIndexDiffC, TileIndexDiffC> start_heightdiff_line_by_dir[] = {
+				{ {1, 0}, {1, 1} }, // HT_DIR_X
+				{ {0, 1}, {1, 1} }, // HT_DIR_Y
+				{ {1, 0}, {0, 0} }, // HT_DIR_HU
+				{ {1, 0}, {1, 1} }, // HT_DIR_HL
+				{ {1, 0}, {1, 1} }, // HT_DIR_VL
+				{ {0, 1}, {1, 1} }, // HT_DIR_VR
 			};
+			static const std::pair<TileIndexDiffC, TileIndexDiffC> end_heightdiff_line_by_dir[] = {
+				{ {0, 1}, {0, 0} }, // HT_DIR_X
+				{ {1, 0}, {0, 0} }, // HT_DIR_Y
+				{ {0, 1}, {0, 0} }, // HT_DIR_HU
+				{ {1, 1}, {0, 1} }, // HT_DIR_HL
+				{ {1, 0}, {0, 0} }, // HT_DIR_VL
+				{ {0, 0}, {0, 1} }, // HT_DIR_VR
+			};
+			static_assert(std::size(start_heightdiff_line_by_dir) == HT_DIR_END);
+			static_assert(std::size(end_heightdiff_line_by_dir) == HT_DIR_END);
 
 			distance %= 2; // we're only interested if the distance is even or uneven
 			style &= HT_DIR_MASK;
+			assert(style < HT_DIR_END);
 
 			/* To handle autorail, we do some magic to be able to use a lookup table.
 			 * Firstly if we drag the other way around, we switch start&end, and if needed
@@ -2928,20 +2937,20 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			 * that means the end, which is now the start is on the right */
 			if (swap && distance == 0) style = flip_style_direction[style];
 
+			/* Lambda to help calculating the height at one side of the line. */
+			auto get_height = [](auto &tile, auto &heightdiffs) {
+				return std::max(
+					TileHeight(TileAdd(tile, ToTileIndexDiff(heightdiffs.first))),
+					TileHeight(TileAdd(tile, ToTileIndexDiff(heightdiffs.second))));
+			};
+
 			/* Use lookup table for start-tile based on HighLightStyle direction */
-			uint8_t style_t = style * 2;
-			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
-			h0 = TileHeight(TileAdd(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t])));
-			uint ht = TileHeight(TileAdd(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t + 1])));
-			h0 = std::max(h0, ht);
+			h0 = get_height(start_tile, start_heightdiff_line_by_dir[style]);
 
 			/* Use lookup table for end-tile based on HighLightStyle direction
 			 * flip around side (lower/upper, left/right) based on distance */
-			if (distance == 0) style_t = flip_style_direction[style] * 2;
-			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
-			h1 = TileHeight(TileAdd(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t])));
-			ht = TileHeight(TileAdd(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t + 1])));
-			h1 = std::max(h1, ht);
+			if (distance == 0) style = flip_style_direction[style];
+			h1 = get_height(end_tile, end_heightdiff_line_by_dir[style]);
 			break;
 		}
 	}
