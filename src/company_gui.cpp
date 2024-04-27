@@ -650,7 +650,6 @@ private:
 			BuildGuiGroupList(this->groups, false, owner, vtype);
 		}
 
-		this->groups.shrink_to_fit();
 		this->groups.RebuildDone();
 	}
 

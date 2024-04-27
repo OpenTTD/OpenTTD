@@ -1546,7 +1546,6 @@ struct BuildVehicleWindow : Window {
 			case VEH_TRAIN:
 				this->GenerateBuildTrainList(list);
 				GUIEngineListAddChildren(this->eng_list, list);
-				this->eng_list.shrink_to_fit();
 				this->eng_list.RebuildDone();
 				return;
 			case VEH_ROAD:
@@ -1584,7 +1583,6 @@ struct BuildVehicleWindow : Window {
 
 		this->eng_list.swap(list);
 		GUIEngineListAddChildren(this->eng_list, list, INVALID_ENGINE, 0);
-		this->eng_list.shrink_to_fit();
 		this->eng_list.RebuildDone();
 	}
 

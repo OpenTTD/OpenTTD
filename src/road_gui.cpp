@@ -1263,6 +1263,7 @@ public:
 		if (!this->roadstop_classes.NeedRebuild()) return;
 
 		this->roadstop_classes.clear();
+		this->roadstop_classes.reserve(RoadStopClass::GetClassCount());
 
 		for (const auto &cls : RoadStopClass::Classes()) {
 			/* Skip waypoints. */
@@ -1272,7 +1273,6 @@ public:
 
 		if (this->ShowNewStops()) {
 			this->roadstop_classes.Filter(this->string_filter);
-			this->roadstop_classes.shrink_to_fit();
 			this->roadstop_classes.RebuildDone();
 			this->roadstop_classes.Sort();
 

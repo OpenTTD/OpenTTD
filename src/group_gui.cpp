@@ -224,7 +224,6 @@ private:
 
 		BuildGuiGroupList(this->groups, true, owner, this->vli.vtype);
 
-		this->groups.shrink_to_fit();
 		this->groups.RebuildDone();
 	}
 
