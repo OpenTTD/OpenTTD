@@ -1499,7 +1499,6 @@ private:
 		}
 
 		this->avails.Filter(this->string_filter);
-		this->avails.shrink_to_fit();
 		this->avails.RebuildDone();
 		this->avails.Sort();
 

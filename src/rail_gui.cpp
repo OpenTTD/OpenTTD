@@ -1108,6 +1108,7 @@ public:
 		if (!this->station_classes.NeedRebuild()) return;
 
 		this->station_classes.clear();
+		this->station_classes.reserve(StationClass::GetClassCount());
 
 		for (const auto &cls : StationClass::Classes()) {
 			/* Skip waypoints. */
@@ -1118,7 +1119,6 @@ public:
 
 		if (_railstation.newstations) {
 			this->station_classes.Filter(this->string_filter);
-			this->station_classes.shrink_to_fit();
 			this->station_classes.RebuildDone();
 			this->station_classes.Sort();
 

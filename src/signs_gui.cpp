@@ -63,12 +63,12 @@ struct SignList {
 		Debug(misc, 3, "Building sign list");
 
 		this->signs.clear();
+		this->signs.reserve(Sign::GetNumItems());
 
 		for (const Sign *si : Sign::Iterate()) this->signs.push_back(si);
 
 		this->signs.SetFilterState(true);
 		this->FilterSignList();
-		this->signs.shrink_to_fit();
 		this->signs.RebuildDone();
 	}
 

@@ -1423,6 +1423,7 @@ protected:
 	{
 		if (this->industries.NeedRebuild()) {
 			this->industries.clear();
+			this->industries.reserve(Industry::GetNumItems());
 
 			for (const Industry *i : Industry::Iterate()) {
 				if (this->string_filter.IsEmpty()) {
@@ -1434,7 +1435,6 @@ protected:
 				if (this->string_filter.GetState()) this->industries.push_back(i);
 			}
 
-			this->industries.shrink_to_fit();
 			this->industries.RebuildDone();
 
 			auto filter = std::make_pair(this->accepted_cargo_filter_criteria, this->produced_cargo_filter_criteria);

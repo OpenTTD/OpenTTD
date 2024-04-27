@@ -70,12 +70,12 @@ private:
 		if (!this->companies.NeedRebuild()) return;
 
 		this->companies.clear();
+		this->companies.reserve(Company::GetNumItems());
 
 		for (const Company *c : Company::Iterate()) {
 			this->companies.push_back(c);
 		}
 
-		this->companies.shrink_to_fit();
 		this->companies.RebuildDone();
 	}
 

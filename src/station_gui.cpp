@@ -296,7 +296,6 @@ protected:
 			}
 		}
 
-		this->stations.shrink_to_fit();
 		this->stations.RebuildDone();
 
 		this->vscroll->SetCount(this->stations.size()); // Update the scrollbar

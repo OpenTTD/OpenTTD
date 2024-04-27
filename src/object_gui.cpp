@@ -144,6 +144,7 @@ public:
 		if (!this->object_classes.NeedRebuild()) return;
 
 		this->object_classes.clear();
+		this->object_classes.reserve(ObjectClass::GetClassCount());
 
 		for (const auto &cls : ObjectClass::Classes()) {
 			if (cls.GetUISpecCount() == 0) continue; // Is this needed here?
@@ -151,7 +152,6 @@ public:
 		}
 
 		this->object_classes.Filter(this->string_filter);
-		this->object_classes.shrink_to_fit();
 		this->object_classes.RebuildDone();
 		this->object_classes.Sort();
 
