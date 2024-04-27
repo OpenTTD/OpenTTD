@@ -1833,6 +1833,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Standaardonderh
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standaardonderhoudstermijn voor schepen: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Standaardonderhoudstermijn voor nieuwe schepen als er geen expliciete onderhoudstermijn is ingesteld voor het voertuig
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Dag{P 0 "" en}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Minu{P 0 ut ten}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Uitgeschakeld
@@ -3394,8 +3397,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Weet je
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% compleet
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wereldontwikkeling
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landschap genereren
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Rivierplaatsing
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ontwikkeling van ruig en rotsachtig gebied
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Steden genereren
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industrieën genereren
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ontwikkeling van onverplaatsbare objecten
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaatsing
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spel wordt geconfigureerd
