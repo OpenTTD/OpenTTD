@@ -257,9 +257,9 @@ public:
 				}
 
 				/* Determine the pixel heights. */
-				for (size_t i = 0; i < lengthof(height); i++) {
-					height[i] *= ScaleGUITrad(TILE_HEIGHT);
-					height[i] += ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin;
+				for (auto &h : height) {
+					h *= ScaleGUITrad(TILE_HEIGHT);
+					h += ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin;
 				}
 
 				/* Now determine the size of the minimum widgets. When there are two columns, then
