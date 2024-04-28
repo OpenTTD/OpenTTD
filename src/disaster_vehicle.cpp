@@ -925,16 +925,17 @@ static const Disaster _disasters[] = {
 
 static void DoDisaster()
 {
-	uint8_t buf[lengthof(_disasters)];
+	std::vector<DisasterInitProc *> available_disasters;
 
-	uint8_t j = 0;
-	for (size_t i = 0; i != lengthof(_disasters); i++) {
-		if (TimerGameCalendar::year >= _disasters[i].min_year && TimerGameCalendar::year < _disasters[i].max_year) buf[j++] = (uint8_t)i;
+	for (auto &disaster : _disasters) {
+		if (TimerGameCalendar::year >= disaster.min_year && TimerGameCalendar::year < disaster.max_year) {
+			available_disasters.push_back(disaster.init_proc);
+		}
 	}
 
-	if (j == 0) return;
+	if (available_disasters.empty()) return;
 
-	_disasters[buf[RandomRange(j)]].init_proc();
+	available_disasters[RandomRange(static_cast<uint32_t>(available_disasters.size()))]();
 }
 
 
