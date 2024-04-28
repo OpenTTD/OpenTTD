@@ -484,7 +484,7 @@ EngList_SortTypeFunction * const _engine_sort_functions[][11] = {{
 }};
 
 /** Dropdown menu strings for the vehicle sort criteria. */
-const StringID _engine_sort_listing[][12] = {{
+const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	/* Trains */
 	STR_SORT_BY_ENGINE_ID,
 	STR_SORT_BY_COST,
@@ -1747,7 +1747,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_SORT_DROPDOWN:
-				SetDParam(0, _engine_sort_listing[this->vehicle_type][this->sort_criteria]);
+				SetDParam(0, std::data(_engine_sort_listing[this->vehicle_type])[this->sort_criteria]);
 				break;
 
 			case WID_BV_CARGO_FILTER_DROPDOWN:

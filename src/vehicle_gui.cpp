@@ -94,7 +94,7 @@ const std::initializer_list<BaseVehicleListWindow::VehicleGroupSortFunction * co
 	&VehicleIndividualToGroupSorterWrapper<VehicleTimetableDelaySorter>,
 };
 
-const StringID BaseVehicleListWindow::vehicle_group_none_sorter_names_calendar[] = {
+const std::initializer_list<const StringID> BaseVehicleListWindow::vehicle_group_none_sorter_names_calendar = {
 	STR_SORT_BY_NUMBER,
 	STR_SORT_BY_NAME,
 	STR_SORT_BY_AGE,
@@ -111,7 +111,7 @@ const StringID BaseVehicleListWindow::vehicle_group_none_sorter_names_calendar[]
 	INVALID_STRING_ID
 };
 
-const StringID BaseVehicleListWindow::vehicle_group_none_sorter_names_wallclock[] = {
+const std::initializer_list<const StringID> BaseVehicleListWindow::vehicle_group_none_sorter_names_wallclock = {
 	STR_SORT_BY_NUMBER,
 	STR_SORT_BY_NAME,
 	STR_SORT_BY_AGE,
@@ -136,7 +136,7 @@ const std::initializer_list<BaseVehicleListWindow::VehicleGroupSortFunction * co
 	&VehicleGroupAverageProfitLastYearSorter,
 };
 
-const StringID BaseVehicleListWindow::vehicle_group_shared_orders_sorter_names_calendar[] = {
+const std::initializer_list<const StringID> BaseVehicleListWindow::vehicle_group_shared_orders_sorter_names_calendar = {
 	STR_SORT_BY_NUM_VEHICLES,
 	STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR,
 	STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR,
@@ -145,7 +145,7 @@ const StringID BaseVehicleListWindow::vehicle_group_shared_orders_sorter_names_c
 	INVALID_STRING_ID
 };
 
-const StringID BaseVehicleListWindow::vehicle_group_shared_orders_sorter_names_wallclock[] = {
+const std::initializer_list<const StringID> BaseVehicleListWindow::vehicle_group_shared_orders_sorter_names_wallclock = {
 	STR_SORT_BY_NUM_VEHICLES,
 	STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD,
 	STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD,
@@ -154,7 +154,7 @@ const StringID BaseVehicleListWindow::vehicle_group_shared_orders_sorter_names_w
 	INVALID_STRING_ID
 };
 
-const StringID BaseVehicleListWindow::vehicle_group_by_names[] = {
+const std::initializer_list<const StringID> BaseVehicleListWindow::vehicle_group_by_names = {
 	STR_GROUP_BY_NONE,
 	STR_GROUP_BY_SHARED_ORDERS,
 	INVALID_STRING_ID
@@ -174,7 +174,7 @@ BaseVehicleListWindow::BaseVehicleListWindow(WindowDesc *desc, WindowNumber wno)
 	this->UpdateSortingFromGrouping();
 }
 
-const StringID *BaseVehicleListWindow::GetVehicleSorterNames()
+std::span<const StringID> BaseVehicleListWindow::GetVehicleSorterNames()
 {
 	switch (this->grouping) {
 		case GB_NONE:
@@ -2048,7 +2048,7 @@ public:
 		}
 
 		/* Set text of group by dropdown widget. */
-		this->GetWidget<NWidgetCore>(WID_VL_GROUP_BY_PULLDOWN)->widget_data = this->vehicle_group_by_names[this->grouping];
+		this->GetWidget<NWidgetCore>(WID_VL_GROUP_BY_PULLDOWN)->widget_data = std::data(this->vehicle_group_by_names)[this->grouping];
 
 		/* Set text of sort by dropdown widget. */
 		this->GetWidget<NWidgetCore>(WID_VL_SORT_BY_PULLDOWN)->widget_data = this->GetVehicleSorterNames()[this->vehgroups.SortType()];

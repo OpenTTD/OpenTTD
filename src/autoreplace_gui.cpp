@@ -402,7 +402,7 @@ public:
 				break;
 
 			case WID_RV_SORT_DROPDOWN:
-				SetDParam(0, _engine_sort_listing[this->window_number][this->sort_criteria]);
+				SetDParam(0, std::data(_engine_sort_listing[this->window_number])[this->sort_criteria]);
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {

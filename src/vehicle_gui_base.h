@@ -98,11 +98,11 @@ struct BaseVehicleListWindow : public Window {
 	};
 
 	static const StringID vehicle_depot_name[];
-	static const StringID vehicle_group_by_names[];
-	static const StringID vehicle_group_none_sorter_names_calendar[];
-	static const StringID vehicle_group_none_sorter_names_wallclock[];
-	static const StringID vehicle_group_shared_orders_sorter_names_calendar[];
-	static const StringID vehicle_group_shared_orders_sorter_names_wallclock[];
+	static const std::initializer_list<const StringID> vehicle_group_by_names;
+	static const std::initializer_list<const StringID> vehicle_group_none_sorter_names_calendar;
+	static const std::initializer_list<const StringID> vehicle_group_none_sorter_names_wallclock;
+	static const std::initializer_list<const StringID> vehicle_group_shared_orders_sorter_names_calendar;
+	static const std::initializer_list<const StringID> vehicle_group_shared_orders_sorter_names_wallclock;
 	static const std::initializer_list<VehicleGroupSortFunction * const> vehicle_group_none_sorter_funcs;
 	static const std::initializer_list<VehicleGroupSortFunction * const> vehicle_group_shared_orders_sorter_funcs;
 
@@ -124,7 +124,7 @@ struct BaseVehicleListWindow : public Window {
 	Dimension GetActionDropdownSize(bool show_autoreplace, bool show_group, bool show_create);
 	DropDownList BuildActionDropdownList(bool show_autoreplace, bool show_group, bool show_create);
 
-	const StringID *GetVehicleSorterNames();
+	std::span<const StringID> GetVehicleSorterNames();
 
 	std::span<VehicleGroupSortFunction * const> GetVehicleSorterFuncs()
 	{
