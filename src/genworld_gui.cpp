@@ -660,7 +660,7 @@ struct GenerateLandscapeWindow : public Window {
 			default:
 				return;
 		}
-		maxdim(d, GetStringListBoundingBox(strs));
+		d = maxdim(d, GetStringListBoundingBox(strs));
 		d.width += padding.width;
 		d.height += padding.height;
 		size = maxdim(size, d);
