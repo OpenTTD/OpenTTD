@@ -227,7 +227,7 @@ protected:
 		/* special handling for stations */
 		if (IsRailTT() && HasStationTileRail(m_new_tile)) {
 			m_is_station = true;
-		} else if (IsRoadTT() && IsRoadStopTile(m_new_tile)) {
+		} else if (IsRoadTT() && IsStationRoadStopTile(m_new_tile)) {
 			m_is_station = true;
 		}
 	}

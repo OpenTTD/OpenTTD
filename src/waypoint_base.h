@@ -12,9 +12,18 @@
 
 #include "base_station_base.h"
 
+/**
+ * Flags for Waypoint::waypoint_flags.
+ */
+enum WaypointFlags {
+	WPF_ROAD                    = 0, ///< This is a road waypoint
+};
+
 /** Representation of a waypoint. */
 struct Waypoint final : SpecializedStation<Waypoint, true> {
 	uint16_t town_cn;    ///< The N-1th waypoint for this town (consecutive number)
+	uint16_t waypoint_flags{}; ///< Waypoint flags, see WaypointFlags
+	TileArea road_waypoint_area; ///< Tile area the road waypoint part covers
 
 	/**
 	 * Create a waypoint at the given tile.

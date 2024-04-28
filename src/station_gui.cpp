@@ -47,17 +47,22 @@ struct StationTypeFilter
 
 	static bool IsValidID(StationID id) { return Station::IsValidID(id); }
 	static bool IsValidBaseStation(const BaseStation *st) { return Station::IsExpected(st); }
+	static bool IsAcceptableWaypointTile(TileIndex) { return false; }
 	static constexpr bool IsWaypoint() { return false; }
 };
 
-struct WaypointTypeFilter
+template <bool ROAD, TileType TILE_TYPE>
+struct GenericWaypointTypeFilter
 {
 	using StationType = Waypoint;
 
-	static bool IsValidID(StationID id) { return Waypoint::IsValidID(id); }
-	static bool IsValidBaseStation(const BaseStation *st) { return Waypoint::IsExpected(st); }
+	static bool IsValidID(StationID id) { return Waypoint::IsValidID(id) && HasBit(Waypoint::Get(id)->waypoint_flags, WPF_ROAD) == ROAD; }
+	static bool IsValidBaseStation(const BaseStation *st) { return Waypoint::IsExpected(st) && HasBit(Waypoint::From(st)->waypoint_flags, WPF_ROAD) == ROAD; }
+	static bool IsAcceptableWaypointTile(TileIndex tile) { return IsTileType(tile, TILE_TYPE); }
 	static constexpr bool IsWaypoint() { return true; }
 };
+using RailWaypointTypeFilter = GenericWaypointTypeFilter<false, MP_RAILWAY>;
+using RoadWaypointTypeFilter = GenericWaypointTypeFilter<true, MP_ROAD>;
 
 /**
  * Calculates and draws the accepted or supplied cargo around the selected tile(s)
@@ -125,8 +130,8 @@ void FindStationsAroundSelection()
 	uint x = TileX(location.tile);
 	uint y = TileY(location.tile);
 
-	/* Waypoints can only be built on existing rail tiles, so don't extend area if not highlighting a rail tile. */
-	int max_c = T::IsWaypoint() && !IsTileType(location.tile, MP_RAILWAY) ? 0 : 1;
+	/* Waypoints can only be built on existing rail/road tiles, so don't extend area if not highlighting a rail tile. */
+	int max_c = T::IsWaypoint() && !T::IsAcceptableWaypointTile(location.tile) ? 0 : 1;
 	TileArea ta(TileXY(std::max<int>(0, x - max_c), std::max<int>(0, y - max_c)), TileXY(std::min<int>(Map::MaxX(), x + location.w + max_c), std::min<int>(Map::MaxY(), y + location.h + max_c)));
 
 	typename T::StationType *adjacent = nullptr;
@@ -171,7 +176,8 @@ void CheckRedrawStationCoverage(const Window *w)
 	}
 }
 
-void CheckRedrawWaypointCoverage(const Window *)
+template <typename T>
+void CheckRedrawWaypointCoverage()
 {
 	/* Test if ctrl state changed */
 	static bool _last_ctrl_pressed;
@@ -184,9 +190,19 @@ void CheckRedrawWaypointCoverage(const Window *)
 		_thd.dirty &= ~1;
 
 		if (_thd.drawstyle == HT_RECT) {
-			FindStationsAroundSelection<WaypointTypeFilter>();
+			FindStationsAroundSelection<T>();
 		}
 	}
+}
+
+void CheckRedrawRailWaypointCoverage(const Window *)
+{
+	CheckRedrawWaypointCoverage<RailWaypointTypeFilter>();
+}
+
+void CheckRedrawRoadWaypointCoverage(const Window *)
+{
+	CheckRedrawWaypointCoverage<RoadWaypointTypeFilter>();
 }
 
 /**
@@ -2476,11 +2492,21 @@ void ShowSelectStationIfNeeded(TileArea ta, StationPickerCmdProc proc)
 }
 
 /**
- * Show the waypoint selection window when needed. If not, build the waypoint.
+ * Show the rail waypoint selection window when needed. If not, build the waypoint.
  * @param ta Area to build the waypoint in
  * @param proc Function called to execute the build command.
  */
-void ShowSelectWaypointIfNeeded(TileArea ta, StationPickerCmdProc proc)
+void ShowSelectRailWaypointIfNeeded(TileArea ta, StationPickerCmdProc proc)
 {
-	ShowSelectBaseStationIfNeeded<WaypointTypeFilter>(ta, std::move(proc));
+	ShowSelectBaseStationIfNeeded<RailWaypointTypeFilter>(ta, std::move(proc));
+}
+
+/**
+ * Show the road waypoint selection window when needed. If not, build the waypoint.
+ * @param ta Area to build the waypoint in
+ * @param proc Function called to execute the build command.
+ */
+void ShowSelectRoadWaypointIfNeeded(TileArea ta, StationPickerCmdProc proc)
+{
+	ShowSelectBaseStationIfNeeded<RoadWaypointTypeFilter>(ta, std::move(proc));
 }

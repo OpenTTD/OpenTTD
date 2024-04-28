@@ -18,7 +18,8 @@ enum StationClassID : uint16_t;
 
 CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags);
 
-Axis GetAxisForNewWaypoint(TileIndex tile);
+Axis GetAxisForNewRailWaypoint(TileIndex tile);
+Axis GetAxisForNewRoadWaypoint(TileIndex tile);
 void ShowWaypointWindow(const Waypoint *wp);
 void DrawWaypointSprite(int x, int y, StationClassID station_class, uint16_t station_type, RailType railtype);
 

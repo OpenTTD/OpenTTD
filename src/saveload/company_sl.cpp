@@ -151,7 +151,8 @@ void AfterLoadCompanyStats()
 						break;
 
 					case STATION_BUS:
-					case STATION_TRUCK: {
+					case STATION_TRUCK:
+					case STATION_ROADWAYPOINT: {
 						/* Iterate all present road types as each can have a different owner. */
 						for (RoadTramType rtt : _roadtramtypes) {
 							RoadType rt = GetRoadType(tile, rtt);

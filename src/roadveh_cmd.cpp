@@ -1318,7 +1318,7 @@ again:
 					v->tile != tile) {
 				/* So, keep 'our' state */
 				dir = (Trackdir)v->state;
-			} else if (IsRoadStop(v->tile)) {
+			} else if (IsStationRoadStop(v->tile)) {
 				/* We're not continuing our drive through road stop, so leave. */
 				RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile))->Leave(v);
 			}

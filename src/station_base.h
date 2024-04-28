@@ -508,7 +508,7 @@ public:
 
 	inline bool TileBelongsToRoadStop(TileIndex tile) const
 	{
-		return IsRoadStopTile(tile) && GetStationIndex(tile) == this->index;
+		return IsStationRoadStopTile(tile) && GetStationIndex(tile) == this->index;
 	}
 
 	inline bool TileBelongsToAirport(TileIndex tile) const

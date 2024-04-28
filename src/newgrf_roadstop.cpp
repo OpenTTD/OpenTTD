@@ -127,7 +127,7 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 			if (this->tile == INVALID_TILE) return UINT_MAX;
 			TileIndex tile = this->tile;
 			if (parameter != 0) tile = GetNearbyTile(parameter, tile);
-			return (IsRoadStopTile(tile) && GetStationIndex(tile) == this->st->index) ? this->st->GetRoadStopAnimationFrame(tile) : UINT_MAX;
+			return (IsAnyRoadStopTile(tile) && GetStationIndex(tile) == this->st->index) ? this->st->GetRoadStopAnimationFrame(tile) : UINT_MAX;
 		}
 
 		/* Land info of nearby tile */
@@ -143,7 +143,7 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 			if (this->tile == INVALID_TILE) return 0xFFFFFFFF;
 			TileIndex nearby_tile = GetNearbyTile(parameter, this->tile);
 
-			if (!IsRoadStopTile(nearby_tile)) return 0xFFFFFFFF;
+			if (!IsAnyRoadStopTile(nearby_tile)) return 0xFFFFFFFF;
 
 			uint32_t grfid = this->st->roadstop_speclist[GetCustomRoadStopSpecIndex(this->tile)].grfid;
 			bool same_orientation = GetStationGfx(this->tile) == GetStationGfx(nearby_tile);
@@ -151,6 +151,7 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 			uint32_t res = GetStationGfx(nearby_tile) << 12 | !same_orientation << 11 | !!same_station << 10;
 			StationType type = GetStationType(nearby_tile);
 			if (type == STATION_TRUCK) res |= (1 << 16);
+			if (type == STATION_ROADWAYPOINT) res |= (2 << 16);
 			if (type == this->type) SetBit(res, 20);
 
 			if (IsCustomRoadStopSpecIndex(nearby_tile)) {
@@ -165,7 +166,7 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 			if (this->tile == INVALID_TILE) return 0xFFFFFFFF;
 			TileIndex nearby_tile = GetNearbyTile(parameter, this->tile);
 
-			if (!IsRoadStopTile(nearby_tile)) return 0xFFFFFFFF;
+			if (!IsAnyRoadStopTile(nearby_tile)) return 0xFFFFFFFF;
 			if (!IsCustomRoadStopSpecIndex(nearby_tile)) return 0;
 
 			const auto &sm = BaseStation::GetByTile(nearby_tile)->roadstop_speclist[GetCustomRoadStopSpecIndex(nearby_tile)];
@@ -176,7 +177,7 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 		case 0x6B: {
 			TileIndex nearby_tile = GetNearbyTile(parameter, this->tile);
 
-			if (!IsRoadStopTile(nearby_tile)) return 0xFFFFFFFF;
+			if (!IsAnyRoadStopTile(nearby_tile)) return 0xFFFFFFFF;
 			if (!IsCustomRoadStopSpecIndex(nearby_tile)) return 0xFFFE;
 
 			uint32_t grfid = this->st->roadstop_speclist[GetCustomRoadStopSpecIndex(this->tile)].grfid;

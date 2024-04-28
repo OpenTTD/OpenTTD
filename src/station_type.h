@@ -37,6 +37,7 @@ enum StationType {
 	STATION_DOCK,
 	STATION_BUOY,
 	STATION_WAYPOINT,
+	STATION_ROADWAYPOINT,
 };
 
 /** Types of RoadStops */

@@ -1091,7 +1091,7 @@ bool AfterLoadGame()
 					break;
 
 				case MP_STATION:
-					if (IsRoadStop(t)) SB(t.m7(), 6, 2, 1);
+					if (IsStationRoadStop(t)) SB(t.m7(), 6, 2, 1);
 					break;
 
 				case MP_TUNNELBRIDGE:
@@ -1145,7 +1145,7 @@ bool AfterLoadGame()
 					break;
 
 				case MP_STATION:
-					if (!IsRoadStop(t)) break;
+					if (!IsStationRoadStop(t)) break;
 
 					if (fix_roadtypes) SB(t.m7(), 6, 2, (RoadTypes)GB(t.m3(), 0, 3));
 					SB(t.m7(), 0, 5, HasBit(t.m6(), 2) ? OWNER_TOWN : GetTileOwner(t));
@@ -1296,7 +1296,7 @@ bool AfterLoadGame()
 					has_road = true;
 					break;
 				case MP_STATION:
-					has_road = IsRoadStop(t);
+					has_road = IsAnyRoadStop(t);
 					break;
 				case MP_TUNNELBRIDGE:
 					has_road = GetTunnelBridgeTransportType(t) == TRANSPORT_ROAD;

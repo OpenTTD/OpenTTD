@@ -427,6 +427,15 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		return order;
 	}
 
+	/* check road waypoint */
+	if (IsRoadWaypointTile(tile) &&
+			v->type == VEH_ROAD &&
+			IsTileOwner(tile, _local_company)) {
+		order.MakeGoToWaypoint(GetStationIndex(tile));
+		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
+		return order;
+	}
+
 	/* check buoy (no ownership) */
 	if (IsBuoyTile(tile) && v->type == VEH_SHIP) {
 		order.MakeGoToWaypoint(GetStationIndex(tile));

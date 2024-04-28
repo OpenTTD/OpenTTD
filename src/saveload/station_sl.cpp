@@ -655,6 +655,10 @@ public:
 		SLE_CONDVAR(Waypoint, train_station.tile,        SLE_UINT32,                  SLV_124, SL_MAX_VERSION),
 		SLE_CONDVAR(Waypoint, train_station.w,           SLE_FILE_U8 | SLE_VAR_U16,   SLV_124, SL_MAX_VERSION),
 		SLE_CONDVAR(Waypoint, train_station.h,           SLE_FILE_U8 | SLE_VAR_U16,   SLV_124, SL_MAX_VERSION),
+		SLE_CONDVAR(Waypoint, waypoint_flags,            SLE_UINT16,                  SLV_ROAD_WAYPOINTS, SL_MAX_VERSION),
+		SLE_CONDVAR(Waypoint, road_waypoint_area.tile,   SLE_UINT32,                  SLV_ROAD_WAYPOINTS, SL_MAX_VERSION),
+		SLE_CONDVAR(Waypoint, road_waypoint_area.w,      SLE_FILE_U8 | SLE_VAR_U16,   SLV_ROAD_WAYPOINTS, SL_MAX_VERSION),
+		SLE_CONDVAR(Waypoint, road_waypoint_area.h,      SLE_FILE_U8 | SLE_VAR_U16,   SLV_ROAD_WAYPOINTS, SL_MAX_VERSION),
 	};
 	inline const static SaveLoadCompatTable compat_description = _station_waypoint_sl_compat;
 

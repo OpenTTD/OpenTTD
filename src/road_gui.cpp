@@ -16,6 +16,7 @@
 #include "command_func.h"
 #include "road_cmd.h"
 #include "station_func.h"
+#include "waypoint_func.h"
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
@@ -34,6 +35,7 @@
 #include "strings_func.h"
 #include "core/geometry_func.hpp"
 #include "station_cmd.h"
+#include "waypoint_cmd.h"
 #include "road_cmd.h"
 #include "tunnelbridge_cmd.h"
 #include "newgrf_roadstop.h"
@@ -238,6 +240,29 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, RoadStopType
 }
 
 /**
+ * Place a road waypoint.
+ * @param tile Position to start dragging a waypoint.
+ */
+static void PlaceRoad_Waypoint(TileIndex tile)
+{
+	if (_remove_button_clicked) {
+		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_ROAD_WAYPOINT);
+		return;
+	}
+
+	Axis axis = GetAxisForNewRoadWaypoint(tile);
+	if (IsValidAxis(axis)) {
+		/* Valid tile for waypoints */
+		VpStartPlaceSizing(tile, axis == AXIS_X ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_ROAD_WAYPOINT);
+		VpSetPlaceSizingLimit(_settings_game.station.station_spread);
+	} else {
+		/* Tile where we can't build road waypoints. This is always going to fail,
+		 * but provides the user with a proper error message. */
+		Command<CMD_BUILD_ROAD_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT, tile, AXIS_X, 1, 1, ROADSTOP_CLASS_WAYP, 0, INVALID_STATION, false);
+	}
+}
+
+/**
  * Callback for placing a bus station.
  * @param tile Position to place the station.
  */
@@ -350,22 +375,26 @@ struct BuildRoadToolbarWindow : Window {
 		bool can_build = CanBuildVehicleInfrastructure(VEH_ROAD, rtt);
 		this->SetWidgetsDisabledState(!can_build,
 			WID_ROT_DEPOT,
+			WID_ROT_BUILD_WAYPOINT,
 			WID_ROT_BUS_STATION,
 			WID_ROT_TRUCK_STATION);
 		if (!can_build) {
 			CloseWindowById(WC_BUS_STATION, TRANSPORT_ROAD);
 			CloseWindowById(WC_TRUCK_STATION, TRANSPORT_ROAD);
 			CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_ROAD);
+			CloseWindowById(WC_BUILD_WAYPOINT, TRANSPORT_ROAD);
 		}
 
 		if (_game_mode != GM_EDITOR) {
 			if (!can_build) {
 				/* Show in the tooltip why this button is disabled. */
 				this->GetWidget<NWidgetCore>(WID_ROT_DEPOT)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
+				this->GetWidget<NWidgetCore>(WID_ROT_BUILD_WAYPOINT)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
 				this->GetWidget<NWidgetCore>(WID_ROT_BUS_STATION)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
 				this->GetWidget<NWidgetCore>(WID_ROT_TRUCK_STATION)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
 			} else {
 				this->GetWidget<NWidgetCore>(WID_ROT_DEPOT)->SetToolTip(rtt == RTT_ROAD ? STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT : STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT);
+				this->GetWidget<NWidgetCore>(WID_ROT_BUILD_WAYPOINT)->SetToolTip(rtt == RTT_ROAD ? STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT : STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT);
 				this->GetWidget<NWidgetCore>(WID_ROT_BUS_STATION)->SetToolTip(rtt == RTT_ROAD ? STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION : STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION);
 				this->GetWidget<NWidgetCore>(WID_ROT_TRUCK_STATION)->SetToolTip(rtt == RTT_ROAD ? STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY : STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION);
 			}
@@ -445,6 +474,7 @@ struct BuildRoadToolbarWindow : Window {
 
 			case WID_ROT_BUS_STATION:
 			case WID_ROT_TRUCK_STATION:
+			case WID_ROT_BUILD_WAYPOINT:
 				if (RoadTypeIsRoad(this->roadtype)) this->DisableWidget(WID_ROT_ONE_WAY);
 				this->SetWidgetDisabledState(WID_ROT_REMOVE, !this->IsWidgetLowered(clicked_widget));
 				break;
@@ -501,6 +531,12 @@ struct BuildRoadToolbarWindow : Window {
 			case WID_ROT_DEPOT:
 				if (HandlePlacePushButton(this, WID_ROT_DEPOT, this->rti->cursor.depot, HT_RECT)) {
 					ShowRoadDepotPicker(this);
+					this->last_started_action = widget;
+				}
+				break;
+
+			case WID_ROT_BUILD_WAYPOINT:
+				if (HandlePlacePushButton(this, WID_ROT_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, HT_RECT)) {
 					this->last_started_action = widget;
 				}
 				break;
@@ -594,6 +630,10 @@ struct BuildRoadToolbarWindow : Window {
 						tile, _cur_roadtype, _road_depot_orientation);
 				break;
 
+			case WID_ROT_BUILD_WAYPOINT:
+				PlaceRoad_Waypoint(tile);
+				break;
+
 			case WID_ROT_BUS_STATION:
 				PlaceRoad_BusStation(tile);
 				break;
@@ -635,6 +675,7 @@ struct BuildRoadToolbarWindow : Window {
 		CloseWindowById(WC_BUS_STATION, TRANSPORT_ROAD);
 		CloseWindowById(WC_TRUCK_STATION, TRANSPORT_ROAD);
 		CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_ROAD);
+		CloseWindowById(WC_BUILD_WAYPOINT, TRANSPORT_ROAD);
 		CloseWindowById(WC_SELECT_STATION, 0);
 		CloseWindowByClass(WC_BUILD_BRIDGE);
 	}
@@ -707,6 +748,30 @@ struct BuildRoadToolbarWindow : Window {
 					break;
 				}
 
+				case DDSP_BUILD_ROAD_WAYPOINT:
+				case DDSP_REMOVE_ROAD_WAYPOINT:
+					if (this->IsWidgetLowered(WID_ROT_BUILD_WAYPOINT)) {
+						if (_remove_button_clicked) {
+							Command<CMD_REMOVE_FROM_ROAD_WAYPOINT>::Post(STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile);
+						} else {
+							TileArea ta(start_tile, end_tile);
+							Axis axis = select_method == VPM_X_LIMITED ? AXIS_X : AXIS_Y;
+							bool adjacent = _ctrl_pressed;
+							uint16_t waypoint_type = 0;
+
+							auto proc = [=](bool test, StationID to_join) -> bool {
+								if (test) {
+									return Command<CMD_BUILD_ROAD_WAYPOINT>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_ROAD_WAYPOINT>()), ta.tile, axis, ta.w, ta.h, ROADSTOP_CLASS_WAYP, waypoint_type, INVALID_STATION, adjacent).Succeeded();
+								} else {
+									return Command<CMD_BUILD_ROAD_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, axis, ta.w, ta.h, ROADSTOP_CLASS_WAYP, waypoint_type, to_join, adjacent);
+								}
+							};
+
+							ShowSelectRoadWaypointIfNeeded(ta, proc);
+						}
+					}
+					break;
+
 				case DDSP_BUILD_BUSSTOP:
 				case DDSP_REMOVE_BUSSTOP:
 					if (this->IsWidgetLowered(WID_ROT_BUS_STATION) && GetIfClassHasNewStopsByType(RoadStopClass::Get(_roadstop_gui.sel_class), ROADSTOP_BUS, _cur_roadtype)) {
@@ -748,6 +813,11 @@ struct BuildRoadToolbarWindow : Window {
 	{
 		if (RoadToolbar_CtrlChanged(this)) return ES_HANDLED;
 		return ES_NOT_HANDLED;
+	}
+
+	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
+	{
+		if (this->IsWidgetLowered(WID_ROT_BUILD_WAYPOINT)) CheckRedrawRoadWaypointCoverage(this);
 	}
 
 	/**
@@ -798,6 +868,7 @@ struct BuildRoadToolbarWindow : Window {
 		Hotkey('6', "bus_station", WID_ROT_BUS_STATION),
 		Hotkey('7', "truck_station", WID_ROT_TRUCK_STATION),
 		Hotkey('8', "oneway", WID_ROT_ONE_WAY),
+		Hotkey('9', "waypoint", WID_ROT_BUILD_WAYPOINT),
 		Hotkey('B', "bridge", WID_ROT_BUILD_BRIDGE),
 		Hotkey('T', "tunnel", WID_ROT_BUILD_TUNNEL),
 		Hotkey('R', "remove", WID_ROT_REMOVE),
@@ -812,6 +883,7 @@ struct BuildRoadToolbarWindow : Window {
 		Hotkey('5', "depot", WID_ROT_DEPOT),
 		Hotkey('6', "bus_station", WID_ROT_BUS_STATION),
 		Hotkey('7', "truck_station", WID_ROT_TRUCK_STATION),
+		Hotkey('9', "waypoint", WID_ROT_BUILD_WAYPOINT),
 		Hotkey('B', "bridge", WID_ROT_BUILD_BRIDGE),
 		Hotkey('T', "tunnel", WID_ROT_BUILD_TUNNEL),
 		Hotkey('R', "remove", WID_ROT_REMOVE),
@@ -836,6 +908,8 @@ static constexpr NWidgetPart _nested_build_road_widgets[] = {
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ROT_DEPOT),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_ROAD_DEPOT, STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ROT_BUILD_WAYPOINT),
+						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_WAYPOINT, STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ROT_BUS_STATION),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_BUS_STATION, STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ROT_TRUCK_STATION),
@@ -879,6 +953,8 @@ static constexpr NWidgetPart _nested_build_tramway_widgets[] = {
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ROT_DEPOT),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_ROAD_DEPOT, STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ROT_BUILD_WAYPOINT),
+						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_WAYPOINT, STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ROT_BUS_STATION),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_BUS_STATION, STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ROT_TRUCK_STATION),
