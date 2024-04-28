@@ -115,7 +115,7 @@ void FreeTypeFontCache::SetFontSize(FontSize, FT_Face, int pixels)
 	}
 }
 
-static FT_Error LoadFont(FontSize fs, FT_Face face, const char *font_name, uint size)
+static FT_Error LoadFont(FontSize fs, FT_Face face, [[maybe_unused]] const char *font_name, uint size)
 {
 	Debug(fontcache, 2, "Requested '{}', using '{} {}'", font_name, face->family_name, face->style_name);
 
