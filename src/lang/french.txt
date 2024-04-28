@@ -1834,6 +1834,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Définit l'inte
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalle d'entretien par défaut pour les navires{NBSP}: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Définit l'intervalle d'entretien par défaut des nouveaux navires, si aucun intervalle d'entretien n'est défini pour le véhicule
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Jour{P 0 "" s}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Minute{P 0 "" s}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Désactivé

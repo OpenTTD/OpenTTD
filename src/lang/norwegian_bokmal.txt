@@ -1835,6 +1835,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Angi standard v
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard vedlikeholdsintervall for skip: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Angi standard vedlikeholdsintervall for nye skip, hvis det ikke er angitt noe vedlikeholdsintervall for fartøyet
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Dag{P 0 "" er}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Minutt{P 0 "" er}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktivert
