@@ -22,6 +22,7 @@
 #include "newgrf_debug.h"
 #include "core/backup_type.hpp"
 #include "core/container_func.hpp"
+#include "core/geometry_func.hpp"
 #include "viewport_func.h"
 
 #include "table/string_colours.h"
@@ -875,6 +876,21 @@ uint GetStringListWidth(std::span<const StringID> list, FontSize fontsize)
 		width = std::max(width, GetStringBoundingBox(*str, fontsize).width);
 	}
 	return width;
+}
+
+/**
+ * Get maximum dimension of a list of strings.
+ * @param list List of strings, terminated by INVALID_STRING_ID.
+ * @param fontsize Font size to use.
+ * @return Dimension of highest and longest string within the list.
+ */
+Dimension GetStringListBoundingBox(std::span<const StringID> list, FontSize fontsize)
+{
+	Dimension d{0, 0};
+	for (const StringID *str = list.data(); *str != INVALID_STRING_ID; str++) {
+		d = maxdim(d, GetStringBoundingBox(*str, fontsize));
+	}
+	return d;
 }
 
 /**

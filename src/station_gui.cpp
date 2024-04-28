@@ -430,10 +430,7 @@ public:
 			}
 
 			case WID_STL_SORTDROPBTN: {
-				Dimension d = {0, 0};
-				for (int i = 0; CompanyStationsWindow::sorter_names[i] != INVALID_STRING_ID; i++) {
-					d = maxdim(d, GetStringBoundingBox(CompanyStationsWindow::sorter_names[i]));
-				}
+				Dimension d = GetStringListBoundingBox(CompanyStationsWindow::sorter_names);
 				d.width += padding.width;
 				d.height += padding.height;
 				size = maxdim(size, d);
