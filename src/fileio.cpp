@@ -68,9 +68,6 @@ std::vector<Searchpath> _valid_searchpaths;
 std::array<TarList, NUM_SUBDIRS> _tar_list;
 TarFileList _tar_filelist[NUM_SUBDIRS];
 
-typedef std::map<std::string, std::string> TarLinkList;
-static TarLinkList _tar_linklist[NUM_SUBDIRS]; ///< List of directory links
-
 /**
  * Checks whether the given search path is a valid search path
  * @param sp the search path to check
@@ -298,17 +295,6 @@ FILE *FioFOpenFile(const std::string &filename, const char *mode, Subdirectory s
 			first = false;
 		}
 
-		/* Resolve ONE directory link */
-		for (const auto &link : _tar_linklist[subdir]) {
-			const std::string &src = link.first;
-			size_t len = src.length();
-			if (resolved_name.length() >= len && resolved_name[len - 1] == PATHSEPCHAR && src.compare(0, len, resolved_name, 0, len) == 0) {
-				/* Apply link */
-				resolved_name.replace(0, len, link.second);
-				break; // Only resolve one level
-			}
-		}
-
 		TarFileList::iterator it = _tar_filelist[subdir].find(resolved_name);
 		if (it != _tar_filelist[subdir].end()) {
 			f = FioFOpenFileTar(it->second, filesize);
@@ -376,27 +362,6 @@ void AppendPathSeparator(std::string &buf)
 	if (buf.empty()) return;
 
 	if (buf.back() != PATHSEPCHAR) buf.push_back(PATHSEPCHAR);
-}
-
-static void TarAddLink(const std::string &srcParam, const std::string &destParam, Subdirectory subdir)
-{
-	std::string src = srcParam;
-	std::string dest = destParam;
-	/* Tar internals assume lowercase */
-	std::transform(src.begin(), src.end(), src.begin(), tolower);
-	std::transform(dest.begin(), dest.end(), dest.begin(), tolower);
-
-	TarFileList::iterator dest_file = _tar_filelist[subdir].find(dest);
-	if (dest_file != _tar_filelist[subdir].end()) {
-		/* Link to file. Process the link like the destination file. */
-		_tar_filelist[subdir].insert(TarFileList::value_type(src, dest_file->second));
-	} else {
-		/* Destination file not found. Assume 'link to directory'
-		 * Append PATHSEPCHAR to 'src' and 'dest' if needed */
-		const std::string src_path = ((*src.rbegin() == PATHSEPCHAR) ? src : src + PATHSEPCHAR);
-		const std::string dst_path = (dest.length() == 0 ? "" : ((*dest.rbegin() == PATHSEPCHAR) ? dest : dest + PATHSEPCHAR));
-		_tar_linklist[subdir].insert(TarLinkList::value_type(src_path, dst_path));
-	}
 }
 
 /**
@@ -527,8 +492,6 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 	std::string filename_base = std::filesystem::path(filename).filename().string();
 	SimplifyFileName(filename_base);
 
-	TarLinkList links; ///< Temporary list to collect links
-
 	TarHeader th;
 	size_t num = 0, pos = 0;
 
@@ -597,33 +560,9 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 			case '1': // hard links
 			case '2': { // symbolic links
-				/* Copy the destination of the link in a safe way at the end of 'linkname' */
 				std::string link = ExtractString(th.linkname);
 
-				if (name.empty() || link.empty()) break;
-
-				/* Convert to lowercase and our PATHSEPCHAR */
-				SimplifyFileName(name);
-				SimplifyFileName(link);
-
-				/* Only allow relative links */
-				if (link[0] == PATHSEPCHAR) {
-					Debug(misc, 5, "Ignoring absolute link in tar: {} -> {}", name, link);
-					break;
-				}
-
-				/* Process relative path.
-				 * Note: The destination of links must not contain any directory-links. */
-				std::string dest = (std::filesystem::path(name).remove_filename() /= link).lexically_normal().string();
-				if (dest[0] == PATHSEPCHAR || dest.starts_with("..")) {
-					Debug(misc, 5, "Ignoring link pointing outside of data directory: {} -> {}", name, link);
-					break;
-				}
-
-				/* Store links in temporary list */
-				Debug(misc, 6, "Found link in tar: {} -> {}", name, dest);
-				links.insert(TarLinkList::value_type(filename_base + PATHSEPCHAR + name, filename_base + PATHSEPCHAR + dest));
-
+				Debug(misc, 5, "Ignoring link in tar: {} -> {}", name, link);
 				break;
 			}
 
@@ -653,19 +592,6 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 	Debug(misc, 4, "Found tar '{}' with {} new files", filename, num);
 	fclose(f);
-
-	/* Resolve file links and store directory links.
-	 * We restrict usage of links to two cases:
-	 *  1) Links to directories:
-	 *      Both the source path and the destination path must NOT contain any further links.
-	 *      When resolving files at most one directory link is resolved.
-	 *  2) Links to files:
-	 *      The destination path must NOT contain any links.
-	 *      The source path may contain one directory link.
-	 */
-	for (auto &it : links) {
-		TarAddLink(it.first, it.second, this->subdir);
-	}
 
 	return true;
 }
