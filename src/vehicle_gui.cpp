@@ -2487,12 +2487,7 @@ struct VehicleDetailsWindow : Window {
 				break;
 
 			case WID_VD_SERVICE_INTERVAL_DROPDOWN: {
-				Dimension d{0, 0};
-				for (const StringID *strs : {_service_interval_dropdown_calendar, _service_interval_dropdown_wallclock}) {
-					while (*strs != INVALID_STRING_ID) {
-						d = maxdim(d, GetStringBoundingBox(*strs++));
-					}
-				}
+				Dimension d = maxdim(GetStringListBoundingBox(_service_interval_dropdown_calendar), GetStringListBoundingBox(_service_interval_dropdown_wallclock));
 				d.width += padding.width;
 				d.height += padding.height;
 				size = maxdim(size, d);

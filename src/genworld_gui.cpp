@@ -574,7 +574,7 @@ struct GenerateLandscapeWindow : public Window {
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		Dimension d{0, (uint)GetCharacterHeight(FS_NORMAL)};
-		const StringID *strs = nullptr;
+		std::span<const StringID> strs;
 		switch (widget) {
 			case WID_GL_TEMPERATE: case WID_GL_ARCTIC:
 			case WID_GL_TROPICAL: case WID_GL_TOYLAND:
@@ -660,11 +660,7 @@ struct GenerateLandscapeWindow : public Window {
 			default:
 				return;
 		}
-		if (strs != nullptr) {
-			while (*strs != INVALID_STRING_ID) {
-				d = maxdim(d, GetStringBoundingBox(*strs++));
-			}
-		}
+		maxdim(d, GetStringListBoundingBox(strs));
 		d.width += padding.width;
 		d.height += padding.height;
 		size = maxdim(size, d);

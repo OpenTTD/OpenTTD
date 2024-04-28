@@ -369,9 +369,7 @@ public:
 
 			case WID_RV_START_REPLACE: {
 				Dimension d = GetStringBoundingBox(STR_REPLACE_VEHICLES_START);
-				for (int i = 0; _start_replace_dropdown[i] != INVALID_STRING_ID; i++) {
-					d = maxdim(d, GetStringBoundingBox(_start_replace_dropdown[i]));
-				}
+				maxdim(d, GetStringListBoundingBox(_start_replace_dropdown));
 				d.width += padding.width;
 				d.height += padding.height;
 				size = maxdim(size, d);

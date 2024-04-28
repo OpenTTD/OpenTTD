@@ -854,10 +854,7 @@ public:
 			}
 
 			case WID_O_COND_COMPARATOR: {
-				Dimension d = {0, 0};
-				for (int i = 0; _order_conditional_condition[i] != INVALID_STRING_ID; i++) {
-					d = maxdim(d, GetStringBoundingBox(_order_conditional_condition[i]));
-				}
+				Dimension d = GetStringListBoundingBox(_order_conditional_condition);
 				d.width += padding.width;
 				d.height += padding.height;
 				size = maxdim(size, d);

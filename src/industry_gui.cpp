@@ -1739,10 +1739,7 @@ public:
 			}
 
 			case WID_ID_DROPDOWN_CRITERIA: {
-				Dimension d = {0, 0};
-				for (uint i = 0; IndustryDirectoryWindow::sorter_names[i] != INVALID_STRING_ID; i++) {
-					d = maxdim(d, GetStringBoundingBox(IndustryDirectoryWindow::sorter_names[i]));
-				}
+				Dimension d = GetStringListBoundingBox(IndustryDirectoryWindow::sorter_names);
 				d.width += padding.width;
 				d.height += padding.height;
 				size = maxdim(size, d);
