@@ -724,7 +724,6 @@ private:
 		STR_SORT_BY_NAME,
 		STR_SORT_BY_POPULATION,
 		STR_SORT_BY_RATING,
-		INVALID_STRING_ID
 	};
 	static const std::initializer_list<GUITownList::SortFunction * const> sorter_funcs;
 

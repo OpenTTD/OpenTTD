@@ -1330,7 +1330,6 @@ protected:
 		STR_SORT_BY_TYPE,
 		STR_SORT_BY_PRODUCTION,
 		STR_SORT_BY_TRANSPORTED,
-		INVALID_STRING_ID
 	};
 	static const std::initializer_list<GUIIndustryList::SortFunction * const> sorter_funcs;
 
