@@ -1325,7 +1325,13 @@ protected:
 	static Listing last_sorting;
 
 	/* Constants for sorting industries */
-	static const StringID sorter_names[];
+	static inline const StringID sorter_names[] = {
+		STR_SORT_BY_NAME,
+		STR_SORT_BY_TYPE,
+		STR_SORT_BY_PRODUCTION,
+		STR_SORT_BY_TRANSPORTED,
+		INVALID_STRING_ID
+	};
 	static const std::initializer_list<GUIIndustryList::SortFunction * const> sorter_funcs;
 
 	GUIIndustryList industries{IndustryDirectoryWindow::produced_cargo_filter};
@@ -1907,15 +1913,6 @@ const std::initializer_list<GUIIndustryList::SortFunction * const> IndustryDirec
 	&IndustryTypeSorter,
 	&IndustryProductionSorter,
 	&IndustryTransportedCargoSorter
-};
-
-/* Names of the sorting functions */
-const StringID IndustryDirectoryWindow::sorter_names[] = {
-	STR_SORT_BY_NAME,
-	STR_SORT_BY_TYPE,
-	STR_SORT_BY_PRODUCTION,
-	STR_SORT_BY_TRANSPORTED,
-	INVALID_STRING_ID
 };
 
 CargoID IndustryDirectoryWindow::produced_cargo_filter = CargoFilterCriteria::CF_ANY;

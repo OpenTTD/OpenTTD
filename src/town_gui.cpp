@@ -720,7 +720,12 @@ private:
 	static Listing last_sorting;
 
 	/* Constants for sorting towns */
-	static const StringID sorter_names[];
+	static inline const StringID sorter_names[] = {
+		STR_SORT_BY_NAME,
+		STR_SORT_BY_POPULATION,
+		STR_SORT_BY_RATING,
+		INVALID_STRING_ID
+	};
 	static const std::initializer_list<GUITownList::SortFunction * const> sorter_funcs;
 
 	StringFilter string_filter;             ///< Filter for towns
@@ -1044,14 +1049,6 @@ public:
 };
 
 Listing TownDirectoryWindow::last_sorting = {false, 0};
-
-/** Names of the sorting functions. */
-const StringID TownDirectoryWindow::sorter_names[] = {
-	STR_SORT_BY_NAME,
-	STR_SORT_BY_POPULATION,
-	STR_SORT_BY_RATING,
-	INVALID_STRING_ID
-};
 
 /** Available town directory sorting functions. */
 const std::initializer_list<GUITownList::SortFunction * const> TownDirectoryWindow::sorter_funcs = {
