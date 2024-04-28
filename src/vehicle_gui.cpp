@@ -108,7 +108,6 @@ const std::initializer_list<const StringID> BaseVehicleListWindow::vehicle_group
 	STR_SORT_BY_LENGTH,
 	STR_SORT_BY_LIFE_TIME,
 	STR_SORT_BY_TIMETABLE_DELAY,
-	INVALID_STRING_ID
 };
 
 const std::initializer_list<const StringID> BaseVehicleListWindow::vehicle_group_none_sorter_names_wallclock = {
@@ -125,7 +124,6 @@ const std::initializer_list<const StringID> BaseVehicleListWindow::vehicle_group
 	STR_SORT_BY_LENGTH,
 	STR_SORT_BY_LIFE_TIME,
 	STR_SORT_BY_TIMETABLE_DELAY,
-	INVALID_STRING_ID
 };
 
 const std::initializer_list<BaseVehicleListWindow::VehicleGroupSortFunction * const> BaseVehicleListWindow::vehicle_group_shared_orders_sorter_funcs = {
@@ -142,7 +140,6 @@ const std::initializer_list<const StringID> BaseVehicleListWindow::vehicle_group
 	STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR,
 	STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR,
 	STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR,
-	INVALID_STRING_ID
 };
 
 const std::initializer_list<const StringID> BaseVehicleListWindow::vehicle_group_shared_orders_sorter_names_wallclock = {
@@ -151,13 +148,11 @@ const std::initializer_list<const StringID> BaseVehicleListWindow::vehicle_group
 	STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD,
 	STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD,
 	STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD,
-	INVALID_STRING_ID
 };
 
 const std::initializer_list<const StringID> BaseVehicleListWindow::vehicle_group_by_names = {
 	STR_GROUP_BY_NONE,
 	STR_GROUP_BY_SHARED_ORDERS,
-	INVALID_STRING_ID
 };
 
 const StringID BaseVehicleListWindow::vehicle_depot_name[] = {
@@ -2362,14 +2357,12 @@ static StringID _service_interval_dropdown_calendar[] = {
 	STR_VEHICLE_DETAILS_DEFAULT,
 	STR_VEHICLE_DETAILS_DAYS,
 	STR_VEHICLE_DETAILS_PERCENT,
-	INVALID_STRING_ID,
 };
 
 static StringID _service_interval_dropdown_wallclock[] = {
 	STR_VEHICLE_DETAILS_DEFAULT,
 	STR_VEHICLE_DETAILS_MINUTES,
 	STR_VEHICLE_DETAILS_PERCENT,
-	INVALID_STRING_ID,
 };
 
 /** Class for managing the vehicle details window. */

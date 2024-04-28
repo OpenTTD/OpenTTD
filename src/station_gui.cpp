@@ -251,7 +251,6 @@ protected:
 		STR_SORT_BY_WAITING_AVAILABLE,
 		STR_SORT_BY_RATING_MAX,
 		STR_SORT_BY_RATING_MIN,
-		INVALID_STRING_ID
 	};
 	static const std::initializer_list<GUIStationList::SortFunction * const> sorter_funcs;
 
@@ -1291,7 +1290,6 @@ struct StationViewWindow : public Window {
 		STR_STATION_VIEW_WAITING_AMOUNT,
 		STR_STATION_VIEW_PLANNED_STATION,
 		STR_STATION_VIEW_PLANNED_AMOUNT,
-		INVALID_STRING_ID
 	};
 	/** Names of the grouping options in the dropdown. */
 	static inline const StringID group_names[] = {
@@ -1301,7 +1299,6 @@ struct StationViewWindow : public Window {
 		STR_STATION_VIEW_GROUP_V_D_S,
 		STR_STATION_VIEW_GROUP_D_S_V,
 		STR_STATION_VIEW_GROUP_D_V_S,
-		INVALID_STRING_ID
 	};
 
 	/**

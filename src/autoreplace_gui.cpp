@@ -71,7 +71,6 @@ void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type)
 static const StringID _start_replace_dropdown[] = {
 	STR_REPLACE_VEHICLES_NOW,
 	STR_REPLACE_VEHICLES_WHEN_OLD,
-	INVALID_STRING_ID
 };
 
 /**

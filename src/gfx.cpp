@@ -865,15 +865,15 @@ Dimension GetStringBoundingBox(StringID strid, FontSize start_fontsize)
 
 /**
  * Get maximum width of a list of strings.
- * @param list List of strings, terminated with INVALID_STRING_ID.
+ * @param list List of strings.
  * @param fontsize Font size to use.
  * @return Width of longest string within the list.
  */
 uint GetStringListWidth(std::span<const StringID> list, FontSize fontsize)
 {
 	uint width = 0;
-	for (const StringID *str = list.data(); *str != INVALID_STRING_ID; str++) {
-		width = std::max(width, GetStringBoundingBox(*str, fontsize).width);
+	for (auto str : list) {
+		width = std::max(width, GetStringBoundingBox(str, fontsize).width);
 	}
 	return width;
 }
@@ -887,8 +887,8 @@ uint GetStringListWidth(std::span<const StringID> list, FontSize fontsize)
 Dimension GetStringListBoundingBox(std::span<const StringID> list, FontSize fontsize)
 {
 	Dimension d{0, 0};
-	for (const StringID *str = list.data(); *str != INVALID_STRING_ID; str++) {
-		d = maxdim(d, GetStringBoundingBox(*str, fontsize));
+	for (auto str : list) {
+		d = maxdim(d, GetStringBoundingBox(str, fontsize));
 	}
 	return d;
 }

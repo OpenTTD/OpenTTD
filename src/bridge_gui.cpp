@@ -79,7 +79,6 @@ private:
 		STR_SORT_BY_NUMBER,
 		STR_SORT_BY_COST,
 		STR_SORT_BY_MAX_SPEED,
-		INVALID_STRING_ID
 	};
 	static const std::initializer_list<GUIBridgeList::SortFunction * const> sorter_funcs;
 

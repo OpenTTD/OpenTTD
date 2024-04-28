@@ -497,7 +497,6 @@ const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	STR_SORT_BY_POWER_VS_RUNNING_COST,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
-	INVALID_STRING_ID
 }, {
 	/* Road vehicles */
 	STR_SORT_BY_ENGINE_ID,
@@ -511,7 +510,6 @@ const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	STR_SORT_BY_POWER_VS_RUNNING_COST,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
-	INVALID_STRING_ID
 }, {
 	/* Ships */
 	STR_SORT_BY_ENGINE_ID,
@@ -522,7 +520,6 @@ const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	STR_SORT_BY_RUNNING_COST,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
-	INVALID_STRING_ID
 }, {
 	/* Aircraft */
 	STR_SORT_BY_ENGINE_ID,
@@ -534,7 +531,6 @@ const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
 	STR_SORT_BY_RANGE,
-	INVALID_STRING_ID
 }};
 
 /** Filters vehicles by cargo and engine (in case of rail vehicle). */
