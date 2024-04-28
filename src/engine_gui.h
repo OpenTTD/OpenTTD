@@ -49,7 +49,7 @@ extern bool _engine_sort_direction;
 extern uint8_t _engine_sort_last_criteria[];
 extern bool _engine_sort_last_order[];
 extern bool _engine_sort_show_hidden_engines[];
-extern const StringID _engine_sort_listing[][12];
+extern const std::initializer_list<const StringID> _engine_sort_listing[];
 extern EngList_SortTypeFunction * const _engine_sort_functions[][11];
 
 /* Functions in build_vehicle_gui.cpp */
