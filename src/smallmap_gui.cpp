@@ -274,17 +274,16 @@ static const LegendAndColour * const _legend_table[] = {
 
 /** Colour scheme of the smallmap. */
 struct SmallMapColourScheme {
-	uint32_t *height_colours;            ///< Cached colours for each level in a map.
-	const uint32_t *height_colours_base; ///< Base table for determining the colours
-	size_t colour_count;               ///< The number of colours.
+	std::vector<uint32_t> height_colours; ///< Cached colours for each level in a map.
+	std::span<const uint32_t> height_colours_base; ///< Base table for determining the colours
 	uint32_t default_colour;             ///< Default colour of the land.
 };
 
 /** Available colour schemes for height maps. */
 static SmallMapColourScheme _heightmap_schemes[] = {
-	{nullptr, _green_map_heights,      lengthof(_green_map_heights),      MKCOLOUR_XXXX(0x54)}, ///< Green colour scheme.
-	{nullptr, _dark_green_map_heights, lengthof(_dark_green_map_heights), MKCOLOUR_XXXX(0x62)}, ///< Dark green colour scheme.
-	{nullptr, _violet_map_heights,     lengthof(_violet_map_heights),     MKCOLOUR_XXXX(0x81)}, ///< Violet colour scheme.
+	{{}, _green_map_heights,      MKCOLOUR_XXXX(0x54)}, ///< Green colour scheme.
+	{{}, _dark_green_map_heights, MKCOLOUR_XXXX(0x62)}, ///< Dark green colour scheme.
+	{{}, _violet_map_heights,     MKCOLOUR_XXXX(0x81)}, ///< Violet colour scheme.
 };
 
 /**
@@ -293,7 +292,7 @@ static SmallMapColourScheme _heightmap_schemes[] = {
 void BuildLandLegend()
 {
 	/* The smallmap window has never been initialized, so no need to change the legend. */
-	if (_heightmap_schemes[0].height_colours == nullptr) return;
+	if (_heightmap_schemes[0].height_colours.empty()) return;
 
 	/*
 	 * The general idea of this function is to fill the legend with an appropriate evenly spaced
@@ -749,11 +748,11 @@ protected:
 
 		for (auto &heightmap_scheme : _heightmap_schemes) {
 			/* The heights go from 0 up to and including maximum. */
-			int heights = _settings_game.construction.map_height_limit + 1;
-			heightmap_scheme.height_colours = ReallocT<uint32_t>(heightmap_scheme.height_colours, heights);
+			size_t heights = _settings_game.construction.map_height_limit + 1;
+			heightmap_scheme.height_colours.resize(heights);
 
-			for (int z = 0; z < heights; z++) {
-				size_t access_index = (heightmap_scheme.colour_count * z) / heights;
+			for (size_t z = 0; z < heights; z++) {
+				size_t access_index = (heightmap_scheme.height_colours_base.size() * z) / heights;
 
 				/* Choose colour by mapping the range (0..max heightlevel) on the complete colour table. */
 				heightmap_scheme.height_colours[z] = heightmap_scheme.height_colours_base[access_index];
