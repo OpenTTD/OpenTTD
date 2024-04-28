@@ -169,7 +169,7 @@ static void PlaceRail_Waypoint(TileIndex tile)
 		return;
 	}
 
-	Axis axis = GetAxisForNewWaypoint(tile);
+	Axis axis = GetAxisForNewRailWaypoint(tile);
 	if (IsValidAxis(axis)) {
 		/* Valid tile for waypoints */
 		VpStartPlaceSizing(tile, axis == AXIS_X ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_STATION);
@@ -781,7 +781,7 @@ struct BuildRailToolbarWindow : Window {
 								}
 							};
 
-							ShowSelectWaypointIfNeeded(ta, proc);
+							ShowSelectRailWaypointIfNeeded(ta, proc);
 						}
 					}
 					break;
@@ -821,7 +821,7 @@ struct BuildRailToolbarWindow : Window {
 
 	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
 	{
-		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) CheckRedrawWaypointCoverage(this);
+		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) CheckRedrawRailWaypointCoverage(this);
 	}
 
 	/**
@@ -1832,7 +1832,7 @@ public:
 	{
 		bool default_added = false;
 		for (const Waypoint *wp : Waypoint::Iterate()) {
-			if (wp->owner != _local_company) continue;
+			if (wp->owner != _local_company || HasBit(wp->waypoint_flags, WPF_ROAD)) continue;
 			if (!default_added && StationUsesDefaultType(wp)) {
 				items.insert({0, 0, STAT_CLASS_WAYP, 0});
 				default_added = true;

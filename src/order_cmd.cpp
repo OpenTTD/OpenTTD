@@ -831,6 +831,14 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 					break;
 				}
 
+				case VEH_ROAD: {
+					if (!(wp->facilities & (FACIL_BUS_STOP | FACIL_TRUCK_STOP))) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER, STR_ERROR_NO_ROAD_WAYPOINT);
+
+					ret = CheckOwnership(wp->owner);
+					if (ret.Failed()) return ret;
+					break;
+				}
+
 				case VEH_SHIP:
 					if (!(wp->facilities & FACIL_DOCK)) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER, STR_ERROR_NO_BUOY);
 					if (wp->owner != OWNER_NONE) {
@@ -842,8 +850,8 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 
 			/* Order flags can be any of the following for waypoints:
 			 * [non-stop]
-			 * non-stop orders (if any) are only valid for trains */
-			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
+			 * non-stop orders (if any) are only valid for trains and road vehicles */
+			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && !v->IsGroundVehicle()) return CMD_ERROR;
 			break;
 		}
 

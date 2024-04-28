@@ -1461,7 +1461,7 @@ void DrawRoadCatenary(const TileInfo *ti)
 			tram = road = (GetCrossingRailAxis(ti->tile) == AXIS_Y ? ROAD_X : ROAD_Y);
 		}
 	} else if (IsTileType(ti->tile, MP_STATION)) {
-		if (IsRoadStop(ti->tile)) {
+		if (IsAnyRoadStop(ti->tile)) {
 			if (IsDriveThroughStopTile(ti->tile)) {
 				Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;
 				tram = road = (axis == AXIS_X ? ROAD_X : ROAD_Y);
@@ -2451,7 +2451,7 @@ CommandCost CmdConvertRoad(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 		TileType tt = GetTileType(tile);
 		switch (tt) {
 			case MP_STATION:
-				if (!IsRoadStop(tile)) continue;
+				if (!IsAnyRoadStop(tile)) continue;
 				break;
 			case MP_ROAD:
 				if (IsLevelCrossing(tile) && RoadNoLevelCrossing(to_type)) {

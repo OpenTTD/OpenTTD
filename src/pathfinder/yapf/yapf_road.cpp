@@ -70,6 +70,8 @@ protected:
 					break;
 
 				case MP_STATION: {
+					if (IsRoadWaypoint(tile)) break;
+
 					const RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
 					if (IsDriveThroughStopTile(tile)) {
 						/* Increase the cost for drive-through road stops */
@@ -232,7 +234,7 @@ protected:
 	TileIndex    m_destTile;
 	TrackdirBits m_destTrackdirs;
 	StationID    m_dest_station;
-	bool         m_bus;
+	StationType  m_station_type;
 	bool         m_non_artic;
 
 public:
@@ -240,8 +242,14 @@ public:
 	{
 		if (v->current_order.IsType(OT_GOTO_STATION)) {
 			m_dest_station  = v->current_order.GetDestination();
-			m_bus           = v->IsBus();
-			m_destTile      = CalcClosestStationTile(m_dest_station, v->tile, m_bus ? STATION_BUS : STATION_TRUCK);
+			m_station_type  = v->IsBus() ? STATION_BUS : STATION_TRUCK;
+			m_destTile      = CalcClosestStationTile(m_dest_station, v->tile, m_station_type);
+			m_non_artic     = !v->HasArticulatedPart();
+			m_destTrackdirs = INVALID_TRACKDIR_BIT;
+		} else if (v->current_order.IsType(OT_GOTO_WAYPOINT)) {
+			m_dest_station  = v->current_order.GetDestination();
+			m_station_type  = STATION_ROADWAYPOINT;
+			m_destTile      = CalcClosestStationTile(m_dest_station, v->tile, m_station_type);
 			m_non_artic     = !v->HasArticulatedPart();
 			m_destTrackdirs = INVALID_TRACKDIR_BIT;
 		} else {
@@ -275,7 +283,7 @@ public:
 		if (m_dest_station != INVALID_STATION) {
 			return IsTileType(tile, MP_STATION) &&
 				GetStationIndex(tile) == m_dest_station &&
-				(m_bus ? IsBusStop(tile) : IsTruckStop(tile)) &&
+				(m_station_type == GetStationType(tile)) &&
 				(m_non_artic || IsDriveThroughStopTile(tile));
 		}
 

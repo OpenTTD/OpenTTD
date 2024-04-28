@@ -43,8 +43,25 @@ private:
 	{
 		if (!this->wp->IsInUse()) return this->wp->xy;
 
+		StationType type;
+		switch (this->vt) {
+			case VEH_TRAIN:
+				type = STATION_WAYPOINT;
+				break;
+
+			case VEH_ROAD:
+				type = STATION_ROADWAYPOINT;
+				break;
+
+			case VEH_SHIP:
+				type = STATION_BUOY;
+				break;
+
+			default:
+				NOT_REACHED();
+		}
 		TileArea ta;
-		this->wp->GetTileArea(&ta, this->vt == VEH_TRAIN ? STATION_WAYPOINT : STATION_BUOY);
+		this->wp->GetTileArea(&ta, type);
 		return ta.GetCenterTile();
 	}
 
@@ -57,11 +74,20 @@ public:
 	WaypointWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->wp = Waypoint::Get(window_number);
-		this->vt = (wp->string_id == STR_SV_STNAME_WAYPOINT) ? VEH_TRAIN : VEH_SHIP;
+		if (wp->string_id == STR_SV_STNAME_WAYPOINT) {
+			this->vt = HasBit(this->wp->waypoint_flags, WPF_ROAD) ? VEH_ROAD : VEH_TRAIN;
+		} else {
+			this->vt = VEH_SHIP;
+		}
 
 		this->CreateNestedTree();
 		if (this->vt == VEH_TRAIN) {
 			this->GetWidget<NWidgetCore>(WID_W_SHOW_VEHICLES)->SetDataTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP);
+		}
+		if (this->vt == VEH_ROAD) {
+			this->GetWidget<NWidgetCore>(WID_W_SHOW_VEHICLES)->SetDataTip(STR_LORRY, STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP);
+		}
+		if (this->vt != VEH_SHIP) {
 			this->GetWidget<NWidgetCore>(WID_W_CENTER_VIEW)->tool_tip = STR_WAYPOINT_VIEW_CENTER_TOOLTIP;
 			this->GetWidget<NWidgetCore>(WID_W_RENAME)->tool_tip = STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME;
 		}

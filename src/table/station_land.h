@@ -955,6 +955,15 @@ static const DrawTileSprites _station_display_datas_bus[] = {
 	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_Y,      _station_display_datas_0171)
 };
 
+static const DrawTileSprites _station_display_datas_road_waypoint[] = {
+	TILE_SPRITE_LINE(SPR_BUS_STOP_NE_GROUND   | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_71)
+	TILE_SPRITE_LINE(SPR_BUS_STOP_SE_GROUND   | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_72)
+	TILE_SPRITE_LINE(SPR_BUS_STOP_SW_GROUND   | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_73)
+	TILE_SPRITE_LINE(SPR_BUS_STOP_NW_GROUND   | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_74)
+	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_X,      _station_display_datas_0170)
+	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_Y,      _station_display_datas_0171)
+};
+
 static const DrawTileSprites _station_display_datas_oilrig[] = {
 	TILE_SPRITE_LINE(SPR_FLAT_WATER_TILE,            _station_display_nothing)
 };
@@ -999,4 +1008,5 @@ static const DrawTileSprites * const _station_display_datas[] = {
 	_station_display_datas_dock,
 	_station_display_datas_buoy,
 	_station_display_datas_waypoint,
+	_station_display_datas_road_waypoint,
 };

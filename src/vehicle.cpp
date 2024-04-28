@@ -2395,7 +2395,7 @@ void Vehicle::LeaveStation()
 	}
 	if (this->type == VEH_ROAD && !(this->vehstatus & VS_CRASHED)) {
 		/* Trigger road stop animation */
-		if (IsRoadStopTile(this->tile)) {
+		if (IsStationRoadStopTile(this->tile)) {
 			TriggerRoadStopRandomisation(st, this->tile, RSRT_VEH_DEPARTS);
 			TriggerRoadStopAnimation(st, this->tile, SAT_TRAIN_DEPARTS);
 		}

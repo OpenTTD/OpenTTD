@@ -28,7 +28,7 @@ static const uint32_t ROADSTOP_CLASS_LABEL_WAYPOINT = 'WAYP';
 enum RoadStopClassID : uint16_t {
 	ROADSTOP_CLASS_BEGIN = 0, ///< The lowest valid value
 	ROADSTOP_CLASS_DFLT = 0, ///< Default road stop class.
-	ROADSTOP_CLASS_WAYP, ///< Waypoint class (unimplemented: this is reserved for future use with road waypoints).
+	ROADSTOP_CLASS_WAYP, ///< Waypoint class.
 	ROADSTOP_CLASS_MAX = UINT16_MAX, ///< Maximum number of classes.
 };
 DECLARE_POSTFIX_INCREMENT(RoadStopClassID)
@@ -72,6 +72,15 @@ enum RoadStopSpecFlags {
 	RSF_NO_AUTO_ROAD_CONNECTION = 4, ///< No auto road connection.
 	RSF_BUILD_MENU_ROAD_ONLY    = 5, ///< Only show in the road build menu (not tram).
 	RSF_BUILD_MENU_TRAM_ONLY    = 6, ///< Only show in the tram build menu (not road).
+};
+
+enum RoadStopView {
+	RSV_BAY_NE                  = 0, ///< Bay road stop, facing Northeast
+	RSV_BAY_SE                  = 1, ///< Bay road stop, facing Southeast
+	RSV_BAY_SW                  = 2, ///< Bay road stop, facing Southwest
+	RSV_BAY_NW                  = 3, ///< Bay road stop, facing Northwest
+	RSV_DRIVE_THROUGH_X         = 4, ///< Drive through road stop, X axis
+	RSV_DRIVE_THROUGH_Y         = 5, ///< Drive through road stop, Y axis
 };
 
 /** Scope resolver for road stops. */

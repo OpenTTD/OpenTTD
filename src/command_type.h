@@ -207,6 +207,9 @@ enum Commands : uint16_t {
 	CMD_RENAME_WAYPOINT,              ///< rename a waypoint
 	CMD_REMOVE_FROM_RAIL_WAYPOINT,    ///< remove a (rectangle of) tiles from a rail waypoint
 
+	CMD_BUILD_ROAD_WAYPOINT,          ///< build a road waypoint
+	CMD_REMOVE_FROM_ROAD_WAYPOINT,    ///< remove a (rectangle of) tiles from a road waypoint
+
 	CMD_BUILD_ROAD_STOP,              ///< build a road stop
 	CMD_REMOVE_ROAD_STOP,             ///< remove a road stop
 	CMD_BUILD_LONG_ROAD,              ///< build a complete road (not a "half" one)

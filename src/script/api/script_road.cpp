@@ -54,7 +54,7 @@
 	if (!::IsValidTile(tile)) return false;
 	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
 
-	return ::IsRoadStopTile(tile) && HasBit(::GetPresentRoadTypes(tile), (::RoadType)GetCurrentRoadType());
+	return ::IsStationRoadStopTile(tile) && HasBit(::GetPresentRoadTypes(tile), (::RoadType)GetCurrentRoadType());
 }
 
 /* static */ bool ScriptRoad::IsDriveThroughRoadStationTile(TileIndex tile)
@@ -604,7 +604,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsTileType(tile, MP_STATION));
-	EnforcePrecondition(false, IsRoadStop(tile));
+	EnforcePrecondition(false, IsStationRoadStop(tile));
 
 	return ScriptObject::Command<CMD_REMOVE_ROAD_STOP>::Do(tile, 1, 1, GetRoadStopType(tile), false);
 }

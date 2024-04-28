@@ -3166,7 +3166,7 @@ public:
 					break;
 
 				case OT_GOTO_WAYPOINT: {
-					assert(v->type == VEH_TRAIN || v->type == VEH_SHIP);
+					assert(v->type == VEH_TRAIN || v->type == VEH_ROAD || v->type == VEH_SHIP);
 					SetDParam(0, v->current_order.GetDestination());
 					str = HasBit(v->vehicle_flags, VF_PATHFINDER_LOST) ? STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL : STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL;
 					SetDParam(1, PackVelocity(v->GetDisplaySpeed(), v->type));
