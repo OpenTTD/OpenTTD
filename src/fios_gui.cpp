@@ -238,7 +238,8 @@ static const TextColour _fios_colours[] = {
 	TC_DARK_GREEN,   // DFT_FIOS_DIR
 	TC_ORANGE,       // DFT_FIOS_DIRECT
 };
-
+/* This should align with the DetailedFileType enum defined in fileio_type.h */
+static_assert(std::size(_fios_colours) == DFT_END);
 
 /**
  * Sort the collected list save games prior to displaying it in the save/load gui.
