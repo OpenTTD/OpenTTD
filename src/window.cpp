@@ -1444,7 +1444,7 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height)
 		if (this->resize.step_width  > 1) enlarge_x -= enlarge_x % (int)this->resize.step_width;
 		if (this->resize.step_height > 1) enlarge_y -= enlarge_y % (int)this->resize.step_height;
 
-		ResizeWindow(this, enlarge_x, enlarge_y);
+		ResizeWindow(this, enlarge_x, enlarge_y, true, false);
 		/* ResizeWindow() calls this->OnResize(). */
 	} else {
 		/* Always call OnResize; that way the scrollbars and matrices get initialized. */
