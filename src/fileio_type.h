@@ -40,6 +40,9 @@ enum DetailedFileType {
 	DFT_FIOS_DIR,    ///< A directory entry.
 	DFT_FIOS_DIRECT, ///< Direct filename.
 
+	/* Ending variable used for compile time check of this array against _fios_colours in fiose_gui.cpp */
+	DFT_END,
+
 	DFT_INVALID = 255, ///< Unknown or invalid file.
 };
 
