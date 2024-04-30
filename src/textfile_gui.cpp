@@ -654,54 +654,38 @@ void TextfileWindow::ScrollToLine(size_t line)
 /**
  * Do an in-memory gunzip operation. This works on a raw deflate stream,
  * or a file with gzip or zlib header.
- * @param bufp  A pointer to a buffer containing the input data. This
- *              buffer will be freed and replaced by a buffer containing
- *              the uncompressed data.
- * @param sizep A pointer to the buffer size. Before the call, the value
- *              pointed to should contain the size of the input buffer.
- *              After the call, it contains the size of the uncompressed
- *              data.
+ * @param input Buffer containing the input data.
+ * @return Decompressed buffer.
  *
- * When decompressing fails, *bufp is set to nullptr and *sizep to 0. The
- * compressed buffer passed in is still freed in this case.
+ * When decompressing fails, an empty buffer is returned.
  */
-static void Gunzip(uint8_t **bufp, size_t *sizep)
+static std::vector<char> Gunzip(std::span<char> input)
 {
-	static const int BLOCKSIZE  = 8192;
-	uint8_t             *buf       = nullptr;
-	size_t           alloc_size = 0;
-	z_stream         z;
-	int              res;
+	static const int BLOCKSIZE = 8192;
+	std::vector<char> output;
 
+	z_stream z;
 	memset(&z, 0, sizeof(z));
-	z.next_in = *bufp;
-	z.avail_in = (uInt)*sizep;
+	z.next_in = reinterpret_cast<Bytef *>(input.data());
+	z.avail_in = static_cast<uInt>(input.size());
 
 	/* window size = 15, add 32 to enable gzip or zlib header processing */
-	res = inflateInit2(&z, 15 + 32);
+	int res = inflateInit2(&z, 15 + 32);
 	/* Z_BUF_ERROR just means we need more space */
 	while (res == Z_OK || (res == Z_BUF_ERROR && z.avail_out == 0)) {
 		/* When we get here, we're either just starting, or
 		 * inflate is out of output space - allocate more */
-		alloc_size += BLOCKSIZE;
 		z.avail_out += BLOCKSIZE;
-		buf = ReallocT(buf, alloc_size);
-		z.next_out = buf + alloc_size - z.avail_out;
+		output.resize(output.size() + BLOCKSIZE);
+		z.next_out = reinterpret_cast<Bytef *>(&*output.end() - z.avail_out);
 		res = inflate(&z, Z_FINISH);
 	}
 
-	free(*bufp);
 	inflateEnd(&z);
+	if (res != Z_STREAM_END) return {};
 
-	if (res == Z_STREAM_END) {
-		*bufp = buf;
-		*sizep = alloc_size - z.avail_out;
-	} else {
-		/* Something went wrong */
-		*bufp = nullptr;
-		*sizep = 0;
-		free(buf);
-	}
+	output.resize(output.size() - z.avail_out);
+	return output;
 }
 #endif
 
@@ -710,52 +694,36 @@ static void Gunzip(uint8_t **bufp, size_t *sizep)
 /**
  * Do an in-memory xunzip operation. This works on a .xz or (legacy)
  * .lzma file.
- * @param bufp  A pointer to a buffer containing the input data. This
- *              buffer will be freed and replaced by a buffer containing
- *              the uncompressed data.
- * @param sizep A pointer to the buffer size. Before the call, the value
- *              pointed to should contain the size of the input buffer.
- *              After the call, it contains the size of the uncompressed
- *              data.
+ * @param input Buffer containing the input data.
+ * @return Decompressed buffer.
  *
- * When decompressing fails, *bufp is set to nullptr and *sizep to 0. The
- * compressed buffer passed in is still freed in this case.
+ * When decompressing fails, an empty buffer is returned.
  */
-static void Xunzip(uint8_t **bufp, size_t *sizep)
+static std::vector<char> Xunzip(std::span<char> input)
 {
-	static const int BLOCKSIZE  = 8192;
-	uint8_t             *buf       = nullptr;
-	size_t           alloc_size = 0;
-	lzma_stream      z = LZMA_STREAM_INIT;
-	int              res;
+	static const int BLOCKSIZE = 8192;
+	std::vector<char> output;
 
-	z.next_in = *bufp;
-	z.avail_in = *sizep;
+	lzma_stream z = LZMA_STREAM_INIT;
+	z.next_in = reinterpret_cast<uint8_t *>(input.data());
+	z.avail_in = input.size();
 
-	res = lzma_auto_decoder(&z, UINT64_MAX, LZMA_CONCATENATED);
+	int res = lzma_auto_decoder(&z, UINT64_MAX, LZMA_CONCATENATED);
 	/* Z_BUF_ERROR just means we need more space */
 	while (res == LZMA_OK || (res == LZMA_BUF_ERROR && z.avail_out == 0)) {
 		/* When we get here, we're either just starting, or
 		 * inflate is out of output space - allocate more */
-		alloc_size += BLOCKSIZE;
 		z.avail_out += BLOCKSIZE;
-		buf = ReallocT(buf, alloc_size);
-		z.next_out = buf + alloc_size - z.avail_out;
+		output.resize(output.size() + BLOCKSIZE);
+		z.next_out = reinterpret_cast<uint8_t *>(&*output.end() - z.avail_out);
 		res = lzma_code(&z, LZMA_FINISH);
 	}
 
-	free(*bufp);
 	lzma_end(&z);
+	if (res != LZMA_STREAM_END) return {};
 
-	if (res == LZMA_STREAM_END) {
-		*bufp = buf;
-		*sizep = alloc_size - z.avail_out;
-	} else {
-		/* Something went wrong */
-		*bufp = nullptr;
-		*sizep = 0;
-		free(buf);
-	}
+	output.resize(output.size() - z.avail_out);
+	return output;
 }
 #endif
 
@@ -779,28 +747,26 @@ static void Xunzip(uint8_t **bufp, size_t *sizep)
 	/* Early return on empty files. */
 	if (filesize == 0) return;
 
-	char *buf = MallocT<char>(filesize);
-	size_t read = fread(buf, 1, filesize, handle);
+	std::vector<char> buf;
+	buf.resize(filesize);
+	size_t read = fread(buf.data(), 1, buf.size(), handle);
 	fclose(handle);
 
-	if (read != filesize) {
-		free(buf);
-		return;
-	}
+	if (read != buf.size()) return;
 
 #if defined(WITH_ZLIB)
 	/* In-place gunzip */
-	if (textfile.ends_with(".gz")) Gunzip((uint8_t**)&buf, &filesize);
+	if (textfile.ends_with(".gz")) buf = Gunzip(buf);
 #endif
 
 #if defined(WITH_LIBLZMA)
 	/* In-place xunzip */
-	if (textfile.ends_with(".xz")) Xunzip((uint8_t**)&buf, &filesize);
+	if (textfile.ends_with(".xz")) buf = Xunzip(buf);
 #endif
 
-	if (buf == nullptr) return;
+	if (buf.empty()) return;
 
-	std::string_view sv_buf(buf, filesize);
+	std::string_view sv_buf(buf.data(), buf.size());
 
 	/* Check for the byte-order-mark, and skip it if needed. */
 	if (sv_buf.starts_with("\ufeff")) sv_buf.remove_prefix(3);
@@ -813,7 +779,6 @@ static void Xunzip(uint8_t **bufp, size_t *sizep)
 
 	/* Process the loaded text into lines, and do any further parsing needed. */
 	this->LoadText(sv_buf);
-	free(buf);
 }
 
 /**
