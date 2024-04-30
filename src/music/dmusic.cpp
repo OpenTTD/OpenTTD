@@ -433,16 +433,14 @@ bool DLSFile::LoadFile(const wchar_t *file)
 {
 	Debug(driver, 2, "DMusic: Try to load DLS file {}", FS2OTTD(file));
 
-	FILE *f = _wfopen(file, L"rb");
+	AutoCloseFile f(_wfopen(file, L"rb"));
 	if (f == nullptr) return false;
-
-	FileCloser f_scope(f);
 
 	/* Check DLS file header. */
 	ChunkHeader hdr;
 	FOURCC dls_type;
-	if (fread(&hdr, sizeof(hdr), 1, f) != 1) return false;
-	if (fread(&dls_type, sizeof(dls_type), 1, f) != 1) return false;
+	if (fread(&hdr, sizeof(hdr), 1, f.get()) != 1) return false;
+	if (fread(&dls_type, sizeof(dls_type), 1, f.get()) != 1) return false;
 	if (hdr.type != FOURCC_RIFF || dls_type != FOURCC_DLS) return false;
 
 	hdr.length -= sizeof(FOURCC);
@@ -455,49 +453,49 @@ bool DLSFile::LoadFile(const wchar_t *file)
 	/* Iterate over all chunks in the file. */
 	while (hdr.length > 0) {
 		ChunkHeader chunk;
-		if (fread(&chunk, sizeof(chunk), 1, f) != 1) return false;
+		if (fread(&chunk, sizeof(chunk), 1, f.get()) != 1) return false;
 		hdr.length -= chunk.length + sizeof(chunk);
 
 		if (chunk.type == FOURCC_LIST) {
 			/* Unwrap list header. */
-			if (fread(&chunk.type, sizeof(chunk.type), 1, f) != 1) return false;
+			if (fread(&chunk.type, sizeof(chunk.type), 1, f.get()) != 1) return false;
 			chunk.length -= sizeof(chunk.type);
 		}
 
 		switch (chunk.type) {
 			case FOURCC_COLH:
-				if (fread(&header, sizeof(header), 1, f) != 1) return false;
+				if (fread(&header, sizeof(header), 1, f.get()) != 1) return false;
 				break;
 
 			case FOURCC_LINS: // List chunk
-				if (!this->ReadDLSInstrumentList(f, chunk.length)) return false;
+				if (!this->ReadDLSInstrumentList(f.get(), chunk.length)) return false;
 				break;
 
 			case FOURCC_WVPL: // List chunk
-				if (!this->ReadDLSWaveList(f, chunk.length)) return false;
+				if (!this->ReadDLSWaveList(f.get(), chunk.length)) return false;
 				break;
 
 			case FOURCC_PTBL:
 				POOLTABLE ptbl;
-				if (fread(&ptbl, sizeof(ptbl), 1, f) != 1) return false;
-				fseek(f, ptbl.cbSize - sizeof(ptbl), SEEK_CUR);
+				if (fread(&ptbl, sizeof(ptbl), 1, f.get()) != 1) return false;
+				fseek(f.get(), ptbl.cbSize - sizeof(ptbl), SEEK_CUR);
 
 				/* Read all defined cues. */
 				for (ULONG i = 0; i < ptbl.cCues; i++) {
 					POOLCUE cue;
-					if (fread(&cue, sizeof(cue), 1, f) != 1) return false;
+					if (fread(&cue, sizeof(cue), 1, f.get()) != 1) return false;
 					this->pool_cues.push_back(cue);
 				}
 				break;
 
 			case FOURCC_INFO:
 				/* We don't care about info stuff. */
-				fseek(f, chunk.length, SEEK_CUR);
+				fseek(f.get(), chunk.length, SEEK_CUR);
 				break;
 
 			default:
 				Debug(driver, 7, "DLS: Ignoring unknown chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
-				fseek(f, chunk.length, SEEK_CUR);
+				fseek(f.get(), chunk.length, SEEK_CUR);
 				break;
 		}
 	}

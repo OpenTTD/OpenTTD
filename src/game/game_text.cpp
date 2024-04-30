@@ -49,10 +49,8 @@ void CDECL StrgenFatalI(const std::string &msg)
 LanguageStrings ReadRawLanguageStrings(const std::string &file)
 {
 	size_t to_read;
-	FILE *fh = FioFOpenFile(file, "rb", GAME_DIR, &to_read);
+	AutoCloseFile fh(FioFOpenFile(file, "rb", GAME_DIR, &to_read));
 	if (fh == nullptr) return LanguageStrings();
-
-	FileCloser fhClose(fh);
 
 	auto pos = file.rfind(PATHSEPCHAR);
 	if (pos == std::string::npos) return LanguageStrings();
@@ -64,7 +62,7 @@ LanguageStrings ReadRawLanguageStrings(const std::string &file)
 	LanguageStrings ret(langname.substr(0, langname.find('.')));
 
 	char buffer[2048];
-	while (to_read != 0 && fgets(buffer, sizeof(buffer), fh) != nullptr) {
+	while (to_read != 0 && fgets(buffer, sizeof(buffer), fh.get()) != nullptr) {
 		size_t len = strlen(buffer);
 
 		/* Remove trailing spaces/newlines from the string. */

@@ -81,18 +81,6 @@ public:
 
 DECLARE_ENUM_AS_BIT_SET(TarScanner::Mode)
 
-/** Auto-close a file upon scope exit. */
-class FileCloser {
-	FILE *f;
-
-public:
-	FileCloser(FILE *_f) : f(_f) {}
-	~FileCloser()
-	{
-		fclose(f);
-	}
-};
-
 /** Helper to manage a FILE with a \c std::unique_ptr. */
 struct FileDeleter {
 	void operator()(FILE *f)

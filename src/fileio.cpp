@@ -1038,20 +1038,18 @@ void SanitizeFilename(std::string &filename)
  */
 std::unique_ptr<char[]> ReadFileToMem(const std::string &filename, size_t &lenp, size_t maxsize)
 {
-	FILE *in = fopen(filename.c_str(), "rb");
+	AutoCloseFile in(fopen(filename.c_str(), "rb"));
 	if (in == nullptr) return nullptr;
 
-	FileCloser fc(in);
-
-	fseek(in, 0, SEEK_END);
-	size_t len = ftell(in);
-	fseek(in, 0, SEEK_SET);
+	fseek(in.get(), 0, SEEK_END);
+	size_t len = ftell(in.get());
+	fseek(in.get(), 0, SEEK_SET);
 	if (len > maxsize) return nullptr;
 
 	std::unique_ptr<char[]> mem = std::make_unique<char[]>(len + 1);
 
 	mem.get()[len] = 0;
-	if (fread(mem.get(), len, 1, in) != 1) return nullptr;
+	if (fread(mem.get(), len, 1, in.get()) != 1) return nullptr;
 
 	lenp = len;
 	return mem;
