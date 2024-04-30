@@ -3390,10 +3390,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}세계 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% 완료
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}지형 만드는 중
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}지형 생성
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}강 제작
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}나무 심는 중
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}움직일수 없는 객체 만드는 중
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}거친 암석지대 만드는 중
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}도시 생성
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}산업시설 생성
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}움직일수 없는 객체 만드는 중
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}나무 심는 중
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}게임 설정 중
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}타일 루프 실행 중
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}스크립트 생성 중
@@ -5276,10 +5279,14 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 차�
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... 동일한 구성이 아닌 차량이 있습니다
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}사용할 수 있는 차량이 모두 없어질 것입니다
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRF 설정을 변경하십시오
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRF 설정을 변경하세요
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}사용할 수 있는 차량이 하나도 없습니다
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SHORT}년 이후에 새로운 게임을 시작하거나 차량이 더 빨리 개발되는 NewGRF을 사용하십시오.
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SHORT}년 이후에 새로운 게임을 시작하거나 차량이 더 빨리 개발되는 NewGRF을 사용하세요
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}도시가 만들 수 있는 도로 종류가 없습니다
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}NewGRF 설정을 변경하세요
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}아직 도시가 만들 수 있는 도로 종류가 없습니다
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}{DATE_SHORT}년 이후에 새로운 게임을 시작하거나 도시가 더 빨리 사용할 수 있는 도로 종류를 추가하는 NewGRF를 사용하세요
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}너무 위험해서 신호를 무시할 수 없습니다...

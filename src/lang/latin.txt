@@ -3066,9 +3066,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% f
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Creatio orbis terrarum
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Creatio fluminum
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Creatio arborum
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Creatio ornamentorum
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Creatio terrarum saxosarum asperarumque
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Creatio ornamentorum
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Creatio arborum
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ludum instruens
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Tegularum cursum exsequens
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Scriptum exsequens

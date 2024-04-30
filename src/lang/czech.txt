@@ -3481,9 +3481,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}Z{NBSP}{
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tvorba krajiny
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generování řek
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Výsadba stromů
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Výstavba nepřesunutelných objektů
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Tvorba členitého a kamenitého území
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Výstavba nepřesunutelných objektů
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Výsadba stromů
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavování hry
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Spouštění tile-loopu (cyklus na dílcích mapy)
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Rozbíhání skriptu

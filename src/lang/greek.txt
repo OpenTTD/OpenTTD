@@ -44,7 +44,7 @@ STR_CARGO_PLURAL_WOOD                                           :{G=f}Ξυλεί
 STR_CARGO_PLURAL_WOOD.geniki                                    :Ξυλείας
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=n}Σιδηρομεταλλεύματα
 STR_CARGO_PLURAL_IRON_ORE.geniki                                :Σιδηρομεταλλευμάτων
-STR_CARGO_PLURAL_STEEL                                          :{G=m}Χάλυβες
+STR_CARGO_PLURAL_STEEL                                          :{G=m}Χάλυβα
 STR_CARGO_PLURAL_STEEL.geniki                                   :Χάλυβα
 STR_CARGO_PLURAL_VALUABLES                                      :{G=n}Πολύτιμα είδη
 STR_CARGO_PLURAL_VALUABLES.geniki                               :Πολύτιμων ειδών
@@ -65,7 +65,7 @@ STR_CARGO_PLURAL_GOLD.geniki                                    :Χρυσού
 STR_CARGO_PLURAL_WATER                                          :{G=n}Νερά
 STR_CARGO_PLURAL_WATER.geniki                                   :Νερών
 STR_CARGO_PLURAL_WHEAT                                          :Σιτάρια
-STR_CARGO_PLURAL_WHEAT.geniki                                   :Σιταριών
+STR_CARGO_PLURAL_WHEAT.geniki                                   :Σιτάρι
 STR_CARGO_PLURAL_RUBBER                                         :{G=n}Λάστιχα
 STR_CARGO_PLURAL_RUBBER.geniki                                  :Λάστιχων
 STR_CARGO_PLURAL_SUGAR                                          :{G=f}Ζάχαρη
@@ -267,7 +267,7 @@ STR_COLOUR_SECONDARY_ORANGE                                     :Πορτοκα�
 STR_COLOUR_SECONDARY_BROWN                                      :Καφέ
 STR_COLOUR_SECONDARY_GREY                                       :Γκρι
 STR_COLOUR_SECONDARY_WHITE                                      :Άσπρο
-STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Ίδιο με το πρωταρχικό
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Ίδιο με το Αρχικό
 
 
 # Units used in OpenTTD
@@ -526,7 +526,7 @@ STR_FILE_MENU_EXIT                                              :Έξοδος
 
 # Map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Χάρτης του κόσμου
-STR_MAP_MENU_EXTRA_VIEWPORT                                     :Πρόσθετη εμφάνιση
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Πρόσθετο παράθυρο προβολής
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Υπόμνημα ροής φορτίου
 STR_MAP_MENU_SIGN_LIST                                          :Λίστα πινακίδων
 
@@ -1026,7 +1026,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}Η τοπική αρχή της {TOWN} υπογράφει σύμβαση με την {STRING} για 12 λεπτά αποκλειστικών δικαιωμάτων μεταφοράς!
 
 # Extra view window
-STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Εμφάνιση {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Προβολή {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Αντιγραφή στο παράθυρο εμφάνισης
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Αντιγραφή της τοποθεσίας της κύριας προβολής σε αυτό το παράθυρο εμφάνισης
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Επικόλληση από παράθυρο εμφάνισης
@@ -1138,7 +1138,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Τρέχ
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Μέγεθος διεπαφής
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Σύρετε το κουμπί για να ορίσετε το μέγεθος του περιβάλλοντος διεπαφής. Ctrl+Σύρσιμο για συνεχή προσαρμογή
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Αυτόματη εντόπιση μεγέθους
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Αυτόματος εντοπισμός μεγέθους
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Τσεκάρετε αυτό το κουτάκι για να ανιχνεύεται το μέγεθος της διεπαφής αυτόματα
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Κλίση κλίμακας
@@ -1182,7 +1182,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Βασι
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Επιλέξτε το βασικό σετ μουσικής για χρήση
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ μουσικής
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(δεν έχουν εγκατασταθεί plugins για ενοποίηση με πλατφόρμες κοινωνικής δικτύωσης)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(δεν έχουν εγκατασταθεί plugins για διασύνδεση με πλατφόρμες κοινωνικής δικτύωσης)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Πλατφόρμα:
@@ -1342,8 +1342,8 @@ STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Εμφά
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
-STR_CONFIG_SETTING_ON                                           :Ενεργή
-STR_CONFIG_SETTING_DISABLED                                     :Ανένεργη
+STR_CONFIG_SETTING_ON                                           :Ενεργό
+STR_CONFIG_SETTING_DISABLED                                     :Ανένεργο
 
 ###length 3
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Ανένεργο
@@ -1381,7 +1381,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ταχύτητ�
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίζει το ποσοστό των οικοδομήμσεων από τα ΑΙ
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Βλάβες οχημάτων: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ελέγχει πόσο συχνά τα ανεπαρκώς συντηρημένα οχήματα παθαίνουν βλάβες
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ελέγχει πόσο συχνά παθαίνουν βλάβες τα ανεπαρκώς συντηρημένα οχήματα
 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Πολλαπλασιαστής επιδότησης: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Θέστε πόσο ξεπληρώνεται για επιδοτημένες συνδέσεις
@@ -1433,7 +1433,7 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Μέγιστο 
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Ορίστε το μέγιστο μήκος των τρένων
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} τετραγωνίδι{P 0 ο α}
 
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Ποσότητα καπνού/σπινθύρων οχήματος: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Ποσότητα καπνού/σπινθήρων οχήματος: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Ορίστε τον όγκο του καπνού ή τον αριθμό των σπιθών που παράγονται από τα οχήματα
 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Μοντέλο επιτάχυνσης τρένων: {STRING}
@@ -1449,7 +1449,7 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Κλίση εδάφους για τα οδικά οχήματα: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Η κλίση ενός κεκλιμένου τετραγωνίδιου για τα οδικά οχήματα. Μεγαλύτερες τιμές καθιστούν δυσκολότερο το ανέβασμα λόφων
 
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Απαγόρευση στα τρένα να κάνουν στροφές 90°: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Απαγορεύεται στα τρένα να κάνουν στροφές 90°: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Στροφές 90 μοιρών προκύπτουν όταν μια οριζόντια σιδηροτροχιά ακολουθείται από μια κάθετη στο επόμενο τετραγωνίδιο, κάνοντας το τρένο να στρίψει κατά 90 μοίρες όταν αλλάζει τετραγωνίδιο, αντί για τις συνηθισμένες 45 μοίρες σε άλλους συνδυασμούς σιδηροτροχιών
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {STRING}
@@ -1495,10 +1495,10 @@ STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Εμφάνισ�
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Όταν ενεργοποιείται, το παράθυρο των οικονομικών πληροφοριών εμφανίζεται στο τέλος κάθε χρόνου για ευκολότερο έλεγχο της οικονομικής κατάστασης της εταιρείας
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Εάν είναι ενεργοποιημένο, το παράθυρο οικονομικών αναδύεται στο τέλος κάθε περιόδου για να επιτρέψει την εύκολη επιθεώρηση της οικονομικής κατάστασης της εταιρείας
 
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Οι νέες οδηγίες είναι «χωρίς στάση» από προεπιλογή: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Οι νέες οδηγίες είναι «χωρίς στάση» εξ' ορισμού: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Κανονικά, τα οχήματα σταματούν σε κάθε σταθμό που περνούν. Ενεργοποιώντας αυτήν τη ρύθμιση, δεν θα σταματούν σε κανένα σταθμό που θα βρει στη διαδρομή τους προς τον τελικό προορισμό. Σημείωστε πως αυτή η ρύθμιση ορίζει μόνο μια καθορισμένη τιμή για νέες εντολές. Ειδικές εντολές μπορούν να δοθούν για οποιαδήποτε συμπεριφορά, άσχετα από την προκαθορισμένη
 
-STR_CONFIG_SETTING_STOP_LOCATION                                :Οι εντόλες νέων τρένων διορίζουν ότι σταματάνε εξ ορισμού στο {STRING} της πλατφόρμας
+STR_CONFIG_SETTING_STOP_LOCATION                                :Οι νέες εντόλες τρένων έχουν στάση εξ' ορισμού στο {STRING} της πλατφόρμας
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Ορισμός προεπιλεγμένου σημείου που θα σταματούν τα τρένα στην πλατφόρμα. Το «κοντινό άκρο» σημαίνει κοντά στο σημείο εισόδου, «μέση» σημαίνει στο μέσο της πλατφόρμας και «μακρινό άκρο» σημαίνει στο άλλο άκρο από το σημείο εισόδου. Σημειώστε ότι αυτή η ρύθμιση ορίζει μόνο την προεπιλεγμένη τιμή για νέες εντολές. Οι μεμονωμένες εντολές μπορούν να έχουν τη δική τους θέση στάσης κάνοντας κλικ πάνω στο κείμενο της εντολής
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :κοντινό άκρο
@@ -1508,10 +1508,10 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :μακρινό 
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Μετακίνηση παραθύρου όταν το ποντίκι είναι στην άκρη: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Όταν είναι ενεργή, η εμφάνιση θα κυλά όταν το ποντίκι είναι κοντά στην άκρη του παραθύρου
 ###length 4
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Απενεργοποιημένη
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Κύρια εμφάνιση, μόνο σε πλήρη οθόνη
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Κύρια εμφάνιση
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Κάθε εμφάνιση
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Απενεργοποιημένο
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Κύριο παράθυρο προβολής, μόνο σε πλήρη οθόνη
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Κύριο παράθυρο προβολής
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Κάθε παράθυρο προβολής
 
 STR_CONFIG_SETTING_BRIBE                                        :Επιτρέπεται η δωροδοκία της τοπικής αρχής: {STRING}
 ###length 2
@@ -1556,7 +1556,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Επιτρέπ�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Δεν είναι δυνατή η αλλαγή αυτής της ρύθμισης όταν υπάρχουν οχήματα.
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Συντήρηση υποδομής: {STRING}
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Όταν είναι ενεργοποιημένη, οι υποδομές προκαλούν έξοδα συντήρησης. Το κόστος μεγαλώνει δυσανάλογα με το μέγεθος του δικτύου, επηρεάζοντας έτσι τις μεγάλες εταιρείες περισσότερο από τις μικρότερες
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Όταν είναι ενεργοποιημένο, οι υποδομές προκαλούν έξοδα συντήρησης. Το κόστος μεγαλώνει υπεραναλογικά με το μέγεθος του δικτύου, επηρεάζοντας έτσι τις μεγάλες εταιρείες περισσότερο από τις μικρότερες
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Αρχικό χρώμα εταιρίας: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Επιλογή του αρχικού χρώματος της εταιρίας
@@ -1607,21 +1607,21 @@ STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Αυτόματη ανανέωση όταν ένα όχημα παλιώνει: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Όταν είναι ενεργοποιημένη, τα οχήματα που πλησιάζουν το τέλος της ζωής τους αντικαθίσταται αυτόματα όταν πληρούνται οι προϋποθέσεις αντικατάστασής του
 
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Αυτόματη αντικατάστηση όταν το όχημα είναι {STRING} μέγιστης ηλικίας
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Αυτόματη αντικατάστηση όταν το όχημα είναι {STRING} την μέγιστη ηλικία
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Σχετική ηλικία κατά την οποία κάποιο όχημα θα πρέπει να εξεταστεί για αυτόματη ανανέωση
 ###length 2
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} μήν{P 0 α ες} πριν
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} μήν{P 0 α ες} μετά
 
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Αυτόματη ανανέωση με τα ελάχιστα απαιτούμενα χρήματα: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Ελάχιστο χρηματικό ποσό που θα πρέπει να υπολείπεται στην τράπεζα πριν εξεταστεί η αυτόματη ανανέωση των οχημάτων
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Ελάχιστο χρηματικό ποσό που θα πρέπει να απομείνει στην τράπεζα πριν εξεταστεί η αυτόματη ανανέωση των οχημάτων
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Διάρκεια μηνύματος σφάλματος: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Διάρκεια εμφάνισης μηνύματων σφάλματος σε κόκκινο παράθυρο. Σημειώστε ότι μερικά (κρίσιμα) μηνύματα σφάλματος δεν κλείνουν αυτόματα μετά από αυτόν τον χρόνο, αλλά πρέπει να κλείσουν χειροκίνητα
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Εμφάνιση αναδυόμενων μηνυμάτων: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Καθυστέρηση πριν την εμφάνιση των επεξηγήσεων όταν ο δείκτης του ποντικιού βρίσκεται πάνω από κάποιο στοιχείο της διεπαφής. Εναλλακτικά, οι επεξηγήσεις συνδέονται με το δεξί κουμπί του ποντικιού όταν η τιμή αυτού του πεδίου είναι 0
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Ο δείκτης του ποντικιού να βρίσκεται από πάνω για {COMMA} δευτερόλεπτ{P 0 ο α}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Ο δείκτης του ποντικιού να βρίσκεται από πάνω για {COMMA} χιλιοστά του δευτερολέπτου
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Δεξί κουμπί
 
@@ -1690,8 +1690,8 @@ STR_CONFIG_SETTING_ROAD_SIDE                                    :Οχήματα 
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Επιλέξτε την πλευρά οδήγησης
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Οδηγούν από αριστερά
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Οδηγούν από δεξιά
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Οδήγηση από αριστερά
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Οδήγηση από δεξιά
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Περιστροφή χάρτη υψομετρίας: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Επιλέξτε με ποιον τρόπο θα περιστραφεί η εικόνα του ύψους χάρτη, για να ταιριάζει στον κόσμο του παιχνιδιού
@@ -1745,7 +1745,7 @@ STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Εμφάνισ�
 STR_CONFIG_SETTING_LIVERIES                                     :Εμφάνιση χρωμάτων των εταιριών: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Ελέγξτε τη χρήση του χρωματικού μοτίβου των τύπων των οχημάτων για τα οχήματα (σε αντίθεση με τα εταιρικά)
 ###length 3
-STR_CONFIG_SETTING_LIVERIES_NONE                                :Κανένας
+STR_CONFIG_SETTING_LIVERIES_NONE                                :Κανένα
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Η εταιρία μου
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Όλες οι εταιρίες
 
@@ -1791,7 +1791,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Όχι
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ναι
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Ναι, εκτός από το καρφιτσωμένο
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Χρήση της {STRING} ημερολογιακής μορφής στα ονόματα αποθηκευμένων παιχνιδιών
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Χρήση της ημερολογιακής μορφής {STRING} στα ονόματα αποθηκευμένων παιχνιδιών
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Μορφή της ημερομηνίας στα αρχεία αποθήκευσης παιχνιδιών
 ###length 3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :μακριά (31 Δεκ 2008)
@@ -1864,10 +1864,10 @@ STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :Τέλος πε
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Παίζει ηχητικό εφέ στο τέλος του χρόνου που συνοψίζει την επίδοση της εταιρείας κατά την διάρκεια αυτού του χρόνου σε σχέση με τον προηγούμενο χρόνο
 STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :Παίζει ηχητικό εφέ στο τέλος του χρόνου που συνοψίζει την επίδοση της εταιρείας κατά την διάρκεια αυτής της περιόδου σε σχέση με την προηγούμεη περίοδο
 
-STR_CONFIG_SETTING_SOUND_CONFIRM                                :Οικοδομή: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Κατασκευή: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Παίζει ηχητικό εφέ σε επιτυχής οικοδομές ή άλλες δράσεις
 
-STR_CONFIG_SETTING_SOUND_CLICK                                  :πατήματα κουμπιού: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Πατήματα κουμπιού: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Παίζει ήχο όταν γίνεται κλικ σε κουμπιά
 
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Καταστροφές/ατυχήματα: {STRING}
@@ -1966,7 +1966,7 @@ STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Εμφάνισ�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Αλλαγή της παραγωγής των βιομηχανιών που εξυπηρετούνται από την εταιρία: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Εμφάνιση εφημερίδας όταν μεταβάλλεται η παραγωγικότητα μιας βιομηχανίας που εξυπηρετείται από την εταιρία
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Διαφοροποιήσεις στην παραγωγή των βιομηχανιών που εξυπηρετούνται από ανταγωνιστή(-ές): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Διαφοροποιήσεις στην παραγωγή των βιομηχανιών που εξυπηρετούνται από ανταγωνιστή/ές: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Εμφάνιση εφημερίδας όταν μεταβάλλεται η παραγωγικότητα μιας βιομηχανίας που εξυπηρετείται από ανταγωνιστές
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Άλλες διαφοροποιήσεις στη παραγωγή: {STRING}
@@ -1987,7 +1987,7 @@ STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Πρόβαλλ�
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Γενικές πληροφορίες: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Εμφάνιση εφημερίδας σε γενικά συμβάντα, όπως αγορά αποκλειστικών δικαιωμάτων ή χρηματοδότηση ανακατασκευής δρόμων
 ###length 3
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Απενεργοποιημένα
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Απενεργοποιημένο
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Περιλήψεις
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Ολόκληρα
 
@@ -2079,7 +2079,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Απόστασ�
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} εικονοστοιχεί{P 0 ο α}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Απενεργοποιημένη
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Μέγιστο όριο μη καρφωμένων παραθύρων: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Μέγιστο όριο μη καρφιτσωμένων παραθύρων: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Αριθμός μη μόνιμων ανοικτών παράθυρων πριν παλαιότερα παράθυρα κλείσουν αυτόματα για να κάνουν χώρα για τα νεότερα
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
@@ -2233,7 +2233,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Αυτόματ�
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Επιτρέπεται στα τρένα να αντιστραφούν σε σήμα, εάν περιμένουν εκεί για πολύ ώρα
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Συνίσταται)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Συνιστάται)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Αλλαγή τιμής ρύθμισης
 
@@ -3481,10 +3481,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Σίγ�
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% ολοκληρώθηκε
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Δημιουργία κόσμου
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Δημιουργία τοπίου
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Δημιουργία ποταμού
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημιουργία δέντρων
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Δημιουργία μη μετακινούμενων
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Δημιουργία άγριας και πετρώδης περιοχής
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Δημιουργία πόλης
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Δημιουργία βιομηχανίας
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Δημιουργία μη μετακινούμενων
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημιουργία δέντρων
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ρύθμιση παιχνιδιού
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Εκτέλεση βρόχου τετραγωνίδιων
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Τρέχουσα δέσμη ενεργειών
@@ -5023,7 +5026,7 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... δε
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... η εικόνα είναι πολύ μεγάλη
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Προειδοποίηση κλίμακας
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Αλλαγή μεγέθους του πηγαίου χάρτη δεν συνίσταται. Να προχωρήσει η δημιουργία;
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Αλλαγή μεγέθους του πηγαίου χάρτη δεν συνιστάται. Να προχωρήσει η δημιουργία;
 
 # Soundset messages
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Βρέθηκε μόνο εφεδρικό σετ ήχου. Αν θέλετε ήχους, εγκαταστήστε ένα πακέτο ήχων μέσω του συστήματος μεταφόρτωσης υλικού
@@ -5377,8 +5380,12 @@ STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... όλ
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Δεν θα είναι κανένα όχημα διαθέσιμο
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Αλλάξτε τις ρύθμισεις NewGRF σας
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Κανένα όχημα δεν είναι διαθέσιμο ακόμη
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Ξεκινήστε ένα νέο παιχνίδι αργότερα από {DATE_SHORT} η χρησιμοποιήστε ένα NewGRF το οποίο προσφέρει νωρίτερα οχήματα
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Ξεκινήστε ένα νέο παιχνίδι αργότερα από {DATE_SHORT} η χρησιμοποιήστε ένα NewGRF το οποίο προσφέρει πρώιμα οχήματα
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Δεν υπάρχουν διαθέσιμοι τύποι δρόμων που μπορούν να κατασκευαστούν από πόλη
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Αλλάξτε τις ρύθμισεις NewGRF σας
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Δεν υπάρχουν διαθέσιμοι τύποι δρόμων που μπορούν να κατασκευαστούν από πόλη ακόμη
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Ξεκινήστε ένα νέο παιχνίδι μετά από την {DATE_SHORT} ή χρησιμοποιήστε ένα NewGRF που παρέχει πρώιμους τύπους δρόμων που μπορούν να κατασκευαστούν από πόλη
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Δεν μπορεί το τρένο να περάσει σήμα με κίνδυνο...

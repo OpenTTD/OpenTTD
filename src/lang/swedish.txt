@@ -3389,10 +3389,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vill du
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% färdigt
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generera värld
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landskapsgenerering
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generera Flod
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generera Träd
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generera objekt
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Svår och stenig markgenerering
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Stadsgenerering
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industrigenerering
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generera objekt
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generera Träd
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ställer in spel
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kör tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kör skript
@@ -5279,6 +5282,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Ändra d
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Inga fordon är tillgängliga än
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Starta ett nytt spel efter {DATE_SHORT} eller använd en NewGRF som erbjuder tidiga fordon
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Inga vägtyper som kan byggas av städer finns tillgängliga
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Ändra din NewGRF-konfiguration
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Inga vägtyper som kan byggas av städer finns tillgängliga ännu
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Starta ett nytt spel efter {DATE_SHORT} eller använd en NewGRF som tidigt erbjuder vägtyper som städer kan bygga
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan inte tillåta tåg att passera signal under fara...

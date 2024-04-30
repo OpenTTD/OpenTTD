@@ -3332,9 +3332,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% k
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Mondgenerado
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Rivergenerado
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Arba generado
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nemoveblaĵa generado
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generado de malglataj kaj rokaj regionoj
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nemoveblaĵa generado
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Arba generado
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Agordante ludon
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Trakurante kvadratojn
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Ruligas la skripton

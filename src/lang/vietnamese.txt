@@ -2222,7 +2222,7 @@ STR_QUIT_YES                                                    :{BLACK}Đồng 
 STR_QUIT_NO                                                     :{BLACK}Không đồng ý
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Bỏ Màn Chơi
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Loại bỏ Game
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bạn có chắc chắn muốn bỏ màn chơi này không?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bạn có chắc bạn muốn bỏ màn chơi kịch bản này?
 
@@ -3389,10 +3389,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Bạn c
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% hoàn thành
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tạo màn
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Khởi tạo cảnh quan
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Khởi tạo sông suối
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trồng cây
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Sinh đối tượng cứng
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Sinh đá và sự gồ ghề
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Khởi tạo thị trấn
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Khởi tạo nhà máy
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Sinh đối tượng cứng
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trồng cây
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Thiết lập ván chơi
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Đang chạy sinh tile
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Đang chạy tập lệnh
@@ -5279,6 +5282,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Thay đ�
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Chưa có phương tiện nào có sẵn
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Bắt đầu một màn chơi mới sau {DATE_SHORT} hoặc sử dụng một NewGRF cung cấp sớm phương tiện
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Không có sẵn loại đường có thể xây dựng được trong thị trấn
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Thay đổi cấu hình NewGRF của bạn
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Hiện tại chưa có các loại đường thị trấn
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Hãy bắt đầu trò chơi mới sau {DATE_SHORT} hoặc sử dụng NewGRF khác có hỗ trợ xây dựng sớm các loại đường đô thị
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Không thể để tàu hoả qua tín hiệu đèn khi nguy hiểm...

@@ -3330,9 +3330,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% s
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Pembuatan Bentang Darat
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Pembuatan Sungai
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Membuat pepohonan
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Membuat objek tak bergerak
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Membersihan area
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Membuat objek tak bergerak
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Membuat pepohonan
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Mengatur permainan
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Menyiapkan area loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Menjalankan skrip

@@ -2774,9 +2774,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK} مولد الخريطة
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}مولد الانهار
-STR_GENERATION_TREE_GENERATION                                  :{BLACK} مولد الشجر
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}صانع الخامات
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}مولد المناطق الخشنة والصخرية
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}صانع الخامات
+STR_GENERATION_TREE_GENERATION                                  :{BLACK} مولد الشجر
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}تجهيز لعبة
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK} تشغيل المتكررة
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}يُجَهِز اللعبه

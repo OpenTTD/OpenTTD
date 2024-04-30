@@ -3388,9 +3388,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% e
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generare lume
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generarea râurilor
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generare arbori
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generare fixă
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generare zonă dură și pietroasă
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generare fixă
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generare arbori
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Se configurează jocul
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Initializez ciclul dalelor
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Se rulează script-ul

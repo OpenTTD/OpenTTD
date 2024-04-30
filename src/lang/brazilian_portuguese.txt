@@ -2322,7 +2322,7 @@ STR_FACE_FACECODE                                               :{BLACK}Número 
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver e/ou definir o número de face do presidente da empresa
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou definir número de face do presidente
 STR_FACE_FACECODE_SET                                           :{WHITE}Novo código de número de face foi definido
-STR_FACE_FACECODE_ERR                                           :{WHITE}Não foi possível alterar o número de face do presidente - deve ser um número entre 0 e 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Não foi possível definir o número de face do presidente - deve ser um número entre 0 e 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Salvar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salvar face favorita
 STR_FACE_SAVE_DONE                                              :{WHITE}Esta face será armazenada como sua favorita no arquivo de configuração do OpenTTD
@@ -2372,7 +2372,7 @@ STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nome
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Nome do jogo
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Clientes
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Clientes conectados / máx. clientes{}Empresas / máx. empresas
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Clientes conectados / máx. clientes{}Empresas ativas / máx. empresas
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Tamanho do mapa
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Tamanho do mapa do jogo{}Clique para ordenar por área
@@ -3390,10 +3390,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Você q
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% completo
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Geração de mundo
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Geração de paisagem
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Geração de rios
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Geração de árvores
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Geração de objetos
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Geração de áreas irregulares e rochosas
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Geração de localidades
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Geração de indústrias
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Geração de objetos
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Geração de árvores
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurando o jogo
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Preparando o terreno
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Executando o script
@@ -3454,7 +3457,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatí
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Salvar predefinição
-STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista de predefinições disponíveis, selecione uma para copiar o nome e usar na gravação abaixo
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista de predefinições disponíveis, selecione uma para usar o nome na gravação abaixo
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Introduza um nome para a predefinição
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nome que está selecionado para salvar a predefinição
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancelar
@@ -4915,7 +4918,7 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... não
 
 STR_ERROR_PNGMAP                                                :{WHITE}Não foi possível carregar paisagem de PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... arquivo não foi encontrado
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... não foi possível converter o tipo de imagem. A imagem deve ser PNG de 8 ou 24-bit
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... não foi possível converter o tipo de imagem. A imagem precisa ser PNG de 8 ou 24-bit
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguma coisa deu errado (provavelmente arquivo corrompido)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Não foi possível carregar paisagem de BMP...
@@ -4945,10 +4948,10 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Mensage
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fora do mapa
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Muito perto da borda do mapa
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Dinheiro insuficiente - é necessário {CURRENCY_LONG}
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}O terreno deve ser plano
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}O terreno precisa ser plano
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinado na direção errada
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Não é possível fazer isto...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}A construção deve ser demolida primeiro
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}A construção precisa ser demolida primeiro
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Não é possível limpar esta área...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... local não adequado
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... já construído

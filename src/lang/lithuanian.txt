@@ -3383,9 +3383,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% u
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Pasaulio generacija
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Upių generavimas
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Medžių generacija
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nejudinama generacija
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Daubų ir uolų generacija
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nejudinama generacija
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Medžių generacija
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Sukurti zaidima
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Paleidžiamas tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Skriptas veikia

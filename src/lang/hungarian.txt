@@ -3454,9 +3454,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% k
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Világ létrehozása
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Folyó generálás
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Fák generálása
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Mozgathatatlan létesítmények létrehozása
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Durva és köves területek generálása
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Mozgathatatlan létesítmények létrehozása
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Fák generálása
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Játék beállítása
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Mezők véglegesítése
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Futó szkript
@@ -4453,7 +4453,7 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Nincs ára
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Szabad útra vár
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}A következő repülőtér túl messze van
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Ütban {0:STATION} állomás felé
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Útban {0:STATION} állomás felé
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Nincs utasítás
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Útban {0:WAYPOINT} felé
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Útban {0:DEPOT} felé
@@ -5343,6 +5343,9 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Változt
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Még nincsenek elérhető járművek
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Indíts új játékot {DATE_SHORT} után, vagy használj olyan NewGRF-et, ami tartalmaz megfelelően korai járműveket!
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Nincs városban építhető út-típus
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Saját NewGRF konfiguráció módosítása
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Még nem érhető el városban építhető úttípus
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nem haladhatja meg a vonat a megállj jelzést...

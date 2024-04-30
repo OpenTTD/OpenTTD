@@ -3521,9 +3521,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% z
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Stvaranje sveta
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Određivanje toka reka
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Postavljanje drveća
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Postavljenje nepomičnih objekata
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Dodavanje grubih i stenovitih područja
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Postavljenje nepomičnih objekata
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Postavljanje drveća
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Podešavanje igre
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Razrađivanje pločica
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Pokretanje skripte
