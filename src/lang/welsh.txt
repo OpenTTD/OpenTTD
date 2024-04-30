@@ -3390,9 +3390,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Cynhyrchu byd
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Cynhyrchu afonydd
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Cynhyrchu coed
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Cynhyrchu gwrthrych
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Cynhyrchu ardaloedd creigiog a chnapiog
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Cynhyrchu gwrthrych
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Cynhyrchu coed
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Gosod gêm yn ei le
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Rhedeg dolen teiliau
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Rhedeg sgript

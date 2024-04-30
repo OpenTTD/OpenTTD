@@ -3390,10 +3390,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Quer me
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% completo
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}A gerar mundo
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Geração de paisagem
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}A gerar rios
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}A gerar árvores
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Geração inamovível
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}A gerar zonas rochosas e montanhosas
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Geração de localidades
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Geração de indústrias
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Geração inamovível
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}A gerar árvores
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Definindo jogo
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}A preparar o terreno
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script a correr

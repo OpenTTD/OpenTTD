@@ -2719,9 +2719,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% k
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wrâldgeneraasje
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Riviergeneraasje
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bostgeneraasje
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekt meitsje
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Rûchtes en rotsen generearje
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekt meitsje
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bostgeneraasje
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Set spul klear
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Trochrint tegellus
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Fiert skript út

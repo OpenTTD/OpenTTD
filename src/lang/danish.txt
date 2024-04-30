@@ -3389,10 +3389,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vil du 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% færdig
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Verdensgenerering
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landskabs generering
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Flod-generering
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trægenerering
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikke-flytbar generering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generer råt og stenet område
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}By generation
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industri generation
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikke-flytbar generering
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trægenerering
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargør spil
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kører felt-løkken
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kørende script
@@ -5279,6 +5282,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Skift di
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Ingen køretøjer er tilgængelige endnu
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Start et nyt spil efter {DATE_SHORT} eller brug en NewGRF der giver tidlige køretøjer
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Der findes ingen vejtyper, der kan bygges i by
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Skift din NewGRF konfiguration
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Der er endnu ingen tilgængelige vejtyper, der kan bygges i byer
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Start et nyt spil efter{DATE_SHORT} eller brug en NewGRF, der leverer vejtyper, der kan bygges tidligt i byen
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikke få toget til at passere signalet...

@@ -1525,7 +1525,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Vähimmäisraha
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Vähimmäisrahamäärä, jonka on jäätävä pankkiin kulkuneuvoja automaattisesti uudistettaessa
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Virheilmoitusten näyttöaika: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Aika virheilmoitusten näyttämiseen punaisessa ikkunassa. Huomaa, että jotkut (kriittiset) virheilmoitukset eivät sulkeudu automaattisesti tämän ajan jälkeen, vaan ne on suljettava käsin
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Aika virheilmoitusten näyttämiseen punaisessa ikkunassa. Huomaa, että jotkin (kriittiset) virheilmoitukset eivät sulkeudu automaattisesti tämän ajan jälkeen, vaan ne on suljettava käsin
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Näytä työkaluvihjeet: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Viive ennen työkaluvihjeen näyttämistä, kun hiiren osoitinta pidetään käyttöliittymäelementin päällä. Vaihtoehtoisesti työkaluvihjeen saa myös näkyviin painamalla hiiren oikeaa painiketta, kun arvoksi on määritetty 0
@@ -2365,7 +2365,7 @@ STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Vain kutsutut
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Moninpeli
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Pelaajan nimi
-STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Pelaajat tunnistetaan ja erotetaan toisistaan nimien avulla
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Nimi, jolla muut pelaajat tunnistavat sinut
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nimi
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Pelin nimi
@@ -2377,9 +2377,9 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kartan k
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kartan koko{}Valitse lajitellaksesi koon mukaan
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Päiväys
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Nykyinen päivämäärä
-STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}min
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}{NBSP}h {NUM}{NBSP}min
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Peliaika
-STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Peliaika, kun peli{}ei ollut pysäytettynä
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Pelaamisaika, kun{}peli ei ole ollut pysäytettynä
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Kieli, palvelimen versio, jne.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Napsauta peliä luettelossa valitaksesi
@@ -2395,7 +2395,7 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Palveli
 STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Kutsukoodi: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Aloitusvuosi: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Päivämäärä: {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Peliaika: {WHITE}{NUM}h {NUM}min
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Peliaika: {WHITE}{NUM}{NBSP}h {NUM}{NBSP}min
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Peliskripti: {WHITE}{STRING} (v.{NBSP}{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Salasanasuojattu!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}PALVELIN KIINNI
@@ -3389,10 +3389,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Haluatk
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NBSP}% valmiina
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM}/{NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Maailman luominen
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Maaston luominen
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Jokien luominen
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puiden luominen
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Siirtämättömän luominen
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Karun ja kivisen alueen luominen
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Kuntien luominen
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Tuotantolaitosten luominen
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Siirtämättömän luominen
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puiden luominen
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Valmistellaan peliä
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Ajetaan tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Suoritetaan skriptiä
@@ -4458,7 +4461,7 @@ STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Lyhennä
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Muuta huoltovälien tyyppiä
 STR_VEHICLE_DETAILS_DEFAULT                                     :Oletus
-STR_VEHICLE_DETAILS_DAYS                                        :Päiviä
+STR_VEHICLE_DETAILS_DAYS                                        :Vuorokausia
 STR_VEHICLE_DETAILS_MINUTES                                     :Minuutteja
 STR_VEHICLE_DETAILS_PERCENT                                     :Prosentteja
 
@@ -4909,7 +4912,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ei saatavilla>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Peli tallennettiin versiossa, joka ei tue raitiovaunuja. Kaikki raitiovaunut on poistettu
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartan generointi peruutettu...{}... ei kelvollisia kuntien sijainteja
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartan luominen peruutettu…{}… ei kelvollisia kuntien sijainteja
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... tässä skenaariossa ei ole yhtään kuntaa
 
 STR_ERROR_PNGMAP                                                :{WHITE}Maastoa ei voida ladata PNG-tiedostosta...

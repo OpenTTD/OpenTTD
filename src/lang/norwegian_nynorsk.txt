@@ -2758,9 +2758,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NB
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generer ei verd
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Elvgenerering
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tregenerering
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikkje-flyttbar generering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generering av ulendt og steinete område
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikkje-flyttbar generering
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tregenerering
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargjer spelet
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Køyrer rute-løkkje
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kjøyrande script

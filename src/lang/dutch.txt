@@ -3389,10 +3389,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Weet je
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% compleet
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wereldontwikkeling
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landschap genereren
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Rivierplaatsing
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaatsing
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ontwikkeling van onverplaatsbare objecten
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ontwikkeling van ruig en rotsachtig gebied
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Steden genereren
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industrieën genereren
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ontwikkeling van onverplaatsbare objecten
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaatsing
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spel wordt geconfigureerd
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Bezig met tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script loopt
@@ -5279,6 +5282,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Pas je N
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nog geen voertuigen beschikbaar
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE} Start een nieuw spel na {DATE_SHORT} of gebruik een NewGRF dat in vroege voertuigen voorziet
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Geen wegtypen beschikbaar voor in de stad
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Wijzig je NewGRF-configuratie
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Er zijn nog geen wegtypen beschikbaar voor steden
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Start een nieuw spel na {DATE_SHORT} of gebruik een NewGRF met wegtypen die al vroeg in steden gebruikt kunnen worden
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan trein niet het sein laten passeren bij gevaar...

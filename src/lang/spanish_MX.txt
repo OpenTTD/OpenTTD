@@ -3325,9 +3325,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM}/{NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generación de mapa
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generación de ríos
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generación de árboles
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generación de objetos
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generación de áreas rugosas y rocosas
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generación de objetos
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generación de árboles
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurando partida
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Generando casillas
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Ejecutando script

@@ -2913,9 +2913,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% k
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wêreld generasie
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Rivier generasie
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Boom generasie
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Onbeweegbaar generasie
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ru en rotserig area generasie
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Onbeweegbaar generasie
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Boom generasie
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Stel speletjie op
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Hardloop teël-herhaling
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Lopende skrif

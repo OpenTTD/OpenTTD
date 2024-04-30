@@ -3448,9 +3448,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% v
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Maailma tekitamine
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Jõgede tekitamine
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puude tekitamine
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekti tekitamine
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Mägise ja kivise maa-ala tekitamine
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekti tekitamine
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puude tekitamine
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Mängu seadistamine
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Ruudustiku töötlemine
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Täitmisel olev skript

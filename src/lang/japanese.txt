@@ -3204,9 +3204,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}%�
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM}/{NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}マップ生成
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}河川を生成中
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}植林中
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}灯台/電波塔配置中
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}岩石/荒地を設定中
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}灯台/電波塔配置中
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}植林中
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}ゲームを設定中
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}タイルループを実行中
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}スクリプト実行中

@@ -3390,10 +3390,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Voulez-
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NBSP}% réalisé{P "" s}
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Création du monde
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Génération du terrain
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Création des rivières
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Création des arbres
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Création des objets inamovibles
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Création des zones rugueuses et rocheuses
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Génération des villes
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Génération des industries
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Création des objets inamovibles
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Création des arbres
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configuration du jeu
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Rafraîchissement du terrain
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Exécution du script
@@ -5280,6 +5283,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Modifier
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Il n'y a pas encore de véhicules disponibles
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Commencer un nouvelle partie après {DATE_SHORT} ou utiliser un NewGRF qui propose des véhicules plus tôt
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Aucun type de route disponible pour les villes
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Modifiez votre configuration NewGRF
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Aucun type de route pour les villes disponible pour le moment
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Commencez une nouvelle partie après {DATE_SHORT} ou utilisez un NewGRF pourvoyant des routes plus tôt pour les villes.
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Impossible de forcer le train à avancer sous le danger...
