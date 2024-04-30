@@ -122,7 +122,7 @@ int8_t SaveHighScoreValueNetwork()
 /** Save HighScore table to file */
 void SaveToHighScore()
 {
-	std::unique_ptr<FILE, FileDeleter> fp(fopen(_highscore_file.c_str(), "wb"));
+	AutoCloseFile fp(fopen(_highscore_file.c_str(), "wb"));
 	if (fp == nullptr) return;
 
 	/* Does not iterate through the complete array!. */
@@ -146,7 +146,7 @@ void LoadFromHighScore()
 {
 	std::fill(_highscore_table.begin(), _highscore_table.end(), HighScores{});
 
-	std::unique_ptr<FILE, FileDeleter> fp(fopen(_highscore_file.c_str(), "rb"));
+	AutoCloseFile fp(fopen(_highscore_file.c_str(), "rb"));
 	if (fp == nullptr) return;
 
 	/* Does not iterate through the complete array!. */

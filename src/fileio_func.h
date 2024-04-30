@@ -97,8 +97,11 @@ public:
 struct FileDeleter {
 	void operator()(FILE *f)
 	{
-		if (f) fclose(f);
+		if (f != nullptr) fclose(f);
 	}
 };
+
+/** Helper type for RAII management of a FILE that gets closed when it goes out of scope. */
+using AutoCloseFile = std::unique_ptr<FILE, FileDeleter>;
 
 #endif /* FILEIO_FUNC_H */

@@ -12,7 +12,7 @@
 #include "debug.h"
 
 std::string _log_file; ///< File to reroute output of a forked OpenTTD to
-std::unique_ptr<FILE, FileDeleter> _log_fd; ///< File to reroute output of a forked OpenTTD to
+AutoCloseFile _log_fd; ///< File to reroute output of a forked OpenTTD to
 
 #if defined(UNIX)
 

@@ -638,14 +638,14 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 
 		/* First open the file in the .tar. */
 		size_t to_copy = 0;
-		std::unique_ptr<FILE, FileDeleter> in(FioFOpenFileTar(it2.second, &to_copy));
+		AutoCloseFile in(FioFOpenFileTar(it2.second, &to_copy));
 		if (!in) {
 			Debug(misc, 6, "Extracting {} failed; could not open {}", filename, tar_filename);
 			return false;
 		}
 
 		/* Now open the 'output' file. */
-		std::unique_ptr<FILE, FileDeleter> out(fopen(filename.c_str(), "wb"));
+		AutoCloseFile out(fopen(filename.c_str(), "wb"));
 		if (!out) {
 			Debug(misc, 6, "Extracting {} failed; could not open {}", filename, filename);
 			return false;
