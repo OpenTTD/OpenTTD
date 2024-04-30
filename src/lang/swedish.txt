@@ -1833,6 +1833,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Välj vilket se
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Normalt serviceintervall för skepp: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Välj vilket serviceintervall som normalt sett ska användas för nya skepp, om inget annat serviceintervall uttryckligen anges
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}dag{P 0 "" ar}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}minut{P 0 "" er}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Inaktiverat
