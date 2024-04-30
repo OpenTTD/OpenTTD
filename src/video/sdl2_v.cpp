@@ -282,8 +282,15 @@ static const SDLVkMapping _vk_mapping[] = {
 	AM_UP(SDLK_F1, SDLK_F12, WKC_F1, WKC_F12),
 
 	/* Numeric part. */
-	/* In SDL2 the order of the numpad keycodes changed so that the smallest value is SDLK_KP_1 and the largest SDLK_KP_0, we need to bind 1-9 and then 0 separately. */
-	AM(SDLK_KP_1, SDLK_KP_9, '1', '9'),
+	AS(SDLK_KP_1,        '1'),
+	AS(SDLK_KP_2,        '2'),
+	AS(SDLK_KP_3,        '3'),
+	AS(SDLK_KP_4,        '4'),
+	AS(SDLK_KP_5,        '5'),
+	AS(SDLK_KP_6,        '6'),
+	AS(SDLK_KP_7,        '7'),
+	AS(SDLK_KP_8,        '8'),
+	AS(SDLK_KP_9,        '9'),
 	AS(SDLK_KP_0,        '0'),
 	AS(SDLK_KP_DIVIDE,   WKC_NUM_DIV),
 	AS(SDLK_KP_MULTIPLY, WKC_NUM_MUL),
