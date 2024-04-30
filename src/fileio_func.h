@@ -81,8 +81,8 @@ public:
 
 DECLARE_ENUM_AS_BIT_SET(TarScanner::Mode)
 
-/** Helper to manage a FILE with a \c std::unique_ptr. */
-struct FileDeleter {
+/** Helper to manage "deleting" a FILE for a \c std::unique_ptr. */
+struct FileCloser {
 	void operator()(FILE *f)
 	{
 		if (f != nullptr) fclose(f);
@@ -90,6 +90,6 @@ struct FileDeleter {
 };
 
 /** Helper type for RAII management of a FILE that gets closed when it goes out of scope. */
-using AutoCloseFile = std::unique_ptr<FILE, FileDeleter>;
+using AutoCloseFile = std::unique_ptr<FILE, FileCloser>;
 
 #endif /* FILEIO_FUNC_H */
