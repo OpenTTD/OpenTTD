@@ -27,7 +27,7 @@
 
 #include "safeguards.h"
 
-void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *group, EngineID *train_id, uint trains)
+void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *group, std::span<EngineID> engine_ids)
 {
 	Engine *e = Engine::Get(engine);
 
@@ -36,7 +36,7 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 	WagonOverride *wo = &e->overrides.emplace_back();
 	wo->group = group;
 	wo->cargo = cargo;
-	wo->engines.assign(train_id, train_id + trains);
+	wo->engines.assign(engine_ids.begin(), engine_ids.end());
 }
 
 const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine)

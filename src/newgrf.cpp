@@ -5611,8 +5611,7 @@ static bool IsValidGroupID(uint16_t groupid, const char *function)
 
 static void VehicleMapSpriteGroup(ByteReader *buf, uint8_t feature, uint8_t idcount)
 {
-	static EngineID *last_engines;
-	static uint last_engines_count;
+	static std::vector<EngineID> last_engines; // Engine IDs are remembered in case the next action is a wagon override.
 	bool wagover = false;
 
 	/* Test for 'wagon override' flag */
@@ -5621,21 +5620,18 @@ static void VehicleMapSpriteGroup(ByteReader *buf, uint8_t feature, uint8_t idco
 		/* Strip off the flag */
 		idcount = GB(idcount, 0, 7);
 
-		if (last_engines_count == 0) {
+		if (last_engines.empty()) {
 			GrfMsg(0, "VehicleMapSpriteGroup: WagonOverride: No engine to do override with");
 			return;
 		}
 
-		GrfMsg(6, "VehicleMapSpriteGroup: WagonOverride: {} engines, {} wagons",
-				last_engines_count, idcount);
+		GrfMsg(6, "VehicleMapSpriteGroup: WagonOverride: {} engines, {} wagons", last_engines.size(), idcount);
 	} else {
-		if (last_engines_count != idcount) {
-			last_engines = ReallocT(last_engines, idcount);
-			last_engines_count = idcount;
-		}
+		last_engines.resize(idcount);
 	}
 
 	std::vector<EngineID> engines;
+	engines.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
 		Engine *e = GetNewEngine(_cur.grffile, (VehicleType)feature, buf->ReadExtendedByte());
 		if (e == nullptr) {
@@ -5667,7 +5663,7 @@ static void VehicleMapSpriteGroup(ByteReader *buf, uint8_t feature, uint8_t idco
 			GrfMsg(7, "VehicleMapSpriteGroup: [{}] Engine {}...", i, engine);
 
 			if (wagover) {
-				SetWagonOverrideSprites(engine, cid, _cur.spritegroups[groupid], last_engines, last_engines_count);
+				SetWagonOverrideSprites(engine, cid, _cur.spritegroups[groupid], last_engines);
 			} else {
 				SetCustomEngineSprites(engine, cid, _cur.spritegroups[groupid]);
 			}
@@ -5683,7 +5679,7 @@ static void VehicleMapSpriteGroup(ByteReader *buf, uint8_t feature, uint8_t idco
 		EngineID engine = engines[i];
 
 		if (wagover) {
-			SetWagonOverrideSprites(engine, SpriteGroupCargo::SG_DEFAULT, _cur.spritegroups[groupid], last_engines, last_engines_count);
+			SetWagonOverrideSprites(engine, SpriteGroupCargo::SG_DEFAULT, _cur.spritegroups[groupid], last_engines);
 		} else {
 			SetCustomEngineSprites(engine, SpriteGroupCargo::SG_DEFAULT, _cur.spritegroups[groupid]);
 			SetEngineGRF(engine, _cur.grffile);
