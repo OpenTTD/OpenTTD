@@ -5279,10 +5279,10 @@ static void NewSpriteGroup(ByteReader *buf)
 
 			std::vector<DeterministicSpriteGroupRange> ranges;
 			ranges.resize(buf->ReadByte());
-			for (uint i = 0; i < ranges.size(); i++) {
-				ranges[i].group = GetGroupFromGroupID(setid, type, buf->ReadWord());
-				ranges[i].low   = buf->ReadVarSize(varsize);
-				ranges[i].high  = buf->ReadVarSize(varsize);
+			for (auto &range : ranges) {
+				range.group = GetGroupFromGroupID(setid, type, buf->ReadWord());
+				range.low   = buf->ReadVarSize(varsize);
+				range.high  = buf->ReadVarSize(varsize);
 			}
 
 			group->default_group = GetGroupFromGroupID(setid, type, buf->ReadWord());
@@ -5292,20 +5292,19 @@ static void NewSpriteGroup(ByteReader *buf)
 
 			/* Sort ranges ascending. When ranges overlap, this may required clamping or splitting them */
 			std::vector<uint32_t> bounds;
-			for (uint i = 0; i < ranges.size(); i++) {
-				bounds.push_back(ranges[i].low);
-				if (ranges[i].high != UINT32_MAX) bounds.push_back(ranges[i].high + 1);
+			for (const auto &range : ranges) {
+				bounds.push_back(range.low);
+				if (range.high != UINT32_MAX) bounds.push_back(range.high + 1);
 			}
 			std::sort(bounds.begin(), bounds.end());
 			bounds.erase(std::unique(bounds.begin(), bounds.end()), bounds.end());
 
 			std::vector<const SpriteGroup *> target;
-			for (uint j = 0; j < bounds.size(); ++j) {
-				uint32_t v = bounds[j];
+			for (const auto &bound : bounds) {
 				const SpriteGroup *t = group->default_group;
-				for (uint i = 0; i < ranges.size(); i++) {
-					if (ranges[i].low <= v && v <= ranges[i].high) {
-						t = ranges[i].group;
+				for (const auto &range : ranges) {
+					if (range.low <= bound && bound <= range.high) {
+						t = range.group;
 						break;
 					}
 				}
