@@ -3170,10 +3170,6 @@ bool IndustrySpec::UsesOriginalEconomy() const
 		HasBit(this->callback_mask, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(this->callback_mask, CBM_IND_PRODUCTION_CHANGE) || HasBit(this->callback_mask, CBM_IND_PROD_CHANGE_BUILD); // production change callbacks
 }
 
-IndustrySpec::~IndustrySpec()
-{
-}
-
 static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
 {
 	if (AutoslopeEnabled()) {

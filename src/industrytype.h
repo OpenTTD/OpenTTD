@@ -139,8 +139,6 @@ struct IndustrySpec {
 	Money GetConstructionCost() const;
 	Money GetRemovalCost() const;
 	bool UsesOriginalEconomy() const;
-
-	~IndustrySpec();
 };
 
 /**
