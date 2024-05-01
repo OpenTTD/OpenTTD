@@ -3705,23 +3705,15 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				break;
 
 			case 0x15: { // Random sound effects
-				indsp->number_of_sounds = buf->ReadByte();
-				uint8_t *sounds = MallocT<uint8_t>(indsp->number_of_sounds);
+				uint8_t num_sounds = buf->ReadByte();
 
-				try {
-					for (uint8_t j = 0; j < indsp->number_of_sounds; j++) {
-						sounds[j] = buf->ReadByte();
-					}
-				} catch (...) {
-					free(sounds);
-					throw;
+				std::vector<uint8_t> sounds;
+				sounds.reserve(num_sounds);
+				for (uint8_t j = 0; j < num_sounds; ++j) {
+					sounds.push_back(buf->ReadByte());
 				}
 
-				if (HasBit(indsp->cleanup_flag, CLEAN_RANDOMSOUNDS)) {
-					free(indsp->random_sounds);
-				}
-				indsp->random_sounds = sounds;
-				SetBit(indsp->cleanup_flag, CLEAN_RANDOMSOUNDS);
+				indsp->random_sounds = std::move(sounds);
 				break;
 			}
 

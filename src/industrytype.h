@@ -18,10 +18,6 @@
 #include "newgrf_animation_type.h"
 #include "newgrf_commons.h"
 
-enum IndustryCleanupType {
-	CLEAN_RANDOMSOUNDS,    ///< Free the dynamically allocated sounds table
-};
-
 /** Available types of industry lifetimes. */
 enum IndustryLifeType {
 	INDUSTRYLIFE_BLACK_HOLE =      0, ///< Like power plants and banks
@@ -132,21 +128,17 @@ struct IndustrySpec {
 	StringID station_name;                      ///< Default name for nearby station
 	uint8_t appear_ingame[NUM_LANDSCAPE];          ///< Probability of appearance in game
 	uint8_t appear_creation[NUM_LANDSCAPE];        ///< Probability of appearance during map creation
-	uint8_t number_of_sounds;                     ///< Number of sounds available in the sounds array
-	const uint8_t *random_sounds;                 ///< array of random sounds.
 	/* Newgrf data */
 	uint16_t callback_mask;                       ///< Bitmask of industry callbacks that have to be called
-	uint8_t cleanup_flag;                         ///< flags indicating which data should be freed upon cleaning up
 	bool enabled;                               ///< entity still available (by default true).newgrf can disable it, though
 	GRFFileProps grf_prop;                      ///< properties related to the grf file
+	std::vector<uint8_t> random_sounds; ///< Random sounds;
 
 	bool IsRawIndustry() const;
 	bool IsProcessingIndustry() const;
 	Money GetConstructionCost() const;
 	Money GetRemovalCost() const;
 	bool UsesOriginalEconomy() const;
-
-	~IndustrySpec();
 };
 
 /**

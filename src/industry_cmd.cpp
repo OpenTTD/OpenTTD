@@ -1166,11 +1166,11 @@ static void ProduceIndustryGoods(Industry *i)
 	/* play a sound? */
 	if ((i->counter & 0x3F) == 0) {
 		uint32_t r;
-		if (Chance16R(1, 14, r) && indsp->number_of_sounds != 0 && _settings_client.sound.ambient) {
+		if (Chance16R(1, 14, r) && !indsp->random_sounds.empty() && _settings_client.sound.ambient) {
 			if (std::any_of(std::begin(i->produced), std::end(i->produced), [](const auto &p) { return p.history[LAST_MONTH].production > 0; })) {
 				/* Play sound since last month had production */
 				SndPlayTileFx(
-					(SoundFx)(indsp->random_sounds[((r >> 16) * indsp->number_of_sounds) >> 16]),
+					static_cast<SoundFx>(indsp->random_sounds[((r >> 16) * indsp->random_sounds.size()) >> 16]),
 					i->location.tile);
 			}
 		}
@@ -3168,13 +3168,6 @@ bool IndustrySpec::UsesOriginalEconomy() const
 	return _settings_game.economy.type == ET_ORIGINAL ||
 		HasBit(this->callback_mask, CBM_IND_PRODUCTION_256_TICKS) || HasBit(this->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || // production callbacks
 		HasBit(this->callback_mask, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(this->callback_mask, CBM_IND_PRODUCTION_CHANGE) || HasBit(this->callback_mask, CBM_IND_PROD_CHANGE_BUILD); // production change callbacks
-}
-
-IndustrySpec::~IndustrySpec()
-{
-	if (HasBit(this->cleanup_flag, CLEAN_RANDOMSOUNDS)) {
-		free(this->random_sounds);
-	}
 }
 
 static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
