@@ -63,9 +63,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 	ci->description = p.Recv_string(NETWORK_CONTENT_DESC_LENGTH, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
 
 	ci->unique_id = p.Recv_uint32();
-	for (size_t j = 0; j < ci->md5sum.size(); j++) {
-		ci->md5sum[j] = p.Recv_uint8();
-	}
+	p.Recv_bytes(ci->md5sum);
 
 	uint dependency_count = p.Recv_uint8();
 	ci->dependencies.reserve(dependency_count);
@@ -276,10 +274,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 		p->Send_uint8((uint8_t)ci->type);
 		p->Send_uint32(ci->unique_id);
 		if (!send_md5sum) continue;
-
-		for (size_t j = 0; j < ci->md5sum.size(); j++) {
-			p->Send_uint8(ci->md5sum[j]);
-		}
+		p->Send_bytes(ci->md5sum);
 	}
 
 	this->SendPacket(std::move(p));
