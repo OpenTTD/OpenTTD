@@ -76,7 +76,7 @@ static const uint VEHICLEINFO_FULL_VEHICLE_WIDTH    = 32;
 
 struct VehicleSpriteSeq;
 
-void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const struct SpriteGroup *group, EngineID *train_id, uint trains);
+void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const struct SpriteGroup *group, std::span<EngineID> engine_ids);
 const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine);
 void SetCustomEngineSprites(EngineID engine, uint8_t cargo, const struct SpriteGroup *group);
 
