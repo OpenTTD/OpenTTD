@@ -38,23 +38,24 @@ extern std::string _config_file;
 extern std::string _highscore_file;
 
 static const char * const _subdirs[] = {
-	"",
-	"save" PATHSEP,
-	"save" PATHSEP "autosave" PATHSEP,
-	"scenario" PATHSEP,
-	"scenario" PATHSEP "heightmap" PATHSEP,
-	"gm" PATHSEP,
-	"data" PATHSEP,
-	"baseset" PATHSEP,
-	"newgrf" PATHSEP,
-	"lang" PATHSEP,
-	"ai" PATHSEP,
-	"ai" PATHSEP "library" PATHSEP,
-	"game" PATHSEP,
-	"game" PATHSEP "library" PATHSEP,
-	"screenshot" PATHSEP,
-	"social_integration" PATHSEP,
+	"",                                     ///< BASE_DIR
+	"save" PATHSEP,                         ///< SAVE_DIR
+	"save" PATHSEP "autosave" PATHSEP,      ///< AUTOSAVE_DIR
+	"scenario" PATHSEP,                     ///< SCENARIO_DIR
+	"scenario" PATHSEP "heightmap" PATHSEP, ///< HEIGHTMAP_DIR
+	"gm" PATHSEP,                           ///< OLD_GM_DIR
+	"data" PATHSEP,                         ///< OLD_DATA_DIR
+	"baseset" PATHSEP,                      ///< BASESET_DIR
+	"newgrf" PATHSEP,                       ///< NEWGRF_DIR
+	"lang" PATHSEP,                         ///< LANG_DIR
+	"ai" PATHSEP,                           ///< AI_DIR
+	"ai" PATHSEP "library" PATHSEP,         ///< AI_LIBRARY_DIR
+	"game" PATHSEP,                         ///< GAME_DIR
+	"game" PATHSEP "library" PATHSEP,       ///< GAME_LIBRARY_DIR
+	"screenshot" PATHSEP,                   ///< SCREENSHOT_DIR
+	"social_integration" PATHSEP,           ///< SOCIAL_INTEGRATION_DIR
 };
+// This should line up with the "Subdirectory" enum defined in fileio_type.h
 static_assert(lengthof(_subdirs) == NUM_SUBDIRS);
 
 /**
