@@ -2162,7 +2162,7 @@ STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :未知
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... 压缩等级 '{STRING}' 无效
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}...存档格式 '{STRING}' 不适用. 请转换成 '{STRING}'
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 禁用基础图形设置 '{STRING}': 未找到
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 禁用基础意义设置 '{STRING}': 未找到
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}……禁用基础音效设置 '{STRING}': 未找到
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 禁用基础音乐设置 '{STRING}': 未找到
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}内存溢出
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}无法分配 {BYTES} 的 Sprite 缓存。Sprite 缓存的大小已降至 {BYTES}。OpenTTD 的性能将受到影响。请尝试停用 32bpp 图形及／或减少放大倍数，以降低内存需求

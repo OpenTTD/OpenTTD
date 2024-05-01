@@ -228,7 +228,7 @@ STR_BAGS                                                        :{COMMA}{NBSP}σ
 STR_TONS                                                        :{COMMA}{NBSP}τόνο{P ς οι}
 STR_LITERS                                                      :{COMMA}{NBSP}λίτρ{P ο α}
 STR_ITEMS                                                       :{COMMA}{NBSP}αντικείμεν{P ο α}
-STR_CRATES                                                      :{COMMA}{NBSP}κουτ{P ί ιά}
+STR_CRATES                                                      :{COMMA}{NBSP}κιβώτι{P ο α}
 
 STR_COLOUR_DEFAULT                                              :Προεπιλογή
 ###length 17
@@ -346,7 +346,7 @@ STR_TOOLTIP_SHADE                                               :{BLACK}Σκία
 STR_TOOLTIP_DEBUG                                               :{BLACK}Εμφάνιση πληροφοριών αποσφαλμάτωσης για NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Κλιμακώνει το παράθυρο στο προκαθορισμένο μέγεθος. Με Ctrl+Κλικ αποθηκεύεται το τρέχον μέγεθος ως προκαθορισμένο
 STR_TOOLTIP_STICKY                                              :{BLACK}Σημειώστε αυτό το παραθύρο ωστέ να μην κλείνει από το πλήκτρο «Κλείσιμο Όλων των Παραθύρων». Πατήστε Ctrl+Κλικ για να αποθηκεύσετε την κατάσταση απο επιλογή
-STR_TOOLTIP_RESIZE                                              :{BLACK}Κάντε κλίκ και σύρετε για να αλλάξετε το μέγεθος του παραθύρου
+STR_TOOLTIP_RESIZE                                              :{BLACK}Πατήστε και σύρετε για να αλλάξετε το μέγεθος του παραθύρου
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα Κύλισης - μετακινεί την λίστα πάνω/κάτω
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα κίνησης - κινεί τη λίστα αριστερά/δεξιά
@@ -590,7 +590,7 @@ STR_ABOUT_MENU_HELP                                             :Βοήθεια 
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Εναλλαγή κονσόλας
 STR_ABOUT_MENU_AI_DEBUG                                         :Αποσφαλμάτωση AI και δέσμης ενεργειών παιχνιδιού
 STR_ABOUT_MENU_SCREENSHOT                                       :Στιγμιότυπο οθόνης
-STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Εμφάνιση ρυθμού καρέ
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Ρυθμός εμφάνισης καρέ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Σχετικά με το 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγραμμιστής στοιχεών
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Εναλλαγή πλαισίου οριοθέτησης
@@ -884,7 +884,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Χιόνι
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Εναλλαγή ονομάτων πόλεων στον χάρτη
-STR_SMALLMAP_CENTER                                             :{BLACK}Κεντράρισμα του μικρού χάρτη στη τρέχουσα θέση
+STR_SMALLMAP_CENTER                                             :{BLACK}Κεντράρισμα του μικρού χάρτη στην τρέχουσα θέση
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -1135,7 +1135,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Η ρύ�
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Τσεκάρετε αυτό το κουτί για να ενεργοποιήσετε το v-sync στην οθόνη. Η αλλαγή αυτή θα εφαρμοστεί μετά από επανεκκίνηση του παιχνιδιού. Λειτουργεί μόνο με ενεργοποιημένη την επιτάχυνση υλικού
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Τρέχον οδηγός: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Τρέχων οδηγός: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Μέγεθος διεπαφής
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Σύρετε το κουμπί για να ορίσετε το μέγεθος του περιβάλλοντος διεπαφής. Ctrl+Σύρσιμο για συνεχή προσαρμογή
@@ -1200,15 +1200,15 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Άκυρη
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} λείπει/κατεστραμμένο αρχεί{P ο α})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Αποτυχία ανάκτησης λίστας υποστηριζόμενων αναλύσεων
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Θέση του παιχνιδιού σε λειτουργία πλήρης οθόνης απέτυχε
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Απέτυχε η λειτουργία πλήρους οθόνης
 
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Προσαρμοσμένο νόμισμα
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Ισοτιμία: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
-STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Μείωση του ποσού της ισοτιμίας σας για μία λίρα (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Αυξήστε το ποσό της ισοτιμίας σας για μία Λίρα (£)
-STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ρυθμίστε τη συναλλαγματική ισοτιμία του νομίσματος για μια λίρα (£)
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Μείωση του ποσού του νομίσματός σας για μία λίρα (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Αύξηση του ποσού του νομίσματός σας για μία Λίρα (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ορίστε τη συναλλαγματική ισοτιμία του νομίσματος σας για μια λίρα (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Διαχωριστής: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Ορίστε το διαχωριστικό για το νόμισμά σας
@@ -1225,7 +1225,7 @@ STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Να γ�
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Να γίνει η μετάβαση σε Ευρώ αργότερα
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Προεπισκόπιση: {ORANGE}{CURRENCY_LONG}
-STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 λίρες (£) στο νόμισμά σας
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 λίρες (£) στο νόμισμά σας
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Αλλαγή παραμέτρων προσαρμοσμένου νομίσματος
 
 STR_NONE                                                        :Κανένα
@@ -1298,7 +1298,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Υπομονε�
 STR_CITY_APPROVAL_HOSTILE                                       :Εχθρική
 STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτική (χωρίς επίδραση σε ενέργειες της εταιρίας)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν είναι διαθέσιμο κανένα κατάλληλο Al...{}Μπορείτε να κατεβάσετε AIs μέσω του συστήματος «Διαδικτυακού Περιεχομένου»
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν υπάρχει διαθέσιμο κατάλληλο Al...{}Μπορείτε να κατεβάσετε AIs μέσω του συστήματος «Διαδικτυακού Περιεχομένου»
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ρυθμίσεις
@@ -1925,6 +1925,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Ορίστε τ
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Προκαθορισμένο διάστημα μεταξύ επισκευών για τα πλοία: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Ορίστε το προκαθορισμένο διάστημα μεταξύ συντηρήσεων για τα νέα πλοία, όταν δεν δίνεται άλλο διάστημα για το πλοίο
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Ημέρα{P 0 "" s}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Λεπτό{P 0 "" s}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Απενεργοποιημένο
@@ -2743,22 +2746,22 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Ο serve
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Οι άλλοι παίκτες δεν θα μπορούν να συνδεθούν στον server σας
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Περιεχόμενο κατεβαίνει
+STR_CONTENT_TITLE                                               :{WHITE}Λαμβάνεται το περιεχόμενο
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Τύπος
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Τύπος περιεχόμενου
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Όνομα
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Το όνομα του περιεχομένου
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Πατήστε σε μια γραμμή για να δείτε λεπτομέρειες{}Πατήστε στο κουτάκι για το επιλέξετε για κατέβασμα
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Επιλογή όλων
-STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Μαρκάρισμα όλων των περιεχομένων για κατέβασμα
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Μαρκάρισμα όλων των περιεχομένων για λήψη
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Επιλέξτε αναβαθμίσεις
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Μαρκάρισμα όλων των περιεχόμενων που είναι για αναβάθμιση υπαρχόντων περιεχόμενων για κατέβασμα
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Αποεπιλογή όλων
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Σημείωση όλων των περιεχομένων να μην κατέβουν
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Αναζήτηση εξωτερικών ιστοσελίδων
-STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Αναζήτηση για περιεχόμενο που δεν είναι διαθέσιμο μέσω την υπηρεσία λήψης περιεχομένου του OpenTTD σε ιστοσελίδες που δεν σχετίζονται με το OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Αναζήτηση για περιεχόμενο που δεν είναι διαθέσιμο μέσω της υπηρεσίας λήψης περιεχομένου του OpenTTD σε ιστοσελίδες που δεν σχετίζονται με το OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Φεύγετε από το OpenTTD!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Οι όροι και προϋποθέσεις για τη λήψη περιεχομένου από εξωτερικές ιστοσελίδες διαφέρουν.{}Θα πρέπει να αναφερθείτε στις εξωτερικές ιστοσελίδες για οδηγίες περί της εγκατάστασης του περιεχομένου στο OpenTTD.{}Θέλετε να συνεχίσετε;
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Οι όροι και προϋποθέσεις για τη λήψη περιεχομένου από εξωτερικές ιστοσελίδες διαφέρουν.{}Θα πρέπει να ανατρέξετε σε αυτές για οδηγίες σχετικά με την εγκατάσταση του περιεχομένου στο OpenTTD.{}Θέλετε να συνεχίσετε;
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Ετικέτα/όνομα φίλτρου:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Ιστοσελίδα
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Επισκεφθείτε την ιστοσελίδα αυτού του περιεχομένου
@@ -2868,7 +2871,7 @@ STR_JOIN_STATION_CAPTION                                        :{WHITE}Συνέ
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Κατασκευάστε ένα ξεχωριστό σταθμό
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Συνένωση σημείου καθοδήγησης
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}κατασκευή ενός ξεχωριστού σημείου καθοδήγησης
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Κατασκευή ενός ξεχωριστού σημείου καθοδήγησης
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Απενεργοποιημένο διότι δεν υπάρχουν διαθέσιμα οχήματα για αυτή την υποδομή
@@ -2921,7 +2924,7 @@ STR_STATION_CLASS_DFLT                                          :Προεπιλ�
 STR_STATION_CLASS_DFLT_STATION                                  :Προεπιλεγμένος σταθμός
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Προεπιλεγμένη οδική στάση
 STR_STATION_CLASS_WAYP                                          :Σημείο καθοδηγήσης
-STR_STATION_CLASS_WAYP_WAYPOINT                                 :Προεπιλεγμένο σημείο διαδρομής
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Προεπιλεγμένο σημείο καθοδήγησης
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Επιλογή Σηματοδότη
@@ -2938,7 +2941,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Σημα
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Συνδυαστικός Σηματοδότης (ηλεκτρικός){}Ο συνδυαστικός σηματοδότης δουλεύει απλά ως σηματοδότης εισόδου και εξόδου ταυτόχρονα. Αυτό σας επιτρέπει την κατασκευή μεγάλων «δέντρων» με προ-σηματοδότες
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Σηματοδότης Τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα από ένα τρένο να είναι σε ένα κομμάτι ελέγχου την ίδια στιγμή, εάν το τρένο μπορεί να δεσμεύσει τροχιά σε ασφαλές σημείο στάσης. Κανονικοί σηματοδότες τροχιάς μπορούν να περαστούν από την πίσω πλευρά
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα από ένα τρένο να είναι σε ένα κομμάτι ελέγχου την ίδια στιγμή, εάν το τρένο μπορεί να δεσμεύσει τροχιά σε ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπορούν να περαστούν από την πίσω πλευρά
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Μετατροπή σήματος{}Κάντε κλικ σε ένα υπάρχον σήμα για να το μετατρέψετε στον επιλεγμένο τύπο και παραλλαγή. Ctrl+Κλικ για εναλλαγή της υπάρχουσας παραλλαγής. Το Shift+Κλικ εμφανίζει το εκτιμώμενο κόστος μετατροπής
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Μετατροπή σήματος{}Πατήστε σε ένα υπάρχον σήμα για να το μετατρέψετε στον επιλεγμένο τύπο και παραλλαγή. Ctrl+Κλικ για εναλλαγή της υπάρχουσας παραλλαγής. Το Shift+Κλικ εμφανίζει το εκτιμώμενο κόστος μετατροπής
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Απόσταση μεταξύ σηματοδοτών με σύρσιμο
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Μείωση απόστασης μεταξύ σηματοδοτών με σύρσιμο
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Αύξηση απόστασης μεταξύ σηματοδοτών με σύρσιμο
@@ -3354,7 +3357,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Αποθ
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Φόρτωση Σεναρίου
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Φόρτωση Χάρτη Υψομετρίας
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Αποθήκευση Χάρτη Υψομετρίας
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Πατήστε εδώ για να πάτε στον τρέχων φάκελο αποθήκευσης
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Πατήστε εδώ για να μεταβείτε στον τρέχοντα φάκελο αποθήκευσης/φόρτωσης
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ελεύθερα
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Λίστα δισκών, φακέλων και αποθηκευμένων παιχνιδιών
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Τρέχον επιλεγμένο όνομα για το αποθηκευμένο παιχνίδι
@@ -4006,7 +4009,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Προβ
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Δώστε χρήματα
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Δώστε χρήματα σε αυτή την εταρία
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Εχθρική εξαγορά
-STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Κάντε μια εχθρική εξαγορά αυτής της εταιρείας
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Κάντε εχθρική εξαγορά αυτής της εταιρείας
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Νέο Πρόσωπο
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Επιλογή νέου προσώπου διευθυντή
@@ -4286,9 +4289,9 @@ STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Αερο
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Τραβήξτε το όχημα τρένου εδώ για να το πουλήσετε
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Τραβήξτε το όχημα δρόμου εδώ για να το πουλήσετε
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Σύρετε το όχημα δρόμου εδώ για να το πουλήσετε
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Τραβήξτε το πλοίο εδώ για να το πουλήσετε
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Τραβήξτε το αεροσκάφος εδώ για να το πουλήσετε
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Σύρετε το αεροσκάφος εδώ για να το πουλήσετε
 
 ###length VEHICLE_TYPES
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Πουλήστε όλα τα τρένα στο αμαξοστάσιο
@@ -4300,7 +4303,7 @@ STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Πουλ
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Αυτόματη αντικατάσταση όλων των τρένων στο αμαξοστάσιο
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Αυτόματη αντικατάσταση όλων των οχημάτων στο αμαξοστάσιο
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Αυτόματη αντικατάσταση όλων των πλοίων στο ναυπηγείο
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Αυτόματη αντικατάσταση όλων των αεροσκαφών του υποστέγου
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Αυτόματη αντικατάσταση όλων των αεροσκαφών στο υπόστεγο
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Νέα Οχήματα
@@ -4321,7 +4324,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Κλων
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Κλωνοποίηση Αεροσκάφους
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αγορά αντιγράφου ενός τρένου μαζί με τα όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τρένο μέσα ή έξω από το αμαξοστάσιο. Ctrl+Κλικ για διαμοιρασμό εντολών. Επιπρόσθετα, με Shift εμφανίζεται εκτίμηση κόστους μόνο
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αγορά αντιγράφου ενός τρένου μαζί με όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τρένο μέσα ή έξω από το αμαξοστάσιο. Ctrl+Κλικ για διαμοιρασμό εντολών. Επιπρόσθετα, με Shift εμφανίζεται εκτίμηση κόστους μόνο
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Αγορά αντιγράφου ενός οχήματος δρόμου. Πατήστε αυτό το κουμπί και μετά σε κάποιο όχημα μέσα ή έξω από το αμαξοστάσιο. Ctrl+Κλικ για διαμοιρασμό εντολών. Επιπρόσθετα, με Shift εμφανίζεται εκτίμηση κόστους μόνο
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Αγορά αντιγράφου ενός πλοίου. Πατήστε αυτό το κουμπί και μετά σε κάποιο πλοίο μέσα ή έξω από το ναυπηγείο. Ctrl+Κλικ για διαμοιρασμό εντολών. Επιπρόσθετα, με Shift εμφανίζεται εκτίμηση κόστους μόνο
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Αγορά αντιγράφου του αεροσκάφους. Πατήστε αυτό το κουμπί και μετά σε κάποιο αεροσκάφος μέσα ή έξω από το υπόστεγο. Με Ctrl+Κλικ θα διαμοιραστούν τις εντολές. Επιπρόσθετα, με Shift εμφανίζεται εκτίμηση κόστους μόνο
@@ -4350,7 +4353,7 @@ STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Πατή
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Πατήστε για να ξεκινήσουν όλα τα πλοία μέσα στο ναυπηγείο
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Πατήστε για να ξεκινήσουν όλα τα αεροσκάφη μέσα στο υπόστεγο
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Τραβήξτε τη μηχανή του τρένου εδώ για να πουληθεί ολόκληρο το τρένο
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Σύρετε τη μηχανή του τρένου εδώ για να πουληθεί ολόκληρο το τρένο
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Πρόκειται να πουλήσετε όλα τα οχήματα στο αμαξοστάσιο. Είσαστε σίγουροι;
 
 # Engine preview window
@@ -4483,10 +4486,10 @@ STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Εμφά
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Εμφάνιση λεπτομερειών αεροσκάφους
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Τρέχουσα δράση τρένου - κάντε κλικ για να σταματήσετε/ξεκινήσετε το τρένο
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Τρέχων ενέργεια οχήματος - κάντε κλικ για να σταματήσετε/ξεκινήσετε το όχημα
-STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Τρέχουσα ενέργεια πλοίου - κάντε κλικ για να σταματήσετε/ξεκινήσετε το πλοίο
-STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Τρέχουσα δράση αεροσκάφους - κάντε κλικ για να σταματήσετε/ξεκινήσετε το αεροσκάφος
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Τρέχουσα δράση τρένου - πατήστε για να σταματήσετε/ξεκινήσετε το τρένο
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Τρέχουσα ενέργεια οχήματος - πατήστε για να σταματήσετε/ξεκινήσετε το όχημα
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Τρέχουσα ενέργεια πλοίου - πατήστε για να σταματήσετε/ξεκινήσετε το πλοίο
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Τρέχουσα δράση αεροσκάφους - πατήστε για να σταματήσετε/ξεκινήσετε το αεροσκάφος
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Φόρτωση / Εκφόρτωση
@@ -4609,7 +4612,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Νέα �
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Νέα χωρητικότητα: {GOLD}{CARGO_LONG}{}{BLACK}Κέρδος από τη μετατροπή: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Νέα χωρητικότητα: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Κόστος μετατροπής: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Νέα χωρητικότητα: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Κέρδος από τη μετατροπή: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Επιλέξτε τα οχήματα για μετατροπή. Κλικ+Σύρσιμο για επιλογή πολλαπλών οχημάτων. Κάντε κλικ σε έναν κενό χώρο για να επιλέξετε ολόκληρο το όχημα. Ctrl+Κλικ για να επιλέξετε ένα όχημα και την ακόλουθη αλυσίδα
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Επιλέξτε τα οχήματα για μετατροπή. Κλικ+Σύρσιμο για επιλογή πολλαπλών οχημάτων. Πατήστε σε κενό χώρο για να επιλέξετε ολόκληρο το όχημα. Ctrl+Κλικ για να επιλέξετε κάποιο όχημα και την ακόλουθη αλυσίδα
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Επιλέξτε τον τύπο εμπορεύματος που θα μεταφέρει το τρένο
@@ -4724,7 +4727,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Πήγαινε 
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Πήγαινε στο κοντινότερο υπόστεγο
 STR_ORDER_CONDITIONAL                                           :Εκτέλεση εντόλης υπο προυπόθεση
 STR_ORDER_SHARE                                                 :Μοίρασμα εντολών
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη ή προσθέστε στο τέλος της λίστας. Ctrl+Κλικ σε έναν σταθμό για ορισμό εντολής σε "πλήρης φόρτωση οποιουδήποτε εμπορεύματος", σε σημείο διαδρομής για αντιστροφή εντολής "χωρίς στάση εξ ορισμού" ή σε αμαξοστάσιο για "αποσύνδεση". Κάντε κλικ σε άλλο όχημα για να αντιγράψετε τις εντολές του ή Ctrl+Κλικ για διαμοιρασμό εντολών. Μια εντολή αμαξοστασίου απενεργοποιεί την αυτόματη συντήρηση του οχήματος
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισαγάγετε νέα εντολή πριν την επιλεγμένη ή προσθέστε στο τέλος της λίστας. Ctrl+Κλικ σε σταθμό για «πλήρη φόρτωση οποιουδήποτε εμπορεύματος», σε σημείο διαδρομής για αντιστροφή της εντολής «προεπιλογή χωρίς στάση» ή σε αμαξοστάσιο για «αποσύνδεση». Πατήστε σε άλλο όχημα για να αντιγράψετε τις εντολές του ή Ctrl+Κλικ για διαμοιρασμό εντολών. Η εντολή για αμαξοστάσιο απενεργοποιεί την αυτόματη συντήρηση του οχήματος
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Εμφάνιση όλων των οχημάτων που μοιράζονται αυτό το δρομολόγιο
 
@@ -4894,7 +4897,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Δέσμ
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Έλεγχος ιστορικού δέσμης ενεργειών παιχνιδιού. Ctrl+Κλικ για άνοιγμα σε νέο παράθυρο
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλη AI για φόρτωση.{}Αυτή η AI είναι ψεύτικη και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορες AΙ από το σύστημα Διαδικτυακού Περιεχομένου.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Μια τρέχουσα δέσμη ενεργειών τερμάτισε απότομα. Παρακαλώ ενημερώστε τον συγγραφέα της δέσμης ενεργειών με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI/Παιχνιδιού
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Μια από τις δέσμες ενεργειών που εκτελούνται τερμάτισε απότομα. Παρακαλώ ενημερώστε τον συγγραφέα της δέσμης ενεργειών με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI/Παιχνιδιού
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το παράθυρο αποσφαλμάτωσης ΑΙ και δέσμης ενεργειών είναι διαθέσιμο μόνο για τον διακομιστή
 
 # AI configuration window
@@ -5008,7 +5011,7 @@ STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Η αυ�
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Αδύνατη η ανάγνωση του δίσκου
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Η αποθήκευση του παιχνιδιού απέτυχε...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Αδύνατη η διαγραφή του αρχείου
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Το φόρτωμα του παιχνιδιού απέτυχε...
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Απέτυχε η φόρτωση του παιχνιδιού...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Εσωτερικό λάθος: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Χαλασμένο αποθηκευμένο παιχνίδι - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Το αποθηκευμένο παιχνίδι είναι φτιαγμένο με νεότερη έκδοση
@@ -5037,7 +5040,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Προε
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Αλλαγή μεγέθους του πηγαίου χάρτη δεν συνιστάται. Να προχωρήσει η δημιουργία;
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Βρέθηκε μόνο εφεδρικό σετ ήχου. Αν θέλετε ήχους, εγκαταστήστε ένα πακέτο ήχων μέσω του συστήματος μεταφόρτωσης υλικού
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Βρέθηκε μόνο εφεδρικό πακέτο ήχων. Αν θέλετε ήχους, εγκαταστήστε πακέτο ήχων μέσω του συστήματος μεταφόρτωσης υλικού
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Τεράστιο στιγμιότυπο οθόνης
@@ -5157,23 +5160,23 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Πάρα
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Πολύ κοντά σε άλλη αποβάθρα
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Πολύ κοντά σε άλλο αεροδρόμιο
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Δεν μπορεί να μετονομαστεί ο σταθμός...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... δρόμος ιδιοκτησία μιας πόλης
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... δρόμος ιδιοκτησία κάποιας πόλης
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... ο δρόμος βλέπει σε λάθος κατεύθυνση
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... οι μη τερματικοί σταθμοί δε μπορούν να έχουν στροφές
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... οι μη τερματικοί σταθμοί δε μπορούν να έχουν διασταυρώσεις
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Δεν μπορεί να αφαιρεθεί μέρος του σταθμού...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Πρέπει πρώτα να αφαιρέσετε τον σταθμό σιδηροδρόμου
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Πρέπει να αφαιρεθεί ο σταθμός σιδηροδρόμου πρώτα
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Αδύνατο να αφαιρεθεί η στάση λεωφορείων...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Δεν μπορεί να αφαιρεθεί ο σταθμός φορτηγών...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Δεν μπορεί να αφαιρεθεί η στάση επιβατών τραμ...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Δεν μπορεί να αφαιρεθεί ο σταθμός εμπορευμάτων τραμ...
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Πρέπει να γίνει αφαίρεση της στάσης οχημάτων πρώτα
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Πρέπει να αφαιρεθεί η στάση οχημάτων πρώτα
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... δεν υπάρχει σταθμός εδώ
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Πρέπει να κατεδαφιστεί ο σιδηροδρομικός σταθμός πρώτα
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Πρέπει να κατεδαφιστεί η στάσης λεωφορείου πρώτα
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Πρέπει να κατεδαφιστεί η στάση λεωφορείου πρώτα
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Πρέπει να κατεδαφιστεί ο σταθμός φορτηγών πρώτα
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Πρέπει να κατεδαφιστεί ο επιβατικός σταθμός τραμ πρώτα
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Πρέπει να κατεδαφιστεί ο εμπορευματικός σταθμός τραμ πρώτα
@@ -5181,7 +5184,7 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Πρέπ
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Πρέπει να κατεδαφιστεί το αεροδρόμιο πρώτα
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Προστίθεται σε περισσότερο από ένα υπάρχον σημείο καθοδήγησης
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Συνενώνει περισσότερα από ένα υπάρχοντα σημεία καθοδήγησης
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Πολύ κοντά σε άλλο σημείο καθοδήγησης
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Δεν μπορεί να κατασκευαστεί σημείο καθοδήγησης τρένου εδώ...
@@ -5189,7 +5192,7 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Δεν �
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Αδύνατο να αλλαχτεί το όνομα του σημείου καθοδήγησης...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Αδύνατο να αφαιρεθεί το σημείο καθοδήγησης τρένου από εδώ...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Πρέπει να αφαιρεθεί πρώτα το σημείο καθοδήγησης σιδηρόδρομου
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Πρέπει να αφαιρεθεί το σημείο καθοδήγησης σιδηρόδρομου πρώτα
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... σημαδούρα στη μέση
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... σημαδούρα σε χρήση από άλλη εταιρία!
 
@@ -5235,7 +5238,7 @@ STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Το κ�
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Αδύνατος συνδυασμός σιδηροδρόμου
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Πρέπει να γίνει αφαίρεση του σήματος πρώτα
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Πρέπει να αφαιρεθεί το σήμα πρώτα
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Μη συμβατή σιδηροτροχιά
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Πρέπει να αφαιρεθεί ο σιδηρόδρομος πρώτα
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Η δρόμος είναι μονόδρομος ή μπλοκαρισμένος
@@ -5252,7 +5255,7 @@ STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... δε
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Δε γίνεται να μετατραπεί ο τύπος της σιδηροτροχιάς εδώ...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Πρέπει πρώτα να αφαιρεθεί ο δρόμος
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Πρέπει να αφαιρεθεί ο δρόμος πρώτα
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... οι μονόδρομοι δεν μπορούν να έχουν διασταυρώσεις
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Δεν μπορεί να κατασκευαστεί δρόμος εδώ...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Δεν μπορεί να κατασκευαστεί τροχιοδρόμος εδώ...
@@ -5284,7 +5287,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Δεν �
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Δεν μπορεί να κατασκευαστεί γέφυρα εδώ...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Πρέπει πρώτα να καταστραφεί η γέφυρα
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Πρέπει να καταστραφεί η γέφυρα πρώτα
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Δεν γίνεται να ξεκινάει και να τελειώνει στο ίδιο σημείο
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Η γέφυρα δεν καταλήγει στο ίδιο επίπεδο
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Η γέφυρα είναι πολύ χαμηλή για το έδαφος
@@ -5297,7 +5300,7 @@ STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Η γέ�
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Δεν μπορεί να κατασκευαστεί τούνελ εδώ...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Ακατάλληλη τοποθεσία για είσοδο τούνελ
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Πρέπει πρώτα να καταστραφεί το τούνελ
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Πρέπει να καταστραφεί το τούνελ πρώτα
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Υπάρχει άλλο τούνελ στη μέση
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Το τούνελ θα καταλήξει εκτός του χάρτη
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Αδύνατο να γίνει εκσκαφή γης στην άλλη άκρη του τούνελ
@@ -5436,7 +5439,7 @@ STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Δεν �
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Δεν υπάρχουν στάσεις που να είναι κατάλληλες για αρθρωτά οδικά οχήματα.{}Τα αρθρωτά οδικά οχήματα απαιτούν μια στάση-πέρασμα (drive-through) και όχι κλειστή στάση
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Το αεροπλάνο αυτό δεν μπορεί να προσγειωθεί σε αυτό το ελικοδρόμιο
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Το ελικόπτερο αυτό δεν μπορεί να προσγειωθεί σε αυτό το αεροδρόμιο
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Δεν υπάρχει σιδηροδρομικό σημείο
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Δεν υπάρχει σημείο καθοδήγησης σιδηροδρόμου
 STR_ERROR_NO_BUOY                                               :{WHITE}Δεν υπάρχει σημαδούρα
 
 # Timetable related errors
@@ -5928,10 +5931,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
-STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
-STR_CURRENCY_SHORT_GIGA                                         :{NBSP}Δις
-STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}χιλ.
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}εκ.
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}δισ.
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}τρισ.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

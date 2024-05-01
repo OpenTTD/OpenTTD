@@ -93,7 +93,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Edari Burbuilat
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}bidaiari{P "" ak}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}bidaiari
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} ikatz
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}posta zaku
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} petroleo
@@ -162,23 +162,23 @@ STR_ABBREV_FIZZY_DRINKS                                         :EB
 STR_ABBREV_ALL                                                  :DEN
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA}{NBSP}bidaiari{P "" ak}
-STR_BAGS                                                        :{COMMA}{NBSP}zaku{P "" ak}
-STR_TONS                                                        :{COMMA}{NBSP}tona{P "" k}
-STR_LITERS                                                      :{COMMA}{NBSP}litro{P "" ak}
-STR_ITEMS                                                       :{COMMA}{NBSP}objektu{P "" ak}
-STR_CRATES                                                      :{COMMA}{NBSP}kaxa{P "" k}
+STR_PASSENGERS                                                  :{COMMA}{NBSP}bidaiari
+STR_BAGS                                                        :{COMMA}{NBSP}zaku
+STR_TONS                                                        :{COMMA}{NBSP}tona
+STR_LITERS                                                      :{COMMA}{NBSP}litro
+STR_ITEMS                                                       :{COMMA}{NBSP}objektu
+STR_CRATES                                                      :{COMMA}{NBSP}kaxa
 
 STR_COLOUR_DEFAULT                                              :Lehenetsia
 ###length 17
-STR_COLOUR_DARK_BLUE                                            :Urdin Iluna
-STR_COLOUR_PALE_GREEN                                           :Berde Zurbila
+STR_COLOUR_DARK_BLUE                                            :Urdin iluna
+STR_COLOUR_PALE_GREEN                                           :Berde zurbila
 STR_COLOUR_PINK                                                 :Larrosa
 STR_COLOUR_YELLOW                                               :Horia
 STR_COLOUR_RED                                                  :Gorria
-STR_COLOUR_LIGHT_BLUE                                           :Urdin Argia
+STR_COLOUR_LIGHT_BLUE                                           :Urdin argia
 STR_COLOUR_GREEN                                                :Berdea
-STR_COLOUR_DARK_GREEN                                           :Berde Iluna
+STR_COLOUR_DARK_GREEN                                           :Berde iluna
 STR_COLOUR_BLUE                                                 :Urdina
 STR_COLOUR_CREAM                                                :Krema
 STR_COLOUR_MAUVE                                                :Malba
@@ -205,16 +205,16 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}tona{P "" k}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP}tona{P "" k}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}tona
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP}tona
 STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}{NBSP}kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}{NBSP}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}galoi{P "" ak}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}litro{P "" ak}
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}galoi
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}litro
 STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}{NBSP}m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL}{NBSP}lbf
@@ -230,9 +230,9 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}
 
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}Lokarri iragazkia:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sartu lokarri iragazkia
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sartu hitz bat iragazkian zerrendan aurkitzeko
+STR_LIST_FILTER_TITLE                                           :{BLACK}Iragazi:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Idatzi hitzen bat zerrenda iragazteko
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Idatzi hitzen bat zerrenda iragazteko
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Aukeratu taldekatzeko ordena
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Hautatu agertze ordena (deszendientea/aszendientea)
@@ -240,7 +240,7 @@ STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Aukeratu
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Aukeratu iragazki irizpideak
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenatu
 
-STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lehioa itxi
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Itxi leihoa
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Leiho izena - Arrastatu hau leihoa mugitzeko
 STR_TOOLTIP_SHADE                                               :{BLACK}Itzal leihoa - titulu barra bakarrik ikusten da
 STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF garbiketa informazioa ikusi
@@ -253,14 +253,14 @@ STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Eraikina
 
 # Show engines button
 ###length VEHICLE_TYPES
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Ezkutuak erakutsi
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Ezkutuak erakutsi
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Ezkutuak erakutsi
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Ezkutuak erakutsi
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Erakutsi ezkutukoak
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Erakutsi ezkutukoak
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Erakutsi ezkutukoak
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Erakutsi ezkutukoak
 
 ###length VEHICLE_TYPES
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Botoi hau gaituz, ezkutuak dauden trenak erakusten dira
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Botoi hau gaituz, ezkutuko itsasontziak ere erakusten dira
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Botoi hau sakatuz, ezkutuko trenak erakusten dira
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Botoi hau sakatuz, ezkutuko itsasontziak ere erakusten dira
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Lehenetsia
@@ -275,7 +275,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :ª!"·$%&/()=?�
 STR_MEASURE_LENGTH                                              :{BLACK}Luzera: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Area: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Luzera: {NUM}{}Garaiera diferentzia: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Goratasun diferentzia: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Garaiera diferentzia: {HEIGHT}
 
 
 # These are used in buttons
@@ -321,11 +321,11 @@ STR_SORT_BY_RATING                                              :Balorazioa
 
 # Tooltips for the main toolbar
 ###length 31
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Jokoa pausatu
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Jokoa bizkortu
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausatu jokoa
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Bizkortu jokoa
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Ezarpenak
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Jokoa gorde, joko honetatik irten, jokotik irten
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Erakutsi mapa, ikuspegi extra edo kartelen zerrenda
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Gorde, kargatu edo utzi jokoa, irten programatik
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mapa, ikuspegi gehigarria, zama-mugimenduak edo kartelen zerrenda ikusi
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Erakutsi herri zerrenda
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subsidioak erakutsi
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Erakutsi konpainien geltokien zerrenda
@@ -395,7 +395,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Geltoki errotul
 
 # File menu
 STR_FILE_MENU_SAVE_GAME                                         :Jokoa gorde
-STR_FILE_MENU_LOAD_GAME                                         :Jokoa kargatu
+STR_FILE_MENU_LOAD_GAME                                         :Kargatu joko bat
 STR_FILE_MENU_QUIT_GAME                                         :Jokoa utzi
 STR_FILE_MENU_EXIT                                              :Irten
 
@@ -1784,8 +1784,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memoriaz
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Joko Berria
-STR_INTRO_LOAD_GAME                                             :{BLACK}Jokoa Kargatu
+STR_INTRO_NEW_GAME                                              :{BLACK}Joko berria
+STR_INTRO_LOAD_GAME                                             :{BLACK}Kargatu joko bat
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Eszenarioa Jokatu
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Garaiera mapa jokatu
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Eszenario Editorea
@@ -1796,6 +1796,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Puntuazi
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ezarpenak
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-ren Ezarpenak
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Edukiak Online Kontsultatu
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AAren ezarpenak
 STR_INTRO_QUIT                                                  :{BLACK}Irten
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Joko berria hasi. Krtl+klik mapa konfigurazioa desgaitzen du
@@ -3293,6 +3294,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ibilgailu guzti
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Taldea berrizendatu
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Aurtengo irabaziak:
 
 # Build vehicle window
 ###length 4
@@ -3910,7 +3912,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Urtea au
 STR_AI_DEBUG                                                    :{WHITE}IA/Joko Script Garbitzailea
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Script-aren izena
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}IA-ren Ezarpenak
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}AAren ezarpenak
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}IA-ren hautaketak aldatu
 STR_AI_DEBUG_RELOAD                                             :{BLACK}IA birkargatu
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}IA kendu, script-a birkargatu, eta IA berrabiarazi
