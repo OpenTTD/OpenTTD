@@ -94,16 +94,18 @@ struct HangarTileTable {
 	uint8_t hangar_num;   ///< The hangar to which this tile belongs.
 };
 
+struct AirportTileLayout {
+	std::vector<AirportTileTable> tiles; ///< List of all tiles in this layout.
+	Direction rotation; ///< The rotation of this layout.
+};
+
 /**
  * Defines the data structure for an airport.
  */
 struct AirportSpec {
 	const struct AirportFTAClass *fsm;     ///< the finite statemachine for the default airports
-	const AirportTileTable * const *table; ///< list of the tiles composing the airport
-	const Direction *rotation;             ///< the rotation of each tiletable
-	uint8_t num_table;                        ///< number of elements in the table
-	const HangarTileTable *depot_table;    ///< gives the position of the depots on the airports
-	uint8_t nof_depots;                       ///< the number of hangar tiles in this airport
+	std::vector<AirportTileLayout> layouts; ///< List of layouts composing the airport.
+	std::span<const HangarTileTable> depots; ///< Position of the depots on the airports.
 	uint8_t size_x;                           ///< size of airport in x direction
 	uint8_t size_y;                           ///< size of airport in y direction
 	uint8_t noise_level;                      ///< noise that this airport generates
