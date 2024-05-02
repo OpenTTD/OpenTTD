@@ -212,8 +212,8 @@ See `src/3rdparty/monocypher/LICENSE.md` for the complete license text.
 The OpenTTD Social Integration API in `src/3rdparty/openttd_social_integration_api` is licensed under the MIT license.
 See `src/3rdparty/openttd_social_integration_api/LICENSE` for the complete license text.
 
-The atomic datatype support detection in `cmake/CheckAtomic.cmake` is licensed under the Apache 2.0 license.
-See `src/3rdparty/llvm/14.0.0-LICENSE.TXT` for the complete license text.
+The atomic datatype support detection in `cmake/3rdparty/llvm/CheckAtomic.cmake` is licensed under the Apache 2.0 license.
+See `cmake/3rdparty/llvm/LICENSE.txt` for the complete license text.
 
 ## 4.0 Credits
 
