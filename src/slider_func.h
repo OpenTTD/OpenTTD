@@ -15,12 +15,12 @@
 
 using SliderMarkFunc = StringID(int nmarks, int mark, int value);
 void DrawSliderWidget(Rect r, int min_value, int max_value, int nmarks, int value, SliderMarkFunc *mark_func);
-bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int &value);
+bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int nmarks, int &value);
 
-inline bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, uint8_t &value)
+inline bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int nmarks, uint8_t &value)
 {
 	int tmp_value = value;
-	if (!ClickSliderWidget(r, pt, min_value, max_value, tmp_value)) return false;
+	if (!ClickSliderWidget(r, pt, min_value, max_value, nmarks, tmp_value)) return false;
 	value = tmp_value;
 	return true;
 }
