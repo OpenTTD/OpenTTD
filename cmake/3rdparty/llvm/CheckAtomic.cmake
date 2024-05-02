@@ -56,6 +56,8 @@ else()
   check_working_cxx_atomics(HAVE_CXX_ATOMICS_WITHOUT_LIB)
   # If not, check if the library exists, and atomics work with it.
   if(NOT HAVE_CXX_ATOMICS_WITHOUT_LIB)
+    # check_library_exists requires the C-compiler as the atomic functions are built-in declared.
+    enable_language(C)
     check_library_exists(atomic __atomic_fetch_add_4 "" HAVE_LIBATOMIC)
     if(HAVE_LIBATOMIC)
       list(APPEND CMAKE_REQUIRED_LIBRARIES "atomic")
@@ -77,6 +79,8 @@ else()
   check_working_cxx_atomics64(HAVE_CXX_ATOMICS64_WITHOUT_LIB)
   # If not, check if the library exists, and atomics work with it.
   if(NOT HAVE_CXX_ATOMICS64_WITHOUT_LIB)
+    # check_library_exists requires the C-compiler as the atomic functions are built-in declared.
+    enable_language(C)
     check_library_exists(atomic __atomic_load_8 "" HAVE_CXX_LIBATOMICS64)
     if(HAVE_CXX_LIBATOMICS64)
       list(APPEND CMAKE_REQUIRED_LIBRARIES "atomic")
