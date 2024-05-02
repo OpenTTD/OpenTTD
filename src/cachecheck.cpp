@@ -79,34 +79,29 @@ void CheckCaches()
 		rs->GetEntry(DIAGDIR_NW)->CheckIntegrity(rs);
 	}
 
+	std::vector<NewGRFCache> grf_cache;
+	std::vector<VehicleCache> veh_cache;
+	std::vector<GroundVehicleCache> gro_cache;
+	std::vector<TrainCache> tra_cache;
+
 	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v != v->First() || v->vehstatus & VS_CRASHED || !v->IsPrimaryVehicle()) continue;
 
-		uint length = 0;
-		for (const Vehicle *u = v; u != nullptr; u = u->Next()) length++;
-
-		NewGRFCache        *grf_cache = CallocT<NewGRFCache>(length);
-		VehicleCache       *veh_cache = CallocT<VehicleCache>(length);
-		GroundVehicleCache *gro_cache = CallocT<GroundVehicleCache>(length);
-		TrainCache         *tra_cache = CallocT<TrainCache>(length);
-
-		length = 0;
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			FillNewGRFVehicleCache(u);
-			grf_cache[length] = u->grf_cache;
-			veh_cache[length] = u->vcache;
+			grf_cache.emplace_back(u->grf_cache);
+			veh_cache.emplace_back(u->vcache);
 			switch (u->type) {
 				case VEH_TRAIN:
-					gro_cache[length] = Train::From(u)->gcache;
-					tra_cache[length] = Train::From(u)->tcache;
+					gro_cache.emplace_back(Train::From(u)->gcache);
+					tra_cache.emplace_back(Train::From(u)->tcache);
 					break;
 				case VEH_ROAD:
-					gro_cache[length] = RoadVehicle::From(u)->gcache;
+					gro_cache.emplace_back(RoadVehicle::From(u)->gcache);
 					break;
 				default:
 					break;
 			}
-			length++;
 		}
 
 		switch (v->type) {
@@ -117,7 +112,7 @@ void CheckCaches()
 			default: break;
 		}
 
-		length = 0;
+		uint length = 0;
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			FillNewGRFVehicleCache(u);
 			if (grf_cache[length] != u->grf_cache) {
@@ -146,10 +141,10 @@ void CheckCaches()
 			length++;
 		}
 
-		free(grf_cache);
-		free(veh_cache);
-		free(gro_cache);
-		free(tra_cache);
+		grf_cache.clear();
+		veh_cache.clear();
+		gro_cache.clear();
+		tra_cache.clear();
 	}
 
 	/* Check whether the caches are still valid */
