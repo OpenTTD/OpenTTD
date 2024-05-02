@@ -343,7 +343,7 @@ if(NOT OPTION_DEDICATED)
     endif()
 endif()
 
-include(CheckAtomic)
+include(3rdparty/llvm/CheckAtomic)
 
 if(APPLE)
     link_package(Iconv TARGET Iconv::Iconv)
