@@ -240,18 +240,24 @@ std::vector<int> VideoDriver_SDL_Base::GetListOfMonitorRefreshRates()
 
 
 struct SDLVkMapping {
-	SDL_Keycode vk_from;
-	uint8_t vk_count;
-	uint8_t map_to;
-	bool unprintable;
+	const SDL_Keycode vk_from;
+	const uint8_t vk_count;
+	const uint8_t map_to;
+	const bool unprintable;
+
+	constexpr SDLVkMapping(SDL_Keycode vk_first, SDL_Keycode vk_last, uint8_t map_first, [[maybe_unused]] uint8_t map_last, bool unprintable)
+		: vk_from(vk_first), vk_count(vk_first - vk_last + 1), map_to(map_first), unprintable(unprintable)
+	{
+		assert((vk_last - vk_first) == (map_last - map_first));
+	}
 };
 
-#define AS(x, z) {x, 1, z, false}
-#define AM(x, y, z, w) {x, (uint8_t)(y - x + 1), z, false}
-#define AS_UP(x, z) {x, 1, z, true}
-#define AM_UP(x, y, z, w) {x, (uint8_t)(y - x + 1), z, true}
+#define AS(x, z) {x, x, z, z, false}
+#define AM(x, y, z, w) {x, y, z, w, false}
+#define AS_UP(x, z) {x, x, z, z, true}
+#define AM_UP(x, y, z, w) {x, y, z, w, true}
 
-static const SDLVkMapping _vk_mapping[] = {
+static constexpr SDLVkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
 	AS_UP(SDLK_PAGEUP,   WKC_PAGEUP),
 	AS_UP(SDLK_PAGEDOWN, WKC_PAGEDOWN),

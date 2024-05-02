@@ -373,15 +373,21 @@ bool VideoDriver_SDL::ClaimMousePointer()
 }
 
 struct SDLVkMapping {
-	uint16_t vk_from;
-	uint8_t vk_count;
-	uint8_t map_to;
+	const uint16_t vk_from;
+	const uint8_t vk_count;
+	const uint8_t map_to;
+
+	constexpr SDLVkMapping(SDL_Keycode vk_first, SDL_Keycode vk_last, uint8_t map_first, [[maybe_unused]] uint8_t map_last)
+		: vk_from(vk_first), vk_count(vk_first - vk_last + 1), map_to(map_first)
+	{
+		assert((vk_last - vk_first) == (map_last - map_first));
+	}
 };
 
-#define AS(x, z) {x, 1, z}
-#define AM(x, y, z, w) {x, (uint8_t)(y - x + 1), z}
+#define AS(x, z) {x, x, z, z, false}
+#define AM(x, y, z, w) {x, y, z, w, false}
 
-static const SDLVkMapping _vk_mapping[] = {
+static constexpr SDLVkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
 	AM(SDLK_PAGEUP, SDLK_PAGEDOWN, WKC_PAGEUP, WKC_PAGEDOWN),
 	AS(SDLK_UP,     WKC_UP),
