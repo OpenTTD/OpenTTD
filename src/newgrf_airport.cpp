@@ -95,11 +95,11 @@ bool AirportSpec::IsAvailable() const
  */
 bool AirportSpec::IsWithinMapBounds(uint8_t table, TileIndex tile) const
 {
-	if (table >= this->num_table) return false;
+	if (table >= this->layouts.size()) return false;
 
 	uint8_t w = this->size_x;
 	uint8_t h = this->size_y;
-	if (this->rotation[table] == DIR_E || this->rotation[table] == DIR_W) Swap(w, h);
+	if (this->layouts[table].rotation == DIR_E || this->layouts[table].rotation == DIR_W) Swap(w, h);
 
 	return TileX(tile) + w < Map::SizeX() &&
 		TileY(tile) + h < Map::SizeY();
