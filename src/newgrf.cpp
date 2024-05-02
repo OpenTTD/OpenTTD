@@ -3961,8 +3961,8 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 								tile.gfx = tempid;
 							}
 						} else if (tile.gfx == 0xFF) {
-							tile.ti.x = (int8_t)GB(tile.ti.x, 0, 8);
-							tile.ti.y = (int8_t)GB(tile.ti.y, 0, 8);
+							tile.ti.x = static_cast<int8_t>(GB(tile.ti.x, 0, 8));
+							tile.ti.y = static_cast<int8_t>(GB(tile.ti.y, 0, 8));
 						}
 
 						/* Determine largest size. */
