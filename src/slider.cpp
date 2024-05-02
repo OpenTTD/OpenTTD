@@ -82,10 +82,13 @@ void DrawSliderWidget(Rect r, int min_value, int max_value, int nmarks, int valu
  * Handle click on a slider widget to change the value
  * @param r      Rectangle of the widget
  * @param pt     Clicked point
+ * @param min_value Minimum value of slider
+ * @param max_value Maximum value of slider
+ * @param nmarks Number of marks displayed. Value will be rounded to nearest mark.
  * @param value[in,out] Value to modify
  * @return       True if the value setting was modified
  */
-bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int &value)
+bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int nmarks, int &value)
 {
 	max_value -= min_value;
 
@@ -93,6 +96,11 @@ bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int &valu
 	int new_value = Clamp((pt.x - r.left - sw / 2) * max_value / (r.right - r.left - sw), 0, max_value);
 	if (_current_text_dir == TD_RTL) new_value = max_value - new_value;
 	new_value += min_value;
+
+	if (nmarks > 0) {
+		const int step = max_value / (nmarks - 1);
+		new_value = ((new_value + step / 2) / step) * step;
+	}
 
 	if (new_value != value) {
 		value = new_value;
