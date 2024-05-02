@@ -24,13 +24,14 @@ static const int SLIDER_WIDTH = 3;
  * @param r Rectangle to draw the widget in
  * @param min_value Minimum value of slider
  * @param max_value Maximum value of slider
+ * @param nmarks Number of marks to display (when mark_func is provided.)
  * @param value Value to put the slider at
- * @param labels List of positions and labels to draw along the slider.
+ * @param mark_func Callback function to get the StringID to draw on a mark.
  */
-void DrawSliderWidget(Rect r, int min_value, int max_value, int value, const std::map<int, StringID> &labels)
+void DrawSliderWidget(Rect r, int min_value, int max_value, int nmarks, int value, SliderMarkFunc *mark_func)
 {
 	/* Allow space for labels. We assume they are in the small font. */
-	if (!labels.empty()) r.bottom -= GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.hsep_normal;
+	if (mark_func != nullptr) r.bottom -= GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.hsep_normal;
 
 	max_value -= min_value;
 
@@ -51,15 +52,22 @@ void DrawSliderWidget(Rect r, int min_value, int max_value, int value, const std
 	GfxDrawLine(wedge[0].x, wedge[0].y, wedge[1].x, wedge[1].y, shadow, t);
 
 	int x;
-	for (auto label : labels) {
-		x = label.first - min_value;
-		if (_current_text_dir == TD_RTL) x = max_value - x;
-		x = r.left + (x * (r.right - r.left - sw) / max_value) + sw / 2;
-		GfxDrawLine(x, r.bottom - ha + 1, x, r.bottom + (label.second == STR_NULL ? 0 : WidgetDimensions::scaled.hsep_normal), shadow, t);
-		if (label.second != STR_NULL) {
-			Dimension d = GetStringBoundingBox(label.second, FS_SMALL);
+	if (mark_func != nullptr) {
+		for (int mark = 0; mark < nmarks; ++mark) {
+			const int mark_value = (max_value * mark) / (nmarks - 1);
+
+			const StringID str = mark_func(nmarks, mark, mark_value + min_value);
+			if (str == INVALID_STRING_ID) continue;
+
+			x = mark_value;
+			if (_current_text_dir == TD_RTL) x = max_value - mark_value;
+			x = r.left + (x * (r.right - r.left - sw) / max_value) + sw / 2;
+			GfxDrawLine(x, r.bottom - ha + 1, x, r.bottom + (str == STR_NULL ? 0 : WidgetDimensions::scaled.hsep_normal), shadow, t);
+			if (str == STR_NULL) continue;
+
+			Dimension d = GetStringBoundingBox(str, FS_SMALL);
 			x = Clamp(x - d.width / 2, r.left, r.right - d.width);
-			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, label.second, TC_BLACK, SA_CENTER, false, FS_SMALL);
+			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, str, TC_BLACK, SA_CENTER, false, FS_SMALL);
 		}
 	}
 
