@@ -1,3 +1,20 @@
+14.1 (2024-05-03)
+------------------------------------------------------------------------
+Add: Check that towns can build roads before generating map (#12503)
+Fix #12228: Ships could get lost due to pathfinder not considering reversing in some cases (#12474)
+Fix #12433: Width of unit number display was too narrow (#12534)
+Fix #12502: Desync related to vehicle replacement (#12512)
+Fix #12506: Desync after new oil rig is constructed (#12511)
+Fix #12584: Crash on some tar files during tar scan (#12586)
+Fix: [SDL2] Keypad numbers did not function (#12596)
+Fix: Houses and industry tiles could accept incorrect cargo (#12547)
+Fix: Map generation stage strings were incorrect (#12549)
+Fix: [Script] Allow only 255 league tables, as 255 itself is the invalid id sentinel (#12545)
+Fix: Mark vehicle status bars dirty when a vehicle leaves unbunching depot (#12516)
+Fix: Do not show train waiting for unbunching as waiting for free path (#12515)
+Fix: Smooth outliers in unbunching round trip calculations (#12513)
+
+
 14.0 (2024-04-13)
 ------------------------------------------------------------------------
 Update: New title game for 14.0
