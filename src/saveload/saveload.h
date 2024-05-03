@@ -379,6 +379,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SCRIPT_RANDOMIZER,                  ///< 333  PR#12063 v14.0-RC1 Save script randomizers.
 	SLV_VEHICLE_ECONOMY_AGE,                ///< 334  PR#12141 v14.0 Add vehicle age in economy year, for profit stats minimum age
 
+	SLV_PATH_CACHE_FORMAT,                  ///< 335  PR#12345 Vehicle path cache format changed.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 
@@ -933,6 +935,16 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @param to       Last savegame version that has the list.
  */
 #define SLE_CONDREFLIST(base, variable, type, from, to) SLE_GENERAL(SL_REFLIST, base, variable, type, 0, from, to, 0)
+
+/**
+ * Storage of a vector of #SL_VAR elements in some savegame versions.
+ * @param base     Name of the class or struct containing the list.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the list.
+ * @param to       Last savegame version that has the list.
+ */
+#define SLE_CONDVECTOR(base, variable, type, from, to) SLE_GENERAL(SL_VECTOR, base, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a deque of #SL_VAR elements in some savegame versions.
