@@ -573,29 +573,15 @@ void Gamelog::GRFParameters(uint32_t grfid)
 /**
  * Logs adding of list of GRFs.
  * Useful when old savegame is loaded or when new game is started
- * @param newg head of GRF linked list
+ * @param newg the GRFConfigList.
  */
-void Gamelog::GRFAddList(const GRFConfig *newg)
+void Gamelog::GRFAddList(const GRFConfigList &newg)
 {
 	assert(this->action_type == GLAT_START || this->action_type == GLAT_LOAD);
 
-	for (; newg != nullptr; newg = newg->next) {
-		this->GRFAdd(newg);
+	for (const auto &c : newg) {
+		this->GRFAdd(&*c);
 	}
-}
-
-/**
- * Generates GRFList
- * @param grfc head of GRF linked list
- */
-static std::vector<const GRFConfig *> GenerateGRFList(const GRFConfig *grfc)
-{
-	std::vector<const GRFConfig *> list;
-	for (const GRFConfig *g = grfc; g != nullptr; g = g->next) {
-		if (IsLoggableGrfConfig(g)) list.push_back(g);
-	}
-
-	return list;
 }
 
 /**
@@ -603,68 +589,65 @@ static std::vector<const GRFConfig *> GenerateGRFList(const GRFConfig *grfc)
  * @param oldc original GRF list
  * @param newc new GRF list
  */
-void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
+void Gamelog::GRFUpdate(const GRFConfigList &oldc, const GRFConfigList &newc)
 {
-	std::vector<const GRFConfig *> ol = GenerateGRFList(oldc);
-	std::vector<const GRFConfig *> nl = GenerateGRFList(newc);
-
 	uint o = 0, n = 0;
 
-	while (o < ol.size() && n < nl.size()) {
-		const GRFConfig *og = ol[o];
-		const GRFConfig *ng = nl[n];
+	while (o < oldc.size() && n < newc.size()) {
+		const auto &og = oldc[o];
+		const auto &ng = newc[n];
 
 		if (og->ident.grfid != ng->ident.grfid) {
 			uint oi, ni;
-			for (oi = 0; oi < ol.size(); oi++) {
-				if (ol[oi]->ident.grfid == nl[n]->ident.grfid) break;
+			for (oi = 0; oi < oldc.size(); oi++) {
+				if (oldc[oi]->ident.grfid == newc[n]->ident.grfid) break;
 			}
 			if (oi < o) {
 				/* GRF was moved, this change has been logged already */
 				n++;
 				continue;
 			}
-			if (oi == ol.size()) {
+			if (oi == oldc.size()) {
 				/* GRF couldn't be found in the OLD list, GRF was ADDED */
-				this->GRFAdd(nl[n++]);
+				this->GRFAdd(newc[n++].get());
 				continue;
 			}
-			for (ni = 0; ni < nl.size(); ni++) {
-				if (nl[ni]->ident.grfid == ol[o]->ident.grfid) break;
+			for (ni = 0; ni < newc.size(); ni++) {
+				if (newc[ni]->ident.grfid == oldc[o]->ident.grfid) break;
 			}
 			if (ni < n) {
 				/* GRF was moved, this change has been logged already */
 				o++;
 				continue;
 			}
-			if (ni == nl.size()) {
+			if (ni == newc.size()) {
 				/* GRF couldn't be found in the NEW list, GRF was REMOVED */
-				this->GRFRemove(ol[o++]->ident.grfid);
+				this->GRFRemove(oldc[o++]->ident.grfid);
 				continue;
 			}
 
 			/* o < oi < ol->n
 			 * n < ni < nl->n */
-			assert(ni > n && ni < nl.size());
-			assert(oi > o && oi < ol.size());
+			assert(ni > n && ni < newc.size());
+			assert(oi > o && oi < oldc.size());
 
 			ni -= n; // number of GRFs it was moved downwards
 			oi -= o; // number of GRFs it was moved upwards
 
 			if (ni >= oi) { // prefer the one that is moved further
 				/* GRF was moved down */
-				this->GRFMove(ol[o++]->ident.grfid, ni);
+				this->GRFMove(oldc[o++]->ident.grfid, ni);
 			} else {
-				this->GRFMove(nl[n++]->ident.grfid, -(int)oi);
+				this->GRFMove(newc[n++]->ident.grfid, -(int)oi);
 			}
 		} else {
 			if (og->ident.md5sum != ng->ident.md5sum) {
 				/* md5sum changed, probably loading 'compatible' GRF */
-				this->GRFCompatible(&nl[n]->ident);
+				this->GRFCompatible(&newc[n]->ident);
 			}
 
 			if (og->num_params != ng->num_params || og->param == ng->param) {
-				this->GRFParameters(ol[o]->ident.grfid);
+				this->GRFParameters(oldc[o]->ident.grfid);
 			}
 
 			o++;
@@ -672,8 +655,8 @@ void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 		}
 	}
 
-	while (o < ol.size()) this->GRFRemove(ol[o++]->ident.grfid); // remaining GRFs were removed ...
-	while (n < nl.size()) this->GRFAdd   (nl[n++]);              // ... or added
+	while (o < oldc.size()) this->GRFRemove(oldc[o++]->ident.grfid); // remaining GRFs were removed ...
+	while (n < newc.size()) this->GRFAdd   (newc[n++].get());         // ... or added
 }
 
 /**
@@ -711,7 +694,6 @@ void Gamelog::Info(uint32_t *last_ottd_rev, uint8_t *ever_modified, bool *remove
  */
 const GRFIdentifier *Gamelog::GetOverriddenIdentifier(const GRFConfig *c)
 {
-	assert(c != nullptr);
 	const LoggedAction &la = this->data->action.back();
 	if (la.at != GLAT_LOAD) return &c->ident;
 

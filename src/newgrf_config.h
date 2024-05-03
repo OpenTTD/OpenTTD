@@ -144,34 +144,28 @@ struct GRFParameterInfo {
 };
 
 /** Information about GRF, used in the game and (part of it) in savegames */
-struct GRFConfig : ZeroedMemoryAllocator {
+struct GRFConfig {
 	GRFConfig(const std::string &filename = std::string{});
-	GRFConfig(const GRFConfig &config);
 
-	/* Remove the copy assignment, as the default implementation will not do the right thing. */
-	GRFConfig &operator=(GRFConfig &rhs) = delete;
+	GRFIdentifier ident{}; ///< grfid and md5sum to uniquely identify newgrfs
+	MD5Hash original_md5sum{}; ///< MD5 checksum of original file if only a 'compatible' file was loaded
+	std::string filename{}; ///< Filename - either with or without full path
+	GRFTextWrapper name{}; ///< NOSAVE: GRF name (Action 0x08)
+	GRFTextWrapper info{}; ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
+	GRFTextWrapper url{}; ///< NOSAVE: URL belonging to this GRF.
+	std::optional<GRFError> error = std::nullopt; ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
 
-	GRFIdentifier ident; ///< grfid and md5sum to uniquely identify newgrfs
-	MD5Hash original_md5sum; ///< MD5 checksum of original file if only a 'compatible' file was loaded
-	std::string filename; ///< Filename - either with or without full path
-	GRFTextWrapper name; ///< NOSAVE: GRF name (Action 0x08)
-	GRFTextWrapper info; ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
-	GRFTextWrapper url; ///< NOSAVE: URL belonging to this GRF.
-	std::optional<GRFError> error; ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
-
-	uint32_t version; ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
-	uint32_t min_loadable_version; ///< NOSAVE: Minimum compatible version a NewGRF can define
-	uint8_t flags; ///< NOSAVE: GCF_Flags, bitset
-	GRFStatus status; ///< NOSAVE: GRFStatus, enum
-	uint32_t grf_bugs; ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
-	std::array<uint32_t, 0x80> param; ///< GRF parameters
-	uint8_t num_params; ///< Number of used parameters
-	uint8_t num_valid_params; ///< NOSAVE: Number of valid parameters (action 0x14)
-	uint8_t palette; ///< GRFPalette, bitset
-	std::vector<std::optional<GRFParameterInfo>> param_info; ///< NOSAVE: extra information about the parameters
-	bool has_param_defaults; ///< NOSAVE: did this newgrf specify any defaults for it's parameters
-
-	struct GRFConfig *next; ///< NOSAVE: Next item in the linked list
+	uint32_t version = 0; ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
+	uint32_t min_loadable_version = 0; ///< NOSAVE: Minimum compatible version a NewGRF can define
+	uint8_t flags = 0; ///< NOSAVE: GCF_Flags, bitset
+	GRFStatus status = GCS_UNKNOWN; ///< NOSAVE: GRFStatus, enum
+	uint32_t grf_bugs = 0; ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
+	std::array<uint32_t, 0x80> param{}; ///< GRF parameters
+	uint8_t num_params = 0; ///< Number of used parameters
+	uint8_t num_valid_params = 0; ///< NOSAVE: Number of valid parameters (action 0x14)
+	uint8_t palette = 0; ///< GRFPalette, bitset
+	std::vector<std::optional<GRFParameterInfo>> param_info{}; ///< NOSAVE: extra information about the parameters
+	bool has_param_defaults = false; ///< NOSAVE: did this newgrf specify any defaults for it's parameters
 
 	bool IsCompatible(uint32_t old_version) const;
 	void SetParams(const std::vector<uint32_t> &pars);
@@ -187,6 +181,8 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	void FinalizeParameterInfo();
 };
 
+using GRFConfigList = std::vector<std::shared_ptr<GRFConfig>>;
+
 /** Method to find GRFs using FindGRFConfig */
 enum FindGRFConfigMode {
 	FGCM_EXACT,       ///< Only find Grfs matching md5sum
@@ -196,10 +192,10 @@ enum FindGRFConfigMode {
 	FGCM_ANY,         ///< Use first found
 };
 
-extern GRFConfig *_all_grfs;          ///< First item in list of all scanned NewGRFs
-extern GRFConfig *_grfconfig;         ///< First item in list of current GRF set up
-extern GRFConfig *_grfconfig_newgame; ///< First item in list of default GRF set up
-extern GRFConfig *_grfconfig_static;  ///< First item in list of static GRF set up
+extern GRFConfigList _all_grfs;          ///< First item in list of all scanned NewGRFs
+extern GRFConfigList _grfconfig;         ///< First item in list of current GRF set up
+extern GRFConfigList _grfconfig_newgame; ///< First item in list of default GRF set up
+extern GRFConfigList _grfconfig_static;  ///< First item in list of static GRF set up
 extern uint _missing_extra_graphics;  ///< Number of sprites provided by the fallback extra GRF, i.e. missing in the baseset.
 
 /** Callback for NewGRF scanning. */
@@ -215,17 +211,17 @@ size_t GRFGetSizeOfDataSection(FILE *f);
 void ScanNewGRFFiles(NewGRFScanCallback *callback);
 const GRFConfig *FindGRFConfig(uint32_t grfid, FindGRFConfigMode mode, const MD5Hash *md5sum = nullptr, uint32_t desired_version = 0);
 GRFConfig *GetGRFConfig(uint32_t grfid, uint32_t mask = 0xFFFFFFFF);
-GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_only);
-void AppendStaticGRFConfigs(GRFConfig **dst);
-void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el);
-void ClearGRFConfigList(GRFConfig **config);
+void CopyGRFConfigList(GRFConfigList &dst, const GRFConfigList &src, bool init_only, bool replace);
+void AppendStaticGRFConfigs(GRFConfigList &dst);
+void AppendToGRFConfigList(GRFConfigList &dst, const std::shared_ptr<GRFConfig> &el);
+void ClearGRFConfigList(GRFConfigList &config);
 void ResetGRFConfig(bool defaults);
-GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig);
+GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig);
 bool FillGRFDetails(GRFConfig *config, bool is_static, Subdirectory subdir = NEWGRF_DIR);
-std::string GRFBuildParamList(const GRFConfig *c);
+std::string GRFBuildParamList(const GRFConfig &c);
 
 /* In newgrf_gui.cpp */
-void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config);
+void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfigList &config);
 void OpenGRFParameterWindow(bool is_baseset, GRFConfig *c, bool editable);
 
 void UpdateNewGRFScanStatus(uint num, const char *name);

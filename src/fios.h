@@ -42,13 +42,12 @@ struct LoadCheckData {
 
 	CompanyPropertiesMap companies;               ///< Company information.
 
-	GRFConfig *grfconfig;                         ///< NewGrf configuration from save.
+	GRFConfigList grfconfig;                      ///< NewGrf configuration from save.
 	GRFListCompatibility grf_compatibility;       ///< Summary state of NewGrfs, whether missing files or only compatible found.
 
 	Gamelog gamelog; ///< Gamelog actions
 
-	LoadCheckData() : grfconfig(nullptr),
-			grf_compatibility(GLC_NOT_FOUND)
+	LoadCheckData() : grf_compatibility(GLC_NOT_FOUND)
 	{
 	}
 
@@ -67,7 +66,7 @@ struct LoadCheckData {
 	 */
 	bool HasNewGrfs()
 	{
-		return this->checkable && this->error == INVALID_STRING_ID && this->grfconfig != nullptr;
+		return this->checkable && this->error == INVALID_STRING_ID && !this->grfconfig.empty();
 	}
 
 	void Clear();

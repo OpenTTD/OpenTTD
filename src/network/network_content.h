@@ -153,6 +153,6 @@ extern ClientNetworkContentSocketHandler _network_content_client;
 
 void ShowNetworkContentListWindow(ContentVector *cv = nullptr, ContentType type1 = CONTENT_TYPE_END, ContentType type2 = CONTENT_TYPE_END);
 
-void ShowMissingContentWindow(const struct GRFConfig *list);
+void ShowMissingContentWindow(const GRFConfigList &list);
 
 #endif /* NETWORK_CONTENT_H */

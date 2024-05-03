@@ -47,7 +47,7 @@ void ShowNewGRFError()
 	/* Do not show errors when entering the main screen */
 	if (_game_mode == GM_MENU) return;
 
-	for (const GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		/* Only show Fatal and Error level messages */
 		if (!c->error.has_value() || (c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL && c->error->severity != STR_NEWGRF_ERROR_MSG_ERROR)) continue;
 
@@ -110,7 +110,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 	if (show_params) {
 		if (c->num_params > 0) {
 			SetDParam(0, STR_JUST_RAW_STRING);
-			SetDParamStr(1, GRFBuildParamList(c));
+			SetDParamStr(1, GRFBuildParamList(*c));
 		} else {
 			SetDParam(0, STR_NEWGRF_SETTINGS_PARAMETER_NONE);
 		}
@@ -585,14 +585,13 @@ typedef std::map<uint32_t, const GRFConfig *> GrfIdMap; ///< Map of grfid to the
 
 /**
  * Add all grf configs from \a c into the map.
- * @param c Grf list to add.
+ * @param lst Grf list to add.
  * @param grfid_map Map to add them to.
  */
-static void FillGrfidMap(const GRFConfig *c, GrfIdMap *grfid_map)
+static void FillGrfidMap(const GRFConfigList &lst, GrfIdMap &grfid_map)
 {
-	while (c != nullptr) {
-		grfid_map->emplace(c->ident.grfid, c);
-		c = c->next;
+	for (const auto &c : lst) {
+		grfid_map.emplace(c->ident.grfid, c.get());
 	}
 }
 
@@ -620,10 +619,10 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 	StringList grf_presets;     ///< List of known NewGRF presets.
 
-	GRFConfig *actives;         ///< Temporary active grf list to which changes are made.
+	GRFConfigList actives;      ///< Temporary active grf list to which changes are made.
 	GRFConfig *active_sel;      ///< Selected active grf item.
 
-	GRFConfig **orig_list;      ///< List active grfs in the game. Used as initial value, may be updated by the window.
+	GRFConfigList &orig_list;   ///< List active grfs in the game. Used as initial value, may be updated by the window.
 	bool editable;              ///< Is the window editable?
 	bool show_params;           ///< Are the grf-parameters shown in the info-panel?
 	bool execute;               ///< On pressing 'apply changes' are grf changes applied immediately, or only list is updated.
@@ -634,20 +633,18 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	Scrollbar *vscroll;
 	Scrollbar *vscroll2;
 
-	NewGRFWindow(WindowDesc *desc, bool editable, bool show_params, bool execute, GRFConfig **orig_list) : Window(desc), filter_editbox(EDITBOX_MAX_SIZE)
+	NewGRFWindow(WindowDesc *desc, bool editable, bool show_params, bool execute, GRFConfigList &orig_list) : Window(desc), filter_editbox(EDITBOX_MAX_SIZE), orig_list(orig_list)
 	{
 		this->avail_sel   = nullptr;
 		this->avail_pos   = -1;
 		this->active_sel  = nullptr;
-		this->actives     = nullptr;
-		this->orig_list   = orig_list;
 		this->editable    = editable;
 		this->execute     = execute;
 		this->show_params = show_params;
 		this->preset      = -1;
 		this->active_over = -1;
 
-		CopyGRFConfigList(&this->actives, *orig_list, false);
+		CopyGRFConfigList(this->actives, orig_list, false, true);
 		this->grf_presets = GetGRFPresetList();
 
 		this->CreateNestedTree();
@@ -682,7 +679,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		CloseWindowByClass(WC_SAVE_PRESET);
 
 		if (this->editable && this->modified && !this->execute && !_exit_game) {
-			CopyGRFConfigList(this->orig_list, this->actives, true);
+			CopyGRFConfigList(this->orig_list, this->actives, true, true);
 			ResetGRFConfig(false);
 			ReloadNewGRFData();
 		}
@@ -693,7 +690,16 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	~NewGRFWindow()
 	{
 		/* Remove the temporary copy of grf-list used in window */
-		ClearGRFConfigList(&this->actives);
+		ClearGRFConfigList(this->actives);
+	}
+
+	ptrdiff_t GetCurrentActivePosition() const
+	{
+		if (this->active_sel != nullptr) {
+			auto it = std::find_if(std::begin(this->actives), std::end(this->actives), [this](const auto &c) { return c.get() == this->active_sel; });
+			if (it != std::end(this->actives)) return std::distance(std::begin(this->actives), it);
+		}
+		return -1;
 	}
 
 	/**
@@ -703,9 +709,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	bool CanUpgradeCurrent()
 	{
 		GrfIdMap grfid_map;
-		FillGrfidMap(this->actives, &grfid_map);
+		FillGrfidMap(this->actives, grfid_map);
 
-		for (const GRFConfig *a = _all_grfs; a != nullptr; a = a->next) {
+		for (const auto &a : _all_grfs) {
 			GrfIdMap::const_iterator iter = grfid_map.find(a->ident.grfid);
 			if (iter != grfid_map.end() && a->version > iter->second->version) return true;
 		}
@@ -716,29 +722,27 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	void UpgradeCurrent()
 	{
 		GrfIdMap grfid_map;
-		FillGrfidMap(this->actives, &grfid_map);
+		FillGrfidMap(this->actives, grfid_map);
 
-		for (const GRFConfig *a = _all_grfs; a != nullptr; a = a->next) {
+		for (const auto &a : _all_grfs) {
 			GrfIdMap::iterator iter = grfid_map.find(a->ident.grfid);
 			if (iter == grfid_map.end() || iter->second->version >= a->version) continue;
 
-			GRFConfig **c = &this->actives;
-			while (*c != iter->second) c = &(*c)->next;
-			GRFConfig *d = new GRFConfig(*a);
-			d->next = (*c)->next;
+			auto c = std::find_if(std::begin(this->actives), std::end(this->actives), [&iter](const auto &grfconfig) { return grfconfig.get() == iter->second; });
+			assert(c != std::end(this->actives));
+			auto d = std::make_shared<GRFConfig>(*iter->second);
 			if (d->IsCompatible((*c)->version)) {
 				d->CopyParams(**c);
 			} else {
 				d->SetParameterDefaults();
 			}
-			if (this->active_sel == *c) {
+			if (this->active_sel == c->get()) {
 				CloseWindowByClass(WC_GRF_PARAMETERS);
 				CloseWindowByClass(WC_TEXTFILE);
 				this->active_sel = nullptr;
 			}
-			delete *c;
 			*c = d;
-			iter->second = d;
+			iter->second = d.get();
 		}
 	}
 
@@ -819,12 +823,12 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	 * @param c grf to display.
 	 * @return Palette for the sprite.
 	 */
-	inline PaletteID GetPalette(const GRFConfig *c) const
+	inline PaletteID GetPalette(const GRFConfig &c) const
 	{
 		PaletteID pal;
 
 		/* Pick a colour */
-		switch (c->status) {
+		switch (c.status) {
 			case GCS_NOT_FOUND:
 			case GCS_DISABLED:
 				pal = PALETTE_TO_RED;
@@ -839,9 +843,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		/* Do not show a "not-failure" colour when it actually failed to load */
 		if (pal != PALETTE_TO_RED) {
-			if (HasBit(c->flags, GCF_STATIC)) {
+			if (HasBit(c.flags, GCF_STATIC)) {
 				pal = PALETTE_TO_GREY;
-			} else if (HasBit(c->flags, GCF_COMPATIBLE)) {
+			} else if (HasBit(c.flags, GCF_COMPATIBLE)) {
 				pal = PALETTE_TO_ORANGE;
 			}
 		}
@@ -871,18 +875,17 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				uint warning_left = rtl ? tr.right - square.width - warning.width - 8 : tr.left + square.width + 8;
 
 				int i = 0;
-				for (const GRFConfig *c = this->actives; c != nullptr; c = c->next, i++) {
+				for (const auto &c : this->actives) {
 					if (this->vscroll->IsVisible(i)) {
 						const char *text = c->GetName();
-						bool h = (this->active_sel == c);
-						PaletteID pal = this->GetPalette(c);
+						bool h = (this->active_sel == c.get());
+						PaletteID pal = this->GetPalette(*c);
 
 						if (h) {
 							GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
 						} else if (i == this->active_over) {
 							/* Get index of current selection. */
-							int active_sel_pos = 0;
-							for (GRFConfig *c = this->actives; c != nullptr && c != this->active_sel; c = c->next, active_sel_pos++) {}
+							int active_sel_pos = this->GetCurrentActivePosition();
 							if (active_sel_pos != this->active_over) {
 								uint top = this->active_over < active_sel_pos ? tr.top + 1 : tr.top + step_height - 2;
 								GfxFillRect(tr.left, top - 1, tr.right, top + 1, PC_GREY);
@@ -894,6 +897,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), tr.top + offset_y, text, h ? TC_WHITE : TC_ORANGE);
 						tr.top += step_height;
 					}
+					i++;
 				}
 				if (i == this->active_over && this->vscroll->IsVisible(i)) { // Highlight is after the last GRF entry.
 					GfxFillRect(tr.left, tr.top, tr.right, tr.top + 2, PC_GREY);
@@ -989,17 +993,12 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_MOVE_UP: { // Move GRF up
 				if (this->active_sel == nullptr || !this->editable) break;
 
-				int pos = 0;
-				for (GRFConfig **pc = &this->actives; *pc != nullptr; pc = &(*pc)->next, pos++) {
-					GRFConfig *c = *pc;
-					if (c->next == this->active_sel) {
-						c->next = this->active_sel->next;
-						this->active_sel->next = c;
-						*pc = this->active_sel;
-						break;
-					}
-				}
-				this->vscroll->ScrollTowards(pos);
+				ptrdiff_t pos = this->GetCurrentActivePosition();
+				if (pos <= 0) break;
+
+				std::swap(this->actives[pos - 1], this->actives[pos]);
+
+				this->vscroll->ScrollTowards(pos - 1);
 				this->preset = -1;
 				this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
 				break;
@@ -1008,17 +1007,12 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_MOVE_DOWN: { // Move GRF down
 				if (this->active_sel == nullptr || !this->editable) break;
 
-				int pos = 1; // Start at 1 as we swap the selected newgrf with the next one
-				for (GRFConfig **pc = &this->actives; *pc != nullptr; pc = &(*pc)->next, pos++) {
-					GRFConfig *c = *pc;
-					if (c == this->active_sel) {
-						*pc = c->next;
-						c->next = c->next->next;
-						(*pc)->next = c;
-						break;
-					}
-				}
-				this->vscroll->ScrollTowards(pos);
+				ptrdiff_t pos = this->GetCurrentActivePosition();
+				if (pos == -1 || (size_t)pos >= this->actives.size() - 1) break;
+
+				std::swap(this->actives[pos], this->actives[pos + 1]);
+
+				this->vscroll->ScrollTowards(pos + 1);
 				this->preset = -1;
 				this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
 				break;
@@ -1027,16 +1021,17 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_FILE_LIST: { // Select an active GRF.
 				ResetObjectToPlace();
 
+				const GRFConfig *old_sel = this->active_sel;
 				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST);
-
-				GRFConfig *c;
-				for (c = this->actives; c != nullptr && i > 0; c = c->next, i--) {}
-
-				if (this->active_sel != c) {
+				if (i < this->actives.size()) {
+					this->active_sel = this->actives[i].get();
+				} else {
+					this->active_sel = nullptr;
+				}
+				if (this->active_sel != old_sel) {
 					CloseWindowByClass(WC_GRF_PARAMETERS);
 					CloseWindowByClass(WC_TEXTFILE);
 				}
-				this->active_sel = c;
 				this->avail_sel = nullptr;
 				this->avail_pos = -1;
 
@@ -1055,23 +1050,18 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				CloseWindowByClass(WC_TEXTFILE);
 
 				/* Choose the next GRF file to be the selected file. */
-				GRFConfig *newsel = this->active_sel->next;
-				for (GRFConfig **pc = &this->actives; *pc != nullptr; pc = &(*pc)->next) {
-					GRFConfig *c = *pc;
-					/* If the new selection is empty (i.e. we're deleting the last item
-					 * in the list, pick the file just before the selected file */
-					if (newsel == nullptr && c->next == this->active_sel) newsel = c;
+				ptrdiff_t pos = this->GetCurrentActivePosition();
+				if (pos < 0) break;
 
-					if (c == this->active_sel) {
-						if (newsel == c) newsel = nullptr;
-
-						*pc = c->next;
-						delete c;
-						break;
-					}
+				auto it = std::begin(this->actives) + pos;
+				it = this->actives.erase(it);
+				if (this->actives.empty()) {
+					this->active_sel = nullptr;
+				} else if (it == std::end(this->actives)) {
+					this->active_sel = this->actives.back().get();
+				} else {
+					this->active_sel = it->get();
 				}
-
-				this->active_sel = newsel;
 				this->preset = -1;
 				this->avail_pos = -1;
 				this->avail_sel = nullptr;
@@ -1081,7 +1071,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			}
 
 			case WID_NS_UPGRADE: { // Upgrade GRF.
-				if (!this->editable || this->actives == nullptr) break;
+				if (!this->editable || this->actives.empty()) break;
 				UpgradeCurrent();
 				this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
 				break;
@@ -1093,10 +1083,10 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				auto it = this->vscroll2->GetScrolledItemFromWidget(this->avails, pt.y, this, WID_NS_AVAIL_LIST);
 				this->active_sel = nullptr;
 				CloseWindowByClass(WC_GRF_PARAMETERS);
-				if (it != this->avails.end()) {
+				if (it != std::end(this->avails)) {
 					if (this->avail_sel != *it) CloseWindowByClass(WC_TEXTFILE);
 					this->avail_sel = *it;
-					this->avail_pos = it - this->avails.begin();
+					this->avail_pos = it - std::begin(this->avails);
 				}
 				this->InvalidateData();
 				if (click_count == 1) {
@@ -1123,7 +1113,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 						NewGRFConfirmationCallback
 					);
 				} else {
-					CopyGRFConfigList(this->orig_list, this->actives, true);
+					CopyGRFConfigList(this->orig_list, this->actives, true, true);
 					ResetGRFConfig(false);
 					ReloadNewGRFData();
 					this->InvalidateData(GOID_NEWGRF_CHANGES_APPLIED);
@@ -1180,7 +1170,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		if (widget != WID_NS_PRESET_LIST) return;
 		if (!this->editable) return;
 
-		ClearGRFConfigList(&this->actives);
+		ClearGRFConfigList(this->actives);
 		this->preset = index;
 
 		if (index != -1) {
@@ -1219,10 +1209,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	void UpdateScrollBars()
 	{
 		/* Update scrollbars */
-		int i = 0;
-		for (const GRFConfig *c = this->actives; c != nullptr; c = c->next, i++) {}
-
-		this->vscroll->SetCount(i + 1); // Reserve empty space for drag and drop handling.
+		this->vscroll->SetCount(this->actives.size() + 1); // Reserve empty space for drag and drop handling.
 
 		if (this->avail_pos >= 0) this->vscroll2->ScrollTowards(this->avail_pos);
 	}
@@ -1242,20 +1229,14 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case GOID_NEWGRF_RESCANNED:
 				/* Search the list for items that are now found and mark them as such. */
-				for (GRFConfig **l = &this->actives; *l != nullptr; l = &(*l)->next) {
-					GRFConfig *c = *l;
+				for (auto &c : this->actives) {
 					bool compatible = HasBit(c->flags, GCF_COMPATIBLE);
 					if (c->status != GCS_NOT_FOUND && !compatible) continue;
 
 					const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, compatible ? &c->original_md5sum : &c->ident.md5sum);
 					if (f == nullptr || HasBit(f->flags, GCF_INVALID)) continue;
 
-					*l = new GRFConfig(*f);
-					(*l)->next = c->next;
-
-					if (this->active_sel == c) this->active_sel = *l;
-
-					delete c;
+					c = std::make_shared<GRFConfig>(*f);
 				}
 
 				this->avails.ForceRebuild();
@@ -1292,7 +1273,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			WID_NS_TOGGLE_PALETTE
 		);
 		this->SetWidgetDisabledState(WID_NS_ADD, !this->editable || this->avail_sel == nullptr || HasBit(this->avail_sel->flags, GCF_INVALID));
-		this->SetWidgetDisabledState(WID_NS_UPGRADE, !this->editable || this->actives == nullptr || !this->CanUpgradeCurrent());
+		this->SetWidgetDisabledState(WID_NS_UPGRADE, !this->editable || this->actives.empty() || !this->CanUpgradeCurrent());
 
 		bool disable_all = this->active_sel == nullptr || !this->editable;
 		this->SetWidgetsDisabledState(disable_all,
@@ -1314,15 +1295,15 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		if (!disable_all) {
 			/* All widgets are now enabled, so disable widgets we can't use */
-			if (this->active_sel == this->actives)    this->DisableWidget(WID_NS_MOVE_UP);
-			if (this->active_sel->next == nullptr)       this->DisableWidget(WID_NS_MOVE_DOWN);
+			if (this->active_sel == this->actives.front().get()) this->DisableWidget(WID_NS_MOVE_UP);
+			if (this->active_sel == this->actives.back().get()) this->DisableWidget(WID_NS_MOVE_DOWN);
 		}
 
 		this->SetWidgetDisabledState(WID_NS_PRESET_DELETE, this->preset == -1);
 
 		bool has_missing = false;
 		bool has_compatible = false;
-		for (const GRFConfig *c = this->actives; !has_missing && c != nullptr; c = c->next) {
+		for (const auto &c : this->actives) {
 			has_missing    |= c->status == GCS_NOT_FOUND;
 			has_compatible |= HasBit(c->flags, GCF_COMPATIBLE);
 		}
@@ -1379,24 +1360,19 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		if (widget == WID_NS_FILE_LIST) {
 			if (this->active_sel != nullptr) {
-				/* Get pointer to the selected file in the active list. */
-				int from_pos = 0;
-				GRFConfig **from_prev;
-				for (from_prev = &this->actives; *from_prev != this->active_sel; from_prev = &(*from_prev)->next, from_pos++) {}
+				ptrdiff_t from_pos = this->GetCurrentActivePosition();
 
 				/* Gets the drag-and-drop destination offset. Ignore the last dummy line. */
 				int to_pos = std::min(this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST), this->vscroll->GetCount() - 2);
 				if (to_pos != from_pos) { // Don't move NewGRF file over itself.
-					/* Get pointer to destination position. */
-					GRFConfig **to_prev = &this->actives;
-					for (int i = from_pos < to_pos ? -1 : 0; *to_prev != nullptr && i < to_pos; to_prev = &(*to_prev)->next, i++) {}
 
-					/* Detach NewGRF file from its original position. */
-					*from_prev = this->active_sel->next;
-
-					/* Attach NewGRF file to its new position. */
-					this->active_sel->next = *to_prev;
-					*to_prev = this->active_sel;
+					auto from = std::begin(this->actives) + from_pos;
+					auto to = std::begin(this->actives) + to_pos;
+					if (to_pos < from_pos) {
+						std::rotate(to, from, std::next(from));
+					} else {
+						std::rotate(from, std::next(from), std::next(to));
+					}
 
 					this->vscroll->ScrollTowards(to_pos);
 					this->preset = -1;
@@ -1473,13 +1449,11 @@ private:
 
 		this->avails.clear();
 
-		for (const GRFConfig *c = _all_grfs; c != nullptr; c = c->next) {
-			bool found = false;
-			for (const GRFConfig *grf = this->actives; grf != nullptr && !found; grf = grf->next) found = grf->ident.HasGrfIdentifier(c->ident.grfid, &c->ident.md5sum);
-			if (found) continue;
+		for (const auto &c : _all_grfs) {
+			if (std::any_of(std::begin(this->actives), std::end(this->actives), [&c](const auto &gc) { return gc->ident.HasGrfIdentifier(c->ident.grfid, &c->ident.md5sum); })) continue;
 
 			if (_settings_client.gui.newgrf_show_old_versions) {
-				this->avails.push_back(c);
+				this->avails.push_back(c.get());
 			} else {
 				const GRFConfig *best = FindGRFConfig(c->ident.grfid, HasBit(c->flags, GCF_INVALID) ? FGCM_NEWEST : FGCM_NEWEST_VALID);
 				/* Never triggers; FindGRFConfig returns either c, or a newer version of c. */
@@ -1493,7 +1467,7 @@ private:
 				 * show that NewGRF!.
 				 */
 				if (best->version == 0 || best->ident.HasGrfIdentifier(c->ident.grfid, &c->ident.md5sum)) {
-					this->avails.push_back(c);
+					this->avails.push_back(c.get());
 				}
 			}
 		}
@@ -1524,29 +1498,24 @@ private:
 		CloseWindowByClass(WC_TEXTFILE);
 
 		uint count = 0;
-		GRFConfig **entry = nullptr;
-		GRFConfig **list;
+		GRFConfigList::iterator entry = std::end(this->actives);
 		/* Find last entry in the list, checking for duplicate grfid on the way */
-		for (list = &this->actives; *list != nullptr; list = &(*list)->next, ins_pos--) {
-			if (ins_pos == 0) entry = list; // Insert position? Save.
-			if ((*list)->ident.grfid == this->avail_sel->ident.grfid) {
+		for (auto it = std::begin(this->actives); it != std::end(this->actives); ++it, ins_pos--) {
+			if (ins_pos == 0) entry = it; // Insert position? Save.
+			if ((*it)->ident.grfid == this->avail_sel->ident.grfid) {
 				ShowErrorMessage(STR_NEWGRF_DUPLICATE_GRFID, INVALID_STRING_ID, WL_INFO);
 				return false;
 			}
-			if (!HasBit((*list)->flags, GCF_STATIC)) count++;
+			if (!HasBit((*it)->flags, GCF_STATIC)) count++;
 		}
-		if (entry == nullptr) entry = list;
 		if (count >= NETWORK_MAX_GRF_COUNT) {
 			ShowErrorMessage(STR_NEWGRF_TOO_MANY_NEWGRFS, INVALID_STRING_ID, WL_INFO);
 			return false;
 		}
 
-		GRFConfig *c = new GRFConfig(*this->avail_sel); // Copy GRF details from scanned list.
-		c->SetParameterDefaults();
-
-		/* Insert GRF config to configuration list. */
-		c->next = *entry;
-		*entry = c;
+		// Copy GRF details from scanned list.
+		entry = this->actives.insert(entry, std::make_shared<GRFConfig>(*this->avail_sel));
+		(*entry)->SetParameterDefaults();
 
 		/* Select next (or previous, if last one) item in the list. */
 		int new_pos = this->avail_pos + 1;
@@ -1564,11 +1533,11 @@ private:
  * Show the content list window with all missing grfs from the given list.
  * @param list The list of grfs to check for missing / not exactly matching ones.
  */
-void ShowMissingContentWindow(const GRFConfig *list)
+void ShowMissingContentWindow(const GRFConfigList &list)
 {
 	/* Only show the things in the current list, or everything when nothing's selected */
 	ContentVector cv;
-	for (const GRFConfig *c = list; c != nullptr; c = c->next) {
+	for (const auto &c : list) {
 		if (c->status != GCS_NOT_FOUND && !HasBit(c->flags, GCF_COMPATIBLE)) continue;
 
 		ContentInfo *ci = new ContentInfo();
@@ -1986,17 +1955,24 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 
 		_gamelog.StartAction(GLAT_GRF);
 		_gamelog.GRFUpdate(_grfconfig, nw->actives); // log GRF changes
-		CopyGRFConfigList(nw->orig_list, nw->actives, false);
+		CopyGRFConfigList(nw->orig_list, nw->actives, false, true);
 		ReloadNewGRFData();
 		_gamelog.StopAction();
 
 		/* Show new, updated list */
-		GRFConfig *c;
-		int i = 0;
-		for (c = nw->actives; c != nullptr && c != nw->active_sel; c = c->next, i++) {}
-		CopyGRFConfigList(&nw->actives, *nw->orig_list, false);
-		for (c = nw->actives; c != nullptr && i > 0; c = c->next, i--) {}
-		nw->active_sel = c;
+		ptrdiff_t i = nw->GetCurrentActivePosition();
+
+		CopyGRFConfigList(nw->actives, nw->orig_list, false, true);
+
+		if (nw->active_sel != nullptr) {
+			/* Set current selection from position */
+			if ((size_t)i >= nw->actives.size()) {
+				nw->active_sel = nw->actives.back().get();
+			} else {
+				auto it = std::begin(nw->actives) + i;
+				nw->active_sel = it->get();
+			}
+		}
 		nw->avails.ForceRebuild();
 		nw->modified = false;
 
@@ -2015,9 +1991,9 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
  * @param show_params show information about what parameters are set for the grf files
  * @param exec_changes if changes are made to the list (editable is true), apply these
  *        changes immediately or only update the list
- * @param config pointer to a linked-list of grfconfig's that will be shown
+ * @param config The GRFConfigList that will be shown.
  */
-void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config)
+void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfigList &config)
 {
 	CloseWindowByClass(WC_GAME_OPTIONS);
 	new NewGRFWindow(&_newgrf_desc, editable, show_params, exec_changes, config);
