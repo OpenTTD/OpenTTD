@@ -3390,8 +3390,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Soll di
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% abgeschlossen
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Spielfeld wird erzeugt
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landschaftserzeugung
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Flussgenerierung
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Raue, felsige Landschaft wird erzeugt
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Stadterzeugung
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industrieerzeugung
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Unbewegliche Objekte werden erzeugt
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bäume werden erzeugt
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spiel wird vorbereitet

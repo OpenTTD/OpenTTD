@@ -459,7 +459,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}A válla
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Gazdasági épületek listázása, ipari lánc megnyitása, vagy új gazdasági épületek építése
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vonatlista megnyitása. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Közúti járműlista megnyitása. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hajóista megnyitása. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hajólista megnyitása. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Repülőgéplista megnyitása. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Nagyítás
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Kicsinyítés
@@ -3453,8 +3453,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Tényle
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% kész
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Világ létrehozása
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Tájkép generálás
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Folyó generálás
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Durva és köves területek generálása
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Város generálás
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Ipar generálás
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Mozgathatatlan létesítmények létrehozása
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Fák generálása
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Játék beállítása
