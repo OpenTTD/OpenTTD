@@ -587,8 +587,8 @@ static constexpr NWidgetPart _nested_build_docks_depot_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BDD_BACKGROUND),
 		NWidget(NWID_HORIZONTAL_LTR), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0), SetPIPRatio(1, 0, 1), SetPadding(WidgetDimensions::unscaled.picker),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BDD_X), SetMinimalSize(98, 66), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BDD_Y), SetMinimalSize(98, 66), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BDD_X), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BDD_Y), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
 };
