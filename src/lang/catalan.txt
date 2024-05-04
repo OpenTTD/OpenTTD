@@ -957,11 +957,6 @@ STR_GAME_OPTIONS_VOLUME                                         :Volum
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efectes de so
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Música
 
-STR_GAME_OPTIONS_VOLUME_0                                       :0{NBSP}%
-STR_GAME_OPTIONS_VOLUME_25                                      :25{NBSP}%
-STR_GAME_OPTIONS_VOLUME_50                                      :50{NBSP}%
-STR_GAME_OPTIONS_VOLUME_75                                      :75{NBSP}%
-STR_GAME_OPTIONS_VOLUME_100                                     :100{NBSP}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Moneda
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecció de la unitat monetària
@@ -1059,11 +1054,6 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marqueu 
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Aplica anti-àlies a les fonts
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marqueu aquesta casella per a fer servir tècniques d'anti-àlies a les fonts redimensionables.
 
-STR_GAME_OPTIONS_GUI_SCALE_1X                                   :x1
-STR_GAME_OPTIONS_GUI_SCALE_2X                                   :x2
-STR_GAME_OPTIONS_GUI_SCALE_3X                                   :x3
-STR_GAME_OPTIONS_GUI_SCALE_4X                                   :x4
-STR_GAME_OPTIONS_GUI_SCALE_5X                                   :x5
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Sondeig automatitzat
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participa al sondeig automatitzat

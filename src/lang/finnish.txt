@@ -956,11 +956,6 @@ STR_GAME_OPTIONS_VOLUME                                         :Äänenvoimakku
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Äänitehosteet
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musiikki
 
-STR_GAME_OPTIONS_VOLUME_0                                       :0{NBSP}%
-STR_GAME_OPTIONS_VOLUME_25                                      :25{NBSP}%
-STR_GAME_OPTIONS_VOLUME_50                                      :50{NBSP}%
-STR_GAME_OPTIONS_VOLUME_75                                      :75{NBSP}%
-STR_GAME_OPTIONS_VOLUME_100                                     :100{NBSP}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Rahayksikkö
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Rahayksikön valinta
@@ -1058,11 +1053,6 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Valitse 
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Pehmennä kirjasinten reunoja
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Valitse tämä ruutu pehmentääksesi muuttuvan kokoisten fonttien reunoja
 
-STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1×
-STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2×
-STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3×
-STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4×
-STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5×
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatisoitu tutkimus
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Osallistu automatisoituun tutkimukseen

@@ -971,11 +971,6 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Отме
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Анти-Alias шрифтове
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Отметни тук за да се добави anti-alias към променливи шрифтове.
 
-STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
-STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
-STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
-STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
-STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Автоматизирано проучване
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Участвайте в автоматизирано проучване
