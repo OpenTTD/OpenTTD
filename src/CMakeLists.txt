@@ -476,7 +476,6 @@ add_files(
     tilearea_type.h
     tilehighlight_func.h
     tilehighlight_type.h
-    tilematrix_type.hpp
     timetable.h
     timetable_cmd.cpp
     timetable_cmd.h
