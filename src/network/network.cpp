@@ -884,7 +884,7 @@ static void NetworkInitGameInfo()
 	/* There should be always space for the server. */
 	assert(NetworkClientInfo::CanAllocateItem());
 	NetworkClientInfo *ci = new NetworkClientInfo(CLIENT_ID_SERVER);
-	ci->client_playas = _network_dedicated ? COMPANY_SPECTATOR : COMPANY_FIRST;
+	ci->client_playas = COMPANY_SPECTATOR;
 
 	ci->client_name = _settings_client.network.client_name;
 }
@@ -985,6 +985,30 @@ bool NetworkServerStart()
 	if (_network_dedicated) ServerNetworkAdminSocketHandler::WelcomeAll();
 
 	return true;
+}
+
+/**
+ * Perform tasks when the server is started. This consists of things
+ * like putting the server's client in a valid company and resetting the restart time.
+ */
+void NetworkOnGameStart()
+{
+	if (!_network_server) return;
+
+	/* Update the static game info to set the values from the new game. */
+	NetworkServerUpdateGameInfo();
+
+	ChangeNetworkRestartTime(true);
+
+	if (!_network_dedicated) {
+		Company *c = Company::GetIfValid(GetFirstPlayableCompanyID());
+		NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
+		if (c != nullptr && ci != nullptr) {
+			ci->client_playas = c->index;
+		}
+
+		ShowClientList();
+	}
 }
 
 /* The server is rebooting...
