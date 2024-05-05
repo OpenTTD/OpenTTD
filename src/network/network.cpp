@@ -1005,6 +1005,12 @@ void NetworkOnGameStart()
 		NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 		if (c != nullptr && ci != nullptr) {
 			ci->client_playas = c->index;
+
+			/*
+			 * If the company has not been named yet, the company was just started.
+			 * Otherwise it would have gotten a name already, so announce it as a new company.
+			 */
+			if (c->name_1 == STR_SV_UNNAMED && c->name.empty()) NetworkServerNewCompany(c, ci);
 		}
 
 		ShowClientList();
