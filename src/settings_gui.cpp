@@ -14,6 +14,7 @@
 #include "textbuf_gui.h"
 #include "command_func.h"
 #include "network/network.h"
+#include "network/network_content.h"
 #include "town.h"
 #include "settings_internal.h"
 #include "strings_func.h"
@@ -855,6 +856,18 @@ struct GameOptionsWindow : Window {
 				OpenBrowser(BaseMusic::GetUsedSet()->url);
 				break;
 
+			case WID_GO_BASE_GRF_CONTENT_DOWNLOAD:
+				ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_BASE_GRAPHICS);
+				break;
+
+			case WID_GO_BASE_SFX_CONTENT_DOWNLOAD:
+				ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_BASE_SOUNDS);
+				break;
+
+			case WID_GO_BASE_MUSIC_CONTENT_DOWNLOAD:
+				ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_BASE_MUSIC);
+				break;
+
 			case WID_GO_CURRENCY_DROPDOWN:
 			case WID_GO_AUTOSAVE_DROPDOWN:
 			case WID_GO_LANG_DROPDOWN:
@@ -988,6 +1001,8 @@ struct GameOptionsWindow : Window {
 			this->SetWidgetDisabledState(WID_GO_BASE_SFX_TEXTFILE + tft, BaseSounds::GetUsedSet() == nullptr || !BaseSounds::GetUsedSet()->GetTextfile(tft).has_value());
 			this->SetWidgetDisabledState(WID_GO_BASE_MUSIC_TEXTFILE + tft, BaseMusic::GetUsedSet() == nullptr || !BaseMusic::GetUsedSet()->GetTextfile(tft).has_value());
 		}
+
+		this->SetWidgetsDisabledState(!_network_available, WID_GO_BASE_GRF_CONTENT_DOWNLOAD, WID_GO_BASE_SFX_CONTENT_DOWNLOAD, WID_GO_BASE_MUSIC_CONTENT_DOWNLOAD);
 	}
 };
 
@@ -1094,6 +1109,7 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_GRF_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_BASE_GRF_TOOLTIP), SetFill(1, 0),
 						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_GRF_PARAMETERS), SetDataTip(STR_NEWGRF_SETTINGS_SET_PARAMETERS, STR_NULL),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_GRF_CONTENT_DOWNLOAD), SetDataTip(STR_GAME_OPTIONS_ONLINE_CONTENT, STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP),
 					EndContainer(),
 					NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_GRF_DESCRIPTION), SetMinimalSize(200, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP), SetFill(1, 0),
 					NWidget(NWID_VERTICAL),
@@ -1123,7 +1139,10 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 				EndContainer(),
 
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_SFX, STR_NULL), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_SFX_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_BASE_SFX_TOOLTIP), SetFill(1, 0),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_SFX_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_BASE_SFX_TOOLTIP), SetFill(1, 0),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_SFX_CONTENT_DOWNLOAD), SetDataTip(STR_GAME_OPTIONS_ONLINE_CONTENT, STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP),
+					EndContainer(),
 					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GO_BASE_SFX_DESCRIPTION), SetMinimalSize(200, 0), SetMinimalTextLines(1, 0), SetDataTip(STR_NULL, STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP), SetFill(1, 0),
 					NWidget(NWID_VERTICAL),
 						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
@@ -1138,7 +1157,10 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 				EndContainer(),
 
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_MUSIC, STR_NULL), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_MUSIC_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP), SetFill(1, 0),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_MUSIC_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP), SetFill(1, 0),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_MUSIC_CONTENT_DOWNLOAD), SetDataTip(STR_GAME_OPTIONS_ONLINE_CONTENT, STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP),
+					EndContainer(),
 					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 						NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GO_BASE_MUSIC_DESCRIPTION), SetMinimalSize(200, 0), SetMinimalTextLines(1, 0), SetDataTip(STR_NULL, STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP), SetFill(1, 0),
 						NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1),
