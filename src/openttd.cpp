@@ -34,7 +34,6 @@
 #include "console_func.h"
 #include "screenshot.h"
 #include "network/network.h"
-#include "network/network_server.h"
 #include "network/network_func.h"
 #include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
@@ -859,8 +858,8 @@ static void OnStartGame(bool dedicated_server)
 	 * or in the case of a dedicated server, a spectator */
 	SetLocalCompany(dedicated_server ? COMPANY_SPECTATOR : GetFirstPlayableCompanyID());
 
-	/* Update the static game info to set the values from the new game. */
-	NetworkServerUpdateGameInfo();
+	NetworkOnGameStart();
+
 	/* Execute the game-start script */
 	IConsoleCmdExec("exec scripts/game_start.scr 0");
 }
@@ -911,12 +910,6 @@ static void MakeNewGameDone()
 	CheckEngines();
 	CheckIndustries();
 	MarkWholeScreenDirty();
-
-	if (_network_server) {
-		ChangeNetworkRestartTime(true);
-
-		if (!_network_dedicated) ShowClientList();
-	}
 }
 
 static void MakeNewGame(bool from_heightmap, bool reset_settings)
