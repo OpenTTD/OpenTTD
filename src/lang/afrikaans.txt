@@ -953,6 +953,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Addision
 
 
 
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Kon nie 'n lys van beskikbare skermresolusies bepaal nie
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Volskerm metode gedop
 

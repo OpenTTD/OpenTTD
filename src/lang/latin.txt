@@ -1129,6 +1129,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Indicia 
 
 
 
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Non potuit repperire indicem resolutionum
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Mutatio ad cunctum scrinium defecit
 

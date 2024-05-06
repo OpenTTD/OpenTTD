@@ -900,6 +900,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}بُنی
 
 
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}مُکمل اسکرین موڈ ناکام ہوگیا
 
 # Custom currency window

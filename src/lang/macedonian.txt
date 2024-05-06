@@ -789,6 +789,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 
 
 
+
 # Custom currency window
 
 

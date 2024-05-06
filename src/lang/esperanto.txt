@@ -1140,6 +1140,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Elekti b
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Pluaj informoj pri la baza muzikaro.
 
 
+
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Stato de la kromprogramo:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Duplikata kromprogramo

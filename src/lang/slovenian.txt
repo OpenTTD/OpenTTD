@@ -1089,6 +1089,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatne 
 
 
 
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nalaganje seznama podprtih resolucij ni uspelo
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Celozaslonski način spodletel
 
