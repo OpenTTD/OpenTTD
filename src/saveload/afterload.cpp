@@ -795,6 +795,11 @@ bool AfterLoadGame()
 		_settings_game.linkgraph.recalc_time     *= CalendarTime::SECONDS_PER_DAY;
 	}
 
+	/* Convert old engine expiry setting. */
+	if (IsSavegameVersionBefore(SLV_ENGINE_EXPIRY_OWNED)) {
+		_settings_game.vehicle.engine_expiry = _settings_game.vehicle.never_expire_vehicles ? EngineExpiryMode::Never : EngineExpiryMode::Off;
+	}
+
 	/* Load the sprites */
 	GfxLoadSprites();
 	LoadStringWidthTable();

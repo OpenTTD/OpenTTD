@@ -195,6 +195,15 @@ enum EngineNameContext : uint8_t {
 	AutoreplaceVehicleInUse = 0x22, ///< Name is show in the autoreplace window 'Vehicles in use' panel.
 };
 
+/**
+ * Possible values of the "engine_expiry" setting.
+ */
+enum EngineExpiryMode : uint8_t {
+	Off = 0,   ///< Engines expire normally.
+	Never = 1, ///< Engines never expire.
+	Owned = 2, ///< Engines which are currently owned by any company never expire. Unowned vehicles expire normally.
+};
+
 /** Combine an engine ID and a name context to an engine name dparam. */
 inline uint64_t PackEngineNameDParam(EngineID engine_id, EngineNameContext context, uint32_t extra_data = 0)
 {

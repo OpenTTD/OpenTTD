@@ -1487,7 +1487,12 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :When enabled, a
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :When enabled, a news message gets sent when a vehicle has not made any profit within a period
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicles never expire: {STRING2}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :When enabled, all vehicle models remain available forever after their introduction
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Choose if vehicle models remain available forever after their introduction
+
+###length 3
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_OFF                    :Off
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_NEVER                  :All available forever
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_OWNED                  :Owned vehicles available forever
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Timekeeping: {STRING2}
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Select the timekeeping units of the game. This cannot be changed later.{}{}Calendar-based is the classic OpenTTD experience, with a year consisting of 12 months, and each month having 28-31 days.{}{}In Wallclock-based time, cargo production and financials are instead based on one-minute increments, which is about as long as a 30 day month takes in Calendar-based mode. These are grouped into 12-minute periods, equivalent to a year in Calendar-based mode.{}{}In either mode there is always a classic calendar, which is used for introduction dates of vehicles, houses, and other infrastructure
