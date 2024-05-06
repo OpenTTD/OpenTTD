@@ -246,7 +246,7 @@ struct SDLVkMapping {
 	const bool unprintable;
 
 	constexpr SDLVkMapping(SDL_Keycode vk_first, SDL_Keycode vk_last, uint8_t map_first, [[maybe_unused]] uint8_t map_last, bool unprintable)
-		: vk_from(vk_first), vk_count(vk_first - vk_last + 1), map_to(map_first), unprintable(unprintable)
+		: vk_from(vk_first), vk_count(vk_last - vk_first + 1), map_to(map_first), unprintable(unprintable)
 	{
 		assert((vk_last - vk_first) == (map_last - map_first));
 	}
