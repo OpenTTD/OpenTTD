@@ -2785,7 +2785,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Select r
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Waypoint
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Select waypoint type
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Rail Station Selection
@@ -2798,8 +2797,16 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Select l
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Build a station using drag & drop
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Select a station class to display
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Select the station type to build
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Select a station class to display
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Select a station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Select a waypoint class to display
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Select a waypoint to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Select a bus station class to display
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Select a bus station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Select a lorry station class to display
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Select a lorry station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Select an object class to display
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Select an object type to build. Ctrl+Click to add or remove in saved items. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
 
 STR_STATION_CLASS_DFLT                                          :Default
 STR_STATION_CLASS_DFLT_STATION                                  :Default station
@@ -2942,8 +2949,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Purchase
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Object Selection
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Select object to build. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Select class of the object to build
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Preview of the object
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Size: {GOLD}{NUM} x {NUM} tiles
 

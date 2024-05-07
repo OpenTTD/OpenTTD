@@ -338,6 +338,8 @@ add_files(
     palette_func.h
     pbs.cpp
     pbs.h
+    picker_gui.cpp
+    picker_gui.h
     progress.cpp
     progress.h
     querystring_gui.h

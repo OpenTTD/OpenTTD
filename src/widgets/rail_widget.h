@@ -60,20 +60,6 @@ enum BuildRailStationWidgets : WidgetID {
 	WID_BRAS_HIGHLIGHT_ON,         ///< Button for turning coverage highlighting on.
 	WID_BRAS_COVERAGE_TEXTS,       ///< Empty space for the coverage texts.
 
-	WID_BRAS_MATRIX,               ///< Matrix widget displaying the available stations.
-	WID_BRAS_IMAGE,                ///< Panel used at each cell of the matrix.
-	WID_BRAS_MATRIX_SCROLL,        ///< Scrollbar of the matrix widget.
-
-	WID_BRAS_FILTER_CONTAINER,     ///< Container for the filter text box for the station class list.
-	WID_BRAS_FILTER_EDITBOX,       ///< Filter text box for the station class list.
-	WID_BRAS_SHOW_NEWST_DEFSIZE,   ///< Selection for default-size button for newstation.
-	WID_BRAS_SHOW_NEWST_ADDITIONS, ///< Selection for newstation class selection list.
-	WID_BRAS_SHOW_NEWST_MATRIX,    ///< Selection for newstation image matrix.
-	WID_BRAS_SHOW_NEWST_RESIZE,    ///< Selection for panel and resize at bottom right for newstation.
-	WID_BRAS_SHOW_NEWST_TYPE,      ///< Display of selected station type.
-	WID_BRAS_NEWST_LIST,           ///< List with available newstation classes.
-	WID_BRAS_NEWST_SCROLL,         ///< Scrollbar of the #WID_BRAS_NEWST_LIST.
-
 	WID_BRAS_PLATFORM_NUM_BEGIN = WID_BRAS_PLATFORM_NUM_1 - 1, ///< Helper for determining the chosen platform width.
 	WID_BRAS_PLATFORM_LEN_BEGIN = WID_BRAS_PLATFORM_LEN_1 - 1, ///< Helper for determining the chosen platform length.
 };
