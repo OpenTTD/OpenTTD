@@ -111,7 +111,7 @@ uint ObjectSpec::Index() const
 /* static */ void ObjectSpec::BindToClasses()
 {
 	for (auto &spec : _object_specs) {
-		if (spec.IsEnabled() && spec.cls_id != INVALID_OBJECT_CLASS) {
+		if (spec.IsEnabled() && spec.class_index != INVALID_OBJECT_CLASS) {
 			ObjectClass::Assign(&spec);
 		}
 	}
@@ -132,8 +132,8 @@ void ResetObjects()
 	}
 
 	/* Set class for originals. */
-	_object_specs[OBJECT_LIGHTHOUSE].cls_id = ObjectClass::Allocate('LTHS');
-	_object_specs[OBJECT_TRANSMITTER].cls_id = ObjectClass::Allocate('TRNS');
+	_object_specs[OBJECT_LIGHTHOUSE].class_index = ObjectClass::Allocate('LTHS');
+	_object_specs[OBJECT_TRANSMITTER].class_index = ObjectClass::Allocate('TRNS');
 }
 
 template <>

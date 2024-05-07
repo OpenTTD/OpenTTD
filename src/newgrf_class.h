@@ -12,21 +12,31 @@
 
 #include "strings_type.h"
 
+/* Base for each type of NewGRF spec to be used with NewGRFClass. */
+template <typename Tindex>
+struct NewGRFSpecBase {
+	Tindex class_index; ///< Class index of this spec, invalid until class is allocated.
+	uint16_t index; ///< Index within class of this spec, invalid until inserted into class.
+};
 
 /**
  * Struct containing information relating to NewGRF classes for stations and airports.
  */
-template <typename Tspec, typename Tid, Tid Tmax>
+template <typename Tspec, typename Tindex, Tindex Tmax>
 class NewGRFClass {
 private:
+	/* Tspec must be of NewGRFSpecBase<Tindex>. */
+	static_assert(std::is_base_of_v<NewGRFSpecBase<Tindex>, Tspec>);
+
 	uint ui_count = 0; ///< Number of specs in this class potentially available to the user.
+	Tindex index; ///< Index of class within the list of classes.
 	std::vector<Tspec *> spec; ///< List of specifications.
 
 	/**
 	 * The actual classes.
 	 * @note This may be reallocated during initialization so pointers may be invalidated.
 	 */
-	static inline std::vector<NewGRFClass<Tspec, Tid, Tmax>> classes;
+	static inline std::vector<NewGRFClass<Tspec, Tindex, Tmax>> classes;
 
 	/** Initialise the defaults. */
 	static void InsertDefaults();
@@ -48,11 +58,11 @@ public:
 	 * Get read-only span of all classes of this type.
 	 * @return Read-only span of classes.
 	 */
-	static std::span<NewGRFClass<Tspec, Tid, Tmax> const> Classes() { return NewGRFClass::classes; }
+	static std::span<NewGRFClass<Tspec, Tindex, Tmax> const> Classes() { return NewGRFClass::classes; }
 
 	void Insert(Tspec *spec);
 
-	Tid Index() const { return static_cast<Tid>(std::distance(&*std::cbegin(NewGRFClass::classes), this)); }
+	Tindex Index() const { return this->index; }
 	/** Get the number of allocated specs within the class. */
 	uint GetSpecCount() const { return static_cast<uint>(this->spec.size()); }
 	/** Get the number of potentially user-available specs within the class. */
@@ -66,14 +76,14 @@ public:
 	bool IsUIAvailable(uint index) const;
 
 	static void Reset();
-	static Tid Allocate(uint32_t global_id);
+	static Tindex Allocate(uint32_t global_id);
 	static void Assign(Tspec *spec);
 	static uint GetClassCount();
 	static uint GetUIClassCount();
-	static Tid GetUIClass(uint index);
-	static NewGRFClass *Get(Tid cls_id);
+	static Tindex GetUIClass(uint index);
+	static NewGRFClass *Get(Tindex class_index);
 
-	static const Tspec *GetByGrf(uint32_t grfid, uint16_t local_id, int *index);
+	static const Tspec *GetByGrf(uint32_t grfid, uint16_t local_id);
 };
 
 #endif /* NEWGRF_CLASS_H */

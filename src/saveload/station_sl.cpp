@@ -114,11 +114,11 @@ void AfterLoadStations()
 	for (BaseStation *st : BaseStation::Iterate()) {
 		for (auto &sm : GetStationSpecList<StationSpec>(st)) {
 			if (sm.grfid == 0) continue;
-			sm.spec = StationClass::GetByGrf(sm.grfid, sm.localidx, nullptr);
+			sm.spec = StationClass::GetByGrf(sm.grfid, sm.localidx);
 		}
 		for (auto &sm : GetStationSpecList<RoadStopSpec>(st)) {
 			if (sm.grfid == 0) continue;
-			sm.spec = RoadStopClass::GetByGrf(sm.grfid, sm.localidx, nullptr);
+			sm.spec = RoadStopClass::GetByGrf(sm.grfid, sm.localidx);
 		}
 
 		if (Station::IsExpected(st)) {
