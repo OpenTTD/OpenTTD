@@ -146,14 +146,14 @@ extern void LoadWin32Font(FontSize fs);
 extern void LoadCoreTextFont(FontSize fs);
 #endif
 
+#if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 /**
  * Get name of default font file for a given font size.
  * @param fs Font size.
  * @return Name of default font file.
  */
-static std::string GetDefaultTruetypeFont([[maybe_unused]] FontSize fs)
+static std::string GetDefaultTruetypeFont(FontSize fs)
 {
-#if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 	switch (fs) {
 		case FS_NORMAL: return "OpenTTD-Sans.ttf";
 		case FS_SMALL: return "OpenTTD-Small.ttf";
@@ -161,9 +161,8 @@ static std::string GetDefaultTruetypeFont([[maybe_unused]] FontSize fs)
 		case FS_MONO: return "OpenTTD-Mono.ttf";
 		default: NOT_REACHED();
 	}
-#endif /* defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA) */
-	return {};
 }
+#endif /* defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA) */
 
 /**
  * Get path of default font file for a given font size.
@@ -175,8 +174,9 @@ static std::string GetDefaultTruetypeFontFile([[maybe_unused]] FontSize fs)
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 	/* Find font file. */
 	return FioFindFullPath(BASESET_DIR, GetDefaultTruetypeFont(fs));
-#endif /* defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA) */
+#else
 	return {};
+#endif /* defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA) */
 }
 
 /**
