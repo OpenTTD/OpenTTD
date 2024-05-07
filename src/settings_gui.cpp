@@ -2726,17 +2726,17 @@ struct GameSettingsWindow : Window {
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
 		/* The user pressed cancel */
-		if (str == nullptr) return;
+		if (!str.has_value()) return;
 
 		assert(this->valuewindow_entry != nullptr);
 		const IntSettingDesc *sd = this->valuewindow_entry->setting;
 
 		int32_t value;
-		if (!StrEmpty(str)) {
-			long long llvalue = atoll(str);
+		if (!str->empty()) {
+			long long llvalue = atoll(str->c_str());
 
 			/* Save the correct currency-translated value */
 			if (sd->flags & SF_GUI_CURRENCY) llvalue /= GetCurrency().rate;
@@ -3128,29 +3128,29 @@ struct CustomCurrencyWindow : Window {
 		this->SetDirty();
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (str == nullptr) return;
+		if (!str.has_value()) return;
 
 		switch (this->query_widget) {
 			case WID_CC_RATE:
-				GetCustomCurrency().rate = Clamp(atoi(str), 1, UINT16_MAX);
+				GetCustomCurrency().rate = Clamp(atoi(str->c_str()), 1, UINT16_MAX);
 				break;
 
 			case WID_CC_SEPARATOR: // Thousands separator
-				GetCustomCurrency().separator = str;
+				GetCustomCurrency().separator = std::move(*str);
 				break;
 
 			case WID_CC_PREFIX:
-				GetCustomCurrency().prefix = str;
+				GetCustomCurrency().prefix = std::move(*str);
 				break;
 
 			case WID_CC_SUFFIX:
-				GetCustomCurrency().suffix = str;
+				GetCustomCurrency().suffix = std::move(*str);
 				break;
 
 			case WID_CC_YEAR: { // Year to switch to euro
-				TimerGameCalendar::Year val = atoi(str);
+				TimerGameCalendar::Year val = atoi(str->c_str());
 
 				GetCustomCurrency().to_euro = (val < MIN_EURO_YEAR ? CF_NOEURO : std::min(val, CalendarTime::MAX_YEAR));
 				break;

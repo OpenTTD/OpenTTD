@@ -740,12 +740,12 @@ struct TimetableWindow : Window {
 		this->SetDirty();
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (str == nullptr) return;
+		if (!str.has_value()) return;
 
 		const Vehicle *v = this->vehicle;
-		uint64_t val = StrEmpty(str) ? 0 : std::strtoul(str, nullptr, 10);
+		uint64_t val = str->empty() ? 0 : std::strtoul(str->c_str(), nullptr, 10);
 		auto [order_id, mtf] = PackTimetableArgs(v, this->sel_index, query_widget == WID_VT_CHANGE_SPEED);
 
 		switch (query_widget) {

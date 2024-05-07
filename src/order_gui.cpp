@@ -1375,27 +1375,27 @@ public:
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (!StrEmpty(str)) {
-			VehicleOrderID sel = this->OrderGetSel();
-			uint value = atoi(str);
+		if (!str.has_value() || str->empty()) return;
 
-			switch (this->vehicle->GetOrder(sel)->GetConditionVariable()) {
-				case OCV_MAX_SPEED:
-					value = ConvertDisplaySpeedToSpeed(value, this->vehicle->type);
-					break;
+		VehicleOrderID sel = this->OrderGetSel();
+		uint value = atoi(str->c_str());
 
-				case OCV_RELIABILITY:
-				case OCV_LOAD_PERCENTAGE:
-					value = Clamp(value, 0, 100);
-					break;
+		switch (this->vehicle->GetOrder(sel)->GetConditionVariable()) {
+			case OCV_MAX_SPEED:
+				value = ConvertDisplaySpeedToSpeed(value, this->vehicle->type);
+				break;
 
-				default:
-					break;
-			}
-			Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel, MOF_COND_VALUE, Clamp(value, 0, 2047));
+			case OCV_RELIABILITY:
+			case OCV_LOAD_PERCENTAGE:
+				value = Clamp(value, 0, 100);
+				break;
+
+			default:
+				break;
 		}
+		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel, MOF_COND_VALUE, Clamp(value, 0, 2047));
 	}
 
 	void OnDropdownSelect(WidgetID widget, int index) override

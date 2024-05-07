@@ -1138,12 +1138,12 @@ public:
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (StrEmpty(str)) return;
+		if (!str.has_value() || str->empty()) return;
 
 		Industry *i = Industry::Get(this->window_number);
-		uint value = atoi(str);
+		uint value = atoi(str->c_str());
 		switch (this->editbox_line) {
 			case IL_NONE: NOT_REACHED();
 
