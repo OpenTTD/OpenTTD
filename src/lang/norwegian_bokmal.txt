@@ -310,7 +310,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ved å a
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
 STR_BUTTON_CANCEL                                               :{BLACK}Avbryt
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Advarsel: Tjeneradministratorer kan lese all tekst som blir skrevet her.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2460,7 +2459,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Henter s
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koble fra
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tjeneren er beskyttet. Skriv inn passord
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Selskapet er beskyttet. Skriv inn passord
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Påloggede spillere
@@ -2509,13 +2507,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via vide
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Spark
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Utesteng
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Slett
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Låse opp passord
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administratorhandling
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Er du sikker på at du vil utestenge spiller '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Er du sikker på at du vil utestenge spiller '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Er du sikker på at du vil slette selskapet '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Er du sikker på at du vil tilbakestille passordet til selskapet '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Vil du bruke videresending?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Kunne ikke opprette en kobling mellom deg og tjeneren '{STRING}'.{}Vil du videresende denne økten via '{STRING}'?
@@ -2532,19 +2528,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
 STR_NETWORK_SPECTATORS                                          :Tilskuere
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ikke lagre passordet
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Gi selskapet det nye passordet
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Selskapspassord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Standard selskapspassord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Bruk dette passordet som standard for nye selskap
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Bli med
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Bli med og spill som dette selskapet
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Passord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Passordbeskytt selskapet ditt for å forhindre uautoriserte brukere fra å bli med
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Velg selskapspassord
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Send

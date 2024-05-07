@@ -307,7 +307,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}இந�
 STR_BUTTON_DEFAULT                                              :{BLACK}இயல்பிருப்பு
 STR_BUTTON_CANCEL                                               :{BLACK}தவிர்
 STR_BUTTON_OK                                                   :{BLACK}சரி
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}எச்சரிக்கை: சேவையக நிர்வாகிகளால் இங்கு உள்ளிட்டப்படும் எந்த உரையையும் படிக்க முடியும்.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2252,7 +2251,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}நி�
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}இணைப்பை துண்டி
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}சர்வர் காக்கப்பட்டுள்ளது. கடவுச்சொல்லினை இடவும்
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}நிற்வனம் காக்கப்பட்டுள்ளது. கடவுச்சொல்லினை இடவும்
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :இணைய வீரர்கள்
@@ -2293,7 +2291,6 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}ரி�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :வெளியேற்று
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :தடை செய்
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :நீக்கு
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :கடவுச்சொல் திறத்தல்
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}நிர்வாக நடவடிக்கை
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}நீங்கள் '{STRING}' வீரரை வெளியேற்ற விரும்புகிறீர்களா?
@@ -2313,18 +2310,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :ஆம்
 
 STR_NETWORK_SPECTATORS                                          :கவனிப்பவர்கள்
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}கடவுச்சொல்லினை நினைவில் வைத்திருக்காதே
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}நிற்வனத்திற்கு புதிய கடவுச்சொல்லினை கொடுக்கவும்
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}நிறுவனத்தின் கடவுச்சொல்
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}முதன்மையான நிறுவனத்தின் கடவுச்சொல்
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}இந்த நிறுவனத்தின் கடவுச்சொல்லையே புதிய நிறுவனங்களுக்கு பயன்படுத்து
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}சேர்
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}இந்த நிறுவனமாக சேர்ந்து விளையாடு
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}கடவுச்சொல்
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}நிறுவனத்தின் கடவுச்சொல்லை அமை
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}அனுப்பு

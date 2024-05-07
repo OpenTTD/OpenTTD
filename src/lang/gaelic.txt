@@ -2309,7 +2309,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}A' faigh
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Dì-cheangail
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tha am frithealaiche dìonta. Cuir a-steach facal-faire
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tha a' chompanaidh dìonta. Cuir a-steach facal-faire
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta nan cliant
@@ -2325,19 +2324,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta nan clia
 
 STR_NETWORK_SPECTATORS                                          :Amharcaichean
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Na sàbhail am facal-faire air a chur a-steach
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Thoir am facal-faire ùr dhan chompanaidh
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Facal-faire na companaidh
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Facal-faire bunaiteach na companaidh
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Cleachd am facal-faire companaidh seo a ghnàth airson companaidhean ùra
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Gabh ann
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Gabh ann is cluich mar a' chompanaidh seo
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Facal-faire
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Dìon do chompanaidh le facal-faire ach nach gabh cluicheadairean eile innte gun chead
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Suidhich facal-faire na companaidh
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Cuir

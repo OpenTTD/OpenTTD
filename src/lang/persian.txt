@@ -1857,7 +1857,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}درخو
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}قطع
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}سرویس دهنده محافظت شده است.رمز را وارد نمایید
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}شرکت محافظت شده است.رمز را وارد نمایید
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}لیست سرویس گیرنده ها
@@ -1876,19 +1875,9 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}آیا 
 
 STR_NETWORK_SPECTATORS                                          :تماشاگران
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}رمز وارد شده را به خاطر نسپار
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}دادن رمز جدید به شرکت
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}رمز شرکت
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}رمز پیش فرض شرکت
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}استفاده از این رمز شرکت به عنوان پیش فرض برای شرکت های جدید
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}پیوستن
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}پیوستن و بازی به عنوان این شرکت
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}رمز
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}شرکت خود را با رمز محافظت کنید تا هر بازیگری نتواند به شرکت شما بپیوندد
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}ثبت رمز جدید
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}ارسال

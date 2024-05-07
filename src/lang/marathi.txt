@@ -1138,8 +1138,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 
 
-# Network set password
-
 # Network company info join/password
 
 # Network chat

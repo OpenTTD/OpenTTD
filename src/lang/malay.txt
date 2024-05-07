@@ -1870,7 +1870,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Sedang m
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Terputus
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Pelayan dilindungi. Masukkan kata laluan
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Syarikat ini dilindungi. Masukkan kata laluan
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Senarai klien
@@ -1886,19 +1885,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Senarai klien
 
 STR_NETWORK_SPECTATORS                                          :Penyaksi
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Jangan simpan kata laluan ini
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Berikan syarikat kata laluan yang baru
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Kata laluan syarikat
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Kata laluan syarikat yang lazim
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Gunakan kata laluan syarikat ini sebagai yang lazim untuk syarikat baru
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Sertai
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Sertai dan main sebagai syarikat ini
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Kata laluan
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Lindungi syarikat anda dengan kata laluan untuk mengelak daripada penyertaan pengguna tanpa izin.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Tetapkan kata laluan syarikat
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Hantar

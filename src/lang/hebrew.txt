@@ -2169,7 +2169,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}טוען
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}התנתק
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}שרת מוגן. הזן סיסמה
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}חברה מוגנת. הזן סיסמה
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :רשימת משתתפים
@@ -2191,11 +2190,9 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}משתתפ
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}מאחורי NAT
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :חסום (באן)
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :שחרר סיסמה
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}האם אתה בטוח שברצונך להוציא את '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}אתה בטוח שברצונך מחק את החברה '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}אתה בטוח שברצונך לאפס את סיסמת החברה '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}השתמש ב"relay"?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}לא
@@ -2204,19 +2201,9 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}כן, ז
 
 STR_NETWORK_SPECTATORS                                          :צופים
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}בטל שמירת הסיסמה החדשה
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}שמור את הסיסמה החדשה
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}סיסמת החברה
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}ברירת המחדל לסיסמה
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}השתמש בסיסמה זו כברירת מחדל עבור חברות חדשות
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}הצטרף
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}הצטרף ושחק כשותף בחברה
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}ססמה
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}הגן על חברתך בסיסמה בכדי למנוע הצטרפות משתמשים בלתי-מורשים
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}קבע סיסמה לחברה
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}שלח

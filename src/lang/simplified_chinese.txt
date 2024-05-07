@@ -308,7 +308,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}如启�
 STR_BUTTON_DEFAULT                                              :{BLACK}默认
 STR_BUTTON_CANCEL                                               :{BLACK}取消
 STR_BUTTON_OK                                                   :{BLACK}确定
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}注意：服务器管理员可以看到你所输入的文字
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2453,7 +2452,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}获取�
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}断开
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}服务器需要密码：
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}公司需要密码：
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :在线玩家
@@ -2502,13 +2500,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}使用�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :踢出
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :封禁
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :删除
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :密码解锁
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}管理命令
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}你确定要踢出名为 {STRING} 的玩家吗？
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}你确定要封禁名为 {STRING} 的玩家吗？
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}你确定要删除 {COMPANY} 公司吗?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}你确定要重置 {COMPANY} 的公司密码吗？
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}使用中继？
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} 无法建立你与服务器 {STRING} 的连接。{}你是否想通过 {STRING} 中继此次会话？
@@ -2525,19 +2521,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :是
 
 STR_NETWORK_SPECTATORS                                          :旁观者
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不保存所输入的密码
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}为公司设置新密码
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}公司密码
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}默认公司密码
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}将此公司密码作为新公司的默认密码
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}加入
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}加入该公司
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}密码
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}设置密码可以防止未经授权的用户随意加入。
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}设置公司密码
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}发送

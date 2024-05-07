@@ -309,7 +309,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}En activ
 STR_BUTTON_DEFAULT                                              :{BLACK}Défaut
 STR_BUTTON_CANCEL                                               :{BLACK}Annuler
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Attention{NBSP}: Les administrateurs du serveur pourraient lire tout texte entré ici.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :²&é"'(-è_çà)= azertyuiop^$qsdfghjklmù*<wxcvbn,;:!
@@ -1084,6 +1083,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musique 
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Sélectionner la musique de base à utiliser
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informations additionnelles sur la musique de base
 
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Vérifier les contenus nouveaux ou mis à jour téléchargeables
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(aucun plugin d'intégration avec les plateformes sociales installé)
 
@@ -2459,7 +2459,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Rapatrie
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Déconnecter
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Le serveur est protégé. Entrez le mot de passe
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}La compagnie est protégée. Entrez le mot de passe
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Joueurs en ligne
@@ -2508,13 +2507,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via rela
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Exclure
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannir
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Supprimer
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Débloquer le mot de passe
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Action administrative
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Êtes-vous sûr de vouloir exclure '{STRING}'{NBSP}?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Êtes-vous sûr de vouloir bannir '{STRING}'{NBSP}?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Êtes-vous sûr de vouloir supprimer la compagnie '{COMPANY}'{NBSP}?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Êtes-vous sûr de vouloir réinitialiser le mot de passe de la compagnie '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Utiliser un relai{NBSP}?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Aucune connexion n'a pu être établie entre vous et le serveur '{STRING}'.{}Voudriez vous que cette session soit relayée par '{STRING}'{NBSP}?
@@ -2531,19 +2528,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Oui
 
 STR_NETWORK_SPECTATORS                                          :Spectateurs
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne pas sauver le mot de passe entré
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Donner un nouveau mot de passe à la compagnie
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Mot de passe de la compagnie
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Mot de passe par défaut de la compagnie
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Utiliser ce mot de passe de compagnie comme défaut pour les nouvelles compagnies
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Rejoindre
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Rejoindre et jouer dans cette compagnie
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Mot de passe
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Permet de protéger par mot de passe votre compagnie pour empêcher des utilisateurs non autorisés de rejoindre
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Choisir le mot de passe de la compagnie
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Envoyer

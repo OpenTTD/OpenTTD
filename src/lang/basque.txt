@@ -2024,7 +2024,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Konpaini
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Deskonektatua
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Zerbitzaria babestua dago. Pasahitza sartu
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Konpainia babestua dago. Pasahitza sartu
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Bezero zerrenda
@@ -2040,19 +2039,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Bezero zerrenda
 
 STR_NETWORK_SPECTATORS                                          :Ikusleak
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ez gorde sartutako pasahitza
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Konpainiari pasahitz berria ezarri
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Konpainiaren pasahitza
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Konpainiaren pasahitz lehenetsia
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Konpainia pasahitz hau kopainia berrientzako lehenetsi
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Sartu
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Sartu eta konpainia honekin jokatu
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Pasahitza
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Pasahitzak zure konpainia babestuko du ez baimendutako bezeroetaz
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Konpainia pasahitza ezarri
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Bidali

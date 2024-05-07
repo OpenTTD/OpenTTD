@@ -308,7 +308,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Kun otat
 STR_BUTTON_DEFAULT                                              :{BLACK}Oletus
 STR_BUTTON_CANCEL                                               :{BLACK}Peruuta
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Varoitus: Palvelimen ylläpitäjät saattavat nähdä kaiken tähän kirjoittamasi.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :§1234567890+´ qwertyuiopå¨asdfghjklöä' zxcvbnm,.- .
@@ -1083,6 +1082,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musiikki
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Valitse käytettävä musiikkipaketti
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Lisätietoja musiikkipaketista
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Hae sisältöä
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Tarkista, onko ladattavissa uutta tai päivitettyä sisältöä
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ei sosiaalisten alustojen integroinnin liitännäisiä asennettuna)
 
@@ -2205,7 +2206,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Avaa pis
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Tutustu dokumentaatioon ja online-resursseihin
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Avaa asetukset
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Avaa NewGRF-asetukset
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista, onko ladattavissa uutta tai päivitettyä sisältöä
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Avaa tekoälyasetukset
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Avaa peliskriptiasetukset
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Lopeta OpenTTD
@@ -2458,7 +2459,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Haetaan 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Pura yhteys
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Palvelin on suojattu. Anna salasana
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Yhtiö on suojattu. Anna salasana
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Kytkeytyneet pelaajat
@@ -2507,13 +2507,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Välitys
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Potki
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Estä
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Poista
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Poista salasanalukitus
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Ylläpitäjän toiminta
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Haluatko varmasti potkia pelaajan ”{STRING}” pelistä?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Haluatko varmasti estää pelaajan ”{STRING}”?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Haluatko varmasti poistaa yhtiön ”{COMPANY}”?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Haluatko varmasti nollata yhtiön ”{COMPANY}” salasanan?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Käytetäänkö välityspalvelua?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Yhteyden muodostaminen sinun ja palvelimen ”{STRING}” välille epäonnistui.{}Haluatko, että tämä istunto välitetään välityspalvelimen ”{STRING}” kautta?
@@ -2530,19 +2528,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Osallistun
 
 STR_NETWORK_SPECTATORS                                          :Katsojat
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Älä tallenna syötettyä salasanaa
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Anna yhtiölle uusi salasana
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Yhtiön salasana
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Yhtiön oletussalasana
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Käytä tätä yhtiön salasanaa oletuksena uusissa yhtiöissä
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Liity
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Liity ja pelaa tässä yhtiössä
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Salasana
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Salasanalla voit suojata yhtiösi, jotta kukaan vieras ei pääse liittymään
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Aseta yhtiön salasana
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Lähetä
@@ -3435,7 +3423,7 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Käytä 
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Ota käyttöön
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Etsi puuttuvaa sisältöä online-palvelusta
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Tarkista löytyykö puuttuvaa sisältöä online-palvelusta
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Tarkista, löytyykö puuttuvaa sisältöä online-palvelusta
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Tiedostonimi: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}

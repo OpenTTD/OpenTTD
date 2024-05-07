@@ -308,7 +308,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Khi bậ
 STR_BUTTON_DEFAULT                                              :{BLACK}Mặc định
 STR_BUTTON_CANCEL                                               :{BLACK}Thôi
 STR_BUTTON_OK                                                   :{BLACK}Đồng ý
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Chú ý: quản trị máy chủ có thể đọc mọi dòng chữ nhập ở đây.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2453,7 +2452,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Tải th
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Ngắt kết nối
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server yêu cầu xác thực. Nhập mật khẩu
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Công ty yêu cầu xác thực. Nhập mật khẩu
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Người chơi trực tuyến
@@ -2502,13 +2500,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Thông q
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Đá ra
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Cấm
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Xoá
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Mật khẩu công ty
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Tác vụ quản lý
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Bạn có muốn đá người chơi '{STRING}' ra?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Bạn có muốn cấm người chơi '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Bạn có muốn xoá công ty '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Bạn có muốn đặt lại mật khẩu cho công ty '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Sử dụng chuyển tiếp?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Không thể kết nối giữa bạn tới máy chủ {STRING}.{}Bạn có muốn chuyển tiếp kết nối của bạn thông qua '{STRING}'?
@@ -2525,19 +2521,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Có
 
 STR_NETWORK_SPECTATORS                                          :Người xem
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Không được ghi mật khẩu đã nhập
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Nhập mật khẩu mới cho công ty
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Mật khẩu công ty
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Mật khẩu công ty mặc định
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Dùng mật khẩu công ty này là mật khẩu mặc định cho các công ty mới
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Vào
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Vào và làm chủ công ty này
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Mật khẩu
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Công ty đòi hỏi xác thực mật khẩu sẽ ngăn không cho người khác gia nhập, điều khiển
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Đặt mật khẩu công ty
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Gửi

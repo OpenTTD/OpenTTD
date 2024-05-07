@@ -307,7 +307,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Mengakti
 STR_BUTTON_DEFAULT                                              :{BLACK}Standar
 STR_BUTTON_CANCEL                                               :{BLACK}Batal
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Peringatan: Administrator server mungkin dapat membaca teks apa pun yang dimasukkan di sini.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2403,7 +2402,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Mengambi
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Putuskan
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server terkunci, masukkan kata kunci
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Perusahaan terkunci, masukkan kata kunci
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Pemain Dalam Jaringan
@@ -2452,13 +2450,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Melalui 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Diusir
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Melarang
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Hapus
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Buka pakai kata sandi
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Tindakan Admin
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Anda yakin ingin diusir pemain '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Apakah Anda yakin ingin mencekal pemain '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Anda yakin ingin menghapus perusahaan '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Anda yakin ingin menyetel ulang sandi perusahaan '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Gunakan relay?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} Gagal membuat koneksi antara Anda dan server '{STRING}'.{}Apakah Anda ingin menyampaikan sesi ini melalui '{STRING}'?
@@ -2475,19 +2471,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Iya
 
 STR_NETWORK_SPECTATORS                                          :Penonton
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Jangan simpan kata sandi yang telah dimasukkan
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Berikan perusahaan kata sandi baru
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Kata Sandi Perusahaan
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Standar Kata Sandi Perusahaan
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Pergunakan kata sandi perusahaan ini sebagai standar perusahaan baru
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Gabung
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Gabung dan bermain sebagai perusahaan ini
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Kata Sandi
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Kata Sandi-Melindungi perusahaanmu dari pemakai yang tidak bewenang untuk bergabung
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Atur Kata Sandi Perusahaan
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Kirim

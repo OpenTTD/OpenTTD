@@ -1935,7 +1935,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Fær kun
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Slít samband
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servarin er vardur. Skriva loyniorð
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Fyritøka er vard. Skriva loyniorð
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yvir klientar
@@ -1951,19 +1950,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yvir klie
 
 STR_NETWORK_SPECTATORS                                          :Eygleiðarar
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Goym ikki skrivaða loyniorðið
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Gev fyritøkuni tað nýggja loyniorðið
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Fyritøku loyniorð
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Vanligt fyritøku loyniorð
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Nýt hetta fyritøku loyniorðið sum vanligt fyri nýggjar fyritøkur
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Tak lut
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Tak lut og spæl sum hendan fyritøkan
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Loyniorð
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Verj tína fyritøku við einum loyniorðið so eingin óynsktur tekur lut í henni
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Áset fyritøku loyniorð
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Send

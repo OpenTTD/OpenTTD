@@ -687,7 +687,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Włącze
 STR_BUTTON_DEFAULT                                              :{BLACK}Domyślna
 STR_BUTTON_CANCEL                                               :{BLACK}Anuluj
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Uwaga: Administratorzy serwera mogą być w stanie przeczytać każdy wpisany tutaj tekst.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -1463,6 +1462,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Podstawo
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Wybierz podstawowy zestaw muzyki do użycia
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatkowe informacje o muzyce podstawowej
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Pobierz
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Wyszukaj nową lub zaktualizowaną zawartość do pobrania
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(brak zainstalowanych wtyczek do integracji z platformami społecznościowymi)
 
@@ -2838,7 +2839,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Uzyskiwa
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Rozłącz
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serwer jest chroniony. Wprowadź hasło
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma jest chroniona. Wprowadź hasło
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Połączeni gracze
@@ -2887,13 +2887,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Przez pr
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Wyrzuć
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Zbanuj
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Usuń
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Wyczyść hasło
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Działanie administratora
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Czy na pewno chcesz wyrzucić gracza „{STRING}”?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Czy na pewno chcesz zbanować gracza „{STRING}”?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Czy na pewno chcesz usunąć firmę „{COMPANY}”?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Czy na pewno chcesz zresetować hasło firmy „{COMPANY}”?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Używać przekaźnika?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Nie udało się nawiązać połączenia między tobą a serwerem „{STRING}”.{}Czy chcesz przekazać tę sesję za pośrednictwem „{STRING}”?
@@ -2910,19 +2908,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Tak
 
 STR_NETWORK_SPECTATORS                                          :Widzowie
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nie zapisuj podanego hasła
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Nadaj firmie nowe hasło
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Hasło firmy
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Hasło domyślne
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Użyj tego hasła jako domyślnego dla nowych firm
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Dołącz
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Dołącz i graj jako ta firma
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Hasło
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Ochrona hasłem twojej firmy zapobiega nieautoryzowanemu przyłączeniu się
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Ustaw hasło firmy
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Wyślij

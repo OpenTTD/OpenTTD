@@ -885,8 +885,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 
 
 
-# Network set password
-
 # Network company info join/password
 
 # Network chat

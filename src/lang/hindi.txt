@@ -800,10 +800,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :सर्वर
 
 
 
-# Network set password
-
 # Network company info join/password
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}पासवर्ड
 
 # Network chat
 

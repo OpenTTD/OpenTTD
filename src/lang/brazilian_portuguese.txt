@@ -309,7 +309,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ativando
 STR_BUTTON_DEFAULT                                              :{BLACK}Padrão
 STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Aviso: os administradores do servidor podem ler qualquer texto inserido aqui.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -1084,6 +1083,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecione um conjunto de músicas básicas para usar
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informação adicional sobre o conjunto de músicas básicas
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Obter Conteúdo
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Verificar por conteúdo novo e atualizado para download
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(não existem plugins instalados para integrar com as plataformas sociais)
 
@@ -2459,7 +2460,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtendo 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconectar
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Digite a senha
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Digite a senha
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jogadores conectados
@@ -2508,13 +2508,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via retr
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Expulsar
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Banir
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Excluir
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Desbloquear senha
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Ação administrativa
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Você quer mesmo expulsar o jogador '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Você quer mesmo banir o jogador '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Você quer mesmo excluir a empresa '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Você quer mesmo apagar a senha da empresa '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Usar retransmissão?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Erro ao estabelecer uma conexão entre você e o servidor.'{STRING}'Você gostaria de retransmitir essa sessão via '{STRING}'?
@@ -2531,19 +2529,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Sim
 
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Não salvar a senha digitada
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Atribuir nova senha à empresa
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Senha da empresa
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Senha padrão da empresa
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Usar a senha desta empresa como padrão para novas empresas
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Participar
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Participar e jogar por esta empresa
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Senha
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Proteja a sua empresa com uma senha para impedir a participação de usuários não autorizados
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Definir senha para empresa
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Enviar

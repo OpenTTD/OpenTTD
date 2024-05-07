@@ -1990,7 +1990,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}جلب �
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}فصل
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}الخادم محمى. من فضلك ادخل كلمه المرور
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}الشركه محميه. من فضلك ادخل كلمه المرور
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :اللاعبون عبر الإنترنت
@@ -2014,26 +2013,15 @@ STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :منع
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}هل أنت متأكد أنك تريد طرد اللاعب '{STRING}'؟
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}هل أنت متأكد أنك تريد حظر اللاعب '{STRING}'؟
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}هل أنت متأكد أنك تريد حذف شركة '{COMPANY}'؟
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}هل أنت متأكد أنك تريد محو كلمة السر الخاصة بالشركة '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}لا
 
 
 STR_NETWORK_SPECTATORS                                          :المشاهدين
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}لا تحفظ كلمة المرور المدخلة
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}اعط الشركة كلمة المرور الجديدة
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}كلمة مرور الشركة
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}كلمة مرور الشركة القياسية
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}استخدم كلمة مرور هذه الشركة كافتراضية للشركات الجديدة
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK} انضم
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK} انضم و العب بهذه الشركة
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}كلمة المرور
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}احمي شركتك بكلمة مرور خاصة لمنع الوصول الغير مسموح من اللاعبين الآخرين.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}ادخل كلمة المرور
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}ارسل

@@ -2054,7 +2054,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Bedriuws
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Ferbining ferbrekke
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is beskerme. Fier wachtwurd yn
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedriuw is beskerme. Fier wachtwurd yn
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online spilers
@@ -2079,16 +2078,8 @@ STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, net 
 
 STR_NETWORK_SPECTATORS                                          :Taskôgers
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}It ynfulde wachtwurd net bewarje
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Jou it bedriuw it nije wachtwurd
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Bedriuwswachtwurd
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Brûk dit bedriuwswachtwurd gewoanwei foar alle nije bedriuwen
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Mei spielje
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Wachtwurd
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Bedriuwswachtwurd ynstelle
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Stjoer

@@ -391,7 +391,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Post akt
 STR_BUTTON_DEFAULT                                              :{BLACK}Normo
 STR_BUTTON_CANCEL                                               :{BLACK}Nuligu
 STR_BUTTON_OK                                                   :{BLACK}Bone
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Atentu: La serviladministrantoj eventuale povas legi ajnan tekston entajpitan ĉi tie.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2429,7 +2428,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Kaptante
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Malkonektu
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servilo estas protektata. Enigu pasvorton
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Kompanio estas protektata. Enigu pasvorton
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Enretaj ludantoj
@@ -2495,19 +2493,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Jes
 
 STR_NETWORK_SPECTATORS                                          :Spektantoj
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne konservu la pasvorton.
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Donu la novan pasvorton al la kompanio.
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Kompania pasvorto
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Fari defaŭltan kompanipasvorton.
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Uzu ĉi tiun kompanipasvorton kiel defaŭlto por novaj kompanioj.
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Anigi
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Anigi kaj ludi kiel ĉi tiu kompanio.
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Pasvorto
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Pasvorte protektu vian kompanion por eviti ke eksteruloj aliĝu
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Agordu kompanian pasvorton
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Sendu

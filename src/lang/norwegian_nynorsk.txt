@@ -2030,7 +2030,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hentar f
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koble frå
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tenaren er beskytta. Skriv inn passord
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet er beskytta. Skriv inn passord
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klientar
@@ -2046,19 +2045,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klie
 
 STR_NETWORK_SPECTATORS                                          :Tilskodarar
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ikkje lagre passordet
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Gje firmaet det nye passordet
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Firmapassord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Standard passord for firma
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Bruk passordet fra dette firmaet som standard for nye firma
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Knytt til
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Knytt til og spel som dette firmaet
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Passord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Passordbeskytt firmaet ditt slik at ikkje alle og einkvar kan verte med.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Vel firmapassord
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Send

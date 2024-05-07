@@ -434,7 +434,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Если
 STR_BUTTON_DEFAULT                                              :{BLACK}По умолчанию
 STR_BUTTON_CANCEL                                               :{BLACK}Отмена
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Внимание: администраторы сервера могут увидеть текст, введённый в это поле.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -1228,6 +1227,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Осно
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Выбор основного музыкального пакета
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Дополнительная информация о выбранном музыкальном пакете
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Загрузка контента
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Получить список контента для установки и обновления
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(модули взаимодействия с социальными платформами не установлены)
 
@@ -2609,7 +2610,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Полу
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Отключиться
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сервер защищён. Введите пароль.
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компания защищена. Введите пароль.
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список игроков
@@ -2658,13 +2658,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Чере
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Отключить
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Заблокировать
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Удалить
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Сбросить пароль
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Подтверждение действия
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Отключить игрока «{STRING}»?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Заблокировать игрока «{STRING}»?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Удалить компанию «{COMPANY}»?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Сбросить пароль у компании «{COMPANY}»?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Использовать транслятор?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Не удалось установить соединение с сервером «{STRING}».{}Перенаправить соединение через «{STRING}»?
@@ -2681,19 +2679,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Да
 
 STR_NETWORK_SPECTATORS                                          :Зрители
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не сохранять пароль
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Задать новый пароль компании
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Пароль компании
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Пароль компании по умолчанию
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Использовать этот пароль для всех новых компаний по умолчанию
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Подключиться
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Подключиться и играть за эту компанию
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Пароль
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Защитить вашу компанию паролем, чтобы посторонние пользователи не могли присоединиться.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Установить пароль компании
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Отправить

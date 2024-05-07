@@ -2128,7 +2128,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}รว�
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}ตัดการเชื่อมต่อ
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}เซิฟเวอร์มีการป้องกัน กรุณากรอกพาสเวิร์ด
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}บริษัทมีการป้องกัน. กรุณากรอกพาสเวิร์ด
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :รายชื่อผู้เล่นที่ออนไลน์
@@ -2153,7 +2152,6 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Behind N
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}ทางรีเลย์
 
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :ลบ
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :ปลดล็อครหัสผ่าน
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}คุณแน่ใจว่าจะเตะผู้เล่น '{STRING}' ใช่มั้ย?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}คุณแน่ใจหรือไม่ที่จะแบนผู้เล่น '{STRING}' คนนี้?
@@ -2165,19 +2163,9 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}ใช�
 
 STR_NETWORK_SPECTATORS                                          :ผู้ชม
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}ไม่ทำการเก็บพาสเวิร์ดที่กรอกไว้แล้ว
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}ตั้งพาสเวิร์ดของบริษัทใหม่
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}พาสเวิร์ดของบริษัท
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}พาสเวิร์ดตั้งต้นของบริษัท
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}ใช้พาสเวิร์ดของบริษัทนี้เป็นพาสเวิร์ดตั้งต้นของบริษัทใหม่
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}เข้าร่วม
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}เข้าร่วมและเล่นเป็นบริษัทนี้
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}พาสเวิร์ด
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}รหัสผ่านป้องกันบริษัทของคุณจากผู้เล่นที่ไม่ได้รับอนุญาตให้เข้าร่วม
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}ตั้งพาสเวิร์ดของบริษัท
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}ส่ง

@@ -621,7 +621,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Калі
 STR_BUTTON_DEFAULT                                              :{BLACK}Па змоўчаньнi
 STR_BUTTON_CANCEL                                               :{BLACK}Скасаваць
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Увага: адміністратары сервера могуць убачыць ваш пароль.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2766,7 +2765,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Здаб
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Адлучыцца
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сэрвэр абаронены. Увядзіце пароль
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Кампанія абароненая. Увядзіце пароль
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Сьпіс гульцоў
@@ -2815,13 +2813,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Праз
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Адключыць
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Заблакаваць
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Выдаліць
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Скінуць пароль
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Пацверджаньне дзеяньня
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Адключыць гульца «{STRING}»?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Заблакаваць гульца «{STRING}»?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Выдаліць кампанію «{COMPANY}»?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Скінуць пароль у кампаніі «{COMPANY}»?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Выкарыстоўваць транслятар?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Не атрымалася ўсталяваць злучэнне з серверам «{STRING}».{}Перанакіраваць злучэнне праз «{STRING}»?
@@ -2838,19 +2834,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Так
 
 STR_NETWORK_SPECTATORS                                          :Гледачы
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не захоўваць уведзены пароль
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Даць кампаніі новы пароль
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Пароль кампаніі
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Пароль кампаніі па змоўчаньні
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Выкарыстоўваць пароль гэтай кампаніі як пароль па змоўчаньні для новых кампаніяў
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Далучыцца
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Далучыцца й гуляць за гэтую кампанію
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Пароль
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Абараніць вашу кампанію паролем, каб неаўтарызаваныя карыстальнікі не маглі далучыцца
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Усталяваць пароль кампаніі
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Адправіць

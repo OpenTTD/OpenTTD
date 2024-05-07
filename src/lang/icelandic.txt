@@ -1973,7 +1973,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Næ í u
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Aftengjast
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Þjónn er varinn. Sláðu inn lykilorð
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Fyrirtæki er varið. Sláðu inn lykilorð
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yfir leikmenn
@@ -1989,19 +1988,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yfir leik
 
 STR_NETWORK_SPECTATORS                                          :Áhorfendur
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ekki vista innslegið lykilorð
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Læsa fyrirtækinu með nýja lykilorðinu
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Lykilorð fyrirtækis
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Sjálfgefið lykilorð fyrirtækis
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Nota lykilorð þessa fyrirtækis sem sjálfgefið fyrir ný fyrirtæki
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Taka þátt
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Taka þátt sem þetta fyrirtæki
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Lykilorð
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Til að vernda fyrirtæki þitt frá óboðnum notendum geturðu sett lykilorð á það
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Setja lykilorð á fyrirtæki
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Senda

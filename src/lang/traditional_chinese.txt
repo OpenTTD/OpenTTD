@@ -308,7 +308,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}如啟�
 STR_BUTTON_DEFAULT                                              :{BLACK}預設值
 STR_BUTTON_CANCEL                                               :{BLACK}取消
 STR_BUTTON_OK                                                   :{BLACK}確定
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}警告：伺服器管理者可能可以閱讀在此處輸入的任何文字訊息
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2359,7 +2358,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}取得�
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}斷線
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}伺服器受保護，輸入密碼
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}公司受保護，輸入密碼
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :在線玩家
@@ -2408,13 +2406,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}使用�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :踢出
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :停權
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :刪除
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :密碼解鎖
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}管理員指令
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}你確定要踢出玩家 '{STRING}' 嗎?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}你確定要將玩家 '{STRING}' 列入黑名單嗎?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}你確定要刪除「{COMPANY}」公司嗎？
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}你確定要重設 '{COMPANY}'的公司密碼嗎?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}是否使用中繼伺服器?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}無法與伺服器 '{STRING}'連結.{}是否要透過中繼伺服 '{STRING}'進行連結?
@@ -2429,19 +2425,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :是
 
 STR_NETWORK_SPECTATORS                                          :旁觀者
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不要儲存所輸入的密碼
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}為公司設定新的密碼
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}公司密碼
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}預設公司密碼
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}使用此密碼當作未來新公司的預設密碼
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}加入
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}加入並操控此公司
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}密碼
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}以密碼保護您的公司，避免未授權的玩家接手
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}設定公司密碼
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}傳送

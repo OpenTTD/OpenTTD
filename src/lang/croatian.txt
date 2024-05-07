@@ -368,7 +368,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Uključi
 STR_BUTTON_DEFAULT                                              :{BLACK}Zadano
 STR_BUTTON_CANCEL                                               :{BLACK}Odustani
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Upozorenje: Administratori servera mogu pročitati bilo koji tekst upisan ovdje.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2263,7 +2262,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Dohvaća
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Odspoji
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Poslužitelj je zaštićen. Unesite zaporku
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tvrtka je zaštićena. Unesite zaporku
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online igrači
@@ -2291,19 +2289,9 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Da, samo
 
 STR_NETWORK_SPECTATORS                                          :Promatrači
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nemoj spremiti upisanu zaporku
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Daj tvrtci novu zaporku
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Zaporka tvrtke
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Inicijalna zaporka tvrtke
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Uporabi zaporku ove tvrtke kao inicijalnu za nove tvrtke
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Pridruži se
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Pridruži se i igraj kao ova tvrtka
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Zaporka
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Zaštiti šifrom svoju tvrtku od korištenja od strane neovlaštenih korisnika.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Postavi zaporku tvrtke
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Pošalji

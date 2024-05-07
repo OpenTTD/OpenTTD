@@ -308,7 +308,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ved at a
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
 STR_BUTTON_CANCEL                                               :{BLACK}Annuller
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Advarsel: Server administratoren kan være i stand til at læse al tekst skrevet her.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -1083,6 +1082,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis-mu
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vælg basismusik-sæt
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yderligere information om basismusik-sættet
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Hent indhold
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Søg efter nyt og opdateret indhold, der skal downloades
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ingen plugins til at integrere med sociale platforme installeret)
 
@@ -2458,7 +2459,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Henter s
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Afbryd forbindelse
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveren er beskyttet. Indtast kodeord
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Selskabet er beskyttet. Indtast kodeord
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online spillere
@@ -2507,13 +2507,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via rel�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Smid ud
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Udeluk
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Slet
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Lås adgangskode op
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Admin handling
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Er du sikker på du ønsker at smide spilleren '{STRING}' ud?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Er du sikker på du ønsker at udelukke spilleren '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Er du sikker på du ønsker at slette selskabet '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Er du sikker på du ønsker at nulstille adgangskoden til selskabet '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Anvend relæ?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Det lykkedes ikke at etablere en forbindelse mellem dig og serveren '{STRING}'.{}Ønsker du at anvende '{STRING}' som relæ for denne gang?
@@ -2530,19 +2528,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
 STR_NETWORK_SPECTATORS                                          :Tilskuere
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Gem ikke den indtastede adgangskode
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Giv firmaet den nye adgangskode
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Firma-adgangskode
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Standard firma-adgangskode
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Brug denne firma-adgangskode som standard for nye firmaer
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Tilslut dig
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Tilslut dig og spil som dette firma
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Kodeord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Beskyt dit selskab med et kodeord for at undgå, at fremmede slutter sig til det.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Sæt selskabets kodeord
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Send

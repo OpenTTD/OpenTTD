@@ -309,7 +309,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Zeigt au
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
 STR_BUTTON_CANCEL                                               :{BLACK}Abbrechen
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Warnung: Serveradministratoren können diesen Text einsehen.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :^1234567890ß'€qwertzuiopü+asdfghjklöä#<yxcvbnm,.- .
@@ -2454,7 +2453,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Firmenin
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Trennen
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server ist geschützt. Passwort eingeben:
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma ist geschützt. Passwort eingeben:
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online-Spieler
@@ -2503,13 +2501,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via Umle
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Hinauswerfen
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannen
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Löschen
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Passwort entsperren
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Admin-Aktion
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Sind Sie sicher, dass Sie Spieler '{STRING}' hinauswerfen möchten?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Sind Sie sicher, dass Sie Spieler '{STRING}' bannen möchten?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sind Sie sicher, dass Sie die Firma '{COMPANY}' löschen möchten?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Sind Sie sicher, dass Sie das Passwort der Firma '{COMPANY}' zurücksetzen möchten?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Weiterleitung benutzen?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Verbindung zwischen Ihnen und dem Server „{STRING}“ konnte nicht hergestellt werden.{}Möchten Sie für diese Sitzung eine Weiterleitung via „{STRING}” benutzen?
@@ -2526,19 +2522,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
 STR_NETWORK_SPECTATORS                                          :Zuschauer
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Eingegebenes Passwort nicht speichern
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Der Firma ein Passwort zuweisen
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Firmenpasswort
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Standard-Firmenpasswort
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Benutze dieses Firmenpasswort als Standard für neue Firmen
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Beitreten
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Beitreten und mit der ausgewählten Firma spielen
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Passwort
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Die Firma durch ein Passwort schützen, sodass nur ausgewählte Spieler beitreten können
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Firmenpasswort setzen
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Abschicken

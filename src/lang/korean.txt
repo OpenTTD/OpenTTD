@@ -309,7 +309,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}이 버�
 STR_BUTTON_DEFAULT                                              :{BLACK}기본값
 STR_BUTTON_CANCEL                                               :{BLACK}취소
 STR_BUTTON_OK                                                   :{BLACK}확인
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}경고: 서버 관리자가 여기에 입력되는 모든 텍스트를 읽을 수 있습니다.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ[]ㅁㄴㅇㄹㅎㅗㅓㅏㅣ;'  ㅋㅌㅊㅍㅠㅜㅡ,./ .
@@ -2459,7 +2458,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}회사 �
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}접속 끊기
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}서버 암호가 걸려있습니다. 암호를 입력하세요
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}회사 암호가 걸려있습니다. 암호를 입력하세요
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :접속자 목록
@@ -2508,13 +2506,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}중계 �
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :추방
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :차단
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :삭제
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :비밀번호 초기화
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}관리자 기능
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}'{STRING}' 플레이어를 정말로 추방하시겠습니까?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}'{STRING}' 플레이어를 정말로 차단하시겠습니까?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}'{COMPANY}' 회사를 정말로 삭제하시겠습니까?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}'{COMPANY}' 회사의 비밀번호를 정말로 초기화하시겠습니까?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}중계를 이용할까요?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}'{0:STRING}' 서버와 연결하는 데 실패했습니다.{} '{1:STRING}'{G 1 "을" "를"} 통해 연결을 중계하시겠습니까?
@@ -2531,19 +2527,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :예
 
 STR_NETWORK_SPECTATORS                                          :관전자
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}입력한 비밀번호는 저장하지 않기
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}이 회사에 새 비밀번호 부여
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}회사 비밀번호
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}회사 비밀번호 기본값으로 설정
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}이 비밀번호를 새 회사의 비밀번호 기본값으로 사용합니다
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}참여
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}이 회사에 참여해서 플레이합니다
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}비밀번호
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}다른 참가자가 이 회사에 참여하여 플레이하지 못 하도록 암호로 보호합니다
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}회사 비밀번호 설정
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}보내기

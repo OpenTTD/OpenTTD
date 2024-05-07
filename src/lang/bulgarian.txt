@@ -288,7 +288,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}С ак�
 STR_BUTTON_DEFAULT                                              :{BLACK}По подразбиране
 STR_BUTTON_CANCEL                                               :{BLACK}Отказ
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Внимание: Администраторите на сървъра могат да прочетат всеки текст, въведен тук.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-.,уеишщксдзц;(ьяаожгтнвмчюйъэфхпрлб
@@ -2200,7 +2199,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Свал
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Изключване
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сървъра е защитен. Въведете парола
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компанията е защитена. Въведете парола
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Списък с играчите
@@ -2217,26 +2215,15 @@ STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :Админис�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Изхвърлен
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Бан
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Изтриване
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Отключване на парола
 
 
 
 
 STR_NETWORK_SPECTATORS                                          :Наблюдатели
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Незапазвай паролата
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Дай на компанията новата парола
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Парола на компанията
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Парола по подразбиране за компания
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Използване на тази парола по подразбиране за нови компании
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Присъедини се
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Присъедини се, управлявайки тази компания
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Парола
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Постави парола за да предпазиш компанията си от неоторизирани потребители.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Поставяне парола на компанията
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Изпращане

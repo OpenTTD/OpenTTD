@@ -365,7 +365,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Selle nu
 STR_BUTTON_DEFAULT                                              :{BLACK}Esialgne
 STR_BUTTON_CANCEL                                               :{BLACK}Tühista
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Hoiatus: Serveriadministraatorid võivad olla võimelised lugema siinset teksti.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2510,7 +2509,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hangin e
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Katkesta
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server on kaitstud. Sisesta salasõna
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Ettevõte on kaitstud. Sisesta salasõna
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Ühendatud mängijad
@@ -2559,13 +2557,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Läbi va
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Viska välja
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Keela
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Kustuta
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Salasõnaga avamine
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Haldustoiming
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Kas oled kindel, et välja visata mängija '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Kas oled kindel, et sa tahad keelata mängija '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Kas oled kindel, et tahad kustutada ettevõtte '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Kas oled kindel, et soovid nullida ettevõtte '{COMPANY}' salasõna?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Kasuta vahendajat?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Ühenduse loomine sinu ja serveri '{STRING}' vahel ebaõnnestus .{}Kas sa soovid seda sesiooni vahendada läbi '{STRING}'?
@@ -2582,19 +2578,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
 STR_NETWORK_SPECTATORS                                          :Vaatlejad
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Sisestatud salasõna ei salvestata
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Määra ettevõtte uus salasõna
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Ettevõtte salasõna
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Esialgne ettevõtte salasõna
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Määra ettevõtte salasõna uute ettevõtete esialgseks salasõnaks
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Liitu
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Liitu ja mängi selle ettevõttena
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Salasõna
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Ettevõtte kaitsmine salasõnaga, et võõrad ei saaks ilma loata ühineda
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Vali ettevõttele salasõna
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Saada

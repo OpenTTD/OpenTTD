@@ -1733,7 +1733,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}کمپن
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}رابطہ منقطع کریں
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}سرور محفوظ ہے۔ پاس ورڈ بتایہں
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}کمپنی محفوظ ہے۔ پاس ورڈ بتایہں
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}کلائینٹس کی فہرست
@@ -1749,19 +1748,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}کلائ
 
 STR_NETWORK_SPECTATORS                                          :ناظرین
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}بتایا گیا پاس ورڈ محفوظ نہ کریں
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}کمپنی کا نیا پاس ورڈ رکھیں
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}کمپنی کا پاس ورڈ
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}پہلے سے مقرر شدہ کمپنی کا پاس ورڈ
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}کمپنی کے پاس ورڈ کو تمام نئی کمپنیوں کے لئے پہلے سے مقرر شدہ سمجھیں
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}شامل ہوں
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}اس کمپنی کے طور پر کھیل میں شامل ہوں
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}پاس ورڈ
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}اپنی کمپنی کو پاس ورڈ سے محفوظ بنائیں تاکہ غیر متعلقہ کھلاڑی اس میں شامل نہ ہو سکیں
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}کمپنی کا پاس ورڈ رکھیں
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}بھیجیں

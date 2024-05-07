@@ -308,7 +308,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Wanneer 
 STR_BUTTON_DEFAULT                                              :{BLACK}Standaard
 STR_BUTTON_CANCEL                                               :{BLACK}Annuleren
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Waarschuwing: het kan zijn dat serverbeheerders de tekst kunnen lezen die hier is ingevoerd.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2456,7 +2455,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Bedrijfs
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Verbinding verbreken
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is beveiligd. Voer wachtwoord in
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedrijf is beveiligd. Voer wachtwoord in
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spelers online
@@ -2505,13 +2503,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via omle
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Eruit schoppen
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannen
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Verwijderen
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Wachtwoord ontgrendelen
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Beheeractie
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Weet je zeker dat je de speler '{STRING}' eruit wilt schoppen?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Weet je zeker dat je de speler '{STRING}' wilt bannen?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Weet je zeker dat je het bedrijf '{COMPANY}' wilt verwijderen?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Weet je zeker dat je het wachtwoord voor bedrijf '{COMPANY}' wilt terugstellen?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Omleiden?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Kan geen verbinding maken tussen jou en server '{STRING}'.{}Wil je deze sessie omleiden via '{STRING}'?
@@ -2528,19 +2524,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
 STR_NETWORK_SPECTATORS                                          :Toeschouwers
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ingevoerd wachtwoord niet opslaan
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Bedrijf het nieuwe wachtwoord geven
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Bedrijfswachtwoord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Standaard bedrijfswachtwoord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Dit bedrijfswachtwoord gebruiken als standaard voor nieuwe bedrijven
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Meedoen
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Doe mee en speel als dit bedrijf
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Wachtwoord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Beveilig het bedrijf met een wachtwoord zodat niet-geautoriseerde personen niet mee kunnen doen
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Bedrijfswachtwoord instellen
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Verstuur

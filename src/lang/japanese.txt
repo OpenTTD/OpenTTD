@@ -282,7 +282,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}この�
 STR_BUTTON_DEFAULT                                              :{BLACK}デフォルト
 STR_BUTTON_CANCEL                                               :{BLACK}キャンセル
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}警告: サーバーの管理者はここに入力された文章をすべて読めます。
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :{NBSP}1234567890-^\qwertyuiop@[asdfghjkl;:] zxcvbnm,./\
@@ -2291,7 +2290,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}会社�
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}接続を解除
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}このサーバーは保護されています。接続するにはパスワードを入力してください
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}この会社は保護されています。経営に参画するにはパスワードを入力してください
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :オンラインのプレイヤー
@@ -2340,13 +2338,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}中継�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :キック
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :BAN
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :削除
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :パスワードのアンロック
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}管理者アクション
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}'{STRING}'をキックしてもよろしいですか?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}プレーヤー「{STRING}」を追放してもよろしいですか？
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}会社 '{COMPANY}' を削除してもよろしいですか?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}会社 '{COMPANY}'のパスワードをリセットしてもよろしいですか？
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}中継サービスを利用しますか？
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} '{STRING}'サーバーとの接続の確立に失敗しました.{}'{STRING}'を経由して中継しますか?
@@ -2357,19 +2353,9 @@ STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}はい�
 
 STR_NETWORK_SPECTATORS                                          :観覧者
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}入力したパスワードを保存しない
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}会社パスワードを変更
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}会社パスワード
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}デフォルトの会社パスワード
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}このパスワードを新しい交通会社の規定パスワードとして使用します
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}参画
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}この会社の経営に参画します
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}パスワード
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}認証されていないプレーヤーの参加を防ぐために、会社をパスワードで保護します
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}会社パスワードを設定
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}送信

@@ -308,7 +308,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Activân
 STR_BUTTON_DEFAULT                                              :{BLACK}Prestabilit(e)
 STR_BUTTON_CANCEL                                               :{BLACK}Anulează
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Avertisment: Administratorii serverului pot citi orice text introdus aici.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2450,7 +2449,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Preluare
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Deconectare
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server protejat. Introdu parola
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Companie protejată. Introdu parola
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jucători conectați
@@ -2499,13 +2497,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Prin rel
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Dă afară
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Blochează
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Șterge
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Deblocare cu parolă
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Acțiune administrativă
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Sigur vrei să dai afară jucătorul '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Sigur vrei să blochezi jucătorul '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sigur dorești ștergerea companiei '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Sigur vrei să resetezi parola companiei '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Folosești releul?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Conexiunea la server nu s-a putut realiza '{STRING}'.{}Doriți să redirecționați această sesiune prin '{STRING}'?
@@ -2522,19 +2518,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Da
 
 STR_NETWORK_SPECTATORS                                          :Spectatori
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Parola introdusă nu se va salva
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Schimbarea parolei pentru companie
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Parola pentru companie
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Parola implicită pentru companie
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Folosește implicit parola acestei companii pentru cele nou create
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Intră
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Intră în joc ca membru al acestei companii
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Parola
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Protejează-ți compania cu o parolă pentru a preveni accesul neautorizat
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Alege parola companiei
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Trimite

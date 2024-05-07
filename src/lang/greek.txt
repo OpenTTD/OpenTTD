@@ -369,7 +369,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ενερ
 STR_BUTTON_DEFAULT                                              :{BLACK}Προεπιλογή
 STR_BUTTON_CANCEL                                               :{BLACK}Ακύρωση
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Προσοχή: Οι διαχειριστές του server μπορεί να έχουν την δυνατότητα να διαβάσουν οποιδήποτε κείμενο εισαχθεί εδώ.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -1048,6 +1047,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Ένταση Ή
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Ηχητικά εφέ
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Μουσική
 
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Νομισματικές μονάδες
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Επιλογή νομισματικών μονάδων
@@ -1145,6 +1145,7 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Τσεκ
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Εξομάλυνση εμφάνισης γραμματοσειράς
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Τσεκάρετε αυτό το κουτάκι για εξομάλυνση εμφάνισης γραμματοσειράς
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Αυτοματοποιημένη έρευνα
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Συμμετοχή σε αυτοματοποιημένη έρευνα
@@ -1173,6 +1174,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Βασι
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Επιλέξτε το βασικό σετ μουσικής για χρήση
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ μουσικής
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Λήψη Περιεχομένου
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Ελέγξτε για νέο και ενημερωμένο περιεχόμενο προς λήψη
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(δεν έχουν εγκατασταθεί plugins για διασύνδεση με πλατφόρμες κοινωνικής δικτύωσης)
 
@@ -2548,7 +2551,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ανεύ
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Αποσύνδεση
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Η πρόσβαση στον διακομιστή προστατεύεται. Εισάγετε τον κωδικό
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Η εταιρεία προστατεύεται από κωδικό. Εισάγετε κωδικό
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Συνδεδεμένοι παίκτες
@@ -2597,13 +2599,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Μέσω
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Εκδίωξη
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Απαγόρευση
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Διαγραφή
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Ξεκλείδωμα κωδικού
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Ενέργεια διαχειριστή
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Σίγουρα θέλετε να διώξετε τον παίκτη '{STRING}';
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Σίγουρα θέλετε να απαγορέψετε τον παίκτη '{STRING}';
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Σίγουρα θέλετε να διαγράψετε την εταιρία '{COMPANY}';
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Σίγουρα θέλετε να επαναφέρετε τον κωδικό της εταιρίας '{COMPANY}';
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Χρήση αναμετάδοσης;
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Δεν ήταν δυνατή η σύνδεση με τον server '{STRING}'.{}Θέλετε να αναμεταδόσετε αυτή την συνεδρία μέσω '{STRING}';
@@ -2620,19 +2620,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Ναι
 
 STR_NETWORK_SPECTATORS                                          :Θεατές
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Να μην αποθηκευτεί ο κωδικός
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Δώστε στην εταιρεία νέο κωδικό
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Κωδικός εταιρείας
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Προκαθορισμένος κωδικός εταιρείας
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Χρήση αυτού του κωδικού ως προεπιλογή για τις νέες εταιρείες
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Συμμετοχή
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Συμμετάσχετε και παίξτε ως αυτήν την εταιρία
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Κωδικός
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Προστατεύστε την εταιρεία με κωδικό ώστε να αποφύγετε την συμμετοχή ανεπιθύμητων παικτών
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Θέση του κωδικού της εταιρείας
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Αποστολή

@@ -272,7 +272,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ach an c
 STR_BUTTON_DEFAULT                                              :{BLACK}Réamhshocrú
 STR_BUTTON_CANCEL                                               :{BLACK}Cuir ar ceal
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Rabhadh: D'fhéadfadh sé go mbeidh riarthóirí an fhreastalaí in ann aon téacs a chuirtear isteach anseo a léamh
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2231,7 +2230,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ag fáil
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Dínasc
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tá an freastalaí faoi chosaint. Iontráil pasfhocal
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tá an chuideachta faoi chosaint. Iontráil pasfhocal
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta na gcliant
@@ -2278,13 +2276,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Trí ath
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Ciceáil
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Cuir cosc air
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Scrios
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Díghlasáil le pasfhocal
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Beart riaracháin
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}An bhfuil tú cinnte gur mhaith leat an t-imreoir '{STRING}' a chiceáil?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}An bhfuil tú cinnte gur mian leat cosc a chur ar an imreoir '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}An bhfuil tú cinnte gur mhaith leat an chuideachta '{COMPANY}' a scriosadh?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}An bhfuil tú cinnte gur mhaith leat pasfhocal na cuideachta '{COMPANY}' a athshocrú?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Úsáid athsheachadadh?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Níorbh fhéidir nasc a bhunú idir tú féin agus an freastaláí '{STRING}'.{}Ar mhaith leat an seisiún seo a athsheachadadh trí '{STRING}'?
@@ -2295,19 +2291,9 @@ STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Tá, ná
 
 STR_NETWORK_SPECTATORS                                          :Féachadóirí
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ná sábháil an pasfhocal a iontráladh
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Tabhair an pasfhocal nua don chuideachta
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Pasfhocal cuideachta
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Pasfhocal cuideachta réamhshocraithe
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Úsáid an pasfhocal cuideachta seo mar réamhshocrú do chuideachtaí nua
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Téigh isteach
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Téigh isteach agus bí ag imirt leis an gcuideachta seo
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Pasfhocal
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Cosain do chuideachta le pasfhocal le nach mbeidh úsáideoirí neamhúdaraithe in ann dul isteach.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Socraigh pasfhocal cuideachta
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Seol

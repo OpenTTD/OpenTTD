@@ -309,7 +309,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Activant
 STR_BUTTON_DEFAULT                                              :{BLACK}Predeterminat
 STR_BUTTON_CANCEL                                               :{BLACK}Cancel·la
 STR_BUTTON_OK                                                   :{BLACK}D'acord
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Avís: Els administradors del servidor potser poden llegir el que escriviu aquí.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2457,7 +2456,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtenint
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconnecta
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegit: escriviu-ne la contrasenya
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Companyia protegida: escriviu-ne la contrasenya
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jugadors en línia
@@ -2506,13 +2504,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via serv
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Treu
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Expulsa
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Esborra
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Desbloca la contrasenya
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Acció de l'administrador
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Esteu segur que voleu treure el jugador «{STRING}»?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Esteu segur que voleu expulsar el jugador «{STRING}»?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Esteu segur que voleu esborrar la companyia «{COMPANY}»?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Esteu segur que voleu restablir la contrasenya de la companyia «{COMPANY}»?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Voleu usar un servei de transmissió?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}No s'ha pogut establir una connexió amb el servidor «{STRING}».{}Voleu transmetre aquesta sessió via «{STRING}»?
@@ -2529,19 +2525,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Sí
 
 STR_NETWORK_SPECTATORS                                          :Espectadors
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No desis la nova contrasenya.
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Estableix aquesta nova contrasenya per a la companyia.
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Contrasenya de la companyia
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Contrasenya predeterminada de companyies noves
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Utilitza com a contrasenya predeterminada de companyies noves la d'aquesta companyia.
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Uniu-vos
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Uniu-vos a aquesta companyia per poder-hi jugar.
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Contrasenya
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Protegeix la vostra companyia amb una contrasenya per tal d'evitar que la controlin altres usuaris no autoritzats.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Estableix la contrasenya de la companyia.
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Envia

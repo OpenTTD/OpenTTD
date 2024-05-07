@@ -309,7 +309,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ao ativa
 STR_BUTTON_DEFAULT                                              :{BLACK}Padrão
 STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}Confirmar
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Aviso: Os administradores do servidor podem ser capazes de ler qualquer texto inserido aqui.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :\1234567890'« qwertyuiop+´asdfghjklçº~<zxcvbnm,.-
@@ -1084,6 +1083,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Seleccione o conjunto de música base a usar
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informação adicional sobre o conjunto de música base
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Obter Conteúdo
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Verificar se há conteúdo novo e atualizado para descarga
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(não existem "plugins" para integrar com as plataformas sociais instaladas)
 
@@ -2459,7 +2460,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}A obter 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desligar
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Introduza palavra-chave
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introduza palavra-chave
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jogadores "online"
@@ -2508,13 +2508,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via retr
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Expulsar
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Banir
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Apagar
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :desbloquear com palavra-passe
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Ação administrativa
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Tem a certeza que quer expulsar o jogador '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Tem a certeza que quer banir o jogador '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Tem a certeza que quer apagar a empresa '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Tem a certeza que quer restabelecer a palavra-chave da empresa '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Usar retransmissão?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Falha ao estabelecer a ligação entre si e o servidor '{STRING}'.{}Deseja retransmitir esta sessão via '{STRING}'?
@@ -2531,19 +2529,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Sim
 
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Não gravar a palavra-chave introduzida
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Atribuir nova palavra-chave à empresa
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Palavra-chave da empresa
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Palavra-chave predefinida da empresa
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Usar a palavra-chave desta empresa como predefinida para novas empresas
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Entrar
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Entrar e jogar por esta empresa
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Palavra-chave
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Use palavra-chave para prevenir utilizadores não autorizados de entrar na sua empresa.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Definir palavra-chave da empresa
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Enviar

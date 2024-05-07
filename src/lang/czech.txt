@@ -383,7 +383,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Zapnutí
 STR_BUTTON_DEFAULT                                              :{BLACK}Původní
 STR_BUTTON_CANCEL                                               :{BLACK}Zrušit
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Upozornění: Administrátor serveru může zjistit a přečíst jakýkoliv text sem vložený.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :"+ěščřžýáíé=-\qwertyuiopú)asdfghjklů'  zxcvbnm,./ .
@@ -2537,7 +2536,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Přijím
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Odpojit se
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server je chráněný. Napiš heslo
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Společnost je chráněná. Napiš heslo
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam hráčů
@@ -2586,13 +2584,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Přes re
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Vyhodit
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Ban
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Smazat
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Odemčení hesla
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administrátorská akce
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Opravdu chceš vyhodit hráče '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Opravdu chceš zabanovat hráče '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Jste si jisti, že chcete smazat společnost '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Opravdu chcete obnovit heslo společnosti '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Použít relay?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Nepodařilo se vytvořit spojení mezi tebou a serverem '{STRING}'.{}Chceš propojit toto sezení přes relay '{STRING}'?
@@ -2609,19 +2605,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Ano
 
 STR_NETWORK_SPECTATORS                                          :Pozorovatelé
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neukládat zadané heslo
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Změnit heslo společnosti
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Heslo společnosti
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Výchozí heslo společností
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Použít toto heslo jako výchozí pro nově založené společnosti
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Přidat se
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Připojit se a hrát za tuto společnost
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Heslo
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Heslo - zabrání neautorizovaným uživatelům v připojení se k tvé společnosti
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Nastav heslo společnosti
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Poslat

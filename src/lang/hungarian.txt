@@ -371,7 +371,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ezzel a 
 STR_BUTTON_DEFAULT                                              :{BLACK}Alapértelmezett
 STR_BUTTON_CANCEL                                               :{BLACK}Mégsem
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Figyelem: A szerver adminjai láthatják az itt beírt szöveget.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :0123456789öüóqwertzuiopőúasdfghjkléáűíyxcvbnm,.- .
@@ -2516,7 +2515,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Vállala
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Megszakít
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}A szerver jelszóval van védve. Írd be
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A vállalat jelszóval van védve. Írd be
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online játékosok
@@ -2565,13 +2563,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Közvet�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kirúgás
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Tiltás
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Törlés
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Jelszó feloldása
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Adminisztrátori művelet
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Biztos ki akarod rúgni ezt a játékost: '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Biztos ki akarod tiltani ezt a játékost: '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Biztos ki akarod törölni a '{COMPANY}' vállalatot?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Biztos vissza akarod állítani a '{COMPANY}' vállalat jelszavát?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Közvetítő használata
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Nem sikerült csatalkozni a '{STRING}' szerverhez.{}Szeretnél igénybe venni közvetítő szolgáltatást a következőn keresztül? '{STRING}'
@@ -2588,19 +2584,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Igen
 
 STR_NETWORK_SPECTATORS                                          :Megfigyelők
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne mentsd el a megadott jelszót
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Add meg az új vállalati jelszót
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Vállalati jelszó
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Alapértelmezett vállalati jelszó
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Ez a jelszó legyen az alapértelmezett jelszó az új vállalatoknál
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Csatlakozás
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Csatlakozz és vezesd a vállalatot
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Jelszó
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Védd le a vállalatodat jelszóval ha nem akarod hogy mások csatlakozzanak hozzá
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Vállalati jelszó beállítása
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Elküld

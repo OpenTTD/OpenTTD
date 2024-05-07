@@ -308,7 +308,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}När den
 STR_BUTTON_DEFAULT                                              :{BLACK}Standardinställning
 STR_BUTTON_CANCEL                                               :{BLACK}Avbryt
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Varning: Serveradministratörer kan ha möjlighet att läsa text som skrivs här.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2458,7 +2457,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hämtar 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koppla ifrån
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servern är skyddad. Ange lösenord
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Företaget är skyddat. Ange lösenord
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spelare online
@@ -2507,13 +2505,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via rel�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kasta ut
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannlys
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Ta bort
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Lås upp med lösenord
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administratörshandling
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Är du säker på att du vill kasta ut spelaren '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Är du säker på att du vill bannlysa spelaren '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Är du säker på att du vill ta bort företaget {COMPANY}?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Är du säker på att du vill återställa företaget {COMPANY}s lösenord?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Använd relä?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Misslyckades med att etablera en anslutning mellan dig och servern '{STRING}'.{}Vill du använda '{STRING}' som relä för denna session?
@@ -2530,19 +2526,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
 STR_NETWORK_SPECTATORS                                          :Åskådare
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Spara inte det inmatade lösenordet
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Ge företaget det nya lösenordet
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Företagslösenord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Förvalt företagslösenord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Använd detta företagslösenord som förval för nya företag
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Gå med
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Gå med och spela som detta företag
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Lösenord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Lösenordsskydda ditt företag för att förhindra att obehöriga spelare ansluter
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Ange företagets lösenord
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Skicka

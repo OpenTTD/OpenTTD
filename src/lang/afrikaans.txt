@@ -273,7 +273,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Deur hie
 STR_BUTTON_DEFAULT                                              :{BLACK}Gewone
 STR_BUTTON_CANCEL                                               :{BLACK}Kanselleer
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Waarskuwing: bedieneradministrateurs kan moontlik die teks wat hier ingevoer is, lees.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -2137,7 +2136,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Maatskap
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Loskoppel
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Verskaffer is beskerm. Voer wagwoord in
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Maatskappy is beskerm. Voer wagwoord in
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klient Lys
@@ -2153,19 +2151,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klient Lys
 
 STR_NETWORK_SPECTATORS                                          :Aanskouers
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Moenie die ingesleutelde wagwoord bewaar nie
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Gee die maatskappy die nuwe wagwoord
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Maatskappy wagwoord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Voorbepaalde maatskappy wagwoord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Gebruik die maatskapy wagwoord as die standaard vir nuwe maatskappye
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Bind
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Bind en speel as maatskapy
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Wagwoord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Beskerm maatskappy met wagwoord om te verhoed dat ongemagtigde spelers toegang verkry
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Stel maatskappy wagwoord
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Stuur
