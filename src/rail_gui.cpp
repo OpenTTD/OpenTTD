@@ -9,6 +9,8 @@
 
 #include "stdafx.h"
 #include "gui.h"
+#include "station_base.h"
+#include "waypoint_base.h"
 #include "window_gui.h"
 #include "station_gui.h"
 #include "terraform_gui.h"
@@ -944,6 +946,19 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	ShowSelectStationIfNeeded(ta, proc);
 }
 
+/**
+ * Test if a station/waypoint uses the default graphics.
+ * @param bst Station to test.
+ * @return true if at least one of its rail station tiles uses the default graphics.
+ */
+static bool StationUsesDefaultType(const BaseStation *bst)
+{
+	for (TileIndex t : bst->train_station) {
+		if (bst->TileBelongsToRailStation(t) && IsRailStation(t) && GetCustomStationSpecIndex(t) == 0) return true;
+	}
+	return false;
+}
+
 class StationPickerCallbacks : public PickerCallbacksNewGRFClass<StationClass> {
 public:
 	StringID GetClassTooltip() const override { return STR_PICKER_STATION_CLASS_TOOLTIP; }
@@ -993,6 +1008,22 @@ public:
 	{
 		if (!DrawStationTile(x, y, _cur_railtype, _station_gui.axis, this->GetClassIndex(cls_id), id)) {
 			StationPickerDrawSprite(x, y, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 2 + _station_gui.axis);
+		}
+	}
+
+	void FillUsedItems(std::set<PickerItem> &items) override
+	{
+		bool default_added = false;
+		for (const Station *st : Station::Iterate()) {
+			if (st->owner != _local_company) continue;
+			if (!default_added && StationUsesDefaultType(st)) {
+				items.insert({0, 0, STAT_CLASS_DFLT, 0});
+				default_added = true;
+			}
+			for (const auto &sm : st->speclist) {
+				if (sm.spec == nullptr) continue;
+				items.insert({sm.grfid, sm.localidx, sm.spec->class_index, sm.spec->index});
+			}
 		}
 	}
 
@@ -1786,6 +1817,22 @@ public:
 	void DrawType(int x, int y, int cls_id, int id) const override
 	{
 		DrawWaypointSprite(x, y, this->GetClassIndex(cls_id), id, _cur_railtype);
+	}
+
+	void FillUsedItems(std::set<PickerItem> &items) override
+	{
+		bool default_added = false;
+		for (const Waypoint *wp : Waypoint::Iterate()) {
+			if (wp->owner != _local_company) continue;
+			if (!default_added && StationUsesDefaultType(wp)) {
+				items.insert({0, 0, STAT_CLASS_WAYP, 0});
+				default_added = true;
+			}
+			for (const auto &sm : wp->speclist) {
+				if (sm.spec == nullptr) continue;
+				items.insert({0, 0, sm.spec->class_index, sm.spec->index});
+			}
+		}
 	}
 
 	static WaypointPickerCallbacks instance;
