@@ -28,9 +28,9 @@ CommandCost CmdSetCompanyColour(DoCommandFlag flags, LiveryScheme scheme, bool p
 DEF_CMD_TRAIT(CMD_COMPANY_CTRL,             CmdCompanyCtrl,           CMD_SPECTATOR | CMD_CLIENT_ID | CMD_NO_EST, CMDT_SERVER_SETTING)
 DEF_CMD_TRAIT(CMD_COMPANY_ADD_ALLOW_LIST,   CmdCompanyAddAllowList,   CMD_NO_EST,                                 CMDT_SERVER_SETTING)
 DEF_CMD_TRAIT(CMD_GIVE_MONEY,               CmdGiveMoney,             0,                                          CMDT_MONEY_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_RENAME_COMPANY,           CmdRenameCompany,         0,                                          CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_RENAME_PRESIDENT,         CmdRenamePresident,       0,                                          CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_COMPANY_MANAGER_FACE, CmdSetCompanyManagerFace, 0,                                          CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_COMPANY_COLOUR,       CmdSetCompanyColour,      0,                                          CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_RENAME_COMPANY,           CmdRenameCompany,         0,                                          CMDT_COMPANY_SETTING)
+DEF_CMD_TRAIT(CMD_RENAME_PRESIDENT,         CmdRenamePresident,       0,                                          CMDT_COMPANY_SETTING)
+DEF_CMD_TRAIT(CMD_SET_COMPANY_MANAGER_FACE, CmdSetCompanyManagerFace, 0,                                          CMDT_COMPANY_SETTING)
+DEF_CMD_TRAIT(CMD_SET_COMPANY_COLOUR,       CmdSetCompanyColour,      0,                                          CMDT_COMPANY_SETTING)
 
 #endif /* COMPANY_CMD_H */
