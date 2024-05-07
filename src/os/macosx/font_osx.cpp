@@ -341,7 +341,8 @@ void LoadCoreTextFont(FontSize fs)
 {
 	FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
 
-	if (settings->font.empty()) return;
+	std::string font = GetFontCacheFontName(fs);
+	if (font.empty()) return;
 
 	CFAutoRelease<CTFontDescriptorRef> font_ref;
 
@@ -352,12 +353,12 @@ void LoadCoreTextFont(FontSize fs)
 
 	if (!font_ref && MacOSVersionIsAtLeast(10, 6, 0)) {
 		/* Might be a font file name, try load it. */
-		font_ref.reset(LoadFontFromFile(settings->font));
-		if (!font_ref) ShowInfo("Unable to load file '{}' for {} font, using default OS font selection instead", settings->font, FontSizeToName(fs));
+		font_ref.reset(LoadFontFromFile(font));
+		if (!font_ref) ShowInfo("Unable to load file '{}' for {} font, using default OS font selection instead", font, FontSizeToName(fs));
 	}
 
 	if (!font_ref) {
-		CFAutoRelease<CFStringRef> name(CFStringCreateWithCString(kCFAllocatorDefault, settings->font.c_str(), kCFStringEncodingUTF8));
+		CFAutoRelease<CFStringRef> name(CFStringCreateWithCString(kCFAllocatorDefault, font.c_str(), kCFStringEncodingUTF8));
 
 		/* Simply creating the font using CTFontCreateWithNameAndSize will *always* return
 		 * something, no matter the name. As such, we can't use it to check for existence.
@@ -375,23 +376,9 @@ void LoadCoreTextFont(FontSize fs)
 	}
 
 	if (!font_ref) {
-		ShowInfo("Unable to use '{}' for {} font, using sprite font instead", settings->font, FontSizeToName(fs));
+		ShowInfo("Unable to use '{}' for {} font, using sprite font instead", font, FontSizeToName(fs));
 		return;
 	}
 
 	new CoreTextFontCache(fs, std::move(font_ref), settings->size);
-}
-
-/**
- * Load a TrueType font from a file.
- * @param fs The font size to load.
- * @param file_name Path to the font file.
- * @param size Requested font size.
- */
-void LoadCoreTextFont(FontSize fs, const std::string &file_name, uint size)
-{
-	CFAutoRelease<CTFontDescriptorRef> font_ref{LoadFontFromFile(file_name)};
-	if (font_ref) {
-		new CoreTextFontCache(fs, std::move(font_ref), size);
-	}
 }

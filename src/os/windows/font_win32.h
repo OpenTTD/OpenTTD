@@ -41,6 +41,5 @@ public:
 };
 
 void LoadWin32Font(FontSize fs);
-void LoadWin32Font(FontSize fs, const std::string &file_name, uint size);
 
 #endif /* FONT_WIN32_H */
