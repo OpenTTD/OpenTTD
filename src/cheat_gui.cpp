@@ -404,14 +404,14 @@ struct CheatWindow : Window {
 		this->SetDirty();
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
 		/* Was 'cancel' pressed or nothing entered? */
-		if (str == nullptr || StrEmpty(str)) return;
+		if (!str.has_value() || str->empty()) return;
 
 		const CheatEntry *ce = &_cheats_ui[clicked_widget];
 		int oldvalue = (int32_t)ReadValue(ce->variable, ce->type);
-		int value = atoi(str);
+		int value = atoi(str->c_str());
 		*ce->been_used = true;
 		value = ce->proc(value, value - oldvalue);
 

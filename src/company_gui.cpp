@@ -1686,12 +1686,12 @@ public:
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (str == nullptr) return;
+		if (!str.has_value()) return;
 		/* Set a new company manager face number */
-		if (!StrEmpty(str)) {
-			this->face = std::strtoul(str, nullptr, 10);
+		if (!str->empty()) {
+			this->face = std::strtoul(str->c_str(), nullptr, 10);
 			ScaleAllCompanyManagerFaceBits(this->face);
 			ShowErrorMessage(STR_FACE_FACECODE_SET, INVALID_STRING_ID, WL_INFO);
 			this->UpdateData();
@@ -2520,25 +2520,25 @@ struct CompanyWindow : Window
 		this->RaiseButtons();
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (str == nullptr) return;
+		if (!str.has_value()) return;
 
 		switch (this->query_widget) {
 			default: NOT_REACHED();
 
 			case WID_C_GIVE_MONEY: {
-				Money money = std::strtoull(str, nullptr, 10) / GetCurrency().rate;
+				Money money = std::strtoull(str->c_str(), nullptr, 10) / GetCurrency().rate;
 				Command<CMD_GIVE_MONEY>::Post(STR_ERROR_CAN_T_GIVE_MONEY, money, (CompanyID)this->window_number);
 				break;
 			}
 
 			case WID_C_PRESIDENT_NAME:
-				Command<CMD_RENAME_PRESIDENT>::Post(STR_ERROR_CAN_T_CHANGE_PRESIDENT, str);
+				Command<CMD_RENAME_PRESIDENT>::Post(STR_ERROR_CAN_T_CHANGE_PRESIDENT, *str);
 				break;
 
 			case WID_C_COMPANY_NAME:
-				Command<CMD_RENAME_COMPANY>::Post(STR_ERROR_CAN_T_CHANGE_COMPANY_NAME, str);
+				Command<CMD_RENAME_COMPANY>::Post(STR_ERROR_CAN_T_CHANGE_COMPANY_NAME, *str);
 				break;
 		}
 	}

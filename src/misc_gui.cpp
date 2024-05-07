@@ -1039,7 +1039,7 @@ struct QueryStringWindow : public Window
 		if (!this->editbox.handled && this->parent != nullptr) {
 			Window *parent = this->parent;
 			this->parent = nullptr; // so parent doesn't try to close us again
-			parent->OnQueryTextFinished(nullptr);
+			parent->OnQueryTextFinished(std::nullopt);
 		}
 		this->Window::Close();
 	}

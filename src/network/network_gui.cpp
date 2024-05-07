@@ -836,13 +836,13 @@ public:
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (!StrEmpty(str)) {
-			_settings_client.network.connect_to_ip = str;
-			NetworkAddServer(str);
-			NetworkRebuildHostList();
-		}
+		if (!str.has_value() || str->empty()) return;
+
+		_settings_client.network.connect_to_ip = std::move(*str);
+		NetworkAddServer(_settings_client.network.connect_to_ip);
+		NetworkRebuildHostList();
 	}
 
 	void OnResize() override
@@ -1135,14 +1135,14 @@ struct NetworkStartServerWindow : public Window {
 		this->RaiseWidgetsWhenLowered(WID_NSS_CLIENTS_BTND, WID_NSS_CLIENTS_BTNU, WID_NSS_COMPANIES_BTND, WID_NSS_COMPANIES_BTNU);
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (str == nullptr) return;
+		if (!str.has_value()) return;
 
 		if (this->widget_id == WID_NSS_SETPWD) {
-			_settings_client.network.server_password = str;
+			_settings_client.network.server_password = std::move(*str);
 		} else {
-			int32_t value = atoi(str);
+			int32_t value = atoi(str->c_str());
 			this->SetWidgetDirty(this->widget_id);
 			switch (this->widget_id) {
 				default: NOT_REACHED();
@@ -1868,9 +1868,9 @@ public:
 		this->SetDirty();
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (str == nullptr) return;
+		if (!str.has_value()) return;
 
 		switch (this->query_widget) {
 			default: NOT_REACHED();
@@ -1878,13 +1878,13 @@ public:
 			case WID_CL_SERVER_NAME_EDIT: {
 				if (!_network_server) break;
 
-				SetSettingValue(GetSettingFromName("network.server_name")->AsStringSetting(), str);
+				SetSettingValue(GetSettingFromName("network.server_name")->AsStringSetting(), *str);
 				this->InvalidateData();
 				break;
 			}
 
 			case WID_CL_CLIENT_NAME_EDIT: {
-				SetSettingValue(GetSettingFromName("network.client_name")->AsStringSetting(), str);
+				SetSettingValue(GetSettingFromName("network.client_name")->AsStringSetting(), *str);
 				this->InvalidateData();
 				break;
 			}
@@ -2169,14 +2169,14 @@ struct NetworkJoinStatusWindow : Window {
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (StrEmpty(str) || this->request == nullptr) {
+		if (!str.has_value() || str->empty() || this->request == nullptr) {
 			NetworkDisconnect();
 			return;
 		}
 
-		this->request->Reply(str);
+		this->request->Reply(*str);
 	}
 };
 

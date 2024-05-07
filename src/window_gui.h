@@ -775,11 +775,11 @@ public:
 
 	/**
 	 * The query window opened from this window has closed.
-	 * @param str the new value of the string, nullptr if the window
+	 * @param str the new value of the string, \c std::nullopt if the window
 	 *            was cancelled or an empty string when the default
-	 *            button was pressed, i.e. StrEmpty(str).
+	 *            button was pressed, i.e. \c str->empty().
 	 */
-	virtual void OnQueryTextFinished([[maybe_unused]] char *str) {}
+	virtual void OnQueryTextFinished([[maybe_unused]] std::optional<std::string> str) {}
 
 	/**
 	 * Some data on this window has become invalid.

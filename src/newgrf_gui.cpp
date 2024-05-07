@@ -443,10 +443,10 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (StrEmpty(str)) return;
-		int32_t value = atoi(str);
+		if (!str.has_value() || str->empty()) return;
+		int32_t value = atoi(str->c_str());
 		GRFParameterInfo &par_info = this->GetParameterInfo(this->clicked_row);
 		uint32_t val = Clamp<uint32_t>(value, par_info.min_value, par_info.max_value);
 		par_info.SetValue(this->grf_config, val);
@@ -1195,11 +1195,11 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->InvalidateData(GOID_NEWGRF_CHANGES_MADE);
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (str == nullptr) return;
+		if (!str.has_value()) return;
 
-		SaveGRFPresetToConfig(str, this->actives);
+		SaveGRFPresetToConfig(str->c_str(), this->actives);
 		this->grf_presets = GetGRFPresetList();
 
 		/* Switch to this preset */

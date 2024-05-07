@@ -515,10 +515,10 @@ struct ScriptSettingsWindow : public Window {
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (StrEmpty(str)) return;
-		int32_t value = atoi(str);
+		if (!str.has_value() || str->empty()) return;
+		int32_t value = atoi(str->c_str());
 
 		SetValue(value);
 	}

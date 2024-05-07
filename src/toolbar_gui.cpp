@@ -2458,14 +2458,14 @@ struct ScenarioEditorToolbarWindow : Window {
 		HandleZoomMessage(this, GetMainWindow()->viewport, WID_TE_ZOOM_IN, WID_TE_ZOOM_OUT);
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
 		/* Was 'cancel' pressed? */
-		if (str == nullptr) return;
+		if (!str.has_value()) return;
 
 		TimerGameCalendar::Year value;
-		if (!StrEmpty(str)) {
-			value = atoi(str);
+		if (!str->empty()) {
+			value = atoi(str->c_str());
 		} else {
 			/* An empty string means revert to the default */
 			value = CalendarTime::DEF_START_YEAR.base();

@@ -595,11 +595,11 @@ struct NewGRFInspectWindow : Window {
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (StrEmpty(str)) return;
+		if (!str.has_value() || str->empty()) return;
 
-		NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][this->current_edit_param - 0x60] = std::strtol(str, nullptr, 16);
+		NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][this->current_edit_param - 0x60] = std::strtol(str->c_str(), nullptr, 16);
 		this->SetDirty();
 	}
 
@@ -1074,11 +1074,11 @@ struct SpriteAlignerWindow : Window {
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (StrEmpty(str)) return;
+		if (!str.has_value() || str->empty()) return;
 
-		this->current_sprite = atoi(str);
+		this->current_sprite = atoi(str->c_str());
 		if (this->current_sprite >= GetMaxSpriteID()) this->current_sprite = 0;
 		while (GetSpriteType(this->current_sprite) != SpriteType::Normal) {
 			this->current_sprite = (this->current_sprite + 1) % GetMaxSpriteID();

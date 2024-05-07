@@ -935,14 +935,14 @@ struct GenerateLandscapeWindow : public Window {
 		this->InvalidateData();
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
 		/* Was 'cancel' pressed? */
-		if (str == nullptr) return;
+		if (!str.has_value()) return;
 
 		int32_t value;
-		if (!StrEmpty(str)) {
-			value = atoi(str);
+		if (!str->empty()) {
+			value = atoi(str->c_str());
 		} else {
 			/* An empty string means revert to the default */
 			switch (this->widget_id) {
@@ -1229,25 +1229,25 @@ struct CreateScenarioWindow : public Window
 		this->SetDirty();
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (!StrEmpty(str)) {
-			int32_t value = atoi(str);
+		if (!str.has_value() || str->empty()) return;
 
-			switch (this->widget_id) {
-				case WID_CS_START_DATE_TEXT:
-					this->SetWidgetDirty(WID_CS_START_DATE_TEXT);
-					_settings_newgame.game_creation.starting_year = Clamp(TimerGameCalendar::Year(value), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
-					break;
+		int32_t value = atoi(str->c_str());
 
-				case WID_CS_FLAT_LAND_HEIGHT_TEXT:
-					this->SetWidgetDirty(WID_CS_FLAT_LAND_HEIGHT_TEXT);
-					_settings_newgame.game_creation.se_flat_world_height = Clamp(value, 0, GetMapHeightLimit());
-					break;
-			}
+		switch (this->widget_id) {
+			case WID_CS_START_DATE_TEXT:
+				this->SetWidgetDirty(WID_CS_START_DATE_TEXT);
+				_settings_newgame.game_creation.starting_year = Clamp(TimerGameCalendar::Year(value), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
+				break;
 
-			this->SetDirty();
+			case WID_CS_FLAT_LAND_HEIGHT_TEXT:
+				this->SetWidgetDirty(WID_CS_FLAT_LAND_HEIGHT_TEXT);
+				_settings_newgame.game_creation.se_flat_world_height = Clamp(value, 0, GetMapHeightLimit());
+				break;
 		}
+
+		this->SetDirty();
 	}
 };
 
