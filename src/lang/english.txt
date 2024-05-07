@@ -2806,6 +2806,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Select l
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Build a station using drag & drop
 
+STR_PICKER_MODE_ALL                                             :All
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Toggle showing items from all classes
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Select a station class to display
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Select a station type to build. Ctrl+Click to add or remove in saved items
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Select a waypoint class to display

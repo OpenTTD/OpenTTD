@@ -79,6 +79,8 @@ public:
 
 	Listing type_last_sorting = { false, 0 }; ///< Default sorting of #PickerTypeList.
 	Filtering type_last_filtering = { false, 0 }; ///< Default filtering of #PickerTypeList.
+
+	uint8_t mode = 0; ///< Bitmask of \c PickerFilterModes.
 };
 
 /** Helper for PickerCallbacks when the class system is based on NewGRFClass. */
@@ -115,6 +117,10 @@ using PickerTypeList = GUIList<PickerItem, std::nullptr_t, PickerFilterData &>; 
 
 class PickerWindow : public PickerWindowBase {
 public:
+	enum PickerFilterModes {
+		PFM_ALL = 0, ///< Show all classes.
+	};
+
 	enum PickerFilterInvalidation {
 		PFI_CLASS = 1U << 0, ///< Refresh the class list.
 		PFI_TYPE = 1U << 1, ///< Refresh the type list.
