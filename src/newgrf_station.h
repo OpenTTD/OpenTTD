@@ -181,6 +181,16 @@ using StationClass = NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX>;
 
 const StationSpec *GetStationSpec(TileIndex t);
 
+/**
+ * Test if a StationClass is the waypoint class.
+ * @param cls StationClass to test.
+ * @return true if the class is the waypoint class.
+ */
+inline bool IsWaypointClass(const StationClass &cls)
+{
+	return cls.global_id == STATION_CLASS_LABEL_WAYPOINT;
+}
+
 /* Evaluate a tile's position within a station, and return the result a bitstuffed format. */
 uint32_t GetPlatformInfo(Axis axis, uint8_t tile, int platforms, int length, int x, int y, bool centred);
 

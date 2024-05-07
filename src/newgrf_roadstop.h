@@ -181,4 +181,14 @@ int AllocateSpecToRoadStop(const RoadStopSpec *statspec, BaseStation *st, bool e
 void DeallocateSpecFromRoadStop(BaseStation *st, uint8_t specindex);
 void RoadStopUpdateCachedTriggers(BaseStation *st);
 
+/**
+ * Test if a RoadStopClass is the waypoint class.
+ * @param cls RoadStopClass to test.
+ * @return true if the class is the waypoint class.
+ */
+inline bool IsWaypointClass(const RoadStopClass &cls)
+{
+	return cls.global_id == ROADSTOP_CLASS_LABEL_WAYPOINT;
+}
+
 #endif /* NEWGRF_ROADSTATION_H */

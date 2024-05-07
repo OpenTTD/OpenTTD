@@ -1267,7 +1267,7 @@ public:
 
 		for (const auto &cls : RoadStopClass::Classes()) {
 			/* Skip waypoints. */
-			if (cls.Index() == ROADSTOP_CLASS_WAYP) continue;
+			if (IsWaypointClass(cls)) continue;
 			if (GetIfClassHasNewStopsByType(&cls, this->roadStopType, _cur_roadtype)) this->roadstop_classes.push_back(cls.Index());
 		}
 

@@ -177,8 +177,10 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 {
 	if (!IsValidAxis(axis)) return CMD_ERROR;
 	/* Check if the given station class is valid */
-	if (spec_class != STAT_CLASS_WAYP) return CMD_ERROR;
-	if (spec_index >= StationClass::Get(spec_class)->GetSpecCount()) return CMD_ERROR;
+	if (static_cast<uint>(spec_class) >= StationClass::GetClassCount()) return CMD_ERROR;
+	const StationClass *cls = StationClass::Get(spec_class);
+	if (!IsWaypointClass(*cls)) return CMD_ERROR;
+	if (spec_index >= cls->GetSpecCount()) return CMD_ERROR;
 
 	/* The number of parts to build */
 	uint8_t count = axis == AXIS_X ? height : width;
