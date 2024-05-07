@@ -805,8 +805,6 @@ int openttd_main(std::span<char * const> arguments)
 	GenerateWorld(GWM_EMPTY, 64, 64); // Make the viewport initialization happy
 	LoadIntroGame(false);
 
-	CheckForMissingGlyphs();
-
 	/* ScanNewGRFFiles now has control over the scanner. */
 	RequestNewGRFScan(scanner.release());
 
