@@ -459,7 +459,7 @@ bool GetIfNewStopsByType(RoadStopType rs, RoadType roadtype)
 {
 	for (const auto &cls : RoadStopClass::Classes()) {
 		/* Ignore the waypoint class. */
-		if (cls.Index() == ROADSTOP_CLASS_WAYP) continue;
+		if (IsWaypointClass(cls)) continue;
 		/* Ignore the default class with only the default station. */
 		if (cls.Index() == ROADSTOP_CLASS_DFLT && cls.GetSpecCount() == 1) continue;
 		if (GetIfClassHasNewStopsByType(&cls, rs, roadtype)) return true;

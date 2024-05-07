@@ -1335,8 +1335,10 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 	if (!ValParamRailType(rt) || !IsValidAxis(axis)) return CMD_ERROR;
 
 	/* Check if the given station class is valid */
-	if ((uint)spec_class >= StationClass::GetClassCount() || spec_class == STAT_CLASS_WAYP) return CMD_ERROR;
-	if (spec_index >= StationClass::Get(spec_class)->GetSpecCount()) return CMD_ERROR;
+	if (static_cast<uint>(spec_class) >= StationClass::GetClassCount()) return CMD_ERROR;
+	const StationClass *cls = StationClass::Get(spec_class);
+	if (IsWaypointClass(*cls)) return CMD_ERROR;
+	if (spec_index >= cls->GetSpecCount()) return CMD_ERROR;
 	if (plat_len == 0 || numtracks == 0) return CMD_ERROR;
 
 	int w_org, h_org;
@@ -1946,10 +1948,12 @@ CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8_t width,
 	bool distant_join = (station_to_join != INVALID_STATION);
 
 	/* Check if the given station class is valid */
-	if ((uint)spec_class >= RoadStopClass::GetClassCount() || spec_class == ROADSTOP_CLASS_WAYP) return CMD_ERROR;
-	if (spec_index >= RoadStopClass::Get(spec_class)->GetSpecCount()) return CMD_ERROR;
+	if (static_cast<uint>(spec_class) >= RoadStopClass::GetClassCount()) return CMD_ERROR;
+	const RoadStopClass *cls = RoadStopClass::Get(spec_class);
+	if (IsWaypointClass(*cls)) return CMD_ERROR;
+	if (spec_index >= cls->GetSpecCount()) return CMD_ERROR;
 
-	const RoadStopSpec *roadstopspec = RoadStopClass::Get(spec_class)->GetSpec(spec_index);
+	const RoadStopSpec *roadstopspec = cls->GetSpec(spec_index);
 	if (roadstopspec != nullptr) {
 		if (stop_type == ROADSTOP_TRUCK && roadstopspec->stop_type != ROADSTOPTYPE_FREIGHT && roadstopspec->stop_type != ROADSTOPTYPE_ALL) return CMD_ERROR;
 		if (stop_type == ROADSTOP_BUS && roadstopspec->stop_type != ROADSTOPTYPE_PASSENGER && roadstopspec->stop_type != ROADSTOPTYPE_ALL) return CMD_ERROR;

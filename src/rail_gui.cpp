@@ -1112,7 +1112,7 @@ public:
 
 		for (const auto &cls : StationClass::Classes()) {
 			/* Skip waypoints. */
-			if (cls.Index() == STAT_CLASS_WAYP) continue;
+			if (IsWaypointClass(cls)) continue;
 			if (cls.GetUISpecCount() == 0) continue;
 			station_classes.push_back(cls.Index());
 		}
