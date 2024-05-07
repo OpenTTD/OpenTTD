@@ -102,7 +102,7 @@ struct AirportTileLayout {
 /**
  * Defines the data structure for an airport.
  */
-struct AirportSpec {
+struct AirportSpec : NewGRFSpecBase<AirportClassID> {
 	const struct AirportFTAClass *fsm;     ///< the finite statemachine for the default airports
 	std::vector<AirportTileLayout> layouts; ///< List of layouts composing the airport.
 	std::span<const HangarTileTable> depots; ///< Position of the depots on the airports.
@@ -114,7 +114,6 @@ struct AirportSpec {
 	TimerGameCalendar::Year max_year;      ///< last year the airport is available
 	StringID name;                         ///< name of this airport
 	TTDPAirportType ttd_airport_type;      ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
-	AirportClassID cls_id;                 ///< the class to which this airport type belongs
 	SpriteID preview_sprite;               ///< preview sprite for this airport
 	uint16_t maintenance_cost;               ///< maintenance cost multiplier
 	/* Newgrf data */

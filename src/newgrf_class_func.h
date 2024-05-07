@@ -12,8 +12,8 @@
 #include "table/strings.h"
 
 /** Reset the classes, i.e. clear everything. */
-template <typename Tspec, typename Tid, Tid Tmax>
-void NewGRFClass<Tspec, Tid, Tmax>::Reset()
+template <typename Tspec, typename Tindex, Tindex Tmax>
+void NewGRFClass<Tspec, Tindex, Tmax>::Reset()
 {
 	NewGRFClass::classes.clear();
 	NewGRFClass::classes.shrink_to_fit();
@@ -28,8 +28,8 @@ void NewGRFClass<Tspec, Tid, Tmax>::Reset()
  * @note Upon allocating the same global class ID for a
  *       second time, this first allocation will be given.
  */
-template <typename Tspec, typename Tid, Tid Tmax>
-Tid NewGRFClass<Tspec, Tid, Tmax>::Allocate(uint32_t global_id)
+template <typename Tspec, typename Tindex, Tindex Tmax>
+Tindex NewGRFClass<Tspec, Tindex, Tmax>::Allocate(uint32_t global_id)
 {
 	auto found = std::find_if(std::begin(NewGRFClass::classes), std::end(NewGRFClass::classes), [global_id](const auto &cls) { return cls.global_id == global_id; });
 
@@ -38,56 +38,59 @@ Tid NewGRFClass<Tspec, Tid, Tmax>::Allocate(uint32_t global_id)
 
 	/* More slots available, allocate a slot to the global id. */
 	if (NewGRFClass::classes.size() < Tmax) {
-		auto &cls = NewGRFClass::classes.emplace_back(global_id, STR_EMPTY);
-		return cls.Index();
+		auto it = NewGRFClass::classes.emplace(std::end(NewGRFClass::classes), global_id, STR_EMPTY);
+		it->index = static_cast<Tindex>(std::distance(std::begin(NewGRFClass::classes), it));
+		return it->Index();
 	}
 
 	GrfMsg(2, "ClassAllocate: already allocated {} classes, using default", Tmax);
-	return static_cast<Tid>(0);
+	return static_cast<Tindex>(0);
 }
 
 /**
- * Insert a spec into the class.
+ * Insert a spec into the class, and update its index.
  * @param spec The spec to insert.
  */
-template <typename Tspec, typename Tid, Tid Tmax>
-void NewGRFClass<Tspec, Tid, Tmax>::Insert(Tspec *spec)
+template <typename Tspec, typename Tindex, Tindex Tmax>
+void NewGRFClass<Tspec, Tindex, Tmax>::Insert(Tspec *spec)
 {
-	this->spec.push_back(spec);
+	auto it = this->spec.insert(std::end(this->spec), spec);
+	uint16_t index = static_cast<uint16_t>(std::distance(std::begin(this->spec), it));
+	if (spec != nullptr) (*it)->index = index;
 
-	if (this->IsUIAvailable(static_cast<uint>(this->spec.size() - 1))) this->ui_count++;
+	if (this->IsUIAvailable(index)) this->ui_count++;
 }
 
 /**
  * Assign a spec to one of the classes.
  * @param spec The spec to assign.
- * @note The spec must have a valid class id set.
+ * @note The spec must have a valid class index set.
  */
-template <typename Tspec, typename Tid, Tid Tmax>
-void NewGRFClass<Tspec, Tid, Tmax>::Assign(Tspec *spec)
+template <typename Tspec, typename Tindex, Tindex Tmax>
+void NewGRFClass<Tspec, Tindex, Tmax>::Assign(Tspec *spec)
 {
-	assert(static_cast<size_t>(spec->cls_id) < NewGRFClass::classes.size());
-	Get(spec->cls_id)->Insert(spec);
+	assert(static_cast<size_t>(spec->class_index) < NewGRFClass::classes.size());
+	Get(spec->class_index)->Insert(spec);
 }
 
 /**
  * Get a particular class.
- * @param cls_id The id for the class.
- * @pre cls_id < Tmax
+ * @param class_index The index of the class.
+ * @pre class_index < Tmax
  */
-template <typename Tspec, typename Tid, Tid Tmax>
-NewGRFClass<Tspec, Tid, Tmax> *NewGRFClass<Tspec, Tid, Tmax>::Get(Tid cls_id)
+template <typename Tspec, typename Tindex, Tindex Tmax>
+NewGRFClass<Tspec, Tindex, Tmax> *NewGRFClass<Tspec, Tindex, Tmax>::Get(Tindex class_index)
 {
-	assert(static_cast<size_t>(cls_id) < NewGRFClass::classes.size());
-	return &NewGRFClass::classes[cls_id];
+	assert(static_cast<size_t>(class_index) < NewGRFClass::classes.size());
+	return &NewGRFClass::classes[class_index];
 }
 
 /**
  * Get the number of allocated classes.
  * @return The number of classes.
  */
-template <typename Tspec, typename Tid, Tid Tmax>
-uint NewGRFClass<Tspec, Tid, Tmax>::GetClassCount()
+template <typename Tspec, typename Tindex, Tindex Tmax>
+uint NewGRFClass<Tspec, Tindex, Tmax>::GetClassCount()
 {
 	return static_cast<uint>(NewGRFClass::classes.size());
 }
@@ -96,8 +99,8 @@ uint NewGRFClass<Tspec, Tid, Tmax>::GetClassCount()
  * Get the number of classes available to the user.
  * @return The number of classes.
  */
-template <typename Tspec, typename Tid, Tid Tmax>
-uint NewGRFClass<Tspec, Tid, Tmax>::GetUIClassCount()
+template <typename Tspec, typename Tindex, Tindex Tmax>
+uint NewGRFClass<Tspec, Tindex, Tmax>::GetUIClassCount()
 {
 	return std::count_if(std::begin(NewGRFClass::classes), std::end(NewGRFClass::classes), [](const auto &cls) { return cls.GetUISpecCount() > 0; });
 }
@@ -107,8 +110,8 @@ uint NewGRFClass<Tspec, Tid, Tmax>::GetUIClassCount()
  * @param index UI index of a class.
  * @return The class ID of the class.
  */
-template <typename Tspec, typename Tid, Tid Tmax>
-Tid NewGRFClass<Tspec, Tid, Tmax>::GetUIClass(uint index)
+template <typename Tspec, typename Tindex, Tindex Tmax>
+Tindex NewGRFClass<Tspec, Tindex, Tmax>::GetUIClass(uint index)
 {
 	for (const auto &cls : NewGRFClass::classes) {
 		if (cls.GetUISpecCount() == 0) continue;
@@ -122,8 +125,8 @@ Tid NewGRFClass<Tspec, Tid, Tmax>::GetUIClass(uint index)
  * @param index  The index where to find the spec.
  * @return The spec at given location.
  */
-template <typename Tspec, typename Tid, Tid Tmax>
-const Tspec *NewGRFClass<Tspec, Tid, Tmax>::GetSpec(uint index) const
+template <typename Tspec, typename Tindex, Tindex Tmax>
+const Tspec *NewGRFClass<Tspec, Tindex, Tmax>::GetSpec(uint index) const
 {
 	/* If the custom spec isn't defined any more, then the GRF file probably was not loaded. */
 	return index < this->GetSpecCount() ? this->spec[index] : nullptr;
@@ -134,8 +137,8 @@ const Tspec *NewGRFClass<Tspec, Tid, Tmax>::GetSpec(uint index) const
  * @param ui_index UI index of the spec.
  * @return index of the spec, or -1 if out of range.
  */
-template <typename Tspec, typename Tid, Tid Tmax>
-int NewGRFClass<Tspec, Tid, Tmax>::GetIndexFromUI(int ui_index) const
+template <typename Tspec, typename Tindex, Tindex Tmax>
+int NewGRFClass<Tspec, Tindex, Tmax>::GetIndexFromUI(int ui_index) const
 {
 	if (ui_index < 0) return -1;
 	for (uint i = 0; i < this->GetSpecCount(); i++) {
@@ -150,8 +153,8 @@ int NewGRFClass<Tspec, Tid, Tmax>::GetIndexFromUI(int ui_index) const
  * @param index index of the spec.
  * @return UI index of the spec, or -1 if out of range.
  */
-template <typename Tspec, typename Tid, Tid Tmax>
-int NewGRFClass<Tspec, Tid, Tmax>::GetUIFromIndex(int index) const
+template <typename Tspec, typename Tindex, Tindex Tmax>
+int NewGRFClass<Tspec, Tindex, Tmax>::GetUIFromIndex(int index) const
 {
 	if ((uint)index >= this->GetSpecCount()) return -1;
 	uint ui_index = 0;
@@ -168,16 +171,13 @@ int NewGRFClass<Tspec, Tid, Tmax>::GetUIFromIndex(int index) const
  * @param index    Pointer to return the index of the spec in its class. If nullptr then not used.
  * @return The spec.
  */
-template <typename Tspec, typename Tid, Tid Tmax>
-const Tspec *NewGRFClass<Tspec, Tid, Tmax>::GetByGrf(uint32_t grfid, uint16_t local_id, int *index)
+template <typename Tspec, typename Tindex, Tindex Tmax>
+const Tspec *NewGRFClass<Tspec, Tindex, Tmax>::GetByGrf(uint32_t grfid, uint16_t local_id)
 {
 	for (const auto &cls : NewGRFClass::classes) {
 		for (const auto &spec : cls.spec) {
 			if (spec == nullptr) continue;
-			if (spec->grf_prop.grffile->grfid == grfid && spec->grf_prop.local_id == local_id) {
-				if (index != nullptr) *index = static_cast<int>(std::distance(cls.spec.data(), &spec));
-				return spec;
-			}
+			if (spec->grf_prop.grffile->grfid == grfid && spec->grf_prop.local_id == local_id) return spec;
 		}
 	}
 

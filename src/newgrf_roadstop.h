@@ -118,7 +118,7 @@ struct RoadStopResolverObject : public ResolverObject {
 };
 
 /** Road stop specification. */
-struct RoadStopSpec {
+struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 	/**
 	 * Properties related the the grf file.
 	 * NUM_CARGO real cargo plus three pseudo cargo sprite groups.
@@ -126,7 +126,6 @@ struct RoadStopSpec {
 	 * evaluating callbacks.
 	 */
 	GRFFilePropsBase<NUM_CARGO + 3> grf_prop;
-	RoadStopClassID cls_id;     ///< The class to which this spec belongs.
 	StringID name;              ///< Name of this stop
 
 	RoadStopAvailabilityType stop_type = ROADSTOPTYPE_ALL;

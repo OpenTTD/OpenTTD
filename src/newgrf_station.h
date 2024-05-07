@@ -108,8 +108,8 @@ enum StationRandomTrigger {
 };
 
 /** Station specification. */
-struct StationSpec {
-	StationSpec() : cls_id(STAT_CLASS_DFLT), name(0),
+struct StationSpec : NewGRFSpecBase<StationClassID> {
+	StationSpec() : name(0),
 		disallowed_platforms(0), disallowed_lengths(0),
 		cargo_threshold(0), cargo_triggers(0),
 		callback_mask(0), flags(0), pylons(0), wires(0), blocked(0),
@@ -121,7 +121,6 @@ struct StationSpec {
 	 * evaluating callbacks.
 	 */
 	GRFFilePropsBase<NUM_CARGO + 3> grf_prop;
-	StationClassID cls_id;     ///< The class to which this spec belongs.
 	StringID name;             ///< Name of this station.
 
 	/**

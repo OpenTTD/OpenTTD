@@ -1945,7 +1945,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
 				uint32_t classid = buf->ReadDWord();
-				statspec->cls_id = StationClass::Allocate(BSWAP32(classid));
+				statspec->class_index = StationClass::Allocate(BSWAP32(classid));
 				break;
 			}
 
@@ -2141,7 +2141,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				break;
 
 			case 0x1D: // Station Class name
-				AddStringForMapping(buf->ReadWord(), [statspec](StringID str) { StationClass::Get(statspec->cls_id)->name = str; });
+				AddStringForMapping(buf->ReadWord(), [statspec](StringID str) { StationClass::Get(statspec->class_index)->name = str; });
 				break;
 
 			default:
@@ -4103,12 +4103,12 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 
 				/* Swap classid because we read it in BE. */
 				uint32_t classid = buf->ReadDWord();
-				spec->cls_id = ObjectClass::Allocate(BSWAP32(classid));
+				spec->class_index = ObjectClass::Allocate(BSWAP32(classid));
 				break;
 			}
 
 			case 0x09: { // Class name
-				AddStringForMapping(buf->ReadWord(), [spec](StringID str) { ObjectClass::Get(spec->cls_id)->name = str; });
+				AddStringForMapping(buf->ReadWord(), [spec](StringID str) { ObjectClass::Get(spec->class_index)->name = str; });
 				break;
 			}
 
@@ -4790,7 +4790,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 				}
 
 				uint32_t classid = buf->ReadDWord();
-				rs->cls_id = RoadStopClass::Allocate(BSWAP32(classid));
+				rs->class_index = RoadStopClass::Allocate(BSWAP32(classid));
 				break;
 			}
 
@@ -4803,7 +4803,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 				break;
 
 			case 0x0B: // Road Stop Class name
-				AddStringForMapping(buf->ReadWord(), [rs](StringID str) { RoadStopClass::Get(rs->cls_id)->name = str; });
+				AddStringForMapping(buf->ReadWord(), [rs](StringID str) { RoadStopClass::Get(rs->class_index)->name = str; });
 				break;
 
 			case 0x0C: // The draw mode
@@ -6270,8 +6270,8 @@ static void FeatureNewName(ByteReader *buf)
 						if (GB(id, 0, 8) >= _cur.grffile->stations.size() || _cur.grffile->stations[GB(id, 0, 8)] == nullptr) {
 							GrfMsg(1, "FeatureNewName: Attempt to name undefined station 0x{:X}, ignoring", GB(id, 0, 8));
 						} else {
-							StationClassID cls_id = _cur.grffile->stations[GB(id, 0, 8)]->cls_id;
-							StationClass::Get(cls_id)->name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
+							StationClassID class_index = _cur.grffile->stations[GB(id, 0, 8)]->class_index;
+							StationClass::Get(class_index)->name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
 						break;
 

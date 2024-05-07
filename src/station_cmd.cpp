@@ -3346,7 +3346,7 @@ void FillTileDescRailStation(TileIndex tile, TileDesc *td)
 	const StationSpec *spec = GetStationSpec(tile);
 
 	if (spec != nullptr) {
-		td->station_class = StationClass::Get(spec->cls_id)->name;
+		td->station_class = StationClass::Get(spec->class_index)->name;
 		td->station_name  = spec->name;
 
 		if (spec->grf_prop.grffile != nullptr) {
@@ -3363,7 +3363,7 @@ void FillTileDescRailStation(TileIndex tile, TileDesc *td)
 void FillTileDescAirport(TileIndex tile, TileDesc *td)
 {
 	const AirportSpec *as = Station::GetByTile(tile)->airport.GetSpec();
-	td->airport_class = AirportClass::Get(as->cls_id)->name;
+	td->airport_class = AirportClass::Get(as->class_index)->name;
 	td->airport_name = as->name;
 
 	const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);
