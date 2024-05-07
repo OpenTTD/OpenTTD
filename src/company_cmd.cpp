@@ -898,8 +898,12 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 				assert(_local_company == COMPANY_SPECTATOR);
 				SetLocalCompany(c->index);
 
-				/* In network games, we need to try setting the company manager face here to sync it to all clients.
-				 * If a favorite company manager face is selected, choose it. Otherwise, use a random face. */
+				/*
+				 * If a favorite company manager face is selected, choose it. Otherwise, use a random face.
+				 * Because this needs to be synchronised over the network, only the client knows
+				 * its configuration and we are currently in the execution of a command, we have
+				 * to circumvent the normal ::Post logic for commands and just send the command.
+				 */
 				if (_company_manager_face != 0) Command<CMD_SET_COMPANY_MANAGER_FACE>::SendNet(STR_NULL, c->index, _company_manager_face);
 
 				/* Now that we have a new company, broadcast our company settings to
