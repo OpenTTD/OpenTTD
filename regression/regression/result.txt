@@ -6093,7 +6093,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetNumEngines():          1
   GetNumEngines():          1
   GetNumEngines():          0
-  GetName():                Group 0
+  GetName():                Group 1
   GetName():                (null : 0x00000000)
   AIVehicle.SellVehicle():  true
   AITile.DemolishTile():    true

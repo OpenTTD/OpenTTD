@@ -1539,7 +1539,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						auto tmp_params = MakeParameters(g->name);
 						GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 					} else {
-						auto tmp_params = MakeParameters(g->index);
+						auto tmp_params = MakeParameters(g->number);
 						GetStringWithArgs(builder, STR_FORMAT_GROUP_NAME, tmp_params);
 					}
 					break;

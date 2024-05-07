@@ -180,7 +180,7 @@ void BuildGuiGroupList(GUIGroupList &dst, bool fold, Owner owner, VehicleType ve
 		}
 
 		int r = StrNaturalCompare(last_group[0].second, last_group[1].second); // Sort by name (natural sorting).
-		if (r == 0) return a.group->index < b.group->index;
+		if (r == 0) return a.group->number < b.group->number;
 		return r < 0;
 	});
 
