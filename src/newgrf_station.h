@@ -79,6 +79,9 @@ struct StationResolverObject : public ResolverObject {
 	uint32_t GetDebugID() const override;
 };
 
+static const uint32_t STATION_CLASS_LABEL_DEFAULT = 'DFLT';
+static const uint32_t STATION_CLASS_LABEL_WAYPOINT = 'WAYP';
+
 enum StationClassID : uint16_t {
 	STAT_CLASS_BEGIN = 0, ///< the lowest valid value
 	STAT_CLASS_DFLT = 0, ///< Default station class.

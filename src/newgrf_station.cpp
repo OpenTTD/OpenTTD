@@ -32,10 +32,10 @@ template <>
 /* static */ void StationClass::InsertDefaults()
 {
 	/* Set up initial data */
-	StationClass::Get(StationClass::Allocate('DFLT'))->name = STR_STATION_CLASS_DFLT;
-	StationClass::Get(StationClass::Allocate('DFLT'))->Insert(nullptr);
-	StationClass::Get(StationClass::Allocate('WAYP'))->name = STR_STATION_CLASS_WAYP;
-	StationClass::Get(StationClass::Allocate('WAYP'))->Insert(nullptr);
+	StationClass::Get(StationClass::Allocate(STATION_CLASS_LABEL_DEFAULT))->name = STR_STATION_CLASS_DFLT;
+	StationClass::Get(StationClass::Allocate(STATION_CLASS_LABEL_DEFAULT))->Insert(nullptr);
+	StationClass::Get(StationClass::Allocate(STATION_CLASS_LABEL_WAYPOINT))->name = STR_STATION_CLASS_WAYP;
+	StationClass::Get(StationClass::Allocate(STATION_CLASS_LABEL_WAYPOINT))->Insert(nullptr);
 }
 
 template <>

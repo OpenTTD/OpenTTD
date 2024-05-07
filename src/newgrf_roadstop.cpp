@@ -31,10 +31,10 @@ template <>
 void RoadStopClass::InsertDefaults()
 {
 	/* Set up initial data */
-	RoadStopClass::Get(RoadStopClass::Allocate('DFLT'))->name = STR_STATION_CLASS_DFLT;
-	RoadStopClass::Get(RoadStopClass::Allocate('DFLT'))->Insert(nullptr);
-	RoadStopClass::Get(RoadStopClass::Allocate('WAYP'))->name = STR_STATION_CLASS_WAYP;
-	RoadStopClass::Get(RoadStopClass::Allocate('WAYP'))->Insert(nullptr);
+	RoadStopClass::Get(RoadStopClass::Allocate(ROADSTOP_CLASS_LABEL_DEFAULT))->name = STR_STATION_CLASS_DFLT;
+	RoadStopClass::Get(RoadStopClass::Allocate(ROADSTOP_CLASS_LABEL_DEFAULT))->Insert(nullptr);
+	RoadStopClass::Get(RoadStopClass::Allocate(ROADSTOP_CLASS_LABEL_WAYPOINT))->name = STR_STATION_CLASS_WAYP;
+	RoadStopClass::Get(RoadStopClass::Allocate(ROADSTOP_CLASS_LABEL_WAYPOINT))->Insert(nullptr);
 }
 
 template <>
