@@ -106,21 +106,6 @@ uint NewGRFClass<Tspec, Tindex, Tmax>::GetUIClassCount()
 }
 
 /**
- * Get the nth-class with user available specs.
- * @param index UI index of a class.
- * @return The class ID of the class.
- */
-template <typename Tspec, typename Tindex, Tindex Tmax>
-Tindex NewGRFClass<Tspec, Tindex, Tmax>::GetUIClass(uint index)
-{
-	for (const auto &cls : NewGRFClass::classes) {
-		if (cls.GetUISpecCount() == 0) continue;
-		if (index-- == 0) return cls.Index();
-	}
-	NOT_REACHED();
-}
-
-/**
  * Get a spec from the class at a given index.
  * @param index  The index where to find the spec.
  * @return The spec at given location.
@@ -130,38 +115,6 @@ const Tspec *NewGRFClass<Tspec, Tindex, Tmax>::GetSpec(uint index) const
 {
 	/* If the custom spec isn't defined any more, then the GRF file probably was not loaded. */
 	return index < this->GetSpecCount() ? this->spec[index] : nullptr;
-}
-
-/**
- * Translate a UI spec index into a spec index.
- * @param ui_index UI index of the spec.
- * @return index of the spec, or -1 if out of range.
- */
-template <typename Tspec, typename Tindex, Tindex Tmax>
-int NewGRFClass<Tspec, Tindex, Tmax>::GetIndexFromUI(int ui_index) const
-{
-	if (ui_index < 0) return -1;
-	for (uint i = 0; i < this->GetSpecCount(); i++) {
-		if (!this->IsUIAvailable(i)) continue;
-		if (ui_index-- == 0) return i;
-	}
-	return -1;
-}
-
-/**
- * Translate a spec index into a UI spec index.
- * @param index index of the spec.
- * @return UI index of the spec, or -1 if out of range.
- */
-template <typename Tspec, typename Tindex, Tindex Tmax>
-int NewGRFClass<Tspec, Tindex, Tmax>::GetUIFromIndex(int index) const
-{
-	if ((uint)index >= this->GetSpecCount()) return -1;
-	uint ui_index = 0;
-	for (int i = 0; i < index; i++) {
-		if (this->IsUIAvailable(i)) ui_index++;
-	}
-	return ui_index;
 }
 
 /**
@@ -177,7 +130,8 @@ const Tspec *NewGRFClass<Tspec, Tindex, Tmax>::GetByGrf(uint32_t grfid, uint16_t
 	for (const auto &cls : NewGRFClass::classes) {
 		for (const auto &spec : cls.spec) {
 			if (spec == nullptr) continue;
-			if (spec->grf_prop.grffile->grfid == grfid && spec->grf_prop.local_id == local_id) return spec;
+			if (spec->grf_prop.local_id != local_id) continue;
+			if ((spec->grf_prop.grffile == nullptr ? 0 : spec->grf_prop.grffile->grfid) == grfid) return spec;
 		}
 	}
 

@@ -42,6 +42,9 @@ private:
 	static void InsertDefaults();
 
 public:
+	using spec_type = Tspec;
+	using index_type = Tindex;
+
 	uint32_t global_id; ///< Global ID for class, e.g. 'DFLT', 'WAYP', etc.
 	StringID name;    ///< Name of this class.
 
@@ -67,8 +70,6 @@ public:
 	uint GetSpecCount() const { return static_cast<uint>(this->spec.size()); }
 	/** Get the number of potentially user-available specs within the class. */
 	uint GetUISpecCount() const { return this->ui_count; }
-	int GetUIFromIndex(int index) const;
-	int GetIndexFromUI(int ui_index) const;
 
 	const Tspec *GetSpec(uint index) const;
 
@@ -80,7 +81,6 @@ public:
 	static void Assign(Tspec *spec);
 	static uint GetClassCount();
 	static uint GetUIClassCount();
-	static Tindex GetUIClass(uint index);
 	static NewGRFClass *Get(Tindex class_index);
 
 	static const Tspec *GetByGrf(uint32_t grfid, uint16_t local_id);
