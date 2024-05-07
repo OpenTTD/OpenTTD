@@ -43,6 +43,7 @@
 #include "ai/ai_config.hpp"
 #include "game/game_config.hpp"
 #include "newgrf_config.h"
+#include "picker_func.h"
 #include "base_media_base.h"
 #include "fios.h"
 #include "fileio_func.h"
@@ -59,6 +60,7 @@ VehicleDefaultSettings _old_vds; ///< Used for loading default vehicles settings
 std::string _config_file; ///< Configuration file of OpenTTD.
 std::string _private_file; ///< Private configuration file of OpenTTD.
 std::string _secrets_file; ///< Secrets configuration file of OpenTTD.
+std::string _favs_file; ///< Picker favourites configuration file of OpenTTD.
 
 static ErrorList _settings_error_list; ///< Errors while loading minimal settings.
 
@@ -1352,6 +1354,7 @@ void LoadFromConfig(bool startup)
 	ConfigIniFile generic_ini(_config_file);
 	ConfigIniFile private_ini(_private_file);
 	ConfigIniFile secrets_ini(_secrets_file);
+	ConfigIniFile favs_ini(_favs_file);
 
 	if (!startup) ResetCurrencies(false); // Initialize the array of currencies, without preserving the custom one
 
@@ -1423,6 +1426,7 @@ void LoadFromConfig(bool startup)
 		_grfconfig_static  = GRFLoadConfig(generic_ini, "newgrf-static", true);
 		AILoadConfig(generic_ini, "ai_players");
 		GameLoadConfig(generic_ini, "game_scripts");
+		PickerLoadConfig(favs_ini);
 
 		PrepareOldDiffCustom();
 		IniLoadSettings(generic_ini, _old_gameopt_settings, "gameopt", &_settings_newgame, false);
@@ -1443,6 +1447,7 @@ void SaveToConfig()
 	ConfigIniFile generic_ini(_config_file);
 	ConfigIniFile private_ini(_private_file);
 	ConfigIniFile secrets_ini(_secrets_file);
+	ConfigIniFile favs_ini(_favs_file);
 
 	IniFileVersion generic_version = LoadVersionFromConfig(generic_ini);
 
@@ -1494,14 +1499,17 @@ void SaveToConfig()
 	GRFSaveConfig(generic_ini, "newgrf-static", _grfconfig_static);
 	AISaveConfig(generic_ini, "ai_players");
 	GameSaveConfig(generic_ini, "game_scripts");
+	PickerSaveConfig(favs_ini);
 
 	SaveVersionInConfig(generic_ini);
 	SaveVersionInConfig(private_ini);
 	SaveVersionInConfig(secrets_ini);
+	SaveVersionInConfig(favs_ini);
 
 	generic_ini.SaveToDisk(_config_file);
 	private_ini.SaveToDisk(_private_file);
 	secrets_ini.SaveToDisk(_secrets_file);
+	favs_ini.SaveToDisk(_favs_file);
 }
 
 /**

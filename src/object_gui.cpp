@@ -43,6 +43,8 @@ static ObjectPickerSelection _object_gui; ///< Settings of the object picker.
 
 class ObjectPickerCallbacks : public PickerCallbacksNewGRFClass<ObjectClass> {
 public:
+	ObjectPickerCallbacks() : PickerCallbacksNewGRFClass<ObjectClass>("fav_objects") {}
+
 	StringID GetClassTooltip() const override { return STR_PICKER_OBJECT_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_OBJECT_TYPE_TOOLTIP; }
 

@@ -36,7 +36,9 @@ struct PickerItem {
 /** Class for PickerClassWindow to collect information and retain state. */
 class PickerCallbacks {
 public:
-	virtual ~PickerCallbacks() {}
+	explicit PickerCallbacks(const std::string &ini_group);
+	virtual ~PickerCallbacks();
+
 	virtual void Close(int) { }
 
 	/** Should picker class/type selection be enabled? */
@@ -77,6 +79,8 @@ public:
 
 	/** Fill a set with all items that are used by the current player. */
 	virtual void FillUsedItems(std::set<PickerItem> &items) = 0;
+	/** Update link between grfid/localidx and class_index/index in saved items. */
+	virtual std::set<PickerItem> UpdateSavedItems(const std::set<PickerItem> &src) = 0;
 
 	Listing class_last_sorting = { false, 0 }; ///< Default sorting of #PickerClassList.
 	Filtering class_last_filtering = { false, 0 }; ///< Default filtering of #PickerClassList.
@@ -84,15 +88,19 @@ public:
 	Listing type_last_sorting = { false, 0 }; ///< Default sorting of #PickerTypeList.
 	Filtering type_last_filtering = { false, 0 }; ///< Default filtering of #PickerTypeList.
 
+	const std::string ini_group; ///< Ini Group for saving favourites.
 	uint8_t mode = 0; ///< Bitmask of \c PickerFilterModes.
 
 	std::set<PickerItem> used; ///< Set of items used in the current game by the current company.
+	std::set<PickerItem> saved; ///< Set of saved favourite items.
 };
 
 /** Helper for PickerCallbacks when the class system is based on NewGRFClass. */
 template <typename T>
 class PickerCallbacksNewGRFClass : public PickerCallbacks {
 public:
+	explicit PickerCallbacksNewGRFClass(const std::string &ini_group) : PickerCallbacks(ini_group) {}
+
 	inline typename T::index_type GetClassIndex(int cls_id) const { return static_cast<typename T::index_type>(cls_id); }
 	inline const T *GetClass(int cls_id) const { return T::Get(this->GetClassIndex(cls_id)); }
 	inline const typename T::spec_type *GetSpec(int cls_id, int id) const { return this->GetClass(cls_id)->GetSpec(id); }
@@ -112,8 +120,23 @@ public:
 	{
 		return GetPickerItem(GetClass(cls_id)->GetSpec(id), cls_id, id);
 	}
-};
 
+	std::set<PickerItem> UpdateSavedItems(const std::set<PickerItem> &src) override
+	{
+		if (src.empty()) return {};
+
+		std::set<PickerItem> dst;
+		for (const auto &item : src) {
+			const auto *spec = T::GetByGrf(item.grfid, item.local_id);
+			if (spec == nullptr) {
+				dst.insert({item.grfid, item.local_id, -1, -1});
+			} else {
+				dst.insert(GetPickerItem(spec));
+			}
+		}
+		return dst;
+	}
+};
 
 struct PickerFilterData : StringFilter {
 	const PickerCallbacks *callbacks; ///< Callbacks for filter functions to access to callbacks.
@@ -127,6 +150,7 @@ public:
 	enum PickerFilterModes {
 		PFM_ALL = 0, ///< Show all classes.
 		PFM_USED = 1, ///< Show used types.
+		PFM_SAVED = 2, ///< Show saved types.
 	};
 
 	enum PickerFilterInvalidation {

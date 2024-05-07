@@ -959,6 +959,8 @@ void DeterminePaths(const char *exe, bool only_local_path)
 	_private_file = config_dir + "private.cfg";
 	extern std::string _secrets_file;
 	_secrets_file = config_dir + "secrets.cfg";
+	extern std::string _favs_file;
+	_favs_file = config_dir + "favs.cfg";
 
 #ifdef USE_XDG
 	if (config_dir == config_home) {
