@@ -1097,6 +1097,8 @@ static void ShowRoadDepotPicker(Window *parent)
 template <RoadStopType roadstoptype>
 class RoadStopPickerCallbacks : public PickerCallbacksNewGRFClass<RoadStopClass> {
 public:
+	RoadStopPickerCallbacks(const std::string &ini_group) : PickerCallbacksNewGRFClass<RoadStopClass>(ini_group) {}
+
 	StringID GetClassTooltip() const override;
 	StringID GetTypeTooltip() const override;
 
@@ -1185,8 +1187,8 @@ template <> StringID RoadStopPickerCallbacks<ROADSTOP_BUS>::GetTypeTooltip() con
 template <> StringID RoadStopPickerCallbacks<ROADSTOP_TRUCK>::GetClassTooltip() const { return STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP; }
 template <> StringID RoadStopPickerCallbacks<ROADSTOP_TRUCK>::GetTypeTooltip() const { return STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP; }
 
-static RoadStopPickerCallbacks<ROADSTOP_BUS> _bus_callback_instance;
-static RoadStopPickerCallbacks<ROADSTOP_TRUCK> _truck_callback_instance;
+static RoadStopPickerCallbacks<ROADSTOP_BUS> _bus_callback_instance("fav_passenger_roadstops");
+static RoadStopPickerCallbacks<ROADSTOP_TRUCK> _truck_callback_instance("fav_freight_roadstops");
 
 static PickerCallbacks &GetRoadStopPickerCallbacks(RoadStopType rs)
 {

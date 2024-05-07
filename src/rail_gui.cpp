@@ -961,6 +961,8 @@ static bool StationUsesDefaultType(const BaseStation *bst)
 
 class StationPickerCallbacks : public PickerCallbacksNewGRFClass<StationClass> {
 public:
+	StationPickerCallbacks() : PickerCallbacksNewGRFClass<StationClass>("fav_stations") {}
+
 	StringID GetClassTooltip() const override { return STR_PICKER_STATION_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_STATION_TYPE_TOOLTIP; }
 
@@ -1770,6 +1772,8 @@ static void ShowBuildTrainDepotPicker(Window *parent)
 
 class WaypointPickerCallbacks : public PickerCallbacksNewGRFClass<StationClass> {
 public:
+	WaypointPickerCallbacks() : PickerCallbacksNewGRFClass<StationClass>("fav_waypoints") {}
+
 	StringID GetClassTooltip() const override { return STR_PICKER_WAYPOINT_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_WAYPOINT_TYPE_TOOLTIP; }
 

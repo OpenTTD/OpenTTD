@@ -11,12 +11,14 @@
 #include "core/backup_type.hpp"
 #include "gui.h"
 #include "hotkeys.h"
+#include "ini_type.h"
 #include "picker_gui.h"
 #include "querystring_gui.h"
 #include "settings_type.h"
 #include "sortlist_type.h"
 #include "sound_func.h"
 #include "sound_type.h"
+#include "string_func.h"
 #include "stringfilter_type.h"
 #include "strings_func.h"
 #include "widget_type.h"
@@ -29,7 +31,94 @@
 
 #include "table/sprites.h"
 
+#include <charconv>
+
 #include "safeguards.h"
+
+static std::vector<PickerCallbacks *> &GetPickerCallbacks()
+{
+	static std::vector<PickerCallbacks *> callbacks;
+	return callbacks;
+}
+
+PickerCallbacks::PickerCallbacks(const std::string &ini_group) : ini_group(ini_group)
+{
+	GetPickerCallbacks().push_back(this);
+}
+
+PickerCallbacks::~PickerCallbacks()
+{
+	auto &callbacks = GetPickerCallbacks();
+	callbacks.erase(std::find(callbacks.begin(), callbacks.end(), this));
+}
+
+/**
+ * Load favourites of a picker from config.
+ * @param ini IniFile to load to.
+ * @param callbacks Picker to load.
+ */
+static void PickerLoadConfig(const IniFile &ini, PickerCallbacks &callbacks)
+{
+	const IniGroup *group = ini.GetGroup(callbacks.ini_group);
+	if (group == nullptr) return;
+
+	callbacks.saved.clear();
+	for (const IniItem &item : group->items) {
+		std::array<uint8_t, 4> grfid_buf;
+
+		std::string_view str = item.name;
+
+		/* Try reading "<grfid>|<localid>" */
+		auto grfid_pos = str.find('|');
+		if (grfid_pos == std::string_view::npos) continue;
+
+		std::string_view grfid_str = str.substr(0, grfid_pos);
+		if (!ConvertHexToBytes(grfid_str, grfid_buf)) continue;
+
+		str = str.substr(grfid_pos + 1);
+		uint32_t grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
+		uint16_t localid;
+		auto [ptr, err] = std::from_chars(str.data(), str.data() + str.size(), localid);
+
+		if (err == std::errc{} && ptr == str.data() + str.size()) {
+			callbacks.saved.insert({grfid, localid, 0, 0});
+		}
+	}
+}
+
+/**
+ * Save favourites of a picker to config.
+ * @param ini IniFile to save to.
+ * @param callbacks Picker to save.
+ */
+static void PickerSaveConfig(IniFile &ini, const PickerCallbacks &callbacks)
+{
+	IniGroup &group = ini.GetOrCreateGroup(callbacks.ini_group);
+	group.Clear();
+
+	for (const PickerItem &item : callbacks.saved) {
+		std::string key = fmt::format("{:08X}|{}", BSWAP32(item.grfid), item.local_id);
+		group.CreateItem(key);
+	}
+}
+
+/**
+ * Load favourites of all registered Pickers from config.
+ * @param ini IniFile to load to.
+ */
+void PickerLoadConfig(const IniFile &ini)
+{
+	for (auto *cb : GetPickerCallbacks()) PickerLoadConfig(ini, *cb);
+}
+
+/**
+ * Save favourites of all registered Pickers to config.
+ * @param ini IniFile to save to.
+ */
+void PickerSaveConfig(IniFile &ini)
+{
+	for (const auto *cb : GetPickerCallbacks()) PickerSaveConfig(ini, *cb);
+}
 
 /** Sort classes by id. */
 static bool ClassIDSorter(int const &a, int const &b)
@@ -109,7 +198,8 @@ void PickerWindow::ConstructWindow()
 	this->classes.SetFilterFuncs(_class_filter_funcs);
 
 	if (this->has_type_picker) {
-		/* Update used type information. */
+		/* Update used and saved type information. */
+		this->callbacks.saved = this->callbacks.UpdateSavedItems(this->callbacks.saved);
 		this->callbacks.used.clear();
 		this->callbacks.FillUsedItems(this->callbacks.used);
 
@@ -206,6 +296,9 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 				int y = (ir.Height() + ScaleSpriteTrad(PREVIEW_HEIGHT)) / 2 - ScaleSpriteTrad(PREVIEW_BOTTOM);
 
 				this->callbacks.DrawType(x, y, item.class_index, item.index);
+				if (this->callbacks.saved.contains(item)) {
+					DrawSprite(SPR_BLOT, PALETTE_TO_YELLOW, 0, 0);
+				}
 				if (this->callbacks.used.contains(item)) {
 					DrawSprite(SPR_BLOT, PALETTE_TO_GREEN, ir.Width() - GetSpriteSize(SPR_BLOT).width, 0);
 				}
@@ -251,6 +344,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 
 		case WID_PW_MODE_ALL:
 		case WID_PW_MODE_USED:
+		case WID_PW_MODE_SAVED:
 			ToggleBit(this->callbacks.mode, widget - WID_PW_MODE_ALL);
 			if (!this->IsWidgetDisabled(WID_PW_MODE_ALL) && HasBit(this->callbacks.mode, widget - WID_PW_MODE_ALL)) {
 				/* Enabling used or saved filters automatically enables all. */
@@ -264,6 +358,18 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 			int sel = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
 			assert(sel < (int)this->types.size());
 			const auto &item = this->types[sel];
+
+			if (_ctrl_pressed) {
+				auto it = this->callbacks.saved.find(item);
+				if (it == std::end(this->callbacks.saved)) {
+					this->callbacks.saved.insert(item);
+				} else {
+					this->callbacks.saved.erase(it);
+				}
+				this->InvalidateData(PFI_TYPE);
+				break;
+			}
+
 			if (this->callbacks.IsTypeAvailable(item.class_index, item.index)) {
 				this->callbacks.SetSelectedClass(item.class_index);
 				this->callbacks.SetSelectedType(item.index);
@@ -294,6 +400,7 @@ void PickerWindow::OnInvalidateData(int data, bool gui_scope)
 	if (this->has_type_picker) {
 		SetWidgetLoweredState(WID_PW_MODE_ALL, HasBit(this->callbacks.mode, PFM_ALL));
 		SetWidgetLoweredState(WID_PW_MODE_USED, HasBit(this->callbacks.mode, PFM_USED));
+		SetWidgetLoweredState(WID_PW_MODE_SAVED, HasBit(this->callbacks.mode, PFM_SAVED));
 	}
 }
 
@@ -346,9 +453,11 @@ void PickerWindow::BuildPickerClassList()
 	this->classes.reserve(count);
 
 	bool filter_used = HasBit(this->callbacks.mode, PFM_USED);
+	bool filter_saved = HasBit(this->callbacks.mode, PFM_SAVED);
 	for (int i = 0; i < count; i++) {
 		if (this->callbacks.GetClassName(i) == INVALID_STRING_ID) continue;
 		if (filter_used && std::none_of(std::begin(this->callbacks.used), std::end(this->callbacks.used), [i](const PickerItem &item) { return item.class_index == i; })) continue;
+		if (filter_saved && std::none_of(std::begin(this->callbacks.saved), std::end(this->callbacks.saved), [i](const PickerItem &item) { return item.class_index == i; })) continue;
 		this->classes.emplace_back(i);
 	}
 
@@ -396,14 +505,26 @@ void PickerWindow::BuildPickerTypeList()
 	if (!this->types.NeedRebuild()) return;
 
 	this->types.clear();
+
 	bool show_all = HasBit(this->callbacks.mode, PFM_ALL);
 	bool filter_used = HasBit(this->callbacks.mode, PFM_USED);
+	bool filter_saved = HasBit(this->callbacks.mode, PFM_SAVED);
 	int cls_id = this->callbacks.GetSelectedClass();
 
 	if (filter_used) {
-		/* Showing used items. */
+		/* Showing used items. May also be filtered by saved items. */
 		this->types.reserve(this->callbacks.used.size());
 		for (const PickerItem &item : this->callbacks.used) {
+			if (!show_all && item.class_index != cls_id) continue;
+			if (this->callbacks.GetTypeName(item.class_index, item.index) == INVALID_STRING_ID) continue;
+			this->types.emplace_back(item);
+		}
+	} else if (filter_saved) {
+		/* Showing only saved items. */
+		this->types.reserve(this->callbacks.saved.size());
+		for (const PickerItem &item : this->callbacks.saved) {
+			/* The used list may contain items that aren't currently loaded, skip these. */
+			if (item.class_index == -1) continue;
 			if (!show_all && item.class_index != cls_id) continue;
 			if (this->callbacks.GetTypeName(item.class_index, item.index) == INVALID_STRING_ID) continue;
 			this->types.emplace_back(item);
@@ -506,6 +627,7 @@ std::unique_ptr<NWidgetBase> MakePickerTypeWidgets()
 				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_ALL), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_PICKER_MODE_ALL, STR_PICKER_MODE_ALL_TOOLTIP),
 					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_USED), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_PICKER_MODE_USED, STR_PICKER_MODE_USED_TOOLTIP),
+					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_SAVED), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_PICKER_MODE_SAVED, STR_PICKER_MODE_SAVED_TOOLTIP),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_PW_TYPE_SCROLL),
