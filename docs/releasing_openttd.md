@@ -7,12 +7,12 @@ This guide is for OpenTTD developers/maintainers, to release a new version of Op
 * If this is a beta version release, skip this step.
 
 * If this is an RC1 (first Release Candidate) build, create a new branch `release/nn` where `nn` is the major version number, then apply changes similar to [PR#9573](https://github.com/OpenTTD/OpenTTD/pull/9573). You also need to forwardport the changelog, as in [PR#10113](https://github.com/OpenTTD/OpenTTD/pull/10113).
-  * Update CMakeLists.txt
-  * Add a new (empty) AI compatibility script in bin/ai/
-  * Add the new version to CheckAPIVersion in src/ai/ai_info.cpp + src/game/game_info.cpp
-  * Add the new version to src/script/api/ai_changelog.hpp + src/script/api/game_changelog.hpp
-  * Update the version of regression in bin/ai/regression/regression_info.nut
-  * Add a note to src/saveload/saveload.h about which savegame version is used in the branch.
+  * Update `CMakeLists.txt`
+  * Add a new (empty) AI compatibility script in `bin/ai/`
+  * Add the new version to CheckAPIVersion in `src/ai/ai_info.cpp` and `src/game/game_info.cpp`
+  * Add the new version to `src/script/api/ai_changelog.hpp` and `src/script/api/game_changelog.hpp`
+  * Update the version of regression in `bin/ai/regression/regression_info.nut`
+  * Add a note to `src/saveload/saveload.h` about which savegame version is used in the branch.
 
 * If this is a later RC or release build and the release branch already exists, you'll need to backport fixes and language from master to this branch, which were merged after the branch diverged from master. You can use these two helper scripts: https://github.com/OpenTTD/scripts/tree/main/backport
 
