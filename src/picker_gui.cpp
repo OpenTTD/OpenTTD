@@ -107,6 +107,8 @@ void PickerWindow::ConstructWindow()
 	this->classes.SetFilterFuncs(_class_filter_funcs);
 
 	if (this->has_type_picker) {
+		SetWidgetDisabledState(WID_PW_MODE_ALL, !this->callbacks.HasClassChoice());
+
 		this->GetWidget<NWidgetCore>(WID_PW_TYPE_ITEM)->tool_tip = this->callbacks.GetTypeTooltip();
 
 		auto *matrix = this->GetWidget<NWidgetMatrix>(WID_PW_TYPE_MATRIX);
@@ -228,7 +230,9 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 			auto it = vscroll->GetScrolledItemFromWidget(this->classes, pt.y, this, WID_PW_CLASS_LIST);
 			if (it == this->classes.end()) return;
 
-			if (this->callbacks.GetSelectedClass() != *it) {
+			if (this->callbacks.GetSelectedClass() != *it || HasBit(this->callbacks.mode, PFM_ALL)) {
+				ClrBit(this->callbacks.mode, PFM_ALL); // Disable showing all.
+				SetWidgetLoweredState(WID_PW_MODE_ALL, false);
 				this->callbacks.SetSelectedClass(*it);
 				this->InvalidateData(PFI_TYPE | PFI_POSITION | PFI_VALIDATE);
 			}
@@ -236,6 +240,12 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 			CloseWindowById(WC_SELECT_STATION, 0);
 			break;
 		}
+
+		case WID_PW_MODE_ALL:
+			ToggleBit(this->callbacks.mode, widget - WID_PW_MODE_ALL);
+			SetWidgetLoweredState(widget, HasBit(this->callbacks.mode, widget - WID_PW_MODE_ALL));
+			this->InvalidateData(PFI_TYPE | PFI_POSITION);
+			break;
 
 		/* Type Picker */
 		case WID_PW_TYPE_ITEM: {
@@ -268,6 +278,10 @@ void PickerWindow::OnInvalidateData(int data, bool gui_scope)
 	this->BuildPickerTypeList();
 	if ((data & PFI_VALIDATE) != 0) this->EnsureSelectedTypeIsValid();
 	if ((data & PFI_POSITION) != 0) this->EnsureSelectedTypeIsVisible();
+
+	if (this->has_type_picker) {
+		SetWidgetLoweredState(WID_PW_MODE_ALL, HasBit(this->callbacks.mode, PFM_ALL));
+	}
 }
 
 EventState PickerWindow::OnHotkey(int hotkey)
@@ -358,9 +372,23 @@ void PickerWindow::BuildPickerTypeList()
 	if (!this->types.NeedRebuild()) return;
 
 	this->types.clear();
+	bool show_all = HasBit(this->callbacks.mode, PFM_ALL);
 	int cls_id = this->callbacks.GetSelectedClass();
 
-	{
+	if (show_all) {
+		/* Reserve enough space for everything. */
+		int total = 0;
+		for (int class_index : this->classes) total += this->callbacks.GetTypeCount(class_index);
+		this->types.reserve(total);
+		/* Add types in all classes. */
+		for (int class_index : this->classes) {
+			int count = this->callbacks.GetTypeCount(class_index);
+			for (int i = 0; i < count; i++) {
+				if (this->callbacks.GetTypeName(class_index, i) == INVALID_STRING_ID) continue;
+				this->types.emplace_back(this->callbacks.GetPickerItem(class_index, i));
+			}
+		}
+	} else {
 		/* Add types in only the selected class. */
 		if (cls_id >= 0 && cls_id < this->callbacks.GetClassCount()) {
 			int count = this->callbacks.GetTypeCount(cls_id);
@@ -441,6 +469,9 @@ std::unique_ptr<NWidgetBase> MakePickerTypeWidgets()
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 					NWidget(WWT_EDITBOX, COLOUR_DARK_GREEN, WID_PW_TYPE_FILTER), SetPadding(2), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+				EndContainer(),
+				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_ALL), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_PICKER_MODE_ALL, STR_PICKER_MODE_ALL_TOOLTIP),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_PW_TYPE_SCROLL),
