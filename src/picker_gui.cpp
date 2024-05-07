@@ -27,6 +27,8 @@
 
 #include "widgets/picker_widget.h"
 
+#include "table/sprites.h"
+
 #include "safeguards.h"
 
 /** Sort classes by id. */
@@ -107,6 +109,10 @@ void PickerWindow::ConstructWindow()
 	this->classes.SetFilterFuncs(_class_filter_funcs);
 
 	if (this->has_type_picker) {
+		/* Update used type information. */
+		this->callbacks.used.clear();
+		this->callbacks.FillUsedItems(this->callbacks.used);
+
 		SetWidgetDisabledState(WID_PW_MODE_ALL, !this->callbacks.HasClassChoice());
 
 		this->GetWidget<NWidgetCore>(WID_PW_TYPE_ITEM)->tool_tip = this->callbacks.GetTypeTooltip();
@@ -200,6 +206,9 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 				int y = (ir.Height() + ScaleSpriteTrad(PREVIEW_HEIGHT)) / 2 - ScaleSpriteTrad(PREVIEW_BOTTOM);
 
 				this->callbacks.DrawType(x, y, item.class_index, item.index);
+				if (this->callbacks.used.contains(item)) {
+					DrawSprite(SPR_BLOT, PALETTE_TO_GREEN, ir.Width() - GetSpriteSize(SPR_BLOT).width, 0);
+				}
 			}
 
 			if (!this->callbacks.IsTypeAvailable(item.class_index, item.index)) {
@@ -232,7 +241,6 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 
 			if (this->callbacks.GetSelectedClass() != *it || HasBit(this->callbacks.mode, PFM_ALL)) {
 				ClrBit(this->callbacks.mode, PFM_ALL); // Disable showing all.
-				SetWidgetLoweredState(WID_PW_MODE_ALL, false);
 				this->callbacks.SetSelectedClass(*it);
 				this->InvalidateData(PFI_TYPE | PFI_POSITION | PFI_VALIDATE);
 			}
@@ -242,9 +250,13 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 		}
 
 		case WID_PW_MODE_ALL:
+		case WID_PW_MODE_USED:
 			ToggleBit(this->callbacks.mode, widget - WID_PW_MODE_ALL);
-			SetWidgetLoweredState(widget, HasBit(this->callbacks.mode, widget - WID_PW_MODE_ALL));
-			this->InvalidateData(PFI_TYPE | PFI_POSITION);
+			if (!this->IsWidgetDisabled(WID_PW_MODE_ALL) && HasBit(this->callbacks.mode, widget - WID_PW_MODE_ALL)) {
+				/* Enabling used or saved filters automatically enables all. */
+				SetBit(this->callbacks.mode, PFM_ALL);
+			}
+			this->InvalidateData(PFI_CLASS | PFI_TYPE | PFI_POSITION);
 			break;
 
 		/* Type Picker */
@@ -281,6 +293,7 @@ void PickerWindow::OnInvalidateData(int data, bool gui_scope)
 
 	if (this->has_type_picker) {
 		SetWidgetLoweredState(WID_PW_MODE_ALL, HasBit(this->callbacks.mode, PFM_ALL));
+		SetWidgetLoweredState(WID_PW_MODE_USED, HasBit(this->callbacks.mode, PFM_USED));
 	}
 }
 
@@ -332,8 +345,10 @@ void PickerWindow::BuildPickerClassList()
 	this->classes.clear();
 	this->classes.reserve(count);
 
+	bool filter_used = HasBit(this->callbacks.mode, PFM_USED);
 	for (int i = 0; i < count; i++) {
 		if (this->callbacks.GetClassName(i) == INVALID_STRING_ID) continue;
+		if (filter_used && std::none_of(std::begin(this->callbacks.used), std::end(this->callbacks.used), [i](const PickerItem &item) { return item.class_index == i; })) continue;
 		this->classes.emplace_back(i);
 	}
 
@@ -366,6 +381,15 @@ void PickerWindow::EnsureSelectedClassIsVisible()
 	this->GetScrollbar(WID_PW_CLASS_SCROLL)->ScrollTowards(pos);
 }
 
+void PickerWindow::RefreshUsedTypeList()
+{
+	if (!this->has_type_picker) return;
+
+	this->callbacks.used.clear();
+	this->callbacks.FillUsedItems(this->callbacks.used);
+	this->InvalidateData(PFI_TYPE);
+}
+
 /** Builds the filter list of types. */
 void PickerWindow::BuildPickerTypeList()
 {
@@ -373,9 +397,18 @@ void PickerWindow::BuildPickerTypeList()
 
 	this->types.clear();
 	bool show_all = HasBit(this->callbacks.mode, PFM_ALL);
+	bool filter_used = HasBit(this->callbacks.mode, PFM_USED);
 	int cls_id = this->callbacks.GetSelectedClass();
 
-	if (show_all) {
+	if (filter_used) {
+		/* Showing used items. */
+		this->types.reserve(this->callbacks.used.size());
+		for (const PickerItem &item : this->callbacks.used) {
+			if (!show_all && item.class_index != cls_id) continue;
+			if (this->callbacks.GetTypeName(item.class_index, item.index) == INVALID_STRING_ID) continue;
+			this->types.emplace_back(item);
+		}
+	} else if (show_all) {
 		/* Reserve enough space for everything. */
 		int total = 0;
 		for (int class_index : this->classes) total += this->callbacks.GetTypeCount(class_index);
@@ -472,6 +505,7 @@ std::unique_ptr<NWidgetBase> MakePickerTypeWidgets()
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_ALL), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_PICKER_MODE_ALL, STR_PICKER_MODE_ALL_TOOLTIP),
+					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_USED), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_PICKER_MODE_USED, STR_PICKER_MODE_USED_TOOLTIP),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_PW_TYPE_SCROLL),

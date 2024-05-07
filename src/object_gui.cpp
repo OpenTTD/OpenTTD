@@ -9,11 +9,13 @@
 
 #include "stdafx.h"
 #include "command_func.h"
+#include "company_func.h"
 #include "hotkeys.h"
 #include "newgrf.h"
 #include "newgrf_object.h"
 #include "newgrf_text.h"
 #include "object.h"
+#include "object_base.h"
 #include "picker_gui.h"
 #include "sound_func.h"
 #include "strings_func.h"
@@ -88,6 +90,16 @@ public:
 			DrawOrigTileSeqInGUI(x, y, dts, PAL_NONE);
 		} else {
 			DrawNewObjectTileInGUI(x, y, spec, std::min<int>(_object_gui.sel_view, spec->views - 1));
+		}
+	}
+
+	void FillUsedItems(std::set<PickerItem> &items) override
+	{
+		for (const Object *o : Object::Iterate()) {
+			if (GetTileOwner(o->location.tile) != _current_company) continue;
+			const ObjectSpec *spec = ObjectSpec::Get(o->type);
+			if (spec == nullptr || spec->class_index == INVALID_OBJECT_CLASS || !spec->IsEverAvailable()) continue;
+			items.insert(GetPickerItem(spec));
 		}
 	}
 

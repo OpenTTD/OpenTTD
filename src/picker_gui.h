@@ -16,6 +16,7 @@
 #include "strings_type.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_window.h"
 #include "window_gui.h"
 #include "window_type.h"
 
@@ -74,6 +75,9 @@ public:
 	/** Draw preview image of an item. */
 	virtual void DrawType(int x, int y, int cls_id, int id) const = 0;
 
+	/** Fill a set with all items that are used by the current player. */
+	virtual void FillUsedItems(std::set<PickerItem> &items) = 0;
+
 	Listing class_last_sorting = { false, 0 }; ///< Default sorting of #PickerClassList.
 	Filtering class_last_filtering = { false, 0 }; ///< Default filtering of #PickerClassList.
 
@@ -81,6 +85,8 @@ public:
 	Filtering type_last_filtering = { false, 0 }; ///< Default filtering of #PickerTypeList.
 
 	uint8_t mode = 0; ///< Bitmask of \c PickerFilterModes.
+
+	std::set<PickerItem> used; ///< Set of items used in the current game by the current company.
 };
 
 /** Helper for PickerCallbacks when the class system is based on NewGRFClass. */
@@ -108,6 +114,7 @@ public:
 	}
 };
 
+
 struct PickerFilterData : StringFilter {
 	const PickerCallbacks *callbacks; ///< Callbacks for filter functions to access to callbacks.
 };
@@ -119,6 +126,7 @@ class PickerWindow : public PickerWindowBase {
 public:
 	enum PickerFilterModes {
 		PFM_ALL = 0, ///< Show all classes.
+		PFM_USED = 1, ///< Show used types.
 	};
 
 	enum PickerFilterInvalidation {
@@ -171,12 +179,17 @@ private:
 	PickerFilterData type_string_filter;
 	QueryString type_editbox; ///< Filter editbox
 
+	void RefreshUsedTypeList();
 	void BuildPickerTypeList();
 	void EnsureSelectedTypeIsValid();
 	void EnsureSelectedTypeIsVisible();
 
 	IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
 		this->SetDirty();
+	}};
+
+	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::seconds(3), [this](auto) {
+		RefreshUsedTypeList();
 	}};
 };
 
