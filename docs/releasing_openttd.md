@@ -7,7 +7,7 @@ This guide is for OpenTTD developers/maintainers, to release a new version of Op
 * If this is a beta version release, skip this step.
 
 * If this is an RC1 (first Release Candidate) build, create a new branch `release/nn` where `nn` is the major version number, then apply changes similar to [PR#9573](https://github.com/OpenTTD/OpenTTD/pull/9573). You also need to forwardport the changelog, as in [PR#10113](https://github.com/OpenTTD/OpenTTD/pull/10113).
-  * Update `CMakeLists.txt`
+  * Update the version in `CMakeLists.txt` in the master branch, heading for the next major release, e.g. from 14.0 to 15.0.
   * Add a new (empty) AI compatibility script in `bin/ai/`
   * Add the new version to CheckAPIVersion in `src/ai/ai_info.cpp` and `src/game/game_info.cpp`
   * Add the new version to `src/script/api/ai_changelog.hpp` and `src/script/api/game_changelog.hpp`
@@ -15,6 +15,8 @@ This guide is for OpenTTD developers/maintainers, to release a new version of Op
   * Add a note to `src/saveload/saveload.h` about which savegame version is used in the branch.
 
 * If this is a later RC or release build and the release branch already exists, you'll need to backport fixes and language from master to this branch, which were merged after the branch diverged from master. You can use these two helper scripts: https://github.com/OpenTTD/scripts/tree/main/backport
+
+* If this is a maintenance release, update the version in `CMakeLists.txt` in the release branch, e.g. from 14.0 to 14.1.
 
 ## Step 1: Prepare changelog documentation
 
@@ -36,9 +38,10 @@ This guide is for OpenTTD developers/maintainers, to release a new version of Op
 
 ## Step 3: Make the actual OpenTTD release
 
-1. Go to https://github.com/OpenTTD/OpenTTD/releases/new and create a new tag matching the release number. For the body of the release, copy in the changelog. "Set as a pre-release" for a beta or RC.
-2. Wait for the OpenTTD release workflow to be complete.
-3. If this is a full release:
+1. Confirm that the version in `CMakeLists.txt` matches the intended release version.
+2. Go to https://github.com/OpenTTD/OpenTTD/releases/new and create a new tag matching the release number. For the body of the release, copy in the changelog. "Set as a pre-release" for a beta or RC.
+3. Wait for the OpenTTD release workflow to be complete.
+4. If this is a full release:
    * for `Steam`: under Steamworks -> SteamPipe -> Builds, set the "testing" branch live on the "default" branch. This will request 2FA validation.
    * for `GOG`: under Builds, "Publish" the freshly uploaded builds to `Master`, `GOG-use only` and `Testing`.
    * for `Microsoft Store`: ask orudge to publish the new release.
