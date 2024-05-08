@@ -42,6 +42,20 @@ CargoTypes _standard_cargo_mask;
 static std::vector<CargoLabel> _default_cargo_labels;
 
 /**
+ * Default cargo translation for upto version 7 NewGRFs.
+ * This maps the original 12 cargo slots to their original label. If a climate dependent cargo is not present it will
+ * map to CT_INVALID. For default cargoes this ends up as a 1:1 mapping via climate slot -> label -> cargo ID.
+ */
+static std::array<CargoLabel, 12> _v7_cargo_labels;
+
+/**
+ * Default cargo translation for version 8+ NewGRFs.
+ * This maps the 32 "bitnum" cargo slots to their original label. If a bitnum is not present it will
+ * map to CT_INVALID.
+ */
+static std::array<CargoLabel, 32> _v8_cargo_labels;
+
+/**
  * Set up the default cargo types for the given landscape type.
  * @param l Landscape
  */
@@ -51,6 +65,8 @@ void SetupCargoForClimate(LandscapeID l)
 
 	_cargo_mask = 0;
 	_default_cargo_labels.clear();
+	_v7_cargo_labels.fill(CT_INVALID);
+	_v8_cargo_labels.fill(CT_INVALID);
 
 	/* Copy from default cargo by label or index. */
 	auto insert = std::begin(CargoSpec::array);
@@ -75,6 +91,8 @@ void SetupCargoForClimate(LandscapeID l)
 		if (insert->IsValid()) {
 			SetBit(_cargo_mask, insert->Index());
 			_default_cargo_labels.push_back(insert->label);
+			_v7_cargo_labels[insert->Index()] = insert->label;
+			_v8_cargo_labels[insert->bitnum] = insert->label;
 		}
 		++insert;
 	}
@@ -83,6 +101,17 @@ void SetupCargoForClimate(LandscapeID l)
 	std::fill(insert, std::end(CargoSpec::array), CargoSpec{});
 
 	BuildCargoLabelMap();
+}
+
+/**
+ * Get default cargo translation table for a NewGRF, used if the NewGRF does not provide its own.
+ * @param grf_version GRF version of translation table.
+ * @return Default translation table for GRF version.
+ */
+std::span<const CargoLabel> GetDefaultCargoTranslationTable(uint8_t grf_version)
+{
+	if (grf_version < 8) return _v7_cargo_labels;
+	return _v8_cargo_labels;
 }
 
 /**
@@ -128,23 +157,6 @@ Dimension GetLargestCargoIconSize()
 		size = maxdim(size, GetSpriteSize(cs->GetCargoIcon()));
 	}
 	return size;
-}
-
-/**
- * Find the CargoID of a 'bitnum' value.
- * @param bitnum 'bitnum' to find.
- * @return First CargoID with the given bitnum, or #INVALID_CARGO if not found or if the provided \a bitnum is invalid.
- */
-CargoID GetCargoIDByBitnum(uint8_t bitnum)
-{
-	if (bitnum == INVALID_CARGO_BITNUM) return INVALID_CARGO;
-
-	for (const CargoSpec *cs : CargoSpec::Iterate()) {
-		if (cs->bitnum == bitnum) return cs->Index();
-	}
-
-	/* No matching label was found, so it is invalid */
-	return INVALID_CARGO;
 }
 
 /**

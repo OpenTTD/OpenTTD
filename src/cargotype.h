@@ -205,7 +205,6 @@ extern CargoTypes _standard_cargo_mask;
 void SetupCargoForClimate(LandscapeID l);
 bool IsDefaultCargo(CargoID cid);
 void BuildCargoLabelMap();
-CargoID GetCargoIDByBitnum(uint8_t bitnum);
 
 inline CargoID GetCargoIDByLabel(CargoLabel label)
 {
