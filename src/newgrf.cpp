@@ -1153,15 +1153,10 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				if (ctype == 0xFF) {
 					/* 0xFF is specified as 'use first refittable' */
 					ei->cargo_type = INVALID_CARGO;
-				} else if (_cur.grffile->grf_version >= 8) {
+				} else {
 					/* Use translated cargo. Might result in INVALID_CARGO (first refittable), if cargo is not defined. */
 					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
-				} else if (ctype < NUM_CARGO) {
-					/* Use untranslated cargo. */
-					ei->cargo_type = ctype;
-				} else {
-					ei->cargo_type = INVALID_CARGO;
-					GrfMsg(2, "RailVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
+					if (ei->cargo_type == INVALID_CARGO) GrfMsg(2, "RailVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
 				ei->cargo_label = CT_INVALID;
 				break;
@@ -1415,15 +1410,10 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				if (ctype == 0xFF) {
 					/* 0xFF is specified as 'use first refittable' */
 					ei->cargo_type = INVALID_CARGO;
-				} else if (_cur.grffile->grf_version >= 8) {
+				} else {
 					/* Use translated cargo. Might result in INVALID_CARGO (first refittable), if cargo is not defined. */
 					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
-				} else if (ctype < NUM_CARGO) {
-					/* Use untranslated cargo. */
-					ei->cargo_type = ctype;
-				} else {
-					ei->cargo_type = INVALID_CARGO;
-					GrfMsg(2, "RailVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
+					if (ei->cargo_type == INVALID_CARGO) GrfMsg(2, "RoadVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
 				ei->cargo_label = CT_INVALID;
 				break;
@@ -1611,15 +1601,10 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				if (ctype == 0xFF) {
 					/* 0xFF is specified as 'use first refittable' */
 					ei->cargo_type = INVALID_CARGO;
-				} else if (_cur.grffile->grf_version >= 8) {
+				} else {
 					/* Use translated cargo. Might result in INVALID_CARGO (first refittable), if cargo is not defined. */
 					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
-				} else if (ctype < NUM_CARGO) {
-					/* Use untranslated cargo. */
-					ei->cargo_type = ctype;
-				} else {
-					ei->cargo_type = INVALID_CARGO;
-					GrfMsg(2, "ShipVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
+					if (ei->cargo_type == INVALID_CARGO) GrfMsg(2, "ShipVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
 				ei->cargo_label = CT_INVALID;
 				break;
@@ -5520,24 +5505,6 @@ static CargoID TranslateCargo(uint8_t feature, uint8_t ctype)
 	if ((feature == GSF_STATIONS || feature == GSF_ROADSTOPS) && ctype == 0xFE) return SpriteGroupCargo::SG_DEFAULT_NA;
 	if (ctype == 0xFF) return SpriteGroupCargo::SG_PURCHASE;
 
-	if (_cur.grffile->cargo_list.empty()) {
-		/* No cargo table, so use bitnum values */
-		if (ctype >= 32) {
-			GrfMsg(1, "TranslateCargo: Cargo bitnum {} out of range (max 31), skipping.", ctype);
-			return INVALID_CARGO;
-		}
-
-		for (const CargoSpec *cs : CargoSpec::Iterate()) {
-			if (cs->bitnum == ctype) {
-				GrfMsg(6, "TranslateCargo: Cargo bitnum {} mapped to cargo type {}.", ctype, cs->Index());
-				return cs->Index();
-			}
-		}
-
-		GrfMsg(5, "TranslateCargo: Cargo bitnum {} not available in this climate, skipping.", ctype);
-		return INVALID_CARGO;
-	}
-
 	/* Check if the cargo type is out of bounds of the cargo translation table */
 	if (ctype >= _cur.grffile->cargo_list.size()) {
 		GrfMsg(1, "TranslateCargo: Cargo type {} out of range (max {}), skipping.", ctype, (unsigned int)_cur.grffile->cargo_list.size() - 1);
@@ -7028,6 +6995,13 @@ static void GRFInfo(ByteReader &buf)
 
 	_cur.grffile->grf_version = version;
 	_cur.grfconfig->status = _cur.stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
+
+	/* Install the default cargo translation table. */
+	if (_cur.stage < GLS_RESERVE && _cur.grffile->cargo_list.empty()) {
+		auto default_table = GetDefaultCargoTranslationTable(version);
+		_cur.grffile->cargo_list.assign(default_table.begin(), default_table.end());
+		GrfMsg(3, "GRFInfo: Installing default GRFv{} translation table for {:08X}", version, BSWAP32(grfid));
+	}
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
 	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, BSWAP32(grfid), name, (_cur.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur.grfconfig->version);
@@ -8870,14 +8844,9 @@ static void BuildCargoTranslationMap()
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		if (!cs->IsValid()) continue;
 
-		if (_cur.grffile->cargo_list.empty()) {
-			/* Default translation table, so just a straight mapping to bitnum */
-			_cur.grffile->cargo_map[cs->Index()] = cs->bitnum;
-		} else {
-			/* Check the translation table for this cargo's label */
-			int idx = find_index(_cur.grffile->cargo_list, {cs->label});
-			if (idx >= 0) _cur.grffile->cargo_map[cs->Index()] = idx;
-		}
+		/* Check the translation table for this cargo's label */
+		int idx = find_index(_cur.grffile->cargo_list, {cs->label});
+		if (idx >= 0) _cur.grffile->cargo_map[cs->Index()] = idx;
 	}
 }
 
