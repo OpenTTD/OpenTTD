@@ -151,6 +151,7 @@ struct IConsoleWindow : Window
 	static size_t scroll;
 	int line_height;   ///< Height of one line of text in the console.
 	int line_offset;
+	int cursor_width;
 
 	IConsoleWindow() : Window(&_console_window_desc)
 	{
@@ -164,6 +165,7 @@ struct IConsoleWindow : Window
 	{
 		this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.hsep_normal;
 		this->line_offset = GetStringBoundingBox("] ").width + WidgetDimensions::scaled.frametext.left;
+		this->cursor_width = GetCharacterWidth(FS_NORMAL, '_');
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -204,7 +206,7 @@ struct IConsoleWindow : Window
 			if (ypos < 0) break;
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
-		int delta = this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH;
+		int delta = this->width - WidgetDimensions::scaled.frametext.right - cursor_width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
 			DrawString(WidgetDimensions::scaled.frametext.left, right, this->height - this->line_height, "]", (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
 			delta = 0;
