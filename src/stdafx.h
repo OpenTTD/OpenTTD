@@ -10,15 +10,6 @@
 #ifndef STDAFX_H
 #define STDAFX_H
 
-#if defined(_WIN32)
-	/* MinGW defaults to Windows 7 if none of these are set, and they must be set before any MinGW header is included */
-#	define NTDDI_VERSION NTDDI_WINXP // Windows XP
-#	define _WIN32_WINNT 0x501        // Windows XP
-#	define _WIN32_WINDOWS 0x501      // Windows XP
-#	define WINVER 0x0501             // Windows XP
-#	define _WIN32_IE_ 0x0600         // 6.0 (XP+)
-#endif
-
 #ifdef _MSC_VER
 	/* Stop Microsoft (and clang-cl) compilers from complaining about potentially-unsafe/potentially-non-standard functions */
 #	define _CRT_SECURE_NO_DEPRECATE
