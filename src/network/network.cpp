@@ -939,12 +939,6 @@ bool NetworkServerStart()
 	return true;
 }
 
-void NetworkServerSendWelcome( void )
-{
-	/* welcome possibly still connected admins - this can only happen on a dedicated server. */
-	if (_network_dedicated) ServerNetworkAdminSocketHandler::WelcomeAll();
-}
-
 /**
  * Perform tasks when the server is started. This consists of things
  * like putting the server's client in a valid company and resetting the restart time.
@@ -972,6 +966,9 @@ void NetworkOnGameStart()
 		}
 
 		ShowClientList();
+	} else {
+		/* welcome possibly still connected admins - this can only happen on a dedicated server. */
+		ServerNetworkAdminSocketHandler::WelcomeAll();
 	}
 }
 

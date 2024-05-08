@@ -1202,10 +1202,6 @@ void SwitchToMode(SwitchMode new_mode)
 
 		default: NOT_REACHED();
 	}
-
-	if (_is_network_server) {
-		NetworkServerSendWelcome();
-	}
 }
 
 
