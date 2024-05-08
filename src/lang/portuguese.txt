@@ -2486,6 +2486,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :O seu nome de j
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Ações administrativas para executar a este cliente
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Ações administrativas para executar a esta empresa
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Juntar-se a esta empresa
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Autorizar este cliente a ingressar na sua empresa
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Enviar uma mensagem a este jogador
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Enviar uma mensagem a todos os jogadores desta empresa
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Enviar uma mensagem a todos os espectadores

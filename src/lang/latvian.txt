@@ -957,6 +957,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Skaļums
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Skaņas efekti
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Mūzika
 
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Naudas vienības
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Naudas vienību izvēle
@@ -1054,6 +1055,7 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Atzīmē
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias fonti
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Atzīmējiet šo izvēli, ja vēlaties mainīt fontus ar anti-alias izmēru.
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatizēta aptauja
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Piedalieties automatizētā aptaujā
@@ -1082,6 +1084,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Pamata m
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Atlasīt lietošanai pamata mūzikas kopu
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Papildinformācija par pamata mūzikas kopu
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Iegūt saturu
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Pārbaudīt, jauna satura lejupielādi, vai atjauninājumu
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(nav instalētu spraudņu, ko integrēt ar sociālajām platformām)
 
@@ -1553,7 +1557,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industriju blī
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Iestatiet, cik industrijas jāģenerē un kāds līmenis jāuztur spēles laikā
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Naftas industriju maksimālais attālums no kartes malas: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limits, cik tālu no kartes malām drīkst taisīt naftas pārstrādes rūpnīcas un un naftas ieguves platformas. Uz salu kartēm tas nodrošina, ka šīs konstrukcijas tiek būvētas piekrastēs. Uz kartēm, kas ir lielākas par 256 lauciņiem šī vērtība tiek palielināta.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limits, cik tālu no kartes malām drīkst taisīt naftas pārstrādes rūpnīcas un un naftas ieguves platformas. Uz salu kartēm tas nodrošina, ka šīs konstrukcijas tiek būvētas piekrastēs. Uz kartēm, kas ir lielākas par 256 lauciņiem šī vērtība tiek palielināta
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniega līnijas augstums: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Izvēlieties, kādā augstumā sākas sniegs subarktiskajā ainavā. Sniegs ietekmē arī nozares ražošanas un pilsētu izaugsmi. Var mainīt tikai, izmantojot scenāriju redaktoru, vai citādi aprēķināt, izmantojot "sniega segumu"
@@ -1567,7 +1571,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Izvēlieties ap
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Apvidus nelīdzenums: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Izvēlieties pauguru formu un skaitu. Gludās ainavās ir mazāk, bet platāku pauguru, savukārt nelīdzenās ainavās ir vairāk, mazāku kalnu.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Izvēlieties pauguru formu un skaitu. Gludās ainavās ir mazāk, bet platāku pauguru, savukārt nelīdzenās ainavās ir vairāk, mazāku kalnu
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ļoti gluda
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Gluda
@@ -1575,7 +1579,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Nelīdzena
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Ļoti nelīdzena
 
 STR_CONFIG_SETTING_VARIETY                                      :Dažādības sadalījums: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Izvēlieties, vai kartē ir gan kalni, gan līdzenas vietas. Jo augstāka atšķirība, jo lielākas atšķirības kalnu un līdzenu apgabalu augstumā.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Izvēlieties, vai kartē ir gan kalni, gan līdzenas vietas. Jo augstāka atšķirība, jo lielākas atšķirības kalnu un līdzenu apgabalu augstumā
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Upju daudzums: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Izvēlieties, cik daudz upju ģenerēt
@@ -1814,7 +1818,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Cik daudz atmi�
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Apkopju starplaiki procentos: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Ja tas ir ieslēgts, transportlīdzekļi mēģina veikt apkopi, kad to uzticamība samazinās par noteiktu procentuālo daļu no maksimālās uzticamības.{}{}Piemēram, ja transportlīdzekļa maksimālā uzticamība ir 90% un apkopes intervāls ir 20%, transportlīdzeklis mēģinās veikt apkopi, kad tas sasniedz 72% ticamību.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Ja tas ir ieslēgts, transportlīdzekļi mēģina veikt apkopi, kad to uzticamība samazinās par noteiktu procentuālo daļu no maksimālās uzticamības.{}{}Piemēram, ja transportlīdzekļa maksimālā uzticamība ir 90% un apkopes intervāls ir 20%, transportlīdzeklis mēģinās veikt apkopi, kad tas sasniedz 72% uzticamību
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Vilcienu apkopju noklusējuma starplaiks: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Izvēlēties jaunajiem sliežu transportlīdzekļiem apkopju noklusējuma starplaiku, ja tiem tas nav noteikts
@@ -1825,6 +1829,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Izvēlēties ja
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Kuģu apkopju noklusējuma starplaiks: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Izvēlēties jauniem kuģiem apkopju noklusējuma starplaiku, ja transportlīdzeklim tas nav noteikts
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Dien{P 0 a as nu}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Minūt{P 0 e es es}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :izslēgts
@@ -1833,7 +1840,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Aizliegt apkopi
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ja ieslēgts, transportlīdzekļiem netiek veikta apkope. Jo tie nebojājas
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Iekraušanas ātruma sods vilcieniem, kas ir garāki par staciju: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ja aktīs, vilcieni, kas ir pārāk gari stacijai, iekraujas lēnāk nekā vilcieni, kas atbilst stacijai. Šis iestatījums neietekmē ceļa meklēšanu.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ja aktīvs, vilcieni, kas ir pārāk gari stacijai, iekraujas lēnāk nekā vilcieni, kas atbilst stacijas izmēram. Šis iestatījums neietekmē ceļa meklēšanu.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ieslēgt vagonu ātruma ierobežojumus: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ja ieslēgts, var izmantot vagonu ātruma ierobežojumus, lai lemtu par vilcienu maksimālo ātrumu
@@ -1898,7 +1905,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Gads kad sāk d
 STR_CONFIG_SETTING_STARTING_YEAR                                :Sākuma gads: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Vērtēšanas beigu gads: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Spēles beigas gads (tiek izmantots rezultāta noteikšanai). Šī gada beigās uzņēmuma rezultāti tiek ierakstīti un uz ekrāna tiek parādīti labākie rezultāti, bet spēlētāji var turpināt spēlēt arī pēc šī datuma.{}Ja tas ir norādīts pirms spēles sākuma datuma, labākie rezultāti nekad netiek parādīti.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Spēles beigas gads (tiek izmantots rezultāta noteikšanai). Šī gada beigās uzņēmuma rezultāti tiek ierakstīti un uz ekrāna tiek parādīti labākie rezultāti, bet spēlētāji var turpināt spēlēt arī pēc šī datuma.{}Ja tas ir norādīts pirms spēles sākuma datuma, labākie rezultāti nekad netiek parādīti
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nekad
@@ -1959,7 +1966,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :atļauta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :atļauta, ar brīvi izvēlētu izkārtojumu
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Pilsētas kravu radīšana: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Cik daudz kravas rada pilsētu mājas, attiecībā pret kopējo pilsētas iedzīvotāju skaitu.{}Kvadrātisks pieaugums: divas reizes lielāka pilsēta rada četras reizes vairāk pasažieru.{}Lineārs pieaugums: divas reizes lielāka pilsēta rada divas reizes vairāk pasažieru.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Cik daudz kravas rada pilsētu mājas, attiecībā pret kopējo pilsētas iedzīvotāju skaitu.{}Kvadrātisks pieaugums: divas reizes lielāka pilsēta rada četras reizes vairāk pasažieru.{}Lineārs pieaugums: divas reizes lielāka pilsēta rada divas reizes vairāk pasažieru
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kvadrātisks (sākotnējais)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineārs
@@ -2000,7 +2007,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Izmantojamie augstākās izšķirtspējas spriti: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Ierobežojiet sprites maksimālo izšķirtspēju. Ierobežojot sprite izšķirtspēju, netiks izmantota augstas izšķirtspējas grafika, pat ja tā ir pieejama. Tas var palīdzēt saglabāt spēles vienotu izskatu, izmantojot GRF failu kombināciju ar augstas izšķirtspējas grafiku un bez tās.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Ierobežojiet sprites maksimālo izšķirtspēju. Ierobežojot sprite izšķirtspēju, netiks izmantota augstas izšķirtspējas grafika, pat ja tā ir pieejama. Tas var palīdzēt saglabāt spēles vienotu izskatu, izmantojot GRF failu kombināciju ar augstas izšķirtspējas grafiku un bez tās
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2482,6 +2489,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Jūsu spēlēt�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK} Administratīvās darbības, kas jāveic šim klientam
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administratīvās darbības, kuras jāveic šai kompānijai
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Pievienoties šai kompānijai
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Ļaut šim spēlētājam pievienoties jūsu uzņēmumam
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Sūtīt ziņu šim spēlētājam
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Sūtīt ziņu visiem šīs kompānijas spēlētājiem
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Sūtīt ziņu visiem skatītājiem
@@ -2584,6 +2592,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :saņemta neder�
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :nepareiza versija
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :šo vārdu jau lieto
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :nepareiza parole
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :nav atļauto sarakstā
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :VeiktKomandā nepareizs uzņēmums
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :serveris jūs izmeta
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :mēģināja blēdīties
@@ -2962,7 +2971,7 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Novietoj
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nejauši koki
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Stādīt nejaušus kokus visā ainavā
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normāls
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Stādiet atsevišķus kokus, velkot pāri ainavai.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Stādiet atsevišķus kokus, velkot pāri ainavai
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Birze
 STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Stādiet nelielus mežus, velkot pāri ainavai.
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Mežs
@@ -3182,7 +3191,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Kadru nomaiņas ātrums
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulācijas ātrums: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Spēles tikšķu skaits, ko simulēt vienā sekundē.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Spēles tikšķu skaits, ko simulēt vienā sekundē
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Grafikas kadru ātrums: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Sekundē renderēto video kadru skaits.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Pašreizējās spēles ātruma pakāpe: {DECIMAL}×
@@ -3375,8 +3384,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vai jū
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% pabeigti
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Pasaules radīšana
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Ainavu veidošana
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Upes radīšana
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Nelīdzena un akmeņaina apvidus radīšana
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Pilsētas veidošana
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Nozares veidošana
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekta radīšana
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Koka radīšana
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Iestatīt spēli
@@ -3723,7 +3735,7 @@ STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globāl�
 STR_STORY_BOOK_SPECTATOR                                        :Globālā stāstu grāmata
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :{NUM} lapa
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Pārlēkt uz specifisku lapu spiežot to zemāk esošajā sarakstā.
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Pārlēkt uz konkrētu lapu spiežot to zemāk esošajā sarakstā
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Iepriekšējā
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Doties uz iepriekšējo lapu
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Nākamā
@@ -4019,12 +4031,12 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupēti lida
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupas - klikšķināt uz grupas, lai iegūtu tās transportlīdzekļu sarakstu
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupas — klikšināt uz grupas, lai rādītu visus šīs grupas transportlīdzekļus. Vilkt un palaist grupas, lai sakārtotu hierarhiju
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikšķināt, lai izveidotu grupu
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Dzēst izvēlēto grupu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Pārdēvēt izvēlēto grupu
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Mainīt izvēlētās grupas krāsu
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK} Noklikšķiniet, lai aizsargātu šo grupu no globālās automātiskās aizstāšanas. Ctrl+Noklikšķiniet, lai aizsargātu arī apakšgrupas.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK} Klikšiniet, lai aizsargātu šo grupu no globālās automātiskās aizstāšanas. Ctrl+klikšķis, lai aizsargātu arī apakšgrupas
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Grupas dzēšana
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Vai tiešām vēlaties dzēst šo grupu un tās atvases (ja ir)?
@@ -4986,7 +4998,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nevar no
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nevar uzbūvēt uzņēmuma biroju...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nevar būvēt pilsētas
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nevar būvēt pilsētas...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nevar pārdēvēt pilsētu...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Šeit nevar būvēt jaunu pilsētu...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Nevar paplašināt pilsētu...
@@ -5274,6 +5286,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Mainiet 
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Transportlīdzekļi vēl nav pieejami
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Sākt jaunu spēli pēc {DATE_SHORT} vai izmantot NewGRF, kas nodrošina agrīnus transporta līdzekļus
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Pilsētā būvējami ceļu veidi nav pieejami
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Mainiet savu NewGRF konfigurāciju
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Pagaidām nav pieejami pilsētā būvējamie ceļu veidi
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Sāciet jaunu spēli pēc {DATE_SHORT} vai izmantojiet NewGRF, kas nodrošina agrīnus pilsētu būvējamus ceļu veidus
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Vilciens nevar šķērsot signālu briesmās...

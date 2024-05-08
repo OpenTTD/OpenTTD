@@ -2485,6 +2485,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Pelaajanimesi
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Tähän asiakkaaseen kohdistettavat ylläpitotoiminnot
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Tähän yhtiöön kohdistettavat ylläpitotoiminnot
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Liity tähän yhtiöön
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Salli tämän asiakkaan liittyä yhtiöösi
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Lähetä tälle pelaajalle viesti
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Lähetä viesti kaikille tämän yhtiön pelaajille
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Lähetä viesti kaikille katsojille

@@ -1083,6 +1083,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}기본 �
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}게임에 사용할 기본 배경 음악 세트를 선택하세요
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 배경 음악 세트에 대한 추가 정보를 봅니다.
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :콘텐츠 다운로드
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :다운로드할 신규 & 업데이트된 콘텐츠를 확인합니다
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(소셜 플랫폼과 연계할 수 있는 플러그인이 없음)
 
@@ -2484,6 +2486,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :접속자 이�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}관리자가 이 접속자에게 할 수 있는 기능입니다
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}관리자가 이 접속자에게 할 수 있는 기능입니다
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}여기에 참여합니다
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}이 접속자가 내 회사에 참여하는 것을 허용
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}이 플레이어에게 메시지를 보냅니다
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}이 회사에 참여 중인 모든 플레이어에게 메시지를 보냅니다
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}모든 관전자에게 메시지를 보냅니다

@@ -956,6 +956,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Volum
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efectes de so
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Música
 
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}{NBSP}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Moneda
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecció de la unitat monetària
@@ -1053,6 +1054,7 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marqueu 
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Aplica anti-àlies a les fonts
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marqueu aquesta casella per a fer servir tècniques d'anti-àlies a les fonts redimensionables.
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Sondeig automatitzat
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participa al sondeig automatitzat
@@ -1081,6 +1083,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunt 
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecciona el conjunt de peces de música base a utilitzar
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informació addicional sobre el conjunt de peces de música base
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Descarrega contingut
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Comprova si hi ha continguts nous o actualitzats per a descarregar.
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(no s'han instal·lat complements per a interactuar amb plataformes socials)
 
@@ -2482,6 +2486,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :El vostre nom d
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Accions d'administració que s'han de realitzar per a aquest client.
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Accions d'administració que s'han de realitzar per a aquesta companyia.
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Uniu-vos a aquesta companyia.
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Autoritza al client a unir-se a la vostra companyia.
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Envia un missatge a aquest jugador.
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Envia un missatge a tots els jugadors de la companyia.
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Envieu un missatge a tots els espectadors.

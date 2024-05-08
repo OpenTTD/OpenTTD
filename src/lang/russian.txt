@@ -2636,6 +2636,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Ваше игр
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Административные действия, применимые к этому игроку
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Административные действия, применимые к этой компании
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Присоединиться к этой компании
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Разрешить этому клиенту присоединиться к вашей компании
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Отправить сообщение этому игроку
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Послать сообщение всем игрокам этой компании
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Послать сообщение всем зрителям

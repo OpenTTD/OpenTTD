@@ -2485,13 +2485,14 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Editar o
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Seu nome de jogador
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Ações administrativas para aplicar neste cliente
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Ações administrativas para aplicar nesta empresa
-STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Juntar-se a esta empresa
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Participar desta empresa
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Autorizar este cliente a participar da sua empresa
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Enviar uma mensagem a este jogador
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Enviar uma mensagem a todos os jogadores desta empresa
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Enviar uma mensagem a todos os espectadores
 STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Espectadores
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nova empresa)
-STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Criar uma nova empresa e juntar-se a ela
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Criar uma nova empresa e participar dela
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Esse é você
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Este é o hospedeiro do jogo
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} cliente{P "" s} - {NUM}/{NUM} empresa{P "" s}
