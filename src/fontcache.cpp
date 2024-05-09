@@ -98,9 +98,32 @@ bool GetFontAAState()
 	return _fcsettings.global_aa;
 }
 
-void SetFont(FontSize fontsize, const std::string &font, uint size)
+/**
+ * Prints the font name information. Output is:
+ *
+ * The provided desc.
+ * (FontSize Enum) : Actual Font=(string name) Setting=(string name)
+ *  etc for all the font sizes.
+ *
+ * Actual font is what's currently loaded and in use. Setting is what is recorded in the config file.
+ *
+ * @param desc - A string used to give context for this debug print.
+ */
+void DebugPrintFontSettings(const std::string &desc)
 {
-	FontCacheSubSetting *setting = GetFontCacheSubSetting(fontsize);
+	Debug(fontcache, 3, "{}", desc);
+
+	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+		FontCache *loaded_font = FontCache::Get(fs);
+		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
+
+		Debug(fontcache, 3, "  {}: Actual Font=\"{}\" Setting=\"{}\"", FontSizeToName(fs), (loaded_font == NULL) ? "NULL" : loaded_font->GetFontName(), setting->font);
+	}
+}
+
+void SetFont(FontSize font_size, const std::string &font, uint size)
+{
+	FontCacheSubSetting *setting = GetFontCacheSubSetting(font_size);
 	bool changed = false;
 
 	if (setting->font != font) {
@@ -115,11 +138,11 @@ void SetFont(FontSize fontsize, const std::string &font, uint size)
 
 	if (!changed) return;
 
-	if (fontsize != FS_MONO) {
+	if (font_size != FS_MONO) {
 		/* Try to reload only the modified font. */
 		FontCacheSettings backup = _fcsettings;
 		for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-			if (fs == fontsize) continue;
+			if (fs == font_size) continue;
 			FontCache *fc = FontCache::Get(fs);
 			GetFontCacheSubSetting(fs)->font = fc->HasParent() ? fc->GetFontName() : "";
 		}
@@ -233,6 +256,8 @@ void InitFontCache(bool monospace)
 		LoadCoreTextFont(fs);
 #endif
 	}
+
+	DebugPrintFontSettings("End of initFontCache()");
 }
 
 /**
