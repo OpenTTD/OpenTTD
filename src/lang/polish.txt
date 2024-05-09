@@ -2865,6 +2865,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Twoja nazwa gra
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Działania administracyjne, które można wykonać dla tego klienta
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Działania administracyjne, które można wykonać dla tej firmy
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Dołącz do tej firmy
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Zezwól temu klientowi na dołączenie do twojej firmy
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Wyślij wiadomość do tego gracza
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Wyślij wiadomość do wszystkich graczy tej firmy
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Wyślij wiadomość do wszystkich obserwatorów
