@@ -203,7 +203,7 @@ static constexpr NWidgetPart _nested_small_news_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, WID_N_CLOSEBOX),
 		NWidget(WWT_EMPTY, COLOUR_LIGHT_BLUE, WID_N_CAPTION), SetFill(1, 0),
-		NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_N_SHOW_GROUP), SetMinimalSize(14, 11), SetResize(1, 0),
+		NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_N_SHOW_GROUP), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetResize(1, 0),
 				SetDataTip(STR_NULL /* filled in later */, STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP),
 	EndContainer(),
 
