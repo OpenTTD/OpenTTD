@@ -65,21 +65,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	if (info->callback->Monospace() && (logfont->elfLogFont.lfPitchAndFamily & (FF_MODERN | FIXED_PITCH)) != (FF_MODERN | FIXED_PITCH)) return 1;
 
 	/* The font has to have at least one of the supported locales to be usable. */
-	if ((metric->ntmFontSig.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (metric->ntmFontSig.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) {
-		/* On win9x metric->ntmFontSig seems to contain garbage. */
-		FONTSIGNATURE fs;
-		memset(&fs, 0, sizeof(fs));
-		HFONT font = CreateFontIndirect(&logfont->elfLogFont);
-		if (font != nullptr) {
-			HDC dc = GetDC(nullptr);
-			HGDIOBJ oldfont = SelectObject(dc, font);
-			GetTextCharsetInfo(dc, &fs, 0);
-			SelectObject(dc, oldfont);
-			ReleaseDC(nullptr, dc);
-			DeleteObject(font);
-		}
-		if ((fs.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (fs.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
-	}
+	if ((metric->ntmFontSig.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (metric->ntmFontSig.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
 
 	char font_name[MAX_PATH];
 	convert_from_fs((const wchar_t *)logfont->elfFullName, font_name, lengthof(font_name));

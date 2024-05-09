@@ -401,6 +401,7 @@ STR_COLOUR_SECONDARY_ORANGE                                     :Oranžinis/-ė
 STR_COLOUR_SECONDARY_BROWN                                      :Rudas/-a
 STR_COLOUR_SECONDARY_GREY                                       :Pilkas/-a
 STR_COLOUR_SECONDARY_WHITE                                      :Baltas/-a
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Tokia pati kaip ir pradinė
 
 
 # Units used in OpenTTD
@@ -1200,10 +1201,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pasirink
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Išjungta
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Kas 10min.
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Kas 30min.
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Kas 60min.
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Kas 120min.
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Kas 10 minučių
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Kas 30 minučių
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Kas 60 minučių
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Kas 120 minučių
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kalba
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pasirinkite aplinkos kalbą
@@ -1227,6 +1228,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Pažymė
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Dabartinė tvarkyklė: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Sąsajos dydis
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Vilkite slankiklį, kad nustatyti sąsajos dydį. Vilkite laikant nuspaustą Ctrl klavišą nuolatiniam reguliavimui
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Automatinis dydžio nustatymas
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Pažymėkite šį langelį, kad automatiškai aptiktumėte sąsajos dydį
 
@@ -1623,6 +1625,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Jokių
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Retesni
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalus
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Leisti statyti geležinkelio pervažas konkurentams priklausančiuose keliuose ar bėgiuose: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Leisti statyti geležinkelio pervažas konkurentams priklausančiuose keliuose ar bėgiuose
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Leisti pravažiuojamąsias stoteles miesto priklausančiuose keliuose: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Leisti statyti pravažiuojamojo tipo stoteles miestams priklausiančiuose keliuose
@@ -1636,6 +1640,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Infrastruktūro
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Kompanijos pradinė spalva: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Pasirinkite pradinę kompanijos spalvą
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Kompanijos antrinė spalva: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Pasirinkite antrinę spalvą kompanijai, jei naudojamas plėtinys, kuriam jos reikia
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Oro uostai niekada nepasensta: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Kartą atsiradę, oro uostų tipai niekada nebepasens ir galimybė juos statyti niekuomet nebus pašalinta
@@ -2216,7 +2222,8 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Nustačius šį
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Tolimesni maršrutai nebus planuojami kol trumpesniųjų apkrova nepasieks bent: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Dažnai tarp dviejų stotelių yra ne vienas galimas maršrutas. „Cargodist“ posistemė pirmiausia stengsis krovinius nukreipti trumpiausiu įmanomu maršrutu, o kai šis bus pilnai apkrautas, imtis tolimesniųjų. Maršruto apkrova yra apytiksliai įvertinama atsižvelgiant į maršruto pajėgumus ir planuojamus krovinių srautus. Kai tik „Cargodist“ posistemė pilnai apkraus visus galimus maršrutus, ji vėl ims didinti apkrovas visiems maršrutams, pradėdama nuo pačių talpiausiųjų, taip faktiškai juos perkraudama. Tačiau, vėlgi, „Cargodist“ algoritmas yra apytikslis, todėl įmanoma, kad trumpesni maršrutai jau bus perkrauti dar pilnai neišnaudojus tolimesniųjų. Šia nuostata nustatomas slenkstis, ties kuriuo trumpesnis maršrutas jau laikomas optimaliai apkrautu ir kroviniai pradedami skirstyti tolimesniais maršrutais. Rekomenduojama nustatyti mažiau, nei 100%, kad būtų išvengta perkrovų dėl netikslaus „Cargodist“ veikimo
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Greičio vienetai: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Greičio vienetai (sausumoje): {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Greičio vienetai (jūroje): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Vienetai, kuriais matuojamas greitis
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :imperiniai (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :metriniai (km/h)
@@ -3517,8 +3524,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Ar jus 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% užbaigta
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Pasaulio generacija
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Peizažo generavimas
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Upių generavimas
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Daubų ir uolų generacija
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Miestų generavimas
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Pramonės generavimas
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nejudinama generacija
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Medžių generacija
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Sukurti zaidima
@@ -4540,10 +4550,10 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Nėra ener
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Laukia laisvo kelio
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Paskirties oro uostas per toli
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Vyksta į {0:STATION}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Neturi užduočių, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Vyksta į {0:WAYPOINT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Vyksta į {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Vyksta į‌ ‌{0:STATION}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Neturi užduočių
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Vyksta į ‌{0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Vyksta į ‌{0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Vyksta techninei apžiūrai į {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Iškrauti ir vykti į techninę apžiūrą į {0:DEPOT}
 
@@ -4743,7 +4753,7 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Reikšm�
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Įveskite reikšmę, su kuria bus lyginama
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Praleisti
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Praleisti šiuo metų vykdomą užduotį ir imtis kitos. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus pradėta vykdyti pažymėtoji užduotis
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Praleisti šiuo metų vykdomą užduotį ir imtis kitos. Spragtelėkite laikant nuspaustą Ctrl klavišą, kad pradėtumėte vykdyti pasirinktą užduotį
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Šalinti
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Šalinti pažymėtąją užduotį
@@ -4875,6 +4885,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tvarkara
 
 STR_TIMETABLE_START                                             :{BLACK}Pradėti tvarkaraštį
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundės iki tvarkaraščio pradžios
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Keisti trukmę
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Keisti pažymėtos užduoties trukmę
