@@ -258,7 +258,7 @@ void SurveyConfiguration(nlohmann::json &survey)
 {
 	survey["network"] = _networking ? (_network_server ? "server" : "client") : "no";
 	if (_current_language != nullptr) {
-		survey["language"]["filename"] = _current_language->file.filename().string();
+		survey["language"]["filename"] = FS2OTTD(_current_language->file.filename());
 		survey["language"]["name"] = _current_language->name;
 		survey["language"]["isocode"] = _current_language->isocode;
 	}

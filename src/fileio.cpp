@@ -489,7 +489,7 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 	_tar_list[this->subdir][filename] = std::string{};
 
-	std::string filename_base = std::filesystem::path(filename).filename().string();
+	std::string filename_base = FS2OTTD(std::filesystem::path(OTTD2FS(filename)).filename());
 	SimplifyFileName(filename_base);
 
 	TarHeader th;
