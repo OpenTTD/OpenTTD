@@ -28,6 +28,8 @@ static const int _default_font_ascender[FS_END] = { 8, 5, 15,  8};
 
 FontCacheSettings _fcsettings;
 
+static void LoadFontHelper(FontSize fs);
+
 /**
  * Create a new font cache.
  * @param fs The size of the font.
@@ -121,6 +123,26 @@ void DebugPrintFontSettings(const std::string &desc)
 	}
 }
 
+#ifdef WITH_FREETYPE
+extern void LoadFreeTypeFont(FontSize fs);
+extern void UninitFreeType();
+#elif defined(_WIN32)
+extern void LoadWin32Font(FontSize fs);
+#elif defined(WITH_COCOA)
+extern void LoadCoreTextFont(FontSize fs);
+#endif
+
+static void LoadFontHelper(FontSize fs)
+{
+#ifdef WITH_FREETYPE
+	LoadFreeTypeFont(fs);
+#elif defined(_WIN32)
+	LoadWin32Font(fs);
+#elif defined(WITH_COCOA)
+	LoadCoreTextFont(fs);
+#endif
+}
+
 void SetFont(FontSize font_size, const std::string &font, uint size)
 {
 	FontCacheSubSetting *setting = GetFontCacheSubSetting(font_size);
@@ -159,15 +181,6 @@ void SetFont(FontSize font_size, const std::string &font, uint size)
 	if (_save_config) SaveToConfig();
 }
 
-#ifdef WITH_FREETYPE
-extern void LoadFreeTypeFont(FontSize fs);
-extern void UninitFreeType();
-#elif defined(_WIN32)
-extern void LoadWin32Font(FontSize fs);
-#elif defined(WITH_COCOA)
-extern void LoadCoreTextFont(FontSize fs);
-#endif
-
 /**
  * Test if a font setting uses the default font.
  * @return true iff the font is not configured and no fallback font data is present.
@@ -188,7 +201,6 @@ uint GetFontCacheFontSize(FontSize fs)
 	return IsDefaultFont(setting) ? FontCache::GetDefaultFontHeight(fs) : setting.size;
 }
 
-#if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 /**
  * Get name of default font file for a given font size.
  * @param fs Font size.
@@ -204,7 +216,6 @@ static std::string GetDefaultTruetypeFont(FontSize fs)
 		default: NOT_REACHED();
 	}
 }
-#endif /* defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA) */
 
 /**
  * Get path of default font file for a given font size.
@@ -248,13 +259,8 @@ void InitFontCache(bool monospace)
 		FontCache *fc = FontCache::Get(fs);
 		if (fc->HasParent()) delete fc;
 
-#ifdef WITH_FREETYPE
-		LoadFreeTypeFont(fs);
-#elif defined(_WIN32)
-		LoadWin32Font(fs);
-#elif defined(WITH_COCOA)
-		LoadCoreTextFont(fs);
-#endif
+		LoadFontHelper(fs);
+
 	}
 
 	DebugPrintFontSettings("End of initFontCache()");

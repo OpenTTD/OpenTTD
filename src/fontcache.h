@@ -228,11 +228,9 @@ uint GetFontCacheFontSize(FontSize fs);
 std::string GetFontCacheFontName(FontSize fs);
 
 void DebugPrintFontSettings(const std::string &desc);
-
-void InitFontCache(bool monospace);
-void UninitFontCache();
-
 bool GetFontAAState();
+void InitFontCache(bool monospace);
 void SetFont(FontSize fontsize, const std::string &font, uint size);
+void UninitFontCache();
 
 #endif /* FONTCACHE_H */
