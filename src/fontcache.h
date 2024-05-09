@@ -226,6 +226,9 @@ inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
 
 uint GetFontCacheFontSize(FontSize fs);
 std::string GetFontCacheFontName(FontSize fs);
+
+void DebugPrintFontSettings(const std::string &desc);
+
 void InitFontCache(bool monospace);
 void UninitFontCache();
 
