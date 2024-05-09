@@ -405,6 +405,7 @@ void AllocateWaterRegions()
 	_water_regions.clear();
 	_water_regions.reserve(number_of_regions);
 
+	_is_water_region_valid.clear();
 	_is_water_region_valid.resize(number_of_regions, false);
 
 	Debug(map, 2, "Allocating {} x {} water regions", GetWaterRegionMapSizeX(), GetWaterRegionMapSizeY());
