@@ -955,6 +955,7 @@ STR_GAME_OPTIONS_VOLUME                                         :音量
 STR_GAME_OPTIONS_SFX_VOLUME                                     :音效
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :音乐
 
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}货币单位
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}货币单位选择
@@ -1052,6 +1053,7 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}如果�
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :字体抗锯齿
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}勾选此框以对游戏字体应用抗锯齿
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}自动体验调查
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}参与自动体验调查
@@ -1080,6 +1082,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}基础�
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}选择要使用的基础音乐组
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}有关基础音乐组的附加信息
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :获取内容
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :查询并下载最新内容
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}（未安装社交平台插件）
 
@@ -1823,6 +1827,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :如果没有为
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :船只默认保养周期：{STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :如果没有为船只设定保养周期，按照这里设定的默认保养周期执行
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}日
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}分
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :关闭
@@ -2478,6 +2485,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :你的玩家名
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}要在此客户端执行的管理命令
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}要在此公司执行的管理命令
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}加入该公司
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}授权此客户端加入你的公司
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}给这位玩家发消息
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}给公司中的所有玩家发消息
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}给所有旁观者发消息
@@ -3469,7 +3477,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :道路类型
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x 参数 (十六进制)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}对齐中的 Sprite：({STRING}:{NUM})
 STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}对齐中的 Sprite：Action 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}对齐中的 Sprite：Action 0x5, 类别 {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}下一个 sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}继续处理下个正常的图形元素，略过任何虚位／重新着色／文字字型相关的图形元素；并且在处理到最后的图形元素后，返回第一个图形元素继续处理。
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}前往 sprite
@@ -3478,6 +3488,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}上一�
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}继续处理上一个正常的图形元素，略过任何虚位／重新着色／文字字型相关的图形元素；并且在处理到第一个图形元素后，返回最后的图形元素继续处理。
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}显示目前选取的 sprite。当 sprite 正在描绘时会忽略其定位。
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}从 X 及 Y 座标方向移动图形元素。如按住 Ctrl 键再点击，可一次移动 8 个单位
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}偏移居中
