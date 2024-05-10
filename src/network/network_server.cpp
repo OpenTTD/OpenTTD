@@ -2157,6 +2157,13 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 		/* ci is nullptr when replaying, or for AIs. In neither case there is a client. */
 		ci->client_playas = c->index;
 		NetworkUpdateClientInfo(ci->client_id);
+
+		/*
+		 * This function is called from a command, but is only called for the server.
+		 * The client information is managed out-of-band from the commands, so to not have a
+		 * different state/president/company name in the different clients, we need to
+		 * circumvent the normal ::Post logic and go directly to sending the command.
+		 */
 		Command<CMD_COMPANY_ADD_ALLOW_LIST>::SendNet(STR_NULL, c->index, ci->public_key);
 		Command<CMD_RENAME_PRESIDENT>::SendNet(STR_NULL, c->index, ci->client_name);
 

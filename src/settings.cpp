@@ -1790,6 +1790,11 @@ void SyncCompanySettings()
 		const SettingDesc *sd = GetSettingDesc(desc);
 		uint32_t old_value = (uint32_t)sd->AsIntSetting()->Read(old_object);
 		uint32_t new_value = (uint32_t)sd->AsIntSetting()->Read(new_object);
+		/*
+		 * This is called from a command, and since it contains local configuration information
+		 * that the rest of the clients do not know about, we need to circumvent the normal ::Post
+		 * local command validation and immediately send the command to the server.
+		 */
 		if (old_value != new_value) Command<CMD_CHANGE_COMPANY_SETTING>::SendNet(STR_NULL, _local_company, sd->GetName(), new_value);
 	}
 }
