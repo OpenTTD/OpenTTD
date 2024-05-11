@@ -121,8 +121,8 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 			/* Make sure we are not in a redirect loop. */
 			if (this->depth++ > 5) {
 				Debug(net, 0, "HTTP request failed: too many redirects");
-				this->finished = true;
 				this->callback.OnFailure();
+				this->finished = true;
 				return;
 			}
 			break;
@@ -144,8 +144,8 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 			if (status_code >= 400) {
 				/* No need to be verbose about rate limiting. */
 				Debug(net, status_code == HTTP_429_TOO_MANY_REQUESTS ? 1 : 0, "HTTP request failed: status-code {}", status_code);
-				this->finished = true;
 				this->callback.OnFailure();
+				this->finished = true;
 				return;
 			}
 
@@ -183,14 +183,14 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 		case WINHTTP_CALLBACK_STATUS_SECURE_FAILURE:
 		case WINHTTP_CALLBACK_STATUS_REQUEST_ERROR:
 			Debug(net, 0, "HTTP request failed: {}", GetLastErrorAsString());
-			this->finished = true;
 			this->callback.OnFailure();
+			this->finished = true;
 			break;
 
 		default:
 			Debug(net, 0, "HTTP request failed: unexepected callback code 0x{:x}", code);
-			this->finished = true;
 			this->callback.OnFailure();
+			this->finished = true;
 			return;
 	}
 }
@@ -233,8 +233,8 @@ void NetworkHTTPRequest::Connect()
 	this->connection = WinHttpConnect(_winhttp_session, url_components.lpszHostName, url_components.nPort, 0);
 	if (this->connection == nullptr) {
 		Debug(net, 0, "HTTP request failed: {}", GetLastErrorAsString());
-		this->finished = true;
 		this->callback.OnFailure();
+		this->finished = true;
 		return;
 	}
 
@@ -243,8 +243,8 @@ void NetworkHTTPRequest::Connect()
 		WinHttpCloseHandle(this->connection);
 
 		Debug(net, 0, "HTTP request failed: {}", GetLastErrorAsString());
-		this->finished = true;
 		this->callback.OnFailure();
+		this->finished = true;
 		return;
 	}
 
@@ -267,8 +267,8 @@ bool NetworkHTTPRequest::Receive()
 {
 	if (this->callback.cancelled && !this->finished) {
 		Debug(net, 1, "HTTP request failed: cancelled by user");
-		this->finished = true;
 		this->callback.OnFailure();
+		this->finished = true;
 		/* Fall-through, as we are waiting for IsQueueEmpty() to happen. */
 	}
 
