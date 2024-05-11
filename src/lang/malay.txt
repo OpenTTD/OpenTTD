@@ -1596,14 +1596,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industri-indust
 STR_CONFIG_SETTING_AI                                           :Pesaing
 STR_CONFIG_SETTING_AI_NPC                                       :Pemain komputer
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pencari laluan untuk keretapi: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pencari laluan untuk kenderaan jalanraya: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pencari laluan untuk kapal: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Berundur secara automatik di isyarat: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Benarkan keretapi berundur di lampu isyarat, jika ia menuggu lama
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Disyorkan)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Tukar nilai tetapan
 
@@ -2113,7 +2107,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Pilih pe
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Tandatuju
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Pilih jenis tandatuju
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Pilihan Stesen Keretapi
@@ -2126,8 +2119,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Pilih ke
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Seret & Lepas
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bina stesen menggunakan kaedah seret & lepas
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Pilih kelas stesen untuk dipaparkan
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Pilih jenis stesen untuk dibina
+
 
 STR_STATION_CLASS_DFLT                                          :Stesen lazim
 STR_STATION_CLASS_WAYP                                          :Tandatuju
@@ -2258,8 +2250,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tan
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pilihan Objek
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih objek untuk dibina. Shift untuk anggaran kos
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Pilih kelas untuk objek yang ingin dibina
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pranonton objek
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Saiz: {GOLD}{NUM} x {NUM} petak
 

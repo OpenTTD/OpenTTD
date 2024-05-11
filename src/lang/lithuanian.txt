@@ -2295,17 +2295,8 @@ STR_CONFIG_SETTING_AI                                           :Konkurentai
 STR_CONFIG_SETTING_AI_NPC                                       :Kompiuterio žaidėjai
 STR_CONFIG_SETTING_NETWORK                                      :Žaidimas tinkle
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Traukinių maršrutų paieškos algoritmas: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Maršruto naudojamas ieškotojas traukiniams
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Automobilių maršrutų paieškos algoritmas: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Maršruto naudojamas ieškotojas kelių transporto priemonėms
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Laivų maršrutų paieškos algoritmas: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Maršruto naudojamas ieškotojas laivams
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Apsisukimas prie šviesoforų: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Leisti traukiniams apsisukti ir bandyti važiuoti priešinga kryptimi, jei ties šviesoforu jiems tenka laukti pernelyg ilgai
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Rekomenduojama)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Keisti reikšmes
 
@@ -2944,7 +2935,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Pasirink
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Kontrolės punktas
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Pasirinkite punkto tipą
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Pasirinkite stotelės parametrus
@@ -2957,8 +2947,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Pasirink
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vilkti
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Statyti stotelę vilkimo būdu
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Pasirinkti stoties klasę rodymui
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Pasirinkti stoties statymo tipą
+
 
 STR_STATION_CLASS_DFLT                                          :Numatytoji
 STR_STATION_CLASS_DFLT_STATION                                  :Numatytoji stotelė
@@ -3020,7 +3009,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktyvint
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Statyti automobilių tiltą. Taip pat spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos tik numatomos išlaidos
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Statyti tramvajaus tiltą. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Statyti automobilių tunelį. Taip pat spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Statyti tramvajaus tunelį. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Statyti tramvajaus tunelį. Taip pat spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos tik numatomos išlaidos
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Aktyvinti automobilių kelių ir stotelių šalinimo veikseną
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Aktyvinti tramvajaus bėgių ir stotelių šalinimo veikseną
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Pakeisti kelio tipą. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
@@ -3100,8 +3089,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Nusipirk
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pasirinkite objektą
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pasirinkite norimą objektą statymui. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Pasirinkite objekto tipą
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objekto peržiūra
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dydis langeliais: {GOLD}{NUM} x {NUM}
 

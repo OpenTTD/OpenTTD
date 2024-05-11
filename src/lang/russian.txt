@@ -2281,17 +2281,8 @@ STR_CONFIG_SETTING_AI                                           :Конкуре�
 STR_CONFIG_SETTING_AI_NPC                                       :Искусственный интеллект
 STR_CONFIG_SETTING_NETWORK                                      :Сеть
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Алгоритм поиска пути для поездов: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Алгоритм поиска пути, используемый поездами
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Алгоритм поиска пути для автотранспорта: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Алгоритм поиска пути, используемый автомобилями
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Алгоритм поиска пути для судов: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Алгоритм поиска пути, используемый водным транспортом
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Автоматический разворот у сигналов: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Разрешить поездам разворачиваться у светофора, если они долго ждут разрешающего сигнала
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Рекомендуется)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Изменить значение
 
@@ -2965,7 +2956,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Выбо
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Маршрутная точка
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Выбор типа маршрутной точки
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Выбор ж/д станции
@@ -2978,8 +2968,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Укаж
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Произвольно
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Постройка станции на указанном игроком участке
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Выберите класс станций для отображения
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Выберите тип станции для постройки
+
 
 STR_STATION_CLASS_DFLT                                          :Стандартная станция
 STR_STATION_CLASS_DFLT_STATION                                  :Стандартная ж/д станция
@@ -3126,8 +3115,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Поку
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Выбор объекта
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Выберите создаваемый объект. Ctrl+щелчок+перетаскивание - выбор диагональной области. При нажатом Shift - оценка стоимости строительства.
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Выберите класс объекта для строительства
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Предварительный просмотр объекта
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Размер: {GOLD}{NUM} × {NUM} клеток
 

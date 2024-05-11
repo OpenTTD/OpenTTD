@@ -2271,17 +2271,8 @@ STR_CONFIG_SETTING_AI                                           :Suparnici
 STR_CONFIG_SETTING_AI_NPC                                       :Računar
 STR_CONFIG_SETTING_NETWORK                                      :Mreža
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pretraživanje putanja vozova: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algoritam pronalaženja puta za vozove
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pretraživanje putanja drumskih vozila: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Algoritam pronalaženja puta za drumska vozila
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pretraživanje putanja brodova: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Algoritam pronalaženja puta za brodove
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatska promena smera kod signalizacije: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Dozvoljeno okretanje vozova na signalu, ako su dugo čekali
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Preporučuje se)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Promena vrednosti
 
@@ -2925,7 +2916,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Odabir o
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Putanja
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Odaberi tip putanje
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Izbor železničke stanice
@@ -2938,8 +2928,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Odabir d
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Prevlačenje
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Gradnja stanice prevlačenjem
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Odabir klase stanica za prikaz
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Odabir vrste stanice za izgradnju
+
 
 STR_STATION_CLASS_DFLT                                          :Podrazumevana stanica
 STR_STATION_CLASS_WAYP                                          :Putanje
@@ -3079,8 +3068,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupovina
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Izbor Objekta
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Odabir objekta za izgradnju. Ctrl dijagonalno obeležava područje. Shift prebacuje između izgradnje i prikaza procene troškova
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Odabir klase objekata za izgradnju
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Privremeno prikazuje objekat
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Veličina: {GOLD}{NUM} x {NUM} pločica
 

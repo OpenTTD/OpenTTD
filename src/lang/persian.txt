@@ -1591,14 +1591,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :توزیع مح
 STR_CONFIG_SETTING_AI                                           :رقیبان
 STR_CONFIG_SETTING_AI_NPC                                       :بازیگران رایانه
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :مسیریاب برای قطارها: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :مسیریاب برای خودروهای جاده ای: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :مسیریاب برای خودروهای جاده ای
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :مسیریاب برای کشتی ها: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :برگشت خودکار با رسیدن به نشانه ها: {STRING}
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(توصیه می گردد)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}تغییر مقدار
 
@@ -2108,7 +2101,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}جهت �
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}نقطه مسیر
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}نوع نقطه مسیر را انتخاب نمایید
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}انتخاب ایستگاه راه آهن
@@ -2121,8 +2113,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}انتخ
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}بکشید و بیاندازید
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}ساخت ایستگاه با استفاده از کشیدن و انداختن
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}کلاس ایستگاه را برای نمایش انتخاب کنید
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}ایک نوع ایستگاه را برای ساخت انتخاب کنید
+
 
 STR_STATION_CLASS_DFLT                                          :ایستگاه پیش فرض
 STR_STATION_CLASS_WAYP                                          :نقطه مسیر ها
@@ -2253,8 +2244,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}خرید
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}انتخاب شیء
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}شیء را برای ساخت انتخاب نمایید. گرفتن دکمه شیفت برآورد هزینه ساخت را نمایش می دهد
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}نوع شیء را برای ساخت انتخاب کنید
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}پیش نمای شیء
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}اندازه: {GOLD}{NUM} x {NUM} قطعه
 

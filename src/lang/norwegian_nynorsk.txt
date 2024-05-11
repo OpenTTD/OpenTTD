@@ -1751,17 +1751,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Varefordeling
 STR_CONFIG_SETTING_AI                                           :Motstandarar
 STR_CONFIG_SETTING_AI_NPC                                       :Datamaskinspelarar
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vegfinnar for tog: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Kva for vegfinnar som skal nyttast for tog
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Vegfinnar for køyretøy på vegar: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Kva for vegfinnar som skal nyttast for bilar og bussar
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Vegfinnar for skip: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Kva for vegfinnar som skal nyttast for skip
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatisk reversering ved signal: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :La tog snu ved signal, når dei har venta lengje
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Anbefalt)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Byt innstillingsverdi
 
@@ -2282,7 +2273,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Vel retn
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Kontrollpunkt
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vel kontrollpunkttype
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Vel jernbanestasjontype
@@ -2295,8 +2285,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vel kor 
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Dra og slipp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg stasjon med dra og slipp
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vel den stasjonstypen som skal visast
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vel stasjonen du vil byggje
+
 
 STR_STATION_CLASS_DFLT                                          :Standard stasjon
 STR_STATION_CLASS_WAYP                                          :Kontrollpunkt
@@ -2427,8 +2416,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kjøp la
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektval
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vel objekt å byggje. Skift vekslar mellom byggjing/syning av prisoverslag.
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Velg objekttype du vil byggje
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Førehandsvisning av objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Storleik: {GOLD}{NUM} x {NUM} ruter
 

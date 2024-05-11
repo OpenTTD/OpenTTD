@@ -2134,17 +2134,8 @@ STR_CONFIG_SETTING_AI                                           :Sāncenši
 STR_CONFIG_SETTING_AI_NPC                                       :Nespēlētāju tēli (datora vadīti)
 STR_CONFIG_SETTING_NETWORK                                      :Tīkls
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vilcienu ceļa meklētājs: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Vilcieniem pielietotais ceļa meklētājs
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Autotransporta līdzekļu ceļa meklētājs: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Autotransporta līdzekļiem pielietotais ceļa meklētājs
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Kuģu ceļa meklētājs: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Kuģiem pielietotais ceļa meklētājs
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automātiska apgriešanās pie luksoforiem: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Atļauj vilcieniem apgriezties pie signālierīcēm, ja tie te ir gaidījuši ilgu laiku
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(ieteicamais)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Mainīt iestatījuma vērtību
 
@@ -2798,7 +2789,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Izvēlē
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Pieturas punkts
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Izvēlēties pieturas punkta veidu
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Dzelzceļa stacijas izvēle
@@ -2811,8 +2801,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Izvēlē
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vilkt un nomest
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Būvēt staciju izmantojot "vilkt un nomest"
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Izvēlēties kuru stacijas klasi rādīt
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Izvēlēties kuru stacijas veidu būvēt
+
 
 STR_STATION_CLASS_DFLT                                          :Noklusējuma
 STR_STATION_CLASS_DFLT_STATION                                  :Noklusējuma stacija
@@ -2955,8 +2944,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Iegādā
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektu izvēle
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Izvēlēlaties buvējamo objektu. Ctrl atlasa apgabalu pa diagonāli.  Shift parāda novērtētās izmaksas, neveicot būvēšanu
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Izvēlēties būvējamā objekta klasi
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objekta priekšskatījums
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Izmērs: {GOLD}{NUM} x {NUM} lauciņi
 

@@ -2130,17 +2130,8 @@ STR_CONFIG_SETTING_AI                                           :Modstandere
 STR_CONFIG_SETTING_AI_NPC                                       :Computerstyrede spillere
 STR_CONFIG_SETTING_NETWORK                                      :Netværk
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Stifinder til tog: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Stifinder til brug for toge
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Stifinder til vejkøretøjer: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Stifinder til brug for vejkøretøjer
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Stifinder til skibe: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Stifinder til brug for skibe
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Vend automatisk ved signaler: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tillad tog at vende ved et signal, hvis det har ventet i lang tid
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Anbefalet)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Skift indstillingsværdi
 
@@ -2793,7 +2784,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Vælg or
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Rutepunkt
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vælg udseende af rutepunkt
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Valg af banegård
@@ -2806,8 +2796,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vælg l�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Træk & slip
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Byg en station vha. træk & slip
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vælg hvilken stationstype, der skal vises
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vælg hvilken stationstype du vil bygge
+
 
 STR_STATION_CLASS_DFLT                                          :Standard station
 STR_STATION_CLASS_DFLT_STATION                                  :Standard station
@@ -2950,8 +2939,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Køb lan
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekt valg
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vælg objekt, der skal bygges. Ctrl+klik+træk for at markere området diagonalt. Tryk også på Shift for kun at vise omkostningsestimat
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Vælg hvilken objekttype du vil bygge
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Forvisning af objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Størrelse: {GOLD}{NUM} x {NUM} felter
 

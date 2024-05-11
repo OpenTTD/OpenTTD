@@ -1471,13 +1471,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :صنعتیں
 STR_CONFIG_SETTING_AI                                           :مد مقابل
 STR_CONFIG_SETTING_AI_NPC                                       :کمپیوٹر کے کھلاڑی
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :ریل گاڑیوں کے لئے راستہ ڈھونڈنے والا: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :گاڑیوں کا راستہ تلاش کرنے والا: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :بحری جہازوں کا راستہ تلاش کرنے والا: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :اشاروں پر خودکار ریورس ہونا: {STRING}
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recommended)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}سیٹنگ کی ولیو بدلیں
 
@@ -1973,7 +1967,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}ریلو
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}گزرگاہ
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}گزرگاہ کی طرز منتخب کریں
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}ریلوے اسٹیشن منتخب کریں
@@ -1986,8 +1979,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}ریلو
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}کھینچ کر رکھ دیں
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}کھینچ کر رکھ کر اسٹیشن تعمیر کریں
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}دکھانے کے لئے ریلوے اسٹیشن کی قسم کا انتخاب کریں
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}تعمیر کے لئے اسٹیشن کی طرز منتخب کریں
+
 
 STR_STATION_CLASS_DFLT                                          :طے شدہ اسٹیشن
 STR_STATION_CLASS_WAYP                                          :گزرگاہیں
@@ -2104,8 +2096,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}مستق
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}چیز کا انتخاب
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}تعمیرکرنے کے لئے چیز منتخب کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}تعمیر کرنے کے لئے چیز کی قسم کا انتخاب کریں
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}چیز کا جائزہ
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}سائز: {GOLD}{NUM} x {NUM} ٹائلیں
 

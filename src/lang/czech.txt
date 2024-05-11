@@ -2207,17 +2207,8 @@ STR_CONFIG_SETTING_AI                                           :Konkurenti
 STR_CONFIG_SETTING_AI_NPC                                       :Umělá inteligence
 STR_CONFIG_SETTING_NETWORK                                      :Síť
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Hledač cesty pro vlaky: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Hledač cesty pro vlaky
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Hledač cesty pro silniční vozidla: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Hledač cesty pro vozidla
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Hledač cesty pro lodě: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Hledač cesty pro lodě
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatické otáčení vlaků na semaforech: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Povoluje vlakům otočit se na semaforech, pokud čekají příliš dlouho
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(doporučený)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Změnit hodnotu nastavení
 
@@ -2868,7 +2859,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Zvolit o
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Směrování
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vyber typ směrování
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Výběr nádraží
@@ -2881,8 +2871,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Zvolit d
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Táhni a pusť
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Stavět stanice pomocí tahaní myši
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vyber, který druh stanic se má zobrazit
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vyber typ stavěné stanice
+
 
 STR_STATION_CLASS_DFLT                                          :Původní
 STR_STATION_CLASS_DFLT_STATION                                  :Původní stanice
@@ -3025,8 +3014,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakoupit
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Výběr objektu
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vyberte objekt k postavení. Při stisknutí Ctrl+Klik+Tažení vyberte oblast diagonálně. Pro zobrazení pouze odhadovaných nákladů stiskněte také klávesu Shift.
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Vyberte třídu objektu, který chcete postavit
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Náhled objektu
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost: {GOLD}{NUM}{NBSP}x{NBSP}{NUM}
 

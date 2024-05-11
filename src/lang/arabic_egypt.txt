@@ -1713,15 +1713,7 @@ STR_CONFIG_SETTING_AI                                           :المتناف�
 STR_CONFIG_SETTING_AI_NPC                                       : لاعبين الحاسوب
 STR_CONFIG_SETTING_NETWORK                                      :شبكة الاتصال
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :موجد الطريق- قصاص الطريق - للقطارات:{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :موجد الطريق (قصاص الأثر) للعربات: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :مكتشف المسار لاستخدامه لعربات الطرق
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :موجد طريق العبور للسفن: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :مكتشف المسار لاستخدامه للسفن
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :العكس عند الإشارات: {STRING}
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(مفضل)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}عدل قيمة التغيير
 
@@ -2257,7 +2249,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}اختر
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}نقطة عبور
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK} اختر نوع نقطة العبور
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}اختر محطة القطار
@@ -2270,8 +2261,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}اختر
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}أسحب وأفلت
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}بناء محطة بطريقة السحب والإفلات
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK} اختر فئة المحطات لعرضها
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}أختر نوع المحطة لبنائها
+
 
 STR_STATION_CLASS_DFLT                                          :المحطة القياسية
 STR_STATION_CLASS_WAYP                                          :نقطة عبور
@@ -2406,8 +2396,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}شراء
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}اختيار الاجسام
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}اختر جسم لبنائة
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}اختر صنف الكائن للبناء
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}عرض الجسم
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}حجم: {GOLD}{NUM} x {NUM} مربع
 

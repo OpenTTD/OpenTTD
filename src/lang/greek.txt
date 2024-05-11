@@ -2223,17 +2223,8 @@ STR_CONFIG_SETTING_AI                                           :Ανταγων�
 STR_CONFIG_SETTING_AI_NPC                                       :Παίκτες υπολογιστή
 STR_CONFIG_SETTING_NETWORK                                      :Δίκτυο
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Μέθοδος δρομολόγησης για τρένα: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Μέθοδος διαπίστωσης διαδρομής που χρησιμοποιείται για τα τρένα
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Μέθοδος δρομολόγησης για οχήματα δρόμου: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Μέθοδος διαπίστωσης διαδρομής που χρησιμοποιείται για τα οδικά οχήματα
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Μέθοδος δρομολόγησης για πλοία: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Μέθοδος διαπίστωσης διαδρομής που χρησιμοποιείται για τα πλοία
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Αυτόματη αναστροφή σε σηματοδότες: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Επιτρέπεται στα τρένα να αντιστραφούν σε σήμα, εάν περιμένουν εκεί για πολύ ώρα
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Συνιστάται)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Αλλαγή τιμής ρύθμισης
 
@@ -2887,7 +2878,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Επιλ
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Σημείο καθοδήγησης
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Επιλογή τύπου σημείου καθοδήγησης
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Επιλογή Σιδηροδρομικού Σταθμού
@@ -2900,8 +2890,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Επιλ
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Σύρετε και Ελευθερώστε
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Φτιάξε ένα σταθμό χρησιμοποιώντας σύρσιμο και ελευθέρωση
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Επιλογή τύπου σταθμών για εμφάνιση
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Επιλέξτε τον τύπο του σταθμού προς κατασκευή
+
 
 STR_STATION_CLASS_DFLT                                          :Προεπιλεγμένος
 STR_STATION_CLASS_DFLT_STATION                                  :Προεπιλεγμένος σταθμός
@@ -3044,8 +3033,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Αγορ
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Επιλογή Αντικείμενου
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Επιλογή αντικείμενου για κατασκευή. Ctrl+Κλικ+Σύρσιμο για διαγώνια επιλογή. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Επιλογή της κατηγορίας του αντικείμενου για κατασκευή
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Προεπισκόπηση του αντικείμενου
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Μέγεθος: {GOLD}{NUM} x {NUM} τετράγωνα
 

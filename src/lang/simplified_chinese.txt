@@ -2130,17 +2130,8 @@ STR_CONFIG_SETTING_AI                                           :竞争
 STR_CONFIG_SETTING_AI_NPC                                       :电脑玩家
 STR_CONFIG_SETTING_NETWORK                                      :网络
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :火车寻路： {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :列车寻路方式
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :汽车寻路： {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :汽车寻路方式
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :船只寻路： {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :船只寻路方式
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :遇到红灯时自动掉头 {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :当列车在信号灯前长时间等待时，允许掉头
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(推荐)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}改变设置值
 
@@ -2794,7 +2785,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}选择�
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}路点
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}选择路点类型
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}火车站选单
@@ -2807,8 +2797,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}选择�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}拖动模式
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}使用拖动模式建设车站
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}选择一个要显示车站类型
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}选择要建造的车站类型
+
 
 STR_STATION_CLASS_DFLT                                          :默认
 STR_STATION_CLASS_DFLT_STATION                                  :默认车站
@@ -2951,8 +2940,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}购买�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}物体选单
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}选择要建设的物体。按住 <Ctrl> 键以沿对角线建设，按住 <Shift> 键操作以显示预计成本。
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}选择要建造的物件类型
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}物件预览
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小: {GOLD}{NUM} x {NUM} 格
 

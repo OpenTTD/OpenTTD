@@ -1030,7 +1030,6 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :स्टेट
 ###length 3
 
 
-###length 2
 
 
 # Config errors
@@ -1194,6 +1193,7 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 # Rail waypoint construction window
 
 # Rail station construction window
+
 
 
 

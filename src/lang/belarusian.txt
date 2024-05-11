@@ -2436,17 +2436,8 @@ STR_CONFIG_SETTING_AI                                           :Канкурэ�
 STR_CONFIG_SETTING_AI_NPC                                       :Кампутарныя гульцы
 STR_CONFIG_SETTING_NETWORK                                      :Сетка
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Альґарытм пошуку шляху для цягнікоў: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Мэханізм пошуку шляху для цягнікоў.
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Альґарытм пошуку шляху для аўтатранспарту: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Мэханізм пошуку шляху для аўтатранспарту.
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Альґарытм пошуку шляху для караблёў: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Мэханізм пошуку шляху для караблёў.
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Аўтаматычны разварот перад сыґналамi: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Дазволіць цягнікам разварочвацца перад сыґналамі, калі яны чакаюць доўгі час.
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(рэкамэндуецца)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Зьмяніць значэньне
 
@@ -3113,7 +3104,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Выбе
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Маршрутны пункт
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Выберыце тып маршрутнага пункта
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Выбар чыгуначнай станцыі
@@ -3126,8 +3116,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Выбе
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Участак
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Пабудаваць станцыю на выбраным участку зямлі
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Выберыце клясу станцыі для паказу
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Выберыце тып станцыі для пабудовы
+
 
 STR_STATION_CLASS_DFLT                                          :Стандартная станцыя
 STR_STATION_CLASS_DFLT_STATION                                  :Стандартная чыг. станцыя
@@ -3274,8 +3263,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Набы
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Выбар аб'екта
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Абярыце аб'ект для пабудовы. Ctrl+пстрычка+перацягваньне — выбар вобласці па дыяганалі. Пры націснутым Shift — ацэнка кошту пабудовы.
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Абярыце клясу аб'екта для будаўніцтва
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Прагляд аб'екта
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Памер: {GOLD}{NUM} x {NUM} клетак
 

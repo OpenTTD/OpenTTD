@@ -2123,17 +2123,8 @@ STR_CONFIG_SETTING_AI                                           :Đối Thủ
 STR_CONFIG_SETTING_AI_NPC                                       :Nhân vật máy
 STR_CONFIG_SETTING_NETWORK                                      :Kết nối
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Cơ chế tìm đường cho tàu hoả: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Cơ chế tìm đường cho tàu hỏa
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Cơ chế tìm đường cho xe ôtô: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Cơ chế tìm đường cho xe ôtô
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Cơ chế tìm đường cho tàu thủy: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Cơ chế tìm đường dùng cho tàu thủy
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Tự động đổi chiều chạy tại đèn hiệu: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Cho phép xe lửa vòng lại nơi đèn báo, khi nó chờ quá lâu
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Nên dùng)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Thay đổi giá trị
 
@@ -2786,7 +2777,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Chọn h
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Điểm mốc
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Chọn kiểu điểm mốc
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Chọn Ga Tàu Hỏa
@@ -2799,8 +2789,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Độ d�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Kéo & thả
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Xây dựng ga bằng các kéo & thả
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Chọn loại ga để hiển thị
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Chọn loại ga để xây dựng
+
 
 STR_STATION_CLASS_DFLT                                          :Mặc định
 STR_STATION_CLASS_DFLT_STATION                                  :Trạm mặc định
@@ -2943,8 +2932,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Mua đ�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Trình Chọn Đối Tượng
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Chọn đối tượng để xây. Ctrl + Click + kéo để chọn khu vực theo đường chéo. Shift để xem chi phí dự tính
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Chọn lớp đối tượng để xây dựng
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Xem trước đối tượng
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Kích thước: {GOLD}{NUM} x {NUM} ô
 

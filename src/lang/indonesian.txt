@@ -2077,17 +2077,8 @@ STR_CONFIG_SETTING_AI                                           :Pesaing
 STR_CONFIG_SETTING_AI_NPC                                       :Pemain Komputer
 STR_CONFIG_SETTING_NETWORK                                      :Jaringan
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pencari jejak untuk kereta: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pencari jejak untuk kereta
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pencari jejak untuk kendaraan jalan raya: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Pencari jejak untuk kendaraan jalan raya
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pencari jejak untuk kapal : {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pencari jejak untuk kapal
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Berputar otomatis di sinyal: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Perbolehkan kereta berputar di sinyal, jika telah menunggu lama
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recommended)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ganti nilai tetapan
 
@@ -2730,7 +2721,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Tentukan
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Waypoint
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Pilih jenis waypoint
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Pilih stasiun kereta
@@ -2743,8 +2733,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Pilih pa
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Membangun stasiun dengan Drag & Drop
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Pilih kelas stasiun yang akan ditampilkan
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Pilih jenis stasiun yang akan dibangun
+
 
 STR_STATION_CLASS_DFLT                                          :Standar
 STR_STATION_CLASS_DFLT_STATION                                  :Stasiun standar
@@ -2887,8 +2876,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tan
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pemilihan obyek
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih obyek yg akan dibangun. Ctrl untuk memilih area secara diagonal. Shift untuk menampilkan perkiraan biaya
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Pilih kelas dari objek yang dibangun
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pra-tayang obyek
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Ukuran: {GOLD}{NUM} x {NUM} kotak
 

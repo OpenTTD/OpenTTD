@@ -742,7 +742,6 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 ###length 3
 
 
-###length 2
 
 
 # Config errors
@@ -874,6 +873,7 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 
 
 
+
 # Signal window
 
 # Bridge selection window
@@ -902,7 +902,6 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 # Landscaping toolbar
 
 # Object construction window
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Aghzel il-klassi tal-oggett li se tibni
 
 
 # Tree planting window (last eight for SE only)

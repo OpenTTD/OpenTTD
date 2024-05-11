@@ -1902,17 +1902,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Индустр�
 STR_CONFIG_SETTING_AI                                           :Съперници
 STR_CONFIG_SETTING_AI_NPC                                       :Компютърни играчи
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Пътенамирач за влакове: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Маршрутизатор използван за влакове
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Пътенамирач за автомобили: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Маршрутизатор използван за автомобили
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Пътенамирач за кораби: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Маршрутизатор използван за кораби
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Автоматично обръщане при сигнали: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Позволява на влаковете да обръщат ако са чакали твърде дълго
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(препоръчва се)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Промяна стойноста на настройка
 
@@ -2460,7 +2451,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Изби
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Пътна точка
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Избор тип на пътни точки
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Избор на жп гара
@@ -2473,8 +2463,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Дълж
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Влачене & Пускане
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Строене на станция чрез изтегляне
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Избор на клас станция за показване
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Избор тип на станция за строене
+
 
 STR_STATION_CLASS_DFLT                                          :Станция по подразбиране
 STR_STATION_CLASS_WAYP                                          :Пътни точки
@@ -2606,8 +2595,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Купи
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Избор на обект
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Избери обект за построяване. Shift строеж/цена за построяване
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Избор на клас на обекта за строене
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Изглед на обекта
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Размер: {GOLD}{NUM} x {NUM} плочки
 

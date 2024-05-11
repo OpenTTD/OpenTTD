@@ -846,8 +846,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :Ҫул-йӗр:
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Хуласем
 STR_CONFIG_SETTING_AI                                           :Ӑмӑртуҫӑсем
 
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 
 
 # Config errors
@@ -1055,6 +1053,7 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 # Rail waypoint construction window
 
 # Rail station construction window
+
 
 
 

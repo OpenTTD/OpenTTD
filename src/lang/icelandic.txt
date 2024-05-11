@@ -1698,17 +1698,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Iðnaður
 STR_CONFIG_SETTING_AI                                           :Mótherji
 STR_CONFIG_SETTING_AI_NPC                                       :Gervigreind
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Leiðsögukerfi lesta: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Leiðsögukerfi sem nota á fyrir lestir
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Leiðsögukerfi bifreiða: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Leiðsögukerfi sem nota á fyrir bíla og sporvagna
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Leiðsögukerfi skipa: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Leiðsögukerfi sem nota á fyrir skip
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Snúa járnbrautarlestum sjálfkrafa við á umferðarmerkjum: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Leyfa járnbrautarlestum að snúa við á umferðarmerkjum ef þau hafa beðið þar í langan tíma
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Ráðlegt)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Breyta gildi stillingar
 
@@ -2218,7 +2209,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Veldu le
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Leiðarvísir
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Velja tegund leiðarvísis
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Lestarstöðvastillingar
@@ -2231,8 +2221,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Veldu le
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Draga & Sleppa
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Byggja lestarstöð með 'draga og sleppa' aðferðinni
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Veldu flokk stöðva sem á að sýna
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Veldu tegund stöðvar til að reisa
+
 
 STR_STATION_CLASS_DFLT                                          :Sjálfgefin stöð
 STR_STATION_CLASS_WAYP                                          :Millistöð
@@ -2363,8 +2352,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kaupa la
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Hlutaval
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Veldu hlut til að byggja. Shift sýnir áætlaðan kostnað
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Veldu flokk hlutarins sem á að byggja
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Sýnishorn af hlutnum
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Stærð: {GOLD}{NUM} x {NUM} reitir
 

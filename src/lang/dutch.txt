@@ -955,6 +955,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Geluidseffecten
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Muziek
 
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valuta kiezen
@@ -1052,6 +1053,7 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Vink dit
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Lettertypen met anti-alias
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Vink dit vakje aan voor in grootte aanpasbare lettertypen met anti-alias
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Geautomatiseerd onderzoek
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Deelnemen aan geautomatiseerd onderzoek
@@ -1080,6 +1082,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basisset
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecteer de te gebruiken basisset voor muziek
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Aanvullende informatie over the basisset voor muziek
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Inhoud ophalen
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Controleren op nieuwe en aangepaste inhoud om te downloaden
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(geen invoegtoepassingen voor integratie met sociale platforms geïnstalleerd)
 
@@ -2126,17 +2130,8 @@ STR_CONFIG_SETTING_AI                                           :Tegenstanders
 STR_CONFIG_SETTING_AI_NPC                                       :Computerspelers
 STR_CONFIG_SETTING_NETWORK                                      :Netwerk
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Routezoeker voor treinen: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Routezoeker voor treinen.
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Routezoeker voor wegvoertuigen: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Routezoeker voor wegvoertuigen
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Routezoeker voor schepen: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Routezoeker voor schepen
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatisch omdraaien bij seinen: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Treinen mogen keren bij een sein als ze hier lang staan wachten
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Aanbevolen)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Instelwaarde wijzigen
 
@@ -2481,6 +2476,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Je spelernaam
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Beheeracties die nodig zijn voor deze client
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Beheeracties die nodig zijn voor dit bedrijf
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Meedoen met dit bedrijf
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Geef deze client toestemming om met je bedrijf mee te doen
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Een bericht sturen naar deze speler
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Een bericht versturen naar alle spelers van dit bedrijf
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Een bericht sturen naar alle toeschouwers
@@ -2789,7 +2785,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selectee
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Routepunt
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Type routepunt selecteren
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Stationskeuze
@@ -2802,8 +2797,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selectee
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Slepen
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Je kunt een station bouwen door te slepen
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecteer een stationsklasse om weer te geven
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selecteer het type station om te bouwen
+
 
 STR_STATION_CLASS_DFLT                                          :Standaard
 STR_STATION_CLASS_DFLT_STATION                                  :Standaard station
@@ -2946,8 +2940,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Land kop
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Keuze van object
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecteer object om te bouwen. Ctrl+klik voor diagonaal gebied. Voeg Shift toe voor alleen inschatting van de kosten
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Hiermee selecteer je de klasse van het te bouwen object
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Bekijk het object
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grootte: {GOLD}{NUM} x {NUM} tegels
 

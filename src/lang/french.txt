@@ -2130,17 +2130,8 @@ STR_CONFIG_SETTING_AI                                           :Compétiteurs
 STR_CONFIG_SETTING_AI_NPC                                       :Intelligence artificielle
 STR_CONFIG_SETTING_NETWORK                                      :Réseau
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Recherche de chemin des trains{NBSP}: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Recherche de chemin à utiliser pour les trains
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Recherche de chemin des véhicules routiers{NBSP}: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Recherche de chemin à utiliser pour les véhicules routiers
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Recherche de chemin des navires{NBSP}: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Recherche de chemin à utiliser pour les navires
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Demi-tour automatique aux signaux{NBSP}: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Autoriser les trains a faire demi-tour à un signal, si ils attendent depuis un long moment
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(recommandé)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Changer la valeur du paramètre
 
@@ -2793,7 +2784,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Choisir 
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Point de contrôle
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Choisir le type de point de contrôle
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Choix de la gare
@@ -2806,8 +2796,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Choisir 
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Glisser/Déposer
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construire une gare par glisser/déposer
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Choisir le type de station à afficher
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Choisir le type de station à construire
+
 
 STR_STATION_CLASS_DFLT                                          :Par défaut
 STR_STATION_CLASS_DFLT_STATION                                  :Stations par défaut
@@ -2950,8 +2939,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acheter 
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Sélection de l'objet
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Sélectionner l'objet à construire.{}Ctrl pour sélectionner en diagonale.{}Shift pour afficher seulement le coût estimé.
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Choisir le type d'objet à construire
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Aperçu de l'objet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Taille{NBSP}: {GOLD}{NUM}{NBSP}×{NBSP}{NUM} cases
 

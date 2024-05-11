@@ -2185,17 +2185,8 @@ STR_CONFIG_SETTING_AI                                           :Konkurendid
 STR_CONFIG_SETTING_AI_NPC                                       :Arvuti
 STR_CONFIG_SETTING_NETWORK                                      :Võrk
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Rongide marsruudileidja: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Marsruudileidja rongide jaoks
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Maanteesõidukite marsruudileidja: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Marsruudileidja maanteesõidukite jaoks
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Laevade marsruudileidja: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Marsruudileidja veesõidukite jaoks
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automaatne tagasipööre signaalide juures: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Luba rongidel ümber pöörata kui nad on pikka aega foori taga oodanud
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(soovitatud)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Määra seade väärtus
 
@@ -2850,7 +2841,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Depoole 
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Meldepunkt
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vali meldepunkti liik
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Raudteejaama valik
@@ -2863,8 +2853,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vali rau
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Lohistamine
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Ehita jaam kasutades hiirega lohistamist
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vali näidatav jaamajärk
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vali näidatav jaamaliik
+
 
 STR_STATION_CLASS_DFLT                                          :Vaikimisi
 STR_STATION_CLASS_DFLT_STATION                                  :Vaikimisi jaam
@@ -3007,8 +2996,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Maa ostm
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekti valik
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vali ehitatav objekt. Ctrl+klõps+lohistus valib ala diagonaaliti. Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Vali ehitatava objekti järk
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objekti eelvaade
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Suurus: {GOLD}{NUM} x {NUM} ruutu
 

@@ -1932,17 +1932,8 @@ STR_CONFIG_SETTING_AI                                           :Iomaitheoirí
 STR_CONFIG_SETTING_AI_NPC                                       :Ríomh-imreoirí
 STR_CONFIG_SETTING_NETWORK                                      :Líonra
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Aimsitheoir bealaigh do thraenacha: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :An t-aimsitheoir bealaigh a úsáidfear do thraenacha
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Aimsitheoir bealaigh d'fheithiclí bóthair: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :An t-aimsitheoir bealaigh a úsáidfear d'fheithiclí bóthair
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Aimsitheoir bealaigh do longa: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :An t-aimsitheoir bealaigh a úsáidfear do longa
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Aisiompú uathoibríoch ag comharthaí: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Ceadaigh do thraenacha aisiompú ag comhartha, más rud é go raibh siad ag fanacht ann píosa fada
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Molta)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Athraigh luach an tsocraithe
 
@@ -2547,7 +2538,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Roghnaig
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Pointe bealaigh
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Roghnaigh an cineál pointe bealaigh
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Stáisiún Iarnróid a Thógáil
@@ -2560,8 +2550,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Roghnaig
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Tarraing & Scaoil
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tóg stáisiún ag úsáid tarraing & scaoil
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Roghnaigh aicme stáisiúin le taispeáint
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Roghnaigh an cineál stáisiúin le tógáil
+
 
 STR_STATION_CLASS_DFLT                                          :Stáisiún réamhshocraithe
 STR_STATION_CLASS_WAYP                                          :Pointí bealaigh
@@ -2696,8 +2685,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Ceannaig
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Roghnú oibiachta
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Roghnaigh oibiacht le tógáil
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Roghnaigh aicme na hoibiachta le tógáil
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Réamhamharc ar an oibiacht
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Méid: {GOLD}{NUM} x {NUM} tíl
 

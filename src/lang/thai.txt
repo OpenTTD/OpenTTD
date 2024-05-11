@@ -1840,17 +1840,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :การกร
 STR_CONFIG_SETTING_AI                                           :คู่แข่ง
 STR_CONFIG_SETTING_AI_NPC                                       :ผู้เล่นคอมพิวเตอร์
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :ตัวค้นหาเส้นทางสำหรับรถไฟ: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :การหาค้นหาเส้นทางของขบวนรถไฟ
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :ตัวค้นหาเส้นทางสำหรับรถยนต์: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :การค้นหาเส้นทางของยานพาหนะทางบก
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :ตัวค้นหาเส้นทางสำหรับเรือ: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :การค้นหาเส้นทางของยานพาหนะทางน้ำ
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :หมุนกลับขบวนอัตโนมัติที่เสาอาณัติสัญญาณ: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :อนุญาตให้ขบวนรถไฟกลับขบวนที่เสาอาณัติสัญญาณเมื่อมีการรอสัญญาณอนุญาตเป็นเวลานาน
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(แนะนำ)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}เปลี่ยนค่าการตั้งค่า
 
@@ -2407,7 +2398,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}เล�
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}จุดตรวจ
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}เลือกชนิดของจุดตรวจ
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}ตัวเลือกของสถานีรถไฟ
@@ -2420,8 +2410,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}เล�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}ลากและวาง
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}สร้างสถานีโดยใช้การลากและวาง
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}เลือกชนิดของสถานีที่จะแสดง
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}เลือกชนิดของสถานีที่จะสร้าง
+
 
 STR_STATION_CLASS_DFLT                                          :สถานีมาตรฐาน
 STR_STATION_CLASS_WAYP                                          :จุดตรวจ
@@ -2554,8 +2543,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}ซื�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}การเลือกวัตถุ
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}เลือกวัตถุเพื่อสร้าง กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้างและการแสดงมูลค่าโดยประมาณ
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}เลือกชนิดของวัตถุที่จะสร้าง
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}ตัวอย่างวัตถุ
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}ขนาด: {GOLD}{NUM} x {NUM} ช่อง
 

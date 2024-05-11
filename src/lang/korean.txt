@@ -2131,17 +2131,8 @@ STR_CONFIG_SETTING_AI                                           :경쟁자
 STR_CONFIG_SETTING_AI_NPC                                       :컴퓨터 플레이어
 STR_CONFIG_SETTING_NETWORK                                      :네트워크
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :열차에 사용할 경로 탐색법: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :열차에 사용할 경로 탐색 방법을 선택합니다.
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :자동차/전차에 사용할 경로 탐색법: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :자동차/전차에 사용할 경로 탐색 방법을 선택합니다.
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :선박에 사용할 경로 탐색법: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :선박에 사용할 경로 탐색 방법을 선택합니다.
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :신호기 앞에서 회차: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :열차가 신호기 앞에서 너무 오래 기다리면 뒤로 되돌아갈 수 있도록 허용합니다.
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(권장)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}설정값 변경
 
@@ -2795,7 +2786,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}차량�
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}경유지
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}경유지 종류 설정
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}철도 역사 선택
@@ -2808,8 +2798,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}철도�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}드래그 & 드롭
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}드래그 & 드롭으로 역을 건설합니다
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}표시할 역의 종류를 선택합니다
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}건설할 역의 종류를 선택합니다
+
 
 STR_STATION_CLASS_DFLT                                          :기본
 STR_STATION_CLASS_DFLT_STATION                                  :기본 역
@@ -2952,8 +2941,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}나중�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}오브젝트 선택
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}건설할 오브젝트를 선택합니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}건설할 오브젝트의 등급을 선택합니다
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}오브젝트 미리보기
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}크기: {GOLD}{NUM} x {NUM} 칸
 

@@ -2028,17 +2028,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Sgaoileadh cara
 STR_CONFIG_SETTING_AI                                           :Co-farpaisichean
 STR_CONFIG_SETTING_AI_NPC                                       :Cluicheadairean coimpiutair
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Lorg shlighean aig trèanaichean: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :An dòigh a lorgas trèanaichean an slighe
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Lorg shlighean aig carbadan-rathaid: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :An dòigh a lorgas carbadan-rathaid an slighe
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Lorg slighean aig longan: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :An dòigh a lorgas longan an slighe
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Taobh contrarra aig comharran gu fèin-obrachail: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Faodaidh trèanaichean tilleadh aig comharra nuair a bhios iad air feitheamh ann ùine fada
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(molta)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Atharraich luach na roghainn
 
@@ -2573,7 +2564,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Tagh com
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Puing-thurais
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Tagh seòrsa na puinge-turais
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Roghainnean nan stèiseanan-rèile
@@ -2586,8 +2576,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Tagh dè
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Slaod is leig às
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tog stèisean le slaodadh is leigeil às
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Tagh seòrsa stèisean gus a shealltainn
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Tagh seòrsa an stèisein a tha thu airson togail
+
 
 STR_STATION_CLASS_DFLT                                          :Stèisean bunaiteach
 STR_STATION_CLASS_WAYP                                          :Puingean-turais
@@ -2727,8 +2716,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Ceannaic
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Tagh oibseact
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Tagh oibseact airson togail. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Tagh seòrsa na h-oibseicte a tha thu airson togail
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Ro-shealladh an oibseict
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Meud: {GOLD}{NUM} x {NUM} leacan
 

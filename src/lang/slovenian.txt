@@ -1979,17 +1979,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Razpored tovora
 STR_CONFIG_SETTING_AI                                           :Tekmeci
 STR_CONFIG_SETTING_AI_NPC                                       :Računalniški igralci
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Iskalnik poti za vlake: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Iskalnik poti za vlake.
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Iskalnik poti za vozila: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Iskalnik poti za cestna vozila.
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Logaritem poti za ladje: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Iskalnik poti za ladje.
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Avtomatično obračanje pri signalih: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Dovoli vlakom obračanje na signalih, če so tam čakali že dolgo.
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Priporočeno)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Spremeni vrednost
 
@@ -2517,7 +2508,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Izberi s
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Točka poti
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Izberi vrsto točke poti
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Izbira železniške postaje
@@ -2530,8 +2520,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Izberi d
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vleci in spusti
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Zgradi postajo s povleci in spusti
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Izberi vrsto postaje za prikaz
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Izberi vrsto postaje za gradnjo
+
 
 STR_STATION_CLASS_DFLT                                          :Privzeta postaja
 STR_STATION_CLASS_WAYP                                          :Točke poti
@@ -2663,8 +2652,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupi zem
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Izbor zgradbe
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Izberi zgradbo za postavitev. Shift preklaplja med izgradnjo in predvidenimi stroški
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Izberi vrsto objekta za gradnjo
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Predogled zgradbe
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost: {GOLD}{NUM} x {NUM} polj
 

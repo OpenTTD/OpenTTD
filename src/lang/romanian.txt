@@ -2120,17 +2120,8 @@ STR_CONFIG_SETTING_AI                                           :Concurenți
 STR_CONFIG_SETTING_AI_NPC                                       :Jucători virtuali
 STR_CONFIG_SETTING_NETWORK                                      :Rețea
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Algoritm de rutare pentru trenuri: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algoritm de rutare pentru trenuri
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Algoritm de rutare pentru autovehicule: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Algoritmul de rutare folosit pentru autovehicule
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Algoritm de rutare pentru nave: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Algoritmul de rutare folosit pentru nave
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Întoarcere automată la semafoare: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permite trenurilor să întoarcă la semafor, dacă așteaptă de mult timp
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recomandat)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Schimbă valoarea setării
 
@@ -2781,7 +2772,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Alege or
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Punct de tranzit
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Alege tipul de punct de tranzit
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Alege tipul de gară
@@ -2794,8 +2784,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Alege lu
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construiește o stație prin drag & drop
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Alege o clasă de stații pentru afișare
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Alege tipul de stație pentru construcție
+
 
 STR_STATION_CLASS_DFLT                                          :Implicită
 STR_STATION_CLASS_DFLT_STATION                                  :Stație implicită
@@ -2938,8 +2927,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Cumpăra
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selecția obiectelor
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selectați obiectul de construit. Ctrl+Click+Drag pentru a selecta zona în diagonală. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selectează clasa obiectului de construit
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Previzualizarea obiectului
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dimensiune: {GOLD}{NUM} x {NUM} pătrățele
 

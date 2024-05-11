@@ -2114,15 +2114,8 @@ STR_CONFIG_SETTING_AI                                           :Konkurantoj
 STR_CONFIG_SETTING_AI_NPC                                       :Komputil-ludantoj
 STR_CONFIG_SETTING_NETWORK                                      :Reto
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Padtrovilo por vagonaroj: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Padtrovilo por stratveturiloj: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Padtrovilo uzota por stratveturiloj
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Padtrovilo por ŝipoj: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Aŭtomata dorsflankante ĉe signaloj: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permesu al vagonaro turniĝi ĉe semaforo, se ĝi jam atendis dum longa tempo
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Rekomendite)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ŝanĝu agord-valoron
 
@@ -2746,7 +2739,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Elekti d
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Vojpunkto
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Elekti tipon de vojpunkto
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Elekto de Stacidomo
@@ -2759,8 +2751,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Elektu l
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Tiru k metu
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tiru por konstrui stacidomon
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Elekti stacidomklason por montri.
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Elekti stacidomotipon por konstrui.
+
 
 STR_STATION_CLASS_DFLT                                          :Defaŭlta
 STR_STATION_CLASS_DFLT_STATION                                  :Defaŭlta stacio
@@ -2895,8 +2886,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Aĉetu l
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Elekto de Objekto
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Elektu objekton por konstrui. La majuskliga klavo baskuligas inter konstrui/(kosto)taksi
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Elektu klason de la objekto konstrui
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Antaŭvido de la objekto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeco: {GOLD}{NUM} x {NUM} kaheloj
 

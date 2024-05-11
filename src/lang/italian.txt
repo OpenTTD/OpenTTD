@@ -2158,17 +2158,8 @@ STR_CONFIG_SETTING_AI                                           :Avversari
 STR_CONFIG_SETTING_AI_NPC                                       :Giocatori controllati dal computer
 STR_CONFIG_SETTING_NETWORK                                      :Rete
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pathfinder per i treni: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pathfinder da utilizzare per i treni
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pathfinder per gli automezzi: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Pathfinder da utilizzare per gli automezzi
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pathfinder per le navi: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pathfinder da utilizzare per le navi
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Inversione automatica ai segnali: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Consente ai treni di invertire la marcia dopo aver atteso a lungo a un segnale.
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(raccomandato)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Cambia impostazione
 
@@ -2825,7 +2816,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selezion
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Waypoint
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Seleziona il tipo di waypoint
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Selezione stazione
@@ -2838,8 +2828,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selezion
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Costruisce una stazione con il drag & drop
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Seleziona il tipo di stazioni da mostrare
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Seleziona il tipo di stazione da costruire
+
 
 STR_STATION_CLASS_DFLT                                          :Predefinita
 STR_STATION_CLASS_DFLT_STATION                                  :Stazione predefinita
@@ -2982,8 +2971,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acquista
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selezione oggetto
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleziona l'oggetto da costruire. Ctrl+Clic+trascinamento per selezionare l'area in diagonale. Premere anche Shift per visualizzare solo la stima dei costi
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Seleziona la classe dell'oggetto da costruire
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Anteprima dell'oggetto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dimensione: {GOLD}{NUM} x {NUM} caselle
 

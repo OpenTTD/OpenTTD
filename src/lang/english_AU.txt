@@ -2130,17 +2130,8 @@ STR_CONFIG_SETTING_AI                                           :Competitors
 STR_CONFIG_SETTING_AI_NPC                                       :Computer players
 STR_CONFIG_SETTING_NETWORK                                      :Network
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pathfinder for trains: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Path finder to use for trains
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pathfinder for road vehicles: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Path finder to use for road vehicles
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pathfinder for ships: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Path finder to use for ships
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatic reversing at signals: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Allow trains to reverse on a signal, if they have waited there a long time
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recommended)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Change setting value
 
@@ -2794,7 +2785,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Select r
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Waypoint
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Select waypoint type
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Rail Station Selection
@@ -2807,8 +2797,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Select l
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Build a station using drag & drop
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Select a station class to display
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Select the station type to build
+
 
 STR_STATION_CLASS_DFLT                                          :Default
 STR_STATION_CLASS_DFLT_STATION                                  :Default station
@@ -2951,8 +2940,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Purchase
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Object Selection
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Select object to build. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Select class of the object to build
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Preview of the object
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Size: {GOLD}{NUM} x {NUM} tiles
 

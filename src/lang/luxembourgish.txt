@@ -2122,17 +2122,8 @@ STR_CONFIG_SETTING_AI                                           :Géigner
 STR_CONFIG_SETTING_AI_NPC                                       :Computergéigner
 STR_CONFIG_SETTING_NETWORK                                      :Netzwierk
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pfadfinder fir Zich: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pfadfinder dee fir Zich benotzt gëtt
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pfadfinder fir Stroossegefierer: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Pfadfinder dee fir Gefierer benotzt gëtt
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pfadfinder fir Schëffer: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pfadfinder dee fir Schëffer benotzt gëtt
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatescht Emdréinen bei Signaler: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Erlab Zich bei engem Signal emzedréinen, wann se eng laang Zäit geward hunn
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(recommandéiert)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Astellung änneren
 
@@ -2783,7 +2774,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Wielt d'
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Weepunkt
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Wielt de Weepunktyp
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Gare Auswiel
@@ -2796,8 +2786,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Wielt d'
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}D'Statioun per drag & drop bauen
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Wielt eng Statiounsklass déi ugewise gëtt
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Wielt den Typ vu Statioun dee gebaut gëtt
+
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstatioun
@@ -2940,8 +2929,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kaf Land
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objetsauswiel
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Wiel den Objet dee gebaut gëtt. Ctrl+Klick+Zéien wielt d'Areal diagonal. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Wiel d'Klass vun dem Objet dee sollt gebaut ginn
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Preview vum Objet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Gréisst: {GOLD}{NUM} x {NUM} Felder
 

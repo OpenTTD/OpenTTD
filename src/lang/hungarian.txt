@@ -2186,17 +2186,8 @@ STR_CONFIG_SETTING_AI                                           :Ellenfelek
 STR_CONFIG_SETTING_AI_NPC                                       :Számítógép által vezérelt ellenfelek
 STR_CONFIG_SETTING_NETWORK                                      :Hálózat
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Útvonalkereső vonatokhoz: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :A vonatokhoz használt útvonalkereső
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Útvonalkereső közúti járművekhez: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :A közúti járművekhez használt útvonalkereső
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Útvonalkereső hajókhoz: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :A hajókhoz használt útvonalkereső
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatikus megfordulás jelzőknél: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :A vonatok automatikus megfordításának engedélyezése, ha azok túl hosszú ideje várakoznak egy jelző előtt
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Ajánlott)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Válassz beállítási értéket
 
@@ -2847,7 +2838,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Járműt
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Ellenőrző pont
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Válassz ellenőrző pont típust
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Vasútállomás kiválasztása
@@ -2860,8 +2850,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}A vasút
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Fogd és dobd
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Állomás építése fogd és dobd módon
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Válassz egy megjelenítendő állomásfajtát
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Megépítendő állomástípus kiválasztása
+
 
 STR_STATION_CLASS_DFLT                                          :Alapértelmezett
 STR_STATION_CLASS_DFLT_STATION                                  :Alapértelmezett állomás
@@ -3004,8 +2993,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Földter
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektum kiválasztása
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Építendő objektum kiválasztása. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift+kattintással csak a becsült költséget jeleníti meg
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Építendő objektum típusának kiválasztása
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objektum előnézete
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Méret: {GOLD}{NUM} x {NUM} mező
 

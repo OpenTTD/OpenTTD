@@ -2127,17 +2127,8 @@ STR_CONFIG_SETTING_AI                                           :Competidores
 STR_CONFIG_SETTING_AI_NPC                                       :Xogadores da computadora
 STR_CONFIG_SETTING_NETWORK                                      :Rede
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Buscador de ruta para trens: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Buscador de ruta empregado polos trens
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Buscador de ruta para vehículos de estrada: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Buscador de ruta empregado polos vehículos de estrada
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Buscador de ruta para barcos: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Buscador de ruta empregado polos barcos
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Cambio de sentido automático nos sinais: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permite aos trens cambiar de sentido nun sinal, se agardaron durante moito tempo
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recomendado)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Cambia-lo valor
 
@@ -2790,7 +2781,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleccio
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Punto de ruta
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Selecciona-lo tipo de punto de ruta
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Selección da estación
@@ -2803,8 +2793,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Seleccio
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastrar e soltar
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construír estación arrastrando e soltando
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecciona a clase de estación a mostrar
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selecciona o tipo da estación a construir
+
 
 STR_STATION_CLASS_DFLT                                          :Por defecto
 STR_STATION_CLASS_DFLT_STATION                                  :Estación por defecto
@@ -2947,8 +2936,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar 
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selección de obxectos
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecciona o obxecto a construír. Ctrl+Clic+Arrastrar para seleccionar a área diagonalmente. Tamén podes premer Shift para amosar unha estimación do custo
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selecciona a clase de obxecto a construír
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Previsualización do obxecto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamaño: {GOLD}{NUM} x {NUM} cadros
 

@@ -2128,17 +2128,8 @@ STR_CONFIG_SETTING_AI                                           :Cystadleuwyr
 STR_CONFIG_SETTING_AI_NPC                                       :Chwaraewyr Cyfrifiadurol
 STR_CONFIG_SETTING_NETWORK                                      :Rhwydwaith
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Llwybrwr ar gyfer trenau: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Llwybrwr i'w ddefnyddio ar gyfer trenau
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Llwybrwr ar gyfer cerbydau ffordd: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Llwybrwr i'w ddefnyddio ar gyfer cerbydau ffordd
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Llwybrwr ar gyfer llongau: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Llwybrwr i'w ddefnyddio ar gyfer llongau
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Troi'n ôl yn awtomatig wrth signalau: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Caniatáu i drenau gwrthdroi wrth signal, os ydynt wedi aros yno am beth amser
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Argymellir)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Newid gwerth gosodiad
 
@@ -2791,7 +2782,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Dewiswch
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Pwynt Llwybro
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Dewis math o bwynt llwybro
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Dewiswch Orsaf Reilffordd
@@ -2804,8 +2794,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Dewiswch
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Llusgo a Gollwng
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Adeiladu gorsaf gan ddefnyddio llusgo a gollwng
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Dewiswch y dosbarth o orsaf i'w dangos
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Dewiswch y math o orsaf i'w hadeiladu
+
 
 STR_STATION_CLASS_DFLT                                          :Rhagosodiad
 STR_STATION_CLASS_DFLT_STATION                                  :Gorsaf rhagosodedig
@@ -2948,8 +2937,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Prynu ti
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Dewis Gwrthrych
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Dewisiwch wrthrych i'w hadeiladu. Ctrl+Clic+Llusgo i dewis yr ardal yn ddeiagonal. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Dewisiwch dosbarth y gwrthrych i'w hadeiladu
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Rhagolwg o'r gwrthrych
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Maint: {GOLD}{NUM} x {NUM} teil
 

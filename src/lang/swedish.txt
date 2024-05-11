@@ -2128,17 +2128,8 @@ STR_CONFIG_SETTING_AI                                           :Motståndare
 STR_CONFIG_SETTING_AI_NPC                                       :Datorspelare
 STR_CONFIG_SETTING_NETWORK                                      :Nätverk
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vägfinnare för tåg: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Vägfinnare som tåg ska använda
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Vägfinnare för vägfordon: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Vägfinnare som vägfordon ska använda
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Vägfinnare för skepp: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Vägfinnare som skepp ska använda
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Vänd automatiskt vid signaler: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tillåt att tåg vänder vid en signal om de har väntat där länge
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Rekommenderad)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ändra inställningsvärde
 
@@ -2791,7 +2782,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Välj ri
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Riktmärke
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Välj riktmärkestyp
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Val av tågstation
@@ -2804,8 +2794,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Välj l�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Släpp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg en station genom att dra & släppa
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Välj vilken stationsklass som ska visas
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Välj stationstyp att bygga
+
 
 STR_STATION_CLASS_DFLT                                          :Original
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstation
@@ -2948,8 +2937,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Köp mar
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Val av objekt
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Välj objekt att bygga. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Välj typ av objekt att bygga
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Förhandsvisning av objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Storlek: {GOLD}{NUM} x {NUM} rutor
 

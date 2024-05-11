@@ -1673,15 +1673,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Ídnaðir
 STR_CONFIG_SETTING_AI                                           :Kappingarneytar
 STR_CONFIG_SETTING_AI_NPC                                       :Teldu spælarir
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Leiðbeinari fyri tok: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Leið beinari at nýta til tok
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Leiðbeinari fyri akfør: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Leið beinari at nýta fyri akfør
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Leiðbeinari fyri skip: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Leið beinari at nýta fyri skip
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Viðmældur)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Broyt ásetings virði
 
@@ -2167,7 +2158,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Vel hvø
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Waypoint
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vel waypoint slag
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Tok støðs úrval
@@ -2180,8 +2170,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vel hvus
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Toga & Slepp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg eina støð vi at nýta toga & slepp
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vel ein klassa av støð at vísa
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vel hvat slag av støð skal byggjast
+
 
 STR_STATION_CLASS_DFLT                                          :Vanlig støð
 STR_STATION_CLASS_WAYP                                          :Waypoint

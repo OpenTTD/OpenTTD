@@ -810,7 +810,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 ###length 3
 
 
-###length 2
 
 
 # Config errors
@@ -942,6 +941,7 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 # Rail waypoint construction window
 
 # Rail station construction window
+
 
 
 

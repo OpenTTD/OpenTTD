@@ -2124,17 +2124,8 @@ STR_CONFIG_SETTING_AI                                           :Rakipler
 STR_CONFIG_SETTING_AI_NPC                                       :Bilgisayar oyuncuları
 STR_CONFIG_SETTING_NETWORK                                      :Ağ
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Trenler için yol bulucu: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Trenler için kullanılacak "yol bulucu" algoritma
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Karayolu taşıtları için yol bulucu: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Karayolu araçları için kullanılacak "yol bulucu" algoritma
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Gemiler için yol bulucu: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Gemiler için kullanılacak "yol bulucu" algoritma
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :İşaretlerde otomatik geri çevirme: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tren sinyalde uzun süre beklediği takdirde ters yöne gitmesine izin ver
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Önerilen)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ayar değerini değiştir
 
@@ -2786,7 +2777,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Tren gar
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Yerimi
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Yerimi türü seç
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Tren istasyonu Seçimi
@@ -2799,8 +2789,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Tren ist
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Sürükle Bırak
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Sürükle bırak tekniğiyle istasyon kur
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Görüntülenecek istasyon türünü seçin
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Yapılacak istasyon türünü seçin
+
 
 STR_STATION_CLASS_DFLT                                          :Varsayılan
 STR_STATION_CLASS_DFLT_STATION                                  :Varsayılan istasyon
@@ -2943,8 +2932,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Gelecekt
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Nesne Seçimi
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Yapılacak nesneyi seçin.Ctrl + Sol Tık'a basılı tutarak sürüklerseniz çapraz olarak seçersiniz. Ayrıca Shift tuşuna basılı tutarsanız sadece maliyetini görüntülersiniz.
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}İnşa edilecek nesnenin sınıfını seçin
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Nesnenin önizlemesi
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Boyut: {GOLD}{NUM} x {NUM} kare
 

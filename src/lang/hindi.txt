@@ -712,9 +712,7 @@ STR_CONFIG_SETTING_INTERFACE_GENERAL                            :सामान
 STR_CONFIG_SETTING_COMPANY                                      :कंपनी
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :मार्ग
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :नौकाओं द्वारा उपयोग किया जाने वाला पथान्वेषी
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :यदि ट्रेनें लंबे समय तक वहां प्रतीक्षा करती हैं तो उन्हें सिग्नल पर रिवर्स करने की अनुमति दें
-###length 2
 
 
 # Config errors
@@ -868,6 +866,7 @@ STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}अक�
 # Rail waypoint construction window
 
 # Rail station construction window
+
 
 
 STR_STATION_CLASS_DFLT                                          :मानक स्टेशन

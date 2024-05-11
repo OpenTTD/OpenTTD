@@ -2510,17 +2510,8 @@ STR_CONFIG_SETTING_AI                                           :Rywale
 STR_CONFIG_SETTING_AI_NPC                                       :Gracze komputerowi
 STR_CONFIG_SETTING_NETWORK                                      :Sieć
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Wytyczanie drogi dla pociągów: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :System wyszukiwania trasy dla pociągów
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Wytyczanie drogi dla pojazdów: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :System wyszukiwania trasy dla pojazdów drogowych
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Wytyczanie drogi dla statków: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :System wyszukiwania trasy dla statków
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatycznie zawracaj przy sygnałach: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Pozwól pociągom zawracać przed semaforem, jeśli czekają tam bardzo długo
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Zalecane)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmiana wartości
 
@@ -3174,7 +3165,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Wybierz 
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Posterunek
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Wybierz typ posterunku
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Wybór stacji
@@ -3187,8 +3177,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Wybierz 
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Przeciągnij i upuść
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Buduj stację używając „przeciągnij i upuść”
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Wybierz rodzaj stacji do pokazania
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Wybierz typ stacji do zbudowania
+
 
 STR_STATION_CLASS_DFLT                                          :Standardowa
 STR_STATION_CLASS_DFLT_STATION                                  :Standardowa stacja
@@ -3331,8 +3320,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakup te
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Wybór obiektu
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Wybierz obiekt do budowy. Ctrl+klik+przeciągnięcie zaznacza obszar po przekątnej. Dodatkowo wciśnięcie Shift wyświetli jedynie szacunkowy koszt
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Wybierz rodzaj obiektu do budowy
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Podgląd obiektu
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Rozmiar: {GOLD}{NUM} x {NUM} pól
 

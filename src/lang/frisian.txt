@@ -1802,14 +1802,7 @@ STR_CONFIG_SETTING_AI                                           :Tsjinstânners
 STR_CONFIG_SETTING_AI_NPC                                       :Computer spilers
 STR_CONFIG_SETTING_NETWORK                                      :Netwurk
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pathfinder foar treinen: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pathfinder foar auto's: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pathfinder foar skippen: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pathfinder te brûken foar skippen
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Omkeare fan treinen by seinen: {STRING}
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recommended)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Feroarje wearde
 
@@ -2269,7 +2262,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selektea
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Kontrôlepost
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Selectear type kontrôlepost
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Treinstasjon Seleksje
@@ -2281,7 +2273,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Stasjon 
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selektear lengte fan treinstasjon
 STR_STATION_BUILD_DRAG_DROP                                     :Sleepe en los litte
 
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selektearje type stasjon om te bouwe
+
 
 STR_STATION_CLASS_DFLT                                          :Standert stasjon
 STR_STATION_CLASS_WAYP                                          :Kontrôleposten
@@ -2385,8 +2377,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Keapje l
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekt seleksje
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selektearje te bouen objekt
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selektearje klasse fan it te bouwen objekt
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Besjoch objekt yn it foar
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grutte: {GOLD}{NUM} x {NUM} Flakken
 

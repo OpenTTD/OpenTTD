@@ -1988,17 +1988,8 @@ STR_CONFIG_SETTING_AI                                           :競争会社
 STR_CONFIG_SETTING_AI_NPC                                       :コンピュータプレイヤー
 STR_CONFIG_SETTING_NETWORK                                      :ネットワーク
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :列車の経路探索アルゴリズム: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :列車の経路探索アルゴリズムを決めます
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :車両の経路探索アルゴリズム: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :車両の経路探索アルゴリズムを決めます
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :船舶の経路探索アルゴリズム: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :船舶の経路探索アルゴリズムを決めます
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :信号待ちでの折返し: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :列車が信号で長く待たされた場合、進路を反転することを許可します
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF{BLUE}(おすすめ)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}設定を変更します
 
@@ -2610,7 +2601,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}列車�
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}中継駅
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}中継駅の種類を選択します
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}駅の選択
@@ -2623,8 +2613,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}駅の�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}任意のサイズ
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}ドラッグ&ドロップで任意のサイズの駅を建設します
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}駅の種類を選択します
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}駅の種類を選択します
+
 
 STR_STATION_CLASS_DFLT                                          :標準駅
 STR_STATION_CLASS_WAYP                                          :中継駅
@@ -2764,8 +2753,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}将来�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}オブジェクトを配置
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}設置するオブジェクトを選択して下さい。Ctrlで斜めに選択できます。Shift+クリックで費用を見積もります
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}設置するオブジェクトを選びます
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}オブジェクトをプレビューします
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}サイズ: {GOLD}{NUM} x {NUM} マス
 

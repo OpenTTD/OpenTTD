@@ -1125,7 +1125,6 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 ###length 3
 
 
-###length 2
 
 
 # Config errors
@@ -1288,6 +1287,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Изгр
 
 
 
+
 # Signal window
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Влез сигнализација (електрика){}Зелено е се додека има барем еден зелен излез-сигнал во продолжението на траката, во спротивно е црвено.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Излез Сигнализација (електрика){}Се однесува на ист начин како блок-сигналот, но потребно е да ја има точната боја на влезен и комбо пресигнал.
@@ -1335,7 +1335,6 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Поди
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Избор на објект
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Одберете објект да се изгради
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Преглед на објектот
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Големина: {GOLD}{NUM} x {NUM} плочки
 

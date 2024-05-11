@@ -1747,17 +1747,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Zama banaketa
 STR_CONFIG_SETTING_AI                                           :Lehiakideak
 STR_CONFIG_SETTING_AI_NPC                                       :Ordenagailu jokalariak
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Trenen ibilbide bilatzailea: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Trenek erabiliko duten ibilbide bilatzailea
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Errepide ibilgailuen ibilbide bilatzailea: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Errepide ibilgailuek erabiliko duten ibilbide bilatzailea
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Itsasontzien ibilbide bilatzailea: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Itsasontziek erabiliko duten ibilbide bilatzailea
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Seinaletan automatikoki buelta ematea: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Trenak seinaleetan buelta ematea baimendu, denbora luzez itxaroten ari badira
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Gomendatua)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ezarpenaren balioa aldatu
 
@@ -2271,7 +2262,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Tren gor
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Bidepuntua
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Bidepuntu mota aukeratu
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Tren geltokiak aukeratu
@@ -2284,8 +2274,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Geltokia
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastratzerakoan eraiki
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Geltokia eraiki arrastratzerakoan
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Eraikiko den geltoki mota
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Eraikiko den geltoki mota
+
 
 STR_STATION_CLASS_DFLT                                          :Geltoki lehenetsia
 STR_STATION_CLASS_WAYP                                          :Bidepuntuak
@@ -2416,8 +2405,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Lur sail
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektu hautaketa
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Aukeratu objektua eraikitzeko. Mayus eraikinaren kostuen estimazioa aktibatzen du
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Hautatu objektu klase bat eraikitzeko
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objektua aurreikusi
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamainua: {GOLD}{NUM} x {NUM} karratu
 

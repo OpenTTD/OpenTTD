@@ -2131,17 +2131,8 @@ STR_CONFIG_SETTING_AI                                           :Competidors
 STR_CONFIG_SETTING_AI_NPC                                       :Jugadors IA
 STR_CONFIG_SETTING_NETWORK                                      :Xarxa
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Encaminador dels trens: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algorisme a emprar per a escollir les rutes dels trens
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Encaminador d'automòbils: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Algorisme a emprar per a escollir les rutes dels automòbils
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Encaminador dels vaixells: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Algorisme a emprar per a escollir les rutes dels vaixells
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Canvi de sentit automàtic als senyals: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permetre als trens girar en un senyal, si esperaven allà durant molt temps
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recomanat)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Canvia el valor de l'ajustament
 
@@ -2795,7 +2786,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleccio
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Punt de pas
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Seleccioneu el tipus de punt de pas.
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Estacions de Tren
@@ -2808,8 +2798,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Seleccio
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrossega i solta
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construeix una estació amb el mètode arrossega i solta.
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecciona un tipus de estació a mostrar
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selecciona el tipus de estació a construir
+
 
 STR_STATION_CLASS_DFLT                                          :Per defecte
 STR_STATION_CLASS_DFLT_STATION                                  :Estació per defecte
@@ -2952,8 +2941,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Compra t
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selecció d'objecte
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleccioneu l'objecte a construir. Amb Ctrl, se selecciona una àrea diagonal. Amb Maj, es commuta entre construir i mostrar el cost estimat.
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selecciona la classe d'objecte a construir
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Previsualització de l'objecte
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Mida: {GOLD}{NUM} x {NUM} cel·les
 

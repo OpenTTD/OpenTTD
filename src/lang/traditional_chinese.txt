@@ -2041,17 +2041,8 @@ STR_CONFIG_SETTING_AI                                           :競爭對手
 STR_CONFIG_SETTING_AI_NPC                                       :電腦玩家
 STR_CONFIG_SETTING_NETWORK                                      :網路
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :列車的路徑搜尋方式：{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :設定列車使用的路徑搜尋方式。
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :車輛的路徑搜尋方式：{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :設定公路車輛（包括電車）使用的路徑搜尋方式。
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :船舶的路徑搜尋方式：{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :設定船舶使用的路徑搜尋方式。
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :在號誌自動倒轉：{STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :設定是否容許列車在號誌前等候超過一段時間後調頭。
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(建議)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}修改設定值
 
@@ -2682,7 +2673,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}選擇�
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}號誌站
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}顯示號誌站種類
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}選擇火車站
@@ -2695,8 +2685,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}選擇�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}拖放
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}以拖曳方式興建車站
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}選擇要顯示的車站種類
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}選擇要興建的車站種類
+
 
 STR_STATION_CLASS_DFLT                                          :預設
 STR_STATION_CLASS_DFLT_STATION                                  :預設車站
@@ -2839,8 +2828,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}購買�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}選擇物件
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}選擇要建立的物件。按 Ctrl 以對角線選擇區域。按 Shift 可切換建立／顯示預估的建立費用。
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}選擇物件的類別以進行建造
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}預覽此物件
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小：{GOLD}{NUM} x {NUM} 格
 

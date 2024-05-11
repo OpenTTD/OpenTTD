@@ -1856,17 +1856,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Vragverspreidin
 STR_CONFIG_SETTING_AI                                           :Mededingers
 STR_CONFIG_SETTING_AI_NPC                                       :Rekenaar spelers
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Padvinder vir treine: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pad speurder om vir teine te gebruik
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Padvinder vir pad voertuie: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Pad speurder om vir pad vervoer te gebruik
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Padvinder vir skepe: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pad speurder om vir skepe te gebruik
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Outomatiese rigting verandering op seine: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Laat treine toe om agteruit te gaan by signale, as hulle daar lank gewag het
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Aanbevole)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Verander stel waarde
 
@@ -2391,7 +2382,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Kies spo
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Roetebaken
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Kies tipe roetebaken
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Spoor Stasie Keuse
@@ -2404,8 +2394,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Kies tre
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Sleep & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bou 'n stasie gebruikend sleep & drop
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Kies 'n stasie klas om te vertoon
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Kies die stasie tipe om te bou
+
 
 STR_STATION_CLASS_DFLT                                          :Verstek stasie
 STR_STATION_CLASS_WAYP                                          :Roetebakens
@@ -2540,8 +2529,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop gro
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Voorwerp Keuse
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selekteer voorwerp om te bou. Shift skakel gebou/wys koste beraaming
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Kies klas van die voorwerp te bou
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Voorskou van 'n voorwerp
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grootte: {GOLD}{NUM} x {NUM} teels
 

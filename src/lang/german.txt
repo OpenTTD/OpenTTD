@@ -2124,17 +2124,8 @@ STR_CONFIG_SETTING_AI                                           :Mitbewerber
 STR_CONFIG_SETTING_AI_NPC                                       :Computerspieler
 STR_CONFIG_SETTING_NETWORK                                      :Netzwerk
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pfadsucher für Züge: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pfadsuch-Algorithmus für Züge
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pfadsucher für Straßenfahrzeuge: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Pfadsuch-Algorithmus für Straßenfahrzeuge
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pfadsucher für Schiffe: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pfadsuch-Algorithmus für Schiffe
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatisches Umdrehen an Signalen: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Erlaube Zügen, an Signalen umzudrehen, wenn sie dort zu lange gewartet haben
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(empfohlen)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Wert der Einstellung ändern
 
@@ -2787,7 +2778,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Ausricht
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Wegpunkt
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Wegpunktbauform auswählen
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Bahnhof bauen
@@ -2800,8 +2790,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Bahnstei
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Klicken und Ziehen
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Stationsgröße durch Klicken und Ziehen frei wählbar
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Eine Stationsart zum Anzeigen auswählen
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Die Stationsart auswählen, die gebaut werden soll
+
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standart-Haltestelle
@@ -2944,8 +2933,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Land fü
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektauswahl
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Zu bauendes Objekt auswählen. Strg+Klick+Ziehen wählt das Gebiet diagonal. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Objektklasse auswählen
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Vorschau des Objekts
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Größe: {GOLD}{NUM} × {NUM} Felder
 

@@ -1881,17 +1881,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :התפלגות 
 STR_CONFIG_SETTING_AI                                           :מתחרים
 STR_CONFIG_SETTING_AI_NPC                                       :שחקני מחשב
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{STRING} :אלגוריתם איתור נתיב עבור רכבות
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :אלגוריתם איתור נתיב עבור רכבות
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{STRING} :אלגוריתם איתור נתיב עבור רכבי כביש
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :אלגוריתם איתור נתיב עבור רכבי כביש
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{STRING} :אלגוריתם איתור נתיב עבור כלי שייט
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :אלגוריתם איתור נתיב עבור אוניות
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :החלפת כיוון אוטומטית ברמזורים: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :אפשר לרכבות להחליף כיוון ברמזור, אם הן חיכו שם זמן ממושך
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(מומלץ)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}שנה ערך
 
@@ -2447,7 +2438,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}בחר �
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}נקודת ציון
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}בחר את סוג נקודות הציון
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}בחירת תחנת רכבת
@@ -2460,8 +2450,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}בחר �
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}גרירה ושחרור
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}בניית תחנה ע"י גרירה ושחרור
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}בחר את סוג התחנה שיוצג
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}בחר את סוג התחנה לבנייה
+
 
 STR_STATION_CLASS_DFLT                                          :תחנת בחירת מחדל
 STR_STATION_CLASS_WAYP                                          :נקודות דרך
@@ -2595,8 +2584,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}קנה �
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}פירט נבחר
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}בחר פריט לבנייה. Shift בורר בניה/הצגה של הערכת עלות
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}בחר את סוג הפריט לבנייה
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}צפיה מקדימה של האובייקט
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}גודל: {GOLD}{NUM} x {NUM} משבצת
 

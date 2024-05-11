@@ -249,7 +249,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} �
 STR_QUANTITY_BATTERIES                                          :{COMMA} батарей{P ка ки ок}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} пластику
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} пляш{P ка ки ок} газованої води
-STR_QUANTITY_N_A                                                :немає
+STR_QUANTITY_N_A                                                :Відсутня
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -2260,17 +2260,8 @@ STR_CONFIG_SETTING_AI                                           :Конкуре�
 STR_CONFIG_SETTING_AI_NPC                                       :Віртуальні гравці
 STR_CONFIG_SETTING_NETWORK                                      :Мережа
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Алгоритм пошуку шляху для поїздів: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Вибір алгоритма пошуку шляху для залізничного транспорту.
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Алгоритм пошуку шляху для автомобілів: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Вибір алгоритма пошуку шляху для дорожнього транспорту.
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Алгоритм пошуку шляху для кораблів: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Вибір алгоритма пошуку шляху для водного транспорту.
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Автоматично розвертатися біля сигналів: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Дозволяє поїздам розвертатися на сигналах, котрі не вдається проїхати впродовж довгого часу.
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(рекомендовано)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Змініть значення
 
@@ -2926,7 +2917,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Вибі
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Точка маршруту
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Виберіть тип точки маршруту
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Вибір станції
@@ -2939,8 +2929,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Вибе
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Довільно
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Будувати станцію за методом "перетягнути й відпустити"
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Виберіть тип станції для відображення
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Виберіть тип станції для забудови
+
 
 STR_STATION_CLASS_DFLT                                          :Звичайна
 STR_STATION_CLASS_DFLT_STATION                                  :Звичайна станція
@@ -3083,8 +3072,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Купи
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Вибір об'єкта
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Обрання об'єкту для побудови. Ctrl+клац+протягування для виділення діагональної ділянки. Утримуйте Shift для показу очікуваних витрат
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Вибрати тип об'єкту для будівництва
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Попередній перегляд об'єкта
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Розмір: {GOLD}{NUM} x {NUM} клітинок
 
