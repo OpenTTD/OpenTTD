@@ -216,6 +216,8 @@ ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 		this->savegame->Destroy();
 		this->savegame = nullptr;
 	}
+
+	InvalidateWindowData(WC_CLIENT_LIST, 0);
 }
 
 std::unique_ptr<Packet> ServerNetworkGameSocketHandler::ReceivePacket()
@@ -278,8 +280,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	this->SendPackets(true);
 
 	this->DeferDeletion();
-
-	InvalidateWindowData(WC_CLIENT_LIST, 0);
 
 	return status;
 }
