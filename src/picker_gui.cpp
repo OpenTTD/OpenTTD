@@ -275,10 +275,11 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 			Rect ir = r.Shrink(WidgetDimensions::scaled.matrix);
 			const int selected = this->callbacks.GetSelectedClass();
 			const auto vscroll = this->GetScrollbar(WID_PW_CLASS_SCROLL);
+			const int y_step = this->GetWidget<NWidgetResizeBase>(widget)->resize_y;
 			auto [first, last] = vscroll->GetVisibleRangeIterators(this->classes);
 			for (auto it = first; it != last; ++it) {
 				DrawString(ir, this->callbacks.GetClassName(*it), *it == selected ? TC_WHITE : TC_BLACK);
-				ir.top += this->resize.step_height;
+				ir.top += y_step;
 			}
 			break;
 		}
