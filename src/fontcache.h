@@ -26,7 +26,6 @@ protected:
 	int height;                       ///< The height of the font.
 	int ascender;                     ///< The ascender value of the font.
 	int descender;                    ///< The descender value of the font.
-	int units_per_em;                 ///< The units per EM value of the font.
 
 public:
 	FontCache(FontSize fs);
@@ -59,12 +58,6 @@ public:
 	 * @return The descender value of the font.
 	 */
 	inline int GetDescender() const{ return this->descender; }
-
-	/**
-	 * Get the units per EM value of the font.
-	 * @return The units per EM value of the font.
-	 */
-	inline int GetUnitsPerEM() const { return this->units_per_em; }
 
 	/**
 	 * Get the nominal font size of the font.

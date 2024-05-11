@@ -33,8 +33,7 @@ FontCacheSettings _fcsettings;
  * @param fs The size of the font.
  */
 FontCache::FontCache(FontSize fs) : parent(FontCache::Get(fs)), fs(fs), height(_default_font_height[fs]),
-		ascender(_default_font_ascender[fs]), descender(_default_font_ascender[fs] - _default_font_height[fs]),
-		units_per_em(1)
+		ascender(_default_font_ascender[fs]), descender(_default_font_ascender[fs] - _default_font_height[fs])
 {
 	assert(this->parent == nullptr || this->fs == this->parent->fs);
 	FontCache::caches[this->fs] = this;
