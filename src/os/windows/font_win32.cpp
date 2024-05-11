@@ -168,7 +168,6 @@ void Win32FontCache::SetFontSize(int pixels)
 	POUTLINETEXTMETRIC otm = (POUTLINETEXTMETRIC)new BYTE[otmSize];
 	GetOutlineTextMetrics(this->dc, otmSize, otm);
 
-	this->units_per_em = otm->otmEMSquare;
 	this->ascender = otm->otmTextMetrics.tmAscent;
 	this->descender = otm->otmTextMetrics.tmDescent;
 	this->height = this->ascender + this->descender;

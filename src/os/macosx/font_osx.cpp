@@ -166,7 +166,6 @@ void CoreTextFontCache::SetFontSize(int pixels)
 	/* Query the font metrics we needed. We generally round all values up to
 	 * make sure we don't inadvertently cut off a row or column of pixels,
 	 * except when determining glyph to glyph advances. */
-	this->units_per_em = CTFontGetUnitsPerEm(this->font.get());
 	this->ascender = (int)std::ceil(CTFontGetAscent(this->font.get()));
 	this->descender = -(int)std::ceil(CTFontGetDescent(this->font.get()));
 	this->height = this->ascender - this->descender;

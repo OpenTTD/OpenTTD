@@ -105,7 +105,6 @@ void FreeTypeFontCache::SetFontSize(FontSize, FT_Face, int pixels)
 	}
 
 	if (err == FT_Err_Ok) {
-		this->units_per_em = this->face->units_per_EM;
 		this->ascender     = this->face->size->metrics.ascender >> 6;
 		this->descender    = this->face->size->metrics.descender >> 6;
 		this->height       = this->ascender - this->descender;
