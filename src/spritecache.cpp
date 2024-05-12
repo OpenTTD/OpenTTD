@@ -894,6 +894,12 @@ void *SimpleSpriteAllocator::AllocatePtr(size_t size)
 	return MallocT<uint8_t>(size);
 }
 
+void *UniquePtrSpriteAllocator::AllocatePtr(size_t size)
+{
+	this->data = std::make_unique<uint8_t[]>(size);
+	return this->data.get();
+}
+
 /**
  * Handles the case when a sprite of different type is requested than is present in the SpriteCache.
  * For SpriteType::Font sprites, it is normal. In other cases, default sprite is loaded instead.

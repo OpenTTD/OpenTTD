@@ -273,14 +273,14 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 		}
 	}
 
+	UniquePtrSpriteAllocator allocator;
+	BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
+
 	GlyphEntry new_glyph;
-	SimpleSpriteAllocator allocator;
-	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
-	new_glyph.width  = slot->advance.x >> 6;
+	new_glyph.data = std::move(allocator.data);
+	new_glyph.width = slot->advance.x >> 6;
 
-	this->SetGlyphPtr(key, &new_glyph);
-
-	return new_glyph.sprite;
+	return this->SetGlyphPtr(key, std::move(new_glyph)).GetSprite();
 }
 
 

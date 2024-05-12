@@ -21,7 +21,7 @@
  * @param fs     The font size that is going to be cached.
  * @param pixels The number of pixels this font should be high.
  */
-TrueTypeFontCache::TrueTypeFontCache(FontSize fs, int pixels) : FontCache(fs), req_size(pixels), glyph_to_sprite(nullptr)
+TrueTypeFontCache::TrueTypeFontCache(FontSize fs, int pixels) : FontCache(fs), req_size(pixels)
 {
 }
 
@@ -39,47 +39,22 @@ TrueTypeFontCache::~TrueTypeFontCache()
  */
 void TrueTypeFontCache::ClearFontCache()
 {
-	if (this->glyph_to_sprite == nullptr) return;
-
-	for (int i = 0; i < 256; i++) {
-		if (this->glyph_to_sprite[i] == nullptr) continue;
-
-		for (int j = 0; j < 256; j++) {
-			free(this->glyph_to_sprite[i][j].sprite);
-		}
-
-		free(this->glyph_to_sprite[i]);
-	}
-
-	free(this->glyph_to_sprite);
-	this->glyph_to_sprite = nullptr;
-
+	this->glyph_to_sprite_map.clear();
 	Layouter::ResetFontCache(this->fs);
 }
 
 
 TrueTypeFontCache::GlyphEntry *TrueTypeFontCache::GetGlyphPtr(GlyphID key)
 {
-	if (this->glyph_to_sprite == nullptr) return nullptr;
-	if (this->glyph_to_sprite[GB(key, 8, 8)] == nullptr) return nullptr;
-	return &this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)];
+	auto found = this->glyph_to_sprite_map.find(key);
+	if (found == std::end(this->glyph_to_sprite_map)) return nullptr;
+	return &found->second;
 }
 
-void TrueTypeFontCache::SetGlyphPtr(GlyphID key, const GlyphEntry *glyph)
+TrueTypeFontCache::GlyphEntry &TrueTypeFontCache::SetGlyphPtr(GlyphID key, GlyphEntry &&glyph)
 {
-	if (this->glyph_to_sprite == nullptr) {
-		Debug(fontcache, 3, "Allocating root glyph cache for size {}", this->fs);
-		this->glyph_to_sprite = CallocT<GlyphEntry*>(256);
-	}
-
-	if (this->glyph_to_sprite[GB(key, 8, 8)] == nullptr) {
-		Debug(fontcache, 3, "Allocating glyph cache for range 0x{:02X}00, size {}", GB(key, 8, 8), this->fs);
-		this->glyph_to_sprite[GB(key, 8, 8)] = CallocT<GlyphEntry>(256);
-	}
-
-	Debug(fontcache, 4, "Set glyph for unicode character 0x{:04X}, size {}", key, this->fs);
-	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].sprite = glyph->sprite;
-	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].width = glyph->width;
+	this->glyph_to_sprite_map[key] = std::move(glyph);
+	return this->glyph_to_sprite_map[key];
 }
 
 bool TrueTypeFontCache::GetDrawGlyphShadow()
@@ -92,7 +67,7 @@ uint TrueTypeFontCache::GetGlyphWidth(GlyphID key)
 	if ((key & SPRITE_GLYPH) != 0) return this->parent->GetGlyphWidth(key);
 
 	GlyphEntry *glyph = this->GetGlyphPtr(key);
-	if (glyph == nullptr || glyph->sprite == nullptr) {
+	if (glyph == nullptr || glyph->data == nullptr) {
 		this->GetGlyph(key);
 		glyph = this->GetGlyphPtr(key);
 	}
@@ -106,7 +81,7 @@ const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
 
 	/* Check for the glyph in our cache */
 	GlyphEntry *glyph = this->GetGlyphPtr(key);
-	if (glyph != nullptr && glyph->sprite != nullptr) return glyph->sprite;
+	if (glyph != nullptr && glyph->data != nullptr) return glyph->GetSprite();
 
 	return this->InternalGetGlyph(key, GetFontAAState());
 }
