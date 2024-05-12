@@ -232,6 +232,7 @@ std::string GetFontCacheFontName(FontSize fs);
 void DebugPrintFontSettings(const std::string &desc);
 bool GetFontAAState();
 void InitFontCache();
+void ResizeFont(FontSize font_size, uint size);
 void SetFont(FontSize fontsize, const std::string &font, uint size);
 void UninitFontCache();
 

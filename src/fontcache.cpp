@@ -148,6 +148,29 @@ static void LoadFontHelper(FontSize fs)
 #endif
 }
 
+/**
+ * Called to change the size setting of a font in OpenTTD.
+ * @param font_size FontSize(enum not pixel size) of the font to change.
+ * @param size The new pixel size to use for this font.
+ */
+void ResizeFont(FontSize font_size, uint size)
+{
+	FontCacheSubSetting *setting = GetFontCacheSubSetting(font_size);
+
+	if (setting->size == size) return;
+
+	setting->size = size;
+
+	FontCache *loaded_font = FontCache::Get(font_size);
+	loaded_font->SetFontSize(size);
+
+	LoadStringWidthTable();
+	UpdateAllVirtCoords();
+	ReInitAllWindows(true);
+
+	if (_save_config) SaveToConfig();
+}
+
 void SetFont(FontSize font_size, const std::string &font, uint size)
 {
 	FontCacheSubSetting *setting = GetFontCacheSubSetting(font_size);
