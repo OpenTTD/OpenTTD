@@ -17,6 +17,7 @@
 #include "network/network_func.h"
 #include "network/core/config.h"
 #include "pathfinder/pathfinder_type.h"
+#include "pathfinder/aystar.h"
 #include "linkgraph/linkgraphschedule.h"
 #include "genworld.h"
 #include "train.h"

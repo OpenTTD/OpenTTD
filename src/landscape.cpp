@@ -1201,48 +1201,48 @@ struct River_UserData {
 };
 
 /* AyStar callback for checking whether we reached our destination. */
-static int32_t River_EndNodeCheck(const AyStar *aystar, const OpenListNode *current)
+static int32_t River_EndNodeCheck(const AyStar *aystar, const PathNode *current)
 {
-	return current->path.node.tile == *(TileIndex*)aystar->user_target ? AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
+	return current->GetTile() == *(TileIndex*)aystar->user_target ? AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
 }
 
 /* AyStar callback for getting the cost of the current node. */
-static int32_t River_CalculateG(AyStar *, AyStarNode *, OpenListNode *)
+static int32_t River_CalculateG(AyStar *, AyStarNode *, PathNode *)
 {
 	return 1 + RandomRange(_settings_game.game_creation.river_route_random);
 }
 
 /* AyStar callback for getting the estimated cost to the destination. */
-static int32_t River_CalculateH(AyStar *aystar, AyStarNode *current, OpenListNode *)
+static int32_t River_CalculateH(AyStar *aystar, AyStarNode *current, PathNode *)
 {
-	return DistanceManhattan(*(TileIndex*)aystar->user_target, current->tile);
+	return DistanceManhattan(*(TileIndex*)aystar->user_target, current->m_tile);
 }
 
 /* AyStar callback for getting the neighbouring nodes of the given node. */
-static void River_GetNeighbours(AyStar *aystar, OpenListNode *current)
+static void River_GetNeighbours(AyStar *aystar, PathNode *current)
 {
-	TileIndex tile = current->path.node.tile;
+	TileIndex tile = current->GetTile();
 
 	aystar->num_neighbours = 0;
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 		TileIndex t2 = tile + TileOffsByDiagDir(d);
 		if (IsValidTile(t2) && FlowsDown(tile, t2)) {
-			aystar->neighbours[aystar->num_neighbours].tile = t2;
-			aystar->neighbours[aystar->num_neighbours].direction = INVALID_TRACKDIR;
+			aystar->neighbours[aystar->num_neighbours].m_tile = t2;
+			aystar->neighbours[aystar->num_neighbours].m_td = INVALID_TRACKDIR;
 			aystar->num_neighbours++;
 		}
 	}
 }
 
 /* AyStar callback when an route has been found. */
-static void River_FoundEndNode(AyStar *aystar, OpenListNode *current)
+static void River_FoundEndNode(AyStar *aystar, PathNode *current)
 {
 	River_UserData *data = (River_UserData *)aystar->user_data;
 
 	/* First, build the river without worrying about its width. */
 	uint cur_pos = 0;
-	for (PathNode *path = &current->path; path != nullptr; path = path->parent, cur_pos++) {
-		TileIndex tile = path->node.tile;
+	for (PathNode *path = current->m_parent; path != nullptr; path = path->m_parent, cur_pos++) {
+		TileIndex tile = path->GetTile();
 		if (!IsWaterTile(tile)) {
 			MakeRiverAndModifyDesertZoneAround(tile);
 		}
@@ -1257,28 +1257,16 @@ static void River_FoundEndNode(AyStar *aystar, OpenListNode *current)
 		uint radius;
 
 		cur_pos = 0;
-		for (PathNode *path = &current->path; path != nullptr; path = path->parent, cur_pos++) {
-			TileIndex tile = path->node.tile;
+		for (PathNode *path = current->m_parent; path != nullptr; path = path->m_parent, cur_pos++) {
+			TileIndex tile = path->GetTile();
 
 			/* Check if we should widen river depending on how far we are away from the source. */
 			current_river_length = DistanceManhattan(data->spring, tile);
 			radius = std::min(3u, (current_river_length / (long_river_length / 3u)) + 1u);
 
-			if (radius > 1) CircularTileSearch(&tile, radius, RiverMakeWider, (void *)&path->node.tile);
+			if (radius > 1) CircularTileSearch(&tile, radius, RiverMakeWider, (void *)&path->m_key.m_tile);
 		}
 	}
-}
-
-static const uint RIVER_HASH_SIZE = 8; ///< The number of bits the hash for river finding should have.
-
-/**
- * Simple hash function for river tiles to be used by AyStar.
- * @param tile The tile to hash.
- * @return The hash for the tile.
- */
-static uint River_Hash(TileIndex tile, Trackdir)
-{
-	return GB(TileHash(TileX(tile), TileY(tile)), 0, RIVER_HASH_SIZE);
 }
 
 /**
@@ -1301,14 +1289,11 @@ static void BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool ma
 	finder.user_target = &end;
 	finder.user_data = &user_data;
 
-	finder.Init(River_Hash, 1 << RIVER_HASH_SIZE);
-
 	AyStarNode start;
-	start.tile = begin;
-	start.direction = INVALID_TRACKDIR;
+	start.m_tile = begin;
+	start.m_td = INVALID_TRACKDIR;
 	finder.AddStartNode(&start, 0);
 	finder.Main();
-	finder.Free();
 }
 
 /**
