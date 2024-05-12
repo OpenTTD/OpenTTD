@@ -118,7 +118,7 @@ public:
 	inline Titem_ &PopOpenNode(const Key &key)
 	{
 		Titem_ &item = m_open.Pop(key);
-		uint idxPop = m_open_queue.FindIndex(item);
+		size_t idxPop = m_open_queue.FindIndex(item);
 		m_open_queue.Remove(idxPop);
 		return item;
 	}
