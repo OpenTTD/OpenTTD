@@ -160,19 +160,7 @@ void SetFont(FontSize font_size, const std::string &font, uint size)
 
 	if (!changed) return;
 
-	if (font_size != FS_MONO) {
-		/* Try to reload only the modified font. */
-		FontCacheSettings backup = _fcsettings;
-		for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-			if (fs == font_size) continue;
-			FontCache *fc = FontCache::Get(fs);
-			GetFontCacheSubSetting(fs)->font = fc->HasParent() ? fc->GetFontName() : "";
-		}
-		CheckForMissingGlyphs();
-		_fcsettings = backup;
-	} else {
-		InitFontCache(true);
-	}
+	CheckForMissingGlyphs();
 
 	LoadStringWidthTable();
 	UpdateAllVirtCoords();
@@ -247,20 +235,20 @@ std::string GetFontCacheFontName(FontSize fs)
 
 /**
  * (Re)initialize the font cache related things, i.e. load the non-sprite fonts.
- * @param monospace Whether to initialise the monospace or regular fonts.
  */
-void InitFontCache(bool monospace)
+void InitFontCache()
 {
 	FontCache::InitializeFontCaches();
 
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		if (monospace != (fs == FS_MONO)) continue;
 
 		FontCache *fc = FontCache::Get(fs);
-		if (fc->HasParent()) delete fc;
+
+		if (fc->HasParent()) {
+			delete fc;
+		}
 
 		LoadFontHelper(fs);
-
 	}
 
 	DebugPrintFontSettings("End of initFontCache()");
