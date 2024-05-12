@@ -130,17 +130,12 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 	/* Check if this item is already in the OpenList */
 	check = this->OpenListIsInList(current);
 	if (check != nullptr) {
-		uint i;
 		/* Yes, check if this g value is lower.. */
 		if (new_g > check->g) return;
 		this->openlist_queue.Delete(check, 0);
 		/* It is lower, so change it to this item */
 		check->g = new_g;
 		check->path.parent = closedlist_parent;
-		/* Copy user data, will probably have changed */
-		for (i = 0; i < lengthof(current->user_data); i++) {
-			check->path.node.user_data[i] = current->user_data[i];
-		}
 		/* Re-add it in the openlist_queue. */
 		this->openlist_queue.Push(check, new_f);
 	} else {
