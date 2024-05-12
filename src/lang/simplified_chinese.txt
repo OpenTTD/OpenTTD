@@ -2797,7 +2797,23 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}选择�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}拖动模式
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}使用拖动模式建设车站
 
+STR_PICKER_MODE_ALL                                             :全部
+STR_PICKER_MODE_ALL_TOOLTIP                                     :切换为显示所有类别中的项目
+STR_PICKER_MODE_USED                                            :已使用
+STR_PICKER_MODE_USED_TOOLTIP                                    :切换为仅显示现有的项目
+STR_PICKER_MODE_SAVED                                           :已保存
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :切换为仅显示已保存的项目
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :选择一个要显示的车站类型
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :选择要建造的车站类型。按住<Ctrl>键以添加或删除已保存的项目。
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :选择一个要显示的路点类型
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :选择要建造的路点类型。按住<Ctrl>键以添加或删除已保存的项目。
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :选择一个要显示的公共汽车站类型
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :选择要建造的公共汽车站类型。按住<Ctrl>键以添加或删除已保存的项目。
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :选择一个要显示的汽车货场类型
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :选择要建造的汽车货场类型。按住<Ctrl>键以添加或删除已保存的项目。
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :选择一个要显示的物件类型
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :选择要建造的物件类型。按住<Ctrl>键选择物件以添加或删除已保存的项目。按住 <Ctrl> 键以沿对角线放置，按住 <Shift> 键以显示预计费用。
 
 STR_STATION_CLASS_DFLT                                          :默认
 STR_STATION_CLASS_DFLT_STATION                                  :默认车站

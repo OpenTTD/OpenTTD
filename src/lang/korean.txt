@@ -426,7 +426,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}도로 �
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}전차 기반 시설을 건설합니다
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}나무를 심습니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}팻말을 답니다.
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}오브젝트를 설치합니다. CTRL 키를 누르면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}오브젝트를 설치합니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 
 # Scenario editor file menu
 ###length 7
@@ -2798,7 +2798,23 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}철도�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}드래그 & 드롭
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}드래그 & 드롭으로 역을 건설합니다
 
+STR_PICKER_MODE_ALL                                             :전체
+STR_PICKER_MODE_ALL_TOOLTIP                                     :모든 종류의 항목 표시 전환
+STR_PICKER_MODE_USED                                            :사용한 것
+STR_PICKER_MODE_USED_TOOLTIP                                    :존재하는 항목만 표시 전환
+STR_PICKER_MODE_SAVED                                           :즐겨찾기
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :즐겨찾기된 항목만 표시 전환
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :표시할 역 종류를 선택하세요
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :설치하려는 역 종류를 선택하세요. CTRL+클릭하면 즐겨찾기 추가/제거가 가능합니다
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :표시할 경유지 종류를 선택하세요
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :설치하려는 경유지를 선택하세요. CTRL+클릭하면 즐겨찾기 추가/제거가 가능합니다
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :표시할 버스 정류장 종류를 선택하세요
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :설치하려는 버스 정류장 종류를 선택하세요. CTRL+클릭하면 즐겨찾기 추가/제거가 가능합니다
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :표시할 트럭 적하장 종류를 선택하세요
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :설치하려는 트럭 적하장 종류를 선택하세요. CTRL+클릭하면 즐겨찾기 추가/제거가 가능합니다
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :표시할 오브젝트 종류를 선택하세요
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :설치하려는 오브젝트 종류를 선택합니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 
 STR_STATION_CLASS_DFLT                                          :기본
 STR_STATION_CLASS_DFLT_STATION                                  :기본 역
@@ -2934,7 +2950,7 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}발생�
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}지형 편집
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}땅의 모퉁이를 낮춥니다. 드래그하면 시작점의 땅을 낮추고 선택한 영역의 도착점까지 지형을 적절히 맞춥니다. CTRL 키를 누르면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}땅의 모퉁이를 낮춥니다. 드래그하면 시작점의 땅을 낮추고 선택한 영역의 도착점까지 지형을 적절히 맞춥니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}땅의 모퉁이를 높입니다. 드래그하면 시작점의 땅을 높이고 선택한 영역의 도착점까지 지형을 적절히 맞춥니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}처음 선택한 모퉁이의 고도에 맞추어 땅을 평평하게 고릅니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}나중에 그 땅을 사용하기 위해 소유권을 구입합니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
@@ -2951,7 +2967,7 @@ STR_OBJECT_CLASS_TRNS                                           :송신기
 STR_PLANT_TREE_CAPTION                                          :{WHITE}나무
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}심고싶은 나무의 종류를 선택합니다. 이미 나무가 심어져있는 경우에는 선택한 나무의 크기를 키웁니다
 STR_TREES_RANDOM_TYPE                                           :{BLACK}여러 종류의 나무 같이 심기
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}여러 종류의 나무를 심습니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 이용하면 예상 비용을 볼 수 있습니다
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}여러 종류의 나무를 심습니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}무작위로 나무 심기
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}전 지역에 걸쳐 무작위로 나무를 심습니다
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}일반

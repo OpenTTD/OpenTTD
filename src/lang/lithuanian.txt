@@ -1986,6 +1986,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Numatytoji nauj
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Laivų techninės apžiūros intervalas: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Numatytoji naujo laivo techninės apžiūros intervalo reikšmė
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Išjungta

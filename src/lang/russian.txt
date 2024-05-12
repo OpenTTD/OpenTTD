@@ -2968,6 +2968,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Укаж
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Произвольно
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Постройка станции на указанном игроком участке
 
+STR_PICKER_MODE_USED                                            :Используется
 
 
 STR_STATION_CLASS_DFLT                                          :Стандартная станция

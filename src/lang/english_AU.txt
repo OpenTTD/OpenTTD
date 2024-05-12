@@ -2797,7 +2797,23 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Select l
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Build a station using drag & drop
 
+STR_PICKER_MODE_ALL                                             :All
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Toggle showing items from all classes
+STR_PICKER_MODE_USED                                            :Used
+STR_PICKER_MODE_USED_TOOLTIP                                    :Toggle showing only existing items
+STR_PICKER_MODE_SAVED                                           :Saved
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Toogle showing only saved items
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Select a station class to display
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Select a station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Select a waypoint class to display
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Select a waypoint to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Select a bus station class to display
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Select a bus station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Select a lorry station class to display
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Select a lorry station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Select an object class to display
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Select an object type to build. Ctrl+Click to add or remove in saved items. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
 
 STR_STATION_CLASS_DFLT                                          :Default
 STR_STATION_CLASS_DFLT_STATION                                  :Default station

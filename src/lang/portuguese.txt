@@ -426,7 +426,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construi
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construir infraestrutura para elétricos
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Ctrl+Clique+Arrastar para selecionar a área na diagonal. Pressione também Shift para apenas mostrar o custo estimado
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar letreiros
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl+Clique+Arrastar para selecionar a área diagonalmente. Pressione também Shift para mostrar o custo estimado
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl+Clique+Arrastar para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 
 # Scenario editor file menu
 ###length 7
@@ -2798,7 +2798,23 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Seleccio
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastar
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construir estação arrastando
 
+STR_PICKER_MODE_ALL                                             :Todos
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Alterna a exibição de itens de todas as classes
+STR_PICKER_MODE_USED                                            :Usado
+STR_PICKER_MODE_USED_TOOLTIP                                    :Alterna a exibição só de itens existentes
+STR_PICKER_MODE_SAVED                                           :Guardado
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Alterna a exibição só de itens guardados
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecionar uma classe de estação para mostrar
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Escolher um tipo de estação para construir. Ctrl+Clique para adicionar ou remover nos itens guardados
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selecionar uma classe de ponto de controlo para mostrar
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Escolher um tipo de ponto de controlo para construir. Ctrl+Clique para adicionar ou remover nos itens guardados
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Selecionar uma classe de estação rodoviária para mostrar
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Escolher um tipo de estação rodoviária para construir. Ctrl+Clique para adicionar ou remover nos itens guardados
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecionar uma classe de estação de camiões para mostrar
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Escolher um tipo de estação de camiões para construir. Ctrl+Clique para adicionar ou remover nos itens guardados
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecionar uma classe de objeto para mostrar
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Selecione um tipo de objeto para construir. Ctrl+Clique para adicionar ou remover nos itens guardados. Ctrl+Clique+Arrastar para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 
 STR_STATION_CLASS_DFLT                                          :Padrão
 STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão

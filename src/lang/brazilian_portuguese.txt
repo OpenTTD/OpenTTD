@@ -2798,7 +2798,23 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Escolher
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastar & Soltar
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construir estação usando arrastar e soltar
 
+STR_PICKER_MODE_ALL                                             :Todos
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Mostrar itens de todas as classes
+STR_PICKER_MODE_USED                                            :Usado
+STR_PICKER_MODE_USED_TOOLTIP                                    :Mostrar somente itens existentes
+STR_PICKER_MODE_SAVED                                           :Salvo
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Mostrar somente itens salvos
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecione uma classe de estação para mostrar
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Escolher um tipo de estação para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selecione uma classe de ponto de controle para mostrar
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Escolher um ponto de controle para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Selecione uma classe de estação de ônibus para mostrar
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Escolher um tipo de estação de ônibus para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecione uma classe de estação de caminhão para mostrar
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Escolher um tipo de estação de caminhão para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecione uma classe de objeto para mostrar
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Escolher um tipo de objeto para construir. Ctrl+Clique para adicionar ou remover nos itens salvos. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
 
 STR_STATION_CLASS_DFLT                                          :Padrão
 STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão

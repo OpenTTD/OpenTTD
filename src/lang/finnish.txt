@@ -2797,7 +2797,23 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Valitse 
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vedä ja pudota
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Rakenna asema vetämällä ja pudottamalla
 
+STR_PICKER_MODE_ALL                                             :Kaikki
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Valitse, näytetäänkö kohteet kaikista luokista
+STR_PICKER_MODE_USED                                            :Käytössä
+STR_PICKER_MODE_USED_TOOLTIP                                    :Valitse, näytetäänkö vain olemassa olevat kohteet
+STR_PICKER_MODE_SAVED                                           :Tallennettu
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Valitse, näytetäänkö vain tallennetut kohteet
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Valitse näytettävä asemien luokka
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Valitse rakennettavan aseman tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Valitse näytettävä reittipisteiden luokka
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Valitse rakennettava reittipiste. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Valitse näytettävä linja-autopysäkkien luokka
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Valitse rakennettavan linja-autopysäkin tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Valitse näytettävä lastauslaitureiden luokka
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Valitse rakennettavan lastauslaiturin tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Valitse näytettävä objektien luokka
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Valitse rakennettavan objektin tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista. Ctrl+napsautus+veto valitsee alueen vinottain. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 
 STR_STATION_CLASS_DFLT                                          :Oletus
 STR_STATION_CLASS_DFLT_STATION                                  :Oletusasema
