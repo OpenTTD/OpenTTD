@@ -423,14 +423,14 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite
  * @param num Size of the sprite in the GRF.
  * @return Sprite data.
  */
-static void *ReadRecolourSprite(SpriteFile &file, uint num)
+static void *ReadRecolourSprite(SpriteFile &file, uint num, SpriteAllocator &allocator)
 {
 	/* "Normal" recolour sprites are ALWAYS 257 bytes. Then there is a small
 	 * number of recolour sprites that are 17 bytes that only exist in DOS
 	 * GRFs which are the same as 257 byte recolour sprites, but with the last
 	 * 240 bytes zeroed.  */
 	static const uint RECOLOUR_SPRITE_SIZE = 257;
-	uint8_t *dest = (uint8_t *)AllocSprite(std::max(RECOLOUR_SPRITE_SIZE, num));
+	uint8_t *dest = allocator.Allocate<uint8_t>(std::max(RECOLOUR_SPRITE_SIZE, num));
 
 	if (file.NeedsPaletteRemap()) {
 		uint8_t *dest_tmp = new uint8_t[std::max(RECOLOUR_SPRITE_SIZE, num)];
@@ -460,7 +460,7 @@ static void *ReadRecolourSprite(SpriteFile &file, uint num)
  * @param encoder     Sprite encoder to use.
  * @return Read sprite data.
  */
-static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_type, AllocatorProc *allocator, SpriteEncoder *encoder)
+static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_type, SpriteAllocator &allocator, SpriteEncoder *encoder)
 {
 	/* Use current blitter if no other sprite encoder is given. */
 	if (encoder == nullptr) encoder = BlitterFactory::GetCurrentBlitter();
@@ -490,7 +490,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	if (sprite_avail == 0) {
 		if (sprite_type == SpriteType::MapGen) return nullptr;
 		if (id == SPR_IMG_QUERY) UserError("Okay... something went horribly wrong. I couldn't load the fallback sprite. What should I do?");
-		return (void*)GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, allocator, encoder);
+		return (void*)GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, &allocator, encoder);
 	}
 
 	if (sprite_type == SpriteType::MapGen) {
@@ -505,7 +505,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		 *  (so type = 0xFF basically). */
 		uint num = sprite[ZOOM_LVL_MIN].width * sprite[ZOOM_LVL_MIN].height;
 
-		Sprite *s = (Sprite *)allocator(sizeof(*s) + num);
+		Sprite *s = allocator.Allocate<Sprite>(sizeof(*s) + num);
 		s->width  = sprite[ZOOM_LVL_MIN].width;
 		s->height = sprite[ZOOM_LVL_MIN].height;
 		s->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
@@ -523,7 +523,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 
 	if (!ResizeSprites(sprite, sprite_avail, encoder)) {
 		if (id == SPR_IMG_QUERY) UserError("Okay... something went horribly wrong. I couldn't resize the fallback sprite. What should I do?");
-		return (void*)GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, allocator, encoder);
+		return (void*)GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, &allocator, encoder);
 	}
 
 	if (sprite[ZOOM_LVL_MIN].type == SpriteType::Font && _font_zoom != ZOOM_LVL_MIN) {
@@ -637,7 +637,8 @@ bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id)
 			return false;
 		}
 		type = SpriteType::Recolour;
-		data = ReadRecolourSprite(file, num);
+		CacheSpriteAllocator allocator;
+		data = ReadRecolourSprite(file, num, allocator);
 	} else if (file.GetContainerVersion() >= 2 && grf_type == 0xFD) {
 		if (num != 4) {
 			/* Invalid sprite section include, ignore. */
@@ -848,7 +849,7 @@ static void DeleteEntryFromSpriteCache()
 	DeleteEntryFromSpriteCache(best);
 }
 
-void *AllocSprite(size_t mem_req)
+void *CacheSpriteAllocator::AllocatePtr(size_t mem_req)
 {
 	mem_req += sizeof(MemBlock);
 
@@ -888,7 +889,7 @@ void *AllocSprite(size_t mem_req)
 /**
  * Sprite allocator simply using malloc.
  */
-void *SimpleSpriteAlloc(size_t size)
+void *SimpleSpriteAllocator::AllocatePtr(size_t size)
 {
 	return MallocT<uint8_t>(size);
 }
@@ -902,7 +903,7 @@ void *SimpleSpriteAlloc(size_t size)
  * @return fallback sprite
  * @note this function will do UserError() in the case the fallback sprite isn't available
  */
-static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, SpriteCache *sc, AllocatorProc *allocator)
+static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, SpriteCache *sc, SpriteAllocator *allocator)
 {
 	static const char * const sprite_types[] = {
 		"normal",        // SpriteType::Normal
@@ -947,7 +948,7 @@ static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, S
  * @param encoder Sprite encoder to use. Set to nullptr to use the currently active blitter.
  * @return Sprite raw data
  */
-void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator, SpriteEncoder *encoder)
+void *GetRawSprite(SpriteID sprite, SpriteType type, SpriteAllocator *allocator, SpriteEncoder *encoder)
 {
 	assert(type != SpriteType::MapGen || IsMapgenSpriteID(sprite));
 	assert(type < SpriteType::Invalid);
@@ -965,17 +966,18 @@ void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator, S
 
 	if (allocator == nullptr && encoder == nullptr) {
 		/* Load sprite into/from spritecache */
+		CacheSpriteAllocator cache_allocator;
 
 		/* Update LRU */
 		sc->lru = ++_sprite_lru_counter;
 
 		/* Load the sprite, if it is not loaded, yet */
-		if (sc->ptr == nullptr) sc->ptr = ReadSprite(sc, sprite, type, AllocSprite, nullptr);
+		if (sc->ptr == nullptr) sc->ptr = ReadSprite(sc, sprite, type, cache_allocator, nullptr);
 
 		return sc->ptr;
 	} else {
 		/* Do not use the spritecache, but a different allocator. */
-		return ReadSprite(sc, sprite, type, allocator, encoder);
+		return ReadSprite(sc, sprite, type, *allocator, encoder);
 	}
 }
 
