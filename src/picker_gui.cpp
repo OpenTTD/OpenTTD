@@ -475,8 +475,20 @@ void PickerWindow::EnsureSelectedClassIsValid()
 	int class_index = this->callbacks.GetSelectedClass();
 	if (std::binary_search(std::begin(this->classes), std::end(this->classes), class_index)) return;
 
-	class_index = this->classes.front();
+	if (!this->classes.empty()) {
+		class_index = this->classes.front();
+	} else {
+		/* Classes can be empty if filters are enabled, find the first usable class. */
+		int count = this->callbacks.GetClassCount();
+		for (int i = 0; i < count; i++) {
+			if (this->callbacks.GetClassName(i) == INVALID_STRING_ID) continue;
+			class_index = i;
+			break;
+		}
+	}
+
 	this->callbacks.SetSelectedClass(class_index);
+	this->types.ForceRebuild();
 }
 
 void PickerWindow::EnsureSelectedClassIsVisible()
@@ -569,8 +581,18 @@ void PickerWindow::EnsureSelectedTypeIsValid()
 	int index = this->callbacks.GetSelectedType();
 	if (std::any_of(std::begin(this->types), std::end(this->types), [class_index, index](const auto &item) { return item.class_index == class_index && item.index == index; })) return;
 
-	class_index = this->types.front().class_index;
-	index = this->types.front().index;
+	if (!this->types.empty()) {
+		class_index = this->types.front().class_index;
+		index = this->types.front().index;
+	} else {
+		/* Types can be empty if filters are enabled, find the first usable type. */
+		int count = this->callbacks.GetTypeCount(class_index);
+		for (int i = 0; i < count; i++) {
+			if (this->callbacks.GetTypeName(class_index, i) == INVALID_STRING_ID) continue;
+			index = i;
+			break;
+		}
+	}
 	this->callbacks.SetSelectedClass(class_index);
 	this->callbacks.SetSelectedType(index);
 }
