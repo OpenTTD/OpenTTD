@@ -252,14 +252,14 @@ void Win32FontCache::ClearFontCache()
 		}
 	}
 
+	UniquePtrSpriteAllocator allocator;
+	BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
+
 	GlyphEntry new_glyph;
-	SimpleSpriteAllocator allocator;
-	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
+	new_glyph.data = std::move(allocator.data);
 	new_glyph.width = gm.gmCellIncX;
 
-	this->SetGlyphPtr(key, &new_glyph);
-
-	return new_glyph.sprite;
+	return this->SetGlyphPtr(key, std::move(new_glyph)).GetSprite();
 }
 
 /* virtual */ GlyphID Win32FontCache::MapCharToGlyph(char32_t key, bool allow_fallback)

@@ -29,27 +29,16 @@ protected:
 
 	/** Container for information about a glyph. */
 	struct GlyphEntry {
-		Sprite *sprite; ///< The loaded sprite.
-		uint8_t width; ///< The width of the glyph.
+		std::unique_ptr<uint8_t[]> data; ///< The loaded sprite.
+		uint8_t width = 0; ///< The width of the glyph.
+
+		Sprite *GetSprite() { return reinterpret_cast<Sprite *>(data.get()); }
 	};
 
-	/**
-	 * The glyph cache. This is structured to reduce memory consumption.
-	 * 1) There is a 'segment' table for each font size.
-	 * 2) Each segment table is a discrete block of characters.
-	 * 3) Each block contains 256 (aligned) characters sequential characters.
-	 *
-	 * The cache is accessed in the following way:
-	 * For character 0x0041  ('A'): glyph_to_sprite[0x00][0x41]
-	 * For character 0x20AC (Euro): glyph_to_sprite[0x20][0xAC]
-	 *
-	 * Currently only 256 segments are allocated, "limiting" us to 65536 characters.
-	 * This can be simply changed in the two functions Get & SetGlyphPtr.
-	 */
-	GlyphEntry **glyph_to_sprite;
+	std::unordered_map<GlyphID, GlyphEntry> glyph_to_sprite_map{};
 
 	GlyphEntry *GetGlyphPtr(GlyphID key);
-	void SetGlyphPtr(GlyphID key, const GlyphEntry *glyph);
+	GlyphEntry &SetGlyphPtr(GlyphID key, GlyphEntry &&glyph);
 
 	virtual const Sprite *InternalGetGlyph(GlyphID key, bool aa) = 0;
 

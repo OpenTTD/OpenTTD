@@ -276,13 +276,14 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 		}
 	}
 
-	GlyphEntry new_glyph;
-	SimpleSpriteAllocator allocator;
-	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
-	new_glyph.width = (uint8_t)std::round(CTFontGetAdvancesForGlyphs(this->font.get(), kCTFontOrientationDefault, &glyph, nullptr, 1));
-	this->SetGlyphPtr(key, &new_glyph);
+	UniquePtrSpriteAllocator allocator;
+	BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
 
-	return new_glyph.sprite;
+	GlyphEntry new_glyph;
+	new_glyph.data = std::move(allocator.data);
+	new_glyph.width = (uint8_t)std::round(CTFontGetAdvancesForGlyphs(this->font.get(), kCTFontOrientationDefault, &glyph, nullptr, 1));
+
+	return this->SetGlyphPtr(key, std::move(new_glyph)).GetSprite();
 }
 
 static CTFontDescriptorRef LoadFontFromFile(const std::string &font_name)
