@@ -10,7 +10,6 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../fontcache.h"
-#include "../blitter/factory.hpp"
 #include "../core/bitmath_func.hpp"
 #include "../gfx_layout.h"
 #include "truetypefontcache.h"

@@ -120,7 +120,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 	}
 }
 
-Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator)
+Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	/* Make memory for all zoom-levels */
 	uint memory = sizeof(SpriteData);
@@ -219,7 +219,7 @@ Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::SpriteCollection &spri
 	assert(size < memory);
 
 	/* Allocate the exact amount of memory we need */
-	Sprite *dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + size);
+	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + size);
 
 	dest_sprite->height = sprite[ZOOM_LVL_MIN].height;
 	dest_sprite->width  = sprite[ZOOM_LVL_MIN].width;

@@ -31,10 +31,13 @@ enum SpriteCacheCtrlFlags {
 
 extern uint _sprite_cache_size;
 
-typedef void *AllocatorProc(size_t size);
+/** SpriteAllocate that uses malloc to allocate memory. */
+class SimpleSpriteAllocator : public SpriteAllocator {
+protected:
+	void *AllocatePtr(size_t size) override;
+};
 
-void *SimpleSpriteAlloc(size_t size);
-void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator = nullptr, SpriteEncoder *encoder = nullptr);
+void *GetRawSprite(SpriteID sprite, SpriteType type, SpriteAllocator *allocator = nullptr, SpriteEncoder *encoder = nullptr);
 bool SpriteExists(SpriteID sprite);
 
 SpriteType GetSpriteType(SpriteID sprite);

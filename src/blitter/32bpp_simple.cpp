@@ -115,10 +115,10 @@ void Blitter_32bppSimple::DrawColourMappingRect(void *dst, int width, int height
 	Debug(misc, 0, "32bpp blitter doesn't know how to draw this colour table ('{}')", pal);
 }
 
-Sprite *Blitter_32bppSimple::Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator)
+Sprite *Blitter_32bppSimple::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	Blitter_32bppSimple::Pixel *dst;
-	Sprite *dest_sprite = static_cast<Sprite *>(allocator(sizeof(*dest_sprite) + static_cast<size_t>(sprite[ZOOM_LVL_MIN].height) * static_cast<size_t>(sprite[ZOOM_LVL_MIN].width) * sizeof(*dst)));
+	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + static_cast<size_t>(sprite[ZOOM_LVL_MIN].height) * static_cast<size_t>(sprite[ZOOM_LVL_MIN].width) * sizeof(*dst));
 
 	dest_sprite->height = sprite[ZOOM_LVL_MIN].height;
 	dest_sprite->width  = sprite[ZOOM_LVL_MIN].width;

@@ -274,7 +274,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	}
 
 	GlyphEntry new_glyph;
-	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, SimpleSpriteAlloc);
+	SimpleSpriteAllocator allocator;
+	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
 	new_glyph.width  = slot->advance.x >> 6;
 
 	this->SetGlyphPtr(key, &new_glyph);
