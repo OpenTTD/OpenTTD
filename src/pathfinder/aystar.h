@@ -125,10 +125,8 @@ struct AyStar {
 	int max_path_cost;    ///< If the g-value goes over this number, it stops searching, 0 = infinite.
 	int max_search_nodes = AYSTAR_DEF_MAX_SEARCH_NODES; ///< The maximum number of nodes that will be expanded, 0 = infinite.
 
-	/* These should be filled with the neighbours of a tile by
-	 * GetNeighbours */
-	AyStarNode neighbours[12];
-	uint8_t num_neighbours;
+	/* These should be filled with the neighbours of a tile by GetNeighbours */
+	std::vector<AyStarNode> neighbours;
 
 	/* These will contain the methods for manipulating the AyStar. Only
 	 * Main() should be called externally */

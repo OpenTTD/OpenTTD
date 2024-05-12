@@ -1223,13 +1223,13 @@ static void River_GetNeighbours(AyStar *aystar, PathNode *current)
 {
 	TileIndex tile = current->GetTile();
 
-	aystar->num_neighbours = 0;
+	aystar->neighbours.clear();
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 		TileIndex t2 = tile + TileOffsByDiagDir(d);
 		if (IsValidTile(t2) && FlowsDown(tile, t2)) {
-			aystar->neighbours[aystar->num_neighbours].m_tile = t2;
-			aystar->neighbours[aystar->num_neighbours].m_td = INVALID_TRACKDIR;
-			aystar->num_neighbours++;
+			auto &neighbour = aystar->neighbours.emplace_back();
+			neighbour.m_tile = t2;
+			neighbour.m_td = INVALID_TRACKDIR;
 		}
 	}
 }

@@ -111,9 +111,9 @@ int AyStar::Loop()
 	this->GetNeighbours(this, current);
 
 	/* Go through all neighbours */
-	for (int i = 0; i < this->num_neighbours; i++) {
+	for (auto &neighbour : this->neighbours) {
 		/* Check and add them to the OpenList if needed */
-		this->CheckTile(&this->neighbours[i], current);
+		this->CheckTile(&neighbour, current);
 	}
 
 	if (this->max_search_nodes != 0 && this->nodes.ClosedCount() >= this->max_search_nodes) {
