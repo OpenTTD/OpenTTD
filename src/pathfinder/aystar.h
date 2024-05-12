@@ -38,7 +38,6 @@ static const int AYSTAR_INVALID_NODE = -1; ///< Item is not valid (for example, 
 struct AyStarNode {
 	TileIndex tile;
 	Trackdir direction;
-	uint user_data[2];
 };
 
 /** A path of nodes. */
@@ -115,7 +114,7 @@ typedef void AyStar_FoundEndNode(AyStar *aystar, OpenListNode *current);
  */
 struct AyStar {
 /* These fields should be filled before initing the AyStar, but not changed
- * afterwards (except for user_data and user_path)! (free and init again to change them) */
+ * afterwards (except for user_data)! (free and init again to change them) */
 
 	/* These should point to the application specific routines that do the
 	 * actual work */
@@ -131,7 +130,6 @@ struct AyStar {
 	 * afterwards, user_target should typically contain information about
 	 * what you where looking for, and user_data can contain just about
 	 * everything */
-	void *user_path;
 	void *user_target;
 	void *user_data;
 
