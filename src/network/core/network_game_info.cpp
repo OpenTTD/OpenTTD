@@ -24,6 +24,7 @@
 #include "../../rev.h"
 #include "../network_func.h"
 #include "../network.h"
+#include "../network_internal.h"
 #include "packet.h"
 
 #include "../../safeguards.h"
@@ -46,7 +47,18 @@ std::string_view GetNetworkRevisionString()
 	static std::string network_revision;
 
 	if (network_revision.empty()) {
+#if not defined(NETWORK_INTERNAL_H)
+#	error("network_internal.h must be included, otherwise the debug related preprocessor tokens won't be picked up correctly.")
+#elif not defined(ENABLE_NETWORK_SYNC_EVERY_FRAME)
+		/* Just a standard build. */
 		network_revision = _openttd_revision;
+#elif defined(NETWORK_SEND_DOUBLE_SEED)
+		/* Build for debugging that sends both parts of the seeds and by doing that practically syncs every frame. */
+		network_revision = fmt::format("dbg_seed-{}", _openttd_revision);
+#else
+		/* Build for debugging that sends the first part of the seed every frame, practically syncing every frame. */
+		network_revision = fmt::format("dbg_sync-{}", _openttd_revision);
+#endif
 		if (_openttd_revision_tagged) {
 			/* Tagged; do not mangle further, though ensure it's not too long. */
 			if (network_revision.size() >= NETWORK_REVISION_LENGTH) network_revision.resize(NETWORK_REVISION_LENGTH - 1);
@@ -90,14 +102,19 @@ static std::string_view ExtractNetworkRevisionHash(std::string_view revision_str
  */
 bool IsNetworkCompatibleVersion(std::string_view other)
 {
-	if (GetNetworkRevisionString() == other) return true;
+	std::string_view our_revision = GetNetworkRevisionString();
+	if (our_revision == other) return true;
 
 	/* If this version is tagged, then the revision string must be a complete match,
 	 * since there is no git hash suffix in it.
 	 * This is needed to avoid situations like "1.9.0-beta1" comparing equal to "2.0.0-beta1".  */
 	if (_openttd_revision_tagged) return false;
 
-	std::string_view hash1 = ExtractNetworkRevisionHash(GetNetworkRevisionString());
+	/* One of the versions is for some sort of debugging, but not both. */
+	if (other.starts_with("dbg_seed") != our_revision.starts_with("dbg_seed")) return false;
+	if (other.starts_with("dbg_sync") != our_revision.starts_with("dbg_sync")) return false;
+
+	std::string_view hash1 = ExtractNetworkRevisionHash(our_revision);
 	std::string_view hash2 = ExtractNetworkRevisionHash(other);
 	return hash1 == hash2;
 }
