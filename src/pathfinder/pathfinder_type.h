@@ -11,7 +11,6 @@
 #define PATHFINDER_TYPE_H
 
 #include "../tile_type.h"
-#include "aystar.h"
 
 /** Length (penalty) of one tile with YAPF */
 static const int YAPF_TILE_LENGTH = 100;
