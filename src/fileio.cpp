@@ -84,7 +84,7 @@ static void FillValidSearchPaths(bool only_local_path)
 
 	std::set<std::string> seen{};
 	for (Searchpath sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) {
-		if (sp == SP_WORKING_DIR) continue;
+		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
 
 		if (only_local_path) {
 			switch (sp) {
