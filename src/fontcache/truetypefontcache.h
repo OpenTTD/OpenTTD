@@ -27,9 +27,6 @@ protected:
 	int req_size;  ///< Requested font size.
 	int used_size; ///< Used font size.
 
-	using FontTable = std::map<uint32_t, std::pair<size_t, const void *>>; ///< Table with font table cache
-	FontTable font_tables; ///< Cached font tables.
-
 	/** Container for information about a glyph. */
 	struct GlyphEntry {
 		Sprite *sprite; ///< The loaded sprite.
@@ -55,7 +52,6 @@ protected:
 	GlyphEntry *GetGlyphPtr(GlyphID key);
 	void SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool duplicate = false);
 
-	virtual const void *InternalGetFontTable(uint32_t tag, size_t &length) = 0;
 	virtual const Sprite *InternalGetGlyph(GlyphID key, bool aa) = 0;
 
 public:
@@ -65,7 +61,6 @@ public:
 	void SetUnicodeGlyph(char32_t key, SpriteID sprite) override { this->parent->SetUnicodeGlyph(key, sprite); }
 	void InitializeUnicodeGlyphMap() override { this->parent->InitializeUnicodeGlyphMap(); }
 	const Sprite *GetGlyph(GlyphID key) override;
-	const void *GetFontTable(uint32_t tag, size_t &length) override;
 	void ClearFontCache() override;
 	uint GetGlyphWidth(GlyphID key) override;
 	bool GetDrawGlyphShadow() override;

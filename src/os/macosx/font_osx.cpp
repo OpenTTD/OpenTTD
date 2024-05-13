@@ -204,18 +204,6 @@ GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
 	return 0;
 }
 
-const void *CoreTextFontCache::InternalGetFontTable(uint32_t tag, size_t &length)
-{
-	CFAutoRelease<CFDataRef> data(CTFontCopyTable(this->font.get(), (CTFontTableTag)tag, kCTFontTableOptionNoOptions));
-	if (!data) return nullptr;
-
-	length = CFDataGetLength(data.get());
-	auto buf = MallocT<UInt8>(length);
-
-	CFDataGetBytes(data.get(), CFRangeMake(0, (CFIndex)length), buf);
-	return buf;
-}
-
 const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 {
 	/* Get glyph size. */
