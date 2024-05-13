@@ -347,7 +347,7 @@ STR_SORT_BY_WAITING_TOTAL                                       :等候中的货
 STR_SORT_BY_WAITING_AVAILABLE                                   :等候中的可运载货物总量
 STR_SORT_BY_RATING_MAX                                          :车站中最高的货物评价
 STR_SORT_BY_RATING_MIN                                          :车站中最低的货物评价
-STR_SORT_BY_ENGINE_ID                                           :引擎ID （默认方式）
+STR_SORT_BY_ENGINE_ID                                           :引擎编号
 STR_SORT_BY_COST                                                :售价
 STR_SORT_BY_POWER                                               :功率
 STR_SORT_BY_TRACTIVE_EFFORT                                     :牵引力
@@ -862,7 +862,7 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} 赞助了城镇 {TOWN} 的建设！
 STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}一个名叫{TOWN}的城镇刚刚成立了！
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}新的{STRING} 正在 {TOWN} 加紧建设！
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}新的{STRING}正在 {TOWN} 附近建设！
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}新的{STRING} 即将落户 {TOWN}！
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} 即将倒闭！
@@ -1130,7 +1130,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}预览�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 英磅(£) 兑换自定义货币的数量
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}改变当前的货币参数
 
-STR_NONE                                                        :没有
+STR_NONE                                                        :无
 STR_FUNDING_ONLY                                                :不生成
 STR_MINIMAL                                                     :每种仅一个
 STR_NUM_VERY_LOW                                                :非常低
@@ -2231,8 +2231,8 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}社区
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}沙盒选项
-STR_CHEAT_MONEY                                                 :{LTBLUE}增加 {CURRENCY_LONG} 现金
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}作为{ORANGE}{COMMA}进行游戏
+STR_CHEAT_MONEY                                                 :{LTBLUE}增加现金 {CURRENCY_LONG}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}作为{ORANGE}公司 {COMMA} {LTBLUE}进行游戏
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土机 (清除工业设施和其他不可移除物)： {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}隧道可以相交：{ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}喷气式飞机不会(经常)在小机场坠毁：{ORANGE}{STRING}
@@ -2512,7 +2512,7 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}是，�
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}是，不要再次询问
 
 STR_NETWORK_ASK_SURVEY_CAPTION                                  :是否参与自动调查？
-STR_NETWORK_ASK_SURVEY_TEXT                                     :您是否愿意参与自动体验调查？{} OpenTTD 会在结束游戏时传输调查结果。{} 您可以在任意时刻在“游戏选项”菜单修改本选项。
+STR_NETWORK_ASK_SURVEY_TEXT                                     :您是否愿意参与自动体验调查？{} OpenTTD 会在结束游戏时传输调查结果。{}您可以在任意时刻在“游戏选项”菜单修改本选项。
 STR_NETWORK_ASK_SURVEY_PREVIEW                                  :预览调查结果
 STR_NETWORK_ASK_SURVEY_LINK                                     :关于体验调查和隐私
 STR_NETWORK_ASK_SURVEY_NO                                       :否
@@ -2743,7 +2743,7 @@ STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}开启
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}不显示覆盖的区域
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}显示可以覆盖的区域
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}接受：{GOLD}{CARGO_LIST}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供给: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供给：{GOLD}{CARGO_LIST}
 STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}维护成本：{GOLD}{CURRENCY_SHORT}/年
 STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}维护成本：{GOLD}{CURRENCY_SHORT}/周期
 
@@ -2804,16 +2804,16 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :切换为仅显
 STR_PICKER_MODE_SAVED                                           :已保存
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :切换为仅显示已保存的项目
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :选择一个要显示的车站类型
-STR_PICKER_STATION_TYPE_TOOLTIP                                 :选择要建造的车站类型。按住<Ctrl>键以添加或删除已保存的项目。
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :选择一个要显示的路点类型
+STR_PICKER_STATION_CLASS_TOOLTIP                                :选择显示的车站类别
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :选择建造的车站类型。按住 <Ctrl> 键操作以保存或删除当前项目
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :选择显示的路点类别
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :选择要建造的路点类型。按住<Ctrl>键以添加或删除已保存的项目。
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :选择一个要显示的公共汽车站类型
-STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :选择要建造的公共汽车站类型。按住<Ctrl>键以添加或删除已保存的项目。
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :选择一个要显示的汽车货场类型
-STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :选择要建造的汽车货场类型。按住<Ctrl>键以添加或删除已保存的项目。
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :选择一个要显示的物件类型
-STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :选择要建造的物件类型。按住<Ctrl>键选择物件以添加或删除已保存的项目。按住 <Ctrl> 键以沿对角线放置，按住 <Shift> 键以显示预计费用。
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :选择显示的公共汽车站类别
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :选择建造的公共汽车站类型。按住 <Ctrl> 键操作以保存或删除当前项目
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :选择显示的汽车货场类别
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :选择建造的汽车货场类型。按住 <Ctrl> 键操作以保存或删除当前项目
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :选择显示的物件类别
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :选择建造的物件类型。按住 <Ctrl> 键选择物件以保存或删除当前项目。按住 <Ctrl> 键拖拽以沿对角线放置，按住 <Shift> 键以显示预计费用
 
 STR_STATION_CLASS_DFLT                                          :默认
 STR_STATION_CLASS_DFLT_STATION                                  :默认车站
@@ -3053,7 +3053,7 @@ STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}显示�
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}在缩略地图显示
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}将该产业链的工业显示在缩略地图中
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}选择货物
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}选择需要显示的货物
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}选择显示的货物
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}选择工业
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}选择需要显示的工业
 
@@ -3738,7 +3738,7 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}无效的�
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}车站名称 - 点选名称以将屏幕中心移动到车站的位置。按住 <Ctrl> 键点选会在新视点中显示车站位置。
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}按住 <Ctrl> 键点选以选择多个项目
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} 车站
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - 车站 {COMMA} 座
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 没有 -
@@ -3896,7 +3896,7 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}查看�
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}查看公司总部
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}重置总部
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}以公司市值 1% 的代价重建总部，按住 <Shift> 键单击可以显示所需资金。
-STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}固定资产维护费明细
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}基建详情
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}显示详细的设施情况
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}给予资金
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}给予该公司资金
@@ -3939,12 +3939,12 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- 没�
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW}（{COMMA}% 已运输）{BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}、{STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}、{STRING}、{STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}、{STRING}、{STRING}……（尚有 {NUM} 个未显示）
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}工业名称 - 点选名称以将屏幕中心移动到当前工业的位置。按住 <Ctrl> 键点选会在新视点中显示工业位置。
-STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}接受的货物：{SILVER}{STRING}
-STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}产出的货物：{SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}接受货物：{SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}产出货物：{SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :所有货物类型
 STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :无
 
