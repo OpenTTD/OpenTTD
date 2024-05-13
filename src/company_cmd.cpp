@@ -668,12 +668,12 @@ void InitializeCompanies()
 }
 
 /**
- * May company \a cbig buy company \a csmall?
+ * Can company \a cbig buy company \a csmall without exceeding vehicle limits?
  * @param cbig   Company buying \a csmall.
  * @param csmall Company getting bought.
  * @return Return \c true if it is allowed.
  */
-bool MayCompanyTakeOver(CompanyID cbig, CompanyID csmall)
+bool CheckTakeoverVehicleLimit(CompanyID cbig, CompanyID csmall)
 {
 	const Company *c1 = Company::Get(cbig);
 	const Company *c2 = Company::Get(csmall);
@@ -725,7 +725,7 @@ static void HandleBankruptcyTakeover(Company *c)
 		if (c2->bankrupt_asked == 0 && // Don't ask companies going bankrupt themselves
 				!HasBit(c->bankrupt_asked, c2->index) &&
 				best_performance < c2->old_economy[1].performance_history &&
-				MayCompanyTakeOver(c2->index, c->index)) {
+				CheckTakeoverVehicleLimit(c2->index, c->index)) {
 			best_performance = c2->old_economy[1].performance_history;
 			best = c2;
 		}
