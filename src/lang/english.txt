@@ -5038,6 +5038,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Can't bu
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjoins more than one existing station/loading area
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station too spread out
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... unsupported number of tracks
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... unsupported length
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Too many stations/loading areas
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Too many railway station parts
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Too many bus stops
