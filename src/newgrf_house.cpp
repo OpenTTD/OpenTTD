@@ -105,11 +105,14 @@ void ResetHouses()
  */
 HouseResolverObject::HouseResolverObject(HouseID house_id, TileIndex tile, Town *town,
 		CallbackID callback, uint32_t param1, uint32_t param2,
-		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers)
+		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers, int view)
 	: ResolverObject(GetHouseSpecGrf(house_id), callback, param1, param2),
-	house_scope(*this, house_id, tile, town, not_yet_constructed, initial_random_bits, watched_cargo_triggers),
+	house_scope(*this, house_id, tile, town, not_yet_constructed, initial_random_bits, watched_cargo_triggers, view),
 	town_scope(*this, town, not_yet_constructed) // Don't access StorePSA if house is not yet constructed.
 {
+	/* Tile must be valid and a house tile, unless not yet constructed in which case it may also be INVALID_TILE. */
+	assert((IsValidTile(tile) && (not_yet_constructed || IsTileType(tile, MP_HOUSE))) || (not_yet_constructed && tile == INVALID_TILE));
+
 	this->root_spritegroup = HouseSpec::Get(house_id)->grf_prop.spritegroup[0];
 }
 
@@ -210,14 +213,12 @@ void DecreaseBuildingCount(Town *t, HouseID house_id)
 /* virtual */ uint32_t HouseScopeResolver::GetRandomBits() const
 {
 	/* Note: Towns build houses over houses. So during construction checks 'tile' may be a valid but unrelated house. */
-	assert(IsValidTile(this->tile) && (this->not_yet_constructed || IsTileType(this->tile, MP_HOUSE)));
 	return this->not_yet_constructed ? this->initial_random_bits : GetHouseRandomBits(this->tile);
 }
 
 /* virtual */ uint32_t HouseScopeResolver::GetTriggers() const
 {
 	/* Note: Towns build houses over houses. So during construction checks 'tile' may be a valid but unrelated house. */
-	assert(IsValidTile(this->tile) && (this->not_yet_constructed || IsTileType(this->tile, MP_HOUSE)));
 	return this->not_yet_constructed ? 0 : GetHouseTriggers(this->tile);
 }
 
@@ -362,6 +363,32 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
  */
 /* virtual */ uint32_t HouseScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
+	if (this->tile == INVALID_TILE) {
+		/* House does not yet exist, nor is it being planned to exist. Provide some default values intead. */
+		switch (variable) {
+			case 0x40: return TOWN_HOUSE_COMPLETED | this->view << 2; /* Construction stage. */
+			case 0x41: return 0;
+			case 0x42: return 0;
+			case 0x43: return 0;
+			case 0x44: return 0;
+			case 0x45: return _generating_world ? 1 : 0;
+			case 0x46: return 0;
+			case 0x47: return 0;
+			case 0x60: return 0;
+			case 0x61: return 0;
+			case 0x62: return 0;
+			case 0x63: return 0;
+			case 0x64: return 0;
+			case 0x65: return 0;
+			case 0x66: return 0xFFFFFFFF; /* Class and ID of nearby house. */
+			case 0x67: return 0;
+		}
+
+		Debug(grf, 1, "Unhandled house variable 0x{:X}", variable);
+		*available = false;
+		return UINT_MAX;
+	}
+
 	switch (variable) {
 		/* Construction stage. */
 		case 0x40: return (IsTileType(this->tile, MP_HOUSE) ? GetHouseBuildingStage(this->tile) : 0) | TileHash2Bit(TileX(this->tile), TileY(this->tile)) << 2;
@@ -481,12 +508,10 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 }
 
 uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile,
-		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers)
+		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers, int view)
 {
-	assert(IsValidTile(tile) && (not_yet_constructed || IsTileType(tile, MP_HOUSE)));
-
 	HouseResolverObject object(house_id, tile, town, callback, param1, param2,
-			not_yet_constructed, initial_random_bits, watched_cargo_triggers);
+			not_yet_constructed, initial_random_bits, watched_cargo_triggers, view);
 	return object.ResolveCallback();
 }
 
