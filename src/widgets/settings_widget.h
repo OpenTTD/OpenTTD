@@ -14,6 +14,7 @@
 enum GameOptionsWidgets : WidgetID {
 	WID_GO_TAB_GENERAL,            ///< General tab.
 	WID_GO_TAB_GRAPHICS,           ///< Graphics tab.
+	WID_GO_TAB_FONTS,              ///< Fonts tab.
 	WID_GO_TAB_SOUND,              ///< Sound tab.
 	WID_GO_TAB_SOCIAL,             ///< Social tab.
 	WID_GO_TAB_SELECTION,          ///< Background of the tab selection.
@@ -26,8 +27,18 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_GUI_SCALE,              ///< GUI Scale slider.
 	WID_GO_GUI_SCALE_AUTO,         ///< Autodetect GUI scale button.
 	WID_GO_GUI_SCALE_BEVEL_BUTTON, ///< Toggle for chunky bevels.
-	WID_GO_GUI_FONT_SPRITE,        ///< Toggle whether to prefer the sprite font over TTF fonts.
-	WID_GO_GUI_FONT_AA,            ///< Toggle whether to anti-alias fonts.
+	WID_GO_FONT_SPRITE,            ///< Toggle whether to prefer the sprite font over TTF fonts.
+	WID_GO_FONT_AA,                ///< Toggle whether to anti-alias fonts.
+	WID_GO_TEXT_FONT,              ///< Font label
+	WID_GO_TEXT_FONT_SIZE,         ///< Font size label.
+	WID_GO_FONT_SMALL_FONT_LABEL,  ///< Small font label.
+	WID_GO_FONT_MEDIUM_FONT_LABEL, ///< Medium font label.
+	WID_GO_FONT_LARGE_FONT_LABEL,  ///< Large font label.
+	WID_GO_FONT_MONOSPACED_FONT_LABEL, ///< Monospaced font label.
+	WID_GO_FONT_SMALL_FONT_SIZE_SLIDER, ///< Small font size slider.
+	WID_GO_FONT_MEDIUM_FONT_SIZE_SLIDER, ///< Medium font size slider.
+	WID_GO_FONT_LARGE_FONT_SIZE_SLIDER, ///< Large font size slider.
+	WID_GO_FONT_MONOSPACED_FONT_SIZE_SLIDER, ///< Monospaced font size slider.
 	WID_GO_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF.
 	WID_GO_BASE_GRF_PARAMETERS,    ///< Base GRF parameters.
 	WID_GO_BASE_GRF_CONTENT_DOWNLOAD, ///< 'Get Content' button for base GRF.
