@@ -28,7 +28,6 @@ private:
 	void SetFontSize(int pixels);
 
 protected:
-	const void *InternalGetFontTable(uint32_t tag, size_t &length) override;
 	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
 
 public:

@@ -33,10 +33,6 @@ TrueTypeFontCache::~TrueTypeFontCache()
 {
 	/* Virtual functions get called statically in destructors, so make it explicit to remove any confusion. */
 	this->TrueTypeFontCache::ClearFontCache();
-
-	for (auto &iter : this->font_tables) {
-		free(iter.second.second);
-	}
 }
 
 /**
@@ -163,18 +159,4 @@ const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
 	}
 
 	return this->InternalGetGlyph(key, GetFontAAState());
-}
-
-const void *TrueTypeFontCache::GetFontTable(uint32_t tag, size_t &length)
-{
-	const auto iter = this->font_tables.find(tag);
-	if (iter != this->font_tables.end()) {
-		length = iter->second.first;
-		return iter->second.second;
-	}
-
-	const void *result = this->InternalGetFontTable(tag, length);
-
-	this->font_tables[tag] = std::pair<size_t, const void *>(length, result);
-	return result;
 }

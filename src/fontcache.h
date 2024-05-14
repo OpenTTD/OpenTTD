@@ -107,14 +107,6 @@ public:
 	virtual GlyphID MapCharToGlyph(char32_t key, bool fallback = true) = 0;
 
 	/**
-	 * Read a font table from the font.
-	 * @param tag The of the table to load.
-	 * @param length The length of the read data.
-	 * @return The loaded table data.
-	 */
-	virtual const void *GetFontTable(uint32_t tag, size_t &length) = 0;
-
-	/**
 	 * Get the native OS font handle, if there is one.
 	 * @return Opaque OS font handle.
 	 */

@@ -34,7 +34,6 @@ private:
 	FT_Face face;  ///< The font face associated with this font.
 
 	void SetFontSize(int pixels);
-	const void *InternalGetFontTable(uint32_t tag, size_t &length) override;
 	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
 
 public:
@@ -322,22 +321,6 @@ GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
 	}
 
 	return glyph;
-}
-
-const void *FreeTypeFontCache::InternalGetFontTable(uint32_t tag, size_t &length)
-{
-	FT_ULong len = 0;
-	FT_Byte *result = nullptr;
-
-	FT_Load_Sfnt_Table(this->face, tag, 0, nullptr, &len);
-
-	if (len > 0) {
-		result = MallocT<FT_Byte>(len);
-		FT_Load_Sfnt_Table(this->face, tag, 0, result, &len);
-	}
-
-	length = len;
-	return result;
 }
 
 /**

@@ -284,20 +284,6 @@ void Win32FontCache::ClearFontCache()
 	return allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END ? this->parent->MapCharToGlyph(key) : 0;
 }
 
-/* virtual */ const void *Win32FontCache::InternalGetFontTable(uint32_t tag, size_t &length)
-{
-	DWORD len = GetFontData(this->dc, tag, 0, nullptr, 0);
-
-	void *result = nullptr;
-	if (len != GDI_ERROR && len > 0) {
-		result = MallocT<BYTE>(len);
-		GetFontData(this->dc, tag, 0, result, len);
-	}
-
-	length = len;
-	return result;
-}
-
 
 static bool TryLoadFontFromFile(const std::string &font_name, LOGFONT &logfont)
 {
