@@ -137,7 +137,7 @@ extern void LoadWin32Font(FontSize fs);
 extern void LoadCoreTextFont(FontSize fs);
 #endif
 
-static void LoadFontHelper(FontSize fs)
+static void LoadFontHelper([[maybe_unused]] FontSize fs)
 {
 #ifdef WITH_FREETYPE
 	LoadFreeTypeFont(fs);
@@ -215,7 +215,10 @@ bool IsDefaultFont(const FontCacheSubSetting &setting)
 uint GetFontCacheFontSize(FontSize fs)
 {
 	const FontCacheSubSetting &setting = *GetFontCacheSubSetting(fs);
-	return IsDefaultFont(setting) ? FontCache::GetDefaultFontHeight(fs) : setting.size;
+
+	if (IsDefaultFont(setting) && setting.size == 0) return FontCache::GetDefaultFontHeight(fs);
+
+	return setting.size;
 }
 
 /**
@@ -223,7 +226,7 @@ uint GetFontCacheFontSize(FontSize fs)
  * @param fs Font size.
  * @return Name of default font file.
  */
-static std::string GetDefaultTruetypeFont(FontSize fs)
+[[maybe_unused]] static std::string GetDefaultTruetypeFont(FontSize fs)
 {
 	switch (fs) {
 		case FS_NORMAL: return "OpenTTD-Sans.ttf";

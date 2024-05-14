@@ -208,6 +208,8 @@ struct FontCacheSettings {
 	bool global_aa;             ///< Whether to anti alias all font sizes.
 };
 
+const int DEFAULT_FONT_MAX_HEIGHT = 40; ///< The maximum height allowed by font sliders.
+
 extern FontCacheSettings _fcsettings;
 
 /**

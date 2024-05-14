@@ -951,6 +951,8 @@ STR_GAME_OPTIONS_TAB_GENERAL                                    :General
 STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Choose general settings
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Graphics
 STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Choose graphics settings
+STR_GAME_OPTIONS_TAB_FONTS                                      :Fonts
+STR_GAME_OPTIONS_TAB_FONTS_TT                                   :{BLACK}Choose font settings
 STR_GAME_OPTIONS_TAB_SOUND                                      :Sound
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Choose sound and music settings
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
@@ -1053,8 +1055,21 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Check th
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Scale bevels
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Check this box to scale bevels by interface size
 
+STR_GAME_OPTIONS_SMALL_FONT_FRAME                               :{BLACK}Small font
+STR_GAME_OPTIONS_SMALL_FONT_TOOLTIP                             :{BLACK}Used in map legends and on graphs.
+STR_GAME_OPTIONS_SMALL_FONT_SIZE_SLIDER_TOOLTIP                 :{BLACK}Drag to change the small font size
+STR_GAME_OPTIONS_MEDIUM_FONT_FRAME                              :{BLACK}Medium font
+STR_GAME_OPTIONS_MEDIUM_FONT_TOOLTIP                            :{BLACK}Most text is displayed using this font.
+STR_GAME_OPTIONS_MEDIUM_FONT_SIZE_SLIDER_TOOLTIP                :{BLACK}Drag to change the medium font size
+STR_GAME_OPTIONS_LARGE_FONT_FRAME                               :{BLACK}Large font
+STR_GAME_OPTIONS_LARGE_FONT_TOOLTIP                             :{BLACK}Used to display News headlines.
+STR_GAME_OPTIONS_LARGE_FONT_SIZE_SLIDER_TOOLTIP                 :{BLACK}Drag to change the large font size
+STR_GAME_OPTIONS_MONOSPACED_FONT_FRAME                          :{BLACK}Monospaced font
+STR_GAME_OPTIONS_MONOSPACED_FONT_TOOLTIP                        :{BLACK}Used to display the Readme and other documents.
+STR_GAME_OPTIONS_MONOSPACED_FONT_SIZE_SLIDER_TOOLTIP            :{BLACK}Drag to change the monospaced font size
+STR_GAME_OPTIONS_FONT_SIZE                                      :{BLACK}Size:
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Use traditional sprite font
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Check this box if you prefer to use the traditional fixed-size sprite font
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Check this box if you prefer to use the traditional fixed-size sprite font instead of the default OpenTTD TrueType font
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias fonts
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Check this box to anti-alias resizable fonts
 
