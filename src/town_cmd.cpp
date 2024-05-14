@@ -2665,6 +2665,39 @@ static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, int maxz, bool nosl
 	return false;
 }
 
+/**
+ * Build a house at this tile.
+ * @param t The town the house will belong to.
+ * @param tile The tile to try building on.
+ * @param hs The @a HouseSpec of the house.
+ * @param house The @a HouseID of the house.
+ * @param random_bits The random data to be associated with the house.
+ */
+static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID house, uint8_t random_bits)
+{
+	/* build the house */
+	t->cache.num_houses++;
+
+	uint8_t construction_counter = 0;
+	uint8_t construction_stage = 0;
+
+	if (_generating_world || _game_mode == GM_EDITOR) {
+		uint32_t construction_random = Random();
+
+		construction_stage = TOWN_HOUSE_COMPLETED;
+		if (Chance16(1, 7)) construction_stage = GB(construction_random, 0, 2);
+
+		if (construction_stage == TOWN_HOUSE_COMPLETED) {
+			ChangePopulation(t, hs->population);
+		} else {
+			construction_counter = GB(construction_random, 2, 2);
+		}
+	}
+
+	MakeTownHouse(tile, t, construction_counter, construction_stage, house, random_bits);
+	UpdateTownRadius(t);
+	UpdateTownGrowthRate(t);
+}
 
 /**
  * Tries to build a house at this tile.
@@ -2784,36 +2817,65 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 			if (callback_res != CALLBACK_FAILED && !Convert8bitBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_ALLOW_CONSTRUCTION, callback_res)) continue;
 		}
 
-		/* build the house */
-		t->cache.num_houses++;
-
 		/* Special houses that there can be only one of. */
 		t->flags |= oneof;
 
-		uint8_t construction_counter = 0;
-		uint8_t construction_stage = 0;
-
-		if (_generating_world || _game_mode == GM_EDITOR) {
-			uint32_t construction_random = Random();
-
-			construction_stage = TOWN_HOUSE_COMPLETED;
-			if (Chance16(1, 7)) construction_stage = GB(construction_random, 0, 2);
-
-			if (construction_stage == TOWN_HOUSE_COMPLETED) {
-				ChangePopulation(t, hs->population);
-			} else {
-				construction_counter = GB(construction_random, 2, 2);
-			}
-		}
-
-		MakeTownHouse(tile, t, construction_counter, construction_stage, house, random_bits);
-		UpdateTownRadius(t);
-		UpdateTownGrowthRate(t);
+		BuildTownHouse(t, tile, hs, house, random_bits);
 
 		return true;
 	}
 
 	return false;
+}
+
+CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house)
+{
+	if (_game_mode != GM_EDITOR) return CMD_ERROR;
+	if (Town::GetNumItems() == 0) return_cmd_error(STR_ERROR_MUST_FOUND_TOWN_FIRST);
+
+	if (static_cast<size_t>(house) >= HouseSpec::Specs().size()) return CMD_ERROR;
+	const HouseSpec *hs = HouseSpec::Get(house);
+	if (!hs->enabled) return CMD_ERROR;
+
+	if (TimerGameCalendar::year < hs->min_year || TimerGameCalendar::year > hs->max_year) return CMD_ERROR;
+
+	Town *t = ClosestTownFromTile(tile, UINT_MAX);
+
+	/* cannot build on these slopes... */
+	Slope slope = GetTileSlope(tile);
+	if (IsSteepSlope(slope)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+
+	/* building under a bridge? */
+	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+
+	/* can we clear the land? */
+	CommandCost cost = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_WATER, tile);
+	if (!cost.Succeeded()) return cost;
+
+	int maxz = GetTileMaxZ(tile);
+
+	/* Make sure there is no slope? */
+	bool noslope = (hs->building_flags & TILE_NOT_SLOPED) != 0;
+	if (noslope && slope != SLOPE_FLAT) return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
+
+	TileArea ta = tile;
+	if (hs->building_flags & TILE_SIZE_2x2) ta.Add(TileAddXY(tile, 1, 1));
+	if (hs->building_flags & TILE_SIZE_2x1) ta.Add(TileAddByDiagDir(tile, DIAGDIR_SW));
+	if (hs->building_flags & TILE_SIZE_1x2) ta.Add(TileAddByDiagDir(tile, DIAGDIR_SE));
+
+	/* Check additonal tiles covered by this house. */
+	for (const TileIndex &subtile : ta) {
+		cost = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_WATER, subtile);
+		if (!cost.Succeeded()) return cost;
+
+		if (!CheckBuildHouseSameZ(subtile, maxz, noslope)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+	}
+
+	if (flags & DC_EXEC) {
+		BuildTownHouse(t, tile, hs, house, Random());
+	}
+
+	return CommandCost();
 }
 
 /**
