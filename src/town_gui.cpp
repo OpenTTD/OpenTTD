@@ -12,6 +12,9 @@
 #include "viewport_func.h"
 #include "error.h"
 #include "gui.h"
+#include "house.h"
+#include "newgrf_house.h"
+#include "picker_gui.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "company_base.h"
@@ -1303,4 +1306,322 @@ void ShowFoundTownWindow()
 void InitializeTownGui()
 {
 	_town_local_authority_kdtree.Clear();
+}
+
+/**
+ * Draw representation of a house tile for GUI purposes.
+ * @param x Position x of image.
+ * @param y Position y of image.
+ * @param spec House spec to draw.
+ * @param house_id House ID to draw.
+ * @param view The house's 'view'.
+ */
+void DrawNewHouseTileInGUI(int x, int y, const HouseSpec *spec, HouseID house_id, int view)
+{
+	HouseResolverObject object(house_id, INVALID_TILE, nullptr, CBID_NO_CALLBACK, 0, 0, true, view);
+	const SpriteGroup *group = object.Resolve();
+	if (group == nullptr || group->type != SGT_TILELAYOUT) return;
+
+	uint8_t stage = TOWN_HOUSE_COMPLETED;
+	const DrawTileSprites *dts = reinterpret_cast<const TileLayoutSpriteGroup *>(group)->ProcessRegisters(&stage);
+
+	PaletteID palette = GENERAL_SPRITE_COLOUR(spec->random_colour[0]);
+	if (HasBit(spec->callback_mask, CBM_HOUSE_COLOUR)) {
+		uint16_t callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, nullptr, INVALID_TILE, true, view);
+		if (callback != CALLBACK_FAILED) {
+			/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */
+			palette = HasBit(callback, 14) ? GB(callback, 0, 8) + SPR_2CCMAP_BASE : callback;
+		}
+	}
+
+	SpriteID image = dts->ground.sprite;
+	PaletteID pal  = dts->ground.pal;
+
+	if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) image += stage;
+	if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += stage;
+
+	if (GB(image, 0, SPRITE_WIDTH) != 0) {
+		DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
+	}
+
+	DrawNewGRFTileSeqInGUI(x, y, dts, stage, palette);
+}
+
+/**
+ * Draw a house that does not exist.
+ * @param x Position x of image.
+ * @param y Position y of image.
+ * @param house_id House ID to draw.
+ * @param view The house's 'view'.
+ */
+void DrawHouseInGUI(int x, int y, HouseID house_id, int view)
+{
+	auto draw = [](int x, int y, HouseID house_id, int view) {
+		if (house_id >= NEW_HOUSE_OFFSET) {
+			/* Houses don't necessarily need new graphics. If they don't have a
+			 * spritegroup associated with them, then the sprite for the substitute
+			 * house id is drawn instead. */
+			const HouseSpec *spec = HouseSpec::Get(house_id);
+			if (spec->grf_prop.spritegroup[0] != nullptr) {
+				DrawNewHouseTileInGUI(x, y, spec, house_id, view);
+				return;
+			} else {
+				house_id = HouseSpec::Get(house_id)->grf_prop.subst_id;
+			}
+		}
+
+		/* Retrieve data from the draw town tile struct */
+		const DrawBuildingsTileStruct &dcts = GetTownDrawTileData()[house_id << 4 | view << 2 | TOWN_HOUSE_COMPLETED];
+		DrawSprite(dcts.ground.sprite, dcts.ground.pal, x, y);
+
+		/* Add a house on top of the ground? */
+		if (dcts.building.sprite != 0) {
+			Point pt = RemapCoords(dcts.subtile_x, dcts.subtile_y, 0);
+			DrawSprite(dcts.building.sprite, dcts.building.pal, x + UnScaleGUI(pt.x), y + UnScaleGUI(pt.y));
+		}
+	};
+
+	/* Houses can have 1x1, 1x2, 2x1 and 2x2 layouts which are individual HouseIDs. For the GUI we need
+	 * draw all of the tiles with appropriate positions. */
+	int x_delta = ScaleGUITrad(TILE_PIXELS);
+	int y_delta = ScaleGUITrad(TILE_PIXELS / 2);
+
+	const HouseSpec *hs = HouseSpec::Get(house_id);
+	if (hs->building_flags & TILE_SIZE_2x2) {
+		draw(x, y - y_delta - y_delta, house_id, view); // North corner.
+		draw(x + x_delta, y - y_delta, house_id + 1, view); // West corner.
+		draw(x - x_delta, y - y_delta, house_id + 2, view); // East corner.
+		draw(x, y, house_id + 3, view); // South corner.
+	} else if (hs->building_flags & TILE_SIZE_2x1) {
+		draw(x + x_delta / 2, y - y_delta, house_id, view); // North east tile.
+		draw(x - x_delta / 2, y, house_id + 1, view); // South west tile.
+	} else if (hs->building_flags & TILE_SIZE_1x2) {
+		draw(x - x_delta / 2, y - y_delta, house_id, view); // North west tile.
+		draw(x + x_delta / 2, y, house_id + 1, view); // South east tile.
+	} else {
+		draw(x, y, house_id, view);
+	}
+}
+
+
+class HousePickerCallbacks : public PickerCallbacks {
+public:
+	HousePickerCallbacks() : PickerCallbacks("fav_houses") {}
+
+	/**
+	 * Set climate mask for filtering buildings from current landscape.
+	 */
+	void SetClimateMask()
+	{
+		switch (_settings_game.game_creation.landscape) {
+			case LT_TEMPERATE: climate_mask = HZ_TEMP; break;
+			case LT_ARCTIC:    climate_mask = HZ_SUBARTC_ABOVE | HZ_SUBARTC_BELOW; break;
+			case LT_TROPIC:    climate_mask = HZ_SUBTROPIC; break;
+			case LT_TOYLAND:   climate_mask = HZ_TOYLND; break;
+			default: NOT_REACHED();
+		}
+	}
+
+	HouseZones climate_mask;
+
+	static inline int sel_class; ///< Currently selected 'class'.
+	static inline int sel_type; ///< Currently selected HouseID.
+	static inline int sel_view; ///< Currently selected 'view'. This is not controllable as its based on random data.
+
+	/* Houses do not have classes like NewGRFClass. We'll make up fake classes based on town zone
+	 * availability instead. */
+	static inline const std::array<StringID, HZB_END> zone_names = {
+		STR_HOUSE_PICKER_CLASS_ZONE1,
+		STR_HOUSE_PICKER_CLASS_ZONE2,
+		STR_HOUSE_PICKER_CLASS_ZONE3,
+		STR_HOUSE_PICKER_CLASS_ZONE4,
+		STR_HOUSE_PICKER_CLASS_ZONE5,
+	};
+
+	StringID GetClassTooltip() const override { return STR_PICKER_HOUSE_CLASS_TOOLTIP; }
+	StringID GetTypeTooltip() const override { return STR_PICKER_HOUSE_TYPE_TOOLTIP; }
+	bool IsActive() const override { return true; }
+
+	bool HasClassChoice() const override { return true; }
+	int GetClassCount() const override { return static_cast<int>(zone_names.size()); }
+
+	void Close([[maybe_unused]] int data) override { ResetObjectToPlace(); }
+
+	int GetSelectedClass() const override { return HousePickerCallbacks::sel_class; }
+	void SetSelectedClass(int cls_id) const override { HousePickerCallbacks::sel_class = cls_id; }
+
+	StringID GetClassName(int id) const override
+	{
+		if (id < GetClassCount()) return zone_names[id];
+		return INVALID_STRING_ID;
+	}
+
+	int GetTypeCount(int cls_id) const override
+	{
+		if (cls_id < GetClassCount()) return static_cast<int>(HouseSpec::Specs().size());
+		return 0;
+	}
+
+	PickerItem GetPickerItem(int cls_id, int id) const override
+	{
+		const auto *spec = HouseSpec::Get(id);
+		if (spec->grf_prop.grffile == nullptr) return {0, spec->Index(), cls_id, id};
+		return {spec->grf_prop.grffile->grfid, spec->grf_prop.local_id, cls_id, id};
+	}
+
+	int GetSelectedType() const override { return sel_type; }
+	void SetSelectedType(int id) const override { sel_type = id; }
+
+	StringID GetTypeName(int cls_id, int id) const override
+	{
+		const HouseSpec *spec = HouseSpec::Get(id);
+		if (spec == nullptr) return INVALID_STRING_ID;
+		if (!spec->enabled) return INVALID_STRING_ID;
+		if ((spec->building_availability & climate_mask) == 0) return INVALID_STRING_ID;
+		if (!HasBit(spec->building_availability, cls_id)) return INVALID_STRING_ID;
+		for (int i = 0; i < cls_id; i++) {
+			/* Don't include if it's already included in an earlier zone. */
+			if (HasBit(spec->building_availability, i)) return INVALID_STRING_ID;
+		}
+
+		 return spec->building_name;
+	}
+
+	bool IsTypeAvailable(int, int id) const override
+	{
+		const HouseSpec *hs = HouseSpec::Get(id);
+		if (!hs->enabled) return false;
+		if (TimerGameCalendar::year < hs->min_year || TimerGameCalendar::year > hs->max_year) return false;
+		return true;
+	}
+
+	void DrawType(int x, int y, int, int id) const override
+	{
+		DrawHouseInGUI(x, y, id, HousePickerCallbacks::sel_view);
+	}
+
+	void FillUsedItems(std::set<PickerItem> &items) override
+	{
+		auto id_count = GetBuildingHouseIDCounts();
+		for (auto it = id_count.begin(); it != id_count.end(); ++it) {
+			if (*it == 0) continue;
+			HouseID house = static_cast<HouseID>(std::distance(id_count.begin(), it));
+			const HouseSpec *hs = HouseSpec::Get(house);
+			int class_index = FindFirstBit(hs->building_availability & HZ_ZONALL);
+			items.insert({0, house, class_index, house});
+		}
+	}
+
+	std::set<PickerItem> UpdateSavedItems(const std::set<PickerItem> &src) override
+	{
+		if (src.empty()) return src;
+
+		const auto specs = HouseSpec::Specs();
+		std::set<PickerItem> dst;
+		for (const auto &item : src) {
+			if (item.grfid == 0) {
+				dst.insert(item);
+			} else {
+				/* Search for spec by grfid and local index. */
+				auto it = std::find_if(specs.begin(), specs.end(), [&item](const HouseSpec &spec) { return spec.grf_prop.grffile != nullptr && spec.grf_prop.grffile->grfid == item.grfid && spec.grf_prop.local_id == item.local_id; });
+				if (it == specs.end()) {
+					/* Not preset, hide from UI. */
+					dst.insert({item.grfid, item.local_id, -1, -1});
+				} else {
+					int class_index = FindFirstBit(it->building_availability & HZ_ZONALL);
+					dst.insert( {item.grfid, item.local_id, class_index, it->Index()});
+				}
+			}
+		}
+
+		return dst;
+	}
+
+	static HousePickerCallbacks instance;
+};
+/* static */ HousePickerCallbacks HousePickerCallbacks::instance;
+
+struct BuildHouseWindow : public PickerWindow {
+	BuildHouseWindow(WindowDesc *desc, Window *parent) : PickerWindow(desc, parent, 0, HousePickerCallbacks::instance)
+	{
+		HousePickerCallbacks::instance.SetClimateMask();
+		this->ConstructWindow();
+		this->InvalidateData();
+	}
+
+	void UpdateSelectSize(const HouseSpec *spec)
+	{
+		if (spec == nullptr) {
+			SetTileSelectSize(1, 1);
+			ResetObjectToPlace();
+		} else {
+			SetObjectToPlaceWnd(SPR_CURSOR_TOWN, PAL_NONE, HT_RECT | HT_DIAGONAL, this);
+			if (spec->building_flags & TILE_SIZE_2x2) {
+				SetTileSelectSize(2, 2);
+			} else if (spec->building_flags & TILE_SIZE_2x1) {
+				SetTileSelectSize(2, 1);
+			} else if (spec->building_flags & TILE_SIZE_1x2) {
+				SetTileSelectSize(1, 2);
+			} else if (spec->building_flags & TILE_SIZE_1x1) {
+				SetTileSelectSize(1, 1);
+			}
+		}
+	}
+
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	{
+		this->PickerWindow::OnInvalidateData(data, gui_scope);
+		if (!gui_scope) return;
+
+		if ((data & PickerWindow::PFI_POSITION) != 0) {
+			const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
+			UpdateSelectSize(spec);
+		}
+	}
+
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	{
+		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
+		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index());
+	}
+
+	IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {
+		/* There are four different 'views' that are random based on house tile position. As this is not
+		 * user-controllable, instead we automatically cycle through them. */
+		HousePickerCallbacks::sel_view = (HousePickerCallbacks::sel_view + 1) % 4;
+		this->SetDirty();
+	}};
+
+	static inline HotkeyList hotkeys{"buildhouse", {
+		Hotkey('F', "focus_filter_box", PCWHK_FOCUS_FILTER_BOX),
+	}};
+};
+
+/** Nested widget definition for the build NewGRF rail waypoint window */
+static constexpr NWidgetPart _nested_build_house_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_HOUSE_PICKER_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_DEFSIZEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidgetFunction(MakePickerClassWidgets),
+		NWidgetFunction(MakePickerTypeWidgets),
+	EndContainer(),
+};
+
+static WindowDesc _build_house_desc(
+	WDP_AUTO, "build_house", 0, 0,
+	WC_BUILD_HOUSE, WC_BUILD_TOOLBAR,
+	WDF_CONSTRUCTION,
+	std::begin(_nested_build_house_widgets), std::end(_nested_build_house_widgets),
+	&BuildHouseWindow::hotkeys
+);
+
+void ShowBuildHousePicker(Window *parent)
+{
+	if (BringWindowToFrontById(WC_BUILD_HOUSE, 0)) return;
+	new BuildHouseWindow(&_build_house_desc, parent);
 }

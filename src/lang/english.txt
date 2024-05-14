@@ -437,6 +437,9 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Abandon scenari
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Exit
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generate towns
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Place houses
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Game options
@@ -2814,6 +2817,16 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Select a lorry 
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Select a lorry station type to build. Ctrl+Click to add or remove in saved items
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Select an object class to display
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Select an object type to build. Ctrl+Click to add or remove in saved items. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Select a town zone to display
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Select a house type to build. Ctrl+Click to add or remove in saved items
+
+STR_HOUSE_PICKER_CAPTION                                        :House Selection
+
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Edge
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Outskirts
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Outer Suburbs
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Inner Suburbs
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Town centre
 
 STR_STATION_CLASS_DFLT                                          :Default
 STR_STATION_CLASS_DFLT_STATION                                  :Default station
@@ -5001,6 +5014,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ther
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Road works in progress
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Can't delete this town...{}A station or depot is referring to the town or a town owned tile can't be removed
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... there is no suitable place for a statue in the centre of this town
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Can't build house...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... too many industries

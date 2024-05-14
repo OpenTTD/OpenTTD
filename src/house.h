@@ -136,4 +136,6 @@ inline HouseID GetTranslatedHouseID(HouseID hid)
 	return hs->grf_prop.override == INVALID_HOUSE_ID ? hid : hs->grf_prop.override;
 }
 
+void ShowBuildHousePicker(struct Window *);
+
 #endif /* HOUSE_H */

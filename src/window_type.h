@@ -376,6 +376,12 @@ enum WindowClass {
 	WC_BUILD_OBJECT,
 
 	/**
+	 * Build house; %Window numbers:
+	 *   - 0 = #BuildHouseWidgets
+	 */
+	WC_BUILD_HOUSE,
+
+	/**
 	 * Build vehicle; %Window numbers:
 	 *   - #VehicleType = #BuildVehicleWidgets
 	 *   - #TileIndex = #BuildVehicleWidgets
