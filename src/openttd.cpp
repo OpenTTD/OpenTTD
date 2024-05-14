@@ -612,7 +612,7 @@ int openttd_main(std::span<char * const> arguments)
 				return ret;
 			}
 
-			std::string extension = std::filesystem::path(_file_to_saveload.name).extension().string();
+			std::string extension = std::filesystem::path(mgo.opt).extension().string();
 			auto [_, title] = FiosGetSavegameListCallback(SLO_LOAD, mgo.opt, extension);
 
 			_load_check_data.Clear();
