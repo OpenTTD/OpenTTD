@@ -32,7 +32,7 @@ static const HouseID INVALID_HOUSE_ID = 0xFFFF;
 static const uint HOUSE_NUM_ACCEPTS = 16; ///< Max number of cargoes accepted by a tile
 static const uint HOUSE_ORIGINAL_NUM_ACCEPTS = 3; ///< Original number of accepted cargo types.
 
-enum BuildingFlags {
+enum BuildingFlags : uint8_t {
 	TILE_NO_FLAG         =       0,
 	TILE_SIZE_1x1        = 1U << 0,
 	TILE_NOT_SLOPED      = 1U << 1,
@@ -50,7 +50,7 @@ enum BuildingFlags {
 };
 DECLARE_ENUM_AS_BIT_SET(BuildingFlags)
 
-enum HouseZonesBits {
+enum HouseZonesBits : uint8_t {
 	HZB_BEGIN     = 0,
 	HZB_TOWN_EDGE = 0,
 	HZB_TOWN_OUTSKIRT,
@@ -63,7 +63,7 @@ static_assert(HZB_END == 5);
 
 DECLARE_POSTFIX_INCREMENT(HouseZonesBits)
 
-enum HouseZones {                  ///< Bit  Value       Meaning
+enum HouseZones : uint16_t {
 	HZ_NOZNS             = 0x0000,  ///<       0          This is just to get rid of zeros, meaning none
 	HZ_ZON1              = 1U << HZB_TOWN_EDGE,    ///< 0..4 1,2,4,8,10  which town zones the building can be built in, Zone1 been the further suburb
 	HZ_ZON2              = 1U << HZB_TOWN_OUTSKIRT,
@@ -80,7 +80,7 @@ enum HouseZones {                  ///< Bit  Value       Meaning
 };
 DECLARE_ENUM_AS_BIT_SET(HouseZones)
 
-enum HouseExtraFlags {
+enum HouseExtraFlags : uint8_t {
 	NO_EXTRA_FLAG            =       0,
 	BUILDING_IS_HISTORICAL   = 1U << 0,  ///< this house will only appear during town generation in random games, thus the historical
 	BUILDING_IS_PROTECTED    = 1U << 1,  ///< towns and AI will not remove this house, while human players will be able to
