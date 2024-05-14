@@ -16,6 +16,7 @@
 #include "dropdown_type.h"
 #include "dropdown_func.h"
 #include "dropdown_common_type.h"
+#include "house.h"
 #include "vehicle_gui.h"
 #include "rail_gui.h"
 #include "road.h"
@@ -1211,12 +1212,18 @@ static CallBackFunction ToolbarScenGenLand(Window *w)
 	return CBF_NONE;
 }
 
-
-static CallBackFunction ToolbarScenGenTown(Window *w)
+static CallBackFunction ToolbarScenGenTownClick(Window *w)
 {
-	w->HandleButtonClick(WID_TE_TOWN_GENERATE);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
-	ShowFoundTownWindow();
+	PopupMainToolbarMenu(w, WID_TE_TOWN_GENERATE, {STR_SCENEDIT_TOWN_MENU_BUILD_TOWN, STR_SCENEDIT_TOWN_MENU_PACE_HOUSE});
+	return CBF_NONE;
+}
+
+static CallBackFunction ToolbarScenGenTown(int index)
+{
+	switch (index) {
+		case 0: ShowFoundTownWindow(); break;
+		case 1: ShowBuildHousePicker(nullptr); break;
+	}
 	return CBF_NONE;
 }
 
@@ -2223,7 +2230,7 @@ static MenuClickedProc * const _scen_toolbar_dropdown_procs[] = {
 	nullptr,              // 9
 	nullptr,              // 10
 	nullptr,              // 11
-	nullptr,              // 12
+	ToolbarScenGenTown,   // 12
 	nullptr,              // 13
 	ToolbarScenBuildRoad, // 14
 	ToolbarScenBuildTram, // 15
@@ -2249,7 +2256,7 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarZoomInClick,
 	ToolbarZoomOutClick,
 	ToolbarScenGenLand,
-	ToolbarScenGenTown,
+	ToolbarScenGenTownClick,
 	ToolbarScenGenIndustry,
 	ToolbarScenBuildRoadClick,
 	ToolbarScenBuildTramClick,
@@ -2376,7 +2383,7 @@ struct ScenarioEditorToolbarWindow : Window {
 			case MTEHK_SETTINGS:               ShowGameOptions(); break;
 			case MTEHK_SAVEGAME:               MenuClickSaveLoad(); break;
 			case MTEHK_GENLAND:                ToolbarScenGenLand(this); break;
-			case MTEHK_GENTOWN:                ToolbarScenGenTown(this); break;
+			case MTEHK_GENTOWN:                ToolbarScenGenTownClick(this); break;
 			case MTEHK_GENINDUSTRY:            ToolbarScenGenIndustry(this); break;
 			case MTEHK_BUILD_ROAD:             ToolbarScenBuildRoadClick(this); break;
 			case MTEHK_BUILD_TRAM:             ToolbarScenBuildTramClick(this); break;

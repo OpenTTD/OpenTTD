@@ -173,6 +173,15 @@ void InitializeBuildingCounts()
 }
 
 /**
+ * Get read-only span of total HouseID building counts.
+ * @return span of HouseID building counts.
+ */
+std::span<const uint> GetBuildingHouseIDCounts()
+{
+	return _building_counts.id_count;
+}
+
+/**
  * IncreaseBuildingCount()
  * Increase the count of a building when it has been added by a town.
  * @param t The town that the building is being built in
