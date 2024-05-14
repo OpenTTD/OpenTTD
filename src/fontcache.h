@@ -208,6 +208,11 @@ struct FontCacheSettings {
 	bool global_aa;             ///< Whether to anti alias all font sizes.
 };
 
+const int DEFAULT_FONT_MAX_HEIGHT = 40; ///< The maximum height allowed by font sliders.
+const int DEFAULT_FONT_MIN_MAX_GAP = 14; ///< This controls how many steps will be on any slider. The gap between the low end of the slider and the high end.
+/** Because of the math that builds the font size sliders DEFAULT_FONT_MIN_MAX_GAP needs to be an even number: */
+static_assert(DEFAULT_FONT_MIN_MAX_GAP % 2 == 0);
+
 extern FontCacheSettings _fcsettings;
 
 /**
