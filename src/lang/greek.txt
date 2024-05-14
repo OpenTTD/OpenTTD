@@ -351,7 +351,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Πατή
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα Κύλισης - μετακινεί την λίστα πάνω/κάτω
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα κίνησης - κινεί τη λίστα αριστερά/δεξιά
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Κατεδάφιση κτιρίων κλπ. σε συγκεκριμένο τετράγωνο. Ctrl+Κλικ για διαγώνια επιλογή. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Κατεδάφιση κτιρίων κλπ. σε συγκεκριμένο τετράγωνο. Ctrl+Κλικ για διαγώνια επιλογή. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -362,7 +362,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Εμφά
 
 ###length VEHICLE_TYPES
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Ενεργοποιώντας αυτό το κουμπί, εμφανίζονται και τα κρυφά βαγόνια
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Ενεργοποιώντας αυτό το κουμπί, εμφανίζονται και τα κρυφά οχήματα δρόμου
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Ενεργοποιώντας αυτό το κουμπί, εμφανίζονται και τα κρυφά οδικά οχήματα
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Ενεργοποιώντας αυτό το κουμπί, εμφανίζονται και τα κρυφά πλοία
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ενεργοποιώντας αυτό το κουμπί, εμφανίζονται και τα κρυφά αεροσκάφη
 
@@ -456,7 +456,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Εμφά
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Εμφάνιση πίνακα κατάταξης των εταιριών
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Εμφάνιση λίστας βιομηχανιών ή χρηματοδότηση κατασκευής νέας βιομηχανίας
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας με τα τραίνα της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οχήματα δρόμου της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Μεγέθυνση εικόνας
@@ -485,9 +485,9 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Δημι
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Δημιουργία βιομηχανίας
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Κατασκευή δρόμου
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}{BLACK}Κατασκευή τροχιοδρόμου
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Φύτευση Δέντρων. Ctrl+Κλικ για διαγώνια επιλογή περιοχής. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Φύτευση Δέντρων. Ctrl+Κλικ για διαγώνια επιλογή περιοχής. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Τοποθέτηση πινακίδας
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Τοποθέτηση αντικειμένου. Ctrl+Κλικ για διαγώνια επιλογή περιοχής. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Τοποθέτηση αντικειμένου. Ctrl+Κλικ για διαγώνια επιλογή περιοχής. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 # Scenario editor file menu
 ###length 7
@@ -1019,8 +1019,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσία που δόθηκε στην {STRING}!{}{}{STRING} από {STRING} έως {STRING} θα πληρώνει τριπλές τιμές για το/α επόμενο/α {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας που δόθηκε στην {STRING}!{}{}{STRING} από {STRING} έως {STRING} θα πληρώνει τετραπλές τιμές για το/α επόμενο/α {UNITS_YEARS_OR_MINUTES}!
 
-STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Κυκλοφοριακό χάος στην {TOWN}!{}{}Το πρόγραμμα ανοικοδόμησης δρόμου που χρηματοδοτείται από το {STRING} φέρνει 6 μήνες δυστυχίας στους αυτοκινητιστές!
-STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Κυκλοφοριακό χάος στην {TOWN}!{}{}Το πρόγραμμα ανοικοδόμησης δρόμου που χρηματοδοτείται από το {STRING} φέρνει 6 λεπτά δυστυχίας στους οδηγούς!
+STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}Κυκλοφοριακό χάος στην {TOWN}!{}{}Το πρόγραμμα ανακατασκευής δρόμων που χρηματοδοτείται από το {STRING} φέρνει 6 μήνες δυστυχίας στους αυτοκινητιστές!
+STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}Κυκλοφοριακό χάος στην {TOWN}!{}{}Το πρόγραμμα ανακατασκευής δρόμων που χρηματοδοτείται από το {STRING} φέρνει 6 λεπτά δυστυχίας στους οδηγούς!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Μονοπώλιο μεταφορών!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}Η τοπική αρχή της {TOWN} υπογράφει σύμβαση με την {STRING} για 12 μήνες αποκλειστικών δικαιωμάτων μεταφοράς!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}Η τοπική αρχή της {TOWN} υπογράφει σύμβαση με την {STRING} για 12 λεπτά αποκλειστικών δικαιωμάτων μεταφοράς!
@@ -1435,7 +1435,7 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Ορίστε τ
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Μοντέλο επιτάχυνσης τρένων: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Επιλέξτε το μοντέλο φυσικής για την επιτάχυνση των τρένων. Με το «αρχικό» μοντέλο οι κλίσεις επιβαρύνουν το ίδιο όλα τα οχήματα. Με το «ρεαλιστικό» μοντέλο οι κλίσεις και οι στροφές τα επιβαρύνουν ανάλογα με διάφορες ιδιότητες όπως το μήκος και το ελκτικό φορτίο
 
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Μοντέλο επιτάχυνσης οχημάτων δρόμου: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Μοντέλο επιτάχυνσης οδικών οχημάτων: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Επιλέξτε το μοντέλο φυσικής για την επιτάχυνση των οχημάτων. Με το «αρχικό» μοντέλο οι κλίσεις επιβαρύνουν το ίδιο όλα τα οχήματα. Με το «ρεαλιστικό» μοντέλο οι κλίσεις και οι στροφές τα επιβαρύνουν ανάλογα με διάφορες ιδιότητες όπως το μήκος και το ελκτικό φορτίο
 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Κλίση εδάφους για τα τρένα: {STRING}
@@ -1682,7 +1682,7 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Κανένας
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Αυθεντικός
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Βελτιωμένος
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Οχήματα δρόμου: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Οδικά Οχήματα: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Επιλέξτε την πλευρά οδήγησης
 
 ###length 2
@@ -1878,7 +1878,7 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Παίζει τ
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Μέγιστος αριθμός τρένων ανά εταιρία: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Μέγιστος αριθμός τρένων που μπορεί να έχει μια εταιρεία
 
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Μέγιστος αριθμός οχημάτων δρόμου ανά εταιρία: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Μέγιστος αριθμός οδικών οχημάτων ανά εταιρία: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Μέγιστος αριθμός οδικών οχημάτων που μπορεί να έχει μια εταιρεία
 
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Μέγιστος αριθμός αεροσκαφών ανά εταιρία: {STRING}
@@ -2327,7 +2327,7 @@ STR_CHEATS                                                      :{WHITE}Ρυθμ
 STR_CHEAT_MONEY                                                 :{LTBLUE}Αύξηση χρημάτων κατά {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Παίζετε με την εταιρία: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Μαγική μπουλντόζα (αφαιρεί βιομηχανίες, αμετακίνητα αντικείμενα): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Τα τούνελ μπορούν να διασταυρώνονται: {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Οι σήραγγες μπορούν να διασταυρώνονται: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Τα jet δε θα συντρίβονται (συχνά) σε μικρά αεροδρόμια: {ORANGE} {STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Μεταβολή του μέγιστου ύψους του χάρτη: {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Μεταβολή του μέγιστου ύψους βουνών στο χάρτη
@@ -2341,18 +2341,18 @@ STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Εμφάνιση γενικών χρωματικών μοτίβων
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Εμφάνιση χρωματικών μοτίβων τρένων
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Εμφάνιση χρωματικών μοτίβων οχημάτων δρόμου
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Εμφάνιση χρωματικών μοτίβων οδικών οχημάτων
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Εμφάνιση χρωματικών μοτίβων πλοίων
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Εμφάνιση χρωματικών μοτίβων αεροσκαφών
 STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Εμφάνιση χρωμάτων ομάδων τραίνων
-STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Εμφάνιση χρωμάτων ομάδων οχημάτων δρόμου
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Εμφάνιση χρωμάτων ομάδων οδικών οχημάτων
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Εμφάνιση χρωμάτων ομάδων πλοίων
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Εμφάνιση χρωμάτων ομάδων αεροσκαφών
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Επιλογή του βασικού χρώματος για το επιλεγμένο θέμα. Ctrl+Κλικ για ορισμό αυτού του χρώματος για κάθε θέμα
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Επιλογή του δευτερεύοντος χρώματος για το επιλεγμένο θέμα. Ctrl+Κλικ για ορισμό αυτού του χρώματος για κάθε θέμα
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Επιλέξτε το χρωματικό μοτίβο για αλλαγή ή πολλαπλά μοτίβα με Ctrl+Κλικ. Πατήστε στο κουτάκι για να επιλέξετε τη χρήση του μοτίβου
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Δεν έχουν οριστεί ομάδες τραίνων
-STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Δεν έχουν οριστεί ομάδες οχημάτων δρόμου
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Δεν έχουν οριστεί ομάδες οδικών οχημάτων
 STR_LIVERY_SHIP_GROUP_EMPTY                                     :Δεν έχουν οριστεί ομάδες πλοίων
 STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Δεν έχουν οριστεί ομάδες αεροσκαφών
 
@@ -2856,16 +2856,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Κατασκε�
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Κατασκευή Μονοτρόχιου Σιδηρόδρομου
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Κατασκευή Σιδηροδρόμου Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Κατασκευή σιδηροτροχιάς. Ctrl+Κλικ για αφαίρεση σιδηροτροχιάς. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατασκευή σιδηροτροχιάς με χρήση της Αυτόματης Σιδηροτροχιάς. Ctrl+Κλικ για αφαίρεση σιδηροτροχιάς. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Κατασκευή αμαξοστάσιου (για αγορά και επισκευή τρένων). Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή σιδηροτροχιάς σε σημείο καθοδήγησης. Ctrl+Κλικ για επιλογή πρόσθετου σημείου καθοδήγησης για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων. Ctrl+Κλικ για επιλογή πρόσθετου σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών στον σιδηρόδρομο. Ctrl+Κλικ για κατασκευή του εναλλακτικού είδους σηματοδότη{}Με Κλικ+σύρσιμο κατασκευάζονται σηματοδότες κατά μήκος μιας σιδηροτροχιάς ανά το ορισμένο διάστημα. Ctrl+Κλικ+σύρσιμο για κατασκευή σηματοδοτών μέχρι την επομένη διασταύρωση, σταθμό ή σηματοδότη. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Κατασκευή γέφυρας σιδηρόδρομου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Κατασκευή τούνελ σιδηρόδρομου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Κατασκευή σιδηροτροχιάς. Ctrl+Κλικ για αφαίρεση σιδηροτροχιάς. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατασκευή σιδηροτροχιάς με χρήση της Αυτόματης Σιδηροτροχιάς. Ctrl+Κλικ για αφαίρεση σιδηροτροχιάς. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Κατασκευή αμαξοστάσιου (για αγορά και επισκευή τρένων). Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή σιδηροτροχιάς σε σημείο καθοδήγησης. Ctrl+Κλικ για επιλογή πρόσθετου σημείου καθοδήγησης για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων. Ctrl+Κλικ για επιλογή πρόσθετου σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών στον σιδηρόδρομο. Ctrl+Κλικ για κατασκευή του εναλλακτικού είδους σηματοδότη{}Με Κλικ+σύρσιμο κατασκευάζονται σηματοδότες κατά μήκος μιας σιδηροτροχιάς ανά ορισμένο διάστημα. Ctrl+Κλικ+σύρσιμο για κατασκευή σηματοδοτών μέχρι την επομένη διασταύρωση, σταθμό ή σηματοδότη. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Κατασκευή σιδηροδρομικής γέφυρας. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Κατασκευή σιδηροδρομικής σήραγγας. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης σιδηροτροχιών, σηματοδοτών, σημείων καθοδήγησης και σταθμών. Ctrl+Κλικ για αφαίρεση και της σιδηροτροχιάς από σημεία καθοδήγησης και σταθμούς
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Μετατροπή/Αναβάθμιση του τύπου γραμμής. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Μετατροπή/Αναβάθμιση του τύπου σιδηροτροχιάς. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 STR_RAIL_NAME_RAILROAD                                          :Σιδηρόδρομος
 STR_RAIL_NAME_ELRAIL                                            :Ηλεκτροδοτημένη σιδηροτροχιά
@@ -2890,7 +2890,23 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Επιλ
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Σύρετε και Ελευθερώστε
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Φτιάξε ένα σταθμό χρησιμοποιώντας σύρσιμο και ελευθέρωση
 
+STR_PICKER_MODE_ALL                                             :Όλα
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Εναλλαγή εμφάνισης στοιχείων από όλες τις κατηγορίες
+STR_PICKER_MODE_USED                                            :Χρησιμοποιείται
+STR_PICKER_MODE_USED_TOOLTIP                                    :Εναλλαγή εμφάνισης μόνο υπαρχόντων στοιχείων
+STR_PICKER_MODE_SAVED                                           :Αποθηκεύτηκε
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Εναλλαγή εμφάνισης μόνο αποθηκευμένων στοιχείων
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Επιλογή κατηγορίας σταθμού για εμφάνιση
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Επιλογή τύπου σταθμού για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Επιλογή κατηγορίας σημείου καθοδήγησης για εμφάνιση
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Επιλογή σημείου καθοδήγησης για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Επιλογή κατηγορίας στάσεων λεωφορείων για εμφάνιση
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Επιλογή κατηγορίας στάσεων λεωφορείων για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Επιλογή κατηγορίας σταθμών φορτηγών για εμφάνιση.
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Επιλογή κατηγορίας σταθμών φορτηγών για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Επιλογή κατηγορίας αντικειμένων για εμφάνιση
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Επιλογή κατηγορίας αντικειμένων για εμφάνιση. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία. Ctrl+κλικ+σύρσιμο για να επιλεγεί διαγώνια περιοχή. Επίσης, πατήστε Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 STR_STATION_CLASS_DFLT                                          :Προεπιλεγμένος
 STR_STATION_CLASS_DFLT_STATION                                  :Προεπιλεγμένος σταθμός
@@ -2913,14 +2929,14 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Σημα
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Συνδυαστικός Σηματοδότης (ηλεκτρικός){}Ο συνδυαστικός σηματοδότης δουλεύει απλά ως σηματοδότης εισόδου και εξόδου ταυτόχρονα. Αυτό σας επιτρέπει την κατασκευή μεγάλων «δέντρων» με προ-σηματοδότες
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Σηματοδότης Τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα από ένα τρένο να είναι σε ένα κομμάτι ελέγχου την ίδια στιγμή, εάν το τρένο μπορεί να δεσμεύσει τροχιά σε ασφαλές σημείο στάσης. Κανονικοί σηματοδότες τροχιάς μπορούν να περαστούν από την πίσω πλευρά
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα από ένα τρένο να είναι σε ένα κομμάτι ελέγχου την ίδια στιγμή, εάν το τρένο μπορεί να δεσμεύσει τροχιά σε ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπορούν να περαστούν από την πίσω πλευρά
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Μετατροπή σήματος{}Πατήστε σε ένα υπάρχον σήμα για να το μετατρέψετε στον επιλεγμένο τύπο και παραλλαγή. Ctrl+Κλικ για εναλλαγή της υπάρχουσας παραλλαγής. Το Shift+Κλικ εμφανίζει το εκτιμώμενο κόστος μετατροπής
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Μετατροπή σήματος{}Πατήστε σε ένα υπάρχον σήμα για να το μετατρέψετε στον επιλεγμένο τύπο και παραλλαγή. Ctrl+Κλικ για εναλλαγή της υπάρχουσας παραλλαγής.  Shift+Κλικ για εμφάνιση του εκτιμώμενου κόστους μετατροπής
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Απόσταση μεταξύ σηματοδοτών με σύρσιμο
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Μείωση απόστασης μεταξύ σηματοδοτών με σύρσιμο
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Αύξηση απόστασης μεταξύ σηματοδοτών με σύρσιμο
 
 # Bridge selection window
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Επιλογή Γέφυρας Σιδηροδρόμου
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Επιλογή Γέφυρας Δρόμου
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Επιλογή Σιδηροδρομικής Γέφυρας
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Επιλογή Οδικής Γέφυρας
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Επιλογή γέφυρας - πατήστε στη γέφυρα της προτίμησής σας για κατασκευή
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
@@ -2939,25 +2955,25 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Σιλικόν�
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή Δρόμου
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή Τροχιόδρομου
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατασκευή τμήματος δρόμου. Ctrl+Κλικ για αφαίρεση τμήματος δρόμου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιοδρόμου. Ctrl+Κλικ για αφαίρεση τροχιόδρομου. Επιπρόσθετα πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου με χρήση της λειτουργίας Αυτόματου Δρόμου. Ctrl+Κλικ για αφαίρεση δρόμου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή τροχιοδρόμου με χρήση της λειτουργίας Αυτόματης Γραμμής. Ctrl+Κλικ για αφαίρεση τροχιόδρομου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων δρόμου (για αγορά και επισκευή οχημάτων). Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων τραμ (για αγορά και συντήρηση οχημάτων). Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων. Ctrl+Κλικ για επιλογή πρόσθετου σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Κατασκευή επιβατικού σταθμού τραμ. Ctrl+Κλικ για επιλογή πρόσθετου επιβατικού σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατασκευή σταθμού φορτηγών. Ctrl+Κλικ για επιλογή πρόσθετου σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Κατασκευή εμπορευματικού σταθμού τραμ. Ctrl+Κλικ για επιλογή πρόσθετου εμπορευματικού σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατασκευή οδικού τμήματος. Ctrl+Κλικ για αφαίρεση οδικού τμήματος. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή τμήματος τροχιοδρόμου. Ctrl+Κλικ για αφαίρεση τροχιόδρομου. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου χρησιμοποιώντας τη λειτουργία Αυτόματου Δρόμου. Ctrl+Κλικ για αφαίρεση δρόμου. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή τροχιοδρόμου χρησιμοποιώντας τη λειτουργία Αυτόματου Τροχιοδρόμου. Ctrl+Κλικ για αφαίρεση τροχιόδρομου. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οδικών οχημάτων (για αγορά και επισκευή οχημάτων). Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων τροχιοδρόμου (για αγορά και συντήρηση οχημάτων). Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων. Ctrl+Κλικ για επιλογή πρόσθετου σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Κατασκευή επιβατικού σταθμού τροχιοδρόμου. Ctrl+Κλικ για επιλογή πρόσθετου επιβατικού σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατασκευή σταθμού φορτηγών. Ctrl+Κλικ για επιλογή πρόσθετου σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Κατασκευή εμπορευματικού σταθμού τροχιοδρόμου. Ctrl+Κλικ για επιλογή πρόσθετου εμπορευματικού σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ενεργοποίηση/Απενεργοποίηση μονόδρομων
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Κατασκευή γέφυρας δρόμου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατασκευή γέφυρας τροχιοδρόμου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Κατασκευή τούνελ δρόμου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατασκευή τούνελ τροχιοδρόμου. Επιπρόσθετα πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για αυτοκινητόδρομους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Κατασκευή οδικής γέφυρας. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατασκευή γέφυρας τροχιοδρόμου. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Κατασκευή οδικής σήραγγας. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατασκευή σήραγγας τροχιοδρόμου. Επιπρόσθετα πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης στην κατασκευή δρόμων
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Εναλλαγή προσθήκης/αφαίρεσης για την κατασκευή τροχιόδρομου
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Μετατρέψτε/Αναβαθμίστε τον τύπο του δρόμου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Μετατρέψτε/Αναβαθμίστε τον τύπο του τραμ. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Μετατρέψτε/Αναβαθμίστε τον τύπο του δρόμου. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Μετατρέψτε/Αναβαθμίστε τον τύπο του τροχιοδρόμου. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 STR_ROAD_NAME_ROAD                                              :Δρόμος
 STR_ROAD_NAME_TRAM                                              :Τροχιόδρομος
@@ -2981,12 +2997,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Επιλ
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Κατασκευή Καναλιού Νερού
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Κανάλια Νερού
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Κατασκευή καναλιών. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Κατασκευή υδατοφράκτη. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Κατασκευή ναυπηγείου πλοίων (για αγορά και επισκευή πλοίων). Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Κατασκευή λιμένα πλοίων. Ctrl+Κλικ για επιλογή πρόσθετου λιμένα για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Τοποθετήστε μια σημαδούρα που μπορεί να χρησιμοποιηθεί ως σημείο καθοδήγησης. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Κατασκευή υδραγωγείου. Επιπρόσθετα πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Κατασκευή καναλιών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Κατασκευή υδατοφράκτη. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Κατασκευή ναυπηγείου πλοίων (για αγορά και επισκευή πλοίων). Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Κατασκευή λιμένα πλοίων. Ctrl+Κλικ για επιλογή πρόσθετου σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Τοποθετήστε σημαδούρα η οποία μπορεί να χρησιμοποιηθεί ως σημείο καθοδήγησης. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Κατασκευή υδραγωγείου. Επιπρόσθετα πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Κατασκευή καναλιού. Εναλλακτικά, Ctrl+Κλικ στο επίπεδο της θάλασσας για να πλημμυρίσετε με θαλασσινό νερό
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Τοποθέτηση ποταμιών. Ctrl+Κλικ για διαγώνια επιλογή
 
@@ -2999,7 +3015,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Λιμά
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Αεροδρόμια
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Κατασκευή αεροδρομίου. Ctrl+Κλικ για επιλογή πρόσθετου σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Κατασκευή αεροδρομίου. Ctrl+Κλικ για επιλογή πρόσθετου σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Επιλογή Αεροδρομίου
@@ -3026,10 +3042,10 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Παρα
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Μορφοποίηση εδάφους
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Χαμήλωμα μιας γωνίας εδάφους. Κλικ+Σύρσιμο για χαμήλωμα της πρώτης επιλεγμένης γωνίας και ισοπέδωση της επιφάνειας στο νέο ύψος της γωνίας. Ctrl+Κλικ+Σύρσιμο για διαγώνια επιλογή της επιφάνειας. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Ανύψωση μιας γωνίας εδάφους. Κλικ+Σύρσιμο για ανύψωση της πρώτης επιλεγμένης γωνίας και ισοπέδωση της επιφάνειας στο νέο ύψος της γωνίας. Ctrl+Κλικ+Σύρσιμο για διαγώνια επιλογή της επιφάνειας. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ισοπέδωση της γης στο ύψος της πρώτης επιλεγμένης γωνίας. Ctrl+Κλικ+Σύρσιμο για διαγώνια επιλογή της επιφάνειας. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Αγορά γης για μελλοντική χρήση. Ctrl+Κλικ για διαγώνια επιλογή. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Χαμήλωμα μιας γωνίας εδάφους. Κλικ+Σύρσιμο για χαμήλωμα της πρώτης επιλεγμένης γωνίας και ισοπέδωση της επιφάνειας στο νέο ύψος της γωνίας. Ctrl+Κλικ+Σύρσιμο για διαγώνια επιλογή της επιφάνειας. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Ανύψωση μιας γωνίας εδάφους. Κλικ+Σύρσιμο για ανύψωση της πρώτης επιλεγμένης γωνίας και ισοπέδωση της επιφάνειας στο νέο ύψος της γωνίας. Ctrl+Κλικ+Σύρσιμο για διαγώνια επιλογή της επιφάνειας. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ισοπέδωση της γης στο ύψος της πρώτης επιλεγμένης γωνίας. Ctrl+Κλικ+Σύρσιμο για διαγώνια επιλογή της επιφάνειας. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Αγορά γης για μελλοντική χρήση. Ctrl+Κλικ για διαγώνια επιλογή. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Επιλογή Αντικείμενου
@@ -3043,7 +3059,7 @@ STR_OBJECT_CLASS_TRNS                                           :Αναμετα�
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Δέντρα
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Επιλέξτε τύπο δέντρου για φύτευση. Αν το τετραγωνίδιο έχει ήδη ένα δέντρο, αυτό θα προσθέσει περισσότερα δέντρα μεικτών τύπων ανεξάρτητα από τον επιλεγμένο τύπο
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Δέντρα τυχαίου τύπου
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Τοποθέτηση δέντρων τυχαίου τύπου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Τοποθέτηση δέντρων τυχαίου τύπου. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Τυχαία Δέντρα
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Φυτέψτε δέντρα τυχαία στο έδαφος
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Κανονικό
@@ -3070,7 +3086,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Είστ
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Δημιουργία Πόλης
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Νέα Πόλη
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Ίδρυση νέας πόλης. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Ίδρυση νέας πόλης. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Τυχαία Πόλη
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Ίδρυση πόλης σε τυχαία τοποθεσία
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Πολλές τυχαίες πόλεις
@@ -3142,7 +3158,7 @@ STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Κόστ
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Κέρδος όταν καθαριστεί: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Μ/Δ
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Ιδιοκτήτης: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Ιδιοκτήτης δρόμου: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Ιδιοκτήτης του δρόμου: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Ιδιοκτήτης του τροχιοδρόμου: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Ιδιοκτήτης του σιδηροδρόμου: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Τοπική αρχή: {LTBLUE}{STRING}
@@ -3185,7 +3201,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Σιδηροδ�
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Σιδηροδρομική τροχιά με σήματα τμήματος και εξόδου
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Σιδηροδρομική τροχιά με σήματα τμήματος και συνδυαστικά
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Σιδηροδρομική τροχιά με σήματα τμήματος και διαδρομής
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Σιδηροδρομική τροχιά με σήματα τμήματος και μονόδρομους διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Σιδηροδρομική τροχιά με σήματα τμήματος και μονόδρομης διαδρομής
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Σιδηροδρομική τροχιά με σήματα ειδοποίησης και εξόδου
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Σιδηροδρομική τροχιά με σήματα ειδοποίησης και συνδυαστικά
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Σιδηροδρομική τροχιά με σήματα ειδοποίησης και διαδρομής
@@ -3230,8 +3246,8 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Ναυπηγε�
 
 # Industries come directly from their industry names
 
-STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Τούνελ σιδηρόδρομου
-STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Τούνελ δρόμου
+STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Σιδηροδρομική σήραγγα
+STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Οδική σήραγγα
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Ατσάλινη κρεμαστή σιδηροδρομική γέφυρα
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ατσάλινη σιδηροδρομική γέφυρα με δοκούς
@@ -3241,13 +3257,13 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Ξύλινη σ
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Τσιμεντένια σιδηροδρομική γέφυρα
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Ατσάλινη σωληνοειδής σιδηροδρομική γέφυρα
 
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Ατσάλινη κρεμαστή γέφυρα δρόμου
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Ατσάλινη γέφυρα δρόμου με δοκούς
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Ατσάλινη αρθρωτή γέφυρα δρόμου
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Κρεμαστή γέφυρα δρόμου από ενισχυμένο τσιμέντο
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Ξύλινη γέφυρα δρόμου
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Τσιμεντένια γέφυρα δρόμου
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Σωληνοειδής γέφυρα δρόμου
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Ατσάλινη κρεμαστή οδική γέφυρα
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Ατσάλινη οδική γέφυρα με δοκούς
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Ατσάλινη αρθρωτή οδική γέφυρα
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Κρεμαστή οδική γέφυρα από ενισχυμένο τσιμέντο
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Ξύλινη οδική γέφυρα
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Τσιμεντένια οδική γέφυρα
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Σωληνοειδής οδική γέφυρα
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Υπερυψωμένο κανάλι
 
@@ -3289,7 +3305,7 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Σύνολο βρόγχου παιχνιδιού:
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Διαχείριση φορτίου:
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Στιγμές τρένων:
-STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Στιγμές οχημάτων δρόμου:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Στιγμές οδικών οχημάτων:
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Στιγμές πλοίων:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Στιγμές αεροσκαφών:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Στιγμές κόσμου:
@@ -3306,7 +3322,7 @@ STR_FRAMERATE_AI                                                :{BLACK}   AI {N
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Βρόγχος παιχνιδιού
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Διαχείριση φορτίου
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Στιγμές τρένων
-STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Στιγμές οχημάτων δρόμου
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Στιγμές οδικών οχημάτων
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Στιγμές πλοίων
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Στιγμές αεροσκαφών
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Στιγμές κόσμου
@@ -3917,12 +3933,12 @@ STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Έξοδ
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Κατασκευές
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Νέα Οχήματα
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Τρένα
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Οχήματα δρόμου
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Οδικά οχήματα
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Αεροσκάφη
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Πλοία
 STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Υποδομές
 STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Τρένα
-STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Οχήματα δρόμου
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Οδικά οχήματα
 STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Αεροσκάφη
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Πλοία
 STR_FINANCES_SECTION_SHIP_REVENUE.geniki                        :{GOLD}Πλοίων
@@ -3955,14 +3971,14 @@ STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Ίδρυ�
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Χρωματισμός:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Οχήματα:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} τρέν{P ο α}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} {P όχημα οχήματα} δρόμου
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} οδικ{P ό ά} {P όχημα οχήματα}
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} αεροσκάφ{P ος η}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} πλοί{P ο α}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Κανένα
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Αξία εταιρίας: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Υποδομή:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} κομμάτι{P "" α} σιδηροτροχιάς
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} κομμάτι{P "" α} δρόμου
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} οδικ{P ό ά} τμήμ{P α ατα}
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} τετραγωνίδι{P ο α} νερού
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} τετραγωνίδι{P ο α} σταθμού
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} αεροδρόμι{P ο α}
@@ -3973,7 +3989,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Κατα
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Προβολή Έδρας
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Προβολή έδρας εταιρίας
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Μετεγκατάσταση Έδρας
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Επανοικοδόμηση της έδρας της εταιρίας σε άλλο μέρος, με κόστος το 1% της αξίας της εταιρίας. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Επανοικοδόμηση της έδρας της εταιρίας σε άλλο μέρος, με κόστος το 1% της αξίας της εταιρίας. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Λεπτομέρειες
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Προβολή λεπτομερούς μέτρησης υποδομών
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Δώστε χρήματα
@@ -4001,7 +4017,7 @@ STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Σε μ�
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Υποδομή της {COMPANY}
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Κομμάτια σιδηροτροχιάς:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Σήματα
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Κομμάτια δρόμου:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Οδικά τμήματα:
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Κομμάτια τραμ:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Τετραγωνίδια νερού:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Κανάλια
@@ -4049,13 +4065,13 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Αλλα
 # Vehicle lists
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Τρέν{P ο α}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} {P Όχημα Οχήματα} δρόμου
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Οδικ{P ό ά} {P Όχημα Οχήματα}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Πλοί{P ο α}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Αεροσκάφ{P ος η}
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Τρένα - πατήστε στο τρένο για πληροφορίες
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Οχήματα δρόμου - πατήστε στο όχημα για πληροφορίες
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Οδικά Οχήματα - πατήστε στο όχημα για πληροφορίες
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Πλοία - πατήστε στο πλοίο για πληροφορίες
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Αεροσκάφη - πατήστε στο αεροσκάφος για πληροφορίες
 
@@ -4089,13 +4105,13 @@ STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Κοιν
 # Group window
 ###length VEHICLE_TYPES
 STR_GROUP_ALL_TRAINS                                            :Όλα τα τρένα
-STR_GROUP_ALL_ROAD_VEHICLES                                     :Όλα τα οχήματα δρόμου
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Όλα τα οδικά οχήματα
 STR_GROUP_ALL_SHIPS                                             :Όλα τα πλοία
 STR_GROUP_ALL_AIRCRAFTS                                         :Όλα τα αεροσκάφη
 
 ###length VEHICLE_TYPES
 STR_GROUP_DEFAULT_TRAINS                                        :Μη ομαδοποιημένα τρένα
-STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Μη ομαδοποιημένα οχήματα δρόμου
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Μη ομαδοποιημένα οδικά οχήματα
 STR_GROUP_DEFAULT_SHIPS                                         :Μη ομαδοποιημένα πλοία
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Μη ομαδοποιημένα αεροσκάφη
 
@@ -4130,13 +4146,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Νέα Οχήμ
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Νέα Οχήματα Μονοτρόχιου
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Νέα Οχήματα Maglev
 
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Νέα Οχήματα Δρόμου
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Νέα Οδικά Οχήματα
 STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Νέα οχήματα τραμ
 
 # Vehicle availability
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Νέα Οχήματα Σιδηρόδρομου
-STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Νέα Όχήματα Δρόμου
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Νέα Οδικά Οχήματα
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Νέα Πλοία
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Νέα Αεροσκάφη
 
@@ -4176,7 +4192,7 @@ STR_CARGO_TYPE_FILTER_NONE                                      :Κανένα
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Λίστα επιλογής βαγονιού τρένου. Πατήστε σε ένα βαγόνι για πληροφορίες. Ctrl+Κλικ για εμφάνιση/απόκρυψη αυτού του τύπου βαγονιού
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Λίστα επιλογής οχήματος δρόμου. Πατήστε σε ένα όχημα για πληροφορίες. Ctrl+Κλικ για εμφάνιση/απόκρυψη αυτού του τύπου οχήματος
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Λίστα επιλογής οδικού οχήματος. Πατήστε σε ένα όχημα για πληροφορίες. Ctrl+Κλικ για εμφάνιση/απόκρυψη αυτού του τύπου οχήματος
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Λίστα επιλογής πλοίου. Πατήστε σε ένα πλοίο για πληροφορίες. Ctrl+Κλικ για εμφάνιση/απόκρυψη αυτού του τύπου πλοίου
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Λίστα επιλογής αεροσκάφους. Πατήστε σε ένα αεροσκάφος για πληροφορίες. Ctrl+Κλικ για εμφάνιση/απόκρυψη αυτού του τύπου αεροσκάφους
 
@@ -4193,16 +4209,16 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Αγορ
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Αγορά και μετατροπή του αεροσκάφους
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Αγορά του επιλεγμένου οχήματος τρένου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Αγορά του επιλεγμένου οχήματος δρόμου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Αγορά επιλεγμένου πλοίου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Αγορά του επιλεγμένου αεροσκάφους. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Αγορά του επιλεγμένου οχήματος τρένου. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Αγορά του επιλεγμένου οδικού οχήματος. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Αγορά επιλεγμένου πλοίου. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Αγορά του επιλεγμένου αεροσκάφους. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Αγορά και μετατροπή του επιλεγμένου οχήματος τρένου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Αγορά και μετατροπή του επιλεγμένου οχήματος δρόμου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Αγορά και μετατροπή του επιλεγμένου πλοίου. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Αγορά και μετατροπή του επιλεγμένου αεροσκάφους. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Αγορά και μετατροπή του επιλεγμένου οχήματος τρένου. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Αγορά και μετατροπή του επιλεγμένου οδικού οχήματος. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Αγορά και μετατροπή του επιλεγμένου πλοίου. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Αγορά και μετατροπή του επιλεγμένου αεροσκάφους. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Μετονομασία
@@ -4212,7 +4228,7 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Μετο
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Μετονομάζει τον τύπο οχήματος τρένου
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Μετονομάζει τον τύπο οχήματος δρόμου
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Μετονομάζει τον τύπο οδικού οχήματος
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Μετονομάζει τον τύπο πλοίου
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Μετονομάζει τον τύπο αεροσκάφους
 
@@ -4230,13 +4246,13 @@ STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Εμφά
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Εμφάνιση/απόκρυψη του τύπου βαγονιού
-STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Εμφάνιση/απόκρυψη του τύπου οχήματος δρόμου
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Εμφάνιση/απόκρυψη του τύπου οδικού οχήματος
 STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Εμφάνιση/απόκρυψη του τύπου πλοίου
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Εμφάνιση/απόκρυψη του τύπου αεροσκάφους
 
 ###length VEHICLE_TYPES
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Μετονομασία τύπου τρένου
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Μετονομασία τύπου οχήματος δρόμου
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Μετονομασία τύπου οδικού οχήματος
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Μετονομασία τύπου πλοίου
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Μετονομασία τύπου αεροσκάφους
 
@@ -4253,19 +4269,19 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Τρένα - τραβήξτε ένα όχημα με αριστερό κλικ για να το προσθέστε/αφαιρέστε από ένα τρένο, δεξί κλικ για πληροφορίες. Ctrl+Κλικ για εφαρμογή οποιασδήποτε από τις δύο λειτουργίες στην ακόλουθη αλυσίδα
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Οχήματα δρόμου - δεξί κλικ σε ένα όχημα για πληροφορίες
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Οδικά οχήματα - δεξί κλικ σε ένα όχημα για πληροφορίες
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Πλοία - δεξί κλικ σε ένα πλοίο για πληροφορίες
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Αεροσκάφη - δεξί κλικ σε ένα αεροσκάφος για πληροφορίες
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Τραβήξτε το όχημα τρένου εδώ για να το πουλήσετε
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Σύρετε το όχημα δρόμου εδώ για να το πουλήσετε
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Σύρετε το οδικό όχημα εδώ για να το πουλήσετε
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Τραβήξτε το πλοίο εδώ για να το πουλήσετε
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Σύρετε το αεροσκάφος εδώ για να το πουλήσετε
 
 ###length VEHICLE_TYPES
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Πουλήστε όλα τα τρένα στο αμαξοστάσιο
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Πουλήστε όλα τα οχήματα δρόμου στο αμαξοστάσιο
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Πουλήστε όλα τα οδικά οχήματα στο αμαξοστάσιο
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Πουλήστε όλα τα πλοία στο ναυπηγείο
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Πουλήστε όλα τα αεροσκάφη στο υπόστεγο
 
@@ -4283,7 +4299,7 @@ STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Νέα �
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Αγορά νέου οχήματος τρένου
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Αγορά νέου οχήματος δρόμου
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Αγορά νέου ποδικού οχήματος
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Αγορά νέου πλοίου
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Αγορά νέου αεροσκάφους
 
@@ -4294,10 +4310,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Κλων
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Κλωνοποίηση Αεροσκάφους
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αγορά αντιγράφου ενός τρένου μαζί με όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τρένο μέσα ή έξω από το αμαξοστάσιο. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Αγορά αντιγράφου ενός οχήματος δρόμου. Πατήστε αυτό το κουμπί και μετά σε κάποιο όχημα μέσα ή έξω από το αμαξοστάσιο. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Αγορά αντιγράφου ενός πλοίου. Πατήστε αυτό το κουμπί και μετά σε κάποιο πλοίο μέσα ή έξω από το ναυπηγείο. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Αγορά αντιγράφου του αεροσκάφους. Πατήστε αυτό το κουμπί και μετά σε κάποιο αεροσκάφος μέσα ή έξω από το υπόστεγο. Με Ctrl+Κλικ θα διαμοιραστούν τις εντολές. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αγορά αντιγράφου ενός τρένου μαζί με όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τρένο μέσα ή έξω από το αμαξοστάσιο. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Αγορά αντιγράφου ενός οδικού οχήματος. Πατήστε αυτό το κουμπί και μετά σε κάποιο όχημα μέσα ή έξω από το αμαξοστάσιο. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Αγορά αντιγράφου ενός πλοίου. Πατήστε αυτό το κουμπί και μετά σε κάποιο πλοίο μέσα ή έξω από το ναυπηγείο. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Αγορά αντιγράφου του αεροσκάφους. Πατήστε αυτό το κουμπί και μετά σε κάποιο αεροσκάφος μέσα ή έξω από το υπόστεγο. Με Ctrl+Κλικ θα διαμοιραστούν τις εντολές. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του αμαξοστάσιου. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην τοποθεσία του αμαξοστασίου
@@ -4307,7 +4323,7 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Κεντ
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Παίρνετε μια λίστα με όλα τα τρένα με το επιλεγμένο αμαξοστάσιο στις εντολές τους
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Παίρνετε μια λίστα με όλα τα οχήματα δρόμου με το επιλεγμένο αμαξοστάσιο στις εντολές τους
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Παίρνετε μια λίστα με όλα τα οδικά οχήματα με το επιλεγμένο αμαξοστάσιο στις εντολές τους
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Παίρνετε μια λίστα με όλα τα πλοία με το επιλεγμένο ναυπηγείο στις εντολές τους
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Παίρνετε μια λίστα με όλα τα αεροσκάφη που έχουν οποιοδήποτε υπόστεγο αυτού του αεροδρομίου στις εντολές τους
 
@@ -4338,8 +4354,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.geniki                   :μηχανής 
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}μηχανής maglev
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.geniki                     :μηχανής maglev
 
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}οχήματος δρόμου
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.geniki                          :Οχήματος δρόμου
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n} οδικού οχήματος
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.geniki                          :Οδικού οχήματος
 STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :όχημα τροχιοδρόμου
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}αεροσκάφους
@@ -4370,7 +4386,7 @@ STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Στήλ
 
 ###length VEHICLE_TYPES
 STR_REPLACE_VEHICLE_TRAIN                                       :Τρένο
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Όχημα Δρόμου
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Οδικό όχημα
 STR_REPLACE_VEHICLE_SHIP                                        :Πλοίο
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Αεροσκάφος
 
@@ -4390,8 +4406,8 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Πατή
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Εναλλαγή μεταξύ των παραθύρων αντικατάστασης μηχανών και βαγονιών
 STR_REPLACE_ENGINES                                             :Μηχανές
 STR_REPLACE_WAGONS                                              :Βαγόνια
-STR_REPLACE_ALL_RAILTYPE                                        :Όλα τα οχήματα σιδηρόδρομου
-STR_REPLACE_ALL_ROADTYPE                                        :Όλα τα οχήματα δρόμου
+STR_REPLACE_ALL_RAILTYPE                                        :Όλα τα σιδηροδρομικά οχήματα
+STR_REPLACE_ALL_ROADTYPE                                        :Όλα τα οδικά οχήματα
 
 ###length 2
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Επιλέξτε τον τύπο σιδηροδρόμου για τον οποίο θέλετε να γίνει η αντικατάσταση των μηχανών
@@ -4399,12 +4415,12 @@ STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Επιλ
 ###next-name-looks-similar
 
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Εμφανίζει ποια μηχανή αυτή στα αριστερά θα αντικατασταθεί, εάν υπάρχει
-STR_REPLACE_RAIL_VEHICLES                                       :Οχήματα Σιδηροδρόμου
+STR_REPLACE_RAIL_VEHICLES                                       :Σιδηροδρομικά οχήματα
 STR_REPLACE_ELRAIL_VEHICLES                                     :Οχήματα Ηλεκτρικού Σιδηροδρόμου
 STR_REPLACE_MONORAIL_VEHICLES                                   :Οχήματα Μονοτρόχιου
 STR_REPLACE_MAGLEV_VEHICLES                                     :Οχήματα Maglev
 
-STR_REPLACE_ROAD_VEHICLES                                       :Οχήματα Δρόμου
+STR_REPLACE_ROAD_VEHICLES                                       :Οδικά οχήματα
 STR_REPLACE_TRAM_VEHICLES                                       :Οχήματα τροχιοδρόμου
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Αφαίρεση βαγονιού: ({STRING}): {ORANGE}{STRING}
@@ -4427,10 +4443,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Στέλ
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Στέλνει το αεροσκάφος στο υπόστεγο. Με Ctrl+Κλικ κάνει μόνο συντήρηση
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Αγορά αντιγράφου του τρένου μαζί με όλα τα βαγόνια. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Αγορά αντιγράφου του οχήματος δρόμου. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Αγορά αντιγράφου του πλοίου. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Αγορά αντιγράφου του αεροσκάφους. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτίμησης κόστους μόνο
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Αγορά αντιγράφου του τρένου μαζί με όλα τα βαγόνια. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Αγορά αντιγράφου του οδικού οχήματος. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Αγορά αντιγράφου του πλοίου. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Αγορά αντιγράφου του αεροσκάφους. Ctrl+Κλικ για διαμοιρασμό εντολών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Αναγκάστε το τρένο να προχωρήσει χωρίς να περιμένει το σηματοδότη να το επιτρέψει
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Αναστροφή κατεύθυνσης τρένου
@@ -4451,7 +4467,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Εμφά
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Εμφάνιση λεπτομερειών τρένου
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Εμφάνιση λεπτομερειών οχήματος δρόμου
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Εμφάνιση λεπτομερειών οδικού οχήματος
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Εμφάνιση λεπτομερειών πλοίου
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Εμφάνιση λεπτομερειών αεροσκάφους
 
@@ -4499,7 +4515,7 @@ STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Ονομασία τρένου
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Ονομασία οχήματος δρόμου
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Ονομασία οδικού οχήματος
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Ονομασία πλοίου
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Ονομασία αεροσκάφους
 
@@ -4548,7 +4564,7 @@ STR_VEHICLE_DETAILS_PERCENT                                     :Ποσοστό
 
 ###length VEHICLE_TYPES
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Όνομα τρένου
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Όνομα οχήματος δρόμου
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Όνομα οδικού οχήματος
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Όνομα πλοίου
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Όνομα αεροσκάφους
 
@@ -5054,7 +5070,7 @@ STR_ERROR_BRIBE_FAILED                                          :{WHITE}Η δω�
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Δεν είναι δυνατό να υψωθεί η γη εδώ...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Δεν είναι δυνατό να χαμηλώσει η γη εδώ...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Δεν είναι δυνατό να έρθει στο ίδιο επίπεδο η γη εδώ...
-STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Η εκσκαφή θα κατέστρεφε το τούνελ
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Η εκσκαφή θα κατέστρεφε τη σήραγγα
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... ήδη στο επίπεδο της θάλασσας
 STR_ERROR_TOO_HIGH                                              :{WHITE}... πολύ ψηλά
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ήδη επίπεδο
@@ -5268,13 +5284,13 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... η �
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Η γέφυρα θα καταλήξει εκτός χάρτη
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Δεν μπορεί να κατασκευαστεί τούνελ εδώ...
-STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Ακατάλληλη τοποθεσία για είσοδο τούνελ
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Πρέπει να καταστραφεί το τούνελ πρώτα
-STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Υπάρχει άλλο τούνελ στη μέση
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Το τούνελ θα καταλήξει εκτός του χάρτη
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Αδύνατο να γίνει εκσκαφή γης στην άλλη άκρη του τούνελ
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... το τούνελ είναι πολύ μακρύ
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Δεν μπορεί να κατασκευαστεί σήραγγα εδώ...
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Ακατάλληλη τοποθεσία για είσοδο σήραγγας
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Πρέπει να καταστραφεί η σήραγγα πρώτα
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Υπάρχει άλλη σήραγγα στη μέση
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE} Η σήραγγα θα καταλήξει εκτός του χάρτη
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Αδύνατο να γίνει εκσκαφή γης στην άλλη άκρη της σήραγγας
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... η σήραγγα είναι πολύ μακριά
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... πάρα πολλά αντικείμενα
@@ -5335,19 +5351,19 @@ STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Δεν �
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Δεν μπορεί να γίνει αγορά οχήματος σιδηροδρόμου...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Δεν μπορεί να γίνει αγορά οχήματος δρόμου...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Δεν μπορεί να γίνει αγορά οδικού οχήματος...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Δεν μπορεί να γίνει αγορά πλοίου...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Δεν μπορεί να γίνει αγορά αεροσκάφους...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος τρένου...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος οχήματος δρόμου...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος οδικού οχήματος...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος πλοίου...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος αεροσκάφους...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Δεν μπορεί να πωληθεί το όχημα σιδηρόδρομου...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Δεν μπορεί να πωληθεί το όχημα δρόμου...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Δεν μπορεί να πωληθεί το οδικό όχημα...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Δεν μπορεί να πωληθεί το πλοίο...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Δεν μπορεί να πωληθεί το αεροσκάφος...
 
@@ -5526,8 +5542,8 @@ STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Ανώνυμο
 STR_SV_TRAIN_NAME                                               :{G=n}Τρένο #{COMMA}
 STR_SV_TRAIN_NAME.geniki                                        :Τρένου {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :{G=n}Όχημα Δρόμου #{COMMA}
-STR_SV_ROAD_VEHICLE_NAME.geniki                                 :Οχήματος Δρόμου {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :{G=n}Οδικό όχημα #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME.geniki                                 :Οδικού οχήματος {COMMA}
 STR_SV_SHIP_NAME                                                :{G=n}Πλοίο #{COMMA}
 STR_SV_SHIP_NAME.geniki                                         :Πλοίου {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :{G=n}Αεροσκάφος #{COMMA}
@@ -5854,8 +5870,8 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Σημείο Κ
 ###length 6
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Αμαξοστάσιο Τρένων {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Αμαξοστάσιο Τρένων {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Αμαξοστάσιο Οχημάτων Δρόμου {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Αμαξοστάσιο Οχημάτων Δρόμου {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Αμαξοστάσιο Οδικών Οχημάτων {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Αμαξοστάσιο Οδικών Οχημάτων {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Ναυπηγείο Πλοίων {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Ναυπηγείο Πλοίων {TOWN} #{COMMA}
 ###next-name-looks-similar
