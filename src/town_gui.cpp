@@ -1490,9 +1490,7 @@ public:
 	bool IsTypeAvailable(int, int id) const override
 	{
 		const HouseSpec *hs = HouseSpec::Get(id);
-		if (!hs->enabled) return false;
-		if (TimerGameCalendar::year < hs->min_year || TimerGameCalendar::year > hs->max_year) return false;
-		return true;
+		return hs->enabled;
 	}
 
 	void DrawType(int x, int y, int, int id) const override
