@@ -211,7 +211,7 @@ static void ReadHeightmapBMPImageData(uint8_t *map, BmpInfo *info, BmpData *data
 	uint x, y;
 	uint8_t gray_palette[256];
 
-	if (data->palette != nullptr) {
+	if (!data->palette.empty()) {
 		uint i;
 		bool all_gray = true;
 
@@ -267,11 +267,8 @@ static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, uint8_t **m
 {
 	FILE *f;
 	BmpInfo info;
-	BmpData data;
+	BmpData data{};
 	BmpBuffer buffer;
-
-	/* Init BmpData */
-	memset(&data, 0, sizeof(data));
 
 	f = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
 	if (f == nullptr) {
@@ -284,14 +281,12 @@ static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, uint8_t **m
 	if (!BmpReadHeader(&buffer, &info, &data)) {
 		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_BMPMAP_IMAGE_TYPE, WL_ERROR);
 		fclose(f);
-		BmpDestroyData(&data);
 		return false;
 	}
 
 	if (!IsValidHeightmapDimension(info.width, info.height)) {
 		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_HEIGHTMAP_TOO_LARGE, WL_ERROR);
 		fclose(f);
-		BmpDestroyData(&data);
 		return false;
 	}
 
@@ -299,15 +294,12 @@ static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, uint8_t **m
 		if (!BmpReadBitmap(&buffer, &info, &data)) {
 			ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_BMPMAP_IMAGE_TYPE, WL_ERROR);
 			fclose(f);
-			BmpDestroyData(&data);
 			return false;
 		}
 
 		*map = MallocT<uint8_t>(static_cast<size_t>(info.width) * info.height);
 		ReadHeightmapBMPImageData(*map, &info, &data);
 	}
-
-	BmpDestroyData(&data);
 
 	*x = info.width;
 	*y = info.height;
