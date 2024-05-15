@@ -263,35 +263,29 @@ static void ReadHeightmapBMPImageData(std::span<uint8_t> map, const BmpInfo &inf
  */
 static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, std::vector<uint8_t> *map)
 {
-	FILE *f;
-	BmpInfo info;
+	BmpInfo info{};
 	BmpData data{};
-	BmpBuffer buffer;
 
-	f = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
-	if (f == nullptr) {
+	if (!FioCheckFileExists(filename, HEIGHTMAP_DIR)) {
 		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_PNGMAP_FILE_NOT_FOUND, WL_ERROR);
 		return false;
 	}
 
-	BmpInitializeBuffer(&buffer, f);
+	RandomAccessFile file(filename, HEIGHTMAP_DIR);
 
-	if (!BmpReadHeader(&buffer, info, data)) {
+	if (!BmpReadHeader(file, info, data)) {
 		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_BMPMAP_IMAGE_TYPE, WL_ERROR);
-		fclose(f);
 		return false;
 	}
 
 	if (!IsValidHeightmapDimension(info.width, info.height)) {
 		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_HEIGHTMAP_TOO_LARGE, WL_ERROR);
-		fclose(f);
 		return false;
 	}
 
 	if (map != nullptr) {
-		if (!BmpReadBitmap(&buffer, info, data)) {
+		if (!BmpReadBitmap(file, info, data)) {
 			ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_BMPMAP_IMAGE_TYPE, WL_ERROR);
-			fclose(f);
 			return false;
 		}
 
@@ -302,7 +296,6 @@ static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, std::vector
 	*x = info.width;
 	*y = info.height;
 
-	fclose(f);
 	return true;
 }
 
