@@ -405,6 +405,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :タイトルに
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :―――――――――
 STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終了
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプション設定
@@ -2612,6 +2613,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}ホー�
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}駅のホームの長さを選択します
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}任意のサイズ
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}ドラッグ&ドロップで任意のサイズの駅を建設します
+
+
 
 
 

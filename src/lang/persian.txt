@@ -376,6 +376,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :خارج شدن
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
@@ -2112,6 +2113,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}طول �
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}انتخاب طول ایستگاه راه آهن
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}بکشید و بیاندازید
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}ساخت ایستگاه با استفاده از کشیدن و انداختن
+
+
 
 
 

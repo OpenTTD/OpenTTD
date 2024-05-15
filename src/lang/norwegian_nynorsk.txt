@@ -382,6 +382,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Avbryt redigeri
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinstillingar
@@ -2284,6 +2285,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Plattfor
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vel kor lang stasjonen skal vere
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Dra og slipp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg stasjon med dra og slipp
+
+
 
 
 

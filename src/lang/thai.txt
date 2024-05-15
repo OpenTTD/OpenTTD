@@ -385,6 +385,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :ออกจา
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :ออก
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ตัวเลือกเกม
@@ -2409,6 +2410,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}คว�
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}เลือกความยาวของชานชาลา
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}ลากและวาง
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}สร้างสถานีโดยใช้การลากและวาง
+
+
 
 
 

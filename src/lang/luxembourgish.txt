@@ -437,6 +437,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Eraus aus dem E
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Eraus
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilloptiounen
@@ -2785,6 +2786,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Plattfor
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Wielt d'Längt vun der Gare
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}D'Statioun per drag & drop bauen
+
+
 
 
 

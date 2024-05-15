@@ -439,6 +439,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Pamest scenāri
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Iziet
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spēles opcijas
@@ -2800,6 +2801,10 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platform
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Izvēlēties dzelzceļa stacijas garumu
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vilkt un nomest
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Būvēt staciju izmantojot "vilkt un nomest"
+
+STR_PICKER_MODE_ALL                                             :Visi
+STR_PICKER_MODE_SAVED                                           :Saglabāts
+
 
 
 

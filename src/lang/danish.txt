@@ -437,6 +437,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Forlad scenarie
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Afslut
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opsætning
@@ -2795,6 +2796,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Længde 
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vælg længde af banegård
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Træk & slip
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Byg en station vha. træk & slip
+
+
 
 
 

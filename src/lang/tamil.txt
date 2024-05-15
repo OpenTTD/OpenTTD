@@ -435,6 +435,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :சித்த
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :வெளியேறு
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :விளையாட்டு விருப்ப பேரம்
@@ -2556,6 +2557,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}நி�
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}இரயில் நிலையத்தின் நீளத்தினை தேர்ந்தெடு
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}இழுத்து விடவும்
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}இழுத்து விடுவதன் மூலம் நிலையத்தினைக் கட்டவும்
+
+
 
 
 

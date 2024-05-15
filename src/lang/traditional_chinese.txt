@@ -435,6 +435,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :離開編輯器
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :離開
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :遊戲選項
@@ -2684,6 +2685,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}月台�
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}選擇火車站的長度
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}拖放
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}以拖曳方式興建車站
+
+
 
 
 

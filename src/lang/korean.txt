@@ -438,6 +438,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :시나리오 �
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 기본 설정
@@ -2815,6 +2816,8 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :표시할 트�
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :설치하려는 트럭 적하장 종류를 선택하세요. CTRL+클릭하면 즐겨찾기 추가/제거가 가능합니다
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :표시할 오브젝트 종류를 선택하세요
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :설치하려는 오브젝트 종류를 선택합니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+
+
 
 STR_STATION_CLASS_DFLT                                          :기본
 STR_STATION_CLASS_DFLT_STATION                                  :기본 역

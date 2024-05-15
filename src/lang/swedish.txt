@@ -437,6 +437,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Avsluta scenari
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Avsluta
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinställningar
@@ -2793,6 +2794,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Längd p
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Välj längd på järnvägsstation
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Släpp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg en station genom att dra & släppa
+
+
 
 
 

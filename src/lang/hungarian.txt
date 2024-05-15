@@ -500,6 +500,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Pályaszerkeszt
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Kilépés az OpenTTD-ből
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Játékbeállítások
@@ -2849,6 +2850,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Vágány
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}A vasútállomás hossza
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Fogd és dobd
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Állomás építése fogd és dobd módon
+
+
 
 
 

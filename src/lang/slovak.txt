@@ -501,6 +501,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Opustiť editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Ukončiť
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti hry
@@ -2856,6 +2857,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Dĺžka 
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Dĺžka železničnej stanice
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Automaticky
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Automaticky postaviť stanicu podľa označeného bloku terénu
+
+
 
 
 

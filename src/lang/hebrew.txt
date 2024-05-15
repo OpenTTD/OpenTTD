@@ -396,6 +396,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :עזוב את �
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :יציאה
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :אפשרויות המשחק
@@ -2449,6 +2450,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}אורך
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}בחר אורך של תחנת רכבת
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}גרירה ושחרור
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}בניית תחנה ע"י גרירה ושחרור
+
+
 
 
 

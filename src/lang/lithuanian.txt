@@ -625,6 +625,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Uždaryti redak
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Išeiti
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pagrindinės nuostatos
@@ -2947,6 +2948,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platform
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Pasirinkite geležinkelio stotelės ilgį
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vilkti
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Statyti stotelę vilkimo būdu
+
+
 
 
 

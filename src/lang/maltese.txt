@@ -272,6 +272,7 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni ind
 ###length 7
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 
+
 # Settings menu
 ###length 16
 
@@ -870,6 +871,8 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 # Rail waypoint construction window
 
 # Rail station construction window
+
+
 
 
 

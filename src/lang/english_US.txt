@@ -437,6 +437,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Abandon scenari
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Quit
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Game options
@@ -2814,6 +2815,8 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Select a truck 
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Select a truck station type to build. Ctrl+Click to add or remove in saved items
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Select an object class to display
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Select an object type to build. Ctrl+Click to add or remove in saved items. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
+
+
 
 STR_STATION_CLASS_DFLT                                          :Default
 STR_STATION_CLASS_DFLT_STATION                                  :Default station

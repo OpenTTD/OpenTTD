@@ -437,6 +437,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Sulje skenaario
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Lopeta
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pelin valinnat
@@ -2814,6 +2815,8 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Valitse näytet
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Valitse rakennettavan lastauslaiturin tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Valitse näytettävä objektien luokka
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Valitse rakennettavan objektin tyyppi. Ctrl+napsautus lisää tallennettuihin tai poistaa tallennetuista. Ctrl+napsautus+veto valitsee alueen vinottain. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
+
+
 
 STR_STATION_CLASS_DFLT                                          :Oletus
 STR_STATION_CLASS_DFLT_STATION                                  :Oletusasema

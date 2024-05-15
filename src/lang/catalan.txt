@@ -438,6 +438,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Surt de l'edito
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Surt
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcions de la partida
@@ -2797,6 +2798,24 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Mida de 
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selecciona la mida de les andanes de l'estació de tren
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrossega i solta
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construeix una estació amb el mètode arrossega i solta.
+
+STR_PICKER_MODE_ALL                                             :Tots
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Commuta entre mostrar o no els elements de totes les classes.
+STR_PICKER_MODE_USED                                            :Fets servir
+STR_PICKER_MODE_USED_TOOLTIP                                    :Commuta entre mostrar o no només els elements que ja s'hagin construït.
+STR_PICKER_MODE_SAVED                                           :Desats
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Commuta entre mostrar o no només els elements desats.
+
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Trieu quina classe d'estació voleu veure.
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Trieu quin tipus d'estació voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Trieu quina classe de punts de control voleu veure.
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Trieu quin tipus de punt de control voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Trieu quina classe d'estacions d'autobús voleu veure.
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Trieu quin tipus d'estació d'autobús voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Trieu quina classe d'estació de camions voleu veure.
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Trieu un tipus d'estació de camió a construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Trieu quina classe d'objectes voleu veure.
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Trieu quin tipus d'objecte voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats. Amb Ctrl+clic+arrossega es selecciona l'àrea en diagonal. Amb Maj, només es mostrarà el cost estimat de l'acció.
 
 
 

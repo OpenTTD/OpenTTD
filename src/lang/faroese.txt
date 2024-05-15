@@ -360,6 +360,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Far frá tilbur
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Gevst
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spæl møguleikar
@@ -2169,6 +2170,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Pall lon
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vel hvussu lang tokstøðin skal verða
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Toga & Slepp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg eina støð vi at nýta toga & slepp
+
+
 
 
 

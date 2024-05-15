@@ -377,6 +377,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Eszenario edito
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Irten
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Jokoaren aukerak
@@ -2273,6 +2274,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Geltokia
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Geltokiaren luzera aukeratu
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastratzerakoan eraiki
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Geltokia eraiki arrastratzerakoan
+
+
 
 
 

@@ -518,6 +518,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Forlasi scenaro
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Forlasi
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludaj agordoj
@@ -2750,6 +2751,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platform
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Elektu longon de stacidomo
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Tiru k metu
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tiru por konstrui stacidomon
+
+
 
 
 

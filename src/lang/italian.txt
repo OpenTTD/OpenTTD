@@ -439,6 +439,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Esci dall'edito
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Esci
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opzioni gioco
@@ -2827,6 +2828,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Lunghezz
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Seleziona la lunghezza della stazione ferroviaria
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Costruisce una stazione con il drag & drop
+
+
 
 
 

@@ -154,6 +154,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}वस�
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :निकास
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :समायोजन
@@ -866,6 +867,8 @@ STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}अक�
 # Rail waypoint construction window
 
 # Rail station construction window
+
+
 
 
 

@@ -438,6 +438,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Abandonner l'é
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Quitter
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Options du Jeu
@@ -2795,6 +2796,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Longueur
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Choisir la longueur de la gare
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Glisser/Déposer
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construire une gare par glisser/déposer
+
+
 
 
 

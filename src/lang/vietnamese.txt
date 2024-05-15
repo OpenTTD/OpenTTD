@@ -437,6 +437,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Thoát khỏi t
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Cấu hình trò chơi
@@ -2788,6 +2789,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Độ d�
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Độ dài của ga tàu hoả
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Kéo & thả
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Xây dựng ga bằng các kéo & thả
+
+
 
 
 

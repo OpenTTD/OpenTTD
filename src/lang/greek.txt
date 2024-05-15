@@ -499,6 +499,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Έξοδος α
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
@@ -2907,6 +2908,8 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Επιλογή 
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Επιλογή κατηγορίας σταθμών φορτηγών για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Επιλογή κατηγορίας αντικειμένων για εμφάνιση
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Επιλογή κατηγορίας αντικειμένων για εμφάνιση. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία. Ctrl+κλικ+σύρσιμο για να επιλεγεί διαγώνια περιοχή. Επίσης, πατήστε Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+
+
 
 STR_STATION_CLASS_DFLT                                          :Προεπιλεγμένος
 STR_STATION_CLASS_DFLT_STATION                                  :Προεπιλεγμένος σταθμός

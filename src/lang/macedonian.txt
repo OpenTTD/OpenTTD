@@ -358,6 +358,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Напушти 
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Напушти
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :игра опции
@@ -1284,6 +1285,8 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Изгр
 # Rail waypoint construction window
 
 # Rail station construction window
+
+
 
 
 

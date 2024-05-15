@@ -437,6 +437,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :退出编辑器
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :退出
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :游戏选项
@@ -2814,6 +2815,8 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :选择显示的
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :选择建造的汽车货场类型。按住 <Ctrl> 键操作以保存或删除当前项目
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :选择显示的物件类别
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :选择建造的物件类型。按住 <Ctrl> 键选择物件以保存或删除当前项目。按住 <Ctrl> 键拖拽以沿对角线放置，按住 <Shift> 键以显示预计费用
+
+
 
 STR_STATION_CLASS_DFLT                                          :默认
 STR_STATION_CLASS_DFLT_STATION                                  :默认车站

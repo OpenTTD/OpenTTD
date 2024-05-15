@@ -366,6 +366,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :مدیر بند
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکلو
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :کھیل کے اختیارات
@@ -1978,6 +1979,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}پلیٹ
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}ریلوے اسٹیشن کی لمبائی منتخب کریں
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}کھینچ کر رکھ دیں
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}کھینچ کر رکھ کر اسٹیشن تعمیر کریں
+
+
 
 
 

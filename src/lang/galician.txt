@@ -438,6 +438,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Saír do editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Saír
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcións do xogo
@@ -2792,6 +2793,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Lonxitud
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selecciona-la lonxitude da estación de ferrocarril
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastrar e soltar
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construír estación arrastrando e soltando
+
+
 
 
 
