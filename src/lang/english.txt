@@ -2832,6 +2832,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Select a town z
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Select a house type to build. Ctrl+Click to add or remove in saved items
 
 STR_HOUSE_PICKER_CAPTION                                        :House Selection
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Name: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Population: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Years: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Years: {ORANGE}Any
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Years: {ORANGE}From {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Years: {ORANGE}Until {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Size: {ORANGE}{NUM}x{NUM} tiles
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Cargo accepted: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Edge
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Outskirts

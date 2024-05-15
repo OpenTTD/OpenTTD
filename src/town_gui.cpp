@@ -13,6 +13,7 @@
 #include "error.h"
 #include "gui.h"
 #include "house.h"
+#include "newgrf_cargo.h"
 #include "newgrf_house.h"
 #include "newgrf_text.h"
 #include "picker_gui.h"
@@ -48,6 +49,8 @@
 #include "widgets/town_widget.h"
 
 #include "table/strings.h"
+
+#include <sstream>
 
 #include "safeguards.h"
 
@@ -1603,6 +1606,8 @@ public:
 /* static */ HousePickerCallbacks HousePickerCallbacks::instance;
 
 struct BuildHouseWindow : public PickerWindow {
+	std::string house_info;
+
 	BuildHouseWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, 0, HousePickerCallbacks::instance)
 	{
 		HousePickerCallbacks::instance.SetClimateMask();
@@ -1629,6 +1634,75 @@ struct BuildHouseWindow : public PickerWindow {
 		}
 	}
 
+	/**
+	 * Get a date range string for house availability year.
+	 * @param min_year Earliest year house can be built.
+	 * @param max_year Latest year house can be built.
+	 * @return Formatted string with the date range formatted appropriately.
+	 */
+	static std::string GetHouseYear(TimerGameCalendar::Year min_year, TimerGameCalendar::Year max_year)
+	{
+		if (min_year == CalendarTime::MIN_YEAR) {
+			if (max_year == CalendarTime::MAX_YEAR) {
+				return GetString(STR_HOUSE_PICKER_YEARS_ANY);
+			}
+			SetDParam(0, max_year);
+			return GetString(STR_HOUSE_PICKER_YEARS_UNTIL);
+		}
+		if (max_year == CalendarTime::MAX_YEAR) {
+			SetDParam(0, min_year);
+			return GetString(STR_HOUSE_PICKER_YEARS_FROM);
+		}
+		SetDParam(0, min_year);
+		SetDParam(1, max_year);
+		return GetString(STR_HOUSE_PICKER_YEARS);
+	}
+
+	/**
+	 * Get information string for a house.
+	 * @param hs HosueSpec to get information string for.
+	 * @return Formatted string with information for house.
+	 */
+	static std::string GetHouseInformation(const HouseSpec *hs)
+	{
+		std::stringstream line;
+
+		SetDParam(0, GetHouseName(hs));
+		line << GetString(STR_HOUSE_PICKER_NAME);
+		line << "\n";
+
+		SetDParam(0, hs->population);
+		line << GetString(STR_HOUSE_PICKER_POPULATION);
+		line << "\n";
+
+		line << GetHouseYear(hs->min_year, hs->max_year);
+		line << "\n";
+
+		uint8_t size = 0;
+		if ((hs->building_flags & TILE_SIZE_1x1) != 0) size = 0x11;
+		if ((hs->building_flags & TILE_SIZE_2x1) != 0) size = 0x21;
+		if ((hs->building_flags & TILE_SIZE_1x2) != 0) size = 0x12;
+		if ((hs->building_flags & TILE_SIZE_2x2) != 0) size = 0x22;
+		SetDParam(0, GB(size, 0, 4));
+		SetDParam(1, GB(size, 4, 4));
+		line << GetString(STR_HOUSE_PICKER_SIZE);
+		line << "\n";
+
+		auto cargo_string = BuildCargoAcceptanceString(GetAcceptedCargoOfHouse(hs), STR_HOUSE_PICKER_CARGO_ACCEPTED);
+		if (cargo_string.has_value()) line << *cargo_string;
+
+		return line.str();
+	}
+
+	void DrawWidget(const Rect &r, WidgetID widget) const override
+	{
+		if (widget == WID_BH_INFO) {
+			if (!this->house_info.empty()) DrawStringMultiLine(r, this->house_info);
+		} else {
+			this->PickerWindow::DrawWidget(r, widget);
+		}
+	}
+
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		this->PickerWindow::OnInvalidateData(data, gui_scope);
@@ -1637,6 +1711,7 @@ struct BuildHouseWindow : public PickerWindow {
 		if ((data & PickerWindow::PFI_POSITION) != 0) {
 			const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
 			UpdateSelectSize(spec);
+			this->house_info = GetHouseInformation(spec);
 		}
 	}
 
@@ -1668,7 +1743,14 @@ static constexpr NWidgetPart _nested_build_house_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidgetFunction(MakePickerClassWidgets),
+		NWidget(NWID_VERTICAL),
+			NWidgetFunction(MakePickerClassWidgets),
+			NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_picker, 0), SetPadding(WidgetDimensions::unscaled.picker),
+					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BH_INFO), SetFill(1, 1), SetMinimalTextLines(10, 0),
+				EndContainer(),
+			EndContainer(),
+		EndContainer(),
 		NWidgetFunction(MakePickerTypeWidgets),
 	EndContainer(),
 };
