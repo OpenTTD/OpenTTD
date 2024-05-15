@@ -66,4 +66,9 @@ enum TownFoundingWidgets : WidgetID {
 	WID_TF_LAYOUT_RANDOM,     ///< Selection for a randomly chosen town layout.
 };
 
+/** Widgets of the #BuildHouseWindow class. */
+enum BuildHouseWidgets : WidgetID {
+	WID_BH_INFO, ///< Information panel of selected house.
+};
+
 #endif /* WIDGETS_TOWN_WIDGET_H */
