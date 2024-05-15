@@ -2837,8 +2837,6 @@ CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house)
 	const HouseSpec *hs = HouseSpec::Get(house);
 	if (!hs->enabled) return CMD_ERROR;
 
-	if (TimerGameCalendar::year < hs->min_year || TimerGameCalendar::year > hs->max_year) return CMD_ERROR;
-
 	Town *t = ClosestTownFromTile(tile, UINT_MAX);
 
 	/* cannot build on these slopes... */
