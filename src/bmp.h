@@ -38,7 +38,7 @@ struct BmpBuffer {
 };
 
 void BmpInitializeBuffer(BmpBuffer *buffer, FILE *file);
-bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data);
-bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data);
+bool BmpReadHeader(BmpBuffer *buffer, BmpInfo &info, BmpData &data);
+bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo &info, BmpData &data);
 
 #endif /* BMP_H */
