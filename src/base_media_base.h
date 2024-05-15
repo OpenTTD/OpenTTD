@@ -158,8 +158,8 @@ struct BaseSet {
 	 */
 	std::optional<std::string> GetTextfile(TextfileType type) const
 	{
-		for (uint i = 0; i < NUM_FILES; i++) {
-			auto textfile = ::GetTextfile(type, BASESET_DIR, this->files[i].filename);
+		for (const auto &file : this->files) {
+			auto textfile = ::GetTextfile(type, BASESET_DIR, file.filename);
 			if (textfile.has_value()) {
 				return textfile;
 			}
