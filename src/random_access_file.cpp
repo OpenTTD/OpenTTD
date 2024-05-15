@@ -24,12 +24,17 @@
  */
 RandomAccessFile::RandomAccessFile(const std::string &filename, Subdirectory subdir) : filename(filename)
 {
-	this->file_handle = FioFOpenFile(filename, "rb", subdir);
+	size_t file_size;
+	this->file_handle = FioFOpenFile(filename, "rb", subdir, &file_size);
 	if (this->file_handle == nullptr) UserError("Cannot open file '{}'", filename);
 
 	/* When files are in a tar-file, the begin of the file might not be at 0. */
 	long pos = ftell(this->file_handle);
 	if (pos < 0) UserError("Cannot read file '{}'", filename);
+
+	/* Make a note of start and end position for readers who check bounds. */
+	this->start_pos = pos;
+	this->end_pos = this->start_pos + file_size;
 
 	/* Store the filename without path and extension */
 	auto t = filename.rfind(PATHSEPCHAR);
@@ -74,6 +79,15 @@ const std::string &RandomAccessFile::GetSimplifiedFilename() const
 size_t RandomAccessFile::GetPos() const
 {
 	return this->pos + (this->buffer - this->buffer_end);
+}
+
+/**
+ * Test if we have reached the end of the file.
+ * @return True iff the current position as at or after the end of the file.
+ */
+bool RandomAccessFile::AtEndOfFile() const
+{
+	return this->GetPos() >= this->GetEndPos();
 }
 
 /**
