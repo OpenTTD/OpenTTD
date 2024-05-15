@@ -11,9 +11,10 @@
 #define BMP_H
 
 #include "gfx_type.h"
+#include "random_access_file_type.h"
 
 struct BmpInfo {
-	uint32_t offset;       ///< offset of bitmap data from .bmp file beginning
+	size_t offset; ///< offset of bitmap data from .bmp file beginning
 	uint32_t width;        ///< bitmap width
 	uint32_t height;       ///< bitmap height
 	bool os2_bmp;        ///< true if OS/2 1.x or windows 2.x bitmap
@@ -27,18 +28,7 @@ struct BmpData {
 	std::vector<uint8_t> bitmap;
 };
 
-#define BMP_BUFFER_SIZE 1024
-
-struct BmpBuffer {
-	uint8_t data[BMP_BUFFER_SIZE];
-	int pos;
-	int read;
-	FILE *file;
-	uint real_pos;
-};
-
-void BmpInitializeBuffer(BmpBuffer *buffer, FILE *file);
-bool BmpReadHeader(BmpBuffer *buffer, BmpInfo &info, BmpData &data);
-bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo &info, BmpData &data);
+bool BmpReadHeader(RandomAccessFile &file, BmpInfo &info, BmpData &data);
+bool BmpReadBitmap(RandomAccessFile &file, BmpInfo &info, BmpData &data);
 
 #endif /* BMP_H */
