@@ -23,8 +23,8 @@ struct BmpInfo {
 };
 
 struct BmpData {
-	Colour *palette;
-	uint8_t   *bitmap;
+	std::vector<Colour> palette;
+	std::vector<uint8_t> bitmap;
 };
 
 #define BMP_BUFFER_SIZE 1024
@@ -40,6 +40,5 @@ struct BmpBuffer {
 void BmpInitializeBuffer(BmpBuffer *buffer, FILE *file);
 bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data);
 bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data);
-void BmpDestroyData(BmpData *data);
 
 #endif /* BMP_H */
