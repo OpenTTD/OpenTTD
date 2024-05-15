@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "bmp.h"
 #include "core/bitmath_func.hpp"
-#include "core/alloc_func.hpp"
 #include "core/mem_func.hpp"
 
 #include "safeguards.h"
@@ -359,8 +358,6 @@ bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 	if (info->compression > 2 || (info->compression > 0 && !(info->bpp == 4 || info->bpp == 8))) return false;
 
 	if (info->bpp <= 8) {
-		uint i;
-
 		/* Reads number of colours if available in info header */
 		if (header_size >= 16) {
 			SkipBytes(buffer, 12);                  // skip image size and resolution
@@ -374,12 +371,12 @@ bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 		/* More palette colours than palette indices is not supported. */
 		if (info->palette_size > maximum_palette_size) return false;
 
-		data->palette = CallocT<Colour>(info->palette_size);
+		data->palette.resize(info->palette_size);
 
-		for (i = 0; i < info->palette_size; i++) {
-			data->palette[i].b = ReadByte(buffer);
-			data->palette[i].g = ReadByte(buffer);
-			data->palette[i].r = ReadByte(buffer);
+		for (auto &colour : data->palette) {
+			colour.b = ReadByte(buffer);
+			colour.g = ReadByte(buffer);
+			colour.r = ReadByte(buffer);
 			if (!info->os2_bmp) SkipBytes(buffer, 1); // unused
 		}
 	}
@@ -395,7 +392,7 @@ bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	assert(info != nullptr && data != nullptr);
 
-	data->bitmap = CallocT<uint8_t>(static_cast<size_t>(info->width) * info->height * ((info->bpp == 24) ? 3 : 1));
+	data->bitmap.resize(static_cast<size_t>(info->width) * info->height * ((info->bpp == 24) ? 3 : 1));
 
 	/* Load image */
 	SetStreamOffset(buffer, info->offset);
@@ -412,11 +409,4 @@ bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 	case 2:  return BmpRead4Rle(buffer, info, data); // 4-bit RLE compression
 	default: NOT_REACHED();
 	}
-}
-
-void BmpDestroyData(BmpData *data)
-{
-	assert(data != nullptr);
-	free(data->palette);
-	free(data->bitmap);
 }
