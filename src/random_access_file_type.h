@@ -28,6 +28,8 @@ class RandomAccessFile {
 
 	FILE *file_handle;               ///< File handle of the open file.
 	size_t pos;                      ///< Position in the file of the end of the read buffer.
+	size_t start_pos; ///< Start position of file. May be non-zero if file is within a tar file.
+	size_t end_pos; ///< End position of file.
 
 	uint8_t *buffer;                    ///< Current position within the local buffer.
 	uint8_t *buffer_end;                ///< Last valid byte of buffer.
@@ -44,7 +46,10 @@ public:
 	const std::string &GetSimplifiedFilename() const;
 
 	size_t GetPos() const;
+	size_t GetStartPos() const { return this->start_pos; }
+	size_t GetEndPos() const { return this->end_pos; }
 	void SeekTo(size_t pos, int mode);
+	bool AtEndOfFile() const;
 
 	uint8_t ReadByte();
 	uint16_t ReadWord();
