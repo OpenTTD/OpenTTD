@@ -1100,7 +1100,7 @@ struct SpecializedVehicle : public Vehicle {
 	/**
 	 * Set vehicle type correctly
 	 */
-	inline SpecializedVehicle<T, Type>() : Vehicle(Type)
+	inline SpecializedVehicle() : Vehicle(Type)
 	{
 		this->sprite_cache.sprite_seq.count = 1;
 	}
