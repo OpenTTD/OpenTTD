@@ -438,6 +438,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Surt de l'edito
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Surt
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Genera poblacions
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Posa cases
 
 # Settings menu
 ###length 16
@@ -2816,8 +2818,16 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Trieu quina cla
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Trieu un tipus d'estació de camió a construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Trieu quina classe d'objectes voleu veure.
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Trieu quin tipus d'objecte voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats. Amb Ctrl+clic+arrossega es selecciona l'àrea en diagonal. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Trieu quina zona de població voleu veure.
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Trieu quin tipus de casa construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
 
+STR_HOUSE_PICKER_CAPTION                                        :Selecció de cases
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Vora
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Afores
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbi exterior
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbi interior
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centre de la població
 
 STR_STATION_CLASS_DFLT                                          :Per defecte
 STR_STATION_CLASS_DFLT_STATION                                  :Estació per defecte
@@ -5005,6 +5015,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...no qu
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obres en progrés
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No es pot eliminar aquesta població...{}Hi ha una estació, un dipòsit o una cel·la pertanyent a la població que no pot ser eliminada
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no hi ha un lloc adequat per situar l'estàtua al centre d'aquesta població
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}La casa no es pot construir...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... massa indústries

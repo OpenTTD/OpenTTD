@@ -437,6 +437,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :退出编辑器
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :退出
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :生成城镇
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :放置房屋
 
 # Settings menu
 ###length 16
@@ -2815,8 +2817,16 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :选择显示的
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :选择建造的汽车货场类型。按住 <Ctrl> 键操作以保存或删除当前项目
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :选择显示的物件类别
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :选择建造的物件类型。按住 <Ctrl> 键选择物件以保存或删除当前项目。按住 <Ctrl> 键拖拽以沿对角线放置，按住 <Shift> 键以显示预计费用
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :选择显示的城镇区域
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :选择建造的房屋类型。按住 <Ctrl> 键操作以保存或删除当前项目
 
+STR_HOUSE_PICKER_CAPTION                                        :房屋选择
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :城镇边缘
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :郊区边缘
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :外郊区
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :内郊区
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :城镇中心
 
 STR_STATION_CLASS_DFLT                                          :默认
 STR_STATION_CLASS_DFLT_STATION                                  :默认车站
@@ -5004,6 +5014,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}地图�
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}正在进行道路工程
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}无法删除城镇...{}城镇范围内还有车站、车库或无法移除的区块
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 城市中心没有合适的地方放置公司塑像
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}不能建造房屋……
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}…… 游戏中的工业过多

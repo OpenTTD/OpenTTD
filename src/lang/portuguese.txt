@@ -438,6 +438,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Abandonar edito
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Gerar localidades
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Colocar casas
 
 # Settings menu
 ###length 16
@@ -2816,8 +2818,16 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecionar uma 
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Escolher um tipo de estação de camiões para construir. Ctrl+Clique para adicionar ou remover nos itens guardados
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecionar uma classe de objeto para mostrar
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Selecione um tipo de objeto para construir. Ctrl+Clique para adicionar ou remover nos itens guardados. Ctrl+Clique+Arrastar para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecione uma zona de localidade para mostrar
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Escolher um tipo de casa para construir. Ctrl+Clique para adicionar ou remover nos itens guardados
 
+STR_HOUSE_PICKER_CAPTION                                        :Seleção de Casas
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Borda
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Arredores
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Subúrbios Externos
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Subúrbios Internos
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro da localidade
 
 STR_STATION_CLASS_DFLT                                          :Padrão
 STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão
@@ -3059,7 +3069,7 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Também 
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Selecionar carga
 STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Selecione a carga que pretende mostrar
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Selecione a indústria
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Selecione a industria que pretende mostrar
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Selecione a indústria que pretende mostrar
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informações do Terreno
@@ -3285,7 +3295,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Num. de localidades:
 STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Selecionar a densidade das cidades, ou um número personalizado
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nomes das localidades:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Seleccionar o estilo dos nomes das localidades
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Selecionar o estilo dos nomes das localidades
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Selecionar a data inicial
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Num. de indústrias:
@@ -5005,6 +5015,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trabalhos na estrada em curso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Não é possível eliminar esta localidade...{}Uma estação ou depósito refere-se à localidade ou não é possível remover terreno pertencente à mesma
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... não há um sítio adequado para uma estátua no centro desta localidade
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Não é possível construir casa...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... demasiadas indústrias

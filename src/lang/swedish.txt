@@ -2795,9 +2795,15 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Välj l�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Släpp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg en station genom att dra & släppa
 
+STR_PICKER_MODE_ALL                                             :Alla
+STR_PICKER_MODE_USED                                            :Använda
 
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken stadszon som ska visas
 
+STR_HOUSE_PICKER_CAPTION                                        :Husval
 
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Innerförorterna
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadskärnan
 
 STR_STATION_CLASS_DFLT                                          :Original
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstation
@@ -4985,6 +4991,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det 
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vägarbete pågår
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan inte ta bort den här staden...{}En station eller depå refererar till staden eller så kan inte en stadsägd ruta tas bort.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det finns ingen lämplig plats för en staty i stadens centrum
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Kan inte bygga hus...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... för många industrier

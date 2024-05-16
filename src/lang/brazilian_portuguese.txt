@@ -438,6 +438,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Sair do editor 
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Gerar localidades
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Colocar casas
 
 # Settings menu
 ###length 16
@@ -2816,8 +2818,16 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecionar uma 
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Escolher um tipo de estação de caminhões para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecionar uma classe de objeto para mostrar
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Escolher um tipo de objeto para construir. Ctrl+Clique para adicionar ou remover nos itens salvos. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecionar uma zona urbana para mostrar
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selecionar um tipo de casa para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
 
+STR_HOUSE_PICKER_CAPTION                                        :Seleção de Casas
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Borda
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Subúrbio
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Periferia Distante
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Periferia Próxima
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro da cidade
 
 STR_STATION_CLASS_DFLT                                          :Padrão
 STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão
@@ -5005,6 +5015,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trabalhos sendo realizados na estrada
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Não é possível remover esta localidade...{}Uma estação ou depósito refere-se à localidade ou não é possível remover um quadrado que pertence à mesma
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... não há local adequado para uma estátua no centro desta localidade
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Não é possível construir casa...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... há indústrias demais

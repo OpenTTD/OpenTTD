@@ -563,6 +563,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Выйти из
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Выход
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Создание городов
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Размещение домов
 
 # Settings menu
 ###length 16
@@ -2986,8 +2988,16 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Выберит�
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Выберите грузовой терминал для строительства. Ctrl+щелчок добавит его в «избранное» или удалит.
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Выберите тип объектов для отображения
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Выберите объект для строительства. Ctrl+щелчок добавит его в «избранное» или удалит. Ctrl+перетаскивание - выбор диагональной области. При нажатом Shift - оценка стоимости строительства.
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Выберите городскую зону для отображения соответствующих строений
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Выберите дом для строительства. Ctrl+щелчок добавит его в «избранное» или удалит.
 
+STR_HOUSE_PICKER_CAPTION                                        :Выбор типов домов
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Край
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Окраина
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Периферия
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Пригород
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Центр
 
 STR_STATION_CLASS_DFLT                                          :Стандартная станция
 STR_STATION_CLASS_DFLT_STATION                                  :Стандартная ж/д станция
@@ -5191,6 +5201,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... не
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Идут дорожные работы...
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Невозможно уничтожить город:{}к нему относится станция или депо, либо невозможно очистить одну из занимаемых им клеток.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... в центре города нет места для статуи
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Невозможно поставить дом...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... слишком много предприятий
