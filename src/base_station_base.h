@@ -221,7 +221,7 @@ struct SpecializedStation : public BaseStation {
 	 * Set station type correctly
 	 * @param tile The base tile of the station.
 	 */
-	inline SpecializedStation<T, Tis_waypoint>(TileIndex tile) :
+	inline SpecializedStation(TileIndex tile) :
 			BaseStation(tile)
 	{
 		this->facilities = EXPECTED_FACIL;
