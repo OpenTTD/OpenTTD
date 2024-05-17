@@ -8,6 +8,7 @@
 /** @file console_gui.cpp Handling the GUI of the in-game console. */
 
 #include "stdafx.h"
+#include "core/backup_type.hpp"
 #include "textbuf_type.h"
 #include "window_gui.h"
 #include "autocompletion.h"
@@ -163,6 +164,7 @@ struct IConsoleWindow : Window
 
 	void OnInit() override
 	{
+		AutoRestoreBackup textdir(_current_text_dir, TD_LTR);
 		this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.hsep_normal;
 		this->line_offset = GetStringBoundingBox("] ").width + WidgetDimensions::scaled.frametext.left;
 		this->cursor_width = GetCharacterWidth(FS_NORMAL, '_');
@@ -195,6 +197,7 @@ struct IConsoleWindow : Window
 
 	void OnPaint() override
 	{
+		AutoRestoreBackup textdir(_current_text_dir, TD_LTR);
 		const int right = this->width - WidgetDimensions::scaled.frametext.right;
 
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, PC_BLACK);
