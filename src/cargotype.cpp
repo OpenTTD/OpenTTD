@@ -19,6 +19,8 @@
 #include "table/strings.h"
 #include "table/cargo_const.h"
 
+#include <sstream>
+
 #include "safeguards.h"
 
 CargoSpec CargoSpec::array[NUM_CARGO];
@@ -256,4 +258,40 @@ uint64_t CargoSpec::WeightOfNUnitsInTrain(uint32_t n) const
 {
 	if (this->is_freight) n *= _settings_game.vehicle.freight_trains;
 	return this->WeightOfNUnits(n);
+}
+
+/**
+ * Build comma-separated cargo acceptance string.
+ * @param acceptance CargoArray filled with accepted cargo.
+ * @param label Label to prefix cargo acceptance list.
+ * @return String of accepted cargo, or nullopt if no cargo is accepted.
+ */
+std::optional<std::string> BuildCargoAcceptanceString(const CargoArray &acceptance, StringID label)
+{
+	/* Cargo acceptance is displayed in a extra multiline */
+	std::stringstream line;
+	line << GetString(label);
+
+	bool found = false;
+	for (const CargoSpec *cs : _sorted_cargo_specs) {
+		CargoID cid = cs->Index();
+		if (acceptance[cid] > 0) {
+			/* Add a comma between each item. */
+			if (found) line << ", ";
+			found = true;
+
+			/* If the accepted value is less than 8, show it in 1/8:ths */
+			if (acceptance[cid] < 8) {
+				SetDParam(0, acceptance[cid]);
+				SetDParam(1, cs->name);
+				line << GetString(STR_LAND_AREA_INFORMATION_CARGO_EIGHTS);
+			} else {
+				line << GetString(cs->name);
+			}
+		}
+	}
+
+	if (found) return line.str();
+
+	return std::nullopt;
 }
