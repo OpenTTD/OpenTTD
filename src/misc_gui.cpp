@@ -307,29 +307,9 @@ public:
 		}
 
 		/* Cargo acceptance is displayed in a extra multiline */
-		std::stringstream line;
-		line << GetString(STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED);
-
-		bool found = false;
-		for (const CargoSpec *cs : _sorted_cargo_specs) {
-			CargoID cid = cs->Index();
-			if (acceptance[cid] > 0) {
-				/* Add a comma between each item. */
-				if (found) line << ", ";
-				found = true;
-
-				/* If the accepted value is less than 8, show it in 1/8:ths */
-				if (acceptance[cid] < 8) {
-					SetDParam(0, acceptance[cid]);
-					SetDParam(1, cs->name);
-					line << GetString(STR_LAND_AREA_INFORMATION_CARGO_EIGHTS);
-				} else {
-					line << GetString(cs->name);
-				}
-			}
-		}
-		if (found) {
-			this->cargo_acceptance = line.str();
+		auto line = BuildCargoAcceptanceString(acceptance, STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED);
+		if (line.has_value()) {
+			this->cargo_acceptance = std::move(*line);
 		} else {
 			this->cargo_acceptance.clear();
 		}
