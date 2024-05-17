@@ -40,7 +40,7 @@ public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
 	~FreeTypeFontCache();
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
+	GlyphID MapCharToGlyph(char32_t key) override;
 	std::string GetFontName() override { return fmt::format("{}, {}", face->family_name, face->style_name); }
 	bool IsBuiltInFont() override { return false; }
 	const void *GetOSHandle() override { return &face; }
@@ -104,6 +104,7 @@ void FreeTypeFontCache::SetFontSize(int pixels)
 		this->ascender     = this->face->size->metrics.ascender >> 6;
 		this->descender    = this->face->size->metrics.descender >> 6;
 		this->height       = this->ascender - this->descender;
+		FontCache::UpdateCharacterHeight(this->fs);
 	} else {
 		/* Both FT_Set_Pixel_Sizes and FT_Select_Size failed. */
 		Debug(fontcache, 0, "Font size selection failed. Using FontCache defaults.");
@@ -193,17 +194,11 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 }
 
 
-GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
+GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 
-	FT_UInt glyph = FT_Get_Char_Index(this->face, key);
-
-	if (glyph == 0 && allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
-		return this->parent->MapCharToGlyph(key);
-	}
-
-	return glyph;
+	return FT_Get_Char_Index(this->face, key);
 }
 
 FT_Library _ft_library = nullptr;
@@ -225,14 +220,9 @@ public:
 	 * format is 'font family name' or 'font family name, font style'.
 	 * @param fs The font size to load.
 	 */
-	void LoadFont(FontSize fs, FontType fonttype) override
+	void LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font, std::span<const std::byte> os_handle) override
 	{
 		if (fonttype != FontType::TrueType) return;
-
-		FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
-
-		std::string font = GetFontCacheFontName(fs);
-		if (font.empty()) return;
 
 		if (_ft_library == nullptr) {
 			if (FT_Init_FreeType(&_ft_library) != FT_Err_Ok) {
@@ -247,7 +237,9 @@ public:
 
 		/* If font is an absolute path to a ttf, try loading that first. */
 		int32_t index = 0;
-		if (settings->os_handle != nullptr) index = *static_cast<const int32_t *>(settings->os_handle);
+		if (os_handle.size() == sizeof(index)) {
+			index = *reinterpret_cast<const int32_t *>(os_handle.data());
+		}
 		FT_Error error = FT_New_Face(_ft_library, font.c_str(), index, &face);
 
 		if (error != FT_Err_Ok) {
@@ -259,24 +251,24 @@ public:
 		}
 
 #ifdef WITH_FONTCONFIG
-		/* Try loading based on font face name (OS-wide fonts). */
-		if (error != FT_Err_Ok) error = GetFontByFaceName(font, &face);
+		/* If allowed to search, try loading based on font face name (OS-wide fonts). */
+		if (error != FT_Err_Ok && search) error = GetFontByFaceName(font, &face);
 #endif /* WITH_FONTCONFIG */
 
 		if (error == FT_Err_Ok) {
 			error = LoadFont(fs, face, font, GetFontCacheFontSize(fs));
 			if (error != FT_Err_Ok) {
-				ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}, using sprite font instead", font, FontSizeToName(fs), error);
+				ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}", font, FontSizeToName(fs), error);
 			}
 		} else {
 			FT_Done_Face(face);
 		}
 	}
 
-	bool SetFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, class MissingGlyphSearcher *callback) override
+	bool SetFallbackFont(const std::string &language_isocode, FontSizes bad_mask, MissingGlyphSearcher *callback) override
 	{
 #ifdef WITH_FONTCONFIG
-		if (FontConfigSetFallbackFont(settings, language_isocode, callback)) return true;
+		if (FontConfigSetFallbackFont(language_isocode, bad_mask, callback)) return true;
 #endif /* WITH_FONTCONFIG */
 
 		return false;
@@ -293,8 +285,8 @@ private:
 
 		if (error == FT_Err_Invalid_CharMap_Handle) {
 			/* Try to pick a different character map instead. We default to
-			* the first map, but platform_id 0 encoding_id 0 should also
-			* be unicode (strange system...) */
+			 * the first map, but platform_id 0 encoding_id 0 should also
+			 * be unicode (strange system...) */
 			FT_CharMap found = face->charmaps[0];
 			int i;
 

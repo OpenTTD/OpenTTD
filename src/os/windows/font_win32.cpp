@@ -31,8 +31,8 @@
 #include "../../safeguards.h"
 
 struct EFCParam {
-	FontCacheSettings *settings;
-	LOCALESIGNATURE  locale;
+	LOCALESIGNATURE locale;
+	FontSizes fontsizes;
 	MissingGlyphSearcher *callback;
 	std::vector<std::wstring> fonts;
 
@@ -59,7 +59,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	/* Don't use SYMBOL fonts */
 	if (logfont->elfLogFont.lfCharSet == SYMBOL_CHARSET) return 1;
 	/* Use monospaced fonts when asked for it. */
-	if (info->callback->Monospace() && (logfont->elfLogFont.lfPitchAndFamily & (FF_MODERN | FIXED_PITCH)) != (FF_MODERN | FIXED_PITCH)) return 1;
+	if (info->fontsizes.Test(FS_MONO) && (logfont->elfLogFont.lfPitchAndFamily & (FF_MODERN | FIXED_PITCH)) != (FF_MODERN | FIXED_PITCH)) return 1;
 
 	/* The font has to have at least one of the supported locales to be usable. */
 	auto check_bitfields = [&]() {
@@ -78,8 +78,15 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	char font_name[MAX_PATH];
 	convert_from_fs(logfont->elfFullName, font_name);
 
-	info->callback->SetFontNames(info->settings, font_name, &logfont->elfLogFont);
-	if (info->callback->FindMissingGlyphs()) return 1;
+	Debug(misc, 0, "Trying font {}", font_name);
+	for (FontSize fs : info->fontsizes) {
+		GetFontCacheSubSetting(fs)->AddFallback(font_name, logfont->elfLogFont);
+	}
+
+	InitFontCache(info->fontsizes);
+	if (info->callback->FindMissingGlyphs().None()) {
+		return 1;
+	}
 	Debug(fontcache, 1, "Fallback font: {}", font_name);
 	return 0; // stop enumerating
 }
@@ -156,10 +163,11 @@ void Win32FontCache::SetFontSize(int pixels)
 	this->height = this->ascender + this->descender;
 	this->glyph_size.cx = otm->otmTextMetrics.tmMaxCharWidth;
 	this->glyph_size.cy = otm->otmTextMetrics.tmHeight;
+	FontCache::UpdateCharacterHeight(this->fs);
 
 	this->fontname = FS2OTTD((LPWSTR)((BYTE *)otm + (ptrdiff_t)otm->otmpFaceName));
 
-	Debug(fontcache, 2, "Loaded font '{}' with size {}", this->fontname, pixels);
+	Debug(fontcache, 2, "Win32FontCache: Loaded font '{}' with size {}", this->fontname, pixels);
 	delete[] (BYTE*)otm;
 }
 
@@ -246,7 +254,7 @@ void Win32FontCache::ClearFontCache()
 	return this->SetGlyphPtr(key, std::move(new_glyph)).GetSprite();
 }
 
-/* virtual */ GlyphID Win32FontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
+/* virtual */ GlyphID Win32FontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 
@@ -263,7 +271,7 @@ void Win32FontCache::ClearFontCache()
 	GetGlyphIndicesW(this->dc, chars, key >= 0x010000U ? 2 : 1, glyphs, GGI_MARK_NONEXISTING_GLYPHS);
 
 	if (glyphs[0] != 0xFFFF) return glyphs[0];
-	return allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END ? this->parent->MapCharToGlyph(key) : 0;
+	return 0;
 }
 
 class Win32FontCacheFactory : FontCacheFactory {
@@ -271,19 +279,14 @@ public:
 	Win32FontCacheFactory() : FontCacheFactory("win32", "Win32 font loader") {}
 
 	/**
-	* Loads the GDI font.
-	* If a GDI font description is present, e.g. from the automatic font
-	* fallback search, use it. Otherwise, try to resolve it by font name.
-	* @param fs The font size to load.
-	*/
-	void LoadFont(FontSize fs, FontType fonttype) override
+	 * Loads the GDI font.
+	 * If a GDI font description is present, e.g. from the automatic font
+	 * fallback search, use it. Otherwise, try to resolve it by font name.
+	 * @param fs The font size to load.
+	 */
+	void LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font, std::span<const std::byte> os_handle) override
 	{
 		if (fonttype != FontType::TrueType) return;
-
-		FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
-
-		std::string font = GetFontCacheFontName(fs);
-		if (font.empty()) return;
 
 		LOGFONT logfont{};
 		logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
@@ -291,12 +294,13 @@ public:
 		logfont.lfOutPrecision = OUT_OUTLINE_PRECIS;
 		logfont.lfClipPrecision = CLIP_DEFAULT_PRECIS;
 
-		if (settings->os_handle != nullptr) {
-			logfont = *(const LOGFONT *)settings->os_handle;
+		if (!os_handle.empty()) {
+			logfont = *reinterpret_cast<const LOGFONT *>(os_handle.data());
 		} else if (font.find('.') != std::string::npos) {
 			/* Might be a font file name, try load it. */
 			if (!TryLoadFontFromFile(font, logfont)) {
 				ShowInfo("Unable to load file '{}' for {} font, using default windows font selection instead", font, FontSizeToName(fs));
+				if (!search) return;
 			}
 		}
 
@@ -308,7 +312,7 @@ public:
 		LoadWin32Font(fs, logfont, GetFontCacheFontSize(fs), font);
 	}
 
-	bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback) override
+	bool SetFallbackFont(const std::string &language_isocode, FontSizes bad_mask, MissingGlyphSearcher *callback) override
 	{
 		Debug(fontcache, 1, "Trying fallback fonts");
 		EFCParam langInfo;
@@ -318,7 +322,7 @@ public:
 			Debug(fontcache, 1, "Can't get locale info for fallback font (isocode={})", language_isocode);
 			return false;
 		}
-		langInfo.settings = settings;
+		langInfo.fontsizes = bad_mask;
 		langInfo.callback = callback;
 
 		LOGFONT font;

@@ -2360,17 +2360,18 @@ static bool ConFont(std::span<std::string_view> argv)
 		SetFont(argfs, font, size);
 	}
 
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		FontCache *fc = FontCache::Get(fs);
-		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
-		/* Make sure all non sprite fonts are loaded. */
-		if (!setting->font.empty() && !fc->HasParent()) {
-			InitFontCache(fs);
-			fc = FontCache::Get(fs);
-		}
-		IConsolePrint(CC_DEFAULT, "{} font:", FontSizeToName(fs));
-		IConsolePrint(CC_DEFAULT, "Currently active: \"{}\", size {}", fc->GetFontName(), fc->GetFontSize());
-		IConsolePrint(CC_DEFAULT, "Requested: \"{}\", size {}", setting->font, setting->size);
+	IConsolePrint(CC_INFO, "Configured fonts:");
+	for (uint i = 0; FontSize fs : FONTSIZES_ALL) {
+		const FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
+		IConsolePrint(CC_DEFAULT, "{}) {} font: \"{}\", size {}", i, FontSizeToName(fs), setting->font, setting->size);
+		++i;
+	}
+
+	IConsolePrint(CC_INFO, "Currently active fonts:");
+	for (uint i = 0; const auto &fc : FontCache::Get()) {
+		if (fc == nullptr) continue;
+		IConsolePrint(CC_DEFAULT, "{}) {} font: \"{}\" size {}", i, FontSizeToName(fc->GetSize()), fc->GetFontName(), fc->GetFontSize());
+		++i;
 	}
 
 	return true;

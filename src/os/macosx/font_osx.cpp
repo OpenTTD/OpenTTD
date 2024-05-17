@@ -26,6 +26,7 @@
 CoreTextFontCache::CoreTextFontCache(FontSize fs, CFAutoRelease<CTFontDescriptorRef> &&font, int pixels) : TrueTypeFontCache(fs, pixels), font_desc(std::move(font))
 {
 	this->SetFontSize(pixels);
+	FontCache::UpdateCharacterHeight(this->fs);
 }
 
 /**
@@ -94,7 +95,7 @@ void CoreTextFontCache::SetFontSize(int pixels)
 	Debug(fontcache, 2, "Loaded font '{}' with size {}", this->font_name, pixels);
 }
 
-GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
+GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 
@@ -110,10 +111,6 @@ GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
 	CGGlyph glyph[2] = {0, 0};
 	if (CTFontGetGlyphsForCharacters(this->font.get(), chars, glyph, key >= 0x010000U ? 2 : 1)) {
 		return glyph[0];
-	}
-
-	if (allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
-		return this->parent->MapCharToGlyph(key);
 	}
 
 	return 0;
@@ -211,7 +208,7 @@ public:
 	 * fallback search, use it. Otherwise, try to resolve it by font name.
 	 * @param fs The font size to load.
 	 */
-	void LoadFont(FontSize fs, FontType fonttype)
+	void LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font, std::span<const std::byte> os_handle) override
 	{
 		if (fonttype != FontType::TrueType) return;
 
@@ -259,7 +256,7 @@ public:
 		new CoreTextFontCache(fs, std::move(font_ref), GetFontCacheFontSize(fs));
 	}
 
-	bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback) override
+	bool SetFallbackFont(const std::string &language_isocode, FontSizes bad_mask, MissingGlyphSearcher *callback)
 	{
 		/* Determine fallback font using CoreText. This uses the language isocode
 		 * to find a suitable font. CoreText is available from 10.5 onwards. */
@@ -305,7 +302,7 @@ public:
 				/* Skip bold fonts (especially Arial Bold, which looks worse than regular Arial). */
 				if (symbolic_traits & kCTFontBoldTrait) continue;
 				/* Select monospaced fonts if asked for. */
-				if (((symbolic_traits & kCTFontMonoSpaceTrait) == kCTFontMonoSpaceTrait) != callback->Monospace()) continue;
+				if (((symbolic_traits & kCTFontMonoSpaceTrait) == kCTFontMonoSpaceTrait) != fontsizes.Test(FS_MONO)) continue;
 
 				/* Get font name. */
 				char buffer[128];
@@ -323,7 +320,13 @@ public:
 				if (name.starts_with(".") || name.starts_with("LastResort")) continue;
 
 				/* Save result. */
-				callback->SetFontNames(settings, name);
+				for (FontSize fs : bad_mask) {
+					GetFontCacheSubSetting(fs)->AddFallback(name, std::nullopt);
+				}
+
+				// InitFontCache(bad_mask);
+				// return true;
+
 				if (!callback->FindMissingGlyphs()) {
 					Debug(fontcache, 2, "CT-Font for {}: {}", language_isocode, name);
 					result = true;
@@ -335,7 +338,9 @@ public:
 		if (!result) {
 			/* For some OS versions, the font 'Arial Unicode MS' does not report all languages it
 			 * supports. If we didn't find any other font, just try it, maybe we get lucky. */
-			callback->SetFontNames(settings, "Arial Unicode MS");
+			for (FontSize fs : bad_mask) {
+				GetFontCacheSubSetting(fs)->AddFallback("Arial Unicode MS", std::nullopt);
+			}
 			result = !callback->FindMissingGlyphs();
 		}
 
