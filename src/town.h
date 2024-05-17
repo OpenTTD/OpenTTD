@@ -241,6 +241,7 @@ void SetTownRatingTestMode(bool mode);
 TownActions GetMaskOfTownActions(CompanyID cid, const Town *t);
 bool GenerateTowns(TownLayout layout);
 const CargoSpec *FindFirstCargoWithTownAcceptanceEffect(TownAcceptanceEffect effect);
+CargoArray GetAcceptedCargoOfHouse(const HouseSpec *hs);
 
 extern const uint8_t _town_action_costs[TACT_COUNT];
 
