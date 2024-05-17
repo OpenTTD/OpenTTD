@@ -142,17 +142,13 @@ public:
 	 */
 	virtual bool Monospace() = 0;
 
-	/**
-	 * Set the right font names.
-	 * @param settings  The settings to modify.
-	 * @param font_name The new font name.
-	 * @param os_data Opaque pointer to OS-specific data.
-	 */
-	virtual void SetFontNames(struct FontCacheSettings *settings, const char *font_name, const void *os_data = nullptr) = 0;
+	uint8_t FindMissingGlyphs();
 
-	bool FindMissingGlyphs();
+	std::set<char32_t> GetRequiredGlyphs(FontSize fs, bool missing_only);
 };
 
-void CheckForMissingGlyphs(bool base_font = true, MissingGlyphSearcher *search = nullptr);
+void CheckForMissingGlyphs(bool base_font = true, MissingGlyphSearcher *searcher = nullptr);
+
+std::set<char32_t> GetRequiredGlyphs(FontSize fs, bool missing_only, MissingGlyphSearcher *searcher = nullptr);
 
 #endif /* STRINGS_FUNC_H */

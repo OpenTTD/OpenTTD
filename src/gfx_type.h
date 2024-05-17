@@ -216,13 +216,6 @@ enum FontSize {
 };
 DECLARE_POSTFIX_INCREMENT(FontSize)
 
-inline const char *FontSizeToName(FontSize fs)
-{
-	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
-	assert(fs < FS_END);
-	return SIZE_TO_NAME[fs];
-}
-
 /**
  * Used to only draw a part of the sprite.
  * Draw the subsprite in the rect (sprite_x_offset + left, sprite_y_offset + top) to (sprite_x_offset + right, sprite_y_offset + bottom).

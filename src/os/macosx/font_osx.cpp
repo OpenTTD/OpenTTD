@@ -24,7 +24,7 @@
 
 #include "safeguards.h"
 
-bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int, MissingGlyphSearcher *callback)
+bool SetFallbackFont(const std::string &language_isocode, int, uint8_t bad_mask, MissingGlyphSearcher *callback)
 {
 	/* Determine fallback font using CoreText. This uses the language isocode
 	 * to find a suitable font. CoreText is available from 10.5 onwards. */
@@ -111,6 +111,24 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 CoreTextFontCache::CoreTextFontCache(FontSize fs, CFAutoRelease<CTFontDescriptorRef> &&font, int pixels) : TrueTypeFontCache(fs, pixels), font_desc(std::move(font))
 {
 	this->SetFontSize(pixels);
+	FontCache::UpdateCharacterHeight(this->fs);
+}
+
+void CoreTextFontCache::UpdateCharacterMap()
+{
+	CFAutoRelease<CFCharacterSet> cset(CTFontCopyCharacterSet(this->font));
+
+	/* Test each plane for available glyphs. */
+	for (int plane = 0; plane <= 16; ++plane) {
+		if (!CFCharacterSetHasMemberInPlane(cset.get(), plane)) continue;
+
+		/* Brute force test each glyph in the plane. Yuck. */
+		for (char32_t i = 0; i < 0x10000; ++i) {
+			char32_t c = static_cast<char32_t>(plane << 16) | i;
+			if (!CFCharacterSetIsLongCharacterMember(set.get(), c)) conitnue;
+			this->ClaimCharacter(c);
+		}
+	}
 }
 
 /**
@@ -179,7 +197,7 @@ void CoreTextFontCache::SetFontSize(int pixels)
 	Debug(fontcache, 2, "Loaded font '{}' with size {}", this->font_name, pixels);
 }
 
-GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
+GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 
@@ -195,10 +213,6 @@ GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
 	CGGlyph glyph[2] = {0, 0};
 	if (CTFontGetGlyphsForCharacters(this->font.get(), chars, glyph, key >= 0x010000U ? 2 : 1)) {
 		return glyph[0];
-	}
-
-	if (allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
-		return this->parent->MapCharToGlyph(key);
 	}
 
 	return 0;

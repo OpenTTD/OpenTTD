@@ -22,13 +22,14 @@
  * of the same text, e.g. on line breaks.
  */
 struct FontState {
-	FontSize fontsize;       ///< Current font size.
-	TextColour cur_colour;   ///< Current text colour.
+	FontSize fontsize; ///< Current font size.
+	FontIndex font_index; ///< Current font index.
+	TextColour cur_colour; ///< Current text colour.
 
 	std::stack<TextColour, std::vector<TextColour>> colour_stack; ///< Stack of colours to assist with colour switching.
 
-	FontState() : fontsize(FS_END), cur_colour(TC_INVALID) {}
-	FontState(TextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour) {}
+	FontState() : fontsize(FS_END), font_index(INVALID_FONT_INDEX), cur_colour(TC_INVALID) {}
+	FontState(TextColour colour, FontSize fontsize, FontIndex font_index) : fontsize(fontsize), font_index(font_index), cur_colour(colour) {}
 
 	/**
 	 * Switch to new colour \a c.
@@ -66,6 +67,7 @@ struct FontState {
 	inline void SetFontSize(FontSize f)
 	{
 		this->fontsize = f;
+		this->font_index = FontCache::GetDefaultFontIndex(this->fontsize);
 	}
 };
 
@@ -77,7 +79,7 @@ public:
 	FontCache *fc;     ///< The font we are using.
 	TextColour colour; ///< The colour this font has to be.
 
-	Font(FontSize size, TextColour colour);
+	Font(FontIndex font_index, TextColour colour);
 };
 
 /** Mapping from index to font. The pointer is owned by FontColourMap. */
@@ -158,6 +160,7 @@ class Layouter : public std::vector<std::unique_ptr<const ParagraphLayouter::Lin
 		bool operator()(const Key1 &lhs, const Key2 &rhs) const
 		{
 			if (lhs.state_before.fontsize != rhs.state_before.fontsize) return lhs.state_before.fontsize < rhs.state_before.fontsize;
+			if (lhs.state_before.font_index != rhs.state_before.font_index) return lhs.state_before.font_index < rhs.state_before.font_index;
 			if (lhs.state_before.cur_colour != rhs.state_before.cur_colour) return lhs.state_before.cur_colour < rhs.state_before.cur_colour;
 			if (lhs.state_before.colour_stack != rhs.state_before.colour_stack) return lhs.state_before.colour_stack < rhs.state_before.colour_stack;
 			return lhs.str < rhs.str;
@@ -183,9 +186,9 @@ private:
 	static LineCacheItem &GetCachedParagraphLayout(std::string_view str, const FontState &state);
 
 	using FontColourMap = std::map<TextColour, std::unique_ptr<Font>>;
-	static FontColourMap fonts[FS_END];
+	static std::unordered_map<FontIndex, FontColourMap> fonts;
 public:
-	static Font *GetFont(FontSize size, TextColour colour);
+	static Font *GetFont(FontIndex font_index, TextColour colour);
 
 	Layouter(std::string_view str, int maxw = INT32_MAX, FontSize fontsize = FS_NORMAL);
 	Dimension GetBounds();
@@ -193,7 +196,7 @@ public:
 	ptrdiff_t GetCharAtPosition(int x, size_t line_index) const;
 
 	static void Initialize();
-	static void ResetFontCache(FontSize size);
+	static void ResetFontCache(FontSize fs);
 	static void ResetLineCache();
 	static void ReduceLineCache();
 };

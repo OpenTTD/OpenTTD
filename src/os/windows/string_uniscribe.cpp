@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "string_uniscribe.h"
+#include "../../gfx_layout_fallback.h"
 #include "../../language.h"
 #include "../../strings_func.h"
 #include "../../string_func.h"
@@ -28,7 +29,7 @@
 
 
 /** Uniscribe cache for internal font information, cleared when OTTD changes fonts. */
-static SCRIPT_CACHE _script_cache[FS_END];
+static std::map<FontIndex, SCRIPT_CACHE> _script_cache;
 
 /**
  * Contains all information about a run of characters. A run are consecutive
@@ -51,6 +52,8 @@ struct UniscribeRun {
 	int total_advance;
 
 	UniscribeRun(int pos, int len, Font *font, SCRIPT_ANALYSIS &sa) : pos(pos), len(len), font(font), sa(sa) {}
+
+	void FallbackShape(const UniscribeParagraphLayoutFactory::CharType *buff);
 };
 
 /** Break a string into language formatting ranges. */
@@ -93,7 +96,7 @@ public:
 		std::span<const int> GetGlyphToCharMap() const override;
 
 		const Font *GetFont() const override { return this->font;  }
-		int GetLeading() const override { return this->font->fc->GetHeight(); }
+		int GetLeading() const override { return GetCharacterHeight(this->font->fc->GetSize()); }
 		int GetGlyphCount() const override { return this->num_glyphs; }
 		int GetAdvance() const { return this->total_advance; }
 	};
@@ -129,12 +132,12 @@ public:
 	std::unique_ptr<const Line> NextLine(int max_width) override;
 };
 
-void UniscribeResetScriptCache(FontSize size)
+void UniscribeResetScriptCache(FontSize)
 {
-	if (_script_cache[size] != nullptr) {
-		ScriptFreeCache(&_script_cache[size]);
-		_script_cache[size] = nullptr;
+	for (auto &sc : _script_cache) {
+		ScriptFreeCache(&sc.second);
 	}
+	_script_cache.clear();
 }
 
 /** Load the matching native Windows font. */
@@ -152,6 +155,41 @@ static HFONT HFontFromFont(Font *font)
 	return CreateFontIndirect(&logfont);
 }
 
+/**
+ * Manually shape a run for built-in non-truetype fonts.
+ * Similar to but not quite the same as \a ICURun::FallbackShape.
+ * @param buff The complete buffer of the run.
+ */
+void UniscribeRun::FallbackShape(const UniscribeParagraphLayoutFactory::CharType *buff)
+{
+	this->glyphs.reserve(this->len);
+
+	/* Read each UTF-16 character, mapping to an appropriate glyph. */
+	for (int i = this->pos; i < this->pos + this->len; ++i) {
+		char32_t c = Utf16DecodeChar(reinterpret_cast<const char16_t *>(buff + i));
+		if (this->sa.fRTL) c = SwapRtlPairedCharacters(c);
+		this->glyphs.emplace_back(this->font->fc->MapCharToGlyph(c));
+		if (Utf16IsLeadSurrogate(*(buff + i))) ++i;
+	}
+
+	/* Reverse the sequence if this run is RTL. */
+	if (this->sa.fRTL) {
+		std::reverse(std::begin(this->glyphs), std::end(this->glyphs));
+	}
+
+	this->offsets.reserve(this->glyphs.size());
+
+	/* Set positions of each glyph. */
+	int y_offset = (GetCharacterHeight(this->font->fc->GetSize()) - this->font->fc->GetHeight()) / 2;
+	int advance = 0;
+	for (const GlyphID glyph : this->glyphs) {
+		this->offsets.emplace_back(advance, y_offset);
+		int x_advance = this->font->fc->GetGlyphWidth(glyph);
+		this->advances.push_back(x_advance);
+		advance += x_advance;
+	}
+}
+
 /** Determine the glyph positions for a run. */
 static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *buff, UniscribeRun &range)
 {
@@ -166,10 +204,15 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 	HFONT old_font = nullptr;
 	HFONT cur_font = nullptr;
 
+	if (range.font->fc->IsBuiltInFont()) {
+		range.FallbackShape(buff);
+		return true;
+	}
+
 	while (true) {
 		/* Shape the text run by determining the glyphs needed for display. */
 		int glyphs_used = 0;
-		HRESULT hr = ScriptShape(temp_dc, &_script_cache[range.font->fc->GetSize()], buff + range.pos, range.len, (int)range.glyphs.size(), &range.sa, &range.glyphs[0], &range.char_to_glyph[0], &range.vis_attribs[0], &glyphs_used);
+		HRESULT hr = ScriptShape(temp_dc, &_script_cache[range.font->fc->GetIndex()], buff + range.pos, range.len, (int)range.glyphs.size(), &range.sa, &range.glyphs[0], &range.char_to_glyph[0], &range.vis_attribs[0], &glyphs_used);
 
 		if (SUCCEEDED(hr)) {
 			range.glyphs.resize(glyphs_used);
@@ -179,7 +222,7 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 			ABC abc;
 			range.advances.resize(range.glyphs.size());
 			range.offsets.resize(range.glyphs.size());
-			hr = ScriptPlace(temp_dc, &_script_cache[range.font->fc->GetSize()], &range.glyphs[0], (int)range.glyphs.size(), &range.vis_attribs[0], &range.sa, &range.advances[0], &range.offsets[0], &abc);
+			hr = ScriptPlace(temp_dc, &_script_cache[range.font->fc->GetIndex()], &range.glyphs[0], (int)range.glyphs.size(), &range.vis_attribs[0], &range.sa, &range.advances[0], &range.offsets[0], &abc);
 			if (SUCCEEDED(hr)) {
 				/* We map our special sprite chars to values that don't fit into a WORD. Copy the glyphs
 				 * into a new vector and query the real glyph to use for these special chars. */
@@ -187,22 +230,12 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 				for (size_t g_id = 0; g_id < range.glyphs.size(); g_id++) {
 					range.ft_glyphs[g_id] = range.glyphs[g_id];
 				}
-				for (int i = 0; i < range.len; i++) {
-					if (buff[range.pos + i] >= SCC_SPRITE_START && buff[range.pos + i] <= SCC_SPRITE_END) {
-						auto pos = range.char_to_glyph[i];
-						if (range.ft_glyphs[pos] == 0) { // Font doesn't have our special glyph, so remap.
-							range.ft_glyphs[pos] = range.font->fc->MapCharToGlyph(buff[range.pos + i]);
-							range.offsets[pos].dv = (range.font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(range.font->fc->GetSize()))) / 2; // Align sprite font to centre
-							range.advances[pos] = range.font->fc->GetGlyphWidth(range.ft_glyphs[pos]);
-						}
-					}
-				}
 
 				range.total_advance = 0;
 				for (size_t i = 0; i < range.advances.size(); i++) {
 #ifdef WITH_FREETYPE
 					/* FreeType and GDI/Uniscribe seems to occasionally disagree over the width of a glyph. */
-					if (range.advances[i] > 0 && range.ft_glyphs[i] != 0xFFFF) range.advances[i] = range.font->fc->GetGlyphWidth(range.ft_glyphs[i]);
+					if (range.advances[i] > 0 && range.glyphs[i] != 0xFFFF) range.advances[i] = range.font->fc->GetGlyphWidth(range.glyphs[i]);
 #endif
 					range.total_advance += range.advances[i];
 				}
@@ -281,11 +314,6 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	int32_t length = buff_end - buff;
 	/* Can't layout an empty string. */
 	if (length == 0) return nullptr;
-
-	/* Can't layout our in-built sprite fonts. */
-	for (auto const &[position, font] : font_mapping) {
-		if (font->fc->IsBuiltInFont()) return nullptr;
-	}
 
 	/* Itemize text. */
 	std::vector<SCRIPT_ITEM> items = UniscribeItemizeString(buff, length);

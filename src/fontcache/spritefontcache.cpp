@@ -39,8 +39,11 @@ static int ScaleFontTrad(int value)
  */
 SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs), glyph_map(_glyph_maps[fs])
 {
+	FontCache::sprite_font_index[fs] = this->font_index;
 	this->height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
 	this->ascender = (this->height - ScaleFontTrad(FontCache::GetDefaultFontHeight(this->fs))) / 2;
+	FontCache::UpdateCharacterHeight(this->fs);
+	this->UpdateCharacterMap();
 }
 
 /**
@@ -50,9 +53,16 @@ SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs), glyph_map(_glyph_
  */
 SpriteID SpriteFontCache::GetUnicodeGlyph(GlyphID key)
 {
-	const auto found = this->glyph_map.find(key & ~SPRITE_GLYPH);
+	const auto found = this->glyph_map.find(key);
 	if (found == std::end(this->glyph_map)) return 0;
 	return found->second;
+}
+
+void SpriteFontCache::UpdateCharacterMap()
+{
+	for (const auto &pair : this->glyph_map) {
+		this->ClaimCharacter(pair.first);
+	}
 }
 
 void SpriteFontCache::ClearFontCache()
@@ -60,28 +70,29 @@ void SpriteFontCache::ClearFontCache()
 	Layouter::ResetFontCache(this->fs);
 	this->height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
 	this->ascender = (this->height - ScaleFontTrad(FontCache::GetDefaultFontHeight(this->fs))) / 2;
+	FontCache::UpdateCharacterHeight(this->fs);
 }
 
 const Sprite *SpriteFontCache::GetGlyph(GlyphID key)
 {
-	SpriteID sprite = this->GetUnicodeGlyph(static_cast<char32_t>(key & ~SPRITE_GLYPH));
+	SpriteID sprite = this->GetUnicodeGlyph(key);
 	if (sprite == 0) sprite = this->GetUnicodeGlyph('?');
 	return GetSprite(sprite, SpriteType::Font);
 }
 
 uint SpriteFontCache::GetGlyphWidth(GlyphID key)
 {
-	SpriteID sprite = this->GetUnicodeGlyph(static_cast<char32_t>(key & ~SPRITE_GLYPH));
+	SpriteID sprite = this->GetUnicodeGlyph(key);
 	if (sprite == 0) sprite = this->GetUnicodeGlyph('?');
 	return SpriteExists(sprite) ? GetSprite(sprite, SpriteType::Font)->width + ScaleFontTrad(this->fs != FS_NORMAL ? 1 : 0) : 0;
 }
 
-GlyphID SpriteFontCache::MapCharToGlyph(char32_t key, [[maybe_unused]] bool allow_fallback)
+GlyphID SpriteFontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 	SpriteID sprite = this->GetUnicodeGlyph(key);
 	if (sprite == 0) return 0;
-	return SPRITE_GLYPH | key;
+	return key;
 }
 
 bool SpriteFontCache::GetDrawGlyphShadow()

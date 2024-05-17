@@ -40,9 +40,10 @@ public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
 	~FreeTypeFontCache();
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
+	GlyphID MapCharToGlyph(char32_t key) override;
 	std::string GetFontName() override { return fmt::format("{}, {}", face->family_name, face->style_name); }
 	bool IsBuiltInFont() override { return false; }
+	void UpdateCharacterMap() override;
 	const void *GetOSHandle() override { return &face; }
 };
 
@@ -60,6 +61,7 @@ FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : Tr
 	assert(face != nullptr);
 
 	this->SetFontSize(pixels);
+	this->UpdateCharacterMap();
 }
 
 void FreeTypeFontCache::SetFontSize(int pixels)
@@ -107,13 +109,25 @@ void FreeTypeFontCache::SetFontSize(int pixels)
 		this->ascender     = this->face->size->metrics.ascender >> 6;
 		this->descender    = this->face->size->metrics.descender >> 6;
 		this->height       = this->ascender - this->descender;
+		FontCache::UpdateCharacterHeight(this->fs);
 	} else {
 		/* Both FT_Set_Pixel_Sizes and FT_Select_Size failed. */
 		Debug(fontcache, 0, "Font size selection failed. Using FontCache defaults.");
 	}
 }
 
-static FT_Error LoadFont(FontSize fs, FT_Face face, const char *font_name, uint size)
+void FreeTypeFontCache::UpdateCharacterMap()
+{
+	FT_UInt index;
+	FT_ULong c = FT_Get_First_Char(this->face, &index);
+
+	while (index) {
+		this->ClaimCharacter(c);
+		c = FT_Get_Next_Char(this->face, c, &index);
+	}
+}
+
+static FT_Error LoadFont(FontSize fs, FT_Face face, const std::string &font_name, uint size)
 {
 	Debug(fontcache, 2, "Requested '{}', using '{} {}'", font_name, face->family_name, face->style_name);
 
@@ -156,12 +170,9 @@ found_face:
  * format is 'font family name' or 'font family name, font style'.
  * @param fs The font size to load.
  */
-void LoadFreeTypeFont(FontSize fs)
+void LoadFreeTypeFont(FontSize fs, bool search, const std::string &font_name, std::span<const uint8_t> os_handle)
 {
-	FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
-
-	std::string font = GetFontCacheFontName(fs);
-	if (font.empty()) return;
+	if (font_name.empty()) return;
 
 	if (_library == nullptr) {
 		if (FT_Init_FreeType(&_library) != FT_Err_Ok) {
@@ -172,13 +183,12 @@ void LoadFreeTypeFont(FontSize fs)
 		Debug(fontcache, 2, "Initialized");
 	}
 
-	const char *font_name = font.c_str();
 	FT_Face face = nullptr;
 
 	/* If font is an absolute path to a ttf, try loading that first. */
 	int32_t index = 0;
-	if (settings->os_handle != nullptr) index = *static_cast<const int32_t *>(settings->os_handle);
-	FT_Error error = FT_New_Face(_library, font_name, index, &face);
+	if (os_handle.size() == sizeof(index)) index = *reinterpret_cast<const int32_t *>(os_handle.data());
+	FT_Error error = FT_New_Face(_library, font_name.c_str(), index, &face);
 
 	if (error != FT_Err_Ok) {
 		/* Check if font is a relative filename in one of our search-paths. */
@@ -188,13 +198,13 @@ void LoadFreeTypeFont(FontSize fs)
 		}
 	}
 
-	/* Try loading based on font face name (OS-wide fonts). */
-	if (error != FT_Err_Ok) error = GetFontByFaceName(font_name, &face);
+	/* If allowed to search, try loading based on font face name (OS-wide fonts). */
+	if (error != FT_Err_Ok && search) error = GetFontByFaceName(font_name, &face);
 
 	if (error == FT_Err_Ok) {
 		error = LoadFont(fs, face, font_name, GetFontCacheFontSize(fs));
 		if (error != FT_Err_Ok) {
-			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}, using sprite font instead", font_name, FontSizeToName(fs), error);
+			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}", font_name, FontSizeToName(fs), error);
 		}
 	} else {
 		FT_Done_Face(face);
@@ -284,17 +294,10 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 }
 
 
-GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
+GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
-
-	FT_UInt glyph = FT_Get_Char_Index(this->face, key);
-
-	if (glyph == 0 && allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
-		return this->parent->MapCharToGlyph(key);
-	}
-
-	return glyph;
+	return FT_Get_Char_Index(this->face, key);
 }
 
 /**
@@ -308,7 +311,7 @@ void UninitFreeType()
 
 #if !defined(WITH_FONTCONFIG)
 
-FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) { return FT_Err_Cannot_Open_Resource; }
+FT_Error GetFontByFaceName(const std::string &font_name, FT_Face *face) { return FT_Err_Cannot_Open_Resource; }
 
 #endif /* !defined(WITH_FONTCONFIG) */
 
