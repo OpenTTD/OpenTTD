@@ -284,7 +284,7 @@ std::vector<ICURun> ItemizeBidi(UChar *buff, size_t length)
 		UBiDiLevel level;
 		ubidi_getLogicalRun(ubidi, start_pos, &logical_pos, &level);
 
-		runs.emplace_back(ICURun(start_pos, logical_pos - start_pos, level));
+		runs.emplace_back(start_pos, logical_pos - start_pos, level);
 	}
 
 	assert(static_cast<size_t>(count) == runs.size());
@@ -315,7 +315,7 @@ std::vector<ICURun> ItemizeScript(UChar *buff, size_t length, std::vector<ICURun
 			int stop_pos = std::min(script_itemizer.getScriptEnd(), cur_run->start + cur_run->length);
 			assert(stop_pos - cur_pos > 0);
 
-			runs.push_back(ICURun(cur_pos, stop_pos - cur_pos, cur_run->level, script_itemizer.getScriptCode()));
+			runs.emplace_back(cur_pos, stop_pos - cur_pos, cur_run->level, script_itemizer.getScriptCode());
 
 			if (stop_pos == cur_run->start + cur_run->length) cur_run++;
 			cur_pos = stop_pos;
@@ -347,7 +347,7 @@ std::vector<ICURun> ItemizeStyle(std::vector<ICURun> &runs_current, FontMap &fon
 			int stop_pos = std::min(font_map.first, cur_run->start + cur_run->length);
 			assert(stop_pos - cur_pos > 0);
 
-			runs.push_back(ICURun(cur_pos, stop_pos - cur_pos, cur_run->level, cur_run->script, font_map.second));
+			runs.emplace_back(cur_pos, stop_pos - cur_pos, cur_run->level, cur_run->script, font_map.second);
 
 			if (stop_pos == cur_run->start + cur_run->length) cur_run++;
 			cur_pos = stop_pos;

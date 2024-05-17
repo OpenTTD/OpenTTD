@@ -302,7 +302,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 			/* Add a range that spans the intersection of the remaining item and font run. */
 			int stop_pos = std::min(i.first, (cur_item + 1)->iCharPos);
 			assert(stop_pos - cur_pos > 0);
-			ranges.push_back(UniscribeRun(cur_pos, stop_pos - cur_pos, i.second, cur_item->a));
+			ranges.emplace_back(cur_pos, stop_pos - cur_pos, i.second, cur_item->a);
 
 			/* Shape the range. */
 			if (!UniscribeShapeRun(buff, ranges.back())) {
