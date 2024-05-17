@@ -788,9 +788,17 @@ static void AddAcceptedCargoSetMask(CargoID cargo, uint amount, CargoArray &acce
 	SetBit(always_accepted, cargo);
 }
 
-static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoTypes &always_accepted)
+/**
+ * Determine accepted cargo for a house.
+ * @param tile Tile of house, or INVALID_TILE if not yet built.
+ * @param house HouseID of house.
+ * @param hs HouseSpec of house.
+ * @param t Town that house belongs to, or nullptr if not yet built.
+ * @param[out] acceptance CargoArray to be filled with acceptance information.
+ * @param[out] always_accepted Bitmask of always accepted cargo types
+ */
+void AddAcceptedCargoOfHouse(TileIndex tile, HouseID house, const HouseSpec *hs, Town *t, CargoArray &acceptance, CargoTypes &always_accepted)
 {
-	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 	CargoID accepts[lengthof(hs->accepts_cargo)];
 
 	/* Set the initial accepted cargo types */
@@ -800,7 +808,7 @@ static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoT
 
 	/* Check for custom accepted cargo types */
 	if (HasBit(hs->callback_mask, CBM_HOUSE_ACCEPT_CARGO)) {
-		uint16_t callback = GetHouseCallback(CBID_HOUSE_ACCEPT_CARGO, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
+		uint16_t callback = GetHouseCallback(CBID_HOUSE_ACCEPT_CARGO, 0, 0, house, t, tile, tile == INVALID_TILE);
 		if (callback != CALLBACK_FAILED) {
 			/* Replace accepted cargo types with translated values from callback */
 			accepts[0] = GetCargoTranslation(GB(callback,  0, 5), hs->grf_prop.grffile);
@@ -811,7 +819,7 @@ static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoT
 
 	/* Check for custom cargo acceptance */
 	if (HasBit(hs->callback_mask, CBM_HOUSE_CARGO_ACCEPTANCE)) {
-		uint16_t callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
+		uint16_t callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, 0, house, t, tile, tile == INVALID_TILE);
 		if (callback != CALLBACK_FAILED) {
 			AddAcceptedCargoSetMask(accepts[0], GB(callback, 0, 4), acceptance, always_accepted);
 			AddAcceptedCargoSetMask(accepts[1], GB(callback, 4, 4), acceptance, always_accepted);
@@ -829,6 +837,25 @@ static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoT
 	for (uint8_t i = 0; i < lengthof(accepts); i++) {
 		AddAcceptedCargoSetMask(accepts[i], hs->cargo_acceptance[i], acceptance, always_accepted);
 	}
+}
+
+static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoTypes &always_accepted)
+{
+	HouseID house = GetHouseType(tile);
+	AddAcceptedCargoOfHouse(tile, house, HouseSpec::Get(house), Town::GetByTile(tile), acceptance, always_accepted);
+}
+
+/**
+ * Get accepted cargo of a house prototype.
+ * @param hs Spec of the house.
+ * @return CargoArray filled with cargo accepted by the house.
+ */
+CargoArray GetAcceptedCargoOfHouse(const HouseSpec *hs)
+{
+	CargoTypes always_accepted;
+	CargoArray acceptance{};
+	AddAcceptedCargoOfHouse(INVALID_TILE, hs->Index(), hs, nullptr, acceptance, always_accepted);
+	return acceptance;
 }
 
 static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
