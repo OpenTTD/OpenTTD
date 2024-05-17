@@ -1033,6 +1033,9 @@ void CallVehicleTicks()
 				/* Do not play any sound when stopped */
 				if ((front->vehstatus & VS_STOPPED) && (front->type != VEH_TRAIN || front->cur_speed == 0)) continue;
 
+				/* Update motion counter for animation purposes. */
+				v->motion_counter += front->cur_speed;
+
 				/* Check vehicle type specifics */
 				switch (v->type) {
 					case VEH_TRAIN:
@@ -1051,7 +1054,6 @@ void CallVehicleTicks()
 						break;
 				}
 
-				v->motion_counter += front->cur_speed;
 				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
 				if (GB(v->motion_counter, 0, 8) < front->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
 
