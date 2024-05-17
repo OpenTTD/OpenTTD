@@ -207,6 +207,8 @@ bool IsDefaultCargo(CargoID cid);
 void BuildCargoLabelMap();
 CargoID GetCargoIDByBitnum(uint8_t bitnum);
 
+std::optional<std::string> BuildCargoAcceptanceString(const CargoArray &acceptance, StringID label);
+
 inline CargoID GetCargoIDByLabel(CargoLabel label)
 {
 	auto found = CargoSpec::label_map.find(label);
