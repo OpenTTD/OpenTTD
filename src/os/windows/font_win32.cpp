@@ -10,7 +10,6 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "../../blitter/factory.hpp"
-#include "../../core/alloc_func.hpp"
 #include "../../core/math_func.hpp"
 #include "../../core/mem_func.hpp"
 #include "../../error_func.h"
@@ -209,7 +208,7 @@ void Win32FontCache::ClearFontCache()
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) UserError("Font glyph is too large");
 
 	/* Call GetGlyphOutline again with size to actually render the glyph. */
-	uint8_t *bmp = new uint8_t[size];
+	uint8_t *bmp = this->render_buffer.Allocate(size);
 	GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, size, bmp, &mat);
 
 	/* GDI has rendered the glyph, now we allocate a sprite and copy the image into it. */
@@ -258,8 +257,6 @@ void Win32FontCache::ClearFontCache()
 	new_glyph.width = gm.gmCellIncX;
 
 	this->SetGlyphPtr(key, &new_glyph);
-
-	delete[] bmp;
 
 	return new_glyph.sprite;
 }

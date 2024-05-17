@@ -10,6 +10,7 @@
 #ifndef FONT_WIN32_H
 #define FONT_WIN32_H
 
+#include "../../core/alloc_type.hpp"
 #include "../../fontcache/truetypefontcache.h"
 #include "win32.h"
 
@@ -24,6 +25,8 @@ private:
 	HGDIOBJ old_font;     ///< Old font selected into the GDI context.
 	SIZE glyph_size;      ///< Maximum size of regular glyphs.
 	std::string fontname; ///< Cached copy of loaded font facename
+
+	ReusableBuffer<uint8_t> render_buffer; ///< Temporary buffer for rendering glyphs.
 
 	void SetFontSize(int pixels);
 
