@@ -154,14 +154,14 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 	}
 }
 
-/* virtual */ uint32_t AirportScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t AirportScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	switch (variable) {
 		case 0x40: return this->layout;
 	}
 
 	if (this->st == nullptr) {
-		*available = false;
+		available = false;
 		return UINT_MAX;
 	}
 
