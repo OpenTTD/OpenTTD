@@ -261,6 +261,18 @@ static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
 {
 	[ [ NSNotificationCenter defaultCenter ] removeObserver:self ];
 }
+
+/**
+ * Indicates to AppKit that OpenTTD is compatible with secure state storage.
+ * Starting with macOS 12, macOS expects us to be better compatible with NSSecureCoding, as to prevent attacks through restorable storage.
+ * Starting with 14, macOS logs a warning if we don't implement this ourselves. Since OpenTTD does not (yet) make use of restorable state, we simply don't care what happens with it.
+ *
+ * Explained here: https://developer.apple.com/documentation/foundation/nssecurecoding
+ */
+- (BOOL)applicationSupportsSecureRestorableState:(NSApplication*) sender
+{
+	return YES;
+}
 @end
 
 /**
