@@ -14,6 +14,7 @@
 #include "gui.h"
 #include "house.h"
 #include "newgrf_house.h"
+#include "newgrf_text.h"
 #include "picker_gui.h"
 #include "command_func.h"
 #include "company_func.h"
@@ -1426,6 +1427,27 @@ void DrawHouseInGUI(int x, int y, HouseID house_id, int view)
 	}
 }
 
+/**
+ * Get name for a prototype house.
+ * @param hs HouseSpec of house.
+ * @return StringID of name for house.
+ */
+static StringID GetHouseName(const HouseSpec *hs)
+{
+	uint16_t callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, 1, 0, hs->Index(), nullptr, INVALID_TILE, true);
+	if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
+		if (callback_res > 0x400) {
+			ErrorUnknownCallbackResult(hs->grf_prop.grffile->grfid, CBID_HOUSE_CUSTOM_NAME, callback_res);
+		} else {
+			StringID new_name = GetGRFStringID(hs->grf_prop.grffile->grfid, 0xD000 + callback_res);
+			if (new_name != STR_NULL && new_name != STR_UNDEFINED) {
+				return new_name;
+			}
+		}
+	}
+
+	return hs->building_name;
+}
 
 class HousePickerCallbacks : public PickerCallbacks {
 public:
@@ -1525,7 +1547,7 @@ public:
 			if (HasBit(spec->building_availability, i)) return INVALID_STRING_ID;
 		}
 
-		 return spec->building_name;
+		return GetHouseName(spec);
 	}
 
 	bool IsTypeAvailable(int, int id) const override
