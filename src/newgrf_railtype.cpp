@@ -23,7 +23,7 @@
 	return GB(tmp, 0, 2);
 }
 
-/* virtual */ uint32_t RailTypeScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t RailTypeScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	if (this->tile == INVALID_TILE) {
 		switch (variable) {
@@ -55,7 +55,7 @@
 
 	Debug(grf, 1, "Unhandled rail type tile variable 0x{:X}", variable);
 
-	*available = false;
+	available = false;
 	return UINT_MAX;
 }
 

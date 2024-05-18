@@ -58,7 +58,7 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 	return ((y & 0xF) << 20) | ((x & 0xF) << 16) | (y << 8) | x;
 }
 
-/* virtual */ uint32_t IndustryTileScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t IndustryTileScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	switch (variable) {
 		/* Construction state of the tile: a value between 0 and 3 */
@@ -95,7 +95,7 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 
 	Debug(grf, 1, "Unhandled industry tile variable 0x{:X}", variable);
 
-	*available = false;
+	available = false;
 	return UINT_MAX;
 }
 

@@ -156,7 +156,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 	return count << 16 | GB(closest_dist, 0, 16);
 }
 
-/* virtual */ uint32_t IndustriesScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t IndustriesScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	if (this->ro.callback == CBID_INDUSTRY_LOCATION) {
 		/* Variables available during construction check. */
@@ -202,7 +202,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 	if (this->industry == nullptr) {
 		Debug(grf, 1, "Unhandled variable 0x{:X} (no available industry) in callback 0x{:x}", variable, this->ro.callback);
 
-		*available = false;
+		available = false;
 		return UINT_MAX;
 	}
 
@@ -411,7 +411,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 
 	Debug(grf, 1, "Unhandled industry variable 0x{:X}", variable);
 
-	*available = false;
+	available = false;
 	return UINT_MAX;
 }
 

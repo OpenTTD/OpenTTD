@@ -169,7 +169,7 @@ public:
 	 * @param avail Return whether the variable is available.
 	 * @return The resolved variable's value.
 	 */
-	virtual uint Resolve(uint index, uint var, uint param, bool *avail) const = 0;
+	virtual uint Resolve(uint index, uint var, uint param, bool &avail) const = 0;
 
 	/**
 	 * Used to decide if the PSA needs a parameter or not.
@@ -449,7 +449,7 @@ struct NewGRFInspectWindow : Window {
 			for (const NIVariable *niv = nif->variables; niv->name != nullptr; niv++) {
 				bool avail = true;
 				uint param = HasVariableParameter(niv->var) ? NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][niv->var - 0x60] : 0;
-				uint value = nih->Resolve(index, niv->var, param, &avail);
+				uint value = nih->Resolve(index, niv->var, param, avail);
 
 				if (!avail) continue;
 
