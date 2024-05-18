@@ -437,6 +437,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Scenariobewerke
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Steden genereren
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Huizen plaatsen
 
 # Settings menu
 ###length 16
@@ -2798,9 +2800,33 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selectee
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Slepen
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Je kunt een station bouwen door te slepen
 
+STR_PICKER_MODE_ALL                                             :Alle
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Weergave van alle klassen onderdelen omschakelen
+STR_PICKER_MODE_USED                                            :Gebruikt
+STR_PICKER_MODE_USED_TOOLTIP                                    :Weergave van alleen bestaande onderdelen omschakelen
+STR_PICKER_MODE_SAVED                                           :Opgeslagen
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Weergave van alleen opgeslagen onderdelen omschakelen
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecteer een klasse stations voor weergave
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Selecteer een type station om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selecteer een klasse routepunten voor weergave
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Selecteer een routepunt om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Selecteer een klasse busstations voor weergave
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Selecteer een type busstation om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecteer een klasse vrachtwagenstations voor weergave
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Selecteer een type vrachtwagenstation om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecteer een onderdeelklasse voor weergave
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Selecteer een type objet voor bouwen. Ctrr+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen. Ctrl+klik+slepen om diagonaal te selecteren. Voeg Shift toe voor alleen inschatting van de kosten
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecteer een stadsgebied voor weergave
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selecteer een type huizen om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
 
+STR_HOUSE_PICKER_CAPTION                                        :Huizen selecteren
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rand
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Buitenwijken
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Buitenste voorsteden
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Binnenste voorsteden
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadscentrum
 
 STR_STATION_CLASS_DFLT                                          :Standaard
 STR_STATION_CLASS_DFLT_STATION                                  :Standaard station
@@ -4988,6 +5014,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... er i
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Wegwerkzaamheden in uitvoering
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan deze stad niet verwijderen...{}Een station of depot verwijst naar deze plaats of een door de stad beheerde tegel kan niet worden verwijderd
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... er is geen geschikte plaats voor een standbeeld in het centrum van dit dorp
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Kan huis niet bouwen...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... te veel industrieën

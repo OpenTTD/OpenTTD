@@ -437,6 +437,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Avsluta scenari
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Avsluta
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generera städer
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Placera ut hus
 
 # Settings menu
 ###length 16
@@ -1083,6 +1085,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikpak
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Välj vilket musikpaket som ska användas
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yttligare information om musikpaketet
 
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Kontrollera om det finns nytt och uppdaterat innehåll att ladda ned
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(inga tillägg för att integrera med sociala plattformar installerade)
 
@@ -2796,7 +2799,9 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & S
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg en station genom att dra & släppa
 
 STR_PICKER_MODE_ALL                                             :Alla
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Slå av/på visning av objekt från alla klasser
 STR_PICKER_MODE_USED                                            :Använda
+STR_PICKER_MODE_USED_TOOLTIP                                    :Slå av/på visning av endast existerande objekt
 
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken stadszon som ska visas
 
@@ -2809,7 +2814,7 @@ STR_STATION_CLASS_DFLT                                          :Original
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstation
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Standardvägstopp
 STR_STATION_CLASS_WAYP                                          :Riktmärken
-STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standard vägpunkt
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standardriktmärke
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalval
