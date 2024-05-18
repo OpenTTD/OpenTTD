@@ -17,6 +17,11 @@
 
 /* virtual */ uint32_t TownScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
+	if (this->t == nullptr) {
+		*available = false;
+		return UINT_MAX;
+	}
+
 	CargoID cid;
 	switch (variable) {
 		/* Larger towns */
