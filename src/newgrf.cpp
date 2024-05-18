@@ -5360,10 +5360,9 @@ static void NewSpriteGroup(ByteReader *buf)
 						GrfMsg(8, "NewSpriteGroup: + rg->loading[{}] = subset {}", i, loading[i]);
 					}
 
-					if (std::adjacent_find(loaded.begin(),  loaded.end(),  std::not_equal_to<>()) == loaded.end() &&
-						std::adjacent_find(loading.begin(), loading.end(), std::not_equal_to<>()) == loading.end() &&
-						loaded[0] == loading[0])
-					{
+					bool loaded_same = !loaded.empty() && std::adjacent_find(loaded.begin(),  loaded.end(),  std::not_equal_to<>()) == loaded.end();
+					bool loading_same = !loading.empty() && std::adjacent_find(loading.begin(), loading.end(), std::not_equal_to<>()) == loading.end();
+					if (loaded_same && loading_same && loaded[0] == loading[0]) {
 						/* Both lists only contain the same value, so don't create 'Real' sprite group */
 						act_group = CreateGroupFromGroupID(feature, setid, type, loaded[0]);
 						GrfMsg(8, "NewSpriteGroup: same result, skipping RealSpriteGroup = subset {}", loaded[0]);
@@ -5375,11 +5374,13 @@ static void NewSpriteGroup(ByteReader *buf)
 					group->nfo_line = _cur.nfo_line;
 					act_group = group;
 
+					if (loaded_same && loaded.size() > 1) loaded.resize(1);
 					for (uint16_t spriteid : loaded) {
 						const SpriteGroup *t = CreateGroupFromGroupID(feature, setid, type, spriteid);
 						group->loaded.push_back(t);
 					}
 
+					if (loading_same && loading.size() > 1) loading.resize(1);
 					for (uint16_t spriteid : loading) {
 						const SpriteGroup *t = CreateGroupFromGroupID(feature, setid, type, spriteid);
 						group->loading.push_back(t);
