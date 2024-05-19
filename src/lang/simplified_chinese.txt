@@ -2643,9 +2643,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}更新�
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全选
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}取消全部选择
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}在外部网站搜索
-STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在与 OpenTTD 没有联系的网站搜寻没有纳入 OpenTTD 內容服务的內容
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在与 OpenTTD 没有联系的网站搜索没有纳入 OpenTTD 内容服务的内容
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}正在离开游戏！
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部网站下载內容的规则及条款可能跟 OpenTTD 引用的规则及条款不同。{}您需要参照有关网站以取得在 OpenTTD 安装有关內容的资讯。{}您要継续吗？
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部网站下载内容的规则及条款可能跟 OpenTTD 引用的规则及条款不同。{}您需要参照有关网站以取得在 OpenTTD 安装有关内容的资讯。{}您要继续吗？
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}标签/名称过滤器
 STR_CONTENT_OPEN_URL                                            :{BLACK}主页
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}打开该扩展包主页
@@ -4863,8 +4863,8 @@ STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}通过�
 STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}退回到定位历史
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}取消定位历史撤回
-STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}強迫文字换行
-STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}強迫宽于窗格的內文自动换行
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}强制文字换行
+STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}强制宽于窗口的文本自动换行
 STR_TEXTFILE_VIEW_README                                        :{BLACK}查看说明
 STR_TEXTFILE_VIEW_README_TOOLTIP                                :查看此项目的说明文件
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}更新日志

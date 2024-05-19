@@ -438,6 +438,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :시나리오 �
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :도시 생성
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :건물 건설
 
 # Settings menu
 ###length 16
@@ -2711,7 +2713,7 @@ STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}OpenTTD 
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}투명 설정
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}역명판을 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}나무를 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}집을 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}건물을 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}산업시설을 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
 STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}정거장, 차량기지, 경유지 등과 같은 건물을 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}다리를 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
@@ -2816,8 +2818,16 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :표시할 트�
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :설치하려는 트럭 적하장 종류를 선택하세요. CTRL+클릭하면 즐겨찾기 추가/제거가 가능합니다
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :표시할 오브젝트 종류를 선택하세요
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :설치하려는 오브젝트 종류를 선택합니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :표시할 도시 구역을 선택하세요
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :지으려는 건물 종류를 선택하세요. CTRL+클릭하면 즐겨찾기 추가/제거가 가능합니다
 
+STR_HOUSE_PICKER_CAPTION                                        :건물 선택
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :가장자리
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :교외
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :바깥쪽 시내
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :안쪽 시내
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :도시 중심
 
 STR_STATION_CLASS_DFLT                                          :기본
 STR_STATION_CLASS_DFLT_STATION                                  :기본 역
@@ -5005,6 +5015,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 지�
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}도로 작업이 진행 중입니다
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시나 도시 소유의 땅에 역, 정류장, 항구, 공항 또는 차량기지, 차고지, 정박소 등이 존재하면 도시를 삭제할 수 없습니다.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 이 도시의 중심에 동상을 세우기 적합한 장소가 없습니다
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}건물을 지을 수 없습니다...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... 산업시설이 너무 많습니다
@@ -5018,7 +5029,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... 한 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... 인구 1200명 이상의 도시에만 지을 수 있습니다
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... 열대우림 지역에만 지을 수 있습니다
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... 사막 지역에만 지을 수 있습니다
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... 도시 안의 집이 있는 위치에만 지을 수 있습니다
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... 도시 안의 건물이 있는 위치에만 지을 수 있습니다
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... 도시의 가운데 근처에만 지을 수 있습니다
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... 낮은 지역에만 지을 수 있습니다
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 지도 가장자리 근처에만 놓을 수 있습니다
