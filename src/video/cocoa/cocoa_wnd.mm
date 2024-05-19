@@ -1288,7 +1288,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 /** Presentation options to use for full screen mode. */
 - (NSApplicationPresentationOptions)window:(NSWindow *)window willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions
 {
-	return NSApplicationPresentationFullScreen | NSApplicationPresentationHideMenuBar | NSApplicationPresentationHideDock;
+	return NSApplicationPresentationFullScreen | NSApplicationPresentationAutoHideMenuBar;
 }
 
 @end
