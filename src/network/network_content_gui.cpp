@@ -142,7 +142,7 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, WidgetID 
 			/* Draw the % complete with a bar and a text */
 			DrawFrameRect(r, COLOUR_GREY, FR_BORDERONLY | FR_LOWERED);
 			Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
-			DrawFrameRect(ir.WithWidth((uint64_t)ir.Width() * this->downloaded_bytes / this->total_bytes, false), COLOUR_MAUVE, FR_NONE);
+			DrawFrameRect(ir.WithWidth((uint64_t)ir.Width() * this->downloaded_bytes / this->total_bytes, _current_text_dir == TD_RTL), COLOUR_MAUVE, FR_NONE);
 			SetDParam(0, this->downloaded_bytes);
 			SetDParam(1, this->total_bytes);
 			SetDParam(2, this->downloaded_bytes * 100LL / this->total_bytes);
