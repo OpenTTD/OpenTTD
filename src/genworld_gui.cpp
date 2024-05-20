@@ -1429,7 +1429,7 @@ struct GenerateProgressWindow : public Window {
 				/* Draw the % complete with a bar and a text */
 				DrawFrameRect(r, COLOUR_GREY, FR_BORDERONLY | FR_LOWERED);
 				Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
-				DrawFrameRect(br.WithWidth(br.Width() * _gws.percent / 100, false), COLOUR_MAUVE, FR_NONE);
+				DrawFrameRect(br.WithWidth(br.Width() * _gws.percent / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, FR_NONE);
 				SetDParam(0, _gws.percent);
 				DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, GetCharacterHeight(FS_NORMAL)), STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
