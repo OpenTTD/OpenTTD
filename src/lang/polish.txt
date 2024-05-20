@@ -3181,6 +3181,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Buduj st
 
 
 
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrum miasta
 
 STR_STATION_CLASS_DFLT                                          :Standardowa
 STR_STATION_CLASS_DFLT_STATION                                  :Standardowa stacja
