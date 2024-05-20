@@ -1276,7 +1276,7 @@ static void LoadWGLExtensions()
 	 * regarding context creation. To get around this, we create
 	 * a dummy window with a dummy context. The extension functions
 	 * remain valid even after this context is destroyed. */
-	HWND wnd = CreateWindow(_T("STATIC"), _T("dummy"), WS_OVERLAPPEDWINDOW, 0, 0, 0, 0, nullptr, nullptr, GetModuleHandle(nullptr), nullptr);
+	HWND wnd = CreateWindow(L"STATIC", L"dummy", WS_OVERLAPPEDWINDOW, 0, 0, 0, 0, nullptr, nullptr, GetModuleHandle(nullptr), nullptr);
 	HDC dc = GetDC(wnd);
 
 	/* Set pixel format of the window. */
