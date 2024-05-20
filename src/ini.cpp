@@ -22,8 +22,6 @@
 # include <fcntl.h>
 #endif
 
-#include <filesystem>
-
 #include "safeguards.h"
 
 /**

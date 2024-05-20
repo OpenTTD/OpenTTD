@@ -21,7 +21,6 @@
 #include "tar_type.h"
 #include <sys/stat.h>
 #include <charconv>
-#include <filesystem>
 
 #include "table/strings.h"
 

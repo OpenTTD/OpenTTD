@@ -59,6 +59,7 @@
 #include <cwchar>
 #include <deque>
 #include <exception>
+#include <filesystem>
 #include <functional>
 #include <iterator>
 #include <list>

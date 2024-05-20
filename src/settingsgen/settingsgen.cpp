@@ -15,8 +15,6 @@
 #include "../core/mem_func.hpp"
 #include "../error_func.h"
 
-#include <filesystem>
-
 #include "../safeguards.h"
 
 /**

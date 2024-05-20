@@ -19,7 +19,6 @@
 
 #include "strgen.h"
 
-#include <filesystem>
 #include <fstream>
 
 #include "../table/strgen_tables.h"
