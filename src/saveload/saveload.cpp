@@ -21,7 +21,6 @@
  */
 
 #include "../stdafx.h"
-#include "../console_func.h"
 #include "../debug.h"
 #include "../station_base.h"
 #include "../thread.h"
@@ -2832,7 +2831,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded, const std::string &filenam
 
 		if (threaded) SetAsyncSaveFinish(SaveFileDone);
 
-		IConsolePrint(CC_INFO, "Saved successfully as '{}'.", filename);
+		Debug(sl, 1, "Map saved as '{}'.", filename);
 
 		return SL_OK;
 	} catch (...) {
@@ -2854,7 +2853,6 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded, const std::string &filenam
 			asfp();
 		}
 
-		IConsolePrint(CC_ERROR, "Saving map failed.");
 		return SL_ERROR;
 	}
 }
@@ -3154,7 +3152,6 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 		}
 
 		if (fop == SLO_SAVE) { // SAVE game
-			IConsolePrint(CC_DEFAULT, "Saving map...");
 			Debug(desync, 1, "save: {:08x}; {:02x}; {}", TimerGameEconomy::date, TimerGameEconomy::date_fract, filename);
 			if (!_settings_client.gui.threaded_saves) threaded = false;
 
