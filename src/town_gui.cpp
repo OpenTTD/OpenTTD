@@ -1414,15 +1414,32 @@ public:
 	void SetClimateMask()
 	{
 		switch (_settings_game.game_creation.landscape) {
-			case LT_TEMPERATE: climate_mask = HZ_TEMP; break;
-			case LT_ARCTIC:    climate_mask = HZ_SUBARTC_ABOVE | HZ_SUBARTC_BELOW; break;
-			case LT_TROPIC:    climate_mask = HZ_SUBTROPIC; break;
-			case LT_TOYLAND:   climate_mask = HZ_TOYLND; break;
+			case LT_TEMPERATE: this->climate_mask = HZ_TEMP; break;
+			case LT_ARCTIC:    this->climate_mask = HZ_SUBARTC_ABOVE | HZ_SUBARTC_BELOW; break;
+			case LT_TROPIC:    this->climate_mask = HZ_SUBTROPIC; break;
+			case LT_TOYLAND:   this->climate_mask = HZ_TOYLND; break;
 			default: NOT_REACHED();
+		}
+
+		/* In some cases, not all 'classes' (house zones) have distinct houses, so we need to disable those.
+		 * As we need to check all types, and this cannot change with the picker window open, pre-calculate it.
+		 * This loop calls GetTypeName() instead of directly checking properties so that there is no discrepancy. */
+		this->class_mask = 0;
+
+		int num_classes = this->GetClassCount();
+		for (int cls_id = 0; cls_id < num_classes; ++cls_id) {
+			int num_types = this->GetTypeCount(cls_id);
+			for (int id = 0; id < num_types; ++id) {
+				if (this->GetTypeName(cls_id, id) != INVALID_STRING_ID) {
+					SetBit(this->class_mask, cls_id);
+					break;
+				}
+			}
 		}
 	}
 
 	HouseZones climate_mask;
+	uint8_t class_mask; ///< Mask of available 'classes'.
 
 	static inline int sel_class; ///< Currently selected 'class'.
 	static inline int sel_type; ///< Currently selected HouseID.
@@ -1452,8 +1469,9 @@ public:
 
 	StringID GetClassName(int id) const override
 	{
-		if (id < GetClassCount()) return zone_names[id];
-		return INVALID_STRING_ID;
+		if (id >= GetClassCount()) return INVALID_STRING_ID;
+		if (!HasBit(this->class_mask, id)) return INVALID_STRING_ID;
+		return zone_names[id];
 	}
 
 	int GetTypeCount(int cls_id) const override
