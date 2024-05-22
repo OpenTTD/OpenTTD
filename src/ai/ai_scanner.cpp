@@ -48,9 +48,9 @@ AIScannerInfo::~AIScannerInfo()
 	delete this->info_dummy;
 }
 
-void AIScannerInfo::GetScriptName(ScriptInfo *info, char *name, const char *last)
+std::string AIScannerInfo::GetScriptName(ScriptInfo *info)
 {
-	seprintf(name, last, "%s", info->GetName());
+	return info->GetName();
 }
 
 void AIScannerInfo::RegisterAPI(class Squirrel *engine)
@@ -92,39 +92,35 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 #undef GetAIInfo
 }
 
-AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool force_exact_match)
+AIInfo *AIScannerInfo::FindInfo(const std::string &name, int version, bool force_exact_match)
 {
-	if (this->info_list.size() == 0) return nullptr;
-	if (nameParam == nullptr) return nullptr;
+	if (this->info_list.empty()) return nullptr;
+	if (name.empty()) return nullptr;
 
-	char ai_name[1024];
-	strecpy(ai_name, nameParam, lastof(ai_name));
-	strtolower(ai_name);
-
-	if (versionParam == -1) {
+	if (version == -1) {
 		/* We want to load the latest version of this AI; so find it */
-		if (this->info_single_list.find(ai_name) != this->info_single_list.end()) return static_cast<AIInfo *>(this->info_single_list[ai_name]);
+		auto it = this->info_single_list.find(name);
+		if (it != this->info_single_list.end()) return static_cast<AIInfo *>(it->second);
 		return nullptr;
 	}
 
 	if (force_exact_match) {
 		/* Try to find a direct 'name.version' match */
-		char ai_name_tmp[1024];
-		seprintf(ai_name_tmp, lastof(ai_name_tmp), "%s.%d", ai_name, versionParam);
-		strtolower(ai_name_tmp);
-		if (this->info_list.find(ai_name_tmp) != this->info_list.end()) return static_cast<AIInfo *>(this->info_list[ai_name_tmp]);
+		std::string name_with_version = fmt::format("{}.{}", name, version);
+		auto it = this->info_list.find(name_with_version);
+		if (it != this->info_list.end()) return static_cast<AIInfo *>(it->second);
 		return nullptr;
 	}
 
 	AIInfo *info = nullptr;
-	int version = -1;
+	int highest_version = -1;
 
 	/* See if there is a compatible AI which goes by that name, with the highest
 	 *  version which allows loading the requested version */
 	for (const auto &item : this->info_list) {
 		AIInfo *i = static_cast<AIInfo *>(item.second);
-		if (strcasecmp(ai_name, i->GetName()) == 0 && i->CanLoadFromVersion(versionParam) && (version == -1 || i->GetVersion() > version)) {
-			version = item.second->GetVersion();
+		if (StrEqualsIgnoreCase(name, i->GetName()) && i->CanLoadFromVersion(version) && (highest_version == -1 || i->GetVersion() > highest_version)) {
+			highest_version = item.second->GetVersion();
 			info = i;
 		}
 	}
@@ -138,10 +134,10 @@ void AIScannerLibrary::Initialize()
 	ScriptScanner::Initialize("AIScanner");
 }
 
-void AIScannerLibrary::GetScriptName(ScriptInfo *info, char *name, const char *last)
+std::string AIScannerLibrary::GetScriptName(ScriptInfo *info)
 {
 	AILibrary *library = static_cast<AILibrary *>(info);
-	seprintf(name, last, "%s.%s", library->GetCategory(), library->GetInstanceName());
+	return fmt::format("{}.{}", library->GetCategory(), library->GetInstanceName());
 }
 
 void AIScannerLibrary::RegisterAPI(class Squirrel *engine)
@@ -149,12 +145,10 @@ void AIScannerLibrary::RegisterAPI(class Squirrel *engine)
 	AILibrary::RegisterAPI(engine);
 }
 
-AILibrary *AIScannerLibrary::FindLibrary(const char *library, int version)
+AILibrary *AIScannerLibrary::FindLibrary(const std::string &library, int version)
 {
 	/* Internally we store libraries as 'library.version' */
-	char library_name[1024];
-	seprintf(library_name, lastof(library_name), "%s.%d", library, version);
-	strtolower(library_name);
+	std::string library_name = fmt::format("{}.{}", library, version);
 
 	/* Check if the library + version exists */
 	ScriptInfoList::iterator it = this->info_list.find(library_name);

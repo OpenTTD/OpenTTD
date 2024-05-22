@@ -19,7 +19,32 @@
  */
 class ScriptTownList : public ScriptList {
 public:
+#ifdef DOXYGEN_API
 	ScriptTownList();
+
+	/**
+	 * Apply a filter when building the list.
+	 * @param filter_function The function which will be doing the filtering.
+	 * @param ... The params to give to the filters (minus the first param,
+	 *  which is always the index-value).
+	 * @note You can write your own filters and use them. Just remember that
+	 *  the first parameter should be the index-value, and it should return
+	 *  a bool.
+	 * @note Example:
+	 * @code
+	 *  local bribeable_towns = ScriptTownList(ScriptTown.IsActionAvailable, ScriptTown.TOWN_ACTION_BRIBE);
+	 *
+	 *  function MinPopulation(town_id, pop)
+	 *  {
+	 *    return ScriptTown.GetPopulation(town_id) >= pop;
+	 *  }
+	 *  local proper_towns = ScriptTownList(MinPopulation, 1000);
+	 * @endcode
+	 */
+	ScriptTownList(function filter_function, ...);
+#else
+	ScriptTownList(HSQUIRRELVM vm);
+#endif /* DOXYGEN_API */
 };
 
 /**

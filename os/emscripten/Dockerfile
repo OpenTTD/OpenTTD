@@ -1,4 +1,3 @@
-FROM emscripten/emsdk:3.1.28
+FROM emscripten/emsdk:3.1.57
 
-COPY emsdk-liblzma.patch /
-RUN cd /emsdk/upstream/emscripten && patch -p1 < /emsdk-liblzma.patch
+COPY ports/liblzma.py /emsdk/upstream/emscripten/tools/ports/contrib/liblzma.py

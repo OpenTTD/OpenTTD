@@ -10,7 +10,6 @@
 #ifndef NODELIST_HPP
 #define NODELIST_HPP
 
-#include "../../misc/array.hpp"
 #include "../../misc/hashtable.hpp"
 #include "../../misc/binaryheap.hpp"
 
@@ -24,7 +23,7 @@ class CNodeList_HashTableT {
 public:
 	typedef Titem_ Titem;                                        ///< Make #Titem_ visible from outside of class.
 	typedef typename Titem_::Key Key;                            ///< Make Titem_::Key a property of this class.
-	typedef SmallArray<Titem_, 65536, 256> CItemArray;           ///< Type that we will use as item container.
+	using CItemArray = std::deque<Titem_>;                       ///< Type that we will use as item container.
 	typedef CHashTableT<Titem_, Thash_bits_open_  > COpenList;   ///< How pointers to open nodes will be stored.
 	typedef CHashTableT<Titem_, Thash_bits_closed_> CClosedList; ///< How pointers to closed nodes will be stored.
 	typedef CBinaryHeapT<Titem_> CPriorityQueue;                 ///< How the priority queue will be managed.
@@ -63,7 +62,7 @@ public:
 	/** allocate new data item from m_arr */
 	inline Titem_ *CreateNewNode()
 	{
-		if (m_new_node == nullptr) m_new_node = m_arr.AppendC();
+		if (m_new_node == nullptr) m_new_node = &m_arr.emplace_back();
 		return m_new_node;
 	}
 
@@ -116,10 +115,10 @@ public:
 	}
 
 	/** remove and return the open node specified by a key */
-	inline Titem_& PopOpenNode(const Key &key)
+	inline Titem_ &PopOpenNode(const Key &key)
 	{
 		Titem_ &item = m_open.Pop(key);
-		uint idxPop = m_open_queue.FindIndex(item);
+		size_t idxPop = m_open_queue.FindIndex(item);
 		m_open_queue.Remove(idxPop);
 		return item;
 	}
@@ -145,7 +144,7 @@ public:
 	}
 
 	/** Get a particular item. */
-	inline Titem_& ItemAt(int idx)
+	inline Titem_ &ItemAt(int idx)
 	{
 		return m_arr[idx];
 	}

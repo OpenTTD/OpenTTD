@@ -64,23 +64,23 @@ int GetAircraftFlightLevel(T *v, bool takeoff = false);
 
 /** Variables that are cached to improve performance and such. */
 struct AircraftCache {
-	uint32 cached_max_range_sqr;   ///< Cached squared maximum range.
-	uint16 cached_max_range;       ///< Cached maximum range.
+	uint32_t cached_max_range_sqr;   ///< Cached squared maximum range.
+	uint16_t cached_max_range;       ///< Cached maximum range.
 };
 
 /**
  * Aircraft, helicopters, rotors and their shadows belong to this class.
  */
-struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
-	uint16 crashed_counter;        ///< Timer for handling crash animations.
-	byte pos;                      ///< Next desired position of the aircraft.
-	byte previous_pos;             ///< Previous desired position of the aircraft.
+struct Aircraft final : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
+	uint16_t crashed_counter;        ///< Timer for handling crash animations.
+	uint8_t pos;                      ///< Next desired position of the aircraft.
+	uint8_t previous_pos;             ///< Previous desired position of the aircraft.
 	StationID targetairport;       ///< Airport to go to next.
-	byte state;                    ///< State of the airport. @see AirportMovementStates
+	uint8_t state;                    ///< State of the airport. @see AirportMovementStates
 	Direction last_direction;
-	byte number_consecutive_turns; ///< Protection to prevent the aircraft of making a lot of turns in order to reach a specific point.
-	byte turn_counter;             ///< Ticks between each turn to prevent > 45 degree turns.
-	byte flags;                    ///< Aircraft flags. @see AirVehicleFlags
+	uint8_t number_consecutive_turns; ///< Protection to prevent the aircraft of making a lot of turns in order to reach a specific point.
+	uint8_t turn_counter;             ///< Ticks between each turn to prevent > 45 degree turns.
+	uint8_t flags;                    ///< Aircraft flags. @see AirVehicleFlags
 
 	AircraftCache acache;
 
@@ -89,28 +89,30 @@ struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	/** We want to 'destruct' the right class. */
 	virtual ~Aircraft() { this->PreDestructor(); }
 
-	void MarkDirty();
-	void UpdateDeltaXY();
-	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_AIRCRAFT_REVENUE : EXPENSES_AIRCRAFT_RUN; }
-	bool IsPrimaryVehicle() const                  { return this->IsNormalAircraft(); }
-	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const;
-	int GetDisplaySpeed() const    { return this->cur_speed; }
-	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed; }
-	int GetSpeedOldUnits() const   { return this->vcache.cached_max_speed * 10 / 128; }
-	int GetCurrentMaxSpeed() const { return this->GetSpeedOldUnits(); }
-	Money GetRunningCost() const;
+	void MarkDirty() override;
+	void UpdateDeltaXY() override;
+	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_AIRCRAFT_REVENUE : EXPENSES_AIRCRAFT_RUN; }
+	bool IsPrimaryVehicle() const override                  { return this->IsNormalAircraft(); }
+	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
+	int GetDisplaySpeed() const override    { return this->cur_speed; }
+	int GetDisplayMaxSpeed() const override { return this->vcache.cached_max_speed; }
+	int GetSpeedOldUnits() const            { return this->vcache.cached_max_speed * 10 / 128; }
+	int GetCurrentMaxSpeed() const override { return this->GetSpeedOldUnits(); }
+	Money GetRunningCost() const override;
 
-	bool IsInDepot() const
+	bool IsInDepot() const override
 	{
 		assert(this->IsPrimaryVehicle());
 		return (this->vehstatus & VS_HIDDEN) != 0 && IsHangarTile(this->tile);
 	}
 
-	bool Tick();
-	void OnNewDay();
-	uint Crash(bool flooded = false);
-	TileIndex GetOrderStationLocation(StationID station);
-	ClosestDepot FindClosestDepot();
+	bool Tick() override;
+	void OnNewCalendarDay() override;
+	void OnNewEconomyDay() override;
+	uint Crash(bool flooded = false) override;
+	TileIndex GetOrderStationLocation(StationID station) override;
+	TileIndex GetCargoTile() const override { return this->First()->tile; }
+	ClosestDepot FindClosestDepot() override;
 
 	/**
 	 * Check if the aircraft type is a normal flying device; eg
@@ -130,7 +132,7 @@ struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	 * Get the range of this aircraft.
 	 * @return Range in tiles or 0 if unlimited range.
 	 */
-	uint16 GetRange() const
+	uint16_t GetRange() const
 	{
 		return this->acache.cached_max_range;
 	}

@@ -11,7 +11,7 @@
 #define WIDGETS_TOOLBAR_WIDGET_H
 
 /** Widgets of the #MainToolbarWindow class. */
-enum ToolbarNormalWidgets {
+enum ToolbarNormalWidgets : WidgetID {
 	WID_TN_PAUSE,         ///< Pause the game.
 	WID_TN_FAST_FORWARD,  ///< Fast forward the game.
 	WID_TN_SETTINGS,      ///< Settings menu.
@@ -49,7 +49,7 @@ enum ToolbarNormalWidgets {
 };
 
 /** Widgets of the #ScenarioEditorToolbarWindow class. */
-enum ToolbarEditorWidgets {
+enum ToolbarEditorWidgets : WidgetID {
 	WID_TE_PAUSE,         ///< Pause the game.
 	WID_TE_FAST_FORWARD,  ///< Fast forward the game.
 	WID_TE_SETTINGS,      ///< Settings menu.

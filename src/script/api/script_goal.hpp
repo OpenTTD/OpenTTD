@@ -28,7 +28,7 @@ public:
 	/**
 	 * The goal IDs.
 	 */
-	enum GoalID : uint16 {
+	enum GoalID : uint16_t {
 		/* Note: these values represent part of the in-game GoalID enum */
 		GOAL_INVALID = ::INVALID_GOAL, ///< An invalid goal id.
 	};
@@ -36,7 +36,7 @@ public:
 	/**
 	 * Goal types that can be given to a goal.
 	 */
-	enum GoalType : byte {
+	enum GoalType : uint8_t {
 		/* Note: these values represent part of the in-game GoalType enum */
 		GT_NONE     = ::GT_NONE,     ///< Destination is not linked.
 		GT_TILE     = ::GT_TILE,     ///< Destination is a tile.
@@ -90,6 +90,15 @@ public:
 	static bool IsValidGoal(GoalID goal_id);
 
 	/**
+	 * Check whether this is a valid goal destination.
+	 * @param company The relevant company if a story page is the destination.
+	 * @param type The type of the goal.
+	 * @param destination The destination of the \a type type.
+	 * @return True if and only if this goal destination is valid.
+	 */
+	static bool IsValidGoalDestination(ScriptCompany::CompanyID company, GoalType type, SQInteger destination);
+
+	/**
 	 * Create a new goal.
 	 * @param company The company to create the goal for, or ScriptCompany::COMPANY_INVALID for all.
 	 * @param goal The goal to add to the GUI (can be either a raw string, or a ScriptText object).
@@ -113,6 +122,18 @@ public:
 	 * @pre IsValidGoal(goal_id).
 	 */
 	static bool Remove(GoalID goal_id);
+
+	/**
+	 * Update goal destination of a goal.
+	 * @param goal_id The goal to update.
+	 * @param type The type of the goal.
+	 * @param destination The destination of the \a type type.
+	 * @return True if the action succeeded.
+	 * @pre ScriptCompanyMode::IsDeity().
+	 * @pre IsValidGoal(goal_id).
+	 * @pre IsValidGoalDestination(g->company, type, destination).
+	 */
+	static bool SetDestination(GoalID goal_id, GoalType type, SQInteger destination);
 
 	/**
 	 * Update goal text of a goal.
@@ -170,7 +191,7 @@ public:
 	 * @pre question != null && len(question) != 0.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre CountBits(buttons) >= 1 && CountBits(buttons) <= 3.
-	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16)
+	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16_t)
 	 * @note Replies to the question are given by you via the event ScriptEventGoalQuestionAnswer.
 	 * @note There is no guarantee you ever get a reply on your question.
 	 */
@@ -189,7 +210,7 @@ public:
 	 * @pre question != null && len(question) != 0.
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
 	 * @pre CountBits(buttons) >= 1 && CountBits(buttons) <= 3.
-	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16)
+	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16_t)
 	 * @note Replies to the question are given by you via the event ScriptEventGoalQuestionAnswer.
 	 * @note There is no guarantee you ever get a reply on your question.
 	 */
@@ -200,7 +221,7 @@ public:
 	 * @param uniqueid The uniqueid of the question you want to close.
 	 * @return True if the action succeeded.
 	 * @pre ScriptCompanyMode::IsDeity().
-	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16)
+	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16_t)
 	 * @note If you send a question to a single company, and get a reply for them,
 	 *   the question is already closed on all clients. Only use this function if
 	 *   you want to timeout a question, or if you send the question to all
@@ -212,7 +233,7 @@ protected:
 	/**
 	 * Does common checks and asks the question.
 	 */
-	static bool DoQuestion(SQInteger uniqueid, uint32 target, bool is_client, Text *question, QuestionType type, SQInteger buttons);
+	static bool DoQuestion(SQInteger uniqueid, uint32_t target, bool is_client, Text *question, QuestionType type, SQInteger buttons);
 };
 
 #endif /* SCRIPT_GOAL_HPP */

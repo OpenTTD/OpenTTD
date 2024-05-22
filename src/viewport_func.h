@@ -15,17 +15,18 @@
 #include "window_type.h"
 #include "tile_map.h"
 #include "station_type.h"
+#include "vehicle_type.h"
 
 static const int TILE_HEIGHT_STEP = 50; ///< One Z unit tile height difference is displayed as 50m.
 
 void SetSelectionRed(bool);
 
 void DeleteWindowViewport(Window *w);
-void InitializeWindowViewport(Window *w, int x, int y, int width, int height, uint32 follow_flags, ZoomLevel zoom);
+void InitializeWindowViewport(Window *w, int x, int y, int width, int height, std::variant<TileIndex, VehicleID> focus, ZoomLevel zoom);
 Viewport *IsPtInWindowViewport(const Window *w, int x, int y);
 Point TranslateXYToTileCoord(const Viewport *vp, int x, int y, bool clamp_to_map = true);
 Point GetTileBelowCursor();
-void UpdateViewportPosition(Window *w);
+void UpdateViewportPosition(Window *w, uint32_t delta_ms);
 
 bool MarkAllViewportsDirty(int left, int top, int right, int bottom);
 
@@ -34,7 +35,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window * w);
 void ConstrainAllViewportsZoom();
 Point GetTileZoomCenterWindow(bool in, Window * w);
 void FixTitleGameZoom(int zoom_adjust = 0);
-void HandleZoomMessage(Window *w, const Viewport *vp, byte widget_zoom_in, byte widget_zoom_out);
+void HandleZoomMessage(Window *w, const Viewport *vp, WidgetID widget_zoom_in, WidgetID widget_zoom_out);
 
 /**
  * Zoom a viewport as far as possible in the given direction.
@@ -42,7 +43,7 @@ void HandleZoomMessage(Window *w, const Viewport *vp, byte widget_zoom_in, byte 
  * @param w   Window owning the viewport.
  * @pre \a how should not be #ZOOM_NONE.
  */
-static inline void MaxZoomInOut(ZoomStateChange how, Window *w)
+inline void MaxZoomInOut(ZoomStateChange how, Window *w)
 {
 	while (DoZoomInOutWindow(how, w)) {};
 }
@@ -50,10 +51,10 @@ static inline void MaxZoomInOut(ZoomStateChange how, Window *w)
 void OffsetGroundSprite(int x, int y);
 
 void DrawGroundSprite(SpriteID image, PaletteID pal, const SubSprite *sub = nullptr, int extra_offs_x = 0, int extra_offs_y = 0);
-void DrawGroundSpriteAt(SpriteID image, PaletteID pal, int32 x, int32 y, int z, const SubSprite *sub = nullptr, int extra_offs_x = 0, int extra_offs_y = 0);
+void DrawGroundSpriteAt(SpriteID image, PaletteID pal, int32_t x, int32_t y, int z, const SubSprite *sub = nullptr, int extra_offs_x = 0, int extra_offs_y = 0);
 void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int w, int h, int dz, int z, bool transparent = false, int bb_offset_x = 0, int bb_offset_y = 0, int bb_offset_z = 0, const SubSprite *sub = nullptr);
 void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool transparent = false, const SubSprite *sub = nullptr, bool scale = true, bool relative = true);
-void ViewportAddString(const DrawPixelInfo *dpi, ZoomLevel small_from, const ViewportSign *sign, StringID string_normal, StringID string_small, StringID string_small_shadow, uint64 params_1, uint64 params_2 = 0, Colours colour = INVALID_COLOUR);
+void ViewportAddString(const DrawPixelInfo *dpi, ZoomLevel small_from, const ViewportSign *sign, StringID string_normal, StringID string_small, StringID string_small_shadow, Colours colour = INVALID_COLOUR);
 
 
 void StartSpriteCombine();
@@ -87,7 +88,7 @@ void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset, int tile_heigh
  * @param bridge_level_offset Height of bridge on tile to also mark dirty. (Height level relative to north corner.)
  * @ingroup dirty
  */
-static inline void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset = 0)
+inline void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset = 0)
 {
 	MarkTileDirtyByTile(tile, bridge_level_offset, TileHeight(tile));
 }
@@ -95,10 +96,27 @@ static inline void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset =
 Point GetViewportStationMiddle(const Viewport *vp, const Station *st);
 
 struct Station;
+struct Waypoint;
 struct Town;
 
 void SetViewportCatchmentStation(const Station *st, bool sel);
+void SetViewportCatchmentWaypoint(const Waypoint *wp, bool sel);
 void SetViewportCatchmentTown(const Town *t, bool sel);
 void MarkCatchmentTilesDirty();
+
+template<class T>
+void SetViewportCatchmentSpecializedStation(const T *st, bool sel);
+
+template<>
+inline void SetViewportCatchmentSpecializedStation(const Station *st, bool sel)
+{
+	SetViewportCatchmentStation(st, sel);
+}
+
+template<>
+inline void SetViewportCatchmentSpecializedStation(const Waypoint *st, bool sel)
+{
+	SetViewportCatchmentWaypoint(st, sel);
+}
 
 #endif /* VIEWPORT_FUNC_H */

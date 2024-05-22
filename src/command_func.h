@@ -42,7 +42,6 @@ void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *cal
 bool IsValidCommand(Commands cmd);
 CommandFlags GetCommandFlags(Commands cmd);
 const char *GetCommandName(Commands cmd);
-Money GetAvailableMoneyForCommand();
 bool IsCommandAllowedWhilePaused(Commands cmd);
 
 template <Commands Tcmd>
@@ -102,7 +101,7 @@ protected:
 	static bool InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex tile, Backup<CompanyID> &cur_company);
 	static std::tuple<bool, bool, bool> InternalExecuteValidateTestAndPrepExec(CommandCost &res, CommandFlags cmd_flags, bool estimate_only, bool network_command, Backup<CompanyID> &cur_company);
 	static CommandCost InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, const CommandCost &res_test, const CommandCost &res_exec, Money extra_cash, TileIndex tile, Backup<CompanyID> &cur_company);
-	static void LogCommandExecution(Commands cmd, StringID err_message, TileIndex tile, const CommandDataBuffer &args, bool failed);
+	static void LogCommandExecution(Commands cmd, StringID err_message, const CommandDataBuffer &args, bool failed);
 };
 
 /**
@@ -251,13 +250,13 @@ public:
 	template <typename Tcallback>
 	static Tret Unsafe(StringID err_message, Tcallback *callback, bool my_cmd, bool estimate_only, TileIndex location, std::tuple<Targs...> args)
 	{
-		return Execute(err_message, reinterpret_cast<CommandCallback *>(callback), my_cmd, estimate_only, false, location, std::move(args));
+		return Execute(err_message, reinterpret_cast<CommandCallback *>(reinterpret_cast<void(*)()>(callback)), my_cmd, estimate_only, false, location, std::move(args));
 	}
 
 protected:
 	/** Helper to process a single ClientID argument. */
 	template <class T>
-	static inline void SetClientIdHelper(T &data)
+	static inline void SetClientIdHelper([[maybe_unused]] T &data)
 	{
 		if constexpr (std::is_same_v<ClientID, T>) {
 			if (data == INVALID_CLIENT_ID) data = CLIENT_ID_SERVER;
@@ -302,7 +301,7 @@ protected:
 		/* Only set client IDs when the command does not come from the network. */
 		if (!network_command && GetCommandFlags<Tcmd>() & CMD_CLIENT_ID) SetClientIds(args, std::index_sequence_for<Targs...>{});
 
-		Tret res = Execute(err_message, reinterpret_cast<CommandCallback *>(callback), my_cmd, estimate_only, network_command, tile, args);
+		Tret res = Execute(err_message, reinterpret_cast<CommandCallback *>(reinterpret_cast<void(*)()>(callback)), my_cmd, estimate_only, network_command, tile, args);
 		InternalPostResult(ExtractCommandCost(res), tile, estimate_only, only_sending, err_message, my_cmd);
 
 		if (!estimate_only && !only_sending && callback != nullptr) {
@@ -333,7 +332,7 @@ protected:
 
 	/** Helper to process a single ClientID argument. */
 	template <class T>
-	static inline bool ClientIdIsSet(T &data)
+	static inline bool ClientIdIsSet([[maybe_unused]] T &data)
 	{
 		if constexpr (std::is_same_v<ClientID, T>) {
 			return data != INVALID_CLIENT_ID;
@@ -350,7 +349,7 @@ protected:
 	}
 
 	template<class Ttuple>
-	static inline Money ExtractAdditionalMoney(Ttuple &values)
+	static inline Money ExtractAdditionalMoney([[maybe_unused]] Ttuple &values)
 	{
 		if constexpr (std::is_same_v<std::tuple_element_t<1, Tret>, Money>) {
 			return std::get<1>(values);
@@ -359,7 +358,7 @@ protected:
 		}
 	}
 
-	static Tret Execute(StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, std::tuple<Targs...> args)
+	static Tret Execute(StringID err_message, CommandCallback *callback, bool, bool estimate_only, bool network_command, TileIndex tile, std::tuple<Targs...> args)
 	{
 		/* Prevent recursion; it gives a mess over the network */
 		RecursiveCommandCounter counter{};
@@ -373,7 +372,7 @@ protected:
 			assert(AllClientIdsSet(args, std::index_sequence_for<Targs...>{}));
 		}
 
-		Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company);
 		if (!InternalExecutePrepTest(cmd_flags, tile, cur_company)) {
 			cur_company.Trash();
 			return MakeResult(CMD_ERROR);
@@ -385,7 +384,7 @@ protected:
 
 		auto [exit_test, desync_log, send_net] = InternalExecuteValidateTestAndPrepExec(ExtractCommandCost(res), cmd_flags, estimate_only, network_command, cur_company);
 		if (exit_test) {
-			if (desync_log) LogCommandExecution(Tcmd, err_message, tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args), true);
+			if (desync_log) LogCommandExecution(Tcmd, err_message, EndianBufferWriter<CommandDataBuffer>::FromValue(args), true);
 			cur_company.Restore();
 			return res;
 		}
@@ -403,7 +402,7 @@ protected:
 			return {};
 		}
 
-		if (desync_log) LogCommandExecution(Tcmd, err_message, tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args), false);
+		if (desync_log) LogCommandExecution(Tcmd, err_message, EndianBufferWriter<CommandDataBuffer>::FromValue(args), false);
 
 		/* Actually try and execute the command. */
 		Tret res2 = std::apply(CommandTraits<Tcmd>::proc, std::tuple_cat(std::make_tuple(flags | DC_EXEC), args));

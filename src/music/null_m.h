@@ -15,18 +15,18 @@
 /** The music player that does nothing. */
 class MusicDriver_Null : public MusicDriver {
 public:
-	const char *Start(const StringList &param) override { return nullptr; }
+	std::optional<std::string_view> Start(const StringList &) override { return std::nullopt; }
 
 	void Stop() override { }
 
-	void PlaySong(const MusicSongInfo &song) override { }
+	void PlaySong(const MusicSongInfo &) override { }
 
 	void StopSong() override { }
 
 	bool IsSongPlaying() override { return true; }
 
-	void SetVolume(byte vol) override { }
-	const char *GetName() const override { return "null"; }
+	void SetVolume(uint8_t) override { }
+	std::string_view GetName() const override { return "null"; }
 };
 
 /** Factory for the null music player. */

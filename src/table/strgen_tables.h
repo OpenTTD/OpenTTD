@@ -24,8 +24,8 @@ struct CmdStruct {
 	const char *cmd;
 	ParseCmdProc proc;
 	long value;
-	uint8 consumes;
-	int8 default_plural_offset;
+	uint8_t consumes;
+	int8_t default_plural_offset;
 	CmdFlags flags;
 };
 
@@ -58,6 +58,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"GRAY",              EmitSingleChar, SCC_GRAY,               0, -1, C_DONTCOUNT},
 	{"DKBLUE",            EmitSingleChar, SCC_DKBLUE,             0, -1, C_DONTCOUNT},
 	{"BLACK",             EmitSingleChar, SCC_BLACK,              0, -1, C_DONTCOUNT},
+	{"COLOUR",            EmitSingleChar, SCC_COLOUR,             1, -1, C_NONE},
 	{"PUSH_COLOUR",       EmitSingleChar, SCC_PUSH_COLOUR,        0, -1, C_DONTCOUNT},
 	{"POP_COLOUR",        EmitSingleChar, SCC_POP_COLOUR,         0, -1, C_DONTCOUNT},
 
@@ -86,6 +87,11 @@ static const CmdStruct _cmd_structs[] = {
 	{"FORCE",             EmitSingleChar, SCC_FORCE,              1,  0, C_NONE},
 	{"VELOCITY",          EmitSingleChar, SCC_VELOCITY,           1,  0, C_NONE},
 	{"HEIGHT",            EmitSingleChar, SCC_HEIGHT,             1,  0, C_NONE},
+
+	{"UNITS_DAYS_OR_SECONDS",   EmitSingleChar, SCC_UNITS_DAYS_OR_SECONDS,   1,  0, C_GENDER},
+	{"UNITS_MONTHS_OR_MINUTES", EmitSingleChar, SCC_UNITS_MONTHS_OR_MINUTES, 1,  0, C_GENDER},
+	{"UNITS_YEARS_OR_PERIODS",  EmitSingleChar, SCC_UNITS_YEARS_OR_PERIODS,  1,  0, C_GENDER},
+	{"UNITS_YEARS_OR_MINUTES",  EmitSingleChar, SCC_UNITS_YEARS_OR_MINUTES,  1,  0, C_GENDER},
 
 	{"P",                 EmitPlural,     0,                      0, -1, C_DONTCOUNT}, // plural specifier
 	{"G",                 EmitGender,     0,                      0, -1, C_DONTCOUNT}, // gender specifier

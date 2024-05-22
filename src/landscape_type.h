@@ -10,7 +10,7 @@
 #ifndef LANDSCAPE_TYPE_H
 #define LANDSCAPE_TYPE_H
 
-typedef byte LandscapeID; ///< Landscape type. @see LandscapeType
+typedef uint8_t LandscapeID; ///< Landscape type. @see LandscapeType
 
 /** Landscape types */
 enum LandscapeType {

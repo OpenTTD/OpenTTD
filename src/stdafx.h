@@ -28,6 +28,12 @@
 
 #if defined(__APPLE__)
 #	include "os/macosx/osx_stdafx.h"
+#else
+/* It seems that we need to include stdint.h before anything else
+ * We need INT64_MAX, which for most systems comes from stdint.h.
+ * For OSX the inclusion is already done in osx_stdafx.h. */
+#	define __STDC_LIMIT_MACROS
+#	include <stdint.h>
 #endif /* __APPLE__ */
 
 #if defined(__HAIKU__)
@@ -35,118 +41,48 @@
 #	include <unistd.h>
 #	define _DEFAULT_SOURCE
 #	define _GNU_SOURCE
-#	define TROUBLED_INTS
-#endif
-
-#if defined(__HAIKU__) || defined(__CYGWIN__)
-#	include <strings.h> /* strncasecmp */
-#endif
-
-/* It seems that we need to include stdint.h before anything else
- * We need INT64_MAX, which for most systems comes from stdint.h. However, MSVC
- * does not have stdint.h.
- * For OSX the inclusion is already done in osx_stdafx.h. */
-#if !defined(__APPLE__) && (!defined(_MSC_VER) || _MSC_VER >= 1600)
-#	if defined(SUNOS)
-		/* SunOS/Solaris does not have stdint.h, but inttypes.h defines everything
-		 * stdint.h defines and we need. */
-#		include <inttypes.h>
-#	else
-#		define __STDC_LIMIT_MACROS
-#		include <stdint.h>
-#	endif
-#endif
-
-/* The conditions for these constants to be available are way too messy; so check them one by one */
-#if !defined(UINT64_MAX)
-#	define UINT64_MAX (18446744073709551615ULL)
-#endif
-#if !defined(INT64_MAX)
-#	define INT64_MAX  (9223372036854775807LL)
-#endif
-#if !defined(INT64_MIN)
-#	define INT64_MIN  (-INT64_MAX - 1)
-#endif
-#if !defined(UINT32_MAX)
-#	define UINT32_MAX (4294967295U)
-#endif
-#if !defined(INT32_MAX)
-#	define INT32_MAX  (2147483647)
-#endif
-#if !defined(INT32_MIN)
-#	define INT32_MIN  (-INT32_MAX - 1)
-#endif
-#if !defined(UINT16_MAX)
-#	define UINT16_MAX (65535U)
-#endif
-#if !defined(INT16_MAX)
-#	define INT16_MAX  (32767)
-#endif
-#if !defined(INT16_MIN)
-#	define INT16_MIN  (-INT16_MAX - 1)
-#endif
-#if !defined(UINT8_MAX)
-#	define UINT8_MAX  (255)
-#endif
-#if !defined(INT8_MAX)
-#	define INT8_MAX   (127)
-#endif
-#if !defined(INT8_MIN)
-#	define INT8_MIN   (-INT8_MAX - 1)
 #endif
 
 #include <algorithm>
-#include <cstdio>
+#include <array>
+#include <bit>
+#include <cassert>
+#include <cctype>
+#include <cerrno>
+#include <climits>
+#include <cmath>
 #include <cstddef>
+#include <cstdint>
+#include <cstdio>
 #include <cstring>
 #include <cstdlib>
-#include <climits>
-#include <cassert>
+#include <cwchar>
+#include <deque>
+#include <exception>
+#include <functional>
+#include <iterator>
+#include <list>
+#include <limits>
+#include <map>
 #include <memory>
+#include <numeric>
+#include <optional>
+#include <set>
+#include <source_location>
+#include <span>
+#include <stdexcept>
 #include <string>
-
-#ifndef SIZE_MAX
-#	define SIZE_MAX ((size_t)-1)
-#endif
+#include <type_traits>
+#include <variant>
+#include <vector>
 
 #if defined(UNIX) || defined(__MINGW32__)
 #	include <sys/types.h>
 #endif
 
-#if defined(__OS2__)
-#	include <types.h>
-#	define strcasecmp stricmp
-#endif
-
-#if defined(SUNOS) || defined(HPUX) || defined(__CYGWIN__)
-#	include <alloca.h>
-#endif
-
 /* Stuff for GCC */
 #if defined(__GNUC__) || (defined(__clang__) && !defined(_MSC_VER))
-#	define NORETURN __attribute__ ((noreturn))
 #	define CDECL
-#	define __int64 long long
-	/* Warn about functions using 'printf' format syntax. First argument determines which parameter
-	 * is the format string, second argument is start of values passed to printf. */
-#	define WARN_FORMAT(string, args) __attribute__ ((format (printf, string, args)))
-#	define WARN_TIME_FORMAT(string) __attribute__ ((format (strftime, string, 0)))
-#	if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 7)
-#		define FINAL final
-#	else
-#		define FINAL
-#	endif
-
-	/* Use fallthrough attribute where supported */
-#	if __GNUC__ >= 7
-#		if __cplusplus > 201402L // C++17
-#			define FALLTHROUGH [[fallthrough]]
-#		else
-#			define FALLTHROUGH __attribute__((fallthrough))
-#		endif
-#	else
-#		define FALLTHROUGH
-#	endif
 #endif /* __GNUC__ || __clang__ */
 
 #if __GNUC__ > 11 || (__GNUC__ == 11 && __GNUC_MINOR__ >= 1)
@@ -155,22 +91,15 @@
 #      define NOACCESS(args)
 #endif
 
-#if defined(__WATCOMC__)
-#	define NORETURN
-#	define CDECL
-#	define WARN_FORMAT(string, args)
-#	define WARN_TIME_FORMAT(string)
-#	define FINAL
-#	define FALLTHROUGH
-#	include <malloc.h>
-#endif /* __WATCOMC__ */
-
-#if defined(__MINGW32__)
-#	include <malloc.h> // alloca()
-#endif
-
 #if defined(_WIN32)
 #	define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
+#endif
+
+#if defined(_MSC_VER)
+	// See https://learn.microsoft.com/en-us/cpp/cpp/empty-bases?view=msvc-170
+#	define EMPTY_BASES __declspec(empty_bases)
+#else
+#	define EMPTY_BASES
 #endif
 
 /* Stuff for MSVC */
@@ -183,40 +112,15 @@
 #	pragma warning(disable: 4200)  // nonstandard extension used : zero-sized array in struct/union
 #	pragma warning(disable: 4355)  // 'this' : used in base member initializer list
 
-#	if (_MSC_VER < 1400)                   // MSVC 2005 safety checks
-#		error "Only MSVC 2005 or higher are supported. MSVC 2003 and earlier are not! Upgrade your compiler."
-#	endif /* (_MSC_VER < 1400) */
 #	pragma warning(disable: 4291)   // no matching operator delete found; memory will not be freed if initialization throws an exception (reason: our overloaded functions never throw an exception)
 #	pragma warning(disable: 4996)   // 'function': was declared deprecated
 #	pragma warning(disable: 6308)   // code analyzer: 'realloc' might return null pointer: assigning null pointer to 't_ptr', which is passed as an argument to 'realloc', will cause the original memory block to be leaked
 #	pragma warning(disable: 6011)   // code analyzer: Dereferencing NULL pointer 'pfGetAddrInfo': Lines: 995, 996, 998, 999, 1001
 #	pragma warning(disable: 6326)   // code analyzer: potential comparison of a constant with another constant
 #	pragma warning(disable: 6031)   // code analyzer: Return value ignored: 'ReadFile'
-#	pragma warning(disable: 6255)   // code analyzer: _alloca indicates failure by raising a stack overflow exception. Consider using _malloca instead
 #	pragma warning(disable: 6246)   // code analyzer: Local declaration of 'statspec' hides declaration of the same name in outer scope. For additional information, see previous declaration at ...
 
-#	if (_MSC_VER == 1500)           // Addresses item #13 on http://blogs.msdn.com/b/vcblog/archive/2008/08/11/tr1-fixes-in-vc9-sp1.aspx, for Visual Studio 2008
-#		define _DO_NOT_DECLARE_INTERLOCKED_INTRINSICS_IN_MEMORY
-#		include <intrin.h>
-#	endif
-
-#	include <malloc.h> // alloca()
-#	define NORETURN __declspec(noreturn)
-#	if (_MSC_VER < 1900)
-#		define inline __forceinline
-#	endif
-
 #	define CDECL _cdecl
-#	define WARN_FORMAT(string, args)
-#	define WARN_TIME_FORMAT(string)
-#	define FINAL final
-
-	/* fallthrough attribute, VS 2017 */
-#	if (_MSC_VER >= 1910) || defined(__clang__)
-#		define FALLTHROUGH [[fallthrough]]
-#	else
-#		define FALLTHROUGH
-#	endif
 
 #	if defined(_WIN32) && !defined(_WIN64)
 #		if !defined(_W64)
@@ -252,10 +156,6 @@
 #		endif
 #	endif
 
-#	define strcasecmp stricmp
-#	define strncasecmp strnicmp
-#	define strtoull _strtoui64
-
 	/* MSVC doesn't have these :( */
 #	define S_ISDIR(mode) (mode & S_IFDIR)
 #	define S_ISREG(mode) (mode & S_IFREG)
@@ -269,7 +169,6 @@
 #		include <tchar.h>
 
 #		define fopen(file, mode) _wfopen(OTTD2FS(file).c_str(), _T(mode))
-#		define unlink(file) _wunlink(OTTD2FS(file).c_str())
 
 		std::string FS2OTTD(const std::wstring &name);
 		std::wstring OTTD2FS(const std::string &name);
@@ -284,7 +183,7 @@
 #	endif /* _WIN32 or WITH_ICONV */
 #endif /* STRGEN || SETTINGSGEN */
 
-#if defined(_WIN32) || defined(__OS2__) && !defined(__INNOTEK_LIBC__)
+#if defined(_WIN32)
 #	define PATHSEP "\\"
 #	define PATHSEPCHAR '\\'
 #else
@@ -292,7 +191,7 @@
 #	define PATHSEPCHAR '/'
 #endif
 
-#if defined(_MSC_VER) || defined(__WATCOMC__)
+#if defined(_MSC_VER)
 #	define PACK_N(type_dec, n) __pragma(pack(push, n)) type_dec; __pragma(pack(pop))
 #elif defined(__MINGW32__)
 #	define PRAGMA(x) _Pragma(#x)
@@ -301,27 +200,6 @@
 #	define PACK_N(type_dec, n) type_dec __attribute__((__packed__, aligned(n)))
 #endif
 #define PACK(type_dec) PACK_N(type_dec, 1)
-
-/* MSVCRT of course has to have a different syntax for long long *sigh* */
-#if defined(_MSC_VER)
-#   define OTTD_PRINTF64 "%I64d"
-#   define OTTD_PRINTF64U "%I64u"
-#   define OTTD_PRINTFHEX64 "%I64x"
-#   define PRINTF_SIZE "%Iu"
-#   define PRINTF_SIZEX "%IX"
-#elif defined(__MINGW32__)
-#   define OTTD_PRINTF64 "%I64d"
-#   define OTTD_PRINTF64U "%I64llu"
-#   define OTTD_PRINTFHEX64 "%I64x"
-#   define PRINTF_SIZE "%Iu"
-#   define PRINTF_SIZEX "%IX"
-#else
-#   define OTTD_PRINTF64 "%lld"
-#   define OTTD_PRINTF64U "%llu"
-#   define OTTD_PRINTFHEX64 "%llx"
-#   define PRINTF_SIZE "%zu"
-#   define PRINTF_SIZEX "%zX"
-#endif
 
 /*
  * When making a (pure) debug build, the compiler will by default disable
@@ -368,36 +246,10 @@
 #define debug_inline inline
 #endif
 
-typedef unsigned char byte;
-
 /* This is already defined in unix, but not in QNX Neutrino (6.x) or Cygwin. */
 #if (!defined(UNIX) && !defined(__HAIKU__)) || defined(__QNXNTO__) || defined(__CYGWIN__)
 	typedef unsigned int uint;
 #endif
-
-#if defined(TROUBLED_INTS)
-	/* Haiku's types for uint32/int32/uint64/int64 are different than what
-	 * they are on other platforms; not in length, but how to print them.
-	 * So make them more like the other platforms, to make printf() etc a
-	 * little bit easier. */
-#	define uint32 uint32_ugly_hack
-#	define int32 int32_ugly_hack
-#	define uint64 uint64_ugly_hack
-#	define int64 int64_ugly_hack
-	typedef unsigned int uint32_ugly_hack;
-	typedef signed int int32_ugly_hack;
-	typedef unsigned __int64 uint64_ugly_hack;
-	typedef signed __int64 int64_ugly_hack;
-#else
-	typedef unsigned char    uint8;
-	typedef   signed char     int8;
-	typedef unsigned short   uint16;
-	typedef   signed short    int16;
-	typedef unsigned int     uint32;
-	typedef   signed int      int32;
-	typedef unsigned __int64 uint64;
-	typedef   signed __int64  int64;
-#endif /* !TROUBLED_INTS */
 
 #if !defined(WITH_PERSONAL_DIR)
 #	define PERSONAL_DIR ""
@@ -409,16 +261,19 @@ typedef unsigned char byte;
 #endif
 
 /* Check if the types have the bitsizes like we are using them */
-static_assert(sizeof(uint64) == 8);
-static_assert(sizeof(uint32) == 4);
-static_assert(sizeof(uint16) == 2);
-static_assert(sizeof(uint8)  == 1);
+static_assert(sizeof(uint64_t) == 8);
+static_assert(sizeof(uint32_t) == 4);
+static_assert(sizeof(uint16_t) == 2);
+static_assert(sizeof(uint8_t)  == 1);
 static_assert(SIZE_MAX >= UINT32_MAX);
 
 #ifndef M_PI_2
 #define M_PI_2 1.57079632679489661923
 #define M_PI   3.14159265358979323846
 #endif /* M_PI_2 */
+
+template <typename T, size_t N>
+char (&ArraySizeHelper(T (&array)[N]))[N];
 
 /**
  * Return the length of an fixed size array.
@@ -428,15 +283,7 @@ static_assert(SIZE_MAX >= UINT32_MAX);
  * @param x The pointer to the first element of the array
  * @return The number of elements
  */
-#define lengthof(x) (sizeof(x) / sizeof(x[0]))
-
-/**
- * Get the end element of an fixed size array.
- *
- * @param x The pointer to the first element of the array
- * @return The pointer past to the last element of the array
- */
-#define endof(x) (&x[lengthof(x)])
+#define lengthof(array) (sizeof(ArraySizeHelper(array)))
 
 /**
  * Get the last element of an fixed size array.
@@ -454,14 +301,6 @@ static_assert(SIZE_MAX >= UINT32_MAX);
  */
 #define cpp_sizeof(base, variable) (sizeof(std::declval<base>().variable))
 
-/**
- * Gets the length of an array variable within a class.
- * @param base     The class the variable is in.
- * @param variable The array variable to get the size of.
- * @return the length of the array
- */
-#define cpp_lengthof(base, variable) (cpp_sizeof(base, variable) / cpp_sizeof(base, variable[0]))
-
 
 /* take care of some name clashes on MacOS */
 #if defined(__APPLE__)
@@ -471,32 +310,26 @@ static_assert(SIZE_MAX >= UINT32_MAX);
 #endif /* __APPLE__ */
 
 #if defined(__GNUC__) || defined(__clang__)
-#	define likely(x)     __builtin_expect(!!(x), 1)
-#	define unlikely(x)   __builtin_expect(!!(x), 0)
 #	define GNU_TARGET(x) [[gnu::target(x)]]
 #else
-#	define likely(x)     (x)
-#	define unlikely(x)   (x)
 #	define GNU_TARGET(x)
 #endif /* __GNUC__ || __clang__ */
 
 /* For the FMT library we only want to use the headers, not link to some library. */
 #define FMT_HEADER_ONLY
 
-void NORETURN CDECL usererror(const char *str, ...) WARN_FORMAT(1, 2);
-void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
-#define NOT_REACHED() error("NOT_REACHED triggered at line %i of %s", __LINE__, __FILE__)
+[[noreturn]] void NOT_REACHED(const std::source_location location = std::source_location::current());
+[[noreturn]] void AssertFailedError(const char *expression, const std::source_location location = std::source_location::current());
 
 /* For non-debug builds with assertions enabled use the special assertion handler. */
 #if defined(NDEBUG) && defined(WITH_ASSERT)
 #	undef assert
-#	define assert(expression) if (unlikely(!(expression))) error("Assertion failed at line %i of %s: %s", __LINE__, __FILE__, #expression);
+#	define assert(expression) do { if (!(expression)) [[unlikely]] AssertFailedError(#expression); } while (false)
 #endif
 
-#if defined(OPENBSD)
-	/* OpenBSD uses strcasecmp(3) */
-#	define _stricmp strcasecmp
-#endif
+/* Define JSON_ASSERT, which is used by nlohmann-json. Otherwise the header-file
+ * will re-include assert.h, and reset the assert macro. */
+#define JSON_ASSERT(x) assert(x)
 
 #if defined(MAX_PATH)
 	/* It's already defined, no need to override */
@@ -512,7 +345,7 @@ void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
  * Version of the standard free that accepts const pointers.
  * @param ptr The data to free.
  */
-static inline void free(const void *ptr)
+inline void free(const void *ptr)
 {
 	free(const_cast<void *>(ptr));
 }
@@ -521,7 +354,7 @@ static inline void free(const void *ptr)
  * The largest value that can be entered in a variable
  * @param type the type of the variable
  */
-#define MAX_UVALUE(type) ((type)~(type)0)
+#define MAX_UVALUE(type) (static_cast<type>(~static_cast<type>(0)))
 
 #if defined(_MSC_VER) && !defined(_DEBUG)
 #	define IGNORE_UNINITIALIZED_WARNING_START __pragma(warning(push)) __pragma(warning(disable:4700))

@@ -20,7 +20,7 @@
  * @param r the roadtype to check for validness
  * @return true if and only if valid
  */
-static inline bool IsValidRoadBits(RoadBits r)
+inline bool IsValidRoadBits(RoadBits r)
 {
 	return r < ROAD_END;
 }
@@ -34,7 +34,7 @@ static inline bool IsValidRoadBits(RoadBits r)
  * @param r The given RoadBits value
  * @return the complement
  */
-static inline RoadBits ComplementRoadBits(RoadBits r)
+inline RoadBits ComplementRoadBits(RoadBits r)
 {
 	assert(IsValidRoadBits(r));
 	return (RoadBits)(ROAD_ALL ^ r);
@@ -48,7 +48,7 @@ static inline RoadBits ComplementRoadBits(RoadBits r)
  * @param r The given RoadBits value
  * @return the mirrored
  */
-static inline RoadBits MirrorRoadBits(RoadBits r)
+inline RoadBits MirrorRoadBits(RoadBits r)
 {
 	assert(IsValidRoadBits(r));
 	return (RoadBits)(GB(r, 0, 2) << 2 | GB(r, 2, 2));
@@ -63,7 +63,7 @@ static inline RoadBits MirrorRoadBits(RoadBits r)
  * @param rot The given Rotation angle
  * @return the rotated
  */
-static inline RoadBits RotateRoadBits(RoadBits r, DiagDirDiff rot)
+inline RoadBits RotateRoadBits(RoadBits r, DiagDirDiff rot)
 {
 	assert(IsValidRoadBits(r));
 	for (; rot > (DiagDirDiff)0; rot--) {
@@ -78,7 +78,7 @@ static inline RoadBits RotateRoadBits(RoadBits r, DiagDirDiff rot)
  * @param r The given RoadBits
  * @return true if we've got a straight road
  */
-static inline bool IsStraightRoad(RoadBits r)
+inline bool IsStraightRoad(RoadBits r)
 {
 	assert(IsValidRoadBits(r));
 	return (r == ROAD_X || r == ROAD_Y);
@@ -93,7 +93,7 @@ static inline bool IsStraightRoad(RoadBits r)
  * @param d The DiagDirection
  * @return The result RoadBits which the selected road-part set
  */
-static inline RoadBits DiagDirToRoadBits(DiagDirection d)
+inline RoadBits DiagDirToRoadBits(DiagDirection d)
 {
 	assert(IsValidDiagDirection(d));
 	return (RoadBits)(ROAD_NW << (3 ^ d));
@@ -108,7 +108,7 @@ static inline RoadBits DiagDirToRoadBits(DiagDirection d)
  * @param a The Axis
  * @return The result RoadBits which the selected road-part set
  */
-static inline RoadBits AxisToRoadBits(Axis a)
+inline RoadBits AxisToRoadBits(Axis a)
 {
 	assert(IsValidAxis(a));
 	return a == AXIS_X ? ROAD_X : ROAD_Y;
@@ -122,7 +122,7 @@ static inline RoadBits AxisToRoadBits(Axis a)
  * @param total_num Total number of road bits of all road/tram-types.
  * @return Total cost.
  */
-static inline Money RoadMaintenanceCost(RoadType roadtype, uint32 num, uint32 total_num)
+inline Money RoadMaintenanceCost(RoadType roadtype, uint32_t num, uint32_t total_num)
 {
 	assert(roadtype < ROADTYPE_END);
 	return (_price[PR_INFRASTRUCTURE_ROAD] * GetRoadTypeInfo(roadtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 12;
@@ -132,7 +132,7 @@ static inline Money RoadMaintenanceCost(RoadType roadtype, uint32 num, uint32 to
  * Test if a road type has catenary
  * @param roadtype Road type to test
  */
-static inline bool HasRoadCatenary(RoadType roadtype)
+inline bool HasRoadCatenary(RoadType roadtype)
 {
 	assert(roadtype < ROADTYPE_END);
 	return HasBit(GetRoadTypeInfo(roadtype)->flags, ROTF_CATENARY);
@@ -142,7 +142,7 @@ static inline bool HasRoadCatenary(RoadType roadtype)
  * Test if we should draw road catenary
  * @param roadtype Road type to test
  */
-static inline bool HasRoadCatenaryDrawn(RoadType roadtype)
+inline bool HasRoadCatenaryDrawn(RoadType roadtype)
 {
 	return HasRoadCatenary(roadtype) && !IsInvisibilitySet(TO_CATENARY);
 }
@@ -151,10 +151,11 @@ bool HasRoadTypeAvail(CompanyID company, RoadType roadtype);
 bool ValParamRoadType(RoadType roadtype);
 RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces = true);
 RoadTypes GetRoadTypes(bool introduces);
-RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, Date date);
+RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, TimerGameCalendar::Date date);
 
 void UpdateLevelCrossing(TileIndex tile, bool sound = true, bool force_bar = false);
 void MarkDirtyAdjacentLevelCrossingTiles(TileIndex tile, Axis road_axis);
+void UpdateAdjacentLevelCrossingTilesOnLevelCrossingRemoval(TileIndex tile, Axis road_axis);
 void UpdateCompanyRoadInfrastructure(RoadType rt, Owner o, int count);
 
 struct TileInfo;

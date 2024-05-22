@@ -12,8 +12,9 @@
 #define SCRIPT_LIST_HPP
 
 #include "script_object.hpp"
-#include <map>
-#include <set>
+
+/** Maximum number of operations allowed for valuating a list. */
+static const int MAX_VALUATE_OPS = 1000000;
 
 class ScriptListSorter;
 
@@ -40,6 +41,107 @@ private:
 	bool sort_ascending;          ///< Whether to sort ascending or descending
 	bool initialized;             ///< Whether an iteration has been started
 	int modifications;            ///< Number of modification that has been done. To prevent changing data while valuating.
+
+protected:
+	template<typename T, class ItemValid, class ItemFilter>
+	static void FillList(ScriptList *list, ItemValid item_valid, ItemFilter item_filter)
+	{
+		for (const T *item : T::Iterate()) {
+			if (!item_valid(item)) continue;
+			if (!item_filter(item)) continue;
+			list->AddItem(item->index);
+		}
+	}
+
+	template<typename T, class ItemValid>
+	static void FillList(ScriptList *list, ItemValid item_valid)
+	{
+		ScriptList::FillList<T>(list, item_valid, [](const T *) { return true; });
+	}
+
+	template<typename T>
+	static void FillList(ScriptList *list)
+	{
+		ScriptList::FillList<T>(list, [](const T *) { return true; });
+	}
+
+	template<typename T, class ItemValid>
+	static void FillList(HSQUIRRELVM vm, ScriptList *list, ItemValid item_valid)
+	{
+		int nparam = sq_gettop(vm) - 1;
+		if (nparam >= 1) {
+			/* Make sure the filter function is really a function, and not any
+			 * other type. It's parameter 2 for us, but for the user it's the
+			 * first parameter they give. */
+			SQObjectType valuator_type = sq_gettype(vm, 2);
+			if (valuator_type != OT_CLOSURE && valuator_type != OT_NATIVECLOSURE) {
+				throw sq_throwerror(vm, "parameter 1 has an invalid type (expected function)");
+			}
+
+			/* Push the function to call */
+			sq_push(vm, 2);
+		}
+
+		/* Don't allow docommand from a Valuator, as we can't resume in
+		 * mid C++-code. */
+		bool backup_allow = ScriptObject::GetAllowDoCommand();
+		ScriptObject::SetAllowDoCommand(false);
+
+
+		if (nparam < 1) {
+			ScriptList::FillList<T>(list, item_valid);
+		} else {
+			/* Limit the total number of ops that can be consumed by a filter operation, if a filter function is present */
+			SQOpsLimiter limiter(vm, MAX_VALUATE_OPS, "list filter function");
+
+			ScriptList::FillList<T>(list, item_valid,
+				[vm, nparam, backup_allow](const T *item) {
+					/* Push the root table as instance object, this is what squirrel does for meta-functions. */
+					sq_pushroottable(vm);
+					/* Push all arguments for the valuator function. */
+					sq_pushinteger(vm, item->index);
+					for (int i = 0; i < nparam - 1; i++) {
+						sq_push(vm, i + 3);
+					}
+
+					/* Call the function. Squirrel pops all parameters and pushes the return value. */
+					if (SQ_FAILED(sq_call(vm, nparam + 1, SQTrue, SQTrue))) {
+						ScriptObject::SetAllowDoCommand(backup_allow);
+						throw sq_throwerror(vm, "failed to run filter");
+					}
+
+					SQBool add = SQFalse;
+
+					/* Retrieve the return value */
+					switch (sq_gettype(vm, -1)) {
+						case OT_BOOL:
+							sq_getbool(vm, -1, &add);
+							break;
+
+						default:
+							ScriptObject::SetAllowDoCommand(backup_allow);
+							throw sq_throwerror(vm, "return value of filter is not valid (not bool)");
+					}
+
+					/* Pop the return value. */
+					sq_poptop(vm);
+
+					return add;
+				}
+			);
+
+			/* Pop the filter function */
+			sq_poptop(vm);
+		}
+
+		ScriptObject::SetAllowDoCommand(backup_allow);
+	}
+
+	template<typename T>
+	static void FillList(HSQUIRRELVM vm, ScriptList *list)
+	{
+		ScriptList::FillList<T>(vm, list, [](const T *) { return true; });
+	}
 
 public:
 	typedef std::set<SQInteger> ScriptItemList;                   ///< The list of items inside the bucket
@@ -268,7 +370,7 @@ public:
 	/**
 	 * Give all items a value defined by the valuator you give.
 	 * @param valuator_function The function which will be doing the valuation.
-	 * @param params The params to give to the valuators (minus the first param,
+	 * @param ... The params to give to the valuators (minus the first param,
 	 *  which is always the index-value we are valuating).
 	 * @note You may not add, remove or change (setting the value of) items while
 	 *  valuating. You may also not (re)sort while valuating.
@@ -276,6 +378,7 @@ public:
 	 *  the first parameter should be the index-value, and it should return
 	 *  an integer.
 	 * @note Example:
+	 * @code
 	 *  list.Valuate(ScriptBridge.GetPrice, 5);
 	 *  list.Valuate(ScriptBridge.GetMaxLength);
 	 *  function MyVal(bridge_id, myparam)
@@ -283,8 +386,9 @@ public:
 	 *    return myparam * bridge_id; // This is silly
 	 *  }
 	 *  list.Valuate(MyVal, 12);
+	 * @endcode
 	 */
-	void Valuate(void *valuator_function, int params, ...);
+	void Valuate(function valuator_function, ...);
 #endif /* DOXYGEN_API */
 };
 

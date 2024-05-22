@@ -22,7 +22,7 @@
  * @param station_type the station type to get the closest tile of
  * @return The closest station tile to the given tile.
  */
-static inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile, StationType station_type)
+inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile, StationType station_type)
 {
 	const BaseStation *st = BaseStation::Get(station);
 	TileArea ta;
@@ -57,7 +57,7 @@ static inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile
  * the pathfinders cannot exit on the wrong side and allows reversing on such
  * tiles.
  */
-static inline TrackdirBits GetTrackdirBitsForRoad(TileIndex tile, RoadTramType rtt)
+inline TrackdirBits GetTrackdirBitsForRoad(TileIndex tile, RoadTramType rtt)
 {
 	TrackdirBits bits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, rtt));
 

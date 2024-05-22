@@ -11,7 +11,7 @@
 #define WIDGETS_STATION_WIDGET_H
 
 /** Widgets of the #StationViewWindow class. */
-enum StationViewWidgets {
+enum StationViewWidgets : WidgetID {
 	WID_SV_CAPTION,            ///< Caption of the window.
 	WID_SV_GROUP,              ///< label for "group by"
 	WID_SV_GROUP_BY,           ///< 'Group by' button
@@ -32,7 +32,7 @@ enum StationViewWidgets {
 };
 
 /** Widgets of the #CompanyStationsWindow class. */
-enum StationListWidgets {
+enum StationListWidgets : WidgetID {
 	/* Name starts with ST instead of S, because of collision with SaveLoadWidgets */
 	WID_STL_CAPTION,        ///< Caption of the window.
 	WID_STL_LIST,           ///< The main panel, list of stations.
@@ -46,17 +46,14 @@ enum StationListWidgets {
 	WID_STL_SHIP,           ///< 'SHIP' button - list only facilities where is a dock.
 	WID_STL_FACILALL,       ///< 'ALL' button - list all facilities.
 
-	WID_STL_NOCARGOWAITING, ///< 'NO' button - list stations where no cargo is waiting.
-	WID_STL_CARGOALL,       ///< 'ALL' button - list all stations.
-
 	WID_STL_SORTBY,         ///< 'Sort by' button - reverse sort direction.
 	WID_STL_SORTDROPBTN,    ///< Dropdown button.
 
-	WID_STL_CARGOSTART,     ///< Widget numbers used for list of cargo types (not present in _company_stations_widgets).
+	WID_STL_CARGODROPDOWN,  ///< Cargo type dropdown list.
 };
 
 /** Widgets of the #SelectStationWindow class. */
-enum JoinStationWidgets {
+enum JoinStationWidgets : WidgetID {
 	WID_JS_CAPTION,   // Caption of the window.
 	WID_JS_PANEL,     // Main panel.
 	WID_JS_SCROLLBAR, // Scrollbar of the panel.

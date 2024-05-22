@@ -36,10 +36,12 @@ struct Viewport {
 
 /** Location information about a sign as seen on the viewport */
 struct ViewportSign {
-	int32 center;        ///< The center position of the sign
-	int32 top;           ///< The top of the sign
-	uint16 width_normal; ///< The width when not zoomed out (normal font)
-	uint16 width_small;  ///< The width when zoomed out (small font)
+	int32_t center;        ///< The center position of the sign
+	int32_t top;           ///< The top of the sign
+	uint16_t width_normal; ///< The width when not zoomed out (normal font)
+	uint16_t width_small;  ///< The width when zoomed out (small font)
+
+	auto operator<=>(const ViewportSign &) const = default;
 
 	void UpdatePosition(int center, int top, StringID str, StringID str_small = STR_NULL);
 	void MarkDirty(ZoomLevel maxzoom = ZOOM_LVL_MAX) const;
@@ -48,6 +50,8 @@ struct ViewportSign {
 /** Specialised ViewportSign that tracks whether it is valid for entering into a Kdtree */
 struct TrackedViewportSign : ViewportSign {
 	bool kdtree_valid; ///< Are the sign data valid for use with the _viewport_sign_kdtree?
+
+	auto operator<=>(const TrackedViewportSign &) const = default;
 
 	/**
 	 * Update the position of the viewport sign.
@@ -139,7 +143,7 @@ enum ViewportDragDropSelectionProcess {
 /**
  * Target of the viewport scrolling GS method
  */
-enum ViewportScrollTarget : byte {
+enum ViewportScrollTarget : uint8_t {
 	VST_EVERYONE, ///< All players
 	VST_COMPANY,  ///< All players in specific company
 	VST_CLIENT,   ///< Single player

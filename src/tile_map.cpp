@@ -18,10 +18,9 @@
  * @param hwest  The height at the western corner in the same unit as TileHeight.
  * @param heast  The height at the eastern corner in the same unit as TileHeight.
  * @param hsouth The height at the southern corner in the same unit as TileHeight.
- * @param[out] h The lowest height of the four corners.
- * @return The slope.
+ * @return The slope and the lowest height of the four corners.
  */
-static Slope GetTileSlopeGivenHeight(int hnorth, int hwest, int heast, int hsouth, int *h)
+static std::tuple<Slope, int> GetTileSlopeGivenHeight(int hnorth, int hwest, int heast, int hsouth)
 {
 	/* Due to the fact that tiles must connect with each other without leaving gaps, the
 	 * biggest difference in height between any corner and 'min' is between 0, 1, or 2.
@@ -31,8 +30,6 @@ static Slope GetTileSlopeGivenHeight(int hnorth, int hwest, int heast, int hsout
 	int hminnw = std::min(hnorth, hwest);
 	int hmines = std::min(heast, hsouth);
 	int hmin = std::min(hminnw, hmines);
-
-	if (h != nullptr) *h = hmin;
 
 	int hmaxnw = std::max(hnorth, hwest);
 	int hmaxes = std::max(heast, hsouth);
@@ -47,16 +44,15 @@ static Slope GetTileSlopeGivenHeight(int hnorth, int hwest, int heast, int hsout
 
 	if (hmax - hmin == 2) r |= SLOPE_STEEP;
 
-	return r;
+	return {r, hmin};
 }
 
 /**
  * Return the slope of a given tile inside the map.
  * @param tile Tile to compute slope of
- * @param h    If not \c nullptr, pointer to storage of z height
- * @return Slope of the tile, except for the HALFTILE part
+ * @return Slope of the tile, except for the HALFTILE part, and the z height
  */
-Slope GetTileSlope(TileIndex tile, int *h)
+std::tuple<Slope, int> GetTileSlopeZ(TileIndex tile)
 {
 	uint x1 = TileX(tile);
 	uint y1 = TileY(tile);
@@ -68,7 +64,7 @@ Slope GetTileSlope(TileIndex tile, int *h)
 	int heast  = TileHeight(TileXY(x1, y2)); // Height of the East corner.
 	int hsouth = TileHeight(TileXY(x2, y2)); // Height of the South corner.
 
-	return GetTileSlopeGivenHeight(hnorth, hwest, heast, hsouth, h);
+	return GetTileSlopeGivenHeight(hnorth, hwest, heast, hsouth);
 }
 
 /**
@@ -77,18 +73,17 @@ Slope GetTileSlope(TileIndex tile, int *h)
  * @param x X coordinate of the tile to compute slope of, may be outside the map.
  * @param y Y coordinate of the tile to compute slope of, may be outside the map.
  * @param h If not \c nullptr, pointer to storage of z height.
- * @return Slope of the tile, except for the HALFTILE part.
+ * @return Slope of the tile, except for the HALFTILE part, and the z height of the tile.
  */
-Slope GetTilePixelSlopeOutsideMap(int x, int y, int *h)
+std::tuple<Slope, int> GetTilePixelSlopeOutsideMap(int x, int y)
 {
 	int hnorth = TileHeightOutsideMap(x,     y);     // N corner.
 	int hwest  = TileHeightOutsideMap(x + 1, y);     // W corner.
 	int heast  = TileHeightOutsideMap(x,     y + 1); // E corner.
 	int hsouth = TileHeightOutsideMap(x + 1, y + 1); // S corner.
 
-	Slope s = GetTileSlopeGivenHeight(hnorth, hwest, heast, hsouth, h);
-	if (h != nullptr) *h *= TILE_HEIGHT;
-	return s;
+	auto [slope, h] = GetTileSlopeGivenHeight(hnorth, hwest, heast, hsouth);
+	return {slope, h * TILE_HEIGHT};
 }
 
 /**

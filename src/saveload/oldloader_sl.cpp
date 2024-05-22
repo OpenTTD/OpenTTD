@@ -20,16 +20,18 @@
 #include "../subsidy_base.h"
 #include "../debug.h"
 #include "../depot_base.h"
-#include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
+#include "../timer/timer_game_calendar.h"
 #include "../vehicle_func.h"
 #include "../effectvehicle_base.h"
 #include "../engine_func.h"
 #include "../company_base.h"
 #include "../disaster_vehicle.h"
-#include "../core/smallvec_type.hpp"
+#include "../timer/timer.h"
+#include "../timer/timer_game_tick.h"
+#include "../timer/timer_game_calendar.h"
 #include "saveload_internal.h"
 #include "oldloader.h"
-#include <array>
 
 #include "table/strings.h"
 #include "../table/engines.h"
@@ -38,10 +40,8 @@
 #include "../safeguards.h"
 
 static bool _read_ttdpatch_flags;    ///< Have we (tried to) read TTDPatch extra flags?
-static uint16 _old_extra_chunk_nums; ///< Number of extra TTDPatch chunks
-static byte _old_vehicle_multiplier; ///< TTDPatch vehicle multiplier
-
-static uint8 *_old_map3;
+static uint16_t _old_extra_chunk_nums; ///< Number of extra TTDPatch chunks
+static uint8_t _old_vehicle_multiplier; ///< TTDPatch vehicle multiplier
 
 void FixOldMapArray()
 {
@@ -52,15 +52,7 @@ void FixOldMapArray()
 
 static void FixTTDMapArray()
 {
-	/* _old_map3 is moved to _m::m3 and _m::m4 */
-	for (TileIndex t = 0; t < OLD_MAP_SIZE; t++) {
-		Tile tile(t);
-		tile.m3() = _old_map3[t * 2];
-		tile.m4() = _old_map3[t * 2 + 1];
-	}
-
-	for (TileIndex t = 0; t < OLD_MAP_SIZE; t++) {
-		Tile tile(t);
+	for (auto tile : Map::Iterate()) {
 		switch (GetTileType(tile)) {
 			case MP_STATION:
 				tile.m4() = 0; // We do not understand this TTDP station mapping (yet)
@@ -119,7 +111,7 @@ static void FixTTDDepots()
 
 #define FIXNUM(x, y, z) (((((x) << 16) / (y)) + 1) << z)
 
-static uint32 RemapOldTownName(uint32 townnameparts, byte old_town_name_type)
+static uint32_t RemapOldTownName(uint32_t townnameparts, uint8_t old_town_name_type)
 {
 	switch (old_town_name_type) {
 		case 0: case 3: // English, American
@@ -220,8 +212,7 @@ void FixOldVehicles()
 
 static bool FixTTOMapArray()
 {
-	for (TileIndex t = 0; t < OLD_MAP_SIZE; t++) {
-		Tile tile(t);
+	for (auto tile : Map::Iterate()) {
 		TileType tt = GetTileType(tile);
 		if (tt == 11) {
 			/* TTO has a different way of storing monorail.
@@ -313,7 +304,7 @@ static bool FixTTOMapArray()
 
 			case MP_TUNNELBRIDGE:
 				if (HasBit(tile.m5(), 7)) { // bridge
-					byte m5 = tile.m5();
+					uint8_t m5 = tile.m5();
 					tile.m5() = m5 & 0xE1; // copy bits 7..5, 1
 					if (GB(m5, 1, 2) == 1) tile.m5() |= 0x02; // road bridge
 					if (GB(m5, 1, 2) == 3) tile.m2() |= 0xA0; // monorail bridge -> tubular, steel bridge
@@ -396,7 +387,8 @@ static bool FixTTOEngines()
 		for (uint i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
 	}
 
-	Date aging_date = std::min(_date + DAYS_TILL_ORIGINAL_BASE_YEAR, ConvertYMDToDate(2050, 0, 1));
+	TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR, TimerGameCalendar::ConvertYMDToDate(2050, 0, 1));
+	TimerGameCalendar::YearMonthDay aging_ymd = TimerGameCalendar::ConvertDateToYMD(aging_date);
 
 	for (EngineID i = 0; i < 256; i++) {
 		int oi = ttd_to_tto[i];
@@ -404,17 +396,17 @@ static bool FixTTOEngines()
 
 		if (oi == 255) {
 			/* Default engine is used */
-			_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
-			StartupOneEngine(e, aging_date, 0);
+			TimerGameCalendar::date += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+			StartupOneEngine(e, aging_ymd, 0);
 			CalcEngineReliability(e, false);
-			e->intro_date -= DAYS_TILL_ORIGINAL_BASE_YEAR;
-			_date -= DAYS_TILL_ORIGINAL_BASE_YEAR;
+			e->intro_date -= CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+			TimerGameCalendar::date -= CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 
 			/* Make sure for example monorail and maglev are available when they should be */
-			if (_date >= e->intro_date && HasBit(e->info.climates, 0)) {
+			if (TimerGameCalendar::date >= e->intro_date && HasBit(e->info.climates, 0)) {
 				e->flags |= ENGINE_AVAILABLE;
-				e->company_avail = (CompanyMask)0xFF;
-				e->age = _date > e->intro_date ? (_date - e->intro_date) / 30 : 0;
+				e->company_avail = MAX_UVALUE(CompanyMask);
+				e->age = TimerGameCalendar::date > e->intro_date ? (TimerGameCalendar::date - e->intro_date).base() / 30 : 0;
 			}
 		} else {
 			/* Using data from TTO savegame */
@@ -438,7 +430,7 @@ static bool FixTTOEngines()
 			 * if at least one of them was available. */
 			for (uint j = 0; j < lengthof(tto_to_ttd); j++) {
 				if (tto_to_ttd[j] == i && _old_engines[j].company_avail != 0) {
-					e->company_avail = (CompanyMask)0xFF;
+					e->company_avail = MAX_UVALUE(CompanyMask);
 					e->flags |= ENGINE_AVAILABLE;
 					break;
 				}
@@ -448,7 +440,7 @@ static bool FixTTOEngines()
 		}
 
 		e->preview_company = INVALID_COMPANY;
-		e->preview_asked = (CompanyMask)-1;
+		e->preview_asked = MAX_UVALUE(CompanyMask);
 		e->preview_wait = 0;
 		e->name = std::string{};
 	}
@@ -463,17 +455,17 @@ static void FixTTOCompanies()
 	}
 }
 
-static inline byte RemapTTOColour(byte tto)
+static inline Colours RemapTTOColour(Colours tto)
 {
 	/** Lossy remapping of TTO colours to TTD colours. SVXConverter uses the same conversion. */
-	static const byte tto_colour_remap[] = {
+	static const Colours tto_colour_remap[] = {
 		COLOUR_DARK_BLUE,  COLOUR_GREY,       COLOUR_YELLOW,     COLOUR_RED,
 		COLOUR_PURPLE,     COLOUR_DARK_GREEN, COLOUR_ORANGE,     COLOUR_PALE_GREEN,
 		COLOUR_BLUE,       COLOUR_GREEN,      COLOUR_CREAM,      COLOUR_BROWN,
 		COLOUR_WHITE,      COLOUR_LIGHT_BLUE, COLOUR_MAUVE,      COLOUR_PINK
 	};
 
-	if ((size_t)tto >= lengthof(tto_colour_remap)) return COLOUR_GREY; // this shouldn't happen
+	if (static_cast<size_t>(tto) >= std::size(tto_colour_remap)) return COLOUR_GREY; // this shouldn't happen
 
 	return tto_colour_remap[tto];
 }
@@ -489,11 +481,32 @@ static inline uint RemapOrderIndex(uint x)
 }
 
 extern std::vector<TileIndex> _animated_tiles;
+extern TimeoutTimer<TimerGameTick> _new_competitor_timeout;
 extern char *_old_name_array;
 
-static uint32 _old_town_index;
-static uint16 _old_string_id;
-static uint16 _old_string_id_2;
+static uint32_t _old_town_index;
+static uint16_t _old_string_id;
+static uint16_t _old_string_id_2;
+
+static void ClearOldMap3(TileIndex t)
+{
+	Tile tile(t);
+	tile.m3() = 0;
+	tile.m4() = 0;
+}
+
+static Town *RemapTown(TileIndex fallback)
+{
+	/* In some cases depots, industries and stations could refer to a missing town. */
+	Town *t = Town::GetIfValid(RemapTownIndex(_old_town_index));
+	if (t == nullptr) {
+		/* In case the town that was refered to does not exist, find the closest.
+		 * However, this needs the kd-tree to be present. */
+		RebuildTownKdtree();
+		t = CalcClosestTownFromTile(fallback);
+	}
+	return t;
+}
 
 static void ReadTTDPatchFlags()
 {
@@ -509,8 +522,8 @@ static void ReadTTDPatchFlags()
 
 	if (_savegame_type == SGT_TTO) return;
 
-	/* TTDPatch misuses _old_map3 for flags.. read them! */
-	_old_vehicle_multiplier = _old_map3[0];
+	/* TTDPatch misuses old map3 (now m3/m4) for flags.. read them! */
+	_old_vehicle_multiplier = Tile(0).m3();
 	/* Somehow.... there was an error in some savegames, so 0 becomes 1
 	 * and 1 becomes 2. The rest of the values are okay */
 	if (_old_vehicle_multiplier < 2) _old_vehicle_multiplier++;
@@ -524,18 +537,26 @@ static void ReadTTDPatchFlags()
 	 * 1 vehicle   == 128 bytes */
 	_bump_assert_value = (_old_vehicle_multiplier - 1) * 850 * 128;
 
-	for (uint i = 0; i < 17; i++) { // check tile 0, too
-		if (_old_map3[i] != 0) _savegame_type = SGT_TTDP1;
+	/* The first 17 bytes are used by TTDP1, which translates to the first 9 m3s and first 8 m4s. */
+	for (TileIndex i = 0; i <= 8; i++) { // check tile 0, too
+		Tile tile(i);
+		if (tile.m3() != 0 || (i != 8 && tile.m4() != 0)) _savegame_type = SGT_TTDP1;
 	}
 
 	/* Check if we have a modern TTDPatch savegame (has extra data all around) */
-	if (memcmp(&_old_map3[0x1FFFA], "TTDp", 4) == 0) _savegame_type = SGT_TTDP2;
+	Tile ttdp2_header_first(Map::Size() - 3);
+	Tile ttdp2_header_second(Map::Size() - 2);
+	if (ttdp2_header_first.m3() == 'T' && ttdp2_header_first.m4() == 'T' &&
+		ttdp2_header_second.m3() == 'D' && ttdp2_header_second.m4() == 'p') {
+		_savegame_type = SGT_TTDP2;
+	}
 
-	_old_extra_chunk_nums = _old_map3[_savegame_type == SGT_TTDP2 ? 0x1FFFE : 0x2];
+	Tile extra_chunk_tile = Tile(_savegame_type == SGT_TTDP2 ? Map::Size() - 1 : 1);
+	_old_extra_chunk_nums = extra_chunk_tile.m3() | extra_chunk_tile.m4() << 8;
 
 	/* Clean the misused places */
-	for (uint i = 0;       i < 17;      i++) _old_map3[i] = 0;
-	for (uint i = 0x1FE00; i < 0x20000; i++) _old_map3[i] = 0;
+	for (TileIndex i = 0; i < 9; i++) ClearOldMap3(i);
+	for (TileIndex i = TileXY(0, Map::MaxY()); i < Map::Size(); i++) ClearOldMap3(i);
 
 	if (_savegame_type == SGT_TTDP2) Debug(oldloader, 2, "Found TTDPatch game");
 
@@ -569,21 +590,22 @@ static const OldChunks town_chunk[] = {
 	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, Town, time_until_rebuild ),
 	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, Town, growth_rate ),
 
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[CT_PASSENGERS].new_max ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[CT_MAIL].new_max ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[CT_PASSENGERS].new_act ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[CT_MAIL].new_act ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[CT_PASSENGERS].old_max ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[CT_MAIL].old_max ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[CT_PASSENGERS].old_act ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[CT_MAIL].old_act ),
+	/* Slots 0 and 2 are passengers and mail respectively for old saves. */
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[0].new_max ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[2].new_max ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[0].new_act ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[2].new_act ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[0].old_max ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[2].old_max ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[0].old_act ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[2].old_act ),
 
 	OCL_NULL( 2 ),         ///< pct_pass_transported / pct_mail_transported, now computed on the fly
 
-	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TE_FOOD].new_act ),
-	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TE_WATER].new_act ),
-	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TE_FOOD].old_act ),
-	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TE_WATER].old_act ),
+	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TAE_FOOD].new_act ),
+	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TAE_WATER].new_act ),
+	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TAE_FOOD].old_act ),
+	OCL_SVAR( OC_TTD | OC_UINT16, Town, received[TAE_WATER].old_act ),
 
 	OCL_SVAR(  OC_UINT8, Town, road_build_months ),
 	OCL_SVAR(  OC_UINT8, Town, fund_buildings_months ),
@@ -610,7 +632,7 @@ static bool LoadOldTown(LoadgameState *ls, int num)
 	return true;
 }
 
-static uint16 _old_order;
+static uint16_t _old_order;
 static const OldChunks order_chunk[] = {
 	OCL_VAR ( OC_UINT16,   1, &_old_order ),
 	OCL_END()
@@ -635,7 +657,7 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 	return true;
 }
 
-static bool LoadOldAnimTileList(LoadgameState *ls, int num)
+static bool LoadOldAnimTileList(LoadgameState *ls, int)
 {
 	TileIndex anim_list[256];
 	const OldChunks anim_chunk[] = {
@@ -666,10 +688,7 @@ static bool LoadOldDepot(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, d, depot_chunk)) return false;
 
 	if (d->xy != 0) {
-		/* In some cases, there could be depots referencing invalid town. */
-		Town *t = Town::GetIfValid(RemapTownIndex(_old_town_index));
-		if (t == nullptr) t = Town::GetRandom();
-		d->town = t;
+		d->town = RemapTown(d->xy);
 	} else {
 		delete d;
 	}
@@ -678,16 +697,16 @@ static bool LoadOldDepot(LoadgameState *ls, int num)
 }
 
 static StationID _current_station_id;
-static uint16 _waiting_acceptance;
-static uint8  _cargo_source;
-static uint8  _cargo_days;
+static uint16_t _waiting_acceptance;
+static uint8_t  _cargo_source;
+static uint8_t  _cargo_periods;
 
 static const OldChunks goods_chunk[] = {
 	OCL_VAR ( OC_UINT16, 1,          &_waiting_acceptance ),
 	OCL_SVAR(  OC_UINT8, GoodsEntry, time_since_pickup ),
 	OCL_SVAR(  OC_UINT8, GoodsEntry, rating ),
 	OCL_VAR (  OC_UINT8, 1,          &_cargo_source ),
-	OCL_VAR (  OC_UINT8, 1,          &_cargo_days ),
+	OCL_VAR (  OC_UINT8, 1,          &_cargo_periods ),
 	OCL_SVAR(  OC_UINT8, GoodsEntry, last_speed ),
 	OCL_SVAR(  OC_UINT8, GoodsEntry, last_age ),
 
@@ -707,7 +726,7 @@ static bool LoadOldGood(LoadgameState *ls, int num)
 	SB(ge->status, GoodsEntry::GES_ACCEPTANCE, 1, HasBit(_waiting_acceptance, 15));
 	SB(ge->status, GoodsEntry::GES_RATING, 1, _cargo_source != 0xFF);
 	if (GB(_waiting_acceptance, 0, 12) != 0 && CargoPacket::CanAllocateItem()) {
-		ge->cargo.Append(new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_days, (_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source, 0, 0),
+		ge->cargo.Append(new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_periods, (_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source, INVALID_TILE, 0),
 				INVALID_STATION);
 	}
 
@@ -759,7 +778,7 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, st, station_chunk)) return false;
 
 	if (st->xy != 0) {
-		st->town = Town::Get(RemapTownIndex(_old_town_index));
+		st->town = RemapTown(st->xy);
 
 		if (_savegame_type == SGT_TTO) {
 			if (IsInsideBS(_old_string_id, 0x180F, 32)) {
@@ -785,6 +804,10 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 	return true;
 }
 
+/* Old save games always have 3 input and 2 output slots per industry. */
+static std::array<Industry::AcceptedCargo, INDUSTRY_ORIGINAL_NUM_INPUTS> _old_accepted{};
+static std::array<Industry::ProducedCargo, INDUSTRY_ORIGINAL_NUM_OUTPUTS> _old_produced{};
+
 static const OldChunks industry_chunk[] = {
 	OCL_SVAR(   OC_TILE, Industry, location.tile ),
 	OCL_VAR ( OC_UINT32,   1, &_old_town_index ),
@@ -792,30 +815,29 @@ static const OldChunks industry_chunk[] = {
 	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Industry, location.h ),
 	OCL_NULL( 2 ),  ///< used to be industry's produced_cargo
 
-	OCL_SVAR( OC_TTD | OC_UINT16, Industry, produced_cargo_waiting[0] ),
-	OCL_SVAR( OC_TTD | OC_UINT16, Industry, produced_cargo_waiting[1] ),
-	OCL_SVAR( OC_TTO | OC_FILE_U8 | OC_VAR_U16, Industry, produced_cargo_waiting[0] ),
-	OCL_SVAR( OC_TTO | OC_FILE_U8 | OC_VAR_U16, Industry, produced_cargo_waiting[1] ),
+	OCL_VAR( OC_TTD | OC_UINT16, 1, &_old_produced[0].waiting ),
+	OCL_VAR( OC_TTD | OC_UINT16, 1, &_old_produced[1].waiting ),
+	OCL_VAR( OC_TTO | OC_FILE_U8 | OC_VAR_U16, 1, &_old_produced[0].waiting ),
+	OCL_VAR( OC_TTO | OC_FILE_U8 | OC_VAR_U16, 1, &_old_produced[1].waiting ),
 
-	OCL_SVAR(  OC_UINT8, Industry, production_rate[0] ),
-	OCL_SVAR(  OC_UINT8, Industry, production_rate[1] ),
+	OCL_VAR(  OC_UINT8, 1, &_old_produced[0].rate ),
+	OCL_VAR(  OC_UINT8, 1, &_old_produced[1].rate ),
 
 	OCL_NULL( 3 ),  ///< used to be industry's accepts_cargo
 
 	OCL_SVAR(  OC_UINT8, Industry, prod_level ),
 
-	OCL_SVAR( OC_UINT16, Industry, this_month_production[0] ),
-	OCL_SVAR( OC_UINT16, Industry, this_month_production[1] ),
-	OCL_SVAR( OC_UINT16, Industry, this_month_transported[0] ),
-	OCL_SVAR( OC_UINT16, Industry, this_month_transported[1] ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[0].history[THIS_MONTH].production ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[1].history[THIS_MONTH].production ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[0].history[THIS_MONTH].transported ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[1].history[THIS_MONTH].transported ),
 
-	OCL_SVAR(  OC_UINT8, Industry, last_month_pct_transported[0] ),
-	OCL_SVAR(  OC_UINT8, Industry, last_month_pct_transported[1] ),
+	OCL_NULL( 2 ), ///< last_month_pct_transported, now computed on the fly
 
-	OCL_SVAR( OC_UINT16, Industry, last_month_production[0] ),
-	OCL_SVAR( OC_UINT16, Industry, last_month_production[1] ),
-	OCL_SVAR( OC_UINT16, Industry, last_month_transported[0] ),
-	OCL_SVAR( OC_UINT16, Industry, last_month_transported[1] ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[0].history[LAST_MONTH].production ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[1].history[LAST_MONTH].production ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[0].history[LAST_MONTH].transported ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[1].history[LAST_MONTH].transported ),
 
 	OCL_SVAR(  OC_UINT8, Industry, type ),
 	OCL_SVAR( OC_TTO | OC_FILE_U8 | OC_VAR_U16, Industry, counter ),
@@ -836,14 +858,17 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, i, industry_chunk)) return false;
 
 	if (i->location.tile != 0) {
-		i->town = Town::Get(RemapTownIndex(_old_town_index));
+		/* Copy data from old fixed arrays to industry. */
+		std::copy(std::begin(_old_accepted), std::end(_old_accepted), std::back_inserter(i->accepted));
+		std::copy(std::begin(_old_produced), std::end(_old_produced), std::back_inserter(i->produced));
+
+		i->town = RemapTown(i->location.tile);
 
 		if (_savegame_type == SGT_TTO) {
 			if (i->type > 0x06) i->type++; // Printing Works were added
 			if (i->type == 0x0A) i->type = 0x12; // Iron Ore Mine has different ID
 
-			YearMonthDay ymd;
-			ConvertDateToYMD(_date, &ymd);
+			TimerGameEconomy::YearMonthDay ymd = TimerGameEconomy::ConvertDateToYMD(TimerGameEconomy::date);
 			i->last_prod_year = ymd.year;
 
 			i->random_colour = RemapTTOColour(i->random_colour);
@@ -858,7 +883,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 }
 
 static CompanyID _current_company_id;
-static int32 _old_yearly;
+static int32_t _old_yearly;
 
 static const OldChunks _company_yearly_chunk[] = {
 	OCL_VAR(  OC_INT32,   1, &_old_yearly ),
@@ -892,7 +917,7 @@ static const OldChunks _company_economy_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldCompanyEconomy(LoadgameState *ls, int num)
+static bool LoadOldCompanyEconomy(LoadgameState *ls, int)
 {
 	Company *c = Company::Get(_current_company_id);
 
@@ -945,12 +970,10 @@ static const OldChunks _company_chunk[] = {
 	OCL_CNULL( OC_TTD, 1 ),           // Old AI
 	OCL_CNULL( OC_TTD, 1 ), // avail_railtypes
 	OCL_SVAR(   OC_TILE, Company, location_of_HQ ),
-	OCL_SVAR( OC_TTD | OC_UINT8, Company, share_owners[0] ),
-	OCL_SVAR( OC_TTD | OC_UINT8, Company, share_owners[1] ),
-	OCL_SVAR( OC_TTD | OC_UINT8, Company, share_owners[2] ),
-	OCL_SVAR( OC_TTD | OC_UINT8, Company, share_owners[3] ),
 
-	OCL_CNULL( OC_TTD, 8 ), ///< junk at end of chunk
+	OCL_CNULL( OC_TTD, 4 ), // Shares
+
+	OCL_CNULL( OC_TTD, 8 ), // junk at end of chunk
 
 	OCL_END()
 };
@@ -1019,14 +1042,14 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 		if (c->money == 893288) c->money = c->current_loan = 100000;
 	}
 
-	_company_colours[num] = (Colours)c->colour;
-	c->inaugurated_year -= ORIGINAL_BASE_YEAR;
+	_company_colours[num] = c->colour;
+	c->inaugurated_year -= EconomyTime::ORIGINAL_BASE_YEAR;
 
 	return true;
 }
 
-static uint32 _old_order_ptr;
-static uint16 _old_next_ptr;
+static uint32_t _old_order_ptr;
+static uint16_t _old_next_ptr;
 static VehicleID _current_vehicle_id;
 
 static const OldChunks vehicle_train_chunk[] = {
@@ -1097,7 +1120,7 @@ static const OldChunks vehicle_empty_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
+static bool LoadOldVehicleUnion(LoadgameState *ls, int)
 {
 	Vehicle *v = Vehicle::GetIfValid(_current_vehicle_id);
 	uint temp = ls->total_read;
@@ -1126,7 +1149,7 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 	return res;
 }
 
-static uint16 _cargo_count;
+static uint16_t _cargo_count;
 
 static const OldChunks vehicle_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Vehicle, subtype ),
@@ -1175,7 +1198,7 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_VAR ( OC_TTD | OC_UINT16, 1, &_cargo_count ),
 	OCL_VAR ( OC_TTO | OC_FILE_U8 | OC_VAR_U16, 1, &_cargo_count ),
 	OCL_VAR (  OC_UINT8, 1,       &_cargo_source ),
-	OCL_VAR (  OC_UINT8, 1,       &_cargo_days ),
+	OCL_VAR (  OC_UINT8, 1,       &_cargo_periods ),
 
 	OCL_SVAR( OC_TTO | OC_UINT8, Vehicle, tick_counter ),
 
@@ -1266,7 +1289,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 
 			switch (v->type) {
 				case VEH_TRAIN: {
-					static const byte spriteset_rail[] = {
+					static const uint8_t spriteset_rail[] = {
 						  0,   2,   4,   4,   8,  10,  12,  14,  16,  18,  20,  22,  40,  42,  44,  46,
 						 48,  52,  54,  66,  68,  70,  72,  74,  76,  78,  80,  82,  84,  86, 120, 122,
 						124, 126, 128, 130, 132, 134, 136, 138, 140
@@ -1287,10 +1310,10 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 
 					switch (v->spritenum) {
 						case 2: // oil tanker && cargo type != oil
-							if (v->cargo_type != CT_OIL) v->spritenum = 0; // make it a coal/goods ship
+							if (v->cargo_type != 3) v->spritenum = 0; // make it a coal/goods ship
 							break;
 						case 4: // passenger ship && cargo type == mail
-							if (v->cargo_type == CT_MAIL) v->spritenum = 0; // make it a mail ship
+							if (v->cargo_type == 2) v->spritenum = 0; // make it a mail ship
 							break;
 						default:
 							break;
@@ -1344,12 +1367,16 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		}
 		v->current_order.AssignOrder(UnpackOldOrder(_old_order));
 
+		if (v->type == VEH_DISASTER) {
+			DisasterVehicle::From(v)->state = UnpackOldOrder(_old_order).GetDestination();
+		}
+
 		v->next = (Vehicle *)(size_t)_old_next_ptr;
 
 		if (_cargo_count != 0 && CargoPacket::CanAllocateItem()) {
 			StationID source =    (_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
 			TileIndex source_xy = (source != INVALID_STATION) ? Station::Get(source)->xy : (TileIndex)0;
-			v->cargo.Append(new CargoPacket(_cargo_count, _cargo_days, source, source_xy, source_xy));
+			v->cargo.Append(new CargoPacket(_cargo_count, _cargo_periods, source, source_xy, 0));
 		}
 	}
 
@@ -1435,7 +1462,7 @@ static bool LoadOldSubsidy(LoadgameState *ls, int num)
 {
 	Subsidy *s = new (num) Subsidy();
 	bool ret = LoadChunk(ls, s, subsidy_chunk);
-	if (s->cargo_type == CT_INVALID) delete s;
+	if (!IsValidCargoID(s->cargo_type)) delete s;
 	return ret;
 }
 
@@ -1460,7 +1487,7 @@ static const OldChunks game_difficulty_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldGameDifficulty(LoadgameState *ls, int num)
+static bool LoadOldGameDifficulty(LoadgameState *ls, int)
 {
 	bool ret = LoadChunk(ls, &_settings_game.difficulty, game_difficulty_chunk);
 	_settings_game.difficulty.max_loan *= 1000;
@@ -1468,59 +1495,56 @@ static bool LoadOldGameDifficulty(LoadgameState *ls, int num)
 }
 
 
-static bool LoadOldMapPart1(LoadgameState *ls, int num)
+static bool LoadOldMapPart1(LoadgameState *ls, int)
 {
 	if (_savegame_type == SGT_TTO) {
 		Map::Allocate(OLD_MAP_SIZE, OLD_MAP_SIZE);
 	}
 
-	for (uint i = 0; i < OLD_MAP_SIZE; i++) {
-		Tile(i).m1() = ReadByte(ls);
+	for (auto t : Map::Iterate()) {
+		t.m1() = ReadByte(ls);
 	}
-	for (uint i = 0; i < OLD_MAP_SIZE; i++) {
-		Tile(i).m2() = ReadByte(ls);
+	for (auto t : Map::Iterate()) {
+		t.m2() = ReadByte(ls);
 	}
 
 	if (_savegame_type != SGT_TTO) {
-		for (uint i = 0; i < OLD_MAP_SIZE; i++) {
-			_old_map3[i * 2] = ReadByte(ls);
-			_old_map3[i * 2 + 1] = ReadByte(ls);
+		/* old map3 is split into to m3 and m4 */
+		for (auto t : Map::Iterate()) {
+			t.m3() = ReadByte(ls);
+			t.m4() = ReadByte(ls);
 		}
-		for (uint i = 0; i < OLD_MAP_SIZE / 4; i++) {
-			byte b = ReadByte(ls);
-			Tile(i * 4 + 0).m6() = GB(b, 0, 2);
-			Tile(i * 4 + 1).m6() = GB(b, 2, 2);
-			Tile(i * 4 + 2).m6() = GB(b, 4, 2);
-			Tile(i * 4 + 3).m6() = GB(b, 6, 2);
+		auto range = Map::Iterate();
+		for (auto it = range.begin(); it != range.end(); /* nothing. */) {
+			uint8_t b = ReadByte(ls);
+			for (int i = 0; i < 8; i += 2, ++it) (*it).m6() = GB(b, i, 2);
 		}
 	}
 
 	return true;
 }
 
-static bool LoadOldMapPart2(LoadgameState *ls, int num)
+static bool LoadOldMapPart2(LoadgameState *ls, int)
 {
-	uint i;
-
-	for (i = 0; i < OLD_MAP_SIZE; i++) {
-		Tile(i).type() = ReadByte(ls);
+	for (auto t : Map::Iterate()) {
+		t.type() = ReadByte(ls);
 	}
-	for (i = 0; i < OLD_MAP_SIZE; i++) {
-		Tile(i).m5() = ReadByte(ls);
+	for (auto t : Map::Iterate()) {
+		t.m5() = ReadByte(ls);
 	}
 
 	return true;
 }
 
-static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
+static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int)
 {
 	ReadTTDPatchFlags();
 
 	Debug(oldloader, 2, "Found {} extra chunk(s)", _old_extra_chunk_nums);
 
 	for (int i = 0; i != _old_extra_chunk_nums; i++) {
-		uint16 id = ReadUint16(ls);
-		uint32 len = ReadUint32(ls);
+		uint16_t id = ReadUint16(ls);
+		uint32_t len = ReadUint32(ls);
 
 		switch (id) {
 			/* List of GRFIDs, used in the savegame. 0x8004 is the new ID
@@ -1532,7 +1556,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 
 				ClearGRFConfigList(&_grfconfig);
 				while (len != 0) {
-					uint32 grfid = ReadUint32(ls);
+					uint32_t grfid = ReadUint32(ls);
 
 					if (ReadByte(ls) == 1) {
 						GRFConfig *c = new GRFConfig("TTDP game, no information");
@@ -1569,16 +1593,16 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 }
 
 extern TileIndex _cur_tileloop_tile;
-extern uint16 _disaster_delay;
-extern byte _trees_tick_ctr;
-extern byte _age_cargo_skip_counter; // From misc_sl.cpp
-extern uint8 _old_diff_level;
-extern uint8 _old_units;
+extern uint16_t _disaster_delay;
+extern uint8_t _trees_tick_ctr;
+extern uint8_t _age_cargo_skip_counter; // From misc_sl.cpp
+extern uint8_t _old_diff_level;
+extern uint8_t _old_units;
 static const OldChunks main_chunk[] = {
 	OCL_ASSERT( OC_TTD, 0 ),
 	OCL_ASSERT( OC_TTO, 0 ),
-	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32, 1, &_date ),
-	OCL_VAR ( OC_UINT16,   1, &_date_fract ),
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32, 1, &TimerGameCalendar::date ),
+	OCL_VAR ( OC_UINT16,   1, &TimerGameCalendar::date_fract ),
 	OCL_NULL( 600 ),            ///< TextEffects
 	OCL_VAR ( OC_UINT32,   2, &_random.state ),
 
@@ -1613,7 +1637,7 @@ static const OldChunks main_chunk[] = {
 	OCL_NULL( 2 ),              ///< land_code,     no longer in use
 
 	OCL_VAR ( OC_FILE_U16 | OC_VAR_U8, 1, &_age_cargo_skip_counter ),
-	OCL_VAR ( OC_FILE_U16 | OC_VAR_U64, 1, &_tick_counter ),
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U64, 1, &TimerGameTick::counter ),
 	OCL_VAR (   OC_TILE,   1, &_cur_tileloop_tile ),
 
 	OCL_ASSERT( OC_TTO, 0x3A2E ),
@@ -1677,7 +1701,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_ASSERT( OC_TTO, 0x496CE ),
 
-	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32,   1, &_next_competitor_start ),
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32,   1, &_new_competitor_timeout.period.value ),
 
 	OCL_CNULL( OC_TTO, 2 ),  ///< available monorail bitmask
 
@@ -1751,8 +1775,6 @@ bool LoadTTDMain(LoadgameState *ls)
 	_read_ttdpatch_flags = false;
 
 	/* Load the biggest chunk */
-	std::array<byte, OLD_MAP_SIZE * 2> map3;
-	_old_map3 = map3.data();
 	_old_vehicle_names = nullptr;
 	try {
 		if (!LoadChunk(ls, nullptr, main_chunk)) {
@@ -1794,7 +1816,7 @@ bool LoadTTOMain(LoadgameState *ls)
 
 	_read_ttdpatch_flags = false;
 
-	std::array<byte, 103 * sizeof(Engine)> engines; // we don't want to call Engine constructor here
+	std::array<uint8_t, 103 * sizeof(Engine)> engines; // we don't want to call Engine constructor here
 	_old_engines = (Engine *)engines.data();
 	std::array<StringID, 800> vehnames;
 	_old_vehicle_names = vehnames.data();

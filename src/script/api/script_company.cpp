@@ -32,7 +32,7 @@
 {
 	if (company == COMPANY_SELF) {
 		if (!::Company::IsValidID(_current_company)) return COMPANY_INVALID;
-		return (CompanyID)((byte)_current_company);
+		return (CompanyID)((uint8_t)_current_company);
 	}
 
 	return ::Company::IsValidID(company) ? company : COMPANY_INVALID;
@@ -40,6 +40,7 @@
 
 /* static */ bool ScriptCompany::IsMine(ScriptCompany::CompanyID company)
 {
+	EnforceCompanyModeValid(false);
 	return ResolveCompanyID(company) == ResolveCompanyID(COMPANY_SELF);
 }
 
@@ -56,10 +57,10 @@
 	return ScriptObject::Command<CMD_RENAME_COMPANY>::Do(text);
 }
 
-/* static */ char *ScriptCompany::GetName(ScriptCompany::CompanyID company)
+/* static */ std::optional<std::string> ScriptCompany::GetName(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return nullptr;
+	if (company == COMPANY_INVALID) return std::nullopt;
 
 	::SetDParam(0, company);
 	return GetString(STR_COMPANY_NAME);
@@ -78,20 +79,13 @@
 	return ScriptObject::Command<CMD_RENAME_PRESIDENT>::Do(text);
 }
 
-/* static */ char *ScriptCompany::GetPresidentName(ScriptCompany::CompanyID company)
+/* static */ std::optional<std::string> ScriptCompany::GetPresidentName(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
+	if (company == COMPANY_INVALID) return std::nullopt;
 
-	static const int len = 64;
-	char *president_name = MallocT<char>(len);
-	if (company != COMPANY_INVALID) {
-		::SetDParam(0, company);
-		::GetString(president_name, STR_PRESIDENT_NAME, &president_name[len - 1]);
-	} else {
-		*president_name = '\0';
-	}
-
-	return president_name;
+	::SetDParam(0, company);
+	return GetString(STR_PRESIDENT_NAME);
 }
 
 /* static */ bool ScriptCompany::SetPresidentGender(Gender gender)
@@ -184,8 +178,10 @@
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
+	/* If we return INT64_MAX as usual, overflows may occur in the script. So return a smaller value. */
+	if (_settings_game.difficulty.infinite_money) return INT32_MAX;
 
-	return ::Company::Get(company)->money;
+	return GetAvailableMoney((::CompanyID)company);
 }
 
 /* static */ Money ScriptCompany::GetLoanAmount()
@@ -198,7 +194,32 @@
 
 /* static */ Money ScriptCompany::GetMaxLoanAmount()
 {
-	return _economy.max_loan;
+	if (ScriptCompanyMode::IsDeity()) return _economy.max_loan;
+
+	ScriptCompany::CompanyID company = ResolveCompanyID(COMPANY_SELF);
+	if (company == COMPANY_INVALID) return -1;
+
+	return ::Company::Get(company)->GetMaxLoan();
+}
+
+/* static */ bool ScriptCompany::SetMaxLoanAmountForCompany(CompanyID company, Money amount)
+{
+	EnforceDeityMode(false);
+	EnforcePrecondition(false, amount >= 0 && amount <= (Money)MAX_LOAN_LIMIT);
+
+	company = ResolveCompanyID(company);
+	EnforcePrecondition(false, company != COMPANY_INVALID);
+	return ScriptObject::Command<CMD_SET_COMPANY_MAX_LOAN>::Do((::CompanyID)company, amount);
+}
+
+/* static */ bool ScriptCompany::ResetMaxLoanAmountForCompany(CompanyID company)
+{
+	EnforceDeityMode(false);
+
+	company = ResolveCompanyID(company);
+	EnforcePrecondition(false, company != COMPANY_INVALID);
+
+	return ScriptObject::Command<CMD_SET_COMPANY_MAX_LOAN>::Do((::CompanyID)company, COMPANY_MAX_LOAN_DEFAULT);
 }
 
 /* static */ Money ScriptCompany::GetLoanInterval()
@@ -210,7 +231,7 @@
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, loan >= 0);
-	EnforcePrecondition(false, ((int64)loan % GetLoanInterval()) == 0);
+	EnforcePrecondition(false, ((int64_t)loan % GetLoanInterval()) == 0);
 	EnforcePrecondition(false, loan <= GetMaxLoanAmount());
 	EnforcePrecondition(false, (loan - GetLoanAmount() + GetBankBalance(COMPANY_SELF)) >= 0);
 
@@ -230,7 +251,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, loan >= 0);
 
-	Money over_interval = (int64)loan % GetLoanInterval();
+	Money over_interval = (int64_t)loan % GetLoanInterval();
 	if (over_interval != 0) loan += GetLoanInterval() - over_interval;
 
 	EnforcePrecondition(false, loan <= GetMaxLoanAmount());
@@ -304,7 +325,7 @@
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, money >= 0);
-	EnforcePrecondition(false, (int64)money <= UINT32_MAX);
+	EnforcePrecondition(false, (int64_t)money <= UINT32_MAX);
 	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do("company.engine_renew_money", money);
 }
 

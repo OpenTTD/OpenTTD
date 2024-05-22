@@ -11,100 +11,39 @@
 #define GETOPTDATA_H
 
 /** Flags of an option. */
-enum OptionDataFlags {
+enum OptionDataType : uint8_t {
 	ODF_NO_VALUE,       ///< A plain option (no value attached to it).
 	ODF_HAS_VALUE,      ///< An option with a value.
 	ODF_OPTIONAL_VALUE, ///< An option with an optional value.
-	ODF_END,            ///< Terminator (data is not parsed further).
 };
 
 /** Data of an option. */
 struct OptionData {
-	byte id;              ///< Unique identification of this option data, often the same as #shortname.
-	char shortname;       ///< Short option letter if available, else use \c '\0'.
-	uint16 flags;         ///< Option data flags. @see OptionDataFlags
-	const char *longname; ///< Long option name including '-'/'--' prefix, use \c nullptr if not available.
+	OptionDataType type; ///< The type of option.
+	char id; ///< Unique identification of this option data, often the same as #shortname.
+	char shortname = '\0'; ///< Short option letter if available, else use \c '\0'.
+	const char *longname = nullptr; ///< Long option name including '-'/'--' prefix, use \c nullptr if not available.
 };
 
 /** Data storage for parsing command line options. */
 struct GetOptData {
-	char *opt;                 ///< Option value, if available (else \c nullptr).
-	int numleft;               ///< Number of arguments left in #argv.
-	char **argv;               ///< Remaining command line arguments.
-	const OptionData *options; ///< Command line option descriptions.
-	char *cont;                ///< Next call to #GetOpt should start here (in the middle of an argument).
+	using OptionSpan = std::span<const OptionData>;
+	using ArgumentSpan = std::span<char * const>;
+
+	ArgumentSpan arguments; ///< Remaining command line arguments.
+	const OptionSpan options; ///< Command line option descriptions.
+	const char *opt = nullptr; ///< Option value, if available (else \c nullptr).
+	const char *cont = nullptr; ///< Next call to #GetOpt should start here (in the middle of an argument).
 
 	/**
 	 * Constructor of the data store.
-	 * @param argc Number of command line arguments, excluding the program name.
-	 * @param argv Command line arguments, excluding the program name.
+	 * @param argument The command line arguments, excluding the program name.
 	 * @param options Command line option descriptions.
 	 */
-	GetOptData(int argc, char **argv, const OptionData *options) :
-			opt(nullptr),
-			numleft(argc),
-			argv(argv),
-			options(options),
-			cont(nullptr)
-	{
-	}
+	GetOptData(ArgumentSpan arguments, OptionSpan options) : arguments(arguments), options(options) {}
 
 	int GetOpt();
+	int GetOpt(const OptionData &option);
 };
-
-/**
- * General macro for creating an option.
- * @param id        Identification of the option.
- * @param shortname Short option name. Use \c '\0' if not used.
- * @param longname  Long option name including leading '-' or '--'. Use \c nullptr if not used.
- * @param flags     Flags of the option.
- */
-#define GETOPT_GENERAL(id, shortname, longname, flags) { id, shortname, flags, longname }
-
-/**
- * Short option without value.
- * @param shortname Short option name. Use \c '\0' if not used.
- * @param longname  Long option name including leading '-' or '--'. Use \c nullptr if not used.
- */
-#define GETOPT_NOVAL(shortname, longname) GETOPT_GENERAL(shortname, shortname, longname, ODF_NO_VALUE)
-
-/**
- * Short option with value.
- * @param shortname Short option name. Use \c '\0' if not used.
- * @param longname  Long option name including leading '-' or '--'. Use \c nullptr if not used.
- */
-#define GETOPT_VALUE(shortname, longname) GETOPT_GENERAL(shortname, shortname, longname, ODF_HAS_VALUE)
-
-/**
- * Short option with optional value.
- * @param shortname Short option name. Use \c '\0' if not used.
- * @param longname  Long option name including leading '-' or '--'. Use \c nullptr if not used.
- * @note Options with optional values are hopelessly ambiguous, eg "-opt -value", avoid them.
- */
-#define GETOPT_OPTVAL(shortname, longname) GETOPT_GENERAL(shortname, shortname, longname, ODF_OPTIONAL_VALUE)
-
-
-/**
- * Short option without value.
- * @param shortname Short option name. Use \c '\0' if not used.
- */
-#define GETOPT_SHORT_NOVAL(shortname) GETOPT_NOVAL(shortname, nullptr)
-
-/**
- * Short option with value.
- * @param shortname Short option name. Use \c '\0' if not used.
- */
-#define GETOPT_SHORT_VALUE(shortname) GETOPT_VALUE(shortname, nullptr)
-
-/**
- * Short option with optional value.
- * @param shortname Short option name. Use \c '\0' if not used.
- * @note Options with optional values are hopelessly ambiguous, eg "-opt -value", avoid them.
- */
-#define GETOPT_SHORT_OPTVAL(shortname) GETOPT_OPTVAL(shortname, nullptr)
-
-/** Option terminator. */
-#define GETOPT_END() { '\0', '\0', ODF_END, nullptr}
-
 
 #endif /* GETOPTDATA_H */

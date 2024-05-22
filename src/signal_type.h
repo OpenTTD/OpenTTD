@@ -13,15 +13,15 @@
 #include "core/enum_type.hpp"
 
 /** Variant of the signal, i.e. how does the signal look? */
-enum SignalVariant : byte {
+enum SignalVariant : uint8_t {
 	SIG_ELECTRIC  = 0, ///< Light signal
 	SIG_SEMAPHORE = 1, ///< Old-fashioned semaphore signal
 };
 
 
 /** Type of signal, i.e. how does the signal behave? */
-enum SignalType : byte {
-	SIGTYPE_NORMAL     = 0, ///< normal signal
+enum SignalType : uint8_t {
+	SIGTYPE_BLOCK      = 0, ///< block signal
 	SIGTYPE_ENTRY      = 1, ///< presignal block entry
 	SIGTYPE_EXIT       = 2, ///< presignal block exit
 	SIGTYPE_COMBO      = 3, ///< presignal inter-block
@@ -32,9 +32,7 @@ enum SignalType : byte {
 	SIGTYPE_LAST       = SIGTYPE_PBS_ONEWAY,
 	SIGTYPE_LAST_NOPBS = SIGTYPE_COMBO,
 };
-/** Helper information for extract tool. */
-template <> struct EnumPropsT<SignalType> : MakeEnumPropsT<SignalType, byte, SIGTYPE_NORMAL, SIGTYPE_END, SIGTYPE_END, 3> {};
-
+DECLARE_ENUM_AS_ADDABLE(SignalType)
 
 /**
  * These are states in which a signal can be. Currently these are only two, so

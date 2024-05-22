@@ -20,7 +20,7 @@
 {
 	PoolVector *pools = PoolBase::GetPools();
 	pools->erase(std::find(pools->begin(), pools->end(), this));
-	if (pools->size() == 0) delete pools;
+	if (pools->empty()) delete pools;
 }
 
 /**

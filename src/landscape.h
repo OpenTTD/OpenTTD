@@ -21,25 +21,25 @@ static const uint SNOW_LINE_DAYS   = 32; ///< Number of days in each month in th
  * @ingroup SnowLineGroup
  */
 struct SnowLine {
-	byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS]; ///< Height of the snow line each day of the year
-	byte highest_value; ///< Highest snow line of the year
-	byte lowest_value;  ///< Lowest snow line of the year
+	uint8_t table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS]; ///< Height of the snow line each day of the year
+	uint8_t highest_value; ///< Highest snow line of the year
+	uint8_t lowest_value;  ///< Lowest snow line of the year
 };
 
 bool IsSnowLineSet();
-void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS]);
-byte GetSnowLine();
-byte HighestSnowLine();
-byte LowestSnowLine();
+void SetSnowLine(uint8_t table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS]);
+uint8_t GetSnowLine();
+uint8_t HighestSnowLine();
+uint8_t LowestSnowLine();
 void ClearSnowLine();
 
 int GetSlopeZInCorner(Slope tileh, Corner corner);
-Slope GetFoundationSlope(TileIndex tile, int *z = nullptr);
+std::tuple<Slope, int> GetFoundationSlope(TileIndex tile);
 
 uint GetPartialPixelZ(int x, int y, Slope corners);
-int GetSlopePixelZ(int x, int y);
+int GetSlopePixelZ(int x, int y, bool ground_vehicle = false);
 int GetSlopePixelZOutsideMap(int x, int y);
-void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2);
+void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int &z1, int &z2);
 
 /**
  * Determine the Z height of a corner relative to TileZ.
@@ -50,7 +50,7 @@ void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2);
  * @param corner The corner.
  * @return Z position of corner relative to TileZ.
  */
-static inline int GetSlopePixelZInCorner(Slope tileh, Corner corner)
+inline int GetSlopePixelZInCorner(Slope tileh, Corner corner)
 {
 	return GetSlopeZInCorner(tileh, corner) * TILE_HEIGHT;
 }
@@ -60,15 +60,12 @@ static inline int GetSlopePixelZInCorner(Slope tileh, Corner corner)
  * If a tile does not have a foundation, the function returns the same as GetTilePixelSlope.
  *
  * @param tile The tile of interest.
- * @param z returns the z of the foundation slope. (Can be nullptr, if not needed)
- * @return The slope on top of the foundation.
+ * @return The slope on top of the foundation and the z of the foundation.
  */
-static inline Slope GetFoundationPixelSlope(TileIndex tile, int *z)
+inline std::tuple<Slope, int> GetFoundationPixelSlope(TileIndex tile)
 {
-	assert(z != nullptr);
-	Slope s = GetFoundationSlope(tile, z);
-	*z *= TILE_HEIGHT;
-	return s;
+	auto [s, z] = GetFoundationSlope(tile);
+	return {s, z * TILE_HEIGHT};
 }
 
 /**
@@ -79,11 +76,11 @@ static inline Slope GetFoundationPixelSlope(TileIndex tile, int *z)
  * @return Equivalent coordinate in the 2D view.
  * @see RemapCoords2
  */
-static inline Point RemapCoords(int x, int y, int z)
+inline Point RemapCoords(int x, int y, int z)
 {
 	Point pt;
-	pt.x = (y - x) * 2 * ZOOM_LVL_BASE;
-	pt.y = (y + x - z) * ZOOM_LVL_BASE;
+	pt.x = (y - x) * 2 * ZOOM_BASE;
+	pt.y = (y + x - z) * ZOOM_BASE;
 	return pt;
 }
 
@@ -95,9 +92,9 @@ static inline Point RemapCoords(int x, int y, int z)
  * @return Equivalent coordinate in the 2D view.
  * @see RemapCoords
  */
-static inline Point RemapCoords2(int x, int y)
+inline Point RemapCoords2(int x, int y)
 {
-	return RemapCoords(x, y, GetSlopePixelZ(x, y));
+	return RemapCoords(x, y, GetSlopePixelZ(x, y, false));
 }
 
 /**
@@ -109,15 +106,15 @@ static inline Point RemapCoords2(int x, int y)
  * @note Inverse of #RemapCoords function. Smaller values may get rounded.
  * @see InverseRemapCoords2
  */
-static inline Point InverseRemapCoords(int x, int y)
+inline Point InverseRemapCoords(int x, int y)
 {
-	Point pt = {(y * 2 - x) >> (2 + ZOOM_LVL_SHIFT), (y * 2 + x) >> (2 + ZOOM_LVL_SHIFT)};
+	Point pt = {(y * 2 - x) >> (2 + ZOOM_BASE_SHIFT), (y * 2 + x) >> (2 + ZOOM_BASE_SHIFT)};
 	return pt;
 }
 
 Point InverseRemapCoords2(int x, int y, bool clamp_to_map = false, bool *clamped = nullptr);
 
-uint ApplyFoundationToSlope(Foundation f, Slope *s);
+uint ApplyFoundationToSlope(Foundation f, Slope &s);
 /**
  * Applies a foundation to a slope.
  *
@@ -126,7 +123,7 @@ uint ApplyFoundationToSlope(Foundation f, Slope *s);
  * @param s  The #Slope to modify.
  * @return   Increment to the tile Z coordinate.
  */
-static inline uint ApplyPixelFoundationToSlope(Foundation f, Slope *s)
+inline uint ApplyPixelFoundationToSlope(Foundation f, Slope &s)
 {
 	return ApplyFoundationToSlope(f, s) * TILE_HEIGHT;
 }
@@ -139,6 +136,6 @@ void DoClearSquare(TileIndex tile);
 void RunTileLoop();
 
 void InitializeLandscape();
-void GenerateLandscape(byte mode);
+bool GenerateLandscape(uint8_t mode);
 
 #endif /* LANDSCAPE_H */

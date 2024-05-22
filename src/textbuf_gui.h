@@ -20,7 +20,6 @@ enum QueryStringFlags {
 	QSF_ACCEPT_UNCHANGED = 0x01, ///< return success even when the text didn't change
 	QSF_ENABLE_DEFAULT   = 0x02, ///< enable the 'Default' button ("\0" is returned)
 	QSF_LEN_IN_CHARS     = 0x04, ///< the length of the string is counted in characters
-	QSF_PASSWORD         = 0x08, ///< password entry box, show warning about password security
 };
 
 DECLARE_ENUM_AS_BIT_SET(QueryStringFlags)
@@ -29,7 +28,7 @@ DECLARE_ENUM_AS_BIT_SET(QueryStringFlags)
 typedef void QueryCallbackProc(Window*, bool);
 
 void ShowQueryString(StringID str, StringID caption, uint max_len, Window *parent, CharSetFilter afilter, QueryStringFlags flags);
-void ShowQuery(StringID caption, StringID message, Window *w, QueryCallbackProc *callback);
+void ShowQuery(StringID caption, StringID message, Window *w, QueryCallbackProc *callback, bool focus = false);
 
 /** The number of 'characters' on the on-screen keyboard. */
 static const uint OSK_KEYBOARD_ENTRIES = 50;

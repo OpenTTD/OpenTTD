@@ -15,11 +15,12 @@
 #include "town.h"
 #include "waypoint_base.h"
 #include "pathfinder/yapf/yapf_cache.h"
+#include "pathfinder/water_regions.h"
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
 #include "window_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "vehicle_func.h"
 #include "string_func.h"
 #include "company_func.h"
@@ -43,7 +44,7 @@ void Waypoint::UpdateVirtCoord()
 	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeWaypoint(this->index));
 
 	SetDParam(0, this->index);
-	this->sign.UpdatePosition(pt.x, pt.y - 32 * ZOOM_LVL_BASE, STR_VIEWPORT_WAYPOINT);
+	this->sign.UpdatePosition(pt.x, pt.y - 32 * ZOOM_BASE, STR_VIEWPORT_WAYPOINT);
 
 	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeWaypoint(this->index));
 
@@ -154,9 +155,9 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 	return CommandCost();
 }
 
-extern void GetStationLayout(byte *layout, uint numtracks, uint plat_len, const StationSpec *statspec);
+extern void GetStationLayout(uint8_t *layout, uint numtracks, uint plat_len, const StationSpec *statspec);
 extern CommandCost FindJoiningWaypoint(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Waypoint **wp);
-extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis);
+extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta);
 
 /**
  * Convert existing rail to waypoint. Eg build a waypoint station over
@@ -172,15 +173,17 @@ extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta,
  * @param adjacent allow waypoints directly adjacent to other waypoints.
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis axis, byte width, byte height, StationClassID spec_class, byte spec_index, StationID station_to_join, bool adjacent)
+CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis axis, uint8_t width, uint8_t height, StationClassID spec_class, uint16_t spec_index, StationID station_to_join, bool adjacent)
 {
 	if (!IsValidAxis(axis)) return CMD_ERROR;
 	/* Check if the given station class is valid */
-	if (spec_class != STAT_CLASS_WAYP) return CMD_ERROR;
-	if (spec_index >= StationClass::Get(spec_class)->GetSpecCount()) return CMD_ERROR;
+	if (static_cast<uint>(spec_class) >= StationClass::GetClassCount()) return CMD_ERROR;
+	const StationClass *cls = StationClass::Get(spec_class);
+	if (!IsWaypointClass(*cls)) return CMD_ERROR;
+	if (spec_index >= cls->GetSpecCount()) return CMD_ERROR;
 
 	/* The number of parts to build */
-	byte count = axis == AXIS_X ? height : width;
+	uint8_t count = axis == AXIS_X ? height : width;
 
 	if ((axis == AXIS_X ? width : height) != 1) return CMD_ERROR;
 	if (count == 0 || count > _settings_game.station.station_spread) return CMD_ERROR;
@@ -195,15 +198,8 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 
 	/* only AddCost for non-existing waypoints */
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-	bool success = false;
 	for (TileIndex cur_tile : new_location) {
-		if (!IsRailWaypointTile(cur_tile)) {
-			cost.AddCost(_price[PR_BUILD_WAYPOINT_RAIL]);
-			success = true;
-		}
-	}
-	if (!success) {
-		return_cmd_error(STR_ERROR_ALREADY_BUILT);
+		if (!IsRailWaypointTile(cur_tile)) cost.AddCost(_price[PR_BUILD_WAYPOINT_RAIL]);
 	}
 
 	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
@@ -231,7 +227,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 
 		/* check if we want to expand an already existing waypoint? */
 		if (wp->train_station.tile != INVALID_TILE) {
-			ret = CanExpandRailStation(wp, new_location, axis);
+			ret = CanExpandRailStation(wp, new_location);
 			if (ret.Failed()) return ret;
 		}
 
@@ -255,7 +251,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 
 		wp->delete_ctr = 0;
 		wp->facilities |= FACIL_TRAIN;
-		wp->build_date = _date;
+		wp->build_date = TimerGameCalendar::date;
 		wp->string_id = STR_SV_STNAME_WAYPOINT;
 		wp->train_station = new_location;
 
@@ -264,26 +260,26 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 		wp->UpdateVirtCoord();
 
 		const StationSpec *spec = StationClass::Get(spec_class)->GetSpec(spec_index);
-		byte *layout_ptr = AllocaM(byte, count);
-		if (spec == nullptr) {
-			/* The layout must be 0 for the 'normal' waypoints by design. */
-			memset(layout_ptr, 0, count);
-		} else {
-			/* But for NewGRF waypoints we like to have their style. */
-			GetStationLayout(layout_ptr, count, 1, spec);
+		std::vector<uint8_t> layout(count);
+		if (spec != nullptr) {
+			/* For NewGRF waypoints we like to have their style. */
+			GetStationLayout(layout.data(), count, 1, spec);
 		}
-		byte map_spec_index = AllocateSpecToStation(spec, wp, true);
+		uint8_t map_spec_index = AllocateSpecToStation(spec, wp, true);
 
 		Company *c = Company::Get(wp->owner);
 		for (int i = 0; i < count; i++) {
 			TileIndex tile = start_tile + i * offset;
-			byte old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
+			uint8_t old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
 			if (!HasStationTileRail(tile)) c->infrastructure.station++;
 			bool reserved = IsTileType(tile, MP_RAILWAY) ?
 					HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis)) :
 					HasStationReservation(tile);
-			MakeRailWaypoint(tile, wp->owner, wp->index, axis, layout_ptr[i], GetRailType(tile));
+			MakeRailWaypoint(tile, wp->owner, wp->index, axis, layout[i], GetRailType(tile));
 			SetCustomStationSpecIndex(tile, map_spec_index);
+
+			SetRailStationTileFlags(tile, spec);
+
 			SetRailStationReservation(tile, reserved);
 			MarkTileDirtyByTile(tile);
 
@@ -335,7 +331,7 @@ CommandCost CmdBuildBuoy(DoCommandFlag flags, TileIndex tile)
 		wp->facilities |= FACIL_DOCK;
 		wp->owner = OWNER_NONE;
 
-		wp->build_date = _date;
+		wp->build_date = TimerGameCalendar::date;
 
 		if (wp->town == nullptr) MakeDefaultName(wp);
 

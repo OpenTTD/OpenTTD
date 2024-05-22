@@ -25,16 +25,14 @@
 static std::string _game_saveload_name;
 static int         _game_saveload_version;
 static std::string _game_saveload_settings;
-static bool        _game_saveload_is_random;
 
 static const SaveLoad _game_script_desc[] = {
 	   SLEG_SSTR("name",      _game_saveload_name,         SLE_STR),
 	   SLEG_SSTR("settings",  _game_saveload_settings,     SLE_STR),
 	    SLEG_VAR("version",   _game_saveload_version,   SLE_UINT32),
-	    SLEG_VAR("is_random", _game_saveload_is_random,   SLE_BOOL),
 };
 
-static void SaveReal_GSDT(int *index_ptr)
+static void SaveReal_GSDT(int *)
 {
 	GameConfig *config = GameConfig::GetConfig();
 
@@ -47,7 +45,6 @@ static void SaveReal_GSDT(int *index_ptr)
 		_game_saveload_version = -1;
 	}
 
-	_game_saveload_is_random = config->IsRandom();
 	_game_saveload_settings = config->SettingsToString();
 
 	SlObject(nullptr, _game_script_desc);
@@ -62,7 +59,7 @@ struct GSDTChunkHandler : ChunkHandler {
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_game_script_desc, _game_script_sl_compat);
 
 		/* Free all current data */
-		GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME)->Change(nullptr);
+		GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME)->Change(std::nullopt);
 
 		if (SlIterateArray() == -1) return;
 
@@ -77,11 +74,11 @@ struct GSDTChunkHandler : ChunkHandler {
 
 		GameConfig *config = GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME);
 		if (!_game_saveload_name.empty()) {
-			config->Change(_game_saveload_name.c_str(), _game_saveload_version, false, _game_saveload_is_random);
+			config->Change(_game_saveload_name, _game_saveload_version, false);
 			if (!config->HasScript()) {
 				/* No version of the GameScript available that can load the data. Try to load the
 				 * latest version of the GameScript instead. */
-				config->Change(_game_saveload_name.c_str(), -1, false, _game_saveload_is_random);
+				config->Change(_game_saveload_name, -1, false);
 				if (!config->HasScript()) {
 					if (_game_saveload_name.compare("%_dummy") != 0) {
 						Debug(script, 0, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
@@ -119,7 +116,7 @@ struct GSDTChunkHandler : ChunkHandler {
 extern GameStrings *_current_data;
 
 static std::string _game_saveload_string;
-static uint32 _game_saveload_strings;
+static uint32_t _game_saveload_strings;
 
 class SlGameLanguageString : public DefaultSaveLoadHandler<SlGameLanguageString, LanguageStrings> {
 public:
@@ -140,9 +137,9 @@ public:
 
 	void Load(LanguageStrings *ls) const override
 	{
-		uint32 length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _game_saveload_strings : (uint32)SlGetStructListLength(UINT32_MAX);
+		uint32_t length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _game_saveload_strings : (uint32_t)SlGetStructListLength(UINT32_MAX);
 
-		for (uint32 i = 0; i < length; i++) {
+		for (uint32_t i = 0; i < length; i++) {
 			SlObject(nullptr, this->GetLoadDescription());
 			ls->lines.emplace_back(_game_saveload_string);
 		}
@@ -172,7 +169,7 @@ struct GSTRChunkHandler : ChunkHandler {
 		}
 
 		/* If there were no strings in the savegame, set GameStrings to nullptr */
-		if (_current_data->raw_strings.size() == 0) {
+		if (_current_data->raw_strings.empty()) {
 			delete _current_data;
 			_current_data = nullptr;
 			return;

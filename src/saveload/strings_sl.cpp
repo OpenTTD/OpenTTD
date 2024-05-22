@@ -8,6 +8,7 @@
 /** @file strings_sl.cpp Code handling saving and loading of strings */
 
 #include "../stdafx.h"
+#include "../core/alloc_func.hpp"
 #include "../string_func.h"
 #include "../strings_func.h"
 #include "saveload_internal.h"
@@ -69,7 +70,7 @@ std::string CopyFromOldName(StringID id)
 		std::ostringstream tmp;
 		std::ostreambuf_iterator<char> strto(tmp);
 		for (; *strfrom != '\0'; strfrom++) {
-			WChar c = (byte)*strfrom;
+			char32_t c = (uint8_t)*strfrom;
 
 			/* Map from non-ISO8859-15 characters to UTF-8. */
 			switch (c) {

@@ -13,6 +13,7 @@
 #include "core/tcp_content.h"
 #include "core/http.h"
 #include <unordered_map>
+#include "../core/container_func.hpp"
 
 /** Vector with content info */
 typedef std::vector<ContentInfo *> ContentVector;
@@ -30,7 +31,7 @@ struct ContentCallback {
 	 * Callback for when the connection has finished
 	 * @param success whether the connection was made or that we failed to make it
 	 */
-	virtual void OnConnect(bool success) {}
+	virtual void OnConnect([[maybe_unused]] bool success) {}
 
 	/**
 	 * Callback for when the connection got disconnected.
@@ -41,23 +42,23 @@ struct ContentCallback {
 	 * We received a content info.
 	 * @param ci the content info
 	 */
-	virtual void OnReceiveContentInfo(const ContentInfo *ci) {}
+	virtual void OnReceiveContentInfo([[maybe_unused]] const ContentInfo *ci) {}
 
 	/**
 	 * We have progress in the download of a file
 	 * @param ci the content info of the file
 	 * @param bytes the number of bytes downloaded since the previous call
 	 */
-	virtual void OnDownloadProgress(const ContentInfo *ci, int bytes) {}
+	virtual void OnDownloadProgress([[maybe_unused]] const ContentInfo *ci, [[maybe_unused]] int bytes) {}
 
 	/**
 	 * We have finished downloading a file
 	 * @param cid the ContentID of the downloaded file
 	 */
-	virtual void OnDownloadComplete(ContentID cid) {}
+	virtual void OnDownloadComplete([[maybe_unused]] ContentID cid) {}
 
 	/** Silentium */
-	virtual ~ContentCallback() {}
+	virtual ~ContentCallback() = default;
 };
 
 /**
@@ -81,8 +82,8 @@ protected:
 
 	friend class NetworkContentConnecter;
 
-	bool Receive_SERVER_INFO(Packet *p) override;
-	bool Receive_SERVER_CONTENT(Packet *p) override;
+	bool Receive_SERVER_INFO(Packet &p) override;
+	bool Receive_SERVER_CONTENT(Packet &p) override;
 
 	ContentInfo *GetContent(ContentID cid) const;
 	void DownloadContentInfo(ContentID cid);
@@ -94,7 +95,7 @@ protected:
 	void OnDownloadComplete(ContentID cid) override;
 
 	void OnFailure() override;
-	void OnReceiveData(const char *data, size_t length) override;
+	void OnReceiveData(std::unique_ptr<char[]> data, size_t length) override;
 	bool IsCancelled() const override;
 
 	bool BeforeDownload();
@@ -112,6 +113,7 @@ public:
 	void Connect();
 	void SendReceive();
 	NetworkRecvStatus CloseConnection(bool error = true) override;
+	void Cancel();
 
 	void RequestContentList(ContentType type);
 	void RequestContentList(uint count, const ContentID *content_ids);
@@ -135,7 +137,7 @@ public:
 	/** Get the begin of the content inf iterator. */
 	ConstContentIterator Begin() const { return this->infos.data(); }
 	/** Get the nth position of the content inf iterator. */
-	ConstContentIterator Get(uint32 index) const { return this->infos.data() + index; }
+	ConstContentIterator Get(uint32_t index) const { return this->infos.data() + index; }
 	/** Get the end of the content inf iterator. */
 	ConstContentIterator End() const { return this->Begin() + this->Length(); }
 

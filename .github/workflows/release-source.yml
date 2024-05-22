@@ -11,6 +11,8 @@ on:
         value: ${{ jobs.source.outputs.trigger_type }}
       folder:
         value: ${{ jobs.source.outputs.folder }}
+      survey_key:
+        value: ${{ jobs.source.outputs.survey_key }}
 
 jobs:
   source:
@@ -23,18 +25,19 @@ jobs:
       is_tag: ${{ steps.metadata.outputs.is_tag }}
       trigger_type: ${{ steps.metadata.outputs.trigger_type }}
       folder: ${{ steps.metadata.outputs.folder }}
+      survey_key: ${{ steps.survey_key.outputs.survey_key }}
 
     steps:
     - name: Checkout (Release)
       if: github.event_name == 'release'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         # We generate a changelog; for this we need the full git log.
         fetch-depth: 0
 
     - name: Checkout (Manual)
       if: github.event_name == 'workflow_dispatch'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         ref: ${{ github.event.inputs.ref }}
         # We generate a changelog; for this we need the full git log.
@@ -42,7 +45,7 @@ jobs:
 
     - name: Checkout (Trigger)
       if: github.event_name == 'repository_dispatch'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         ref: ${{ github.event.client_payload.ref }}
         # We generate a changelog; for this we need the full git log.
@@ -146,6 +149,24 @@ jobs:
         FOLDER_NIGHTLIES: openttd-nightlies
         FOLDER_BRANCHES: openttd-branches
 
+    - name: Generate survey key
+      id: survey_key
+      run: |
+        if [ -z "${{ vars.SURVEY_TYPE }}" ]; then
+          echo "SURVEY_TYPE variable not found; most likely running in a fork. Skipping step."
+          SURVEY_KEY=""
+        else
+          PAYLOAD='{"version":"${{ steps.metadata.outputs.version }}","type":"${{ vars.SURVEY_TYPE }}"}'
+
+          echo "${{ secrets.SURVEY_SIGNING_KEY }}" > survey_signing_key.pem
+          SIGNATURE=$(echo -n "${PAYLOAD}" | openssl dgst -sha256 -sign survey_signing_key.pem | base64 -w0)
+          rm -f survey_signing_key.pem
+
+          SURVEY_KEY=$(curl -f -s -X POST -d "${PAYLOAD}" -H "Content-Type: application/json" -H "X-Signature: ${SIGNATURE}" https://survey-participate.openttd.org/create-survey-key/${{ vars.SURVEY_TYPE }})
+        fi
+
+        echo "survey_key=${SURVEY_KEY}" >> $GITHUB_OUTPUT
+
     - name: Remove VCS information
       run: |
         rm -rf .git
@@ -172,14 +193,14 @@ jobs:
         echo "::endgroup::"
 
     - name: Store bundles
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: openttd-source
         path: build/bundles/*
         retention-days: 5
 
     - name: Store source (for other jobs)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: internal-source
         path: source.tar.gz

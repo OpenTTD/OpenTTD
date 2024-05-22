@@ -1,7 +1,6 @@
 /* see copyright notice in squirrel.h */
 #include <squirrel.h>
 #include <sqstdstring.h>
-#include <stdarg.h>
 
 #define scstrchr strchr
 #define scatoi atoi
@@ -51,101 +50,6 @@ static SQInteger validate_format(HSQUIRRELVM v, SQChar *fmt, const SQChar *src, 
 	memcpy(&fmt[1],&src[start],((n-start)+1)*sizeof(SQChar));
 	fmt[(n-start)+2] = '\0';
 	return n;
-}
-
-/*
- * Little hack to remove the "format not a string literal, argument types not checked" warning.
- * This check has been added to OpenTTD to make sure that nobody passes wrong string literals,
- * but three lines in Squirrel have a little problem with those. Therefor we use this hack
- * which basically uses vsnprintf instead of sprintf as vsnprintf is not testing for the right
- * string literal at compile time.
- */
-static void _append_string(SQInteger &i, SQChar *dest, SQInteger allocated, const SQChar *fmt, ...)
-{
-	va_list va;
-	va_start(va, fmt);
-	i += vsnprintf(&dest[i],allocated-i,fmt,va);
-	va_end(va);
-}
-
-
-SQRESULT sqstd_format(HSQUIRRELVM v,SQInteger nformatstringidx,SQInteger *outlen,SQChar **output)
-{
-	const SQChar *format;
-	SQChar *dest;
-	SQChar fmt[MAX_FORMAT_LEN];
-	sq_getstring(v,nformatstringidx,&format);
-	SQInteger allocated = (sq_getsize(v,nformatstringidx)+2)*sizeof(SQChar);
-	dest = sq_getscratchpad(v,allocated);
-	SQInteger n = 0,i = 0, nparam = nformatstringidx+1, w = 0;
-	while(format[n] != '\0') {
-		if(format[n] != '%') {
-			assert(i < allocated);
-			dest[i++] = format[n];
-			n++;
-		}
-		else if(format[n+1] == '%') { //handles %%
-				dest[i++] = '%';
-				n += 2;
-		}
-		else {
-			n++;
-			if( nparam > sq_gettop(v) )
-				return sq_throwerror(v,"not enough paramters for the given format string");
-			n = validate_format(v,fmt,format,n,w);
-			if(n < 0) return -1;
-			SQInteger addlen = 0;
-			SQInteger valtype = 0;
-			const SQChar *ts;
-			SQInteger ti;
-			SQFloat tf;
-			switch(format[n]) {
-			case 's':
-				if(SQ_FAILED(sq_getstring(v,nparam,&ts)))
-					return sq_throwerror(v,"string expected for the specified format");
-				addlen = (sq_getsize(v,nparam)*sizeof(SQChar))+((w+1)*sizeof(SQChar));
-				valtype = 's';
-				break;
-			case 'i': case 'd': case 'c':case 'o':  case 'u':  case 'x':  case 'X':
-				if(SQ_FAILED(sq_getinteger(v,nparam,&ti)))
-					return sq_throwerror(v,"integer expected for the specified format");
-				addlen = (ADDITIONAL_FORMAT_SPACE)+((w+1)*sizeof(SQChar));
-				valtype = 'i';
-				break;
-			case 'f': case 'g': case 'G': case 'e':  case 'E':
-				if(SQ_FAILED(sq_getfloat(v,nparam,&tf)))
-					return sq_throwerror(v,"float expected for the specified format");
-				addlen = (ADDITIONAL_FORMAT_SPACE)+((w+1)*sizeof(SQChar));
-				valtype = 'f';
-				break;
-			default:
-				return sq_throwerror(v,"invalid format");
-			}
-			n++;
-			allocated += addlen + sizeof(SQChar);
-			dest = sq_getscratchpad(v,allocated);
-			switch(valtype) {
-			case 's': _append_string(i,dest,allocated,fmt,ts); break;
-			case 'i': _append_string(i,dest,allocated,fmt,ti); break;
-			case 'f': _append_string(i,dest,allocated,fmt,tf); break;
-			};
-			nparam ++;
-		}
-	}
-	*outlen = i;
-	dest[i] = '\0';
-	*output = dest;
-	return SQ_OK;
-}
-
-static SQInteger _string_format(HSQUIRRELVM v)
-{
-	SQChar *dest = NULL;
-	SQInteger length = 0;
-	if(SQ_FAILED(sqstd_format(v,2,&length,&dest)))
-		return -1;
-	sq_pushstring(v,dest,length);
-	return 1;
 }
 
 static void __strip_l(const SQChar *str,const SQChar **start)
@@ -208,16 +112,16 @@ static SQInteger _string_split(HSQUIRRELVM v)
 	memcpy(stemp,str,memsize);
 	tok = scstrtok(stemp,seps);
 	sq_newarray(v,0);
-	while( tok != NULL ) {
+	while( tok != nullptr ) {
 		sq_pushstring(v,tok,-1);
 		sq_arrayappend(v,-2);
-		tok = scstrtok( NULL, seps );
+		tok = scstrtok( nullptr, seps );
 	}
 	return 1;
 }
 
 #define SETUP_REX(v) \
-	SQRex *self = NULL; \
+	SQRex *self = nullptr; \
 	sq_getinstanceup(v,1,(SQUserPointer *)&self,0);
 
 static SQInteger _rexobj_releasehook(SQUserPointer p, SQInteger size)

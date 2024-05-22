@@ -11,10 +11,10 @@
 #define BASE_MEDIA_BASE_H
 
 #include "fileio_func.h"
-#include "core/smallmap_type.hpp"
 #include "gfx_type.h"
 #include "textfile_type.h"
 #include "textfile_gui.h"
+#include "3rdparty/md5/md5.h"
 #include <unordered_map>
 
 /* Forward declare these; can't do 'struct X' in functions as older GCCs barf on that */
@@ -31,9 +31,9 @@ struct MD5File {
 		CR_NO_FILE,  ///< The file did not exist
 	};
 
-	const char *filename;        ///< filename
-	uint8 hash[16];              ///< md5 sum of the file
-	const char *missing_warning; ///< warning when this file is missing
+	std::string filename;        ///< filename
+	MD5Hash hash;                ///< md5 sum of the file
+	std::string missing_warning; ///< warning when this file is missing
 	ChecksumResult check_result; ///< cached result of md5 check
 
 	ChecksumResult CheckMD5(Subdirectory subdir, size_t max_size) const;
@@ -59,9 +59,10 @@ struct BaseSet {
 	static const char * const *file_names;
 
 	std::string name;              ///< The name of the base set
+	std::string url;               ///< URL for information about the base set
 	TranslatedStrings description; ///< Description of the base set
-	uint32 shortname;              ///< Four letter short variant of the name
-	uint32 version;                ///< The version of this base set
+	uint32_t shortname;              ///< Four letter short variant of the name
+	uint32_t version;                ///< The version of this base set
 	bool fallback;                 ///< This set is a fallback set, i.e. it should be used only as last resort
 
 	MD5File files[NUM_FILES];      ///< All files part of this set
@@ -73,11 +74,6 @@ struct BaseSet {
 	/** Free everything we allocated */
 	~BaseSet()
 	{
-		for (uint i = 0; i < NUM_FILES; i++) {
-			free(this->files[i].filename);
-			free(this->files[i].missing_warning);
-		}
-
 		delete this->next;
 	}
 
@@ -100,7 +96,8 @@ struct BaseSet {
 		return Tnum_files - this->valid_files;
 	}
 
-	bool FillSetDetails(IniFile *ini, const char *path, const char *full_filename, bool allow_empty_filename = true);
+	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename = true);
+	void CopyCompatibleConfig([[maybe_unused]] const T &src) {}
 
 	/**
 	 * Get the description for the given ISO code.
@@ -110,19 +107,34 @@ struct BaseSet {
 	 * @param isocode the isocode to search for
 	 * @return the description
 	 */
-	const char *GetDescription(const std::string &isocode) const
+	const std::string &GetDescription(const std::string &isocode) const
 	{
 		if (!isocode.empty()) {
 			/* First the full ISO code */
 			auto desc = this->description.find(isocode);
-			if (desc != this->description.end()) return desc->second.c_str();
+			if (desc != this->description.end()) return desc->second;
 
 			/* Then the first two characters */
 			desc = this->description.find(isocode.substr(0, 2));
-			if (desc != this->description.end()) return desc->second.c_str();
+			if (desc != this->description.end()) return desc->second;
 		}
 		/* Then fall back */
-		return this->description.at(std::string{}).c_str();
+		return this->description.at(std::string{});
+	}
+
+	/**
+	 * Get string to use when listing this set in the settings window.
+	 * If there are no invalid files, then this is just the set name,
+	 * otherwise a string is formatted including the number of invalid files.
+	 * @return the string to display.
+	 */
+	std::string GetListLabel() const
+	{
+		if (this->GetNumInvalid() == 0) return this->name;
+
+		SetDParamStr(0, this->name);
+		SetDParam(1, this->GetNumInvalid());
+		return GetString(STR_BASESET_STATUS);
 	}
 
 	/**
@@ -142,17 +154,17 @@ struct BaseSet {
 	/**
 	 * Search a textfile file next to this base media.
 	 * @param type The type of the textfile to search for.
-	 * @return The filename for the textfile, \c nullptr otherwise.
+	 * @return The filename for the textfile.
 	 */
-	const char *GetTextfile(TextfileType type) const
+	std::optional<std::string> GetTextfile(TextfileType type) const
 	{
 		for (uint i = 0; i < NUM_FILES; i++) {
-			const char *textfile = ::GetTextfile(type, BASESET_DIR, this->files[i].filename);
-			if (textfile != nullptr) {
+			auto textfile = ::GetTextfile(type, BASESET_DIR, this->files[i].filename);
+			if (textfile.has_value()) {
 				return textfile;
 			}
 		}
-		return nullptr;
+		return std::nullopt;
 	}
 };
 
@@ -175,9 +187,6 @@ protected:
 	 */
 	static const char *GetExtension();
 public:
-	/** The set as saved in the config file. */
-	static std::string ini_set;
-
 	/**
 	 * Determine the graphics pack that has to be used.
 	 * The one with the most correct files wins.
@@ -196,8 +205,10 @@ public:
 
 	static Tbase_set *GetAvailableSets();
 
-	static bool SetSet(const std::string &name);
-	static char *GetSetsList(char *p, const char *last);
+	static bool SetSet(const Tbase_set *set);
+	static bool SetSetByName(const std::string &name);
+	static bool SetSetByShortname(uint32_t shortname);
+	static void GetSetsList(std::back_insert_iterator<std::string> &output_iterator);
 	static int GetNumSets();
 	static int GetIndexOfUsedSet();
 	static const Tbase_set *GetSet(int index);
@@ -212,7 +223,6 @@ public:
 	static bool HasSet(const ContentInfo *ci, bool md5sum);
 };
 
-template <class Tbase_set> /* static */ std::string BaseMedia<Tbase_set>::ini_set;
 template <class Tbase_set> /* static */ const Tbase_set *BaseMedia<Tbase_set>::used_set;
 template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::available_sets;
 template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::duplicate_sets;
@@ -244,12 +254,24 @@ enum BlitterType {
 	BLT_32BPP,      ///< Base set has both 8 bpp and 32 bpp sprites.
 };
 
+struct GRFConfig;
+
 /** All data of a graphics set. */
 struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, true> {
+private:
+	mutable std::unique_ptr<GRFConfig> extra_cfg; ///< Parameters for extra GRF
+public:
 	PaletteType palette;       ///< Palette of this graphics set
 	BlitterType blitter;       ///< Blitter of this graphics set
 
-	bool FillSetDetails(struct IniFile *ini, const char *path, const char *full_filename);
+	GraphicsSet();
+	~GraphicsSet();
+
+	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename);
+	GRFConfig *GetExtraConfig() const { return this->extra_cfg.get(); }
+	GRFConfig &GetOrCreateExtraConfig() const;
+	bool IsConfigurable() const;
+	void CopyCompatibleConfig(const GraphicsSet &src);
 
 	static MD5File::ChecksumResult CheckMD5(const MD5File *file, Subdirectory subdir);
 };
@@ -257,6 +279,15 @@ struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, true> {
 /** All data/functions related with replacing the base graphics. */
 class BaseGraphics : public BaseMedia<GraphicsSet> {
 public:
+	/** Values loaded from config file. */
+	struct Ini {
+		std::string name;
+		uint32_t shortname;                 ///< unique key for base set
+		uint32_t extra_version;             ///< version of the extra GRF
+		std::vector<uint32_t> extra_params; ///< parameters for the extra GRF
+	};
+	static inline Ini ini_data;
+
 };
 
 /** All data of a sounds set. */
@@ -266,6 +297,9 @@ struct SoundsSet : BaseSet<SoundsSet, 1, true> {
 /** All data/functions related with replacing the base sounds */
 class BaseSounds : public BaseMedia<SoundsSet> {
 public:
+	/** The set as saved in the config file. */
+	static inline std::string ini_set;
+
 };
 
 /** Maximum number of songs in the 'class' playlists. */
@@ -279,8 +313,8 @@ static const uint NUM_SONGS_AVAILABLE = 1 + NUM_SONG_CLASSES * NUM_SONGS_CLASS;
 static const uint NUM_SONGS_PLAYLIST  = 32;
 
 /* Functions to read DOS music CAT files, similar to but not quite the same as sound effect CAT files */
-char *GetMusicCatEntryName(const char *filename, size_t entrynum);
-byte *GetMusicCatEntryData(const char *filename, size_t entrynum, size_t &entrylen);
+std::optional<std::string> GetMusicCatEntryName(const std::string &filename, size_t entrynum);
+std::optional<std::vector<uint8_t>> GetMusicCatEntryData(const std::string &filename, size_t entrynum);
 
 enum MusicTrackType {
 	MTT_STANDARDMIDI, ///< Standard MIDI file
@@ -290,8 +324,8 @@ enum MusicTrackType {
 /** Metadata about a music track. */
 struct MusicSongInfo {
 	std::string songname;    ///< name of song displayed in UI
-	byte tracknr;            ///< track number of song displayed in UI
-	const char *filename;    ///< file on disk containing song (when used in MusicSet class, this pointer is owned by MD5File object for the file)
+	uint8_t tracknr;            ///< track number of song displayed in UI
+	std::string filename;    ///< file on disk containing song (when used in MusicSet class)
 	MusicTrackType filetype; ///< decoder required for song file
 	int cat_index;           ///< entry index in CAT file, for filetype==MTT_MPSMIDI
 	bool loop;               ///< song should play in a tight loop if possible, never ending
@@ -304,14 +338,17 @@ struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false> {
 	/** Data about individual songs in set. */
 	MusicSongInfo songinfo[NUM_SONGS_AVAILABLE];
 	/** Number of valid songs in set. */
-	byte num_available;
+	uint8_t num_available;
 
-	bool FillSetDetails(struct IniFile *ini, const char *path, const char *full_filename);
+	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename);
 };
 
 /** All data/functions related with replacing the base music */
 class BaseMusic : public BaseMedia<MusicSet> {
 public:
+	/** The set as saved in the config file. */
+	static inline std::string ini_set;
+
 };
 
 #endif /* BASE_MEDIA_BASE_H */

@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "league_gui.h"
-
 #include "company_base.h"
 #include "company_gui.h"
 #include "gui.h"
@@ -22,7 +21,9 @@
 #include "town.h"
 #include "viewport_func.h"
 #include "window_gui.h"
+
 #include "widgets/league_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
 
@@ -69,12 +70,12 @@ private:
 		if (!this->companies.NeedRebuild()) return;
 
 		this->companies.clear();
+		this->companies.reserve(Company::GetNumItems());
 
 		for (const Company *c : Company::Iterate()) {
 			this->companies.push_back(c);
 		}
 
-		this->companies.shrink_to_fit();
 		this->companies.RebuildDone();
 	}
 
@@ -100,13 +101,13 @@ public:
 		this->DrawWidgets();
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_PLT_BACKGROUND) return;
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 		int icon_y_offset = (this->line_height - this->icon.height) / 2;
-		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect ordinal = ir.WithWidth(this->ordinal_width, rtl);
@@ -115,7 +116,8 @@ public:
 
 		for (uint i = 0; i != this->companies.size(); i++) {
 			const Company *c = this->companies[i];
-			DrawString(ordinal.left, ordinal.right, ir.top + text_y_offset, i + STR_ORDINAL_NUMBER_1ST, i == 0 ? TC_WHITE : TC_YELLOW);
+			SetDParam(0, i + 1);
+			DrawString(ordinal.left, ordinal.right, ir.top + text_y_offset, STR_COMPANY_LEAGUE_COMPANY_RANK);
 
 			DrawCompanyIcon(c->index, icon_left, ir.top + icon_y_offset);
 
@@ -127,40 +129,41 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_PLT_BACKGROUND) return;
 
 		this->ordinal_width = 0;
 		for (uint i = 0; i < MAX_COMPANIES; i++) {
-			this->ordinal_width = std::max(this->ordinal_width, GetStringBoundingBox(STR_ORDINAL_NUMBER_1ST + i).width);
+			SetDParam(0, i + 1);
+			this->ordinal_width = std::max(this->ordinal_width, GetStringBoundingBox(STR_COMPANY_LEAGUE_COMPANY_RANK).width);
 		}
 		this->ordinal_width += WidgetDimensions::scaled.hsep_wide; // Keep some extra spacing
 
 		uint widest_width = 0;
-		uint widest_title = 0;
-		for (uint i = 0; i < lengthof(_performance_titles); i++) {
-			uint width = GetStringBoundingBox(_performance_titles[i]).width;
+		StringID widest_title = STR_NULL;
+		for (auto title : _performance_titles) {
+			uint width = GetStringBoundingBox(title).width;
 			if (width > widest_width) {
-				widest_title = i;
+				widest_title = title;
 				widest_width = width;
 			}
 		}
 
 		this->icon = GetSpriteSize(SPR_COMPANY_ICON);
-		this->line_height = std::max<int>(this->icon.height + WidgetDimensions::scaled.vsep_normal, FONT_HEIGHT_NORMAL);
+		this->line_height = std::max<int>(this->icon.height + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FS_NORMAL));
 
 		for (const Company *c : Company::Iterate()) {
 			SetDParam(0, c->index);
 			SetDParam(1, c->index);
-			SetDParam(2, _performance_titles[widest_title]);
+			SetDParam(2, widest_title);
 			widest_width = std::max(widest_width, GetStringBoundingBox(STR_COMPANY_LEAGUE_COMPANY_NAME).width);
 		}
 
 		this->text_width = widest_width + WidgetDimensions::scaled.hsep_indent * 3; // Keep some extra spacing
 
-		size->width = WidgetDimensions::scaled.framerect.Horizontal() + this->ordinal_width + this->icon.width + this->text_width + WidgetDimensions::scaled.hsep_wide;
-		size->height = this->line_height * MAX_COMPANIES + WidgetDimensions::scaled.framerect.Vertical();
+		size.width = WidgetDimensions::scaled.framerect.Horizontal() + this->ordinal_width + this->icon.width + this->text_width + WidgetDimensions::scaled.hsep_wide;
+		size.height = this->line_height * MAX_COMPANIES + WidgetDimensions::scaled.framerect.Vertical();
 	}
 
 	void OnGameTick() override
@@ -175,7 +178,7 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (data == 0) {
 			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
@@ -186,7 +189,7 @@ public:
 	}
 };
 
-static const NWidgetPart _nested_performance_league_widgets[] = {
+static constexpr NWidgetPart _nested_performance_league_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_COMPANY_LEAGUE_TABLE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -194,13 +197,14 @@ static const NWidgetPart _nested_performance_league_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_PLT_BACKGROUND), SetMinimalSize(400, 0), SetMinimalTextLines(15, WidgetDimensions::unscaled.framerect.Vertical()),
+	EndContainer(),
 };
 
 static WindowDesc _performance_league_desc(
-	WDP_AUTO, "league", 0, 0,
+	WDP_AUTO, "performance_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,
-	_nested_performance_league_widgets, lengthof(_nested_performance_league_widgets)
+	std::begin(_nested_performance_league_widgets), std::end(_nested_performance_league_widgets)
 );
 
 void ShowPerformanceLeagueTable()
@@ -277,7 +281,7 @@ private:
 		this->title = lt->title;
 
 		std::vector<const LeagueTableElement *> elements;
-		for(LeagueTableElement *lte : LeagueTableElement::Iterate()) {
+		for (LeagueTableElement *lte : LeagueTableElement::Iterate()) {
 			if (lte->table == this->table) {
 				elements.push_back(lte);
 			}
@@ -289,7 +293,7 @@ private:
 		for (uint i = 0; i != elements.size(); i++) {
 			auto *lte = elements[i];
 			if (i > 0 && elements[i - 1]->rating != lte->rating) rank = i;
-			this->rows.emplace_back(std::make_pair(rank, lte));
+			this->rows.emplace_back(rank, lte);
 		}
 	}
 
@@ -301,7 +305,7 @@ public:
 		this->InitNested(table);
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget != WID_SLT_CAPTION) return;
 		SetDParamStr(0, this->title);
@@ -312,7 +316,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_SLT_BACKGROUND) return;
 
@@ -327,7 +331,7 @@ public:
 		}
 
 		int icon_y_offset = (this->line_height - this->icon_size.height) / 2;
-		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		/* Calculate positions.of the columns */
 		bool rtl = _current_text_dir == TD_RTL;
@@ -338,7 +342,8 @@ public:
 		Rect score_rect = ir.Indent(this->rank_width + 2 * spacer + this->icon_size.width + this->text_width, rtl).WithWidth(this->score_width, rtl);
 
 		for (auto [rank, lte] : this->rows) {
-			DrawString(rank_rect.left, rank_rect.right, ir.top + text_y_offset, rank + STR_ORDINAL_NUMBER_1ST, rank == 0 ? TC_WHITE : TC_YELLOW);
+			SetDParam(0, rank + 1);
+			DrawString(rank_rect.left, rank_rect.right, ir.top + text_y_offset, STR_COMPANY_LEAGUE_COMPANY_RANK);
 			if (this->icon_size.width > 0 && lte->company != INVALID_COMPANY) DrawCompanyIcon(lte->company, icon_rect.left, ir.top + icon_y_offset);
 			SetDParamStr(0, lte->text);
 			DrawString(text_rect.left, text_rect.right, ir.top + text_y_offset, STR_JUST_RAW_STRING, TC_BLACK);
@@ -354,7 +359,7 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_SLT_BACKGROUND) return;
 
@@ -362,13 +367,14 @@ public:
 		if (lt == nullptr) return;
 
 		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
-		this->line_height = std::max<int>(this->icon_size.height + WidgetDimensions::scaled.fullbevel.Vertical(), FONT_HEIGHT_NORMAL);
+		this->line_height = std::max<int>(this->icon_size.height + WidgetDimensions::scaled.fullbevel.Vertical(), GetCharacterHeight(FS_NORMAL));
 
 		/* Calculate maximum width of every column */
 		this->rank_width = this->text_width = this->score_width = 0;
 		bool show_icon_column = false;
 		for (auto [rank, lte] : this->rows) {
-			this->rank_width = std::max(this->rank_width, GetStringBoundingBox(STR_ORDINAL_NUMBER_1ST + rank).width);
+			SetDParam(0, rank + 1);
+			this->rank_width = std::max(this->rank_width, GetStringBoundingBox(STR_COMPANY_LEAGUE_COMPANY_RANK).width);
 			SetDParamStr(0, lte->text);
 			this->text_width = std::max(this->text_width, GetStringBoundingBox(STR_JUST_RAW_STRING).width);
 			SetDParamStr(0, lte->score);
@@ -379,22 +385,22 @@ public:
 		if (!show_icon_column) this->icon_size.width = 0;
 		else this->icon_size.width += WidgetDimensions::scaled.hsep_wide;
 
-		size->width = this->rank_width + this->icon_size.width + this->text_width + this->score_width + WidgetDimensions::scaled.framerect.Horizontal() + WidgetDimensions::scaled.hsep_wide * 2;
-		size->height = this->line_height * std::max<uint>(3u, (unsigned)this->rows.size()) + WidgetDimensions::scaled.framerect.Vertical();
+		size.width = this->rank_width + this->icon_size.width + this->text_width + this->score_width + WidgetDimensions::scaled.framerect.Horizontal() + WidgetDimensions::scaled.hsep_wide * 2;
+		size.height = this->line_height * std::max<uint>(3u, (unsigned)this->rows.size()) + WidgetDimensions::scaled.framerect.Vertical();
 
 		if (!lt->header.empty()) {
 			SetDParamStr(0, lt->header);
-			this->header_height = GetStringHeight(STR_JUST_RAW_STRING, size->width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
-			size->height += header_height;
+			this->header_height = GetStringHeight(STR_JUST_RAW_STRING, size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
+			size.height += header_height;
 		} else this->header_height = 0;
 
 		if (!lt->footer.empty()) {
 			SetDParamStr(0, lt->footer);
-			size->height += GetStringHeight(STR_JUST_RAW_STRING, size->width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
+			size.height += GetStringHeight(STR_JUST_RAW_STRING, size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
 		}
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget != WID_SLT_BACKGROUND) return;
 
@@ -411,28 +417,29 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		this->BuildTable();
 		this->ReInit();
 	}
 };
 
-static const NWidgetPart _nested_script_league_widgets[] = {
+static constexpr NWidgetPart _nested_script_league_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SLT_CAPTION), SetDataTip(STR_BLACK_RAW_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SLT_CAPTION), SetDataTip(STR_JUST_RAW_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_BROWN, WID_SLT_BACKGROUND), SetMinimalSize(400, 0), SetMinimalTextLines(15, WidgetDimensions::scaled.framerect.Vertical()),
+	NWidget(WWT_PANEL, COLOUR_BROWN, WID_SLT_BACKGROUND), SetMinimalSize(400, 0), SetMinimalTextLines(15, WidgetDimensions::unscaled.framerect.Vertical()),
+	EndContainer(),
 };
 
 static WindowDesc _script_league_desc(
-	WDP_AUTO, "league", 0, 0,
+	WDP_AUTO, "script_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,
-	_nested_script_league_widgets, lengthof(_nested_script_league_widgets)
+	std::begin(_nested_script_league_widgets), std::end(_nested_script_league_widgets)
 );
 
 void ShowScriptLeagueTable(LeagueTableID table)

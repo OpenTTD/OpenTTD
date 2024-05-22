@@ -19,7 +19,30 @@
  */
 class ScriptSubsidyList : public ScriptList {
 public:
+#ifdef DOXYGEN_API
 	ScriptSubsidyList();
+
+	/**
+	 * Apply a filter when building the list.
+	 * @param filter_function The function which will be doing the filtering.
+	 * @param ... The params to give to the filters (minus the first param,
+	 *  which is always the index-value).
+	 * @note You can write your own filters and use them. Just remember that
+	 *  the first parameter should be the index-value, and it should return
+	 *  a bool.
+	 * @note Example:
+	 * @code
+	 *  function IsType(subsidy_id, type)
+	 *  {
+	 *    return ScriptSubsidy.GetSourceType(subsidy_id) == type;
+	 *  }
+	 *  local town_subs = ScriptSubsidyList(IsType, ScriptSubsidy.SPT_TOWN);
+	 * @endcode
+	 */
+	ScriptSubsidyList(function filter_function, ...);
+#else
+	ScriptSubsidyList(HSQUIRRELVM vm);
+#endif /* DOXYGEN_API */
 };
 
 #endif /* SCRIPT_SUBSIDYLIST_HPP */

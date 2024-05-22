@@ -24,7 +24,7 @@ protected:
 	TrackdirBits m_orgTrackdirs;                  ///< origin trackdir mask
 
 	/** to access inherited path finder */
-	inline Tpf& Yapf()
+	inline Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
@@ -42,7 +42,7 @@ public:
 	{
 		bool is_choice = (KillFirstBit(m_orgTrackdirs) != TRACKDIR_BIT_NONE);
 		for (TrackdirBits tdb = m_orgTrackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
-			Trackdir td = (Trackdir)FindFirstBit2x64(tdb);
+			Trackdir td = (Trackdir)FindFirstBit(tdb);
 			Node &n1 = Yapf().CreateNewNode();
 			n1.Set(nullptr, m_orgTile, td, is_choice);
 			Yapf().AddStartupNode(n1);
@@ -68,7 +68,7 @@ protected:
 	bool        m_treat_first_red_two_way_signal_as_eol; ///< in some cases (leaving station) we need to handle first two-way signal differently
 
 	/** to access inherited path finder */
-	inline Tpf& Yapf()
+	inline Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
@@ -131,7 +131,7 @@ public:
 
 protected:
 	/** to access inherited path finder */
-	Tpf& Yapf()
+	Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}

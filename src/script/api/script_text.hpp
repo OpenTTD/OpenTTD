@@ -26,7 +26,7 @@ public:
 	 * @return A string.
 	 * @api -all
 	 */
-	virtual const std::string GetEncodedText() = 0;
+	virtual std::string GetEncodedText() = 0;
 
 	/**
 	 * Convert a #ScriptText into a decoded normal string.
@@ -42,9 +42,9 @@ public:
  */
 class RawText : public Text {
 public:
-	RawText(const char *text);
+	RawText(const std::string &text);
 
-	const std::string GetEncodedText() override { return this->text; }
+	std::string GetEncodedText() override { return this->text; }
 private:
 	const std::string text;
 };
@@ -112,39 +112,63 @@ public:
 	 * @param parameter Which parameter to set.
 	 * @param value The value of the parameter. Has to be string, integer or an instance of the class ScriptText.
 	 */
-	void SetParam(int parameter, Object value);
+	void SetParam(int parameter, object value);
 
 	/**
 	 * Add a value as parameter (appending it).
 	 * @param value The value of the parameter. Has to be string, integer or an instance of the class ScriptText.
 	 * @return The same object as on which this is called, so you can chain.
 	 */
-	ScriptText *AddParam(Object value);
+	ScriptText *AddParam(object value);
 #endif /* DOXYGEN_API */
 
 	/**
 	 * @api -all
 	 */
-	virtual const std::string GetEncodedText();
+	std::string GetEncodedText() override;
 
 private:
 	using ScriptTextRef = ScriptObjectRef<ScriptText>;
-	using StringIDList = std::vector<StringID>;
+	using ScriptTextList = std::vector<ScriptText *>;
+	using Param = std::variant<SQInteger, std::string, ScriptTextRef>;
+
+	struct ParamCheck {
+		StringID owner;
+		int idx;
+		Param *param;
+		bool used;
+		const char *cmd;
+
+		ParamCheck(StringID owner, int idx, Param *param) : owner(owner), idx(idx), param(param), used(false), cmd(nullptr) {}
+
+		void Encode(std::back_insert_iterator<std::string> &output, const char *cmd);
+	};
+
+	using ParamList = std::vector<ParamCheck>;
+	using ParamSpan = std::span<ParamCheck>;
 
 	StringID string;
-	std::variant<SQInteger, std::string, ScriptTextRef> param[SCRIPT_TEXT_MAX_PARAMETERS];
+	Param param[SCRIPT_TEXT_MAX_PARAMETERS];
 	int paramc;
+
+	/**
+	 * Internal function to recursively fill a list of parameters.
+	 * The parameters are added as _GetEncodedText used to encode them
+	 *  before the addition of parameter validation.
+	 * @param params The list of parameters to fill.
+	 * @param seen_texts The list of seen ScriptText.
+	 */
+	void _FillParamList(ParamList &params, ScriptTextList &seen_texts);
 
 	/**
 	 * Internal function for recursive calling this function over multiple
 	 *  instances, while writing in the same buffer.
-	 * @param p The current position in the buffer.
-	 * @param lastofp The last position valid in the buffer.
-	 * @param param_count The number of parameters that are in the string.
-	 * @param seen_ids The list of seen StringID.
-	 * @return The new current position in the buffer.
+	 * @param output The output to write the encoded text to.
+	 * @param param_count The number of parameters that are consumed by the string.
+	 * @param args The parameters to be consumed.
+	 * @param first Whether it's the first call in the recursion.
 	 */
-	char *_GetEncodedText(char *p, char *lastofp, int &param_count, StringIDList &seen_ids);
+	void _GetEncodedText(std::back_insert_iterator<std::string> &output, int &param_count, ParamSpan args, bool first);
 
 	/**
 	 * Set a parameter, where the value is the first item on the stack.

@@ -1,0 +1,73 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Toyland rapid graphics by zephyris (Richard Wheeler)"
+   -1 * 4	 01 05 01 04
+   -1 sprites/toyland_rapids.png          8bpp  10   10  64  23 -31   0 normal
+    | sprites/toyland_rapids_shading.png 32bpp  10   10  64  23 -31   0 normal
+    | sprites/toyland_rapids.png          mask  10   10
+   -1 sprites/toyland_rapids.png          8bpp  90   10  64  39 -31  -8 normal
+    | sprites/toyland_rapids_shading.png 32bpp  90   10  64  39 -31  -8 normal
+    | sprites/toyland_rapids.png          mask  90   10
+   -1 sprites/toyland_rapids.png          8bpp 170   10  64  23 -31   0 normal
+    | sprites/toyland_rapids_shading.png 32bpp 170   10  64  23 -31   0 normal
+    | sprites/toyland_rapids.png          mask 170   10
+   -1 sprites/toyland_rapids.png          8bpp 250   10  64  39 -31  -8 normal
+    | sprites/toyland_rapids_shading.png 32bpp 250   10  64  39 -31  -8 normal
+    | sprites/toyland_rapids.png          mask 250   10
+   -1 * 7	 02 05 00 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/toyland_rapids.png          8bpp  10   60  64  23 -31   0 normal
+    | sprites/toyland_rapids_shading.png 32bpp  10   60  64  23 -31   0 normal
+    | sprites/toyland_rapids.png          mask  10   60
+   -1 sprites/toyland_rapids.png          8bpp  90   60  64  39 -31  -8 normal
+    | sprites/toyland_rapids_shading.png 32bpp  90   60  64  39 -31  -8 normal
+    | sprites/toyland_rapids.png          mask  90   60
+   -1 sprites/toyland_rapids.png          8bpp 170   60  64  23 -31   0 normal
+    | sprites/toyland_rapids_shading.png 32bpp 170   60  64  23 -31   0 normal
+    | sprites/toyland_rapids.png          mask 170   60
+   -1 sprites/toyland_rapids.png          8bpp 250   60  64  39 -31  -8 normal
+    | sprites/toyland_rapids_shading.png 32bpp 250   60  64  39 -31  -8 normal
+    | sprites/toyland_rapids.png          mask 250   60
+   -1 * 7	 02 05 01 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/toyland_rapids.png          8bpp  10  110  64  23 -31   0 normal
+    | sprites/toyland_rapids_shading.png 32bpp  10  110  64  23 -31   0 normal
+    | sprites/toyland_rapids.png          mask  10  110
+   -1 sprites/toyland_rapids.png          8bpp  90  110  64  39 -31  -8 normal
+    | sprites/toyland_rapids_shading.png 32bpp  90  110  64  39 -31  -8 normal
+    | sprites/toyland_rapids.png          mask  90  110
+   -1 sprites/toyland_rapids.png          8bpp 170  110  64  23 -31   0 normal
+    | sprites/toyland_rapids_shading.png 32bpp 170  110  64  23 -31   0 normal
+    | sprites/toyland_rapids.png          mask 170  110
+   -1 sprites/toyland_rapids.png          8bpp 250  110  64  39 -31  -8 normal
+    | sprites/toyland_rapids_shading.png 32bpp 250  110  64  39 -31  -8 normal
+    | sprites/toyland_rapids.png          mask 250  110
+   -1 * 7	 02 05 02 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/toyland_rapids.png          8bpp  10  160  64  23 -31   0 normal
+    | sprites/toyland_rapids_shading.png 32bpp  10  160  64  23 -31   0 normal
+    | sprites/toyland_rapids.png          mask  10  160
+   -1 sprites/toyland_rapids.png          8bpp  90  160  64  39 -31  -8 normal
+    | sprites/toyland_rapids_shading.png 32bpp  90  160  64  39 -31  -8 normal
+    | sprites/toyland_rapids.png          mask  90  160
+   -1 sprites/toyland_rapids.png          8bpp 170  160  64  23 -31   0 normal
+    | sprites/toyland_rapids_shading.png 32bpp 170  160  64  23 -31   0 normal
+    | sprites/toyland_rapids.png          mask 170  160
+   -1 sprites/toyland_rapids.png          8bpp 250  160  64  39 -31  -8 normal
+    | sprites/toyland_rapids_shading.png 32bpp 250  160  64  39 -31  -8 normal
+    | sprites/toyland_rapids.png          mask 250  160
+   -1 * 7	 02 05 03 01 00 00 00
+
+   -1 * 39	 02 05 10 80 00 01 04
+            00 00
+            01 00
+            02 00
+            03 00
+    -1 * 6	 07 83 01 \7! 03 01
+    -1 * 7	 03 05 01 05 00 10 00

@@ -10,9 +10,7 @@
 #ifndef DBG_HELPERS_H
 #define DBG_HELPERS_H
 
-#include <map>
 #include <stack>
-#include <string>
 
 #include "../direction_type.h"
 #include "../signal_type.h"
@@ -25,7 +23,7 @@ template <typename T> struct ArrayT;
 /** Helper template class that provides C array length and item type */
 template <typename T, size_t N> struct ArrayT<T[N]> {
 	static const size_t length = N;
-	typedef T item_t;
+	using Item = T;
 };
 
 
@@ -34,9 +32,9 @@ template <typename T, size_t N> struct ArrayT<T[N]> {
  * or t_unk when index is out of bounds.
  */
 template <typename E, typename T>
-inline typename ArrayT<T>::item_t ItemAtT(E idx, const T &t, typename ArrayT<T>::item_t t_unk)
+inline typename ArrayT<T>::Item ItemAtT(E idx, const T &t, typename ArrayT<T>::Item t_unk)
 {
-	if ((size_t)idx >= ArrayT<T>::length) {
+	if (static_cast<size_t>(idx) >= ArrayT<T>::length) {
 		return t_unk;
 	}
 	return t[idx];
@@ -48,9 +46,9 @@ inline typename ArrayT<T>::item_t ItemAtT(E idx, const T &t, typename ArrayT<T>:
  * or t_unk when index is out of bounds.
  */
 template <typename E, typename T>
-inline typename ArrayT<T>::item_t ItemAtT(E idx, const T &t, typename ArrayT<T>::item_t t_unk, E idx_inv, typename ArrayT<T>::item_t t_inv)
+inline typename ArrayT<T>::Item ItemAtT(E idx, const T &t, typename ArrayT<T>::Item t_unk, E idx_inv, typename ArrayT<T>::Item t_inv)
 {
-	if ((size_t)idx < ArrayT<T>::length) {
+	if (static_cast<size_t>(idx) < ArrayT<T>::length) {
 		return t[idx];
 	}
 	if (idx == idx_inv) {
@@ -126,27 +124,27 @@ struct DumpTarget {
 		: m_indent(0)
 	{}
 
-	static size_t& LastTypeId();
+	static size_t &LastTypeId();
 	std::string GetCurrentStructName();
 	bool FindKnownName(size_t type_id, const void *ptr, std::string &name);
 
 	void WriteIndent();
 
-	void WriteValue(const char *name, int value);
-	void WriteValue(const char *name, const char *value_str);
-	void WriteTile(const char *name, TileIndex t);
+	void WriteValue(const std::string &name, int value);
+	void WriteValue(const std::string &name, const std::string &value_str);
+	void WriteTile(const std::string &name, TileIndex t);
 
 	/** Dump given enum value (as a number and as named value) */
-	template <typename E> void WriteEnumT(const char *name, E e)
+	template <typename E> void WriteEnumT(const std::string &name, E e)
 	{
-		WriteValue(name, ValueStr(e).c_str());
+		WriteValue(name, ValueStr(e));
 	}
 
-	void BeginStruct(size_t type_id, const char *name, const void *ptr);
+	void BeginStruct(size_t type_id, const std::string &name, const void *ptr);
 	void EndStruct();
 
 	/** Dump nested object (or only its name if this instance is already known). */
-	template <typename S> void WriteStructT(const char *name, const S *s)
+	template <typename S> void WriteStructT(const std::string &name, const S *s)
 	{
 		static size_t type_id = ++LastTypeId();
 
@@ -159,11 +157,39 @@ struct DumpTarget {
 		if (FindKnownName(type_id, s, known_as)) {
 			/* We already know this one, no need to dump it. */
 			std::string known_as_str = std::string("known_as.") + name;
-			WriteValue(name, known_as_str.c_str());
+			WriteValue(name, known_as_str);
 		} else {
 			/* Still unknown, dump it */
 			BeginStruct(type_id, name, s);
 			s->Dump(*this);
+			EndStruct();
+		}
+	}
+
+	/** Dump nested object (or only its name if this instance is already known). */
+	template <typename S> void WriteStructT(const std::string &name, const std::deque<S> *s)
+	{
+		static size_t type_id = ++LastTypeId();
+
+		if (s == nullptr) {
+			/* No need to dump nullptr struct. */
+			WriteValue(name, "<null>");
+			return;
+		}
+		std::string known_as;
+		if (FindKnownName(type_id, s, known_as)) {
+			/* We already know this one, no need to dump it. */
+			std::string known_as_str = std::string("known_as.") + name;
+			WriteValue(name, known_as_str);
+		} else {
+			/* Still unknown, dump it */
+			BeginStruct(type_id, name, s);
+			size_t num_items = s->size();
+			this->WriteValue("num_items", std::to_string(num_items));
+			for (size_t i = 0; i < num_items; i++) {
+				const auto &item = (*s)[i];
+				this->WriteStructT(fmt::format("item[{}]", i), &item);
+			}
 			EndStruct();
 		}
 	}

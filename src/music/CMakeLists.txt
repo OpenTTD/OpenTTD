@@ -38,16 +38,13 @@ if(NOT OPTION_DEDICATED)
     )
 
     add_files(
-        os2_m.cpp
-        os2_m.h
-        CONDITION OPTION_OS2
+        midi.h
+        midifile.cpp
+        midifile.hpp
     )
 endif()
 
 add_files(
-    midi.h
-    midifile.cpp
-    midifile.hpp
     music_driver.hpp
     null_m.cpp
     null_m.h

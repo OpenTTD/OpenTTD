@@ -10,6 +10,7 @@ if (NOT HOST_BINARY_DIR)
             strgen_base.cpp
             ../core/alloc_func.cpp
             ../misc/getoptdata.cpp
+            ../error.cpp
             ../string.cpp
     )
     add_definitions(-DSTRGEN)

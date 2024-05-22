@@ -12,7 +12,7 @@
 
 /**
  * Uncomment the following define to enable command replaying.
- * See docs/desync.txt for details.
+ * See docs/desync.md for details.
  */
 // #define DEBUG_DUMP_COMMANDS
 // #define DEBUG_FAILED_DUMP_COMMANDS
@@ -24,16 +24,14 @@
 #include "../company_type.h"
 #include "../string_type.h"
 
-extern NetworkCompanyState *_network_company_states;
-
 extern ClientID _network_own_client_id;
 extern ClientID _redirect_console_to_client;
-extern uint8 _network_reconnect;
+extern uint8_t _network_reconnect;
 extern StringList _network_bind_list;
 extern StringList _network_host_list;
 extern StringList _network_ban_list;
 
-byte NetworkSpectatorCount();
+uint8_t NetworkSpectatorCount();
 bool NetworkIsValidClientName(const std::string_view client_name);
 bool NetworkValidateOurClientName();
 bool NetworkValidateClientName(std::string &client_name);
@@ -41,33 +39,30 @@ bool NetworkValidateServerName(std::string &server_name);
 void NetworkUpdateClientName(const std::string &client_name);
 void NetworkUpdateServerGameType();
 bool NetworkCompanyHasClients(CompanyID company);
-std::string NetworkChangeCompanyPassword(CompanyID company_id, std::string password);
 void NetworkReboot();
-void NetworkDisconnect(bool blocking = false, bool close_admins = true);
+void NetworkDisconnect(bool close_admins = true);
 void NetworkGameLoop();
 void NetworkBackgroundLoop();
-std::string_view ParseFullConnectionString(const std::string &connection_string, uint16 &port, CompanyID *company_id = nullptr);
-void NetworkStartDebugLog(const std::string &connection_string);
+std::string_view ParseFullConnectionString(const std::string &connection_string, uint16_t &port, CompanyID *company_id = nullptr);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
 void NetworkUpdateClientInfo(ClientID client_id);
 void NetworkClientsToSpectators(CompanyID cid);
-bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password = "", const std::string &join_company_password = "");
+bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password = "");
 void NetworkClientJoinGame();
-void NetworkClientRequestMove(CompanyID company, const std::string &pass = "");
+void NetworkClientRequestMove(CompanyID company);
 void NetworkClientSendRcon(const std::string &password, const std::string &command);
-void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64 data = 0);
+void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64_t data = 0);
 bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio);
-bool NetworkCompanyIsPassworded(CompanyID company_id);
 uint NetworkMaxCompaniesAllowed();
 bool NetworkMaxCompaniesReached();
 void NetworkPrintClients();
+std::string_view NetworkGetPublicKeyOfClient(ClientID client_id);
 void NetworkHandlePauseChange(PauseMode prev_mode, PauseMode changed_mode);
 
+void NetworkOnGameStart();
+
 /*** Commands ran by the server ***/
-void NetworkServerDailyLoop();
-void NetworkServerMonthlyLoop();
-void NetworkServerYearlyLoop();
 void NetworkServerSendConfigUpdate();
 void NetworkServerUpdateGameInfo();
 void NetworkServerShowStatusToConsole();
@@ -76,9 +71,10 @@ void NetworkServerNewCompany(const Company *company, NetworkClientInfo *ci);
 bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_name);
 
 
+bool NetworkCanJoinCompany(CompanyID company_id);
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id);
 void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const std::string &string);
-void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, ClientID from_id, int64 data = 0, bool from_admin = false);
+void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, ClientID from_id, int64_t data = 0, bool from_admin = false);
 void NetworkServerSendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg);
 
 void NetworkServerKickClient(ClientID client_id, const std::string &reason);
@@ -89,7 +85,6 @@ void NetworkInitChatMessage();
 void NetworkReInitChatBoxSize();
 void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::string &message);
 void NetworkUndrawChatMessage();
-void NetworkChatMessageLoop();
 
 void NetworkAfterNewGRFScan();
 

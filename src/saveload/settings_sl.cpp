@@ -63,7 +63,7 @@ void HandleOldDiffCustom(bool savegame)
 			continue;
 		}
 
-		int32 value = (int32)((name == "max_loan" ? 1000 : 1) * _old_diff_custom[i++]);
+		int32_t value = (int32_t)((name == "max_loan" ? 1000 : 1) * _old_diff_custom[i++]);
 		sd->AsIntSetting()->MakeValueValidAndWrite(savegame ? &_settings_game : &_settings_newgame, value);
 	}
 }
@@ -187,10 +187,20 @@ struct PATSChunkHandler : ChunkHandler {
 
 	void Load() const override
 	{
-		/* Copy over default setting since some might not get loaded in
-		 * a networking environment. This ensures for example that the local
-		 * currency setting stays when joining a network-server */
-		LoadSettings(this->GetSettingTable(), &_settings_game, _settings_sl_compat);
+		const auto settings_table = this->GetSettingTable();
+
+		/* Reset all settings to their default, so any settings missing in the savegame
+		 * are their default, and not "value of last game". AfterLoad might still fix
+		 * up values to become non-default, depending on the saveload version. */
+		for (auto &desc : settings_table) {
+			const SettingDesc *sd = GetSettingDesc(desc);
+			if (sd->flags & SF_NOT_IN_SAVE) continue;
+			if ((sd->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server) continue;
+
+			sd->ResetToDefault(&_settings_game);
+		}
+
+		LoadSettings(settings_table, &_settings_game, _settings_sl_compat);
 	}
 
 	void LoadCheck(size_t) const override

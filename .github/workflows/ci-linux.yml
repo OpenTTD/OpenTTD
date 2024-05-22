@@ -1,0 +1,123 @@
+name: CI (Linux)
+
+on:
+  workflow_call:
+    inputs:
+      compiler:
+        required: true
+        type: string
+      cxxcompiler:
+        required: true
+        type: string
+      libraries:
+        required: true
+        type: string
+      extra-cmake-parameters:
+        required: true
+        type: string
+
+env:
+  CTEST_OUTPUT_ON_FAILURE: 1
+
+jobs:
+  linux:
+    name: CI
+
+    runs-on: ubuntu-latest
+    env:
+      CC: ${{ inputs.compiler }}
+      CXX: ${{ inputs.cxxcompiler }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup vcpkg caching
+      uses: actions/github-script@v7
+      with:
+        script: |
+          core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+          core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+          core.exportVariable('VCPKG_BINARY_SOURCES', 'clear;x-gha,readwrite')
+
+    - name: Install vcpkg
+      run: |
+        git clone https://github.com/microsoft/vcpkg ${{ runner.temp }}/vcpkg
+        ${{ runner.temp }}/vcpkg/bootstrap-vcpkg.sh -disableMetrics
+
+    - name: Install dependencies
+      run: |
+        echo "::group::Update apt"
+        sudo apt-get update
+        echo "::endgroup::"
+
+        echo "::group::Install dependencies"
+        sudo apt-get install -y --no-install-recommends \
+          liballegro4-dev \
+          libcurl4-openssl-dev \
+          libfontconfig-dev \
+          libharfbuzz-dev \
+          libicu-dev \
+          liblzma-dev \
+          liblzo2-dev \
+          ${{ inputs.libraries }} \
+          zlib1g-dev \
+          # EOF
+
+        echo "::group::Install vcpkg dependencies"
+
+        # Disable vcpkg integration, as we mostly use system libraries.
+        mv vcpkg.json vcpkg-disabled.json
+
+        # We only use breakpad from vcpkg, as its CMake files
+        # are a bit special. So the Ubuntu's variant doesn't work.
+        ${{ runner.temp }}/vcpkg/vcpkg install breakpad
+
+        echo "::endgroup::"
+      env:
+        DEBIAN_FRONTEND: noninteractive
+
+    - name: Get OpenGFX
+      run: |
+        mkdir -p ~/.local/share/openttd/baseset
+        cd ~/.local/share/openttd/baseset
+
+        echo "::group::Download OpenGFX"
+        curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip -o opengfx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenGFX"
+        unzip opengfx-all.zip
+        echo "::endgroup::"
+
+        rm -f opengfx-all.zip
+
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        cmake .. -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake ${{ inputs.extra-cmake-parameters }}
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        cmake --build . -j $(nproc)
+        echo "::endgroup::"
+
+    - name: Test
+      run: |
+        (
+          cd build
+          ctest -j $(nproc) --timeout 120
+        )
+
+        # Re-enable vcpkg.
+        mv vcpkg-disabled.json vcpkg.json
+
+        # Check no tracked files have been modified.
+        git diff --exit-code

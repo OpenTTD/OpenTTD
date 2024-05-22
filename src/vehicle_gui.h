@@ -22,12 +22,13 @@
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent, bool auto_refit = false);
 
 /** The tabs in the train details window */
-enum TrainDetailsWindowTabs {
+enum TrainDetailsWindowTabs : uint8_t {
 	TDW_TAB_CARGO = 0, ///< Tab with cargo carried by the vehicles
 	TDW_TAB_INFO,      ///< Tab with name and value of the vehicles
 	TDW_TAB_CAPACITY,  ///< Tab with cargo capacity of the vehicles
 	TDW_TAB_TOTALS,    ///< Tab with sum of total cargo transported
 };
+DECLARE_ENUM_AS_ADDABLE(TrainDetailsWindowTabs)
 
 /** Special values for vehicle-related windows for the data parameter of #InvalidateWindowData. */
 enum VehicleInvalidateWindowData {
@@ -42,8 +43,8 @@ struct TestedEngineDetails {
 	Money cost;           ///< Refit cost
 	CargoID cargo;        ///< Cargo type
 	uint capacity;        ///< Cargo capacity
-	uint16 mail_capacity; ///< Mail capacity if available
-	CargoArray all_capacities; ///< Capacities for all cargoes
+	uint16_t mail_capacity; ///< Mail capacity if available
+	CargoArray all_capacities{}; ///< Capacities for all cargoes
 
 	void FillDefaultCapacities(const Engine *e);
 };
@@ -70,7 +71,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileInde
  * @param type the vehicle type to look at
  * @return the height
  */
-static inline uint GetVehicleHeight(VehicleType type)
+inline uint GetVehicleHeight(VehicleType type)
 {
 	return (type == VEH_TRAIN || type == VEH_ROAD) ? 14 : 24;
 }
@@ -93,7 +94,7 @@ VehicleCellSize GetVehicleImageCellSize(VehicleType type, EngineImageType image_
  * @return corresponding window class
  * @note works only for company buildable vehicle types
  */
-static inline WindowClass GetWindowClassForVehicleType(VehicleType vt)
+inline WindowClass GetWindowClassForVehicleType(VehicleType vt)
 {
 	switch (vt) {
 		default: NOT_REACHED();

@@ -10,7 +10,6 @@
 #ifndef HOTKEYS_H
 #define HOTKEYS_H
 
-#include "core/smallvec_type.hpp"
 #include "gfx_type.h"
 #include "window_type.h"
 #include "string_type.h"
@@ -20,17 +19,15 @@
  * a list of keycodes and a number to help identifying this hotkey.
  */
 struct Hotkey {
-	Hotkey(uint16 default_keycode, const char *name, int num);
-	Hotkey(const uint16 *default_keycodes, const char *name, int num);
+	Hotkey(uint16_t default_keycode, const std::string &name, int num);
+	Hotkey(const std::vector<uint16_t> &default_keycodes, const std::string &name, int num);
 
-	void AddKeycode(uint16 keycode);
+	void AddKeycode(uint16_t keycode);
 
-	const char *name;
+	const std::string name;
 	int num;
-	std::vector<uint16> keycodes;
+	std::set<uint16_t> keycodes;
 };
-
-#define HOTKEY_LIST_END Hotkey((uint16)0, nullptr, -1)
 
 struct IniFile;
 
@@ -40,18 +37,18 @@ struct IniFile;
 struct HotkeyList {
 	typedef EventState (*GlobalHotkeyHandlerFunc)(int hotkey);
 
-	HotkeyList(const char *ini_group, Hotkey *items, GlobalHotkeyHandlerFunc global_hotkey_handler = nullptr);
+	HotkeyList(const std::string &ini_group, const std::vector<Hotkey> &items, GlobalHotkeyHandlerFunc global_hotkey_handler = nullptr);
 	~HotkeyList();
 
-	void Load(IniFile *ini);
-	void Save(IniFile *ini) const;
+	void Load(const IniFile &ini);
+	void Save(IniFile &ini) const;
 
-	int CheckMatch(uint16 keycode, bool global_only = false) const;
+	int CheckMatch(uint16_t keycode, bool global_only = false) const;
 
 	GlobalHotkeyHandlerFunc global_hotkey_handler;
 private:
-	const char *ini_group;
-	Hotkey *items;
+	const std::string ini_group;
+	std::vector<Hotkey> items;
 
 	/**
 	 * Dummy private copy constructor to prevent compilers from
@@ -60,12 +57,12 @@ private:
 	HotkeyList(const HotkeyList &other);
 };
 
-bool IsQuitKey(uint16 keycode);
+bool IsQuitKey(uint16_t keycode);
 
 void LoadHotkeysFromConfig();
 void SaveHotkeysToConfig();
 
 
-void HandleGlobalHotkeys(WChar key, uint16 keycode);
+void HandleGlobalHotkeys(char32_t key, uint16_t keycode);
 
 #endif /* HOTKEYS_H */

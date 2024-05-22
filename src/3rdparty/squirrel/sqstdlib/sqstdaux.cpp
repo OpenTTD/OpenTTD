@@ -5,6 +5,7 @@
 #include <squirrel.h>
 #include <sqstdaux.h>
 
+#include "../../fmt/format.h"
 #include "../../../safeguards.h"
 
 void sqstd_printcallstack(HSQUIRRELVM v)
@@ -38,7 +39,7 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 					src = si.source;
 				}
 			}
-			pf(v,"*FUNCTION [%s()] %s line [" OTTD_PRINTF64 "]\n",fn,src,si.line);
+			pf(v,fmt::format("*FUNCTION [{}()] {} line [{}]\n",fn,src,si.line));
 			level++;
 		}
 		level=0;
@@ -52,56 +53,56 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 				switch(sq_gettype(v,-1))
 				{
 				case OT_NULL:
-					pf(v,"[%s] NULL\n",name);
+					pf(v,fmt::format("[{}] NULL\n",name));
 					break;
 				case OT_INTEGER:
 					sq_getinteger(v,-1,&i);
-					pf(v,"[%s] " OTTD_PRINTF64 "\n",name,i);
+					pf(v,fmt::format("[{}] {}\n",name,i));
 					break;
 				case OT_FLOAT:
 					sq_getfloat(v,-1,&f);
-					pf(v,"[%s] %.14g\n",name,f);
+					pf(v,fmt::format("[{}] {:14g}\n",name,f));
 					break;
 				case OT_USERPOINTER:
-					pf(v,"[%s] USERPOINTER\n",name);
+					pf(v,fmt::format("[{}] USERPOINTER\n",name));
 					break;
 				case OT_STRING:
 					sq_getstring(v,-1,&s);
-					pf(v,"[%s] \"%s\"\n",name,s);
+					pf(v,fmt::format("[{}] \"{}\"\n",name,s));
 					break;
 				case OT_TABLE:
-					pf(v,"[%s] TABLE\n",name);
+					pf(v,fmt::format("[{}] TABLE\n",name));
 					break;
 				case OT_ARRAY:
-					pf(v,"[%s] ARRAY\n",name);
+					pf(v,fmt::format("[{}] ARRAY\n",name));
 					break;
 				case OT_CLOSURE:
-					pf(v,"[%s] CLOSURE\n",name);
+					pf(v,fmt::format("[{}] CLOSURE\n",name));
 					break;
 				case OT_NATIVECLOSURE:
-					pf(v,"[%s] NATIVECLOSURE\n",name);
+					pf(v,fmt::format("[{}] NATIVECLOSURE\n",name));
 					break;
 				case OT_GENERATOR:
-					pf(v,"[%s] GENERATOR\n",name);
+					pf(v,fmt::format("[{}] GENERATOR\n",name));
 					break;
 				case OT_USERDATA:
-					pf(v,"[%s] USERDATA\n",name);
+					pf(v,fmt::format("[{}] USERDATA\n",name));
 					break;
 				case OT_THREAD:
-					pf(v,"[%s] THREAD\n",name);
+					pf(v,fmt::format("[{}] THREAD\n",name));
 					break;
 				case OT_CLASS:
-					pf(v,"[%s] CLASS\n",name);
+					pf(v,fmt::format("[{}] CLASS\n",name));
 					break;
 				case OT_INSTANCE:
-					pf(v,"[%s] INSTANCE\n",name);
+					pf(v,fmt::format("[{}] INSTANCE\n",name));
 					break;
 				case OT_WEAKREF:
-					pf(v,"[%s] WEAKREF\n",name);
+					pf(v,fmt::format("[{}] WEAKREF\n",name));
 					break;
 				case OT_BOOL:{
 					sq_getbool(v,-1,&b);
-					pf(v,"[%s] %s\n",name,b?"true":"false");
+					pf(v,fmt::format("[{}] {}\n",name,b?"true":"false"));
 							 }
 					break;
 				default: assert(0); break;
@@ -119,7 +120,7 @@ static SQInteger _sqstd_aux_printerror(HSQUIRRELVM v)
 		const SQChar *sErr = nullptr;
 		if(sq_gettop(v)>=1) {
 			if(SQ_SUCCEEDED(sq_getstring(v,2,&sErr)))	{
-				pf(v,"\nAN ERROR HAS OCCURRED [%s]\n",sErr);
+				pf(v,fmt::format("\nAN ERROR HAS OCCURRED [{}]\n",sErr));
 			}
 			else{
 				pf(v,"\nAN ERROR HAS OCCURRED [unknown]\n");
@@ -134,7 +135,7 @@ void _sqstd_compiler_error(HSQUIRRELVM v,const SQChar *sErr,const SQChar *sSourc
 {
 	SQPRINTFUNCTION pf = sq_getprintfunc(v);
 	if(pf) {
-		pf(v,"%s line = (" OTTD_PRINTF64 ") column = (" OTTD_PRINTF64 ") : error %s\n",sSource,line,column,sErr);
+		pf(v,fmt::format("{} line = ({}) column = ({}) : error {}\n",sSource,line,column,sErr));
 	}
 }
 

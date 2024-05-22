@@ -37,6 +37,6 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face);
  * @param callback The function to call to check for missing glyphs.
  * @return true if a font has been set, false otherwise.
  */
-bool SetFallbackFont(struct FontCacheSettings *settings, const char *language_isocode, int winlangid, class MissingGlyphSearcher *callback);
+bool SetFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, int winlangid, class MissingGlyphSearcher *callback);
 
 #endif

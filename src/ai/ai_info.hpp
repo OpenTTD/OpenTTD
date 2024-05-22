@@ -16,7 +16,6 @@
 class AIInfo : public ScriptInfo {
 public:
 	AIInfo();
-	~AIInfo();
 
 	/**
 	 * Register the functions of this class.
@@ -46,19 +45,18 @@ public:
 	/**
 	 * Get the API version this AI is written for.
 	 */
-	const char *GetAPIVersion() const { return this->api_version; }
+	const std::string &GetAPIVersion() const { return this->api_version; }
 
 private:
 	int min_loadable_version; ///< The AI can load savegame data if the version is equal or greater than this.
 	bool use_as_random;       ///< Should this AI be used when the user wants a "random AI"?
-	const char *api_version;  ///< API version used by this AI.
+	std::string api_version;  ///< API version used by this AI.
 };
 
 /** All static information from an AI library like name, version, etc. */
 class AILibrary : public ScriptInfo {
 public:
-	AILibrary() : ScriptInfo(), category(nullptr) {};
-	~AILibrary();
+	AILibrary() : ScriptInfo() {};
 
 	/**
 	 * Register the functions of this class.
@@ -73,10 +71,10 @@ public:
 	/**
 	 * Get the category this library is in.
 	 */
-	const char *GetCategory() const { return this->category; }
+	const std::string &GetCategory() const { return this->category; }
 
 private:
-	const char *category; ///< The category this library is in.
+	std::string category; ///< The category this library is in.
 };
 
 #endif /* AI_INFO_HPP */

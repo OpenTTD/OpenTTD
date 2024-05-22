@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "station_map.h"
 #include "tunnelbridge_map.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "company_func.h"
 #include "company_base.h"
 #include "engine_base.h"
@@ -20,21 +20,21 @@
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */
 /* Maps a trackdir to the bit that stores its status in the map arrays, in the
  * direction along with the trackdir */
-extern const byte _signal_along_trackdir[TRACKDIR_END] = {
+extern const uint8_t _signal_along_trackdir[TRACKDIR_END] = {
 	0x8, 0x8, 0x8, 0x2, 0x4, 0x1, 0, 0,
 	0x4, 0x4, 0x4, 0x1, 0x8, 0x2
 };
 
 /* Maps a trackdir to the bit that stores its status in the map arrays, in the
  * direction against the trackdir */
-extern const byte _signal_against_trackdir[TRACKDIR_END] = {
+extern const uint8_t _signal_against_trackdir[TRACKDIR_END] = {
 	0x4, 0x4, 0x4, 0x1, 0x8, 0x2, 0, 0,
 	0x8, 0x8, 0x8, 0x2, 0x4, 0x1
 };
 
 /* Maps a Track to the bits that store the status of the two signals that can
  * be present on the given track */
-extern const byte _signal_on_track[] = {
+extern const uint8_t _signal_on_track[] = {
 	0xC, 0xC, 0xC, 0x3, 0xC, 0x3
 };
 
@@ -183,7 +183,7 @@ RailType GetTileRailType(Tile tile)
  * @param railtype requested RailType
  * @return true if company has requested RailType available
  */
-bool HasRailtypeAvail(const CompanyID company, const RailType railtype)
+bool HasRailTypeAvail(const CompanyID company, const RailType railtype)
 {
 	return !HasBit(_railtypes_hidden_mask, railtype) && HasBit(Company::Get(company)->avail_railtypes, railtype);
 }
@@ -193,7 +193,7 @@ bool HasRailtypeAvail(const CompanyID company, const RailType railtype)
  * @param company the company in question
  * @return true if company has any RailTypes available
  */
-bool HasAnyRailtypesAvail(const CompanyID company)
+bool HasAnyRailTypesAvail(const CompanyID company)
 {
 	return (Company::Get(company)->avail_railtypes & ~_railtypes_hidden_mask) != 0;
 }
@@ -203,9 +203,9 @@ bool HasAnyRailtypesAvail(const CompanyID company)
  * @param rail the railtype to check.
  * @return true if the current company may build the rail.
  */
-bool ValParamRailtype(const RailType rail)
+bool ValParamRailType(const RailType rail)
 {
-	return rail < RAILTYPE_END && HasRailtypeAvail(_current_company, rail);
+	return rail < RAILTYPE_END && HasRailTypeAvail(_current_company, rail);
 }
 
 /**
@@ -215,17 +215,17 @@ bool ValParamRailtype(const RailType rail)
  * @return The rail types that should be available when date
  *         introduced rail types are taken into account as well.
  */
-RailTypes AddDateIntroducedRailTypes(RailTypes current, Date date)
+RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date date)
 {
 	RailTypes rts = current;
 
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		const RailtypeInfo *rti = GetRailTypeInfo(rt);
+		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 		/* Unused rail type. */
 		if (rti->label == 0) continue;
 
 		/* Not date introduced. */
-		if (!IsInsideMM(rti->introduction_date, 0, MAX_DAY)) continue;
+		if (!IsInsideMM(rti->introduction_date, 0, CalendarTime::MAX_DATE.base())) continue;
 
 		/* Not yet introduced at this date. */
 		if (rti->introduction_date > date) continue;
@@ -248,7 +248,7 @@ RailTypes AddDateIntroducedRailTypes(RailTypes current, Date date)
  * @param introduces If true, include rail types introduced by other rail types
  * @return the rail types.
  */
-RailTypes GetCompanyRailtypes(CompanyID company, bool introduces)
+RailTypes GetCompanyRailTypes(CompanyID company, bool introduces)
 {
 	RailTypes rts = RAILTYPES_NONE;
 
@@ -256,7 +256,7 @@ RailTypes GetCompanyRailtypes(CompanyID company, bool introduces)
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
-				(HasBit(e->company_avail, company) || _date >= e->intro_date + DAYS_IN_YEAR)) {
+				(HasBit(e->company_avail, company) || TimerGameCalendar::date >= e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
 			const RailVehicleInfo *rvi = &e->u.rail;
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
@@ -270,7 +270,7 @@ RailTypes GetCompanyRailtypes(CompanyID company, bool introduces)
 		}
 	}
 
-	if (introduces) return AddDateIntroducedRailTypes(rts, _date);
+	if (introduces) return AddDateIntroducedRailTypes(rts, TimerGameCalendar::date);
 	return rts;
 }
 
@@ -298,7 +298,7 @@ RailTypes GetRailTypes(bool introduces)
 		}
 	}
 
-	if (introduces) return AddDateIntroducedRailTypes(rts, MAX_DAY);
+	if (introduces) return AddDateIntroducedRailTypes(rts, CalendarTime::MAX_DATE);
 	return rts;
 }
 
@@ -312,14 +312,14 @@ RailType GetRailTypeByLabel(RailTypeLabel label, bool allow_alternate_labels)
 {
 	/* Loop through each rail type until the label is found */
 	for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
-		const RailtypeInfo *rti = GetRailTypeInfo(r);
+		const RailTypeInfo *rti = GetRailTypeInfo(r);
 		if (rti->label == label) return r;
 	}
 
 	if (allow_alternate_labels) {
 		/* Test if any rail type defines the label as an alternate. */
 		for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
-			const RailtypeInfo *rti = GetRailTypeInfo(r);
+			const RailTypeInfo *rti = GetRailTypeInfo(r);
 			if (std::find(rti->alternate_labels.begin(), rti->alternate_labels.end(), label) != rti->alternate_labels.end()) return r;
 		}
 	}

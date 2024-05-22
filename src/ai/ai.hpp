@@ -11,7 +11,6 @@
 #define AI_HPP
 
 #include "../script/api/script_event_types.hpp"
-#include "../core/string_compare_type.hpp"
 #include "ai_scanner.hpp"
 
 /**
@@ -19,18 +18,6 @@
  */
 class AI {
 public:
-	/**
-	 * The default months AIs start after each other.
-	 */
-	enum StartNext {
-		START_NEXT_EASY   = DAYS_IN_YEAR * 2,
-		START_NEXT_MEDIUM = DAYS_IN_YEAR,
-		START_NEXT_HARD   = DAYS_IN_YEAR / 2,
-		START_NEXT_MIN    = 0,
-		START_NEXT_MAX    = 3600,
-		START_NEXT_DEVIATION = 60,
-	};
-
 	/**
 	 * Is it possible to start a new AI company?
 	 * @return True if a new AI company can be started.
@@ -40,9 +27,8 @@ public:
 	/**
 	 * Start a new AI company.
 	 * @param company At which slot the AI company should start.
-	 * @param rerandomise_ai Whether to rerandomise the configured AI.
 	 */
-	static void StartNew(CompanyID company, bool rerandomise_ai = true);
+	static void StartNew(CompanyID company);
 
 	/**
 	 * Called every game-tick to let AIs do something.
@@ -124,23 +110,18 @@ public:
 	 */
 	static void Save(CompanyID company);
 
-	/**
-	 * Get the number of days before the next AI should start.
-	 */
-	static int GetStartNextTime();
-
 	/** Wrapper function for AIScanner::GetAIConsoleList */
-	static std::string GetConsoleList(bool newest_only = false);
+	static void GetConsoleList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only);
 	/** Wrapper function for AIScanner::GetAIConsoleLibraryList */
-	static std::string GetConsoleLibraryList();
+	static void GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator);
 	/** Wrapper function for AIScanner::GetAIInfoList */
 	static const ScriptInfoList *GetInfoList();
 	/** Wrapper function for AIScanner::GetUniqueAIInfoList */
 	static const ScriptInfoList *GetUniqueInfoList();
 	/** Wrapper function for AIScanner::FindInfo */
-	static class AIInfo *FindInfo(const char *name, int version, bool force_exact_match);
+	static class AIInfo *FindInfo(const std::string &name, int version, bool force_exact_match);
 	/** Wrapper function for AIScanner::FindLibrary */
-	static class AILibrary *FindLibrary(const char *library, int version);
+	static class AILibrary *FindLibrary(const std::string &library, int version);
 
 	/**
 	 * Rescans all searchpaths for available AIs. If a used AI is no longer

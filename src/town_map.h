@@ -12,6 +12,7 @@
 
 #include "road_map.h"
 #include "house.h"
+#include "timer/timer_game_calendar.h"
 
 /**
  * Get the index of which town this house/street is attached to.
@@ -19,7 +20,7 @@
  * @pre IsTileType(t, MP_HOUSE) or IsTileType(t, MP_ROAD) but not a road depot
  * @return TownID
  */
-static inline TownID GetTownIndex(Tile t)
+inline TownID GetTownIndex(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE) || (IsTileType(t, MP_ROAD) && !IsRoadDepot(t)));
 	return t.m2();
@@ -31,7 +32,7 @@ static inline TownID GetTownIndex(Tile t)
  * @param index the index of the town
  * @pre IsTileType(t, MP_HOUSE) or IsTileType(t, MP_ROAD) but not a road depot
  */
-static inline void SetTownIndex(Tile t, TownID index)
+inline void SetTownIndex(Tile t, TownID index)
 {
 	assert(IsTileType(t, MP_HOUSE) || (IsTileType(t, MP_ROAD) && !IsRoadDepot(t)));
 	t.m2() = index;
@@ -44,7 +45,7 @@ static inline void SetTownIndex(Tile t, TownID index)
  * @pre IsTileType(t, MP_HOUSE)
  * @return house type
  */
-static inline HouseID GetCleanHouseType(Tile t)
+inline HouseID GetCleanHouseType(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	return t.m4() | (GB(t.m3(), 6, 1) << 8);
@@ -56,7 +57,7 @@ static inline HouseID GetCleanHouseType(Tile t)
  * @pre IsTileType(t, MP_HOUSE)
  * @return house type
  */
-static inline HouseID GetHouseType(Tile t)
+inline HouseID GetHouseType(Tile t)
 {
 	return GetTranslatedHouseID(GetCleanHouseType(t));
 }
@@ -67,7 +68,7 @@ static inline HouseID GetHouseType(Tile t)
  * @param house_id the new house type
  * @pre IsTileType(t, MP_HOUSE)
  */
-static inline void SetHouseType(Tile t, HouseID house_id)
+inline void SetHouseType(Tile t, HouseID house_id)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	t.m4() = GB(house_id, 0, 8);
@@ -79,7 +80,7 @@ static inline void SetHouseType(Tile t, HouseID house_id)
  * @param t the tile
  * @return has destination
  */
-static inline bool LiftHasDestination(Tile t)
+inline bool LiftHasDestination(Tile t)
 {
 	return HasBit(t.m7(), 0);
 }
@@ -90,7 +91,7 @@ static inline bool LiftHasDestination(Tile t)
  * @param t the tile
  * @param dest new destination
  */
-static inline void SetLiftDestination(Tile t, byte dest)
+inline void SetLiftDestination(Tile t, uint8_t dest)
 {
 	SetBit(t.m7(), 0);
 	SB(t.m7(), 1, 3, dest);
@@ -101,7 +102,7 @@ static inline void SetLiftDestination(Tile t, byte dest)
  * @param t the tile
  * @return destination
  */
-static inline byte GetLiftDestination(Tile t)
+inline uint8_t GetLiftDestination(Tile t)
 {
 	return GB(t.m7(), 1, 3);
 }
@@ -112,7 +113,7 @@ static inline byte GetLiftDestination(Tile t)
  * and the destination.
  * @param t the tile
  */
-static inline void HaltLift(Tile t)
+inline void HaltLift(Tile t)
 {
 	SB(t.m7(), 0, 4, 0);
 }
@@ -122,7 +123,7 @@ static inline void HaltLift(Tile t)
  * @param t the tile
  * @return position, from 0 to 36
  */
-static inline byte GetLiftPosition(Tile t)
+inline uint8_t GetLiftPosition(Tile t)
 {
 	return GB(t.m6(), 2, 6);
 }
@@ -132,7 +133,7 @@ static inline byte GetLiftPosition(Tile t)
  * @param t the tile
  * @param pos position, from 0 to 36
  */
-static inline void SetLiftPosition(Tile t, byte pos)
+inline void SetLiftPosition(Tile t, uint8_t pos)
 {
 	SB(t.m6(), 2, 6, pos);
 }
@@ -142,7 +143,7 @@ static inline void SetLiftPosition(Tile t, byte pos)
  * @param t the tile
  * @return true if it is, false if it is not
  */
-static inline bool IsHouseCompleted(Tile t)
+inline bool IsHouseCompleted(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	return HasBit(t.m3(), 7);
@@ -153,7 +154,7 @@ static inline bool IsHouseCompleted(Tile t)
  * @param t the tile
  * @param status
  */
-static inline void SetHouseCompleted(Tile t, bool status)
+inline void SetHouseCompleted(Tile t, bool status)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	SB(t.m3(), 7, 1, !!status);
@@ -180,10 +181,10 @@ static inline void SetHouseCompleted(Tile t, bool status)
  * @pre IsTileType(t, MP_HOUSE)
  * @return the building stage of the house
  */
-static inline byte GetHouseBuildingStage(Tile t)
+inline uint8_t GetHouseBuildingStage(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
-	return IsHouseCompleted(t) ? (byte)TOWN_HOUSE_COMPLETED : GB(t.m5(), 3, 2);
+	return IsHouseCompleted(t) ? (uint8_t)TOWN_HOUSE_COMPLETED : GB(t.m5(), 3, 2);
 }
 
 /**
@@ -192,7 +193,7 @@ static inline byte GetHouseBuildingStage(Tile t)
  * @pre IsTileType(t, MP_HOUSE)
  * @return the construction stage of the house
  */
-static inline byte GetHouseConstructionTick(Tile t)
+inline uint8_t GetHouseConstructionTick(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	return IsHouseCompleted(t) ? 0 : GB(t.m5(), 0, 3);
@@ -205,7 +206,7 @@ static inline byte GetHouseConstructionTick(Tile t)
  * @param t the tile of the house to increment the construction stage of
  * @pre IsTileType(t, MP_HOUSE)
  */
-static inline void IncHouseConstructionTick(Tile t)
+inline void IncHouseConstructionTick(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	AB(t.m5(), 0, 5, 1);
@@ -223,7 +224,7 @@ static inline void IncHouseConstructionTick(Tile t)
  * @param t the tile of this house
  * @pre IsTileType(t, MP_HOUSE) && IsHouseCompleted(t)
  */
-static inline void ResetHouseAge(Tile t)
+inline void ResetHouseAge(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE) && IsHouseCompleted(t));
 	t.m5() = 0;
@@ -234,7 +235,7 @@ static inline void ResetHouseAge(Tile t)
  * @param t the tile of this house
  * @pre IsTileType(t, MP_HOUSE)
  */
-static inline void IncrementHouseAge(Tile t)
+inline void IncrementHouseAge(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	if (IsHouseCompleted(t) && t.m5() < 0xFF) t.m5()++;
@@ -246,7 +247,7 @@ static inline void IncrementHouseAge(Tile t)
  * @pre IsTileType(t, MP_HOUSE)
  * @return year
  */
-static inline Year GetHouseAge(Tile t)
+inline TimerGameCalendar::Year GetHouseAge(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	return IsHouseCompleted(t) ? t.m5() : 0;
@@ -259,7 +260,7 @@ static inline Year GetHouseAge(Tile t)
  * @param random the new random bits
  * @pre IsTileType(t, MP_HOUSE)
  */
-static inline void SetHouseRandomBits(Tile t, byte random)
+inline void SetHouseRandomBits(Tile t, uint8_t random)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	t.m1() = random;
@@ -272,7 +273,7 @@ static inline void SetHouseRandomBits(Tile t, byte random)
  * @pre IsTileType(t, MP_HOUSE)
  * @return random bits
  */
-static inline byte GetHouseRandomBits(Tile t)
+inline uint8_t GetHouseRandomBits(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	return t.m1();
@@ -285,7 +286,7 @@ static inline byte GetHouseRandomBits(Tile t)
  * @param triggers the activated triggers
  * @pre IsTileType(t, MP_HOUSE)
  */
-static inline void SetHouseTriggers(Tile t, byte triggers)
+inline void SetHouseTriggers(Tile t, uint8_t triggers)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	SB(t.m3(), 0, 5, triggers);
@@ -298,7 +299,7 @@ static inline void SetHouseTriggers(Tile t, byte triggers)
  * @pre IsTileType(t, MP_HOUSE)
  * @return triggers
  */
-static inline byte GetHouseTriggers(Tile t)
+inline uint8_t GetHouseTriggers(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	return GB(t.m3(), 0, 5);
@@ -310,7 +311,7 @@ static inline byte GetHouseTriggers(Tile t)
  * @pre IsTileType(t, MP_HOUSE)
  * @return time remaining
  */
-static inline byte GetHouseProcessingTime(Tile t)
+inline uint8_t GetHouseProcessingTime(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	return GB(t.m6(), 2, 6);
@@ -322,7 +323,7 @@ static inline byte GetHouseProcessingTime(Tile t)
  * @param time the time to be set
  * @pre IsTileType(t, MP_HOUSE)
  */
-static inline void SetHouseProcessingTime(Tile t, byte time)
+inline void SetHouseProcessingTime(Tile t, uint8_t time)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	SB(t.m6(), 2, 6, time);
@@ -333,7 +334,7 @@ static inline void SetHouseProcessingTime(Tile t, byte time)
  * @param t the house tile
  * @pre IsTileType(t, MP_HOUSE)
  */
-static inline void DecHouseProcessingTime(Tile t)
+inline void DecHouseProcessingTime(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	t.m6() -= 1 << 2;
@@ -349,7 +350,7 @@ static inline void DecHouseProcessingTime(Tile t)
  * @param random_bits required for newgrf houses
  * @pre IsTileType(t, MP_CLEAR)
  */
-static inline void MakeHouseTile(Tile t, TownID tid, byte counter, byte stage, HouseID type, byte random_bits)
+inline void MakeHouseTile(Tile t, TownID tid, uint8_t counter, uint8_t stage, HouseID type, uint8_t random_bits)
 {
 	assert(IsTileType(t, MP_CLEAR));
 

@@ -15,18 +15,22 @@
 #include "gfx_type.h"
 #include "vehicle_type.h"
 
-bool MayCompanyTakeOver(CompanyID cbig, CompanyID small);
+bool CheckTakeoverVehicleLimit(CompanyID cbig, CompanyID small);
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner);
-void GetNameOfOwner(Owner owner, TileIndex tile);
+static const int OWNED_BY_OWNER_IN_PARAMETERS_OFFSET = 2; ///< The index in the parameters for the owner information.
+void SetDParamsForOwnedBy(Owner owner, TileIndex tile);
 void SetLocalCompany(CompanyID new_company);
-void ShowBuyCompanyDialog(CompanyID company);
+void ShowBuyCompanyDialog(CompanyID company, bool hostile_takeover);
 void CompanyAdminUpdate(const Company *company);
 void CompanyAdminBankrupt(CompanyID company_id);
 void UpdateLandscapingLimits();
+void UpdateCompanyLiveries(Company *c);
 
+Money GetAvailableMoney(CompanyID company);
+Money GetAvailableMoneyForCommand();
 bool CheckCompanyHasMoney(CommandCost &cost);
-void SubtractMoneyFromCompany(const CommandCost& cost);
-void SubtractMoneyFromCompanyFract(CompanyID company, const CommandCost& cost);
+void SubtractMoneyFromCompany(const CommandCost &cost);
+void SubtractMoneyFromCompanyFract(CompanyID company, const CommandCost &cost);
 CommandCost CheckOwnership(Owner owner, TileIndex tile = 0U);
 CommandCost CheckTileOwnership(TileIndex tile);
 
@@ -40,7 +44,7 @@ extern CompanyManagerFace _company_manager_face;
  * Is the current company the local company?
  * @return \c true of the current company is the local company, \c false otherwise.
  */
-static inline bool IsLocalCompany()
+inline bool IsLocalCompany()
 {
 	return _local_company == _current_company;
 }
@@ -50,7 +54,7 @@ static inline bool IsLocalCompany()
  * @param company Company where interaction is needed with.
  * @return Gives \c true if the user can answer questions interactively as representative of \a company, else \c false
  */
-static inline bool IsInteractiveCompany(CompanyID company)
+inline bool IsInteractiveCompany(CompanyID company)
 {
 	return company == _local_company;
 }

@@ -10,9 +10,9 @@
 #ifndef INDUSTRY_TYPE_H
 #define INDUSTRY_TYPE_H
 
-typedef uint16 IndustryID;
-typedef uint16 IndustryGfx;
-typedef uint8 IndustryType;
+typedef uint16_t IndustryID;
+typedef uint16_t IndustryGfx;
+typedef uint8_t IndustryType;
 struct Industry;
 
 struct IndustrySpec;
@@ -37,6 +37,8 @@ static const int INDUSTRY_COMPLETED = 3; ///< final stage of industry constructi
 
 static const int INDUSTRY_NUM_INPUTS = 16;  ///< Number of cargo types an industry can accept
 static const int INDUSTRY_NUM_OUTPUTS = 16; ///< Number of cargo types an industry can produce
+static const int INDUSTRY_ORIGINAL_NUM_INPUTS = 3; ///< Original number of accepted cargo types.
+static const int INDUSTRY_ORIGINAL_NUM_OUTPUTS = 2; ///< Original number of produced cargo types.
 
 
 void CheckIndustries();

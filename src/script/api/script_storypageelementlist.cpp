@@ -17,9 +17,7 @@ ScriptStoryPageElementList::ScriptStoryPageElementList(ScriptStoryPage::StoryPag
 {
 	if (!ScriptStoryPage::IsValidStoryPage(story_page_id)) return;
 
-	for (StoryPageElement *pe : StoryPageElement::Iterate()) {
-		if (pe->page == story_page_id) {
-			this->AddItem(pe->index);
-		}
-	}
+	ScriptList::FillList<StoryPageElement>(this,
+		[story_page_id](const StoryPageElement *pe) {return pe->page == story_page_id; }
+	);
 }

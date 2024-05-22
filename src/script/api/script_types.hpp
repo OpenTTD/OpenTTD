@@ -7,7 +7,10 @@
 
 /**
  * @file script_types.hpp Defines all the types of the game, like IDs of various objects.
- *
+ */
+
+/**
+ * @page script_ids Identifying game object
  * IDs are used to identify certain objects. They are only unique within the object type, so for example a vehicle may have VehicleID 2009,
  * while a station has StationID 2009 at the same time. Also IDs are assigned arbitrary, you cannot assume them to be consecutive.
  * Also note that some IDs are static and never change, while others are allocated dynamically and might be
@@ -46,6 +49,14 @@
  *                           <td> game start \ref newgrf_changes "(1)"              </td>
  *                           <td> never \ref newgrf_changes "(1)"                   </td>
  *                           <td> no                                                </td></tr>
+ * <tr><td>#ObjectType  </td><td> NewGRF object type                                </td>
+ *                           <td> game start \ref newgrf_changes "(1)"              </td>
+ *                           <td> never \ref newgrf_changes "(1)"                   </td>
+ *                           <td> no                                                </td></tr>
+ * <tr><td>#ScriptErrorType</td><td> error message                                  </td>
+ *                           <td> OpenTTD start \ref transient_id "(3)"             </td>
+ *                           <td> OpenTTD exit                                      </td>
+ *                           <td> no                                                </td></tr>
  * <tr><td>#SignID      </td><td> sign                                              </td>
  *                           <td> construction                                      </td>
  *                           <td> deletion                                          </td>
@@ -54,9 +65,21 @@
  *                           <td> construction                                      </td>
  *                           <td> expiration of 'grey' station sign after deletion  </td>
  *                           <td> yes                                               </td></tr>
+ * <tr><td>#StringID    </td><td> translatable text                                 </td>
+ *                           <td> OpenTTD start \ref transient_id "(3)"             </td>
+ *                           <td> OpenTTD exit                                      </td>
+ *                           <td> no                                                </td></tr>
  * <tr><td>#SubsidyID   </td><td> subsidy                                           </td>
  *                           <td> offer announcement                                </td>
  *                           <td> (offer) expiration                                </td>
+ *                           <td> yes                                               </td></tr>
+ * <tr><td>#StoryPageID </td><td> story page                                        </td>
+ *                           <td> creation                                          </td>
+ *                           <td> deletion                                          </td>
+ *                           <td> yes                                               </td></tr>
+ * <tr><td>#StoryPageElementID</td><td> story page element                          </td>
+ *                           <td> creation                                          </td>
+ *                           <td> deletion                                          </td>
  *                           <td> yes                                               </td></tr>
  * <tr><td>#TileIndex   </td><td> tile on map                                       </td>
  *                           <td> game start                                        </td>
@@ -75,6 +98,7 @@
  * @remarks
  *  \li \anchor newgrf_changes  (1) in-game changes of newgrfs may reassign/invalidate IDs (will also cause other trouble though).
  *  \li \anchor dynamic_engines (2) engine IDs are reassigned/invalidated on changing 'allow multiple newgrf engine sets' (only allowed as long as no vehicles are built).
+ *  \li \anchor transient_id    (3) string/error IDs are only valid during a session, and may be reassigned/invalidated when loading savegames (so you cannot store them).
  */
 
 #ifndef SCRIPT_TYPES_HPP
@@ -85,27 +109,37 @@
 #include "../../tile_type.h"
 #include <squirrel.h>
 
-/* Define all types here, so we don't have to include the whole _type.h maze */
-typedef uint BridgeType;     ///< Internal name, not of any use for you.
-typedef byte CargoID;        ///< The ID of a cargo.
-class CommandCost;           ///< The cost of a command.
-typedef uint16 EngineID;     ///< The ID of an engine.
-typedef uint16 GoalID;       ///< The ID of a goal.
-typedef uint16 GroupID;      ///< The ID of a group.
-typedef uint16 IndustryID;   ///< The ID of an industry.
-typedef uint8 IndustryType;  ///< The ID of an industry-type.
-typedef OverflowSafeInt64 Money; ///< Money, stored in a 32bit/64bit safe way. For scripts money is always in pounds.
-typedef uint16 SignID;       ///< The ID of a sign.
-typedef uint16 StationID;    ///< The ID of a station.
-typedef uint32 StringID;     ///< The ID of a string.
-typedef uint16 SubsidyID;    ///< The ID of a subsidy.
-typedef uint16 StoryPageID;  ///< The ID of a story page.
-typedef uint16 StoryPageElementID; ///< The ID of a story page element.
-typedef uint16 TownID;       ///< The ID of a town.
-typedef uint32 VehicleID;    ///< The ID of a vehicle.
+/* Define all types here, so they are added to the API docs. */
+typedef uint BridgeID;         ///< The ID of a bridge type.
+typedef uint8_t CargoID;       ///< The ID of a cargo.
+typedef uint16_t EngineID;     ///< The ID of an engine.
+typedef uint16_t GoalID;       ///< The ID of a goal.
+typedef uint16_t GroupID;      ///< The ID of a group.
+typedef uint16_t IndustryID;   ///< The ID of an industry.
+typedef uint8_t IndustryType;  ///< The ID of an industry-type.
+#ifdef DOXYGEN_API
+typedef int64_t Money;         ///< Money, stored in a 32bit/64bit safe way. For scripts money is always in pounds.
+#else
+typedef OverflowSafeInt64 Money;
+#endif /* DOXYGEN_API */
+typedef uint16_t ObjectType;   ///< The ID of an object-type.
+typedef uint16_t SignID;       ///< The ID of a sign.
+typedef uint16_t StationID;    ///< The ID of a station.
+typedef uint32_t StringID;     ///< The ID of a string.
+typedef uint16_t SubsidyID;    ///< The ID of a subsidy.
+typedef uint16_t StoryPageID;  ///< The ID of a story page.
+typedef uint16_t StoryPageElementID; ///< The ID of a story page element.
+#ifdef DOXYGEN_API
+typedef uint32_t TileIndex;    ///< The ID of a map location.
+#endif /* DOXYGEN_API */
+typedef uint16_t TownID;       ///< The ID of a town.
+typedef uint32_t VehicleID;    ///< The ID of a vehicle.
 
-/* Types we defined ourself, as the OpenTTD core doesn't have them (yet) */
-typedef uint ScriptErrorType;///< The types of errors inside the script framework.
-typedef BridgeType BridgeID; ///< The ID of a bridge.
+/**
+ * The types of errors inside the script framework.
+ *
+ * Possible value are defined inside each API class in an ErrorMessages enum.
+ */
+typedef uint ScriptErrorType;
 
 #endif /* SCRIPT_TYPES_HPP */

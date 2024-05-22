@@ -10,6 +10,8 @@
 #ifndef MATH_FUNC_HPP
 #define MATH_FUNC_HPP
 
+#include "strong_typedef_type.hpp"
+
 /**
  * Returns the absolute value of (scalar) variable.
  *
@@ -18,9 +20,9 @@
  * @return The unsigned value
  */
 template <typename T>
-static inline T abs(const T a)
+constexpr T abs(const T a)
 {
-	return (a < (T)0) ? -a : a;
+	return (a < static_cast<T>(0)) ? -a : a;
 }
 
 /**
@@ -32,11 +34,11 @@ static inline T abs(const T a)
  * @return The smallest multiple of n equal or greater than x
  */
 template <typename T>
-static inline T Align(const T x, uint n)
+constexpr T Align(const T x, uint n)
 {
 	assert((n & (n - 1)) == 0 && n != 0);
 	n--;
-	return (T)((x + n) & ~((T)n));
+	return static_cast<T>((x + n) & ~static_cast<T>(n));
 }
 
 /**
@@ -50,10 +52,10 @@ static inline T Align(const T x, uint n)
  * @see Align()
  */
 template <typename T>
-static inline T *AlignPtr(T *x, uint n)
+constexpr T *AlignPtr(T *x, uint n)
 {
-	static_assert(sizeof(size_t) == sizeof(void *));
-	return reinterpret_cast<T *>(Align((size_t)x, n));
+	static_assert(sizeof(uintptr_t) == sizeof(void *));
+	return reinterpret_cast<T *>(Align(reinterpret_cast<uintptr_t>(x), n));
 }
 
 /**
@@ -74,9 +76,35 @@ static inline T *AlignPtr(T *x, uint n)
  * @see Clamp(int, int, int)
  */
 template <typename T>
-static inline T Clamp(const T a, const T min, const T max)
+constexpr T Clamp(const T a, const T min, const T max)
 {
 	assert(min <= max);
+	if (a <= min) return min;
+	if (a >= max) return max;
+	return a;
+}
+
+/**
+ * Clamp a value between an interval.
+ *
+ * This function returns a value which is between the given interval of
+ * min and max. If the given value is in this interval the value itself
+ * is returned otherwise the border of the interval is returned, according
+ * which side of the interval was 'left'.
+ *
+ * @note If the min value is greater than the max, return value is the average of the min and max.
+ * @param a The value to clamp/truncate.
+ * @param min The minimum of the interval.
+ * @param max the maximum of the interval.
+ * @returns A value between min and max which is closest to a.
+ */
+template <typename T>
+constexpr T SoftClamp(const T a, const T min, const T max)
+{
+	if (min > max) {
+		using U = std::make_unsigned_t<T>;
+		return min - (U(min) - max) / 2;
+	}
 	if (a <= min) return min;
 	if (a >= max) return max;
 	return a;
@@ -98,7 +126,7 @@ static inline T Clamp(const T a, const T min, const T max)
  * @returns A value between min and max which is closest to a.
  * @see ClampU(uint, uint, uint)
  */
-static inline int Clamp(const int a, const int min, const int max)
+constexpr int Clamp(const int a, const int min, const int max)
 {
 	return Clamp<int>(a, min, max);
 }
@@ -119,44 +147,80 @@ static inline int Clamp(const int a, const int min, const int max)
  * @returns A value between min and max which is closest to a.
  * @see Clamp(int, int, int)
  */
-static inline uint ClampU(const uint a, const uint min, const uint max)
+constexpr uint ClampU(const uint a, const uint min, const uint max)
 {
 	return Clamp<uint>(a, min, max);
 }
 
 /**
- * Reduce a signed 64-bit int to a signed 32-bit one
+ * Clamp the given value down to lie within the requested type.
  *
- * This function clamps a 64-bit integer to a 32-bit integer.
- * If the 64-bit value is smaller than the smallest 32-bit integer
- * value 0x80000000 this value is returned (the left one bit is the sign bit).
- * If the 64-bit value is greater than the greatest 32-bit integer value 0x7FFFFFFF
- * this value is returned. In all other cases the 64-bit value 'fits' in a
- * 32-bits integer field and so the value is casted to int32 and returned.
+ * For example ClampTo<uint8_t> will return a value clamped to the range of 0
+ * to 255. Anything smaller will become 0, anything larger will become 255.
  *
- * @param a The 64-bit value to clamps
- * @return The 64-bit value reduced to a 32-bit value
+ * @param a The 64-bit value to clamp.
+ * @return The 64-bit value reduced to a value within the given allowed range
+ * for the return type.
  * @see Clamp(int, int, int)
  */
-static inline int32 ClampToI32(const int64 a)
+template <typename To, typename From, std::enable_if_t<std::is_integral<From>::value, int> = 0>
+constexpr To ClampTo(From value)
 {
-	return static_cast<int32>(Clamp<int64>(a, INT32_MIN, INT32_MAX));
+	static_assert(std::numeric_limits<To>::is_integer, "Do not clamp from non-integer values");
+	static_assert(std::numeric_limits<From>::is_integer, "Do not clamp to non-integer values");
+
+	if constexpr (sizeof(To) >= sizeof(From) && std::numeric_limits<To>::is_signed == std::numeric_limits<From>::is_signed) {
+		/* Same signedness and To type is larger or equal than From type, no clamping is required. */
+		return static_cast<To>(value);
+	}
+
+	if constexpr (sizeof(To) > sizeof(From) && std::numeric_limits<To>::is_signed) {
+		/* Signed destination and a larger To type, no clamping is required. */
+		return static_cast<To>(value);
+	}
+
+	/* Get the bigger of the two types based on essentially the number of bits. */
+	using BiggerType = typename std::conditional<sizeof(From) >= sizeof(To), From, To>::type;
+
+	if constexpr (std::numeric_limits<To>::is_signed) {
+		/* The output is a signed number. */
+		if constexpr (std::numeric_limits<From>::is_signed) {
+			/* Both input and output are signed. */
+			return static_cast<To>(std::clamp<BiggerType>(value,
+					std::numeric_limits<To>::lowest(), std::numeric_limits<To>::max()));
+		}
+
+		/* The input is unsigned, so skip the minimum check and use unsigned variant of the biggest type as intermediate type. */
+		using BiggerUnsignedType = typename std::make_unsigned<BiggerType>::type;
+		return static_cast<To>(std::min<BiggerUnsignedType>(std::numeric_limits<To>::max(), value));
+	}
+
+	/* The output is unsigned. */
+
+	if constexpr (std::numeric_limits<From>::is_signed) {
+		/* Input is signed; account for the negative numbers in the input. */
+		if constexpr (sizeof(To) >= sizeof(From)) {
+			/* If the output type is larger or equal to the input type, then only clamp the negative numbers. */
+			return static_cast<To>(std::max<From>(value, 0));
+		}
+
+		/* The output type is smaller than the input type. */
+		using BiggerSignedType = typename std::make_signed<BiggerType>::type;
+		return static_cast<To>(std::clamp<BiggerSignedType>(value,
+				std::numeric_limits<To>::lowest(), std::numeric_limits<To>::max()));
+	}
+
+	/* The input and output are unsigned, just clamp at the high side. */
+	return static_cast<To>(std::min<BiggerType>(value, std::numeric_limits<To>::max()));
 }
 
 /**
- * Reduce an unsigned 64-bit int to an unsigned 16-bit one
- *
- * @param a The 64-bit value to clamp
- * @return The 64-bit value reduced to a 16-bit value
- * @see ClampU(uint, uint, uint)
+ * Specialization of ClampTo for #StrongType::Typedef.
  */
-static inline uint16 ClampToU16(const uint64 a)
+template <typename To, typename From, std::enable_if_t<std::is_base_of<StrongTypedefBase, From>::value, int> = 0>
+constexpr To ClampTo(From value)
 {
-	/* MSVC thinks, in its infinite wisdom, that int min(int, int) is a better
-	 * match for min(uint64, uint) than uint64 min(uint64, uint64). As such we
-	 * need to cast the UINT16_MAX to prevent MSVC from displaying its
-	 * infinite loads of warnings. */
-	return static_cast<uint16>(std::min(a, static_cast<uint64>(UINT16_MAX)));
+	return ClampTo<To>(value.base());
 }
 
 /**
@@ -167,7 +231,7 @@ static inline uint16 ClampToU16(const uint64 a)
  * @return The absolute difference between the given scalars
  */
 template <typename T>
-static inline T Delta(const T a, const T b)
+constexpr T Delta(const T a, const T b)
 {
 	return (a < b) ? b - a : a - b;
 }
@@ -185,9 +249,9 @@ static inline T Delta(const T a, const T b)
  * @return True if the value is in the interval, false else.
  */
 template <typename T>
-static inline bool IsInsideBS(const T x, const size_t base, const size_t size)
+constexpr bool IsInsideBS(const T x, const size_t base, const size_t size)
 {
-	return (size_t)(x - base) < size;
+	return static_cast<size_t>(x - base) < size;
 }
 
 /**
@@ -200,10 +264,14 @@ static inline bool IsInsideBS(const T x, const size_t base, const size_t size)
  * @param max The maximum of the interval
  * @see IsInsideBS()
  */
-template <typename T>
-static constexpr inline bool IsInsideMM(const T x, const size_t min, const size_t max) noexcept
+template <typename T, std::enable_if_t<std::disjunction_v<std::is_convertible<T, size_t>, std::is_base_of<StrongTypedefBase, T>>, int> = 0>
+constexpr bool IsInsideMM(const T x, const size_t min, const size_t max) noexcept
 {
-	return (size_t)(x - min) < (max - min);
+	if constexpr (std::is_base_of_v<StrongTypedefBase, T>) {
+		return static_cast<size_t>(x.base() - min) < (max - min);
+	} else {
+		return static_cast<size_t>(x - min) < (max - min);
+	}
 }
 
 /**
@@ -212,7 +280,7 @@ static constexpr inline bool IsInsideMM(const T x, const size_t min, const size_
  * @param b variable to swap with a
  */
 template <typename T>
-static inline void Swap(T &a, T &b)
+constexpr void Swap(T &a, T &b)
 {
 	T t = a;
 	a = b;
@@ -224,7 +292,7 @@ static inline void Swap(T &a, T &b)
  * @param i value to convert, range 0..255
  * @return value in range 0..100
  */
-static inline uint ToPercent8(uint i)
+constexpr uint ToPercent8(uint i)
 {
 	assert(i < 256);
 	return i * 101 >> 8;
@@ -235,14 +303,12 @@ static inline uint ToPercent8(uint i)
  * @param i value to convert, range 0..65535
  * @return value in range 0..100
  */
-static inline uint ToPercent16(uint i)
+constexpr uint ToPercent16(uint i)
 {
 	assert(i < 65536);
 	return i * 101 >> 16;
 }
 
-int LeastCommonMultiple(int a, int b);
-int GreatestCommonDivisor(int a, int b);
 int DivideApprox(int a, int b);
 
 /**
@@ -251,7 +317,7 @@ int DivideApprox(int a, int b);
  * @param b Denominator
  * @return Quotient, rounded up
  */
-static inline uint CeilDiv(uint a, uint b)
+constexpr uint CeilDiv(uint a, uint b)
 {
 	return (a + b - 1) / b;
 }
@@ -262,7 +328,7 @@ static inline uint CeilDiv(uint a, uint b)
  * @param b Denominator
  * @return a rounded up to the nearest multiple of b.
  */
-static inline uint Ceil(uint a, uint b)
+constexpr uint Ceil(uint a, uint b)
 {
 	return CeilDiv(a, b) * b;
 }
@@ -273,7 +339,7 @@ static inline uint Ceil(uint a, uint b)
  * @param b Denominator
  * @return Quotient, rounded to nearest
  */
-static inline int RoundDivSU(int a, uint b)
+constexpr int RoundDivSU(int a, uint b)
 {
 	if (a > 0) {
 		/* 0.5 is rounded to 1 */
@@ -285,22 +351,18 @@ static inline int RoundDivSU(int a, uint b)
 }
 
 /**
- * Computes (a / b) rounded away from zero.
- * @param a Numerator
- * @param b Denominator
- * @return Quotient, rounded away from zero
+ * Computes ten to the given power.
+ * @param power The power of ten to get.
+ * @return The power of ten.
  */
-static inline int DivAwayFromZero(int a, uint b)
+constexpr uint64_t PowerOfTen(int power)
 {
-	const int _b = static_cast<int>(b);
-	if (a > 0) {
-		return (a + _b - 1) / _b;
-	} else {
-		/* Note: Behaviour of negative numerator division is truncation toward zero. */
-		return (a - _b + 1) / _b;
-	}
+	assert(power >= 0 && power <= 20 /* digits in uint64_t */);
+	uint64_t result = 1;
+	for (int i = 0; i < power; i++) result *= 10;
+	return result;
 }
 
-uint32 IntSqrt(uint32 num);
+uint32_t IntSqrt(uint32_t num);
 
 #endif /* MATH_FUNC_HPP */

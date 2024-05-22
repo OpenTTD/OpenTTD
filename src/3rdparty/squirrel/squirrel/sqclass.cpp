@@ -65,6 +65,9 @@ bool SQClass::NewSlot(SQSharedState *ss,const SQObjectPtr &key,const SQObjectPtr
 		_defaultvalues[_member_idx(temp)].val = val;
 		return true;
 	}
+	if (_members->CountUsed() >= MEMBER_MAX_COUNT) {
+		return false;
+	}
 	if(type(val) == OT_CLOSURE || type(val) == OT_NATIVECLOSURE || bstatic) {
 		SQInteger mmidx;
 		if((type(val) == OT_CLOSURE || type(val) == OT_NATIVECLOSURE) &&
@@ -184,7 +187,7 @@ SQInstance::~SQInstance()
 	if(_class){ Finalize(); } //if _class is null it was already finalized by the GC
 }
 
-bool SQInstance::GetMetaMethod(SQVM *v,SQMetaMethod mm,SQObjectPtr &res)
+bool SQInstance::GetMetaMethod(SQVM *,SQMetaMethod mm,SQObjectPtr &res)
 {
 	if(type(_class->_metamethods[mm]) != OT_NULL) {
 		res = _class->_metamethods[mm];

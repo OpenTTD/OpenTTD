@@ -27,6 +27,7 @@
 #include "company_base.h"
 #include "error.h"
 #include "strings_func.h"
+#include "string_func.h"
 
 #include "table/strings.h"
 
@@ -38,7 +39,7 @@
  * @param maximum of entities this manager can deal with. i.e: houses = 512
  * @param invalid is the ID used to identify an invalid entity id
  */
-OverrideManagerBase::OverrideManagerBase(uint16 offset, uint16 maximum, uint16 invalid)
+OverrideManagerBase::OverrideManagerBase(uint16_t offset, uint16_t maximum, uint16_t invalid)
 {
 	this->max_offset = offset;
 	this->max_entities = maximum;
@@ -58,7 +59,7 @@ OverrideManagerBase::OverrideManagerBase(uint16 offset, uint16 maximum, uint16 i
  * @param grfid  ID of the grf file
  * @param entity_type original entity type
  */
-void OverrideManagerBase::Add(uint8 local_id, uint32 grfid, uint entity_type)
+void OverrideManagerBase::Add(uint16_t local_id, uint32_t grfid, uint entity_type)
 {
 	assert(entity_type < this->max_offset);
 	/* An override can be set only once */
@@ -77,7 +78,7 @@ void OverrideManagerBase::ResetMapping()
 void OverrideManagerBase::ResetOverride()
 {
 	std::fill(this->entity_overrides.begin(), this->entity_overrides.end(), this->invalid_id);
-	std::fill(this->grfid_overrides.begin(), this->grfid_overrides.end(), uint32());
+	std::fill(this->grfid_overrides.begin(), this->grfid_overrides.end(), uint32_t());
 }
 
 /**
@@ -86,9 +87,9 @@ void OverrideManagerBase::ResetOverride()
  * @param grfid ID of the grf file
  * @return the ID of the candidate, of the Invalid flag item ID
  */
-uint16 OverrideManagerBase::GetID(uint8 grf_local_id, uint32 grfid) const
+uint16_t OverrideManagerBase::GetID(uint16_t grf_local_id, uint32_t grfid) const
 {
-	for (uint16 id = 0; id < this->max_entities; id++) {
+	for (uint16_t id = 0; id < this->max_entities; id++) {
 		const EntityIDMapping *map = &this->mappings[id];
 		if (map->entity_id == grf_local_id && map->grfid == grfid) {
 			return id;
@@ -105,9 +106,9 @@ uint16 OverrideManagerBase::GetID(uint8 grf_local_id, uint32 grfid) const
  * @param substitute_id is the original entity from which data is copied for the new one
  * @return the proper usable slot id, or invalid marker if none is found
  */
-uint16 OverrideManagerBase::AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id)
+uint16_t OverrideManagerBase::AddEntityID(uint16_t grf_local_id, uint32_t grfid, uint16_t substitute_id)
 {
-	uint16 id = this->GetID(grf_local_id, grfid);
+	uint16_t id = this->GetID(grf_local_id, grfid);
 
 	/* Look to see if this entity has already been added. This is done
 	 * separately from the loop below in case a GRF has been deleted, and there
@@ -135,7 +136,7 @@ uint16 OverrideManagerBase::AddEntityID(byte grf_local_id, uint32 grfid, byte su
  * @param entity_id ID of the entity being queried.
  * @return GRFID.
  */
-uint32 OverrideManagerBase::GetGRFID(uint16 entity_id) const
+uint32_t OverrideManagerBase::GetGRFID(uint16_t entity_id) const
 {
 	return this->mappings[entity_id].grfid;
 }
@@ -145,7 +146,7 @@ uint32 OverrideManagerBase::GetGRFID(uint16 entity_id) const
  * @param entity_id of the entity being queried
  * @return mapped id
  */
-uint16 OverrideManagerBase::GetSubstituteID(uint16 entity_id) const
+uint16_t OverrideManagerBase::GetSubstituteID(uint16_t entity_id) const
 {
 	return this->mappings[entity_id].substitute_id;
 }
@@ -160,11 +161,15 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 	HouseID house_id = this->AddEntityID(hs->grf_prop.local_id, hs->grf_prop.grffile->grfid, hs->grf_prop.subst_id);
 
 	if (house_id == this->invalid_id) {
-		grfmsg(1, "House.SetEntitySpec: Too many houses allocated. Ignoring.");
+		GrfMsg(1, "House.SetEntitySpec: Too many houses allocated. Ignoring.");
 		return;
 	}
 
-	MemCpyT(HouseSpec::Get(house_id), hs);
+	auto &house_specs = HouseSpec::Specs();
+
+	/* Now that we know we can use the given id, copy the spec to its final destination. */
+	if (house_id >= house_specs.size()) house_specs.resize(house_id + 1);
+	house_specs[house_id] = *hs;
 
 	/* Now add the overrides. */
 	for (int i = 0; i < this->max_offset; i++) {
@@ -184,9 +189,9 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
  * @param grfid ID of the grf file
  * @return the ID of the candidate, of the Invalid flag item ID
  */
-uint16 IndustryOverrideManager::GetID(uint8 grf_local_id, uint32 grfid) const
+uint16_t IndustryOverrideManager::GetID(uint16_t grf_local_id, uint32_t grfid) const
 {
-	uint16 id = OverrideManagerBase::GetID(grf_local_id, grfid);
+	uint16_t id = OverrideManagerBase::GetID(grf_local_id, grfid);
 	if (id != this->invalid_id) return id;
 
 	/* No mapping found, try the overrides */
@@ -204,10 +209,10 @@ uint16 IndustryOverrideManager::GetID(uint8 grf_local_id, uint32 grfid) const
  * @param substitute_id industry from which data has been copied
  * @return a free entity id (slotid) if ever one has been found, or Invalid_ID marker otherwise
  */
-uint16 IndustryOverrideManager::AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id)
+uint16_t IndustryOverrideManager::AddEntityID(uint16_t grf_local_id, uint32_t grfid, uint16_t substitute_id)
 {
 	/* This entity hasn't been defined before, so give it an ID now. */
-	for (uint16 id = 0; id < this->max_entities; id++) {
+	for (uint16_t id = 0; id < this->max_entities; id++) {
 		/* Skip overridden industries */
 		if (id < this->max_offset && this->entity_overrides[id] != this->invalid_id) continue;
 
@@ -254,7 +259,7 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 	}
 
 	if (ind_id == this->invalid_id) {
-		grfmsg(1, "Industry.SetEntitySpec: Too many industries allocated. Ignoring.");
+		GrfMsg(1, "Industry.SetEntitySpec: Too many industries allocated. Ignoring.");
 		return;
 	}
 
@@ -269,11 +274,11 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 	IndustryGfx indt_id = this->AddEntityID(its->grf_prop.local_id, its->grf_prop.grffile->grfid, its->grf_prop.subst_id);
 
 	if (indt_id == this->invalid_id) {
-		grfmsg(1, "IndustryTile.SetEntitySpec: Too many industry tiles allocated. Ignoring.");
+		GrfMsg(1, "IndustryTile.SetEntitySpec: Too many industry tiles allocated. Ignoring.");
 		return;
 	}
 
-	memcpy(&_industry_tile_specs[indt_id], its, sizeof(*its));
+	_industry_tile_specs[indt_id] = *its;
 
 	/* Now add the overrides. */
 	for (int i = 0; i < this->max_offset; i++) {
@@ -308,7 +313,7 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
 	}
 
 	if (type == this->invalid_id) {
-		grfmsg(1, "Object.SetEntitySpec: Too many objects allocated. Ignoring.");
+		GrfMsg(1, "Object.SetEntitySpec: Too many objects allocated. Ignoring.");
 		return;
 	}
 
@@ -327,7 +332,7 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
  * @return value corresponding to the grf expected format:
  *         Terrain type: 0 normal, 1 desert, 2 rainforest, 4 on or above snowline
  */
-uint32 GetTerrainType(TileIndex tile, TileContext context)
+uint32_t GetTerrainType(TileIndex tile, TileContext context)
 {
 	switch (_settings_game.game_creation.landscape) {
 		case LT_TROPIC: return GetTropicZone(tile);
@@ -402,10 +407,10 @@ uint32 GetTerrainType(TileIndex tile, TileContext context)
  * @param axis Axis of a railways station.
  * @return The tile at the offset.
  */
-TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets, Axis axis)
+TileIndex GetNearbyTile(uint8_t parameter, TileIndex tile, bool signed_offsets, Axis axis)
 {
-	int8 x = GB(parameter, 0, 4);
-	int8 y = GB(parameter, 4, 4);
+	int8_t x = GB(parameter, 0, 4);
+	int8_t y = GB(parameter, 4, 4);
 
 	if (signed_offsets && x >= 8) x -= 16;
 	if (signed_offsets && y >= 8) y -= 16;
@@ -425,19 +430,18 @@ TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets, Axi
  * @param grf_version8 True, if we are dealing with a new NewGRF which uses GRF version >= 8.
  * @return 0czzbbss: c = TileType; zz = TileZ; bb: 7-3 zero, 4-2 TerrainType, 1 water/shore, 0 zero; ss = TileSlope
  */
-uint32 GetNearbyTileInformation(TileIndex tile, bool grf_version8)
+uint32_t GetNearbyTileInformation(TileIndex tile, bool grf_version8)
 {
 	TileType tile_type = GetTileType(tile);
 
 	/* Fake tile type for trees on shore */
 	if (IsTileType(tile, MP_TREES) && GetTreeGround(tile) == TREE_GROUND_SHORE) tile_type = MP_WATER;
 
-	int z;
-	Slope tileh = GetTilePixelSlope(tile, &z);
+	auto [tileh, z] = GetTilePixelSlope(tile);
 	/* Return 0 if the tile is a land tile */
-	byte terrain_type = (HasTileWaterClass(tile) ? (GetWaterClass(tile) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
+	uint8_t terrain_type = (HasTileWaterClass(tile) ? (GetWaterClass(tile) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
 	if (grf_version8) z /= TILE_HEIGHT;
-	return tile_type << 24 | Clamp(z, 0, 0xFF) << 16 | terrain_type << 8 | tileh;
+	return tile_type << 24 | ClampTo<uint8_t>(z) << 16 | terrain_type << 8 | tileh;
 }
 
 /**
@@ -446,7 +450,7 @@ uint32 GetNearbyTileInformation(TileIndex tile, bool grf_version8)
  * @param l Livery of the object; nullptr to use default.
  * @return NewGRF company information.
  */
-uint32 GetCompanyInfo(CompanyID owner, const Livery *l)
+uint32_t GetCompanyInfo(CompanyID owner, const Livery *l)
 {
 	if (l == nullptr && Company::IsValidID(owner)) l = &Company::Get(owner)->livery[LS_DEFAULT];
 	return owner | (Company::IsValidAiID(owner) ? 0x10000 : 0) | (l != nullptr ? (l->colour1 << 24) | (l->colour2 << 28) : 0);
@@ -459,7 +463,7 @@ uint32 GetCompanyInfo(CompanyID owner, const Livery *l)
  * @param default_error Error message to use for the generic error.
  * @return CommandCost indicating success or the error message.
  */
-CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, const GRFFile *grffile, StringID default_error)
+CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, const GRFFile *grffile, StringID default_error)
 {
 	CommandCost res;
 
@@ -495,7 +499,7 @@ CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, const GRFFi
  * @param cbid Callback causing the problem.
  * @param cb_res Invalid result returned by the callback.
  */
-void ErrorUnknownCallbackResult(uint32 grfid, uint16 cbid, uint16 cb_res)
+void ErrorUnknownCallbackResult(uint32_t grfid, uint16_t cbid, uint16_t cb_res)
 {
 	GRFConfig *grfconfig = GetGRFConfig(grfid);
 
@@ -508,16 +512,12 @@ void ErrorUnknownCallbackResult(uint32 grfid, uint16 cbid, uint16 cb_res)
 	}
 
 	/* debug output */
-	char buffer[512];
-
 	SetDParamStr(0, grfconfig->GetName());
-	GetString(buffer, STR_NEWGRF_BUGGY, lastof(buffer));
-	Debug(grf, 0, "{}", buffer + 3);
+	Debug(grf, 0, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY)));
 
 	SetDParam(1, cbid);
 	SetDParam(2, cb_res);
-	GetString(buffer, STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, lastof(buffer));
-	Debug(grf, 0, "{}", buffer + 3);
+	Debug(grf, 0, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT)));
 }
 
 /**
@@ -529,7 +529,7 @@ void ErrorUnknownCallbackResult(uint32 grfid, uint16 cbid, uint16 cb_res)
  * @param cb_res Callback result.
  * @return Boolean value. True if cb_res != 0.
  */
-bool ConvertBooleanCallback(const GRFFile *grffile, uint16 cbid, uint16 cb_res)
+bool ConvertBooleanCallback(const GRFFile *grffile, uint16_t cbid, uint16_t cb_res)
 {
 	assert(cb_res != CALLBACK_FAILED); // We do not know what to return
 
@@ -548,7 +548,7 @@ bool ConvertBooleanCallback(const GRFFile *grffile, uint16 cbid, uint16 cb_res)
  * @param cb_res Callback result.
  * @return Boolean value. True if cb_res != 0.
  */
-bool Convert8bitBooleanCallback(const GRFFile *grffile, uint16 cbid, uint16 cb_res)
+bool Convert8bitBooleanCallback(const GRFFile *grffile, uint16_t cbid, uint16_t cb_res)
 {
 	assert(cb_res != CALLBACK_FAILED); // We do not know what to return
 
@@ -639,10 +639,10 @@ void NewGRFSpriteLayout::AllocateRegisters()
  * @param separate_ground      Whether the ground sprite shall be resolved by a separate action-1-2-3 chain by default.
  * @return Bitmask of values for variable 10 to resolve action-1-2-3 chains for.
  */
-uint32 NewGRFSpriteLayout::PrepareLayout(uint32 orig_offset, uint32 newgrf_ground_offset, uint32 newgrf_offset, uint constr_stage, bool separate_ground) const
+uint32_t NewGRFSpriteLayout::PrepareLayout(uint32_t orig_offset, uint32_t newgrf_ground_offset, uint32_t newgrf_offset, uint constr_stage, bool separate_ground) const
 {
 	result_seq.clear();
-	uint32 var10_values = 0;
+	uint32_t var10_values = 0;
 
 	/* Create a copy of the spritelayout, so we can modify some values.
 	 * Also include the groundsprite into the sequence for easier processing. */
@@ -650,7 +650,7 @@ uint32 NewGRFSpriteLayout::PrepareLayout(uint32 orig_offset, uint32 newgrf_groun
 	result->image = ground;
 	result->delta_x = 0;
 	result->delta_y = 0;
-	result->delta_z = (int8)0x80;
+	result->delta_z = (int8_t)0x80;
 
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, this->seq) {
@@ -667,7 +667,7 @@ uint32 NewGRFSpriteLayout::PrepareLayout(uint32 orig_offset, uint32 newgrf_groun
 
 		/* Record var10 value for the sprite */
 		if (HasBit(result->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_SPRITE_REG_FLAGS)) {
-			uint8 var10 = (flags & TLF_SPRITE_VAR10) ? regs->sprite_var10 : (ground && separate_ground ? 1 : 0);
+			uint8_t var10 = (flags & TLF_SPRITE_VAR10) ? regs->sprite_var10 : (ground && separate_ground ? 1 : 0);
 			SetBit(var10_values, var10);
 		}
 
@@ -683,7 +683,7 @@ uint32 NewGRFSpriteLayout::PrepareLayout(uint32 orig_offset, uint32 newgrf_groun
 
 		/* Record var10 value for the palette */
 		if (HasBit(result->image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_PALETTE_REG_FLAGS)) {
-			uint8 var10 = (flags & TLF_PALETTE_VAR10) ? regs->palette_var10 : (ground && separate_ground ? 1 : 0);
+			uint8_t var10 = (flags & TLF_PALETTE_VAR10) ? regs->palette_var10 : (ground && separate_ground ? 1 : 0);
 			SetBit(var10_values, var10);
 		}
 
@@ -710,7 +710,7 @@ uint32 NewGRFSpriteLayout::PrepareLayout(uint32 orig_offset, uint32 newgrf_groun
  * @param separate_ground Whether the ground sprite is resolved by a separate action-1-2-3 chain.
  * @return Resulting spritelayout after processing the registers.
  */
-void NewGRFSpriteLayout::ProcessRegisters(uint8 resolved_var10, uint32 resolved_sprite, bool separate_ground) const
+void NewGRFSpriteLayout::ProcessRegisters(uint8_t resolved_var10, uint32_t resolved_sprite, bool separate_ground) const
 {
 	DrawTileSeqStruct *result;
 	const TileLayoutRegisters *regs = this->registers;
@@ -722,7 +722,7 @@ void NewGRFSpriteLayout::ProcessRegisters(uint8 resolved_var10, uint32 resolved_
 		/* Is the sprite or bounding box affected by an action-1-2-3 chain? */
 		if (HasBit(result->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_SPRITE_REG_FLAGS)) {
 			/* Does the var10 value apply to this sprite? */
-			uint8 var10 = (flags & TLF_SPRITE_VAR10) ? regs->sprite_var10 : (ground && separate_ground ? 1 : 0);
+			uint8_t var10 = (flags & TLF_SPRITE_VAR10) ? regs->sprite_var10 : (ground && separate_ground ? 1 : 0);
 			if (var10 == resolved_var10) {
 				/* Apply registers */
 				if ((flags & TLF_DODRAW) && GetRegister(regs->dodraw) == 0) {
@@ -730,7 +730,7 @@ void NewGRFSpriteLayout::ProcessRegisters(uint8 resolved_var10, uint32 resolved_
 				} else {
 					if (HasBit(result->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE)) result->image.sprite += resolved_sprite;
 					if (flags & TLF_SPRITE) {
-						int16 offset = (int16)GetRegister(regs->sprite); // mask to 16 bits to avoid trouble
+						int16_t offset = (int16_t)GetRegister(regs->sprite); // mask to 16 bits to avoid trouble
 						if (!HasBit(result->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE) || (offset >= 0 && offset < regs->max_sprite_offset)) {
 							result->image.sprite += offset;
 						} else {
@@ -740,13 +740,13 @@ void NewGRFSpriteLayout::ProcessRegisters(uint8 resolved_var10, uint32 resolved_
 
 					if (result->IsParentSprite()) {
 						if (flags & TLF_BB_XY_OFFSET) {
-							result->delta_x += (int32)GetRegister(regs->delta.parent[0]);
-							result->delta_y += (int32)GetRegister(regs->delta.parent[1]);
+							result->delta_x += (int32_t)GetRegister(regs->delta.parent[0]);
+							result->delta_y += (int32_t)GetRegister(regs->delta.parent[1]);
 						}
-						if (flags & TLF_BB_Z_OFFSET)    result->delta_z += (int32)GetRegister(regs->delta.parent[2]);
+						if (flags & TLF_BB_Z_OFFSET)    result->delta_z += (int32_t)GetRegister(regs->delta.parent[2]);
 					} else {
-						if (flags & TLF_CHILD_X_OFFSET) result->delta_x += (int32)GetRegister(regs->delta.child[0]);
-						if (flags & TLF_CHILD_Y_OFFSET) result->delta_y += (int32)GetRegister(regs->delta.child[1]);
+						if (flags & TLF_CHILD_X_OFFSET) result->delta_x += (int32_t)GetRegister(regs->delta.child[0]);
+						if (flags & TLF_CHILD_Y_OFFSET) result->delta_y += (int32_t)GetRegister(regs->delta.child[1]);
 					}
 				}
 			}
@@ -755,12 +755,12 @@ void NewGRFSpriteLayout::ProcessRegisters(uint8 resolved_var10, uint32 resolved_
 		/* Is the palette affected by an action-1-2-3 chain? */
 		if (result->image.sprite != 0 && (HasBit(result->image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_PALETTE_REG_FLAGS))) {
 			/* Does the var10 value apply to this sprite? */
-			uint8 var10 = (flags & TLF_PALETTE_VAR10) ? regs->palette_var10 : (ground && separate_ground ? 1 : 0);
+			uint8_t var10 = (flags & TLF_PALETTE_VAR10) ? regs->palette_var10 : (ground && separate_ground ? 1 : 0);
 			if (var10 == resolved_var10) {
 				/* Apply registers */
 				if (HasBit(result->image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) result->image.pal += resolved_sprite;
 				if (flags & TLF_PALETTE) {
-					int16 offset = (int16)GetRegister(regs->palette); // mask to 16 bits to avoid trouble
+					int16_t offset = (int16_t)GetRegister(regs->palette); // mask to 16 bits to avoid trouble
 					if (!HasBit(result->image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (offset >= 0 && offset < regs->max_palette_offset)) {
 						result->image.pal += offset;
 					} else {

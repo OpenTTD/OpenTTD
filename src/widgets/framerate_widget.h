@@ -11,7 +11,7 @@
 #define WIDGETS_FRAMERATE_WIDGET_H
 
 /** Widgets of the #FramerateWindow class. */
-enum FramerateWindowWidgets {
+enum FramerateWindowWidgets : WidgetID {
 	WID_FRW_CAPTION,
 	WID_FRW_RATE_GAMELOOP,
 	WID_FRW_RATE_DRAWING,
@@ -26,7 +26,7 @@ enum FramerateWindowWidgets {
 };
 
 /** Widgets of the #FrametimeGraphWindow class. */
-enum FrametimeGraphWindowWidgets {
+enum FrametimeGraphWindowWidgets : WidgetID {
 	WID_FGW_CAPTION,
 	WID_FGW_GRAPH,
 };

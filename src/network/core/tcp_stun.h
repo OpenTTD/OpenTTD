@@ -17,7 +17,7 @@
 #include "packet.h"
 
 /** Enum with all types of TCP STUN packets. The order MUST not be changed. **/
-enum PacketStunType {
+enum PacketStunType : uint8_t {
 	PACKET_STUN_SERCLI_STUN,  ///< Send a STUN request to the STUN server.
 	PACKET_STUN_END,          ///< Must ALWAYS be on the end of this list!! (period)
 };
@@ -31,15 +31,15 @@ protected:
 	 * Send a STUN request to the STUN server letting the Game Coordinator know
 	 * what our actually public IP:port is.
 	 *
-	 *  uint8   Game Coordinator protocol version.
+	 *  uint8_t   Game Coordinator protocol version.
 	 *  string  Token to track the current STUN request.
-	 *  uint8   Which interface number this is (for example, IPv4 or IPv6).
+	 *  uint8_t   Which interface number this is (for example, IPv4 or IPv6).
 	 *          The Game Coordinator relays this number back in later packets.
 	 *
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_SERCLI_STUN(Packet *p);
+	virtual bool Receive_SERCLI_STUN(Packet &p);
 
 public:
 	/**

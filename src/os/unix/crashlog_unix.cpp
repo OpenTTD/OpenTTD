@@ -9,27 +9,36 @@
 
 #include "../../stdafx.h"
 #include "../../crashlog.h"
+#include "../../fileio_func.h"
 #include "../../string_func.h"
 #include "../../gamelog.h"
 #include "../../saveload/saveload.h"
 
-#include <errno.h>
+#include <setjmp.h>
 #include <signal.h>
 #include <sys/utsname.h>
 
 #if defined(__GLIBC__)
 /* Execinfo (and thus making stacktraces) is a GNU extension */
 #	include <execinfo.h>
-#elif defined(SUNOS)
-#	include <ucontext.h>
-#	include <dlfcn.h>
 #endif
 
-#if defined(__NetBSD__)
+#ifdef WITH_UNOFFICIAL_BREAKPAD
+#	include <client/linux/handler/exception_handler.h>
+#endif
+
+#if defined(__EMSCRIPTEN__)
+#	include <emscripten.h>
+/* We avoid abort(), as it is a SIGBART, and use _exit() instead. But emscripten doesn't know _exit(). */
+#	define _exit emscripten_force_exit
+#else
 #include <unistd.h>
 #endif
 
 #include "../../safeguards.h"
+
+/** The signals we want our crash handler to handle. */
+static constexpr int _signals_to_handle[] = { SIGSEGV, SIGABRT, SIGFPE, SIGBUS, SIGILL, SIGQUIT };
 
 /**
  * Unix implementation for the crash logger.
@@ -38,97 +47,69 @@ class CrashLogUnix : public CrashLog {
 	/** Signal that has been thrown. */
 	int signum;
 
-	char *LogOSVersion(char *buffer, const char *last) const override
+	void SurveyCrash(nlohmann::json &survey) const override
 	{
-		struct utsname name;
-		if (uname(&name) < 0) {
-			return buffer + seprintf(buffer, last, "Could not get OS version: %s\n", strerror(errno));
-		}
-
-		return buffer + seprintf(buffer, last,
-				"Operating system:\n"
-				" Name:     %s\n"
-				" Release:  %s\n"
-				" Version:  %s\n"
-				" Machine:  %s\n",
-				name.sysname,
-				name.release,
-				name.version,
-				name.machine
-		);
+		survey["id"] = signum;
+		survey["reason"] = strsignal(signum);
 	}
 
-	char *LogError(char *buffer, const char *last, const char *message) const override
+	void SurveyStacktrace([[maybe_unused]] nlohmann::json &survey) const override
 	{
-		return buffer + seprintf(buffer, last,
-				"Crash reason:\n"
-				" Signal:  %s (%d)\n"
-				" Message: %s\n\n",
-				strsignal(this->signum),
-				this->signum,
-				message
-		);
-	}
-
-#if defined(SUNOS)
-	/** Data needed while walking up the stack */
-	struct StackWalkerParams {
-		char **bufptr;    ///< Buffer
-		const char *last; ///< End of buffer
-		int counter;      ///< We are at counter-th stack level
-	};
-
-	/**
-	 * Callback used while walking up the stack.
-	 * @param pc program counter
-	 * @param sig 'active' signal (unused)
-	 * @param params parameters
-	 * @return always 0, continue walking up the stack
-	 */
-	static int SunOSStackWalker(uintptr_t pc, int sig, void *params)
-	{
-		StackWalkerParams *wp = (StackWalkerParams *)params;
-
-		/* Resolve program counter to file and nearest symbol (if possible) */
-		Dl_info dli;
-		if (dladdr((void *)pc, &dli) != 0) {
-			*wp->bufptr += seprintf(*wp->bufptr, wp->last, " [%02i] %s(%s+0x%x) [0x%x]\n",
-					wp->counter, dli.dli_fname, dli.dli_sname, (int)((byte *)pc - (byte *)dli.dli_saddr), (uint)pc);
-		} else {
-			*wp->bufptr += seprintf(*wp->bufptr, wp->last, " [%02i] [0x%x]\n", wp->counter, (uint)pc);
-		}
-		wp->counter++;
-
-		return 0;
-	}
-#endif
-
-	char *LogStacktrace(char *buffer, const char *last) const override
-	{
-		buffer += seprintf(buffer, last, "Stacktrace:\n");
 #if defined(__GLIBC__)
 		void *trace[64];
 		int trace_size = backtrace(trace, lengthof(trace));
 
+		survey = nlohmann::json::array();
+
 		char **messages = backtrace_symbols(trace, trace_size);
 		for (int i = 0; i < trace_size; i++) {
-			buffer += seprintf(buffer, last, " [%02i] %s\n", i, messages[i]);
+			survey.push_back(messages[i]);
 		}
 		free(messages);
-#elif defined(SUNOS)
-		ucontext_t uc;
-		if (getcontext(&uc) != 0) {
-			buffer += seprintf(buffer, last, " getcontext() failed\n\n");
-			return buffer;
+#endif
+	}
+
+#ifdef WITH_UNOFFICIAL_BREAKPAD
+	static bool MinidumpCallback(const google_breakpad::MinidumpDescriptor &descriptor, void *context, bool succeeded)
+	{
+		CrashLogUnix *crashlog = reinterpret_cast<CrashLogUnix *>(context);
+
+		crashlog->crashdump_filename = crashlog->CreateFileName(".dmp");
+		std::rename(descriptor.path(), crashlog->crashdump_filename.c_str());
+		return succeeded;
+	}
+
+	bool WriteCrashDump() override
+	{
+		return google_breakpad::ExceptionHandler::WriteMinidump(_personal_dir, MinidumpCallback, this);
+	}
+#endif
+
+	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	{
+		this->try_execute_active = true;
+
+		/* Setup a longjump in case a crash happens. */
+		if (setjmp(this->internal_fault_jmp_buf) != 0) {
+			fmt::print("Something went wrong when attempting to fill {} section of the crash log.\n", section_name);
+
+			/* Reset the signals and continue on. The handler is responsible for dealing with the crash. */
+			sigset_t sigs;
+			sigemptyset(&sigs);
+			for (int signum : _signals_to_handle) {
+				sigaddset(&sigs, signum);
+			}
+			sigprocmask(SIG_UNBLOCK, &sigs, nullptr);
+
+			this->try_execute_active = false;
+			return false;
 		}
 
-		StackWalkerParams wp = { &buffer, last, 0 };
-		walkcontext(&uc, &CrashLogUnix::SunOSStackWalker, &wp);
-#else
-		buffer += seprintf(buffer, last, " Not supported.\n");
-#endif
-		return buffer + seprintf(buffer, last, "\n");
+		bool res = func();
+		this->try_execute_active = false;
+		return res;
 	}
+
 public:
 	/**
 	 * A crash log is always generated by signal.
@@ -138,48 +119,104 @@ public:
 		signum(signum)
 	{
 	}
+
+	/** Buffer to track the long jump set setup. */
+	jmp_buf internal_fault_jmp_buf;
+
+	/** Whether we are in a TryExecute block. */
+	bool try_execute_active = false;
+
+	/** Points to the current crash log. */
+	static CrashLogUnix *current;
 };
 
-/** The signals we want our crash handler to handle. */
-static const int _signals_to_handle[] = { SIGSEGV, SIGABRT, SIGFPE, SIGBUS, SIGILL };
+/* static */ CrashLogUnix *CrashLogUnix::current = nullptr;
+
+/**
+ * Set a signal handler for all signals we want to capture.
+ *
+ * @param handler The handler to use.
+ * @return sigset_t A sigset_t containing all signals we want to capture.
+ */
+static sigset_t SetSignals(void(*handler)(int))
+{
+	sigset_t sigs;
+	sigemptyset(&sigs);
+	for (int signum : _signals_to_handle) {
+		sigaddset(&sigs, signum);
+	}
+
+	struct sigaction sa;
+	memset(&sa, 0, sizeof(sa));
+	sa.sa_flags = SA_RESTART;
+
+	sigemptyset(&sa.sa_mask);
+	sa.sa_handler = handler;
+	sa.sa_mask = sigs;
+
+	for (int signum : _signals_to_handle) {
+		sigaction(signum, &sa, nullptr);
+	}
+
+	return sigs;
+}
+
+/**
+ * Entry point for a crash that happened during the handling of a crash.
+ *
+ * @param signum the signal that caused us to crash.
+ */
+static void CDECL HandleInternalCrash([[maybe_unused]] int signum)
+{
+	if (CrashLogUnix::current == nullptr || !CrashLogUnix::current->try_execute_active) {
+		fmt::print("Something went seriously wrong when creating the crash log. Aborting.\n");
+		_exit(1);
+	}
+
+	longjmp(CrashLogUnix::current->internal_fault_jmp_buf, 1);
+}
 
 /**
  * Entry point for the crash handler.
- * @note Not static so it shows up in the backtrace.
+ *
  * @param signum the signal that caused us to crash.
  */
 static void CDECL HandleCrash(int signum)
 {
-	/* Disable all handling of signals by us, so we don't go into infinite loops. */
-	for (const int *i = _signals_to_handle; i != endof(_signals_to_handle); i++) {
-		signal(*i, SIG_DFL);
+	if (CrashLogUnix::current != nullptr) {
+		CrashLog::AfterCrashLogCleanup();
+		_exit(2);
 	}
 
-	if (GamelogTestEmergency()) {
-		printf("A serious fault condition occurred in the game. The game will shut down.\n");
-		printf("As you loaded an emergency savegame no crash information will be generated.\n");
-		abort();
+	/* Capture crashing during the handling of a crash. */
+	sigset_t sigs = SetSignals(HandleInternalCrash);
+	sigset_t old_sigset;
+	sigprocmask(SIG_UNBLOCK, &sigs, &old_sigset);
+
+	if (_gamelog.TestEmergency()) {
+		fmt::print("A serious fault condition occurred in the game. The game will shut down.\n");
+		fmt::print("As you loaded an emergency savegame no crash information will be generated.\n");
+		_exit(3);
 	}
 
 	if (SaveloadCrashWithMissingNewGRFs()) {
-		printf("A serious fault condition occurred in the game. The game will shut down.\n");
-		printf("As you loaded an savegame for which you do not have the required NewGRFs\n");
-		printf("no crash information will be generated.\n");
-		abort();
+		fmt::print("A serious fault condition occurred in the game. The game will shut down.\n");
+		fmt::print("As you loaded an savegame for which you do not have the required NewGRFs\n");
+		fmt::print("no crash information will be generated.\n");
+		_exit(3);
 	}
 
-	CrashLogUnix log(signum);
-	log.MakeCrashLog();
+	CrashLogUnix *log = new CrashLogUnix(signum);
+	CrashLogUnix::current = log;
+	log->MakeCrashLog();
 
 	CrashLog::AfterCrashLogCleanup();
-	abort();
+	_exit(2);
 }
 
 /* static */ void CrashLog::InitialiseCrashLog()
 {
-	for (const int *i = _signals_to_handle; i != endof(_signals_to_handle); i++) {
-		signal(*i, HandleCrash);
-	}
+	SetSignals(HandleCrash);
 }
 
 /* static */ void CrashLog::InitThread()

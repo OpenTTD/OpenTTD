@@ -57,7 +57,7 @@ public:
 	/**
 	 * Story page element types.
 	 */
-	enum StoryPageElementType : byte {
+	enum StoryPageElementType : uint8_t {
 		SPET_TEXT = ::SPET_TEXT,                     ///< An element that displays a block of text.
 		SPET_LOCATION = ::SPET_LOCATION,             ///< An element that displays a single line of text along with a button to view the referenced location.
 		SPET_GOAL = ::SPET_GOAL,                     ///< An element that displays a goal.
@@ -69,13 +69,13 @@ public:
 	/**
 	 * Formatting data for button page elements.
 	 */
-	typedef uint32 StoryPageButtonFormatting;
+	typedef uint32_t StoryPageButtonFormatting;
 
 	/**
 	 * Formatting and layout flags for story page buttons.
 	 * The SPBF_FLOAT_LEFT and SPBF_FLOAT_RIGHT flags can not be combined.
 	 */
-	enum StoryPageButtonFlags : byte {
+	enum StoryPageButtonFlags : uint8_t {
 		SPBF_NONE        = ::SPBF_NONE,        ///< No special formatting for button.
 		SPBF_FLOAT_LEFT  = ::SPBF_FLOAT_LEFT,  ///< Button is placed to the left of the following paragraph.
 		SPBF_FLOAT_RIGHT = ::SPBF_FLOAT_RIGHT, ///< Button is placed to the right of the following paragraph.
@@ -84,7 +84,7 @@ public:
 	/**
 	 * Mouse cursors usable by story page buttons.
 	 */
-	enum StoryPageButtonCursor : byte {
+	enum StoryPageButtonCursor : uint8_t {
 		SPBC_MOUSE          = ::SPBC_MOUSE,
 		SPBC_ZZZ            = ::SPBC_ZZZ,
 		SPBC_BUOY           = ::SPBC_BUOY,
@@ -146,7 +146,7 @@ public:
 	 * Colour codes usable for story page button elements.
 	 * Place a colour value in the lowest 8 bits of the \c reference parameter to the button.
 	 */
-	enum StoryPageButtonColour {
+	enum StoryPageButtonColour : uint8_t {
 		SPBC_DARK_BLUE  = ::COLOUR_DARK_BLUE,
 		SPBC_PALE_GREEN = ::COLOUR_PALE_GREEN,
 		SPBC_PINK       = ::COLOUR_PINK,
@@ -180,6 +180,13 @@ public:
 	static bool IsValidStoryPageElement(StoryPageElementID story_page_element_id);
 
 	/**
+	 * Check whether this is a valid story page element type.
+	 * @param type The StoryPageElementType to check.
+	 * @return True if and only if this story page element type is valid.
+	 */
+	static bool IsValidStoryPageElementType(StoryPageElementType type);
+
+	/**
 	 * Create a new story page.
 	 * @param company The company to create the story page for, or ScriptCompany::COMPANY_INVALID for all.
 	 * @param title Page title (can be either a raw string, a ScriptText object, or null).
@@ -196,12 +203,13 @@ public:
 	 * @param reference A reference value to the object that is referred to by some page element types.
 	 *                  When type is SPET_GOAL, this is the goal ID.
 	 *                  When type is SPET_LOCATION, this is the TileIndex.
-	 *                  When type is a button, this is additional parameters for the button,
-	 *                  use the #BuildPushButtonReference, #BuildTileButtonReference, or #BuildVehicleButtonReference functions to make the values.
+	 *                  When type is a button, this is the ID returned by
+	 *                  #MakePushButtonReference, #MakeTileButtonReference, or #MakeVehicleButtonReference.
 	 * @param text The body text of page elements that allow custom text. (SPET_TEXT and SPET_LOCATION)
 	 * @return The new StoryPageElementID, or STORY_PAGE_ELEMENT_INVALID if it failed.
 	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page).
+	 * @pre IsValidStoryPageElementType(type).
 	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != null && len(text) != 0).
 	 * @pre type != SPET_LOCATION || ScriptMap::IsValidTile(reference).
 	 * @pre type != SPET_GOAL || ScriptGoal::IsValidGoal(reference).
@@ -257,18 +265,20 @@ public:
 	/**
 	 * Get the page date which is displayed at the top of each page.
 	 * @param story_page_id The story page to get the date of.
-	 * @return The date
+	 * @return The calendar-date
 	 * @pre IsValidStoryPage(story_page_id).
+	 * @see \ref ScriptCalendarTime
 	 */
 	static ScriptDate::Date GetDate(StoryPageID story_page_id);
 
 	/**
 	 * Update date of a story page. The date is shown in the top left of the page
 	 * @param story_page_id The story page to set the date for.
-	 * @param date Date to display at the top of story page or ScriptDate::DATE_INVALID to disable showing date on this page. (also, @see ScriptDate)
+	 * @param date Calendar-date to display at the top of story page or ScriptDate::DATE_INVALID to disable showing date on this page. (also, @see ScriptDate)
 	 * @return True if the action succeeded.
 	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page_id).
+	 * @see \ref ScriptCalendarTime
 	 */
 	static bool SetDate(StoryPageID story_page_id, ScriptDate::Date date);
 
@@ -313,10 +323,33 @@ public:
 	static bool RemoveElement(StoryPageElementID story_page_element_id);
 
 	/**
+	 * Check whether this is a valid story page button colour.
+	 * @param colour The StoryPageButtonColour to check.
+	 * @return True if and only if this story page button colour is valid.
+	 */
+	static bool IsValidStoryPageButtonColour(StoryPageButtonColour colour);
+
+	/**
+	* Check whether this is a valid story page button flag.
+	* @param flags The StoryPageButtonFlags to check.
+	* @return True if and only if this story page button flag is valid.
+	*/
+	static bool IsValidStoryPageButtonFlags(StoryPageButtonFlags flags);
+
+	/**
+	 * Check whether this is a valid story page button cursor.
+	 * @param cursor The StoryPageButtonCursor to check.
+	 * @return True if and only if this story page button cursor is valid.
+	 */
+	static bool IsValidStoryPageButtonCursor(StoryPageButtonCursor cursor);
+
+	/**
 	 * Create a reference value for SPET_BUTTON_PUSH element parameters.
 	 * @param colour The colour for the face of the button.
 	 * @param flags The formatting and layout flags for the button.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
+	 * @pre IsValidStoryPageButtonColour(colour).
+	 * @pre IsValidStoryPageButtonFlags(flags).
 	 */
 	static StoryPageButtonFormatting MakePushButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags);
 
@@ -326,6 +359,9 @@ public:
 	 * @param flags The formatting and layout flags for the button.
 	 * @param cursor The mouse cursor to use when the player clicks the button and the game is ready for the player to select a tile.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
+	 * @pre IsValidStoryPageButtonColour(colour).
+	 * @pre IsValidStoryPageButtonFlags(flags).
+	 * @pre IsValidStoryPageButtonCursor(cursor).
 	 */
 	static StoryPageButtonFormatting MakeTileButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor);
 
@@ -336,6 +372,10 @@ public:
 	 * @param cursor  The mouse cursor to use when the player clicks the button and the game is ready for the player to select a vehicle.
 	 * @param vehtype The type of vehicle that will be selectable, or \c VT_INVALID to allow all types.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
+	 * @pre IsValidStoryPageButtonColour(colour).
+	 * @pre IsValidStoryPageButtonFlags(flags).
+	 * @pre IsValidStoryPageButtonCursor(cursor).
+	 * @pre vehtype == ScriptVehicle::VT_INVALID || vehtype == ScriptVehicle::VT_RAIL || vehtype == ScriptVehicle::VT_ROAD || vehtype == ScriptVehicle::VT_WATER || vehtype == ScriptVehicle::VT_AIR.
 	 */
 	static StoryPageButtonFormatting MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype);
 };

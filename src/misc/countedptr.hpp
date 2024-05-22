@@ -196,7 +196,7 @@ template <class T> struct AdaptT {
  *  @see misc/countedobj.cpp for implementation.
  */
 struct SimpleCountedObject {
-	int32 m_ref_cnt;
+	int32_t m_ref_cnt;
 
 	SimpleCountedObject()
 		: m_ref_cnt(0)
@@ -205,8 +205,8 @@ struct SimpleCountedObject {
 	virtual ~SimpleCountedObject()
 	{}
 
-	virtual int32 AddRef();
-	virtual int32 Release();
+	virtual int32_t AddRef();
+	virtual int32_t Release();
 	virtual void FinalRelease() {};
 };
 

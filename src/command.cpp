@@ -18,7 +18,7 @@
 #include "strings_func.h"
 #include "texteff.hpp"
 #include "town.h"
-#include "date_func.h"
+#include "timer/timer_game_economy.h"
 #include "company_func.h"
 #include "company_base.h"
 #include "signal_func.h"
@@ -59,8 +59,6 @@
 #include "misc/endian_buffer.hpp"
 #include "string_func.h"
 
-#include <array>
-
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -99,7 +97,7 @@ inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noe
 static constexpr auto _command_proc_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, CMD_END>{});
 
 
-/*!
+/**
  * This function range-checks a cmd.
  *
  * @param cmd The integer value of a command
@@ -110,7 +108,7 @@ bool IsValidCommand(Commands cmd)
 	return cmd < _command_proc_table.size();
 }
 
-/*!
+/**
  * This function mask the parameter with CMD_ID_MASK and returns
  * the flags which belongs to the given command.
  *
@@ -124,7 +122,7 @@ CommandFlags GetCommandFlags(Commands cmd)
 	return _command_proc_table[cmd].flags;
 }
 
-/*!
+/**
  * This function mask the parameter with CMD_ID_MASK and returns
  * the name which belongs to the given command.
  *
@@ -153,7 +151,7 @@ bool IsCommandAllowedWhilePaused(Commands cmd)
 		CMDPL_NO_CONSTRUCTION, ///< CMDT_VEHICLE_MANAGEMENT
 		CMDPL_NO_CONSTRUCTION, ///< CMDT_ROUTE_MANAGEMENT
 		CMDPL_NO_CONSTRUCTION, ///< CMDT_OTHER_MANAGEMENT
-		CMDPL_NO_CONSTRUCTION, ///< CMDT_COMPANY_SETTING
+		CMDPL_NO_ACTIONS,      ///< CMDT_COMPANY_SETTING
 		CMDPL_NO_ACTIONS,      ///< CMDT_SERVER_SETTING
 		CMDPL_NO_ACTIONS,      ///< CMDT_CHEAT
 	};
@@ -162,21 +160,6 @@ bool IsCommandAllowedWhilePaused(Commands cmd)
 	assert(IsValidCommand(cmd));
 	return _game_mode == GM_EDITOR || command_type_lookup[_command_proc_table[cmd].type] <= _settings_game.construction.command_pause_level;
 }
-
-/*!
- * This functions returns the money which can be used to execute a command.
- * This is either the money of the current company or INT64_MAX if there
- * is no such a company "at the moment" like the server itself.
- *
- * @return The available money of a company or INT64_MAX
- */
-Money GetAvailableMoneyForCommand()
-{
-	CompanyID company = _current_company;
-	if (!Company::IsValidID(company)) return INT64_MAX;
-	return Company::Get(company)->money;
-}
-
 
 /**
  * Prepare for calling a command proc.
@@ -274,19 +257,18 @@ void CommandHelperBase::InternalPostResult(const CommandCost &res, TileIndex til
 }
 
 /** Helper to make a desync log for a command. */
-void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, TileIndex tile, const CommandDataBuffer &args, bool failed)
+void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, const CommandDataBuffer &args, bool failed)
 {
-	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {:06x}; {} ({})", failed ? "cmdf" : "cmd", _date, _date_fract, (int)_current_company, cmd, err_message, tile, FormatArrayAsHex(args), GetCommandName(cmd));
+	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {} ({})", failed ? "cmdf" : "cmd", (uint32_t)TimerGameEconomy::date.base(), TimerGameEconomy::date_fract, (int)_current_company, cmd, err_message, FormatArrayAsHex(args), GetCommandName(cmd));
 }
 
 /**
  * Prepare for the test run of a command proc call.
  * @param cmd_flags Command flags.
- * @param tile Tile of command execution.
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return True if test run can go ahead, false on error.
  */
-bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex tile, Backup<CompanyID> &cur_company)
+bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex, Backup<CompanyID> &cur_company)
 {
 	/* Always execute server and spectator commands as spectator */
 	bool exec_as_spectator = (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) != 0;
@@ -316,7 +298,7 @@ bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileInde
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return True if test run can go ahead, false on error.
  */
-std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPrepExec(CommandCost &res, CommandFlags cmd_flags, bool estimate_only, bool network_command, Backup<CompanyID> &cur_company)
+std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPrepExec(CommandCost &res, CommandFlags cmd_flags, bool estimate_only, bool network_command, [[maybe_unused]] Backup<CompanyID> &cur_company)
 {
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_TESTMODE);
 	SetTownRatingTestMode(false);
@@ -356,7 +338,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPr
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return Final command result.
  */
-CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, const CommandCost &res_test, const CommandCost &res_exec, Money extra_cash, TileIndex tile, Backup<CompanyID> &cur_company)
+CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, [[maybe_unused]] const CommandCost &res_test, const CommandCost &res_exec, Money extra_cash, TileIndex tile, Backup<CompanyID> &cur_company)
 {
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_COMMAND);
 
@@ -401,6 +383,9 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 
 	SubtractMoneyFromCompany(res_exec);
 
+	/* Record if there was a command issues during pause; ignore pause/other setting related changes. */
+	if (_pause_mode != PM_UNPAUSED && _command_proc_table[cmd].type != CMDT_SERVER_SETTING) _pause_mode |= PM_COMMAND_DURING_PAUSE;
+
 	/* update signals if needed */
 	UpdateSignalsInBuffer();
 
@@ -427,7 +412,7 @@ void CommandCost::AddCost(const CommandCost &ret)
  * There is only one static instance of the array, just like there is only one
  * instance of normal DParams.
  */
-uint32 CommandCost::textref_stack[16];
+uint32_t CommandCost::textref_stack[16];
 
 /**
  * Activate usage of the NewGRF #TextRefStack for the error message.
@@ -436,7 +421,7 @@ uint32 CommandCost::textref_stack[16];
  */
 void CommandCost::UseTextRefStack(const GRFFile *grffile, uint num_registers)
 {
-	extern TemporaryStorageArray<int32, 0x110> _temp_store;
+	extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
 
 	assert(num_registers < lengthof(textref_stack));
 	this->textref_stack_grffile = grffile;

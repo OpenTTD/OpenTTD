@@ -16,8 +16,6 @@
 #include "console_func.h"
 #include "settings_type.h"
 
-#include <stdarg.h>
-
 #include "safeguards.h"
 
 static const uint ICON_TOKEN_COUNT = 20;     ///< Maximum number of tokens in one command
@@ -49,14 +47,13 @@ void IConsoleInit()
 	IConsoleStdLibRegister();
 }
 
-static void IConsoleWriteToLogFile(const char *string)
+static void IConsoleWriteToLogFile(const std::string &string)
 {
 	if (_iconsole_output_file != nullptr) {
 		/* if there is an console output file ... also print it there */
-		const char *header = GetLogPrefix();
-		if ((strlen(header) != 0 && fwrite(header, strlen(header), 1, _iconsole_output_file) != 1) ||
-				fwrite(string, strlen(string), 1, _iconsole_output_file) != 1 ||
-				fwrite("\n", 1, 1, _iconsole_output_file) != 1) {
+		try {
+			fmt::print(_iconsole_output_file, "{}{}\n", GetLogPrefix(), string);
+		} catch (const std::system_error &) {
 			fclose(_iconsole_output_file);
 			_iconsole_output_file = nullptr;
 			IConsolePrint(CC_ERROR, "Cannot write to console log file; closing the log file.");
@@ -106,24 +103,20 @@ void IConsolePrint(TextColour colour_code, const std::string &string)
 		return;
 	}
 
-	/* Create a copy of the string, strip if of colours and invalid
+	/* Create a copy of the string, strip it of colours and invalid
 	 * characters and (when applicable) assign it to the console buffer */
-	char *str = stredup(string.c_str());
-	str_strip_colours(str);
-	StrMakeValidInPlace(str);
+	std::string str = StrMakeValid(string, SVS_NONE);
 
 	if (_network_dedicated) {
 		NetworkAdminConsole("console", str);
-		fprintf(stdout, "%s%s\n", GetLogPrefix(), str);
+		fmt::print("{}{}\n", GetLogPrefix(), str);
 		fflush(stdout);
 		IConsoleWriteToLogFile(str);
-		free(str); // free duplicated string since it's not used anymore
 		return;
 	}
 
 	IConsoleWriteToLogFile(str);
 	IConsoleGUIPrint(colour_code, str);
-	free(str);
 }
 
 /**
@@ -133,7 +126,7 @@ void IConsolePrint(TextColour colour_code, const std::string &string)
  * @param *arg the string to be converted
  * @return Return true on success or false on failure
  */
-bool GetArgumentInteger(uint32 *value, const char *arg)
+bool GetArgumentInteger(uint32_t *value, const char *arg)
 {
 	char *endptr;
 
@@ -146,7 +139,7 @@ bool GetArgumentInteger(uint32 *value, const char *arg)
 		return true;
 	}
 
-	*value = strtoul(arg, &endptr, 0);
+	*value = std::strtoul(arg, &endptr, 0);
 	return arg != endptr;
 }
 
@@ -213,10 +206,9 @@ static std::string RemoveUnderscores(std::string name)
  * @param tokencount the number of parameters passed
  * @param *tokens are the parameters given to the original command (0 is the first param)
  */
-static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char *tokens[ICON_TOKEN_COUNT], const uint recurse_count)
+static void IConsoleAliasExec(const IConsoleAlias *alias, uint8_t tokencount, char *tokens[ICON_TOKEN_COUNT], const uint recurse_count)
 {
-	char  alias_buffer[ICON_MAX_STREAMSIZE] = { '\0' };
-	char *alias_stream = alias_buffer;
+	std::string alias_buffer;
 
 	Debug(console, 6, "Requested command is an alias; parsing...");
 
@@ -228,14 +220,13 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 	for (const char *cmdptr = alias->cmdline.c_str(); *cmdptr != '\0'; cmdptr++) {
 		switch (*cmdptr) {
 			case '\'': // ' will double for ""
-				alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
+				alias_buffer += '\"';
 				break;
 
 			case ';': // Cmd separator; execute previous and start new command
 				IConsoleCmdExec(alias_buffer, recurse_count);
 
-				alias_stream = alias_buffer;
-				*alias_stream = '\0'; // Make sure the new command is terminated.
+				alias_buffer.clear();
 
 				cmdptr++;
 				break;
@@ -245,21 +236,21 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 				switch (*cmdptr) {
 					case '+': { // All parameters separated: "[param 1]" "[param 2]"
 						for (uint i = 0; i != tokencount; i++) {
-							if (i != 0) alias_stream = strecpy(alias_stream, " ", lastof(alias_buffer));
-							alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
-							alias_stream = strecpy(alias_stream, tokens[i], lastof(alias_buffer));
-							alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
+							if (i != 0) alias_buffer += ' ';
+							alias_buffer += '\"';
+							alias_buffer += tokens[i];
+							alias_buffer += '\"';
 						}
 						break;
 					}
 
 					case '!': { // Merge the parameters to one: "[param 1] [param 2] [param 3...]"
-						alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
+						alias_buffer += '\"';
 						for (uint i = 0; i != tokencount; i++) {
-							if (i != 0) alias_stream = strecpy(alias_stream, " ", lastof(alias_buffer));
-							alias_stream = strecpy(alias_stream, tokens[i], lastof(alias_buffer));
+							if (i != 0) alias_buffer += " ";
+							alias_buffer += tokens[i];
 						}
-						alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
+						alias_buffer += '\"';
 						break;
 					}
 
@@ -272,21 +263,20 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 							return;
 						}
 
-						alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
-						alias_stream = strecpy(alias_stream, tokens[param], lastof(alias_buffer));
-						alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
+						alias_buffer += '\"';
+						alias_buffer += tokens[param];
+						alias_buffer += '\"';
 						break;
 					}
 				}
 				break;
 
 			default:
-				*alias_stream++ = *cmdptr;
-				*alias_stream = '\0';
+				alias_buffer += *cmdptr;
 				break;
 		}
 
-		if (alias_stream >= lastof(alias_buffer) - 1) {
+		if (alias_buffer.size() >= ICON_MAX_STREAMSIZE - 1) {
 			IConsolePrint(CC_ERROR, "Requested alias execution would overflow execution buffer.");
 			return;
 		}
@@ -298,9 +288,9 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 /**
  * Execute a given command passed to us. First chop it up into
  * individual tokens (separated by spaces), then execute it if possible
- * @param cmdstr string to be parsed and executed
+ * @param command_string string to be parsed and executed
  */
-void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
+void IConsoleCmdExec(const std::string &command_string, const uint recurse_count)
 {
 	const char *cmdptr;
 	char *tokens[ICON_TOKEN_COUNT], tokenstream[ICON_MAX_STREAMSIZE];
@@ -309,16 +299,16 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 	bool longtoken = false;
 	bool foundtoken = false;
 
-	if (cmdstr[0] == '#') return; // comments
+	if (command_string[0] == '#') return; // comments
 
-	for (cmdptr = cmdstr; *cmdptr != '\0'; cmdptr++) {
+	for (cmdptr = command_string.c_str(); *cmdptr != '\0'; cmdptr++) {
 		if (!IsValidChar(*cmdptr, CS_ALPHANUMERAL)) {
-			IConsolePrint(CC_ERROR, "Command '{}' contains malformed characters.", cmdstr);
+			IConsolePrint(CC_ERROR, "Command '{}' contains malformed characters.", command_string);
 			return;
 		}
 	}
 
-	Debug(console, 4, "Executing cmdline: '{}'", cmdstr);
+	Debug(console, 4, "Executing cmdline: '{}'", command_string);
 
 	memset(&tokens, 0, sizeof(tokens));
 	memset(&tokenstream, 0, sizeof(tokenstream));
@@ -326,7 +316,7 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 	/* 1. Split up commandline into tokens, separated by spaces, commands
 	 * enclosed in "" are taken as one token. We can only go as far as the amount
 	 * of characters in our stream or the max amount of tokens we can handle */
-	for (cmdptr = cmdstr, t_index = 0, tstream_i = 0; *cmdptr != '\0'; cmdptr++) {
+	for (cmdptr = command_string.c_str(), t_index = 0, tstream_i = 0; *cmdptr != '\0'; cmdptr++) {
 		if (tstream_i >= lengthof(tokenstream)) {
 			IConsolePrint(CC_ERROR, "Command line too long.");
 			return;
@@ -361,7 +351,7 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 				tokenstream[tstream_i++] = *++cmdptr;
 				break;
 			}
-			FALLTHROUGH;
+			[[fallthrough]];
 		default: // Normal character
 			tokenstream[tstream_i++] = *cmdptr;
 

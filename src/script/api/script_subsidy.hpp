@@ -25,7 +25,7 @@ public:
 	 */
 	enum SubsidyParticipantType {
 		/* Values are important, as they represent the internal state of the game.
-		 *  It is originally named SourceType. ST_HEADQUARTERS is intentionally
+		 *  It is originally named SourceType. SourceType::Headquarters is intentionally
 		 *  left out, as it cannot be used for Subsidies. */
 		SPT_INDUSTRY =    0, ///< Subsidy participant is an industry
 		SPT_TOWN     =    1, ///< Subsidy participant is a town
@@ -74,14 +74,15 @@ public:
 	static ScriptCompany::CompanyID GetAwardedTo(SubsidyID subsidy_id);
 
 	/**
-	 * Get the date this subsidy expires. In case the subsidy is already
-	 *  awarded, return the date the subsidy expires, else, return the date the
+	 * Get the economy-date this subsidy expires. In case the subsidy is already
+	 *  awarded, return the economy-date the subsidy expires, else, return the economy-date the
 	 *  offer expires.
 	 * @param subsidy_id The SubsidyID to check.
 	 * @pre IsValidSubsidy(subsidy_id).
-	 * @return The last valid date of this subsidy.
+	 * @return The last valid economy-date of this subsidy.
 	 * @note The return value of this function will change if the subsidy is
 	 *  awarded.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static ScriptDate::Date GetExpireDate(SubsidyID subsidy_id);
 

@@ -1,9 +1,9 @@
 /*
-* This file is part of OpenTTD.
-* OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
-* OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-* See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
-*/
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /** @file town_kdtree.h Declarations for accessing the k-d tree of towns */
 
@@ -17,7 +17,7 @@
 #include "signs_base.h"
 
 struct ViewportSignKdtreeItem {
-	enum ItemType : uint16 {
+	enum ItemType : uint16_t {
 		VKI_STATION,
 		VKI_WAYPOINT,
 		VKI_TOWN,
@@ -29,8 +29,8 @@ struct ViewportSignKdtreeItem {
 		TownID town;
 		SignID sign;
 	} id;
-	int32 center;
-	int32 top;
+	int32_t center;
+	int32_t top;
 
 	bool operator== (const ViewportSignKdtreeItem &other) const
 	{
@@ -70,12 +70,12 @@ struct ViewportSignKdtreeItem {
 	static ViewportSignKdtreeItem MakeSign(SignID id);
 };
 
-inline int32 Kdtree_ViewportSignXYFunc(const ViewportSignKdtreeItem &item, int dim)
+inline int32_t Kdtree_ViewportSignXYFunc(const ViewportSignKdtreeItem &item, int dim)
 {
 	return (dim == 0) ? item.center : item.top;
 }
 
-typedef Kdtree<ViewportSignKdtreeItem, decltype(&Kdtree_ViewportSignXYFunc), int32, int32> ViewportSignKdtree;
+typedef Kdtree<ViewportSignKdtreeItem, decltype(&Kdtree_ViewportSignXYFunc), int32_t, int32_t> ViewportSignKdtree;
 extern ViewportSignKdtree _viewport_sign_kdtree;
 
 void RebuildViewportKdtree();

@@ -9,7 +9,7 @@
 
 #include "../../stdafx.h"
 #include "script_date.hpp"
-#include "../../date_func.h"
+#include "../../timer/timer_game_economy.h"
 
 #include <time.h>
 
@@ -22,24 +22,22 @@
 
 /* static */ ScriptDate::Date ScriptDate::GetCurrentDate()
 {
-	return (ScriptDate::Date)_date;
+	return (ScriptDate::Date)TimerGameEconomy::date.base();
 }
 
 /* static */ SQInteger ScriptDate::GetYear(ScriptDate::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
-	::YearMonthDay ymd;
-	::ConvertDateToYMD(date, &ymd);
-	return ymd.year;
+	::TimerGameEconomy::YearMonthDay ymd = ::TimerGameEconomy::ConvertDateToYMD(date);
+	return ymd.year.base();
 }
 
 /* static */ SQInteger ScriptDate::GetMonth(ScriptDate::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
-	::YearMonthDay ymd;
-	::ConvertDateToYMD(date, &ymd);
+	::TimerGameEconomy::YearMonthDay ymd = ::TimerGameEconomy::ConvertDateToYMD(date);
 	return ymd.month + 1;
 }
 
@@ -47,8 +45,7 @@
 {
 	if (date < 0) return DATE_INVALID;
 
-	::YearMonthDay ymd;
-	::ConvertDateToYMD(date, &ymd);
+	::TimerGameEconomy::YearMonthDay ymd = ::TimerGameEconomy::ConvertDateToYMD(date);
 	return ymd.day;
 }
 
@@ -56,9 +53,9 @@
 {
 	if (month < 1 || month > 12) return DATE_INVALID;
 	if (day_of_month < 1 || day_of_month > 31) return DATE_INVALID;
-	if (year < 0 || year > MAX_YEAR) return DATE_INVALID;
+	if (year < 0 || year > EconomyTime::MAX_YEAR) return DATE_INVALID;
 
-	return (ScriptDate::Date)::ConvertYMDToDate(year, month - 1, day_of_month);
+	return (ScriptDate::Date)::TimerGameEconomy::ConvertYMDToDate(year, month - 1, day_of_month).base();
 }
 
 /* static */ SQInteger ScriptDate::GetSystemTime()

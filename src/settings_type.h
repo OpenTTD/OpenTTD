@@ -10,7 +10,7 @@
 #ifndef SETTINGS_TYPE_H
 #define SETTINGS_TYPE_H
 
-#include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "economy_type.h"
 #include "town_type.h"
 #include "transport_type.h"
@@ -22,6 +22,7 @@
 #include "openttd.h"
 #include "rail_gui.h"
 #include "signal_type.h"
+#include "timetable.h"
 
 /* Used to validate sizes of "max" value in settings. */
 const size_t MAX_SLE_UINT8 = UINT8_MAX;
@@ -63,35 +64,57 @@ enum IndustryDensity {
 	ID_END,       ///< Number of industry density settings.
 };
 
-/** Possible values for "userelayservice" setting. */
-enum UseRelayService {
+/** Possible values for the "timekeeping_units" setting. */
+enum TimekeepingUnits : uint8_t {
+	TKU_CALENDAR = 0,
+	TKU_WALLCLOCK,
+};
+
+/** Possible values for "use_relay_service" setting. */
+enum UseRelayService : uint8_t {
 	URS_NEVER = 0,
 	URS_ASK,
 	URS_ALLOW,
 };
 
+/** Possible values for "participate_survey" setting. */
+enum ParticipateSurvey : uint8_t {
+	PS_ASK = 0,
+	PS_NO,
+	PS_YES,
+};
+
+/** Right-click to close window actions. */
+enum RightClickClose : uint8_t {
+	RCC_NO = 0,
+	RCC_YES,
+	RCC_YES_EXCEPT_STICKY,
+};
+
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
-	byte   competitor_start_time;            ///< Unused value, used to load old savegames.
-	byte   competitor_intelligence;          ///< Unused value, used to load old savegames.
+	uint8_t competitor_start_time;            ///< Unused value, used to load old savegames.
+	uint8_t competitor_intelligence;          ///< Unused value, used to load old savegames.
 
-	byte   max_no_competitors;               ///< the number of competitors (AIs)
-	byte   number_towns;                     ///< the amount of towns
-	byte   industry_density;                 ///< The industry density. @see IndustryDensity
-	uint32 max_loan;                         ///< the maximum initial loan
-	byte   initial_interest;                 ///< amount of interest (to pay over the loan)
-	byte   vehicle_costs;                    ///< amount of money spent on vehicle running cost
-	byte   competitor_speed;                 ///< the speed at which the AI builds
-	byte   vehicle_breakdowns;               ///< likelihood of vehicles breaking down
-	byte   subsidy_multiplier;               ///< payment multiplier for subsidized deliveries
-	uint16 subsidy_duration;                 ///< duration of subsidies
-	byte   construction_cost;                ///< how expensive is building
-	byte   terrain_type;                     ///< the mountainousness of the landscape
-	byte   quantity_sea_lakes;               ///< the amount of seas/lakes
+	uint8_t max_no_competitors;               ///< the number of competitors (AIs)
+	uint16_t competitors_interval;             ///< the interval (in minutes) between adding competitors
+	uint8_t number_towns;                     ///< the amount of towns
+	uint8_t industry_density;                 ///< The industry density. @see IndustryDensity
+	uint32_t max_loan;                         ///< the maximum initial loan
+	uint8_t initial_interest;                 ///< amount of interest (to pay over the loan)
+	uint8_t vehicle_costs;                    ///< amount of money spent on vehicle running cost
+	uint8_t competitor_speed;                 ///< the speed at which the AI builds
+	uint8_t vehicle_breakdowns;               ///< likelihood of vehicles breaking down
+	uint8_t subsidy_multiplier;               ///< payment multiplier for subsidized deliveries
+	uint16_t subsidy_duration;                 ///< duration of subsidies
+	uint8_t construction_cost;                ///< how expensive is building
+	uint8_t terrain_type;                     ///< the mountainousness of the landscape
+	uint8_t quantity_sea_lakes;               ///< the amount of seas/lakes
 	bool   economy;                          ///< how volatile is the economy
 	bool   line_reverse_mode;                ///< reversing at stations or not
 	bool   disasters;                        ///< are disasters enabled
-	byte   town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
+	uint8_t town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
+	bool   infinite_money;                   ///< whether spending money despite negative balance is allowed
 };
 
 /** Settings relating to viewport/smallmap scrolling. */
@@ -107,94 +130,95 @@ enum ViewportScrollMode {
 struct GUISettings {
 	bool   sg_full_load_any;                 ///< new full load calculation, any cargo must be full read from pre v93 savegames
 	bool   lost_vehicle_warn;                ///< if a vehicle can't find its destination, show a warning
-	uint8  order_review_system;              ///< perform order reviews on vehicles
+	uint8_t  order_review_system;              ///< perform order reviews on vehicles
 	bool   vehicle_income_warn;              ///< if a vehicle isn't generating income, show a warning
 	bool   show_finances;                    ///< show finances at end of year
 	bool   sg_new_nonstop;                   ///< ttdpatch compatible nonstop handling read from pre v93 savegames
 	bool   new_nonstop;                      ///< ttdpatch compatible nonstop handling
-	uint8  stop_location;                    ///< what is the default stop location of trains?
-	uint8  auto_scrolling;                   ///< scroll when moving mouse to the edge (see #ViewportAutoscrolling)
-	byte   errmsg_duration;                  ///< duration of error message
-	uint16 hover_delay_ms;                   ///< time required to activate a hover event, in milliseconds
+	uint8_t  stop_location;                    ///< what is the default stop location of trains?
+	uint8_t  auto_scrolling;                   ///< scroll when moving mouse to the edge (see #ViewportAutoscrolling)
+	uint8_t errmsg_duration;                  ///< duration of error message
+	uint16_t hover_delay_ms;                   ///< time required to activate a hover event, in milliseconds
 	bool   link_terraform_toolbar;           ///< display terraform toolbar when displaying rail, road, water and airport toolbars
-	uint8  smallmap_land_colour;             ///< colour used for land and heightmap at the smallmap
-	uint8  linkgraph_colours;                ///< linkgraph overlay colours
-	uint8  scroll_mode;                      ///< viewport scroll mode
+	uint8_t  smallmap_land_colour;             ///< colour used for land and heightmap at the smallmap
+	uint8_t  linkgraph_colours;                ///< linkgraph overlay colours
+	uint8_t  scroll_mode;                      ///< viewport scroll mode
 	bool   smooth_scroll;                    ///< smooth scroll viewports
 	bool   measure_tooltip;                  ///< show a permanent tooltip when dragging tools
-	byte   liveries;                         ///< options for displaying company liveries, 0=none, 1=self, 2=all
+	uint8_t liveries;                         ///< options for displaying company liveries, 0=none, 1=self, 2=all
 	bool   prefer_teamchat;                  ///< choose the chat message target with \<ENTER\>, true=all clients, false=your team
-	uint8  advanced_vehicle_list;            ///< use the "advanced" vehicle list
-	uint8  loading_indicators;               ///< show loading indicators
-	uint8  default_rail_type;                ///< the default rail type for the rail GUI
-	uint8  toolbar_pos;                      ///< position of toolbars, 0=left, 1=center, 2=right
-	uint8  statusbar_pos;                    ///< position of statusbar, 0=left, 1=center, 2=right
-	uint8  window_snap_radius;               ///< windows snap at each other if closer than this
-	uint8  window_soft_limit;                ///< soft limit of maximum number of non-stickied non-vital windows (0 = no limit)
+	uint8_t  advanced_vehicle_list;            ///< use the "advanced" vehicle list
+	uint8_t  loading_indicators;               ///< show loading indicators
+	uint8_t  default_rail_type;                ///< the default rail type for the rail GUI
+	uint8_t  toolbar_pos;                      ///< position of toolbars, 0=left, 1=center, 2=right
+	uint8_t  statusbar_pos;                    ///< position of statusbar, 0=left, 1=center, 2=right
+	uint8_t  window_snap_radius;               ///< windows snap at each other if closer than this
+	uint8_t  window_soft_limit;                ///< soft limit of maximum number of non-stickied non-vital windows (0 = no limit)
 	ZoomLevel zoom_min;                      ///< minimum zoom out level
 	ZoomLevel zoom_max;                      ///< maximum zoom out level
 	ZoomLevel sprite_zoom_min;               ///< maximum zoom level at which higher-resolution alternative sprites will be used (if available) instead of scaling a lower resolution sprite
-	byte   autosave;                         ///< how often should we do autosaves?
+	uint32_t autosave_interval;              ///< how often should we do autosaves?
 	bool   threaded_saves;                   ///< should we do threaded saves?
 	bool   keep_all_autosave;                ///< name the autosave in a different way
 	bool   autosave_on_exit;                 ///< save an autosave when you quit the game, but do not ask "Do you really want to quit?"
 	bool   autosave_on_network_disconnect;   ///< save an autosave when you get disconnected from a network game with an error?
-	uint8  date_format_in_default_names;     ///< should the default savegame/screenshot name use long dates (31th Dec 2008), short dates (31-12-2008) or ISO dates (2008-12-31)
-	byte   max_num_autosaves;                ///< controls how many autosavegames are made before the game starts to overwrite (names them 0 to max_num_autosaves - 1)
+	uint8_t  date_format_in_default_names;     ///< should the default savegame/screenshot name use long dates (31th Dec 2008), short dates (31-12-2008) or ISO dates (2008-12-31)
+	uint8_t max_num_autosaves;                ///< controls how many autosavegames are made before the game starts to overwrite (names them 0 to max_num_autosaves - 1)
 	bool   population_in_label;              ///< show the population of a town in its label?
-	uint8  right_mouse_btn_emulation;        ///< should we emulate right mouse clicking?
-	uint8  scrollwheel_scrolling;            ///< scrolling using the scroll wheel?
-	uint8  scrollwheel_multiplier;           ///< how much 'wheel' per incoming event from the OS?
+	uint8_t  right_mouse_btn_emulation;        ///< should we emulate right mouse clicking?
+	uint8_t  scrollwheel_scrolling;            ///< scrolling using the scroll wheel?
+	uint8_t  scrollwheel_multiplier;           ///< how much 'wheel' per incoming event from the OS?
 	bool   timetable_arrival_departure;      ///< show arrivals and departures in vehicle timetables
-	bool   right_mouse_wnd_close;            ///< close window with right click
+	RightClickClose  right_click_wnd_close;  ///< close window with right click
 	bool   pause_on_newgame;                 ///< whether to start new games paused or not
 	SignalGUISettings signal_gui_mode;       ///< select which signal types are shown in the signal GUI
 	SignalCycleSettings cycle_signal_types;  ///< Which signal types to cycle with the build signal tool.
 	SignalType default_signal_type;          ///< The default signal type, which is set automatically by the last signal used. Not available in Settings.
-	Year   coloured_news_year;               ///< when does newspaper become coloured?
-	bool   timetable_in_ticks;               ///< whether to show the timetable in ticks rather than days
+	TimerGameCalendar::Year coloured_news_year; ///< when does newspaper become coloured?
+	TimetableMode timetable_mode;            ///< Time units for timetables: days, seconds, or ticks
 	bool   quick_goto;                       ///< Allow quick access to 'goto button' in vehicle orders window
 	bool   auto_euro;                        ///< automatically switch to euro in 2002
-	byte   drag_signals_density;             ///< many signals density
+	uint8_t drag_signals_density;             ///< many signals density
 	bool   drag_signals_fixed_distance;      ///< keep fixed distance between signals when dragging
-	Year   semaphore_build_before;           ///< build semaphore signals automatically before this year
-	byte   news_message_timeout;             ///< how much longer than the news message "age" should we keep the message in the history
+	TimerGameCalendar::Year semaphore_build_before; ///< build semaphore signals automatically before this year
+	uint8_t news_message_timeout;             ///< how much longer than the news message "age" should we keep the message in the history
 	bool   show_track_reservation;           ///< highlight reserved tracks.
-	byte   station_numtracks;                ///< the number of platforms to default on for rail stations
-	byte   station_platlength;               ///< the platform length, in tiles, for rail stations
+	uint8_t station_numtracks;                ///< the number of platforms to default on for rail stations
+	uint8_t station_platlength;               ///< the platform length, in tiles, for rail stations
 	bool   station_dragdrop;                 ///< whether drag and drop is enabled for stations
 	bool   station_show_coverage;            ///< whether to highlight coverage area
 	bool   persistent_buildingtools;         ///< keep the building tools active after usage
 	bool   expenses_layout;                  ///< layout of expenses window
-	uint32 last_newgrf_count;                ///< the numbers of NewGRFs we found during the last scan
-	byte   missing_strings_threshold;        ///< the number of missing strings before showing the warning
-	uint8  graph_line_thickness;             ///< the thickness of the lines in the various graph guis
-	uint8  osk_activation;                   ///< Mouse gesture to trigger the OSK.
-	byte   starting_colour;                  ///< default color scheme for the company to start a new game with
+	uint32_t last_newgrf_count;                ///< the numbers of NewGRFs we found during the last scan
+	uint8_t missing_strings_threshold;        ///< the number of missing strings before showing the warning
+	uint8_t  graph_line_thickness;             ///< the thickness of the lines in the various graph guis
+	uint8_t  osk_activation;                   ///< Mouse gesture to trigger the OSK.
+	Colours starting_colour;                 ///< default color scheme for the company to start a new game with
+	Colours starting_colour_secondary;       ///< default secondary color scheme for the company to start a new game with
 	bool   show_newgrf_name;                 ///< Show the name of the NewGRF in the build vehicle window
 	bool   show_cargo_in_vehicle_lists;      ///< Show the cargoes the vehicles can carry in the list windows
 	bool   auto_remove_signals;              ///< automatically remove signals when in the way during rail construction
-	uint16 refresh_rate;                     ///< How often we refresh the screen (time between draw-ticks).
-	uint16 fast_forward_speed_limit;         ///< Game speed to use when fast-forward is enabled.
+	uint16_t refresh_rate;                     ///< How often we refresh the screen (time between draw-ticks).
+	uint16_t fast_forward_speed_limit;         ///< Game speed to use when fast-forward is enabled.
 
-	uint16 console_backlog_timeout;          ///< the minimum amount of time items should be in the console backlog before they will be removed in ~3 seconds granularity.
-	uint16 console_backlog_length;           ///< the minimum amount of items in the console backlog before items will be removed.
+	uint16_t console_backlog_timeout;          ///< the minimum amount of time items should be in the console backlog before they will be removed in ~3 seconds granularity.
+	uint16_t console_backlog_length;           ///< the minimum amount of items in the console backlog before items will be removed.
 
-	uint8  station_gui_group_order;          ///< the order of grouping cargo entries in the station gui
-	uint8  station_gui_sort_by;              ///< sort cargo entries in the station gui by station name or amount
-	uint8  station_gui_sort_order;           ///< the sort order of entries in the station gui - ascending or descending
-	uint16 network_chat_box_width_pct;       ///< width of the chat box in percent
-	uint8  network_chat_box_height;          ///< height of the chat box in lines
-	uint16 network_chat_timeout;             ///< timeout of chat messages in seconds
+	uint8_t  station_gui_group_order;          ///< the order of grouping cargo entries in the station gui
+	uint8_t  station_gui_sort_by;              ///< sort cargo entries in the station gui by station name or amount
+	uint8_t  station_gui_sort_order;           ///< the sort order of entries in the station gui - ascending or descending
+	uint16_t network_chat_box_width_pct;       ///< width of the chat box in percent
+	uint8_t  network_chat_box_height;          ///< height of the chat box in lines
+	uint16_t network_chat_timeout;             ///< timeout of chat messages in seconds
 
-	uint8  developer;                        ///< print non-fatal warnings in console (>= 1), copy debug output to console (== 2)
+	uint8_t  developer;                        ///< print non-fatal warnings in console (>= 1), copy debug output to console (== 2)
 	bool   show_date_in_logs;                ///< whether to show dates in console logs
 	bool   newgrf_developer_tools;           ///< activate NewGRF developer tools and allow modifying NewGRFs in an existing game
 	bool   ai_developer_tools;               ///< activate AI/GS developer tools
 	bool   scenario_developer;               ///< activate scenario developer: allow modifying NewGRFs in an existing game
-	uint8  settings_restriction_mode;        ///< selected restriction mode in adv. settings GUI. @see RestrictionMode
+	uint8_t  settings_restriction_mode;        ///< selected restriction mode in adv. settings GUI. @see RestrictionMode
 	bool   newgrf_show_old_versions;         ///< whether to show old versions in the NewGRF list
-	uint8  newgrf_default_palette;           ///< default palette to use for NewGRFs without action 14 palette information
+	uint8_t  newgrf_default_palette;           ///< default palette to use for NewGRFs without action 14 palette information
 
 	bool   scale_bevels;                     ///< bevels are scaled with GUI scale.
 
@@ -222,24 +246,25 @@ struct SoundSettings {
 
 /** Settings related to music. */
 struct MusicSettings {
-	byte playlist;     ///< The playlist (number) to play
-	byte music_vol;    ///< The requested music volume
-	byte effect_vol;   ///< The requested effects volume
-	byte custom_1[33]; ///< The order of the first custom playlist
-	byte custom_2[33]; ///< The order of the second custom playlist
+	uint8_t playlist;     ///< The playlist (number) to play
+	uint8_t music_vol;    ///< The requested music volume
+	uint8_t effect_vol;   ///< The requested effects volume
+	uint8_t custom_1[33]; ///< The order of the first custom playlist
+	uint8_t custom_2[33]; ///< The order of the second custom playlist
 	bool playing;      ///< Whether music is playing
 	bool shuffle;      ///< Whether to shuffle the music
 };
 
 /** Settings related to currency/unit systems. */
 struct LocaleSettings {
-	byte        currency;                         ///< currency we currently use
-	byte        units_velocity;                   ///< unit system for velocity
-	byte        units_power;                      ///< unit system for power
-	byte        units_weight;                     ///< unit system for weight
-	byte        units_volume;                     ///< unit system for volume
-	byte        units_force;                      ///< unit system for force
-	byte        units_height;                     ///< unit system for height
+	uint8_t      currency;                        ///< currency we currently use
+	uint8_t      units_velocity;                  ///< unit system for velocity of trains and road vehicles
+	uint8_t      units_velocity_nautical;         ///< unit system for velocity of ships and aircraft
+	uint8_t      units_power;                     ///< unit system for power
+	uint8_t      units_weight;                    ///< unit system for weight
+	uint8_t      units_volume;                    ///< unit system for volume
+	uint8_t      units_force;                     ///< unit system for force
+	uint8_t      units_height;                    ///< unit system for height
 	std::string digit_group_separator;            ///< thousand separator for non-currencies
 	std::string digit_group_separator_currency;   ///< thousand separator for currencies
 	std::string digit_decimal_separator;          ///< decimal separator
@@ -247,122 +272,126 @@ struct LocaleSettings {
 
 /** Settings related to news */
 struct NewsSettings {
-	uint8 arrival_player;                                 ///< NewsDisplay of vehicles arriving at new stations of current player
-	uint8 arrival_other;                                  ///< NewsDisplay of vehicles arriving at new stations of other players
-	uint8 accident;                                       ///< NewsDisplay of accidents that occur
-	uint8 accident_other;                                 ///< NewsDisplay if a vehicle from another company is involved in an accident
-	uint8 company_info;                                   ///< NewsDisplay of general company information
-	uint8 open;                                           ///< NewsDisplay on new industry constructions
-	uint8 close;                                          ///< NewsDisplay about closing industries
-	uint8 economy;                                        ///< NewsDisplay on economical changes
-	uint8 production_player;                              ///< NewsDisplay of production changes of industries affecting current player
-	uint8 production_other;                               ///< NewsDisplay of production changes of industries affecting competitors
-	uint8 production_nobody;                              ///< NewsDisplay of production changes of industries affecting no one
-	uint8 advice;                                         ///< NewsDisplay on advice affecting the player's vehicles
-	uint8 new_vehicles;                                   ///< NewsDisplay of new vehicles becoming available
-	uint8 acceptance;                                     ///< NewsDisplay on changes affecting the acceptance of cargo at stations
-	uint8 subsidies;                                      ///< NewsDisplay of changes on subsidies
-	uint8 general;                                        ///< NewsDisplay of other topics
+	uint8_t arrival_player;                                 ///< NewsDisplay of vehicles arriving at new stations of current player
+	uint8_t arrival_other;                                  ///< NewsDisplay of vehicles arriving at new stations of other players
+	uint8_t accident;                                       ///< NewsDisplay of accidents that occur
+	uint8_t accident_other;                                 ///< NewsDisplay if a vehicle from another company is involved in an accident
+	uint8_t company_info;                                   ///< NewsDisplay of general company information
+	uint8_t open;                                           ///< NewsDisplay on new industry constructions
+	uint8_t close;                                          ///< NewsDisplay about closing industries
+	uint8_t economy;                                        ///< NewsDisplay on economical changes
+	uint8_t production_player;                              ///< NewsDisplay of production changes of industries affecting current player
+	uint8_t production_other;                               ///< NewsDisplay of production changes of industries affecting competitors
+	uint8_t production_nobody;                              ///< NewsDisplay of production changes of industries affecting no one
+	uint8_t advice;                                         ///< NewsDisplay on advice affecting the player's vehicles
+	uint8_t new_vehicles;                                   ///< NewsDisplay of new vehicles becoming available
+	uint8_t acceptance;                                     ///< NewsDisplay on changes affecting the acceptance of cargo at stations
+	uint8_t subsidies;                                      ///< NewsDisplay of changes on subsidies
+	uint8_t general;                                        ///< NewsDisplay of other topics
 };
 
 /** All settings related to the network. */
 struct NetworkSettings {
-	uint16      sync_freq;                                ///< how often do we check whether we are still in-sync
-	uint8       frame_freq;                               ///< how often do we send commands to the clients
-	uint16      commands_per_frame;                       ///< how many commands may be sent each frame_freq frames?
-	uint16      max_commands_in_queue;                    ///< how many commands may there be in the incoming queue before dropping the connection?
-	uint16      bytes_per_frame;                          ///< how many bytes may, over a long period, be received per frame?
-	uint16      bytes_per_frame_burst;                    ///< how many bytes may, over a short period, be received?
-	uint16      max_init_time;                            ///< maximum amount of time, in game ticks, a client may take to initiate joining
-	uint16      max_join_time;                            ///< maximum amount of time, in game ticks, a client may take to sync up during joining
-	uint16      max_download_time;                        ///< maximum amount of time, in game ticks, a client may take to download the map
-	uint16      max_password_time;                        ///< maximum amount of time, in game ticks, a client may take to enter the password
-	uint16      max_lag_time;                             ///< maximum amount of time, in game ticks, a client may be lagging behind the server
+	uint16_t      sync_freq;                                ///< how often do we check whether we are still in-sync
+	uint8_t       frame_freq;                               ///< how often do we send commands to the clients
+	uint16_t      commands_per_frame;                       ///< how many commands may be sent each frame_freq frames?
+	uint16_t      commands_per_frame_server;                ///< how many commands may be sent each frame_freq frames? (server-originating commands)
+	uint16_t      max_commands_in_queue;                    ///< how many commands may there be in the incoming queue before dropping the connection?
+	uint16_t      bytes_per_frame;                          ///< how many bytes may, over a long period, be received per frame?
+	uint16_t      bytes_per_frame_burst;                    ///< how many bytes may, over a short period, be received?
+	uint16_t      max_init_time;                            ///< maximum amount of time, in game ticks, a client may take to initiate joining
+	uint16_t      max_join_time;                            ///< maximum amount of time, in game ticks, a client may take to sync up during joining
+	uint16_t      max_download_time;                        ///< maximum amount of time, in game ticks, a client may take to download the map
+	uint16_t      max_password_time;                        ///< maximum amount of time, in game ticks, a client may take to enter the password
+	uint16_t      max_lag_time;                             ///< maximum amount of time, in game ticks, a client may be lagging behind the server
 	bool        pause_on_join;                            ///< pause the game when people join
-	uint16      server_port;                              ///< port the server listens on
-	uint16      server_admin_port;                        ///< port the server listens on for the admin network
+	uint16_t      server_port;                              ///< port the server listens on
+	uint16_t      server_admin_port;                        ///< port the server listens on for the admin network
 	bool        server_admin_chat;                        ///< allow private chat for the server to be distributed to the admin network
 	ServerGameType server_game_type;                      ///< Server type: local / public / invite-only.
 	std::string server_invite_code;                       ///< Invite code to use when registering as server.
 	std::string server_invite_code_secret;                ///< Secret to proof we got this invite code from the Game Coordinator.
 	std::string server_name;                              ///< name of the server
 	std::string server_password;                          ///< password for joining this server
+	NetworkAuthorizedKeys server_authorized_keys; ///< Public keys of clients that are authorized to connect to the game.
 	std::string rcon_password;                            ///< password for rconsole (server side)
+	NetworkAuthorizedKeys rcon_authorized_keys; ///< Public keys of clients that are authorized to use the rconsole (server side).
 	std::string admin_password;                           ///< password for the admin network
 	std::string client_name;                              ///< name of the player (as client)
-	std::string default_company_pass;                     ///< default password for new companies in encrypted form
+	std::string client_secret_key; ///< The secret key of the client for authorized key logins.
+	std::string client_public_key; ///< The public key of the client for authorized key logins.
 	std::string connect_to_ip;                            ///< default for the "Add server" query
-	std::string network_id;                               ///< network ID for servers
 	bool        autoclean_companies;                      ///< automatically remove companies that are not in use
-	uint8       autoclean_unprotected;                    ///< remove passwordless companies after this many months
-	uint8       autoclean_protected;                      ///< remove the password from passworded companies after this many months
-	uint8       autoclean_novehicles;                     ///< remove companies with no vehicles after this many months
-	uint8       max_companies;                            ///< maximum amount of companies
-	uint8       max_clients;                              ///< maximum amount of clients
-	Year        restart_game_year;                        ///< year the server restarts
-	uint8       min_active_clients;                       ///< minimum amount of active clients to unpause the game
+	uint8_t       autoclean_protected; ///< Remove companies after this many months.
+	uint8_t       autoclean_novehicles;                     ///< remove companies with no vehicles after this many months
+	uint8_t       max_companies;                            ///< maximum amount of companies
+	uint8_t       max_clients;                              ///< maximum amount of clients
+	TimerGameCalendar::Year restart_game_year;            ///< year the server restarts
+	uint16_t      restart_hours;                          ///< number of hours to run the server before automatic restart
+	uint8_t       min_active_clients;                       ///< minimum amount of active clients to unpause the game
 	bool        reload_cfg;                               ///< reload the config file before restarting
 	std::string last_joined;                              ///< Last joined server
-	bool        no_http_content_downloads;                ///< do not do content downloads over HTTP
-	UseRelayService use_relay_service;                        ///< Use relay service?
+	UseRelayService use_relay_service;                    ///< Use relay service?
+	ParticipateSurvey participate_survey;                 ///< Participate in the automated survey
 };
 
 /** Settings related to the creation of games. */
 struct GameCreationSettings {
-	uint32 generation_seed;                  ///< noise seed for world generation
-	Year   starting_year;                    ///< starting date
-	Year   ending_year;                      ///< scoring end date
-	uint8  map_x;                            ///< X size of map
-	uint8  map_y;                            ///< Y size of map
-	byte   land_generator;                   ///< the landscape generator
-	byte   oil_refinery_limit;               ///< distance oil refineries allowed from map edge
-	byte   snow_line_height;                 ///< the configured snow line height (deduced from "snow_coverage")
-	byte   snow_coverage;                    ///< the amount of snow coverage on the map
-	byte   desert_coverage;                  ///< the amount of desert coverage on the map
-	byte   heightmap_height;                 ///< highest mountain for heightmap (towards what it scales)
-	byte   tgen_smoothness;                  ///< how rough is the terrain from 0-3
-	byte   tree_placer;                      ///< the tree placer algorithm
-	byte   heightmap_rotation;               ///< rotation director for the heightmap
-	byte   se_flat_world_height;             ///< land height a flat world gets in SE
-	byte   town_name;                        ///< the town name generator used for town names
-	byte   landscape;                        ///< the landscape we're currently in
-	byte   water_borders;                    ///< bitset of the borders that are water
-	uint16 custom_town_number;               ///< manually entered number of towns
-	uint16 custom_industry_number;           ///< manually entered number of industries
-	byte   variety;                          ///< variety level applied to TGP
-	byte   custom_terrain_type;              ///< manually entered height for TGP to aim for
-	byte   custom_sea_level;                 ///< manually entered percentage of water in the map
-	byte   min_river_length;                 ///< the minimum river length
-	byte   river_route_random;               ///< the amount of randomicity for the route finding
-	byte   amount_of_rivers;                 ///< the amount of rivers
+	uint32_t generation_seed;                  ///< noise seed for world generation
+	TimerGameCalendar::Year starting_year;   ///< starting date
+	TimerGameCalendar::Year ending_year;     ///< scoring end date
+	uint8_t  map_x;                            ///< X size of map
+	uint8_t  map_y;                            ///< Y size of map
+	uint8_t land_generator;                   ///< the landscape generator
+	uint8_t oil_refinery_limit;               ///< distance oil refineries allowed from map edge
+	uint8_t snow_line_height;                 ///< the configured snow line height (deduced from "snow_coverage")
+	uint8_t snow_coverage;                    ///< the amount of snow coverage on the map
+	uint8_t desert_coverage;                  ///< the amount of desert coverage on the map
+	uint8_t heightmap_height;                 ///< highest mountain for heightmap (towards what it scales)
+	uint8_t tgen_smoothness;                  ///< how rough is the terrain from 0-3
+	uint8_t tree_placer;                      ///< the tree placer algorithm
+	uint8_t heightmap_rotation;               ///< rotation director for the heightmap
+	uint8_t se_flat_world_height;             ///< land height a flat world gets in SE
+	uint8_t town_name;                        ///< the town name generator used for town names
+	uint8_t landscape;                        ///< the landscape we're currently in
+	uint8_t water_borders;                    ///< bitset of the borders that are water
+	uint16_t custom_town_number;               ///< manually entered number of towns
+	uint16_t custom_industry_number;           ///< manually entered number of industries
+	uint8_t variety;                          ///< variety level applied to TGP
+	uint8_t custom_terrain_type;              ///< manually entered height for TGP to aim for
+	uint8_t custom_sea_level;                 ///< manually entered percentage of water in the map
+	uint8_t min_river_length;                 ///< the minimum river length
+	uint8_t river_route_random;               ///< the amount of randomicity for the route finding
+	uint8_t amount_of_rivers;                 ///< the amount of rivers
 };
 
 /** Settings related to construction in-game */
 struct ConstructionSettings {
-	uint8  map_height_limit;                 ///< the maximum allowed heightlevel
+	uint8_t  map_height_limit;                 ///< the maximum allowed heightlevel
 	bool   build_on_slopes;                  ///< allow building on slopes
 	bool   autoslope;                        ///< allow terraforming under things
-	uint16 max_bridge_length;                ///< maximum length of bridges
-	byte   max_bridge_height;                ///< maximum height of bridges
-	uint16 max_tunnel_length;                ///< maximum length of tunnels
-	byte   train_signal_side;                ///< show signals on left / driving / right side
+	uint16_t max_bridge_length;                ///< maximum length of bridges
+	uint8_t max_bridge_height;                ///< maximum height of bridges
+	uint16_t max_tunnel_length;                ///< maximum length of tunnels
+	uint8_t train_signal_side;                ///< show signals on left / driving / right side
 	bool   extra_dynamite;                   ///< extra dynamite
 	bool   road_stop_on_town_road;           ///< allow building of drive-through road stops on town owned roads
 	bool   road_stop_on_competitor_road;     ///< allow building of drive-through road stops on roads owned by competitors
-	uint8  raw_industry_construction;        ///< type of (raw) industry construction (none, "normal", prospecting)
-	uint8  industry_platform;                ///< the amount of flat land around an industry
+	bool   crossing_with_competitor;         ///< allow building of level crossings with competitor roads or rails
+	uint8_t  raw_industry_construction;        ///< type of (raw) industry construction (none, "normal", prospecting)
+	uint8_t  industry_platform;                ///< the amount of flat land around an industry
 	bool   freeform_edges;                   ///< allow terraforming the tiles at the map edges
-	uint8  extra_tree_placement;             ///< (dis)allow building extra trees in-game
-	uint8  command_pause_level;              ///< level/amount of commands that can't be executed while paused
+	uint8_t  extra_tree_placement;             ///< (dis)allow building extra trees in-game
+	uint8_t  command_pause_level;              ///< level/amount of commands that can't be executed while paused
 
-	uint32 terraform_per_64k_frames;         ///< how many tile heights may, over a long period, be terraformed per 65536 frames?
-	uint16 terraform_frame_burst;            ///< how many tile heights may, over a short period, be terraformed?
-	uint32 clear_per_64k_frames;             ///< how many tiles may, over a long period, be cleared per 65536 frames?
-	uint16 clear_frame_burst;                ///< how many tiles may, over a short period, be cleared?
-	uint32 tree_per_64k_frames;              ///< how many trees may, over a long period, be planted per 65536 frames?
-	uint16 tree_frame_burst;                 ///< how many trees may, over a short period, be planted?
-	uint32 build_object_per_64k_frames;      ///< how many tiles may, over a long period, be purchased or have objects built on them per 65536 frames?
-	uint16 build_object_frame_burst;         ///< how many tiles may, over a short period, be purchased or have objects built on them?
+	uint32_t terraform_per_64k_frames;         ///< how many tile heights may, over a long period, be terraformed per 65536 frames?
+	uint16_t terraform_frame_burst;            ///< how many tile heights may, over a short period, be terraformed?
+	uint32_t clear_per_64k_frames;             ///< how many tiles may, over a long period, be cleared per 65536 frames?
+	uint16_t clear_frame_burst;                ///< how many tiles may, over a short period, be cleared?
+	uint32_t tree_per_64k_frames;              ///< how many trees may, over a long period, be planted per 65536 frames?
+	uint16_t tree_frame_burst;                 ///< how many trees may, over a short period, be planted?
+	uint32_t build_object_per_64k_frames;      ///< how many tiles may, over a long period, be purchased or have objects built on them per 65536 frames?
+	uint16_t build_object_frame_burst;         ///< how many tiles may, over a short period, be purchased or have objects built on them?
 };
 
 /** Settings related to the AI. */
@@ -376,100 +405,62 @@ struct AISettings {
 
 /** Settings related to scripts. */
 struct ScriptSettings {
-	uint8  settings_profile;                 ///< difficulty profile to set initial settings of scripts, esp. random AIs
-	uint32 script_max_opcode_till_suspend;   ///< max opcode calls till scripts will suspend
-	uint32 script_max_memory_megabytes;      ///< limit on memory a single script instance may have allocated
-};
-
-/** Settings related to the new pathfinder. */
-struct NPFSettings {
-	/**
-	 * The maximum amount of search nodes a single NPF run should take. This
-	 * limit should make sure performance stays at acceptable levels at the cost
-	 * of not being perfect anymore.
-	 */
-	uint32 npf_max_search_nodes;
-	uint32 maximum_go_to_depot_penalty;      ///< What is the maximum penalty that may be endured for going to a depot
-
-	uint32 npf_rail_firstred_penalty;        ///< the penalty for when the first signal is red (and it is not an exit or combo signal)
-	uint32 npf_rail_firstred_exit_penalty;   ///< the penalty for when the first signal is red (and it is an exit or combo signal)
-	uint32 npf_rail_lastred_penalty;         ///< the penalty for when the last signal is red
-	uint32 npf_rail_station_penalty;         ///< the penalty for station tiles
-	uint32 npf_rail_slope_penalty;           ///< the penalty for sloping upwards
-	uint32 npf_rail_curve_penalty;           ///< the penalty for curves
-	uint32 npf_rail_depot_reverse_penalty;   ///< the penalty for reversing in depots
-	uint32 npf_rail_pbs_cross_penalty;       ///< the penalty for crossing a reserved rail track
-	uint32 npf_rail_pbs_signal_back_penalty; ///< the penalty for passing a pbs signal from the backside
-	uint32 npf_buoy_penalty;                 ///< the penalty for going over (through) a buoy
-	uint32 npf_water_curve_penalty;          ///< the penalty for curves
-	uint32 npf_road_curve_penalty;           ///< the penalty for curves
-	uint32 npf_crossing_penalty;             ///< the penalty for level crossings
-	uint32 npf_road_drive_through_penalty;   ///< the penalty for going through a drive-through road stop
-	uint32 npf_road_dt_occupied_penalty;     ///< the penalty multiplied by the fill percentage of a drive-through road stop
-	uint32 npf_road_bay_occupied_penalty;    ///< the penalty multiplied by the fill percentage of a road bay
+	uint32_t script_max_opcode_till_suspend;   ///< max opcode calls till scripts will suspend
+	uint32_t script_max_memory_megabytes;      ///< limit on memory a single script instance may have allocated
 };
 
 /** Settings related to the yet another pathfinder. */
 struct YAPFSettings {
 	bool   disable_node_optimization;        ///< whether to use exit-dir instead of trackdir in node key
-	uint32 max_search_nodes;                 ///< stop path-finding when this number of nodes visited
-	uint32 maximum_go_to_depot_penalty;      ///< What is the maximum penalty that may be endured for going to a depot
-	bool   ship_use_yapf;                    ///< use YAPF for ships
-	bool   road_use_yapf;                    ///< use YAPF for road
-	bool   rail_use_yapf;                    ///< use YAPF for rail
-	uint32 road_slope_penalty;               ///< penalty for up-hill slope
-	uint32 road_curve_penalty;               ///< penalty for curves
-	uint32 road_crossing_penalty;            ///< penalty for level crossing
-	uint32 road_stop_penalty;                ///< penalty for going through a drive-through road stop
-	uint32 road_stop_occupied_penalty;       ///< penalty multiplied by the fill percentage of a drive-through road stop
-	uint32 road_stop_bay_occupied_penalty;   ///< penalty multiplied by the fill percentage of a road bay
+	uint32_t max_search_nodes;                 ///< stop path-finding when this number of nodes visited
+	uint32_t maximum_go_to_depot_penalty;      ///< What is the maximum penalty that may be endured for going to a depot
+	uint32_t road_slope_penalty;               ///< penalty for up-hill slope
+	uint32_t road_curve_penalty;               ///< penalty for curves
+	uint32_t road_crossing_penalty;            ///< penalty for level crossing
+	uint32_t road_stop_penalty;                ///< penalty for going through a drive-through road stop
+	uint32_t road_stop_occupied_penalty;       ///< penalty multiplied by the fill percentage of a drive-through road stop
+	uint32_t road_stop_bay_occupied_penalty;   ///< penalty multiplied by the fill percentage of a road bay
 	bool   rail_firstred_twoway_eol;         ///< treat first red two-way signal as dead end
-	uint32 rail_firstred_penalty;            ///< penalty for first red signal
-	uint32 rail_firstred_exit_penalty;       ///< penalty for first red exit signal
-	uint32 rail_lastred_penalty;             ///< penalty for last red signal
-	uint32 rail_lastred_exit_penalty;        ///< penalty for last red exit signal
-	uint32 rail_station_penalty;             ///< penalty for non-target station tile
-	uint32 rail_slope_penalty;               ///< penalty for up-hill slope
-	uint32 rail_curve45_penalty;             ///< penalty for curve
-	uint32 rail_curve90_penalty;             ///< penalty for 90-deg curve
-	uint32 rail_depot_reverse_penalty;       ///< penalty for reversing in the depot
-	uint32 rail_crossing_penalty;            ///< penalty for level crossing
-	uint32 rail_look_ahead_max_signals;      ///< max. number of signals taken into consideration in look-ahead load balancer
-	int32  rail_look_ahead_signal_p0;        ///< constant in polynomial penalty function
-	int32  rail_look_ahead_signal_p1;        ///< constant in polynomial penalty function
-	int32  rail_look_ahead_signal_p2;        ///< constant in polynomial penalty function
-	uint32 rail_pbs_cross_penalty;           ///< penalty for crossing a reserved tile
-	uint32 rail_pbs_station_penalty;         ///< penalty for crossing a reserved station tile
-	uint32 rail_pbs_signal_back_penalty;     ///< penalty for passing a pbs signal from the backside
-	uint32 rail_doubleslip_penalty;          ///< penalty for passing a double slip switch
+	uint32_t rail_firstred_penalty;            ///< penalty for first red signal
+	uint32_t rail_firstred_exit_penalty;       ///< penalty for first red exit signal
+	uint32_t rail_lastred_penalty;             ///< penalty for last red signal
+	uint32_t rail_lastred_exit_penalty;        ///< penalty for last red exit signal
+	uint32_t rail_station_penalty;             ///< penalty for non-target station tile
+	uint32_t rail_slope_penalty;               ///< penalty for up-hill slope
+	uint32_t rail_curve45_penalty;             ///< penalty for curve
+	uint32_t rail_curve90_penalty;             ///< penalty for 90-deg curve
+	uint32_t rail_depot_reverse_penalty;       ///< penalty for reversing in the depot
+	uint32_t rail_crossing_penalty;            ///< penalty for level crossing
+	uint32_t rail_look_ahead_max_signals;      ///< max. number of signals taken into consideration in look-ahead load balancer
+	int32_t  rail_look_ahead_signal_p0;        ///< constant in polynomial penalty function
+	int32_t  rail_look_ahead_signal_p1;        ///< constant in polynomial penalty function
+	int32_t  rail_look_ahead_signal_p2;        ///< constant in polynomial penalty function
+	uint32_t rail_pbs_cross_penalty;           ///< penalty for crossing a reserved tile
+	uint32_t rail_pbs_station_penalty;         ///< penalty for crossing a reserved station tile
+	uint32_t rail_pbs_signal_back_penalty;     ///< penalty for passing a pbs signal from the backside
+	uint32_t rail_doubleslip_penalty;          ///< penalty for passing a double slip switch
 
-	uint32 rail_longer_platform_penalty;           ///< penalty for longer  station platform than train
-	uint32 rail_longer_platform_per_tile_penalty;  ///< penalty for longer  station platform than train (per tile)
-	uint32 rail_shorter_platform_penalty;          ///< penalty for shorter station platform than train
-	uint32 rail_shorter_platform_per_tile_penalty; ///< penalty for shorter station platform than train (per tile)
-	uint32 ship_curve45_penalty;                   ///< penalty for 45-deg curve for ships
-	uint32 ship_curve90_penalty;                   ///< penalty for 90-deg curve for ships
+	uint32_t rail_longer_platform_penalty;           ///< penalty for longer  station platform than train
+	uint32_t rail_longer_platform_per_tile_penalty;  ///< penalty for longer  station platform than train (per tile)
+	uint32_t rail_shorter_platform_penalty;          ///< penalty for shorter station platform than train
+	uint32_t rail_shorter_platform_per_tile_penalty; ///< penalty for shorter station platform than train (per tile)
+	uint32_t ship_curve45_penalty;                   ///< penalty for 45-deg curve for ships
+	uint32_t ship_curve90_penalty;                   ///< penalty for 90-deg curve for ships
 };
 
 /** Settings related to all pathfinders. */
 struct PathfinderSettings {
-	uint8  pathfinder_for_trains;            ///< the pathfinder to use for trains
-	uint8  pathfinder_for_roadvehs;          ///< the pathfinder to use for roadvehicles
-	uint8  pathfinder_for_ships;             ///< the pathfinder to use for ships
-	bool   new_pathfinding_all;              ///< use the newest pathfinding algorithm for all
-
 	bool   roadveh_queue;                    ///< buggy road vehicle queueing
 	bool   forbid_90_deg;                    ///< forbid trains to make 90 deg turns
 
 	bool   reverse_at_signals;               ///< whether to reverse at signals at all
-	byte   wait_oneway_signal;               ///< waitingtime in days before a oneway signal
-	byte   wait_twoway_signal;               ///< waitingtime in days before a twoway signal
+	uint8_t wait_oneway_signal;               ///< waitingtime in days before a oneway signal
+	uint8_t wait_twoway_signal;               ///< waitingtime in days before a twoway signal
 
 	bool   reserve_paths;                    ///< always reserve paths regardless of signal type.
-	byte   wait_for_pbs_path;                ///< how long to wait for a path reservation.
-	byte   path_backoff_interval;            ///< ticks between checks for a free path.
+	uint8_t wait_for_pbs_path;                ///< how long to wait for a path reservation.
+	uint8_t path_backoff_interval;            ///< ticks between checks for a free path.
 
-	NPFSettings  npf;                        ///< pathfinder settings for the new pathfinder
 	YAPFSettings yapf;                       ///< pathfinder settings for the yet another pathfinder
 };
 
@@ -480,29 +471,30 @@ struct OrderSettings {
 	bool   selectgoods;                      ///< only send the goods to station if a train has been there
 	bool   no_servicing_if_no_breakdowns;    ///< don't send vehicles to depot when breakdowns are disabled
 	bool   serviceathelipad;                 ///< service helicopters at helipads automatically (no need to send to depot)
+	bool   station_length_loading_penalty;   ///< make trains longer than the station load more slowly
 };
 
 /** Settings related to vehicles. */
 struct VehicleSettings {
-	uint8  max_train_length;                 ///< maximum length for trains
-	uint8  smoke_amount;                     ///< amount of smoke/sparks locomotives produce
-	uint8  train_acceleration_model;         ///< realistic acceleration for trains
-	uint8  roadveh_acceleration_model;       ///< realistic acceleration for road vehicles
-	uint8  train_slope_steepness;            ///< Steepness of hills for trains when using realistic acceleration
-	uint8  roadveh_slope_steepness;          ///< Steepness of hills for road vehicles when using realistic acceleration
+	uint8_t  max_train_length;                 ///< maximum length for trains
+	uint8_t  smoke_amount;                     ///< amount of smoke/sparks locomotives produce
+	uint8_t  train_acceleration_model;         ///< realistic acceleration for trains
+	uint8_t  roadveh_acceleration_model;       ///< realistic acceleration for road vehicles
+	uint8_t  train_slope_steepness;            ///< Steepness of hills for trains when using realistic acceleration
+	uint8_t  roadveh_slope_steepness;          ///< Steepness of hills for road vehicles when using realistic acceleration
 	bool   wagon_speed_limits;               ///< enable wagon speed limits
 	bool   disable_elrails;                  ///< when true, the elrails are disabled
 	UnitID max_trains;                       ///< max trains in game per company
 	UnitID max_roadveh;                      ///< max trucks in game per company
 	UnitID max_aircraft;                     ///< max planes in game per company
 	UnitID max_ships;                        ///< max ships in game per company
-	uint8  plane_speed;                      ///< divisor for speed of aircraft
-	uint8  freight_trains;                   ///< value to multiply the weight of cargo by
+	uint8_t  plane_speed;                      ///< divisor for speed of aircraft
+	uint8_t  freight_trains;                   ///< value to multiply the weight of cargo by
 	bool   dynamic_engines;                  ///< enable dynamic allocation of engine data
 	bool   never_expire_vehicles;            ///< never expire vehicles
-	byte   extend_vehicle_life;              ///< extend vehicle life by this many years
-	byte   road_side;                        ///< the side of the road vehicles drive on
-	uint8  plane_crashes;                    ///< number of plane crashes, 0 = none, 1 = reduced, 2 = normal
+	uint8_t extend_vehicle_life;              ///< extend vehicle life by this many years
+	uint8_t road_side;                        ///< the side of the road vehicles drive on
+	uint8_t  plane_crashes;                    ///< number of plane crashes, 0 = none, 1 = reduced, 2 = normal
 };
 
 /** Settings related to the economy. */
@@ -510,42 +502,45 @@ struct EconomySettings {
 	bool   inflation;                        ///< disable inflation
 	bool   bribe;                            ///< enable bribing the local authority
 	EconomyType type;                        ///< economy type (original/smooth/frozen)
-	bool   allow_shares;                     ///< allow the buying/selling of shares
-	uint8  min_years_for_shares;             ///< minimum age of a company for it to trade shares
-	uint8  feeder_payment_share;             ///< percentage of leg payment to virtually pay in feeder systems
-	byte   dist_local_authority;             ///< distance for town local authority, default 20
+	uint8_t  feeder_payment_share;             ///< percentage of leg payment to virtually pay in feeder systems
+	uint8_t dist_local_authority;             ///< distance for town local authority, default 20
 	bool   exclusive_rights;                 ///< allow buying exclusive rights
 	bool   fund_buildings;                   ///< allow funding new buildings
 	bool   fund_roads;                       ///< allow funding local road reconstruction
 	bool   give_money;                       ///< allow giving other companies money
 	bool   mod_road_rebuild;                 ///< roadworks remove unnecessary RoadBits
 	bool   multiple_industry_per_town;       ///< allow many industries of the same type per town
-	uint8  town_growth_rate;                 ///< town growth rate
-	uint8  larger_towns;                     ///< the number of cities to build. These start off larger and grow twice as fast
-	uint8  initial_city_size;                ///< multiplier for the initial size of the cities compared to towns
+	uint8_t  town_growth_rate;                 ///< town growth rate
+	uint8_t  larger_towns;                     ///< the number of cities to build. These start off larger and grow twice as fast
+	uint8_t  initial_city_size;                ///< multiplier for the initial size of the cities compared to towns
 	TownLayout town_layout;                  ///< select town layout, @see TownLayout
 	TownCargoGenMode town_cargogen_mode;     ///< algorithm for generating cargo from houses, @see TownCargoGenMode
 	bool   allow_town_roads;                 ///< towns are allowed to build roads (always allowed when generating world / in SE)
 	TownFounding found_town;                 ///< town founding.
 	bool   station_noise_level;              ///< build new airports when the town noise level is still within accepted limits
-	uint16 town_noise_population[4];         ///< population to base decision on noise evaluation (@see town_council_tolerance)
+	uint16_t town_noise_population[4];         ///< population to base decision on noise evaluation (@see town_council_tolerance)
 	bool   allow_town_level_crossings;       ///< towns are allowed to build level crossings
 	bool   infrastructure_maintenance;       ///< enable monthly maintenance fee for owner infrastructure
+	TimekeepingUnits timekeeping_units;      ///< time units to use for the game economy, either calendar or wallclock
+	uint16_t minutes_per_calendar_year;      ///< minutes per calendar year. Special value 0 means that calendar time is frozen.
+	uint16_t town_cargo_scale;               ///< scale cargo production of towns by this percentage.
+	uint16_t industry_cargo_scale;           ///< scale cargo production of industries by this percentage.
 };
 
 struct LinkGraphSettings {
-	uint16 recalc_time;                     ///< time (in days) for recalculating each link graph component.
-	uint16 recalc_interval;                 ///< time (in days) between subsequent checks for link graphs to be calculated.
+	uint16_t recalc_time;                     ///< time (in days) for recalculating each link graph component.
+	uint16_t recalc_interval;                 ///< time (in days) between subsequent checks for link graphs to be calculated.
 	DistributionType distribution_pax;      ///< distribution type for passengers
 	DistributionType distribution_mail;     ///< distribution type for mail
 	DistributionType distribution_armoured; ///< distribution type for armoured cargo class
 	DistributionType distribution_default;  ///< distribution type for all other goods
-	uint8 accuracy;                         ///< accuracy when calculating things on the link graph. low accuracy => low running time
-	uint8 demand_size;                      ///< influence of supply ("station size") on the demand function
-	uint8 demand_distance;                  ///< influence of distance between stations on the demand function
-	uint8 short_path_saturation;            ///< percentage up to which short paths are saturated before saturating most capacious paths
+	uint8_t accuracy;                         ///< accuracy when calculating things on the link graph. low accuracy => low running time
+	uint8_t demand_size;                      ///< influence of supply ("station size") on the demand function
+	uint8_t demand_distance;                  ///< influence of distance between stations on the demand function
+	uint8_t short_path_saturation;            ///< percentage up to which short paths are saturated before saturating most capacious paths
 
-	inline DistributionType GetDistributionType(CargoID cargo) const {
+	inline DistributionType GetDistributionType(CargoID cargo) const
+	{
 		if (IsCargoInClass(cargo, CC_PASSENGERS)) return this->distribution_pax;
 		if (IsCargoInClass(cargo, CC_MAIL)) return this->distribution_mail;
 		if (IsCargoInClass(cargo, CC_ARMOURED)) return this->distribution_armoured;
@@ -560,23 +555,23 @@ struct StationSettings {
 	bool   adjacent_stations;                ///< allow stations to be built directly adjacent to other stations
 	bool   distant_join_stations;            ///< allow to join non-adjacent stations
 	bool   never_expire_airports;            ///< never expire airports
-	byte   station_spread;                   ///< amount a station may spread
+	uint8_t station_spread;                  ///< amount a station may spread
 };
 
 /** Default settings for vehicles. */
 struct VehicleDefaultSettings {
 	bool   servint_ispercent;                ///< service intervals are in percents
-	uint16 servint_trains;                   ///< service interval for trains
-	uint16 servint_roadveh;                  ///< service interval for road vehicles
-	uint16 servint_aircraft;                 ///< service interval for aircraft
-	uint16 servint_ships;                    ///< service interval for ships
+	uint16_t servint_trains;                   ///< service interval for trains
+	uint16_t servint_roadveh;                  ///< service interval for road vehicles
+	uint16_t servint_aircraft;                 ///< service interval for aircraft
+	uint16_t servint_ships;                    ///< service interval for ships
 };
 
 /** Settings that can be set per company. */
 struct CompanySettings {
 	bool engine_renew;                       ///< is autorenew enabled
-	int16 engine_renew_months;               ///< months before/after the maximum vehicle age a vehicle should be renewed
-	uint32 engine_renew_money;               ///< minimum amount of money before autorenew is used
+	int16_t engine_renew_months;               ///< months before/after the maximum vehicle age a vehicle should be renewed
+	uint32_t engine_renew_money;               ///< minimum amount of money before autorenew is used
 	bool renew_keep_length;                  ///< sell some wagons if after autoreplace the train is longer than before
 	VehicleDefaultSettings vehicle;          ///< default settings for vehicles
 };
@@ -625,7 +620,7 @@ extern VehicleDefaultSettings _old_vds;
  * Get the settings-object applicable for the current situation: the newgame settings
  * when we're in the main menu and otherwise the settings of the current game.
  */
-static inline GameSettings &GetGameSettings()
+inline GameSettings &GetGameSettings()
 {
 	return (_game_mode == GM_MENU) ? _settings_newgame : _settings_game;
 }

@@ -13,14 +13,14 @@
 #include "../textfile_type.h"
 
 /** Widgets of the #NetworkContentDownloadStatusWindow class. */
-enum NetworkContentDownloadStatusWidgets {
+enum NetworkContentDownloadStatusWidgets : WidgetID {
 	WID_NCDS_PROGRESS_BAR,  ///< Simple progress bar.
 	WID_NCDS_PROGRESS_TEXT, ///< Text explaining what is happening.
 	WID_NCDS_CANCELOK,      ///< (Optional) Cancel/OK button.
 };
 
 /** Widgets of the #NetworkContentListWindow class. */
-enum NetworkContentListWidgets {
+enum NetworkContentListWidgets : WidgetID {
 	WID_NCL_BACKGROUND,     ///< Resize button.
 
 	WID_NCL_FILTER_CAPT,    ///< Caption for the filter editbox.
@@ -36,7 +36,7 @@ enum NetworkContentListWidgets {
 	WID_NCL_DETAILS,        ///< Panel with content details.
 	WID_NCL_TEXTFILE,       ///< Open readme, changelog (+1) or license (+2) of a file in the content window.
 
-	WID_NCL_SELECT_ALL = WID_NCL_TEXTFILE + TFT_END, ///< 'Select all' button.
+	WID_NCL_SELECT_ALL = WID_NCL_TEXTFILE + TFT_CONTENT_END, ///< 'Select all' button.
 	WID_NCL_SELECT_UPDATE,  ///< 'Select updates' button.
 	WID_NCL_UNSELECT,       ///< 'Unselect all' button.
 	WID_NCL_OPEN_URL,       ///< 'Open url' button.

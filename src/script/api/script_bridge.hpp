@@ -20,6 +20,8 @@ class ScriptBridge : public ScriptObject {
 public:
 	/**
 	 * All bridge related error messages.
+	 *
+	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
 		/** Base for bridge related errors */
@@ -69,7 +71,7 @@ public:
 	 * @pre vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_WATER
 	 * @return The name the bridge has.
 	 */
-	static char *GetName(BridgeID bridge_id, ScriptVehicle::VehicleType vehicle_type);
+	static std::optional<std::string> GetName(BridgeID bridge_id, ScriptVehicle::VehicleType vehicle_type);
 
 	/**
 	 * Get the maximum speed of a bridge.
@@ -86,7 +88,7 @@ public:
 	 * Get the new cost of a bridge, excluding the road and/or rail.
 	 * @param bridge_id The bridge to get the new cost of.
 	 * @param length The length of the bridge.
-	 *               The value will be clamped to 0 .. MAX(int32).
+	 *               The value will be clamped to 0 .. MAX(int32_t).
 	 * @pre IsValidBridge(bridge_id).
 	 * @return The new cost the bridge has.
 	 */

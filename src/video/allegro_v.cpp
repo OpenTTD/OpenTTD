@@ -16,8 +16,8 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
+#include "../error_func.h"
 #include "../gfx_func.h"
-#include "../rev.h"
 #include "../blitter/factory.hpp"
 #include "../core/random_func.hpp"
 #include "../core/math_func.hpp"
@@ -186,7 +186,7 @@ static void GetAvailableVideoMode(uint *w, uint *h)
 static bool CreateMainSurface(uint w, uint h)
 {
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
-	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
+	if (bpp == 0) UserError("Can't use a blitter that blits 0 bpp for normal visuals");
 	set_color_depth(bpp);
 
 	GetAvailableVideoMode(&w, &h);
@@ -200,7 +200,7 @@ static bool CreateMainSurface(uint w, uint h)
 	_allegro_screen = create_bitmap_ex(bpp, screen->cr - screen->cl, screen->cb - screen->ct);
 	_screen.width = _allegro_screen->w;
 	_screen.height = _allegro_screen->h;
-	_screen.pitch = ((byte*)screen->line[1] - (byte*)screen->line[0]) / (bpp / 8);
+	_screen.pitch = ((uint8_t*)screen->line[1] - (uint8_t*)screen->line[0]) / (bpp / 8);
 	_screen.dst_ptr = _allegro_screen->line[0];
 
 	/* Initialise the screen so we don't blit garbage to the screen */
@@ -215,9 +215,8 @@ static bool CreateMainSurface(uint w, uint h)
 
 	InitPalette();
 
-	char caption[32];
-	seprintf(caption, lastof(caption), "OpenTTD %s", _openttd_revision);
-	set_window_title(caption);
+	std::string caption = VideoDriver::GetCaption();
+	set_window_title(caption.c_str());
 
 	enable_hardware_cursor();
 	select_mouse_cursor(MOUSE_CURSOR_ARROW);
@@ -247,13 +246,13 @@ std::vector<int> VideoDriver_Allegro::GetListOfMonitorRefreshRates()
 }
 
 struct AllegroVkMapping {
-	uint16 vk_from;
-	byte vk_count;
-	byte map_to;
+	uint16_t vk_from;
+	uint8_t vk_count;
+	uint8_t map_to;
 };
 
-#define AS(x, z) {x, 0, z}
-#define AM(x, y, z, w) {x, y - x, z}
+#define AS(x, z) {x, 1, z}
+#define AM(x, y, z, w) {x, y - x + 1, z}
 
 static const AllegroVkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
@@ -308,17 +307,16 @@ static const AllegroVkMapping _vk_mapping[] = {
 	AS(KEY_TILDE,   WKC_BACKQUOTE),
 };
 
-static uint32 ConvertAllegroKeyIntoMy(WChar *character)
+static uint32_t ConvertAllegroKeyIntoMy(char32_t *character)
 {
 	int scancode;
 	int unicode = ureadkey(&scancode);
 
-	const AllegroVkMapping *map;
 	uint key = 0;
 
-	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
-		if ((uint)(scancode - map->vk_from) <= map->vk_count) {
-			key = scancode - map->vk_from + map->map_to;
+	for (const auto &map : _vk_mapping) {
+		if (IsInsideBS(scancode, map.vk_from, map.vk_count)) {
+			key = scancode - map.vk_from + map.map_to;
 			break;
 		}
 	}
@@ -390,7 +388,7 @@ bool VideoDriver_Allegro::PollEvent()
 	}
 
 	/* Mouse movement */
-	if (_cursor.UpdateCursorPosition(mouse_x, mouse_y, false)) {
+	if (_cursor.UpdateCursorPosition(mouse_x, mouse_y)) {
 		position_mouse(_cursor.pos.x, _cursor.pos.y);
 	}
 	if (_cursor.delta.x != 0 || _cursor.delta.y) mouse_action = true;
@@ -408,7 +406,7 @@ bool VideoDriver_Allegro::PollEvent()
 	if ((key_shifts & KB_ALT_FLAG) && (key[KEY_ENTER] || key[KEY_F])) {
 		ToggleFullScreen(!_fullscreen);
 	} else if (keypressed()) {
-		WChar character;
+		char32_t character;
 		uint keycode = ConvertAllegroKeyIntoMy(&character);
 		HandleKeypress(keycode, character);
 	}
@@ -422,7 +420,7 @@ bool VideoDriver_Allegro::PollEvent()
  */
 int _allegro_instance_count = 0;
 
-const char *VideoDriver_Allegro::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_Allegro::Start(const StringList &param)
 {
 	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
 		Debug(driver, 0, "allegro: install_allegro failed '{}'", allegro_error);
@@ -452,7 +450,7 @@ const char *VideoDriver_Allegro::Start(const StringList &param)
 
 	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 
-	return nullptr;
+	return std::nullopt;
 }
 
 void VideoDriver_Allegro::Stop()

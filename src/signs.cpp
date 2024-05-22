@@ -50,7 +50,7 @@ void Sign::UpdateVirtCoord()
 	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeSign(this->index));
 
 	SetDParam(0, this->index);
-	this->sign.UpdatePosition(pt.x, pt.y - 6 * ZOOM_LVL_BASE, STR_WHITE_SIGN);
+	this->sign.UpdatePosition(pt.x, pt.y - 6 * ZOOM_BASE, STR_WHITE_SIGN);
 
 	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeSign(this->index));
 }

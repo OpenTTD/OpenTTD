@@ -39,7 +39,7 @@ static inline bool EndOfBuffer(BmpBuffer *buffer)
 	return buffer->pos == buffer->read;
 }
 
-static inline byte ReadByte(BmpBuffer *buffer)
+static inline uint8_t ReadByte(BmpBuffer *buffer)
 {
 	if (buffer->read < 0) return 0;
 
@@ -48,15 +48,15 @@ static inline byte ReadByte(BmpBuffer *buffer)
 	return buffer->data[buffer->pos++];
 }
 
-static inline uint16 ReadWord(BmpBuffer *buffer)
+static inline uint16_t ReadWord(BmpBuffer *buffer)
 {
-	uint16 var = ReadByte(buffer);
+	uint16_t var = ReadByte(buffer);
 	return var | (ReadByte(buffer) << 8);
 }
 
-static inline uint32 ReadDword(BmpBuffer *buffer)
+static inline uint32_t ReadDword(BmpBuffer *buffer)
 {
-	uint32 var = ReadWord(buffer);
+	uint32_t var = ReadWord(buffer);
 	return var | (ReadWord(buffer) << 16);
 }
 
@@ -83,9 +83,9 @@ static inline void SetStreamOffset(BmpBuffer *buffer, int offset)
 static inline bool BmpRead1(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	uint x, y, i;
-	byte pad = GB(4 - info->width / 8, 0, 2);
-	byte *pixel_row;
-	byte b;
+	uint8_t pad = GB(4 - info->width / 8, 0, 2);
+	uint8_t *pixel_row;
+	uint8_t b;
 	for (y = info->height; y > 0; y--) {
 		x = 0;
 		pixel_row = &data->bitmap[(y - 1) * info->width];
@@ -110,9 +110,9 @@ static inline bool BmpRead1(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 static inline bool BmpRead4(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	uint x, y;
-	byte pad = GB(4 - info->width / 2, 0, 2);
-	byte *pixel_row;
-	byte b;
+	uint8_t pad = GB(4 - info->width / 2, 0, 2);
+	uint8_t *pixel_row;
+	uint8_t b;
 	for (y = info->height; y > 0; y--) {
 		x = 0;
 		pixel_row = &data->bitmap[(y - 1) * info->width];
@@ -140,12 +140,12 @@ static inline bool BmpRead4Rle(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	uint x = 0;
 	uint y = info->height - 1;
-	byte *pixel = &data->bitmap[y * info->width];
+	uint8_t *pixel = &data->bitmap[y * info->width];
 	while (y != 0 || x < info->width) {
 		if (EndOfBuffer(buffer)) return false; // the file is shorter than expected
 
-		byte n = ReadByte(buffer);
-		byte c = ReadByte(buffer);
+		uint8_t n = ReadByte(buffer);
+		uint8_t c = ReadByte(buffer);
 		if (n == 0) {
 			switch (c) {
 				case 0: // end of line
@@ -159,8 +159,8 @@ static inline bool BmpRead4Rle(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 
 				case 2: { // delta
 					if (EndOfBuffer(buffer)) return false;
-					byte dx = ReadByte(buffer);
-					byte dy = ReadByte(buffer);
+					uint8_t dx = ReadByte(buffer);
+					uint8_t dy = ReadByte(buffer);
 
 					/* Check for over- and underflow. */
 					if (x + dx >= info->width || x + dx < x || dy > y) return false;
@@ -175,7 +175,7 @@ static inline bool BmpRead4Rle(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 					uint i = 0;
 					while (i++ < c) {
 						if (EndOfBuffer(buffer) || x >= info->width) return false;
-						byte b = ReadByte(buffer);
+						uint8_t b = ReadByte(buffer);
 						*pixel++ = GB(b, 4, 4);
 						x++;
 						if (i++ < c) {
@@ -214,8 +214,8 @@ static inline bool BmpRead8(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	uint i;
 	uint y;
-	byte pad = GB(4 - info->width, 0, 2);
-	byte *pixel;
+	uint8_t pad = GB(4 - info->width, 0, 2);
+	uint8_t *pixel;
 	for (y = info->height; y > 0; y--) {
 		if (EndOfBuffer(buffer)) return false; // the file is shorter than expected
 		pixel = &data->bitmap[(y - 1) * info->width];
@@ -233,12 +233,12 @@ static inline bool BmpRead8Rle(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	uint x = 0;
 	uint y = info->height - 1;
-	byte *pixel = &data->bitmap[y * info->width];
+	uint8_t *pixel = &data->bitmap[y * info->width];
 	while (y != 0 || x < info->width) {
 		if (EndOfBuffer(buffer)) return false; // the file is shorter than expected
 
-		byte n = ReadByte(buffer);
-		byte c = ReadByte(buffer);
+		uint8_t n = ReadByte(buffer);
+		uint8_t c = ReadByte(buffer);
 		if (n == 0) {
 			switch (c) {
 				case 0: // end of line
@@ -252,8 +252,8 @@ static inline bool BmpRead8Rle(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 
 				case 2: { // delta
 					if (EndOfBuffer(buffer)) return false;
-					byte dx = ReadByte(buffer);
-					byte dy = ReadByte(buffer);
+					uint8_t dx = ReadByte(buffer);
+					uint8_t dy = ReadByte(buffer);
 
 					/* Check for over- and underflow. */
 					if (x + dx >= info->width || x + dx < x || dy > y) return false;
@@ -294,8 +294,8 @@ static inline bool BmpRead8Rle(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 static inline bool BmpRead24(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	uint x, y;
-	byte pad = GB(4 - info->width * 3, 0, 2);
-	byte *pixel_row;
+	uint8_t pad = GB(4 - info->width * 3, 0, 2);
+	uint8_t *pixel_row;
 	for (y = info->height; y > 0; y--) {
 		pixel_row = &data->bitmap[(y - 1) * info->width * 3];
 		for (x = 0; x < info->width; x++) {
@@ -316,7 +316,7 @@ static inline bool BmpRead24(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
  */
 bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
-	uint32 header_size;
+	uint32_t header_size;
 	assert(info != nullptr);
 	MemSetT(info, 0);
 
@@ -395,7 +395,7 @@ bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	assert(info != nullptr && data != nullptr);
 
-	data->bitmap = CallocT<byte>(static_cast<size_t>(info->width) * info->height * ((info->bpp == 24) ? 3 : 1));
+	data->bitmap = CallocT<uint8_t>(static_cast<size_t>(info->width) * info->height * ((info->bpp == 24) ? 3 : 1));
 
 	/* Load image */
 	SetStreamOffset(buffer, info->offset);

@@ -31,6 +31,41 @@
 GoalPool _goal_pool("Goal");
 INSTANTIATE_POOL_METHODS(Goal)
 
+/* static */ bool Goal::IsValidGoalDestination(CompanyID company, GoalType type, GoalTypeID dest)
+{
+	switch (type) {
+		case GT_NONE:
+			if (dest != 0) return false;
+			break;
+
+		case GT_TILE:
+			if (!IsValidTile(dest)) return false;
+			break;
+
+		case GT_INDUSTRY:
+			if (!Industry::IsValidID(dest)) return false;
+			break;
+
+		case GT_TOWN:
+			if (!Town::IsValidID(dest)) return false;
+			break;
+
+		case GT_COMPANY:
+			if (!Company::IsValidID(dest)) return false;
+			break;
+
+		case GT_STORY_PAGE: {
+			if (!StoryPage::IsValidID(dest)) return false;
+			CompanyID story_company = StoryPage::Get(dest)->company;
+			if (company == INVALID_COMPANY ? story_company != INVALID_COMPANY : story_company != INVALID_COMPANY && story_company != company) return false;
+			break;
+		}
+
+		default: return false;
+	}
+	return true;
+}
+
 /**
  * Create a new goal.
  * @param flags type of operation
@@ -47,45 +82,14 @@ std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlag flags, CompanyID com
 	if (_current_company != OWNER_DEITY) return { CMD_ERROR, INVALID_GOAL };
 	if (text.empty()) return { CMD_ERROR, INVALID_GOAL };
 	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return { CMD_ERROR, INVALID_GOAL };
-
-	switch (type) {
-		case GT_NONE:
-			if (dest != 0) return { CMD_ERROR, INVALID_GOAL };
-			break;
-
-		case GT_TILE:
-			if (!IsValidTile(dest)) return { CMD_ERROR, INVALID_GOAL };
-			break;
-
-		case GT_INDUSTRY:
-			if (!Industry::IsValidID(dest)) return { CMD_ERROR, INVALID_GOAL };
-			break;
-
-		case GT_TOWN:
-			if (!Town::IsValidID(dest)) return { CMD_ERROR, INVALID_GOAL };
-			break;
-
-		case GT_COMPANY:
-			if (!Company::IsValidID(dest)) return { CMD_ERROR, INVALID_GOAL };
-			break;
-
-		case GT_STORY_PAGE: {
-			if (!StoryPage::IsValidID(dest)) return { CMD_ERROR, INVALID_GOAL };
-			CompanyID story_company = StoryPage::Get(dest)->company;
-			if (company == INVALID_COMPANY ? story_company != INVALID_COMPANY : story_company != INVALID_COMPANY && story_company != company) return { CMD_ERROR, INVALID_GOAL };
-			break;
-		}
-
-		default: return { CMD_ERROR, INVALID_GOAL };
-	}
+	if (!Goal::IsValidGoalDestination(company, type, dest)) return { CMD_ERROR, INVALID_GOAL };
 
 	if (flags & DC_EXEC) {
 		Goal *g = new Goal();
 		g->type = type;
 		g->dst = dest;
 		g->company = company;
-		g->text = stredup(text.c_str());
-		g->progress = nullptr;
+		g->text = text;
 		g->completed = false;
 
 		if (g->company == INVALID_COMPANY) {
@@ -129,6 +133,29 @@ CommandCost CmdRemoveGoal(DoCommandFlag flags, GoalID goal)
 }
 
 /**
+ * Update goal destination of a goal.
+ * @param flags type of operation
+ * @param goal GoalID to update.
+ * @param type GoalType of destination.
+ * @param dest GoalTypeID of destination.
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdSetGoalDestination(DoCommandFlag flags, GoalID goal, GoalType type, GoalTypeID dest)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	if (!Goal::IsValidID(goal)) return CMD_ERROR;
+	Goal *g = Goal::Get(goal);
+	if (!Goal::IsValidGoalDestination(g->company, type, dest)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		g->type = type;
+		g->dst = dest;
+	}
+
+	return CommandCost();
+}
+
+/**
  * Update goal text of a goal.
  * @param flags type of operation
  * @param goal GoalID to update.
@@ -143,8 +170,7 @@ CommandCost CmdSetGoalText(DoCommandFlag flags, GoalID goal, const std::string &
 
 	if (flags & DC_EXEC) {
 		Goal *g = Goal::Get(goal);
-		free(g->text);
-		g->text = stredup(text.c_str());
+		g->text = text;
 
 		if (g->company == INVALID_COMPANY) {
 			InvalidateWindowClassesData(WC_GOALS_LIST);
@@ -170,12 +196,7 @@ CommandCost CmdSetGoalProgress(DoCommandFlag flags, GoalID goal, const std::stri
 
 	if (flags & DC_EXEC) {
 		Goal *g = Goal::Get(goal);
-		free(g->progress);
-		if (text.empty()) {
-			g->progress = nullptr;
-		} else {
-			g->progress = stredup(text.c_str());
-		}
+		g->progress = text;
 
 		if (g->company == INVALID_COMPANY) {
 			InvalidateWindowClassesData(WC_GOALS_LIST);
@@ -224,11 +245,11 @@ CommandCost CmdSetGoalCompleted(DoCommandFlag flags, GoalID goal, bool completed
  * @param text Text of the question.
  * @return the cost of this operation or an error
  */
-CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16 uniqueid, uint32 target, bool is_client, uint32 button_mask, GoalQuestionType type, const std::string &text)
+CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16_t uniqueid, uint32_t target, bool is_client, uint32_t button_mask, GoalQuestionType type, const std::string &text)
 {
-	static_assert(sizeof(uint32) >= sizeof(CompanyID));
+	static_assert(sizeof(uint32_t) >= sizeof(CompanyID));
 	CompanyID company = (CompanyID)target;
-	static_assert(sizeof(uint32) >= sizeof(ClientID));
+	static_assert(sizeof(uint32_t) >= sizeof(ClientID));
 	ClientID client = (ClientID)target;
 
 	static_assert(GOAL_QUESTION_BUTTON_COUNT < 29);
@@ -255,7 +276,7 @@ CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16 uniqueid, uint32 target,
 			if (company == INVALID_COMPANY && !Company::IsValidID(_local_company)) return CommandCost();
 			if (company != INVALID_COMPANY && company != _local_company) return CommandCost();
 		}
-		ShowGoalQuestion(uniqueid, type, button_mask, text.c_str());
+		ShowGoalQuestion(uniqueid, type, button_mask, text);
 	}
 
 	return CommandCost();
@@ -268,7 +289,7 @@ CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16 uniqueid, uint32 target,
  * @param button Button the company pressed
  * @return the cost of this operation or an error
  */
-CommandCost CmdGoalQuestionAnswer(DoCommandFlag flags, uint16 uniqueid, uint8 button)
+CommandCost CmdGoalQuestionAnswer(DoCommandFlag flags, uint16_t uniqueid, uint8_t button)
 {
 	if (button >= GOAL_QUESTION_BUTTON_COUNT) return CMD_ERROR;
 
@@ -285,7 +306,7 @@ CommandCost CmdGoalQuestionAnswer(DoCommandFlag flags, uint16 uniqueid, uint8 bu
 	}
 
 	if (flags & DC_EXEC) {
-		Game::NewEvent(new ScriptEventGoalQuestionAnswer(uniqueid, (ScriptCompany::CompanyID)(byte)_current_company, (ScriptGoal::QuestionButton)(1 << button)));
+		Game::NewEvent(new ScriptEventGoalQuestionAnswer(uniqueid, (ScriptCompany::CompanyID)(uint8_t)_current_company, (ScriptGoal::QuestionButton)(1 << button)));
 	}
 
 	return CommandCost();

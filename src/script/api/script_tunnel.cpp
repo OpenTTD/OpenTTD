@@ -31,8 +31,7 @@
 	/* If it's a tunnel already, take the easy way out! */
 	if (IsTunnelTile(tile)) return ::GetOtherTunnelEnd(tile);
 
-	int start_z;
-	Slope start_tileh = ::GetTileSlope(tile, &start_z);
+	auto [start_tileh, start_z] = ::GetTileSlopeZ(tile);
 	DiagDirection direction = ::GetInclinedSlopeDirection(start_tileh);
 	if (direction == INVALID_DIAGDIR) return INVALID_TILE;
 
@@ -42,7 +41,7 @@
 		tile += delta;
 		if (!::IsValidTile(tile)) return INVALID_TILE;
 
-		::GetTileSlope(tile, &end_z);
+		std::tie(std::ignore, end_z) = ::GetTileSlopeZ(tile);
 	} while (start_z != end_z);
 
 	return tile;
@@ -93,7 +92,7 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 		/* For rail we do nothing special */
 		return ScriptObject::Command<CMD_BUILD_TUNNEL>::Do(start, TRANSPORT_RAIL, ScriptRail::GetCurrentRailType());
 	} else {
-		ScriptObject::SetCallbackVariable(0, start);
+		ScriptObject::SetCallbackVariable(0, start.base());
 		return ScriptObject::Command<CMD_BUILD_TUNNEL>::Do(&::_DoCommandReturnBuildTunnel1, start, TRANSPORT_ROAD, ScriptRoad::GetCurrentRoadType());
 	}
 }

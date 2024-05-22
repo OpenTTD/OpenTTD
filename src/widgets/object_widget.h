@@ -11,19 +11,11 @@
 #define WIDGETS_OBJECT_WIDGET_H
 
 /** Widgets of the #BuildObjectWindow class. */
-enum BuildObjectWidgets {
-	WID_BO_FILTER,         ///< The filter text box for the object list.
-	WID_BO_CLASS_LIST,     ///< The list with classes.
-	WID_BO_SCROLLBAR,      ///< The scrollbar associated with the list.
+enum BuildObjectWidgets : WidgetID {
 	WID_BO_OBJECT_MATRIX,  ///< The matrix with preview sprites.
 	WID_BO_OBJECT_SPRITE,  ///< A preview sprite of the object.
-	WID_BO_OBJECT_NAME,    ///< The name of the selected object.
 	WID_BO_OBJECT_SIZE,    ///< The size of the selected object.
 	WID_BO_INFO,           ///< Other information about the object (from the NewGRF).
-
-	WID_BO_SELECT_MATRIX,  ///< Selection preview matrix of objects of a given class.
-	WID_BO_SELECT_IMAGE,   ///< Preview image in the #WID_BO_SELECT_MATRIX.
-	WID_BO_SELECT_SCROLL,  ///< Scrollbar next to the #WID_BO_SELECT_MATRIX.
 };
 
 #endif /* WIDGETS_OBJECT_WIDGET_H */

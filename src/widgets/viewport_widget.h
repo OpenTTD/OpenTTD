@@ -11,7 +11,7 @@
 #define WIDGETS_VIEWPORT_WIDGET_H
 
 /** Widgets of the #ExtraViewportWindow class. */
-enum ExtraViewportWidgets {
+enum ExtraViewportWidgets : WidgetID {
 	WID_EV_CAPTION,      ///< Caption of window.
 	WID_EV_VIEWPORT,     ///< The viewport.
 	WID_EV_ZOOM_IN,      ///< Zoom in.

@@ -18,6 +18,10 @@ set(BASESET_OTHER_SOURCE_FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/opntitle.dat
         ${CMAKE_CURRENT_SOURCE_DIR}/orig_extra.grf
         ${CMAKE_CURRENT_SOURCE_DIR}/../openttd.32.bmp
+        ${CMAKE_CURRENT_SOURCE_DIR}/OpenTTD-Sans.ttf
+        ${CMAKE_CURRENT_SOURCE_DIR}/OpenTTD-Serif.ttf
+        ${CMAKE_CURRENT_SOURCE_DIR}/OpenTTD-Small.ttf
+        ${CMAKE_CURRENT_SOURCE_DIR}/OpenTTD-Mono.ttf
 )
 
 # Done by the subdirectories, if nforenum / grfcodec is installed
@@ -49,6 +53,7 @@ foreach(BASESET_SOURCE_FILE IN LISTS BASESET_SOURCE_FILES)
             MAIN_DEPENDENCY ${BASESET_SOURCE_FILE}
             DEPENDS ${LANG_SOURCE_FILES}
                     ${BASESET_EXTRAGRF_FILE}
+                    ${BASESET_EXTRAGRF_FILE}.hash
                     ${CMAKE_SOURCE_DIR}/cmake/scripts/Baseset.cmake
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
             COMMENT "Generating ${BASESET_SOURCE_FILE_NAME} baseset metadata file"
@@ -62,7 +67,7 @@ foreach(BASESET_OTHER_SOURCE_FILE IN LISTS BASESET_OTHER_SOURCE_FILES)
     get_filename_component(BASESET_OTHER_SOURCE_FILE_NAME "${BASESET_OTHER_SOURCE_FILE}" NAME)
     set(BASESET_OTHER_BINARY_FILE "${CMAKE_BINARY_DIR}/baseset/${BASESET_OTHER_SOURCE_FILE_NAME}")
 
-    add_custom_command(OUTPUT ${BASESET_OTHER_BINARY_FILE}
+    add_custom_command_timestamp(OUTPUT ${BASESET_OTHER_BINARY_FILE}
             COMMAND ${CMAKE_COMMAND} -E copy
                     ${BASESET_OTHER_SOURCE_FILE}
                     ${BASESET_OTHER_BINARY_FILE}

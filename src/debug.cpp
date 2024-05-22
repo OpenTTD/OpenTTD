@@ -8,7 +8,6 @@
 /** @file debug.cpp Handling of printing debug messages. */
 
 #include "stdafx.h"
-#include <stdarg.h>
 #include "console_func.h"
 #include "debug.h"
 #include "string_func.h"
@@ -20,10 +19,9 @@
 #include "os/windows/win32.h"
 #endif
 
-#include "walltime_func.h"
+#include "3rdparty/fmt/chrono.h"
 
 #include "network/network_admin.h"
-SOCKET _debug_socket = INVALID_SOCKET;
 
 #include "safeguards.h"
 
@@ -44,7 +42,6 @@ int _debug_misc_level;
 int _debug_net_level;
 int _debug_sprite_level;
 int _debug_oldloader_level;
-int _debug_npf_level;
 int _debug_yapf_level;
 int _debug_fontcache_level;
 int _debug_script_level;
@@ -62,7 +59,7 @@ struct DebugLevel {
 };
 
 #define DEBUG_LEVEL(x) { #x, &_debug_##x##_level }
-	static const DebugLevel debug_level[] = {
+static const DebugLevel _debug_levels[] = {
 	DEBUG_LEVEL(driver),
 	DEBUG_LEVEL(grf),
 	DEBUG_LEVEL(map),
@@ -70,7 +67,6 @@ struct DebugLevel {
 	DEBUG_LEVEL(net),
 	DEBUG_LEVEL(sprite),
 	DEBUG_LEVEL(oldloader),
-	DEBUG_LEVEL(npf),
 	DEBUG_LEVEL(yapf),
 	DEBUG_LEVEL(fontcache),
 	DEBUG_LEVEL(script),
@@ -81,32 +77,28 @@ struct DebugLevel {
 #ifdef RANDOM_DEBUG
 	DEBUG_LEVEL(random),
 #endif
-	};
+};
 #undef DEBUG_LEVEL
 
 /**
  * Dump the available debug facility names in the help text.
- * @param buf Start address for storing the output.
- * @param last Last valid address for storing the output.
- * @return Next free position in the output.
+ * @param output_iterator The iterator to write the string to.
  */
-char *DumpDebugFacilityNames(char *buf, char *last)
+void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_iterator)
 {
-	size_t length = 0;
-	for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
-		if (length == 0) {
-			buf = strecpy(buf, "List of debug facility names:\n", last);
+	bool written = false;
+	for (const auto &debug_level : _debug_levels) {
+		if (!written) {
+			fmt::format_to(output_iterator, "List of debug facility names:\n");
 		} else {
-			buf = strecpy(buf, ", ", last);
-			length += 2;
+			fmt::format_to(output_iterator, ", ");
 		}
-		buf = strecpy(buf, i->name, last);
-		length += strlen(i->name);
+		fmt::format_to(output_iterator, "{}", debug_level.name);
+		written = true;
 	}
-	if (length > 0) {
-		buf = strecpy(buf, "\n\n", last);
+	if (written) {
+		fmt::format_to(output_iterator, "\n\n");
 	}
-	return buf;
 }
 
 /**
@@ -114,42 +106,29 @@ char *DumpDebugFacilityNames(char *buf, char *last)
  * @param level Debug category.
  * @param message The message to output.
  */
-void DebugPrint(const char *level, const std::string &message)
+void DebugPrint(const char *category, int level, const std::string &message)
 {
-	if (_debug_socket != INVALID_SOCKET) {
-		std::string msg = fmt::format("{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
-
-		/* Prevent sending a message concurrently, as that might cause interleaved messages. */
-		static std::mutex _debug_socket_mutex;
-		std::lock_guard<std::mutex> lock(_debug_socket_mutex);
-
-		/* Sending out an error when this fails would be nice, however... the error
-		 * would have to be send over this failing socket which won't work. */
-		send(_debug_socket, msg.c_str(), (int)msg.size(), 0);
-		return;
-	}
-	if (strcmp(level, "desync") == 0) {
+	if (strcmp(category, "desync") == 0 && level != 0) {
 		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
 		if (f == nullptr) return;
 
-		fprintf(f, "%s%s\n", GetLogPrefix(), message.c_str());
+		fmt::print(f, "{}{}\n", GetLogPrefix(true), message);
 		fflush(f);
 #ifdef RANDOM_DEBUG
-	} else if (strcmp(level, "random") == 0) {
+	} else if (strcmp(category, "random") == 0) {
 		static FILE *f = FioFOpenFile("random-out.log", "wb", AUTOSAVE_DIR);
 		if (f == nullptr) return;
 
-		fprintf(f, "%s\n", message.c_str());
+		fmt::print(f, "{}\n", message);
 		fflush(f);
 #endif
 	} else {
-		std::string msg = fmt::format("{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
-		fputs(msg.c_str(), stderr);
+		fmt::print(stderr, "{}dbg: [{}:{}] {}\n", GetLogPrefix(true), category, level, message);
 
 		if (_debug_remote_console.load()) {
 			/* Only add to the queue when there is at least one consumer of the data. */
 			std::lock_guard<std::mutex> lock(_debug_remote_console_mutex);
-			_debug_remote_console_queue.push_back({ level, message });
+			_debug_remote_console_queue.push_back({ category, message });
 		}
 	}
 }
@@ -161,7 +140,7 @@ void DebugPrint(const char *level, const std::string &message)
  * @param s Text describing the wanted debugging levels.
  * @param error_func The function to call if a parse error occurs.
  */
-void SetDebugString(const char *s, void (*error_func)(const char *))
+void SetDebugString(const char *s, void (*error_func)(const std::string &))
 {
 	int v;
 	char *end;
@@ -172,13 +151,11 @@ void SetDebugString(const char *s, void (*error_func)(const char *))
 
 	/* Global debugging level? */
 	if (*s >= '0' && *s <= '9') {
-		const DebugLevel *i;
-
-		v = strtoul(s, &end, 0);
+		v = std::strtoul(s, &end, 0);
 		s = end;
 
-		for (i = debug_level; i != endof(debug_level); ++i) {
-			new_levels[i->name] = v;
+		for (const auto &debug_level : _debug_levels) {
+			new_levels[debug_level.name] = v;
 		}
 	}
 
@@ -193,30 +170,30 @@ void SetDebugString(const char *s, void (*error_func)(const char *))
 
 		/* check debugging levels */
 		const DebugLevel *found = nullptr;
-		for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
-			if (s == t + strlen(i->name) && strncmp(t, i->name, s - t) == 0) {
-				found = i;
+		for (const auto &debug_level : _debug_levels) {
+			if (s == t + strlen(debug_level.name) && strncmp(t, debug_level.name, s - t) == 0) {
+				found = &debug_level;
 				break;
 			}
 		}
 
 		if (*s == '=') s++;
-		v = strtoul(s, &end, 0);
+		v = std::strtoul(s, &end, 0);
 		s = end;
 		if (found != nullptr) {
 			new_levels[found->name] = v;
 		} else {
 			std::string error_string = fmt::format("Unknown debug level '{}'", std::string(t, s - t));
-			error_func(error_string.c_str());
+			error_func(error_string);
 			return;
 		}
 	}
 
 	/* Apply the changes after parse is successful */
-	for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
-		const auto &nl = new_levels.find(i->name);
+	for (const auto &debug_level : _debug_levels) {
+		const auto &nl = new_levels.find(debug_level.name);
 		if (nl != new_levels.end()) {
-			*i->level = nl->second;
+			*debug_level.level = nl->second;
 		}
 	}
 }
@@ -226,38 +203,31 @@ void SetDebugString(const char *s, void (*error_func)(const char *))
  * Just return a string with the values of all the debug categories.
  * @return string with debug-levels
  */
-const char *GetDebugString()
+std::string GetDebugString()
 {
-	const DebugLevel *i;
-	static char dbgstr[150];
-	char dbgval[20];
-
-	memset(dbgstr, 0, sizeof(dbgstr));
-	i = debug_level;
-	seprintf(dbgstr, lastof(dbgstr), "%s=%d", i->name, *i->level);
-
-	for (i++; i != endof(debug_level); i++) {
-		seprintf(dbgval, lastof(dbgval), ", %s=%d", i->name, *i->level);
-		strecat(dbgstr, dbgval, lastof(dbgstr));
+	std::string result;
+	for (const auto &debug_level : _debug_levels) {
+		if (!result.empty()) result += ", ";
+		fmt::format_to(std::back_inserter(result), "{}={}", debug_level.name, *debug_level.level);
 	}
-
-	return dbgstr;
+	return result;
 }
 
 /**
- * Get the prefix for logs; if show_date_in_logs is enabled it returns
- * the date, otherwise it returns nothing.
- * @return the prefix for logs (do not free), never nullptr
+ * Get the prefix for logs.
+ *
+ * If show_date_in_logs or \p force is enabled it returns
+ * the date, otherwise it returns an empty string.
+ *
+ * @return the prefix for logs.
  */
-const char *GetLogPrefix()
+std::string GetLogPrefix(bool force)
 {
-	static char _log_prefix[24];
-	if (_settings_client.gui.show_date_in_logs) {
-		LocalTime::Format(_log_prefix, lastof(_log_prefix), "[%Y-%m-%d %H:%M:%S] ");
-	} else {
-		*_log_prefix = '\0';
+	std::string log_prefix;
+	if (force || _settings_client.gui.show_date_in_logs) {
+		log_prefix = fmt::format("[{:%Y-%m-%d %H:%M:%S}] ", fmt::localtime(time(nullptr)));
 	}
-	return _log_prefix;
+	return log_prefix;
 }
 
 /**

@@ -9,7 +9,7 @@ FindICU
 
 Finds components of the ICU library.
 
-Accepted components are: uc, i18n, le, lx, io
+Accepted components are: uc, i18n, le, lx, io, data
 
 Result Variables
 ^^^^^^^^^^^^^^^^
@@ -31,7 +31,7 @@ This will define the following variables:
 
 find_package(PkgConfig QUIET)
 
-set(ICU_KNOWN_COMPONENTS "uc" "i18n" "le" "lx" "io")
+set(ICU_KNOWN_COMPONENTS "uc" "i18n" "le" "lx" "io" "data")
 
 foreach(MOD_NAME IN LISTS ICU_FIND_COMPONENTS)
     if(NOT MOD_NAME IN_LIST ICU_KNOWN_COMPONENTS)

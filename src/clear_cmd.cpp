@@ -44,7 +44,7 @@ static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlag flags)
 	return price;
 }
 
-void DrawClearLandTile(const TileInfo *ti, byte set)
+void DrawClearLandTile(const TileInfo *ti, uint8_t set)
 {
 	DrawGroundSprite(SPR_FLAT_BARE_LAND + SlopeToSpriteOffset(ti->tileh) + set * 19, PAL_NONE);
 }
@@ -69,14 +69,14 @@ static void DrawClearLandFence(const TileInfo *ti)
 	if (fence_nw != 0) {
 		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_W);
 		SpriteID sprite = _clear_land_fence_sprites[fence_nw - 1] + _fence_mod_by_tileh_nw[ti->tileh];
-		AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x, ti->y - 15, 16, 31, maxz - z + 4, ti->z + z, false, 0, 15, -z);
+		AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x, ti->y - 16, 16, 32, maxz - z + 4, ti->z + z, false, 0, 16, -z);
 	}
 
 	uint fence_ne = GetFence(ti->tile, DIAGDIR_NE);
 	if (fence_ne != 0) {
 		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_E);
 		SpriteID sprite = _clear_land_fence_sprites[fence_ne - 1] + _fence_mod_by_tileh_ne[ti->tileh];
-		AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x - 15, ti->y, 31, 16, maxz - z + 4, ti->z + z, false, 15, 0, -z);
+		AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x - 16, ti->y, 32, 16, maxz - z + 4, ti->z + z, false, 16, 0, -z);
 	}
 
 	uint fence_sw = GetFence(ti->tile, DIAGDIR_SW);
@@ -127,15 +127,14 @@ static void DrawTile_Clear(TileInfo *ti)
 	DrawBridgeMiddle(ti);
 }
 
-static int GetSlopePixelZ_Clear(TileIndex tile, uint x, uint y)
+static int GetSlopePixelZ_Clear(TileIndex tile, uint x, uint y, bool)
 {
-	int z;
-	Slope tileh = GetTilePixelSlope(tile, &z);
+	auto [tileh, z] = GetTilePixelSlope(tile);
 
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
 
-static Foundation GetFoundation_Clear(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Clear(TileIndex, Slope)
 {
 	return FOUNDATION_NONE;
 }
@@ -145,25 +144,25 @@ static void UpdateFences(TileIndex tile)
 	assert(IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CLEAR_FIELDS));
 	bool dirty = false;
 
-	bool neighbour = (IsTileType(TILE_ADDXY(tile, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 1, 0), CLEAR_FIELDS));
+	bool neighbour = (IsTileType(TileAddXY(tile, 1, 0), MP_CLEAR) && IsClearGround(TileAddXY(tile, 1, 0), CLEAR_FIELDS));
 	if (!neighbour && GetFence(tile, DIAGDIR_SW) == 0) {
 		SetFence(tile, DIAGDIR_SW, 3);
 		dirty = true;
 	}
 
-	neighbour = (IsTileType(TILE_ADDXY(tile, 0, 1), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 0, 1), CLEAR_FIELDS));
+	neighbour = (IsTileType(TileAddXY(tile, 0, 1), MP_CLEAR) && IsClearGround(TileAddXY(tile, 0, 1), CLEAR_FIELDS));
 	if (!neighbour && GetFence(tile, DIAGDIR_SE) == 0) {
 		SetFence(tile, DIAGDIR_SE, 3);
 		dirty = true;
 	}
 
-	neighbour = (IsTileType(TILE_ADDXY(tile, -1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, -1, 0), CLEAR_FIELDS));
+	neighbour = (IsTileType(TileAddXY(tile, -1, 0), MP_CLEAR) && IsClearGround(TileAddXY(tile, -1, 0), CLEAR_FIELDS));
 	if (!neighbour && GetFence(tile, DIAGDIR_NE) == 0) {
 		SetFence(tile, DIAGDIR_NE, 3);
 		dirty = true;
 	}
 
-	neighbour = (IsTileType(TILE_ADDXY(tile, 0, -1), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 0, -1), CLEAR_FIELDS));
+	neighbour = (IsTileType(TileAddXY(tile, 0, -1), MP_CLEAR) && IsClearGround(TileAddXY(tile, 0, -1), CLEAR_FIELDS));
 	if (!neighbour && GetFence(tile, DIAGDIR_NW) == 0) {
 		SetFence(tile, DIAGDIR_NW, 3);
 		dirty = true;
@@ -319,7 +318,7 @@ void GenerateClearTile()
 	/* add rocky tiles */
 	i = gi;
 	do {
-		uint32 r = Random();
+		uint32_t r = Random();
 		tile = RandomTileSeed(r);
 
 		IncreaseGeneratingWorldProgress(GWP_ROUGH_ROCKY);
@@ -341,7 +340,7 @@ get_out:;
 	} while (--i);
 }
 
-static TrackStatus GetTileTrackStatus_Clear(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Clear(TileIndex, TransportType, uint, DiagDirection)
 {
 	return 0;
 }
@@ -365,12 +364,12 @@ static void GetTileDesc_Clear(TileIndex tile, TileDesc *td)
 	td->owner[0] = GetTileOwner(tile);
 }
 
-static void ChangeTileOwner_Clear(TileIndex tile, Owner old_owner, Owner new_owner)
+static void ChangeTileOwner_Clear(TileIndex, Owner, Owner)
 {
 	return;
 }
 
-static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
+static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlag flags, int, Slope)
 {
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }

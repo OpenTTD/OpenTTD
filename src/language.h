@@ -10,26 +10,26 @@
 #ifndef LANGUAGE_H
 #define LANGUAGE_H
 
-#include "core/smallvec_type.hpp"
 #ifdef WITH_ICU_I18N
 #include <unicode/coll.h>
 #endif /* WITH_ICU_I18N */
 #include "strings_type.h"
+#include <filesystem>
 
-static const uint8 CASE_GENDER_LEN = 16; ///< The (maximum) length of a case/gender string.
-static const uint8 MAX_NUM_GENDERS =  8; ///< Maximum number of supported genders.
-static const uint8 MAX_NUM_CASES   = 16; ///< Maximum number of supported cases.
+static const uint8_t CASE_GENDER_LEN = 16; ///< The (maximum) length of a case/gender string.
+static const uint8_t MAX_NUM_GENDERS =  8; ///< Maximum number of supported genders.
+static const uint8_t MAX_NUM_CASES   = 16; ///< Maximum number of supported cases.
 
 /** Header of a language file. */
 struct LanguagePackHeader {
-	static const uint32 IDENT = 0x474E414C; ///< Identifier for OpenTTD language files, big endian for "LANG"
+	static const uint32_t IDENT = 0x474E414C; ///< Identifier for OpenTTD language files, big endian for "LANG"
 
-	uint32 ident;       ///< 32-bits identifier
-	uint32 version;     ///< 32-bits of auto generated version info which is basically a hash of strings.h
+	uint32_t ident;       ///< 32-bits identifier
+	uint32_t version;     ///< 32-bits of auto generated version info which is basically a hash of strings.h
 	char name[32];      ///< the international name of this language
 	char own_name[32];  ///< the localized name of this language
 	char isocode[16];   ///< the ISO code for the language (not country code)
-	uint16 offsets[TEXT_TAB_END]; ///< the offsets
+	uint16_t offsets[TEXT_TAB_END]; ///< the offsets
 
 	/** Thousand separator used for anything not currencies */
 	char digit_group_separator[8];
@@ -37,9 +37,9 @@ struct LanguagePackHeader {
 	char digit_group_separator_currency[8];
 	/** Decimal separator */
 	char digit_decimal_separator[8];
-	uint16 missing;     ///< number of missing strings.
-	byte plural_form;   ///< plural form index
-	byte text_dir;      ///< default direction of the text
+	uint16_t missing;     ///< number of missing strings.
+	uint8_t plural_form;   ///< plural form index
+	uint8_t text_dir;      ///< default direction of the text
 	/**
 	 * Windows language ID:
 	 * Windows cannot and will not convert isocodes to something it can use to
@@ -48,11 +48,11 @@ struct LanguagePackHeader {
 	 * what language it is in "Windows". The ID is the 'locale identifier' on:
 	 *   http://msdn.microsoft.com/en-us/library/ms776294.aspx
 	 */
-	uint16 winlangid;   ///< windows language id
-	uint8 newgrflangid; ///< newgrf language id
-	uint8 num_genders;  ///< the number of genders of this language
-	uint8 num_cases;    ///< the number of cases of this language
-	byte pad[3];        ///< pad header to be a multiple of 4
+	uint16_t winlangid;   ///< windows language id
+	uint8_t newgrflangid; ///< newgrf language id
+	uint8_t num_genders;  ///< the number of genders of this language
+	uint8_t num_cases;    ///< the number of cases of this language
+	uint8_t pad[3];        ///< pad header to be a multiple of 4
 
 	char genders[MAX_NUM_GENDERS][CASE_GENDER_LEN]; ///< the genders used by this translation
 	char cases[MAX_NUM_CASES][CASE_GENDER_LEN];     ///< the cases used by this translation
@@ -65,9 +65,9 @@ struct LanguagePackHeader {
 	 * @param gender_str The string representation of the gender.
 	 * @return The index of the gender, or MAX_NUM_GENDERS when the gender is unknown.
 	 */
-	uint8 GetGenderIndex(const char *gender_str) const
+	uint8_t GetGenderIndex(const char *gender_str) const
 	{
-		for (uint8 i = 0; i < MAX_NUM_GENDERS; i++) {
+		for (uint8_t i = 0; i < MAX_NUM_GENDERS; i++) {
 			if (strcmp(gender_str, this->genders[i]) == 0) return i;
 		}
 		return MAX_NUM_GENDERS;
@@ -78,9 +78,9 @@ struct LanguagePackHeader {
 	 * @param case_str The string representation of the case.
 	 * @return The index of the case, or MAX_NUM_CASES when the case is unknown.
 	 */
-	uint8 GetCaseIndex(const char *case_str) const
+	uint8_t GetCaseIndex(const char *case_str) const
 	{
-		for (uint8 i = 0; i < MAX_NUM_CASES; i++) {
+		for (uint8_t i = 0; i < MAX_NUM_CASES; i++) {
 			if (strcmp(case_str, this->cases[i]) == 0) return i;
 		}
 		return MAX_NUM_CASES;
@@ -91,7 +91,7 @@ static_assert(sizeof(LanguagePackHeader) % 4 == 0);
 
 /** Metadata about a single language. */
 struct LanguageMetadata : public LanguagePackHeader {
-	char file[MAX_PATH]; ///< Name of the file we read this data from.
+	std::filesystem::path file; ///< Name of the file we read this data from.
 };
 
 /** Type for the list of language meta data. */
@@ -108,6 +108,6 @@ extern std::unique_ptr<icu::Collator> _current_collator;
 #endif /* WITH_ICU_I18N */
 
 bool ReadLanguagePack(const LanguageMetadata *lang);
-const LanguageMetadata *GetLanguage(byte newgrflangid);
+const LanguageMetadata *GetLanguage(uint8_t newgrflangid);
 
 #endif /* LANGUAGE_H */

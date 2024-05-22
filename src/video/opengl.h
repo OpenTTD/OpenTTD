@@ -19,7 +19,7 @@
 typedef void (*OGLProc)();
 typedef OGLProc (*GetOGLProcAddressProc)(const char *proc);
 
-bool IsOpenGLVersionAtLeast(byte major, byte minor);
+bool IsOpenGLVersionAtLeast(uint8_t major, uint8_t minor);
 const char *FindStringInExtensionList(const char *string, const char *substring);
 
 class OpenGLSprite;
@@ -65,14 +65,12 @@ private:
 
 	Point cursor_pos;                    ///< Cursor position
 	bool cursor_in_window;               ///< Cursor inside this window
-	PalSpriteID cursor_sprite_seq[16];   ///< Current image of cursor
-	Point cursor_sprite_pos[16];         ///< Relative position of individual cursor sprites
-	uint cursor_sprite_count;            ///< Number of cursor sprites to draw
+	std::vector<CursorSprite> cursor_sprites; ///< Sprites comprising cursor
 
 	OpenGLBackend();
 	~OpenGLBackend();
 
-	const char *Init(const Dimension &screen_res);
+	std::optional<std::string_view> Init(const Dimension &screen_res);
 	bool InitShaders();
 
 	void InternalClearCursorCache();
@@ -85,7 +83,7 @@ public:
 	{
 		return OpenGLBackend::instance;
 	}
-	static const char *Create(GetOGLProcAddressProc get_proc, const Dimension &screen_res);
+	static std::optional<std::string_view> Create(GetOGLProcAddressProc get_proc, const Dimension &screen_res);
 	static void Destroy();
 
 	void PrepareContext();
@@ -101,15 +99,15 @@ public:
 	void ClearCursorCache();
 
 	void *GetVideoBuffer();
-	uint8 *GetAnimBuffer();
+	uint8_t *GetAnimBuffer();
 	void ReleaseVideoBuffer(const Rect &update_rect);
 	void ReleaseAnimBuffer(const Rect &update_rect);
 
 	/* SpriteEncoder */
 
 	bool Is32BppSupported() override { return true; }
-	uint GetSpriteAlignment() override { return 1u << (ZOOM_LVL_COUNT - 1); }
-	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) override;
+	uint GetSpriteAlignment() override { return 1u << (ZOOM_LVL_END - 1); }
+	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator) override;
 };
 
 

@@ -13,8 +13,6 @@
 #include "compat/animated_tile_sl_compat.h"
 
 #include "../tile_type.h"
-#include "../core/alloc_func.hpp"
-#include "../core/smallvec_type.hpp"
 
 #include "../safeguards.h"
 

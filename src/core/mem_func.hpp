@@ -20,7 +20,7 @@
  * @param num number of items to be copied. (!not number of bytes!)
  */
 template <typename T>
-static inline void MemCpyT(T *destination, const T *source, size_t num = 1)
+inline void MemCpyT(T *destination, const T *source, size_t num = 1)
 {
 	memcpy(destination, source, num * sizeof(T));
 }
@@ -33,7 +33,7 @@ static inline void MemCpyT(T *destination, const T *source, size_t num = 1)
  * @param num number of items to be copied. (!not number of bytes!)
  */
 template <typename T>
-static inline void MemMoveT(T *destination, const T *source, size_t num = 1)
+inline void MemMoveT(T *destination, const T *source, size_t num = 1)
 {
 	memmove(destination, source, num * sizeof(T));
 }
@@ -46,7 +46,7 @@ static inline void MemMoveT(T *destination, const T *source, size_t num = 1)
  * @param num number of items to be set (!not number of bytes!)
  */
 template <typename T>
-static inline void MemSetT(T *ptr, byte value, size_t num = 1)
+inline void MemSetT(T *ptr, uint8_t value, size_t num = 1)
 {
 	memset(ptr, value, num * sizeof(T));
 }
@@ -60,42 +60,9 @@ static inline void MemSetT(T *ptr, byte value, size_t num = 1)
  * @return an int value indicating the relationship between the content of the two buffers
  */
 template <typename T>
-static inline int MemCmpT(const T *ptr1, const T *ptr2, size_t num = 1)
+inline int MemCmpT(const T *ptr1, const T *ptr2, size_t num = 1)
 {
 	return memcmp(ptr1, ptr2, num * sizeof(T));
-}
-
-/**
- * Type safe memory reverse operation.
- *  Reverse a block of memory in steps given by the
- *  type of the pointers.
- *
- * @param ptr1 Start-pointer to the block of memory.
- * @param ptr2 End-pointer to the block of memory.
- */
-template <typename T>
-static inline void MemReverseT(T *ptr1, T *ptr2)
-{
-	assert(ptr1 != nullptr && ptr2 != nullptr);
-	assert(ptr1 < ptr2);
-
-	do {
-		Swap(*ptr1, *ptr2);
-	} while (++ptr1 < --ptr2);
-}
-
-/**
- * Type safe memory reverse operation (overloaded)
- *
- * @param ptr Pointer to the block of memory.
- * @param num The number of items we want to reverse.
- */
-template <typename T>
-static inline void MemReverseT(T *ptr, size_t num)
-{
-	assert(ptr != nullptr);
-
-	MemReverseT(ptr, ptr + (num - 1));
 }
 
 #endif /* MEM_FUNC_HPP */

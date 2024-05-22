@@ -11,7 +11,7 @@
 #define WIDGETS_TERRAFORM_WIDGET_H
 
 /** Widgets of the #TerraformToolbarWindow class. */
-enum TerraformToolbarWidgets {
+enum TerraformToolbarWidgets : WidgetID {
 	WID_TT_SHOW_PLACE_OBJECT,                 ///< Should the place object button be shown?
 	WID_TT_BUTTONS_START,                     ///< Start of pushable buttons.
 	WID_TT_LOWER_LAND = WID_TT_BUTTONS_START, ///< Lower land button.
@@ -22,10 +22,12 @@ enum TerraformToolbarWidgets {
 	WID_TT_PLANT_TREES,                       ///< Plant trees button (note: opens separate window, no place-push-button).
 	WID_TT_PLACE_SIGN,                        ///< Place sign button.
 	WID_TT_PLACE_OBJECT,                      ///< Place object button.
+
+	INVALID_WID_TT = -1,
 };
 
 /** Widgets of the #ScenarioEditorLandscapeGenerationWindow class. */
-enum EditorTerraformToolbarWidgets {
+enum EditorTerraformToolbarWidgets : WidgetID {
 	WID_ETT_SHOW_PLACE_DESERT,                   ///< Should the place desert button be shown?
 	WID_ETT_START,                               ///< Used for iterations.
 	WID_ETT_DOTS = WID_ETT_START,                ///< Invisible widget for rendering the terraform size on.
@@ -42,6 +44,8 @@ enum EditorTerraformToolbarWidgets {
 	WID_ETT_DECREASE_SIZE,                       ///< Downwards arrow button to decrease terraforming size.
 	WID_ETT_NEW_SCENARIO,                        ///< Button for generating a new scenario.
 	WID_ETT_RESET_LANDSCAPE,                     ///< Button for removing all company-owned property.
+
+	INVALID_WID_ETT = -1,
 };
 
 #endif /* WIDGETS_TERRAFORM_WIDGET_H */

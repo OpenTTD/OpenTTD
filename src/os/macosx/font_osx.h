@@ -23,18 +23,18 @@ class CoreTextFontCache : public TrueTypeFontCache {
 
 	void SetFontSize(int pixels);
 	const Sprite *InternalGetGlyph(GlyphID key, bool use_aa) override;
-	const void *InternalGetFontTable(uint32 tag, size_t &length) override;
 public:
 	CoreTextFontCache(FontSize fs, CFAutoRelease<CTFontDescriptorRef> &&font, int pixels);
 	~CoreTextFontCache() {}
 
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(WChar key) override;
-	const char *GetFontName() override { return font_name.c_str(); }
+	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
+	std::string GetFontName() override { return font_name; }
 	bool IsBuiltInFont() override { return false; }
 	const void *GetOSHandle() override { return font.get(); }
 };
 
 void LoadCoreTextFont(FontSize fs);
+void LoadCoreTextFont(FontSize fs, const std::string &file_name, uint size);
 
 #endif /* FONT_OSX_H */

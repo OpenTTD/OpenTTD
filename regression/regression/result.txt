@@ -88,9 +88,9 @@
  abs( 21): 21
 
 --AIBase--
-  Rand():       2232656694
-  Rand():       2514636170
-  Rand():       3897038727
+  Rand():       2113409458
+  Rand():       2000129769
+  Rand():       1788051963
   RandRange(0): 0
   RandRange(0): 0
   RandRange(0): 0
@@ -99,13 +99,13 @@
   RandRange(1): 0
   RandRange(2): 0
   RandRange(2): 0
-  RandRange(2): 0
-  RandRange(1000000): 666804
-  RandRange(1000000): 624059
-  RandRange(1000000): 697029
-  Chance(1, 2): true
+  RandRange(2): 1
+  RandRange(1000000): 338687
+  RandRange(1000000): 274895
+  RandRange(1000000): 217539
   Chance(1, 2): false
   Chance(1, 2): true
+  Chance(1, 2): false
 
 --List--
   IsEmpty():     true
@@ -420,144 +420,144 @@
     1098 => 46116
     1099 => 46158
   Randomize ListDump:
-    1 => 688298322
-    2 => 2585420314
-    1000 => 1701392078
-    1001 => 2664118875
-    1002 => 3408466361
-    1003 => 4098642324
-    1004 => 3858929894
-    1005 => 3774625512
-    1006 => 2809742492
-    1007 => 3983931060
-    1008 => 2791524857
-    1009 => 4184021601
-    1010 => 4212142121
-    1011 => 46859773
-    1012 => 3095744278
-    1013 => 3104411371
-    1014 => 326384434
-    1015 => 1486817960
-    1016 => 2883541699
-    1017 => 3786540442
-    1018 => 820019294
-    1019 => 710762995
-    1020 => 3534100264
-    1021 => 3585356150
-    1022 => 732190215
-    1023 => 236336673
-    1024 => 740596257
-    1025 => 1135321785
-    1026 => 2067474156
-    1027 => 2899283689
-    1028 => 4054438597
-    1029 => 928616892
-    1030 => 1712486685
-    1031 => 1994118287
-    1032 => 1333321243
-    1033 => 194124284
-    1034 => 615083294
-    1035 => 628086450
-    1036 => 498957825
-    1037 => 1359697121
-    1038 => 1888433963
-    1039 => 941623020
-    1040 => 2369304004
-    1041 => 3523427032
-    1042 => 3236625937
-    1043 => 182127597
-    1044 => 646955927
-    1045 => 2870345582
-    1046 => 623062612
-    1047 => 2308011710
-    1048 => 3026140316
-    1049 => 3838191076
-    1051 => 3182411967
-    1052 => 2762833244
-    1053 => 1960404034
-    1054 => 1573325453
-    1055 => 3978347993
-    1056 => 699712177
-    1057 => 863274966
-    1058 => 1728276475
-    1059 => 4048271407
-    1060 => 1919485436
-    1061 => 111273464
-    1062 => 125435213
-    1063 => 155132602
-    1064 => 4123293220
-    1065 => 655046914
-    1066 => 1577399562
-    1067 => 1028818150
-    1068 => 447058239
-    1069 => 3237047027
-    1070 => 2968751973
-    1071 => 4096278708
-    1072 => 1523643051
-    1073 => 231373233
-    1074 => 1121759962
-    1075 => 1449439846
-    1076 => 2679696543
-    1077 => 2785673432
-    1078 => 2116903943
-    1079 => 672822173
-    1080 => 3325393385
-    1081 => 1589904755
-    1082 => 1148782015
-    1083 => 663503316
-    1084 => 933352745
-    1085 => 577717039
-    1086 => 402172048
-    1087 => 1812250453
-    1088 => 667300501
-    1089 => 2456141519
-    1090 => 3438492520
-    1091 => 420696035
-    1092 => 2131427774
-    1093 => 3859663748
-    1094 => 4134083418
-    1095 => 1969629634
-    1096 => 3739173141
-    1097 => 3459847605
-    1098 => 2834059387
-    1099 => 3148043212
+    1 => 1667006376
+    2 => 814756458
+    1000 => 2792131700
+    1001 => 3417650573
+    1002 => 1856129988
+    1003 => 1800973341
+    1004 => 4197962148
+    1005 => 2463509731
+    1006 => 2312121797
+    1007 => 1357932132
+    1008 => 1603755907
+    1009 => 1718096015
+    1010 => 3850074449
+    1011 => 2711130211
+    1012 => 2371249199
+    1013 => 881020769
+    1014 => 3366660077
+    1015 => 808768948
+    1016 => 3035331984
+    1017 => 2813590961
+    1018 => 2745021820
+    1019 => 3075151719
+    1020 => 2553774560
+    1021 => 4267762096
+    1022 => 3863175846
+    1023 => 4198397908
+    1024 => 817599906
+    1025 => 3149240362
+    1026 => 3003005979
+    1027 => 1214815375
+    1028 => 3784363817
+    1029 => 3181864540
+    1030 => 325341059
+    1031 => 1011889231
+    1032 => 3142617173
+    1033 => 1197220206
+    1034 => 4060510885
+    1035 => 3596342467
+    1036 => 219406671
+    1037 => 3695508783
+    1038 => 2823603997
+    1039 => 2625659720
+    1040 => 4113498476
+    1041 => 1125297786
+    1042 => 671905104
+    1043 => 1231077134
+    1044 => 892292375
+    1045 => 2441486929
+    1046 => 1804593432
+    1047 => 2536560053
+    1048 => 1896826021
+    1049 => 1672512966
+    1051 => 977884299
+    1052 => 681948608
+    1053 => 3853505792
+    1054 => 4118706553
+    1055 => 3581698138
+    1056 => 3073782502
+    1057 => 1084753140
+    1058 => 2266056077
+    1059 => 1239805090
+    1060 => 1183528423
+    1061 => 501361238
+    1062 => 66542127
+    1063 => 775638990
+    1064 => 1111474321
+    1065 => 3465462871
+    1066 => 2317535037
+    1067 => 878310882
+    1068 => 2231368582
+    1069 => 2353633007
+    1070 => 179259867
+    1071 => 1322707275
+    1072 => 1474105363
+    1073 => 619989187
+    1074 => 3221603092
+    1075 => 2400416540
+    1076 => 3926392705
+    1077 => 1122978123
+    1078 => 3266139701
+    1079 => 2948697341
+    1080 => 3262493501
+    1081 => 2200252596
+    1082 => 4091101485
+    1083 => 2797438343
+    1084 => 2608201933
+    1085 => 2577605442
+    1086 => 1178956760
+    1087 => 3047709109
+    1088 => 1065186815
+    1089 => 841440515
+    1090 => 842182476
+    1091 => 289059855
+    1092 => 2114106829
+    1093 => 436435334
+    1094 => 111052607
+    1095 => 81827083
+    1096 => 1961213887
+    1097 => 1374385392
+    1098 => 3255118186
+    1099 => 2245402931
   KeepTop(10):
-    1 => 688298322
-    2 => 2585420314
-    1000 => 1701392078
-    1001 => 2664118875
-    1002 => 3408466361
-    1003 => 4098642324
-    1004 => 3858929894
-    1005 => 3774625512
-    1006 => 2809742492
-    1007 => 3983931060
+    1 => 1667006376
+    2 => 814756458
+    1000 => 2792131700
+    1001 => 3417650573
+    1002 => 1856129988
+    1003 => 1800973341
+    1004 => 4197962148
+    1005 => 2463509731
+    1006 => 2312121797
+    1007 => 1357932132
   KeepBottom(8):
-    1000 => 1701392078
-    1001 => 2664118875
-    1002 => 3408466361
-    1003 => 4098642324
-    1004 => 3858929894
-    1005 => 3774625512
-    1006 => 2809742492
-    1007 => 3983931060
+    1000 => 2792131700
+    1001 => 3417650573
+    1002 => 1856129988
+    1003 => 1800973341
+    1004 => 4197962148
+    1005 => 2463509731
+    1006 => 2312121797
+    1007 => 1357932132
   RemoveBottom(2):
-    1000 => 1701392078
-    1001 => 2664118875
-    1002 => 3408466361
-    1003 => 4098642324
-    1004 => 3858929894
-    1005 => 3774625512
+    1000 => 2792131700
+    1001 => 3417650573
+    1002 => 1856129988
+    1003 => 1800973341
+    1004 => 4197962148
+    1005 => 2463509731
   RemoveTop(2):
-    1002 => 3408466361
-    1003 => 4098642324
-    1004 => 3858929894
-    1005 => 3774625512
+    1002 => 1856129988
+    1003 => 1800973341
+    1004 => 4197962148
+    1005 => 2463509731
   RemoveList({1003, 1004}):
-    1002 => 3408466361
-    1005 => 3774625512
+    1002 => 1856129988
+    1005 => 2463509731
   KeepList({1003, 1004, 1005}):
-    1005 => 3774625512
+    1005 => 2463509731
   AddList({1005, 4000, 4001, 4002}):
     1005 => 1005
     4000 => 8000
@@ -588,7 +588,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   SetName():            false
   GetLastErrorString(): ERR_NAME_IS_NOT_UNIQUE
   GetName():                         Regression
-  GetPresidentName():                J. Green
+  GetPresidentName():                F. Gribble
   SetPresidentName():                true
   GetPresidentName():                Regression AI
   GetBankBalance():                  100000
@@ -805,56 +805,67 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetAirportWidth(-1):               -1
   GetAirportHeight(-1):              -1
   GetAirportCoverageRadius(-1):      -1
+  GetAirportNumHelipads(-1):         -1
   IsAirportInformationAvailable(0): true
   IsValidAirportType(0):            true
   GetAirportWidth(0):               4
   GetAirportHeight(0):              3
   GetAirportCoverageRadius(0):      4
+  GetAirportNumHelipads(0):         0
   IsAirportInformationAvailable(1): true
   IsValidAirportType(1):            false
   GetAirportWidth(1):               6
   GetAirportHeight(1):              6
   GetAirportCoverageRadius(1):      5
+  GetAirportNumHelipads(1):         0
   IsAirportInformationAvailable(2): true
   IsValidAirportType(2):            false
   GetAirportWidth(2):               1
   GetAirportHeight(2):              1
   GetAirportCoverageRadius(2):      4
+  GetAirportNumHelipads(2):         1
   IsAirportInformationAvailable(3): true
   IsValidAirportType(3):            false
   GetAirportWidth(3):               6
   GetAirportHeight(3):              6
   GetAirportCoverageRadius(3):      6
+  GetAirportNumHelipads(3):         0
   IsAirportInformationAvailable(4): true
   IsValidAirportType(4):            false
   GetAirportWidth(4):               7
   GetAirportHeight(4):              7
   GetAirportCoverageRadius(4):      8
+  GetAirportNumHelipads(4):         2
   IsAirportInformationAvailable(5): true
   IsValidAirportType(5):            false
   GetAirportWidth(5):               5
   GetAirportHeight(5):              4
   GetAirportCoverageRadius(5):      4
+  GetAirportNumHelipads(5):         2
   IsAirportInformationAvailable(6): true
   IsValidAirportType(6):            false
   GetAirportWidth(6):               2
   GetAirportHeight(6):              2
   GetAirportCoverageRadius(6):      4
+  GetAirportNumHelipads(6):         1
   IsAirportInformationAvailable(7): true
   IsValidAirportType(7):            false
   GetAirportWidth(7):               9
   GetAirportHeight(7):              11
   GetAirportCoverageRadius(7):      10
+  GetAirportNumHelipads(7):         2
   IsAirportInformationAvailable(8): true
   IsValidAirportType(8):            false
   GetAirportWidth(8):               4
   GetAirportHeight(8):              2
   GetAirportCoverageRadius(8):      4
+  GetAirportNumHelipads(8):         3
   IsAirportInformationAvailable(9): false
   IsValidAirportType(9):            false
   GetAirportWidth(9):               -1
   GetAirportHeight(9):              -1
   GetAirportCoverageRadius(9):      -1
+  GetAirportNumHelipads(9):         -1
   GetBankBalance():     1999999790
   GetPrice():           5400
   BuildAirport():       true
@@ -6082,7 +6093,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetNumEngines():          1
   GetNumEngines():          1
   GetNumEngines():          0
-  GetName():                Group 0
+  GetName():                Group 1
   GetName():                (null : 0x00000000)
   AIVehicle.SellVehicle():  true
   AITile.DemolishTile():    true
@@ -7498,7 +7509,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     BuildRailDepot():              false
     BuildRailDepot():              false
     BuildRailDepot():              true
-    BuildRailDepot():              false
+    BuildRailDepot():              true
+    BuildRailDepot():              true
     GetRailDepotFrontTile():       33412
     IsBuildable():                 false
     DepotList
@@ -7591,12 +7603,13 @@ ERROR: IsEnd() is invalid as Begin() is never called
     BuildRoadDepot():              false
     BuildRoadDepot():              false
     BuildRoadDepot():              true
-    BuildRoadDepot():              false
+    BuildRoadDepot():              true
+    BuildRoadDepot():              true
     HasRoadType(Road):             true
     HasRoadType(Tram):             false
-    GetLastError():                260
-    GetLastErrorString():          ERR_AREA_NOT_CLEAR
-    GetErrorCategory():            1
+    GetLastError():                0
+    GetLastErrorString():          ERR_NONE
+    GetErrorCategory():            0
     IsRoadTile():                  false
     GetRoadDepotFrontTile():       33412
     IsRoadDepotTile():             true
@@ -7759,6 +7772,153 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetCargoPlannedVia(1000, 1000, 1000): -1
   GetCargoPlannedFromVia(1000, 1000, 0, 1000): -1
   GetCargoPlannedFromVia(1000, 1000, 1000, 1000): -1
+
+--StationList--
+  GetName(): Little Frutford Valley
+  TileList_StationCoverage:
+    34192
+    34191
+    34190
+    34189
+    34188
+    34187
+    34186
+    33936
+    33935
+    33934
+    33933
+    33932
+    33931
+    33930
+    33680
+    33679
+    33678
+    33677
+    33676
+    33675
+    33674
+    33424
+    33423
+    33422
+    33421
+    33420
+    33419
+    33418
+    33168
+    33167
+    33166
+    33165
+    33164
+    33163
+    33162
+    32912
+    32911
+    32910
+    32909
+    32908
+    32907
+    32906
+    32656
+    32655
+    32654
+    32653
+    32652
+    32651
+    32650
+  GetName(): Little Frutford Woods
+  TileList_StationCoverage:
+    34439
+    34438
+    34437
+    34436
+    34435
+    34434
+    34433
+    34432
+    34187
+    34186
+    34185
+    34184
+    34183
+    34182
+    34181
+    34180
+    34179
+    34178
+    34177
+    34176
+    33931
+    33930
+    33929
+    33928
+    33927
+    33926
+    33925
+    33924
+    33923
+    33922
+    33921
+    33920
+    33675
+    33674
+    33673
+    33672
+    33671
+    33670
+    33669
+    33668
+    33667
+    33666
+    33665
+    33664
+    33419
+    33418
+    33417
+    33416
+    33415
+    33414
+    33413
+    33412
+    33411
+    33410
+    33409
+    33408
+    33163
+    33162
+    33161
+    33160
+    33159
+    33158
+    33157
+    33156
+    33155
+    33154
+    33153
+    33152
+    32907
+    32906
+    32905
+    32904
+    32903
+    32902
+    32901
+    32900
+    32899
+    32898
+    32897
+    32896
+    32651
+    32650
+    32649
+    32648
+    32647
+    32646
+    32645
+    32644
+    32643
+    32642
+    32641
+    32640
 
 --Tile--
   HasTreeOnTile():      false
@@ -9320,9 +9480,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():       33417
     GetEngineType():     153
     GetUnitNumber():     1
-    GetAge():            0
+    GetAge():            1
     GetMaxAge():         5490
-    GetAgeLeft():        5490
+    GetAgeLeft():        5489
     GetCurrentSpeed():   7
     GetRunningCost():    421
     GetProfitThisYear(): 0
@@ -9335,7 +9495,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsInDepot():         false
     GetNumWagons():      1
     GetWagonEngineType(): 153
-    GetWagonAge():       0
+    GetWagonAge():       1
     GetLength():         8
   GetOwner():           1
   BuildVehicle():       14
@@ -9389,6 +9549,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
 
 --VehicleList--
   Count():             5
+  InDepot Count():     4
+  RoadVehicle Count(): 2
   Location ListDump:
     13 => 33417
     12 => 33417
@@ -9408,11 +9570,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
-    17 => 1
-    16 => 1
-    14 => 1
-    13 => 1
     12 => 1
+    17 => 0
+    16 => 0
+    14 => 0
+    13 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -9420,10 +9582,10 @@ ERROR: IsEnd() is invalid as Begin() is never called
     13 => 5490
     12 => 5490
   AgeLeft ListDump:
-    16 => 10979
-    14 => 10979
-    17 => 7319
-    13 => 5489
+    16 => 10980
+    14 => 10980
+    17 => 7320
+    13 => 5490
     12 => 5489
   CurrentSpeed ListDump:
     12 => 27
@@ -9442,7 +9604,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     16 => 0
     14 => 0
     13 => 0
-    12 => -1
+    12 => 0
   ProfitLastYear ListDump:
     17 => 0
     16 => 0
@@ -9583,4 +9745,23 @@ ERROR: IsEnd() is invalid as Begin() is never called
   -1          >  2147483647:   false
   -2147483648 >  2147483647:   false
    13725      > -2147483648:   true
+--Valuate() with excessive CPU usage--
+Your script made an error: excessive CPU usage in valuator function
+
+*FUNCTION [unknown()] regression/main.nut line [2051]
+*FUNCTION [Valuate()] NATIVE line [-1]
+*FUNCTION [Start()] regression/main.nut line [2052]
+
+[id] 0
+[this] TABLE
+[Infinite] CLOSURE
+[list] INSTANCE
+[this] INSTANCE
+Your script made an error: excessive CPU usage in valuator function
+
+*FUNCTION [Start()] regression/main.nut line [2052]
+
+[Infinite] CLOSURE
+[list] INSTANCE
+[this] INSTANCE
 ERROR: The script died unexpectedly.

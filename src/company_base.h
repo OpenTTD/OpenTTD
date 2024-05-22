@@ -14,80 +14,95 @@
 #include "livery.h"
 #include "autoreplace_type.h"
 #include "tile_type.h"
+#include "timer/timer_game_economy.h"
 #include "settings_type.h"
 #include "group.h"
-#include <string>
-#include <array>
+
+static const Money COMPANY_MAX_LOAN_DEFAULT = INT64_MIN;
 
 /** Statistics about the economy. */
 struct CompanyEconomyEntry {
 	Money income;               ///< The amount of income.
 	Money expenses;             ///< The amount of expenses.
-	CargoArray delivered_cargo; ///< The amount of delivered cargo.
-	int32 performance_history;  ///< Company score (scale 0-1000)
+	CargoArray delivered_cargo{}; ///< The amount of delivered cargo.
+	int32_t performance_history;  ///< Company score (scale 0-1000)
 	Money company_value;        ///< The value of the company.
 };
 
 struct CompanyInfrastructure {
-	uint32 road[ROADTYPE_END]; ///< Count of company owned track bits for each road type.
-	uint32 signal;             ///< Count of company owned signals.
-	uint32 rail[RAILTYPE_END]; ///< Count of company owned track bits for each rail type.
-	uint32 water;              ///< Count of company owned track bits for canals.
-	uint32 station;            ///< Count of company owned station tiles.
-	uint32 airport;            ///< Count of company owned airports.
+	std::array<uint32_t, RAILTYPE_END> rail{}; ///< Count of company owned track bits for each rail type.
+	std::array<uint32_t, ROADTYPE_END> road{}; ///< Count of company owned track bits for each road type.
+	uint32_t signal;             ///< Count of company owned signals.
+	uint32_t water;              ///< Count of company owned track bits for canals.
+	uint32_t station;            ///< Count of company owned station tiles.
+	uint32_t airport;            ///< Count of company owned airports.
+
+	auto operator<=>(const CompanyInfrastructure &) const = default;
 
 	/** Get total sum of all owned track bits. */
-	uint32 GetRailTotal() const
+	uint32_t GetRailTotal() const
 	{
-		uint32 total = 0;
-		for (RailType rt =  RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) total += this->rail[rt];
-		return total;
+		return std::accumulate(std::begin(this->rail), std::end(this->rail), 0U);
 	}
 
-	uint32 GetRoadTotal() const;
-	uint32 GetTramTotal() const;
+	uint32_t GetRoadTotal() const;
+	uint32_t GetTramTotal() const;
+};
+
+class FreeUnitIDGenerator {
+public:
+	UnitID NextID() const;
+	UnitID UseID(UnitID index);
+	void ReleaseID(UnitID index);
+
+private:
+	using BitmapStorage = size_t;
+	static constexpr size_t BITMAP_SIZE = std::numeric_limits<BitmapStorage>::digits;
+
+	std::vector<BitmapStorage> used_bitmap;
 };
 
 typedef Pool<Company, CompanyID, 1, MAX_COMPANIES> CompanyPool;
 extern CompanyPool _company_pool;
 
-
 /** Statically loadable part of Company pool item */
 struct CompanyProperties {
-	uint32 name_2;                   ///< Parameter of #name_1.
+	uint32_t name_2;                   ///< Parameter of #name_1.
 	StringID name_1;                 ///< Name of the company if the user did not change it.
 	std::string name;                ///< Name of the company if the user changed it.
 
 	StringID president_name_1;       ///< Name of the president if the user did not change it.
-	uint32 president_name_2;         ///< Parameter of #president_name_1
+	uint32_t president_name_2;         ///< Parameter of #president_name_1
 	std::string president_name;      ///< Name of the president if the user changed it.
+
+	NetworkAuthorizedKeys allow_list; ///< Public keys of clients that are allowed to join this company.
 
 	CompanyManagerFace face;         ///< Face description of the president.
 
 	Money money;                     ///< Money owned by the company.
-	byte money_fraction;             ///< Fraction of money of the company, too small to represent in #money.
+	uint8_t money_fraction;             ///< Fraction of money of the company, too small to represent in #money.
 	Money current_loan;              ///< Amount of money borrowed from the bank.
+	Money max_loan;                  ///< Max allowed amount of the loan or COMPANY_MAX_LOAN_DEFAULT.
 
-	byte colour;                     ///< Company colour.
+	Colours colour;                  ///< Company colour.
 
-	byte block_preview;              ///< Number of quarters that the company is not allowed to get new exclusive engine previews (see CompaniesGenStatistics).
+	uint8_t block_preview;              ///< Number of quarters that the company is not allowed to get new exclusive engine previews (see CompaniesGenStatistics).
 
 	TileIndex location_of_HQ;        ///< Northern tile of HQ; #INVALID_TILE when there is none.
 	TileIndex last_build_coordinate; ///< Coordinate of the last build thing by this company.
 
-	std::array<Owner, MAX_COMPANY_SHARE_OWNERS> share_owners; ///< Owners of the shares of the company. #INVALID_OWNER if nobody has bought them yet.
+	TimerGameEconomy::Year inaugurated_year; ///< Economy year of starting the company.
 
-	Year inaugurated_year;           ///< Year of starting the company.
-
-	byte months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
+	uint8_t months_empty = 0; ///< NOSAVE: Number of months this company has not had a client in multiplayer.
+	uint8_t months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
 	CompanyMask bankrupt_asked;      ///< which companies were asked about buying it?
-	int16 bankrupt_timeout;          ///< If bigger than \c 0, amount of time to wait for an answer on an offer to buy this company.
+	int16_t bankrupt_timeout;          ///< If bigger than \c 0, amount of time to wait for an answer on an offer to buy this company.
 	Money bankrupt_value;
 
-	uint32 terraform_limit;          ///< Amount of tileheights we can (still) terraform (times 65536).
-	uint32 clear_limit;              ///< Amount of tiles we can (still) clear (times 65536).
-	uint32 tree_limit;               ///< Amount of trees we can (still) plant (times 65536).
-	uint32 build_object_limit;       ///< Amount of tiles we can (still) build objects on (times 65536). Also applies to buying land.
+	uint32_t terraform_limit;          ///< Amount of tileheights we can (still) terraform (times 65536).
+	uint32_t clear_limit;              ///< Amount of tiles we can (still) clear (times 65536).
+	uint32_t tree_limit;               ///< Amount of trees we can (still) plant (times 65536).
+	uint32_t build_object_limit;       ///< Amount of tiles we can (still) build objects on (times 65536). Also applies to buying land.
 
 	/**
 	 * If \c true, the company is (also) controlled by the computer (a NoAI program).
@@ -95,10 +110,10 @@ struct CompanyProperties {
 	 */
 	bool is_ai;
 
-	Money yearly_expenses[3][EXPENSES_END];                ///< Expenses of the company for the last three years, in every #ExpensesType category.
+	std::array<Expenses, 3> yearly_expenses{}; ///< Expenses of the company for the last three years.
 	CompanyEconomyEntry cur_economy;                       ///< Economic data of the company of this quarter.
 	CompanyEconomyEntry old_economy[MAX_HISTORY_QUARTERS]; ///< Economic data of the company of the last #MAX_HISTORY_QUARTERS quarters.
-	byte num_valid_stat_ent;                               ///< Number of valid statistical entries in #old_economy.
+	uint8_t num_valid_stat_ent;                               ///< Number of valid statistical entries in #old_economy.
 
 	Livery livery[LS_END];
 
@@ -108,26 +123,32 @@ struct CompanyProperties {
 	// TODO: Change some of these member variables to use relevant INVALID_xxx constants
 	CompanyProperties()
 		: name_2(0), name_1(0), president_name_1(0), president_name_2(0),
-		  face(0), money(0), money_fraction(0), current_loan(0), colour(0), block_preview(0),
-		  location_of_HQ(0), last_build_coordinate(0), share_owners(), inaugurated_year(0),
+		  face(0), money(0), money_fraction(0), current_loan(0), max_loan(COMPANY_MAX_LOAN_DEFAULT),
+		  colour(COLOUR_BEGIN), block_preview(0), location_of_HQ(0), last_build_coordinate(0), inaugurated_year(0),
 		  months_of_bankruptcy(0), bankrupt_asked(0), bankrupt_timeout(0), bankrupt_value(0),
 		  terraform_limit(0), clear_limit(0), tree_limit(0), build_object_limit(0), is_ai(false), engine_renew_list(nullptr) {}
 };
 
 struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
-	Company(uint16 name_1 = 0, bool is_ai = false);
+	Company(uint16_t name_1 = 0, bool is_ai = false);
 	~Company();
 
 	RailTypes avail_railtypes;         ///< Rail types available to this company.
 	RoadTypes avail_roadtypes;         ///< Road types available to this company.
 
-	class AIInstance *ai_instance;
+	std::unique_ptr<class AIInstance> ai_instance;
 	class AIInfo *ai_info;
+	std::unique_ptr<class AIConfig> ai_config;
 
 	GroupStatistics group_all[VEH_COMPANY_END];      ///< NOSAVE: Statistics for the ALL_GROUP group.
 	GroupStatistics group_default[VEH_COMPANY_END];  ///< NOSAVE: Statistics for the DEFAULT_GROUP group.
 
 	CompanyInfrastructure infrastructure; ///< NOSAVE: Counts of company owned infrastructure.
+
+	FreeUnitIDGenerator freeunits[VEH_COMPANY_END];
+	FreeUnitIDGenerator freegroups;
+
+	Money GetMaxLoan() const;
 
 	/**
 	 * Is this company a valid company, controlled by the computer (a NoAI program)?
@@ -168,9 +189,8 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 };
 
 Money CalculateCompanyValue(const Company *c, bool including_loan = true);
-Money CalculateCompanyValueExcludingShares(const Company *c, bool including_loan = true);
+Money CalculateHostileTakeoverValue(const Company *c);
 
-extern uint _next_competitor_start;
 extern uint _cur_company_tick_index;
 
 #endif /* COMPANY_BASE_H */

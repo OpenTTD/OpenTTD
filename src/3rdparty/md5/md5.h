@@ -53,18 +53,37 @@
 #ifndef MD5_INCLUDED
 #define MD5_INCLUDED
 
+/** The number of bytes in a MD5 hash. */
+static const size_t MD5_HASH_BYTES = 16;
+
+/** Container for storing a MD5 hash/checksum/digest. */
+struct MD5Hash : std::array<uint8_t, MD5_HASH_BYTES> {
+	MD5Hash() : std::array<uint8_t, MD5_HASH_BYTES>{} {}
+
+	/**
+	 * Exclusively-or the given hash into this hash.
+	 * @param other The other hash.
+	 * @return Reference to this hash.
+	 */
+	MD5Hash &operator^=(const MD5Hash &other)
+	{
+		for (size_t i = 0; i < size(); i++) this->operator[](i) ^= other[i];
+		return *this;
+	}
+};
+
 struct Md5 {
 private:
-	uint32 count[2]; ///< message length in bits, lsw first
-	uint32 abcd[4];  ///< digest buffer
-	uint8 buf[64];   ///< accumulate block
+	uint32_t count[2]; ///< message length in bits, lsw first
+	uint32_t abcd[4];  ///< digest buffer
+	uint8_t buf[64];   ///< accumulate block
 
-	void Process(const uint8 *data);
+	void Process(const uint8_t *data);
 
 public:
 	Md5();
 	void Append(const void *data, const size_t nbytes);
-	void Finish(uint8 digest[16]);
+	void Finish(MD5Hash &digest);
 };
 
 #endif /* MD5_INCLUDED */

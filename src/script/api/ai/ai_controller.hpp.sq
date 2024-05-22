@@ -7,11 +7,11 @@
 
 #include "../script_controller.hpp"
 
-template <> const char *GetClassName<ScriptController, ST_AI>() { return "AIController"; }
+template <> const char *GetClassName<ScriptController, ScriptType::AI>() { return "AIController"; }
 
 void SQAIController_Register(Squirrel *engine)
 {
-	DefSQClass<ScriptController, ST_AI> SQAIController("AIController");
+	DefSQClass<ScriptController, ScriptType::AI> SQAIController("AIController");
 	SQAIController.PreRegister(engine);
 
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::GetTick,           "GetTick",           1, ".");

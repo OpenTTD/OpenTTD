@@ -3,14 +3,16 @@ name: Release (Windows)
 on:
   workflow_call:
     inputs:
+      survey_key:
+        required: false
+        type: string
+        default: ""
       is_tag:
         required: true
         type: string
 
 jobs:
   windows:
-    name: Windows
-
     strategy:
       fail-fast: false
       matrix:
@@ -22,11 +24,13 @@ jobs:
         - arch: arm64
           host: x64_arm64
 
+    name: Windows (${{ matrix.arch }})
+
     runs-on: windows-latest
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: internal-source
 
@@ -35,37 +39,35 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Enable Rust cache
+      uses: Swatinem/rust-cache@v2
+
+    - name: Setup vcpkg caching
+      uses: actions/github-script@v7
+      with:
+        script: |
+          core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+          core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+          core.exportVariable('VCPKG_BINARY_SOURCES', 'clear;x-gha,readwrite')
+
+    - name: Install vcpkg
+      run: |
+        git clone https://github.com/microsoft/vcpkg ${{ runner.temp }}\vcpkg
+        ${{ runner.temp }}\vcpkg\bootstrap-vcpkg.bat -disableMetrics
+
     - name: Install dependencies
       shell: bash
       run: |
+        echo "::group::Install choco dependencies"
         choco install pandoc
+        echo "::endgroup::"
 
-    - name: Prepare cache key
-      id: key
-      shell: powershell
-      run: |
-        # Work around caching failure with GNU tar
-        New-Item -Type Junction -Path vcpkg -Target c:\vcpkg
-
-        Write-Output "image=$env:ImageOS-$env:ImageVersion" >> $env:GITHUB_OUTPUT
-
-    - name: Enable vcpkg cache
-      uses: actions/cache@v3
-      with:
-        path: vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-0 # Increase the number whenever dependencies are modified
-        restore-keys: |
-          ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
-
-    - name: Prepare vcpkg
-      shell: bash
-      run: |
-        vcpkg install --triplet=${{ matrix.arch }}-windows-static \
-          liblzma \
-          libpng \
-          lzo \
-          zlib \
-          # EOF
+        echo "::group::Install breakpad dependencies"
+        cargo install --locked dump_syms
+        echo "::endgroup::"
 
     - name: Install MSVC problem matcher
       uses: ammaraskar/msvc-problem-matcher@master
@@ -98,21 +100,6 @@ jobs:
       with:
         arch: ${{ matrix.host }}
 
-    - name: Import code signing certificate
-      shell: powershell
-      # If this is run on a fork, there may not be a certificate set up - continue in this case
-      continue-on-error: true
-      run: |
-        $tempFile = [System.IO.Path]::GetTempFileName()
-        $bytes = [System.Convert]::FromBase64String($env:WINDOWS_CERTIFICATE_P12)
-        [IO.File]::WriteAllBytes($tempFile, $bytes)
-        $pwd = ConvertTo-SecureString $env:WINDOWS_CERTIFICATE_PASSWORD -AsPlainText -Force
-        Import-PfxCertificate -FilePath $tempFile -CertStoreLocation Cert:\CurrentUser\My -Password $pwd
-        Remove-Item $tempFile
-      env:
-        WINDOWS_CERTIFICATE_P12: ${{ secrets.WINDOWS_CERTIFICATE_P12 }}
-        WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
-
     - name: Build (with installer)
       if: inputs.is_tag == 'true'
       shell: bash
@@ -124,19 +111,24 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -GNinja \
           -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-windows-static \
-          -DCMAKE_TOOLCHAIN_FILE="c:\vcpkg\scripts\buildsystems\vcpkg.cmake" \
+          -DCMAKE_TOOLCHAIN_FILE="${{ runner.temp }}\vcpkg\scripts\buildsystems\vcpkg.cmake" \
           -DOPTION_USE_NSIS=ON \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-          -DWINDOWS_CERTIFICATE_COMMON_NAME="${WINDOWS_CERTIFICATE_COMMON_NAME}" \
+          -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
           # EOF
         echo "::endgroup::"
 
         echo "::group::Build"
-        cmake --build .
+        cmake --build . --target openttd
         echo "::endgroup::"
       env:
-        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
+        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        AZURE_CODESIGN_ACCOUNT_NAME: ${{ secrets.AZURE_CODESIGN_ACCOUNT_NAME }}
+        AZURE_CODESIGN_ENDPOINT: ${{ secrets.AZURE_CODESIGN_ENDPOINT }}
+        AZURE_CODESIGN_PROFILE_NAME: ${{ secrets.AZURE_CODESIGN_PROFILE_NAME }}
 
     - name: Build (without installer)
       if: inputs.is_tag != 'true'
@@ -149,18 +141,29 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -GNinja \
           -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-windows-static \
-          -DCMAKE_TOOLCHAIN_FILE="c:\vcpkg\scripts\buildsystems\vcpkg.cmake" \
+          -DCMAKE_TOOLCHAIN_FILE="${{ runner.temp }}\vcpkg\scripts\buildsystems\vcpkg.cmake" \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-          -DWINDOWS_CERTIFICATE_COMMON_NAME="${WINDOWS_CERTIFICATE_COMMON_NAME}" \
+          -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
           # EOF
         echo "::endgroup::"
 
         echo "::group::Build"
-        cmake --build .
+        cmake --build . --target openttd
         echo "::endgroup::"
       env:
-        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
+        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        AZURE_CODESIGN_ACCOUNT_NAME: ${{ secrets.AZURE_CODESIGN_ACCOUNT_NAME }}
+        AZURE_CODESIGN_ENDPOINT: ${{ secrets.AZURE_CODESIGN_ENDPOINT }}
+        AZURE_CODESIGN_PROFILE_NAME: ${{ secrets.AZURE_CODESIGN_PROFILE_NAME }}
+
+    - name: Create breakpad symbols
+      shell: bash
+      run: |
+        cd build
+        dump_syms openttd.pdb --inlines --store symbols
 
     - name: Create bundles
       shell: bash
@@ -170,10 +173,13 @@ jobs:
         cpack
         echo "::endgroup::"
 
-        echo "::group::Prepare PDB to be bundled"
-        PDB=$(ls bundles/*.zip | cut -d/ -f2 | sed 's/.zip$/.pdb/')
-        cp openttd.pdb bundles/${PDB}
-        xz -9 bundles/${PDB}
+        echo "::group::Move PDB and exe to symbols"
+        PDB_FOLDER=$(find symbols -mindepth 2 -type d)
+        cp openttd.pdb ${PDB_FOLDER}/
+
+        EXE_FOLDER=symbols/openttd.exe/$(grep "INFO CODE_ID" symbols/*/*/openttd.sym | cut -d\  -f3)
+        mkdir -p ${EXE_FOLDER}
+        cp openttd.exe ${EXE_FOLDER}/
         echo "::endgroup::"
 
         echo "::group::Cleanup"
@@ -185,17 +191,26 @@ jobs:
     - name: Sign installer
       if: inputs.is_tag == 'true'
       shell: bash
-      # If this is run on a fork, there may not be a certificate set up - continue in this case
-      continue-on-error: true
       run: |
-        cd ${GITHUB_WORKSPACE}/build/bundles
-        ../../os/windows/sign.bat *.exe "${WINDOWS_CERTIFICATE_COMMON_NAME}"
+        ${GITHUB_WORKSPACE}/os/windows/sign.bat "${GITHUB_WORKSPACE}/build/bundles"
       env:
-        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
+        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        AZURE_CODESIGN_ACCOUNT_NAME: ${{ secrets.AZURE_CODESIGN_ACCOUNT_NAME }}
+        AZURE_CODESIGN_ENDPOINT: ${{ secrets.AZURE_CODESIGN_ENDPOINT }}
+        AZURE_CODESIGN_PROFILE_NAME: ${{ secrets.AZURE_CODESIGN_PROFILE_NAME }}
 
     - name: Store bundles
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: openttd-windows-${{ matrix.arch }}
         path: build/bundles
+        retention-days: 5
+
+    - name: Store symbols
+      uses: actions/upload-artifact@v4
+      with:
+        name: symbols-windows-${{ matrix.arch }}
+        path: build/symbols
         retention-days: 5

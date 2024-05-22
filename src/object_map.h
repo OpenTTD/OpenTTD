@@ -22,7 +22,7 @@ ObjectType GetObjectType(Tile t);
  * @pre IsTileType(t, MP_OBJECT)
  * @return True if type matches.
  */
-static inline bool IsObjectType(Tile t, ObjectType type)
+inline bool IsObjectType(Tile t, ObjectType type)
 {
 	return GetObjectType(t) == type;
 }
@@ -33,7 +33,7 @@ static inline bool IsObjectType(Tile t, ObjectType type)
  * @param type Type to test.
  * @return True if type matches.
  */
-static inline bool IsObjectTypeTile(Tile t, ObjectType type)
+inline bool IsObjectTypeTile(Tile t, ObjectType type)
 {
 	return IsTileType(t, MP_OBJECT) && GetObjectType(t) == type;
 }
@@ -44,7 +44,7 @@ static inline bool IsObjectTypeTile(Tile t, ObjectType type)
  * @pre IsTileType(t, MP_OBJECT)
  * @return The ObjectID of the object.
  */
-static inline ObjectID GetObjectIndex(Tile t)
+inline ObjectID GetObjectIndex(Tile t)
 {
 	assert(IsTileType(t, MP_OBJECT));
 	return t.m2() | t.m5() << 16;
@@ -56,7 +56,7 @@ static inline ObjectID GetObjectIndex(Tile t)
  * @pre IsTileType(t, MP_OBJECT)
  * @return The random bits.
  */
-static inline byte GetObjectRandomBits(Tile t)
+inline uint8_t GetObjectRandomBits(Tile t)
 {
 	assert(IsTileType(t, MP_OBJECT));
 	return t.m3();
@@ -71,7 +71,7 @@ static inline byte GetObjectRandomBits(Tile t)
  * @param wc     Water class for this object.
  * @param random Random data to store on the tile
  */
-static inline void MakeObject(Tile t, Owner o, ObjectID index, WaterClass wc, byte random)
+inline void MakeObject(Tile t, Owner o, ObjectID index, WaterClass wc, uint8_t random)
 {
 	SetTileType(t, MP_OBJECT);
 	SetTileOwner(t, o);

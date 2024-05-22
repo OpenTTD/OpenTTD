@@ -36,7 +36,6 @@ ScriptStorage::~ScriptStorage()
 {
 	/* Free our pointers */
 	if (event_data != nullptr) ScriptEventController::FreeEventPointer();
-	if (log_data != nullptr) ScriptLog::FreeLogPointer();
 }
 
 /**
@@ -44,7 +43,7 @@ ScriptStorage::~ScriptStorage()
  * @param error_msg Is this an error message?
  * @param message The actual message text.
  */
-static void PrintFunc(bool error_msg, const SQChar *message)
+static void PrintFunc(bool error_msg, const std::string &message)
 {
 	/* Convert to OpenTTD internal capable string */
 	ScriptController::Print(error_msg, message);
@@ -52,7 +51,6 @@ static void PrintFunc(bool error_msg, const SQChar *message)
 
 ScriptInstance::ScriptInstance(const char *APIName) :
 	engine(nullptr),
-	versionAPI(nullptr),
 	controller(nullptr),
 	storage(nullptr),
 	instance(nullptr),
@@ -69,7 +67,7 @@ ScriptInstance::ScriptInstance(const char *APIName) :
 	this->engine->SetPrintFunction(&PrintFunc);
 }
 
-void ScriptInstance::Initialize(const char *main_script, const char *instance_name, CompanyID company)
+void ScriptInstance::Initialize(const std::string &main_script, const std::string &instance_name, CompanyID company)
 {
 	ScriptObject::ActiveInstance active(this);
 
@@ -78,11 +76,15 @@ void ScriptInstance::Initialize(const char *main_script, const char *instance_na
 	/* Register the API functions and classes */
 	this->engine->SetGlobalPointer(this->engine);
 	this->RegisterAPI();
+	if (this->IsDead()) {
+		/* Failed to register API; a message has already been logged. */
+		return;
+	}
 
 	try {
 		ScriptObject::SetAllowDoCommand(false);
 		/* Load and execute the script for this script */
-		if (strcmp(main_script, "%_dummy") == 0) {
+		if (main_script == "%_dummy") {
 			this->LoadDummyScript();
 		} else if (!this->engine->LoadScript(main_script) || this->engine->IsSuspended()) {
 			if (this->engine->IsSuspended()) ScriptLog::Error("This script took too long to load script. AI is not started.");
@@ -103,7 +105,7 @@ void ScriptInstance::Initialize(const char *main_script, const char *instance_na
 		ScriptObject::SetAllowDoCommand(true);
 	} catch (Script_FatalError &e) {
 		this->is_dead = true;
-		this->engine->ThrowError(e.GetErrorMessage().c_str());
+		this->engine->ThrowError(e.GetErrorMessage());
 		this->engine->ResumeError();
 		this->Died();
 	}
@@ -114,16 +116,15 @@ void ScriptInstance::RegisterAPI()
 	squirrel_register_std(this->engine);
 }
 
-bool ScriptInstance::LoadCompatibilityScripts(const char *api_version, Subdirectory dir)
+bool ScriptInstance::LoadCompatibilityScripts(const std::string &api_version, Subdirectory dir)
 {
-	char script_name[32];
-	seprintf(script_name, lastof(script_name), "compat_%s.nut", api_version);
+	std::string script_name = fmt::format("compat_{}.nut", api_version);
 	for (Searchpath sp : _valid_searchpaths) {
 		std::string buf = FioGetDirectory(sp, dir);
 		buf += script_name;
 		if (!FileExists(buf)) continue;
 
-		if (this->engine->LoadScript(buf.c_str())) return true;
+		if (this->engine->LoadScript(buf)) return true;
 
 		ScriptLog::Error("Failed to load API compatibility script");
 		Debug(script, 0, "Error compiling / running API compatibility script: {}", buf);
@@ -229,7 +230,7 @@ void ScriptInstance::GameLoop()
 			this->callback = e.GetSuspendCallback();
 		} catch (Script_FatalError &e) {
 			this->is_dead = true;
-			this->engine->ThrowError(e.GetErrorMessage().c_str());
+			this->engine->ThrowError(e.GetErrorMessage());
 			this->engine->ResumeError();
 			this->Died();
 		}
@@ -250,7 +251,7 @@ void ScriptInstance::GameLoop()
 		this->callback = e.GetSuspendCallback();
 	} catch (Script_FatalError &e) {
 		this->is_dead = true;
-		this->engine->ThrowError(e.GetErrorMessage().c_str());
+		this->engine->ThrowError(e.GetErrorMessage());
 		this->engine->ResumeError();
 		this->Died();
 	}
@@ -315,11 +316,11 @@ ScriptStorage *ScriptInstance::GetStorage()
 	return this->storage;
 }
 
-void *ScriptInstance::GetLogPointer()
+ScriptLogTypes::LogData &ScriptInstance::GetLogData()
 {
 	ScriptObject::ActiveInstance active(this);
 
-	return ScriptObject::GetLogPointer();
+	return ScriptObject::GetLogData();
 }
 
 /*
@@ -327,7 +328,7 @@ void *ScriptInstance::GetLogPointer()
  * First 1 byte indicating if there is a data blob at all.
  * 1 byte indicating the type of data.
  * The data itself, this differs per type:
- *  - integer: a binary representation of the integer (int32).
+ *  - integer: a binary representation of the integer (int32_t).
  *  - string:  First one byte with the string length, then a 0-terminated char
  *             array. The string can't be longer than 255 bytes (including
  *             terminating '\0').
@@ -343,7 +344,7 @@ void *ScriptInstance::GetLogPointer()
  *  - null:    No data.
  */
 
-static byte _script_sl_byte; ///< Used as source/target by the script saveload code to store/load a single byte.
+static uint8_t _script_sl_byte; ///< Used as source/target by the script saveload code to store/load a single byte.
 
 /** SaveLoad array that saves/loads exactly one byte. */
 static const SaveLoad _script_byte[] = {
@@ -366,7 +367,7 @@ static const SaveLoad _script_byte[] = {
 			SQInteger res;
 			sq_getinteger(vm, index, &res);
 			if (!test) {
-				int64 value = (int64)res;
+				int64_t value = (int64_t)res;
 				SlCopy(&value, 1, SLE_INT64);
 			}
 			return true;
@@ -385,7 +386,7 @@ static const SaveLoad _script_byte[] = {
 				return false;
 			}
 			if (!test) {
-				_script_sl_byte = (byte)len;
+				_script_sl_byte = (uint8_t)len;
 				SlObject(nullptr, _script_byte);
 				SlCopy(const_cast<char *>(buf), len, SLE_CHAR);
 			}
@@ -508,7 +509,7 @@ void ScriptInstance::Save()
 			/* If we don't mark the script as dead here cleaning up the squirrel
 			 * stack could throw Script_FatalError again. */
 			this->is_dead = true;
-			this->engine->ThrowError(e.GetErrorMessage().c_str());
+			this->engine->ThrowError(e.GetErrorMessage());
 			this->engine->ResumeError();
 			SaveEmpty();
 			/* We can't kill the script here, so mark it as crashed (not dead) and
@@ -566,7 +567,7 @@ bool ScriptInstance::IsPaused()
 	SlObject(nullptr, _script_byte);
 	switch (_script_sl_byte) {
 		case SQSL_INT: {
-			int64 value;
+			int64_t value;
 			SlCopy(&value, 1, IsSavegameVersionBefore(SLV_SCRIPT_INT64) ? SLE_FILE_I32 | SLE_VAR_I64 : SLE_INT64);
 			if (data != nullptr) data->push_back((SQInteger)value);
 			return true;
@@ -576,8 +577,7 @@ bool ScriptInstance::IsPaused()
 			SlObject(nullptr, _script_byte);
 			static char buf[std::numeric_limits<decltype(_script_sl_byte)>::max()];
 			SlCopy(buf, _script_sl_byte, SLE_CHAR);
-			StrMakeValidInPlace(buf, buf + _script_sl_byte);
-			if (data != nullptr) data->push_back(std::string(buf));
+			if (data != nullptr) data->push_back(StrMakeValid(std::string_view(buf, _script_sl_byte)));
 			return true;
 		}
 
@@ -619,7 +619,7 @@ bool ScriptInstance::IsPaused()
 	}
 
 	if (std::holds_alternative<std::string>(value)) {
-		sq_pushstring(vm, std::get<std::string>(value).c_str(), -1);
+		sq_pushstring(vm, std::get<std::string>(value), -1);
 		return true;
 	}
 
@@ -697,9 +697,16 @@ void ScriptInstance::LoadOnStack(ScriptData *data)
 
 	ScriptDataVariant version = data->front();
 	data->pop_front();
-	sq_pushinteger(vm, std::get<SQInteger>(version));
-	LoadObjects(vm, data);
-	this->is_save_data_on_stack = true;
+	SQInteger top = sq_gettop(vm);
+	try {
+		sq_pushinteger(vm, std::get<SQInteger>(version));
+		LoadObjects(vm, data);
+		this->is_save_data_on_stack = true;
+	} catch (Script_FatalError &e) {
+		ScriptLog::Warning(fmt::format("Loading failed: {}", e.GetErrorMessage()));
+		/* Discard partially loaded savegame data and version. */
+		sq_settop(vm, top);
+	}
 }
 
 bool ScriptInstance::CallLoad()

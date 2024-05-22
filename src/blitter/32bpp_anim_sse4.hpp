@@ -32,17 +32,17 @@
 #define MARGIN_NORMAL_THRESHOLD 4
 
 /** The SSE4 32 bpp blitter with palette animation. */
-class Blitter_32bppSSE4_Anim FINAL : public Blitter_32bppSSE2_Anim, public Blitter_32bppSSE4 {
+class Blitter_32bppSSE4_Anim final : public Blitter_32bppSSE2_Anim, public Blitter_32bppSSE4 {
 private:
 
 public:
 	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last, bool translucent, bool animated>
 	void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
-	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) override {
+	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator) override {
 		return Blitter_32bppSSE_Base::Encode(sprite, allocator);
 	}
-	const char *GetName() override { return "32bpp-sse4-anim"; }
+	std::string_view GetName() override { return "32bpp-sse4-anim"; }
 	using Blitter_32bppSSE2_Anim::LookupColourInPalette;
 };
 

@@ -13,6 +13,6 @@
 #include "tile_cmd.h"
 
 void DrawHillyLandTile(const TileInfo *ti);
-void DrawClearLandTile(const TileInfo *ti, byte set);
+void DrawClearLandTile(const TileInfo *ti, uint8_t set);
 
 #endif /* CLEAR_FUNC_H */

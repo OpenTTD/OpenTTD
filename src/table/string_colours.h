@@ -8,7 +8,7 @@
 /** @file string_colours.h The colour translation of GRF's strings. */
 
 /** Colour mapping for #TextColour. */
-static const byte _string_colourmap[17] = {
+static const uint8_t _string_colourmap[17] = {
 	150, // TC_BLUE
 	 12, // TC_SILVER
 	189, // TC_GOLD

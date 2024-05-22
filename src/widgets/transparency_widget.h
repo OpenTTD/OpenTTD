@@ -11,7 +11,7 @@
 #define WIDGETS_TRANSPARENCY_WIDGET_H
 
 /** Widgets of the #TransparenciesWindow class. */
-enum TransparencyToolbarWidgets {
+enum TransparencyToolbarWidgets : WidgetID {
 	/* Button row. */
 	WID_TT_BEGIN,                    ///< First toggle button.
 	WID_TT_SIGNS = WID_TT_BEGIN,     ///< Signs background transparency toggle button.
@@ -22,7 +22,7 @@ enum TransparencyToolbarWidgets {
 	WID_TT_BRIDGES,                  ///< Bridges transparency toggle button.
 	WID_TT_STRUCTURES,               ///< Object structure transparency toggle button.
 	WID_TT_CATENARY,                 ///< Catenary transparency toggle button.
-	WID_TT_LOADING,                  ///< Loading indicators transparency toggle button.
+	WID_TT_TEXT,                     ///< Loading and cost/income text transparency toggle button.
 	WID_TT_END,                      ///< End of toggle buttons.
 
 	/* Panel with buttons for invisibility */

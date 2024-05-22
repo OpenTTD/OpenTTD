@@ -10,16 +10,16 @@
 #ifndef LINKGRAPH_TYPE_H
 #define LINKGRAPH_TYPE_H
 
-typedef uint16 LinkGraphID;
+typedef uint16_t LinkGraphID;
 static const LinkGraphID INVALID_LINK_GRAPH = UINT16_MAX;
 
-typedef uint16 LinkGraphJobID;
+typedef uint16_t LinkGraphJobID;
 static const LinkGraphJobID INVALID_LINK_GRAPH_JOB = UINT16_MAX;
 
-typedef uint16 NodeID;
+typedef uint16_t NodeID;
 static const NodeID INVALID_NODE = UINT16_MAX;
 
-enum DistributionType : byte {
+enum DistributionType : uint8_t {
 	DT_BEGIN = 0,
 	DT_MIN = 0,
 	DT_MANUAL = 0,           ///< Manual distribution. No link graph calculations are run.
@@ -30,11 +30,6 @@ enum DistributionType : byte {
 	DT_NUM = 3,
 	DT_END = 3
 };
-
-/* It needs to be 8bits, because we save and load it as such
- * Define basic enum properties
- */
-template <> struct EnumPropsT<DistributionType> : MakeEnumPropsT<DistributionType, byte, DT_BEGIN, DT_END, DT_NUM> {};
 
 /**
  * Special modes for updating links. 'Restricted' means that vehicles with

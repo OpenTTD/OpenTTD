@@ -11,12 +11,12 @@
 #define WIDGETS_LEAGUE_WIDGET_H
 
 /** Widget of the #PerformanceLeagueWindow class. */
-enum PerformanceLeagueWidgets {
+enum PerformanceLeagueWidgets : WidgetID {
 	WID_PLT_BACKGROUND, ///< Background of the window.
 };
 
 /** Widget of the #ScriptLeagueWindow class. */
-enum ScriptLeagueWidgets {
+enum ScriptLeagueWidgets : WidgetID {
 	WID_SLT_CAPTION,    ///< Caption of the window.
 	WID_SLT_BACKGROUND, ///< Background of the window.
 };

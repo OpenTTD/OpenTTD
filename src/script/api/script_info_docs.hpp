@@ -203,7 +203,6 @@ public:
 	/** Miscellaneous flags for Script settings. */
 	enum ScriptConfigFlags {
 		CONFIG_NONE,      ///< Normal setting.
-		CONFIG_RANDOM,    ///< When randomizing the Script, pick any value between min_value and max_value (inclusive).
 		CONFIG_BOOLEAN,   ///< This value is a boolean (either 0 (false) or 1 (true) ).
 		CONFIG_INGAME,    ///< This setting can be changed while the Script is running.
 		CONFIG_DEVELOPER, ///< This setting will only be visible when the Script development tools are active.
@@ -219,27 +218,12 @@ public:
 	 *  - description A single line describing the setting. Required.
 	 *  - min_value The minimum value of this setting. Required for integer
 	 *    settings and not allowed for boolean settings. The value will be
-	 *    clamped in the range [MIN(int32), MAX(int32)] (inclusive).
+	 *    clamped in the range [MIN(int32_t), MAX(int32_t)] (inclusive).
 	 *  - max_value The maximum value of this setting. Required for integer
 	 *    settings and not allowed for boolean settings. The value will be
-	 *    clamped in the range [MIN(int32), MAX(int32)] (inclusive).
-	 *  - easy_value The default value if the easy difficulty level
-	 *    is selected. Required. The value will be clamped in the range
-	 *    [MIN(int32), MAX(int32)] (inclusive).
-	 *  - medium_value The default value if the medium difficulty level
-	 *    is selected. Required. The value will be clamped in the range
-	 *    [MIN(int32), MAX(int32)] (inclusive).
-	 *  - hard_value The default value if the hard difficulty level
-	 *    is selected. Required. The value will be clamped in the range
-	 *    [MIN(int32), MAX(int32)] (inclusive).
-	 *  - custom_value The default value if the custom difficulty level
-	 *    is selected. Required. The value will be clamped in the range
-	 *    [MIN(int32), MAX(int32)] (inclusive).
-	 *  - random_deviation If this property has a nonzero value, then the
-	 *    actual value of the setting in game will be randomized in the range
-	 *    [user_configured_value - random_deviation, user_configured_value + random_deviation] (inclusive).
-	 *    random_deviation sign is ignored and the value is clamped in the range [0, MAX(int32)] (inclusive).
-	 *    Not allowed if the CONFIG_RANDOM flag is set, otherwise optional.
+	 *    clamped in the range [MIN(int32_t), MAX(int32_t)] (inclusive).
+	 *  - default_value The default value. Required. The value will be
+	 *    clamped in the range [MIN(int32_t), MAX(int32_t)] (inclusive).
 	 *  - step_size The increase/decrease of the value every time the user
 	 *    clicks one of the up/down arrow buttons. Optional, default is 1.
 	 *  - flags Bitmask of some flags, see ScriptConfigFlags. Required.
@@ -268,5 +252,5 @@ public:
 	 * @note This is a function provided by OpenTTD, you don't have to
 	 * include it in your Script but should just call it from GetSettings.
 	 */
-	void AddLabels(const char *setting_name, table value_names);
+	void AddLabels(string setting_name, table value_names);
 };

@@ -15,23 +15,20 @@
 #include "settings_type.h"
 
 struct HighScore {
-	/**
-	 * The name of the company and president.
-	 * The + 5 is for the comma and space or possibly other characters
-	 * that join the two names in this single string and the '\0'.
-	 */
-	char company[(MAX_LENGTH_COMPANY_NAME_CHARS + MAX_LENGTH_PRESIDENT_NAME_CHARS + 5) * MAX_CHAR_LENGTH];
-	StringID title; ///< NOSAVE, has troubles with changing string-numbers.
-	uint16 score;   ///< The score for this high score. Do NOT change type, will break hs.dat
+	std::string name; ///< The name of the companyy and president.
+	StringID title = INVALID_STRING_ID; ///< NOSAVE, has troubles with changing string-numbers.
+	uint16_t score = 0; ///< The score for this high score. Do NOT change type, will break hs.dat
 };
 
-extern HighScore _highscore_table[SP_HIGHSCORE_END][5];
+using HighScores = std::array<HighScore, 5>; ///< Record 5 high scores
+using HighScoresTable = std::array<HighScores, SP_HIGHSCORE_END>; ///< Record high score for each of the difficulty levels
+extern HighScoresTable _highscore_table;
 
 void SaveToHighScore();
 void LoadFromHighScore();
-int8 SaveHighScoreValue(const Company *c);
-int8 SaveHighScoreValueNetwork();
+int8_t SaveHighScoreValue(const Company *c);
+int8_t SaveHighScoreValueNetwork();
 StringID EndGameGetPerformanceTitleFromValue(uint value);
-void ShowHighscoreTable(int difficulty = SP_CUSTOM, int8 rank = -1);
+void ShowHighscoreTable(int difficulty = SP_CUSTOM, int8_t rank = -1);
 
 #endif /* HIGHSCORE_H */

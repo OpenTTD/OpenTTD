@@ -24,7 +24,20 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+
+    - name: Setup vcpkg caching
+      uses: actions/github-script@v7
+      with:
+        script: |
+          core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+          core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+          core.exportVariable('VCPKG_BINARY_SOURCES', 'clear;x-gha,readwrite')
+
+    - name: Install vcpkg
+      run: |
+        git clone https://github.com/microsoft/vcpkg ${{ runner.temp }}/vcpkg
+        ${{ runner.temp }}/vcpkg/bootstrap-vcpkg.sh -disableMetrics
 
     - name: Install dependencies
       run: |
@@ -37,31 +50,53 @@ jobs:
           liballegro4-dev \
           libcurl4-openssl-dev \
           libfontconfig-dev \
+          libharfbuzz-dev \
           libicu-dev \
           liblzma-dev \
           liblzo2-dev \
           libsdl2-dev \
           zlib1g-dev \
           # EOF
+
+        echo "::group::Install vcpkg dependencies"
+
+        # Disable vcpkg integration, as we mostly use system libraries.
+        mv vcpkg.json vcpkg-disabled.json
+
+        # We only use breakpad from vcpkg, as its CMake files
+        # are a bit special. So the Ubuntu's variant doesn't work.
+        ${{ runner.temp }}/vcpkg/vcpkg install breakpad
+
         echo "::endgroup::"
       env:
         DEBIAN_FRONTEND: noninteractive
 
-    - name: Set number of make jobs
+    - name: Prepare build
       run: |
-        echo "MAKEFLAGS=-j$(nproc)" >> $GITHUB_ENV
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        cmake .. -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake
+        echo "::endgroup::"
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
+      uses: github/codeql-action/init@v3
       with:
         languages: cpp
         config-file: ./.github/codeql/codeql-config.yml
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+    - name: Build
+      run: |
+        cd build
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        cmake --build . -j $(nproc)
+        echo "::endgroup::"
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+      uses: github/codeql-action/analyze@v3
       with:
         category: /language:cpp
         upload: False
@@ -74,10 +109,11 @@ jobs:
           +**/*.*
           -**/table/*.*
           -**/generated/**/*.*
+          -**/tests/*.*
         input: sarif-results/cpp.sarif
         output: sarif-results/cpp.sarif
 
     - name: Upload results
-      uses: github/codeql-action/upload-sarif@v2
+      uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: sarif-results/cpp.sarif

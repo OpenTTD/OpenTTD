@@ -10,8 +10,6 @@
 #ifndef BINARYHEAP_HPP
 #define BINARYHEAP_HPP
 
-#include "../core/alloc_func.hpp"
-
 /** Enable it if you suspect binary heap doesn't work well */
 #define BINARYHEAP_CHECK 0
 
@@ -27,7 +25,11 @@
  * Binary Heap as C++ template.
  *  A carrier which keeps its items automatically holds the smallest item at
  *  the first position. The order of items is maintained by using a binary tree.
- *  The implementation is used for priority queue's.
+ *  The implementation is used for priority queues.
+ *
+ * There are two major differences compared to std::priority_queue. First the
+ * std::priority_queue does not support indexing/removing elements in the
+ * middle of the heap/queue and second it has the biggest item first.
  *
  * @par Usage information:
  * Item of the binary heap should support the 'lower-than' operator '<'.
@@ -50,27 +52,18 @@
 template <class T>
 class CBinaryHeapT {
 private:
-	uint items;    ///< Number of items in the heap
-	uint capacity; ///< Maximum number of items the heap can hold
-	T **data;      ///< The pointer to the heap item pointers
+	size_t items = 0; ///< Number of valid items in the heap
+	std::vector<T *> data; ///< The pointer to the heap item pointers
 
 public:
 	/**
 	 * Create a binary heap.
-	 * @param max_items The limit of the heap
+	 * @param initial_capacity The initial reserved capacity for the heap.
 	 */
-	explicit CBinaryHeapT(uint max_items)
-		: items(0)
-		, capacity(max_items)
+	explicit CBinaryHeapT(size_t initial_capacity)
 	{
-		this->data = MallocT<T *>(max_items + 1);
-	}
-
-	~CBinaryHeapT()
-	{
+		this->data.reserve(initial_capacity);
 		this->Clear();
-		free(this->data);
-		this->data = nullptr;
 	}
 
 protected:
@@ -83,12 +76,12 @@ protected:
 	 * @param item The proposed item for filling the gap
 	 * @return The (gap)position where the item fits
 	 */
-	inline uint HeapifyDown(uint gap, T *item)
+	inline size_t HeapifyDown(size_t gap, T *item)
 	{
 		assert(gap != 0);
 
 		/* The first child of the gap is at [parent * 2] */
-		uint child = gap * 2;
+		size_t child = gap * 2;
 
 		/* while children are valid */
 		while (child <= this->items) {
@@ -119,11 +112,11 @@ protected:
 	 * @param item The proposed item for filling the gap
 	 * @return The (gap)position where the item fits
 	 */
-	inline uint HeapifyUp(uint gap, T *item)
+	inline size_t HeapifyUp(size_t gap, T *item)
 	{
 		assert(gap != 0);
 
-		uint parent;
+		size_t parent;
 
 		while (gap > 1) {
 			/* compare [gap] with its parent */
@@ -142,8 +135,9 @@ protected:
 	/** Verify the heap consistency */
 	inline void CheckConsistency()
 	{
-		for (uint child = 2; child <= this->items; child++) {
-			uint parent = child / 2;
+		assert(this->items == this->data.size() - 1);
+		for (size_t child = 2; child <= this->items; child++) {
+			size_t parent = child / 2;
 			assert(!(*this->data[child] < *this->data[parent]));
 		}
 	}
@@ -155,7 +149,7 @@ public:
 	 *
 	 *  @return The number of items in the queue
 	 */
-	inline uint Length() const
+	inline size_t Length() const
 	{
 		return this->items;
 	}
@@ -168,16 +162,6 @@ public:
 	inline bool IsEmpty() const
 	{
 		return this->items == 0;
-	}
-
-	/**
-	 * Test if the priority queue is full.
-	 *
-	 * @return True if full.
-	 */
-	inline bool IsFull() const
-	{
-		return this->items >= this->capacity;
 	}
 
 	/**
@@ -210,15 +194,9 @@ public:
 	 */
 	inline void Include(T *new_item)
 	{
-		if (this->IsFull()) {
-			assert(this->capacity < UINT_MAX / 2);
-
-			this->capacity *= 2;
-			this->data = ReallocT<T*>(this->data, this->capacity + 1);
-		}
-
 		/* Make place for new item. A gap is now at the end of the tree. */
-		uint gap = this->HeapifyUp(++items, new_item);
+		this->data.emplace_back();
+		size_t gap = this->HeapifyUp(++items, new_item);
 		this->data[gap] = new_item;
 		CHECK_CONSISTY();
 	}
@@ -238,9 +216,10 @@ public:
 		this->items--;
 		/* at index 1 we have a gap now */
 		T *last = this->End();
-		uint gap = this->HeapifyDown(1, last);
+		size_t gap = this->HeapifyDown(1, last);
 		/* move last item to the proper place */
 		if (!this->IsEmpty()) this->data[gap] = last;
+		this->data.pop_back();
 
 		CHECK_CONSISTY();
 		return first;
@@ -251,7 +230,7 @@ public:
 	 *
 	 * @param index The position of the item in the heap
 	 */
-	inline void Remove(uint index)
+	inline void Remove(size_t index)
 	{
 		if (index < this->items) {
 			assert(index != 0);
@@ -260,7 +239,7 @@ public:
 
 			T *last = this->End();
 			/* Fix binary tree up and downwards */
-			uint gap = this->HeapifyUp(index, last);
+			size_t gap = this->HeapifyUp(index, last);
 			gap = this->HeapifyDown(gap, last);
 			/* move last item to the proper place */
 			if (!this->IsEmpty()) this->data[gap] = last;
@@ -268,6 +247,8 @@ public:
 			assert(index == this->items);
 			this->items--;
 		}
+		this->data.pop_back();
+
 		CHECK_CONSISTY();
 	}
 
@@ -279,15 +260,10 @@ public:
 	 * @param item The reference to the item
 	 * @return The index of the item or zero if not found
 	 */
-	inline uint FindIndex(const T &item) const
+	inline size_t FindIndex(const T &item) const
 	{
-		if (this->IsEmpty()) return 0;
-		for (T **ppI = this->data + 1, **ppLast = ppI + this->items; ppI <= ppLast; ppI++) {
-			if (*ppI == &item) {
-				return ppI - this->data;
-			}
-		}
-		return 0;
+		auto it = std::find(this->data.begin(), this->data.end(), &item);
+		return it == this->data.end() ? 0 : std::distance(this->data.begin(), it);
 	}
 
 	/**
@@ -297,6 +273,9 @@ public:
 	inline void Clear()
 	{
 		this->items = 0;
+		this->data.resize(1);
+
+		CHECK_CONSISTY();
 	}
 };
 

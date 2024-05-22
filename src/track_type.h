@@ -16,7 +16,7 @@
  * These are used to specify a single track.
  * Can be translated to a trackbit with TrackToTrackbit
  */
-enum Track : byte {
+enum Track : uint8_t {
 	TRACK_BEGIN = 0,        ///< Used for iterations
 	TRACK_X     = 0,        ///< Track along the x-axis (north-east to south-west)
 	TRACK_Y     = 1,        ///< Track along the y-axis (north-west to south-east)
@@ -30,12 +30,9 @@ enum Track : byte {
 
 /** Allow incrementing of Track variables */
 DECLARE_POSTFIX_INCREMENT(Track)
-/** Define basic enum properties */
-template <> struct EnumPropsT<Track> : MakeEnumPropsT<Track, byte, TRACK_BEGIN, TRACK_END, INVALID_TRACK, 3> {};
-
 
 /** Bitfield corresponding to Track */
-enum TrackBits : byte {
+enum TrackBits : uint8_t {
 	TRACK_BIT_NONE    = 0U,                                                 ///< No track
 	TRACK_BIT_X       = 1U << TRACK_X,                                      ///< X-axis track
 	TRACK_BIT_Y       = 1U << TRACK_Y,                                      ///< Y-axis track
@@ -67,7 +64,7 @@ DECLARE_ENUM_AS_BIT_SET(TrackBits)
  * reversing track dirs are not considered to be 'valid' except in a small
  * corner in the road vehicle controller.
  */
-enum Trackdir : byte {
+enum Trackdir : uint8_t {
 	TRACKDIR_BEGIN    =  0,         ///< Used for iterations
 	TRACKDIR_X_NE     =  0,         ///< X-axis and direction to north-east
 	TRACKDIR_Y_SE     =  1,         ///< Y-axis and direction to south-east
@@ -89,8 +86,8 @@ enum Trackdir : byte {
 	INVALID_TRACKDIR  = 0xFF,       ///< Flag for an invalid trackdir
 };
 
-/** Define basic enum properties */
-template <> struct EnumPropsT<Trackdir> : MakeEnumPropsT<Trackdir, byte, TRACKDIR_BEGIN, TRACKDIR_END, INVALID_TRACKDIR, 4> {};
+/** Allow incrementing of Trackdir variables */
+DECLARE_POSTFIX_INCREMENT(Trackdir)
 
 /**
  * Enumeration of bitmasks for the TrackDirs
@@ -98,7 +95,7 @@ template <> struct EnumPropsT<Trackdir> : MakeEnumPropsT<Trackdir, byte, TRACKDI
  * These are a combination of tracks and directions. Values are 0-5 in one
  * direction (corresponding to the Track enum) and 8-13 in the other direction.
  */
-enum TrackdirBits : uint16 {
+enum TrackdirBits : uint16_t {
 	TRACKDIR_BIT_NONE     = 0U,                     ///< No track build
 	TRACKDIR_BIT_X_NE     = 1U << TRACKDIR_X_NE,    ///< Track x-axis, direction north-east
 	TRACKDIR_BIT_Y_SE     = 1U << TRACKDIR_Y_SE,    ///< Track y-axis, direction south-east
@@ -118,6 +115,6 @@ enum TrackdirBits : uint16 {
 };
 DECLARE_ENUM_AS_BIT_SET(TrackdirBits)
 
-typedef uint32 TrackStatus;
+typedef uint32_t TrackStatus;
 
 #endif /* TRACK_TYPE_H */

@@ -15,16 +15,16 @@
 /** Implementation of the XAudio2 sound driver. */
 class SoundDriver_XAudio2 : public SoundDriver {
 public:
-	const char *Start(const StringList &param) override;
+	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
-	const char *GetName() const override { return "xaudio2"; }
+	std::string_view GetName() const override { return "xaudio2"; }
 };
 
 /** Factory for the XAudio2 sound driver. */
 class FSoundDriver_XAudio2 : public DriverFactoryBase {
 public:
-	FSoundDriver_XAudio2() : DriverFactoryBase(Driver::DT_SOUND, 10, "xaudio2", "XAudio2 Sound Driver (param bufsize,hz)") {}
+	FSoundDriver_XAudio2() : DriverFactoryBase(Driver::DT_SOUND, 10, "xaudio2", "XAudio2 Sound Driver (param hz,samples)") {}
 	Driver *CreateInstance() const override { return new SoundDriver_XAudio2(); }
 };
 

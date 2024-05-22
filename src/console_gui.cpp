@@ -10,9 +10,9 @@
 #include "stdafx.h"
 #include "textbuf_type.h"
 #include "window_gui.h"
+#include "autocompletion.h"
 #include "console_gui.h"
 #include "console_internal.h"
-#include "guitimer_func.h"
 #include "window_func.h"
 #include "string_func.h"
 #include "strings_func.h"
@@ -21,8 +21,8 @@
 #include "console_func.h"
 #include "rev.h"
 #include "video/video_driver.hpp"
-#include <deque>
-#include <string>
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "widgets/console_widget.h"
 
@@ -40,7 +40,7 @@ static const uint ICON_BOTTOM_BORDERWIDTH = 12;
 struct IConsoleLine {
 	std::string buffer;     ///< The data to store.
 	TextColour colour;      ///< The colour of the line.
-	uint16 time;            ///< The amount of time the line is in the backlog.
+	uint16_t time;            ///< The amount of time the line is in the backlog.
 
 	IConsoleLine() : buffer(), colour(TC_BEGIN), time(0)
 	{
@@ -69,11 +69,46 @@ static std::deque<IConsoleLine> _iconsole_buffer;
 
 static bool TruncateBuffer();
 
+class ConsoleAutoCompletion final : public AutoCompletion {
+public:
+	using AutoCompletion::AutoCompletion;
+
+private:
+	std::vector<std::string> GetSuggestions(std::string_view prefix, std::string_view query) override
+	{
+		prefix = StrTrimView(prefix);
+		std::vector<std::string> suggestions;
+
+		/* We only suggest commands or aliases, so we only do it for the first token or an argument to help command. */
+		if (!prefix.empty() && prefix != "help") {
+			return suggestions;
+		}
+
+		for (const auto &[_, command] : IConsole::Commands()) {
+			if (command.name.starts_with(query)) {
+				suggestions.push_back(command.name);
+			}
+		}
+		for (const auto &[_, alias] : IConsole::Aliases()) {
+			if (alias.name.starts_with(query)) {
+				suggestions.push_back(alias.name);
+			}
+		}
+
+		return suggestions;
+	}
+
+	void ApplySuggestion(std::string_view prefix, std::string_view suggestion) override
+	{
+		this->textbuf->Assign(fmt::format("{}{} ", prefix, suggestion));
+	}
+};
 
 /* ** main console cmd buffer ** */
 static Textbuf _iconsole_cmdline(ICON_CMDLN_SIZE);
-static char *_iconsole_history[ICON_HISTORY_SIZE];
-static int _iconsole_historypos;
+static ConsoleAutoCompletion _iconsole_tab_completion(&_iconsole_cmdline);
+static std::deque<std::string> _iconsole_history;
+static ptrdiff_t _iconsole_historypos;
 IConsoleModes _iconsole_mode;
 
 /* *************** *
@@ -87,6 +122,7 @@ static void IConsoleClearCommand()
 	_iconsole_cmdline.pixels = 0;
 	_iconsole_cmdline.caretpos = 0;
 	_iconsole_cmdline.caretxoffs = 0;
+	_iconsole_tab_completion.Reset();
 	SetWindowDirty(WC_CONSOLE, 0);
 }
 
@@ -99,7 +135,7 @@ static inline void IConsoleResetHistoryPos()
 static const char *IConsoleHistoryAdd(const char *cmd);
 static void IConsoleHistoryNavigate(int direction);
 
-static const struct NWidgetPart _nested_console_window_widgets[] = {
+static constexpr NWidgetPart _nested_console_window_widgets[] = {
 	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_BACKGROUND), SetResize(1, 1),
 };
 
@@ -107,7 +143,7 @@ static WindowDesc _console_window_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_CONSOLE, WC_NONE,
 	0,
-	_nested_console_window_widgets, lengthof(_nested_console_window_widgets)
+	std::begin(_nested_console_window_widgets), std::end(_nested_console_window_widgets)
 );
 
 struct IConsoleWindow : Window
@@ -115,24 +151,24 @@ struct IConsoleWindow : Window
 	static size_t scroll;
 	int line_height;   ///< Height of one line of text in the console.
 	int line_offset;
-	GUITimer truncate_timer;
+	int cursor_width;
 
 	IConsoleWindow() : Window(&_console_window_desc)
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
 
 		this->InitNested(0);
-		this->truncate_timer.SetInterval(3000);
 		ResizeWindow(this, _screen.width, _screen.height / 3);
 	}
 
 	void OnInit() override
 	{
-		this->line_height = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.hsep_normal;
+		this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.hsep_normal;
 		this->line_offset = GetStringBoundingBox("] ").width + WidgetDimensions::scaled.frametext.left;
+		this->cursor_width = GetCharacterWidth(FS_NORMAL, '_');
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		_iconsole_mode = ICONSOLE_CLOSED;
 		VideoDriver::GetInstance()->EditBoxLostFocus();
@@ -146,11 +182,11 @@ struct IConsoleWindow : Window
 	void Scroll(int amount)
 	{
 		if (amount < 0) {
-			size_t namount = (size_t) -amount;
+			size_t namount = static_cast<size_t>(-amount);
 			IConsoleWindow::scroll = (namount > IConsoleWindow::scroll) ? 0 : IConsoleWindow::scroll - namount;
 		} else {
 			assert(this->height >= 0 && this->line_height > 0);
-			size_t visible_lines = (size_t)(this->height / this->line_height);
+			size_t visible_lines = static_cast<size_t>(this->height / this->line_height);
 			size_t max_scroll = (visible_lines > _iconsole_buffer.size()) ? 0 : _iconsole_buffer.size() + 1 - visible_lines;
 			IConsoleWindow::scroll = std::min<size_t>(IConsoleWindow::scroll + amount, max_scroll);
 		}
@@ -162,7 +198,7 @@ struct IConsoleWindow : Window
 		const int right = this->width - WidgetDimensions::scaled.frametext.right;
 
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, PC_BLACK);
-		int ypos = this->height - this->line_height;
+		int ypos = this->height - this->line_height - WidgetDimensions::scaled.hsep_normal;
 		for (size_t line_index = IConsoleWindow::scroll; line_index < _iconsole_buffer.size(); line_index++) {
 			const IConsoleLine &print = _iconsole_buffer[line_index];
 			SetDParamStr(0, print.buffer);
@@ -170,7 +206,7 @@ struct IConsoleWindow : Window
 			if (ypos < 0) break;
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
-		int delta = this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH;
+		int delta = this->width - WidgetDimensions::scaled.frametext.right - cursor_width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
 			DrawString(WidgetDimensions::scaled.frametext.left, right, this->height - this->line_height, "]", (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
 			delta = 0;
@@ -186,26 +222,24 @@ struct IConsoleWindow : Window
 		}
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
-	{
-		if (this->truncate_timer.CountElapsed(delta_ms) == 0) return;
-
+	/** Check on a regular interval if the console buffer needs truncating. */
+	IntervalTimer<TimerWindow> truncate_interval = {std::chrono::seconds(3), [this](auto) {
 		assert(this->height >= 0 && this->line_height > 0);
-		size_t visible_lines = (size_t)(this->height / this->line_height);
+		size_t visible_lines = static_cast<size_t>(this->height / this->line_height);
 
 		if (TruncateBuffer() && IConsoleWindow::scroll + visible_lines > _iconsole_buffer.size()) {
 			size_t max_scroll = (visible_lines > _iconsole_buffer.size()) ? 0 : _iconsole_buffer.size() + 1 - visible_lines;
 			IConsoleWindow::scroll = std::min<size_t>(IConsoleWindow::scroll, max_scroll);
 			this->SetDirty();
 		}
-	}
+	}};
 
 	void OnMouseLoop() override
 	{
 		if (_iconsole_cmdline.HandleCaret()) this->SetDirty();
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
+	EventState OnKeyPress([[maybe_unused]] char32_t key, uint16_t keycode) override
 	{
 		if (_focused_window != this) return ES_NOT_HANDLED;
 
@@ -263,8 +297,18 @@ struct IConsoleWindow : Window
 				IConsoleCmdExec("clear");
 				break;
 
-			default:
-				if (_iconsole_cmdline.HandleKeyPress(key, keycode) != HKPR_NOT_HANDLED) {
+			case WKC_TAB:
+				if (_iconsole_tab_completion.AutoComplete()) {
+					this->SetDirty();
+				}
+				break;
+
+			default: {
+				HandleKeyPressResult handle_result = _iconsole_cmdline.HandleKeyPress(key, keycode);
+				if (handle_result != HKPR_NOT_HANDLED) {
+					if (handle_result == HKPR_EDITING) {
+						_iconsole_tab_completion.Reset();
+					}
 					IConsoleWindow::scroll = 0;
 					IConsoleResetHistoryPos();
 					this->SetDirty();
@@ -272,35 +316,24 @@ struct IConsoleWindow : Window
 					return ES_NOT_HANDLED;
 				}
 				break;
+			}
 		}
 		return ES_HANDLED;
 	}
 
-	void InsertTextString(int wid, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end) override
+	void InsertTextString(WidgetID, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end) override
 	{
 		if (_iconsole_cmdline.InsertString(str, marked, caret, insert_location, replacement_end)) {
+			_iconsole_tab_completion.Reset();
 			IConsoleWindow::scroll = 0;
 			IConsoleResetHistoryPos();
 			this->SetDirty();
 		}
 	}
 
-	const char *GetFocusedText() const override
+	const Textbuf *GetFocusedTextbuf() const override
 	{
-		return _iconsole_cmdline.buf;
-	}
-
-	const char *GetCaret() const override
-	{
-		return _iconsole_cmdline.buf + _iconsole_cmdline.caretpos;
-	}
-
-	const char *GetMarkedText(size_t *length) const override
-	{
-		if (_iconsole_cmdline.markend == 0) return nullptr;
-
-		*length = _iconsole_cmdline.markend - _iconsole_cmdline.markpos;
-		return _iconsole_cmdline.buf + _iconsole_cmdline.markpos;
+		return &_iconsole_cmdline;
 	}
 
 	Point GetCaretPosition() const override
@@ -316,17 +349,17 @@ struct IConsoleWindow : Window
 		int delta = std::min<int>(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
 		Point p1 = GetCharPosInString(_iconsole_cmdline.buf, from, FS_NORMAL);
-		Point p2 = from != to ? GetCharPosInString(_iconsole_cmdline.buf, from) : p1;
+		Point p2 = from != to ? GetCharPosInString(_iconsole_cmdline.buf, to, FS_NORMAL) : p1;
 
 		Rect r = {this->line_offset + delta + p1.x, this->height - this->line_height, this->line_offset + delta + p2.x, this->height};
 		return r;
 	}
 
-	const char *GetTextCharacterAtPosition(const Point &pt) const override
+	ptrdiff_t GetTextCharacterAtPosition(const Point &pt) const override
 	{
 		int delta = std::min<int>(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
-		if (!IsInsideMM(pt.y, this->height - this->line_height, this->height)) return nullptr;
+		if (!IsInsideMM(pt.y, this->height - this->line_height, this->height)) return -1;
 
 		return GetCharAtPosition(_iconsole_cmdline.buf, pt.x - delta);
 	}
@@ -341,7 +374,7 @@ struct IConsoleWindow : Window
 		VideoDriver::GetInstance()->EditBoxGainedFocus();
 	}
 
-	void OnFocusLost() override
+	void OnFocusLost(bool) override
 	{
 		VideoDriver::GetInstance()->EditBoxLostFocus();
 	}
@@ -355,7 +388,6 @@ void IConsoleGUIInit()
 	_iconsole_mode = ICONSOLE_CLOSED;
 
 	IConsoleClearBuffer();
-	memset(_iconsole_history, 0, sizeof(_iconsole_history));
 
 	IConsolePrint(TC_LIGHT_BLUE, "OpenTTD Game Console Revision 7 - {}", _openttd_revision);
 	IConsolePrint(CC_WHITE, "------------------------------------");
@@ -429,15 +461,14 @@ static const char *IConsoleHistoryAdd(const char *cmd)
 	if (StrEmpty(cmd)) return nullptr;
 
 	/* Do not put in history if command is same as previous */
-	if (_iconsole_history[0] == nullptr || strcmp(_iconsole_history[0], cmd) != 0) {
-		free(_iconsole_history[ICON_HISTORY_SIZE - 1]);
-		memmove(&_iconsole_history[1], &_iconsole_history[0], sizeof(_iconsole_history[0]) * (ICON_HISTORY_SIZE - 1));
-		_iconsole_history[0] = stredup(cmd);
+	if (_iconsole_history.empty() || _iconsole_history.front() != cmd) {
+		_iconsole_history.emplace_front(cmd);
+		while (_iconsole_history.size() > ICON_HISTORY_SIZE) _iconsole_history.pop_back();
 	}
 
 	/* Reset the history position */
 	IConsoleResetHistoryPos();
-	return _iconsole_history[0];
+	return _iconsole_history.front().c_str();
 }
 
 /**
@@ -446,16 +477,15 @@ static const char *IConsoleHistoryAdd(const char *cmd)
  */
 static void IConsoleHistoryNavigate(int direction)
 {
-	if (_iconsole_history[0] == nullptr) return; // Empty history
-	_iconsole_historypos = Clamp(_iconsole_historypos + direction, -1, ICON_HISTORY_SIZE - 1);
-
-	if (direction > 0 && _iconsole_history[_iconsole_historypos] == nullptr) _iconsole_historypos--;
+	if (_iconsole_history.empty()) return; // Empty history
+	_iconsole_historypos = Clamp<ptrdiff_t>(_iconsole_historypos + direction, -1, _iconsole_history.size() - 1);
 
 	if (_iconsole_historypos == -1) {
 		_iconsole_cmdline.DeleteAll();
 	} else {
 		_iconsole_cmdline.Assign(_iconsole_history[_iconsole_historypos]);
 	}
+	_iconsole_tab_completion.Reset();
 }
 
 /**
@@ -467,7 +497,7 @@ static void IConsoleHistoryNavigate(int direction)
  * @param colour_code the colour of the command. Red in case of errors, etc.
  * @param str the message entered or output on the console (notice, error, etc.)
  */
-void IConsoleGUIPrint(TextColour colour_code, char *str)
+void IConsoleGUIPrint(TextColour colour_code, const std::string &str)
 {
 	_iconsole_buffer.push_front(IConsoleLine(str, colour_code));
 	SetWindowDirty(WC_CONSOLE, 0);
@@ -479,7 +509,7 @@ void IConsoleGUIPrint(TextColour colour_code, char *str)
  * all lines in the buffer are aged by one. When a line exceeds both the maximum position
  * and also the maximum age, it gets removed.
  * @return true if any lines were removed
-*/
+ */
 static bool TruncateBuffer()
 {
 	bool need_truncation = false;
@@ -515,8 +545,8 @@ bool IsValidConsoleColour(TextColour c)
 	/* A text colour from the palette is used; must be the company
 	 * colour gradient, so it must be one of those. */
 	c &= ~TC_IS_PALETTE_COLOUR;
-	for (uint i = COLOUR_BEGIN; i < COLOUR_END; i++) {
-		if (_colour_gradient[i][4] == c) return true;
+	for (Colours i = COLOUR_BEGIN; i < COLOUR_END; i++) {
+		if (GetColourGradient(i, SHADE_NORMAL) == c) return true;
 	}
 
 	return false;

@@ -13,17 +13,17 @@
 #include "../script_instance.hpp"
 #include "../../bridge_map.h"
 #include "../../strings_func.h"
-#include "../../date_func.h"
 #include "../../landscape_cmd.h"
 #include "../../road_cmd.h"
 #include "../../tunnelbridge_cmd.h"
+#include "../../timer/timer_game_calendar.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
 
 /* static */ bool ScriptBridge::IsValidBridge(BridgeID bridge_id)
 {
-	return bridge_id < MAX_BRIDGES && ::GetBridgeSpec(bridge_id)->avail_year <= _cur_year;
+	return bridge_id < MAX_BRIDGES && ::GetBridgeSpec(bridge_id)->avail_year <= TimerGameCalendar::year;
 }
 
 /* static */ bool ScriptBridge::IsBridgeTile(TileIndex tile)
@@ -83,8 +83,8 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 
 	switch (vehicle_type) {
 		case ScriptVehicle::VT_ROAD:
-			ScriptObject::SetCallbackVariable(0, start);
-			ScriptObject::SetCallbackVariable(1, end);
+			ScriptObject::SetCallbackVariable(0, start.base());
+			ScriptObject::SetCallbackVariable(1, end.base());
 			return ScriptObject::Command<CMD_BUILD_BRIDGE>::Do(&::_DoCommandReturnBuildBridge1, end, start, TRANSPORT_ROAD, bridge_id, ScriptRoad::GetCurrentRoadType());
 		case ScriptVehicle::VT_RAIL:
 			return ScriptObject::Command<CMD_BUILD_BRIDGE>::Do(end, start, TRANSPORT_RAIL, bridge_id, ScriptRail::GetCurrentRailType());
@@ -129,10 +129,10 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
 
-/* static */ char *ScriptBridge::GetName(BridgeID bridge_id, ScriptVehicle::VehicleType vehicle_type)
+/* static */ std::optional<std::string> ScriptBridge::GetName(BridgeID bridge_id, ScriptVehicle::VehicleType vehicle_type)
 {
-	EnforcePrecondition(nullptr, vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_WATER);
-	if (!IsValidBridge(bridge_id)) return nullptr;
+	EnforcePrecondition(std::nullopt, vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_WATER);
+	if (!IsValidBridge(bridge_id)) return std::nullopt;
 
 	return GetString(vehicle_type == ScriptVehicle::VT_WATER ? STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT : ::GetBridgeSpec(bridge_id)->transport_name[vehicle_type]);
 }

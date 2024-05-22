@@ -9,423 +9,229 @@
 
 #include "stdafx.h"
 #include "crashlog.h"
+#include "survey.h"
 #include "gamelog.h"
-#include "date_func.h"
 #include "map_func.h"
-#include "rev.h"
-#include "strings_func.h"
-#include "blitter/factory.hpp"
-#include "base_media_base.h"
 #include "music/music_driver.hpp"
 #include "sound/sound_driver.hpp"
 #include "video/video_driver.hpp"
 #include "saveload/saveload.h"
 #include "screenshot.h"
-#include "gfx_func.h"
-#include "network/network.h"
-#include "language.h"
-#include "fontcache.h"
+#include "network/network_survey.h"
 #include "news_gui.h"
+#include "fileio_func.h"
+#include "fileio_type.h"
 
-#include "ai/ai_info.hpp"
-#include "game/game.hpp"
-#include "game/game_info.hpp"
-#include "company_base.h"
 #include "company_func.h"
-#include "walltime_func.h"
-
-#ifdef WITH_ALLEGRO
-#	include <allegro.h>
-#endif /* WITH_ALLEGRO */
-#ifdef WITH_FONTCONFIG
-#	include <fontconfig/fontconfig.h>
-#endif /* WITH_FONTCONFIG */
-#ifdef WITH_PNG
-	/* pngconf.h, included by png.h doesn't like something in the
-	 * freetype headers. As such it's not alphabetically sorted. */
-#	include <png.h>
-#endif /* WITH_PNG */
-#ifdef WITH_FREETYPE
-#	include <ft2build.h>
-#	include FT_FREETYPE_H
-#endif /* WITH_FREETYPE */
-#if defined(WITH_ICU_LX) || defined(WITH_ICU_I18N)
-#	include <unicode/uversion.h>
-#endif /* WITH_ICU_LX || WITH_ICU_I18N */
-#ifdef WITH_LIBLZMA
-#	include <lzma.h>
-#endif
-#ifdef WITH_LZO
-#include <lzo/lzo1x.h>
-#endif
-#if defined(WITH_SDL) || defined(WITH_SDL2)
-#	include <SDL.h>
-#endif /* WITH_SDL || WITH_SDL2 */
-#ifdef WITH_ZLIB
-# include <zlib.h>
-#endif
-#ifdef WITH_CURL
-# include <curl/curl.h>
-#endif
+#include "3rdparty/fmt/chrono.h"
+#include "3rdparty/fmt/std.h"
+#include "core/format.hpp"
 
 #include "safeguards.h"
 
-/* static */ std::string CrashLog::message{ "<none>" };
+/* static */ std::string CrashLog::message{};
 
-char *CrashLog::LogCompiler(char *buffer, const char *last) const
-{
-			buffer += seprintf(buffer, last, " Compiler: "
-#if defined(_MSC_VER)
-			"MSVC %d", _MSC_VER
-#elif defined(__ICC) && defined(__GNUC__)
-			"ICC %d (GCC %d.%d.%d mode)", __ICC,  __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__
-#elif defined(__ICC)
-			"ICC %d", __ICC
-#elif defined(__GNUC__)
-			"GCC %d.%d.%d", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__
-#elif defined(__WATCOMC__)
-			"WatcomC %d", __WATCOMC__
-#else
-			"<unknown>"
-#endif
-			);
-#if defined(__VERSION__)
-			return buffer + seprintf(buffer, last,  " \"" __VERSION__ "\"\n\n");
-#else
-			return buffer + seprintf(buffer, last,  "\n\n");
-#endif
-}
-
-/* virtual */ char *CrashLog::LogRegisters(char *buffer, const char *last) const
-{
-	/* Stub implementation; not all OSes support this. */
-	return buffer;
-}
-
-/* virtual */ char *CrashLog::LogModules(char *buffer, const char *last) const
-{
-	/* Stub implementation; not all OSes support this. */
-	return buffer;
-}
-
-/**
- * Writes OpenTTD's version to the buffer.
- * @param buffer The begin where to write at.
- * @param last   The last position in the buffer to write to.
- * @return the position of the \c '\0' character after the buffer.
- */
-char *CrashLog::LogOpenTTDVersion(char *buffer, const char *last) const
-{
-	return buffer + seprintf(buffer, last,
-			"OpenTTD version:\n"
-			" Version:    %s (%d)\n"
-			" NewGRF ver: %08x\n"
-			" Bits:       %d\n"
-			" Endian:     %s\n"
-			" Dedicated:  %s\n"
-			" Build date: %s\n\n",
-			_openttd_revision,
-			_openttd_revision_modified,
-			_openttd_newgrf_version,
-#ifdef POINTER_IS_64BIT
-			64,
-#else
-			32,
-#endif
-#if (TTD_ENDIAN == TTD_LITTLE_ENDIAN)
-			"little",
-#else
-			"big",
-#endif
-#ifdef DEDICATED
-			"yes",
-#else
-			"no",
-#endif
-			_openttd_build_date
-	);
-}
-
-/**
- * Writes the (important) configuration settings to the buffer.
- * E.g. graphics set, sound set, blitter and AIs.
- * @param buffer The begin where to write at.
- * @param last   The last position in the buffer to write to.
- * @return the position of the \c '\0' character after the buffer.
- */
-char *CrashLog::LogConfiguration(char *buffer, const char *last) const
-{
-	buffer += seprintf(buffer, last,
-			"Configuration:\n"
-			" Blitter:      %s\n"
-			" Graphics set: %s (%u)\n"
-			" Language:     %s\n"
-			" Music driver: %s\n"
-			" Music set:    %s (%u)\n"
-			" Network:      %s\n"
-			" Sound driver: %s\n"
-			" Sound set:    %s (%u)\n"
-			" Video driver: %s\n\n",
-			BlitterFactory::GetCurrentBlitter() == nullptr ? "none" : BlitterFactory::GetCurrentBlitter()->GetName(),
-			BaseGraphics::GetUsedSet() == nullptr ? "none" : BaseGraphics::GetUsedSet()->name.c_str(),
-			BaseGraphics::GetUsedSet() == nullptr ? UINT32_MAX : BaseGraphics::GetUsedSet()->version,
-			_current_language == nullptr ? "none" : _current_language->file,
-			MusicDriver::GetInstance() == nullptr ? "none" : MusicDriver::GetInstance()->GetName(),
-			BaseMusic::GetUsedSet() == nullptr ? "none" : BaseMusic::GetUsedSet()->name.c_str(),
-			BaseMusic::GetUsedSet() == nullptr ? UINT32_MAX : BaseMusic::GetUsedSet()->version,
-			_networking ? (_network_server ? "server" : "client") : "no",
-			SoundDriver::GetInstance() == nullptr ? "none" : SoundDriver::GetInstance()->GetName(),
-			BaseSounds::GetUsedSet() == nullptr ? "none" : BaseSounds::GetUsedSet()->name.c_str(),
-			BaseSounds::GetUsedSet() == nullptr ? UINT32_MAX : BaseSounds::GetUsedSet()->version,
-			VideoDriver::GetInstance() == nullptr ? "none" : VideoDriver::GetInstance()->GetInfoString()
-	);
-
-	buffer += seprintf(buffer, last,
-			"Fonts:\n"
-			" Small:  %s\n"
-			" Medium: %s\n"
-			" Large:  %s\n"
-			" Mono:   %s\n\n",
-			FontCache::Get(FS_SMALL)->GetFontName(),
-			FontCache::Get(FS_NORMAL)->GetFontName(),
-			FontCache::Get(FS_LARGE)->GetFontName(),
-			FontCache::Get(FS_MONO)->GetFontName()
-	);
-
-	buffer += seprintf(buffer, last, "AI Configuration (local: %i) (current: %i):\n", (int)_local_company, (int)_current_company);
-	for (const Company *c : Company::Iterate()) {
-		if (c->ai_info == nullptr) {
-			buffer += seprintf(buffer, last, " %2i: Human\n", (int)c->index);
-		} else {
-			buffer += seprintf(buffer, last, " %2i: %s (v%d)\n", (int)c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
-		}
-	}
-
-	if (Game::GetInfo() != nullptr) {
-		buffer += seprintf(buffer, last, " GS: %s (v%d)\n", Game::GetInfo()->GetName(), Game::GetInfo()->GetVersion());
-	}
-	buffer += seprintf(buffer, last, "\n");
-
-	return buffer;
-}
-
-/**
- * Writes information (versions) of the used libraries.
- * @param buffer The begin where to write at.
- * @param last   The last position in the buffer to write to.
- * @return the position of the \c '\0' character after the buffer.
- */
-char *CrashLog::LogLibraries(char *buffer, const char *last) const
-{
-	buffer += seprintf(buffer, last, "Libraries:\n");
-
-#ifdef WITH_ALLEGRO
-	buffer += seprintf(buffer, last, " Allegro:    %s\n", allegro_id);
-#endif /* WITH_ALLEGRO */
-
-#ifdef WITH_FONTCONFIG
-	int version = FcGetVersion();
-	buffer += seprintf(buffer, last, " FontConfig: %d.%d.%d\n", version / 10000, (version / 100) % 100, version % 100);
-#endif /* WITH_FONTCONFIG */
-
-#ifdef WITH_FREETYPE
-	FT_Library library;
-	int major, minor, patch;
-	FT_Init_FreeType(&library);
-	FT_Library_Version(library, &major, &minor, &patch);
-	FT_Done_FreeType(library);
-	buffer += seprintf(buffer, last, " FreeType:   %d.%d.%d\n", major, minor, patch);
-#endif /* WITH_FREETYPE */
-
-#if defined(WITH_ICU_LX) || defined(WITH_ICU_I18N)
-	/* 4 times 0-255, separated by dots (.) and a trailing '\0' */
-	char buf[4 * 3 + 3 + 1];
-	UVersionInfo ver;
-	u_getVersion(ver);
-	u_versionToString(ver, buf);
-#ifdef WITH_ICU_I18N
-	buffer += seprintf(buffer, last, " ICU i18n:   %s\n", buf);
-#endif
-#ifdef WITH_ICU_LX
-	buffer += seprintf(buffer, last, " ICU lx:     %s\n", buf);
-#endif
-#endif /* WITH_ICU_LX || WITH_ICU_I18N */
-
-#ifdef WITH_LIBLZMA
-	buffer += seprintf(buffer, last, " LZMA:       %s\n", lzma_version_string());
-#endif
-
-#ifdef WITH_LZO
-	buffer += seprintf(buffer, last, " LZO:        %s\n", lzo_version_string());
-#endif
-
-#ifdef WITH_PNG
-	buffer += seprintf(buffer, last, " PNG:        %s\n", png_get_libpng_ver(nullptr));
-#endif /* WITH_PNG */
-
-#ifdef WITH_SDL
-	const SDL_version *sdl_v = SDL_Linked_Version();
-	buffer += seprintf(buffer, last, " SDL1:       %d.%d.%d\n", sdl_v->major, sdl_v->minor, sdl_v->patch);
-#elif defined(WITH_SDL2)
-	SDL_version sdl2_v;
-	SDL_GetVersion(&sdl2_v);
-	buffer += seprintf(buffer, last, " SDL2:       %d.%d.%d\n", sdl2_v.major, sdl2_v.minor, sdl2_v.patch);
-#endif
-
-#ifdef WITH_ZLIB
-	buffer += seprintf(buffer, last, " Zlib:       %s\n", zlibVersion());
-#endif
-
-#ifdef WITH_CURL
-	auto *curl_v = curl_version_info(CURLVERSION_NOW);
-	buffer += seprintf(buffer, last, " Curl:       %s\n", curl_v->version);
-	if (curl_v->ssl_version != nullptr) {
-		buffer += seprintf(buffer, last, " Curl SSL:   %s\n", curl_v->ssl_version);
-	} else {
-		buffer += seprintf(buffer, last, " Curl SSL:   none\n");
-	}
-#endif
-
-	buffer += seprintf(buffer, last, "\n");
-	return buffer;
-}
+/** The version of the schema of the JSON information. */
+constexpr uint8_t CRASHLOG_SURVEY_VERSION = 1;
 
 /**
  * Writes the gamelog data to the buffer.
- * @param buffer The begin where to write at.
- * @param last   The last position in the buffer to write to.
- * @return the position of the \c '\0' character after the buffer.
+ * @param output_iterator Iterator to write the output to.
  */
-char *CrashLog::LogGamelog(char *buffer, const char *last) const
+static void SurveyGamelog(nlohmann::json &json)
 {
-	GamelogPrint([&buffer, last](const char *s) {
-		buffer += seprintf(buffer, last, "%s\n", s);
+	json = nlohmann::json::array();
+
+	_gamelog.Print([&json](const std::string &s) {
+		json.push_back(s);
 	});
-	return buffer + seprintf(buffer, last, "\n");
 }
 
 /**
  * Writes up to 32 recent news messages to the buffer, with the most recent first.
- * @param buffer The begin where to write at.
- * @param last   The last position in the buffer to write to.
- * @return the position of the \c '\0' character after the buffer.
+ * @param output_iterator Iterator to write the output to.
  */
-char *CrashLog::LogRecentNews(char *buffer, const char *last) const
+static void SurveyRecentNews(nlohmann::json &json)
 {
-	buffer += seprintf(buffer, last, "Recent news messages:\n");
+	json = nlohmann::json::array();
 
 	int i = 0;
-	for (NewsItem *news = _latest_news; i < 32 && news != nullptr; news = news->prev, i++) {
-		YearMonthDay ymd;
-		ConvertDateToYMD(news->date, &ymd);
-		buffer += seprintf(buffer, last, "(%i-%02i-%02i) StringID: %u, Type: %u, Ref1: %u, %u, Ref2: %u, %u\n",
-		                   ymd.year, ymd.month + 1, ymd.day, news->string_id, news->type,
-		                   news->reftype1, news->ref1, news->reftype2, news->ref2);
+	for (const auto &news : GetNews()) {
+		TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(news.date);
+		json.push_back(fmt::format("({}-{:02}-{:02}) StringID: {}, Type: {}, Ref1: {}, {}, Ref2: {}, {}",
+		               ymd.year, ymd.month + 1, ymd.day, news.string_id, news.type,
+		               news.reftype1, news.ref1, news.reftype2, news.ref2));
+		if (++i > 32) break;
 	}
-	buffer += seprintf(buffer, last, "\n");
-	return buffer;
 }
 
 /**
  * Create a timestamped filename.
- * @param filename      The begin where to write at.
- * @param filename_last The last position in the buffer to write to.
  * @param ext           The extension for the filename.
  * @param with_dir      Whether to prepend the filename with the personal directory.
- * @return the number of added characters.
+ * @return The filename
  */
-int CrashLog::CreateFileName(char *filename, const char *filename_last, const char *ext, bool with_dir) const
+std::string CrashLog::CreateFileName(const char *ext, bool with_dir) const
 {
 	static std::string crashname;
 
 	if (crashname.empty()) {
-		UTCTime::Format(filename, filename_last, "crash%Y%m%d%H%M%S");
-		crashname = filename;
+		crashname = fmt::format("crash{:%Y%m%d%H%M%S}", fmt::gmtime(time(nullptr)));
 	}
-	return seprintf(filename, filename_last, "%s%s%s", with_dir ? _personal_dir.c_str() : "", crashname.c_str(), ext);
+	return fmt::format("{}{}{}", with_dir ? _personal_dir : std::string{}, crashname, ext);
 }
 
 /**
  * Fill the crash log buffer with all data of a crash log.
- * @param buffer The begin where to write at.
- * @param last   The last position in the buffer to write to.
- * @return the position of the \c '\0' character after the buffer.
  */
-char *CrashLog::FillCrashLog(char *buffer, const char *last) const
+void CrashLog::FillCrashLog()
 {
-	buffer += seprintf(buffer, last, "*** OpenTTD Crash Report ***\n\n");
-	buffer += UTCTime::Format(buffer, last, "Crash at: %Y-%m-%d %H:%M:%S (UTC)\n");
+	/* Reminder: this JSON is read in an automated fashion.
+	 * If any structural changes are applied, please bump the version. */
+	this->survey["schema"] = CRASHLOG_SURVEY_VERSION;
+	this->survey["date"] = fmt::format("{:%Y-%m-%d %H:%M:%S} (UTC)", fmt::gmtime(time(nullptr)));
 
-	YearMonthDay ymd;
-	ConvertDateToYMD(_date, &ymd);
-	buffer += seprintf(buffer, last, "In game date: %i-%02i-%02i (%i)\n\n", ymd.year, ymd.month + 1, ymd.day, _date_fract);
+	/* If no internal reason was logged, it must be a crash. */
+	if (CrashLog::message.empty()) {
+		this->SurveyCrash(this->survey["crash"]);
+	} else {
+		this->survey["crash"]["reason"] = CrashLog::message;
+		CrashLog::message.clear();
+	}
 
-	buffer = this->LogError(buffer, last, CrashLog::message.c_str());
-	buffer = this->LogOpenTTDVersion(buffer, last);
-	buffer = this->LogRegisters(buffer, last);
-	buffer = this->LogStacktrace(buffer, last);
-	buffer = this->LogOSVersion(buffer, last);
-	buffer = this->LogCompiler(buffer, last);
-	buffer = this->LogConfiguration(buffer, last);
-	buffer = this->LogLibraries(buffer, last);
-	buffer = this->LogModules(buffer, last);
-	buffer = this->LogGamelog(buffer, last);
-	buffer = this->LogRecentNews(buffer, last);
+	if (!this->TryExecute("stacktrace", [this]() { this->SurveyStacktrace(this->survey["stacktrace"]); return true; })) {
+		this->survey["stacktrace"] = "crashed while gathering information";
+	}
 
-	buffer += seprintf(buffer, last, "*** End of OpenTTD Crash Report ***\n");
-	return buffer;
+	if (!this->TryExecute("session", [this]() { SurveyGameSession(this->survey["session"]); return true; })) {
+		this->survey["session"] = "crashed while gathering information";
+	}
+
+	{
+		auto &info = this->survey["info"];
+		if (!this->TryExecute("os", [&info]() { SurveyOS(info["os"]); return true; })) {
+			info["os"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("openttd", [&info]() { SurveyOpenTTD(info["openttd"]); return true; })) {
+			info["openttd"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("configuration", [&info]() { SurveyConfiguration(info["configuration"]); return true; })) {
+			info["configuration"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("font", [&info]() { SurveyFont(info["font"]); return true; })) {
+			info["font"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("compiler", [&info]() { SurveyCompiler(info["compiler"]); return true; })) {
+			info["compiler"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("libraries", [&info]() { SurveyLibraries(info["libraries"]); return true; })) {
+			info["libraries"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("plugins", [&info]() { SurveyPlugins(info["plugins"]); return true; })) {
+			info["plugins"] = "crashed while gathering information";
+		}
+	}
+
+	{
+		auto &game = this->survey["game"];
+		game["local_company"] = _local_company;
+		game["current_company"] = _current_company;
+
+		if (!this->TryExecute("timers", [&game]() { SurveyTimers(game["timers"]); return true; })) {
+			game["libraries"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("companies", [&game]() { SurveyCompanies(game["companies"]); return true; })) {
+			game["companies"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("settings", [&game]() { SurveySettings(game["settings_changed"], true); return true; })) {
+			game["settings"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("grfs", [&game]() { SurveyGrfs(game["grfs"]); return true; })) {
+			game["grfs"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("game_script", [&game]() { SurveyGameScript(game["game_script"]); return true; })) {
+			game["game_script"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("gamelog", [&game]() { SurveyGamelog(game["gamelog"]); return true; })) {
+			game["gamelog"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("news", [&game]() { SurveyRecentNews(game["news"]); return true; })) {
+			game["news"] = "crashed while gathering information";
+		}
+	}
+}
+
+void CrashLog::PrintCrashLog() const
+{
+	fmt::print("  OpenTTD version:\n");
+	fmt::print("    Version: {}\n", this->survey["info"]["openttd"]["version"]["revision"].get<std::string>());
+	fmt::print("    Hash: {}\n", this->survey["info"]["openttd"]["version"]["hash"].get<std::string>());
+	fmt::print("    NewGRF ver: {}\n", this->survey["info"]["openttd"]["version"]["newgrf"].get<std::string>());
+	fmt::print("    Content ver: {}\n", this->survey["info"]["openttd"]["version"]["content"].get<std::string>());
+	fmt::print("\n");
+
+	fmt::print("  Crash:\n");
+	fmt::print("    Reason: {}\n", this->survey["crash"]["reason"].get<std::string>());
+	fmt::print("\n");
+
+	fmt::print("  Stacktrace:\n");
+	for (const auto &line : this->survey["stacktrace"]) {
+		fmt::print("    {}\n", line.get<std::string>());
+	}
+	fmt::print("\n");
 }
 
 /**
  * Write the crash log to a file.
- * @note On success the filename will be filled with the full path of the
- *       crash log file. Make sure filename is at least \c MAX_PATH big.
- * @param buffer The begin of the buffer to write to the disk.
- * @param filename      Output for the filename of the written file.
- * @param filename_last The last position in the filename buffer.
+ * @note The filename will be written to \c crashlog_filename.
  * @return true when the crash log was successfully written.
  */
-bool CrashLog::WriteCrashLog(const char *buffer, char *filename, const char *filename_last) const
+bool CrashLog::WriteCrashLog()
 {
-	this->CreateFileName(filename, filename_last, ".log");
+	this->crashlog_filename = this->CreateFileName(".json.log");
 
-	FILE *file = FioFOpenFile(filename, "w", NO_DIRECTORY);
+	FILE *file = FioFOpenFile(this->crashlog_filename, "w", NO_DIRECTORY);
 	if (file == nullptr) return false;
 
-	size_t len = strlen(buffer);
-	size_t written = fwrite(buffer, 1, len, file);
+	std::string survey_json = this->survey.dump(4);
+
+	size_t len = survey_json.size();
+	size_t written = fwrite(survey_json.data(), 1, len, file);
 
 	FioFCloseFile(file);
 	return len == written;
 }
 
-/* virtual */ int CrashLog::WriteCrashDump(char *filename, const char *filename_last) const
+/**
+ * Write the (crash) dump to a file.
+ *
+ * @note Sets \c crashdump_filename when there is a successful return.
+ * @return True iff the crashdump was successfully created.
+ */
+/* virtual */ bool CrashLog::WriteCrashDump()
 {
-	/* Stub implementation; not all OSes support this. */
-	return 0;
+	fmt::print("No method to create a crash.dmp available.\n");
+	return false;
 }
 
 /**
  * Write the (crash) savegame to a file.
- * @note On success the filename will be filled with the full path of the
- *       crash save file. Make sure filename is at least \c MAX_PATH big.
- * @param filename      Output for the filename of the written file.
- * @param filename_last The last position in the filename buffer.
+ * @note The filename will be written to \c savegame_filename.
  * @return true when the crash save was successfully made.
  */
-bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
+bool CrashLog::WriteSavegame()
 {
 	/* If the map doesn't exist, saving will fail too. If the map got
 	 * initialised, there is a big chance the rest is initialised too. */
 	if (!Map::IsInitialized()) return false;
 
 	try {
-		GamelogEmergency();
+		_gamelog.Emergency();
 
-		this->CreateFileName(filename, filename_last, ".sav");
+		this->savegame_filename = this->CreateFileName(".sav");
 
 		/* Don't do a threaded saveload. */
-		return SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, NO_DIRECTORY, false) == SL_OK;
+		return SaveOrLoad(this->savegame_filename, SLO_SAVE, DFT_GAME_FILE, NO_DIRECTORY, false) == SL_OK;
 	} catch (...) {
 		return false;
 	}
@@ -433,90 +239,93 @@ bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
 
 /**
  * Write the (crash) screenshot to a file.
- * @note On success the filename will be filled with the full path of the
- *       screenshot. Make sure filename is at least \c MAX_PATH big.
- * @param filename      Output for the filename of the written file.
- * @param filename_last The last position in the filename buffer.
- * @return true when the crash screenshot was successfully made.
+ * @note The filename will be written to \c screenshot_filename.
+ * @return std::nullopt when the crash screenshot could not be made, otherwise the filename.
  */
-bool CrashLog::WriteScreenshot(char *filename, const char *filename_last) const
+bool CrashLog::WriteScreenshot()
 {
 	/* Don't draw when we have invalid screen size */
 	if (_screen.width < 1 || _screen.height < 1 || _screen.dst_ptr == nullptr) return false;
 
-	this->CreateFileName(filename, filename_last, "", false);
+	std::string filename = this->CreateFileName("", false);
 	bool res = MakeScreenshot(SC_CRASHLOG, filename);
-	filename[0] = '\0';
-	if (res) strecpy(filename, _full_screenshot_name, filename_last);
+	if (res) this->screenshot_filename = _full_screenshot_path;
 	return res;
+}
+
+/**
+ * Send the survey result, noting it was a crash.
+ */
+void CrashLog::SendSurvey() const
+{
+	if (_game_mode == GM_NORMAL) {
+		_survey.Transmit(NetworkSurveyHandler::Reason::CRASH, true);
+	}
 }
 
 /**
  * Makes the crash log, writes it to a file and then subsequently tries
  * to make a crash dump and crash savegame. It uses DEBUG to write
  * information like paths to the console.
- * @return true when everything is made successfully.
  */
-bool CrashLog::MakeCrashLog() const
+void CrashLog::MakeCrashLog()
 {
 	/* Don't keep looping logging crashes. */
 	static bool crashlogged = false;
-	if (crashlogged) return false;
+	if (crashlogged) return;
 	crashlogged = true;
 
-	char filename[MAX_PATH];
-	char buffer[65536];
-	bool ret = true;
+	fmt::print("Crash encountered, generating crash log...\n");
+	this->FillCrashLog();
+	fmt::print("Crash log generated.\n\n");
 
-	printf("Crash encountered, generating crash log...\n");
-	this->FillCrashLog(buffer, lastof(buffer));
-	printf("%s\n", buffer);
-	printf("Crash log generated.\n\n");
+	fmt::print("Crash in summary:\n");
+	this->TryExecute("crashlog", [this]() { this->PrintCrashLog(); return true; });
 
-	printf("Writing crash log to disk...\n");
-	bool bret = this->WriteCrashLog(buffer, filename, lastof(filename));
-	if (bret) {
-		printf("Crash log written to %s. Please add this file to any bug reports.\n\n", filename);
+	fmt::print("Writing crash log to disk...\n");
+	bool ret = this->TryExecute("crashlog", [this]() { return this->WriteCrashLog(); });
+	if (ret) {
+		fmt::print("Crash log written to {}. Please add this file to any bug reports.\n\n", this->crashlog_filename);
 	} else {
-		printf("Writing crash log failed. Please attach the output above to any bug reports.\n\n");
-		ret = false;
+		fmt::print("Writing crash log failed. Please attach the output above to any bug reports.\n\n");
+		this->crashlog_filename = "(failed to write crash log)";
 	}
 
-	/* Don't mention writing crash dumps because not all platforms support it. */
-	int dret = this->WriteCrashDump(filename, lastof(filename));
-	if (dret < 0) {
-		printf("Writing crash dump failed.\n\n");
-		ret = false;
-	} else if (dret > 0) {
-		printf("Crash dump written to %s. Please add this file to any bug reports.\n\n", filename);
-	}
-
-	printf("Writing crash savegame...\n");
-	bret = this->WriteSavegame(filename, lastof(filename));
-	if (bret) {
-		printf("Crash savegame written to %s. Please add this file and the last (auto)save to any bug reports.\n\n", filename);
+	fmt::print("Writing crash dump to disk...\n");
+	ret = this->TryExecute("crashdump", [this]() { return this->WriteCrashDump(); });
+	if (ret) {
+		fmt::print("Crash dump written to {}. Please add this file to any bug reports.\n\n", this->crashdump_filename);
 	} else {
-		ret = false;
-		printf("Writing crash savegame failed. Please attach the last (auto)save to any bug reports.\n\n");
+		fmt::print("Writing crash dump failed.\n\n");
+		this->crashdump_filename = "(failed to write crash dump)";
 	}
 
-	printf("Writing crash screenshot...\n");
-	bret = this->WriteScreenshot(filename, lastof(filename));
-	if (bret) {
-		printf("Crash screenshot written to %s. Please add this file to any bug reports.\n\n", filename);
+	fmt::print("Writing crash savegame...\n");
+	ret = this->TryExecute("savegame", [this]() { return this->WriteSavegame(); });
+	if (ret) {
+		fmt::print("Crash savegame written to {}. Please add this file and the last (auto)save to any bug reports.\n\n", this->savegame_filename);
 	} else {
-		ret = false;
-		printf("Writing crash screenshot failed.\n\n");
+		fmt::print("Writing crash savegame failed. Please attach the last (auto)save to any bug reports.\n\n");
+		this->savegame_filename = "(failed to write crash savegame)";
 	}
 
-	return ret;
+	fmt::print("Writing crash screenshot...\n");
+	ret = this->TryExecute("screenshot", [this]() { return this->WriteScreenshot(); });
+	if (ret) {
+		fmt::print("Crash screenshot written to {}. Please add this file to any bug reports.\n\n", this->screenshot_filename);
+	} else {
+		fmt::print("Writing crash screenshot failed.\n\n");
+		this->screenshot_filename = "(failed to write crash screenshot)";
+	}
+
+	this->TryExecute("survey", [this]() { this->SendSurvey(); return true; });
 }
 
 /**
  * Sets a message for the error message handler.
  * @param message The error message of the error.
  */
-/* static */ void CrashLog::SetErrorMessage(const char *message)
+/* static */ void CrashLog::SetErrorMessage(const std::string &message)
 {
 	CrashLog::message = message;
 }

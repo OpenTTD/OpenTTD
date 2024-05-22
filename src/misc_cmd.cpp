@@ -39,9 +39,9 @@
 CommandCost CmdIncreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 {
 	Company *c = Company::Get(_current_company);
-
-	if (c->current_loan >= _economy.max_loan) {
-		SetDParam(0, _economy.max_loan);
+	Money max_loan = c->GetMaxLoan();
+	if (c->current_loan >= max_loan) {
+		SetDParam(0, max_loan);
 		return_cmd_error(STR_ERROR_MAXIMUM_PERMITTED_LOAN);
 	}
 
@@ -52,11 +52,11 @@ CommandCost CmdIncreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 			loan = LOAN_INTERVAL;
 			break;
 		case LoanCommand::Max: // Take a loan as big as possible
-			loan = _economy.max_loan - c->current_loan;
+			loan = max_loan - c->current_loan;
 			break;
 		case LoanCommand::Amount: // Take the given amount of loan
 			loan = amount;
-			if (loan < LOAN_INTERVAL || c->current_loan + loan > _economy.max_loan || loan % LOAN_INTERVAL != 0) return CMD_ERROR;
+			if (loan < LOAN_INTERVAL || c->current_loan + loan > max_loan || loan % LOAN_INTERVAL != 0) return CMD_ERROR;
 			break;
 	}
 
@@ -96,7 +96,7 @@ CommandCost CmdDecreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 			loan = std::min(c->current_loan, (Money)LOAN_INTERVAL);
 			break;
 		case LoanCommand::Max: // Pay back as much as possible
-			loan = std::max(std::min(c->current_loan, c->money), (Money)LOAN_INTERVAL);
+			loan = std::max(std::min(c->current_loan, GetAvailableMoneyForCommand()), (Money)LOAN_INTERVAL);
 			loan -= loan % LOAN_INTERVAL;
 			break;
 		case LoanCommand::Amount: // Repay the given amount of loan
@@ -105,7 +105,7 @@ CommandCost CmdDecreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 			break;
 	}
 
-	if (c->money < loan) {
+	if (GetAvailableMoneyForCommand() < loan) {
 		SetDParam(0, loan);
 		return_cmd_error(STR_ERROR_CURRENCY_REQUIRED);
 	}
@@ -119,12 +119,37 @@ CommandCost CmdDecreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 }
 
 /**
+ * Sets the max loan amount of your company. Does not respect the global loan setting.
+ * @param company the company ID.
+ * @param amount the new max loan amount, will be rounded down to the multitude of LOAN_INTERVAL. If set to COMPANY_MAX_LOAN_DEFAULT reset the max loan to default(global) value.
+ * @return zero cost or an error
+ */
+CommandCost CmdSetCompanyMaxLoan(DoCommandFlag flags, CompanyID company, Money amount)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	if (amount != COMPANY_MAX_LOAN_DEFAULT) {
+		if (amount < 0 || amount > (Money)MAX_LOAN_LIMIT) return CMD_ERROR;
+	}
+
+	Company *c = Company::GetIfValid(company);
+	if (c == nullptr) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		/* Round the amount down to a multiple of LOAN_INTERVAL. */
+		if (amount != COMPANY_MAX_LOAN_DEFAULT) amount -= (int64_t)amount % LOAN_INTERVAL;
+
+		c->max_loan = amount;
+		InvalidateCompanyWindows(c);
+	}
+	return CommandCost();
+}
+
+/**
  * In case of an unsafe unpause, we want the
  * user to confirm that it might crash.
- * @param w         unused
  * @param confirmed whether the user confirmed their action
  */
-static void AskUnsafeUnpauseCallback(Window *w, bool confirmed)
+static void AskUnsafeUnpauseCallback(Window *, bool confirmed)
 {
 	if (confirmed) {
 		Command<CMD_PAUSE>::Post(PM_PAUSED_ERROR, false);
@@ -173,6 +198,11 @@ CommandCost CmdPause(DoCommandFlag flags, PauseMode mode, bool pause)
 				_pause_mode |= mode;
 			} else {
 				_pause_mode &= ~mode;
+
+				/* If the only remaining reason to be paused is that we saw a command during pause, unpause. */
+				if (_pause_mode == PM_COMMAND_DURING_PAUSE) {
+					_pause_mode = PM_UNPAUSED;
+				}
 			}
 
 			NetworkHandlePauseChange(prev_mode, mode);
@@ -186,11 +216,10 @@ CommandCost CmdPause(DoCommandFlag flags, PauseMode mode, bool pause)
 
 /**
  * Change the financial flow of your company.
- * @param flags operation to perform
  * @param amount the amount of money to receive (if positive), or spend (if negative)
  * @return the cost of this operation or an error
  */
-CommandCost CmdMoneyCheat(DoCommandFlag flags, Money amount)
+CommandCost CmdMoneyCheat(DoCommandFlag, Money amount)
 {
 	return CommandCost(EXPENSES_OTHER, -amount);
 }
@@ -212,7 +241,7 @@ CommandCost CmdChangeBankBalance(DoCommandFlag flags, TileIndex tile, Money delt
 
 	if (flags & DC_EXEC) {
 		/* Change company bank balance of company. */
-		Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, company);
 		SubtractMoneyFromCompany(CommandCost(expenses_type, -delta));
 		cur_company.Restore();
 

@@ -20,7 +20,7 @@
  *
  * @see TileDiffXY(int, int)
  */
-typedef int32 TileIndexDiff;
+typedef int32_t TileIndexDiff;
 
 /**
  * A pair-construct of a TileIndexDiff.
@@ -29,8 +29,8 @@ typedef int32 TileIndexDiff;
  * tiles as a pair of x and y value.
  */
 struct TileIndexDiffC {
-	int16 x;        ///< The x value of the coordinate
-	int16 y;        ///< The y value of the coordinate
+	int16_t x;        ///< The x value of the coordinate
+	int16_t y;        ///< The y value of the coordinate
 };
 
 /** Minimal and maximal map width and height */
@@ -52,7 +52,7 @@ static const uint MAX_MAP_SIZE      = 1U << MAX_MAP_SIZE_BITS; ///< Maximal map 
 #define STRAIGHT_TRACK_LENGTH 7071/10000
 
 /** Argument for CmdLevelLand describing what to do. */
-enum LevelMode : byte {
+enum LevelMode : uint8_t {
 	LM_LEVEL, ///< Level the land.
 	LM_LOWER, ///< Lower the land.
 	LM_RAISE, ///< Raise the land.

@@ -11,14 +11,12 @@
 #define STRING_TYPE_H
 
 #include "core/enum_type.hpp"
-#include <vector>
-#include <string>
 
 /** A non-breaking space. */
-#define NBSP u8"\u00a0"
+#define NBSP "\u00a0"
 
 /** A left-to-right marker, marks the next character as left-to-right. */
-#define LRM u8"\u200e"
+#define LRM "\u200e"
 
 /**
  * Valid filter types for IsValidChar.
@@ -32,25 +30,28 @@ enum CharSetFilter {
 	CS_HEXADECIMAL,       ///< Only hexadecimal characters
 };
 
-/** Type for wide characters, i.e. non-UTF8 encoded unicode characters. */
-typedef char32_t WChar;
-
 /* The following are directional formatting codes used to get the LTR and RTL strings right:
  * http://www.unicode.org/unicode/reports/tr9/#Directional_Formatting_Codes */
-static const WChar CHAR_TD_LRM = 0x200E; ///< The next character acts like a left-to-right character.
-static const WChar CHAR_TD_RLM = 0x200F; ///< The next character acts like a right-to-left character.
-static const WChar CHAR_TD_LRE = 0x202A; ///< The following text is embedded left-to-right.
-static const WChar CHAR_TD_RLE = 0x202B; ///< The following text is embedded right-to-left.
-static const WChar CHAR_TD_LRO = 0x202D; ///< Force the following characters to be treated as left-to-right characters.
-static const WChar CHAR_TD_RLO = 0x202E; ///< Force the following characters to be treated as right-to-left characters.
-static const WChar CHAR_TD_PDF = 0x202C; ///< Restore the text-direction state to before the last LRE, RLE, LRO or RLO.
+static const char32_t CHAR_TD_LRM = 0x200E; ///< The next character acts like a left-to-right character.
+static const char32_t CHAR_TD_RLM = 0x200F; ///< The next character acts like a right-to-left character.
+static const char32_t CHAR_TD_LRE = 0x202A; ///< The following text is embedded left-to-right.
+static const char32_t CHAR_TD_RLE = 0x202B; ///< The following text is embedded right-to-left.
+static const char32_t CHAR_TD_LRO = 0x202D; ///< Force the following characters to be treated as left-to-right characters.
+static const char32_t CHAR_TD_RLO = 0x202E; ///< Force the following characters to be treated as right-to-left characters.
+static const char32_t CHAR_TD_PDF = 0x202C; ///< Restore the text-direction state to before the last LRE, RLE, LRO or RLO.
 
 /** Settings for the string validation. */
 enum StringValidationSettings {
 	SVS_NONE                       = 0,      ///< Allow nothing and replace nothing.
 	SVS_REPLACE_WITH_QUESTION_MARK = 1 << 0, ///< Replace the unknown/bad bits with question marks.
-	SVS_ALLOW_NEWLINE              = 1 << 1, ///< Allow newlines.
+	SVS_ALLOW_NEWLINE              = 1 << 1, ///< Allow newlines; replaces '\r\n' with '\n' during processing.
 	SVS_ALLOW_CONTROL_CODE         = 1 << 2, ///< Allow the special control codes.
+	/**
+	 * Replace tabs ('\t'), carriage returns ('\r') and newlines ('\n') with spaces.
+	 * When #SVS_ALLOW_NEWLINE is set, a '\n' or '\r\n' combination are not replaced with a space. A lone '\r' is replaced with a space.
+	 * When #SVS_REPLACE_WITH_QUESTION_MARK is set, this replacement runs first.
+	 */
+	SVS_REPLACE_TAB_CR_NL_WITH_SPACE = 1 << 3,
 };
 DECLARE_ENUM_AS_BIT_SET(StringValidationSettings)
 

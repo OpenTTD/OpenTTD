@@ -18,10 +18,14 @@
 ScriptWaypointList::ScriptWaypointList(ScriptWaypoint::WaypointType waypoint_type)
 {
 	EnforceDeityOrCompanyModeValid_Void();
-	for (const Waypoint *wp : Waypoint::Iterate()) {
-		if ((wp->facilities & waypoint_type) &&
-				(wp->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity() || wp->owner == OWNER_NONE)) this->AddItem(wp->index);
-	}
+
+	bool is_deity = ScriptCompanyMode::IsDeity();
+	CompanyID owner = ScriptObject::GetCompany();
+	ScriptList::FillList<Waypoint>(this,
+		[is_deity, owner, waypoint_type](const Waypoint *wp) {
+			return (is_deity || wp->owner == owner || wp->owner == OWNER_NONE) && (wp->facilities & static_cast<StationFacility>(waypoint_type)) != 0;
+		}
+	);
 }
 
 ScriptWaypointList_Vehicle::ScriptWaypointList_Vehicle(VehicleID vehicle_id)

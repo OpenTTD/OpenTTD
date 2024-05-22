@@ -34,7 +34,6 @@ execute_process(COMMAND ${OPENTTD_EXECUTABLE}
                         -mnull
                         -vnull:ticks=30000
                         -d script=2
-                        -d misc=9
                         -Q
                 OUTPUT_VARIABLE REGRESSION_OUTPUT
                 ERROR_VARIABLE REGRESSION_RESULT
@@ -54,15 +53,26 @@ string(REPLACE "0x(nil)" "0x00000000" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REPLACE "0x0000000000000000" "0x00000000" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REPLACE "0x0x0" "0x00000000" REGRESSION_RESULT "${REGRESSION_RESULT}")
 
+# Convert path separators
+string(REPLACE "\\" "/" REGRESSION_RESULT "${REGRESSION_RESULT}")
+
 # Remove timestamps if any
-string(REGEX REPLACE "\[[0-9-]+ [0-9:]+\] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REGEX REPLACE "\\\[[0-9-]+ [0-9:]+\\\] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+
+# Remove log level
+string(REGEX REPLACE "\\\[script:[0-9]\\\]" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
 
 # Convert the output to a format that is expected (and more readable) by result.txt
-string(REPLACE "\ndbg: [script]" "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
-string(REPLACE "\n " "\nERROR: " REGRESSION_RESULT "${REGRESSION_RESULT}")
-string(REPLACE "\nERROR: [1] " "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
-string(REPLACE "\n[P] " "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REPLACE "dbg:  " "ERROR: " REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REPLACE "ERROR: [1] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REPLACE "[P] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REPLACE "[S] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REGEX REPLACE "dbg: ([^\n]*)\n?" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+
+# Remove duplicate script info
+string(REGEX REPLACE "ERROR: Registering([^\n]*)\n?" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REGEX REPLACE "ERROR:   [12]([^\n]*)\n?" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REGEX REPLACE "ERROR: The first([^\n]*)\n?" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
 
 # Read the expected result
 file(READ ai/${REGRESSION_TEST}/result.txt REGRESSION_EXPECTED)
@@ -87,7 +97,7 @@ foreach(RESULT IN LISTS REGRESSION_RESULT)
 
     if(NOT RESULT STREQUAL EXPECTED)
         message("${ARGC}: - ${EXPECTED}")
-        message("${ARGC}: + ${RESULT}'")
+        message("${ARGC}: + ${RESULT}")
         set(ERROR YES)
     endif()
 endforeach()

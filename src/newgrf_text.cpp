@@ -17,21 +17,17 @@
 
 #include "stdafx.h"
 
-#include <array>
-
 #include "newgrf.h"
-#include "strings_func.h"
+#include "strings_internal.h"
 #include "newgrf_storage.h"
 #include "newgrf_text.h"
 #include "newgrf_cargo.h"
 #include "string_func.h"
-#include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "debug.h"
 #include "core/alloc_type.hpp"
-#include "core/smallmap_type.hpp"
 #include "language.h"
 #include <sstream>
-#include <map>
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -68,16 +64,15 @@ enum GRFExtendedLanguages {
  * since it is NOT SUPPOSED to happen.
  */
 struct GRFTextEntry {
-	uint32 grfid;
-	uint16 stringid;
-	StringID def_string;
 	GRFTextList textholder;
+	StringID def_string;
+	uint32_t grfid;
+	uint16_t stringid;
 };
 
 
-static uint _num_grf_texts = 0;
-static GRFTextEntry _grf_text[TAB_SIZE_NEWGRF];
-static byte _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
+static std::vector<GRFTextEntry> _grf_text;
+static uint8_t _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
 
 /**
  * Get the mapping from the NewGRF supplied ID to OpenTTD's internal ID.
@@ -125,7 +120,7 @@ struct UnmappedChoiceList {
 	int offset;             ///< The offset for the plural/gender form.
 
 	/** Mapping of NewGRF supplied ID to the different strings in the choice list. */
-	std::map<byte, std::stringstream> strings;
+	std::map<uint8_t, std::stringstream> strings;
 
 	/**
 	 * Flush this choice list into the destination string.
@@ -137,7 +132,7 @@ struct UnmappedChoiceList {
 		if (this->strings.find(0) == this->strings.end()) {
 			/* In case of a (broken) NewGRF without a default,
 			 * assume an empty string. */
-			grfmsg(1, "choice list misses default value");
+			GrfMsg(1, "choice list misses default value");
 			this->strings[0] = std::stringstream();
 		}
 
@@ -162,13 +157,13 @@ struct UnmappedChoiceList {
 
 			/* "<NUM CASES>" */
 			int count = 0;
-			for (uint8 i = 0; i < _current_language->num_cases; i++) {
+			for (uint8_t i = 0; i < _current_language->num_cases; i++) {
 				/* Count the ones we have a mapped string for. */
 				if (this->strings.find(lm->GetReverseMapping(i, false)) != this->strings.end()) count++;
 			}
 			*d++ = count;
 
-			for (uint8 i = 0; i < _current_language->num_cases; i++) {
+			for (uint8_t i = 0; i < _current_language->num_cases; i++) {
 				/* Resolve the string we're looking for. */
 				int idx = lm->GetReverseMapping(i, false);
 				if (this->strings.find(idx) == this->strings.end()) continue;
@@ -211,7 +206,7 @@ struct UnmappedChoiceList {
 				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
 				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0].str();
 				size_t len = str.size() + 1;
-				if (len > 0xFF) grfmsg(1, "choice list string is too long");
+				if (len > 0xFF) GrfMsg(1, "choice list string is too long");
 				*d++ = GB(len, 0, 8);
 			}
 
@@ -238,16 +233,16 @@ struct UnmappedChoiceList {
  * @param byte80         The control code to use as replacement for the 0x80-value.
  * @return The translated string.
  */
-std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newlines, const std::string &str, StringControlCode byte80)
+std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool allow_newlines, std::string_view str, StringControlCode byte80)
 {
 	/* Empty input string? Nothing to do here. */
-	if (str.empty()) return str;
+	if (str.empty()) return {};
 
-	std::string::const_iterator src = str.cbegin();
+	std::string_view::const_iterator src = str.cbegin();
 
 	/* Is this an unicode string? */
 	bool unicode = false;
-	WChar marker;
+	char32_t marker;
 	size_t len = Utf8Decode(&marker, &*src);
 
 	if (marker == NFO_UTF8_IDENTIFIER) {
@@ -261,7 +256,7 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 	std::ostringstream dest;
 	std::ostreambuf_iterator<char> d(dest);
 	while (src != str.cend()) {
-		WChar c;
+		char32_t c;
 
 		if (unicode && Utf8EncodedCharLen(*src) != 0) {
 			c = Utf8Consume(src);
@@ -274,7 +269,7 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 				continue;
 			}
 		} else {
-			c = (byte)*src++;
+			c = static_cast<uint8_t>(*src++);
 		}
 
 		if (c == '\0') break;
@@ -290,7 +285,7 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 				if (allow_newlines) {
 					*d++ = 0x0A;
 				} else {
-					grfmsg(1, "Detected newline in string that does not allow one");
+					GrfMsg(1, "Detected newline in string that does not allow one");
 				}
 				break;
 			case 0x0E: Utf8Encode(d, SCC_TINYFONT); break;
@@ -310,8 +305,8 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 			{
 				if (src[0] == '\0' || src[1] == '\0') goto string_end;
 				StringID string;
-				string = ((uint8)* src++);
-				string |= ((uint8)* src++) << 8;
+				string = static_cast<uint8_t>(*src++);
+				string |= static_cast<uint8_t>(*src++) << 8;
 				Utf8Encode(d, SCC_NEWGRF_STRINL);
 				Utf8Encode(d, MapGRFStringID(grfid, string));
 				break;
@@ -355,17 +350,12 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 					case 0x03:
 					{
 						if (src[0] == '\0' || src[1] == '\0') goto string_end;
-						uint16 tmp = ((uint8)* src++);
-						tmp |= ((uint8)* src++) << 8;
+						uint16_t tmp = static_cast<uint8_t>(*src++);
+						tmp |= static_cast<uint8_t>(*src++) << 8;
 						Utf8Encode(d, SCC_NEWGRF_PUSH_WORD);
 						Utf8Encode(d, tmp);
 						break;
 					}
-					case 0x04:
-						if (src[0] == '\0') goto string_end;
-						Utf8Encode(d, SCC_NEWGRF_UNPRINT);
-						Utf8Encode(d, *src++);
-						break;
 					case 0x06: Utf8Encode(d, SCC_NEWGRF_PRINT_BYTE_HEX);          break;
 					case 0x07: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_HEX);          break;
 					case 0x08: Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_HEX);         break;
@@ -392,12 +382,12 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 						if (str[0] == '\0') goto string_end;
 						if (mapping == nullptr) {
 							if (code == 0x10) src++; // Skip the index
-							grfmsg(1, "choice list %s marker found when not expected", code == 0x10 ? "next" : "default");
+							GrfMsg(1, "choice list {} marker found when not expected", code == 0x10 ? "next" : "default");
 							break;
 						} else {
 							int index = (code == 0x10 ? *src++ : 0);
 							if (mapping->strings.find(index) != mapping->strings.end()) {
-								grfmsg(1, "duplicate choice list string, ignoring");
+								GrfMsg(1, "duplicate choice list string, ignoring");
 							} else {
 								d = std::ostreambuf_iterator<char>(mapping->strings[index]);
 							}
@@ -406,7 +396,7 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 
 					case 0x12:
 						if (mapping == nullptr) {
-							grfmsg(1, "choice list end marker found when not expected");
+							GrfMsg(1, "choice list end marker found when not expected");
 						} else {
 							/* Now we can start flushing everything and clean everything up. */
 							mapping->Flush(LanguageMap::GetLanguageMap(grfid, language_id), dest);
@@ -422,7 +412,7 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 					case 0x15:
 						if (src[0] == '\0') goto string_end;
 						if (mapping != nullptr) {
-							grfmsg(1, "choice lists can't be stacked, it's going to get messy now...");
+							GrfMsg(1, "choice lists can't be stacked, it's going to get messy now...");
 							if (code != 0x14) src++;
 						} else {
 							static const StringControlCode mp[] = { SCC_GENDER_LIST, SCC_SWITCH_CASE, SCC_PLURAL_LIST };
@@ -445,8 +435,10 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 					case 0x1F: Utf8Encode(d, SCC_PUSH_COLOUR); break;
 					case 0x20: Utf8Encode(d, SCC_POP_COLOUR);  break;
 
+					case 0x21: Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_FORCE); break;
+
 					default:
-						grfmsg(1, "missing handler for extended format code");
+						GrfMsg(1, "missing handler for extended format code");
 						break;
 				}
 				break;
@@ -477,7 +469,7 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 
 string_end:
 	if (mapping != nullptr) {
-		grfmsg(1, "choice list was incomplete, the whole list is ignored");
+		GrfMsg(1, "choice list was incomplete, the whole list is ignored");
 		delete mapping;
 	}
 
@@ -490,7 +482,7 @@ string_end:
  * @param langid The The language of the new text.
  * @param text_to_add The text to add to the list.
  */
-static void AddGRFTextToList(GRFTextList &list, byte langid, const std::string &text_to_add)
+static void AddGRFTextToList(GRFTextList &list, uint8_t langid, std::string_view text_to_add)
 {
 	/* Loop through all languages and see if we can replace a string */
 	for (auto &text : list) {
@@ -501,7 +493,7 @@ static void AddGRFTextToList(GRFTextList &list, byte langid, const std::string &
 	}
 
 	/* If a string wasn't replaced, then we must append the new string */
-	list.push_back(GRFText{ langid, text_to_add });
+	list.push_back(GRFText{ langid, std::string(text_to_add) });
 }
 
 /**
@@ -513,7 +505,7 @@ static void AddGRFTextToList(GRFTextList &list, byte langid, const std::string &
  * @param text_to_add The text to add to the list.
  * @note All text-codes will be translated.
  */
-void AddGRFTextToList(GRFTextList &list, byte langid, uint32 grfid, bool allow_newlines, const char *text_to_add)
+void AddGRFTextToList(GRFTextList &list, uint8_t langid, uint32_t grfid, bool allow_newlines, std::string_view text_to_add)
 {
 	AddGRFTextToList(list, langid, TranslateTTDPatchCodes(grfid, langid, allow_newlines, text_to_add));
 }
@@ -527,7 +519,7 @@ void AddGRFTextToList(GRFTextList &list, byte langid, uint32 grfid, bool allow_n
  * @param text_to_add The text to add to the list.
  * @note All text-codes will be translated.
  */
-void AddGRFTextToList(GRFTextWrapper &list, byte langid, uint32 grfid, bool allow_newlines, const char *text_to_add)
+void AddGRFTextToList(GRFTextWrapper &list, uint8_t langid, uint32_t grfid, bool allow_newlines, std::string_view text_to_add)
 {
 	if (!list) list.reset(new GRFTextList());
 	AddGRFTextToList(*list, langid, grfid, allow_newlines, text_to_add);
@@ -539,7 +531,7 @@ void AddGRFTextToList(GRFTextWrapper &list, byte langid, uint32 grfid, bool allo
  * @param list The list where the text should be added to.
  * @param text_to_add The text to add to the list.
  */
-void AddGRFTextToList(GRFTextWrapper &list, const std::string &text_to_add)
+void AddGRFTextToList(GRFTextWrapper &list, std::string_view text_to_add)
 {
 	if (!list) list.reset(new GRFTextList());
 	AddGRFTextToList(*list, GRFLX_UNSPECIFIED, text_to_add);
@@ -548,7 +540,7 @@ void AddGRFTextToList(GRFTextWrapper &list, const std::string &text_to_add)
 /**
  * Add the new read string into our structure.
  */
-StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool new_scheme, bool allow_newlines, const char *text_to_add, StringID def_string)
+StringID AddGRFString(uint32_t grfid, uint16_t stringid, uint8_t langid_to_add, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string)
 {
 	/* When working with the old language scheme (grf_version is less than 7) and
 	 * English or American is among the set bits, simply add it as English in
@@ -568,29 +560,23 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 		}
 	}
 
-	uint id;
-	for (id = 0; id < _num_grf_texts; id++) {
-		if (_grf_text[id].grfid == grfid && _grf_text[id].stringid == stringid) {
-			break;
-		}
-	}
+	auto it = std::find_if(std::begin(_grf_text), std::end(_grf_text), [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
+	if (it == std::end(_grf_text)) {
+		/* Too many strings allocated, return empty. */
+		if (_grf_text.size() == TAB_SIZE_NEWGRF) return STR_EMPTY;
 
-	/* Too many strings allocated, return empty */
-	if (id == lengthof(_grf_text)) return STR_EMPTY;
+		/* We didn't find our stringid and grfid in the list, allocate a new id. */
+		it = _grf_text.emplace(std::end(_grf_text));
+		it->grfid      = grfid;
+		it->stringid   = stringid;
+		it->def_string = def_string;
+	}
+	uint id = static_cast<uint>(it - std::begin(_grf_text));
 
 	std::string newtext = TranslateTTDPatchCodes(grfid, langid_to_add, allow_newlines, text_to_add);
+	AddGRFTextToList(it->textholder, langid_to_add, newtext);
 
-	/* If we didn't find our stringid and grfid in the list, allocate a new id */
-	if (id == _num_grf_texts) _num_grf_texts++;
-
-	if (_grf_text[id].textholder.empty()) {
-		_grf_text[id].grfid      = grfid;
-		_grf_text[id].stringid   = stringid;
-		_grf_text[id].def_string = def_string;
-	}
-	AddGRFTextToList(_grf_text[id].textholder, langid_to_add, newtext);
-
-	grfmsg(3, "Added 0x%X: grfid %08X string 0x%X lang 0x%X string '%s' (%X)", id, grfid, stringid, langid_to_add, newtext.c_str(), MakeStringID(TEXT_TAB_NEWGRF_START, id));
+	GrfMsg(3, "Added 0x{:X} grfid {:08X} string 0x{:X} lang 0x{:X} string '{}' ({:X})", id, grfid, stringid, langid_to_add, newtext, MakeStringID(TEXT_TAB_NEWGRF_START, id));
 
 	return MakeStringID(TEXT_TAB_NEWGRF_START, id);
 }
@@ -598,12 +584,12 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 /**
  * Returns the index for this stringid associated with its grfID
  */
-StringID GetGRFStringID(uint32 grfid, StringID stringid)
+StringID GetGRFStringID(uint32_t grfid, StringID stringid)
 {
-	for (uint id = 0; id < _num_grf_texts; id++) {
-		if (_grf_text[id].grfid == grfid && _grf_text[id].stringid == stringid) {
-			return MakeStringID(TEXT_TAB_NEWGRF_START, id);
-		}
+	auto it = std::find_if(std::begin(_grf_text), std::end(_grf_text), [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
+	if (it != std::end(_grf_text)) {
+		uint id = static_cast<uint>(it - std::begin(_grf_text));
+		return MakeStringID(TEXT_TAB_NEWGRF_START, id);
 	}
 
 	return STR_UNDEFINED;
@@ -650,8 +636,9 @@ const char *GetGRFStringFromGRFText(const GRFTextWrapper &text)
 /**
  * Get a C-string from a stringid set by a newgrf.
  */
-const char *GetGRFStringPtr(uint16 stringid)
+const char *GetGRFStringPtr(uint32_t stringid)
 {
+	assert(stringid < _grf_text.size());
 	assert(_grf_text[stringid].grfid != 0);
 
 	const char *str = GetGRFStringFromGRFText(_grf_text[stringid].textholder);
@@ -669,12 +656,12 @@ const char *GetGRFStringPtr(uint16 stringid)
  * from strings.cpp:ReadLanguagePack
  * @param language_id iso code of current selection
  */
-void SetCurrentGrfLangID(byte language_id)
+void SetCurrentGrfLangID(uint8_t language_id)
 {
 	_currentLangID = language_id;
 }
 
-bool CheckGrfLangID(byte lang_id, byte grf_version)
+bool CheckGrfLangID(uint8_t lang_id, uint8_t grf_version)
 {
 	if (grf_version < 7) {
 		switch (_currentLangID) {
@@ -690,63 +677,55 @@ bool CheckGrfLangID(byte lang_id, byte grf_version)
 
 /**
  * House cleaning.
- * Remove all strings and reset the text counter.
+ * Remove all strings.
  */
 void CleanUpStrings()
 {
-	uint id;
-
-	for (id = 0; id < _num_grf_texts; id++) {
-		_grf_text[id].grfid      = 0;
-		_grf_text[id].stringid   = 0;
-		_grf_text[id].textholder.clear();
-	}
-
-	_num_grf_texts = 0;
+	_grf_text.clear();
 }
 
 struct TextRefStack {
-	std::array<byte, 0x30> stack;
-	byte position;
+	std::array<uint8_t, 0x30> stack;
+	uint8_t position;
 	const GRFFile *grffile;
 	bool used;
 
 	TextRefStack() : position(0), grffile(nullptr), used(false) {}
 
-	uint8  PopUnsignedByte()  { assert(this->position < this->stack.size()); return this->stack[this->position++]; }
-	int8   PopSignedByte()    { return (int8)this->PopUnsignedByte(); }
+	uint8_t  PopUnsignedByte()  { assert(this->position < this->stack.size()); return this->stack[this->position++]; }
+	int8_t   PopSignedByte()    { return (int8_t)this->PopUnsignedByte(); }
 
-	uint16 PopUnsignedWord()
+	uint16_t PopUnsignedWord()
 	{
-		uint16 val = this->PopUnsignedByte();
+		uint16_t val = this->PopUnsignedByte();
 		return val | (this->PopUnsignedByte() << 8);
 	}
-	int16  PopSignedWord()    { return (int32)this->PopUnsignedWord(); }
+	int16_t  PopSignedWord()    { return (int32_t)this->PopUnsignedWord(); }
 
-	uint32 PopUnsignedDWord()
+	uint32_t PopUnsignedDWord()
 	{
-		uint32 val = this->PopUnsignedWord();
+		uint32_t val = this->PopUnsignedWord();
 		return val | (this->PopUnsignedWord() << 16);
 	}
-	int32  PopSignedDWord()   { return (int32)this->PopUnsignedDWord(); }
+	int32_t  PopSignedDWord()   { return (int32_t)this->PopUnsignedDWord(); }
 
-	uint64 PopUnsignedQWord()
+	uint64_t PopUnsignedQWord()
 	{
-		uint64 val = this->PopUnsignedDWord();
-		return val | (((uint64)this->PopUnsignedDWord()) << 32);
+		uint64_t val = this->PopUnsignedDWord();
+		return val | (((uint64_t)this->PopUnsignedDWord()) << 32);
 	}
-	int64  PopSignedQWord()   { return (int64)this->PopUnsignedQWord(); }
+	int64_t  PopSignedQWord()   { return (int64_t)this->PopUnsignedQWord(); }
 
 	/** Rotate the top four words down: W1, W2, W3, W4 -> W4, W1, W2, W3 */
 	void RotateTop4Words()
 	{
-		byte tmp[2];
+		uint8_t tmp[2];
 		for (int i = 0; i  < 2; i++) tmp[i] = this->stack[this->position + i + 6];
 		for (int i = 5; i >= 0; i--) this->stack[this->position + i + 2] = this->stack[this->position + i];
 		for (int i = 0; i  < 2; i++) this->stack[this->position + i] = tmp[i];
 	}
 
-	void PushWord(uint16 word)
+	void PushWord(uint16_t word)
 	{
 		if (this->position >= 2) {
 			this->position -= 2;
@@ -765,8 +744,6 @@ struct TextRefStack {
 		this->grffile = grffile;
 		this->used = true;
 	}
-
-	void RewindStack() { this->position = 0; }
 };
 
 /** The stack that is used for TTDP compatible string code parsing */
@@ -818,15 +795,15 @@ void RestoreTextRefStackBackup(struct TextRefStack *backup)
  * @param numEntries number of entries to copy from the registers
  * @param values values to copy onto the stack; if nullptr the temporary NewGRF registers will be used instead
  */
-void StartTextRefStackUsage(const GRFFile *grffile, byte numEntries, const uint32 *values)
+void StartTextRefStackUsage(const GRFFile *grffile, uint8_t numEntries, const uint32_t *values)
 {
-	extern TemporaryStorageArray<int32, 0x110> _temp_store;
+	extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
 
 	_newgrf_textrefstack.ResetStack(grffile);
 
 	auto stack_it = _newgrf_textrefstack.stack.begin();
 	for (uint i = 0; i < numEntries; i++) {
-		uint32 value = values != nullptr ? values[i] : _temp_store.GetValue(0x100 + i);
+		uint32_t value = values != nullptr ? values[i] : _temp_store.GetValue(0x100 + i);
 		for (uint j = 0; j < 32; j += 8) {
 			*stack_it = GB(value, j, 8);
 			stack_it++;
@@ -840,22 +817,15 @@ void StopTextRefStackUsage()
 	_newgrf_textrefstack.used = false;
 }
 
-void RewindTextRefStack()
-{
-	_newgrf_textrefstack.RewindStack();
-}
-
 /**
  * FormatString for NewGRF specific "magic" string control codes
  * @param scc   the string control code that has been read
- * @param buff  the buffer we're writing to
  * @param str   the string that we need to write
- * @param argv  the OpenTTD stack of values
- * @param argv_size space on the stack \a argv
- * @param modify_argv When true, modify the OpenTTD stack.
+ * @param parameters the OpenTTD string formatting parameters
+ * @param modify_parameters When true, modify the OpenTTD string formatting parameters.
  * @return the string control code to "execute" now
  */
-uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv, uint argv_size, bool modify_argv)
+uint RemapNewGRFStringControlCode(uint scc, const char **str, StringParameters &parameters, bool modify_parameters)
 {
 	switch (scc) {
 		default: break;
@@ -882,9 +852,10 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG:
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_SHORT:
 		case SCC_NEWGRF_PRINT_WORD_POWER:
+		case SCC_NEWGRF_PRINT_DWORD_FORCE:
 		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_NAME:
-			if (argv_size < 1) {
+			if (parameters.GetDataLeft() < 1) {
 				Debug(misc, 0, "Too many NewGRF string parameters.");
 				return 0;
 			}
@@ -894,67 +865,67 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_TINY:
-			if (argv_size < 2) {
+			if (parameters.GetDataLeft() < 2) {
 				Debug(misc, 0, "Too many NewGRF string parameters.");
 				return 0;
 			}
 			break;
 	}
 
-	if (_newgrf_textrefstack.used && modify_argv) {
+	if (_newgrf_textrefstack.used && modify_parameters) {
 		/* There is data on the NewGRF text stack, and we want to move them to OpenTTD's string stack.
-		 * After this call, a new call is made with `modify_argv` set to false when the string is finally formatted. */
+		 * After this call, a new call is made with `modify_parameters` set to false when the string is finally formatted. */
 		switch (scc) {
 			default: NOT_REACHED();
-			case SCC_NEWGRF_PRINT_BYTE_SIGNED:      *argv = _newgrf_textrefstack.PopSignedByte();    break;
-			case SCC_NEWGRF_PRINT_QWORD_CURRENCY:   *argv = _newgrf_textrefstack.PopSignedQWord();   break;
+			case SCC_NEWGRF_PRINT_BYTE_SIGNED:      parameters.SetParam(0, _newgrf_textrefstack.PopSignedByte());    break;
+			case SCC_NEWGRF_PRINT_QWORD_CURRENCY:   parameters.SetParam(0, _newgrf_textrefstack.PopSignedQWord());   break;
 
 			case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
-			case SCC_NEWGRF_PRINT_DWORD_SIGNED:     *argv = _newgrf_textrefstack.PopSignedDWord();   break;
+			case SCC_NEWGRF_PRINT_DWORD_SIGNED:     parameters.SetParam(0, _newgrf_textrefstack.PopSignedDWord());   break;
 
-			case SCC_NEWGRF_PRINT_BYTE_HEX:         *argv = _newgrf_textrefstack.PopUnsignedByte();  break;
-			case SCC_NEWGRF_PRINT_QWORD_HEX:        *argv = _newgrf_textrefstack.PopUnsignedQWord(); break;
+			case SCC_NEWGRF_PRINT_BYTE_HEX:         parameters.SetParam(0, _newgrf_textrefstack.PopUnsignedByte());  break;
+			case SCC_NEWGRF_PRINT_QWORD_HEX:        parameters.SetParam(0, _newgrf_textrefstack.PopUnsignedQWord()); break;
 
 			case SCC_NEWGRF_PRINT_WORD_SPEED:
 			case SCC_NEWGRF_PRINT_WORD_VOLUME_LONG:
 			case SCC_NEWGRF_PRINT_WORD_VOLUME_SHORT:
-			case SCC_NEWGRF_PRINT_WORD_SIGNED:      *argv = _newgrf_textrefstack.PopSignedWord();    break;
+			case SCC_NEWGRF_PRINT_WORD_SIGNED:      parameters.SetParam(0, _newgrf_textrefstack.PopSignedWord());    break;
 
 			case SCC_NEWGRF_PRINT_WORD_HEX:
 			case SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG:
 			case SCC_NEWGRF_PRINT_WORD_WEIGHT_SHORT:
 			case SCC_NEWGRF_PRINT_WORD_POWER:
 			case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
-			case SCC_NEWGRF_PRINT_WORD_UNSIGNED:    *argv = _newgrf_textrefstack.PopUnsignedWord();  break;
+			case SCC_NEWGRF_PRINT_WORD_UNSIGNED:    parameters.SetParam(0, _newgrf_textrefstack.PopUnsignedWord());  break;
 
+			case SCC_NEWGRF_PRINT_DWORD_FORCE:
 			case SCC_NEWGRF_PRINT_DWORD_DATE_LONG:
 			case SCC_NEWGRF_PRINT_DWORD_DATE_SHORT:
-			case SCC_NEWGRF_PRINT_DWORD_HEX:        *argv = _newgrf_textrefstack.PopUnsignedDWord(); break;
+			case SCC_NEWGRF_PRINT_DWORD_HEX:        parameters.SetParam(0, _newgrf_textrefstack.PopUnsignedDWord()); break;
 
 			/* Dates from NewGRFs have 1920-01-01 as their zero point, convert it to OpenTTD's epoch. */
 			case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
-			case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  *argv = _newgrf_textrefstack.PopUnsignedWord() + DAYS_TILL_ORIGINAL_BASE_YEAR; break;
+			case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  parameters.SetParam(0, _newgrf_textrefstack.PopUnsignedWord() + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); break;
 
 			case SCC_NEWGRF_DISCARD_WORD:           _newgrf_textrefstack.PopUnsignedWord(); break;
 
 			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     _newgrf_textrefstack.RotateTop4Words(); break;
 			case SCC_NEWGRF_PUSH_WORD:              _newgrf_textrefstack.PushWord(Utf8Consume(str)); break;
-			case SCC_NEWGRF_UNPRINT:                *buff = std::max(*buff - Utf8Consume(str), buf_start); break;
 
 			case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 			case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
 			case SCC_NEWGRF_PRINT_WORD_CARGO_TINY:
-				argv[0] = GetCargoTranslation(_newgrf_textrefstack.PopUnsignedWord(), _newgrf_textrefstack.grffile);
-				argv[1] = _newgrf_textrefstack.PopUnsignedWord();
+				parameters.SetParam(0, GetCargoTranslation(_newgrf_textrefstack.PopUnsignedWord(), _newgrf_textrefstack.grffile));
+				parameters.SetParam(1, _newgrf_textrefstack.PopUnsignedWord());
 				break;
 
 			case SCC_NEWGRF_PRINT_WORD_STRING_ID:
-				*argv = MapGRFStringID(_newgrf_textrefstack.grffile->grfid, _newgrf_textrefstack.PopUnsignedWord());
+				parameters.SetParam(0, MapGRFStringID(_newgrf_textrefstack.grffile->grfid, _newgrf_textrefstack.PopUnsignedWord()));
 				break;
 
 			case SCC_NEWGRF_PRINT_WORD_CARGO_NAME: {
 				CargoID cargo = GetCargoTranslation(_newgrf_textrefstack.PopUnsignedWord(), _newgrf_textrefstack.grffile);
-				*argv = cargo < NUM_CARGO ? 1ULL << cargo : 0;
+				parameters.SetParam(0, cargo < NUM_CARGO ? 1ULL << cargo : 0);
 				break;
 			}
 		}
@@ -964,7 +935,6 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			default: break;
 
 			case SCC_NEWGRF_PUSH_WORD:
-			case SCC_NEWGRF_UNPRINT:
 				Utf8Consume(str);
 				break;
 		}
@@ -1018,6 +988,9 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_PRINT_WORD_POWER:
 			return SCC_POWER;
 
+		case SCC_NEWGRF_PRINT_DWORD_FORCE:
+			return SCC_FORCE;
+
 		case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 			return SCC_CARGO_LONG;
 
@@ -1037,7 +1010,6 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_DISCARD_WORD:
 		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:
 		case SCC_NEWGRF_PUSH_WORD:
-		case SCC_NEWGRF_UNPRINT:
 			return 0;
 	}
 }

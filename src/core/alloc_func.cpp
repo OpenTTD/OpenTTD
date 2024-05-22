@@ -9,22 +9,24 @@
 
 #include "../stdafx.h"
 
+#include "../error_func.h"
+
 #include "../safeguards.h"
 
 /**
  * Function to exit with an error message after malloc() or calloc() have failed
  * @param size number of bytes we tried to allocate
  */
-void NORETURN MallocError(size_t size)
+[[noreturn]] void MallocError(size_t size)
 {
-	error("Out of memory. Cannot allocate " PRINTF_SIZE " bytes", size);
+	FatalError("Out of memory. Cannot allocate {} bytes", size);
 }
 
 /**
  * Function to exit with an error message after realloc() have failed
  * @param size number of bytes we tried to allocate
  */
-void NORETURN ReallocError(size_t size)
+[[noreturn]] void ReallocError(size_t size)
 {
-	error("Out of memory. Cannot reallocate " PRINTF_SIZE " bytes", size);
+	FatalError("Out of memory. Cannot reallocate {} bytes", size);
 }

@@ -10,8 +10,6 @@
 #ifndef SHIP_H
 #define SHIP_H
 
-#include <deque>
-
 #include "vehicle_base.h"
 #include "water_map.h"
 
@@ -23,12 +21,12 @@ typedef std::deque<Trackdir> ShipPathCache;
 /**
  * All ships have this type.
  */
-struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
-	TrackBits state;      ///< The "track" the ship is following.
+struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
 	ShipPathCache path;   ///< Cached path.
+	TrackBits state;      ///< The "track" the ship is following.
 	Direction rotation;   ///< Visible direction.
-	int16 rotation_x_pos; ///< NOSAVE: X Position before rotation.
-	int16 rotation_y_pos; ///< NOSAVE: Y Position before rotation.
+	int16_t rotation_x_pos; ///< NOSAVE: X Position before rotation.
+	int16_t rotation_y_pos; ///< NOSAVE: Y Position before rotation.
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Ship() : SpecializedVehicleBase() {}
@@ -47,7 +45,8 @@ struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
 	Money GetRunningCost() const override;
 	bool IsInDepot() const override { return this->state == TRACK_BIT_DEPOT; }
 	bool Tick() override;
-	void OnNewDay() override;
+	void OnNewCalendarDay() override;
+	void OnNewEconomyDay() override;
 	Trackdir GetVehicleTrackdir() const override;
 	TileIndex GetOrderStationLocation(StationID station) override;
 	ClosestDepot FindClosestDepot() override;

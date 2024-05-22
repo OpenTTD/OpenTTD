@@ -14,7 +14,6 @@
 #include "../../string_func.h"
 #include "../../fileio_func.h"
 #include <pthread.h>
-#include <array>
 
 #define Rect  OTTDRect
 #define Point OTTDPoint
@@ -94,21 +93,7 @@ void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
 #endif
 }
 
-#ifdef WITH_SDL
-
-/**
- * Show the system dialogue message (SDL on MacOSX).
- *
- * @param title Window title.
- * @param message Message text.
- * @param buttonLabel Button text.
- */
-void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
-{
-	NSRunAlertPanel([ NSString stringWithUTF8String:title ], [ NSString stringWithUTF8String:message ], [ NSString stringWithUTF8String:buttonLabel ], nil, nil);
-}
-
-#elif defined WITH_COCOA
+#ifdef WITH_COCOA
 
 extern void CocoaDialog(const char *title, const char *message, const char *buttonLabel);
 
@@ -136,7 +121,7 @@ void ShowMacDialog(const char *title, const char *message, const char *buttonLab
  */
 void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
 {
-	fprintf(stderr, "%s: %s\n", title, message);
+	fmt::print(stderr, "{}: {}\n", title, message);
 }
 
 #endif
@@ -158,9 +143,9 @@ void ShowOSErrorBox(const char *buf, bool system)
 	}
 }
 
-void OSOpenBrowser(const char *url)
+void OSOpenBrowser(const std::string &url)
 {
-	[ [ NSWorkspace sharedWorkspace ] openURL:[ NSURL URLWithString:[ NSString stringWithUTF8String:url ] ] ];
+	[ [ NSWorkspace sharedWorkspace ] openURL:[ NSURL URLWithString:[ NSString stringWithUTF8String:url.c_str() ] ] ];
 }
 
 /**
@@ -184,25 +169,21 @@ const char *GetCurrentLocale(const char *)
 /**
  * Return the contents of the clipboard (COCOA).
  *
- * @param buffer Clipboard content.
- * @param last The pointer to the last element of the destination buffer
- * @return Whether clipboard is empty or not.
+ * @return The (optional) clipboard contents.
  */
-bool GetClipboardContents(char *buffer, const char *last)
+std::optional<std::string> GetClipboardContents()
 {
 	NSPasteboard *pb = [ NSPasteboard generalPasteboard ];
 	NSArray *types = [ NSArray arrayWithObject:NSPasteboardTypeString ];
 	NSString *bestType = [ pb availableTypeFromArray:types ];
 
 	/* Clipboard has no text data available. */
-	if (bestType == nil) return false;
+	if (bestType == nil) return std::nullopt;
 
 	NSString *string = [ pb stringForType:NSPasteboardTypeString ];
-	if (string == nil || [ string length ] == 0) return false;
+	if (string == nil || [ string length ] == 0) return std::nullopt;
 
-	strecpy(buffer, [ string UTF8String ], last);
-
-	return true;
+	return [ string UTF8String ];
 }
 
 /** Set the application's bundle directory.
@@ -271,4 +252,9 @@ void MacOSSetThreadName(const char *name)
 	if (cur != nil && [ cur respondsToSelector:@selector(setName:) ]) {
 		[ cur performSelector:@selector(setName:) withObject:[ NSString stringWithUTF8String:name ] ];
 	}
+}
+
+uint64_t MacOSGetPhysicalMemory()
+{
+	return [ [ NSProcessInfo processInfo ] physicalMemory ];
 }

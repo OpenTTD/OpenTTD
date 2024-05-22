@@ -14,7 +14,8 @@
 #include "../textfile_type.h"
 
 /** Widgets of the #NewGRFParametersWindow class. */
-enum NewGRFParametersWidgets {
+enum NewGRFParametersWidgets : WidgetID {
+	WID_NP_CAPTION,          ///< Caption of the window.
 	WID_NP_SHOW_NUMPAR,      ///< #NWID_SELECTION to optionally display #WID_NP_NUMPAR.
 	WID_NP_NUMPAR_DEC,       ///< Button to decrease number of parameters.
 	WID_NP_NUMPAR_INC,       ///< Button to increase number of parameters.
@@ -26,10 +27,12 @@ enum NewGRFParametersWidgets {
 	WID_NP_RESET,            ///< Reset button.
 	WID_NP_SHOW_DESCRIPTION, ///< #NWID_SELECTION to optionally display parameter descriptions.
 	WID_NP_DESCRIPTION,      ///< Multi-line description of a parameter.
+
+	WID_NP_SETTING_DROPDOWN = -1, ///< Dynamically created dropdown for changing setting value.
 };
 
 /** Widgets of the #NewGRFWindow class. */
-enum NewGRFStateWidgets {
+enum NewGRFStateWidgets : WidgetID {
 	WID_NS_PRESET_LIST,       ///< Active NewGRF preset.
 	WID_NS_PRESET_SAVE,       ///< Save list of active NewGRFs as presets.
 	WID_NS_PRESET_DELETE,     ///< Delete active preset.
@@ -47,7 +50,7 @@ enum NewGRFStateWidgets {
 	WID_NS_NEWGRF_INFO,       ///< Panel for Info on selected NewGRF.
 	WID_NS_OPEN_URL,          ///< Open URL of NewGRF.
 	WID_NS_NEWGRF_TEXTFILE,   ///< Open NewGRF readme, changelog (+1) or license (+2).
-	WID_NS_SET_PARAMETERS = WID_NS_NEWGRF_TEXTFILE + TFT_END,   ///< Open Parameters Window for selected NewGRF for editing parameters.
+	WID_NS_SET_PARAMETERS = WID_NS_NEWGRF_TEXTFILE + TFT_CONTENT_END,   ///< Open Parameters Window for selected NewGRF for editing parameters.
 	WID_NS_VIEW_PARAMETERS,   ///< Open Parameters Window for selected NewGRF for viewing parameters.
 	WID_NS_TOGGLE_PALETTE,    ///< Toggle Palette of selected, active NewGRF.
 	WID_NS_APPLY_CHANGES,     ///< Apply changes to NewGRF config.
@@ -60,7 +63,7 @@ enum NewGRFStateWidgets {
 };
 
 /** Widgets of the #SavePresetWindow class. */
-enum SavePresetWidgets {
+enum SavePresetWidgets : WidgetID {
 	WID_SVP_PRESET_LIST, ///< List with available preset names.
 	WID_SVP_SCROLLBAR,   ///< Scrollbar for the list available preset names.
 	WID_SVP_EDITBOX,     ///< Edit box for changing the preset name.
@@ -69,7 +72,7 @@ enum SavePresetWidgets {
 };
 
 /** Widgets of the #ScanProgressWindow class. */
-enum ScanProgressWidgets {
+enum ScanProgressWidgets : WidgetID {
 	WID_SP_PROGRESS_BAR,  ///< Simple progress bar.
 	WID_SP_PROGRESS_TEXT, ///< Text explaining what is happening.
 };

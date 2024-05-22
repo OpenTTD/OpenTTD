@@ -2,6 +2,7 @@
 
 #include "../stdafx.h"
 #include "demands.h"
+#include "../core/math_func.hpp"
 #include <queue>
 
 #include "../safeguards.h"
@@ -204,26 +205,29 @@ void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)
 				continue;
 			}
 
-			int32 supply = scaler.EffectiveSupply(job[from_id], job[to_id]);
+			int32_t supply = scaler.EffectiveSupply(job[from_id], job[to_id]);
 			assert(supply > 0);
 
-			/* Scale the distance by mod_dist around max_distance */
-			int32 distance = this->max_distance - (this->max_distance -
-					(int32)DistanceMaxPlusManhattan(job[from_id].base.xy, job[to_id].base.xy)) *
-					this->mod_dist / 100;
+			constexpr int32_t divisor_scale = 16;
+
+			int32_t scaled_distance = this->base_distance;
+			if (this->mod_dist > 0) {
+				const int32_t distance = DistanceMaxPlusManhattan(job[from_id].base.xy, job[to_id].base.xy);
+				/* Scale distance around base_distance by (mod_dist * (100 / 1024)).
+				 * mod_dist may be > 1024, so clamp result to be non-negative */
+				scaled_distance = std::max(0, this->base_distance + (((distance - this->base_distance) * this->mod_dist) / 1024));
+			}
 
 			/* Scale the accuracy by distance around accuracy / 2 */
-			int32 divisor = this->accuracy * (this->mod_dist - 50) / 100 +
-					this->accuracy * distance / this->max_distance + 1;
-
-			assert(divisor > 0);
+			const int32_t divisor = divisor_scale + ((this->accuracy * scaled_distance * divisor_scale) / (this->base_distance * 2));
+			assert(divisor >= divisor_scale);
 
 			uint demand_forw = 0;
-			if (divisor <= supply) {
+			if (divisor <= (supply * divisor_scale)) {
 				/* At first only distribute demand if
 				 * effective supply / accuracy divisor >= 1
 				 * Others are too small or too far away to be considered. */
-				demand_forw = supply / divisor;
+				demand_forw = (supply * divisor_scale) / divisor;
 			} else if (++chance > this->accuracy * num_demands * num_supplies) {
 				/* After some trying, if there is still supply left, distribute
 				 * demand also to other nodes. */
@@ -256,7 +260,7 @@ void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)
  * @param job Job to calculate the demands for.
  */
 DemandCalculator::DemandCalculator(LinkGraphJob &job) :
-	max_distance(DistanceMaxPlusManhattan(TileXY(0,0), TileXY(Map::MaxX(), Map::MaxY())))
+	base_distance(IntSqrt(DistanceMaxPlusManhattan(TileXY(0,0), TileXY(Map::MaxX(), Map::MaxY()))))
 {
 	const LinkGraphSettings &settings = job.Settings();
 	CargoID cargo = job.Cargo();
@@ -264,9 +268,15 @@ DemandCalculator::DemandCalculator(LinkGraphJob &job) :
 	this->accuracy = settings.accuracy;
 	this->mod_dist = settings.demand_distance;
 	if (this->mod_dist > 100) {
-		/* Increase effect of mod_dist > 100 */
+		/* Increase effect of mod_dist > 100.
+		 * Quadratic:
+		 *   100 --> 100
+		 *   150 --> 308
+		 *   200 --> 933
+		 *   255 --> 2102
+		 */
 		int over100 = this->mod_dist - 100;
-		this->mod_dist = 100 + over100 * over100;
+		this->mod_dist = 100 + ((over100 * over100) / 12);
 	}
 
 	switch (settings.GetDistributionType(cargo)) {

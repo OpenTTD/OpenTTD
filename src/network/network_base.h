@@ -14,7 +14,7 @@
 #include "core/address.h"
 #include "../core/pool_type.hpp"
 #include "../company_type.h"
-#include "../date_type.h"
+#include "../timer/timer_game_economy.h"
 
 /** Type for the pool with client information. */
 typedef Pool<NetworkClientInfo, ClientIndex, 8, MAX_CLIENT_SLOTS, PT_NCLIENT> NetworkClientInfoPool;
@@ -24,8 +24,9 @@ extern NetworkClientInfoPool _networkclientinfo_pool;
 struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_pool> {
 	ClientID client_id;      ///< Client identifier (same as ClientState->client_id)
 	std::string client_name; ///< Name of the client
+	std::string public_key; ///< The public key of the client.
 	CompanyID client_playas; ///< As which company is this client playing (CompanyID)
-	Date join_date;          ///< Gamedate the client has joined
+	TimerGameEconomy::Date join_date; ///< Gamedate the client has joined
 
 	/**
 	 * Create a new client.
@@ -35,6 +36,8 @@ struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_p
 	~NetworkClientInfo();
 
 	static NetworkClientInfo *GetByClientID(ClientID client_id);
+
+	bool CanJoinCompany(CompanyID company_id) const;
 };
 
 #endif /* NETWORK_BASE_H */

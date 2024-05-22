@@ -14,10 +14,12 @@
 #include "command_type.h"
 #include "station_type.h"
 
+enum StationClassID : uint16_t;
+
 CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags);
 
 Axis GetAxisForNewWaypoint(TileIndex tile);
 void ShowWaypointWindow(const Waypoint *wp);
-void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype);
+void DrawWaypointSprite(int x, int y, StationClassID station_class, uint16_t station_type, RailType railtype);
 
 #endif /* WAYPOINT_FUNC_H */

@@ -22,19 +22,15 @@
 # include <fcntl.h>
 #endif
 
-#ifdef _WIN32
-# include <windows.h>
-# include <shellapi.h>
-# include "core/mem_func.hpp"
-#endif
+#include <filesystem>
 
 #include "safeguards.h"
 
 /**
  * Create a new ini file with given group names.
- * @param list_group_names A \c nullptr terminated list with group names that should be loaded as lists instead of variables. @see IGT_LIST
+ * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IGT_LIST
  */
-IniFile::IniFile(const char * const *list_group_names) : IniLoadFile(list_group_names)
+IniFile::IniFile(const IniGroupNameList &list_group_names) : IniLoadFile(list_group_names)
 {
 }
 
@@ -56,20 +52,20 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	std::ofstream os(OTTD2FS(file_new).c_str());
 	if (os.fail()) return false;
 
-	for (const IniGroup *group = this->group; group != nullptr; group = group->next) {
-		os << group->comment << "[" << group->name << "]\n";
-		for (const IniItem *item = group->item; item != nullptr; item = item->next) {
-			os << item->comment;
+	for (const IniGroup &group : this->groups) {
+		os << group.comment << "[" << group.name << "]\n";
+		for (const IniItem &item : group.items) {
+			os << item.comment;
 
 			/* protect item->name with quotes if needed */
-			if (item->name.find(' ') != std::string::npos ||
-				item->name[0] == '[') {
-				os << "\"" << item->name << "\"";
+			if (item.name.find(' ') != std::string::npos ||
+				item.name[0] == '[') {
+				os << "\"" << item.name << "\"";
 			} else {
-				os << item->name;
+				os << item.name;
 			}
 
-			os << " = " << item->value.value_or("") << "\n";
+			os << " = " << item.value.value_or("") << "\n";
 		}
 	}
 	os << this->comment;
@@ -91,30 +87,11 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	if (ret != 0) return false;
 #endif
 
-#if defined(_WIN32)
-	/* Allocate space for one more \0 character. */
-	wchar_t tfilename[MAX_PATH + 1], tfile_new[MAX_PATH + 1];
-	wcsncpy(tfilename, OTTD2FS(filename).c_str(), MAX_PATH);
-	wcsncpy(tfile_new, OTTD2FS(file_new).c_str(), MAX_PATH);
-	/* SHFileOperation wants a double '\0' terminated string. */
-	tfilename[MAX_PATH - 1] = '\0';
-	tfile_new[MAX_PATH - 1] = '\0';
-	tfilename[wcslen(tfilename) + 1] = '\0';
-	tfile_new[wcslen(tfile_new) + 1] = '\0';
-
-	/* Rename file without any user confirmation. */
-	SHFILEOPSTRUCT shfopt;
-	MemSetT(&shfopt, 0);
-	shfopt.wFunc  = FO_MOVE;
-	shfopt.fFlags = FOF_NOCONFIRMATION | FOF_NOCONFIRMMKDIR | FOF_NOERRORUI | FOF_SILENT;
-	shfopt.pFrom  = tfile_new;
-	shfopt.pTo    = tfilename;
-	SHFileOperation(&shfopt);
-#else
-	if (rename(file_new.c_str(), filename.c_str()) < 0) {
-		Debug(misc, 0, "Renaming {} to {} failed; configuration not saved", file_new, filename);
+	std::error_code ec;
+	std::filesystem::rename(OTTD2FS(file_new), OTTD2FS(filename), ec);
+	if (ec) {
+		Debug(misc, 0, "Renaming {} to {} failed; configuration not saved: {}", file_new, filename, ec.message());
 	}
-#endif
 
 #ifdef __EMSCRIPTEN__
 	EM_ASM(if (window["openttd_syncfs"]) openttd_syncfs());
@@ -132,5 +109,5 @@ bool IniFile::SaveToDisk(const std::string &filename)
 
 /* virtual */ void IniFile::ReportFileError(const char * const pre, const char * const buffer, const char * const post)
 {
-	ShowInfoF("%s%s%s", pre, buffer, post);
+	ShowInfo("{}{}{}", pre, buffer, post);
 }

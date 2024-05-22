@@ -22,6 +22,8 @@ class ScriptRail : public ScriptObject {
 public:
 	/**
 	 * All rail related error messages.
+	 *
+	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
 		/** Base for rail building / maintaining errors */
@@ -40,7 +42,7 @@ public:
 	/**
 	 * Types of rail known to the game.
 	 */
-	enum RailType : byte {
+	enum RailType : uint8_t {
 		/* Note: these values represent part of the in-game static values */
 		RAILTYPE_INVALID  = ::INVALID_RAILTYPE, ///< Invalid RailType.
 	};
@@ -64,7 +66,7 @@ public:
 	 */
 	enum SignalType {
 		/* Note: these values represent part of the in-game SignalType enum */
-		SIGNALTYPE_NORMAL        = ::SIGTYPE_NORMAL,     ///< Normal signal.
+		SIGNALTYPE_NORMAL        = ::SIGTYPE_BLOCK,      ///< Block signal.
 		SIGNALTYPE_ENTRY         = ::SIGTYPE_ENTRY,      ///< Entry presignal.
 		SIGNALTYPE_EXIT          = ::SIGTYPE_EXIT,       ///< Exit signal.
 		SIGNALTYPE_COMBO         = ::SIGTYPE_COMBO,      ///< Combo signal.
@@ -101,7 +103,7 @@ public:
 	 *  means that the name could be something like "Maglev construction" instead
 	 *  of just "Maglev".
 	 */
-	static char *GetName(RailType rail_type);
+	static std::optional<std::string> GetName(RailType rail_type);
 
 	/**
 	 * Checks whether the given tile is actually a tile with rail that can be

@@ -3,10 +3,10 @@
  */
 
 #include "../../../stdafx.h"
+#include "../../fmt/format.h"
 
 #include <squirrel.h>
 #include "sqpcheader.h"
-#include <stdarg.h>
 #include "sqopcodes.h"
 #include "sqstring.h"
 #include "sqfuncproto.h"
@@ -57,24 +57,15 @@ typedef sqvector<ExpState> ExpStateVec;
 class SQCompiler
 {
 public:
-	SQCompiler(SQVM *v, SQLEXREADFUNC rg, SQUserPointer up, const SQChar* sourcename, bool raiseerror, bool lineinfo) : _token(0), _fs(nullptr), _lex(_ss(v), rg, up, ThrowError, this), _debugline(0), _debugop(0)
+	SQCompiler(SQVM *v, SQLEXREADFUNC rg, SQUserPointer up, const SQChar* sourcename, bool raiseerror, bool lineinfo) : _token(0), _fs(nullptr), _lex(_ss(v), rg, up), _debugline(0), _debugop(0)
 	{
 		_vm=v;
 		_sourcename = SQString::Create(_ss(v), sourcename);
 		_lineinfo = lineinfo;_raiseerror = raiseerror;
 	}
-	NORETURN static void ThrowError(void *ud, const SQChar *s) {
-		SQCompiler *c = (SQCompiler *)ud;
-		c->Error("%s", s);
-	}
-	NORETURN void Error(const SQChar *s, ...) WARN_FORMAT(2, 3)
+	[[noreturn]] void Error(const std::string &msg)
 	{
-		static SQChar temp[256];
-		va_list vl;
-		va_start(vl, s);
-		vseprintf(temp, lastof(temp), s, vl);
-		va_end(vl);
-		throw temp;
+		throw CompileException(msg);
 	}
 	void Lex(){	_token = _lex.Lex();}
 	void PushExpState(){ _expstates.push_back(ExpState()); }
@@ -120,9 +111,9 @@ public:
 					default:
 						etypename = _lex.Tok2Str(tok);
 					}
-					Error("expected '%s'", etypename);
+					Error(fmt::format("expected '{}'", etypename));
 				}
-				Error("expected '%c'", (char)tok);
+				Error(fmt::format("expected '{:c}'", tok));
 			}
 		}
 		SQObjectPtr ret;
@@ -164,7 +155,7 @@ public:
 		_debugline = 1;
 		_debugop = 0;
 
-		SQFuncState funcstate(_ss(_vm), nullptr,ThrowError,this);
+		SQFuncState funcstate(_ss(_vm), nullptr);
 		funcstate._name = SQString::Create(_ss(_vm), "main");
 		_fs = &funcstate;
 		_fs->AddParameter(_fs->CreateString("this"));
@@ -186,12 +177,12 @@ public:
 #endif
 			return true;
 		}
-		catch (SQChar *compilererror) {
+		catch (const CompileException &compilererror) {
 			if(_raiseerror && _ss(_vm)->_compilererrorhandler) {
-				_ss(_vm)->_compilererrorhandler(_vm, compilererror, type(_sourcename) == OT_STRING?_stringval(_sourcename):"unknown",
+				_ss(_vm)->_compilererrorhandler(_vm, compilererror.what(), type(_sourcename) == OT_STRING ? _stringval(_sourcename) : "unknown",
 					_lex._currentline, _lex._currentcolumn);
 			}
-			_vm->_lasterror = SQString::Create(_ss(_vm), compilererror, -1);
+			_vm->_lasterror = SQString::Create(_ss(_vm), compilererror.what());
 			return false;
 		}
 	}
@@ -647,7 +638,7 @@ public:
 							Expect('.'); constid = Expect(TK_IDENTIFIER);
 							if(!_table(constant)->Get(constid,constval)) {
 								constval.Null();
-								Error("invalid constant [%s.%s]", _stringval(id),_stringval(constid));
+								Error(fmt::format("invalid constant [{}.{}]", _stringval(id),_stringval(constid)));
 							}
 						}
 						else {
@@ -659,8 +650,7 @@ public:
 							_fs->AddInstruction(_OP_LOADINT, _exst._deref,_integer(constval));
 						}
 						else if(ctype == OT_FLOAT && sizeof(SQFloat) == sizeof(SQInt32)) {
-							SQFloat f = _float(constval);
-							_fs->AddInstruction(_OP_LOADFLOAT, _exst._deref,*((SQInt32 *)&f));
+							_fs->AddInstruction(_OP_LOADFLOAT, _exst._deref, std::bit_cast<SQInt32>(_float(constval)));
 						}
 						else {
 							_fs->AddInstruction(_OP_LOAD, _exst._deref, _fs->GetConstant(constval));
@@ -706,7 +696,7 @@ public:
 			break;
 		case TK_FLOAT:
 			if(sizeof(SQFloat) == sizeof(SQInt32)) {
-				_fs->AddInstruction(_OP_LOADFLOAT, _fs->PushTarget(),*((SQInt32 *)&_lex._fvalue));
+				_fs->AddInstruction(_OP_LOADFLOAT, _fs->PushTarget(), std::bit_cast<SQInt32>(_lex._fvalue));
 			}
 			else {
 				_fs->AddInstruction(_OP_LOAD, _fs->PushTarget(), _fs->GetNumericConstant(_lex._fvalue));

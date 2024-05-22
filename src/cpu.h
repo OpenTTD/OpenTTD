@@ -11,12 +11,6 @@
 #define CPU_H
 
 /**
- * Get the tick counter from the CPU (high precision timing).
- * @return The count.
- */
-uint64 ottd_rdtsc();
-
-/**
  * Get the CPUID information from the CPU.
  * @param info The retrieved info. All zeros on architectures without CPUID.
  * @param type The information this instruction should retrieve.

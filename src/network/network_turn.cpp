@@ -32,6 +32,8 @@ public:
 
 	void OnFailure() override
 	{
+		Debug(net, 9, "Turn::OnFailure()");
+
 		this->handler->connecter = nullptr;
 
 		this->handler->ConnectFailure();
@@ -39,22 +41,28 @@ public:
 
 	void OnConnect(SOCKET s) override
 	{
+		Debug(net, 9, "Turn::OnConnect()");
+
 		this->handler->connecter = nullptr;
 
 		this->handler->sock = s;
 	}
 };
 
-bool ClientNetworkTurnSocketHandler::Receive_TURN_ERROR(Packet *p)
+bool ClientNetworkTurnSocketHandler::Receive_TURN_ERROR(Packet &)
 {
+	Debug(net, 9, "Receive_TURN_ERROR()");
+
 	this->ConnectFailure();
 
 	return false;
 }
 
-bool ClientNetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet *p)
+bool ClientNetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet &p)
 {
-	std::string hostname = p->Recv_string(NETWORK_HOSTNAME_LENGTH);
+	Debug(net, 9, "Receive_TURN_CONNECTED()");
+
+	std::string hostname = p.Recv_string(NETWORK_HOSTNAME_LENGTH);
 
 	/* Act like we no longer have a socket, as we are handing it over to the
 	 * game handler. */
@@ -72,8 +80,10 @@ bool ClientNetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet *p)
  */
 void ClientNetworkTurnSocketHandler::Connect()
 {
+	Debug(net, 9, "Turn::Connect()");
+
 	this->connect_started = true;
-	this->connecter = new NetworkTurnConnecter(this, this->connection_string);
+	this->connecter = TCPConnecter::Create<NetworkTurnConnecter>(this, this->connection_string);
 }
 
 /**
@@ -86,15 +96,15 @@ void ClientNetworkTurnSocketHandler::Connect()
  * @param connection_string Connection string of the TURN server.
  * @return The handler for this TURN connection.
  */
-/* static */ std::unique_ptr<ClientNetworkTurnSocketHandler> ClientNetworkTurnSocketHandler::Turn(const std::string &token, uint8 tracking_number, const std::string &ticket, const std::string &connection_string)
+/* static */ std::unique_ptr<ClientNetworkTurnSocketHandler> ClientNetworkTurnSocketHandler::Turn(const std::string &token, uint8_t tracking_number, const std::string &ticket, const std::string &connection_string)
 {
 	auto turn_handler = std::make_unique<ClientNetworkTurnSocketHandler>(token, tracking_number, connection_string);
 
-	Packet *p = new Packet(PACKET_TURN_SERCLI_CONNECT);
+	auto p = std::make_unique<Packet>(turn_handler.get(), PACKET_TURN_SERCLI_CONNECT);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	p->Send_string(ticket);
 
-	turn_handler->SendPacket(p);
+	turn_handler->SendPacket(std::move(p));
 
 	return turn_handler;
 }

@@ -13,16 +13,14 @@
 
 #include "../../safeguards.h"
 
-ScriptTownList::ScriptTownList()
+ScriptTownList::ScriptTownList(HSQUIRRELVM vm)
 {
-	for (const Town *t : Town::Iterate()) {
-		this->AddItem(t->index);
-	}
+	ScriptList::FillList<Town>(vm, this);
 }
 
 ScriptTownEffectList::ScriptTownEffectList()
 {
-	for (int i = TE_BEGIN; i < TE_END; i++) {
+	for (int i = TAE_BEGIN; i < TAE_END; i++) {
 		this->AddItem(i);
 	}
 }

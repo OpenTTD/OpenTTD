@@ -16,13 +16,13 @@
 
 #include "../../safeguards.h"
 
-/* static */ bool ScriptGameSettings::IsValid(const char *setting)
+/* static */ bool ScriptGameSettings::IsValid(const std::string &setting)
 {
 	const SettingDesc *sd = GetSettingFromName(setting);
 	return sd != nullptr && sd->IsIntSetting();
 }
 
-/* static */ SQInteger ScriptGameSettings::GetValue(const char *setting)
+/* static */ SQInteger ScriptGameSettings::GetValue(const std::string &setting)
 {
 	if (!IsValid(setting)) return -1;
 
@@ -31,7 +31,7 @@
 	return sd->AsIntSetting()->Read(&_settings_game);
 }
 
-/* static */ bool ScriptGameSettings::SetValue(const char *setting, SQInteger value)
+/* static */ bool ScriptGameSettings::SetValue(const std::string &setting, SQInteger value)
 {
 	EnforceDeityOrCompanyModeValid(false);
 	if (!IsValid(setting)) return false;

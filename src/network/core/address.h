@@ -14,13 +14,11 @@
 #include "config.h"
 #include "../../company_type.h"
 #include "../../string_func.h"
-#include "../../core/smallmap_type.hpp"
 
-#include <string>
 
 class NetworkAddress;
 typedef std::vector<NetworkAddress> NetworkAddressList; ///< Type for a list of addresses.
-typedef SmallMap<NetworkAddress, SOCKET> SocketList;    ///< Type for a mapping between address and socket.
+using SocketList = std::map<SOCKET, NetworkAddress>;    ///< Type for a mapping between address and socket.
 
 /**
  * Wrapper for (un)resolved network addresses; there's no reason to transform
@@ -74,7 +72,7 @@ public:
 	 * @param port the port
 	 * @param family the address family
 	 */
-	NetworkAddress(std::string_view hostname = "", uint16 port = 0, int family = AF_UNSPEC) :
+	NetworkAddress(std::string_view hostname = "", uint16_t port = 0, int family = AF_UNSPEC) :
 		address_length(0),
 		resolved(false)
 	{
@@ -104,8 +102,8 @@ public:
 		return this->address_length;
 	}
 
-	uint16 GetPort() const;
-	void SetPort(uint16 port);
+	uint16_t GetPort() const;
+	void SetPort(uint16_t port);
 
 	/**
 	 * Check whether the IP address has been resolved already
@@ -211,7 +209,7 @@ public:
 	ServerAddressType type;        ///< The type of this ServerAddress.
 	std::string connection_string; ///< The connection string for this ServerAddress.
 
-	static ServerAddress Parse(const std::string &connection_string, uint16 default_port, CompanyID *company_id = nullptr);
+	static ServerAddress Parse(const std::string &connection_string, uint16_t default_port, CompanyID *company_id = nullptr);
 };
 
 #endif /* NETWORK_CORE_ADDRESS_H */

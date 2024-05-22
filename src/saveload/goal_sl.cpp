@@ -17,12 +17,12 @@
 #include "../safeguards.h"
 
 static const SaveLoad _goals_desc[] = {
-	    SLE_VAR(Goal, company,   SLE_FILE_U16 | SLE_VAR_U8),
-	    SLE_VAR(Goal, type,      SLE_FILE_U16 | SLE_VAR_U8),
-	    SLE_VAR(Goal, dst,       SLE_UINT32),
-	    SLE_STR(Goal, text,      SLE_STR | SLF_ALLOW_CONTROL, 0),
-	SLE_CONDSTR(Goal, progress,  SLE_STR | SLF_ALLOW_CONTROL, 0, SLV_182, SL_MAX_VERSION),
-	SLE_CONDVAR(Goal, completed, SLE_BOOL, SLV_182, SL_MAX_VERSION),
+	     SLE_VAR(Goal, company,   SLE_FILE_U16 | SLE_VAR_U8),
+	     SLE_VAR(Goal, type,      SLE_FILE_U16 | SLE_VAR_U8),
+	     SLE_VAR(Goal, dst,       SLE_UINT32),
+	    SLE_SSTR(Goal, text,      SLE_STR | SLF_ALLOW_CONTROL),
+	SLE_CONDSSTR(Goal, progress,  SLE_STR | SLF_ALLOW_CONTROL, SLV_182, SL_MAX_VERSION),
+	 SLE_CONDVAR(Goal, completed, SLE_BOOL, SLV_182, SL_MAX_VERSION),
 };
 
 struct GOALChunkHandler : ChunkHandler {

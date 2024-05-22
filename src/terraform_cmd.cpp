@@ -22,9 +22,6 @@
 
 #include "table/strings.h"
 
-#include <map>
-#include <set>
-
 #include "safeguards.h"
 
 /** Set of tiles. */
@@ -139,8 +136,6 @@ static std::tuple<CommandCost, TileIndex> TerraformTileHeight(TerraformerState *
 
 	/* Recurse to neighboured corners if height difference is larger than 1 */
 	{
-		const TileIndexDiffC *ttm;
-
 		TileIndex orig_tile = tile;
 		static const TileIndexDiffC _terraform_tilepos[] = {
 			{ 1,  0}, // move to tile in SE
@@ -149,8 +144,8 @@ static std::tuple<CommandCost, TileIndex> TerraformTileHeight(TerraformerState *
 			{ 0, -2}  // undo last move, and move to tile in NE
 		};
 
-		for (ttm = _terraform_tilepos; ttm != endof(_terraform_tilepos); ttm++) {
-			tile += ToTileIndexDiff(*ttm);
+		for (const auto &ttm : _terraform_tilepos) {
+			tile += ToTileIndexDiff(ttm);
 
 			if (tile >= Map::Size()) continue;
 			/* Make sure we don't wrap around the map */
@@ -222,9 +217,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, 
 	 * Pass == 0: Collect tileareas which are caused to be auto-cleared.
 	 * Pass == 1: Collect the actual cost. */
 	for (int pass = 0; pass < 2; pass++) {
-		for (TileIndexSet::const_iterator it = ts.dirty_tiles.begin(); it != ts.dirty_tiles.end(); it++) {
-			TileIndex t = *it;
-
+		for (const auto &t : ts.dirty_tiles) {
 			assert(t < Map::Size());
 			/* MP_VOID tiles can be terraformed but as tunnels and bridges
 			 * cannot go under / over these tiles they don't need checking. */
@@ -273,7 +266,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, 
 			bool indirectly_cleared = coa != nullptr && coa->first_tile != t;
 
 			/* Check tiletype-specific things, and add extra-cost */
-			Backup<bool> old_generating_world(_generating_world, FILE_LINE);
+			Backup<bool> old_generating_world(_generating_world);
 			if (_game_mode == GM_EDITOR) old_generating_world.Change(true); // used to create green terraformed land
 			DoCommandFlag tile_flags = flags | DC_AUTO | DC_FORCE_CLEAR_TILE;
 			if (pass == 0) {
@@ -301,23 +294,22 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, 
 
 	if (flags & DC_EXEC) {
 		/* Mark affected areas dirty. */
-		for (TileIndexSet::const_iterator it = ts.dirty_tiles.begin(); it != ts.dirty_tiles.end(); it++) {
-			MarkTileDirtyByTile(*it);
-			TileIndexToHeightMap::const_iterator new_height = ts.tile_to_new_height.find(*it);
+		for (const auto &t : ts.dirty_tiles) {
+			MarkTileDirtyByTile(t);
+			TileIndexToHeightMap::const_iterator new_height = ts.tile_to_new_height.find(t);
 			if (new_height == ts.tile_to_new_height.end()) continue;
-			MarkTileDirtyByTile(*it, 0, new_height->second);
+			MarkTileDirtyByTile(t, 0, new_height->second);
 		}
 
 		/* change the height */
-		for (TileIndexToHeightMap::const_iterator it = ts.tile_to_new_height.begin();
-				it != ts.tile_to_new_height.end(); it++) {
-			TileIndex t = it->first;
-			int height = it->second;
+		for (const auto &it : ts.tile_to_new_height) {
+			TileIndex t = it.first;
+			int height = it.second;
 
 			SetTileHeight(t, (uint)height);
 		}
 
-		if (c != nullptr) c->terraform_limit -= (uint32)ts.tile_to_new_height.size() << 16;
+		if (c != nullptr) c->terraform_limit -= (uint32_t)ts.tile_to_new_height.size() << 16;
 	}
 	return { total_cost, 0, total_cost.Succeeded() ? tile : INVALID_TILE };
 }

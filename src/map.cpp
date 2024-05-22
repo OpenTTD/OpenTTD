@@ -11,14 +11,11 @@
 #include "debug.h"
 #include "core/alloc_func.hpp"
 #include "water_map.h"
+#include "error_func.h"
 #include "string_func.h"
+#include "pathfinder/water_regions.h"
 
 #include "safeguards.h"
-
-#if defined(_MSC_VER)
-/* Why the hell is that not in all MSVC headers?? */
-extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
-#endif
 
 /* static */ uint Map::log_x;     ///< 2^_map_log_x == _map_size_x
 /* static */ uint Map::log_y;     ///< 2^_map_log_y == _map_size_y
@@ -44,7 +41,7 @@ extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
 			!IsInsideMM(size_y, MIN_MAP_SIZE, MAX_MAP_SIZE + 1) ||
 			(size_x & (size_x - 1)) != 0 ||
 			(size_y & (size_y - 1)) != 0) {
-		error("Invalid map size");
+		FatalError("Invalid map size");
 	}
 
 	Debug(map, 1, "Allocating map of size {}x{}", size_x, size_y);
@@ -61,38 +58,24 @@ extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
 
 	Tile::base_tiles = CallocT<Tile::TileBase>(Map::size);
 	Tile::extended_tiles = CallocT<Tile::TileExtended>(Map::size);
+
+	AllocateWaterRegions();
 }
 
 
 #ifdef _DEBUG
-TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
-	const char *exp, const char *file, int line)
+TileIndex TileAdd(TileIndex tile, TileIndexDiff offset)
 {
-	int dx;
-	int dy;
-	uint x;
-	uint y;
-
-	dx = add & Map::MaxX();
+	int dx = offset & Map::MaxX();
 	if (dx >= (int)Map::SizeX() / 2) dx -= Map::SizeX();
-	dy = (add - dx) / (int)Map::SizeX();
+	int dy = (offset - dx) / (int)Map::SizeX();
 
-	x = TileX(tile) + dx;
-	y = TileY(tile) + dy;
+	uint32_t x = TileX(tile) + dx;
+	uint32_t y = TileY(tile) + dy;
 
-	if (x >= Map::SizeX() || y >= Map::SizeY()) {
-		char buf[512];
-
-		seprintf(buf, lastof(buf), "TILE_ADD(%s) when adding 0x%.4X and 0x%.4X failed",
-			exp, (uint32)tile, add);
-#if !defined(_MSC_VER)
-		fprintf(stderr, "%s:%d %s\n", file, line, buf);
-#else
-		_assert(buf, (char*)file, line);
-#endif
-	}
-
-	assert(TileXY(x, y) == Map::WrapToMap(tile + add));
+	assert(x < Map::SizeX());
+	assert(y < Map::SizeY());
+	assert(TileXY(x, y) == Map::WrapToMap(tile + offset));
 
 	return TileXY(x, y);
 }
@@ -357,8 +340,8 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 
 		/* going counter-clockwise around this square */
 		for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
-			static const int8 ddx[DIAGDIR_END] = { -1,  1,  1, -1};
-			static const int8 ddy[DIAGDIR_END] = {  1,  1, -1, -1};
+			static const int8_t ddx[DIAGDIR_END] = { -1,  1,  1, -1};
+			static const int8_t ddy[DIAGDIR_END] = {  1,  1, -1, -1};
 
 			int dx = ddx[dir];
 			int dy = ddy[dir];

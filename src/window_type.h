@@ -10,6 +10,13 @@
 #ifndef WINDOW_TYPE_H
 #define WINDOW_TYPE_H
 
+/**
+ * Widget ID.
+ * Even though the ID is signed, actual IDs must be non-negative.
+ * Negative IDs are used for special cases, like denoting 'no widget'.
+ */
+using WidgetID = int;
+
 /** %Window numbers. */
 enum WindowNumberEnum {
 	WN_GAME_OPTIONS_AI = 0,          ///< AI settings.
@@ -369,6 +376,12 @@ enum WindowClass {
 	WC_BUILD_OBJECT,
 
 	/**
+	 * Build house; %Window numbers:
+	 *   - 0 = #BuildHouseWidgets
+	 */
+	WC_BUILD_HOUSE,
+
+	/**
 	 * Build vehicle; %Window numbers:
 	 *   - #VehicleType = #BuildVehicleWidgets
 	 *   - #TileIndex = #BuildVehicleWidgets
@@ -484,17 +497,16 @@ enum WindowClass {
 	WC_NETWORK_ASK_RELAY,
 
 	/**
+	 * Network ask survey window; %Window numbers:
+	 *  - 0 - #NetworkAskSurveyWidgets
+	 */
+	WC_NETWORK_ASK_SURVEY,
+
+	/**
 	 * Chatbox; %Window numbers:
 	 *   - #DestType = #NetWorkChatWidgets
 	 */
 	WC_SEND_NETWORK_MSG,
-
-	/**
-	 * Company password query; %Window numbers:
-	 *   - 0 = #NetworkCompanyPasswordWidgets
-	 */
-	WC_COMPANY_PASSWORD_WINDOW,
-
 
 	/**
 	 * Industry cargoes chain; %Window numbers:
@@ -651,7 +663,7 @@ enum WindowClass {
 
 	/**
 	 * Script debug window; %Window numbers:
-	 *   - 0 = #ScriptDebugWidgets
+	 *   - Ascending value = #ScriptDebugWidgets
 	 */
 	WC_SCRIPT_DEBUG,
 
@@ -697,6 +709,12 @@ enum WindowClass {
 	 */
 	WC_SCREENSHOT,
 
+	/*
+	 * Help and manuals window; %Window numbers:
+	 *   - 0 = #HelpWindowWidgets
+	 */
+	WC_HELPWIN,
+
 	WC_INVALID = 0xFFFF, ///< Invalid window.
 };
 
@@ -713,7 +731,7 @@ enum GameOptionsInvalidationData {
 struct Window;
 
 /** Number to differentiate different windows of the same class */
-typedef int32 WindowNumber;
+typedef int32_t WindowNumber;
 
 /** State of handling an event. */
 enum EventState {

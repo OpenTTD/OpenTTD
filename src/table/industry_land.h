@@ -17,9 +17,9 @@
  */
 struct DrawIndustryAnimationStruct {
 	int x;        ///< coordinate x of the first image offset
-	byte image_1; ///< image offset 1
-	byte image_2; ///< image offset 2
-	byte image_3; ///< image offset 3
+	uint8_t image_1; ///< image offset 1
+	uint8_t image_2; ///< image offset 2
+	uint8_t image_3; ///< image offset 3
 };
 
 /**
@@ -27,8 +27,8 @@ struct DrawIndustryAnimationStruct {
  * industries animations
  */
 struct DrawIndustryCoordinates {
-	byte x;  ///< coordinate x of the pair
-	byte y;  ///< coordinate y of the pair
+	uint8_t x;  ///< coordinate x of the pair
+	uint8_t y;  ///< coordinate y of the pair
 };
 
 /**
@@ -924,7 +924,7 @@ static const DrawIndustryAnimationStruct _industry_anim_offs_toys[] = {
 #undef MD
 
 /* this is ONLY used for Toffee Quarry*/
-static const byte _industry_anim_offs_toffee[] = {
+static const uint8_t _industry_anim_offs_toffee[] = {
 	255,   0,   0,   0,   2,   4,   6,   8,  10,   9,
 	  7,   5,   3,   1, 255,   0,   0,   0,   2,   4,
 	  6,   8,  10,   9,   7,   5,   3,   1, 255,   0,
@@ -935,7 +935,7 @@ static const byte _industry_anim_offs_toffee[] = {
 };
 
 /* this is ONLY used for the Bubble Generator*/
-static const byte _industry_anim_offs_bubbles[] = {
+static const uint8_t _industry_anim_offs_bubbles[] = {
 	68, 69, 71, 74, 77, 80, 83, 85, 86, 86,
 	86, 86, 86, 86, 86, 86, 86, 86, 86, 86,
 	86, 86, 85, 84, 83, 82, 81, 80, 79, 78,

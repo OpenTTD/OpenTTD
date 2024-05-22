@@ -56,6 +56,7 @@ enum MainToolbarHotkeys {
 void AllocateToolbar();
 void ToggleBoundingBoxes();
 void ToggleDirtyBlocks();
+void ToggleWidgetOutlines();
 
 extern uint _toolbar_width;
 

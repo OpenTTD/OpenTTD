@@ -15,6 +15,7 @@
 #include "../../strings_func.h"
 #include "../../station_cmd.h"
 #include "../../waypoint_cmd.h"
+#include "../../timer/timer_game_calendar.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
@@ -26,9 +27,9 @@
 	return st != nullptr && (st->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity() || st->owner == OWNER_NONE);
 }
 
-/* static */ char *ScriptBaseStation::GetName(StationID station_id)
+/* static */ std::optional<std::string> ScriptBaseStation::GetName(StationID station_id)
 {
-	if (!IsValidBaseStation(station_id)) return nullptr;
+	if (!IsValidBaseStation(station_id)) return std::nullopt;
 
 	::SetDParam(0, station_id);
 	return GetString(::Station::IsValidID(station_id) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
@@ -63,5 +64,5 @@
 {
 	if (!IsValidBaseStation(station_id)) return ScriptDate::DATE_INVALID;
 
-	return (ScriptDate::Date)::BaseStation::Get(station_id)->build_date;
+	return (ScriptDate::Date)::BaseStation::Get(station_id)->build_date.base();
 }

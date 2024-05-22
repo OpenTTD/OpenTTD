@@ -86,9 +86,9 @@ void LinkGraphSchedule::JoinNext()
  */
 /* static */ void LinkGraphSchedule::Run(LinkGraphJob *job)
 {
-	for (uint i = 0; i < lengthof(instance.handlers); ++i) {
+	for (const auto &handler : instance.handlers) {
 		if (job->IsJobAborted()) return;
-		instance.handlers[i]->Run(*job);
+		handler->Run(*job);
 	}
 
 	/*
@@ -110,8 +110,8 @@ void LinkGraphSchedule::JoinNext()
  */
 void LinkGraphSchedule::SpawnAll()
 {
-	for (JobList::iterator i = this->running.begin(); i != this->running.end(); ++i) {
-		(*i)->SpawnThread();
+	for (auto &it : this->running) {
+		it->SpawnThread();
 	}
 }
 
@@ -120,8 +120,8 @@ void LinkGraphSchedule::SpawnAll()
  */
 /* static */ void LinkGraphSchedule::Clear()
 {
-	for (JobList::iterator i(instance.running.begin()); i != instance.running.end(); ++i) {
-		(*i)->AbortJob();
+	for (auto &it : instance.running) {
+		it->AbortJob();
 	}
 	instance.running.clear();
 	instance.schedule.clear();
@@ -132,7 +132,7 @@ void LinkGraphSchedule::SpawnAll()
  * graph jobs by the number of days given.
  * @param interval Number of days to be added or subtracted.
  */
-void LinkGraphSchedule::ShiftDates(int interval)
+void LinkGraphSchedule::ShiftDates(TimerGameEconomy::Date interval)
 {
 	for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(interval);
 	for (LinkGraphJob *lgj : LinkGraphJob::Iterate()) lgj->ShiftJoinDate(interval);
@@ -157,16 +157,16 @@ LinkGraphSchedule::LinkGraphSchedule()
 LinkGraphSchedule::~LinkGraphSchedule()
 {
 	this->Clear();
-	for (uint i = 0; i < lengthof(this->handlers); ++i) {
-		delete this->handlers[i];
+	for (const auto &handler : this->handlers) {
+		delete handler;
 	}
 }
 
 /**
- * Pause the game if in 2 _date_fract ticks, we would do a join with the next
+ * Pause the game if in 2 TimerGameEconomy::date_fract ticks, we would do a join with the next
  * link graph job, but it is still running.
- * The check is done 2 _date_fract ticks early instead of 1, as in multiplayer
- * calls to DoCommandP are executed after a delay of 1 _date_fract tick.
+ * The check is done 2 TimerGameEconomy::date_fract ticks early instead of 1, as in multiplayer
+ * calls to DoCommandP are executed after a delay of 1 TimerGameEconomy::date_fract tick.
  * If we previously paused, unpause if the job is now ready to be joined with.
  */
 void StateGameLoop_LinkGraphPauseControl()
@@ -177,10 +177,10 @@ void StateGameLoop_LinkGraphPauseControl()
 			Command<CMD_PAUSE>::Post(PM_PAUSED_LINK_GRAPH, false);
 		}
 	} else if (_pause_mode == PM_UNPAUSED &&
-			_date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
-			_date % _settings_game.linkgraph.recalc_interval == _settings_game.linkgraph.recalc_interval / 2 &&
+			TimerGameEconomy::date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
+			TimerGameEconomy::date.base() % (_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY) == (_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY) / 2 &&
 			LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
-		/* Perform check two _date_fract ticks before we would join, to make
+		/* Perform check two TimerGameEconomy::date_fract ticks before we would join, to make
 		 * sure it also works in multiplayer. */
 		Command<CMD_PAUSE>::Post(PM_PAUSED_LINK_GRAPH, true);
 	}
@@ -204,11 +204,11 @@ void AfterLoad_LinkGraphPauseControl()
  */
 void OnTick_LinkGraph()
 {
-	if (_date_fract != LinkGraphSchedule::SPAWN_JOIN_TICK) return;
-	Date offset = _date % _settings_game.linkgraph.recalc_interval;
+	if (TimerGameEconomy::date_fract != LinkGraphSchedule::SPAWN_JOIN_TICK) return;
+	TimerGameEconomy::Date offset = TimerGameEconomy::date.base() % (_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY);
 	if (offset == 0) {
 		LinkGraphSchedule::instance.SpawnNext();
-	} else if (offset == _settings_game.linkgraph.recalc_interval / 2) {
+	} else if (offset == (_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY) / 2) {
 		if (!_networking || _network_server) {
 			PerformanceMeasurer::SetInactive(PFE_GL_LINKGRAPH);
 			LinkGraphSchedule::instance.JoinNext();

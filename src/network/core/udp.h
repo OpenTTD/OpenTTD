@@ -16,7 +16,7 @@
 #include "packet.h"
 
 /** Enum with all types of UDP packets. The order MUST not be changed **/
-enum PacketUDPType {
+enum PacketUDPType : uint8_t {
 	PACKET_UDP_CLIENT_FIND_SERVER,   ///< Queries a game server for game information
 	PACKET_UDP_SERVER_RESPONSE,      ///< Reply of the game server with game information
 	PACKET_UDP_END,                  ///< Must ALWAYS be on the end of this list!! (period)
@@ -30,23 +30,23 @@ protected:
 	/** The opened sockets. */
 	SocketList sockets;
 
-	void ReceiveInvalidPacket(PacketUDPType, NetworkAddress *client_addr);
+	void ReceiveInvalidPacket(PacketUDPType, NetworkAddress &client_addr);
 
 	/**
 	 * Queries to the server for information about the game.
 	 * @param p           The received packet.
 	 * @param client_addr The origin of the packet.
 	 */
-	virtual void Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr);
+	virtual void Receive_CLIENT_FIND_SERVER(Packet &p, NetworkAddress &client_addr);
 
 	/**
 	 * Response to a query letting the client know we are here.
 	 * @param p           The received packet.
 	 * @param client_addr The origin of the packet.
 	 */
-	virtual void Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr);
+	virtual void Receive_SERVER_RESPONSE(Packet &p, NetworkAddress &client_addr);
 
-	void HandleUDPPacket(Packet *p, NetworkAddress *client_addr);
+	void HandleUDPPacket(Packet &p, NetworkAddress &client_addr);
 public:
 	NetworkUDPSocketHandler(NetworkAddressList *bind = nullptr);
 
@@ -56,7 +56,7 @@ public:
 	bool Listen();
 	void CloseSocket();
 
-	void SendPacket(Packet *p, NetworkAddress *recv, bool all = false, bool broadcast = false);
+	void SendPacket(Packet &p, NetworkAddress &recv, bool all = false, bool broadcast = false);
 	void ReceivePackets();
 };
 

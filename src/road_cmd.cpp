@@ -12,6 +12,7 @@
 #include "road_internal.h"
 #include "viewport_func.h"
 #include "command_func.h"
+#include "company_func.h"
 #include "pathfinder/yapf/yapf_cache.h"
 #include "depot_base.h"
 #include "newgrf.h"
@@ -30,10 +31,11 @@
 #include "town.h"
 #include "company_base.h"
 #include "core/random_func.hpp"
+#include "core/container_func.hpp"
 #include "newgrf_debug.h"
 #include "newgrf_railtype.h"
 #include "newgrf_roadtype.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "genworld.h"
 #include "company_gui.h"
 #include "road_func.h"
@@ -66,17 +68,8 @@ void ResetRoadTypes()
 {
 	static_assert(lengthof(_original_roadtypes) <= lengthof(_roadtypes));
 
-	uint i = 0;
-	for (; i < lengthof(_original_roadtypes); i++) _roadtypes[i] = _original_roadtypes[i];
-
-	static const RoadTypeInfo empty_roadtype = {
-		{ 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, {}, {}, 0, {}, {} },
-		ROADTYPES_NONE, ROTFB_NONE, 0, 0, 0, 0,
-		RoadTypeLabelList(), 0, 0, ROADTYPES_NONE, ROADTYPES_NONE, 0,
-		{}, {} };
-	for (; i < lengthof(_roadtypes);          i++) _roadtypes[i] = empty_roadtype;
+	auto insert = std::copy(std::begin(_original_roadtypes), std::end(_original_roadtypes), std::begin(_roadtypes));
+	std::fill(insert, std::end(_roadtypes), RoadTypeInfo{});
 
 	_roadtypes_hidden_mask = ROADTYPES_NONE;
 	_roadtypes_type        = ROADTYPES_TRAM;
@@ -149,7 +142,7 @@ RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
 			rti->label = label;
 			rti->alternate_labels.clear();
 			rti->flags = ROTFB_NONE;
-			rti->introduction_date = INVALID_DATE;
+			rti->introduction_date = CalendarTime::INVALID_DATE;
 
 			/* Make us compatible with ourself. */
 			rti->powered_roadtypes = (RoadTypes)(1ULL << rt);
@@ -299,10 +292,10 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
 	/* Get a bitmask of which neighbouring roads has a tile */
 	RoadBits n = ROAD_NONE;
 	RoadBits present = GetAnyRoadBits(tile, rtt);
-	if ((present & ROAD_NE) && (GetAnyRoadBits(TILE_ADDXY(tile, -1,  0), rtt) & ROAD_SW)) n |= ROAD_NE;
-	if ((present & ROAD_SE) && (GetAnyRoadBits(TILE_ADDXY(tile,  0,  1), rtt) & ROAD_NW)) n |= ROAD_SE;
-	if ((present & ROAD_SW) && (GetAnyRoadBits(TILE_ADDXY(tile,  1,  0), rtt) & ROAD_NE)) n |= ROAD_SW;
-	if ((present & ROAD_NW) && (GetAnyRoadBits(TILE_ADDXY(tile,  0, -1), rtt) & ROAD_SE)) n |= ROAD_NW;
+	if ((present & ROAD_NE) && (GetAnyRoadBits(TileAddXY(tile, -1,  0), rtt) & ROAD_SW)) n |= ROAD_NE;
+	if ((present & ROAD_SE) && (GetAnyRoadBits(TileAddXY(tile,  0,  1), rtt) & ROAD_NW)) n |= ROAD_SE;
+	if ((present & ROAD_SW) && (GetAnyRoadBits(TileAddXY(tile,  1,  0), rtt) & ROAD_NE)) n |= ROAD_SW;
+	if ((present & ROAD_NW) && (GetAnyRoadBits(TileAddXY(tile,  0, -1), rtt) & ROAD_SE)) n |= ROAD_NW;
 
 	int rating_decrease = RATING_ROAD_DOWN_STEP_EDGE;
 	/* If 0 or 1 bits are set in n, or if no bits that match the bits to remove,
@@ -327,10 +320,9 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
  * @param flags operation to perform
  * @param pieces roadbits to remove
  * @param rt roadtype to remove
- * @param crossing_check should we check if there is a tram track when we are removing road from crossing?
  * @param town_check should we check if the town allows removal?
  */
-static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits pieces, RoadTramType rtt, bool crossing_check, bool town_check = true)
+static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits pieces, RoadTramType rtt, bool town_check)
 {
 	assert(pieces != ROAD_NONE);
 
@@ -476,6 +468,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 							const Town *town = CalcClosestTownFromTile(tile);
 							SetTownIndex(tile, town == nullptr ? INVALID_TOWN : town->index);
 						}
+						if (rtt == RTT_ROAD) SetDisallowedRoadDirections(tile, DRD_NONE);
 						SetRoadBits(tile, ROAD_NONE, rtt);
 						SetRoadType(tile, rtt, INVALID_ROADTYPE);
 						MarkTileDirtyByTile(tile);
@@ -503,7 +496,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			}
 
 			if (flags & DC_EXEC) {
-				MarkDirtyAdjacentLevelCrossingTiles(tile, GetCrossingRoadAxis(tile));
+				UpdateAdjacentLevelCrossingTilesOnLevelCrossingRemoval(tile, GetCrossingRoadAxis(tile));
 
 				/* A full diagonal road tile has two road bits. */
 				UpdateCompanyRoadInfrastructure(existing_rt, GetRoadOwner(tile, rtt), -2);
@@ -734,6 +727,11 @@ CommandCost CmdBuildRoad(DoCommandFlag flags, TileIndex tile, RoadBits pieces, R
 			/* Level crossings may only be built on these slopes */
 			if (!HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh)) {
 				return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+			}
+
+			if (!_settings_game.construction.crossing_with_competitor && company != OWNER_TOWN && company != OWNER_DEITY) {
+				CommandCost ret = CheckTileOwnership(tile);
+				if (ret.Failed()) return ret;
 			}
 
 			if (GetRailTileType(tile) != RAIL_TILE_NORMAL) goto do_clear;
@@ -1033,7 +1031,7 @@ CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex end_tile, TileIndex 
 			last_error = ret;
 			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT) {
 				if (is_ai) return last_error;
-				break;
+				if (had_success) break; // Keep going if we haven't constructed any road yet, skipping the start of the drag
 			}
 		} else {
 			had_success = true;
@@ -1113,7 +1111,7 @@ std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex 
 					if (money_spent > 0 && money_spent > money_available) {
 						return { cost, std::get<0>(Command<CMD_REMOVE_LONG_ROAD>::Do(flags & ~DC_EXEC, end_tile, start_tile, rt, axis, start_half, end_half)).GetCost() };
 					}
-					RemoveRoad(tile, flags, bits, rtt, true, false);
+					RemoveRoad(tile, flags, bits, rtt, false);
 				}
 				cost.AddCost(ret);
 				had_success = true;
@@ -1162,24 +1160,46 @@ CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, 
 		cost.AddCost(_price[PR_BUILD_FOUNDATION]);
 	}
 
-	cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile));
-	if (cost.Failed()) return cost;
+	/* Allow the user to rotate the depot instead of having to destroy it and build it again */
+	bool rotate_existing_depot = false;
+	if (IsRoadDepotTile(tile) && (HasRoadTypeTram(tile) ? rt == GetRoadTypeTram(tile) : rt == GetRoadTypeRoad(tile)))
+	{
+		CommandCost ret = CheckTileOwnership(tile);
+		if (ret.Failed()) return ret;
 
-	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+		if (dir == GetRoadDepotDirection(tile)) return CommandCost();
 
-	if (!Depot::CanAllocateItem()) return CMD_ERROR;
+		ret = EnsureNoVehicleOnGround(tile);
+		if (ret.Failed()) return ret;
+
+		rotate_existing_depot = true;
+	}
+
+	if (!rotate_existing_depot) {
+		cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile));
+		if (cost.Failed()) return cost;
+
+		if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+
+		if (!Depot::CanAllocateItem()) return CMD_ERROR;
+	}
 
 	if (flags & DC_EXEC) {
-		Depot *dep = new Depot(tile);
-		dep->build_date = _date;
+		if (rotate_existing_depot) {
+			SetRoadDepotExitDirection(tile, dir);
+		} else {
+			Depot *dep = new Depot(tile);
+			dep->build_date = TimerGameCalendar::date;
+			MakeRoadDepot(tile, _current_company, dep->index, dir, rt);
+			MakeDefaultName(dep);
 
-		/* A road depot has two road bits. */
-		UpdateCompanyRoadInfrastructure(rt, _current_company, ROAD_DEPOT_TRACKBIT_FACTOR);
+			/* A road depot has two road bits. */
+			UpdateCompanyRoadInfrastructure(rt, _current_company, ROAD_DEPOT_TRACKBIT_FACTOR);
+		}
 
-		MakeRoadDepot(tile, _current_company, dep->index, dir, rt);
 		MarkTileDirtyByTile(tile);
-		MakeDefaultName(dep);
 	}
+
 	cost.AddCost(_price[PR_BUILD_DEPOT_ROAD]);
 	return cost;
 }
@@ -1242,7 +1262,7 @@ static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlag flags)
 			for (RoadTramType rtt : { RTT_TRAM, RTT_ROAD }) {
 				if (!MayHaveRoad(tile) || GetRoadType(tile, rtt) == INVALID_ROADTYPE) continue;
 
-				CommandCost tmp_ret = RemoveRoad(tile, flags, GetCrossingRoadBits(tile), rtt, false);
+				CommandCost tmp_ret = RemoveRoad(tile, flags, GetCrossingRoadBits(tile), rtt, true);
 				if (tmp_ret.Failed()) return tmp_ret;
 				ret.AddCost(tmp_ret);
 			}
@@ -1264,9 +1284,9 @@ static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlag flags)
 
 
 struct DrawRoadTileStruct {
-	uint16 image;
-	byte subcoord_x;
-	byte subcoord_y;
+	uint16_t image;
+	uint8_t subcoord_x;
+	uint8_t subcoord_y;
 };
 
 #include "table/road_land.h"
@@ -1300,7 +1320,7 @@ static Foundation GetRoadFoundation(Slope tileh, RoadBits bits)
 	return (bits == ROAD_X ? FOUNDATION_INCLINED_X : FOUNDATION_INCLINED_Y);
 }
 
-const byte _road_sloped_sprites[14] = {
+const uint8_t _road_sloped_sprites[14] = {
 	0,  0,  2,  0,
 	0,  1,  0,  0,
 	3,  0,  0,  0,
@@ -1386,7 +1406,7 @@ void DrawRoadTypeCatenary(const TileInfo *ti, RoadType rt, RoadBits rb)
 		if (CountBits(rb_new) >= 2) rb = rb_new;
 	}
 
-	const RoadTypeInfo* rti = GetRoadTypeInfo(rt);
+	const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 	SpriteID front = GetCustomRoadSprite(rti, ti->tile, ROTSG_CATENARY_FRONT);
 	SpriteID back = GetCustomRoadSprite(rti, ti->tile, ROTSG_CATENARY_BACK);
 
@@ -1646,8 +1666,18 @@ static void DrawRoadBits(TileInfo *ti)
 	/* If there are no road bits, return, as there is nothing left to do */
 	if (HasAtMostOneBit(road)) return;
 
+	/* Do not draw details when invisible. */
 	if (roadside == ROADSIDE_TREES && IsInvisibilitySet(TO_TREES)) return;
-	bool is_transparent = roadside == ROADSIDE_TREES && IsTransparencySet(TO_TREES);
+	if (roadside == ROADSIDE_STREET_LIGHTS && IsInvisibilitySet(TO_HOUSES)) return;
+
+	/* Check whether details should be transparent. */
+	bool is_transparent = false;
+	if (roadside == ROADSIDE_TREES && IsTransparencySet(TO_TREES)) {
+		is_transparent = true;
+	}
+	if (roadside == ROADSIDE_STREET_LIGHTS && IsTransparencySet(TO_HOUSES)) {
+		is_transparent = true;
+	}
 
 	/* Draw extra details. */
 	for (const DrawRoadTileStruct *drts = _road_display_table[roadside][road | tram]; drts->image != 0; drts++) {
@@ -1668,7 +1698,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 			Axis axis = GetCrossingRailAxis(ti->tile);
 
-			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 
 			RoadType road_rt = GetRoadTypeRoad(ti->tile);
 			RoadType tram_rt = GetRoadTypeTram(ti->tile);
@@ -1831,7 +1861,7 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 {
 	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 
-	const RoadTypeInfo* rti = GetRoadTypeInfo(rt);
+	const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 	int relocation = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_DEPOT);
 	bool default_gfx = relocation == 0;
 	if (default_gfx) {
@@ -1886,16 +1916,15 @@ void UpdateNearestTownForRoadTiles(bool invalidate)
 	}
 }
 
-static int GetSlopePixelZ_Road(TileIndex tile, uint x, uint y)
+static int GetSlopePixelZ_Road(TileIndex tile, uint x, uint y, bool)
 {
 
 	if (IsNormalRoad(tile)) {
-		int z;
-		Slope tileh = GetTilePixelSlope(tile, &z);
+		auto [tileh, z] = GetTilePixelSlope(tile);
 		if (tileh == SLOPE_FLAT) return z;
 
 		Foundation f = GetRoadFoundation(tileh, GetAllRoadBits(tile));
-		z += ApplyPixelFoundationToSlope(f, &tileh);
+		z += ApplyPixelFoundationToSlope(f, tileh);
 		return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 	} else {
 		return GetTileMaxPixelZ(tile);
@@ -1919,6 +1948,8 @@ static const Roadside _town_road_types[][2] = {
 	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED }
 };
 
+static_assert(lengthof(_town_road_types) == HZB_END);
+
 static const Roadside _town_road_types_2[][2] = {
 	{ ROADSIDE_GRASS,         ROADSIDE_GRASS },
 	{ ROADSIDE_PAVED,         ROADSIDE_PAVED },
@@ -1926,6 +1957,8 @@ static const Roadside _town_road_types_2[][2] = {
 	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED },
 	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED }
 };
+
+static_assert(lengthof(_town_road_types_2) == HZB_END);
 
 
 static void TileLoop_Road(TileIndex tile)
@@ -1959,7 +1992,7 @@ static void TileLoop_Road(TileIndex tile)
 			if (t->road_build_months != 0 &&
 					(DistanceManhattan(t->xy, tile) < 8 || grp != HZB_TOWN_EDGE) &&
 					IsNormalRoad(tile) && !HasAtMostOneBit(GetAllRoadBits(tile))) {
-				if (GetFoundationSlope(tile) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile).Succeeded() && Chance16(1, 40)) {
+				if (std::get<0>(GetFoundationSlope(tile)) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile).Succeeded() && Chance16(1, 40)) {
 					StartRoadWorks(tile);
 
 					if (_settings_client.sound.ambient) SndPlayTileFx(SND_21_ROAD_WORKS, tile);
@@ -2016,7 +2049,7 @@ static void TileLoop_Road(TileIndex tile)
 
 		/* Possibly change road type */
 		if (GetRoadOwner(tile, RTT_ROAD) == OWNER_TOWN) {
-			RoadType rt = GetTownRoadType(t);
+			RoadType rt = GetTownRoadType();
 			if (rt != GetRoadTypeRoad(tile)) {
 				SetRoadType(tile, RTT_ROAD, rt);
 			}
@@ -2155,7 +2188,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 			td->str = STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING;
 			rail_owner = GetTileOwner(tile);
 
-			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 			td->railtype = rti->strings.name;
 			td->rail_speed = rti->max_speed;
 
@@ -2199,11 +2232,11 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
  * Given the direction the road depot is pointing, this is the direction the
  * vehicle should be travelling in in order to enter the depot.
  */
-static const byte _roadveh_enter_depot_dir[4] = {
+static const uint8_t _roadveh_enter_depot_dir[4] = {
 	TRACKDIR_X_SW, TRACKDIR_Y_NW, TRACKDIR_X_NE, TRACKDIR_Y_SE
 };
 
-static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
+static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int, int)
 {
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_DEPOT: {
@@ -2303,12 +2336,11 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlag flags, int z
 				if (CheckRoadSlope(tileh_new, &bits_copy, ROAD_NONE, ROAD_NONE).Succeeded()) {
 					/* CheckRoadSlope() sometimes changes the road_bits, if it does not agree with them. */
 					if (bits == bits_copy) {
-						int z_old;
-						Slope tileh_old = GetTileSlope(tile, &z_old);
+						auto [tileh_old, z_old] = GetTileSlopeZ(tile);
 
 						/* Get the slope on top of the foundation */
-						z_old += ApplyFoundationToSlope(GetRoadFoundation(tileh_old, bits), &tileh_old);
-						z_new += ApplyFoundationToSlope(GetRoadFoundation(tileh_new, bits), &tileh_new);
+						z_old += ApplyFoundationToSlope(GetRoadFoundation(tileh_old, bits), tileh_old);
+						z_new += ApplyFoundationToSlope(GetRoadFoundation(tileh_new, bits), tileh_new);
 
 						/* The surface slope must not be changed */
 						if ((z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
@@ -2462,14 +2494,14 @@ CommandCost CmdConvertRoad(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 				}
 
 				if (rtt == RTT_ROAD && owner == OWNER_TOWN) {
+					SetDParamsForOwnedBy(OWNER_TOWN, tile);
 					error.MakeError(STR_ERROR_OWNED_BY);
-					GetNameOfOwner(OWNER_TOWN, tile);
 					continue;
 				}
 			}
 
 			uint num_pieces = CountBits(GetAnyRoadBits(tile, rtt));
-			if (tt == MP_STATION && IsStandardRoadStopTile(tile)) {
+			if (tt == MP_STATION && IsBayRoadStopTile(tile)) {
 				num_pieces *= ROAD_STOP_TRACKBIT_FACTOR;
 			} else if (tt == MP_ROAD && IsRoadDepot(tile)) {
 				num_pieces *= ROAD_DEPOT_TRACKBIT_FACTOR;
@@ -2515,8 +2547,8 @@ CommandCost CmdConvertRoad(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 				}
 
 				if (rtt == RTT_ROAD && owner == OWNER_TOWN) {
+					SetDParamsForOwnedBy(OWNER_TOWN, tile);
 					error.MakeError(STR_ERROR_OWNED_BY);
-					GetNameOfOwner(OWNER_TOWN, tile);
 					continue;
 				}
 			}

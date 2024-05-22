@@ -10,7 +10,6 @@
 #ifndef POOL_TYPE_HPP
 #define POOL_TYPE_HPP
 
-#include "smallvec_type.hpp"
 #include "enum_type.hpp"
 
 /** Various types of a pool. */
@@ -79,10 +78,13 @@ private:
  */
 template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, PoolType Tpool_type = PT_NORMAL, bool Tcache = false, bool Tzero = true>
 struct Pool : PoolBase {
-	/* Ensure Tmax_size is within the bounds of Tindex. */
-	static_assert((uint64)(Tmax_size - 1) >> 8 * sizeof(Tindex) == 0);
+	/* Ensure the highest possible index, i.e. Tmax_size -1, is within the bounds of Tindex. */
+	static_assert(Tmax_size - 1 <= MAX_UVALUE(Tindex));
 
 	static constexpr size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
+
+	using BitmapStorage = size_t;
+	static constexpr size_t BITMAP_SIZE = std::numeric_limits<BitmapStorage>::digits;
 
 	const char * const name; ///< Name of this pool
 
@@ -96,9 +98,10 @@ struct Pool : PoolBase {
 	bool cleaning;       ///< True if cleaning pool (deleting all items)
 
 	Titem **data;        ///< Pointer to array of pointers to Titem
+	std::vector<BitmapStorage> used_bitmap; ///< Bitmap of used indices.
 
 	Pool(const char *name);
-	virtual void CleanPool();
+	void CleanPool() override;
 
 	/**
 	 * Returns Titem with given index
@@ -143,8 +146,8 @@ struct Pool : PoolBase {
 	template <class T>
 	struct PoolIterator {
 		typedef T value_type;
-		typedef T* pointer;
-		typedef T& reference;
+		typedef T *pointer;
+		typedef T &reference;
 		typedef size_t difference_type;
 		typedef std::forward_iterator_tag iterator_category;
 
@@ -187,8 +190,8 @@ struct Pool : PoolBase {
 	template <class T, class F>
 	struct PoolIteratorFiltered {
 		typedef T value_type;
-		typedef T* pointer;
-		typedef T& reference;
+		typedef T *pointer;
+		typedef T &reference;
 		typedef size_t difference_type;
 		typedef std::forward_iterator_tag iterator_category;
 
@@ -256,7 +259,7 @@ struct Pool : PoolBase {
 		inline void operator delete(void *p)
 		{
 			if (p == nullptr) return;
-			Titem *pn = (Titem *)p;
+			Titem *pn = static_cast<Titem *>(p);
 			assert(pn == Tpool->Get(pn->index));
 			Tpool->FreeItem(pn->index);
 		}
@@ -276,13 +279,12 @@ struct Pool : PoolBase {
 
 		/**
 		 * Allocates space for new Titem at given memory address
-		 * @param size size of Titem
 		 * @param ptr where are we allocating the item?
 		 * @return pointer to allocated memory (== ptr)
 		 * @note use of this is strongly discouraged
 		 * @pre the memory must not be allocated in the Pool!
 		 */
-		inline void *operator new(size_t size, void *ptr)
+		inline void *operator new(size_t, void *ptr)
 		{
 			for (size_t i = 0; i < Tpool->first_unused; i++) {
 				/* Don't allow creating new objects over existing.
@@ -376,7 +378,7 @@ struct Pool : PoolBase {
 		 * @note when this function is called, PoolItem::Get(index) == nullptr.
 		 * @note it's called only when !CleaningPool()
 		 */
-		static inline void PostDestructor(size_t index) { }
+		static inline void PostDestructor([[maybe_unused]] size_t index) { }
 
 		/**
 		 * Returns an iterable ensemble of all valid Titem

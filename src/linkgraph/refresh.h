@@ -12,9 +12,6 @@
 
 #include "../cargo_type.h"
 #include "../vehicle_base.h"
-#include <vector>
-#include <map>
-#include <set>
 
 /**
  * Utility to refresh links a consist will visit.
@@ -41,9 +38,9 @@ protected:
 	 */
 	struct RefitDesc {
 		CargoID cargo;    ///< Cargo type the vehicle will be carrying.
-		uint16 capacity;  ///< Capacity the vehicle will have.
-		uint16 remaining; ///< Capacity remaining from before the previous refit.
-		RefitDesc(CargoID cargo, uint16 capacity, uint16 remaining) :
+		uint16_t capacity;  ///< Capacity the vehicle will have.
+		uint16_t remaining; ///< Capacity remaining from before the previous refit.
+		RefitDesc(CargoID cargo, uint16_t capacity, uint16_t remaining) :
 				cargo(cargo), capacity(capacity), remaining(remaining) {}
 	};
 
@@ -59,7 +56,7 @@ protected:
 	struct Hop {
 		OrderID from;  ///< Last order where vehicle could interact with cargo or absolute first order.
 		OrderID to;    ///< Next order to be processed.
-		CargoID cargo; ///< Cargo the consist is probably carrying or CT_INVALID if unknown.
+		CargoID cargo; ///< Cargo the consist is probably carrying or INVALID_CARGO if unknown.
 
 		/**
 		 * Default constructor should not be called but has to be visible for
@@ -93,9 +90,9 @@ protected:
 	bool HandleRefit(CargoID refit_cargo);
 	void ResetRefit();
 	void RefreshStats(const Order *cur, const Order *next);
-	const Order *PredictNextOrder(const Order *cur, const Order *next, uint8 flags, uint num_hops = 0);
+	const Order *PredictNextOrder(const Order *cur, const Order *next, uint8_t flags, uint num_hops = 0);
 
-	void RefreshLinks(const Order *cur, const Order *next, uint8 flags, uint num_hops = 0);
+	void RefreshLinks(const Order *cur, const Order *next, uint8_t flags, uint num_hops = 0);
 };
 
 #endif /* REFRESH_H */

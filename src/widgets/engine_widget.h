@@ -11,7 +11,7 @@
 #define WIDGETS_ENGINE_WIDGET_H
 
 /** Widgets of the #EnginePreviewWindow class. */
-enum EnginePreviewWidgets {
+enum EnginePreviewWidgets : WidgetID {
 	WID_EP_QUESTION, ///< The container for the question.
 	WID_EP_NO,       ///< No button.
 	WID_EP_YES,      ///< Yes button.

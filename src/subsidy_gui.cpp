@@ -12,7 +12,7 @@
 #include "town.h"
 #include "window_gui.h"
 #include "strings_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "viewport_func.h"
 #include "gui.h"
 #include "subsidy_func.h"
@@ -27,6 +27,7 @@
 
 struct SubsidyListWindow : Window {
 	Scrollbar *vscroll;
+	Dimension cargo_icon_size;
 
 	SubsidyListWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
@@ -36,7 +37,12 @@ struct SubsidyListWindow : Window {
 		this->OnInvalidateData(0);
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnInit() override
+	{
+		this->cargo_icon_size = GetLargestCargoIconSize();
+	}
+
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget != WID_SUL_PANEL) return;
 
@@ -77,8 +83,8 @@ struct SubsidyListWindow : Window {
 		/* determine src coordinate for subsidy and try to scroll to it */
 		TileIndex xy;
 		switch (s->src_type) {
-			case ST_INDUSTRY: xy = Industry::Get(s->src)->location.tile; break;
-			case ST_TOWN:     xy =     Town::Get(s->src)->xy; break;
+			case SourceType::Industry: xy = Industry::Get(s->src)->location.tile; break;
+			case SourceType::Town:     xy =     Town::Get(s->src)->xy; break;
 			default: NOT_REACHED();
 		}
 
@@ -87,8 +93,8 @@ struct SubsidyListWindow : Window {
 
 			/* otherwise determine dst coordinate for subsidy and scroll to it */
 			switch (s->dst_type) {
-				case ST_INDUSTRY: xy = Industry::Get(s->dst)->location.tile; break;
-				case ST_TOWN:     xy =     Town::Get(s->dst)->xy; break;
+				case SourceType::Industry: xy = Industry::Get(s->dst)->location.tile; break;
+				case SourceType::Town:     xy =     Town::Get(s->dst)->xy; break;
 				default: NOT_REACHED();
 			}
 
@@ -125,33 +131,42 @@ struct SubsidyListWindow : Window {
 		return 3 + num_awarded + num_not_awarded;
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_SUL_PANEL) return;
 		Dimension d = maxdim(GetStringBoundingBox(STR_SUBSIDIES_OFFERED_TITLE), GetStringBoundingBox(STR_SUBSIDIES_SUBSIDISED_TITLE));
 
-		resize->height = FONT_HEIGHT_NORMAL;
+		resize.height = GetCharacterHeight(FS_NORMAL);
 
 		d.height *= 5;
 		d.width += WidgetDimensions::scaled.framerect.Horizontal();
 		d.height += WidgetDimensions::scaled.framerect.Vertical();
-		*size = maxdim(*size, d);
+		size = maxdim(size, d);
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawCargoIcon(const Rect &r, int y_offset, CargoID cid) const
+	{
+		bool rtl = _current_text_dir == TD_RTL;
+		SpriteID icon = CargoSpec::Get(cid)->GetCargoIcon();
+		Dimension d = GetSpriteSize(icon);
+		Rect ir = r.WithWidth(this->cargo_icon_size.width, rtl).WithHeight(GetCharacterHeight(FS_NORMAL));
+		DrawSprite(icon, PAL_NONE, CenterBounds(ir.left, ir.right, d.width), CenterBounds(ir.top, ir.bottom, this->cargo_icon_size.height) + y_offset);
+	}
+
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_SUL_PANEL) return;
 
-		YearMonthDay ymd;
-		ConvertDateToYMD(_date, &ymd);
+		TimerGameEconomy::YearMonthDay ymd = TimerGameEconomy::ConvertDateToYMD(TimerGameEconomy::date);
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
+		Rect sr = tr.Indent(this->cargo_icon_size.width + WidgetDimensions::scaled.hsep_normal, _current_text_dir == TD_RTL);
 
 		int pos = -this->vscroll->GetPosition();
 		const int cap = this->vscroll->GetCapacity();
 
 		/* Section for drawing the offered subsidies */
-		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_OFFERED_TITLE);
+		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_OFFERED_TITLE);
 		pos++;
 
 		uint num = 0;
@@ -160,8 +175,17 @@ struct SubsidyListWindow : Window {
 				if (IsInsideMM(pos, 0, cap)) {
 					/* Displays the two offered towns */
 					SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::Gui);
-					SetDParam(7, _date - ymd.day + s->remaining * 32);
-					DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_OFFERED_FROM_TO);
+					/* If using wallclock units, show minutes remaining. Otherwise show the date when the subsidy ends. */
+					if (TimerGameEconomy::UsingWallclockUnits()) {
+						SetDParam(7, STR_SUBSIDIES_OFFERED_EXPIRY_TIME);
+						SetDParam(8, s->remaining + 1); // We get the rest of the current economy month for free, since the expiration is checked on each new month.
+					} else {
+						SetDParam(7, STR_SUBSIDIES_OFFERED_EXPIRY_DATE);
+						SetDParam(8, TimerGameEconomy::date - ymd.day + s->remaining * 32);
+					}
+
+					DrawCargoIcon(tr, pos * GetCharacterHeight(FS_NORMAL), s->cargo_type);
+					DrawString(sr.left, sr.right, sr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_OFFERED_FROM_TO);
 				}
 				pos++;
 				num++;
@@ -169,13 +193,13 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_NONE);
+			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_NONE);
 			pos++;
 		}
 
 		/* Section for drawing the already granted subsidies */
 		pos++;
-		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_SUBSIDISED_TITLE);
+		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_SUBSIDISED_TITLE);
 		pos++;
 		num = 0;
 
@@ -184,10 +208,19 @@ struct SubsidyListWindow : Window {
 				if (IsInsideMM(pos, 0, cap)) {
 					SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::Gui);
 					SetDParam(7, s->awarded);
-					SetDParam(8, _date - ymd.day + s->remaining * 32);
+					/* If using wallclock units, show minutes remaining. Otherwise show the date when the subsidy ends. */
+					if (TimerGameEconomy::UsingWallclockUnits()) {
+						SetDParam(8, STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME);
+						SetDParam(9, s->remaining);
+					}
+					else {
+						SetDParam(8, STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE);
+						SetDParam(9, TimerGameEconomy::date - ymd.day + s->remaining * 32);
+					}
 
 					/* Displays the two connected stations */
-					DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_SUBSIDISED_FROM_TO);
+					DrawCargoIcon(tr, pos * GetCharacterHeight(FS_NORMAL), s->cargo_type);
+					DrawString(sr.left, sr.right, sr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_SUBSIDISED_FROM_TO);
 				}
 				pos++;
 				num++;
@@ -195,7 +228,7 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_NONE);
+			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_NONE);
 			pos++;
 		}
 	}
@@ -210,14 +243,14 @@ struct SubsidyListWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		this->vscroll->SetCount(this->CountLines());
 	}
 };
 
-static const NWidgetPart _nested_subsidies_list_widgets[] = {
+static constexpr NWidgetPart _nested_subsidies_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_SUBSIDIES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -238,7 +271,7 @@ static WindowDesc _subsidies_list_desc(
 	WDP_AUTO, "list_subsidies", 500, 127,
 	WC_SUBSIDIES_LIST, WC_NONE,
 	0,
-	_nested_subsidies_list_widgets, lengthof(_nested_subsidies_list_widgets)
+	std::begin(_nested_subsidies_list_widgets), std::end(_nested_subsidies_list_widgets)
 );
 
 

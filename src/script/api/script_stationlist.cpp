@@ -19,9 +19,13 @@
 ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 {
 	EnforceDeityOrCompanyModeValid_Void();
-	for (Station *st : Station::Iterate()) {
-		if ((st->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && (st->facilities & station_type) != 0) this->AddItem(st->index);
-	}
+	bool is_deity = ScriptCompanyMode::IsDeity();
+	CompanyID owner = ScriptObject::GetCompany();
+	ScriptList::FillList<Station>(this,
+		[is_deity, owner, station_type](const Station *st) {
+			return (is_deity || st->owner == owner) && (st->facilities & static_cast<StationFacility>(station_type)) != 0;
+		}
+	);
 }
 
 ScriptStationList_Vehicle::ScriptStationList_Vehicle(VehicleID vehicle_id)
@@ -149,13 +153,13 @@ void CargoCollector::Update(StationID from, StationID via, uint amount)
 	switch (Tselector) {
 		case ScriptStationList_Cargo::CS_VIA_BY_FROM:
 			if (via != this->other_station) return;
-			FALLTHROUGH;
+			[[fallthrough]];
 		case ScriptStationList_Cargo::CS_BY_FROM:
 			key = from;
 			break;
 		case ScriptStationList_Cargo::CS_FROM_BY_VIA:
 			if (from != this->other_station) return;
-			FALLTHROUGH;
+			[[fallthrough]];
 		case ScriptStationList_Cargo::CS_BY_VIA:
 			key = via;
 			break;
@@ -179,7 +183,7 @@ void ScriptStationList_CargoWaiting::Add(StationID station_id, CargoID cargo, St
 	StationCargoList::ConstIterator iter = collector.GE()->cargo.Packets()->begin();
 	StationCargoList::ConstIterator end = collector.GE()->cargo.Packets()->end();
 	for (; iter != end; ++iter) {
-		collector.Update<Tselector>((*iter)->SourceStation(), iter.GetKey(), (*iter)->Count());
+		collector.Update<Tselector>((*iter)->GetFirstStation(), iter.GetKey(), (*iter)->Count());
 	}
 }
 
@@ -218,7 +222,7 @@ ScriptStationList_CargoWaitingViaByFrom::ScriptStationList_CargoWaitingViaByFrom
 	std::pair<StationCargoList::ConstIterator, StationCargoList::ConstIterator> range =
 			collector.GE()->cargo.Packets()->equal_range(via);
 	for (StationCargoList::ConstIterator iter = range.first; iter != range.second; ++iter) {
-		collector.Update<CS_VIA_BY_FROM>((*iter)->SourceStation(), iter.GetKey(), (*iter)->Count());
+		collector.Update<CS_VIA_BY_FROM>((*iter)->GetFirstStation(), iter.GetKey(), (*iter)->Count());
 	}
 }
 

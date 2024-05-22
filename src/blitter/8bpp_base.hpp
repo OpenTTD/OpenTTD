@@ -15,12 +15,12 @@
 /** Base for all 8bpp blitters. */
 class Blitter_8bppBase : public Blitter {
 public:
-	uint8 GetScreenDepth() override { return 8; }
+	uint8_t GetScreenDepth() override { return 8; }
 	void DrawColourMappingRect(void *dst, int width, int height, PaletteID pal) override;
 	void *MoveTo(void *video, int x, int y) override;
-	void SetPixel(void *video, int x, int y, uint8 colour) override;
-	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width, int dash) override;
-	void DrawRect(void *video, int width, int height, uint8 colour) override;
+	void SetPixel(void *video, int x, int y, uint8_t colour) override;
+	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash) override;
+	void DrawRect(void *video, int width, int height, uint8_t colour) override;
 	void CopyFromBuffer(void *video, const void *src, int width, int height) override;
 	void CopyToBuffer(const void *video, void *dst, int width, int height) override;
 	void CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch) override;
@@ -28,7 +28,6 @@ public:
 	size_t BufferSize(uint width, uint height) override;
 	void PaletteAnimate(const Palette &palette) override;
 	Blitter::PaletteAnimation UsePaletteAnimation() override;
-	int GetBytesPerPixel() override { return 1; }
 };
 
 #endif /* BLITTER_8BPP_BASE_HPP */

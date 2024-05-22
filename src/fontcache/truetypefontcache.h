@@ -10,14 +10,13 @@
 #ifndef TRUETYPEFONTCACHE_H
 #define TRUETYPEFONTCACHE_H
 
-#include "../core/smallmap_type.hpp"
 #include "../fontcache.h"
 
 
 static const int MAX_FONT_SIZE = 72; ///< Maximum font size.
 
-static const byte FACE_COLOUR = 1;
-static const byte SHADOW_COLOUR = 2;
+static const uint8_t FACE_COLOUR = 1;
+static const uint8_t SHADOW_COLOUR = 2;
 
 /** Font cache for fonts that are based on a TrueType font. */
 class TrueTypeFontCache : public FontCache {
@@ -28,13 +27,10 @@ protected:
 	int req_size;  ///< Requested font size.
 	int used_size; ///< Used font size.
 
-	typedef SmallMap<uint32, std::pair<size_t, const void *> > FontTable; ///< Table with font table cache
-	FontTable font_tables; ///< Cached font tables.
-
 	/** Container for information about a glyph. */
 	struct GlyphEntry {
 		Sprite *sprite; ///< The loaded sprite.
-		byte width;     ///< The width of the glyph.
+		uint8_t width;     ///< The width of the glyph.
 		bool duplicate; ///< Whether this glyph entry is a duplicate, i.e. may this be freed?
 	};
 
@@ -56,17 +52,15 @@ protected:
 	GlyphEntry *GetGlyphPtr(GlyphID key);
 	void SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool duplicate = false);
 
-	virtual const void *InternalGetFontTable(uint32 tag, size_t &length) = 0;
 	virtual const Sprite *InternalGetGlyph(GlyphID key, bool aa) = 0;
 
 public:
 	TrueTypeFontCache(FontSize fs, int pixels);
 	virtual ~TrueTypeFontCache();
 	int GetFontSize() const override { return this->used_size; }
-	void SetUnicodeGlyph(WChar key, SpriteID sprite) override { this->parent->SetUnicodeGlyph(key, sprite); }
+	void SetUnicodeGlyph(char32_t key, SpriteID sprite) override { this->parent->SetUnicodeGlyph(key, sprite); }
 	void InitializeUnicodeGlyphMap() override { this->parent->InitializeUnicodeGlyphMap(); }
 	const Sprite *GetGlyph(GlyphID key) override;
-	const void *GetFontTable(uint32 tag, size_t &length) override;
 	void ClearFontCache() override;
 	uint GetGlyphWidth(GlyphID key) override;
 	bool GetDrawGlyphShadow() override;

@@ -11,7 +11,7 @@
 #define WIDGETS_CHEAT_WIDGET_H
 
 /** Widgets of the #CheatWindow class. */
-enum CheatWidgets {
+enum CheatWidgets : WidgetID {
 	WID_C_NOTE,  ///< Note on top of panel for use of cheat.
 	WID_C_PANEL, ///< Panel where all cheats are shown in.
 };

@@ -14,10 +14,10 @@ extern const char _openttd_revision[];
 extern const char _openttd_build_date[];
 extern const char _openttd_revision_hash[];
 extern const char _openttd_revision_year[];
-extern const byte _openttd_revision_modified;
-extern const byte _openttd_revision_tagged;
+extern const uint8_t _openttd_revision_modified;
+extern const uint8_t _openttd_revision_tagged;
 extern const char _openttd_content_version[];
-extern const uint32 _openttd_newgrf_version;
+extern const uint32_t _openttd_newgrf_version;
 
 bool IsReleasedVersion();
 

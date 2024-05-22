@@ -15,12 +15,42 @@
 /**
  * Creates a list of groups of which you are the owner.
  * @note Neither ScriptGroup::GROUP_ALL nor ScriptGroup::GROUP_DEFAULT is in this list.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptGroupList : public ScriptList {
 public:
+#ifdef DOXYGEN_API
+	/**
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 */
 	ScriptGroupList();
+
+	/**
+	 * Apply a filter when building the list.
+	 * @param filter_function The function which will be doing the filtering.
+	 * @param ... The params to give to the filters (minus the first param,
+	 *  which is always the index-value).
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @note You can write your own filters and use them. Just remember that
+	 *  the first parameter should be the index-value, and it should return
+	 *  a bool.
+	 * @note Example:
+	 * @code
+	 *  function IsType(group_id, type)
+	 *  {
+	 *    return ScriptGroup.GetVehicleType(group_id) == type;
+	 *  }
+	 *  local rv_groups = ScriptGroupList(IsType, ScriptVehicle.VT_ROAD);
+	 * @endcode
+	 */
+	ScriptGroupList(function filter_function, ...);
+#else
+	/**
+	 * The constructor wrapper from Squirrel.
+	 */
+	ScriptGroupList(HSQUIRRELVM vm);
+#endif /* DOXYGEN_API */
 };
 
 #endif /* SCRIPT_GROUPLIST_HPP */

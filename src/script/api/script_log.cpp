@@ -8,6 +8,7 @@
 /** @file script_log.cpp Implementation of ScriptLog. */
 
 #include "../../stdafx.h"
+#include "script_log_types.hpp"
 #include "script_log.hpp"
 #include "../../core/alloc_func.hpp"
 #include "../../debug.h"
@@ -16,77 +17,46 @@
 
 #include "../../safeguards.h"
 
-/* static */ void ScriptLog::Info(const char *message)
+/* static */ void ScriptLog::Info(const std::string &message)
 {
-	ScriptLog::Log(LOG_INFO, message);
+	ScriptLog::Log(ScriptLogTypes::LOG_INFO, message);
 }
 
-/* static */ void ScriptLog::Warning(const char *message)
+/* static */ void ScriptLog::Warning(const std::string &message)
 {
-	ScriptLog::Log(LOG_WARNING, message);
+	ScriptLog::Log(ScriptLogTypes::LOG_WARNING, message);
 }
 
-/* static */ void ScriptLog::Error(const char *message)
+/* static */ void ScriptLog::Error(const std::string &message)
 {
-	ScriptLog::Log(LOG_ERROR, message);
+	ScriptLog::Log(ScriptLogTypes::LOG_ERROR, message);
 }
 
-/* static */ void ScriptLog::Log(ScriptLog::ScriptLogType level, const char *message)
+/* static */ void ScriptLog::Log(ScriptLogTypes::ScriptLogType level, const std::string &message)
 {
-	if (ScriptObject::GetLogPointer() == nullptr) {
-		ScriptObject::GetLogPointer() = new LogData();
-		LogData *log = (LogData *)ScriptObject::GetLogPointer();
+	ScriptLogTypes::LogData &logdata = ScriptObject::GetLogData();
 
-		log->lines = CallocT<char *>(400);
-		log->type = CallocT<ScriptLog::ScriptLogType>(400);
-		log->count = 400;
-		log->pos = log->count - 1;
-		log->used = 0;
-	}
-	LogData *log = (LogData *)ScriptObject::GetLogPointer();
+	/* Limit the log to 400 lines. */
+	if (logdata.size() >= 400U) logdata.pop_front();
 
-	/* Go to the next log-line */
-	log->pos = (log->pos + 1) % log->count;
-
-	if (log->used != log->count) log->used++;
-
-	/* Free last message, and write new message */
-	free(log->lines[log->pos]);
-	log->lines[log->pos] = stredup(message);
-	log->type[log->pos] = level;
+	auto &line = logdata.emplace_back();
+	line.type = level;
 
 	/* Cut string after first \n */
-	char *p;
-	while ((p = strchr(log->lines[log->pos], '\n')) != nullptr) {
-		*p = '\0';
-		break;
-	}
+	line.text = message.substr(0, message.find_first_of('\n'));
 
 	char logc;
 
 	switch (level) {
-		case LOG_SQ_ERROR: logc = 'S'; break;
-		case LOG_ERROR:    logc = 'E'; break;
-		case LOG_SQ_INFO:  logc = 'P'; break;
-		case LOG_WARNING:  logc = 'W'; break;
-		case LOG_INFO:     logc = 'I'; break;
-		default:           logc = '?'; break;
+		case ScriptLogTypes::LOG_SQ_ERROR: logc = 'S'; break;
+		case ScriptLogTypes::LOG_ERROR:    logc = 'E'; break;
+		case ScriptLogTypes::LOG_SQ_INFO:  logc = 'P'; break;
+		case ScriptLogTypes::LOG_WARNING:  logc = 'W'; break;
+		case ScriptLogTypes::LOG_INFO:     logc = 'I'; break;
+		default:                           logc = '?'; break;
 	}
 
 	/* Also still print to debug window */
-	Debug(script, level, "[{}] [{}] {}", (uint)ScriptObject::GetRootCompany(), logc, log->lines[log->pos]);
-	InvalidateWindowData(WC_SCRIPT_DEBUG, 0, ScriptObject::GetRootCompany());
-}
-
-/* static */ void ScriptLog::FreeLogPointer()
-{
-	LogData *log = (LogData *)ScriptObject::GetLogPointer();
-
-	for (int i = 0; i < log->count; i++) {
-		free(log->lines[i]);
-	}
-
-	free(log->lines);
-	free(log->type);
-	delete log;
+	Debug(script, level, "[{}] [{}] {}", (uint)ScriptObject::GetRootCompany(), logc, line.text);
+	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, ScriptObject::GetRootCompany());
 }

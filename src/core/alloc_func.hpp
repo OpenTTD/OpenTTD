@@ -17,8 +17,8 @@
  * binary needlessly large.
  */
 
-void NORETURN MallocError(size_t size);
-void NORETURN ReallocError(size_t size);
+[[noreturn]] void MallocError(size_t size);
+[[noreturn]] void ReallocError(size_t size);
 
 /**
  * Checks whether allocating memory would overflow size_t.
@@ -26,7 +26,7 @@ void NORETURN ReallocError(size_t size);
  * @param element_size Size of the structure to allocate.
  * @param num_elements Number of elements to allocate.
  */
-static inline void CheckAllocationConstraints(size_t element_size, size_t num_elements)
+inline void CheckAllocationConstraints(size_t element_size, size_t num_elements)
 {
 	if (num_elements > SIZE_MAX / element_size) MallocError(SIZE_MAX);
 }
@@ -38,7 +38,7 @@ static inline void CheckAllocationConstraints(size_t element_size, size_t num_el
  * @param num_elements Number of elements to allocate.
  */
 template <typename T>
-static inline void CheckAllocationConstraints(size_t num_elements)
+inline void CheckAllocationConstraints(size_t num_elements)
 {
 	CheckAllocationConstraints(sizeof(T), num_elements);
 }
@@ -54,7 +54,7 @@ static inline void CheckAllocationConstraints(size_t num_elements)
  * @return nullptr when num_elements == 0, non-nullptr otherwise.
  */
 template <typename T>
-static inline T *MallocT(size_t num_elements)
+inline T *MallocT(size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always
@@ -82,7 +82,7 @@ static inline T *MallocT(size_t num_elements)
  * @return nullptr when num_elements == 0, non-nullptr otherwise.
  */
 template <typename T>
-static inline T *CallocT(size_t num_elements)
+inline T *CallocT(size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always
@@ -108,7 +108,7 @@ static inline T *CallocT(size_t num_elements)
  * @return nullptr when num_elements == 0, non-nullptr otherwise.
  */
 template <typename T>
-static inline T *ReallocT(T *t_ptr, size_t num_elements)
+inline T *ReallocT(T *t_ptr, size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always
@@ -127,10 +127,5 @@ static inline T *ReallocT(T *t_ptr, size_t num_elements)
 	if (t_ptr == nullptr) ReallocError(num_elements * sizeof(T));
 	return t_ptr;
 }
-
-/** alloca() has to be called in the parent function, so define AllocaM() as a macro */
-#define AllocaM(T, num_elements) \
-	(CheckAllocationConstraints<T>(num_elements), \
-	(T*)alloca((num_elements) * sizeof(T)))
 
 #endif /* ALLOC_FUNC_HPP */

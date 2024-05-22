@@ -33,36 +33,41 @@
 	return !_networking || (_network_server && _settings_game.ai.ai_in_multiplayer);
 }
 
-/* static */ void AI::StartNew(CompanyID company, bool rerandomise_ai)
+/* static */ void AI::StartNew(CompanyID company)
 {
 	assert(Company::IsValidID(company));
 
 	/* Clients shouldn't start AIs */
 	if (_networking && !_network_server) return;
 
-	AIConfig *config = AIConfig::GetConfig(company, AIConfig::SSS_FORCE_GAME);
+	Backup<CompanyID> cur_company(_current_company, company);
+	Company *c = Company::Get(company);
+
+	AIConfig *config = c->ai_config.get();
+	if (config == nullptr) {
+		c->ai_config = std::make_unique<AIConfig>(AIConfig::GetConfig(company, AIConfig::SSS_FORCE_GAME));
+		config = c->ai_config.get();
+	}
+
 	AIInfo *info = config->GetInfo();
-	if (info == nullptr || (rerandomise_ai && config->IsRandom())) {
+	if (info == nullptr) {
 		info = AI::scanner_info->SelectRandomAI();
 		assert(info != nullptr);
 		/* Load default data and store the name in the settings */
-		config->Change(info->GetName(), -1, false, true);
+		config->Change(info->GetName(), -1, false);
 	}
 	config->AnchorUnchangeableSettings();
 
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
-	Company *c = Company::Get(company);
-
 	c->ai_info = info;
 	assert(c->ai_instance == nullptr);
-	c->ai_instance = new AIInstance();
+	c->ai_instance = std::make_unique<AIInstance>();
 	c->ai_instance->Initialize(info);
 	c->ai_instance->LoadOnStack(config->GetToLoadData());
 	config->SetToLoadData(nullptr);
 
 	cur_company.Restore();
 
-	InvalidateWindowData(WC_SCRIPT_DEBUG, 0, -1);
+	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
 	return;
 }
 
@@ -76,7 +81,7 @@
 	assert(_settings_game.difficulty.competitor_speed <= 4);
 	if ((AI::frame_counter & ((1 << (4 - _settings_game.difficulty.competitor_speed)) - 1)) != 0) return;
 
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company);
 	for (const Company *c : Company::Iterate()) {
 		if (c->is_ai) {
 			PerformanceMeasurer framerate((PerformanceElement)(PFE_AI0 + c->index));
@@ -104,17 +109,16 @@
 	if (_networking && !_network_server) return;
 	PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + company));
 
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company *c = Company::Get(company);
 
-	delete c->ai_instance;
-	c->ai_instance = nullptr;
+	c->ai_instance.reset();
 	c->ai_info = nullptr;
+	c->ai_config.reset();
 
 	cur_company.Restore();
 
-	InvalidateWindowData(WC_SCRIPT_DEBUG, 0, -1);
-	CloseWindowById(WC_SCRIPT_SETTINGS, company);
+	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
 }
 
 /* static */ void AI::Pause(CompanyID company)
@@ -124,7 +128,7 @@
 	 * for the server owner to unpause the script again. */
 	if (_network_dedicated) return;
 
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company::Get(company)->ai_instance->Pause();
 
 	cur_company.Restore();
@@ -132,7 +136,7 @@
 
 /* static */ void AI::Unpause(CompanyID company)
 {
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company::Get(company)->ai_instance->Unpause();
 
 	cur_company.Restore();
@@ -140,7 +144,7 @@
 
 /* static */ bool AI::IsPaused(CompanyID company)
 {
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	bool paused = Company::Get(company)->ai_instance->IsPaused();
 
 	cur_company.Restore();
@@ -208,24 +212,29 @@
 		if (_settings_game.ai_config[c] != nullptr && _settings_game.ai_config[c]->HasScript()) {
 			if (!_settings_game.ai_config[c]->ResetInfo(true)) {
 				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_game.ai_config[c]->GetName());
-				_settings_game.ai_config[c]->Change(nullptr);
-				if (Company::IsValidAiID(c)) {
-					/* The code belonging to an already running AI was deleted. We can only do
-					 * one thing here to keep everything sane and that is kill the AI. After
-					 * killing the offending AI we start a random other one in it's place, just
-					 * like what would happen if the AI was missing during loading. */
-					AI::Stop(c);
-					AI::StartNew(c, false);
-				}
-			} else if (Company::IsValidAiID(c)) {
-				/* Update the reference in the Company struct. */
-				Company::Get(c)->ai_info = _settings_game.ai_config[c]->GetInfo();
+				_settings_game.ai_config[c]->Change(std::nullopt);
 			}
 		}
+
 		if (_settings_newgame.ai_config[c] != nullptr && _settings_newgame.ai_config[c]->HasScript()) {
 			if (!_settings_newgame.ai_config[c]->ResetInfo(false)) {
 				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_newgame.ai_config[c]->GetName());
-				_settings_newgame.ai_config[c]->Change(nullptr);
+				_settings_newgame.ai_config[c]->Change(std::nullopt);
+			}
+		}
+
+		if (Company::IsValidAiID(c) && Company::Get(c)->ai_config != nullptr) {
+			AIConfig *config = Company::Get(c)->ai_config.get();
+			if (!config->ResetInfo(true)) {
+				/* The code belonging to an already running AI was deleted. We can only do
+				 * one thing here to keep everything sane and that is kill the AI. After
+				 * killing the offending AI we start a random other one in it's place, just
+				 * like what would happen if the AI was missing during loading. */
+				AI::Stop(c);
+				AI::StartNew(c);
+			} else {
+				/* Update the reference in the Company struct. */
+				Company::Get(c)->ai_info = config->GetInfo();
 			}
 		}
 	}
@@ -249,7 +258,7 @@
 	}
 
 	/* Queue the event */
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company::Get(_current_company)->ai_instance->InsertEvent(event);
 	cur_company.Restore();
 
@@ -279,35 +288,28 @@
 {
 	if (!_networking || _network_server) {
 		Company *c = Company::GetIfValid(company);
-		assert(c != nullptr && c->ai_instance != nullptr);
+		assert(c != nullptr);
 
-		Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
-		c->ai_instance->Save();
-		cur_company.Restore();
-	} else {
-		AIInstance::SaveEmpty();
-	}
-}
-
-/* static */ int AI::GetStartNextTime()
-{
-	/* Find the first company which doesn't exist yet */
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		if (!Company::IsValidID(c)) return AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->GetSetting("start_date");
+		/* When doing emergency saving, an AI can be not fully initialised. */
+		if (c->ai_instance != nullptr) {
+			Backup<CompanyID> cur_company(_current_company, company);
+			c->ai_instance->Save();
+			cur_company.Restore();
+			return;
+		}
 	}
 
-	/* Currently no AI can be started, check again in a year. */
-	return DAYS_IN_YEAR;
+	AIInstance::SaveEmpty();
 }
 
-/* static */ std::string AI::GetConsoleList(bool newest_only)
+/* static */ void AI::GetConsoleList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only)
 {
-	return AI::scanner_info->GetConsoleList(newest_only);
+	AI::scanner_info->GetConsoleList(output_iterator, newest_only);
 }
 
-/* static */ std::string AI::GetConsoleLibraryList()
+/* static */ void AI::GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator)
 {
-	 return AI::scanner_library->GetConsoleList(true);
+	 AI::scanner_library->GetConsoleList(output_iterator, true);
 }
 
 /* static */ const ScriptInfoList *AI::GetInfoList()
@@ -320,12 +322,12 @@
 	return AI::scanner_info->GetUniqueInfoList();
 }
 
-/* static */ AIInfo *AI::FindInfo(const char *name, int version, bool force_exact_match)
+/* static */ AIInfo *AI::FindInfo(const std::string &name, int version, bool force_exact_match)
 {
 	return AI::scanner_info->FindInfo(name, version, force_exact_match);
 }
 
-/* static */ AILibrary *AI::FindLibrary(const char *library, int version)
+/* static */ AILibrary *AI::FindLibrary(const std::string &library, int version)
 {
 	return AI::scanner_library->FindLibrary(library, version);
 }

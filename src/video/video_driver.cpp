@@ -12,16 +12,18 @@
 #include "../network/network.h"
 #include "../blitter/factory.hpp"
 #include "../debug.h"
+#include "../driver.h"
 #include "../fontcache.h"
 #include "../gfx_func.h"
 #include "../gfxinit.h"
 #include "../progress.h"
+#include "../rev.h"
 #include "../thread.h"
 #include "../window_func.h"
 #include "video_driver.hpp"
 
-bool _video_hw_accel; ///< Whether to consider hardware accelerated video drivers.
-bool _video_vsync; ///< Whether we should use vsync (only if _video_hw_accel is enabled).
+bool _video_hw_accel; ///< Whether to consider hardware accelerated video drivers on startup.
+bool _video_vsync; ///< Whether we should use vsync (only if active video driver supports HW acceleration).
 
 void VideoDriver::GameLoop()
 {
@@ -156,6 +158,13 @@ void VideoDriver::Tick()
 		this->Paint();
 
 		this->UnlockVideoBuffer();
+
+		/* Wait till the first successful drawing tick before marking the driver as operational. */
+		static bool first_draw_tick = true;
+		if (first_draw_tick) {
+			first_draw_tick = false;
+			DriverFactoryBase::MarkVideoDriverOperational();
+		}
 	}
 }
 
@@ -171,4 +180,13 @@ void VideoDriver::SleepTillNextTick()
 	if (next_tick > now) {
 		std::this_thread::sleep_for(next_tick - now);
 	}
+}
+
+/**
+ * Get the caption to use for the game's title bar.
+ * @return The caption.
+ */
+/* static */ std::string VideoDriver::GetCaption()
+{
+	return fmt::format("OpenTTD {}", _openttd_revision);
 }

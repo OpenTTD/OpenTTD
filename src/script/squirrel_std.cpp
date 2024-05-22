@@ -12,7 +12,6 @@
 #include <sqstdmath.h>
 #include "../debug.h"
 #include "squirrel_std.hpp"
-#include "../core/alloc_func.hpp"
 #include "../core/math_func.hpp"
 #include "../string_func.h"
 
@@ -54,18 +53,14 @@ SQInteger SquirrelStd::require(HSQUIRRELVM vm)
 		return SQ_ERROR;
 	}
 
-	char path[MAX_PATH];
-	strecpy(path, si.source, lastof(path));
 	/* Keep the dir, remove the rest */
-	SQChar *s = strrchr(path, PATHSEPCHAR);
-	if (s != nullptr) {
-		/* Keep the PATHSEPCHAR there, remove the rest */
-		s++;
-		*s = '\0';
-	}
-	strecat(path, filename, lastof(path));
+	std::string path = si.source;
+	auto p = path.find_last_of(PATHSEPCHAR);
+	/* Keep the PATHSEPCHAR there, remove the rest */
+	if (p != std::string::npos) path.erase(p + 1);
+	path += filename;
 #if (PATHSEPCHAR != '/')
-	for (char *n = path; *n != '\0'; n++) if (*n == '/') *n = PATHSEPCHAR;
+	std::transform(path.begin(), path.end(), path.begin(), [](char &c) { return c == '/' ? PATHSEPCHAR : c; });
 #endif
 
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);

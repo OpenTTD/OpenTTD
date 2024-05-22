@@ -11,6 +11,7 @@
 #include "random_access_file_type.h"
 
 #include "debug.h"
+#include "error_func.h"
 #include "fileio_func.h"
 #include "string_func.h"
 
@@ -24,11 +25,11 @@
 RandomAccessFile::RandomAccessFile(const std::string &filename, Subdirectory subdir) : filename(filename)
 {
 	this->file_handle = FioFOpenFile(filename, "rb", subdir);
-	if (this->file_handle == nullptr) usererror("Cannot open file '%s'", filename.c_str());
+	if (this->file_handle == nullptr) UserError("Cannot open file '{}'", filename);
 
 	/* When files are in a tar-file, the begin of the file might not be at 0. */
 	long pos = ftell(this->file_handle);
-	if (pos < 0) usererror("Cannot read file '%s'", filename.c_str());
+	if (pos < 0) UserError("Cannot read file '{}'", filename);
 
 	/* Store the filename without path and extension */
 	auto t = filename.rfind(PATHSEPCHAR);
@@ -36,7 +37,7 @@ RandomAccessFile::RandomAccessFile(const std::string &filename, Subdirectory sub
 	this->simplified_filename = name_without_path.substr(0, name_without_path.rfind('.'));
 	strtolower(this->simplified_filename);
 
-	this->SeekTo((size_t)pos, SEEK_SET);
+	this->SeekTo(static_cast<size_t>(pos), SEEK_SET);
 }
 
 /**
@@ -97,7 +98,7 @@ void RandomAccessFile::SeekTo(size_t pos, int mode)
  * Read a byte from the file.
  * @return Read byte.
  */
-byte RandomAccessFile::ReadByte()
+uint8_t RandomAccessFile::ReadByte()
 {
 	if (this->buffer == this->buffer_end) {
 		this->buffer = this->buffer_start;
@@ -114,9 +115,9 @@ byte RandomAccessFile::ReadByte()
  * Read a word (16 bits) from the file (in low endian format).
  * @return Read word.
  */
-uint16 RandomAccessFile::ReadWord()
+uint16_t RandomAccessFile::ReadWord()
 {
-	byte b = this->ReadByte();
+	uint8_t b = this->ReadByte();
 	return (this->ReadByte() << 8) | b;
 }
 
@@ -124,7 +125,7 @@ uint16 RandomAccessFile::ReadWord()
  * Read a double word (32 bits) from the file (in low endian format).
  * @return Read word.
  */
-uint32 RandomAccessFile::ReadDword()
+uint32_t RandomAccessFile::ReadDword()
 {
 	uint b = this->ReadWord();
 	return (this->ReadWord() << 16) | b;
@@ -145,9 +146,10 @@ void RandomAccessFile::ReadBlock(void *ptr, size_t size)
  * Skip \a n bytes ahead in the file.
  * @param n Number of bytes to skip reading.
  */
-void RandomAccessFile::SkipBytes(int n)
+void RandomAccessFile::SkipBytes(size_t n)
 {
-	int remaining = this->buffer_end - this->buffer;
+	assert(this->buffer_end >= this->buffer);
+	size_t remaining = this->buffer_end - this->buffer;
 	if (n <= remaining) {
 		this->buffer += n;
 	} else {

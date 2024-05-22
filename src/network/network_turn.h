@@ -16,18 +16,18 @@
 class ClientNetworkTurnSocketHandler : public NetworkTurnSocketHandler {
 private:
 	std::string token;             ///< Token of this connection.
-	uint8 tracking_number;         ///< Tracking number of this connection.
+	uint8_t tracking_number;         ///< Tracking number of this connection.
 	std::string connection_string; ///< The connection string of the TURN server we are connecting to.
 
 protected:
-	bool Receive_TURN_ERROR(Packet *p) override;
-	bool Receive_TURN_CONNECTED(Packet *p) override;
+	bool Receive_TURN_ERROR(Packet &p) override;
+	bool Receive_TURN_CONNECTED(Packet &p) override;
 
 public:
-	TCPConnecter *connecter = nullptr; ///< Connecter instance.
+	std::shared_ptr<TCPConnecter> connecter{}; ///< Connecter instance.
 	bool connect_started = false;      ///< Whether we started the connection.
 
-	ClientNetworkTurnSocketHandler(const std::string &token, uint8 tracking_number, const std::string &connection_string) : token(token), tracking_number(tracking_number), connection_string(connection_string) {}
+	ClientNetworkTurnSocketHandler(const std::string &token, uint8_t tracking_number, const std::string &connection_string) : token(token), tracking_number(tracking_number), connection_string(connection_string) {}
 
 	NetworkRecvStatus CloseConnection(bool error = true) override;
 	~ClientNetworkTurnSocketHandler() override;
@@ -36,7 +36,7 @@ public:
 	void Connect();
 	void ConnectFailure();
 
-	static std::unique_ptr<ClientNetworkTurnSocketHandler> Turn(const std::string &token, uint8 tracking_number, const std::string &ticket, const std::string &connection_string);
+	static std::unique_ptr<ClientNetworkTurnSocketHandler> Turn(const std::string &token, uint8_t tracking_number, const std::string &ticket, const std::string &connection_string);
 };
 
 #endif /* NETWORK_TURN_H */

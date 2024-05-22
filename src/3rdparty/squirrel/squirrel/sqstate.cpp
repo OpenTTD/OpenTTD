@@ -201,7 +201,7 @@ SQSharedState::~SQSharedState()
 			t = nx;
 		}
 	}
-//	assert(_gc_chain==NULL); //just to proove a theory
+//	assert(_gc_chain==nullptr); //just to proove a theory
 	while(_gc_chain){
 		_gc_chain->_uiRef--;
 		_gc_chain->Release();
@@ -274,7 +274,7 @@ void SQSharedState::EnqueueMarkObject(SQObjectPtr &o,SQGCMarkerQueue &queue)
 }
 
 
-SQInteger SQSharedState::CollectGarbage(SQVM *vm)
+SQInteger SQSharedState::CollectGarbage(SQVM *)
 {
 	SQInteger n=0;
 	SQVM *vms = _thread(_root_vm);

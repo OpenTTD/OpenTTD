@@ -13,7 +13,6 @@
 
 #include "script_object.hpp"
 #include <utility>
-#include <vector>
 
 /**
  * Class that creates a queue which keeps its items ordered by an item priority.
@@ -43,21 +42,21 @@ public:
 	 * @param priority The priority to assign the item.
 	 * @return True if the item was inserted, false if it was already in the queue.
 	 */
-	bool Insert(void *item, SQInteger priority);
+	bool Insert(object item, SQInteger priority);
 
 	/**
 	 * Remove and return the item with the lowest priority.
 	 * @return The item with the lowest priority, removed from the queue. Returns null on an empty queue.
 	 * @pre !IsEmpty()
 	 */
-	void *Pop();
+	object Pop();
 
 	/**
 	 * Get the item with the lowest priority, keeping it in the queue.
 	 * @return The item with the lowest priority. Returns null on an empty queue.
 	 * @pre !IsEmpty()
 	 */
-	void *Peek();
+	object Peek();
 
 	/**
 	 * Check if an items is already included in the queue.
@@ -65,7 +64,7 @@ public:
 	 * @return true if the items is already in the queue.
 	 * @note Performance is O(n), use only when absolutely required.
 	 */
-	bool Exists(void *item);
+	bool Exists(object item);
 
 	/**
 	 * Clear the queue, making Count() returning 0 and IsEmpty() returning true.

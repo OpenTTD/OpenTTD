@@ -19,6 +19,7 @@
 #include "stdafx.h"
 #include "os_abstraction.h"
 #include "../../string_func.h"
+#include "../../3rdparty/fmt/format.h"
 #include <mutex>
 
 #include "../../safeguards.h"
@@ -80,12 +81,13 @@ const std::string &NetworkError::AsString() const
 {
 	if (this->message.empty()) {
 #if defined(_WIN32)
-		char buffer[512];
-		if (FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, NULL, this->error,
-			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, sizeof(buffer), NULL) == 0) {
-			seprintf(buffer, lastof(buffer), "Unknown error %d", this->error);
+		wchar_t buffer[512];
+		if (FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, nullptr, this->error,
+			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, static_cast<DWORD>(std::size(buffer)), nullptr) == 0) {
+			this->message.assign(fmt::format("Unknown error {}", this->error));
+		} else {
+			this->message.assign(FS2OTTD(buffer));
 		}
-		this->message.assign(buffer);
 #else
 		/* Make strerror thread safe by locking access to it. There is a thread safe strerror_r, however
 		 * the non-POSIX variant is available due to defining _GNU_SOURCE meaning it is not portable.
@@ -117,8 +119,6 @@ bool NetworkError::HasError() const
 {
 #if defined(_WIN32)
 	return NetworkError(WSAGetLastError());
-#elif defined(__OS2__)
-	return NetworkError(sock_errno());
 #else
 	return NetworkError(errno);
 #endif
@@ -130,7 +130,7 @@ bool NetworkError::HasError() const
  * @param d The socket to set the non-blocking more for.
  * @return True if setting the non-blocking mode succeeded, otherwise false.
  */
-bool SetNonBlocking(SOCKET d)
+bool SetNonBlocking([[maybe_unused]] SOCKET d)
 {
 #if defined(_WIN32)
 	u_long nonblocking = 1;
@@ -148,7 +148,7 @@ bool SetNonBlocking(SOCKET d)
  * @param d The socket to disable the delaying for.
  * @return True if disabling the delaying succeeded, otherwise false.
  */
-bool SetNoDelay(SOCKET d)
+bool SetNoDelay([[maybe_unused]] SOCKET d)
 {
 #ifdef __EMSCRIPTEN__
 	return true;

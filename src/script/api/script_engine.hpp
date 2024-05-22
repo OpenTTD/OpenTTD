@@ -44,7 +44,7 @@ public:
 	 * @pre IsValidEngine(engine_id).
 	 * @return The name the engine has.
 	 */
-	static char *GetName(EngineID engine_id);
+	static std::optional<std::string> GetName(EngineID engine_id);
 
 	/**
 	 * Get the cargo-type of an engine. In case it can transport multiple cargoes, it
@@ -125,8 +125,8 @@ public:
 	 * Get the maximum age of a brand new engine.
 	 * @param engine_id The engine to get the maximum age of.
 	 * @pre IsValidEngine(engine_id).
-	 * @returns The maximum age of a new engine in days.
-	 * @note Age is in days; divide by 366 to get per year.
+	 * @returns The maximum age of a new engine in calendar-days.
+	 * @see \ref ScriptCalendarTime
 	 */
 	static SQInteger GetMaxAge(EngineID engine_id);
 
@@ -134,8 +134,8 @@ public:
 	 * Get the running cost of an engine.
 	 * @param engine_id The engine to get the running cost of.
 	 * @pre IsValidEngine(engine_id).
-	 * @return The running cost of a vehicle per year.
-	 * @note Cost is per year; divide by 365 to get per day.
+	 * @return The running cost of a vehicle per economy-year.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetRunningCost(EngineID engine_id);
 
@@ -167,10 +167,11 @@ public:
 	static SQInteger GetMaxTractiveEffort(EngineID engine_id);
 
 	/**
-	 * Get the date this engine was designed.
+	 * Get the calendar-date this engine was designed.
 	 * @param engine_id The engine to get the design date of.
 	 * @pre IsValidEngine(engine_id).
-	 * @return The date this engine was designed.
+	 * @return The calendar-date this engine was designed.
+	 * @see \ref ScriptCalendarTime
 	 */
 	static ScriptDate::Date GetDesignDate(EngineID engine_id);
 

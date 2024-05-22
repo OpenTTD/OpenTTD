@@ -220,6 +220,7 @@ function Regression::Airport()
 		print("  GetAirportWidth(" + i + "):               " + AIAirport.GetAirportWidth(i));
 		print("  GetAirportHeight(" + i + "):              " + AIAirport.GetAirportHeight(i));
 		print("  GetAirportCoverageRadius(" + i + "):      " + AIAirport.GetAirportCoverageRadius(i));
+		print("  GetAirportNumHelipads(" + i + "):         " + AIAirport.GetAirportNumHelipads(i));
 	}
 
 	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
@@ -1107,6 +1108,7 @@ function Regression::Rail()
 	print("    IsRailTile():                  " + AIRail.IsRailTile(33411));
 	print("    BuildRailDepot():              " + AIRail.BuildRailDepot(0, 1));
 	print("    BuildRailDepot():              " + AIRail.BuildRailDepot(33411, 33411));
+	print("    BuildRailDepot():              " + AIRail.BuildRailDepot(33411, 33410));
 	print("    BuildRailDepot():              " + AIRail.BuildRailDepot(33411, 33414));
 	print("    BuildRailDepot():              " + AIRail.BuildRailDepot(33411, 33412));
 	print("    GetRailDepotFrontTile():       " + AIRail.GetRailDepotFrontTile(33411));
@@ -1203,6 +1205,7 @@ function Regression::Road()
 	print("    IsRoadTile():                  " + AIRoad.IsRoadTile(33411));
 	print("    BuildRoadDepot():              " + AIRoad.BuildRoadDepot(0, 1));
 	print("    BuildRoadDepot():              " + AIRoad.BuildRoadDepot(33411, 33411));
+	print("    BuildRoadDepot():              " + AIRoad.BuildRoadDepot(33411, 33410));
 	print("    BuildRoadDepot():              " + AIRoad.BuildRoadDepot(33411, 33414));
 	print("    BuildRoadDepot():              " + AIRoad.BuildRoadDepot(33411, 33412));
 	print("    HasRoadType(Road):             " + AIRoad.HasRoadType(33411, AIRoad.ROADTYPE_ROAD));
@@ -1352,6 +1355,21 @@ function Regression::Station()
 							AIStation.GetCargoPlannedFromVia(station0, station1, station2, cargo));
 				}
 			}
+		}
+	}
+}
+
+function Regression::StationList()
+{
+	print("");
+	print("--StationList--");
+	local road_stations = AIStationList(AIStation.STATION_TRUCK_STOP);
+	for (local st = road_stations.Begin(); !road_stations.IsEnd(); st = road_stations.Next()) {
+		print("  GetName(): " + AIStation.GetName(st));
+		print("  TileList_StationCoverage:");
+		local coverage = AITileList_StationCoverage(st);
+		for (local i = coverage.Begin(); !coverage.IsEnd(); i = coverage.Next()) {
+			print("    " + i);
 		}
 	}
 }
@@ -1812,10 +1830,17 @@ function Regression::Vehicle()
 	print("    GetLastErrorString():  " + AIError.GetLastErrorString());
 
 	local list = AIVehicleList();
+	local in_depot = AIVehicleList(AIVehicle.IsInDepot);
+	local IsType = function(vehicle_id, type) {
+		return AIVehicle.GetVehicleType(vehicle_id) == type;
+	}
+	local rv_list = AIVehicleList(IsType, AIVehicle.VT_ROAD);
 
 	print("");
 	print("--VehicleList--");
 	print("  Count():             " + list.Count());
+	print("  InDepot Count():     " + in_depot.Count());
+	print("  RoadVehicle Count(): " + rv_list.Count());
 	list.Valuate(AIVehicle.GetLocation);
 	print("  Location ListDump:");
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
@@ -1980,6 +2005,7 @@ function Regression::Start()
 	this.Road();
 	this.Sign();
 	this.Station();
+	this.StationList();
 	this.Tile();
 	this.TileList();
 	this.Town();
@@ -2017,5 +2043,12 @@ function Regression::Start()
 	print("  IsEventWaiting:        false");
 
 	this.Math();
+
+	/* Check Valuate() is actually limited, MUST BE THE LAST TEST. */
+	print("--Valuate() with excessive CPU usage--")
+	local list = AIList();
+	list.AddItem(0, 0);
+	local Infinite = function(id) { while(true); }
+	list.Valuate(Infinite);
 }
 

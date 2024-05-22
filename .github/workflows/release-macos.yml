@@ -2,18 +2,28 @@ name: Release (MacOS)
 
 on:
   workflow_call:
+    inputs:
+      survey_key:
+        required: false
+        type: string
+        default: ""
 
 jobs:
   macos:
     name: MacOS
 
-    runs-on: macos-11
+    runs-on: macos-14
     env:
       MACOSX_DEPLOYMENT_TARGET: 10.13
 
     steps:
+    - name: Setup Xcode version
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
     - name: Download source
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: internal-source
 
@@ -21,44 +31,39 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Enable Rust cache
+      uses: Swatinem/rust-cache@v2
+
+    - name: Setup vcpkg caching
+      uses: actions/github-script@v7
+      with:
+        script: |
+          core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+          core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+          core.exportVariable('VCPKG_BINARY_SOURCES', 'clear;x-gha,readwrite')
+
+    - name: Install vcpkg
+      run: |
+        git clone https://github.com/microsoft/vcpkg ${{ runner.temp }}/vcpkg
+        ${{ runner.temp }}/vcpkg/bootstrap-vcpkg.sh -disableMetrics
+
     - name: Install dependencies
       env:
         HOMEBREW_NO_AUTO_UPDATE: 1
         HOMEBREW_NO_INSTALL_CLEANUP: 1
       run: |
+        echo "::group::Install brew dependencies"
         brew install \
           pandoc \
-          pkg-config \
           # EOF
+        echo "::endgroup::"
 
-    - name: Prepare cache key
-      id: key
-      run: |
-        echo "image=$ImageOS-$ImageVersion" >> $GITHUB_OUTPUT
-
-    - name: Enable vcpkg cache
-      uses: actions/cache@v3
-      with:
-        path: /usr/local/share/vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-release-0 # Increase the number whenever dependencies are modified
-        restore-keys: |
-          ${{ steps.key.outputs.image }}-vcpkg-release
-          ${{ steps.key.outputs.image }}-vcpkg-x64
-
-    - name: Prepare vcpkg
-      run: |
-        vcpkg install \
-          curl:x64-osx \
-          curl:arm64-osx \
-          liblzma:x64-osx \
-          liblzma:arm64-osx \
-          libpng:x64-osx \
-          libpng:arm64-osx \
-          lzo:x64-osx \
-          lzo:arm64-osx \
-          zlib:x64-osx \
-          zlib:arm64-osx \
-          # EOF
+        echo "::group::Install breakpad dependencies"
+        cargo install --locked dump_syms
+        echo "::endgroup::"
 
     - name: Install GCC problem matcher
       uses: ammaraskar/gcc-problem-matcher@master
@@ -81,7 +86,7 @@ jobs:
         echo "::endgroup::"
 
     - name: Import code signing certificates
-      uses: Apple-Actions/import-codesign-certs@v1
+      uses: Apple-Actions/import-codesign-certs@v2
       with:
         # The certificates in a PKCS12 file encoded as a base64 string
         p12-file-base64: ${{ secrets.APPLE_DEVELOPER_CERTIFICATE_P12_BASE64 }}
@@ -99,15 +104,16 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -DCMAKE_OSX_ARCHITECTURES=arm64 \
           -DVCPKG_TARGET_TRIPLET=arm64-osx \
-          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
           # EOF
         echo "::endgroup::"
 
         echo "::group::Build"
         echo "Running on $(sysctl -n hw.logicalcpu) cores"
-        cmake --build . -j $(sysctl -n hw.logicalcpu)
+        cmake --build . -j $(sysctl -n hw.logicalcpu) --target openttd
         echo "::endgroup::"
 
     - name: Build x64
@@ -119,9 +125,10 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -DCMAKE_OSX_ARCHITECTURES=x86_64 \
           -DVCPKG_TARGET_TRIPLET=x64-osx \
-          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
           -DCPACK_BUNDLE_APPLE_CERT_APP=${{ secrets.APPLE_DEVELOPER_CERTIFICATE_ID }} \
           "-DCPACK_BUNDLE_APPLE_CODESIGN_PARAMETER=--deep -f --options runtime" \
           -DAPPLE_UNIVERSAL_PACKAGE=1 \
@@ -130,8 +137,20 @@ jobs:
 
         echo "::group::Build"
         echo "Running on $(sysctl -n hw.logicalcpu) cores"
-        cmake --build . -j $(sysctl -n hw.logicalcpu)
+        cmake --build . -j $(sysctl -n hw.logicalcpu) --target openttd
         echo "::endgroup::"
+
+    - name: Create breakpad symbols
+      run: |
+        cd build-x64
+        mkdir dSYM
+        dsymutil ./openttd -o dSYM/openttd
+        dump_syms ./dSYM/openttd --inlines --store symbols
+
+        cd ../build-arm64
+        mkdir dSYM
+        dsymutil ./openttd -o dSYM/openttd
+        dump_syms ./dSYM/openttd --inlines --store ../build-x64/symbols
 
     - name: Create bundles
       run: |
@@ -153,19 +172,19 @@ jobs:
         rm -f bundles/*.sha256
         echo "::endgroup::"
 
-    - name: Install gon
-      env:
-        HOMEBREW_NO_AUTO_UPDATE: 1
-        HOMEBREW_NO_INSTALL_CLEANUP: 1
-      run: |
-        brew tap mitchellh/gon
-        brew install mitchellh/gon/gon
-
     - name: Notarize
       env:
         AC_USERNAME: ${{ secrets.APPLE_DEVELOPER_APP_USERNAME }}
         AC_PASSWORD: ${{ secrets.APPLE_DEVELOPER_APP_PASSWORD }}
+        AC_TEAM_ID: ${{ secrets.APPLE_DEVELOPER_TEAM_ID }}
       run: |
+        if [ -z "${AC_USERNAME}" ]; then
+            # We may be running on a fork that doesn't have notarization secrets set up; skip this step
+            echo No notarization secrets set up, skipping.
+            exit 0
+        fi
+
+        xcrun notarytool store-credentials --apple-id "${AC_USERNAME}" --password "${AC_PASSWORD}" --team-id "${AC_TEAM_ID}" openttd
         cd build-x64
         ../os/macosx/notarize.sh
 
@@ -193,8 +212,15 @@ jobs:
         mv _CPack_Packages/*/Bundle/openttd-*.zip bundles/
 
     - name: Store bundles
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: openttd-macos-universal
         path: build-x64/bundles
+        retention-days: 5
+
+    - name: Store symbols
+      uses: actions/upload-artifact@v4
+      with:
+        name: symbols-macos-universal
+        path: build-x64/symbols
         retention-days: 5

@@ -24,13 +24,11 @@ public:
 		ScriptConfig()
 	{}
 
-	AIConfig(const AIConfig *config);
+	AIConfig(const AIConfig *config) :
+		ScriptConfig(config)
+	{}
 
 	class AIInfo *GetInfo() const;
-
-	int GetSetting(const char *name) const override;
-	void SetSetting(const char *name, int value) override;
-	void AddRandomDeviation() override;
 
 	/**
 	 * When ever the AI Scanner is reloaded, all infos become invalid. This
@@ -43,9 +41,7 @@ public:
 	bool ResetInfo(bool force_exact_match);
 
 protected:
-	void PushExtraConfigList() override;
-	void ClearConfigList() override;
-	ScriptInfo *FindInfo(const char *name, int version, bool force_exact_match) override;
+	ScriptInfo *FindInfo(const std::string &name, int version, bool force_exact_match) override;
 };
 
 #endif /* AI_CONFIG_HPP */

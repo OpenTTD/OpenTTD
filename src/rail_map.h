@@ -69,7 +69,7 @@ debug_inline static bool IsPlainRailTile(Tile t)
  * @pre IsTileType(t, MP_RAILWAY)
  * @return true if and only if the tile has signals
  */
-static inline bool HasSignals(Tile t)
+inline bool HasSignals(Tile t)
 {
 	return GetRailTileType(t) == RAIL_TILE_SIGNALS;
 }
@@ -80,7 +80,7 @@ static inline bool HasSignals(Tile t)
  * @param signals whether the rail tile should have signals or not
  * @pre IsPlainRailTile(tile)
  */
-static inline void SetHasSignals(Tile tile, bool signals)
+inline void SetHasSignals(Tile tile, bool signals)
 {
 	assert(IsPlainRailTile(tile));
 	SB(tile.m5(), 6, 1, signals);
@@ -112,7 +112,7 @@ debug_inline static bool IsRailDepotTile(Tile t)
  * @param t the tile to get the rail type from
  * @return the rail type of the tile
  */
-static inline RailType GetRailType(Tile t)
+inline RailType GetRailType(Tile t)
 {
 	return (RailType)GB(t.m8(), 0, 6);
 }
@@ -122,7 +122,7 @@ static inline RailType GetRailType(Tile t)
  * @param t the tile to set the rail type of
  * @param r the new rail type for the tile
  */
-static inline void SetRailType(Tile t, RailType r)
+inline void SetRailType(Tile t, RailType r)
 {
 	SB(t.m8(), 0, 6, r);
 }
@@ -133,7 +133,7 @@ static inline void SetRailType(Tile t, RailType r)
  * @param tile the tile to get the track bits from
  * @return the track bits of the tile
  */
-static inline TrackBits GetTrackBits(Tile tile)
+inline TrackBits GetTrackBits(Tile tile)
 {
 	assert(IsPlainRailTile(tile));
 	return (TrackBits)GB(tile.m5(), 0, 6);
@@ -144,7 +144,7 @@ static inline TrackBits GetTrackBits(Tile tile)
  * @param t the tile to set the track bits of
  * @param b the new track bits for the tile
  */
-static inline void SetTrackBits(Tile t, TrackBits b)
+inline void SetTrackBits(Tile t, TrackBits b)
 {
 	assert(IsPlainRailTile(t));
 	SB(t.m5(), 0, 6, b);
@@ -157,7 +157,7 @@ static inline void SetTrackBits(Tile t, TrackBits b)
  * @pre IsPlainRailTile(tile)
  * @return true if and only if the given track exists on the tile
  */
-static inline bool HasTrack(Tile tile, Track track)
+inline bool HasTrack(Tile tile, Track track)
 {
 	return HasBit(GetTrackBits(tile), track);
 }
@@ -168,7 +168,7 @@ static inline bool HasTrack(Tile tile, Track track)
  * @pre IsRailDepotTile(t)
  * @return the direction the depot is facing
  */
-static inline DiagDirection GetRailDepotDirection(Tile t)
+inline DiagDirection GetRailDepotDirection(Tile t)
 {
 	return (DiagDirection)GB(t.m5(), 0, 2);
 }
@@ -179,7 +179,7 @@ static inline DiagDirection GetRailDepotDirection(Tile t)
  * @param t the tile to get the depot track from
  * @return the track of the depot
  */
-static inline Track GetRailDepotTrack(Tile t)
+inline Track GetRailDepotTrack(Tile t)
 {
 	return DiagDirToDiagTrack(GetRailDepotDirection(t));
 }
@@ -191,10 +191,10 @@ static inline Track GetRailDepotTrack(Tile t)
  * @param t the tile to query
  * @return the track bits
  */
-static inline TrackBits GetRailReservationTrackBits(Tile t)
+inline TrackBits GetRailReservationTrackBits(Tile t)
 {
 	assert(IsPlainRailTile(t));
-	byte track_b = GB(t.m2(), 8, 3);
+	uint8_t track_b = GB(t.m2(), 8, 3);
 	Track track = (Track)(track_b - 1);    // map array saves Track+1
 	if (track_b == 0) return TRACK_BIT_NONE;
 	return (TrackBits)(TrackToTrackBits(track) | (HasBit(t.m2(), 11) ? TrackToTrackBits(TrackToOppositeTrack(track)) : 0));
@@ -206,14 +206,14 @@ static inline TrackBits GetRailReservationTrackBits(Tile t)
  * @param t the tile to change
  * @param b the track bits
  */
-static inline void SetTrackReservation(Tile t, TrackBits b)
+inline void SetTrackReservation(Tile t, TrackBits b)
 {
 	assert(IsPlainRailTile(t));
 	assert(b != INVALID_TRACK_BIT);
 	assert(!TracksOverlap(b));
 	Track track = RemoveFirstTrack(&b);
 	SB(t.m2(), 8, 3, track == INVALID_TRACK ? 0 : track + 1);
-	SB(t.m2(), 11, 1, (byte)(b != TRACK_BIT_NONE));
+	SB(t.m2(), 11, 1, (uint8_t)(b != TRACK_BIT_NONE));
 }
 
 /**
@@ -223,7 +223,7 @@ static inline void SetTrackReservation(Tile t, TrackBits b)
  * @param t the rack to reserve
  * @return true if successful
  */
-static inline bool TryReserveTrack(Tile tile, Track t)
+inline bool TryReserveTrack(Tile tile, Track t)
 {
 	assert(HasTrack(tile, t));
 	TrackBits bits = TrackToTrackBits(t);
@@ -241,7 +241,7 @@ static inline bool TryReserveTrack(Tile tile, Track t)
  * @param tile the tile
  * @param t the track to free
  */
-static inline void UnreserveTrack(Tile tile, Track t)
+inline void UnreserveTrack(Tile tile, Track t)
 {
 	assert(HasTrack(tile, t));
 	TrackBits res = GetRailReservationTrackBits(tile);
@@ -255,7 +255,7 @@ static inline void UnreserveTrack(Tile tile, Track t)
  * @param t the depot tile
  * @return reservation state
  */
-static inline bool HasDepotReservation(Tile t)
+inline bool HasDepotReservation(Tile t)
 {
 	assert(IsRailDepot(t));
 	return HasBit(t.m5(), 4);
@@ -267,10 +267,10 @@ static inline bool HasDepotReservation(Tile t)
  * @param t the depot tile
  * @param b the reservation state
  */
-static inline void SetDepotReservation(Tile t, bool b)
+inline void SetDepotReservation(Tile t, bool b)
 {
 	assert(IsRailDepot(t));
-	SB(t.m5(), 4, 1, (byte)b);
+	SB(t.m5(), 4, 1, (uint8_t)b);
 }
 
 /**
@@ -279,67 +279,67 @@ static inline void SetDepotReservation(Tile t, bool b)
  * @param t the tile
  * @return reserved track bits
  */
-static inline TrackBits GetDepotReservationTrackBits(Tile t)
+inline TrackBits GetDepotReservationTrackBits(Tile t)
 {
 	return HasDepotReservation(t) ? TrackToTrackBits(GetRailDepotTrack(t)) : TRACK_BIT_NONE;
 }
 
 
-static inline bool IsPbsSignal(SignalType s)
+inline bool IsPbsSignal(SignalType s)
 {
 	return s == SIGTYPE_PBS || s == SIGTYPE_PBS_ONEWAY;
 }
 
-static inline SignalType GetSignalType(Tile t, Track track)
+inline SignalType GetSignalType(Tile t, Track track)
 {
 	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
-	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
+	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
 	return (SignalType)GB(t.m2(), pos, 3);
 }
 
-static inline void SetSignalType(Tile t, Track track, SignalType s)
+inline void SetSignalType(Tile t, Track track, SignalType s)
 {
 	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
-	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
+	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
 	SB(t.m2(), pos, 3, s);
 	if (track == INVALID_TRACK) SB(t.m2(), 4, 3, s);
 }
 
-static inline bool IsPresignalEntry(Tile t, Track track)
+inline bool IsPresignalEntry(Tile t, Track track)
 {
 	return GetSignalType(t, track) == SIGTYPE_ENTRY || GetSignalType(t, track) == SIGTYPE_COMBO;
 }
 
-static inline bool IsPresignalExit(Tile t, Track track)
+inline bool IsPresignalExit(Tile t, Track track)
 {
 	return GetSignalType(t, track) == SIGTYPE_EXIT || GetSignalType(t, track) == SIGTYPE_COMBO;
 }
 
 /** One-way signals can't be passed the 'wrong' way. */
-static inline bool IsOnewaySignal(Tile t, Track track)
+inline bool IsOnewaySignal(Tile t, Track track)
 {
 	return GetSignalType(t, track) != SIGTYPE_PBS;
 }
 
-static inline void CycleSignalSide(Tile t, Track track)
+inline void CycleSignalSide(Tile t, Track track)
 {
-	byte sig;
-	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 6;
+	uint8_t sig;
+	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 6;
 
 	sig = GB(t.m3(), pos, 2);
 	if (--sig == 0) sig = IsPbsSignal(GetSignalType(t, track)) ? 2 : 3;
 	SB(t.m3(), pos, 2, sig);
 }
 
-static inline SignalVariant GetSignalVariant(Tile t, Track track)
+inline SignalVariant GetSignalVariant(Tile t, Track track)
 {
-	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
+	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
 	return (SignalVariant)GB(t.m2(), pos, 1);
 }
 
-static inline void SetSignalVariant(Tile t, Track track, SignalVariant v)
+inline void SetSignalVariant(Tile t, Track track, SignalVariant v)
 {
-	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
+	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
 	SB(t.m2(), pos, 1, v);
 	if (track == INVALID_TRACK) SB(t.m2(), 7, 1, v);
 }
@@ -349,7 +349,7 @@ static inline void SetSignalVariant(Tile t, Track track, SignalVariant v)
  * @param tile  the tile to set the states for
  * @param state the new state
  */
-static inline void SetSignalStates(Tile tile, uint state)
+inline void SetSignalStates(Tile tile, uint state)
 {
 	SB(tile.m4(), 4, 4, state);
 }
@@ -359,7 +359,7 @@ static inline void SetSignalStates(Tile tile, uint state)
  * @param tile  the tile to set the states for
  * @return the state of the signals
  */
-static inline uint GetSignalStates(Tile tile)
+inline uint GetSignalStates(Tile tile)
 {
 	return GB(tile.m4(), 4, 4);
 }
@@ -370,7 +370,7 @@ static inline uint GetSignalStates(Tile tile)
  * @param signalbit the signal
  * @return the state of the signal
  */
-static inline SignalState GetSingleSignalState(Tile t, byte signalbit)
+inline SignalState GetSingleSignalState(Tile t, uint8_t signalbit)
 {
 	return (SignalState)HasBit(GetSignalStates(t), signalbit);
 }
@@ -380,7 +380,7 @@ static inline SignalState GetSingleSignalState(Tile t, byte signalbit)
  * @param tile    the tile to set the present signals for
  * @param signals the signals that have to be present
  */
-static inline void SetPresentSignals(Tile tile, uint signals)
+inline void SetPresentSignals(Tile tile, uint signals)
 {
 	SB(tile.m3(), 4, 4, signals);
 }
@@ -390,7 +390,7 @@ static inline void SetPresentSignals(Tile tile, uint signals)
  * @param tile the tile to get the present signals for
  * @return the signals that are present
  */
-static inline uint GetPresentSignals(Tile tile)
+inline uint GetPresentSignals(Tile tile)
 {
 	return GB(tile.m3(), 4, 4);
 }
@@ -401,7 +401,7 @@ static inline uint GetPresentSignals(Tile tile)
  * @param signalbit the signal
  * @return true if and only if the signal is present
  */
-static inline bool IsSignalPresent(Tile t, byte signalbit)
+inline bool IsSignalPresent(Tile t, uint8_t signalbit)
 {
 	return HasBit(GetPresentSignals(t), signalbit);
 }
@@ -410,7 +410,7 @@ static inline bool IsSignalPresent(Tile t, byte signalbit)
  * Checks for the presence of signals (either way) on the given track on the
  * given rail tile.
  */
-static inline bool HasSignalOnTrack(Tile tile, Track track)
+inline bool HasSignalOnTrack(Tile tile, Track track)
 {
 	assert(IsValidTrack(track));
 	return GetRailTileType(tile) == RAIL_TILE_SIGNALS && (GetPresentSignals(tile) & SignalOnTrack(track)) != 0;
@@ -423,7 +423,7 @@ static inline bool HasSignalOnTrack(Tile tile, Track track)
  * Along meaning if you are currently driving on the given trackdir, this is
  * the signal that is facing us (for which we stop when it's red).
  */
-static inline bool HasSignalOnTrackdir(Tile tile, Trackdir trackdir)
+inline bool HasSignalOnTrackdir(Tile tile, Trackdir trackdir)
 {
 	assert (IsValidTrackdir(trackdir));
 	return GetRailTileType(tile) == RAIL_TILE_SIGNALS && GetPresentSignals(tile) & SignalAlongTrackdir(trackdir);
@@ -435,7 +435,7 @@ static inline bool HasSignalOnTrackdir(Tile tile, Trackdir trackdir)
  * Along meaning if you are currently driving on the given trackdir, this is
  * the signal that is facing us (for which we stop when it's red).
  */
-static inline SignalState GetSignalStateByTrackdir(Tile tile, Trackdir trackdir)
+inline SignalState GetSignalStateByTrackdir(Tile tile, Trackdir trackdir)
 {
 	assert(IsValidTrackdir(trackdir));
 	assert(HasSignalOnTrack(tile, TrackdirToTrack(trackdir)));
@@ -446,7 +446,7 @@ static inline SignalState GetSignalStateByTrackdir(Tile tile, Trackdir trackdir)
 /**
  * Sets the state of the signal along the given trackdir.
  */
-static inline void SetSignalStateByTrackdir(Tile tile, Trackdir trackdir, SignalState state)
+inline void SetSignalStateByTrackdir(Tile tile, Trackdir trackdir, SignalState state)
 {
 	if (state == SIGNAL_STATE_GREEN) { // set 1
 		SetSignalStates(tile, GetSignalStates(tile) | SignalAlongTrackdir(trackdir));
@@ -460,7 +460,7 @@ static inline void SetSignalStateByTrackdir(Tile tile, Trackdir trackdir, Signal
  * @param tile the tile to check
  * @param td the trackdir to check
  */
-static inline bool HasPbsSignalOnTrackdir(Tile tile, Trackdir td)
+inline bool HasPbsSignalOnTrackdir(Tile tile, Trackdir td)
 {
 	return IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, td) &&
 			IsPbsSignal(GetSignalType(tile, TrackdirToTrack(td)));
@@ -472,7 +472,7 @@ static inline bool HasPbsSignalOnTrackdir(Tile tile, Trackdir td)
  * @param tile the tile to check
  * @param td the trackdir to check
  */
-static inline bool HasOnewaySignalBlockingTrackdir(Tile tile, Trackdir td)
+inline bool HasOnewaySignalBlockingTrackdir(Tile tile, Trackdir td)
 {
 	return IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, ReverseTrackdir(td)) &&
 			!HasSignalOnTrackdir(tile, td) && IsOnewaySignal(tile, TrackdirToTrack(td));
@@ -500,23 +500,23 @@ enum RailGroundType {
 	RAIL_GROUND_HALF_SNOW    = 14, ///< Snow only on higher part of slope (steep or one corner raised)
 };
 
-static inline void SetRailGroundType(Tile t, RailGroundType rgt)
+inline void SetRailGroundType(Tile t, RailGroundType rgt)
 {
 	SB(t.m4(), 0, 4, rgt);
 }
 
-static inline RailGroundType GetRailGroundType(Tile t)
+inline RailGroundType GetRailGroundType(Tile t)
 {
 	return (RailGroundType)GB(t.m4(), 0, 4);
 }
 
-static inline bool IsSnowRailGround(Tile t)
+inline bool IsSnowRailGround(Tile t)
 {
 	return GetRailGroundType(t) == RAIL_GROUND_ICE_DESERT;
 }
 
 
-static inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
+inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 {
 	SetTileType(t, MP_RAILWAY);
 	SetTileOwner(t, o);
@@ -530,19 +530,37 @@ static inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 	t.m8() = r;
 }
 
-
-static inline void MakeRailDepot(Tile t, Owner o, DepotID did, DiagDirection d, RailType r)
+/**
+ * Sets the exit direction of a rail depot.
+ * @param tile Tile of the depot.
+ * @param dir  Direction of the depot exit.
+ */
+inline void SetRailDepotExitDirection(Tile tile, DiagDirection dir)
 {
-	SetTileType(t, MP_RAILWAY);
-	SetTileOwner(t, o);
-	SetDockingTile(t, false);
-	t.m2() = did;
-	t.m3() = 0;
-	t.m4() = 0;
-	t.m5() = RAIL_TILE_DEPOT << 6 | d;
-	SB(t.m6(), 2, 4, 0);
-	t.m7() = 0;
-	t.m8() = r;
+	assert(IsRailDepotTile(tile));
+	SB(tile.m5(), 0, 2, dir);
+}
+
+/**
+ * Make a rail depot.
+ * @param tile      Tile to make a depot on.
+ * @param owner     New owner of the depot.
+ * @param depot_id  New depot ID.
+ * @param dir       Direction of the depot exit.
+ * @param rail_type Rail type of the depot.
+ */
+inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RailType rail_type)
+{
+	SetTileType(tile, MP_RAILWAY);
+	SetTileOwner(tile, owner);
+	SetDockingTile(tile, false);
+	tile.m2() = depot_id;
+	tile.m3() = 0;
+	tile.m4() = 0;
+	tile.m5() = RAIL_TILE_DEPOT << 6 | dir;
+	SB(tile.m6(), 2, 4, 0);
+	tile.m7() = 0;
+	tile.m8() = rail_type;
 }
 
 #endif /* RAIL_MAP_H */

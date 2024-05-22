@@ -36,14 +36,11 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 	SetDParam(1, v->build_year);
 	SetDParam(2, v->value);
 	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_BUILT_VALUE);
-	y += FONT_HEIGHT_NORMAL;
+	y += GetCharacterHeight(FS_NORMAL);
 
 	if (v->HasArticulatedPart()) {
-		CargoArray max_cargo;
-		StringID subtype_text[NUM_CARGO];
-		char capacity[512];
-
-		memset(subtype_text, 0, sizeof(subtype_text));
+		CargoArray max_cargo{};
+		std::array<StringID, NUM_CARGO> subtype_text{};
 
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			max_cargo[u->cargo_type] += u->cargo_cap;
@@ -53,23 +50,20 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 			}
 		}
 
-		GetString(capacity, STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY, lastof(capacity));
+		std::string capacity = GetString(STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY);
 
 		bool first = true;
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (max_cargo[i] > 0) {
-				char buffer[128];
+		for (const CargoSpec *cs : _sorted_cargo_specs) {
+			CargoID cid = cs->Index();
+			if (max_cargo[cid] > 0) {
+				if (!first) capacity += ", ";
 
-				SetDParam(0, i);
-				SetDParam(1, max_cargo[i]);
-				GetString(buffer, STR_JUST_CARGO, lastof(buffer));
+				SetDParam(0, cid);
+				SetDParam(1, max_cargo[cid]);
+				capacity += GetString(STR_JUST_CARGO);
 
-				if (!first) strecat(capacity, ", ", lastof(capacity));
-				strecat(capacity, buffer, lastof(capacity));
-
-				if (subtype_text[i] != 0) {
-					GetString(buffer, subtype_text[i], lastof(buffer));
-					strecat(capacity, buffer, lastof(capacity));
+				if (subtype_text[cid] != STR_NULL) {
+					capacity += GetString(subtype_text[cid]);
 				}
 
 				first = false;
@@ -77,7 +71,7 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 		}
 
 		DrawString(r.left, r.right, y, capacity, TC_BLUE);
-		y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+		y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			if (u->cargo_cap == 0) continue;
@@ -86,12 +80,12 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 			if (u->cargo.StoredCount() > 0) {
 				SetDParam(0, u->cargo_type);
 				SetDParam(1, u->cargo.StoredCount());
-				SetDParam(2, u->cargo.Source());
+				SetDParam(2, u->cargo.GetFirstStation());
 				str = STR_VEHICLE_DETAILS_CARGO_FROM;
-				feeder_share += u->cargo.FeederShare();
+				feeder_share += u->cargo.GetFeederShare();
 			}
 			DrawString(r.left, r.right, y, str);
-			y += FONT_HEIGHT_NORMAL;
+			y += GetCharacterHeight(FS_NORMAL);
 		}
 		y += WidgetDimensions::scaled.vsep_normal;
 	} else {
@@ -99,18 +93,18 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 		SetDParam(1, v->cargo_cap);
 		SetDParam(4, GetCargoSubtypeText(v));
 		DrawString(r.left, r.right, y, STR_VEHICLE_INFO_CAPACITY);
-		y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+		y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 
 		str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
 		if (v->cargo.StoredCount() > 0) {
 			SetDParam(0, v->cargo_type);
 			SetDParam(1, v->cargo.StoredCount());
-			SetDParam(2, v->cargo.Source());
+			SetDParam(2, v->cargo.GetFirstStation());
 			str = STR_VEHICLE_DETAILS_CARGO_FROM;
-			feeder_share += v->cargo.FeederShare();
+			feeder_share += v->cargo.GetFeederShare();
 		}
 		DrawString(r.left, r.right, y, str);
-		y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+		y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 	}
 
 	/* Draw Transfer credits text */
@@ -134,7 +128,7 @@ void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, Engi
 	DrawPixelInfo tmp_dpi;
 	int max_width = r.Width();
 
-	if (!FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, r)) return;
 
 	AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 

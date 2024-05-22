@@ -24,7 +24,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MT(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MT(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of a multiple-unit train into the EngineInfo struct.
@@ -37,7 +37,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MM(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 1 << EF_RAIL_IS_MU, 0, 0, STR_EMPTY, CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MM(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 1 << EF_RAIL_IS_MU, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of a train carriage into the EngineInfo struct.
@@ -50,7 +50,7 @@
  * @see MT
  * @note the 5 between b and f is the load amount
  */
-#define MW(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MW(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of a road vehicle into the EngineInfo struct.
@@ -63,7 +63,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MR(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MR(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of a ship into the EngineInfo struct.
@@ -75,7 +75,7 @@
  * @param f Bitmask of the climates
  * @note the 10 between b and f is the load amount
  */
-#define MS(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, f, e, 0, 8, 0, 0, 0, STR_EMPTY, CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MS(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /**
  * Writes the properties of an aeroplane into the EngineInfo struct.
@@ -86,7 +86,7 @@
  * @param e Bitmask of the climates
  * @note the 20 between b and e is the load amount
  */
-#define MA(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 20, e, CT_INVALID, 0, 8, 0, 0, 0, STR_EMPTY, CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MA(a, b, c, d, e) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 20, e, INVALID_CARGO, CT_INVALID, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
 
 /* Climates
  * T = Temperate
@@ -102,44 +102,44 @@ static const EngineInfo _orig_engine_info[] = {
 	 *      |    decay_speed         cargo_type
 	 *      |    |    lifelength     |         climates
 	 *      |    |    |    |         |         | */
-	MT(  1827,  20,  15,  30, 0              , T      ), //   0 Kirby Paul Tank (Steam)
-	MT( 12784,  20,  22,  30, 0              ,   A|S  ), //   1 MJS 250 (Diesel)
-	MT(  9497,  20,  20,  50, 0              ,       Y), //   2 Ploddyphut Choo-Choo
-	MT( 11688,  20,  20,  30, 0              ,       Y), //   3 Powernaut Choo-Choo
-	MT( 16802,  20,  20,  30, 0              ,       Y), //   4 Mightymover Choo-Choo
-	MT( 18993,  20,  20,  30, 0              ,       Y), //   5 Ploddyphut Diesel
-	MT( 20820,  20,  20,  30, 0              ,       Y), //   6 Powernaut Diesel
-	MT(  8766,  20,  20,  30, 0              ,   A|S  ), //   7 Wills 2-8-0 (Steam)
-	MT(  5114,  20,  21,  30, 0              , T      ), //   8 Chaney 'Jubilee' (Steam)
-	MT(  5479,  20,  20,  30, 0              , T      ), //   9 Ginzu 'A4' (Steam)
-	MT( 12419,  20,  23,  25, 0              , T      ), //  10 SH '8P' (Steam)
+	MT(  1827,  20,  15,  30, CT_NONE        , T      ), //   0 Kirby Paul Tank (Steam)
+	MT( 12784,  20,  22,  30, CT_NONE        ,   A|S  ), //   1 MJS 250 (Diesel)
+	MT(  9497,  20,  20,  50, CT_NONE        ,       Y), //   2 Ploddyphut Choo-Choo
+	MT( 11688,  20,  20,  30, CT_NONE        ,       Y), //   3 Powernaut Choo-Choo
+	MT( 16802,  20,  20,  30, CT_NONE        ,       Y), //   4 Mightymover Choo-Choo
+	MT( 18993,  20,  20,  30, CT_NONE        ,       Y), //   5 Ploddyphut Diesel
+	MT( 20820,  20,  20,  30, CT_NONE        ,       Y), //   6 Powernaut Diesel
+	MT(  8766,  20,  20,  30, CT_NONE        ,   A|S  ), //   7 Wills 2-8-0 (Steam)
+	MT(  5114,  20,  21,  30, CT_NONE        , T      ), //   8 Chaney 'Jubilee' (Steam)
+	MT(  5479,  20,  20,  30, CT_NONE        , T      ), //   9 Ginzu 'A4' (Steam)
+	MT( 12419,  20,  23,  25, CT_NONE        , T      ), //  10 SH '8P' (Steam)
 	MM( 13149,  20,  12,  30, CT_PASSENGERS  , T      ), //  11 Manley-Morel DMU (Diesel)
 	MM( 23376,  20,  15,  35, CT_PASSENGERS  , T      ), //  12 'Dash' (Diesel)
-	MT( 14976,  20,  18,  28, 0              , T      ), //  13 SH/Hendry '25' (Diesel)
-	MT( 14245,  20,  20,  30, 0              , T      ), //  14 UU '37' (Diesel)
-	MT( 15341,  20,  22,  33, 0              , T      ), //  15 Floss '47' (Diesel)
-	MT( 14976,  20,  20,  25, 0              ,   A|S  ), //  16 CS 4000 (Diesel)
-	MT( 16437,  20,  20,  30, 0              ,   A|S  ), //  17 CS 2400 (Diesel)
-	MT( 18993,  20,  22,  30, 0              ,   A|S  ), //  18 Centennial (Diesel)
-	MT( 13880,  20,  22,  30, 0              ,   A|S  ), //  19 Kelling 3100 (Diesel)
-	MM( 20454,  20,  22,  30, 0              ,   A|S  ), //  20 Turner Turbo (Diesel)
-	MT( 16071,  20,  22,  30, 0              ,   A|S  ), //  21 MJS 1000 (Diesel)
+	MT( 14976,  20,  18,  28, CT_NONE        , T      ), //  13 SH/Hendry '25' (Diesel)
+	MT( 14245,  20,  20,  30, CT_NONE        , T      ), //  14 UU '37' (Diesel)
+	MT( 15341,  20,  22,  33, CT_NONE        , T      ), //  15 Floss '47' (Diesel)
+	MT( 14976,  20,  20,  25, CT_NONE        ,   A|S  ), //  16 CS 4000 (Diesel)
+	MT( 16437,  20,  20,  30, CT_NONE        ,   A|S  ), //  17 CS 2400 (Diesel)
+	MT( 18993,  20,  22,  30, CT_NONE        ,   A|S  ), //  18 Centennial (Diesel)
+	MT( 13880,  20,  22,  30, CT_NONE        ,   A|S  ), //  19 Kelling 3100 (Diesel)
+	MM( 20454,  20,  22,  30, CT_NONE        ,   A|S  ), //  20 Turner Turbo (Diesel)
+	MT( 16071,  20,  22,  30, CT_NONE        ,   A|S  ), //  21 MJS 1000 (Diesel)
 	MT( 20820,  20,  20,  25, CT_MAIL        , T      ), //  22 SH '125' (Diesel)
-	MT( 16437,  20,  23,  30, 0              , T      ), //  23 SH '30' (Electric)
-	MT( 19359,  20,  23,  80, 0              , T      ), //  24 SH '40' (Electric)
-	MM( 23376,  20,  25,  30, 0              , T      ), //  25 'T.I.M.' (Electric)
-	MM( 26298,  20,  25,  50, 0              , T      ), //  26 'AsiaStar' (Electric)
+	MT( 16437,  20,  23,  30, CT_NONE        , T      ), //  23 SH '30' (Electric)
+	MT( 19359,  20,  23,  80, CT_NONE        , T      ), //  24 SH '40' (Electric)
+	MM( 23376,  20,  25,  30, CT_NONE        , T      ), //  25 'T.I.M.' (Electric)
+	MM( 26298,  20,  25,  50, CT_NONE        , T      ), //  26 'AsiaStar' (Electric)
 	MW(  1827,  20,  20,  50, CT_PASSENGERS  , T|A|S|Y), //  27 Passenger Carriage
 	MW(  1827,  20,  20,  50, CT_MAIL        , T|A|S|Y), //  28 Mail Van
 	MW(  1827,  20,  20,  50, CT_COAL        , T|A    ), //  29 Coal Truck
 	MW(  1827,  20,  20,  50, CT_OIL         , T|A|S  ), //  30 Oil Tanker
 	MW(  1827,  20,  20,  50, CT_LIVESTOCK   , T|A    ), //  31 Livestock Van
 	MW(  1827,  20,  20,  50, CT_GOODS       , T|A|S  ), //  32 Goods Van
-	MW(  1827,  20,  20,  50, CT_GRAIN       , T|A|S  ), //  33 Grain Hopper
+	MW(  1827,  20,  20,  50, MCT_GRAIN_WHEAT_MAIZE, T|A|S  ), //  33 Grain Hopper
 	MW(  1827,  20,  20,  50, CT_WOOD        , T|A|S  ), //  34 Wood Truck
 	MW(  1827,  20,  20,  50, CT_IRON_ORE    , T      ), //  35 Iron Ore Hopper
 	MW(  1827,  20,  20,  50, CT_STEEL       , T      ), //  36 Steel Truck
-	MW(  1827,  20,  20,  50, CT_VALUABLES   , T|A|S  ), //  37 Armoured Van
+	MW(  1827,  20,  20,  50, MCT_VALUABLES_GOLD_DIAMONDS, T|A|S  ), //  37 Armoured Van
 	MW(  1827,  20,  20,  50, CT_FOOD        ,   A|S  ), //  38 Food Van
 	MW(  1827,  20,  20,  50, CT_PAPER       ,   A    ), //  39 Paper Truck
 	MW(  1827,  20,  20,  50, CT_COPPER_ORE  ,     S  ), //  40 Copper Ore Hopper
@@ -156,20 +156,20 @@ static const EngineInfo _orig_engine_info[] = {
 	MW(  1827,  20,  20,  50, CT_BATTERIES   ,       Y), //  51 Battery Truck
 	MW(  1827,  20,  20,  50, CT_FIZZY_DRINKS,       Y), //  52 Fizzy Drink Truck
 	MW(  1827,  20,  20,  50, CT_PLASTIC     ,       Y), //  53 Plastic Truck
-	MT( 28490,  20,  20,  50, 0              , T|A|S  ), //  54 'X2001' (Electric)
+	MT( 28490,  20,  20,  50, CT_NONE        , T|A|S  ), //  54 'X2001' (Electric)
 	MT( 31047,  20,  20,  50, CT_PASSENGERS  , T|A|S  ), //  55 'Millennium Z1' (Electric)
-	MT( 28855,  20,  20,  50, 0              ,       Y), //  56 Wizzowow Z99
+	MT( 28855,  20,  20,  50, CT_NONE        ,       Y), //  56 Wizzowow Z99
 	MW(  1827,  20,  20,  50, CT_PASSENGERS  , T|A|S|Y), //  57 Passenger Carriage
 	MW(  1827,  20,  20,  50, CT_MAIL        , T|A|S|Y), //  58 Mail Van
 	MW(  1827,  20,  20,  50, CT_COAL        , T|A    ), //  59 Coal Truck
 	MW(  1827,  20,  20,  50, CT_OIL         , T|A|S  ), //  60 Oil Tanker
 	MW(  1827,  20,  20,  50, CT_LIVESTOCK   , T|A    ), //  61 Livestock Van
 	MW(  1827,  20,  20,  50, CT_GOODS       , T|A|S  ), //  62 Goods Van
-	MW(  1827,  20,  20,  50, CT_GRAIN       , T|A|S  ), //  63 Grain Hopper
+	MW(  1827,  20,  20,  50, MCT_GRAIN_WHEAT_MAIZE, T|A|S  ), //  63 Grain Hopper
 	MW(  1827,  20,  20,  50, CT_WOOD        , T|A|S  ), //  64 Wood Truck
 	MW(  1827,  20,  20,  50, CT_IRON_ORE    , T      ), //  65 Iron Ore Hopper
 	MW(  1827,  20,  20,  50, CT_STEEL       , T      ), //  66 Steel Truck
-	MW(  1827,  20,  20,  50, CT_VALUABLES   , T|A|S  ), //  67 Armoured Van
+	MW(  1827,  20,  20,  50, MCT_VALUABLES_GOLD_DIAMONDS, T|A|S  ), //  67 Armoured Van
 	MW(  1827,  20,  20,  50, CT_FOOD        ,   A|S  ), //  68 Food Van
 	MW(  1827,  20,  20,  50, CT_PAPER       ,   A    ), //  69 Paper Truck
 	MW(  1827,  20,  20,  50, CT_COPPER_ORE  ,     S  ), //  70 Copper Ore Hopper
@@ -186,22 +186,22 @@ static const EngineInfo _orig_engine_info[] = {
 	MW(  1827,  20,  20,  50, CT_BATTERIES   ,       Y), //  81 Battery Truck
 	MW(  1827,  20,  20,  50, CT_FIZZY_DRINKS,       Y), //  82 Fizzy Drink Truck
 	MW(  1827,  20,  20,  50, CT_PLASTIC     ,       Y), //  83 Plastic Truck
-	MT( 36525,  20,  20,  50, 0              , T|A|S  ), //  84 Lev1 'Leviathan' (Electric)
-	MT( 39447,  20,  20,  50, 0              , T|A|S  ), //  85 Lev2 'Cyclops' (Electric)
-	MT( 42004,  20,  20,  50, 0              , T|A|S  ), //  86 Lev3 'Pegasus' (Electric)
-	MT( 42735,  20,  20,  50, 0              , T|A|S  ), //  87 Lev4 'Chimaera' (Electric)
-	MT( 36891,  20,  20,  60, 0              ,       Y), //  88 Wizzowow Rocketeer
+	MT( 36525,  20,  20,  50, CT_NONE        , T|A|S  ), //  84 Lev1 'Leviathan' (Electric)
+	MT( 39447,  20,  20,  50, CT_NONE        , T|A|S  ), //  85 Lev2 'Cyclops' (Electric)
+	MT( 42004,  20,  20,  50, CT_NONE        , T|A|S  ), //  86 Lev3 'Pegasus' (Electric)
+	MT( 42735,  20,  20,  50, CT_NONE        , T|A|S  ), //  87 Lev4 'Chimaera' (Electric)
+	MT( 36891,  20,  20,  60, CT_NONE        ,       Y), //  88 Wizzowow Rocketeer
 	MW(  1827,  20,  20,  50, CT_PASSENGERS  , T|A|S|Y), //  89 Passenger Carriage
 	MW(  1827,  20,  20,  50, CT_MAIL        , T|A|S|Y), //  90 Mail Van
 	MW(  1827,  20,  20,  50, CT_COAL        , T|A    ), //  91 Coal Truck
 	MW(  1827,  20,  20,  50, CT_OIL         , T|A|S  ), //  92 Oil Tanker
 	MW(  1827,  20,  20,  50, CT_LIVESTOCK   , T|A    ), //  93 Livestock Van
 	MW(  1827,  20,  20,  50, CT_GOODS       , T|A|S  ), //  94 Goods Van
-	MW(  1827,  20,  20,  50, CT_GRAIN       , T|A|S  ), //  95 Grain Hopper
+	MW(  1827,  20,  20,  50, MCT_GRAIN_WHEAT_MAIZE, T|A|S  ), //  95 Grain Hopper
 	MW(  1827,  20,  20,  50, CT_WOOD        , T|A|S  ), //  96 Wood Truck
 	MW(  1827,  20,  20,  50, CT_IRON_ORE    , T      ), //  97 Iron Ore Hopper
 	MW(  1827,  20,  20,  50, CT_STEEL       , T      ), //  98 Steel Truck
-	MW(  1827,  20,  20,  50, CT_VALUABLES   , T|A|S  ), //  99 Armoured Van
+	MW(  1827,  20,  20,  50, MCT_VALUABLES_GOLD_DIAMONDS, T|A|S  ), //  99 Armoured Van
 	MW(  1827,  20,  20,  50, CT_FOOD        ,   A|S  ), // 100 Food Van
 	MW(  1827,  20,  20,  50, CT_PAPER       ,   A    ), // 101 Paper Truck
 	MW(  1827,  20,  20,  50, CT_COPPER_ORE  ,     S  ), // 102 Copper Ore Hopper
@@ -243,9 +243,9 @@ static const EngineInfo _orig_engine_info[] = {
 	MR(  5479,  20,  15,  55, CT_GOODS       , T|A|S  ), // 138 Balogh Goods Truck
 	MR( 19724,  20,  15,  55, CT_GOODS       , T|A|S  ), // 139 Craighead Goods Truck
 	MR( 31047,  20,  15,  85, CT_GOODS       , T|A|S  ), // 140 Goss Goods Truck
-	MR(  5479,  20,  15,  55, CT_GRAIN       , T|A|S  ), // 141 Hereford Grain Truck
-	MR( 21185,  20,  15,  55, CT_GRAIN       , T|A|S  ), // 142 Thomas Grain Truck
-	MR( 32873,  20,  15,  85, CT_GRAIN       , T|A|S  ), // 143 Goss Grain Truck
+	MR(  5479,  20,  15,  55, MCT_GRAIN_WHEAT_MAIZE, T|A|S  ), // 141 Hereford Grain Truck
+	MR( 21185,  20,  15,  55, MCT_GRAIN_WHEAT_MAIZE, T|A|S  ), // 142 Thomas Grain Truck
+	MR( 32873,  20,  15,  85, MCT_GRAIN_WHEAT_MAIZE, T|A|S  ), // 143 Goss Grain Truck
 	MR(  5479,  20,  15,  55, CT_WOOD        , T|A|S  ), // 144 Witcombe Wood Truck
 	MR( 19724,  20,  15,  55, CT_WOOD        , T|A|S  ), // 145 Foster Wood Truck
 	MR( 35430,  20,  15,  85, CT_WOOD        , T|A|S  ), // 146 Moreland Wood Truck
@@ -255,9 +255,9 @@ static const EngineInfo _orig_engine_info[] = {
 	MR(  5479,  20,  15,  55, CT_STEEL       , T      ), // 150 Balogh Steel Truck
 	MR( 21185,  20,  15,  55, CT_STEEL       , T      ), // 151 Uhl Steel Truck
 	MR( 31777,  20,  15,  85, CT_STEEL       , T      ), // 152 Kelling Steel Truck
-	MR(  5479,  20,  15,  55, CT_VALUABLES   , T|A|S  ), // 153 Balogh Armoured Truck
-	MR( 22281,  20,  15,  55, CT_VALUABLES   , T|A|S  ), // 154 Uhl Armoured Truck
-	MR( 33603,  20,  15,  85, CT_VALUABLES   , T|A|S  ), // 155 Foster Armoured Truck
+	MR(  5479,  20,  15,  55, MCT_VALUABLES_GOLD_DIAMONDS, T|A|S  ), // 153 Balogh Armoured Truck
+	MR( 22281,  20,  15,  55, MCT_VALUABLES_GOLD_DIAMONDS, T|A|S  ), // 154 Uhl Armoured Truck
+	MR( 33603,  20,  15,  85, MCT_VALUABLES_GOLD_DIAMONDS, T|A|S  ), // 155 Foster Armoured Truck
 	MR(  5479,  20,  15,  55, CT_FOOD        ,   A|S  ), // 156 Foster Food Van
 	MR( 18628,  20,  15,  55, CT_FOOD        ,   A|S  ), // 157 Perry Food Van
 	MR( 30681,  20,  15,  85, CT_FOOD        ,   A|S  ), // 158 Chippy Food Van
@@ -557,29 +557,30 @@ static const RailVehicleInfo _orig_rail_vehicle_info[] = {
  * @see ShipVehicleInfo
  * @param a image_index
  * @param b cost_factor
- * @param c max_speed (1 unit = 1/3.2 mph = 0.5 km-ish/h)
- * @param d capacity (persons, bags, tons, pieces, items, cubic metres, ...)
- * @param e running_cost
- * @param f sound effect
- * @param g refittable
+ * @param c acceleration (1 unit = 1/3.2 mph per tick = 0.5 km-ish/h per tick)
+ * @param d max_speed (1 unit = 1/3.2 mph = 0.5 km-ish/h)
+ * @param e capacity (persons, bags, tons, pieces, items, cubic metres, ...)
+ * @param f running_cost
+ * @param g sound effect
+ * @param h refittable
  */
-#define SVI(a, b, c, d, e, f, g) { a, b, c, d, e, f, g, VE_DEFAULT, 0, 0 }
+#define SVI(a, b, c, d, e, f, g, h) { a, b, c, d, e, f, g, h, VE_DEFAULT, 0, 0 }
 static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
-	/*   image_index    capacity                              refittable
-	 *   |    cost_factor    running_cost                     |
-	 *   |    |    max_speed |  sfx                           |
-	 *   |    |    |    |    |  |                             | */
-	SVI( 1, 160,  48, 220, 140, SND_06_DEPARTURE_CARGO_SHIP,  0 ), //  0 MPS Oil Tanker
-	SVI( 1, 176,  80, 350, 125, SND_06_DEPARTURE_CARGO_SHIP,  0 ), //  1 CS-Inc. Oil Tanker
-	SVI( 2,  96,  64, 100,  90, SND_07_DEPARTURE_FERRY,       0 ), //  2 MPS Passenger Ferry
-	SVI( 2, 112, 128, 130,  80, SND_07_DEPARTURE_FERRY,       0 ), //  3 FFP Passenger Ferry
-	SVI( 3, 148, 224, 100, 190, SND_07_DEPARTURE_FERRY,       0 ), //  4 Bakewell 300 Hovercraft
-	SVI( 2,  96,  64, 100,  90, SND_07_DEPARTURE_FERRY,       0 ), //  5 Chugger-Chug Passenger Ferry
-	SVI( 2, 112, 128, 130,  80, SND_07_DEPARTURE_FERRY,       0 ), //  6 Shivershake Passenger Ferry
-	SVI( 0, 128,  48, 160, 150, SND_06_DEPARTURE_CARGO_SHIP,  1 ), //  7 Yate Cargo ship
-	SVI( 0, 144,  80, 190, 113, SND_06_DEPARTURE_CARGO_SHIP,  1 ), //  8 Bakewell Cargo ship
-	SVI( 0, 128,  48, 160, 150, SND_06_DEPARTURE_CARGO_SHIP,  1 ), //  9 Mightymover Cargo ship
-	SVI( 0, 144,  80, 190, 113, SND_06_DEPARTURE_CARGO_SHIP,  1 ), // 10 Powernaut Cargo ship
+	/*   image_index  max_speed         sfx                      refittable
+	 *   |    cost_factor  capacity     |                        |
+	 *   |    |  acceleration   running_cost                     |
+	 *   |    |  |    |    |    |       |                        | */
+	SVI( 1, 160, 1,  48, 220, 140, SND_06_DEPARTURE_CARGO_SHIP,  0 ), //  0 MPS Oil Tanker
+	SVI( 1, 176, 1,  80, 350, 125, SND_06_DEPARTURE_CARGO_SHIP,  0 ), //  1 CS-Inc. Oil Tanker
+	SVI( 2,  96, 1,  64, 100,  90, SND_07_DEPARTURE_FERRY,       0 ), //  2 MPS Passenger Ferry
+	SVI( 2, 112, 1, 128, 130,  80, SND_07_DEPARTURE_FERRY,       0 ), //  3 FFP Passenger Ferry
+	SVI( 3, 148, 1, 224, 100, 190, SND_07_DEPARTURE_FERRY,       0 ), //  4 Bakewell 300 Hovercraft
+	SVI( 2,  96, 1,  64, 100,  90, SND_07_DEPARTURE_FERRY,       0 ), //  5 Chugger-Chug Passenger Ferry
+	SVI( 2, 112, 1, 128, 130,  80, SND_07_DEPARTURE_FERRY,       0 ), //  6 Shivershake Passenger Ferry
+	SVI( 0, 128, 1,  48, 160, 150, SND_06_DEPARTURE_CARGO_SHIP,  1 ), //  7 Yate Cargo ship
+	SVI( 0, 144, 1,  80, 190, 113, SND_06_DEPARTURE_CARGO_SHIP,  1 ), //  8 Bakewell Cargo ship
+	SVI( 0, 128, 1,  48, 160, 150, SND_06_DEPARTURE_CARGO_SHIP,  1 ), //  9 Mightymover Cargo ship
+	SVI( 0, 144, 1,  80, 190, 113, SND_06_DEPARTURE_CARGO_SHIP,  1 ), // 10 Powernaut Cargo ship
 };
 #undef SVI
 

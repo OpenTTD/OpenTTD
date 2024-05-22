@@ -12,17 +12,18 @@
 
 #include "depot_map.h"
 #include "core/pool_type.hpp"
+#include "timer/timer_game_calendar.h"
 
 typedef Pool<Depot, DepotID, 64, 64000> DepotPool;
 extern DepotPool _depot_pool;
 
 struct Depot : DepotPool::PoolItem<&_depot_pool> {
+	/* DepotID index member of DepotPool is 2 bytes. */
+	uint16_t town_cn; ///< The N-1th depot for this town (consecutive number)
+	TileIndex xy;
 	Town *town;
 	std::string name;
-
-	TileIndex xy;
-	uint16 town_cn;    ///< The N-1th depot for this town (consecutive number)
-	Date build_date;   ///< Date of construction
+	TimerGameCalendar::Date build_date; ///< Date of construction
 
 	Depot(TileIndex xy = INVALID_TILE) : xy(xy) {}
 	~Depot();

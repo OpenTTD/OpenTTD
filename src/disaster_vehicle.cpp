@@ -17,7 +17,7 @@
  *     that handles the vehicle's ticks.
  * <li>Run the disaster vehicles each tick until their target has been reached,
  *     this happens in the DisasterTick_XXX() functions. In here, a vehicle's
- *     state is kept by v->current_order.dest variable. Each achieved sub-target
+ *     state is kept by v->state variable. Each achieved sub-target
  *     will increase this value, and the last one will remove the disaster itself
  * </ol>
  */
@@ -34,7 +34,6 @@
 #include "town.h"
 #include "company_func.h"
 #include "strings_func.h"
-#include "date_func.h"
 #include "viewport_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
@@ -47,13 +46,15 @@
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "landscape_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_game_economy.h"
 
 #include "table/strings.h"
 
 #include "safeguards.h"
 
 /** Delay counter for considering the next disaster. */
-uint16 _disaster_delay;
+uint16_t _disaster_delay;
 
 static void DisasterClearSquare(TileIndex tile)
 {
@@ -62,7 +63,7 @@ static void DisasterClearSquare(TileIndex tile)
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			if (Company::IsHumanID(GetTileOwner(tile)) && !IsRailDepot(tile)) {
-				Backup<CompanyID> cur_company(_current_company, OWNER_WATER, FILE_LINE);
+				Backup<CompanyID> cur_company(_current_company, OWNER_WATER);
 				Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, tile);
 				cur_company.Restore();
 
@@ -72,7 +73,7 @@ static void DisasterClearSquare(TileIndex tile)
 			break;
 
 		case MP_HOUSE: {
-			Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
+			Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 			Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, tile);
 			cur_company.Restore();
 			break;
@@ -167,7 +168,7 @@ DisasterVehicle::DisasterVehicle(int x, int y, Direction direction, DisasterSubT
 	this->UpdateDeltaXY();
 	this->owner = OWNER_NONE;
 	this->image_override = 0;
-	this->current_order.Free();
+	this->state = 0;
 
 	this->UpdateImage();
 	this->UpdatePositionAndViewport();
@@ -213,7 +214,7 @@ void DisasterVehicle::UpdatePosition(int x, int y, int z)
 }
 
 /**
- * Zeppeliner handling, v->current_order.dest states:
+ * Zeppeliner handling, v->state states:
  * 0: Zeppeliner initialization has found a small airport, go there and crash
  * 1: Create crash and animate falling down for extra dramatic effect
  * 2: Create more smoke and leave debris on ground
@@ -224,24 +225,24 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 {
 	v->tick_counter++;
 
-	if (v->current_order.GetDestination() < 2) {
+	if (v->state < 2) {
 		if (HasBit(v->tick_counter, 0)) return true;
 
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 
 		v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
 
-		if (v->current_order.GetDestination() == 1) {
+		if (v->state == 1) {
 			if (++v->age == 38) {
-				v->current_order.SetDestination(2);
+				v->state = 2;
 				v->age = 0;
 			}
 
 			if (GB(v->tick_counter, 0, 3) == 0) CreateEffectVehicleRel(v, 0, -17, 2, EV_CRASH_SMOKE);
 
-		} else if (v->current_order.GetDestination() == 0) {
+		} else if (v->state == 0) {
 			if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
-				v->current_order.SetDestination(1);
+				v->state = 1;
 				v->age = 0;
 
 				SetDParam(0, GetStationIndex(v->tile));
@@ -258,7 +259,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		return true;
 	}
 
-	if (v->current_order.GetDestination() > 2) {
+	if (v->state > 2) {
 		if (++v->age <= 13320) return true;
 
 		if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
@@ -286,7 +287,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		v->image_override = SPR_BLIMP_CRASHED;
 	} else if (v->age <= 300) {
 		if (GB(v->tick_counter, 0, 3) == 0) {
-			uint32 r = Random();
+			uint32_t r = Random();
 
 			CreateEffectVehicleRel(v,
 				GB(r, 0, 4) - 7,
@@ -295,7 +296,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 				EV_EXPLOSION_SMALL);
 		}
 	} else if (v->age == 350) {
-		v->current_order.SetDestination(3);
+		v->state = 3;
 		v->age = 0;
 	}
 
@@ -307,7 +308,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 }
 
 /**
- * (Small) Ufo handling, v->current_order.dest states:
+ * (Small) Ufo handling, v->state states:
  * 0: Fly around to the middle of the map, then randomly, after a while target a road vehicle
  * 1: Home in on a road vehicle and crash it >:)
  * If not road vehicle was found, only state 0 is used and Ufo disappears after a while
@@ -316,7 +317,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 {
 	v->image_override = (HasBit(++v->tick_counter, 3)) ? SPR_UFO_SMALL_SCOUT_DARKER : SPR_UFO_SMALL_SCOUT;
 
-	if (v->current_order.GetDestination() == 0) {
+	if (v->state == 0) {
 		/* Fly around randomly */
 		int x = TileX(v->dest_tile) * TILE_SIZE;
 		int y = TileY(v->dest_tile) * TILE_SIZE;
@@ -330,11 +331,11 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 			v->dest_tile = RandomTile();
 			return true;
 		}
-		v->current_order.SetDestination(1);
+		v->state = 1;
 
 		uint n = 0; // Total number of targetable road vehicles.
-		for (const RoadVehicle *u : RoadVehicle::Iterate()) {
-			if (u->IsFrontEngine()) n++;
+		for (const Company *c : Company::Iterate()) {
+			n += c->group_all[VEH_ROAD].num_vehicle;
 		}
 
 		if (n == 0) {
@@ -344,12 +345,18 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		}
 
 		n = RandomRange(n); // Choose one of them.
-		for (const RoadVehicle *u : RoadVehicle::Iterate()) {
+		for (RoadVehicle *u : RoadVehicle::Iterate()) {
 			/* Find (n+1)-th road vehicle. */
 			if (u->IsFrontEngine() && (n-- == 0)) {
+				if (u->crashed_ctr != 0 || u->disaster_vehicle != INVALID_VEHICLE) {
+					/* Targetted vehicle is crashed or already a target, destroy the UFO. */
+					delete v;
+					return false;
+				}
 				/* Target it. */
 				v->dest_tile = u->index;
 				v->age = 0;
+				u->disaster_vehicle = v->index;
 				break;
 			}
 		}
@@ -357,7 +364,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		return true;
 	} else {
 		/* Target a vehicle */
-		RoadVehicle *u = RoadVehicle::Get(v->dest_tile);
+		RoadVehicle *u = RoadVehicle::Get(v->dest_tile.base());
 		assert(u != nullptr && u->type == VEH_ROAD && u->IsFrontEngine());
 
 		uint dist = Delta(v->x_pos, u->x_pos) + Delta(v->y_pos, u->y_pos);
@@ -378,6 +385,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 			v->age++;
 			if (u->crashed_ctr == 0) {
 				u->Crash();
+				u->disaster_vehicle = INVALID_VEHICLE;
 
 				AddTileNewsItem(STR_NEWS_DISASTER_SMALL_UFO, NT_ACCIDENT, u->tile);
 
@@ -409,7 +417,7 @@ static void DestructIndustry(Industry *i)
 }
 
 /**
- * Aircraft handling, v->current_order.dest states:
+ * Aircraft handling, v->state states:
  * 0: Fly towards the targeted industry
  * 1: If within 15 tiles, fire away rockets and destroy industry
  * 2: Industry explosions
@@ -421,10 +429,10 @@ static void DestructIndustry(Industry *i)
  * @param news_message The string that's used as news message.
  * @param industry_flag Only attack industries that have this flag set.
  */
-static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, bool leave_at_top, StringID news_message, IndustryBehaviour industry_flag)
+static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, bool leave_at_top, StringID news_message, IndustryBehaviour industry_flag)
 {
 	v->tick_counter++;
-	v->image_override = (v->current_order.GetDestination() == 1 && HasBit(v->tick_counter, 2)) ? image_override : 0;
+	v->image_override = (v->state == 1 && HasBit(v->tick_counter, 2)) ? image_override : 0;
 
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
@@ -434,12 +442,12 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 		return false;
 	}
 
-	if (v->current_order.GetDestination() == 2) {
+	if (v->state == 2) {
 		if (GB(v->tick_counter, 0, 2) == 0) {
-			Industry *i = Industry::Get(v->dest_tile); // Industry destructor calls ReleaseDisastersTargetingIndustry, so this is valid
+			Industry *i = Industry::Get(v->dest_tile.base()); // Industry destructor calls ReleaseDisastersTargetingIndustry, so this is valid
 			int x = TileX(i->location.tile) * TILE_SIZE;
 			int y = TileY(i->location.tile) * TILE_SIZE;
-			uint32 r = Random();
+			uint32_t r = Random();
 
 			CreateEffectVehicleAbove(
 				GB(r,  0, 6) + x,
@@ -447,21 +455,21 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 				GB(r, 12, 4),
 				EV_EXPLOSION_SMALL);
 
-			if (++v->age >= 55) v->current_order.SetDestination(3);
+			if (++v->age >= 55) v->state = 3;
 		}
-	} else if (v->current_order.GetDestination() == 1) {
+	} else if (v->state == 1) {
 		if (++v->age == 112) {
-			v->current_order.SetDestination(2);
+			v->state = 2;
 			v->age = 0;
 
-			Industry *i = Industry::Get(v->dest_tile); // Industry destructor calls ReleaseDisastersTargetingIndustry, so this is valid
+			Industry *i = Industry::Get(v->dest_tile.base()); // Industry destructor calls ReleaseDisastersTargetingIndustry, so this is valid
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
 			AddIndustryNewsItem(news_message, NT_ACCIDENT, i->index);
 			if (_settings_client.sound.disaster) SndPlayTileFx(SND_12_EXPLOSION, i->location.tile);
 		}
-	} else if (v->current_order.GetDestination() == 0) {
+	} else if (v->state == 0) {
 		int x = v->x_pos + ((leave_at_top ? -15 : 15) * TILE_SIZE);
 		int y = v->y_pos;
 
@@ -474,7 +482,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 		v->dest_tile = ind;
 
 		if (GetIndustrySpec(Industry::Get(ind)->type)->behaviour & industry_flag) {
-			v->current_order.SetDestination(1);
+			v->state = 1;
 			v->age = 0;
 		}
 	}
@@ -509,7 +517,7 @@ static bool DisasterTick_Helicopter_Rotors(DisasterVehicle *v)
 }
 
 /**
- * (Big) Ufo handling, v->current_order.dest states:
+ * (Big) Ufo handling, v->state states:
  * 0: Fly around to the middle of the map, then randomly for a while and home in on a piece of rail
  * 1: Land there and breakdown all trains in a radius of 12 tiles; and now we wait...
  *    because as soon as the Ufo lands, a fighter jet, a Skyranger, is called to clear up the mess
@@ -518,7 +526,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 {
 	v->tick_counter++;
 
-	if (v->current_order.GetDestination() == 1) {
+	if (v->state == 1) {
 		int x = TileX(v->dest_tile) * TILE_SIZE + TILE_SIZE / 2;
 		int y = TileY(v->dest_tile) * TILE_SIZE + TILE_SIZE / 2;
 		if (Delta(v->x_pos, x) + Delta(v->y_pos, y) >= 8) {
@@ -541,7 +549,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 			return true;
 		}
 
-		v->current_order.SetDestination(2);
+		v->state = 2;
 
 		for (Vehicle *target : Vehicle::Iterate()) {
 			if (target->IsGroundVehicle()) {
@@ -563,7 +571,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 		DisasterVehicle *u = new DisasterVehicle(-6 * (int)TILE_SIZE, v->y_pos, DIR_SW, ST_BIG_UFO_DESTROYER, v->index);
 		DisasterVehicle *w = new DisasterVehicle(-6 * (int)TILE_SIZE, v->y_pos, DIR_SW, ST_BIG_UFO_DESTROYER_SHADOW);
 		u->SetNext(w);
-	} else if (v->current_order.GetDestination() == 0) {
+	} else if (v->state == 0) {
 		int x = TileX(v->dest_tile) * TILE_SIZE;
 		int y = TileY(v->dest_tile) * TILE_SIZE;
 		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= (int)TILE_SIZE) {
@@ -577,7 +585,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 			v->dest_tile = RandomTile();
 			return true;
 		}
-		v->current_order.SetDestination(1);
+		v->state = 1;
 
 		const auto is_valid_target = [](const Train *t) {
 			return t->IsFrontEngine() // Only the engines
@@ -613,7 +621,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 }
 
 /**
- * Skyranger destroying (Big) Ufo handling, v->current_order.dest states:
+ * Skyranger destroying (Big) Ufo handling, v->state states:
  * 0: Home in on landed Ufo and shoot it down
  */
 static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
@@ -628,10 +636,10 @@ static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
 		return false;
 	}
 
-	if (v->current_order.GetDestination() == 0) {
+	if (v->state == 0) {
 		Vehicle *u = Vehicle::Get(v->big_ufo_destroyer_target);
 		if (Delta(v->x_pos, u->x_pos) > (int)TILE_SIZE) return true;
-		v->current_order.SetDestination(1);
+		v->state = 1;
 
 		CreateEffectVehicleRel(u, 0, 7, 8, EV_EXPLOSION_LARGE);
 		if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, u);
@@ -639,7 +647,7 @@ static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
 		delete u;
 
 		for (int i = 0; i != 80; i++) {
-			uint32 r = Random();
+			uint32_t r = Random();
 			CreateEffectVehicleAbove(
 				GB(r, 0, 6) + v->x_pos - 32,
 				GB(r, 5, 6) + v->y_pos - 32,
@@ -659,7 +667,7 @@ static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
 }
 
 /**
- * Submarine, v->current_order.dest states:
+ * Submarine, v->state states:
  * Unused, just float around aimlessly and pop up at different places, turning around
  */
 static bool DisasterTick_Submarine(DisasterVehicle *v)
@@ -689,7 +697,7 @@ static bool DisasterTick_Submarine(DisasterVehicle *v)
 }
 
 
-static bool DisasterTick_NULL(DisasterVehicle *v)
+static bool DisasterTick_NULL(DisasterVehicle *)
 {
 	return true;
 }
@@ -837,7 +845,7 @@ static void Disaster_Submarine_Init(DisasterSubType subtype)
 
 	int y;
 	Direction dir;
-	uint32 r = Random();
+	uint32_t r = Random();
 	int x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
 
 	if (HasBit(r, 31)) {
@@ -899,9 +907,9 @@ static void Disaster_CoalMine_Init()
 }
 
 struct Disaster {
-	DisasterInitProc *init_proc; ///< The init function for this disaster.
-	Year min_year;               ///< The first year this disaster will occur.
-	Year max_year;               ///< The last year this disaster will occur.
+	DisasterInitProc *init_proc;      ///< The init function for this disaster.
+	TimerGameCalendar::Year min_year; ///< The first year this disaster will occur.
+	TimerGameCalendar::Year max_year; ///< The last year this disaster will occur.
 };
 
 static const Disaster _disasters[] = {
@@ -917,16 +925,17 @@ static const Disaster _disasters[] = {
 
 static void DoDisaster()
 {
-	byte buf[lengthof(_disasters)];
+	std::vector<DisasterInitProc *> available_disasters;
 
-	byte j = 0;
-	for (size_t i = 0; i != lengthof(_disasters); i++) {
-		if (_cur_year >= _disasters[i].min_year && _cur_year < _disasters[i].max_year) buf[j++] = (byte)i;
+	for (auto &disaster : _disasters) {
+		if (TimerGameCalendar::year >= disaster.min_year && TimerGameCalendar::year < disaster.max_year) {
+			available_disasters.push_back(disaster.init_proc);
+		}
 	}
 
-	if (j == 0) return;
+	if (available_disasters.empty()) return;
 
-	_disasters[buf[RandomRange(j)]].init_proc();
+	available_disasters[RandomRange(static_cast<uint32_t>(available_disasters.size()))]();
 }
 
 
@@ -935,14 +944,14 @@ static void ResetDisasterDelay()
 	_disaster_delay = GB(Random(), 0, 9) + 730;
 }
 
-void DisasterDailyLoop()
+static IntervalTimer<TimerGameEconomy> _economy_disaster_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::DISASTER}, [](auto)
 {
 	if (--_disaster_delay != 0) return;
 
 	ResetDisasterDelay();
 
 	if (_settings_game.difficulty.disasters != 0) DoDisaster();
-}
+});
 
 void StartupDisasters()
 {
@@ -960,7 +969,7 @@ void ReleaseDisastersTargetingIndustry(IndustryID i)
 		/* primary disaster vehicles that have chosen target */
 		if (v->subtype == ST_AIRPLANE || v->subtype == ST_HELICOPTER) {
 			/* if it has chosen target, and it is this industry (yes, dest_tile is IndustryID here), set order to "leaving map peacefully" */
-			if (v->current_order.GetDestination() > 0 && v->dest_tile == (uint32)i) v->current_order.SetDestination(3);
+			if (v->state > 0 && v->dest_tile == (uint32_t)i) v->state = 3;
 		}
 	}
 }
@@ -969,20 +978,20 @@ void ReleaseDisastersTargetingIndustry(IndustryID i)
  * Notify disasters that we are about to delete a vehicle. So make them head elsewhere.
  * @param vehicle deleted vehicle
  */
-void ReleaseDisastersTargetingVehicle(VehicleID vehicle)
+void ReleaseDisasterVehicle(VehicleID vehicle)
 {
-	for (DisasterVehicle *v : DisasterVehicle::Iterate()) {
-		/* primary disaster vehicles that have chosen target */
-		if (v->subtype == ST_SMALL_UFO) {
-			if (v->current_order.GetDestination() != 0 && v->dest_tile == vehicle) {
-				/* Revert to target-searching */
-				v->current_order.SetDestination(0);
-				v->dest_tile = RandomTile();
-				GetAircraftFlightLevelBounds(v, &v->z_pos, nullptr);
-				v->age = 0;
-			}
-		}
-	}
+	DisasterVehicle *v = DisasterVehicle::GetIfValid(vehicle);
+	if (v == nullptr) return;
+
+	/* primary disaster vehicles that have chosen target */
+	assert(v->subtype == ST_SMALL_UFO);
+	assert(v->state != 0);
+
+	/* Revert to target-searching */
+	v->state = 0;
+	v->dest_tile = RandomTile();
+	GetAircraftFlightLevelBounds(v, &v->z_pos, nullptr);
+	v->age = 0;
 }
 
 void DisasterVehicle::UpdateDeltaXY()

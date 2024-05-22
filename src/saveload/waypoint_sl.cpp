@@ -14,6 +14,7 @@
 #include "../vehicle_base.h"
 #include "../town.h"
 #include "../newgrf.h"
+#include "../timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 
@@ -27,13 +28,13 @@ struct OldWaypoint {
 	TileIndex xy;
 	TownID town_index;
 	Town *town;
-	uint16 town_cn;
+	uint16_t town_cn;
 	StringID string_id;
 	std::string name;
-	uint8 delete_ctr;
-	Date build_date;
-	uint8 localidx;
-	uint32 grfid;
+	uint8_t delete_ctr;
+	TimerGameCalendar::Date build_date;
+	uint8_t localidx;
+	uint32_t grfid;
 	const StationSpec *spec;
 	Owner owner;
 
@@ -85,7 +86,7 @@ void MoveWaypointsToBaseStations()
 		/* As of version 17, we recalculate the custom graphic ID of waypoints
 		 * from the GRF ID / station index. */
 		for (OldWaypoint &wp : _old_waypoints) {
-			StationClass* stclass = StationClass::Get(STAT_CLASS_WAYP);
+			StationClass *stclass = StationClass::Get(STAT_CLASS_WAYP);
 			for (uint i = 0; i < stclass->GetSpecCount(); i++) {
 				const StationSpec *statspec = stclass->GetSpec(i);
 				if (statspec != nullptr && statspec->grf_prop.grffile->grfid == wp.grfid && statspec->grf_prop.local_id == wp.localidx) {

@@ -12,11 +12,11 @@
 
 #include "core/enum_type.hpp"
 
-typedef uint16 StoryPageElementID; ///< ID of a story page element
-typedef uint16 StoryPageID; ///< ID of a story page
+typedef uint16_t StoryPageElementID; ///< ID of a story page element
+typedef uint16_t StoryPageID; ///< ID of a story page
 struct StoryPageElement;
 struct StoryPage;
-enum StoryPageElementType : byte;
+enum StoryPageElementType : uint8_t;
 
 static const StoryPageElementID INVALID_STORY_PAGE_ELEMENT = 0xFFFF; ///< Constant representing a non-existing story page element.
 static const StoryPageID INVALID_STORY_PAGE = 0xFFFF; ///< Constant representing a non-existing story page.

@@ -34,7 +34,7 @@ enum VehicleRailFlags {
 };
 
 /** Modes for ignoring signals. */
-enum TrainForceProceeding : byte {
+enum TrainForceProceeding : uint8_t {
 	TFP_NONE   = 0,    ///< Normal operation.
 	TFP_STUCK  = 1,    ///< Proceed till next signal, but ignore being stuck till then. This includes force leaving depots.
 	TFP_SIGNAL = 2,    ///< Ignore next signal, after the signal ignore being stuck.
@@ -54,7 +54,7 @@ enum ConsistChangeFlags {
 };
 DECLARE_ENUM_AS_BIT_SET(ConsistChangeFlags)
 
-byte FreightWagonMult(CargoID cargo);
+uint8_t FreightWagonMult(CargoID cargo);
 
 void CheckTrainsLengths();
 
@@ -66,6 +66,7 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
 bool TrainOnCrossing(TileIndex tile);
+void NormalizeTrainVehInDepot(const Train *u);
 
 /** Variables that are cached to improve performance and such */
 struct TrainCache {
@@ -74,33 +75,32 @@ struct TrainCache {
 
 	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
 	bool cached_tilt;           ///< train can tilt; feature provides a bonus in curves
-	int cached_curve_speed_mod; ///< curve speed modifier of the entire train
+	uint8_t user_def_data;         ///< Cached property 0x25. Can be set by Callback 0x36.
 
-	byte user_def_data;         ///< Cached property 0x25. Can be set by Callback 0x36.
+	int16_t cached_curve_speed_mod; ///< curve speed modifier of the entire train
+	uint16_t cached_max_curve_speed; ///< max consist speed limited by curves
 
-	/* cached max. speed / acceleration data */
-	int cached_max_curve_speed; ///< max consist speed limited by curves
+	auto operator<=>(const TrainCache &) const = default;
 };
 
 /**
  * 'Train' is either a loco or a wagon.
  */
-struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
+struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
+	uint16_t flags;
+	uint16_t crash_anim_pos; ///< Crash animation counter.
+	uint16_t wait_counter; ///< Ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals.
+
 	TrainCache tcache;
 
 	/* Link between the two ends of a multiheaded engine */
 	Train *other_multiheaded_part;
 
-	uint16 crash_anim_pos; ///< Crash animation counter.
+	RailTypes compatible_railtypes;
+	RailType railtype;
 
-	uint16 flags;
 	TrackBits track;
 	TrainForceProceeding force_proceed;
-	RailType railtype;
-	RailTypes compatible_railtypes;
-
-	/** Ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals. */
-	uint16 wait_counter;
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Train() : GroundVehicleBase() {}
@@ -122,7 +122,8 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 	int GetDisplayImageWidth(Point *offset = nullptr) const;
 	bool IsInDepot() const override { return this->track == TRACK_BIT_DEPOT; }
 	bool Tick() override;
-	void OnNewDay() override;
+	void OnNewCalendarDay() override;
+	void OnNewEconomyDay() override;
 	uint Crash(bool flooded = false) override;
 	Trackdir GetVehicleTrackdir() const override;
 	TileIndex GetOrderStationLocation(StationID station) override;
@@ -130,7 +131,7 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 
 	void ReserveTrackUnderConsist() const;
 
-	int GetCurveSpeedLimit() const;
+	uint16_t GetCurveSpeedLimit() const;
 
 	void ConsistChanged(ConsistChangeFlags allowed_changes);
 
@@ -183,11 +184,11 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the power value that this vehicle will use.
 	 * @return Power value from the engine in HP, or zero if the vehicle is not powered.
 	 */
-	inline uint16 GetPower() const
+	inline uint16_t GetPower() const
 	{
 		/* Power is not added for articulated parts */
 		if (!this->IsArticulatedPart() && HasPowerOnRail(this->railtype, GetRailType(this->tile))) {
-			uint16 power = GetVehicleProperty(this, PROP_TRAIN_POWER, RailVehInfo(this->engine_type)->power);
+			uint16_t power = GetVehicleProperty(this, PROP_TRAIN_POWER, RailVehInfo(this->engine_type)->power);
 			/* Halve power for multiheaded parts */
 			if (this->IsMultiheaded()) power /= 2;
 			return power;
@@ -200,7 +201,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns a value if this articulated part is powered.
 	 * @return Power value from the articulated part in HP, or zero if it is not powered.
 	 */
-	inline uint16 GetPoweredPartPower(const Train *head) const
+	inline uint16_t GetPoweredPartPower(const Train *head) const
 	{
 		/* For powered wagons the engine defines the type of engine (i.e. railtype) */
 		if (HasBit(this->flags, VRF_POWEREDWAGON) && HasPowerOnRail(head->railtype, GetRailType(this->tile))) {
@@ -214,9 +215,9 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the weight value that this vehicle will use.
 	 * @return Weight value from the engine in tonnes.
 	 */
-	inline uint16 GetWeight() const
+	inline uint16_t GetWeight() const
 	{
-		uint16 weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnitsInTrain(this->cargo.StoredCount());
+		uint16_t weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnitsInTrain(this->cargo.StoredCount());
 
 		/* Vehicle weight is not added for articulated parts. */
 		if (!this->IsArticulatedPart()) {
@@ -235,13 +236,13 @@ protected: // These functions should not be called outside acceleration code.
 	 * Calculates the weight value that this vehicle will have when fully loaded with its current cargo.
 	 * @return Weight value in tonnes.
 	 */
-	uint16 GetMaxWeight() const override;
+	uint16_t GetMaxWeight() const override;
 
 	/**
 	 * Allows to know the tractive effort value that this vehicle will use.
 	 * @return Tractive effort value from the engine.
 	 */
-	inline byte GetTractiveEffort() const
+	inline uint8_t GetTractiveEffort() const
 	{
 		return GetVehicleProperty(this, PROP_TRAIN_TRACTIVE_EFFORT, RailVehInfo(this->engine_type)->tractive_effort);
 	}
@@ -250,7 +251,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the area used for calculating air drag.
 	 * @return Area of the engine in m^2.
 	 */
-	inline byte GetAirDragArea() const
+	inline uint8_t GetAirDragArea() const
 	{
 		/* Air drag is higher in tunnels due to the limited cross-section. */
 		return (this->track == TRACK_BIT_WORMHOLE && this->vehstatus & VS_HIDDEN) ? 28 : 14;
@@ -260,7 +261,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the air drag coefficient of this vehicle.
 	 * @return Air drag value from the engine.
 	 */
-	inline byte GetAirDrag() const
+	inline uint8_t GetAirDrag() const
 	{
 		return RailVehInfo(this->engine_type)->air_drag;
 	}
@@ -278,7 +279,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Calculates the current speed of this vehicle.
 	 * @return Current speed in km/h-ish.
 	 */
-	inline uint16 GetCurrentSpeed() const
+	inline uint16_t GetCurrentSpeed() const
 	{
 		return this->cur_speed;
 	}
@@ -287,7 +288,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns the rolling friction coefficient of this vehicle.
 	 * @return Rolling friction coefficient in [1e-4].
 	 */
-	inline uint32 GetRollingFriction() const
+	inline uint32_t GetRollingFriction() const
 	{
 		/* Rolling friction for steel on steel is between 0.1% and 0.2%.
 		 * The friction coefficient increases with speed in a way that
@@ -308,7 +309,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns the slope steepness used by this vehicle.
 	 * @return Slope steepness used by the vehicle.
 	 */
-	inline uint32 GetSlopeSteepness() const
+	inline uint32_t GetSlopeSteepness() const
 	{
 		return _settings_game.vehicle.train_slope_steepness;
 	}
@@ -317,7 +318,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the maximum speed allowed by the track for this vehicle.
 	 * @return Maximum speed allowed.
 	 */
-	inline uint16 GetMaxTrackSpeed() const
+	inline uint16_t GetMaxTrackSpeed() const
 	{
 		return GetRailTypeInfo(GetRailType(this->tile))->max_speed;
 	}
@@ -326,7 +327,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns the curve speed modifier of this vehicle.
 	 * @return Current curve speed modifier, in fixed-point binary representation with 8 fractional bits.
 	 */
-	inline int GetCurveSpeedModifier() const
+	inline int16_t GetCurveSpeedModifier() const
 	{
 		return GetVehicleProperty(this, PROP_TRAIN_CURVE_SPEED_MOD, RailVehInfo(this->engine_type)->curve_speed_mod, true);
 	}

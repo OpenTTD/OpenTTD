@@ -83,7 +83,7 @@ static inline TLG GetTLG(TileIndex t)
  * @param override pointer to PCP override, can be nullptr
  * @return trackbits of tile if it is electrified
  */
-static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
+static TrackBits GetRailTrackBitsUniversal(TileIndex t, uint8_t *override)
 {
 	switch (GetTileType(t)) {
 		case MP_RAILWAY:
@@ -125,7 +125,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 {
 	/* Single track bits are never masked out. */
-	if (likely(HasAtMostOneBit(tracks))) return tracks;
+	if (HasAtMostOneBit(tracks)) [[likely]] return tracks;
 
 	if (!IsPlainRailTile(t)) return tracks;
 
@@ -176,7 +176,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
  */
 static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TCX_NORMAL)
 {
-	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	SpriteID wires = GetCustomRailSprite(rti, tile, RTSG_WIRES, context);
 	return wires == 0 ? SPR_WIRE_BASE : wires;
 }
@@ -186,7 +186,7 @@ static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TCX_NOR
  */
 static inline SpriteID GetPylonBase(TileIndex tile, TileContext context = TCX_NORMAL)
 {
-	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	SpriteID pylons = GetCustomRailSprite(rti, tile, RTSG_PYLONS, context);
 	return pylons == 0 ? SPR_PYLON_BASE : pylons;
 }
@@ -232,8 +232,8 @@ static int GetPCPElevation(TileIndex tile, DiagDirection PCPpos)
 	 * Also note that the result of GetSlopePixelZ() is very special on bridge-ramps.
 	 */
 
-	int z = GetSlopePixelZ(TileX(tile) * TILE_SIZE + std::min<int8>(x_pcp_offsets[PCPpos], TILE_SIZE - 1),
-	                       TileY(tile) * TILE_SIZE + std::min<int8>(y_pcp_offsets[PCPpos], TILE_SIZE - 1));
+	int z = GetSlopePixelZ(TileX(tile) * TILE_SIZE + std::min<int8_t>(x_pcp_offsets[PCPpos], TILE_SIZE - 1),
+	                       TileY(tile) * TILE_SIZE + std::min<int8_t>(y_pcp_offsets[PCPpos], TILE_SIZE - 1), true);
 	/* Round the Z to the nearest half tile height. */
 	static const uint HALF_TILE_HEIGHT = TILE_HEIGHT / 2;
 	return (z + HALF_TILE_HEIGHT / 2) / HALF_TILE_HEIGHT * HALF_TILE_HEIGHT;
@@ -295,10 +295,10 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	}
 
 	TLG tlg = GetTLG(ti->tile);
-	byte PCPstatus = 0;
-	byte OverridePCP = 0;
-	byte PPPpreferred[DIAGDIR_END];
-	byte PPPallowed[DIAGDIR_END];
+	uint8_t PCPstatus = 0;
+	uint8_t OverridePCP = 0;
+	uint8_t PPPpreferred[DIAGDIR_END];
+	uint8_t PPPallowed[DIAGDIR_END];
 
 	/* Find which rail bits are present, and select the override points.
 	 * We don't draw a pylon:
@@ -389,7 +389,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 			foundation = GetBridgeFoundation(tileh[TS_NEIGHBOUR], DiagDirToAxis(GetTunnelBridgeDirection(neighbour)));
 		}
 
-		ApplyFoundationToSlope(foundation, &tileh[TS_NEIGHBOUR]);
+		ApplyFoundationToSlope(foundation, tileh[TS_NEIGHBOUR]);
 
 		/* Half tile slopes coincide only with horizontal/vertical track.
 		 * Faking a flat slope results in the correct sprites on positions. */
@@ -425,7 +425,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 		if (PPPallowed[i] != 0 && HasBit(PCPstatus, i) && !HasBit(OverridePCP, i) &&
 				(!IsRailStationTile(ti->tile) || CanStationTileHavePylons(ti->tile))) {
 			for (Direction k = DIR_BEGIN; k < DIR_END; k++) {
-				byte temp = PPPorder[i][GetTLG(ti->tile)][k];
+				uint8_t temp = PPPorder[i][GetTLG(ti->tile)][k];
 
 				if (HasBit(PPPallowed[i], temp)) {
 					uint x  = ti->x + x_pcp_offsets[i] + x_ppp_offsets[temp];
@@ -474,7 +474,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	/* Drawing of pylons is finished, now draw the wires */
 	for (Track t : SetTrackBitIterator(wireconfig[TS_HOME])) {
 		SpriteID wire_base = (t == halftile_track) ? wire_halftile : wire_normal;
-		byte PCPconfig = HasBit(PCPstatus, PCPpositions[t][0]) +
+		uint8_t PCPconfig = HasBit(PCPstatus, PCPpositions[t][0]) +
 			(HasBit(PCPstatus, PCPpositions[t][1]) << 1);
 
 		const SortableSpriteStruct *sss;
@@ -491,7 +491,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 		 * down to the nearest full height change.
 		 */
 		AddSortableSpriteToDraw(wire_base + sss->image_offset, PAL_NONE, ti->x + sss->x_offset, ti->y + sss->y_offset,
-			sss->x_size, sss->y_size, sss->z_size, (GetSlopePixelZ(ti->x + sss->x_offset, ti->y + sss->y_offset) + 4) / 8 * 8 + sss->z_offset,
+			sss->x_size, sss->y_size, sss->z_size, (GetSlopePixelZ(ti->x + sss->x_offset, ti->y + sss->y_offset, true) + 4) / 8 * 8 + sss->z_offset,
 			IsTransparencySet(TO_CATENARY));
 	}
 }
@@ -595,7 +595,7 @@ void DrawRailCatenary(const TileInfo *ti)
 	DrawRailCatenaryRailway(ti);
 }
 
-void SettingsDisableElrail(int32 new_value)
+void SettingsDisableElrail(int32_t new_value)
 {
 	bool disable = (new_value != 0);
 
@@ -633,7 +633,7 @@ void SettingsDisableElrail(int32 new_value)
 		}
 	}
 
-	for (Company *c : Company::Iterate()) c->avail_railtypes = GetCompanyRailtypes(c->index);
+	for (Company *c : Company::Iterate()) c->avail_railtypes = GetCompanyRailTypes(c->index);
 
 	/* This resets the _last_built_railtype, which will be invalid for electric
 	 * rails. It may have unintended consequences if that function is ever

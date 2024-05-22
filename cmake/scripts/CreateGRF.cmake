@@ -11,12 +11,18 @@ endif()
 if(NOT GRFCODEC_EXECUTABLE)
     message(FATAL_ERROR "Script needs GRFCODEC_EXECUTABLE defined")
 endif()
+if(NOT GRFID_EXECUTABLE)
+    message(FATAL_ERROR "Script needs GRFID_EXECUTABLE defined")
+endif()
 if(NOT GRF_SOURCE_FOLDER)
     message(FATAL_ERROR "Script needs GRF_SOURCE_FOLDER defined")
 endif()
 if(NOT GRF_BINARY_FILE)
     message(FATAL_ERROR "Script needs GRF_BINARY_FILE defined")
 endif()
+
+# Remove the existing output so failures never go unnoticed
+file(REMOVE ${GRF_BINARY_FILE} ${GRF_BINARY_FILE}.hash)
 
 get_filename_component(GRF_SOURCE_FOLDER_NAME "${GRF_SOURCE_FOLDER}" NAME)
 
@@ -47,7 +53,7 @@ if(RESULT)
     message(FATAL_ERROR "NFORenum failed")
 endif()
 
-execute_process(COMMAND ${GRFCODEC_EXECUTABLE} -n -s -e -p1 ${GRF_SOURCE_FOLDER_NAME}.grf RESULT_VARIABLE RESULT)
+execute_process(COMMAND ${GRFCODEC_EXECUTABLE} -n -s -e -g2 -p1 ${GRF_SOURCE_FOLDER_NAME}.grf RESULT_VARIABLE RESULT)
 if(RESULT)
     if(NOT RESULT MATCHES "^[0-9]*$")
         message(FATAL_ERROR "Failed to run GRFCodec (${RESULT}), please check GRFCODEC_EXECUTABLE variable")
@@ -55,4 +61,15 @@ if(RESULT)
     message(FATAL_ERROR "GRFCodec failed")
 endif()
 
+execute_process(COMMAND ${GRFID_EXECUTABLE} -m ${GRF_SOURCE_FOLDER_NAME}.grf OUTPUT_VARIABLE GRFID_HASH RESULT_VARIABLE RESULT)
+if(RESULT)
+    if(NOT RESULT MATCHES "^[0-9]*$")
+        message(FATAL_ERROR "Failed to run GRFID (${RESULT}), please check GRFID_EXECUTABLE variable")
+    endif()
+    message(FATAL_ERROR "GRFID failed")
+endif()
+
+file(WRITE ${GRF_BINARY_FILE}.hash ${GRFID_HASH})
+
+# Copy build files back to the source directory.
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${GRF_SOURCE_FOLDER_NAME}.grf ${GRF_BINARY_FILE})

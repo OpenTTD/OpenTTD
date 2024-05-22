@@ -40,7 +40,7 @@ public:
 	typedef typename Node::Key Key;               ///< key to hash tables
 
 	/** to access inherited path finder */
-	Tpf& Yapf()
+	Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
@@ -52,7 +52,7 @@ public:
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
-	inline bool PfDetectDestination(TileIndex tile, Trackdir td)
+	inline bool PfDetectDestination(TileIndex tile, Trackdir)
 	{
 		bool bDest = IsRailDepotTile(tile);
 		return bDest;
@@ -78,7 +78,7 @@ public:
 	typedef typename Types::TrackFollower TrackFollower; ///< TrackFollower. Need to typedef for gcc 2.95
 
 	/** to access inherited path finder */
-	Tpf& Yapf()
+	Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
@@ -121,7 +121,7 @@ protected:
 	bool         m_any_depot;
 
 	/** to access inherited path finder */
-	Tpf& Yapf()
+	Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
@@ -140,7 +140,7 @@ public:
 					 * waypoint. */
 					Yapf().DisableCache(true);
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			case OT_GOTO_STATION:
 				m_destTile = CalcClosestStationTile(v->current_order.GetDestination(), v->tile, v->current_order.IsType(OT_GOTO_STATION) ? STATION_RAIL : STATION_WAYPOINT);
@@ -152,7 +152,7 @@ public:
 				if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
 					m_any_depot = true;
 				}
-				FALLTHROUGH;
+				[[fallthrough]];
 
 			default:
 				m_destTile = v->dest_tile;

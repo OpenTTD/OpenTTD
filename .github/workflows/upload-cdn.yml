@@ -1,0 +1,138 @@
+name: Upload (CDN)
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+      folder:
+        required: true
+        type: string
+      trigger_type:
+        required: true
+        type: string
+
+jobs:
+  prepare:
+    name: Prepare
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download all bundles
+      uses: actions/download-artifact@v4
+
+    - name: Calculate checksums
+      run: |
+        echo "::group::Move bundles to a single folder"
+        mkdir bundles
+        mv openttd-*/* bundles/
+        echo "::endgroup::"
+
+        cd bundles
+        for i in $(ls openttd-*); do
+          echo "::group::Calculating checksums for ${i}"
+          openssl dgst -r -md5 -hex $i > $i.md5sum
+          openssl dgst -r -sha1 -hex $i > $i.sha1sum
+          openssl dgst -r -sha256 -hex $i > $i.sha256sum
+          echo "::endgroup::"
+        done
+
+        # Some targets generate files that are meant for our-eyes-only.
+        # They are stored in the "internal" folder, and contains bundles
+        # for targets like Windows Store. No user has a benefit of knowing
+        # they exist, hence: internal.
+        if [ -e internal ]; then
+          cd internal
+          for i in $(ls openttd-*); do
+            echo "::group::Calculating checksums for ${i}"
+            openssl dgst -r -md5 -hex $i > $i.md5sum
+            openssl dgst -r -sha1 -hex $i > $i.sha1sum
+            openssl dgst -r -sha256 -hex $i > $i.sha256sum
+            echo "::endgroup::"
+          done
+        fi
+
+    - name: Merge symbols
+      run: |
+        mkdir symbols
+        cp -R symbols-*/* symbols/
+
+        # Compress all files as gzip, to reduce cost of storage on the CDN.
+        for i in $(find symbols -mindepth 2 -type f); do
+          gzip ${i}
+        done
+
+        # Leave a mark in each folder what version actually created the symbol file.
+        for i in $(find symbols -mindepth 2 -type d); do
+          touch ${i}/.${{ inputs.version }}.txt
+        done
+
+    - name: Store bundles
+      uses: actions/upload-artifact@v4
+      with:
+        name: cdn-bundles
+        path: bundles/*
+        retention-days: 5
+
+    - name: Store breakpad symbols
+      uses: actions/upload-artifact@v4
+      with:
+        name: cdn-symbols
+        path: symbols/*
+        retention-days: 5
+
+  publish-bundles:
+    needs:
+    - prepare
+
+    name: Publish bundles
+    uses: OpenTTD/actions/.github/workflows/rw-cdn-upload.yml@v5
+    secrets:
+      CDN_SIGNING_KEY: ${{ secrets.CDN_SIGNING_KEY }}
+      DEPLOYMENT_APP_ID: ${{ secrets.DEPLOYMENT_APP_ID }}
+      DEPLOYMENT_APP_PRIVATE_KEY: ${{ secrets.DEPLOYMENT_APP_PRIVATE_KEY }}
+    with:
+      artifact-name: cdn-bundles
+      folder: ${{ inputs.folder }}
+      version: ${{ inputs.version }}
+
+  publish-symbols:
+    needs:
+    - prepare
+
+    name: Publish symbols
+    uses: OpenTTD/actions/.github/workflows/rw-symbols-upload.yml@v5
+    secrets:
+      SYMBOLS_SIGNING_KEY: ${{ secrets.SYMBOLS_SIGNING_KEY }}
+    with:
+      artifact-name: cdn-symbols
+      repository: OpenTTD
+
+  docs:
+    if: ${{ inputs.trigger_type == 'new-master' }}
+    needs:
+    - publish-bundles
+
+    name: Publish docs
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Generate access token
+      id: generate_token
+      uses: tibdex/github-app-token@v2
+      with:
+        app_id: ${{ secrets.DEPLOYMENT_APP_ID }}
+        private_key: ${{ secrets.DEPLOYMENT_APP_PRIVATE_KEY }}
+        installation_retrieval_mode: "repository"
+        installation_retrieval_payload: "OpenTTD/workflows"
+
+    - name: Trigger 'Publish Docs'
+      uses: peter-evans/repository-dispatch@v3
+      with:
+        token: ${{ steps.generate_token.outputs.token }}
+        repository: OpenTTD/workflows
+        event-type: publish-docs
+        client-payload: '{"version": "${{ inputs.version }}", "folder": "${{ inputs.folder }}"}'

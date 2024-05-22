@@ -4,7 +4,6 @@
 #define MCF_H
 
 #include "linkgraphjob_base.h"
-#include <vector>
 
 typedef std::vector<Path *> PathVector;
 
@@ -81,12 +80,7 @@ public:
 	 * Run the calculation.
 	 * @param graph Component to be calculated.
 	 */
-	virtual void Run(LinkGraphJob &job) const { Tpass pass(job); }
-
-	/**
-	 * Destructor. Has to be given because of virtual Run().
-	 */
-	virtual ~MCFHandler() {}
+	void Run(LinkGraphJob &job) const override { Tpass pass(job); }
 };
 
 #endif /* MCF_H */

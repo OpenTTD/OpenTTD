@@ -14,16 +14,23 @@
 #include "cargo_type.h"
 #include "gfx_type.h"
 
-static const CargoID CT_DEFAULT      = NUM_CARGO + 0;
-static const CargoID CT_PURCHASE     = NUM_CARGO + 1;
-static const CargoID CT_DEFAULT_NA   = NUM_CARGO + 2;
+/**
+ * Sprite Group Cargo types.
+ * These special cargo types are used when resolving sprite groups when non-cargo-specific sprites or callbacks are needed,
+ * e.g. in purchase lists, or if no specific cargo type sprite group is supplied.
+ */
+namespace SpriteGroupCargo {
+	static constexpr CargoID SG_DEFAULT    = NUM_CARGO;     ///< Default type used when no more-specific cargo matches.
+	static constexpr CargoID SG_PURCHASE   = NUM_CARGO + 1; ///< Used in purchase lists before an item exists.
+	static constexpr CargoID SG_DEFAULT_NA = NUM_CARGO + 2; ///< Used only by stations and roads when no more-specific cargo matches.
+};
 
 /* Forward declarations of structs used */
 struct CargoSpec;
 struct GRFFile;
 
 SpriteID GetCustomCargoSprite(const CargoSpec *cs);
-uint16 GetCargoCallback(CallbackID callback, uint32 param1, uint32 param2, const CargoSpec *cs);
-CargoID GetCargoTranslation(uint8 cargo, const GRFFile *grffile, bool usebit = false);
+uint16_t GetCargoCallback(CallbackID callback, uint32_t param1, uint32_t param2, const CargoSpec *cs);
+CargoID GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit = false);
 
 #endif /* NEWGRF_CARGO_H */

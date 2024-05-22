@@ -15,7 +15,7 @@
 
 /**
  * Class that handles all group related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptGroup : public ScriptObject {
 public:
@@ -84,7 +84,7 @@ public:
 	 * @pre IsValidGroup(group_id).
 	 * @return The name the group has.
 	 */
-	static char *GetName(GroupID group_id);
+	static std::optional<std::string> GetName(GroupID group_id);
 
 	/**
 	 * Set parent group of a group.
@@ -128,7 +128,9 @@ public:
 	 * Get the number of engines in a given group.
 	 * @param group_id The group to get the number of engines in.
 	 * @param engine_id The engine id to count.
-	 * @pre IsValidGroup(group_id) || group_id == GROUP_ALL || group_id == GROUP_DEFAULT.
+	 * @pre ScriptEngine::IsValidEngine(engine_id).
+	 * @pre (IsValidGroup(group_id) && ScriptEngine::GetVehicleType(engine_id) == GetVehicleType(group_id)) ||
+	     group_id == GROUP_ALL || group_id == GROUP_DEFAULT.
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return The number of engines with id engine_id in the group with id group_id.
 	 */
@@ -220,7 +222,8 @@ public:
 	 * Get the current profit of a group.
 	 * @param group_id The group to get the profit of.
 	 * @pre IsValidGroup(group_id).
-	 * @return The current profit the group has.
+	 * @return The profit the vehicles in this group have made this economy-year so far.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetProfitThisYear(GroupID group_id);
 
@@ -228,7 +231,8 @@ public:
 	 * Get the profit of last year of a group.
 	 * @param group_id The group to get the profit of.
 	 * @pre IsValidGroup(group_id).
-	 * @return The current profit the group had last year.
+	 * @return The profit the vehicles in this group  made in the previous economy-year.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetProfitLastYear(GroupID group_id);
 

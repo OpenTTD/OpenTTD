@@ -12,18 +12,15 @@
 
 #include "string_type.h"
 #include "strings_type.h"
-#include "core/smallvec_type.hpp"
 #include "table/control_codes.h"
 #include <utility>
-#include <vector>
-#include <string>
 
 /** This character, the thorn ('þ'), indicates a unicode string to NFO. */
-static const WChar NFO_UTF8_IDENTIFIER = 0x00DE;
+static const char32_t NFO_UTF8_IDENTIFIER = 0x00DE;
 
 /** A GRF text with associated language ID. */
 struct GRFText {
-	byte langid;      ///< The language associated with this GRFText.
+	uint8_t langid;      ///< The language associated with this GRFText.
 	std::string text; ///< The actual (translated) text.
 };
 
@@ -32,34 +29,32 @@ typedef std::vector<GRFText> GRFTextList;
 /** Reference counted wrapper around a GRFText pointer. */
 typedef std::shared_ptr<GRFTextList> GRFTextWrapper;
 
-StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid, bool new_scheme, bool allow_newlines, const char *text_to_add, StringID def_string);
-StringID GetGRFStringID(uint32 grfid, StringID stringid);
+StringID AddGRFString(uint32_t grfid, uint16_t stringid, uint8_t langid, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string);
+StringID GetGRFStringID(uint32_t grfid, StringID stringid);
 const char *GetGRFStringFromGRFText(const GRFTextList &text_list);
 const char *GetGRFStringFromGRFText(const GRFTextWrapper &text);
-const char *GetGRFStringPtr(uint16 stringid);
+const char *GetGRFStringPtr(uint32_t stringid);
 void CleanUpStrings();
-void SetCurrentGrfLangID(byte language_id);
-std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newlines, const std::string &str, StringControlCode byte80 = SCC_NEWGRF_PRINT_WORD_STRING_ID);
-void AddGRFTextToList(GRFTextList &list, byte langid, uint32 grfid, bool allow_newlines, const char *text_to_add);
-void AddGRFTextToList(GRFTextWrapper &list, byte langid, uint32 grfid, bool allow_newlines, const char *text_to_add);
-void AddGRFTextToList(GRFTextWrapper &list, const std::string &text_to_add);
+void SetCurrentGrfLangID(uint8_t language_id);
+std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool allow_newlines, std::string_view str, StringControlCode byte80 = SCC_NEWGRF_PRINT_WORD_STRING_ID);
+void AddGRFTextToList(GRFTextList &list, uint8_t langid, uint32_t grfid, bool allow_newlines, std::string_view text_to_add);
+void AddGRFTextToList(GRFTextWrapper &list, uint8_t langid, uint32_t grfid, bool allow_newlines, std::string_view text_to_add);
+void AddGRFTextToList(GRFTextWrapper &list, std::string_view text_to_add);
 
-bool CheckGrfLangID(byte lang_id, byte grf_version);
+bool CheckGrfLangID(uint8_t lang_id, uint8_t grf_version);
 
-void StartTextRefStackUsage(const struct GRFFile *grffile, byte numEntries, const uint32 *values = nullptr);
+void StartTextRefStackUsage(const struct GRFFile *grffile, uint8_t numEntries, const uint32_t *values = nullptr);
 void StopTextRefStackUsage();
-void RewindTextRefStack();
 bool UsingNewGRFTextStack();
 struct TextRefStack *CreateTextRefStackBackup();
 void RestoreTextRefStackBackup(struct TextRefStack *backup);
-uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv, uint argv_size, bool modify_argv);
 
 /** Mapping of language data between a NewGRF and OpenTTD. */
 struct LanguageMap {
 	/** Mapping between NewGRF and OpenTTD IDs. */
 	struct Mapping {
-		byte newgrf_id;  ///< NewGRF's internal ID for a case/gender.
-		byte openttd_id; ///< OpenTTD's internal ID for a case/gender.
+		uint8_t newgrf_id;  ///< NewGRF's internal ID for a case/gender.
+		uint8_t openttd_id; ///< OpenTTD's internal ID for a case/gender.
 	};
 
 	/* We need a vector and can't use SmallMap due to the fact that for "setting" a
@@ -74,7 +69,7 @@ struct LanguageMap {
 
 	int GetMapping(int newgrf_id, bool gender) const;
 	int GetReverseMapping(int openttd_id, bool gender) const;
-	static const LanguageMap *GetLanguageMap(uint32 grfid, uint8 language_id);
+	static const LanguageMap *GetLanguageMap(uint32_t grfid, uint8_t language_id);
 };
 
 #endif /* NEWGRF_TEXT_H */

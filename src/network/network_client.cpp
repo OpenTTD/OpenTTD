@@ -20,7 +20,8 @@
 #include "../company_gui.h"
 #include "../company_cmd.h"
 #include "../core/random_func.hpp"
-#include "../date_func.h"
+#include "../timer/timer_game_tick.h"
+#include "../timer/timer_game_calendar.h"
 #include "../gfx_func.h"
 #include "../error.h"
 #include "../rev.h"
@@ -30,6 +31,7 @@
 #include "network_gamelist.h"
 #include "../core/backup_type.hpp"
 #include "../thread.h"
+#include "../social_integration.h"
 
 #include "table/strings.h"
 
@@ -41,10 +43,10 @@
 struct PacketReader : LoadFilter {
 	static const size_t CHUNK = 32 * 1024;  ///< 32 KiB chunks of memory.
 
-	std::vector<byte *> blocks;             ///< Buffer with blocks of allocated memory.
-	byte *buf;                              ///< Buffer we're going to write to/read from.
-	byte *bufe;                             ///< End of the buffer we write to/read from.
-	byte **block;                           ///< The block we're reading from/writing to.
+	std::vector<uint8_t *> blocks;             ///< Buffer with blocks of allocated memory.
+	uint8_t *buf;                              ///< Buffer we're going to write to/read from.
+	uint8_t *bufe;                             ///< End of the buffer we write to/read from.
+	uint8_t **block;                           ///< The block we're reading from/writing to.
 	size_t written_bytes;                   ///< The total number of bytes we've written.
 	size_t read_bytes;                      ///< The total number of read bytes.
 
@@ -79,27 +81,27 @@ struct PacketReader : LoadFilter {
 	 * Add a packet to this buffer.
 	 * @param p The packet to add.
 	 */
-	void AddPacket(Packet *p)
+	void AddPacket(Packet &p)
 	{
 		assert(this->read_bytes == 0);
-		p->TransferOutWithLimit(TransferOutMemCopy, this->bufe - this->buf, this);
+		p.TransferOutWithLimit(TransferOutMemCopy, this->bufe - this->buf, this);
 
 		/* Did everything fit in the current chunk, then we're done. */
-		if (p->RemainingBytesToTransfer() == 0) return;
+		if (p.RemainingBytesToTransfer() == 0) return;
 
 		/* Allocate a new chunk and add the remaining data. */
-		this->blocks.push_back(this->buf = CallocT<byte>(CHUNK));
+		this->blocks.push_back(this->buf = CallocT<uint8_t>(CHUNK));
 		this->bufe = this->buf + CHUNK;
 
-		p->TransferOutWithLimit(TransferOutMemCopy, this->bufe - this->buf, this);
+		p.TransferOutWithLimit(TransferOutMemCopy, this->bufe - this->buf, this);
 	}
 
-	size_t Read(byte *rbuf, size_t size) override
+	size_t Read(uint8_t *rbuf, size_t size) override
 	{
 		/* Limit the amount to read to whatever we still have. */
 		size_t ret_size = size = std::min(this->written_bytes - this->read_bytes, size);
 		this->read_bytes += ret_size;
-		const byte *rbufe = rbuf + ret_size;
+		const uint8_t *rbufe = rbuf + ret_size;
 
 		while (rbuf != rbufe) {
 			if (this->buf == this->bufe) {
@@ -153,13 +155,14 @@ ClientNetworkGameSocketHandler::~ClientNetworkGameSocketHandler()
 	assert(ClientNetworkGameSocketHandler::my_client == this);
 	ClientNetworkGameSocketHandler::my_client = nullptr;
 
-	delete this->savegame;
 	delete this->GetInfo();
 }
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvStatus status)
 {
 	assert(status != NETWORK_RECV_STATUS_OKAY);
+	if (this->IsPendingDeletion()) return status;
+
 	assert(this->sock != INVALID_SOCKET);
 
 	if (!this->HasClientQuit()) {
@@ -168,13 +171,13 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 		this->SendPackets(true);
 
 		/* Wait a number of ticks so our leave message can reach the server.
-		* This is especially needed for Windows servers as they seem to get
-		* the "socket is closed" message before receiving our leave message,
-		* which would trigger the server to close the connection as well. */
+		 * This is especially needed for Windows servers as they seem to get
+		 * the "socket is closed" message before receiving our leave message,
+		 * which would trigger the server to close the connection as well. */
 		CSleep(3 * MILLISECONDS_PER_TICK);
 	}
 
-	delete this;
+	this->DeferDeletion();
 
 	return status;
 }
@@ -185,6 +188,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
  */
 void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 {
+	if (this->IsPendingDeletion()) return;
+
 	/* First, send a CLIENT_ERROR to the server, so it knows we are
 	 *  disconnected (and why!) */
 	NetworkErrorCode errorno;
@@ -277,7 +282,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 			if (_sync_seed_1 != _random.state[0]) {
 #endif
 				ShowNetworkError(STR_NETWORK_ERROR_DESYNC);
-				Debug(desync, 1, "sync_err: {:08x}; {:02x}", _date, _date_fract);
+				Debug(desync, 1, "sync_err: {:08x}; {:02x}", TimerGameEconomy::date, TimerGameEconomy::date_fract);
 				Debug(net, 0, "Sync error detected");
 				my_client->ClientError(NETWORK_RECV_STATUS_DESYNC);
 				return false;
@@ -306,51 +311,57 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 ClientNetworkGameSocketHandler * ClientNetworkGameSocketHandler::my_client = nullptr;
 
 /** Last frame we performed an ack. */
-static uint32 last_ack_frame;
-
-/** One bit of 'entropy' used to generate a salt for the company passwords. */
-static uint32 _password_game_seed;
-/** The other bit of 'entropy' used to generate a salt for the company passwords. */
-static std::string _password_server_id;
+static uint32_t last_ack_frame;
 
 /** Maximum number of companies of the currently joined server. */
-static uint8 _network_server_max_companies;
+static uint8_t _network_server_max_companies;
 /** The current name of the server you are on. */
 std::string _network_server_name;
 
 /** Information about the game to join to. */
 NetworkJoinInfo _network_join;
 
-/** Make sure the server ID length is the same as a md5 hash. */
-static_assert(NETWORK_SERVER_ID_LENGTH == 16 * 2 + 1);
-
 /***********
  * Sending functions
- *   DEF_CLIENT_SEND_COMMAND has no parameters
  ************/
 
 /** Tell the server we would like to join. */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 {
+	Debug(net, 9, "Client::SendJoin()");
+
+	Debug(net, 9, "Client::status = JOIN");
 	my_client->status = STATUS_JOIN;
+	Debug(net, 9, "Client::join_status = AUTHORIZING");
 	_network_join_status = NETWORK_JOIN_STATUS_AUTHORIZING;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
-	Packet *p = new Packet(PACKET_CLIENT_JOIN);
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_JOIN);
 	p->Send_string(GetNetworkRevisionString());
 	p->Send_uint32(_openttd_newgrf_version);
+	my_client->SendPacket(std::move(p));
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendIdentify()
+{
+	Debug(net, 9, "Client::SendIdentify()");
+
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_IDENTIFY);
 	p->Send_string(_settings_client.network.client_name); // Client name
-	p->Send_uint8 (_network_join.company);     // PlayAs
-	p->Send_uint8 (0); // Used to be language
-	my_client->SendPacket(p);
+	p->Send_uint8(_network_join.company); // PlayAs
+	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /** Tell the server we got all the NewGRFs. */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
 {
-	Packet *p = new Packet(PACKET_CLIENT_NEWGRFS_CHECKED);
-	my_client->SendPacket(p);
+	Debug(net, 9, "Client::SendNewGRFsOk()");
+
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_NEWGRFS_CHECKED);
+	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -358,54 +369,53 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
  * Set the game password as requested.
  * @param password The game password.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendGamePassword(const std::string &password)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendAuthResponse()
 {
-	Packet *p = new Packet(PACKET_CLIENT_GAME_PASSWORD);
-	p->Send_string(password);
-	my_client->SendPacket(p);
-	return NETWORK_RECV_STATUS_OKAY;
-}
+	Debug(net, 9, "Client::SendAuthResponse()");
 
-/**
- * Set the company password as requested.
- * @param password The company password.
- */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyPassword(const std::string &password)
-{
-	Packet *p = new Packet(PACKET_CLIENT_COMPANY_PASSWORD);
-	p->Send_string(GenerateCompanyPasswordHash(password, _password_server_id, _password_game_seed));
-	my_client->SendPacket(p);
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_AUTH_RESPONSE);
+	my_client->authentication_handler->SendResponse(*p);
+	my_client->SendPacket(std::move(p));
+
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /** Request the map from the server. */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 {
+	Debug(net, 9, "Client::SendGetMap()");
+
+	Debug(net, 9, "Client::status = MAP_WAIT");
 	my_client->status = STATUS_MAP_WAIT;
 
-	Packet *p = new Packet(PACKET_CLIENT_GETMAP);
-	my_client->SendPacket(p);
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_GETMAP);
+	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /** Tell the server we received the complete map. */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendMapOk()
 {
+	Debug(net, 9, "Client::SendMapOk()");
+
+	Debug(net, 9, "Client::status = ACTIVE");
 	my_client->status = STATUS_ACTIVE;
 
-	Packet *p = new Packet(PACKET_CLIENT_MAP_OK);
-	my_client->SendPacket(p);
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_MAP_OK);
+	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /** Send an acknowledgement from the server's ticks. */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
 {
-	Packet *p = new Packet(PACKET_CLIENT_ACK);
+	Debug(net, 9, "Client::SendAck()");
+
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_ACK);
 
 	p->Send_uint32(_frame_counter);
 	p->Send_uint8 (my_client->token);
-	my_client->SendPacket(p);
+	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -413,19 +423,23 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
  * Send a command to the server.
  * @param cp The command to send.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacket *cp)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacket &cp)
 {
-	Packet *p = new Packet(PACKET_CLIENT_COMMAND);
-	my_client->NetworkGameSocketHandler::SendCommand(p, cp);
+	Debug(net, 9, "Client::SendCommand(): cmd={}", cp.cmd);
 
-	my_client->SendPacket(p);
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_COMMAND);
+	my_client->NetworkGameSocketHandler::SendCommand(*p, cp);
+
+	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /** Send a chat-packet over the network */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64 data)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64_t data)
 {
-	Packet *p = new Packet(PACKET_CLIENT_CHAT);
+	Debug(net, 9, "Client::SendChat(): action={}, type={}, dest={}", action, type, dest);
+
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_CHAT);
 
 	p->Send_uint8 (action);
 	p->Send_uint8 (type);
@@ -433,30 +447,19 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action,
 	p->Send_string(msg);
 	p->Send_uint64(data);
 
-	my_client->SendPacket(p);
+	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /** Send an error-packet over the network */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendError(NetworkErrorCode errorno)
 {
-	Packet *p = new Packet(PACKET_CLIENT_ERROR);
+	Debug(net, 9, "Client::SendError(): errorno={}", errorno);
+
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_ERROR);
 
 	p->Send_uint8(errorno);
-	my_client->SendPacket(p);
-	return NETWORK_RECV_STATUS_OKAY;
-}
-
-/**
- * Tell the server that we like to change the password of the company.
- * @param password The new password.
- */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetPassword(const std::string &password)
-{
-	Packet *p = new Packet(PACKET_CLIENT_SET_PASSWORD);
-
-	p->Send_string(GenerateCompanyPasswordHash(password, _password_server_id, _password_game_seed));
-	my_client->SendPacket(p);
+	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -466,10 +469,12 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetPassword(const std::str
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const std::string &name)
 {
-	Packet *p = new Packet(PACKET_CLIENT_SET_NAME);
+	Debug(net, 9, "Client::SendSetName()");
+
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_SET_NAME);
 
 	p->Send_string(name);
-	my_client->SendPacket(p);
+	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -478,9 +483,11 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const std::string 
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
 {
-	Packet *p = new Packet(PACKET_CLIENT_QUIT);
+	Debug(net, 9, "Client::SendQuit()");
 
-	my_client->SendPacket(p);
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_QUIT);
+
+	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -491,24 +498,26 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(const std::string &pass, const std::string &command)
 {
-	Packet *p = new Packet(PACKET_CLIENT_RCON);
+	Debug(net, 9, "Client::SendRCon()");
+
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_RCON);
 	p->Send_string(pass);
 	p->Send_string(command);
-	my_client->SendPacket(p);
+	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /**
  * Ask the server to move us.
  * @param company The company to move to.
- * @param password The password of the company to move to.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendMove(CompanyID company, const std::string &password)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendMove(CompanyID company)
 {
-	Packet *p = new Packet(PACKET_CLIENT_MOVE);
+	Debug(net, 9, "Client::SendMove(): company={}", company);
+
+	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_MOVE);
 	p->Send_uint8(company);
-	p->Send_string(GenerateCompanyPasswordHash(password, _password_server_id, _password_game_seed));
-	my_client->SendPacket(p);
+	my_client->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -524,21 +533,24 @@ bool ClientNetworkGameSocketHandler::IsConnected()
 
 /***********
  * Receiving functions
- *   DEF_CLIENT_RECEIVE_COMMAND has parameter: Packet *p
  ************/
 
-extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = nullptr);
+extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, std::shared_ptr<struct LoadFilter> lf);
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FULL(Packet &)
 {
+	Debug(net, 9, "Client::Receive_SERVER_FULL()");
+
 	/* We try to join a server which is full */
 	ShowErrorMessage(STR_NETWORK_ERROR_SERVER_FULL, INVALID_STRING_ID, WL_CRITICAL);
 
 	return NETWORK_RECV_STATUS_SERVER_FULL;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet &)
 {
+	Debug(net, 9, "Client::Receive_SERVER_BANNED()");
+
 	/* We try to join a server where we are banned */
 	ShowErrorMessage(STR_NETWORK_ERROR_SERVER_BANNED, INVALID_STRING_ID, WL_CRITICAL);
 
@@ -548,13 +560,16 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *
 /* This packet contains info about the client (playas and name)
  *  as client we save this in NetworkClientInfo, linked via 'client_id'
  *  which is always an unique number on a server. */
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Packet &p)
 {
 	NetworkClientInfo *ci;
-	ClientID client_id = (ClientID)p->Recv_uint32();
-	CompanyID playas = (CompanyID)p->Recv_uint8();
+	ClientID client_id = (ClientID)p.Recv_uint32();
+	CompanyID playas = (CompanyID)p.Recv_uint8();
 
-	std::string name = p->Recv_string(NETWORK_NAME_LENGTH);
+	Debug(net, 9, "Client::Receive_SERVER_CLIENT_INFO(): client_id={}, playas={}", client_id, playas);
+
+	std::string name = p.Recv_string(NETWORK_NAME_LENGTH);
+	std::string public_key = p.Recv_string(NETWORK_PUBLIC_KEY_LENGTH);
 
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CLIENT_QUIT;
@@ -579,6 +594,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 
 		ci->client_playas = playas;
 		ci->client_name = name;
+		ci->public_key = public_key;
 
 		InvalidateWindowData(WC_CLIENT_LIST, 0);
 
@@ -598,13 +614,14 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 	if (client_id == _network_own_client_id) this->SetInfo(ci);
 
 	ci->client_name = name;
+	ci->public_key = public_key;
 
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet &p)
 {
 	static const StringID network_error_strings[] = {
 		STR_NETWORK_ERROR_LOSTCONNECTION,      // NETWORK_ERROR_GENERAL
@@ -628,17 +645,19 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p
 		STR_NETWORK_ERROR_TIMEOUT_MAP,         // NETWORK_ERROR_TIMEOUT_MAP
 		STR_NETWORK_ERROR_TIMEOUT_JOIN,        // NETWORK_ERROR_TIMEOUT_JOIN
 		STR_NETWORK_ERROR_INVALID_CLIENT_NAME, // NETWORK_ERROR_INVALID_CLIENT_NAME
+		STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST,   // NETWORK_ERROR_NOT_ON_ALLOW_LIST
 	};
 	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
 
-	NetworkErrorCode error = (NetworkErrorCode)p->Recv_uint8();
+	NetworkErrorCode error = (NetworkErrorCode)p.Recv_uint8();
+
+	Debug(net, 9, "Client::Receive_SERVER_ERROR(): error={}", error);
 
 	StringID err = STR_NETWORK_ERROR_LOSTCONNECTION;
 	if (error < (ptrdiff_t)lengthof(network_error_strings)) err = network_error_strings[error];
 	/* In case of kicking a client, we assume there is a kick message in the packet if we can read one byte */
-	if (error == NETWORK_ERROR_KICKED && p->CanReadFromPacket(1)) {
-		std::string kick_msg = p->Recv_string(NETWORK_CHAT_LENGTH);
-		SetDParamStr(0, kick_msg);
+	if (error == NETWORK_ERROR_KICKED && p.CanReadFromPacket(1)) {
+		SetDParamStr(0, p.Recv_string(NETWORK_CHAT_LENGTH));
 		ShowErrorMessage(err, STR_NETWORK_ERROR_KICK_MESSAGE, WL_CRITICAL);
 	} else {
 		ShowErrorMessage(err, INVALID_STRING_ID, WL_CRITICAL);
@@ -650,25 +669,25 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(Packet &p)
 {
-	if (this->status != STATUS_JOIN) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->status != STATUS_ENCRYPTED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	uint grf_count = p->Recv_uint8();
+	uint grf_count = p.Recv_uint8();
 	NetworkRecvStatus ret = NETWORK_RECV_STATUS_OKAY;
+
+	Debug(net, 9, "Client::Receive_SERVER_CHECK_NEWGRFS(): grf_count={}", grf_count);
 
 	/* Check all GRFs */
 	for (; grf_count > 0; grf_count--) {
 		GRFIdentifier c;
-		DeserializeGRFIdentifier(p, &c);
+		DeserializeGRFIdentifier(p, c);
 
 		/* Check whether we know this GRF */
-		const GRFConfig *f = FindGRFConfig(c.grfid, FGCM_EXACT, c.md5sum);
+		const GRFConfig *f = FindGRFConfig(c.grfid, FGCM_EXACT, &c.md5sum);
 		if (f == nullptr) {
 			/* We do not know this GRF, bail out of initialization */
-			char buf[sizeof(c.md5sum) * 2 + 1];
-			md5sumToString(buf, lastof(buf), c.md5sum);
-			Debug(grf, 0, "NewGRF {:08X} not found; checksum {}", BSWAP32(c.grfid), buf);
+			Debug(grf, 0, "NewGRF {:08X} not found; checksum {}", BSWAP32(c.grfid), FormatArrayAsHex(c.md5sum));
 			ret = NETWORK_RECV_STATUS_NEWGRF_MISMATCH;
 		}
 	}
@@ -683,98 +702,129 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(P
 	return ret;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_GAME_PASSWORD(Packet *p)
+class ClientGamePasswordRequestHandler : public NetworkAuthenticationPasswordRequestHandler {
+	virtual void SendResponse() override { MyClient::SendAuthResponse(); }
+	virtual void AskUserForPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request) override
+	{
+		if (!_network_join.server_password.empty()) {
+			request->Reply(_network_join.server_password);
+		} else {
+			ShowNetworkNeedPassword(request);
+		}
+	}
+};
+
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_AUTH_REQUEST(Packet &p)
 {
-	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTH_GAME) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->status != STATUS_JOIN && this->status != STATUS_AUTH_GAME) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	Debug(net, 9, "Client::status = AUTH_GAME");
 	this->status = STATUS_AUTH_GAME;
 
-	if (!_network_join.server_password.empty()) {
-		return SendGamePassword(_network_join.server_password);
+	Debug(net, 9, "Client::Receive_SERVER_AUTH_REQUEST()");
+
+	if (this->authentication_handler == nullptr) {
+		this->authentication_handler = NetworkAuthenticationClientHandler::Create(std::make_shared<ClientGamePasswordRequestHandler>(),
+				_settings_client.network.client_secret_key, _settings_client.network.client_public_key);
 	}
+	switch (this->authentication_handler->ReceiveRequest(p)) {
+		case NetworkAuthenticationClientHandler::READY_FOR_RESPONSE:
+			return SendAuthResponse();
 
-	ShowNetworkNeedPassword(NETWORK_GAME_PASSWORD);
+		case NetworkAuthenticationClientHandler::AWAIT_USER_INPUT:
+			return NETWORK_RECV_STATUS_OKAY;
 
-	return NETWORK_RECV_STATUS_OKAY;
+		case NetworkAuthenticationClientHandler::INVALID:
+		default:
+			return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	}
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_COMPANY_PASSWORD(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ENABLE_ENCRYPTION(Packet &p)
 {
-	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTH_COMPANY) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-	this->status = STATUS_AUTH_COMPANY;
+	if (this->status != STATUS_AUTH_GAME || this->authentication_handler == nullptr) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	_password_game_seed = p->Recv_uint32();
-	_password_server_id = p->Recv_string(NETWORK_SERVER_ID_LENGTH);
-	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	Debug(net, 9, "Client::Receive_SERVER_ENABLE_ENCRYPTION()");
 
-	if (!_network_join.company_password.empty()) {
-		return SendCompanyPassword(_network_join.company_password);
-	}
+	if (!this->authentication_handler->ReceiveEnableEncryption(p)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	ShowNetworkNeedPassword(NETWORK_COMPANY_PASSWORD);
+	this->receive_encryption_handler = this->authentication_handler->CreateServerToClientEncryptionHandler();
+	this->send_encryption_handler = this->authentication_handler->CreateClientToServerEncryptionHandler();
+	this->authentication_handler = nullptr;
 
-	return NETWORK_RECV_STATUS_OKAY;
+	Debug(net, 9, "Client::status = ENCRYPTED");
+	this->status = STATUS_ENCRYPTED;
+
+	return this->SendIdentify();
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_WELCOME(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_WELCOME(Packet &p)
 {
-	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->status < STATUS_ENCRYPTED || this->status >= STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	Debug(net, 9, "Client::status = AUTHORIZED");
 	this->status = STATUS_AUTHORIZED;
 
-	_network_own_client_id = (ClientID)p->Recv_uint32();
+	_network_own_client_id = (ClientID)p.Recv_uint32();
 
-	/* Initialize the password hash salting variables, even if they were previously. */
-	_password_game_seed = p->Recv_uint32();
-	_password_server_id = p->Recv_string(NETWORK_SERVER_ID_LENGTH);
+	Debug(net, 9, "Client::Receive_SERVER_WELCOME(): client_id={}", _network_own_client_id);
 
 	/* Start receiving the map */
 	return SendGetMap();
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_WAIT(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_WAIT(Packet &p)
 {
 	/* We set the internal wait state when requesting the map. */
 	if (this->status != STATUS_MAP_WAIT) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
+	Debug(net, 9, "Client::Receive_SERVER_WAIT()");
+
 	/* But... only now we set the join status to waiting, instead of requesting. */
+	Debug(net, 9, "Client::join_status = WAITING");
 	_network_join_status = NETWORK_JOIN_STATUS_WAITING;
-	_network_join_waiting = p->Recv_uint8();
+	_network_join_waiting = p.Recv_uint8();
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_BEGIN(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_BEGIN(Packet &p)
 {
 	if (this->status < STATUS_AUTHORIZED || this->status >= STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	Debug(net, 9, "Client::status = MAP");
 	this->status = STATUS_MAP;
 
 	if (this->savegame != nullptr) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	this->savegame = new PacketReader();
+	this->savegame = std::make_shared<PacketReader>();
 
-	_frame_counter = _frame_counter_server = _frame_counter_max = p->Recv_uint32();
+	_frame_counter = _frame_counter_server = _frame_counter_max = p.Recv_uint32();
+
+	Debug(net, 9, "Client::Receive_SERVER_MAP_BEGIN(): frame_counter={}", _frame_counter);
 
 	_network_join_bytes = 0;
 	_network_join_bytes_total = 0;
 
+	Debug(net, 9, "Client::join_status = DOWNLOADING");
 	_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_SIZE(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_SIZE(Packet &p)
 {
 	if (this->status != STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->savegame == nullptr) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	_network_join_bytes_total = p->Recv_uint32();
+	_network_join_bytes_total = p.Recv_uint32();
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+
+	Debug(net, 9, "Client::Receive_SERVER_MAP_SIZE(): bytes_total={}", _network_join_bytes_total);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DATA(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DATA(Packet &p)
 {
 	if (this->status != STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->savegame == nullptr) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
@@ -782,34 +832,29 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DATA(Packet
 	/* We are still receiving data, put it to the file */
 	this->savegame->AddPacket(p);
 
-	_network_join_bytes = (uint32)this->savegame->written_bytes;
+	_network_join_bytes = (uint32_t)this->savegame->written_bytes;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet &)
 {
 	if (this->status != STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->savegame == nullptr) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
+	Debug(net, 9, "Client::Receive_SERVER_MAP_DONE()");
+
+	Debug(net, 9, "Client::join_status = PROCESSING");
 	_network_join_status = NETWORK_JOIN_STATUS_PROCESSING;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
-	/*
-	 * Make sure everything is set for reading.
-	 *
-	 * We need the local copy and reset this->savegame because when
-	 * loading fails the network gets reset upon loading the intro
-	 * game, which would cause us to free this->savegame twice.
-	 */
-	LoadFilter *lf = this->savegame;
-	this->savegame = nullptr;
-	lf->Reset();
+	this->savegame->Reset();
 
 	/* The map is done downloading, load it */
 	ClearErrorMessages();
-	bool load_success = SafeLoad({}, SLO_LOAD, DFT_GAME_FILE, GM_NORMAL, NO_DIRECTORY, lf);
+	bool load_success = SafeLoad({}, SLO_LOAD, DFT_GAME_FILE, GM_NORMAL, NO_DIRECTORY, this->savegame);
+	this->savegame = nullptr;
 
 	/* Long savegame loads shouldn't affect the lag calculation! */
 	this->last_packet = std::chrono::steady_clock::now();
@@ -824,6 +869,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 	/* Say we received the map and loaded it correctly! */
 	SendMapOk();
 
+	/* As we skipped switch-mode, update the time we "switched". */
+	_game_session_stats.start_time = std::chrono::steady_clock::now();
+	_game_session_stats.savegame_size = std::nullopt;
+
 	ShowClientList();
 
 	/* New company/spectator (invalid company) or company we want to join is not active
@@ -834,48 +883,49 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 		if (_network_join.company != COMPANY_SPECTATOR) {
 			/* We have arrived and ready to start playing; send a command to make a new company;
 			 * the server will give us a client-id and let us in */
+			Debug(net, 9, "Client::join_status = REGISTERING");
 			_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
 			ShowJoinStatusWindow();
-			Command<CMD_COMPANY_CTRL>::SendNet(STR_NULL, _local_company, CCA_NEW, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
+			Command<CMD_COMPANY_CTRL>::Post(CCA_NEW, INVALID_COMPANY, CRR_NONE, _network_own_client_id);
 		}
 	} else {
 		/* take control over an existing company */
 		SetLocalCompany(_network_join.company);
 	}
 
+	SocialIntegration::EventEnterMultiplayer(Map::SizeX(), Map::SizeY());
+
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FRAME(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FRAME(Packet &p)
 {
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	_frame_counter_server = p->Recv_uint32();
-	_frame_counter_max = p->Recv_uint32();
+	_frame_counter_server = p.Recv_uint32();
+	_frame_counter_max = p.Recv_uint32();
 #ifdef ENABLE_NETWORK_SYNC_EVERY_FRAME
 	/* Test if the server supports this option
 	 *  and if we are at the frame the server is */
 #ifdef NETWORK_SEND_DOUBLE_SEED
-	if (p->CanReadFromPacket(sizeof(uint32) + sizeof(uint32))) {
+	if (p.CanReadFromPacket(sizeof(uint32_t) + sizeof(uint32_t))) {
 #else
-	if (p->CanReadFromPacket(sizeof(uint32))) {
+	if (p.CanReadFromPacket(sizeof(uint32_t))) {
 #endif
 		_sync_frame = _frame_counter_server;
-		_sync_seed_1 = p->Recv_uint32();
+		_sync_seed_1 = p.Recv_uint32();
 #ifdef NETWORK_SEND_DOUBLE_SEED
-		_sync_seed_2 = p->Recv_uint32();
+		_sync_seed_2 = p.Recv_uint32();
 #endif
 	}
 #endif
 	/* Receive the token. */
-	if (p->CanReadFromPacket(sizeof(uint8))) this->token = p->Recv_uint8();
-
-	Debug(net, 7, "Received FRAME {}", _frame_counter_server);
+	if (p.CanReadFromPacket(sizeof(uint8_t))) this->token = p.Recv_uint8();
 
 	/* Let the server know that we received this frame correctly
 	 *  We do this only once per day, to save some bandwidth ;) */
 	if (!_network_first_time && last_ack_frame < _frame_counter) {
-		last_ack_frame = _frame_counter + DAY_TICKS;
+		last_ack_frame = _frame_counter + Ticks::DAY_TICKS;
 		Debug(net, 7, "Sent ACK at {}", _frame_counter);
 		SendAck();
 	}
@@ -883,50 +933,56 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FRAME(Packet *p
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_SYNC(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_SYNC(Packet &p)
 {
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	_sync_frame = p->Recv_uint32();
-	_sync_seed_1 = p->Recv_uint32();
+	_sync_frame = p.Recv_uint32();
+	_sync_seed_1 = p.Recv_uint32();
 #ifdef NETWORK_SEND_DOUBLE_SEED
-	_sync_seed_2 = p->Recv_uint32();
+	_sync_seed_2 = p.Recv_uint32();
 #endif
+
+	Debug(net, 9, "Client::Receive_SERVER_SYNC(): sync_frame={}, sync_seed_1={}", _sync_frame, _sync_seed_1);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMMAND(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMMAND(Packet &p)
 {
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	CommandPacket cp;
-	const char *err = this->ReceiveCommand(p, &cp);
-	cp.frame    = p->Recv_uint32();
-	cp.my_cmd   = p->Recv_bool();
+	const char *err = this->ReceiveCommand(p, cp);
+	cp.frame    = p.Recv_uint32();
+	cp.my_cmd   = p.Recv_bool();
+
+	Debug(net, 9, "Client::Receive_SERVER_COMMAND(): cmd={}, frame={}", cp.cmd, cp.frame);
 
 	if (err != nullptr) {
 		IConsolePrint(CC_WARNING, "Dropping server connection due to {}.", err);
 		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 
-	this->incoming_queue.Append(&cp);
+	this->incoming_queue.push_back(cp);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet &p)
 {
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	std::string name;
 	const NetworkClientInfo *ci = nullptr, *ci_to;
 
-	NetworkAction action = (NetworkAction)p->Recv_uint8();
-	ClientID client_id = (ClientID)p->Recv_uint32();
-	bool self_send = p->Recv_bool();
-	std::string msg = p->Recv_string(NETWORK_CHAT_LENGTH);
-	int64 data = p->Recv_uint64();
+	NetworkAction action = (NetworkAction)p.Recv_uint8();
+	ClientID client_id = (ClientID)p.Recv_uint32();
+	bool self_send = p.Recv_bool();
+	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
+	int64_t data = p.Recv_uint64();
+
+	Debug(net, 9, "Client::Receive_SERVER_CHAT(): action={}, client_id={}, self_send={}", action, client_id, self_send);
 
 	ci_to = NetworkClientInfo::GetByClientID(client_id);
 	if (ci_to == nullptr) return NETWORK_RECV_STATUS_OKAY;
@@ -964,14 +1020,16 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet *p)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_EXTERNAL_CHAT(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_EXTERNAL_CHAT(Packet &p)
 {
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	std::string source = p->Recv_string(NETWORK_CHAT_LENGTH);
-	TextColour colour = (TextColour)p->Recv_uint16();
-	std::string user = p->Recv_string(NETWORK_CHAT_LENGTH);
-	std::string msg = p->Recv_string(NETWORK_CHAT_LENGTH);
+	std::string source = p.Recv_string(NETWORK_CHAT_LENGTH);
+	TextColour colour = (TextColour)p.Recv_uint16();
+	std::string user = p.Recv_string(NETWORK_CHAT_LENGTH);
+	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
+
+	Debug(net, 9, "Client::Receive_SERVER_EXTERNAL_CHAT(): source={}", source);
 
 	if (!IsValidConsoleColour(colour)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -980,15 +1038,17 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_EXTERNAL_CHAT(P
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR_QUIT(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR_QUIT(Packet &p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	ClientID client_id = (ClientID)p->Recv_uint32();
+	ClientID client_id = (ClientID)p.Recv_uint32();
+
+	Debug(net, 9, "Client::Receive_SERVER_ERROR_QUIT(): client_id={}", client_id);
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "", GetNetworkErrorMsg((NetworkErrorCode)p->Recv_uint8()));
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "", GetNetworkErrorMsg((NetworkErrorCode)p.Recv_uint8()));
 		delete ci;
 	}
 
@@ -997,11 +1057,13 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR_QUIT(Pack
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_QUIT(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_QUIT(Packet &p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	ClientID client_id = (ClientID)p->Recv_uint32();
+	ClientID client_id = (ClientID)p.Recv_uint32();
+
+	Debug(net, 9, "Client::Receive_SERVER_QUIT(): client_id={}", client_id);
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
@@ -1017,11 +1079,13 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_QUIT(Packet *p)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_JOIN(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_JOIN(Packet &p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	ClientID client_id = (ClientID)p->Recv_uint32();
+	ClientID client_id = (ClientID)p.Recv_uint32();
+
+	Debug(net, 9, "Client::Receive_SERVER_JOIN(): client_id={}", client_id);
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
@@ -1033,8 +1097,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_JOIN(Packet *p)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_SHUTDOWN(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_SHUTDOWN(Packet &)
 {
+	Debug(net, 9, "Client::Receive_SERVER_SHUTDOWN()");
+
 	/* Only when we're trying to join we really
 	 * care about the server shutting down. */
 	if (this->status >= STATUS_JOIN) {
@@ -1046,8 +1112,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_SHUTDOWN(Packet
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEWGAME(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEWGAME(Packet &)
 {
+	Debug(net, 9, "Client::Receive_SERVER_NEWGAME()");
+
 	/* Only when we're trying to join we really
 	 * care about the server shutting down. */
 	if (this->status >= STATUS_JOIN) {
@@ -1063,27 +1131,31 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEWGAME(Packet 
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_RCON(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_RCON(Packet &p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	TextColour colour_code = (TextColour)p->Recv_uint16();
+	Debug(net, 9, "Client::Receive_SERVER_RCON()");
+
+	TextColour colour_code = (TextColour)p.Recv_uint16();
 	if (!IsValidConsoleColour(colour_code)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	std::string rcon_out = p->Recv_string(NETWORK_RCONCOMMAND_LENGTH);
+	std::string rcon_out = p.Recv_string(NETWORK_RCONCOMMAND_LENGTH);
 
 	IConsolePrint(colour_code, rcon_out);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MOVE(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MOVE(Packet &p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	/* Nothing more in this packet... */
-	ClientID client_id   = (ClientID)p->Recv_uint32();
-	CompanyID company_id = (CompanyID)p->Recv_uint8();
+	ClientID client_id   = (ClientID)p.Recv_uint32();
+	CompanyID company_id = (CompanyID)p.Recv_uint8();
+
+	Debug(net, 9, "Client::Receive_SERVER_MOVE(): client_id={}, comapny_id={}", client_id, company_id);
 
 	if (client_id == 0) {
 		/* definitely an invalid client id, debug message and do nothing. */
@@ -1105,23 +1177,15 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MOVE(Packet *p)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CONFIG_UPDATE(Packet *p)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CONFIG_UPDATE(Packet &p)
 {
 	if (this->status < STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	_network_server_max_companies = p->Recv_uint8();
-	_network_server_name = p->Recv_string(NETWORK_NAME_LENGTH);
+	_network_server_max_companies = p.Recv_uint8();
+	_network_server_name = p.Recv_string(NETWORK_NAME_LENGTH);
 	SetWindowClassesDirty(WC_CLIENT_LIST);
 
-	return NETWORK_RECV_STATUS_OKAY;
-}
-
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMPANY_UPDATE(Packet *p)
-{
-	if (this->status < STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-
-	_network_company_passworded = p->Recv_uint16();
-	SetWindowClassesDirty(WC_COMPANY);
+	Debug(net, 9, "Client::Receive_SERVER_CONFIG_UPDATE(): max_companies={}", _network_server_max_companies);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -1162,6 +1226,9 @@ void NetworkClient_Connected()
 	_frame_counter = 0;
 	_frame_counter_server = 0;
 	last_ack_frame = 0;
+
+	Debug(net, 9, "Client::NetworkClient_Connected()");
+
 	/* Request the game-info */
 	MyClient::SendJoin();
 }
@@ -1179,12 +1246,10 @@ void NetworkClientSendRcon(const std::string &password, const std::string &comma
 /**
  * Notify the server of this client wanting to be moved to another company.
  * @param company_id id of the company the client wishes to be moved to.
- * @param pass the password, is only checked on the server end if a password is needed.
- * @return void
  */
-void NetworkClientRequestMove(CompanyID company_id, const std::string &pass)
+void NetworkClientRequestMove(CompanyID company_id)
 {
-	MyClient::SendMove(company_id, pass);
+	MyClient::SendMove(company_id);
 }
 
 /**
@@ -1193,7 +1258,7 @@ void NetworkClientRequestMove(CompanyID company_id, const std::string &pass)
  */
 void NetworkClientsToSpectators(CompanyID cid)
 {
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company);
 	/* If our company is changing owner, go to spectators */
 	if (cid == _local_company) SetLocalCompany(COMPANY_SPECTATOR);
 
@@ -1289,18 +1354,9 @@ void NetworkUpdateClientName(const std::string &client_name)
  * @param msg The actual message.
  * @param data Arbitrary extra data.
  */
-void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64 data)
+void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64_t data)
 {
 	MyClient::SendChat(action, type, dest, msg, data);
-}
-
-/**
- * Set/Reset company password on the client side.
- * @param password Password to be set.
- */
-void NetworkClientSetCompanyPassword(const std::string &password)
-{
-	MyClient::SendSetPassword(password);
 }
 
 /**

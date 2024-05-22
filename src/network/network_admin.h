@@ -24,18 +24,18 @@ extern NetworkAdminSocketPool _networkadminsocket_pool;
 /** Class for handling the server side of the game connection. */
 class ServerNetworkAdminSocketHandler : public NetworkAdminSocketPool::PoolItem<&_networkadminsocket_pool>, public NetworkAdminSocketHandler, public TCPListenHandler<ServerNetworkAdminSocketHandler, ADMIN_PACKET_SERVER_FULL, ADMIN_PACKET_SERVER_BANNED> {
 protected:
-	NetworkRecvStatus Receive_ADMIN_JOIN(Packet *p) override;
-	NetworkRecvStatus Receive_ADMIN_QUIT(Packet *p) override;
-	NetworkRecvStatus Receive_ADMIN_UPDATE_FREQUENCY(Packet *p) override;
-	NetworkRecvStatus Receive_ADMIN_POLL(Packet *p) override;
-	NetworkRecvStatus Receive_ADMIN_CHAT(Packet *p) override;
-	NetworkRecvStatus Receive_ADMIN_EXTERNAL_CHAT(Packet *p) override;
-	NetworkRecvStatus Receive_ADMIN_RCON(Packet *p) override;
-	NetworkRecvStatus Receive_ADMIN_GAMESCRIPT(Packet *p) override;
-	NetworkRecvStatus Receive_ADMIN_PING(Packet *p) override;
+	NetworkRecvStatus Receive_ADMIN_JOIN(Packet &p) override;
+	NetworkRecvStatus Receive_ADMIN_QUIT(Packet &p) override;
+	NetworkRecvStatus Receive_ADMIN_UPDATE_FREQUENCY(Packet &p) override;
+	NetworkRecvStatus Receive_ADMIN_POLL(Packet &p) override;
+	NetworkRecvStatus Receive_ADMIN_CHAT(Packet &p) override;
+	NetworkRecvStatus Receive_ADMIN_EXTERNAL_CHAT(Packet &p) override;
+	NetworkRecvStatus Receive_ADMIN_RCON(Packet &p) override;
+	NetworkRecvStatus Receive_ADMIN_GAMESCRIPT(Packet &p) override;
+	NetworkRecvStatus Receive_ADMIN_PING(Packet &p) override;
 
 	NetworkRecvStatus SendProtocol();
-	NetworkRecvStatus SendPong(uint32 d1);
+	NetworkRecvStatus SendPong(uint32_t d1);
 public:
 	AdminUpdateFrequency update_frequency[ADMIN_UPDATE_END]; ///< Admin requested update intervals.
 	std::chrono::steady_clock::time_point connect_time;      ///< Time of connection.
@@ -62,12 +62,12 @@ public:
 	NetworkRecvStatus SendCompanyEconomy();
 	NetworkRecvStatus SendCompanyStats();
 
-	NetworkRecvStatus SendChat(NetworkAction action, DestType desttype, ClientID client_id, const std::string &msg, int64 data);
-	NetworkRecvStatus SendRcon(uint16 colour, const std::string_view command);
+	NetworkRecvStatus SendChat(NetworkAction action, DestType desttype, ClientID client_id, const std::string &msg, int64_t data);
+	NetworkRecvStatus SendRcon(uint16_t colour, const std::string_view command);
 	NetworkRecvStatus SendConsole(const std::string_view origin, const std::string_view command);
 	NetworkRecvStatus SendGameScript(const std::string_view json);
 	NetworkRecvStatus SendCmdNames();
-	NetworkRecvStatus SendCmdLogging(ClientID client_id, const CommandPacket *cp);
+	NetworkRecvStatus SendCmdLogging(ClientID client_id, const CommandPacket &cp);
 	NetworkRecvStatus SendRconEnd(const std::string_view command);
 
 	static void Send();
@@ -103,15 +103,15 @@ void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client = fal
 void NetworkAdminClientUpdate(const NetworkClientInfo *ci);
 void NetworkAdminClientQuit(ClientID client_id);
 void NetworkAdminClientError(ClientID client_id, NetworkErrorCode error_code);
-void NetworkAdminCompanyInfo(const Company *company, bool new_company);
+void NetworkAdminCompanyNew(const Company *company);
 void NetworkAdminCompanyUpdate(const Company *company);
 void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bcrr);
 
-void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, const std::string &msg, int64 data = 0, bool from_admin = false);
+void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, const std::string &msg, int64_t data = 0, bool from_admin = false);
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
 void NetworkServerSendAdminRcon(AdminIndex admin_index, TextColour colour_code, const std::string_view string);
 void NetworkAdminConsole(const std::string_view origin, const std::string_view string);
 void NetworkAdminGameScript(const std::string_view json);
-void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacket *cp);
+void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacket &cp);
 
 #endif /* NETWORK_ADMIN_H */

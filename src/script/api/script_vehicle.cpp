@@ -75,7 +75,7 @@
 {
 	EnforceCompanyModeValid(VEHICLE_INVALID);
 	EnforcePrecondition(VEHICLE_INVALID, ScriptEngine::IsBuildable(engine_id));
-	EnforcePrecondition(VEHICLE_INVALID, cargo == CT_INVALID || ScriptCargo::IsValidCargo(cargo));
+	EnforcePrecondition(VEHICLE_INVALID, !::IsValidCargoID(cargo) || ScriptCargo::IsValidCargo(cargo));
 
 	::VehicleType type = ::Engine::Get(engine_id)->type;
 
@@ -89,7 +89,7 @@
 
 /* static */ VehicleID ScriptVehicle::BuildVehicle(TileIndex depot, EngineID engine_id)
 {
-	return _BuildVehicleInternal(depot, engine_id, CT_INVALID);
+	return _BuildVehicleInternal(depot, engine_id, INVALID_CARGO);
 }
 
 /* static */ VehicleID ScriptVehicle::BuildVehicleWithRefit(TileIndex depot, EngineID engine_id, CargoID cargo)
@@ -299,9 +299,9 @@
 	return ::Vehicle::Get(vehicle_id)->unitnumber;
 }
 
-/* static */ char *ScriptVehicle::GetName(VehicleID vehicle_id)
+/* static */ std::optional<std::string> ScriptVehicle::GetName(VehicleID vehicle_id)
 {
-	if (!IsPrimaryVehicle(vehicle_id)) return nullptr;
+	if (!IsPrimaryVehicle(vehicle_id)) return std::nullopt;
 
 	::SetDParam(0, vehicle_id);
 	return GetString(STR_VEHICLE_NAME);
@@ -311,7 +311,7 @@
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;
 
-	return ::Vehicle::Get(vehicle_id)->age;
+	return ::Vehicle::Get(vehicle_id)->age.base();
 }
 
 /* static */ SQInteger ScriptVehicle::GetWagonAge(VehicleID vehicle_id, SQInteger wagon)
@@ -323,21 +323,21 @@
 	if (v->type == VEH_TRAIN) {
 		while (wagon-- > 0) v = ::Train::From(v)->GetNextUnit();
 	}
-	return v->age;
+	return v->age.base();
 }
 
 /* static */ SQInteger ScriptVehicle::GetMaxAge(VehicleID vehicle_id)
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
-	return ::Vehicle::Get(vehicle_id)->max_age;
+	return ::Vehicle::Get(vehicle_id)->max_age.base();
 }
 
 /* static */ SQInteger ScriptVehicle::GetAgeLeft(VehicleID vehicle_id)
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
-	return ::Vehicle::Get(vehicle_id)->max_age - ::Vehicle::Get(vehicle_id)->age;
+	return (::Vehicle::Get(vehicle_id)->max_age - ::Vehicle::Get(vehicle_id)->age).base();
 }
 
 /* static */ SQInteger ScriptVehicle::GetCurrentSpeed(VehicleID vehicle_id)
@@ -353,7 +353,7 @@
 	if (!IsValidVehicle(vehicle_id)) return ScriptVehicle::VS_INVALID;
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	byte vehstatus = v->vehstatus;
+	uint8_t vehstatus = v->vehstatus;
 
 	if (vehstatus & ::VS_CRASHED) return ScriptVehicle::VS_CRASHED;
 	if (v->breakdown_ctr != 0) return ScriptVehicle::VS_BROKEN;
@@ -417,7 +417,7 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	uint32 amount = 0;
+	uint32_t amount = 0;
 	for (const Vehicle *v = ::Vehicle::Get(vehicle_id); v != nullptr; v = v->Next()) {
 		if (v->cargo_type == cargo) amount += v->cargo_cap;
 	}
@@ -430,7 +430,7 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	uint32 amount = 0;
+	uint32_t amount = 0;
 	for (const Vehicle *v = ::Vehicle::Get(vehicle_id); v != nullptr; v = v->Next()) {
 		if (v->cargo_type == cargo) amount += v->cargo.StoredCount();
 	}

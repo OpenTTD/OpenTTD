@@ -24,7 +24,7 @@ class ScriptClient : public ScriptObject {
 public:
 
 	/** Different constants related to ClientID. */
-	enum ClientID : uint32 {
+	enum ClientID : uint32_t {
 		CLIENT_INVALID = 0,  ///< Client is not part of anything
 		CLIENT_SERVER  = 1,  ///< Servers always have this ID
 		CLIENT_FIRST   = 2,  ///< The first client ID
@@ -45,7 +45,7 @@ public:
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
 	 * @return The name of the given client.
 	 */
-	static char *GetName(ClientID client);
+	static std::optional<std::string> GetName(ClientID client);
 
 	/**
 	 * Get the company in which the given client is playing.
@@ -56,10 +56,11 @@ public:
 	static ScriptCompany::CompanyID GetCompany(ClientID client);
 
 	/**
-	 * Get the game date when the given client has joined.
+	 * Get the economy-date when the given client has joined.
 	 * @param client The client to get joining date for.
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
-	 * @return The date when client has joined.
+	 * @return The economy-date when client has joined.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static ScriptDate::Date GetJoinDate(ClientID client);
 };

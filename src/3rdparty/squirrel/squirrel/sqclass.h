@@ -19,6 +19,7 @@ typedef sqvector<SQClassMember> SQClassMemberVec;
 
 #define MEMBER_TYPE_METHOD 0x01000000
 #define MEMBER_TYPE_FIELD 0x02000000
+#define MEMBER_MAX_COUNT 0x00FFFFFF
 
 #define _ismethod(o) (_integer(o)&MEMBER_TYPE_METHOD)
 #define _isfield(o) (_integer(o)&MEMBER_TYPE_FIELD)
@@ -54,13 +55,13 @@ public:
 	bool SetAttributes(const SQObjectPtr &key,const SQObjectPtr &val);
 	bool GetAttributes(const SQObjectPtr &key,SQObjectPtr &outval);
 	void Lock() { _locked = true; if(_base) _base->Lock(); }
-	void Release() {
+	void Release() override {
 		if (_hook) { _hook(_typetag,0);}
 		sq_delete(this, SQClass);
 	}
-	void Finalize();
+	void Finalize() override;
 #ifndef NO_GARBAGE_COLLECTOR
-	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue) override;
 #endif
 	SQInteger Next(const SQObjectPtr &refpos, SQObjectPtr &outkey, SQObjectPtr &outval);
 	SQInstance *CreateInstance();

@@ -28,12 +28,8 @@ public:
 	 *              values. Only do that on the very last flow mapping.
 	 */
 	FlowMapper(bool scale) : scale(scale) {}
-	virtual void Run(LinkGraphJob &job) const;
+	void Run(LinkGraphJob &job) const override;
 
-	/**
-	 * Virtual destructor has to be defined because of virtual Run().
-	 */
-	virtual ~FlowMapper() {}
 private:
 
 	/**

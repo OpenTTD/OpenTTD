@@ -11,7 +11,6 @@
 
 #include "../../stdafx.h"
 
-#include <cstdlib>
 #include "../../string_func.h"
 
 #include "../../safeguards.h"
@@ -66,4 +65,14 @@ const char *NetworkContentServerConnectionString()
 const char *NetworkContentMirrorUriString()
 {
 	return GetEnv("OTTD_CONTENT_MIRROR_URI", "https://binaries.openttd.org/bananas");
+}
+
+/**
+ * Get the URI string for the survey from the environment variable OTTD_SURVEY_URI,
+ * or when it has not been set a hard coded URI of the production server.
+ * @return The survey's URI string.
+ */
+const char *NetworkSurveyUriString()
+{
+	return GetEnv("OTTD_SURVEY_URI", "https://survey-participate.openttd.org/");
 }

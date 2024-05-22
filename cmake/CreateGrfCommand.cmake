@@ -1,16 +1,13 @@
 # Macro which contains all bits and pieces to create a single grf file based
 # on NFO and PNG files.
 #
-# create_grf_command()
+# create_grf_command(NFO_SOURCE_FILES nfo_file1 ... PNG_SOURCE_FILES png_file1 ...)
 #
 function(create_grf_command)
-    set(EXTRA_PNG_SOURCE_FILES ${ARGV})
+    cmake_parse_arguments(GRF "" "" "NFO_SOURCE_FILES;PNG_SOURCE_FILES" ${ARGN})
 
     get_filename_component(GRF_SOURCE_FOLDER_NAME "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
     get_filename_component(GRF_BINARY_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../${GRF_SOURCE_FOLDER_NAME}.grf ABSOLUTE)
-    file(GLOB_RECURSE GRF_PNG_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.png)
-    file(GLOB_RECURSE GRF_NFO_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.nfo)
-    set(GRF_PNG_SOURCE_FILES ${GRF_PNG_SOURCE_FILES} ${EXTRA_PNG_SOURCE_FILES})
 
     # Copy over all the PNG files to the correct folder
     foreach(GRF_PNG_SOURCE_FILE IN LISTS GRF_PNG_SOURCE_FILES)
@@ -28,12 +25,13 @@ function(create_grf_command)
         list(APPEND GRF_PNG_BINARY_FILES ${GRF_PNG_BINARY_FILE})
     endforeach()
 
-    add_custom_command(OUTPUT ${GRF_BINARY_FILE}
+    add_custom_command(OUTPUT ${GRF_BINARY_FILE} ${GRF_BINARY_FILE}.hash
             COMMAND ${CMAKE_COMMAND}
                     -DGRF_SOURCE_FOLDER=${CMAKE_CURRENT_SOURCE_DIR}
                     -DGRF_BINARY_FILE=${GRF_BINARY_FILE}
                     -DNFORENUM_EXECUTABLE=${NFORENUM_EXECUTABLE}
                     -DGRFCODEC_EXECUTABLE=${GRFCODEC_EXECUTABLE}
+                    -DGRFID_EXECUTABLE=${GRFID_EXECUTABLE}
                     -P ${CMAKE_SOURCE_DIR}/cmake/scripts/CreateGRF.cmake
             MAIN_DEPENDENCY ${CMAKE_SOURCE_DIR}/cmake/scripts/CreateGRF.cmake
             DEPENDS ${GRF_PNG_BINARY_FILES}

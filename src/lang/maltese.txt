@@ -141,32 +141,39 @@ STR_COLOUR_BROWN                                                :Kannella
 STR_COLOUR_GREY                                                 :Griż
 STR_COLOUR_WHITE                                                :Abjad
 
+###length 17
+
+
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}hp
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}hp
+STR_UNITS_POWER_SI                                              :{DECIMAL}kW
 
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tunnellat{P a i i i}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL} tunnellat{P a i i i}
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} kg
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P u i i i}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL} litr{P u i i i}
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} m³
 
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
+
+# Time units used in string control characters
+
+
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Daħħal sentenza għall-iffiltrar
@@ -265,57 +272,39 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni ind
 ###length 7
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 
+
 # Settings menu
-###length 15
+###length 16
 
 # File menu
-###length 5
-STR_FILE_MENU_SEPARATOR                                         :
 
 # Map menu
-###length 4
 
 # Town menu
-###length 2
 
 # Subsidies menu
-###length 1
 
 # Graph menu
-###length 6
 
 # Company league menu
-###length 3
 
 # Industry menu
-###length 3
 
 # URailway construction menu
-###length 4
 
 # Road construction menu
-###length 2
 
 # Waterways construction menu
-###length 1
 
 # Aairport construction menu
-###length 1
 
 # Landscaping menu
-###length 3
 
 # Music menu
-###length 1
 
 # Message menu
-###length 3
 
 # About menu
-###length 10
-
-# Place in highscore window
-###length 15
 
 ###length 31
 
@@ -332,6 +321,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 
 
 
+
 # Graph key window
 
 # Company league window
@@ -342,8 +332,8 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 
 ###length 10
+###next-name-looks-similar
 
-###length 10
 
 # Music window
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
@@ -404,7 +394,12 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 # Game options window
 
-###length 42
+
+
+
+
+
+###length 44
 
 
 # Autosave dropdown
@@ -413,6 +408,13 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
+
+
+
+
+
+
+
 
 
 
@@ -466,6 +468,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 ###length 3
 
+
+
 ###setting-zero-is-special
 
 
@@ -480,6 +484,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ikkontrolla kem
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplikatur tas-sussidju: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Stabbilixxi kemm jiġi mħallas għal konnessjonijiet sussidjati
 
+###length 2
 
 ###setting-zero-is-special
 
@@ -522,13 +527,18 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Iddeċiedi kemm
 
 ###length 3
 
+###length 2
+
+###length 2
 
 
 ###length 3
 
 ###length 4
 
+###length 2
 
+###length 2
 
 
 
@@ -536,6 +546,8 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Iddeċiedi kemm
 
 
 ###length 3
+
+
 
 
 
@@ -545,6 +557,13 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avza jekk jinti
 
 ###length 3
 
+###length 2
+
+
+###length 2
+
+
+###setting-zero-is-special
 
 
 
@@ -602,7 +621,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avza jekk jinti
 
 ###length 3
 
-
+###length 3
 
 ###length 3
 
@@ -615,6 +634,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Uza l-lista avv
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uzu tal-listi avvanzati tal-vetturi biex tghaqqad il-vetturi fi gruppi
 
 
+###length 3
 
 
 
@@ -622,6 +642,32 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 
 
 
+
+###setting-zero-is-special
+
+
+
+###length 2
+
+###length 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###length 3
 
 ###setting-zero-is-special
 
@@ -641,28 +687,6 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 
 
 
-###length 3
-
-
-
-
-###setting-zero-is-special
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -672,8 +696,6 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 ###setting-zero-is-special
 
 ###length 3
-
-
 
 
 
@@ -709,7 +731,6 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 
 
 
-###length 4
 
 ###length 3
 
@@ -722,7 +743,6 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 ###length 3
 
 
-###length 2
 
 
 # Config errors
@@ -741,6 +761,8 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 # Quit window
 
 # Abandon game
+
+# Help window
 
 # Cheat window
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ibdel is-sena
@@ -791,7 +813,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 
 
-# Network set password
 
 # Network company info join/password
 
@@ -801,7 +822,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 # Network messages
 
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :reviżjoni ħażina
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :isem diġa qed jintuża
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażin
@@ -853,6 +874,9 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 
 
 
+
+
+
 # Signal window
 
 # Bridge selection window
@@ -881,7 +905,6 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 # Landscaping toolbar
 
 # Object construction window
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Aghzel il-klassi tal-oggett li se tibni
 
 
 # Tree planting window (last eight for SE only)
@@ -1008,8 +1031,8 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 ###length 8
+###next-name-looks-similar
 
-###length 8
 
 # Goal window
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -1058,7 +1081,6 @@ STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURREN
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 
 # Company view
-
 
 
 
@@ -1240,7 +1262,6 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 # Order view
 
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -1248,6 +1269,10 @@ STR_ORDER_TEXT                                                  :{STRING} {STRIN
 
 
 
+
+# Depot action tooltips, one per vehicle type
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
@@ -1271,6 +1296,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRIN
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 
+
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Awtomatiku)
@@ -1291,6 +1317,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Патуваа�
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :патуваат за {STRING} со најмногу {VELOCITY}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-iskeda ser iddum {STRING} biex titlesta
+
 
 
 
@@ -1330,7 +1357,7 @@ STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Исчи
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Прикажи ги чита-ми
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Промени се најавите
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лиценца
-###length 3
+###length 5
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} лиценца за {STRING}
 
 
@@ -1387,6 +1414,8 @@ STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ma tista
 
 
 
+# Depot unbunching related errors
+
 # Autoreplace related errors
 
 # Rail construction errors
@@ -1438,6 +1467,7 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ma tista
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ma tistax tbigħ dan l-ajruplan...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Hemm wisq vetturi fil-logħba
+
 
 
 
@@ -1670,10 +1700,10 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Ħelikopter Pow
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
@@ -1721,6 +1751,7 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
@@ -1737,33 +1768,8 @@ STR_JUST_STRING_STRING                                          :{STRING}{STRING
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
-STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
-STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
-STR_BLACK_INT                                                   :{BLACK}{NUM}
-STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
-STR_BLACK_STRING                                                :{BLACK}{STRING}
-STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
-STR_ORANGE_STRING                                               :{ORANGE}{STRING}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
-STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_ORANGE_STRING1_WHITE                                        :{ORANGE}{STRING}{WHITE}
-STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

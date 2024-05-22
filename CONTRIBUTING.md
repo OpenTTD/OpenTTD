@@ -14,7 +14,7 @@ In return, they should reciprocate that respect in addressing your issue or asse
 The [issue tracker](https://github.com/OpenTTD/OpenTTD/issues) is the preferred channel for [bug reports](#bug-reports), but please respect the following restrictions:
 
 * Please **do not** use the issue tracker for help playing or using OpenTTD.
-Please try [irc](https://wiki.openttd.org/en/Development/IRC%20channel), or the [forums](https://www.tt-forums.net/)
+Please try [irc](https://wiki.openttd.org/en/Development/IRC%20channel), [Discord](https://discord.gg/openttd), or the [forums](https://www.tt-forums.net/)
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and respect the opinions of others.
 
@@ -23,7 +23,7 @@ Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to
 We reserve the right to delete comments which violate this rule.
 
 * Please **do not** open issues or pull requests regarding add-on content in NewGRF, GameScripts, AIs, etc.
-These are created by third-parties.  Please try [irc](https://wiki.openttd.org/en/Development/IRC%20channel) or the [forums](https://www.tt-forums.net/) to discuss these.
+These are created by third-parties.  Please try [irc](https://wiki.openttd.org/en/Development/IRC%20channel), [Discord](https://discord.gg/openttd), or the [forums](https://www.tt-forums.net/) to discuss these.
 
 * Please use [the web translator](https://translator.openttd.org/) to submit corrections and improvements to translations of the game.
 
@@ -108,11 +108,11 @@ Pull requests should fit with the [goals of the project](./CONTRIBUTING.md#proje
 
 Every pull request should have a clear scope, with no unrelated commits.
 
-[Code style](https://wiki.openttd.org/en/Development/Coding%20style) must be complied with for pull requests to be accepted; this also includes [commit message format](https://wiki.openttd.org/en/Development/Coding%20style#commit-message).
+[Code style](./CODINGSTYLE.md) must be complied with for pull requests to be accepted; this also includes [commit message format](./CODINGSTYLE.md#commit-message).
 
 Adhering to the following process is the best way to get your work included in the project:
 
-1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork, and configure the remotes:
+1. [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) the project, clone your fork, and configure the remotes:
 
 ```bash
 git clone https://github.com/<your-username>/OpenTTD.git openttd
@@ -136,7 +136,7 @@ contain your feature, change, or fix:
 git checkout upstream/master -b <topic-branch-name>
 ```
 
-4. Commit your changes in logical chunks. Please adhere to these [git commit message guidelines](https://wiki.openttd.org/en/Development/Coding%20style#commit-message) or your code is unlikely to be merged into the main project.
+4. Commit your changes in logical chunks. Please adhere to these [git commit message guidelines](./CODINGSTYLE.md#commit-message) or your code is unlikely to be merged into the main project.
 Use Git's [interactive rebase](https://docs.github.com/en/get-started/using-git/about-git-rebase) feature to tidy up your commits before making them public.
 
 5. Locally rebase the upstream development branch into your topic branch:
@@ -172,7 +172,7 @@ The results of the CI tests will show on your pull request.
 By clicking on Details you can further zoom in; in case of a failure it will show you why it failed.
 In case of success it will report how awesome you were.
 
-Tip: [commit message format](https://wiki.openttd.org/en/Development/Coding%20style#commit-message) is a common reason for pull requests to fail validation.
+Tip: [commit message format](./CODINGSTYLE.md#commit-message) is a common reason for pull requests to fail validation.
 
 
 ### Are there any development docs?
@@ -182,6 +182,16 @@ There is no single source for OpenTTD development docs. It's a complex project w
 A good entry point is [Development](https://wiki.openttd.org/en/Development/) on the OpenTTD wiki; this provides links to wiki documentation and other sources.
 
 The GitHub repo also includes some non-comprehensive documentation in [/docs](./docs).
+These include:
+- When to [change other languages and when not to](./docs/eints.md).
+- The [savegame format](./docs/savegame_format.md).
+- The [release process](./docs/releasing_openttd.md).
+- Some [notes on the link graph algorithm](./docs/linkgraph.md).
+- The [network game coordinator](./docs/game_coordinator.md).
+- How to use [the admin port for network games](./docs/admin_network.md), also useful for multiplayer server hosts.
+- The [performance metrics and logging features](./docs/logging_and_performance_metrics.md), also useful for add-on developers.
+- How [symbol server and analysis works](./docs/symbol_server.md).
+- And several miscellaneous files detailing internal data structures and graphics measurements and palettes.
 
 You may also want the guide to [compiling OpenTTD](./COMPILING.md).
 
@@ -256,7 +266,7 @@ This is inevitable, because it is a main feature of git.
 If you are concerned about your privacy, we strongly recommend to use "Anonymous &lt;anonymous@openttd.org&gt;" as the git commit author. We might refuse anonymous contributions if malicious intent is suspected.
 
 Please note that the contributor identity, once given, is used for copyright verification and to provide proof should a malicious commit be made.
-As such, the [EU GDPR](https://www.eugdpr.org/key-changes.html) "right to be forgotten" does not apply, as this is an overriding legitimate interest.
+As such, the [EU GDPR](https://gdpr.eu) "right to be forgotten" does not apply, as this is an overriding legitimate interest.
 
 Please also note that your commit is public and as such will potentially be processed by many third-parties.
 Git's distributed nature makes it impossible to track where exactly your commit, and thus your personal data, will be stored and be processed.

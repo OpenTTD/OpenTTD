@@ -26,12 +26,12 @@ static std::vector<HotkeyList*> *_hotkey_lists = nullptr;
 
 /** String representation of a keycode */
 struct KeycodeNames {
-	const char *name;       ///< Name of the keycode
+	const std::string_view name; ///< Name of the keycode
 	WindowKeyCodes keycode; ///< The keycode
 };
 
 /** Array of non-standard keycodes that can be used in the hotkeys config file. */
-static const KeycodeNames _keycode_to_name[] = {
+static const std::initializer_list<KeycodeNames> _keycode_to_name = {
 	{"SHIFT", WKC_SHIFT},
 	{"CTRL", WKC_CTRL},
 	{"ALT", WKC_ALT},
@@ -94,20 +94,21 @@ static const KeycodeNames _keycode_to_name[] = {
  * @param end End of the string to parse.
  * @return A keycode if a match is found or 0.
  */
-static uint16 ParseCode(const char *start, const char *end)
+static uint16_t ParseCode(const char *start, const char *end)
 {
 	assert(start <= end);
 	while (start < end && *start == ' ') start++;
 	while (end > start && *end == ' ') end--;
-	for (uint i = 0; i < lengthof(_keycode_to_name); i++) {
-		if (strlen(_keycode_to_name[i].name) == (size_t)(end - start) && strncasecmp(start, _keycode_to_name[i].name, end - start) == 0) {
-			return _keycode_to_name[i].keycode;
+	std::string_view str{start, end};
+	for (const auto &kn : _keycode_to_name) {
+		if (StrEqualsIgnoreCase(str, kn.name)) {
+			return kn.keycode;
 		}
 	}
 	if (end - start == 1) {
 		if (*start >= 'a' && *start <= 'z') return *start - ('a'-'A');
 		/* Ignore invalid keycodes */
-		if (*(const uint8 *)start < 128) return *start;
+		if (*(const uint8_t *)start < 128) return *start;
 	}
 	return 0;
 }
@@ -118,14 +119,14 @@ static uint16 ParseCode(const char *start, const char *end)
  * @param end End of the input.
  * @return A valid keycode or 0.
  */
-static uint16 ParseKeycode(const char *start, const char *end)
+static uint16_t ParseKeycode(const char *start, const char *end)
 {
 	assert(start <= end);
-	uint16 keycode = 0;
+	uint16_t keycode = 0;
 	for (;;) {
 		const char *cur = start;
 		while (*cur != '+' && cur != end) cur++;
-		uint16 code = ParseCode(start, cur);
+		uint16_t code = ParseCode(start, cur);
 		if (code == 0) return 0;
 		if (code & WKC_SPECIAL_KEYS) {
 			/* Some completely wrong keycode we don't support. */
@@ -148,14 +149,14 @@ static uint16 ParseKeycode(const char *start, const char *end)
  * @param hotkey The hotkey object to add the keycodes to
  * @param value The string to parse
  */
-static void ParseHotkeys(Hotkey *hotkey, const char *value)
+static void ParseHotkeys(Hotkey &hotkey, const char *value)
 {
 	const char *start = value;
 	while (*start != '\0') {
 		const char *end = start;
 		while (*end != '\0' && *end != ',') end++;
-		uint16 keycode = ParseKeycode(start, end);
-		if (keycode != 0) hotkey->AddKeycode(keycode);
+		uint16_t keycode = ParseKeycode(start, end);
+		if (keycode != 0) hotkey.AddKeycode(keycode);
 		start = (*end == ',') ? end + 1: end;
 	}
 }
@@ -166,53 +167,41 @@ static void ParseHotkeys(Hotkey *hotkey, const char *value)
  * by a '+'.
  * @param keycode The keycode to convert to a string.
  * @return A string representation of this keycode.
- * @note The return value is a static buffer, stredup the result before calling
- *  this function again.
  */
-static const char *KeycodeToString(uint16 keycode)
+static std::string KeycodeToString(uint16_t keycode)
 {
-	static char buf[32];
-	buf[0] = '\0';
-	bool first = true;
+	std::string str;
 	if (keycode & WKC_GLOBAL_HOTKEY) {
-		strecat(buf, "GLOBAL", lastof(buf));
-		first = false;
+		str += "GLOBAL";
 	}
 	if (keycode & WKC_SHIFT) {
-		if (!first) strecat(buf, "+", lastof(buf));
-		strecat(buf, "SHIFT", lastof(buf));
-		first = false;
+		if (!str.empty()) str += "+";
+		str += "SHIFT";
 	}
 	if (keycode & WKC_CTRL) {
-		if (!first) strecat(buf, "+", lastof(buf));
-		strecat(buf, "CTRL", lastof(buf));
-		first = false;
+		if (!str.empty()) str += "+";
+		str += "CTRL";
 	}
 	if (keycode & WKC_ALT) {
-		if (!first) strecat(buf, "+", lastof(buf));
-		strecat(buf, "ALT", lastof(buf));
-		first = false;
+		if (!str.empty()) str += "+";
+		str += "ALT";
 	}
 	if (keycode & WKC_META) {
-		if (!first) strecat(buf, "+", lastof(buf));
-		strecat(buf, "META", lastof(buf));
-		first = false;
+		if (!str.empty()) str += "+";
+		str += "META";
 	}
-	if (!first) strecat(buf, "+", lastof(buf));
+	if (!str.empty()) str += "+";
 	keycode = keycode & ~WKC_SPECIAL_KEYS;
 
-	for (uint i = 0; i < lengthof(_keycode_to_name); i++) {
-		if (_keycode_to_name[i].keycode == keycode) {
-			strecat(buf, _keycode_to_name[i].name, lastof(buf));
-			return buf;
+	for (const auto &kn : _keycode_to_name) {
+		if (kn.keycode == keycode) {
+			str += kn.name;
+			return str;
 		}
 	}
 	assert(keycode < 128);
-	char key[2];
-	key[0] = keycode;
-	key[1] = '\0';
-	strecat(buf, key, lastof(buf));
-	return buf;
+	str.push_back(keycode);
+	return str;
 }
 
 /**
@@ -220,19 +209,15 @@ static const char *KeycodeToString(uint16 keycode)
  * keycodes are attached to the hotkey they are split by a comma.
  * @param hotkey The keycodes of this hotkey need to be converted to a string.
  * @return A string representation of all keycodes.
- * @note The return value is a static buffer, stredup the result before calling
- *  this function again.
  */
-const char *SaveKeycodes(const Hotkey *hotkey)
+std::string SaveKeycodes(const Hotkey &hotkey)
 {
-	static char buf[128];
-	buf[0] = '\0';
-	for (uint i = 0; i < hotkey->keycodes.size(); i++) {
-		const char *str = KeycodeToString(hotkey->keycodes[i]);
-		if (i > 0) strecat(buf, ",", lastof(buf));
-		strecat(buf, str, lastof(buf));
+	std::string str;
+	for (auto keycode : hotkey.keycodes) {
+		if (!str.empty()) str += ",";
+		str += KeycodeToString(keycode);
 	}
-	return buf;
+	return str;
 }
 
 /**
@@ -241,7 +226,7 @@ const char *SaveKeycodes(const Hotkey *hotkey)
  * @param name The name of this hotkey.
  * @param num Number of this hotkey, should be unique within the hotkey list.
  */
-Hotkey::Hotkey(uint16 default_keycode, const char *name, int num) :
+Hotkey::Hotkey(uint16_t default_keycode, const std::string &name, int num) :
 	name(name),
 	num(num)
 {
@@ -254,14 +239,12 @@ Hotkey::Hotkey(uint16 default_keycode, const char *name, int num) :
  * @param name The name of this hotkey.
  * @param num Number of this hotkey, should be unique within the hotkey list.
  */
-Hotkey::Hotkey(const uint16 *default_keycodes, const char *name, int num) :
+Hotkey::Hotkey(const std::vector<uint16_t> &default_keycodes, const std::string &name, int num) :
 	name(name),
 	num(num)
 {
-	const uint16 *keycode = default_keycodes;
-	while (*keycode != 0) {
-		this->AddKeycode(*keycode);
-		keycode++;
+	for (uint16_t keycode : default_keycodes) {
+		this->AddKeycode(keycode);
 	}
 }
 
@@ -270,12 +253,12 @@ Hotkey::Hotkey(const uint16 *default_keycodes, const char *name, int num) :
  * in addition to any previously added keycodes.
  * @param keycode The keycode to add.
  */
-void Hotkey::AddKeycode(uint16 keycode)
+void Hotkey::AddKeycode(uint16_t keycode)
 {
-	include(this->keycodes, keycode);
+	this->keycodes.insert(keycode);
 }
 
-HotkeyList::HotkeyList(const char *ini_group, Hotkey *items, GlobalHotkeyHandlerFunc global_hotkey_handler) :
+HotkeyList::HotkeyList(const std::string &ini_group, const std::vector<Hotkey> &items, GlobalHotkeyHandlerFunc global_hotkey_handler) :
 	global_hotkey_handler(global_hotkey_handler), ini_group(ini_group), items(items)
 {
 	if (_hotkey_lists == nullptr) _hotkey_lists = new std::vector<HotkeyList*>();
@@ -291,13 +274,14 @@ HotkeyList::~HotkeyList()
  * Load HotkeyList from IniFile.
  * @param ini IniFile to load from.
  */
-void HotkeyList::Load(IniFile *ini)
+void HotkeyList::Load(const IniFile &ini)
 {
-	IniGroup *group = ini->GetGroup(this->ini_group);
-	for (Hotkey *hotkey = this->items; hotkey->name != nullptr; ++hotkey) {
-		IniItem *item = group->GetItem(hotkey->name, false);
+	const IniGroup *group = ini.GetGroup(this->ini_group);
+	if (group == nullptr) return;
+	for (Hotkey &hotkey : this->items) {
+		const IniItem *item = group->GetItem(hotkey.name);
 		if (item != nullptr) {
-			hotkey->keycodes.clear();
+			hotkey.keycodes.clear();
 			if (item->value.has_value()) ParseHotkeys(hotkey, item->value->c_str());
 		}
 	}
@@ -307,12 +291,12 @@ void HotkeyList::Load(IniFile *ini)
  * Save HotkeyList to IniFile.
  * @param ini IniFile to save to.
  */
-void HotkeyList::Save(IniFile *ini) const
+void HotkeyList::Save(IniFile &ini) const
 {
-	IniGroup *group = ini->GetGroup(this->ini_group);
-	for (const Hotkey *hotkey = this->items; hotkey->name != nullptr; ++hotkey) {
-		IniItem *item = group->GetItem(hotkey->name, true);
-		item->SetValue(SaveKeycodes(hotkey));
+	IniGroup &group = ini.GetOrCreateGroup(this->ini_group);
+	for (const Hotkey &hotkey : this->items) {
+		IniItem &item = group.GetOrCreateItem(hotkey.name);
+		item.SetValue(SaveKeycodes(hotkey));
 	}
 }
 
@@ -322,13 +306,13 @@ void HotkeyList::Save(IniFile *ini) const
  * @param global_only Limit the search to hotkeys defined as 'global'.
  * @return The number of the matching hotkey or -1.
  */
-int HotkeyList::CheckMatch(uint16 keycode, bool global_only) const
+int HotkeyList::CheckMatch(uint16_t keycode, bool global_only) const
 {
-	for (const Hotkey *list = this->items; list->name != nullptr; ++list) {
-		auto begin = list->keycodes.begin();
-		auto end = list->keycodes.end();
+	for (const Hotkey &hotkey : this->items) {
+		auto begin = hotkey.keycodes.begin();
+		auto end = hotkey.keycodes.end();
 		if (std::find(begin, end, keycode | WKC_GLOBAL_HOTKEY) != end || (!global_only && std::find(begin, end, keycode) != end)) {
-			return list->num;
+			return hotkey.num;
 		}
 	}
 	return -1;
@@ -337,8 +321,8 @@ int HotkeyList::CheckMatch(uint16 keycode, bool global_only) const
 
 static void SaveLoadHotkeys(bool save)
 {
-	IniFile *ini = new IniFile();
-	ini->LoadFromDisk(_hotkeys_file, NO_DIRECTORY);
+	IniFile ini{};
+	ini.LoadFromDisk(_hotkeys_file, NO_DIRECTORY);
 
 	for (HotkeyList *list : *_hotkey_lists) {
 		if (save) {
@@ -348,8 +332,7 @@ static void SaveLoadHotkeys(bool save)
 		}
 	}
 
-	if (save) ini->SaveToDisk(_hotkeys_file);
-	delete ini;
+	if (save) ini.SaveToDisk(_hotkeys_file);
 }
 
 
@@ -365,7 +348,7 @@ void SaveHotkeysToConfig()
 	SaveLoadHotkeys(true);
 }
 
-void HandleGlobalHotkeys(WChar key, uint16 keycode)
+void HandleGlobalHotkeys([[maybe_unused]] char32_t key, uint16_t keycode)
 {
 	for (HotkeyList *list : *_hotkey_lists) {
 		if (list->global_hotkey_handler == nullptr) continue;

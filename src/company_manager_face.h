@@ -54,9 +54,9 @@ DECLARE_POSTFIX_INCREMENT(CompanyManagerFaceVariable)
 
 /** Information about the valid values of CompanyManagerFace bitgroups as well as the sprites to draw */
 struct CompanyManagerFaceBitsInfo {
-	byte     offset;               ///< Offset in bits into the CompanyManagerFace
-	byte     length;               ///< Number of bits used in the CompanyManagerFace
-	byte     valid_values[GE_END]; ///< The number of valid values per gender/ethnicity
+	uint8_t     offset;               ///< Offset in bits into the CompanyManagerFace
+	uint8_t     length;               ///< Number of bits used in the CompanyManagerFace
+	uint8_t     valid_values[GE_END]; ///< The number of valid values per gender/ethnicity
 	SpriteID first_sprite[GE_END]; ///< The first sprite per gender/ethnicity
 };
 
@@ -93,7 +93,7 @@ static_assert(lengthof(_cmf_info) == CMFV_END);
  * @pre _cmf_info[cmfv].valid_values[ge] != 0
  * @return the requested bits
  */
-static inline uint GetCompanyManagerFaceBits(CompanyManagerFace cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge)
+inline uint GetCompanyManagerFaceBits(CompanyManagerFace cmf, CompanyManagerFaceVariable cmfv, [[maybe_unused]] GenderEthnicity ge)
 {
 	assert(_cmf_info[cmfv].valid_values[ge] != 0);
 
@@ -108,7 +108,7 @@ static inline uint GetCompanyManagerFaceBits(CompanyManagerFace cmf, CompanyMana
  * @param val  the new value
  * @pre val < _cmf_info[cmfv].valid_values[ge]
  */
-static inline void SetCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge, uint val)
+inline void SetCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyManagerFaceVariable cmfv, [[maybe_unused]] GenderEthnicity ge, uint val)
 {
 	assert(val < _cmf_info[cmfv].valid_values[ge]);
 
@@ -127,9 +127,9 @@ static inline void SetCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyMan
  *
  * @pre 0 <= val < _cmf_info[cmfv].valid_values[ge]
  */
-static inline void IncreaseCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge, int8 amount)
+inline void IncreaseCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge, int8_t amount)
 {
-	int8 val = GetCompanyManagerFaceBits(cmf, cmfv, ge) + amount; // the new value for the cmfv
+	int8_t val = GetCompanyManagerFaceBits(cmf, cmfv, ge) + amount; // the new value for the cmfv
 
 	/* scales the new value to the correct scope */
 	if (val >= _cmf_info[cmfv].valid_values[ge]) {
@@ -148,7 +148,7 @@ static inline void IncreaseCompanyManagerFaceBits(CompanyManagerFace &cmf, Compa
  * @param ge   the gender and ethnicity of the face
  * @return true if and only if the bits are valid
  */
-static inline bool AreCompanyManagerFaceBitsValid(CompanyManagerFace cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge)
+inline bool AreCompanyManagerFaceBitsValid(CompanyManagerFace cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge)
 {
 	return GB(cmf, _cmf_info[cmfv].offset, _cmf_info[cmfv].length) < _cmf_info[cmfv].valid_values[ge];
 }
@@ -161,7 +161,7 @@ static inline bool AreCompanyManagerFaceBitsValid(CompanyManagerFace cmf, Compan
  * @pre val < (1U << _cmf_info[cmfv].length), i.e. val has a value of 0..2^(bits used for this variable)-1
  * @return the scaled value
  */
-static inline uint ScaleCompanyManagerFaceValue(CompanyManagerFaceVariable cmfv, GenderEthnicity ge, uint val)
+inline uint ScaleCompanyManagerFaceValue(CompanyManagerFaceVariable cmfv, GenderEthnicity ge, uint val)
 {
 	assert(val < (1U << _cmf_info[cmfv].length));
 
@@ -173,7 +173,7 @@ static inline uint ScaleCompanyManagerFaceValue(CompanyManagerFaceVariable cmfv,
  *
  * @param cmf the company manager's face to write the bits to
  */
-static inline void ScaleAllCompanyManagerFaceBits(CompanyManagerFace &cmf)
+inline void ScaleAllCompanyManagerFaceBits(CompanyManagerFace &cmf)
 {
 	IncreaseCompanyManagerFaceBits(cmf, CMFV_ETHNICITY, GE_WM, 0); // scales the ethnicity
 
@@ -203,7 +203,7 @@ static inline void ScaleAllCompanyManagerFaceBits(CompanyManagerFace &cmf)
  *
  * @pre scale 'ge' to a valid gender/ethnicity combination
  */
-static inline void RandomCompanyManagerFaceBits(CompanyManagerFace &cmf, GenderEthnicity ge, bool adv, Randomizer &randomizer)
+inline void RandomCompanyManagerFaceBits(CompanyManagerFace &cmf, GenderEthnicity ge, bool adv, Randomizer &randomizer)
 {
 	cmf = randomizer.Next(); // random all company manager's face bits
 
@@ -229,13 +229,13 @@ static inline void RandomCompanyManagerFaceBits(CompanyManagerFace &cmf, GenderE
  * @pre _cmf_info[cmfv].valid_values[ge] != 0
  * @return sprite to draw
  */
-static inline SpriteID GetCompanyManagerFaceSprite(CompanyManagerFace cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge)
+inline SpriteID GetCompanyManagerFaceSprite(CompanyManagerFace cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge)
 {
 	assert(_cmf_info[cmfv].valid_values[ge] != 0);
 
 	return _cmf_info[cmfv].first_sprite[ge] + GB(cmf, _cmf_info[cmfv].offset, _cmf_info[cmfv].length);
 }
 
-void DrawCompanyManagerFace(CompanyManagerFace face, int colour, int x, int y);
+void DrawCompanyManagerFace(CompanyManagerFace face, Colours colour, const Rect &r);
 
 #endif /* COMPANY_MANAGER_FACE_H */

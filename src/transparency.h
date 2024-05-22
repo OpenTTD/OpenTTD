@@ -28,7 +28,7 @@ enum TransparencyOption {
 	TO_BRIDGES,    ///< bridges
 	TO_STRUCTURES, ///< other objects such as transmitters and lighthouses
 	TO_CATENARY,   ///< catenary
-	TO_LOADING,    ///< loading indicators
+	TO_TEXT,       ///< loading and cost/income text
 	TO_END,
 	TO_INVALID,    ///< Invalid transparency option
 };
@@ -37,7 +37,7 @@ typedef uint TransparencyOptionBits; ///< transparency option bits
 extern TransparencyOptionBits _transparency_opt;
 extern TransparencyOptionBits _transparency_lock;
 extern TransparencyOptionBits _invisibility_opt;
-extern byte _display_opt;
+extern uint8_t _display_opt;
 
 /**
  * Check if the transparency option bit is set
@@ -45,7 +45,7 @@ extern byte _display_opt;
  *
  * @param to the structure which transparency option is ask for
  */
-static inline bool IsTransparencySet(TransparencyOption to)
+inline bool IsTransparencySet(TransparencyOption to)
 {
 	return (HasBit(_transparency_opt, to) && _game_mode != GM_MENU);
 }
@@ -56,7 +56,7 @@ static inline bool IsTransparencySet(TransparencyOption to)
  *
  * @param to the structure which invisibility option is ask for
  */
-static inline bool IsInvisibilitySet(TransparencyOption to)
+inline bool IsInvisibilitySet(TransparencyOption to)
 {
 	return (HasBit(_transparency_opt & _invisibility_opt, to) && _game_mode != GM_MENU);
 }
@@ -66,7 +66,7 @@ static inline bool IsInvisibilitySet(TransparencyOption to)
  *
  * @param to the transparency option to be toggled
  */
-static inline void ToggleTransparency(TransparencyOption to)
+inline void ToggleTransparency(TransparencyOption to)
 {
 	ToggleBit(_transparency_opt, to);
 }
@@ -76,7 +76,7 @@ static inline void ToggleTransparency(TransparencyOption to)
  *
  * @param to the structure which invisibility option is toggle
  */
-static inline void ToggleInvisibility(TransparencyOption to)
+inline void ToggleInvisibility(TransparencyOption to)
 {
 	ToggleBit(_invisibility_opt, to);
 }
@@ -88,7 +88,7 @@ static inline void ToggleInvisibility(TransparencyOption to)
  *
  * @param to the object type which invisibility option to toggle
  */
-static inline void ToggleInvisibilityWithTransparency(TransparencyOption to)
+inline void ToggleInvisibilityWithTransparency(TransparencyOption to)
 {
 	if (IsInvisibilitySet(to)) {
 		ClrBit(_invisibility_opt, to);
@@ -104,13 +104,13 @@ static inline void ToggleInvisibilityWithTransparency(TransparencyOption to)
  *
  * @param to the transparency option to be locked or unlocked
  */
-static inline void ToggleTransparencyLock(TransparencyOption to)
+inline void ToggleTransparencyLock(TransparencyOption to)
 {
 	ToggleBit(_transparency_lock, to);
 }
 
 /** Set or clear all non-locked transparency options */
-static inline void ResetRestoreAllTransparency()
+inline void ResetRestoreAllTransparency()
 {
 	/* if none of the non-locked options are set */
 	if ((_transparency_opt & ~_transparency_lock) == 0) {

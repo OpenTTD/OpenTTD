@@ -20,7 +20,35 @@
  */
 class ScriptVehicleList : public ScriptList {
 public:
+#ifdef DOXYGEN_API
 	ScriptVehicleList();
+
+	/**
+	 * Apply a filter when building the list.
+	 * @param filter_function The function which will be doing the filtering.
+	 * @param ... The params to give to the filters (minus the first param,
+	 *  which is always the index-value).
+	 * @note You can write your own filters and use them. Just remember that
+	 *  the first parameter should be the index-value, and it should return
+	 *  a bool.
+	 * @note Example:
+	 * @code
+	 *  local vehs_in_depot = ScriptVehicleList(ScriptVehicle.IsInDepot);
+	 *
+	 *  function IsType(vehicle_id, type)
+	 *  {
+	 *    return ScriptVehicle.GetVehicleType(vehicle_id) == type;
+	 *  }
+	 *  local road_vehs = ScriptVehicleList(IsType, ScriptVehicle.VT_ROAD);
+	 * @endcode
+	 */
+	ScriptVehicleList(function filter_function, ...);
+#else
+	/**
+	 * The constructor wrapper from Squirrel.
+	 */
+	ScriptVehicleList(HSQUIRRELVM vm);
+#endif /* DOXYGEN_API */
 };
 
 /**
@@ -69,26 +97,28 @@ public:
 
 /**
  * Creates a list of vehicles that are in a group.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptVehicleList_Group : public ScriptList {
 public:
 	/**
 	 * @param group_id The ID of the group the vehicles are in.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 */
 	ScriptVehicleList_Group(GroupID group_id);
 };
 
 /**
  * Creates a list of vehicles that are in the default group.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptVehicleList_DefaultGroup : public ScriptList {
 public:
 	/**
 	 * @param vehicle_type The VehicleType to get the list of vehicles for.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 */
 	ScriptVehicleList_DefaultGroup(ScriptVehicle::VehicleType vehicle_type);
 };

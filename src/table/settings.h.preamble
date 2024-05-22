@@ -10,6 +10,8 @@
 /* Callback function used in _settings[] as well as _company_settings[] */
 static size_t ConvertLandscape(const char *value);
 
+static StringID SettingTitleWallclock(const IntSettingDesc &sd);
+static StringID SettingHelpWallclock(const IntSettingDesc &sd);
 
 /****************************
  * OTTD specific INI stuff
@@ -36,7 +38,7 @@ static size_t ConvertLandscape(const char *value);
  *
  * The something part defines the type of variable to store. There are a
  * lot of types. Easy ones are:
- * - VAR:  any number type, 'type' field specifies what number. eg int8 or uint32
+ * - VAR:  any number type, 'type' field specifies what number. eg int8_t or uint32
  * - BOOL: a boolean number type
  * - STR:  a string or character. 'type' field specifies what string. Normal, string, or quoted
  * A bit more difficult to use are MMANY (meaning ManyOfMany) and OMANY (OneOfMany)
@@ -56,11 +58,11 @@ static size_t ConvertLandscape(const char *value);
 
 /* Macros for various objects to go in the configuration file.
  * This section is for global variables */
-#define SDTG_VAR(name, type, flags, var, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
-	NSD(Int, SLEG_GENERAL(name, SL_VAR, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback)
+#define SDTG_VAR(name, type, flags, var, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
+	NSD(Int, SLEG_GENERAL(name, SL_VAR, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
 
-#define SDTG_BOOL(name, flags, var, def, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
-	NSD(Bool, SLEG_GENERAL(name, SL_VAR, var, SLE_BOOL, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback)
+#define SDTG_BOOL(name, flags, var, def, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
+	NSD(Bool, SLEG_GENERAL(name, SL_VAR, var, SLE_BOOL, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
 
 #define SDTG_LIST(name, type, flags, var, def, length, from, to, cat, extra, startup)\
 	NSD(List, SLEG_GENERAL(name, SL_ARR, var, type, length, from, to, extra),flags, startup, def)
@@ -68,22 +70,22 @@ static size_t ConvertLandscape(const char *value);
 #define SDTG_SSTR(name, type, flags, var, def, max_length, pre_check, post_callback, from, to, cat, extra, startup)\
 	NSD(String, SLEG_GENERAL(name, SL_STDSTR, var, type, sizeof(var), from, to, extra), flags, startup, def, max_length, pre_check, post_callback)
 
-#define SDTG_OMANY(name, type, flags, var, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
-	NSD(OneOfMany, SLEG_GENERAL(name, SL_VAR, var, type, 1, from, to, extra), flags, startup, def, max, str, strhelp, strval, cat, pre_check, post_callback, full, nullptr)
+#define SDTG_OMANY(name, type, flags, var, def, max, full, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
+	NSD(OneOfMany, SLEG_GENERAL(name, SL_VAR, var, type, 1, from, to, extra), flags, startup, def, max, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, full, nullptr)
 
-#define SDTG_MMANY(name, type, flags, var, def, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
-	NSD(ManyOfMany, SLEG_GENERAL(name, SL_VAR, var, type, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, full, nullptr)
+#define SDTG_MMANY(name, type, flags, var, def, full, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
+	NSD(ManyOfMany, SLEG_GENERAL(name, SL_VAR, var, type, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, full, nullptr)
 
 /* Macros for various objects to go in the configuration file.
  * This section is for structures where their various members are saved */
-#define SDT_VAR(base, var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
-	NSD(Int, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback)
+#define SDT_VAR(base, var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
+	NSD(Int, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
 
-#define SDT_VAR_NAME(base, var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup, name)\
-	NSD(Int, SLE_GENERAL_NAME(SL_VAR, name, base, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback)
+#define SDT_VAR_NAME(base, var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup, name)\
+	NSD(Int, SLE_GENERAL_NAME(SL_VAR, name, base, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
 
-#define SDT_BOOL(base, var, flags, def, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
-	NSD(Bool, SLE_GENERAL(SL_VAR, base, var, SLE_BOOL, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback)
+#define SDT_BOOL(base, var, flags, def, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
+	NSD(Bool, SLE_GENERAL(SL_VAR, base, var, SLE_BOOL, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
 
 #define SDT_LIST(base, var, type, flags, def, from, to, cat, extra, startup)\
 	NSD(List, SLE_GENERAL(SL_ARR, base, var, type, lengthof(((base*)8)->var), from, to, extra), flags, startup, def)
@@ -91,18 +93,18 @@ static size_t ConvertLandscape(const char *value);
 #define SDT_SSTR(base, var, type, flags, def, pre_check, post_callback, from, to, cat, extra, startup)\
 	NSD(String, SLE_GENERAL(SL_STDSTR, base, var, type, sizeof(((base*)8)->var), from, to, extra), flags, startup, def, 0, pre_check, post_callback)
 
-#define SDT_OMANY(base, var, type, flags, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, load, cat, extra, startup)\
-	NSD(OneOfMany, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, max, str, strhelp, strval, cat, pre_check, post_callback, full, load)
+#define SDT_OMANY(base, var, type, flags, def, max, full, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, load, cat, extra, startup)\
+	NSD(OneOfMany, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, max, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, full, load)
 
-#define SDT_MMANY(base, var, type, flags, def, full, str, pre_check, post_callback, strhelp, strval, from, to, cat, extra, startup)\
-	NSD(ManyOfMany, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, full, nullptr)
+#define SDT_MMANY(base, var, type, flags, def, full, str, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, strhelp, strval, from, to, cat, extra, startup)\
+	NSD(ManyOfMany, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, full, nullptr)
 
 
-#define SDTC_VAR(var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
-	SDTG_VAR(#var, type, flags, _settings_client.var, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)
+#define SDTC_VAR(var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
+	SDTG_VAR(#var, type, flags, _settings_client.var, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)
 
-#define SDTC_BOOL(var, flags, def, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
-	SDTG_BOOL(#var, flags, _settings_client.var, def, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)
+#define SDTC_BOOL(var, flags, def, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
+	SDTG_BOOL(#var, flags, _settings_client.var, def, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)
 
 #define SDTC_LIST(var, type, flags, def, from, to, cat, extra, startup)\
 	SDTG_LIST(#var, type, flags, _settings_client.var, def, lengthof(_settings_client.var), from, to, cat, extra, startup)
@@ -110,5 +112,5 @@ static size_t ConvertLandscape(const char *value);
 #define SDTC_SSTR(var, type, flags, def, max_length, pre_check, post_callback, from, to, cat, extra, startup)\
 	SDTG_SSTR(#var, type, flags, _settings_client.var, def, max_length, pre_check, post_callback, from, to, cat, extra, startup)\
 
-#define SDTC_OMANY(var, type, flags, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
-	SDTG_OMANY(#var, type, flags, _settings_client.var, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)
+#define SDTC_OMANY(var, type, flags, def, max, full, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
+	SDTG_OMANY(#var, type, flags, _settings_client.var, def, max, full, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)

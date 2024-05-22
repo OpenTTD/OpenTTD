@@ -19,12 +19,12 @@ extern GoalPool _goal_pool;
 
 /** Struct about goals, current and completed */
 struct Goal : GoalPool::PoolItem<&_goal_pool> {
-	CompanyID company; ///< Goal is for a specific company; INVALID_COMPANY if it is global
-	GoalType type;     ///< Type of the goal
-	GoalTypeID dst;    ///< Index of type
-	char *text;        ///< Text of the goal.
-	char *progress;    ///< Progress text of the goal.
-	bool completed;    ///< Is the goal completed or not?
+	CompanyID company;    ///< Goal is for a specific company; INVALID_COMPANY if it is global
+	GoalType type;        ///< Type of the goal
+	GoalTypeID dst;       ///< Index of type
+	std::string text;     ///< Text of the goal.
+	std::string progress; ///< Progress text of the goal.
+	bool completed;       ///< Is the goal completed or not?
 
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
@@ -34,7 +34,9 @@ struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
-	inline ~Goal() { free(this->text); free(this->progress); }
+	inline ~Goal() { }
+
+	static bool IsValidGoalDestination(CompanyID company, GoalType type, GoalTypeID dest);
 };
 
 #endif /* GOAL_BASE_H */

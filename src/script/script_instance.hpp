@@ -11,9 +11,9 @@
 #define SCRIPT_INSTANCE_HPP
 
 #include <variant>
-#include <list>
 #include <squirrel.h>
 #include "script_suspend.hpp"
+#include "script_log_types.hpp"
 
 #include "../command_type.h"
 #include "../company_type.h"
@@ -54,14 +54,14 @@ public:
 	 * @param instance_name The name of the instance out of the script to load.
 	 * @param company Which company this script is serving.
 	 */
-	void Initialize(const char *main_script, const char *instance_name, CompanyID company);
+	void Initialize(const std::string &main_script, const std::string &instance_name, CompanyID company);
 
 	/**
 	 * Get the value of a setting of the current instance.
 	 * @param name The name of the setting.
 	 * @return the value for the setting, or -1 if the setting is not known.
 	 */
-	virtual int GetSetting(const char *name) = 0;
+	virtual int GetSetting(const std::string &name) = 0;
 
 	/**
 	 * Find a library.
@@ -69,7 +69,7 @@ public:
 	 * @param version The version the library should have.
 	 * @return The library if found, nullptr otherwise.
 	 */
-	virtual class ScriptInfo *FindLibrary(const char *library, int version) = 0;
+	virtual class ScriptInfo *FindLibrary(const std::string &library, int version) = 0;
 
 	/**
 	 * A script in multiplayer waits for the server to handle its DoCommand.
@@ -95,7 +95,7 @@ public:
 	/**
 	 * Get the log pointer of this script.
 	 */
-	void *GetLogPointer();
+	ScriptLogTypes::LogData &GetLogData();
 
 	/**
 	 * Return a true/false reply for a DoCommand.
@@ -151,6 +151,11 @@ public:
 	 * Return the "this script died" value
 	 */
 	inline bool IsDead() const { return this->is_dead; }
+
+	/**
+	 * Return whether the script is alive.
+	 */
+	inline bool IsAlive() const { return !this->IsDead() && !this->in_shutdown; }
 
 	/**
 	 * Call the script Save function and save all data in the savegame.
@@ -247,7 +252,7 @@ public:
 
 protected:
 	class Squirrel *engine;               ///< A wrapper around the squirrel vm.
-	const char *versionAPI;               ///< Current API used by this script.
+	std::string versionAPI;               ///< Current API used by this script.
 
 	/**
 	 * Register all API functions to the VM.
@@ -260,7 +265,7 @@ protected:
 	 * @param dir Subdirectory to find the scripts in
 	 * @return true iff script loading should proceed
 	 */
-	bool LoadCompatibilityScripts(const char *api_version, Subdirectory dir);
+	bool LoadCompatibilityScripts(const std::string &api_version, Subdirectory dir);
 
 	/**
 	 * Tell the script it died.

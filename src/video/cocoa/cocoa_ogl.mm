@@ -185,10 +185,10 @@ static bool _allowSoftware;
 static FVideoDriver_CocoaOpenGL iFVideoDriver_CocoaOpenGL;
 
 
-const char *VideoDriver_CocoaOpenGL::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_CocoaOpenGL::Start(const StringList &param)
 {
-	const char *err = this->Initialize();
-	if (err != nullptr) return err;
+	auto err = this->Initialize();
+	if (err) return err;
 
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 	if (bpp != 8 && bpp != 32) {
@@ -198,7 +198,7 @@ const char *VideoDriver_CocoaOpenGL::Start(const StringList &param)
 
 	/* Try to allocate GL context. */
 	err = this->AllocateContext(GetDriverParamBool(param, "software"));
-	if (err != nullptr) {
+	if (err) {
 		this->Stop();
 		return err;
 	}
@@ -224,7 +224,7 @@ const char *VideoDriver_CocoaOpenGL::Start(const StringList &param)
 
 	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 
-	return nullptr;
+	return std::nullopt;
 
 }
 
@@ -252,7 +252,7 @@ void VideoDriver_CocoaOpenGL::ClearSystemSprites()
 	OpenGLBackend::Get()->ClearCursorCache();
 }
 
-const char *VideoDriver_CocoaOpenGL::AllocateContext(bool allow_software)
+std::optional<std::string_view> VideoDriver_CocoaOpenGL::AllocateContext(bool allow_software)
 {
 	[ OTTD_CGLLayer setAllowSoftware:allow_software ];
 

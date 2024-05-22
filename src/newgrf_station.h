@@ -36,28 +36,27 @@ struct StationScopeResolver : public ScopeResolver {
 	 * @param tile %Tile of the station.
 	 */
 	StationScopeResolver(ResolverObject &ro, const StationSpec *statspec, BaseStation *st, TileIndex tile)
-		: ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo_type(CT_INVALID), axis(INVALID_AXIS)
+		: ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo_type(INVALID_CARGO), axis(INVALID_AXIS)
 	{
 	}
 
-	uint32 GetRandomBits() const override;
-	uint32 GetTriggers() const override;
+	uint32_t GetRandomBits() const override;
+	uint32_t GetTriggers() const override;
 
-	uint32 GetVariable(byte variable, uint32 parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const override;
 };
 
 /** Station resolver. */
 struct StationResolverObject : public ResolverObject {
 	StationScopeResolver station_scope; ///< The station scope resolver.
-	TownScopeResolver *town_scope;      ///< The town scope resolver (created on the first call).
+	std::optional<TownScopeResolver> town_scope = std::nullopt; ///< The town scope resolver (created on the first call).
 
 	StationResolverObject(const StationSpec *statspec, BaseStation *st, TileIndex tile,
-			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
-	~StationResolverObject();
+			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
 	TownScopeResolver *GetTown();
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF:
@@ -66,7 +65,7 @@ struct StationResolverObject : public ResolverObject {
 			case VSG_SCOPE_PARENT: {
 				TownScopeResolver *tsr = this->GetTown();
 				if (tsr != nullptr) return tsr;
-				FALLTHROUGH;
+				[[fallthrough]];
 			}
 
 			default:
@@ -77,16 +76,18 @@ struct StationResolverObject : public ResolverObject {
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetDebugID() const override;
+	uint32_t GetDebugID() const override;
 };
 
-enum StationClassID : byte {
-	STAT_CLASS_BEGIN = 0,    ///< the lowest valid value
-	STAT_CLASS_DFLT = 0,     ///< Default station class.
-	STAT_CLASS_WAYP,         ///< Waypoint class.
-	STAT_CLASS_MAX = 255,    ///< Maximum number of classes.
+static const uint32_t STATION_CLASS_LABEL_DEFAULT = 'DFLT';
+static const uint32_t STATION_CLASS_LABEL_WAYPOINT = 'WAYP';
+
+enum StationClassID : uint16_t {
+	STAT_CLASS_BEGIN = 0, ///< the lowest valid value
+	STAT_CLASS_DFLT = 0, ///< Default station class.
+	STAT_CLASS_WAYP, ///< Waypoint class.
+	STAT_CLASS_MAX = UINT16_MAX, ///< Maximum number of classes.
 };
-template <> struct EnumPropsT<StationClassID> : MakeEnumPropsT<StationClassID, byte, STAT_CLASS_BEGIN, STAT_CLASS_MAX, STAT_CLASS_MAX, 8> {};
 
 /** Allow incrementing of StationClassID variables */
 DECLARE_POSTFIX_INCREMENT(StationClassID)
@@ -110,8 +111,8 @@ enum StationRandomTrigger {
 };
 
 /** Station specification. */
-struct StationSpec {
-	StationSpec() : cls_id(STAT_CLASS_DFLT), name(0),
+struct StationSpec : NewGRFSpecBase<StationClassID> {
+	StationSpec() : name(0),
 		disallowed_platforms(0), disallowed_lengths(0),
 		cargo_threshold(0), cargo_triggers(0),
 		callback_mask(0), flags(0), pylons(0), wires(0), blocked(0),
@@ -123,19 +124,18 @@ struct StationSpec {
 	 * evaluating callbacks.
 	 */
 	GRFFilePropsBase<NUM_CARGO + 3> grf_prop;
-	StationClassID cls_id;     ///< The class to which this spec belongs.
 	StringID name;             ///< Name of this station.
 
 	/**
 	 * Bitmask of number of platforms available for the station.
 	 * 0..6 correspond to 1..7, while bit 7 corresponds to >7 platforms.
 	 */
-	byte disallowed_platforms;
+	uint8_t disallowed_platforms;
 	/**
 	 * Bitmask of platform lengths available for the station.
 	 * 0..6 correspond to 1..7, while bit 7 corresponds to >7 tiles long.
 	 */
-	byte disallowed_lengths;
+	uint8_t disallowed_lengths;
 
 	/**
 	 * Number of tile layouts.
@@ -151,17 +151,17 @@ struct StationSpec {
 	 * Cargo threshold for choosing between little and lots of cargo
 	 * @note little/lots are equivalent to the moving/loading states for vehicles
 	 */
-	uint16 cargo_threshold;
+	uint16_t cargo_threshold;
 
 	CargoTypes cargo_triggers; ///< Bitmask of cargo types which cause trigger re-randomizing
 
-	byte callback_mask; ///< Bitmask of station callbacks that have to be called
+	uint8_t callback_mask; ///< Bitmask of station callbacks that have to be called
 
-	byte flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
+	uint8_t flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
 
-	byte pylons;  ///< Bitmask of base tiles (0 - 7) which should contain elrail pylons
-	byte wires;   ///< Bitmask of base tiles (0 - 7) which should contain elrail wires
-	byte blocked; ///< Bitmask of base tiles (0 - 7) which are blocked to trains
+	uint8_t pylons;  ///< Bitmask of base tiles (0 - 7) which should contain elrail pylons
+	uint8_t wires;   ///< Bitmask of base tiles (0 - 7) which should contain elrail wires
+	uint8_t blocked; ///< Bitmask of base tiles (0 - 7) which are blocked to trains
 
 	AnimationInfo animation;
 
@@ -173,34 +173,44 @@ struct StationSpec {
 	 * These can be sparsely populated, and the upper limit is not defined but
 	 * limited to 255.
 	 */
-	std::vector<std::vector<std::vector<byte>>> layouts;
+	std::vector<std::vector<std::vector<uint8_t>>> layouts;
 };
 
-/** Struct containing information relating to station classes. */
-typedef NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX> StationClass;
+/** Class containing information relating to station classes. */
+using StationClass = NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX>;
 
 const StationSpec *GetStationSpec(TileIndex t);
 
-/* Evaluate a tile's position within a station, and return the result a bitstuffed format. */
-uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, int y, bool centred);
+/**
+ * Test if a StationClass is the waypoint class.
+ * @param cls StationClass to test.
+ * @return true if the class is the waypoint class.
+ */
+inline bool IsWaypointClass(const StationClass &cls)
+{
+	return cls.global_id == STATION_CLASS_LABEL_WAYPOINT;
+}
 
-SpriteID GetCustomStationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint32 var10 = 0);
+/* Evaluate a tile's position within a station, and return the result a bitstuffed format. */
+uint32_t GetPlatformInfo(Axis axis, uint8_t tile, int platforms, int length, int x, int y, bool centred);
+
+SpriteID GetCustomStationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint32_t var10 = 0);
 SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint layout, uint edge_info);
-uint16 GetStationCallback(CallbackID callback, uint32 param1, uint32 param2, const StationSpec *statspec, BaseStation *st, TileIndex tile);
-CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_tile, const StationSpec *statspec, Axis axis, byte plat_len, byte numtracks);
+uint16_t GetStationCallback(CallbackID callback, uint32_t param1, uint32_t param2, const StationSpec *statspec, BaseStation *st, TileIndex tile);
+CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_tile, const StationSpec *statspec, Axis axis, uint8_t plat_len, uint8_t numtracks);
 
 /* Allocate a StationSpec to a Station. This is called once per build operation. */
 int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exec);
 
 /* Deallocate a StationSpec from a Station. Called when removing a single station tile. */
-void DeallocateSpecFromStation(BaseStation *st, byte specindex);
+void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex);
 
 /* Draw representation of a station tile for GUI purposes. */
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station);
 
 void AnimateStationTile(TileIndex tile);
-void TriggerStationAnimation(BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoID cargo_type = CT_INVALID);
-void TriggerStationRandomisation(Station *st, TileIndex tile, StationRandomTrigger trigger, CargoID cargo_type = CT_INVALID);
+void TriggerStationAnimation(BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoID cargo_type = INVALID_CARGO);
+void TriggerStationRandomisation(Station *st, TileIndex tile, StationRandomTrigger trigger, CargoID cargo_type = INVALID_CARGO);
 void StationUpdateCachedTriggers(BaseStation *st);
 
 #endif /* NEWGRF_STATION_H */

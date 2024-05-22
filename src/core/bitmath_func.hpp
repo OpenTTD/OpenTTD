@@ -29,7 +29,7 @@
  * @return The selected bits, aligned to a LSB.
  */
 template <typename T>
-debug_inline static uint GB(const T x, const uint8 s, const uint8 n)
+debug_inline constexpr static uint GB(const T x, const uint8_t s, const uint8_t n)
 {
 	return (x >> s) & (((T)1U << n) - 1);
 }
@@ -55,7 +55,7 @@ debug_inline static uint GB(const T x, const uint8 s, const uint8 n)
  * @return The new value of \a x
  */
 template <typename T, typename U>
-static inline T SB(T &x, const uint8 s, const uint8 n, const U d)
+constexpr T SB(T &x, const uint8_t s, const uint8_t n, const U d)
 {
 	x &= (T)(~((((T)1U << n) - 1) << s));
 	x |= (T)(d << s);
@@ -80,7 +80,7 @@ static inline T SB(T &x, const uint8 s, const uint8 n, const U d)
  * @return The new value of \a x
  */
 template <typename T, typename U>
-static inline T AB(T &x, const uint8 s, const uint8 n, const U i)
+constexpr T AB(T &x, const uint8_t s, const uint8_t n, const U i)
 {
 	const T mask = ((((T)1U << n) - 1) << s);
 	x = (T)((x & ~mask) | ((x + (i << s)) & mask));
@@ -100,7 +100,7 @@ static inline T AB(T &x, const uint8 s, const uint8 n, const U i)
  * @return True if the bit is set, false else.
  */
 template <typename T>
-debug_inline static bool HasBit(const T x, const uint8 y)
+debug_inline constexpr bool HasBit(const T x, const uint8_t y)
 {
 	return (x & ((T)1U << y)) != 0;
 }
@@ -118,7 +118,7 @@ debug_inline static bool HasBit(const T x, const uint8 y)
  * @return The new value of the old value with the bit set
  */
 template <typename T>
-static inline T SetBit(T &x, const uint8 y)
+constexpr T SetBit(T &x, const uint8_t y)
 {
 	return x = (T)(x | ((T)1U << y));
 }
@@ -148,7 +148,7 @@ static inline T SetBit(T &x, const uint8 y)
  * @return The new value of the old value with the bit cleared
  */
 template <typename T>
-static inline T ClrBit(T &x, const uint8 y)
+constexpr T ClrBit(T &x, const uint8_t y)
 {
 	return x = (T)(x & ~((T)1U << y));
 }
@@ -178,52 +178,44 @@ static inline T ClrBit(T &x, const uint8 y)
  * @return The new value of the old value with the bit toggled
  */
 template <typename T>
-static inline T ToggleBit(T &x, const uint8 y)
+constexpr T ToggleBit(T &x, const uint8_t y)
 {
 	return x = (T)(x ^ ((T)1U << y));
 }
 
-
-/** Lookup table to check which bit is set in a 6 bit variable */
-extern const uint8 _ffb_64[64];
-
 /**
- * Returns the first non-zero bit in a 6-bit value (from right).
+ * Search the first set bit in a value.
+ * When no bit is set, it returns 0.
  *
- * Returns the position of the first bit that is not zero, counted from the
- * LSB. Ie, 110100 returns 2, 000001 returns 0, etc. When x == 0 returns
- * 0.
- *
- * @param x The 6-bit value to check the first zero-bit
- * @return The first position of a bit started from the LSB or 0 if x is 0.
+ * @param x The value to search.
+ * @return The position of the first bit set.
  */
-#define FIND_FIRST_BIT(x) _ffb_64[(x)]
-
-/**
- * Finds the position of the first non-zero bit in an integer.
- *
- * This function returns the position of the first bit set in the
- * integer. It does only check the bits of the bitmask
- * 0x3F3F (0011111100111111) and checks only the
- * bits of the bitmask 0x3F00 if and only if the
- * lower part 0x00FF is 0. This results the bits at 0x00C0 must
- * be also zero to check the bits at 0x3F00.
- *
- * @param value The value to check the first bits
- * @return The position of the first bit which is set
- * @see FIND_FIRST_BIT
- */
-static inline uint8 FindFirstBit2x64(const int value)
+template <typename T>
+constexpr uint8_t FindFirstBit(T x)
 {
-	if ((value & 0xFF) == 0) {
-		return FIND_FIRST_BIT((value >> 8) & 0x3F) + 8;
+	if (x == 0) return 0;
+
+	if constexpr (std::is_enum_v<T>) {
+		return std::countr_zero<std::underlying_type_t<T>>(x);
 	} else {
-		return FIND_FIRST_BIT(value & 0x3F);
+		return std::countr_zero(x);
 	}
 }
 
-uint8 FindFirstBit(uint64 x);
-uint8 FindLastBit(uint64 x);
+/**
+ * Search the last set bit in a value.
+ * When no bit is set, it returns 0.
+ *
+ * @param x The value to search.
+ * @return The position of the last bit set.
+ */
+template <typename T>
+constexpr uint8_t FindLastBit(T x)
+{
+	if (x == 0) return 0;
+
+	return std::numeric_limits<T>::digits - std::countl_zero(x) - 1;
+}
 
 /**
  * Clear the first bit in an integer.
@@ -236,7 +228,7 @@ uint8 FindLastBit(uint64 x);
  * @return The new value with the first bit cleared
  */
 template <typename T>
-static inline T KillFirstBit(T value)
+constexpr T KillFirstBit(T value)
 {
 	return value &= (T)(value - 1);
 }
@@ -248,20 +240,13 @@ static inline T KillFirstBit(T value)
  * @return the number of bits.
  */
 template <typename T>
-static inline uint CountBits(T value)
+constexpr uint CountBits(T value)
 {
-	uint num;
-
-	/* This loop is only called once for every bit set by clearing the lowest
-	 * bit in each loop. The number of bits is therefore equal to the number of
-	 * times the loop was called. It was found at the following website:
-	 * http://graphics.stanford.edu/~seander/bithacks.html */
-
-	for (num = 0; value != 0; num++) {
-		value &= (T)(value - 1);
+	if constexpr (std::is_enum_v<T>) {
+		return std::popcount<std::underlying_type_t<T>>(value);
+	} else {
+		return std::popcount(value);
 	}
-
-	return num;
 }
 
 /**
@@ -271,7 +256,7 @@ static inline uint CountBits(T value)
  * @return does \a value have exactly 1 bit set?
  */
 template <typename T>
-static inline bool HasExactlyOneBit(T value)
+constexpr bool HasExactlyOneBit(T value)
 {
 	return value != 0 && (value & (value - 1)) == 0;
 }
@@ -283,48 +268,16 @@ static inline bool HasExactlyOneBit(T value)
  * @return does \a value have at most 1 bit set?
  */
 template <typename T>
-static inline bool HasAtMostOneBit(T value)
+constexpr bool HasAtMostOneBit(T value)
 {
 	return (value & (value - 1)) == 0;
-}
-
-/**
- * ROtate \a x Left by \a n
- *
- * @note Assumes a byte has 8 bits
- * @param x The value which we want to rotate
- * @param n The number how many we want to rotate
- * @pre n < sizeof(T) * 8
- * @return A bit rotated number
- */
-template <typename T>
-static inline T ROL(const T x, const uint8 n)
-{
-	if (n == 0) return x;
-	return (T)(x << n | x >> (sizeof(x) * 8 - n));
-}
-
-/**
- * ROtate \a x Right by \a n
- *
- * @note Assumes a byte has 8 bits
- * @param x The value which we want to rotate
- * @param n The number how many we want to rotate
- * @pre n < sizeof(T) * 8
- * @return A bit rotated number
- */
-template <typename T>
-static inline T ROR(const T x, const uint8 n)
-{
-	if (n == 0) return x;
-	return (T)(x >> n | x << (sizeof(x) * 8 - n));
 }
 
  /**
  * Iterable ensemble of each set bit in a value.
  * @tparam Tbitpos Type of the position variable.
  * @tparam Tbitset Type of the bitset value.
-*/
+ */
 template <typename Tbitpos = uint, typename Tbitset = uint>
 struct SetBitIterator {
 	struct Iterator {
@@ -341,7 +294,7 @@ struct SetBitIterator {
 
 		bool operator==(const Iterator &other) const
 		{
-			return this->bitset == other.bitset && (this->bitset == 0 || this->bitpos == other.bitpos);
+			return this->bitset == other.bitset;
 		}
 		bool operator!=(const Iterator &other) const { return !(*this == other); }
 		Tbitpos operator*() const { return this->bitpos; }
@@ -352,12 +305,14 @@ struct SetBitIterator {
 		Tbitpos bitpos;
 		void Validate()
 		{
-			while (this->bitset != 0 && (this->bitset & 1) == 0) this->Next();
+			if (this->bitset != 0) {
+				typename std::make_unsigned<Tbitset>::type unsigned_value = this->bitset;
+				this->bitpos = static_cast<Tbitpos>(FindFirstBit(unsigned_value));
+			}
 		}
 		void Next()
 		{
-			this->bitset = static_cast<Tbitset>(this->bitset >> 1);
-			this->bitpos++;
+			this->bitset = KillFirstBit(this->bitset);
 		}
 	};
 
@@ -373,10 +328,10 @@ private:
 #if defined(__APPLE__)
 	/* Make endian swapping use Apple's macros to increase speed
 	 * (since it will use hardware swapping if available).
-	 * Even though they should return uint16 and uint32, we get
+	 * Even though they should return uint16_t and uint32_t, we get
 	 * warnings if we don't cast those (why?) */
-#	define BSWAP32(x) (static_cast<uint32>(CFSwapInt32(x)))
-#	define BSWAP16(x) (static_cast<uint16>(CFSwapInt16(x)))
+#	define BSWAP32(x) (static_cast<uint32_t>(CFSwapInt32(x)))
+#	define BSWAP16(x) (static_cast<uint16_t>(CFSwapInt16(x)))
 #elif defined(_MSC_VER)
 	/* MSVC has intrinsics for swapping, resulting in faster code */
 #	define BSWAP32(x) (_byteswap_ulong(x))
@@ -387,11 +342,11 @@ private:
 	 * @param x the variable to bitswap
 	 * @return the bitswapped value.
 	 */
-	static inline uint32 BSWAP32(uint32 x)
+	static inline uint32_t BSWAP32(uint32_t x)
 	{
 #if !defined(__ICC) && defined(__GNUC__) && ((__GNUC__ > 4) || ((__GNUC__ == 4)  && __GNUC_MINOR__ >= 3))
 		/* GCC >= 4.3 provides a builtin, resulting in faster code */
-		return static_cast<uint32>(__builtin_bswap32(static_cast<int32>(x)));
+		return static_cast<uint32_t>(__builtin_bswap32(static_cast<int32_t>(x)));
 #else
 		return ((x >> 24) & 0xFF) | ((x >> 8) & 0xFF00) | ((x << 8) & 0xFF0000) | ((x << 24) & 0xFF000000);
 #endif /* defined(__GNUC__) */
@@ -402,7 +357,7 @@ private:
 	 * @param x the variable to bitswap
 	 * @return the bitswapped value.
 	 */
-	static inline uint16 BSWAP16(uint16 x)
+	static inline uint16_t BSWAP16(uint16_t x)
 	{
 		return (x >> 8) | (x << 8);
 	}

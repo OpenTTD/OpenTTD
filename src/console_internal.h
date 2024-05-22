@@ -11,7 +11,6 @@
 #define CONSOLE_INTERNAL_H
 
 #include "gfx_type.h"
-#include <map>
 
 static const uint ICON_CMDLN_SIZE     = 1024; ///< maximum length of a typed in command
 static const uint ICON_MAX_STREAMSIZE = 2048; ///< maximum length of a totally expanded command
@@ -31,7 +30,7 @@ enum ConsoleHookResult {
  * If you want to handle multiple words as one, enclose them in double-quotes
  * eg. 'say "hello everybody"'
  */
-typedef bool IConsoleCmdProc(byte argc, char *argv[]);
+typedef bool IConsoleCmdProc(uint8_t argc, char *argv[]);
 typedef ConsoleHookResult IConsoleHook(bool echo);
 struct IConsoleCmd {
 	IConsoleCmd(const std::string &name, IConsoleCmdProc *proc, IConsoleHook *hook) : name(name), proc(proc), hook(hook) {}
@@ -83,10 +82,10 @@ void IConsoleClearBuffer();
 void IConsoleStdLibRegister();
 
 /* Supporting functions */
-bool GetArgumentInteger(uint32 *value, const char *arg);
+bool GetArgumentInteger(uint32_t *value, const char *arg);
 
 void IConsoleGUIInit();
 void IConsoleGUIFree();
-void IConsoleGUIPrint(TextColour colour_code, char *string);
+void IConsoleGUIPrint(TextColour colour_code, const std::string &string);
 
 #endif /* CONSOLE_INTERNAL_H */

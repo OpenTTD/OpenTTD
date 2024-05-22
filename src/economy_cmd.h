@@ -13,12 +13,8 @@
 #include "command_type.h"
 #include "company_type.h"
 
-CommandCost CmdBuyShareInCompany(DoCommandFlag flags, CompanyID target_company);
-CommandCost CmdSellShareInCompany(DoCommandFlag flags, CompanyID target_company);
-CommandCost CmdBuyCompany(DoCommandFlag flags, CompanyID target_company);
+CommandCost CmdBuyCompany(DoCommandFlag flags, CompanyID target_company, bool hostile_takeover);
 
-DEF_CMD_TRAIT(CMD_BUY_SHARE_IN_COMPANY,  CmdBuyShareInCompany,  0, CMDT_MONEY_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SELL_SHARE_IN_COMPANY, CmdSellShareInCompany, 0, CMDT_MONEY_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_BUY_COMPANY,           CmdBuyCompany,         0, CMDT_MONEY_MANAGEMENT)
 
 #endif /* ECONOMY_CMD_H */

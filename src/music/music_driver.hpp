@@ -38,12 +38,13 @@ public:
 	 * Set the volume, if possible.
 	 * @param vol The new volume.
 	 */
-	virtual void SetVolume(byte vol) = 0;
+	virtual void SetVolume(uint8_t vol) = 0;
 
 	/**
 	 * Get the currently active instance of the music driver.
 	 */
-	static MusicDriver *GetInstance() {
+	static MusicDriver *GetInstance()
+	{
 		return static_cast<MusicDriver*>(*DriverFactoryBase::GetActiveDriver(Driver::DT_MUSIC));
 	}
 };

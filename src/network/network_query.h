@@ -19,10 +19,10 @@ private:
 	std::string connection_string; ///< Address we are connected to.
 
 protected:
-	NetworkRecvStatus Receive_SERVER_FULL(Packet *p) override;
-	NetworkRecvStatus Receive_SERVER_BANNED(Packet *p) override;
-	NetworkRecvStatus Receive_SERVER_ERROR(Packet *p) override;
-	NetworkRecvStatus Receive_SERVER_GAME_INFO(Packet *p) override;
+	NetworkRecvStatus Receive_SERVER_FULL(Packet &p) override;
+	NetworkRecvStatus Receive_SERVER_BANNED(Packet &p) override;
+	NetworkRecvStatus Receive_SERVER_ERROR(Packet &p) override;
+	NetworkRecvStatus Receive_SERVER_GAME_INFO(Packet &p) override;
 
 	NetworkRecvStatus SendGameInfo();
 

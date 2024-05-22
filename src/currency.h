@@ -10,12 +10,13 @@
 #ifndef CURRENCY_H
 #define CURRENCY_H
 
-#include "date_type.h"
-#include "string_func.h"
+#include "timer/timer_game_calendar.h"
+#include "settings_type.h"
 #include "strings_type.h"
 
-static const int CF_NOEURO = 0; ///< Currency never switches to the Euro (as far as known).
-static const int CF_ISEURO = 1; ///< Currency _is_ the Euro.
+static constexpr TimerGameCalendar::Year CF_NOEURO = 0; ///< Currency never switches to the Euro (as far as known).
+static constexpr TimerGameCalendar::Year CF_ISEURO = 1; ///< Currency _is_ the Euro.
+static constexpr TimerGameCalendar::Year MIN_EURO_YEAR = 2000; ///< The earliest year custom currencies may switch to the Euro.
 
 /**
  * This enum gives the currencies a unique id which must be maintained for
@@ -65,16 +66,19 @@ enum Currencies {
 	CURRENCY_INR,       ///< Indian Rupee
 	CURRENCY_IDR,       ///< Indonesian Rupiah
 	CURRENCY_MYR,       ///< Malaysian Ringgit
+	CURRENCY_LVL,       ///< Latvian Lats
+	CURRENCY_PTE,       ///< Portuguese Escudo
 	CURRENCY_END,       ///< always the last item
 };
 
 /** Specification of a currency. */
 struct CurrencySpec {
-	uint16 rate;           ///< The conversion rate compared to the base currency.
+	uint16_t rate;           ///< The conversion rate compared to the base currency.
 	std::string separator; ///< The thousands separator for this currency.
-	Year to_euro;          ///< %Year of switching to the Euro. May also be #CF_NOEURO or #CF_ISEURO.
+	TimerGameCalendar::Year to_euro; ///< Year of switching to the Euro. May also be #CF_NOEURO or #CF_ISEURO.
 	std::string prefix;    ///< Prefix to apply when formatting money in this currency.
 	std::string suffix;    ///< Suffix to apply when formatting money in this currency.
+	std::string code; ///< 3 letter untranslated code to identify the currency.
 	/**
 	 * The currency symbol is represented by two possible values, prefix and suffix
 	 * Usage of one or the other is determined by #symbol_pos.
@@ -84,27 +88,39 @@ struct CurrencySpec {
 	 *            It is not a spec from Newgrf,
 	 *            rather a way to let users do what they want with custom currency
 	 */
-	byte symbol_pos;
+	uint8_t symbol_pos;
 	StringID name;
 
 	CurrencySpec() = default;
 
-	CurrencySpec(uint16 rate, const char *separator, Year to_euro, const char *prefix, const char *suffix, byte symbol_pos, StringID name) :
-		rate(rate), separator(separator), to_euro(to_euro), prefix(prefix), suffix(suffix), symbol_pos(symbol_pos), name(name)
+	CurrencySpec(uint16_t rate, const char *separator, TimerGameCalendar::Year to_euro, const char *prefix, const char *suffix, const char *code, uint8_t symbol_pos, StringID name) :
+		rate(rate), separator(separator), to_euro(to_euro), prefix(prefix), suffix(suffix), code(code), symbol_pos(symbol_pos), name(name)
 	{
 	}
 };
 
-extern CurrencySpec _currency_specs[CURRENCY_END];
+extern std::array<CurrencySpec, CURRENCY_END> _currency_specs;
 
-/* XXX small hack, but makes the rest of the code a bit nicer to read */
-#define _custom_currency (_currency_specs[CURRENCY_CUSTOM])
-#define _currency ((const CurrencySpec*)&_currency_specs[GetGameSettings().locale.currency])
+/**
+ * Get the custom currency.
+ * @return Reference to custom currency.
+ */
+inline CurrencySpec &GetCustomCurrency()
+{
+	return _currency_specs[CURRENCY_CUSTOM];
+}
 
-uint64 GetMaskOfAllowedCurrencies();
-void CheckSwitchToEuro();
+/**
+ * Get the currently selected currency.
+ * @return Read-only reference to the current currency.
+ */
+inline const CurrencySpec &GetCurrency()
+{
+	return _currency_specs[GetGameSettings().locale.currency];
+}
+
+uint64_t GetMaskOfAllowedCurrencies();
 void ResetCurrencies(bool preserve_custom = true);
-StringID *BuildCurrencyDropdown();
-byte GetNewgrfCurrencyIdConverted(byte grfcurr_id);
+uint8_t GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id);
 
 #endif /* CURRENCY_H */

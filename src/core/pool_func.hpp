@@ -11,10 +11,12 @@
 #define POOL_FUNC_HPP
 
 #include "alloc_func.hpp"
+#include "bitmath_func.hpp"
 #include "mem_func.hpp"
 #include "pool_type.hpp"
+#include "../error_func.h"
 
-extern void NORETURN SlErrorCorruptFmt(const char *format, ...) WARN_FORMAT(1, 2);
+#include "../saveload/saveload_error.hpp" // SlErrorCorruptFmt
 
 /**
  * Helper for defining the method's signature.
@@ -59,6 +61,16 @@ DEFINE_POOL_METHOD(inline void)::ResizeFor(size_t index)
 	this->data = ReallocT(this->data, new_size);
 	MemSetT(this->data + this->size, 0, new_size - this->size);
 
+	this->used_bitmap.resize(Align(new_size, BITMAP_SIZE) / BITMAP_SIZE);
+	if (this->size % BITMAP_SIZE != 0) {
+		/* Already-allocated bits above old size are now unused. */
+		this->used_bitmap[this->size / BITMAP_SIZE] &= ~((~static_cast<BitmapStorage>(0)) << (this->size % BITMAP_SIZE));
+	}
+	if (new_size % BITMAP_SIZE != 0) {
+		/* Bits above new size are considered used. */
+		this->used_bitmap[new_size / BITMAP_SIZE] |= (~static_cast<BitmapStorage>(0)) << (new_size % BITMAP_SIZE);
+	}
+
 	this->size = new_size;
 }
 
@@ -68,25 +80,20 @@ DEFINE_POOL_METHOD(inline void)::ResizeFor(size_t index)
  */
 DEFINE_POOL_METHOD(inline size_t)::FindFirstFree()
 {
-	size_t index = this->first_free;
-
-	for (; index < this->first_unused; index++) {
-		if (this->data[index] == nullptr) return index;
+	for (auto it = std::next(std::begin(this->used_bitmap), this->first_free / BITMAP_SIZE); it != std::end(this->used_bitmap); ++it) {
+		BitmapStorage available = ~(*it);
+		if (available == 0) continue;
+		return std::distance(std::begin(this->used_bitmap), it) * BITMAP_SIZE + FindFirstBit(available);
 	}
 
-	if (index < this->size) {
-		return index;
-	}
-
-	assert(index == this->size);
 	assert(this->first_unused == this->size);
 
-	if (index < Tmax_size) {
-		this->ResizeFor(index);
-		return index;
+	if (this->first_unused < Tmax_size) {
+		this->ResizeFor(this->first_unused);
+		return this->first_unused;
 	}
 
-	assert(this->items == Tmax_size);
+	assert(this->first_unused == Tmax_size);
 
 	return NO_FREE_ITEM;
 }
@@ -108,19 +115,20 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 	Titem *item;
 	if (Tcache && this->alloc_cache != nullptr) {
 		assert(sizeof(Titem) == size);
-		item = (Titem *)this->alloc_cache;
+		item = reinterpret_cast<Titem *>(this->alloc_cache);
 		this->alloc_cache = this->alloc_cache->next;
 		if (Tzero) {
 			/* Explicitly casting to (void *) prevents a clang warning -
 			 * we are actually memsetting a (not-yet-constructed) object */
-			memset((void *)item, 0, sizeof(Titem));
+			memset(static_cast<void *>(item), 0, sizeof(Titem));
 		}
 	} else if (Tzero) {
-		item = (Titem *)CallocT<byte>(size);
+		item = reinterpret_cast<Titem *>(CallocT<uint8_t>(size));
 	} else {
-		item = (Titem *)MallocT<byte>(size);
+		item = reinterpret_cast<Titem *>(MallocT<uint8_t>(size));
 	}
 	this->data[index] = item;
+	SetBit(this->used_bitmap[index / BITMAP_SIZE], index % BITMAP_SIZE);
 	item->index = (Tindex)(uint)index;
 	return item;
 }
@@ -129,7 +137,7 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
  * Allocates new item
  * @param size size of item
  * @return pointer to allocated item
- * @note error() on failure! (no free item)
+ * @note FatalError() on failure! (no free item)
  */
 DEFINE_POOL_METHOD(void *)::GetNew(size_t size)
 {
@@ -140,7 +148,7 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size)
 	this->checked--;
 #endif /* WITH_ASSERT */
 	if (index == NO_FREE_ITEM) {
-		error("%s: no more free items", this->name);
+		FatalError("{}: no more free items", this->name);
 	}
 
 	this->first_free = index + 1;
@@ -157,13 +165,13 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size)
 DEFINE_POOL_METHOD(void *)::GetNew(size_t size, size_t index)
 {
 	if (index >= Tmax_size) {
-		SlErrorCorruptFmt("%s index " PRINTF_SIZE " out of range (" PRINTF_SIZE ")", this->name, index, Tmax_size);
+		SlErrorCorruptFmt("{} index {} out of range ({})", this->name, index, Tmax_size);
 	}
 
 	if (index >= this->size) this->ResizeFor(index);
 
 	if (this->data[index] != nullptr) {
-		SlErrorCorruptFmt("%s index " PRINTF_SIZE " already in use", this->name, index);
+		SlErrorCorruptFmt("{} index {} already in use", this->name, index);
 	}
 
 	return this->AllocateItem(size, index);
@@ -180,7 +188,7 @@ DEFINE_POOL_METHOD(void)::FreeItem(size_t index)
 	assert(index < this->size);
 	assert(this->data[index] != nullptr);
 	if (Tcache) {
-		AllocCache *ac = (AllocCache *)this->data[index];
+		AllocCache *ac = reinterpret_cast<AllocCache *>(this->data[index]);
 		ac->next = this->alloc_cache;
 		this->alloc_cache = ac;
 	} else {
@@ -189,7 +197,10 @@ DEFINE_POOL_METHOD(void)::FreeItem(size_t index)
 	this->data[index] = nullptr;
 	this->first_free = std::min(this->first_free, index);
 	this->items--;
-	if (!this->cleaning) Titem::PostDestructor(index);
+	if (!this->cleaning) {
+		ClrBit(this->used_bitmap[index / BITMAP_SIZE], index % BITMAP_SIZE);
+		Titem::PostDestructor(index);
+	}
 }
 
 /** Destroys all items in the pool and resets all member variables. */
@@ -201,6 +212,8 @@ DEFINE_POOL_METHOD(void)::CleanPool()
 	}
 	assert(this->items == 0);
 	free(this->data);
+	this->used_bitmap.clear();
+	this->used_bitmap.shrink_to_fit();
 	this->first_unused = this->first_free = this->size = 0;
 	this->data = nullptr;
 	this->cleaning = false;

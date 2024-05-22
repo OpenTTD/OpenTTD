@@ -30,13 +30,13 @@ private:
 	 * Look at docs/landscape.html for the exact meaning of the members.
 	 */
 	struct TileBase {
-		byte   type;   ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
-		byte   height; ///< The height of the northern corner.
-		uint16 m2;     ///< Primarily used for indices to towns, industries and stations
-		byte   m1;     ///< Primarily used for ownership information
-		byte   m3;     ///< General purpose
-		byte   m4;     ///< General purpose
-		byte   m5;     ///< General purpose
+		uint8_t   type;   ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
+		uint8_t   height; ///< The height of the northern corner.
+		uint16_t m2;     ///< Primarily used for indices to towns, industries and stations
+		uint8_t   m1;     ///< Primarily used for ownership information
+		uint8_t   m3;     ///< General purpose
+		uint8_t   m4;     ///< General purpose
+		uint8_t   m5;     ///< General purpose
 	};
 
 	static_assert(sizeof(TileBase) == 8);
@@ -46,9 +46,9 @@ private:
 	 * Look at docs/landscape.html for the exact meaning of the members.
 	 */
 	struct TileExtended {
-		byte m6;   ///< General purpose
-		byte m7;   ///< Primarily used for newgrf support
-		uint16 m8; ///< General purpose
+		uint8_t m6;   ///< General purpose
+		uint8_t m7;   ///< Primarily used for newgrf support
+		uint16_t m8; ///< General purpose
 	};
 
 	static TileBase *base_tiles;         ///< Pointer to the tile-array.
@@ -77,7 +77,7 @@ public:
 	/**
 	 * Implicit conversion to the uint for bounds checking.
 	 */
-	debug_inline constexpr operator uint() const { return tile; }
+	debug_inline constexpr operator uint() const { return tile.base(); }
 
 	/**
 	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
@@ -86,9 +86,9 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &type()
+	debug_inline uint8_t &type()
 	{
-		return base_tiles[tile].type;
+		return base_tiles[tile.base()].type;
 	}
 
 	/**
@@ -98,9 +98,9 @@ public:
 	 * @param tile The tile to get the height for.
 	 * @return reference to the byte holding the height.
 	 */
-	debug_inline byte &height()
+	debug_inline uint8_t &height()
 	{
-		return base_tiles[tile].height;
+		return base_tiles[tile.base()].height;
 	}
 
 	/**
@@ -110,9 +110,9 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &m1()
+	debug_inline uint8_t &m1()
 	{
-		return base_tiles[tile].m1;
+		return base_tiles[tile.base()].m1;
 	}
 
 	/**
@@ -120,11 +120,11 @@ public:
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
 	 * @param tile The tile to get the data for.
-	 * @return reference to the uint16 holding the data.
+	 * @return reference to the uint16_t holding the data.
 	 */
-	debug_inline uint16 &m2()
+	debug_inline uint16_t &m2()
 	{
-		return base_tiles[tile].m2;
+		return base_tiles[tile.base()].m2;
 	}
 
 	/**
@@ -134,9 +134,9 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &m3()
+	debug_inline uint8_t &m3()
 	{
-		return base_tiles[tile].m3;
+		return base_tiles[tile.base()].m3;
 	}
 
 	/**
@@ -146,9 +146,9 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &m4()
+	debug_inline uint8_t &m4()
 	{
-		return base_tiles[tile].m4;
+		return base_tiles[tile.base()].m4;
 	}
 
 	/**
@@ -158,9 +158,9 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &m5()
+	debug_inline uint8_t &m5()
 	{
-		return base_tiles[tile].m5;
+		return base_tiles[tile.base()].m5;
 	}
 
 	/**
@@ -170,9 +170,9 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &m6()
+	debug_inline uint8_t &m6()
 	{
-		return extended_tiles[tile].m6;
+		return extended_tiles[tile.base()].m6;
 	}
 
 	/**
@@ -182,9 +182,9 @@ public:
 	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
-	debug_inline byte &m7()
+	debug_inline uint8_t &m7()
 	{
-		return extended_tiles[tile].m7;
+		return extended_tiles[tile.base()].m7;
 	}
 
 	/**
@@ -192,11 +192,11 @@ public:
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
 	 * @param tile The tile to get the data for.
-	 * @return reference to the uint16 holding the data.
+	 * @return reference to the uint16_t holding the data.
 	 */
-	debug_inline uint16 &m8()
+	debug_inline uint16_t &m8()
 	{
-		return extended_tiles[tile].m8;
+		return extended_tiles[tile.base()].m8;
 	}
 };
 
@@ -314,9 +314,9 @@ public:
 	 * It does this by masking the 'high' bits of.
 	 * @param tile the tile to 'wrap'
 	 */
-	static inline TileIndex WrapToMap(uint tile)
+	static inline TileIndex WrapToMap(TileIndex tile)
 	{
-		return tile & Map::tile_mask;
+		return tile.base() & Map::tile_mask;
 	}
 
 	/**
@@ -373,7 +373,7 @@ public:
  *
  * @see TileDiffXY(int, int)
  */
-typedef int32 TileIndexDiff;
+typedef int32_t TileIndexDiff;
 
 /**
  * Returns the TileIndex of a coordinate.
@@ -398,7 +398,7 @@ debug_inline static TileIndex TileXY(uint x, uint y)
  * @return The resulting offset value of the given coordinate
  * @see ToTileIndexDiff(TileIndexDiffC)
  */
-static inline TileIndexDiff TileDiffXY(int x, int y)
+inline TileIndexDiff TileDiffXY(int x, int y)
 {
 	/* Multiplication gives much better optimization on MSVC than shifting.
 	 * 0 << shift isn't optimized to 0 properly.
@@ -426,7 +426,7 @@ debug_inline static TileIndex TileVirtXY(uint x, uint y)
  */
 debug_inline static uint TileX(TileIndex tile)
 {
-	return tile.value & Map::MaxX();
+	return tile.base() & Map::MaxX();
 }
 
 /**
@@ -436,7 +436,7 @@ debug_inline static uint TileX(TileIndex tile)
  */
 debug_inline static uint TileY(TileIndex tile)
 {
-	return tile.value >> Map::LogX();
+	return tile.base() >> Map::LogX();
 }
 
 /**
@@ -449,35 +449,37 @@ debug_inline static uint TileY(TileIndex tile)
  * @return The difference between two tiles.
  * @see TileDiffXY(int, int)
  */
-static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
+inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 {
 	return (tidc.y << Map::LogX()) + tidc.x;
 }
 
 
+/**
+ * Adds a given offset to a tile.
+ *
+ * @param tile The tile to add an offset to.
+ * @param offset The offset to add.
+ * @return The resulting tile.
+ */
 #ifndef _DEBUG
-	/**
-	 * Adds two tiles together.
-	 *
-	 * @param x One tile
-	 * @param y Another tile to add
-	 * @return The resulting tile(index)
-	 */
-#	define TILE_ADD(x, y) ((x) + (y))
+	constexpr TileIndex TileAdd(TileIndex tile, TileIndexDiff offset) { return tile + offset; }
 #else
-	extern TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
-		const char *exp, const char *file, int line);
-#	define TILE_ADD(x, y) (TileAdd((x), (y), #x " + " #y, __FILE__, __LINE__))
+	TileIndex TileAdd(TileIndex tile, TileIndexDiff offset);
 #endif
 
 /**
  * Adds a given offset to a tile.
  *
- * @param tile The tile to add an offset on it
- * @param x The x offset to add to the tile
- * @param y The y offset to add to the tile
+ * @param tile The tile to add an offset to.
+ * @param x The x offset to add to the tile.
+ * @param y The y offset to add to the tile.
+ * @return The resulting tile.
  */
-#define TILE_ADDXY(tile, x, y) TILE_ADD(tile, TileDiffXY(x, y))
+inline TileIndex TileAddXY(TileIndex tile, int x, int y)
+{
+	return TileAdd(tile, TileDiffXY(x, y));
+}
 
 TileIndex TileAddWrap(TileIndex tile, int addx, int addy);
 
@@ -487,7 +489,7 @@ TileIndex TileAddWrap(TileIndex tile, int addx, int addy);
  * @param dir The given direction
  * @return The offset as TileIndexDiffC value
  */
-static inline TileIndexDiffC TileIndexDiffCByDiagDir(DiagDirection dir)
+inline TileIndexDiffC TileIndexDiffCByDiagDir(DiagDirection dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_diagdir[DIAGDIR_END];
 
@@ -501,7 +503,7 @@ static inline TileIndexDiffC TileIndexDiffCByDiagDir(DiagDirection dir)
  * @param dir The given direction
  * @return The offset as TileIndexDiffC value
  */
-static inline TileIndexDiffC TileIndexDiffCByDir(Direction dir)
+inline TileIndexDiffC TileIndexDiffCByDir(Direction dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_dir[DIR_END];
 
@@ -519,7 +521,7 @@ static inline TileIndexDiffC TileIndexDiffCByDir(Direction dir)
  * @param diff The offset to add on the tile
  * @return The resulting TileIndex
  */
-static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC diff)
+inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC diff)
 {
 	int x = TileX(tile) + diff.x;
 	int y = TileY(tile) + diff.y;
@@ -535,7 +537,7 @@ static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC dif
  * @param tile_b to tile
  * @return the difference between tila_a and tile_b
  */
-static inline TileIndexDiffC TileIndexToTileIndexDiffC(TileIndex tile_a, TileIndex tile_b)
+inline TileIndexDiffC TileIndexToTileIndexDiffC(TileIndex tile_a, TileIndex tile_b)
 {
 	TileIndexDiffC difference;
 
@@ -560,7 +562,7 @@ uint DistanceFromEdgeDir(TileIndex, DiagDirection); ///< distance from the map e
  * @return The resulting TileIndexDiff
  * @see TileIndexDiffCByDiagDir
  */
-static inline TileIndexDiff TileOffsByDiagDir(DiagDirection dir)
+inline TileIndexDiff TileOffsByDiagDir(DiagDirection dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_diagdir[DIAGDIR_END];
 
@@ -574,7 +576,7 @@ static inline TileIndexDiff TileOffsByDiagDir(DiagDirection dir)
  * @param dir The direction to convert from
  * @return The resulting TileIndexDiff
  */
-static inline TileIndexDiff TileOffsByDir(Direction dir)
+inline TileIndexDiff TileOffsByDir(Direction dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_dir[DIR_END];
 
@@ -589,9 +591,9 @@ static inline TileIndexDiff TileOffsByDir(Direction dir)
  * @param dir The direction in which we want to step
  * @return the moved tile
  */
-static inline TileIndex TileAddByDir(TileIndex tile, Direction dir)
+inline TileIndex TileAddByDir(TileIndex tile, Direction dir)
 {
-	return TILE_ADD(tile, TileOffsByDir(dir));
+	return TileAdd(tile, TileOffsByDir(dir));
 }
 
 /**
@@ -601,9 +603,9 @@ static inline TileIndex TileAddByDir(TileIndex tile, Direction dir)
  * @param dir The direction in which we want to step
  * @return the moved tile
  */
-static inline TileIndex TileAddByDiagDir(TileIndex tile, DiagDirection dir)
+inline TileIndex TileAddByDiagDir(TileIndex tile, DiagDirection dir)
 {
-	return TILE_ADD(tile, TileOffsByDiagDir(dir));
+	return TileAdd(tile, TileOffsByDiagDir(dir));
 }
 
 /**
@@ -613,7 +615,7 @@ static inline TileIndex TileAddByDiagDir(TileIndex tile, DiagDirection dir)
  * @param tile_to Destination tile
  * @return DiagDirection from tile_from towards tile_to, or INVALID_DIAGDIR if the tiles are not on an axis
  */
-static inline DiagDirection DiagdirBetweenTiles(TileIndex tile_from, TileIndex tile_to)
+inline DiagDirection DiagdirBetweenTiles(TileIndex tile_from, TileIndex tile_to)
 {
 	int dx = (int)TileX(tile_to) - (int)TileX(tile_from);
 	int dy = (int)TileY(tile_to) - (int)TileY(tile_from);
@@ -643,7 +645,7 @@ bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOn
  * @param r the random 'seed'
  * @return a valid tile
  */
-static inline TileIndex RandomTileSeed(uint32 r)
+inline TileIndex RandomTileSeed(uint32_t r)
 {
 	return Map::WrapToMap(r);
 }

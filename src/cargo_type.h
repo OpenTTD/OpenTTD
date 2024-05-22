@@ -11,109 +11,107 @@
 #define CARGO_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "core/strong_typedef_type.hpp"
+
+/** Globally unique label of a cargo type. */
+using CargoLabel = StrongType::Typedef<uint32_t, struct CargoLabelTag, StrongType::Compare>;
 
 /**
  * Cargo slots to indicate a cargo type within a game.
- * Numbers are re-used between different climates.
- * @see CargoTypes
  */
-typedef byte CargoID;
+using CargoID = uint8_t;
 
-/** Available types of cargo */
-enum CargoType {
-	/* Temperate */
-	CT_PASSENGERS   =  0,
-	CT_COAL         =  1,
-	CT_MAIL         =  2,
-	CT_OIL          =  3,
-	CT_LIVESTOCK    =  4,
-	CT_GOODS        =  5,
-	CT_GRAIN        =  6,
-	CT_WOOD         =  7,
-	CT_IRON_ORE     =  8,
-	CT_STEEL        =  9,
-	CT_VALUABLES    = 10,
+/**
+ * Available types of cargo
+ * Labels may be re-used between different climates.
+ */
 
-	/* Arctic */
-	CT_WHEAT        =  6,
-	CT_HILLY_UNUSED =  8,
-	CT_PAPER        =  9,
-	CT_GOLD         = 10,
-	CT_FOOD         = 11,
+/* Temperate */
+static constexpr CargoLabel CT_PASSENGERS   = CargoLabel{'PASS'};
+static constexpr CargoLabel CT_COAL         = CargoLabel{'COAL'};
+static constexpr CargoLabel CT_MAIL         = CargoLabel{'MAIL'};
+static constexpr CargoLabel CT_OIL          = CargoLabel{'OIL_'};
+static constexpr CargoLabel CT_LIVESTOCK    = CargoLabel{'LVST'};
+static constexpr CargoLabel CT_GOODS        = CargoLabel{'GOOD'};
+static constexpr CargoLabel CT_GRAIN        = CargoLabel{'GRAI'};
+static constexpr CargoLabel CT_WOOD         = CargoLabel{'WOOD'};
+static constexpr CargoLabel CT_IRON_ORE     = CargoLabel{'IORE'};
+static constexpr CargoLabel CT_STEEL        = CargoLabel{'STEL'};
+static constexpr CargoLabel CT_VALUABLES    = CargoLabel{'VALU'};
 
-	/* Tropic */
-	CT_RUBBER       =  1,
-	CT_FRUIT        =  4,
-	CT_MAIZE        =  6,
-	CT_COPPER_ORE   =  8,
-	CT_WATER        =  9,
-	CT_DIAMONDS     = 10,
+/* Arctic */
+static constexpr CargoLabel CT_WHEAT        = CargoLabel{'WHEA'};
+static constexpr CargoLabel CT_PAPER        = CargoLabel{'PAPR'};
+static constexpr CargoLabel CT_GOLD         = CargoLabel{'GOLD'};
+static constexpr CargoLabel CT_FOOD         = CargoLabel{'FOOD'};
 
-	/* Toyland */
-	CT_SUGAR        =  1,
-	CT_TOYS         =  3,
-	CT_BATTERIES    =  4,
-	CT_CANDY        =  5,
-	CT_TOFFEE       =  6,
-	CT_COLA         =  7,
-	CT_COTTON_CANDY =  8,
-	CT_BUBBLES      =  9,
-	CT_PLASTIC      = 10,
-	CT_FIZZY_DRINKS = 11,
+/* Tropic */
+static constexpr CargoLabel CT_RUBBER       = CargoLabel{'RUBR'};
+static constexpr CargoLabel CT_FRUIT        = CargoLabel{'FRUT'};
+static constexpr CargoLabel CT_MAIZE        = CargoLabel{'MAIZ'};
+static constexpr CargoLabel CT_COPPER_ORE   = CargoLabel{'CORE'};
+static constexpr CargoLabel CT_WATER        = CargoLabel{'WATR'};
+static constexpr CargoLabel CT_DIAMONDS     = CargoLabel{'DIAM'};
 
-	NUM_ORIGINAL_CARGO = 12,
-	NUM_CARGO       = 64,   ///< Maximal number of cargo types in a game.
+/* Toyland */
+static constexpr CargoLabel CT_SUGAR        = CargoLabel{'SUGR'};
+static constexpr CargoLabel CT_TOYS         = CargoLabel{'TOYS'};
+static constexpr CargoLabel CT_BATTERIES    = CargoLabel{'BATT'};
+static constexpr CargoLabel CT_CANDY        = CargoLabel{'SWET'};
+static constexpr CargoLabel CT_TOFFEE       = CargoLabel{'TOFF'};
+static constexpr CargoLabel CT_COLA         = CargoLabel{'COLA'};
+static constexpr CargoLabel CT_COTTON_CANDY = CargoLabel{'CTCD'};
+static constexpr CargoLabel CT_BUBBLES      = CargoLabel{'BUBL'};
+static constexpr CargoLabel CT_PLASTIC      = CargoLabel{'PLST'};
+static constexpr CargoLabel CT_FIZZY_DRINKS = CargoLabel{'FZDR'};
 
-	CT_AUTO_REFIT   = 0xFD, ///< Automatically choose cargo type when doing auto refitting.
-	CT_NO_REFIT     = 0xFE, ///< Do not refit cargo of a vehicle (used in vehicle orders and auto-replace/auto-new).
-	CT_INVALID      = 0xFF, ///< Invalid cargo type.
+/** Dummy label for engines that carry no cargo; they actually carry 0 passengers. */
+static constexpr CargoLabel CT_NONE         = CT_PASSENGERS;
+
+static constexpr CargoLabel CT_INVALID      = CargoLabel{UINT32_MAX}; ///< Invalid cargo type.
+
+static const CargoID NUM_ORIGINAL_CARGO = 12; ///< Original number of cargo types.
+static const CargoID NUM_CARGO = 64; ///< Maximum number of cargo types in a game.
+
+/* CARGO_AUTO_REFIT and CARGO_NO_REFIT are stored in save-games for refit-orders, so should not be changed. */
+static const CargoID CARGO_AUTO_REFIT = 0xFD; ///< Automatically choose cargo type when doing auto refitting.
+static const CargoID CARGO_NO_REFIT = 0xFE; ///< Do not refit cargo of a vehicle (used in vehicle orders and auto-replace/auto-renew).
+
+static const CargoID INVALID_CARGO = UINT8_MAX;
+
+/** Mixed cargo types for definitions with cargo that can vary depending on climate. */
+enum MixedCargoType {
+	MCT_LIVESTOCK_FRUIT, ///< Cargo can be livestock or fruit.
+	MCT_GRAIN_WHEAT_MAIZE, ///< Cargo can be grain, wheat or maize.
+	MCT_VALUABLES_GOLD_DIAMONDS, ///< Cargo can be valuables, gold or diamonds.
+};
+
+/**
+ * Special cargo filter criteria.
+ * These are used by user interface code only and must not be assigned to any entity. Not all values are valid for every UI filter.
+ */
+namespace CargoFilterCriteria {
+	static constexpr CargoID CF_ANY     = NUM_CARGO;     ///< Show all items independent of carried cargo (i.e. no filtering)
+	static constexpr CargoID CF_NONE    = NUM_CARGO + 1; ///< Show only items which do not carry cargo (e.g. train engines)
+	static constexpr CargoID CF_ENGINES = NUM_CARGO + 2; ///< Show only engines (for rail vehicles only)
+	static constexpr CargoID CF_FREIGHT = NUM_CARGO + 3; ///< Show only vehicles which carry any freight (non-passenger) cargo
+
+	static constexpr CargoID CF_NO_RATING   = NUM_CARGO + 4; ///< Show items with no rating (station list)
+	static constexpr CargoID CF_SELECT_ALL  = NUM_CARGO + 5; ///< Select all items (station list)
+	static constexpr CargoID CF_EXPAND_LIST = NUM_CARGO + 6; ///< Expand list to show all items (station list)
 };
 
 /** Test whether cargo type is not CT_INVALID */
-inline bool IsCargoTypeValid(CargoType t) { return t != CT_INVALID; }
-/** Test whether cargo type is not CT_INVALID */
-inline bool IsCargoIDValid(CargoID t) { return t != CT_INVALID; }
+inline bool IsValidCargoType(CargoLabel t) { return t != CT_INVALID; }
+/** Test whether cargo type is not INVALID_CARGO */
+inline bool IsValidCargoID(CargoID t) { return t != INVALID_CARGO; }
 
-typedef uint64 CargoTypes;
+typedef uint64_t CargoTypes;
 
 static const CargoTypes ALL_CARGOTYPES = (CargoTypes)UINT64_MAX;
 
 /** Class for storing amounts of cargo */
-struct CargoArray {
-private:
-	uint amount[NUM_CARGO]; ///< Amount of each type of cargo.
-
-public:
-	/** Default constructor. */
-	inline CargoArray()
-	{
-		this->Clear();
-	}
-
-	/** Reset all entries. */
-	inline void Clear()
-	{
-		memset(this->amount, 0, sizeof(this->amount));
-	}
-
-	/**
-	 * Read/write access to an amount of a specific cargo type.
-	 * @param cargo Cargo type to access.
-	 */
-	inline uint &operator[](CargoID cargo)
-	{
-		return this->amount[cargo];
-	}
-
-	/**
-	 * Read-only access to an amount of a specific cargo type.
-	 * @param cargo Cargo type to access.
-	 */
-	inline const uint &operator[](CargoID cargo) const
-	{
-		return this->amount[cargo];
-	}
-
+struct CargoArray : std::array<uint, NUM_CARGO> {
 	/**
 	 * Get the sum of all cargo amounts.
 	 * @return The sum.
@@ -121,36 +119,28 @@ public:
 	template <typename T>
 	inline const T GetSum() const
 	{
-		T ret = 0;
-		for (size_t i = 0; i < lengthof(this->amount); i++) {
-			ret += this->amount[i];
-		}
-		return ret;
+		return std::reduce(this->begin(), this->end(), T{});
 	}
 
 	/**
 	 * Get the amount of cargos that have an amount.
 	 * @return The amount.
 	 */
-	inline byte GetCount() const
+	inline uint GetCount() const
 	{
-		byte count = 0;
-		for (size_t i = 0; i < lengthof(this->amount); i++) {
-			if (this->amount[i] != 0) count++;
-		}
-		return count;
+		return std::count_if(this->begin(), this->end(), [](uint amount) { return amount != 0; });
 	}
 };
 
 
 /** Types of cargo source and destination */
-enum SourceType : byte {
-	ST_INDUSTRY,     ///< Source/destination is an industry
-	ST_TOWN,         ///< Source/destination is a town
-	ST_HEADQUARTERS, ///< Source/destination are company headquarters
+enum class SourceType : uint8_t {
+	Industry,     ///< Source/destination is an industry
+	Town,         ///< Source/destination is a town
+	Headquarters, ///< Source/destination are company headquarters
 };
 
-typedef uint16 SourceID; ///< Contains either industry ID, town ID or company ID (or INVALID_SOURCE)
+typedef uint16_t SourceID; ///< Contains either industry ID, town ID or company ID (or INVALID_SOURCE)
 static const SourceID INVALID_SOURCE = 0xFFFF; ///< Invalid/unknown index of source
 
 #endif /* CARGO_TYPE_H */

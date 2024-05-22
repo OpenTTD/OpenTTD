@@ -10,8 +10,11 @@
 #ifndef FONT_WIN32_H
 #define FONT_WIN32_H
 
+#include "../../core/alloc_type.hpp"
 #include "../../fontcache/truetypefontcache.h"
 #include "win32.h"
+
+#include <windows.h>
 
 /** Font cache for fonts that are based on a Win32 font. */
 class Win32FontCache : public TrueTypeFontCache {
@@ -23,21 +26,23 @@ private:
 	SIZE glyph_size;      ///< Maximum size of regular glyphs.
 	std::string fontname; ///< Cached copy of loaded font facename
 
-	void SetFontSize(FontSize fs, int pixels);
+	ReusableBuffer<uint8_t> render_buffer; ///< Temporary buffer for rendering glyphs.
+
+	void SetFontSize(int pixels);
 
 protected:
-	const void *InternalGetFontTable(uint32 tag, size_t &length) override;
 	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
 
 public:
 	Win32FontCache(FontSize fs, const LOGFONT &logfont, int pixels);
 	~Win32FontCache();
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(WChar key) override;
-	const char *GetFontName() override { return this->fontname.c_str(); }
+	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
+	std::string GetFontName() override { return this->fontname; }
 	const void *GetOSHandle() override { return &this->logfont; }
 };
 
 void LoadWin32Font(FontSize fs);
+void LoadWin32Font(FontSize fs, const std::string &file_name, uint size);
 
 #endif /* FONT_WIN32_H */

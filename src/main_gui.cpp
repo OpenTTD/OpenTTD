@@ -30,10 +30,11 @@
 #include "linkgraph/linkgraph_gui.h"
 #include "tilehighlight_func.h"
 #include "hotkeys.h"
-#include "guitimer_func.h"
 #include "error.h"
 #include "news_gui.h"
 #include "misc_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "saveload/saveload.h"
 
@@ -59,7 +60,7 @@
  * @param mode Tile highlighting mode, e.g. drawing a rectangle or a dot on the ground
  * @return true if the button is clicked, false if it's unclicked
  */
-bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, HighLightStyle mode)
+bool HandlePlacePushButton(Window *w, WidgetID widget, CursorID cursor, HighLightStyle mode)
 {
 	if (w->IsWidgetDisabled(widget)) return false;
 
@@ -77,7 +78,7 @@ bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, HighLightStyl
 }
 
 
-void CcPlaySound_EXPLOSION(Commands cmd, const CommandCost &result, TileIndex tile)
+void CcPlaySound_EXPLOSION(Commands, const CommandCost &result, TileIndex tile)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_12_EXPLOSION, tile);
 }
@@ -175,7 +176,7 @@ void FixTitleGameZoom(int zoom_adjust)
 	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
 }
 
-static const struct NWidgetPart _nested_main_window_widgets[] = {
+static constexpr NWidgetPart _nested_main_window_widgets[] = {
 	NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_M_VIEWPORT), SetResize(1, 1),
 };
 
@@ -185,6 +186,7 @@ enum {
 	GHK_CONSOLE,
 	GHK_BOUNDING_BOXES,
 	GHK_DIRTY_BLOCKS,
+	GHK_WIDGET_OUTLINES,
 	GHK_CENTER,
 	GHK_CENTER_ZOOM,
 	GHK_RESET_OBJECT_TO_PLACE,
@@ -209,12 +211,6 @@ enum {
 
 struct MainWindow : Window
 {
-	GUITimer refresh;
-
-	/* Refresh times in milliseconds */
-	static const uint LINKGRAPH_REFRESH_PERIOD = 7650;
-	static const uint LINKGRAPH_DELAY = 450;
-
 	MainWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->InitNested(0);
@@ -225,15 +221,12 @@ struct MainWindow : Window
 		nvp->InitializeViewport(this, TileXY(32, 32), ScaleZoomGUI(ZOOM_LVL_VIEWPORT));
 
 		this->viewport->overlay = std::make_shared<LinkGraphOverlay>(this, WID_M_VIEWPORT, 0, 0, 2);
-		this->refresh.SetInterval(LINKGRAPH_DELAY);
+		this->refresh_timeout.Reset();
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
+	/** Refresh the link-graph overlay. */
+	void RefreshLinkGraph()
 	{
-		if (!this->refresh.Elapsed(delta_ms)) return;
-
-		this->refresh.SetInterval(LINKGRAPH_REFRESH_PERIOD);
-
 		if (this->viewport->overlay->GetCargoMask() == 0 ||
 				this->viewport->overlay->GetCompanyMask() == 0) {
 			return;
@@ -243,22 +236,38 @@ struct MainWindow : Window
 		this->GetWidget<NWidgetBase>(WID_M_VIEWPORT)->SetDirty(this);
 	}
 
+	/** Refresh the link-graph overlay on a regular interval. */
+	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(7650), [this](auto) {
+		RefreshLinkGraph();
+	}};
+
+	/**
+	 * Sometimes when something happened, force an update to the link-graph a bit sooner.
+	 *
+	 * We don't do it instantly on those changes, as for example when you are scrolling,
+	 * constantly refreshing the link-graph would be very slow. So we delay it a bit,
+	 * and only draw it once the scrolling settles down.
+	 */
+	TimeoutTimer<TimerWindow> refresh_timeout = {std::chrono::milliseconds(450), [this]() {
+		RefreshLinkGraph();
+	}};
+
 	void OnPaint() override
 	{
 		this->DrawWidgets();
 		if (_game_mode == GM_MENU) {
-			static const SpriteID title_sprites[] = {SPR_OTTD_O, SPR_OTTD_P, SPR_OTTD_E, SPR_OTTD_N, SPR_OTTD_T, SPR_OTTD_T, SPR_OTTD_D};
+			static const std::initializer_list<SpriteID> title_sprites = {SPR_OTTD_O, SPR_OTTD_P, SPR_OTTD_E, SPR_OTTD_N, SPR_OTTD_T, SPR_OTTD_T, SPR_OTTD_D};
 			uint letter_spacing = ScaleGUITrad(10);
-			int name_width = (lengthof(title_sprites) - 1) * letter_spacing;
+			int name_width = static_cast<int>(std::size(title_sprites) - 1) * letter_spacing;
 
-			for (uint i = 0; i < lengthof(title_sprites); i++) {
-				name_width += GetSpriteSize(title_sprites[i]).width;
+			for (const SpriteID &sprite : title_sprites) {
+				name_width += GetSpriteSize(sprite).width;
 			}
 			int off_x = (this->width - name_width) / 2;
 
-			for (uint i = 0; i < lengthof(title_sprites); i++) {
-				DrawSprite(title_sprites[i], PAL_NONE, off_x, ScaleGUITrad(50));
-				off_x += GetSpriteSize(title_sprites[i]).width + letter_spacing;
+			for (const SpriteID &sprite : title_sprites) {
+				DrawSprite(sprite, PAL_NONE, off_x, ScaleGUITrad(50));
+				off_x += GetSpriteSize(sprite).width + letter_spacing;
 			}
 		}
 	}
@@ -299,6 +308,10 @@ struct MainWindow : Window
 			case GHK_DIRTY_BLOCKS:
 				ToggleDirtyBlocks();
 				return ES_HANDLED;
+
+			case GHK_WIDGET_OUTLINES:
+				ToggleWidgetOutlines();
+				return ES_HANDLED;
 		}
 
 		if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
@@ -322,7 +335,7 @@ struct MainWindow : Window
 			case GHK_REFRESH_SCREEN: MarkWholeScreenDirty(); break;
 
 			case GHK_CRASH: // Crash the game
-				*(volatile byte *)nullptr = 0;
+				*(volatile uint8_t *)nullptr = 0;
 				break;
 
 			case GHK_MONEY: // Gimme money
@@ -416,7 +429,7 @@ struct MainWindow : Window
 		this->viewport->scrollpos_y += ScaleByZoom(delta.y, this->viewport->zoom);
 		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
 		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
-		this->refresh.SetInterval(LINKGRAPH_DELAY);
+		this->refresh_timeout.Reset();
 	}
 
 	void OnMouseWheel(int wheel) override
@@ -431,11 +444,11 @@ struct MainWindow : Window
 		if (this->viewport != nullptr) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
-			this->refresh.SetInterval(LINKGRAPH_DELAY);
+			this->refresh_timeout.Reset();
 		}
 	}
 
-	bool OnTooltip(Point pt, int widget, TooltipCloseCondition close_cond) override
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override
 	{
 		if (widget != WID_M_VIEWPORT) return false;
 		return this->viewport->overlay->ShowTooltip(pt, close_cond);
@@ -446,75 +459,65 @@ struct MainWindow : Window
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		/* Forward the message to the appropriate toolbar (ingame or scenario editor) */
 		InvalidateWindowData(WC_MAIN_TOOLBAR, 0, data, true);
 	}
 
-	static HotkeyList hotkeys;
-};
-
-const uint16 _ghk_quit_keys[] = {'Q' | WKC_CTRL, 'Q' | WKC_META, 0};
-const uint16 _ghk_abandon_keys[] = {'W' | WKC_CTRL, 'W' | WKC_META, 0};
-const uint16 _ghk_chat_keys[] = {WKC_RETURN, 'T', 0};
-const uint16 _ghk_chat_all_keys[] = {WKC_SHIFT | WKC_RETURN, WKC_SHIFT | 'T', 0};
-const uint16 _ghk_chat_company_keys[] = {WKC_CTRL | WKC_RETURN, WKC_CTRL | 'T', 0};
-const uint16 _ghk_chat_server_keys[] = {WKC_CTRL | WKC_SHIFT | WKC_RETURN, WKC_CTRL | WKC_SHIFT | 'T', 0};
-
-static Hotkey global_hotkeys[] = {
-	Hotkey(_ghk_quit_keys, "quit", GHK_QUIT),
-	Hotkey(_ghk_abandon_keys, "abandon", GHK_ABANDON),
-	Hotkey(WKC_BACKQUOTE, "console", GHK_CONSOLE),
-	Hotkey('B' | WKC_CTRL, "bounding_boxes", GHK_BOUNDING_BOXES),
-	Hotkey('I' | WKC_CTRL, "dirty_blocks", GHK_DIRTY_BLOCKS),
-	Hotkey('C', "center", GHK_CENTER),
-	Hotkey('Z', "center_zoom", GHK_CENTER_ZOOM),
-	Hotkey(WKC_ESC, "reset_object_to_place", GHK_RESET_OBJECT_TO_PLACE),
-	Hotkey(WKC_DELETE, "delete_windows", GHK_DELETE_WINDOWS),
-	Hotkey(WKC_DELETE | WKC_SHIFT, "delete_all_windows", GHK_DELETE_NONVITAL_WINDOWS),
-	Hotkey(WKC_DELETE | WKC_CTRL, "delete_all_messages", GHK_DELETE_ALL_MESSAGES),
-	Hotkey('R' | WKC_CTRL, "refresh_screen", GHK_REFRESH_SCREEN),
+	static inline HotkeyList hotkeys{"global", {
+		Hotkey({'Q' | WKC_CTRL, 'Q' | WKC_META}, "quit", GHK_QUIT),
+		Hotkey({'W' | WKC_CTRL, 'W' | WKC_META}, "abandon", GHK_ABANDON),
+		Hotkey(WKC_BACKQUOTE, "console", GHK_CONSOLE),
+		Hotkey('B' | WKC_CTRL, "bounding_boxes", GHK_BOUNDING_BOXES),
+		Hotkey('I' | WKC_CTRL, "dirty_blocks", GHK_DIRTY_BLOCKS),
+		Hotkey('O' | WKC_CTRL, "widget_outlines", GHK_WIDGET_OUTLINES),
+		Hotkey('C', "center", GHK_CENTER),
+		Hotkey('Z', "center_zoom", GHK_CENTER_ZOOM),
+		Hotkey(WKC_ESC, "reset_object_to_place", GHK_RESET_OBJECT_TO_PLACE),
+		Hotkey(WKC_DELETE, "delete_windows", GHK_DELETE_WINDOWS),
+		Hotkey(WKC_DELETE | WKC_SHIFT, "delete_all_windows", GHK_DELETE_NONVITAL_WINDOWS),
+		Hotkey(WKC_DELETE | WKC_CTRL, "delete_all_messages", GHK_DELETE_ALL_MESSAGES),
+		Hotkey('R' | WKC_CTRL, "refresh_screen", GHK_REFRESH_SCREEN),
 #if defined(_DEBUG)
-	Hotkey('0' | WKC_ALT, "crash_game", GHK_CRASH),
-	Hotkey('1' | WKC_ALT, "money", GHK_MONEY),
-	Hotkey('2' | WKC_ALT, "update_coordinates", GHK_UPDATE_COORDS),
+		Hotkey('0' | WKC_ALT, "crash_game", GHK_CRASH),
+		Hotkey('1' | WKC_ALT, "money", GHK_MONEY),
+		Hotkey('2' | WKC_ALT, "update_coordinates", GHK_UPDATE_COORDS),
 #endif
-	Hotkey('1' | WKC_CTRL, "transparency_signs", GHK_TOGGLE_TRANSPARENCY),
-	Hotkey('2' | WKC_CTRL, "transparency_trees", GHK_TOGGLE_TRANSPARENCY + 1),
-	Hotkey('3' | WKC_CTRL, "transparency_houses", GHK_TOGGLE_TRANSPARENCY + 2),
-	Hotkey('4' | WKC_CTRL, "transparency_industries", GHK_TOGGLE_TRANSPARENCY + 3),
-	Hotkey('5' | WKC_CTRL, "transparency_buildings", GHK_TOGGLE_TRANSPARENCY + 4),
-	Hotkey('6' | WKC_CTRL, "transparency_bridges", GHK_TOGGLE_TRANSPARENCY + 5),
-	Hotkey('7' | WKC_CTRL, "transparency_structures", GHK_TOGGLE_TRANSPARENCY + 6),
-	Hotkey('8' | WKC_CTRL, "transparency_catenary", GHK_TOGGLE_TRANSPARENCY + 7),
-	Hotkey('9' | WKC_CTRL, "transparency_loading", GHK_TOGGLE_TRANSPARENCY + 8),
-	Hotkey('1' | WKC_CTRL | WKC_SHIFT, "invisibility_signs", GHK_TOGGLE_INVISIBILITY),
-	Hotkey('2' | WKC_CTRL | WKC_SHIFT, "invisibility_trees", GHK_TOGGLE_INVISIBILITY + 1),
-	Hotkey('3' | WKC_CTRL | WKC_SHIFT, "invisibility_houses", GHK_TOGGLE_INVISIBILITY + 2),
-	Hotkey('4' | WKC_CTRL | WKC_SHIFT, "invisibility_industries", GHK_TOGGLE_INVISIBILITY + 3),
-	Hotkey('5' | WKC_CTRL | WKC_SHIFT, "invisibility_buildings", GHK_TOGGLE_INVISIBILITY + 4),
-	Hotkey('6' | WKC_CTRL | WKC_SHIFT, "invisibility_bridges", GHK_TOGGLE_INVISIBILITY + 5),
-	Hotkey('7' | WKC_CTRL | WKC_SHIFT, "invisibility_structures", GHK_TOGGLE_INVISIBILITY + 6),
-	Hotkey('8' | WKC_CTRL | WKC_SHIFT, "invisibility_catenary", GHK_TOGGLE_INVISIBILITY + 7),
-	Hotkey('X' | WKC_CTRL, "transparency_toolbar", GHK_TRANSPARENCY_TOOLBAR),
-	Hotkey('X', "toggle_transparency", GHK_TRANSPARANCY),
-	Hotkey(_ghk_chat_keys, "chat", GHK_CHAT),
-	Hotkey(_ghk_chat_all_keys, "chat_all", GHK_CHAT_ALL),
-	Hotkey(_ghk_chat_company_keys, "chat_company", GHK_CHAT_COMPANY),
-	Hotkey(_ghk_chat_server_keys, "chat_server", GHK_CHAT_SERVER),
-	Hotkey(WKC_SPACE, "close_news", GHK_CLOSE_NEWS),
-	Hotkey(WKC_SPACE, "close_error", GHK_CLOSE_ERROR),
-	HOTKEY_LIST_END
+		Hotkey('1' | WKC_CTRL, "transparency_signs", GHK_TOGGLE_TRANSPARENCY),
+		Hotkey('2' | WKC_CTRL, "transparency_trees", GHK_TOGGLE_TRANSPARENCY + 1),
+		Hotkey('3' | WKC_CTRL, "transparency_houses", GHK_TOGGLE_TRANSPARENCY + 2),
+		Hotkey('4' | WKC_CTRL, "transparency_industries", GHK_TOGGLE_TRANSPARENCY + 3),
+		Hotkey('5' | WKC_CTRL, "transparency_buildings", GHK_TOGGLE_TRANSPARENCY + 4),
+		Hotkey('6' | WKC_CTRL, "transparency_bridges", GHK_TOGGLE_TRANSPARENCY + 5),
+		Hotkey('7' | WKC_CTRL, "transparency_structures", GHK_TOGGLE_TRANSPARENCY + 6),
+		Hotkey('8' | WKC_CTRL, "transparency_catenary", GHK_TOGGLE_TRANSPARENCY + 7),
+		Hotkey('9' | WKC_CTRL, "transparency_loading", GHK_TOGGLE_TRANSPARENCY + 8),
+		Hotkey('1' | WKC_CTRL | WKC_SHIFT, "invisibility_signs", GHK_TOGGLE_INVISIBILITY),
+		Hotkey('2' | WKC_CTRL | WKC_SHIFT, "invisibility_trees", GHK_TOGGLE_INVISIBILITY + 1),
+		Hotkey('3' | WKC_CTRL | WKC_SHIFT, "invisibility_houses", GHK_TOGGLE_INVISIBILITY + 2),
+		Hotkey('4' | WKC_CTRL | WKC_SHIFT, "invisibility_industries", GHK_TOGGLE_INVISIBILITY + 3),
+		Hotkey('5' | WKC_CTRL | WKC_SHIFT, "invisibility_buildings", GHK_TOGGLE_INVISIBILITY + 4),
+		Hotkey('6' | WKC_CTRL | WKC_SHIFT, "invisibility_bridges", GHK_TOGGLE_INVISIBILITY + 5),
+		Hotkey('7' | WKC_CTRL | WKC_SHIFT, "invisibility_structures", GHK_TOGGLE_INVISIBILITY + 6),
+		Hotkey('8' | WKC_CTRL | WKC_SHIFT, "invisibility_catenary", GHK_TOGGLE_INVISIBILITY + 7),
+		Hotkey('X' | WKC_CTRL, "transparency_toolbar", GHK_TRANSPARENCY_TOOLBAR),
+		Hotkey('X', "toggle_transparency", GHK_TRANSPARANCY),
+		Hotkey({WKC_RETURN, 'T'}, "chat", GHK_CHAT),
+		Hotkey({WKC_SHIFT | WKC_RETURN, WKC_SHIFT | 'T'}, "chat_all", GHK_CHAT_ALL),
+		Hotkey({WKC_CTRL | WKC_RETURN, WKC_CTRL | 'T'}, "chat_company", GHK_CHAT_COMPANY),
+		Hotkey({WKC_CTRL | WKC_SHIFT | WKC_RETURN, WKC_CTRL | WKC_SHIFT | 'T'}, "chat_server", GHK_CHAT_SERVER),
+		Hotkey(WKC_SPACE, "close_news", GHK_CLOSE_NEWS),
+		Hotkey(WKC_SPACE, "close_error", GHK_CLOSE_ERROR),
+	}};
 };
-HotkeyList MainWindow::hotkeys("global", global_hotkeys);
 
 static WindowDesc _main_window_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_MAIN_WINDOW, WC_NONE,
-	0,
-	_nested_main_window_widgets, lengthof(_nested_main_window_widgets),
+	WDF_NO_CLOSE,
+	std::begin(_nested_main_window_widgets), std::end(_nested_main_window_widgets),
 	&MainWindow::hotkeys
 );
 
@@ -523,7 +526,7 @@ static WindowDesc _main_window_desc(
  * @param keycode The keycode that was pressed by the user.
  * @return True iff the keycode matches one of the hotkeys for 'quit'.
  */
-bool IsQuitKey(uint16 keycode)
+bool IsQuitKey(uint16_t keycode)
 {
 	int num = MainWindow::hotkeys.CheckMatch(keycode);
 	return num == GHK_QUIT;
@@ -537,11 +540,12 @@ void ShowSelectGameWindow();
  */
 void SetupColoursAndInitialWindow()
 {
-	for (uint i = 0; i != 16; i++) {
-		const byte *b = GetNonSprite(PALETTE_RECOLOUR_START + i, ST_RECOLOUR);
-
-		assert(b);
-		memcpy(_colour_gradient[i], b + 0xC6, sizeof(_colour_gradient[i]));
+	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
+		const uint8_t *b = GetNonSprite(GENERAL_SPRITE_COLOUR(i), SpriteType::Recolour) + 1;
+		assert(b != nullptr);
+		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
+			SetColourGradient(i, j, b[0xC6 + j]);
+		}
 	}
 
 	new MainWindow(&_main_window_desc);

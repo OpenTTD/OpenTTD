@@ -65,7 +65,7 @@ AIRPORT_GENERIC(dummy, nullptr, 0, AirportFTAClass::ALL, 0)
 #include "table/airport_defaults.h"
 
 
-static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA);
+static uint16_t AirportGetNofElements(const AirportFTAbuildup *apFA);
 static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA);
 
 
@@ -110,12 +110,12 @@ AirportMovingData RotateAirportMovingData(const AirportMovingData *orig, Directi
 
 AirportFTAClass::AirportFTAClass(
 	const AirportMovingData *moving_data_,
-	const byte *terminals_,
-	const byte num_helipads_,
-	const byte *entry_points_,
+	const uint8_t *terminals_,
+	const uint8_t num_helipads_,
+	const uint8_t *entry_points_,
 	Flags flags_,
 	const AirportFTAbuildup *apFA,
-	byte delta_z_
+	uint8_t delta_z_
 ) :
 	moving_data(moving_data_),
 	terminals(terminals_),
@@ -147,9 +147,9 @@ AirportFTAClass::~AirportFTAClass()
  * Since it is actually just a big array of AirportFTA types, we only
  * know one element from the other by differing 'position' identifiers
  */
-static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA)
+static uint16_t AirportGetNofElements(const AirportFTAbuildup *apFA)
 {
-	uint16 nofelements = 0;
+	uint16_t nofelements = 0;
 	int temp = apFA[0].position;
 
 	for (uint i = 0; i < MAX_ELEMENTS; i++) {
@@ -171,7 +171,7 @@ static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA)
 static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA)
 {
 	AirportFTA *FAutomata = MallocT<AirportFTA>(nofelements);
-	uint16 internalcounter = 0;
+	uint16_t internalcounter = 0;
 
 	for (uint i = 0; i < nofelements; i++) {
 		AirportFTA *current = &FAutomata[i];
@@ -204,7 +204,7 @@ static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildu
  * @param airport_type %Airport type to query FTA from. @see AirportTypes
  * @return Finite state machine of the airport.
  */
-const AirportFTAClass *GetAirport(const byte airport_type)
+const AirportFTAClass *GetAirport(const uint8_t airport_type)
 {
 	if (airport_type == AT_DUMMY) return &_airportfta_dummy;
 	return AirportSpec::Get(airport_type)->fsm;
@@ -215,7 +215,7 @@ const AirportFTAClass *GetAirport(const byte airport_type)
  * @param hangar_tile The tile on which the vehicle is build
  * @return The position (index in airport node array) where the aircraft ends up
  */
-byte GetVehiclePosOnBuild(TileIndex hangar_tile)
+uint8_t GetVehiclePosOnBuild(TileIndex hangar_tile)
 {
 	const Station *st = Station::GetByTile(hangar_tile);
 	const AirportFTAClass *apc = st->airport.GetFTA();

@@ -22,6 +22,8 @@ class ScriptRoad : public ScriptObject {
 public:
 	/**
 	 * All road related error messages.
+	 *
+	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
 		/** Base for road building / maintaining errors */
@@ -61,7 +63,7 @@ public:
 	/**
 	 * Road/tram types
 	 */
-	enum RoadTramTypes : uint8 {
+	enum RoadTramTypes : uint8_t {
 		ROADTRAMTYPES_ROAD = ::RTTB_ROAD, ///< Road road types.
 		ROADTRAMTYPES_TRAM = ::RTTB_TRAM, ///< Tram road types.
 	};
@@ -90,7 +92,7 @@ public:
 	 * @pre IsRoadTypeAvailable(road_type).
 	 * @return The name the road type has.
 	 */
-	static char *GetName(RoadType road_type);
+	static std::optional<std::string> GetName(RoadType road_type);
 
 	/**
 	 * Determines whether a busstop or a truckstop is needed to transport a certain cargo.
@@ -246,7 +248,7 @@ public:
 	 *         they are build or 2 when building the first part automatically
 	 *         builds the second part. -1 means the preconditions are not met.
 	 */
-	static SQInteger CanBuildConnectedRoadParts(ScriptTile::Slope slope, Array<> existing, TileIndex start, TileIndex end);
+	static SQInteger CanBuildConnectedRoadParts(ScriptTile::Slope slope, Array<> &&existing, TileIndex start, TileIndex end);
 
 	/**
 	 * Lookup function for building road parts independent of whether the

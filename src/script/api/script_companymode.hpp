@@ -52,7 +52,7 @@ public:
 	 * Check whether a company mode is valid. In other words, are commands
 	 * being executed under some company and does the company still exist?
 	 * @return true When a company mode is valid.
-	 * @post !ScriptCompanyMode::IsDeity().
+	 * @post If IsValid() is true, then IsDeity() is false.
 	 */
 	static bool IsValid();
 
@@ -60,7 +60,7 @@ public:
 	 * Check whether the company mode is not active, i.e. whether we are a deity.
 	 * In other words, are commands are not being executed under some company.
 	 * @return true When we are a deity, i.e. company mode is not active.
-	 * @post !ScriptCompanyMode::IsValid().
+	 * @post if IsDeity() is true, then IsValid() is false.
 	 */
 	static bool IsDeity();
 };

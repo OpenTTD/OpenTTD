@@ -19,9 +19,6 @@
 #include <../squirrel/sqvm.h>
 #include "../core/alloc_func.hpp"
 
-#include <stdarg.h>
-#include <map>
-
 /**
  * In the memory allocator for Squirrel we want to directly use malloc/realloc, so when the OS
  * does not have enough memory the game does not go into unrecoverable error mode and kill the
@@ -34,7 +31,7 @@
  * If changing the call paths into the scripting engine, define this symbol to enable full debugging of allocations.
  * This lets you track whether the allocator context is being switched correctly in all call paths.
 #define SCRIPT_DEBUG_ALLOCATIONS
-*/
+ */
 
 struct ScriptAllocator {
 	size_t allocated_size;   ///< Sum of allocated data size
@@ -74,12 +71,11 @@ struct ScriptAllocator {
 			 * already as then the allocation is for throwing that error in Squirrel, the
 			 * associated stack trace information and while cleaning up the AI. */
 			this->error_thrown = true;
-			char buff[128];
-			seprintf(buff, lastof(buff), "Maximum memory allocation exceeded by " PRINTF_SIZE " bytes when allocating " PRINTF_SIZE " bytes",
+			std::string msg = fmt::format("Maximum memory allocation exceeded by {} bytes when allocating {} bytes",
 				this->allocated_size + requested_size - this->allocation_limit, requested_size);
 			/* Don't leak the rejected allocation. */
 			free(p);
-			throw Script_FatalError(buff);
+			throw Script_FatalError(msg);
 		}
 
 		if (p == nullptr) {
@@ -93,9 +89,8 @@ struct ScriptAllocator {
 			}
 
 			this->error_thrown = true;
-			char buff[64];
-			seprintf(buff, lastof(buff), "Out of memory. Cannot allocate " PRINTF_SIZE " bytes", requested_size);
-			throw Script_FatalError(buff);
+			std::string msg = fmt::format("Out of memory. Cannot allocate {} bytes", requested_size);
+			throw Script_FatalError(msg);
 		}
 	}
 
@@ -177,7 +172,7 @@ struct ScriptAllocator {
 	~ScriptAllocator()
 	{
 #ifdef SCRIPT_DEBUG_ALLOCATIONS
-		assert(this->allocations.size() == 0);
+		assert(this->allocations.empty());
 #endif
 	}
 };
@@ -208,36 +203,27 @@ size_t Squirrel::GetAllocatedMemory() const noexcept
 
 void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *source, SQInteger line, SQInteger column)
 {
-	SQChar buf[1024];
-
-	seprintf(buf, lastof(buf), "Error %s:" OTTD_PRINTF64 "/" OTTD_PRINTF64 ": %s", source, line, column, desc);
+	std::string msg = fmt::format("Error {}:{}/{}: {}", source, line, column, desc);
 
 	/* Check if we have a custom print function */
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
 	engine->crashed = true;
 	SQPrintFunc *func = engine->print_func;
 	if (func == nullptr) {
-		Debug(misc, 0, "[Squirrel] Compile error: {}", buf);
+		Debug(misc, 0, "[Squirrel] Compile error: {}", msg);
 	} else {
-		(*func)(true, buf);
+		(*func)(true, msg);
 	}
 }
 
-void Squirrel::ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...)
+void Squirrel::ErrorPrintFunc(HSQUIRRELVM vm, const std::string &s)
 {
-	va_list arglist;
-	SQChar buf[1024];
-
-	va_start(arglist, s);
-	vseprintf(buf, lastof(buf), s, arglist);
-	va_end(arglist);
-
 	/* Check if we have a custom print function */
 	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
 	if (func == nullptr) {
-		fprintf(stderr, "%s", buf);
+		fmt::print(stderr, "{}", s);
 	} else {
-		(*func)(true, buf);
+		(*func)(true, s);
 	}
 }
 
@@ -248,14 +234,13 @@ void Squirrel::RunError(HSQUIRRELVM vm, const SQChar *error)
 	sq_setprintfunc(vm, &Squirrel::ErrorPrintFunc);
 
 	/* Check if we have a custom print function */
-	SQChar buf[1024];
-	seprintf(buf, lastof(buf), "Your script made an error: %s\n", error);
+	std::string msg = fmt::format("Your script made an error: {}\n", error);
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
 	SQPrintFunc *func = engine->print_func;
 	if (func == nullptr) {
-		fprintf(stderr, "%s", buf);
+		fmt::print(stderr, "{}", msg);
 	} else {
-		(*func)(true, buf);
+		(*func)(true, msg);
 	}
 
 	/* Print below the error the stack, so the users knows what is happening */
@@ -279,22 +264,14 @@ SQInteger Squirrel::_RunError(HSQUIRRELVM vm)
 	return 0;
 }
 
-void Squirrel::PrintFunc(HSQUIRRELVM vm, const SQChar *s, ...)
+void Squirrel::PrintFunc(HSQUIRRELVM vm, const std::string &s)
 {
-	va_list arglist;
-	SQChar buf[1024];
-
-	va_start(arglist, s);
-	vseprintf(buf, lastof(buf) - 2, s, arglist);
-	va_end(arglist);
-	strecat(buf, "\n", lastof(buf));
-
 	/* Check if we have a custom print function */
 	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
 	if (func == nullptr) {
-		printf("%s", buf);
+		fmt::print("{}", s);
 	} else {
-		(*func)(false, buf);
+		(*func)(false, s);
 	}
 }
 
@@ -452,13 +429,12 @@ bool Squirrel::CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT
 	return true;
 }
 
-bool Squirrel::CallStringMethodStrdup(HSQOBJECT instance, const char *method_name, const char **res, int suspend)
+bool Squirrel::CallStringMethod(HSQOBJECT instance, const char *method_name, std::string *res, int suspend)
 {
 	HSQOBJECT ret;
 	if (!this->CallMethod(instance, method_name, &ret, suspend)) return false;
 	if (ret._type != OT_STRING) return false;
-	*res = stredup(ObjectToString(&ret));
-	StrMakeValidInPlace(const_cast<char *>(*res));
+	*res = StrMakeValid(ObjectToString(&ret));
 	return true;
 }
 
@@ -480,7 +456,7 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 	return true;
 }
 
-/* static */ bool Squirrel::CreateClassInstanceVM(HSQUIRRELVM vm, const char *class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook, bool prepend_API_name)
+/* static */ bool Squirrel::CreateClassInstanceVM(HSQUIRRELVM vm, const std::string &class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook, bool prepend_API_name)
 {
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
 
@@ -490,11 +466,9 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 	sq_pushroottable(vm);
 
 	if (prepend_API_name) {
-		size_t len = strlen(class_name) + strlen(engine->GetAPIName()) + 1;
-		char *class_name2 = (char *)alloca(len);
-		seprintf(class_name2, class_name2 + len - 1, "%s%s", engine->GetAPIName(), class_name);
-
-		sq_pushstring(vm, class_name2, -1);
+		std::string prepended_class_name = engine->GetAPIName();
+		prepended_class_name += class_name;
+		sq_pushstring(vm, prepended_class_name, -1);
 	} else {
 		sq_pushstring(vm, class_name, -1);
 	}
@@ -530,7 +504,7 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 	return true;
 }
 
-bool Squirrel::CreateClassInstance(const char *class_name, void *real_instance, HSQOBJECT *instance)
+bool Squirrel::CreateClassInstance(const std::string &class_name, void *real_instance, HSQOBJECT *instance)
 {
 	ScriptAllocatorScope alloc_scope(this);
 	return Squirrel::CreateClassInstanceVM(this->vm, class_name, real_instance, instance, nullptr);
@@ -594,14 +568,14 @@ public:
 	}
 };
 
-static WChar _io_file_lexfeed_ASCII(SQUserPointer file)
+static char32_t _io_file_lexfeed_ASCII(SQUserPointer file)
 {
 	unsigned char c;
 	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return c;
 	return 0;
 }
 
-static WChar _io_file_lexfeed_UTF8(SQUserPointer file)
+static char32_t _io_file_lexfeed_UTF8(SQUserPointer file)
 {
 	char buffer[5];
 
@@ -614,25 +588,25 @@ static WChar _io_file_lexfeed_UTF8(SQUserPointer file)
 	if (len > 1 && ((SQFile *)file)->Read(buffer + 1, sizeof(buffer[0]), len - 1) != len - 1) return 0;
 
 	/* Convert the character, and when definitely invalid, bail out as well. */
-	WChar c;
+	char32_t c;
 	if (Utf8Decode(&c, buffer) != len) return -1;
 
 	return c;
 }
 
-static WChar _io_file_lexfeed_UCS2_no_swap(SQUserPointer file)
+static char32_t _io_file_lexfeed_UCS2_no_swap(SQUserPointer file)
 {
 	unsigned short c;
-	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return (WChar)c;
+	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return (char32_t)c;
 	return 0;
 }
 
-static WChar _io_file_lexfeed_UCS2_swap(SQUserPointer file)
+static char32_t _io_file_lexfeed_UCS2_swap(SQUserPointer file)
 {
 	unsigned short c;
 	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) {
 		c = ((c >> 8) & 0x00FF)| ((c << 8) & 0xFF00);
-		return (WChar)c;
+		return (char32_t)c;
 	}
 	return 0;
 }
@@ -644,7 +618,7 @@ static SQInteger _io_file_read(SQUserPointer file, SQUserPointer buf, SQInteger 
 	return ret;
 }
 
-SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printerror)
+SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool printerror)
 {
 	ScriptAllocatorScope alloc_scope(this);
 
@@ -722,7 +696,7 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 	}
 
 	SQFile f(file, size);
-	if (SQ_SUCCEEDED(sq_compile(vm, func, &f, filename, printerror))) {
+	if (SQ_SUCCEEDED(sq_compile(vm, func, &f, filename.c_str(), printerror))) {
 		FioFCloseFile(file);
 		return SQ_OK;
 	}
@@ -730,7 +704,7 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 	return SQ_ERROR;
 }
 
-bool Squirrel::LoadScript(HSQUIRRELVM vm, const char *script, bool in_root)
+bool Squirrel::LoadScript(HSQUIRRELVM vm, const std::string &script, bool in_root)
 {
 	ScriptAllocatorScope alloc_scope(this);
 
@@ -754,7 +728,7 @@ bool Squirrel::LoadScript(HSQUIRRELVM vm, const char *script, bool in_root)
 	return false;
 }
 
-bool Squirrel::LoadScript(const char *script)
+bool Squirrel::LoadScript(const std::string &script)
 {
 	return LoadScript(this->vm, script);
 }

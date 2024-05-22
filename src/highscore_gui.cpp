@@ -22,14 +22,16 @@
 #include "hotkeys.h"
 #include "zoom_func.h"
 #include "misc_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "widgets/highscore_widget.h"
 
 #include "safeguards.h"
 
 struct EndGameHighScoreBaseWindow : Window {
-	uint32 background_img;
-	int8 rank;
+	uint32_t background_img;
+	int8_t rank;
 
 	EndGameHighScoreBaseWindow(WindowDesc *desc) : Window(desc)
 	{
@@ -63,12 +65,12 @@ struct EndGameHighScoreBaseWindow : Window {
 		return pt;
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		this->Close();
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
+	EventState OnKeyPress([[maybe_unused]] char32_t key, uint16_t keycode) override
 	{
 		/* All keys are 'handled' by this window but we want to make
 		 * sure that 'quit' still works correctly. Not handling the
@@ -123,7 +125,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 		MarkWholeScreenDirty();
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		if (!_networking) Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, false); // unpause
 		if (_game_mode != GM_MENU) ShowHighscoreTable(this->window_number, this->rank);
@@ -156,7 +158,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 struct HighScoreWindow : EndGameHighScoreBaseWindow {
 	bool game_paused_by_player; ///< True if the game was paused by the player when the highscore window was opened.
 
-	HighScoreWindow(WindowDesc *desc, int difficulty, int8 ranking) : EndGameHighScoreBaseWindow(desc)
+	HighScoreWindow(WindowDesc *desc, int difficulty, int8_t ranking) : EndGameHighScoreBaseWindow(desc)
 	{
 		/* pause game to show the chart */
 		this->game_paused_by_player = _pause_mode == PM_PAUSED_NORMAL;
@@ -171,7 +173,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		this->rank = ranking;
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		if (_game_mode != GM_MENU) ShowVitalWindows();
 
@@ -182,33 +184,33 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 
 	void OnPaint() override
 	{
-		const HighScore *hs = _highscore_table[this->window_number];
+		const auto &hs = _highscore_table[this->window_number];
 
 		this->SetupHighScoreEndWindow();
 		Point pt = this->GetTopLeft(ScaleSpriteTrad(640), ScaleSpriteTrad(480));
 
-		SetDParam(0, _settings_game.game_creation.ending_year);
-		DrawStringMultiLine(pt.x + ScaleSpriteTrad(70), pt.x + ScaleSpriteTrad(570), pt.y, pt.y + ScaleSpriteTrad(140), !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
+		/* Draw the title. */
+		DrawStringMultiLine(pt.x + ScaleSpriteTrad(70), pt.x + ScaleSpriteTrad(570), pt.y, pt.y + ScaleSpriteTrad(140), STR_HIGHSCORE_TOP_COMPANIES, TC_FROMSTRING, SA_CENTER);
 
 		/* Draw Highscore peepz */
-		for (uint8 i = 0; i < lengthof(_highscore_table[0]); i++) {
+		for (uint8_t i = 0; i < ClampTo<uint8_t>(hs.size()); i++) {
 			SetDParam(0, i + 1);
 			DrawString(pt.x + ScaleSpriteTrad(40), pt.x + ScaleSpriteTrad(600), pt.y + ScaleSpriteTrad(140 + i * 55), STR_HIGHSCORE_POSITION);
 
-			if (hs[i].company[0] != '\0') {
+			if (!hs[i].name.empty()) {
 				TextColour colour = (this->rank == i) ? TC_RED : TC_BLACK; // draw new highscore in red
 
-				SetDParamStr(0, hs[i].company);
+				SetDParamStr(0, hs[i].name);
 				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140 + i * 55), STR_JUST_BIG_RAW_STRING, colour);
 				SetDParam(0, hs[i].title);
 				SetDParam(1, hs[i].score);
-				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140) + FONT_HEIGHT_LARGE + ScaleSpriteTrad(i * 55), STR_HIGHSCORE_STATS, colour);
+				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140) + GetCharacterHeight(FS_LARGE) + ScaleSpriteTrad(i * 55), STR_HIGHSCORE_STATS, colour);
 			}
 		}
 	}
 };
 
-static const NWidgetPart _nested_highscore_widgets[] = {
+static constexpr NWidgetPart _nested_highscore_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
 };
 
@@ -216,14 +218,14 @@ static WindowDesc _highscore_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_HIGHSCORE, WC_NONE,
 	0,
-	_nested_highscore_widgets, lengthof(_nested_highscore_widgets)
+	std::begin(_nested_highscore_widgets), std::end(_nested_highscore_widgets)
 );
 
 static WindowDesc _endgame_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_ENDSCREEN, WC_NONE,
 	0,
-	_nested_highscore_widgets, lengthof(_nested_highscore_widgets)
+	std::begin(_nested_highscore_widgets), std::end(_nested_highscore_widgets)
 );
 
 /**
@@ -231,7 +233,7 @@ static WindowDesc _endgame_desc(
  * endgame ranking is set to the top5 element that was newly added
  * and is thus highlighted
  */
-void ShowHighscoreTable(int difficulty, int8 ranking)
+void ShowHighscoreTable(int difficulty, int8_t ranking)
 {
 	CloseWindowByClass(WC_HIGHSCORE);
 	new HighScoreWindow(&_highscore_desc, difficulty, ranking);
@@ -250,3 +252,14 @@ void ShowEndGameChart()
 	CloseWindowByClass(WC_ENDSCREEN);
 	new EndGameWindow(&_endgame_desc);
 }
+
+static IntervalTimer<TimerGameCalendar> _check_end_game({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
+{
+	/* 0 = never */
+	if (_settings_game.game_creation.ending_year == 0) return;
+
+	/* Show the end-game chart at the end of the ending year (hence the + 1). */
+	if (TimerGameCalendar::year == _settings_game.game_creation.ending_year + 1) {
+		ShowEndGameChart();
+	}
+});

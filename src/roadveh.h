@@ -17,7 +17,6 @@
 #include "road.h"
 #include "road_map.h"
 #include "newgrf_engine.h"
-#include <deque>
 
 struct RoadVehicle;
 
@@ -77,7 +76,7 @@ static const uint RVC_DRIVE_THROUGH_STOP_FRAME           = 11;
 static const uint RVC_DEPOT_STOP_FRAME                   = 11;
 
 /** The number of ticks a vehicle has for overtaking. */
-static const byte RV_OVERTAKE_TIMEOUT = 35;
+static const uint8_t RV_OVERTAKE_TIMEOUT = 35;
 
 void RoadVehUpdateCache(RoadVehicle *v, bool same_length = false);
 void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
@@ -104,18 +103,19 @@ struct RoadVehPathCache {
 /**
  * Buses, trucks and trams belong to this class.
  */
-struct RoadVehicle FINAL : public GroundVehicle<RoadVehicle, VEH_ROAD> {
+struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	RoadVehPathCache path;  ///< Cached path.
-	byte state;             ///< @see RoadVehicleStates
-	byte frame;
-	uint16 blocked_ctr;
-	byte overtaking;        ///< Set to #RVSB_DRIVE_SIDE when overtaking, otherwise 0.
-	byte overtaking_ctr;    ///< The length of the current overtake attempt.
-	uint16 crashed_ctr;     ///< Animation counter when the vehicle has crashed. @see RoadVehIsCrashed
-	byte reverse_ctr;
+	uint8_t state;             ///< @see RoadVehicleStates
+	uint8_t frame;
+	uint16_t blocked_ctr;
+	uint8_t overtaking;        ///< Set to #RVSB_DRIVE_SIDE when overtaking, otherwise 0.
+	uint8_t overtaking_ctr;    ///< The length of the current overtake attempt.
+	uint16_t crashed_ctr;     ///< Animation counter when the vehicle has crashed. @see RoadVehIsCrashed
+	uint8_t reverse_ctr;
 
-	RoadType roadtype;              //!< Roadtype of this vehicle.
-	RoadTypes compatible_roadtypes; //!< Roadtypes this consist is powered on.
+	RoadType roadtype; ///< NOSAVE: Roadtype of this vehicle.
+	VehicleID disaster_vehicle = INVALID_VEHICLE; ///< NOSAVE: Disaster vehicle targetting this vehicle.
+	RoadTypes compatible_roadtypes; ///< NOSAVE: Roadtypes this consist is powered on.
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	RoadVehicle() : GroundVehicleBase() {}
@@ -135,7 +135,8 @@ struct RoadVehicle FINAL : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	int GetDisplayImageWidth(Point *offset = nullptr) const;
 	bool IsInDepot() const override { return this->state == RVSB_IN_DEPOT; }
 	bool Tick() override;
-	void OnNewDay() override;
+	void OnNewCalendarDay() override;
+	void OnNewEconomyDay() override;
 	uint Crash(bool flooded = false) override;
 	Trackdir GetVehicleTrackdir() const override;
 	TileIndex GetOrderStationLocation(StationID station) override;
@@ -153,7 +154,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the power value that this vehicle will use.
 	 * @return Power value from the engine in HP, or zero if the vehicle is not powered.
 	 */
-	inline uint16 GetPower() const
+	inline uint16_t GetPower() const
 	{
 		/* Power is not added for articulated parts */
 		if (!this->IsArticulatedPart()) {
@@ -167,7 +168,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns a value if this articulated part is powered.
 	 * @return Zero, because road vehicles don't have powered parts.
 	 */
-	inline uint16 GetPoweredPartPower(const RoadVehicle *head) const
+	inline uint16_t GetPoweredPartPower(const RoadVehicle *) const
 	{
 		return 0;
 	}
@@ -176,9 +177,9 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the weight value that this vehicle will use.
 	 * @return Weight value from the engine in tonnes.
 	 */
-	inline uint16 GetWeight() const
+	inline uint16_t GetWeight() const
 	{
-		uint16 weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnits(this->cargo.StoredCount());
+		uint16_t weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnits(this->cargo.StoredCount());
 
 		/* Vehicle weight is not added for articulated parts. */
 		if (!this->IsArticulatedPart()) {
@@ -193,13 +194,13 @@ protected: // These functions should not be called outside acceleration code.
 	 * Calculates the weight value that this vehicle will have when fully loaded with its current cargo.
 	 * @return Weight value in tonnes.
 	 */
-	uint16 GetMaxWeight() const override;
+	uint16_t GetMaxWeight() const override;
 
 	/**
 	 * Allows to know the tractive effort value that this vehicle will use.
 	 * @return Tractive effort value from the engine.
 	 */
-	inline byte GetTractiveEffort() const
+	inline uint8_t GetTractiveEffort() const
 	{
 		/* The tractive effort coefficient is in units of 1/256.  */
 		return GetVehicleProperty(this, PROP_ROADVEH_TRACTIVE_EFFORT, RoadVehInfo(this->engine_type)->tractive_effort);
@@ -209,7 +210,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the area used for calculating air drag.
 	 * @return Area of the engine in m^2.
 	 */
-	inline byte GetAirDragArea() const
+	inline uint8_t GetAirDragArea() const
 	{
 		return 6;
 	}
@@ -218,7 +219,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the air drag coefficient of this vehicle.
 	 * @return Air drag value from the engine.
 	 */
-	inline byte GetAirDrag() const
+	inline uint8_t GetAirDrag() const
 	{
 		return RoadVehInfo(this->engine_type)->air_drag;
 	}
@@ -236,7 +237,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Calculates the current speed of this vehicle.
 	 * @return Current speed in km/h-ish.
 	 */
-	inline uint16 GetCurrentSpeed() const
+	inline uint16_t GetCurrentSpeed() const
 	{
 		return this->cur_speed / 2;
 	}
@@ -245,11 +246,11 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns the rolling friction coefficient of this vehicle.
 	 * @return Rolling friction coefficient in [1e-4].
 	 */
-	inline uint32 GetRollingFriction() const
+	inline uint32_t GetRollingFriction() const
 	{
 		/* Trams have a slightly greater friction coefficient than trains.
 		 * The rest of road vehicles have bigger values. */
-		uint32 coeff = RoadTypeIsTram(this->roadtype) ? 40 : 75;
+		uint32_t coeff = RoadTypeIsTram(this->roadtype) ? 40 : 75;
 		/* The friction coefficient increases with speed in a way that
 		 * it doubles at 128 km/h, triples at 256 km/h and so on. */
 		return coeff * (128 + this->GetCurrentSpeed()) / 128;
@@ -268,7 +269,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns the slope steepness used by this vehicle.
 	 * @return Slope steepness used by the vehicle.
 	 */
-	inline uint32 GetSlopeSteepness() const
+	inline uint32_t GetSlopeSteepness() const
 	{
 		return _settings_game.vehicle.roadveh_slope_steepness;
 	}
@@ -277,7 +278,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the maximum speed allowed by the track for this vehicle.
 	 * @return Since roads don't limit road vehicle speed, it returns always zero.
 	 */
-	inline uint16 GetMaxTrackSpeed() const
+	inline uint16_t GetMaxTrackSpeed() const
 	{
 		return GetRoadTypeInfo(GetRoadType(this->tile, GetRoadTramType(this->roadtype)))->max_speed;
 	}

@@ -19,11 +19,13 @@
 /** Factory for the null video driver. */
 static FVideoDriver_Null iFVideoDriver_Null;
 
-const char *VideoDriver_Null::Start(const StringList &parm)
+std::optional<std::string_view> VideoDriver_Null::Start(const StringList &parm)
 {
 #ifdef _MSC_VER
 	/* Disable the MSVC assertion message box. */
 	_set_error_mode(_OUT_TO_STDERR);
+	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
 #endif
 
 	this->UpdateAutoResolution();
@@ -37,12 +39,12 @@ const char *VideoDriver_Null::Start(const StringList &parm)
 	/* Do not render, nor blit */
 	Debug(misc, 1, "Forcing blitter 'null'...");
 	BlitterFactory::SelectBlitter("null");
-	return nullptr;
+	return std::nullopt;
 }
 
 void VideoDriver_Null::Stop() { }
 
-void VideoDriver_Null::MakeDirty(int left, int top, int width, int height) {}
+void VideoDriver_Null::MakeDirty(int, int, int, int) {}
 
 void VideoDriver_Null::MainLoop()
 {
@@ -61,6 +63,6 @@ void VideoDriver_Null::MainLoop()
 	}
 }
 
-bool VideoDriver_Null::ChangeResolution(int w, int h) { return false; }
+bool VideoDriver_Null::ChangeResolution(int, int) { return false; }
 
-bool VideoDriver_Null::ToggleFullscreen(bool fs) { return false; }
+bool VideoDriver_Null::ToggleFullscreen(bool) { return false; }

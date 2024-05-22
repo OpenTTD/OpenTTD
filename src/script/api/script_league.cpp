@@ -32,11 +32,11 @@
 
 	EnforceDeityMode(LEAGUE_TABLE_INVALID);
 	EnforcePrecondition(LEAGUE_TABLE_INVALID, title != nullptr);
-	const std::string &encoded_title = title->GetEncodedText();
+	std::string encoded_title = title->GetEncodedText();
 	EnforcePreconditionEncodedText(LEAGUE_TABLE_INVALID, encoded_title);
 
-	const std::string &encoded_header = (header != nullptr ? header->GetEncodedText() : std::string{});
-	const std::string &encoded_footer = (footer != nullptr ? footer->GetEncodedText() : std::string{});
+	std::string encoded_header = (header != nullptr ? header->GetEncodedText() : std::string{});
+	std::string encoded_footer = (footer != nullptr ? footer->GetEncodedText() : std::string{});
 
 	if (!ScriptObject::Command<CMD_CREATE_LEAGUE_TABLE>::Do(&ScriptInstance::DoCommandReturnLeagueTableID, encoded_title, encoded_header, encoded_footer)) return LEAGUE_TABLE_INVALID;
 
@@ -49,7 +49,7 @@
 	return ::LeagueTableElement::IsValidID(element_id);
 }
 
-/* static */ ScriptLeagueTable::LeagueTableElementID ScriptLeagueTable::NewElement(ScriptLeagueTable::LeagueTableID table, SQInteger rating, ScriptCompany::CompanyID company, Text *text, Text *score, LinkType link_type, LinkTargetID link_target)
+/* static */ ScriptLeagueTable::LeagueTableElementID ScriptLeagueTable::NewElement(ScriptLeagueTable::LeagueTableID table, SQInteger rating, ScriptCompany::CompanyID company, Text *text, Text *score, LinkType link_type, SQInteger link_target)
 {
 	CCountedPtr<Text> text_counter(text);
 	CCountedPtr<Text> score_counter(score);
@@ -63,11 +63,11 @@
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
 	EnforcePrecondition(LEAGUE_TABLE_ELEMENT_INVALID, text != nullptr);
-	const std::string &encoded_text = text->GetEncodedText();
+	std::string encoded_text = text->GetEncodedText();
 	EnforcePreconditionEncodedText(LEAGUE_TABLE_ELEMENT_INVALID, encoded_text);
 
 	EnforcePrecondition(LEAGUE_TABLE_ELEMENT_INVALID, score != nullptr);
-	const std::string &encoded_score = score->GetEncodedText();
+	std::string encoded_score = score->GetEncodedText();
 	EnforcePreconditionEncodedText(LEAGUE_TABLE_ELEMENT_INVALID, encoded_score);
 
 	EnforcePrecondition(LEAGUE_TABLE_ELEMENT_INVALID, IsValidLink(Link((::LinkType)link_type, link_target)));
@@ -78,7 +78,7 @@
 	return (ScriptLeagueTable::LeagueTableElementID)0;
 }
 
-/* static */ bool ScriptLeagueTable::UpdateElementData(LeagueTableElementID element, ScriptCompany::CompanyID company, Text *text, LinkType link_type, LinkTargetID link_target)
+/* static */ bool ScriptLeagueTable::UpdateElementData(LeagueTableElementID element, ScriptCompany::CompanyID company, Text *text, LinkType link_type, SQInteger link_target)
 {
 	CCountedPtr<Text> text_counter(text);
 
@@ -90,7 +90,7 @@
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
 	EnforcePrecondition(false, text != nullptr);
-	const std::string &encoded_text = text->GetEncodedText();
+	std::string encoded_text = text->GetEncodedText();
 	EnforcePreconditionEncodedText(false, encoded_text);
 
 	EnforcePrecondition(false, IsValidLink(Link((::LinkType)link_type, link_target)));
@@ -106,7 +106,7 @@
 	EnforcePrecondition(false, IsValidLeagueTableElement(element));
 
 	EnforcePrecondition(false, score != nullptr);
-	const std::string &encoded_score = score->GetEncodedText();
+	std::string encoded_score = score->GetEncodedText();
 	EnforcePreconditionEncodedText(false, encoded_score);
 
 	return ScriptObject::Command<CMD_UPDATE_LEAGUE_TABLE_ELEMENT_SCORE>::Do(element, rating, encoded_score);

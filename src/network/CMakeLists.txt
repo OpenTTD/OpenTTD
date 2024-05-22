@@ -16,6 +16,9 @@ add_files(
     network_content_gui.h
     network_coordinator.cpp
     network_coordinator.h
+    network_crypto.cpp
+    network_crypto.h
+    network_crypto_internal.h
     network_func.h
     network_gamelist.cpp
     network_gamelist.h
@@ -28,6 +31,8 @@ add_files(
     network_server.h
     network_stun.cpp
     network_stun.h
+    network_survey.cpp
+    network_survey.h
     network_turn.cpp
     network_turn.h
     network_type.h

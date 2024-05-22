@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: internal-source
 
@@ -25,17 +25,17 @@ jobs:
         tar -xf source.tar.gz --strip-components=1
 
     - name: Download x86 build
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: openttd-windows-x86
 
     - name: Download x64 build
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: openttd-windows-x64
 
     - name: Download arm64 build
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: openttd-windows-arm64
 
@@ -185,7 +185,7 @@ jobs:
         move output\OpenTTD.appxbundle bundles\internal\openttd-${{ inputs.version }}-windows-store.appxbundle
 
     - name: Store bundles
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: openttd-windows-store
         path: builds/bundles

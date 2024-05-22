@@ -17,12 +17,13 @@
 #include "midifile.hpp"
 #include "midi.h"
 #include "../base_media_base.h"
+#include "../core/mem_func.hpp"
 #include <mutex>
 
 #include "../safeguards.h"
 
 struct PlaybackSegment {
-	uint32 start, end;
+	uint32_t start, end;
 	size_t start_block;
 	bool loop;
 };
@@ -36,8 +37,8 @@ static struct {
 	bool playing;        ///< flag indicating that playback is active
 	int do_start;        ///< flag for starting playback of next_file at next opportunity
 	bool do_stop;        ///< flag for stopping playback at next opportunity
-	byte current_volume; ///< current effective volume setting
-	byte new_volume;     ///< volume setting to change to
+	uint8_t current_volume; ///< current effective volume setting
+	uint8_t new_volume;     ///< volume setting to change to
 
 	MidiFile current_file;           ///< file currently being played from
 	PlaybackSegment current_segment; ///< segment info for current playback
@@ -46,19 +47,19 @@ static struct {
 	MidiFile next_file;              ///< upcoming file to play
 	PlaybackSegment next_segment;    ///< segment info for upcoming file
 
-	byte channel_volumes[16]; ///< last seen volume controller values in raw data
+	uint8_t channel_volumes[16]; ///< last seen volume controller values in raw data
 } _midi;
 
 static FMusicDriver_Win32 iFMusicDriver_Win32;
 
 
-static byte ScaleVolume(byte original, byte scale)
+static uint8_t ScaleVolume(uint8_t original, uint8_t scale)
 {
 	return original * scale / 127;
 }
 
 
-void CALLBACK MidiOutProc(HMIDIOUT hmo, UINT wMsg, DWORD_PTR dwInstance, DWORD_PTR dwParam1, DWORD_PTR dwParam2)
+void CALLBACK MidiOutProc(HMIDIOUT hmo, UINT wMsg, DWORD_PTR, DWORD_PTR dwParam1, DWORD_PTR)
 {
 	if (wMsg == MOM_DONE) {
 		MIDIHDR *hdr = (LPMIDIHDR)dwParam1;
@@ -67,21 +68,21 @@ void CALLBACK MidiOutProc(HMIDIOUT hmo, UINT wMsg, DWORD_PTR dwInstance, DWORD_P
 	}
 }
 
-static void TransmitChannelMsg(byte status, byte p1, byte p2 = 0)
+static void TransmitChannelMsg(uint8_t status, uint8_t p1, uint8_t p2 = 0)
 {
 	midiOutShortMsg(_midi.midi_out, status | (p1 << 8) | (p2 << 16));
 }
 
-static void TransmitSysex(const byte *&msg_start, size_t &remaining)
+static void TransmitSysex(const uint8_t *&msg_start, size_t &remaining)
 {
 	/* find end of message */
-	const byte *msg_end = msg_start;
+	const uint8_t *msg_end = msg_start;
 	while (*msg_end != MIDIST_ENDSYSEX) msg_end++;
 	msg_end++; /* also include sysex end byte */
 
 	/* prepare header */
 	MIDIHDR *hdr = CallocT<MIDIHDR>(1);
-	hdr->lpData = reinterpret_cast<LPSTR>(const_cast<byte *>(msg_start));
+	hdr->lpData = reinterpret_cast<LPSTR>(const_cast<uint8_t *>(msg_start));
 	hdr->dwBufferLength = msg_end - msg_start;
 	if (midiOutPrepareHeader(_midi.midi_out, hdr, sizeof(*hdr)) == MMSYSERR_NOERROR) {
 		/* transmit - just point directly into the data buffer */
@@ -99,7 +100,7 @@ static void TransmitSysex(const byte *&msg_start, size_t &remaining)
 static void TransmitStandardSysex(MidiSysexMessage msg)
 {
 	size_t length = 0;
-	const byte *data = MidiGetStandardSysexMessage(msg, length);
+	const uint8_t *data = MidiGetStandardSysexMessage(msg, length);
 	TransmitSysex(data, length);
 }
 
@@ -107,8 +108,10 @@ static void TransmitStandardSysex(MidiSysexMessage msg)
  * Realtime MIDI playback service routine.
  * This is called by the multimedia timer.
  */
-void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DWORD_PTR)
+void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR)
 {
+	static int volume_throttle = 0;
+
 	/* Ensure only one timer callback is running at once, and prevent races on status flags */
 	std::unique_lock<std::mutex> mutex_lock(_midi.lock, std::defer_lock);
 	if (!mutex_lock.try_lock()) return;
@@ -161,7 +164,10 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 			_midi.do_start = 0;
 			_midi.current_block = 0;
 
-			MemSetT<byte>(_midi.channel_volumes, 127, lengthof(_midi.channel_volumes));
+			MemSetT<uint8_t>(_midi.channel_volumes, 127, lengthof(_midi.channel_volumes));
+			/* Invalidate current volume. */
+			_midi.current_volume = UINT8_MAX;
+			volume_throttle = 0;
 		}
 	} else if (!_midi.playing) {
 		/* not playing, stop the timer */
@@ -172,14 +178,13 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 	}
 
 	/* check for volume change */
-	static int volume_throttle = 0;
 	if (_midi.current_volume != _midi.new_volume) {
 		if (volume_throttle == 0) {
 			Debug(driver, 2, "Win32-MIDI: timer: volume change");
 			_midi.current_volume = _midi.new_volume;
 			volume_throttle = 20 / _midi.time_period;
 			for (int ch = 0; ch < 16; ch++) {
-				byte vol = ScaleVolume(_midi.channel_volumes[ch], _midi.current_volume);
+				uint8_t vol = ScaleVolume(_midi.channel_volumes[ch], _midi.current_volume);
 				TransmitChannelMsg(MIDIST_CONTROLLER | ch, MIDICT_CHANVOLUME, vol);
 			}
 		} else {
@@ -237,13 +242,13 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 			break;
 		}
 
-		const byte *data = block.data.data();
+		const uint8_t *data = block.data.data();
 		size_t remaining = block.data.size();
-		byte last_status = 0;
+		uint8_t last_status = 0;
 		while (remaining > 0) {
 			/* MidiFile ought to have converted everything out of running status,
 			 * but handle it anyway just to be safe */
-			byte status = data[0];
+			uint8_t status = data[0];
 			if (status & 0x80) {
 				last_status = status;
 				data++;
@@ -356,13 +361,13 @@ bool MusicDriver_Win32::IsSongPlaying()
 	return _midi.playing || (_midi.do_start != 0);
 }
 
-void MusicDriver_Win32::SetVolume(byte vol)
+void MusicDriver_Win32::SetVolume(uint8_t vol)
 {
 	std::lock_guard<std::mutex> mutex_lock(_midi.lock);
 	_midi.new_volume = vol;
 }
 
-const char *MusicDriver_Win32::Start(const StringList &parm)
+std::optional<std::string_view> MusicDriver_Win32::Start(const StringList &parm)
 {
 	Debug(driver, 2, "Win32-MIDI: Start: initializing");
 
@@ -411,7 +416,7 @@ const char *MusicDriver_Win32::Start(const StringList &parm)
 		if (timeBeginPeriod(_midi.time_period) == MMSYSERR_NOERROR) {
 			/* success */
 			Debug(driver, 2, "Win32-MIDI: Start: timer resolution is {}", _midi.time_period);
-			return nullptr;
+			return std::nullopt;
 		}
 	}
 	midiOutClose(_midi.midi_out);

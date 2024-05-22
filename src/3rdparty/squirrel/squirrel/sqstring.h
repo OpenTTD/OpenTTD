@@ -17,8 +17,9 @@ struct SQString : public SQRefCounted
 	~SQString(){}
 public:
 	static SQString *Create(SQSharedState *ss, const SQChar *, SQInteger len = -1 );
+	static SQString *Create(SQSharedState *ss, const std::string &str) { return Create(ss, str.data(), str.size()); }
 	SQInteger Next(const SQObjectPtr &refpos, SQObjectPtr &outkey, SQObjectPtr &outval);
-	void Release();
+	void Release() override;
 	SQSharedState *_sharedstate;
 	SQString *_next; //chain for the string table
 	SQInteger _len;

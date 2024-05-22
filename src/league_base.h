@@ -20,7 +20,7 @@ bool IsValidLink(Link link);
 typedef Pool<LeagueTableElement, LeagueTableElementID, 64, 64000> LeagueTableElementPool;
 extern LeagueTableElementPool _league_table_element_pool;
 
-typedef Pool<LeagueTable, LeagueTableID, 4, 256> LeagueTablePool;
+typedef Pool<LeagueTable, LeagueTableID, 4, 255> LeagueTablePool;
 extern LeagueTablePool _league_table_pool;
 
 
@@ -30,7 +30,7 @@ extern LeagueTablePool _league_table_pool;
  **/
 struct LeagueTableElement : LeagueTableElementPool::PoolItem<&_league_table_element_pool> {
 	LeagueTableID table;  ///< Id of the table which this element belongs to
-	int64 rating;         ///< Value that determines ordering of elements in the table (higher=better)
+	int64_t rating;         ///< Value that determines ordering of elements in the table (higher=better)
 	CompanyID company;    ///< Company Id to show the color blob for or INVALID_COMPANY
 	std::string text;     ///< Text of the element
 	std::string score;    ///< String representation of the score associated with the element

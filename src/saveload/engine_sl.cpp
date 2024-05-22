@@ -15,7 +15,6 @@
 #include "saveload_internal.h"
 #include "../engine_base.h"
 #include "../string_func.h"
-#include <vector>
 
 #include "../safeguards.h"
 
@@ -49,9 +48,9 @@ static std::vector<Engine*> _temp_engine;
  * The allocated Engine must be freed using FreeEngine;
  * @return Allocated engine.
  */
-static Engine* CallocEngine()
+static Engine *CallocEngine()
 {
-	uint8 *zero = CallocT<uint8>(sizeof(Engine));
+	uint8_t *zero = CallocT<uint8_t>(sizeof(Engine));
 	Engine *engine = new (zero) Engine();
 	return engine;
 }
@@ -110,7 +109,7 @@ struct ENGNChunkHandler : ChunkHandler {
 				 * Just cancel any previews. */
 				e->flags &= ~4; // ENGINE_OFFER_WINDOW_OPEN
 				e->preview_company = INVALID_COMPANY;
-				e->preview_asked = (CompanyMask)-1;
+				e->preview_asked = MAX_UVALUE(CompanyMask);
 			}
 		}
 	}

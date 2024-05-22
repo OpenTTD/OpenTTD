@@ -11,7 +11,7 @@
 #define WIDGETS_STATUSBAR_WIDGET_H
 
 /** Widgets of the #StatusBarWindow class. */
-enum StatusbarWidgets {
+enum StatusbarWidgets : WidgetID {
 	WID_S_LEFT,   ///< Left part of the statusbar; date is shown there.
 	WID_S_MIDDLE, ///< Middle part; current news or company name or *** SAVING *** or *** PAUSED ***.
 	WID_S_RIGHT,  ///< Right part; bank balance.

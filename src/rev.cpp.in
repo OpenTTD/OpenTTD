@@ -28,7 +28,7 @@ bool IsReleasedVersion()
  * - "<tag>", like "<major>.<minor>.<build>[-RC<rc>]",
  * - "<commitdate>-g<shorthash><modified>" in "master",
  * - "<commitdate>-<branch>-g<shorthash><modified>" in other branches, or
- * - "norev000", if the version is unknown.
+ * - "norev0000", if the version is unknown.
  *
  * The major, minor and build are the numbers that describe releases of
  * OpenTTD (like 0.5.3). "-RC" is used to flag release candidates.
@@ -63,14 +63,14 @@ const char _openttd_revision_year[] = "${REV_YEAR}";
  * (compiling from sources without any version control software)
  * and 2 is for modified revision.
  */
-const byte _openttd_revision_modified = ${REV_MODIFIED};
+const uint8_t _openttd_revision_modified = ${REV_MODIFIED};
 
 /**
  * Indicate whether this is a tagged version.
  * If this is non-0, then _openttd_revision is the name of the tag,
  * and the version is likely a beta, release candidate, or real release.
  */
-const byte _openttd_revision_tagged = ${REV_ISTAG};
+const uint8_t _openttd_revision_tagged = ${REV_ISTAG};
 
 /**
  * To check compatibility of BaNaNaS content, this version string is used.
@@ -95,4 +95,4 @@ const char _openttd_content_version[] = "${REV_MAJOR}.${REV_MINOR}";
  * the "patch" part of the version. To make sure "1.11.0" is smaller than "12.0", we
  * have to adjust the major by 16.
  */
-const uint32 _openttd_newgrf_version = (${REV_MAJOR} + 16) << 24 | ${REV_MINOR} << 20 | ${REV_ISSTABLETAG} << 19 | 28004;
+const uint32_t _openttd_newgrf_version = (${REV_MAJOR} + 16) << 24 | ${REV_MINOR} << 20 | ${REV_ISSTABLETAG} << 19 | 28004;

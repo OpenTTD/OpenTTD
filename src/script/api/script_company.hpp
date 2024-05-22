@@ -99,7 +99,7 @@ public:
 	 * Types of expenses.
 	 * @api -ai
 	 */
-	enum ExpensesType : byte {
+	enum ExpensesType : uint8_t {
 		EXPENSES_CONSTRUCTION = ::EXPENSES_CONSTRUCTION,     ///< Construction costs.
 		EXPENSES_NEW_VEHICLES = ::EXPENSES_NEW_VEHICLES,     ///< New vehicles.
 		EXPENSES_TRAIN_RUN    = ::EXPENSES_TRAIN_RUN,        ///< Running costs trains.
@@ -129,8 +129,8 @@ public:
 	/**
 	 * Check if a CompanyID is your CompanyID, to ease up checks.
 	 * @param company The company index to check.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if and only if this company is your CompanyID.
-	 * @api -game
 	 */
 	static bool IsMine(CompanyID company);
 
@@ -150,7 +150,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The name of the given company.
 	 */
-	static char *GetName(CompanyID company);
+	static std::optional<std::string> GetName(CompanyID company);
 
 	/**
 	 * Set the name of your president.
@@ -168,7 +168,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The name of the president of the given company.
 	 */
-	static char *GetPresidentName(CompanyID company);
+	static std::optional<std::string> GetPresidentName(CompanyID company);
 
 	/**
 	 * Set the gender of the president of your company.
@@ -177,7 +177,6 @@ public:
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if the gender was changed.
 	 * @note When successful a random face will be created.
-	 * @api -game
 	 */
 	static bool SetPresidentGender(Gender gender);
 
@@ -218,11 +217,37 @@ public:
 	static Money GetLoanAmount();
 
 	/**
-	 * Gets the maximum amount your company can loan.
+	 * Gets the maximum amount your company can loan. In deity mode returns the global max loan.
 	 * @return The maximum amount your company can loan.
 	 * @post GetLoanInterval() is always a multiplier of the return value.
 	 */
 	static Money GetMaxLoanAmount();
+
+	/**
+	 * Sets the max amount of money company can loan.
+	 * @param company The company ID.
+	 * @param amount Max loan amount. Will be rounded down to a multiple of GetLoanInterval().
+	 * @return True, if the max loan was changed.
+	 * @pre ScriptCompanyMode::IsDeity().
+	 * @pre amount >= 0.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @note You need to create your own news message to inform about max loan change.
+	 * @note Max loan value set with this method is not affected by inflation.
+	 * @api -ai
+	 */
+	static bool SetMaxLoanAmountForCompany(CompanyID company, Money amount);
+
+	/**
+	 * Makes the max amount of money company can loan follow the global max loan setting.
+	 * @param company The company ID.
+	 * @return True, if the max loan was reset.
+	 * @pre ScriptCompanyMode::IsDeity().
+	 * @pre amount >= 0 && amount <= MAX_LOAN_LIMIT.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @note You need to create your own news message to inform about max loan change.
+	 * @api -ai
+	 */
+	static bool ResetMaxLoanAmountForCompany(CompanyID company);
 
 	/**
 	 * Gets the interval/loan step.
@@ -233,9 +258,10 @@ public:
 
 	/**
 	 * Gets the bank balance. In other words, the amount of money the given company can spent.
+	 * If infinite money is enabled, it returns INT32_MAX.
 	 * @param company The company to get the bank balance of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
-	 * @return The actual bank balance.
+	 * @return The actual bank balance or INT32_MAX.
 	 */
 	static Money GetBankBalance(CompanyID company);
 
@@ -255,59 +281,64 @@ public:
 	static bool ChangeBankBalance(CompanyID company, Money delta, ExpensesType expenses_type, TileIndex tile);
 
 	/**
-	 * Get the income of the company in the given quarter.
+	 * Get the income of the company in the given economy-quarter.
 	 * Note that this function only considers recurring income from vehicles;
 	 * it does not include one-time income from selling stuff.
 	 * @param company The company to get the quarterly income of.
-	 * @param quarter The quarter to get the income of.
+	 * @param quarter The economy-quarter to get the income of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre quarter <= EARLIEST_QUARTER.
-	 * @return The gross income of the company in the given quarter.
+	 * @return The gross income of the company in the given economy-quarter.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetQuarterlyIncome(CompanyID company, SQInteger quarter);
 
 	/**
-	 * Get the expenses of the company in the given quarter.
+	 * Get the expenses of the company in the given economy-quarter.
 	 * Note that this function only considers recurring expenses from vehicle
 	 * running cost, maintenance and interests; it does not include one-time
 	 * expenses from construction and buying stuff.
 	 * @param company The company to get the quarterly expenses of.
-	 * @param quarter The quarter to get the expenses of.
+	 * @param quarter The economy-quarter to get the expenses of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre quarter <= EARLIEST_QUARTER.
-	 * @return The expenses of the company in the given quarter.
+	 * @return The expenses of the company in the given economy-quarter.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetQuarterlyExpenses(CompanyID company, SQInteger quarter);
 
 	/**
-	 * Get the amount of cargo delivered by the given company in the given quarter.
+	 * Get the amount of cargo delivered by the given company in the given economy-quarter.
 	 * @param company The company to get the amount of delivered cargo of.
-	 * @param quarter The quarter to get the amount of delivered cargo of.
+	 * @param quarter The economy-quarter to get the amount of delivered cargo of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre quarter <= EARLIEST_QUARTER.
-	 * @return The amount of cargo delivered by the given company in the given quarter.
+	 * @return The amount of cargo delivered by the given company in the given economy-quarter.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetQuarterlyCargoDelivered(CompanyID company, SQInteger quarter);
 
 	/**
-	 * Get the performance rating of the given company in the given quarter.
+	 * Get the performance rating of the given company in the given economy-quarter.
 	 * @param company The company to get the performance rating of.
-	 * @param quarter The quarter to get the performance rating of.
+	 * @param quarter The economy-quarter to get the performance rating of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre quarter <= EARLIEST_QUARTER.
 	 * @pre quarter != CURRENT_QUARTER.
-	 * @note The performance rating is calculated after every quarter, so the value for CURRENT_QUARTER is undefined.
-	 * @return The performance rating of the given company in the given quarter.
+	 * @note The performance rating is calculated after every economy-quarter, so the value for CURRENT_QUARTER is undefined.
+	 * @return The performance rating of the given company in the given economy-quarter.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetQuarterlyPerformanceRating(CompanyID company, SQInteger quarter);
 
 	/**
-	 * Get the value of the company in the given quarter.
+	 * Get the value of the company in the given economy-quarter.
 	 * @param company The company to get the value of.
-	 * @param quarter The quarter to get the value of.
+	 * @param quarter The economy-quarter to get the value of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre quarter <= EARLIEST_QUARTER.
-	 * @return The value of the company in the given quarter.
+	 * @return The value of the company in the given economy-quarter.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetQuarterlyCompanyValue(CompanyID company, SQInteger quarter);
 
@@ -338,7 +369,6 @@ public:
 	 * @param autorenew The new autorenew status.
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if autorenew status has been modified.
-	 * @api -game
 	 */
 	static bool SetAutoRenewStatus(bool autorenew);
 
@@ -352,11 +382,11 @@ public:
 
 	/**
 	 * Set the number of months before/after max age to autorenew an engine for your company.
-	 * @param months The new months between autorenew.
-	 *               The value will be clamped to MIN(int16) .. MAX(int16).
+	 * @param months The number of calendar-months before/after max age of engine.
+	 *               The value will be clamped to MIN(int16_t) .. MAX(int16_t).
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if autorenew months has been modified.
-	 * @api -game
+	 * @see \ref ScriptCalendarTime
 	 */
 	static bool SetAutoRenewMonths(SQInteger months);
 
@@ -364,7 +394,8 @@ public:
 	 * Return the number of months before/after max age to autorenew an engine for a company.
 	 * @param company The company to get the autorenew months of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
-	 * @return The months before/after max age of engine.
+	 * @return The number of calendar-months before/after max age of engine.
+	 * @see \ref ScriptCalendarTime
 	 */
 	static SQInteger GetAutoRenewMonths(CompanyID company);
 
@@ -375,7 +406,6 @@ public:
 	 * @return True if autorenew money has been modified.
 	 * @pre money >= 0
 	 * @pre money <  2**32
-	 * @api -game
 	 */
 	static bool SetAutoRenewMoney(Money money);
 

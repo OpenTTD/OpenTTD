@@ -17,4 +17,16 @@ void ShowCompanyGroup(CompanyID company, VehicleType veh, GroupID group = INVALI
 void ShowCompanyGroupForVehicle(const Vehicle *v);
 void DeleteGroupHighlightOfVehicle(const Vehicle *v);
 
+struct GUIGroupListItem {
+	const Group *group;
+	uint8_t indent; ///< Display indentation level.
+	uint16_t level_mask; ///< Bitmask of indentation continuation.
+
+	constexpr GUIGroupListItem(const Group *group, int8_t indent) : group(group), indent(indent), level_mask(0) {}
+};
+
+using GUIGroupList = GUIList<GUIGroupListItem>;
+
+void BuildGuiGroupList(GUIGroupList &dst, bool fold, Owner owner, VehicleType veh_type);
+
 #endif /* GROUP_GUI_H */

@@ -14,13 +14,14 @@
 #include "engine_type.h"
 #include "vehicle_type.h"
 #include "vehiclelist.h"
+#include "vehiclelist_cmd.h"
 #include "cargo_type.h"
 
-std::tuple<CommandCost, VehicleID, uint, uint16, CargoArray> CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, EngineID eid, bool use_free_vehicles, CargoID cargo, ClientID client_id);
+std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, EngineID eid, bool use_free_vehicles, CargoID cargo, ClientID client_id);
 CommandCost CmdSellVehicle(DoCommandFlag flags, VehicleID v_id, bool sell_chain, bool backup_order, ClientID client_id);
-std::tuple<CommandCost, uint, uint16, CargoArray> CmdRefitVehicle(DoCommandFlag flags, VehicleID veh_id, CargoID new_cid, byte new_subtype, bool auto_refit, bool only_this, uint8 num_vehicles);
+std::tuple<CommandCost, uint, uint16_t, CargoArray> CmdRefitVehicle(DoCommandFlag flags, VehicleID veh_id, CargoID new_cid, uint8_t new_subtype, bool auto_refit, bool only_this, uint8_t num_vehicles);
 CommandCost CmdSendVehicleToDepot(DoCommandFlag flags, VehicleID veh_id, DepotCommand depot_cmd, const VehicleListIdentifier &vli);
-CommandCost CmdChangeServiceInt(DoCommandFlag flags, VehicleID veh_id, uint16 serv_int, bool is_custom, bool is_percent);
+CommandCost CmdChangeServiceInt(DoCommandFlag flags, VehicleID veh_id, uint16_t serv_int, bool is_custom, bool is_percent);
 CommandCost CmdRenameVehicle(DoCommandFlag flags, VehicleID veh_id, const std::string &text);
 std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, VehicleID veh_id, bool share_orders);
 CommandCost CmdStartStopVehicle(DoCommandFlag flags, VehicleID veh_id, bool evaluate_startstop_cb);
@@ -40,33 +41,22 @@ DEF_CMD_TRAIT(CMD_MASS_START_STOP,         CmdMassStartStopVehicle, 0,          
 DEF_CMD_TRAIT(CMD_DEPOT_SELL_ALL_VEHICLES, CmdDepotSellAllVehicles, 0,                            CMDT_VEHICLE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_DEPOT_MASS_AUTOREPLACE,  CmdDepotMassAutoReplace, 0,                            CMDT_VEHICLE_CONSTRUCTION)
 
-void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16, CargoArray);
+void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16_t, CargoArray);
 void CcStartStopVehicle(Commands cmd, const CommandCost &result, VehicleID veh_id, bool);
-
-template <typename Tcont, typename Titer>
-inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const VehicleListIdentifier &vli)
-{
-	return buffer << vli.type << vli.vtype << vli.company << vli.index;
-}
-
-inline EndianBufferReader &operator >>(EndianBufferReader &buffer, VehicleListIdentifier &vli)
-{
-	return buffer >> vli.type >> vli.vtype >> vli.company >> vli.index;
-}
 
 template <typename Tcont, typename Titer>
 inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const CargoArray &cargo_array)
 {
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		buffer << cargo_array[c];
+	for (const uint &amt : cargo_array) {
+		buffer << amt;
 	}
 	return buffer;
 }
 
 inline EndianBufferReader &operator >>(EndianBufferReader &buffer, CargoArray &cargo_array)
 {
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		buffer >> cargo_array[c];
+	for (uint &amt : cargo_array) {
+		buffer >> amt;
 	}
 	return buffer;
 }

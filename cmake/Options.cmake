@@ -57,20 +57,16 @@ function(set_options)
     option(OPTION_DEDICATED "Build dedicated server only (no GUI)" OFF)
     option(OPTION_INSTALL_FHS "Install with Filesystem Hierarchy Standard folders" ${DEFAULT_OPTION_INSTALL_FHS})
     option(OPTION_USE_ASSERTS "Use assertions; leave enabled for nightlies, betas, and RCs" ON)
-    if(EMSCRIPTEN)
-        # Although pthreads is supported, it is not in a way yet that is
-        # useful for us.
-        option(OPTION_USE_THREADS "Use threads" OFF)
-    else()
-        option(OPTION_USE_THREADS "Use threads" ON)
-    endif()
     option(OPTION_USE_NSIS "Use NSIS to create windows installer; enable only for stable releases" OFF)
     option(OPTION_TOOLS_ONLY "Build only tools target" OFF)
     option(OPTION_DOCS_ONLY "Build only docs target" OFF)
+    option(OPTION_ALLOW_INVALID_SIGNATURE "Allow loading of content with invalid signatures" OFF)
 
     if (OPTION_DOCS_ONLY)
         set(OPTION_TOOLS_ONLY ON PARENT_SCOPE)
     endif()
+
+    option(OPTION_SURVEY_KEY "Survey-key to use for the opt-in survey (empty if you have none)" "")
 endfunction()
 
 # Show the values of the generic options.
@@ -82,8 +78,18 @@ function(show_options)
     message(STATUS "Option Dedicated - ${OPTION_DEDICATED}")
     message(STATUS "Option Install FHS - ${OPTION_INSTALL_FHS}")
     message(STATUS "Option Use assert - ${OPTION_USE_ASSERTS}")
-    message(STATUS "Option Use threads - ${OPTION_USE_THREADS}")
     message(STATUS "Option Use NSIS - ${OPTION_USE_NSIS}")
+
+    if(OPTION_SURVEY_KEY)
+        message(STATUS "Option Survey Key - USED")
+    else()
+        message(STATUS "Option Survey Key - NOT USED")
+    endif()
+
+    if(OPTION_ALLOW_INVALID_SIGNATURE)
+        message(STATUS "Option Allow Invalid Signature - USED")
+        message(WARNING "Ignoring invalid signatures is a security risk! Use with care!")
+    endif()
 endfunction()
 
 # Add the definitions for the options that are selected.
@@ -95,13 +101,17 @@ function(add_definitions_based_on_options)
         add_definitions(-DDEDICATED)
     endif()
 
-    if(NOT OPTION_USE_THREADS)
-        add_definitions(-DNO_THREADS)
-    endif()
-
     if(OPTION_USE_ASSERTS)
         add_definitions(-DWITH_ASSERT)
     else()
         add_definitions(-DNDEBUG)
+    endif()
+
+    if(OPTION_SURVEY_KEY)
+        add_definitions(-DSURVEY_KEY="${OPTION_SURVEY_KEY}")
+    endif()
+
+    if(OPTION_ALLOW_INVALID_SIGNATURE)
+        add_definitions(-DALLOW_INVALID_SIGNATURE)
     endif()
 endfunction()

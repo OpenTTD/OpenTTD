@@ -20,8 +20,8 @@
 #include "../../station_base.h"
 #include "../../newgrf_industries.h"
 #include "../../industry_cmd.h"
+#include "../../timer/timer_game_calendar.h"
 #include "table/strings.h"
-#include <numeric>
 
 #include "../../safeguards.h"
 
@@ -41,12 +41,19 @@
 	return ::GetIndustryIndex(tile);
 }
 
-/* static */ char *ScriptIndustry::GetName(IndustryID industry_id)
+/* static */ std::optional<std::string> ScriptIndustry::GetName(IndustryID industry_id)
 {
-	if (!IsValidIndustry(industry_id)) return nullptr;
+	if (!IsValidIndustry(industry_id)) return std::nullopt;
 
 	::SetDParam(0, industry_id);
 	return GetString(STR_INDUSTRY_NAME);
+}
+
+/* static */ ScriptDate::Date ScriptIndustry::GetConstructionDate(IndustryID industry_id)
+{
+	Industry *i = Industry::GetIfValid(industry_id);
+	if (i == nullptr) return ScriptDate::DATE_INVALID;
+	return (ScriptDate::Date)i->construction_date.base();
 }
 
 /* static */ bool ScriptIndustry::SetText(IndustryID industry_id, Text *text)
@@ -66,14 +73,10 @@
 
 	Industry *i = ::Industry::Get(industry_id);
 
-	for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-		if (i->accepts_cargo[j] == cargo_id) {
-			if (IndustryTemporarilyRefusesCargo(i, cargo_id)) return CAS_TEMP_REFUSED;
-			return CAS_ACCEPTED;
-		}
-	}
+	if (!i->IsCargoAccepted(cargo_id)) return CAS_NOT_ACCEPTED;
+	if (IndustryTemporarilyRefusesCargo(i, cargo_id)) return CAS_TEMP_REFUSED;
 
-	return CAS_NOT_ACCEPTED;
+	return CAS_ACCEPTED;
 }
 
 /* static */ SQInteger ScriptIndustry::GetStockpiledCargo(IndustryID industry_id, CargoID cargo_id)
@@ -81,15 +84,12 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	Industry *ind = ::Industry::Get(industry_id);
-	for (uint i = 0; i < lengthof(ind->accepts_cargo); i++) {
-		CargoID cid = ind->accepts_cargo[i];
-		if (cid == cargo_id) {
-			return ind->incoming_cargo_waiting[i];
-		}
-	}
+	Industry *i = ::Industry::Get(industry_id);
 
-	return -1;
+	auto it = i->GetCargoAccepted(cargo_id);
+	if (it == std::end(i->accepted)) return -1;
+
+	return it->waiting;
 }
 
 /* static */ SQInteger ScriptIndustry::GetLastMonthProduction(IndustryID industry_id, CargoID cargo_id)
@@ -97,13 +97,12 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	const Industry *i = ::Industry::Get(industry_id);
+	Industry *i = ::Industry::Get(industry_id);
 
-	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-		if (i->produced_cargo[j] == cargo_id) return i->last_month_production[j];
-	}
+	auto it = i->GetCargoProduced(cargo_id);
+	if (it == std::end(i->produced)) return -1;
 
-	return -1;
+	return it->history[LAST_MONTH].production;
 }
 
 /* static */ SQInteger ScriptIndustry::GetLastMonthTransported(IndustryID industry_id, CargoID cargo_id)
@@ -111,13 +110,12 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	const Industry *i = ::Industry::Get(industry_id);
+	Industry *i = ::Industry::Get(industry_id);
 
-	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-		if (i->produced_cargo[j] == cargo_id) return i->last_month_transported[j];
-	}
+	auto it = i->GetCargoProduced(cargo_id);
+	if (it == std::end(i->produced)) return -1;
 
-	return -1;
+	return it->history[LAST_MONTH].transported;
 }
 
 /* static */ SQInteger ScriptIndustry::GetLastMonthTransportedPercentage(IndustryID industry_id, CargoID cargo_id)
@@ -125,13 +123,12 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	const Industry *i = ::Industry::Get(industry_id);
+	Industry *i = ::Industry::Get(industry_id);
 
-	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-		if (i->produced_cargo[j] == cargo_id) return ::ToPercent8(i->last_month_pct_transported[j]);
-	}
+	auto it = i->GetCargoProduced(cargo_id);
+	if (it == std::end(i->produced)) return -1;
 
-	return -1;
+	return ::ToPercent8(it->history[LAST_MONTH].PctTransported());
 }
 
 /* static */ TileIndex ScriptIndustry::GetLocation(IndustryID industry_id)
@@ -225,7 +222,7 @@
 {
 	Industry *i = Industry::GetIfValid(industry_id);
 	if (i == nullptr) return 0;
-	return i->last_prod_year;
+	return i->last_prod_year.base();
 }
 
 /* static */ ScriptDate::Date ScriptIndustry::GetCargoLastAcceptedDate(IndustryID industry_id, CargoID cargo_type)
@@ -233,12 +230,13 @@
 	Industry *i = Industry::GetIfValid(industry_id);
 	if (i == nullptr) return ScriptDate::DATE_INVALID;
 
-	if (cargo_type == CT_INVALID) {
-		return (ScriptDate::Date)std::accumulate(std::begin(i->last_cargo_accepted_at), std::end(i->last_cargo_accepted_at), 0, [](Date a, Date b) { return std::max(a, b); });
+	if (!::IsValidCargoID(cargo_type)) {
+		auto it = std::max_element(std::begin(i->accepted), std::end(i->accepted), [](const auto &a, const auto &b) { return a.last_accepted < b.last_accepted; });
+		return (ScriptDate::Date)it->last_accepted.base();
 	} else {
-		int index = i->GetCargoAcceptedIndex(cargo_type);
-		if (index < 0) return ScriptDate::DATE_INVALID;
-		return (ScriptDate::Date)i->last_cargo_accepted_at[index];
+		auto it = i->GetCargoAccepted(cargo_type);
+		if (it == std::end(i->accepted)) return ScriptDate::DATE_INVALID;
+		return (ScriptDate::Date)it->last_accepted.base();
 	}
 }
 
@@ -264,7 +262,7 @@
 	auto company_id = ::Industry::Get(industry_id)->exclusive_supplier;
 	if (!::Company::IsValidID(company_id)) return ScriptCompany::COMPANY_INVALID;
 
-	return (ScriptCompany::CompanyID)((byte)company_id);
+	return (ScriptCompany::CompanyID)((uint8_t)company_id);
 }
 
 /* static */ bool ScriptIndustry::SetExclusiveSupplier(IndustryID industry_id, ScriptCompany::CompanyID company_id)
@@ -284,7 +282,7 @@
 	auto company_id = ::Industry::Get(industry_id)->exclusive_consumer;
 	if (!::Company::IsValidID(company_id)) return ScriptCompany::COMPANY_INVALID;
 
-	return (ScriptCompany::CompanyID)((byte)company_id);
+	return (ScriptCompany::CompanyID)((uint8_t)company_id);
 }
 
 /* static */ bool ScriptIndustry::SetExclusiveConsumer(IndustryID industry_id, ScriptCompany::CompanyID company_id)
@@ -295,4 +293,22 @@
 	auto company = ScriptCompany::ResolveCompanyID(company_id);
 	::Owner owner = (company == ScriptCompany::COMPANY_INVALID ? ::INVALID_OWNER : (::Owner)company);
 	return ScriptObject::Command<CMD_INDUSTRY_SET_EXCLUSIVITY>::Do(industry_id, owner, true);
+}
+
+/* static */ SQInteger ScriptIndustry::GetProductionLevel(IndustryID industry_id)
+{
+	Industry *i = Industry::GetIfValid(industry_id);
+	if (i == nullptr) return 0;
+	return i->prod_level;
+}
+
+/* static */ bool ScriptIndustry::SetProductionLevel(IndustryID industry_id, SQInteger prod_level, bool show_news, Text *custom_news)
+{
+	CCountedPtr<Text> counter(custom_news);
+
+	EnforceDeityMode(false);
+	EnforcePrecondition(false, IsValidIndustry(industry_id));
+	EnforcePrecondition(false, prod_level >= PRODLEVEL_MINIMUM && prod_level <= PRODLEVEL_MAXIMUM);
+
+	return ScriptObject::Command<CMD_INDUSTRY_SET_PRODUCTION>::Do(industry_id, prod_level, show_news, custom_news != nullptr ? custom_news->GetEncodedText() : std::string{});
 }

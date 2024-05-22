@@ -3,6 +3,7 @@
  */
 
 #include "../../../stdafx.h"
+#include "../../fmt/format.h"
 
 #include <squirrel.h>
 #include "sqpcheader.h"
@@ -63,16 +64,9 @@ SQRESULT sq_stackinfos(HSQUIRRELVM v, SQInteger level, SQStackInfos *si)
 	return SQ_ERROR;
 }
 
-void SQVM::Raise_Error(const SQChar *s, ...)
+void SQVM::Raise_Error(const std::string &msg)
 {
-	va_list vl;
-	va_start(vl, s);
-	size_t len = strlen(s)+(NUMBER_MAX_CHAR*2);
-	char *buffer = MallocT<char>(len + 1);
-	vseprintf(buffer, buffer + len, s, vl);
-	va_end(vl);
-	_lasterror = SQString::Create(_ss(this),buffer,-1);
-	free(buffer);
+	_lasterror = SQString::Create(_ss(this),msg);
 }
 
 void SQVM::Raise_Error(SQObjectPtr &desc)
@@ -82,15 +76,12 @@ void SQVM::Raise_Error(SQObjectPtr &desc)
 
 SQString *SQVM::PrintObjVal(const SQObject &o)
 {
-	char buf[NUMBER_MAX_CHAR+1];
 	switch(type(o)) {
 	case OT_STRING: return _string(o);
 	case OT_INTEGER:
-		seprintf(buf, lastof(buf), OTTD_PRINTF64, _integer(o));
-		return SQString::Create(_ss(this), buf);
+		return SQString::Create(_ss(this), fmt::format("{}", _integer(o)));
 	case OT_FLOAT:
-		seprintf(buf, lastof(buf), "%.14g", _float(o));
-		return SQString::Create(_ss(this), buf);
+		return SQString::Create(_ss(this), fmt::format("{:.14g}", _float(o)));
 	default:
 		return SQString::Create(_ss(this), GetTypeName(o));
 	}
@@ -99,13 +90,13 @@ SQString *SQVM::PrintObjVal(const SQObject &o)
 void SQVM::Raise_IdxError(const SQObject &o)
 {
 	SQObjectPtr oval = PrintObjVal(o);
-	Raise_Error("the index '%.50s' does not exist", _stringval(oval));
+	Raise_Error(fmt::format("the index '{:.50s}' does not exist", _stringval(oval)));
 }
 
 void SQVM::Raise_CompareError(const SQObject &o1, const SQObject &o2)
 {
 	SQObjectPtr oval1 = PrintObjVal(o1), oval2 = PrintObjVal(o2);
-	Raise_Error("comparison between '%.50s' and '%.50s'", _stringval(oval1), _stringval(oval2));
+	Raise_Error(fmt::format("comparison between '{:.50s}' and '{:.50s}'", _stringval(oval1), _stringval(oval2)));
 }
 
 
@@ -122,5 +113,5 @@ void SQVM::Raise_ParamTypeError(SQInteger nparam,SQInteger typemask,SQInteger ty
 			StringCat(exptypes,SQString::Create(_ss(this), IdType2Name((SQObjectType)mask), -1), exptypes);
 		}
 	}
-	Raise_Error("parameter " OTTD_PRINTF64 " has an invalid type '%s' ; expected: '%s'", nparam, IdType2Name((SQObjectType)type), _stringval(exptypes));
+	Raise_Error(fmt::format("parameter {} has an invalid type '{}' ; expected: '{}'", nparam, IdType2Name((SQObjectType)type), _stringval(exptypes)));
 }

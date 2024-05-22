@@ -11,14 +11,11 @@
 #define NEWGRF_PROFILING_H
 
 #include "stdafx.h"
-#include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
 
-#include <vector>
-#include <string>
-#include <memory>
 
 /**
  * Callback profiler for NewGRF development
@@ -32,32 +29,33 @@ struct NewGRFProfiler {
 	void RecursiveResolve();
 
 	void Start();
-	uint32 Finish();
+	uint32_t Finish();
 	void Abort();
 	std::string GetOutputFilename() const;
 
-	static uint32 FinishAll();
+	static void StartTimer(uint64_t ticks);
+	static void AbortTimer();
+	static uint32_t FinishAll();
 
 	/** Measurement of a single sprite group resolution */
 	struct Call {
-		uint32 root_sprite;  ///< Pseudo-sprite index in GRF file
-		uint32 item;         ///< Local ID of item being resolved for
-		uint32 result;       ///< Result of callback
-		uint32 subs;         ///< Sub-calls to other sprite groups
-		uint32 time;         ///< Time taken for resolution (microseconds)
-		uint64 tick;         ///< Game tick
+		uint32_t root_sprite;  ///< Pseudo-sprite index in GRF file
+		uint32_t item;         ///< Local ID of item being resolved for
+		uint32_t result;       ///< Result of callback
+		uint32_t subs;         ///< Sub-calls to other sprite groups
+		uint32_t time;         ///< Time taken for resolution (microseconds)
+		uint64_t tick;         ///< Game tick
 		CallbackID cb;       ///< Callback ID
 		GrfSpecFeature feat; ///< GRF feature being resolved for
 	};
 
 	const GRFFile *grffile;  ///< Which GRF is being profiled
 	bool active;             ///< Is this profiler collecting data
-	uint64 start_tick;       ///< Tick number this profiler was started on
+	uint64_t start_tick;       ///< Tick number this profiler was started on
 	Call cur_call;           ///< Data for current call in progress
 	std::vector<Call> calls; ///< All calls collected so far
 };
 
 extern std::vector<NewGRFProfiler> _newgrf_profilers;
-extern Date _newgrf_profile_end_date;
 
 #endif /* NEWGRF_PROFILING_H */

@@ -13,6 +13,7 @@
 #define NETWORK_CORE_CORE_H
 
 #include "../../newgrf_config.h"
+#include "../network_crypto.h"
 #include "config.h"
 
 bool NetworkCoreInitialize();
@@ -43,12 +44,17 @@ class NetworkSocketHandler {
 private:
 	bool has_quit; ///< Whether the current client has quit/send a bad packet
 
+protected:
+	friend struct Packet;
+	std::unique_ptr<class NetworkEncryptionHandler> receive_encryption_handler; ///< The handler for decrypting received packets.
+	std::unique_ptr<class NetworkEncryptionHandler> send_encryption_handler; ///< The handler for encrypting sent packets.
+
 public:
 	/** Create a new unbound socket */
 	NetworkSocketHandler() { this->has_quit = false; }
 
 	/** Close the socket when destructing the socket handler */
-	virtual ~NetworkSocketHandler() {}
+	virtual ~NetworkSocketHandler() = default;
 
 	/**
 	 * Mark the connection as closed.

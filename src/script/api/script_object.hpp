@@ -18,6 +18,7 @@
 #include "../../core/random_func.hpp"
 
 #include "script_types.hpp"
+#include "script_log_types.hpp"
 #include "../script_suspend.hpp"
 #include "../squirrel.hpp"
 
@@ -29,6 +30,11 @@
 typedef bool (ScriptModeProc)();
 
 /**
+ * The callback function for Async Mode-classes.
+ */
+typedef bool (ScriptAsyncModeProc)();
+
+/**
  * Uper-parent object of all API classes. You should never use this class in
  *   your script, as it doesn't publish any public functions. It is used
  *   internally to have a common place to handle general things, like internal
@@ -38,6 +44,7 @@ typedef bool (ScriptModeProc)();
 class ScriptObject : public SimpleCountedObject {
 friend class ScriptInstance;
 friend class ScriptController;
+friend class TestScriptController;
 protected:
 	/**
 	 * A class that handles the current active instance. By instantiating it at
@@ -188,6 +195,21 @@ protected:
 	static ScriptObject *GetDoCommandModeInstance();
 
 	/**
+	 * Set the current async mode of your script to this proc.
+	 */
+	static void SetDoCommandAsyncMode(ScriptAsyncModeProc *proc, ScriptObject *instance);
+
+	/**
+	 * Get the current async mode your script is currently under.
+	 */
+	static ScriptModeProc *GetDoCommandAsyncMode();
+
+	/**
+	 * Get the instance of the current async mode your script is currently under.
+	 */
+	static ScriptObject *GetDoCommandAsyncModeInstance();
+
+	/**
 	 * Set the delay of the DoCommand.
 	 */
 	static void SetDoCommandDelay(uint ticks);
@@ -276,17 +298,17 @@ protected:
 	/**
 	 * Get the pointer to store log message in.
 	 */
-	static void *&GetLogPointer();
+	static ScriptLogTypes::LogData &GetLogData();
 
 	/**
 	 * Get an allocated string with all control codes stripped off.
 	 */
-	static char *GetString(StringID string);
+	static std::string GetString(StringID string);
 
 private:
 	/* Helper functions for DoCommand. */
-	static std::tuple<bool, bool, bool> DoCommandPrep();
-	static bool DoCommandProcessResult(const CommandCost &res, Script_SuspendCallbackProc *callback, bool estimate_only);
+	static std::tuple<bool, bool, bool, bool> DoCommandPrep();
+	static bool DoCommandProcessResult(const CommandCost &res, Script_SuspendCallbackProc *callback, bool estimate_only, bool asynchronous);
 	static CommandCallbackData *GetDoCommandCallback();
 	static Randomizer random_states[OWNER_END]; ///< Random states for each of the scripts (game script uses OWNER_DEITY)
 };
@@ -337,7 +359,7 @@ namespace ScriptObjectInternal {
 template <Commands Tcmd, typename Tret, typename... Targs>
 bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...)>::Execute(Script_SuspendCallbackProc *callback, std::tuple<Targs...> args)
 {
-	auto [err, estimate_only, networking] = ScriptObject::DoCommandPrep();
+	auto [err, estimate_only, asynchronous, networking] = ScriptObject::DoCommandPrep();
 	if (err) return false;
 
 	if ((::GetCommandFlags<Tcmd>() & CMD_STR_CTRL) == 0) {
@@ -362,10 +384,10 @@ bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...)>
 	Tret res = ::Command<Tcmd>::Unsafe((StringID)0, networking ? ScriptObject::GetDoCommandCallback() : nullptr, false, estimate_only, tile, args);
 
 	if constexpr (std::is_same_v<Tret, CommandCost>) {
-		return ScriptObject::DoCommandProcessResult(res, callback, estimate_only);
+		return ScriptObject::DoCommandProcessResult(res, callback, estimate_only, asynchronous);
 	} else {
 		ScriptObject::SetLastCommandResData(EndianBufferWriter<CommandDataBuffer>::FromValue(ScriptObjectInternal::RemoveFirstTupleElement(res)));
-		return ScriptObject::DoCommandProcessResult(std::get<0>(res), callback, estimate_only);
+		return ScriptObject::DoCommandProcessResult(std::get<0>(res), callback, estimate_only, asynchronous);
 	}
 }
 

@@ -10,96 +10,65 @@
 #ifndef CRASHLOG_H
 #define CRASHLOG_H
 
+#include "3rdparty/nlohmann/json.hpp"
+
 /**
  * Helper class for creating crash logs.
  */
 class CrashLog {
 private:
-	/** Error message coming from #error(const char *, ...). */
+	/** Error message coming from #FatalError(format, ...). */
 	static std::string message;
+
+	/**
+	 * Convert system crash reason to JSON.
+	 *
+	 * @param survey The JSON object.
+	 */
+	virtual void SurveyCrash(nlohmann::json &survey) const = 0;
+
+	/**
+	 * Convert stacktrace to JSON.
+	 *
+	 * @param survey The JSON object.
+	 */
+	virtual void SurveyStacktrace(nlohmann::json &survey) const = 0;
+
+	/**
+	 * Execute the func() and return its value. If any exception / signal / crash happens,
+	 * catch it and return false. This function should, in theory, never not return, even
+	 * in the worst conditions.
+	 *
+	 * @param section_name The name of the section to be executed. Printed when a crash happens.
+	 * @param func The function to call.
+	 * @return true iff the function returned true.
+	 */
+	virtual bool TryExecute(std::string_view section_name, std::function<bool()> &&func) = 0;
+
 protected:
-	/**
-	 * Writes OS' version to the buffer.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
-	 */
-	virtual char *LogOSVersion(char *buffer, const char *last) const = 0;
-
-	/**
-	 * Writes compiler (and its version, if available) to the buffer.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
-	 */
-	virtual char *LogCompiler(char *buffer, const char *last) const;
-
-	/**
-	 * Writes actually encountered error to the buffer.
-	 * @param buffer  The begin where to write at.
-	 * @param last    The last position in the buffer to write to.
-	 * @param message Message passed to use for errors.
-	 * @return the position of the \c '\0' character after the buffer.
-	 */
-	virtual char *LogError(char *buffer, const char *last, const char *message) const = 0;
-
-	/**
-	 * Writes the stack trace to the buffer, if there is information about it
-	 * available.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
-	 */
-	virtual char *LogStacktrace(char *buffer, const char *last) const = 0;
-
-	/**
-	 * Writes information about the data in the registers, if there is
-	 * information about it available.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
-	 */
-	virtual char *LogRegisters(char *buffer, const char *last) const;
-
-	/**
-	 * Writes the dynamically linked libraries/modules to the buffer, if there
-	 * is information about it available.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
-	 */
-	virtual char *LogModules(char *buffer, const char *last) const;
-
-
-	char *LogOpenTTDVersion(char *buffer, const char *last) const;
-	char *LogConfiguration(char *buffer, const char *last) const;
-	char *LogLibraries(char *buffer, const char *last) const;
-	char *LogGamelog(char *buffer, const char *last) const;
-	char *LogRecentNews(char *buffer, const char *list) const;
-
-	int CreateFileName(char *filename, const char *filename_last, const char *ext, bool with_dir = true) const;
+	std::string CreateFileName(const char *ext, bool with_dir = true) const;
 
 public:
 	/** Stub destructor to silence some compilers. */
-	virtual ~CrashLog() {}
+	virtual ~CrashLog() = default;
 
-	char *FillCrashLog(char *buffer, const char *last) const;
-	bool WriteCrashLog(const char *buffer, char *filename, const char *filename_last) const;
+	nlohmann::json survey;
+	std::string crashlog_filename;
+	std::string crashdump_filename;
+	std::string savegame_filename;
+	std::string screenshot_filename;
 
-	/**
-	 * Write the (crash) dump to a file.
-	 * @note On success the filename will be filled with the full path of the
-	 *       crash dump file. Make sure filename is at least \c MAX_PATH big.
-	 * @param filename      Output for the filename of the written file.
-	 * @param filename_last The last position in the filename buffer.
-	 * @return if less than 0, error. If 0 no dump is made, otherwise the dump
-	 *         was successful (not all OSes support dumping files).
-	 */
-	virtual int WriteCrashDump(char *filename, const char *filename_last) const;
-	bool WriteSavegame(char *filename, const char *filename_last) const;
-	bool WriteScreenshot(char *filename, const char *filename_last) const;
+	void FillCrashLog();
+	void PrintCrashLog() const;
 
-	bool MakeCrashLog() const;
+	bool WriteCrashLog();
+	virtual bool WriteCrashDump();
+	bool WriteSavegame();
+	bool WriteScreenshot();
+
+	void SendSurvey() const;
+
+	void MakeCrashLog();
 
 	/**
 	 * Initialiser for crash logs; do the appropriate things so crashes are
@@ -114,7 +83,7 @@ public:
 	 */
 	static void InitThread();
 
-	static void SetErrorMessage(const char *message);
+	static void SetErrorMessage(const std::string &message);
 	static void AfterCrashLogCleanup();
 };
 
