@@ -45,7 +45,7 @@ public:
 	std::vector<GlyphID> glyphs; ///< The glyphs of the run. Valid after Shape() is called.
 	std::vector<int> advance; ///< The advance (width) of the glyphs. Valid after Shape() is called.
 	std::vector<int> glyph_to_char; ///< The mapping from glyphs to characters. Valid after Shape() is called.
-	std::vector<Point> positions; ///< The positions of the glyphs. Valid after Shape() is called.
+	std::vector<ParagraphLayouter::Position> positions; ///< The positions of the glyphs. Valid after Shape() is called.
 	int total_advance = 0; ///< The total advance of the run. Valid after Shape() is called.
 
 	ICURun(int start, int length, UBiDiLevel level, UScriptCode script = USCRIPT_UNKNOWN, Font *font = nullptr) : start(start), length(length), level(level), script(script), font(font) {}
@@ -62,7 +62,7 @@ public:
 	class ICUVisualRun : public ParagraphLayouter::VisualRun {
 	private:
 		std::vector<GlyphID> glyphs;
-		std::vector<Point> positions;
+		std::vector<Position> positions;
 		std::vector<int> glyph_to_char;
 
 		int total_advance;
@@ -72,7 +72,7 @@ public:
 		ICUVisualRun(const ICURun &run, int x);
 
 		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
-		std::span<const Point> GetPositions() const override { return this->positions; }
+		std::span<const Position> GetPositions() const override { return this->positions; }
 		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
 
 		const Font *GetFont() const override { return this->font; }
@@ -136,8 +136,8 @@ ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) :
 	this->positions.reserve(run.positions.size());
 
 	/* Copy positions, moving x coordinate by x offset. */
-	for (const Point &pt : run.positions) {
-		this->positions.emplace_back(pt.x + x, pt.y);
+	for (const auto &pos : run.positions) {
+		this->positions.emplace_back(pos.left + x, pos.right + x, pos.top);
 	}
 }
 
@@ -179,7 +179,7 @@ void ICURun::Shape(UChar *buff, size_t buff_length)
 	/* Reserve space, as we already know the size. */
 	this->glyphs.reserve(glyph_count);
 	this->glyph_to_char.reserve(glyph_count);
-	this->positions.reserve(glyph_count + 1);
+	this->positions.reserve(glyph_count);
 	this->advance.reserve(glyph_count);
 
 	/* Prepare the glyphs/position. ICUVisualRun will give the position an offset if needed. */
@@ -189,23 +189,19 @@ void ICURun::Shape(UChar *buff, size_t buff_length)
 
 		if (buff[glyph_info[i].cluster] >= SCC_SPRITE_START && buff[glyph_info[i].cluster] <= SCC_SPRITE_END && glyph_info[i].codepoint == 0) {
 			auto glyph = this->font->fc->MapCharToGlyph(buff[glyph_info[i].cluster]);
-
-			this->glyphs.push_back(glyph);
-			this->positions.emplace_back(advance, (this->font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(this->font->fc->GetSize()))) / 2); // Align sprite font to centre
 			x_advance = this->font->fc->GetGlyphWidth(glyph);
+			this->glyphs.push_back(glyph);
+			this->positions.emplace_back(advance, advance + x_advance - 1, (this->font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(this->font->fc->GetSize()))) / 2); // Align sprite font to centre
 		} else {
-			this->glyphs.push_back(glyph_info[i].codepoint);
-			this->positions.emplace_back(glyph_pos[i].x_offset / FONT_SCALE + advance, glyph_pos[i].y_offset / FONT_SCALE);
 			x_advance = glyph_pos[i].x_advance / FONT_SCALE;
+			this->glyphs.push_back(glyph_info[i].codepoint);
+			this->positions.emplace_back(glyph_pos[i].x_offset / FONT_SCALE + advance, glyph_pos[i].x_offset / FONT_SCALE + advance + x_advance - 1, glyph_pos[i].y_offset / FONT_SCALE);
 		}
 
 		this->glyph_to_char.push_back(glyph_info[i].cluster);
 		this->advance.push_back(x_advance);
 		advance += x_advance;
 	}
-
-	/* End-of-run position. */
-	this->positions.emplace_back(advance, 0);
 
 	/* Track the total advancement we made. */
 	this->total_advance = advance;

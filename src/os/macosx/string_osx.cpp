@@ -71,7 +71,7 @@ public:
 	class CoreTextVisualRun : public ParagraphLayouter::VisualRun {
 	private:
 		std::vector<GlyphID> glyphs;
-		std::vector<Point> positions;
+		std::vector<Position> positions;
 		std::vector<int> glyph_to_char;
 
 		int total_advance = 0;
@@ -82,7 +82,7 @@ public:
 		CoreTextVisualRun(CoreTextVisualRun &&other) = default;
 
 		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
-		std::span<const Point> GetPositions() const override { return this->positions; }
+		std::span<const Position> GetPositions() const override { return this->positions; }
 		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
 
 		const Font *GetFont() const override { return this->font;  }
@@ -241,7 +241,9 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font
 
 	CGPoint pts[this->glyphs.size()];
 	CTRunGetPositions(run, CFRangeMake(0, 0), pts);
-	this->positions.reserve(this->glyphs.size() + 1);
+	CGSize advs[this->glyphs.size()];
+	CTRunGetAdvances(run, CFRangeMake(0, 0), advs);
+	this->positions.reserve(this->glyphs.size());
 
 	/* Convert glyph array to our data type. At the same time, substitute
 	 * the proper glyphs for our private sprite glyphs. */
@@ -251,15 +253,13 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font
 		if (buff[this->glyph_to_char[i]] >= SCC_SPRITE_START && buff[this->glyph_to_char[i]] <= SCC_SPRITE_END && (gl[i] == 0 || gl[i] == 3)) {
 			/* A glyph of 0 indidicates not found, while apparently 3 is what char 0xFFFC maps to. */
 			this->glyphs[i] = font->fc->MapCharToGlyph(buff[this->glyph_to_char[i]]);
-			this->positions.emplace_back(pts[i].x, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
+			this->positions.emplace_back(pts[i].x, pts[i].x + advs[i].width - 1, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
 		} else {
 			this->glyphs[i] = gl[i];
-			this->positions.emplace_back(pts[i].x, pts[i].y);
+			this->positions.emplace_back(pts[i].x, pts[i].x + advs[i].width - 1, pts[i].y);
 		}
 	}
 	this->total_advance = (int)std::ceil(CTRunGetTypographicBounds(run, CFRangeMake(0, 0), nullptr, nullptr, nullptr));
-	/* End-of-run position. */
-	this->positions.emplace_back(this->positions.front().x + this->total_advance, 0);
 }
 
 /**

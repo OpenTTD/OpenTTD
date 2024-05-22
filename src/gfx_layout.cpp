@@ -225,7 +225,7 @@ static bool IsConsumedFormattingCode(char32_t ch)
  * @return Upper left corner of the character relative to the start of the string.
  * @note Will only work right for single-line strings.
  */
-Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
+ParagraphLayouter::Position Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 {
 	const auto &line = this->front();
 
@@ -245,8 +245,8 @@ Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 	}
 
 	/* Initial position, returned if character not found. */
-	const Point initial_position = {_current_text_dir == TD_LTR ? 0 : line->GetWidth(), 0};
-	const Point *position = &initial_position;
+	const ParagraphLayouter::Position initial_position = Point{_current_text_dir == TD_LTR ? 0 : line->GetWidth(), 0};
+	const ParagraphLayouter::Position *position = &initial_position;
 
 	/* We couldn't find the code point index. */
 	if (str != ch) return *position;
@@ -303,8 +303,8 @@ ptrdiff_t Layouter::GetCharAtPosition(int x, size_t line_index) const
 			/* Not a valid glyph (empty). */
 			if (glyphs[i] == 0xFFFF) continue;
 
-			int begin_x = positions[i].x;
-			int end_x   = positions[i + 1].x;
+			int begin_x = positions[i].left;
+			int end_x   = positions[i].right + 1;
 
 			if (IsInsideMM(x, begin_x, end_x)) {
 				/* Found our glyph, now convert to UTF-8 string index. */
@@ -418,7 +418,7 @@ void Layouter::ReduceLineCache()
  * @param start_fontsize Font size to start the text with.
  * @return Upper left corner of the glyph associated with the character.
  */
-Point GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize)
+ParagraphLayouter::Position GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize)
 {
 	/* Ensure "ch" is inside "str" or at the exact end. */
 	assert(ch >= str.data() && (ch - str.data()) <= static_cast<ptrdiff_t>(str.size()));
