@@ -72,6 +72,9 @@ private:
 
 	bool CanDelChar(bool backspace);
 
+	bool MovePrev(StringIterator::IterType what);
+	bool MoveNext(StringIterator::IterType what);
+
 	void DeleteText(uint16_t from, uint16_t to, bool update);
 
 	void UpdateStringIter();
