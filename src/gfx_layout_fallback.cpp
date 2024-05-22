@@ -40,7 +40,7 @@ public:
 	/** Visual run contains data about the bit of text with the same font. */
 	class FallbackVisualRun : public ParagraphLayouter::VisualRun {
 		std::vector<GlyphID> glyphs; ///< The glyphs we're drawing.
-		std::vector<Point> positions; ///< The positions of the glyphs.
+		std::vector<Position> positions; ///< The positions of the glyphs.
 		std::vector<int> glyph_to_char; ///< The char index of the glyphs.
 
 		Font *font;       ///< The font used to layout these.
@@ -50,7 +50,7 @@ public:
 		const Font *GetFont() const override { return this->font; }
 		int GetGlyphCount() const override { return static_cast<int>(this->glyphs.size()); }
 		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
-		std::span<const Point> GetPositions() const override { return this->positions; }
+		std::span<const Position> GetPositions() const override { return this->positions; }
 		int GetLeading() const override { return this->GetFont()->fc->GetHeight(); }
 		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
 	};
@@ -116,25 +116,22 @@ FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const 
 
 	this->glyphs.reserve(char_count);
 	this->glyph_to_char.reserve(char_count);
-
-	/* Positions contains the location of the begin of each of the glyphs, and the end of the last one. */
-	this->positions.reserve(char_count + 1);
+	this->positions.reserve(char_count);
 
 	int advance = x;
 	for (int i = 0; i < char_count; i++) {
 		const GlyphID &glyph_id = this->glyphs.emplace_back(font->fc->MapCharToGlyph(chars[i]));
+		int x_advance = font->fc->GetGlyphWidth(glyph_id);
 		if (isbuiltin) {
-			this->positions.emplace_back(advance, font->fc->GetAscender()); // Apply sprite font's ascender.
+			this->positions.emplace_back(advance, advance + x_advance - 1, font->fc->GetAscender()); // Apply sprite font's ascender.
 		} else if (chars[i] >= SCC_SPRITE_START && chars[i] <= SCC_SPRITE_END) {
-			this->positions.emplace_back(advance, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
+			this->positions.emplace_back(advance, advance + x_advance - 1, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
 		} else {
-			this->positions.emplace_back(advance, 0); // No ascender adjustment.
+			this->positions.emplace_back(advance, advance + x_advance - 1, 0); // No ascender adjustment.
 		}
-		advance += font->fc->GetGlyphWidth(glyph_id);
+		advance += x_advance;
 		this->glyph_to_char.push_back(char_offset + i);
 	}
-	/* End-of-run position. */
-	this->positions.emplace_back(advance, 0);
 }
 
 /**
@@ -165,7 +162,9 @@ int FallbackParagraphLayout::FallbackLine::GetWidth() const
 	 * the last run gives us the end of the line and thus the width.
 	 */
 	const auto &run = this->GetVisualRun(this->CountRuns() - 1);
-	return run.GetPositions().back().x;
+	const auto &positions = run.GetPositions();
+	if (positions.empty()) return 0;
+	return positions.back().right + 1;
 }
 
 /**
