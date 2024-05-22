@@ -309,15 +309,15 @@ void Textbuf::UpdateWidth()
 /** Update pixel position of the caret. */
 void Textbuf::UpdateCaretPosition()
 {
-	this->caretxoffs = this->chars > 1 ? GetCharPosInString(this->buf, this->buf + this->caretpos, FS_NORMAL).x : 0;
+	this->caretxoffs = this->chars > 1 ? GetCharPosInString(this->buf, this->buf + this->caretpos, FS_NORMAL).left : 0;
 }
 
 /** Update pixel positions of the marked text area. */
 void Textbuf::UpdateMarkedText()
 {
 	if (this->markend != 0) {
-		this->markxoffs  = GetCharPosInString(this->buf, this->buf + this->markpos, FS_NORMAL).x;
-		this->marklength = GetCharPosInString(this->buf, this->buf + this->markend, FS_NORMAL).x - this->markxoffs;
+		this->markxoffs  = GetCharPosInString(this->buf, this->buf + this->markpos, FS_NORMAL).left;
+		this->marklength = GetCharPosInString(this->buf, this->buf + this->markend, FS_NORMAL).left - this->markxoffs;
 	} else {
 		this->markxoffs = this->marklength = 0;
 	}

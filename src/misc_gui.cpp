@@ -902,10 +902,10 @@ Rect QueryString::GetBoundingRect(const Window *w, WidgetID wid, const char *fro
 	r = ScrollEditBoxTextRect(r, *tb);
 
 	/* Get location of first and last character. */
-	Point p1 = GetCharPosInString(tb->buf, from, FS_NORMAL);
-	Point p2 = from != to ? GetCharPosInString(tb->buf, to, FS_NORMAL) : p1;
+	const auto p1 = GetCharPosInString(tb->buf, from, FS_NORMAL);
+	const auto p2 = from != to ? GetCharPosInString(tb->buf, to, FS_NORMAL) : p1;
 
-	return { Clamp(r.left + p1.x, r.left, r.right), r.top, Clamp(r.left + p2.x, r.left, r.right), r.bottom };
+	return { Clamp(r.left + p1.left, r.left, r.right), r.top, Clamp(r.left + p2.right, r.left, r.right), r.bottom };
 }
 
 /**

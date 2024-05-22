@@ -90,6 +90,19 @@ class ParagraphLayouter {
 public:
 	virtual ~ParagraphLayouter() = default;
 
+	/** Position of a glyph within a VisualRun. */
+	class Position {
+	public:
+		int16_t left; ///< Left-most position of glyph.
+		int16_t right; ///< Right-most position of glyph.
+		int16_t top; ///< Top-most position of glyph.
+
+		constexpr inline Position(int16_t left, int16_t right, int16_t top) : left(left), right(right), top(top) { }
+
+		/** Conversion from a single point to a Position. */
+		constexpr inline Position(const Point &pt) : left(pt.x), right(pt.x), top(pt.y) { }
+	};
+
 	/** Visual run contains data about the bit of text with the same font. */
 	class VisualRun {
 	public:
@@ -97,7 +110,7 @@ public:
 		virtual const Font *GetFont() const = 0;
 		virtual int GetGlyphCount() const = 0;
 		virtual std::span<const GlyphID> GetGlyphs() const = 0;
-		virtual std::span<const Point> GetPositions() const = 0;
+		virtual std::span<const Position> GetPositions() const = 0;
 		virtual int GetLeading() const = 0;
 		virtual std::span<const int> GetGlyphToCharMap() const = 0;
 	};
@@ -176,7 +189,7 @@ public:
 
 	Layouter(std::string_view str, int maxw = INT32_MAX, FontSize fontsize = FS_NORMAL);
 	Dimension GetBounds();
-	Point GetCharPosition(std::string_view::const_iterator ch) const;
+	ParagraphLayouter::Position GetCharPosition(std::string_view::const_iterator ch) const;
 	ptrdiff_t GetCharAtPosition(int x, size_t line_index) const;
 
 	static void Initialize();
@@ -185,7 +198,7 @@ public:
 	static void ReduceLineCache();
 };
 
-Point GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize = FS_NORMAL);
+ParagraphLayouter::Position GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize = FS_NORMAL);
 ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize = FS_NORMAL);
 
 #endif /* GFX_LAYOUT_H */
