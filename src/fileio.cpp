@@ -16,7 +16,6 @@
 #include "tar_type.h"
 #ifdef _WIN32
 #include <windows.h>
-# define access _taccess
 #elif defined(__HAIKU__)
 #include <Path.h>
 #include <storage/FindDirectory.h>
@@ -135,7 +134,8 @@ bool FioCheckFileExists(const std::string &filename, Subdirectory subdir)
  */
 bool FileExists(const std::string &filename)
 {
-	return access(OTTD2FS(filename).c_str(), 0) == 0;
+	std::error_code ec;
+	return std::filesystem::exists(OTTD2FS(filename), ec);
 }
 
 /**
