@@ -227,16 +227,10 @@ static void AddKey(std::unique_ptr<NWidgetHorizontal> &hor, int pad_y, int num_h
 	int key_width = HALF_KEY_WIDTH + (INTER_KEY_SPACE + HALF_KEY_WIDTH) * (num_half - 1);
 
 	if (widtype == NWID_SPACER) {
-		if (!hor->IsEmpty()) key_width += INTER_KEY_SPACE;
 		auto spc = std::make_unique<NWidgetSpacer>(key_width, 0);
 		spc->SetMinimalTextLines(1, pad_y, FS_NORMAL);
 		hor->Add(std::move(spc));
 	} else {
-		if (!hor->IsEmpty()) {
-			auto spc = std::make_unique<NWidgetSpacer>(INTER_KEY_SPACE, 0);
-			spc->SetMinimalTextLines(1, pad_y, FS_NORMAL);
-			hor->Add(std::move(spc));
-		}
 		auto leaf = std::make_unique<NWidgetLeaf>(widtype, COLOUR_GREY, widnum, widdata, STR_NULL);
 		leaf->SetMinimalSize(key_width, 0);
 		leaf->SetMinimalTextLines(1, pad_y, FS_NORMAL);
@@ -248,6 +242,7 @@ static void AddKey(std::unique_ptr<NWidgetHorizontal> &hor, int pad_y, int num_h
 static std::unique_ptr<NWidgetBase> MakeTopKeys()
 {
 	auto hor = std::make_unique<NWidgetHorizontal>();
+	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
 	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_CANCEL,    STR_BUTTON_CANCEL);
 	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_OK,        STR_BUTTON_OK    );
@@ -259,6 +254,7 @@ static std::unique_ptr<NWidgetBase> MakeTopKeys()
 static std::unique_ptr<NWidgetBase> MakeNumberKeys()
 {
 	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
+	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
 	for (WidgetID widnum = WID_OSK_NUMBERS_FIRST; widnum <= WID_OSK_NUMBERS_LAST; widnum++) {
 		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0);
@@ -270,6 +266,7 @@ static std::unique_ptr<NWidgetBase> MakeNumberKeys()
 static std::unique_ptr<NWidgetBase> MakeQwertyKeys()
 {
 	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
+	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
 	AddKey(hor, KEY_PADDING, 3, WWT_PUSHIMGBTN, WID_OSK_SPECIAL, SPR_OSK_SPECIAL);
 	for (WidgetID widnum = WID_OSK_QWERTY_FIRST; widnum <= WID_OSK_QWERTY_LAST; widnum++) {
@@ -283,6 +280,7 @@ static std::unique_ptr<NWidgetBase> MakeQwertyKeys()
 static std::unique_ptr<NWidgetBase> MakeAsdfgKeys()
 {
 	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
+	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
 	AddKey(hor, KEY_PADDING, 4, WWT_IMGBTN, WID_OSK_CAPS, SPR_OSK_CAPS);
 	for (WidgetID widnum = WID_OSK_ASDFG_FIRST; widnum <= WID_OSK_ASDFG_LAST; widnum++) {
@@ -295,6 +293,7 @@ static std::unique_ptr<NWidgetBase> MakeAsdfgKeys()
 static std::unique_ptr<NWidgetBase> MakeZxcvbKeys()
 {
 	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
+	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
 	AddKey(hor, KEY_PADDING, 3, WWT_IMGBTN, WID_OSK_SHIFT, SPR_OSK_SHIFT);
 	for (WidgetID widnum = WID_OSK_ZXCVB_FIRST; widnum <= WID_OSK_ZXCVB_LAST; widnum++) {
@@ -308,6 +307,7 @@ static std::unique_ptr<NWidgetBase> MakeZxcvbKeys()
 static std::unique_ptr<NWidgetBase> MakeSpacebarKeys()
 {
 	auto hor = std::make_unique<NWidgetHorizontal>();
+	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
 	AddKey(hor, KEY_PADDING,  8, NWID_SPACER, 0, 0);
 	AddKey(hor, KEY_PADDING, 13, WWT_PUSHTXTBTN, WID_OSK_SPACE, STR_EMPTY);
@@ -323,13 +323,15 @@ static constexpr NWidgetPart _nested_osk_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_OSK_TEXT), SetMinimalSize(252, 12), SetPadding(2, 2, 2, 2),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY), SetPIP(5, 2, 3),
-		NWidgetFunction(MakeTopKeys), SetPadding(0, 3, 0, 3),
-		NWidgetFunction(MakeNumberKeys), SetPadding(0, 3, 0, 3),
-		NWidgetFunction(MakeQwertyKeys), SetPadding(0, 3, 0, 3),
-		NWidgetFunction(MakeAsdfgKeys), SetPadding(0, 3, 0, 3),
-		NWidgetFunction(MakeZxcvbKeys), SetPadding(0, 3, 0, 3),
-		NWidgetFunction(MakeSpacebarKeys), SetPadding(0, 3, 0, 3),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(NWID_VERTICAL), SetPadding(3), SetPIP(0, INTER_KEY_SPACE, 0),
+			NWidgetFunction(MakeTopKeys),
+			NWidgetFunction(MakeNumberKeys),
+			NWidgetFunction(MakeQwertyKeys),
+			NWidgetFunction(MakeAsdfgKeys),
+			NWidgetFunction(MakeZxcvbKeys),
+			NWidgetFunction(MakeSpacebarKeys),
+		EndContainer(),
 	EndContainer(),
 };
 
