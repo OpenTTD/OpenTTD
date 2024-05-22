@@ -11,6 +11,7 @@
 #include "core/math_func.hpp"
 #include "gfx_layout.h"
 #include "string_func.h"
+#include "strings_func.h"
 #include "debug.h"
 
 #include "table/control_codes.h"
@@ -231,7 +232,7 @@ Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 
 	/* Pointer to the end-of-string marker? Return total line width. */
 	if (ch == this->string.end()) {
-		Point p = { line->GetWidth(), 0 };
+		Point p = {_current_text_dir == TD_LTR ? line->GetWidth() : 0, 0};
 		return p;
 	}
 
@@ -245,8 +246,8 @@ Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 	}
 
 	/* Initial position, returned if character not found. */
-	static const std::vector<Point> zero = { {0, 0} };
-	auto position = zero.begin();
+	const Point initial_position = {_current_text_dir == TD_LTR ? 0 : line->GetWidth(), 0};
+	const Point *position = &initial_position;
 
 	/* We couldn't find the code point index. */
 	if (str != ch) return *position;
@@ -254,24 +255,26 @@ Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 	/* Valid character. */
 
 	/* Scan all runs until we've found our code point index. */
+	size_t best_index = SIZE_MAX;
 	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
 		const ParagraphLayouter::VisualRun &run = line->GetVisualRun(run_index);
 		const auto &positions = run.GetPositions();
 		const auto &charmap = run.GetGlyphToCharMap();
 
-		/* Run starts after our character, use the last found position. */
-		if (static_cast<size_t>(charmap.front()) > index) return *position;
+		auto itp = positions.begin();
+		for (auto it = charmap.begin(); it != charmap.end(); ++it, ++itp) {
+			const size_t cur_index = static_cast<size_t>(*it);
+			/* Found exact character match? */
+			if (cur_index == index) return *itp;
 
-		position = positions.begin();
-		for (auto it = charmap.begin(); it != charmap.end(); /* nothing */) {
-			/* Plain honest-to-$deity match. */
-			if (static_cast<size_t>(*it) == index) return *position;
-			++it;
-			if (it == charmap.end()) break;
-
-			/* We just passed our character, it's probably a ligature, use the last found position. */
-			if (static_cast<size_t>(*it) > index) return *position;
-			++position;
+			/* If the character we are looking for has been combined with other characters to form a ligature then
+			 * we may not be able to find an exact match. We don't actually know if our character is part of a
+			 * ligature. In this case we will aim to select the first character of the ligature instead, so the best
+			 * index is the index nearest to but lower than the desired index. */
+			if (cur_index < index && (best_index < cur_index || best_index == SIZE_MAX)) {
+				best_index = cur_index;
+				position = &*itp;
+			}
 		}
 	}
 
