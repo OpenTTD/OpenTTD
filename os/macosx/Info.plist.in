@@ -34,6 +34,6 @@
         <key>LSMinimumSystemVersion</key>
         <string>10.13.0</string>
         <key>LSApplicationCategoryType</key>
-        <string>public.app-category.games</string>
+        <string>public.app-category.simulation-games</string>
 </dict>
 </plist>
