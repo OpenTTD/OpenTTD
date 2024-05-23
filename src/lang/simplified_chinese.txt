@@ -529,7 +529,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :删除全部消
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :查询地块信息
 STR_ABOUT_MENU_HELP                                             :帮助和指南
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切换到控制台模式
-STR_ABOUT_MENU_AI_DEBUG                                         :AI /游戏脚本调试
+STR_ABOUT_MENU_AI_DEBUG                                         :AI / 游戏脚本调试
 STR_ABOUT_MENU_SCREENSHOT                                       :屏幕截图
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :显示帧率
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :关于 OpenTTD
@@ -2567,7 +2567,7 @@ STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}您的�
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}您的计算机加入服务器用时过长
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}您的玩家名不合法
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}失去链接
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}连接可能中断
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}已经有 {NUM} 秒没有从服务器收到任何数据
 
 ###length 22

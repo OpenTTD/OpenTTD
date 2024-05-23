@@ -499,6 +499,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Έξοδος α
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Δημιουργία πόλεων
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Τοποθέτηση σπιτιών
 
 # Settings menu
 ###length 16
@@ -2908,8 +2910,16 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Επιλογή 
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Επιλογή κατηγορίας σταθμών φορτηγών για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Επιλογή κατηγορίας αντικειμένων για εμφάνιση
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Επιλογή κατηγορίας αντικειμένων για εμφάνιση. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία. Ctrl+κλικ+σύρσιμο για να επιλεγεί διαγώνια περιοχή. Επίσης, πατήστε Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Επιλέξτε τη ζώνη της πόλης που θέλετε να εμφανίσετε
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Επιλογή τύπου σπιτιού για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
 
+STR_HOUSE_PICKER_CAPTION                                        :Επιλογή Σπιτιού
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Άκρη
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Περίχωρα
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Εξωτερικά Προάστια
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Εσωτερικά Προάστια
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Κέντρο της πόλης
 
 STR_STATION_CLASS_DFLT                                          :Προεπιλεγμένος
 STR_STATION_CLASS_DFLT_STATION                                  :Προεπιλεγμένος σταθμός
@@ -5105,6 +5115,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... δε
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Έργα οδοποιίας σε εξέλιξη
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Δεν γίνεται να διαγραφεί η πόλη...{}Ένας σταθμός ή ένα αμαξοστάσιο που αναφέρεται στην πόλη ή ένα τετραγωνίδιο της πόλης δεν μπορεί να αφαιρεθεί
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... δεν υπάρχει κατάλληλο μέρος για άγαλμα στο κέντρο αυτής της πόλης
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Δεν ήταν δυνατό το χτίσιμο του σπιτιού...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... πάρα πολλές βιομηχανίες
