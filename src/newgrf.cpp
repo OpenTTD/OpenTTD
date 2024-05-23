@@ -1937,8 +1937,9 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				}
 
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
-				uint32_t classid = buf->ReadDWord();
-				statspec->cls_id = StationClass::Allocate(BSWAP32(classid));
+				uint32_t classid = BSWAP32(buf->ReadDWord());
+				if (GB(classid, 24, 8) == 0xFF) classid = 'WAYP';
+				statspec->cls_id = StationClass::Allocate(classid);
 				break;
 			}
 
@@ -4838,8 +4839,9 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 					rs = _cur.grffile->roadstops[id + i].get();
 				}
 
-				uint32_t classid = buf->ReadDWord();
-				rs->cls_id = RoadStopClass::Allocate(BSWAP32(classid));
+				uint32_t classid = BSWAP32(buf->ReadDWord());
+				if (GB(classid, 24, 8) == 0xFF) classid = 'WAYP';
+				rs->cls_id = RoadStopClass::Allocate(classid);
 				rs->spec_id = id + i;
 				break;
 			}
