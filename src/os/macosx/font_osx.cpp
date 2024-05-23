@@ -242,8 +242,8 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 
 		/* We only need the alpha channel, as we apply our own colour constants to the sprite. */
 		int pitch = Align(bb_width, 16);
-		uint8_t *bmp = CallocT<uint8_t>(bb_height * pitch);
-		CFAutoRelease<CGContextRef> context(CGBitmapContextCreate(bmp, bb_width, bb_height, 8, pitch, nullptr, kCGImageAlphaOnly));
+		CFAutoRelease<CGContextRef> context(CGBitmapContextCreate(nullptr, bb_width, bb_height, 8, pitch, nullptr, kCGImageAlphaOnly));
+		const uint8_t *bmp = static_cast<uint8_t *>(CGBitmapContextGetData(context.get()));
 		/* Set antialias according to requirements. */
 		CGContextSetAllowsAntialiasing(context.get(), use_aa);
 		CGContextSetAllowsFontSubpixelPositioning(context.get(), use_aa);
