@@ -323,6 +323,40 @@ void Textbuf::UpdateMarkedText()
 }
 
 /**
+ * Move to previous character position.
+ * @param what Move ITER_CHARACTER or ITER_WORD.
+ * @return true iff able to move.
+ */
+bool Textbuf::MovePrev(StringIterator::IterType what)
+{
+	if (this->caretpos == 0) return false;
+
+	size_t pos = this->char_iter->Prev(what);
+	if (pos == StringIterator::END) return true;
+
+	this->caretpos = static_cast<uint16_t>(pos);
+	this->UpdateCaretPosition();
+	return true;
+}
+
+/**
+ * Move to next character position.
+ * @param what Move ITER_CHARACTER or ITER_WORD.
+ * @return true iff able to move.
+ */
+bool Textbuf::MoveNext(StringIterator::IterType what)
+{
+	if (this->caretpos >= this->bytes - 1) return false;
+
+	size_t pos = this->char_iter->Next(what);
+	if (pos == StringIterator::END) return true;
+
+	this->caretpos = static_cast<uint16_t>(pos);
+	this->UpdateCaretPosition();
+	return true;
+}
+
+/**
  * Handle text navigation with arrow keys left/right.
  * This defines where the caret will blink and the next character interaction will occur
  * @param keycode Direction in which navigation occurs (WKC_CTRL |) WKC_LEFT, (WKC_CTRL |) WKC_RIGHT, WKC_END, WKC_HOME
@@ -333,26 +367,14 @@ bool Textbuf::MovePos(uint16_t keycode)
 	switch (keycode) {
 		case WKC_LEFT:
 		case WKC_CTRL | WKC_LEFT: {
-			if (this->caretpos == 0) break;
-
-			size_t pos = this->char_iter->Prev(keycode & WKC_CTRL ? StringIterator::ITER_WORD : StringIterator::ITER_CHARACTER);
-			if (pos == StringIterator::END) return true;
-
-			this->caretpos = (uint16_t)pos;
-			this->UpdateCaretPosition();
-			return true;
+			auto move_type = (keycode & WKC_CTRL) != 0 ? StringIterator::ITER_WORD : StringIterator::ITER_CHARACTER;
+			return (_current_text_dir == TD_LTR) ? this->MovePrev(move_type) : this->MoveNext(move_type);
 		}
 
 		case WKC_RIGHT:
 		case WKC_CTRL | WKC_RIGHT: {
-			if (this->caretpos >= this->bytes - 1) break;
-
-			size_t pos = this->char_iter->Next(keycode & WKC_CTRL ? StringIterator::ITER_WORD : StringIterator::ITER_CHARACTER);
-			if (pos == StringIterator::END) return true;
-
-			this->caretpos = (uint16_t)pos;
-			this->UpdateCaretPosition();
-			return true;
+			auto move_type = (keycode & WKC_CTRL) != 0 ? StringIterator::ITER_WORD : StringIterator::ITER_CHARACTER;
+			return (_current_text_dir == TD_LTR) ? this->MoveNext(move_type) : this->MovePrev(move_type);
 		}
 
 		case WKC_HOME:
