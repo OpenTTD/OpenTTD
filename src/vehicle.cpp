@@ -1454,6 +1454,9 @@ void AgeVehicle(Vehicle *v)
 
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 
+	/* Don't warn if warnings are disabled */
+	if (!_settings_client.gui.old_vehicle_warn) return;
+
 	/* Don't warn about vehicles which are non-primary (e.g., part of an articulated vehicle), don't belong to us, are crashed, or are stopped */
 	if (v->Previous() != nullptr || v->owner != _local_company || (v->vehstatus & VS_CRASHED) != 0 || (v->vehstatus & VS_STOPPED) != 0) return;
 
