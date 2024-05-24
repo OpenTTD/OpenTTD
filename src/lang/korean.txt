@@ -2795,8 +2795,8 @@ STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}철도 �
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}방향 선택
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}철도역 방향을 설정합니다
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}선로 수
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}철도역 플랫폼 개수를 설정합니다
-STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}플랫폼 길이
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}철도역 승강장 개수를 설정합니다
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}승강장 길이
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}철도역 길이를 설정합니다
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}드래그 & 드롭
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}드래그 & 드롭으로 역을 건설합니다
@@ -5053,6 +5053,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}여기�
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}두 개 이상의 역이 인접합니다
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... 역이 너무 크게 퍼져있습니다
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... 지원하지 않는 선로 수입니다
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... 지원하지 않는 길이입니다
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}역이 너무 많습니다
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}철도역 조각이 너무 많습니다
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}버스 정류장이 너무 많습니다

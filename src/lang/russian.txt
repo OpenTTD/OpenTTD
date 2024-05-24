@@ -5239,6 +5239,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Здес
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Примыкает к нескольким станциям
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... станция слишком большая
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... станции с таким количеством путей не поддерживаются
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... станции такой длины не поддерживаются
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Слишком много станций и остановок
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Слишком большая ж/д станция
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Слишком много автобусных остановок

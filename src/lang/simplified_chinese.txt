@@ -404,7 +404,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}建设�
 STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}建设电车设施
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}建设水运设施
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}建设机场
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打开景观美化工具栏以修改地形、设置地貌等
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打开地形工具栏以修改地形、种植树木或放置标志等
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}显示声音与音乐控制菜单
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}显示最新消息、新闻，消息历史或删除所有消息
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}查询地块信息、截图、关于 OpenTTD 和开发者工具
@@ -513,7 +513,7 @@ STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :水运建设
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :机场建设
 
 # Landscaping menu
-STR_LANDSCAPING_MENU_LANDSCAPING                                :景观美化
+STR_LANDSCAPING_MENU_LANDSCAPING                                :地形
 STR_LANDSCAPING_MENU_PLANT_TREES                                :植树
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :放置标志
 
@@ -1616,8 +1616,8 @@ STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :设置车站的
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :直升机在降落平台自动保养：{STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :直升飞机在降落平台自动保养，即使机场没有机库
 
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :将景观美化工具栏与铁路/公路/船只/机场工具栏连接：{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :“打开”时，在打开交通建设工具栏时同时打开景观美化工具栏
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :链接地形工具栏与铁路 / 公路 / 船只 / 机场工具栏：{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :设定否在开启建设交通设施的工具栏时同时开启地形工具栏
 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :缩略地图颜色选择: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :设置缩略地图的颜色
@@ -2961,7 +2961,7 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :直升机机场
 STR_STATION_BUILD_NOISE                                         :{BLACK}产生的噪音: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}景观美化
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}地形
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}降低地面。按住 <Ctrl> 键以沿对角线操作，按住 <Shift> 键操作以显示预计成本。
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}升高地面。按住 <Ctrl> 键以沿对角线操作，按住 <Shift> 键操作以显示预计成本。
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}拉平地面。按住 <Ctrl> 键以沿对角线操作，按住 <Shift> 键操作以显示预计成本。
@@ -5052,6 +5052,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}不能�
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}与另一车站相连
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}……车站范围过大
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}……轨道数量不正确
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}……站台长度不正确
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}车站过多
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}分体站台太多
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}公共汽车站过多
