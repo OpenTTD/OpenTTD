@@ -227,10 +227,6 @@ public:
 
 		bool bValid = Yapf().PfCalcCost(n, &tf);
 
-		if (bCached) {
-			Yapf().PfNodeCacheFlush(n);
-		}
-
 		if (bValid) bValid = Yapf().PfCalcEstimate(n);
 
 		/* have the cost or estimate callbacks marked this node as invalid? */
