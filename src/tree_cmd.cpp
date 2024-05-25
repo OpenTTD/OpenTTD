@@ -91,10 +91,10 @@ static bool IsNearbyForest(TileIndex tile)
 {
 	uint planted_tile_count = 0;
 
-	// An already planted tilte can always be planted again
+	/* An already planted tile can always be planted again. */
 	if (IsTileType(tile, MP_TREES)) return true;
 
-	// Count the trees arround the clear tile to determine if it's near a forest
+	/* Count the trees around the clear tile to determine if it's near a forest */
 	for (int x = -2; x <= 2; x++) {
 		for (int y = -2; y <= 2; y++) {
 			TileIndex vincity = TileAddWrap(tile, x, y);
@@ -809,7 +809,7 @@ static void TileLoop_Trees(TileIndex tile)
 				AddTreeCount(tile, -1);
 				SetTreeGrowth(tile, 3);
 			} else {
-				// Backups the type of tree if using improved trees
+				/* Backups the type of tree if using improved trees */
 				TreeType treetype;
 				if (_settings_game.game_creation.tree_placer == TP_IMPROVED && IsTileType(tile, MP_TREES)) {
 					treetype = GetTreeType(tile);
@@ -837,7 +837,7 @@ static void TileLoop_Trees(TileIndex tile)
 						break;
 				}
 
-				// When using improved trees, when a "alone" tree is dead, a new one is planted immediately
+				/* When using improved trees, when a "alone" tree is dead, a new one is planted immediately. */
 				if (_settings_game.game_creation.tree_placer == TP_IMPROVED && !IsNearbyForest(tile)) {
 					PlantTreesOnTile(tile, treetype, 0, 0);
 				}
