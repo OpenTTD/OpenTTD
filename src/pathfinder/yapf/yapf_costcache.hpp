@@ -14,7 +14,7 @@
 
 /**
  * CYapfSegmentCostCacheNoneT - the formal only yapf cost cache provider that implements
- * PfNodeCacheFetch() and PfNodeCacheFlush() callbacks. Used when nodes don't have CachedData
+ * PfNodeCacheFetch(). Used when nodes don't have CachedData
  * defined (they don't count with any segment cost caching).
  */
 template <class Types>
@@ -32,63 +32,7 @@ public:
 	{
 		return false;
 	}
-
-	/**
-	 * Called by YAPF to flush the cached segment cost data back into cache storage.
-	 *  Current cache implementation doesn't use that.
-	 */
-	inline void PfNodeCacheFlush(Node &)
-	{
-	}
 };
-
-
-/**
- * CYapfSegmentCostCacheLocalT - the yapf cost cache provider that implements fake segment
- * cost caching functionality for yapf. Used when node needs caching, but you don't want to
- * cache the segment costs.
- */
-template <class Types>
-class CYapfSegmentCostCacheLocalT
-{
-public:
-	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
-	typedef typename Node::Key Key;               ///< key to hash tables
-	typedef typename Node::CachedData CachedData;
-	typedef typename CachedData::Key CacheKey;
-	using LocalCache = std::deque<CachedData>;
-
-protected:
-	LocalCache      m_local_cache;
-
-	/** to access inherited path finder */
-	inline Tpf &Yapf()
-	{
-		return *static_cast<Tpf *>(this);
-	}
-
-public:
-	/**
-	 * Called by YAPF to attach cached or local segment cost data to the given node.
-	 *  @return true if globally cached data were used or false if local data was used
-	 */
-	inline bool PfNodeCacheFetch(Node &n)
-	{
-		CacheKey key(n.GetKey());
-		Yapf().ConnectNodeToCachedData(n, m_local_cache.emplace_back(key));
-		return false;
-	}
-
-	/**
-	 * Called by YAPF to flush the cached segment cost data back into cache storage.
-	 *  Current cache implementation doesn't use that.
-	 */
-	inline void PfNodeCacheFlush(Node &)
-	{
-	}
-};
-
 
 /**
  * Base class for segment cost cache providers. Contains global counter
@@ -158,18 +102,19 @@ struct CSegmentCostCacheT : public CSegmentCostCacheBase {
  *  segment cost caching services for your Nodes.
  */
 template <class Types>
-class CYapfSegmentCostCacheGlobalT : public CYapfSegmentCostCacheLocalT<Types> {
+class CYapfSegmentCostCacheGlobalT {
 public:
-	typedef CYapfSegmentCostCacheLocalT<Types> Tlocal;
 	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
 	typedef typename Node::Key Key;    ///< key to hash tables
 	typedef typename Node::CachedData CachedData;
 	typedef typename CachedData::Key CacheKey;
 	typedef CSegmentCostCacheT<CachedData> Cache;
+	using LocalCache = std::deque<CachedData>;
 
 protected:
 	Cache &m_global_cache;
+	LocalCache m_local_cache;
 
 	inline CYapfSegmentCostCacheGlobalT() : m_global_cache(stGetGlobalCache()) {};
 
@@ -199,22 +144,17 @@ public:
 	 */
 	inline bool PfNodeCacheFetch(Node &n)
 	{
-		if (!Yapf().CanUseGlobalCache(n)) {
-			return Tlocal::PfNodeCacheFetch(n);
-		}
 		CacheKey key(n.GetKey());
+
+		if (!Yapf().CanUseGlobalCache(n)) {
+			Yapf().ConnectNodeToCachedData(n, m_local_cache.emplace_back(key));
+			return false;
+		}
+
 		bool found;
 		CachedData &item = m_global_cache.Get(key, &found);
 		Yapf().ConnectNodeToCachedData(n, item);
 		return found;
-	}
-
-	/**
-	 * Called by YAPF to flush the cached segment cost data back into cache storage.
-	 *  Current cache implementation doesn't use that.
-	 */
-	inline void PfNodeCacheFlush(Node &)
-	{
 	}
 };
 
