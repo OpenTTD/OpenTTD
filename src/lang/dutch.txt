@@ -5052,6 +5052,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan hier
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Voegt meer dan één bestaand (laad)station samen
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station te omvangrijk
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... niet-ondersteund aantal sporen
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... niet-ondersteunde lengte
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te veel (laad)stations
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te veel treinstationsdelen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushaltes

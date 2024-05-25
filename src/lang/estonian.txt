@@ -2856,6 +2856,9 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Ehita ja
 
 STR_PICKER_MODE_ALL                                             :Kõik
 
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Vali, milliseid veoautojaamu näidatakse
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Vali näidatud asulaosa
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Vali, millist maja ehitada. Ctrl+ klõps lisab või eemaldab salvestatud asjadest
 
 STR_HOUSE_PICKER_CAPTION                                        :Maja valik
 
