@@ -57,6 +57,7 @@ uint8_t _trees_tick_ctr;
 static const uint16_t DEFAULT_TREE_STEPS = 1000;             ///< Default number of attempts for placing trees.
 static const uint16_t DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number of attempts for placing extra trees at rainforest in tropic.
 static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tree generation divisor factor.
+static const uint16_t FOREST_THRESHOLD = 6;                  ///< Minimum amount of trees required to be considered a forest.
 
 /**
  * Tests if a tile can be converted to MP_TREES
@@ -105,7 +106,7 @@ static bool IsNearbyForest(TileIndex tile)
 		}
 	}
 
-	return (planted_tile_count >= 6);
+	return (planted_tile_count >= FOREST_THRESHOLD);
 }
 
 /**
