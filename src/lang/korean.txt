@@ -1934,8 +1934,8 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :전자식 신�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :신호기를 CTRL 클릭할 때 바뀌는 신호기의 종류: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :신호기 건설에서 CTRL+클릭할 때 바뀌는 신호기의 종류를 선택합니다
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :경로 신호기만 보여주기
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :모두 보여주기
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :현재 사용 중인 신호기만
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :모든 신호기
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :보여줄 신호기 종류: {STRING}
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :신호기 창에서 보여줄 신호기 종류를 선택하세요
