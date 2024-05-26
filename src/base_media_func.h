@@ -325,8 +325,8 @@ template <class Tbase_set> const char *TryGetBaseSetFile(const ContentInfo *ci, 
 		if (!md5sum) return s->files[0].filename.c_str();
 
 		MD5Hash md5;
-		for (uint i = 0; i < Tbase_set::NUM_FILES; i++) {
-			md5 ^= s->files[i].hash;
+		for (const auto &file : s->files) {
+			md5 ^= file.hash;
 		}
 		if (md5 == ci->md5sum) return s->files[0].filename.c_str();
 	}
