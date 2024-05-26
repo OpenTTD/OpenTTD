@@ -188,7 +188,7 @@ const StationSpec *GetStationSpec(TileIndex t);
  */
 inline bool IsWaypointClass(const StationClass &cls)
 {
-	return cls.global_id == STATION_CLASS_LABEL_WAYPOINT;
+	return cls.global_id == STATION_CLASS_LABEL_WAYPOINT || GB(cls.global_id, 24, 8) == UINT8_MAX;
 }
 
 /* Evaluate a tile's position within a station, and return the result a bitstuffed format. */
