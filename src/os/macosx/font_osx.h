@@ -35,6 +35,5 @@ public:
 };
 
 void LoadCoreTextFont(FontSize fs);
-void LoadCoreTextFont(FontSize fs, const std::string &file_name, uint size);
 
 #endif /* FONT_OSX_H */

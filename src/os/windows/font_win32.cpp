@@ -352,9 +352,10 @@ void LoadWin32Font(FontSize fs)
 {
 	FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
 
-	if (settings->font.empty()) return;
+	std::string font = GetFontCacheFontName(fs);
+	if (font.empty()) return;
 
-	const char *font_name = settings->font.c_str();
+	const char *font_name = font.c_str();
 	LOGFONT logfont;
 	MemSetT(&logfont, 0);
 	logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
@@ -366,8 +367,8 @@ void LoadWin32Font(FontSize fs)
 		logfont = *(const LOGFONT *)settings->os_handle;
 	} else if (strchr(font_name, '.') != nullptr) {
 		/* Might be a font file name, try load it. */
-		if (!TryLoadFontFromFile(settings->font, logfont)) {
-			ShowInfo("Unable to load file '{}' for {} font, using default windows font selection instead", font_name, FontSizeToName(fs));
+		if (!TryLoadFontFromFile(font, logfont)) {
+			ShowInfo("Unable to load file '{}' for {} font, using default windows font selection instead", font, FontSizeToName(fs));
 		}
 	}
 
@@ -377,24 +378,4 @@ void LoadWin32Font(FontSize fs)
 	}
 
 	LoadWin32Font(fs, logfont, settings->size, font_name);
-}
-
-/**
- * Load a TrueType font from a file.
- * @param fs The font size to load.
- * @param file_name Path to the font file.
- * @param size Requested font size.
- */
-void LoadWin32Font(FontSize fs, const std::string &file_name, uint size)
-{
-	LOGFONT logfont;
-	MemSetT(&logfont, 0);
-	logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
-	logfont.lfCharSet = DEFAULT_CHARSET;
-	logfont.lfOutPrecision = OUT_OUTLINE_PRECIS;
-	logfont.lfClipPrecision = CLIP_DEFAULT_PRECIS;
-
-	if (TryLoadFontFromFile(file_name, logfont)) {
-		LoadWin32Font(fs, logfont, size, file_name.c_str());
-	}
 }
