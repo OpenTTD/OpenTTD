@@ -2543,6 +2543,22 @@ DEF_CONSOLE_CMD(ConFramerateWindow)
 	return true;
 }
 
+/**
+ * Format a label as a string.
+ * If all elements are visible ASCII (excluding space) then the label will be formatted as a string of 4 characters,
+ * otherwise it will be output as an 8-digit hexadecimal value.
+ * @param label Label to format.
+ * @return string representation of label.
+ **/
+static std::string FormatLabel(uint32_t label)
+{
+	if (std::isgraph(GB(label, 24, 8)) && std::isgraph(GB(label, 16, 8)) && std::isgraph(GB(label, 8, 8)) && std::isgraph(GB(label, 0, 8))) {
+		return fmt::format("{:c}{:c}{:c}{:c}", GB(label, 24, 8), GB(label, 16, 8), GB(label, 8, 8), GB(label, 0, 8));
+	}
+
+	return fmt::format("{:08X}", BSWAP32(label));
+}
+
 static void ConDumpRoadTypes()
 {
 	IConsolePrint(CC_DEFAULT, "  Flags:");
@@ -2562,10 +2578,10 @@ static void ConDumpRoadTypes()
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
-		IConsolePrint(CC_DEFAULT, "  {:02d} {} {:c}{:c}{:c}{:c}, Flags: {}{}{}{}{}, GRF: {:08X}, {}",
+		IConsolePrint(CC_DEFAULT, "  {:02d} {} {}, Flags: {}{}{}{}{}, GRF: {:08X}, {}",
 				(uint)rt,
 				RoadTypeIsTram(rt) ? "Tram" : "Road",
-				rti->label >> 24, rti->label >> 16, rti->label >> 8, rti->label,
+				FormatLabel(rti->label),
 				HasBit(rti->flags, ROTF_CATENARY)          ? 'c' : '-',
 				HasBit(rti->flags, ROTF_NO_LEVEL_CROSSING) ? 'l' : '-',
 				HasBit(rti->flags, ROTF_NO_HOUSES)         ? 'X' : '-',
@@ -2600,9 +2616,9 @@ static void ConDumpRailTypes()
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
-		IConsolePrint(CC_DEFAULT, "  {:02d} {:c}{:c}{:c}{:c}, Flags: {}{}{}{}{}{}, GRF: {:08X}, {}",
+		IConsolePrint(CC_DEFAULT, "  {:02d} {}, Flags: {}{}{}{}{}{}, GRF: {:08X}, {}",
 				(uint)rt,
-				rti->label >> 24, rti->label >> 16, rti->label >> 8, rti->label,
+				FormatLabel(rti->label),
 				HasBit(rti->flags, RTF_CATENARY)          ? 'c' : '-',
 				HasBit(rti->flags, RTF_NO_LEVEL_CROSSING) ? 'l' : '-',
 				HasBit(rti->flags, RTF_HIDDEN)            ? 'h' : '-',
@@ -2642,10 +2658,10 @@ static void ConDumpCargoTypes()
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
-		IConsolePrint(CC_DEFAULT, "  {:02d} Bit: {:2d}, Label: {:c}{:c}{:c}{:c}, Callback mask: 0x{:02X}, Cargo class: {}{}{}{}{}{}{}{}{}{}{}, GRF: {:08X}, {}",
+		IConsolePrint(CC_DEFAULT, "  {:02d} Bit: {:2d}, Label: {}, Callback mask: 0x{:02X}, Cargo class: {}{}{}{}{}{}{}{}{}{}{}, GRF: {:08X}, {}",
 				spec->Index(),
 				spec->bitnum,
-				spec->label.base() >> 24, spec->label.base() >> 16, spec->label.base() >> 8, spec->label.base(),
+				FormatLabel(spec->label.base()),
 				spec->callback_mask,
 				(spec->classes & CC_PASSENGERS)   != 0 ? 'p' : '-',
 				(spec->classes & CC_MAIL)         != 0 ? 'm' : '-',
