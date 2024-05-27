@@ -2886,7 +2886,7 @@ STR_WAYPOINT_CAPTION                                            :{WHITE}Σημε
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Επιλογή Σιδηροδρομικού Σταθμού
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Προσανατολισμός
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Επιλογή προσανατολισμού σιδηροδρομικού σταθμού
-STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Αριθμός γραμμών
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Αριθμός σιδηροτροχιών
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Επιλέξτε τον αριθμό πλατφορμών για το σιδηροδρομικό σταθμό
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Μήκος πλατφόρμας
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Επιλέξτε το μήκος του σιδηροδρομικού σταθμού
@@ -5153,6 +5153,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Δεν �
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Γειτονεύει με περισσότερες από μια υπάρχουσες περιοχές σταθμών/φόρτωσης
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... ο σταθμός είναι υπερβολικά απλωμένος
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... μη υποστηριζόμενος αριθμός σιδηροτροχιών
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... μη υποστηριζόμενο μήκος
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Πάρα πολλές περιοχές σταθμών/φόρτωσης
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Πάρα πολλά κομμάτια σιδηροδρομικού σταθμού
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Πάρα πολλές στάσεις λεωφορείου

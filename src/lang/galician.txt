@@ -438,6 +438,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Saír do editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Saír
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Xerar vilas
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Colocar casas
 
 # Settings menu
 ###length 16
@@ -957,6 +959,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efectos de son
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Música
 
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidades monetarias
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selección de unidades monetarias
@@ -1054,6 +1057,7 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marca es
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Suavizar fontes
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marca esta opción para suavizar as fontes redimensionables
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Enquisa automática
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participar nunha enquisa automática
@@ -1082,6 +1086,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conxunto
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecciona o conxunto de música base a empregar
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Información adicional sobre o conxunto de música base
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Obter contido
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Comprobar contido novo e actualizado para descargar
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(non hai instalado ningún complemento para integrar con plataformas sociais)
 
@@ -2474,6 +2480,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :O teu nome de x
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Accións administrativas a executar neste cliente
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Accións administrativas a executar para esta compañía
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Unirse a esta compañía
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Autorizar a este cliente a unirse a túa compañía
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Envía unha mensaxe a este xogador
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Envía unha mensaxe a todos os xogadores desta compañía
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Enviar unha mensaxe a todos os espectadores
@@ -2794,9 +2801,33 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Seleccio
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastrar e soltar
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construír estación arrastrando e soltando
 
+STR_PICKER_MODE_ALL                                             :Todo
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Alternar amosar elementos de todas as clases
+STR_PICKER_MODE_USED                                            :Usado
+STR_PICKER_MODE_USED_TOOLTIP                                    :Alternar amosar só elementos existentes
+STR_PICKER_MODE_SAVED                                           :Gardados
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Alternar amosar só elementos gardados
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecciona unha clase de estación para amosar
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Selecciona un tipo de estación a construír. Ctrl+Click para engadir ou eliminar nos elementos gardados.
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selecciona unha clase de punto de ruta para amosar
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Selecciona un punto de ruta a construír. Ctrl+Click para engadir ou eliminar nos elementos gardados.
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Selecciona unha clase de estación de autobús para amosar
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Selecciona o tipo de estación de autobuses a construír. Ctrl+Click para engadir ou eliminar nos elementos gardados.
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecciona unha clase de estación de carga de camións para amosar.
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Selecciona un tipo de estación de camións a construír. Ctrl+Click para engadir ou eliminar nos elementos gardados.
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecciona unha clase de obxecto para amosar
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Selecciona un tipo de obxecto a construír. Ctrl+Click para engadir ou eliminar nos elementos gardados. Ctrl+Click+Arrastrar para seleccionar a área diagonalmente. Tamén podes premer Shift para amosar unha estimación do custo
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecciona unha zona da vila para amosar
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selecciona un tipo de casa a construír. Ctrl+Click para engadir ou eliminar nos elementos gardados.
 
+STR_HOUSE_PICKER_CAPTION                                        :Selección de casas
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Borde
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferia
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbios da periferia
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbios interiores
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro da vila
 
 STR_STATION_CLASS_DFLT                                          :Por defecto
 STR_STATION_CLASS_DFLT_STATION                                  :Estación por defecto
@@ -4984,6 +5015,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... non 
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obras na estrada en curso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Non se pode borrar esta vila...{}Unha estación ou depósito está relacionado coa vila ou un cadro propiedade da vila non pode ser eliminado
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... non hai ningún sitio adecuado para unha estatua no centro desta vila
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Non se pode construír a casa...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... demasiadas industrias
@@ -5021,6 +5053,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Non se p
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Xunta máis dunha estación/área de carga existente
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... a estación ocupa demasiado
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... número de vías non soportado
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... lonxitude non soportada
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Demasiadas estacións/áreas de carga
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes de estación de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de autobús
