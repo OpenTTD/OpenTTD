@@ -757,7 +757,7 @@ int openttd_main(std::span<char * const> arguments)
 	_screen.zoom = ZOOM_LVL_MIN;
 
 	/* The video driver is now selected, now initialise GUI zoom */
-	AdjustGUIZoom(false);
+	UpdateGUIZoom();
 
 	SocialIntegration::Initialize();
 	NetworkStartUp(); // initialize network-core
