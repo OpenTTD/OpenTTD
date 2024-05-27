@@ -846,7 +846,7 @@ public:
 				break;
 
 			case WID_GL_MANAGE_VEHICLES_DROPDOWN: {
-				ShowDropDownList(this, this->BuildActionDropdownList(true, Group::IsValidID(this->vli.index), IsDefaultGroupID(this->vli.index)), 0, WID_GL_MANAGE_VEHICLES_DROPDOWN);
+				ShowDropDownList(this, this->BuildActionDropdownList(true, Group::IsValidID(this->vli.index), IsDefaultGroupID(this->vli.index)), -1, WID_GL_MANAGE_VEHICLES_DROPDOWN);
 				break;
 			}
 
