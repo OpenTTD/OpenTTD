@@ -1085,6 +1085,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikpak
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Välj vilket musikpaket som ska användas
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yttligare information om musikpaketet
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Hämta innehåll
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Kontrollera om det finns nytt och uppdaterat innehåll att ladda ned
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(inga tillägg för att integrera med sociala plattformar installerade)
@@ -2478,6 +2479,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Ditt spelarnamn
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Administrativa handlingar att utföra för denna klient
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administrativa handlingar att utföra för detta företag
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Gå med i detta företag
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Tillåt att denna klient ansluter till ditt företag
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Skicka ett meddelande till denna spelare
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Skicka ett meddelande till alla spelare i detta företag
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Skicka ett meddelande till alla åskådare
@@ -2802,7 +2804,12 @@ STR_PICKER_MODE_ALL                                             :Alla
 STR_PICKER_MODE_ALL_TOOLTIP                                     :Slå av/på visning av objekt från alla klasser
 STR_PICKER_MODE_USED                                            :Använda
 STR_PICKER_MODE_USED_TOOLTIP                                    :Slå av/på visning av endast existerande objekt
+STR_PICKER_MODE_SAVED                                           :Sparade
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Slå av/på visning av endast sparade objekt
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Välj vilken klass av stationer som ska visas
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Välj vilken klass av riktmärken som ska visas
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Välj vilken klass av busstationer som ska visas
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken stadszon som ska visas
 
 STR_HOUSE_PICKER_CAPTION                                        :Husval
@@ -5034,6 +5041,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan inte
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Angränsar till mer än en station/hållplats
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stationen för utspridd
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... antalet spår stöds ej
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... längden stöds ej
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}För många stationer/hållplatser
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}För många delar på järnvägsstationen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}För många busshållplatser

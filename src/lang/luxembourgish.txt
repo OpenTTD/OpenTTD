@@ -2790,6 +2790,10 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}D'Statio
 
 
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rand
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Ausseberäich
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Aner Viruerter
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Bannescht Viruerter
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstatioun

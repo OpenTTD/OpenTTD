@@ -439,6 +439,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Pamest scenāri
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Iziet
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Izveidot pilsētas
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Novietojiet mājas
 
 # Settings menu
 ###length 16
@@ -2803,10 +2805,32 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vilkt un
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Būvēt staciju izmantojot "vilkt un nomest"
 
 STR_PICKER_MODE_ALL                                             :Visi
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Pārslēgt visu klašu vienumu rādīšanu
+STR_PICKER_MODE_USED                                            :Lietots
+STR_PICKER_MODE_USED_TOOLTIP                                    :Pārslēgt tikai esošo vienumu rādīšanu
 STR_PICKER_MODE_SAVED                                           :Saglabāts
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Pārslēgt tikai saglabāto vienumu rādīšanu
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Izvēlieties rādāmo staciju klasi
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Izvēlieties izveidojamās stacijas veidu. Ctrl+klikšķis, lai pievienotu vai noņemtu saglabātos vienumus
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Izvēlieties rādāmo pieturas punkta klasi
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Izvēlieties ceļa punktu, ko veidot. Ctrl+klikšķis, lai pievienotu vai noņemtu saglabātos vienumus
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Izvēlieties parādāmās autoostas klasi
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Izvēlieties būvējamās autoostas veidu. Ctrl+klikšķis, lai pievienotu vai noņemtu saglabātos vienumus
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Izvēlieties parādāmās kravas automašīnas stacijas klasi
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Izvēlieties būvējamās kravas stacijas veidu. Ctrl+klikšķis, lai pievienotu vai noņemtu saglabātos vienumus
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Atlasiet rādāmo objekta klasi
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Atlasiet veidojamā objekta veidu. Ctrl+klikšķis, lai pievienotu vai noņemtu saglabātos vienumus. Vilkt Ctrl+klikšķis, lai atlasītu apgabalu pa diagonāli. Nospiediet arī taustiņu Shift, lai rādītu tikai izmaksu tāmi, neveicot iegādi
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Atlasiet pilsētas zonu, ko parādīt
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Izvēlieties būvējamās mājas veidu. Ctrl+klikšķis, lai pievienotu vai noņemtu saglabātos vienumus
 
+STR_HOUSE_PICKER_CAPTION                                        :Māju izvēle
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Mala
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Nomale
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ārējās priekšpilsētas
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Iekšējās priekšpilsētas
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Pilsētas centrs
 
 STR_STATION_CLASS_DFLT                                          :Noklusējuma
 STR_STATION_CLASS_DFLT_STATION                                  :Noklusējuma stacija
@@ -5001,6 +5025,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... uz k
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Notiek ceļa remonts
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Šo pilsētu nevar dzēst...{}Kāda stacija vai depo attiecas uz pilsētu. Vai pilsētai pieder nenoņemams lauciņš
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... šās pilsētas centrā statujai nav piemērotas vietas
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Nevar uzcelt māju...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... pārāk daudz ražotņu
@@ -5038,6 +5063,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Šeit ne
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Blakus atrodas vairāk nekā viena stacija/iekraušanas zona
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacija ir pārāk izplesta
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... neatbalstīts sliežu skaits
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... neatbalstīts garums
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Pārāk daudz staciju/iekraušanas zonu
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Pārāk daudz dzelzceļa stacijas daļu
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Pārāk daudz autobusu pieturvietu
