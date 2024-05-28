@@ -125,12 +125,11 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
  * Create a new layouter.
  * @param str      The string to create the layout for.
  * @param maxw     The maximum width.
- * @param colour   The colour of the font.
  * @param fontsize The size of font to use.
  */
-Layouter::Layouter(std::string_view str, int maxw, TextColour colour, FontSize fontsize) : string(str)
+Layouter::Layouter(std::string_view str, int maxw, FontSize fontsize) : string(str)
 {
-	FontState state(colour, fontsize);
+	FontState state(TC_INVALID, fontsize);
 
 	while (true) {
 		auto line_length = str.find_first_of('\n');
