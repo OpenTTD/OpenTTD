@@ -880,6 +880,10 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 	ObjectType type = GetObjectType(tile);
 	if ((type == OBJECT_OWNED_LAND || type >= NEW_OBJECT_OFFSET) && new_owner != INVALID_OWNER) {
 		SetTileOwner(tile, new_owner);
+		if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
+			Company::Get(old_owner)->infrastructure.water--;
+			Company::Get(new_owner)->infrastructure.water++;
+		}
 	} else if (type == OBJECT_STATUE) {
 		Town *t = Object::GetByTile(tile)->town;
 		ClrBit(t->statues, old_owner);
