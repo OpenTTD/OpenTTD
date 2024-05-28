@@ -36,7 +36,7 @@ struct FontState {
 	 */
 	inline void SetColour(TextColour c)
 	{
-		assert((c & TC_COLOUR_MASK) >= TC_BLUE && (c & TC_COLOUR_MASK) <= TC_BLACK);
+		assert(((c & TC_COLOUR_MASK) >= TC_BLUE && (c & TC_COLOUR_MASK) <= TC_BLACK) || (c & TC_COLOUR_MASK) == TC_INVALID);
 		assert((c & (TC_COLOUR_MASK | TC_FLAGS_MASK)) == c);
 		if ((this->cur_colour & TC_FORCED) == 0) this->cur_colour = c;
 	}
@@ -174,7 +174,7 @@ private:
 public:
 	static Font *GetFont(FontSize size, TextColour colour);
 
-	Layouter(std::string_view str, int maxw = INT32_MAX, TextColour colour = TC_FROMSTRING, FontSize fontsize = FS_NORMAL);
+	Layouter(std::string_view str, int maxw = INT32_MAX, FontSize fontsize = FS_NORMAL);
 	Dimension GetBounds();
 	Point GetCharPosition(std::string_view::const_iterator ch) const;
 	ptrdiff_t GetCharAtPosition(int x, size_t line_index) const;
