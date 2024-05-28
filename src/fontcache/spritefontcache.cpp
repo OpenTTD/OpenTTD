@@ -35,7 +35,7 @@ static int ScaleFontTrad(int value)
  * Create a new sprite font cache.
  * @param fs The font size to create the cache for.
  */
-SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs), glyph_to_spriteid_map(nullptr)
+SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs)
 {
 	this->InitializeUnicodeGlyphMap();
 	this->height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
@@ -43,30 +43,26 @@ SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs), glyph_to_spriteid
 }
 
 /**
- * Free everything we allocated.
+ * Get SpriteID associated with a GlyphID.
+ * @param key Glyph to find.
+ * @return SpriteID of glyph, or 0 if not present.
  */
-SpriteFontCache::~SpriteFontCache()
+SpriteID SpriteFontCache::GetUnicodeGlyph(GlyphID key)
 {
-	this->ClearGlyphToSpriteMap();
-}
-
-SpriteID SpriteFontCache::GetUnicodeGlyph(char32_t key)
-{
-	if (this->glyph_to_spriteid_map[GB(key, 8, 8)] == nullptr) return 0;
-	return this->glyph_to_spriteid_map[GB(key, 8, 8)][GB(key, 0, 8)];
+	const auto found = this->glyph_to_spriteid_map.find(key & ~SPRITE_GLYPH);
+	if (found == std::end(this->glyph_to_spriteid_map)) return 0;
+	return found->second;
 }
 
 void SpriteFontCache::SetUnicodeGlyph(char32_t key, SpriteID sprite)
 {
-	if (this->glyph_to_spriteid_map == nullptr) this->glyph_to_spriteid_map = CallocT<SpriteID*>(256);
-	if (this->glyph_to_spriteid_map[GB(key, 8, 8)] == nullptr) this->glyph_to_spriteid_map[GB(key, 8, 8)] = CallocT<SpriteID>(256);
-	this->glyph_to_spriteid_map[GB(key, 8, 8)][GB(key, 0, 8)] = sprite;
+	this->glyph_to_spriteid_map[key] = sprite;
 }
 
 void SpriteFontCache::InitializeUnicodeGlyphMap()
 {
 	/* Clear out existing glyph map if it exists */
-	this->ClearGlyphToSpriteMap();
+	this->glyph_to_spriteid_map.clear();
 
 	SpriteID base;
 	switch (this->fs) {
@@ -98,20 +94,6 @@ void SpriteFontCache::InitializeUnicodeGlyphMap()
 	}
 }
 
-/**
- * Clear the glyph to sprite mapping.
- */
-void SpriteFontCache::ClearGlyphToSpriteMap()
-{
-	if (this->glyph_to_spriteid_map == nullptr) return;
-
-	for (uint i = 0; i < 256; i++) {
-		free(this->glyph_to_spriteid_map[i]);
-	}
-	free(this->glyph_to_spriteid_map);
-	this->glyph_to_spriteid_map = nullptr;
-}
-
 void SpriteFontCache::ClearFontCache()
 {
 	Layouter::ResetFontCache(this->fs);
@@ -121,14 +103,14 @@ void SpriteFontCache::ClearFontCache()
 
 const Sprite *SpriteFontCache::GetGlyph(GlyphID key)
 {
-	SpriteID sprite = this->GetUnicodeGlyph(key);
+	SpriteID sprite = this->GetUnicodeGlyph(static_cast<char32_t>(key & ~SPRITE_GLYPH));
 	if (sprite == 0) sprite = this->GetUnicodeGlyph('?');
 	return GetSprite(sprite, SpriteType::Font);
 }
 
 uint SpriteFontCache::GetGlyphWidth(GlyphID key)
 {
-	SpriteID sprite = this->GetUnicodeGlyph(key);
+	SpriteID sprite = this->GetUnicodeGlyph(static_cast<char32_t>(key & ~SPRITE_GLYPH));
 	if (sprite == 0) sprite = this->GetUnicodeGlyph('?');
 	return SpriteExists(sprite) ? GetSprite(sprite, SpriteType::Font)->width + ScaleFontTrad(this->fs != FS_NORMAL ? 1 : 0) : 0;
 }
