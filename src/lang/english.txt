@@ -1498,7 +1498,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendar
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Wallclock
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutes per year: {STRING2}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Choose the number of minutes in a calendar year. The default is 12 minutes. Set to 0 to stop calendar time from changing. This setting does not affect the economic simulation of the game, and is only available when using wallclock timekeeping
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Choose the number of minutes in a calendar year. The default is 12 minutes. Set to 0 to stop calendar time from changing. Increasing the length of the calendar year slows down the introduction of vehicles, houses, and other infrastructure. It does not affect vehicle speed or economic simulation, except for inflation. This setting is only available when using wallclock timekeeping
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
