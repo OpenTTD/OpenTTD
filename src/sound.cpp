@@ -12,6 +12,7 @@
 #include "mixer.h"
 #include "newgrf_sound.h"
 #include "random_access_file_type.h"
+#include "window_func.h"
 #include "window_gui.h"
 #include "vehicle_base.h"
 
@@ -259,6 +260,8 @@ void ChangeSoundSet(int index)
 		sound->volume = _sound_base_vol[i];
 		sound->priority = 0;
 	}
+
+	InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS, 0, true);
 }
 
 /**
