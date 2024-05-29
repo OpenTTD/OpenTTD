@@ -2876,7 +2876,7 @@ static constexpr NWidgetPart _nested_settings_selection_widgets[] = {
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(WidgetDimensions::unscaled.frametext.left, WidgetDimensions::unscaled.hsep_wide, WidgetDimensions::unscaled.frametext.right),
 				NWidget(WWT_TEXT, COLOUR_MAUVE), SetFill(0, 1), SetDataTip(STR_CONFIG_SETTING_FILTER_TITLE, STR_NULL),
-				NWidget(WWT_EDITBOX, COLOUR_MAUVE, WID_GS_FILTER), SetMinimalSize(50, 12), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_EDITBOX, COLOUR_MAUVE, WID_GS_FILTER), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
