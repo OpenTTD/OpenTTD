@@ -707,7 +707,10 @@ struct GameOptionsWindow : Window {
 
 	void SetTab(WidgetID widget)
 	{
-		this->SetWidgetsLoweredState(false, WID_GO_TAB_GENERAL, WID_GO_TAB_GRAPHICS, WID_GO_TAB_FONTS, WID_GO_TAB_SOUND, WID_GO_TAB_SOCIAL);
+		this->SetWidgetsLoweredState(false, WID_GO_TAB_GENERAL, WID_GO_TAB_GRAPHICS, WID_GO_TAB_SOUND, WID_GO_TAB_SOCIAL);
+#ifdef HAS_TRUETYPE_FONT
+		this->SetWidgetsLoweredState(false, WID_GO_TAB_FONTS);
+#endif
 		this->LowerWidget(widget);
 		GameOptionsWindow::active_tab = widget;
 
@@ -715,9 +718,14 @@ struct GameOptionsWindow : Window {
 		switch (widget) {
 			case WID_GO_TAB_GENERAL: pane = 0; break;
 			case WID_GO_TAB_GRAPHICS: pane = 1; break;
+#ifdef HAS_TRUETYPE_FONT
 			case WID_GO_TAB_FONTS: pane = 2; break;
 			case WID_GO_TAB_SOUND: pane = 3; break;
 			case WID_GO_TAB_SOCIAL: pane = 4; break;
+#else
+			case WID_GO_TAB_SOUND: pane = 2; break;
+			case WID_GO_TAB_SOCIAL: pane = 3; break;
+#endif
 			default: NOT_REACHED();
 		}
 
@@ -811,7 +819,9 @@ struct GameOptionsWindow : Window {
 		switch (widget) {
 			case WID_GO_TAB_GENERAL:
 			case WID_GO_TAB_GRAPHICS:
+#ifdef HAS_TRUETYPE_FONT
 			case WID_GO_TAB_FONTS:
+#endif
 			case WID_GO_TAB_SOUND:
 			case WID_GO_TAB_SOCIAL:
 				this->SetTab(widget);
@@ -885,7 +895,6 @@ struct GameOptionsWindow : Window {
 				break;
 			}
 
-#ifdef HAS_TRUETYPE_FONT
 			case WID_GO_FONT_SPRITE:
 				_fcsettings.prefer_sprite = !_fcsettings.prefer_sprite;
 
@@ -914,7 +923,6 @@ struct GameOptionsWindow : Window {
 
 				ClearFontCache();
 				break;
-#endif /* HAS_TRUETYPE_FONT */
 
 			case WID_GO_GUI_SCALE:
 				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, _ctrl_pressed ? 0 : SCALE_NMARKS, this->gui_scale)) {
@@ -1195,7 +1203,9 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(WidgetDimensions::unscaled.sparse),
 			NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GO_TAB_GENERAL),  SetMinimalTextLines(2, 0), SetDataTip(STR_GAME_OPTIONS_TAB_GENERAL, STR_GAME_OPTIONS_TAB_GENERAL_TT), SetFill(1, 0),
 			NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GO_TAB_GRAPHICS), SetMinimalTextLines(2, 0), SetDataTip(STR_GAME_OPTIONS_TAB_GRAPHICS, STR_GAME_OPTIONS_TAB_GRAPHICS_TT), SetFill(1, 0),
+#ifdef HAS_TRUETYPE_FONT
 			NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GO_TAB_FONTS),    SetMinimalTextLines(2, 0), SetDataTip(STR_GAME_OPTIONS_TAB_FONTS, STR_GAME_OPTIONS_TAB_FONTS_TT), SetFill(1, 0),
+#endif
 			NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GO_TAB_SOUND),    SetMinimalTextLines(2, 0), SetDataTip(STR_GAME_OPTIONS_TAB_SOUND, STR_GAME_OPTIONS_TAB_SOUND_TT), SetFill(1, 0),
 			NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GO_TAB_SOCIAL),   SetMinimalTextLines(2, 0), SetDataTip(STR_GAME_OPTIONS_TAB_SOCIAL, STR_GAME_OPTIONS_TAB_SOCIAL_TT), SetFill(1, 0),
 		EndContainer(),
@@ -1298,6 +1308,7 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 			EndContainer(),
 			/* End graphics tab */
 
+#ifdef HAS_TRUETYPE_FONT
 			/* Fonts tab */
 			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.sparse), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 				/* Global Font Options: */
@@ -1364,6 +1375,7 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 
 			EndContainer(),
 			/* End font tab */
+#endif
 
 			/* Sound/Music tab */
 			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.sparse), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
