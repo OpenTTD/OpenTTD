@@ -2808,13 +2808,24 @@ STR_PICKER_MODE_SAVED                                           :Sparade
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Slå av/på visning av endast sparade objekt
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Välj vilken klass av stationer som ska visas
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Välj en stationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Välj vilken klass av riktmärken som ska visas
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Välj ett riktmärke att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Välj vilken klass av busstationer som ska visas
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Välj en busstationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Välj vilken klass av laststationer som ska visas
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Välj en laststationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Välj vilken klass av objekt som ska visas
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Välj en objektstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken stadszon som ska visas
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Välj en hustyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
 
 STR_HOUSE_PICKER_CAPTION                                        :Husval
 
-STR_HOUSE_PICKER_CLASS_ZONE4                                    :Innerförorterna
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Gräns
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Utkanter
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Yttrerförorter
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Innerförorter
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadskärnan
 
 STR_STATION_CLASS_DFLT                                          :Original
