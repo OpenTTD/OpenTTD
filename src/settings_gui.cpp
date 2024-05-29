@@ -712,9 +712,14 @@ struct GameOptionsWindow : Window {
 		switch (widget) {
 			case WID_GO_TAB_GENERAL: pane = 0; break;
 			case WID_GO_TAB_GRAPHICS: pane = 1; break;
+#ifdef HAS_TRUETYPE_FONT
 			case WID_GO_TAB_FONTS: pane = 2; break;
 			case WID_GO_TAB_SOUND: pane = 3; break;
 			case WID_GO_TAB_SOCIAL: pane = 4; break;
+#else
+			case WID_GO_TAB_SOUND: pane = 2; break;
+			case WID_GO_TAB_SOCIAL: pane = 3; break;
+#endif
 			default: NOT_REACHED();
 		}
 
@@ -882,7 +887,6 @@ struct GameOptionsWindow : Window {
 				break;
 			}
 
-#ifdef HAS_TRUETYPE_FONT
 			case WID_GO_FONT_SPRITE:
 				_fcsettings.prefer_sprite = !_fcsettings.prefer_sprite;
 
@@ -911,7 +915,6 @@ struct GameOptionsWindow : Window {
 
 				ClearFontCache();
 				break;
-#endif /* HAS_TRUETYPE_FONT */
 
 			case WID_GO_GUI_SCALE:
 				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, _ctrl_pressed ? 0 : SCALE_NMARKS, this->gui_scale)) {
