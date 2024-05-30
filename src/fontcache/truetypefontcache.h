@@ -30,8 +30,7 @@ protected:
 	/** Container for information about a glyph. */
 	struct GlyphEntry {
 		Sprite *sprite; ///< The loaded sprite.
-		uint8_t width;     ///< The width of the glyph.
-		bool duplicate; ///< Whether this glyph entry is a duplicate, i.e. may this be freed?
+		uint8_t width; ///< The width of the glyph.
 	};
 
 	/**
@@ -50,7 +49,7 @@ protected:
 	GlyphEntry **glyph_to_sprite;
 
 	GlyphEntry *GetGlyphPtr(GlyphID key);
-	void SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool duplicate = false);
+	void SetGlyphPtr(GlyphID key, const GlyphEntry *glyph);
 
 	virtual const Sprite *InternalGetGlyph(GlyphID key, bool aa) = 0;
 
