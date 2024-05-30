@@ -46,7 +46,6 @@ void TrueTypeFontCache::ClearFontCache()
 		if (this->glyph_to_sprite[i] == nullptr) continue;
 
 		for (int j = 0; j < 256; j++) {
-			if (this->glyph_to_sprite[i][j].duplicate) continue;
 			free(this->glyph_to_sprite[i][j].sprite);
 		}
 
@@ -67,7 +66,7 @@ TrueTypeFontCache::GlyphEntry *TrueTypeFontCache::GetGlyphPtr(GlyphID key)
 	return &this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)];
 }
 
-void TrueTypeFontCache::SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool duplicate)
+void TrueTypeFontCache::SetGlyphPtr(GlyphID key, const GlyphEntry *glyph)
 {
 	if (this->glyph_to_sprite == nullptr) {
 		Debug(fontcache, 3, "Allocating root glyph cache for size {}", this->fs);
@@ -82,7 +81,6 @@ void TrueTypeFontCache::SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool d
 	Debug(fontcache, 4, "Set glyph for unicode character 0x{:04X}, size {}", key, this->fs);
 	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].sprite = glyph->sprite;
 	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].width = glyph->width;
-	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].duplicate = duplicate;
 }
 
 bool TrueTypeFontCache::GetDrawGlyphShadow()
@@ -110,53 +108,6 @@ const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
 	/* Check for the glyph in our cache */
 	GlyphEntry *glyph = this->GetGlyphPtr(key);
 	if (glyph != nullptr && glyph->sprite != nullptr) return glyph->sprite;
-
-	if (key == 0) {
-		GlyphID question_glyph = this->MapCharToGlyph('?');
-		if (question_glyph == 0) {
-			/* The font misses the '?' character. Use built-in sprite.
-			 * Note: We cannot use the baseset as this also has to work in the bootstrap GUI. */
-#define CPSET { 0, 0, 0, 0, 1 }
-#define CP___ { 0, 0, 0, 0, 0 }
-			static SpriteLoader::CommonPixel builtin_questionmark_data[10 * 8] = {
-				CP___, CP___, CPSET, CPSET, CPSET, CPSET, CP___, CP___,
-				CP___, CPSET, CPSET, CP___, CP___, CPSET, CPSET, CP___,
-				CP___, CP___, CP___, CP___, CP___, CPSET, CPSET, CP___,
-				CP___, CP___, CP___, CP___, CPSET, CPSET, CP___, CP___,
-				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
-				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
-				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
-				CP___, CP___, CP___, CP___, CP___, CP___, CP___, CP___,
-				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
-				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
-			};
-#undef CPSET
-#undef CP___
-			static const SpriteLoader::SpriteCollection builtin_questionmark = {{ {
-				10, // height
-				8,  // width
-				0,  // x_offs
-				0,  // y_offs
-				SpriteType::Font,
-				SCC_PAL,
-				builtin_questionmark_data
-			} }};
-
-			Sprite *spr = BlitterFactory::GetCurrentBlitter()->Encode(builtin_questionmark, SimpleSpriteAlloc);
-			assert(spr != nullptr);
-			GlyphEntry new_glyph;
-			new_glyph.sprite = spr;
-			new_glyph.width  = spr->width + (this->fs != FS_NORMAL);
-			this->SetGlyphPtr(key, &new_glyph, false);
-			return new_glyph.sprite;
-		} else {
-			/* Use '?' for missing characters. */
-			this->GetGlyph(question_glyph);
-			glyph = this->GetGlyphPtr(question_glyph);
-			this->SetGlyphPtr(key, glyph, true);
-			return glyph->sprite;
-		}
-	}
 
 	return this->InternalGetGlyph(key, GetFontAAState());
 }
