@@ -44,7 +44,7 @@ enum CargoCompanyBits {
 	CCB_CARGO_TYPE_START       = 19, ///< Start bit of the cargo type field.
 	CCB_CARGO_TYPE_LENGTH      = 6,  ///< Number of bits of the cargo type field.
 	CCB_COMPANY_START          = 25, ///< Start bit of the company field.
-	CCB_COMPANY_LENGTH         = 4,  ///< Number of bits of the company field.
+	CCB_COMPANY_LENGTH         = 8,  ///< Number of bits of the company field.
 };
 
 static_assert(NUM_CARGO     <= (1 << CCB_CARGO_TYPE_LENGTH));

@@ -62,7 +62,7 @@ struct SIGNChunkHandler : ChunkHandler {
 			}
 
 			/* Signs placed in scenario editor shall now be OWNER_DEITY */
-			if (IsSavegameVersionBefore(SLV_171) && si->owner == OWNER_NONE && _file_to_saveload.abstract_ftype == FT_SCENARIO) {
+			if (IsSavegameVersionBefore(SLV_171) && si->owner == OLD_OWNER_NONE && _file_to_saveload.abstract_ftype == FT_SCENARIO) {
 				si->owner = OWNER_DEITY;
 			}
 		}
