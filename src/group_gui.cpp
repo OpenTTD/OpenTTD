@@ -82,7 +82,7 @@ static constexpr NWidgetPart _nested_group_widgets[] = {
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GL_SORT_BY_DROPDOWN), SetFill(1, 0), SetMinimalSize(0, 12), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIA),
 				EndContainer(),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(0, 12), SetResize(1, 0), EndContainer(),
+					NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalTextLines(1, WidgetDimensions::unscaled.framerect.Vertical()), SetResize(1, 0), EndContainer(),
 					NWidget(NWID_HORIZONTAL),
 						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GL_FILTER_BY_CARGO), SetMinimalSize(0, 12), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_FILTER_CRITERIA),
 						NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(0, 12), SetResize(1, 0), EndContainer(),
