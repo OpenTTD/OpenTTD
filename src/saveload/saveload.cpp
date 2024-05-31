@@ -576,6 +576,7 @@ static uint8_t GetSavegameFileType(const SaveLoad &sld)
 		case SL_STDSTR:
 		case SL_ARR:
 		case SL_VECTOR:
+		case SL_COMPANY_MASK:
 		case SL_DEQUE:
 			return GetVarFileType(sld.conv) | SLE_FILE_HAS_LENGTH_FIELD; break;
 
@@ -1637,6 +1638,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 		case SL_REFLIST:
 		case SL_DEQUE:
 		case SL_VECTOR:
+		case SL_COMPANY_MASK:
 		case SL_STDSTR: {
 			void *ptr = GetVariableAddress(object, sld);
 
