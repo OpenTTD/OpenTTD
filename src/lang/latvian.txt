@@ -1500,7 +1500,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalendārs
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Sienas pulkstenis
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minūtes gadā: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Izvēlieties minūšu skaitu kalendārajā gadā. Noklusējums ir 12 minūtes. Iestatiet uz 0, lai apturētu kalendāra laika izmaiņas. Šis iestatījums neietekmē spēles ekonomisko simulāciju un ir pieejams tikai tad, ja tiek izmantots sienas pulksteņa laika mērijums
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Izvēlieties minūšu skaitu kalendārajā gadā. Noklusējums ir 12 minūtes. Iestatiet uz 0, lai apturētu kalendāra laika izmaiņas. Kalendārā gada garuma palielināšana bremzē transportlīdzekļu, māju un citas infrastruktūras ieviešanu. Tas neietekmē transportlīdzekļa ātrumu vai ekonomisko simulāciju, izņemot inflāciju. Šis iestatījums ir pieejams tikai tad, ja tiek izmantots pulksteņa režīms
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special

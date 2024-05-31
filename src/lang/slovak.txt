@@ -1024,6 +1024,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Hlasitosť
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Zvukové efekty
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Hudba
 
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}% hlasitosť
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Mena
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Výber menovej jednotky
@@ -1116,11 +1117,12 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Začiark
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Mierkové úkosy
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Začiarknutím tohto políčka zmeníte úkosy podľa veľkosti rozhrania
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Použite tradičné sprite písmo
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Použiť tradičné "Sprite" písmo
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Začiarknite toto políčko, ak uprednostňujete použitie tradičného písma sprite s pevnou veľkosťou
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Vyhladzovacie písma
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Začiarknite toto políčko, ak chcete vyhladiť písma s meniteľnou veľkosťou
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatizovaný prieskum
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Zúčastniť sa automatizovaného prieskumu
@@ -1149,6 +1151,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Základn
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Výber sady hudby, ktorá má byť použitá
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatočné informácie o základnej sade hudby
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Získať Obsah
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(žiadne nainštalované doplnky na integráciu so sociálnymi platformami)
 
@@ -1560,7 +1563,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalendár
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Hodiny
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minút za rok: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Zvoľte počet minút za jeden kalendárny rok. Predvolená hodnota je 12. Nastavte 0, aby sa kalendárne obdobie nemenilo. Toto nastavenie neovlivňuje simuláciu ekonómie, a je dostupná len v hodinovom móde
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Zvoľte počet minút za jeden kalendárny rok. Predvolená hodnota je 12. Nastavte 0, aby sa kalendárne obdobie nemenilo. Zväčšovanie dĺžky jedného kalendárneho roka spomaľuje priebeh celej hry(uvádzanie nových vozidiel, domov a inej infraštruktúry). Nemá však vplyv na rýchlosť vozidiel, alebo ekonomickú simuláciu (mimo inflácie). Toto nastavenie je dostupné len v hodinovom móde
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -2858,9 +2861,14 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Dĺžka 
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Automaticky
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Automaticky postaviť stanicu podľa označeného bloku terénu
 
+STR_PICKER_MODE_ALL                                             :Všetko
+STR_PICKER_MODE_USED                                            :Použité
+STR_PICKER_MODE_SAVED                                           :Uložené.
+
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Zvoľ veľkosť zóny mesta na zobrazenie
 
 
-
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Okraj
 
 STR_STATION_CLASS_DFLT                                          :Pôvodná
 STR_STATION_CLASS_DFLT_STATION                                  :Predvolená stanica
@@ -3429,8 +3437,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Skutoč
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% hotových
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generovanie sveta
+STR_GENERATION_LANDSCAPE_GENERATION                             :Generujem krajinu
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generovanie riek
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generovanie nerovností a skál
+STR_GENERATION_TOWN_GENERATION                                  :Vytváranie mesta
+STR_GENERATION_INDUSTRY_GENERATION                              :Vytváranie priemyslu
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generovanie objektov
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generovanie stromov
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavovanie hry
@@ -4678,7 +4689,7 @@ STR_ORDER_REFIT_ORDER                                           :(Prestavba na {
 STR_ORDER_REFIT_STOP_ORDER                                      :(Prestavba na {STRING} a zastav)
 STR_ORDER_STOP_ORDER                                            :(Zastav)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(počkať na rozdelenie)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Počkať na rozdelenie)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Nemožno použiť stanicu){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4934,7 +4945,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Odhadova
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ukladanie hry ešte beží,{}počkajte prosím na dokončenie!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatické ukladanie zlyhalo
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Zariadenie je nečitateľné
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Uloženie hry zlyhalo...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Súbor sa nedá vymazať
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Nahratie hry zlyhalo...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interná chyba: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Poškodená uložená hra - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Hra bola uložená vo vyššej verzii
@@ -5076,6 +5089,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nemôže
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Susedí z viacerými stanicami/výkladkami
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stanica je príliš veľká
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :V stanici je príliš veľa kolají.
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :Príliš dlhá stanica.
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Príliš veľa staníc/vykládok
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Veľa častí vlakovej stanice
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Príliš veľa autobusových zastávok
@@ -5316,6 +5331,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Zmena va
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Zatiaľ nie sú dostupné žiadne vozidlá
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Začnite novú hru po {DATE_SHORT} alebo použite NewGRF, ktoré zabezpečí vozidlá v skoršom čase
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Zmena vašej konfigurácie NewGRF
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemožno nechať vlak prejsť návestidlo ak hrozí nebezpečenstvo...
@@ -5868,6 +5884,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

@@ -1498,7 +1498,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :日历
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :挂钟
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :一年分钟数：{STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :选择在挂钟模式下一年所对应的现实时间长度。默认为 12 分钟。设置为 0 则日期不会变化。此设定不会影响游戏的经济模拟系统，而且仅在启用挂钟计时模式时生效
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :选择在挂钟模式下一年所对应的时间长度。默认为 12 分钟；设置为 0 则日期不会变化。增加一年的长度会使新载具、房屋和其他基础设施的发明时间被推迟；此选项不会影响载具速度或经济模拟，但会影响通货膨胀。此选项仅在使用挂钟模式时有效。
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
