@@ -20,6 +20,7 @@
  * </ol>
  */
 
+#include "saveload/saveload.h"
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../station_base.h"
@@ -42,7 +43,11 @@
 #include "../string_func.h"
 #include "../fios.h"
 #include "../error.h"
+#include "company_type.h"
 #include <atomic>
+#include <bitset>
+#include <cstdint>
+#include <vector>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #endif
@@ -1105,6 +1110,76 @@ static void SlArray(void *array, size_t length, VarType conv)
 	}
 }
 
+
+
+// MYTODO: Put this somewhere it belongs
+std::vector<uint8_t> bitset_to_bytes(const CompanyMask& bs)
+{
+	int N = COMPANY_SIZE_BITS;
+    std::vector<unsigned char> result((N + 7) >> 3);
+    for (int j=0; j<int(N); j++)
+        result[j>>3] |= (bs[j] << (j & 7));
+    return result;
+}
+
+CompanyMask bitset_from_bytes(const std::vector<uint8_t>& buf)
+{
+	size_t N = COMPANY_SIZE_BITS;
+    assert(buf.size() == ((N + 7) >> 3));
+    CompanyMask result;
+    for (int j=0; j<int(N); j++)
+        result[j] = ((buf[j>>3] >> (j & 7)) & 1);
+    return result;
+}
+
+
+
+/**
+ * Save/Load the length of the bitset followed by the array of SL_VAR bits.
+ * @param array The array being manipulated
+ * @param length The length of the bitset in bytes,
+ */
+static void SlCompanyMask(void *array, size_t length, VarType conv)
+{
+	switch (_sl.action) {
+		case SLA_SAVE: {
+			CompanyMask *bs = static_cast<CompanyMask *>(array);
+			// We don't save the number of bits in the company mask,
+			// because it's incompatible with other versions anyway
+			std::vector<uint8_t> bytes = bitset_to_bytes(*bs);
+			uint8_t *bytes_arr = &bytes[0];
+
+			SlWriteArrayLength(bytes.size());
+			SlArray(bytes_arr, bytes.size(), conv);
+
+			return;
+	   }
+
+		case SLA_LOAD_CHECK:
+		case SLA_LOAD: {
+
+			std::vector<uint8_t> buff(length);
+
+			SlArray(&buff[0], length, conv);
+
+			CompanyMask res = bitset_from_bytes(buff);
+			CompanyMask *bs = static_cast<CompanyMask *>(array);
+			for (int i = 0; i < COMPANY_SIZE_BITS; i++) {
+				(*bs)[i] = res[i];
+			}
+
+			return;
+		}
+
+		case SLA_PTRS:
+		case SLA_NULL:
+			return;
+
+		default:
+			NOT_REACHED();
+	}
+}
+
 /**
  * Pointers cannot be saved to a savegame, so this functions gets
  * the index of the item, and if not available, it hussles with
@@ -1513,6 +1588,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 		case SL_VAR: return SlCalcConvFileLen(sld.conv);
 		case SL_REF: return SlCalcRefLen();
 		case SL_ARR: return SlCalcArrayLen(sld.length, sld.conv);
+		case SL_COMPANY_MASK: return SlCalcArrayLen(sld.length, sld.conv);
 		case SL_REFLIST: return SlCalcRefListLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_VECTOR: return SlCalcVectorLen(GetVariableAddress(object, sld), sld.conv);
@@ -1568,6 +1644,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 				case SL_VAR: SlSaveLoadConv(ptr, conv); break;
 				case SL_REF: SlSaveLoadRef(ptr, conv); break;
 				case SL_ARR: SlArray(ptr, sld.length, conv); break;
+				case SL_COMPANY_MASK: SlCompanyMask(ptr, sld.length, conv); break;
 				case SL_REFLIST: SlRefList(ptr, conv); break;
 				case SL_DEQUE: SlDeque(ptr, conv); break;
 				case SL_VECTOR: SlVector(ptr, conv); break;

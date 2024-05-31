@@ -476,8 +476,8 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, num_valid_stat_ent,    SLE_UINT8,                   SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
 
 	    SLE_VAR(CompanyProperties, months_of_bankruptcy,  SLE_UINT8),
-	SLE_CONDVAR(CompanyProperties, bankrupt_asked,        SLE_FILE_U8  | SLE_VAR_U16,  SL_MIN_VERSION, SLV_104),
-	SLE_CONDVAR(CompanyProperties, bankrupt_asked,        SLE_UINT16,                SLV_104, SL_MAX_VERSION),
+	// MYTODO: Fix all the compat issues
+	SLE_CONDCOMPMASK(CompanyProperties, bankrupt_asked,  SLE_UINT8,  COMPANY_SIZE_BITS,   SLV_179, SL_MAX_VERSION),
 	    SLE_VAR(CompanyProperties, bankrupt_timeout,      SLE_INT16),
 	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_65),
 	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_INT64,                  SLV_65, SL_MAX_VERSION),

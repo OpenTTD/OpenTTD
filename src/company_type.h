@@ -11,6 +11,7 @@
 #define COMPANY_TYPE_H
 
 #include "core/enum_type.hpp"
+#include <bitset>
 
 /**
  * Enum for all companies/owners.
@@ -40,6 +41,15 @@ enum Owner : uint8_t {
 	COMPANY_NEW_COMPANY     = 0xF8, ///< The client wants a new company
 	COMPANY_SPECTATOR       = 0xF9, ///< The client is spectating
 };
+const uint8_t COMPANY_SIZE_BITS = 8; /// Size of the company id in bits
+
+static_assert(COMPANY_SIZE_BITS <= 10); /// 32bit m9 can only fit 3 owners of size 10
+
+static_assert(MAX_COMPANIES <= (1U << COMPANY_SIZE_BITS) - 1); /// Checking that MAX_COMPANIES is in bounds
+static_assert(OWNER_END <= (1U << COMPANY_SIZE_BITS) - 1);
+static_assert(INVALID_OWNER <= (1U << COMPANY_SIZE_BITS) - 1);
+static_assert(INVALID_COMPANY <= (1U << COMPANY_SIZE_BITS) - 1);
+
 DECLARE_POSTFIX_INCREMENT(Owner)
 DECLARE_ENUM_AS_ADDABLE(Owner)
 
@@ -53,7 +63,7 @@ static const uint MAX_COMPETITORS_INTERVAL = 500; ///< The maximum interval (in 
 
 typedef Owner CompanyID;
 
-typedef uint16_t CompanyMask;
+typedef std::bitset<MAX_COMPANIES> CompanyMask;
 
 struct Company;
 typedef uint32_t CompanyManagerFace; ///< Company manager face bits, info see in company_manager_face.h

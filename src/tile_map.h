@@ -10,6 +10,7 @@
 #ifndef TILE_MAP_H
 #define TILE_MAP_H
 
+#include "company_type.h"
 #include "slope_type.h"
 #include "map_func.h"
 #include "core/bitmath_func.hpp"
@@ -181,6 +182,27 @@ inline Owner GetTileOwner(Tile tile)
 	assert(!IsTileType(tile, MP_HOUSE));
 	assert(!IsTileType(tile, MP_INDUSTRY));
 
+	return (Owner)GB(tile.m9(), 0, COMPANY_SIZE_BITS);
+}
+
+/**
+ * Returns the owner of a tile. Only used for legacy code
+ *
+ * This function returns the owner of a tile. This cannot used
+ * for tiles which type is one of MP_HOUSE, MP_VOID and MP_INDUSTRY
+ * as no company owned any of these buildings.
+ *
+ * @param tile The tile to check
+ * @return The owner of the tile
+ * @pre IsValidTile(tile)
+ * @pre The type of the tile must not be MP_HOUSE and MP_INDUSTRY
+ */
+inline Owner OldGetTileOwner(Tile tile)
+{
+	assert(IsValidTile(tile));
+	assert(!IsTileType(tile, MP_HOUSE));
+	assert(!IsTileType(tile, MP_INDUSTRY));
+
 	return (Owner)GB(tile.m1(), 0, 5);
 }
 
@@ -201,8 +223,29 @@ inline void SetTileOwner(Tile tile, Owner owner)
 	assert(!IsTileType(tile, MP_HOUSE));
 	assert(!IsTileType(tile, MP_INDUSTRY));
 
+	SB(tile.m9(), 0, COMPANY_SIZE_BITS, owner);
+}
+
+/**
+ * Sets the owner of a tile (Only for old formats)
+ *
+ * This function sets the owner status of a tile. Note that you cannot
+ * set a owner for tiles of type MP_HOUSE, MP_VOID and MP_INDUSTRY.
+ *
+ * @param tile The tile to change the owner status.
+ * @param owner The new owner.
+ * @pre IsValidTile(tile)
+ * @pre The type of the tile must not be MP_HOUSE and MP_INDUSTRY
+ */
+inline void OldSetTileOwner(Tile tile, Owner owner)
+{
+	assert(IsValidTile(tile));
+	assert(!IsTileType(tile, MP_HOUSE));
+	assert(!IsTileType(tile, MP_INDUSTRY));
+
 	SB(tile.m1(), 0, 5, owner);
 }
+
 
 /**
  * Checks if a tile belongs to the given owner

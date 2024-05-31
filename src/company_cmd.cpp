@@ -7,6 +7,7 @@
 
 /** @file company_cmd.cpp Handling of companies. */
 
+#include "company_type.h"
 #include "gfx_type.h"
 #include "stdafx.h"
 #include "company_base.h"

@@ -12,6 +12,7 @@
 
 #include "cargo_type.h"
 #include "company_func.h"
+#include "company_type.h"
 #include "industry.h"
 #include "town.h"
 #include "core/overflowsafe_type.hpp"
@@ -24,12 +25,12 @@ struct Station;
  * - bits 0-15 town or industry number
  * - bit 16 is set if it is an industry number (else it is a town number).
  * - bits 19-23 Cargo type.
- * - bits 24-31 %Company number.
+ * - bits 24-COMPANY_BIT_SIZE %Company number.
  */
-typedef uint32_t CargoMonitorID; ///< Type of the cargo monitor number.
+typedef uint64_t CargoMonitorID; ///< Type of the cargo monitor number.
 
 /** Map type for storing and updating active cargo monitor numbers and their amounts. */
-typedef std::map<CargoMonitorID, OverflowSafeInt32> CargoMonitorMap;
+typedef std::map<CargoMonitorID, OverflowSafeInt64> CargoMonitorMap;
 
 extern CargoMonitorMap _cargo_pickups;
 extern CargoMonitorMap _cargo_deliveries;
@@ -44,9 +45,11 @@ enum CargoCompanyBits {
 	CCB_CARGO_TYPE_START       = 19, ///< Start bit of the cargo type field.
 	CCB_CARGO_TYPE_LENGTH      = 6,  ///< Number of bits of the cargo type field.
 	CCB_COMPANY_START          = 25, ///< Start bit of the company field.
-	CCB_COMPANY_LENGTH         = 8,  ///< Number of bits of the company field.
+	CCB_COMPANY_LENGTH         = COMPANY_SIZE_BITS,  ///< Number of bits of the company field.
 };
 
+
+static_assert(CCB_COMPANY_LENGTH <= (1 << 30)); // This should never be a limiting factor
 static_assert(NUM_CARGO     <= (1 << CCB_CARGO_TYPE_LENGTH));
 static_assert(MAX_COMPANIES <= (1 << CCB_COMPANY_LENGTH));
 
@@ -63,7 +66,7 @@ inline CargoMonitorID EncodeCargoIndustryMonitor(CompanyID company, CargoID ctyp
 	assert(ctype < (1 << CCB_CARGO_TYPE_LENGTH));
 	assert(company < (1 << CCB_COMPANY_LENGTH));
 
-	uint32_t ret = 0;
+	uint64_t ret = 0;
 	SB(ret, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH, ind);
 	SetBit(ret, CCB_IS_INDUSTRY_BIT);
 	SB(ret, CCB_CARGO_TYPE_START, CCB_CARGO_TYPE_LENGTH, ctype);
@@ -83,7 +86,7 @@ inline CargoMonitorID EncodeCargoTownMonitor(CompanyID company, CargoID ctype, T
 	assert(ctype < (1 << CCB_CARGO_TYPE_LENGTH));
 	assert(company < (1 << CCB_COMPANY_LENGTH));
 
-	uint32_t ret = 0;
+	uint64_t ret = 0;
 	SB(ret, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH, town);
 	SB(ret, CCB_CARGO_TYPE_START, CCB_CARGO_TYPE_LENGTH, ctype);
 	SB(ret, CCB_COMPANY_START, CCB_COMPANY_LENGTH, company);

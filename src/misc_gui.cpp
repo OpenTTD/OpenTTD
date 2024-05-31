@@ -129,6 +129,7 @@ public:
 		Debug(misc, LANDINFOD_LEVEL, "m6     = 0x{:x}", tile.m6());
 		Debug(misc, LANDINFOD_LEVEL, "m7     = 0x{:x}", tile.m7());
 		Debug(misc, LANDINFOD_LEVEL, "m8     = 0x{:x}", tile.m8());
+		Debug(misc, LANDINFOD_LEVEL, "m9     = 0x{:x}", tile.m9());
 
 		PrintWaterRegionDebugInfo(tile);
 #undef LANDINFOD_LEVEL

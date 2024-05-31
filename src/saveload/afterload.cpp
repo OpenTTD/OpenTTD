@@ -451,7 +451,7 @@ static void FixOwnerOfRailTrack(Tile t)
 
 	if (IsLevelCrossingTile(t)) {
 		/* else change the crossing to normal road (road vehicles won't care) */
-		Owner road = GetRoadOwner(t, RTT_ROAD);
+		Owner road = GetRoadOwner(t, RTT_ROAD); // TODO: m9
 		Owner tram = GetRoadOwner(t, RTT_TRAM);
 		RoadBits bits = GetCrossingRoadBits(t);
 		bool hasroad = HasBit(t.m7(), 6);
