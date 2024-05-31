@@ -590,8 +590,13 @@ static std::map<uint32_t, uint32_t> _grf_id_overrides;
  */
 static void SetNewGRFOverride(uint32_t source_grfid, uint32_t target_grfid)
 {
-	_grf_id_overrides[source_grfid] = target_grfid;
-	GrfMsg(5, "SetNewGRFOverride: Added override of 0x{:X} to 0x{:X}", BSWAP32(source_grfid), BSWAP32(target_grfid));
+	if (target_grfid == 0) {
+		_grf_id_overrides.erase(source_grfid);
+		GrfMsg(5, "SetNewGRFOverride: Removed override of 0x{:X}", BSWAP32(source_grfid));
+	} else {
+		_grf_id_overrides[source_grfid] = target_grfid;
+		GrfMsg(5, "SetNewGRFOverride: Added override of 0x{:X} to 0x{:X}", BSWAP32(source_grfid), BSWAP32(target_grfid));
+	}
 }
 
 /**
@@ -610,14 +615,13 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 	if (_settings_game.vehicle.dynamic_engines) {
 		/* If dynamic_engies is enabled, there can be multiple independent ID ranges. */
 		scope_grfid = file->grfid;
-		uint32_t override = _grf_id_overrides[file->grfid];
-		if (override != 0) {
-			scope_grfid = override;
-			const GRFFile *grf_match = GetFileByGRFID(override);
+		if (auto it = _grf_id_overrides.find(file->grfid); it != std::end(_grf_id_overrides)) {
+			scope_grfid = it->second;
+			const GRFFile *grf_match = GetFileByGRFID(scope_grfid);
 			if (grf_match == nullptr) {
-				GrfMsg(5, "Tried mapping from GRFID {:x} to {:x} but target is not loaded", BSWAP32(file->grfid), BSWAP32(override));
+				GrfMsg(5, "Tried mapping from GRFID {:x} to {:x} but target is not loaded", BSWAP32(file->grfid), BSWAP32(scope_grfid));
 			} else {
-				GrfMsg(5, "Mapping from GRFID {:x} to {:x}", BSWAP32(file->grfid), BSWAP32(override));
+				GrfMsg(5, "Mapping from GRFID {:x} to {:x}", BSWAP32(file->grfid), BSWAP32(scope_grfid));
 			}
 		}
 
@@ -699,8 +703,9 @@ EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16_t internal
 	uint32_t scope_grfid = INVALID_GRFID; // If not using dynamic_engines, all newgrfs share their ID range
 	if (_settings_game.vehicle.dynamic_engines) {
 		scope_grfid = file->grfid;
-		uint32_t override = _grf_id_overrides[file->grfid];
-		if (override != 0) scope_grfid = override;
+		if (auto it = _grf_id_overrides.find(file->grfid); it != std::end(_grf_id_overrides)) {
+			scope_grfid = it->second;
+		}
 	}
 
 	return _engine_mngr.GetID(type, internal_id, scope_grfid);
@@ -9780,8 +9785,9 @@ static void FinalisePriceBaseMultipliers()
 	std::vector<int> grf_overrides(num_grfs, -1);
 	for (int i = 0; i < num_grfs; i++) {
 		GRFFile *source = _grf_files[i];
-		uint32_t override = _grf_id_overrides[source->grfid];
-		if (override == 0) continue;
+		auto it = _grf_id_overrides.find(source->grfid);
+		if (it == std::end(_grf_id_overrides)) continue;
+		uint32_t override = it->second;
 
 		GRFFile *dest = GetFileByGRFID(override);
 		if (dest == nullptr) continue;
