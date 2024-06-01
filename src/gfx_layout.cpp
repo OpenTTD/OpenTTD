@@ -409,3 +409,36 @@ void Layouter::ReduceLineCache()
 		if (linecache->size() > 4096) ResetLineCache();
 	}
 }
+
+/**
+ * Get the leading corner of a character in a single-line string relative
+ * to the start of the string.
+ * @param str String containing the character.
+ * @param ch Pointer to the character in the string.
+ * @param start_fontsize Font size to start the text with.
+ * @return Upper left corner of the glyph associated with the character.
+ */
+Point GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize)
+{
+	/* Ensure "ch" is inside "str" or at the exact end. */
+	assert(ch >= str.data() && (ch - str.data()) <= static_cast<ptrdiff_t>(str.size()));
+	auto it_ch = str.begin() + (ch - str.data());
+
+	Layouter layout(str, INT32_MAX, start_fontsize);
+	return layout.GetCharPosition(it_ch);
+}
+
+/**
+ * Get the character from a string that is drawn at a specific position.
+ * @param str String to test.
+ * @param x Position relative to the start of the string.
+ * @param start_fontsize Font size to start the text with.
+ * @return Index of the character position or -1 if there is no character at the position.
+ */
+ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize)
+{
+	if (x < 0) return -1;
+
+	Layouter layout(str, INT32_MAX, start_fontsize);
+	return layout.GetCharAtPosition(x, 0);
+}
