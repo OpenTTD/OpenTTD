@@ -12,6 +12,7 @@
 #include "landscape.h"
 #include "error.h"
 #include "gui.h"
+#include "gfx_layout.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "town.h"
