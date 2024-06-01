@@ -2828,6 +2828,10 @@ STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Years: {
 STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Years: {ORANGE}From {NUM}
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Years: {ORANGE}Until {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Size: {ORANGE}{NUM}x{NUM} tiles
+STR_HOUSE_PICKER_HISTORICAL_NO                                  :{BLACK}Historical: {ORANGE}No
+STR_HOUSE_PICKER_HISTORICAL_YES                                 :{BLACK}Historical: {ORANGE}Yes
+STR_HOUSE_PICKER_PROTECTED_NO                                   :{BLACK}Protected: {ORANGE}No
+STR_HOUSE_PICKER_PROTECTED_YES                                  :{BLACK}Protected: {ORANGE}Yes
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Cargo accepted: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Edge

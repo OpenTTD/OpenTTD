@@ -1665,6 +1665,11 @@ struct BuildHouseWindow : public PickerWindow {
 		line << GetString(STR_HOUSE_PICKER_SIZE);
 		line << "\n";
 
+		line << GetString(((hs->extra_flags & HouseExtraFlags::BUILDING_IS_HISTORICAL) != 0) ? STR_HOUSE_PICKER_HISTORICAL_YES : STR_HOUSE_PICKER_HISTORICAL_NO);
+		line << "\n";
+		line << GetString(((hs->extra_flags & HouseExtraFlags::BUILDING_IS_PROTECTED) != 0) ? STR_HOUSE_PICKER_PROTECTED_YES : STR_HOUSE_PICKER_PROTECTED_NO);
+		line << "\n";
+
 		auto cargo_string = BuildCargoAcceptanceString(GetAcceptedCargoOfHouse(hs), STR_HOUSE_PICKER_CARGO_ACCEPTED);
 		if (cargo_string.has_value()) line << *cargo_string;
 
