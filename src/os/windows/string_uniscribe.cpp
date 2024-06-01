@@ -88,9 +88,9 @@ public:
 		UniscribeVisualRun(const UniscribeRun &range, int x);
 		UniscribeVisualRun(UniscribeVisualRun &&other) noexcept;
 
-		const std::vector<GlyphID> &GetGlyphs() const override { return this->glyphs; }
-		const std::vector<Point> &GetPositions() const override { return this->positions; }
-		const std::vector<int> &GetGlyphToCharMap() const override;
+		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
+		std::span<const Point> GetPositions() const override { return this->positions; }
+		std::span<const int> GetGlyphToCharMap() const override;
 
 		const Font *GetFont() const override { return this->font;  }
 		int GetLeading() const override { return this->font->fc->GetHeight(); }
@@ -493,7 +493,7 @@ UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(UniscribeVisual
 {
 }
 
-const std::vector<int> &UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() const
+std::span<const int> UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() const
 {
 	if (this->glyph_to_char.empty()) {
 		this->glyph_to_char.resize(this->GetGlyphCount());

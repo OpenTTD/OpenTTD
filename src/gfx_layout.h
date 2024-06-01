@@ -96,10 +96,10 @@ public:
 		virtual ~VisualRun() = default;
 		virtual const Font *GetFont() const = 0;
 		virtual int GetGlyphCount() const = 0;
-		virtual const std::vector<GlyphID> &GetGlyphs() const = 0;
-		virtual const std::vector<Point> &GetPositions() const = 0;
+		virtual std::span<const GlyphID> GetGlyphs() const = 0;
+		virtual std::span<const Point> GetPositions() const = 0;
 		virtual int GetLeading() const = 0;
-		virtual const std::vector<int> &GetGlyphToCharMap() const = 0;
+		virtual std::span<const int> GetGlyphToCharMap() const = 0;
 	};
 
 	/** A single line worth of VisualRuns. */
