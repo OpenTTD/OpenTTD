@@ -1498,7 +1498,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalenteri
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Seinäkello
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuuttia vuodessa: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Valitse minuuttien määrä kalenterivuodessa. Oletusarvo on 12 minuuttia. Aseta arvoksi 0, jos et halua kalenteriajan muuttuvan. Tämä asetus ei vaikuta pelin taloussimulaatioon, ja se on valittavissa vain seinäkelloaikaa käytettäessä
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Valitse minuuttien määrä kalenterivuodessa. Oletusarvo on 12 minuuttia. Aseta arvoksi 0, jos et halua kalenteriajan muuttuvan. Kalenterivuoden pidentäminen hidastaa kulkuneuvojen, talojen ja muun infrastruktuurin käyttöönottoa. Se ei vaikuta kulkuneuvojen nopeuteen eikä taloussimulaatioon inflaatiota lukuun ottamatta. Tämä asetus on valittavissa vain seinäkelloaikaa käytettäessä
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special

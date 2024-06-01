@@ -1498,7 +1498,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Muurklok
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuten per jaar: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Kies het aantal minuten in een kalenderjaar. Standaard is 12 minuten. Bij 0 wijzigt de kalendertijd niet. Deze instelling heeft geen invloed op de economische simulatie van het spel en is alleen beschikbaar met tijdbasis Muurklok
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Kies het aantal minuten in een kalenderjaar. Standaard is 12 minuten. Bij 0 wijzigt de kalendertijd niet. Als je het kalenderjaar langer maakt, komen voertuigen, huizen en andere infrastructuur langzamer beschikbaar. Deze instelling heeft geen invloed op voertuigsnelheid en op de economische simulatie van het spel, afgezien van inflatie. Deze instelling is alleen beschikbaar met tijdbasis Muurklok
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
