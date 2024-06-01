@@ -71,9 +71,9 @@ public:
 	public:
 		ICUVisualRun(const ICURun &run, int x);
 
-		const std::vector<GlyphID> &GetGlyphs() const override { return this->glyphs; }
-		const std::vector<Point> &GetPositions() const override { return this->positions; }
-		const std::vector<int> &GetGlyphToCharMap() const override { return this->glyph_to_char; }
+		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
+		std::span<const Point> GetPositions() const override { return this->positions; }
+		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
 
 		const Font *GetFont() const override { return this->font; }
 		int GetLeading() const override { return this->font->fc->GetHeight(); }
