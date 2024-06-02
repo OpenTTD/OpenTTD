@@ -44,8 +44,10 @@
 #include "../fios.h"
 #include "../error.h"
 #include "company_type.h"
+#include "core/bitmath_func.hpp"
 #include <atomic>
 #include <bitset>
+#include <cassert>
 #include <cstdint>
 #include <vector>
 #ifdef __EMSCRIPTEN__
@@ -1114,25 +1116,29 @@ static void SlArray(void *array, size_t length, VarType conv)
 
 
 // MYTODO: Put this somewhere it belongs
-std::vector<uint8_t> bitset_to_bytes(const CompanyMask& bs)
+std::vector<uint8_t> bitset_to_bytes(const CompanyMask& mask)
 {
-	int N = COMPANY_SIZE_BITS;
-    std::vector<unsigned char> result((N + 7) >> 3);
-    for (int j=0; j<int(N); j++)
-        result[j>>3] |= (bs[j] << (j & 7));
+    std::vector<unsigned char> result((MAX_COMPANIES + 7) >> 3);
+    for (int j = 0; j < MAX_COMPANIES; j++)
+        result[j>>3] |= (mask[j] << (j & 7));
     return result;
 }
 
-CompanyMask bitset_from_bytes(const std::vector<uint8_t>& buf)
-{
-	size_t N = COMPANY_SIZE_BITS;
-    assert(buf.size() == ((N + 7) >> 3));
+CompanyMask bitset_from_bytes(const std::vector<uint8_t>& buf) {
     CompanyMask result;
-    for (int j=0; j<int(N); j++)
+    for (int j=0; j < MAX_COMPANIES; j++)
         result[j] = ((buf[j>>3] >> (j & 7)) & 1);
     return result;
 }
 
+
+CompanyMask owner_from_int(uint16_t old_owner) {
+    CompanyMask result;
+	for (int i = 0; i < 16; i++) {
+		result[i] = GB(old_owner, i, 1) & 1;
+	}
+	return result;
+}
 
 
 /**
@@ -1140,35 +1146,26 @@ CompanyMask bitset_from_bytes(const std::vector<uint8_t>& buf)
  * @param array The array being manipulated
  * @param length The length of the bitset in bytes,
  */
-static void SlCompanyMask(void *array, size_t length, VarType conv)
+static void SlCompanyMask(void *array, size_t byte_length, VarType conv)
 {
 	switch (_sl.action) {
 		case SLA_SAVE: {
 			CompanyMask *bs = static_cast<CompanyMask *>(array);
-			// We don't save the number of bits in the company mask,
-			// because it's incompatible with other versions anyway
 			std::vector<uint8_t> bytes = bitset_to_bytes(*bs);
 			uint8_t *bytes_arr = &bytes[0];
-
-			SlWriteArrayLength(bytes.size());
 			SlArray(bytes_arr, bytes.size(), conv);
-
 			return;
 	   }
 
 		case SLA_LOAD_CHECK:
 		case SLA_LOAD: {
+			assert(byte_length == (MAX_COMPANIES + 7) >> 3);
 
-			std::vector<uint8_t> buff(length);
+			std::vector<uint8_t> buff((MAX_COMPANIES + 7) >> 3);
+			SlArray(&buff[0], byte_length, conv);
 
-			SlArray(&buff[0], length, conv);
-
-			CompanyMask res = bitset_from_bytes(buff);
 			CompanyMask *bs = static_cast<CompanyMask *>(array);
-			for (int i = 0; i < COMPANY_SIZE_BITS; i++) {
-				(*bs)[i] = res[i];
-			}
-
+			*bs = bitset_from_bytes(buff); // we don't want to write direc
 			return;
 		}
 
@@ -2248,10 +2245,12 @@ static void SlLoadCheckChunks()
 	const ChunkHandler *ch;
 
 	for (id = SlReadUint32(); id != 0; id = SlReadUint32()) {
-		Debug(sl, 2, "Loading chunk {:c}{:c}{:c}{:c}", id >> 24, id >> 16, id >> 8, id);
+		Debug(sl, 2, "Loading chunk (for checking) {:c}{:c}{:c}{:c}", id >> 24, id >> 16, id >> 8, id);
 
 		ch = SlFindChunkHandler(id);
-		if (ch == nullptr) SlErrorCorrupt("Unknown chunk type");
+		if (ch == nullptr) {
+			SlErrorCorrupt("Unknown chunk type");
+		}
 		SlLoadCheckChunk(*ch);
 	}
 }

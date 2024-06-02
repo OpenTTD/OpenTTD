@@ -475,9 +475,11 @@ static const SaveLoad _company_desc[] = {
 
 	SLE_CONDVAR(CompanyProperties, num_valid_stat_ent,    SLE_UINT8,                   SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
 
-	    SLE_VAR(CompanyProperties, months_of_bankruptcy,  SLE_UINT8),
-	// MYTODO: Fix all the compat issues
-	SLE_CONDCOMPMASK(CompanyProperties, bankrupt_asked,  SLE_UINT8,  COMPANY_SIZE_BITS,   SLV_179, SL_MAX_VERSION),
+		SLE_VAR(CompanyProperties, months_of_bankruptcy,  SLE_UINT8),
+SLE_CONDVARNAME(CompanyProperties, old_bankrupt_asked, "bankrupt_asked",       SLE_FILE_U8  | SLE_VAR_U16,  SL_MIN_VERSION, SLV_104),
+SLE_CONDVARNAME(CompanyProperties, old_bankrupt_asked, "bankrupt_asked",       SLE_UINT16,                SLV_104, SLV_MORE_COMPANIES),
+SLE_CONDCOMPMASK(CompanyProperties, bankrupt_asked,		  MAX_COMPANIES,   SLV_MORE_COMPANIES, SL_MAX_VERSION),
+
 	    SLE_VAR(CompanyProperties, bankrupt_timeout,      SLE_INT16),
 	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_65),
 	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_INT64,                  SLV_65, SL_MAX_VERSION),
@@ -520,6 +522,9 @@ struct PLYRChunkHandler : ChunkHandler {
 			Company *c = new (index) Company();
 			SlObject(c, slt);
 			_company_colours[index] = c->colour;
+			if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
+				c->bankrupt_asked = owner_from_int(c->old_bankrupt_asked);
+			}
 		}
 	}
 

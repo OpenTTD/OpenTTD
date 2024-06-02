@@ -381,6 +381,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_COMPANY_ALLOW_LIST,                 ///< 335  PR#12337 Saving of list of client keys that are allowed to join this company.
 	SLV_GROUP_NUMBERS,                      ///< 336  PR#12297 Add per-company group numbers.
+	SLV_MORE_COMPANIES,                      /// Added more companies MYTODO: Fix this comment
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
@@ -1003,16 +1004,16 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  */
 #define SLE_ARRNAME(base, variable, name, type, length) SLE_CONDARRNAME(base, variable, name, type, length, SL_MIN_VERSION, SL_MAX_VERSION)
 
+
 /**
- * Storage of a fixed-size array of #SL_VAR elements in some savegame versions.
- * @param base     Name of the class or struct containing the array.
+ * Storage of a company mask bitset of #MAX_COMPANIES bits in some savegame versions.
+ * @param base     Name of the class or struct containing the company mask.
  * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the array.
+ * @param bit_length   Number of bits in the serialized form.
  * @param from     First savegame version that has the array.
  * @param to       Last savegame version that has the array.
  */
-#define SLE_CONDCOMPMASK(base, variable, type, length, from, to) SLE_GENERAL(SL_COMPANY_MASK, base, variable, type, length, from, to, 0)
+#define SLE_CONDCOMPMASK(base, variable, bit_length, from, to) SLE_GENERAL(SL_COMPANY_MASK, base, variable, SLE_CHAR, (bit_length + 7) >> 3, from, to, 0)
 
 /**
  * Storage of a \c std::string in every savegame version.
@@ -1313,6 +1314,7 @@ void SlCopy(void *object, size_t length, VarType conv);
 std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt);
 std::vector<SaveLoad> SlCompatTableHeader(const SaveLoadTable &slt, const SaveLoadCompatTable &slct);
 void SlObject(void *object, const SaveLoadTable &slt);
+CompanyMask owner_from_int(uint16_t old_owner);
 
 bool SaveloadCrashWithMissingNewGRFs();
 

@@ -215,11 +215,14 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDSSTR(Town, name,                 SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
 
 	    SLE_VAR(Town, flags,                 SLE_UINT8),
-		// MYTODO: Fix all the compat
-SLE_CONDCOMPMASK(Town, statues,  SLE_UINT8,  COMPANY_SIZE_BITS,   SLV_179, SL_MAX_VERSION),
+SLE_CONDVARNAME(Town, old_statues,   "statues",            SLE_FILE_U8  | SLE_VAR_U16, SL_MIN_VERSION, SLV_104),
+SLE_CONDVARNAME(Town, old_statues,   "statues",            SLE_UINT16,               SLV_104, SLV_MORE_COMPANIES),
+SLE_CONDCOMPMASK(Town, statues,		  MAX_COMPANIES,   SLV_MORE_COMPANIES, SL_MAX_VERSION),
 
-		// MYTODO: Fix all the compat
-SLE_CONDCOMPMASK(Town, have_ratings,  SLE_UINT8,  COMPANY_SIZE_BITS,   SLV_179, SL_MAX_VERSION),
+SLE_CONDCOMPMASK(Town, have_ratings,		MAX_COMPANIES,		SLV_MORE_COMPANIES, SL_MAX_VERSION),
+SLE_CONDVARNAME(Town, old_have_ratings,	"have_ratings",          SLE_FILE_U8  | SLE_VAR_U16, SL_MIN_VERSION, SLV_104),
+SLE_CONDVARNAME(Town, old_have_ratings,	"have_ratings",          SLE_UINT16,               SLV_104, SLV_MORE_COMPANIES),
+
 	SLE_CONDARR(Town, ratings,               SLE_INT16, 8,               SL_MIN_VERSION, SLV_104),
 	SLE_CONDARR(Town, ratings,               SLE_INT16, MAX_COMPANIES, SLV_104, SL_MAX_VERSION),
 	SLE_CONDARR(Town, unwanted,              SLE_INT8,  8,               SLV_4, SLV_104),
@@ -305,6 +308,10 @@ struct CITYChunkHandler : ChunkHandler {
 
 			if (t->townnamegrfid == 0 && !IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST + 1) && GetStringTab(t->townnametype) != TEXT_TAB_OLD_CUSTOM) {
 				SlErrorCorrupt("Invalid town name generator");
+			}
+			if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
+				t->statues = owner_from_int(t->old_statues);
+				t->have_ratings = owner_from_int(t->old_have_ratings);
 			}
 		}
 	}

@@ -16,6 +16,7 @@
 #include "subsidy_type.h"
 #include "newgrf_storage.h"
 #include "cargotype.h"
+#include <cstdint>
 
 template <typename T>
 struct BuildingCounts {
@@ -68,9 +69,11 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint16_t noise_reached;          ///< level of noise that all the airports are generating
 
 	CompanyMask statues;           ///< which companies have a statue?
+	uint16_t old_statues;
 
 	/* Company ratings. */
 	CompanyMask have_ratings;      ///< which companies have a rating
+	uint16_t old_have_ratings;
 	uint8_t unwanted[MAX_COMPANIES]; ///< how many months companies aren't wanted by towns (bribe)
 	CompanyID exclusivity;         ///< which company has exclusivity
 	uint8_t exclusive_counter;       ///< months till the exclusivity expires
