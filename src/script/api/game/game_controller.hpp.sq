@@ -21,6 +21,7 @@ void SQGSController_Register(Squirrel *engine)
 	SQGSController.DefSQStaticMethod(engine, &ScriptController::Break,             "Break",             2, ".s");
 	SQGSController.DefSQStaticMethod(engine, &ScriptController::GetSetting,        "GetSetting",        2, ".s");
 	SQGSController.DefSQStaticMethod(engine, &ScriptController::GetVersion,        "GetVersion",        1, ".");
+	SQGSController.DefSQStaticMethod(engine, &ScriptController::TriggerSave,       "TriggerSave",       2, ".s");
 	SQGSController.DefSQStaticMethod(engine, &ScriptController::Print,             "Print",             3, ".bs");
 
 	SQGSController.PostRegister(engine);

@@ -214,6 +214,13 @@ public:
 	SQInteger GetOpsTillSuspend();
 
 	/**
+	 * Saves the current game to the savegame directory.
+	 * @param filename The filename to save to, not including the ".sav" extension
+	 * @return True if the saving was successful.
+	 */
+	bool TriggerSave(const std::string &filename);
+
+	/**
 	 * DoCommand callback function for all commands executed by scripts.
 	 * @param result The result of the command.
 	 * @param tile The tile on which the command was executed.

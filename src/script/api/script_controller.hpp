@@ -148,6 +148,13 @@ public:
 	static uint GetVersion();
 
 	/**
+	 * Saves the current game to the savegame directory.
+	 * @param filename The filename to save to, not including the ".sav" extension
+	 * @return True if the saving was successful.
+	 */
+	static bool TriggerSave(const std::string &filename);
+
+	/**
 	 * Change the minimum amount of time the script should be put in suspend mode
 	 *   when you execute a command. Normally in SP this is 1, and in MP it is
 	 *   what ever delay the server has been programmed to delay commands

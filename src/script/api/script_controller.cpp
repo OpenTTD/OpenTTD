@@ -94,6 +94,11 @@ ScriptController::ScriptController(CompanyID company) :
 	return _openttd_newgrf_version;
 }
 
+/* static */ bool ScriptController::TriggerSave(const std::string &filename)
+{
+	return ScriptObject::GetActiveInstance()->TriggerSave(filename);
+}
+
 /* static */ HSQOBJECT ScriptController::Import(const std::string &library, const std::string &class_name, int version)
 {
 	ScriptController *controller = ScriptObject::GetActiveInstance()->GetController();

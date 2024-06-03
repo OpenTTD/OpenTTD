@@ -751,6 +751,11 @@ SQInteger ScriptInstance::GetOpsTillSuspend()
 	return this->engine->GetOpsTillSuspend();
 }
 
+bool ScriptInstance::TriggerSave(const std::string &filename)
+{
+	return SaveOrLoad(filename + ".sav", SLO_SAVE, DFT_GAME_FILE, SAVE_DIR) == SL_OK;
+}
+
 bool ScriptInstance::DoCommandCallback(const CommandCost &result, const CommandDataBuffer &data, CommandDataBuffer result_data, Commands cmd)
 {
 	ScriptObject::ActiveInstance active(this);
