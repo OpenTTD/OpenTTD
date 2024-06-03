@@ -1158,9 +1158,14 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :گاڑیوں ک
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :گاڑی پرانی ہونے کی صورت میں خودکار طریقے سے بدل دیں: {STRING}
 
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :گاڑی کی زیادہ سے زیادہ عمر {STRING} ہونے پر خودکار تجدید کریں۔
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :متعلقہ عمر جب کسی گاڑی کو خودکار تجدید کے لیے سمجھا جانا چاہیے۔
 ###length 2
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} ماہ پہلے
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} ماہ بعد
 
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :خودکار تبدیلی کے لئے ضروری کم سے کم رقم کو خودکار طریقے سے بدل دیں: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :گاڑیوں کی خودکار تجدید کرنے پر غور کرنے سے پہلے کم سے کم رقم جو بینک میں رہنی چاہیے۔
 
 
 ###setting-zero-is-special
@@ -1331,9 +1336,12 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :اسکرپٹس 
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :مرمتی وقفے فیصد میں ہیں: {STRING}
 
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :ہوائی جہاز کے لیے طے شدہ مرمتی وقفہ: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :اگر گاڑی کے لیے کوئی واضح مرمتی وقفہ مقرر نہیں کیا گیا ہے تو نئے ہوائی جہاز کے لیے پہلے سے طے شدہ مرمتی وقفہ مقرر کریں
 ###length 3
 
 ###setting-zero-is-special
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :غیر فعال
 
 STR_CONFIG_SETTING_NOSERVICE                                    :گاڑیوں کی خرابی غیر فعال ہونے کی صورت میں مرمت بھی غیر فعال کر دیں: {STRING}
 
@@ -1737,6 +1745,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}کلائ
 # Matches ConnectionType
 ###length 5
 
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :مٹا دو
 
 
 
@@ -2152,6 +2161,9 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{G=f}{BLACK}ک�
 # Fund new industry window
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}کارگو چین - {STRING}
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}قبول کرنے والی صنعتیں۔
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}اس کے فروخت کنندہ اور گاہک کو دیکھنے کے لیے سامان پر کلک کریں۔
 
 # Land area window
 
@@ -2213,6 +2225,13 @@ STR_MAPGEN_TOWN_NAME_ITALIAN                                    :اِٹالین
 STR_MAPGEN_TOWN_NAME_CATALAN                                    :کاٹالن
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}نقشے کے کنارے:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}کھیل کی دنیا کے بارڈرز کا انتخاب کریں۔
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}فری فارم
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}پانی
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}بے ترتیب
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}بے ترتیب
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}دستی
 
 
 
@@ -2331,6 +2350,7 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :خرابی
 # Subsidies window
 
 # Story book window
+STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}غلط مقصد کا حوالہ
 
 # Station list window
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -2894,6 +2914,9 @@ STR_TOWN_BUILDING_NAME_CHURCH_1                                 :چرچ
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_POWER_STATION                                 :بجلی گھر
+STR_INDUSTRY_NAME_FARM                                          :کھیت
+STR_INDUSTRY_NAME_BANK                                          :بینک
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :بینک
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
@@ -2915,6 +2938,7 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :مینلی-موریل DMU (ڈیزل)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :کوئلے کا ٹرک
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
