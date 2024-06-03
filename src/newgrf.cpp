@@ -2660,6 +2660,7 @@ static ChangeInfoResult LoadTranslationTable(uint gvid, int numinfo, ByteReader 
 	}
 
 	translation_table.clear();
+	translation_table.reserve(numinfo);
 	for (int i = 0; i < numinfo; i++) {
 		translation_table.push_back(T(BSWAP32(buf->ReadDWord())));
 	}
@@ -3571,6 +3572,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 
 				for (uint8_t j = 0; j < new_num_layouts; j++) {
 					layout.clear();
+					layout.reserve(new_num_layouts);
 
 					for (uint k = 0;; k++) {
 						if (bytes_read >= definition_size) {
@@ -5238,6 +5240,7 @@ static void NewSpriteGroup(ByteReader *buf)
 
 			/* Sort ranges ascending. When ranges overlap, this may required clamping or splitting them */
 			std::vector<uint32_t> bounds;
+			bounds.reserve(ranges.size());
 			for (const auto &range : ranges) {
 				bounds.push_back(range.low);
 				if (range.high != UINT32_MAX) bounds.push_back(range.high + 1);
@@ -5246,6 +5249,7 @@ static void NewSpriteGroup(ByteReader *buf)
 			bounds.erase(std::unique(bounds.begin(), bounds.end()), bounds.end());
 
 			std::vector<const SpriteGroup *> target;
+			target.reserve(bounds.size());
 			for (const auto &bound : bounds) {
 				const SpriteGroup *t = group->default_group;
 				for (const auto &range : ranges) {
@@ -5301,6 +5305,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				GrfMsg(1, "NewSpriteGroup: Random Action 2 nrand should be power of 2");
 			}
 
+			group->groups.reserve(num_groups);
 			for (uint i = 0; i < num_groups; i++) {
 				group->groups.push_back(GetGroupFromGroupID(setid, type, buf->ReadWord()));
 			}
@@ -5351,11 +5356,13 @@ static void NewSpriteGroup(ByteReader *buf)
 					std::vector<uint16_t> loaded;
 					std::vector<uint16_t> loading;
 
+					loaded.reserve(num_loaded);
 					for (uint i = 0; i < num_loaded; i++) {
 						loaded.push_back(buf->ReadWord());
 						GrfMsg(8, "NewSpriteGroup: + rg->loaded[{}]  = subset {}", i, loaded[i]);
 					}
 
+					loading.reserve(num_loading);
 					for (uint i = 0; i < num_loading; i++) {
 						loading.push_back(buf->ReadWord());
 						GrfMsg(8, "NewSpriteGroup: + rg->loading[{}] = subset {}", i, loading[i]);
@@ -5376,12 +5383,14 @@ static void NewSpriteGroup(ByteReader *buf)
 					act_group = group;
 
 					if (loaded_same && loaded.size() > 1) loaded.resize(1);
+					group->loaded.reserve(loaded.size());
 					for (uint16_t spriteid : loaded) {
 						const SpriteGroup *t = CreateGroupFromGroupID(feature, setid, type, spriteid);
 						group->loaded.push_back(t);
 					}
 
 					if (loading_same && loading.size() > 1) loading.resize(1);
+					group->loading.reserve(loading.size());
 					for (uint16_t spriteid : loading) {
 						const SpriteGroup *t = CreateGroupFromGroupID(feature, setid, type, spriteid);
 						group->loading.push_back(t);
