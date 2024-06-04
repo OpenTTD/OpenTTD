@@ -2455,7 +2455,13 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}گروپ
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :نیا طیارہ
 
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}گنجائش: {GOLD}{CARGO_LONG} {STRING}
+STR_PURCHASE_INFO_COST                                          :{BLACK}لاگت: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}گنجائش: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_ALL_TYPES                                     :تمام اقسام کا سامان
+STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST} کے علاوہ سبھی
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}پہنچ: {GOLD}{COMMA} ٹائلیں
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}ہوائی جہاز کی قسم: {GOLD}{STRING}
 
 ###length 3
 

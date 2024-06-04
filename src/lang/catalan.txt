@@ -311,8 +311,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}Cancel·
 STR_BUTTON_OK                                                   :{BLACK}D'acord
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :¬!"£$%^&*()_+ QWERTYUIOP{{}}ASDFGHJKL:@~|ZXCVBNM<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Llargada: {NUM}
@@ -1499,7 +1499,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendari
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Rellotge de paret
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuts per any: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Trieu el nombre de minuts d'un any de calendari. Per defecte són 12 minuts. Establiu-ho a 0 per a parar el temps del calendari. Aquesta opció no afecta a la simulació econòmica de la partida i només està disponible quan es fa servir el temps amb rellotge de paret.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Trieu el nombre de minuts d'un any de calendari. Per defecte són 12 minuts. Establiu-ho a 0 per a parar el temps del calendari. Si s'augmenta la durada de l'any del calendari s'alenteix la introducció de vehicles, cases i altres tipus d'infraestructures noves. No afecta a la velocitat dels vehicles o de la simulació econòmica, excepte per la inflació. Aquesta opció només està disponible quan es fa servir el temps amb rellotge de paret.
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
