@@ -802,7 +802,7 @@ static void TileLoop_Trees(TileIndex tile)
 			break;
 
 		case 6: // final stage of tree destruction
-			if (!CanPlantExtraTrees(tile)) {
+			if (!CanPlantExtraTrees(tile) || (_settings_game.game_creation.tree_placer == TP_IMPROVED && !IsNearbyForest(tile))) {
 				/* if trees can't spread just plant a new one to prevent deforestation */
 				SetTreeGrowth(tile, 0);
 			} else if (GetTreeCount(tile) > 1) {
@@ -810,12 +810,6 @@ static void TileLoop_Trees(TileIndex tile)
 				AddTreeCount(tile, -1);
 				SetTreeGrowth(tile, 3);
 			} else {
-				/* Backups the type of tree if using improved trees */
-				TreeType treetype;
-				if (_settings_game.game_creation.tree_placer == TP_IMPROVED && IsTileType(tile, MP_TREES)) {
-					treetype = GetTreeType(tile);
-				}
-
 				/* just one tree, change type into MP_CLEAR */
 				switch (GetTreeGround(tile)) {
 					case TREE_GROUND_SHORE: MakeShore(tile); break;
@@ -836,11 +830,6 @@ static void TileLoop_Trees(TileIndex tile)
 							MakeSnow(tile, density);
 						}
 						break;
-				}
-
-				/* When using improved trees, when a "alone" tree is dead, a new one is planted immediately. */
-				if (_settings_game.game_creation.tree_placer == TP_IMPROVED && !IsNearbyForest(tile)) {
-					PlantTreesOnTile(tile, treetype, 0, 0);
 				}
 			}
 			break;
