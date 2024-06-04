@@ -58,6 +58,7 @@ static const uint16_t DEFAULT_TREE_STEPS = 1000;             ///< Default number
 static const uint16_t DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number of attempts for placing extra trees at rainforest in tropic.
 static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tree generation divisor factor.
 static const uint16_t FOREST_THRESHOLD = 6;                  ///< Minimum amount of trees required to be considered a forest.
+static const uint16_t FOREST_SEARCH_RADIUS = 2;              ///< Radius of area to examine when determining forest status.
 
 /**
  * Tests if a tile can be converted to MP_TREES
@@ -96,13 +97,9 @@ static bool IsNearbyForest(TileIndex tile)
 	if (IsTileType(tile, MP_TREES)) return true;
 
 	/* Count the trees around the clear tile to determine if it's near a forest */
-	for (int x = -2; x <= 2; x++) {
-		for (int y = -2; y <= 2; y++) {
-			TileIndex vincity = TileAddWrap(tile, x, y);
-			if (vincity != INVALID_TILE &&
-				IsTileType(vincity, MP_TREES)) {
-				planted_tile_count++;
-			}
+	for (TileIndex t : TileArea(tile).Expand(FOREST_SEARCH_RADIUS)) {
+		if (IsTileType(t, MP_TREES)) {
+			planted_tile_count++;
 		}
 	}
 
