@@ -780,6 +780,25 @@ static int GetCaretWidth()
 	return GetCharacterWidth(FS_NORMAL, '_');
 }
 
+/**
+ * Reposition edit text box rect based on textbuf length can caret position.
+ * @param r Initial rect of edit text box.
+ * @param tb The Textbuf being processed.
+ * @return Updated rect.
+ */
+static Rect ScrollEditBoxTextRect(Rect r, const Textbuf &tb)
+{
+	const int linewidth = tb.pixels + GetCaretWidth();
+	const int boxwidth = r.Width();
+	if (linewidth <= boxwidth) return r;
+
+	/* Extend to cover whole string. This is left-aligned, adjusted by caret position. */
+	r = r.WithWidth(linewidth, false);
+
+	/* Slide so that the caret is at the centre unless limited by bounds of the line, i.e. near either end. */
+	return r.Translate(-std::clamp(tb.caretxoffs - (boxwidth / 2), 0, linewidth - boxwidth), 0);
+}
+
 void QueryString::DrawEditBox(const Window *w, WidgetID wid) const
 {
 	const NWidgetLeaf *wi = w->GetWidget<NWidgetLeaf>(wid);
@@ -805,24 +824,29 @@ void QueryString::DrawEditBox(const Window *w, WidgetID wid) const
 	/* Limit the drawing of the string inside the widget boundaries */
 	DrawPixelInfo dpi;
 	if (!FillDrawPixelInfo(&dpi, fr)) return;
+	/* Keep coordinates relative to the window. */
+	dpi.left += fr.left;
+	dpi.top += fr.top;
 
 	AutoRestoreBackup dpi_backup(_cur_dpi, &dpi);
 
 	/* We will take the current widget length as maximum width, with a small
 	 * space reserved at the end for the caret to show */
 	const Textbuf *tb = &this->text;
-	int delta = std::min(0, (fr.right - fr.left) - tb->pixels - GetCaretWidth());
-
-	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
+	fr = ScrollEditBoxTextRect(fr, *tb);
 
 	/* If we have a marked area, draw a background highlight. */
-	if (tb->marklength != 0) GfxFillRect(delta + tb->markxoffs, 0, delta + tb->markxoffs + tb->marklength - 1, fr.bottom - fr.top, PC_GREY);
+	if (tb->marklength != 0) GfxFillRect(fr.left + tb->markxoffs, fr.top, fr.left + tb->markxoffs + tb->marklength - 1, fr.bottom, PC_GREY);
 
-	DrawString(delta, tb->pixels, 0, tb->buf, TC_YELLOW);
+	DrawString(fr.left, fr.right, CenterBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), tb->buf, TC_YELLOW);
 	bool focussed = w->IsWidgetGloballyFocused(wid) || IsOSKOpenedFor(w, wid);
 	if (focussed && tb->caret) {
-		int caret_width = GetStringBoundingBox("_").width;
-		DrawString(tb->caretxoffs + delta, tb->caretxoffs + delta + caret_width, 0, "_", TC_WHITE);
+		int caret_width = GetCaretWidth();
+		if (rtl) {
+			DrawString(fr.right - tb->pixels + tb->caretxoffs - caret_width, fr.right - tb->pixels + tb->caretxoffs, CenterBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), "_", TC_WHITE);
+		} else {
+			DrawString(fr.left + tb->caretxoffs, fr.left + tb->caretxoffs + caret_width, CenterBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), "_", TC_WHITE);
+		}
 	}
 }
 
@@ -846,10 +870,9 @@ Point QueryString::GetCaretPosition(const Window *w, WidgetID wid) const
 
 	/* Clamp caret position to be inside out current width. */
 	const Textbuf *tb = &this->text;
-	int delta = std::min(0, (r.right - r.left) - tb->pixels - GetCaretWidth());
-	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
+	r = ScrollEditBoxTextRect(r, *tb);
 
-	Point pt = {r.left + tb->caretxoffs + delta, r.top};
+	Point pt = {r.left + tb->caretxoffs, r.top};
 	return pt;
 }
 
@@ -875,14 +898,13 @@ Rect QueryString::GetBoundingRect(const Window *w, WidgetID wid, const char *fro
 
 	/* Clamp caret position to be inside our current width. */
 	const Textbuf *tb = &this->text;
-	int delta = std::min(0, r.Width() - tb->pixels - GetCaretWidth());
-	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
+	r = ScrollEditBoxTextRect(r, *tb);
 
 	/* Get location of first and last character. */
 	Point p1 = GetCharPosInString(tb->buf, from, FS_NORMAL);
 	Point p2 = from != to ? GetCharPosInString(tb->buf, to, FS_NORMAL) : p1;
 
-	return { Clamp(r.left + p1.x + delta, r.left, r.right), r.top, Clamp(r.left + p2.x + delta, r.left, r.right), r.bottom };
+	return { Clamp(r.left + p1.x, r.left, r.right), r.top, Clamp(r.left + p2.x, r.left, r.right), r.bottom };
 }
 
 /**
@@ -908,10 +930,9 @@ ptrdiff_t QueryString::GetCharAtPosition(const Window *w, WidgetID wid, const Po
 
 	/* Clamp caret position to be inside our current width. */
 	const Textbuf *tb = &this->text;
-	int delta = std::min(0, r.Width() - tb->pixels - GetCaretWidth());
-	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
+	r = ScrollEditBoxTextRect(r, *tb);
 
-	return ::GetCharAtPosition(tb->buf, pt.x - delta - r.left);
+	return ::GetCharAtPosition(tb->buf, pt.x - r.left);
 }
 
 void QueryString::ClickEditBox(Window *w, Point pt, WidgetID wid, int click_count, bool focus_changed)
