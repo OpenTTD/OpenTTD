@@ -99,11 +99,14 @@ static bool IsNearbyForest(TileIndex tile)
 	/* Count the trees around the clear tile to determine if it's near a forest */
 	for (TileIndex t : TileArea(tile).Expand(FOREST_SEARCH_RADIUS)) {
 		if (IsTileType(t, MP_TREES)) {
-			planted_tile_count++;
+			if (++planted_tile_count >= FOREST_THRESHOLD)
+			{
+				return true;
+			}
 		}
 	}
 
-	return (planted_tile_count >= FOREST_THRESHOLD);
+	return false;
 }
 
 /**
