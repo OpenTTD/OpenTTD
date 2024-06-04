@@ -120,9 +120,9 @@ struct ENGNChunkHandler : ChunkHandler {
 				e->preview_asked = MAX_UVALUE(CompanyMask);
 			}
 			if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
-				e->preview_asked = owner_from_int(e->old_preview_asked);
-				e->company_avail = owner_from_int(e->old_company_avail);
-				e->company_hidden = owner_from_int(e->old_company_hidden);
+				e->preview_asked = ParseOldCompMask(e->old_preview_asked);
+				e->company_avail = ParseOldCompMask(e->old_company_avail);
+				e->company_hidden = ParseOldCompMask(e->old_company_hidden);
 			}
 		}
 	}

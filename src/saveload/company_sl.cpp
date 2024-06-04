@@ -523,7 +523,7 @@ struct PLYRChunkHandler : ChunkHandler {
 			SlObject(c, slt);
 			_company_colours[index] = c->colour;
 			if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
-				c->bankrupt_asked = owner_from_int(c->old_bankrupt_asked);
+				c->bankrupt_asked = ParseOldCompMask(c->old_bankrupt_asked);
 			}
 		}
 	}

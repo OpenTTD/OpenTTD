@@ -224,9 +224,12 @@ SLE_CONDVARNAME(Town, old_have_ratings,	"have_ratings",          SLE_FILE_U8  | 
 SLE_CONDVARNAME(Town, old_have_ratings,	"have_ratings",          SLE_UINT16,               SLV_104, SLV_MORE_COMPANIES),
 
 	SLE_CONDARR(Town, ratings,               SLE_INT16, 8,               SL_MIN_VERSION, SLV_104),
-	SLE_CONDARR(Town, ratings,               SLE_INT16, MAX_COMPANIES, SLV_104, SL_MAX_VERSION),
+	SLE_CONDARR(Town, ratings,               SLE_INT16, 15, SLV_104, 	SLV_MORE_COMPANIES),
+	SLE_CONDARR(Town, ratings,               SLE_INT16, MAX_COMPANIES, SLV_MORE_COMPANIES, SL_MAX_VERSION),
+
 	SLE_CONDARR(Town, unwanted,              SLE_INT8,  8,               SLV_4, SLV_104),
-	SLE_CONDARR(Town, unwanted,              SLE_INT8,  MAX_COMPANIES, SLV_104, SL_MAX_VERSION),
+	SLE_CONDARR(Town, unwanted,              SLE_INT8,  15, SLV_104, SLV_MORE_COMPANIES),
+	SLE_CONDARR(Town, unwanted,              SLE_INT8,  MAX_COMPANIES, SLV_MORE_COMPANIES, SL_MAX_VERSION),
 
 	/* Slots 0 and 2 are passengers and mail respectively for old saves. */
 	SLE_CONDVARNAME(Town, supplied[0].old_max, "supplied[CT_PASSENGERS].old_max", SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
@@ -310,8 +313,8 @@ struct CITYChunkHandler : ChunkHandler {
 				SlErrorCorrupt("Invalid town name generator");
 			}
 			if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
-				t->statues = owner_from_int(t->old_statues);
-				t->have_ratings = owner_from_int(t->old_have_ratings);
+				t->statues = ParseOldCompMask(t->old_statues);
+				t->have_ratings = ParseOldCompMask(t->old_have_ratings);
 			}
 		}
 	}

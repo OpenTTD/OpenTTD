@@ -60,6 +60,7 @@
 #include "saveload_filter.h"
 
 #include "../safeguards.h"
+#include <iostream>
 
 extern const SaveLoadVersion SAVEGAME_VERSION = (SaveLoadVersion)(SL_MAX_VERSION - 1); ///< Current savegame version of OpenTTD.
 
@@ -1096,6 +1097,7 @@ static void SlArray(void *array, size_t length, VarType conv)
 					/* If the SLE_ARR changes size, a savegame bump is required
 					 * and the developer should have written conversion lines.
 					 * Error out to make this more visible. */
+					std::cout << "Corrupted array!!" << std::endl;
 					SlErrorCorrupt("Fixed-length array is of wrong length");
 				}
 			}
@@ -1132,12 +1134,23 @@ CompanyMask bitset_from_bytes(const std::vector<uint8_t>& buf) {
 }
 
 
-CompanyMask owner_from_int(uint16_t old_owner) {
+CompanyMask ParseOldCompMask(uint16_t old_owner) {
     CompanyMask result;
 	for (int i = 0; i < 16; i++) {
 		result[i] = GB(old_owner, i, 1) & 1;
 	}
 	return result;
+}
+
+Owner ParseOldOwner(Owner old) {
+	if (old == OLD_OWNER_NONE) {
+		old = OWNER_NONE;
+	} else if (old == OLD_OWNER_TOWN){
+		old = OWNER_TOWN;
+	} else if (old == OLD_OWNER_WATER) {
+		old = OWNER_WATER;
+	}
+	return old;
 }
 
 
@@ -1625,6 +1638,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 
 static bool SlObjectMember(void *object, const SaveLoad &sld)
 {
+	std::cout <<"Object: "<< sld.name << std::endl;
 	if (!SlIsObjectValidInSavegame(sld)) return false;
 
 	VarType conv = GB(sld.conv, 0, 8);

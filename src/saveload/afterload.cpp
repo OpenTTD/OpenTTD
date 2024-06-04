@@ -63,6 +63,8 @@
 #include "../timer/timer_game_economy.h"
 #include "../timer/timer_game_tick.h"
 
+#include "company_type.h"
+#include "road_map.h"
 #include "saveload/saveload.h"
 #include "saveload_internal.h"
 
@@ -454,8 +456,8 @@ static void FixOwnerOfRailTrack(Tile t)
 
 	if (IsLevelCrossingTile(t)) {
 		/* else change the crossing to normal road (road vehicles won't care) */
-		Owner road = GetRoadOwner(t, RTT_ROAD);
-		Owner tram = GetRoadOwner(t, RTT_TRAM);
+		Owner road = OldGetRoadOwner(t, RTT_ROAD);
+		Owner tram = OldGetRoadOwner(t, RTT_TRAM);
 		RoadBits bits = GetCrossingRoadBits(t);
 		bool hasroad = HasBit(t.m7(), 6);
 		bool hastram = HasBit(t.m7(), 7);
@@ -466,7 +468,7 @@ static void FixOwnerOfRailTrack(Tile t)
 		t.m3() = (hasroad ? bits : 0);
 		t.m5() = (hastram ? bits : 0) | ROAD_TILE_NORMAL << 6;
 		SB(t.m6(), 2, 4, 0);
-		SetRoadOwner(t, RTT_TRAM, tram);
+		OldSetRoadOwner(t, RTT_TRAM, tram);
 		return;
 	}
 
@@ -1226,7 +1228,7 @@ bool AfterLoadGame()
 							t.m5() = (axis == AXIS_X ? ROAD_Y : ROAD_X) | ROAD_TILE_NORMAL << 6;
 							SB(t.m6(), 2, 4, 0);
 							t.m7() = 1 << 6;
-							SetRoadOwner(t, RTT_TRAM, OWNER_NONE);
+							OldSetRoadOwner(t, RTT_TRAM, OWNER_NONE);
 						}
 					} else {
 						if (GB(t.m5(), 3, 2) == 0) {
@@ -1883,8 +1885,8 @@ bool AfterLoadGame()
 				/* works for all RoadTileType */
 				for (RoadTramType rtt : _roadtramtypes) {
 					/* update even non-existing road types to update tile owner too */
-					Owner o = GetRoadOwner(t, rtt);
-					if (o < OLD_MAX_COMPANIES && !Company::IsValidID(o)) SetRoadOwner(t, rtt, OWNER_NONE);
+					Owner o = OldGetRoadOwner(t, rtt);
+					if (o < OLD_MAX_COMPANIES && !Company::IsValidID(o)) OldSetRoadOwner(t, rtt, OWNER_NONE);
 				}
 				if (IsLevelCrossing(t)) {
 					if (!Company::IsValidID(OldGetTileOwner(t))) FixOwnerOfRailTrack(t);
@@ -2411,7 +2413,6 @@ bool AfterLoadGame()
 		/* We need to properly number/name the depots.
 		 * The first step is making sure none of the depots uses the
 		 * 'default' names, after that we can assign the names. */
-		for (Depot *d : Depot::Iterate()) d->town_cn = UINT16_MAX;
 
 		for (Depot *d : Depot::Iterate()) MakeDefaultName(d);
 	}
@@ -2846,8 +2847,8 @@ bool AfterLoadGame()
 		for (auto t : Map::Iterate()) {
 			if (!IsBayRoadStopTile(t)) continue;
 			Owner o = OldGetTileOwner(t);
-			SetRoadOwner(t, RTT_ROAD, o);
-			SetRoadOwner(t, RTT_TRAM, o);
+			OldSetRoadOwner(t, RTT_ROAD, o);
+			OldSetRoadOwner(t, RTT_TRAM, o);
 		}
 	}
 
@@ -3268,10 +3269,22 @@ bool AfterLoadGame()
 	}
 	if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
 		for (auto t : Map::Iterate()) {
-			if (IsValidTile(t)
-				&& !IsTileType(t, MP_HOUSE)
+			//SB(t.m9(), 0, COMPANY_SIZE_BITS, OWNER_NONE);
+			if (!IsValidTile(t)) {
+				continue;
+			}
+			if (!IsTileType(t, MP_HOUSE)
 				&& !IsTileType(t, MP_INDUSTRY)) {
-				SetTileOwner(t, OldGetTileOwner(t));
+				Owner o =OldGetTileOwner(t) ;
+				o = ParseOldOwner(o);
+				SetTileOwner(t, o);
+			}
+			if (MayHaveRoad(t)) {
+				for (RoadTramType rtt : _roadtramtypes) {
+					Owner o = OldGetRoadOwner(t, rtt);
+					o = ParseOldOwner(o);
+					SetRoadOwner(t, rtt, o);
+				}
 			}
 		}
 	}

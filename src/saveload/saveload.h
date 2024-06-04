@@ -1314,7 +1314,8 @@ void SlCopy(void *object, size_t length, VarType conv);
 std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt);
 std::vector<SaveLoad> SlCompatTableHeader(const SaveLoadTable &slt, const SaveLoadCompatTable &slct);
 void SlObject(void *object, const SaveLoadTable &slt);
-CompanyMask owner_from_int(uint16_t old_owner);
+CompanyMask ParseOldCompMask(uint16_t old_owner);
+Owner ParseOldOwner(Owner old);
 
 bool SaveloadCrashWithMissingNewGRFs();
 

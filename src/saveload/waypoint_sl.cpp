@@ -16,6 +16,7 @@
 #include "../newgrf.h"
 #include "../timer/timer_game_calendar.h"
 
+#include "saveload/saveload.h"
 #include "table/strings.h"
 
 #include "saveload_internal.h"
@@ -200,6 +201,9 @@ struct CHKPChunkHandler : ChunkHandler {
 
 			wp->index = index;
 			SlObject(wp, _old_waypoint_desc);
+			if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
+				wp->owner = ParseOldOwner(wp->owner);
+			}
 		}
 	}
 

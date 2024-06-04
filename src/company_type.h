@@ -41,6 +41,8 @@ enum Owner : uint8_t {
 	COMPANY_NEW_COMPANY     = 0xF8, ///< The client wants a new company
 	COMPANY_SPECTATOR       = 0xF9, ///< The client is spectating
 };
+
+
 const uint8_t COMPANY_SIZE_BITS = 8; /// Size of the company id in bits
 
 static_assert(COMPANY_SIZE_BITS <= 10); /// 32bit m9 can only fit 3 owners of size 10

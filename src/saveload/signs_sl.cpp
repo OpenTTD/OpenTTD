@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 
+#include "company_type.h"
 #include "saveload.h"
 #include "compat/signs_sl_compat.h"
 
@@ -64,6 +65,9 @@ struct SIGNChunkHandler : ChunkHandler {
 			/* Signs placed in scenario editor shall now be OWNER_DEITY */
 			if (IsSavegameVersionBefore(SLV_171) && si->owner == OLD_OWNER_NONE && _file_to_saveload.abstract_ftype == FT_SCENARIO) {
 				si->owner = OWNER_DEITY;
+			}
+			if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
+				si->owner = ParseOldOwner(si->owner);
 			}
 		}
 	}

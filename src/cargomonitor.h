@@ -25,9 +25,9 @@ struct Station;
  * - bits 0-15 town or industry number
  * - bit 16 is set if it is an industry number (else it is a town number).
  * - bits 19-23 Cargo type.
- * - bits 24-COMPANY_BIT_SIZE %Company number.
+ * - bits 24 - 24 + COMPANY_BIT_SIZE %Company number.
  */
-typedef uint64_t CargoMonitorID; ///< Type of the cargo monitor number.
+typedef uint32_t CargoMonitorID; ///< Type of the cargo monitor number.
 
 /** Map type for storing and updating active cargo monitor numbers and their amounts. */
 typedef std::map<CargoMonitorID, OverflowSafeInt64> CargoMonitorMap;
@@ -49,7 +49,7 @@ enum CargoCompanyBits {
 };
 
 
-static_assert(CCB_COMPANY_LENGTH <= (1 << 30)); // This should never be a limiting factor
+static_assert(CCB_COMPANY_LENGTH <= (1 << 8));
 static_assert(NUM_CARGO     <= (1 << CCB_CARGO_TYPE_LENGTH));
 static_assert(MAX_COMPANIES <= (1 << CCB_COMPANY_LENGTH));
 

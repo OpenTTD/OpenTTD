@@ -502,6 +502,9 @@ struct STNSChunkHandler : ChunkHandler {
 
 			_waiting_acceptance = 0;
 			SlObject(st, slt);
+			if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
+				st->owner = ParseOldOwner(st->owner);
+			}
 		}
 	}
 

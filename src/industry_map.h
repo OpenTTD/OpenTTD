@@ -10,7 +10,9 @@
 #ifndef INDUSTRY_MAP_H
 #define INDUSTRY_MAP_H
 
+#include "company_type.h"
 #include "industrytype.h"
+#include "tile_map.h"
 #include "water_map.h"
 
 
@@ -100,7 +102,7 @@ inline void SetIndustryCompleted(Tile tile)
 inline uint8_t GetIndustryConstructionStage(Tile tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
-	return IsIndustryCompleted(tile) ? (uint8_t)INDUSTRY_COMPLETED : GB(tile.m1(), 0, 2);
+	return IsIndustryCompleted(tile) ? (uint8_t)INDUSTRY_COMPLETED : GB(tile.m1(), 0, 2); // MYTODO: Figure this out, seams like it would read bits of the owner
 }
 
 /**
@@ -286,6 +288,8 @@ inline void MakeIndustry(Tile t, IndustryID index, IndustryGfx gfx, uint8_t rand
 	SetIndustryTriggers(t, 0); // rest of m6
 	SetWaterClass(t, wc);
 	t.m7() = 0;
+	t.m8() = 0;
+	t.m9() = 0;
 }
 
 #endif /* INDUSTRY_MAP_H */

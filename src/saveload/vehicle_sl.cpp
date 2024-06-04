@@ -405,6 +405,11 @@ void AfterLoadVehicles(bool part_of_load)
 				v->economy_age = v->age.base();
 			}
 		}
+		if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
+			for (Vehicle *v : Vehicle::Iterate()) {
+				v->owner = ParseOldOwner(v->owner);
+			}
+		}
 	}
 
 	CheckValidVehicles();
