@@ -3575,8 +3575,17 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 		for (uint i = 0; i != lengthof(_town_action_costs); i++) {
 			const TownActions cur = (TownActions)(1 << i);
 
-			/* Is the company not able to bribe ? */
-			if (cur == TACT_BRIBE && (!_settings_game.economy.bribe || t->ratings[cid] >= RATING_BRIBE_MAXIMUM)) continue;
+			/* Is the company prohibited from bribing ? */
+			if (cur == TACT_BRIBE) {
+				/* Company can't bribe if setting is disabled */
+				if (!_settings_game.economy.bribe) continue;
+				/* Company can bribe if another company has exclusive transport rights,
+				 * or its standing with the town is less than outstanding. */
+				if (t->ratings[cid] >= RATING_BRIBE_MAXIMUM) {
+					if (t->exclusivity == _current_company) continue;
+					if (t->exclusive_counter == 0) continue;
+				}
+			}
 
 			/* Is the company not able to buy exclusive rights ? */
 			if (cur == TACT_BUY_RIGHTS && (!_settings_game.economy.exclusive_rights || t->exclusive_counter != 0)) continue;
