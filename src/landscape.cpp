@@ -30,6 +30,7 @@
 #include "core/random_func.hpp"
 #include "object_base.h"
 #include "company_func.h"
+#include "company_gui.h"
 #include "pathfinder/aystar.h"
 #include "saveload/saveload.h"
 #include "framerate_type.h"
@@ -680,7 +681,16 @@ CommandCost CmdLandscapeClear(DoCommandFlag flags, TileIndex tile)
 
 	if (flags & DC_EXEC) {
 		if (c != nullptr) c->clear_limit -= 1 << 16;
-		if (do_clear) DoClearSquare(tile);
+		if (do_clear) {
+			if (IsWaterTile(tile) && IsCanal(tile)) {
+				Owner owner = GetTileOwner(tile);
+				if (Company::IsValidID(owner)) {
+					Company::Get(owner)->infrastructure.water--;
+					DirtyCompanyInfrastructureWindows(owner);
+				}
+			}
+			DoClearSquare(tile);
+		}
 	}
 	return cost;
 }
