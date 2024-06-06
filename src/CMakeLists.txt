@@ -307,6 +307,7 @@ add_files(
     newgrf_storage.h
     newgrf_text.cpp
     newgrf_text.h
+    newgrf_text_type.h
     newgrf_town.cpp
     newgrf_town.h
     newgrf_townname.cpp
