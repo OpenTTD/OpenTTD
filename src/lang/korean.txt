@@ -1499,7 +1499,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :달력
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :벽시계
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :1년의 길이: {STRING}{ORANGE}분
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :달력의 1년을 몇 분으로 할 지 선택합니다. 기본값은 12분입니다. 달력 시간이 변하는 것을 막으려면 0으로 설정하세요. 이 설정은 게임의 경제 시뮬레이션에는 영향을 미치지 않고, 벽시계 시간 설정을 사용할 때만 이용 가능합니다
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :달력의 1년을 몇 분으로 할 지 선택합니다. 기본값은 12분입니다. 달력 시간이 변하는 것을 막으려면 0으로 설정하세요. 1년의 길이를 늘리면 차량, 주택 및 기타 기반 시설 도입이 느려집니다. 인플레이션을 제외하고 차량 속력이나 경제 시뮬레이션에는 영향을 미치지 않습니다. 이 설정은 벽시계 시간 모드를 사용할 때만 사용할 수 있습니다
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
