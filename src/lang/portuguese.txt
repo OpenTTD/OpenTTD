@@ -311,8 +311,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}Confirmar
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :\1234567890'« qwertyuiop+´asdfghjklçº~<zxcvbnm,.-
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :|!"#$%&/()=?» QWERTYUIOP*`ASDFGHJKLÇª^>ZXCVBNM;:_
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :¬!"£$%^&*()_+ QWERTYUIOP{{}}ASDFGHJKL:@~|ZXCVBNM<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Tamanho: {NUM}

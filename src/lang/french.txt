@@ -1499,7 +1499,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendrier
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Pendule
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutes par année{NBSP}: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Sélectionner le nombre de minutes dans une année calendaire. La valeur par défaut est 12 minutes.Régler sur 0 pour arrêter la progression du calendrier. Ce paramètre n'affecte pas la simulation économique du jeu, et il n'est disponible qu'en utilisant le mode "pendule"
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Sélectionner le nombre de minutes dans une année calendaire. La valeur par défaut est 12 minutes. Régler sur 0 pour arrêter la progression du calendrier. Augmenter cette valeur ralentit la mise à disposition de véhicules, maisons, et autres infrastructures. Cela n'affecte ni la vitesse des véhicules, ni la simulation économique, excepté l'inflation. Ce paramètre n'est disponible qu'en utilisant le mode "pendule".
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special

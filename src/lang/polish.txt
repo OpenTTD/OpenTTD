@@ -689,7 +689,7 @@ STR_BUTTON_CANCEL                                               :{BLACK}Anuluj
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;' zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
@@ -816,6 +816,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Opuść edytor 
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Wyjście
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Tworzenie miast
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Stawianie budynków
 
 # Settings menu
 ###length 16
@@ -1000,7 +1002,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Wyłącz wszystko
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Wyświetl wszystkie ładunki na wykresie stawek za ładunek
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ukryj wszystkie ładunki na wykresie stawek za ładunek
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Przełącznik wykresu ładunku wł./wył.
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Przełącz ukrywanie/wyświetlanie wykresu danego typu ładunku
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Pokaż szczegóły oceny wydajności
@@ -1876,7 +1878,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalendarz
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Tarcza zegara
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuty na rok: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Wybierz liczbę minut trwania jednego roku kalendarzowego. Domyślnie jest to 12 minut. Ustaw na 0, aby wstrzymać zmianę daty kalendarza. To ustawienie nie ma wpływu na symulację ekonomiczną gry i jest dostępne tylko w przypadku korzystania z zegarowej miary czasu
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Wybierz liczbę minut trwania jednego roku kalendarzowego. Domyślnie jest to 12 minut. Ustaw na 0, aby wstrzymać zmianę daty kalendarza. Zwiększenie długości roku kalendarzowego opóźnia wprowadzanie pojazdów, budynków i innej infrastruktury. Nie wpływa to na prędkość pojazdów, ani symulację ekonomii, z wyjątkiem inflacji. To ustawienie jest dostępne tylko w przypadku korzystania z zegarowej miary czasu
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -3178,9 +3180,32 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Wybierz 
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Przeciągnij i upuść
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Buduj stację używając „przeciągnij i upuść”
 
+STR_PICKER_MODE_ALL                                             :Wszystkie
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Przełącz wyświetlanie elementów ze wszystkich klas
+STR_PICKER_MODE_USED                                            :Użyte
+STR_PICKER_MODE_USED_TOOLTIP                                    :Przełącz wyświetlanie tylko już istniejących elementów
+STR_PICKER_MODE_SAVED                                           :Zapisane
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Przełącz wyświetlanie tylko zapisanych elementów
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Wybierz klasę stacji do wyświetlenia
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wybierz typ stacji do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Wybierz klasę posterunku do wyświetlenia
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Wybierz typ posterunku do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Wybierz klasę przystanku do wyświetlenia
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Wybierz typ przystanku do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Wybierz klasę stacji ciężarówek do wyświetlenia
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Wybierz typ stacji ciężarówek do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Wybierz klasę obiektu do wyświetlenia
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Wybierz typ obiektu do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wybierz strefę miasta do wyświetlenia
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Wybierz typ budynku do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
 
+STR_HOUSE_PICKER_CAPTION                                        :Wybór Budynków
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Obrzeża
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Peryferia
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Przedmieścia zewnętrzne
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Przedmieścia wewnętrzne
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrum miasta
 
 STR_STATION_CLASS_DFLT                                          :Standardowa
@@ -3350,7 +3375,7 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umieść
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Wyznacz obszar pustyni.{}Użyj Ctrl, aby usunąć obszar pustyni
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Zwiększ powierzchnie do podwyższenia/obniżenia
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmniejsz powierzchnie do podwyższenia/obniżenia
-STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Tworzenie przypadkowego lądu
+STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Wygeneruj losowy teren
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Stwórz nowy scenariusz
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Resetuj krajobraz
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Usuń całą własność firmy z mapy
@@ -3359,7 +3384,7 @@ STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Resetuj 
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Czy na pewno chcesz usunąć całą własność firmy?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Tworzenie miast
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Tworzenie Miast
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nowe miasto
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Zbuduj nowe miasto. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Losowe miasto
@@ -5375,6 +5400,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nie 
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trwają roboty drogowe
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nie można usunąć tego miasta...{}Stacja lub zajezdnia przynależy do tego miasta lub obszar miasta nie może być usunięty
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... w centrum tego miasta nie ma odpowiedniego miejsca na pomnik
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Nie można postawić budynku...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... zbyt wiele przedsiębiorstw
@@ -5412,6 +5438,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nie moż
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Przylega do więcej niż jednej stacji
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacja zbyt rozległa
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... nieobsługiwana liczba torów
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... nieobsługiwana długość
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Za dużo stacji
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Za dużo części stacji kolejowej
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Zbyt wiele przystanków autobusowych
