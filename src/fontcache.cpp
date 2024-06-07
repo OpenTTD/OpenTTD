@@ -55,6 +55,11 @@ int FontCache::GetDefaultFontHeight(FontSize fs)
 	return _default_font_height[fs];
 }
 
+void FontCache::SetFontSize([[maybe_unused]] int pixels)
+{
+	Debug(fontcache, 0, "Font {} isn't resizable.", this->GetFontName());
+}
+
 /**
  * Get the font name of a given font size.
  * @param fs The font size to look up.
