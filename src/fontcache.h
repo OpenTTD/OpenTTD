@@ -65,6 +65,8 @@ public:
 	 */
 	virtual int GetFontSize() const { return this->height; }
 
+	virtual void SetFontSize([[maybe_unused]] int pixels);
+
 	/**
 	 * Map a SpriteID to the key
 	 * @param key The key to map to.
