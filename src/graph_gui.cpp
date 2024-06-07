@@ -1402,7 +1402,9 @@ struct PerformanceRatingDetailWindow : Window {
 		}
 
 		/* Make sure the widget is lowered */
-		this->LowerWidget(WID_PRD_COMPANY_FIRST + this->company);
+		if (this->company != INVALID_COMPANY) {
+			this->LowerWidget(WID_PRD_COMPANY_FIRST + this->company);
+		}
 	}
 };
 
