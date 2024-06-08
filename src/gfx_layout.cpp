@@ -388,7 +388,7 @@ Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(std::string_view str
 	LineCacheKey key;
 	key.state_before = state;
 	key.str.assign(str);
-	return (*linecache)[key];
+	return (*linecache)[std::move(key)];
 }
 
 /**
