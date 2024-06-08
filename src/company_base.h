@@ -92,6 +92,7 @@ struct CompanyProperties {
 	TileIndex last_build_coordinate; ///< Coordinate of the last build thing by this company.
 
 	TimerGameEconomy::Year inaugurated_year; ///< Economy year of starting the company.
+    TimerGameCalendar::Year inaugurated_year_calendar; ///< Calendar year of starting the company. Used for when we need to display an actual Inaguration Year while in Wallclock mode.
 
 	uint8_t months_empty = 0; ///< NOSAVE: Number of months this company has not had a client in multiplayer.
 	uint8_t months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
@@ -125,7 +126,7 @@ struct CompanyProperties {
 		: name_2(0), name_1(0), president_name_1(0), president_name_2(0),
 		  face(0), money(0), money_fraction(0), current_loan(0), max_loan(COMPANY_MAX_LOAN_DEFAULT),
 		  colour(COLOUR_BEGIN), block_preview(0), location_of_HQ(0), last_build_coordinate(0), inaugurated_year(0),
-		  months_of_bankruptcy(0), bankrupt_asked(0), bankrupt_timeout(0), bankrupt_value(0),
+		  inaugurated_year_calendar(0), months_of_bankruptcy(0), bankrupt_asked(0), bankrupt_timeout(0), bankrupt_value(0),
 		  terraform_limit(0), clear_limit(0), tree_limit(0), build_object_limit(0), is_ai(false), engine_renew_list(nullptr) {}
 };
 

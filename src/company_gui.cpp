@@ -2401,8 +2401,8 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_DESC_INAUGURATION:
-				SetDParam(0, Company::Get((CompanyID)this->window_number)->inaugurated_year);
-				break;
+                SetDParam(0, Company::Get((CompanyID) this->window_number)->inaugurated_year_calendar);
+                break;
 
 			case WID_C_DESC_COMPANY_VALUE:
 				SetDParam(0, CalculateCompanyValue(Company::Get((CompanyID)this->window_number)));
