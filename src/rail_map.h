@@ -552,9 +552,7 @@ inline void SetRailDepotExitDirection(Tile tile, DiagDirection dir)
  */
 inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RailType rail_type)
 {
-	SetTileType(tile, MP_RAILWAY);
-	SetTileOwner(tile, owner);
-	SetDockingTile(tile, false);
+	tile.m1() = 0;
 	tile.m2() = depot_id;
 	tile.m3() = 0;
 	tile.m4() = 0;
@@ -563,6 +561,9 @@ inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 	tile.m7() = 0;
 	tile.m8() = rail_type;
 	tile.m9() = 0;
+	SetTileType(tile, MP_RAILWAY);
+	SetDockingTile(tile, false);
+	SetTileOwner(tile, owner);
 }
 
 #endif /* RAIL_MAP_H */
