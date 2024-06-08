@@ -57,7 +57,7 @@ uint8_t _trees_tick_ctr;
 static const uint16_t DEFAULT_TREE_STEPS = 1000;             ///< Default number of attempts for placing trees.
 static const uint16_t DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number of attempts for placing extra trees at rainforest in tropic.
 static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tree generation divisor factor.
-static const uint16_t IMPROVED_TREES_DIV = 9;               ///< Improved generation divisor factor for solitary trees.
+static const uint16_t IMPROVED_TREES_SOLITARY_DIV = 9;               ///< Improved generation divisor factor for solitary trees.
 
 /**
  * Tests if a tile can be converted to MP_TREES
@@ -261,7 +261,7 @@ void PlaceTreesRandomly()
 	i = Map::ScaleBySize(DEFAULT_TREE_STEPS);
 	if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
 	/* Place a limited amount of solitary trees when using improved tree placement. */
-	if (_settings_game.game_creation.tree_placer == TP_IMPROVED) i /= IMPROVED_TREES_DIV;
+	if (_settings_game.game_creation.tree_placer == TP_IMPROVED) i /= IMPROVED_TREES_SOLITARY_DIV;
 	do {
 		uint32_t r = Random();
 		TileIndex tile = RandomTileSeed(r);
