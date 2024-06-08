@@ -130,8 +130,8 @@ void Packet::Send_uint8(uint8_t data)
 void Packet::Send_uint16(uint16_t data)
 {
 	assert(this->CanWriteToPacket(sizeof(data)));
-	this->buffer.emplace_back(GB(data, 0, 8));
-	this->buffer.emplace_back(GB(data, 8, 8));
+	this->buffer.emplace_back(static_cast<uint8_t>(GB(data, 0, 8)));
+	this->buffer.emplace_back(static_cast<uint8_t>(GB(data, 8, 8)));
 }
 
 /**
