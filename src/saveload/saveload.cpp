@@ -126,21 +126,9 @@ struct ReadBuffer {
 
 /** Container for dumping the savegame (quickly) to memory. */
 struct MemoryDumper {
-	std::vector<uint8_t *> blocks; ///< Buffer with blocks of allocated memory.
-	uint8_t *buf;                  ///< Buffer we're going to write to.
-	uint8_t *bufe;                 ///< End of the buffer we write to.
-
-	/** Initialise our variables. */
-	MemoryDumper() : buf(nullptr), bufe(nullptr)
-	{
-	}
-
-	~MemoryDumper()
-	{
-		for (auto p : this->blocks) {
-			free(p);
-		}
-	}
+	std::vector<std::unique_ptr<uint8_t[]>> blocks{}; ///< Buffer with blocks of allocated memory.
+	uint8_t *buf = nullptr; ///< Buffer we're going to write to.
+	uint8_t *bufe = nullptr; ///< End of the buffer we write to.
 
 	/**
 	 * Write a single byte into the dumper.
@@ -150,8 +138,7 @@ struct MemoryDumper {
 	{
 		/* Are we at the end of this chunk? */
 		if (this->buf == this->bufe) {
-			this->buf = CallocT<uint8_t>(MEMORY_CHUNK_SIZE);
-			this->blocks.push_back(this->buf);
+			this->buf = this->blocks.emplace_back(std::make_unique<uint8_t[]>(MEMORY_CHUNK_SIZE)).get();
 			this->bufe = this->buf + MEMORY_CHUNK_SIZE;
 		}
 
@@ -170,7 +157,7 @@ struct MemoryDumper {
 		while (t > 0) {
 			size_t to_write = std::min(MEMORY_CHUNK_SIZE, t);
 
-			writer->Write(this->blocks[i++], to_write);
+			writer->Write(this->blocks[i++].get(), to_write);
 			t -= to_write;
 		}
 
