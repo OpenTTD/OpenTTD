@@ -1452,6 +1452,10 @@ static void CreateRivers()
  */
 static uint CalculateCoverageLine(uint coverage, uint edge_multiplier)
 {
+	/* We can take a shortcut at the extremes of the coverage. */
+	if (coverage == 0) return MAX_TILE_HEIGHT;
+	if (coverage == 100) return 0;
+
 	const DiagDirection neighbour_dir[] = {
 		DIAGDIR_NE,
 		DIAGDIR_SE,
