@@ -647,7 +647,7 @@ STR_UNITS_PERIODS                                               :{NUM}{NBSP}okre
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtr:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Wpisz jedno lub więcej słów kluczowych, aby przefiltrować listę
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Wpisz jedno lub więcej słów, aby przefiltrować listę
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wpisz jedno lub więcej słów kluczowych, aby przefiltrować listę
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Wybierz kolejność grupowania
@@ -690,7 +690,7 @@ STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;' zxcvbnm,./ .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:" ZXCVBNM<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Długość: {NUM}
@@ -1009,7 +1009,7 @@ STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Pokaż s
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legenda do wykresów firm
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Kliknij tutaj aby wł./wył. wyświetlanie danych firmy na wykresie
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Kliknij tutaj, aby przełączyć wyświetlanie wykresu firmy
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Ranking firm
@@ -3120,7 +3120,7 @@ STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} 
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Średni czas podróży: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
-STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Podświetlaj zasięg
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Podświetlanie zasięgu
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Wył.
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Wł.
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Nie podświetlaj zasięgu projektowanej stacji
@@ -3173,8 +3173,8 @@ STR_WAYPOINT_CAPTION                                            :{WHITE}Posterun
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Wybór stacji
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Ukierunkowanie
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Wybierz ukierunkowanie stacji
-STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Ilość peronów
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Wybierz ilość peronów na stacji
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Liczba peronów
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Wybierz liczbę peronów stacji
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Długość peronu
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Wybierz długość stacji
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Przeciągnij i upuść
@@ -3643,12 +3643,12 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Zapisz s
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Wczytaj scenariusz
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Wczytaj mapę wysokości
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Zapisz mapę wysokości
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknij tutaj aby przejść do domyślnego katalogu
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknij tutaj, aby przejść do domyślnego katalogu zapisów
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} wolnego miejsca
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista napędów, katalogów i zapisanych gier
-STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Obecnie zaznaczona nazwa dla zapisanej gry
+STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Obecnie wybrana nazwa dla zapisywanej gry
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Usuń
-STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Skasuj zaznaczoną zapisaną grę
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Usuń zaznaczony zapis gry
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Zapisz
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Zapisz bieżącą grę używając wybranej nazwy
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Wczytaj
@@ -3664,7 +3664,7 @@ STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Czy na 
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (folder)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (folder nadrzędny)
 
-STR_SAVELOAD_OSKTITLE                                           :{BLACK}Wprowadź nazwę pod jaką zapisać grę
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Wprowadź nazwę dla zapisywanej gry
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Tworzenie świata
@@ -4627,9 +4627,9 @@ STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Pokaż l
 
 ###length VEHICLE_TYPES
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Kliknij, aby zatrzymać wszystkie pociągi w hali warsztatów
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Kliknij aby zatrzymać wszystkie pojazdy w zajezdni
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Kliknij aby zatrzymać wszystkie statki w stoczni
-STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Kliknij aby zatrzymać wszystkie samoloty w hangarze
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Kliknij, aby zatrzymać wszystkie pojazdy w zajezdni
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Kliknij, aby zatrzymać wszystkie statki w stoczni
+STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Kliknij, aby zatrzymać wszystkie samoloty w hangarze
 
 ###length VEHICLE_TYPES
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Kliknij, aby uruchomić wszystkie pociągi z warsztatów
