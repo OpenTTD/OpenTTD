@@ -1436,7 +1436,7 @@ static void CreateRivers()
 /**
  * Calculate what height would be needed to cover N% of the landmass.
  *
- * The function allows both snow and desert/tropic line to be calculated. It
+ * The function allows snow, alpine tree line, and desert/tropic line to be calculated. It
  * tries to find the closests height which covers N% of the landmass; it can
  * be below or above it.
  *
@@ -1534,6 +1534,14 @@ static void CalculateSnowLine()
 {
 	/* We do not have snow sprites on coastal tiles, so never allow "1" as height. */
 	_settings_game.game_creation.snow_line_height = std::max(CalculateCoverageLine(_settings_game.game_creation.snow_coverage, 0), 2u);
+}
+
+/**
+ * Calculate the elevation line from which trees do not grow.
+ */
+void CalculateTreeLine()
+{
+	_settings_game.game_creation.tree_line_height = CalculateCoverageLine(_settings_game.game_creation.alpine_coverage, 0);
 }
 
 /**
@@ -1635,6 +1643,7 @@ bool GenerateLandscape(uint8_t mode)
 	switch (_settings_game.game_creation.landscape) {
 		case LT_ARCTIC:
 			CalculateSnowLine();
+			CalculateTreeLine();
 			break;
 
 		case LT_TROPIC: {

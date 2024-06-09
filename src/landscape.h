@@ -32,6 +32,7 @@ uint8_t GetSnowLine();
 uint8_t HighestSnowLine();
 uint8_t LowestSnowLine();
 void ClearSnowLine();
+void CalculateTreeLine();
 
 int GetSlopeZInCorner(Slope tileh, Corner corner);
 std::tuple<Slope, int> GetFoundationSlope(TileIndex tile);

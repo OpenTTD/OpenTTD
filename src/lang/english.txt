@@ -1567,6 +1567,10 @@ STR_CONFIG_SETTING_SNOW_COVERAGE                                :Snow coverage: 
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Choose the approximate amount of snow on the sub-arctic landscape. Snow also affects industry generation and town growth requirements. Only used during map generation. Sea level and coast tiles never have snow
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
+STR_CONFIG_SETTING_ALPINE_COVERAGE                              :Alpine coverage: {STRING2}
+STR_CONFIG_SETTING_ALPINE_COVERAGE_HELPTEXT                     :Choose the approximate amount of alpine terrain on the sub-arctic landscape. Alpine terrain is above the elevation where trees grow
+STR_CONFIG_SETTING_ALPINE_COVERAGE_VALUE                        :{NUM}%
+
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Desert coverage: {STRING2}
 STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Choose the approximate amount of desert on the tropical landscape. Desert also affects industry generation and town growth requirements. Only used during map generation
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
@@ -5184,6 +5188,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Can't bu
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... tree already here
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... wrong terrain for tree type
+STR_ERROR_TREE_ABOVE_TREELINE                                   :{WHITE}... can't plant trees above alpine tree line
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Can't plant tree here...
 
 # Bridge related errors

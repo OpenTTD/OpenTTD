@@ -346,6 +346,8 @@ struct GameCreationSettings {
 	uint8_t oil_refinery_limit;               ///< distance oil refineries allowed from map edge
 	uint8_t snow_line_height;                 ///< the configured snow line height (deduced from "snow_coverage")
 	uint8_t snow_coverage;                    ///< the amount of snow coverage on the map
+	uint8_t tree_line_height;                 ///< the configured tree line height (deduced from "alpine_coverage")
+	uint8_t alpine_coverage;                  ///< the amount of alpine land on the map (no trees at high elevations)
 	uint8_t desert_coverage;                  ///< the amount of desert coverage on the map
 	uint8_t heightmap_height;                 ///< highest mountain for heightmap (towards what it scales)
 	uint8_t tgen_smoothness;                  ///< how rough is the terrain from 0-3
