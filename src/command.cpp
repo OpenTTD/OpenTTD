@@ -58,6 +58,7 @@
 #include "waypoint_cmd.h"
 #include "misc/endian_buffer.hpp"
 #include "string_func.h"
+#include "clone_area_cmd.h"
 
 #include "table/strings.h"
 

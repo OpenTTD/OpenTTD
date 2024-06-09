@@ -41,6 +41,7 @@
 #include "../story_cmd.h"
 #include "../subsidy_cmd.h"
 #include "../terraform_cmd.h"
+#include "../clone_area_cmd.h"
 #include "../timetable_cmd.h"
 #include "../town_cmd.h"
 #include "../train_cmd.h"
@@ -74,6 +75,7 @@ static constexpr auto _callback_tuple = std::make_tuple(
 	&CcPlaySound_CONSTRUCTION_RAIL,
 	&CcStation,
 	&CcTerraform,
+	&CcCloneArea,
 	&CcAI,
 	&CcCloneVehicle,
 	&CcCreateGroup,
