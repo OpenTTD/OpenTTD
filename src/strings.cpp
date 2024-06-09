@@ -1904,7 +1904,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 {
 	/* Current language pack */
 	size_t len = 0;
-	std::unique_ptr<LanguagePack, LanguagePackDeleter> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(lang->file.string(), len, 1U << 20).release()));
+	std::unique_ptr<LanguagePack, LanguagePackDeleter> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(FS2OTTD(lang->file), len, 1U << 20).release()));
 	if (!lang_pack) return false;
 
 	/* End of read data (+ terminating zero added in ReadFileToMem()) */
@@ -1953,7 +1953,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 
 	_current_language = lang;
 	_current_text_dir = (TextDirection)_current_language->text_dir;
-	_config_language_file = _current_language->file.filename().string();
+	_config_language_file = FS2OTTD(_current_language->file.filename());
 	SetCurrentGrfLangID(_current_language->newgrflangid);
 
 #ifdef _WIN32
@@ -2079,13 +2079,13 @@ static void FillLanguageList(const std::string &path)
 		if (dir_entry.path().extension() != ".lng") continue;
 
 		LanguageMetadata lmd;
-		lmd.file = FS2OTTD(dir_entry.path());
+		lmd.file = dir_entry.path();
 
 		/* Check whether the file is of the correct version */
-		if (!GetLanguageFileHeader(lmd.file.string(), &lmd)) {
-			Debug(misc, 3, "{} is not a valid language file", lmd.file);
+		if (!GetLanguageFileHeader(FS2OTTD(lmd.file), &lmd)) {
+			Debug(misc, 3, "{} is not a valid language file", FS2OTTD(lmd.file));
 		} else if (GetLanguage(lmd.newgrflangid) != nullptr) {
-			Debug(misc, 3, "{}'s language ID is already known", lmd.file);
+			Debug(misc, 3, "{}'s language ID is already known", FS2OTTD(lmd.file));
 		} else {
 			_languages.push_back(lmd);
 		}
@@ -2119,7 +2119,7 @@ void InitializeLanguagePacks()
 		/* We are trying to find a default language. The priority is by
 		 * configuration file, local environment and last, if nothing found,
 		 * English. */
-		if (_config_language_file == lng.file.filename()) {
+		if (_config_language_file == FS2OTTD(lng.file.filename())) {
 			chosen_language = &lng;
 			break;
 		}
@@ -2139,7 +2139,7 @@ void InitializeLanguagePacks()
 		chosen_language = (language_fallback != nullptr) ? language_fallback : en_GB_fallback;
 	}
 
-	if (!ReadLanguagePack(chosen_language)) UserError("Can't read language pack '{}'", chosen_language->file);
+	if (!ReadLanguagePack(chosen_language)) UserError("Can't read language pack '{}'", FS2OTTD(chosen_language->file));
 }
 
 /**
