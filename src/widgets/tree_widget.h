@@ -18,6 +18,11 @@ enum BuildTreesWidgets : WidgetID {
 	WID_BT_MODE_FOREST_SM,  ///< Select small forest planting mode.
 	WID_BT_MODE_FOREST_LG,  ///< Select large forest planting mode.
 	WID_BT_MANY_RANDOM,     ///< Button to build many random trees.
+	WID_BT_TREELINE_PANE,   ///< Selection pane to show/hide the tree line height, only shown in subarctic climate.
+	WID_BT_TREELINE_LABEL,  ///< Label for the tree line title.
+	WID_BT_TREELINE_VALUE,  ///< Label for the tree line value.
+	WID_BT_TREELINE_DECREASE, ///< Button to decrease the tree line height.
+	WID_BT_TREELINE_INCREASE, ///< Button to increase the tree line height.
 	WID_BT_TYPE_BUTTON_FIRST, ///< First tree type selection button. (This must be last in the enum.)
 };
 

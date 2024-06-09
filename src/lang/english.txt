@@ -2979,11 +2979,12 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Size: {G
 STR_OBJECT_CLASS_LTHS                                           :Lighthouses
 STR_OBJECT_CLASS_TRNS                                           :Transmitters
 
-# Tree planting window (last eight for SE only)
+# Tree planting window (in-game and Scenario Editor)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Trees
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Select tree type to plant. If the tile already has a tree, this will add more trees of mixed types independent of the selected type
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Trees of random type
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Place trees of random type. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
+# Tree planting window (Scenario Editor only)
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Random Trees
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plant trees randomly throughout the landscape
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
@@ -2992,6 +2993,10 @@ STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Grove
 STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plant small forests by dragging over the landscape
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Forest
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plant large forests by dragging over the landscape
+STR_BUILD_TREES_TREELINE_LABEL                                  :{BLACK}Tree line height:
+STR_BUILD_TREES_TREELINE_TOOLTIP                                :{BLACK}Choose the tree line height. Above this level, trees will not grow
+STR_BUILD_TREES_TREELINE_DECREASE_TOOLTIP                       :{BLACK}Decrease the tree line height
+STR_BUILD_TREES_TREELINE_INCREASE_TOOLTIP                       :{BLACK}Increase the tree line height
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land Generation

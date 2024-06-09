@@ -149,6 +149,12 @@ public:
 		if (_game_mode != GM_EDITOR) {
 			this->GetWidget<NWidgetStacked>(WID_BT_SE_PANE)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		}
+
+		/* Only show tree line in subarctic climate. */
+		if (_settings_game.game_creation.landscape != LT_ARCTIC) {
+			this->GetWidget<NWidgetStacked>(WID_BT_TREELINE_PANE)->SetDisplayedPlane(SZSP_HORIZONTAL);
+		}
+
 		this->FinishInitNested(window_number);
 	}
 
@@ -159,6 +165,15 @@ public:
 			Dimension d = GetMaxTreeSpriteSize();
 			size.width = d.width + padding.width;
 			size.height = d.height + padding.height + ScaleGUITrad(BUTTON_BOTTOM_OFFSET); // we need some more space
+		}
+	}
+
+	void SetStringParameters(WidgetID widget) const override
+	{
+		switch (widget) {
+			case WID_BT_TREELINE_VALUE:
+				SetDParam(0, _settings_game.game_creation.tree_line_height);
+				break;
 		}
 	}
 
@@ -200,6 +215,18 @@ public:
 				assert(_game_mode == GM_EDITOR);
 				this->mode = PM_FOREST_LG;
 				this->UpdateMode();
+				break;
+
+			case WID_BT_TREELINE_DECREASE:
+				assert(_game_mode == GM_EDITOR);
+				_settings_game.game_creation.tree_line_height = Clamp(_settings_game.game_creation.tree_line_height - 1, 0, 100);
+				this->InvalidateData();
+				break;
+
+			case WID_BT_TREELINE_INCREASE:
+				assert(_game_mode == GM_EDITOR);
+				_settings_game.game_creation.tree_line_height = Clamp(_settings_game.game_creation.tree_line_height + 1, 0, 100);
+				this->InvalidateData();
 				break;
 
 			default:
@@ -304,6 +331,16 @@ static constexpr NWidgetPart _nested_build_trees_widgets[] = {
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_MODE_FOREST_LG), SetFill(1, 0), SetDataTip(STR_TREES_MODE_FOREST_LG_BUTTON, STR_TREES_MODE_FOREST_LG_TOOLTIP),
 					EndContainer(),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BT_MANY_RANDOM), SetDataTip(STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP),
+					NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BT_TREELINE_PANE),
+						NWidget(NWID_HORIZONTAL), SetPadding(2), SetPIP(0, 1, 0),
+							NWidget(WWT_LABEL, COLOUR_DARK_GREEN, WID_BT_TREELINE_LABEL), SetDataTip(STR_BUILD_TREES_TREELINE_LABEL, STR_BUILD_TREES_TREELINE_TOOLTIP), SetFill(1, 1),
+							NWidget(WWT_LABEL, COLOUR_DARK_GREEN, WID_BT_TREELINE_VALUE), SetDataTip(STR_JUST_INT, STR_BUILD_TREES_TREELINE_TOOLTIP), SetTextStyle(TC_ORANGE), SetFill(1, 1),
+							NWidget(NWID_HORIZONTAL),
+								NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_BT_TREELINE_DECREASE), SetMinimalSize(9, 12), SetDataTip(AWV_DECREASE, STR_BUILD_TREES_TREELINE_DECREASE_TOOLTIP),
+								NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_BT_TREELINE_INCREASE), SetMinimalSize(9, 12), SetDataTip(AWV_INCREASE, STR_BUILD_TREES_TREELINE_INCREASE_TOOLTIP),
+							EndContainer(),
+						EndContainer(),
+					EndContainer(),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
