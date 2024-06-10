@@ -311,8 +311,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :¬!"£$%^&*()_+ QWERTYUIOP{{}}ASDFGHJKL:@~|ZXCVBNM<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Lonxitude: {NUM}
@@ -1499,7 +1499,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendario
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Reloxo
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutos por ano: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Selecciona o número de minutos dun ano do calendario. Por defecto son 12 minutos. Fíxao en 0 para para conxelar o calendario. Este axuste non afecta a simulación da economía do xogo, e só está dispoñible cando se usa o modo reloxo de cronometraxe
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Selecciona o número de minutos dun ano do calendario. Por defecto son 12 minutos. Fíxao en 0 para para conxelar o calendario. Increemntar a duración do ano do calendario ralentiza a introdución de vehículos, casas e outra infraestrutura. Non afecta a velocidade dos vehículos ou a simulación económica excepto pola inflación. Este axuste só está dispoñible cando se usa o modo reloxo de cronometraxe
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special

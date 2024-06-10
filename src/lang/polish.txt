@@ -647,7 +647,7 @@ STR_UNITS_PERIODS                                               :{NUM}{NBSP}okre
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtr:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Wpisz jedno lub więcej słów, aby przefiltrować listę
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Wpisz słowa kluczowe, aby przefiltrować listę
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wpisz jedno lub więcej słów kluczowych, aby przefiltrować listę
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Wybierz kolejność grupowania
@@ -689,8 +689,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}Anuluj
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;' zxcvbnm,./ .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:" ZXCVBNM<>? .
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>?
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Długość: {NUM}
@@ -2052,8 +2052,8 @@ STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klawiatura ekra
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Wybierz metodę włączania klawiatury ekranowej do wprowadzania tekstu do pól tekstowych używając tylko urządzenia wskazującego. Jest to dedykowane dla małych urządzeń bez klawiatury
 ###length 4
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Wyłączone
-STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Podwójny klik
-STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Pojedyncze kliknięcie (w przybliżeniu)
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Podwójne kliknięcie
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Pojedyncze kliknięcie (po odczekaniu chwili)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Pojedyncze kliknięcie (natychmiast)
 
 STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Używanie usługi przekaźnika: {STRING}
