@@ -2797,6 +2797,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vælg l�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Træk & slip
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Byg en station vha. træk & slip
 
+STR_PICKER_MODE_ALL                                             :Alle
 
 
 
