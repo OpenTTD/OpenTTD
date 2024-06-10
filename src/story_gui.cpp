@@ -590,7 +590,7 @@ protected:
 	}
 
 public:
-	StoryBookWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	StoryBookWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SB_SCROLLBAR);
@@ -1052,6 +1052,6 @@ void ShowStoryBook(CompanyID company, uint16_t page_id, bool centered)
 {
 	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
 
-	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow>(centered ? &_story_book_gs_desc : &_story_book_desc, company, true);
+	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow>(centered ? _story_book_gs_desc : _story_book_desc, company, true);
 	if (page_id != INVALID_STORY_PAGE) w->SetSelectedPage(page_id);
 }

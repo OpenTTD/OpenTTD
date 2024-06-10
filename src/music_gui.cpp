@@ -477,7 +477,7 @@ void InitializeMusic()
 
 
 struct MusicTrackSelectionWindow : public Window {
-	MusicTrackSelectionWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
+	MusicTrackSelectionWindow(WindowDesc &desc, WindowNumber number) : Window(desc)
 	{
 		this->InitNested(number);
 		this->LowerWidget(WID_MTS_LIST_LEFT);
@@ -676,11 +676,11 @@ static WindowDesc _music_track_selection_desc(
 
 static void ShowMusicTrackSelection()
 {
-	AllocateWindowDescFront<MusicTrackSelectionWindow>(&_music_track_selection_desc, 0);
+	AllocateWindowDescFront<MusicTrackSelectionWindow>(_music_track_selection_desc, 0);
 }
 
 struct MusicWindow : public Window {
-	MusicWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
+	MusicWindow(WindowDesc &desc, WindowNumber number) : Window(desc)
 	{
 		this->InitNested(number);
 		this->LowerWidget(_settings_client.music.playlist + WID_M_ALL);
@@ -935,5 +935,5 @@ static WindowDesc _music_window_desc(
 
 void ShowMusicWindow()
 {
-	AllocateWindowDescFront<MusicWindow>(&_music_window_desc, 0);
+	AllocateWindowDescFront<MusicWindow>(_music_window_desc, 0);
 }

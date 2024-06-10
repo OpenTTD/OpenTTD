@@ -28,7 +28,7 @@ uint8_t _display_opt; ///< What do we want to draw/do?
 class TransparenciesWindow : public Window
 {
 public:
-	TransparenciesWindow(WindowDesc *desc, int window_number) : Window(desc)
+	TransparenciesWindow(WindowDesc &desc, int window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
 	}
@@ -160,5 +160,5 @@ static WindowDesc _transparency_desc(
  */
 void ShowTransparencyToolbar()
 {
-	AllocateWindowDescFront<TransparenciesWindow>(&_transparency_desc, 0);
+	AllocateWindowDescFront<TransparenciesWindow>(_transparency_desc, 0);
 }

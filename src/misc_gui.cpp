@@ -110,7 +110,7 @@ public:
 		}
 	}
 
-	LandInfoWindow(Tile tile) : Window(&_land_info_desc), tile(tile)
+	LandInfoWindow(Tile tile) : Window(_land_info_desc), tile(tile)
 	{
 		this->InitNested();
 
@@ -477,7 +477,7 @@ struct AboutWindow : public Window {
 	int line_height;                         ///< The height of a single line
 	static const int num_visible_lines = 19; ///< The number of lines visible simultaneously
 
-	AboutWindow() : Window(&_about_desc)
+	AboutWindow() : Window(_about_desc)
 	{
 		this->InitNested(WN_GAME_OPTIONS_ABOUT);
 
@@ -671,7 +671,7 @@ struct TooltipsWindow : public Window
 	std::vector<StringParameterBackup> params; ///< The string parameters.
 	TooltipCloseCondition close_cond; ///< Condition for closing the window.
 
-	TooltipsWindow(Window *parent, StringID str, uint paramcount, TooltipCloseCondition close_tooltip) : Window(&_tool_tips_desc)
+	TooltipsWindow(Window *parent, StringID str, uint paramcount, TooltipCloseCondition close_tooltip) : Window(_tool_tips_desc)
 	{
 		this->parent = parent;
 		this->string_id = str;
@@ -971,7 +971,7 @@ struct QueryStringWindow : public Window
 	QueryString editbox;    ///< Editbox.
 	QueryStringFlags flags; ///< Flags controlling behaviour of the window.
 
-	QueryStringWindow(StringID str, StringID caption, uint max_bytes, uint max_chars, WindowDesc *desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
+	QueryStringWindow(StringID str, StringID caption, uint max_bytes, uint max_chars, WindowDesc &desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
 			Window(desc), editbox(max_bytes, max_chars)
 	{
 		this->editbox.text.Assign(str);
@@ -1081,7 +1081,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxsize, Window *paren
 	assert(parent != nullptr);
 
 	CloseWindowByClass(WC_QUERY_STRING);
-	new QueryStringWindow(str, caption, ((flags & QSF_LEN_IN_CHARS) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, &_query_string_desc, parent, afilter, flags);
+	new QueryStringWindow(str, caption, ((flags & QSF_LEN_IN_CHARS) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, _query_string_desc, parent, afilter, flags);
 }
 
 /**
@@ -1092,7 +1092,7 @@ struct QueryWindow : public Window {
 	std::vector<StringParameterBackup> params; ///< local copy of #_global_string_params
 	StringID message;        ///< message shown for query window
 
-	QueryWindow(WindowDesc *desc, StringID caption, StringID message, Window *parent, QueryCallbackProc *callback) : Window(desc)
+	QueryWindow(WindowDesc &desc, StringID caption, StringID message, Window *parent, QueryCallbackProc *callback) : Window(desc)
 	{
 		/* Create a backup of the variadic arguments to strings because it will be
 		 * overridden pretty often. We will copy these back for drawing */
@@ -1234,6 +1234,6 @@ void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallback
 		break;
 	}
 
-	QueryWindow *q = new QueryWindow(&_query_desc, caption, message, parent, callback);
+	QueryWindow *q = new QueryWindow(_query_desc, caption, message, parent, callback);
 	if (focus) SetFocusedWindow(q);
 }

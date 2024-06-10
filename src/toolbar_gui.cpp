@@ -1955,7 +1955,7 @@ static ToolbarButtonProc * const _toolbar_button_procs[] = {
 
 /** Main toolbar. */
 struct MainToolbarWindow : Window {
-	MainToolbarWindow(WindowDesc *desc) : Window(desc)
+	MainToolbarWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->InitNested(0);
 
@@ -2296,7 +2296,7 @@ enum MainToolbarEditorHotkeys {
 };
 
 struct ScenarioEditorToolbarWindow : Window {
-	ScenarioEditorToolbarWindow(WindowDesc *desc) : Window(desc)
+	ScenarioEditorToolbarWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->InitNested(0);
 
@@ -2562,8 +2562,8 @@ void AllocateToolbar()
 	_last_built_tramtype = ROADTYPE_TRAM;
 
 	if (_game_mode == GM_EDITOR) {
-		new ScenarioEditorToolbarWindow(&_toolb_scen_desc);
+		new ScenarioEditorToolbarWindow(_toolb_scen_desc);
 	} else {
-		new MainToolbarWindow(&_toolb_normal_desc);
+		new MainToolbarWindow(_toolb_normal_desc);
 	}
 }

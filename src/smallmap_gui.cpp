@@ -1400,7 +1400,7 @@ protected:
 public:
 	friend class NWidgetSmallmapDisplay;
 
-	SmallMapWindow(WindowDesc *desc, int window_number) : Window(desc)
+	SmallMapWindow(WindowDesc &desc, int window_number) : Window(desc)
 	{
 		_smallmap_industry_highlight = INVALID_INDUSTRYTYPE;
 		this->overlay = std::make_unique<LinkGraphOverlay>(this, WID_SM_MAP, 0, this->GetOverlayCompanyMask(), 1);
@@ -1994,7 +1994,7 @@ static WindowDesc _smallmap_desc(
  */
 void ShowSmallMap()
 {
-	AllocateWindowDescFront<SmallMapWindow>(&_smallmap_desc, 0);
+	AllocateWindowDescFront<SmallMapWindow>(_smallmap_desc, 0);
 }
 
 /**

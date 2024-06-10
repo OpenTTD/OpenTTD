@@ -290,7 +290,7 @@ protected:
 	virtual ~Window();
 
 public:
-	Window(WindowDesc *desc);
+	Window(WindowDesc &desc);
 
 	/**
 	 * Helper allocation function to disallow something.
@@ -300,7 +300,7 @@ public:
 	 */
 	inline void *operator new[](size_t size) = delete;
 
-	WindowDesc *window_desc;    ///< Window description
+	WindowDesc &window_desc;    ///< Window description
 	WindowFlags flags;          ///< Window flags
 	WindowClass window_class;   ///< Window class
 	WindowNumber window_number; ///< Window number within the window class
@@ -990,7 +990,7 @@ inline const NWID *Window::GetWidget(WidgetID widnum) const
 class PickerWindowBase : public Window {
 
 public:
-	PickerWindowBase(WindowDesc *desc, Window *parent) : Window(desc)
+	PickerWindowBase(WindowDesc &desc, Window *parent) : Window(desc)
 	{
 		this->parent = parent;
 	}
@@ -1016,9 +1016,9 @@ Window *BringWindowToFrontById(WindowClass cls, T number)
  * @return %Window pointer of the newly created window, or the existing one if \a return_existing is set, or \c nullptr.
  */
 template <typename Wcls>
-Wcls *AllocateWindowDescFront(WindowDesc *desc, int window_number, bool return_existing = false)
+Wcls *AllocateWindowDescFront(WindowDesc &desc, int window_number, bool return_existing = false)
 {
-	Wcls *w = static_cast<Wcls *>(BringWindowToFrontById(desc->cls, window_number));
+	Wcls *w = static_cast<Wcls *>(BringWindowToFrontById(desc.cls, window_number));
 	if (w != nullptr) return return_existing ? w : nullptr;
 	return new Wcls(desc, window_number);
 }

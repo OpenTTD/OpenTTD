@@ -430,7 +430,7 @@ protected:
 	}
 
 public:
-	NetworkGameWindow(WindowDesc *desc) : Window(desc), name_editbox(NETWORK_CLIENT_NAME_LENGTH), filter_editbox(120)
+	NetworkGameWindow(WindowDesc &desc) : Window(desc), name_editbox(NETWORK_CLIENT_NAME_LENGTH), filter_editbox(120)
 	{
 		this->list_pos = SLP_INVALID;
 		this->server = nullptr;
@@ -976,14 +976,14 @@ void ShowNetworkGameWindow()
 		}
 	}
 
-	new NetworkGameWindow(&_network_game_window_desc);
+	new NetworkGameWindow(_network_game_window_desc);
 }
 
 struct NetworkStartServerWindow : public Window {
 	WidgetID widget_id;          ///< The widget that has the pop-up input menu
 	QueryString name_editbox;    ///< Server name editbox.
 
-	NetworkStartServerWindow(WindowDesc *desc) : Window(desc), name_editbox(NETWORK_NAME_LENGTH)
+	NetworkStartServerWindow(WindowDesc &desc) : Window(desc), name_editbox(NETWORK_NAME_LENGTH)
 	{
 		this->InitNested(WN_NETWORK_WINDOW_START);
 
@@ -1235,7 +1235,7 @@ static void ShowNetworkStartServerWindow()
 
 	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 
-	new NetworkStartServerWindow(&_network_start_server_window_desc);
+	new NetworkStartServerWindow(_network_start_server_window_desc);
 }
 
 /* The window below gives information about the connected clients
@@ -1630,7 +1630,7 @@ private:
 	}
 
 public:
-	NetworkClientListWindow(WindowDesc *desc, WindowNumber window_number) :
+	NetworkClientListWindow(WindowDesc &desc, WindowNumber window_number) :
 			Window(desc),
 			hover_index(-1),
 			player_self_index(-1),
@@ -2066,7 +2066,7 @@ public:
 
 void ShowClientList()
 {
-	AllocateWindowDescFront<NetworkClientListWindow>(&_client_list_desc, 0);
+	AllocateWindowDescFront<NetworkClientListWindow>(_client_list_desc, 0);
 }
 
 NetworkJoinStatus _network_join_status; ///< The status of joining.
@@ -2077,7 +2077,7 @@ uint32_t _network_join_bytes_total;       ///< The total number of bytes to down
 struct NetworkJoinStatusWindow : Window {
 	std::shared_ptr<NetworkAuthenticationPasswordRequest> request;
 
-	NetworkJoinStatusWindow(WindowDesc *desc) : Window(desc)
+	NetworkJoinStatusWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->parent = FindWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 		this->InitNested(WN_NETWORK_STATUS_WINDOW_JOIN);
@@ -2201,7 +2201,7 @@ static WindowDesc _network_join_status_window_desc(
 void ShowJoinStatusWindow()
 {
 	CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
-	new NetworkJoinStatusWindow(&_network_join_status_window_desc);
+	new NetworkJoinStatusWindow(_network_join_status_window_desc);
 }
 
 void ShowNetworkNeedPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request)
@@ -2221,7 +2221,7 @@ struct NetworkAskRelayWindow : public Window {
 	std::string relay_connection_string;  ///< The relay server we want to connect to.
 	std::string token;                    ///< The token for this connection.
 
-	NetworkAskRelayWindow(WindowDesc *desc, Window *parent, const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token) :
+	NetworkAskRelayWindow(WindowDesc &desc, Window *parent, const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token) :
 		Window(desc),
 		server_connection_string(server_connection_string),
 		relay_connection_string(relay_connection_string),
@@ -2326,14 +2326,14 @@ void ShowNetworkAskRelay(const std::string &server_connection_string, const std:
 	CloseWindowByClass(WC_NETWORK_ASK_RELAY, NRWCD_HANDLED);
 
 	Window *parent = GetMainWindow();
-	new NetworkAskRelayWindow(&_network_ask_relay_desc, parent, server_connection_string, relay_connection_string, token);
+	new NetworkAskRelayWindow(_network_ask_relay_desc, parent, server_connection_string, relay_connection_string, token);
 }
 
 /**
  * Window used for asking if the user wants to participate in the automated survey.
  */
 struct NetworkAskSurveyWindow : public Window {
-	NetworkAskSurveyWindow(WindowDesc *desc, Window *parent) :
+	NetworkAskSurveyWindow(WindowDesc &desc, Window *parent) :
 		Window(desc)
 	{
 		this->parent = parent;
@@ -2424,7 +2424,7 @@ void ShowNetworkAskSurvey()
 	CloseWindowByClass(WC_NETWORK_ASK_SURVEY);
 
 	Window *parent = GetMainWindow();
-	new NetworkAskSurveyWindow(&_network_ask_survey_desc, parent);
+	new NetworkAskSurveyWindow(_network_ask_survey_desc, parent);
 }
 
 /** Window for displaying the textfile of a survey result. */

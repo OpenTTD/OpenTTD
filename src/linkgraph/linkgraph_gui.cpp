@@ -548,10 +548,10 @@ static WindowDesc _linkgraph_legend_desc(
  */
 void ShowLinkGraphLegend()
 {
-	AllocateWindowDescFront<LinkGraphLegendWindow>(&_linkgraph_legend_desc, 0);
+	AllocateWindowDescFront<LinkGraphLegendWindow>(_linkgraph_legend_desc, 0);
 }
 
-LinkGraphLegendWindow::LinkGraphLegendWindow(WindowDesc *desc, int window_number) : Window(desc)
+LinkGraphLegendWindow::LinkGraphLegendWindow(WindowDesc &desc, int window_number) : Window(desc)
 {
 	this->num_cargo = _sorted_cargo_specs.size();
 

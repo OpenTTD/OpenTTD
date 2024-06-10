@@ -436,7 +436,7 @@ struct BuildRailToolbarWindow : Window {
 	RailType railtype;    ///< Rail type to build.
 	int last_user_action; ///< Last started user action.
 
-	BuildRailToolbarWindow(WindowDesc *desc, RailType railtype) : Window(desc)
+	BuildRailToolbarWindow(WindowDesc &desc, RailType railtype) : Window(desc)
 	{
 		this->InitNested(TRANSPORT_RAIL);
 		this->SetupRailToolbar(railtype);
@@ -922,7 +922,7 @@ Window *ShowBuildRailToolbar(RailType railtype)
 	CloseWindowByClass(WC_BUILD_TOOLBAR);
 	_cur_railtype = railtype;
 	_remove_button_clicked = false;
-	return new BuildRailToolbarWindow(&_build_rail_desc, railtype);
+	return new BuildRailToolbarWindow(_build_rail_desc, railtype);
 }
 
 /* TODO: For custom stations, respect their allowed platforms/lengths bitmasks!
@@ -1076,7 +1076,7 @@ private:
 	}
 
 public:
-	BuildRailStationWindow(WindowDesc *desc, Window *parent) : PickerWindow(desc, parent, TRANSPORT_RAIL, StationPickerCallbacks::instance)
+	BuildRailStationWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, TRANSPORT_RAIL, StationPickerCallbacks::instance)
 	{
 		this->coverage_height = 2 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 		this->ConstructWindow();
@@ -1437,7 +1437,7 @@ static WindowDesc _station_builder_desc(
 /** Open station build window */
 static Window *ShowStationBuilder(Window *parent)
 {
-	return new BuildRailStationWindow(&_station_builder_desc, parent);
+	return new BuildRailStationWindow(_station_builder_desc, parent);
 }
 
 struct BuildSignalWindow : public PickerWindowBase {
@@ -1471,7 +1471,7 @@ private:
 	}
 
 public:
-	BuildSignalWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	BuildSignalWindow(WindowDesc &desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->CreateNestedTree();
 		this->SetSignalUIMode();
@@ -1694,11 +1694,11 @@ static WindowDesc _signal_builder_desc(
  */
 static void ShowSignalBuilder(Window *parent)
 {
-	new BuildSignalWindow(&_signal_builder_desc, parent);
+	new BuildSignalWindow(_signal_builder_desc, parent);
 }
 
 struct BuildRailDepotWindow : public PickerWindowBase {
-	BuildRailDepotWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	BuildRailDepotWindow(WindowDesc &desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->InitNested(TRANSPORT_RAIL);
 		this->LowerWidget(WID_BRAD_DEPOT_NE + _build_depot_direction);
@@ -1772,7 +1772,7 @@ static WindowDesc _build_depot_desc(
 
 static void ShowBuildTrainDepotPicker(Window *parent)
 {
-	new BuildRailDepotWindow(&_build_depot_desc, parent);
+	new BuildRailDepotWindow(_build_depot_desc, parent);
 }
 
 class WaypointPickerCallbacks : public PickerCallbacksNewGRFClass<StationClass> {
@@ -1849,7 +1849,7 @@ public:
 /* static */ WaypointPickerCallbacks WaypointPickerCallbacks::instance;
 
 struct BuildRailWaypointWindow : public PickerWindow {
-	BuildRailWaypointWindow(WindowDesc *desc, Window *parent) : PickerWindow(desc, parent, TRANSPORT_RAIL, WaypointPickerCallbacks::instance)
+	BuildRailWaypointWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, TRANSPORT_RAIL, WaypointPickerCallbacks::instance)
 	{
 		this->ConstructWindow();
 		this->InvalidateData();
@@ -1885,7 +1885,7 @@ static WindowDesc _build_waypoint_desc(
 static void ShowBuildWaypointPicker(Window *parent)
 {
 	if (!WaypointPickerCallbacks::instance.IsActive()) return;
-	new BuildRailWaypointWindow(&_build_waypoint_desc, parent);
+	new BuildRailWaypointWindow(_build_waypoint_desc, parent);
 }
 
 /**

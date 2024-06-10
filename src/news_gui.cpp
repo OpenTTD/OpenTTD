@@ -234,11 +234,11 @@ static WindowDesc *_news_window_layout[] = {
 	&_company_news_desc, ///< NF_COMPANY
 };
 
-WindowDesc *GetNewsWindowLayout(NewsFlag flags)
+WindowDesc &GetNewsWindowLayout(NewsFlag flags)
 {
 	uint layout = GB(flags, NFB_WINDOW_LAYOUT, NFB_WINDOW_LAYOUT_COUNT);
 	assert(layout < lengthof(_news_window_layout));
-	return _news_window_layout[layout];
+	return *_news_window_layout[layout];
 }
 
 /**
@@ -284,7 +284,7 @@ struct NewsWindow : Window {
 	const NewsItem *ni;   ///< News item to display.
 	static int duration;  ///< Remaining time for showing the current news message (may only be access while a news item is displayed).
 
-	NewsWindow(WindowDesc *desc, const NewsItem *ni) : Window(desc), ni(ni)
+	NewsWindow(WindowDesc &desc, const NewsItem *ni) : Window(desc), ni(ni)
 	{
 		NewsWindow::duration = 16650;
 		const Window *w = FindWindowByClass(WC_SEND_NETWORK_MSG);
@@ -296,7 +296,7 @@ struct NewsWindow : Window {
 		this->CreateNestedTree();
 
 		/* For company news with a face we have a separate headline in param[0] */
-		if (desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = this->ni->params[0].data;
+		if (&desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = this->ni->params[0].data;
 
 		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP);
 		if (ni->reftype1 == NR_VEHICLE && nwid != nullptr) {
@@ -1103,7 +1103,7 @@ struct MessageHistoryWindow : Window {
 
 	Scrollbar *vscroll;
 
-	MessageHistoryWindow(WindowDesc *desc) : Window(desc)
+	MessageHistoryWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_MH_SCROLLBAR);
@@ -1208,5 +1208,5 @@ static WindowDesc _message_history_desc(
 void ShowMessageHistory()
 {
 	CloseWindowById(WC_MESSAGE_HISTORY, 0);
-	new MessageHistoryWindow(&_message_history_desc);
+	new MessageHistoryWindow(_message_history_desc);
 }

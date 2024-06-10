@@ -96,7 +96,7 @@ struct DropdownWindow : Window {
 	 * @param persist       Dropdown menu will persist.
 	 */
 	DropdownWindow(Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, bool instant_close, Colours wi_colour, bool persist)
-			: Window(&_dropdown_desc)
+			: Window(_dropdown_desc)
 			, parent_button(button)
 			, wi_rect(wi_rect)
 			, list(std::move(list))

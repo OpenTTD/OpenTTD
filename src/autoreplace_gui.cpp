@@ -263,7 +263,7 @@ class ReplaceVehicleWindow : public Window {
 	}
 
 public:
-	ReplaceVehicleWindow(WindowDesc *desc, VehicleType vehicletype, GroupID id_g) : Window(desc)
+	ReplaceVehicleWindow(WindowDesc &desc, VehicleType vehicletype, GroupID id_g) : Window(desc)
 	{
 		this->sel_railtype = INVALID_RAILTYPE;
 		this->sel_roadtype = INVALID_ROADTYPE;
@@ -889,11 +889,9 @@ static WindowDesc _replace_vehicle_desc(
 void ShowReplaceGroupVehicleWindow(GroupID id_g, VehicleType vehicletype)
 {
 	CloseWindowById(WC_REPLACE_VEHICLE, vehicletype);
-	WindowDesc *desc;
 	switch (vehicletype) {
-		case VEH_TRAIN: desc = &_replace_rail_vehicle_desc; break;
-		case VEH_ROAD:  desc = &_replace_road_vehicle_desc; break;
-		default:        desc = &_replace_vehicle_desc;      break;
+		case VEH_TRAIN: new ReplaceVehicleWindow(_replace_rail_vehicle_desc, vehicletype, id_g); break;
+		case VEH_ROAD:  new ReplaceVehicleWindow(_replace_road_vehicle_desc, vehicletype, id_g); break;
+		default:        new ReplaceVehicleWindow(_replace_vehicle_desc, vehicletype, id_g);      break;
 	}
-	new ReplaceVehicleWindow(desc, vehicletype, id_g);
 }

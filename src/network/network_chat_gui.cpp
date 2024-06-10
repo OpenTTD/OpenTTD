@@ -310,7 +310,7 @@ struct NetworkChatWindow : public Window {
 	 * @param type The type of destination.
 	 * @param dest The actual destination index.
 	 */
-	NetworkChatWindow(WindowDesc *desc, DestType type, int dest)
+	NetworkChatWindow(WindowDesc &desc, DestType type, int dest)
 			: Window(desc), message_editbox(NETWORK_CHAT_LENGTH), chat_tab_completion(&message_editbox.text)
 	{
 		this->dtype   = type;
@@ -445,5 +445,5 @@ static WindowDesc _chat_window_desc(
 void ShowNetworkChatQueryWindow(DestType type, int dest)
 {
 	CloseWindowByClass(WC_SEND_NETWORK_MSG);
-	new NetworkChatWindow(&_chat_window_desc, type, dest);
+	new NetworkChatWindow(_chat_window_desc, type, dest);
 }
