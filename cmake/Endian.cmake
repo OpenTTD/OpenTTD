@@ -14,7 +14,7 @@ function(add_endian_definition)
         endif()
 
     else()
-        if(CMAKE_CXX_BYTE_ORDER EQUAL BIG_ENDIAN)
+        if(CMAKE_CXX_BYTE_ORDER EQUAL BIG_ENDIAN OR CMAKE_OBJCXX_BYTE_ORDER EQUAL BIG_ENDIAN)
             add_definitions(-DTTD_ENDIAN=TTD_BIG_ENDIAN)
         else()
             add_definitions(-DTTD_ENDIAN=TTD_LITTLE_ENDIAN)
