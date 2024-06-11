@@ -176,7 +176,7 @@ struct SelectGameWindow : public Window {
 		}
 	}
 
-	SelectGameWindow(WindowDesc *desc) : Window(desc)
+	SelectGameWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->FinishInitNested(0);
@@ -465,7 +465,7 @@ static WindowDesc _select_game_desc(
 
 void ShowSelectGameWindow()
 {
-	new SelectGameWindow(&_select_game_desc);
+	new SelectGameWindow(_select_game_desc);
 }
 
 static void AskExitGameCallback(Window *, bool confirmed)

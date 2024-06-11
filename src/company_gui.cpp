@@ -336,7 +336,7 @@ struct CompanyFinancesWindow : Window {
 	static Money max_money; ///< The maximum amount of money a company has had this 'run'
 	bool small;             ///< Window is toggled to 'small'.
 
-	CompanyFinancesWindow(WindowDesc *desc, CompanyID company) : Window(desc)
+	CompanyFinancesWindow(WindowDesc &desc, CompanyID company) : Window(desc)
 	{
 		this->small = false;
 		this->CreateNestedTree();
@@ -548,7 +548,7 @@ void ShowCompanyFinances(CompanyID company)
 	if (!Company::IsValidID(company)) return;
 	if (BringWindowToFrontById(WC_FINANCES, company)) return;
 
-	new CompanyFinancesWindow(&_company_finances_desc, company);
+	new CompanyFinancesWindow(_company_finances_desc, company);
 }
 
 /* Association of liveries to livery classes */
@@ -670,7 +670,7 @@ private:
 	}
 
 public:
-	SelectCompanyLiveryWindow(WindowDesc *desc, CompanyID company, GroupID group) : Window(desc)
+	SelectCompanyLiveryWindow(WindowDesc &desc, CompanyID company, GroupID group) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SCL_MATRIX_SCROLLBAR);
@@ -1089,7 +1089,7 @@ void ShowCompanyLiveryWindow(CompanyID company, GroupID group)
 {
 	SelectCompanyLiveryWindow *w = (SelectCompanyLiveryWindow *)BringWindowToFrontById(WC_COMPANY_COLOUR, company);
 	if (w == nullptr) {
-		new SelectCompanyLiveryWindow(&_select_company_livery_desc, company, group);
+		new SelectCompanyLiveryWindow(_select_company_livery_desc, company, group);
 	} else if (group != INVALID_GROUP) {
 		w->SetSelectedGroup(company, group);
 	}
@@ -1349,7 +1349,7 @@ class SelectCompanyManagerFaceWindow : public Window
 	}
 
 public:
-	SelectCompanyManagerFaceWindow(WindowDesc *desc, Window *parent) : Window(desc)
+	SelectCompanyManagerFaceWindow(WindowDesc &desc, Window *parent) : Window(desc)
 	{
 		this->advanced = false;
 		this->CreateNestedTree();
@@ -1720,7 +1720,7 @@ static void DoSelectCompanyManagerFace(Window *parent)
 	if (!Company::IsValidID((CompanyID)parent->window_number)) return;
 
 	if (BringWindowToFrontById(WC_COMPANY_MANAGER_FACE, parent->window_number)) return;
-	new SelectCompanyManagerFaceWindow(&_select_company_manager_face_desc, parent);
+	new SelectCompanyManagerFaceWindow(_select_company_manager_face_desc, parent);
 }
 
 static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
@@ -1770,7 +1770,7 @@ struct CompanyInfrastructureWindow : Window
 
 	uint total_width; ///< String width of the total cost line.
 
-	CompanyInfrastructureWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	CompanyInfrastructureWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->UpdateRailRoadTypes();
 
@@ -2094,7 +2094,7 @@ static WindowDesc _company_infrastructure_desc(
 static void ShowCompanyInfrastructure(CompanyID company)
 {
 	if (!Company::IsValidID(company)) return;
-	AllocateWindowDescFront<CompanyInfrastructureWindow>(&_company_infrastructure_desc, company);
+	AllocateWindowDescFront<CompanyInfrastructureWindow>(_company_infrastructure_desc, company);
 }
 
 static constexpr NWidgetPart _nested_company_widgets[] = {
@@ -2196,7 +2196,7 @@ struct CompanyWindow : Window
 		CWP_RELOCATE_HIDE,     ///< Hide the relocate HQ button.
 	};
 
-	CompanyWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	CompanyWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
 		this->owner = (Owner)this->window_number;
@@ -2568,7 +2568,7 @@ void ShowCompany(CompanyID company)
 {
 	if (!Company::IsValidID(company)) return;
 
-	AllocateWindowDescFront<CompanyWindow>(&_company_desc, company);
+	AllocateWindowDescFront<CompanyWindow>(_company_desc, company);
 }
 
 /**
@@ -2582,7 +2582,7 @@ void DirtyCompanyInfrastructureWindows(CompanyID company)
 }
 
 struct BuyCompanyWindow : Window {
-	BuyCompanyWindow(WindowDesc *desc, WindowNumber window_number, bool hostile_takeover) : Window(desc), hostile_takeover(hostile_takeover)
+	BuyCompanyWindow(WindowDesc &desc, WindowNumber window_number, bool hostile_takeover) : Window(desc), hostile_takeover(hostile_takeover)
 	{
 		this->InitNested(window_number);
 
@@ -2703,6 +2703,6 @@ void ShowBuyCompanyDialog(CompanyID company, bool hostile_takeover)
 {
 	auto window = BringWindowToFrontById(WC_BUY_COMPANY, company);
 	if (window == nullptr) {
-		new BuyCompanyWindow(&_buy_company_desc, company, hostile_takeover);
+		new BuyCompanyWindow(_buy_company_desc, company, hostile_takeover);
 	}
 }

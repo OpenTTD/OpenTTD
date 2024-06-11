@@ -230,7 +230,7 @@ struct CheatWindow : Window {
 	uint line_height;
 	Dimension icon;     ///< Dimension of company icon sprite
 
-	CheatWindow(WindowDesc *desc) : Window(desc)
+	CheatWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->InitNested();
 	}
@@ -436,5 +436,5 @@ static WindowDesc _cheats_desc(
 void ShowCheatWindow()
 {
 	CloseWindowById(WC_CHEATS, 0);
-	new CheatWindow(&_cheats_desc);
+	new CheatWindow(_cheats_desc);
 }

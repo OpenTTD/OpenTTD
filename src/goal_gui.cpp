@@ -40,7 +40,7 @@ enum GoalColumn {
 struct GoalListWindow : public Window {
 	Scrollbar *vscroll; ///< Reference to the scrollbar widget.
 
-	GoalListWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	GoalListWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_GOAL_SCROLLBAR);
@@ -317,7 +317,7 @@ void ShowGoalsList(CompanyID company)
 {
 	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
 
-	AllocateWindowDescFront<GoalListWindow>(&_goals_list_desc, company);
+	AllocateWindowDescFront<GoalListWindow>(_goals_list_desc, company);
 }
 
 /** Ask a question about a goal. */
@@ -327,7 +327,7 @@ struct GoalQuestionWindow : public Window {
 	int button[3];        ///< Buttons to display.
 	TextColour colour;    ///< Colour of the question text.
 
-	GoalQuestionWindow(WindowDesc *desc, WindowNumber window_number, TextColour colour, uint32_t button_mask, const std::string &question) : Window(desc), colour(colour)
+	GoalQuestionWindow(WindowDesc &desc, WindowNumber window_number, TextColour colour, uint32_t button_mask, const std::string &question) : Window(desc), colour(colour)
 	{
 		this->question = question;
 
@@ -482,5 +482,5 @@ static WindowDesc _goal_question_list_desc[] = {
 void ShowGoalQuestion(uint16_t id, uint8_t type, uint32_t button_mask, const std::string &question)
 {
 	assert(type < GQT_END);
-	new GoalQuestionWindow(&_goal_question_list_desc[type], id, type == 3 ? TC_WHITE : TC_BLACK, button_mask, question);
+	new GoalQuestionWindow(_goal_question_list_desc[type], id, type == 3 ? TC_WHITE : TC_BLACK, button_mask, question);
 }

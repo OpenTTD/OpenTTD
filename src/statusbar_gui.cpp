@@ -63,7 +63,7 @@ struct StatusBarWindow : Window {
 	static const int COUNTER_STEP   =    2; ///< this is subtracted from active counters every tick
 	static constexpr auto REMINDER_START = std::chrono::milliseconds(1350); ///< time in ms for reminder notification (red dot on the right) to stay
 
-	StatusBarWindow(WindowDesc *desc) : Window(desc)
+	StatusBarWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->ticker_scroll = TICKER_STOP;
 
@@ -249,5 +249,5 @@ bool IsNewsTickerShown()
  */
 void ShowStatusBar()
 {
-	new StatusBarWindow(&_main_status_desc);
+	new StatusBarWindow(_main_status_desc);
 }

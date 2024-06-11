@@ -211,7 +211,7 @@ enum {
 
 struct MainWindow : Window
 {
-	MainWindow(WindowDesc *desc) : Window(desc)
+	MainWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->InitNested(0);
 		CLRBITS(this->flags, WF_WHITE_BORDER);
@@ -548,7 +548,7 @@ void SetupColoursAndInitialWindow()
 		}
 	}
 
-	new MainWindow(&_main_window_desc);
+	new MainWindow(_main_window_desc);
 
 	/* XXX: these are not done */
 	switch (_game_mode) {

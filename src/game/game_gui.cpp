@@ -96,7 +96,7 @@ struct GSConfigWindow : public Window {
 	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typdef for a vector of script settings
 	VisibleSettingsList visible_settings; ///< List of visible GS settings
 
-	GSConfigWindow() : Window(&_gs_config_desc),
+	GSConfigWindow() : Window(_gs_config_desc),
 		clicked_button(-1),
 		clicked_dropdown(false),
 		closing_dropdown(false)

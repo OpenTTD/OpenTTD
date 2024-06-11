@@ -114,7 +114,7 @@ class BuildObjectWindow : public PickerWindow {
 	int info_height; ///< The height of the info box.
 
 public:
-	BuildObjectWindow(WindowDesc *desc, WindowNumber) : PickerWindow(desc, nullptr, 0, ObjectPickerCallbacks::instance), info_height(1)
+	BuildObjectWindow(WindowDesc &desc, WindowNumber) : PickerWindow(desc, nullptr, 0, ObjectPickerCallbacks::instance), info_height(1)
 	{
 		ResetObjectToPlace();
 		this->ConstructWindow();
@@ -410,7 +410,7 @@ Window *ShowBuildObjectPicker()
 {
 	/* Don't show the place object button when there are no objects to place. */
 	if (ObjectPickerCallbacks::instance.IsActive()) {
-		return AllocateWindowDescFront<BuildObjectWindow>(&_build_object_desc, 0);
+		return AllocateWindowDescFront<BuildObjectWindow>(_build_object_desc, 0);
 	}
 	return nullptr;
 }

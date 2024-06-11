@@ -403,7 +403,7 @@ class BuildIndustryWindow : public Window {
 	}
 
 public:
-	BuildIndustryWindow() : Window(&_build_industry_desc)
+	BuildIndustryWindow() : Window(_build_industry_desc)
 	{
 		this->selected_type = INVALID_INDUSTRYTYPE;
 
@@ -812,7 +812,7 @@ class IndustryViewWindow : public Window
 	int cheat_line_height;    ///< Height of each line for the #WID_IV_INFO panel
 
 public:
-	IndustryViewWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	IndustryViewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->flags |= WF_DISABLE_VP_SCROLL;
 		this->editbox_line = IL_NONE;
@@ -1226,7 +1226,7 @@ static WindowDesc _industry_view_desc(
 
 void ShowIndustryViewWindow(int industry)
 {
-	AllocateWindowDescFront<IndustryViewWindow>(&_industry_view_desc, industry);
+	AllocateWindowDescFront<IndustryViewWindow>(_industry_view_desc, industry);
 }
 
 /** Widget definition of the industry directory gui */
@@ -1636,7 +1636,7 @@ protected:
 	}
 
 public:
-	IndustryDirectoryWindow(WindowDesc *desc, WindowNumber) : Window(desc), industry_editbox(MAX_FILTER_LENGTH * MAX_CHAR_LENGTH, MAX_FILTER_LENGTH)
+	IndustryDirectoryWindow(WindowDesc &desc, WindowNumber) : Window(desc), industry_editbox(MAX_FILTER_LENGTH * MAX_CHAR_LENGTH, MAX_FILTER_LENGTH)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_ID_VSCROLLBAR);
@@ -1925,7 +1925,7 @@ static WindowDesc _industry_directory_desc(
 
 void ShowIndustryDirectory()
 {
-	AllocateWindowDescFront<IndustryDirectoryWindow>(&_industry_directory_desc, 0);
+	AllocateWindowDescFront<IndustryDirectoryWindow>(_industry_directory_desc, 0);
 }
 
 /** Widgets of the industry cargoes window. */
@@ -2542,7 +2542,7 @@ struct IndustryCargoesWindow : public Window {
 	Dimension ind_textsize;   ///< Size to hold any industry type text, as well as STR_INDUSTRY_CARGOES_SELECT_INDUSTRY.
 	Scrollbar *vscroll;
 
-	IndustryCargoesWindow(int id) : Window(&_industry_cargoes_desc)
+	IndustryCargoesWindow(int id) : Window(_industry_cargoes_desc)
 	{
 		this->OnInit();
 		this->CreateNestedTree();

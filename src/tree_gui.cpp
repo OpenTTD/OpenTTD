@@ -139,7 +139,7 @@ class BuildTreesWindow : public Window
 	}
 
 public:
-	BuildTreesWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc), tree_to_plant(-1), mode(PM_NORMAL)
+	BuildTreesWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), tree_to_plant(-1), mode(PM_NORMAL)
 	{
 		this->CreateNestedTree();
 		ResetObjectToPlace();
@@ -320,5 +320,5 @@ static WindowDesc _build_trees_desc(
 void ShowBuildTreesToolbar()
 {
 	if (_game_mode != GM_EDITOR && !Company::IsValidID(_local_company)) return;
-	AllocateWindowDescFront<BuildTreesWindow>(&_build_trees_desc, 0);
+	AllocateWindowDescFront<BuildTreesWindow>(_build_trees_desc, 0);
 }

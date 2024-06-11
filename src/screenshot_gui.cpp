@@ -20,7 +20,7 @@
 #include "safeguards.h"
 
 struct ScreenshotWindow : Window {
-	ScreenshotWindow(WindowDesc *desc) : Window(desc)
+	ScreenshotWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->FinishInitNested();
@@ -74,7 +74,7 @@ static WindowDesc _screenshot_window_desc(
 void ShowScreenshotWindow()
 {
 	CloseWindowById(WC_SCREENSHOT, 0);
-	new ScreenshotWindow(&_screenshot_window_desc);
+	new ScreenshotWindow(_screenshot_window_desc);
 }
 
 /**

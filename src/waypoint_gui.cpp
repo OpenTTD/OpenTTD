@@ -54,7 +54,7 @@ public:
 	 * @param desc The description of the window.
 	 * @param window_number The window number, in this case the waypoint's ID.
 	 */
-	WaypointWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	WaypointWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->wp = Waypoint::Get(window_number);
 		this->vt = (wp->string_id == STR_SV_STNAME_WAYPOINT) ? VEH_TRAIN : VEH_SHIP;
@@ -196,5 +196,5 @@ static WindowDesc _waypoint_view_desc(
  */
 void ShowWaypointWindow(const Waypoint *wp)
 {
-	AllocateWindowDescFront<WaypointWindow>(&_waypoint_view_desc, wp->index);
+	AllocateWindowDescFront<WaypointWindow>(_waypoint_view_desc, wp->index);
 }

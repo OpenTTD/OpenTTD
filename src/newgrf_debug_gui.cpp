@@ -338,7 +338,7 @@ struct NewGRFInspectWindow : Window {
 		if (v == nullptr) this->chain_index = 0;
 	}
 
-	NewGRFInspectWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
+	NewGRFInspectWindow(WindowDesc &desc, WindowNumber wno) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NGRFI_SCROLLBAR);
@@ -697,7 +697,7 @@ void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index, const uint32_t 
 	if (!IsNewGRFInspectable(feature, index)) return;
 
 	WindowNumber wno = GetInspectWindowNumber(feature, index);
-	WindowDesc *desc = (feature == GSF_TRAINS || feature == GSF_ROADVEHICLES) ? &_newgrf_inspect_chain_desc : &_newgrf_inspect_desc;
+	WindowDesc &desc = (feature == GSF_TRAINS || feature == GSF_ROADVEHICLES) ? _newgrf_inspect_chain_desc : _newgrf_inspect_desc;
 	NewGRFInspectWindow *w = AllocateWindowDescFront<NewGRFInspectWindow>(desc, wno, true);
 	w->SetCallerGRFID(grfid);
 }
@@ -813,7 +813,7 @@ struct SpriteAlignerWindow : Window {
 	static bool crosshair;
 	const Action5Type *act5_type = nullptr; ///< Sprite Area of current selected sprite.
 
-	SpriteAlignerWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
+	SpriteAlignerWindow(WindowDesc &desc, WindowNumber wno) : Window(desc)
 	{
 		/* On first opening, set initial zoom to current zoom level. */
 		if (SpriteAlignerWindow::zoom == ZOOM_LVL_END) SpriteAlignerWindow::zoom = _gui_zoom;
@@ -1212,5 +1212,5 @@ static WindowDesc _sprite_aligner_desc(
  */
 void ShowSpriteAlignerWindow()
 {
-	AllocateWindowDescFront<SpriteAlignerWindow>(&_sprite_aligner_desc, 0);
+	AllocateWindowDescFront<SpriteAlignerWindow>(_sprite_aligner_desc, 0);
 }

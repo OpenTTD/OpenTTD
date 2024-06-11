@@ -82,7 +82,7 @@ static WindowDesc _textfile_desc(
 	std::begin(_nested_textfile_widgets), std::end(_nested_textfile_widgets)
 );
 
-TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc), file_type(file_type)
+TextfileWindow::TextfileWindow(TextfileType file_type) : Window(_textfile_desc), file_type(file_type)
 {
 	/* Init of nested tree is deferred.
 	 * TextfileWindow::ConstructWindow must be called by the inheriting window. */

@@ -156,7 +156,7 @@ struct NewGRFParametersWindow : public Window {
 	bool action14present;  ///< True if action14 information is present.
 	bool editable;         ///< Allow editing parameters.
 
-	NewGRFParametersWindow(WindowDesc *desc, bool is_baseset, GRFConfig *c, bool editable) : Window(desc),
+	NewGRFParametersWindow(WindowDesc &desc, bool is_baseset, GRFConfig *c, bool editable) : Window(desc),
 		grf_config(c),
 		clicked_button(INT32_MAX),
 		clicked_dropdown(false),
@@ -551,7 +551,7 @@ static WindowDesc _newgrf_parameters_desc(
 void OpenGRFParameterWindow(bool is_baseset, GRFConfig *c, bool editable)
 {
 	CloseWindowByClass(WC_GRF_PARAMETERS);
-	new NewGRFParametersWindow(&_newgrf_parameters_desc, is_baseset, c, editable);
+	new NewGRFParametersWindow(_newgrf_parameters_desc, is_baseset, c, editable);
 }
 
 /** Window for displaying the textfile of a NewGRF. */
@@ -634,7 +634,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	Scrollbar *vscroll;
 	Scrollbar *vscroll2;
 
-	NewGRFWindow(WindowDesc *desc, bool editable, bool show_params, bool execute, GRFConfig **orig_list) : Window(desc), filter_editbox(EDITBOX_MAX_SIZE)
+	NewGRFWindow(WindowDesc &desc, bool editable, bool show_params, bool execute, GRFConfig **orig_list) : Window(desc), filter_editbox(EDITBOX_MAX_SIZE)
 	{
 		this->avail_sel   = nullptr;
 		this->avail_pos   = -1;
@@ -2020,7 +2020,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config)
 {
 	CloseWindowByClass(WC_GAME_OPTIONS);
-	new NewGRFWindow(&_newgrf_desc, editable, show_params, exec_changes, config);
+	new NewGRFWindow(_newgrf_desc, editable, show_params, exec_changes, config);
 }
 
 /** Widget parts of the save preset window. */
@@ -2067,7 +2067,7 @@ struct SavePresetWindow : public Window {
 	 * Constructor of the save preset window.
 	 * @param initial_text Initial text to display in the edit box, or \c nullptr.
 	 */
-	SavePresetWindow(const char *initial_text) : Window(&_save_preset_desc), presetname_editbox(32)
+	SavePresetWindow(const char *initial_text) : Window(_save_preset_desc), presetname_editbox(32)
 	{
 		this->presets = GetGRFPresetList();
 		this->selected = -1;
@@ -2207,7 +2207,7 @@ struct ScanProgressWindow : public Window {
 	int scanned;           ///< The number of NewGRFs that we have seen.
 
 	/** Create the window. */
-	ScanProgressWindow() : Window(&_scan_progress_desc), scanned(0)
+	ScanProgressWindow() : Window(_scan_progress_desc), scanned(0)
 	{
 		this->InitNested(1);
 	}

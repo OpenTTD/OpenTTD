@@ -266,7 +266,7 @@ struct DepotWindow : Window {
 	Scrollbar *hscroll;     ///< Only for trains.
 	Scrollbar *vscroll;
 
-	DepotWindow(WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc)
+	DepotWindow(WindowDesc &desc, TileIndex tile, VehicleType type) : Window(desc)
 	{
 		assert(IsCompanyBuildableVehicleType(type)); // ensure that we make the call with a valid type
 
@@ -1142,16 +1142,13 @@ void ShowDepotWindow(TileIndex tile, VehicleType type)
 {
 	if (BringWindowToFrontById(WC_VEHICLE_DEPOT, tile) != nullptr) return;
 
-	WindowDesc *desc;
 	switch (type) {
 		default: NOT_REACHED();
-		case VEH_TRAIN:    desc = &_train_depot_desc;    break;
-		case VEH_ROAD:     desc = &_road_depot_desc;     break;
-		case VEH_SHIP:     desc = &_ship_depot_desc;     break;
-		case VEH_AIRCRAFT: desc = &_aircraft_depot_desc; break;
+		case VEH_TRAIN:    new DepotWindow(_train_depot_desc, tile, type);    break;
+		case VEH_ROAD:     new DepotWindow(_road_depot_desc, tile, type);     break;
+		case VEH_SHIP:     new DepotWindow(_ship_depot_desc, tile, type);     break;
+		case VEH_AIRCRAFT: new DepotWindow(_aircraft_depot_desc, tile, type); break;
 	}
-
-	new DepotWindow(desc, tile, type);
 }
 
 /**

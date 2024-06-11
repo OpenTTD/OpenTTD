@@ -162,7 +162,7 @@ const StringID BaseVehicleListWindow::vehicle_depot_name[] = {
 	STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR
 };
 
-BaseVehicleListWindow::BaseVehicleListWindow(WindowDesc *desc, WindowNumber wno) : Window(desc), vli(VehicleListIdentifier::UnPack(wno))
+BaseVehicleListWindow::BaseVehicleListWindow(WindowDesc &desc, WindowNumber wno) : Window(desc), vli(VehicleListIdentifier::UnPack(wno))
 {
 	this->vehicle_sel = INVALID_VEHICLE;
 	this->grouping = _grouping[vli.type][vli.vtype];
@@ -862,7 +862,7 @@ struct RefitWindow : public Window {
 		this->selected_refit = nullptr;
 	}
 
-	RefitWindow(WindowDesc *desc, const Vehicle *v, VehicleOrderID order, bool auto_refit) : Window(desc)
+	RefitWindow(WindowDesc &desc, const Vehicle *v, VehicleOrderID order, bool auto_refit) : Window(desc)
 	{
 		this->auto_refit = auto_refit;
 		this->order = order;
@@ -1293,7 +1293,7 @@ static WindowDesc _vehicle_refit_desc(
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent, bool auto_refit)
 {
 	CloseWindowById(WC_VEHICLE_REFIT, v->index);
-	RefitWindow *w = new RefitWindow(&_vehicle_refit_desc, v, order, auto_refit);
+	RefitWindow *w = new RefitWindow(_vehicle_refit_desc, v, order, auto_refit);
 	w->parent = parent;
 }
 
@@ -1871,7 +1871,7 @@ private:
 	};
 
 public:
-	VehicleListWindow(WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow(desc, window_number)
+	VehicleListWindow(WindowDesc &desc, WindowNumber window_number) : BaseVehicleListWindow(desc, window_number)
 	{
 		this->CreateNestedTree();
 
@@ -2236,10 +2236,10 @@ static void ShowVehicleListWindowLocal(CompanyID company, VehicleListType vlt, V
 
 	WindowNumber num = VehicleListIdentifier(vlt, vehicle_type, company, unique_number).Pack();
 	if (vehicle_type == VEH_TRAIN) {
-		AllocateWindowDescFront<VehicleListWindow>(&_vehicle_list_train_desc, num);
+		AllocateWindowDescFront<VehicleListWindow>(_vehicle_list_train_desc, num);
 	} else {
 		_vehicle_list_other_desc.cls = GetWindowClassForVehicleType(vehicle_type);
-		AllocateWindowDescFront<VehicleListWindow>(&_vehicle_list_other_desc, num);
+		AllocateWindowDescFront<VehicleListWindow>(_vehicle_list_other_desc, num);
 	}
 }
 
@@ -2371,7 +2371,7 @@ struct VehicleDetailsWindow : Window {
 	Scrollbar *vscroll;
 
 	/** Initialize a newly created vehicle details window */
-	VehicleDetailsWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	VehicleDetailsWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		const Vehicle *v = Vehicle::Get(window_number);
 
@@ -2795,7 +2795,7 @@ static void ShowVehicleDetailsWindow(const Vehicle *v)
 {
 	CloseWindowById(WC_VEHICLE_ORDERS, v->index, false);
 	CloseWindowById(WC_VEHICLE_TIMETABLE, v->index, false);
-	AllocateWindowDescFront<VehicleDetailsWindow>((v->type == VEH_TRAIN) ? &_train_vehicle_details_desc : &_nontrain_vehicle_details_desc, v->index);
+	AllocateWindowDescFront<VehicleDetailsWindow>((v->type == VEH_TRAIN) ? _train_vehicle_details_desc : _nontrain_vehicle_details_desc, v->index);
 }
 
 
@@ -2972,7 +2972,7 @@ private:
 	}
 
 public:
-	VehicleViewWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	VehicleViewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->flags |= WF_DISABLE_VP_SCROLL;
 		this->CreateNestedTree();
@@ -3405,7 +3405,7 @@ static WindowDesc _train_view_desc(
 /** Shows the vehicle view window of the given vehicle. */
 void ShowVehicleViewWindow(const Vehicle *v)
 {
-	AllocateWindowDescFront<VehicleViewWindow>((v->type == VEH_TRAIN) ? &_train_view_desc : &_vehicle_view_desc, v->index);
+	AllocateWindowDescFront<VehicleViewWindow>((v->type == VEH_TRAIN) ? _train_view_desc : _vehicle_view_desc, v->index);
 }
 
 /**

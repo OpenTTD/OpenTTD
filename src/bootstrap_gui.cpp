@@ -50,7 +50,7 @@ static WindowDesc _background_desc(
 /** The background for the game. */
 class BootstrapBackground : public Window {
 public:
-	BootstrapBackground() : Window(&_background_desc)
+	BootstrapBackground() : Window(_background_desc)
 	{
 		this->InitNested(0);
 		CLRBITS(this->flags, WF_WHITE_BORDER);
@@ -86,7 +86,7 @@ static WindowDesc _bootstrap_errmsg_desc(
 /** The window for a failed bootstrap. */
 class BootstrapErrorWindow : public Window {
 public:
-	BootstrapErrorWindow() : Window(&_bootstrap_errmsg_desc)
+	BootstrapErrorWindow() : Window(_bootstrap_errmsg_desc)
 	{
 		this->InitNested(1);
 	}
@@ -145,7 +145,7 @@ static WindowDesc _bootstrap_download_status_window_desc(
 struct BootstrapContentDownloadStatusWindow : public BaseNetworkContentDownloadStatusWindow {
 public:
 	/** Simple call the constructor of the superclass. */
-	BootstrapContentDownloadStatusWindow() : BaseNetworkContentDownloadStatusWindow(&_bootstrap_download_status_window_desc)
+	BootstrapContentDownloadStatusWindow() : BaseNetworkContentDownloadStatusWindow(_bootstrap_download_status_window_desc)
 	{
 	}
 
@@ -198,7 +198,7 @@ class BootstrapAskForDownloadWindow : public Window, ContentCallback {
 
 public:
 	/** Start listening to the content client events. */
-	BootstrapAskForDownloadWindow() : Window(&_bootstrap_query_desc)
+	BootstrapAskForDownloadWindow() : Window(_bootstrap_query_desc)
 	{
 		this->InitNested(WN_CONFIRM_POPUP_QUERY_BOOTSTRAP);
 		_network_content_client.AddCallback(this);
