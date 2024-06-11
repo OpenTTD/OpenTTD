@@ -218,14 +218,14 @@ static WindowDesc _highscore_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_HIGHSCORE, WC_NONE,
 	0,
-	std::begin(_nested_highscore_widgets), std::end(_nested_highscore_widgets)
+	_nested_highscore_widgets
 );
 
 static WindowDesc _endgame_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_ENDSCREEN, WC_NONE,
 	0,
-	std::begin(_nested_highscore_widgets), std::end(_nested_highscore_widgets)
+	_nested_highscore_widgets
 );
 
 /**

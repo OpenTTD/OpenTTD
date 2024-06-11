@@ -146,7 +146,7 @@ static WindowDesc _graph_legend_desc(
 	WDP_AUTO, "graph_legend", 0, 0,
 	WC_GRAPH_LEGEND, WC_NONE,
 	0,
-	std::begin(_nested_graph_legend_widgets), std::end(_nested_graph_legend_widgets)
+	_nested_graph_legend_widgets
 );
 
 static void ShowGraphLegend()
@@ -696,7 +696,7 @@ static WindowDesc _operating_profit_desc(
 	WDP_AUTO, "graph_operating_profit", 0, 0,
 	WC_OPERATING_PROFIT, WC_NONE,
 	0,
-	std::begin(_nested_operating_profit_widgets), std::end(_nested_operating_profit_widgets)
+	_nested_operating_profit_widgets
 );
 
 
@@ -755,7 +755,7 @@ static WindowDesc _income_graph_desc(
 	WDP_AUTO, "graph_income", 0, 0,
 	WC_INCOME_GRAPH, WC_NONE,
 	0,
-	std::begin(_nested_income_graph_widgets), std::end(_nested_income_graph_widgets)
+	_nested_income_graph_widgets
 );
 
 void ShowIncomeGraph()
@@ -812,7 +812,7 @@ static WindowDesc _delivered_cargo_graph_desc(
 	WDP_AUTO, "graph_delivered_cargo", 0, 0,
 	WC_DELIVERED_CARGO, WC_NONE,
 	0,
-	std::begin(_nested_delivered_cargo_graph_widgets), std::end(_nested_delivered_cargo_graph_widgets)
+	_nested_delivered_cargo_graph_widgets
 );
 
 void ShowDeliveredCargoGraph()
@@ -876,7 +876,7 @@ static WindowDesc _performance_history_desc(
 	WDP_AUTO, "graph_performance", 0, 0,
 	WC_PERFORMANCE_HISTORY, WC_NONE,
 	0,
-	std::begin(_nested_performance_history_widgets), std::end(_nested_performance_history_widgets)
+	_nested_performance_history_widgets
 );
 
 void ShowPerformanceHistoryGraph()
@@ -933,7 +933,7 @@ static WindowDesc _company_value_graph_desc(
 	WDP_AUTO, "graph_company_value", 0, 0,
 	WC_COMPANY_VALUE, WC_NONE,
 	0,
-	std::begin(_nested_company_value_graph_widgets), std::end(_nested_company_value_graph_widgets)
+	_nested_company_value_graph_widgets
 );
 
 void ShowCompanyValueGraph()
@@ -1170,7 +1170,7 @@ static WindowDesc _cargo_payment_rates_desc(
 	WDP_AUTO, "graph_cargo_payment_rates", 0, 0,
 	WC_PAYMENT_RATES, WC_NONE,
 	0,
-	std::begin(_nested_cargo_payment_rates_widgets), std::end(_nested_cargo_payment_rates_widgets)
+	_nested_cargo_payment_rates_widgets
 );
 
 
@@ -1465,7 +1465,7 @@ static WindowDesc _performance_rating_detail_desc(
 	WDP_AUTO, "league_details", 0, 0,
 	WC_PERFORMANCE_DETAIL, WC_NONE,
 	0,
-	std::begin(_nested_performance_rating_detail_widgets), std::end(_nested_performance_rating_detail_widgets)
+	_nested_performance_rating_detail_widgets
 );
 
 void ShowPerformanceRatingDetail()

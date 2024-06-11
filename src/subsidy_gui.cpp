@@ -271,7 +271,7 @@ static WindowDesc _subsidies_list_desc(
 	WDP_AUTO, "list_subsidies", 500, 127,
 	WC_SUBSIDIES_LIST, WC_NONE,
 	0,
-	std::begin(_nested_subsidies_list_widgets), std::end(_nested_subsidies_list_widgets)
+	_nested_subsidies_list_widgets
 );
 
 

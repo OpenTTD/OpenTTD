@@ -1922,7 +1922,7 @@ static WindowDesc _build_vehicle_desc(
 	WDP_AUTO, "build_vehicle", 240, 268,
 	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_build_vehicle_widgets), std::end(_nested_build_vehicle_widgets),
+	_nested_build_vehicle_widgets,
 	&BuildVehicleWindow::hotkeys
 );
 

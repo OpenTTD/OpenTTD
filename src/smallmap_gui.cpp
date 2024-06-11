@@ -1950,8 +1950,8 @@ static std::unique_ptr<NWidgetBase> SmallMapDisplay()
 {
 	std::unique_ptr<NWidgetBase> map_display = std::make_unique<NWidgetSmallmapDisplay>();
 
-	map_display = MakeNWidgets(std::begin(_nested_smallmap_display), std::end(_nested_smallmap_display), std::move(map_display));
-	map_display = MakeNWidgets(std::begin(_nested_smallmap_bar), std::end(_nested_smallmap_bar), std::move(map_display));
+	map_display = MakeNWidgets(_nested_smallmap_display, std::move(map_display));
+	map_display = MakeNWidgets(_nested_smallmap_bar, std::move(map_display));
 	return map_display;
 }
 
@@ -1986,7 +1986,7 @@ static WindowDesc _smallmap_desc(
 	WDP_AUTO, "smallmap", 484, 314,
 	WC_SMALLMAP, WC_NONE,
 	0,
-	std::begin(_nested_smallmap_widgets), std::end(_nested_smallmap_widgets)
+	_nested_smallmap_widgets
 );
 
 /**

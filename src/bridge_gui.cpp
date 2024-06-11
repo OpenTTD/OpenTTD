@@ -338,7 +338,7 @@ static WindowDesc _build_bridge_desc(
 	WDP_AUTO, "build_bridge", 200, 114,
 	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_build_bridge_widgets), std::end(_nested_build_bridge_widgets)
+	_nested_build_bridge_widgets
 );
 
 /**

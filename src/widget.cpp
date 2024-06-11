@@ -2963,13 +2963,13 @@ bool NWidgetLeaf::ButtonHit(const Point &pt)
  * settings that follow it, until encountering a #EndContainer, another
  * #NWidget, or the end of the parts array.
  *
- * @param nwid_begin Pointer to beginning of nested widget parts.
- * @param nwid_end Pointer to ending of nested widget parts.
+ * @param nwid_begin Iterator to beginning of nested widget parts.
+ * @param nwid_end Iterator to ending of nested widget parts.
  * @param dest  Address of pointer to use for returning the composed widget.
  * @param fill_dest Fill the composed widget with child widgets.
- * @return Pointer to remaining nested widget parts.
+ * @return Iterator to remaining nested widget parts.
  */
-static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, std::unique_ptr<NWidgetBase> &dest, bool *fill_dest)
+static std::span<const NWidgetPart>::iterator MakeNWidget(std::span<const NWidgetPart>::iterator nwid_begin, std::span<const NWidgetPart>::iterator nwid_end, std::unique_ptr<NWidgetBase> &dest, bool *fill_dest)
 {
 	dest = nullptr;
 	*fill_dest = false;
@@ -3161,12 +3161,12 @@ bool IsContainerWidgetType(WidgetType tp)
 
 /**
  * Build a nested widget tree by recursively filling containers with nested widgets read from their parts.
- * @param nwid_begin Pointer to beginning of nested widget parts.
- * @param nwid_end Pointer to ending of nested widget parts.
+ * @param nwid_begin Iterator to beginning of nested widget parts.
+ * @param nwid_end Iterator to ending of nested widget parts.
  * @param parent Pointer or container to use for storing the child widgets (*parent == nullptr or *parent == container or background widget).
- * @return Pointer to remaining nested widget parts.
+ * @return Iterator to remaining nested widget parts.
  */
-static const NWidgetPart *MakeWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, std::unique_ptr<NWidgetBase> &parent)
+static std::span<const NWidgetPart>::iterator MakeWidgetTree(std::span<const NWidgetPart>::iterator nwid_begin, std::span<const NWidgetPart>::iterator nwid_end, std::unique_ptr<NWidgetBase> &parent)
 {
 	/* If *parent == nullptr, only the first widget is read and returned. Otherwise, *parent must point to either
 	 * a #NWidgetContainer or a #NWidgetBackground object, and parts are added as much as possible. */
@@ -3200,23 +3200,22 @@ static const NWidgetPart *MakeWidgetTree(const NWidgetPart *nwid_begin, const NW
 
 	assert(nwid_begin < nwid_end);
 	assert(nwid_begin->type == WPT_ENDCONTAINER);
-	return nwid_begin + 1; // *nwid_begin is also 'used'
+	return std::next(nwid_begin); // *nwid_begin is also 'used'
 }
 
 /**
  * Construct a nested widget tree from an array of parts.
- * @param nwid_begin Pointer to beginning of nested widget parts.
- * @param nwid_end Pointer to ending of nested widget parts.
+ * @param nwid_parts Span of nested widget parts.
  * @param container Container to add the nested widgets to. In case it is nullptr a vertical container is used.
  * @return Root of the nested widget tree, a vertical container containing the entire GUI.
  * @ingroup NestedWidgetParts
  */
-std::unique_ptr<NWidgetBase> MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, std::unique_ptr<NWidgetBase> &&container)
+std::unique_ptr<NWidgetBase> MakeNWidgets(std::span<const NWidgetPart> nwid_parts, std::unique_ptr<NWidgetBase> &&container)
 {
 	if (container == nullptr) container = std::make_unique<NWidgetVertical>();
-	[[maybe_unused]] const NWidgetPart *nwid_part = MakeWidgetTree(nwid_begin, nwid_end, container);
+	[[maybe_unused]] auto nwid_part = MakeWidgetTree(std::begin(nwid_parts), std::end(nwid_parts), container);
 #ifdef WITH_ASSERT
-	if (nwid_part != nwid_end) [[unlikely]] throw std::runtime_error("Did not consume all NWidgetParts");
+	if (nwid_part != std::end(nwid_parts)) [[unlikely]] throw std::runtime_error("Did not consume all NWidgetParts");
 #endif
 	return std::move(container);
 }
@@ -3225,14 +3224,16 @@ std::unique_ptr<NWidgetBase> MakeNWidgets(const NWidgetPart *nwid_begin, const N
  * Make a nested widget tree for a window from a parts array. Besides loading, it inserts a shading selection widget
  * between the title bar and the window body if the first widget in the parts array looks like a title bar (it is a horizontal
  * container with a caption widget) and has a shade box widget.
- * @param nwid_begin Pointer to beginning of nested widget parts.
- * @param nwid_end Pointer to ending of nested widget parts.
+ * @param nwid_parts Span of nested widget parts.
  * @param[out] shade_select Pointer to the inserted shade selection widget (\c nullptr if not unserted).
  * @return Root of the nested widget tree, a vertical container containing the entire GUI.
  * @ingroup NestedWidgetParts
  */
-std::unique_ptr<NWidgetBase> MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetStacked **shade_select)
+std::unique_ptr<NWidgetBase> MakeWindowNWidgetTree(std::span<const NWidgetPart> nwid_parts, NWidgetStacked **shade_select)
 {
+	auto nwid_begin = std::begin(nwid_parts);
+	auto nwid_end = std::end(nwid_parts);
+
 	*shade_select = nullptr;
 
 	/* Read the first widget recursively from the array. */
@@ -3251,13 +3252,13 @@ std::unique_ptr<NWidgetBase> MakeWindowNWidgetTree(const NWidgetPart *nwid_begin
 		auto shade_stack = std::make_unique<NWidgetStacked>(-1);
 		*shade_select = shade_stack.get();
 		/* Load the remaining parts into the shade stack. */
-		shade_stack->Add(MakeNWidgets(nwid_begin, nwid_end, std::make_unique<NWidgetVertical>()));
+		shade_stack->Add(MakeNWidgets({nwid_begin, nwid_end}, std::make_unique<NWidgetVertical>()));
 		root->Add(std::move(shade_stack));
 		return root;
 	}
 
 	/* Load the remaining parts into 'root'. */
-	return MakeNWidgets(nwid_begin, nwid_end, std::move(root));
+	return MakeNWidgets({nwid_begin, nwid_end}, std::move(root));
 }
 
 /**
