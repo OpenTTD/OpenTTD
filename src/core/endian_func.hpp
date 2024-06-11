@@ -10,32 +10,54 @@
 #ifndef ENDIAN_FUNC_HPP
 #define ENDIAN_FUNC_HPP
 
-#include "endian_type.hpp"
 #include "bitmath_func.hpp"
 
-/* Setup alignment and conversion macros */
-#if TTD_ENDIAN == TTD_BIG_ENDIAN
-#	define FROM_BE16(x) (x)
-#	define FROM_BE32(x) (x)
-#	define TO_BE16(x)   (x)
-#	define TO_BE32(x)   (x)
-#	define TO_BE32X(x)  (x)
-#	define FROM_LE16(x) std::byteswap(x)
-#	define FROM_LE32(x) std::byteswap(x)
-#	define TO_LE16(x)   std::byteswap(x)
-#	define TO_LE32(x)   std::byteswap(x)
-#	define TO_LE32X(x)  std::byteswap(x)
-#else
-#	define FROM_BE16(x) std::byteswap(x)
-#	define FROM_BE32(x) std::byteswap(x)
-#	define TO_BE16(x)   std::byteswap(x)
-#	define TO_BE32(x)   std::byteswap(x)
-#	define TO_BE32X(x)  std::byteswap(x)
-#	define FROM_LE16(x) (x)
-#	define FROM_LE32(x) (x)
-#	define TO_LE16(x)   (x)
-#	define TO_LE32(x)   (x)
-#	define TO_LE32X(x)  (x)
-#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
+static constexpr uint16_t FROM_BE16(uint16_t x)
+{
+	if constexpr (std::endian::native == std::endian::big) return x;
+	return std::byteswap(x);
+}
+
+static constexpr uint32_t FROM_BE32(uint32_t x)
+{
+	if constexpr (std::endian::native == std::endian::big) return x;
+	return std::byteswap(x);
+}
+
+static constexpr uint16_t TO_BE16(uint16_t x)
+{
+	if constexpr (std::endian::native == std::endian::big) return x;
+	return std::byteswap(x);
+}
+
+static constexpr uint32_t TO_BE32(uint32_t x)
+{
+	if constexpr (std::endian::native == std::endian::big) return x;
+	return std::byteswap(x);
+}
+
+static constexpr uint16_t FROM_LE16(uint16_t x)
+{
+	if constexpr (std::endian::native == std::endian::little) return x;
+	return std::byteswap(x);
+}
+
+static constexpr uint32_t FROM_LE32(uint32_t x)
+{
+	if constexpr (std::endian::native == std::endian::little) return x;
+	return std::byteswap(x);
+}
+
+static constexpr uint16_t TO_LE16(uint16_t x)
+{
+	if constexpr (std::endian::native == std::endian::little) return x;
+	return std::byteswap(x);
+}
+
+static constexpr uint32_t TO_LE32(uint32_t x)
+{
+	if constexpr (std::endian::native == std::endian::little) return x;
+	return std::byteswap(x);
+}
 
 #endif /* ENDIAN_FUNC_HPP */
