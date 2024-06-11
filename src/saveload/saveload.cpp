@@ -2697,10 +2697,10 @@ struct SaveLoadFormat {
 	uint8_t max_compression;                 ///< the maximum compression level of this format
 };
 
-static const uint32_t SAVEGAME_TAG_LZO = TO_BE32X('OTTD');
-static const uint32_t SAVEGAME_TAG_NONE = TO_BE32X('OTTN');
-static const uint32_t SAVEGAME_TAG_ZLIB = TO_BE32X('OTTZ');
-static const uint32_t SAVEGAME_TAG_LZMA = TO_BE32X('OTTX');
+static const uint32_t SAVEGAME_TAG_LZO = TO_BE32('OTTD');
+static const uint32_t SAVEGAME_TAG_NONE = TO_BE32('OTTN');
+static const uint32_t SAVEGAME_TAG_ZLIB = TO_BE32('OTTZ');
+static const uint32_t SAVEGAME_TAG_LZMA = TO_BE32('OTTX');
 
 /** The different saveload formats known/understood by OpenTTD. */
 static const SaveLoadFormat _saveload_formats[] = {

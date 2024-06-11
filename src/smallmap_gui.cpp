@@ -256,7 +256,7 @@ static const LegendAndColour * const _legend_table[] = {
 	_legend_land_owners,
 };
 
-#define MKCOLOUR(x)         TO_LE32X(x)
+#define MKCOLOUR(x)         TO_LE32(x)
 
 #define MKCOLOUR_XXXX(x)    (MKCOLOUR(0x01010101) * (uint)(x))
 #define MKCOLOUR_0XX0(x)    (MKCOLOUR(0x00010100) * (uint)(x))
