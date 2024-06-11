@@ -93,10 +93,14 @@ bool _mouse_hovering;      ///< The mouse is hovering over the same point.
 SpecialMouseMode _special_mouse_mode; ///< Mode of the mouse.
 
 /**
- * List of all WindowDescs.
- * This is a pointer to ensure initialisation order with the various static WindowDesc instances.
+ * Get list of all WindowDescs.
+ * @return List of all WindowDescs.
  */
-std::vector<WindowDesc*> *_window_descs = nullptr;
+std::vector<WindowDesc *> &GetWindowDescs()
+{
+	static std::vector<WindowDesc *> *s_window_descs = new std::vector<WindowDesc *>();
+	return *s_window_descs;
+}
 
 /** Config file to store WindowDesc */
 std::string _windows_file;
@@ -121,13 +125,14 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16_t def_
 	default_width_trad(def_width_trad),
 	default_height_trad(def_height_trad)
 {
-	if (_window_descs == nullptr) _window_descs = new std::vector<WindowDesc*>();
-	_window_descs->push_back(this);
+	auto &window_descs = GetWindowDescs();
+	window_descs.push_back(this);
 }
 
 WindowDesc::~WindowDesc()
 {
-	_window_descs->erase(std::find(_window_descs->begin(), _window_descs->end(), this));
+	auto &window_descs = GetWindowDescs();
+	window_descs.erase(std::find(window_descs.begin(), window_descs.end(), this));
 }
 
 /**
@@ -157,7 +162,7 @@ void WindowDesc::LoadFromConfig()
 {
 	IniFile ini;
 	ini.LoadFromDisk(_windows_file, NO_DIRECTORY);
-	for (WindowDesc *wd : *_window_descs) {
+	for (WindowDesc *wd : GetWindowDescs()) {
 		if (wd->ini_key == nullptr) continue;
 		IniLoadWindowSettings(ini, wd->ini_key, wd);
 	}
@@ -177,12 +182,14 @@ static bool DescSorter(WindowDesc * const &a, WindowDesc * const &b)
  */
 void WindowDesc::SaveToConfig()
 {
+	auto &window_descs = GetWindowDescs();
+
 	/* Sort the stuff to get a nice ini file on first write */
-	std::sort(_window_descs->begin(), _window_descs->end(), DescSorter);
+	std::sort(window_descs.begin(), window_descs.end(), DescSorter);
 
 	IniFile ini;
 	ini.LoadFromDisk(_windows_file, NO_DIRECTORY);
-	for (WindowDesc *wd : *_window_descs) {
+	for (WindowDesc *wd : window_descs) {
 		if (wd->ini_key == nullptr) continue;
 		IniSaveWindowSettings(ini, wd->ini_key, wd);
 	}

@@ -19,7 +19,7 @@
  * List of WindowDescs. Defined in window.cpp but not exposed as this unit-test is the only other place that needs it.
  * WindowDesc is a self-registering class so all WindowDescs will be included in the list.
  */
-extern std::vector<WindowDesc*> *_window_descs;
+extern std::vector<WindowDesc *> &GetWindowDescs();
 
 
 class WindowDescTestsFixture {
@@ -32,7 +32,7 @@ TEST_CASE("WindowDesc - ini_key uniqueness")
 {
 	std::set<std::string> seen;
 
-	for (const WindowDesc *window_desc : *_window_descs) {
+	for (const WindowDesc *window_desc : GetWindowDescs()) {
 
 		if (window_desc->ini_key == nullptr) continue;
 
@@ -45,7 +45,7 @@ TEST_CASE("WindowDesc - ini_key uniqueness")
 
 TEST_CASE("WindowDesc - ini_key validity")
 {
-	const WindowDesc *window_desc = GENERATE(from_range(std::begin(*_window_descs), std::end(*_window_descs)));
+	const WindowDesc *window_desc = GENERATE(from_range(std::begin(GetWindowDescs()), std::end(GetWindowDescs())));
 
 	bool has_inikey = window_desc->ini_key != nullptr;
 	bool has_widget = std::any_of(window_desc->nwid_begin, window_desc->nwid_end, [](const NWidgetPart &part) { return part.type == WWT_DEFSIZEBOX || part.type == WWT_STICKYBOX; });
@@ -76,7 +76,7 @@ static bool IsNWidgetTreeClosed(const NWidgetPart *nwid_begin, const NWidgetPart
 
 TEST_CASE("WindowDesc - NWidgetParts properly closed")
 {
-	const WindowDesc *window_desc = GENERATE(from_range(std::begin(*_window_descs), std::end(*_window_descs)));
+	const WindowDesc *window_desc = GENERATE(from_range(std::begin(GetWindowDescs()), std::end(GetWindowDescs())));
 
 	INFO(fmt::format("{}:{}", window_desc->source_location.file_name(), window_desc->source_location.line()));
 
@@ -85,7 +85,7 @@ TEST_CASE("WindowDesc - NWidgetParts properly closed")
 
 TEST_CASE_METHOD(WindowDescTestsFixture, "WindowDesc - NWidgetPart validity")
 {
-	const WindowDesc *window_desc = GENERATE(from_range(std::begin(*_window_descs), std::end(*_window_descs)));
+	const WindowDesc *window_desc = GENERATE(from_range(std::begin(GetWindowDescs()), std::end(GetWindowDescs())));
 
 	INFO(fmt::format("{}:{}", window_desc->source_location.file_name(), window_desc->source_location.line()));
 

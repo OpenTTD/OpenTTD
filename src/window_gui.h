@@ -194,7 +194,7 @@ private:
 
 	/**
 	 * Delete copy constructor to prevent compilers from
-	 * copying the structure, which fails due to _window_descs.
+	 * copying the structure, which fails due to WindowDesc registration.
 	 */
 	WindowDesc(const WindowDesc &) = delete;
 	WindowDesc& operator=(const WindowDesc &) = delete;
