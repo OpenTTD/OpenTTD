@@ -254,6 +254,40 @@ int Func();
 
 * If you are writing one or more template class in the dedicated header file, use file.hpp for its name instead of file.h. This will let others know that it is template library (includes also implementation), not just header with declarations.
 
+### Code Comment Vertical Alignment
+
+When adding code or comments to an existing formatted section, follow the existing style if possible without editing the preexisting lines.
+
+If your addition cannot be aligned with existing code, do not align the comments with anything and use only a single space between the code and the comment.
+
+Good:
+
+```c++
+enum Vehicle {
+	BUS,  ///< Take the bus.
++	CAR,  ///< Drive your car.
+	BIKE, ///< Ride your bike
++	TRAIN, ///< Catch the train.
+}
+```
+
+"Car" is shorter than Bike which allows you to easily align the new comment. "Train" is longer.  It is *NOT* desirable to change the vertical comment alignment of this enum.
+
+Bad:
+
+```c++
+enum Vehicle {
+-	BUS,  ///< Take the bus.
+-	BIKE, ///< Ride your bike
++	BUS,   ///< Take the bus.
++	CAR,   ///< Drive your car.
++	BIKE,  ///< Ride your bike
++	TRAIN, ///< Catch the train.
+}
+```
+
+OpenTTD used to vertically-align inline Doxygen comments as shown above. OpenTTD has since stopped strictly following this rule to keep diffs smaller and reduce pollution to the git blame history for non-functional changes.
+
 ### Other important rules
 * Put a space before and after binary operators: "a + b", "a == b", "a & b", "a <<= b", etc.. Exceptions are ".", "->" and "[]" (no spaces) and "," (just space after it).
 * Put parenthesis where it improves readability: "*(b++)" instead of "*b++", and "if ((a & b) && c == 2)" instead of "if (a & b && c == 2)".
