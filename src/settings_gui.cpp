@@ -359,7 +359,7 @@ struct GameOptionsWindow : Window {
 	int gui_scale;
 	static inline WidgetID active_tab = WID_GO_TAB_GENERAL;
 
-	GameOptionsWindow(WindowDesc *desc) : Window(desc)
+	GameOptionsWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->opt = &GetGameSettings();
 		this->reload = false;
@@ -1199,7 +1199,7 @@ static WindowDesc _game_options_desc(
 void ShowGameOptions()
 {
 	CloseWindowByClass(WC_GAME_OPTIONS);
-	new GameOptionsWindow(&_game_options_desc);
+	new GameOptionsWindow(_game_options_desc);
 }
 
 static int SETTING_HEIGHT = 11;    ///< Height of a single setting in the tree view in pixels
@@ -2334,7 +2334,7 @@ struct GameSettingsWindow : Window {
 
 	Scrollbar *vscroll;
 
-	GameSettingsWindow(WindowDesc *desc) : Window(desc), filter_editbox(50)
+	GameSettingsWindow(WindowDesc &desc) : Window(desc), filter_editbox(50)
 	{
 		this->warn_missing = WHR_NONE;
 		this->warn_lines = 0;
@@ -2909,7 +2909,7 @@ static WindowDesc _settings_selection_desc(
 void ShowGameSettings()
 {
 	CloseWindowByClass(WC_GAME_OPTIONS);
-	new GameSettingsWindow(&_settings_selection_desc);
+	new GameSettingsWindow(_settings_selection_desc);
 }
 
 
@@ -2985,7 +2985,7 @@ void DrawBoolButton(int x, int y, bool state, bool clickable)
 struct CustomCurrencyWindow : Window {
 	int query_widget;
 
-	CustomCurrencyWindow(WindowDesc *desc) : Window(desc)
+	CustomCurrencyWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->InitNested();
 
@@ -3217,5 +3217,5 @@ static WindowDesc _cust_currency_desc(
 static void ShowCustCurrency()
 {
 	CloseWindowById(WC_CUSTOM_CURRENCY, 0);
-	new CustomCurrencyWindow(&_cust_currency_desc);
+	new CustomCurrencyWindow(_cust_currency_desc);
 }

@@ -796,7 +796,7 @@ private:
 	}
 
 public:
-	OrdersWindow(WindowDesc *desc, const Vehicle *v) : Window(desc)
+	OrdersWindow(WindowDesc &desc, const Vehicle *v) : Window(desc)
 	{
 		this->vehicle = v;
 
@@ -1794,8 +1794,8 @@ void ShowOrdersWindow(const Vehicle *v)
 	 * TODO Rewrite the order GUI to not use different WindowDescs.
 	 */
 	if (v->owner != _local_company) {
-		new OrdersWindow(&_other_orders_desc, v);
+		new OrdersWindow(_other_orders_desc, v);
 	} else {
-		new OrdersWindow(v->IsGroundVehicle() ? &_orders_train_desc : &_orders_desc, v);
+		new OrdersWindow(v->IsGroundVehicle() ? _orders_train_desc : _orders_desc, v);
 	}
 }

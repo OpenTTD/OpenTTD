@@ -154,7 +154,7 @@ struct IConsoleWindow : Window
 	int line_offset;
 	int cursor_width;
 
-	IConsoleWindow() : Window(&_console_window_desc)
+	IConsoleWindow() : Window(_console_window_desc)
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
 

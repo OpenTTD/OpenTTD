@@ -29,7 +29,7 @@ struct SubsidyListWindow : Window {
 	Scrollbar *vscroll;
 	Dimension cargo_icon_size;
 
-	SubsidyListWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	SubsidyListWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SUL_SCROLLBAR);
@@ -277,5 +277,5 @@ static WindowDesc _subsidies_list_desc(
 
 void ShowSubsidiesList()
 {
-	AllocateWindowDescFront<SubsidyListWindow>(&_subsidies_list_desc, 0);
+	AllocateWindowDescFront<SubsidyListWindow>(_subsidies_list_desc, 0);
 }

@@ -49,7 +49,7 @@ static_assert(static_cast<int64_t>(INT64_MAX_IN_DOUBLE) < INT64_MAX);
 /****************/
 
 struct GraphLegendWindow : Window {
-	GraphLegendWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	GraphLegendWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
 
@@ -151,7 +151,7 @@ static WindowDesc _graph_legend_desc(
 
 static void ShowGraphLegend()
 {
-	AllocateWindowDescFront<GraphLegendWindow>(&_graph_legend_desc, 0);
+	AllocateWindowDescFront<GraphLegendWindow>(_graph_legend_desc, 0);
 }
 
 /** Contains the interval of a graph's data. */
@@ -493,7 +493,7 @@ protected:
 	}
 
 
-	BaseGraphWindow(WindowDesc *desc, StringID format_str_y_axis) :
+	BaseGraphWindow(WindowDesc &desc, StringID format_str_y_axis) :
 			Window(desc),
 			format_str_y_axis(format_str_y_axis)
 	{
@@ -652,7 +652,7 @@ public:
 /********************/
 
 struct OperatingProfitGraphWindow : BaseGraphWindow {
-	OperatingProfitGraphWindow(WindowDesc *desc, WindowNumber window_number) :
+	OperatingProfitGraphWindow(WindowDesc &desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
@@ -702,7 +702,7 @@ static WindowDesc _operating_profit_desc(
 
 void ShowOperatingProfitGraph()
 {
-	AllocateWindowDescFront<OperatingProfitGraphWindow>(&_operating_profit_desc, 0);
+	AllocateWindowDescFront<OperatingProfitGraphWindow>(_operating_profit_desc, 0);
 }
 
 
@@ -711,7 +711,7 @@ void ShowOperatingProfitGraph()
 /****************/
 
 struct IncomeGraphWindow : BaseGraphWindow {
-	IncomeGraphWindow(WindowDesc *desc, WindowNumber window_number) :
+	IncomeGraphWindow(WindowDesc &desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
@@ -760,7 +760,7 @@ static WindowDesc _income_graph_desc(
 
 void ShowIncomeGraph()
 {
-	AllocateWindowDescFront<IncomeGraphWindow>(&_income_graph_desc, 0);
+	AllocateWindowDescFront<IncomeGraphWindow>(_income_graph_desc, 0);
 }
 
 /*******************/
@@ -768,7 +768,7 @@ void ShowIncomeGraph()
 /*******************/
 
 struct DeliveredCargoGraphWindow : BaseGraphWindow {
-	DeliveredCargoGraphWindow(WindowDesc *desc, WindowNumber window_number) :
+	DeliveredCargoGraphWindow(WindowDesc &desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, STR_JUST_COMMA)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
@@ -817,7 +817,7 @@ static WindowDesc _delivered_cargo_graph_desc(
 
 void ShowDeliveredCargoGraph()
 {
-	AllocateWindowDescFront<DeliveredCargoGraphWindow>(&_delivered_cargo_graph_desc, 0);
+	AllocateWindowDescFront<DeliveredCargoGraphWindow>(_delivered_cargo_graph_desc, 0);
 }
 
 /***********************/
@@ -825,7 +825,7 @@ void ShowDeliveredCargoGraph()
 /***********************/
 
 struct PerformanceHistoryGraphWindow : BaseGraphWindow {
-	PerformanceHistoryGraphWindow(WindowDesc *desc, WindowNumber window_number) :
+	PerformanceHistoryGraphWindow(WindowDesc &desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, STR_JUST_COMMA)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
@@ -881,7 +881,7 @@ static WindowDesc _performance_history_desc(
 
 void ShowPerformanceHistoryGraph()
 {
-	AllocateWindowDescFront<PerformanceHistoryGraphWindow>(&_performance_history_desc, 0);
+	AllocateWindowDescFront<PerformanceHistoryGraphWindow>(_performance_history_desc, 0);
 }
 
 /*****************/
@@ -889,7 +889,7 @@ void ShowPerformanceHistoryGraph()
 /*****************/
 
 struct CompanyValueGraphWindow : BaseGraphWindow {
-	CompanyValueGraphWindow(WindowDesc *desc, WindowNumber window_number) :
+	CompanyValueGraphWindow(WindowDesc &desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
@@ -938,7 +938,7 @@ static WindowDesc _company_value_graph_desc(
 
 void ShowCompanyValueGraph()
 {
-	AllocateWindowDescFront<CompanyValueGraphWindow>(&_company_value_graph_desc, 0);
+	AllocateWindowDescFront<CompanyValueGraphWindow>(_company_value_graph_desc, 0);
 }
 
 /*****************/
@@ -950,7 +950,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	Scrollbar *vscroll; ///< Cargo list scrollbar.
 	uint legend_width;  ///< Width of legend 'blob'.
 
-	PaymentRatesGraphWindow(WindowDesc *desc, WindowNumber window_number) :
+	PaymentRatesGraphWindow(WindowDesc &desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
 	{
 		this->num_on_x_axis = 20;
@@ -1176,7 +1176,7 @@ static WindowDesc _cargo_payment_rates_desc(
 
 void ShowCargoPaymentRates()
 {
-	AllocateWindowDescFront<PaymentRatesGraphWindow>(&_cargo_payment_rates_desc, 0);
+	AllocateWindowDescFront<PaymentRatesGraphWindow>(_cargo_payment_rates_desc, 0);
 }
 
 /*****************************/
@@ -1187,7 +1187,7 @@ struct PerformanceRatingDetailWindow : Window {
 	static CompanyID company;
 	int timeout;
 
-	PerformanceRatingDetailWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	PerformanceRatingDetailWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->UpdateCompanyStats();
 
@@ -1470,7 +1470,7 @@ static WindowDesc _performance_rating_detail_desc(
 
 void ShowPerformanceRatingDetail()
 {
-	AllocateWindowDescFront<PerformanceRatingDetailWindow>(&_performance_rating_detail_desc, 0);
+	AllocateWindowDescFront<PerformanceRatingDetailWindow>(_performance_rating_detail_desc, 0);
 }
 
 void InitializeGraphGui()

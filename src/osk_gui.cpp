@@ -42,7 +42,7 @@ struct OskWindow : public Window {
 	std::string orig_str;  ///< Original string.
 	bool shift;            ///< Is the shift effectively pressed?
 
-	OskWindow(WindowDesc *desc, Window *parent, WidgetID button) : Window(desc)
+	OskWindow(WindowDesc &desc, Window *parent, WidgetID button) : Window(desc)
 	{
 		this->parent = parent;
 		assert(parent != nullptr);
@@ -397,7 +397,7 @@ void ShowOnScreenKeyboard(Window *parent, WidgetID button)
 	CloseWindowById(WC_OSK, 0);
 
 	GetKeyboardLayout();
-	new OskWindow(&_osk_desc, parent, button);
+	new OskWindow(_osk_desc, parent, button);
 }
 
 /**

@@ -170,7 +170,7 @@ public:
 	bool has_class_picker = false; ///< Set if this window has a class picker 'component'.
 	bool has_type_picker = false; ///< Set if this window has a type picker 'component'.
 
-	PickerWindow(WindowDesc *desc, Window *parent, int window_number, PickerCallbacks &callbacks);
+	PickerWindow(WindowDesc &desc, Window *parent, int window_number, PickerCallbacks &callbacks);
 	void Close(int data = 0) override;
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, const Dimension &padding, Dimension &fill, Dimension &resize) override;
 	void DrawWidget(const Rect &r, WidgetID widget) const override;

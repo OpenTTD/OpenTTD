@@ -388,7 +388,7 @@ private:
 	}
 
 public:
-	VehicleGroupWindow(WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow(desc, window_number)
+	VehicleGroupWindow(WindowDesc &desc, WindowNumber window_number) : BaseVehicleListWindow(desc, window_number)
 	{
 		this->CreateNestedTree();
 
@@ -1170,10 +1170,10 @@ void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type, GroupID group
 	const WindowNumber num = VehicleListIdentifier(VL_GROUP_LIST, vehicle_type, company).Pack();
 	VehicleGroupWindow *w;
 	if (vehicle_type == VEH_TRAIN) {
-		w = AllocateWindowDescFront<VehicleGroupWindow>(&_train_group_desc, num, need_existing_window);
+		w = AllocateWindowDescFront<VehicleGroupWindow>(_train_group_desc, num, need_existing_window);
 	} else {
 		_other_group_desc.cls = GetWindowClassForVehicleType(vehicle_type);
-		w = AllocateWindowDescFront<VehicleGroupWindow>(&_other_group_desc, num, need_existing_window);
+		w = AllocateWindowDescFront<VehicleGroupWindow>(_other_group_desc, num, need_existing_window);
 	}
 	if (w != nullptr) w->SelectGroup(group);
 }

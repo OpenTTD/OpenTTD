@@ -448,7 +448,7 @@ struct FramerateWindow : Window {
 
 	static constexpr int MIN_ELEMENTS = 5;      ///< smallest number of elements to display
 
-	FramerateWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
+	FramerateWindow(WindowDesc &desc, WindowNumber number) : Window(desc)
 	{
 		this->InitNested(number);
 		this->small = this->IsShaded();
@@ -755,7 +755,7 @@ struct FrametimeGraphWindow : Window {
 	PerformanceElement element; ///< what element this window renders graph for
 	Dimension graph_size;       ///< size of the main graph area (excluding axis labels)
 
-	FrametimeGraphWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
+	FrametimeGraphWindow(WindowDesc &desc, WindowNumber number) : Window(desc)
 	{
 		this->element = (PerformanceElement)number;
 		this->horizontal_scale = 4;
@@ -1029,14 +1029,14 @@ static WindowDesc _frametime_graph_window_desc(
 /** Open the general framerate window */
 void ShowFramerateWindow()
 {
-	AllocateWindowDescFront<FramerateWindow>(&_framerate_display_desc, 0);
+	AllocateWindowDescFront<FramerateWindow>(_framerate_display_desc, 0);
 }
 
 /** Open a graph window for a performance element */
 void ShowFrametimeGraphWindow(PerformanceElement elem)
 {
 	if (elem < PFE_FIRST || elem >= PFE_MAX) return; // maybe warn?
-	AllocateWindowDescFront<FrametimeGraphWindow>(&_frametime_graph_window_desc, elem, true);
+	AllocateWindowDescFront<FrametimeGraphWindow>(_frametime_graph_window_desc, elem, true);
 }
 
 /** Print performance statistics to game console */

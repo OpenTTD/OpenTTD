@@ -302,7 +302,7 @@ public:
 		this->filename_editbox.text.Assign(GenerateDefaultSaveName());
 	}
 
-	SaveLoadWindow(WindowDesc *desc, AbstractFileType abstract_filetype, SaveLoadOperation fop)
+	SaveLoadWindow(WindowDesc &desc, AbstractFileType abstract_filetype, SaveLoadOperation fop)
 			: Window(desc), filename_editbox(64), abstract_filetype(abstract_filetype), fop(fop), filter_editbox(EDITBOX_MAX_SIZE)
 	{
 		assert(this->fop == SLO_SAVE || this->fop == SLO_LOAD);
@@ -915,13 +915,10 @@ void ShowSaveLoadDialog(AbstractFileType abstract_filetype, SaveLoadOperation fo
 {
 	CloseWindowById(WC_SAVELOAD, 0);
 
-	WindowDesc *sld;
 	if (fop == SLO_SAVE) {
-		sld = &_save_dialog_desc;
+		new SaveLoadWindow(_save_dialog_desc, abstract_filetype, fop);
 	} else {
 		/* Dialogue for loading a file. */
-		sld = (abstract_filetype == FT_HEIGHTMAP) ? &_load_heightmap_dialog_desc : &_load_dialog_desc;
+		new SaveLoadWindow((abstract_filetype == FT_HEIGHTMAP) ? _load_heightmap_dialog_desc : _load_dialog_desc, abstract_filetype, fop);
 	}
-
-	new SaveLoadWindow(sld, abstract_filetype, fop);
 }

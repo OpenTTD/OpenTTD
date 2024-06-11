@@ -384,7 +384,7 @@ protected:
 	}
 
 public:
-	CompanyStationsWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	CompanyStationsWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		/* Load initial filter state. */
 		this->filter = CompanyStationsWindow::initial_state;
@@ -781,7 +781,7 @@ void ShowCompanyStations(CompanyID company)
 {
 	if (!Company::IsValidID(company)) return;
 
-	AllocateWindowDescFront<CompanyStationsWindow>(&_company_stations_desc, company);
+	AllocateWindowDescFront<CompanyStationsWindow>(_company_stations_desc, company);
 }
 
 static constexpr NWidgetPart _nested_station_view_widgets[] = {
@@ -1321,7 +1321,7 @@ struct StationViewWindow : public Window {
 	CargoDataEntry cached_destinations; ///< Cache for the flows passing through this station.
 	CargoDataVector displayed_rows;     ///< Parent entry of currently displayed rows (including collapsed ones).
 
-	StationViewWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc),
+	StationViewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc),
 		scroll_to_row(INT_MAX), grouping_index(0)
 	{
 		this->rating_lines  = ALH_RATING;
@@ -2143,7 +2143,7 @@ static WindowDesc _station_view_desc(
  */
 void ShowStationViewWindow(StationID station)
 {
-	AllocateWindowDescFront<StationViewWindow>(&_station_view_desc, station);
+	AllocateWindowDescFront<StationViewWindow>(_station_view_desc, station);
 }
 
 /** Struct containing TileIndex and StationID */
@@ -2271,7 +2271,7 @@ struct SelectStationWindow : Window {
 	TileArea area; ///< Location of new station
 	Scrollbar *vscroll;
 
-	SelectStationWindow(WindowDesc *desc, TileArea ta, StationPickerCmdProc&& proc) :
+	SelectStationWindow(WindowDesc &desc, TileArea ta, StationPickerCmdProc&& proc) :
 		Window(desc),
 		select_station_proc(std::move(proc)),
 		area(ta)
@@ -2441,7 +2441,7 @@ void ShowSelectBaseStationIfNeeded(TileArea ta, StationPickerCmdProc&& proc)
 {
 	if (StationJoinerNeeded<T>(ta, proc)) {
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-		new SelectStationWindow<T>(&_select_station_desc, ta, std::move(proc));
+		new SelectStationWindow<T>(_select_station_desc, ta, std::move(proc));
 	} else {
 		proc(false, INVALID_STATION);
 	}

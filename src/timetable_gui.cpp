@@ -207,7 +207,7 @@ struct TimetableWindow : Window {
 	bool set_start_date_all;   ///< Set start date using minutes text entry for all timetable entries (ctrl-click) action.
 	bool change_timetable_all; ///< Set wait time or speed for all timetable entries (ctrl-click) action.
 
-	TimetableWindow(WindowDesc *desc, WindowNumber window_number) :
+	TimetableWindow(WindowDesc &desc, WindowNumber window_number) :
 			Window(desc),
 			sel_index(-1),
 			vehicle(Vehicle::Get(window_number)),
@@ -867,5 +867,5 @@ void ShowTimetableWindow(const Vehicle *v)
 {
 	CloseWindowById(WC_VEHICLE_DETAILS, v->index, false);
 	CloseWindowById(WC_VEHICLE_ORDERS, v->index, false);
-	AllocateWindowDescFront<TimetableWindow>(&_timetable_desc, v->index);
+	AllocateWindowDescFront<TimetableWindow>(_timetable_desc, v->index);
 }

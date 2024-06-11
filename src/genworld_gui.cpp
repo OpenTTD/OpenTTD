@@ -391,7 +391,7 @@ struct GenerateLandscapeWindow : public Window {
 	std::string name;
 	GenerateLandscapeWindowMode mode;
 
-	GenerateLandscapeWindow(WindowDesc *desc, WindowNumber number = 0) : Window(desc)
+	GenerateLandscapeWindow(WindowDesc &desc, WindowNumber number = 0) : Window(desc)
 	{
 		this->InitNested(number);
 
@@ -1029,7 +1029,7 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 		if (!GetHeightmapDimensions(_file_to_saveload.detail_ftype, _file_to_saveload.name.c_str(), &x, &y)) return;
 	}
 
-	WindowDesc *desc = (mode == GLWM_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc;
+	WindowDesc &desc = (mode == GLWM_HEIGHTMAP) ? _heightmap_load_desc : _generate_landscape_desc;
 	GenerateLandscapeWindow *w = AllocateWindowDescFront<GenerateLandscapeWindow>(desc, mode, true);
 
 	if (mode == GLWM_HEIGHTMAP) {
@@ -1075,7 +1075,7 @@ struct CreateScenarioWindow : public Window
 {
 	WidgetID widget_id;
 
-	CreateScenarioWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	CreateScenarioWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
 		this->LowerWidget(_settings_newgame.game_creation.landscape + WID_CS_TEMPERATE);
@@ -1321,7 +1321,7 @@ static WindowDesc _create_scenario_desc(
 void ShowCreateScenario()
 {
 	CloseWindowByClass(WC_GENERATE_LANDSCAPE);
-	new CreateScenarioWindow(&_create_scenario_desc, GLWM_SCENARIO);
+	new CreateScenarioWindow(_create_scenario_desc, GLWM_SCENARIO);
 }
 
 static constexpr NWidgetPart _nested_generate_progress_widgets[] = {
@@ -1381,7 +1381,7 @@ static void AbortGeneratingWorldCallback(Window *, bool confirmed)
 
 struct GenerateProgressWindow : public Window {
 
-	GenerateProgressWindow() : Window(&_generate_progress_desc)
+	GenerateProgressWindow() : Window(_generate_progress_desc)
 	{
 		this->InitNested();
 	}
