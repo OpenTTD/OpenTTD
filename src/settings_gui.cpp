@@ -203,11 +203,11 @@ public:
 		this->plugins = SocialIntegration::GetPlugins();
 
 		if (this->plugins.empty()) {
-			auto widget = MakeNWidgets(std::begin(_nested_social_plugins_none_widgets), std::end(_nested_social_plugins_none_widgets), nullptr);
+			auto widget = MakeNWidgets(_nested_social_plugins_none_widgets, nullptr);
 			this->Add(std::move(widget));
 		} else {
 			for (size_t i = 0; i < this->plugins.size(); i++) {
-				auto widget = MakeNWidgets(std::begin(_nested_social_plugins_widgets), std::end(_nested_social_plugins_widgets), nullptr);
+				auto widget = MakeNWidgets(_nested_social_plugins_widgets, nullptr);
 				this->Add(std::move(widget));
 			}
 		}
@@ -1192,7 +1192,7 @@ static WindowDesc _game_options_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
-	std::begin(_nested_game_options_widgets), std::end(_nested_game_options_widgets)
+	_nested_game_options_widgets
 );
 
 /** Open the game options window. */
@@ -2902,7 +2902,7 @@ static WindowDesc _settings_selection_desc(
 	WDP_CENTER, "settings", 510, 450,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
-	std::begin(_nested_settings_selection_widgets), std::end(_nested_settings_selection_widgets)
+	_nested_settings_selection_widgets
 );
 
 /** Open advanced settings window. */
@@ -3210,7 +3210,7 @@ static WindowDesc _cust_currency_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_CUSTOM_CURRENCY, WC_NONE,
 	0,
-	std::begin(_nested_cust_currency_widgets), std::end(_nested_cust_currency_widgets)
+	_nested_cust_currency_widgets
 );
 
 /** Open custom currency window. */

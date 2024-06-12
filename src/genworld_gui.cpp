@@ -1004,14 +1004,14 @@ static WindowDesc _generate_landscape_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	0,
-	std::begin(_nested_generate_landscape_widgets), std::end(_nested_generate_landscape_widgets)
+	_nested_generate_landscape_widgets
 );
 
 static WindowDesc _heightmap_load_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	0,
-	std::begin(_nested_heightmap_load_widgets), std::end(_nested_heightmap_load_widgets)
+	_nested_heightmap_load_widgets
 );
 
 static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
@@ -1314,7 +1314,7 @@ static WindowDesc _create_scenario_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	0,
-	std::begin(_nested_create_scenario_widgets), std::end(_nested_create_scenario_widgets)
+	_nested_create_scenario_widgets
 );
 
 /** Show the window to create a scenario. */
@@ -1340,7 +1340,7 @@ static WindowDesc _generate_progress_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_MODAL_PROGRESS, WC_NONE,
 	0,
-	std::begin(_nested_generate_progress_widgets), std::end(_nested_generate_progress_widgets)
+	_nested_generate_progress_widgets
 );
 
 struct GenWorldStatus {

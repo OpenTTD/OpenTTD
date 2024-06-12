@@ -545,7 +545,7 @@ static WindowDesc _newgrf_parameters_desc(
 	WDP_CENTER, "settings_newgrf_config", 500, 208,
 	WC_GRF_PARAMETERS, WC_NONE,
 	0,
-	std::begin(_nested_newgrf_parameter_widgets), std::end(_nested_newgrf_parameter_widgets)
+	_nested_newgrf_parameter_widgets
 );
 
 void OpenGRFParameterWindow(bool is_baseset, GRFConfig *c, bool editable)
@@ -1940,9 +1940,9 @@ static constexpr NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 /** Construct nested container widget for managing the lists and the info panel of the NewGRF GUI. */
 std::unique_ptr<NWidgetBase> NewGRFDisplay()
 {
-	std::unique_ptr<NWidgetBase> avs = MakeNWidgets(std::begin(_nested_newgrf_availables_widgets), std::end(_nested_newgrf_availables_widgets), nullptr);
-	std::unique_ptr<NWidgetBase> acs = MakeNWidgets(std::begin(_nested_newgrf_actives_widgets), std::end(_nested_newgrf_actives_widgets), nullptr);
-	std::unique_ptr<NWidgetBase> inf = MakeNWidgets(std::begin(_nested_newgrf_infopanel_widgets), std::end(_nested_newgrf_infopanel_widgets), nullptr);
+	std::unique_ptr<NWidgetBase> avs = MakeNWidgets(_nested_newgrf_availables_widgets, nullptr);
+	std::unique_ptr<NWidgetBase> acs = MakeNWidgets(_nested_newgrf_actives_widgets, nullptr);
+	std::unique_ptr<NWidgetBase> inf = MakeNWidgets(_nested_newgrf_infopanel_widgets, nullptr);
 
 	return std::make_unique<NWidgetNewGRFDisplay>(std::move(avs), std::move(acs), std::move(inf));
 }
@@ -1969,7 +1969,7 @@ static WindowDesc _newgrf_desc(
 	WDP_CENTER, "settings_newgrf", 300, 263,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
-	std::begin(_nested_newgrf_widgets), std::end(_nested_newgrf_widgets)
+	_nested_newgrf_widgets
 );
 
 /**
@@ -2053,7 +2053,7 @@ static WindowDesc _save_preset_desc(
 	WDP_CENTER, "save_preset", 140, 110,
 	WC_SAVE_PRESET, WC_GAME_OPTIONS,
 	WDF_MODAL,
-	std::begin(_nested_save_preset_widgets), std::end(_nested_save_preset_widgets)
+	_nested_save_preset_widgets
 );
 
 /** Class for the save preset window. */
@@ -2198,7 +2198,7 @@ static WindowDesc _scan_progress_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_MODAL_PROGRESS, WC_NONE,
 	0,
-	std::begin(_nested_scan_progress_widgets), std::end(_nested_scan_progress_widgets)
+	_nested_scan_progress_widgets
 );
 
 /** Window for showing the progress of NewGRF scanning. */

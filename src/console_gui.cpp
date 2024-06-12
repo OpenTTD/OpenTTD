@@ -144,7 +144,7 @@ static WindowDesc _console_window_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_CONSOLE, WC_NONE,
 	0,
-	std::begin(_nested_console_window_widgets), std::end(_nested_console_window_widgets)
+	_nested_console_window_widgets
 );
 
 struct IConsoleWindow : Window

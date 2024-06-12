@@ -356,7 +356,7 @@ static WindowDesc _terraform_desc(
 	WDP_MANUAL, "toolbar_landscape", 0, 0,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_terraform_widgets), std::end(_nested_terraform_widgets),
+	_nested_terraform_widgets,
 	&TerraformToolbarWindow::hotkeys
 );
 
@@ -740,7 +740,7 @@ static WindowDesc _scen_edit_land_gen_desc(
 	WDP_AUTO, "toolbar_landscape_scen", 0, 0,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_scen_edit_land_gen_widgets), std::end(_nested_scen_edit_land_gen_widgets),
+	_nested_scen_edit_land_gen_widgets,
 	&ScenarioEditorLandscapeGenerationWindow::hotkeys
 );
 

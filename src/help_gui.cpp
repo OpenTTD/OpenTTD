@@ -197,7 +197,7 @@ static WindowDesc _helpwin_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_HELPWIN, WC_NONE,
 	0,
-	std::begin(_nested_helpwin_widgets), std::end(_nested_helpwin_widgets)
+	_nested_helpwin_widgets
 );
 
 void ShowHelpWindow()

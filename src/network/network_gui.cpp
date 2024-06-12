@@ -959,7 +959,7 @@ static WindowDesc _network_game_window_desc(
 	WDP_CENTER, "list_servers", 1000, 730,
 	WC_NETWORK_WINDOW, WC_NONE,
 	0,
-	std::begin(_nested_network_game_widgets), std::end(_nested_network_game_widgets)
+	_nested_network_game_widgets
 );
 
 void ShowNetworkGameWindow()
@@ -1226,7 +1226,7 @@ static WindowDesc _network_start_server_window_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_WINDOW, WC_NONE,
 	0,
-	std::begin(_nested_network_start_server_window_widgets), std::end(_nested_network_start_server_window_widgets)
+	_nested_network_start_server_window_widgets
 );
 
 static void ShowNetworkStartServerWindow()
@@ -1300,7 +1300,7 @@ static WindowDesc _client_list_desc(
 	WDP_AUTO, "list_clients", 220, 300,
 	WC_CLIENT_LIST, WC_NONE,
 	0,
-	std::begin(_nested_client_list_widgets), std::end(_nested_client_list_widgets)
+	_nested_client_list_widgets
 );
 
 /**
@@ -2195,7 +2195,7 @@ static WindowDesc _network_join_status_window_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_MODAL,
-	std::begin(_nested_network_join_status_window_widgets), std::end(_nested_network_join_status_window_widgets)
+	_nested_network_join_status_window_widgets
 );
 
 void ShowJoinStatusWindow()
@@ -2312,7 +2312,7 @@ static WindowDesc _network_ask_relay_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_ASK_RELAY, WC_NONE,
 	WDF_MODAL,
-	std::begin(_nested_network_ask_relay_widgets), std::end(_nested_network_ask_relay_widgets)
+	_nested_network_ask_relay_widgets
 );
 
 /**
@@ -2410,7 +2410,7 @@ static WindowDesc _network_ask_survey_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_ASK_SURVEY, WC_NONE,
 	WDF_MODAL,
-	std::begin(_nested_network_ask_survey_widgets), std::end(_nested_network_ask_survey_widgets)
+	_nested_network_ask_survey_widgets
 );
 
 /**

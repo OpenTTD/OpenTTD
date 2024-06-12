@@ -65,7 +65,7 @@ static WindowDesc _dropdown_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_DROPDOWN_MENU, WC_NONE,
 	WDF_NO_FOCUS,
-	std::begin(_nested_dropdown_menu_widgets), std::end(_nested_dropdown_menu_widgets)
+	_nested_dropdown_menu_widgets
 );
 
 /** Drop-down menu window */

@@ -68,7 +68,7 @@ static WindowDesc _screenshot_window_desc(
 	WDP_AUTO, "take_a_screenshot", 200, 100,
 	WC_SCREENSHOT, WC_NONE,
 	0,
-	std::begin(_nested_screenshot), std::end(_nested_screenshot)
+	_nested_screenshot
 );
 
 void ShowScreenshotWindow()

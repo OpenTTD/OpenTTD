@@ -299,7 +299,7 @@ static WindowDesc _build_industry_desc(
 	WDP_AUTO, "build_industry", 170, 212,
 	WC_BUILD_INDUSTRY, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_build_industry_widgets), std::end(_nested_build_industry_widgets)
+	_nested_build_industry_widgets
 );
 
 /** Build (fund or prospect) a new industry, */
@@ -1221,7 +1221,7 @@ static WindowDesc _industry_view_desc(
 	WDP_AUTO, "view_industry", 260, 120,
 	WC_INDUSTRY_VIEW, WC_NONE,
 	0,
-	std::begin(_nested_industry_view_widgets), std::end(_nested_industry_view_widgets)
+	_nested_industry_view_widgets
 );
 
 void ShowIndustryViewWindow(int industry)
@@ -1919,7 +1919,7 @@ static WindowDesc _industry_directory_desc(
 	WDP_AUTO, "list_industries", 428, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
 	0,
-	std::begin(_nested_industry_directory_widgets), std::end(_nested_industry_directory_widgets),
+	_nested_industry_directory_widgets,
 	&IndustryDirectoryWindow::hotkeys
 );
 
@@ -1958,7 +1958,7 @@ static WindowDesc _industry_cargoes_desc(
 	WDP_AUTO, "industry_cargoes", 300, 210,
 	WC_INDUSTRY_CARGOES, WC_NONE,
 	0,
-	std::begin(_nested_industry_cargoes_widgets), std::end(_nested_industry_cargoes_widgets)
+	_nested_industry_cargoes_widgets
 );
 
 /** Available types of field. */

@@ -104,7 +104,7 @@ std::string _windows_file;
 /** Window description constructor. */
 WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
 			WindowClass window_class, WindowClass parent_class, uint32_t flags,
-			const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, HotkeyList *hotkeys,
+			const std::span<const NWidgetPart> nwid_parts, HotkeyList *hotkeys,
 			const std::source_location location) :
 	source_location(location),
 	default_pos(def_pos),
@@ -112,8 +112,7 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16_t def_
 	parent_cls(parent_class),
 	ini_key(ini_key),
 	flags(flags),
-	nwid_begin(nwid_begin),
-	nwid_end(nwid_end),
+	nwid_parts(nwid_parts),
 	hotkeys(hotkeys),
 	pref_sticky(false),
 	pref_width(0),
@@ -1723,7 +1722,7 @@ static Point LocalGetWindowPlacement(const WindowDesc &desc, int16_t sm_width, i
  */
 void Window::CreateNestedTree()
 {
-	this->nested_root = MakeWindowNWidgetTree(this->window_desc.nwid_begin, this->window_desc.nwid_end, &this->shade_select);
+	this->nested_root = MakeWindowNWidgetTree(this->window_desc.nwid_parts, &this->shade_select);
 	this->nested_root->FillWidgetLookup(this->widget_lookup);
 }
 
