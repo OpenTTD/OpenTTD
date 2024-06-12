@@ -856,7 +856,7 @@ static WindowDesc _timetable_desc(
 	WDP_AUTO, "view_vehicle_timetable", 400, 130,
 	WC_VEHICLE_TIMETABLE, WC_VEHICLE_VIEW,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_timetable_widgets), std::end(_nested_timetable_widgets)
+	_nested_timetable_widgets
 );
 
 /**

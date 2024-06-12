@@ -635,7 +635,7 @@ std::unique_ptr<NWidgetBase> MakePickerClassWidgets()
 		EndContainer(),
 	};
 
-	return MakeNWidgets(std::begin(picker_class_widgets), std::end(picker_class_widgets), nullptr);
+	return MakeNWidgets(picker_class_widgets, nullptr);
 }
 
 /** Create nested widgets for the type picker widgets. */
@@ -671,5 +671,5 @@ std::unique_ptr<NWidgetBase> MakePickerTypeWidgets()
 		EndContainer(),
 	};
 
-	return MakeNWidgets(std::begin(picker_type_widgets), std::end(picker_type_widgets), nullptr);
+	return MakeNWidgets(picker_type_widgets, nullptr);
 }

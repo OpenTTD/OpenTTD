@@ -163,7 +163,7 @@ struct WindowDesc : ZeroedMemoryAllocator {
 
 	WindowDesc(WindowPosition default_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
 			WindowClass window_class, WindowClass parent_class, uint32_t flags,
-			const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, HotkeyList *hotkeys = nullptr,
+			const std::span<const NWidgetPart> nwid_parts, HotkeyList *hotkeys = nullptr,
 			const std::source_location location = std::source_location::current());
 
 	~WindowDesc();
@@ -174,8 +174,7 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	WindowClass parent_cls;        ///< Class of the parent window. @see WindowClass
 	const char *ini_key;           ///< Key to store window defaults in openttd.cfg. \c nullptr if nothing shall be stored.
 	uint32_t flags;                  ///< Flags. @see WindowDefaultFlag
-	const NWidgetPart *nwid_begin; ///< Beginning of nested widget parts describing the window.
-	const NWidgetPart *nwid_end; ///< Ending of nested widget parts describing the window.
+	const std::span<const NWidgetPart> nwid_parts; ///< Span of nested widget parts describing the window.
 	HotkeyList *hotkeys;           ///< Hotkeys for the window.
 
 	bool pref_sticky;              ///< Preferred stickyness.

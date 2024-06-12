@@ -769,7 +769,7 @@ static WindowDesc _company_stations_desc(
 	WDP_AUTO, "list_stations", 358, 162,
 	WC_STATION_LIST, WC_NONE,
 	0,
-	std::begin(_nested_company_stations_widgets), std::end(_nested_company_stations_widgets)
+	_nested_company_stations_widgets
 );
 
 /**
@@ -2133,7 +2133,7 @@ static WindowDesc _station_view_desc(
 	WDP_AUTO, "view_station", 249, 117,
 	WC_STATION_VIEW, WC_NONE,
 	0,
-	std::begin(_nested_station_view_widgets), std::end(_nested_station_view_widgets)
+	_nested_station_view_widgets
 );
 
 /**
@@ -2391,7 +2391,7 @@ static WindowDesc _select_station_desc(
 	WDP_AUTO, "build_station_join", 200, 180,
 	WC_SELECT_STATION, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_select_station_widgets), std::end(_nested_select_station_widgets)
+	_nested_select_station_widgets
 );
 
 

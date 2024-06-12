@@ -44,7 +44,7 @@ static WindowDesc _background_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
 	WDF_NO_CLOSE,
-	std::begin(_background_widgets), std::end(_background_widgets)
+	_background_widgets
 );
 
 /** The background for the game. */
@@ -80,7 +80,7 @@ static WindowDesc _bootstrap_errmsg_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
 	WDF_MODAL | WDF_NO_CLOSE,
-	std::begin(_nested_bootstrap_errmsg_widgets), std::end(_nested_bootstrap_errmsg_widgets)
+	_nested_bootstrap_errmsg_widgets
 );
 
 /** The window for a failed bootstrap. */
@@ -137,7 +137,7 @@ static WindowDesc _bootstrap_download_status_window_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_MODAL | WDF_NO_CLOSE,
-	std::begin(_nested_bootstrap_download_status_window_widgets), std::end(_nested_bootstrap_download_status_window_widgets)
+	_nested_bootstrap_download_status_window_widgets
 );
 
 
@@ -189,7 +189,7 @@ static WindowDesc _bootstrap_query_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_NO_CLOSE,
-	std::begin(_bootstrap_query_widgets), std::end(_bootstrap_query_widgets)
+	_bootstrap_query_widgets
 );
 
 /** The window for the query. It can't use the generic query window as that uses sprites that don't exist yet. */

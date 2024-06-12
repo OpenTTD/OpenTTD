@@ -730,7 +730,7 @@ static WindowDesc _framerate_display_desc(
 	WDP_AUTO, "framerate_display", 0, 0,
 	WC_FRAMERATE_DISPLAY, WC_NONE,
 	0,
-	std::begin(_framerate_window_widgets), std::end(_framerate_window_widgets)
+	_framerate_window_widgets
 );
 
 
@@ -1021,7 +1021,7 @@ static WindowDesc _frametime_graph_window_desc(
 	WDP_AUTO, "frametime_graph", 140, 90,
 	WC_FRAMETIME_GRAPH, WC_NONE,
 	0,
-	std::begin(_frametime_graph_window_widgets), std::end(_frametime_graph_window_widgets)
+	_frametime_graph_window_widgets
 );
 
 

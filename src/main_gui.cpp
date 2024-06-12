@@ -517,7 +517,7 @@ static WindowDesc _main_window_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_MAIN_WINDOW, WC_NONE,
 	WDF_NO_CLOSE,
-	std::begin(_nested_main_window_widgets), std::end(_nested_main_window_widgets),
+	_nested_main_window_widgets,
 	&MainWindow::hotkeys
 );
 

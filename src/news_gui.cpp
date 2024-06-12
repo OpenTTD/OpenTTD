@@ -116,7 +116,7 @@ static WindowDesc _normal_news_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
-	std::begin(_nested_normal_news_widgets), std::end(_nested_normal_news_widgets)
+	_nested_normal_news_widgets
 );
 
 /* New vehicles news items. */
@@ -143,7 +143,7 @@ static WindowDesc _vehicle_news_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
-	std::begin(_nested_vehicle_news_widgets), std::end(_nested_vehicle_news_widgets)
+	_nested_vehicle_news_widgets
 );
 
 /* Company news items. */
@@ -171,7 +171,7 @@ static WindowDesc _company_news_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
-	std::begin(_nested_company_news_widgets), std::end(_nested_company_news_widgets)
+	_nested_company_news_widgets
 );
 
 /* Thin news items. */
@@ -194,7 +194,7 @@ static WindowDesc _thin_news_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
-	std::begin(_nested_thin_news_widgets), std::end(_nested_thin_news_widgets)
+	_nested_thin_news_widgets
 );
 
 /* Small news items. */
@@ -220,7 +220,7 @@ static WindowDesc _small_news_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
-	std::begin(_nested_small_news_widgets), std::end(_nested_small_news_widgets)
+	_nested_small_news_widgets
 );
 
 /**
@@ -1201,7 +1201,7 @@ static WindowDesc _message_history_desc(
 	WDP_AUTO, "list_news", 400, 140,
 	WC_MESSAGE_HISTORY, WC_NONE,
 	0,
-	std::begin(_nested_message_history), std::end(_nested_message_history)
+	_nested_message_history
 );
 
 /** Display window with news messages history */

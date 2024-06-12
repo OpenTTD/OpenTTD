@@ -346,7 +346,7 @@ static WindowDesc _town_authority_desc(
 	WDP_AUTO, "view_town_authority", 317, 222,
 	WC_TOWN_AUTHORITY, WC_NONE,
 	0,
-	std::begin(_nested_town_authority_widgets), std::end(_nested_town_authority_widgets)
+	_nested_town_authority_widgets
 );
 
 static void ShowTownAuthorityWindow(uint town)
@@ -640,7 +640,7 @@ static WindowDesc _town_game_view_desc(
 	WDP_AUTO, "view_town", 260, TownViewWindow::WID_TV_HEIGHT_NORMAL,
 	WC_TOWN_VIEW, WC_NONE,
 	0,
-	std::begin(_nested_town_game_view_widgets), std::end(_nested_town_game_view_widgets)
+	_nested_town_game_view_widgets
 );
 
 static constexpr NWidgetPart _nested_town_editor_view_widgets[] = {
@@ -671,7 +671,7 @@ static WindowDesc _town_editor_view_desc(
 	WDP_AUTO, "view_town_scen", 260, TownViewWindow::WID_TV_HEIGHT_NORMAL,
 	WC_TOWN_VIEW, WC_NONE,
 	0,
-	std::begin(_nested_town_editor_view_widgets), std::end(_nested_town_editor_view_widgets)
+	_nested_town_editor_view_widgets
 );
 
 void ShowTownViewWindow(TownID town)
@@ -1060,7 +1060,7 @@ static WindowDesc _town_directory_desc(
 	WDP_AUTO, "list_towns", 208, 202,
 	WC_TOWN_DIRECTORY, WC_NONE,
 	0,
-	std::begin(_nested_town_directory_widgets), std::end(_nested_town_directory_widgets),
+	_nested_town_directory_widgets,
 	&TownDirectoryWindow::hotkeys
 );
 
@@ -1294,7 +1294,7 @@ static WindowDesc _found_town_desc(
 	WDP_AUTO, "build_town", 160, 162,
 	WC_FOUND_TOWN, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_found_town_widgets), std::end(_nested_found_town_widgets)
+	_nested_found_town_widgets
 );
 
 void ShowFoundTownWindow()
@@ -1632,7 +1632,7 @@ static WindowDesc _build_house_desc(
 	WDP_AUTO, "build_house", 0, 0,
 	WC_BUILD_HOUSE, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_build_house_widgets), std::end(_nested_build_house_widgets),
+	_nested_build_house_widgets,
 	&BuildHouseWindow::hotkeys
 );
 

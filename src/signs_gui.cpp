@@ -387,7 +387,7 @@ static WindowDesc _sign_list_desc(
 	WDP_AUTO, "list_signs", 358, 138,
 	WC_SIGN_LIST, WC_NONE,
 	0,
-	std::begin(_nested_sign_list_widgets), std::end(_nested_sign_list_widgets),
+	_nested_sign_list_widgets,
 	&SignListWindow::hotkeys
 );
 
@@ -553,7 +553,7 @@ static WindowDesc _query_sign_edit_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_QUERY_STRING, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_query_sign_edit_widgets), std::end(_nested_query_sign_edit_widgets)
+	_nested_query_sign_edit_widgets
 );
 
 /**
