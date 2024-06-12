@@ -438,6 +438,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Editor verlasse
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Beenden
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Städte erzeugen
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Häuser platzieren
 
 # Settings menu
 ###length 16
@@ -957,6 +959,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Lautstärke
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Sound-Effekte
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musik
 
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Währung
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Währung auswählen
@@ -1054,14 +1057,15 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Dieses K
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Kantenglättung für Schriften
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Dieses Kästchen ankreuzen, um Kantenglättung für skalierbare Schriften zu aktivieren
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}×
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatische Umfrage
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Bei automatischer Umfrage teilnehmen
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Falls aktiviert, wird OpenTTD eine Umfrage beim Verlassen des Spiels übertragen
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Über Umfrage und Privatsphäre
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Dies öffnet einen Browser mit mehr Informationen über die automatische Umfrage
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Vorschau des Umfrageergebnisses
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Zeige die Umfrageergebnisse des gerade laufenden Spiels an
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatische Datenerhebung
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Bei automatischer Datenerhebung teilnehmen
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Falls aktiviert, wird OpenTTD eine Datenerhebung beim Verlassen des Spiels übertragen
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Über Datenerhebung und Privatsphäre
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Dies öffnet einen Browser mit mehr Informationen über die automatische Datenerhebung
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Vorschau des Datenerhebungsergebnisses
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Zeige die Datenerhebungsergebnisse des gerade laufenden Spiels an
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
@@ -1082,6 +1086,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basismus
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Ein Basismusikset auswählen
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Zusätzliche Informationen über das Basismusikset
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Inhalt holen
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Nach neuen und aktualisierten Inhalt zum Herunterladen prüfen
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(keine Plugins für Soziale Medien installiert!)
 
@@ -1493,7 +1499,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Wanduhr
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuten pro Jahr: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Die Anzahl an Minuten in einem Kalenderjahr wählen. Standartmäßig sind das 12 Minuten. Um das wechseln der Kalenderzeit auszuschalten, einfach auf 0 stellen. Diese Einstellung beeinflusst nicht die wirtschaftssimulation des Spiels und ist nur verfügbar, wenn die Wanduhr als Zeitmesser eingestellt ist
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Die Anzahl an Minuten in einem Kalenderjahr wählen. Standardmäßig sind das 12 Minuten. Um das Wechseln der Kalenderzeit auszuschalten, einfach auf 0 stellen. Wenn die Länge des Kalenderjahres erhöht wird, wird die Einführung von Fahrzeugen, Häusern und anderen Infrastrukturen verlangsamt. Dies beeinflusst nicht die Fahrzeuggeschwindigkeit oder die wirtschaftliche Simulation, außer die Inflation. Diese Einstellung ist nur verfügbar, wenn die Zeit mit der Wanduhr erfasst wird.
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -1825,6 +1831,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Setze das Stand
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard-Wartungsintervall für Schiffe: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Setze das Standardwartungsintervall für Schiffe. Dieses Wartungsintervall wird von allen Schiffen eingehalten, denen kein individuelles Wartungsintervall zugewiesen worden ist
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Tag{P 0 "" e}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Minute{P 0 "" n}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktiviert
@@ -2471,6 +2480,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Ihr Spielername
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Auszuübende administrative Aktionen für diesen Teilnehmer
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Auszuübende administrative Aktionen für diese Firma
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Dieser Firma beitreten
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Diesem Client autorisieren, Ihrer Firma beizutreten
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Eine Nachricht an diesen Spieler schicken
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Eine Nachricht an alle Spieler dieser Firma schicken
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Eine Nachricht an alle Zuschauer schicken
@@ -2505,10 +2515,10 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nein
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, diesmal
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, nicht erneut fragen
 
-STR_NETWORK_ASK_SURVEY_CAPTION                                  :Bei automatischer Umfrage teilnehmen?
-STR_NETWORK_ASK_SURVEY_TEXT                                     :Möchtest du an einer automatischen Umfrage teilnehmen?{}OpenTTD wird beim Verlassen des Spiels eine Umfrage übermitteln.{}Du kannst dies jederzeit unter „Spieloptionen“ ändern.
-STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Vorschau des Umfrageergebnisses
-STR_NETWORK_ASK_SURVEY_LINK                                     :Über Umfrage und Privatsphäre
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Bei automatischer Datenerhebung teilnehmen?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Möchten Sie an einer automatischen Datenerhebung teilnehmen?{}OpenTTD wird beim Verlassen des Spiels eine Datenerhebung übermitteln.{}Sie können dies jederzeit unter „Spieloptionen“ ändern.
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Vorschau des Datenerhebungsergebnisses
+STR_NETWORK_ASK_SURVEY_LINK                                     :Über Datenerhebung und Privatsphäre
 STR_NETWORK_ASK_SURVEY_NO                                       :Nein
 STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
@@ -2791,9 +2801,33 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Bahnstei
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Klicken und Ziehen
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Stationsgröße durch Klicken und Ziehen frei wählbar
 
+STR_PICKER_MODE_ALL                                             :Alle
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Anzeige aller Einträge von allen Klassen umschalten
+STR_PICKER_MODE_USED                                            :Benutzt
+STR_PICKER_MODE_USED_TOOLTIP                                    :Anzeige von nur existierenden Einträgen umschalten
+STR_PICKER_MODE_SAVED                                           :Gespeichert
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Anzeige von nur gespeicherten Einträgen umschalten
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Wählen Sie eine anzuzeigende Stationsklasse
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wählen Sie einen Stationstyp zum Bauen. Strg+Klick, um in gespeicherten Einträgen hinzuzufügen oder zu entfernen
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Wählen Sie eine anzuzeigende Wegpunktklasse
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Wählen Sie einen zu bauenden Wegpunkt. Strg+Klick, um in gespeicherten Einträgen hinzuzufügen oder zu entfernen
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Wählen Sie eine anzuzeigende Busstationsklasse
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Wählen Sie einen Busstationstyp zum Bauen. Strg+Klick, um in gespeicherten Einträgen hinzuzufügen oder zu entfernen
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Wählen Sie eine anzuzeigende Lkw-Stationsklasse
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Wählen Sie einen Lkw-Stationstyp zum Bauen. Strg+Klick, um in gespeicherten Einträgen hinzuzufügen oder zu entfernen
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Wählen Sie eine anzuzeigende Objektklasse
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Wählen Sie ein zu bauenden Objekttyp. Strg+Klick, um in gespeicherten Einträgen hinzuzufügen oder zu entfernen. Ctrg+Klick+Ziehen, um Gebiet diagonal zu wählen. Zusätzlich Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wählen Sie eine anzuzeigende Stadtzone
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Wählen Sie einen Haustyp zum Bauen. Strg+Klick, um in gespeicherten Einträgen hinzuzufügen oder zu entfernen
 
+STR_HOUSE_PICKER_CAPTION                                        :Hausauswahl
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rand
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Peripherie
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Äußere Vororte
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Innere Vororte
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadtmitte
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standart-Haltestelle
@@ -3288,7 +3322,7 @@ STR_MAPGEN_GENERATE                                             :{WHITE}Erzeugen
 STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Erstelle die Welt und spiele OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF-Einstellungen
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF-Einstellungen öffnen
-STR_MAPGEN_AI_SETTINGS                                          :{BLACK}KI Einstellungen
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}KI-Einstellungen
 STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}KI-Einstellungen öffnen
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Spielskripteinstellungen
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Spielskripteinstellungen öffnen
@@ -3460,6 +3494,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Straßentyp
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF-Variable 60+x Parameter (hexadecimal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Sprite-Ausrichtung: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Sprite-Ausrichtung: Action 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Sprite-Ausrichtung: Action 0x5 {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nächstes Sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Gehe zum nächsten normalen Sprite und überspringe alle Pseudo-, Recolour- und Schriftsprites (springt ggf. vom ersten bis zum letzten Sprite)
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gehe zu Sprite
@@ -3468,6 +3505,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorherig
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Gehe zum vorherigen normalen Sprite und überspringe alle Pseudo-, Recolour- und Schriftsprites (springt ggf. vom letzten bis zum ersten Sprite)
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Darstellung des aktuellen Sprites. Die Ausrichtung wird beim Zeichnen des Sprites ignoriert
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Bewege die Sprites und ändere dadurch die X- und Y-Offsets. Strg+Klick um die Sprites 8 Blöcke weit zu bewegen.
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Versatz zentriert
@@ -4838,7 +4876,7 @@ STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Lizenz für die
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}-Liesmich von {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}-Änderungen von {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}-Lizenz von {STRING}
-STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Vorschau des Umfragenergebnisses
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Vorschau des Datenerhebungsergebnisses
 STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD-Dokument „{STRING}“
 
 
@@ -4870,7 +4908,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Geschät
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Speichern läuft,{}bitte warten, bis es beendet ist!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autosicherung fehlgeschlagen
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Laufwerk nicht betriebsbereit
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Spielspeicherung fehlgeschlagen …
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Datei kann nicht gelöscht werden
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden des Spieles fehlgeschlagen …
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interner Fehler: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Spielstandsdatei defekt – {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spielstand wurde mit einer neueren Spielversion erstellt
@@ -4975,6 +5015,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... es i
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Straßenarbeiten sind im Gange
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Stadt kann nicht gelöscht werden ...{}Eine Station oder ein Depot bezieht sich auf diese Stadt oder ein Feld im städtischen Besitz kann nicht entfernt werden.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... es gibt keinen geeigneten Standort für die Statue im Zentrum dieser Stadt
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Haus kann nicht gebaut werden …
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... zu viele Industrien
@@ -5012,6 +5053,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Flughafe
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenzt an mehr als eine vorhandene Station
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... Station ist zu groß
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}… nicht unterstützte Anzahl Gleise
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}… nicht unterstützte Länge
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Zu viele Stationen im Umkreis
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Zu viele Bahnsteigteile
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Zu viele Bushaltestellen
@@ -5252,6 +5295,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Bitte di
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Noch keine Fahrzeuge verfügbar
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Ein neues Spiel nach {DATE_SHORT} beginnen oder ein NewGRF-Fahrzeugset mit früher verfügbaren Fahrzeugen verwenden
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Nicht-stadtbaubare Straßentypen sind verfügbar
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Ändern Sie Ihre NewGRF-Konfiguration
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Es sind noch keine von Städten baubaren Straßentypen verfügbar
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Ein neues Spiel nach {DATE_SHORT} beginnen oder ein NewGRF benutzen, dass frühe von Städten baubare Straßentypen zur Verfügung stellt
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Der Zug kann das Signal nicht gefahrlos passieren ...
@@ -5803,6 +5850,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
