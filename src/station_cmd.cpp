@@ -1294,6 +1294,14 @@ static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag fl
 	return cost;
 }
 
+StationSpec::TileFlags GetStationTileFlags(TileIndex tile, const StationSpec *statspec)
+{
+	const StationGfx gfx = GetStationGfx(tile);
+	/* Default stations do not draw pylons under roofs (gfx >= 4) */
+	if (statspec == nullptr || gfx >= statspec->tileflags.size()) return gfx < 4 ? StationSpec::TileFlags::Pylons : StationSpec::TileFlags::None;
+	return statspec->tileflags[gfx];
+}
+
 /**
  * Set rail station tile flags for the given tile.
  * @param tile Tile to set flags on.
@@ -1301,15 +1309,10 @@ static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag fl
  */
 void SetRailStationTileFlags(TileIndex tile, const StationSpec *statspec)
 {
-	const StationGfx gfx = GetStationGfx(tile);
-	bool blocked = statspec != nullptr && HasBit(statspec->blocked, gfx);
-	/* Default stations do not draw pylons under roofs (gfx >= 4) */
-	bool pylons = statspec != nullptr ? HasBit(statspec->pylons, gfx) : gfx < 4;
-	bool wires = statspec == nullptr || !HasBit(statspec->wires, gfx);
-
-	SetStationTileBlocked(tile, blocked);
-	SetStationTileHavePylons(tile, pylons);
-	SetStationTileHaveWires(tile, wires);
+	auto flags = GetStationTileFlags(tile, statspec);
+	SetStationTileBlocked(tile, (flags & StationSpec::TileFlags::Blocked) == StationSpec::TileFlags::Blocked);
+	SetStationTileHavePylons(tile, (flags & StationSpec::TileFlags::Pylons) == StationSpec::TileFlags::Pylons);
+	SetStationTileHaveWires(tile, (flags & StationSpec::TileFlags::NoWires) != StationSpec::TileFlags::NoWires);
 }
 
 /**
@@ -1462,12 +1465,12 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 					uint32_t platinfo = GetPlatformInfo(AXIS_X, GetStationGfx(tile), plat_len, numtracks_orig, plat_len - w, numtracks_orig - numtracks, false);
 
 					/* As the station is not yet completely finished, the station does not yet exist. */
-					uint16_t callback = GetStationCallback(CBID_STATION_TILE_LAYOUT, platinfo, 0, statspec, nullptr, tile);
+					uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, statspec, nullptr, tile);
 					if (callback != CALLBACK_FAILED) {
-						if (callback < 8) {
+						if (callback <= UINT8_MAX) {
 							SetStationGfx(tile, (callback & ~1) + axis);
 						} else {
-							ErrorUnknownCallbackResult(statspec->grf_prop.grffile->grfid, CBID_STATION_TILE_LAYOUT, callback);
+							ErrorUnknownCallbackResult(statspec->grf_prop.grffile->grfid, CBID_STATION_BUILD_TILE_LAYOUT, callback);
 						}
 					}
 
@@ -2888,7 +2891,9 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 
 const DrawTileSprites *GetStationTileLayout(StationType st, uint8_t gfx)
 {
-	return &_station_display_datas[st][gfx];
+	const auto layouts = _station_display_datas[st];
+	if (gfx < layouts.size()) return layouts.data() + gfx;
+	return layouts.data();
 }
 
 /**
@@ -2981,8 +2986,8 @@ static void DrawTile_Station(TileInfo *ti)
 			if (statspec != nullptr) {
 				tile_layout = GetStationGfx(ti->tile);
 
-				if (HasBit(statspec->callback_mask, CBM_STATION_SPRITE_LAYOUT)) {
-					uint16_t callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
+				if (HasBit(statspec->callback_mask, CBM_STATION_DRAW_TILE_LAYOUT)) {
+					uint16_t callback = GetStationCallback(CBID_STATION_DRAW_TILE_LAYOUT, 0, 0, statspec, st, ti->tile);
 					if (callback != CALLBACK_FAILED) tile_layout = (callback & ~1) + GetRailStationAxis(ti->tile);
 				}
 
