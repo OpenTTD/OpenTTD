@@ -5182,7 +5182,7 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Sprawdź
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz pobrać kilka SI z przeglądarki „Dodatków Online”
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jeden z uruchomionych skryptów przestał działać. Prosimy o zgłoszenie tego autorowi skryptu dołączając zrzut ekranu okna debugowania SI / GameScript
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania SI / Game Script jest dostępne tylko na serwerze
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania SI / Game Script jest dostępne tylko dla serwera
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Ustawienia SI
