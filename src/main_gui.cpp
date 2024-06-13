@@ -87,10 +87,11 @@ void CcPlaySound_EXPLOSION(Commands, const CommandCost &result, TileIndex tile)
  * Zooms a viewport in a window in or out.
  * @param how Zooming direction.
  * @param w   Window owning the viewport.
+ * @param stop_following Should we stop following the vehicle in the viewport?
  * @return Returns \c true if zooming step could be done, \c false if further zooming is not possible.
  * @note No button handling or what so ever is done.
  */
-bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
+bool DoZoomInOutWindow(ZoomStateChange how, Window *w, bool stop_following)
 {
 	Viewport *vp;
 
@@ -112,7 +113,7 @@ bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 			w->viewport->scrollpos_y += vp->virtual_height >> 1;
 			w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
 			w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
-			w->viewport->follow_vehicle = INVALID_VEHICLE;
+			if (stop_following) w->viewport->follow_vehicle = INVALID_VEHICLE;
 			break;
 		case ZOOM_OUT:
 			if (vp->zoom >= _settings_client.gui.zoom_max) return false;
@@ -125,7 +126,7 @@ bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 
 			vp->virtual_width <<= 1;
 			vp->virtual_height <<= 1;
-			w->viewport->follow_vehicle = INVALID_VEHICLE;
+			if (stop_following) w->viewport->follow_vehicle = INVALID_VEHICLE;
 			break;
 	}
 	if (vp != nullptr) { // the vp can be null when how == ZOOM_NONE
