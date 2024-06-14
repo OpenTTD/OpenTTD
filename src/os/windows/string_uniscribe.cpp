@@ -479,7 +479,7 @@ UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(const Uniscribe
 	int advance = x;
 	for (int i = 0; i < this->num_glyphs; i++) {
 		int x_advance = range.advances[i];
-		this->positions.emplace_back(range.offsets[i].du + advance - 1, range.offsets[i].du + advance + x_advance, range.offsets[i].dv);
+		this->positions.emplace_back(range.offsets[i].du + advance, range.offsets[i].du + advance + x_advance - 1, range.offsets[i].dv);
 
 		advance += x_advance;
 	}
