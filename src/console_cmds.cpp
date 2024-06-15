@@ -24,6 +24,8 @@
 #include "fios.h"
 #include "fileio_func.h"
 #include "fontcache.h"
+#include "fontdetection.h"
+#include "language.h"
 #include "screenshot.h"
 #include "genworld.h"
 #include "strings_func.h"
@@ -46,6 +48,7 @@
 #include "company_cmd.h"
 #include "misc_cmd.h"
 
+#include <charconv>
 #include <sstream>
 
 #include "safeguards.h"
@@ -2179,6 +2182,54 @@ DEF_CONSOLE_CMD(ConContent)
 }
 #endif /* defined(WITH_ZLIB) */
 
+/* List all the fonts available via console */
+DEF_CONSOLE_CMD(ConListFonts)
+{
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List all fonts.");
+		return true;
+	}
+
+	FontSearcher *fs = FontSearcher::GetFontSearcher();
+	if (fs == nullptr) {
+		IConsolePrint(CC_ERROR, "No font searcher exists.");
+		return true;
+	}
+
+	if (argc == 1) {
+		auto families = fs->ListFamilies(_current_language->isocode, _current_language->winlangid);
+		std::sort(std::begin(families), std::end(families));
+
+		int i = 0;
+		for (auto &family : families) {
+			IConsolePrint(CC_DEFAULT, "{}) {}", i, family);
+			++i;
+		}
+	} else if (argc == 2) {
+		std::string family = argv[1];
+
+		/* If argv is a number treat it as an index into the list of fonts, which we need to get again... */
+		int index;
+		auto [_, err] = std::from_chars(family.data(), family.data() + family.size(), index, 10);
+		if (err == std::errc()) {
+			auto families = fs->ListFamilies(_current_language->isocode, _current_language->winlangid);
+			std::sort(std::begin(families), std::end(families));
+			if (IsInsideMM(index, 0, families.size())) family = families[index];
+		}
+
+		auto styles = fs->ListStyles(_current_language->isocode, _current_language->winlangid, family);
+		std::sort(std::begin(styles), std::end(styles), FontFamilySorter);
+
+		int i = 0;
+		for (auto &font : styles) {
+			IConsolePrint(CC_DEFAULT, "{}) {}, {}", i, font.family, font.style);
+			i++;
+		}
+	}
+
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConFont)
 {
 	if (argc == 0) {
@@ -2751,6 +2802,7 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("saveconfig",              ConSaveConfig);
 	IConsole::CmdRegister("ls",                      ConListFiles);
 	IConsole::CmdRegister("list_saves",              ConListFiles);
+	IConsole::CmdRegister("list_fonts",              ConListFonts);
 	IConsole::CmdRegister("list_scenarios",          ConListScenarios);
 	IConsole::CmdRegister("list_heightmaps",         ConListHeightmaps);
 	IConsole::CmdRegister("cd",                      ConChangeDirectory);

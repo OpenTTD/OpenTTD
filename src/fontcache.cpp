@@ -230,6 +230,15 @@ void UninitFontCache()
 #endif /* WITH_FREETYPE */
 }
 
+bool FontFamilySorter(const FontFamily &a, const FontFamily &b)
+{
+	int r = StrNaturalCompare(a.family, b.family);
+	if (r == 0) r = (a.weight - b.weight);
+	if (r == 0) r = (a.slant - b.slant);
+	if (r == 0) r = StrNaturalCompare(a.style, b.style);
+	return r < 0;
+}
+
 /**
  * Register the FontSearcher instance. There can be only one font searcher, which depends on platform.
  */

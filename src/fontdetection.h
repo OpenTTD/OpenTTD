@@ -48,6 +48,8 @@ struct FontFamily {
 	FontFamily(std::string_view family, std::string_view style, int32_t slant, int32_t weight) : family(family), style(style), slant(slant), weight(weight) {}
 };
 
+bool FontFamilySorter(const FontFamily &a, const FontFamily &b);
+
 class FontSearcher {
 public:
 	FontSearcher();
