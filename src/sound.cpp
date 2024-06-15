@@ -137,15 +137,15 @@ static bool SetBankSource(MixerChannel *mc, const SoundEntry *sound)
 		}
 	}
 
-#if TTD_ENDIAN == TTD_BIG_ENDIAN
-	if (sound->bits_per_sample == 16) {
-		uint num_samples = sound->file_size / 2;
-		int16_t *samples = (int16_t *)mem;
-		for (uint i = 0; i < num_samples; i++) {
-			samples[i] = BSWAP16(samples[i]);
+	if constexpr (std::endian::native == std::endian::big) {
+		if (sound->bits_per_sample == 16) {
+			size_t num_samples = sound->file_size / 2;
+			int16_t *samples = reinterpret_cast<int16_t *>(mem);
+			for (size_t i = 0; i < num_samples; i++) {
+				samples[i] = BSWAP16(samples[i]);
+			}
 		}
 	}
-#endif
 
 	assert(sound->bits_per_sample == 8 || sound->bits_per_sample == 16);
 	assert(sound->channels == 1);
