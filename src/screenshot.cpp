@@ -71,7 +71,7 @@ struct ScreenshotFormat {
 	ScreenshotHandlerProc *proc; ///< Function for writing the screenshot.
 };
 
-#define MKCOLOUR(x)         TO_LE32X(x)
+#define MKCOLOUR(x)         TO_LE32(x)
 
 /*************************************************
  **** SCREENSHOT CODE FOR WINDOWS BITMAP (.BMP)
@@ -360,12 +360,12 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 		sig_bit.gray  = 8;
 		png_set_sBIT(png_ptr, info_ptr, &sig_bit);
 
-#if TTD_ENDIAN == TTD_LITTLE_ENDIAN
-		png_set_bgr(png_ptr);
-		png_set_filler(png_ptr, 0, PNG_FILLER_AFTER);
-#else
-		png_set_filler(png_ptr, 0, PNG_FILLER_BEFORE);
-#endif /* TTD_ENDIAN == TTD_LITTLE_ENDIAN */
+		if constexpr (std::endian::native == std::endian::little) {
+			png_set_bgr(png_ptr);
+			png_set_filler(png_ptr, 0, PNG_FILLER_AFTER);
+		} else {
+			png_set_filler(png_ptr, 0, PNG_FILLER_BEFORE);
+		}
 	}
 
 	/* use by default 64k temp memory */

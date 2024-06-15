@@ -219,13 +219,8 @@ void SurveyOpenTTD(nlohmann::json &survey)
 			32
 #endif
 		;
-	survey["endian"] =
-#if (TTD_ENDIAN == TTD_LITTLE_ENDIAN)
-			"little"
-#else
-			"big"
-#endif
-		;
+	if constexpr (std::endian::native == std::endian::little) survey["endian"] = "little";
+	if constexpr (std::endian::native == std::endian::big) survey["endian"] = "big";
 	survey["dedicated_build"] =
 #ifdef DEDICATED
 			"yes"

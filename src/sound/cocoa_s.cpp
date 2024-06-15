@@ -20,7 +20,6 @@
 #include "../debug.h"
 #include "../driver.h"
 #include "../mixer.h"
-#include "../core/endian_type.hpp"
 #include "cocoa_s.h"
 
 #define Rect        OTTDRect
@@ -58,9 +57,9 @@ std::optional<std::string_view> SoundDriver_Cocoa::Start(const StringList &parm)
 	requestedDesc.mBitsPerChannel = 16;
 	requestedDesc.mFormatFlags |= kLinearPCMFormatFlagIsSignedInteger;
 
-#if TTD_ENDIAN == TTD_BIG_ENDIAN
-	requestedDesc.mFormatFlags |= kLinearPCMFormatFlagIsBigEndian;
-#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
+	if constexpr (std::endian::native == std::endian::big) {
+		requestedDesc.mFormatFlags |= kLinearPCMFormatFlagIsBigEndian;
+	}
 
 	requestedDesc.mFramesPerPacket = 1;
 	requestedDesc.mBytesPerFrame = requestedDesc.mBitsPerChannel * requestedDesc.mChannelsPerFrame / 8;
