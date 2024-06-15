@@ -255,6 +255,42 @@ FontSearcher::~FontSearcher()
 	FontSearcher::instance = nullptr;
 }
 
+std::vector<std::string_view> FontSearcher::ListFamilies(const std::string &language_isocode, int winlangid)
+{
+	std::vector<std::string_view> families;
+
+	if (this->cached_language_isocode != language_isocode || this->cached_winlangid != winlangid) {
+		this->UpdateCachedFonts(language_isocode, winlangid);
+		this->cached_language_isocode = language_isocode;
+		this->cached_winlangid = winlangid;
+	}
+
+	for (const FontFamily &ff : this->cached_fonts) {
+		if (std::find(std::begin(families), std::end(families), ff.family) != std::end(families)) continue;
+		families.push_back(ff.family);
+	}
+
+	return families;
+}
+
+std::vector<std::reference_wrapper<const FontFamily>> FontSearcher::ListStyles(const std::string &language_isocode, int winlangid, std::string_view family)
+{
+	std::vector<std::reference_wrapper<const FontFamily>> styles;
+
+	if (this->cached_language_isocode != language_isocode || this->cached_winlangid != winlangid) {
+		this->UpdateCachedFonts(language_isocode, winlangid);
+		this->cached_language_isocode = language_isocode;
+		this->cached_winlangid = winlangid;
+	}
+
+	for (const FontFamily &ff : this->cached_fonts) {
+		if (ff.family != family) continue;
+		styles.emplace_back(std::ref(ff));
+	}
+
+	return styles;
+}
+
 #if !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA)
 
 bool SetFallbackFont(FontCacheSettings *, const std::string &, int, MissingGlyphSearcher *) { return false; }

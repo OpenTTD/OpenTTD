@@ -34,7 +34,7 @@
 
 struct EFCParam {
 	FontCacheSettings *settings;
-	LOCALESIGNATURE  locale;
+	LOCALESIGNATURE locale;
 	MissingGlyphSearcher *callback;
 	std::vector<std::wstring> fonts;
 
@@ -384,20 +384,31 @@ void LoadWin32Font(FontSize fs)
  */
 class Win32FontSearcher : public FontSearcher {
 public:
-	std::vector<std::string> ListFamilies(const std::string &language_isocode, int winlangid) override;
-	std::vector<FontFamily> ListStyles(const std::string &language_isocode, int winlangid, std::string_view font_family) override;
+	void UpdateCachedFonts(const std::string &language_isocode, int winlangid) override;
 };
 
 /**
- * State passed between EnumFontFamiliesEx and our list families callback.
+ * State passed between EnumFontFamiliesEx and our list fonts callbacks.
  */
-struct EFCListFamiliesParam : EFCParam {
-	std::vector<std::string> families; ///< List of families found.
+struct EFCListFontsParam : EFCParam {
+	std::vector<FontFamily> &fonts;
+
+	explicit EFCListFontsParam(std::vector<FontFamily> &fonts) : fonts(fonts) {}
 };
+
+static int CALLBACK ListStylesFontCallback(ENUMLOGFONTEX *lpelfe, NEWTEXTMETRICEX *, DWORD, LPARAM lParam)
+{
+	EFCListFontsParam &info = *reinterpret_cast<EFCListFontsParam *>(lParam);
+
+	LOGFONT &lf = lpelfe->elfLogFont;
+	info.fonts.emplace_back(FS2OTTD(lf.lfFaceName), FS2OTTD(lpelfe->elfStyle), lf.lfItalic, lf.lfWeight);
+
+	return 1;
+}
 
 static int CALLBACK ListFamiliesFontCallback(ENUMLOGFONTEX *lpelfe, NEWTEXTMETRICEX *metric, DWORD type, LPARAM lParam)
 {
-	EFCListFamiliesParam &info = *reinterpret_cast<EFCListFamiliesParam *>(lParam);
+	EFCListFontsParam &info = *reinterpret_cast<EFCListFontsParam *>(lParam);
 
 	/* Only use TrueType fonts */
 	if (!(type & TRUETYPE_FONTTYPE)) return 1;
@@ -409,18 +420,23 @@ static int CALLBACK ListFamiliesFontCallback(ENUMLOGFONTEX *lpelfe, NEWTEXTMETRI
 	if ((metric->ntmFontSig.fsCsb[0] & info.locale.lsCsbSupported[0]) == 0 && (metric->ntmFontSig.fsCsb[1] & info.locale.lsCsbSupported[1]) == 0) return 1;
 
 	LOGFONT &lf = lpelfe->elfLogFont;
-	info.families.emplace_back(FS2OTTD(lf.lfFaceName));
+
+	HDC dc = GetDC(nullptr);
+	EnumFontFamiliesEx(dc, &lf, (FONTENUMPROC)&ListStylesFontCallback, reinterpret_cast<LPARAM>(&info), 0);
+	ReleaseDC(nullptr, dc);
 
 	return 1;
 }
 
-std::vector<std::string> Win32FontSearcher::ListFamilies(const std::string &, int winlangid)
+void Win32FontSearcher::UpdateCachedFonts(const std::string &, int winlangid)
 {
-	EFCListFamiliesParam info;
+	EFCListFontsParam info(this->cached_fonts);
+	this->cached_fonts.clear();
+
 	if (GetLocaleInfo(MAKELCID(winlangid, SORT_DEFAULT), LOCALE_FONTSIGNATURE, reinterpret_cast<LPTSTR>(&info.locale), sizeof(info.locale) / sizeof(wchar_t)) == 0) {
 		/* Invalid langid or some other mysterious error, can't determine fallback font. */
 		Debug(fontcache, 1, "Can't get locale info for fallback font (langid=0x{:x})", winlangid);
-		return info.families;
+		return;
 	}
 
 	LOGFONT lf{};
@@ -429,54 +445,6 @@ std::vector<std::string> Win32FontSearcher::ListFamilies(const std::string &, in
 	HDC dc = GetDC(nullptr);
 	EnumFontFamiliesEx(dc, &lf, (FONTENUMPROC)&ListFamiliesFontCallback, reinterpret_cast<LPARAM>(&info), 0);
 	ReleaseDC(nullptr, dc);
-
-	return info.families;
-}
-
-/**
- * State passed between EnumFontFamiliesEx and our list styles callback.
- */
-struct EFCListStylesParam : EFCParam {
-	std::vector<FontFamily> styles; ///< List of styles for the family.
-};
-
-static int CALLBACK ListStylesFontCallback(ENUMLOGFONTEX *lpelfe, NEWTEXTMETRICEX *metric, DWORD type, LPARAM lParam)
-{
-	EFCListStylesParam &info = *reinterpret_cast<EFCListStylesParam *>(lParam);
-
-	/* Only use TrueType fonts */
-	if (!(type & TRUETYPE_FONTTYPE)) return 1;
-	/* Skip duplicates */
-	if (!info.Add(lpelfe->elfFullName)) return 1;
-	/* Don't use SYMBOL fonts */
-	if (lpelfe->elfLogFont.lfCharSet == SYMBOL_CHARSET) return 1;
-	/* The font has to have at least one of the supported locales to be usable. */
-	if ((metric->ntmFontSig.fsCsb[0] & info.locale.lsCsbSupported[0]) == 0 && (metric->ntmFontSig.fsCsb[1] & info.locale.lsCsbSupported[1]) == 0) return 1;
-
-	LOGFONT &lf = lpelfe->elfLogFont;
-	info.styles.emplace_back(FS2OTTD(lf.lfFaceName), FS2OTTD(lpelfe->elfStyle), lf.lfItalic, lf.lfWeight);
-
-	return 1;
-}
-
-std::vector<FontFamily> Win32FontSearcher::ListStyles(const std::string &, int winlangid, std::string_view font_family)
-{
-	EFCListStylesParam info;
-	if (GetLocaleInfo(MAKELCID(winlangid, SORT_DEFAULT), LOCALE_FONTSIGNATURE, reinterpret_cast<LPTSTR>(&info.locale), sizeof(info.locale) / sizeof(wchar_t)) == 0) {
-		/* Invalid langid or some other mysterious error, can't determine fallback font. */
-		Debug(fontcache, 1, "Can't get locale info for fallback font (langid=0x{:x})", winlangid);
-		return info.styles;
-	}
-
-	LOGFONT lf{};
-	lf.lfCharSet = DEFAULT_CHARSET;
-	convert_to_fs(font_family, lf.lfFaceName, std::size(lf.lfFaceName));
-
-	HDC dc = GetDC(nullptr);
-	EnumFontFamiliesEx(dc, &lf, (FONTENUMPROC)&ListStylesFontCallback, reinterpret_cast<LPARAM>(&info), 0);
-	ReleaseDC(nullptr, dc);
-
-	return info.styles;
 }
 
 static Win32FontSearcher _win32fs_instance;

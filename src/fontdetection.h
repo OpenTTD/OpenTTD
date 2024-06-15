@@ -62,12 +62,19 @@ public:
 	static inline FontSearcher *GetFontSearcher() { return FontSearcher::instance; }
 
 	/**
+	 * Update cached font information.
+	 * @param language_isocode the language, e.g. en_GB.
+	 * @param winlangid the language ID windows style.
+	 */
+	virtual void UpdateCachedFonts(const std::string &language_isocode, int winlangid) = 0;
+
+	/**
 	 * List available fonts.
 	 * @param language_isocode the language, e.g. en_GB.
 	 * @param winlangid the language ID windows style.
 	 * @return vector containing font family names.
 	 */
-	virtual std::vector<std::string> ListFamilies(const std::string &language_isocode, int winlangid) = 0;
+	std::vector<std::string_view> ListFamilies(const std::string &language_isocode, int winlangid);
 
 	/**
 	 * List available styles for a font family.
@@ -76,7 +83,12 @@ public:
 	 * @param font_family The font family to list.
 	 * @return vector containing style information for the family.
 	 */
-	virtual std::vector<FontFamily> ListStyles(const std::string &language_isocode, int winlangid, std::string_view font_family) = 0;
+	std::vector<std::reference_wrapper<const FontFamily>> ListStyles(const std::string &language_isocode, int winlangid, std::string_view family);
+
+protected:
+	std::vector<FontFamily> cached_fonts;
+	std::string cached_language_isocode;
+	int cached_winlangid;
 
 private:
 	static inline FontSearcher *instance = nullptr;

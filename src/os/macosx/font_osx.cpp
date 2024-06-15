@@ -389,48 +389,27 @@ void LoadCoreTextFont(FontSize fs)
 
 class CoreTextFontSearcher : public FontSearcher {
 public:
-	std::vector<std::string> ListFamilies(const std::string &language_isocode, int winlangid) override;
-	std::vector<FontFamily> ListStyles(const std::string &language_isocode, int winlangid, std::string_view font_family) override;
+	void UpdateCachedFonts(const std::string &language_isocode, int winlangid) override;
 };
 
-std::vector<std::string> CoreTextFontSearcher::ListFamilies(const std::string &language_isocode, int)
+void CoreTextFontSearcher::UpdateCachedFonts(const std::string &language_isocode, int)
 {
-	std::vector<std::string> families;
+	this->cached_fonts.clear();
 
-	EnumerateCoreFextFonts(language_isocode, 1, [&families](int, CTFontDescriptorRef font, CTFontSymbolicTraits) {
-		/* Get font name. */
-		char family[128];
-		CFAutoRelease<CFStringRef> font_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontFamilyNameAttribute));
-		CFStringGetCString(font_name.get(), family, std::size(family), kCFStringEncodingUTF8);
-
-		/* There are some special fonts starting with an '.' and the last resort font that aren't usable. Skip them. */
-		if (family[0] == '.' || strncmp(family, "LastResort", 10) == 0) return true;
-
-		if (std::find(std::begin(families), std::end(families), family) == std::end(families)) {
-			families.push_back(family);
-		}
-
-		return true;
-	});
-
-	return families;
-}
-
-std::vector<FontFamily> CoreTextFontSearcher::ListStyles(const std::string &language_isocode, int, std::string_view font_family)
-{
-	std::vector<FontFamily> styles;
-
-	EnumerateCoreFextFonts(language_isocode, 1, [&styles, &font_family](int, CTFontDescriptorRef font, CTFontSymbolicTraits) {
+	EnumerateCoreFextFonts(language_isocode, 1, [this](int, CTFontDescriptorRef font, CTFontSymbolicTraits) {
 		/* Get font name. */
 		char family[128];
 		CFAutoRelease<CFStringRef> family_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontFamilyNameAttribute));
 		CFStringGetCString(family_name.get(), family, std::size(family), kCFStringEncodingUTF8);
 
-		if (font_family != family) return true;
-
 		char style[128];
 		CFAutoRelease<CFStringRef> style_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontStyleNameAttribute));
 		CFStringGetCString(style_name.get(), style, std::size(style), kCFStringEncodingUTF8);
+
+		/* Don't add duplicate fonts. */
+		std::string_view sv_family = family;
+		std::string_view sv_style = style;
+		if (std::any_of(std::begin(this->cached_fonts), std::end(this->cached_fonts), [&sv_family, &sv_style](const FontFamily &ff) { return ff.family == sv_family && ff.style == sv_style; })) return true;
 
 		CFAutoRelease<CFDictionaryRef> traits((CFDictionaryRef)CTFontDescriptorCopyAttribute(font, kCTFontTraitsAttribute));
 		float weight = 0.0f;
@@ -438,12 +417,12 @@ std::vector<FontFamily> CoreTextFontSearcher::ListStyles(const std::string &lang
 		float slant = 0.0f;
 		CFNumberGetValue((CFNumberRef)CFDictionaryGetValue(traits.get(), kCTFontSlantTrait), kCFNumberFloatType, &slant);
 
-		styles.emplace_back(family, style, static_cast<int>(slant * 100), static_cast<int>(weight * 100));
+		this->cached_fonts.emplace_back(sv_family, sv_style, static_cast<int>(slant * 100), static_cast<int>(weight * 100));
 
 		return true;
 	});
 
-	return styles;
+	std::sort(std::begin(this->cached_fonts), std::end(this->cached_fonts), FontFamilySorter);
 }
 
 CoreTextFontSearcher _coretextfs_instance;
