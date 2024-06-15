@@ -24,7 +24,7 @@
 
 #include "safeguards.h"
 
-bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int, MissingGlyphSearcher *callback)
+static void EnumerateCoreFextFonts(const std::string &language_isocode, int ntries, std::function<bool(int, CTFontDescriptorRef, CTFontSymbolicTraits)> enum_func)
 {
 	/* Determine fallback font using CoreText. This uses the language isocode
 	 * to find a suitable font. CoreText is available from 10.5 onwards. */
@@ -55,9 +55,12 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	CFAutoRelease<CFSetRef> mandatory_attribs(CFSetCreate(kCFAllocatorDefault, const_cast<const void **>(reinterpret_cast<const void *const *>(&kCTFontLanguagesAttribute)), 1, &kCFTypeSetCallBacks));
 	CFAutoRelease<CFArrayRef> descs(CTFontDescriptorCreateMatchingFontDescriptors(lang_desc.get(), mandatory_attribs.get()));
 
-	bool result = false;
-	for (int tries = 0; tries < 2; tries++) {
-		for (CFIndex i = 0; descs.get() != nullptr && i < CFArrayGetCount(descs.get()); i++) {
+	/* Nothing to see here. */
+	if (descs == nullptr) return;
+
+	CFIndex count = CFArrayGetCount(descs.get());
+	for (int tries = 0; tries < ntries; tries++) {
+		for (CFIndex i = 0; i < count; i++) {
 			CTFontDescriptorRef font = (CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), i);
 
 			/* Get font traits. */
@@ -67,34 +70,46 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 
 			/* Skip symbol fonts and vertical fonts. */
 			if ((symbolic_traits & kCTFontClassMaskTrait) == (CTFontStylisticClass)kCTFontSymbolicClass || (symbolic_traits & kCTFontVerticalTrait)) continue;
-			/* Skip bold fonts (especially Arial Bold, which looks worse than regular Arial). */
-			if (symbolic_traits & kCTFontBoldTrait) continue;
-			/* Select monospaced fonts if asked for. */
-			if (((symbolic_traits & kCTFontMonoSpaceTrait) == kCTFontMonoSpaceTrait) != callback->Monospace()) continue;
 
-			/* Get font name. */
-			char name[128];
-			CFAutoRelease<CFStringRef> font_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontDisplayNameAttribute));
-			CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
-
-			/* Serif fonts usually look worse on-screen with only small
-			 * font sizes. As such, we try for a sans-serif font first.
-			 * If we can't find one in the first try, try all fonts. */
-			if (tries == 0 && (symbolic_traits & kCTFontClassMaskTrait) != (CTFontStylisticClass)kCTFontSansSerifClass) continue;
-
-			/* There are some special fonts starting with an '.' and the last
-			 * resort font that aren't usable. Skip them. */
-			if (name[0] == '.' || strncmp(name, "LastResort", 10) == 0) continue;
-
-			/* Save result. */
-			callback->SetFontNames(settings, name);
-			if (!callback->FindMissingGlyphs()) {
-				Debug(fontcache, 2, "CT-Font for {}: {}", language_isocode, name);
-				result = true;
-				break;
-			}
+			bool continue_enumerating = enum_func(tries, font, symbolic_traits);
+			if (!continue_enumerating) return;
 		}
 	}
+}
+
+bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int, MissingGlyphSearcher *callback)
+{
+	bool result = false;
+	EnumerateCoreFextFonts(language_isocode, 2, [&settings, &language_isocode, &callback, &result](int tries, CTFontDescriptorRef font, CTFontSymbolicTraits symbolic_traits) {
+		/* Skip bold fonts (especially Arial Bold, which looks worse than regular Arial). */
+		if (symbolic_traits & kCTFontBoldTrait) return true;
+		/* Select monospaced fonts if asked for. */
+		if (((symbolic_traits & kCTFontMonoSpaceTrait) == kCTFontMonoSpaceTrait) != callback->Monospace()) return true;
+
+		/* Get font name. */
+		char name[128];
+		CFAutoRelease<CFStringRef> font_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontDisplayNameAttribute));
+		CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
+
+		/* Serif fonts usually look worse on-screen with only small
+		* font sizes. As such, we try for a sans-serif font first.
+		* If we can't find one in the first try, try all fonts. */
+		if (tries == 0 && (symbolic_traits & kCTFontClassMaskTrait) != (CTFontStylisticClass)kCTFontSansSerifClass) return true;
+
+		/* There are some special fonts starting with an '.' and the last
+		* resort font that aren't usable. Skip them. */
+		if (name[0] == '.' || strncmp(name, "LastResort", 10) == 0) return true;
+
+		/* Save result. */
+		callback->SetFontNames(settings, name);
+		if (!callback->FindMissingGlyphs()) {
+			Debug(fontcache, 2, "CT-Font for {}: {}", language_isocode, name);
+			result = true;
+			return false;
+		}
+
+		return true;
+	});
 
 	if (!result) {
 		/* For some OS versions, the font 'Arial Unicode MS' does not report all languages it
@@ -371,3 +386,64 @@ void LoadCoreTextFont(FontSize fs)
 
 	new CoreTextFontCache(fs, std::move(font_ref), settings->size);
 }
+
+class CoreTextFontSearcher : public FontSearcher {
+public:
+	std::vector<std::string> ListFamilies(const std::string &language_isocode, int winlangid) override;
+	std::vector<FontFamily> ListStyles(const std::string &language_isocode, int winlangid, std::string_view font_family) override;
+};
+
+std::vector<std::string> CoreTextFontSearcher::ListFamilies(const std::string &language_isocode, int)
+{
+	std::vector<std::string> families;
+
+	EnumerateCoreFextFonts(language_isocode, 1, [&families](int, CTFontDescriptorRef font, CTFontSymbolicTraits) {
+		/* Get font name. */
+		char family[128];
+		CFAutoRelease<CFStringRef> font_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontFamilyNameAttribute));
+		CFStringGetCString(font_name.get(), family, std::size(family), kCFStringEncodingUTF8);
+
+		/* There are some special fonts starting with an '.' and the last resort font that aren't usable. Skip them. */
+		if (family[0] == '.' || strncmp(family, "LastResort", 10) == 0) return true;
+
+		if (std::find(std::begin(families), std::end(families), family) == std::end(families)) {
+			families.push_back(family);
+		}
+
+		return true;
+	});
+
+	return families;
+}
+
+std::vector<FontFamily> CoreTextFontSearcher::ListStyles(const std::string &language_isocode, int, std::string_view font_family)
+{
+	std::vector<FontFamily> styles;
+
+	EnumerateCoreFextFonts(language_isocode, 1, [&styles, &font_family](int, CTFontDescriptorRef font, CTFontSymbolicTraits) {
+		/* Get font name. */
+		char family[128];
+		CFAutoRelease<CFStringRef> family_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontFamilyNameAttribute));
+		CFStringGetCString(family_name.get(), family, std::size(family), kCFStringEncodingUTF8);
+
+		if (font_family != family) return true;
+
+		char style[128];
+		CFAutoRelease<CFStringRef> style_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontStyleNameAttribute));
+		CFStringGetCString(style_name.get(), style, std::size(style), kCFStringEncodingUTF8);
+
+		CFAutoRelease<CFDictionaryRef> traits((CFDictionaryRef)CTFontDescriptorCopyAttribute(font, kCTFontTraitsAttribute));
+		float weight = 0.0f;
+		CFNumberGetValue((CFNumberRef)CFDictionaryGetValue(traits.get(), kCTFontWeightTrait), kCFNumberFloatType, &weight);
+		float slant = 0.0f;
+		CFNumberGetValue((CFNumberRef)CFDictionaryGetValue(traits.get(), kCTFontSlantTrait), kCFNumberFloatType, &slant);
+
+		styles.emplace_back(family, style, static_cast<int>(slant * 100), static_cast<int>(weight * 100));
+
+		return true;
+	});
+
+	return styles;
+}
+
+CoreTextFontSearcher _coretextfs_instance;
