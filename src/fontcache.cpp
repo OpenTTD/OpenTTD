@@ -230,6 +230,22 @@ void UninitFontCache()
 #endif /* WITH_FREETYPE */
 }
 
+/**
+ * Register the FontSearcher instance. There can be only one font searcher, which depends on platform.
+ */
+FontSearcher::FontSearcher()
+{
+	FontSearcher::instance = this;
+}
+
+/**
+ * Deregister this FontSearcher.
+ */
+FontSearcher::~FontSearcher()
+{
+	FontSearcher::instance = nullptr;
+}
+
 #if !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA)
 
 bool SetFallbackFont(FontCacheSettings *, const std::string &, int, MissingGlyphSearcher *) { return false; }

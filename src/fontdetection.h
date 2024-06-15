@@ -39,4 +39,45 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face);
  */
 bool SetFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, int winlangid, class MissingGlyphSearcher *callback);
 
+struct FontFamily {
+	std::string family;
+	std::string style;
+	int32_t slant;
+	int32_t weight;
+
+	FontFamily(std::string_view family, std::string_view style, int32_t slant, int32_t weight) : family(family), style(style), slant(slant), weight(weight) {}
+};
+
+class FontSearcher {
+public:
+	FontSearcher();
+	virtual ~FontSearcher();
+
+	/**
+	 * Get the active FontSearcher instance.
+	 * @return FontSearcher instance, or nullptr if not present.
+	 */
+	static inline FontSearcher *GetFontSearcher() { return FontSearcher::instance; }
+
+	/**
+	 * List available fonts.
+	 * @param language_isocode the language, e.g. en_GB.
+	 * @param winlangid the language ID windows style.
+	 * @return vector containing font family names.
+	 */
+	virtual std::vector<std::string> ListFamilies(const std::string &language_isocode, int winlangid) = 0;
+
+	/**
+	 * List available styles for a font family.
+	 * @param language_isocode the language, e.g. en_GB.
+	 * @param winlangid the language ID windows style.
+	 * @param font_family The font family to list.
+	 * @return vector containing style information for the family.
+	 */
+	virtual std::vector<FontFamily> ListStyles(const std::string &language_isocode, int winlangid, std::string_view font_family) = 0;
+
+private:
+	static inline FontSearcher *instance = nullptr;
+};
+
 #endif
