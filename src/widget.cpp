@@ -2957,192 +2957,189 @@ bool NWidgetLeaf::ButtonHit(const Point &pt)
 /* == Conversion code from NWidgetPart array to NWidgetBase* tree == */
 
 /**
+ * Test if (an NWidgetPart) WidgetType is an attribute widget part type.
+ * @param tp WidgetType to test.
+ * @return True iff WidgetType is an attribute widget.
+ */
+static bool IsAttributeWidgetPartType(WidgetType tp)
+{
+	return tp > WPT_ATTRIBUTE_BEGIN && tp < WPT_ATTRIBUTE_END;
+}
+
+/**
+ * Apply an attribute NWidgetPart to an NWidget.
+ * @param nwid Attribute NWidgetPart
+ * @param dest NWidget to apply attribute to.
+ * @pre NWidgetPart must be an attribute NWidgetPart.
+ */
+static void ApplyNWidgetPartAttribute(const NWidgetPart &nwid, NWidgetBase *dest)
+{
+	switch (nwid.type) {
+		case WPT_RESIZE: {
+			NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest);
+			if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_RESIZE requires NWidgetResizeBase");
+			assert(nwid.u.xy.x >= 0 && nwid.u.xy.y >= 0);
+			nwrb->SetResize(nwid.u.xy.x, nwid.u.xy.y);
+			break;
+		}
+
+		case WPT_MINSIZE: {
+			NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest);
+			if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_MINSIZE requires NWidgetResizeBase");
+			assert(nwid.u.xy.x >= 0 && nwid.u.xy.y >= 0);
+			nwrb->SetMinimalSize(nwid.u.xy.x, nwid.u.xy.y);
+			break;
+		}
+
+		case WPT_MINTEXTLINES: {
+			NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest);
+			if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_MINTEXTLINES requires NWidgetResizeBase");
+			assert(nwid.u.text_lines.size >= FS_BEGIN && nwid.u.text_lines.size < FS_END);
+			nwrb->SetMinimalTextLines(nwid.u.text_lines.lines, nwid.u.text_lines.spacing, nwid.u.text_lines.size);
+			break;
+		}
+
+		case WPT_TEXTSTYLE: {
+			NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest);
+			if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_TEXTSTYLE requires NWidgetCore");
+			nwc->SetTextStyle(nwid.u.text_style.colour, nwid.u.text_style.size);
+			break;
+		}
+
+		case WPT_ALIGNMENT: {
+			NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest);
+			if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_ALIGNMENT requires NWidgetCore");
+			nwc->SetAlignment(nwid.u.align.align);
+			break;
+		}
+
+		case WPT_FILL: {
+			NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest);
+			if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_FILL requires NWidgetResizeBase");
+			nwrb->SetFill(nwid.u.xy.x, nwid.u.xy.y);
+			break;
+		}
+
+		case WPT_DATATIP: {
+			NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest);
+			if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_DATATIP requires NWidgetCore");
+			nwc->widget_data = nwid.u.data_tip.data;
+			nwc->tool_tip = nwid.u.data_tip.tooltip;
+			break;
+		}
+
+		case WPT_PADDING:
+			if (dest == nullptr) [[unlikely]] throw std::runtime_error("WPT_PADDING requires NWidgetBase");
+			dest->SetPadding(nwid.u.padding);
+			break;
+
+		case WPT_PIPSPACE: {
+			NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(dest);
+			if (nwc != nullptr) nwc->SetPIP(nwid.u.pip.pre, nwid.u.pip.inter, nwid.u.pip.post);
+
+			NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(dest);
+			if (nwb != nullptr) nwb->SetPIP(nwid.u.pip.pre, nwid.u.pip.inter, nwid.u.pip.post);
+
+			if (nwc == nullptr && nwb == nullptr) [[unlikely]] throw std::runtime_error("WPT_PIPSPACE requires NWidgetPIPContainer or NWidgetBackground");
+			break;
+		}
+
+		case WPT_PIPRATIO: {
+			NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(dest);
+			if (nwc != nullptr) nwc->SetPIPRatio(nwid.u.pip.pre, nwid.u.pip.inter, nwid.u.pip.post);
+
+			NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(dest);
+			if (nwb != nullptr) nwb->SetPIPRatio(nwid.u.pip.pre, nwid.u.pip.inter, nwid.u.pip.post);
+
+			if (nwc == nullptr && nwb == nullptr) [[unlikely]] throw std::runtime_error("WPT_PIPRATIO requires NWidgetPIPContainer or NWidgetBackground");
+			break;
+		}
+
+		case WPT_SCROLLBAR: {
+			NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest);
+			if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_SCROLLBAR requires NWidgetCore");
+			nwc->scrollbar_index = nwid.u.widget.index;
+			break;
+		}
+
+		case WPT_ASPECT: {
+			if (dest == nullptr) [[unlikely]] throw std::runtime_error("WPT_ASPECT requires NWidgetBase");
+			dest->aspect_ratio = nwid.u.aspect.ratio;
+			dest->aspect_flags = nwid.u.aspect.flags;
+			break;
+		}
+
+		default:
+			NOT_REACHED();
+	}
+}
+
+/**
+ * Make NWidget from an NWidgetPart.
+ * @param nwid NWidgetPart.
+ * @pre NWidgetPart must not be an attribute NWidgetPart nor WPT_ENDCONTAINER.
+ * @return Pointer to created NWidget.
+ */
+static std::unique_ptr<NWidgetBase> MakeNWidget(const NWidgetPart &nwid)
+{
+	assert(!IsAttributeWidgetPartType(nwid.type));
+	assert(nwid.type != WPT_ENDCONTAINER);
+
+	switch (nwid.type) {
+		case NWID_SPACER: return std::make_unique<NWidgetSpacer>(0, 0);
+
+		case WWT_PANEL: [[fallthrough]];
+		case WWT_INSET: [[fallthrough]];
+		case WWT_FRAME: return std::make_unique<NWidgetBackground>(nwid.type, nwid.u.widget.colour, nwid.u.widget.index);
+
+		case NWID_HORIZONTAL: return std::make_unique<NWidgetHorizontal>(nwid.u.cont_flags);
+		case NWID_HORIZONTAL_LTR: return std::make_unique<NWidgetHorizontalLTR>(nwid.u.cont_flags);
+		case NWID_VERTICAL: return std::make_unique<NWidgetVertical>(nwid.u.cont_flags);
+		case NWID_SELECTION: return std::make_unique<NWidgetStacked>(nwid.u.widget.index);
+		case NWID_MATRIX: return std::make_unique<NWidgetMatrix>(nwid.u.widget.colour, nwid.u.widget.index);
+		case NWID_VIEWPORT: return std::make_unique<NWidgetViewport>(nwid.u.widget.index);
+
+		case NWID_HSCROLLBAR: [[fallthrough]];
+		case NWID_VSCROLLBAR: return std::make_unique<NWidgetScrollbar>(nwid.type, nwid.u.widget.colour, nwid.u.widget.index);
+
+		case WPT_FUNCTION: return nwid.u.func_ptr();
+
+		default:
+			assert((nwid.type & WWT_MASK) < WWT_LAST || (nwid.type & WWT_MASK) == NWID_BUTTON_DROPDOWN);
+			return std::make_unique<NWidgetLeaf>(nwid.type, nwid.u.widget.colour, nwid.u.widget.index, 0x0, STR_NULL);
+	}
+}
+
+/**
  * Construct a single nested widget in \a *dest from its parts.
  *
  * Construct a NWidgetBase object from a #NWidget function, and apply all
- * settings that follow it, until encountering a #EndContainer, another
+ * attributes that follow it, until encountering a #EndContainer, another
  * #NWidget, or the end of the parts array.
  *
  * @param nwid_begin Iterator to beginning of nested widget parts.
  * @param nwid_end Iterator to ending of nested widget parts.
- * @param dest  Address of pointer to use for returning the composed widget.
- * @param fill_dest Fill the composed widget with child widgets.
+ * @param[out] dest Address of pointer to use for returning the composed widget.
+ * @param[out] fill_dest Fill the composed widget with child widgets.
  * @return Iterator to remaining nested widget parts.
  */
-static std::span<const NWidgetPart>::iterator MakeNWidget(std::span<const NWidgetPart>::iterator nwid_begin, std::span<const NWidgetPart>::iterator nwid_end, std::unique_ptr<NWidgetBase> &dest, bool *fill_dest)
+static std::span<const NWidgetPart>::iterator MakeNWidget(std::span<const NWidgetPart>::iterator nwid_begin, std::span<const NWidgetPart>::iterator nwid_end, std::unique_ptr<NWidgetBase> &dest, bool &fill_dest)
 {
 	dest = nullptr;
-	*fill_dest = false;
 
-	while (nwid_begin < nwid_end) {
-		switch (nwid_begin->type) {
-			case NWID_SPACER:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetSpacer>(0, 0);
-				break;
+	if (IsAttributeWidgetPartType(nwid_begin->type)) [[unlikely]] throw std::runtime_error("Expected non-attribute NWidgetPart type");
+	if (nwid_begin->type == WPT_ENDCONTAINER) return nwid_begin;
 
-			case NWID_HORIZONTAL:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetHorizontal>(nwid_begin->u.cont_flags);
-				*fill_dest = true;
-				break;
+	fill_dest = IsContainerWidgetType(nwid_begin->type);
+	dest = MakeNWidget(*nwid_begin);
+	if (dest == nullptr) return nwid_begin;
 
-			case NWID_HORIZONTAL_LTR:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetHorizontalLTR>(nwid_begin->u.cont_flags);
-				*fill_dest = true;
-				break;
+	++nwid_begin;
 
-			case WWT_PANEL:
-			case WWT_INSET:
-			case WWT_FRAME:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetBackground>(nwid_begin->type, nwid_begin->u.widget.colour, nwid_begin->u.widget.index);
-				*fill_dest = true;
-				break;
-
-			case NWID_VERTICAL:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetVertical>(nwid_begin->u.cont_flags);
-				*fill_dest = true;
-				break;
-
-			case NWID_MATRIX: {
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetMatrix>(nwid_begin->u.widget.colour, nwid_begin->u.widget.index);
-				*fill_dest = true;
-				break;
-			}
-
-			case WPT_FUNCTION: {
-				if (dest != nullptr) return nwid_begin;
-				dest = nwid_begin->u.func_ptr();
-				*fill_dest = false;
-				break;
-			}
-
-			case WPT_RESIZE: {
-				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest.get());
-				if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_RESIZE requires NWidgetResizeBase");
-				assert(nwid_begin->u.xy.x >= 0 && nwid_begin->u.xy.y >= 0);
-				nwrb->SetResize(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
-				break;
-			}
-
-			case WPT_MINSIZE: {
-				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest.get());
-				if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_MINSIZE requires NWidgetResizeBase");
-				assert(nwid_begin->u.xy.x >= 0 && nwid_begin->u.xy.y >= 0);
-				nwrb->SetMinimalSize(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
-				break;
-			}
-
-			case WPT_MINTEXTLINES: {
-				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest.get());
-				if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_MINTEXTLINES requires NWidgetResizeBase");
-				assert(nwid_begin->u.text_lines.size >= FS_BEGIN && nwid_begin->u.text_lines.size < FS_END);
-				nwrb->SetMinimalTextLines(nwid_begin->u.text_lines.lines, nwid_begin->u.text_lines.spacing, nwid_begin->u.text_lines.size);
-				break;
-			}
-
-			case WPT_TEXTSTYLE: {
-				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest.get());
-				if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_TEXTSTYLE requires NWidgetCore");
-				nwc->SetTextStyle(nwid_begin->u.text_style.colour, nwid_begin->u.text_style.size);
-				break;
-			}
-
-			case WPT_ALIGNMENT: {
-				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest.get());
-				if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_ALIGNMENT requires NWidgetCore");
-				nwc->SetAlignment(nwid_begin->u.align.align);
-				break;
-			}
-
-			case WPT_FILL: {
-				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest.get());
-				if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_FILL requires NWidgetResizeBase");
-				nwrb->SetFill(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
-				break;
-			}
-
-			case WPT_DATATIP: {
-				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest.get());
-				if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_DATATIP requires NWidgetCore");
-				nwc->widget_data = nwid_begin->u.data_tip.data;
-				nwc->tool_tip = nwid_begin->u.data_tip.tooltip;
-				break;
-			}
-
-			case WPT_PADDING:
-				if (dest == nullptr) [[unlikely]] throw std::runtime_error("WPT_PADDING requires NWidgetBase");
-				dest->SetPadding(nwid_begin->u.padding);
-				break;
-
-			case WPT_PIPSPACE: {
-				NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(dest.get());
-				if (nwc != nullptr) nwc->SetPIP(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
-
-				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(dest.get());
-				if (nwb != nullptr) nwb->SetPIP(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
-
-				if (nwc == nullptr && nwb == nullptr) [[unlikely]] throw std::runtime_error("WPT_PIPSPACE requires NWidgetPIPContainer or NWidgetBackground");
-				break;
-			}
-
-			case WPT_PIPRATIO: {
-				NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(dest.get());
-				if (nwc != nullptr) nwc->SetPIPRatio(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
-
-				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(dest.get());
-				if (nwb != nullptr) nwb->SetPIPRatio(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
-
-				if (nwc == nullptr && nwb == nullptr) [[unlikely]] throw std::runtime_error("WPT_PIPRATIO requires NWidgetPIPContainer or NWidgetBackground");
-				break;
-			}
-
-			case WPT_SCROLLBAR: {
-				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest.get());
-				if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_SCROLLBAR requires NWidgetCore");
-				nwc->scrollbar_index = nwid_begin->u.widget.index;
-				break;
-			}
-
-			case WPT_ASPECT: {
-				if (dest == nullptr) [[unlikely]] throw std::runtime_error("WPT_ASPECT requires NWidgetBase");
-				dest->aspect_ratio = nwid_begin->u.aspect.ratio;
-				dest->aspect_flags = nwid_begin->u.aspect.flags;
-				break;
-			}
-
-			case WPT_ENDCONTAINER:
-				return nwid_begin;
-
-			case NWID_VIEWPORT:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetViewport>(nwid_begin->u.widget.index);
-				break;
-
-			case NWID_HSCROLLBAR:
-			case NWID_VSCROLLBAR:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetScrollbar>(nwid_begin->type, nwid_begin->u.widget.colour, nwid_begin->u.widget.index);
-				break;
-
-			case NWID_SELECTION: {
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetStacked>(nwid_begin->u.widget.index);
-				*fill_dest = true;
-				break;
-			}
-
-			default:
-				if (dest != nullptr) return nwid_begin;
-				assert((nwid_begin->type & WWT_MASK) < WWT_LAST || (nwid_begin->type & WWT_MASK) == NWID_BUTTON_DROPDOWN);
-				dest = std::make_unique<NWidgetLeaf>(nwid_begin->type, nwid_begin->u.widget.colour, nwid_begin->u.widget.index, 0x0, STR_NULL);
-				break;
-		}
-		nwid_begin++;
+	/* Once a widget is created, we're now looking for attributes. */
+	while (nwid_begin != nwid_end && IsAttributeWidgetPartType(nwid_begin->type)) {
+		ApplyNWidgetPartAttribute(*nwid_begin, dest.get());
+		++nwid_begin;
 	}
 
 	return nwid_begin;
@@ -3174,10 +3171,10 @@ static std::span<const NWidgetPart>::iterator MakeWidgetTree(std::span<const NWi
 	NWidgetBackground *nwid_parent = dynamic_cast<NWidgetBackground *>(parent.get());
 	assert(parent == nullptr || (nwid_cont != nullptr && nwid_parent == nullptr) || (nwid_cont == nullptr && nwid_parent != nullptr));
 
-	for (;;) {
+	while (nwid_begin != nwid_end) {
 		std::unique_ptr<NWidgetBase> sub_widget = nullptr;
 		bool fill_sub = false;
-		nwid_begin = MakeNWidget(nwid_begin, nwid_end, sub_widget, &fill_sub);
+		nwid_begin = MakeNWidget(nwid_begin, nwid_end, sub_widget, fill_sub);
 
 		/* Break out of loop when end reached */
 		if (sub_widget == nullptr) break;
