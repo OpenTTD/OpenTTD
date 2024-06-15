@@ -39,6 +39,19 @@ static std::tuple<std::string, std::string> SplitFontFamilyAndStyle(std::string_
 	return { std::string(font_name.substr(0, separator)), std::string(font_name.substr(begin)) };
 }
 
+/**
+ * Get language string for FontConfig pattern matching.
+ * @param language_isocode Language's ISO code.
+ * @return Language code for FontConfig.
+ */
+static std::string GetFontConfigLanguage(const std::string &language_isocode)
+{
+	/* Fontconfig doesn't handle full language isocodes, only the part
+	 * before the _ of e.g. en_GB is used, so "remove" everything after
+	 * the _. */
+	return fmt::format(":lang={}", language_isocode.substr(0, language_isocode.find('_')));
+}
+
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 {
 	FT_Error err = FT_Err_Cannot_Open_Resource;
@@ -107,10 +120,7 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	auto fc_instance = FcConfigReference(nullptr);
 	assert(fc_instance != nullptr);
 
-	/* Fontconfig doesn't handle full language isocodes, only the part
-	 * before the _ of e.g. en_GB is used, so "remove" everything after
-	 * the _. */
-	std::string lang = fmt::format(":lang={}", language_isocode.substr(0, language_isocode.find('_')));
+	std::string lang = GetFontConfigLanguage(language_isocode);
 
 	/* First create a pattern to match the wanted language. */
 	FcPattern *pat = FcNameParse((const FcChar8 *)lang.c_str());
@@ -180,3 +190,109 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	FcConfigDestroy(fc_instance);
 	return ret;
 }
+
+/**
+ * FontConfig implementation of FontSearcher.
+ */
+class FontConfigFontSearcher : public FontSearcher {
+public:
+	std::vector<std::string> ListFamilies(const std::string &language_isocode, int winlangid) override;
+	std::vector<FontFamily> ListStyles(const std::string &language_isocode, int winlangid, std::string_view font_family) override;
+};
+
+std::vector<std::string> FontConfigFontSearcher::ListFamilies(const std::string &language_isocode, int)
+{
+	std::vector<std::string> families;
+
+	if (!FcInit()) return families;
+
+	FcConfig *fc_instance = FcConfigReference(nullptr);
+	assert(fc_instance != nullptr);
+
+	std::string lang = GetFontConfigLanguage(language_isocode);
+
+	/* First create a pattern to match the wanted language. */
+	FcPattern *pat = FcNameParse(reinterpret_cast<const FcChar8 *>(lang.c_str()));
+	/* We want to know this attributes. */
+	FcObjectSet *os = FcObjectSetCreate();
+	FcObjectSetAdd(os, FC_FAMILY);
+	/* Get the list of filenames matching the wanted language. */
+	FcFontSet *fs = FcFontList(nullptr, pat, os);
+
+	/* We don't need these anymore. */
+	FcObjectSetDestroy(os);
+	FcPatternDestroy(pat);
+
+	if (fs != nullptr) {
+		families.reserve(fs->nfont);
+		for (const FcPattern *font : std::span(fs->fonts, fs->nfont)) {
+			FcChar8 *family;
+			if (FcPatternGetString(font, FC_FAMILY, 0, &family) != FcResultMatch) continue;
+
+			/* Check if the family already exists. */
+			std::string_view sv_family = reinterpret_cast<const char *>(family);
+			if (std::find(std::begin(families), std::end(families), sv_family) != std::end(families)) continue;
+
+			families.emplace_back(sv_family);
+		}
+
+		/* Clean up the list of filenames. */
+		FcFontSetDestroy(fs);
+	}
+
+	FcConfigDestroy(fc_instance);
+	return families;
+}
+
+std::vector<FontFamily> FontConfigFontSearcher::ListStyles(const std::string &language_isocode, int, std::string_view font_family)
+{
+	std::vector<FontFamily> styles;
+
+	if (!FcInit()) return styles;
+
+	FcConfig *fc_instance = FcConfigReference(nullptr);
+	assert(fc_instance != nullptr);
+
+	std::string lang = GetFontConfigLanguage(language_isocode);
+
+	/* First create a pattern to match the wanted language. */
+	FcPattern *pat = FcNameParse(reinterpret_cast<const FcChar8 *>(lang.c_str()));
+	FcPatternAddString(pat, FC_FAMILY, reinterpret_cast<const FcChar8 *>(std::string(font_family).c_str()));
+	/* We want to know these attributes. */
+	FcObjectSet *os = FcObjectSetCreate();
+	FcObjectSetAdd(os, FC_FAMILY);
+	FcObjectSetAdd(os, FC_STYLE);
+	FcObjectSetAdd(os, FC_SLANT);
+	FcObjectSetAdd(os, FC_WEIGHT);
+	/* Get the list of filenames matching the wanted language. */
+	FcFontSet *fs = FcFontList(nullptr, pat, os);
+
+	/* We don't need these anymore. */
+	FcObjectSetDestroy(os);
+	FcPatternDestroy(pat);
+
+	if (fs != nullptr) {
+		styles.reserve(fs->nfont);
+		for (const FcPattern *font : std::span(fs->fonts, fs->nfont)) {
+			FcChar8 *family;
+			FcChar8 *style;
+			int32_t slant;
+			int32_t weight;
+
+			if (FcPatternGetString(font, FC_FAMILY, 0, &family) != FcResultMatch) continue;
+			if (FcPatternGetString(font, FC_STYLE, 0, &style) != FcResultMatch) continue;
+			if (FcPatternGetInteger(font, FC_SLANT, 0, &slant) != FcResultMatch) continue;
+			if (FcPatternGetInteger(font, FC_WEIGHT, 0, &weight) != FcResultMatch) continue;
+
+			styles.emplace_back(reinterpret_cast<const char *>(family), reinterpret_cast<const char *>(style), slant, weight);
+		}
+
+		/* Clean up the list of filenames. */
+		FcFontSetDestroy(fs);
+	}
+
+	FcConfigDestroy(fc_instance);
+	return styles;
+}
+
+static FontConfigFontSearcher _fcfs_instance;
