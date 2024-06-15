@@ -2198,10 +2198,9 @@ DEF_CONSOLE_CMD(ConListFonts)
 
 	if (argc == 1) {
 		auto families = fs->ListFamilies(_current_language->isocode, _current_language->winlangid);
-		std::sort(std::begin(families), std::end(families));
 
 		int i = 0;
-		for (auto &family : families) {
+		for (const std::string_view &family : families) {
 			IConsolePrint(CC_DEFAULT, "{}) {}", i, family);
 			++i;
 		}
@@ -2218,10 +2217,9 @@ DEF_CONSOLE_CMD(ConListFonts)
 		}
 
 		auto styles = fs->ListStyles(_current_language->isocode, _current_language->winlangid, family);
-		std::sort(std::begin(styles), std::end(styles), FontFamilySorter);
 
 		int i = 0;
-		for (auto &font : styles) {
+		for (const FontFamily &font : styles) {
 			IConsolePrint(CC_DEFAULT, "{}) {}, {}", i, font.family, font.style);
 			i++;
 		}
