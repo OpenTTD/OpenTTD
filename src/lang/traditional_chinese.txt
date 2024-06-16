@@ -1427,6 +1427,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :當車輛收入
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :如啟用此選項，系統會為上一年度賺不到錢的車輛顯示訊息。
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :車輛永不過期：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :如啟用此選項，所有車輛一經面世，就永遠可以選擇建造。
 

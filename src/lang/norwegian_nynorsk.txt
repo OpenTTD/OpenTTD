@@ -1267,6 +1267,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Alle køyretøy
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Åtvar dersom eit køyretøy har negativ inntekt: {STRING}
 ###length 2
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køyretøy utgår aldri: {STRING}
 
 ###length 2

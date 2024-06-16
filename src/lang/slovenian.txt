@@ -1439,6 +1439,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Opozori, če je
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Če je omogočeno, se odpre sporočilo, v kolikor neko vozilo ni ustvarilo dobička v koledarskem letu.
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila nikoli ne dotrajajo: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Če je omogočeno, vsi modeli vozil ostanejo omogočeni po uvedbi.
 

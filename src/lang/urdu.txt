@@ -1148,6 +1148,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :تمام گاڑ
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :گاڑی کو نقصان کی صورت میں انتباہ کیجئیے: {STRING}
 ###length 2
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :گاڑیوں کی معیاد کبھی ختم نہ ہو: {STRING}
 
 ###length 2

@@ -1344,6 +1344,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Tabhair rabhadh
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Má dhéantar é a chumasú, seoltar teachtaireacht nuachta más rud é nach ndearna feithicil brabús ar bith i mbliain féilire
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ní imíonn feithiclí as dáta riamh: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Má dhéantar é a chumasú beidh gach cineál feithicle ar fáil go deo tar éis é a thabhairt isteach
 

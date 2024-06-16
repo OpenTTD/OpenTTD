@@ -1298,6 +1298,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warskôgje at d
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :By ynskeakeljen wurdt der berjochte at in fiertúch it ôfrûnne jier gjin winst makke hat
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fiertugen ferinne nea: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :By ynskeakeljen bliuwe alle fiertugen foar ivich beskikber
 

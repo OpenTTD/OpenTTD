@@ -1489,6 +1489,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Alerter en cas 
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quand il est actif, un message d'information est envoyé lorsqu'un véhicule n'a fait aucun bénéfice au cours d'une année
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Quand il est actif, un message d'information est envoyé lorsqu'un véhicule n'a fait aucun bénéfice au cours d'une période
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Les véhicules n'expirent jamais{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quand il est actif, tous les modèles de véhicule restent disponibles pour toujours après leur introduction
 

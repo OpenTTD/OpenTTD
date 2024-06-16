@@ -1517,6 +1517,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avvisa se il pr
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Se abilitata, viene inviato un messaggio quando un veicolo non ha ottenuto alcun profitto per un anno
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Quando abilitato, viene inviato un messaggio di notizie quando un veicolo non ha generato alcun profitto durante un periodo
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :I veicoli non diventano mai obsoleti: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Se abilitata, dopo la loro introduzione, tutti i tipi di veicoli rimarranno sempre disponibili.
 

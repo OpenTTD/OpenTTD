@@ -1322,6 +1322,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{STRING} :הת�
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :כאשר מאופשר, נשלח מבזק חדשות כאשר רכב לא הכניס שום רווח במשך שנה קלנדרית
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{STRING} :בטל התיישנות כלי רכב
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :כאשר מאופשר, כל סוגי כלי הרכב נשארים זמינים לעד אחרי השקתם
 

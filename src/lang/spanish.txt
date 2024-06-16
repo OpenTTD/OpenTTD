@@ -1483,6 +1483,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar si las g
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Si se activa, se muestra un mensaje cuando un vehículo no haya generado ningún beneficio durante un año
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Si se activa, se muestra un mensaje cuando un vehículo no haya obtenido ningún beneficio durante un período dado
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Los vehículos nunca caducan: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Si se activa, todos los modelos de vehículos permanecen disponibles para siempre una vez han sido introducidos
 

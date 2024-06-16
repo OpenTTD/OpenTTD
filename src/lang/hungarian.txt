@@ -1545,6 +1545,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Figyelmeztetés
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Üzenetek megjelenítése azokról a járművekről, melyek nem termeltek profitot egy év alatt
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Üzenetek megjelenítése azokról a járművekről, melyek nem termeltek profitot egy időszakon belül
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Járművek sosem avulnak el: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Bekapcsolva minden járműmodell örökké elérhető marad bevezetése után
 

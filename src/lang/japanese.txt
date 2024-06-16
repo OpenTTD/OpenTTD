@@ -1379,6 +1379,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :赤字車両の
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :有効にすると、輸送車両が一年(1/1～12/31)の間全く利益を上げていない場合、メッセージで知らせてくるようになります。
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :輸送機器の旧式化撤廃: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :有効にすると、いずれの種類の輸送機器であっても、その開発後であれば永久に購入が可能になります
 

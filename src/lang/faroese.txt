@@ -1242,6 +1242,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ávara um eitt 
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Um gilda, fær tú boð tá eitt flutningstól ikki hevur havt nakran vinning í eitt kalendara ár
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Flutningstól ganga ongantíð út: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Um gilda, eru øll sløg av flutningstólum altíð tøk eftir tey eru komin í nýtslu
 

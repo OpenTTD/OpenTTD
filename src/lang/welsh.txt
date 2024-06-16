@@ -1484,6 +1484,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Rhybuddio os yw
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Pan fo wedi'i alluogi, fe yrrir neges newyddion pan fo cerbyd heb wneud elw yn ystod blwyddyn calendr
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Pan fo wedi'i alluogi, fe yrrir neges newyddion pan fo cerbyd heb wneud elw yn ystod cyfnod
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Nid yw cerbydau'n darfod: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pan fo wedi'i alluogi, bydd bob math o gerbyd yn aros ar gael am byth wedi eu cyflwyniad gyntaf
 
