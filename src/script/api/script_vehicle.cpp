@@ -462,7 +462,7 @@
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return false;
 
-	Vehicle *v = ::Vehicle::Get(vehicle_id);
+	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	return v->orders != nullptr && v->orders->GetNumVehicles() > 1;
 }
 
