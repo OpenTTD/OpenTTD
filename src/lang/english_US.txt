@@ -1488,6 +1488,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warn if a vehic
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :When enabled, a news message gets sent when a vehicle has not made any profit within a year
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :When enabled, a news message gets sent when a vehicle has not made any profit within a period
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicles never expire: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :When enabled, all vehicle models remain available forever after their introduction
 

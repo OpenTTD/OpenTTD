@@ -1479,6 +1479,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avertisment dac
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Când este activat, un mesaj de știri este trimis atunci când un vehicul nu a realizat niciun profit într-un an
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Când este activat, un mesaj de știri este trimis atunci când un vehicul nu a realizat niciun profit într-o perioadă
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehiculele nu expiră niciodată: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :După activare, toate modelele de vehicule rămân disponibile permanent după introducerea lor
 

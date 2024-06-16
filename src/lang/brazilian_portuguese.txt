@@ -1489,6 +1489,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar se o ren
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quando ativado, uma mensagem de aviso será exibida quando um veículo não gerou lucro durante um ano
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Quando ativado, uma mensagem de aviso será exibida quando um veículo não gerou qualquer lucro durante um período
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca saem de linha: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quando ativado, todos os modelos de veículos permanecerão disponíveis para sempre após a sua introdução
 

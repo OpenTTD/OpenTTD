@@ -1306,6 +1306,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Waarsku as 'n v
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :As dit geaktiveer is, word daar 'n nuus boodskap gestuur wanneer, in 'n kalenderjaar, 'n voertuig nie wins gemaak het nie.
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuie verval nooit nie: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :As dit geaktiveer is, sal voertuig modelle altyd beskikbaar bly, na die bekendstelling daarvan
 

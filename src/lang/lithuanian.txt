@@ -1661,6 +1661,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Perspėti, jei 
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Jei transporto priemonė metus baigė nuostolingai, parodomas atitinkamas informacinis pranešimas
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transporto priemonės niekada nepasensta: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kartą atsiradę, transporto priemonės niekuomet nebepasens ir jas visada bus galima nusipirkti
 
@@ -2952,6 +2953,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Statyti 
 
 
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kraštas
 
 STR_STATION_CLASS_DFLT                                          :Numatytoji
 STR_STATION_CLASS_DFLT_STATION                                  :Numatytoji stotelė

@@ -1215,6 +1215,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :از همه خ�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :هشدار هنگام منفی بودن درآمد خودرو: {STRING}
 ###length 2
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :وسایل نقلیه هیچگاه از بین نروند: {STRING}
 
 ###length 2

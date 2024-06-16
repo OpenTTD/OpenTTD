@@ -1488,6 +1488,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varna om ett fo
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Om det är aktiverat skickas ett nyhetsmeddelande ut när ett fordon inte har gått med vinst under ett år
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Om det är aktiverat skickas ett nyhetsmeddelande ut när ett fordon inte har gått med vinst under en period
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fordon blir aldrig gamla: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Om det är aktiverat förblir alla fordonstyper tillgängliga i obegränsad tid efter att de introducerats
 

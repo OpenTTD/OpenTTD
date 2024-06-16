@@ -1482,6 +1482,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Monere si redit
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Electa, nuntium ostenditur cum vehiculum non facit lucrum in anno
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicula numquam recedunt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Electa, omnes vehiculorum typi permanent post introductionem
 

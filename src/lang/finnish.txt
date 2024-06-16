@@ -1488,6 +1488,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varoita, jos ku
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Mikäli käytössä, uutisviesti lähetetään, jos kulkuneuvo ei ole tuottanut rahaa vuoden aikana
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Mikäli käytössä, uutisviesti lähetetään, jos kulkuneuvo ei ole tuottanut rahaa jakson aikana
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kulkuneuvot eivät vanhene: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Mikäli käytössä, kaikki kulkuneuvot ovat saatavilla ikuisesti niiden julkistamisen jälkeen
 

@@ -1241,6 +1241,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Birta viðvöru
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Þegar þessi stilling er virk, eru frétta boð send ef farartæki hafa ekki skilað hagnaði síðasta dagatals ár
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Farartæki úreldast aldrei: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ef þessi stilling er virk, eru öll farartæki alltaf í boði eftir að þau voru fyrst kynnt til sögunnar
 

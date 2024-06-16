@@ -1643,6 +1643,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Upozorenje ukol
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ako je omogućeno, šalje vest kada vozilo u toku kalendarske godine nije ostvarilo zaradu
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila nikad ne zastarevaju: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ako je omogućeno, svi modeli vozila ostaju zauvek dostupni (posle njihovog predstavljanja)
 

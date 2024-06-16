@@ -1488,6 +1488,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Cảnh báo n�
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Nếu bật, sẽ có thông báo nếu một phương tiện nào đó không có lãi trong một năm
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Nếu bật, sẽ có thông báo nếu một phương tiện nào đó không có lãi trong một kỳ
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Phương tiện không bao giờ hết hạn sử dụng: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Nếu bật, tất cả các model phương tiện sẽ không bị lỗi thời
 

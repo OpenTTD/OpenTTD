@@ -1489,6 +1489,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Thoir rabhadh n
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Nuair a bhios seo air, thèid brath a chur mur an do rinn carbad prothaid feadh bliadhna
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Chan fhalbh an ùine air carbadan gu bràth: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ma tha seo air, bidh a h-uile modail dhe charbad ri làimh gu bràth tuilleadh an dèidh an tionnsgnadh
 

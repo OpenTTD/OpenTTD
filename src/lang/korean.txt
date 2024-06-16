@@ -1489,6 +1489,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :차량의 수�
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :이 설정을 켜면, 지난 해에 수익이 없는 차량이 있으면 뉴스 메시지로 알려줍니다
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :이 설정을 켜면, 지난 기간에 수익이 없는 차량이 있으면 뉴스 메시지로 알려줍니다
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :옛날 차량을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :이 설정을 켜면, 오래된 차량 모델을 포함하여 모든 차량 모델을 도입 이후에 계속 사용할 수 있게 됩니다.
 

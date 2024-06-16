@@ -1868,6 +1868,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Powiadom, jeśl
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kiedy włączone, wiadomość zostanie wyświetlona, gdy pojazd nie osiągnie zysku w ciągu roku
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Kiedy włączone, wiadomość zostanie wyświetlona, gdy pojazd nie osiągnie zysku w ciągu okresu
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Pojazdy nigdy nie są wycofywane: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kiedy włączone, wszystkie modele pojazdów pozostają dostępne na zawsze od daty ich wprowadzenia
 

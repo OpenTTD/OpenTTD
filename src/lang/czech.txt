@@ -1566,6 +1566,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varovat, pokud 
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Pokud je zapnuto, budou zobrazovány zprávy o vozidlech, která v posledním roce neměla žádný zisk.
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Pokud je zapnuto, budou zobrazovány zprávy o vozidlech, která v posledním období neměla žádný zisk.
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozidlům se nikdy nezastaví výroba ('nezastarají'): {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pokud je zapnuto, všechny modely vlaků zůstanou po uvedení dostupné napořád. (nezastarají)
 

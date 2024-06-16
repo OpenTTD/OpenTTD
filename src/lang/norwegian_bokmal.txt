@@ -1486,6 +1486,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Advar hvis innt
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Når aktivert, vil en nyhetsmelding vises når et kjøretøy ikke har tjent penger i løpet av ett år
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Når aktivert, vil en nyhetsmelding vises når et kjøretøy ikke har tjent penger i løpet av en periode
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kjøretøy utgår aldri: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Når aktivert, vil alle kjøretøysmodeller være tilgjengelig for alltid etter de introduseres
 

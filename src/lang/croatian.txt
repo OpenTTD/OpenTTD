@@ -1410,6 +1410,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Upozori ako pri
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kada je uključeno, poruka vijesti se prikazuje kada vozilo nije uprihodilo ništa tijekom kalendarske godine
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila ne zastarjevaju: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kada je uključeno, svi modeli vozila zauvijek ostaju dostupni nakon njihovog uvođenja
 

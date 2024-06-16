@@ -1483,6 +1483,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Bir aracın gel
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Etkinleştirildiğinde, eğer bir araç bir yıl içerisinde hiç kâr etmezse bir haber mesajı gönderilir.
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Etkinleştirildiğinde, eğer bir araç bir periyot içerisinde hiç kâr etmezse bir haber mesajı gönderilir.
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Eski araçlar sürekli üretilsin: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Etkinleştirildiğinde, tüm araç modelleri piyasaya çıkışlarından itibaren sonsuza dek satın alınabilir.
 

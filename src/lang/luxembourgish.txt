@@ -1481,6 +1481,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen wann en 
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wann ugeschalt, gëtt e Noorichtemessage gesent, wann e Gefier ee Joer laang kee Profit gemeet huet
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Wann ugeschalt gëtt e Message geschéckt wann e Gefier eng Period laang kee Profit gemet huet
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Gefierer lafen nie of: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wann ugeschalt, bleiwen all Modeller vu Gefierer éiweg verfügbar
 

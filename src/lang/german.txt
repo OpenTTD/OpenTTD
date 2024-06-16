@@ -1489,6 +1489,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen, wenn Ei
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Falls aktiviert, wird eine Nachricht gesendet, falls ein Fahrzeug innerhalb eines Jahres keinen Gewinn erwirtschaftet hat
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Falls aktiviert, wird eine Nachricht gesendet, falls ein Fahrzeug innerhalb eines Zyklus keinen Gewinn erwirtschaftet hat
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fahrzeuge veralten nie: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Erlauben, dass Fahrzeuge nach ihrem Einführungsdatum ewig verfügbar bleiben
 

@@ -1263,6 +1263,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ohartarazi ibil
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Gaitua dagoenean, mezu bidez urte oso batean irabazirik lortu ez dituzten ibilgailuez ohartaraziko da
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ibilgailuei inoiz ez zaie epea amaitzen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Gaitua dagoenean, ibilgailu modelo ezberdinak betirako egongo dira erabilgarri
 

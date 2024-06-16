@@ -1449,6 +1449,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ingatkan jika a
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Jika dinyalakan,sebuah surat kabar akan dikirim jika kendaraan tidak mendapat keuntungan dalam satu tahun
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kendaraan tidak pernah kadaluarsa: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Jika dinyalakan,semua model kendaraan akan ada selamanya sejak pendesainanya
 

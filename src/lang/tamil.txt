@@ -1405,6 +1405,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :அனைத்
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :வாகனம் நஷ்டத்தில் ஓடினால் எச்சரி: {STRING}
 ###length 2
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :வாகனங்கள் என்றும் காலாவதியாகாது: {STRING}
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :நேரம் காத்தல்: {STRING}

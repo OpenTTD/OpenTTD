@@ -1277,6 +1277,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :حذر عندم
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :عند التمكين ، يتم إرسال رسالة إخبارية عندما لا تحقق السيارة أي ربح خلال سنة تقويمية واحدة
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :المركبات لا تنتهي صلاحيتها ابدا : {STRING}
 
 ###length 2
