@@ -2237,6 +2237,10 @@ struct CompanyWindow : Window
 			}
 		}
 
+        if (TimerGameEconomy::UsingWallclockUnits()) {
+            this->GetWidget<NWidgetLeaf>(WID_C_DESC_INAUGURATION)->SetDataTip(STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK, STR_NULL);
+        }
+
 		this->DrawWidgets();
 	}
 
@@ -2400,9 +2404,12 @@ struct CompanyWindow : Window
 				SetDParam(1, (CompanyID)this->window_number);
 				break;
 
-			case WID_C_DESC_INAUGURATION:
-                SetDParam(0, Company::Get((CompanyID) this->window_number)->inaugurated_year_calendar);
-                SetDParam(1, Company::Get((CompanyID) this->window_number)->inaugurated_year);
+            case WID_C_DESC_INAUGURATION:
+                if (TimerGameEconomy::UsingWallclockUnits()) {
+                    SetDParam(0, Company::Get((CompanyID) this->window_number)->inaugurated_year_calendar);
+                    SetDParam(1, Company::Get((CompanyID) this->window_number)->inaugurated_year);
+                }
+                else SetDParam(0, Company::Get((CompanyID) this->window_number)->inaugurated_year);
                 break;
 
 			case WID_C_DESC_COMPANY_VALUE:
