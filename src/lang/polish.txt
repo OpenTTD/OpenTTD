@@ -1853,7 +1853,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Wybierz począt
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Pozwól budować stare lotniska: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Włączona opcja sprawia, że każdy typ lotniska będzie dostępny na zawsze od chwili wprowadzenia
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Ostrzeż, jeśli pojazd się zgubi: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Ostrzegaj, gdy pojazd się zgubi: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Pokazuj wiadomości o pojazdach, które nie są w stanie znaleźć ścieżki do swoich wyznaczonych celów
 
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Kontroluj polecenia pojazdów: {STRING}
@@ -1863,11 +1863,13 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nie
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Tak, ale wyklucz zatrzymane
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Wszystkich pojazdów
 
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Powiadom, jeśli pojazd przynosi straty: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ostrzegaj, gdy pojazd przynosi straty: {STRING}
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kiedy włączone, wiadomość zostanie wyświetlona, gdy pojazd nie osiągnie zysku w ciągu roku
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Kiedy włączone, wiadomość zostanie wyświetlona, gdy pojazd nie osiągnie zysku w ciągu okresu
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Ostrzegaj, gdy pojazd zaczyna się starzeć: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Kiedy włączone, wiadomość zostanie wyświetlona, gdy pojazd zacznie się starzeć
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Pojazdy nigdy nie są wycofywane: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kiedy włączone, wszystkie modele pojazdów pozostają dostępne na zawsze od daty ich wprowadzenia
@@ -2222,7 +2224,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Wyłącz serwis
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kiedy włączone, pojazdy nie są serwisowane, jeśli nie mogą się popsuć
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Obniżenie prędkości załadunku pociągów dłuższych niż stacja: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Gdy opcja ta jest włączona, pociągi dłuższe od stacji ładują się wolniej niż pociągi, które mieszczą się na stacji. To ustawienie nie wpływa na znajdowanie tras
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Kiedy włączone, pociągi dłuższe od stacji ładują się wolniej, niż pociągi które mieszczą się na stacji. To ustawienie nie wpływa na znajdowanie tras
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Włącz limity prędkości wagonów: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiedy włączone, użyj także ograniczenia prędkości dla wagonów do obliczenia maksymalnej prędkości pociągu

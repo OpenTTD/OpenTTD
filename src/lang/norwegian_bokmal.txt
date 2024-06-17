@@ -2798,7 +2798,13 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Velg hvo
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Dra og slipp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg en stasjon med dra og slipp
 
+STR_PICKER_MODE_ALL                                             :Alle
+STR_PICKER_MODE_USED                                            :Brukt
+STR_PICKER_MODE_SAVED                                           :Lagret
 
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Velg veipunktklassen du vil vise
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Velg objektklassen du vil vise
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Velg byområdet du vil vise
 
 
 
