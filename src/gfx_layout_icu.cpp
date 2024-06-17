@@ -104,7 +104,7 @@ private:
 	int partial_offset;
 
 public:
-	ICUParagraphLayout(std::vector<ICURun> &runs, UChar *buff, size_t buff_length) : runs(runs), buff(buff), buff_length(buff_length)
+	ICUParagraphLayout(std::vector<ICURun> &&runs, UChar *buff, size_t buff_length) : runs(std::move(runs)), buff(buff), buff_length(buff_length)
 	{
 		this->Reflow();
 	}
@@ -374,7 +374,7 @@ std::vector<ICURun> ItemizeStyle(std::vector<ICURun> &runs_current, FontMap &fon
 		run.Shape(buff, length);
 	}
 
-	return new ICUParagraphLayout(runs, buff, length);
+	return new ICUParagraphLayout(std::move(runs), buff, length);
 }
 
 /* static */ std::unique_ptr<icu::BreakIterator> ICUParagraphLayoutFactory::break_iterator;
