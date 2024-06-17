@@ -113,7 +113,7 @@ public:
 		}
 	};
 
-	UniscribeParagraphLayout(std::vector<UniscribeRun> &ranges, const UniscribeParagraphLayoutFactory::CharType *buffer) : text_buffer(buffer), ranges(ranges)
+	UniscribeParagraphLayout(std::vector<UniscribeRun> &&ranges, const UniscribeParagraphLayoutFactory::CharType *buffer) : text_buffer(buffer), ranges(std::move(ranges))
 	{
 		this->Reflow();
 	}
@@ -315,7 +315,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 		}
 	}
 
-	return new UniscribeParagraphLayout(ranges, buff);
+	return new UniscribeParagraphLayout(std::move(ranges), buff);
 }
 
 /* virtual */ std::unique_ptr<const ParagraphLayouter::Line> UniscribeParagraphLayout::NextLine(int max_width)
