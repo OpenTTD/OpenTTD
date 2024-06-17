@@ -39,7 +39,7 @@
 	company = ScriptCompany::ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID) return 0;
 
-	::Company *c = ::Company::Get((::CompanyID)company);
+	const ::Company *c = ::Company::Get((::CompanyID)company);
 	switch (infra_type) {
 		case INFRASTRUCTURE_RAIL:
 			return c->infrastructure.GetRailTotal();
@@ -87,7 +87,7 @@
 	company = ScriptCompany::ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID || !_settings_game.economy.infrastructure_maintenance) return 0;
 
-	::Company *c = ::Company::Get((::CompanyID)company);
+	const ::Company *c = ::Company::Get((::CompanyID)company);
 	switch (infra_type) {
 		case INFRASTRUCTURE_RAIL: {
 			Money cost;

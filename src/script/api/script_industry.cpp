@@ -51,7 +51,7 @@
 
 /* static */ ScriptDate::Date ScriptIndustry::GetConstructionDate(IndustryID industry_id)
 {
-	Industry *i = Industry::GetIfValid(industry_id);
+	const Industry *i = Industry::GetIfValid(industry_id);
 	if (i == nullptr) return ScriptDate::DATE_INVALID;
 	return (ScriptDate::Date)i->construction_date.base();
 }
@@ -71,6 +71,7 @@
 	if (!IsValidIndustry(industry_id)) return CAS_NOT_ACCEPTED;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return CAS_NOT_ACCEPTED;
 
+	/* Not const because IndustryTemporarilyRefusesCargo tests a callback which needs a non-const object. */
 	Industry *i = ::Industry::Get(industry_id);
 
 	if (!i->IsCargoAccepted(cargo_id)) return CAS_NOT_ACCEPTED;
@@ -84,7 +85,7 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	Industry *i = ::Industry::Get(industry_id);
+	const Industry *i = ::Industry::Get(industry_id);
 
 	auto it = i->GetCargoAccepted(cargo_id);
 	if (it == std::end(i->accepted)) return -1;
@@ -97,7 +98,7 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	Industry *i = ::Industry::Get(industry_id);
+	const Industry *i = ::Industry::Get(industry_id);
 
 	auto it = i->GetCargoProduced(cargo_id);
 	if (it == std::end(i->produced)) return -1;
@@ -110,7 +111,7 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	Industry *i = ::Industry::Get(industry_id);
+	const Industry *i = ::Industry::Get(industry_id);
 
 	auto it = i->GetCargoProduced(cargo_id);
 	if (it == std::end(i->produced)) return -1;
@@ -123,7 +124,7 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	Industry *i = ::Industry::Get(industry_id);
+	const Industry *i = ::Industry::Get(industry_id);
 
 	auto it = i->GetCargoProduced(cargo_id);
 	if (it == std::end(i->produced)) return -1;
@@ -142,7 +143,7 @@
 {
 	if (!IsValidIndustry(industry_id)) return -1;
 
-	Industry *ind = ::Industry::Get(industry_id);
+	const Industry *ind = ::Industry::Get(industry_id);
 	return ind->stations_near.size();
 }
 
@@ -220,14 +221,14 @@
 
 /* static */ SQInteger ScriptIndustry::GetLastProductionYear(IndustryID industry_id)
 {
-	Industry *i = Industry::GetIfValid(industry_id);
+	const Industry *i = Industry::GetIfValid(industry_id);
 	if (i == nullptr) return 0;
 	return i->last_prod_year.base();
 }
 
 /* static */ ScriptDate::Date ScriptIndustry::GetCargoLastAcceptedDate(IndustryID industry_id, CargoID cargo_type)
 {
-	Industry *i = Industry::GetIfValid(industry_id);
+	const Industry *i = Industry::GetIfValid(industry_id);
 	if (i == nullptr) return ScriptDate::DATE_INVALID;
 
 	if (!::IsValidCargoID(cargo_type)) {
@@ -242,7 +243,7 @@
 
 /* static */ SQInteger ScriptIndustry::GetControlFlags(IndustryID industry_id)
 {
-	Industry *i = Industry::GetIfValid(industry_id);
+	const Industry *i = Industry::GetIfValid(industry_id);
 	if (i == nullptr) return 0;
 	return i->ctlflags;
 }
@@ -297,7 +298,7 @@
 
 /* static */ SQInteger ScriptIndustry::GetProductionLevel(IndustryID industry_id)
 {
-	Industry *i = Industry::GetIfValid(industry_id);
+	const Industry *i = Industry::GetIfValid(industry_id);
 	if (i == nullptr) return 0;
 	return i->prod_level;
 }

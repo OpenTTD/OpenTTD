@@ -114,8 +114,8 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidStoryPageElement(story_page_element_id));
 
-	StoryPageElement *pe = StoryPageElement::Get(story_page_element_id);
-	StoryPage *p = StoryPage::Get(pe->page);
+	const StoryPageElement *pe = StoryPageElement::Get(story_page_element_id);
+	const StoryPage *p = StoryPage::Get(pe->page);
 	::StoryPageElementType type = pe->type;
 
 	std::string encoded_text;

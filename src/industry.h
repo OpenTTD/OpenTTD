@@ -195,6 +195,17 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	}
 
 	/**
+	 * Get accepted cargo slot for a specific cargo type (const-variant).
+	 * @param cargo CargoID to find.
+	 * @return Iterator pointing to accepted cargo slot if it exists, or the end iterator.
+	 */
+	inline AcceptedCargoes::const_iterator GetCargoAccepted(CargoID cargo) const
+	{
+		if (!IsValidCargoID(cargo)) return std::end(this->accepted);
+		return std::find_if(std::begin(this->accepted), std::end(this->accepted), [&cargo](const auto &a) { return a.cargo == cargo; });
+	}
+
+	/**
 	 * Test if this industry accepts any cargo.
 	 * @return true iff the industry accepts any cargo.
 	 */
