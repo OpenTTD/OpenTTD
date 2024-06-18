@@ -1790,7 +1790,7 @@ public:
 
 	void OnMouseWheel(int wheel) override
 	{
-		if (_settings_client.gui.scrollwheel_scrolling != 2) {
+		if (_settings_client.gui.scrollwheel_scrolling != SWS_OFF) {
 			const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 			int cursor_x = _cursor.pos.x - this->left - wid->pos_x;
 			int cursor_y = _cursor.pos.y - this->top  - wid->pos_y;

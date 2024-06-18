@@ -126,6 +126,13 @@ enum ViewportScrollMode {
 	VSM_END,                ///< Number of scroll mode settings.
 };
 
+/** Settings related to scroll wheel behavior. */
+enum ScrollWheelScrollingSetting {
+	SWS_ZOOM_MAP = 0,       ///< Scroll wheel zooms the map.
+	SWS_SCROLL_MAP = 1,     ///< Scroll wheel scrolls the map.
+	SWS_OFF = 2             ///< Scroll wheel has no effect.
+};
+
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
 struct GUISettings {
 	bool   sg_full_load_any;                 ///< new full load calculation, any cargo must be full read from pre v93 savegames
