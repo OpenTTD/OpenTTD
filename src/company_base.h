@@ -92,6 +92,7 @@ struct CompanyProperties {
 	TileIndex last_build_coordinate; ///< Coordinate of the last build thing by this company.
 
 	TimerGameEconomy::Year inaugurated_year; ///< Economy year of starting the company.
+	TimerGameCalendar::Year inaugurated_year_calendar; ///< Calendar year of starting the company. Used to display proper Inauguration year while in wallclock mode.
 
 	uint8_t months_empty = 0; ///< NOSAVE: Number of months this company has not had a client in multiplayer.
 	uint8_t months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
