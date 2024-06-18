@@ -2113,7 +2113,7 @@ static constexpr NWidgetPart _nested_company_widgets[] = {
 			NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 					NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
-						NWidget(WWT_TEXT, COLOUR_GREY, WID_C_DESC_INAUGURATION), SetDataTip(STR_COMPANY_VIEW_INAUGURATED_TITLE, STR_NULL), SetFill(1, 0),
+						NWidget(WWT_TEXT, COLOUR_GREY, WID_C_DESC_INAUGURATION), SetDataTip(STR_JUST_STRING2, STR_NULL), SetFill(1, 0),
 						NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 							NWidget(WWT_LABEL, COLOUR_GREY, WID_C_DESC_COLOUR_SCHEME), SetDataTip(STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE, STR_NULL),
 							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_DESC_COLOUR_SCHEME_EXAMPLE), SetMinimalSize(30, 0), SetFill(1, 1),
@@ -2401,7 +2401,14 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_DESC_INAUGURATION:
-				SetDParam(0, Company::Get((CompanyID)this->window_number)->inaugurated_year);
+				if (TimerGameEconomy::UsingWallclockUnits()) {
+					SetDParam(0, STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK);
+					SetDParam(1, Company::Get(static_cast<CompanyID>(this->window_number))->inaugurated_year_calendar);
+					SetDParam(2, Company::Get(static_cast<CompanyID>(this->window_number))->inaugurated_year);
+				} else {
+					SetDParam(0, STR_COMPANY_VIEW_INAUGURATED_TITLE);
+					SetDParam(1, Company::Get(static_cast<CompanyID>(this->window_number))->inaugurated_year);
+				}
 				break;
 
 			case WID_C_DESC_COMPANY_VALUE:
