@@ -16,9 +16,6 @@ if (NOT HOST_BINARY_DIR)
     add_definitions(-DSTRGEN)
     add_executable(strgen ${sourcefiles})
 
-    include(Endian)
-    add_endian_definition()
-
     export(TARGETS strgen FILE ${CMAKE_BINARY_DIR}/strgen.cmake)
     add_dependencies(tools strgen)
 endif()

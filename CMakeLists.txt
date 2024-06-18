@@ -51,9 +51,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 # An empty target for the tools
 add_custom_target(tools)
 
-include(Endian)
-add_endian_definition()
-
 include(CompileFlags)
 compile_flags()
 
