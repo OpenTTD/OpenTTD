@@ -1489,6 +1489,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisa si el ben
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Si està activat, s'envia un missatge de notícia quan un vehicle no ha tingut beneficis durant l'any.
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Si està activat, s'envia un missatge de notícia quan un vehicle no ha obtingut benefici durant un període.
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Avisa si el vehicle és vell: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Si està activat, s'envia un missatge de notícia quan un vehicle és vell.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Els vehicles mai caduquen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Si està activat, tots els models de vehicles continuen disponibles per sempre després de la seva introducció.
