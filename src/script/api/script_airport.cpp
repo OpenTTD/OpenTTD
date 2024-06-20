@@ -116,6 +116,27 @@
 	return st->airport.GetHangarTile(0);
 }
 
+/* static */ TileIndex ScriptAirport::GetTileOfAirport(TileIndex tile)
+{
+	EnforceDeityOrCompanyModeValid(INVALID_TILE);
+	if (!::IsValidTile(tile)) return INVALID_TILE;
+	if (!::IsTileType(tile, MP_STATION)) return INVALID_TILE;
+
+	const ::Station *st = ::Station::GetByTile(tile);
+	if (st->owner != ScriptObject::GetCompany() && ScriptCompanyMode::IsValid()) return INVALID_TILE;
+	if ((st->facilities & FACIL_AIRPORT) == 0) return INVALID_TILE;
+
+	for (const TileIndex &t : st->airport) {
+		if (!IsAirportTile(t)) continue;
+		if (IsHangarTile(t)) continue;
+		if (::Station::GetByTile(t)->index != st->index) continue;
+
+		return t;
+	}
+
+	NOT_REACHED();
+}
+
 /* static */ ScriptAirport::AirportType ScriptAirport::GetAirportType(TileIndex tile)
 {
 	if (!ScriptTile::IsStationTile(tile)) return AT_INVALID;
