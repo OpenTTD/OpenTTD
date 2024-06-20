@@ -181,6 +181,21 @@ public:
 	uint8_t nofelements;                     ///< number of positions the airport consists of
 	const uint8_t *entry_points;             ///< when an airplane arrives at this airport, enter it at position entry_point, index depends on direction
 	uint8_t delta_z;                         ///< Z adjustment for helicopter pads
+
+	/**
+	 * Get the number of terminals at the airport.
+	 * @return Number of terminals.
+	 */
+	uint GetNumTerminals() const
+	{
+		uint num = 0;
+
+		if (terminals != nullptr) {
+			for (uint i = terminals[0]; i > 0; i--) num += terminals[i];
+		}
+
+		return num;
+	}
 };
 
 DECLARE_ENUM_AS_BIT_SET(AirportFTAClass::Flags)
