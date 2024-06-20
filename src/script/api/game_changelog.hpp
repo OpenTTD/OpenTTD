@@ -15,6 +15,9 @@
  *
  * \b 15.0
  *
+ * API additions:
+ * \li GSAirport::GetAirportPlaneCompatibility which returns GSAirport::AC_INCOMPATIBLE, GSAirport::AC_COMPATIBLE, GSAirport::AC_SHORT_RUNWAY or GSAirport::AC_INVALID
+ *
  * This version is not yet released. The following changes are not set in stone yet.
  *
  * \b 14.0

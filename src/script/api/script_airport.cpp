@@ -179,3 +179,27 @@
 
 	return ::AirportSpec::Get(type)->fsm->num_helipads;
 }
+
+/* static */ ScriptAirport::AirportPlaneCompatibility ScriptAirport::GetAirportPlaneCompatibility(AirportType airport_type, PlaneType plane_type)
+{
+	if (!IsAirportInformationAvailable(airport_type)) return AC_INVALID;
+
+	const auto flags = ::AirportSpec::Get(airport_type)->fsm->flags;
+	switch (plane_type) {
+		case PT_HELICOPTER:
+			if ((flags & ::AirportFTAClass::HELICOPTERS) != 0) return AC_COMPATIBLE;
+			break;
+		case PT_SMALL_PLANE:
+			if ((flags & ::AirportFTAClass::AIRPLANES) != 0) return AC_COMPATIBLE;
+			break;
+		case PT_BIG_PLANE:
+			if ((flags & ::AirportFTAClass::AIRPLANES) != 0) {
+				if ((flags & ::AirportFTAClass::SHORT_STRIP) != 0) return AC_SHORT_RUNWAY;
+				return AC_COMPATIBLE;
+			}
+			break;
+		default:
+			return AC_INVALID;
+	}
+	return AC_INCOMPATIBLE;
+}
