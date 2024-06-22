@@ -1165,7 +1165,7 @@ struct MessageHistoryWindow : Window {
 			 * could be invalid, so ensure it's correct now. Potentially this means that item clicked on might be
 			 * different as well. */
 			this->vscroll->SetCount(std::size(_news));
-			auto ni = this->vscroll->GetScrolledItemFromWidget(_news, pt.y, this, widget);
+			auto ni = this->vscroll->GetScrolledItemFromWidget(_news, pt.y, this, widget, WidgetDimensions::scaled.framerect.top);
 			if (ni == std::end(_news)) return;
 
 			ShowNewsMessage(ni);
@@ -1174,7 +1174,7 @@ struct MessageHistoryWindow : Window {
 
 	void OnResize() override
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_MH_BACKGROUND);
+		this->vscroll->SetCapacityFromWidget(this, WID_MH_BACKGROUND, WidgetDimensions::scaled.framerect.Vertical());
 	}
 };
 

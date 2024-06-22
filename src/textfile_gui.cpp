@@ -587,7 +587,7 @@ void TextfileWindow::AfterLoadMarkdown()
 /* virtual */ void TextfileWindow::OnResize()
 {
 	this->vscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND, WidgetDimensions::scaled.frametext.Vertical());
-	this->hscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND);
+	this->hscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND, WidgetDimensions::scaled.framerect.Horizontal());
 
 	this->SetupScrollbars(false);
 }
