@@ -1488,6 +1488,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Waarschuwen als
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wanneer ingeschakeld, wordt een nieuwsbericht verstuurd wanneer een voertuig geen winst heeft gemaakt in een kalenderjaar
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Wanneer ingeschakeld, krijg je een nieuwsbericht wanneer een voertuig geen winst heeft gemaakt gedurende een periode
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Waarschuwing als een voertuig oud aan het worden is: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Wanneer ingeschakeld, wordt een nieuwsbericht verzonden wanneer een voertuig oud aan het worden is
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuigen verlopen niet: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wanneer ingeschakeld, alle voertuig modellen blijven voor altijd beschikbaar na hun introductie

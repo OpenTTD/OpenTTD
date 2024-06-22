@@ -1581,6 +1581,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ειδοποί�
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Όταν είναι ενεργοποιημένη, εμφανίζεται ειδοποίηση όταν κάποιο όχημα δεν έχει αποφέρει κέρδος εντός ενός έτους
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Όταν είναι ενεργοποιημένη, εμφανίζεται ειδοποίηση όταν κάποιο όχημα δεν έχει αποφέρει κέρδος εντός μιας περιόδου
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Ειδοποίηση όταν ένα όχημα παλιώσει: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Όταν είναι ενεργοποιημένη, εμφανίζεται ειδοποίηση όταν κάποιο όχημα παλιώνει
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Τα οχήματα δεν λήγουν ποτέ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Όταν είναι ενεργοποιημένη, όλα τα μοντέλα οχημάτων παραμένουν διαθέσιμα για πάντα μετά την παρουσίασή τους
