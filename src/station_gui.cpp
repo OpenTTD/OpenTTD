@@ -581,7 +581,7 @@ public:
 	{
 		switch (widget) {
 			case WID_STL_LIST: {
-				auto it = this->vscroll->GetScrolledItemFromWidget(this->stations, pt.y, this, WID_STL_LIST);
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->stations, pt.y, this, WID_STL_LIST, WidgetDimensions::scaled.framerect.top);
 				if (it == this->stations.end()) return; // click out of list bound
 
 				const Station *st = *it;

@@ -1192,7 +1192,7 @@ struct ScriptDebugWindow : public Window {
 	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_SCRD_LOG_PANEL, WidgetDimensions::scaled.framerect.Vertical());
-		this->hscroll->SetCapacityFromWidget(this, WID_SCRD_LOG_PANEL);
+		this->hscroll->SetCapacityFromWidget(this, WID_SCRD_LOG_PANEL, WidgetDimensions::scaled.framerect.Horizontal());
 	}
 
 	/**

@@ -235,7 +235,7 @@ struct SubsidyListWindow : Window {
 
 	void OnResize() override
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_SUL_PANEL);
+		this->vscroll->SetCapacityFromWidget(this, WID_SUL_PANEL, WidgetDimensions::scaled.framerect.Vertical());
 	}
 
 	/**
