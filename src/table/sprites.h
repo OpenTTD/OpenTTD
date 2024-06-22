@@ -54,7 +54,7 @@ static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 
 /** Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
-static const uint16_t OPENTTD_SPRITE_COUNT = 191;
+static const uint16_t OPENTTD_SPRITE_COUNT = 195;
 
 /* Halftile-selection sprites */
 static const SpriteID SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE;
@@ -173,6 +173,11 @@ static const SpriteID SPR_PLAYER_SELF                = SPR_OPENTTD_BASE + 189;
 static const SpriteID SPR_PLAYER_HOST                = SPR_OPENTTD_BASE + 190;
 
 static const SpriteID SPR_IMG_CARGOFLOW              = SPR_OPENTTD_BASE + 174;
+
+static const SpriteID SPR_IMG_CLONE_AREA_COPY        = SPR_OPENTTD_BASE + 191;
+static const SpriteID SPR_IMG_CLONE_AREA_PASTE       = SPR_OPENTTD_BASE + 192;
+static const CursorID SPR_CURSOR_CLONE_AREA_COPY     = SPR_OPENTTD_BASE + 193;
+static const CursorID SPR_CURSOR_CLONE_AREA_PASTE    = SPR_OPENTTD_BASE + 194;
 
 static const SpriteID SPR_SIGNALS_BASE  = SPR_OPENTTD_BASE + OPENTTD_SPRITE_COUNT;
 static const uint16_t PRESIGNAL_SPRITE_COUNT                   =  48;

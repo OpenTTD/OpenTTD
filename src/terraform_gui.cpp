@@ -38,6 +38,7 @@
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"
 #include "object_cmd.h"
+#include "clone_area_cmd.h"
 
 #include "widgets/terraform_widget.h"
 
@@ -131,6 +132,12 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 		case DDSP_LEVEL_AREA:
 			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_LEVEL_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LM_LEVEL);
 			break;
+		case DDSP_CLONE_AREA_COPY:
+			Command<CMD_CLONE_AREA_COPY>::Post(STR_ERROR_CAN_T_CLONE_AREA_COPY, CcCloneArea, end_tile, start_tile, _ctrl_pressed);
+			break;
+		case DDSP_CLONE_AREA_PASTE:
+			Command<CMD_CLONE_AREA_PASTE>::Post(STR_ERROR_CAN_T_CLONE_AREA_PASTE, CcCloneArea, end_tile, start_tile, _ctrl_pressed);
+			break;
 		case DDSP_CREATE_ROCKS:
 			GenerateRockyArea(end_tile, start_tile);
 			break;
@@ -162,6 +169,7 @@ struct TerraformToolbarWindow : Window {
 		/* This is needed as we like to have the tree available on OnInit. */
 		this->CreateNestedTree();
 		this->FinishInitNested(window_number);
+		this->DisableWidget(WID_TT_CLONE_AREA_PASTE);
 		this->last_user_action = INVALID_WID_TT;
 	}
 
@@ -193,6 +201,16 @@ struct TerraformToolbarWindow : Window {
 
 			case WID_TT_LEVEL_LAND: // Level land button
 				HandlePlacePushButton(this, WID_TT_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL);
+				this->last_user_action = widget;
+				break;
+
+			case WID_TT_CLONE_AREA_COPY: // Copy area button
+				HandlePlacePushButton(this, WID_TT_CLONE_AREA_COPY, SPR_CURSOR_CLONE_AREA_COPY, HT_POINT | HT_DIAGONAL);
+				this->last_user_action = widget;
+				break;
+
+			case WID_TT_CLONE_AREA_PASTE: // Paste area button
+				HandlePlacePushButton(this, WID_TT_CLONE_AREA_PASTE, SPR_CURSOR_CLONE_AREA_PASTE, HT_POINT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
@@ -238,6 +256,14 @@ struct TerraformToolbarWindow : Window {
 				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LEVEL_AREA);
 				break;
 
+			case WID_TT_CLONE_AREA_COPY: // Clone area button
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CLONE_AREA_COPY);
+				break;
+
+			case WID_TT_CLONE_AREA_PASTE: // Clone area button
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CLONE_AREA_PASTE);
+				break;
+
 			case WID_TT_DEMOLISH: // Demolish aka dynamite button
 				PlaceProc_DemolishArea(tile);
 				break;
@@ -275,6 +301,11 @@ struct TerraformToolbarWindow : Window {
 				case DDSP_RAISE_AND_LEVEL_AREA:
 				case DDSP_LOWER_AND_LEVEL_AREA:
 				case DDSP_LEVEL_AREA:
+				case DDSP_CLONE_AREA_PASTE:
+					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
+					break;
+				case DDSP_CLONE_AREA_COPY:
+					this->CloneAreaPasteWidgetEnable(true);
 					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
 					break;
 				case DDSP_BUILD_OBJECT:
@@ -294,6 +325,13 @@ struct TerraformToolbarWindow : Window {
 	void OnPlaceObjectAbort() override
 	{
 		this->RaiseButtons();
+	}
+
+	void CloneAreaPasteWidgetEnable(bool value)
+	{
+		this->SetWidgetDisabledState(WID_TT_CLONE_AREA_PASTE, !value);
+		this->RaiseWidget(WID_TT_CLONE_AREA_PASTE);
+		this->SetWidgetDirty(WID_TT_CLONE_AREA_PASTE);
 	}
 
 	/**
@@ -345,6 +383,12 @@ static constexpr NWidgetPart _nested_terraform_widgets[] = {
 								SetFill(0, 1), SetDataTip(SPR_IMG_PLANTTREES, STR_SCENEDIT_TOOLBAR_PLANT_TREES),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_PLACE_SIGN), SetMinimalSize(22, 22),
 								SetFill(0, 1), SetDataTip(SPR_IMG_SIGN, STR_SCENEDIT_TOOLBAR_PLACE_SIGN),
+
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_CLONE_AREA_COPY), SetMinimalSize(22, 22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_CLONE_AREA_COPY, STR_LANDSCAPING_TOOLTIP_CLONE_AREA_COPY),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_CLONE_AREA_PASTE), SetMinimalSize(22, 22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_CLONE_AREA_PASTE, STR_LANDSCAPING_TOOLTIP_CLONE_AREA_PASTE),
+
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_TT_SHOW_PLACE_OBJECT),
 			NWidget(WWT_PUSHIMGBTN, COLOUR_DARK_GREEN, WID_TT_PLACE_OBJECT), SetMinimalSize(22, 22),
 								SetFill(0, 1), SetDataTip(SPR_IMG_TRANSMITTER, STR_SCENEDIT_TOOLBAR_PLACE_OBJECT),

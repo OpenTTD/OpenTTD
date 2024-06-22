@@ -94,6 +94,8 @@ add_files(
     clear_cmd.cpp
     clear_func.h
     clear_map.h
+    clone_area_cmd.cpp
+    clone_area_cmd.h
     command.cpp
     command_func.h
     command_type.h
