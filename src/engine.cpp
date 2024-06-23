@@ -940,7 +940,7 @@ static IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalend
 					CloseWindowById(WC_ENGINE_PREVIEW, i);
 					e->preview_company = INVALID_COMPANY;
 				}
-			} else if (CountBits(e->preview_asked) < MAX_COMPANIES) {
+			} else if (e->preview_asked.count() < MAX_COMPANIES) {
 				e->preview_company = GetPreviewCompany(e);
 
 				if (e->preview_company == INVALID_COMPANY) {
@@ -969,7 +969,7 @@ static IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalend
 void ClearEnginesHiddenFlagOfCompany(CompanyID cid)
 {
 	for (Engine *e : Engine::Iterate()) {
-		SB(e->company_hidden, cid, 1, 0);
+		e->company_hidden.reset(cid);
 	}
 }
 
@@ -987,7 +987,7 @@ CommandCost CmdSetVehicleVisibility(DoCommandFlag flags, EngineID engine_id, boo
 	if (!IsEngineBuildable(e->index, e->type, _current_company)) return CMD_ERROR;
 
 	if ((flags & DC_EXEC) != 0) {
-		SB(e->company_hidden, _current_company, 1, hide ? 1 : 0);
+		e->company_hidden.set(_current_company, hide ? 1 : 0);
 		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
 

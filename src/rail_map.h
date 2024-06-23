@@ -552,8 +552,9 @@ inline void SetRailDepotExitDirection(Tile tile, DiagDirection dir)
 inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RailType rail_type)
 {
 	SetTileType(tile, MP_RAILWAY);
-	SetTileOwner(tile, owner);
 	SetDockingTile(tile, false);
+	SetTileOwner(tile, owner);
+	tile.m1() = 0;
 	tile.m2() = depot_id;
 	tile.m3() = 0;
 	tile.m4() = 0;

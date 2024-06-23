@@ -10,6 +10,7 @@
 #ifndef ROAD_MAP_H
 #define ROAD_MAP_H
 
+#include "company_type.h"
 #include "track_func.h"
 #include "depot_type.h"
 #include "rail_type.h"
@@ -231,7 +232,7 @@ inline bool HasTileAnyRoadType(Tile t, RoadTypes rts)
  * @param rtt RoadTramType.
  * @return Owner of the given road type.
  */
-inline Owner GetRoadOwner(Tile t, RoadTramType rtt)
+inline Owner OldGetRoadOwner(Tile t, RoadTramType rtt)
 {
 	assert(MayHaveRoad(t));
 	if (rtt == RTT_ROAD) return (Owner)GB(IsNormalRoadTile(t) ? t.m1() : t.m7(), 0, 5);
@@ -239,6 +240,21 @@ inline Owner GetRoadOwner(Tile t, RoadTramType rtt)
 	/* Trams don't need OWNER_TOWN, and remapping OWNER_NONE
 	 * to OWNER_TOWN makes it use one bit less */
 	Owner o = (Owner)GB(t.m3(), 4, 4);
+	return o == OLD_OWNER_TOWN ? OLD_OWNER_NONE : o;
+}
+
+/**
+ * Get the owner of a specific road type.
+ * @param t  The tile to query.
+ * @param rtt RoadTramType.
+ * @return Owner of the given road type.
+ */
+inline Owner GetRoadOwner(Tile t, RoadTramType rtt)
+{
+	assert(MayHaveRoad(t));
+	if (rtt == RTT_ROAD) return (Owner)GB(t.m9(), IsNormalRoadTile(t) ? 0 : COMPANY_SIZE_BITS * 2, COMPANY_SIZE_BITS);
+
+	Owner o = (Owner)GB(t.m9(), COMPANY_SIZE_BITS, COMPANY_SIZE_BITS);
 	return o == OWNER_TOWN ? OWNER_NONE : o;
 }
 
@@ -251,9 +267,24 @@ inline Owner GetRoadOwner(Tile t, RoadTramType rtt)
 inline void SetRoadOwner(Tile t, RoadTramType rtt, Owner o)
 {
 	if (rtt == RTT_ROAD) {
+		SB(t.m9(), IsNormalRoadTile(t) ? 0 : COMPANY_SIZE_BITS * 2, COMPANY_SIZE_BITS, o);
+	} else {
+		SB(t.m9(), COMPANY_SIZE_BITS, COMPANY_SIZE_BITS, o==OWNER_NONE ? OWNER_TOWN : o);
+	}
+}
+
+/**
+ * Set the owner of a specific road type.
+ * @param t  The tile to change.
+ * @param rtt RoadTramType.
+ * @param o  New owner of the given road type.
+ */
+inline void OldSetRoadOwner(Tile t, RoadTramType rtt, Owner o)
+{
+	if (rtt == RTT_ROAD) {
 		SB(IsNormalRoadTile(t) ? t.m1() : t.m7(), 0, 5, o);
 	} else {
-		SB(t.m3(), 4, 4, o == OWNER_NONE ? OWNER_TOWN : o);
+		SB(t.m3(), 4, 4, o == OLD_OWNER_NONE ? OLD_OWNER_TOWN : o);
 	}
 }
 

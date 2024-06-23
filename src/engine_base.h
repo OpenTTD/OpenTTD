@@ -15,6 +15,7 @@
 #include "core/pool_type.hpp"
 #include "newgrf_commons.h"
 #include "timer/timer_game_calendar.h"
+#include <cstdint>
 
 struct WagonOverride {
 	std::vector<EngineID> engines;
@@ -47,11 +48,19 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint16_t duration_phase_2;    ///< Second reliability phase in months, keeping #reliability_max.
 	uint16_t duration_phase_3;    ///< Third reliability phase in months, decaying to #reliability_final.
 	uint8_t flags;                 ///< Flags of the engine. @see EngineFlags
+
 	CompanyMask preview_asked;  ///< Bit for each company which has already been offered a preview.
+	uint16_t old_preview_asked;
+
 	CompanyID preview_company;  ///< Company which is currently being offered a preview \c INVALID_COMPANY means no company.
 	uint8_t preview_wait;          ///< Daily countdown timer for timeout of offering the engine to the #preview_company company.
+
 	CompanyMask company_avail;  ///< Bit for each company whether the engine is available for that company.
+	uint16_t old_company_avail;
+
 	CompanyMask company_hidden; ///< Bit for each company whether the engine is normally hidden in the build gui for that company.
+	uint16_t old_company_hidden;
+
 	uint8_t original_image_index; ///< Original vehicle image index, thus the image index of the overridden vehicle
 	VehicleType type;           ///< %Vehicle type, ie #VEH_ROAD, #VEH_TRAIN, etc.
 

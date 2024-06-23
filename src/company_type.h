@@ -11,6 +11,7 @@
 #define COMPANY_TYPE_H
 
 #include "core/enum_type.hpp"
+#include <bitset>
 
 /**
  * Enum for all companies/owners.
@@ -18,22 +19,39 @@
 enum Owner : uint8_t {
 	/* All companies below MAX_COMPANIES are playable
 	 * companies, above, they are special, computer controlled 'companies' */
-	OWNER_BEGIN     = 0x00, ///< First owner
-	COMPANY_FIRST   = 0x00, ///< First company, same as owner
-	MAX_COMPANIES   = 0x0F, ///< Maximum number of companies
-	OWNER_TOWN      = 0x0F, ///< A town owns the tile, or a town is expanding
-	OWNER_NONE      = 0x10, ///< The tile has no ownership
-	OWNER_WATER     = 0x11, ///< The tile/execution is done by "water"
-	OWNER_DEITY     = 0x12, ///< The object is owned by a superuser / goal script
+	OWNER_BEGIN       = 0x00, ///< First owner
+	COMPANY_FIRST     = 0x00, ///< First company, same as owner
+	MAX_COMPANIES     = 0xF0, ///< Maximum number of companies
+	OLD_MAX_COMPANIES = 0x0F, ///< Maximum number of companies
+	OWNER_TOWN        = 0xF1, ///< A town owns the tile, or a town is expanding
+	OLD_OWNER_TOWN    = 0x0F,
+	OWNER_NONE        = 0xF2, ///< The tile has no ownership
+	OLD_OWNER_NONE    = 0x10, ///< The tile has no ownership
+
+
+	OWNER_WATER       = 0xF3, ///< The tile/execution is done by "water"
+	OLD_OWNER_WATER   = 0x11, ///< The tile/execution is done by "water"
+	OWNER_DEITY       = 0xF4, ///< The object is owned by a superuser / goal script
 	OWNER_END,              ///< Last + 1 owner
-	INVALID_OWNER   = 0xFF, ///< An invalid owner
-	INVALID_COMPANY = 0xFF, ///< An invalid company
+	INVALID_OWNER     = 0xFF, ///< An invalid owner
+	INVALID_COMPANY   = 0xFF, ///< An invalid company
 
 	/* 'Fake' companies used for networks */
-	COMPANY_INACTIVE_CLIENT = 253, ///< The client is joining
-	COMPANY_NEW_COMPANY     = 254, ///< The client wants a new company
-	COMPANY_SPECTATOR       = 255, ///< The client is spectating
+	COMPANY_INACTIVE_CLIENT = 0xF7, ///< The client is joining
+	COMPANY_NEW_COMPANY     = 0xF8, ///< The client wants a new company
+	COMPANY_SPECTATOR       = 0xF9, ///< The client is spectating
 };
+
+
+const uint8_t COMPANY_SIZE_BITS = 8; /// Size of the company id in bits
+
+static_assert(COMPANY_SIZE_BITS <= 10); /// 32bit m9 can only fit 3 owners of size 10
+
+static_assert(MAX_COMPANIES <= (1U << COMPANY_SIZE_BITS) - 1); /// Checking that MAX_COMPANIES is in bounds
+static_assert(OWNER_END <= (1U << COMPANY_SIZE_BITS) - 1);
+static_assert(INVALID_OWNER <= (1U << COMPANY_SIZE_BITS) - 1);
+static_assert(INVALID_COMPANY <= (1U << COMPANY_SIZE_BITS) - 1);
+
 DECLARE_POSTFIX_INCREMENT(Owner)
 DECLARE_ENUM_AS_ADDABLE(Owner)
 
@@ -47,7 +65,7 @@ static const uint MAX_COMPETITORS_INTERVAL = 500; ///< The maximum interval (in 
 
 typedef Owner CompanyID;
 
-typedef uint16_t CompanyMask;
+typedef std::bitset<MAX_COMPANIES> CompanyMask;
 
 struct Company;
 typedef uint32_t CompanyManagerFace; ///< Company manager face bits, info see in company_manager_face.h

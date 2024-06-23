@@ -381,6 +381,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_COMPANY_ALLOW_LIST,                 ///< 335  PR#12337 Saving of list of client keys that are allowed to join this company.
 	SLV_GROUP_NUMBERS,                      ///< 336  PR#12297 Add per-company group numbers.
+	SLV_MORE_COMPANIES,                      /// Added more companies MYTODO: Fix this comment
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
@@ -690,9 +691,10 @@ enum SaveLoadType : uint8_t {
 	SL_VECTOR      =  7, ///< Save/load a vector of #SL_VAR elements.
 	SL_REFLIST     =  8, ///< Save/load a list of #SL_REF elements.
 	SL_STRUCTLIST  =  9, ///< Save/load a list of structs.
+	SL_COMPANY_MASK      =  10, ///< Save/load a fixed-size bitset of #SL_VAR bits.
 
-	SL_SAVEBYTE    = 10, ///< Save (but not load) a byte.
-	SL_NULL        = 11, ///< Save null-bytes and load to nowhere.
+	SL_SAVEBYTE    = 11, ///< Save (but not load) a byte.
+	SL_NULL        = 12, ///< Save null-bytes and load to nowhere.
 };
 
 typedef void *SaveLoadAddrProc(void *base, size_t extra);
@@ -799,6 +801,7 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
 		case SL_REF: return sizeof(void *) == size;
 		case SL_STDSTR: return SlVarSize(type) == size;
 		case SL_ARR: return SlVarSize(type) * length <= size; // Partial load of array is permitted.
+		case SL_COMPANY_MASK: return SlVarSize(type) * length <= size; // Partial load of array is permitted.
 		case SL_DEQUE: return sizeof(std::deque<void *>) == size;
 		case SL_VECTOR: return sizeof(std::vector<void *>) == size;
 		case SL_REFLIST: return sizeof(std::list<void *>) == size;
@@ -1000,6 +1003,17 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @param length   Number of elements in the array.
  */
 #define SLE_ARRNAME(base, variable, name, type, length) SLE_CONDARRNAME(base, variable, name, type, length, SL_MIN_VERSION, SL_MAX_VERSION)
+
+
+/**
+ * Storage of a company mask bitset of #MAX_COMPANIES bits in some savegame versions.
+ * @param base     Name of the class or struct containing the company mask.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param bit_length   Number of bits in the serialized form.
+ * @param from     First savegame version that has the array.
+ * @param to       Last savegame version that has the array.
+ */
+#define SLE_CONDCOMPMASK(base, variable, bit_length, from, to) SLE_GENERAL(SL_COMPANY_MASK, base, variable, SLE_CHAR, (bit_length + 7) >> 3, from, to, 0)
 
 /**
  * Storage of a \c std::string in every savegame version.
@@ -1300,6 +1314,8 @@ void SlCopy(void *object, size_t length, VarType conv);
 std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt);
 std::vector<SaveLoad> SlCompatTableHeader(const SaveLoadTable &slt, const SaveLoadCompatTable &slct);
 void SlObject(void *object, const SaveLoadTable &slt);
+CompanyMask ParseOldCompMask(uint16_t old_owner);
+Owner ParseOldOwner(Owner old);
 
 bool SaveloadCrashWithMissingNewGRFs();
 

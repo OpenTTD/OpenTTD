@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 
+#include "company_type.h"
 #include "saveload.h"
 #include "compat/industry_sl_compat.h"
 
@@ -264,6 +265,12 @@ struct INDYChunkHandler : ChunkHandler {
 				LoadMoveAcceptsProduced(i, INDUSTRY_ORIGINAL_NUM_INPUTS, INDUSTRY_ORIGINAL_NUM_OUTPUTS);
 			} else if (IsSavegameVersionBefore(SLV_INDUSTRY_CARGO_REORGANISE)) {
 				LoadMoveAcceptsProduced(i, INDUSTRY_NUM_INPUTS, INDUSTRY_NUM_OUTPUTS);
+			}
+			if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
+				i->owner = ParseOldOwner(i-> owner);
+				i->founder = ParseOldOwner(i-> founder);
+				i->exclusive_supplier = ParseOldOwner(i-> exclusive_supplier);
+				i->exclusive_consumer = ParseOldOwner(i-> exclusive_consumer);
 			}
 			Industry::IncIndustryTypeCount(i->type);
 		}

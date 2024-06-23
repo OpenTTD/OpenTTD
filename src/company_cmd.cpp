@@ -7,6 +7,8 @@
 
 /** @file company_cmd.cpp Handling of companies. */
 
+#include "company_type.h"
+#include "gfx_type.h"
 #include "stdafx.h"
 #include "company_base.h"
 #include "company_func.h"
@@ -448,27 +450,6 @@ bad_town_name:;
 	}
 }
 
-/** Sorting weights for the company colours. */
-static const uint8_t _colour_sort[COLOUR_END] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
-/** Similar colours, so we can try to prevent same coloured companies. */
-static const Colours _similar_colour[COLOUR_END][2] = {
-	{ COLOUR_BLUE,       COLOUR_LIGHT_BLUE }, // COLOUR_DARK_BLUE
-	{ COLOUR_GREEN,      COLOUR_DARK_GREEN }, // COLOUR_PALE_GREEN
-	{ INVALID_COLOUR,    INVALID_COLOUR    }, // COLOUR_PINK
-	{ COLOUR_ORANGE,     INVALID_COLOUR    }, // COLOUR_YELLOW
-	{ INVALID_COLOUR,    INVALID_COLOUR    }, // COLOUR_RED
-	{ COLOUR_DARK_BLUE,  COLOUR_BLUE       }, // COLOUR_LIGHT_BLUE
-	{ COLOUR_PALE_GREEN, COLOUR_DARK_GREEN }, // COLOUR_GREEN
-	{ COLOUR_PALE_GREEN, COLOUR_GREEN      }, // COLOUR_DARK_GREEN
-	{ COLOUR_DARK_BLUE,  COLOUR_LIGHT_BLUE }, // COLOUR_BLUE
-	{ COLOUR_BROWN,      COLOUR_ORANGE     }, // COLOUR_CREAM
-	{ COLOUR_PURPLE,     INVALID_COLOUR    }, // COLOUR_MAUVE
-	{ COLOUR_MAUVE,      INVALID_COLOUR    }, // COLOUR_PURPLE
-	{ COLOUR_YELLOW,     COLOUR_CREAM      }, // COLOUR_ORANGE
-	{ COLOUR_CREAM,      INVALID_COLOUR    }, // COLOUR_BROWN
-	{ COLOUR_WHITE,      INVALID_COLOUR    }, // COLOUR_GREY
-	{ COLOUR_GREY,       INVALID_COLOUR    }, // COLOUR_WHITE
-};
 
 /**
  * Generate a company colour.
@@ -476,53 +457,13 @@ static const Colours _similar_colour[COLOUR_END][2] = {
  */
 static Colours GenerateCompanyColour()
 {
-	Colours colours[COLOUR_END];
+	int num_colours = COLOUR_END - COLOUR_BEGIN;
 
-	/* Initialize array */
-	for (uint i = 0; i < COLOUR_END; i++) colours[i] = static_cast<Colours>(i);
-
-	/* And randomize it */
-	for (uint i = 0; i < 100; i++) {
-		uint r = Random();
-		Swap(colours[GB(r, 0, 4)], colours[GB(r, 4, 4)]);
+	int companies = 0;
+	for (const Company *_ : Company::Iterate()) {
+		companies++;
 	}
-
-	/* Bubble sort it according to the values in table 1 */
-	for (uint i = 0; i < COLOUR_END; i++) {
-		for (uint j = 1; j < COLOUR_END; j++) {
-			if (_colour_sort[colours[j - 1]] < _colour_sort[colours[j]]) {
-				Swap(colours[j - 1], colours[j]);
-			}
-		}
-	}
-
-	/* Move the colours that look similar to each company's colour to the side */
-	for (const Company *c : Company::Iterate()) {
-		Colours pcolour = c->colour;
-
-		for (uint i = 0; i < COLOUR_END; i++) {
-			if (colours[i] == pcolour) {
-				colours[i] = INVALID_COLOUR;
-				break;
-			}
-		}
-
-		for (uint j = 0; j < 2; j++) {
-			Colours similar = _similar_colour[pcolour][j];
-			if (similar == INVALID_COLOUR) break;
-
-			for (uint i = 1; i < COLOUR_END; i++) {
-				if (colours[i - 1] == similar) Swap(colours[i - 1], colours[i]);
-			}
-		}
-	}
-
-	/* Return the first available colour */
-	for (uint i = 0; i < COLOUR_END; i++) {
-		if (colours[i] != INVALID_COLOUR) return colours[i];
-	}
-
-	NOT_REACHED();
+	return Colours(companies % num_colours);
 }
 
 /**

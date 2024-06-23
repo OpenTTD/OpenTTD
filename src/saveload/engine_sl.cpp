@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 
+#include "company_type.h"
 #include "saveload.h"
 #include "compat/engine_sl_compat.h"
 
@@ -19,25 +20,32 @@
 #include "../safeguards.h"
 
 static const SaveLoad _engine_desc[] = {
-	 SLE_CONDVAR(Engine, intro_date,          SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_31),
-	 SLE_CONDVAR(Engine, intro_date,          SLE_INT32,                  SLV_31, SL_MAX_VERSION),
-	 SLE_CONDVAR(Engine, age,                 SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_31),
-	 SLE_CONDVAR(Engine, age,                 SLE_INT32,                  SLV_31, SL_MAX_VERSION),
-	     SLE_VAR(Engine, reliability,         SLE_UINT16),
-	     SLE_VAR(Engine, reliability_spd_dec, SLE_UINT16),
-	     SLE_VAR(Engine, reliability_start,   SLE_UINT16),
-	     SLE_VAR(Engine, reliability_max,     SLE_UINT16),
-	     SLE_VAR(Engine, reliability_final,   SLE_UINT16),
-	     SLE_VAR(Engine, duration_phase_1,    SLE_UINT16),
-	     SLE_VAR(Engine, duration_phase_2,    SLE_UINT16),
-	     SLE_VAR(Engine, duration_phase_3,    SLE_UINT16),
-	     SLE_VAR(Engine, flags,               SLE_UINT8),
-	 SLE_CONDVAR(Engine, preview_asked,       SLE_UINT16,                SLV_179, SL_MAX_VERSION),
-	 SLE_CONDVAR(Engine, preview_company,     SLE_UINT8,                 SLV_179, SL_MAX_VERSION),
-	     SLE_VAR(Engine, preview_wait,        SLE_UINT8),
-	 SLE_CONDVAR(Engine, company_avail,       SLE_FILE_U8  | SLE_VAR_U16,  SL_MIN_VERSION, SLV_104),
-	 SLE_CONDVAR(Engine, company_avail,       SLE_UINT16,                SLV_104, SL_MAX_VERSION),
-	 SLE_CONDVAR(Engine, company_hidden,      SLE_UINT16,                SLV_193, SL_MAX_VERSION),
+	 SLE_CONDVAR(Engine, intro_date,			SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_31),
+	 SLE_CONDVAR(Engine, intro_date,			SLE_INT32,                  SLV_31, SL_MAX_VERSION),
+	 SLE_CONDVAR(Engine, age,					SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_31),
+	 SLE_CONDVAR(Engine, age,					SLE_INT32,                  SLV_31, SL_MAX_VERSION),
+	     SLE_VAR(Engine, reliability,			SLE_UINT16),
+	     SLE_VAR(Engine, reliability_spd_dec,	SLE_UINT16),
+	     SLE_VAR(Engine, reliability_start,		SLE_UINT16),
+	     SLE_VAR(Engine, reliability_max,		SLE_UINT16),
+	     SLE_VAR(Engine, reliability_final,		SLE_UINT16),
+	     SLE_VAR(Engine, duration_phase_1,		SLE_UINT16),
+	     SLE_VAR(Engine, duration_phase_2,		SLE_UINT16),
+	     SLE_VAR(Engine, duration_phase_3,		SLE_UINT16),
+	     SLE_VAR(Engine, flags,					SLE_UINT8),
+
+ SLE_CONDVARNAME(Engine, old_preview_asked, "preview_asked", SLE_UINT16,			SLV_179, 				SLV_MORE_COMPANIES),
+SLE_CONDCOMPMASK(Engine, preview_asked,					MAX_COMPANIES,  			SLV_MORE_COMPANIES, 	SL_MAX_VERSION),
+
+	 SLE_CONDVAR(Engine, preview_company,		SLE_UINT8,      	SLV_179, SL_MAX_VERSION),
+		 SLE_VAR(Engine, preview_wait,			SLE_UINT8),
+
+ SLE_CONDVARNAME(Engine, old_company_avail,	"company_avail",       SLE_FILE_U8  | SLE_VAR_U16,  SL_MIN_VERSION, SLV_104),
+ SLE_CONDVARNAME(Engine, old_company_avail,  "company_avail",     SLE_UINT16,                SLV_104, SLV_MORE_COMPANIES),
+SLE_CONDCOMPMASK(Engine, company_avail,			MAX_COMPANIES,		SLV_MORE_COMPANIES,		SL_MAX_VERSION),
+
+SLE_CONDCOMPMASK(Engine, company_hidden,		MAX_COMPANIES,		SLV_MORE_COMPANIES, SL_MAX_VERSION),
+ SLE_CONDVARNAME(Engine, old_company_hidden,    "company_hidden",  SLE_UINT16,                SLV_193, SLV_MORE_COMPANIES),
 	SLE_CONDSSTR(Engine, name,                SLE_STR,                    SLV_84, SL_MAX_VERSION),
 };
 
@@ -110,6 +118,11 @@ struct ENGNChunkHandler : ChunkHandler {
 				e->flags &= ~4; // ENGINE_OFFER_WINDOW_OPEN
 				e->preview_company = INVALID_COMPANY;
 				e->preview_asked = MAX_UVALUE(CompanyMask);
+			}
+			if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
+				e->preview_asked = ParseOldCompMask(e->old_preview_asked);
+				e->company_avail = ParseOldCompMask(e->old_company_avail);
+				e->company_hidden = ParseOldCompMask(e->old_company_hidden);
 			}
 		}
 	}

@@ -17,6 +17,7 @@
 #include "../fios.h"
 
 #include "../safeguards.h"
+#include <iostream>
 
 static uint32_t _map_dim_x;
 static uint32_t _map_dim_y;
@@ -128,10 +129,10 @@ struct MAPOChunkHandler : ChunkHandler {
 		std::array<uint8_t, MAP_SL_BUF_SIZE> buf;
 		uint size = Map::Size();
 
-		for (TileIndex i = 0; i != size;) {
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
-			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m1() = buf[j];
-		}
+			for (TileIndex i = 0; i != size;) {
+				SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+				for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m1() = buf[j];
+			}
 	}
 
 	void Save() const override
@@ -352,6 +353,34 @@ struct MAP8ChunkHandler : ChunkHandler {
 	}
 };
 
+struct MAP9ChunkHandler : ChunkHandler {
+	MAP9ChunkHandler() : ChunkHandler('MAP9', CH_RIFF) {}
+
+	void Load() const override
+	{
+		std::array<uint32_t, MAP_SL_BUF_SIZE> buf;
+		uint size = Map::Size();
+
+		for (TileIndex i = 0; i != size;) {
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT32);
+			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m9() = buf[j];
+		}
+	}
+
+	void Save() const override
+	{
+		std::array<uint32_t, MAP_SL_BUF_SIZE> buf;
+		uint size = Map::Size();
+
+		std::cout<< "loading m9" << std::endl;
+		SlSetLength(static_cast<uint32_t>(size) * sizeof(uint32_t));
+		for (TileIndex i = 0; i != size;) {
+			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m9();
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT32);
+		}
+	}
+};
+
 static const MAPSChunkHandler MAPS;
 static const MAPTChunkHandler MAPT;
 static const MAPHChunkHandler MAPH;
@@ -363,6 +392,7 @@ static const MAP5ChunkHandler MAP5;
 static const MAPEChunkHandler MAPE;
 static const MAP7ChunkHandler MAP7;
 static const MAP8ChunkHandler MAP8;
+static const MAP9ChunkHandler MAP9;
 static const ChunkHandlerRef map_chunk_handlers[] = {
 	MAPS,
 	MAPT,
@@ -375,6 +405,7 @@ static const ChunkHandlerRef map_chunk_handlers[] = {
 	MAPE,
 	MAP7,
 	MAP8,
+	MAP9,
 };
 
 extern const ChunkHandlerTable _map_chunk_handlers(map_chunk_handlers);

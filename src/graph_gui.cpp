@@ -7,6 +7,7 @@
 
 /** @file graph_gui.cpp GUI that shows performance graphs. */
 
+#include "company_type.h"
 #include "stdafx.h"
 #include "graph_gui.h"
 #include "window_gui.h"
@@ -166,7 +167,7 @@ struct ValuesInterval {
 
 struct BaseGraphWindow : Window {
 protected:
-	static const int GRAPH_MAX_DATASETS     =  64;
+	static const int GRAPH_MAX_DATASETS     =  300;
 	static const int GRAPH_BASE_COLOUR      =  GREY_SCALE(2);
 	static const int GRAPH_GRID_COLOUR      =  GREY_SCALE(3);
 	static const int GRAPH_AXIS_LINE_COLOUR =  GREY_SCALE(1);
@@ -182,7 +183,7 @@ protected:
 	static const int MIN_GRAPH_NUM_LINES_Y  =   9; ///< Minimal number of horizontal lines to draw.
 	static const int MIN_GRID_PIXEL_SIZE    =  20; ///< Minimum distance between graph lines.
 
-	uint64_t excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
+	CompanyMask excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
 	uint8_t num_dataset;
 	uint8_t num_on_x_axis;
 	uint8_t num_vert_lines;

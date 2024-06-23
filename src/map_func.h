@@ -10,6 +10,8 @@
 #ifndef MAP_FUNC_H
 #define MAP_FUNC_H
 
+#include "company_type.h"
+#include "core/bitmath_func.hpp"
 #include "core/math_func.hpp"
 #include "tile_type.h"
 #include "map_type.h"
@@ -33,7 +35,7 @@ private:
 		uint8_t   type;   ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
 		uint8_t   height; ///< The height of the northern corner.
 		uint16_t m2;     ///< Primarily used for indices to towns, industries and stations
-		uint8_t   m1;     ///< Primarily used for ownership information
+		uint8_t   m1;     ///< Primarily used for ownership information (In old versions)
 		uint8_t   m3;     ///< General purpose
 		uint8_t   m4;     ///< General purpose
 		uint8_t   m5;     ///< General purpose
@@ -49,6 +51,7 @@ private:
 		uint8_t m6;   ///< General purpose
 		uint8_t m7;   ///< Primarily used for newgrf support
 		uint16_t m8; ///< General purpose
+		uint32_t m9; ///< Stores the actuall ownership information
 	};
 
 	static TileBase *base_tiles;         ///< Pointer to the tile-array.
@@ -197,6 +200,18 @@ public:
 	debug_inline uint16_t &m8()
 	{
 		return extended_tiles[tile.base()].m8;
+	}
+
+	/**
+	 * Primarily used for ownership information
+	 * 	TODO: Add more docs
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline uint32_t &m9()
+	{
+		return extended_tiles[tile.base()].m9;
 	}
 };
 

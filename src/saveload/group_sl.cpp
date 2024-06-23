@@ -54,6 +54,9 @@ struct GRPSChunkHandler : ChunkHandler {
 			SlObject(g, slt);
 
 			if (IsSavegameVersionBefore(SLV_189)) g->parent = INVALID_GROUP;
+			if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
+				g->owner = ParseOldOwner(g->owner);
+			}
 		}
 	}
 };

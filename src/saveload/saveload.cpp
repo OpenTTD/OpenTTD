@@ -20,6 +20,7 @@
  * </ol>
  */
 
+#include "saveload/saveload.h"
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../station_base.h"
@@ -42,7 +43,13 @@
 #include "../string_func.h"
 #include "../fios.h"
 #include "../error.h"
+#include "company_type.h"
+#include "core/bitmath_func.hpp"
 #include <atomic>
+#include <bitset>
+#include <cassert>
+#include <cstdint>
+#include <vector>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #endif
@@ -53,6 +60,7 @@
 #include "saveload_filter.h"
 
 #include "../safeguards.h"
+#include <iostream>
 
 extern const SaveLoadVersion SAVEGAME_VERSION = (SaveLoadVersion)(SL_MAX_VERSION - 1); ///< Current savegame version of OpenTTD.
 
@@ -558,6 +566,7 @@ static uint8_t GetSavegameFileType(const SaveLoad &sld)
 		case SL_STDSTR:
 		case SL_ARR:
 		case SL_VECTOR:
+		case SL_COMPANY_MASK:
 		case SL_DEQUE:
 			return GetVarFileType(sld.conv) | SLE_FILE_HAS_LENGTH_FIELD; break;
 
@@ -1075,11 +1084,88 @@ static void SlArray(void *array, size_t length, VarType conv)
 					/* If the SLE_ARR changes size, a savegame bump is required
 					 * and the developer should have written conversion lines.
 					 * Error out to make this more visible. */
+					std::cout << "Corrupted array!!" << std::endl;
 					SlErrorCorrupt("Fixed-length array is of wrong length");
 				}
 			}
 
 			SlCopyInternal(array, length, conv);
+			return;
+		}
+
+		case SLA_PTRS:
+		case SLA_NULL:
+			return;
+
+		default:
+			NOT_REACHED();
+	}
+}
+
+
+
+// MYTODO: Put this somewhere it belongs
+std::vector<uint8_t> bitset_to_bytes(const CompanyMask& mask)
+{
+    std::vector<unsigned char> result((MAX_COMPANIES + 7) >> 3);
+    for (int j = 0; j < MAX_COMPANIES; j++)
+        result[j>>3] |= (mask[j] << (j & 7));
+    return result;
+}
+
+CompanyMask bitset_from_bytes(const std::vector<uint8_t>& buf) {
+    CompanyMask result;
+    for (int j=0; j < MAX_COMPANIES; j++)
+        result[j] = ((buf[j>>3] >> (j & 7)) & 1);
+    return result;
+}
+
+
+CompanyMask ParseOldCompMask(uint16_t old_owner) {
+    CompanyMask result;
+	for (int i = 0; i < 16; i++) {
+		result[i] = GB(old_owner, i, 1) & 1;
+	}
+	return result;
+}
+
+Owner ParseOldOwner(Owner old) {
+	if (old == OLD_OWNER_NONE) {
+		old = OWNER_NONE;
+	} else if (old == OLD_OWNER_TOWN){
+		old = OWNER_TOWN;
+	} else if (old == OLD_OWNER_WATER) {
+		old = OWNER_WATER;
+	}
+	return old;
+}
+
+
+/**
+ * Save/Load the length of the bitset followed by the array of SL_VAR bits.
+ * @param array The array being manipulated
+ * @param length The length of the bitset in bytes,
+ */
+static void SlCompanyMask(void *array, size_t byte_length, VarType conv)
+{
+	switch (_sl.action) {
+		case SLA_SAVE: {
+			CompanyMask *bs = static_cast<CompanyMask *>(array);
+			std::vector<uint8_t> bytes = bitset_to_bytes(*bs);
+			uint8_t *bytes_arr = &bytes[0];
+			SlArray(bytes_arr, bytes.size(), conv);
+			return;
+	   }
+
+		case SLA_LOAD_CHECK:
+		case SLA_LOAD: {
+			assert(byte_length == (MAX_COMPANIES + 7) >> 3);
+
+			std::vector<uint8_t> buff((MAX_COMPANIES + 7) >> 3);
+			SlArray(&buff[0], byte_length, conv);
+
+			CompanyMask *bs = static_cast<CompanyMask *>(array);
+			*bs = bitset_from_bytes(buff); // we don't want to write direc
 			return;
 		}
 
@@ -1500,6 +1586,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 		case SL_VAR: return SlCalcConvFileLen(sld.conv);
 		case SL_REF: return SlCalcRefLen();
 		case SL_ARR: return SlCalcArrayLen(sld.length, sld.conv);
+		case SL_COMPANY_MASK: return SlCalcArrayLen(sld.length, sld.conv);
 		case SL_REFLIST: return SlCalcRefListLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_VECTOR: return SlCalcVectorLen(GetVariableAddress(object, sld), sld.conv);
@@ -1538,6 +1625,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 
 static bool SlObjectMember(void *object, const SaveLoad &sld)
 {
+	std::cout <<"Object: "<< sld.name << std::endl;
 	if (!SlIsObjectValidInSavegame(sld)) return false;
 
 	VarType conv = GB(sld.conv, 0, 8);
@@ -1548,6 +1636,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 		case SL_REFLIST:
 		case SL_DEQUE:
 		case SL_VECTOR:
+		case SL_COMPANY_MASK:
 		case SL_STDSTR: {
 			void *ptr = GetVariableAddress(object, sld);
 
@@ -1555,6 +1644,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 				case SL_VAR: SlSaveLoadConv(ptr, conv); break;
 				case SL_REF: SlSaveLoadRef(ptr, conv); break;
 				case SL_ARR: SlArray(ptr, sld.length, conv); break;
+				case SL_COMPANY_MASK: SlCompanyMask(ptr, sld.length, conv); break;
 				case SL_REFLIST: SlRefList(ptr, conv); break;
 				case SL_DEQUE: SlDeque(ptr, conv); break;
 				case SL_VECTOR: SlVector(ptr, conv); break;
@@ -2156,10 +2246,12 @@ static void SlLoadCheckChunks()
 	const ChunkHandler *ch;
 
 	for (id = SlReadUint32(); id != 0; id = SlReadUint32()) {
-		Debug(sl, 2, "Loading chunk {:c}{:c}{:c}{:c}", id >> 24, id >> 16, id >> 8, id);
+		Debug(sl, 2, "Loading chunk (for checking) {:c}{:c}{:c}{:c}", id >> 24, id >> 16, id >> 8, id);
 
 		ch = SlFindChunkHandler(id);
-		if (ch == nullptr) SlErrorCorrupt("Unknown chunk type");
+		if (ch == nullptr) {
+			SlErrorCorrupt("Unknown chunk type");
+		}
 		SlLoadCheckChunk(*ch);
 	}
 }

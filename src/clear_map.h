@@ -260,7 +260,6 @@ inline void MakeClear(Tile t, ClearGround g, uint density)
 {
 	SetTileType(t, MP_CLEAR);
 	t.m1() = 0;
-	SetTileOwner(t, OWNER_NONE);
 	t.m2() = 0;
 	t.m3() = 0;
 	t.m4() = 0 << 5 | 0 << 2;
@@ -268,6 +267,8 @@ inline void MakeClear(Tile t, ClearGround g, uint density)
 	t.m6() = 0;
 	t.m7() = 0;
 	t.m8() = 0;
+	t.m9() = 0;
+	SetTileOwner(t, OWNER_NONE);
 }
 
 
@@ -281,7 +282,6 @@ inline void MakeField(Tile t, uint field_type, IndustryID industry)
 {
 	SetTileType(t, MP_CLEAR);
 	t.m1() = 0;
-	SetTileOwner(t, OWNER_NONE);
 	t.m2() = industry;
 	t.m3() = field_type;
 	t.m4() = 0 << 5 | 0 << 2;
@@ -289,6 +289,8 @@ inline void MakeField(Tile t, uint field_type, IndustryID industry)
 	SB(t.m6(), 2, 4, 0);
 	t.m7() = 0;
 	t.m8() = 0;
+	t.m9() = 0;
+	SetTileOwner(t, OWNER_NONE);
 }
 
 /**

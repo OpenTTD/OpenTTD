@@ -253,6 +253,7 @@ static bool FixTTOMapArray()
 						break;
 					case 1: // ROAD_TILE_CROSSING (there aren't monorail crossings in TTO)
 						tile.m3() = tile.m1(); // set owner of road = owner of rail
+											   // TODO: Fix this
 						break;
 					case 2: // ROAD_TILE_DEPOT
 						break;

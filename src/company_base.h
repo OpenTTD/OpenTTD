@@ -96,6 +96,7 @@ struct CompanyProperties {
 	uint8_t months_empty = 0; ///< NOSAVE: Number of months this company has not had a client in multiplayer.
 	uint8_t months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
 	CompanyMask bankrupt_asked;      ///< which companies were asked about buying it?
+	uint16_t old_bankrupt_asked;
 	int16_t bankrupt_timeout;          ///< If bigger than \c 0, amount of time to wait for an answer on an offer to buy this company.
 	Money bankrupt_value;
 
