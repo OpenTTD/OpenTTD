@@ -51,7 +51,12 @@ struct EndGameHighScoreBaseWindow : Window {
 		/* Standard background slices are 50 pixels high, but it's designed
 		 * for 480 pixels total. 96% of 500 is 480. */
 		Dimension dim = GetSpriteSize(this->background_img);
-		Point pt = this->GetTopLeft(dim.width, dim.height * 96 / 10);
+		auto total_height = dim.height * 96 / 10;
+		Point pt = this->GetTopLeft(dim.width, total_height);
+
+		/* Original graphics contain some transparency, which assumes a black background. */
+		GfxFillRect(pt.x, pt.y, pt.x + dim.width - 1, pt.y + total_height - 1, PC_BLACK);
+
 		/* Center Highscore/Endscreen background */
 		for (uint i = 0; i < 10; i++) { // the image is split into 10 50px high parts
 			DrawSprite(this->background_img + i, PAL_NONE, pt.x, pt.y + (i * dim.height));
