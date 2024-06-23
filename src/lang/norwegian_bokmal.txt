@@ -312,8 +312,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}Avbryt
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :¬!"£$%^&*()_+ QWERTYUIOP{{}}ASDFGHJKL:@~|ZXCVBNM<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Lengde: {NUM}
@@ -439,6 +439,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Avslutt rediger
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generer byer
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Plasser hus
 
 # Settings menu
 ###length 16
@@ -1085,6 +1087,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikkse
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Velg musikksett som skal brukes
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Ytterligere informasjon om det originale musikksettet
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Hent innhold
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Se etter nytt og oppdatert innhold for nedlasting
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ingen moduler for integrasjon med sosiale plattformer er installert)
 
@@ -1481,11 +1485,13 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, men utelukk stoppede kjøretøy
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Alle kjøretøy
 
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Advar hvis inntekten til et kjøretøy er negativ: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varsle hvis inntekten til et kjøretøy er negativ: {STRING}
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Når aktivert, vil en nyhetsmelding vises når et kjøretøy ikke har tjent penger i løpet av ett år
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Når aktivert, vil en nyhetsmelding vises når et kjøretøy ikke har tjent penger i løpet av en periode
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Varsle hvis et kjøretøy begynner å bli gammelt: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Når aktivert, vil en nyhetsmelding vises når et kjøretøy er i ferd med å bli gammelt
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kjøretøy utgår aldri: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Når aktivert, vil alle kjøretøysmodeller være tilgjengelig for alltid etter de introduseres
@@ -1497,7 +1503,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Veggur
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutter per år: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Velg antall minutter i et kalenderår. Standard er 12 minutter. Sett til 0 for å hindre kalendertiden i å endre seg. Denne innstillingen påvirker ikke økonomisimuleringen i spillet, og er kun tilgjengelig med veggurtidtaking
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Velg antall minutter i et kalenderår. Standard er 12 minutter. Sett til 0 for å hindre kalendertiden i å endre seg. Å øke lengden på kalenderåret utsetter introduksjonen av transportmidler, hus og annen infrastruktur. Denne innstillingen påvirker ikke økonomisimuleringen i spillet, og er kun tilgjengelig med veggurtidtaking
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -2478,6 +2484,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Ditt spillernav
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Administrative handlinger å utføre for denne klienten
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administrative tiltak å utføre for dette selskapet
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Bli med i dette selskapet
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Autoriser denne klienten for å bli med dette selskapet
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Send en melding til denne spilleren
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Send en melding til alle spillerne i dette selskapet
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Send en melding til alle tilskuerne
@@ -2799,14 +2806,32 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Dra og s
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg en stasjon med dra og slipp
 
 STR_PICKER_MODE_ALL                                             :Alle
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Vis elementer av alle typer
 STR_PICKER_MODE_USED                                            :Brukt
+STR_PICKER_MODE_USED_TOOLTIP                                    :Vis bare eksisterende elementer
 STR_PICKER_MODE_SAVED                                           :Lagret
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Vis bare lagrede elementer
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Velg stasjonsklassen du vil vise
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Velg type stasjon å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Velg veipunktklassen du vil vise
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Velg type veipunkt å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Velg type busterminal du vil vise
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Velg type bussterminal å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Velg en type godsterminal du vil vise
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Velg type godsterminal å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Velg objektklassen du vil vise
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Velg type objekt å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer. Ctrl+klikk+dra for å velge areal diagonalt. Trykk også Shift for å kun vise kostnadsestimat
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Velg byområdet du vil vise
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Velg type hus å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 
+STR_HOUSE_PICKER_CAPTION                                        :Husvalg
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kant
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Ytterkant
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ytre forsteder
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Indre forsteder
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Bysentrum
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standard stasjon
@@ -4994,6 +5019,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det 
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Veiarbeid i gang
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikke fjerne denne byen...{}En stasjon eller garasje/stall/hangar/dokk henviser til byen eller en byeid rute som ikke kan fjernes
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det er ingen passende steder for en statue i sentrum av denne byen
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Kan ikke bygge hus...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... for mange industrier
@@ -5031,6 +5057,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan ikke
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenser til mer enn én eksisterende stasjon/godsterminal
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...{NBSP}stasjonen er spredd for mye
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... ugyldig antall spor
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... ugyldig lengde
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}For mange stasjoner/godsterminaler
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}For mange enkeltdeler på jernbanestasjonen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}For mange bussholdeplasser
