@@ -33,6 +33,7 @@ enum IndustryViewWidgets : WidgetID {
 
 /** Widgets of the #IndustryDirectoryWindow class. */
 enum IndustryDirectoryWidgets : WidgetID {
+	WID_ID_CAPTION, ///< Caption of the window.
 	WID_ID_DROPDOWN_ORDER,       ///< Dropdown for the order of the sort.
 	WID_ID_DROPDOWN_CRITERIA,    ///< Dropdown for the criteria of the sort.
 	WID_ID_FILTER_BY_ACC_CARGO,  ///< Accepted cargo filter dropdown list.
