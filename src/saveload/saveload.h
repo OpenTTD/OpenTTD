@@ -381,6 +381,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_COMPANY_ALLOW_LIST,                 ///< 335  PR#12337 Saving of list of client keys that are allowed to join this company.
 	SLV_GROUP_NUMBERS,                      ///< 336  PR#12297 Add per-company group numbers.
+	SLV_COMPANY_INAUGURATED_PERIOD,         ///< 337  PR#12798 Companies show the period inaugurated in wallclock mode.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
