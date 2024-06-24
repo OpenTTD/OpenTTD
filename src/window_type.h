@@ -517,6 +517,7 @@ enum WindowClass {
 	/**
 	 * Legend for graphs; %Window numbers:
 	 *   - 0 = #GraphLegendWidgets
+	 *   - 1 = #GraphLegendWidgets
 	 */
 	WC_GRAPH_LEGEND,
 

@@ -378,6 +378,8 @@ add_files(
     screenshot_gui.h
     screenshot.cpp
     screenshot.h
+    selector_widget.cpp
+    selector_widget.h
     settings.cpp
     settings_cmd.h
     settings_func.h

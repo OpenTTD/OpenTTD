@@ -619,18 +619,19 @@ STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Cargo Pa
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Days in transit
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Seconds in transit
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Payment for delivering 10 units (or 10,000 litres) of cargo a distance of 20 squares
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Enable all
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Disable all
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Display all cargoes on the cargo payment rates graph
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Display no cargoes on the cargo payment rates graph
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Toggle graph for cargo type on/off
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
+
+STR_SELECTOR_WIDGET_ENABLE_ALL                                  :{BLACK}Show all
+STR_SELECTOR_WIDGET_DISABLE_ALL                                 :{BLACK}Hide all
+STR_SELECTOR_WIDGET_TOGGLE_SELECTED                             :{BLACK}Toggle selected
+STR_SELECTOR_WIDGET_TOOLTIP_ENABLE_ALL                          :{BLACK}Make all the items in the list visible
+STR_SELECTOR_WIDGET_TOOLTIP_DISABLE_ALL                         :{BLACK}Make all the items in the list invisible
+STR_SELECTOR_WIDGET_TOOLTIP_TOGGLE_SELECTED                     :{BLACK}Toggle the visibility of the selected item
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Show detailed performance ratings
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Key to company graphs
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click here to toggle company's entry on graph on/off
+STR_GRAPH_CARGO_KEY_CAPTION                                     :{WHITE}Key to cargo graphs
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Company League Table
