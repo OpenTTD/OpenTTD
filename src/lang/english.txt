@@ -623,14 +623,14 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Disable all
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Display all cargoes on the cargo payment rates graph
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Display no cargoes on the cargo payment rates graph
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Toggle graph for cargo type on/off
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Toggle graph of this cargo type
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Show detailed performance ratings
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Key to company graphs
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click here to toggle company's entry on graph on/off
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Toggle graph of this company
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Company League Table
@@ -710,7 +710,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Select '
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Select 'Ezy Street style music' programme
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Select 'Custom 1' (user-defined) programme
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Select 'Custom 2' (user-defined) programme
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Toggle programme shuffle on/off
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Toggle programme shuffle
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Show music track selection window
 
 # Playlist window
@@ -793,7 +793,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Desert
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Snow
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Toggle town names on/off on map
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Toggle display of town names
 STR_SMALLMAP_CENTER                                             :{BLACK}Centre the smallmap on the current position
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
