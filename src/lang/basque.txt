@@ -2919,7 +2919,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Joan aur
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Seinalearen izena sartu
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Herriak
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ezer ez -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Herri izenak - Klikatu izenean lehio nagusia bertan zentratzeko. Ktrl+Klik ikuspegi lehio berria irekiko du
@@ -3194,7 +3193,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Geltoki 
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aireportuak
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Idustriak
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ezer ez -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industria izenak - Klikatu izenean ikuspegi nagusia industrian kokatzeko. Ktrl+Klik ikuspegi lehio berri bat irekitzen du industriaren kokapenarekin

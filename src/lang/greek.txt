@@ -3709,7 +3709,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Μετά
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Δώστε ένα όνομα για την πινακίδα
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Πόλεις
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Τίποτα -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Πόλη){BLACK} ({COMMA})
@@ -4044,7 +4043,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/περίοδο
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Βιομηχανίες
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Τίποτα -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% μεταφέρθηκαν){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}

@@ -3099,7 +3099,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}ไป�
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}กรอกชื่อสำหรับป้าย
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}เมือง
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- ไม่มี -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (เมือง){BLACK} ({COMMA})
@@ -3384,7 +3383,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}ชิ�
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}ท่าอากาศยาน
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}อุตสาหกรรม
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- ไม่มี -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}

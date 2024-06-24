@@ -2697,7 +2697,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Far til 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Skriva eitt navn fyri skelti
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bygdir
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ongar -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bygda nøvn - trýst á eitt navn fyri at savna høvuðs sýni á bygdina. Ctrl+trýst letur upp ein nýggjan sýnisglugga á bygdina
@@ -2938,7 +2937,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Støð p
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Floghavnir
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Ídnaðir
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Einki -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ídnaðar nøvn - trýst á eitt navn fyri at savna høvuðs sýni á ídnað. Ctrl+trýst letur ein nýggjan sýnisglugga upp á ídnaðin

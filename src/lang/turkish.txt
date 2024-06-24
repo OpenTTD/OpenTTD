@@ -3577,7 +3577,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Önceki 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Tabela için bir isim girin
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Şehirler
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Hiçbiri -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Şehir){BLACK} ({COMMA})
@@ -3911,7 +3910,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/periyot
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Fabrikalar
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Hiçbiri -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% taşındı){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}

@@ -2319,7 +2319,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK} پچھ�
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK} اشارے کا نام درج کیجیئے
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE} قصبے
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 
 # Town view window

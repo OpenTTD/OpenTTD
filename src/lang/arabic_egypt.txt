@@ -2940,7 +2940,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}توجة
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}ادخل اسم العلامة
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}مدن/ بلدات
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}-بدون-
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{RLE}{TOWN}{BLACK} {RLM}({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{RLE}{TOWN}{YELLOW} (مدينة){BLACK} {RLM}({COMMA})
@@ -3206,7 +3205,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}مربع
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}المطارات
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}صناعات
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}-بدون-
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}

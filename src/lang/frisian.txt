@@ -2889,7 +2889,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Gean ne 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Fier in namme yn foar it boerd
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Stêden
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Gjin -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stêdsnammen - klik op de namme om it byld op dy stêd te sintrearen. Ctrl+klick iepent in nij sichtber diel op de stêd lokaasje
@@ -3157,7 +3156,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stasjont
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Fleanfjilden
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Yndustryen
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Gjin -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}

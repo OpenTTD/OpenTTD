@@ -2851,7 +2851,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Fara að
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Sláðu inn nafn fyrir skiltið
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bæir
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Enginn -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bæjanöfn - smelltu á nafn til að færa sjónarhorn að viðkomandi bæ. Ctrl+smelltu til að opna nýtt sjónarhorn yfir þessum bæ
@@ -3093,7 +3092,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stöðva
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Flugvellir
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Iðnaðir
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Enginn -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Iðnaðar nöfn - smella á nafn til að færa miðju sjónarhorns á iðnað. Ctrl+smella til að opna nýtt sjónarhorn yfir þessum iðnaði
