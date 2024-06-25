@@ -32,12 +32,6 @@ const SaveLoadCompat _station_spec_list_sl_compat[] = {
 	SLC_VAR("localidx"),
 };
 
-/** Nominal field order for SlRoadStopSpecList. */
-const SaveLoadCompat _station_road_stop_spec_list_sl_compat[] = {
-	SLC_VAR("grfid"),
-	SLC_VAR("localidx"),
-};
-
 /** Original field order for SlStationCargo. */
 const SaveLoadCompat _station_cargo_sl_compat[] = {
 	SLC_VAR("first"),
