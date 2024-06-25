@@ -3320,7 +3320,7 @@ public:
 	void OnMouseWheel(int wheel) override
 	{
 		if (_settings_client.gui.scrollwheel_scrolling != SWS_OFF) {
-			DoZoomInOutWindow(wheel < 0 ? ZOOM_IN : ZOOM_OUT, this, false);
+			DoZoomInOutWindow(wheel < 0 ? ZOOM_IN : ZOOM_OUT, this);
 		}
 	}
 
