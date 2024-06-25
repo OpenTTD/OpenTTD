@@ -2755,6 +2755,10 @@ static void HandleKeyScrolling()
 	 */
 	if (_dirkeys && !EditBoxInGlobalFocus()) {
 		int factor = _shift_pressed ? 50 : 10;
+
+		/* Key scrolling stops following a vehicle. */
+		GetMainWindow()->viewport->follow_vehicle = INVALID_VEHICLE;
+
 		ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
 	}
 }
