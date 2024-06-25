@@ -235,9 +235,9 @@ inline const RoadTypeInfo *GetRoadTypeInfo(RoadType roadtype)
  * Checks if an engine of the given RoadType got power on a tile with a given
  * RoadType. This would normally just be an equality check, but for electrified
  * roads (which also support non-electric vehicles).
- * @return Whether the engine got power on this tile.
  * @param  enginetype The RoadType of the engine we are considering.
  * @param  tiletype   The RoadType of the tile we are considering.
+ * @return Whether the engine got power on this tile.
  */
 inline bool HasPowerOnRoad(RoadType enginetype, RoadType tiletype)
 {
