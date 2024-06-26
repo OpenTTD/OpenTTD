@@ -2691,7 +2691,7 @@ static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID
 		uint32_t construction_random = Random();
 
 		construction_stage = TOWN_HOUSE_COMPLETED;
-		if (Chance16(1, 7)) construction_stage = GB(construction_random, 0, 2);
+		if (_generating_world && Chance16(1, 7)) construction_stage = GB(construction_random, 0, 2);
 
 		if (construction_stage == TOWN_HOUSE_COMPLETED) {
 			ChangePopulation(t, hs->population);
