@@ -378,5 +378,5 @@ void LoadWin32Font(FontSize fs)
 		convert_to_fs(font_name, logfont.lfFaceName, lengthof(logfont.lfFaceName));
 	}
 
-	LoadWin32Font(fs, logfont, settings->size, font_name);
+	LoadWin32Font(fs, logfont, GetFontCacheFontSize(fs), font_name);
 }
