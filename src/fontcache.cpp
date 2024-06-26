@@ -145,6 +145,26 @@ extern void LoadWin32Font(FontSize fs);
 extern void LoadCoreTextFont(FontSize fs);
 #endif
 
+/**
+ * Test if a font setting uses the default font.
+ * @return true iff the font is not configured and no fallback font data is present.
+ */
+static bool IsDefaultFont(const FontCacheSubSetting &setting)
+{
+	return setting.font.empty() && setting.os_handle == nullptr;
+}
+
+/**
+ * Get the scalable font size to use for a FontSize.
+ * @param fs FontSize to get the scalable font size for.
+ * @return Scalable font size to use.
+ */
+uint GetFontCacheFontSize(FontSize fs)
+{
+	const FontCacheSubSetting &setting = *GetFontCacheSubSetting(fs);
+	return IsDefaultFont(setting) ? FontCache::GetDefaultFontHeight(fs) : setting.size;
+}
+
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 /**
  * Get name of default font file for a given font size.

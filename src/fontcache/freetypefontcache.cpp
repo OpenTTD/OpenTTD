@@ -192,7 +192,7 @@ void LoadFreeTypeFont(FontSize fs)
 	if (error != FT_Err_Ok) error = GetFontByFaceName(font_name, &face);
 
 	if (error == FT_Err_Ok) {
-		error = LoadFont(fs, face, font_name, settings->size);
+		error = LoadFont(fs, face, font_name, GetFontCacheFontSize(fs));
 		if (error != FT_Err_Ok) {
 			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}, using sprite font instead", font_name, FontSizeToName(fs), error);
 		}

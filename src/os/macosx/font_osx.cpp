@@ -369,5 +369,5 @@ void LoadCoreTextFont(FontSize fs)
 		return;
 	}
 
-	new CoreTextFontCache(fs, std::move(font_ref), settings->size);
+	new CoreTextFontCache(fs, std::move(font_ref), GetFontCacheFontSize(fs));
 }
