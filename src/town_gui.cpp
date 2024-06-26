@@ -1280,6 +1280,11 @@ public:
 			case WID_TF_LAYOUT_ORIGINAL: case WID_TF_LAYOUT_BETTER: case WID_TF_LAYOUT_GRID2:
 			case WID_TF_LAYOUT_GRID3: case WID_TF_LAYOUT_RANDOM:
 				this->town_layout = (TownLayout)(widget - WID_TF_LAYOUT_ORIGINAL);
+
+				/* If we are in the editor, sync the settings of the current game to the chosen layout,
+				 * so that importing towns from file uses the selected layout. */
+				if (_game_mode == GM_EDITOR) _settings_game.economy.town_layout = this->town_layout;
+
 				this->UpdateButtons(false);
 				break;
 		}
