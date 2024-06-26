@@ -184,7 +184,7 @@ Money CalculateHostileTakeoverValue(const Company *c)
 	}
 
 	for (int quarter = 0; quarter < 4; quarter++) {
-		value += std::max<Money>(c->old_economy[quarter].income - c->old_economy[quarter].expenses, 0) * 2;
+		value += std::max<Money>(c->old_economy[quarter].income + c->old_economy[quarter].expenses, 0) * 2;
 	}
 
 	return std::max<Money>(value, 1);
