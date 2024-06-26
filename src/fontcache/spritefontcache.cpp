@@ -115,6 +115,14 @@ uint SpriteFontCache::GetGlyphWidth(GlyphID key)
 	return SpriteExists(sprite) ? GetSprite(sprite, SpriteType::Font)->width + ScaleFontTrad(this->fs != FS_NORMAL ? 1 : 0) : 0;
 }
 
+GlyphID SpriteFontCache::MapCharToGlyph(char32_t key, [[maybe_unused]] bool allow_fallback)
+{
+	assert(IsPrintable(key));
+	SpriteID sprite = this->GetUnicodeGlyph(key);
+	if (sprite == 0) return 0;
+	return SPRITE_GLYPH | key;
+}
+
 bool SpriteFontCache::GetDrawGlyphShadow()
 {
 	return false;
