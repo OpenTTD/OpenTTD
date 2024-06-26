@@ -623,14 +623,14 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}全部禁用
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}在货物运输价格表中显示所有货物
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}在货物运费表中隐藏所有货物
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切换是否显示某种货物
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切换显示货物
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}查看详细数据
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}公司图表索引
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}点击这里切换显示公司
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}切换显示公司
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}公司评价排名
@@ -710,7 +710,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}选择�
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}选择“Ezy街头”风格的音乐列表
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}选择“自定义1”（用户定义）的列表
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}选择“自定义2”（用户定义）的列表
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}开启/关闭 随机播放列表中的曲目
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}开关播放清单随机播放
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}打开音乐选单窗口
 
 # Playlist window
@@ -793,7 +793,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}沙漠
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}雪地
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}切换是否显示城镇名称
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}切换城镇名称
 STR_SMALLMAP_CENTER                                             :{BLACK}在地图中心点显示当前位置
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -1488,6 +1488,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :若线路亏损
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :“打开”，当一辆车在一年内总体亏损，发出提示
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :启用时，若某载具在一周期内总体亏损，发出提示
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :载具老化时发出提示：{STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :启用时后将会在载具老化时发出提示
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :载具永不过期：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :启用时，所有载具一经面世，就可以永远选择购买使用。
@@ -2882,6 +2884,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}使用�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}使用多向轨道工具建设电车轨道。按住 <Ctrl> 键操作以移除电车轨道。按住 <Shift> 键操作以显示预计费用。
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}建设汽车车库（可以购买或维护车辆）。按住 <Shift> 键以显示预计费用。
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}建造电车车库（可以购买与维护车辆）。按住 <Shift> 键以显示预计费用。
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}建设道路路点。按住 <Ctrl> 键以合并路点。按住 <Shift> 键以显示预计费用
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}建设电车路点。按住 <Ctrl> 键以合并路点。按住 <Shift> 键以显示预计费用
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}建设公共汽车站。按住 <Ctrl> 键操作以合并车站。按住 <Shift> 键操作以显示预计费用。
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}建设客运电车站。按住 <Ctrl> 键操作以合并车站。按住 <Shift> 键操作以显示预计费用。
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}建设汽车货场。按住 <Ctrl> 键点击以合并车站，按住 <Shift> 键以显示预计费用。
@@ -3614,6 +3618,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}前往�
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}为标记起名
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}城镇（{COMMA} 座，共 {COMMA}座）
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 没有 -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (都市){BLACK} ({COMMA})
@@ -3947,6 +3952,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/周期
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工业（{COMMA} 座，共 {COMMA} 座）
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- 没有 -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW}（{COMMA}% 已运输）{BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -5088,11 +5094,14 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}距离�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}距离另一路点过近
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}不能在这里设置路点……
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}不能在这里设置路点……
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}不能将浮标放置在这里。
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}不能更改路点名称……
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}不能从这里拆除路点……
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}不能移除这里的道路路点……
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}必须先拆除铁路路点
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}必须先拆除道路路点
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}指定的位置有浮标……
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}…… 浮标正在被其他公司使用
 
@@ -5340,6 +5349,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}没有�
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}这架飞机不能降落在这个直升机场
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}这架直升机不能降落在这个机场
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}没有铁路路点
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}没有道路路点
 STR_ERROR_NO_BUOY                                               :{WHITE}没有浮标
 
 # Timetable related errors

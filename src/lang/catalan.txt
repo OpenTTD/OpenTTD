@@ -631,7 +631,7 @@ STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostra r
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Llegenda dels gràfics de la companyia
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Clica aquí per mostrar/amagar la companyia al gràfic
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Feu clic aquí per a mostrar/amagar la companyia al gràfic.
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Taula de la lliga de companyies
@@ -2885,6 +2885,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construe
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construeix seccions de tramvia amb el mode Autocarretera. Amb Ctrl+clic, es trauen les vies de tramvia en lloc de construir-les. Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construeix una cotxera (per a comprar i revisar vehicles). Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construeix cotxeres de tramvies (per a comprar i revisar tramvies). Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Construeix un punt de control de carretera. Amb Ctrl, es poden construir nous punts de control i ajuntar-los amb d'altres ja existents. Amb Maj, es mostrarà el cost estimat de construcció.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Construeix un punt de control en tramvies. Amb Ctrl, es poden construir nous punts de control i ajuntar-los amb d'altres ja existents. Amb Maj, es mostrarà el cost estimat de construcció.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construeix estacions d'autobús. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construeix estacions de tramvia per a passatgers. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construeix una estació per a camions. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
@@ -3617,6 +3619,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Vés al 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Posa un nom al senyal
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Poblacions ({COMMA} de {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Cap -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA} -{YELLOW} ciutat{BLACK})
@@ -3950,6 +3953,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/període
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Indústries ({COMMA} de {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Cap -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} (transportat: {COMMA}{NBSP}%){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -4188,7 +4192,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ve
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - arrossegueu el vehicle per a afegir-lo/treure'l del tren. Feu clic amb el botó dret al tren per a obtenir-ne informació. Amb Ctrl, s'apliquen les dues funcions a tota la cadena posterior.
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - arrossegueu el vehicle per a afegir-lo/traure'l del tren. Feu clic amb el botó dret al tren per a obtenir-ne informació. Amb Ctrl, s'apliquen les dues funcions a tota la cadena posterior.
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehicles - clica amb el botó dret en un vehicle per més informació
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vaixells - clica amb el botó dret en un vaixell per més informació
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Avió - clica amb el botó dret sobre l'avió per més informació
@@ -4242,10 +4246,10 @@ STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centra l
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centra la vista principal al lloc de l'hangar. Amb Ctrl+clic, s'obre una vista nova on hi ha l'hangar.
 
 ###length VEHICLE_TYPES
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Treure una llista de tots els trens amb aquesta cotxera en les seves ordres
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Treure una llista de tots els vehicles amb aquesta cotxera en les seves ordres
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Treure una llista de tots els vaixells amb aquesta drassana en les seves ordres
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Treu una llista de tots els avions amb algun hangar d'aquest aeroport en les seves ordres
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Mostra una llista de tots els trens que tinguin aquesta cotxera en alguna ordre.
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Mostra una llista de tots els vehicles que tinguin aquesta cotxera en alguna ordre.
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Mostra una llista de tots els vaixells que tinguin aquesta drassana en alguna ordre.
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Mostra una llista de tots els avions que tinguin algun hangar d'aquest aeroport en les seves ordres.
 
 ###length VEHICLE_TYPES
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Clica per parar tots els trens de dins de la cotxera
@@ -5091,11 +5095,14 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Més d'u
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Massa prop d'un altre punt de control
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Aquí no es pot construir un punt de pas de tren...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Aquí no es pot construir un punt de pas de carretera...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Aquí no es pot situar una boia...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No es pot canviar el nom del punt de pas...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Aquí no es pot treure un punt de pas de tren...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Aquí no es pot traure cap punt de pas de carretera...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}...abans s'ha de treure el punt de pas.
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}...abans s'ha de traure el punt de pas de carretera.
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boia en el camí
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boia en ús per una altra companyia!
 
@@ -5343,6 +5350,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}No hi ha
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}L'avió no pot aterrar en aquest aeroport
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}L'helicòpter no pot aterrar en aquest aeroport
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}No hi ha cap punt de pas ferroviari
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}No hi ha cap punt de control de carretera.
 STR_ERROR_NO_BUOY                                               :{WHITE}No hi ha cap boia
 
 # Timetable related errors

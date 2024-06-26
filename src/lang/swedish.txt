@@ -623,14 +623,14 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Inaktivera alla
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Visa alla godstyper på grafen över fraktförtjänster
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Visa inga godstyper på grafen över fraktförtjänster
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Växla graf för godstyp av/på
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Slå på/av denna godstyps graf
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Visa detaljerad prestationsgradering
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Nyckel till företagsgrafer
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klicka här för att visa/dölja företaget i grafen
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Slå på/av detta företags graf
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Företagstabell
@@ -793,7 +793,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Öken
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Snö
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Växla stadsnamn på/av på kartan
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Slå på/av visning av stadsnamn
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrera minikartan på den nuvarande positionen
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -3616,6 +3616,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Åk till
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Mata in ett namn för skylten
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Städer ({COMMA} av {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Inga -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Stad){BLACK} ({COMMA})
@@ -3949,6 +3950,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/period
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrier ({COMMA} av {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Inga -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transporterat){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -5089,12 +5091,15 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Måste r
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Gränsar mot mer än ett existerande riktmärke
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}... för nära ett annat riktmärke
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan inte bygga riktmärke här...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan inte bygga järnvägsriktmärke här...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Kan inte bygga vägriktmärke här...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan inte placera boj här...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan inte ändra riktmärkets namn...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan inte ta bort riktmärke här...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Måste ta bort riktmärke först
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan inte ta bort järnvägsriktmärke här...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Kan inte ta bort vägriktmärke här...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Måste ta bort järnvägsriktmärke först
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Måste ta bort vägriktmärke först
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boj i vägen
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bojen används av ett annat företag!
 
@@ -5341,7 +5346,8 @@ STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Det finn
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Det finns inga hållplatser som passar för ledade vägfordon.{}Ledade vägfordon kräver genomfartshållplatser, inte lastbryggor
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Det här flygplanet kan inte landa på den här helikopterflygplatsen
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Den här helikoptern kan inte landa på den här flygplatsen
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Det finns inget riktmärke
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Det finns inget järnvägsriktmärke
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Det finns inget vägriktmärke
 STR_ERROR_NO_BUOY                                               :{WHITE}Det finns ingen boj
 
 # Timetable related errors

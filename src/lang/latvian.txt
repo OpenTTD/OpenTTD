@@ -625,14 +625,14 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Atspējot visu
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Rādīt visas kravas samaksu salīdzināšanas diagrammā
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nerādīt nevienu kravu samaksu salīdzināšanas diagrammā
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Ieslēgt/izslēgt kravu veidu diagrammu
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Paslēgt kravas veida diagrammu
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Rādīt detalizētus uzņēmējdarbības vērtējumus
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Apzīmējumu atslēgas uzņēmumu diagrammās
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikšķināt šeit, lai ieslēgtu/izslēgtu uzņēmuma attēlošanu diagrammā
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Pāslēgt uzņēmuma attēlošanu diagrammu
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Uzņēmumu rangu saraksts
@@ -712,7 +712,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Izvēlē
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Izvēlēties programmu 'Ezy Ielas stila mūzika'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Izvēlēties programmu 'Pielāgotā 1' (lietotāja sastādīto)
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Izvēlēties programmu 'Pielāgotā 2' (lietotāja sastādīto)
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Ieslēgt/izslēgt mūzikas saraksta jaukšanu
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Pārslēgt mūzikas saraksta jaukšanu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Rādīt mūzikas celiņu atlases logu
 
 # Playlist window
@@ -795,7 +795,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Tuksnesis
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Sniegs
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Rādīt/nerādīt pilsētu nosaukumus uz kartes
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Rādīt pilsētu nosaukumus uz kartes
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrēt minikarti uz pašreizējo pozīciju
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -1490,6 +1490,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Brīdināt, ja 
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ja ieslēgts, tiks sūtīts ziņojums gadījumā kad transportlīdzeklis negūst nekādu peļņu kalendārā gada laikā
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Ja ieslēgts, tik nosūtīts ziņojums, ja transportlīdzeklis noteiktā periodā nav guvis peļņu
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Brīdināt, kad transportlīdzeklis noveco: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Kad iespējots, tiek nosūtīta ziņa, kad transportlīdzeklis noveco
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transportlīdzekļi nekad "nemirst": {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kad ieslēgts, visi transportlīdzekļu modeļi pēc to ieviešanas vienmēr ir pieejami
@@ -2774,7 +2776,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magleva būvē�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Būvēt sliedes. Ctrl pārslēdz sliežu būvniecību/nojaukšanu. Shift parāda novērtētās izmaksas, neveicot būvēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Būvēt dzelzceļu, izmantojot automātisko sliežu režīmu. Ctrl+klikšķis pārslēdz sliežu būvniecību/demolēšanu.  Shift parāda novērtētās izmaksas, neveicot būvēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Būvēt vilcienu depo (vilcienu pirkšanai un apkopei). Shift parāda novērtētās izmaksas, neveicot būvēšanu
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Izveidojiet ceļa punktu uz dzelzceļa. Ctrl ļauj pievienot vairākus pieturas punktus. Shift parāda novērtētās izmaksas, neveicot būvēšanu
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Izveidot ceļa punktu uz dzelzceļa. Ctrl ļauj pievienot vairākus pieturas punktus. Shift parāda novērtētās izmaksas, neveicot būvēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Būvēt dzelzceļa staciju. Ctrl+klikšķis iespējo staciju apvienošanu.  Shift parāda izmaksas, neveicot būvēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Būvējiet signālu uz dzelzceļa. Ctrl+klikšķis, lai izveidotu alternatīvu signāla stilu{}Velciet, lai atlasīto sliedes posmu aizpildītu ar signāliem izvēlētajā atstatumā. Velciet Ctrl+klikšķis, lai aizpildītu signālus līdz nākamajam krustojumam, stacijai vai signālam. Shift parāda izmaksas, neveicot būvēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Būvēt dzelzceļa tiltu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
@@ -2886,6 +2888,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Būvēt 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Būvēt tramvaju sliedes izmantojot automātisko paņēmienu. Ctrl+klikšķis pārslēdz tramvaju sliežu būvēšanu/nojaukšanu. Shift  parāda novērtētās izmaksas, neveicot būvēšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Būvēt autotransporta depo (autotransporta līdzekļu pirkšanai un apkopei). Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Būvēt tramvaju depo (tramvaju pirkšanai un apkopei). Shift parāda izmaksas, neveicot būvēšanu
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Izveidot pieturas punktu uz ceļa. Ctrl+klikšķis, lai atlasītu citu ceļa punktu, kuram pievienoties. Shift parāda novērtētās izmaksas, neveicot būvēšanu
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Izveidot pieturas punktu uz tramvaja ceļa. Ctrl+klikšķis, lai atlasītu citu ceļa punktu, kuram pievienoties. Shift parāda novērtētās izmaksas, neveicot būvēšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Būvēt autobusu pieturvietu. Ctrl+klikšķis ieslēdz pieturvietu apvienošanu. Shift+klikšķis parāda izmaksas, neveicot būvēšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Būvēt pasažieru tramvaju staciju. Ctrl+klikšķis, lai atlasītu citu staciju, kurai pievienoties. Nospiediet taustiņu Shift, lai rādītu izmaksu tāmi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Būvēt kravas automašīnu staciju. Ctrl+klikšķis iespējo staciju apvienošanu. Shift parāda izmaksas, neveicot būvēšanu
@@ -3621,6 +3625,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Doties u
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Ievadīt zīmes nosaukumu
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Pilsētas ({COMMA} no {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{G=m}{ORANGE}- Neviens -
 STR_TOWN_DIRECTORY_NONE.kas                                     :{ORANGE}- Neviena -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -3957,6 +3962,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/periods
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Ražotnes ({COMMA} no {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{G=m}{ORANGE}- Neviens -
 STR_INDUSTRY_DIRECTORY_NONE.kas                                 :{ORANGE}- Neviena -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} (pārvadāti {COMMA}%){BLACK}
@@ -5099,11 +5105,14 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Blakus a
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Pārāk tuvu citam pieturas punktam
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Šeit nevar uzbūvēt vilcienu pieturas punktu...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Šeit nevar izveidot ceļa pieturas punktu...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Šeit nevar novietot boju...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nevar pārdēvēt pieturas punktu...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Seit nevar noņemt vilcienu pieturas punktu...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Šeit nevar noņemt ceļa pieturas punktu...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Vispirms ir jānoņem dzelzceļa pieturas punktu
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Vispirms ir jānoņem ceļa pieturas punkts
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... ceļā boja
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boju jau izmanto cits uzņēmums!
 
@@ -5351,6 +5360,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Nav piet
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Šī lidmašīna nevar nolaisties šajā helikopteru lidlaukā
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Šis helikopters nevar nolaisties šajā lidostā
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Nav dzelzceļa pieturas punkta
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Nav ceļa pieturas punkta
 STR_ERROR_NO_BUOY                                               :{WHITE}Bojas nav
 
 # Timetable related errors
