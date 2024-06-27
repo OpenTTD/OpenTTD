@@ -803,9 +803,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desativar tudo
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Ativar tudo
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar altitudes
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Mostrar nomes de indústrias
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Não mostrar indústrias no mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostrar todas as indústrias no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Mostrar mapa de altitudes
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Mostrar nomes de indústrias
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Mostrar no mapa as propriedades que não pertencem às empresas
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostrar no mapa as propriedades de todas as empresas
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Não mostrar as cargas no mapa

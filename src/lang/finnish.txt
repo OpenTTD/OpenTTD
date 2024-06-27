@@ -623,14 +623,14 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Poista kaikki käytöstä
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Näytä kaikki rahdit rahtitaksojen kaaviossa
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Älä näytä mitään rahteja rahtitaksojen kaaviossa
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Rahtityypin kuvaaja päälle/pois
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Valitse, näytetäänkö tämän rahdin kuvaaja
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näytä tarkat suorituskykyarviot
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Selite yhtiön kuvaajiin
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Napsauta tätä vaihtaaksesi yhtiön merkinnän kuvaajassa päälle/pois
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Valitse, näytetäänkö tämän yhtiön kuvaaja
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Yhtiökilpataulukko
@@ -710,7 +710,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Valitse 
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Valitse ”Ezy Street” -tyylin musiikki
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Valitse ”oma 1” (käyttäjän määritettävissä)
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Valitse ”oma 2” (käyttäjän määritettävissä)
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Sekoittaminen päälle/pois
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Valitse, sekoitetaanko soittojärjestys
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Näytä musiikkiraitojen valintaikkuna
 
 # Playlist window
@@ -793,7 +793,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Aavikko
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Lunta
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Näytä kuntien nimet kartalla
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Valitse, näytetäänkö kuntien nimet
 STR_SMALLMAP_CENTER                                             :{BLACK}Keskitä pieni kartta tähän paikkaan
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -802,9 +802,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Kaikki pois päältä
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Kaikki päälle
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Näytä korkeus
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Näytä laitosten nimet
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Älä näytä teollisuuslaitoksia kartalla
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Näytä kaikki teollisuuslaitokset kartalla
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Valitse, näytetäänkö korkeuskartta
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Valitse, näytetäänkö teollisuuslaitosten nimet
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Älä näytä yhtiöiden omaisuutta kartalla
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Näytä kaikki yhtiöiden omaisuus kartalla
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Älä näytä mitään rahtia kartalla
@@ -2772,7 +2774,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglevin rakent
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Rakenna rautatietä. Ctrl+napsautus poistaa rautatietä. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rakenna rautatietä automaattisesti valittuun suuntaan. Ctrl+napsautus poistaaksesi rautatietä. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Rakenna junavarikko (junien ostamista ja huoltoa varten). Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Rakenna reittipiste rautatielle. Ctrl+napsautus valitsee toisen reittipisteen, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Rakenna reittipiste rautatielle. Ctrl+napsautus valitsee toisen reittipisteen, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Rakenna rautatieasema. Ctrl+napsautus valitsee toisen aseman, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastin rautatielle. Ctrl+napsautus rakentaa vaihtoehtoista opastintyyliä{}Napsautus+veto täyttää valitun rataosuuden opastimilla määrätyin välein. Ctrl+napsautus+veto täyttää seuraavaan risteykseen, asemaan tai opastimeen asti. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Rakenna rautatiesilta. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
@@ -2884,10 +2886,12 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Rakenna 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Rakenna raitiotieosuus automaattisesti valittuun suuntaan. Ctrl+napsautus poistaa raitiotieosuuden. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Rakenna ajoneuvovarikko (ajoneuvojen ostamista ja huoltoa varten). Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Rakenna raitiovaunuvarikko (vaunujen ostamista ja huoltoa varten). Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Rakenna tielle reittipiste. Ctrl+napsautus valitsee toisen reittipisteen, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Rakenna reittipiste raitiotielle. Ctrl+napsautus valitsee toisen reittipisteen, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Rakenna linja-autoasema. Ctrl+napsautus valitsee toisen aseman, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Rakenna raitiotien matkustaja-asema. Ctrl+napsautus valitsee toisen aseman, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Rakenna lastauslaituri. Ctrl+napsautus valitsee toisen aseman, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Rakenna raitiotien rahtiasema. Ctrl+napsautus valitaksesi toisen aseman, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Rakenna lastauslaituri. Ctrl+napsautus valitsee toisen aseman, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Rakenna raitiotien rahtiasema. Ctrl+napsautus valitaksesi toisen aseman, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ota yksisuuntaiset tiet käyttöön/pois käytöstä
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Rakenna maantiesilta. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Rakenna raitiotiesilta. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
@@ -2938,7 +2942,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Satama
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Lentokentät
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Rakenna lentokenttä. Ctrl+napsautus valitsee toisen aseman, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Rakenna lentokenttä. Ctrl+napsautus valitsee toisen aseman, johon haluat tämän liitettävän. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Lentokentän valinta
@@ -3835,7 +3839,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Estä il
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Keskitä päänäkymä reittipisteen sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan reittipisteen sijaintiin.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Muuta reittipisteen nimeä
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskitä päänäkymä poijun sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan poijun sijaintiin.
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskitä päänäkymä poijun sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan poijun sijaintiin
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Vaihda poijun nimeä
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muokkaa reittipisteen nimeä
@@ -3958,7 +3962,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} ja {NUM} muuta
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Teollisuushaarojen nimet – kohdista päänäkymä tuotantolaitokseen napsauttamalla nimeä. Ctrl+napsautus avaa uuden näkymäikkunan laitoksen sijaintiin.
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Teollisuushaarojen nimet – kohdista päänäkymä tuotantolaitokseen napsauttamalla nimeä. Ctrl+napsautus avaa uuden näkymäikkunan laitoksen sijaintiin
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Vastaanotettava rahti: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Tuotettu rahti: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Kaikki rahtityypit
@@ -3969,7 +3973,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Tuotanto viime kuussa:
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Tuotanto viime minuutissa:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% kuljetettu)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Keskitä päänäkymä tuotantolaitoksen sijaintiin. Ctrl+napsautus avataksesi uuden näkymäikkunan laitoksen sijaintiin.
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Keskitä päänäkymä tuotantolaitoksen sijaintiin. Ctrl+napsautus avataksesi uuden näkymäikkunan laitoksen sijaintiin
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tuotantotaso: {YELLOW}{COMMA}{NBSP}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Teollisuuslaitos ilmoittaa välittömästä lakkautuksesta!
 
@@ -4238,9 +4242,9 @@ STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Osta ilm
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Keskitä päänäkymä veturitallin sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan veturitallin sijaintiin
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Keskitä päänäkymä ajoneuvovarikon sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan varikon sijaintiin.
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Keskitä päänäkymä ajoneuvovarikon sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan varikon sijaintiin
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Keskitä päänäkymä telakan sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan telakan sijaintiin
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Keskitä päänäkymä lentokonehallin sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan lentokonehallin sijaintiin.
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Keskitä päänäkymä lentokonehallin sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan lentokonehallin sijaintiin
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Näytä tällä asemalla olevien junien käskyt
@@ -4346,10 +4350,10 @@ STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Keskitä päänäkymä junan sijaintiin. Kaksoisnapsauta seurataksesi junaa päänäkymässä. Ctrl+napsautus avaa uuden näkymäikkunan junan sijaintiin.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Keskitä päänäkymä ajoneuvon sijaintiin. Kaksoisnapsauta seurataksesi ajoneuvoa päänäkymässä. Ctrl+napsautus avaa uuden näkymäikkunan ajoneuvon sijaintiin.
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Keskitä päänäkymä laivan sijaintiin. Kaksoisnapsauta seurataksesi laivaa päänäkymässä. Ctrl+napsautus avaa uuden näkymäikkunan laivan sijaintiin.
-STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Keskitä päänäkymä ilma-aluksen sijaintiin. Kaksoisnapsauta seurataksesi ilma-alusta päänäkymässä. Ctrl+napsautus avaa uuden näkymäikkunan ilma-aluksen sijaintiin.
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Keskitä päänäkymä junan sijaintiin. Kaksoisnapsauta seurataksesi junaa päänäkymässä. Ctrl+napsautus avaa uuden näkymäikkunan junan sijaintiin
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Keskitä päänäkymä ajoneuvon sijaintiin. Kaksoisnapsauta seurataksesi ajoneuvoa päänäkymässä. Ctrl+napsautus avaa uuden näkymäikkunan ajoneuvon sijaintiin
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Keskitä päänäkymä laivan sijaintiin. Kaksoisnapsauta seurataksesi laivaa päänäkymässä. Ctrl+napsautus avaa uuden näkymäikkunan laivan sijaintiin
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Keskitä päänäkymä ilma-aluksen sijaintiin. Kaksoisnapsauta seurataksesi ilma-alusta päänäkymässä. Ctrl+napsautus avaa uuden näkymäikkunan ilma-aluksen sijaintiin
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Lähetä juna veturitalliin. Ctrl+napsautus suorittaa vain huollon.
@@ -5092,11 +5096,14 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Vieress�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Liian lähellä toista reittipistettä
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Junien reittipistettä ei voi rakentaa tähän...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Tien reittipistettä ei voi rakentaa tähän…
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Poijua ei voi sijoittaa tähän...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Reittipisteen nimeä ei voi muuttaa...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Junien reittipistettä ei voi poistaa...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Tien reittipistettä ei voi poistaa tästä…
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Rautatien reittipiste täytyy poistaa ensin
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Tien reittipiste täytyy poistaa ensin
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... poiju on tiellä
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... poiju on toisen yhtiön käytössä!
 
@@ -5344,6 +5351,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Ei ole n
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Tämä lentokone ei voi laskeutua tälle helikopterikentälle
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Tämä helikopteri ei voi laskeutua tälle lentokentälle
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Rautatien reittipistettä ei ole
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Tien reittipistettä ei ole
 STR_ERROR_NO_BUOY                                               :{WHITE}Poijua ei ole
 
 # Timetable related errors
