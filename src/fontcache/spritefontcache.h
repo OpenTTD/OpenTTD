@@ -23,7 +23,7 @@ public:
 	const Sprite *GetGlyph(GlyphID key) override;
 	uint GetGlyphWidth(GlyphID key) override;
 	bool GetDrawGlyphShadow() override;
-	GlyphID MapCharToGlyph(char32_t key, [[maybe_unused]] bool allow_fallback = true) override { assert(IsPrintable(key)); return SPRITE_GLYPH | key; }
+	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
 	std::string GetFontName() override { return "sprite"; }
 	bool IsBuiltInFont() override { return true; }
 
