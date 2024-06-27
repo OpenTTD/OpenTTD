@@ -57,6 +57,7 @@ uint8_t _trees_tick_ctr;
 static const uint16_t DEFAULT_TREE_STEPS = 1000;             ///< Default number of attempts for placing trees.
 static const uint16_t DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number of attempts for placing extra trees at rainforest in tropic.
 static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tree generation divisor factor.
+static const uint16_t IMPROVED_TREES_SOLITARY_DIV = 9;               ///< Improved generation divisor factor for solitary trees.
 
 /**
  * Tests if a tile can be converted to MP_TREES
@@ -185,6 +186,8 @@ static void PlaceTree(TileIndex tile, uint32_t r)
  */
 static void PlaceTreeGroups(uint num_groups)
 {
+	const uint MAX_DISTANCE_FROM_CENTER = 13;
+
 	do {
 		TileIndex center_tile = RandomTile();
 
@@ -193,11 +196,19 @@ static void PlaceTreeGroups(uint num_groups)
 			int x = GB(r, 0, 5) - 16;
 			int y = GB(r, 8, 5) - 16;
 			uint dist = abs(x) + abs(y);
+			uint max_dist = MAX_DISTANCE_FROM_CENTER;
+
+			if (_settings_newgame.game_creation.tree_placer == TP_IMPROVED) {
+				max_dist = GB(r, 16, 4);
+			}
+
+			if (dist > max_dist) continue;
+
 			TileIndex cur_tile = TileAddWrap(center_tile, x, y);
 
 			IncreaseGeneratingWorldProgress(GWP_TREE);
 
-			if (cur_tile != INVALID_TILE && dist <= 13 && CanPlantTreesOnTile(cur_tile, true)) {
+			if (cur_tile != INVALID_TILE && CanPlantTreesOnTile(cur_tile, true)) {
 				PlaceTree(cur_tile, r);
 			}
 		}
@@ -249,6 +260,8 @@ void PlaceTreesRandomly()
 
 	i = Map::ScaleBySize(DEFAULT_TREE_STEPS);
 	if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
+	/* Place a limited amount of solitary trees when using improved tree placement. */
+	if (_settings_game.game_creation.tree_placer == TP_IMPROVED) i /= IMPROVED_TREES_SOLITARY_DIV;
 	do {
 		uint32_t r = Random();
 		TileIndex tile = RandomTileSeed(r);
