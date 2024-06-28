@@ -1009,7 +1009,7 @@ STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Pokaż s
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legenda do wykresów firm
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Kliknij tutaj, aby przełączyć wyświetlanie wykresu firmy
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Przełącz wyświetlanie wykresu danej firmy
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Ranking firm
@@ -1089,7 +1089,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Wybierz 
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Wybierz program „Ezy Street”
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Wybierz program „Własny 1” (zdefiniowany przez użytkownika)
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Wybierz program „Własny 2” (zdefiniowany przez użytkownika)
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Włącz/wyłącz losowe odtwarzanie
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Przełącz losowe odtwarzanie
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Pokaż okno wyboru ścieżek
 
 # Playlist window
@@ -1173,7 +1173,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Pustynia
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Śnieg
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Pokaż nazwy miast na mapie
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Przełącz wyświetlanie nazw miast
 STR_SMALLMAP_CENTER                                             :{BLACK}Wyśrodkuj mapę na aktualnej lokalizacji
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -1182,9 +1182,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Wyłącz wszystko
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Włącz wszystko
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Pokaż wysokość
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Nazwy przedsiębiorstw
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nie pokazuj przedsiębiorstw na mapie
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Pokaż wszystkie przedsiębiorstwa na mapie
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Przełącz wyświetlanie mapy wysokości
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Przełącz wyświetlanie nazw przedsiębiorstw
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nie wyświetlaj własności firm na mapie
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Wyświetl własności wszystkich firm na mapie
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nie wyświetlaj ładunków na mapie
@@ -3264,6 +3266,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Zbuduj d
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Zbuduj tory tramwajowe używając trybu Autotory. Użyj Ctrl, aby usunąć fragment torów. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Zbuduj zajezdnię samochodową (do kupowania i serwisowania pojazdów). Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Zbuduj zajezdnię tramwajową (do kupowania i serwisowania pojazdów). Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Zbuduj posterunek na drodze. Użyj Ctrl, aby połączyć z innym posterunkiem. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Zbuduj posterunek na linii tramwajowej. Użyj Ctrl, aby połączyć z innym posterunkiem. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Zbuduj przystanek autobusowy. Użyj Ctrl, aby połączyć z inną stacją. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Zbuduj pasażerski przystanek tramwajowy. Użyj Ctrl, aby połączyć z inną stacją. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Zbuduj stację ciężarówek. Użyj Ctrl, aby połączyć z inną stacją. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
@@ -3984,8 +3988,8 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Skanowanie w po
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista napisów - {COMMA} napis{P "" y ów}
-STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Wielkość znaków
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Przełącza uwzględnianie wielkości znaków przy porównywaniu tekstu napisu z filtrem
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Wielkość liter
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Przełącz uwzględnianie wielkości liter przy porównywaniu tekstu napisu z filtrem
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edycja tekstu napisu
@@ -4549,7 +4553,7 @@ STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Wyświet
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Przełącz ukrywanie/wyświetlanie danego typu taboru
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Przełącz ukrywanie/wyświetlanie danego typu pojazdu
 STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Przełącz ukrywanie/wyświetlanie danego typu statku
-STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Przełącz ukrywanie/wyświetlanie danego typu ssamolotu
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Przełącz ukrywanie/wyświetlanie danego typu samolotu
 
 ###length VEHICLE_TYPES
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Zmiana nazwy typu pociągu
@@ -5350,7 +5354,7 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Teren po
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nie można tego zrobić...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Należy najpierw zburzyć budynek
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nie można wyczyścić terenu...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... niewłaściwa parcela
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... nieodpowiednie miejsce
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... już zbudowano
 STR_ERROR_OWNED_BY                                              :{WHITE}... własność {STRING.d}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... teren jest własnością innej firmy
@@ -5408,17 +5412,17 @@ STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Nie moż
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... zbyt wiele przedsiębiorstw
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nie można stworzyć przedsiębiorstw...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Nie można tutaj wybudować: {STRING}...
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nie można tutaj wybudować tego przedsiębiorstwa...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Nie można tutaj zbudować: {STRING}...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nie można tutaj zbudować przedsiębiorstwa tego typu...
 STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Nie można znaleźć przedsiębiorstwa...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... zbyt blisko innego przedsiębiorstwa
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... należy najpierw wybudować miasto
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... dozwolone jedno na miasto
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... można zbudować jedynie w miastach o populacji przynajmniej 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... może być wybudowane tylko w lasach deszczowych
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... może być wybudowane tylko na pustyni
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... można wybudować tylko w mieście (zastępując domy)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... można wybudować tylko w pobliżu centrum miast
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... można zbudować tylko na obszarach lasów deszczowych
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... można zbudować tylko na obszarach pustynnych
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... można zbudować tylko w mieście (zastępując domy)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... można zbudować tylko w pobliżu centrum miasta
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... może być budowane tylko na niskich terenach
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... może być usytuowane tylko blisko krawędzi mapy
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... las może być posadzony tylko powyżej linii śniegu
@@ -5431,13 +5435,13 @@ STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nie ma o
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Zmień parametry tworzenia map, żeby uzyskać lepsze mapy
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nie można tutaj wybudować stacji...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nie można tutaj zbudować stacji...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nie można zbudować przystanku...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Nie można zbudować stacji ciężarówek...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Nie można zbudować przystanku tramwajowego...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Nie można zbudować tramwajowej stacji załadunkowej...
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nie można tutaj wybudować portu...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nie można tutaj wybudować lotniska...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nie można tutaj zbudować portu...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nie można tutaj zbudować lotniska...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Przylega do więcej niż jednej stacji
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacja zbyt rozległa
@@ -5477,20 +5481,23 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Należy 
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Przylega do więcej niż jednego istniejącego posterunku
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Zbyt blisko innego posterunku
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Nie można budować tutaj posterunku...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Nie można tutaj zbudować posterunku...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Nie można tutaj zbudować posterunku drogowego...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nie można tutaj ustawić boi...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nie można zmienić nazwy posterunku...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nie można usunąć stąd posterunku kolejowego...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Musisz usunąć najpierw posterunek kolejowy
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nie można stąd usunąć posterunku kolejowego...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Nie można stąd usunąć posterunku drogowego...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Należy najpierw usunąć posterunek kolejowy
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Należy najpierw usunąć posterunek drogowy
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boja na drodze
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boja w użyciu przez inna firmę!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nie można tutaj wybudować warsztatów kolejowych...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nie można tutaj zbudować warsztatów kolejowych...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Nie można tutaj zbudować zajezdni...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nie można tutaj zbudować zajezdni tramwajowej...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nie można tutaj wybudować stoczni...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nie można tutaj zbudować stoczni...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nie można zmienić nazwy warsztatów...
 
@@ -5529,13 +5536,13 @@ STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Nowy poj
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Niemożliwa kombinacja torów
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Należy najpierw usunąć sygnalizację
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nieodpowiednie tory/brak torów
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Brak odpowiednich torów kolejowych
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Należy najpierw usunąć tory
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Droga jest jednokierunkowa lub zablokowana
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Przejazd kolejowy nie dozwolony dla tego typu torów
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Przejazdy kolejowe nie są dozwolone dla tego typu drogi
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nie można tutaj postawić sygnałów...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nie można tutaj ułożyć torów...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nie można tutaj zbudować torów...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nie można stąd usunąć torów...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nie można stąd usunąć sygnałów...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nie można tutaj zmienić sygnałów...
@@ -5562,13 +5569,13 @@ STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Brak wł
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Nie można tutaj zbudować kanału...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Nie można tutaj zbudować śluzy...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Nie można tutaj umieścić rzeki...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... musi być wybudowane na wodzie
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... można zbudować tylko na wodzie
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nie można zbudować na wodzie
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... nie można zbudować na otwartym morzu
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... nie można zbudować na kanale
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... nie można budować na rzece
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Należy najpierw usunąć kanał
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Nie można zbudować tutaj akweduktu...
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Nie można tutaj zbudować akweduktu...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... drzewo już tu jest
@@ -5576,7 +5583,7 @@ STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... niew
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Nie można posadzić drzewa...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Nie można tutaj wybudować mostu...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Nie można tutaj zbudować mostu...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Należy najpierw usunąć most
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nie można zaczynać i kończyć w tym samym miejscu
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Początki mostu nie są na tej samej wysokości
@@ -5588,7 +5595,7 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... za d
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Koniec mostu poza mapą
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nie można tutaj wybudować tunelu...
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nie można tutaj zbudować tunelu...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Nieodpowiednie miejsce na wejście tunelu
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Należy najpierw usunąć tunel
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Inny tunel na drodze
@@ -5729,7 +5736,8 @@ STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Brak odp
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Brak przystanków przeznaczonych dla pojazdów przegubowych.{}Pojazdy przegubowe wymagają przystanku przelotowego, a nie zatokowego
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Ten samolot nie może wylądować na tym lądowisku
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Ten helikopter nie może wylądować na tym lotnisku
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Brak posterunku kolejowego
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Brak posterunków kolejowych
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Brak posterunków drogowych
 STR_ERROR_NO_BUOY                                               :{WHITE}Brak boi
 
 # Timetable related errors

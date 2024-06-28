@@ -716,14 +716,14 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Απενεργοποιήση όλων
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Εμφάνιση όλων των εμπορευμάτων στο γράφημα πληρωμής εμπορευμάτων
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Εμφάνιση κανενός εμπορευμάτος στο γράφημα πληρωμής εμπορευμάτων
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Εναλλαγή γραφήματος τύπου φορτίου
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Εναλλαγή γραφήματος αυτού του τύπου φορτίου
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Εμφάνιση λεπτομεριών αποδόσεων
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Γραφήματα κλειδιού εταιρίας
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Πατήστε εδώ για εναλλαγή εμφάνισης της εταιρίας στο γράφημα
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Εναλλαγή εμφάνισης γραφήματος της εταιρίας
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Πίνακας Πρωταθλήματος Εταιριών
@@ -803,7 +803,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Επιλ
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Επιλογή προγράμματος «στυλ μουσικής Ezy Street»
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Επιλογή προγράμματος «Προσαρμοσμένο 1»
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Επιλογή προγράμματος «Προσαρμοσμένο 2»
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Εναλλαγή τυχαίας αναπαραγωγής on/off στο πρόγραμμα
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Εναλλαγή τυχαίας αναπαραγωγής προγράμματος
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Εμφάνιση παραθύρου επιλογής μουσικού κομματιού
 
 # Playlist window
@@ -886,7 +886,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Έρημος
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Χιόνι
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Εναλλαγή ονομάτων πόλεων στον χάρτη
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Εναλλαγή εμφάνισης των ονομάτων πόλεων
 STR_SMALLMAP_CENTER                                             :{BLACK}Κεντράρισμα του μικρού χάρτη στην τρέχουσα θέση
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -895,9 +895,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Απενεργοποίηση όλων
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Ενεργοποίηση όλων
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Εμφάνιση ύψους
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Εμφάνιση ονομάτων βιομηχανιών
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Εμφάνιση καμίας βιομηχανίας στον χάρτη
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Εμφάνιση όλων των βιομηχανιών στον χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Εναλλάγη εμφάνισης υψομετρικού χάρτη
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Εναλλαγή εμφάνισης των ονομάτων βιομηχανιών
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Απόκρυψη όλων των ιδιοκτησιών των εταιριών στον χάρτη
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Εμφάνιση όλων των ιδιοκτησιών των εταιριών στον χάρτη
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Απόκρυψη όλων των φορτίων στο χάρτη
@@ -2977,6 +2979,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατα
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή τροχιοδρόμου χρησιμοποιώντας τη λειτουργία Αυτόματου Τροχιοδρόμου. Ctrl+Κλικ για αφαίρεση τροχιόδρομου. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οδικών οχημάτων (για αγορά και επισκευή οχημάτων). Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων τροχιοδρόμου (για αγορά και συντήρηση οχημάτων). Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Κατασκευή σημείου αναφοράς στο δρόμο. Ctrl+Click για επιλογή πρόσθετου σημείου αναφοράς για συμμετοχή. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Κατασκευή σημείου αναφοράς στην τροχιά τραμ. Ctrl+Click για επιλογή πρόσθετου σημείου αναφοράς για συμμετοχή. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων. Ctrl+Κλικ για επιλογή πρόσθετου σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Κατασκευή επιβατικού σταθμού τροχιοδρόμου. Ctrl+Κλικ για επιλογή πρόσθετου επιβατικού σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατασκευή σταθμού φορτηγών. Ctrl+Κλικ για επιλογή πρόσθετου σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
@@ -3709,6 +3713,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Μετά
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Δώστε ένα όνομα για την πινακίδα
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Πόλεις ({COMMA} από {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Τίποτα -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Πόλη){BLACK} ({COMMA})
@@ -4043,6 +4048,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/περίοδο
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Βιομηχανίες ({COMMA} από {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Τίποτα -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% μεταφέρθηκαν){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -5191,11 +5197,14 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Συνε
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Πολύ κοντά σε άλλο σημείο καθοδήγησης
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Δεν μπορεί να κατασκευαστεί σημείο καθοδήγησης τρένου εδώ...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Δεν μπορεί να κατασκευαστεί οδικό σημείο καθοδήγησης εδώ...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Δεν μπορεί να τοποθετηθεί σημαδούρα εδώ...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Δεν μπορεί να αλλάξει το όνομα του σημείου καθοδήγησης...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Αδύνατο να αφαιρεθεί το σημείο καθοδήγησης τρένου από εδώ...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Αδύνατο να αφαιρεθεί το οδικό σημείο καθοδήγησης από εδώ...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Πρέπει να αφαιρεθεί το σημείο καθοδήγησης σιδηρόδρομου πρώτα
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Πρέπει να αφαιρεθεί το οδικό σημείο καθοδήγησης πρώτα
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... σημαδούρα στη μέση
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... σημαδούρα σε χρήση από άλλη εταιρία!
 
@@ -5443,6 +5452,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Δεν �
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Το αεροπλάνο αυτό δεν μπορεί να προσγειωθεί σε αυτό το ελικοδρόμιο
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Το ελικόπτερο αυτό δεν μπορεί να προσγειωθεί σε αυτό το αεροδρόμιο
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Δεν υπάρχει σημείο καθοδήγησης σιδηροδρόμου
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Δεν υπάρχει οδικό σημείο καθοδήγησης
 STR_ERROR_NO_BUOY                                               :{WHITE}Δεν υπάρχει σημαδούρα
 
 # Timetable related errors
