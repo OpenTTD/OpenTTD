@@ -624,14 +624,14 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}모두 사용 안 함
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시 안 함
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화물에 대한 그래프 켜기/끄기
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화물의 그래프를 표시하거나 숨깁니다
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}상세 성취도를 봅니다.
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}회사 그래프 범례
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}특정 회사의 그래프를 보이거나 숨기려면 여기를 클릭하세요.
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}특정 회사의 그래프를 표시하거나 숨기려면 여기를 클릭하세요.
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}회사 성취도 순위
@@ -711,7 +711,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}'뉴 스
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'이지 스트릿 스타일 음악' 프로그램을 선택합니다.
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'사용자 1' (유저 정의) 음악 프로그램을 선택합니다.
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'사용자 2' (유저 정의) 음악 프로그램을 선택합니다.
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}프로그램을 무작위 재생합니다.
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}프로그램을 무작위 재생합니다
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}배경 음악 트랙을 선택할 수 있는 창을 엽니다.
 
 # Playlist window
@@ -794,7 +794,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}사막
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}눈
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}도시 이름을 보이거나 숨깁니다.
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}도시 이름을 표시하거나 숨깁니다
 STR_SMALLMAP_CENTER                                             :{BLACK}소형지도 내부창의 위치를 현재 게임 화면 위치로 이동시킵니다.
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -803,9 +803,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}모두 사용 안 함
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}모두 사용
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}고도 표시
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}산업시설 이름 표시
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}지도 상의 모든 산업시설을 숨깁니다.
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}지도 상의 모든 산업시설을 보여줍니다.
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}지형의 높낮이를 표시합니다.
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}산업시설의 이름을 표시하거나 숨깁니다
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}그 어떤 회사의 재산도 지도에 표시하지 않습니다.
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}모든 회사의 재산을 지도에 표시합니다.
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}화물 흐름을 게임 화면에 표시하지 않습니다.
@@ -2885,6 +2887,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}자동�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}자동건설 모드로 전차 선로를 짓습니다. CTRL+클릭하면 전찻길 일부분을 제거할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}차고지를 건설합니다. 차량을 구입하거나 점검을 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}전차 차고지를 건설합니다. 차량을 구입하거나 점검을 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}도로에 경유지를 설치합니다. CTRL+클릭하면 같은 이름의 경유지를 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}전차 선로에 경유지를 설치합니다. CTRL+클릭하면 같은 이름의 경유지를 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}버스 정류장을 짓습니다. CTRL+클릭하면 같은 이름의 정류장을 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}여객 전차역을 짓습니다. CTRL+클릭하면 같은 이름의 전차역을 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}트럭 적하장을 짓습니다. CTRL+클릭하면 같은 이름의 적하장을 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
@@ -3617,6 +3621,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}이전 �
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}팻말 이름을 입력하세요
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}도시 목록 ({1:COMMA}개 중 {0:COMMA}개)
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}(없음)
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (대도시){BLACK} ({COMMA})
@@ -3950,6 +3955,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/기간
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}산업시설 ({1:COMMA}개 중 {0:COMMA}개)
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}(없음)
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% 수송됨){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -5070,32 +5076,35 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... 통�
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}역의 일부를 제거할 수 없습니다...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}먼저 철도역을 제거해야 합니다
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}철도역을 먼저 제거하세요
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}버스 정류장을 제거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}트럭 터미널을 제거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}여객 전차역을 제거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}화물 전차역을 제거할 수 없습니다...
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}정류장을 먼저 제거하십시오
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}정류장을 먼저 제거하세요
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... 여기에는 정거장이 없습니다
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}철도역을 먼저 제거하십시오
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}버스 정류장을 먼저 제거하십시오
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}트럭 적하장을 먼저 제거하십시오
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}여객 전차역을 먼저 제거하십시오
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}화물 전차역을 먼저 제거하십시오
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}항구를 먼저 제거하십시오
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}공항을 먼저 제거하십시오
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}철도역을 먼저 제거하세요
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}버스 정류장을 먼저 제거하세요
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}트럭 적하장을 먼저 제거하세요
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}여객 전차역을 먼저 제거하세요
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}화물 전차역을 먼저 제거하세요
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}항구를 먼저 제거하세요
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}공항을 먼저 제거하세요
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}최소한 하나 이상의 경유지와 연결하십시오
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}다른 경유지와 너무 가깝습니다!
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}여기에 열차 경유지를 설치할 수 없습니다...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}여기에 열차 경유지를 지을 수 없습니다...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}여기에 도로 경유지를 지을 수 없습니다...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}여기에 부표를 설치할 수 없습니다...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}경유지의 이름을 변경할 수 없습니다...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}이 열차 경유지를 제거할 수 없습니다...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}열차 경유지를 먼저 제거하십시오
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}이 도로 경유지를 제거할 수 없습니다...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}열차 경유지를 먼저 제거하세요
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}도로 경유지를 먼저 제거하세요
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... 도중에 부표가 있습니다
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... 다른 회사에서 사용 중인 부표입니다!
 
@@ -5141,9 +5150,9 @@ STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}새로 �
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}불가능한 트랙 조합입니다
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}신호기를 먼저 제거하십시오
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}신호기를 먼저 제거하세요
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}적합한 철도 선로가 없습니다
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}선로를 먼저 제거하십시오
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}선로를 먼저 제거하세요
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}도로가 일방통행이거나 막혔습니다
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}이 선로에는 건널목을 만들 수 없습니다
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}이 도로에는 건널목을 만들 수 없습니다
@@ -5158,7 +5167,7 @@ STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... 신�
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}이곳의 선로를 바꿀 수 없습니다...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}도로를 먼저 제거하십시오
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}도로를 먼저 제거하세요
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... 일방통행로에는 교차로를 만들 수 없습니다.
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}도로를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}여기에 전찻길을 건설할 수 없습니다...
@@ -5180,7 +5189,7 @@ STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... 물 
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... 바다 위에 지을 수 없습니다
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... 운하 위에 지을 수 없습니다
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... 강 위에 지을 수 없습니다
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}운하를 먼저 제거하십시오
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}운하를 먼저 제거하세요
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}여기에 수도교를 지을 수 없습니다...
 
 # Tree related errors
@@ -5190,7 +5199,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}여기�
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}여기에 다리를 지을 수 없습니다...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}다리를 먼저 제거하십시오
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}다리를 먼저 제거하세요
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}같은 위치에서 시작하고 끝낼 수 없습니다
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}다리는 같은 높이를 연결해야 합니다
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}이 지형에 다리를 설치하기에는 고도가 너무 낮습니다.
@@ -5203,7 +5212,7 @@ STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}다리 �
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}여기에 터널을 지을 수 없습니다...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}터널 입구를 짓기에 적절하지 않은 장소입니다
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}터널을 먼저 제거하십시오
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}터널을 먼저 제거하세요
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}중간에 다른 터널이 있습니다
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}터널을 지도 맨 끝까지 건설할 수 없습니다
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}지형 문제로 터널의 반대쪽 출구를 만들 수 없습니다
@@ -5343,6 +5352,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}굴절�
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}이 항공기는 이 공항에 착륙할 수 없습니다
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}이 헬리콥터는 이 공항에 착륙할 수 없습니다
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}철도 경유지가 없습니다
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}도로 경유지가 없습니다
 STR_ERROR_NO_BUOY                                               :{WHITE}부표가 없습니다
 
 # Timetable related errors
