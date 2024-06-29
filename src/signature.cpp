@@ -35,22 +35,19 @@ static const std::initializer_list<std::array<uint8_t, 32>> _public_keys_v1 = {
  */
 static std::string CalculateHashV1(const std::string &filename)
 {
-	FILE *f = FioFOpenFile(filename, "rb", NO_DIRECTORY);
-	if (f == nullptr) {
-		return "";
-	}
+	auto f = FioFOpenFile(filename, "rb", NO_DIRECTORY);
+	if (!f.has_value()) return {};
 
 	std::array<uint8_t, 32> digest;
 	crypto_blake2b_ctx ctx;
 	crypto_blake2b_init(&ctx, digest.size());
 
-	while (!feof(f)) {
+	while (!feof(*f)) {
 		std::array<uint8_t, 1024> buf;
-		size_t len = fread(buf.data(), 1, buf.size(), f);
+		size_t len = fread(buf.data(), 1, buf.size(), *f);
 
 		crypto_blake2b_update(&ctx, buf.data(), len);
 	}
-	fclose(f);
 
 	crypto_blake2b_final(&ctx, digest.data());
 	return FormatArrayAsHex(digest);
@@ -197,15 +194,14 @@ static bool ValidateSchema(const nlohmann::json &signatures, const std::string &
 static bool _ValidateSignatureFile(const std::string &filename)
 {
 	size_t filesize;
-	FILE *f = FioFOpenFile(filename, "rb", NO_DIRECTORY, &filesize);
-	if (f == nullptr) {
+	auto f = FioFOpenFile(filename, "rb", NO_DIRECTORY, &filesize);
+	if (!f.has_value()) {
 		Debug(misc, 0, "Failed to validate signature: file not found: {}", filename);
 		return false;
 	}
 
 	std::string text(filesize, '\0');
-	size_t len = fread(text.data(), filesize, 1, f);
-	FioFCloseFile(f);
+	size_t len = fread(text.data(), filesize, 1, *f);
 	if (len != 1) {
 		Debug(misc, 0, "Failed to validate signature: failed to read file: {}", filename);
 		return false;

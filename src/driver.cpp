@@ -134,8 +134,7 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 					}
 
 					/* Write empty file to note we are attempting hardware acceleration. */
-					auto f = FioFOpenFile(HWACCELERATION_TEST_FILE, "w", BASE_DIR);
-					FioFCloseFile(f);
+					FioFOpenFile(HWACCELERATION_TEST_FILE, "w", BASE_DIR);
 				}
 
 				Driver *oldd = *GetActiveDriver(type);

@@ -742,15 +742,14 @@ static std::vector<char> Xunzip(std::span<char> input)
 
 	/* Get text from file */
 	size_t filesize;
-	FILE *handle = FioFOpenFile(textfile, "rb", dir, &filesize);
-	if (handle == nullptr) return;
+	auto handle = FioFOpenFile(textfile, "rb", dir, &filesize);
+	if (!handle.has_value()) return;
 	/* Early return on empty files. */
 	if (filesize == 0) return;
 
 	std::vector<char> buf;
 	buf.resize(filesize);
-	size_t read = fread(buf.data(), 1, buf.size(), handle);
-	fclose(handle);
+	size_t read = fread(buf.data(), 1, buf.size(), *handle);
 
 	if (read != buf.size()) return;
 

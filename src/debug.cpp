@@ -109,18 +109,18 @@ void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_itera
 void DebugPrint(const char *category, int level, const std::string &message)
 {
 	if (strcmp(category, "desync") == 0 && level != 0) {
-		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
-		if (f == nullptr) return;
+		static auto f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
+		if (!f.has_value()) return;
 
-		fmt::print(f, "{}{}\n", GetLogPrefix(true), message);
-		fflush(f);
+		fmt::print(*f, "{}{}\n", GetLogPrefix(true), message);
+		fflush(*f);
 #ifdef RANDOM_DEBUG
 	} else if (strcmp(category, "random") == 0) {
-		static FILE *f = FioFOpenFile("random-out.log", "wb", AUTOSAVE_DIR);
-		if (f == nullptr) return;
+		static auto f = FioFOpenFile("random-out.log", "wb", AUTOSAVE_DIR);
+		if (!f.has_value()) return;
 
-		fmt::print(f, "{}\n", message);
-		fflush(f);
+		fmt::print(*f, "{}\n", message);
+		fflush(*f);
 #endif
 	} else {
 		fmt::print(stderr, "{}dbg: [{}:{}] {}\n", GetLogPrefix(true), category, level, message);

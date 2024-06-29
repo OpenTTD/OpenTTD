@@ -548,12 +548,12 @@ void Squirrel::Initialize()
 
 class SQFile {
 private:
-	FILE *file;
+	FileHandle file;
 	size_t size;
 	size_t pos;
 
 public:
-	SQFile(FILE *file, size_t size) : file(file), size(size), pos(0) {}
+	SQFile(FileHandle file, size_t size) : file(std::move(file)), size(size), pos(0) {}
 
 	size_t Read(void *buf, size_t elemsize, size_t count)
 	{
@@ -622,40 +622,37 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool 
 {
 	ScriptAllocatorScope alloc_scope(this);
 
-	FILE *file;
+	std::optional<FileHandle> file = std::nullopt;
 	size_t size;
 	if (strncmp(this->GetAPIName(), "AI", 2) == 0) {
 		file = FioFOpenFile(filename, "rb", AI_DIR, &size);
-		if (file == nullptr) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
+		if (!file.has_value()) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
 	} else if (strncmp(this->GetAPIName(), "GS", 2) == 0) {
 		file = FioFOpenFile(filename, "rb", GAME_DIR, &size);
-		if (file == nullptr) file = FioFOpenFile(filename, "rb", GAME_LIBRARY_DIR, &size);
+		if (!file.has_value()) file = FioFOpenFile(filename, "rb", GAME_LIBRARY_DIR, &size);
 	} else {
 		NOT_REACHED();
 	}
 
-	if (file == nullptr) {
+	if (!file.has_value()) {
 		return sq_throwerror(vm, "cannot open the file");
 	}
 	unsigned short bom = 0;
 	if (size >= 2) {
-		[[maybe_unused]] size_t sr = fread(&bom, 1, sizeof(bom), file);
+		if (fread(&bom, 1, sizeof(bom), *file) != sizeof(bom)) return sq_throwerror(vm, "cannot read the file");;
 	}
 
 	SQLEXREADFUNC func;
 	switch (bom) {
 		case SQ_BYTECODE_STREAM_TAG: { // BYTECODE
-			if (fseek(file, -2, SEEK_CUR) < 0) {
-				FioFCloseFile(file);
+			if (fseek(*file, -2, SEEK_CUR) < 0) {
 				return sq_throwerror(vm, "cannot seek the file");
 			}
 
-			SQFile f(file, size);
+			SQFile f(std::move(*file), size);
 			if (SQ_SUCCEEDED(sq_readclosure(vm, _io_file_read, &f))) {
-				FioFCloseFile(file);
 				return SQ_OK;
 			}
-			FioFCloseFile(file);
 			return sq_throwerror(vm, "Couldn't read bytecode");
 		}
 		case 0xFFFE:
@@ -673,12 +670,10 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool 
 		case 0xEFBB: { // UTF-8 on big-endian machine
 			/* Similarly, check the file is actually big enough to finish checking BOM */
 			if (size < 3) {
-				FioFCloseFile(file);
 				return sq_throwerror(vm, "I/O error");
 			}
 			unsigned char uc;
-			if (fread(&uc, 1, sizeof(uc), file) != sizeof(uc) || uc != 0xBF) {
-				FioFCloseFile(file);
+			if (fread(&uc, 1, sizeof(uc), *file) != sizeof(uc) || uc != 0xBF) {
 				return sq_throwerror(vm, "Unrecognized encoding");
 			}
 			func = _io_file_lexfeed_UTF8;
@@ -688,19 +683,16 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool 
 		default: // ASCII
 			func = _io_file_lexfeed_ASCII;
 			/* Account for when we might not have fread'd earlier */
-			if (size >= 2 && fseek(file, -2, SEEK_CUR) < 0) {
-				FioFCloseFile(file);
+			if (size >= 2 && fseek(*file, -2, SEEK_CUR) < 0) {
 				return sq_throwerror(vm, "cannot seek the file");
 			}
 			break;
 	}
 
-	SQFile f(file, size);
+	SQFile f(std::move(*file), size);
 	if (SQ_SUCCEEDED(sq_compile(vm, func, &f, filename.c_str(), printerror))) {
-		FioFCloseFile(file);
 		return SQ_OK;
 	}
-	FioFCloseFile(file);
 	return SQ_ERROR;
 }
 
