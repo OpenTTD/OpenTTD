@@ -57,6 +57,8 @@ uint8_t _trees_tick_ctr;
 static const uint16_t DEFAULT_TREE_STEPS = 1000;             ///< Default number of attempts for placing trees.
 static const uint16_t DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number of attempts for placing extra trees at rainforest in tropic.
 static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tree generation divisor factor.
+static const uint16_t FOREST_THRESHOLD = 6;                  ///< Minimum amount of trees required to be considered a forest.
+static const uint16_t FOREST_SEARCH_RADIUS = 2;              ///< Radius of area to examine when determining forest status.
 
 /**
  * Tests if a tile can be converted to MP_TREES
@@ -78,6 +80,30 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 
 		default: return false;
 	}
+}
+
+/**
+* Tests if a tile is near an already existing forest.
+* Trees won't spread if not placed near some other trees.
+*
+* @param tile the tile of interest
+* @return true if the tile is near a forest
+*/
+static bool IsNearbyForest(TileIndex tile)
+{
+	uint planted_tile_count = 0;
+
+	/* An already planted tile can always be planted again. */
+	if (IsTileType(tile, MP_TREES)) return true;
+
+	/* Count the trees around the clear tile to determine if it's near a forest */
+	for (TileIndex t : TileArea(tile).Expand(FOREST_SEARCH_RADIUS)) {
+		if (!IsTileType(t, MP_TREES)) continue;
+		++planted_tile_count;
+		if (planted_tile_count >= FOREST_THRESHOLD) return true;
+	}
+
+	return false;
 }
 
 /**
@@ -758,6 +784,9 @@ static void TileLoop_Trees(TileIndex tile)
 						/* Don't plant trees, if ground was freshly cleared */
 						if (IsTileType(tile, MP_CLEAR) && GetClearGround(tile) == CLEAR_GRASS && GetClearDensity(tile) != 3) return;
 
+						/* Plants trees only near existing forests */
+						if (_settings_game.game_creation.tree_placer == TP_IMPROVED && !IsNearbyForest(tile)) return;
+
 						PlantTreesOnTile(tile, treetype, 0, 0);
 
 						break;
@@ -770,7 +799,7 @@ static void TileLoop_Trees(TileIndex tile)
 			break;
 
 		case 6: // final stage of tree destruction
-			if (!CanPlantExtraTrees(tile)) {
+			if (!CanPlantExtraTrees(tile) || (_settings_game.game_creation.tree_placer == TP_IMPROVED && !IsNearbyForest(tile))) {
 				/* if trees can't spread just plant a new one to prevent deforestation */
 				SetTreeGrowth(tile, 0);
 			} else if (GetTreeCount(tile) > 1) {
@@ -859,6 +888,9 @@ void OnTick_Trees()
 	r = Random();
 	tile = RandomTileSeed(r);
 	if (CanPlantTreesOnTile(tile, false) && (tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
+		/* Plants trees only near existing forests */
+		if (_settings_game.game_creation.tree_placer == TP_IMPROVED && !IsNearbyForest(tile)) return;
+
 		PlantTreesOnTile(tile, tree, 0, 0);
 	}
 }
