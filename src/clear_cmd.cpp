@@ -144,27 +144,11 @@ static void UpdateFences(TileIndex tile)
 	assert(IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CLEAR_FIELDS));
 	bool dirty = false;
 
-	bool neighbour = (IsTileType(TileAddXY(tile, 1, 0), MP_CLEAR) && IsClearGround(TileAddXY(tile, 1, 0), CLEAR_FIELDS));
-	if (!neighbour && GetFence(tile, DIAGDIR_SW) == 0) {
-		SetFence(tile, DIAGDIR_SW, 3);
-		dirty = true;
-	}
-
-	neighbour = (IsTileType(TileAddXY(tile, 0, 1), MP_CLEAR) && IsClearGround(TileAddXY(tile, 0, 1), CLEAR_FIELDS));
-	if (!neighbour && GetFence(tile, DIAGDIR_SE) == 0) {
-		SetFence(tile, DIAGDIR_SE, 3);
-		dirty = true;
-	}
-
-	neighbour = (IsTileType(TileAddXY(tile, -1, 0), MP_CLEAR) && IsClearGround(TileAddXY(tile, -1, 0), CLEAR_FIELDS));
-	if (!neighbour && GetFence(tile, DIAGDIR_NE) == 0) {
-		SetFence(tile, DIAGDIR_NE, 3);
-		dirty = true;
-	}
-
-	neighbour = (IsTileType(TileAddXY(tile, 0, -1), MP_CLEAR) && IsClearGround(TileAddXY(tile, 0, -1), CLEAR_FIELDS));
-	if (!neighbour && GetFence(tile, DIAGDIR_NW) == 0) {
-		SetFence(tile, DIAGDIR_NW, 3);
+	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+		if (GetFence(tile, dir) != 0) continue;
+		TileIndex neighbour = tile + TileOffsByDiagDir(dir);
+		if (IsTileType(neighbour, MP_CLEAR) && IsClearGround(neighbour, CLEAR_FIELDS)) continue;
+		SetFence(tile, dir, 3);
 		dirty = true;
 	}
 
@@ -177,30 +161,28 @@ static void TileLoopClearAlps(TileIndex tile)
 {
 	int k = GetTileZ(tile) - GetSnowLine() + 1;
 
-	if (k < 0) {
+	if (!IsSnowTile(tile)) {
 		/* Below the snow line, do nothing if no snow. */
-		if (!IsSnowTile(tile)) return;
-	} else {
 		/* At or above the snow line, make snow tile if needed. */
-		if (!IsSnowTile(tile)) {
+		if (k >= 0) {
 			MakeSnow(tile);
 			MarkTileDirtyByTile(tile);
-			return;
 		}
+		return;
 	}
+
 	/* Update snow density. */
 	uint current_density = GetClearDensity(tile);
 	uint req_density = (k < 0) ? 0u : std::min<uint>(k, 3u);
 
-	if (current_density < req_density) {
-		AddClearDensity(tile, 1);
-	} else if (current_density > req_density) {
-		AddClearDensity(tile, -1);
-	} else {
+	if (current_density == req_density) {
 		/* Density at the required level. */
 		if (k >= 0) return;
 		ClearSnow(tile);
+	} else {
+		AddClearDensity(tile, current_density < req_density ? 1 : -1);
 	}
+
 	MarkTileDirtyByTile(tile);
 }
 
