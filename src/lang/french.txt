@@ -2885,6 +2885,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construire une section de voie de tramway avec le mode Auto-tram.{}Ctrl pour enlever une section de voie de tramway.{}Shift pour afficher seulement le coût estimé.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construire un dépôt routier (pour acheter et entretenir des véhicules).{}Shift pour afficher seulement le coût estimé.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construire un dépôt de tramways (pour acheter et entretenir des véhicules).{}Shift pour afficher seulement le coût estimé.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Construire un point de contrôle sur la route.{}Ctrl pour joindre des points de contrôle entre eux.{}Shift pour afficher seulement le coût estimé.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Construire un point de contrôle sur les rails de tramway.{}Ctrl pour joindre des points de contrôle entre eux.{}Shift pour afficher seulement le coût estimé.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construire un arrêt d'autobus.{}Ctrl pour joindre des stations entre elles.{}Shift pour afficher seulement le coût estimé.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construire un arrêt de tramway pour passagers.{}Ctrl pour joindre des stations entre elles.{}Shift pour afficher seulement le coût estimé.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construire une aire de chargement.{}Ctrl pour joindre des stations entre elles.{}Shift pour afficher seulement le coût estimé.
@@ -5345,6 +5347,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Il n'y a
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Cet avion ne peut pas atterrir à cet héliport
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Cet hélicoptère ne peut pas atterrir à cet aéroport
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Il n'y a pas de point de passage ferroviaire
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Il n'y a pas de point de passage routier
 STR_ERROR_NO_BUOY                                               :{WHITE}Il n'y a pas de bouée
 
 # Timetable related errors

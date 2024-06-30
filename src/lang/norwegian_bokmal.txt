@@ -632,7 +632,7 @@ STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vis deta
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Nøkkel til selskapsgrafer
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikk her for å vise/skjule selskapet i grafen
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikk her for å vise/skjule grafen for selskapet
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Selskapsrangering
@@ -804,6 +804,7 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Deaktiver alle
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktiver alle
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Vis høyde
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Vis industrinavn
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ikke vis industrier på kartet
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Vis alle industrier på kartet
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Veksle mellom visning av høydekart
@@ -2887,6 +2888,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bygg vei
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bygg trikkespor ved bruk av autotrikkespormodusen. Ctrl+klikk for å fjerne trikkespor. Trykk også Shift for å kun vise kostnadsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bygg garasje (for kjøp og vedlikehold av kjøretøy). Trykk også Shift for å kun vise kostnadsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bygg trikkestall (for kjøp og vedlikehold av trikker). Trykk også Shift for å kun vise kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Bygg veipunkt på vei. Ctrl+klikk for å velge et annet veipunkt å slå sammen med. Trykk også Shift for å kun vise kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Bygg veipunkt på trikkelinje. Ctrl+klikk for å velge et annet veipunkt å slå sammen med. Trykk også Shift for å kun vise kostnadsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bygg bussholdeplass. Ctrl+klikk for å velge en annen holdeplass å slå sammen med. Trykk også Shift for å kun vise kostnadsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bygg trikkestopp for passasjerer. Ctrl+klikk for å velge en annen stasjon å slå sammen med. Trykk også Shift for å kun vise kostnadsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bygg godsterminal. Ctrl+klikk for å velge en annen terminal å slå sammen med. Trykk også Shift for å kun vise kostnadsestimat
@@ -5095,6 +5098,7 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Grenser 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}For nærme et annet veipunkt
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan ikke bygge veipunkt for tog her...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Kan ikke bygge veipunkt for vei her...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan ikke plassere bøye her...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke endre navn på veipunkt...
 
