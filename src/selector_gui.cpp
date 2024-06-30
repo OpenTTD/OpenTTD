@@ -115,14 +115,6 @@ void SelectorWidget::OnClick(Point pt, WidgetID widget, [[maybe_unused]]int clic
 
 void SelectorWidget::OnMouseOver(Point pt, WidgetID widget)
 {
-	/* Deselect if the cursor goes outside the window. */
-	if (pt.x == -1 && pt.y == -1) {
-		this->selected_id = {};
-		this->OnChanged();
-		this->parent_window->InvalidateData(0, true);
-		return;
-	}
-
 	if (widget != WID_SELECTOR_MATRIX) return;
 
 	auto it = vscroll->GetScrolledItemFromWidget(this->filtered_list, pt.y, this->parent_window, widget);
@@ -163,12 +155,11 @@ void SelectorWidget::OnInvalidateData([[maybe_unused]] int data, bool gui_scope)
 
 	if (it != std::end(this->filtered_list)) {
 		int selected_pos = std::distance(std::begin(this->filtered_list), it);
-
 		const int cap = this->vscroll->GetCapacity();
 		const int pos = this->vscroll->GetPosition();
 		if (selected_pos < pos) {
 			vscroll->SetPosition(selected_pos);
-		} else if (selected_pos > pos + cap) {
+		} else if (selected_pos >= pos + cap) {
 			vscroll->SetPosition(selected_pos - cap + 1);
 		}
 	}
