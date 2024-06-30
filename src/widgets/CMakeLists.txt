@@ -45,6 +45,7 @@ add_files(
     screenshot_widget.h
     script_widget.h
     settings_widget.h
+    selector_widget.h
     sign_widget.h
     smallmap_widget.h
     station_widget.h
