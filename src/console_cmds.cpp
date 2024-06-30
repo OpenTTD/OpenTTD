@@ -402,13 +402,7 @@ DEF_CONSOLE_CMD(ConSave)
 	if (argc == 2) {
 		std::string filename = argv[1];
 		filename += ".sav";
-		IConsolePrint(CC_DEFAULT, "Saving map...");
-
-		if (SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, SAVE_DIR) != SL_OK) {
-			IConsolePrint(CC_ERROR, "Saving map failed.");
-		} else {
-			IConsolePrint(CC_INFO, "Map successfully saved to '{}'.", filename);
-		}
+		SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, SAVE_DIR);
 		return true;
 	}
 
