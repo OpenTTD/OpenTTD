@@ -87,11 +87,10 @@ void CcPlaySound_EXPLOSION(Commands, const CommandCost &result, TileIndex tile)
  * Zooms a viewport in a window in or out.
  * @param how Zooming direction.
  * @param w   Window owning the viewport.
- * @param stop_following Should we stop following the vehicle in the viewport?
  * @return Returns \c true if zooming step could be done, \c false if further zooming is not possible.
  * @note No button handling or what so ever is done.
  */
-bool DoZoomInOutWindow(ZoomStateChange how, Window *w, bool stop_following)
+bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 {
 	Viewport *vp;
 
@@ -113,7 +112,6 @@ bool DoZoomInOutWindow(ZoomStateChange how, Window *w, bool stop_following)
 			w->viewport->scrollpos_y += vp->virtual_height >> 1;
 			w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
 			w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
-			if (stop_following) w->viewport->follow_vehicle = INVALID_VEHICLE;
 			break;
 		case ZOOM_OUT:
 			if (vp->zoom >= _settings_client.gui.zoom_max) return false;
@@ -126,7 +124,6 @@ bool DoZoomInOutWindow(ZoomStateChange how, Window *w, bool stop_following)
 
 			vp->virtual_width <<= 1;
 			vp->virtual_height <<= 1;
-			if (stop_following) w->viewport->follow_vehicle = INVALID_VEHICLE;
 			break;
 	}
 	if (vp != nullptr) { // the vp can be null when how == ZOOM_NONE
@@ -436,7 +433,14 @@ struct MainWindow : Window
 	void OnMouseWheel(int wheel) override
 	{
 		if (_settings_client.gui.scrollwheel_scrolling != SWS_OFF) {
-			ZoomInOrOutToCursorWindow(wheel < 0, this);
+			bool in = wheel < 0;
+
+			/* When following, only change zoom - otherwise zoom to the cursor. */
+			if (this->viewport->follow_vehicle != INVALID_VEHICLE) {
+				DoZoomInOutWindow(in ? ZOOM_IN : ZOOM_OUT, this);
+			} else {
+				ZoomInOrOutToCursorWindow(in, this);
+			}
 		}
 	}
 

@@ -3234,7 +3234,7 @@ public:
 					ShowExtraViewportWindow(TileVirtXY(v->x_pos, v->y_pos));
 				} else {
 					const Window *mainwindow = GetMainWindow();
-					if (click_count > 1 && mainwindow->viewport->zoom <= ZOOM_LVL_NORMAL) {
+					if (click_count > 1) {
 						/* main window 'follows' vehicle */
 						mainwindow->viewport->follow_vehicle = v->index;
 					} else {
@@ -3320,7 +3320,7 @@ public:
 	void OnMouseWheel(int wheel) override
 	{
 		if (_settings_client.gui.scrollwheel_scrolling != SWS_OFF) {
-			DoZoomInOutWindow(wheel < 0 ? ZOOM_IN : ZOOM_OUT, this, false);
+			DoZoomInOutWindow(wheel < 0 ? ZOOM_IN : ZOOM_OUT, this);
 		}
 	}
 
