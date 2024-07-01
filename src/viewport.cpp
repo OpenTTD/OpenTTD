@@ -1038,7 +1038,7 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 		}
 	}
 
-	/* Highlight infrastructure owned by the company with the most recently currently opened infrastructure window */
+	/* Highlight infrastructure of selected company */
 	if (_viewport_company_to_highlight_infrastructure != INVALID_OWNER) {
 		switch (GetTileType(t)) {
 			case MP_ROAD:
@@ -1059,6 +1059,8 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 			case MP_RAILWAY:
 			case MP_TUNNELBRIDGE:
 			case MP_WATER:
+			case MP_STATION:
+			case MP_OBJECT:
 				if (GetTileOwner(t) == _viewport_company_to_highlight_infrastructure) {
 					return THT_WHITE;
 				}

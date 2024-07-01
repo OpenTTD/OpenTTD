@@ -1818,8 +1818,8 @@ static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TOTAL_DESC), SetFill(1, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TOTAL), SetFill(0, 1),
 			EndContainer(),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CI_HIGHLIGHT_INFRASTRUCTURE), SetFill(1, 0), SetDataTip(STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE, STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE_TOOLTIP),
 		EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CI_HIGHLIGHT_INFRASTRUCTURE), SetFill(1, 0), SetDataTip(STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE, STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE_TOOLTIP),
 	EndContainer(),
 };
 
@@ -1839,8 +1839,8 @@ struct CompanyInfrastructureWindow : Window
 	 */
 	void Close([[maybe_unused]] int data) override
 	{
-
-		if(_viewport_company_to_highlight_infrastructure == (CompanyID)this->window_number){
+		/* Clear highlights if the infrastructure window is closed */
+		if (_viewport_company_to_highlight_infrastructure == (CompanyID)this->window_number) {
 			_viewport_company_to_highlight_infrastructure = INVALID_OWNER;
 			MarkWholeScreenDirty();
 		}
@@ -2043,11 +2043,13 @@ struct CompanyInfrastructureWindow : Window
 				TC_FROMSTRING, SA_RIGHT);
 		}
 	}
+
 	void OnPaint() override
 	{
 		this->SetWidgetLoweredState(WID_CI_HIGHLIGHT_INFRASTRUCTURE, _viewport_company_to_highlight_infrastructure == (CompanyID)this->window_number);
 		this->DrawWidgets();
 	}
+
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		const Company *c = Company::Get((CompanyID)this->window_number);
@@ -2146,20 +2148,21 @@ struct CompanyInfrastructureWindow : Window
 				break;
 		}
 	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
-		switch (widget) {
-			case WID_CI_HIGHLIGHT_INFRASTRUCTURE:
-				CompanyID window_company_id = (CompanyID)this->window_number;
-				if(_viewport_company_to_highlight_infrastructure != window_company_id) {
-					_viewport_company_to_highlight_infrastructure = window_company_id;
-					MarkWholeScreenDirty();
-				}
-				else {
-					_viewport_company_to_highlight_infrastructure = INVALID_OWNER;
-					MarkWholeScreenDirty();
-				}
-				break;
+		if (widget != WID_CI_HIGHLIGHT_INFRASTRUCTURE) return;
+
+		/* Toggle between highlight and clear */
+		CompanyID window_company_id = (CompanyID)this->window_number;
+		if(_viewport_company_to_highlight_infrastructure != window_company_id) {
+			/* highlight tiles of this company */
+			_viewport_company_to_highlight_infrastructure = window_company_id;
+			MarkWholeScreenDirty();
+		} else {
+			/* Clear tile highlights */
+			_viewport_company_to_highlight_infrastructure = INVALID_OWNER;
+			MarkWholeScreenDirty();
 		}
 	}
 
@@ -2186,15 +2189,12 @@ static WindowDesc _company_infrastructure_desc(__FILE__, __LINE__,
 
 /**
  * Open the infrastructure window of a company.
- * Signal to the viewport to highlight company owned infrastructure
  * @param company Company to show infrastructure of.
  */
 static void ShowCompanyInfrastructure(CompanyID company)
 {
 	if (!Company::IsValidID(company)) return;
 	AllocateWindowDescFront<CompanyInfrastructureWindow>(&_company_infrastructure_desc, company);
-
-	MarkWholeScreenDirty();
 }
 
 static constexpr NWidgetPart _nested_company_widgets[] = {

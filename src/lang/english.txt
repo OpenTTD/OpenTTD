@@ -3934,7 +3934,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Airports
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/year
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/period
 STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE        :{BLACK}Highlight infrastructure
-STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE_TOOLTIP:{BLACK}Highlight all infrastructure tiles the company currently owns
+STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE_TOOLTIP:{BLACK}Highlight all infrastructure tiles owned by this company
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industries
