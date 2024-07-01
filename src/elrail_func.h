@@ -37,5 +37,6 @@ void DrawRailCatenaryOnTunnel(const TileInfo *ti);
 void DrawRailCatenaryOnBridge(const TileInfo *ti);
 
 void SettingsDisableElrail(int32_t new_value); ///< _settings_game.disable_elrail callback
+void UpdateDisableElrailSettingState(bool disable, bool update_vehicles);
 
 #endif /* ELRAIL_FUNC_H */
