@@ -258,7 +258,7 @@ void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord);
  */
 struct OrderList : OrderListPool::PoolItem<&_orderlist_pool> {
 private:
-	friend void AfterLoadVehicles(bool part_of_load); ///< For instantiating the shared vehicle chain
+	friend void AfterLoadVehiclesPhase1(bool part_of_load); ///< For instantiating the shared vehicle chain
 	friend SaveLoadTable GetOrderListDescription(); ///< Saving and loading of order lists.
 
 	VehicleOrderID num_orders;        ///< NOSAVE: How many orders there are in the list.

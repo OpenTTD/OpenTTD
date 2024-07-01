@@ -598,7 +598,11 @@ void DrawRailCatenary(const TileInfo *ti)
 void SettingsDisableElrail(int32_t new_value)
 {
 	bool disable = (new_value != 0);
+	UpdateDisableElrailSettingState(disable, true);
+}
 
+void UpdateDisableElrailSettingState(bool disable, bool update_vehicles)
+{
 	/* pick appropriate railtype for elrail engines depending on setting */
 	const RailType new_railtype = disable ? RAILTYPE_RAIL : RAILTYPE_ELECTRIC;
 
@@ -626,10 +630,12 @@ void SettingsDisableElrail(int32_t new_value)
 	}
 
 	/* Fix the total power and acceleration for trains */
-	for (Train *t : Train::Iterate()) {
-		/* power and acceleration is cached only for front engines */
-		if (t->IsFrontEngine()) {
-			t->ConsistChanged(CCF_TRACK);
+	if (update_vehicles) {
+		for (Train *t : Train::Iterate()) {
+			/* power and acceleration is cached only for front engines */
+			if (t->IsFrontEngine()) {
+				t->ConsistChanged(CCF_TRACK);
+			}
 		}
 	}
 
