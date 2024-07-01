@@ -202,7 +202,7 @@ void ResetNewGRFData();
 void ResetPersistentNewGRFData();
 
 void GrfMsgI(int severity, const std::string &msg);
-#define GrfMsg(severity, format_string, ...) GrfMsgI(severity, fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
+#define GrfMsg(severity, format_string, ...) do { if ((severity) == 0 || _debug_grf_level >= (severity)) GrfMsgI(severity, fmt::format(FMT_STRING(format_string), ## __VA_ARGS__)); } while (false)
 
 bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile);
 
