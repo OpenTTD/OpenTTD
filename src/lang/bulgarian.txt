@@ -288,7 +288,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}С ак�
 STR_BUTTON_DEFAULT                                              :{BLACK}По подразбиране
 STR_BUTTON_CANCEL                                               :{BLACK}Отказ
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Внимание: Администраторите на сървъра могат да прочетат всеки текст, въведен тук.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-.,уеишщксдзц;(ьяаожгтнвмчюйъэфхпрлб
@@ -399,6 +398,7 @@ STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Отвори в
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Изход от редактора
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Изход
+
 
 # Settings menu
 ###length 16
@@ -882,7 +882,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Избо
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Британска лира
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Американски долар
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Евро
@@ -971,11 +971,6 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Отме
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Анти-Alias шрифтове
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Отметни тук за да се добави anti-alias към променливи шрифтове.
 
-STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
-STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
-STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
-STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
-STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Автоматизирано проучване
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Участвайте в автоматизирано проучване
@@ -1008,6 +1003,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Допъ
 
 
 
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Неуспешно извличане на списък с поддържаните резолюции
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Проблем при включване на режим "цял екран"
 
@@ -1018,6 +1014,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обм�
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Намали стойността на твоята валута за една лира(£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Увеличи стойността на твоята валута за една лира (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Сложи обменния курс на твоята валута за една лира (£)
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Представка: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Укажете префиксен текст за валутата
@@ -1375,6 +1372,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Предупр�
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ако тази опция бъде активирана, ще получите съобщение ако някое от вашите ПС не е донесло печалба през изминалата година
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Ако тази опция бъде активирана, ще получите съобщение ако някое от вашите ПС не е донесло печалба през периода
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :ПС не губят валидност: {STRING.n}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ако тази опция бъде активирана, всички модели на превозните средства, ще бъдат възможни за производство завинаги
 
@@ -1664,7 +1662,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Интерва�
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Задайте интервала за обслужване на новите въздухоплавателни средства по подразбиране, ако такъв интервал не е зададен за превозното средство
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Интервал на обслужване за кораби: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Задайте интервала за обслужване на новите кораби по подразбиране, ако такъв интервал не е изрично зададен за превозното средство
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}д{P 0 ен ни}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Изключен
 
@@ -1905,17 +1904,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Индустр�
 STR_CONFIG_SETTING_AI                                           :Съперници
 STR_CONFIG_SETTING_AI_NPC                                       :Компютърни играчи
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Пътенамирач за влакове: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Маршрутизатор използван за влакове
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Пътенамирач за автомобили: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Маршрутизатор използван за автомобили
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Пътенамирач за кораби: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Маршрутизатор използван за кораби
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Автоматично обръщане при сигнали: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Позволява на влаковете да обръщат ако са чакали твърде дълго
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(препоръчва се)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Промяна стойноста на настройка
 
@@ -2202,7 +2192,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Свал
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Изключване
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сървъра е защитен. Въведете парола
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компанията е защитена. Въведете парола
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Списък с играчите
@@ -2219,26 +2208,15 @@ STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :Админис�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Изхвърлен
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Бан
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Изтриване
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Отключване на парола
 
 
 
 
 STR_NETWORK_SPECTATORS                                          :Наблюдатели
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Незапазвай паролата
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Дай на компанията новата парола
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Парола на компанията
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Парола по подразбиране за компания
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Използване на тази парола по подразбиране за нови компании
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Присъедини се
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Присъедини се, управлявайки тази компания
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Парола
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Постави парола за да предпазиш компанията си от неоторизирани потребители.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Поставяне парола на компанията
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Изпращане
@@ -2277,7 +2255,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Отне
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Възможна загуба на връзката
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Последните {NUM} сек. не се е получила информация от сървъра
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :обща грешка
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :загуба на синхронизация
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :не може да зареди картата
@@ -2475,7 +2453,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Изби
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Пътна точка
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Избор тип на пътни точки
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Избор на жп гара
@@ -2488,8 +2465,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Дълж
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Влачене & Пускане
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Строене на станция чрез изтегляне
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Избор на клас станция за показване
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Избор тип на станция за строене
+
+
+
 
 STR_STATION_CLASS_DFLT                                          :Станция по подразбиране
 STR_STATION_CLASS_WAYP                                          :Пътни точки
@@ -2621,8 +2599,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Купи
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Избор на обект
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Избери обект за построяване. Shift строеж/цена за построяване
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Избор на клас на обекта за строене
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Изглед на обекта
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Размер: {GOLD}{NUM} x {NUM} плочки
 
@@ -2722,7 +2698,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Собс
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Собственик на железопътната линия: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Община: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Нищо
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Координати: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Построен: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Клас на станцията: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Тип на станцията: {LTBLUE}{STRING}
@@ -2963,9 +2938,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Генерация на свят
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Създаване на река
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Генерация на дърва
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генерация на статични
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Създаване на твърда и скална повърност
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генерация на статични
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Генерация на дърва
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Настройка на играта
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Изпълняване цикъл на плочките
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Пускане на програмен език
@@ -3053,7 +3028,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Вид желе
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Параметър на променливата 60+x на NewGRF (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aligning sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Следващ sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Продължи към следващия нормален sprite, Пропускайки всички псевдо/прерисувани/текстови sprite и ги облечи в края
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Иди на sprite
@@ -3158,7 +3132,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Отид
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Въведете име за знакът
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Градове
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Отсъства -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Град){BLACK} ({COMMA})
@@ -3440,7 +3413,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Част
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Летища
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Индустрии
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Отсъства -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Имена на индустриите - натисни за да фокусираш върху индустрията. Ctrl+Click отваря нов прозорец на изглед върху индустрията.
@@ -4246,8 +4218,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Игрови с
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Затвори
 STR_AI_SETTINGS_RESET                                           :{BLACK}Рестартиране
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -4292,9 +4262,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Приб
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Записването продължава,{}моля изчакайте да сръши!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Автозапазването е неуспешно
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Не може да прочете диска
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Запазването на играта е неуспешно{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Изтриването на файла е неуспешно
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Отварянето на играта е неуспешно{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Вътрешна грешка: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Запазената игра е повредена - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Запазената игра е направена от по-нова версия
@@ -4658,6 +4626,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ника
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Промени своята NewGRF конфигурация
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Няма налични превозни средства все още
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Започни нова игра след {DATE_SHORT} или използвай NewGRF , който показва ранни превозни средства
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Влака не може да пропусне сигнала при опасност...
@@ -5177,6 +5146,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

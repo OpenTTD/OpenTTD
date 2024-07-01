@@ -108,10 +108,10 @@ ViewportSignKdtree _viewport_sign_kdtree(&Kdtree_ViewportSignXYFunc);
 static int _viewport_sign_maxwidth = 0;
 
 
-static const int MAX_TILE_EXTENT_LEFT   = ZOOM_LVL_BASE * TILE_PIXELS;                     ///< Maximum left   extent of tile relative to north corner.
-static const int MAX_TILE_EXTENT_RIGHT  = ZOOM_LVL_BASE * TILE_PIXELS;                     ///< Maximum right  extent of tile relative to north corner.
-static const int MAX_TILE_EXTENT_TOP    = ZOOM_LVL_BASE * MAX_BUILDING_PIXELS;             ///< Maximum top    extent of tile relative to north corner (not considering bridges).
-static const int MAX_TILE_EXTENT_BOTTOM = ZOOM_LVL_BASE * (TILE_PIXELS + 2 * TILE_HEIGHT); ///< Maximum bottom extent of tile relative to north corner (worst case: #SLOPE_STEEP_N).
+static const int MAX_TILE_EXTENT_LEFT   = ZOOM_BASE * TILE_PIXELS;                     ///< Maximum left   extent of tile relative to north corner.
+static const int MAX_TILE_EXTENT_RIGHT  = ZOOM_BASE * TILE_PIXELS;                     ///< Maximum right  extent of tile relative to north corner.
+static const int MAX_TILE_EXTENT_TOP    = ZOOM_BASE * MAX_BUILDING_PIXELS;             ///< Maximum top    extent of tile relative to north corner (not considering bridges).
+static const int MAX_TILE_EXTENT_BOTTOM = ZOOM_BASE * (TILE_PIXELS + 2 * TILE_HEIGHT); ///< Maximum bottom extent of tile relative to north corner (worst case: #SLOPE_STEEP_N).
 
 struct StringSpriteToDraw {
 	std::string string;
@@ -572,9 +572,9 @@ void DrawGroundSpriteAt(SpriteID image, PaletteID pal, int32_t x, int32_t y, int
 
 	if (_vd.foundation[_vd.foundation_part] != -1) {
 		Point pt = RemapCoords(x, y, z);
-		AddChildSpriteToFoundation(image, pal, sub, _vd.foundation_part, pt.x + extra_offs_x * ZOOM_LVL_BASE, pt.y + extra_offs_y * ZOOM_LVL_BASE);
+		AddChildSpriteToFoundation(image, pal, sub, _vd.foundation_part, pt.x + extra_offs_x * ZOOM_BASE, pt.y + extra_offs_y * ZOOM_BASE);
 	} else {
-		AddTileSpriteToDraw(image, pal, _cur_ti.x + x, _cur_ti.y + y, _cur_ti.z + z, sub, extra_offs_x * ZOOM_LVL_BASE, extra_offs_y * ZOOM_LVL_BASE);
+		AddTileSpriteToDraw(image, pal, _cur_ti.x + x, _cur_ti.y + y, _cur_ti.z + z, sub, extra_offs_x * ZOOM_BASE, extra_offs_y * ZOOM_BASE);
 	}
 }
 
@@ -616,8 +616,8 @@ void OffsetGroundSprite(int x, int y)
 	/* _vd.last_child == nullptr if foundation sprite was clipped by the viewport bounds */
 	if (_vd.last_child != nullptr) _vd.foundation[_vd.foundation_part] = (uint)_vd.parent_sprites_to_draw.size() - 1;
 
-	_vd.foundation_offset[_vd.foundation_part].x = x * ZOOM_LVL_BASE;
-	_vd.foundation_offset[_vd.foundation_part].y = y * ZOOM_LVL_BASE;
+	_vd.foundation_offset[_vd.foundation_part].x = x * ZOOM_BASE;
+	_vd.foundation_offset[_vd.foundation_part].y = y * ZOOM_BASE;
 	_vd.last_foundation_child[_vd.foundation_part] = _vd.last_child;
 }
 
@@ -847,8 +847,8 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 	cs.image = image;
 	cs.pal = pal;
 	cs.sub = sub;
-	cs.x = scale ? x * ZOOM_LVL_BASE : x;
-	cs.y = scale ? y * ZOOM_LVL_BASE : y;
+	cs.x = scale ? x * ZOOM_BASE : x;
+	cs.y = scale ? y * ZOOM_BASE : y;
 	cs.relative = relative;
 	cs.next = -1;
 
@@ -894,7 +894,7 @@ static void DrawSelectionSprite(SpriteID image, PaletteID pal, const TileInfo *t
 		AddTileSpriteToDraw(image, pal, ti->x, ti->y, ti->z + z_offset, nullptr, extra_offs_x, extra_offs_y);
 	} else {
 		/* draw on top of foundation */
-		AddChildSpriteToFoundation(image, pal, nullptr, foundation_part, extra_offs_x, extra_offs_y - z_offset * ZOOM_LVL_BASE);
+		AddChildSpriteToFoundation(image, pal, nullptr, foundation_part, extra_offs_x, extra_offs_y - z_offset * ZOOM_BASE);
 	}
 }
 
@@ -1212,7 +1212,7 @@ draw_inner:
 static int GetViewportY(Point tile)
 {
 	/* Each increment in X or Y direction moves down by half a tile, i.e. TILE_PIXELS / 2. */
-	return (tile.y * (int)(TILE_PIXELS / 2) + tile.x * (int)(TILE_PIXELS / 2) - TilePixelHeightOutsideMap(tile.x, tile.y)) << ZOOM_LVL_SHIFT;
+	return (tile.y * (int)(TILE_PIXELS / 2) + tile.x * (int)(TILE_PIXELS / 2) - TilePixelHeightOutsideMap(tile.x, tile.y)) << ZOOM_BASE_SHIFT;
 }
 
 /**
@@ -1242,7 +1242,7 @@ static void ViewportAddLandscape()
 	int left_column = (upper_left.y - upper_left.x) / (int)TILE_SIZE - 2;
 	int right_column = (upper_right.y - upper_right.x) / (int)TILE_SIZE + 2;
 
-	int potential_bridge_height = ZOOM_LVL_BASE * TILE_HEIGHT * _settings_game.construction.max_bridge_height;
+	int potential_bridge_height = ZOOM_BASE * TILE_HEIGHT * _settings_game.construction.max_bridge_height;
 
 	/* Rows overlap with neighbouring rows by a half tile.
 	 * The first row that could possibly be visible is the row above upper_left (if it is at height 0).
@@ -1277,10 +1277,10 @@ static void ViewportAddLandscape()
 
 			if (tile_type != MP_VOID) {
 				/* We are inside the map => paint landscape. */
-				_cur_ti.tileh = GetTilePixelSlope(_cur_ti.tile, &_cur_ti.z);
+				std::tie(_cur_ti.tileh, _cur_ti.z) = GetTilePixelSlope(_cur_ti.tile);
 			} else {
 				/* We are outside the map => paint black. */
-				_cur_ti.tileh = GetTilePixelSlopeOutsideMap(tilecoord.x, tilecoord.y, &_cur_ti.z);
+				std::tie(_cur_ti.tileh, _cur_ti.z) = GetTilePixelSlopeOutsideMap(tilecoord.x, tilecoord.y);
 			}
 
 			int viewport_y = GetViewportY(tilecoord);
@@ -1302,7 +1302,7 @@ static void ViewportAddLandscape()
 				if (IsBridgeAbove(_cur_ti.tile)) {
 					/* Is the bridge visible? */
 					TileIndex bridge_tile = GetNorthernBridgeEnd(_cur_ti.tile);
-					int bridge_height = ZOOM_LVL_BASE * (GetBridgePixelHeight(bridge_tile) - TilePixelHeight(_cur_ti.tile));
+					int bridge_height = ZOOM_BASE * (GetBridgePixelHeight(bridge_tile) - TilePixelHeight(_cur_ti.tile));
 					if (min_visible_height < bridge_height + MAX_TILE_EXTENT_TOP) tile_visible = true;
 				}
 
@@ -1349,7 +1349,7 @@ void ViewportAddString(const DrawPixelInfo *dpi, ZoomLevel small_from, const Vie
 	int right  = left + dpi->width;
 	int bottom = top + dpi->height;
 
-	int sign_height     = ScaleByZoom(WidgetDimensions::scaled.fullbevel.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.fullbevel.bottom, dpi->zoom);
+	int sign_height     = ScaleByZoom(WidgetDimensions::scaled.fullbevel.top + GetCharacterHeight(small ? FS_SMALL : FS_NORMAL) + WidgetDimensions::scaled.fullbevel.bottom, dpi->zoom);
 	int sign_half_width = ScaleByZoom((small ? sign->width_small : sign->width_normal) / 2, dpi->zoom);
 
 	if (bottom < sign->top ||
@@ -1373,8 +1373,7 @@ void ViewportAddString(const DrawPixelInfo *dpi, ZoomLevel small_from, const Vie
 
 static Rect ExpandRectWithViewportSignMargins(Rect r, ZoomLevel zoom)
 {
-	/* Pessimistically always use normal font, but also assume small font is never larger in either dimension */
-	const int fh = GetCharacterHeight(FS_NORMAL);
+	const int fh = std::max(GetCharacterHeight(FS_NORMAL), GetCharacterHeight(FS_SMALL));
 	const int max_tw = _viewport_sign_maxwidth / 2 + 1;
 	const int expand_y = ScaleByZoom(WidgetDimensions::scaled.fullbevel.top + fh + WidgetDimensions::scaled.fullbevel.bottom, zoom);
 	const int expand_x = ScaleByZoom(WidgetDimensions::scaled.fullbevel.left + max_tw + WidgetDimensions::scaled.fullbevel.right, zoom);
@@ -1455,7 +1454,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 	for (const auto *t : towns) {
 		SetDParam(0, t->index);
 		SetDParam(1, t->cache.population);
-		ViewportAddString(dpi, ZOOM_LVL_OUT_16X, &t->cache.sign,
+		ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &t->cache.sign,
 			_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
 			STR_VIEWPORT_TOWN_TINY_WHITE, STR_VIEWPORT_TOWN_TINY_BLACK);
 	}
@@ -1465,7 +1464,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 
 	for (const auto *si : signs) {
 		SetDParam(0, si->index);
-		ViewportAddString(dpi, ZOOM_LVL_OUT_16X, &si->sign,
+		ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &si->sign,
 			STR_WHITE_SIGN,
 			(IsTransparencySet(TO_SIGNS) || si->owner == OWNER_DEITY) ? STR_VIEWPORT_SIGN_SMALL_WHITE : STR_VIEWPORT_SIGN_SMALL_BLACK, STR_NULL,
 			(si->owner == OWNER_NONE) ? COLOUR_GREY : (si->owner == OWNER_DEITY ? INVALID_COLOUR : _company_colours[si->owner]));
@@ -1476,12 +1475,12 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 		SetDParam(1, st->facilities);
 		if (Station::IsExpected(st)) {
 			/* Station */
-			ViewportAddString(dpi, ZOOM_LVL_OUT_16X, &st->sign,
+			ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &st->sign,
 				STR_VIEWPORT_STATION, STR_VIEWPORT_STATION_TINY, STR_NULL,
 				(st->owner == OWNER_NONE || !st->IsInUse()) ? COLOUR_GREY : _company_colours[st->owner]);
 		} else {
 			/* Waypoint */
-			ViewportAddString(dpi, ZOOM_LVL_OUT_16X, &st->sign,
+			ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &st->sign,
 				STR_VIEWPORT_WAYPOINT, STR_VIEWPORT_WAYPOINT_TINY, STR_NULL,
 				(st->owner == OWNER_NONE || !st->IsInUse()) ? COLOUR_GREY : _company_colours[st->owner]);
 		}
@@ -1525,12 +1524,16 @@ void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 {
 	Rect zoomlevels[ZOOM_LVL_END];
 
+	/* We don't know which size will be drawn, so mark the largest area dirty. */
+	const uint half_width = std::max(this->width_normal, this->width_small) / 2 + 1;
+	const uint height = WidgetDimensions::scaled.fullbevel.top + std::max(GetCharacterHeight(FS_NORMAL), GetCharacterHeight(FS_SMALL)) + WidgetDimensions::scaled.fullbevel.bottom + 1;
+
 	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
 		/* FIXME: This doesn't switch to width_small when appropriate. */
-		zoomlevels[zoom].left   = this->center - ScaleByZoom(this->width_normal / 2 + 1, zoom);
+		zoomlevels[zoom].left   = this->center - ScaleByZoom(half_width, zoom);
 		zoomlevels[zoom].top    = this->top    - ScaleByZoom(1, zoom);
-		zoomlevels[zoom].right  = this->center + ScaleByZoom(this->width_normal / 2 + 1, zoom);
-		zoomlevels[zoom].bottom = this->top    + ScaleByZoom(WidgetDimensions::scaled.fullbevel.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.fullbevel.bottom + 1, zoom);
+		zoomlevels[zoom].right  = this->center + ScaleByZoom(half_width, zoom);
+		zoomlevels[zoom].bottom = this->top    + ScaleByZoom(height, zoom);
 	}
 
 	for (const Window *w : Window::Iterate()) {
@@ -1577,7 +1580,7 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 
 	/* Initialize sprite list and order. */
 	for (auto p = psdv->rbegin(); p != psdv->rend(); p++) {
-		sprite_list.push_front(std::make_pair((*p)->xmin + (*p)->ymin, *p));
+		sprite_list.emplace_front((*p)->xmin + (*p)->ymin, *p);
 		sprite_order.push(*p);
 		(*p)->order = next_order++;
 	}
@@ -1729,7 +1732,7 @@ static void ViewportDrawDirtyBlocks()
 
 	dst = dpi->dst_ptr;
 
-	byte bo = UnScaleByZoom(dpi->left + dpi->top, dpi->zoom) & 1;
+	uint8_t bo = UnScaleByZoom(dpi->left + dpi->top, dpi->zoom) & 1;
 	do {
 		for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, (uint8_t)colour);
 		dst = blitter->MoveTo(dst, 0, 1);
@@ -1744,14 +1747,14 @@ static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *
 		int w = GB(ss.width, 0, 15);
 		int x = UnScaleByZoom(ss.x, zoom);
 		int y = UnScaleByZoom(ss.y, zoom);
-		int h = WidgetDimensions::scaled.fullbevel.top + (small ? GetCharacterHeight(FS_SMALL) : GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.fullbevel.bottom;
+		int h = WidgetDimensions::scaled.fullbevel.top + GetCharacterHeight(small ? FS_SMALL : FS_NORMAL) + WidgetDimensions::scaled.fullbevel.bottom;
 
 		if (ss.colour != INVALID_COLOUR) {
 			if (IsTransparencySet(TO_SIGNS) && ss.string_id != STR_WHITE_SIGN) {
 				/* Don't draw the rectangle.
 				 * Real colours need the TC_IS_PALETTE_COLOUR flag.
 				 * Otherwise colours from _string_colourmap are assumed. */
-				colour = (TextColour)_colour_gradient[ss.colour][6] | TC_IS_PALETTE_COLOUR;
+				colour = (TextColour)GetColourGradient(ss.colour, SHADE_LIGHTER) | TC_IS_PALETTE_COLOUR;
 			} else {
 				/* Draw the rectangle if 'transparent station signs' is off,
 				 * or if we are drawing a general text sign (STR_WHITE_SIGN). */
@@ -1807,7 +1810,7 @@ void ViewportDoDraw(const Viewport *vp, int left, int top, int right, int bottom
 
 	DrawPixelInfo dp = _vd.dpi;
 	ZoomLevel zoom = _vd.dpi.zoom;
-	dp.zoom = ZOOM_LVL_NORMAL;
+	dp.zoom = ZOOM_LVL_MIN;
 	dp.width = UnScaleByZoom(dp.width, zoom);
 	dp.height = UnScaleByZoom(dp.height, zoom);
 	_cur_dpi = &dp;
@@ -1918,7 +1921,7 @@ static inline void ClampViewportToMap(const Viewport *vp, int *scroll_x, int *sc
 static void ClampSmoothScroll(uint32_t delta_ms, int64_t delta_hi, int64_t delta_lo, int &delta_hi_clamped, int &delta_lo_clamped)
 {
 	/** A tile is 64 pixels in width at 1x zoom; viewport coordinates are in 4x zoom. */
-	constexpr int PIXELS_PER_TILE = TILE_PIXELS * 2 * ZOOM_LVL_BASE;
+	constexpr int PIXELS_PER_TILE = TILE_PIXELS * 2 * ZOOM_BASE;
 
 	assert(delta_hi != 0);
 
@@ -2041,10 +2044,10 @@ static bool MarkViewportDirty(const Viewport *vp, int left, int top, int right, 
 
 /**
  * Mark all viewports that display an area as dirty (in need of repaint).
- * @param left   Left   edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
- * @param top    Top    edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
- * @param right  Right  edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
- * @param bottom Bottom edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
+ * @param left   Left   edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_MIN)
+ * @param top    Top    edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_MIN)
+ * @param right  Right  edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_MIN)
+ * @param bottom Bottom edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_MIN)
  * @return true if at least one viewport has a dirty block
  * @ingroup dirty
  */
@@ -2088,7 +2091,7 @@ void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset, int tile_heigh
 	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, tile_height_override * TILE_HEIGHT);
 	MarkAllViewportsDirty(
 			pt.x - MAX_TILE_EXTENT_LEFT,
-			pt.y - MAX_TILE_EXTENT_TOP - ZOOM_LVL_BASE * TILE_HEIGHT * bridge_level_offset,
+			pt.y - MAX_TILE_EXTENT_TOP - ZOOM_BASE * TILE_HEIGHT * bridge_level_offset,
 			pt.x + MAX_TILE_EXTENT_RIGHT,
 			pt.y + MAX_TILE_EXTENT_BOTTOM);
 }
@@ -2166,15 +2169,15 @@ static void SetSelectionTilesDirty()
 			/* the 'x' coordinate of 'top' and 'bot' is the same (and always in the same distance from tile middle),
 			 * tile height/slope affects only the 'y' on-screen coordinate! */
 
-			int l = top.x - TILE_PIXELS * ZOOM_LVL_BASE; // 'x' coordinate of left   side of the dirty rectangle
+			int l = top.x - TILE_PIXELS * ZOOM_BASE; // 'x' coordinate of left   side of the dirty rectangle
 			int t = top.y;                               // 'y' coordinate of top    side of the dirty rectangle
-			int r = top.x + TILE_PIXELS * ZOOM_LVL_BASE; // 'x' coordinate of right  side of the dirty rectangle
+			int r = top.x + TILE_PIXELS * ZOOM_BASE; // 'x' coordinate of right  side of the dirty rectangle
 			int b = bot.y;                               // 'y' coordinate of bottom side of the dirty rectangle
 
-			static const int OVERLAY_WIDTH = 4 * ZOOM_LVL_BASE; // part of selection sprites is drawn outside the selected area (in particular: terraforming)
+			static const int OVERLAY_WIDTH = 4 * ZOOM_BASE; // part of selection sprites is drawn outside the selected area (in particular: terraforming)
 
 			/* For halftile foundations on SLOPE_STEEP_S the sprite extents some more towards the top */
-			MarkAllViewportsDirty(l - OVERLAY_WIDTH, t - OVERLAY_WIDTH - TILE_HEIGHT * ZOOM_LVL_BASE, r + OVERLAY_WIDTH, b + OVERLAY_WIDTH);
+			MarkAllViewportsDirty(l - OVERLAY_WIDTH, t - OVERLAY_WIDTH - TILE_HEIGHT * ZOOM_BASE, r + OVERLAY_WIDTH, b + OVERLAY_WIDTH);
 
 			/* haven't we reached the topmost tile yet? */
 			if (top_x != x_start) {
@@ -2227,9 +2230,9 @@ void SetSelectionRed(bool b)
  */
 static bool CheckClickOnViewportSign(const Viewport *vp, int x, int y, const ViewportSign *sign)
 {
-	bool small = (vp->zoom >= ZOOM_LVL_OUT_16X);
+	bool small = (vp->zoom >= ZOOM_LVL_OUT_4X);
 	int sign_half_width = ScaleByZoom((small ? sign->width_small : sign->width_normal) / 2, vp->zoom);
-	int sign_height = ScaleByZoom(WidgetDimensions::scaled.fullbevel.top + (small ? GetCharacterHeight(FS_SMALL) : GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.fullbevel.bottom, vp->zoom);
+	int sign_height = ScaleByZoom(WidgetDimensions::scaled.fullbevel.top + GetCharacterHeight(small ? FS_SMALL : FS_NORMAL) + WidgetDimensions::scaled.fullbevel.bottom, vp->zoom);
 
 	return y >= sign->top && y < sign->top + sign_height &&
 			x >= sign->center - sign_half_width && x < sign->center + sign_half_width;
@@ -2331,7 +2334,7 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeStation(StationID id)
 	item.top = st->sign.top;
 
 	/* Assume the sign can be a candidate for drawing, so measure its width */
-	_viewport_sign_maxwidth = std::max<int>(_viewport_sign_maxwidth, st->sign.width_normal);
+	_viewport_sign_maxwidth = std::max<int>({_viewport_sign_maxwidth, st->sign.width_normal, st->sign.width_small});
 
 	return item;
 }
@@ -2348,7 +2351,7 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeWaypoint(StationID id)
 	item.top = st->sign.top;
 
 	/* Assume the sign can be a candidate for drawing, so measure its width */
-	_viewport_sign_maxwidth = std::max<int>(_viewport_sign_maxwidth, st->sign.width_normal);
+	_viewport_sign_maxwidth = std::max<int>({_viewport_sign_maxwidth, st->sign.width_normal, st->sign.width_small});
 
 	return item;
 }
@@ -2365,7 +2368,7 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeTown(TownID id)
 	item.top = town->cache.sign.top;
 
 	/* Assume the sign can be a candidate for drawing, so measure its width */
-	_viewport_sign_maxwidth = std::max<int>(_viewport_sign_maxwidth, town->cache.sign.width_normal);
+	_viewport_sign_maxwidth = std::max<int>({_viewport_sign_maxwidth, town->cache.sign.width_normal, town->cache.sign.width_small});
 
 	return item;
 }
@@ -2382,7 +2385,7 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeSign(SignID id)
 	item.top = sign->sign.top;
 
 	/* Assume the sign can be a candidate for drawing, so measure its width */
-	_viewport_sign_maxwidth = std::max<int>(_viewport_sign_maxwidth, sign->sign.width_normal);
+	_viewport_sign_maxwidth = std::max<int>({_viewport_sign_maxwidth, sign->sign.width_normal, sign->sign.width_small});
 
 	return item;
 }
@@ -2919,19 +2922,18 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 	if (swap) Swap(start_tile, end_tile);
 
 	switch (style & HT_DRAG_MASK) {
-		case HT_RECT: {
-			static const TileIndexDiffC heightdiff_area_by_dir[] = {
-				/* Start */ {1, 0}, /* Dragging east */ {0, 0}, // Dragging south
-				/* End   */ {0, 1}, /* Dragging east */ {1, 1}  // Dragging south
-			};
-
+		case HT_RECT:
 			/* In the case of an area we can determine whether we were dragging south or
 			 * east by checking the X-coordinates of the tiles */
-			byte style_t = (byte)(TileX(end_tile) > TileX(start_tile));
-			start_tile = TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_area_by_dir[style_t]));
-			end_tile   = TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_area_by_dir[2 + style_t]));
+			if (TileX(end_tile) > TileX(start_tile)) {
+				/* Dragging south does not need to change the start tile. */
+				end_tile = TileAddByDir(end_tile, DIR_S);
+			} else {
+				/* Dragging east. */
+				start_tile = TileAddByDir(start_tile, DIR_SW);
+				end_tile = TileAddByDir(end_tile, DIR_SE);
+			}
 			[[fallthrough]];
-		}
 
 		case HT_POINT:
 			h0 = TileHeight(start_tile);
@@ -2941,18 +2943,28 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			static const HighLightStyle flip_style_direction[] = {
 				HT_DIR_X, HT_DIR_Y, HT_DIR_HL, HT_DIR_HU, HT_DIR_VR, HT_DIR_VL
 			};
-			static const TileIndexDiffC heightdiff_line_by_dir[] = {
-				/* Start */ {1, 0}, {1, 1}, /* HT_DIR_X  */ {0, 1}, {1, 1}, // HT_DIR_Y
-				/* Start */ {1, 0}, {0, 0}, /* HT_DIR_HU */ {1, 0}, {1, 1}, // HT_DIR_HL
-				/* Start */ {1, 0}, {1, 1}, /* HT_DIR_VL */ {0, 1}, {1, 1}, // HT_DIR_VR
-
-				/* Start */ {0, 1}, {0, 0}, /* HT_DIR_X  */ {1, 0}, {0, 0}, // HT_DIR_Y
-				/* End   */ {0, 1}, {0, 0}, /* HT_DIR_HU */ {1, 1}, {0, 1}, // HT_DIR_HL
-				/* End   */ {1, 0}, {0, 0}, /* HT_DIR_VL */ {0, 0}, {0, 1}, // HT_DIR_VR
+			static const std::pair<TileIndexDiffC, TileIndexDiffC> start_heightdiff_line_by_dir[] = {
+				{ {1, 0}, {1, 1} }, // HT_DIR_X
+				{ {0, 1}, {1, 1} }, // HT_DIR_Y
+				{ {1, 0}, {0, 0} }, // HT_DIR_HU
+				{ {1, 0}, {1, 1} }, // HT_DIR_HL
+				{ {1, 0}, {1, 1} }, // HT_DIR_VL
+				{ {0, 1}, {1, 1} }, // HT_DIR_VR
 			};
+			static const std::pair<TileIndexDiffC, TileIndexDiffC> end_heightdiff_line_by_dir[] = {
+				{ {0, 1}, {0, 0} }, // HT_DIR_X
+				{ {1, 0}, {0, 0} }, // HT_DIR_Y
+				{ {0, 1}, {0, 0} }, // HT_DIR_HU
+				{ {1, 1}, {0, 1} }, // HT_DIR_HL
+				{ {1, 0}, {0, 0} }, // HT_DIR_VL
+				{ {0, 0}, {0, 1} }, // HT_DIR_VR
+			};
+			static_assert(std::size(start_heightdiff_line_by_dir) == HT_DIR_END);
+			static_assert(std::size(end_heightdiff_line_by_dir) == HT_DIR_END);
 
 			distance %= 2; // we're only interested if the distance is even or uneven
 			style &= HT_DIR_MASK;
+			assert(style < HT_DIR_END);
 
 			/* To handle autorail, we do some magic to be able to use a lookup table.
 			 * Firstly if we drag the other way around, we switch start&end, and if needed
@@ -2960,20 +2972,20 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			 * that means the end, which is now the start is on the right */
 			if (swap && distance == 0) style = flip_style_direction[style];
 
+			/* Lambda to help calculating the height at one side of the line. */
+			auto get_height = [](auto &tile, auto &heightdiffs) {
+				return std::max(
+					TileHeight(TileAdd(tile, ToTileIndexDiff(heightdiffs.first))),
+					TileHeight(TileAdd(tile, ToTileIndexDiff(heightdiffs.second))));
+			};
+
 			/* Use lookup table for start-tile based on HighLightStyle direction */
-			byte style_t = style * 2;
-			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
-			h0 = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t])));
-			uint ht = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t + 1])));
-			h0 = std::max(h0, ht);
+			h0 = get_height(start_tile, start_heightdiff_line_by_dir[style]);
 
 			/* Use lookup table for end-tile based on HighLightStyle direction
 			 * flip around side (lower/upper, left/right) based on distance */
-			if (distance == 0) style_t = flip_style_direction[style] * 2;
-			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
-			h1 = TileHeight(TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t])));
-			ht = TileHeight(TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t + 1])));
-			h1 = std::max(h1, ht);
+			if (distance == 0) style = flip_style_direction[style];
+			h1 = get_height(end_tile, end_heightdiff_line_by_dir[style]);
 			break;
 		}
 	}
@@ -3203,7 +3215,7 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 		TileIndex t0 = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
 		TileIndex t1 = TileVirtXY(x, y);
 		uint distance = DistanceManhattan(t0, t1) + 1;
-		byte index = 0;
+		uint8_t index = 0;
 
 		if (distance != 1) {
 			int heightdiff = CalcHeightdiff(b, distance, t0, t1);
@@ -3299,7 +3311,7 @@ calc_heightdiff_single_direction:;
 				TileIndex t0 = TileVirtXY(sx, sy);
 				TileIndex t1 = TileVirtXY(x, y);
 				uint distance = DistanceManhattan(t0, t1) + 1;
-				byte index = 0;
+				uint8_t index = 0;
 
 				if (distance != 1) {
 					/* With current code passing a HT_LINE style to calculate the height
@@ -3333,7 +3345,7 @@ calc_heightdiff_single_direction:;
 				TileIndex t1 = TileVirtXY(x, y);
 				uint dx = Delta(TileX(t0), TileX(t1)) + 1;
 				uint dy = Delta(TileY(t0), TileY(t1)) + 1;
-				byte index = 0;
+				uint8_t index = 0;
 
 				/* If dragging an area (eg dynamite tool) and it is actually a single
 				 * row/column, change the type to 'line' to get proper calculation for height */
@@ -3549,9 +3561,9 @@ static ViewportSSCSS _vp_sprite_sorters[] = {
 /** Choose the "best" sprite sorter and set _vp_sprite_sorter. */
 void InitializeSpriteSorter()
 {
-	for (uint i = 0; i < lengthof(_vp_sprite_sorters); i++) {
-		if (_vp_sprite_sorters[i].fct_checker()) {
-			_vp_sprite_sorter = _vp_sprite_sorters[i].fct_sorter;
+	for (const auto &sprite_sorter : _vp_sprite_sorters) {
+		if (sprite_sorter.fct_checker()) {
+			_vp_sprite_sorter = sprite_sorter.fct_sorter;
 			break;
 		}
 	}

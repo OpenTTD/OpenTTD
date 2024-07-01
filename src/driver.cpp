@@ -19,12 +19,6 @@
 #include "fileio_func.h"
 #include <sstream>
 
-#ifdef _WIN32
-# include <windows.h>
-#else
-# include <unistd.h>
-#endif /* _WIN32 */
-
 #include "safeguards.h"
 
 std::string _ini_videodriver;        ///< The video driver a stored in the configuration file.
@@ -129,7 +123,7 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 					 * hardware acceleration. */
 					auto filename = FioFindFullPath(BASE_DIR, HWACCELERATION_TEST_FILE);
 					if (!filename.empty()) {
-						unlink(filename.c_str());
+						FioRemove(filename);
 
 						Debug(driver, 1, "Probing {} driver '{}' skipped due to earlier crash", GetDriverTypeName(type), d->name);
 
@@ -148,15 +142,15 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 				Driver *newd = d->CreateInstance();
 				*GetActiveDriver(type) = newd;
 
-				const char *err = newd->Start({});
-				if (err == nullptr) {
+				auto err = newd->Start({});
+				if (!err) {
 					Debug(driver, 1, "Successfully probed {} driver '{}'", GetDriverTypeName(type), d->name);
 					delete oldd;
 					return true;
 				}
 
 				*GetActiveDriver(type) = oldd;
-				Debug(driver, 1, "Probing {} driver '{}' failed with error: {}", GetDriverTypeName(type), d->name, err);
+				Debug(driver, 1, "Probing {} driver '{}' failed with error: {}", GetDriverTypeName(type), d->name, *err);
 				delete newd;
 
 				if (type == Driver::DT_VIDEO && _video_hw_accel && d->UsesHardwareAcceleration()) {
@@ -192,10 +186,10 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 			/* Found our driver, let's try it */
 			Driver *newd = d->CreateInstance();
 
-			const char *err = newd->Start(parms);
-			if (err != nullptr) {
+			auto err = newd->Start(parms);
+			if (err) {
 				delete newd;
-				UserError("Unable to load driver '{}'. The error was: {}", d->name, err);
+				UserError("Unable to load driver '{}'. The error was: {}", d->name, *err);
 			}
 
 			Debug(driver, 1, "Successfully loaded {} driver '{}'", GetDriverTypeName(type), d->name);
@@ -216,7 +210,7 @@ void DriverFactoryBase::MarkVideoDriverOperational()
 	 * and as we are operational now, remove the hardware acceleration
 	 * test-file. */
 	auto filename = FioFindFullPath(BASE_DIR, HWACCELERATION_TEST_FILE);
-	if (!filename.empty()) unlink(filename.c_str());
+	if (!filename.empty()) FioRemove(filename);
 }
 
 /**

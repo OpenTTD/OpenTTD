@@ -12,6 +12,7 @@
 #include "clear_map.h"
 #include "company_func.h"
 #include "company_base.h"
+#include "house.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "window_func.h"
@@ -59,7 +60,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 {
 	if (_game_mode != GM_EDITOR) return;
 
-	Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
+	Backup<bool> old_generating_world(_generating_world, true);
 
 	TileArea ta(start, end);
 	for (TileIndex tile : ta) {
@@ -156,7 +157,7 @@ void PlaceProc_DemolishArea(TileIndex tile)
 struct TerraformToolbarWindow : Window {
 	int last_user_action; ///< Last started user action.
 
-	TerraformToolbarWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	TerraformToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		/* This is needed as we like to have the tree available on OnInit. */
 		this->CreateNestedTree();
@@ -351,11 +352,11 @@ static constexpr NWidgetPart _nested_terraform_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _terraform_desc(__FILE__, __LINE__,
+static WindowDesc _terraform_desc(
 	WDP_MANUAL, "toolbar_landscape", 0, 0,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_terraform_widgets), std::end(_nested_terraform_widgets),
+	_nested_terraform_widgets,
 	&TerraformToolbarWindow::hotkeys
 );
 
@@ -370,13 +371,13 @@ Window *ShowTerraformToolbar(Window *link)
 
 	Window *w;
 	if (link == nullptr) {
-		w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
+		w = AllocateWindowDescFront<TerraformToolbarWindow>(_terraform_desc, 0);
 		return w;
 	}
 
 	/* Delete the terraform toolbar to place it again. */
 	CloseWindowById(WC_SCEN_LAND_GEN, 0, true);
-	w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
+	w = AllocateWindowDescFront<TerraformToolbarWindow>(_terraform_desc, 0);
 	/* Align the terraform toolbar under the main toolbar. */
 	w->top -= w->height;
 	w->SetDirty();
@@ -388,7 +389,7 @@ Window *ShowTerraformToolbar(Window *link)
 	return w;
 }
 
-static byte _terraform_size = 1;
+static uint8_t _terraform_size = 1;
 
 /**
  * Raise/Lower a bigger chunk of land at the same time in the editor. When
@@ -507,7 +508,7 @@ static void ResetLandscapeConfirmationCallback(Window *, bool confirmed)
 	if (confirmed) {
 		/* Set generating_world to true to get instant-green grass after removing
 		 * company property. */
-		Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
+		Backup<bool> old_generating_world(_generating_world, true);
 
 		/* Delete all companies */
 		for (Company *c : Company::Iterate()) {
@@ -535,7 +536,7 @@ static void ResetLandscapeConfirmationCallback(Window *, bool confirmed)
 struct ScenarioEditorLandscapeGenerationWindow : Window {
 	int last_user_action; ///< Last started user action.
 
-	ScenarioEditorLandscapeGenerationWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	ScenarioEditorLandscapeGenerationWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->CreateNestedTree();
 		NWidgetStacked *show_desert = this->GetWidget<NWidgetStacked>(WID_ETT_SHOW_PLACE_DESERT);
@@ -553,12 +554,12 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_ETT_DOTS) return;
 
-		size->width  = std::max<uint>(size->width,  ScaleGUITrad(59));
-		size->height = std::max<uint>(size->height, ScaleGUITrad(31));
+		size.width  = std::max<uint>(size.width,  ScaleGUITrad(59));
+		size.height = std::max<uint>(size.height, ScaleGUITrad(31));
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -735,11 +736,11 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	}, TerraformToolbarEditorGlobalHotkeys};
 };
 
-static WindowDesc _scen_edit_land_gen_desc(__FILE__, __LINE__,
+static WindowDesc _scen_edit_land_gen_desc(
 	WDP_AUTO, "toolbar_landscape_scen", 0, 0,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_scen_edit_land_gen_widgets), std::end(_nested_scen_edit_land_gen_widgets),
+	_nested_scen_edit_land_gen_widgets,
 	&ScenarioEditorLandscapeGenerationWindow::hotkeys
 );
 
@@ -749,5 +750,5 @@ static WindowDesc _scen_edit_land_gen_desc(__FILE__, __LINE__,
  */
 Window *ShowEditorTerraformToolbar()
 {
-	return AllocateWindowDescFront<ScenarioEditorLandscapeGenerationWindow>(&_scen_edit_land_gen_desc, 0);
+	return AllocateWindowDescFront<ScenarioEditorLandscapeGenerationWindow>(_scen_edit_land_gen_desc, 0);
 }

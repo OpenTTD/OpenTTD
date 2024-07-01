@@ -94,14 +94,14 @@ static constexpr NWidgetPart _nested_network_content_download_status_window_widg
 };
 
 /** Window description for the download window */
-static WindowDesc _network_content_download_status_window_desc(__FILE__, __LINE__,
+static WindowDesc _network_content_download_status_window_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_MODAL,
-	std::begin(_nested_network_content_download_status_window_widgets), std::end(_nested_network_content_download_status_window_widgets)
+	_nested_network_content_download_status_window_widgets
 );
 
-BaseNetworkContentDownloadStatusWindow::BaseNetworkContentDownloadStatusWindow(WindowDesc *desc) :
+BaseNetworkContentDownloadStatusWindow::BaseNetworkContentDownloadStatusWindow(WindowDesc &desc) :
 		Window(desc), downloaded_bytes(0), downloaded_files(0), cur_id(UINT32_MAX)
 {
 	_network_content_client.AddCallback(this);
@@ -116,21 +116,21 @@ void BaseNetworkContentDownloadStatusWindow::Close([[maybe_unused]] int data)
 	this->Window::Close();
 }
 
-void BaseNetworkContentDownloadStatusWindow::UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize)
+void BaseNetworkContentDownloadStatusWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize)
 {
 	switch (widget) {
 		case WID_NCDS_PROGRESS_BAR:
 			SetDParamMaxDigits(0, 8);
 			SetDParamMaxDigits(1, 8);
 			SetDParamMaxDigits(2, 8);
-			*size = GetStringBoundingBox(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE);
+			size = GetStringBoundingBox(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE);
 			/* We need some spacing for the 'border' */
-			size->height += WidgetDimensions::scaled.frametext.Horizontal();
-			size->width  += WidgetDimensions::scaled.frametext.Vertical();
+			size.height += WidgetDimensions::scaled.frametext.Horizontal();
+			size.width  += WidgetDimensions::scaled.frametext.Vertical();
 			break;
 
 		case WID_NCDS_PROGRESS_TEXT:
-			size->height = GetCharacterHeight(FS_NORMAL) * 2 + WidgetDimensions::scaled.vsep_normal;
+			size.height = GetCharacterHeight(FS_NORMAL) * 2 + WidgetDimensions::scaled.vsep_normal;
 			break;
 	}
 }
@@ -142,7 +142,7 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, WidgetID 
 			/* Draw the % complete with a bar and a text */
 			DrawFrameRect(r, COLOUR_GREY, FR_BORDERONLY | FR_LOWERED);
 			Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
-			DrawFrameRect(ir.WithWidth((uint64_t)ir.Width() * this->downloaded_bytes / this->total_bytes, false), COLOUR_MAUVE, FR_NONE);
+			DrawFrameRect(ir.WithWidth((uint64_t)ir.Width() * this->downloaded_bytes / this->total_bytes, _current_text_dir == TD_RTL), COLOUR_MAUVE, FR_NONE);
 			SetDParam(0, this->downloaded_bytes);
 			SetDParam(1, this->total_bytes);
 			SetDParam(2, this->downloaded_bytes * 100LL / this->total_bytes);
@@ -197,7 +197,7 @@ public:
 	 * Create a new download window based on a list of content information
 	 * with flags whether to download them or not.
 	 */
-	NetworkContentDownloadStatusWindow() : BaseNetworkContentDownloadStatusWindow(&_network_content_download_status_window_desc)
+	NetworkContentDownloadStatusWindow() : BaseNetworkContentDownloadStatusWindow(_network_content_download_status_window_desc)
 	{
 		this->parent = FindWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
 	}
@@ -334,8 +334,8 @@ class NetworkContentListWindow : public Window, ContentCallback {
 
 	static Listing last_sorting;     ///< The last sorting setting.
 	static Filtering last_filtering; ///< The last filtering setting.
-	static GUIContentList::SortFunction * const sorter_funcs[];   ///< Sorter functions
-	static GUIContentList::FilterFunction * const filter_funcs[]; ///< Filter functions.
+	static const std::initializer_list<GUIContentList::SortFunction * const> sorter_funcs;   ///< Sorter functions
+	static const std::initializer_list<GUIContentList::FilterFunction * const> filter_funcs; ///< Filter functions.
 	GUIContentList content;      ///< List with content
 	bool auto_select;            ///< Automatically select all content when the meta-data becomes available
 	ContentListFilterData filter_data; ///< Filter for content list
@@ -421,7 +421,6 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		this->SetWidgetDisabledState(WID_NCL_SEARCH_EXTERNAL, this->auto_select && all_available);
 
 		this->FilterContentList();
-		this->content.shrink_to_fit();
 		this->content.RebuildDone();
 		this->SortContentList();
 
@@ -464,8 +463,10 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	}
 
 	/** Filter content by tags/name */
-	static bool CDECL TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
+	static bool TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
 	{
+		if ((*a)->state == ContentInfo::SELECTED || (*a)->state == ContentInfo::AUTOSELECTED) return true;
+
 		filter.string_filter.ResetState();
 		for (auto &tag : (*a)->tags) filter.string_filter.AddLine(tag);
 
@@ -474,7 +475,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	}
 
 	/** Filter content by type, but still show content selected for download. */
-	static bool CDECL TypeOrSelectedFilter(const ContentInfo * const *a, ContentListFilterData &filter)
+	static bool TypeOrSelectedFilter(const ContentInfo * const *a, ContentListFilterData &filter)
 	{
 		if (filter.types.none()) return true;
 		if (filter.types[(*a)->type]) return true;
@@ -541,7 +542,7 @@ public:
 	 *   other types are only shown when content that depend on them are
 	 *   selected.
 	 */
-	NetworkContentListWindow(WindowDesc *desc, bool select_all, const std::bitset<CONTENT_TYPE_END> &types) :
+	NetworkContentListWindow(WindowDesc &desc, bool select_all, const std::bitset<CONTENT_TYPE_END> &types) :
 			Window(desc),
 			auto_select(select_all),
 			filter_editbox(EDITBOX_MAX_SIZE),
@@ -583,25 +584,25 @@ public:
 		this->checkbox_size = maxdim(maxdim(GetSpriteSize(SPR_BOX_EMPTY), GetSpriteSize(SPR_BOX_CHECKED)), GetSpriteSize(SPR_BLOT));
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_NCL_CHECKBOX:
-				size->width = this->checkbox_size.width + padding.width;
+				size.width = this->checkbox_size.width + padding.width;
 				break;
 
 			case WID_NCL_TYPE: {
-				Dimension d = *size;
+				Dimension d = size;
 				for (int i = CONTENT_TYPE_BEGIN; i < CONTENT_TYPE_END; i++) {
 					d = maxdim(d, GetStringBoundingBox(STR_CONTENT_TYPE_BASE_GRAPHICS + i - CONTENT_TYPE_BASE_GRAPHICS));
 				}
-				size->width = d.width + padding.width;
+				size.width = d.width + padding.width;
 				break;
 			}
 
 			case WID_NCL_MATRIX:
-				resize->height = std::max(this->checkbox_size.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
-				size->height = 10 * resize->height;
+				resize.height = std::max(this->checkbox_size.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				size.height = 10 * resize.height;
 				break;
 		}
 	}
@@ -652,11 +653,8 @@ public:
 		int text_y_offset   = (this->resize.step_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		Rect mr = r.WithHeight(this->resize.step_height);
-		auto iter = this->content.begin() + this->vscroll->GetPosition();
-		size_t last = this->vscroll->GetPosition() + this->vscroll->GetCapacity();
-		auto end = (last < this->content.size()) ? this->content.begin() + last : this->content.end();
-
-		for (/**/; iter != end; iter++) {
+		auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->content);
+		for (auto iter = first; iter != last; iter++) {
 			const ContentInfo *ci = *iter;
 
 			if (ci == this->selected) GfxFillRect(mr.Shrink(WidgetDimensions::scaled.bevel), PC_GREY);
@@ -811,6 +809,7 @@ public:
 				if (click_count > 1 || IsInsideBS(pt.x, checkbox->pos_x, checkbox->current_x)) {
 					_network_content_client.ToggleSelectedState(this->selected);
 					this->content.ForceResort();
+					this->content.ForceRebuild();
 				}
 
 				if (this->filter_data.types.any()) {
@@ -997,7 +996,7 @@ public:
 		this->SetWidgetDisabledState(WID_NCL_DOWNLOAD, this->filesize_sum == 0 || (FindWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD) != nullptr && data != 2));
 		this->SetWidgetDisabledState(WID_NCL_UNSELECT, this->filesize_sum == 0);
 		this->SetWidgetDisabledState(WID_NCL_SELECT_ALL, !show_select_all);
-		this->SetWidgetDisabledState(WID_NCL_SELECT_UPDATE, !show_select_upgrade);
+		this->SetWidgetDisabledState(WID_NCL_SELECT_UPDATE, !show_select_upgrade || !this->filter_data.string_filter.IsEmpty());
 		this->SetWidgetDisabledState(WID_NCL_OPEN_URL, this->selected == nullptr || this->selected->url.empty());
 		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
 			this->SetWidgetDisabledState(WID_NCL_TEXTFILE + tft, this->selected == nullptr || this->selected->state != ContentInfo::ALREADY_HERE || !this->selected->GetTextfile(tft).has_value());
@@ -1010,13 +1009,13 @@ public:
 Listing NetworkContentListWindow::last_sorting = {false, 1};
 Filtering NetworkContentListWindow::last_filtering = {false, 0};
 
-NetworkContentListWindow::GUIContentList::SortFunction * const NetworkContentListWindow::sorter_funcs[] = {
+const std::initializer_list<NetworkContentListWindow::GUIContentList::SortFunction * const> NetworkContentListWindow::sorter_funcs = {
 	&StateSorter,
 	&TypeSorter,
 	&NameSorter,
 };
 
-NetworkContentListWindow::GUIContentList::FilterFunction * const NetworkContentListWindow::filter_funcs[] = {
+const std::initializer_list<NetworkContentListWindow::GUIContentList::FilterFunction * const> NetworkContentListWindow::filter_funcs = {
 	&TagNameFilter,
 	&TypeOrSelectedFilter,
 };
@@ -1113,11 +1112,11 @@ static constexpr NWidgetPart _nested_network_content_list_widgets[] = {
 };
 
 /** Window description of the content list */
-static WindowDesc _network_content_list_desc(__FILE__, __LINE__,
+static WindowDesc _network_content_list_desc(
 	WDP_CENTER, "list_content", 630, 460,
 	WC_NETWORK_WINDOW, WC_NONE,
 	0,
-	std::begin(_nested_network_content_list_widgets), std::end(_nested_network_content_list_widgets)
+	_nested_network_content_list_widgets
 );
 
 /**
@@ -1145,7 +1144,7 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 	}
 
 	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
-	new NetworkContentListWindow(&_network_content_list_desc, cv != nullptr, types);
+	new NetworkContentListWindow(_network_content_list_desc, cv != nullptr, types);
 #else
 	ShowErrorMessage(STR_CONTENT_NO_ZLIB, STR_CONTENT_NO_ZLIB_SUB, WL_ERROR);
 	/* Connection failed... clean up the mess */

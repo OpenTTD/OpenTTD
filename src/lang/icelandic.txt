@@ -360,6 +360,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Hætta í korta
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Hætta
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Stillingar
@@ -824,7 +825,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Gjaldmi�
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Val á gjaldmiðli
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlingspund
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Bandaríkjadalur
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evra
@@ -903,6 +904,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Auka upp
 
 
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Skjáfyllihamur brást
 
 # Custom currency window
@@ -912,6 +914,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gengi: 
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Hækka gengi miðað við pund (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Lækka gengi miðað við pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Setja gengi gjaldmiðils miðað við pund (£)
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Forskeyti: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Veldu forskeyti fyrir gjaldmiðilinn
@@ -1238,6 +1241,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Birta viðvöru
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Þegar þessi stilling er virk, eru frétta boð send ef farartæki hafa ekki skilað hagnaði síðasta dagatals ár
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Farartæki úreldast aldrei: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ef þessi stilling er virk, eru öll farartæki alltaf í boði eftir að þau voru fyrst kynnt til sögunnar
 
@@ -1501,7 +1505,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Sjálfgefið mi
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Stilltu sjálfgefið millibil fyrir þjónustu hjá nýjum flugvélum, á við ef ekkert tiltekið millibil er stillt fyrir farartækið
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Sjálfgefið millibil fyrir þjónustu hjá skipum: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Stilltu sjálfgefið millibil fyrir þjónustu hjá nýjum skipum, á við ef ekkert tiltekið millibil er stillt fyrir farartækið
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 ur ar}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Óvirkt
 
@@ -1695,17 +1700,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Iðnaður
 STR_CONFIG_SETTING_AI                                           :Mótherji
 STR_CONFIG_SETTING_AI_NPC                                       :Gervigreind
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Leiðsögukerfi lesta: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Leiðsögukerfi sem nota á fyrir lestir
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Leiðsögukerfi bifreiða: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Leiðsögukerfi sem nota á fyrir bíla og sporvagna
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Leiðsögukerfi skipa: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Leiðsögukerfi sem nota á fyrir skip
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Snúa járnbrautarlestum sjálfkrafa við á umferðarmerkjum: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Leyfa járnbrautarlestum að snúa við á umferðarmerkjum ef þau hafa beðið þar í langan tíma
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Ráðlegt)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Breyta gildi stillingar
 
@@ -1970,7 +1966,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Næ í u
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Aftengjast
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Þjónn er varinn. Sláðu inn lykilorð
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Fyrirtæki er varið. Sláðu inn lykilorð
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yfir leikmenn
@@ -1986,19 +1981,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yfir leik
 
 STR_NETWORK_SPECTATORS                                          :Áhorfendur
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ekki vista innslegið lykilorð
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Læsa fyrirtækinu með nýja lykilorðinu
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Lykilorð fyrirtækis
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Sjálfgefið lykilorð fyrirtækis
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Nota lykilorð þessa fyrirtækis sem sjálfgefið fyrir ný fyrirtæki
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Taka þátt
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Taka þátt sem þetta fyrirtæki
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Lykilorð
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Til að vernda fyrirtæki þitt frá óboðnum notendum geturðu sett lykilorð á það
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Setja lykilorð á fyrirtæki
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Senda
@@ -2037,7 +2022,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Tölvan 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Hefur líklega misst sambandið
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Síðustu {NUM} sekúndu{P "" r} hafa engin gögn borist frá þjóninum
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :almenn villa
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :samstillingarvilla
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :gat ekki opnað kort
@@ -2226,7 +2211,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Veldu le
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Leiðarvísir
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Velja tegund leiðarvísis
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Lestarstöðvastillingar
@@ -2239,8 +2223,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Veldu le
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Draga & Sleppa
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Byggja lestarstöð með 'draga og sleppa' aðferðinni
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Veldu flokk stöðva sem á að sýna
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Veldu tegund stöðvar til að reisa
+
+
+
 
 STR_STATION_CLASS_DFLT                                          :Sjálfgefin stöð
 STR_STATION_CLASS_WAYP                                          :Millistöð
@@ -2371,8 +2356,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kaupa la
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Hlutaval
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Veldu hlut til að byggja. Shift sýnir áætlaðan kostnað
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Veldu flokk hlutarins sem á að byggja
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Sýnishorn af hlutnum
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Stærð: {GOLD}{NUM} x {NUM} reitir
 
@@ -2472,7 +2455,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Eigandi 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Eigandi járnbrautarspors: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Bæjaryfirvöld: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Enginn
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Hnit: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Byggt: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Tegund stöðvar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tegund stöðvar: {LTBLUE}{STRING}
@@ -2691,9 +2673,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% t
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Sköpun heims
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Bý til ár
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Gróðursetning trjáa
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Staðsetning fastra hluta
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Hrjúft og grýtt landslag
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Staðsetning fastra hluta
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Gróðursetning trjáa
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Set upp leik
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Keyri reitalykkju
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Keyri forskrift
@@ -2768,7 +2750,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tegund spora
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF breyta 60+x stilling (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Samræmi hreyfimynd{COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Næsta hreyfimynd
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Halda áfram á næstu venjulegu hreyfimynd, sleppir gervi/endurlitun/letur hreyfimyndum og fer aftur á byrjun í lokin.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Velja hreyfimynd
@@ -2870,7 +2851,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Fara að
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Sláðu inn nafn fyrir skiltið
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bæir
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Enginn -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bæjanöfn - smelltu á nafn til að færa sjónarhorn að viðkomandi bæ. Ctrl+smelltu til að opna nýtt sjónarhorn yfir þessum bæ
@@ -3112,7 +3092,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stöðva
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Flugvellir
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Iðnaðir
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Enginn -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Iðnaðar nöfn - smella á nafn til að færa miðju sjónarhorns á iðnað. Ctrl+smella til að opna nýtt sjónarhorn yfir þessum iðnaði
@@ -3902,9 +3881,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Áætla�
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Vistun er enn í gangi,{}vinsamlegast bíddu á meðan hún klárst!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Sjálfvirk vistun mistókst
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Get ekki lesið af drifi
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Vistun leiks mistókst{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Get ekki eytt skrá
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Mistókst að opna leik{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Innri villa: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bilun í vistuðum leik - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Leikur er vistaður í nýrri útgáfu
@@ -4257,6 +4234,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... öku
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Engin farartæki verða í boði
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Breyta NewGRF stillingunum þínum
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Get ekki látið lest fara framhjá hættumerki...
@@ -4765,6 +4743,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

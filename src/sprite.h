@@ -26,9 +26,9 @@ struct DrawTileSeqStruct {
 	int8_t delta_x; ///< \c 0x80 is sequence terminator
 	int8_t delta_y;
 	int8_t delta_z; ///< \c 0x80 identifies child sprites
-	byte size_x;
-	byte size_y;
-	byte size_z;
+	uint8_t size_x;
+	uint8_t size_y;
+	uint8_t size_z;
 	PalSpriteID image;
 
 	/** Make this struct a sequence terminator. */
@@ -40,13 +40,13 @@ struct DrawTileSeqStruct {
 	/** Check whether this is a sequence terminator. */
 	bool IsTerminator() const
 	{
-		return (byte)this->delta_x == 0x80;
+		return (uint8_t)this->delta_x == 0x80;
 	}
 
 	/** Check whether this is a parent sprite with a boundingbox. */
 	bool IsParentSprite() const
 	{
-		return (byte)this->delta_z != 0x80;
+		return (uint8_t)this->delta_z != 0x80;
 	}
 };
 
@@ -67,12 +67,12 @@ struct DrawTileSprites {
 struct DrawBuildingsTileStruct {
 	PalSpriteID ground;
 	PalSpriteID building;
-	byte subtile_x;
-	byte subtile_y;
-	byte width;
-	byte height;
-	byte dz;
-	byte draw_proc;  // this allows to specify a special drawing procedure.
+	uint8_t subtile_x;
+	uint8_t subtile_y;
+	uint8_t width;
+	uint8_t height;
+	uint8_t dz;
+	uint8_t draw_proc;  // this allows to specify a special drawing procedure.
 };
 
 /** Iterate through all DrawTileSeqStructs in DrawTileSprites. */

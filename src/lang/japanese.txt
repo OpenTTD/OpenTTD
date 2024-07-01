@@ -282,7 +282,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}この�
 STR_BUTTON_DEFAULT                                              :{BLACK}デフォルト
 STR_BUTTON_CANCEL                                               :{BLACK}キャンセル
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}警告: サーバーの管理者はここに入力された文章をすべて読めます。
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :{NBSP}1234567890-^\qwertyuiop@[asdfghjkl;:] zxcvbnm,./\
@@ -405,6 +404,7 @@ STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :ハイトマッ
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :タイトルに戻る
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :―――――――――
 STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終了
+
 
 # Settings menu
 ###length 16
@@ -896,17 +896,12 @@ STR_GAME_OPTIONS_VOLUME                                         :音量
 STR_GAME_OPTIONS_SFX_VOLUME                                     :効果音
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :音楽
 
-STR_GAME_OPTIONS_VOLUME_0                                       :0%
-STR_GAME_OPTIONS_VOLUME_25                                      :25%
-STR_GAME_OPTIONS_VOLUME_50                                      :50%
-STR_GAME_OPTIONS_VOLUME_75                                      :75%
-STR_GAME_OPTIONS_VOLUME_100                                     :100%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}通貨単位
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}通貨単位の選択
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :英ポンド
 STR_GAME_OPTIONS_CURRENCY_USD                                   :米ドル
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :欧州連合・ユーロ
@@ -991,11 +986,6 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}ベベ�
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}ここをチェックするとベベルはインタフェースのサイズに比例します
 
 
-STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
-STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
-STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
-STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
-STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}グラフィクス
@@ -1021,6 +1011,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}基本�
 
 
 
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}サポートされている解像度リストの回復に失敗しました
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}フルスクリーンモードでの実行に失敗しました
 
@@ -1031,6 +1022,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}為替�
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}英ポンドに対するお使いの通貨の為替レートを減らします
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}英ポンドに対するお使いの通貨の為替レートを増やします
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}英ポンドに対するお使いの通貨の為替レートを設定します
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}接頭文字: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}通貨の接頭文字を入力します
@@ -1387,6 +1379,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :赤字車両の
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :有効にすると、輸送車両が一年(1/1～12/31)の間全く利益を上げていない場合、メッセージで知らせてくるようになります。
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :輸送機器の旧式化撤廃: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :有効にすると、いずれの種類の輸送機器であっても、その開発後であれば永久に購入が可能になります
 
@@ -1704,7 +1697,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :航空機の点
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :個別に指定されていない場合の、航空機の点検周期を設定します
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :船舶の点検周期: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :個別に指定されていない場合の、船舶の点検周期を設定します
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} 日/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :点検なし
 
@@ -1996,17 +1990,8 @@ STR_CONFIG_SETTING_AI                                           :競争会社
 STR_CONFIG_SETTING_AI_NPC                                       :コンピュータプレイヤー
 STR_CONFIG_SETTING_NETWORK                                      :ネットワーク
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :列車の経路探索アルゴリズム: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :列車の経路探索アルゴリズムを決めます
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :車両の経路探索アルゴリズム: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :車両の経路探索アルゴリズムを決めます
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :船舶の経路探索アルゴリズム: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :船舶の経路探索アルゴリズムを決めます
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :信号待ちでの折返し: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :列車が信号で長く待たされた場合、進路を反転することを許可します
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF{BLUE}(おすすめ)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}設定を変更します
 
@@ -2298,7 +2283,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}会社�
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}接続を解除
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}このサーバーは保護されています。接続するにはパスワードを入力してください
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}この会社は保護されています。経営に参画するにはパスワードを入力してください
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :オンラインのプレイヤー
@@ -2347,13 +2331,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}中継�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :キック
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :BAN
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :削除
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :パスワードのアンロック
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}管理者アクション
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}'{STRING}'をキックしてもよろしいですか?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}プレーヤー「{STRING}」を追放してもよろしいですか？
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}会社 '{COMPANY}' を削除してもよろしいですか?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}会社 '{COMPANY}'のパスワードをリセットしてもよろしいですか？
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}中継サービスを利用しますか？
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} '{STRING}'サーバーとの接続の確立に失敗しました.{}'{STRING}'を経由して中継しますか?
@@ -2364,19 +2346,9 @@ STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}はい�
 
 STR_NETWORK_SPECTATORS                                          :観覧者
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}入力したパスワードを保存しない
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}会社パスワードを変更
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}会社パスワード
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}デフォルトの会社パスワード
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}このパスワードを新しい交通会社の規定パスワードとして使用します
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}参画
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}この会社の経営に参画します
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}パスワード
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}認証されていないプレーヤーの参加を防ぐために、会社をパスワードで保護します
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}会社パスワードを設定
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}送信
@@ -2420,7 +2392,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}プレ�
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}接続切断の可能性
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}過去{NUM}秒間にわたりサーバーからデータを受信できていません
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般エラー
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :同期エラー
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :マップロード失敗
@@ -2631,7 +2603,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}列車�
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}中継駅
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}中継駅の種類を選択します
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}駅の選択
@@ -2644,8 +2615,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}駅の�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}任意のサイズ
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}ドラッグ&ドロップで任意のサイズの駅を建設します
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}駅の種類を選択します
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}駅の種類を選択します
+
+
+
 
 STR_STATION_CLASS_DFLT                                          :標準駅
 STR_STATION_CLASS_WAYP                                          :中継駅
@@ -2785,8 +2757,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}将来�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}オブジェクトを配置
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}設置するオブジェクトを選択して下さい。Ctrlで斜めに選択できます。Shift+クリックで費用を見積もります
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}設置するオブジェクトを選びます
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}オブジェクトをプレビューします
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}サイズ: {GOLD}{NUM} x {NUM} マス
 
@@ -2901,7 +2871,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}軌道�
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}線路所有者: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}所属街域: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :なし
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標: {LTBLUE}{NUM}x{NUM}x{NUM}({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建設年: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}駅の種類: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}駅の種類: {LTBLUE}{STRING}
@@ -3203,9 +3172,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}%�
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM}/{NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}マップ生成
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}河川を生成中
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}植林中
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}灯台/電波塔配置中
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}岩石/荒地を設定中
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}灯台/電波塔配置中
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}植林中
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}ゲームを設定中
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}タイルループを実行中
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}スクリプト実行中
@@ -3295,7 +3264,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :線路の種類
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRFの可変60+xパラメーター (16進)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}スプライト{COMMA} 配列 ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}次のスプライト
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}次のノーマルスプライトに進みます。始端と終端は連続しているものとみなし、疑似/リカラー/フォントスプライトはスキップします
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}スプライトへ飛ぶ
@@ -3412,7 +3380,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}前の�
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}標識の内容を入力
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}街一覧
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- なし-
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (都市){BLACK} ({COMMA})
@@ -3717,7 +3684,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}停留�
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}空港
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}産業
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- なし -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% 輸送済み){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -4612,9 +4578,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}収益(�
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}ゲームを保存しています{}完了までしばらくお待ちください!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}自動保存に失敗しました
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}ドライブを読み込めません
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}ゲームの保存に失敗しました{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}ファイルを削除できません
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}ゲームの読み込みに失敗しました{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :内部エラー: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :破損したセーブゲーム: {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :このファイルは上位のバージョンによって保存されたものです
@@ -4990,6 +4954,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}利用�
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRFの設定を変更してください
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}利用可能な輸送機器がありません
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SHORT}年以降に開始するか、これより早い時期に輸送機器が開発されるNewGRFを利用して下さい
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}赤信号を無視させることができません
@@ -5517,6 +5482,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

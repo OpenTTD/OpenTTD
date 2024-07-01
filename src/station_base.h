@@ -210,20 +210,20 @@ struct GoodsEntry {
 	StationCargoList cargo{}; ///< The cargo packets of cargo waiting in this station
 	FlowStatMap flows{}; ///< Planned flows through this station.
 
-	uint max_waiting_cargo{0}; ///< Max cargo from this station waiting at any station.
-	NodeID node{INVALID_NODE}; ///< ID of node in link graph referring to this goods entry.
-	LinkGraphID link_graph{INVALID_LINK_GRAPH}; ///< Link graph this station belongs to.
+	uint max_waiting_cargo = 0; ///< Max cargo from this station waiting at any station.
+	NodeID node = INVALID_NODE; ///< ID of node in link graph referring to this goods entry.
+	LinkGraphID link_graph = INVALID_LINK_GRAPH; ///< Link graph this station belongs to.
 
-	byte status{0}; ///< Status of this cargo, see #GoodsEntryStatus.
+	uint8_t status = 0; ///< Status of this cargo, see #GoodsEntryStatus.
 
 	/**
 	 * Number of rating-intervals (up to 255) since the last vehicle tried to load this cargo.
 	 * The unit used is STATION_RATING_TICKS.
 	 * This does not imply there was any cargo to load.
 	 */
-	uint8_t time_since_pickup{255};
+	uint8_t time_since_pickup = 255;
 
-	uint8_t rating{INITIAL_STATION_RATING}; ///< %Station rating for this cargo.
+	uint8_t rating = INITIAL_STATION_RATING; ///< %Station rating for this cargo.
 
 	/**
 	 * Maximum speed (up to 255) of the last vehicle that tried to load this cargo.
@@ -234,15 +234,15 @@ struct GoodsEntry {
 	 *  - Ships: 0.5 * km-ish/h
 	 *  - Aircraft: 8 * mph
 	 */
-	uint8_t last_speed{0};
+	uint8_t last_speed = 0;
 
 	/**
 	 * Age in years (up to 255) of the last vehicle that tried to load this cargo.
 	 * This does not imply there was any cargo to load.
 	 */
-	uint8_t last_age{255};
+	uint8_t last_age = 255;
 
-	uint8_t amount_fract{0}; ///< Fractional part of the amount in the cargo list
+	uint8_t amount_fract = 0; ///< Fractional part of the amount in the cargo list
 
 	/**
 	 * Reports whether a vehicle has ever tried to load the cargo at this station.
@@ -291,8 +291,8 @@ struct Airport : public TileArea {
 	Airport() : TileArea(INVALID_TILE, 0, 0) {}
 
 	uint64_t flags;       ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
-	byte type;          ///< Type of this airport, @see AirportTypes
-	byte layout;        ///< Airport layout number.
+	uint8_t type;          ///< Type of this airport, @see AirportTypes
+	uint8_t layout;        ///< Airport layout number.
 	Direction rotation; ///< How this airport is rotated.
 
 	PersistentStorage *psa; ///< Persistent storage for NewGRF airports.
@@ -322,7 +322,7 @@ struct Airport : public TileArea {
 	/** Check if this airport has at least one hangar. */
 	inline bool HasHangar() const
 	{
-		return this->GetSpec()->nof_depots > 0;
+		return !this->GetSpec()->depots.empty();
 	}
 
 	/**
@@ -357,10 +357,9 @@ struct Airport : public TileArea {
 	 */
 	inline TileIndex GetHangarTile(uint hangar_num) const
 	{
-		const AirportSpec *as = this->GetSpec();
-		for (uint i = 0; i < as->nof_depots; i++) {
-			if (as->depot_table[i].hangar_num == hangar_num) {
-				return this->GetRotatedTileFromOffset(as->depot_table[i].ti);
+		for (const auto &depot : this->GetSpec()->depots) {
+			if (depot.hangar_num == hangar_num) {
+				return this->GetRotatedTileFromOffset(depot.ti);
 			}
 		}
 		NOT_REACHED();
@@ -376,7 +375,7 @@ struct Airport : public TileArea {
 	{
 		const AirportSpec *as = this->GetSpec();
 		const HangarTileTable *htt = GetHangarDataByTile(tile);
-		return ChangeDir(htt->dir, DirDifference(this->rotation, as->rotation[0]));
+		return ChangeDir(htt->dir, DirDifference(this->rotation, as->layouts[0].rotation));
 	}
 
 	/**
@@ -396,11 +395,10 @@ struct Airport : public TileArea {
 	{
 		uint num = 0;
 		uint counted = 0;
-		const AirportSpec *as = this->GetSpec();
-		for (uint i = 0; i < as->nof_depots; i++) {
-			if (!HasBit(counted, as->depot_table[i].hangar_num)) {
+		for (const auto &depot : this->GetSpec()->depots) {
+			if (!HasBit(counted, depot.hangar_num)) {
 				num++;
-				SetBit(counted, as->depot_table[i].hangar_num);
+				SetBit(counted, depot.hangar_num);
 			}
 		}
 		return num;
@@ -415,10 +413,9 @@ private:
 	 */
 	inline const HangarTileTable *GetHangarDataByTile(TileIndex tile) const
 	{
-		const AirportSpec *as = this->GetSpec();
-		for (uint i = 0; i < as->nof_depots; i++) {
-			if (this->GetRotatedTileFromOffset(as->depot_table[i].ti) == tile) {
-				return as->depot_table + i;
+		for (const auto &depot : this->GetSpec()->depots) {
+			if (this->GetRotatedTileFromOffset(depot.ti) == tile) {
+				return &depot;
 			}
 		}
 		NOT_REACHED();
@@ -463,10 +460,10 @@ public:
 
 	StationHadVehicleOfType had_vehicle_of_type;
 
-	byte time_since_load;
-	byte time_since_unload;
+	uint8_t time_since_load;
+	uint8_t time_since_unload;
 
-	byte last_vehicle_type;
+	uint8_t last_vehicle_type;
 	std::list<Vehicle *> loading_vehicles;
 	GoodsEntry goods[NUM_CARGO];  ///< Goods at this station
 	CargoTypes always_accepted;       ///< Bitmask of always accepted cargo types (by houses, HQs, industry tiles when industry doesn't accept cargo)
@@ -511,7 +508,7 @@ public:
 
 	inline bool TileBelongsToRoadStop(TileIndex tile) const
 	{
-		return IsRoadStopTile(tile) && GetStationIndex(tile) == this->index;
+		return IsStationRoadStopTile(tile) && GetStationIndex(tile) == this->index;
 	}
 
 	inline bool TileBelongsToAirport(TileIndex tile) const
@@ -519,7 +516,7 @@ public:
 		return IsAirportTile(tile) && GetStationIndex(tile) == this->index;
 	}
 
-	uint32_t GetNewGRFVariable(const ResolverObject &object, byte variable, byte parameter, bool *available) const override;
+	uint32_t GetNewGRFVariable(const ResolverObject &object, uint8_t variable, uint8_t parameter, bool &available) const override;
 
 	void GetTileArea(TileArea *ta, StationType type) const override;
 };

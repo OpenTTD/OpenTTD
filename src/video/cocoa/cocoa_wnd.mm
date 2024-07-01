@@ -261,6 +261,18 @@ static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
 {
 	[ [ NSNotificationCenter defaultCenter ] removeObserver:self ];
 }
+
+/**
+ * Indicates to AppKit that OpenTTD is compatible with secure state storage.
+ * Starting with macOS 12, macOS expects us to be better compatible with NSSecureCoding, as to prevent attacks through restorable storage.
+ * Starting with 14, macOS logs a warning if we don't implement this ourselves. Since OpenTTD does not (yet) make use of restorable state, we simply don't care what happens with it.
+ *
+ * Explained here: https://developer.apple.com/documentation/foundation/nssecurecoding
+ */
+- (BOOL)applicationSupportsSecureRestorableState:(NSApplication*) sender
+{
+	return YES;
+}
 @end
 
 /**
@@ -789,7 +801,12 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		case QZ_LEFT:  SB(_dirkeys, 0, 1, down); break;
 		case QZ_RIGHT: SB(_dirkeys, 2, 1, down); break;
 
-		case QZ_TAB: _tab_is_down = down; break;
+		case QZ_TAB:
+			_tab_is_down = down;
+			if (down && EditBoxInGlobalFocus()) {
+				HandleKeypress(WKC_TAB, unicode);
+			}
+			break;
 
 		case QZ_RETURN:
 		case QZ_f:

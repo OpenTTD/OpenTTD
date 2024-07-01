@@ -63,7 +63,7 @@ struct StatusBarWindow : Window {
 	static const int COUNTER_STEP   =    2; ///< this is subtracted from active counters every tick
 	static constexpr auto REMINDER_START = std::chrono::milliseconds(1350); ///< time in ms for reminder notification (red dot on the right) to stay
 
-	StatusBarWindow(WindowDesc *desc) : Window(desc)
+	StatusBarWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->ticker_scroll = TICKER_STOP;
 
@@ -83,7 +83,7 @@ struct StatusBarWindow : Window {
 		Window::FindWindowPlacementAndResize(_toolbar_width, def_height);
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		Dimension d;
 		switch (widget) {
@@ -106,7 +106,7 @@ struct StatusBarWindow : Window {
 
 		d.width += padding.width;
 		d.height += padding.height;
-		*size = maxdim(d, *size);
+		size = maxdim(d, size);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -145,9 +145,9 @@ struct StatusBarWindow : Window {
 				} else if (_pause_mode != PM_UNPAUSED) {
 					StringID msg = (_pause_mode & PM_PAUSED_LINK_GRAPH) ? STR_STATUSBAR_PAUSED_LINK_GRAPH : STR_STATUSBAR_PAUSED;
 					DrawString(tr, msg, TC_FROMSTRING, SA_HOR_CENTER);
-				} else if (this->ticker_scroll < TICKER_STOP && _statusbar_news_item != nullptr && _statusbar_news_item->string_id != 0) {
+				} else if (this->ticker_scroll < TICKER_STOP && GetStatusbarNews() != nullptr && GetStatusbarNews()->string_id != 0) {
 					/* Draw the scrolling news text */
-					if (!DrawScrollingStatusText(_statusbar_news_item, ScaleGUITrad(this->ticker_scroll), tr.left, tr.right, tr.top, tr.bottom)) {
+					if (!DrawScrollingStatusText(GetStatusbarNews(), ScaleGUITrad(this->ticker_scroll), tr.left, tr.right, tr.top, tr.bottom)) {
 						InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED);
 						if (Company::IsValidID(_local_company)) {
 							/* This is the default text */
@@ -228,11 +228,11 @@ static constexpr NWidgetPart _nested_main_status_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _main_status_desc(__FILE__, __LINE__,
+static WindowDesc _main_status_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_STATUS_BAR, WC_NONE,
 	WDF_NO_FOCUS | WDF_NO_CLOSE,
-	std::begin(_nested_main_status_widgets), std::end(_nested_main_status_widgets)
+	_nested_main_status_widgets
 );
 
 /**
@@ -249,5 +249,5 @@ bool IsNewsTickerShown()
  */
 void ShowStatusBar()
 {
-	new StatusBarWindow(&_main_status_desc);
+	new StatusBarWindow(_main_status_desc);
 }

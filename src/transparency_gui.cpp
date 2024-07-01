@@ -23,12 +23,12 @@
 TransparencyOptionBits _transparency_opt;  ///< The bits that should be transparent.
 TransparencyOptionBits _transparency_lock; ///< Prevent these bits from flipping with X.
 TransparencyOptionBits _invisibility_opt;  ///< The bits that should be invisible.
-byte _display_opt; ///< What do we want to draw/do?
+uint8_t _display_opt; ///< What do we want to draw/do?
 
 class TransparenciesWindow : public Window
 {
 public:
-	TransparenciesWindow(WindowDesc *desc, int window_number) : Window(desc)
+	TransparenciesWindow(WindowDesc &desc, int window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
 	}
@@ -148,11 +148,11 @@ static constexpr NWidgetPart _nested_transparency_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _transparency_desc(__FILE__, __LINE__,
+static WindowDesc _transparency_desc(
 	WDP_MANUAL, "toolbar_transparency", 0, 0,
 	WC_TRANSPARENCY_TOOLBAR, WC_NONE,
 	0,
-	std::begin(_nested_transparency_widgets), std::end(_nested_transparency_widgets)
+	_nested_transparency_widgets
 );
 
 /**
@@ -160,5 +160,5 @@ static WindowDesc _transparency_desc(__FILE__, __LINE__,
  */
 void ShowTransparencyToolbar()
 {
-	AllocateWindowDescFront<TransparenciesWindow>(&_transparency_desc, 0);
+	AllocateWindowDescFront<TransparenciesWindow>(_transparency_desc, 0);
 }

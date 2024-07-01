@@ -224,12 +224,6 @@ public:
 	 *    clamped in the range [MIN(int32_t), MAX(int32_t)] (inclusive).
 	 *  - default_value The default value. Required. The value will be
 	 *    clamped in the range [MIN(int32_t), MAX(int32_t)] (inclusive).
-	 *  - random_deviation If this property has a nonzero value, then the
-	 *    actual value of the setting in game will be randomised in the range
-	 *    [user_configured_value - random_deviation, user_configured_value + random_deviation] (inclusive).
-	 *    random_deviation sign is ignored and the value is clamped in the range [0, MAX(int32_t)] (inclusive).
-	 *    The randomisation will happen just before the Script start.
-	 *    Not allowed if the CONFIG_BOOLEAN flag is set, otherwise optional.
 	 *  - step_size The increase/decrease of the value every time the user
 	 *    clicks one of the up/down arrow buttons. Optional, default is 1.
 	 *  - flags Bitmask of some flags, see ScriptConfigFlags. Required.
@@ -258,5 +252,5 @@ public:
 	 * @note This is a function provided by OpenTTD, you don't have to
 	 * include it in your Script but should just call it from GetSettings.
 	 */
-	void AddLabels(const char *setting_name, table value_names);
+	void AddLabels(string setting_name, table value_names);
 };

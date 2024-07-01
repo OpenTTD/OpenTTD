@@ -215,16 +215,6 @@ Entry- and exit signals are not dragged [#4378]:
         for all other signal types where several in a row can serve one
         purpose or another.
 
-Station build date is incorrect [#4415]:
-        The tile query tool will show the date of the last (re)construction
-        at the station and not the date of the first construction. This is
-        due to compatibility reasons with NewGRFs and the fact that it is
-        wrong to say that the station is built in a particular year when it
-        was completely destroyed/rebuilt later on.
-        The tile query tool can be fixed by changing the "Build date" text
-        to "Date at which the last (re)construction took place" but this is
-        deemed too specific and long for that window.
-
 (Temporary) wrong colours when switching to full screen [#4511]:
         On Windows it can happen that you temporarily see wrong colours
         when switching to full screen OpenTTD, either by starting

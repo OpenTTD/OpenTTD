@@ -12,6 +12,9 @@
 #include "viewport_func.h"
 #include "error.h"
 #include "gui.h"
+#include "house.h"
+#include "newgrf_house.h"
+#include "picker_gui.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "company_base.h"
@@ -31,7 +34,7 @@
 #include "core/geometry_func.hpp"
 #include "genworld.h"
 #include "stringfilter_type.h"
-#include "widgets/dropdown_func.h"
+#include "dropdown_func.h"
 #include "town_kdtree.h"
 #include "town_cmd.h"
 #include "timer/timer.h"
@@ -118,7 +121,7 @@ private:
 	}
 
 public:
-	TownAuthorityWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc), sel_index(-1), displayed_actions_on_previous_painting(0), available_actions(TACT_NONE)
+	TownAuthorityWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), sel_index(-1), displayed_actions_on_previous_painting(0), available_actions(TACT_NONE)
 	{
 		this->town = Town::Get(window_number);
 		this->enabled_actions = GetEnabledActions();
@@ -256,34 +259,34 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_TA_ACTION_INFO: {
-				assert(size->width > padding.width && size->height > padding.height);
+				assert(size.width > padding.width && size.height > padding.height);
 				Dimension d = {0, 0};
 				for (int i = 0; i < TACT_COUNT; i++) {
 					SetDParam(0, _price[PR_TOWN_ACTION] * _town_action_costs[i] >> 8);
-					d = maxdim(d, GetStringMultiLineBoundingBox(this->action_tooltips[i], *size));
+					d = maxdim(d, GetStringMultiLineBoundingBox(this->action_tooltips[i], size));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
-				*size = maxdim(*size, d);
+				size = maxdim(size, d);
 				break;
 			}
 
 			case WID_TA_COMMAND_LIST:
-				size->height = (TACT_COUNT + 1) * GetCharacterHeight(FS_NORMAL) + padding.height;
-				size->width = GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTIONS_TITLE).width;
+				size.height = (TACT_COUNT + 1) * GetCharacterHeight(FS_NORMAL) + padding.height;
+				size.width = GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTIONS_TITLE).width;
 				for (uint i = 0; i < TACT_COUNT; i++ ) {
-					size->width = std::max(size->width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i).width + padding.width);
+					size.width = std::max(size.width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i).width + padding.width);
 				}
-				size->width += padding.width;
+				size.width += padding.width;
 				break;
 
 			case WID_TA_RATING_INFO:
-				resize->height = std::max({this->icon_size.height + WidgetDimensions::scaled.vsep_normal, this->exclusive_size.height + WidgetDimensions::scaled.vsep_normal, (uint)GetCharacterHeight(FS_NORMAL)});
-				size->height = 9 * resize->height + padding.height;
+				resize.height = std::max({this->icon_size.height + WidgetDimensions::scaled.vsep_normal, this->exclusive_size.height + WidgetDimensions::scaled.vsep_normal, (uint)GetCharacterHeight(FS_NORMAL)});
+				size.height = 9 * resize.height + padding.height;
 				break;
 		}
 	}
@@ -339,16 +342,16 @@ public:
 	}
 };
 
-static WindowDesc _town_authority_desc(__FILE__, __LINE__,
+static WindowDesc _town_authority_desc(
 	WDP_AUTO, "view_town_authority", 317, 222,
 	WC_TOWN_AUTHORITY, WC_NONE,
 	0,
-	std::begin(_nested_town_authority_widgets), std::end(_nested_town_authority_widgets)
+	_nested_town_authority_widgets
 );
 
 static void ShowTownAuthorityWindow(uint town)
 {
-	AllocateWindowDescFront<TownAuthorityWindow>(&_town_authority_desc, town);
+	AllocateWindowDescFront<TownAuthorityWindow>(_town_authority_desc, town);
 }
 
 
@@ -360,7 +363,7 @@ private:
 public:
 	static const int WID_TV_HEIGHT_NORMAL = 150;
 
-	TownViewWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	TownViewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->CreateNestedTree();
 
@@ -524,11 +527,11 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_TV_INFO:
-				size->height = GetDesiredInfoHeight(size->width) + padding.height;
+				size.height = GetDesiredInfoHeight(size.width) + padding.height;
 				break;
 		}
 	}
@@ -584,6 +587,13 @@ public:
 		}
 	}
 
+	void OnMouseWheel(int wheel) override
+	{
+		if (_settings_client.gui.scrollwheel_scrolling != SWS_OFF) {
+			DoZoomInOutWindow(wheel < 0 ? ZOOM_IN : ZOOM_OUT, this);
+		}
+	}
+
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data Information about the changed data.
@@ -597,11 +607,11 @@ public:
 		this->ResizeWindowAsNeeded();
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (str == nullptr) return;
+		if (!str.has_value()) return;
 
-		Command<CMD_RENAME_TOWN>::Post(STR_ERROR_CAN_T_RENAME_TOWN, this->window_number, str);
+		Command<CMD_RENAME_TOWN>::Post(STR_ERROR_CAN_T_RENAME_TOWN, this->window_number, *str);
 	}
 
 	IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
@@ -613,9 +623,9 @@ public:
 static constexpr NWidgetPart _nested_town_game_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CHANGE_NAME), SetMinimalSize(12, 14), SetDataTip(SPR_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CHANGE_NAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetDataTip(SPR_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_TV_CAPTION), SetDataTip(STR_TOWN_VIEW_TOWN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CENTER_VIEW), SetMinimalSize(12, 14), SetDataTip(SPR_GOTO_LOCATION, STR_TOWN_VIEW_CENTER_TOOLTIP),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CENTER_VIEW), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetDataTip(SPR_GOTO_LOCATION, STR_TOWN_VIEW_CENTER_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
@@ -633,19 +643,19 @@ static constexpr NWidgetPart _nested_town_game_view_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _town_game_view_desc(__FILE__, __LINE__,
+static WindowDesc _town_game_view_desc(
 	WDP_AUTO, "view_town", 260, TownViewWindow::WID_TV_HEIGHT_NORMAL,
 	WC_TOWN_VIEW, WC_NONE,
 	0,
-	std::begin(_nested_town_game_view_widgets), std::end(_nested_town_game_view_widgets)
+	_nested_town_game_view_widgets
 );
 
 static constexpr NWidgetPart _nested_town_editor_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CHANGE_NAME), SetMinimalSize(12, 14), SetDataTip(SPR_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CHANGE_NAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetDataTip(SPR_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_TV_CAPTION), SetDataTip(STR_TOWN_VIEW_TOWN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CENTER_VIEW), SetMinimalSize(12, 14), SetDataTip(SPR_GOTO_LOCATION, STR_TOWN_VIEW_CENTER_TOOLTIP),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CENTER_VIEW), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetDataTip(SPR_GOTO_LOCATION, STR_TOWN_VIEW_CENTER_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
@@ -664,26 +674,26 @@ static constexpr NWidgetPart _nested_town_editor_view_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _town_editor_view_desc(__FILE__, __LINE__,
+static WindowDesc _town_editor_view_desc(
 	WDP_AUTO, "view_town_scen", 260, TownViewWindow::WID_TV_HEIGHT_NORMAL,
 	WC_TOWN_VIEW, WC_NONE,
 	0,
-	std::begin(_nested_town_editor_view_widgets), std::end(_nested_town_editor_view_widgets)
+	_nested_town_editor_view_widgets
 );
 
 void ShowTownViewWindow(TownID town)
 {
 	if (_game_mode == GM_EDITOR) {
-		AllocateWindowDescFront<TownViewWindow>(&_town_editor_view_desc, town);
+		AllocateWindowDescFront<TownViewWindow>(_town_editor_view_desc, town);
 	} else {
-		AllocateWindowDescFront<TownViewWindow>(&_town_game_view_desc, town);
+		AllocateWindowDescFront<TownViewWindow>(_town_game_view_desc, town);
 	}
 }
 
 static constexpr NWidgetPart _nested_town_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_TOWN_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_TD_CAPTION), SetDataTip(STR_TOWN_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
@@ -720,8 +730,12 @@ private:
 	static Listing last_sorting;
 
 	/* Constants for sorting towns */
-	static const StringID sorter_names[];
-	static GUITownList::SortFunction * const sorter_funcs[];
+	static inline const StringID sorter_names[] = {
+		STR_SORT_BY_NAME,
+		STR_SORT_BY_POPULATION,
+		STR_SORT_BY_RATING,
+	};
+	static const std::initializer_list<GUITownList::SortFunction * const> sorter_funcs;
 
 	StringFilter string_filter;             ///< Filter for towns
 	QueryString townname_editbox;           ///< Filter editbox
@@ -734,6 +748,7 @@ private:
 	{
 		if (this->towns.NeedRebuild()) {
 			this->towns.clear();
+			this->towns.reserve(Town::GetNumItems());
 
 			for (const Town *t : Town::Iterate()) {
 				if (this->string_filter.IsEmpty()) {
@@ -745,7 +760,6 @@ private:
 				if (this->string_filter.GetState()) this->towns.push_back(t);
 			}
 
-			this->towns.shrink_to_fit();
 			this->towns.RebuildDone();
 			this->vscroll->SetCount(this->towns.size()); // Update scrollbar as well.
 		}
@@ -792,7 +806,7 @@ private:
 	}
 
 public:
-	TownDirectoryWindow(WindowDesc *desc) : Window(desc), townname_editbox(MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_TOWN_NAME_CHARS)
+	TownDirectoryWindow(WindowDesc &desc) : Window(desc), townname_editbox(MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_TOWN_NAME_CHARS)
 	{
 		this->CreateNestedTree();
 
@@ -812,6 +826,11 @@ public:
 	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
+			case WID_TD_CAPTION:
+				SetDParam(0, this->vscroll->GetCount());
+				SetDParam(1, Town::GetNumItems());
+				break;
+
 			case WID_TD_WORLD_POPULATION:
 				SetDParam(0, GetWorldPopulation());
 				break;
@@ -840,7 +859,6 @@ public:
 				break;
 
 			case WID_TD_LIST: {
-				int n = 0;
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				if (this->towns.empty()) { // No towns available.
 					DrawString(tr, STR_TOWN_DIRECTORY_NONE);
@@ -853,8 +871,9 @@ public:
 				int icon_x = tr.WithWidth(icon_size.width, rtl).left;
 				tr = tr.Indent(icon_size.width + WidgetDimensions::scaled.hsep_normal, rtl);
 
-				for (uint i = this->vscroll->GetPosition(); i < this->towns.size(); i++) {
-					const Town *t = this->towns[i];
+				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->towns);
+				for (auto it = first; it != last; ++it) {
+					const Town *t = *it;
 					assert(t->xy != INVALID_TILE);
 
 					/* Draw rating icon. */
@@ -872,31 +891,27 @@ public:
 					DrawString(tr.left, tr.right, tr.top + (this->resize.step_height - GetCharacterHeight(FS_NORMAL)) / 2, GetTownString(t));
 
 					tr.top += this->resize.step_height;
-					if (++n == this->vscroll->GetCapacity()) break; // max number of towns in 1 window
 				}
 				break;
 			}
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_TD_SORT_ORDER: {
 				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
 				d.width += padding.width + Window::SortButtonWidth() * 2; // Doubled since the string is centred and it also looks better.
 				d.height += padding.height;
-				*size = maxdim(*size, d);
+				size = maxdim(size, d);
 				break;
 			}
 			case WID_TD_SORT_CRITERIA: {
-				Dimension d = {0, 0};
-				for (uint i = 0; TownDirectoryWindow::sorter_names[i] != INVALID_STRING_ID; i++) {
-					d = maxdim(d, GetStringBoundingBox(TownDirectoryWindow::sorter_names[i]));
-				}
+				Dimension d = GetStringListBoundingBox(TownDirectoryWindow::sorter_names);
 				d.width += padding.width;
 				d.height += padding.height;
-				*size = maxdim(*size, d);
+				size = maxdim(size, d);
 				break;
 			}
 			case WID_TD_LIST: {
@@ -913,11 +928,11 @@ public:
 				Dimension icon_size = GetSpriteSize(SPR_TOWN_RATING_GOOD);
 				d.width += icon_size.width + 2;
 				d.height = std::max(d.height, icon_size.height);
-				resize->height = d.height;
+				resize.height = d.height;
 				d.height *= 5;
 				d.width += padding.width;
 				d.height += padding.height;
-				*size = maxdim(*size, d);
+				size = maxdim(size, d);
 				break;
 			}
 			case WID_TD_WORLD_POPULATION: {
@@ -925,7 +940,7 @@ public:
 				Dimension d = GetStringBoundingBox(STR_TOWN_POPULATION);
 				d.width += padding.width;
 				d.height += padding.height;
-				*size = maxdim(*size, d);
+				size = maxdim(size, d);
 				break;
 			}
 		}
@@ -993,7 +1008,7 @@ public:
 
 	void OnResize() override
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_TD_LIST);
+		this->vscroll->SetCapacityFromWidget(this, WID_TD_LIST, WidgetDimensions::scaled.framerect.Vertical());
 	}
 
 	void OnEditboxChanged(WidgetID wid) override
@@ -1046,33 +1061,25 @@ public:
 
 Listing TownDirectoryWindow::last_sorting = {false, 0};
 
-/** Names of the sorting functions. */
-const StringID TownDirectoryWindow::sorter_names[] = {
-	STR_SORT_BY_NAME,
-	STR_SORT_BY_POPULATION,
-	STR_SORT_BY_RATING,
-	INVALID_STRING_ID
-};
-
 /** Available town directory sorting functions. */
-GUITownList::SortFunction * const TownDirectoryWindow::sorter_funcs[] = {
+const std::initializer_list<GUITownList::SortFunction * const> TownDirectoryWindow::sorter_funcs = {
 	&TownNameSorter,
 	&TownPopulationSorter,
 	&TownRatingSorter,
 };
 
-static WindowDesc _town_directory_desc(__FILE__, __LINE__,
+static WindowDesc _town_directory_desc(
 	WDP_AUTO, "list_towns", 208, 202,
 	WC_TOWN_DIRECTORY, WC_NONE,
 	0,
-	std::begin(_nested_town_directory_widgets), std::end(_nested_town_directory_widgets),
+	_nested_town_directory_widgets,
 	&TownDirectoryWindow::hotkeys
 );
 
 void ShowTownDirectory()
 {
 	if (BringWindowToFrontById(WC_TOWN_DIRECTORY, 0)) return;
-	new TownDirectoryWindow(&_town_directory_desc);
+	new TownDirectoryWindow(_town_directory_desc);
 }
 
 void CcFoundTown(Commands, const CommandCost &result, TileIndex tile)
@@ -1151,7 +1158,7 @@ private:
 	TownNameParams params;  ///< Town name parameters
 
 public:
-	FoundTownWindow(WindowDesc *desc, WindowNumber window_number) :
+	FoundTownWindow(WindowDesc &desc, WindowNumber window_number) :
 			Window(desc),
 			town_size(TSZ_MEDIUM),
 			town_layout(_settings_game.economy.town_layout),
@@ -1237,7 +1244,7 @@ public:
 				break;
 
 			case WID_TF_MANY_RANDOM_TOWNS: {
-				Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
+				Backup<bool> old_generating_world(_generating_world, true);
 				UpdateNearestTownForRoadTiles(true);
 				if (!GenerateTowns(this->town_layout)) {
 					ShowErrorMessage(STR_ERROR_CAN_T_GENERATE_TOWN, STR_ERROR_NO_SPACE_FOR_TOWN, WL_INFO);
@@ -1295,20 +1302,354 @@ public:
 	}
 };
 
-static WindowDesc _found_town_desc(__FILE__, __LINE__,
+static WindowDesc _found_town_desc(
 	WDP_AUTO, "build_town", 160, 162,
 	WC_FOUND_TOWN, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_found_town_widgets), std::end(_nested_found_town_widgets)
+	_nested_found_town_widgets
 );
 
 void ShowFoundTownWindow()
 {
 	if (_game_mode != GM_EDITOR && !Company::IsValidID(_local_company)) return;
-	AllocateWindowDescFront<FoundTownWindow>(&_found_town_desc, 0);
+	AllocateWindowDescFront<FoundTownWindow>(_found_town_desc, 0);
 }
 
 void InitializeTownGui()
 {
 	_town_local_authority_kdtree.Clear();
+}
+
+/**
+ * Draw representation of a house tile for GUI purposes.
+ * @param x Position x of image.
+ * @param y Position y of image.
+ * @param spec House spec to draw.
+ * @param house_id House ID to draw.
+ * @param view The house's 'view'.
+ */
+void DrawNewHouseTileInGUI(int x, int y, const HouseSpec *spec, HouseID house_id, int view)
+{
+	HouseResolverObject object(house_id, INVALID_TILE, nullptr, CBID_NO_CALLBACK, 0, 0, true, view);
+	const SpriteGroup *group = object.Resolve();
+	if (group == nullptr || group->type != SGT_TILELAYOUT) return;
+
+	uint8_t stage = TOWN_HOUSE_COMPLETED;
+	const DrawTileSprites *dts = reinterpret_cast<const TileLayoutSpriteGroup *>(group)->ProcessRegisters(&stage);
+
+	PaletteID palette = GENERAL_SPRITE_COLOUR(spec->random_colour[0]);
+	if (HasBit(spec->callback_mask, CBM_HOUSE_COLOUR)) {
+		uint16_t callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, nullptr, INVALID_TILE, true, view);
+		if (callback != CALLBACK_FAILED) {
+			/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */
+			palette = HasBit(callback, 14) ? GB(callback, 0, 8) + SPR_2CCMAP_BASE : callback;
+		}
+	}
+
+	SpriteID image = dts->ground.sprite;
+	PaletteID pal  = dts->ground.pal;
+
+	if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) image += stage;
+	if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += stage;
+
+	if (GB(image, 0, SPRITE_WIDTH) != 0) {
+		DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
+	}
+
+	DrawNewGRFTileSeqInGUI(x, y, dts, stage, palette);
+}
+
+/**
+ * Draw a house that does not exist.
+ * @param x Position x of image.
+ * @param y Position y of image.
+ * @param house_id House ID to draw.
+ * @param view The house's 'view'.
+ */
+void DrawHouseInGUI(int x, int y, HouseID house_id, int view)
+{
+	auto draw = [](int x, int y, HouseID house_id, int view) {
+		if (house_id >= NEW_HOUSE_OFFSET) {
+			/* Houses don't necessarily need new graphics. If they don't have a
+			 * spritegroup associated with them, then the sprite for the substitute
+			 * house id is drawn instead. */
+			const HouseSpec *spec = HouseSpec::Get(house_id);
+			if (spec->grf_prop.spritegroup[0] != nullptr) {
+				DrawNewHouseTileInGUI(x, y, spec, house_id, view);
+				return;
+			} else {
+				house_id = HouseSpec::Get(house_id)->grf_prop.subst_id;
+			}
+		}
+
+		/* Retrieve data from the draw town tile struct */
+		const DrawBuildingsTileStruct &dcts = GetTownDrawTileData()[house_id << 4 | view << 2 | TOWN_HOUSE_COMPLETED];
+		DrawSprite(dcts.ground.sprite, dcts.ground.pal, x, y);
+
+		/* Add a house on top of the ground? */
+		if (dcts.building.sprite != 0) {
+			Point pt = RemapCoords(dcts.subtile_x, dcts.subtile_y, 0);
+			DrawSprite(dcts.building.sprite, dcts.building.pal, x + UnScaleGUI(pt.x), y + UnScaleGUI(pt.y));
+		}
+	};
+
+	/* Houses can have 1x1, 1x2, 2x1 and 2x2 layouts which are individual HouseIDs. For the GUI we need
+	 * draw all of the tiles with appropriate positions. */
+	int x_delta = ScaleGUITrad(TILE_PIXELS);
+	int y_delta = ScaleGUITrad(TILE_PIXELS / 2);
+
+	const HouseSpec *hs = HouseSpec::Get(house_id);
+	if (hs->building_flags & TILE_SIZE_2x2) {
+		draw(x, y - y_delta - y_delta, house_id, view); // North corner.
+		draw(x + x_delta, y - y_delta, house_id + 1, view); // West corner.
+		draw(x - x_delta, y - y_delta, house_id + 2, view); // East corner.
+		draw(x, y, house_id + 3, view); // South corner.
+	} else if (hs->building_flags & TILE_SIZE_2x1) {
+		draw(x + x_delta / 2, y - y_delta, house_id, view); // North east tile.
+		draw(x - x_delta / 2, y, house_id + 1, view); // South west tile.
+	} else if (hs->building_flags & TILE_SIZE_1x2) {
+		draw(x - x_delta / 2, y - y_delta, house_id, view); // North west tile.
+		draw(x + x_delta / 2, y, house_id + 1, view); // South east tile.
+	} else {
+		draw(x, y, house_id, view);
+	}
+}
+
+
+class HousePickerCallbacks : public PickerCallbacks {
+public:
+	HousePickerCallbacks() : PickerCallbacks("fav_houses") {}
+
+	/**
+	 * Set climate mask for filtering buildings from current landscape.
+	 */
+	void SetClimateMask()
+	{
+		switch (_settings_game.game_creation.landscape) {
+			case LT_TEMPERATE: this->climate_mask = HZ_TEMP; break;
+			case LT_ARCTIC:    this->climate_mask = HZ_SUBARTC_ABOVE | HZ_SUBARTC_BELOW; break;
+			case LT_TROPIC:    this->climate_mask = HZ_SUBTROPIC; break;
+			case LT_TOYLAND:   this->climate_mask = HZ_TOYLND; break;
+			default: NOT_REACHED();
+		}
+
+		/* In some cases, not all 'classes' (house zones) have distinct houses, so we need to disable those.
+		 * As we need to check all types, and this cannot change with the picker window open, pre-calculate it.
+		 * This loop calls GetTypeName() instead of directly checking properties so that there is no discrepancy. */
+		this->class_mask = 0;
+
+		int num_classes = this->GetClassCount();
+		for (int cls_id = 0; cls_id < num_classes; ++cls_id) {
+			int num_types = this->GetTypeCount(cls_id);
+			for (int id = 0; id < num_types; ++id) {
+				if (this->GetTypeName(cls_id, id) != INVALID_STRING_ID) {
+					SetBit(this->class_mask, cls_id);
+					break;
+				}
+			}
+		}
+	}
+
+	HouseZones climate_mask;
+	uint8_t class_mask; ///< Mask of available 'classes'.
+
+	static inline int sel_class; ///< Currently selected 'class'.
+	static inline int sel_type; ///< Currently selected HouseID.
+	static inline int sel_view; ///< Currently selected 'view'. This is not controllable as its based on random data.
+
+	/* Houses do not have classes like NewGRFClass. We'll make up fake classes based on town zone
+	 * availability instead. */
+	static inline const std::array<StringID, HZB_END> zone_names = {
+		STR_HOUSE_PICKER_CLASS_ZONE1,
+		STR_HOUSE_PICKER_CLASS_ZONE2,
+		STR_HOUSE_PICKER_CLASS_ZONE3,
+		STR_HOUSE_PICKER_CLASS_ZONE4,
+		STR_HOUSE_PICKER_CLASS_ZONE5,
+	};
+
+	StringID GetClassTooltip() const override { return STR_PICKER_HOUSE_CLASS_TOOLTIP; }
+	StringID GetTypeTooltip() const override { return STR_PICKER_HOUSE_TYPE_TOOLTIP; }
+	bool IsActive() const override { return true; }
+
+	bool HasClassChoice() const override { return true; }
+	int GetClassCount() const override { return static_cast<int>(zone_names.size()); }
+
+	void Close([[maybe_unused]] int data) override { ResetObjectToPlace(); }
+
+	int GetSelectedClass() const override { return HousePickerCallbacks::sel_class; }
+	void SetSelectedClass(int cls_id) const override { HousePickerCallbacks::sel_class = cls_id; }
+
+	StringID GetClassName(int id) const override
+	{
+		if (id >= GetClassCount()) return INVALID_STRING_ID;
+		if (!HasBit(this->class_mask, id)) return INVALID_STRING_ID;
+		return zone_names[id];
+	}
+
+	int GetTypeCount(int cls_id) const override
+	{
+		if (cls_id < GetClassCount()) return static_cast<int>(HouseSpec::Specs().size());
+		return 0;
+	}
+
+	PickerItem GetPickerItem(int cls_id, int id) const override
+	{
+		const auto *spec = HouseSpec::Get(id);
+		if (spec->grf_prop.grffile == nullptr) return {0, spec->Index(), cls_id, id};
+		return {spec->grf_prop.grffile->grfid, spec->grf_prop.local_id, cls_id, id};
+	}
+
+	int GetSelectedType() const override { return sel_type; }
+	void SetSelectedType(int id) const override { sel_type = id; }
+
+	StringID GetTypeName(int cls_id, int id) const override
+	{
+		const HouseSpec *spec = HouseSpec::Get(id);
+		if (spec == nullptr) return INVALID_STRING_ID;
+		if (!spec->enabled) return INVALID_STRING_ID;
+		if ((spec->building_availability & climate_mask) == 0) return INVALID_STRING_ID;
+		if (!HasBit(spec->building_availability, cls_id)) return INVALID_STRING_ID;
+		for (int i = 0; i < cls_id; i++) {
+			/* Don't include if it's already included in an earlier zone. */
+			if (HasBit(spec->building_availability, i)) return INVALID_STRING_ID;
+		}
+
+		 return spec->building_name;
+	}
+
+	bool IsTypeAvailable(int, int id) const override
+	{
+		const HouseSpec *hs = HouseSpec::Get(id);
+		return hs->enabled;
+	}
+
+	void DrawType(int x, int y, int, int id) const override
+	{
+		DrawHouseInGUI(x, y, id, HousePickerCallbacks::sel_view);
+	}
+
+	void FillUsedItems(std::set<PickerItem> &items) override
+	{
+		auto id_count = GetBuildingHouseIDCounts();
+		for (auto it = id_count.begin(); it != id_count.end(); ++it) {
+			if (*it == 0) continue;
+			HouseID house = static_cast<HouseID>(std::distance(id_count.begin(), it));
+			const HouseSpec *hs = HouseSpec::Get(house);
+			int class_index = FindFirstBit(hs->building_availability & HZ_ZONALL);
+			items.insert({0, house, class_index, house});
+		}
+	}
+
+	std::set<PickerItem> UpdateSavedItems(const std::set<PickerItem> &src) override
+	{
+		if (src.empty()) return src;
+
+		const auto specs = HouseSpec::Specs();
+		std::set<PickerItem> dst;
+		for (const auto &item : src) {
+			if (item.grfid == 0) {
+				dst.insert(item);
+			} else {
+				/* Search for spec by grfid and local index. */
+				auto it = std::find_if(specs.begin(), specs.end(), [&item](const HouseSpec &spec) { return spec.grf_prop.grffile != nullptr && spec.grf_prop.grffile->grfid == item.grfid && spec.grf_prop.local_id == item.local_id; });
+				if (it == specs.end()) {
+					/* Not preset, hide from UI. */
+					dst.insert({item.grfid, item.local_id, -1, -1});
+				} else {
+					int class_index = FindFirstBit(it->building_availability & HZ_ZONALL);
+					dst.insert( {item.grfid, item.local_id, class_index, it->Index()});
+				}
+			}
+		}
+
+		return dst;
+	}
+
+	static HousePickerCallbacks instance;
+};
+/* static */ HousePickerCallbacks HousePickerCallbacks::instance;
+
+struct BuildHouseWindow : public PickerWindow {
+	BuildHouseWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, 0, HousePickerCallbacks::instance)
+	{
+		HousePickerCallbacks::instance.SetClimateMask();
+		this->ConstructWindow();
+		this->InvalidateData();
+	}
+
+	void UpdateSelectSize(const HouseSpec *spec)
+	{
+		if (spec == nullptr) {
+			SetTileSelectSize(1, 1);
+			ResetObjectToPlace();
+		} else {
+			SetObjectToPlaceWnd(SPR_CURSOR_TOWN, PAL_NONE, HT_RECT | HT_DIAGONAL, this);
+			if (spec->building_flags & TILE_SIZE_2x2) {
+				SetTileSelectSize(2, 2);
+			} else if (spec->building_flags & TILE_SIZE_2x1) {
+				SetTileSelectSize(2, 1);
+			} else if (spec->building_flags & TILE_SIZE_1x2) {
+				SetTileSelectSize(1, 2);
+			} else if (spec->building_flags & TILE_SIZE_1x1) {
+				SetTileSelectSize(1, 1);
+			}
+		}
+	}
+
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	{
+		this->PickerWindow::OnInvalidateData(data, gui_scope);
+		if (!gui_scope) return;
+
+		if ((data & PickerWindow::PFI_POSITION) != 0) {
+			const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
+			UpdateSelectSize(spec);
+		}
+	}
+
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	{
+		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
+		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index());
+	}
+
+	IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {
+		/* There are four different 'views' that are random based on house tile position. As this is not
+		 * user-controllable, instead we automatically cycle through them. */
+		HousePickerCallbacks::sel_view = (HousePickerCallbacks::sel_view + 1) % 4;
+		this->SetDirty();
+	}};
+
+	static inline HotkeyList hotkeys{"buildhouse", {
+		Hotkey('F', "focus_filter_box", PCWHK_FOCUS_FILTER_BOX),
+	}};
+};
+
+/** Nested widget definition for the build NewGRF rail waypoint window */
+static constexpr NWidgetPart _nested_build_house_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_HOUSE_PICKER_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_DEFSIZEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidgetFunction(MakePickerClassWidgets),
+		NWidgetFunction(MakePickerTypeWidgets),
+	EndContainer(),
+};
+
+static WindowDesc _build_house_desc(
+	WDP_AUTO, "build_house", 0, 0,
+	WC_BUILD_HOUSE, WC_BUILD_TOOLBAR,
+	WDF_CONSTRUCTION,
+	_nested_build_house_widgets,
+	&BuildHouseWindow::hotkeys
+);
+
+void ShowBuildHousePicker(Window *parent)
+{
+	if (BringWindowToFrontById(WC_BUILD_HOUSE, 0)) return;
+	new BuildHouseWindow(_build_house_desc, parent);
 }

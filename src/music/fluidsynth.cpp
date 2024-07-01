@@ -58,7 +58,7 @@ static void RenderMusicStream(int16_t *buffer, size_t samples)
 	fluid_synth_write_s16(_midi.synth, samples, buffer, 0, 2, buffer, 1, 2);
 }
 
-const char *MusicDriver_FluidSynth::Start(const StringList &param)
+std::optional<std::string_view> MusicDriver_FluidSynth::Start(const StringList &param)
 {
 	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
 
@@ -110,7 +110,7 @@ const char *MusicDriver_FluidSynth::Start(const StringList &param)
 
 	_midi.player = nullptr;
 
-	return nullptr;
+	return std::nullopt;
 }
 
 void MusicDriver_FluidSynth::Stop()
@@ -183,7 +183,7 @@ bool MusicDriver_FluidSynth::IsSongPlaying()
 	return fluid_player_get_status(_midi.player) == FLUID_PLAYER_PLAYING;
 }
 
-void MusicDriver_FluidSynth::SetVolume(byte vol)
+void MusicDriver_FluidSynth::SetVolume(uint8_t vol)
 {
 	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
 	if (_midi.settings == nullptr) return;

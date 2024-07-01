@@ -230,7 +230,7 @@ struct CheatWindow : Window {
 	uint line_height;
 	Dimension icon;     ///< Dimension of company icon sprite
 
-	CheatWindow(WindowDesc *desc) : Window(desc)
+	CheatWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->InitNested();
 	}
@@ -298,38 +298,37 @@ struct CheatWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_C_PANEL) return;
 
 		uint width = 0;
-		for (int i = 0; i != lengthof(_cheats_ui); i++) {
-			const CheatEntry *ce = &_cheats_ui[i];
-			switch (ce->type) {
+		for (const auto &ce : _cheats_ui) {
+			switch (ce.type) {
 				case SLE_BOOL:
 					SetDParam(0, STR_CONFIG_SETTING_ON);
-					width = std::max(width, GetStringBoundingBox(ce->str).width);
+					width = std::max(width, GetStringBoundingBox(ce.str).width);
 					SetDParam(0, STR_CONFIG_SETTING_OFF);
-					width = std::max(width, GetStringBoundingBox(ce->str).width);
+					width = std::max(width, GetStringBoundingBox(ce.str).width);
 					break;
 
 				default:
-					switch (ce->str) {
+					switch (ce.str) {
 						/* Display date for change date cheat */
 						case STR_CHEAT_CHANGE_DATE:
 							SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 11, 31));
-							width = std::max(width, GetStringBoundingBox(ce->str).width);
+							width = std::max(width, GetStringBoundingBox(ce.str).width);
 							break;
 
 						/* Draw coloured flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY:
 							SetDParamMaxValue(0, MAX_COMPANIES);
-							width = std::max(width, GetStringBoundingBox(ce->str).width + WidgetDimensions::scaled.hsep_wide);
+							width = std::max(width, GetStringBoundingBox(ce.str).width + WidgetDimensions::scaled.hsep_wide);
 							break;
 
 						default:
 							SetDParam(0, INT64_MAX);
-							width = std::max(width, GetStringBoundingBox(ce->str).width);
+							width = std::max(width, GetStringBoundingBox(ce.str).width);
 							break;
 					}
 					break;
@@ -339,8 +338,8 @@ struct CheatWindow : Window {
 		this->line_height = std::max<uint>(this->icon.height, SETTING_BUTTON_HEIGHT);
 		this->line_height = std::max<uint>(this->line_height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.framerect.Vertical();
 
-		size->width = width + WidgetDimensions::scaled.hsep_wide * 2 + SETTING_BUTTON_WIDTH;
-		size->height = WidgetDimensions::scaled.framerect.Vertical() + this->line_height * lengthof(_cheats_ui);
+		size.width = width + WidgetDimensions::scaled.hsep_wide * 2 + SETTING_BUTTON_WIDTH;
+		size.height = WidgetDimensions::scaled.framerect.Vertical() + this->line_height * lengthof(_cheats_ui);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -405,14 +404,14 @@ struct CheatWindow : Window {
 		this->SetDirty();
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
 		/* Was 'cancel' pressed or nothing entered? */
-		if (str == nullptr || StrEmpty(str)) return;
+		if (!str.has_value() || str->empty()) return;
 
 		const CheatEntry *ce = &_cheats_ui[clicked_widget];
 		int oldvalue = (int32_t)ReadValue(ce->variable, ce->type);
-		int value = atoi(str);
+		int value = atoi(str->c_str());
 		*ce->been_used = true;
 		value = ce->proc(value, value - oldvalue);
 
@@ -426,16 +425,16 @@ struct CheatWindow : Window {
 };
 
 /** Window description of the cheats GUI. */
-static WindowDesc _cheats_desc(__FILE__, __LINE__,
+static WindowDesc _cheats_desc(
 	WDP_AUTO, "cheats", 0, 0,
 	WC_CHEATS, WC_NONE,
 	0,
-	std::begin(_nested_cheat_widgets), std::end(_nested_cheat_widgets)
+	_nested_cheat_widgets
 );
 
 /** Open cheat window. */
 void ShowCheatWindow()
 {
 	CloseWindowById(WC_CHEATS, 0);
-	new CheatWindow(&_cheats_desc);
+	new CheatWindow(_cheats_desc);
 }

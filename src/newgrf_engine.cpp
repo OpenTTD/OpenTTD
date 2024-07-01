@@ -27,7 +27,7 @@
 
 #include "safeguards.h"
 
-void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *group, EngineID *train_id, uint trains)
+void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *group, std::span<EngineID> engine_ids)
 {
 	Engine *e = Engine::Get(engine);
 
@@ -36,7 +36,7 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 	WagonOverride *wo = &e->overrides.emplace_back();
 	wo->group = group;
 	wo->cargo = cargo;
-	wo->engines.assign(train_id, train_id + trains);
+	wo->engines.assign(engine_ids.begin(), engine_ids.end());
 }
 
 const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine)
@@ -50,10 +50,10 @@ const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, Eng
 	return nullptr;
 }
 
-void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *group)
+void SetCustomEngineSprites(EngineID engine, uint8_t cargo, const SpriteGroup *group)
 {
 	Engine *e = Engine::Get(engine);
-	assert(cargo < lengthof(e->grf_prop.spritegroup));
+	assert(cargo < std::size(e->grf_prop.spritegroup));
 
 	if (e->grf_prop.spritegroup[cargo] != nullptr) {
 		GrfMsg(6, "SetCustomEngineSprites: engine {} cargo {} already has group -- replacing", engine, cargo);
@@ -130,7 +130,7 @@ enum TTDPAircraftMovementStates {
  * Map OTTD aircraft movement states to TTDPatch style movement states
  * (VarAction 2 Variable 0xE2)
  */
-static byte MapAircraftMovementState(const Aircraft *v)
+static uint8_t MapAircraftMovementState(const Aircraft *v)
 {
 	const Station *st = GetTargetAirportIfValid(v);
 	if (st == nullptr) return AMS_TTDP_FLIGHT_TO_TOWER;
@@ -257,7 +257,7 @@ enum TTDPAircraftMovementActions {
  * (VarAction 2 Variable 0xE6)
  * This is not fully supported yet but it's enough for Planeset.
  */
-static byte MapAircraftMovementAction(const Aircraft *v)
+static uint8_t MapAircraftMovementAction(const Aircraft *v)
 {
 	switch (v->state) {
 		case HANGAR:
@@ -315,7 +315,7 @@ static byte MapAircraftMovementAction(const Aircraft *v)
 }
 
 
-/* virtual */ ScopeResolver *VehicleResolverObject::GetScope(VarSpriteGroupScope scope, byte relative)
+/* virtual */ ScopeResolver *VehicleResolverObject::GetScope(VarSpriteGroupScope scope, uint8_t relative)
 {
 	switch (scope) {
 		case VSG_SCOPE_SELF:   return &this->self_scope;
@@ -396,8 +396,8 @@ static const Livery *LiveryHelper(EngineID engine, const Vehicle *v)
 static uint32_t PositionHelper(const Vehicle *v, bool consecutive)
 {
 	const Vehicle *u;
-	byte chain_before = 0;
-	byte chain_after  = 0;
+	uint8_t chain_before = 0;
+	uint8_t chain_after  = 0;
 
 	for (u = v->First(); u != v; u = u->Next()) {
 		chain_before++;
@@ -412,7 +412,7 @@ static uint32_t PositionHelper(const Vehicle *v, bool consecutive)
 	return chain_before | chain_after << 8 | (chain_before + chain_after + consecutive) << 16;
 }
 
-static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object, byte variable, uint32_t parameter, bool *available)
+static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object, uint8_t variable, uint32_t parameter, bool &available)
 {
 	/* Calculated vehicle parameters */
 	switch (variable) {
@@ -436,8 +436,8 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x42: { // Consist cargo information
 			if (!HasBit(v->grf_cache.cache_valid, NCVV_CONSIST_CARGO_INFORMATION)) {
 				std::array<uint8_t, NUM_CARGO> common_cargoes{};
-				byte cargo_classes = 0;
-				byte user_def_data = 0;
+				uint8_t cargo_classes = 0;
+				uint8_t user_def_data = 0;
 
 				for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 					if (v->type == VEH_TRAIN) user_def_data |= Train::From(u)->tcache.user_def_data;
@@ -506,7 +506,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 				const Vehicle *w = v->Next();
 				assert(w != nullptr);
 				uint16_t altitude = ClampTo<uint16_t>(v->z_pos - w->z_pos); // Aircraft height - shadow height
-				byte airporttype = ATP_TTDP_LARGE;
+				uint8_t airporttype = ATP_TTDP_LARGE;
 
 				const Station *st = GetTargetAirportIfValid(Aircraft::From(v));
 
@@ -590,9 +590,9 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 		case 0x4D: // Position within articulated vehicle
 			if (!HasBit(v->grf_cache.cache_valid, NCVV_POSITION_IN_VEHICLE)) {
-				byte artic_before = 0;
+				uint8_t artic_before = 0;
 				for (const Vehicle *u = v; u->IsArticulatedPart(); u = u->Previous()) artic_before++;
-				byte artic_after = 0;
+				uint8_t artic_after = 0;
 				for (const Vehicle *u = v; u->HasArticulatedPart(); u = u->Next()) artic_after++;
 				v->grf_cache.position_in_vehicle = artic_before | artic_after << 8;
 				SetBit(v->grf_cache.cache_valid, NCVV_POSITION_IN_VEHICLE);
@@ -935,11 +935,11 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 	Debug(grf, 1, "Unhandled vehicle variable 0x{:X}, type 0x{:X}", variable, (uint)v->type);
 
-	*available = false;
+	available = false;
 	return UINT_MAX;
 }
 
-/* virtual */ uint32_t VehicleScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t VehicleScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	if (this->v == nullptr) {
 		/* Vehicle does not exist, so we're in a purchase list */
@@ -968,7 +968,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			case 0xF2: return 0; // Cargo subtype
 		}
 
-		*available = false;
+		available = false;
 		return UINT_MAX;
 	}
 
@@ -1062,7 +1062,7 @@ VehicleResolverObject::VehicleResolverObject(EngineID engine_type, const Vehicle
 		if (this->root_spritegroup == nullptr) {
 			const Engine *e = Engine::Get(engine_type);
 			CargoID cargo = v != nullptr ? v->cargo_type : SpriteGroupCargo::SG_PURCHASE;
-			assert(cargo < lengthof(e->grf_prop.spritegroup));
+			assert(cargo < std::size(e->grf_prop.spritegroup));
 			this->root_spritegroup = e->grf_prop.spritegroup[cargo] != nullptr ? e->grf_prop.spritegroup[cargo] : e->grf_prop.spritegroup[SpriteGroupCargo::SG_DEFAULT];
 		}
 	}
@@ -1394,11 +1394,11 @@ void FillNewGRFVehicleCache(const Vehicle *v)
 	static_assert(NCVV_END == lengthof(cache_entries));
 
 	/* Resolve all the variables, so their caches are set. */
-	for (size_t i = 0; i < lengthof(cache_entries); i++) {
+	for (const auto &cache_entry : cache_entries) {
 		/* Only resolve when the cache isn't valid. */
-		if (HasBit(v->grf_cache.cache_valid, cache_entries[i][1])) continue;
+		if (HasBit(v->grf_cache.cache_valid, cache_entry[1])) continue;
 		bool stub;
-		ro.GetScope(VSG_SCOPE_SELF)->GetVariable(cache_entries[i][0], 0, &stub);
+		ro.GetScope(VSG_SCOPE_SELF)->GetVariable(cache_entry[0], 0, stub);
 	}
 
 	/* Make sure really all bits are set. */

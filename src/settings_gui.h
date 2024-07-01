@@ -11,29 +11,19 @@
 #define SETTING_GUI_H
 
 #include "gfx_type.h"
-#include "widgets/dropdown_type.h"
+#include "dropdown_type.h"
 
 /** Width of setting buttons */
 #define SETTING_BUTTON_WIDTH  ((int)NWidgetScrollbar::GetHorizontalDimension().width * 2)
 /** Height of setting buttons */
 #define SETTING_BUTTON_HEIGHT ((int)NWidgetScrollbar::GetHorizontalDimension().height)
 
-void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clickable_left, bool clickable_right);
+void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool clickable_left, bool clickable_right);
 void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool clickable);
 void DrawBoolButton(int x, int y, bool state, bool clickable);
 
 template <class T>
-DropDownList BuildSetDropDownList(int *selected_index)
-{
-	int n = T::GetNumSets();
-	*selected_index = T::GetIndexOfUsedSet();
-	DropDownList list;
-	for (int i = 0; i < n; i++) {
-		list.push_back(std::make_unique<DropDownListStringItem>(T::GetSet(i)->GetListLabel(), i, false));
-	}
-	return list;
-}
-
+DropDownList BuildSetDropDownList(int *selected_index);
 
 /* Actually implemented in music_gui.cpp */
 void ChangeMusicSet(int index);

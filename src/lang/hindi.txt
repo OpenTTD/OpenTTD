@@ -154,6 +154,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}वस�
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :निकास
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :समायोजन
@@ -194,6 +195,8 @@ STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :विद्य
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :भूमि क्षेत्र की जानकारी
 STR_ABOUT_MENU_HELP                                             :सहायता और नियमावली
 STR_ABOUT_MENU_AI_DEBUG                                         :एआई/गेम स्क्रिप्ट डिबग
+STR_ABOUT_MENU_SCREENSHOT                                       :स्क्रीनशॉट
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :फ्रेमदर दिखाएं
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' के बारे में
 
 ###length 31
@@ -325,7 +328,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}इस �
 
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिनलैंड मार्का
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :आइसलैंडिक क्रोना
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :हाँग काँग डॉलर
@@ -359,9 +362,11 @@ STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}इं�
 
 
 
+
 # Custom currency window
 
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}एक पाउंड (£) की तुलना में अपनी मुद्रा का अवमूल्यन करें
+
 
 
 
@@ -495,6 +500,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :नहीं
 ###length 2
 
 
+
 ###length 2
 
 
@@ -616,6 +622,8 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :कंप्य
 
 
 
+###length 3
+
 ###setting-zero-is-special
 
 
@@ -706,9 +714,7 @@ STR_CONFIG_SETTING_INTERFACE_GENERAL                            :सामान
 STR_CONFIG_SETTING_COMPANY                                      :कंपनी
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :मार्ग
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :नौकाओं द्वारा उपयोग किया जाने वाला पथान्वेषी
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :यदि ट्रेनें लंबे समय तक वहां प्रतीक्षा करती हैं तो उन्हें सिग्नल पर रिवर्स करने की अनुमति दें
-###length 2
 
 
 # Config errors
@@ -794,10 +800,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :सर्वर
 
 
 
-# Network set password
-
 # Network company info join/password
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}पासवर्ड
 
 # Network chat
 
@@ -808,7 +811,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :गलत प�
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}संपर्क विच्छेद संभावित
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :सामान्य त्रुटि
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :मानचित्र लोड नहीं हो सका
 
@@ -865,6 +868,9 @@ STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}अक�
 # Rail waypoint construction window
 
 # Rail station construction window
+
+
+
 
 
 STR_STATION_CLASS_DFLT                                          :मानक स्टेशन
@@ -1145,7 +1151,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}कं�
 # Company infrastructure window
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}उद्योग
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
@@ -1571,6 +1576,7 @@ STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}रे�
 
 
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}ट्रेन की दिशा उलट नहीं सकते...
 
@@ -1711,6 +1717,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

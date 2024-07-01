@@ -96,7 +96,7 @@ CompanyManagerFace ConvertFromOldCompanyManagerFace(uint32_t face)
 void AfterLoadCompanyStats()
 {
 	/* Reset infrastructure statistics to zero. */
-	for (Company *c : Company::Iterate()) MemSetT(&c->infrastructure, 0);
+	for (Company *c : Company::Iterate()) c->infrastructure = {};
 
 	/* Collect airport count. */
 	for (const Station *st : Station::Iterate()) {
@@ -151,7 +151,8 @@ void AfterLoadCompanyStats()
 						break;
 
 					case STATION_BUS:
-					case STATION_TRUCK: {
+					case STATION_TRUCK:
+					case STATION_ROADWAYPOINT: {
 						/* Iterate all present road types as each can have a different owner. */
 						for (RoadTramType rtt : _roadtramtypes) {
 							RoadType rt = GetRoadType(tile, rtt);
@@ -449,6 +450,8 @@ static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, president_name_1, SLE_STRINGID),
 	    SLE_VAR(CompanyProperties, president_name_2, SLE_UINT32),
 	SLE_CONDSSTR(CompanyProperties, president_name,  SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
+
+	SLE_CONDVECTOR(CompanyProperties, allow_list, SLE_STR, SLV_COMPANY_ALLOW_LIST, SL_MAX_VERSION),
 
 	    SLE_VAR(CompanyProperties, face,            SLE_UINT32),
 

@@ -207,6 +207,9 @@ enum Commands : uint16_t {
 	CMD_RENAME_WAYPOINT,              ///< rename a waypoint
 	CMD_REMOVE_FROM_RAIL_WAYPOINT,    ///< remove a (rectangle of) tiles from a rail waypoint
 
+	CMD_BUILD_ROAD_WAYPOINT,          ///< build a road waypoint
+	CMD_REMOVE_FROM_ROAD_WAYPOINT,    ///< remove a (rectangle of) tiles from a road waypoint
+
 	CMD_BUILD_ROAD_STOP,              ///< build a road stop
 	CMD_REMOVE_ROAD_STOP,             ///< remove a road stop
 	CMD_BUILD_LONG_ROAD,              ///< build a complete road (not a "half" one)
@@ -283,6 +286,7 @@ enum Commands : uint16_t {
 	CMD_TOWN_SET_TEXT,                ///< set the custom text of a town
 	CMD_EXPAND_TOWN,                  ///< expand a town
 	CMD_DELETE_TOWN,                  ///< delete a town
+	CMD_PLACE_HOUSE,                  ///< place a house
 
 	CMD_ORDER_REFIT,                  ///< change the refit information of an order (for "goto depot" )
 	CMD_CLONE_ORDER,                  ///< clone (and share) an order
@@ -294,6 +298,7 @@ enum Commands : uint16_t {
 
 	CMD_CREATE_SUBSIDY,               ///< create a new subsidy
 	CMD_COMPANY_CTRL,                 ///< used in multiplayer to create a new companies etc.
+	CMD_COMPANY_ALLOW_LIST_CTRL, ///< Used in multiplayer to add/remove a client's public key to/from the company's allow list.
 	CMD_CUSTOM_NEWS_ITEM,             ///< create a custom news message
 	CMD_CREATE_GOAL,                  ///< create a new goal
 	CMD_REMOVE_GOAL,                  ///< remove a goal
@@ -462,7 +467,7 @@ template <Commands Tcmd> struct CommandTraits;
 	};
 
 /** Storage buffer for serialized command data. */
-typedef std::vector<byte> CommandDataBuffer;
+typedef std::vector<uint8_t> CommandDataBuffer;
 
 /**
  * Define a callback function for the client, after the command is finished.

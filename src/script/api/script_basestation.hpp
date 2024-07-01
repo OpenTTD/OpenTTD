@@ -68,9 +68,10 @@ public:
 	static TileIndex GetLocation(StationID station_id);
 
 	/**
-	 * Get the last date a station part was added to this station.
+	 * Get the last calendar-date a station part was added to this station.
 	 * @param station_id The station to look at.
-	 * @return The last date some part of this station was build.
+	 * @return The last calendar-date some part of this station was build.
+	 * @see \ref ScriptCalendarTime
 	 */
 	static ScriptDate::Date GetConstructionDate(StationID station_id);
 };

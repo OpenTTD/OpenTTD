@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "league_gui.h"
-
 #include "company_base.h"
 #include "company_gui.h"
 #include "gui.h"
@@ -22,7 +21,9 @@
 #include "town.h"
 #include "viewport_func.h"
 #include "window_gui.h"
+
 #include "widgets/league_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
 
@@ -69,12 +70,12 @@ private:
 		if (!this->companies.NeedRebuild()) return;
 
 		this->companies.clear();
+		this->companies.reserve(Company::GetNumItems());
 
 		for (const Company *c : Company::Iterate()) {
 			this->companies.push_back(c);
 		}
 
-		this->companies.shrink_to_fit();
 		this->companies.RebuildDone();
 	}
 
@@ -85,7 +86,7 @@ private:
 	}
 
 public:
-	PerformanceLeagueWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	PerformanceLeagueWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
 		this->companies.ForceRebuild();
@@ -128,7 +129,7 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_PLT_BACKGROUND) return;
 
@@ -140,11 +141,11 @@ public:
 		this->ordinal_width += WidgetDimensions::scaled.hsep_wide; // Keep some extra spacing
 
 		uint widest_width = 0;
-		uint widest_title = 0;
-		for (uint i = 0; i < lengthof(_performance_titles); i++) {
-			uint width = GetStringBoundingBox(_performance_titles[i]).width;
+		StringID widest_title = STR_NULL;
+		for (auto title : _performance_titles) {
+			uint width = GetStringBoundingBox(title).width;
 			if (width > widest_width) {
-				widest_title = i;
+				widest_title = title;
 				widest_width = width;
 			}
 		}
@@ -155,14 +156,14 @@ public:
 		for (const Company *c : Company::Iterate()) {
 			SetDParam(0, c->index);
 			SetDParam(1, c->index);
-			SetDParam(2, _performance_titles[widest_title]);
+			SetDParam(2, widest_title);
 			widest_width = std::max(widest_width, GetStringBoundingBox(STR_COMPANY_LEAGUE_COMPANY_NAME).width);
 		}
 
 		this->text_width = widest_width + WidgetDimensions::scaled.hsep_indent * 3; // Keep some extra spacing
 
-		size->width = WidgetDimensions::scaled.framerect.Horizontal() + this->ordinal_width + this->icon.width + this->text_width + WidgetDimensions::scaled.hsep_wide;
-		size->height = this->line_height * MAX_COMPANIES + WidgetDimensions::scaled.framerect.Vertical();
+		size.width = WidgetDimensions::scaled.framerect.Horizontal() + this->ordinal_width + this->icon.width + this->text_width + WidgetDimensions::scaled.hsep_wide;
+		size.height = this->line_height * MAX_COMPANIES + WidgetDimensions::scaled.framerect.Vertical();
 	}
 
 	void OnGameTick() override
@@ -199,16 +200,16 @@ static constexpr NWidgetPart _nested_performance_league_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _performance_league_desc(__FILE__, __LINE__,
+static WindowDesc _performance_league_desc(
 	WDP_AUTO, "performance_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,
-	std::begin(_nested_performance_league_widgets), std::end(_nested_performance_league_widgets)
+	_nested_performance_league_widgets
 );
 
 void ShowPerformanceLeagueTable()
 {
-	AllocateWindowDescFront<PerformanceLeagueWindow>(&_performance_league_desc, 0);
+	AllocateWindowDescFront<PerformanceLeagueWindow>(_performance_league_desc, 0);
 }
 
 static void HandleLinkClick(Link link)
@@ -292,12 +293,12 @@ private:
 		for (uint i = 0; i != elements.size(); i++) {
 			auto *lte = elements[i];
 			if (i > 0 && elements[i - 1]->rating != lte->rating) rank = i;
-			this->rows.emplace_back(std::make_pair(rank, lte));
+			this->rows.emplace_back(rank, lte);
 		}
 	}
 
 public:
-	ScriptLeagueWindow(WindowDesc *desc, LeagueTableID table) : Window(desc)
+	ScriptLeagueWindow(WindowDesc &desc, LeagueTableID table) : Window(desc)
 	{
 		this->table = table;
 		this->BuildTable();
@@ -358,7 +359,7 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_SLT_BACKGROUND) return;
 
@@ -384,18 +385,18 @@ public:
 		if (!show_icon_column) this->icon_size.width = 0;
 		else this->icon_size.width += WidgetDimensions::scaled.hsep_wide;
 
-		size->width = this->rank_width + this->icon_size.width + this->text_width + this->score_width + WidgetDimensions::scaled.framerect.Horizontal() + WidgetDimensions::scaled.hsep_wide * 2;
-		size->height = this->line_height * std::max<uint>(3u, (unsigned)this->rows.size()) + WidgetDimensions::scaled.framerect.Vertical();
+		size.width = this->rank_width + this->icon_size.width + this->text_width + this->score_width + WidgetDimensions::scaled.framerect.Horizontal() + WidgetDimensions::scaled.hsep_wide * 2;
+		size.height = this->line_height * std::max<uint>(3u, (unsigned)this->rows.size()) + WidgetDimensions::scaled.framerect.Vertical();
 
 		if (!lt->header.empty()) {
 			SetDParamStr(0, lt->header);
-			this->header_height = GetStringHeight(STR_JUST_RAW_STRING, size->width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
-			size->height += header_height;
+			this->header_height = GetStringHeight(STR_JUST_RAW_STRING, size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
+			size.height += header_height;
 		} else this->header_height = 0;
 
 		if (!lt->footer.empty()) {
 			SetDParamStr(0, lt->footer);
-			size->height += GetStringHeight(STR_JUST_RAW_STRING, size->width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
+			size.height += GetStringHeight(STR_JUST_RAW_STRING, size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
 		}
 	}
 
@@ -434,17 +435,17 @@ static constexpr NWidgetPart _nested_script_league_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _script_league_desc(__FILE__, __LINE__,
+static WindowDesc _script_league_desc(
 	WDP_AUTO, "script_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,
-	std::begin(_nested_script_league_widgets), std::end(_nested_script_league_widgets)
+	_nested_script_league_widgets
 );
 
 void ShowScriptLeagueTable(LeagueTableID table)
 {
 	if (!LeagueTable::IsValidID(table)) return;
-	AllocateWindowDescFront<ScriptLeagueWindow>(&_script_league_desc, table);
+	AllocateWindowDescFront<ScriptLeagueWindow>(_script_league_desc, table);
 }
 
 void ShowFirstLeagueTable()

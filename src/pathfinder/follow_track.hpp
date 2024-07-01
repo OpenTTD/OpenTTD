@@ -121,12 +121,14 @@ struct CFollowTrackT
 		m_old_tile = old_tile;
 		m_old_td = old_td;
 		m_err = EC_NONE;
-		assert(
-			((TrackStatusToTrackdirBits(
-				GetTileTrackStatus(m_old_tile, TT(), (IsRoadTT() && m_veh != nullptr) ? (this->IsTram() ? RTT_TRAM : RTT_ROAD) : 0)
-			) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
-			(IsTram() && GetSingleTramBit(m_old_tile) != INVALID_DIAGDIR) // Disable the assertion for single tram bits
-		);
+
+		assert([&]() {
+			if (IsTram() && GetSingleTramBit(m_old_tile) != INVALID_DIAGDIR) return true; // Skip the check for single tram bits
+			const uint sub_mode = (IsRoadTT() && m_veh != nullptr) ? (this->IsTram() ? RTT_TRAM : RTT_ROAD) : 0;
+			const TrackdirBits old_tile_valid_dirs = TrackStatusToTrackdirBits(GetTileTrackStatus(m_old_tile, TT(), sub_mode));
+			return (old_tile_valid_dirs & TrackdirToTrackdirBits(m_old_td)) != TRACKDIR_BIT_NONE;
+		}());
+
 		m_exitdir = TrackdirToExitdir(m_old_td);
 		if (ForcedReverse()) return true;
 		if (!CanExitOldTile()) return false;
@@ -225,7 +227,7 @@ protected:
 		/* special handling for stations */
 		if (IsRailTT() && HasStationTileRail(m_new_tile)) {
 			m_is_station = true;
-		} else if (IsRoadTT() && IsRoadStopTile(m_new_tile)) {
+		} else if (IsRoadTT() && IsStationRoadStopTile(m_new_tile)) {
 			m_is_station = true;
 		}
 	}
@@ -376,7 +378,7 @@ protected:
 			/* move to the platform end */
 			TileIndexDiff diff = TileOffsByDiagDir(m_exitdir);
 			diff *= m_tiles_skipped;
-			m_new_tile = TILE_ADD(m_new_tile, diff);
+			m_new_tile = TileAdd(m_new_tile, diff);
 			return true;
 		}
 

@@ -16,7 +16,6 @@
 #include "tar_type.h"
 #ifdef _WIN32
 #include <windows.h>
-# define access _taccess
 #elif defined(__HAIKU__)
 #include <Path.h>
 #include <storage/FindDirectory.h>
@@ -24,6 +23,7 @@
 #include <unistd.h>
 #include <pwd.h>
 #endif
+#include <charconv>
 #include <sys/stat.h>
 #include <sstream>
 #include <filesystem>
@@ -67,11 +67,6 @@ std::vector<Searchpath> _valid_searchpaths;
 std::array<TarList, NUM_SUBDIRS> _tar_list;
 TarFileList _tar_filelist[NUM_SUBDIRS];
 
-typedef std::map<std::string, std::string> TarLinkList;
-static TarLinkList _tar_linklist[NUM_SUBDIRS]; ///< List of directory links
-
-extern bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb);
-
 /**
  * Checks whether the given search path is a valid search path
  * @param sp the search path to check
@@ -88,7 +83,7 @@ static void FillValidSearchPaths(bool only_local_path)
 
 	std::set<std::string> seen{};
 	for (Searchpath sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) {
-		if (sp == SP_WORKING_DIR) continue;
+		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
 
 		if (only_local_path) {
 			switch (sp) {
@@ -139,7 +134,8 @@ bool FioCheckFileExists(const std::string &filename, Subdirectory subdir)
  */
 bool FileExists(const std::string &filename)
 {
-	return access(OTTD2FS(filename).c_str(), 0) == 0;
+	std::error_code ec;
+	return std::filesystem::exists(OTTD2FS(filename), ec);
 }
 
 /**
@@ -203,7 +199,7 @@ static FILE *FioFOpenFileSp(const std::string &filename, const char *mode, Searc
 	 * a string, but a variable, it 'renames' the variable,
 	 * so make that variable to makes it compile happily */
 	wchar_t Lmode[5];
-	MultiByteToWideChar(CP_ACP, 0, mode, -1, Lmode, lengthof(Lmode));
+	MultiByteToWideChar(CP_ACP, 0, mode, -1, Lmode, static_cast<int>(std::size(Lmode)));
 #endif
 	FILE *f = nullptr;
 	std::string buf;
@@ -213,10 +209,6 @@ static FILE *FioFOpenFileSp(const std::string &filename, const char *mode, Searc
 	} else {
 		buf = _searchpaths[sp] + _subdirs[subdir] + filename;
 	}
-
-#if defined(_WIN32)
-	if (mode[0] == 'r' && GetFileAttributes(OTTD2FS(buf).c_str()) == INVALID_FILE_ATTRIBUTES) return nullptr;
-#endif
 
 	f = fopen(buf.c_str(), mode);
 #if !defined(_WIN32)
@@ -303,17 +295,6 @@ FILE *FioFOpenFile(const std::string &filename, const char *mode, Subdirectory s
 			first = false;
 		}
 
-		/* Resolve ONE directory link */
-		for (const auto &link : _tar_linklist[subdir]) {
-			const std::string &src = link.first;
-			size_t len = src.length();
-			if (resolved_name.length() >= len && resolved_name[len - 1] == PATHSEPCHAR && src.compare(0, len, resolved_name, 0, len) == 0) {
-				/* Apply link */
-				resolved_name.replace(0, len, link.second);
-				break; // Only resolve one level
-			}
-		}
-
 		TarFileList::iterator it = _tar_filelist[subdir].find(resolved_name);
 		if (it != _tar_filelist[subdir].end()) {
 			f = FioFOpenFileTar(it->second, filesize);
@@ -348,24 +329,26 @@ FILE *FioFOpenFile(const std::string &filename, const char *mode, Subdirectory s
  */
 void FioCreateDirectory(const std::string &name)
 {
-	auto p = name.find_last_of(PATHSEPCHAR);
-	if (p != std::string::npos) {
-		std::string dirname = name.substr(0, p);
-		DIR *dir = ttd_opendir(dirname.c_str());
-		if (dir == nullptr) {
-			FioCreateDirectory(dirname); // Try creating the parent directory, if we couldn't open it
-		} else {
-			closedir(dir);
-		}
-	}
+	/* Ignore directory creation errors; they'll surface later on. */
+	std::error_code error_code;
+	std::filesystem::create_directories(OTTD2FS(name), error_code);
+}
 
-	/* Ignore directory creation errors; they'll surface later on, and most
-	 * of the time they are 'directory already exists' errors anyhow. */
-#if defined(_WIN32)
-	CreateDirectory(OTTD2FS(name).c_str(), nullptr);
-#else
-	mkdir(OTTD2FS(name).c_str(), 0755);
-#endif
+/**
+ * Remove a file.
+ * @param filename Filename to remove.
+ * @return true iff the file was removed.
+ */
+bool FioRemove(const std::string &filename)
+{
+	std::filesystem::path path = OTTD2FS(filename);
+	std::error_code error_code;
+	std::filesystem::remove(path, error_code);
+	if (error_code) {
+		Debug(misc, 0, "Removing {} failed: {}", filename, error_code.message());
+		return false;
+	}
+	return true;
 }
 
 /**
@@ -379,27 +362,6 @@ void AppendPathSeparator(std::string &buf)
 	if (buf.empty()) return;
 
 	if (buf.back() != PATHSEPCHAR) buf.push_back(PATHSEPCHAR);
-}
-
-static void TarAddLink(const std::string &srcParam, const std::string &destParam, Subdirectory subdir)
-{
-	std::string src = srcParam;
-	std::string dest = destParam;
-	/* Tar internals assume lowercase */
-	std::transform(src.begin(), src.end(), src.begin(), tolower);
-	std::transform(dest.begin(), dest.end(), dest.begin(), tolower);
-
-	TarFileList::iterator dest_file = _tar_filelist[subdir].find(dest);
-	if (dest_file != _tar_filelist[subdir].end()) {
-		/* Link to file. Process the link like the destination file. */
-		_tar_filelist[subdir].insert(TarFileList::value_type(src, dest_file->second));
-	} else {
-		/* Destination file not found. Assume 'link to directory'
-		 * Append PATHSEPCHAR to 'src' and 'dest' if needed */
-		const std::string src_path = ((*src.rbegin() == PATHSEPCHAR) ? src : src + PATHSEPCHAR);
-		const std::string dst_path = (dest.length() == 0 ? "" : ((*dest.rbegin() == PATHSEPCHAR) ? dest : dest + PATHSEPCHAR));
-		_tar_linklist[subdir].insert(TarLinkList::value_type(src_path, dst_path));
-	}
 }
 
 /**
@@ -477,17 +439,14 @@ bool TarScanner::AddFile(Subdirectory sd, const std::string &filename)
  * header contains garbage and is malicious. So, we cannot rely on the string
  * being properly terminated.
  * As such, do not use strlen to determine the actual length (explicitly or
- * implictly via the std::string constructor), but also do not create a string
- * of the buffer length as that makes the string contain essentially garbage.
+ * implictly via the std::string constructor), but pass the buffer bounds
+ * explicitly.
  * @param buffer The buffer to read from.
- * @param buffer_length The length of the buffer to read from.
  * @return The string data.
  */
-static std::string ExtractString(char *buffer, size_t buffer_length)
+static std::string ExtractString(std::span<char> buffer)
 {
-	size_t length = 0;
-	for (; length < buffer_length && buffer[length] != '\0'; length++) {}
-	return StrMakeValid(std::string_view(buffer, length));
+	return StrMakeValid(std::string_view(buffer.begin(), buffer.end()));
 }
 
 bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] const std::string &tar_filename)
@@ -530,10 +489,8 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 	_tar_list[this->subdir][filename] = std::string{};
 
-	std::string filename_base = std::filesystem::path(filename).filename().string();
+	std::string filename_base = FS2OTTD(std::filesystem::path(OTTD2FS(filename)).filename());
 	SimplifyFileName(filename_base);
-
-	TarLinkList links; ///< Temporary list to collect links
 
 	TarHeader th;
 	size_t num = 0, pos = 0;
@@ -561,16 +518,25 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 		/* The prefix contains the directory-name */
 		if (th.prefix[0] != '\0') {
-			name = ExtractString(th.prefix, lengthof(th.prefix));
+			name = ExtractString(th.prefix);
 			name += PATHSEP;
 		}
 
 		/* Copy the name of the file in a safe way at the end of 'name' */
-		name += ExtractString(th.name, lengthof(th.name));
+		name += ExtractString(th.name);
 
 		/* The size of the file, for some strange reason, this is stored as a string in octals. */
-		std::string size = ExtractString(th.size, lengthof(th.size));
-		size_t skip = size.empty() ? 0 : std::stoul(size, nullptr, 8);
+		std::string size = ExtractString(th.size);
+		size_t skip = 0;
+		if (!size.empty()) {
+			StrTrimInPlace(size);
+			auto [_, err] = std::from_chars(size.data(), size.data() + size.size(), skip, 8);
+			if (err != std::errc()) {
+				Debug(misc, 0, "The file '{}' has an invalid size for '{}'", filename, name);
+				fclose(f);
+				return false;
+			}
+		}
 
 		switch (th.typeflag) {
 			case '\0':
@@ -594,33 +560,9 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 			case '1': // hard links
 			case '2': { // symbolic links
-				/* Copy the destination of the link in a safe way at the end of 'linkname' */
-				std::string link = ExtractString(th.linkname, lengthof(th.linkname));
+				std::string link = ExtractString(th.linkname);
 
-				if (name.empty() || link.empty()) break;
-
-				/* Convert to lowercase and our PATHSEPCHAR */
-				SimplifyFileName(name);
-				SimplifyFileName(link);
-
-				/* Only allow relative links */
-				if (link[0] == PATHSEPCHAR) {
-					Debug(misc, 5, "Ignoring absolute link in tar: {} -> {}", name, link);
-					break;
-				}
-
-				/* Process relative path.
-				 * Note: The destination of links must not contain any directory-links. */
-				std::string dest = (std::filesystem::path(name).remove_filename() /= link).lexically_normal().string();
-				if (dest[0] == PATHSEPCHAR || dest.starts_with("..")) {
-					Debug(misc, 5, "Ignoring link pointing outside of data directory: {} -> {}", name, link);
-					break;
-				}
-
-				/* Store links in temporary list */
-				Debug(misc, 6, "Found link in tar: {} -> {}", name, dest);
-				links.insert(TarLinkList::value_type(filename_base + PATHSEPCHAR + name, filename_base + PATHSEPCHAR + dest));
-
+				Debug(misc, 5, "Ignoring link in tar: {} -> {}", name, link);
 				break;
 			}
 
@@ -650,19 +592,6 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 	Debug(misc, 4, "Found tar '{}' with {} new files", filename, num);
 	fclose(f);
-
-	/* Resolve file links and store directory links.
-	 * We restrict usage of links to two cases:
-	 *  1) Links to directories:
-	 *      Both the source path and the destination path must NOT contain any further links.
-	 *      When resolving files at most one directory link is resolved.
-	 *  2) Links to files:
-	 *      The destination path must NOT contain any links.
-	 *      The source path may contain one directory link.
-	 */
-	for (auto &it : links) {
-		TarAddLink(it.first, it.second, this->subdir);
-	}
 
 	return true;
 }
@@ -1008,9 +937,9 @@ void DeterminePaths(const char *exe, bool only_local_path)
 				};
 
 			config_dir.clear();
-			for (uint i = 0; i < lengthof(new_openttd_cfg_order); i++) {
-				if (IsValidSearchPath(new_openttd_cfg_order[i])) {
-					config_dir = _searchpaths[new_openttd_cfg_order[i]];
+			for (const auto &searchpath : new_openttd_cfg_order) {
+				if (IsValidSearchPath(searchpath)) {
+					config_dir = _searchpaths[searchpath];
 					break;
 				}
 			}
@@ -1030,6 +959,8 @@ void DeterminePaths(const char *exe, bool only_local_path)
 	_private_file = config_dir + "private.cfg";
 	extern std::string _secrets_file;
 	_secrets_file = config_dir + "secrets.cfg";
+	extern std::string _favs_file;
+	_favs_file = config_dir + "favs.cfg";
 
 #ifdef USE_XDG
 	if (config_dir == config_home) {
@@ -1061,8 +992,8 @@ void DeterminePaths(const char *exe, bool only_local_path)
 		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR, SCREENSHOT_DIR, SOCIAL_INTEGRATION_DIR
 	};
 
-	for (uint i = 0; i < lengthof(default_subdirs); i++) {
-		FioCreateDirectory(_personal_dir + _subdirs[default_subdirs[i]]);
+	for (const auto &default_subdir : default_subdirs) {
+		FioCreateDirectory(_personal_dir + _subdirs[default_subdir]);
 	}
 
 	/* If we have network we make a directory for the autodownloading of content */
@@ -1072,9 +1003,9 @@ void DeterminePaths(const char *exe, bool only_local_path)
 	FillValidSearchPaths(only_local_path);
 
 	/* Create the directory for each of the types of content */
-	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR, SOCIAL_INTEGRATION_DIR };
-	for (uint i = 0; i < lengthof(dirs); i++) {
-		FioCreateDirectory(FioGetDirectory(SP_AUTODOWNLOAD_DIR, dirs[i]));
+	const Subdirectory subdirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR, SOCIAL_INTEGRATION_DIR };
+	for (const auto &subdir : subdirs) {
+		FioCreateDirectory(FioGetDirectory(SP_AUTODOWNLOAD_DIR, subdir));
 	}
 
 	extern std::string _log_file;
@@ -1134,12 +1065,13 @@ std::unique_ptr<char[]> ReadFileToMem(const std::string &filename, size_t &lenp,
  * @param filename  The filename to look in for the extension.
  * @return True iff the extension is nullptr, or the filename ends with it.
  */
-static bool MatchesExtension(const char *extension, const char *filename)
+static bool MatchesExtension(std::string_view extension, const std::string &filename)
 {
-	if (extension == nullptr) return true;
+	if (extension.empty()) return true;
+	if (filename.length() < extension.length()) return false;
 
-	const char *ext = strrchr(filename, extension[0]);
-	return ext != nullptr && StrEqualsIgnoreCase(ext, extension);
+	std::string_view filename_sv = filename; // String view to avoid making another copy of the substring.
+	return StrCompareIgnoreCase(extension, filename_sv.substr(filename_sv.length() - extension.length())) == 0;
 }
 
 /**
@@ -1151,36 +1083,24 @@ static bool MatchesExtension(const char *extension, const char *filename)
  * @param basepath_length from where in the path are we 'based' on the search path
  * @param recursive       whether to recursively search the sub directories
  */
-static uint ScanPath(FileScanner *fs, const char *extension, const char *path, size_t basepath_length, bool recursive)
+static uint ScanPath(FileScanner *fs, std::string_view extension, const std::filesystem::path &path, size_t basepath_length, bool recursive)
 {
 	uint num = 0;
-	struct stat sb;
-	struct dirent *dirent;
-	DIR *dir;
 
-	if (path == nullptr || (dir = ttd_opendir(path)) == nullptr) return 0;
-
-	while ((dirent = readdir(dir)) != nullptr) {
-		std::string d_name = FS2OTTD(dirent->d_name);
-
-		if (!FiosIsValidFile(path, dirent, &sb)) continue;
-
-		std::string filename(path);
-		filename += d_name;
-
-		if (S_ISDIR(sb.st_mode)) {
-			/* Directory */
+	std::error_code error_code;
+	for (const auto &dir_entry : std::filesystem::directory_iterator(path, error_code)) {
+		if (dir_entry.is_directory()) {
 			if (!recursive) continue;
-			if (d_name == "." || d_name == "..") continue;
-			AppendPathSeparator(filename);
-			num += ScanPath(fs, extension, filename.c_str(), basepath_length, recursive);
-		} else if (S_ISREG(sb.st_mode)) {
-			/* File */
-			if (MatchesExtension(extension, filename.c_str()) && fs->AddFile(filename, basepath_length, {})) num++;
+			num += ScanPath(fs, extension, dir_entry.path(), basepath_length, recursive);
+		} else if (dir_entry.is_regular_file()) {
+			std::string file = FS2OTTD(dir_entry.path());
+			if (!MatchesExtension(extension, file)) continue;
+			if (fs->AddFile(file, basepath_length, {})) num++;
 		}
 	}
-
-	closedir(dir);
+	if (error_code) {
+		Debug(misc, 9, "Unable to read directory {}: {}", path.string(), error_code.message());
+	}
 
 	return num;
 }
@@ -1191,12 +1111,11 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
  * @param extension the extension of files to search for.
  * @param tar       the tar to search in.
  */
-static uint ScanTar(FileScanner *fs, const char *extension, const TarFileList::value_type &tar)
+static uint ScanTar(FileScanner *fs, std::string_view extension, const TarFileList::value_type &tar)
 {
 	uint num = 0;
-	const auto &filename = tar.first;
 
-	if (MatchesExtension(extension, filename.c_str()) && fs->AddFile(filename, 0, tar.second.tar_filename)) num++;
+	if (MatchesExtension(extension, tar.first) && fs->AddFile(tar.first, 0, tar.second.tar_filename)) num++;
 
 	return num;
 }
@@ -1210,7 +1129,7 @@ static uint ScanTar(FileScanner *fs, const char *extension, const TarFileList::v
  * @return the number of found files, i.e. the number of times that
  *         AddFile returned true.
  */
-uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool recursive)
+uint FileScanner::Scan(std::string_view extension, Subdirectory sd, bool tars, bool recursive)
 {
 	this->subdir = sd;
 
@@ -1221,7 +1140,7 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
 		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
 
 		std::string path = FioGetDirectory(sp, sd);
-		num += ScanPath(this, extension, path.c_str(), path.size(), recursive);
+		num += ScanPath(this, extension, OTTD2FS(path), path.size(), recursive);
 	}
 
 	if (tars && sd != NO_DIRECTORY) {
@@ -1252,9 +1171,9 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
  * @return the number of found files, i.e. the number of times that
  *         AddFile returned true.
  */
-uint FileScanner::Scan(const char *extension, const std::string &directory, bool recursive)
+uint FileScanner::Scan(const std::string_view extension, const std::string &directory, bool recursive)
 {
 	std::string path(directory);
 	AppendPathSeparator(path);
-	return ScanPath(this, extension, path.c_str(), path.size(), recursive);
+	return ScanPath(this, extension, OTTD2FS(path), path.size(), recursive);
 }

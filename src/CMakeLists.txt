@@ -52,6 +52,8 @@ add_files(
     animated_tile_func.h
     articulated_vehicles.cpp
     articulated_vehicles.h
+    autocompletion.cpp
+    autocompletion.h
     autoreplace.cpp
     autoreplace_base.h
     autoreplace_cmd.cpp
@@ -75,6 +77,7 @@ add_files(
     bridge_map.cpp
     bridge_map.h
     build_vehicle_gui.cpp
+    cachecheck.cpp
     cargo_type.h
     cargoaction.cpp
     cargoaction.h
@@ -136,6 +139,10 @@ add_files(
     dock_gui.cpp
     driver.cpp
     driver.h
+    dropdown.cpp
+    dropdown_common_type.h
+    dropdown_func.h
+    dropdown_type.h
     economy.cpp
     economy_base.h
     economy_cmd.h
@@ -248,6 +255,7 @@ add_files(
     music_gui.cpp
     newgrf.cpp
     newgrf.h
+    newgrf_act5.h
     newgrf_airport.cpp
     newgrf_airport.h
     newgrf_airporttiles.cpp
@@ -299,6 +307,7 @@ add_files(
     newgrf_storage.h
     newgrf_text.cpp
     newgrf_text.h
+    newgrf_text_type.h
     newgrf_town.cpp
     newgrf_town.h
     newgrf_townname.cpp
@@ -330,6 +339,9 @@ add_files(
     palette_func.h
     pbs.cpp
     pbs.h
+    picker_func.h
+    picker_gui.cpp
+    picker_gui.h
     progress.cpp
     progress.h
     querystring_gui.h
@@ -391,6 +403,8 @@ add_files(
     signs_func.h
     signs_gui.cpp
     signs_type.h
+    slider.cpp
+    slider_func.h
     slope_func.h
     slope_type.h
     smallmap_gui.cpp
@@ -466,7 +480,6 @@ add_files(
     tilearea_type.h
     tilehighlight_func.h
     tilehighlight_type.h
-    tilematrix_type.hpp
     timetable.h
     timetable_cmd.cpp
     timetable_cmd.h

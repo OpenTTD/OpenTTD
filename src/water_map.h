@@ -44,7 +44,7 @@ enum WaterTileType {
 };
 
 /** classes of water (for #WATER_TILE_CLEAR water tile type). */
-enum WaterClass : byte {
+enum WaterClass : uint8_t {
 	WATER_CLASS_SEA,     ///< Sea.
 	WATER_CLASS_CANAL,   ///< Canal.
 	WATER_CLASS_RIVER,   ///< River.
@@ -326,7 +326,7 @@ inline DiagDirection GetLockDirection(Tile t)
  * @return The part.
  * @pre IsTileType(t, MP_WATER) && IsLock(t)
  */
-inline byte GetLockPart(Tile t)
+inline uint8_t GetLockPart(Tile t)
 {
 	assert(IsLock(t));
 	return GB(t.m5(), WBL_LOCK_PART_BEGIN, WBL_LOCK_PART_COUNT);
@@ -338,7 +338,7 @@ inline byte GetLockPart(Tile t)
  * @return Random bits of the tile.
  * @pre IsTileType(t, MP_WATER)
  */
-inline byte GetWaterTileRandomBits(Tile t)
+inline uint8_t GetWaterTileRandomBits(Tile t)
 {
 	assert(IsTileType(t, MP_WATER));
 	return t.m4();

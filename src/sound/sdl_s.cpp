@@ -30,7 +30,7 @@ static void CDECL fill_sound_buffer(void *, Uint8 *stream, int len)
 	MxMixSamples(stream, len / 4);
 }
 
-const char *SoundDriver_SDL::Start(const StringList &parm)
+std::optional<std::string_view> SoundDriver_SDL::Start(const StringList &parm)
 {
 	SDL_AudioSpec spec;
 
@@ -51,7 +51,7 @@ const char *SoundDriver_SDL::Start(const StringList &parm)
 	MxInitialize(spec.freq);
 	SDL_OpenAudio(&spec, &spec);
 	SDL_PauseAudio(0);
-	return nullptr;
+	return std::nullopt;
 }
 
 void SoundDriver_SDL::Stop()

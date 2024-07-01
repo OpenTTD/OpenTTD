@@ -52,7 +52,7 @@ enum ExtraTreePlacement {
 };
 
 /** Determines when to consider building more trees. */
-byte _trees_tick_ctr;
+uint8_t _trees_tick_ctr;
 
 static const uint16_t DEFAULT_TREE_STEPS = 1000;             ///< Default number of attempts for placing trees.
 static const uint16_t DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number of attempts for placing extra trees at rainforest in tropic.
@@ -166,7 +166,7 @@ static void PlaceTree(TileIndex tile, uint32_t r)
 	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8));
 
 	if (tree != TREE_INVALID) {
-		PlantTreesOnTile(tile, tree, GB(r, 22, 2), std::min<byte>(GB(r, 16, 3), 6));
+		PlantTreesOnTile(tile, tree, GB(r, 22, 2), std::min<uint8_t>(GB(r, 16, 3), 6));
 		MarkTileDirtyByTile(tile);
 
 		/* Rerandomize ground, if neither snow nor shore */
@@ -385,7 +385,7 @@ void GenerateTrees()
  * @param diagonal Whether to use the Orthogonal (false) or Diagonal (true) iterator.
  * @return the cost of this operation or an error
  */
-CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, byte tree_to_plant, bool diagonal)
+CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, uint8_t tree_to_plant, bool diagonal)
 {
 	StringID msg = INVALID_STRING_ID;
 	CommandCost cost(EXPENSES_OTHER);
@@ -512,7 +512,7 @@ CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 }
 
 struct TreeListEnt : PalSpriteID {
-	byte x, y;
+	uint8_t x, y;
 };
 
 static void DrawTile_Trees(TileInfo *ti)
@@ -588,8 +588,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 static int GetSlopePixelZ_Trees(TileIndex tile, uint x, uint y, bool)
 {
-	int z;
-	Slope tileh = GetTilePixelSlope(tile, &z);
+	auto [tileh, z] = GetTilePixelSlope(tile);
 
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
@@ -820,10 +819,10 @@ static void TileLoop_Trees(TileIndex tile)
 bool DecrementTreeCounter()
 {
 	/* Ensure _trees_tick_ctr can be decremented past zero only once for the largest map size. */
-	static_assert(2 * (MAX_MAP_SIZE_BITS - MIN_MAP_SIZE_BITS) - 4 <= std::numeric_limits<byte>::digits);
+	static_assert(2 * (MAX_MAP_SIZE_BITS - MIN_MAP_SIZE_BITS) - 4 <= std::numeric_limits<uint8_t>::digits);
 
 	/* byte underflow */
-	byte old_trees_tick_ctr = _trees_tick_ctr;
+	uint8_t old_trees_tick_ctr = _trees_tick_ctr;
 	_trees_tick_ctr -= Map::ScaleBySize(1);
 	return old_trees_tick_ctr <= _trees_tick_ctr;
 }

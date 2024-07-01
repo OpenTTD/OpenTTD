@@ -240,18 +240,24 @@ std::vector<int> VideoDriver_SDL_Base::GetListOfMonitorRefreshRates()
 
 
 struct SDLVkMapping {
-	SDL_Keycode vk_from;
-	byte vk_count;
-	byte map_to;
-	bool unprintable;
+	const SDL_Keycode vk_from;
+	const uint8_t vk_count;
+	const uint8_t map_to;
+	const bool unprintable;
+
+	constexpr SDLVkMapping(SDL_Keycode vk_first, SDL_Keycode vk_last, uint8_t map_first, [[maybe_unused]] uint8_t map_last, bool unprintable)
+		: vk_from(vk_first), vk_count(vk_last - vk_first + 1), map_to(map_first), unprintable(unprintable)
+	{
+		assert((vk_last - vk_first) == (map_last - map_first));
+	}
 };
 
-#define AS(x, z) {x, 0, z, false}
-#define AM(x, y, z, w) {x, (byte)(y - x), z, false}
-#define AS_UP(x, z) {x, 0, z, true}
-#define AM_UP(x, y, z, w) {x, (byte)(y - x), z, true}
+#define AS(x, z) {x, x, z, z, false}
+#define AM(x, y, z, w) {x, y, z, w, false}
+#define AS_UP(x, z) {x, x, z, z, true}
+#define AM_UP(x, y, z, w) {x, y, z, w, true}
 
-static const SDLVkMapping _vk_mapping[] = {
+static constexpr SDLVkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
 	AS_UP(SDLK_PAGEUP,   WKC_PAGEUP),
 	AS_UP(SDLK_PAGEDOWN, WKC_PAGEDOWN),
@@ -282,7 +288,16 @@ static const SDLVkMapping _vk_mapping[] = {
 	AM_UP(SDLK_F1, SDLK_F12, WKC_F1, WKC_F12),
 
 	/* Numeric part. */
-	AM(SDLK_KP_0, SDLK_KP_9, '0', '9'),
+	AS(SDLK_KP_1,        '1'),
+	AS(SDLK_KP_2,        '2'),
+	AS(SDLK_KP_3,        '3'),
+	AS(SDLK_KP_4,        '4'),
+	AS(SDLK_KP_5,        '5'),
+	AS(SDLK_KP_6,        '6'),
+	AS(SDLK_KP_7,        '7'),
+	AS(SDLK_KP_8,        '8'),
+	AS(SDLK_KP_9,        '9'),
+	AS(SDLK_KP_0,        '0'),
 	AS(SDLK_KP_DIVIDE,   WKC_NUM_DIV),
 	AS(SDLK_KP_MULTIPLY, WKC_NUM_MUL),
 	AS(SDLK_KP_MINUS,    WKC_NUM_MINUS),
@@ -306,14 +321,13 @@ static const SDLVkMapping _vk_mapping[] = {
 
 static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
 {
-	const SDLVkMapping *map;
 	uint key = 0;
 	bool unprintable = false;
 
-	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
-		if ((uint)(sym->sym - map->vk_from) <= map->vk_count) {
-			key = sym->sym - map->vk_from + map->map_to;
-			unprintable = map->unprintable;
+	for (const auto &map : _vk_mapping) {
+		if (IsInsideBS(sym->sym, map.vk_from, map.vk_count)) {
+			key = sym->sym - map.vk_from + map.map_to;
+			unprintable = map.unprintable;
 			break;
 		}
 	}
@@ -346,12 +360,11 @@ static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
  */
 static uint ConvertSdlKeycodeIntoMy(SDL_Keycode kc)
 {
-	const SDLVkMapping *map;
 	uint key = 0;
 
-	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
-		if ((uint)(kc - map->vk_from) <= map->vk_count) {
-			key = kc - map->vk_from + map->map_to;
+	for (const auto &map : _vk_mapping) {
+		if (IsInsideBS(kc, map.vk_from, map.vk_count)) {
+			key = kc - map.vk_from + map.map_to;
 			break;
 		}
 	}
@@ -505,34 +518,43 @@ bool VideoDriver_SDL_Base::PollEvent()
 	return true;
 }
 
-static const char *InitializeSDL()
+static std::optional<std::string_view> InitializeSDL()
 {
 	/* Check if the video-driver is already initialized. */
-	if (SDL_WasInit(SDL_INIT_VIDEO) != 0) return nullptr;
+	if (SDL_WasInit(SDL_INIT_VIDEO) != 0) return std::nullopt;
 
 	if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) return SDL_GetError();
-	return nullptr;
+	return std::nullopt;
 }
 
-const char *VideoDriver_SDL_Base::Initialize()
+std::optional<std::string_view> VideoDriver_SDL_Base::Initialize()
 {
 	this->UpdateAutoResolution();
 
-	const char *error = InitializeSDL();
-	if (error != nullptr) return error;
+	auto error = InitializeSDL();
+	if (error) return error;
 
 	FindResolutions();
 	Debug(driver, 2, "Resolution for display: {}x{}", _cur_resolution.width, _cur_resolution.height);
 
-	return nullptr;
+	return std::nullopt;
 }
 
-const char *VideoDriver_SDL_Base::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &param)
 {
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
 
-	const char *error = this->Initialize();
-	if (error != nullptr) return error;
+	auto error = this->Initialize();
+	if (error) return error;
+
+#ifdef SDL_HINT_MOUSE_AUTO_CAPTURE
+	if (GetDriverParamBool(param, "no_mouse_capture")) {
+		/* By default SDL captures the mouse, while a button is pressed.
+		 * This is annoying during debugging, when OpenTTD is suspended while the button was pressed.
+		 */
+		if (!SDL_SetHint(SDL_HINT_MOUSE_AUTO_CAPTURE, "0")) return SDL_GetError();
+	}
+#endif
 
 	this->startup_display = FindStartupDisplay(GetDriverParamInt(param, "display", -1));
 
@@ -559,7 +581,7 @@ const char *VideoDriver_SDL_Base::Start(const StringList &param)
 	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 #endif
 
-	return nullptr;
+	return std::nullopt;
 }
 
 void VideoDriver_SDL_Base::Stop()

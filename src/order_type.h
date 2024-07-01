@@ -12,7 +12,7 @@
 
 #include "core/enum_type.hpp"
 
-typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
+typedef uint8_t VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
 typedef uint32_t OrderID;
 typedef uint16_t OrderListID;
 typedef uint16_t DestinationID;
@@ -32,7 +32,7 @@ static const OrderID INVALID_ORDER = 0xFFFFFF;
 static const uint IMPLICIT_ORDER_ONLY_CAP = 32;
 
 /** Order types. It needs to be 8bits, because we save and load it as such */
-enum OrderType : byte {
+enum OrderType : uint8_t {
 	OT_BEGIN         = 0,
 	OT_NOTHING       = 0,
 	OT_GOTO_STATION  = 1,
@@ -141,7 +141,7 @@ enum OrderConditionComparator {
 /**
  * Enumeration for the data to set in #CmdModifyOrder.
  */
-enum ModifyOrderFlags : byte {
+enum ModifyOrderFlags : uint8_t {
 	MOF_NON_STOP,        ///< Passes an OrderNonStopFlags.
 	MOF_STOP_LOCATION,   ///< Passes an OrderStopLocation.
 	MOF_UNLOAD,          ///< Passes an OrderUnloadType.
@@ -168,7 +168,7 @@ enum OrderDepotAction {
 /**
  * Enumeration for the data to set in #CmdChangeTimetable.
  */
-enum ModifyTimetableFlags : byte {
+enum ModifyTimetableFlags : uint8_t {
 	MTF_WAIT_TIME,    ///< Set wait time.
 	MTF_TRAVEL_TIME,  ///< Set travel time.
 	MTF_TRAVEL_SPEED, ///< Set max travel speed.
@@ -176,7 +176,7 @@ enum ModifyTimetableFlags : byte {
 };
 
 /** Clone actions. */
-enum CloneOptions : byte {
+enum CloneOptions : uint8_t {
 	CO_SHARE   = 0,
 	CO_COPY    = 1,
 	CO_UNSHARE = 2

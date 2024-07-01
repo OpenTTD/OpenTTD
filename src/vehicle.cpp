@@ -74,13 +74,13 @@ static const uint GEN_HASHX_BUCKET_BITS = 7;
 static const uint GEN_HASHY_BUCKET_BITS = 6;
 
 /* Compute hash for vehicle coord */
-#define GEN_HASHX(x)    GB((x), GEN_HASHX_BUCKET_BITS + ZOOM_LVL_SHIFT, GEN_HASHX_BITS)
-#define GEN_HASHY(y)   (GB((y), GEN_HASHY_BUCKET_BITS + ZOOM_LVL_SHIFT, GEN_HASHY_BITS) << GEN_HASHX_BITS)
+#define GEN_HASHX(x)    GB((x), GEN_HASHX_BUCKET_BITS + ZOOM_BASE_SHIFT, GEN_HASHX_BITS)
+#define GEN_HASHY(y)   (GB((y), GEN_HASHY_BUCKET_BITS + ZOOM_BASE_SHIFT, GEN_HASHY_BITS) << GEN_HASHX_BITS)
 #define GEN_HASH(x, y) (GEN_HASHY(y) + GEN_HASHX(x))
 
 /* Maximum size until hash repeats */
-static const int GEN_HASHX_SIZE = 1 << (GEN_HASHX_BUCKET_BITS + GEN_HASHX_BITS + ZOOM_LVL_SHIFT);
-static const int GEN_HASHY_SIZE = 1 << (GEN_HASHY_BUCKET_BITS + GEN_HASHY_BITS + ZOOM_LVL_SHIFT);
+static const int GEN_HASHX_SIZE = 1 << (GEN_HASHX_BUCKET_BITS + GEN_HASHX_BITS + ZOOM_BASE_SHIFT);
+static const int GEN_HASHY_SIZE = 1 << (GEN_HASHY_BUCKET_BITS + GEN_HASHY_BITS + ZOOM_BASE_SHIFT);
 
 /* Increments to reach next bucket in hash table */
 static const int GEN_HASHX_INC = 1;
@@ -691,7 +691,7 @@ void ResetVehicleColourMap()
  * List of vehicles that should check for autoreplace this tick.
  * Mapping of vehicle -> leave depot immediately after autoreplace.
  */
-using AutoreplaceMap = std::map<Vehicle *, bool>;
+using AutoreplaceMap = std::map<VehicleID, bool>;
 static AutoreplaceMap _vehicles_to_autoreplace;
 
 void InitializeVehicles()
@@ -846,6 +846,8 @@ void Vehicle::PreDestructor()
 		DeleteGroupHighlightOfVehicle(this);
 	}
 
+	Company::Get(this->owner)->freeunits[this->type].ReleaseID(this->unitnumber);
+
 	if (this->type == VEH_AIRCRAFT && this->IsPrimaryVehicle()) {
 		Aircraft *a = Aircraft::From(this);
 		Station *st = GetTargetAirportIfValid(a);
@@ -906,8 +908,10 @@ Vehicle::~Vehicle()
 
 	UpdateVehicleTileHash(this, true);
 	UpdateVehicleViewportHash(this, INVALID_COORD, 0, this->sprite_cache.old_coord.left, this->sprite_cache.old_coord.top);
-	DeleteVehicleNews(this->index, INVALID_STRING_ID);
-	DeleteNewGRFInspectWindow(GetGrfSpecFeature(this->type), this->index);
+	if (this->type != VEH_EFFECT) {
+		DeleteVehicleNews(this->index, INVALID_STRING_ID);
+		DeleteNewGRFInspectWindow(GetGrfSpecFeature(this->type), this->index);
+	}
 }
 
 /**
@@ -917,7 +921,7 @@ Vehicle::~Vehicle()
 void VehicleEnteredDepotThisTick(Vehicle *v)
 {
 	/* Vehicle should stop in the depot if it was in 'stopping' state */
-	_vehicles_to_autoreplace[v] = !(v->vehstatus & VS_STOPPED);
+	_vehicles_to_autoreplace[v->index] = !(v->vehstatus & VS_STOPPED);
 
 	/* We ALWAYS set the stopped state. Even when the vehicle does not plan on
 	 * stopping in the depot, so we stop it to ensure that it will not reserve
@@ -1029,10 +1033,13 @@ void CallVehicleTicks()
 				/* Do not play any sound when stopped */
 				if ((front->vehstatus & VS_STOPPED) && (front->type != VEH_TRAIN || front->cur_speed == 0)) continue;
 
+				/* Update motion counter for animation purposes. */
+				v->motion_counter += front->cur_speed;
+
 				/* Check vehicle type specifics */
 				switch (v->type) {
 					case VEH_TRAIN:
-						if (Train::From(v)->IsWagon()) continue;
+						if (!Train::From(v)->IsEngine()) continue;
 						break;
 
 					case VEH_ROAD:
@@ -1047,7 +1054,6 @@ void CallVehicleTicks()
 						break;
 				}
 
-				v->motion_counter += front->cur_speed;
 				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
 				if (GB(v->motion_counter, 0, 8) < front->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
 
@@ -1063,9 +1069,9 @@ void CallVehicleTicks()
 		}
 	}
 
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company);
 	for (auto &it : _vehicles_to_autoreplace) {
-		Vehicle *v = it.first;
+		Vehicle *v = Vehicle::Get(it.first);
 		/* Autoreplace needs the current company set as the vehicle owner */
 		cur_company.Change(v->owner);
 
@@ -1154,8 +1160,8 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 	const int b = dpi->top + dpi->height;
 
 	/* Border size of MAX_VEHICLE_PIXEL_xy */
-	const int xb = MAX_VEHICLE_PIXEL_X * ZOOM_LVL_BASE;
-	const int yb = MAX_VEHICLE_PIXEL_Y * ZOOM_LVL_BASE;
+	const int xb = MAX_VEHICLE_PIXEL_X * ZOOM_BASE;
+	const int yb = MAX_VEHICLE_PIXEL_Y * ZOOM_BASE;
 
 	/* The hash area to scan */
 	int xl, xu, yl, yu;
@@ -1250,8 +1256,8 @@ Vehicle *CheckClickOnVehicle(const Viewport *vp, int x, int y)
 	y = ScaleByZoom(y, vp->zoom) + vp->virtual_top;
 
 	/* Border size of MAX_VEHICLE_PIXEL_xy */
-	const int xb = MAX_VEHICLE_PIXEL_X * ZOOM_LVL_BASE;
-	const int yb = MAX_VEHICLE_PIXEL_Y * ZOOM_LVL_BASE;
+	const int xb = MAX_VEHICLE_PIXEL_X * ZOOM_BASE;
+	const int yb = MAX_VEHICLE_PIXEL_Y * ZOOM_BASE;
 
 	/* The hash area to scan */
 	int xl = GEN_HASHX(x - xb);
@@ -1298,7 +1304,7 @@ void DecreaseVehicleValue(Vehicle *v)
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 }
 
-static const byte _breakdown_chance[64] = {
+static const uint8_t _breakdown_chance[64] = {
 	  3,   3,   3,   3,   3,   3,   3,   3,
 	  4,   4,   5,   5,   6,   6,   7,   7,
 	  8,   8,   9,   9,  10,  10,  11,  11,
@@ -1417,15 +1423,24 @@ bool Vehicle::HandleBreakdown()
 }
 
 /**
+ * Update economy age of a vehicle.
+ * @param v Vehicle to update.
+ */
+void EconomyAgeVehicle(Vehicle *v)
+{
+	if (v->economy_age < EconomyTime::MAX_DATE) {
+		v->economy_age++;
+		if (v->IsPrimaryVehicle() && v->economy_age == VEHICLE_PROFIT_MIN_AGE + 1) GroupStatistics::VehicleReachedMinAge(v);
+	}
+}
+
+/**
  * Update age of a vehicle.
  * @param v Vehicle to update.
  */
 void AgeVehicle(Vehicle *v)
 {
-	if (v->age < CalendarTime::MAX_DATE) {
-		v->age++;
-		if (v->IsPrimaryVehicle() && v->age == VEHICLE_PROFIT_MIN_AGE + 1) GroupStatistics::VehicleReachedMinAge(v);
-	}
+	if (v->age < CalendarTime::MAX_DATE) v->age++;
 
 	if (!v->IsPrimaryVehicle() && (v->type != VEH_TRAIN || !Train::From(v)->IsEngine())) return;
 
@@ -1438,6 +1453,9 @@ void AgeVehicle(Vehicle *v)
 	}
 
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+
+	/* Don't warn if warnings are disabled */
+	if (!_settings_client.gui.old_vehicle_warn) return;
 
 	/* Don't warn about vehicles which are non-primary (e.g., part of an articulated vehicle), don't belong to us, are crashed, or are stopped */
 	if (v->Previous() != nullptr || v->owner != _local_company || (v->vehstatus & VS_CRASHED) != 0 || (v->vehstatus & VS_STOPPED) != 0) return;
@@ -1607,12 +1625,12 @@ void VehicleEnterDepot(Vehicle *v)
 		}
 
 		if (v->current_order.IsRefit()) {
-			Backup<CompanyID> cur_company(_current_company, v->owner, FILE_LINE);
+			Backup<CompanyID> cur_company(_current_company, v->owner);
 			CommandCost cost = std::get<0>(Command<CMD_REFIT_VEHICLE>::Do(DC_EXEC, v->index, v->current_order.GetRefitCargo(), 0xFF, false, false, 0));
 			cur_company.Restore();
 
 			if (cost.Failed()) {
-				_vehicles_to_autoreplace[v] = false;
+				_vehicles_to_autoreplace[v->index] = false;
 				if (v->owner == _local_company) {
 					/* Notify the user that we stopped the vehicle */
 					SetDParam(0, v->index);
@@ -1634,7 +1652,7 @@ void VehicleEnterDepot(Vehicle *v)
 		}
 		if (v->current_order.GetDepotActionType() & ODATFB_HALT) {
 			/* Vehicles are always stopped on entering depots. Do not restart this one. */
-			_vehicles_to_autoreplace[v] = false;
+			_vehicles_to_autoreplace[v->index] = false;
 			/* Invalidate last_loading_station. As the link from the station
 			 * before the stop to the station after the stop can't be predicted
 			 * we shouldn't construct it when the vehicle visits the next stop. */
@@ -1653,7 +1671,14 @@ void VehicleEnterDepot(Vehicle *v)
 
 		/* If we've entered our unbunching depot, record the round trip duration. */
 		if (v->current_order.GetDepotActionType() & ODATFB_UNBUNCH && v->depot_unbunching_last_departure > 0) {
-			v->round_trip_time = (TimerGameTick::counter - v->depot_unbunching_last_departure);
+			TimerGameTick::Ticks measured_round_trip = TimerGameTick::counter - v->depot_unbunching_last_departure;
+			if (v->round_trip_time == 0) {
+				/* This might be our first round trip. */
+				v->round_trip_time = measured_round_trip;
+			} else {
+				/* If we have a previous trip, smooth the effects of outlier trip calculations caused by jams or other interference. */
+				v->round_trip_time = Clamp(measured_round_trip, (v->round_trip_time / 2), ClampTo<TimerGameTick::Ticks>(v->round_trip_time * 2));
+			}
 		}
 
 		v->current_order.MakeDummy();
@@ -1682,8 +1707,8 @@ void Vehicle::UpdateBoundingBoxCoordinates(bool update_cache) const
 	Point pt = RemapCoords(this->x_pos + this->x_offs, this->y_pos + this->y_offs, this->z_pos);
 	new_coord.left   += pt.x;
 	new_coord.top    += pt.y;
-	new_coord.right  += pt.x + 2 * ZOOM_LVL_BASE;
-	new_coord.bottom += pt.y + 2 * ZOOM_LVL_BASE;
+	new_coord.right  += pt.x + 2 * ZOOM_BASE;
+	new_coord.bottom += pt.y + 2 * ZOOM_BASE;
 
 	if (update_cache) {
 		/*
@@ -1816,44 +1841,50 @@ VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y
 }
 
 /**
- * Initializes the structure. Vehicle unit numbers are supposed not to change after
- * struct initialization, except after each call to this->NextID() the returned value
- * is assigned to a vehicle.
- * @param type type of vehicle
- * @param owner owner of vehicles
+ * Find first unused unit number.
+ * This does not mark the unit number as used.
+ * @returns First unused unit number.
  */
-FreeUnitIDGenerator::FreeUnitIDGenerator(VehicleType type, CompanyID owner) : cache(nullptr), maxid(0), curid(0)
+UnitID FreeUnitIDGenerator::NextID() const
 {
-	/* Find maximum */
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->type == type && v->owner == owner) {
-			this->maxid = std::max<UnitID>(this->maxid, v->unitnumber);
-		}
+	for (auto it = std::begin(this->used_bitmap); it != std::end(this->used_bitmap); ++it) {
+		BitmapStorage available = ~(*it);
+		if (available == 0) continue;
+		return static_cast<UnitID>(std::distance(std::begin(this->used_bitmap), it) * BITMAP_SIZE + FindFirstBit(available) + 1);
 	}
-
-	if (this->maxid == 0) return;
-
-	/* Reserving 'maxid + 2' because we need:
-	 * - space for the last item (with v->unitnumber == maxid)
-	 * - one free slot working as loop terminator in FreeUnitIDGenerator::NextID() */
-	this->cache = CallocT<bool>(this->maxid + 2);
-
-	/* Fill the cache */
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->type == type && v->owner == owner) {
-			this->cache[v->unitnumber] = true;
-		}
-	}
+	return static_cast<UnitID>(this->used_bitmap.size() * BITMAP_SIZE + 1);
 }
 
-/** Returns next free UnitID. Supposes the last returned value was assigned to a vehicle. */
-UnitID FreeUnitIDGenerator::NextID()
+/**
+ * Use a unit number. If the unit number is not valid it is ignored.
+ * @param index Unit number to use.
+ * @returns Unit number used.
+ */
+UnitID FreeUnitIDGenerator::UseID(UnitID index)
 {
-	if (this->maxid <= this->curid) return ++this->curid;
+	if (index == 0 || index == UINT16_MAX) return index;
 
-	while (this->cache[++this->curid]) { } // it will stop, we reserved more space than needed
+	index--;
 
-	return this->curid;
+	size_t slot = index / BITMAP_SIZE;
+	if (slot >= this->used_bitmap.size()) this->used_bitmap.resize(slot + 1);
+	SetBit(this->used_bitmap[index / BITMAP_SIZE], index % BITMAP_SIZE);
+
+	return index + 1;
+}
+
+/**
+ * Release a unit number. If the unit number is not valid it is ignored.
+ * @param index Unit number to release.
+ */
+void FreeUnitIDGenerator::ReleaseID(UnitID index)
+{
+	if (index == 0 || index == UINT16_MAX) return;
+
+	index--;
+
+	assert(index / BITMAP_SIZE < this->used_bitmap.size());
+	ClrBit(this->used_bitmap[index / BITMAP_SIZE], index % BITMAP_SIZE);
 }
 
 /**
@@ -1876,9 +1907,7 @@ UnitID GetFreeUnitNumber(VehicleType type)
 	const Company *c = Company::Get(_current_company);
 	if (c->group_all[type].num_vehicle >= max_veh) return UINT16_MAX; // Currently already at the limit, no room to make a new one.
 
-	FreeUnitIDGenerator gen(type, _current_company);
-
-	return gen.NextID();
+	return c->freeunits[type].NextID();
 }
 
 
@@ -1890,7 +1919,7 @@ UnitID GetFreeUnitNumber(VehicleType type)
  * @return true if there is any reason why you may build
  *         the infrastructure for the given vehicle type
  */
-bool CanBuildVehicleInfrastructure(VehicleType type, byte subtype)
+bool CanBuildVehicleInfrastructure(VehicleType type, uint8_t subtype)
 {
 	assert(IsCompanyBuildableVehicleType(type));
 
@@ -2032,7 +2061,7 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
  * @param livery_setting The livery settings to use for acquiring the livery information.
  * @return livery to use
  */
-const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v, byte livery_setting)
+const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v, uint8_t livery_setting)
 {
 	const Company *c = Company::Get(company);
 	LiveryScheme scheme = LS_DEFAULT;
@@ -2366,7 +2395,7 @@ void Vehicle::LeaveStation()
 	}
 	if (this->type == VEH_ROAD && !(this->vehstatus & VS_CRASHED)) {
 		/* Trigger road stop animation */
-		if (IsRoadStopTile(this->tile)) {
+		if (IsStationRoadStopTile(this->tile)) {
 			TriggerRoadStopRandomisation(st, this->tile, RSRT_VEH_DEPARTS);
 			TriggerRoadStopAnimation(st, this->tile, SAT_TRAIN_DEPARTS);
 		}
@@ -2382,6 +2411,15 @@ void Vehicle::LeaveStation()
 void Vehicle::ResetRefitCaps()
 {
 	for (Vehicle *v = this; v != nullptr; v = v->Next()) v->refit_cap = v->cargo_cap;
+}
+
+/**
+ * Release the vehicle's unit number.
+ */
+void Vehicle::ReleaseUnitNumber()
+{
+	Company::Get(this->owner)->freeunits[this->type].ReleaseID(this->unitnumber);
+	this->unitnumber = 0;
 }
 
 /**
@@ -2421,6 +2459,30 @@ void Vehicle::HandleLoading(bool mode)
 }
 
 /**
+ * Check if the current vehicle has a full load order.
+ * @return true Iff this vehicle has a full load order.
+ */
+bool Vehicle::HasFullLoadOrder() const
+{
+	for (Order *o : this->Orders()) {
+		if (o->IsType(OT_GOTO_STATION) && o->GetLoadType() & (OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY)) return true;
+	}
+	return false;
+}
+
+/**
+ * Check if the current vehicle has a conditional order.
+ * @return true Iff this vehicle has a conditional order.
+ */
+bool Vehicle::HasConditionalOrder() const
+{
+	for (Order *o : this->Orders()) {
+		if (o->IsType(OT_CONDITIONAL)) return true;
+	}
+	return false;
+}
+
+/**
  * Check if the current vehicle has an unbunching order.
  * @return true Iff this vehicle has an unbunching order.
  */
@@ -2433,10 +2495,27 @@ bool Vehicle::HasUnbunchingOrder() const
 }
 
 /**
+ * Check if the previous order is a depot unbunching order.
+ * @return true Iff the previous order is a depot order with the unbunch flag.
+ */
+static bool PreviousOrderIsUnbunching(const Vehicle *v)
+{
+	/* If we are headed for the first order, we must wrap around back to the last order. */
+	bool is_first_order = (v->GetOrder(v->cur_implicit_order_index) == v->GetFirstOrder());
+	Order *previous_order = (is_first_order) ? v->GetLastOrder() : v->GetOrder(v->cur_implicit_order_index - 1);
+
+	if (previous_order == nullptr || !previous_order->IsType(OT_GOTO_DEPOT)) return false;
+	return (previous_order->GetDepotActionType() & ODATFB_UNBUNCH) != 0;
+}
+
+/**
  * Leave an unbunching depot and calculate the next departure time for shared order vehicles.
  */
 void Vehicle::LeaveUnbunchingDepot()
 {
+	/* Don't do anything if this is not our unbunching order. */
+	if (!PreviousOrderIsUnbunching(this)) return;
+
 	/* Set the start point for this round trip time. */
 	this->depot_unbunching_last_departure = TimerGameTick::counter;
 
@@ -2445,7 +2524,7 @@ void Vehicle::LeaveUnbunchingDepot()
 	SetWindowDirty(WC_VEHICLE_TIMETABLE, this->index);
 
 	/* Find the average travel time of vehicles that we share orders with. */
-	uint num_vehicles = 0;
+	int num_vehicles = 0;
 	TimerGameTick::Ticks total_travel_time = 0;
 
 	Vehicle *u = this->FirstShared();
@@ -2458,10 +2537,10 @@ void Vehicle::LeaveUnbunchingDepot()
 	}
 
 	/* Make sure we cannot divide by 0. */
-	num_vehicles = std::max(num_vehicles, 1u);
+	num_vehicles = std::max(num_vehicles, 1);
 
 	/* Calculate the separation by finding the average travel time, then calculating equal separation (minimum 1 tick) between vehicles. */
-	TimerGameTick::Ticks separation = std::max((total_travel_time / num_vehicles / num_vehicles), 1u);
+	TimerGameTick::Ticks separation = std::max((total_travel_time / num_vehicles / num_vehicles), 1);
 	TimerGameTick::TickCounter next_departure = TimerGameTick::counter + separation;
 
 	/* Set the departure time of all vehicles that we share orders with. */
@@ -2471,6 +2550,7 @@ void Vehicle::LeaveUnbunchingDepot()
 		if (u->vehstatus & (VS_STOPPED | VS_CRASHED)) continue;
 
 		u->depot_unbunching_next_departure = next_departure;
+		SetWindowDirty(WC_VEHICLE_VIEW, u->index);
 	}
 }
 
@@ -2488,13 +2568,8 @@ bool Vehicle::IsWaitingForUnbunching() const
 	/* Don't do anything if there aren't enough orders. */
 	if (this->GetNumOrders() <= 1) return false;
 
-	/*
-	 * Make sure this is the correct depot for unbunching.
-	 * If we are headed for the first order, we must wrap around back to the last order.
-	 */
-	bool is_first_order = (this->GetOrder(this->cur_real_order_index) == this->GetFirstOrder());
-	Order *previous_order = (is_first_order) ? this->GetLastOrder() : this->GetOrder(this->cur_real_order_index - 1);
-	if (previous_order == nullptr || !previous_order->IsType(OT_GOTO_DEPOT) || !(previous_order->GetDepotActionType() & ODATFB_UNBUNCH)) return false;
+	/* Don't do anything if this is not our unbunching order. */
+	if (!PreviousOrderIsUnbunching(this)) return false;
 
 	return (this->depot_unbunching_next_departure > TimerGameTick::counter);
 };
@@ -2592,7 +2667,7 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 	const Engine *e = this->GetEngine();
 
 	/* Evaluate properties */
-	byte visual_effect;
+	uint8_t visual_effect;
 	switch (e->type) {
 		case VEH_TRAIN: visual_effect = e->u.rail.visual_effect; break;
 		case VEH_ROAD:  visual_effect = e->u.road.visual_effect; break;
@@ -2948,7 +3023,7 @@ static IntervalTimer<TimerGameEconomy> _economy_vehicles_yearly({TimerGameEconom
 		if (v->IsPrimaryVehicle()) {
 			/* show warning if vehicle is not generating enough income last 2 years (corresponds to a red icon in the vehicle list) */
 			Money profit = v->GetDisplayProfitThisYear();
-			if (v->age >= 730 && profit < 0) {
+			if (v->economy_age >= VEHICLE_PROFIT_MIN_AGE && profit < 0) {
 				if (_settings_client.gui.vehicle_income_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
 					SetDParam(1, profit);

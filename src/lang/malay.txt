@@ -363,6 +363,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Abai penyunting
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Keluar
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pilihan permainan
@@ -829,7 +830,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unit kew
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pilihan unit kewangan
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Paun British
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar Amerika
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -907,6 +908,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Maklumat
 
 
 
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Gagal untuk mendapat senarai resolusi yang disokong
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Mod skrin penuh gagal dilakukan
 
@@ -917,6 +919,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kadar p
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Kurangkan nilai matawang anda untuk satu Pound (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Tambahkan nilai matawang anda untuk satu Pound (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Tetapkan kadar pertukaran mata wang anda untuk stau Paun (£)
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Imbuhan awalan: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Tetapkan permulaan untuk mata wang anda
@@ -1232,6 +1235,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Semua kenderaan
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Beri amaran jika pendapatan kenderaan adalah negatif: {STRING}
 ###length 2
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kenderaan tidak akan tamat tempohnya: {STRING}
 
 ###length 2
@@ -1436,7 +1440,8 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Pilih sama ada 
 
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Tetapkan selang masa servis untuk pesawat baru kepada tetapan asal jika tiada selang masa servis yang jelas ditetapkan untuk pesawat tersebut
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Tetapkan selang masa servis untuk kapal baru kepada tetapan asal jika tiada selang masa servis yang jelas ditetapkan untuk kapal tersebut
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}hari{P 0 "" s}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dilumpuhkan
 
@@ -1593,14 +1598,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industri-indust
 STR_CONFIG_SETTING_AI                                           :Pesaing
 STR_CONFIG_SETTING_AI_NPC                                       :Pemain komputer
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pencari laluan untuk keretapi: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pencari laluan untuk kenderaan jalanraya: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pencari laluan untuk kapal: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Berundur secara automatik di isyarat: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Benarkan keretapi berundur di lampu isyarat, jika ia menuggu lama
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Disyorkan)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Tukar nilai tetapan
 
@@ -1867,7 +1866,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Sedang m
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Terputus
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Pelayan dilindungi. Masukkan kata laluan
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Syarikat ini dilindungi. Masukkan kata laluan
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Senarai klien
@@ -1883,19 +1881,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Senarai klien
 
 STR_NETWORK_SPECTATORS                                          :Penyaksi
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Jangan simpan kata laluan ini
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Berikan syarikat kata laluan yang baru
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Kata laluan syarikat
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Kata laluan syarikat yang lazim
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Gunakan kata laluan syarikat ini sebagai yang lazim untuk syarikat baru
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Sertai
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Sertai dan main sebagai syarikat ini
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Kata laluan
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Lindungi syarikat anda dengan kata laluan untuk mengelak daripada penyertaan pengguna tanpa izin.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Tetapkan kata laluan syarikat
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Hantar
@@ -1934,7 +1922,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Komputer
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mungkin kehilangan penyambungan
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Tiada data diterima pada beberapa {NUM} saat yang terakhir
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :kesilapan am
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :kesilapan sinkronisasi (desync)
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :tidak boleh membuka peta
@@ -2121,7 +2109,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Pilih pe
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Tandatuju
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Pilih jenis tandatuju
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Pilihan Stesen Keretapi
@@ -2134,8 +2121,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Pilih ke
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Seret & Lepas
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bina stesen menggunakan kaedah seret & lepas
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Pilih kelas stesen untuk dipaparkan
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Pilih jenis stesen untuk dibina
+
+
+
 
 STR_STATION_CLASS_DFLT                                          :Stesen lazim
 STR_STATION_CLASS_WAYP                                          :Tandatuju
@@ -2266,8 +2254,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tan
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pilihan Objek
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih objek untuk dibina. Shift untuk anggaran kos
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Pilih kelas untuk objek yang ingin dibina
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pranonton objek
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Saiz: {GOLD}{NUM} x {NUM} petak
 
@@ -2367,7 +2353,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Pemilik 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Pemilik landasan keretapi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Pihak berkuasa: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Tiada
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinat: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Dibina: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Kelas stesen: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Jenis stesen: {LTBLUE}{STRING}
@@ -2587,9 +2572,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% s
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Penjanaan dunia
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Penjanaan sungai
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Penjanaan pokok
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Penjanaan objek-objek yang tidak boleh digerakkan
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Penjanaan kawasan berbatu dan tanah kasar
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Penjanaan objek-objek yang tidak boleh digerakkan
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Penjanaan pokok
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Permainan sedang diuruskan
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Lingkaran petak sedang dijalankan
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Skrip sedang berjalan
@@ -2669,7 +2654,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Jenis landasan
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Pemboleh ubah NewGRF, parameter 60+x (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Megalih peperi {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Peperi seterusnya
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Teruskan ke peperi seterusan yang biasa, melangkau sebarang peperi pseudo/warna kembali/fon dan memusing balik semula
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Pergi ke peperi
@@ -2771,7 +2755,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Pergi ke
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Masukkan nama untuk papan tanda
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bandar-bandar
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Tiada -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Senarai bandar - klik nama bandar untuk memusatkan pemandangan ke bandar. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi bandar
@@ -3014,7 +2997,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Petak st
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Lapangan Terbang
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Tiada -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nama industri - klik pada nama untuk memusatkan pemandangan ke industri. Ctrl+Klik membuka tetingkap pemandangan di lokasi industri
@@ -3808,9 +3790,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Jangkaan
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Penyimpanan sedang berlaku,{}sila tunggu sehingga selesai!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Penyimpanan automatik gagal dilakukan
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Gagal dalam membaca cakera
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Penyimpanan Permainan Gagal{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Tidak boleh memadamkan fail
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Pembukaan Permainan Gagal{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Kesilapan dalaman: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Simpanan permainan yang rosak - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Simpanan permainan ini telah dibuat dengan versi yang lebih baru
@@ -4163,6 +4143,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kend
 
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Mulakan permainan baru selepas {DATE_SHORT} atau gunakan NewGRF yang digunakan kenderaan terdahulu
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Keretapi tidak boleh melanggar isyarat kerana terdapat kemungkinan bahaya...
@@ -4672,6 +4653,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

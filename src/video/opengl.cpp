@@ -194,8 +194,8 @@ static bool IsOpenGLExtensionSupported(const char *extension)
 	return false;
 }
 
-static byte _gl_major_ver = 0; ///< Major OpenGL version.
-static byte _gl_minor_ver = 0; ///< Minor OpenGL version.
+static uint8_t _gl_major_ver = 0; ///< Major OpenGL version.
+static uint8_t _gl_minor_ver = 0; ///< Minor OpenGL version.
 
 /**
  * Check if the current OpenGL version is equal or higher than a given one.
@@ -204,7 +204,7 @@ static byte _gl_minor_ver = 0; ///< Minor OpenGL version.
  * @pre OpenGL was initialized.
  * @return True if the OpenGL version is equal or higher than the requested one.
  */
-bool IsOpenGLVersionAtLeast(byte major, byte minor)
+bool IsOpenGLVersionAtLeast(uint8_t major, uint8_t minor)
 {
 	return (_gl_major_ver > major) || (_gl_major_ver == major && _gl_minor_ver >= minor);
 }
@@ -462,9 +462,9 @@ void SetupDebugOutput()
  * Create and initialize the singleton back-end class.
  * @param get_proc Callback to get an OpenGL function from the OS driver.
  * @param screen_res Current display resolution.
- * @return nullptr on success, error message otherwise.
+ * @return std::nullopt on success, error message otherwise.
  */
-/* static */ const char *OpenGLBackend::Create(GetOGLProcAddressProc get_proc, const Dimension &screen_res)
+/* static */ std::optional<std::string_view> OpenGLBackend::Create(GetOGLProcAddressProc get_proc, const Dimension &screen_res)
 {
 	if (OpenGLBackend::instance != nullptr) OpenGLBackend::Destroy();
 
@@ -520,9 +520,9 @@ OpenGLBackend::~OpenGLBackend()
 /**
  * Check for the needed OpenGL functionality and allocate all resources.
  * @param screen_res Current display resolution.
- * @return Error string or nullptr if successful.
+ * @return Error string or std::nullopt if successful.
  */
-const char *OpenGLBackend::Init(const Dimension &screen_res)
+std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 {
 	if (!BindBasicInfoProcs()) return "OpenGL not supported";
 
@@ -729,7 +729,7 @@ const char *OpenGLBackend::Init(const Dimension &screen_res)
 	this->PrepareContext();
 	(void)_glGetError(); // Clear errors.
 
-	return nullptr;
+	return std::nullopt;
 }
 
 void OpenGLBackend::PrepareContext()
@@ -944,10 +944,10 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 		}
 	} else if (bpp == 8) {
 		if (_glClearBufferSubData != nullptr) {
-			byte b = 0;
+			uint8_t b = 0;
 			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_R8, 0, line_pixel_count, GL_RED, GL_UNSIGNED_BYTE, &b);
 		} else {
-			ClearPixelBuffer<byte>(line_pixel_count, 0);
+			ClearPixelBuffer<uint8_t>(line_pixel_count, 0);
 		}
 	}
 
@@ -975,10 +975,10 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 
 		/* Initialize buffer as 0 == no remap. */
 		if (_glClearBufferSubData != nullptr) {
-			byte b = 0;
+			uint8_t b = 0;
 			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_R8, 0, line_pixel_count, GL_RED, GL_UNSIGNED_BYTE, &b);
 		} else {
-			ClearPixelBuffer<byte>(line_pixel_count, 0);
+			ClearPixelBuffer<uint8_t>(line_pixel_count, 0);
 		}
 
 		_glBindTexture(GL_TEXTURE_2D, this->anim_texture);
@@ -1074,16 +1074,14 @@ void OpenGLBackend::DrawMouseCursor()
 
 	/* Draw cursor on screen */
 	_cur_dpi = &_screen;
-	for (uint i = 0; i < this->cursor_sprite_count; ++i) {
-		SpriteID sprite = this->cursor_sprite_seq[i].sprite;
-
+	for (const auto &cs : this->cursor_sprites) {
 		/* Sprites are cached by PopulateCursorCache(). */
-		if (this->cursor_cache.Contains(sprite)) {
-			Sprite *spr = this->cursor_cache.Get(sprite);
+		if (this->cursor_cache.Contains(cs.image.sprite)) {
+			Sprite *spr = this->cursor_cache.Get(cs.image.sprite);
 
-			this->RenderOglSprite((OpenGLSprite *)spr->data, this->cursor_sprite_seq[i].pal,
-					this->cursor_pos.x + this->cursor_sprite_pos[i].x + UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI),
-					this->cursor_pos.y + this->cursor_sprite_pos[i].y + UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI),
+			this->RenderOglSprite((OpenGLSprite *)spr->data, cs.image.pal,
+					this->cursor_pos.x + cs.pos.x + UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI),
+					this->cursor_pos.y + cs.pos.y + UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI),
 					ZOOM_LVL_GUI);
 		}
 	}
@@ -1091,9 +1089,6 @@ void OpenGLBackend::DrawMouseCursor()
 
 void OpenGLBackend::PopulateCursorCache()
 {
-	static_assert(lengthof(_cursor.sprite_seq) == lengthof(this->cursor_sprite_seq));
-	static_assert(lengthof(_cursor.sprite_pos) == lengthof(this->cursor_sprite_pos));
-
 	if (this->clear_cursor_cache) {
 		/* We have a pending cursor cache clear to do first. */
 		this->clear_cursor_cache = false;
@@ -1103,16 +1098,15 @@ void OpenGLBackend::PopulateCursorCache()
 	}
 
 	this->cursor_pos = _cursor.pos;
-	this->cursor_sprite_count = _cursor.sprite_count;
 	this->cursor_in_window = _cursor.in_window;
 
-	for (uint i = 0; i < _cursor.sprite_count; ++i) {
-		this->cursor_sprite_seq[i] = _cursor.sprite_seq[i];
-		this->cursor_sprite_pos[i] = _cursor.sprite_pos[i];
-		SpriteID sprite = _cursor.sprite_seq[i].sprite;
+	this->cursor_sprites.clear();
+	for (const auto &sc : _cursor.sprites) {
+		this->cursor_sprites.emplace_back(sc);
 
-		if (!this->cursor_cache.Contains(sprite)) {
-			Sprite *old = this->cursor_cache.Insert(sprite, (Sprite *)GetRawSprite(sprite, SpriteType::Normal, &SimpleSpriteAlloc, this));
+		if (!this->cursor_cache.Contains(sc.image.sprite)) {
+			SimpleSpriteAllocator allocator;
+			Sprite *old = this->cursor_cache.Insert(sc.image.sprite, static_cast<Sprite *>(GetRawSprite(sc.image.sprite, SpriteType::Normal, &allocator, this)));
 			if (old != nullptr) {
 				OpenGLSprite *gl_sprite = (OpenGLSprite *)old->data;
 				gl_sprite->~OpenGLSprite();
@@ -1264,23 +1258,23 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 	}
 }
 
-/* virtual */ Sprite *OpenGLBackend::Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator)
+/* virtual */ Sprite *OpenGLBackend::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	/* Allocate and construct sprite data. */
-	Sprite *dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + sizeof(OpenGLSprite));
+	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + sizeof(OpenGLSprite));
 
 	OpenGLSprite *gl_sprite = (OpenGLSprite *)dest_sprite->data;
-	new (gl_sprite) OpenGLSprite(sprite[ZOOM_LVL_NORMAL].width, sprite[ZOOM_LVL_NORMAL].height, sprite[ZOOM_LVL_NORMAL].type == SpriteType::Font ? 1 : ZOOM_LVL_END, sprite[ZOOM_LVL_NORMAL].colours);
+	new (gl_sprite) OpenGLSprite(sprite[ZOOM_LVL_MIN].width, sprite[ZOOM_LVL_MIN].height, sprite[ZOOM_LVL_MIN].type == SpriteType::Font ? 1 : ZOOM_LVL_END, sprite[ZOOM_LVL_MIN].colours);
 
 	/* Upload texture data. */
-	for (int i = 0; i < (sprite[ZOOM_LVL_NORMAL].type == SpriteType::Font ? 1 : ZOOM_LVL_END); i++) {
+	for (int i = 0; i < (sprite[ZOOM_LVL_MIN].type == SpriteType::Font ? 1 : ZOOM_LVL_END); i++) {
 		gl_sprite->Update(sprite[i].width, sprite[i].height, i, sprite[i].data);
 	}
 
-	dest_sprite->height = sprite[ZOOM_LVL_NORMAL].height;
-	dest_sprite->width  = sprite[ZOOM_LVL_NORMAL].width;
-	dest_sprite->x_offs = sprite[ZOOM_LVL_NORMAL].x_offs;
-	dest_sprite->y_offs = sprite[ZOOM_LVL_NORMAL].y_offs;
+	dest_sprite->height = sprite[ZOOM_LVL_MIN].height;
+	dest_sprite->width  = sprite[ZOOM_LVL_MIN].width;
+	dest_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
+	dest_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
 
 	return dest_sprite;
 }

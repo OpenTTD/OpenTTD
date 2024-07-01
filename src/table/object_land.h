@@ -121,7 +121,7 @@ static const DrawTileSprites _object_hq[] = {
 
 #undef TILE_SPRITE_LINE
 
-#define M(name, size, build_cost_multiplier, clear_cost_multiplier, height, climate, gen_amount, flags) { GRFFilePropsBase<2>(), {0, 0, 0, 0}, INVALID_OBJECT_CLASS, name, climate, size, build_cost_multiplier, clear_cost_multiplier, 0, CalendarTime::MAX_DATE + 1, flags, 0, height, 1, gen_amount }
+#define M(name, size, build_cost_multiplier, clear_cost_multiplier, height, climate, gen_amount, flags) {{INVALID_OBJECT_CLASS, 0}, GRFFilePropsBase<2>(), {0, 0, 0, 0}, name, climate, size, build_cost_multiplier, clear_cost_multiplier, 0, CalendarTime::MAX_DATE + 1, flags, 0, height, 1, gen_amount}
 
 /* Climates
  * T = Temperate

@@ -231,6 +231,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Объе
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Вӗҫле
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Вӑййи майлаштару
@@ -459,7 +460,7 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Пӗлт
 
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Вырӑсла тенкӗ
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Хӑй управ
@@ -493,7 +494,9 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
 
 
 
+
 # Custom currency window
+
 
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс: {ORANGE}{STRING}
@@ -637,6 +640,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропор�
 ###length 2
 
 
+
 ###length 2
 
 
@@ -751,6 +755,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 
 
+###length 3
+
 ###setting-zero-is-special
 
 
@@ -842,8 +848,6 @@ STR_CONFIG_SETTING_VEHICLES                                     :Ҫул-йӗр:
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Хуласем
 STR_CONFIG_SETTING_AI                                           :Ӑмӑртуҫӑсем
 
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 
 
 # Config errors
@@ -996,8 +1000,6 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырн
 
 
 
-# Network set password
-
 # Network company info join/password
 
 # Network chat
@@ -1006,7 +1008,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырн
 # Network messages
 
 
-###length 21
+###length 22
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -1053,6 +1055,9 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 # Rail waypoint construction window
 
 # Rail station construction window
+
+
+
 
 
 
@@ -1708,6 +1713,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Ҫул �
 
 
 
+
 # Specific vehicle errors
 
 
@@ -1809,6 +1815,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

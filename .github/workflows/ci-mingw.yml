@@ -1,0 +1,83 @@
+name: CI (MinGW)
+
+on:
+  workflow_call:
+    inputs:
+      arch:
+        required: true
+        type: string
+      msystem:
+        required: true
+        type: string
+
+env:
+  CTEST_OUTPUT_ON_FAILURE: 1
+
+jobs:
+  mingw:
+    name: CI
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup MSYS2
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: ${{ inputs.msystem }}
+        release: false
+        install: >-
+          git
+          make
+          mingw-w64-${{ inputs.arch }}-cmake
+          mingw-w64-${{ inputs.arch }}-gcc
+          mingw-w64-${{ inputs.arch }}-lzo2
+          mingw-w64-${{ inputs.arch }}-libpng
+          mingw-w64-${{ inputs.arch }}-lld
+          mingw-w64-${{ inputs.arch }}-ninja
+
+    - name: Install OpenGFX
+      shell: bash
+      run: |
+        mkdir -p "C:/Users/Public/Documents/OpenTTD/baseset"
+        cd "C:/Users/Public/Documents/OpenTTD/baseset"
+
+        echo "::group::Download OpenGFX"
+        curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip -o opengfx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenGFX"
+        unzip opengfx-all.zip
+        echo "::endgroup::"
+
+        rm -f opengfx-all.zip
+
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
+    - name: Build
+      shell: msys2 {0}
+      env:
+        NINJA_STATUS: "[%f/%t -- %e] " # [finished_edges/total_edges -- elapsed_time], default value is "[%f/%t] "
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        cmake .. \
+          -GNinja \
+          -DCMAKE_CXX_FLAGS="-fuse-ld=lld" \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        cmake --build .
+        echo "::endgroup::"
+
+    - name: Test
+      shell: msys2 {0}
+      run: |
+        cd build
+        ctest --timeout 120

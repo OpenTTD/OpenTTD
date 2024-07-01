@@ -16,6 +16,7 @@
 #include "../gfx_func.h"
 #include "../settings_type.h"
 #include "../zoom_type.h"
+#include "../network/network_func.h"
 #include <atomic>
 #include <chrono>
 #include <condition_variable>
@@ -174,7 +175,7 @@ public:
 		return Clamp(dpi_scale * 100, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
 	}
 
-	virtual const char *GetInfoString() const
+	virtual std::string_view GetInfoString() const
 	{
 		return this->GetName();
 	}
@@ -311,6 +312,12 @@ protected:
 
 	std::chrono::steady_clock::duration GetGameInterval()
 	{
+#ifdef DEBUG_DUMP_COMMANDS
+		/* When replaying, run as fast as we can. */
+		extern bool _ddc_fastforward;
+		if (_ddc_fastforward) return std::chrono::microseconds(0);
+#endif /* DEBUG_DUMP_COMMANDS */
+
 		/* If we are paused, run on normal speed. */
 		if (_pause_mode) return std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 		/* Infinite speed, as quickly as you can. */

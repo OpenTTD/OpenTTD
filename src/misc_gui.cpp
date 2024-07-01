@@ -12,6 +12,7 @@
 #include "landscape.h"
 #include "error.h"
 #include "gui.h"
+#include "gfx_layout.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "town.h"
@@ -53,17 +54,17 @@ static constexpr NWidgetPart _nested_land_info_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_LI_LOCATION), SetMinimalSize(12, 14), SetDataTip(SPR_GOTO_LOCATION, STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_LI_LOCATION), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetDataTip(SPR_GOTO_LOCATION, STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP),
 		NWidget(WWT_DEBUGBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_LI_BACKGROUND), EndContainer(),
 };
 
-static WindowDesc _land_info_desc(__FILE__, __LINE__,
+static WindowDesc _land_info_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_LAND_INFO, WC_NONE,
 	0,
-	std::begin(_nested_land_info_widgets), std::end(_nested_land_info_widgets)
+	_nested_land_info_widgets
 );
 
 class LandInfoWindow : public Window {
@@ -89,27 +90,27 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_LI_BACKGROUND) return;
 
-		size->height = WidgetDimensions::scaled.frametext.Vertical();
+		size.height = WidgetDimensions::scaled.frametext.Vertical();
 		for (size_t i = 0; i < this->landinfo_data.size(); i++) {
 			uint width = GetStringBoundingBox(this->landinfo_data[i]).width + WidgetDimensions::scaled.frametext.Horizontal();
-			size->width = std::max(size->width, width);
+			size.width = std::max(size.width, width);
 
-			size->height += GetCharacterHeight(FS_NORMAL) + (i == 0 ? WidgetDimensions::scaled.vsep_wide : WidgetDimensions::scaled.vsep_normal);
+			size.height += GetCharacterHeight(FS_NORMAL) + (i == 0 ? WidgetDimensions::scaled.vsep_wide : WidgetDimensions::scaled.vsep_normal);
 		}
 
 		if (!this->cargo_acceptance.empty()) {
 			uint width = GetStringBoundingBox(this->cargo_acceptance).width + WidgetDimensions::scaled.frametext.Horizontal();
-			size->width = std::max(size->width, std::min(static_cast<uint>(ScaleGUITrad(300)), width));
+			size.width = std::max(size.width, std::min(static_cast<uint>(ScaleGUITrad(300)), width));
 			SetDParamStr(0, cargo_acceptance);
-			size->height += GetStringHeight(STR_JUST_RAW_STRING, size->width - WidgetDimensions::scaled.frametext.Horizontal());
+			size.height += GetStringHeight(STR_JUST_RAW_STRING, size.width - WidgetDimensions::scaled.frametext.Horizontal());
 		}
 	}
 
-	LandInfoWindow(Tile tile) : Window(&_land_info_desc), tile(tile)
+	LandInfoWindow(Tile tile) : Window(_land_info_desc), tile(tile)
 	{
 		this->InitNested();
 
@@ -118,7 +119,7 @@ public:
 #else
 #	define LANDINFOD_LEVEL 1
 #endif
-		Debug(misc, LANDINFOD_LEVEL, "TILE: 0x{:x} ({},{})", (TileIndex)tile, TileX(tile), TileY(tile));
+		Debug(misc, LANDINFOD_LEVEL, "TILE: {0} (0x{0:x}) ({1},{2})", (TileIndex)tile, TileX(tile), TileY(tile));
 		Debug(misc, LANDINFOD_LEVEL, "type   = 0x{:x}", tile.type());
 		Debug(misc, LANDINFOD_LEVEL, "height = 0x{:x}", tile.height());
 		Debug(misc, LANDINFOD_LEVEL, "m1     = 0x{:x}", tile.m1());
@@ -209,14 +210,15 @@ public:
 		this->landinfo_data.push_back(GetString(str));
 
 		/* Location */
-		std::stringstream tile_ss;
-		tile_ss << "0x" << std::setfill('0') << std::setw(4) << std::hex << std::uppercase << tile.base(); // 0x%.4X
-
 		SetDParam(0, TileX(tile));
 		SetDParam(1, TileY(tile));
 		SetDParam(2, GetTileZ(tile));
-		SetDParamStr(3, tile_ss.str());
 		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_COORDS));
+
+		/* Tile index */
+		SetDParam(0, tile);
+		SetDParam(1, tile);
+		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_INDEX));
 
 		/* Local authority */
 		SetDParam(0, STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE);
@@ -396,14 +398,14 @@ static constexpr NWidgetPart _nested_about_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _about_desc(__FILE__, __LINE__,
+static WindowDesc _about_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
-	std::begin(_nested_about_widgets), std::end(_nested_about_widgets)
+	_nested_about_widgets
 );
 
-static const char * const _credits[] = {
+static const std::initializer_list<const std::string_view> _credits = {
 	"Original design by Chris Sawyer",
 	"Original graphics by Simon Foster",
 	"",
@@ -411,6 +413,7 @@ static const char * const _credits[] = {
 	"  Matthijs Kooijman (blathijs) - Pathfinder-guru, Debian port (since 0.3)",
 	"  Christoph Elsenhans (frosch) - General coding (since 0.6)",
 	"  Lo\u00efc Guilloux (glx) - General / Windows Expert (since 0.4.5)",
+	"  Koen Bussemaker (Kuhnovic) - General / Ship pathfinder (since 14)",
 	"  Charles Pigott (LordAro) - General / Correctness police (since 1.9)",
 	"  Michael Lutz (michi_cc) - Path based signals (since 0.7)",
 	"  Niels Martin Hansen (nielsm) - Music system, general coding (since 1.9)",
@@ -418,7 +421,7 @@ static const char * const _credits[] = {
 	"  Peter Nelson (peter1138) - Spiritual descendant from NewGRF gods (since 0.4.5)",
 	"  Remko Bijker (Rubidium) - Coder and way more (since 0.4.5)",
 	"  Patric Stout (TrueBrain) - NoProgrammer (since 0.3), sys op",
-	"  Tyler Trahan (2TallTyler) - General coding (since 13)",
+	"  Tyler Trahan (2TallTyler) - General / Time Lord (since 13)",
 	"",
 	"Inactive Developers:",
 	"  Grzegorz Duczy\u0144ski (adf88) - General coding (1.7 - 1.8)",
@@ -474,7 +477,7 @@ struct AboutWindow : public Window {
 	int line_height;                         ///< The height of a single line
 	static const int num_visible_lines = 19; ///< The number of lines visible simultaneously
 
-	AboutWindow() : Window(&_about_desc)
+	AboutWindow() : Window(_about_desc)
 	{
 		this->InitNested(WN_GAME_OPTIONS_ABOUT);
 
@@ -487,7 +490,7 @@ struct AboutWindow : public Window {
 		if (widget == WID_A_COPYRIGHT) SetDParamStr(0, _openttd_revision_year);
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_A_SCROLLING_TEXT) return;
 
@@ -497,10 +500,10 @@ struct AboutWindow : public Window {
 		d.height = this->line_height * num_visible_lines;
 
 		d.width = 0;
-		for (uint i = 0; i < lengthof(_credits); i++) {
-			d.width = std::max(d.width, GetStringBoundingBox(_credits[i]).width);
+		for (const auto &str : _credits) {
+			d.width = std::max(d.width, GetStringBoundingBox(str).width);
 		}
-		*size = maxdim(*size, d);
+		size = maxdim(size, d);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -510,9 +513,9 @@ struct AboutWindow : public Window {
 		int y = this->text_position;
 
 		/* Show all scrolling _credits */
-		for (uint i = 0; i < lengthof(_credits); i++) {
+		for (const auto &str : _credits) {
 			if (y >= r.top + 7 && y < r.bottom - this->line_height) {
-				DrawString(r.left, r.right, y, _credits[i], TC_BLACK, SA_LEFT | SA_FORCE);
+				DrawString(r.left, r.right, y, str, TC_BLACK, SA_LEFT | SA_FORCE);
 			}
 			y += this->line_height;
 		}
@@ -526,7 +529,7 @@ struct AboutWindow : public Window {
 	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(2100) / GetCharacterHeight(FS_NORMAL), [this](uint count) {
 		this->text_position -= count;
 		/* If the last text has scrolled start a new from the start */
-		if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - lengthof(_credits) * this->line_height)) {
+		if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - std::size(_credits) * this->line_height)) {
 			this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
 		}
 		this->SetWidgetDirty(WID_A_SCROLLING_TEXT);
@@ -654,11 +657,11 @@ static constexpr NWidgetPart _nested_tooltips_widgets[] = {
 	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_TT_BACKGROUND),
 };
 
-static WindowDesc _tool_tips_desc(__FILE__, __LINE__,
+static WindowDesc _tool_tips_desc(
 	WDP_MANUAL, nullptr, 0, 0, // Coordinates and sizes are not used,
 	WC_TOOLTIPS, WC_NONE,
 	WDF_NO_FOCUS | WDF_NO_CLOSE,
-	std::begin(_nested_tooltips_widgets), std::end(_nested_tooltips_widgets)
+	_nested_tooltips_widgets
 );
 
 /** Window for displaying a tooltip. */
@@ -668,7 +671,7 @@ struct TooltipsWindow : public Window
 	std::vector<StringParameterBackup> params; ///< The string parameters.
 	TooltipCloseCondition close_cond; ///< Condition for closing the window.
 
-	TooltipsWindow(Window *parent, StringID str, uint paramcount, TooltipCloseCondition close_tooltip) : Window(&_tool_tips_desc)
+	TooltipsWindow(Window *parent, StringID str, uint paramcount, TooltipCloseCondition close_tooltip) : Window(_tool_tips_desc)
 	{
 		this->parent = parent;
 		this->string_id = str;
@@ -700,17 +703,17 @@ struct TooltipsWindow : public Window
 		return pt;
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_TT_BACKGROUND) return;
 		CopyInDParam(this->params);
 
-		size->width  = std::min<uint>(GetStringBoundingBox(this->string_id).width, ScaleGUITrad(194));
-		size->height = GetStringHeight(this->string_id, size->width);
+		size.width  = std::min<uint>(GetStringBoundingBox(this->string_id).width, ScaleGUITrad(194));
+		size.height = GetStringHeight(this->string_id, size.width);
 
 		/* Increase slightly to have some space around the box. */
-		size->width  += WidgetDimensions::scaled.framerect.Horizontal()  + WidgetDimensions::scaled.fullbevel.Horizontal();
-		size->height += WidgetDimensions::scaled.framerect.Vertical()    + WidgetDimensions::scaled.fullbevel.Vertical();
+		size.width  += WidgetDimensions::scaled.framerect.Horizontal()  + WidgetDimensions::scaled.fullbevel.Horizontal();
+		size.height += WidgetDimensions::scaled.framerect.Vertical()    + WidgetDimensions::scaled.fullbevel.Vertical();
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -778,6 +781,25 @@ static int GetCaretWidth()
 	return GetCharacterWidth(FS_NORMAL, '_');
 }
 
+/**
+ * Reposition edit text box rect based on textbuf length can caret position.
+ * @param r Initial rect of edit text box.
+ * @param tb The Textbuf being processed.
+ * @return Updated rect.
+ */
+static Rect ScrollEditBoxTextRect(Rect r, const Textbuf &tb)
+{
+	const int linewidth = tb.pixels + GetCaretWidth();
+	const int boxwidth = r.Width();
+	if (linewidth <= boxwidth) return r;
+
+	/* Extend to cover whole string. This is left-aligned, adjusted by caret position. */
+	r = r.WithWidth(linewidth, false);
+
+	/* Slide so that the caret is at the centre unless limited by bounds of the line, i.e. near either end. */
+	return r.Translate(-std::clamp(tb.caretxoffs - (boxwidth / 2), 0, linewidth - boxwidth), 0);
+}
+
 void QueryString::DrawEditBox(const Window *w, WidgetID wid) const
 {
 	const NWidgetLeaf *wi = w->GetWidget<NWidgetLeaf>(wid);
@@ -794,7 +816,7 @@ void QueryString::DrawEditBox(const Window *w, WidgetID wid) const
 
 	DrawFrameRect(cr, wi->colour, wi->IsLowered() ? FR_LOWERED : FR_NONE);
 	DrawSpriteIgnorePadding(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT, PAL_NONE, cr, SA_CENTER);
-	if (this->text.bytes == 1) GfxFillRect(cr.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[wi->colour & 0xF][2], FILLRECT_CHECKER);
+	if (this->text.bytes == 1) GfxFillRect(cr.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(wi->colour, SHADE_DARKER), FILLRECT_CHECKER);
 
 	DrawFrameRect(fr, wi->colour, FR_LOWERED | FR_DARKENED);
 	GfxFillRect(fr.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK);
@@ -803,24 +825,29 @@ void QueryString::DrawEditBox(const Window *w, WidgetID wid) const
 	/* Limit the drawing of the string inside the widget boundaries */
 	DrawPixelInfo dpi;
 	if (!FillDrawPixelInfo(&dpi, fr)) return;
+	/* Keep coordinates relative to the window. */
+	dpi.left += fr.left;
+	dpi.top += fr.top;
 
 	AutoRestoreBackup dpi_backup(_cur_dpi, &dpi);
 
 	/* We will take the current widget length as maximum width, with a small
 	 * space reserved at the end for the caret to show */
 	const Textbuf *tb = &this->text;
-	int delta = std::min(0, (fr.right - fr.left) - tb->pixels - GetCaretWidth());
-
-	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
+	fr = ScrollEditBoxTextRect(fr, *tb);
 
 	/* If we have a marked area, draw a background highlight. */
-	if (tb->marklength != 0) GfxFillRect(delta + tb->markxoffs, 0, delta + tb->markxoffs + tb->marklength - 1, fr.bottom - fr.top, PC_GREY);
+	if (tb->marklength != 0) GfxFillRect(fr.left + tb->markxoffs, fr.top, fr.left + tb->markxoffs + tb->marklength - 1, fr.bottom, PC_GREY);
 
-	DrawString(delta, tb->pixels, 0, tb->buf, TC_YELLOW);
+	DrawString(fr.left, fr.right, CenterBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), tb->buf, TC_YELLOW);
 	bool focussed = w->IsWidgetGloballyFocused(wid) || IsOSKOpenedFor(w, wid);
 	if (focussed && tb->caret) {
-		int caret_width = GetStringBoundingBox("_").width;
-		DrawString(tb->caretxoffs + delta, tb->caretxoffs + delta + caret_width, 0, "_", TC_WHITE);
+		int caret_width = GetCaretWidth();
+		if (rtl) {
+			DrawString(fr.right - tb->pixels + tb->caretxoffs - caret_width, fr.right - tb->pixels + tb->caretxoffs, CenterBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), "_", TC_WHITE);
+		} else {
+			DrawString(fr.left + tb->caretxoffs, fr.left + tb->caretxoffs + caret_width, CenterBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), "_", TC_WHITE);
+		}
 	}
 }
 
@@ -844,10 +871,9 @@ Point QueryString::GetCaretPosition(const Window *w, WidgetID wid) const
 
 	/* Clamp caret position to be inside out current width. */
 	const Textbuf *tb = &this->text;
-	int delta = std::min(0, (r.right - r.left) - tb->pixels - GetCaretWidth());
-	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
+	r = ScrollEditBoxTextRect(r, *tb);
 
-	Point pt = {r.left + tb->caretxoffs + delta, r.top};
+	Point pt = {r.left + tb->caretxoffs, r.top};
 	return pt;
 }
 
@@ -873,14 +899,13 @@ Rect QueryString::GetBoundingRect(const Window *w, WidgetID wid, const char *fro
 
 	/* Clamp caret position to be inside our current width. */
 	const Textbuf *tb = &this->text;
-	int delta = std::min(0, r.Width() - tb->pixels - GetCaretWidth());
-	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
+	r = ScrollEditBoxTextRect(r, *tb);
 
 	/* Get location of first and last character. */
-	Point p1 = GetCharPosInString(tb->buf, from, FS_NORMAL);
-	Point p2 = from != to ? GetCharPosInString(tb->buf, to, FS_NORMAL) : p1;
+	const auto p1 = GetCharPosInString(tb->buf, from, FS_NORMAL);
+	const auto p2 = from != to ? GetCharPosInString(tb->buf, to, FS_NORMAL) : p1;
 
-	return { Clamp(r.left + p1.x + delta, r.left, r.right), r.top, Clamp(r.left + p2.x + delta, r.left, r.right), r.bottom };
+	return { Clamp(r.left + p1.left, r.left, r.right), r.top, Clamp(r.left + p2.right, r.left, r.right), r.bottom };
 }
 
 /**
@@ -906,10 +931,9 @@ ptrdiff_t QueryString::GetCharAtPosition(const Window *w, WidgetID wid, const Po
 
 	/* Clamp caret position to be inside our current width. */
 	const Textbuf *tb = &this->text;
-	int delta = std::min(0, r.Width() - tb->pixels - GetCaretWidth());
-	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
+	r = ScrollEditBoxTextRect(r, *tb);
 
-	return ::GetCharAtPosition(tb->buf, pt.x - delta - r.left);
+	return ::GetCharAtPosition(tb->buf, pt.x - r.left);
 }
 
 void QueryString::ClickEditBox(Window *w, Point pt, WidgetID wid, int click_count, bool focus_changed)
@@ -946,9 +970,8 @@ struct QueryStringWindow : public Window
 {
 	QueryString editbox;    ///< Editbox.
 	QueryStringFlags flags; ///< Flags controlling behaviour of the window.
-	Dimension warning_size; ///< How much space to use for the warning text
 
-	QueryStringWindow(StringID str, StringID caption, uint max_bytes, uint max_chars, WindowDesc *desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
+	QueryStringWindow(StringID str, StringID caption, uint max_bytes, uint max_chars, WindowDesc &desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
 			Window(desc), editbox(max_bytes, max_chars)
 	{
 		this->editbox.text.Assign(str);
@@ -963,48 +986,19 @@ struct QueryStringWindow : public Window
 		this->flags = flags;
 
 		this->InitNested(WN_QUERY_STRING);
-		this->UpdateWarningStringSize();
 
 		this->parent = parent;
 
 		this->SetFocusedWidget(WID_QS_TEXT);
 	}
 
-	void UpdateWarningStringSize()
-	{
-		if (this->flags & QSF_PASSWORD) {
-			assert(this->nested_root->smallest_x > 0);
-			this->warning_size.width = this->nested_root->current_x - WidgetDimensions::scaled.frametext.Horizontal() - WidgetDimensions::scaled.framerect.Horizontal();
-			this->warning_size.height = GetStringHeight(STR_WARNING_PASSWORD_SECURITY, this->warning_size.width);
-			this->warning_size.height += WidgetDimensions::scaled.frametext.Vertical() + WidgetDimensions::scaled.framerect.Vertical();
-		} else {
-			this->warning_size = Dimension{ 0, 0 };
-		}
-
-		this->ReInit();
-	}
-
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget == WID_QS_DEFAULT && (this->flags & QSF_ENABLE_DEFAULT) == 0) {
 			/* We don't want this widget to show! */
-			fill->width = 0;
-			resize->width = 0;
-			size->width = 0;
-		}
-
-		if (widget == WID_QS_WARNING) {
-			*size = this->warning_size;
-		}
-	}
-
-	void DrawWidget(const Rect &r, WidgetID widget) const override
-	{
-		if (widget != WID_QS_WARNING) return;
-
-		if (this->flags & QSF_PASSWORD) {
-			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect).Shrink(WidgetDimensions::scaled.frametext),
-				STR_WARNING_PASSWORD_SECURITY, TC_FROMSTRING, SA_CENTER);
+			fill.width = 0;
+			resize.width = 0;
+			size.width = 0;
 		}
 	}
 
@@ -1045,7 +1039,7 @@ struct QueryStringWindow : public Window
 		if (!this->editbox.handled && this->parent != nullptr) {
 			Window *parent = this->parent;
 			this->parent = nullptr; // so parent doesn't try to close us again
-			parent->OnQueryTextFinished(nullptr);
+			parent->OnQueryTextFinished(std::nullopt);
 		}
 		this->Window::Close();
 	}
@@ -1057,9 +1051,8 @@ static constexpr NWidgetPart _nested_query_string_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_QS_CAPTION), SetDataTip(STR_JUST_STRING, STR_NULL), SetTextStyle(TC_WHITE),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_QS_TEXT), SetMinimalSize(256, 12), SetFill(1, 1), SetPadding(2, 2, 2, 2),
+		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_QS_TEXT), SetMinimalSize(256, 0), SetFill(1, 0), SetPadding(2, 2, 2, 2),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_QS_WARNING), EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_DEFAULT), SetMinimalSize(87, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_DEFAULT, STR_NULL),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_CANCEL), SetMinimalSize(86, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
@@ -1067,11 +1060,11 @@ static constexpr NWidgetPart _nested_query_string_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _query_string_desc(__FILE__, __LINE__,
+static WindowDesc _query_string_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_QUERY_STRING, WC_NONE,
 	0,
-	std::begin(_nested_query_string_widgets), std::end(_nested_query_string_widgets)
+	_nested_query_string_widgets
 );
 
 /**
@@ -1088,7 +1081,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxsize, Window *paren
 	assert(parent != nullptr);
 
 	CloseWindowByClass(WC_QUERY_STRING);
-	new QueryStringWindow(str, caption, ((flags & QSF_LEN_IN_CHARS) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, &_query_string_desc, parent, afilter, flags);
+	new QueryStringWindow(str, caption, ((flags & QSF_LEN_IN_CHARS) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, _query_string_desc, parent, afilter, flags);
 }
 
 /**
@@ -1099,7 +1092,7 @@ struct QueryWindow : public Window {
 	std::vector<StringParameterBackup> params; ///< local copy of #_global_string_params
 	StringID message;        ///< message shown for query window
 
-	QueryWindow(WindowDesc *desc, StringID caption, StringID message, Window *parent, QueryCallbackProc *callback) : Window(desc)
+	QueryWindow(WindowDesc &desc, StringID caption, StringID message, Window *parent, QueryCallbackProc *callback) : Window(desc)
 	{
 		/* Create a backup of the variadic arguments to strings because it will be
 		 * overridden pretty often. We will copy these back for drawing */
@@ -1137,11 +1130,11 @@ struct QueryWindow : public Window {
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_Q_TEXT) return;
 
-		*size = GetStringMultiLineBoundingBox(this->message, *size);
+		size = GetStringMultiLineBoundingBox(this->message, size);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -1210,11 +1203,11 @@ static constexpr NWidgetPart _nested_query_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _query_desc(__FILE__, __LINE__,
+static WindowDesc _query_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_MODAL,
-	std::begin(_nested_query_widgets), std::end(_nested_query_widgets)
+	_nested_query_widgets
 );
 
 /**
@@ -1241,6 +1234,6 @@ void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallback
 		break;
 	}
 
-	QueryWindow *q = new QueryWindow(&_query_desc, caption, message, parent, callback);
+	QueryWindow *q = new QueryWindow(_query_desc, caption, message, parent, callback);
 	if (focus) SetFocusedWindow(q);
 }

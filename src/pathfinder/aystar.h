@@ -16,9 +16,14 @@
 #ifndef AYSTAR_H
 #define AYSTAR_H
 
-#include "queue.h"
-#include "../../tile_type.h"
-#include "../../track_type.h"
+#include "../track_func.h"
+
+#include "../misc/hashtable.hpp"
+#include "../misc/binaryheap.hpp"
+#include "../misc/dbg_helpers.h"
+
+#include "yapf/nodelist.hpp"
+#include "yapf/yapf_node.hpp"
 
 static const int AYSTAR_DEF_MAX_SEARCH_NODES = 10000; ///< Reference limit for #AyStar::max_search_nodes
 
@@ -34,27 +39,9 @@ enum AystarStatus {
 
 static const int AYSTAR_INVALID_NODE = -1; ///< Item is not valid (for example, not walkable).
 
-/** Node in the search. */
-struct AyStarNode {
-	TileIndex tile;
-	Trackdir direction;
-	uint user_data[2];
-};
+using AyStarNode = CYapfNodeKeyTrackDir;
 
-/** A path of nodes. */
-struct PathNode {
-	AyStarNode node;
-	PathNode *parent; ///< The parent of this item.
-};
-
-/**
- * Internal node.
- * @note We do not save the h-value, because it is only needed to calculate the f-value.
- *       h-value should \em always be the distance left to the end-tile.
- */
-struct OpenListNode {
-	int g;
-	PathNode path;
+struct PathNode : CYapfNodeT<AyStarNode, PathNode> {
 };
 
 bool CheckIgnoreFirstTile(const PathNode *node);
@@ -75,7 +62,7 @@ struct AyStar;
  *  - #AYSTAR_FOUND_END_NODE : indicates this is the end tile
  *  - #AYSTAR_DONE : indicates this is not the end tile (or direction was wrong)
  */
-typedef int32_t AyStar_EndNodeCheck(const AyStar *aystar, const OpenListNode *current);
+typedef int32_t AyStar_EndNodeCheck(const AyStar *aystar, const PathNode *current);
 
 /**
  * Calculate the G-value for the %AyStar algorithm.
@@ -83,27 +70,27 @@ typedef int32_t AyStar_EndNodeCheck(const AyStar *aystar, const OpenListNode *cu
  *  - #AYSTAR_INVALID_NODE : indicates an item is not valid (e.g.: unwalkable)
  *  - Any value >= 0 : the g-value for this tile
  */
-typedef int32_t AyStar_CalculateG(AyStar *aystar, AyStarNode *current, OpenListNode *parent);
+typedef int32_t AyStar_CalculateG(AyStar *aystar, AyStarNode *current, PathNode *parent);
 
 /**
  * Calculate the H-value for the %AyStar algorithm.
  * Mostly, this must return the distance (Manhattan way) between the current point and the end point.
  * @return The h-value for this tile (any value >= 0)
  */
-typedef int32_t AyStar_CalculateH(AyStar *aystar, AyStarNode *current, OpenListNode *parent);
+typedef int32_t AyStar_CalculateH(AyStar *aystar, AyStarNode *current, PathNode *parent);
 
 /**
  * This function requests the tiles around the current tile and put them in #neighbours.
  * #neighbours is never reset, so if you are not using directions, just leave it alone.
  * @warning Never add more #neighbours than memory allocated for it.
  */
-typedef void AyStar_GetNeighbours(AyStar *aystar, OpenListNode *current);
+typedef void AyStar_GetNeighbours(AyStar *aystar, PathNode *current);
 
 /**
  * If the End Node is found, this function is called.
  * It can do, for example, calculate the route and put that in an array.
  */
-typedef void AyStar_FoundEndNode(AyStar *aystar, OpenListNode *current);
+typedef void AyStar_FoundEndNode(AyStar *aystar, PathNode *current);
 
 /**
  * %AyStar search algorithm struct.
@@ -115,7 +102,7 @@ typedef void AyStar_FoundEndNode(AyStar *aystar, OpenListNode *current);
  */
 struct AyStar {
 /* These fields should be filled before initing the AyStar, but not changed
- * afterwards (except for user_data and user_path)! (free and init again to change them) */
+ * afterwards (except for user_data)! (free and init again to change them) */
 
 	/* These should point to the application specific routines that do the
 	 * actual work */
@@ -131,41 +118,27 @@ struct AyStar {
 	 * afterwards, user_target should typically contain information about
 	 * what you where looking for, and user_data can contain just about
 	 * everything */
-	void *user_path;
 	void *user_target;
 	void *user_data;
 
-	byte loops_per_tick;   ///< How many loops are there called before Main() gives control back to the caller. 0 = until done.
-	uint max_path_cost;    ///< If the g-value goes over this number, it stops searching, 0 = infinite.
-	uint max_search_nodes; ///< The maximum number of nodes that will be expanded, 0 = infinite.
+	uint8_t loops_per_tick;   ///< How many loops are there called before Main() gives control back to the caller. 0 = until done.
+	int max_path_cost;    ///< If the g-value goes over this number, it stops searching, 0 = infinite.
+	int max_search_nodes = AYSTAR_DEF_MAX_SEARCH_NODES; ///< The maximum number of nodes that will be expanded, 0 = infinite.
 
-	/* These should be filled with the neighbours of a tile by
-	 * GetNeighbours */
-	AyStarNode neighbours[12];
-	byte num_neighbours;
-
-	void Init(Hash_HashProc hash, uint num_buckets);
+	/* These should be filled with the neighbours of a tile by GetNeighbours */
+	std::vector<AyStarNode> neighbours;
 
 	/* These will contain the methods for manipulating the AyStar. Only
 	 * Main() should be called externally */
-	void AddStartNode(AyStarNode *start_node, uint g);
+	void AddStartNode(AyStarNode *start_node, int g);
 	int Main();
 	int Loop();
-	void Free();
-	void Clear();
-	void CheckTile(AyStarNode *current, OpenListNode *parent);
+	void CheckTile(AyStarNode *current, PathNode *parent);
 
 protected:
-	Hash       closedlist_hash; ///< The actual closed list.
-	BinaryHeap openlist_queue;  ///< The open queue.
-	Hash       openlist_hash;   ///< An extra hash to speed up the process of looking up an element in the open list.
+	CNodeList_HashTableT<PathNode, 8, 10> nodes;
 
 	void OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g);
-	OpenListNode *OpenListIsInList(const AyStarNode *node);
-	OpenListNode *OpenListPop();
-
-	void ClosedListAdd(const PathNode *node);
-	PathNode *ClosedListIsInList(const AyStarNode *node);
 };
 
 #endif /* AYSTAR_H */

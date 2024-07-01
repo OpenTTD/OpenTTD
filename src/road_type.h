@@ -22,7 +22,7 @@ static const RoadTypeLabel ROADTYPE_LABEL_TRAM = 'ELRL';
  *
  * @note currently only ROADTYPE_ROAD and ROADTYPE_TRAM are supported.
  */
-enum RoadType : byte {
+enum RoadType : uint8_t {
 	ROADTYPE_BEGIN   = 0,    ///< Used for iterations
 	ROADTYPE_ROAD    = 0,    ///< Basic road type
 	ROADTYPE_TRAM    = 1,    ///< Trams
@@ -49,7 +49,7 @@ DECLARE_ENUM_AS_BIT_SET(RoadTypes)
  * This enumeration defines the possible road parts which
  * can be build on a tile.
  */
-enum RoadBits : byte {
+enum RoadBits : uint8_t {
 	ROAD_NONE = 0U,                  ///< No road-part is build
 	ROAD_NW   = 1U,                  ///< North-west part
 	ROAD_SW   = 2U,                  ///< South-west part
@@ -70,7 +70,7 @@ enum RoadBits : byte {
 DECLARE_ENUM_AS_BIT_SET(RoadBits)
 
 /** Which directions are disallowed ? */
-enum DisallowedRoadDirections : byte {
+enum DisallowedRoadDirections : uint8_t {
 	DRD_NONE,       ///< None of the directions are disallowed
 	DRD_SOUTHBOUND, ///< All southbound traffic is disallowed
 	DRD_NORTHBOUND, ///< All northbound traffic is disallowed

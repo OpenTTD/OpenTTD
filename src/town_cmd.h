@@ -14,7 +14,8 @@
 #include "company_type.h"
 #include "town_type.h"
 
-enum TownAcceptanceEffect : byte;
+enum TownAcceptanceEffect : uint8_t;
+using HouseID = uint16_t;
 
 std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32_t townnameparts, const std::string &text);
 CommandCost CmdRenameTown(DoCommandFlag flags, TownID town_id, const std::string &text);
@@ -25,6 +26,7 @@ CommandCost CmdTownCargoGoal(DoCommandFlag flags, TownID town_id, TownAcceptance
 CommandCost CmdTownSetText(DoCommandFlag flags, TownID town_id, const std::string &text);
 CommandCost CmdExpandTown(DoCommandFlag flags, TownID town_id, uint32_t grow_amount);
 CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id);
+CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house);
 
 DEF_CMD_TRAIT(CMD_FOUND_TOWN,       CmdFoundTown,      CMD_DEITY | CMD_NO_TEST,  CMDT_LANDSCAPE_CONSTRUCTION) // founding random town can fail only in exec run
 DEF_CMD_TRAIT(CMD_RENAME_TOWN,      CmdRenameTown,     CMD_DEITY | CMD_SERVER,   CMDT_OTHER_MANAGEMENT)
@@ -35,6 +37,7 @@ DEF_CMD_TRAIT(CMD_TOWN_RATING,      CmdTownRating,     CMD_DEITY,               
 DEF_CMD_TRAIT(CMD_TOWN_SET_TEXT,    CmdTownSetText,    CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_EXPAND_TOWN,      CmdExpandTown,     CMD_DEITY,                CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_DELETE_TOWN,      CmdDeleteTown,     CMD_OFFLINE,              CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_PLACE_HOUSE,      CmdPlaceHouse,     CMD_DEITY,                CMDT_OTHER_MANAGEMENT)
 
 CommandCallback CcFoundTown;
 void CcFoundRandomTown(Commands cmd, const CommandCost &result, Money, TownID town_id);

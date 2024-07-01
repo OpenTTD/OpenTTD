@@ -308,11 +308,10 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Wanneer 
 STR_BUTTON_DEFAULT                                              :{BLACK}Standaard
 STR_BUTTON_CANCEL                                               :{BLACK}Annuleren
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Waarschuwing: het kan zijn dat serverbeheerders de tekst kunnen lezen die hier is ingevoerd.
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :¬!"£$%^&*()_+ QWERTYUIOP{{}}ASDFGHJKL:@~|ZXCVBNM<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Lengte: {NUM}
@@ -437,6 +436,9 @@ STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Hoogtekaart lad
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Scenariobewerker sluiten
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
+
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Steden genereren
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Huizen plaatsen
 
 # Settings menu
 ###length 16
@@ -621,14 +623,14 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Alles uit
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Alle vrachtsoorten weergeven op de grafiek van vrachtprijzen
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Geen vrachtsoorten weergeven op de grafiek van vrachtprijzen
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Grafiek voor vrachttype aan-uit
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Grafiek voor dit vrachttype weergeven-verbergen
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Gedetailleerde prestatiescores weergeven
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legenda voor bedrijfsgrafieken
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klik hier om dit bedrijf weer te geven of te verbergen op de grafiek
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Grafiek van dit bedrijf weergeven-verbergen
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bedrijfsscoretabel
@@ -708,7 +710,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Selectee
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selecteer het programma 'Ezy Street'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selecteer het programma 'Aangepast1'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selecteer het programma 'Aangepast2'
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Willekeurige volgorde aan-uit
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Willekeurige volgorde in-uitschakelen
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Venster voor muzieknummers weergeven
 
 # Playlist window
@@ -791,7 +793,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Woestijn
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Sneeuw
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Plaatsnamen op de kaart weergeven-verbergen.
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Plaatsnamen weergeven-verbergen.
 STR_SMALLMAP_CENTER                                             :{BLACK}Kleine kaart centreren op huidige positie
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -800,9 +802,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Alles uitschakelen
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Alles inschakelen
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Hoogte weergeven
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Namen van industrieën weergeven
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Geen industrieën op de kaart weergeven
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Alle industrieën op de kaart weergeven
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Hoogtekaart weergeven-verbergen
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Namen van industrieën op de kaart weergeven-verbergen
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Verberg bedrijfseigendommen op de kaart
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Alle bedrijfseigendommen op de kaart weergeven
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Geen vrachtsoorten op de kaart weergeven
@@ -956,18 +960,14 @@ STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Geluidseffecten
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Muziek
 
-STR_GAME_OPTIONS_VOLUME_0                                       :0%
-STR_GAME_OPTIONS_VOLUME_25                                      :25%
-STR_GAME_OPTIONS_VOLUME_50                                      :50%
-STR_GAME_OPTIONS_VOLUME_75                                      :75%
-STR_GAME_OPTIONS_VOLUME_100                                     :100%
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valuta kiezen
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britse Pond
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -1011,6 +1011,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indiase rupee
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesische roepia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maleisische Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Letse lats
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugese Escudo
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisch opslaan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tijdsduur kiezen tussen automatisch opgeslagen spellen
@@ -1053,15 +1054,11 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Randen s
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Vink dit vakje aan om randen te schalen op grootte van gebruikersscherm
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Traditioneel sprite-lettertype gebruiken
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Vink dit vakje aan als je het traditionele sprite-lettertype met vaste breedte wilt gebruiken.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Vink dit vakje aan als je het traditionele sprite-lettertype met vaste breedte wilt gebruiken
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Lettertypen met anti-alias
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Vink dit vakje aan voor in grootte aanpasbare lettertypen met anti-alias.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Vink dit vakje aan voor in grootte aanpasbare lettertypen met anti-alias
 
-STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
-STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
-STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
-STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
-STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Geautomatiseerd onderzoek
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Deelnemen aan geautomatiseerd onderzoek
@@ -1090,6 +1087,9 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basisset
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecteer de te gebruiken basisset voor muziek
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Aanvullende informatie over the basisset voor muziek
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Inhoud ophalen
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Controleren op nieuwe en aangepaste inhoud om te downloaden
+
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(geen invoegtoepassingen voor integratie met sociale platforms geïnstalleerd)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
@@ -1116,6 +1116,9 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselk
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verlaag de wisselkoers van jouw munteenheid ten opzichte van het pond (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verhoog de wisselkoers van jouw munteenheid ten opzichte van het pond (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Stel de wisselkoers in van jouw munteenheid ten opzichte van het pond (£)
+
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Scheidingsteken: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Stel het scheidingsteken voor je munteenheid in
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Voorvoegsel: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Stel het voorvoegsel in voor jouw munteenheid
@@ -1271,10 +1274,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Onbeperkt geld:
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Je kunt onbeperkt geld uitgeven en bedrijven gaan niet failliet
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximale beginlening: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaal bedrag dat een bedrijf kan lenen (zonder rekening te houden met de inflatie)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaal bedrag dat een bedrijf kan lenen (zonder rekening te houden met de inflatie). Als je dit instelt op 'Geen lening' kun je geen geld krijgen tenzij door middel van een spelscript of de instelling 'Onbeperkt geld'
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Geen lening {RED}Spelscript vereist voor aanvankelijk saldo
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Geen lening
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Rente van lening: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Percentage rente op lening; bepaald ook het inflatiecijfer wanneer ingeschakeld
@@ -1355,7 +1358,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Hellingsteilhei
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steilheid van een schuine tegel voor een wegvoertuig. Hogere waarden maken het moeilijker om een heuvel te beklimmen
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Treinen en schepen mogen niet 90° draaien: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Draaiingen met 90° treden op wanneer een horizontale baan direct gevolgd wordt door een verticaal baanstuk op de aangrenzende tegel, waardoor de trein daarna 90 graden draait wanneer de tegelrand wordt overgestoken in plaats van de gebruikelijke 45 graden voor andere spoorcombinaties.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Bochten van 90° treden op wanneer een horizontale baan direct gevolgd wordt door een verticaal baanstuk op de aangrenzende tegel, waardoor de trein daarna 90 graden draait wanneer de tegelrand wordt overgestoken in plaats van de gebruikelijke 45 graden voor andere spoorcombinaties
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Samenvoegen van indirect aansluitende stations toestaan: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Hiermee kun je aanvullende onderdelen aan een station plaatsen zonder dat reeds bestaande onderdelen beïnvloed worden. Ctrl+klik is vereist tijdens het plaatsen van nieuwe onderdelen.
@@ -1487,26 +1490,29 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Waarschuwen als
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wanneer ingeschakeld, wordt een nieuwsbericht verstuurd wanneer een voertuig geen winst heeft gemaakt in een kalenderjaar
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Wanneer ingeschakeld, krijg je een nieuwsbericht wanneer een voertuig geen winst heeft gemaakt gedurende een periode
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Waarschuwing als een voertuig oud aan het worden is: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Wanneer ingeschakeld, wordt een nieuwsbericht verzonden wanneer een voertuig oud aan het worden is
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuigen verlopen niet: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wanneer ingeschakeld, alle voertuig modellen blijven voor altijd beschikbaar na hun introductie
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Tijd bijhouden: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecteer de tijdbasis voor het spel. Dit kan later niet meer worden gewijzigd.{}{}Kalender is het klassieke OpenTTD, met een jaar met 12 maanden en maanden met 28-31 dagen.{}{}Bij Muurklok worden voertuigbewegingen, vrachtproductie en financiën gebaseerd op stappen van één minuut, ongeveer zolang als maanden van 30 dagen in Kalender-modus. Deze worden gegroepeerd in perioden van 12 minuten, equivalent aan een jaar in Kalender-modus.{}{}In beide modi heb je altijd een klassieke kalender die wordt gebruikt voor de introductiedatums van voertuigen, huizen en andere infrastructuur.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Selecteer de tijdbasis voor het spel. Dit kan later niet meer worden gewijzigd.{}{}Kalender is het klassieke OpenTTD, met een jaar met 12 maanden en maanden met 28-31 dagen.{}{}Bij Muurklok worden vrachtproductie en financiën gebaseerd op stappen van één minuut, ongeveer zolang als maanden van 30 dagen in Kalender-modus. Deze worden gegroepeerd in perioden van 12 minuten, equivalent aan een jaar in Kalender-modus.{}{}In beide modi heb je altijd een klassieke kalender die wordt gebruikt voor de introductiedatums van voertuigen, huizen en andere infrastructuur
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Muurklok
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuten per jaar: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Kies het aantal minuten in een kalenderjaar. Standaard is 12 minuten. Bij 0 wijzigt de kalendertijd niet. Deze instelling heeft geen invloed op de economische simulatie van het spel en is alleen beschikbaar met tijdbasis Muurklok.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Kies het aantal minuten in een kalenderjaar. Standaard is 12 minuten. Bij 0 wijzigt de kalendertijd niet. Als je het kalenderjaar langer maakt, komen voertuigen, huizen en andere infrastructuur langzamer beschikbaar. Deze instelling heeft geen invloed op voertuigsnelheid en op de economische simulatie van het spel, afgezien van inflatie. Deze instelling is alleen beschikbaar met tijdbasis Muurklok
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalendertijd bevroren)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Schaal vrachtproductie van stad: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Schaal de vrachtproductie van steden met dit percentage.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Schaal de vrachtproductie van steden met dit percentage
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Schaal vrachtproductie van industrie: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Schaal de vrachtproductie van industrieën met dit percentage.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Schaal de vrachtproductie van industrieën met dit percentage
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Voertuig automatisch vernieuwen wanneer dit oud wordt: {STRING}
@@ -1525,7 +1531,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duur van foutbe
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duur voor het weergeven van foutberichten in een rood venster. Merk op dat sommige (kritische) foutmeldingen niet automatisch worden gesloten na deze tijd, deze moeten handmatig worden gesloten
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Knopinfo weergeven: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Vertraging voordat knopinfo worden weergegeven wanneer je de muis boven een besturingselement houdt. Wanneer de waarde 0 is, wordt knopinfo aan de rechtermuisknop gebonden.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Vertraging voordat knopinfo worden weergegeven wanneer je de muis boven een besturingselement houdt. Wanneer de waarde 0 is, wordt knopinfo aan de rechtermuisknop gebonden
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Muis stilhouden gedurende {COMMA} milliseconde{P 0 "" n}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rechtsklik
@@ -1537,8 +1543,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte van de li
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breedte van de lijnen in de grafiek. Een dunne lijn is preciezer leesbaar, een dikke lijn is makkelijker te zien en kleuren zijn makkelijker om te onderscheiden
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Naam van NewGRF weergeven in venster voor voertuigen bouwen: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Voeg een regel toe aan het venster voor voertuigen bouwen die aangeeft uit welke NewGRF het geselecteerde voertuig komt.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mogelijke lading van voertuigen weergeven in lijstvensters {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Voeg een regel toe aan het venster voor voertuigen bouwen die aangeeft uit welke NewGRF het geselecteerde voertuig komt
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mogelijke lading van voertuigen weergeven in lijstvensters: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Wanneer ingeschakeld, verschijnt de mogelijke lading van het voertuig erboven in voertuiglijsten
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landschap: {STRING}
@@ -1557,13 +1563,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industriedichth
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Stelt in hoeveel industrieën worden gegenereerd en welk niveau tijdens het spel moet worden gehandhaafd
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximumafstand van de rand voor olieraffinaderijen: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olieraffinaderijen worden alleen gebouwd nabij de kaartgrens, dat is aan de kust van eilandkaarten
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limiet voor hoe ver van de kaartgrens olieraffinaderijen en booreilanden kunnen worden gebouwd. Op eilandkaarten zorgt dit ervoor dat ze dichtbij de kust liggen. Op kaarten groter dan 256 wordt deze waarde opgeschaald.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sneeuwhoogte: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kies op welke hoogte de sneeuw begint in subarctisch landschap. Sneeuw heeft ook invloed op het ontstaan van industrieën en op de vereisten voor stadsgroei. Kan alleen worden aangepast in de scenariobewerker of wordt berekend met behulp van 'sneeuwoppervlak'
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Sneeuwoppervlak: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Kies de hoeveelheid sneeuw in het subarctische landschap. Sneeuw is ook van invloed op de industrieën en de groei van steden. Wordt alleen gebruikt tijdens het maken van de kaart. Land op zeeniveau of aan de kust krijgt nooit sneeuw.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Kies de hoeveelheid sneeuw in het subarctische landschap. Sneeuw is ook van invloed op de industrieën en de groei van steden. Wordt alleen gebruikt tijdens het maken van de kaart. Land op zeeniveau of aan de kust krijgt nooit sneeuw
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Woestijnoppervlak: {STRING}
@@ -1571,7 +1577,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Kies de hoeveel
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ruwheid van het terrein: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Kies vorm en aantal heuvels. Gladde landschappen hebben minder en bredere heuvels. Ruwe landschappen hebben meer, maar kleinere heuvels.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Kies vorm en aantal heuvels. Gladde landschappen hebben minder en bredere heuvels. Ruwe landschappen hebben meer, maar kleinere heuvels
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg glad
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glad
@@ -1579,7 +1585,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ruig
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erg ruig
 
 STR_CONFIG_SETTING_VARIETY                                      :Variëteit distributie: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Kies of de kaart zowel bergachtige als vlakke gebieden bevat. Hoe groter de variatie, hoe meer verschillen in hoogte tussen bergachtige en vlakke gebieden.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Kies of de kaart zowel bergachtige als vlakke gebieden bevat. Hoe groter de variatie, hoe meer verschillen in hoogte tussen bergachtige en vlakke gebieden
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Hoeveelheid rivieren: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Selecteer hoeveel rivieren er gegenereerd worden
@@ -1750,7 +1756,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatisch sei
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Seinen automatisch verwijderen tijdens spooraanleg als deze in de weg staan. Dit kan botsingen veroorzaken.
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Limiet verhoogde spelsnelheid: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Beperkt de snelheid van het spel wanneer de spelsnelheid is verhoogt. 0 = geen limiet (alleen beperkt door de computer zelf). Waarden onder 100% vertragen het spel. De hoogste waarde hangt af van de specifcaties van de computer en kan afhankelijk van het spel variëren.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Beperkt de snelheid van het spel wanneer snel vooruit is ingeschakeld. 0 = geen limiet (alleen beperkt door de computer zelf). Waarden onder 100% vertragen het spel. De hoogste waarde hangt af van de specifcaties van de computer en kan afhankelijk van het spel variëren
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normale spelsnelheid
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Geen limiet (alleen beperkt door de computer zelf)
@@ -1814,11 +1820,11 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Computerspelers
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Aantal opcodes voordat scripts worden gestopt: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximumaantal berekeningsstappen die een script kan maken in een beurt
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Max. geheugengebruik per script: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :De hoeveelheid geheugen die een script mag gebruiken voordat het geforceerd wordt beëindigd. Voor grote kaarten moet deze waarde misschien verhoogd worden.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :De hoeveelheid geheugen die een script mag gebruiken voordat het geforceerd wordt beëindigd. Voor grote kaarten moet deze waarde misschien verhoogd worden
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Onderhoudstermijnen in procenten: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Als deze optie is ingeschakeld, proberen voertuigen in onderhoud te gaan als de betrouwbaarheid met een bepaald percentage van de maximale betrouwbaarheid is gezakt.{}{}Als bijvoorbeeld de maximale betrouwbaarheid 90% is en de onderhoudstermijn is 20%, dan probeert het voertuig in onderhoud te gaan als de betrouwbaarheid tot 72% daalt.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Als deze optie is ingeschakeld, proberen voertuigen in onderhoud te gaan als de betrouwbaarheid met een bepaald percentage van de maximale betrouwbaarheid is gezakt.{}{}Als bijvoorbeeld de maximale betrouwbaarheid 90% is en de onderhoudstermijn is 20%, dan probeert het voertuig in onderhoud te gaan als de betrouwbaarheid tot 72% daalt
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standaardonderhoudstermijn voor treinen: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Standaardonderhoudstermijn instellen voor nieuwe treinen als er geen expliciete onderhoudstermijn is ingesteld voor het voertuig
@@ -1828,7 +1834,11 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standaardonderh
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Standaardonderhoudsterrmijn voor nieuwe vliegtuigen als er geen expliciete onderhoudstermijn is ingesteld voor het voertuig
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standaardonderhoudstermijn voor schepen: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Standaardonderhoudstermijn voor nieuwe schepen als er geen expliciete onderhoudstermijn is ingesteld voor het voertuig
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}dag{P 0 "" en}/minu{P 0 ut ten}/%
+###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Dag{P 0 "" en}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Minu{P 0 ut ten}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Uitgeschakeld
 
@@ -1836,7 +1846,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Onderhoud uitsc
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Als deze optie is ingeschakeld worden voertuigen niet onderhouden als ze niet kapot kunnen gaan.
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Verminderde laadsnelheid voor treinen langer dan het station: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Indien ingeschakeld worden treinen die te lang zijn voor het station langzamer geladen dan treinen die in het station passen. Deze instelling is niet van invloed op het zoeken van de route.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Indien ingeschakeld worden treinen die te lang zijn voor het station langzamer geladen dan treinen die in het station passen. Deze instelling is niet van invloed op het zoeken van de route
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Snelheidslimieten voor wagons inschakelen: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wanneer ingeschakeld, ook gebruik maken van snelheidsbeperkingen van wagons voor het bepalen van de maximale snelheid van een trein
@@ -1901,13 +1911,13 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Jaar dat de kra
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startjaar: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Eindjaar voor score: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Jaar dat het spel eindigt ten behoeve van de score. Aan het einde van dit jaar wordt de score van het bedrijf vastgelegd en verschijnt het venster met topscores. De spelers kunnen echter doorgaan met spelen.{}Als dit voor het startjaar ligt, verschijnt het venster met topscores niet.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Jaar dat het spel eindigt ten behoeve van de score. Aan het einde van dit jaar wordt de score van het bedrijf vastgelegd en verschijnt het venster met topscores. Je kunt echter doorgaan met spelen.{}Als deze waarde eerder is dan het startjaar, verschijnt het venster met topscores niet
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nooit
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Type economie: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Bij gelijkmatige economie zijn er vaker wijzigingen in productie, die in kleinere stappen verlopen. Bij vaste economie zijn er geen wijzigingen in productie en sluiten bedrijven niet. Deze instelling werkt misschien niet als de soorten industrie worden geleverd in een NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Bij gelijkmatige economie zijn er vaker wijzigingen in productie die in kleinere stappen verlopen. Bij vaste economie zijn er geen wijzigingen in productie en sluiten bedrijven niet. Deze instelling werkt misschien niet als de soorten industrie worden geleverd in een NewGRF
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Origineel
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Gelijkmatig
@@ -1962,7 +1972,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Toestaan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Toestaan, eigen wegpatroon
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Genereren van vracht in steden: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hoeveel vracht wordt geproduceerd door huizen in steden, in relatie tot de totale bevolking van de stad.{}Kwadratische groei: een stad die twee keer zo groot is, genereert vier keer zo veel passagiers.{}Lineaire groei: een stad die twee keer zo groot is, genereert twee keer zo veel passagiers.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hoeveel vracht wordt geproduceerd door huizen in steden, in relatie tot de totale bevolking van de stad.{}Kwadratische groei: een stad die twee keer zo groot is, genereert vier keer zo veel passagiers.{}Lineaire groei: een stad die twee keer zo groot is, genereert twee keer zo veel passagiers
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kwadratisch (origineel)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineair
@@ -2003,7 +2013,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Hoogste resolutie die sprites mogen gebruiken: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Beperk de maximale resolutie die voor sprites wordt gebruikt. Door deze beperking worden geen grafische elementen in hoge resolutie gebruikt, ook niet als ze beschikbaar zijn. Zo kan de weergave van het spel consistent blijven wanneer je verschillende GRF-bestanden gebruikt met en zonder grafische elementen in hoge resolutie.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Beperk de maximale resolutie die voor sprites wordt gebruikt. Door deze beperking worden geen grafische elementen in hoge resolutie gebruikt, ook niet als ze beschikbaar zijn. Zo kan de weergave van het spel consistent blijven wanneer je verschillende GRF-bestanden gebruikt met en zonder grafische elementen in hoge resolutie
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2027,9 +2037,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Beginfactor voo
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gemiddelde grootte van steden in vergelijking tot normale steden bij het begin van het spel.
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Distributiegrafiek elke {STRING} bijwerken
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :De tijd tussen opeenvolgende herberekeningen van de koppeling-grafiek. Elke berekening berekent de plannen voor één component van de grafiek. Dat betekent dat een waarde X voor deze instelling niet betekent dat de hele grafiek elke X seconden wordt bijgewerkt. Dat geldt alleen voor één component. Hoe korter je deze waarde instelt, hoe meer CPU-tijd er nodig is voor de berekening. Hoe langer je deze waarde instelt, hoe langer het duurt voordat de vrachtdistributie start op nieuwe routes.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :De tijd tussen opeenvolgende herberekeningen van de koppelingsgrafiek. Elke berekening berekent de plannen voor één component van de grafiek. Dat betekent dat een waarde X voor deze instelling niet betekent dat de hele grafiek elke X seconden wordt bijgewerkt. Dat geldt alleen voor één component. Hoe korter je deze waarde instelt, hoe meer CPU-tijd er nodig is voor de berekening. Hoe langer je deze waarde instelt, hoe langer het duurt voordat de vrachtdistributie start op nieuwe routes.
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :{STRING} per herberekening van de distributiegrafiek besteden
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :De benodigde tijd voor een herbereking van een koppeling-grafiekcomponent. Wanneer een herberekening wordt gestart, start een draad die dit aantal seconden mag lopen. Hoe korter je deze waarde maakt, hoe groter de kans dat de draad niet op tijd is afgelopen. Het spel stopt dan totdat dit alsnog gebeurt (het 'hikt'). Hoe langer je deze waarde maakt, hoe langer het duurt voor de distributie wordt bijgewerkt wanneer een route wijzigt.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :De benodigde tijd voor een herberekening van een koppelingsgrafiekcomponent. Wanneer een herberekening wordt gestart, start een proces die dit aantal seconden mag lopen. Hoe korter je deze waarde maakt, hoe groter de kans dat het proces niet op tijd is afgelopen. Het spel stopt dan totdat dit alsnog gebeurt (het 'hikt'). Hoe langer je deze waarde maakt, hoe langer het duurt voor de distributie wordt bijgewerkt wanneer een route wijzigt.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributiemodus voor passagiers: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :'Symmetrisch' betekent dat ongeveer hetzelfde aantal passagiers van station A naar station B gaat als van B naar A. 'Asymmetrisch' betekent dat willekeurige aantallen passagiers reizen in beide richtingen. 'Handmatig' betekent dat er geen automatische distributie plaatsvindt voor passagiers.
@@ -2045,7 +2055,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asymmetrisch
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Symmetrisch
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Verdeelnauwkeurigheid: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Hoe hoger de instelling, des te meer CPU-tijd de berekening van de linkgrafiek zal gebruiken. Als het te lang duurt, kan dan dat lag opleveren. Als je dit echter op een lage waarde instelt, zal de verdeling onnauwkeurig zijn, en kan het zijn dat vracht niet wordt gestuurd naar de plekken waar het naartoe moet gaan.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Hoe hoger de instelling, des te meer CPU-tijd de berekening van de linkgrafiek zal gebruiken. Als het te lang duurt, kan dat lag opleveren. Als je dit echter op een lage waarde instelt, zal de verdeling onnauwkeurig zijn en kan het zijn dat vracht niet wordt gestuurd naar de plekken waar het naartoe moet gaan.
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effect van afstand op de vraag: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Als je dit op een waarde hoger dan 0 zet, dan zal de afstand tussen het station van herkomst A met enige vracht en een mogelijke bestemming B effect hebben op de hoeveelheid lading verzonden van A naar B. Hoe verder weg B is van A, des te minder lading wordt verzonden. Hoe hoger je deze instelt, hoe minder lading wordt verzonden naar verder geleden stations en meer lading zal worden verzonden naar dichtbij gelegen stations.
@@ -2053,7 +2063,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :Hoeveelheid ter
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Door dit op minder dan 100% te zetten lijkt de symmetrische verdeling meer op de asymmetrische verdeling. Minder vracht zal geforceerd worden om zich terug te sturen als er een bepaalde hoeveelheid wordt verzonden naar een station. Op 0% van de symmetrische verdeling gedraagt deze zich als de asymmetrische verdeling.
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Verzadiging van korte routes voordat routes met hoge capaciteit worden gebruikt: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vaak zijn er meerdere routes mogelijk tussen twee stations. De vrachtdistributie verzadigt eerst de kortste route, gebruikt dan de op één na kortste route tot die verzadigd is enzovoort. Verzadiging wordt bepaald door een schatting van de capaciteit en het geplande gebruik. Wanneer alle routes verzadigd zijn, maar er is meer vraag, raken alle wegen overbelast, die met hoge capaciteit als eerste. In veel gevallen schat het algoritme helaas de capaciteit niet nauwkeurig in. Met deze instelling kun je aangeven tot welk percentage een korter pad moet worden verzadigd voordat de eerstvolgende, langere route wordt gekozen. Stel dit in op minder dan 100% om overvolle stations in geval van overschatte capaciteit te voorkomen.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vaak zijn er meerdere routes mogelijk tussen twee stations. De vrachtdistributie verzadigt eerst de kortste route, gebruikt dan de op één na kortste route tot die verzadigd is enzovoort. Verzadiging wordt bepaald door een schatting van de capaciteit en het geplande gebruik. Wanneer alle routes verzadigd zijn, maar er is meer vraag, raken alle wegen overbelast, die met hoge capaciteit als eerste. In veel gevallen schat het algoritme helaas de capaciteit niet nauwkeurig in. Met deze instelling kun je aangeven tot welk percentage een korter pad moet worden verzadigd voordat de eerstvolgende, langere route wordt gekozen. Stel dit in op minder dan 100% om overvolle stations in geval van overschatte capaciteit te voorkomen
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Snelheidseenheden (land): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Snelheidseenheden (nautisch): {STRING}
@@ -2128,17 +2138,8 @@ STR_CONFIG_SETTING_AI                                           :Tegenstanders
 STR_CONFIG_SETTING_AI_NPC                                       :Computerspelers
 STR_CONFIG_SETTING_NETWORK                                      :Netwerk
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Routezoeker voor treinen: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Routezoeker voor treinen.
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Routezoeker voor wegvoertuigen: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Routezoeker voor wegvoertuigen
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Routezoeker voor schepen: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Routezoeker voor schepen
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatisch omdraaien bij seinen: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Treinen mogen keren bij een sein als ze hier lang staan wachten
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Aanbevolen)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Instelwaarde wijzigen
 
@@ -2457,7 +2458,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Bedrijfs
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Verbinding verbreken
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is beveiligd. Voer wachtwoord in
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedrijf is beveiligd. Voer wachtwoord in
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spelers online
@@ -2484,6 +2484,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Je spelernaam
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Beheeracties die nodig zijn voor deze client
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Beheeracties die nodig zijn voor dit bedrijf
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Meedoen met dit bedrijf
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Geef deze client toestemming om met je bedrijf mee te doen
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Een bericht sturen naar deze speler
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Een bericht versturen naar alle spelers van dit bedrijf
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Een bericht sturen naar alle toeschouwers
@@ -2506,13 +2507,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via omle
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Eruit schoppen
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannen
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Verwijderen
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Wachtwoord ontgrendelen
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Beheeractie
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Weet je zeker dat je de speler '{STRING}' eruit wilt schoppen?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Weet je zeker dat je de speler '{STRING}' wilt bannen?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Weet je zeker dat je het bedrijf '{COMPANY}' wilt verwijderen?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Weet je zeker dat je het wachtwoord voor bedrijf '{COMPANY}' wilt terugstellen?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Omleiden?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Kan geen verbinding maken tussen jou en server '{STRING}'.{}Wil je deze sessie omleiden via '{STRING}'?
@@ -2529,19 +2528,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
 STR_NETWORK_SPECTATORS                                          :Toeschouwers
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ingevoerd wachtwoord niet opslaan
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Bedrijf het nieuwe wachtwoord geven
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Bedrijfswachtwoord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Standaard bedrijfswachtwoord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Dit bedrijfswachtwoord gebruiken als standaard voor nieuwe bedrijven
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Meedoen
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Doe mee en speel als dit bedrijf
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Wachtwoord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Beveilig het bedrijf met een wachtwoord zodat niet-geautoriseerde personen niet mee kunnen doen
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Bedrijfswachtwoord instellen
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Verstuur
@@ -2570,6 +2559,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Je spele
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Je servernaam is niet ingesteld. Je kunt de naam instellen bovenin het venster Netwerkspel
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}De revisie van deze client komt niet overeen met de revisie van de server
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Ongeldig wachtwoord
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Je staat niet op de lijst met toegestane clients
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De server is vol
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Je bent verbannen van deze server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Je bent van de server geschopt
@@ -2585,7 +2575,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Je spele
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mogelijk verbinding verbroken
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}In de afgelopen {NUM} seconde{P "" n} is er geen data ontvangen van de server
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :algemene fout
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desynchronisatiefout
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :kan kaart niet laden
@@ -2597,6 +2587,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ongeldig of onv
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :foute revisie
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :naam al in gebruik
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :fout spelwachtwoord
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :niet op toegestane lijst
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :verkeerd bedrijfsnummer in verstuurd commando
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :eruit geschopt door server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :probeerde vals te spelen
@@ -2802,7 +2793,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selectee
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Routepunt
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Type routepunt selecteren
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Stationskeuze
@@ -2815,8 +2805,33 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selectee
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Slepen
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Je kunt een station bouwen door te slepen
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecteer een stationsklasse om weer te geven
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selecteer het type station om te bouwen
+STR_PICKER_MODE_ALL                                             :Alle
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Weergave van alle klassen onderdelen omschakelen
+STR_PICKER_MODE_USED                                            :Gebruikt
+STR_PICKER_MODE_USED_TOOLTIP                                    :Weergave van alleen bestaande onderdelen omschakelen
+STR_PICKER_MODE_SAVED                                           :Opgeslagen
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Weergave van alleen opgeslagen onderdelen omschakelen
+
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecteer een klasse stations voor weergave
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Selecteer een type station om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selecteer een klasse routepunten voor weergave
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Selecteer een routepunt om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Selecteer een klasse busstations voor weergave
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Selecteer een type busstation om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecteer een klasse vrachtwagenstations voor weergave
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Selecteer een type vrachtwagenstation om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecteer een onderdeelklasse voor weergave
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Selecteer een type objet voor bouwen. Ctrr+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen. Ctrl+klik+slepen om diagonaal te selecteren. Voeg Shift toe voor alleen inschatting van de kosten
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecteer een stadsgebied voor weergave
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selecteer een type huizen om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
+
+STR_HOUSE_PICKER_CAPTION                                        :Huizen selecteren
+
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rand
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Buitenwijken
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Buitenste voorsteden
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Binnenste voorsteden
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadscentrum
 
 STR_STATION_CLASS_DFLT                                          :Standaard
 STR_STATION_CLASS_DFLT_STATION                                  :Standaard station
@@ -2871,6 +2886,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Wegen bo
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bouw tramsporen met de Autotram-methode. Ctrl+klik om tramrails te verwijderen. Voeg Shift toe voor alleen inschatting van de kosten
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garage bouwen (voor het kopen en onderhouden van wegvoertuigen). Voeg Shift toe voor alleen inschatting van de kosten
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramremise bouwen (voor het kopen en onderhouden van trams). Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Routepunt bouwen op weg. Ctrl+klik om samen te voegen met ander routepunt. Voeg Shift toe voor alleen inschatting van de kosten
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Routepunt bouwen op trambaan. Ctrl+klik om samen te voegen met ander routepunt. Voeg Shift toe voor alleen inschatting van de kosten
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Busstation bouwen. Ctrl+klik om samen te voegen met ander station. Voeg Shift toe voor alleen inschatting van de kosten
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Passagierstramhalte bouwen. Ctrl+klik om samen te voegen met ander station. Voeg Shift toe voor alleen inschatting van de kosten
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Vrachtwagenstation bouwen. Ctrl+klik om samen te voegen met ander station. Voeg Shift toe voor alleen inschatting van de kosten
@@ -2959,8 +2976,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Land kop
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Keuze van object
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecteer object om te bouwen. Ctrl+klik voor diagonaal gebied. Voeg Shift toe voor alleen inschatting van de kosten
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Hiermee selecteer je de klasse van het te bouwen object
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Bekijk het object
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grootte: {GOLD}{NUM} x {NUM} tegels
 
@@ -3075,7 +3090,8 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Eigenaar
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Eigenaar van spoorweg: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Gemeente: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Geen
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coördinaten: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coördinaten: {LTBLUE}{NUM} x {NUM} x {NUM}
+STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}Tegelindex: {LTBLUE}{NUM} ({HEX})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Bouwjaar/opknapjaar: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstype: {LTBLUE}{STRING}
@@ -3197,7 +3213,7 @@ STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Aantal g
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Grafische framesnelheid: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Aantal videoframes die weergegeven worden per seconde.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Huidige spelsnelheidsfactor: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hoe snel het spel momenteel draait, vergeleken met de verwachte snelheid bij een normale simulatiesnelheid.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hoe snel het spel momenteel verloopt, vergeleken met de verwachte snelheid bij een normale simulatiesnelheid
 STR_FRAMERATE_CURRENT                                           :{WHITE}Huidig
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Gemiddeld
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Geheugen
@@ -3386,10 +3402,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Weet je
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% compleet
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wereldontwikkeling
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landschap genereren
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Rivierplaatsing
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaatsing
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ontwikkeling van onverplaatsbare objecten
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ontwikkeling van ruig en rotsachtig gebied
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Steden genereren
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industrieën genereren
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ontwikkeling van onverplaatsbare objecten
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaatsing
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spel wordt geconfigureerd
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Bezig met tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script loopt
@@ -3481,7 +3500,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Wegtype
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parameter 60+x voor NewGRF-variabele (hexadecimaal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Sprite uitlijnen {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Sprite uitlijnen: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Sprite uitlijnen: actie 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Sprite uitlijnen: actie 0x5, type {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Volgende sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Doorgaan met volgende normale sprite, alle pseudo-/herkleur-/lettertype-sprites overslaan; bij het einde terug naar het begin
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ga naar sprite
@@ -3490,6 +3511,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorige s
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Doorgaan met de vorige normale sprite, alle pseudo-/herkleur-/lettertype-sprites overslaan; bij het einde terug naar het begin
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Voorbeeld van de huidige sprite. De uitlijning wordt genegeerd bij het weergeven van deze sprite.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sprite verplaatsen, dit verandert X en Y offsets. Ctr+klik om de sprite 8 eenheden per keer te verplaatsen.
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Op offset gecentreerd
@@ -3598,7 +3620,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ga naar 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Geef een naam voor dit bord
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Steden
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Steden ({COMMA} van {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE} Geen
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (groeistad){BLACK} ({COMMA})
@@ -3726,7 +3748,7 @@ STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Algemeen
 STR_STORY_BOOK_SPECTATOR                                        :Algemeen verhaal
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Pagina {NUM}
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Spring naar een bepaalde pagina door deze te selecteren in deze keuzelijst.
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Spring naar een bepaalde pagina door deze te selecteren in deze keuzelijst
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Vorige
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ga naar de vorige pagina
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Volgende
@@ -3932,7 +3954,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/periode
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrielijst
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrieën ({COMMA} van {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE} Geen
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% vervoerd){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -4021,12 +4043,12 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Niet-gegroepeer
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groepen - Klik op een groep voor een lijst van alle voertuigen in deze groep. Klik en sleep om hiërarchie te beheren
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groepen - Klik op een groep voor een lijst van alle voertuigen in deze groep. Klik en sleep om hiërarchie te ordenen
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om een groep te creëren
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Verwijder de geselecteerde groep
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Hiermee hernoem je de geselecteerde groep
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Wijzig het uiterlijk van de geselecteerde groep
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik om deze groep te beschermen tegen globaal automatisch vervangen. Met Ctrl+klik geldt dit ook voor subgroepen.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik om deze groep te beschermen tegen globaal automatisch vervangen. Met Ctrl+klik geldt dit ook voor subgroepen
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Verwijder groep
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Weet je zeker dat je deze groep en de eventuele subgroepen wilt verwijderen?
@@ -4442,10 +4464,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacite
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Geldoverdracht: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Onderhoudstermijn: {LTBLUE}{COMMA}{NBSP}dagen{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Onderhoudstermijn: {LTBLUE}{COMMA}{NBSP}minuten{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Onderhoudstermijn: {LTBLUE}{COMMA}{NBSP}minu{P ut ten}{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Onderhoudstermijn: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Laatste onderhoud: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Laatste onderhoud: {LTBLUE}{NUM} minuten geleden
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Laatste onderhoud: {LTBLUE}{NUM} minu{P ut ten} geleden
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Vergroot de onderhoudstermijn met 10 dagen. Ctrl+klik voor een verhoging met 5 dagen
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Vergroot de onderhoudstermijng met 5 minuten. Ctrl+klik voor een verhoging met 1 minuut
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Vergroot de onderhoudstermijn met 10 procent. Ctrl+klik voor een verhoging met 5 procent
@@ -4636,7 +4658,7 @@ STR_ORDER_REFIT_ORDER                                           :(Ombouwen naar 
 STR_ORDER_REFIT_STOP_ORDER                                      :(Ombouwen naar {STRING} en stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(wacht op ontkreukelen)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Wacht op ontkreukelen)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan station niet gebruiken){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4840,8 +4862,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spelscript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluiten
 STR_AI_SETTINGS_RESET                                           :{BLACK}Terugstellen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -4894,9 +4914,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Verwacht
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Opslaan van spel is nog bezig,{}Wacht tot dit voltooid is!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatisch opslaan mislukt
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan niet lezen van schijf
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Opslaan spel mislukt{}{STRING}
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Spel opslaan mislukt...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kan bestand niet verwijderen
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden spel mislukt{}{STRING}
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Spel laden spel mislukt...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interne fout: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Opgeslagen spel beschadigd - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Opgeslagen spel hoort bij een nieuwere versie
@@ -4990,7 +5010,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan het 
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan bedrijfshoofdkantoor niet bouwen...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan geen steden bouwen
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan geen steden bouwen...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan stad niet hernoemen...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan hier geen nieuwe stad bouwen...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan dorp niet uitbreiden...
@@ -5001,6 +5021,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... er i
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Wegwerkzaamheden in uitvoering
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan deze stad niet verwijderen...{}Een station of depot verwijst naar deze plaats of een door de stad beheerde tegel kan niet worden verwijderd
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... er is geen geschikte plaats voor een standbeeld in het centrum van dit dorp
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Kan huis niet bouwen...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... te veel industrieën
@@ -5038,6 +5059,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan hier
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Voegt meer dan één bestaand (laad)station samen
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station te omvangrijk
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... niet-ondersteund aantal sporen
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... niet-ondersteunde lengte
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te veel (laad)stations
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te veel treinstationsdelen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushaltes
@@ -5073,11 +5096,14 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Ligt naa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Te dicht bij een ander routepunt
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan hier geen routepunt bouwen...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Kan hier geen weg-routepunt bouwen...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan boei hier niet plaatsen...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan naam routepunt niet aanpassen...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan hier geen routepunt verwijderen...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Kan hier geen weg-routepunt verwijderen...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Routepunt moet eerst verwijderd worden
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Verwijder eerst het weg-routepunt
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boei in de weg
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boei is in gebruik door een ander bedrijf!
 
@@ -5278,6 +5304,11 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Pas je N
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nog geen voertuigen beschikbaar
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE} Start een nieuw spel na {DATE_SHORT} of gebruik een NewGRF dat in vroege voertuigen voorziet
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Geen wegtypen beschikbaar voor in de stad
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Wijzig je NewGRF-configuratie
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Er zijn nog geen wegtypen beschikbaar voor steden
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Start een nieuw spel na {DATE_SHORT} of gebruik een NewGRF met wegtypen die al vroeg in steden gebruikt kunnen worden
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan trein niet het sein laten passeren bij gevaar...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan de richting van de trein niet omdraaien...
@@ -5320,6 +5351,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Er zijn 
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Dit vliegtuig kan niet landen op dit heliplatform
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Deze helikopter kan niet landen op dit vliegveld
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Er is geen routepunt
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Er is geen weg-routepunt
 STR_ERROR_NO_BUOY                                               :{WHITE}Er is geen boei
 
 # Timetable related errors
@@ -5807,6 +5839,11 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}mjn
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mjd
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}bn
+
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
@@ -5823,6 +5860,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

@@ -11,12 +11,16 @@
 #include "window_func.h"
 #include "window_gui.h"
 #include "screenshot.h"
-#include "widgets/screenshot_widget.h"
-#include "table/strings.h"
 #include "gfx_func.h"
 
+#include "widgets/screenshot_widget.h"
+
+#include "table/strings.h"
+
+#include "safeguards.h"
+
 struct ScreenshotWindow : Window {
-	ScreenshotWindow(WindowDesc *desc) : Window(desc)
+	ScreenshotWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->FinishInitNested();
@@ -60,17 +64,17 @@ static constexpr NWidgetPart _nested_screenshot[] = {
 	EndContainer(),
 };
 
-static WindowDesc _screenshot_window_desc(__FILE__, __LINE__,
+static WindowDesc _screenshot_window_desc(
 	WDP_AUTO, "take_a_screenshot", 200, 100,
 	WC_SCREENSHOT, WC_NONE,
 	0,
-	std::begin(_nested_screenshot), std::end(_nested_screenshot)
+	_nested_screenshot
 );
 
 void ShowScreenshotWindow()
 {
 	CloseWindowById(WC_SCREENSHOT, 0);
-	new ScreenshotWindow(&_screenshot_window_desc);
+	new ScreenshotWindow(_screenshot_window_desc);
 }
 
 /**
@@ -79,7 +83,7 @@ void ShowScreenshotWindow()
  */
 void SetScreenshotWindowVisibility(bool hide)
 {
-	ScreenshotWindow *scw = (ScreenshotWindow *)FindWindowById(WC_SCREENSHOT, 0);
+	ScreenshotWindow *scw = dynamic_cast<ScreenshotWindow *>(FindWindowById(WC_SCREENSHOT, 0));
 
 	if (scw == nullptr) return;
 

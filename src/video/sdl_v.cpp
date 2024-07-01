@@ -182,9 +182,9 @@ static void GetVideoModes()
 
 	_all_modes = (SDL_ListModes(nullptr, SDL_SWSURFACE | (_fullscreen ? SDL_FULLSCREEN : 0)) == (void*)-1);
 	if (modes == (void*)-1) {
-		for (uint i = 0; i < lengthof(_default_resolutions); i++) {
-			if (SDL_VideoModeOK(_default_resolutions[i].width, _default_resolutions[i].height, 8, SDL_FULLSCREEN) != 0) {
-				_resolutions.push_back(_default_resolutions[i]);
+		for (const auto &default_resolution : _default_resolutions) {
+			if (SDL_VideoModeOK(default_resolution.width, default_resolution.height, 8, SDL_FULLSCREEN) != 0) {
+				_resolutions.push_back(default_resolution);
 			}
 		}
 	} else {
@@ -373,15 +373,21 @@ bool VideoDriver_SDL::ClaimMousePointer()
 }
 
 struct SDLVkMapping {
-	uint16_t vk_from;
-	byte vk_count;
-	byte map_to;
+	const uint16_t vk_from;
+	const uint8_t vk_count;
+	const uint8_t map_to;
+
+	constexpr SDLVkMapping(SDLKey vk_first, SDLKey vk_last, uint8_t map_first, [[maybe_unused]] uint8_t map_last)
+		: vk_from(vk_first), vk_count(vk_last - vk_first + 1), map_to(map_first)
+	{
+		assert((vk_last - vk_first) == (map_last - map_first));
+	}
 };
 
-#define AS(x, z) {x, 0, z}
-#define AM(x, y, z, w) {x, (byte)(y - x), z}
+#define AS(x, z) {x, x, z, z}
+#define AM(x, y, z, w) {x, y, z, w}
 
-static const SDLVkMapping _vk_mapping[] = {
+static constexpr SDLVkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
 	AM(SDLK_PAGEUP, SDLK_PAGEDOWN, WKC_PAGEUP, WKC_PAGEDOWN),
 	AS(SDLK_UP,     WKC_UP),
@@ -435,12 +441,11 @@ static const SDLVkMapping _vk_mapping[] = {
 
 static uint ConvertSdlKeyIntoMy(SDL_keysym *sym, char32_t *character)
 {
-	const SDLVkMapping *map;
 	uint key = 0;
 
-	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
-		if ((uint)(sym->sym - map->vk_from) <= map->vk_count) {
-			key = sym->sym - map->vk_from + map->map_to;
+	for (const auto &map : _vk_mapping) {
+		if (IsInsideBS(sym->sym, map.vk_from, map.vk_count)) {
+			key = sym->sym - map.vk_from + map.map_to;
 			break;
 		}
 	}
@@ -577,7 +582,7 @@ bool VideoDriver_SDL::PollEvent()
 	return true;
 }
 
-const char *VideoDriver_SDL::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_SDL::Start(const StringList &param)
 {
 	char buf[30];
 	_use_hwpalette = GetDriverParamInt(param, "hw_palette", 2);
@@ -608,7 +613,7 @@ const char *VideoDriver_SDL::Start(const StringList &param)
 
 	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 
-	return nullptr;
+	return std::nullopt;
 }
 
 void VideoDriver_SDL::SetupKeyboard()

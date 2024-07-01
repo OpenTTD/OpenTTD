@@ -14,7 +14,7 @@
 
 static const uint32_t GOAL_QUESTION_BUTTON_COUNT = 18; ///< Amount of buttons available.
 
-enum GoalQuestionType : byte {
+enum GoalQuestionType : uint8_t {
 	GQT_QUESTION = 0,
 	GQT_INFORMATION = 1,
 	GQT_WARNING = 2,
@@ -23,7 +23,7 @@ enum GoalQuestionType : byte {
 };
 
 /** Types of goal destinations */
-enum GoalType : byte {
+enum GoalType : uint8_t {
 	GT_NONE,         ///< Destination is not linked
 	GT_TILE,         ///< Destination is a tile
 	GT_INDUSTRY,     ///< Destination is an industry

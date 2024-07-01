@@ -40,7 +40,7 @@ enum GoalColumn {
 struct GoalListWindow : public Window {
 	Scrollbar *vscroll; ///< Reference to the scrollbar widget.
 
-	GoalListWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	GoalListWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_GOAL_SCROLLBAR);
@@ -168,18 +168,18 @@ struct GoalListWindow : public Window {
 		return num;
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_GOAL_LIST) return;
 		Dimension d = GetStringBoundingBox(STR_GOALS_NONE);
 
-		resize->width = 1;
-		resize->height = d.height;
+		resize.width = 1;
+		resize.height = d.height;
 
 		d.height *= 5;
 		d.width += WidgetDimensions::scaled.framerect.Horizontal();
 		d.height += WidgetDimensions::scaled.framerect.Vertical();
-		*size = maxdim(*size, d);
+		size = maxdim(size, d);
 	}
 
 	/**
@@ -302,11 +302,11 @@ static constexpr NWidgetPart _nested_goals_list_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _goals_list_desc(__FILE__, __LINE__,
+static WindowDesc _goals_list_desc(
 	WDP_AUTO, "list_goals", 500, 127,
 	WC_GOALS_LIST, WC_NONE,
 	0,
-	std::begin(_nested_goals_list_widgets), std::end(_nested_goals_list_widgets)
+	_nested_goals_list_widgets
 );
 
 /**
@@ -317,7 +317,7 @@ void ShowGoalsList(CompanyID company)
 {
 	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
 
-	AllocateWindowDescFront<GoalListWindow>(&_goals_list_desc, company);
+	AllocateWindowDescFront<GoalListWindow>(_goals_list_desc, company);
 }
 
 /** Ask a question about a goal. */
@@ -327,7 +327,7 @@ struct GoalQuestionWindow : public Window {
 	int button[3];        ///< Buttons to display.
 	TextColour colour;    ///< Colour of the question text.
 
-	GoalQuestionWindow(WindowDesc *desc, WindowNumber window_number, TextColour colour, uint32_t button_mask, const std::string &question) : Window(desc), colour(colour)
+	GoalQuestionWindow(WindowDesc &desc, WindowNumber window_number, TextColour colour, uint32_t button_mask, const std::string &question) : Window(desc), colour(colour)
 	{
 		this->question = question;
 
@@ -388,12 +388,12 @@ struct GoalQuestionWindow : public Window {
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_GQ_QUESTION) return;
 
 		SetDParamStr(0, this->question);
-		size->height = GetStringHeight(STR_JUST_RAW_STRING, size->width);
+		size.height = GetStringHeight(STR_JUST_RAW_STRING, size.width);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -447,32 +447,28 @@ static constexpr auto _nested_goal_question_widgets_error    = NestedGoalWidgets
 
 static WindowDesc _goal_question_list_desc[] = {
 	{
-		__FILE__, __LINE__,
 		WDP_CENTER, nullptr, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WDF_CONSTRUCTION,
-		std::begin(_nested_goal_question_widgets_question), std::end(_nested_goal_question_widgets_question),
+		_nested_goal_question_widgets_question,
 	},
 	{
-		__FILE__, __LINE__,
 		WDP_CENTER, nullptr, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WDF_CONSTRUCTION,
-		std::begin(_nested_goal_question_widgets_info), std::end(_nested_goal_question_widgets_info),
+		_nested_goal_question_widgets_info,
 	},
 	{
-		__FILE__, __LINE__,
 		WDP_CENTER, nullptr, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WDF_CONSTRUCTION,
-		std::begin(_nested_goal_question_widgets_warning), std::end(_nested_goal_question_widgets_warning),
+		_nested_goal_question_widgets_warning,
 	},
 	{
-		__FILE__, __LINE__,
 		WDP_CENTER, nullptr, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WDF_CONSTRUCTION,
-		std::begin(_nested_goal_question_widgets_error), std::end(_nested_goal_question_widgets_error),
+		_nested_goal_question_widgets_error,
 	},
 };
 
@@ -483,8 +479,8 @@ static WindowDesc _goal_question_list_desc[] = {
  * @param button_mask Buttons to display.
  * @param question Question to ask.
  */
-void ShowGoalQuestion(uint16_t id, byte type, uint32_t button_mask, const std::string &question)
+void ShowGoalQuestion(uint16_t id, uint8_t type, uint32_t button_mask, const std::string &question)
 {
 	assert(type < GQT_END);
-	new GoalQuestionWindow(&_goal_question_list_desc[type], id, type == 3 ? TC_WHITE : TC_BLACK, button_mask, question);
+	new GoalQuestionWindow(_goal_question_list_desc[type], id, type == 3 ? TC_WHITE : TC_BLACK, button_mask, question);
 }

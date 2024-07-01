@@ -581,8 +581,8 @@ STR_UNITS_PERIODS                                               :{NUM}{NBSP}цы
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтар:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Увядзіце радок фільтра
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Увядзіце ключавое слова для фільтрацыі сьпісу
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Увядзіце ключавыя словы для фільтраваньня сьпісу
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Увядзіце ключавыя словы для фільтраваньня сьпісу
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Выбар парадку групоўкі
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Зьмена напрамку сартаваньня (зьмяньшэньне / ўзрастаньне)
@@ -621,7 +621,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Калі
 STR_BUTTON_DEFAULT                                              :{BLACK}Па змоўчаньнi
 STR_BUTTON_CANCEL                                               :{BLACK}Скасаваць
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Увага: адміністратары сервера могуць убачыць ваш пароль.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -750,6 +749,7 @@ STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Загрузі�
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Выйсьці з рэдактара
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Выхад
+
 
 # Settings menu
 ###length 16
@@ -922,7 +922,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Ґраф
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Ґрафік даходу
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Колькасьць перавезеных грузаў
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рэйтынґ кампаніі (макс. = 1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Вартасьць кампаніі
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Ґрафік змены вартасьці кампаніі
 
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Апошнія 72 хвіліны
 
@@ -1270,18 +1270,13 @@ STR_GAME_OPTIONS_VOLUME                                         :Гучнасц�
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Гукавыя эфекты
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Музыка
 
-STR_GAME_OPTIONS_VOLUME_0                                       :0%
-STR_GAME_OPTIONS_VOLUME_25                                      :25%
-STR_GAME_OPTIONS_VOLUME_50                                      :50%
-STR_GAME_OPTIONS_VOLUME_75                                      :75%
-STR_GAME_OPTIONS_VOLUME_100                                     :100%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Валюта
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Выбар валюты
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Брытанскі фунт
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Даляр ЗША
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Эўра
@@ -1371,11 +1366,6 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Паст
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Згладжваньне шрыфтоў
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Пастаўце адзнаку, каб уключыць згладжваньне маштабуемых шрыфтоў
 
-STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
-STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
-STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
-STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
-STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Аўтаматычны збор дадзеных
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Дазволіць збор і адпраўку дадзеных
@@ -1404,6 +1394,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}База
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Выберыце базавы музычны набор для выкарыстаньня
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Дадатковая інфармацыя аб базавым музычным наборы
 
+
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(модулі ўзаемадзеяньня з сацыяльнымі платформамі не ўсталяваны)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
@@ -1430,6 +1421,9 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Абм�
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Падвысіць курс вашае валюты ў адносінах да фунта (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Зьнізіць курс вашае валюты ў адносінах да фунта (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Усталяваць курс вашае валюты ў адносінах да фунта (£)
+
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Падзельнік: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Усталяваць падзельнік для вашае валюты
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Прэфікс: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Усталяваць прэфікс для вашае валюты
@@ -1618,7 +1612,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Выдаткі 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Усталюйце ўзровень выдаткаў на будаўніцтва й набыцьцё
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Спады: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Калі ўключана, спад можа наставаць раз у некалькі гадоў. Падчас спаду ўвесь аб'ём вытворчасьці значна ніжэй (ён вяртаецца да ранейшага ўзроўня, калі спад сканчаецца)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Калі ўключана, у гульні часам адбываюцца эканамічныя крызісы. Падчас крызісу аб'ёмы вытворчасьці значна змяншаюцца (і вяртаюцца да ранейшага ўзроўня, калі крызіс сканчаецца).
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Забараніць разварот цягнікоў на станцыях: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Калі ўключана, цягнікі ня будуць разварочвацца на прахадных станцыях, нават калі гэта дазволіць скараціць шлях да наступнага пункта прызначэньня.
@@ -1801,11 +1795,12 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Папярэд�
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Калі ўключана, вы атрымаеце паведамленьне аб транспартным сродку, які аніразу не атрымаў прыбытак на працягу году.
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Калі ўключана, вы атрымаеце паведамленьне аб транспартным сродку, які аніразу не атрымаў прыбытак на працягу цыклу.
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспарт ніколі не выходзіць з ужытку: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Калі ўключана, усе мадэлі транспартных сродкаў пасьля з'яўленьня застануцца даступнымі назаўжды.
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Гульнёвы час: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Выбар сістэмы адліку часу, выкарыстанай у гульні. Пасля старту змяніць яе немагчыма.{}{}Каляндар - гэта класічная сістэма, першапачаткова ўжытая ў OpenTTD: год складаецца з 12 месяцаў, у кожным з якіх 28-31{NBSP}дзень.{}{}У рэжыме рэальнага часу разлікі вытворчасці, рухі транспарта і фінансавых паказчыкаў заснаваны на інтэрвалах працягласцю ў 1{NBSP}хвіліну, што прыкладна адпавядае 30{NBSP}дням у рэжыме календара. Гэтыя інтэрвалы групуюцца ў 12-хвілінныя цыклы, якія адпавядаюць 1{NBSP}году ў класічным рэжыме.{}{}У любым выпадку, з'яўленьне новых транспартных сродкаў, будынкаў і інфраструктуры будзе суправаджацца календаром са зразумелымі датамі.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Выбар сістэмы адліку часу, выкарыстанай у гульні. Пасля старту змяніць яе немагчыма.{}{}Каляндар - гэта класічная сістэма, першапачаткова ўжытая ў OpenTTD: год складаецца з 12 месяцаў, у кожным з якіх 28-31{NBSP}дзень.{}{}У рэжыме рэальнага часу разлікі вытворчасці й фінансавых паказчыкаў заснаваны на інтэрвалах працягласцю ў 1{NBSP}хвіліну, што прыкладна адпавядае 30{NBSP}дням у рэжыме календара. Гэтыя інтэрвалы групуюцца ў 12-хвілінныя цыклы, якія адпавядаюць 1{NBSP}году ў класічным рэжыме.{}{}У любым выпадку, з'яўленьне новых транспартных сродкаў, будынкаў і інфраструктуры будзе суправаджацца календаром са зразумелымі датамі.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Каляндар
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Рэальны час
@@ -1865,7 +1860,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Арыґіна�
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Тып ландшафту: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Толькі для TerraGenesis){}Узгоркаватасць ландшафту
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Азначце вышыню гор і ўзгоркаў на мапе
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Колькасць прадпрыемстваў: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Выберыце, колькі прадпрыемстваў ствараць напачатку і на якім узроўні падтрымліваць іх колькасць падчас гульні.
@@ -1893,7 +1888,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубы
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Вельмі грубы
 
 STR_CONFIG_SETTING_VARIETY                                      :Разнастайнасць ландшафту: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Толькі для TerraGenesis){}Вызначае наяўнасць на карце як горных, так і раўнінных абласцей. Паколькі дадзеная наладка ўплывае толькі на згладжванне карты, астатнія наладкі павінны быць выстаўлены ў горны ландшафт.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Вызначае наяўнасць на карце як горных, так і раўнінных абласцей. Чым вышэй разнастайнасць, тым вышэй розніца ў вышыні паміж гэтымі зонамі.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Колькасць рэк: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Выберыце колькасць рэк на мапе
@@ -1948,7 +1943,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :шэры і ч�
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :адценьні шэрага
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Перамяшчэнне агляду: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Спосаб перамяшчэння па гульнёваму полю
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Спосаб перамяшчэньня па гульнёваму полю. Варыянты з зафіксаваным курсорам не працуюць на некаторых сістэмах, напрыклад, у браўзарах, на сэнсарных экранах, на Linux з Wayland і г. д.
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Перамяшчаць з дапамогай ПКМ, зафіксаваўшы курсор
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Перамяшчаць з дапамогай ПКМ, зафіксаваўшы курсор
@@ -2142,7 +2137,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Iнтэрвал
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Усталяваць міжсэрвісны інтэрвал для новых паветраных суднаў, калі пэўны інтэрвал ня вызначаны для канкрэтнага судна.
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Iнтэрвал абслугоўваньня для караблёў: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Усталяваць міжсэрвісны інтэрвал для новых караблёў, калі пэўны інтэрвал ня вызначаны для канкрэтнага судна.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}д{P зень днi дзён}/хвілін{P а ы ""}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :адключана
 
@@ -2442,17 +2438,8 @@ STR_CONFIG_SETTING_AI                                           :Канкурэ�
 STR_CONFIG_SETTING_AI_NPC                                       :Кампутарныя гульцы
 STR_CONFIG_SETTING_NETWORK                                      :Сетка
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Альґарытм пошуку шляху для цягнікоў: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Мэханізм пошуку шляху для цягнікоў.
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Альґарытм пошуку шляху для аўтатранспарту: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Мэханізм пошуку шляху для аўтатранспарту.
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Альґарытм пошуку шляху для караблёў: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Мэханізм пошуку шляху для караблёў.
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Аўтаматычны разварот перад сыґналамi: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Дазволіць цягнікам разварочвацца перад сыґналамі, калі яны чакаюць доўгі час.
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(рэкамэндуецца)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Зьмяніць значэньне
 
@@ -2513,11 +2500,11 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Выбр
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Выбраць ляндшафт субтрапічнага клімату
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Выбраць цацачны сьвет
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Паказаць наладкі гульні
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Адкрыць акно з асноўнымі наладкамі гульні
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Паказаць табліцу рэкордаў
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Спасылкі на дакументацыю і інтэрнэт-рэсурсы
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Адкрыць наладкі
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Паказаць наладкі NewGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Адкрыць наладкі NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Праверыць новы й абноўлены кантэнт, каб спампаваць
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Адкрыць наладкі ШІ
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Адкрыць наладкі гульнёвых скрыптоў
@@ -2771,7 +2758,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Здаб
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Адлучыцца
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сэрвэр абаронены. Увядзіце пароль
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Кампанія абароненая. Увядзіце пароль
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Сьпіс гульцоў
@@ -2820,13 +2806,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Праз
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Адключыць
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Заблакаваць
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Выдаліць
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Скінуць пароль
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Пацверджаньне дзеяньня
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Адключыць гульца «{STRING}»?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Заблакаваць гульца «{STRING}»?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Выдаліць кампанію «{COMPANY}»?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Скінуць пароль у кампаніі «{COMPANY}»?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Выкарыстоўваць транслятар?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Не атрымалася ўсталяваць злучэнне з серверам «{STRING}».{}Перанакіраваць злучэнне праз «{STRING}»?
@@ -2843,19 +2827,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Так
 
 STR_NETWORK_SPECTATORS                                          :Гледачы
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не захоўваць уведзены пароль
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Даць кампаніі новы пароль
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Пароль кампаніі
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Пароль кампаніі па змоўчаньні
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Выкарыстоўваць пароль гэтай кампаніі як пароль па змоўчаньні для новых кампаніяў
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Далучыцца
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Далучыцца й гуляць за гэтую кампанію
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Пароль
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Абараніць вашу кампанію паролем, каб неаўтарызаваныя карыстальнікі не маглі далучыцца
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Усталяваць пароль кампаніі
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Адправіць
@@ -2899,7 +2873,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Ваша
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Злучэньне згублена
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}На працягу {NUM} сэкунд{P ы аў аў} не атрымана ніякіх дадзеных з боку сэрвэра
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :агульная памылка
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :памылка сынхранізацыі
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :не ўдалося загрузіць мапу
@@ -2975,7 +2949,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Выні
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Вы пакідаеце OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Умовы загрузкі змесціва зь іншых сайтаў могуць адрозьнівацца.{}За інструкцыямі па ўсталёўцы кампанэнтаў OpenTTD вам трэба зьвярнуцца на адпаведныя сайты.{}Вы жадаеце працягнуць?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Фільтар па бірках/назвах:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Наведаць вэб-старонку
+STR_CONTENT_OPEN_URL                                            :{BLACK}Вэб-сайт
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Наведаць вэб-старонку для гэтага кантэнту
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Запампаваць
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Запусьціць запампоўку выбранага кантэнту
@@ -3132,7 +3106,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Выбе
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Маршрутны пункт
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Выберыце тып маршрутнага пункта
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Выбар чыгуначнай станцыі
@@ -3145,8 +3118,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Выбе
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Участак
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Пабудаваць станцыю на выбраным участку зямлі
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Выберыце клясу станцыі для паказу
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Выберыце тып станцыі для пабудовы
+
+
+
 
 STR_STATION_CLASS_DFLT                                          :Стандартная станцыя
 STR_STATION_CLASS_DFLT_STATION                                  :Стандартная чыг. станцыя
@@ -3241,7 +3215,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Буда
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Будаўніцтва шлюзаў. Пры націснутым Shift — ацэнка кошту будаўніцтва.
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Будаўніцтва докаў (для набыцця і абслугоўваньня караблёў). Пры націснутым Shift — ацэнка кошту будаўніцтва.
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Будаўніцтва прыстаняў. Націснуты Ctrl дазваляе аб'ядноўваць прыстані. Пры націснутым Shift — ацэнка кошту будаўніцтва.
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Разьмясьціць буй, які можа быць выкарыстаны як пункт шляху. Пры націснутым Shift — ацэнка кошту будаўніцтва.
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Разьмясьціць буй, які можа быць выкарыстаны як маршрутны пункт. Пры націснутым Shift — ацэнка кошту будаўніцтва.
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Будаўніцтва аквэдукаў Пры націснутым Shift — ацэнка кошту будаўніцтва.
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Пабудаваць канал. Ctrl+пстрычка па клетцы на ўзроўні мора — запоўніць яго вадой.
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Стварэньне рэк на мапе. Пры націснутым Ctrl яны ствараюцца па дыяганалі.
@@ -3255,7 +3229,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Док
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aэрапорты
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Будаўніцтва аэрапортаў. Націск Ctrl дазваляе аб'ядноўваць станцыі. Пры націснутым Shift — ацэнка кошту будаўніцтва.
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Будаўніцтва аэрапортаў. Націснуты Ctrl дазваляе аб'ядноўваць аэрапорты. Пры націснутым Shift — ацэнка кошту будаўніцтва.
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Выбар аэрапорта
@@ -3287,14 +3261,12 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Узро
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Земляныя работы
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Апусціць кут зямлі. Пстрычка+перацягваньне апускае абраны кут і прамавугольную вобласць на новую глыбіню. Ctrl+пстрычка+перацягваньне — выбар вобласьці па дыяганалі. Пры націснутым Shift — ацэнка кошту будаўніцтва.
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Падняць кут зямлі. Перацягваньне падымае першы абраны кут і выраўноўвае выбраную вобласьць да новай вышыні кута. Ctrl выбірае вобласьць па дыяганалі. Пры націснутым Shift — ацэнка кошту будаўніцтва.
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Падняць кут зямлі. Пстрычка+перацягваньне паднімае абраны кут і прамавугольную вобласць на новую вышыню. Ctrl+пстрычка+перацягваньне — выбар вобласці па дыяганалі. Пры націснутым Shift — ацэнка кошту будаўніцтва.
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Выраўнаваць прамавугольны ўчастак зямлі да вышыні першага абранага кута. Ctrl+пстрычка+перацягваньне — выбар вобласці па дыяганалі. Пры націснутым Shift — ацэнка кошту выраўноўваньня.
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Набыцьцё зямлі. Пры націснутым Shift — ацэнка кошту набыцьця.
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Набыцьцё зямлі для будучага выкарыстаньня. Ctrl+пстрычка+перацягваньне — выбар вобласці па дыяганалі. Пры націснутым Shift — ацэнка кошту набыцьця.
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Выбар аб'екта
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Абярыце ствараны аб'ект. Пры націснутым Shift — ацэнка кошту пабудовы.
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Абярыце клясу аб'екта для будаўніцтва
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Прагляд аб'екта
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Памер: {GOLD}{NUM} x {NUM} клетак
 
@@ -3305,7 +3277,7 @@ STR_OBJECT_CLASS_TRNS                                           :Перадат�
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Дрэвы
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Выберыце тып дрэваў для пасадкі. Калі на ўчастку ўжо ёсьць дрэвы, будуць дададзены некалькі дрэваў рознага тыпу, незалежна ад выбранага.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Дрэвы розных відаў
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Высадка дрэў выпадковага тыпу. Пры націснутым Shift — ацэнка кошту высадкі.
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Высадка дрэў выпадковага тыпу. Ctrl+пстрычка+перацягваньне — выбар вобласці па дыяганалі. Пры націснутым Shift — ацэнка кошту высадкі.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Расставіць па мапе
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Пасадзіць дрэвы розных выпадковых відаў па усёй мапе
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Дрэва
@@ -3318,7 +3290,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Ства
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Стварэньне ляндшафту
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Разьмясьціць камяні па мапе
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Разьмясьціць пустэльню.{}Націсьніце Ctrl, каб выдаліць яе.
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Разьмясьціць пустэльню.{}Ctrl+пстрычка — выдаліць яе.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Павялічыць плошчу зьмяненьня рэльефу
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Паменшыць плошчу зьмяненьня рэльефу
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Стварыць выпадковую мапу
@@ -3364,7 +3336,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Крат
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Выпадковая
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Стварыць новае прадпрыемства
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Стварэньне прадпрыемстваў
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Выберыце тып вытворчасьці са сьпісу
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Шмат выпадковых прадпрыемстваў
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Выпадкова разьмясьціць прадпрыемствы на мапе
@@ -3387,7 +3359,7 @@ STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Спаж
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Гарадзкія будынкі
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Пстрычка па прадпрыемстве пакажа ягоных пастаўшчыкоў і спажыўцоў
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Пстрычка па тыпе грузу пакажа ягоных пастаўшчыкоў і спажыўцоў
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Паказаць ланцужок
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Вытворчы ланцужок
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Паказаць вытворцаў сыравіны й спажыўцоў прадукцыі гэтага прадпрыемства
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Лiнк да мiнiмапы
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Выберыце паказаныя прадпрыемствы таксама й на мiнiмапе
@@ -3409,7 +3381,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Улад
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Уладальнiк чыгункi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Мясцовая адміністрацыя: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Няма
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Каардынаты: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Пабудавана/абноўлена: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Кляса станцыі: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Тып станцыi: {LTBLUE}{STRING}
@@ -3721,9 +3692,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Стварэньне сусьвету
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Стварэньне рэк
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Высаджваньне лясоў
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ґенэрацыя нерухомасьці
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Расстаноўка дэкарацыяў і камянёў
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ґенэрацыя нерухомасьці
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Высаджваньне лясоў
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Наладка гульні
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Падрыхтоўка да запуску...
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Выконваецца скрыпт
@@ -3815,7 +3786,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Тып даро
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Парамэтр зьменнай NewGRF 60+x (шаснаццаткавы)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Выраўноўваньне спрайта {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Наступны спрайт
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Перайсьці да наступнага звычайнага спрайта, прапускаючы змяняючыя колер, шрыфтавыя, псэўдаспрайты. Пераход з канца сьпісу да першага спрайта.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Перайсьці да спрайта
@@ -3849,7 +3819,7 @@ STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}У мо�
 STR_NEWGRF_ERROR_POPUP                                          :{WHITE}У модулі NewGRF «{STRING}» адбылася памылка:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ня будзе працаваць з вэрсіяй TTDPatch, паведламленай OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Файл {1:STRING} патрабуе TTD вэрсіі {2:STRING}
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} зроблены для выкарыстаньня сумесна з {STRING}
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} зроблены для выкарыстаньня сумесна з {2:STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Няправільны парамэтр {1:STRING}: парамэтр {2:STRING} ({3:NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} павінен быць загружаны перад {2:STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} павінен быць загружаны пасьля {2:STRING}.
@@ -3932,11 +3902,10 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Да п�
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Увядзіце назву таблічкi
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Гарады
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Няма -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Мегаполіс){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Сьпіс гарадоў: клiк па назьве паказвае горад у асноўным вакне. Ctrl+клiк паказвае ў дадатковым вакне.
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Сьпіс гарадоў: пстрычка па назьве паказвае горад у асноўным вакне. Ctrl+пстрычка — у дадатковым вакне.
 STR_TOWN_POPULATION                                             :{BLACK}Насельніцтва: {COMMA}
 
 # Town view window
@@ -3989,7 +3958,7 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Купіць э
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Даць хабар мясцовай адміністрацыі
 ###next-name-looks-similar
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Правесьці малую рэклямную кампанію для павелічэньня груза-і пасажырапатоку на вашых станцыях.{}Кошт: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Правесці малую рэклямную кампанію для павелічэння груза- і пасажырапатоку на вашых станцыях.{}Яна часова павялічыць рэйтынг вашых станцый, пабудаваных побач з цэнтрам горада.{}{POP_COLOUR}Кошт: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Правесьці сярэднюю рэклямную кампанію для павелічэньня груза-і пасажырапатоку на вашых станцыях.{}Яна часова павялічыць рэйтынг вашых станцый, змешчаных ня вельмі далёка ад цэнтра горада.{}{POP_COLOUR}Кошт: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Правесьці вялікую рэклямную кампанію для павелічэньня груза-і пасажырапатоку на вашых станцыях.{}Яна часова павялічыць рэйтынг вашых станцый на значнай плошчы ў горадзе і наваколлях.{}{POP_COLOUR}Кошт: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Прафінансаваць рэканструкцыю гарадской дарожнай сеткі.{}Працы, працягласцю да 6 месяцаў, прыводзяць да значных дарожных затораў.{}{POP_COLOUR}Кошт: {CURRENCY_LONG}
@@ -4068,7 +4037,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Наст
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Няправільная спасылка на дасягненьне
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Сьпіс станцыяў: пстрычка па назьве паказвае станцыю ў асноўным вакне. Ctrl+клiк паказвае ў дадатковым вакне.
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Сьпіс станцыяў: пстрычка па назьве паказвае станцыю ў асноўным вакне. Ctrl+пстрычка — у дадатковым вакне.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Можна выбраць некалькі варыянтаў, пстрыкаючы па іх з заціснутым Ctrl
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} — {COMMA} станцы{P я i яў}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -4151,7 +4120,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Прад
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Паказаць маршрутны пункт у асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Перайменаваць маршрутны пункт
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Паказаць буй у асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Паказаць буй у асноўным вакне. Ctrl+пстрычка — паказаць у дадатковым вакне.
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Зьмяніць назву буя
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Назва маршрутнага пункта
@@ -4227,7 +4196,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Пабу
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Агледзець штаб
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Агледзець штаб-кватэру кампаніі
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Перамясьціць
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Перамясьціць штаб-кватэру кампаніі ў іншае месца за 1% ацэнкавага кошту капіталу кампаніі. Shift+пстрычка — ацэнка кошту пераносу.
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Перамясьціць штаб-кватэру кампаніі ў іншае месца за 1% ацэнкавага кошту капіталу кампаніі. Пры націснутым Shift — ацэнка кошту пераносу.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Дэталi
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Паказаць дэталёвыя iнфраструктурныя падлiкi
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Перадаць грошы
@@ -4266,7 +4235,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/перыяд
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Прамысловасьць
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Няма -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% перавезена){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -4360,7 +4328,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Ства
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Выдаліць выбраную групу
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Перайменаваць выбраную групу
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Змяніць колер абранае групы
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Абарона транспарту ў групе ад глабальнай аўтазамены
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Абарона транспарта ў групе ад глабальнай аўтазамены. Ctrl+пстрычка — абарона таксама і ўкладзеных груп.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Выдаліць ґрупу
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Вы ўпэўнены, што жадаеце выдаліць гэту ґрупу з усімі вытворнымі?
@@ -4429,9 +4397,9 @@ STR_CARGO_TYPE_FILTER_NONE                                      :Няма
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Сьпіс лакаматываў і вагонаў - пстрыкніце для атрыманьня інфармацыі. Ctrl+пстрычка схавае/пакажа ТС.
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Сьпіс аўтатранспарту - пстрыкніце для атрыманьня інфармацыі. Ctrl+пстрычка схавае/пакажа выбраны аўтамабіль.
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Сьпіс караблёў - пстрыкніце для атрыманьня інфармацыі. Ctrl+пстрычка схавае/пакажа выбраны карабель.
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Сьпіс паветраных судоў: пстрыкніце для атрыманьня інфармацыі. Ctrl+пстрычка схавае/пакажа ТС.
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Сьпіс даступных мадэляў аўтатранспарта. Абярыце адну з іх для атрыманьня інфармацыі. Ctrl+пстрычка схавае/пакажа абраную мадэль.
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Сьпіс даступных мадэляў караблёў. Абярыце адну з іх для атрыманьня інфармацыі. Ctrl+пстрычка схавае/пакажа абраную мадэль.
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Сьпіс даступных мадэляў паветраных судоў. Абярыце адну з іх для атрыманьня інфармацыі. Ctrl+пстрычка схавае/пакажа абраную мадэль.
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купіць
@@ -4447,15 +4415,15 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Купі
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Набыць абраны лякаматыў/ваґон. Shift+пстрычка — ацэнка кошту набыцьця.
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Набыць абраны аўтамабіль. Shift+пстрычка — ацэнка кошту набыцьця.
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Набыць абраны карабель. Shift+пстрычка — ацэнка кошту набыцьця.
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Набыць абраны авіятранспарт. Shift+пстрычка — ацэнка кошту набыцьця.
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Набыць абраны аўтамабіль. Пры націснутым Shift — ацэнка кошту набыцьця.
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Набыць абраны карабель. Пры націснутым Shift — ацэнка кошту набыцьця.
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Набыць абраны авіятранспарт. Пры націснутым Shift — ацэнка кошту набыцьця.
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Набыць і пераабсталяваць  абраны лякаматыў/ваґон. Пры націснутым Shift — ацэнка кошту набыцця.
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Набыць і пераабсталяваць абраны аўтамабіль. Shift+пстрычка пакажа арыентыровачны кошт куплі.
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Набыць і пераабсталяваць абраны аўтамабіль. Пры націснутым Shift — ацэнка кошту набыцьця.
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Набыць і пераабсталяваць абраны карабель. Пры націснутым Shift — ацэнка кошту набыцця.
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Набыць і пераабсталяваць абранае паветранае судна. Пры націснутым Shift — ацэнка кошту куплі.
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Набыць і пераабсталяваць абранае паветранае судна. Пры націснутым Shift — ацэнка кошту набыцьця.
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Перайменаваць
@@ -4505,7 +4473,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} а
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Цягнікі. Выкарыстоўвайце перацягваньне для зьмены складу цягніка; націсьніце ПКМ для атрыманьня інфармацыі. Утрымлівайце Ctrl для перацягваньня ваґона разам з усімі наступнымі за ім.
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Цягнікі ў дэпо. Фармуйце саставы з дапамогай перацягваньня лакаматываў і вагонаў. Націсніце ПКМ для атрыманьня інфармацыі. Пры націснутым Ctrl абедзве функцыі працуюць ад абранага вагона да канца саставу.
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Аўтамабiлi: правы клік для атрыманьня інфармацыі
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Караблi: правы клік для атрыманьня інфармацыі
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авiятранспарт: правы клік для атрыманьня інфармацыі
@@ -4547,16 +4515,16 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Капі
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Капіяваць авіятранспарт
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Стварыць копію састава. Націсьніце на кнопку, а затым на цягнік усярэдзіне ці знадворку дэпо. Ctrl+пстрычка створыць цягнік з агульным маршрутам. Shift+пстрычка - ацэнка кошту куплі.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Стварыць копію аўтамабіля. Націсьніце на кнопку, а затым на машыну ўнутры ці звонку гаража. Ctrl+пстрычка створыць аўтамабіль з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Стварыць копію карабля. Націсьніце на кнопку, а затым на карабель унутры ці звонку дока. Ctrl+пстрычка створыць карабель з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Набыць копію састава. Націсьніце на кнопку, а затым на цягнік усярэдзіне ці знадворку дэпо. Ctrl+пстрычка створыць цягнік з агульным маршрутам. Shift+пстрычка —  ацэнка кошту набыцьця.
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Набыць копію аўтамабіля. Націсьніце на кнопку, а затым на машыну ўнутры ці звонку гаража. Ctrl+пстрычка створыць аўтамабіль з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Набыць копію карабля. Націсьніце на кнопку, а затым на карабель унутры ці звонку дока. Ctrl+пстрычка створыць карабель з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Набыць копію паветр. судна. Націсьніце на кнопку, а потым на паветр. судна ўнутры ці звонку анґара. Ctrl+пстрычка створыць копію з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Паказаць дэпо ў асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Паказаць гараж у асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Паказаць док у асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Паказаць анґар у асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Паказаць дэпо ў асноўным вакне. Ctrl+пстрычка — паказаць у дадатковым вакне.
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Паказаць гараж у асноўным вакне. Ctrl+пстрычка — паказаць у дадатковым вакне.
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Паказаць док у асноўным вакне. Ctrl+пстрычка — паказаць у дадатковым вакне.
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Паказаць анґар у асноўным вакне. Ctrl+пстрычка — паказаць у дадатковым вакне.
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Атрымаць сьпіс цягнiкоў, якія маюць у заданьнях гэтае дэпо
@@ -4696,10 +4664,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Пасл
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Паслаць паветр. судна ў анґар. Ctrl+клік — толькі для абслугоўваньня.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Стварыць копію састава. Ctrl+пстрычка створыць цягнік з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Стварыць копію аўтамабіля. Ctrl+пстрычка створыць аўтамабіль з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Стварыць копію карабля. Ctrl+пстрычка створыць карабель з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Стварыць копію паветр. судна. Ctrl+пстрычка створыць копію з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Набыць копію састава. Ctrl+пстрычка створыць цягнік з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Набыць копію аўтамабіля. Ctrl+пстрычка створыць аўтамабіль з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Набыць копію карабля. Ctrl+пстрычка створыць карабель з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Набыць копію паветр. судна. Ctrl+пстрычка створыць копію з агульнымі заданьнямі. Shift+пстрычка — ацэнка кошту набыцьця.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Прымусіць цягнік праехаць чырвоны сыґнал святлафора
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Завярнуць цягнiк у адваротны бок
@@ -5079,7 +5047,7 @@ STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Выбе
 STR_TIMETABLE_START_SECONDS_QUERY                               :Секунд да запуску графіка
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Зьмяніць час
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Зьмяніць час для вылучанага заданьня
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Зьмяніць час, выдаткаваны на выкананьне вылучанага заданьня. Ctrl+пстрычка ўсталёўвае час для ўсіх заданьняў.
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Ськінуць час
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Скінуць час у вылучаным заданьні. Ctrl+пстрычка — скінуць час ва ўсіх заданьнях.
@@ -5196,8 +5164,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :гульнёв�
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыць
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ськід
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -5250,9 +5216,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Мерк
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ідзе захаваньне,{}калі ласка, дачакайцеся завяршэньня!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Памылка аўтазахаваньня
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Не атрымалася прачытаць дыск
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Немагчыма захаваць гульню{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Немагчыма выдаліць файл
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Немагчыма загрузіць гульню{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Унутраная памылка: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Файл пашкоджаны — {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Захаваньне зроблена ў больш новай вэрсіі
@@ -5633,6 +5597,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Усе �
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Зьмяніце канфігурацыю модуля NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Няма даступных транспартных сродкаў
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Пачніце гульню пасьля {DATE_SHORT} або падключыце NewGRF з транспартам адпаведных часоў.
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Немагчыма іґнараваць сыґнал. Небясьпечна...
@@ -6282,6 +6247,11 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}тыс
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}млн
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}млрд
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}трлн
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

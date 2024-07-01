@@ -95,11 +95,11 @@ void BuildCargoLabelMap()
 	CargoSpec::label_map.clear();
 	for (const CargoSpec &cs : CargoSpec::array) {
 		/* During initialization, CargoSpec can be marked valid before the label has been set. */
-		if (!cs.IsValid() || cs.label == CargoLabel{0}) continue;
+		if (!cs.IsValid() || cs.label == CargoLabel{0} || cs.label == CT_INVALID) continue;
 		/* Label already exists, don't addd again. */
 		if (CargoSpec::label_map.count(cs.label) != 0) continue;
 
-		CargoSpec::label_map.insert(std::make_pair(cs.label, cs.Index()));
+		CargoSpec::label_map.emplace(cs.label, cs.Index());
 	}
 }
 

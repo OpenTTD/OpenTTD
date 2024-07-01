@@ -21,10 +21,7 @@
 #include "tar_type.h"
 #include <sys/stat.h>
 #include <charconv>
-
-#ifndef _WIN32
-# include <unistd.h>
-#endif /* _WIN32 */
+#include <filesystem>
 
 #include "table/strings.h"
 
@@ -36,8 +33,7 @@ SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 
 /* OS-specific functions are taken from their respective files (win32/unix .c) */
 extern bool FiosIsRoot(const std::string &path);
-extern bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb);
-extern bool FiosIsHiddenFile(const struct dirent *ent);
+extern bool FiosIsHiddenFile(const std::filesystem::path &path);
 extern void FiosGetDrives(FileList &file_list);
 
 /* get the name of an oldstyle savegame */
@@ -53,7 +49,7 @@ bool FiosItem::operator< (const FiosItem &other) const
 	int r = false;
 
 	if ((_savegame_sort_order & SORT_BY_NAME) == 0 && (*this).mtime != other.mtime) {
-		r = this->mtime - other.mtime;
+		r = ClampTo<int32_t>(this->mtime - other.mtime);
 	} else {
 		r = StrNaturalCompare((*this).title, other.title);
 	}
@@ -246,8 +242,7 @@ std::string FiosMakeHeightmapName(const char *name)
  */
 bool FiosDelete(const char *name)
 {
-	std::string filename = FiosMakeSavegameName(name);
-	return unlink(filename.c_str()) == 0;
+	return FioRemove(FiosMakeSavegameName(name));
 }
 
 typedef std::tuple<FiosType, std::string> FiosGetTypeAndNameProc(SaveLoadOperation fop, const std::string &filename, const std::string_view ext);
@@ -292,32 +287,13 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t, const std::st
 	}
 
 	FiosItem *fios = &file_list.emplace_back();
-#ifdef _WIN32
-	// Retrieve the file modified date using GetFileTime rather than stat to work around an obscure MSVC bug that affects Windows XP
-	HANDLE fh = CreateFile(OTTD2FS(filename).c_str(), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, nullptr, OPEN_EXISTING, 0, nullptr);
 
-	if (fh != INVALID_HANDLE_VALUE) {
-		FILETIME ft;
-		ULARGE_INTEGER ft_int64;
-
-		if (GetFileTime(fh, nullptr, nullptr, &ft) != 0) {
-			ft_int64.HighPart = ft.dwHighDateTime;
-			ft_int64.LowPart = ft.dwLowDateTime;
-
-			// Convert from hectonanoseconds since 01/01/1601 to seconds since 01/01/1970
-			fios->mtime = ft_int64.QuadPart / 10000000ULL - 11644473600ULL;
-		} else {
-			fios->mtime = 0;
-		}
-
-		CloseHandle(fh);
-#else
-	struct stat sb;
-	if (stat(filename.c_str(), &sb) == 0) {
-		fios->mtime = sb.st_mtime;
-#endif
-	} else {
+	std::error_code error_code;
+	auto write_time = std::filesystem::last_write_time(OTTD2FS(filename), error_code);
+	if (error_code) {
 		fios->mtime = 0;
+	} else {
+		fios->mtime = std::chrono::duration_cast<std::chrono::milliseconds>(write_time.time_since_epoch()).count();
 	}
 
 	fios->type = type;
@@ -345,48 +321,38 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t, const std::st
  */
 static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAndNameProc *callback_proc, Subdirectory subdir, FileList &file_list)
 {
-	struct stat sb;
-	struct dirent *dirent;
-	DIR *dir;
-	FiosItem *fios;
 	size_t sort_start;
 
 	file_list.clear();
 
 	assert(_fios_path != nullptr);
 
-	/* A parent directory link exists if we are not in the root directory */
-	if (show_dirs && !FiosIsRoot(*_fios_path)) {
-		fios = &file_list.emplace_back();
-		fios->type = FIOS_TYPE_PARENT;
-		fios->mtime = 0;
-		fios->name = "..";
-		SetDParamStr(0, "..");
-		fios->title = GetString(STR_SAVELOAD_PARENT_DIRECTORY);
-	}
-
-	/* Show subdirectories */
-	if (show_dirs && (dir = ttd_opendir(_fios_path->c_str())) != nullptr) {
-		while ((dirent = readdir(dir)) != nullptr) {
-			std::string d_name = FS2OTTD(dirent->d_name);
-
-			/* found file must be directory, but not '.' or '..' */
-			if (FiosIsValidFile(*_fios_path, dirent, &sb) && S_ISDIR(sb.st_mode) &&
-					(!FiosIsHiddenFile(dirent) || StrStartsWithIgnoreCase(PERSONAL_DIR, d_name)) &&
-					d_name != "." && d_name != "..") {
-				fios = &file_list.emplace_back();
-				fios->type = FIOS_TYPE_DIR;
-				fios->mtime = 0;
-				fios->name = d_name;
-				SetDParamStr(0, fios->name + PATHSEP);
-				fios->title = GetString(STR_SAVELOAD_DIRECTORY);
-			}
-		}
-		closedir(dir);
-	}
-
-	/* Sort the subdirs always by name, ascending, remember user-sorting order */
 	if (show_dirs) {
+		/* A parent directory link exists if we are not in the root directory */
+		if (!FiosIsRoot(*_fios_path)) {
+			FiosItem &fios = file_list.emplace_back();
+			fios.type = FIOS_TYPE_PARENT;
+			fios.mtime = 0;
+			fios.name = "..";
+			SetDParamStr(0, "..");
+			fios.title = GetString(STR_SAVELOAD_PARENT_DIRECTORY);
+		}
+
+		/* Show subdirectories */
+		std::error_code error_code;
+		for (const auto &dir_entry : std::filesystem::directory_iterator(OTTD2FS(*_fios_path), error_code)) {
+			if (!dir_entry.is_directory()) continue;
+			if (FiosIsHiddenFile(dir_entry) && dir_entry.path().filename() != PERSONAL_DIR) continue;
+
+			FiosItem &fios = file_list.emplace_back();
+			fios.type = FIOS_TYPE_DIR;
+			fios.mtime = 0;
+			fios.name = FS2OTTD(dir_entry.path().filename());
+			SetDParamStr(0, fios.name + PATHSEP);
+			fios.title = GetString(STR_SAVELOAD_DIRECTORY);
+		}
+
+		/* Sort the subdirs always by name, ascending, remember user-sorting order */
 		SortingBits order = _savegame_sort_order;
 		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
 		std::sort(file_list.begin(), file_list.end());
@@ -399,17 +365,15 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 	/* Show files */
 	FiosFileScanner scanner(fop, callback_proc, file_list);
 	if (subdir == NO_DIRECTORY) {
-		scanner.Scan(nullptr, *_fios_path, false);
+		scanner.Scan({}, *_fios_path, false);
 	} else {
-		scanner.Scan(nullptr, subdir, true, true);
+		scanner.Scan({}, subdir, true, true);
 	}
 
 	std::sort(file_list.begin() + sort_start, file_list.end());
 
 	/* Show drives */
 	FiosGetDrives(file_list);
-
-	file_list.shrink_to_fit();
 }
 
 /**
@@ -741,7 +705,7 @@ FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(p
 	/* Get the save list. */
 	FileList list;
 	FiosFileScanner scanner(SLO_SAVE, proc, list);
-	scanner.Scan(".sav", _autosave_path->c_str(), false);
+	scanner.Scan(".sav", *_autosave_path, false);
 
 	/* Find the number for the most recent save, if any. */
 	if (list.begin() != list.end()) {

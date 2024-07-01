@@ -21,12 +21,13 @@
  * Draw a waypoint
  * @param x coordinate
  * @param y coordinate
- * @param stat_id station id
+ * @param station_class Station class.
+ * @param station_type Station type within class.
  * @param railtype RailType to use for
  */
-void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
+void DrawWaypointSprite(int x, int y, StationClassID station_class, uint16_t station_type, RailType railtype)
 {
-	if (!DrawStationTile(x, y, railtype, AXIS_X, STAT_CLASS_WAYP, stat_id)) {
+	if (!DrawStationTile(x, y, railtype, AXIS_X, station_class, station_type)) {
 		StationPickerDrawSprite(x, y, STATION_WAYPOINT, railtype, INVALID_ROADTYPE, AXIS_X);
 	}
 }
@@ -36,6 +37,10 @@ void Waypoint::GetTileArea(TileArea *ta, StationType type) const
 	switch (type) {
 		case STATION_WAYPOINT:
 			*ta = this->train_station;
+			return;
+
+		case STATION_ROADWAYPOINT:
+			*ta = this->road_waypoint_area;
 			return;
 
 		case STATION_BUOY:

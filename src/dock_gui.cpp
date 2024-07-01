@@ -67,14 +67,14 @@ void CcPlaySound_CONSTRUCTION_WATER(Commands, const CommandCost &result, TileInd
  */
 static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = nullptr)
 {
-	int z;
-	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from, &z));
+	auto [slope, z] = GetTileSlopeZ(tile_from);
+	DiagDirection dir = GetInclinedSlopeDirection(slope);
 
 	/* If the direction isn't right, just return the next tile so the command
 	 * complains about the wrong slope instead of the ends not matching up.
 	 * Make sure the coordinate is always a valid tile within the map, so we
 	 * don't go "off" the map. That would cause the wrong error message. */
-	if (!IsValidDiagDirection(dir)) return TILE_ADDXY(tile_from, TileX(tile_from) > 2 ? -1 : 1, 0);
+	if (!IsValidDiagDirection(dir)) return TileAddXY(tile_from, TileX(tile_from) > 2 ? -1 : 1, 0);
 
 	/* Direction the aqueduct is built to. */
 	TileIndexDiff offset = TileOffsByDiagDir(ReverseDiagDir(dir));
@@ -83,7 +83,7 @@ static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = n
 
 	TileIndex endtile = tile_from;
 	for (int length = 0; IsValidTile(endtile) && TileX(endtile) != 0 && TileY(endtile) != 0; length++) {
-		endtile = TILE_ADD(endtile, offset);
+		endtile = TileAdd(endtile, offset);
 
 		if (length > max_length) break;
 
@@ -100,7 +100,7 @@ static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = n
 struct BuildDocksToolbarWindow : Window {
 	DockToolbarWidgets last_clicked_widget; ///< Contains the last widget that has been clicked on this toolbar.
 
-	BuildDocksToolbarWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	BuildDocksToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->last_clicked_widget = WID_DT_INVALID;
 		this->InitNested(window_number);
@@ -344,11 +344,11 @@ static constexpr NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _build_docks_toolbar_desc(__FILE__, __LINE__,
+static WindowDesc _build_docks_toolbar_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_water", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_build_docks_toolbar_widgets), std::end(_nested_build_docks_toolbar_widgets),
+	_nested_build_docks_toolbar_widgets,
 	&BuildDocksToolbarWindow::hotkeys
 );
 
@@ -364,7 +364,7 @@ Window *ShowBuildDocksToolbar()
 	if (!Company::IsValidID(_local_company)) return nullptr;
 
 	CloseWindowByClass(WC_BUILD_TOOLBAR);
-	return AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_toolbar_desc, TRANSPORT_WATER);
+	return AllocateWindowDescFront<BuildDocksToolbarWindow>(_build_docks_toolbar_desc, TRANSPORT_WATER);
 }
 
 /**
@@ -388,11 +388,11 @@ static constexpr NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
 };
 
 /** Window definition for the build docks in scenario editor window. */
-static WindowDesc _build_docks_scen_toolbar_desc(__FILE__, __LINE__,
+static WindowDesc _build_docks_scen_toolbar_desc(
 	WDP_AUTO, "toolbar_water_scen", 0, 0,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_build_docks_scen_toolbar_widgets), std::end(_nested_build_docks_scen_toolbar_widgets)
+	_nested_build_docks_scen_toolbar_widgets
 );
 
 /**
@@ -402,7 +402,7 @@ static WindowDesc _build_docks_scen_toolbar_desc(__FILE__, __LINE__,
  */
 Window *ShowBuildDocksScenToolbar()
 {
-	return AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_scen_toolbar_desc, TRANSPORT_WATER);
+	return AllocateWindowDescFront<BuildDocksToolbarWindow>(_build_docks_scen_toolbar_desc, TRANSPORT_WATER);
 }
 
 /** Widget numbers of the build-dock GUI. */
@@ -416,7 +416,7 @@ enum BuildDockStationWidgets {
 
 struct BuildDocksStationWindow : public PickerWindowBase {
 public:
-	BuildDocksStationWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	BuildDocksStationWindow(WindowDesc &desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->InitNested(TRANSPORT_WATER);
 		this->LowerWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
@@ -498,16 +498,16 @@ static constexpr NWidgetPart _nested_build_dock_station_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _build_dock_station_desc(__FILE__, __LINE__,
+static WindowDesc _build_dock_station_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_build_dock_station_widgets), std::end(_nested_build_dock_station_widgets)
+	_nested_build_dock_station_widgets
 );
 
 static void ShowBuildDockStationPicker(Window *parent)
 {
-	new BuildDocksStationWindow(&_build_dock_station_desc, parent);
+	new BuildDocksStationWindow(_build_dock_station_desc, parent);
 }
 
 struct BuildDocksDepotWindow : public PickerWindowBase {
@@ -522,20 +522,20 @@ private:
 	}
 
 public:
-	BuildDocksDepotWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	BuildDocksDepotWindow(WindowDesc &desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->InitNested(TRANSPORT_WATER);
 		this->LowerWidget(WID_BDD_X + _ship_depot_direction);
 		UpdateDocksDirection();
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_BDD_X:
 			case WID_BDD_Y:
-				size->width  = ScaleGUITrad(96) + WidgetDimensions::scaled.fullbevel.Horizontal();
-				size->height = ScaleGUITrad(64) + WidgetDimensions::scaled.fullbevel.Vertical();
+				size.width  = ScaleGUITrad(96) + WidgetDimensions::scaled.fullbevel.Horizontal();
+				size.height = ScaleGUITrad(64) + WidgetDimensions::scaled.fullbevel.Vertical();
 				break;
 		}
 	}
@@ -587,23 +587,23 @@ static constexpr NWidgetPart _nested_build_docks_depot_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BDD_BACKGROUND),
 		NWidget(NWID_HORIZONTAL_LTR), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0), SetPIPRatio(1, 0, 1), SetPadding(WidgetDimensions::unscaled.picker),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BDD_X), SetMinimalSize(98, 66), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BDD_Y), SetMinimalSize(98, 66), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BDD_X), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BDD_Y), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
 };
 
-static WindowDesc _build_docks_depot_desc(__FILE__, __LINE__,
+static WindowDesc _build_docks_depot_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_build_docks_depot_widgets), std::end(_nested_build_docks_depot_widgets)
+	_nested_build_docks_depot_widgets
 );
 
 
 static void ShowBuildDocksDepotPicker(Window *parent)
 {
-	new BuildDocksDepotWindow(&_build_docks_depot_desc, parent);
+	new BuildDocksDepotWindow(_build_docks_depot_desc, parent);
 }
 
 

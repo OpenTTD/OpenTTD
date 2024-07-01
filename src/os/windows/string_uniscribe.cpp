@@ -74,7 +74,7 @@ public:
 	class UniscribeVisualRun : public ParagraphLayouter::VisualRun {
 	private:
 		std::vector<GlyphID> glyphs;
-		std::vector<Point> positions;
+		std::vector<Position> positions;
 		std::vector<WORD> char_to_glyph;
 
 		int start_pos;
@@ -88,9 +88,9 @@ public:
 		UniscribeVisualRun(const UniscribeRun &range, int x);
 		UniscribeVisualRun(UniscribeVisualRun &&other) noexcept;
 
-		const std::vector<GlyphID> &GetGlyphs() const override { return this->glyphs; }
-		const std::vector<Point> &GetPositions() const override { return this->positions; }
-		const std::vector<int> &GetGlyphToCharMap() const override;
+		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
+		std::span<const Position> GetPositions() const override { return this->positions; }
+		std::span<const int> GetGlyphToCharMap() const override;
 
 		const Font *GetFont() const override { return this->font;  }
 		int GetLeading() const override { return this->font->fc->GetHeight(); }
@@ -113,7 +113,7 @@ public:
 		}
 	};
 
-	UniscribeParagraphLayout(std::vector<UniscribeRun> &ranges, const UniscribeParagraphLayoutFactory::CharType *buffer) : text_buffer(buffer), ranges(ranges)
+	UniscribeParagraphLayout(std::vector<UniscribeRun> &&ranges, const UniscribeParagraphLayoutFactory::CharType *buffer) : text_buffer(buffer), ranges(std::move(ranges))
 	{
 		this->Reflow();
 	}
@@ -302,7 +302,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 			/* Add a range that spans the intersection of the remaining item and font run. */
 			int stop_pos = std::min(i.first, (cur_item + 1)->iCharPos);
 			assert(stop_pos - cur_pos > 0);
-			ranges.push_back(UniscribeRun(cur_pos, stop_pos - cur_pos, i.second, cur_item->a));
+			ranges.emplace_back(cur_pos, stop_pos - cur_pos, i.second, cur_item->a);
 
 			/* Shape the range. */
 			if (!UniscribeShapeRun(buff, ranges.back())) {
@@ -315,7 +315,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 		}
 	}
 
-	return new UniscribeParagraphLayout(ranges, buff);
+	return new UniscribeParagraphLayout(std::move(ranges), buff);
 }
 
 /* virtual */ std::unique_ptr<const ParagraphLayouter::Line> UniscribeParagraphLayout::NextLine(int max_width)
@@ -405,7 +405,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	if (FAILED(ScriptLayout((int)bidi_level.size(), &bidi_level[0], &vis_to_log[0], nullptr))) return nullptr;
 
 	/* Create line. */
-	std::unique_ptr<UniscribeLine> line(new UniscribeLine());
+	std::unique_ptr<UniscribeLine> line = std::make_unique<UniscribeLine>();
 
 	int cur_pos = 0;
 	for (std::vector<INT>::iterator l = vis_to_log.begin(); l != vis_to_log.end(); l++) {
@@ -474,16 +474,15 @@ int UniscribeParagraphLayout::UniscribeLine::GetWidth() const
 UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(const UniscribeRun &range, int x) : glyphs(range.ft_glyphs), char_to_glyph(range.char_to_glyph), start_pos(range.pos), total_advance(range.total_advance), font(range.font)
 {
 	this->num_glyphs = (int)glyphs.size();
-	this->positions.reserve(this->num_glyphs + 1);
+	this->positions.reserve(this->num_glyphs);
 
 	int advance = x;
 	for (int i = 0; i < this->num_glyphs; i++) {
-		this->positions.emplace_back(range.offsets[i].du + advance, range.offsets[i].dv);
+		int x_advance = range.advances[i];
+		this->positions.emplace_back(range.offsets[i].du + advance, range.offsets[i].du + advance + x_advance - 1, range.offsets[i].dv);
 
-		advance += range.advances[i];
+		advance += x_advance;
 	}
-	/* End-of-run position. */
-	this->positions.emplace_back(advance, 0);
 }
 
 UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(UniscribeVisualRun&& other) noexcept
@@ -493,7 +492,7 @@ UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(UniscribeVisual
 {
 }
 
-const std::vector<int> &UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() const
+std::span<const int> UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() const
 {
 	if (this->glyph_to_char.empty()) {
 		this->glyph_to_char.resize(this->GetGlyphCount());

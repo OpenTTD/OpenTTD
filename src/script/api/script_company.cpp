@@ -32,7 +32,7 @@
 {
 	if (company == COMPANY_SELF) {
 		if (!::Company::IsValidID(_current_company)) return COMPANY_INVALID;
-		return (CompanyID)((byte)_current_company);
+		return (CompanyID)((uint8_t)_current_company);
 	}
 
 	return ::Company::IsValidID(company) ? company : COMPANY_INVALID;

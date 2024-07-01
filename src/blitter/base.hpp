@@ -31,7 +31,7 @@ public:
 	/** Parameters related to blitting. */
 	struct BlitterParams {
 		const void *sprite; ///< Pointer to the sprite how ever the encoder stored it
-		const byte *remap;  ///< XXX -- Temporary storage for remap array
+		const uint8_t *remap;  ///< XXX -- Temporary storage for remap array
 
 		int skip_left;      ///< How much pixels of the source to skip on the left (based on zoom of dst)
 		int skip_top;       ///< How much pixels of the source to skip on the top (based on zoom of dst)
@@ -197,7 +197,7 @@ public:
 	/**
 	 * Get the name of the blitter, the same as the Factory-instance returns.
 	 */
-	virtual const char *GetName() = 0;
+	virtual std::string_view GetName() = 0;
 
 	/**
 	 * Post resize event

@@ -168,7 +168,7 @@ void BaseStation::PostDestructor(size_t)
 	InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 }
 
-void BaseStation::SetRoadStopTileData(TileIndex tile, byte data, bool animation)
+void BaseStation::SetRoadStopTileData(TileIndex tile, uint8_t data, bool animation)
 {
 	for (RoadStopTileData &tile_data : this->custom_roadstop_tile_data) {
 		if (tile_data.tile == tile) {
@@ -327,13 +327,15 @@ static uint GetTileCatchmentRadius(TileIndex tile, const Station *st)
 
 			default: NOT_REACHED();
 			case STATION_BUOY:
-			case STATION_WAYPOINT: return CA_NONE;
+			case STATION_WAYPOINT:
+			case STATION_ROADWAYPOINT: return CA_NONE;
 		}
 	} else {
 		switch (GetStationType(tile)) {
 			default:               return CA_UNMODIFIED;
 			case STATION_BUOY:
-			case STATION_WAYPOINT: return CA_NONE;
+			case STATION_WAYPOINT:
+			case STATION_ROADWAYPOINT: return CA_NONE;
 		}
 	}
 }
@@ -424,12 +426,24 @@ void Station::RemoveIndustryToDeliver(Industry *ind)
 
 
 /**
- * Remove this station from the nearby stations lists of all towns and industries.
+ * Remove this station from the nearby stations lists of nearby towns and industries.
  */
 void Station::RemoveFromAllNearbyLists()
 {
-	for (Town *t : Town::Iterate()) { t->stations_near.erase(this); }
-	for (Industry *i : Industry::Iterate()) { i->stations_near.erase(this); }
+	std::set<TownID> towns;
+	std::set<IndustryID> industries;
+
+	for (const auto &tile : this->catchment_tiles) {
+		TileType type = GetTileType(tile);
+		if (type == MP_HOUSE) {
+			towns.insert(GetTownIndex(tile));
+		} else if (type == MP_INDUSTRY) {
+			industries.insert(GetIndustryIndex(tile));
+		}
+	}
+
+	for (const TownID &townid : towns) { Town::Get(townid)->stations_near.erase(this); }
+	for (const IndustryID &industryid : industries) { Industry::Get(industryid)->stations_near.erase(this); }
 }
 
 /**
@@ -601,7 +615,7 @@ CommandCost StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRect
 	if (mode == ADD_FORCE || (w <= _settings_game.station.station_spread && h <= _settings_game.station.station_spread)) {
 		/* Important when the old rect is completely inside the new rect, resp. the old one was empty. */
 		CommandCost ret = this->BeforeAddTile(tile, mode);
-		if (ret.Succeeded()) ret = this->BeforeAddTile(TILE_ADDXY(tile, w - 1, h - 1), mode);
+		if (ret.Succeeded()) ret = this->BeforeAddTile(TileAddXY(tile, w - 1, h - 1), mode);
 		return ret;
 	}
 	return CommandCost();
@@ -682,7 +696,7 @@ bool StationRect::AfterRemoveRect(BaseStation *st, TileArea ta)
 	assert(this->PtInExtendedRect(TileX(ta.tile) + ta.w - 1, TileY(ta.tile) + ta.h - 1));
 
 	bool empty = this->AfterRemoveTile(st, ta.tile);
-	if (ta.w != 1 || ta.h != 1) empty = empty || this->AfterRemoveTile(st, TILE_ADDXY(ta.tile, ta.w - 1, ta.h - 1));
+	if (ta.w != 1 || ta.h != 1) empty = empty || this->AfterRemoveTile(st, TileAddXY(ta.tile, ta.w - 1, ta.h - 1));
 	return empty;
 }
 

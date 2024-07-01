@@ -75,7 +75,7 @@ public:
 
 void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet &, NetworkAddress &client_addr)
 {
-	Packet packet(PACKET_UDP_SERVER_RESPONSE);
+	Packet packet(this, PACKET_UDP_SERVER_RESPONSE);
 	this->SendPacket(packet, client_addr);
 
 	Debug(net, 7, "Queried from {}", client_addr.GetHostname());
@@ -104,7 +104,7 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 	for (NetworkAddress &addr : _broadcast_list) {
 		Debug(net, 5, "Broadcasting to {}", addr.GetHostname());
 
-		Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
+		Packet p(socket, PACKET_UDP_CLIENT_FIND_SERVER);
 		socket->SendPacket(p, addr, true, true);
 	}
 }

@@ -20,6 +20,8 @@ class ScriptBridge : public ScriptObject {
 public:
 	/**
 	 * All bridge related error messages.
+	 *
+	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
 		/** Base for bridge related errors */

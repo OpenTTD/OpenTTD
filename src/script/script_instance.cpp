@@ -344,7 +344,7 @@ ScriptLogTypes::LogData &ScriptInstance::GetLogData()
  *  - null:    No data.
  */
 
-static byte _script_sl_byte; ///< Used as source/target by the script saveload code to store/load a single byte.
+static uint8_t _script_sl_byte; ///< Used as source/target by the script saveload code to store/load a single byte.
 
 /** SaveLoad array that saves/loads exactly one byte. */
 static const SaveLoad _script_byte[] = {
@@ -386,7 +386,7 @@ static const SaveLoad _script_byte[] = {
 				return false;
 			}
 			if (!test) {
-				_script_sl_byte = (byte)len;
+				_script_sl_byte = (uint8_t)len;
 				SlObject(nullptr, _script_byte);
 				SlCopy(const_cast<char *>(buf), len, SLE_CHAR);
 			}

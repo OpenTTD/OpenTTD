@@ -43,7 +43,7 @@
 
 	Game::frame_counter++;
 
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company);
 	cur_company.Change(OWNER_DEITY);
 	Game::instance->GameLoop();
 	cur_company.Restore();
@@ -69,7 +69,7 @@
 	}
 }
 
-/* static */ void Game::StartNew(bool deviate)
+/* static */ void Game::StartNew()
 {
 	if (Game::instance != nullptr) return;
 
@@ -83,10 +83,9 @@
 	GameInfo *info = config->GetInfo();
 	if (info == nullptr) return;
 
-	if (deviate) config->AddRandomDeviation(OWNER_DEITY);
 	config->AnchorUnchangeableSettings();
 
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company);
 	cur_company.Change(OWNER_DEITY);
 
 	Game::info = info;
@@ -102,7 +101,7 @@
 
 /* static */ void Game::Uninitialize(bool keepConfig)
 {
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company);
 
 	delete Game::instance;
 	Game::instance = nullptr;
@@ -162,7 +161,7 @@
 	}
 
 	/* Queue the event */
-	Backup<CompanyID> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_DEITY);
 	Game::instance->InsertEvent(event);
 	cur_company.Restore();
 
@@ -212,7 +211,7 @@
 /* static */ void Game::Save()
 {
 	if (Game::instance != nullptr && (!_networking || _network_server)) {
-		Backup<CompanyID> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, OWNER_DEITY);
 		Game::instance->Save();
 		cur_company.Restore();
 	} else {

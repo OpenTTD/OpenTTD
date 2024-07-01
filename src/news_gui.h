@@ -16,6 +16,6 @@ void ShowLastNewsMessage();
 void ShowMessageHistory();
 bool HideActiveNewsMessage();
 
-extern NewsItem *_latest_news;
+const NewsContainer &GetNews();
 
 #endif /* NEWS_GUI_H */

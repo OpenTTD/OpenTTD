@@ -388,7 +388,6 @@ static const char *GetDecimalSeparator()
  * Format a number into a string.
  * @param builder   the string builder to write to
  * @param number    the number to write down
- * @param last      the last element in the buffer
  * @param separator the thousands-separator to use
  */
 static void FormatNumber(StringBuilder &builder, int64_t number, const char *separator)
@@ -542,7 +541,7 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 	}
 
 	const char *separator = _settings_game.locale.digit_group_separator_currency.c_str();
-	if (StrEmpty(separator)) separator = _currency->separator.c_str();
+	if (StrEmpty(separator)) separator = GetCurrency().separator.c_str();
 	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator_currency;
 	FormatNumber(builder, number, separator);
 	if (number_str != STR_NULL) {
@@ -690,11 +689,11 @@ static int DeterminePluralForm(int64_t count, int plural_form)
 static const char *ParseStringChoice(const char *b, uint form, StringBuilder &builder)
 {
 	/* <NUM> {Length of each string} {each string} */
-	uint n = (byte)*b++;
+	uint n = (uint8_t)*b++;
 	uint pos, i, mypos = 0;
 
 	for (i = pos = 0; i != n; i++) {
-		uint len = (byte)*b++;
+		uint len = (uint8_t)*b++;
 		if (i == form) mypos = pos;
 		pos += len;
 	}
@@ -847,7 +846,7 @@ static const Units _units_time_years_or_minutes[] = {
  */
 static const Units GetVelocityUnits(VehicleType type)
 {
-	byte setting = (type == VEH_SHIP || type == VEH_AIRCRAFT) ? _settings_game.locale.units_velocity_nautical : _settings_game.locale.units_velocity;
+	uint8_t setting = (type == VEH_SHIP || type == VEH_AIRCRAFT) ? _settings_game.locale.units_velocity_nautical : _settings_game.locale.units_velocity;
 
 	assert(setting < lengthof(_units_velocity_calendar));
 	assert(setting < lengthof(_units_velocity_realtime));
@@ -1064,7 +1063,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 				case SCC_GENDER_LIST: { // {G 0 Der Die Das}
 					/* First read the meta data from the language file. */
-					size_t offset = orig_offset + (byte)*str++;
+					size_t offset = orig_offset + (uint8_t)*str++;
 					int gender = 0;
 					if (!dry_run && args.GetTypeAtOffset(offset) != 0) {
 						/* Now we need to figure out what text to resolve, i.e.
@@ -1087,7 +1086,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						const char *s = buffer.c_str();
 						char32_t c = Utf8Consume(&s);
 						/* Does this string have a gender, if so, set it */
-						if (c == SCC_GENDER_INDEX) gender = (byte)s[0];
+						if (c == SCC_GENDER_INDEX) gender = (uint8_t)s[0];
 					}
 					str = ParseStringChoice(str, gender, builder);
 					break;
@@ -1106,30 +1105,30 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 				case SCC_PLURAL_LIST: { // {P}
 					int plural_form = *str++;          // contains the plural form for this string
-					size_t offset = orig_offset + (byte)*str++;
+					size_t offset = orig_offset + (uint8_t)*str++;
 					int64_t v = args.GetParam(offset); // contains the number that determines plural
 					str = ParseStringChoice(str, DeterminePluralForm(v, plural_form), builder);
 					break;
 				}
 
 				case SCC_ARG_INDEX: { // Move argument pointer
-					args.SetOffset(orig_offset + (byte)*str++);
+					args.SetOffset(orig_offset + (uint8_t)*str++);
 					break;
 				}
 
 				case SCC_SET_CASE: { // {SET_CASE}
 					/* This is a pseudo command, it's outputted when someone does {STRING.ack}
 					 * The modifier is added to all subsequent GetStringWithArgs that accept the modifier. */
-					next_substr_case_index = (byte)*str++;
+					next_substr_case_index = (uint8_t)*str++;
 					break;
 				}
 
 				case SCC_SWITCH_CASE: { // {Used to implement case switching}
 					/* <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
 					 * Each LEN is printed using 2 bytes in big endian order. */
-					uint num = (byte)*str++;
+					uint num = (uint8_t)*str++;
 					while (num) {
-						if ((byte)str[0] == case_index) {
+						if ((uint8_t)str[0] == case_index) {
 							/* Found the case, adjust str pointer and continue */
 							str += 3;
 							break;
@@ -1324,11 +1323,11 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				}
 
 				case SCC_CURRENCY_SHORT: // {CURRENCY_SHORT}
-					FormatGenericCurrency(builder, _currency, args.GetNextParameter<int64_t>(), true);
+					FormatGenericCurrency(builder, &GetCurrency(), args.GetNextParameter<int64_t>(), true);
 					break;
 
 				case SCC_CURRENCY_LONG: // {CURRENCY_LONG}
-					FormatGenericCurrency(builder, _currency, args.GetNextParameter<int64_t>(), false);
+					FormatGenericCurrency(builder, &GetCurrency(), args.GetNextParameter<int64_t>(), false);
 					break;
 
 				case SCC_DATE_TINY: // {DATE_TINY}
@@ -1540,7 +1539,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						auto tmp_params = MakeParameters(g->name);
 						GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 					} else {
-						auto tmp_params = MakeParameters(g->index);
+						auto tmp_params = MakeParameters(g->number);
 						GetStringWithArgs(builder, STR_FORMAT_GROUP_NAME, tmp_params);
 					}
 					break;
@@ -1802,55 +1801,49 @@ static const char _initial_name_letters[] = {
 	'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W',
 };
 
-static void GenAndCoName(StringBuilder &builder, uint32_t arg)
+static std::span<const char * const> GetSurnameOptions()
 {
-	const char * const *base;
-	uint num;
+	if (_settings_game.game_creation.landscape == LT_TOYLAND) return _silly_surname_list;
+	return _surname_list;
+}
 
-	if (_settings_game.game_creation.landscape == LT_TOYLAND) {
-		base = _silly_surname_list;
-		num  = lengthof(_silly_surname_list);
-	} else {
-		base = _surname_list;
-		num  = lengthof(_surname_list);
-	}
+/**
+ * Get the surname of the president with the given seed.
+ * @param seed The seed the surname was generated from.
+ * @return The surname.
+ */
+static const char *GetSurname(uint32_t seed)
+{
+	auto surname_options = GetSurnameOptions();
+	return surname_options[surname_options.size() * GB(seed, 16, 8) >> 8];
+}
 
-	builder += base[num * GB(arg, 16, 8) >> 8];
+static void GenAndCoName(StringBuilder &builder, uint32_t seed)
+{
+	builder += GetSurname(seed);
 	builder += " & Co.";
 }
 
-static void GenPresidentName(StringBuilder &builder, uint32_t x)
+static void GenPresidentName(StringBuilder &builder, uint32_t seed)
 {
-	char initial[] = "?. ";
-	const char * const *base;
-	uint num;
-	uint i;
+	builder += _initial_name_letters[std::size(_initial_name_letters) * GB(seed, 0, 8) >> 8];
+	builder += ". ";
 
-	initial[0] = _initial_name_letters[sizeof(_initial_name_letters) * GB(x, 0, 8) >> 8];
-	builder += initial;
-
-	i = (sizeof(_initial_name_letters) + 35) * GB(x, 8, 8) >> 8;
-	if (i < sizeof(_initial_name_letters)) {
-		initial[0] = _initial_name_letters[i];
-		builder += initial;
+	/* The second initial is optional. */
+	size_t index = (std::size(_initial_name_letters) + 35) * GB(seed, 8, 8) >> 8;
+	if (index < std::size(_initial_name_letters)) {
+		builder += _initial_name_letters[index];
+		builder += ". ";
 	}
 
-	if (_settings_game.game_creation.landscape == LT_TOYLAND) {
-		base = _silly_surname_list;
-		num  = lengthof(_silly_surname_list);
-	} else {
-		base = _surname_list;
-		num  = lengthof(_surname_list);
-	}
-
-	builder += base[num * GB(x, 16, 8) >> 8];
+	builder += GetSurname(seed);
 }
 
 static void GetSpecialNameString(StringBuilder &builder, int ind, StringParameters &args)
 {
 	switch (ind) {
 		case 1: // not used
-			builder += _silly_company_names[std::min<uint>(args.GetNextParameter<uint16_t>(), lengthof(_silly_company_names) - 1)];
+			builder += _silly_company_names[std::min<size_t>(args.GetNextParameter<uint16_t>(), std::size(_silly_company_names) - 1)];
 			return;
 
 		case 2: // used for Foobar & Co company names
@@ -1911,7 +1904,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 {
 	/* Current language pack */
 	size_t len = 0;
-	std::unique_ptr<LanguagePack, LanguagePackDeleter> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(lang->file.string(), len, 1U << 20).release()));
+	std::unique_ptr<LanguagePack, LanguagePackDeleter> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(FS2OTTD(lang->file), len, 1U << 20).release()));
 	if (!lang_pack) return false;
 
 	/* End of read data (+ terminating zero added in ReadFileToMem()) */
@@ -1939,17 +1932,17 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 
 	/* Fill offsets */
 	char *s = lang_pack->data;
-	len = (byte)*s++;
+	len = (uint8_t)*s++;
 	for (uint i = 0; i < count; i++) {
 		if (s + len >= end) return false;
 
 		if (len >= 0xC0) {
-			len = ((len & 0x3F) << 8) + (byte)*s++;
+			len = ((len & 0x3F) << 8) + (uint8_t)*s++;
 			if (s + len >= end) return false;
 		}
 		offs[i] = s;
 		s += len;
-		len = (byte)*s;
+		len = (uint8_t)*s;
 		*s++ = '\0'; // zero terminate the string
 	}
 
@@ -1960,7 +1953,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 
 	_current_language = lang;
 	_current_text_dir = (TextDirection)_current_language->text_dir;
-	_config_language_file = _current_language->file.filename().string();
+	_config_language_file = FS2OTTD(_current_language->file.filename());
 	SetCurrentGrfLangID(_current_language->newgrflangid);
 
 #ifdef _WIN32
@@ -2041,7 +2034,7 @@ const char *GetCurrentLocale(const char *param);
  * @param newgrflangid NewGRF languages ID to check.
  * @return The language's metadata, or nullptr if it is not known.
  */
-const LanguageMetadata *GetLanguage(byte newgrflangid)
+const LanguageMetadata *GetLanguage(uint8_t newgrflangid)
 {
 	for (const LanguageMetadata &lang : _languages) {
 		if (newgrflangid == lang.newgrflangid) return &lang;
@@ -2056,9 +2049,9 @@ const LanguageMetadata *GetLanguage(byte newgrflangid)
  * @param hdr  the place to write the header information to
  * @return true if and only if the language file is of a compatible version
  */
-static bool GetLanguageFileHeader(const char *file, LanguagePackHeader *hdr)
+static bool GetLanguageFileHeader(const std::string &file, LanguagePackHeader *hdr)
 {
-	FILE *f = fopen(file, "rb");
+	FILE *f = fopen(file.c_str(), "rb");
 	if (f == nullptr) return false;
 
 	size_t read = fread(hdr, sizeof(*hdr), 1, f);
@@ -2080,29 +2073,25 @@ static bool GetLanguageFileHeader(const char *file, LanguagePackHeader *hdr)
  */
 static void FillLanguageList(const std::string &path)
 {
-	DIR *dir = ttd_opendir(path.c_str());
-	if (dir != nullptr) {
-		struct dirent *dirent;
-		while ((dirent = readdir(dir)) != nullptr) {
-			std::string d_name = FS2OTTD(dirent->d_name);
-			const char *extension = strrchr(d_name.c_str(), '.');
+	std::error_code error_code;
+	for (const auto &dir_entry : std::filesystem::directory_iterator(OTTD2FS(path), error_code)) {
+		if (!dir_entry.is_regular_file()) continue;
+		if (dir_entry.path().extension() != ".lng") continue;
 
-			/* Not a language file */
-			if (extension == nullptr || strcmp(extension, ".lng") != 0) continue;
+		LanguageMetadata lmd;
+		lmd.file = dir_entry.path();
 
-			LanguageMetadata lmd;
-			lmd.file = path + d_name;
-
-			/* Check whether the file is of the correct version */
-			if (!GetLanguageFileHeader(lmd.file.string().c_str(), &lmd)) {
-				Debug(misc, 3, "{} is not a valid language file", lmd.file);
-			} else if (GetLanguage(lmd.newgrflangid) != nullptr) {
-				Debug(misc, 3, "{}'s language ID is already known", lmd.file);
-			} else {
-				_languages.push_back(lmd);
-			}
+		/* Check whether the file is of the correct version */
+		if (!GetLanguageFileHeader(FS2OTTD(lmd.file), &lmd)) {
+			Debug(misc, 3, "{} is not a valid language file", FS2OTTD(lmd.file));
+		} else if (GetLanguage(lmd.newgrflangid) != nullptr) {
+			Debug(misc, 3, "{}'s language ID is already known", FS2OTTD(lmd.file));
+		} else {
+			_languages.push_back(lmd);
 		}
-		closedir(dir);
+	}
+	if (error_code) {
+		Debug(misc, 9, "Unable to open directory {}: {}", path, error_code.message());
 	}
 }
 
@@ -2130,7 +2119,7 @@ void InitializeLanguagePacks()
 		/* We are trying to find a default language. The priority is by
 		 * configuration file, local environment and last, if nothing found,
 		 * English. */
-		if (_config_language_file == lng.file.filename()) {
+		if (_config_language_file == FS2OTTD(lng.file.filename())) {
 			chosen_language = &lng;
 			break;
 		}
@@ -2150,7 +2139,7 @@ void InitializeLanguagePacks()
 		chosen_language = (language_fallback != nullptr) ? language_fallback : en_GB_fallback;
 	}
 
-	if (!ReadLanguagePack(chosen_language)) UserError("Can't read language pack '{}'", chosen_language->file);
+	if (!ReadLanguagePack(chosen_language)) UserError("Can't read language pack '{}'", FS2OTTD(chosen_language->file));
 }
 
 /**
@@ -2169,23 +2158,20 @@ const char *GetCurrentLanguageIsoCode()
 bool MissingGlyphSearcher::FindMissingGlyphs()
 {
 	InitFontCache(this->Monospace());
-	const Sprite *question_mark[FS_END];
-
-	for (FontSize size = this->Monospace() ? FS_MONO : FS_BEGIN; size < (this->Monospace() ? FS_END : FS_MONO); size++) {
-		question_mark[size] = GetGlyph(size, '?');
-	}
 
 	this->Reset();
 	for (auto text = this->NextString(); text.has_value(); text = this->NextString()) {
 		auto src = text->cbegin();
 
 		FontSize size = this->DefaultSize();
+		FontCache *fc = FontCache::Get(size);
 		while (src != text->cend()) {
 			char32_t c = Utf8Consume(src);
 
 			if (c >= SCC_FIRST_FONT && c <= SCC_LAST_FONT) {
 				size = (FontSize)(c - SCC_FIRST_FONT);
-			} else if (!IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END) && IsPrintable(c) && !IsTextDirectionChar(c) && c != '?' && GetGlyph(size, c) == question_mark[size]) {
+				fc = FontCache::Get(size);
+			} else if (!IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END) && IsPrintable(c) && !IsTextDirectionChar(c) && fc->MapCharToGlyph(c, false) == 0) {
 				/* The character is printable, but not in the normal font. This is the case we were testing for. */
 				std::string size_name;
 

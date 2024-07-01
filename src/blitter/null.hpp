@@ -18,7 +18,7 @@ public:
 	uint8_t GetScreenDepth() override { return 0; }
 	void Draw(Blitter::BlitterParams *, BlitterMode, ZoomLevel) override {};
 	void DrawColourMappingRect(void *, int, int, PaletteID) override {};
-	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator) override;
+	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override;
 	void *MoveTo(void *, int, int) override { return nullptr; };
 	void SetPixel(void *, int, int, uint8_t) override {};
 	void DrawRect(void *, int, int, uint8_t) override {};
@@ -31,7 +31,7 @@ public:
 	void PaletteAnimate(const Palette &) override { };
 	Blitter::PaletteAnimation UsePaletteAnimation() override { return Blitter::PALETTE_ANIMATION_NONE; };
 
-	const char *GetName() override { return "null"; }
+	std::string_view GetName() override { return "null"; }
 };
 
 /** Factory for the blitter that does nothing. */

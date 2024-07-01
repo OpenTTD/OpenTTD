@@ -73,10 +73,10 @@ public:
 	struct SpriteData {
 		SpriteFlags flags;
 		SpriteInfo infos[ZOOM_LVL_END];
-		byte data[]; ///< Data, all zoomlevels.
+		uint8_t data[]; ///< Data, all zoomlevels.
 	};
 
-	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator);
+	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator);
 };
 
 DECLARE_ENUM_AS_BIT_SET(Blitter_32bppSSE_Base::SpriteFlags);
@@ -88,11 +88,11 @@ public:
 	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last, bool translucent>
 	void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 
-	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator) override {
+	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override {
 		return Blitter_32bppSSE_Base::Encode(sprite, allocator);
 	}
 
-	const char *GetName() override { return "32bpp-sse2"; }
+	std::string_view GetName() override { return "32bpp-sse2"; }
 };
 
 /** Factory for the SSE2 32 bpp blitter (without palette animation). */

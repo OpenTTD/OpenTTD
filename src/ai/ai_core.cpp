@@ -33,14 +33,14 @@
 	return !_networking || (_network_server && _settings_game.ai.ai_in_multiplayer);
 }
 
-/* static */ void AI::StartNew(CompanyID company, bool deviate)
+/* static */ void AI::StartNew(CompanyID company)
 {
 	assert(Company::IsValidID(company));
 
 	/* Clients shouldn't start AIs */
 	if (_networking && !_network_server) return;
 
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company *c = Company::Get(company);
 
 	AIConfig *config = c->ai_config.get();
@@ -56,12 +56,11 @@
 		/* Load default data and store the name in the settings */
 		config->Change(info->GetName(), -1, false);
 	}
-	if (deviate) config->AddRandomDeviation(company);
 	config->AnchorUnchangeableSettings();
 
 	c->ai_info = info;
 	assert(c->ai_instance == nullptr);
-	c->ai_instance = new AIInstance();
+	c->ai_instance = std::make_unique<AIInstance>();
 	c->ai_instance->Initialize(info);
 	c->ai_instance->LoadOnStack(config->GetToLoadData());
 	config->SetToLoadData(nullptr);
@@ -82,7 +81,7 @@
 	assert(_settings_game.difficulty.competitor_speed <= 4);
 	if ((AI::frame_counter & ((1 << (4 - _settings_game.difficulty.competitor_speed)) - 1)) != 0) return;
 
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company);
 	for (const Company *c : Company::Iterate()) {
 		if (c->is_ai) {
 			PerformanceMeasurer framerate((PerformanceElement)(PFE_AI0 + c->index));
@@ -110,11 +109,10 @@
 	if (_networking && !_network_server) return;
 	PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + company));
 
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company *c = Company::Get(company);
 
-	delete c->ai_instance;
-	c->ai_instance = nullptr;
+	c->ai_instance.reset();
 	c->ai_info = nullptr;
 	c->ai_config.reset();
 
@@ -130,7 +128,7 @@
 	 * for the server owner to unpause the script again. */
 	if (_network_dedicated) return;
 
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company::Get(company)->ai_instance->Pause();
 
 	cur_company.Restore();
@@ -138,7 +136,7 @@
 
 /* static */ void AI::Unpause(CompanyID company)
 {
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company::Get(company)->ai_instance->Unpause();
 
 	cur_company.Restore();
@@ -146,7 +144,7 @@
 
 /* static */ bool AI::IsPaused(CompanyID company)
 {
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	bool paused = Company::Get(company)->ai_instance->IsPaused();
 
 	cur_company.Restore();
@@ -215,23 +213,28 @@
 			if (!_settings_game.ai_config[c]->ResetInfo(true)) {
 				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_game.ai_config[c]->GetName());
 				_settings_game.ai_config[c]->Change(std::nullopt);
-				if (Company::IsValidAiID(c)) {
-					/* The code belonging to an already running AI was deleted. We can only do
-					 * one thing here to keep everything sane and that is kill the AI. After
-					 * killing the offending AI we start a random other one in it's place, just
-					 * like what would happen if the AI was missing during loading. */
-					AI::Stop(c);
-					AI::StartNew(c, false);
-				}
-			} else if (Company::IsValidAiID(c)) {
-				/* Update the reference in the Company struct. */
-				Company::Get(c)->ai_info = _settings_game.ai_config[c]->GetInfo();
 			}
 		}
+
 		if (_settings_newgame.ai_config[c] != nullptr && _settings_newgame.ai_config[c]->HasScript()) {
 			if (!_settings_newgame.ai_config[c]->ResetInfo(false)) {
 				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_newgame.ai_config[c]->GetName());
 				_settings_newgame.ai_config[c]->Change(std::nullopt);
+			}
+		}
+
+		if (Company::IsValidAiID(c) && Company::Get(c)->ai_config != nullptr) {
+			AIConfig *config = Company::Get(c)->ai_config.get();
+			if (!config->ResetInfo(true)) {
+				/* The code belonging to an already running AI was deleted. We can only do
+				 * one thing here to keep everything sane and that is kill the AI. After
+				 * killing the offending AI we start a random other one in it's place, just
+				 * like what would happen if the AI was missing during loading. */
+				AI::Stop(c);
+				AI::StartNew(c);
+			} else {
+				/* Update the reference in the Company struct. */
+				Company::Get(c)->ai_info = config->GetInfo();
 			}
 		}
 	}
@@ -255,7 +258,7 @@
 	}
 
 	/* Queue the event */
-	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company);
 	Company::Get(_current_company)->ai_instance->InsertEvent(event);
 	cur_company.Restore();
 
@@ -289,7 +292,7 @@
 
 		/* When doing emergency saving, an AI can be not fully initialised. */
 		if (c->ai_instance != nullptr) {
-			Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+			Backup<CompanyID> cur_company(_current_company, company);
 			c->ai_instance->Save();
 			cur_company.Restore();
 			return;

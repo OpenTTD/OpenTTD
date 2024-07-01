@@ -58,118 +58,6 @@ void OSOpenBrowser(const std::string &url)
 	ShellExecute(GetActiveWindow(), L"open", OTTD2FS(url).c_str(), nullptr, nullptr, SW_SHOWNORMAL);
 }
 
-/* Code below for windows version of opendir/readdir/closedir copied and
- * modified from Jan Wassenberg's GPL implementation posted over at
- * http://www.gamedev.net/community/forums/topic.asp?topic_id=364584&whichpage=1&#2398903 */
-
-struct DIR {
-	HANDLE hFind;
-	/* the dirent returned by readdir.
-	 * note: having only one global instance is not possible because
-	 * multiple independent opendir/readdir sequences must be supported. */
-	dirent ent;
-	WIN32_FIND_DATA fd;
-	/* since opendir calls FindFirstFile, we need a means of telling the
-	 * first call to readdir that we already have a file.
-	 * that's the case iff this is true */
-	bool at_first_entry;
-};
-
-/* suballocator - satisfies most requests with a reusable static instance.
- * this avoids hundreds of alloc/free which would fragment the heap.
- * To guarantee concurrency, we fall back to malloc if the instance is
- * already in use (it's important to avoid surprises since this is such a
- * low-level routine). */
-static DIR _global_dir;
-static LONG _global_dir_is_in_use = false;
-
-static inline DIR *dir_calloc()
-{
-	DIR *d;
-
-	if (InterlockedExchange(&_global_dir_is_in_use, true) == (LONG)true) {
-		d = CallocT<DIR>(1);
-	} else {
-		d = &_global_dir;
-		memset(d, 0, sizeof(*d));
-	}
-	return d;
-}
-
-static inline void dir_free(DIR *d)
-{
-	if (d == &_global_dir) {
-		_global_dir_is_in_use = (LONG)false;
-	} else {
-		free(d);
-	}
-}
-
-DIR *opendir(const wchar_t *path)
-{
-	DIR *d;
-	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // disable 'no-disk' message box
-	DWORD fa = GetFileAttributes(path);
-
-	if ((fa != INVALID_FILE_ATTRIBUTES) && (fa & FILE_ATTRIBUTE_DIRECTORY)) {
-		d = dir_calloc();
-		if (d != nullptr) {
-			std::wstring search_path = path;
-			bool slash = path[wcslen(path) - 1] == '\\';
-
-			/* build search path for FindFirstFile, try not to append additional slashes
-			 * as it throws Win9x off its groove for root directories */
-			if (!slash) search_path += L"\\";
-			search_path += L"*";
-			d->hFind = FindFirstFile(search_path.c_str(), &d->fd);
-
-			if (d->hFind != INVALID_HANDLE_VALUE ||
-					GetLastError() == ERROR_NO_MORE_FILES) { // the directory is empty
-				d->ent.dir = d;
-				d->at_first_entry = true;
-			} else {
-				dir_free(d);
-				d = nullptr;
-			}
-		} else {
-			errno = ENOMEM;
-		}
-	} else {
-		/* path not found or not a directory */
-		d = nullptr;
-		errno = ENOENT;
-	}
-
-	SetErrorMode(sem); // restore previous setting
-	return d;
-}
-
-struct dirent *readdir(DIR *d)
-{
-	DWORD prev_err = GetLastError(); // avoid polluting last error
-
-	if (d->at_first_entry) {
-		/* the directory was empty when opened */
-		if (d->hFind == INVALID_HANDLE_VALUE) return nullptr;
-		d->at_first_entry = false;
-	} else if (!FindNextFile(d->hFind, &d->fd)) { // determine cause and bail
-		if (GetLastError() == ERROR_NO_MORE_FILES) SetLastError(prev_err);
-		return nullptr;
-	}
-
-	/* This entry has passed all checks; return information about it.
-	 * (note: d_name is a pointer; see struct dirent definition) */
-	d->ent.d_name = d->fd.cFileName;
-	return &d->ent;
-}
-
-int closedir(DIR *d)
-{
-	FindClose(d->hFind);
-	dir_free(d);
-	return 0;
-}
-
 bool FiosIsRoot(const std::string &file)
 {
 	return file.size() == 3; // C:\...
@@ -180,7 +68,7 @@ void FiosGetDrives(FileList &file_list)
 	wchar_t drives[256];
 	const wchar_t *s;
 
-	GetLogicalDriveStrings(lengthof(drives), drives);
+	GetLogicalDriveStrings(static_cast<DWORD>(std::size(drives)), drives);
 	for (s = drives; *s != '\0';) {
 		FiosItem *fios = &file_list.emplace_back();
 		fios->type = FIOS_TYPE_DRIVE;
@@ -192,27 +80,15 @@ void FiosGetDrives(FileList &file_list)
 	}
 }
 
-bool FiosIsValidFile(const std::string &, const struct dirent *ent, struct stat *sb)
+bool FiosIsHiddenFile(const std::filesystem::path &path)
 {
-	/* hectonanoseconds between Windows and POSIX epoch */
-	static const int64_t posix_epoch_hns = 0x019DB1DED53E8000LL;
-	const WIN32_FIND_DATA *fd = &ent->dir->fd;
+	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // Disable 'no-disk' message box.
 
-	sb->st_size  = ((uint64_t) fd->nFileSizeHigh << 32) + fd->nFileSizeLow;
-	/* UTC FILETIME to seconds-since-1970 UTC
-	 * we just have to subtract POSIX epoch and scale down to units of seconds.
-	 * http://www.gamedev.net/community/forums/topic.asp?topic_id=294070&whichpage=1&#1860504
-	 * XXX - not entirely correct, since filetimes on FAT aren't UTC but local,
-	 * this won't entirely be correct, but we use the time only for comparison. */
-	sb->st_mtime = (time_t)((*(const uint64_t*)&fd->ftLastWriteTime - posix_epoch_hns) / 1E7);
-	sb->st_mode  = (fd->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)? S_IFDIR : S_IFREG;
+	DWORD attributes = GetFileAttributes(path.c_str());
 
-	return true;
-}
+	SetErrorMode(sem); // Restore previous setting.
 
-bool FiosIsHiddenFile(const struct dirent *ent)
-{
-	return (ent->dir->fd.dwFileAttributes & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM)) != 0;
+	return (attributes & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM)) != 0;
 }
 
 std::optional<uint64_t> FiosGetDiskFreeSpace(const std::string &path)
@@ -259,7 +135,7 @@ void CreateConsole()
 		return;
 	}
 
-#if defined(_MSC_VER) && _MSC_VER >= 1900
+#if defined(_MSC_VER)
 	freopen("CONOUT$", "a", stdout);
 	freopen("CONIN$", "r", stdin);
 	freopen("CONOUT$", "a", stderr);
@@ -400,7 +276,7 @@ void DetermineBasePaths(const char *exe)
 		/* Use the folder of the config file as working directory. */
 		wchar_t config_dir[MAX_PATH];
 		wcsncpy(path, convert_to_fs(_config_file, path, lengthof(path)), lengthof(path));
-		if (!GetFullPathName(path, lengthof(config_dir), config_dir, nullptr)) {
+		if (!GetFullPathName(path, static_cast<DWORD>(std::size(config_dir)), config_dir, nullptr)) {
 			Debug(misc, 0, "GetFullPathName failed ({})", GetLastError());
 			_searchpaths[SP_WORKING_DIR].clear();
 		} else {
@@ -412,13 +288,13 @@ void DetermineBasePaths(const char *exe)
 		}
 	}
 
-	if (!GetModuleFileName(nullptr, path, lengthof(path))) {
+	if (!GetModuleFileName(nullptr, path, static_cast<DWORD>(std::size(path)))) {
 		Debug(misc, 0, "GetModuleFileName failed ({})", GetLastError());
 		_searchpaths[SP_BINARY_DIR].clear();
 	} else {
 		wchar_t exec_dir[MAX_PATH];
-		wcsncpy(path, convert_to_fs(exe, path, lengthof(path)), lengthof(path));
-		if (!GetFullPathName(path, lengthof(exec_dir), exec_dir, nullptr)) {
+		wcsncpy(path, convert_to_fs(exe, path, std::size(path)), std::size(path));
+		if (!GetFullPathName(path, static_cast<DWORD>(std::size(exec_dir)), exec_dir, nullptr)) {
 			Debug(misc, 0, "GetFullPathName failed ({})", GetLastError());
 			_searchpaths[SP_BINARY_DIR].clear();
 		} else {
@@ -530,8 +406,8 @@ const char *GetCurrentLocale(const char *)
 	const LCID userUiLocale = MAKELCID(userUiLang, SORT_DEFAULT);
 
 	char lang[9], country[9];
-	if (GetLocaleInfoA(userUiLocale, LOCALE_SISO639LANGNAME, lang, lengthof(lang)) == 0 ||
-	    GetLocaleInfoA(userUiLocale, LOCALE_SISO3166CTRYNAME, country, lengthof(country)) == 0) {
+	if (GetLocaleInfoA(userUiLocale, LOCALE_SISO639LANGNAME, lang, static_cast<int>(std::size(lang))) == 0 ||
+	    GetLocaleInfoA(userUiLocale, LOCALE_SISO3166CTRYNAME, country, static_cast<int>(std::size(country))) == 0) {
 		/* Unable to retrieve the locale. */
 		return nullptr;
 	}
@@ -557,7 +433,7 @@ void Win32SetCurrentLocaleName(std::string iso_code)
 		}
 	}
 
-	MultiByteToWideChar(CP_UTF8, 0, iso_code.c_str(), -1, _cur_iso_locale, lengthof(_cur_iso_locale));
+	MultiByteToWideChar(CP_UTF8, 0, iso_code.c_str(), -1, _cur_iso_locale, static_cast<int>(std::size(_cur_iso_locale)));
 }
 
 int OTTDStringCompare(std::string_view s1, std::string_view s2)

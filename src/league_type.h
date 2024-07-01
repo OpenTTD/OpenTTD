@@ -11,7 +11,7 @@
 #define LEAGUE_TYPE_H
 
 /** Types of the possible link targets. */
-enum LinkType : byte {
+enum LinkType : uint8_t {
 	LT_NONE = 0,         ///< No link
 	LT_TILE = 1,         ///< Link a tile
 	LT_INDUSTRY = 2,     ///< Link an industry

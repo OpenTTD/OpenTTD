@@ -292,6 +292,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Pozez ob
 ###length 7
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Plene detaloza
@@ -464,7 +465,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Sel
 
 
 
-###length 43
+###length 44
 
 
 # Autosave dropdown
@@ -492,7 +493,9 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 
 
+
 # Custom currency window
+
 
 
 
@@ -626,6 +629,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 ###length 2
 
 
+
 ###length 2
 
 
@@ -732,6 +736,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 
 
+###length 3
+
 ###setting-zero-is-special
 
 
@@ -806,7 +812,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 ###length 3
 
 
-###length 2
 
 
 # Config errors
@@ -881,8 +886,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 
 
 
-# Network set password
-
 # Network company info join/password
 
 # Network chat
@@ -892,7 +895,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Tu sendis tro multa imperi ad la servero
 
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendinta tro multa imperi
 
 # Network related errors
@@ -940,6 +943,9 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 # Rail waypoint construction window
 
 # Rail station construction window
+
+
+
 
 
 
@@ -1599,6 +1605,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro mult
 
 
 
+
 # Specific vehicle errors
 
 
@@ -1701,6 +1708,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

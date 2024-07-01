@@ -20,7 +20,7 @@ bool IsValidLink(Link link);
 typedef Pool<LeagueTableElement, LeagueTableElementID, 64, 64000> LeagueTableElementPool;
 extern LeagueTableElementPool _league_table_element_pool;
 
-typedef Pool<LeagueTable, LeagueTableID, 4, 256> LeagueTablePool;
+typedef Pool<LeagueTable, LeagueTableID, 4, 255> LeagueTablePool;
 extern LeagueTablePool _league_table_pool;
 
 

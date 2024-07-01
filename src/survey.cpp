@@ -166,7 +166,7 @@ void SurveySettings(nlohmann::json &survey, bool skip_if_default)
 	for (auto &table : GenericSettingTables()) {
 		SurveySettingsTable(survey, table, &_settings_game, skip_if_default);
 	}
-	SurveySettingsTable(survey, _currency_settings, &_custom_currency, skip_if_default);
+	SurveySettingsTable(survey, _currency_settings, &GetCustomCurrency(), skip_if_default);
 	SurveySettingsTable(survey, _company_settings, &_settings_client.company, skip_if_default);
 }
 
@@ -219,13 +219,8 @@ void SurveyOpenTTD(nlohmann::json &survey)
 			32
 #endif
 		;
-	survey["endian"] =
-#if (TTD_ENDIAN == TTD_LITTLE_ENDIAN)
-			"little"
-#else
-			"big"
-#endif
-		;
+	if constexpr (std::endian::native == std::endian::little) survey["endian"] = "little";
+	if constexpr (std::endian::native == std::endian::big) survey["endian"] = "big";
 	survey["dedicated_build"] =
 #ifdef DEDICATED
 			"yes"
@@ -233,6 +228,20 @@ void SurveyOpenTTD(nlohmann::json &survey)
 			"no"
 #endif
 		;
+}
+
+/**
+ * Convert game session information to JSON.
+ *
+ * @param survey The JSON object.
+ */
+void SurveyGameSession(nlohmann::json &survey)
+{
+	survey["id"] = _game_session_stats.savegame_id;
+	survey["seconds"] = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - _game_session_stats.start_time).count();
+	if (_game_session_stats.savegame_size.has_value()) {
+		survey["savegame_size"] = _game_session_stats.savegame_size.value();
+	}
 }
 
 /**
@@ -244,7 +253,7 @@ void SurveyConfiguration(nlohmann::json &survey)
 {
 	survey["network"] = _networking ? (_network_server ? "server" : "client") : "no";
 	if (_current_language != nullptr) {
-		survey["language"]["filename"] = _current_language->file.filename().string();
+		survey["language"]["filename"] = FS2OTTD(_current_language->file.filename());
 		survey["language"]["name"] = _current_language->name;
 		survey["language"]["isocode"] = _current_language->isocode;
 	}
@@ -330,7 +339,6 @@ void SurveyCompanies(nlohmann::json &survey)
 void SurveyTimers(nlohmann::json &survey)
 {
 	survey["ticks"] = TimerGameTick::counter;
-	survey["seconds"] = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - _switch_mode_time).count();
 
 	TimerGameEconomy::YearMonthDay economy_ymd = TimerGameEconomy::ConvertDateToYMD(TimerGameEconomy::date);
 	survey["economy"] = fmt::format("{:04}-{:02}-{:02} ({})", economy_ymd.year, economy_ymd.month + 1, economy_ymd.day, TimerGameEconomy::date_fract);

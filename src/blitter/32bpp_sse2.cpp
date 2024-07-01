@@ -20,15 +20,15 @@
 /** Instantiation of the SSE2 32bpp blitter factory. */
 static FBlitter_32bppSSE2 iFBlitter_32bppSSE2;
 
-Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator)
+Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	/* First uint32_t of a line = the number of transparent pixels from the left.
 	 * Second uint32_t of a line = the number of transparent pixels from the right.
 	 * Then all RGBA then all MV.
 	 */
-	ZoomLevel zoom_min = ZOOM_LVL_NORMAL;
-	ZoomLevel zoom_max = ZOOM_LVL_NORMAL;
-	if (sprite[ZOOM_LVL_NORMAL].type != SpriteType::Font) {
+	ZoomLevel zoom_min = ZOOM_LVL_MIN;
+	ZoomLevel zoom_max = ZOOM_LVL_MIN;
+	if (sprite[ZOOM_LVL_MIN].type != SpriteType::Font) {
 		zoom_min = _settings_client.gui.zoom_min;
 		zoom_max = _settings_client.gui.zoom_max;
 		if (zoom_max == zoom_min) zoom_max = ZOOM_LVL_MAX;
@@ -51,11 +51,11 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 		all_sprites_size += rgba_size + mv_size;
 	}
 
-	Sprite *dst_sprite = (Sprite *) allocator(sizeof(Sprite) + sizeof(SpriteData) + all_sprites_size);
-	dst_sprite->height = sprite[ZOOM_LVL_NORMAL].height;
-	dst_sprite->width  = sprite[ZOOM_LVL_NORMAL].width;
-	dst_sprite->x_offs = sprite[ZOOM_LVL_NORMAL].x_offs;
-	dst_sprite->y_offs = sprite[ZOOM_LVL_NORMAL].y_offs;
+	Sprite *dst_sprite = allocator.Allocate<Sprite>(sizeof(Sprite) + sizeof(SpriteData) + all_sprites_size);
+	dst_sprite->height = sprite[ZOOM_LVL_MIN].height;
+	dst_sprite->width  = sprite[ZOOM_LVL_MIN].width;
+	dst_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
+	dst_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
 	memcpy(dst_sprite->data, &sd, sizeof(SpriteData));
 
 	/* Copy colours and determine flags. */
@@ -114,7 +114,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 			(*dst_rgba_line).data = nb_pix_transp;
 
 			Colour *nb_right = dst_rgba_line + 1;
-			dst_rgba_line = (Colour*) ((byte*) dst_rgba_line + sd.infos[z].sprite_line_size);
+			dst_rgba_line = (Colour*) ((uint8_t*) dst_rgba_line + sd.infos[z].sprite_line_size);
 
 			/* Count the number of transparent pixels from the right. */
 			dst_rgba = dst_rgba_line - 1;

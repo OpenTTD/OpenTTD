@@ -57,7 +57,7 @@ public:
 	/**
 	 * Story page element types.
 	 */
-	enum StoryPageElementType : byte {
+	enum StoryPageElementType : uint8_t {
 		SPET_TEXT = ::SPET_TEXT,                     ///< An element that displays a block of text.
 		SPET_LOCATION = ::SPET_LOCATION,             ///< An element that displays a single line of text along with a button to view the referenced location.
 		SPET_GOAL = ::SPET_GOAL,                     ///< An element that displays a goal.
@@ -75,7 +75,7 @@ public:
 	 * Formatting and layout flags for story page buttons.
 	 * The SPBF_FLOAT_LEFT and SPBF_FLOAT_RIGHT flags can not be combined.
 	 */
-	enum StoryPageButtonFlags : byte {
+	enum StoryPageButtonFlags : uint8_t {
 		SPBF_NONE        = ::SPBF_NONE,        ///< No special formatting for button.
 		SPBF_FLOAT_LEFT  = ::SPBF_FLOAT_LEFT,  ///< Button is placed to the left of the following paragraph.
 		SPBF_FLOAT_RIGHT = ::SPBF_FLOAT_RIGHT, ///< Button is placed to the right of the following paragraph.
@@ -84,7 +84,7 @@ public:
 	/**
 	 * Mouse cursors usable by story page buttons.
 	 */
-	enum StoryPageButtonCursor : byte {
+	enum StoryPageButtonCursor : uint8_t {
 		SPBC_MOUSE          = ::SPBC_MOUSE,
 		SPBC_ZZZ            = ::SPBC_ZZZ,
 		SPBC_BUOY           = ::SPBC_BUOY,
@@ -146,7 +146,7 @@ public:
 	 * Colour codes usable for story page button elements.
 	 * Place a colour value in the lowest 8 bits of the \c reference parameter to the button.
 	 */
-	enum StoryPageButtonColour : byte {
+	enum StoryPageButtonColour : uint8_t {
 		SPBC_DARK_BLUE  = ::COLOUR_DARK_BLUE,
 		SPBC_PALE_GREEN = ::COLOUR_PALE_GREEN,
 		SPBC_PINK       = ::COLOUR_PINK,
@@ -203,8 +203,8 @@ public:
 	 * @param reference A reference value to the object that is referred to by some page element types.
 	 *                  When type is SPET_GOAL, this is the goal ID.
 	 *                  When type is SPET_LOCATION, this is the TileIndex.
-	 *                  When type is a button, this is additional parameters for the button,
-	 *                  use the #BuildPushButtonReference, #BuildTileButtonReference, or #BuildVehicleButtonReference functions to make the values.
+	 *                  When type is a button, this is the ID returned by
+	 *                  #MakePushButtonReference, #MakeTileButtonReference, or #MakeVehicleButtonReference.
 	 * @param text The body text of page elements that allow custom text. (SPET_TEXT and SPET_LOCATION)
 	 * @return The new StoryPageElementID, or STORY_PAGE_ELEMENT_INVALID if it failed.
 	 * @pre ScriptCompanyMode::IsDeity().
@@ -265,18 +265,20 @@ public:
 	/**
 	 * Get the page date which is displayed at the top of each page.
 	 * @param story_page_id The story page to get the date of.
-	 * @return The date
+	 * @return The calendar-date
 	 * @pre IsValidStoryPage(story_page_id).
+	 * @see \ref ScriptCalendarTime
 	 */
 	static ScriptDate::Date GetDate(StoryPageID story_page_id);
 
 	/**
 	 * Update date of a story page. The date is shown in the top left of the page
 	 * @param story_page_id The story page to set the date for.
-	 * @param date Date to display at the top of story page or ScriptDate::DATE_INVALID to disable showing date on this page. (also, @see ScriptDate)
+	 * @param date Calendar-date to display at the top of story page or ScriptDate::DATE_INVALID to disable showing date on this page. (also, @see ScriptDate)
 	 * @return True if the action succeeded.
 	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page_id).
+	 * @see \ref ScriptCalendarTime
 	 */
 	static bool SetDate(StoryPageID story_page_id, ScriptDate::Date date);
 
@@ -329,14 +331,14 @@ public:
 
 	/**
 	* Check whether this is a valid story page button flag.
-	* @param colour The StoryPageButtonFlags to check.
+	* @param flags The StoryPageButtonFlags to check.
 	* @return True if and only if this story page button flag is valid.
 	*/
 	static bool IsValidStoryPageButtonFlags(StoryPageButtonFlags flags);
 
 	/**
 	 * Check whether this is a valid story page button cursor.
-	 * @param colour The StoryPageButtonCursor to check.
+	 * @param cursor The StoryPageButtonCursor to check.
 	 * @return True if and only if this story page button cursor is valid.
 	 */
 	static bool IsValidStoryPageButtonCursor(StoryPageButtonCursor cursor);

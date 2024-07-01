@@ -193,13 +193,12 @@
 	bool adjacent = station_id != ScriptStation::STATION_JOIN_ADJACENT;
 	StationID to_join = ScriptStation::IsValidStation(station_id) ? station_id : INVALID_STATION;
 	if (res != CALLBACK_FAILED) {
-		int index = 0;
-		const StationSpec *spec = StationClass::GetByGrf(file->grfid, res, &index);
+		const StationSpec *spec = StationClass::GetByGrf(file->grfid, res);
 		if (spec == nullptr) {
 			Debug(grf, 1, "{} returned an invalid station ID for 'AI construction/purchase selection (18)' callback", file->filename);
 		} else {
 			/* We might have gotten an usable station spec. Try to build it, but if it fails we'll fall back to the original station. */
-			if (ScriptObject::Command<CMD_BUILD_RAIL_STATION>::Do(tile, (::RailType)GetCurrentRailType(), axis, num_platforms, platform_length, spec->cls_id, index, to_join, adjacent)) return true;
+			if (ScriptObject::Command<CMD_BUILD_RAIL_STATION>::Do(tile, (::RailType)GetCurrentRailType(), axis, num_platforms, platform_length, spec->class_index, spec->index, to_join, adjacent)) return true;
 		}
 	}
 

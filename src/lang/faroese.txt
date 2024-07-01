@@ -360,6 +360,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Far frá tilbur
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Gevst
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spæl møguleikar
@@ -825,7 +826,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Gjaldsoy
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Úrval av gjaldsoyra eindum
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bretsk Pund
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evrir
@@ -904,6 +905,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Meira ku
 
 
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Eydnaðist ikki at brúka fullan skerm
 
 # Custom currency window
@@ -913,6 +915,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gjaldso
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Minka um hvussu nógv av tínum gjaldoyra skal til fyri at keypa eitt pund (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Vaks um hvussu nógv av tínum gjaldoyra skal til fyri at keypa eitt pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Set gjaldsoyra kursin av tínum gjaldsoyra fyri eitt pund (£)
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Set prefiksi fyri títt gjaldsoyra
@@ -1239,6 +1242,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ávara um eitt 
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Um gilda, fær tú boð tá eitt flutningstól ikki hevur havt nakran vinning í eitt kalendara ár
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Flutningstól ganga ongantíð út: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Um gilda, eru øll sløg av flutningstólum altíð tøk eftir tey eru komin í nýtslu
 
@@ -1502,7 +1506,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Vanligur eftirl
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Áset vanliga eftirlits títtleikan hjá nýggjumf logførum, um eingin skilligur eftirlits títtleiki er ásettur fyri flutningstóli
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Vanligur eftirlits títtleiki fyri skip: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Áset vanliga eftirlits títtleikan hjá nýggjum skipum, um eingin skilligur eftirlits títtleiki er ásettur fyri flutningstóli
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" ar}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Ikki sligi til
 
@@ -1670,15 +1675,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Ídnaðir
 STR_CONFIG_SETTING_AI                                           :Kappingarneytar
 STR_CONFIG_SETTING_AI_NPC                                       :Teldu spælarir
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Leiðbeinari fyri tok: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Leið beinari at nýta til tok
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Leiðbeinari fyri akfør: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Leið beinari at nýta fyri akfør
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Leiðbeinari fyri skip: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Leið beinari at nýta fyri skip
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Viðmældur)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Broyt ásetings virði
 
@@ -1932,7 +1928,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Fær kun
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Slít samband
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servarin er vardur. Skriva loyniorð
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Fyritøka er vard. Skriva loyniorð
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yvir klientar
@@ -1948,19 +1943,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yvir klie
 
 STR_NETWORK_SPECTATORS                                          :Eygleiðarar
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Goym ikki skrivaða loyniorðið
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Gev fyritøkuni tað nýggja loyniorðið
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Fyritøku loyniorð
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Vanligt fyritøku loyniorð
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Nýt hetta fyritøku loyniorðið sum vanligt fyri nýggjar fyritøkur
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Tak lut
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Tak lut og spæl sum hendan fyritøkan
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Loyniorð
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Verj tína fyritøku við einum loyniorðið so eingin óynsktur tekur lut í henni
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Áset fyritøku loyniorð
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Send
@@ -1999,7 +1984,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Tín tel
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Møguligt sambands slit
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Tey síðstu {NUM} sekundini eru eingin dáta komin fram frá seraranum
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :almenn villa
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desync villa
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :eydnaðist ikki at heinta kort
@@ -2175,7 +2160,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Vel hvø
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Waypoint
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vel waypoint slag
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Tok støðs úrval
@@ -2188,8 +2172,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vel hvus
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Toga & Slepp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg eina støð vi at nýta toga & slepp
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vel ein klassa av støð at vísa
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vel hvat slag av støð skal byggjast
+
+
+
 
 STR_STATION_CLASS_DFLT                                          :Vanlig støð
 STR_STATION_CLASS_WAYP                                          :Waypoint
@@ -2364,7 +2349,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Sporvogn
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Jarnbreyta eigari: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Mynduleikar á staðnum: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Eingin
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinatar: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Bygt: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Støð klassi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Støð slag: {LTBLUE}{STRING}
@@ -2583,9 +2567,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% l
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Heims framleiðsla
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Løks framleiðsla
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Træ framleiðsla
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Luta framleiðsla
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Framleiðsa av harrendum og grýtutum øki
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Luta framleiðsla
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Træ framleiðsla
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ger spæli klárt
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Koyrir punta sloyfu
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Koyrir skript
@@ -2659,7 +2643,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Breyta slag
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x parameter (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aligning sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Next sprite
 
 ###length 2
@@ -2714,7 +2697,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Far til 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Skriva eitt navn fyri skelti
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bygdir
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ongar -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bygda nøvn - trýst á eitt navn fyri at savna høvuðs sýni á bygdina. Ctrl+trýst letur upp ein nýggjan sýnisglugga á bygdina
@@ -2955,7 +2937,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Støð p
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Floghavnir
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Ídnaðir
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Einki -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ídnaðar nøvn - trýst á eitt navn fyri at savna høvuðs sýni á ídnað. Ctrl+trýst letur ein nýggjan sýnisglugga upp á ídnaðin
@@ -3673,9 +3654,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Inntøku
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Goyming er enn í gongd,{}vinarliga bíða til ta er liðugt!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Sjálvgoymsla eydnaðist ikki
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Ikki ført fyri at lesa drev
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Eydnaðist ikki at goyma spæl{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Ikki ført fyri at strika fílu
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Eydnaðist ikki at heinta spæl{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Innanhýsis villa: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Goymda spæli er broti - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Goymda spæli er frá nýggjari útgávu
@@ -4024,6 +4003,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Ov nógv
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kann ikki broyta tænastu títtleika...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... akfar smildra sundur
+
 
 
 
@@ -4526,6 +4506,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

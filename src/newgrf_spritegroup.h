@@ -67,7 +67,7 @@ public:
 	SpriteGroupType type;
 
 	virtual SpriteID GetResult() const { return 0; }
-	virtual byte GetNumResults() const { return 0; }
+	virtual uint8_t GetNumResults() const { return 0; }
 	virtual uint16_t GetCallbackResult() const { return CALLBACK_FAILED; }
 
 	static const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level = true);
@@ -147,9 +147,9 @@ enum DeterministicSpriteGroupAdjustOperation {
 struct DeterministicSpriteGroupAdjust {
 	DeterministicSpriteGroupAdjustOperation operation;
 	DeterministicSpriteGroupAdjustType type;
-	byte variable;
-	byte parameter; ///< Used for variables between 0x60 and 0x7F inclusive.
-	byte shift_num;
+	uint8_t variable;
+	uint8_t parameter; ///< Used for variables between 0x60 and 0x7F inclusive.
+	uint8_t shift_num;
 	uint32_t and_mask;
 	uint32_t add_val;
 	uint32_t divmod_val;
@@ -193,10 +193,10 @@ struct RandomizedSpriteGroup : SpriteGroup {
 	VarSpriteGroupScope var_scope;  ///< Take this object:
 
 	RandomizedSpriteGroupCompareMode cmp_mode; ///< Check for these triggers:
-	byte triggers;
-	byte count;
+	uint8_t triggers;
+	uint8_t count;
 
-	byte lowest_randbit; ///< Look for this in the per-object randomized bitmask:
+	uint8_t lowest_randbit; ///< Look for this in the per-object randomized bitmask:
 
 	std::vector<const SpriteGroup *> groups; ///< Take the group with appropriate index:
 
@@ -240,7 +240,7 @@ struct ResultSpriteGroup : SpriteGroup {
 	 * @param num_sprites The number of sprites per set.
 	 * @return A spritegroup representing the sprite number result.
 	 */
-	ResultSpriteGroup(SpriteID sprite, byte num_sprites) :
+	ResultSpriteGroup(SpriteID sprite, uint8_t num_sprites) :
 		SpriteGroup(SGT_RESULT),
 		sprite(sprite),
 		num_sprites(num_sprites)
@@ -248,9 +248,9 @@ struct ResultSpriteGroup : SpriteGroup {
 	}
 
 	SpriteID sprite;
-	byte num_sprites;
+	uint8_t num_sprites;
 	SpriteID GetResult() const override { return this->sprite; }
-	byte GetNumResults() const override { return this->num_sprites; }
+	uint8_t GetNumResults() const override { return this->num_sprites; }
 };
 
 /**
@@ -294,7 +294,7 @@ struct ScopeResolver {
 	virtual uint32_t GetRandomBits() const;
 	virtual uint32_t GetTriggers() const;
 
-	virtual uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const;
+	virtual uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const;
 	virtual void StorePSA(uint reg, int32_t value);
 };
 
@@ -356,7 +356,7 @@ struct ResolverObject {
 
 	virtual const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
 
-	virtual ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0);
+	virtual ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0);
 
 	/**
 	 * Returns the waiting triggers that did not trigger any rerandomisation.

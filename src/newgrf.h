@@ -14,6 +14,7 @@
 #include "rail_type.h"
 #include "road_type.h"
 #include "fileio_type.h"
+#include "newgrf_text_type.h"
 #include "core/bitmath_func.hpp"
 #include "core/alloc_type.hpp"
 #include "core/mem_func.hpp"
@@ -96,18 +97,18 @@ enum GrfSpecFeature {
 static const uint32_t INVALID_GRFID = 0xFFFFFFFF;
 
 struct GRFLabel {
-	byte label;
+	uint8_t label;
 	uint32_t nfo_line;
 	size_t pos;
 
-	GRFLabel(byte label, uint32_t nfo_line, size_t pos) : label(label), nfo_line(nfo_line), pos(pos) {}
+	GRFLabel(uint8_t label, uint32_t nfo_line, size_t pos) : label(label), nfo_line(nfo_line), pos(pos) {}
 };
 
 /** Dynamic data of a loaded NewGRF */
 struct GRFFile : ZeroedMemoryAllocator {
 	std::string filename;
 	uint32_t grfid;
-	byte grf_version;
+	uint8_t grf_version;
 
 	uint sound_offset;
 	uint16_t num_sounds;
@@ -140,7 +141,7 @@ struct GRFFile : ZeroedMemoryAllocator {
 
 	CanalProperties canal_local_properties[CF_END]; ///< Canal properties as set by this NewGRF
 
-	struct LanguageMap *language_map; ///< Mappings related to the languages.
+	std::unordered_map<uint8_t, LanguageMap> language_map; ///< Mappings related to the languages.
 
 	int traininfo_vehicle_pitch;  ///< Vertical offset for drawing train images in depot GUI and vehicle details
 	uint traininfo_vehicle_width; ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
@@ -149,7 +150,6 @@ struct GRFFile : ZeroedMemoryAllocator {
 	PriceMultipliers price_base_multipliers; ///< Price base multipliers as set by the grf.
 
 	GRFFile(const struct GRFConfig *config);
-	~GRFFile();
 
 	/** Get GRF Parameter with range checking */
 	uint32_t GetParam(uint number) const
@@ -188,7 +188,7 @@ struct GRFLoadedFeatures {
  */
 inline bool HasGrfMiscBit(GrfMiscBit bit)
 {
-	extern byte _misc_grf_features;
+	extern uint8_t _misc_grf_features;
 	return HasBit(_misc_grf_features, bit);
 }
 
@@ -204,7 +204,7 @@ void ResetPersistentNewGRFData();
 void GrfMsgI(int severity, const std::string &msg);
 #define GrfMsg(severity, format_string, ...) GrfMsgI(severity, fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
 
-bool GetGlobalVariable(byte param, uint32_t *value, const GRFFile *grffile);
+bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile);
 
 StringID MapGRFStringID(uint32_t grfid, StringID str);
 void ShowNewGRFError();

@@ -34,7 +34,6 @@
 #include "console_func.h"
 #include "screenshot.h"
 #include "network/network.h"
-#include "network/network_server.h"
 #include "network/network_func.h"
 #include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
@@ -95,10 +94,9 @@ void MusicLoop();
 void CallWindowGameTickEvent();
 bool HandleBootstrap();
 
-extern void AfterLoadCompanyStats();
+extern void CheckCaches();
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
 extern void OSOpenBrowser(const std::string &url);
-extern void RebuildTownCaches();
 extern void ShowOSErrorBox(const char *buf, bool system);
 extern std::string _config_file;
 
@@ -170,7 +168,6 @@ static void ShowHelp()
 		"  -G seed             = Set random seed\n"
 		"  -n host[:port][#company]= Join network game\n"
 		"  -p password         = Password to join server\n"
-		"  -P password         = Password to join company\n"
 		"  -D [host][:port]    = Start dedicated server\n"
 #if !defined(_WIN32)
 		"  -f                  = Fork into the background (dedicated only)\n"
@@ -227,7 +224,7 @@ static void WriteSavegameInfo(const std::string &name)
 {
 	extern SaveLoadVersion _sl_version;
 	uint32_t last_ottd_rev = 0;
-	byte ever_modified = 0;
+	uint8_t ever_modified = 0;
 	bool removed_newgrfs = false;
 
 	_gamelog.Info(&last_ottd_rev, &ever_modified, &removed_newgrfs);
@@ -246,7 +243,7 @@ static void WriteSavegameInfo(const std::string &name)
 	message += "NewGRFs:\n";
 	if (_load_check_data.HasNewGrfs()) {
 		for (GRFConfig *c = _load_check_data.grfconfig; c != nullptr; c = c->next) {
-			fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", c->ident.grfid,
+			fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", BSWAP32(c->ident.grfid),
 				FormatArrayAsHex(HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum), c->filename);
 		}
 	}
@@ -386,7 +383,6 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	uint16_t dedicated_port = 0;                  ///< Port for the dedicated server.
 	std::string connection_string;              ///< Information about the server to connect to
 	std::string join_server_password;           ///< The password to join the server with.
-	std::string join_company_password;          ///< The password to join the company with.
 	bool save_config = true;                    ///< The save config setting.
 
 	/**
@@ -450,7 +446,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 			LoadIntroGame();
 			_switch_mode = SM_NONE;
 
-			NetworkClientConnectGame(connection_string, COMPANY_NEW_COMPANY, join_server_password, join_company_password);
+			NetworkClientConnectGame(connection_string, COMPANY_NEW_COMPANY, join_server_password);
 		}
 
 		/* After the scan we're not used anymore. */
@@ -478,45 +474,38 @@ void PostMainLoop()
 extern void DedicatedFork();
 #endif
 
-/** Options of OpenTTD. */
-static const OptionData _options[] = {
-	 GETOPT_SHORT_VALUE('I'),
-	 GETOPT_SHORT_VALUE('S'),
-	 GETOPT_SHORT_VALUE('M'),
-	 GETOPT_SHORT_VALUE('m'),
-	 GETOPT_SHORT_VALUE('s'),
-	 GETOPT_SHORT_VALUE('v'),
-	 GETOPT_SHORT_VALUE('b'),
-	GETOPT_SHORT_OPTVAL('D'),
-	 GETOPT_SHORT_VALUE('n'),
-	 GETOPT_SHORT_VALUE('p'),
-	 GETOPT_SHORT_VALUE('P'),
+/**
+ * Create all the options that OpenTTD supports. Each option is
+ * always a single character with no, an optional or a required value.
+ * @return The available options.
+ */
+static std::vector<OptionData> CreateOptions()
+{
+	std::vector<OptionData> options;
+	/* Options that require a parameter. */
+	for (char c : "GIMSbcmnpqrstv") options.push_back({ .type = ODF_HAS_VALUE, .id = c, .shortname = c });
 #if !defined(_WIN32)
-	 GETOPT_SHORT_NOVAL('f'),
+	options.push_back({ .type = ODF_HAS_VALUE, .id = 'f', .shortname = 'f' });
 #endif
-	 GETOPT_SHORT_VALUE('r'),
-	 GETOPT_SHORT_VALUE('t'),
-	GETOPT_SHORT_OPTVAL('d'),
-	 GETOPT_SHORT_NOVAL('e'),
-	GETOPT_SHORT_OPTVAL('g'),
-	 GETOPT_SHORT_VALUE('G'),
-	 GETOPT_SHORT_VALUE('c'),
-	 GETOPT_SHORT_NOVAL('x'),
-	 GETOPT_SHORT_NOVAL('X'),
-	 GETOPT_SHORT_VALUE('q'),
-	 GETOPT_SHORT_NOVAL('h'),
-	 GETOPT_SHORT_NOVAL('Q'),
-	GETOPT_END()
-};
+
+	/* Options with an optional parameter. */
+	for (char c : "Ddg") options.push_back({ .type = ODF_OPTIONAL_VALUE, .id = c, .shortname = c });
+
+	/* Options without a parameter. */
+	for (char c : "QXehx") options.push_back({ .type = ODF_NO_VALUE, .id = c, .shortname = c });
+	return options;
+}
 
 /**
  * Main entry point for this lovely game.
- * @param argc The number of arguments passed to this game.
- * @param argv The values of the arguments.
+ * @param arguments The command line arguments passed to the application.
  * @return 0 when there is no error.
  */
-int openttd_main(int argc, char *argv[])
+int openttd_main(std::span<char * const> arguments)
 {
+	_game_session_stats.start_time = std::chrono::steady_clock::now();
+	_game_session_stats.savegame_size = std::nullopt;
+
 	std::string musicdriver;
 	std::string sounddriver;
 	std::string videodriver;
@@ -525,7 +514,7 @@ int openttd_main(int argc, char *argv[])
 	std::string sounds_set;
 	std::string music_set;
 	Dimension resolution = {0, 0};
-	std::unique_ptr<AfterNewGRFScan> scanner(new AfterNewGRFScan());
+	std::unique_ptr<AfterNewGRFScan> scanner = std::make_unique<AfterNewGRFScan>();
 	bool dedicated = false;
 	bool only_local_path = false;
 
@@ -535,7 +524,8 @@ int openttd_main(int argc, char *argv[])
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
 
-	GetOptData mgo(argc - 1, argv + 1, _options);
+	auto options = CreateOptions();
+	GetOptData mgo(arguments.subspan(1), options);
 	int ret = 0;
 
 	int i;
@@ -566,9 +556,6 @@ int openttd_main(int argc, char *argv[])
 		case 'p':
 			scanner->join_server_password = mgo.opt;
 			break;
-		case 'P':
-			scanner->join_company_password = mgo.opt;
-			break;
 		case 'r': ParseResolution(&resolution, mgo.opt); break;
 		case 't': scanner->startyear = atoi(mgo.opt); break;
 		case 'd': {
@@ -591,7 +578,7 @@ int openttd_main(int argc, char *argv[])
 			if (mgo.opt != nullptr) {
 				_file_to_saveload.name = mgo.opt;
 
-				std::string extension = std::filesystem::path(_file_to_saveload.name).extension().string();
+				std::string extension = FS2OTTD(std::filesystem::path(OTTD2FS(_file_to_saveload.name)).extension());
 				auto [ft, _] = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, extension);
 				if (ft == FIOS_TYPE_INVALID) {
 					std::tie(ft, _) = FiosGetScenarioListCallback(SLO_LOAD, _file_to_saveload.name, extension);
@@ -619,13 +606,14 @@ int openttd_main(int argc, char *argv[])
 			}
 			break;
 		case 'q': {
-			DeterminePaths(argv[0], only_local_path);
+			DeterminePaths(arguments[0], only_local_path);
 			if (StrEmpty(mgo.opt)) {
 				ret = 1;
 				return ret;
 			}
 
-			auto [_, title] = FiosGetSavegameListCallback(SLO_LOAD, mgo.opt, strrchr(mgo.opt, '.'));
+			std::string extension = FS2OTTD(std::filesystem::path(OTTD2FS(mgo.opt)).extension());
+			auto [_, title] = FiosGetSavegameListCallback(SLO_LOAD, mgo.opt, extension);
 
 			_load_check_data.Clear();
 			SaveOrLoadResult res = SaveOrLoad(mgo.opt, SLO_CHECK, DFT_GAME_FILE, SAVE_DIR, false);
@@ -658,13 +646,13 @@ int openttd_main(int argc, char *argv[])
 		if (i == -2) break;
 	}
 
-	if (i == -2 || mgo.numleft > 0) {
+	if (i == -2 || !mgo.arguments.empty()) {
 		/* Either the user typed '-h', they made an error, or they added unrecognized command line arguments.
 		 * In all cases, print the help, and exit.
 		 *
 		 * The next two functions are needed to list the graphics sets. We can't do them earlier
 		 * because then we cannot show it on the debug console as that hasn't been configured yet. */
-		DeterminePaths(argv[0], only_local_path);
+		DeterminePaths(arguments[0], only_local_path);
 		TarScanner::DoScan(TarScanner::BASESET);
 		BaseGraphics::FindSets();
 		BaseSounds::FindSets();
@@ -673,7 +661,7 @@ int openttd_main(int argc, char *argv[])
 		return ret;
 	}
 
-	DeterminePaths(argv[0], only_local_path);
+	DeterminePaths(arguments[0], only_local_path);
 	TarScanner::DoScan(TarScanner::BASESET);
 
 	if (dedicated) Debug(net, 3, "Starting dedicated server, version {}", _openttd_revision);
@@ -766,10 +754,10 @@ int openttd_main(int argc, char *argv[])
 	InitializeSpriteSorter();
 
 	/* Initialize the zoom level of the screen to normal */
-	_screen.zoom = ZOOM_LVL_NORMAL;
+	_screen.zoom = ZOOM_LVL_MIN;
 
 	/* The video driver is now selected, now initialise GUI zoom */
-	AdjustGUIZoom(false);
+	UpdateGUIZoom();
 
 	SocialIntegration::Initialize();
 	NetworkStartUp(); // initialize network-core
@@ -817,8 +805,6 @@ int openttd_main(int argc, char *argv[])
 	GenerateWorld(GWM_EMPTY, 64, 64); // Make the viewport initialization happy
 	LoadIntroGame(false);
 
-	CheckForMissingGlyphs();
-
 	/* ScanNewGRFFiles now has control over the scanner. */
 	RequestNewGRFScan(scanner.release());
 
@@ -865,8 +851,8 @@ static void OnStartGame(bool dedicated_server)
 	 * or in the case of a dedicated server, a spectator */
 	SetLocalCompany(dedicated_server ? COMPANY_SPECTATOR : GetFirstPlayableCompanyID());
 
-	/* Update the static game info to set the values from the new game. */
-	NetworkServerUpdateGameInfo();
+	NetworkOnGameStart();
+
 	/* Execute the game-start script */
 	IConsoleCmdExec("exec scripts/game_start.scr 0");
 }
@@ -906,23 +892,11 @@ static void MakeNewGameDone()
 	InitializeRailGUI();
 	InitializeRoadGUI();
 
-	/* We are the server, we start a new company (not dedicated),
-	 * so set the default password *if* needed. */
-	if (_network_server && !_settings_client.network.default_company_pass.empty()) {
-		NetworkChangeCompanyPassword(_local_company, _settings_client.network.default_company_pass);
-	}
-
 	if (_settings_client.gui.pause_on_newgame) Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, true);
 
 	CheckEngines();
 	CheckIndustries();
 	MarkWholeScreenDirty();
-
-	if (_network_server) {
-		ChangeNetworkRestartTime(true);
-
-		if (!_network_dedicated) ShowClientList();
-	}
 }
 
 static void MakeNewGame(bool from_heightmap, bool reset_settings)
@@ -1084,7 +1058,10 @@ void SwitchToMode(SwitchMode new_mode)
 	if (_game_mode == GM_NORMAL && new_mode != SM_SAVE_GAME) _survey.Transmit(NetworkSurveyHandler::Reason::LEAVE);
 
 	/* Keep track when we last switch mode. Used for survey, to know how long someone was in a game. */
-	if (new_mode != SM_SAVE_GAME) _switch_mode_time = std::chrono::steady_clock::now();
+	if (new_mode != SM_SAVE_GAME) {
+		_game_session_stats.start_time = std::chrono::steady_clock::now();
+		_game_session_stats.savegame_size = std::nullopt;
+	}
 
 	switch (new_mode) {
 		case SM_EDITOR: // Switch to scenario editor
@@ -1126,8 +1103,7 @@ void SwitchToMode(SwitchMode new_mode)
 			ResetWindowSystem();
 
 			if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_NORMAL, NO_DIRECTORY)) {
-				SetDParamStr(0, GetSaveLoadErrorString());
-				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_CRITICAL);
+				ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WL_CRITICAL);
 			} else {
 				if (_file_to_saveload.abstract_ftype == FT_SCENARIO) {
 					OnStartScenario();
@@ -1169,8 +1145,7 @@ void SwitchToMode(SwitchMode new_mode)
 				/* Cancel the saveload pausing */
 				Command<CMD_PAUSE>::Post(PM_PAUSED_SAVELOAD, false);
 			} else {
-				SetDParamStr(0, GetSaveLoadErrorString());
-				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_CRITICAL);
+				ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WL_CRITICAL);
 			}
 
 			UpdateSocialIntegration(GM_EDITOR);
@@ -1205,8 +1180,7 @@ void SwitchToMode(SwitchMode new_mode)
 		case SM_SAVE_GAME: // Save game.
 			/* Make network saved games on pause compatible to singleplayer mode */
 			if (SaveOrLoad(_file_to_saveload.name, SLO_SAVE, DFT_GAME_FILE, NO_DIRECTORY) != SL_OK) {
-				SetDParamStr(0, GetSaveLoadErrorString());
-				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
+				ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WL_ERROR);
 			} else {
 				CloseWindowById(WC_SAVELOAD, 0);
 			}
@@ -1229,195 +1203,6 @@ void SwitchToMode(SwitchMode new_mode)
 }
 
 
-/**
- * Check the validity of some of the caches.
- * Especially in the sense of desyncs between
- * the cached value and what the value would
- * be when calculated from the 'base' data.
- */
-static void CheckCaches()
-{
-	/* Return here so it is easy to add checks that are run
-	 * always to aid testing of caches. */
-	if (_debug_desync_level <= 1) return;
-
-	/* Check the town caches. */
-	std::vector<TownCache> old_town_caches;
-	for (const Town *t : Town::Iterate()) {
-		old_town_caches.push_back(t->cache);
-	}
-
-	RebuildTownCaches();
-	RebuildSubsidisedSourceAndDestinationCache();
-
-	uint i = 0;
-	for (Town *t : Town::Iterate()) {
-		if (MemCmpT(old_town_caches.data() + i, &t->cache) != 0) {
-			Debug(desync, 2, "town cache mismatch: town {}", t->index);
-		}
-		i++;
-	}
-
-	/* Check company infrastructure cache. */
-	std::vector<CompanyInfrastructure> old_infrastructure;
-	for (const Company *c : Company::Iterate()) old_infrastructure.push_back(c->infrastructure);
-
-	AfterLoadCompanyStats();
-
-	i = 0;
-	for (const Company *c : Company::Iterate()) {
-		if (MemCmpT(old_infrastructure.data() + i, &c->infrastructure) != 0) {
-			Debug(desync, 2, "infrastructure cache mismatch: company {}", c->index);
-		}
-		i++;
-	}
-
-	/* Strict checking of the road stop cache entries */
-	for (const RoadStop *rs : RoadStop::Iterate()) {
-		if (IsBayRoadStopTile(rs->xy)) continue;
-
-		assert(rs->GetEntry(DIAGDIR_NE) != rs->GetEntry(DIAGDIR_NW));
-		rs->GetEntry(DIAGDIR_NE)->CheckIntegrity(rs);
-		rs->GetEntry(DIAGDIR_NW)->CheckIntegrity(rs);
-	}
-
-	for (Vehicle *v : Vehicle::Iterate()) {
-		if (v != v->First() || v->vehstatus & VS_CRASHED || !v->IsPrimaryVehicle()) continue;
-
-		uint length = 0;
-		for (const Vehicle *u = v; u != nullptr; u = u->Next()) length++;
-
-		NewGRFCache        *grf_cache = CallocT<NewGRFCache>(length);
-		VehicleCache       *veh_cache = CallocT<VehicleCache>(length);
-		GroundVehicleCache *gro_cache = CallocT<GroundVehicleCache>(length);
-		TrainCache         *tra_cache = CallocT<TrainCache>(length);
-
-		length = 0;
-		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
-			FillNewGRFVehicleCache(u);
-			grf_cache[length] = u->grf_cache;
-			veh_cache[length] = u->vcache;
-			switch (u->type) {
-				case VEH_TRAIN:
-					gro_cache[length] = Train::From(u)->gcache;
-					tra_cache[length] = Train::From(u)->tcache;
-					break;
-				case VEH_ROAD:
-					gro_cache[length] = RoadVehicle::From(u)->gcache;
-					break;
-				default:
-					break;
-			}
-			length++;
-		}
-
-		switch (v->type) {
-			case VEH_TRAIN:    Train::From(v)->ConsistChanged(CCF_TRACK); break;
-			case VEH_ROAD:     RoadVehUpdateCache(RoadVehicle::From(v)); break;
-			case VEH_AIRCRAFT: UpdateAircraftCache(Aircraft::From(v));   break;
-			case VEH_SHIP:     Ship::From(v)->UpdateCache();             break;
-			default: break;
-		}
-
-		length = 0;
-		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
-			FillNewGRFVehicleCache(u);
-			if (memcmp(&grf_cache[length], &u->grf_cache, sizeof(NewGRFCache)) != 0) {
-				Debug(desync, 2, "newgrf cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
-			}
-			if (memcmp(&veh_cache[length], &u->vcache, sizeof(VehicleCache)) != 0) {
-				Debug(desync, 2, "vehicle cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
-			}
-			switch (u->type) {
-				case VEH_TRAIN:
-					if (memcmp(&gro_cache[length], &Train::From(u)->gcache, sizeof(GroundVehicleCache)) != 0) {
-						Debug(desync, 2, "train ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
-					}
-					if (memcmp(&tra_cache[length], &Train::From(u)->tcache, sizeof(TrainCache)) != 0) {
-						Debug(desync, 2, "train cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
-					}
-					break;
-				case VEH_ROAD:
-					if (memcmp(&gro_cache[length], &RoadVehicle::From(u)->gcache, sizeof(GroundVehicleCache)) != 0) {
-						Debug(desync, 2, "road vehicle ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
-					}
-					break;
-				default:
-					break;
-			}
-			length++;
-		}
-
-		free(grf_cache);
-		free(veh_cache);
-		free(gro_cache);
-		free(tra_cache);
-	}
-
-	/* Check whether the caches are still valid */
-	for (Vehicle *v : Vehicle::Iterate()) {
-		byte buff[sizeof(VehicleCargoList)];
-		memcpy(buff, &v->cargo, sizeof(VehicleCargoList));
-		v->cargo.InvalidateCache();
-		assert(memcmp(&v->cargo, buff, sizeof(VehicleCargoList)) == 0);
-	}
-
-	/* Backup stations_near */
-	std::vector<StationList> old_town_stations_near;
-	for (Town *t : Town::Iterate()) old_town_stations_near.push_back(t->stations_near);
-
-	std::vector<StationList> old_industry_stations_near;
-	for (Industry *ind : Industry::Iterate())  old_industry_stations_near.push_back(ind->stations_near);
-
-	for (Station *st : Station::Iterate()) {
-		for (GoodsEntry &ge : st->goods) {
-			byte buff[sizeof(StationCargoList)];
-			memcpy(buff, &ge.cargo, sizeof(StationCargoList));
-			ge.cargo.InvalidateCache();
-			assert(memcmp(&ge.cargo, buff, sizeof(StationCargoList)) == 0);
-		}
-
-		/* Check docking tiles */
-		TileArea ta;
-		std::map<TileIndex, bool> docking_tiles;
-		for (TileIndex tile : st->docking_station) {
-			ta.Add(tile);
-			docking_tiles[tile] = IsDockingTile(tile);
-		}
-		UpdateStationDockingTiles(st);
-		if (ta.tile != st->docking_station.tile || ta.w != st->docking_station.w || ta.h != st->docking_station.h) {
-			Debug(desync, 2, "station docking mismatch: station {}, company {}", st->index, st->owner);
-		}
-		for (TileIndex tile : ta) {
-			if (docking_tiles[tile] != IsDockingTile(tile)) {
-				Debug(desync, 2, "docking tile mismatch: tile {}", tile);
-			}
-		}
-
-		/* Check industries_near */
-		IndustryList industries_near = st->industries_near;
-		st->RecomputeCatchment();
-		if (st->industries_near != industries_near) {
-			Debug(desync, 2, "station industries near mismatch: station {}", st->index);
-		}
-	}
-
-	/* Check stations_near */
-	i = 0;
-	for (Town *t : Town::Iterate()) {
-		if (t->stations_near != old_town_stations_near[i]) {
-			Debug(desync, 2, "town stations near mismatch: town {}", t->index);
-		}
-		i++;
-	}
-	i = 0;
-	for (Industry *ind : Industry::Iterate()) {
-		if (ind->stations_near != old_industry_stations_near[i]) {
-			Debug(desync, 2, "industry stations near mismatch: industry {}", ind->index);
-		}
-		i++;
-	}
-}
 
 /**
  * State controlling game loop.
@@ -1473,7 +1258,7 @@ void StateGameLoop()
 
 		/* All these actions has to be done from OWNER_NONE
 		 *  for multiplayer compatibility */
-		Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		AnimateAnimatedTiles();

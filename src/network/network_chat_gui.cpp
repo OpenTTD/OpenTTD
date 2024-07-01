@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 #include "../strings_func.h"
+#include "../autocompletion.h"
 #include "../blitter/factory.hpp"
 #include "../console_func.h"
 #include "../video/video_driver.hpp"
@@ -44,7 +45,6 @@ struct ChatMessage {
 static std::deque<ChatMessage> _chatmsg_list; ///< The actual chat message list.
 static bool _chatmessage_dirty = false;   ///< Does the chat message need repainting?
 static bool _chatmessage_visible = false; ///< Is a chat message visible.
-static bool _chat_tab_completion_active;  ///< Whether tab completion is active.
 static uint MAX_CHAT_MESSAGES = 0;        ///< The limit of chat messages to show.
 
 /**
@@ -262,11 +262,47 @@ static void SendChat(const std::string &buf, DestType type, int dest)
 	}
 }
 
+class NetworkChatAutoCompletion final : public AutoCompletion {
+public:
+	using AutoCompletion::AutoCompletion;
+
+private:
+	std::vector<std::string> GetSuggestions([[maybe_unused]] std::string_view prefix, std::string_view query) override
+	{
+		std::vector<std::string> suggestions;
+		for (NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
+			if (ci->client_name.starts_with(query)) {
+				suggestions.push_back(ci->client_name);
+			}
+		}
+		for (const Town *t : Town::Iterate()) {
+			/* Get the town-name via the string-system */
+			SetDParam(0, t->index);
+			std::string town_name = GetString(STR_TOWN_NAME);
+			if (town_name.starts_with(query)) {
+				suggestions.push_back(std::move(town_name));
+			}
+		}
+		return suggestions;
+	}
+
+	void ApplySuggestion(std::string_view prefix, std::string_view suggestion) override
+	{
+		/* Add ': ' if we are at the start of the line (pretty) */
+		if (prefix.empty()) {
+			this->textbuf->Assign(fmt::format("{}: ", suggestion));
+		} else {
+			this->textbuf->Assign(fmt::format("{}{} ", prefix, suggestion));
+		}
+	}
+};
+
 /** Window to enter the chat message in. */
 struct NetworkChatWindow : public Window {
 	DestType dtype;       ///< The type of destination.
 	int dest;             ///< The identifier of the destination.
 	QueryString message_editbox; ///< Message editbox.
+	NetworkChatAutoCompletion chat_tab_completion; ///< Holds the state and logic of auto-completion of player names and towns on Tab press.
 
 	/**
 	 * Create a chat input window.
@@ -274,7 +310,8 @@ struct NetworkChatWindow : public Window {
 	 * @param type The type of destination.
 	 * @param dest The actual destination index.
 	 */
-	NetworkChatWindow(WindowDesc *desc, DestType type, int dest) : Window(desc), message_editbox(NETWORK_CHAT_LENGTH)
+	NetworkChatWindow(WindowDesc &desc, DestType type, int dest)
+			: Window(desc), message_editbox(NETWORK_CHAT_LENGTH), chat_tab_completion(&message_editbox.text)
 	{
 		this->dtype   = type;
 		this->dest    = dest;
@@ -295,7 +332,6 @@ struct NetworkChatWindow : public Window {
 
 		this->SetFocusedWidget(WID_NC_TEXTBOX);
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, this->height);
-		_chat_tab_completion_active = false;
 
 		PositionNetworkChatWindow(this);
 	}
@@ -312,124 +348,11 @@ struct NetworkChatWindow : public Window {
 	}
 
 	/**
-	 * Find the next item of the list of things that can be auto-completed.
-	 * @param item The current indexed item to return. This function can, and most
-	 *     likely will, alter item, to skip empty items in the arrays.
-	 * @return Returns the view that matched to the index.
-	 */
-	std::optional<std::string> ChatTabCompletionNextItem(uint *item)
-	{
-		/* First, try clients */
-		if (*item < MAX_CLIENT_SLOTS) {
-			/* Skip inactive clients */
-			for (NetworkClientInfo *ci : NetworkClientInfo::Iterate(*item)) {
-				*item = ci->index;
-				return ci->client_name;
-			}
-			*item = MAX_CLIENT_SLOTS;
-		}
-
-		/* Then, try townnames
-		 * Not that the following assumes all town indices are adjacent, ie no
-		 * towns have been deleted. */
-		if (*item < (uint)MAX_CLIENT_SLOTS + Town::GetPoolSize()) {
-			for (const Town *t : Town::Iterate(*item - MAX_CLIENT_SLOTS)) {
-				/* Get the town-name via the string-system */
-				SetDParam(0, t->index);
-				return GetString(STR_TOWN_NAME);
-			}
-		}
-
-		return std::nullopt;
-	}
-
-	/**
-	 * Find what text to complete. It scans for a space from the left and marks
-	 *  the word right from that as to complete. It also writes a \0 at the
-	 *  position of the space (if any). If nothing found, buf is returned.
-	 */
-	static std::string_view ChatTabCompletionFindText(std::string_view &buf)
-	{
-		auto it = buf.find_last_of(' ');
-		if (it == std::string_view::npos) return buf;
-
-		std::string_view res = buf.substr(it + 1);
-		buf.remove_suffix(res.size() + 1);
-		return res;
-	}
-
-	/**
 	 * See if we can auto-complete the current text of the user.
 	 */
 	void ChatTabCompletion()
 	{
-		static std::string _chat_tab_completion_buf;
-
-		Textbuf *tb = &this->message_editbox.text;
-		uint item = 0;
-		bool second_scan = false;
-
-		/* Create views, so we do not need to copy the data for now. */
-		std::string_view pre_buf = _chat_tab_completion_active ? std::string_view(_chat_tab_completion_buf) : std::string_view(tb->buf);
-		std::string_view tb_buf = ChatTabCompletionFindText(pre_buf);
-
-		/*
-		 * Comparing pointers of the data, as both "Hi:<tab>" and "Hi: Hi:<tab>" will result in
-		 * tb_buf and pre_buf being "Hi:", which would be equal in content but not in context.
-		 */
-		bool begin_of_line = tb_buf.data() == pre_buf.data();
-
-		std::optional<std::string> cur_item;
-		while ((cur_item = ChatTabCompletionNextItem(&item)).has_value()) {
-			std::string_view cur_name = cur_item.value();
-			item++;
-
-			if (_chat_tab_completion_active) {
-				/* We are pressing TAB again on the same name, is there another name
-				 *  that starts with this? */
-				if (!second_scan) {
-					std::string_view view;
-
-					/* If we are completing at the begin of the line, skip the ': ' we added */
-					if (begin_of_line) {
-						view = std::string_view(tb->buf, (tb->bytes - 1) - 2);
-					} else {
-						/* Else, find the place we are completing at */
-						size_t offset = pre_buf.size() + 1;
-						view = std::string_view(tb->buf + offset, (tb->bytes - 1) - offset);
-					}
-
-					/* Compare if we have a match */
-					if (cur_name == view) second_scan = true;
-
-					continue;
-				}
-
-				/* Now any match we make on _chat_tab_completion_buf after this, is perfect */
-			}
-
-			if (tb_buf.size() < cur_name.size() && cur_name.starts_with(tb_buf)) {
-				/* Save the data it was before completion */
-				if (!second_scan) _chat_tab_completion_buf = tb->buf;
-				_chat_tab_completion_active = true;
-
-				/* Change to the found name. Add ': ' if we are at the start of the line (pretty) */
-				if (begin_of_line) {
-					this->message_editbox.text.Assign(fmt::format("{}: ", cur_name));
-				} else {
-					this->message_editbox.text.Assign(fmt::format("{} {}", pre_buf, cur_name));
-				}
-
-				this->SetDirty();
-				return;
-			}
-		}
-
-		if (second_scan) {
-			/* We walked all possibilities, and the user presses tab again.. revert to original text */
-			this->message_editbox.text.Assign(_chat_tab_completion_buf);
-			_chat_tab_completion_active = false;
-
+		if (this->chat_tab_completion.AutoComplete()) {
 			this->SetDirty();
 		}
 	}
@@ -475,7 +398,7 @@ struct NetworkChatWindow : public Window {
 	void OnEditboxChanged(WidgetID widget) override
 	{
 		if (widget == WID_NC_TEXTBOX) {
-			_chat_tab_completion_active = false;
+			this->chat_tab_completion.Reset();
 		}
 	}
 
@@ -497,7 +420,7 @@ static constexpr NWidgetPart _nested_chat_window_widgets[] = {
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_NC_BACKGROUND),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_NC_DESTINATION), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetAlignment(SA_VERT_CENTER | SA_RIGHT), SetDataTip(STR_NULL, STR_NULL),
-				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_NC_TEXTBOX), SetMinimalSize(100, 12), SetPadding(1, 0, 1, 0), SetResize(1, 0),
+				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_NC_TEXTBOX), SetMinimalSize(100, 0), SetPadding(1, 0, 1, 0), SetResize(1, 0),
 																	SetDataTip(STR_NETWORK_CHAT_OSKTITLE, STR_NULL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NC_SENDBUTTON), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NETWORK_CHAT_SEND, STR_NULL),
 			EndContainer(),
@@ -506,11 +429,11 @@ static constexpr NWidgetPart _nested_chat_window_widgets[] = {
 };
 
 /** The description of the chat window. */
-static WindowDesc _chat_window_desc(__FILE__, __LINE__,
+static WindowDesc _chat_window_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_SEND_NETWORK_MSG, WC_NONE,
 	0,
-	std::begin(_nested_chat_window_widgets), std::end(_nested_chat_window_widgets)
+	_nested_chat_window_widgets
 );
 
 
@@ -522,5 +445,5 @@ static WindowDesc _chat_window_desc(__FILE__, __LINE__,
 void ShowNetworkChatQueryWindow(DestType type, int dest)
 {
 	CloseWindowByClass(WC_SEND_NETWORK_MSG);
-	new NetworkChatWindow(&_chat_window_desc, type, dest);
+	new NetworkChatWindow(_chat_window_desc, type, dest);
 }

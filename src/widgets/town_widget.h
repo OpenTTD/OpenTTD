@@ -12,6 +12,7 @@
 
 /** Widgets of the #TownDirectoryWindow class. */
 enum TownDirectoryWidgets : WidgetID {
+	WID_TD_CAPTION, ///< Caption of the window.
 	WID_TD_SORT_ORDER,       ///< Direction of sort dropdown.
 	WID_TD_SORT_CRITERIA,    ///< Criteria of sort dropdown.
 	WID_TD_FILTER,           ///< Filter of name.

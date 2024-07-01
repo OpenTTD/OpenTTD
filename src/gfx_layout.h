@@ -36,7 +36,7 @@ struct FontState {
 	 */
 	inline void SetColour(TextColour c)
 	{
-		assert((c & TC_COLOUR_MASK) >= TC_BLUE && (c & TC_COLOUR_MASK) <= TC_BLACK);
+		assert(((c & TC_COLOUR_MASK) >= TC_BLUE && (c & TC_COLOUR_MASK) <= TC_BLACK) || (c & TC_COLOUR_MASK) == TC_INVALID);
 		assert((c & (TC_COLOUR_MASK | TC_FLAGS_MASK)) == c);
 		if ((this->cur_colour & TC_FORCED) == 0) this->cur_colour = c;
 	}
@@ -90,16 +90,29 @@ class ParagraphLayouter {
 public:
 	virtual ~ParagraphLayouter() = default;
 
+	/** Position of a glyph within a VisualRun. */
+	class Position {
+	public:
+		int16_t left; ///< Left-most position of glyph.
+		int16_t right; ///< Right-most position of glyph.
+		int16_t top; ///< Top-most position of glyph.
+
+		constexpr inline Position(int16_t left, int16_t right, int16_t top) : left(left), right(right), top(top) { }
+
+		/** Conversion from a single point to a Position. */
+		constexpr inline Position(const Point &pt) : left(pt.x), right(pt.x), top(pt.y) { }
+	};
+
 	/** Visual run contains data about the bit of text with the same font. */
 	class VisualRun {
 	public:
 		virtual ~VisualRun() = default;
 		virtual const Font *GetFont() const = 0;
 		virtual int GetGlyphCount() const = 0;
-		virtual const std::vector<GlyphID> &GetGlyphs() const = 0;
-		virtual const std::vector<Point> &GetPositions() const = 0;
+		virtual std::span<const GlyphID> GetGlyphs() const = 0;
+		virtual std::span<const Position> GetPositions() const = 0;
 		virtual int GetLeading() const = 0;
-		virtual const std::vector<int> &GetGlyphToCharMap() const = 0;
+		virtual std::span<const int> GetGlyphToCharMap() const = 0;
 	};
 
 	/** A single line worth of VisualRuns. */
@@ -132,7 +145,7 @@ class Layouter : public std::vector<std::unique_ptr<const ParagraphLayouter::Lin
 	};
 
 	struct LineCacheQuery {
-		FontState state_before;  ///< Font state at the beginning of the line.
+		const FontState &state_before; ///< Font state at the beginning of the line.
 		std::string_view str;    ///< Source string of the line (including colour and font size codes).
 	};
 
@@ -174,9 +187,9 @@ private:
 public:
 	static Font *GetFont(FontSize size, TextColour colour);
 
-	Layouter(std::string_view str, int maxw = INT32_MAX, TextColour colour = TC_FROMSTRING, FontSize fontsize = FS_NORMAL);
+	Layouter(std::string_view str, int maxw = INT32_MAX, FontSize fontsize = FS_NORMAL);
 	Dimension GetBounds();
-	Point GetCharPosition(std::string_view::const_iterator ch) const;
+	ParagraphLayouter::Position GetCharPosition(std::string_view::const_iterator ch) const;
 	ptrdiff_t GetCharAtPosition(int x, size_t line_index) const;
 
 	static void Initialize();
@@ -184,5 +197,8 @@ public:
 	static void ResetLineCache();
 	static void ReduceLineCache();
 };
+
+ParagraphLayouter::Position GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize = FS_NORMAL);
+ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize = FS_NORMAL);
 
 #endif /* GFX_LAYOUT_H */

@@ -68,7 +68,7 @@ public:
 		SlObject(lc, this->GetLoadDescription());
 
 		if (IsSavegameVersionBefore(SLV_STRING_GAMELOG)) {
-			static_cast<LoggedChangeRevision *>(lc)->text = StrMakeValid(std::string_view(SlGamelogRevision::revision_text, lengthof(SlGamelogRevision::revision_text)));
+			static_cast<LoggedChangeRevision *>(lc)->text = StrMakeValid(std::string_view(std::begin(SlGamelogRevision::revision_text), std::end(SlGamelogRevision::revision_text)));
 		}
 	}
 
@@ -348,7 +348,7 @@ public:
 	void Load(LoggedAction *la) const override
 	{
 		if (IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY)) {
-			byte type;
+			uint8_t type;
 			while ((type = SlReadByte()) != GLCT_NONE) {
 				if (type >= GLCT_END) SlErrorCorrupt("Invalid gamelog change type");
 				LoadChange(la, (GamelogChangeType)type);
@@ -384,7 +384,7 @@ struct GLOGChunkHandler : ChunkHandler {
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_gamelog_desc, _gamelog_sl_compat);
 
 		if (IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY)) {
-			byte type;
+			uint8_t type;
 			while ((type = SlReadByte()) != GLAT_NONE) {
 				if (type >= GLAT_END) SlErrorCorrupt("Invalid gamelog action type");
 

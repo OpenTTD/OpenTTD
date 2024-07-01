@@ -12,7 +12,6 @@
 #include "articulated_vehicles.h"
 #include "command_func.h"
 #include "error_func.h"
-#include "pathfinder/npf/npf_func.h"
 #include "pathfinder/yapf/yapf.hpp"
 #include "news_func.h"
 #include "company_func.h"
@@ -52,8 +51,8 @@ static TileIndex TrainApproachingCrossingTile(const Train *v);
 static void CheckIfTrainNeedsService(Train *v);
 static void CheckNextTrainTile(Train *v);
 
-static const byte _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
-static const byte _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
+static const uint8_t _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
+static const uint8_t _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
 
 template <>
 bool IsValidImageIndex<VEH_TRAIN>(uint8_t image_index)
@@ -67,7 +66,7 @@ bool IsValidImageIndex<VEH_TRAIN>(uint8_t image_index)
  * @param cargo Cargo type to get multiplier for
  * @return Cargo weight multiplier
  */
-byte FreightWagonMult(CargoID cargo)
+uint8_t FreightWagonMult(CargoID cargo)
 {
 	if (!CargoSpec::Get(cargo)->is_freight) return 1;
 	return _settings_game.vehicle.freight_trains;
@@ -120,7 +119,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 	this->compatible_railtypes = RAILTYPES_NONE;
 
 	bool train_can_tilt = true;
-	int min_curve_speed_mod = INT_MAX;
+	int16_t min_curve_speed_mod = INT16_MAX;
 
 	for (Train *u = this; u != nullptr; u = u->Next()) {
 		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
@@ -305,7 +304,7 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
  * Computes train speed limit caused by curves
  * @return imposed speed limit
  */
-int Train::GetCurveSpeedLimit() const
+uint16_t Train::GetCurveSpeedLimit() const
 {
 	assert(this->First() == this);
 
@@ -372,7 +371,7 @@ int Train::GetCurveSpeedLimit() const
 		max_speed = Clamp(max_speed, 2, absolute_max_speed);
 	}
 
-	return max_speed;
+	return static_cast<uint16_t>(max_speed);
 }
 
 /**
@@ -1178,7 +1177,7 @@ static void NormaliseTrainHead(Train *head)
 
 	/* If we don't have a unit number yet, set one. */
 	if (head->unitnumber != 0) return;
-	head->unitnumber = GetFreeUnitNumber(VEH_TRAIN);
+	head->unitnumber = Company::Get(head->owner)->freeunits[head->type].UseID(GetFreeUnitNumber(VEH_TRAIN));
 }
 
 /**
@@ -1336,7 +1335,7 @@ CommandCost CmdMoveRailVehicle(DoCommandFlag flags, VehicleID src_veh, VehicleID
 			}
 			/* Remove stuff not valid anymore for non-front engines. */
 			DeleteVehicleOrders(src);
-			src->unitnumber = 0;
+			src->ReleaseUnitNumber();
 			src->name.clear();
 		}
 
@@ -2171,12 +2170,7 @@ static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 	PBSTileInfo origin = FollowTrainReservation(v);
 	if (IsRailDepotTile(origin.tile)) return FindDepotData(origin.tile, 0);
 
-	switch (_settings_game.pf.pathfinder_for_trains) {
-		case VPF_NPF: return NPFTrainFindNearestDepot(v, max_distance);
-		case VPF_YAPF: return YapfTrainFindNearestDepot(v, max_distance);
-
-		default: NOT_REACHED();
-	}
+	return YapfTrainFindNearestDepot(v, max_distance);
 }
 
 ClosestDepot Train::FindClosestDepot()
@@ -2448,7 +2442,7 @@ void FreeTrainTrackReservation(const Train *v)
 	}
 }
 
-static const byte _initial_tile_subcoord[6][4][3] = {
+static const uint8_t _initial_tile_subcoord[6][4][3] = {
 {{ 15, 8, 1 }, { 0, 0, 0 }, { 0, 8, 5 }, { 0,  0, 0 }},
 {{  0, 0, 0 }, { 8, 0, 3 }, { 0, 0, 0 }, { 8, 15, 7 }},
 {{  0, 0, 0 }, { 7, 0, 2 }, { 0, 7, 6 }, { 0,  0, 0 }},
@@ -2473,13 +2467,7 @@ static const byte _initial_tile_subcoord[6][4][3] = {
 static Track DoTrainPathfind(const Train *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, bool do_track_reservation, PBSTileInfo *dest, TileIndex *final_dest)
 {
 	if (final_dest != nullptr) *final_dest = INVALID_TILE;
-
-	switch (_settings_game.pf.pathfinder_for_trains) {
-		case VPF_NPF: return NPFTrainChooseTrack(v, path_found, do_track_reservation, dest);
-		case VPF_YAPF: return YapfTrainChooseTrack(v, tile, enterdir, tracks, path_found, do_track_reservation, dest, final_dest);
-
-		default: NOT_REACHED();
-	}
+	return YapfTrainChooseTrack(v, tile, enterdir, tracks, path_found, do_track_reservation, dest, final_dest);
 }
 
 /**
@@ -2581,12 +2569,7 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
  */
 static bool TryReserveSafeTrack(const Train *v, TileIndex tile, Trackdir td, bool override_railtype)
 {
-	switch (_settings_game.pf.pathfinder_for_trains) {
-		case VPF_NPF: return NPFTrainFindNearestSafeTile(v, tile, td, override_railtype);
-		case VPF_YAPF: return YapfTrainFindNearestSafeTile(v, tile, td, override_railtype);
-
-		default: NOT_REACHED();
-	}
+	return YapfTrainFindNearestSafeTile(v, tile, td, override_railtype);
 }
 
 /** This class will save the current order of a vehicle and restore it on destruction. */
@@ -2934,12 +2917,7 @@ static bool CheckReverseTrain(const Train *v)
 
 	assert(v->track != TRACK_BIT_NONE);
 
-	switch (_settings_game.pf.pathfinder_for_trains) {
-		case VPF_NPF: return NPFTrainCheckReverse(v);
-		case VPF_YAPF: return YapfTrainCheckReverse(v);
-
-		default: NOT_REACHED();
-	}
+	return YapfTrainCheckReverse(v);
 }
 
 /**
@@ -3036,10 +3014,10 @@ static inline bool CheckCompatibleRail(const Train *v, TileIndex tile)
 
 /** Data structure for storing engine speed changes of an acceleration type. */
 struct AccelerationSlowdownParams {
-	byte small_turn; ///< Speed change due to a small turn.
-	byte large_turn; ///< Speed change due to a large turn.
-	byte z_up;       ///< Fraction to remove when moving up.
-	byte z_down;     ///< Fraction to add when moving down.
+	uint8_t small_turn; ///< Speed change due to a small turn.
+	uint8_t large_turn; ///< Speed change due to a large turn.
+	uint8_t z_up;       ///< Fraction to remove when moving up.
+	uint8_t z_down;     ///< Fraction to add when moving down.
 };
 
 /** Speed update fractions for each acceleration type. */
@@ -3441,7 +3419,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 						chosen_track == TRACK_BIT_LEFT  || chosen_track == TRACK_BIT_RIGHT);
 
 				/* Update XY to reflect the entrance to the new tile, and select the direction to use */
-				const byte *b = _initial_tile_subcoord[FindFirstBit(chosen_track)][enterdir];
+				const uint8_t *b = _initial_tile_subcoord[FindFirstBit(chosen_track)][enterdir];
 				gp.x = (gp.x & ~0xF) | b[0];
 				gp.y = (gp.y & ~0xF) | b[1];
 				Direction chosen_dir = (Direction)b[2];
@@ -4142,12 +4120,7 @@ static void CheckIfTrainNeedsService(Train *v)
 		return;
 	}
 
-	uint max_penalty;
-	switch (_settings_game.pf.pathfinder_for_trains) {
-		case VPF_NPF:  max_penalty = _settings_game.pf.npf.maximum_go_to_depot_penalty;  break;
-		case VPF_YAPF: max_penalty = _settings_game.pf.yapf.maximum_go_to_depot_penalty; break;
-		default: NOT_REACHED();
-	}
+	uint max_penalty = _settings_game.pf.yapf.maximum_go_to_depot_penalty;
 
 	FindDepotData tfdd = FindClosestTrainDepot(v, max_penalty);
 	/* Only go to the depot if it is not too far out of our way. */
@@ -4185,6 +4158,8 @@ void Train::OnNewCalendarDay()
 /** Economy day handler. */
 void Train::OnNewEconomyDay()
 {
+	EconomyAgeVehicle(this);
+
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
 
 	if (this->IsFrontEngine()) {

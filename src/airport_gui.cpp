@@ -22,7 +22,8 @@
 #include "station_type.h"
 #include "newgrf_airport.h"
 #include "newgrf_callbacks.h"
-#include "widgets/dropdown_type.h"
+#include "dropdown_type.h"
+#include "dropdown_func.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
 #include "vehicle_func.h"
@@ -41,11 +42,11 @@
 
 static AirportClassID _selected_airport_class; ///< the currently visible airport class
 static int _selected_airport_index;            ///< the index of the selected airport in the current class or -1
-static byte _selected_airport_layout;          ///< selected airport layout number.
+static uint8_t _selected_airport_layout;          ///< selected airport layout number.
 
 static void ShowBuildAirportPicker(Window *parent);
 
-SpriteID GetCustomAirportSprite(const AirportSpec *as, byte layout);
+SpriteID GetCustomAirportSprite(const AirportSpec *as, uint8_t layout);
 
 void CcBuildAirport(Commands, const CommandCost &result, TileIndex tile)
 {
@@ -63,8 +64,8 @@ static void PlaceAirport(TileIndex tile)
 {
 	if (_selected_airport_index == -1) return;
 
-	byte airport_type = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index)->GetIndex();
-	byte layout = _selected_airport_layout;
+	uint8_t airport_type = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index)->GetIndex();
+	uint8_t layout = _selected_airport_layout;
 	bool adjacent = _ctrl_pressed;
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
@@ -82,7 +83,7 @@ static void PlaceAirport(TileIndex tile)
 struct BuildAirToolbarWindow : Window {
 	int last_user_action; // Last started user action.
 
-	BuildAirToolbarWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	BuildAirToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
 		this->OnInvalidateData();
@@ -207,11 +208,11 @@ static constexpr NWidgetPart _nested_air_toolbar_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _air_toolbar_desc(__FILE__, __LINE__,
+static WindowDesc _air_toolbar_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_air", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_air_toolbar_widgets), std::end(_nested_air_toolbar_widgets),
+	_nested_air_toolbar_widgets,
 	&BuildAirToolbarWindow::hotkeys
 );
 
@@ -227,7 +228,7 @@ Window *ShowBuildAirToolbar()
 	if (!Company::IsValidID(_local_company)) return nullptr;
 
 	CloseWindowByClass(WC_BUILD_TOOLBAR);
-	return AllocateWindowDescFront<BuildAirToolbarWindow>(&_air_toolbar_desc, TRANSPORT_AIR);
+	return AllocateWindowDescFront<BuildAirToolbarWindow>(_air_toolbar_desc, TRANSPORT_AIR);
 }
 
 class BuildAirportWindow : public PickerWindowBase {
@@ -240,15 +241,15 @@ class BuildAirportWindow : public PickerWindowBase {
 	{
 		DropDownList list;
 
-		for (uint i = 0; i < AirportClass::GetClassCount(); i++) {
-			list.push_back(std::make_unique<DropDownListStringItem>(AirportClass::Get((AirportClassID)i)->name, i, false));
+		for (const auto &cls : AirportClass::Classes()) {
+			list.push_back(MakeDropDownListStringItem(cls.name, cls.Index()));
 		}
 
 		return list;
 	}
 
 public:
-	BuildAirportWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	BuildAirportWindow(WindowDesc &desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->CreateNestedTree();
 
@@ -276,7 +277,7 @@ public:
 			const AirportSpec *as = ac->GetSpec(_selected_airport_index);
 			if (as->IsAvailable()) {
 				/* Ensure the airport layout is valid. */
-				_selected_airport_layout = Clamp(_selected_airport_layout, 0, as->num_table - 1);
+				_selected_airport_layout = Clamp(_selected_airport_layout, 0, static_cast<uint8_t>(as->layouts.size() - 1));
 				selectFirstAirport = false;
 				this->UpdateSelectSize();
 			}
@@ -305,7 +306,7 @@ public:
 					StringID string = GetAirportTextCallback(as, _selected_airport_layout, CBID_AIRPORT_LAYOUT_NAME);
 					if (string != STR_UNDEFINED) {
 						SetDParam(0, string);
-					} else if (as->num_table > 1) {
+					} else if (as->layouts.size() > 1) {
 						SetDParam(0, STR_STATION_BUILD_AIRPORT_LAYOUT_NAME);
 						SetDParam(1, _selected_airport_layout + 1);
 					}
@@ -316,17 +317,17 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_AP_CLASS_DROPDOWN: {
 				Dimension d = {0, 0};
-				for (uint i = 0; i < AirportClass::GetClassCount(); i++) {
-					d = maxdim(d, GetStringBoundingBox(AirportClass::Get((AirportClassID)i)->name));
+				for (const auto &cls : AirportClass::Classes()) {
+					d = maxdim(d, GetStringBoundingBox(cls.name));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
-				*size = maxdim(*size, d);
+				size = maxdim(size, d);
 				break;
 			}
 
@@ -335,11 +336,11 @@ public:
 					const AirportSpec *as = AirportSpec::Get(i);
 					if (!as->enabled) continue;
 
-					size->width = std::max(size->width, GetStringBoundingBox(as->name).width + padding.width);
+					size.width = std::max(size.width, GetStringBoundingBox(as->name).width + padding.width);
 				}
 
 				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
-				size->height = 5 * this->line_height;
+				size.height = 5 * this->line_height;
 				break;
 			}
 
@@ -347,13 +348,13 @@ public:
 				for (int i = 0; i < NUM_AIRPORTS; i++) {
 					const AirportSpec *as = AirportSpec::Get(i);
 					if (!as->enabled) continue;
-					for (byte layout = 0; layout < as->num_table; layout++) {
+					for (uint8_t layout = 0; layout < static_cast<uint8_t>(as->layouts.size()); layout++) {
 						SpriteID sprite = GetCustomAirportSprite(as, layout);
 						if (sprite != 0) {
 							Dimension d = GetSpriteSize(sprite);
 							d.width += WidgetDimensions::scaled.framerect.Horizontal();
 							d.height += WidgetDimensions::scaled.framerect.Vertical();
-							*size = maxdim(d, *size);
+							size = maxdim(d, size);
 						}
 					}
 				}
@@ -363,12 +364,12 @@ public:
 				for (int i = NEW_AIRPORT_OFFSET; i < NUM_AIRPORTS; i++) {
 					const AirportSpec *as = AirportSpec::Get(i);
 					if (!as->enabled) continue;
-					for (byte layout = 0; layout < as->num_table; layout++) {
+					for (uint8_t layout = 0; layout < static_cast<uint8_t>(as->layouts.size()); layout++) {
 						StringID string = GetAirportTextCallback(as, layout, CBID_AIRPORT_ADDITIONAL_TEXT);
 						if (string == STR_UNDEFINED) continue;
 
-						Dimension d = GetStringMultiLineBoundingBox(string, *size);
-						*size = maxdim(d, *size);
+						Dimension d = GetStringMultiLineBoundingBox(string, size);
+						size = maxdim(d, size);
 					}
 				}
 				break;
@@ -473,14 +474,14 @@ public:
 			const AirportSpec *as = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index);
 			int w = as->size_x;
 			int h = as->size_y;
-			Direction rotation = as->rotation[_selected_airport_layout];
+			Direction rotation = as->layouts[_selected_airport_layout].rotation;
 			if (rotation == DIR_E || rotation == DIR_W) Swap(w, h);
 			SetTileSelectSize(w, h);
 
 			this->preview_sprite = GetCustomAirportSprite(as, _selected_airport_layout);
 
 			this->SetWidgetDisabledState(WID_AP_LAYOUT_DECREASE, _selected_airport_layout == 0);
-			this->SetWidgetDisabledState(WID_AP_LAYOUT_INCREASE, _selected_airport_layout + 1 >= as->num_table);
+			this->SetWidgetDisabledState(WID_AP_LAYOUT_INCREASE, _selected_airport_layout + 1U >= as->layouts.size());
 
 			int rad = _settings_game.station.modified_catchment ? as->catchment : (uint)CA_UNMODIFIED;
 			if (_settings_client.gui.station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
@@ -495,8 +496,8 @@ public:
 				break;
 
 			case WID_AP_AIRPORT_LIST: {
-				int num_clicked = this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget, 0, this->line_height);
-				if (num_clicked == INT_MAX) break;
+				int32_t num_clicked = this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget, 0, this->line_height);
+				if (num_clicked == INT32_MAX) break;
 				const AirportSpec *as = AirportClass::Get(_selected_airport_class)->GetSpec(num_clicked);
 				if (as->IsAvailable()) this->SelectOtherAirport(num_clicked);
 				break;
@@ -545,14 +546,12 @@ public:
 		if (change_class) {
 			/* If that fails, select the first available airport
 			 * from the first class where airports are available. */
-			for (AirportClassID j = APC_BEGIN; j < APC_MAX; j++) {
-				AirportClass *apclass = AirportClass::Get(j);
-				for (uint i = 0; i < apclass->GetSpecCount(); i++) {
-					const AirportSpec *as = apclass->GetSpec(i);
+			for (const auto &cls : AirportClass::Classes()) {
+				for (const auto &as : cls.Specs()) {
 					if (as->IsAvailable()) {
-						_selected_airport_class = j;
-						this->vscroll->SetCount(apclass->GetSpecCount());
-						this->SelectOtherAirport(i);
+						_selected_airport_class = cls.Index();
+						this->vscroll->SetCount(cls.GetSpecCount());
+						this->SelectOtherAirport(as->GetIndex());
 						return;
 					}
 				}
@@ -618,16 +617,16 @@ static constexpr NWidgetPart _nested_build_airport_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _build_airport_desc(__FILE__, __LINE__,
+static WindowDesc _build_airport_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_build_airport_widgets), std::end(_nested_build_airport_widgets)
+	_nested_build_airport_widgets
 );
 
 static void ShowBuildAirportPicker(Window *parent)
 {
-	new BuildAirportWindow(&_build_airport_desc, parent);
+	new BuildAirportWindow(_build_airport_desc, parent);
 }
 
 void InitializeAirportGui()

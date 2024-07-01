@@ -338,9 +338,9 @@ TEST_CASE("StrEndsWithIgnoreCase - std::string_view")
 
 TEST_CASE("FormatArrayAsHex")
 {
-	CHECK(FormatArrayAsHex(std::array<byte, 0>{}) == "");
-	CHECK(FormatArrayAsHex(std::array<byte, 1>{0x12}) == "12");
-	CHECK(FormatArrayAsHex(std::array<byte, 4>{0x13, 0x38, 0x42, 0xAF}) == "133842AF");
+	CHECK(FormatArrayAsHex(std::array<uint8_t, 0>{}) == "");
+	CHECK(FormatArrayAsHex(std::array<uint8_t, 1>{0x12}) == "12");
+	CHECK(FormatArrayAsHex(std::array<uint8_t, 4>{0x13, 0x38, 0x42, 0xAF}) == "133842AF");
 }
 
 TEST_CASE("ConvertHexToBytes")
@@ -384,3 +384,27 @@ TEST_CASE("ConvertHexToBytes")
 	CHECK(bytes3[6] == 0xde);
 	CHECK(bytes3[7] == 0xf0);
 }
+
+static const std::vector<std::pair<std::string, std::string>> _str_trim_testcases = {
+	{"a", "a"},
+	{"  a", "a"},
+	{"a  ", "a"},
+	{"  a   ", "a"},
+	{"  a  b  c  ", "a  b  c"},
+	{"   ", ""}
+};
+
+TEST_CASE("StrTrimInPlace")
+{
+	for (auto [input, expected] : _str_trim_testcases) {
+		StrTrimInPlace(input);
+		CHECK(input == expected);
+	}
+}
+
+TEST_CASE("StrTrimView") {
+	for (const auto& [input, expected] : _str_trim_testcases) {
+		CHECK(StrTrimView(input) == expected);
+	}
+}
+

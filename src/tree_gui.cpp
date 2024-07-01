@@ -139,7 +139,7 @@ class BuildTreesWindow : public Window
 	}
 
 public:
-	BuildTreesWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc), tree_to_plant(-1), mode(PM_NORMAL)
+	BuildTreesWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), tree_to_plant(-1), mode(PM_NORMAL)
 	{
 		this->CreateNestedTree();
 		ResetObjectToPlace();
@@ -152,13 +152,13 @@ public:
 		this->FinishInitNested(window_number);
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget >= WID_BT_TYPE_BUTTON_FIRST) {
 			/* Ensure tree type buttons are sized after the largest tree type */
 			Dimension d = GetMaxTreeSpriteSize();
-			size->width = d.width + padding.width;
-			size->height = d.height + padding.height + ScaleGUITrad(BUTTON_BOTTOM_OFFSET); // we need some more space
+			size.width = d.width + padding.width;
+			size.height = d.height + padding.height + ScaleGUITrad(BUTTON_BOTTOM_OFFSET); // we need some more space
 		}
 	}
 
@@ -258,13 +258,13 @@ public:
  */
 static std::unique_ptr<NWidgetBase> MakeTreeTypeButtons()
 {
-	const byte type_base = _tree_base_by_landscape[_settings_game.game_creation.landscape];
-	const byte type_count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
+	const uint8_t type_base = _tree_base_by_landscape[_settings_game.game_creation.landscape];
+	const uint8_t type_count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
 
 	/* Toyland has 9 tree types, which look better in 3x3 than 4x3 */
 	const int num_columns = type_count == 9 ? 3 : 4;
 	const int num_rows = CeilDiv(type_count, num_columns);
-	byte cur_type = type_base;
+	uint8_t cur_type = type_base;
 
 	auto vstack = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
 	vstack->SetPIP(0, 1, 0);
@@ -293,19 +293,16 @@ static constexpr NWidgetPart _nested_build_trees_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-		NWidget(NWID_VERTICAL), SetPadding(2),
+		NWidget(NWID_VERTICAL), SetPIP(0, 1, 0), SetPadding(2),
 			NWidgetFunction(MakeTreeTypeButtons),
-			NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_TYPE_RANDOM), SetDataTip(STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TOOLTIP),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BT_SE_PANE),
-				NWidget(NWID_VERTICAL),
-					NWidget(NWID_SPACER), SetMinimalSize(0, 1),
+				NWidget(NWID_VERTICAL), SetPIP(0, 1, 0),
 					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_MODE_NORMAL), SetFill(1, 0), SetDataTip(STR_TREES_MODE_NORMAL_BUTTON, STR_TREES_MODE_NORMAL_TOOLTIP),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_MODE_FOREST_SM), SetFill(1, 0), SetDataTip(STR_TREES_MODE_FOREST_SM_BUTTON, STR_TREES_MODE_FOREST_SM_TOOLTIP),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_MODE_FOREST_LG), SetFill(1, 0), SetDataTip(STR_TREES_MODE_FOREST_LG_BUTTON, STR_TREES_MODE_FOREST_LG_TOOLTIP),
 					EndContainer(),
-					NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BT_MANY_RANDOM), SetDataTip(STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
@@ -313,15 +310,15 @@ static constexpr NWidgetPart _nested_build_trees_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _build_trees_desc(__FILE__, __LINE__,
+static WindowDesc _build_trees_desc(
 	WDP_AUTO, "build_tree", 0, 0,
 	WC_BUILD_TREES, WC_NONE,
 	WDF_CONSTRUCTION,
-	std::begin(_nested_build_trees_widgets), std::end(_nested_build_trees_widgets)
+	_nested_build_trees_widgets
 );
 
 void ShowBuildTreesToolbar()
 {
 	if (_game_mode != GM_EDITOR && !Company::IsValidID(_local_company)) return;
-	AllocateWindowDescFront<BuildTreesWindow>(&_build_trees_desc, 0);
+	AllocateWindowDescFront<BuildTreesWindow>(_build_trees_desc, 0);
 }

@@ -33,7 +33,7 @@ struct IndustriesScopeResolver : public ScopeResolver {
 	}
 
 	uint32_t GetRandomBits() const override;
-	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const override;
 	uint32_t GetTriggers() const override;
 	void StorePSA(uint pos, int32_t value) override;
 };
@@ -41,15 +41,14 @@ struct IndustriesScopeResolver : public ScopeResolver {
 /** Resolver for industries. */
 struct IndustriesResolverObject : public ResolverObject {
 	IndustriesScopeResolver industries_scope; ///< Scope resolver for the industry.
-	TownScopeResolver *town_scope;            ///< Scope resolver for the associated town (if needed and available, else \c nullptr).
+	std::optional<TownScopeResolver> town_scope = std::nullopt; ///< Scope resolver for the associated town (if needed and available, else \c std::nullopt).
 
 	IndustriesResolverObject(TileIndex tile, Industry *indus, IndustryType type, uint32_t random_bits = 0,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
-	~IndustriesResolverObject();
 
 	TownScopeResolver *GetTown();
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &industries_scope;
@@ -97,6 +96,6 @@ bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoID cargo_type);
 IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32_t grf_id);
 
 /* in newgrf_industrytiles.cpp*/
-uint32_t GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, IndustryID index, bool signed_offsets, bool grf_version8);
+uint32_t GetNearbyIndustryTileInformation(uint8_t parameter, TileIndex tile, IndustryID index, bool signed_offsets, bool grf_version8);
 
 #endif /* NEWGRF_INDUSTRIES_H */

@@ -36,12 +36,15 @@ if(NOT OPTION_DEDICATED)
         bemidi.h
         CONDITION HAIKU
     )
+
+    add_files(
+        midi.h
+        midifile.cpp
+        midifile.hpp
+    )
 endif()
 
 add_files(
-    midi.h
-    midifile.cpp
-    midifile.hpp
     music_driver.hpp
     null_m.cpp
     null_m.h

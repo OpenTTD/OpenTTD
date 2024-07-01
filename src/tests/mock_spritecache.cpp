@@ -17,7 +17,8 @@
 
 static bool MockLoadNextSprite(int load_index)
 {
-	static Sprite *sprite = (Sprite *)AllocSprite(sizeof(*sprite));
+	SimpleSpriteAllocator allocator;
+	static Sprite *sprite = allocator.Allocate<Sprite>(sizeof(*sprite));
 
 	bool is_mapgen = IsMapgenSpriteID(load_index);
 

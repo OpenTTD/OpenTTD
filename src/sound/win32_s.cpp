@@ -45,10 +45,10 @@ static DWORD WINAPI SoundThread(LPVOID)
 	SetCurrentThreadName("ottd:win-sound");
 
 	do {
-		for (WAVEHDR *hdr = _wave_hdr; hdr != endof(_wave_hdr); hdr++) {
-			if ((hdr->dwFlags & WHDR_INQUEUE) != 0) continue;
-			MxMixSamples(hdr->lpData, hdr->dwBufferLength / 4);
-			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) {
+		for (auto &hdr : _wave_hdr) {
+			if ((hdr.dwFlags & WHDR_INQUEUE) != 0) continue;
+			MxMixSamples(hdr.lpData, hdr.dwBufferLength / 4);
+			if (waveOutWrite(_waveout, &hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) {
 				MessageBox(nullptr, L"Sounds are disabled until restart.", L"waveOutWrite failed", MB_ICONINFORMATION);
 				return 0;
 			}
@@ -59,7 +59,7 @@ static DWORD WINAPI SoundThread(LPVOID)
 	return 0;
 }
 
-const char *SoundDriver_Win32::Start(const StringList &parm)
+std::optional<std::string_view> SoundDriver_Win32::Start(const StringList &parm)
 {
 	WAVEFORMATEX wfex;
 	wfex.wFormatTag = WAVE_FORMAT_PCM;
@@ -70,7 +70,7 @@ const char *SoundDriver_Win32::Start(const StringList &parm)
 	wfex.nAvgBytesPerSec = wfex.nSamplesPerSec * wfex.nBlockAlign;
 
 	/* Limit buffer size to prevent overflows. */
-	_bufsize = GetDriverParamInt(parm, "bufsize", 8192);
+	_bufsize = GetDriverParamInt(parm, "samples", 1024);
 	_bufsize = std::min<int>(_bufsize, UINT16_MAX);
 
 	try {
@@ -89,7 +89,7 @@ const char *SoundDriver_Win32::Start(const StringList &parm)
 		return error;
 	}
 
-	return nullptr;
+	return std::nullopt;
 }
 
 void SoundDriver_Win32::Stop()

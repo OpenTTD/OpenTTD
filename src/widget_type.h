@@ -87,6 +87,7 @@ enum WidgetType {
 	NWID_CUSTOM,          ///< General Custom widget.
 
 	/* Nested widget part types. */
+	WPT_ATTRIBUTE_BEGIN, ///< Begin marker for attribute NWidgetPart types.
 	WPT_RESIZE,       ///< Widget part for specifying resizing.
 	WPT_MINSIZE,      ///< Widget part for specifying minimal size.
 	WPT_MINTEXTLINES, ///< Widget part for specifying minimal number of lines of text.
@@ -97,9 +98,12 @@ enum WidgetType {
 	WPT_PIPRATIO,     ///< Widget part for specifying pre/inter/post ratio for containers.
 	WPT_TEXTSTYLE,    ///< Widget part for specifying text colour.
 	WPT_ALIGNMENT,    ///< Widget part for specifying text/image alignment.
-	WPT_ENDCONTAINER, ///< Widget part to denote end of a container.
-	WPT_FUNCTION,     ///< Widget part for calling a user function.
 	WPT_SCROLLBAR,    ///< Widget part for attaching a scrollbar.
+	WPT_ASPECT,       ///< Widget part for sepcifying aspect ratio.
+	WPT_ATTRIBUTE_END, ///< End marker for attribute NWidgetPart types.
+
+	WPT_FUNCTION, ///< Widget part for calling a user function.
+	WPT_ENDCONTAINER, ///< Widget part to denote end of a container.
 
 	/* Pushable window widget types. */
 	WWT_MASK = 0x7F,
@@ -119,6 +123,13 @@ enum SizingType {
 	ST_RESIZE,   ///< Resize the nested widget tree.
 };
 
+enum class AspectFlags : uint8_t {
+	ResizeX = 1U << 0,
+	ResizeY = 1U << 1,
+	ResizeXY = ResizeX | ResizeY,
+};
+DECLARE_ENUM_AS_BIT_SET(AspectFlags)
+
 /* Forward declarations. */
 class NWidgetCore;
 class Scrollbar;
@@ -136,6 +147,7 @@ class NWidgetBase : public ZeroedMemoryAllocator {
 public:
 	NWidgetBase(WidgetType tp);
 
+	void ApplyAspectRatio();
 	virtual void AdjustPaddingForZoom();
 	virtual void SetupSmallestSize(Window *w) = 0;
 	virtual void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) = 0;
@@ -232,6 +244,8 @@ public:
 	/* Current widget size (that is, after resizing). */
 	uint current_x;       ///< Current horizontal size (after resizing).
 	uint current_y;       ///< Current vertical size (after resizing).
+	float aspect_ratio = 0; ///< Desired aspect ratio of widget.
+	AspectFlags aspect_flags = AspectFlags::ResizeX; ///< Which dimensions can be resized.
 
 	int pos_x;            ///< Horizontal position of top-left corner of the widget in the window.
 	int pos_y;            ///< Vertical position of top-left corner of the widget in the window.
@@ -298,6 +312,8 @@ public:
 	void SetMinimalTextLines(uint8_t min_lines, uint8_t spacing, FontSize size);
 	void SetFill(uint fill_x, uint fill_y);
 	void SetResize(uint resize_x, uint resize_y);
+	void SetAspect(float ratio, AspectFlags flags = AspectFlags::ResizeX);
+	void SetAspect(int x_ratio, int y_ratio, AspectFlags flags = AspectFlags::ResizeX);
 
 	bool UpdateMultilineWidgetSize(const std::string &str, int max_lines);
 	bool UpdateSize(uint min_x, uint min_y);
@@ -678,12 +694,16 @@ public:
  * Scrollbar data structure
  */
 class Scrollbar {
+public:
+	using size_type = int32_t;
+	static constexpr size_type max_size_type = std::numeric_limits<size_type>::max();
+	static constexpr size_type npos = max_size_type;
 private:
 	const bool is_vertical; ///< Scrollbar has vertical orientation.
-	uint16_t count;           ///< Number of elements in the list.
-	uint16_t cap;             ///< Number of visible elements of the scroll bar.
-	uint16_t pos;             ///< Index of first visible item of the list.
-	uint16_t stepsize;        ///< Distance to scroll, when pressing the buttons or using the wheel.
+	size_type count; ///< Number of elements in the list.
+	size_type cap; ///< Number of visible elements of the scroll bar.
+	size_type pos; ///< Index of first visible item of the list.
+	size_type stepsize; ///< Distance to scroll, when pressing the buttons or using the wheel.
 
 public:
 	/** Stepping sizes when scrolling */
@@ -701,7 +721,7 @@ public:
 	 * Gets the number of elements in the list
 	 * @return the number of elements
 	 */
-	inline uint16_t GetCount() const
+	inline size_type GetCount() const
 	{
 		return this->count;
 	}
@@ -710,7 +730,7 @@ public:
 	 * Gets the number of visible elements of the scrollbar
 	 * @return the number of visible elements
 	 */
-	inline uint16_t GetCapacity() const
+	inline size_type GetCapacity() const
 	{
 		return this->cap;
 	}
@@ -719,7 +739,7 @@ public:
 	 * Gets the position of the first visible element in the list
 	 * @return the position of the element
 	 */
-	inline uint16_t GetPosition() const
+	inline size_type GetPosition() const
 	{
 		return this->pos;
 	}
@@ -729,7 +749,7 @@ public:
 	 * @param item to check
 	 * @return true iff the item is visible
 	 */
-	inline bool IsVisible(uint16_t item) const
+	inline bool IsVisible(size_type item) const
 	{
 		return IsInsideBS(item, this->GetPosition(), this->GetCapacity());
 	}
@@ -751,7 +771,7 @@ public:
 	{
 		assert(stepsize > 0);
 
-		this->stepsize = ClampTo<uint16_t>(stepsize);
+		this->stepsize = ClampTo<size_type>(stepsize);
 	}
 
 	/**
@@ -761,9 +781,9 @@ public:
 	 */
 	void SetCount(size_t num)
 	{
-		assert(num <= MAX_UVALUE(uint16_t));
+		assert(num < Scrollbar::max_size_type);
 
-		this->count = ClampTo<uint16_t>(num);
+		this->count = ClampTo<size_type>(num);
 		/* Ensure position is within bounds */
 		this->SetPosition(this->pos);
 	}
@@ -775,9 +795,9 @@ public:
 	 */
 	void SetCapacity(size_t capacity)
 	{
-		assert(capacity <= MAX_UVALUE(uint16_t));
+		assert(capacity < Scrollbar::max_size_type);
 
-		this->cap = ClampTo<uint16_t>(capacity);
+		this->cap = ClampTo<size_type>(capacity);
 		/* Ensure position is within bounds */
 		this->SetPosition(this->pos);
 	}
@@ -789,9 +809,9 @@ public:
 	 * @param position the position of the element
 	 * @return true iff the position has changed
 	 */
-	bool SetPosition(int position)
+	bool SetPosition(size_type position)
 	{
-		uint16_t old_pos = this->pos;
+		size_type old_pos = this->pos;
 		this->pos = Clamp(position, 0, std::max(this->count - this->cap, 0));
 		return this->pos != old_pos;
 	}
@@ -820,7 +840,7 @@ public:
 	 * the window depending on where in the list it was.
 	 * @param position the position to scroll towards.
 	 */
-	void ScrollTowards(int position)
+	void ScrollTowards(size_type position)
 	{
 		if (position < this->GetPosition()) {
 			/* scroll up to the item */
@@ -831,7 +851,21 @@ public:
 		}
 	}
 
-	int GetScrolledRowFromWidget(int clickpos, const Window * const w, WidgetID widget, int padding = 0, int line_height = -1) const;
+	size_type GetScrolledRowFromWidget(int clickpos, const Window * const w, WidgetID widget, int padding = 0, int line_height = -1) const;
+
+	/**
+	 * Get a pair of iterators for the range of visible elements in a container.
+	 * @param container Container of elements represented by the scrollbar.
+	 * @returns Pair of iterators of visible elements.
+	 */
+	template <typename Tcontainer>
+	auto GetVisibleRangeIterators(Tcontainer &container) const
+	{
+		assert(static_cast<size_t>(this->GetCount()) == container.size()); // Scrollbar and container size must match.
+		auto first = std::next(std::begin(container), this->GetPosition());
+		auto last = std::next(first, std::min<size_t>(this->GetCapacity(), this->GetCount() - this->GetPosition()));
+		return std::make_pair(first, last);
+	}
 
 	/**
 	 * Return an iterator pointing to the element of a scrolled widget that a user clicked in.
@@ -844,15 +878,13 @@ public:
 	 * @return Iterator to the element clicked at. If clicked at a wrong position, returns as interator to the end of the container.
 	 */
 	template <typename Tcontainer>
-	typename Tcontainer::iterator GetScrolledItemFromWidget(Tcontainer &container, int clickpos, const Window * const w, WidgetID widget, int padding = 0, int line_height = -1) const
+	auto GetScrolledItemFromWidget(Tcontainer &container, int clickpos, const Window * const w, WidgetID widget, int padding = 0, int line_height = -1) const
 	{
-		assert(this->GetCount() == container.size()); // Scrollbar and container size must match.
-		int row = this->GetScrolledRowFromWidget(clickpos, w, widget, padding, line_height);
-		if (row == INT_MAX) return std::end(container);
+		assert(static_cast<size_t>(this->GetCount()) == container.size()); // Scrollbar and container size must match.
+		size_type row = this->GetScrolledRowFromWidget(clickpos, w, widget, padding, line_height);
+		if (row == Scrollbar::npos) return std::end(container);
 
-		typename Tcontainer::iterator it = std::begin(container);
-		std::advance(it, row);
-		return it;
+		return std::next(std::begin(container), row);
 	}
 
 	EventState UpdateListPositionOnKeyPress(int &list_position, uint16_t keycode) const;
@@ -1027,6 +1059,11 @@ struct NWidgetPartAlignment {
 	StringAlignment align; ///< Alignment of text/image.
 };
 
+struct NWidgetPartAspect {
+	float ratio;
+	AspectFlags flags;
+};
+
 /**
  * Pointer to function returning a nested widget.
  * @return Nested widget (tree).
@@ -1050,6 +1087,7 @@ struct NWidgetPart {
 		NWidgetPartAlignment align;      ///< Part with internal alignment.
 		NWidgetFunctionType *func_ptr;   ///< Part with a function call.
 		NWidContainerFlags cont_flags;   ///< Part with container flags.
+		NWidgetPartAspect aspect; ///< Part to set aspect ratio.
 
 		/* Constructors for each NWidgetPartUnion data type. */
 		constexpr NWidgetPartUnion() : xy() {}
@@ -1063,6 +1101,7 @@ struct NWidgetPart {
 		constexpr NWidgetPartUnion(NWidgetPartAlignment align) : align(align) {}
 		constexpr NWidgetPartUnion(NWidgetFunctionType *func_ptr) : func_ptr(func_ptr) {}
 		constexpr NWidgetPartUnion(NWidContainerFlags cont_flags) : cont_flags(cont_flags) {}
+		constexpr NWidgetPartUnion(NWidgetPartAspect aspect) : aspect(aspect) {}
 	} u;
 
 	/* Constructors for each NWidgetPart data type. */
@@ -1077,6 +1116,7 @@ struct NWidgetPart {
 	constexpr NWidgetPart(WidgetType type, NWidgetPartAlignment align) : type(type), u(align) {}
 	constexpr NWidgetPart(WidgetType type, NWidgetFunctionType *func_ptr) : type(type), u(func_ptr) {}
 	constexpr NWidgetPart(WidgetType type, NWidContainerFlags cont_flags) : type(type), u(cont_flags) {}
+	constexpr NWidgetPart(WidgetType type, NWidgetPartAspect aspect) : type(type), u(aspect) {}
 };
 
 /**
@@ -1249,6 +1289,17 @@ constexpr NWidgetPart SetScrollbar(WidgetID index)
 }
 
 /**
+ * Widget part function for setting the aspect ratio.
+ * @param ratio Desired aspect ratio, or 0 for none.
+ * @param flags Dimensions which should be resized.
+ * @ingroup NestedWidgetParts
+ */
+constexpr NWidgetPart SetAspect(float ratio, AspectFlags flags = AspectFlags::ResizeX)
+{
+	return NWidgetPart{WPT_ASPECT, NWidgetPartAspect{ratio, flags}};
+}
+
+/**
  * Widget part function for starting a new 'real' widget.
  * @param tp  Type of the new nested widget.
  * @param col Colour of the new widget.
@@ -1284,8 +1335,8 @@ constexpr NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
 }
 
 bool IsContainerWidgetType(WidgetType tp);
-std::unique_ptr<NWidgetBase> MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, std::unique_ptr<NWidgetBase> &&container);
-std::unique_ptr<NWidgetBase> MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetStacked **shade_select);
+std::unique_ptr<NWidgetBase> MakeNWidgets(std::span<const NWidgetPart> nwid_parts, std::unique_ptr<NWidgetBase> &&container);
+std::unique_ptr<NWidgetBase> MakeWindowNWidgetTree(std::span<const NWidgetPart> nwid_parts, NWidgetStacked **shade_select);
 
 std::unique_ptr<NWidgetBase> MakeCompanyButtonRows(WidgetID widget_first, WidgetID widget_last, Colours button_colour, int max_length, StringID button_tooltip, bool resizable = true);
 

@@ -15,7 +15,7 @@
 /**
  * Enum for all companies/owners.
  */
-enum Owner : byte {
+enum Owner : uint8_t {
 	/* All companies below MAX_COMPANIES are playable
 	 * companies, above, they are special, computer controlled 'companies' */
 	OWNER_BEGIN     = 0x00, ///< First owner
@@ -70,6 +70,14 @@ enum CompanyCtrlAction : uint8_t {
 	CCA_DELETE, ///< Delete a company.
 
 	CCA_END,    ///< Sentinel for end.
+};
+
+/** The action to do with CMD_COMPANY_ALLOW_LIST_CTRL. */
+enum CompanyAllowListCtrlAction : uint8_t {
+	CALCA_ADD, ///< Create a public key.
+	CALCA_REMOVE, ///< Remove a public key.
+
+	CALCA_END,    ///< Sentinel for end.
 };
 
 #endif /* COMPANY_TYPE_H */

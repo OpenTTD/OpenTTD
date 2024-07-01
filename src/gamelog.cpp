@@ -26,7 +26,7 @@ extern SavegameType _savegame_type; ///< type of savegame we are loading
 
 extern uint32_t _ttdp_version;        ///< version of TTDP savegame (if applicable)
 extern SaveLoadVersion _sl_version; ///< the major savegame version identifier
-extern byte   _sl_minor_version;    ///< the minor savegame version, DO NOT USE!
+extern uint8_t   _sl_minor_version;    ///< the minor savegame version, DO NOT USE!
 
 Gamelog _gamelog; ///< Gamelog instance
 
@@ -463,7 +463,7 @@ void Gamelog::TestMode()
  * @param bug type of bug, @see enum GRFBugs
  * @param data additional data
  */
-void Gamelog::GRFBug(uint32_t grfid, byte bug, uint64_t data)
+void Gamelog::GRFBug(uint32_t grfid, uint8_t bug, uint64_t data)
 {
 	assert(this->action_type == GLAT_GRFBUG);
 
@@ -682,7 +682,7 @@ void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
  * @param[out] ever_modified Max value of 'modified' from all binaries that ever saved this savegame.
  * @param[out] removed_newgrfs Set to true if any NewGRFs have been removed.
  */
-void Gamelog::Info(uint32_t *last_ottd_rev, byte *ever_modified, bool *removed_newgrfs)
+void Gamelog::Info(uint32_t *last_ottd_rev, uint8_t *ever_modified, bool *removed_newgrfs)
 {
 	for (const LoggedAction &la : this->data->action) {
 		for (const auto &lc : la.change) {

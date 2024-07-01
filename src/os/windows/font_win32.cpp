@@ -10,7 +10,6 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "../../blitter/factory.hpp"
-#include "../../core/alloc_func.hpp"
 #include "../../core/math_func.hpp"
 #include "../../core/mem_func.hpp"
 #include "../../error_func.h"
@@ -65,21 +64,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	if (info->callback->Monospace() && (logfont->elfLogFont.lfPitchAndFamily & (FF_MODERN | FIXED_PITCH)) != (FF_MODERN | FIXED_PITCH)) return 1;
 
 	/* The font has to have at least one of the supported locales to be usable. */
-	if ((metric->ntmFontSig.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (metric->ntmFontSig.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) {
-		/* On win9x metric->ntmFontSig seems to contain garbage. */
-		FONTSIGNATURE fs;
-		memset(&fs, 0, sizeof(fs));
-		HFONT font = CreateFontIndirect(&logfont->elfLogFont);
-		if (font != nullptr) {
-			HDC dc = GetDC(nullptr);
-			HGDIOBJ oldfont = SelectObject(dc, font);
-			GetTextCharsetInfo(dc, &fs, 0);
-			SelectObject(dc, oldfont);
-			ReleaseDC(nullptr, dc);
-			DeleteObject(font);
-		}
-		if ((fs.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (fs.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
-	}
+	if ((metric->ntmFontSig.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (metric->ntmFontSig.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
 
 	char font_name[MAX_PATH];
 	convert_from_fs((const wchar_t *)logfont->elfFullName, font_name, lengthof(font_name));
@@ -114,10 +99,6 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &, int winla
 	return ret == 0;
 }
 
-
-#ifndef ANTIALIASED_QUALITY
-#define ANTIALIASED_QUALITY     4
-#endif
 
 /**
  * Create a new Win32FontCache.
@@ -171,7 +152,8 @@ void Win32FontCache::SetFontSize(int pixels)
 	/* Create GDI font handle. */
 	this->logfont.lfHeight = -pixels;
 	this->logfont.lfWidth = 0;
-	this->logfont.lfOutPrecision = ANTIALIASED_QUALITY;
+	this->logfont.lfOutPrecision = OUT_TT_ONLY_PRECIS;
+	this->logfont.lfQuality = ANTIALIASED_QUALITY;
 
 	if (this->font != nullptr) {
 		SelectObject(dc, this->old_font);
@@ -185,7 +167,6 @@ void Win32FontCache::SetFontSize(int pixels)
 	POUTLINETEXTMETRIC otm = (POUTLINETEXTMETRIC)new BYTE[otmSize];
 	GetOutlineTextMetrics(this->dc, otmSize, otm);
 
-	this->units_per_em = otm->otmEMSquare;
 	this->ascender = otm->otmTextMetrics.tmAscent;
 	this->descender = otm->otmTextMetrics.tmDescent;
 	this->height = this->ascender + this->descender;
@@ -227,13 +208,13 @@ void Win32FontCache::ClearFontCache()
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) UserError("Font glyph is too large");
 
 	/* Call GetGlyphOutline again with size to actually render the glyph. */
-	byte *bmp = new byte[size];
+	uint8_t *bmp = this->render_buffer.Allocate(size);
 	GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, size, bmp, &mat);
 
 	/* GDI has rendered the glyph, now we allocate a sprite and copy the image into it. */
 	SpriteLoader::SpriteCollection spritecollection;
-	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_NORMAL];
-	sprite.AllocateData(ZOOM_LVL_NORMAL, width * height);
+	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_MIN];
+	sprite.AllocateData(ZOOM_LVL_MIN, width * height);
 	sprite.type = SpriteType::Font;
 	sprite.colours = (aa ? SCC_PAL | SCC_ALPHA : SCC_PAL);
 	sprite.width = width;
@@ -271,15 +252,14 @@ void Win32FontCache::ClearFontCache()
 		}
 	}
 
+	UniquePtrSpriteAllocator allocator;
+	BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
+
 	GlyphEntry new_glyph;
-	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, SimpleSpriteAlloc);
+	new_glyph.data = std::move(allocator.data);
 	new_glyph.width = gm.gmCellIncX;
 
-	this->SetGlyphPtr(key, &new_glyph);
-
-	delete[] bmp;
-
-	return new_glyph.sprite;
+	return this->SetGlyphPtr(key, std::move(new_glyph)).GetSprite();
 }
 
 /* virtual */ GlyphID Win32FontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
@@ -300,20 +280,6 @@ void Win32FontCache::ClearFontCache()
 
 	if (glyphs[0] != 0xFFFF) return glyphs[0];
 	return allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END ? this->parent->MapCharToGlyph(key) : 0;
-}
-
-/* virtual */ const void *Win32FontCache::InternalGetFontTable(uint32_t tag, size_t &length)
-{
-	DWORD len = GetFontData(this->dc, tag, 0, nullptr, 0);
-
-	void *result = nullptr;
-	if (len != GDI_ERROR && len > 0) {
-		result = MallocT<BYTE>(len);
-		GetFontData(this->dc, tag, 0, result, len);
-	}
-
-	length = len;
-	return result;
 }
 
 
@@ -344,11 +310,11 @@ static bool TryLoadFontFromFile(const std::string &font_name, LOGFONT &logfont)
 				/* Try to query an array of LOGFONTs that describe the file. */
 				DWORD len = 0;
 				if (GetFontResourceInfo(fontPath, &len, nullptr, 2) && len >= sizeof(LOGFONT)) {
-					LOGFONT *buf = (LOGFONT *)new byte[len];
+					LOGFONT *buf = (LOGFONT *)new uint8_t[len];
 					if (GetFontResourceInfo(fontPath, &len, buf, 2)) {
 						logfont = *buf; // Just use first entry.
 					}
-					delete[](byte *)buf;
+					delete[](uint8_t *)buf;
 				}
 			}
 
@@ -387,9 +353,10 @@ void LoadWin32Font(FontSize fs)
 {
 	FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
 
-	if (settings->font.empty()) return;
+	std::string font = GetFontCacheFontName(fs);
+	if (font.empty()) return;
 
-	const char *font_name = settings->font.c_str();
+	const char *font_name = font.c_str();
 	LOGFONT logfont;
 	MemSetT(&logfont, 0);
 	logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
@@ -401,8 +368,8 @@ void LoadWin32Font(FontSize fs)
 		logfont = *(const LOGFONT *)settings->os_handle;
 	} else if (strchr(font_name, '.') != nullptr) {
 		/* Might be a font file name, try load it. */
-		if (!TryLoadFontFromFile(settings->font, logfont)) {
-			ShowInfo("Unable to load file '{}' for {} font, using default windows font selection instead", font_name, FontSizeToName(fs));
+		if (!TryLoadFontFromFile(font, logfont)) {
+			ShowInfo("Unable to load file '{}' for {} font, using default windows font selection instead", font, FontSizeToName(fs));
 		}
 	}
 
@@ -411,25 +378,5 @@ void LoadWin32Font(FontSize fs)
 		convert_to_fs(font_name, logfont.lfFaceName, lengthof(logfont.lfFaceName));
 	}
 
-	LoadWin32Font(fs, logfont, settings->size, font_name);
-}
-
-/**
- * Load a TrueType font from a file.
- * @param fs The font size to load.
- * @param file_name Path to the font file.
- * @param size Requested font size.
- */
-void LoadWin32Font(FontSize fs, const std::string &file_name, uint size)
-{
-	LOGFONT logfont;
-	MemSetT(&logfont, 0);
-	logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
-	logfont.lfCharSet = DEFAULT_CHARSET;
-	logfont.lfOutPrecision = OUT_OUTLINE_PRECIS;
-	logfont.lfClipPrecision = CLIP_DEFAULT_PRECIS;
-
-	if (TryLoadFontFromFile(file_name, logfont)) {
-		LoadWin32Font(fs, logfont, size, file_name.c_str());
-	}
+	LoadWin32Font(fs, logfont, GetFontCacheFontSize(fs), font_name);
 }

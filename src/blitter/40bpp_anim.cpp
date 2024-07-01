@@ -104,8 +104,8 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 
 	/* skip upper lines in src_px and src_n */
 	for (uint i = bp->skip_top; i != 0; i--) {
-		src_px = (const Colour *)((const byte *)src_px + *(const uint32_t *)src_px);
-		src_n = (const uint16_t *)((const byte *)src_n + *(const uint32_t *)src_n);
+		src_px = (const Colour *)((const uint8_t *)src_px + *(const uint32_t *)src_px);
+		src_n = (const uint16_t *)((const uint8_t *)src_n + *(const uint32_t *)src_n);
 	}
 
 	/* skip lines in dst */
@@ -114,7 +114,7 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	uint8_t *anim = VideoDriver::GetInstance()->GetAnimBuffer() + ((uint32_t *)bp->dst - (uint32_t *)_screen.dst_ptr) + bp->top * bp->pitch + bp->left;
 
 	/* store so we don't have to access it via bp everytime (compiler assumes pointer aliasing) */
-	const byte *remap = bp->remap;
+	const uint8_t *remap = bp->remap;
 
 	for (int y = 0; y < bp->height; y++) {
 		/* next dst line begins here */
@@ -122,11 +122,11 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 		uint8_t *anim_ln = anim + bp->pitch;
 
 		/* next src line begins here */
-		const Colour *src_px_ln = (const Colour *)((const byte *)src_px + *(const uint32_t *)src_px);
+		const Colour *src_px_ln = (const Colour *)((const uint8_t *)src_px + *(const uint32_t *)src_px);
 		src_px++;
 
 		/* next src_n line begins here */
-		const uint16_t *src_n_ln = (const uint16_t *)((const byte *)src_n + *(const uint32_t *)src_n);
+		const uint16_t *src_n_ln = (const uint16_t *)((const uint8_t *)src_n + *(const uint32_t *)src_n);
 		src_n += 2;
 
 		/* we will end this line when we reach this point */
@@ -397,7 +397,7 @@ void Blitter_40bppAnim::DrawColourMappingRect(void *dst, int width, int height, 
 	}
 }
 
-Sprite *Blitter_40bppAnim::Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator)
+Sprite *Blitter_40bppAnim::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	return this->EncodeInternal<false>(sprite, allocator);
 }

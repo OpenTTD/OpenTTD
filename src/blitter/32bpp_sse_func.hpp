@@ -10,10 +10,17 @@
 #ifndef BLITTER_32BPP_SSE_FUNC_HPP
 #define BLITTER_32BPP_SSE_FUNC_HPP
 
+/* ATTENTION
+ * This file is compiled multiple times with different defines for SSE_VERSION and MARGIN_NORMAL_THRESHOLD.
+ * Be careful when declaring things with external linkage.
+ * Use internal linkage instead, i.e. "static".
+ */
+#define INTERNAL_LINKAGE static
+
 #ifdef WITH_SSE
 
 GNU_TARGET(SSE_TARGET)
-inline void InsertFirstUint32(const uint32_t value, __m128i &into)
+INTERNAL_LINKAGE inline void InsertFirstUint32(const uint32_t value, __m128i &into)
 {
 #if (SSE_VERSION >= 4)
 	into = _mm_insert_epi32(into, value, 0);
@@ -24,7 +31,7 @@ inline void InsertFirstUint32(const uint32_t value, __m128i &into)
 }
 
 GNU_TARGET(SSE_TARGET)
-inline void InsertSecondUint32(const uint32_t value, __m128i &into)
+INTERNAL_LINKAGE inline void InsertSecondUint32(const uint32_t value, __m128i &into)
 {
 #if (SSE_VERSION >= 4)
 	into = _mm_insert_epi32(into, value, 1);
@@ -35,7 +42,7 @@ inline void InsertSecondUint32(const uint32_t value, __m128i &into)
 }
 
 GNU_TARGET(SSE_TARGET)
-inline void LoadUint64(const uint64_t value, __m128i &into)
+INTERNAL_LINKAGE inline void LoadUint64(const uint64_t value, __m128i &into)
 {
 #ifdef POINTER_IS_64BIT
 	into = _mm_cvtsi64_si128(value);
@@ -50,7 +57,7 @@ inline void LoadUint64(const uint64_t value, __m128i &into)
 }
 
 GNU_TARGET(SSE_TARGET)
-inline __m128i PackUnsaturated(__m128i from, const __m128i &mask)
+INTERNAL_LINKAGE inline __m128i PackUnsaturated(__m128i from, const __m128i &mask)
 {
 #if (SSE_VERSION == 2)
 	from = _mm_and_si128(from, mask);    // PAND, wipe high bytes to keep low bytes when packing
@@ -61,7 +68,7 @@ inline __m128i PackUnsaturated(__m128i from, const __m128i &mask)
 }
 
 GNU_TARGET(SSE_TARGET)
-inline __m128i DistributeAlpha(const __m128i from, const __m128i &mask)
+INTERNAL_LINKAGE inline __m128i DistributeAlpha(const __m128i from, const __m128i &mask)
 {
 #if (SSE_VERSION == 2)
 	__m128i alphaAB = _mm_shufflelo_epi16(from, 0x3F); // PSHUFLW, put alpha1 in front of each rgb1
@@ -73,7 +80,7 @@ inline __m128i DistributeAlpha(const __m128i from, const __m128i &mask)
 }
 
 GNU_TARGET(SSE_TARGET)
-inline __m128i AlphaBlendTwoPixels(__m128i src, __m128i dst, const __m128i &distribution_mask, const __m128i &pack_mask, const __m128i &alpha_mask)
+INTERNAL_LINKAGE inline __m128i AlphaBlendTwoPixels(__m128i src, __m128i dst, const __m128i &distribution_mask, const __m128i &pack_mask, const __m128i &alpha_mask)
 {
 	__m128i srcAB = _mm_unpacklo_epi8(src, _mm_setzero_si128());   // PUNPCKLBW, expand each uint8_t into uint16
 	__m128i dstAB = _mm_unpacklo_epi8(dst, _mm_setzero_si128());
@@ -97,7 +104,7 @@ inline __m128i AlphaBlendTwoPixels(__m128i src, __m128i dst, const __m128i &dist
  * rgb = rgb * ((256/4) * 4 - (alpha/4)) / ((256/4) * 4)
  */
 GNU_TARGET(SSE_TARGET)
-inline __m128i DarkenTwoPixels(__m128i src, __m128i dst, const __m128i &distribution_mask, const __m128i &tr_nom_base)
+INTERNAL_LINKAGE inline __m128i DarkenTwoPixels(__m128i src, __m128i dst, const __m128i &distribution_mask, const __m128i &tr_nom_base)
 {
 	__m128i srcAB = _mm_unpacklo_epi8(src, _mm_setzero_si128());
 	__m128i dstAB = _mm_unpacklo_epi8(dst, _mm_setzero_si128());
@@ -111,7 +118,7 @@ inline __m128i DarkenTwoPixels(__m128i src, __m128i dst, const __m128i &distribu
 
 IGNORE_UNINITIALIZED_WARNING_START
 GNU_TARGET(SSE_TARGET)
-static Colour ReallyAdjustBrightness(Colour colour, uint8_t brightness)
+INTERNAL_LINKAGE Colour ReallyAdjustBrightness(Colour colour, uint8_t brightness)
 {
 	uint64_t c16 = colour.b | (uint64_t) colour.g << 16 | (uint64_t) colour.r << 32;
 	c16 *= brightness;
@@ -145,7 +152,7 @@ IGNORE_UNINITIALIZED_WARNING_STOP
 /** ReallyAdjustBrightness() is not called that often.
  * Inlining this function implies a far jump, which has a huge latency.
  */
-inline Colour AdjustBrightneSSE(Colour colour, uint8_t brightness)
+INTERNAL_LINKAGE inline Colour AdjustBrightneSSE(Colour colour, uint8_t brightness)
 {
 	/* Shortcut for normal brightness. */
 	if (brightness == Blitter_32bppBase::DEFAULT_BRIGHTNESS) return colour;
@@ -154,7 +161,7 @@ inline Colour AdjustBrightneSSE(Colour colour, uint8_t brightness)
 }
 
 GNU_TARGET(SSE_TARGET)
-inline __m128i AdjustBrightnessOfTwoPixels([[maybe_unused]] __m128i from, [[maybe_unused]] uint32_t brightness)
+INTERNAL_LINKAGE inline __m128i AdjustBrightnessOfTwoPixels([[maybe_unused]] __m128i from, [[maybe_unused]] uint32_t brightness)
 {
 #if (SSE_VERSION < 3)
 	NOT_REACHED();
@@ -214,7 +221,7 @@ inline void Blitter_32bppSSSE3::Draw(const Blitter::BlitterParams *bp, ZoomLevel
 inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
 #endif
 {
-	const byte * const remap = bp->remap;
+	const uint8_t * const remap = bp->remap;
 	Colour *dst_line = (Colour *) bp->dst + bp->top * bp->pitch + bp->left;
 	int effective_width = bp->width;
 
@@ -222,7 +229,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	const SpriteData * const sd = (const SpriteData *) bp->sprite;
 	const SpriteInfo * const si = &sd->infos[zoom];
 	const MapValue *src_mv_line = (const MapValue *) &sd->data[si->mv_offset] + bp->skip_top * si->sprite_width;
-	const Colour *src_rgba_line = (const Colour *) ((const byte *) &sd->data[si->sprite_offset] + bp->skip_top * si->sprite_line_size);
+	const Colour *src_rgba_line = (const Colour *) ((const uint8_t *) &sd->data[si->sprite_offset] + bp->skip_top * si->sprite_line_size);
 
 	if (read_mode != RM_WITH_MARGIN) {
 		src_rgba_line += bp->skip_left;
@@ -307,7 +314,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							Colour m_colour = m_colour_init; \
 							{ \
 							const Colour srcm = (Colour) (m_src); \
-							const uint m = (byte) (m_m); \
+							const uint m = (uint8_t) (m_m); \
 							const uint r = remap[m]; \
 							const Colour cmap = (this->LookupColourInPalette(r).data & 0x00FFFFFF) | (srcm.data & 0xFF000000); \
 							m_colour = r == 0 ? m_colour : cmap; \
@@ -435,7 +442,7 @@ bmcr_alpha_blend_single:
 
 next_line:
 		if (mode == BM_COLOUR_REMAP || mode == BM_CRASH_REMAP) src_mv_line += si->sprite_width;
-		src_rgba_line = (const Colour*) ((const byte*) src_rgba_line + si->sprite_line_size);
+		src_rgba_line = (const Colour*) ((const uint8_t*) src_rgba_line + si->sprite_line_size);
 		dst_line += bp->pitch;
 	}
 }

@@ -54,7 +54,7 @@
 	if (!::IsValidTile(tile)) return false;
 	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
 
-	return ::IsRoadStopTile(tile) && HasBit(::GetPresentRoadTypes(tile), (::RoadType)GetCurrentRoadType());
+	return ::IsStationRoadStopTile(tile) && HasBit(::GetPresentRoadTypes(tile), (::RoadType)GetCurrentRoadType());
 }
 
 /* static */ bool ScriptRoad::IsDriveThroughRoadStationTile(TileIndex tile)
@@ -245,13 +245,13 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<> &existing, i
 		SLOPE_W,    SLOPE_EW,  SLOPE_SW,  SLOPE_WSE,
 		SLOPE_W,    SLOPE_SW,  SLOPE_EW,  SLOPE_WSE,
 		SLOPE_SW,   SLOPE_WSE, SLOPE_WSE};
-	static const byte base_rotates[] = {0, 0, 1, 0, 2, 0, 1, 0, 3, 3, 2, 3, 2, 2, 1};
+	static const uint8_t base_rotates[] = {0, 0, 1, 0, 2, 0, 1, 0, 3, 3, 2, 3, 2, 2, 1};
 
 	if (slope >= (::Slope)lengthof(base_slopes)) {
 		/* This slope is an invalid slope, so ignore it. */
 		return -1;
 	}
-	byte base_rotate = base_rotates[slope];
+	uint8_t base_rotate = base_rotates[slope];
 	slope = base_slopes[slope];
 
 	/* Some slopes don't need rotating, so return early when we know we do
@@ -604,7 +604,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsTileType(tile, MP_STATION));
-	EnforcePrecondition(false, IsRoadStop(tile));
+	EnforcePrecondition(false, IsStationRoadStop(tile));
 
 	return ScriptObject::Command<CMD_REMOVE_ROAD_STOP>::Do(tile, 1, 1, GetRoadStopType(tile), false);
 }

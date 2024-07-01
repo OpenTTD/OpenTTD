@@ -18,10 +18,6 @@
 #include "newgrf_animation_type.h"
 #include "newgrf_commons.h"
 
-enum IndustryCleanupType {
-	CLEAN_RANDOMSOUNDS,    ///< Free the dynamically allocated sounds table
-};
-
 /** Available types of industry lifetimes. */
 enum IndustryLifeType {
 	INDUSTRYLIFE_BLACK_HOLE =      0, ///< Like power plants and banks
@@ -108,45 +104,41 @@ struct IndustrySpec {
 	uint32_t removal_cost_multiplier;             ///< Base removal cost multiplier.
 	uint32_t prospecting_chance;                  ///< Chance prospecting succeeds
 	IndustryType conflicting[3];                ///< Industries this industry cannot be close to
-	byte check_proc;                            ///< Index to a procedure to check for conflicting circumstances
-	CargoID produced_cargo[INDUSTRY_NUM_OUTPUTS];
+	uint8_t check_proc;                            ///< Index to a procedure to check for conflicting circumstances
+	std::array<CargoID, INDUSTRY_NUM_OUTPUTS> produced_cargo;
 	std::variant<CargoLabel, MixedCargoType> produced_cargo_label[INDUSTRY_NUM_OUTPUTS];
-	byte production_rate[INDUSTRY_NUM_OUTPUTS];
+	uint8_t production_rate[INDUSTRY_NUM_OUTPUTS];
 	/**
 	 * minimum amount of cargo transported to the stations.
 	 * If the waiting cargo is less than this number, no cargo is moved to it.
 	 */
-	byte minimal_cargo;
-	CargoID accepts_cargo[INDUSTRY_NUM_INPUTS]; ///< 16 accepted cargoes.
+	uint8_t minimal_cargo;
+	std::array<CargoID, INDUSTRY_NUM_INPUTS> accepts_cargo; ///< 16 accepted cargoes.
 	std::variant<CargoLabel, MixedCargoType> accepts_cargo_label[INDUSTRY_NUM_INPUTS];
 	uint16_t input_cargo_multiplier[INDUSTRY_NUM_INPUTS][INDUSTRY_NUM_OUTPUTS]; ///< Input cargo multipliers (multiply amount of incoming cargo for the produced cargoes)
 	IndustryLifeType life_type;                 ///< This is also known as Industry production flag, in newgrf specs
-	byte climate_availability;                  ///< Bitmask, giving landscape enums as bit position
+	uint8_t climate_availability;                  ///< Bitmask, giving landscape enums as bit position
 	IndustryBehaviour behaviour;                ///< How this industry will behave, and how others entities can use it
-	byte map_colour;                            ///< colour used for the small map
+	uint8_t map_colour;                            ///< colour used for the small map
 	StringID name;                              ///< Displayed name of the industry
 	StringID new_industry_text;                 ///< Message appearing when the industry is built
 	StringID closure_text;                      ///< Message appearing when the industry closes
 	StringID production_up_text;                ///< Message appearing when the industry's production is increasing
 	StringID production_down_text;              ///< Message appearing when the industry's production is decreasing
 	StringID station_name;                      ///< Default name for nearby station
-	byte appear_ingame[NUM_LANDSCAPE];          ///< Probability of appearance in game
-	byte appear_creation[NUM_LANDSCAPE];        ///< Probability of appearance during map creation
-	uint8_t number_of_sounds;                     ///< Number of sounds available in the sounds array
-	const uint8_t *random_sounds;                 ///< array of random sounds.
+	uint8_t appear_ingame[NUM_LANDSCAPE];          ///< Probability of appearance in game
+	uint8_t appear_creation[NUM_LANDSCAPE];        ///< Probability of appearance during map creation
 	/* Newgrf data */
 	uint16_t callback_mask;                       ///< Bitmask of industry callbacks that have to be called
-	uint8_t cleanup_flag;                         ///< flags indicating which data should be freed upon cleaning up
 	bool enabled;                               ///< entity still available (by default true).newgrf can disable it, though
 	GRFFileProps grf_prop;                      ///< properties related to the grf file
+	std::vector<uint8_t> random_sounds; ///< Random sounds;
 
 	bool IsRawIndustry() const;
 	bool IsProcessingIndustry() const;
 	Money GetConstructionCost() const;
 	Money GetRemovalCost() const;
 	bool UsesOriginalEconomy() const;
-
-	~IndustrySpec();
 };
 
 /**
@@ -158,8 +150,8 @@ struct IndustryTileSpec {
 	std::array<std::variant<CargoLabel, MixedCargoType>, INDUSTRY_NUM_INPUTS> accepts_cargo_label;
 	std::array<int8_t, INDUSTRY_NUM_INPUTS> acceptance; ///< Level of acceptance per cargo type (signed, may be negative!)
 	Slope slopes_refused;                 ///< slope pattern on which this tile cannot be built
-	byte anim_production;                 ///< Animation frame to start when goods are produced
-	byte anim_next;                       ///< Next frame in an animation
+	uint8_t anim_production;                 ///< Animation frame to start when goods are produced
+	uint8_t anim_next;                       ///< Next frame in an animation
 	/**
 	 * When true, the tile has to be drawn using the animation
 	 * state instead of the construction state

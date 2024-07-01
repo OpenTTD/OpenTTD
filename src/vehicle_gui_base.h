@@ -17,7 +17,7 @@
 #include "vehicle_base.h"
 #include "vehiclelist.h"
 #include "window_gui.h"
-#include "widgets/dropdown_type.h"
+#include "dropdown_type.h"
 
 typedef GUIList<const Vehicle*, std::nullptr_t, CargoID> GUIVehicleList;
 
@@ -53,12 +53,12 @@ struct GUIVehicleGroup {
 		});
 	}
 
-	TimerGameCalendar::Date GetOldestVehicleAge() const
+	TimerGameEconomy::Date GetOldestVehicleAge() const
 	{
 		const Vehicle *oldest = *std::max_element(this->vehicles_begin, this->vehicles_end, [](const Vehicle *v_a, const Vehicle *v_b) {
-			return v_a->age < v_b->age;
+			return v_a->economy_age < v_b->economy_age;
 		});
-		return oldest->age;
+		return oldest->economy_age;
 	}
 };
 
@@ -66,7 +66,7 @@ typedef GUIList<GUIVehicleGroup, std::nullptr_t, CargoID> GUIVehicleGroupList;
 
 struct BaseVehicleListWindow : public Window {
 
-	enum GroupBy : byte {
+	enum GroupBy : uint8_t {
 		GB_NONE,
 		GB_SHARED_ORDERS,
 
@@ -77,7 +77,7 @@ struct BaseVehicleListWindow : public Window {
 	VehicleList vehicles;                       ///< List of vehicles.  This is the buffer for `vehgroups` to point into; if this is structurally modified, `vehgroups` must be rebuilt.
 	GUIVehicleGroupList vehgroups;              ///< List of (groups of) vehicles.  This stores iterators of `vehicles`, and should be rebuilt if `vehicles` is structurally changed.
 	Listing *sorting;                           ///< Pointer to the vehicle type related sorting.
-	byte unitnumber_digits;                     ///< The number of digits of the highest unit number.
+	uint8_t unitnumber_digits;                     ///< The number of digits of the highest unit number.
 	Scrollbar *vscroll;
 	VehicleListIdentifier vli;                  ///< Identifier of the vehicle list we want to currently show.
 	VehicleID vehicle_sel;                      ///< Selected vehicle
@@ -98,15 +98,15 @@ struct BaseVehicleListWindow : public Window {
 	};
 
 	static const StringID vehicle_depot_name[];
-	static const StringID vehicle_group_by_names[];
-	static const StringID vehicle_group_none_sorter_names_calendar[];
-	static const StringID vehicle_group_none_sorter_names_wallclock[];
-	static const StringID vehicle_group_shared_orders_sorter_names_calendar[];
-	static const StringID vehicle_group_shared_orders_sorter_names_wallclock[];
-	static VehicleGroupSortFunction * const vehicle_group_none_sorter_funcs[];
-	static VehicleGroupSortFunction * const vehicle_group_shared_orders_sorter_funcs[];
+	static const std::initializer_list<const StringID> vehicle_group_by_names;
+	static const std::initializer_list<const StringID> vehicle_group_none_sorter_names_calendar;
+	static const std::initializer_list<const StringID> vehicle_group_none_sorter_names_wallclock;
+	static const std::initializer_list<const StringID> vehicle_group_shared_orders_sorter_names_calendar;
+	static const std::initializer_list<const StringID> vehicle_group_shared_orders_sorter_names_wallclock;
+	static const std::initializer_list<VehicleGroupSortFunction * const> vehicle_group_none_sorter_funcs;
+	static const std::initializer_list<VehicleGroupSortFunction * const> vehicle_group_shared_orders_sorter_funcs;
 
-	BaseVehicleListWindow(WindowDesc *desc, WindowNumber wno);
+	BaseVehicleListWindow(WindowDesc &desc, WindowNumber wno);
 
 	void OnInit() override;
 
@@ -116,7 +116,7 @@ struct BaseVehicleListWindow : public Window {
 	void UpdateVehicleGroupBy(GroupBy group_by);
 	void SortVehicleList();
 	void BuildVehicleList();
-	void SetCargoFilter(byte index);
+	void SetCargoFilter(uint8_t index);
 	void SetCargoFilterArray();
 	void FilterVehicleList();
 	StringID GetCargoFilterLabel(CargoID cid) const;
@@ -124,9 +124,9 @@ struct BaseVehicleListWindow : public Window {
 	Dimension GetActionDropdownSize(bool show_autoreplace, bool show_group, bool show_create);
 	DropDownList BuildActionDropdownList(bool show_autoreplace, bool show_group, bool show_create);
 
-	const StringID *GetVehicleSorterNames();
+	std::span<const StringID> GetVehicleSorterNames();
 
-	VehicleGroupSortFunction * const *GetVehicleSorterFuncs()
+	std::span<VehicleGroupSortFunction * const> GetVehicleSorterFuncs()
 	{
 		switch (this->grouping) {
 			case GB_NONE:

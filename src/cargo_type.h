@@ -19,7 +19,7 @@ using CargoLabel = StrongType::Typedef<uint32_t, struct CargoLabelTag, StrongTyp
 /**
  * Cargo slots to indicate a cargo type within a game.
  */
-using CargoID = byte;
+using CargoID = uint8_t;
 
 /**
  * Available types of cargo
@@ -47,7 +47,7 @@ static constexpr CargoLabel CT_FOOD         = CargoLabel{'FOOD'};
 
 /* Tropic */
 static constexpr CargoLabel CT_RUBBER       = CargoLabel{'RUBR'};
-static constexpr CargoLabel CT_FRUIT        = CargoLabel{'FRUI'};
+static constexpr CargoLabel CT_FRUIT        = CargoLabel{'FRUT'};
 static constexpr CargoLabel CT_MAIZE        = CargoLabel{'MAIZ'};
 static constexpr CargoLabel CT_COPPER_ORE   = CargoLabel{'CORE'};
 static constexpr CargoLabel CT_WATER        = CargoLabel{'WATR'};
@@ -134,7 +134,7 @@ struct CargoArray : std::array<uint, NUM_CARGO> {
 
 
 /** Types of cargo source and destination */
-enum class SourceType : byte {
+enum class SourceType : uint8_t {
 	Industry,     ///< Source/destination is an industry
 	Town,         ///< Source/destination is a town
 	Headquarters, ///< Source/destination are company headquarters

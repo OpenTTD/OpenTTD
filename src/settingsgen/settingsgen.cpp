@@ -15,10 +15,7 @@
 #include "../core/mem_func.hpp"
 #include "../error_func.h"
 
-#if !defined(_WIN32) || defined(__CYGWIN__)
-#include <unistd.h>
-#include <sys/stat.h>
-#endif
+#include <filesystem>
 
 #include "../safeguards.h"
 
@@ -322,11 +319,11 @@ static void DumpSections(const IniLoadFile &ifile)
 }
 
 /**
- * Copy a file to the output.
- * @param fname Filename of file to copy.
+ * Append a file to the output stream.
+ * @param fname Filename of file to append.
  * @param out_fp Output stream to write to.
  */
-static void CopyFile(const char *fname, FILE *out_fp)
+static void AppendFile(const char *fname, FILE *out_fp)
 {
 	if (fname == nullptr) return;
 
@@ -385,12 +382,11 @@ static bool CompareFiles(const char *n1, const char *n2)
 
 /** Options of settingsgen. */
 static const OptionData _opts[] = {
-	  GETOPT_NOVAL(     'h', "--help"),
-	GETOPT_GENERAL('h', '?', nullptr, ODF_NO_VALUE),
-	  GETOPT_VALUE(     'o', "--output"),
-	  GETOPT_VALUE(     'b', "--before"),
-	  GETOPT_VALUE(     'a', "--after"),
-	GETOPT_END(),
+	{ .type = ODF_NO_VALUE, .id = 'h', .shortname = 'h', .longname = "--help" },
+	{ .type = ODF_NO_VALUE, .id = 'h', .shortname = '?' },
+	{ .type = ODF_HAS_VALUE, .id = 'o', .shortname = 'o', .longname = "--output" },
+	{ .type = ODF_HAS_VALUE, .id = 'b', .shortname = 'b', .longname = "--before" },
+	{ .type = ODF_HAS_VALUE, .id = 'a', .shortname = 'a', .longname = "--after" },
 };
 
 /**
@@ -436,7 +432,7 @@ int CDECL main(int argc, char *argv[])
 	const char *before_file = nullptr;
 	const char *after_file = nullptr;
 
-	GetOptData mgo(argc - 1, argv + 1, _opts);
+	GetOptData mgo(std::span(argv + 1, argc - 1), _opts);
 	for (;;) {
 		int i = mgo.GetOpt();
 		if (i == -1) break;
@@ -473,14 +469,14 @@ int CDECL main(int argc, char *argv[])
 	_stored_output.Clear();
 	_post_amble_output.Clear();
 
-	for (int i = 0; i < mgo.numleft; i++) ProcessIniFile(mgo.argv[i]);
+	for (auto &argument : mgo.arguments) ProcessIniFile(argument);
 
 	/* Write output. */
 	if (output_file == nullptr) {
-		CopyFile(before_file, stdout);
+		AppendFile(before_file, stdout);
 		_stored_output.Write(stdout);
 		_post_amble_output.Write(stdout);
-		CopyFile(after_file, stdout);
+		AppendFile(after_file, stdout);
 	} else {
 		static const char * const tmp_output = "tmp2.xxx";
 
@@ -488,21 +484,20 @@ int CDECL main(int argc, char *argv[])
 		if (fp == nullptr) {
 			FatalError("Cannot open file {}", tmp_output);
 		}
-		CopyFile(before_file, fp);
+		AppendFile(before_file, fp);
 		_stored_output.Write(fp);
 		_post_amble_output.Write(fp);
-		CopyFile(after_file, fp);
+		AppendFile(after_file, fp);
 		fclose(fp);
 
+		std::error_code error_code;
 		if (CompareFiles(tmp_output, output_file)) {
 			/* Files are equal. tmp2.xxx is not needed. */
-			unlink(tmp_output);
+			std::filesystem::remove(tmp_output, error_code);
 		} else {
 			/* Rename tmp2.xxx to output file. */
-#if defined(_WIN32)
-			unlink(output_file);
-#endif
-			if (rename(tmp_output, output_file) == -1) FatalError("rename() failed");
+			std::filesystem::rename(tmp_output, output_file, error_code);
+			if (error_code) FatalError("rename({}, {}) failed: {}", tmp_output, output_file, error_code.message());
 		}
 	}
 	return 0;

@@ -15,15 +15,15 @@
 /** Instantiation of the null blitter factory. */
 static FBlitter_Null iFBlitter_Null;
 
-Sprite *Blitter_Null::Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator)
+Sprite *Blitter_Null::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	Sprite *dest_sprite;
-	dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite));
+	dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite));
 
-	dest_sprite->height = sprite[ZOOM_LVL_NORMAL].height;
-	dest_sprite->width  = sprite[ZOOM_LVL_NORMAL].width;
-	dest_sprite->x_offs = sprite[ZOOM_LVL_NORMAL].x_offs;
-	dest_sprite->y_offs = sprite[ZOOM_LVL_NORMAL].y_offs;
+	dest_sprite->height = sprite[ZOOM_LVL_MIN].height;
+	dest_sprite->width  = sprite[ZOOM_LVL_MIN].width;
+	dest_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
+	dest_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
 
 	return dest_sprite;
 }

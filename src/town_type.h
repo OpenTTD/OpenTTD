@@ -16,7 +16,7 @@ typedef uint16_t TownID;
 struct Town;
 
 /** Supported initial town sizes */
-enum TownSize : byte {
+enum TownSize : uint8_t {
 	TSZ_SMALL,  ///< Small town.
 	TSZ_MEDIUM, ///< Medium town.
 	TSZ_LARGE,  ///< Large town.
@@ -77,7 +77,7 @@ enum Ratings {
 };
 
 /** Town Layouts. It needs to be 8bits, because we save and load it as such */
-enum TownLayout : byte {
+enum TownLayout : uint8_t {
 	TL_BEGIN = 0,
 	TL_ORIGINAL = 0,     ///< Original algorithm (min. 1 distance between roads)
 	TL_BETTER_ROADS,     ///< Extended original algorithm (min. 2 distance between roads)
@@ -91,7 +91,7 @@ enum TownLayout : byte {
 DECLARE_ENUM_AS_ADDABLE(TownLayout)
 
 /** Town founding setting values. It needs to be 8bits, because we save and load it as such */
-enum TownFounding : byte {
+enum TownFounding : uint8_t {
 	TF_BEGIN = 0,     ///< Used for iterations and limit testing
 	TF_FORBIDDEN = 0, ///< Forbidden
 	TF_ALLOWED,       ///< Allowed
@@ -100,7 +100,7 @@ enum TownFounding : byte {
 };
 
 /** Town cargo generation modes */
-enum TownCargoGenMode : byte {
+enum TownCargoGenMode : uint8_t {
 	TCGM_BEGIN = 0,
 	TCGM_ORIGINAL = 0,  ///< Original algorithm (quadratic cargo by population)
 	TCGM_BITCOUNT,      ///< Bit-counted algorithm (normal distribution from individual house population)

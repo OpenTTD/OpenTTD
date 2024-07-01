@@ -26,7 +26,7 @@
 	 *   |   |   Euro year   |              |                 |     | name
 	 *   |   |    |          |              |                 |     |  | */
 /** The original currency specifications. */
-static const CurrencySpec origin_currency_specs[CURRENCY_END] = {
+static const std::array<CurrencySpec, CURRENCY_END> origin_currency_specs = {{
 	{    1, "", CF_NOEURO, "\u00a3",   "",             "GBP", 0, STR_GAME_OPTIONS_CURRENCY_GBP    }, ///< british pound
 	{    2, "", CF_NOEURO, "$",        "",             "USD", 0, STR_GAME_OPTIONS_CURRENCY_USD    }, ///< american dollar
 	{    2, "", CF_ISEURO, "\u20ac",   "",             "EUR", 0, STR_GAME_OPTIONS_CURRENCY_EUR    }, ///< euro
@@ -70,10 +70,11 @@ static const CurrencySpec origin_currency_specs[CURRENCY_END] = {
 	{   19, "", CF_NOEURO, "Rp",       "",             "IDR", 0, STR_GAME_OPTIONS_CURRENCY_IDR    }, ///< Indonesian Rupiah
 	{    5, "", CF_NOEURO, "RM",       "",             "MYR", 0, STR_GAME_OPTIONS_CURRENCY_MYR    }, ///< Malaysian Ringgit
 	{    1, "", 2014,      "",         NBSP "Ls",      "LVL", 1, STR_GAME_OPTIONS_CURRENCY_LVL    }, ///< latvian lats
-};
+	{  400, "", 2002,      "",         "$00",          "PTE", 1, STR_GAME_OPTIONS_CURRENCY_PTE    }, ///< portuguese escudo
+}};
 
 /** Array of currencies used by the system */
-CurrencySpec _currency_specs[CURRENCY_END];
+std::array<CurrencySpec, CURRENCY_END> _currency_specs;
 
 /**
  * This array represent the position of OpenTTD's currencies,
@@ -81,7 +82,7 @@ CurrencySpec _currency_specs[CURRENCY_END];
  * When a grf sends currencies, they are based on the order defined by TTDPatch.
  * So, we must reindex them to our own order.
  */
-const byte TTDPatch_To_OTTDIndex[] =
+const uint8_t TTDPatch_To_OTTDIndex[] =
 {
 	CURRENCY_GBP,
 	CURRENCY_USD,
@@ -112,7 +113,7 @@ const byte TTDPatch_To_OTTDIndex[] =
  * @param grfcurr_id currency id coming from newgrf
  * @return the corrected index
  */
-byte GetNewgrfCurrencyIdConverted(byte grfcurr_id)
+uint8_t GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id)
 {
 	return (grfcurr_id >= lengthof(TTDPatch_To_OTTDIndex)) ? grfcurr_id : TTDPatch_To_OTTDIndex[grfcurr_id];
 }

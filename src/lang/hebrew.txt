@@ -396,6 +396,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :עזוב את �
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :יציאה
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :אפשרויות המשחק
@@ -876,7 +877,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}מטבע
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}בחירת מטבע
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :לירה שטרלינג
 STR_GAME_OPTIONS_CURRENCY_USD                                   :דולר אמריקאי
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :יורו
@@ -940,9 +941,6 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 
 
 
-STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
-STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
-STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}גרפיקה
@@ -965,6 +963,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}מידע
 
 
 
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}שגיאה ביצירת רשימה של רזולוציות אפשריות
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}נכשל בשינויי למסך מלא
 
@@ -975,6 +974,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}שער 
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK} הקטן את ערך המטבע שלך עבור פאונד (£) אחד
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}הגדל את ערך המטבע שלך עבור פאונד (£) אחד
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}קבע את שער החליפין של המטבע שלך עם פאונד (£) אחד
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}תחילית: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}קבע את המחרוזת התחילית עבור המטבע שלך
@@ -1322,6 +1322,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{STRING} :הת�
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :כאשר מאופשר, נשלח מבזק חדשות כאשר רכב לא הכניס שום רווח במשך שנה קלנדרית
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{STRING} :בטל התיישנות כלי רכב
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :כאשר מאופשר, כל סוגי כלי הרכב נשארים זמינים לעד אחרי השקתם
 
@@ -1611,7 +1612,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :ברירת מח
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :קבע את ברירת המחדל למרווח הזמן בין תחזוקות עבור מטוסים חדשים, אם לא נקבע באופן מפורש מרווח זמן עבור כלי הרכב
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :ברירת מחדל למרווח הזמן בין תחזוקות עבור אוניות: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :קבע את ברירת המחדל למרווח הזמן בין תחזוקות עבור אוניות חדשות, אם לא נקבע באופן מפורש מרווח זמן עבור כלי הרכב
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{P 0 "יום " ""}{COMMA}{P "" " ימים"}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :מבוטל
 
@@ -1881,17 +1883,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :התפלגות 
 STR_CONFIG_SETTING_AI                                           :מתחרים
 STR_CONFIG_SETTING_AI_NPC                                       :שחקני מחשב
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{STRING} :אלגוריתם איתור נתיב עבור רכבות
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :אלגוריתם איתור נתיב עבור רכבות
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{STRING} :אלגוריתם איתור נתיב עבור רכבי כביש
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :אלגוריתם איתור נתיב עבור רכבי כביש
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{STRING} :אלגוריתם איתור נתיב עבור כלי שייט
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :אלגוריתם איתור נתיב עבור אוניות
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :החלפת כיוון אוטומטית ברמזורים: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :אפשר לרכבות להחליף כיוון ברמזור, אם הן חיכו שם זמן ממושך
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(מומלץ)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}שנה ערך
 
@@ -2169,7 +2162,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}טוען
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}התנתק
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}שרת מוגן. הזן סיסמה
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}חברה מוגנת. הזן סיסמה
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :רשימת משתתפים
@@ -2191,11 +2183,9 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}משתתפ
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}מאחורי NAT
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :חסום (באן)
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :שחרר סיסמה
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}האם אתה בטוח שברצונך להוציא את '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}אתה בטוח שברצונך מחק את החברה '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}אתה בטוח שברצונך לאפס את סיסמת החברה '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}השתמש ב"relay"?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}לא
@@ -2204,19 +2194,9 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}כן, ז
 
 STR_NETWORK_SPECTATORS                                          :צופים
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}בטל שמירת הסיסמה החדשה
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}שמור את הסיסמה החדשה
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}סיסמת החברה
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}ברירת המחדל לסיסמה
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}השתמש בסיסמה זו כברירת מחדל עבור חברות חדשות
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}הצטרף
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}הצטרף ושחק כשותף בחברה
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}ססמה
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}הגן על חברתך בסיסמה בכדי למנוע הצטרפות משתמשים בלתי-מורשים
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}קבע סיסמה לחברה
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}שלח
@@ -2257,7 +2237,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}למחש
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}איבוד קשר אפשרי
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}ב- {NUM} שני{P "יה" "ות"} האחרוות לא התקבל מידע מהשרת
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :שגיאה כללית
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :שגירת סינכרון
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :טעינת מפה נכשלה
@@ -2460,7 +2440,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}בחר �
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}נקודת ציון
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}בחר את סוג נקודות הציון
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}בחירת תחנת רכבת
@@ -2473,8 +2452,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}בחר �
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}גרירה ושחרור
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}בניית תחנה ע"י גרירה ושחרור
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}בחר את סוג התחנה שיוצג
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}בחר את סוג התחנה לבנייה
+
+
+
 
 STR_STATION_CLASS_DFLT                                          :תחנת בחירת מחדל
 STR_STATION_CLASS_WAYP                                          :נקודות דרך
@@ -2608,8 +2588,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}קנה �
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}פירט נבחר
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}בחר פריט לבנייה. Shift בורר בניה/הצגה של הערכת עלות
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}בחר את סוג הפריט לבנייה
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}צפיה מקדימה של האובייקט
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}גודל: {GOLD}{NUM} x {NUM} משבצת
 
@@ -2715,7 +2693,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}:בעל�
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}בעלי מסילת הרכבת: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{LTBLUE}{STRING}{BLACK} :רשות מקומית
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :אין
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}קואורדינטות: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{LTBLUE}{DATE_LONG}{BLACK} : תאריך בניה
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}{LTBLUE}{STRING}: אופי התחנה
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK} {LTBLUE}{STRING}: סוג התחנה
@@ -2981,9 +2958,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% :
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}יצור עולם
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}יצירת נהרות
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}יצירת עצים
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}יצירת מבנים בלתי ניידים
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}יצירת איזורים סלעיים
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}יצירת מבנים בלתי ניידים
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}יצירת עצים
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}קביעת הגדרות המשחק
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}מריץ לולאה על כל המשבצות
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}מריץ סקריפט
@@ -3069,7 +3046,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :סוג מסיל
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}משתנה NewGRF פרמטר 60+x (הקסה-דצימלי)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}מיישר ספרייט {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}הספרייט הבא
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}עבור לספרייט הבא, כאשר נדלג על כל הספרייטים המיוחדים ולבסוף נחזור לתחילת הרשימה
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}דלג לספרייט
@@ -3178,7 +3154,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}עבור
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}הכנס שם סימניה
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}ערים
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- אין -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (City){BLACK} ({COMMA})
@@ -3465,7 +3440,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}משבצ
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}נמלי תעופה
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}תעשיות
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- אין -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
@@ -4320,9 +4294,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}{CURRENC
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}!שמירה מתבצעת,{} אנא המתן עד לסיום השמירה
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}שמירה אוטומטית נכשלה
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}לא ניתן לקרוא מהדיסק
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}שמירת המשחק נכשלה{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}לא ניתן למחוק את הקובץ
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}טעינת המשחק נכשלה{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :שגיאה פנימית: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :קובץ השמיקה פגום - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :קובץ השמירה נשמר עם גירסא חדישה יותר של המשחק
@@ -4689,6 +4661,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}כלי �
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}שנה הגדרות NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}כלי תחבורה עדיין לא זמינים
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}התחל משחק חדש אחרי {DATE_SHORT} או השתמש ב-NewGRF המכיל כלי תחבורה קדומים
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}לא ניתן להכריח את הרכבת לעבור ברמזור בעת סכנה...
@@ -5203,6 +5176,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

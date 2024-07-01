@@ -352,6 +352,7 @@ STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :उद्दे
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :बंद करा
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :खेळाचे पर्याय
@@ -670,7 +671,7 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :पौंड
 STR_GAME_OPTIONS_CURRENCY_USD                                   :डोल्लर
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :युरो
@@ -724,7 +725,9 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
+
 # Custom currency window
+
 
 
 
@@ -846,6 +849,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 ###length 2
 
 
+
 ###length 2
 
 
@@ -951,6 +955,8 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व �
 
 
 
+###length 3
+
 ###setting-zero-is-special
 
 
@@ -1026,7 +1032,6 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :स्टेट
 ###length 3
 
 
-###length 2
 
 
 # Config errors
@@ -1134,8 +1139,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 
 
-# Network set password
-
 # Network company info join/password
 
 # Network chat
@@ -1146,7 +1149,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE} संपर्क तुटला असण्याची शक्यता
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE} गेल्या {NUM} सेकंदांत सर्वरकडून काहीच माहिती आलेली नाही
 
-###length 21
+###length 22
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -1192,6 +1195,9 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 # Rail waypoint construction window
 
 # Rail station construction window
+
+
+
 
 
 
@@ -1866,6 +1872,7 @@ STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}पू�
 
 
 
+
 # Specific vehicle errors
 
 
@@ -2093,6 +2100,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

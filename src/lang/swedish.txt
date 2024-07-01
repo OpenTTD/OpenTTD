@@ -308,11 +308,10 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}När den
 STR_BUTTON_DEFAULT                                              :{BLACK}Standardinställning
 STR_BUTTON_CANCEL                                               :{BLACK}Avbryt
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Varning: Serveradministratörer kan ha möjlighet att läsa text som skrivs här.
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :¬!"£$%^&*()_+ QWERTYUIOP{{}}ASDFGHJKL:@~|ZXCVBNM<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Längd: {NUM}
@@ -437,6 +436,9 @@ STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Ladda höjdkart
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Avsluta scenarioeditor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Avsluta
+
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generera städer
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Placera ut hus
 
 # Settings menu
 ###length 16
@@ -621,14 +623,14 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Inaktivera alla
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Visa alla godstyper på grafen över fraktförtjänster
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Visa inga godstyper på grafen över fraktförtjänster
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Växla graf för godstyp av/på
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Slå på/av denna godstyps graf
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Visa detaljerad prestationsgradering
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Nyckel till företagsgrafer
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klicka här för att visa/dölja företaget i grafen
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Slå på/av detta företags graf
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Företagstabell
@@ -791,7 +793,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Öken
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Snö
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Växla stadsnamn på/av på kartan
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Slå på/av visning av stadsnamn
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrera minikartan på den nuvarande positionen
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -956,18 +958,14 @@ STR_GAME_OPTIONS_VOLUME                                         :Volym
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Ljudeffekter
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musik
 
-STR_GAME_OPTIONS_VOLUME_0                                       :0%
-STR_GAME_OPTIONS_VOLUME_25                                      :25%
-STR_GAME_OPTIONS_VOLUME_50                                      :50%
-STR_GAME_OPTIONS_VOLUME_75                                      :75%
-STR_GAME_OPTIONS_VOLUME_100                                     :100%
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenheter
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Välj valutaenhet
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Brittiskt pund
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikansk dollar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -1011,6 +1009,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupie
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk rupie
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lettiska Lats
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugisisk escudo
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Spara automatiskt
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Välj intervall mellan automatiskt sparande
@@ -1053,15 +1052,11 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skala b�
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Kryssa i den här rutan för att skala bården efter gränssnittets storlek
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Använd traditionellt sprite-typsnitt
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Kryssa i den här rutan om du föredrar att använda det traditionella sprite-typsnittet med fast storlek.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Kryssa i den här rutan om du föredrar att använda det traditionella sprite-typsnittet med fast storlek
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias-typsnitt
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Kryssa i den här rutan för anti-aliasing av typsnitt med justerbar storlek.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Kryssa i den här rutan för anti-aliasing av typsnitt med justerbar storlek
 
-STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
-STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
-STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
-STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
-STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatisk undersökning
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Delta i en automatisk undersökning
@@ -1090,6 +1085,9 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikpak
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Välj vilket musikpaket som ska användas
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yttligare information om musikpaketet
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Hämta innehåll
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Kontrollera om det finns nytt och uppdaterat innehåll att ladda ned
+
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(inga tillägg för att integrera med sociala plattformar installerade)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
@@ -1116,6 +1114,9 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlin
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Minska värdet för din valuta med ett pund (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Öka värdet för din valuta med ett pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Sätt växelkursen för din valuta mot ett pund (£)
+
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skiljetecken: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Ange skiljetecknet för din valuta
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Sätt prefix-sträng för din valuta
@@ -1271,10 +1272,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Obegränsat kap
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Tillåt obegränsat spenderande och inaktivera konkurser av företag
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalt startlån: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalt belopp ett företag kan låna (där inflationen inte tas med i beräkningen)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalt belopp ett företag kan låna (där inflationen inte tas med i beräkningen). Om inställt på "Inga lån" kommer inga pengar finnas tillgängliga såvida inte utdelat av ett spelskript eller inställningen "Obegränsat kapital"
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Inget lån {RED}Kräver spelskript som sätter startkapital
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Inga lån
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Räntenivå: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Räntenivå för lån; styr även inflationen om sådan är aktiverad
@@ -1355,7 +1356,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Sluttningars lu
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Lutningsgrad för lutande rutor för vägfordon. Högre värden gör det svårare att komma upp för en backe
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Förbjud tåg att göra 90°-svängar: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-graderssvängar inträffar då ett horisontellt spår följs direkt av ett vertikalt spår på angränsande ruta, vilket tvingar tåget att svänga 90 grader om det kör utefter spåret. Detta i motsats till andra kombinationer av spårbitar där tåget svänger 45 grader i taget.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-graderssvängar inträffar då ett horisontellt spår följs direkt av ett vertikalt spår på angränsande ruta, vilket tvingar tåget att svänga 90 grader om det kör utefter spåret. Detta i motsats till andra kombinationer av spårbitar där tåget svänger 45 grader i taget
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillåt att stationer som inte är byggda direkt brevid varandra slås ihop: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Tillåt tillägg av stationsdelar till en station utan direktkontakt med existerande delar genom Ctrl+Klick vid utplacering av nya delar.
@@ -1467,7 +1468,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Företagets sta
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Välj startfärg för företaget
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Företagets andravalsstartfärg: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Välj andravalsfärg för företaget att starta med, om du använder en NewGRF som stöder det.
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Välj andravalsfärg för företaget att starta med, om du använder en NewGRF som stöder det
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flygplatser blir aldrig gamla: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktivering av denna inställning gör så att alla flygplatstyper finns kvar i obegränsad tid efter att de blivit tillgängliga
@@ -1487,26 +1488,29 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varna om ett fo
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Om det är aktiverat skickas ett nyhetsmeddelande ut när ett fordon inte har gått med vinst under ett år
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Om det är aktiverat skickas ett nyhetsmeddelande ut när ett fordon inte har gått med vinst under en period
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Varna om ett fordon börjar bli gammalt: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Om det är aktiverat skickas ett nyhetsmeddelande ut när ett fordon börjar bli gammalt
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fordon blir aldrig gamla: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Om det är aktiverat förblir alla fordonstyper tillgängliga i obegränsad tid efter att de introducerats
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Tidhållning: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Välj enheter för spelets tidhållning. Detta kan inte ändras senare.{}{}Kalenderbaserat spelläge är den klassiska OpenTTD-upplevelsen, där ett år består av 12 månader och varje månad har 28-31 dagar.{}{}I Väggklockbaserat spelläge är fordonsrörelse, godsproduktion, och finanser istället baserade på enminutssteg, vilket är ungefär så länge som en 30-dagarsmånad tar i Kalenderbaserat spelläge. Dessa är grupperade i 12-minutersperioder motsvarande ett år i Kalenderbaserat spelläge.{}{}Oavsett spelläge finns det alltid en klassisk kalender som används för introduktionsdatum av fordon, byggnader, och annan infrastruktur.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Välj enheter för spelets tidhållning. Detta kan inte ändras senare.{}{}Kalenderbaserat spelläge är den klassiska OpenTTD-upplevelsen, där ett år består av 12 månader och varje månad har 28-31 dagar.{}{}I Väggklockbaserat spelläge är godsproduktion och finanser istället baserade på enminutssteg, vilket är ungefär så länge som en 30-dagarsmånad tar i Kalenderbaserat spelläge. Dessa är grupperade i 12-minutersperioder motsvarande ett år i Kalenderbaserat spelläge.{}{}Oavsett spelläge finns det alltid en klassisk kalender som används för introduktionsdatum av fordon, byggnader, och annan infrastruktur
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Väggklocka
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuter per år: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Välj antalet minuter som går i ett kalenderår. Standard är 12 minuter. Sätt till 0 för att stoppa kalendertiden från att ändras. Denna inställning påverkar inte spelets ekonomiska simulering, och är endast tillgänglig för tidhållning medelst väggklocka.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Välj antalet minuter som går i ett kalenderår. Standard är 12 minuter. Sätt till 0 för att stoppa kalendertiden från att ändras. Denna inställning påverkar inte spelets ekonomiska simulering, och är endast tillgänglig för tidhållning medelst väggklocka
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalendertid frusen)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Skala godsproduktionen för städer: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skala godsproduktionen för städer med detta procentantal.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skala godsproduktionen för städer med detta procenttal
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skala godsproduktionen för industrier: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skala godsproduktionen för industrier med detta procentantal.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skala godsproduktionen för industrier med detta procenttal
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Förnya fordon automatiskt när de blir gamla: {STRING}
@@ -1525,7 +1529,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Visningstid fö
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tid som felmeddelanden i ett rött fönster ska visas. Notera att vissa (kritiska) felmeddelanden inte stängs automatiskt efter denna tid, utan måste stängas manuellt
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Visa tooltips: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fördröjning innan tooltips visas när muspekaren hålls över ett gränssnittselement. Alternativt kan tooltips bindas till den högra musknappen när detta värde är satt till 0.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fördröjning innan tooltips visas när muspekaren hålls över ett gränssnittselement. Alternativt kan tooltips bindas till den högra musknappen när detta värde är satt till 0
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Håll muspekaren i {COMMA} millisekund{P 0 "" er}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Högerklick
@@ -1537,8 +1541,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linjetjocklek i
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Linjernas bredd i grafernas kurvor. En tunn linje är lättare att läsa av mer precist, medan en tjockare linje är lättare att se och gör det lättare att skilja mellan de olika färgerna
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Visa NewGRF:ens namn i fordonsbyggnadsfönstret: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lägg till en rad i fordonsbyggnadsfönstret som visar vilken NewGRF det valda fordonet kommer ifrån.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Visa godstyper som fordonen kan transportera i listorna {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lägg till en rad i fordonsbyggnadsfönstret som visar vilken NewGRF det valda fordonet kommer ifrån
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Visa godstyper som fordonen kan transportera i listfönstren: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Om det är aktiverat kommer fordonets transportabla last att visas ovanför den i fordonslistor
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landskap: {STRING}
@@ -1557,7 +1561,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritäthet
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Ange hur många industrier som ska genereras och vilken nivå som ska bibehållas under spelet
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalt avstånd mellan oljeindustrier och kartans kant: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Begränsar hur långt från kartans kant oljeraffinaderier och oljeplattformar kan byggas. På ö-kartor säkerställer detta att de är nära kusten. På kartor större än 256 rutor skalas detta värde upp.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Begränsar hur långt från kartans kant oljeraffinaderier och oljeplattformar kan byggas. På ö-kartor säkerställer detta att de är nära kusten. På kartor större än 256 rutor skalas detta värde upp
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snögränsens höjd: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Välj på vilken höjd snötäcket börjar i det subarktiska landskapet. Snö påverkar även industrigeneration och städers tillväxtkrav. Kan endast modifieras via Scenarioredigeraren eller beräknas via "snötäckning"
@@ -1571,7 +1575,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Välj den ungef
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Terrängens svårhetsgrad: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Välj form och frekvens av kullar. Böljande landskap har färre, mer utbredda kullar, medan landskap med tuff terräng har fler, mer låga kullar.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Välj form och frekvens av kullar. Böljande landskap har färre, mer utbredda kullar, medan landskap med tuff terräng har fler, mer låga kullar
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väldigt lätt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lätt
@@ -1579,7 +1583,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Svår
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Väldigt svår
 
 STR_CONFIG_SETTING_VARIETY                                      :Varierad distribution: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Välj om kartan ska innehålla både berg och flacka områden. Ju större variation desto större höjdskillnad mellan bergiga och flacka områden.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Välj om kartan ska innehålla både berg och flacka områden. Ju större variation desto större höjdskillnad mellan bergiga och flacka områden
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Antal floder: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Välj hur många floder att generera
@@ -1626,7 +1630,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mörkgrön
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violett
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Färger på godsflödesöverlägg: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Ställ in det färgschema som ska användas på godsflödesöverlägget.
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Ställ in det färgschema som ska användas på godsflödesöverlägget
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Grön till röd (original)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Grön till blå
@@ -1747,10 +1751,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Behåll byggnad
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Håll verktygen för byggnation av broar, tunnlar, etc. öppna efter användning
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatiskt ta bort signaler vid byggande av järnväg: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Ta automatiskt bort signaler vid byggande av järnväg om signalerna är i vägen. Notera att detta kan leda till att tåg krockar.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Ta automatiskt bort signaler vid byggande av järnväg om signalerna är i vägen. Notera att detta kan leda till att tåg krockar
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Begränsning av snabbspolning: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Begränsa hur snabbt spelet går när snabbspolning är aktiverad. 0 = ingen begränsning (så snabbt som din dator tillåter). Värden under 100% saktar ner spelet. Den övre begränsningen beror på din dators specifikationer och kan variera beroende på spelet.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Begränsa hur snabbt spelet går när snabbspolning är aktiverad. 0 = ingen begränsning (så snabbt som din dator tillåter). Värden under 100% saktar ner spelet. Den övre begränsningen beror på din dators specifikationer och kan variera beroende på spelet
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normal spelhastighet
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Ingen begränsning (Så snabbt som din dator tillåter)
@@ -1814,11 +1818,11 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillåt datorst
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes innan skript sätts i viloläge: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximalt antal beräkningssteg ett skript kan utföra i en omgång
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Maximal minnesanvändning per skript: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Hur mycket minne ett enda skript kan konsumera innan det tvingas avslutas. Det kan behöva ökas för stora kartor.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Hur mycket minne ett enda skript kan konsumera innan det tvingas avslutas. Det kan behöva utökas för stora kartor
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Visa serviceintervall i procent: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :När det är aktiverat försöker fordon bli servade när deras tillförlitlighet har fallit med en viss procentsats av den maximala tillförlitligheten.{}{}Till exempel, om ett fordons maximala tillförlitlighet är 90% och serviceintervallet är 20% kommer fordonet söka service när tillförlitligheten är 72%.Välj om fordonsservice ska triggas av hur lång tid som har gått sedan senaste service eller av att tillförlitligheten faller med
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :När det är aktiverat försöker fordon bli servade när deras tillförlitlighet har fallit med en viss procentsats av den maximala tillförlitligheten.{}{}Till exempel, om ett fordons maximala tillförlitlighet är 90% och serviceintervallet är 20% kommer fordonet söka service när tillförlitligheten är 72%
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Normalt serviceintervall för tåg: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Välj vilket serviceintervall som normalt sett ska användas för nya tåg, om inget annat serviceintervall uttryckligen anges
@@ -1828,7 +1832,11 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Normalt service
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Välj vilket serviceintervall som normalt sett ska användas för nya flygplan, om inget annat serviceintervall uttryckligen anges
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Normalt serviceintervall för skepp: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Välj vilket serviceintervall som normalt sett ska användas för nya skepp, om inget annat serviceintervall uttryckligen anges
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Dag{P 0 "" ar}/Minut{P 0 "" er}/%
+###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}dag{P 0 "" ar}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}minut{P 0 "" er}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Inaktiverat
 
@@ -1836,7 +1844,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Inaktivera serv
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :När det är aktiverat servas inte fordon om de inte kan få motorstopp
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Straff i lastningshastighet för tåg som är längre än stationen: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Om aktiverad, kommer tåg som är för långa för en station att lastas långsammare än tåg som får plats på stationen. Denna inställning påverkar inte vägfinnare.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Om aktiverad, kommer tåg som är för långa för en station att lastas långsammare än tåg som får plats på stationen. Denna inställning påverkar inte vägfinnare
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Använd hastighetsbegränsningar för tågvagnar: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :När det är aktiverat tas även hänsyn till vagnarnas hastighetsbegränsningar när ett tågs maxhastighet beräknas
@@ -1901,13 +1909,13 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Årtal då tidn
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startår: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Slutår för poängräkning: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Årtal då spelet slutar räkna poäng. Vid slutet av detta år sparas företagets poäng och listan med de bästa spelresultaten visas, men därefter kan spelarna fortsätta att spela.{}Om årtalet är satt till innan startåret visas aldrig de bästa spelresultaten.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Årtal då spelet slutar räkna poäng. Vid slutet av detta år sparas företagets poäng och listan med de bästa spelresultaten visas, men därefter kan spelarna fortsätta att spela.{}Om årtalet är satt till innan startåret visas aldrig de bästa spelresultaten
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldrig
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Typ av ekonomi: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Jämn ekonomi gör att produktionen ändrar sig oftare i mindre steg. Frusen ekonomi förhindrar produktions ändringar och att industrier stänger. Denna inställning har ingen effekt om industrien kommer från en NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Jämn ekonomi gör att produktionen ändrar sig oftare och i mindre steg. Frusen ekonomi förhindrar produktionsändringar och att industrier stänger. Denna inställning kan vara verkningslös om en NewGRF bidrar med industrityper
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Jämn
@@ -1962,7 +1970,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tillåten
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tillåten, vanlig stads-layout
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Fraktgods som genereras i staden: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hur mycket fraktgods som produceras av hus i städer, i förhållande till den totala befolkningen i staden.{}Kvadratisk tillväxt: En dubbelt så stor stad genererar fyra gånger så många passagerare.{}Linjär tillväxt: En dubbelt så stor stad genererar dubbelt så många passagerare.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hur mycket fraktgods som produceras av hus i städer, i förhållande till den totala befolkningen i staden.{}Kvadratisk tillväxt: En dubbelt så stor stad genererar fyra gånger så många passagerare.{}Linjär tillväxt: En dubbelt så stor stad genererar dubbelt så många passagerare
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kvadratisk (original)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linjär
@@ -2003,7 +2011,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Högsta upplösning som sprites ska använda: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begränsa den maximala upplösningen för sprites. Begränsning av spritens upplösning hindrar användandet av högre upplösningar även om det finns tillgängligt. Detta kan hjälpa att hålla spelets utseende mer enhetlig vid användandet av flera olika GRF filer med högre och lägre upplösning.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begränsa den maximala upplösningen för sprites. Begränsning av spritens upplösning hindrar användandet av högre upplösningar även om det finns tillgängligt. Detta kan hjälpa att hålla spelets utseende mer enhetlig vid användandet av flera olika GRF filer med högre och lägre upplösning
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2027,33 +2035,33 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsst
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders genomsnittliga storlek i relation till vanliga städers vid spelets början
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Uppdatera distributionsdiagram var {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planerna för en komponent i grafen. Det betyder att ett värde X för den här inställningen inte betyder att hela grafen kommer att uppdateras var X:e sekund. Bara viss komponent kommer att göra det. Ju kortare du ställer in den desto mer CPU-tid kommer att behövas för att beräkna den. Ju längre du ställer in den desto längre tid tar det tills lastdistributionen startar på nya rutter.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planerna för en komponent i grafen. Det betyder att ett värde X för den här inställningen inte betyder att hela grafen kommer att uppdateras var X:e sekund. Bara viss komponent kommer att göra det. Ju kortare du ställer in den desto mer CPU-tid kommer att behövas för att beräkna den. Ju längre du ställer in den desto längre tid tar det tills lastdistributionen startar på nya rutter
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Ta {STRING} för omräkning av distributionsdiagrammet
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid som det tar för varje omräkning av en länkdiagramkomponent. När en omräkning startas skapas en tråd som tillåts köra i detta antal sekunder. Ju kortare du ställer in detta desto mer sannolikt är det att tråden inte är färdig när den ska. Sedan stannar spelet tills det är ("lag"). Ju längre du ställer in den desto längre tid tar det för distributionen att uppdateras när rutter ändras.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid som det tar för varje omräkning av en länkdiagramkomponent. När en omräkning startas skapas en tråd som tillåts köra i detta antal sekunder. Ju kortare du ställer in detta desto mer sannolikt är det att tråden inte är färdig när den ska. Sedan stannar spelet tills det är ("lag"). Ju längre du ställer in den desto längre tid tar det för distributionen att uppdateras när rutter ändras
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionssätt för passagerare: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetriskt" innebär att ungefär samma antal passagerare färdas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd passagerare kan färdas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av passagerare sker.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetriskt" innebär att ungefär samma antal passagerare färdas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd passagerare kan färdas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av passagerare sker
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distributionssätt för post: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symmetriskt" innebär att ungefär samma mängd post skickas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd post kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av post sker.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symmetriskt" innebär att ungefär samma mängd post skickas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd post kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av post sker
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributionssätt för den BEPANSRADE godsklassen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den BEPANSRADE godsklassen innehåller värdesaker i det tempererade, diamanter i det subtropiska eller guld i det subarktiska klimatet. NewGRFer kan ändra detta. "Symmetriskt" innebär att ungefär samma mängd av detta gods skickas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd av detta gods kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av denna godstyp sker. Det är rekommenderat att välja "asymmetriskt" eller "manuellt" vid subarktiskt eller subtropiskt klimat, då banker endast tar emot gods i dessa klimat. Vid tempererat klimat kan även "symmetriskt" väljas, då banker kan skicka tillbaka värdesaker till den bank de kom ifrån.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den BEPANSRADE godsklassen innehåller värdesaker i det tempererade, diamanter i det subtropiska eller guld i det subarktiska klimatet. NewGRFer kan ändra detta. "Symmetriskt" innebär att ungefär samma mängd av detta gods skickas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd av detta gods kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av denna godstyp sker. Det är rekommenderat att välja "asymmetriskt" eller "manuellt" vid subarktiskt eller subtropiskt klimat, då banker endast tar emot gods i dessa klimat. Vid tempererat klimat kan även "symmetriskt" väljas, då banker kan skicka tillbaka värdesaker till den bank de kom ifrån
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributionssätt för övriga godsklasser: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetriskt" innebär att en godtycklig mängd gods kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av dessa godstyper sker.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetriskt" innebär att en godtycklig mängd gods kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av dessa godstyper sker
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuellt
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetriskt
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetriskt
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributionsnoggrannhet: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Ju högre du sätter denna, desto längre CPU-tid kommer beräkningen av länkgrafen ta. Om det tar för lång tid kan spelet lagga. Om du däremot sätter den till ett lågt värde kommer distributionen att bli inexakt, vilket kan leda till att godset inte skickas dit du förväntar dig.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Ju högre du sätter denna, desto längre CPU-tid kommer beräkningen av länkgrafen ta. Om det tar för lång tid kan spelet lagga. Om du däremot sätter den till ett lågt värde kommer distributionen att bli inexakt, vilket kan leda till att godset inte skickas dit du förväntar dig
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Avståndets påverkan på efterfrågan: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Om du sätter denna till ett värde högre än 0 kommer avståndet mellan ursprungsstationen A för en viss last och en möjlig destination B påverka mängden last som skickas från A till B. Ju längre B är ifrån A, desto mindre last kommer att skickas. Ju högre du sätter den, desto mindre last kommer att skickas till avlägsna stationer och desto mer last kommer att skickas till närbelägna stationer.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Om du sätter denna till ett värde högre än 0 kommer avståndet mellan ursprungsstationen A för en viss last och en möjlig destination B påverka mängden last som skickas från A till B. Ju längre B är ifrån A, desto mindre last kommer att skickas. Ju högre du sätter den, desto mindre last kommer att skickas till avlägsna stationer och desto mer last kommer att skickas till närbelägna stationer
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Mängd återsänd last i symmetriskt läge: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Genom att sätta denna till mindre än 100% får man den symmetriska distributionen att bete sig mer som den asymmetriska. En mindre andel än vanligt av den last som skickas till en station kommer att skickas tillbaka. Sätter du den till 0% beter sig den symmetriska distributionen precis som den asymmetriska.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Genom att sätta denna till mindre än 100% får man den symmetriska distributionen att bete sig mer som den asymmetriska. En mindre andel än vanligt av den last som skickas till en station kommer att skickas tillbaka. Sätter du den till 0% beter sig den symmetriska distributionen precis som den asymmetriska
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av korta rutter innan rutter med hög kapacitet används: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenhet (land)t: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Hastighetsenheter (nautical): {STRING}
@@ -2128,17 +2136,8 @@ STR_CONFIG_SETTING_AI                                           :Motståndare
 STR_CONFIG_SETTING_AI_NPC                                       :Datorspelare
 STR_CONFIG_SETTING_NETWORK                                      :Nätverk
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vägfinnare för tåg: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Vägfinnare som tåg ska använda
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Vägfinnare för vägfordon: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Vägfinnare som vägfordon ska använda
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Vägfinnare för skepp: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Vägfinnare som skepp ska använda
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Vänd automatiskt vid signaler: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tillåt att tåg vänder vid en signal om de har väntat där länge
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Rekommenderad)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ändra inställningsvärde
 
@@ -2457,7 +2456,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hämtar 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koppla ifrån
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servern är skyddad. Ange lösenord
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Företaget är skyddat. Ange lösenord
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spelare online
@@ -2484,6 +2482,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Ditt spelarnamn
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Administrativa handlingar att utföra för denna klient
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administrativa handlingar att utföra för detta företag
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Gå med i detta företag
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Tillåt att denna klient ansluter till ditt företag
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Skicka ett meddelande till denna spelare
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Skicka ett meddelande till alla spelare i detta företag
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Skicka ett meddelande till alla åskådare
@@ -2506,13 +2505,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via rel�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kasta ut
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannlys
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Ta bort
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Lås upp med lösenord
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administratörshandling
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Är du säker på att du vill kasta ut spelaren '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Är du säker på att du vill bannlysa spelaren '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Är du säker på att du vill ta bort företaget {COMPANY}?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Är du säker på att du vill återställa företaget {COMPANY}s lösenord?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Använd relä?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Misslyckades med att etablera en anslutning mellan dig och servern '{STRING}'.{}Vill du använda '{STRING}' som relä för denna session?
@@ -2529,19 +2526,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
 STR_NETWORK_SPECTATORS                                          :Åskådare
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Spara inte det inmatade lösenordet
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Ge företaget det nya lösenordet
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Företagslösenord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Förvalt företagslösenord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Använd detta företagslösenord som förval för nya företag
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Gå med
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Gå med och spela som detta företag
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Lösenord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Lösenordsskydda ditt företag för att förhindra att obehöriga spelare ansluter
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Ange företagets lösenord
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Skicka
@@ -2570,6 +2557,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Du har i
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Du har inte angivit något servernamn. Namninställning kan göras högst upp i flerspelarfönstret
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Servern har en annan version än denna klient
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Fel lösenord
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Du finns ej med på listan över tillåtna klienter
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Servern är full
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du är bannlyst från den här servern
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du blev utkastad från spelet
@@ -2585,7 +2573,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Ditt spe
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Anslutningen har troligtvis försvunnit
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}De senaste {NUM} sekunderna har inget data mottagits från servern
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :allmänt fel
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :synkroniseringsfel
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :kunde inte ladda kartan
@@ -2597,6 +2585,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :mottog felaktig
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :fel revision
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :namnet används redan
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :fel lösenord
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :ej på tillåt-listan
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :fel företags-id i DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :utkastad av servern
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :försökte fuska
@@ -2802,7 +2791,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Välj ri
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Riktmärke
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Välj riktmärkestyp
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Val av tågstation
@@ -2815,14 +2803,39 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Välj l�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Släpp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg en station genom att dra & släppa
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Välj vilken stationsklass som ska visas
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Välj stationstyp att bygga
+STR_PICKER_MODE_ALL                                             :Alla
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Slå av/på visning av objekt från alla klasser
+STR_PICKER_MODE_USED                                            :Använda
+STR_PICKER_MODE_USED_TOOLTIP                                    :Slå av/på visning av endast existerande objekt
+STR_PICKER_MODE_SAVED                                           :Sparade
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Slå av/på visning av endast sparade objekt
+
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Välj vilken klass av stationer som ska visas
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Välj en stationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Välj vilken klass av riktmärken som ska visas
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Välj ett riktmärke att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Välj vilken klass av busstationer som ska visas
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Välj en busstationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Välj vilken klass av laststationer som ska visas
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Välj en laststationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Välj vilken klass av objekt som ska visas
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Välj en objektstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken stadszon som ska visas
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Välj en hustyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+
+STR_HOUSE_PICKER_CAPTION                                        :Husval
+
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Gräns
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Utkanter
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Yttrerförorter
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Innerförorter
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadskärnan
 
 STR_STATION_CLASS_DFLT                                          :Original
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstation
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Standardvägstopp
 STR_STATION_CLASS_WAYP                                          :Riktmärken
-STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standard vägpunkt
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standardriktmärke
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalval
@@ -2852,14 +2865,14 @@ STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
 STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hängbro, Stål
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Balkbro, Stål
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Konsolbro, Stål
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Hängbro, Betong
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hängbro, stål
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Balkbro, stål
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Konsolbro, stål
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Hängbro, betong
 STR_BRIDGE_NAME_WOODEN                                          :Träbro
 STR_BRIDGE_NAME_CONCRETE                                        :Betongbro
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Rörbro, Stål
-STR_BRIDGE_TUBULAR_SILICON                                      :Rörbro, Kisel
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Rörbro, stål
+STR_BRIDGE_TUBULAR_SILICON                                      :Rörbro, kisel
 
 
 # Road construction toolbar
@@ -2959,8 +2972,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Köp mar
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Val av objekt
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Välj objekt att bygga. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Välj typ av objekt att bygga
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Förhandsvisning av objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Storlek: {GOLD}{NUM} x {NUM} rutor
 
@@ -2975,11 +2986,11 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Placera 
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Slumpmässigt träd
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantera träd slumpmässigt över landskapet
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantera träd genom att dra över landskapet.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantera träd genom att dra över landskapet
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Skogsdunge
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plantera mindre skogar genom att dra över landskapet.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plantera mindre skogar genom att dra över landskapet
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Skog
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantera större skogar genom att dra över landskapet.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantera större skogar genom att dra över landskapet
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Skapa mark
@@ -3075,7 +3086,8 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Spårvä
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Järnvägens ägare: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokala myndigheter: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ingen
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinater: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinater: {LTBLUE}{NUM} x {NUM} x {NUM}
+STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}Rutindex: {LTBLUE}{NUM} ({HEX})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Byggd/renoverad: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklass: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstyp: {LTBLUE}{STRING}
@@ -3193,11 +3205,11 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Bildfrekvens
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulationsfrekvens: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Antal spel-tick som simuleras per sekund.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Antal spel-tick som simuleras per sekund
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Bildfrekvens för grafik: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Antal bildrutor som återges per sekund.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Antal bildrutor som återges per sekund
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Spelets nuvarande hastighetsfaktor: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hur snabbt spelet för närvarande körs, jämfört med förväntad hastighet vid normal simulationsfrekvens.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hur snabbt spelet för närvarande körs, jämfört med förväntad hastighet vid normal simulationsfrekvens
 STR_FRAMERATE_CURRENT                                           :{WHITE}Nuvarande
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Genomsnittlig
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Minne
@@ -3386,10 +3398,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vill du
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% färdigt
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generera värld
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landskapsgenerering
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generera Flod
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generera Träd
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generera objekt
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Svår och stenig markgenerering
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Stadsgenerering
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industrigenerering
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generera objekt
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generera Träd
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ställer in spel
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kör tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kör skript
@@ -3481,7 +3496,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Vägtyp
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variabel 60+x parameter (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Justera spriteobjekt {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Justerar spriteobjekt: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Justerar spriteobjekt: Action 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Justerar spriteobjekt: Åtgärd 0x5, typ {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nästa spriteobjekt
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsätt till nästa nomala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om efter sista spriteobjektet
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå till spriteobjekt
@@ -3490,6 +3507,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Tidigare
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsätt till föregående normala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om från slutet efter första spriteobjektet
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation av det valda objektet. Justeringen ignoreras när objektet ritas.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytta runt objektet och ändra förskjutningen i X- och Y-led. Ctrl+klicka för att flytta runt objektet åtta steg i taget
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Förskjutningscentrerad
@@ -3524,7 +3542,7 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den v
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :För många NewGRFer är laddade
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Att ladda {1:STRING} som statisk NewGRF med {2:STRING} kan orsaka desynkronisering
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Oväntat spriteobjekt (spriteobjekt {3:NUM})
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Okänd Action 0-egenskap {4:HEX} (spriteobjekt {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Okänd Åtgärd 0-egenskap {4:HEX} (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Försök att använda ett ogiltligt ID (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} innehåller ett skadat spriteobjekt. Alla korrupta spriteobjekt kommer att visas som röda frågetecken (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller flera Action 8 (spriteobjekt {3:NUM})
@@ -3598,7 +3616,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Åk till
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Mata in ett namn för skylten
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Städer
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Städer ({COMMA} av {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Inga -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Stad){BLACK} ({COMMA})
@@ -3932,7 +3950,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/period
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrier
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrier ({COMMA} av {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Inga -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transporterat){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -4021,12 +4039,12 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ogrupperade fly
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupper - klicka på en grupp för att lista alla fordon i gruppen. Dra och släpp grupper för att ordna hierarkin.
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupper - klicka på en grupp för att lista alla fordon i gruppen. Dra och släpp grupper för att ordna hierarkin
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klicka för att skapa en grupp
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Ta bort vald grupp
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Byt namn på vald grupp
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Byt färgschema på vald grupp
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klicka för att skydda denna grupp mot allmän automatisk förnyelse. Ctrl+klicka för att också skydda undergrupper.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klicka för att skydda denna grupp mot allmän automatisk förnyelse. Ctrl+klicka för att också skydda undergrupper
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Ta bort grupp
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE} Är du säker på att du vill ta bort denna grupp och alla efterkommande?
@@ -4213,10 +4231,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klona sk
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klona flygplan
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Köp en kopia av ett tåg inklusive alla vagnar. Klicka på denna knapp och sen på ett tåg i eller utanför depån. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Köp en kopia av ett vägfordon. Klicka på denna knapp och sen på ett vägfordon i eller utanför depån. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Köp en kopia av ett skepp. Klicka på denna knapp och sen på ett skepp i eller utanför depån. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Köp en kopia av en flygfarkost. Klicka på denna knapp och sen på en flygfarkost i eller utanför hangaren. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Köp en kopia av ett tåg inklusive alla vagnar. Klicka på denna knapp och sedan på ett tåg i eller utanför depån. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Köp en kopia av ett vägfordon. Klicka på denna knapp och sedan på ett vägfordon i eller utanför depån. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Köp en kopia av ett skepp. Klicka på denna knapp och sedan på ett skepp i eller utanför depån. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Köp en kopia av en flygfarkost. Klicka på denna knapp och sedan på en flygfarkost i eller utanför hangaren. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrera huvudvyn ovanför depån. Ctrl+Klick för att öppna en ny fönstervy över tågdepåns läge
@@ -4334,10 +4352,10 @@ STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrera
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centrera huvudvyn på flygfarkostens position. Dubbelklicka för att följa flygfarkosten i huvudvyn. Ctrl+Klick för att öppna en ny fönstervy över flygfarkostens position
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Skicka tåg till depå. Ctrl+Klick för service endast
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Skicka fordon till depå. Ctrl+Klick för service endast
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Skicka skepp till depå. Ctrl+Klick för service endast
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Skicka flygfarkost till hangar. Ctrl+Klick för service endast
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Skicka tåg till depå. Ctrl+Klick för att endast serva
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Skicka fordon till depå. Ctrl+Klick för att endast serva
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Skicka skepp till depå. Ctrl+Klick för att endast serva
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Skicka flygfarkost till hangar. Ctrl+Klick för att endast serva
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Köp en kopia av tåget inklusive alla vagnar. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
@@ -4381,22 +4399,22 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Väntar
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Kraschad!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Motorstopp
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppat
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stannar, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - Stannar
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Ingen kraft
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Väntar på ledig väg
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Nästa destination ligger för långt bort
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}På väg mot {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Inga order, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} -På väg mot {0:STATION}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Inga ordrar
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}På väg mot {WAYPOINT} i {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}På väg mot {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Service vid {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Glesa ut och serva vid {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - På väg mot {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Service vid {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Glesa ut och serva vid {0:DEPOT}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE} Kan inte nå {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Kan inte nå {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Kan inte nå {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Kan inte nå {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Kan inte nå {0:STATION}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Kan inte nå {0:WAYPOINT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Kan inte nå {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Kan inte nå {0:DEPOT}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4442,10 +4460,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacite
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK} Överför kredit: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Serviceintervall: {LTBLUE}{COMMA}{NBSP}dagar{BLACK}   {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Serviceintervall: {LTBLUE}{COMMA}{NBSP}minuter{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Serviceintervall: {LTBLUE}{COMMA}{NBSP}minut{P "" er}{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Serviceintervall: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Senast servad: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Senast servad: {LTBLUE}{NUM} minuter sedan
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Senast servad: {LTBLUE}{NUM} minut{P "" er} sedan
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Öka serviceintervall med 10 dagar. Ctrl+Klick för att öka serviceintervall med 5 dagar
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Öka serviceintervall med 5 minuter. Ctrl+Klick för att öka serviceintervall med 1 minut
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Öka serviceintervall med 10 procent. Ctrl+Klick för att öka serviceintervall med 5 procent
@@ -4610,7 +4628,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Åk till närms
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Åk till närmsta hangar
 STR_ORDER_CONDITIONAL                                           :Villkorat order-hopp
 STR_ORDER_SHARE                                                 :Dela order
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan. Ctrl+Klick på en station för 'full last någon godstyp', på ett riktmärke för att invertera inställningen 'non-stop som standard', och på en depå för 'service'.  Klicka på ett annat fordon för att kopiera dess ordrar eller Ctrl+Klick för att dela ordrar. En depåorder stänger av automatisk service av fordonet
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan. Ctrl+Klick på en station för 'full last någon godstyp', på ett riktmärke för att invertera inställningen 'non-stop som standard', och på en depå för 'glesa ut'. Klicka på ett annat fordon för att kopiera dess ordrar eller Ctrl+Klick för att dela ordrar. En depåorder stänger av automatisk service av fordonet
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Visa alla fordon som har samma schema
 
@@ -4636,7 +4654,7 @@ STR_ORDER_REFIT_ORDER                                           :(Anpassa för {
 STR_ORDER_REFIT_STOP_ORDER                                      :(Anpassa för {STRING} och stanna)
 STR_ORDER_STOP_ORDER                                            :(Stanna)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(invänta utglesning)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Invänta utglesning)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan ej använda stationen){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4840,8 +4858,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spelskript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Stäng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Återställ
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -4894,9 +4910,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Uppskatt
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Sparar fortfarande,{}vänta tills det är slutfört!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autosparning misslyckades
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan inte läsa från disk
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Sparandet av spelet misslyckades{}{STRING}
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Sparandet av spelet misslyckades...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kan inte ta bort filen
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Inläsningen av spelet misslyckades{}{STRING}
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Inläsningen av spelet misslyckades...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Internt fel: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Trasig sparfil - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sparfilen är gjord med en nyare version
@@ -4990,7 +5006,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan inte
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan inte bygga huvudkontor här...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan inte bygga några städer
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan inte bygga några städer...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan inte byta namn på stad...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan inte grunda stad här...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan inte expandera stad...
@@ -5001,6 +5017,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det 
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vägarbete pågår
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan inte ta bort den här staden...{}En station eller depå refererar till staden eller så kan inte en stadsägd ruta tas bort.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det finns ingen lämplig plats för en staty i stadens centrum
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Kan inte bygga hus...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... för många industrier
@@ -5038,6 +5055,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan inte
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Angränsar till mer än en station/hållplats
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stationen för utspridd
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... antalet spår stöds ej
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... längden stöds ej
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}För många stationer/hållplatser
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}För många delar på järnvägsstationen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}För många busshållplatser
@@ -5072,12 +5091,15 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Måste r
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Gränsar mot mer än ett existerande riktmärke
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}... för nära ett annat riktmärke
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan inte bygga riktmärke här...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan inte bygga järnvägsriktmärke här...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Kan inte bygga vägriktmärke här...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan inte placera boj här...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan inte ändra riktmärkets namn...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan inte ta bort riktmärke här...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Måste ta bort riktmärke först
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan inte ta bort järnvägsriktmärke här...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Kan inte ta bort vägriktmärke här...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Måste ta bort järnvägsriktmärke först
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Måste ta bort vägriktmärke först
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boj i vägen
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bojen används av ett annat företag!
 
@@ -5278,6 +5300,11 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Ändra d
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Inga fordon är tillgängliga än
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Starta ett nytt spel efter {DATE_SHORT} eller använd en NewGRF som erbjuder tidiga fordon
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Inga vägtyper som kan byggas av städer finns tillgängliga
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Ändra din NewGRF-konfiguration
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Inga vägtyper som kan byggas av städer finns tillgängliga ännu
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Starta ett nytt spel efter {DATE_SHORT} eller använd en NewGRF som tidigt erbjuder vägtyper som städer kan bygga
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan inte tillåta tåg att passera signal under fara...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan inte byta tågets riktning...
@@ -5319,7 +5346,8 @@ STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Det finn
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Det finns inga hållplatser som passar för ledade vägfordon.{}Ledade vägfordon kräver genomfartshållplatser, inte lastbryggor
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Det här flygplanet kan inte landa på den här helikopterflygplatsen
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Den här helikoptern kan inte landa på den här flygplatsen
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Det finns inget riktmärke
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Det finns inget järnvägsriktmärke
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Det finns inget vägriktmärke
 STR_ERROR_NO_BUOY                                               :{WHITE}Det finns ingen boj
 
 # Timetable related errors
@@ -5807,6 +5835,11 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}t
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}mn
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}md
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}bn
+
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
@@ -5823,6 +5856,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

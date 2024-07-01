@@ -14,8 +14,9 @@
 #include "window_gui.h"
 #include "date_gui.h"
 #include "core/geometry_func.hpp"
+#include "dropdown_type.h"
+#include "dropdown_func.h"
 
-#include "widgets/dropdown_type.h"
 #include "widgets/date_widget.h"
 
 #include "safeguards.h"
@@ -39,7 +40,7 @@ struct SetDateWindow : Window {
 	 * @param max_year the maximum year (inclusive) to show in the year dropdown
 	 * @param callback the callback to call once a date has been selected
 	 */
-	SetDateWindow(WindowDesc *desc, WindowNumber window_number, Window *parent, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year, SetDateCallback *callback, void *callback_data) :
+	SetDateWindow(WindowDesc &desc, WindowNumber window_number, Window *parent, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year, SetDateCallback *callback, void *callback_data) :
 			Window(desc),
 			callback(callback),
 			callback_data(callback_data),
@@ -75,14 +76,14 @@ struct SetDateWindow : Window {
 
 			case WID_SD_DAY:
 				for (uint i = 0; i < 31; i++) {
-					list.push_back(std::make_unique<DropDownListStringItem>(STR_DAY_NUMBER_1ST + i, i + 1, false));
+					list.push_back(MakeDropDownListStringItem(STR_DAY_NUMBER_1ST + i, i + 1));
 				}
 				selected = this->date.day;
 				break;
 
 			case WID_SD_MONTH:
 				for (uint i = 0; i < 12; i++) {
-					list.push_back(std::make_unique<DropDownListStringItem>(STR_MONTH_JAN + i, i, false));
+					list.push_back(MakeDropDownListStringItem(STR_MONTH_JAN + i, i));
 				}
 				selected = this->date.month;
 				break;
@@ -90,7 +91,7 @@ struct SetDateWindow : Window {
 			case WID_SD_YEAR:
 				for (TimerGameEconomy::Year i = this->min_year; i <= this->max_year; i++) {
 					SetDParam(0, i);
-					list.push_back(std::make_unique<DropDownListStringItem>(STR_JUST_INT, i.base(), false));
+					list.push_back(MakeDropDownListStringItem(STR_JUST_INT, i.base()));
 				}
 				selected = this->date.year.base();
 				break;
@@ -99,7 +100,7 @@ struct SetDateWindow : Window {
 		ShowDropDownList(this, std::move(list), selected, widget);
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		Dimension d = {0, 0};
 		switch (widget) {
@@ -125,7 +126,7 @@ struct SetDateWindow : Window {
 
 		d.width += padding.width;
 		d.height += padding.height;
-		*size = d;
+		size = d;
 	}
 
 	void SetStringParameters(WidgetID widget) const override
@@ -195,11 +196,11 @@ static constexpr NWidgetPart _nested_set_date_widgets[] = {
 };
 
 /** Description of the date setting window. */
-static WindowDesc _set_date_desc(__FILE__, __LINE__,
+static WindowDesc _set_date_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_SET_DATE, WC_NONE,
 	0,
-	std::begin(_nested_set_date_widgets), std::end(_nested_set_date_widgets)
+	_nested_set_date_widgets
 );
 
 /**
@@ -215,5 +216,5 @@ static WindowDesc _set_date_desc(__FILE__, __LINE__,
 void ShowSetDateWindow(Window *parent, int window_number, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year, SetDateCallback *callback, void *callback_data)
 {
 	CloseWindowByClass(WC_SET_DATE);
-	new SetDateWindow(&_set_date_desc, window_number, parent, initial_date, min_year, max_year, callback, callback_data);
+	new SetDateWindow(_set_date_desc, window_number, parent, initial_date, min_year, max_year, callback, callback_data);
 }

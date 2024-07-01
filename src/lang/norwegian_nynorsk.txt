@@ -382,6 +382,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Avbryt redigeri
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinstillingar
@@ -855,7 +856,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaei
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Vel valutaeining
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -934,6 +935,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Tilleggs
 
 
 
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Kunne ikkje henta liste over støtta oppløysingar
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjermvising feila
 
@@ -944,6 +946,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutak
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Reduser verdien av din valuta sett opp mot eitt pund (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Auk verdien av din valuta sett opp mot eitt pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Sett valutakursen for eitt pund (£)
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Vel prefiks for din valuta
@@ -1264,6 +1267,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Alle køyretøy
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Åtvar dersom eit køyretøy har negativ inntekt: {STRING}
 ###length 2
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køyretøy utgår aldri: {STRING}
 
 ###length 2
@@ -1511,7 +1515,8 @@ STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard vedlik
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standard vedlikehaldsintervall for veg-køyrety: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard vedlikehaldsintervall for fly: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard vedlikehaldsintervall for skip: {STRING}
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" s}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktivert
 
@@ -1748,17 +1753,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Varefordeling
 STR_CONFIG_SETTING_AI                                           :Motstandarar
 STR_CONFIG_SETTING_AI_NPC                                       :Datamaskinspelarar
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vegfinnar for tog: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Kva for vegfinnar som skal nyttast for tog
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Vegfinnar for køyretøy på vegar: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Kva for vegfinnar som skal nyttast for bilar og bussar
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Vegfinnar for skip: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Kva for vegfinnar som skal nyttast for skip
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatisk reversering ved signal: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :La tog snu ved signal, når dei har venta lengje
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Anbefalt)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Byt innstillingsverdi
 
@@ -2027,7 +2023,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hentar f
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koble frå
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tenaren er beskytta. Skriv inn passord
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet er beskytta. Skriv inn passord
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klientar
@@ -2043,19 +2038,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klie
 
 STR_NETWORK_SPECTATORS                                          :Tilskodarar
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ikkje lagre passordet
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Gje firmaet det nye passordet
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Firmapassord
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Standard passord for firma
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Bruk passordet fra dette firmaet som standard for nye firma
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Knytt til
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Knytt til og spel som dette firmaet
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Passord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Passordbeskytt firmaet ditt slik at ikkje alle og einkvar kan verte med.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Vel firmapassord
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Send
@@ -2094,7 +2079,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Datamask
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mogleg tilkoblingsbrot
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Dei siste {NUM} sekund er ingen data mottatt frå serveren
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generell feil
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :synkroniseringsfeil
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :klarte ikkje å laste inn kartet
@@ -2290,7 +2275,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Vel retn
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Kontrollpunkt
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vel kontrollpunkttype
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Vel jernbanestasjontype
@@ -2303,8 +2287,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vel kor 
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Dra og slipp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg stasjon med dra og slipp
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vel den stasjonstypen som skal visast
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vel stasjonen du vil byggje
+
+
+
 
 STR_STATION_CLASS_DFLT                                          :Standard stasjon
 STR_STATION_CLASS_WAYP                                          :Kontrollpunkt
@@ -2435,8 +2420,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kjøp la
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektval
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vel objekt å byggje. Skift vekslar mellom byggjing/syning av prisoverslag.
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Velg objekttype du vil byggje
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Førehandsvisning av objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Storleik: {GOLD}{NUM} x {NUM} ruter
 
@@ -2536,7 +2519,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Trikkesp
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Jernbaneskjene-eigar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Bystyret: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ingen
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinatar: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Byggd: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stasjonsklasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stasjontype: {LTBLUE}{STRING}
@@ -2757,9 +2739,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NB
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generer ei verd
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Elvgenerering
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tregenerering
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikkje-flyttbar generering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generering av ulendt og steinete område
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikkje-flyttbar generering
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tregenerering
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargjer spelet
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Køyrer rute-løkkje
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kjøyrande script
@@ -2844,7 +2826,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Jernbanetype
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF-variabel 60+x parameter (heksadesimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Forskyver sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Neste sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsett til neste normale sprite og hopp over einhver pseudo-/omfargings-/skrifttype- sprite, samt start om ved byrjinga
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå til sprite
@@ -2948,7 +2929,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Gå til 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Skriv inn eit namn for skiltet
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Byar
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ingen -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bynamn - Klikk på bynamnet for å sjå byen i hovedvisninga. Ctrl+klikk syner byen i eit nytt tilleggsvindauge.
@@ -3225,7 +3205,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stasjons
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Flyplassar
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industriar
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - Klikk på namnet for å syne industrien i hovedvisninga. CTRL+klikk syner industrien i eit tilleggsvindauge
@@ -4036,9 +4015,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Berekna 
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Lagring foregår framleis,{}ver venleg å vente til det er ferdig!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autolagring gjekk gale
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan ikkje lese frå disk
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Lagring av spelet mislukkast{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kan ikkje slette fil
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Feil ved henting av spel{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Intern feil: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Øydelagd lagra spel - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spelet er lagra i ein nyare versjon
@@ -4398,6 +4375,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ingen k�
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Byt NewGRF-innstillingar
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Det finst ikkje nokon køyretøy enno
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Start spelet etter {DATE_SHORT} eller bruk ein GRF som har køyretøy frå tidlegare tider
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikkje tvinge tog til å passere signal ved fare...
@@ -4907,6 +4885,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

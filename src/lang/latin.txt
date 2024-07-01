@@ -570,6 +570,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Relinquere scri
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Exire
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludi optiones
@@ -1049,7 +1050,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unitates
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Electio unitatum nummi
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra Britannica
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarium CFA
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -1129,6 +1130,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Indicia 
 
 
 
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Non potuit repperire indicem resolutionum
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Mutatio ad cunctum scrinium defecit
 
@@ -1139,6 +1141,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Collybu
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Minuere copiam nummi tui quae aequa est uni Librae Brittanicae (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Augere copiam nummi tui quae aequa est uni Librae Brittanicae (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Eligere collybum nummi tui
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Praefixum: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Eligere praefixum nummi tui
@@ -1479,6 +1482,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Monere si redit
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Electa, nuntium ostenditur cum vehiculum non facit lucrum in anno
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicula numquam recedunt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Electa, omnes vehiculorum typi permanent post introductionem
 
@@ -1766,7 +1770,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervallum min
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Eligere solitum intervallum ministrationis novis aeroplanis, si non est proprium intervallum ministrationis vehiculo
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervallum ministrationis solitum navibus: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Eligere solitum intervallum ministrationis novis navibus, si non est proprium intervallum ministrationis vehiculo
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}die{P 0 m s}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Neglectum
 
@@ -2027,17 +2032,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Partitio onerum
 STR_CONFIG_SETTING_AI                                           :Competitores
 STR_CONFIG_SETTING_AI_NPC                                       :Lusores computatrales
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Inventrum itineris traminum: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Inventrum itineris hamaxostichis adhibendum
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Inventrum itineris vehiculorum viariorum: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Inventrum itineris vehiculis viariis adhibendum
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Inventrum itineris navium: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Inventrum itineris navibus adhibendum
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Reversio automatica apud signalia: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Sinere tramina reverti apud signale, si illic valde morati sunt
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Commendatum)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Mutare valorem optionis
 
@@ -2308,7 +2304,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Indicium
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Disiungere
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servatrum tutum est. Tesseram inscribe
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Societas tuta est. Tesseram inscribe
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Index clientum
@@ -2324,19 +2319,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Index clientum
 
 STR_NETWORK_SPECTATORS                                          :Spectatores
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Relinquere tesseram inscriptam
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Dare novam tesseram societati
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Tessera societatis
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Tessera societatis solita
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Fac ut haec tessera societatis solita sit novis societatibus
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Iungere
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Iungere ludereque in hac societate
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Tessera
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Custodire tessera societatem tuam ut clientes inauctorati iungere non possint
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Eligere tesseram societatis
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Mittere
@@ -2375,7 +2360,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Computat
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Connexus forsitan amissus
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}In {NUM} prior{P e ibus} secund{P o is} nulla data e servatro accipitur
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :error generalis
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :error desync
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :non potuit legere tabulam
@@ -2586,7 +2571,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Eligere 
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Interlocus
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Eligere typum interloci
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Electio Ferriviariae Stationis
@@ -2599,8 +2583,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Eligere 
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Trahere Ponereque
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Struere stationem trahendo ponendoque
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Eligere classem stationum monstrandam
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Eligere typum stationis struendum
+
+
+
 
 STR_STATION_CLASS_DFLT                                          :Statio solita
 STR_STATION_CLASS_WAYP                                          :Interloci
@@ -2731,8 +2716,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Emere te
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Electio ornamentorum
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Eligere ornamentum struendum. Shift mutat inter constructionem et aestimationem monstrandam
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Eligere classem ornamenti struendi
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Praevisum ornamenti
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Magnitudo: {GOLD}{NUM} x {NUM} tegulae
 
@@ -2832,7 +2815,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Possesso
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Possessor ferriviae: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Auctoritas vicinalis: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nulla
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordinatae: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Dies struendi: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Classis stationis: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Typus stationis: {LTBLUE}{STRING}
@@ -3065,9 +3047,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% f
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Creatio orbis terrarum
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Creatio fluminum
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Creatio arborum
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Creatio ornamentorum
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Creatio terrarum saxosarum asperarumque
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Creatio ornamentorum
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Creatio arborum
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ludum instruens
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Tegularum cursum exsequens
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Scriptum exsequens
@@ -3157,7 +3139,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Typus ferriviae
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF var 60+x parametrum (sedecimale)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Dirigens spiritum {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Spiritum secundum
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Procedere ad spiritum naturalem secundum et, termino contacto, ad primum revertere
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ire ad spiritum
@@ -3268,7 +3249,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Recedere
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Inscribe nomen signi
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Oppida
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nulla -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Urbs){BLACK} ({COMMA})
@@ -3549,7 +3529,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Tegulae 
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aeroportus
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industriae
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nullae -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomina industriarum - preme in nomen ut conspectus moveatur supra industriam. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam
@@ -4392,9 +4371,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Reditus 
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Adhuc in servando,{}maneas usque ad terminum!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autoservare defecit
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Non poterat discum legere
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Servare Ludum Defecit{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Non poterat fasciculum delere
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Legere Ludum Defecit{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Mendum internum: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Ludus corruptus - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Ludus servatus est in editione noviore
@@ -4754,6 +4731,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Nulla ve
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Muta configurationem NewGRF tuam
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nulla vehicula adhuc parabilia sunt
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Incipe ludum post {DATE_SHORT} sive eligere idoneum NewGRF quod vehicula antiqua parat
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Non licet tramen impellere post signale...
@@ -5380,6 +5358,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

@@ -24,8 +24,8 @@
 
 #include "safeguards.h"
 
-static BuildingCounts<uint32_t> _building_counts;
-static std::array<HouseClassMapping, HOUSE_CLASS_MAX> _class_mapping;
+static BuildingCounts<uint32_t> _building_counts{};
+static std::vector<HouseClassMapping> _class_mapping{};
 
 HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, NUM_HOUSES, INVALID_HOUSE_ID);
 
@@ -38,6 +38,57 @@ static const GRFFile *GetHouseSpecGrf(HouseID house_id)
 {
 	const HouseSpec *hs  = HouseSpec::Get(house_id);
 	return (hs != nullptr) ? hs->grf_prop.grffile : nullptr;
+}
+
+extern const HouseSpec _original_house_specs[NEW_HOUSE_OFFSET];
+std::vector<HouseSpec> _house_specs;
+
+/**
+ * Get a reference to all HouseSpecs.
+ * @return Reference to vector of all HouseSpecs.
+ */
+std::vector<HouseSpec> &HouseSpec::Specs()
+{
+	return _house_specs;
+}
+
+/**
+ * Gets the index of this spec.
+ * @return The index.
+ */
+HouseID HouseSpec::Index() const
+{
+	return static_cast<HouseID>(this - _house_specs.data());
+}
+
+/**
+ * Get the spec for a house ID.
+ * @param house_id The ID of the house.
+ * @return The HouseSpec associated with the ID.
+ */
+HouseSpec *HouseSpec::Get(size_t house_id)
+{
+	/* Empty house if index is out of range -- this might happen if NewGRFs are changed. */
+	static HouseSpec empty = {};
+
+	assert(house_id < NUM_HOUSES);
+	if (house_id >= _house_specs.size()) return &empty;
+	return &_house_specs[house_id];
+}
+
+/* Reset and initialise house specs. */
+void ResetHouses()
+{
+	_house_specs.clear();
+	_house_specs.reserve(std::size(_original_house_specs));
+
+	ResetHouseClassIDs();
+
+	/* Copy default houses. */
+	_house_specs.insert(std::end(_house_specs), std::begin(_original_house_specs), std::end(_original_house_specs));
+
+	/* Reset any overrides that have been set. */
+	_house_mngr.ResetOverride();
 }
 
 /**
@@ -54,11 +105,14 @@ static const GRFFile *GetHouseSpecGrf(HouseID house_id)
  */
 HouseResolverObject::HouseResolverObject(HouseID house_id, TileIndex tile, Town *town,
 		CallbackID callback, uint32_t param1, uint32_t param2,
-		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers)
+		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers, int view)
 	: ResolverObject(GetHouseSpecGrf(house_id), callback, param1, param2),
-	house_scope(*this, house_id, tile, town, not_yet_constructed, initial_random_bits, watched_cargo_triggers),
+	house_scope(*this, house_id, tile, town, not_yet_constructed, initial_random_bits, watched_cargo_triggers, view),
 	town_scope(*this, town, not_yet_constructed) // Don't access StorePSA if house is not yet constructed.
 {
+	/* Tile must be valid and a house tile, unless not yet constructed in which case it may also be INVALID_TILE. */
+	assert((IsValidTile(tile) && (not_yet_constructed || IsTileType(tile, MP_HOUSE))) || (not_yet_constructed && tile == INVALID_TILE));
+
 	this->root_spritegroup = HouseSpec::Get(house_id)->grf_prop.spritegroup[0];
 }
 
@@ -74,33 +128,57 @@ uint32_t HouseResolverObject::GetDebugID() const
 
 void ResetHouseClassIDs()
 {
-	_class_mapping = {};
+	_class_mapping.clear();
+
+	/* Add initial entry for HOUSE_NO_CLASS. */
+	_class_mapping.emplace_back();
 }
 
-HouseClassID AllocateHouseClassID(byte grf_class_id, uint32_t grfid)
+HouseClassID AllocateHouseClassID(uint8_t grf_class_id, uint32_t grfid)
 {
 	/* Start from 1 because 0 means that no class has been assigned. */
-	for (int i = 1; i != lengthof(_class_mapping); i++) {
-		HouseClassMapping *map = &_class_mapping[i];
+	auto it = std::find_if(std::next(std::begin(_class_mapping)), std::end(_class_mapping), [grf_class_id, grfid](const HouseClassMapping &map) { return map.class_id == grf_class_id && map.grfid == grfid; });
 
-		if (map->class_id == grf_class_id && map->grfid == grfid) return (HouseClassID)i;
+	/* HouseClass not found, allocate a new one. */
+	if (it == std::end(_class_mapping)) it = _class_mapping.insert(it, {.grfid = grfid, .class_id = grf_class_id});
 
-		if (map->class_id == 0 && map->grfid == 0) {
-			map->class_id = grf_class_id;
-			map->grfid    = grfid;
-			return (HouseClassID)i;
-		}
-	}
-	return HOUSE_NO_CLASS;
+	return static_cast<HouseClassID>(std::distance(std::begin(_class_mapping), it));
 }
 
+/**
+ * Initialise building counts for a town.
+ * @param t Town cache to initialise.
+ */
+void InitializeBuildingCounts(Town *t)
+{
+	t->cache.building_counts.id_count.clear();
+	t->cache.building_counts.class_count.clear();
+	t->cache.building_counts.id_count.resize(HouseSpec::Specs().size());
+	t->cache.building_counts.class_count.resize(_class_mapping.size());
+}
+
+/**
+ * Initialise global building counts and all town building counts.
+ */
 void InitializeBuildingCounts()
 {
-	memset(&_building_counts, 0, sizeof(_building_counts));
+	_building_counts.id_count.clear();
+	_building_counts.class_count.clear();
+	_building_counts.id_count.resize(HouseSpec::Specs().size());
+	_building_counts.class_count.resize(_class_mapping.size());
 
 	for (Town *t : Town::Iterate()) {
-		memset(&t->cache.building_counts, 0, sizeof(t->cache.building_counts));
+		InitializeBuildingCounts(t);
 	}
+}
+
+/**
+ * Get read-only span of total HouseID building counts.
+ * @return span of HouseID building counts.
+ */
+std::span<const uint> GetBuildingHouseIDCounts()
+{
+	return _building_counts.id_count;
 }
 
 /**
@@ -144,14 +222,12 @@ void DecreaseBuildingCount(Town *t, HouseID house_id)
 /* virtual */ uint32_t HouseScopeResolver::GetRandomBits() const
 {
 	/* Note: Towns build houses over houses. So during construction checks 'tile' may be a valid but unrelated house. */
-	assert(IsValidTile(this->tile) && (this->not_yet_constructed || IsTileType(this->tile, MP_HOUSE)));
 	return this->not_yet_constructed ? this->initial_random_bits : GetHouseRandomBits(this->tile);
 }
 
 /* virtual */ uint32_t HouseScopeResolver::GetTriggers() const
 {
 	/* Note: Towns build houses over houses. So during construction checks 'tile' may be a valid but unrelated house. */
-	assert(IsValidTile(this->tile) && (this->not_yet_constructed || IsTileType(this->tile, MP_HOUSE)));
 	return this->not_yet_constructed ? 0 : GetHouseTriggers(this->tile);
 }
 
@@ -174,7 +250,7 @@ static uint32_t GetNumHouses(HouseID house_id, const Town *town)
  * @param grf_version8 True, if we are dealing with a new NewGRF which uses GRF version >= 8.
  * @return a construction of bits obeying the newgrf format
  */
-static uint32_t GetNearbyTileInformation(byte parameter, TileIndex tile, bool grf_version8)
+static uint32_t GetNearbyTileInformation(uint8_t parameter, TileIndex tile, bool grf_version8)
 {
 	tile = GetNearbyTile(parameter, tile);
 	return GetNearbyTileInformation(tile, grf_version8);
@@ -294,8 +370,34 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 /**
  * @note Used by the resolver to get values for feature 07 deterministic spritegroups.
  */
-/* virtual */ uint32_t HouseScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t HouseScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
+	if (this->tile == INVALID_TILE) {
+		/* House does not yet exist, nor is it being planned to exist. Provide some default values intead. */
+		switch (variable) {
+			case 0x40: return TOWN_HOUSE_COMPLETED | this->view << 2; /* Construction stage. */
+			case 0x41: return 0;
+			case 0x42: return 0;
+			case 0x43: return 0;
+			case 0x44: return 0;
+			case 0x45: return _generating_world ? 1 : 0;
+			case 0x46: return 0;
+			case 0x47: return 0;
+			case 0x60: return 0;
+			case 0x61: return 0;
+			case 0x62: return 0;
+			case 0x63: return 0;
+			case 0x64: return 0;
+			case 0x65: return 0;
+			case 0x66: return 0xFFFFFFFF; /* Class and ID of nearby house. */
+			case 0x67: return 0;
+		}
+
+		Debug(grf, 1, "Unhandled house variable 0x{:X}", variable);
+		available = false;
+		return UINT_MAX;
+	}
+
 	switch (variable) {
 		/* Construction stage. */
 		case 0x40: return (IsTileType(this->tile, MP_HOUSE) ? GetHouseBuildingStage(this->tile) : 0) | TileHash2Bit(TileX(this->tile), TileY(this->tile)) << 2;
@@ -410,21 +512,19 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 
 	Debug(grf, 1, "Unhandled house variable 0x{:X}", variable);
 
-	*available = false;
+	available = false;
 	return UINT_MAX;
 }
 
 uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile,
-		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers)
+		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers, int view)
 {
-	assert(IsValidTile(tile) && (not_yet_constructed || IsTileType(tile, MP_HOUSE)));
-
 	HouseResolverObject object(house_id, tile, town, callback, param1, param2,
-			not_yet_constructed, initial_random_bits, watched_cargo_triggers);
+			not_yet_constructed, initial_random_bits, watched_cargo_triggers, view);
 	return object.ResolveCallback();
 }
 
-static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte stage, HouseID house_id)
+static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, uint8_t stage, HouseID house_id)
 {
 	const DrawTileSprites *dts = group->ProcessRegisters(&stage);
 
@@ -472,7 +572,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 	if (group != nullptr && group->type == SGT_TILELAYOUT) {
 		/* Limit the building stage to the number of stages supplied. */
 		const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
-		byte stage = GetHouseBuildingStage(ti->tile);
+		uint8_t stage = GetHouseBuildingStage(ti->tile);
 		DrawTileLayout(ti, tlgroup, stage, house_id);
 	}
 }
@@ -558,9 +658,9 @@ bool NewHouseTileLoop(TileIndex tile)
 			uint16_t random = GB(Random(), 0, 16);
 
 			if (hs->building_flags & BUILDING_HAS_1_TILE)  AnimationControl(tile, random);
-			if (hs->building_flags & BUILDING_2_TILES_Y)   AnimationControl(TILE_ADDXY(tile, 0, 1), random);
-			if (hs->building_flags & BUILDING_2_TILES_X)   AnimationControl(TILE_ADDXY(tile, 1, 0), random);
-			if (hs->building_flags & BUILDING_HAS_4_TILES) AnimationControl(TILE_ADDXY(tile, 1, 1), random);
+			if (hs->building_flags & BUILDING_2_TILES_Y)   AnimationControl(TileAddXY(tile, 0, 1), random);
+			if (hs->building_flags & BUILDING_2_TILES_X)   AnimationControl(TileAddXY(tile, 1, 0), random);
+			if (hs->building_flags & BUILDING_HAS_4_TILES) AnimationControl(TileAddXY(tile, 1, 1), random);
 		} else {
 			AnimationControl(tile, 0);
 		}
@@ -580,7 +680,7 @@ bool NewHouseTileLoop(TileIndex tile)
 	return true;
 }
 
-static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_random, bool first)
+static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, uint8_t base_random, bool first)
 {
 	/* We can't trigger a non-existent building... */
 	assert(IsTileType(tile, MP_HOUSE));
@@ -601,8 +701,8 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 	SetHouseTriggers(tile, object.GetRemainingTriggers());
 
 	/* Rerandomise bits. Scopes other than SELF are invalid for houses. For bug-to-bug-compatibility with TTDP we ignore the scope. */
-	byte new_random_bits = Random();
-	byte random_bits = GetHouseRandomBits(tile);
+	uint8_t new_random_bits = Random();
+	uint8_t random_bits = GetHouseRandomBits(tile);
 	uint32_t reseed = object.GetReseedSum();
 	random_bits &= ~reseed;
 	random_bits |= (first ? new_random_bits : base_random) & reseed;
@@ -620,9 +720,9 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 				break;
 			}
 			/* Random value of first tile already set. */
-			if (hs->building_flags & BUILDING_2_TILES_Y)   DoTriggerHouse(TILE_ADDXY(tile, 0, 1), trigger, random_bits, false);
-			if (hs->building_flags & BUILDING_2_TILES_X)   DoTriggerHouse(TILE_ADDXY(tile, 1, 0), trigger, random_bits, false);
-			if (hs->building_flags & BUILDING_HAS_4_TILES) DoTriggerHouse(TILE_ADDXY(tile, 1, 1), trigger, random_bits, false);
+			if (hs->building_flags & BUILDING_2_TILES_Y)   DoTriggerHouse(TileAddXY(tile, 0, 1), trigger, random_bits, false);
+			if (hs->building_flags & BUILDING_2_TILES_X)   DoTriggerHouse(TileAddXY(tile, 1, 0), trigger, random_bits, false);
+			if (hs->building_flags & BUILDING_HAS_4_TILES) DoTriggerHouse(TileAddXY(tile, 1, 1), trigger, random_bits, false);
 			break;
 	}
 }
@@ -670,8 +770,8 @@ void WatchedCargoCallback(TileIndex tile, CargoTypes trigger_cargoes)
 	hs = HouseSpec::Get(id);
 
 	DoWatchedCargoCallback(north, tile, trigger_cargoes, r);
-	if (hs->building_flags & BUILDING_2_TILES_Y)   DoWatchedCargoCallback(TILE_ADDXY(north, 0, 1), tile, trigger_cargoes, r);
-	if (hs->building_flags & BUILDING_2_TILES_X)   DoWatchedCargoCallback(TILE_ADDXY(north, 1, 0), tile, trigger_cargoes, r);
-	if (hs->building_flags & BUILDING_HAS_4_TILES) DoWatchedCargoCallback(TILE_ADDXY(north, 1, 1), tile, trigger_cargoes, r);
+	if (hs->building_flags & BUILDING_2_TILES_Y)   DoWatchedCargoCallback(TileAddXY(north, 0, 1), tile, trigger_cargoes, r);
+	if (hs->building_flags & BUILDING_2_TILES_X)   DoWatchedCargoCallback(TileAddXY(north, 1, 0), tile, trigger_cargoes, r);
+	if (hs->building_flags & BUILDING_HAS_4_TILES) DoWatchedCargoCallback(TileAddXY(north, 1, 1), tile, trigger_cargoes, r);
 }
 

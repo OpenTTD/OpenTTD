@@ -112,7 +112,6 @@ bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 			w->viewport->scrollpos_y += vp->virtual_height >> 1;
 			w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
 			w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
-			w->viewport->follow_vehicle = INVALID_VEHICLE;
 			break;
 		case ZOOM_OUT:
 			if (vp->zoom >= _settings_client.gui.zoom_max) return false;
@@ -125,7 +124,6 @@ bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 
 			vp->virtual_width <<= 1;
 			vp->virtual_height <<= 1;
-			w->viewport->follow_vehicle = INVALID_VEHICLE;
 			break;
 	}
 	if (vp != nullptr) { // the vp can be null when how == ZOOM_NONE
@@ -211,7 +209,7 @@ enum {
 
 struct MainWindow : Window
 {
-	MainWindow(WindowDesc *desc) : Window(desc)
+	MainWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->InitNested(0);
 		CLRBITS(this->flags, WF_WHITE_BORDER);
@@ -256,18 +254,18 @@ struct MainWindow : Window
 	{
 		this->DrawWidgets();
 		if (_game_mode == GM_MENU) {
-			static const SpriteID title_sprites[] = {SPR_OTTD_O, SPR_OTTD_P, SPR_OTTD_E, SPR_OTTD_N, SPR_OTTD_T, SPR_OTTD_T, SPR_OTTD_D};
+			static const std::initializer_list<SpriteID> title_sprites = {SPR_OTTD_O, SPR_OTTD_P, SPR_OTTD_E, SPR_OTTD_N, SPR_OTTD_T, SPR_OTTD_T, SPR_OTTD_D};
 			uint letter_spacing = ScaleGUITrad(10);
-			int name_width = (lengthof(title_sprites) - 1) * letter_spacing;
+			int name_width = static_cast<int>(std::size(title_sprites) - 1) * letter_spacing;
 
-			for (uint i = 0; i < lengthof(title_sprites); i++) {
-				name_width += GetSpriteSize(title_sprites[i]).width;
+			for (const SpriteID &sprite : title_sprites) {
+				name_width += GetSpriteSize(sprite).width;
 			}
 			int off_x = (this->width - name_width) / 2;
 
-			for (uint i = 0; i < lengthof(title_sprites); i++) {
-				DrawSprite(title_sprites[i], PAL_NONE, off_x, ScaleGUITrad(50));
-				off_x += GetSpriteSize(title_sprites[i]).width + letter_spacing;
+			for (const SpriteID &sprite : title_sprites) {
+				DrawSprite(sprite, PAL_NONE, off_x, ScaleGUITrad(50));
+				off_x += GetSpriteSize(sprite).width + letter_spacing;
 			}
 		}
 	}
@@ -335,7 +333,7 @@ struct MainWindow : Window
 			case GHK_REFRESH_SCREEN: MarkWholeScreenDirty(); break;
 
 			case GHK_CRASH: // Crash the game
-				*(volatile byte *)nullptr = 0;
+				*(volatile uint8_t *)nullptr = 0;
 				break;
 
 			case GHK_MONEY: // Gimme money
@@ -434,8 +432,15 @@ struct MainWindow : Window
 
 	void OnMouseWheel(int wheel) override
 	{
-		if (_settings_client.gui.scrollwheel_scrolling != 2) {
-			ZoomInOrOutToCursorWindow(wheel < 0, this);
+		if (_settings_client.gui.scrollwheel_scrolling != SWS_OFF) {
+			bool in = wheel < 0;
+
+			/* When following, only change zoom - otherwise zoom to the cursor. */
+			if (this->viewport->follow_vehicle != INVALID_VEHICLE) {
+				DoZoomInOutWindow(in ? ZOOM_IN : ZOOM_OUT, this);
+			} else {
+				ZoomInOrOutToCursorWindow(in, this);
+			}
 		}
 	}
 
@@ -513,11 +518,11 @@ struct MainWindow : Window
 	}};
 };
 
-static WindowDesc _main_window_desc(__FILE__, __LINE__,
+static WindowDesc _main_window_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_MAIN_WINDOW, WC_NONE,
 	WDF_NO_CLOSE,
-	std::begin(_nested_main_window_widgets), std::end(_nested_main_window_widgets),
+	_nested_main_window_widgets,
 	&MainWindow::hotkeys
 );
 
@@ -540,14 +545,15 @@ void ShowSelectGameWindow();
  */
 void SetupColoursAndInitialWindow()
 {
-	for (uint i = 0; i != 16; i++) {
-		const byte *b = GetNonSprite(GENERAL_SPRITE_COLOUR(i), SpriteType::Recolour);
-
-		assert(b);
-		memcpy(_colour_gradient[i], b + 0xC6, sizeof(_colour_gradient[i]));
+	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
+		const uint8_t *b = GetNonSprite(GENERAL_SPRITE_COLOUR(i), SpriteType::Recolour) + 1;
+		assert(b != nullptr);
+		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
+			SetColourGradient(i, j, b[0xC6 + j]);
+		}
 	}
 
-	new MainWindow(&_main_window_desc);
+	new MainWindow(_main_window_desc);
 
 	/* XXX: these are not done */
 	switch (_game_mode) {

@@ -11,7 +11,7 @@
 #define CURRENCY_H
 
 #include "timer/timer_game_calendar.h"
-#include "string_func.h"
+#include "settings_type.h"
 #include "strings_type.h"
 
 static constexpr TimerGameCalendar::Year CF_NOEURO = 0; ///< Currency never switches to the Euro (as far as known).
@@ -67,6 +67,7 @@ enum Currencies {
 	CURRENCY_IDR,       ///< Indonesian Rupiah
 	CURRENCY_MYR,       ///< Malaysian Ringgit
 	CURRENCY_LVL,       ///< Latvian Lats
+	CURRENCY_PTE,       ///< Portuguese Escudo
 	CURRENCY_END,       ///< always the last item
 };
 
@@ -87,25 +88,39 @@ struct CurrencySpec {
 	 *            It is not a spec from Newgrf,
 	 *            rather a way to let users do what they want with custom currency
 	 */
-	byte symbol_pos;
+	uint8_t symbol_pos;
 	StringID name;
 
 	CurrencySpec() = default;
 
-	CurrencySpec(uint16_t rate, const char *separator, TimerGameCalendar::Year to_euro, const char *prefix, const char *suffix, const char *code, byte symbol_pos, StringID name) :
+	CurrencySpec(uint16_t rate, const char *separator, TimerGameCalendar::Year to_euro, const char *prefix, const char *suffix, const char *code, uint8_t symbol_pos, StringID name) :
 		rate(rate), separator(separator), to_euro(to_euro), prefix(prefix), suffix(suffix), code(code), symbol_pos(symbol_pos), name(name)
 	{
 	}
 };
 
-extern CurrencySpec _currency_specs[CURRENCY_END];
+extern std::array<CurrencySpec, CURRENCY_END> _currency_specs;
 
-/* XXX small hack, but makes the rest of the code a bit nicer to read */
-#define _custom_currency (_currency_specs[CURRENCY_CUSTOM])
-#define _currency ((const CurrencySpec*)&_currency_specs[GetGameSettings().locale.currency])
+/**
+ * Get the custom currency.
+ * @return Reference to custom currency.
+ */
+inline CurrencySpec &GetCustomCurrency()
+{
+	return _currency_specs[CURRENCY_CUSTOM];
+}
+
+/**
+ * Get the currently selected currency.
+ * @return Read-only reference to the current currency.
+ */
+inline const CurrencySpec &GetCurrency()
+{
+	return _currency_specs[GetGameSettings().locale.currency];
+}
 
 uint64_t GetMaskOfAllowedCurrencies();
 void ResetCurrencies(bool preserve_custom = true);
-byte GetNewgrfCurrencyIdConverted(byte grfcurr_id);
+uint8_t GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id);
 
 #endif /* CURRENCY_H */

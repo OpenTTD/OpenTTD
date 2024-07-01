@@ -56,13 +56,13 @@ bool VideoDriver_Win32Base::ClaimMousePointer()
 }
 
 struct Win32VkMapping {
-	byte vk_from;
-	byte vk_count;
-	byte map_to;
+	uint8_t vk_from;
+	uint8_t vk_count;
+	uint8_t map_to;
 };
 
-#define AS(x, z) {x, 0, z}
-#define AM(x, y, z, w) {x, y - x, z}
+#define AS(x, z) {x, 1, z}
+#define AM(x, y, z, w) {x, y - x + 1, z}
 
 static const Win32VkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
@@ -107,12 +107,11 @@ static const Win32VkMapping _vk_mapping[] = {
 
 static uint MapWindowsKey(uint sym)
 {
-	const Win32VkMapping *map;
 	uint key = 0;
 
-	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
-		if ((uint)(sym - map->vk_from) <= map->vk_count) {
-			key = sym - map->vk_from + map->map_to;
+	for (const auto &map : _vk_mapping) {
+		if (IsInsideBS(sym, map.vk_from, map.vk_count)) {
+			key = sym - map.vk_from + map.map_to;
 			break;
 		}
 	}
@@ -1031,7 +1030,7 @@ void VideoDriver_Win32Base::UnlockVideoBuffer()
 
 static FVideoDriver_Win32GDI iFVideoDriver_Win32GDI;
 
-const char *VideoDriver_Win32GDI::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_Win32GDI::Start(const StringList &param)
 {
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
 
@@ -1045,7 +1044,7 @@ const char *VideoDriver_Win32GDI::Start(const StringList &param)
 
 	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 
-	return nullptr;
+	return std::nullopt;
 }
 
 void VideoDriver_Win32GDI::Stop()
@@ -1238,9 +1237,9 @@ static OGLProc GetOGLProcAddressCallback(const char *proc)
 /**
  * Set the pixel format of a window-
  * @param dc Device context to set the pixel format of.
- * @return nullptr on success, error message otherwise.
+ * @return std::nullopt on success, error message otherwise.
  */
-static const char *SelectPixelFormat(HDC dc)
+static std::optional<std::string_view> SelectPixelFormat(HDC dc)
 {
 	PIXELFORMATDESCRIPTOR pfd = {
 		sizeof(PIXELFORMATDESCRIPTOR), // Size of this struct.
@@ -1266,7 +1265,7 @@ static const char *SelectPixelFormat(HDC dc)
 	if (format == 0) return "No suitable pixel format found";
 	if (!SetPixelFormat(dc, format, &pfd)) return "Can't set pixel format";
 
-	return nullptr;
+	return std::nullopt;
 }
 
 /** Bind all WGL extension functions we need. */
@@ -1277,11 +1276,11 @@ static void LoadWGLExtensions()
 	 * regarding context creation. To get around this, we create
 	 * a dummy window with a dummy context. The extension functions
 	 * remain valid even after this context is destroyed. */
-	HWND wnd = CreateWindow(_T("STATIC"), _T("dummy"), WS_OVERLAPPEDWINDOW, 0, 0, 0, 0, nullptr, nullptr, GetModuleHandle(nullptr), nullptr);
+	HWND wnd = CreateWindow(L"STATIC", L"dummy", WS_OVERLAPPEDWINDOW, 0, 0, 0, 0, nullptr, nullptr, GetModuleHandle(nullptr), nullptr);
 	HDC dc = GetDC(wnd);
 
 	/* Set pixel format of the window. */
-	if (SelectPixelFormat(dc) == nullptr) {
+	if (SelectPixelFormat(dc) == std::nullopt) {
 		/* Create rendering context. */
 		HGLRC rc = wglCreateContext(dc);
 		if (rc != nullptr) {
@@ -1321,7 +1320,7 @@ static void LoadWGLExtensions()
 
 static FVideoDriver_Win32OpenGL iFVideoDriver_Win32OpenGL;
 
-const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_Win32OpenGL::Start(const StringList &param)
 {
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
 
@@ -1333,8 +1332,8 @@ const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
 	this->MakeWindow(_fullscreen);
 
 	/* Create and initialize OpenGL context. */
-	const char *err = this->AllocateContext();
-	if (err != nullptr) {
+	auto err = this->AllocateContext();
+	if (err) {
 		this->Stop();
 		_cur_resolution = old_res;
 		return err;
@@ -1359,7 +1358,7 @@ const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
 
 	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 
-	return nullptr;
+	return std::nullopt;
 }
 
 void VideoDriver_Win32OpenGL::Stop()
@@ -1392,12 +1391,12 @@ void VideoDriver_Win32OpenGL::ToggleVsync(bool vsync)
 	}
 }
 
-const char *VideoDriver_Win32OpenGL::AllocateContext()
+std::optional<std::string_view> VideoDriver_Win32OpenGL::AllocateContext()
 {
 	this->dc = GetDC(this->main_wnd);
 
-	const char *err = SelectPixelFormat(this->dc);
-	if (err != nullptr) return err;
+	auto err = SelectPixelFormat(this->dc);
+	if (err) return err;
 
 	HGLRC rc = nullptr;
 
@@ -1439,7 +1438,7 @@ bool VideoDriver_Win32OpenGL::ToggleFullscreen(bool full_screen)
 	if (_screen.dst_ptr != nullptr) this->ReleaseVideoPointer();
 	this->DestroyContext();
 	bool res = this->VideoDriver_Win32Base::ToggleFullscreen(full_screen);
-	res &= this->AllocateContext() == nullptr;
+	res &= this->AllocateContext() == std::nullopt;
 	this->ClientSizeChanged(this->width, this->height, true);
 	return res;
 }

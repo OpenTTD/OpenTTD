@@ -13,7 +13,7 @@
 #include "zoom_type.h"
 
 /**
- * Scale by zoom level, usually shift left (when zoom > ZOOM_LVL_NORMAL)
+ * Scale by zoom level, usually shift left (when zoom > ZOOM_LVL_MIN)
  * When shifting right, value is rounded up
  * @param value value to shift
  * @param zoom  zoom level to shift to
@@ -25,7 +25,7 @@ inline int ScaleByZoom(int value, ZoomLevel zoom)
 }
 
 /**
- * Scale by zoom level, usually shift right (when zoom > ZOOM_LVL_NORMAL)
+ * Scale by zoom level, usually shift right (when zoom > ZOOM_LVL_MIN)
  * When shifting right, value is rounded up
  * @param value value to shift
  * @param zoom  zoom level to shift to
@@ -48,7 +48,7 @@ inline int AdjustByZoom(int value, int zoom)
 }
 
 /**
- * Scale by zoom level, usually shift left (when zoom > ZOOM_LVL_NORMAL)
+ * Scale by zoom level, usually shift left (when zoom > ZOOM_LVL_MIN)
  * @param value value to shift
  * @param zoom  zoom level to shift to
  * @return shifted value
@@ -59,7 +59,7 @@ inline int ScaleByZoomLower(int value, ZoomLevel zoom)
 }
 
 /**
- * Scale by zoom level, usually shift right (when zoom > ZOOM_LVL_NORMAL)
+ * Scale by zoom level, usually shift right (when zoom > ZOOM_LVL_MIN)
  * @param value value to shift
  * @param zoom  zoom level to shift to
  * @return shifted value
@@ -71,7 +71,7 @@ inline int UnScaleByZoomLower(int value, ZoomLevel zoom)
 
 /**
  * Short-hand to apply GUI zoom level.
- * @param value Pixel amount at #ZOOM_LVL_BEGIN (full zoom in).
+ * @param value Pixel amount at #ZOOM_LVL_MIN (full zoom in).
  * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
  */
 inline int UnScaleGUI(int value)
@@ -86,7 +86,7 @@ inline int UnScaleGUI(int value)
  */
 inline ZoomLevel ScaleZoomGUI(ZoomLevel value)
 {
-	return std::clamp(ZoomLevel(value + (ZOOM_LVL_GUI - ZOOM_LVL_OUT_4X)), ZOOM_LVL_MIN, ZOOM_LVL_MAX);
+	return std::clamp(ZoomLevel(value + (ZOOM_LVL_GUI - ZOOM_LVL_NORMAL)), ZOOM_LVL_MIN, ZOOM_LVL_MAX);
 }
 
 /**
@@ -96,22 +96,22 @@ inline ZoomLevel ScaleZoomGUI(ZoomLevel value)
  */
 inline ZoomLevel UnScaleZoomGUI(ZoomLevel value)
 {
-	return std::clamp(ZoomLevel(value - (ZOOM_LVL_GUI - ZOOM_LVL_OUT_4X)), ZOOM_LVL_MIN, ZOOM_LVL_MAX);
+	return std::clamp(ZoomLevel(value - (ZOOM_LVL_GUI - ZOOM_LVL_NORMAL)), ZOOM_LVL_MIN, ZOOM_LVL_MAX);
 }
 
 /**
  * Scale traditional pixel dimensions to GUI zoom level, for drawing sprites.
- * @param value Pixel amount at #ZOOM_LVL_BASE (traditional "normal" interface size).
+ * @param value Pixel amount at #ZOOM_BASE (traditional "normal" interface size).
  * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
  */
 inline int ScaleSpriteTrad(int value)
 {
-	return UnScaleGUI(value * ZOOM_LVL_BASE);
+	return UnScaleGUI(value * ZOOM_BASE);
 }
 
 /**
  * Scale traditional pixel dimensions to GUI zoom level.
- * @param value Pixel amount at #ZOOM_LVL_BASE (traditional "normal" interface size).
+ * @param value Pixel amount at #ZOOM_BASE (traditional "normal" interface size).
  * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
  */
 inline int ScaleGUITrad(int value)

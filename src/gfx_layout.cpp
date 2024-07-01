@@ -11,6 +11,7 @@
 #include "core/math_func.hpp"
 #include "gfx_layout.h"
 #include "string_func.h"
+#include "strings_func.h"
 #include "debug.h"
 
 #include "table/control_codes.h"
@@ -124,12 +125,11 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
  * Create a new layouter.
  * @param str      The string to create the layout for.
  * @param maxw     The maximum width.
- * @param colour   The colour of the font.
  * @param fontsize The size of font to use.
  */
-Layouter::Layouter(std::string_view str, int maxw, TextColour colour, FontSize fontsize) : string(str)
+Layouter::Layouter(std::string_view str, int maxw, FontSize fontsize) : string(str)
 {
-	FontState state(colour, fontsize);
+	FontState state(TC_INVALID, fontsize);
 
 	while (true) {
 		auto line_length = str.find_first_of('\n');
@@ -225,13 +225,13 @@ static bool IsConsumedFormattingCode(char32_t ch)
  * @return Upper left corner of the character relative to the start of the string.
  * @note Will only work right for single-line strings.
  */
-Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
+ParagraphLayouter::Position Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 {
 	const auto &line = this->front();
 
 	/* Pointer to the end-of-string marker? Return total line width. */
 	if (ch == this->string.end()) {
-		Point p = { line->GetWidth(), 0 };
+		Point p = {_current_text_dir == TD_LTR ? line->GetWidth() : 0, 0};
 		return p;
 	}
 
@@ -245,8 +245,8 @@ Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 	}
 
 	/* Initial position, returned if character not found. */
-	static const std::vector<Point> zero = { {0, 0} };
-	auto position = zero.begin();
+	const ParagraphLayouter::Position initial_position = Point{_current_text_dir == TD_LTR ? 0 : line->GetWidth(), 0};
+	const ParagraphLayouter::Position *position = &initial_position;
 
 	/* We couldn't find the code point index. */
 	if (str != ch) return *position;
@@ -254,24 +254,26 @@ Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 	/* Valid character. */
 
 	/* Scan all runs until we've found our code point index. */
+	size_t best_index = SIZE_MAX;
 	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
 		const ParagraphLayouter::VisualRun &run = line->GetVisualRun(run_index);
 		const auto &positions = run.GetPositions();
 		const auto &charmap = run.GetGlyphToCharMap();
 
-		/* Run starts after our character, use the last found position. */
-		if ((size_t)charmap.front() > index) return *position;
+		auto itp = positions.begin();
+		for (auto it = charmap.begin(); it != charmap.end(); ++it, ++itp) {
+			const size_t cur_index = static_cast<size_t>(*it);
+			/* Found exact character match? */
+			if (cur_index == index) return *itp;
 
-		position = positions.begin();
-		for (auto it = charmap.begin(); it != charmap.end(); /* nothing */) {
-			/* Plain honest-to-$deity match. */
-			if ((size_t)*it == index) return *position;
-			++it;
-			if (it == charmap.end()) break;
-
-			/* We just passed our character, it's probably a ligature, use the last found position. */
-			if ((size_t)*it > index) return *position;
-			++position;
+			/* If the character we are looking for has been combined with other characters to form a ligature then
+			 * we may not be able to find an exact match. We don't actually know if our character is part of a
+			 * ligature. In this case we will aim to select the first character of the ligature instead, so the best
+			 * index is the index nearest to but lower than the desired index. */
+			if (cur_index < index && (best_index < cur_index || best_index == SIZE_MAX)) {
+				best_index = cur_index;
+				position = &*itp;
+			}
 		}
 	}
 
@@ -301,8 +303,8 @@ ptrdiff_t Layouter::GetCharAtPosition(int x, size_t line_index) const
 			/* Not a valid glyph (empty). */
 			if (glyphs[i] == 0xFFFF) continue;
 
-			int begin_x = positions[i].x;
-			int end_x   = positions[i + 1].x;
+			int begin_x = positions[i].left;
+			int end_x   = positions[i].right + 1;
 
 			if (IsInsideMM(x, begin_x, end_x)) {
 				/* Found our glyph, now convert to UTF-8 string index. */
@@ -386,7 +388,7 @@ Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(std::string_view str
 	LineCacheKey key;
 	key.state_before = state;
 	key.str.assign(str);
-	return (*linecache)[key];
+	return (*linecache)[std::move(key)];
 }
 
 /**
@@ -406,4 +408,37 @@ void Layouter::ReduceLineCache()
 		/* TODO LRU cache would be fancy, but not exactly necessary */
 		if (linecache->size() > 4096) ResetLineCache();
 	}
+}
+
+/**
+ * Get the leading corner of a character in a single-line string relative
+ * to the start of the string.
+ * @param str String containing the character.
+ * @param ch Pointer to the character in the string.
+ * @param start_fontsize Font size to start the text with.
+ * @return Upper left corner of the glyph associated with the character.
+ */
+ParagraphLayouter::Position GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize)
+{
+	/* Ensure "ch" is inside "str" or at the exact end. */
+	assert(ch >= str.data() && (ch - str.data()) <= static_cast<ptrdiff_t>(str.size()));
+	auto it_ch = str.begin() + (ch - str.data());
+
+	Layouter layout(str, INT32_MAX, start_fontsize);
+	return layout.GetCharPosition(it_ch);
+}
+
+/**
+ * Get the character from a string that is drawn at a specific position.
+ * @param str String to test.
+ * @param x Position relative to the start of the string.
+ * @param start_fontsize Font size to start the text with.
+ * @return Index of the character position or -1 if there is no character at the position.
+ */
+ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize)
+{
+	if (x < 0) return -1;
+
+	Layouter layout(str, INT32_MAX, start_fontsize);
+	return layout.GetCharAtPosition(x, 0);
 }

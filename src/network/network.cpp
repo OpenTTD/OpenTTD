@@ -37,6 +37,9 @@
 #include "../gfx_func.h"
 #include "../error.h"
 #include "../misc_cmd.h"
+#ifdef DEBUG_DUMP_COMMANDS
+#	include "../fileio_func.h"
+#endif
 #include <charconv>
 #include <sstream>
 #include <iomanip>
@@ -44,8 +47,11 @@
 #include "../safeguards.h"
 
 #ifdef DEBUG_DUMP_COMMANDS
-#include "../fileio_func.h"
-/** When running the server till the wait point, run as fast as we can! */
+/** Helper variable to make the dedicated server go fast until the (first) join.
+ * Used to load the desync debug logs, i.e. for reproducing a desync.
+ * There's basically no need to ever enable this, unless you really know what
+ * you are doing, i.e. debugging a desync.
+ * See docs/desync.md for details. */
 bool _ddc_fastforward = true;
 #endif /* DEBUG_DUMP_COMMANDS */
 
@@ -61,7 +67,6 @@ bool _network_server;     ///< network-server is active
 bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
 bool _is_network_server;  ///< Does this client wants to be a network-server?
-NetworkCompanyState *_network_company_states = nullptr; ///< Statistics about some companies.
 ClientID _network_own_client_id;      ///< Our client identifier.
 ClientID _redirect_console_to_client; ///< If not invalid, redirect the console output to a client.
 uint8_t _network_reconnect;             ///< Reconnect timeout
@@ -79,12 +84,11 @@ uint32_t _sync_seed_2;                  ///< Second part of the seed.
 #endif
 uint32_t _sync_frame;                   ///< The frame to perform the sync check.
 bool _network_first_time;             ///< Whether we have finished joining or not.
-CompanyMask _network_company_passworded; ///< Bitmask of the password status of all companies.
 
 static_assert((int)NETWORK_COMPANY_NAME_LENGTH == MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH);
 
 /** The amount of clients connected */
-byte _network_clients_connected = 0;
+uint8_t _network_clients_connected = 0;
 
 extern std::string GenerateUid(std::string_view subject);
 
@@ -121,6 +125,28 @@ NetworkClientInfo::~NetworkClientInfo()
 }
 
 /**
+ * Returns whether the given company can be joined by this client.
+ * @param company_id The id of the company.
+ * @return \c true when this company is allowed to join, otherwise \c false.
+ */
+bool NetworkClientInfo::CanJoinCompany(CompanyID company_id) const
+{
+	Company *c = Company::GetIfValid(company_id);
+	return c != nullptr && c->allow_list.Contains(this->public_key);
+}
+
+/**
+ * Returns whether the given company can be joined by this client.
+ * @param company_id The id of the company.
+ * @return \c true when this company is allowed to join, otherwise \c false.
+ */
+bool NetworkCanJoinCompany(CompanyID company_id)
+{
+	NetworkClientInfo *info = NetworkClientInfo::GetByClientID(_network_own_client_id);
+	return info != nullptr && info->CanJoinCompany(company_id);
+}
+
+/**
  * Return the client state given it's client-identifier
  * @param client_id the ClientID to search for
  * @return return a pointer to the corresponding NetworkClientSocket struct or nullptr when not found
@@ -134,9 +160,62 @@ NetworkClientInfo::~NetworkClientInfo()
 	return nullptr;
 }
 
-byte NetworkSpectatorCount()
+
+/**
+ * Simple helper to find the location of the given authorized key in the authorized keys.
+ * @param authorized_keys The keys to look through.
+ * @param authorized_key The key to look for.
+ * @return The iterator to the location of the authorized key, or \c authorized_keys.end().
+ */
+static auto FindKey(auto *authorized_keys, std::string_view authorized_key)
 {
-	byte count = 0;
+	return std::find_if(authorized_keys->begin(), authorized_keys->end(), [authorized_key](auto &value) { return StrEqualsIgnoreCase(value, authorized_key); });
+}
+
+/**
+ * Check whether the given key is contains in these authorized keys.
+ * @param key The key to look for.
+ * @return \c true when the key has been found, otherwise \c false.
+ */
+bool NetworkAuthorizedKeys::Contains(std::string_view key) const
+{
+	return FindKey(this, key) != this->end();
+}
+
+/**
+ * Add the given key to the authorized keys, when it is not already contained.
+ * @param key The key to add.
+ * @return \c true when the key was added, \c false when the key already existed or the key was empty.
+ */
+bool NetworkAuthorizedKeys::Add(std::string_view key)
+{
+	if (key.empty()) return false;
+
+	auto iter = FindKey(this, key);
+	if (iter != this->end()) return false;
+
+	this->emplace_back(key);
+	return true;
+}
+
+/**
+ * Remove the given key from the authorized keys, when it is exists.
+ * @param key The key to remove.
+ * @return \c true when the key was removed, \c false when the key did not exist.
+ */
+bool NetworkAuthorizedKeys::Remove(std::string_view key)
+{
+	auto iter = FindKey(this, key);
+	if (iter == this->end()) return false;
+
+	this->erase(iter);
+	return true;
+}
+
+
+uint8_t NetworkSpectatorCount()
+{
+	uint8_t count = 0;
 
 	for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
 		if (ci->client_playas == COMPANY_SPECTATOR) count++;
@@ -148,68 +227,6 @@ byte NetworkSpectatorCount()
 	return count;
 }
 
-/**
- * Change the company password of a given company.
- * @param company_id ID of the company the password should be changed for.
- * @param password The unhashed password we like to set ('*' or '' resets the password)
- * @return The password.
- */
-std::string NetworkChangeCompanyPassword(CompanyID company_id, std::string password)
-{
-	if (password.compare("*") == 0) password = "";
-
-	if (_network_server) {
-		NetworkServerSetCompanyPassword(company_id, password, false);
-	} else {
-		NetworkClientSetCompanyPassword(password);
-	}
-
-	return password;
-}
-
-/**
- * Hash the given password using server ID and game seed.
- * @param password Password to hash.
- * @param password_server_id Server ID.
- * @param password_game_seed Game seed.
- * @return The hashed password.
- */
-std::string GenerateCompanyPasswordHash(const std::string &password, const std::string &password_server_id, uint32_t password_game_seed)
-{
-	if (password.empty()) return password;
-
-	size_t password_length = password.size();
-	size_t password_server_id_length = password_server_id.size();
-
-	std::ostringstream salted_password;
-	/* Add the password with the server's ID and game seed as the salt. */
-	for (uint i = 0; i < NETWORK_SERVER_ID_LENGTH - 1; i++) {
-		char password_char = (i < password_length ? password[i] : 0);
-		char server_id_char = (i < password_server_id_length ? password_server_id[i] : 0);
-		char seed_char = password_game_seed >> (i % 32);
-		salted_password << (char)(password_char ^ server_id_char ^ seed_char); // Cast needed, otherwise interpreted as integer to format
-	}
-
-	Md5 checksum;
-	MD5Hash digest;
-
-	/* Generate the MD5 hash */
-	std::string salted_password_string = salted_password.str();
-	checksum.Append(salted_password_string.data(), salted_password_string.size());
-	checksum.Finish(digest);
-
-	return FormatArrayAsHex(digest);
-}
-
-/**
- * Check if the company we want to join requires a password.
- * @param company_id id of the company we want to check the 'passworded' flag for.
- * @return true if the company requires a password.
- */
-bool NetworkCompanyIsPassworded(CompanyID company_id)
-{
-	return HasBit(_network_company_passworded, company_id);
-}
 
 /* This puts a text-message to the console, or in the future, the chat-box,
  *  (to keep it all a bit more general)
@@ -321,6 +338,7 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err)
 		STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP,
 		STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN,
 		STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME,
+		STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST,
 	};
 	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
 
@@ -605,10 +623,6 @@ void NetworkClose(bool close_admins)
 
 	NetworkFreeLocalCommandQueue();
 
-	delete[] _network_company_states;
-	_network_company_states = nullptr;
-	_network_company_passworded = 0;
-
 	InitializeNetworkPools(close_admins);
 }
 
@@ -746,6 +760,7 @@ public:
 		Debug(net, 9, "Client::OnConnect(): connection_string={}", this->connection_string);
 
 		_networking = true;
+		_network_own_client_id = ClientID{};
 		new ClientNetworkGameSocketHandler(s, this->connection_string);
 		IConsoleCmdExec("exec scripts/on_client.scr 0");
 		NetworkClient_Connected();
@@ -754,7 +769,7 @@ public:
 
 /**
  * Join a client to the server at with the given connection string.
- * The default for the passwords is \c nullptr. When the server or company needs a
+ * The default for the passwords is \c nullptr. When the server needs a
  * password and none is given, the user is asked to enter the password in the GUI.
  * This function will return false whenever some information required to join is not
  * correct such as the company number or the client's name, or when there is not
@@ -766,10 +781,9 @@ public:
  * @param connection_string     The IP address, port and company number to join as.
  * @param default_company       The company number to join as when none is given.
  * @param join_server_password  The password for the server.
- * @param join_company_password The password for the company.
  * @return Whether the join has started.
  */
-bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password, const std::string &join_company_password)
+bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password)
 {
 	Debug(net, 9, "NetworkClientConnectGame(): connection_string={}", connection_string);
 
@@ -782,7 +796,6 @@ bool NetworkClientConnectGame(const std::string &connection_string, CompanyID de
 	_network_join.connection_string = resolved_connection_string;
 	_network_join.company = join_as;
 	_network_join.server_password = join_server_password;
-	_network_join.company_password = join_company_password;
 
 	if (_game_mode == GM_MENU) {
 		/* From the menu we can immediately continue with the actual join. */
@@ -825,9 +838,12 @@ static void NetworkInitGameInfo()
 	/* There should be always space for the server. */
 	assert(NetworkClientInfo::CanAllocateItem());
 	NetworkClientInfo *ci = new NetworkClientInfo(CLIENT_ID_SERVER);
-	ci->client_playas = _network_dedicated ? COMPANY_SPECTATOR : COMPANY_FIRST;
+	ci->client_playas = COMPANY_SPECTATOR;
 
 	ci->client_name = _settings_client.network.client_name;
+
+	NetworkAuthenticationClientHandler::EnsureValidSecretKeyAndUpdatePublicKey(_settings_client.network.client_secret_key, _settings_client.network.client_public_key);
+	ci->public_key = _settings_client.network.client_public_key;
 }
 
 /**
@@ -899,7 +915,6 @@ bool NetworkServerStart()
 	Debug(net, 5, "Starting listeners for incoming server queries");
 	NetworkUDPServerListen();
 
-	_network_company_states = new NetworkCompanyState[MAX_COMPANIES];
 	_network_server = true;
 	_networking = true;
 	_frame_counter = 0;
@@ -909,7 +924,6 @@ bool NetworkServerStart()
 	_network_own_client_id = CLIENT_ID_SERVER;
 
 	_network_clients_connected = 0;
-	_network_company_passworded = 0;
 
 	NetworkInitGameInfo();
 
@@ -922,10 +936,40 @@ bool NetworkServerStart()
 	/* if the server is dedicated ... add some other script */
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/on_dedicated.scr 0");
 
-	/* welcome possibly still connected admins - this can only happen on a dedicated server. */
-	if (_network_dedicated) ServerNetworkAdminSocketHandler::WelcomeAll();
-
 	return true;
+}
+
+/**
+ * Perform tasks when the server is started. This consists of things
+ * like putting the server's client in a valid company and resetting the restart time.
+ */
+void NetworkOnGameStart()
+{
+	if (!_network_server) return;
+
+	/* Update the static game info to set the values from the new game. */
+	NetworkServerUpdateGameInfo();
+
+	ChangeNetworkRestartTime(true);
+
+	if (!_network_dedicated) {
+		Company *c = Company::GetIfValid(GetFirstPlayableCompanyID());
+		NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
+		if (c != nullptr && ci != nullptr) {
+			ci->client_playas = c->index;
+
+			/*
+			 * If the company has not been named yet, the company was just started.
+			 * Otherwise it would have gotten a name already, so announce it as a new company.
+			 */
+			if (c->name_1 == STR_SV_UNNAMED && c->name.empty()) NetworkServerNewCompany(c, ci);
+		}
+
+		ShowClientList();
+	} else {
+		/* welcome possibly still connected admins - this can only happen on a dedicated server. */
+		ServerNetworkAdminSocketHandler::WelcomeAll();
+	}
 }
 
 /* The server is rebooting...
@@ -1098,6 +1142,16 @@ void NetworkGameLoop()
 				}
 			}
 
+			/* Skip all entries in the command-log till we caught up with the current game again. */
+			if (TimerGameEconomy::date > next_date || (TimerGameEconomy::date == next_date && TimerGameEconomy::date_fract > next_date_fract)) {
+				Debug(desync, 0, "Skipping to next command at {:08x}:{:02x}", next_date, next_date_fract);
+				if (cp != nullptr) {
+					delete cp;
+					cp = nullptr;
+				}
+				check_sync_state = false;
+			}
+
 			if (cp != nullptr || check_sync_state) break;
 
 			char buff[4096];
@@ -1130,10 +1184,10 @@ void NetworkGameLoop()
 				cp->cmd = (Commands)cmd;
 
 				/* Parse command data. */
-				std::vector<byte> args;
+				std::vector<uint8_t> args;
 				size_t arg_len = strlen(buffer);
 				for (size_t i = 0; i + 1 < arg_len; i += 2) {
-					byte e = 0;
+					uint8_t e = 0;
 					std::from_chars(buffer + i, buffer + i + 2, e, 16);
 					args.emplace_back(e);
 				}
@@ -1157,7 +1211,8 @@ void NetworkGameLoop()
 				assert(ret == 4);
 				check_sync_state = true;
 			} else if (strncmp(p, "msg: ", 5) == 0 || strncmp(p, "client: ", 8) == 0 ||
-						strncmp(p, "load: ", 6) == 0 || strncmp(p, "save: ", 6) == 0) {
+						strncmp(p, "load: ", 6) == 0 || strncmp(p, "save: ", 6) == 0 ||
+						strncmp(p, "warning: ", 9) == 0) {
 				/* A message that is not very important to the log playback, but part of the log. */
 #ifndef DEBUG_FAILED_DUMP_COMMANDS
 			} else if (strncmp(p, "cmdf: ", 6) == 0) {
@@ -1226,11 +1281,6 @@ void NetworkGameLoop()
 	NetworkSend();
 }
 
-static void NetworkGenerateServerId()
-{
-	_settings_client.network.network_id = GenerateUid("OpenTTD Server ID");
-}
-
 /** This tries to launch the network for a given OS */
 void NetworkStartUp()
 {
@@ -1239,9 +1289,6 @@ void NetworkStartUp()
 	/* Network is available */
 	_network_available = NetworkCoreInitialize();
 	_network_dedicated = false;
-
-	/* Generate an server id when there is none yet */
-	if (_settings_client.network.network_id.empty()) NetworkGenerateServerId();
 
 	_network_game_info = {};
 

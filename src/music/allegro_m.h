@@ -15,7 +15,7 @@
 /** Allegro's music player. */
 class MusicDriver_Allegro : public MusicDriver {
 public:
-	const char *Start(const StringList &param) override;
+	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
 
@@ -25,8 +25,8 @@ public:
 
 	bool IsSongPlaying() override;
 
-	void SetVolume(byte vol) override;
-	const char *GetName() const override { return "allegro"; }
+	void SetVolume(uint8_t vol) override;
+	std::string_view GetName() const override { return "allegro"; }
 };
 
 /** Factory for allegro's music player. */

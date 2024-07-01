@@ -40,17 +40,17 @@ static constexpr NWidgetPart _background_widgets[] = {
 /**
  * Window description for the background window to prevent smearing.
  */
-static WindowDesc _background_desc(__FILE__, __LINE__,
+static WindowDesc _background_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
 	WDF_NO_CLOSE,
-	std::begin(_background_widgets), std::end(_background_widgets)
+	_background_widgets
 );
 
 /** The background for the game. */
 class BootstrapBackground : public Window {
 public:
-	BootstrapBackground() : Window(&_background_desc)
+	BootstrapBackground() : Window(_background_desc)
 	{
 		this->InitNested(0);
 		CLRBITS(this->flags, WF_WHITE_BORDER);
@@ -76,17 +76,17 @@ static constexpr NWidgetPart _nested_bootstrap_errmsg_widgets[] = {
 };
 
 /** Window description for the error window. */
-static WindowDesc _bootstrap_errmsg_desc(__FILE__, __LINE__,
+static WindowDesc _bootstrap_errmsg_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
 	WDF_MODAL | WDF_NO_CLOSE,
-	std::begin(_nested_bootstrap_errmsg_widgets), std::end(_nested_bootstrap_errmsg_widgets)
+	_nested_bootstrap_errmsg_widgets
 );
 
 /** The window for a failed bootstrap. */
 class BootstrapErrorWindow : public Window {
 public:
-	BootstrapErrorWindow() : Window(&_bootstrap_errmsg_desc)
+	BootstrapErrorWindow() : Window(_bootstrap_errmsg_desc)
 	{
 		this->InitNested(1);
 	}
@@ -97,12 +97,12 @@ public:
 		this->Window::Close();
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget == WID_BEM_MESSAGE) {
-			*size = GetStringBoundingBox(STR_MISSING_GRAPHICS_ERROR);
-			size->width += WidgetDimensions::scaled.frametext.Horizontal();
-			size->height += WidgetDimensions::scaled.frametext.Vertical();
+			size = GetStringBoundingBox(STR_MISSING_GRAPHICS_ERROR);
+			size.width += WidgetDimensions::scaled.frametext.Horizontal();
+			size.height += WidgetDimensions::scaled.frametext.Vertical();
 		}
 	}
 
@@ -133,11 +133,11 @@ static constexpr NWidgetPart _nested_bootstrap_download_status_window_widgets[] 
 };
 
 /** Window description for the download window */
-static WindowDesc _bootstrap_download_status_window_desc(__FILE__, __LINE__,
+static WindowDesc _bootstrap_download_status_window_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_MODAL | WDF_NO_CLOSE,
-	std::begin(_nested_bootstrap_download_status_window_widgets), std::end(_nested_bootstrap_download_status_window_widgets)
+	_nested_bootstrap_download_status_window_widgets
 );
 
 
@@ -145,7 +145,7 @@ static WindowDesc _bootstrap_download_status_window_desc(__FILE__, __LINE__,
 struct BootstrapContentDownloadStatusWindow : public BaseNetworkContentDownloadStatusWindow {
 public:
 	/** Simple call the constructor of the superclass. */
-	BootstrapContentDownloadStatusWindow() : BaseNetworkContentDownloadStatusWindow(&_bootstrap_download_status_window_desc)
+	BootstrapContentDownloadStatusWindow() : BaseNetworkContentDownloadStatusWindow(_bootstrap_download_status_window_desc)
 	{
 	}
 
@@ -185,11 +185,11 @@ static constexpr NWidgetPart _bootstrap_query_widgets[] = {
 };
 
 /** The window description for the query. */
-static WindowDesc _bootstrap_query_desc(__FILE__, __LINE__,
+static WindowDesc _bootstrap_query_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_NO_CLOSE,
-	std::begin(_bootstrap_query_widgets), std::end(_bootstrap_query_widgets)
+	_bootstrap_query_widgets
 );
 
 /** The window for the query. It can't use the generic query window as that uses sprites that don't exist yet. */
@@ -198,7 +198,7 @@ class BootstrapAskForDownloadWindow : public Window, ContentCallback {
 
 public:
 	/** Start listening to the content client events. */
-	BootstrapAskForDownloadWindow() : Window(&_bootstrap_query_desc)
+	BootstrapAskForDownloadWindow() : Window(_bootstrap_query_desc)
 	{
 		this->InitNested(WN_CONFIRM_POPUP_QUERY_BOOTSTRAP);
 		_network_content_client.AddCallback(this);
@@ -211,7 +211,7 @@ public:
 		this->Window::Close();
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		/* We cache the button size. This is safe as no reinit can happen here. */
 		if (this->button_size.width == 0) {
@@ -223,13 +223,13 @@ public:
 		switch (widget) {
 			case WID_BAFD_QUESTION:
 				/* The question is twice as wide as the buttons, and determine the height based on the width. */
-				size->width = this->button_size.width * 2;
-				size->height = GetStringHeight(STR_MISSING_GRAPHICS_SET_MESSAGE, size->width - WidgetDimensions::scaled.frametext.Horizontal()) + WidgetDimensions::scaled.frametext.Vertical();
+				size.width = this->button_size.width * 2;
+				size.height = GetStringHeight(STR_MISSING_GRAPHICS_SET_MESSAGE, size.width - WidgetDimensions::scaled.frametext.Horizontal()) + WidgetDimensions::scaled.frametext.Vertical();
 				break;
 
 			case WID_BAFD_YES:
 			case WID_BAFD_NO:
-				*size = this->button_size;
+				size = this->button_size;
 				break;
 		}
 	}
@@ -291,10 +291,10 @@ public:
 #	include "video/video_driver.hpp"
 
 class BootstrapEmscripten : public ContentCallback {
-	bool downloading{false};
-	uint total_files{0};
-	uint total_bytes{0};
-	uint downloaded_bytes{0};
+	bool downloading = false;
+	uint total_files = 0;
+	uint total_bytes = 0;
+	uint downloaded_bytes = 0;
 
 public:
 	BootstrapEmscripten()
@@ -385,9 +385,9 @@ bool HandleBootstrap()
 	 * This way the mauve and gray colours work and we can show the user interface. */
 	GfxInitPalettes();
 	static const int offsets[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08 };
-	for (uint i = 0; i != 16; i++) {
-		for (int j = 0; j < 8; j++) {
-			_colour_gradient[i][j] = offsets[i] + j;
+	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
+		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
+			SetColourGradient(i, j, offsets[i] + j);
 		}
 	}
 

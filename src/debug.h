@@ -44,7 +44,6 @@ extern int _debug_misc_level;
 extern int _debug_net_level;
 extern int _debug_sprite_level;
 extern int _debug_oldloader_level;
-extern int _debug_npf_level;
 extern int _debug_yapf_level;
 extern int _debug_fontcache_level;
 extern int _debug_script_level;
@@ -59,9 +58,6 @@ extern int _debug_random_level;
 void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_iterator);
 void SetDebugString(const char *s, void (*error_func)(const std::string &));
 std::string GetDebugString();
-
-/* Shorter form for passing filename and linenumber */
-#define FILE_LINE __FILE__, __LINE__
 
 /** TicToc profiling.
  * Usage:

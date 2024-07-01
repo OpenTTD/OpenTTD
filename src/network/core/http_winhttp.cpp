@@ -78,7 +78,7 @@ static std::string GetLastErrorAsString()
 	DWORD error_code = GetLastError();
 
 	if (FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_FROM_HMODULE | FORMAT_MESSAGE_IGNORE_INSERTS, GetModuleHandle(L"winhttp.dll"), error_code,
-		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, lengthof(buffer), nullptr) == 0) {
+		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, static_cast<DWORD>(std::size(buffer)), nullptr) == 0) {
 		return fmt::format("unknown error {}", error_code);
 	}
 
@@ -121,8 +121,8 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 			/* Make sure we are not in a redirect loop. */
 			if (this->depth++ > 5) {
 				Debug(net, 0, "HTTP request failed: too many redirects");
-				this->finished = true;
 				this->callback.OnFailure();
+				this->finished = true;
 				return;
 			}
 			break;
@@ -144,8 +144,8 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 			if (status_code >= 400) {
 				/* No need to be verbose about rate limiting. */
 				Debug(net, status_code == HTTP_429_TOO_MANY_REQUESTS ? 1 : 0, "HTTP request failed: status-code {}", status_code);
-				this->finished = true;
 				this->callback.OnFailure();
+				this->finished = true;
 				return;
 			}
 
@@ -183,14 +183,14 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 		case WINHTTP_CALLBACK_STATUS_SECURE_FAILURE:
 		case WINHTTP_CALLBACK_STATUS_REQUEST_ERROR:
 			Debug(net, 0, "HTTP request failed: {}", GetLastErrorAsString());
-			this->finished = true;
 			this->callback.OnFailure();
+			this->finished = true;
 			break;
 
 		default:
 			Debug(net, 0, "HTTP request failed: unexepected callback code 0x{:x}", code);
-			this->finished = true;
 			this->callback.OnFailure();
+			this->finished = true;
 			return;
 	}
 }
@@ -222,19 +222,19 @@ void NetworkHTTPRequest::Connect()
 	/* Convert the URL to its components. */
 	url_components.dwStructSize = sizeof(url_components);
 	url_components.lpszScheme = scheme;
-	url_components.dwSchemeLength = lengthof(scheme);
+	url_components.dwSchemeLength = static_cast<DWORD>(std::size(scheme));
 	url_components.lpszHostName = hostname;
-	url_components.dwHostNameLength = lengthof(hostname);
+	url_components.dwHostNameLength = static_cast<DWORD>(std::size(hostname));
 	url_components.lpszUrlPath = url_path;
-	url_components.dwUrlPathLength = lengthof(url_path);
+	url_components.dwUrlPathLength = static_cast<DWORD>(std::size(url_path));
 	WinHttpCrackUrl(this->uri.c_str(), 0, 0, &url_components);
 
 	/* Create the HTTP connection. */
 	this->connection = WinHttpConnect(_winhttp_session, url_components.lpszHostName, url_components.nPort, 0);
 	if (this->connection == nullptr) {
 		Debug(net, 0, "HTTP request failed: {}", GetLastErrorAsString());
-		this->finished = true;
 		this->callback.OnFailure();
+		this->finished = true;
 		return;
 	}
 
@@ -243,8 +243,8 @@ void NetworkHTTPRequest::Connect()
 		WinHttpCloseHandle(this->connection);
 
 		Debug(net, 0, "HTTP request failed: {}", GetLastErrorAsString());
-		this->finished = true;
 		this->callback.OnFailure();
+		this->finished = true;
 		return;
 	}
 
@@ -267,8 +267,8 @@ bool NetworkHTTPRequest::Receive()
 {
 	if (this->callback.cancelled && !this->finished) {
 		Debug(net, 1, "HTTP request failed: cancelled by user");
-		this->finished = true;
 		this->callback.OnFailure();
+		this->finished = true;
 		/* Fall-through, as we are waiting for IsQueueEmpty() to happen. */
 	}
 

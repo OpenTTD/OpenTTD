@@ -19,7 +19,7 @@ static const LinkGraphJobID INVALID_LINK_GRAPH_JOB = UINT16_MAX;
 typedef uint16_t NodeID;
 static const NodeID INVALID_NODE = UINT16_MAX;
 
-enum DistributionType : byte {
+enum DistributionType : uint8_t {
 	DT_BEGIN = 0,
 	DT_MIN = 0,
 	DT_MANUAL = 0,           ///< Manual distribution. No link graph calculations are run.

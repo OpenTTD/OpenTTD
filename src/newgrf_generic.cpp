@@ -41,7 +41,7 @@ struct GenericScopeResolver : public ScopeResolver {
 	{
 	}
 
-	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const override;
 
 private:
 	bool ai_callback; ///< Callback comes from the AI.
@@ -54,7 +54,7 @@ struct GenericResolverObject : public ResolverObject {
 
 	GenericResolverObject(bool ai_callback, CallbackID callback = CBID_NO_CALLBACK);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &this->generic_scope;
@@ -93,8 +93,8 @@ static GenericCallbackList _gcl[GSF_END];
  */
 void ResetGenericCallbacks()
 {
-	for (uint8_t feature = 0; feature < lengthof(_gcl); feature++) {
-		_gcl[feature].clear();
+	for (auto &gcl : _gcl) {
+		gcl.clear();
 	}
 }
 
@@ -118,7 +118,7 @@ void AddGenericCallback(uint8_t feature, const GRFFile *file, const SpriteGroup 
 	_gcl[feature].push_front(GenericCallback(file, group));
 }
 
-/* virtual */ uint32_t GenericScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t GenericScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	if (this->ai_callback) {
 		switch (variable) {
@@ -140,7 +140,7 @@ void AddGenericCallback(uint8_t feature, const GRFFile *file, const SpriteGroup 
 
 	Debug(grf, 1, "Unhandled generic feature variable 0x{:02X}", variable);
 
-	*available = false;
+	available = false;
 	return UINT_MAX;
 }
 

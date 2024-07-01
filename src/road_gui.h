@@ -13,7 +13,7 @@
 #include "road_type.h"
 #include "tile_type.h"
 #include "direction_type.h"
-#include "widgets/dropdown_type.h"
+#include "dropdown_type.h"
 
 struct Window *ShowBuildRoadToolbar(RoadType roadtype);
 struct Window *ShowBuildRoadScenToolbar(RoadType roadtype);

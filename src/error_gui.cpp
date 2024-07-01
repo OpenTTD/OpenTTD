@@ -43,11 +43,11 @@ static constexpr NWidgetPart _nested_errmsg_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _errmsg_desc(__FILE__, __LINE__,
+static WindowDesc _errmsg_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_ERRMSG, WC_NONE,
 	0,
-	std::begin(_nested_errmsg_widgets), std::end(_nested_errmsg_widgets)
+	_nested_errmsg_widgets
 );
 
 static constexpr NWidgetPart _nested_errmsg_face_widgets[] = {
@@ -63,11 +63,11 @@ static constexpr NWidgetPart _nested_errmsg_face_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _errmsg_face_desc(__FILE__, __LINE__,
+static WindowDesc _errmsg_face_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_ERRMSG, WC_NONE,
 	0,
-	std::begin(_nested_errmsg_face_widgets), std::end(_nested_errmsg_face_widgets)
+	_nested_errmsg_face_widgets
 );
 
 /**
@@ -175,7 +175,7 @@ private:
 
 public:
 	ErrmsgWindow(const ErrorMessageData &data) :
-		Window(data.HasFace() ? &_errmsg_face_desc : &_errmsg_desc),
+		Window(data.HasFace() ? _errmsg_face_desc : _errmsg_desc),
 		ErrorMessageData(data),
 		display_timeout(std::chrono::seconds(3 * _settings_client.gui.errmsg_duration), [this]() {
 			this->Close();
@@ -189,16 +189,16 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_EM_MESSAGE: {
 				CopyInDParam(this->params);
 				if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
 
-				this->height_summary = GetStringHeight(this->summary_msg, size->width);
-				this->height_detailed = (this->detailed_msg == INVALID_STRING_ID) ? 0 : GetStringHeight(this->detailed_msg, size->width);
-				this->height_extra = (this->extra_msg == INVALID_STRING_ID) ? 0 : GetStringHeight(this->extra_msg, size->width);
+				this->height_summary = GetStringHeight(this->summary_msg, size.width);
+				this->height_detailed = (this->detailed_msg == INVALID_STRING_ID) ? 0 : GetStringHeight(this->detailed_msg, size.width);
+				this->height_extra = (this->extra_msg == INVALID_STRING_ID) ? 0 : GetStringHeight(this->extra_msg, size.width);
 
 				if (this->textref_stack_size > 0) StopTextRefStackUsage();
 
@@ -206,11 +206,11 @@ public:
 				if (this->detailed_msg != INVALID_STRING_ID) panel_height += this->height_detailed + WidgetDimensions::scaled.vsep_wide;
 				if (this->extra_msg != INVALID_STRING_ID) panel_height += this->height_extra + WidgetDimensions::scaled.vsep_wide;
 
-				size->height = std::max(size->height, panel_height);
+				size.height = std::max(size.height, panel_height);
 				break;
 			}
 			case WID_EM_FACE:
-				*size = maxdim(*size, GetScaledSpriteSize(SPR_GRADIENT));
+				size = maxdim(size, GetScaledSpriteSize(SPR_GRADIENT));
 				break;
 		}
 	}
@@ -348,7 +348,7 @@ void ShowFirstError()
  */
 void UnshowCriticalError()
 {
-	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
+	ErrmsgWindow *w = dynamic_cast<ErrmsgWindow *>(FindWindowById(WC_ERRMSG, 0));
 	if (_window_system_initialized && w != nullptr) {
 		if (w->IsCritical()) _error_list.push_front(*w);
 		_window_system_initialized = false;
@@ -414,7 +414,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 	ErrorMessageData data(summary_msg, detailed_msg, is_critical, x, y, textref_stack_grffile, textref_stack_size, textref_stack, extra_msg);
 	data.CopyOutDParams();
 
-	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
+	ErrmsgWindow *w = dynamic_cast<ErrmsgWindow *>(FindWindowById(WC_ERRMSG, 0));
 	if (w != nullptr) {
 		if (w->IsCritical()) {
 			/* A critical error is currently shown. */
@@ -438,7 +438,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
  */
 bool HideActiveErrorMessage()
 {
-	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
+	ErrmsgWindow *w = dynamic_cast<ErrmsgWindow *>(FindWindowById(WC_ERRMSG, 0));
 	if (w == nullptr) return false;
 	w->Close();
 	return true;

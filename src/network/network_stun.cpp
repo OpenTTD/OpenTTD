@@ -92,7 +92,7 @@ std::unique_ptr<ClientNetworkStunSocketHandler> ClientNetworkStunSocketHandler::
 
 	stun_handler->Connect(token, family);
 
-	auto p = std::make_unique<Packet>(PACKET_STUN_SERCLI_STUN);
+	auto p = std::make_unique<Packet>(stun_handler.get(), PACKET_STUN_SERCLI_STUN);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	p->Send_string(token);
 	p->Send_uint8(family);

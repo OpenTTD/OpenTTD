@@ -24,10 +24,9 @@
  */
 enum PacketGameType : uint8_t {
 	/*
-	 * These first four pair of packets (thus eight in
-	 * total) must remain in this order for backward
-	 * and forward compatibility between clients that
-	 * are trying to join directly.
+	 * These first ten packets must remain in this order for backward and forward compatibility
+	 * between clients that are trying to join directly. These packets can be received and/or sent
+	 * by the server before the server has processed the 'join' packet from the client.
 	 */
 
 	/* Packets sent by socket accepting code without ever constructing a client socket instance. */
@@ -46,6 +45,10 @@ enum PacketGameType : uint8_t {
 	PACKET_SERVER_GAME_INFO,             ///< Information about the server.
 	PACKET_CLIENT_GAME_INFO,             ///< Request information about the server.
 
+	/* A server quitting this game. */
+	PACKET_SERVER_NEWGAME,               ///< The server is preparing to start a new game.
+	PACKET_SERVER_SHUTDOWN,              ///< The server is shutting down.
+
 	/*
 	 * Packets after here assume that the client
 	 * and server are running the same version. As
@@ -56,15 +59,17 @@ enum PacketGameType : uint8_t {
 	 * the map and other important data.
 	 */
 
-	/* After the join step, the first is checking NewGRFs. */
+	/* After the join step, the first perform game authentication and enabling encryption. */
+	PACKET_SERVER_AUTH_REQUEST,          ///< The server requests the client to authenticate using a number of methods.
+	PACKET_CLIENT_AUTH_RESPONSE,         ///< The client responds to the authentication request.
+	PACKET_SERVER_ENABLE_ENCRYPTION,     ///< The server tells that authentication has completed and requests to enable encryption with the keys of the last \c PACKET_CLIENT_AUTH_RESPONSE.
+
+	/* After the authentication is done, the next step is identification. */
+	PACKET_CLIENT_IDENTIFY,              ///< Client telling the server the client's name and requested company.
+
+	/* After the identify step, the next is checking NewGRFs. */
 	PACKET_SERVER_CHECK_NEWGRFS,         ///< Server sends NewGRF IDs and MD5 checksums for the client to check.
 	PACKET_CLIENT_NEWGRFS_CHECKED,       ///< Client acknowledges that it has all required NewGRFs.
-
-	/* Checking the game, and then company passwords. */
-	PACKET_SERVER_NEED_GAME_PASSWORD,    ///< Server requests the (hashed) game password.
-	PACKET_CLIENT_GAME_PASSWORD,         ///< Clients sends the (hashed) game password.
-	PACKET_SERVER_NEED_COMPANY_PASSWORD, ///< Server requests the (hashed) company password.
-	PACKET_CLIENT_COMPANY_PASSWORD,      ///< Client sends the (hashed) company password.
 
 	/* The server welcomes the authenticated client and sends information of other clients. */
 	PACKET_SERVER_WELCOME,               ///< Server welcomes you and gives you your #ClientID.
@@ -110,14 +115,8 @@ enum PacketGameType : uint8_t {
 	PACKET_SERVER_MOVE,                  ///< Server tells everyone that someone is moved to another company.
 
 	/* Configuration updates. */
-	PACKET_CLIENT_SET_PASSWORD,          ///< A client (re)sets its company's password.
 	PACKET_CLIENT_SET_NAME,              ///< A client changes its name.
-	PACKET_SERVER_COMPANY_UPDATE,        ///< Information (password) of a company changed.
 	PACKET_SERVER_CONFIG_UPDATE,         ///< Some network configuration important to the client changed.
-
-	/* A server quitting this game. */
-	PACKET_SERVER_NEWGAME,               ///< The server is preparing to start a new game.
-	PACKET_SERVER_SHUTDOWN,              ///< The server is shutting down.
 
 	/* A client quitting. */
 	PACKET_CLIENT_QUIT,                  ///< A client tells the server it is going to quit.
@@ -162,10 +161,13 @@ protected:
 
 	/**
 	 * Try to join the server:
-	 * string  OpenTTD revision (norev000 if no revision).
-	 * string  Name of the client (max NETWORK_NAME_LENGTH).
-	 * uint8_t   ID of the company to play as (1..MAX_COMPANIES).
-	 * uint8_t   ID of the clients Language.
+	 * string   OpenTTD revision (norev0000 if no revision).
+	 * uint32_t NewGRF version (added in 1.2).
+	 * string   Name of the client (max NETWORK_NAME_LENGTH) (removed in 15).
+	 * uint8_t  ID of the company to play as (1..MAX_COMPANIES) (removed in 15).
+	 * uint8_t  ID of the clients Language (removed in 15).
+	 * string   Client's unique identifier (removed in 1.0).
+	 *
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_CLIENT_JOIN(Packet &p);
@@ -194,53 +196,55 @@ protected:
 	 * Send information about a client:
 	 * uint32_t  ID of the client (always unique on a server. 1 = server, 0 is invalid).
 	 * uint8_t   ID of the company the client is playing as (255 for spectators).
-	 * string  Name of the client.
+	 * string Name of the client.
+	 * string Public key of the client.
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_CLIENT_INFO(Packet &p);
 
 	/**
-	 * Indication to the client that the server needs a game password.
+	 * The client tells the server about the identity of the client:
+	 * string  Name of the client (max NETWORK_NAME_LENGTH).
+	 * uint8_t ID of the company to play as (1..MAX_COMPANIES, or COMPANY_SPECTATOR).
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_NEED_GAME_PASSWORD(Packet &p);
+	virtual NetworkRecvStatus Receive_CLIENT_IDENTIFY(Packet &p);
 
 	/**
-	 * Indication to the client that the server needs a company password:
-	 * uint32_t  Generation seed.
-	 * string  Network ID of the server.
+	 * Indication to the client that it needs to authenticate:
+	 * uint8_t The \c NetworkAuthenticationMethod to use.
+	 * 32 * uint8_t Public key of the server.
+	 * 24 * uint8_t Nonce for the key exchange.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_NEED_COMPANY_PASSWORD(Packet &p);
+	virtual NetworkRecvStatus Receive_SERVER_AUTH_REQUEST(Packet &p);
 
 	/**
-	 * Send a password to the server to authorize:
-	 * uint8_t   Password type (see NetworkPasswordType).
-	 * string  The password.
+	 * Send the response to the authentication request:
+	 * 32 * uint8_t Public key of the client.
+	 * 16 * uint8_t Message authentication code.
+	 *  8 * uint8_t Random message that got encoded and signed.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_GAME_PASSWORD(Packet &p);
+	virtual NetworkRecvStatus Receive_CLIENT_AUTH_RESPONSE(Packet &p);
 
 	/**
-	 * Send a password to the server to authorize
-	 * uint8_t   Password type (see NetworkPasswordType).
-	 * string  The password.
+	 * Indication to the client that authentication is complete and encryption has to be used from here on forward.
+	 * The encryption uses the shared keys generated by the last AUTH_REQUEST key exchange.
+	 * 24 * uint8_t Nonce for encrypted connection.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_CLIENT_COMPANY_PASSWORD(Packet &p);
+	virtual NetworkRecvStatus Receive_SERVER_ENABLE_ENCRYPTION(Packet &p);
 
 	/**
 	 * The client is joined and ready to receive their map:
 	 * uint32_t  Own client ID.
-	 * uint32_t  Generation seed.
-	 * string  Network ID of the server.
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_WELCOME(Packet &p);
 
 	/**
 	 * Request the map from the server.
-	 * uint32_t  NewGRF version (release versions of OpenTTD only).
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_CLIENT_GETMAP(Packet &p);
@@ -375,13 +379,6 @@ protected:
 	virtual NetworkRecvStatus Receive_SERVER_EXTERNAL_CHAT(Packet &p);
 
 	/**
-	 * Set the password for the clients current company:
-	 * string  The password.
-	 * @param p The packet that was just received.
-	 */
-	virtual NetworkRecvStatus Receive_CLIENT_SET_PASSWORD(Packet &p);
-
-	/**
 	 * Gives the client a new name:
 	 * string  New name of the client.
 	 * @param p The packet that was just received.
@@ -470,17 +467,9 @@ protected:
 	/**
 	 * Request the server to move this client into another company:
 	 * uint8_t   ID of the company the client wants to join.
-	 * string  Password, if the company is password protected.
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_CLIENT_MOVE(Packet &p);
-
-	/**
-	 * Update the clients knowledge of which company is password protected:
-	 * uint16_t  Bitwise representation of each company
-	 * @param p The packet that was just received.
-	 */
-	virtual NetworkRecvStatus Receive_SERVER_COMPANY_UPDATE(Packet &p);
 
 	/**
 	 * Update the clients knowledge of the max settings:

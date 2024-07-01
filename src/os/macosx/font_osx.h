@@ -23,7 +23,6 @@ class CoreTextFontCache : public TrueTypeFontCache {
 
 	void SetFontSize(int pixels);
 	const Sprite *InternalGetGlyph(GlyphID key, bool use_aa) override;
-	const void *InternalGetFontTable(uint32_t tag, size_t &length) override;
 public:
 	CoreTextFontCache(FontSize fs, CFAutoRelease<CTFontDescriptorRef> &&font, int pixels);
 	~CoreTextFontCache() {}
@@ -36,6 +35,5 @@ public:
 };
 
 void LoadCoreTextFont(FontSize fs);
-void LoadCoreTextFont(FontSize fs, const std::string &file_name, uint size);
 
 #endif /* FONT_OSX_H */

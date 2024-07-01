@@ -23,8 +23,6 @@
 
 Palette _cur_palette;
 
-byte _colour_gradient[COLOUR_END][8];
-
 static std::recursive_mutex _palette_mutex; ///< To coordinate access to _cur_palette.
 
 /**
@@ -215,8 +213,8 @@ void DoPaletteAnimations()
 
 	/* Radio tower blinking */
 	{
-		byte i = (palette_animation_counter >> 1) & 0x7F;
-		byte v;
+		uint8_t i = (palette_animation_counter >> 1) & 0x7F;
+		uint8_t v;
 
 		if (i < 0x3f) {
 			v = 255;
@@ -294,4 +292,39 @@ TextColour GetContrastColour(uint8_t background, uint8_t threshold)
 	uint sq1000_brightness = c.r * c.r * 299 + c.g * c.g * 587 + c.b * c.b * 114;
 	/* Compare with threshold brightness which defaults to 128 (50%) */
 	return sq1000_brightness < ((uint) threshold) * ((uint) threshold) * 1000 ? TC_WHITE : TC_BLACK;
+}
+
+/**
+ * Lookup table of colour shades for all 16 colour gradients.
+ * 8 colours per gradient from darkest (0) to lightest (7)
+ */
+struct ColourGradients
+{
+	using ColourGradient = std::array<uint8_t, SHADE_END>;
+
+	static inline std::array<ColourGradient, COLOUR_END> gradient{};
+};
+
+/**
+ * Get colour gradient palette index.
+ * @param colour Colour.
+ * @param shade Shade level from 1 to 7.
+ * @returns palette index of colour.
+ */
+uint8_t GetColourGradient(Colours colour, ColourShade shade)
+{
+	return ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END];
+}
+
+/**
+ * Set colour gradient palette index.
+ * @param colour Colour.
+ * @param shade Shade level from 1 to 7.
+ * @param palette_index Palette index to set.
+ */
+void SetColourGradient(Colours colour, ColourShade shade, uint8_t palette_index)
+{
+	assert(colour < COLOUR_END);
+	assert(shade < SHADE_END);
+	ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END] = palette_index;
 }

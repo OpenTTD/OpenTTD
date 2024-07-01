@@ -27,6 +27,7 @@ MixerChannel *MxAllocateChannel();
 void MxSetChannelRawSrc(MixerChannel *mc, int8_t *mem, size_t size, uint rate, bool is16bit);
 void MxSetChannelVolume(MixerChannel *mc, uint volume, float pan);
 void MxActivateChannel(MixerChannel*);
+void MxCloseAllChannels();
 
 uint32_t MxSetMusicSource(MxStreamCallback music_callback);
 

@@ -57,8 +57,8 @@
 static const size_t MD5_HASH_BYTES = 16;
 
 /** Container for storing a MD5 hash/checksum/digest. */
-struct MD5Hash : std::array<byte, MD5_HASH_BYTES> {
-	MD5Hash() : std::array<byte, MD5_HASH_BYTES>{} {}
+struct MD5Hash : std::array<uint8_t, MD5_HASH_BYTES> {
+	MD5Hash() : std::array<uint8_t, MD5_HASH_BYTES>{} {}
 
 	/**
 	 * Exclusively-or the given hash into this hash.

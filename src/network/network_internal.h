@@ -37,19 +37,6 @@
 #define NETWORK_SEND_DOUBLE_SEED
 #endif /* RANDOM_DEBUG */
 
-/**
- * Helper variable to make the dedicated server go fast until the (first) join.
- * Used to load the desync debug logs, i.e. for reproducing a desync.
- * There's basically no need to ever enable this, unless you really know what
- * you are doing, i.e. debugging a desync.
- * See docs/desync.txt for details.
- */
-#ifdef DEBUG_DUMP_COMMANDS
-extern bool _ddc_fastforward;
-#else
-#define _ddc_fastforward (false)
-#endif /* DEBUG_DUMP_COMMANDS */
-
 typedef class ServerNetworkGameSocketHandler NetworkClientSocket;
 
 /** Status of the clients during joining. */
@@ -93,8 +80,6 @@ extern std::string _network_server_name;
 
 extern uint8_t _network_reconnect;
 
-extern CompanyMask _network_company_passworded;
-
 void NetworkQueryServer(const std::string &connection_string);
 
 void GetBindAddresses(NetworkAddressList *addresses, uint16_t port);
@@ -129,7 +114,6 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 uint NetworkCalculateLag(const NetworkClientSocket *cs);
 StringID GetNetworkErrorMsg(NetworkErrorCode err);
 bool NetworkMakeClientNameUnique(std::string &new_name);
-std::string GenerateCompanyPasswordHash(const std::string &password, const std::string &password_server_id, uint32_t password_game_seed);
 
 std::string_view ParseCompanyFromConnectionString(const std::string &connection_string, CompanyID *company_id);
 NetworkAddress ParseConnectionString(const std::string &connection_string, uint16_t default_port);

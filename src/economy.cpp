@@ -118,7 +118,7 @@ static Money CalculateCompanyAssetValue(const Company *c)
 	uint num = 0;
 
 	for (const Station *st : Station::Iterate()) {
-		if (st->owner == owner) num += CountBits((byte)st->facilities);
+		if (st->owner == owner) num += CountBits((uint8_t)st->facilities);
 	}
 
 	Money value = num * _price[PR_STATION_VALUE] * 25;
@@ -184,7 +184,7 @@ Money CalculateHostileTakeoverValue(const Company *c)
 	}
 
 	for (int quarter = 0; quarter < 4; quarter++) {
-		value += std::max<Money>(c->old_economy[quarter].income - c->old_economy[quarter].expenses, 0) * 2;
+		value += std::max<Money>(c->old_economy[quarter].income + c->old_economy[quarter].expenses, 0) * 2;
 	}
 
 	return std::max<Money>(value, 1);
@@ -215,7 +215,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 			if (v->owner != owner) continue;
 			if (IsCompanyBuildableVehicleType(v->type) && v->IsPrimaryVehicle()) {
 				if (v->profit_last_year > 0) num++; // For the vehicle score only count profitable vehicles
-				if (v->age > 730) {
+				if (v->economy_age > VEHICLE_PROFIT_MIN_AGE) {
 					/* Find the vehicle with the lowest amount of profit */
 					if (min_profit_first || min_profit > v->profit_last_year) {
 						min_profit = v->profit_last_year;
@@ -239,7 +239,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		uint num = 0;
 		for (const Station *st : Station::Iterate()) {
 			/* Only count stations that are actually serviced */
-			if (st->owner == owner && (st->time_since_load <= 20 || st->time_since_unload <= 20)) num += CountBits((byte)st->facilities);
+			if (st->owner == owner && (st->time_since_load <= 20 || st->time_since_unload <= 20)) num += CountBits((uint8_t)st->facilities);
 		}
 		_score_part[owner][SCORE_STATIONS] = num;
 	}
@@ -336,14 +336,14 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	/* We need to set _current_company to old_owner before we try to move
 	 * the client. This is needed as it needs to know whether "you" really
 	 * are the current local company. */
-	Backup<CompanyID> cur_company(_current_company, old_owner, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, old_owner);
 	/* In all cases, make spectators of clients connected to that company */
 	if (_networking) NetworkClientsToSpectators(old_owner);
 	if (old_owner == _local_company) {
 		/* Single player cheated to AI company.
 		 * There are no spectators in singleplayer mode, so we must pick some other company. */
 		assert(!_networking);
-		Backup<CompanyID> cur_company2(_current_company, FILE_LINE);
+		Backup<CompanyID> cur_company2(_current_company);
 		for (const Company *c : Company::Iterate()) {
 			if (c->index != old_owner) {
 				SetLocalCompany(c->index);
@@ -424,23 +424,23 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	if (new_owner == INVALID_OWNER) {
 		RemoveAllGroupsForCompany(old_owner);
 	} else {
+		Company *c = Company::Get(old_owner);
 		for (Group *g : Group::Iterate()) {
-			if (g->owner == old_owner) g->owner = new_owner;
+			if (g->owner == old_owner) {
+				g->owner = new_owner;
+				g->number = c->freegroups.UseID(c->freegroups.NextID());
+			}
 		}
 	}
 
 	{
-		FreeUnitIDGenerator unitidgen[] = {
-			FreeUnitIDGenerator(VEH_TRAIN, new_owner), FreeUnitIDGenerator(VEH_ROAD,     new_owner),
-			FreeUnitIDGenerator(VEH_SHIP,  new_owner), FreeUnitIDGenerator(VEH_AIRCRAFT, new_owner)
-		};
+		Company *new_company = new_owner == INVALID_OWNER ? nullptr : Company::Get(new_owner);
 
 		/* Override company settings to new company defaults in case we need to convert them.
 		 * This is required as the CmdChangeServiceInt doesn't copy the supplied value when it is non-custom
 		 */
 		if (new_owner != INVALID_OWNER) {
 			Company *old_company = Company::Get(old_owner);
-			Company *new_company = Company::Get(new_owner);
 
 			old_company->settings.vehicle.servint_aircraft = new_company->settings.vehicle.servint_aircraft;
 			old_company->settings.vehicle.servint_trains = new_company->settings.vehicle.servint_trains;
@@ -457,8 +457,6 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				 * This prevents invalid values on mismatching company defaults being accepted.
 				 */
 				if (!v->ServiceIntervalIsCustom()) {
-					Company *new_company = Company::Get(new_owner);
-
 					/* Technically, passing the interval is not needed as the command will query the default value itself.
 					 * However, do not rely on that behaviour.
 					 */
@@ -477,7 +475,8 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				}
 				if (v->IsPrimaryVehicle()) {
 					GroupStatistics::CountVehicle(v, 1);
-					v->unitnumber = unitidgen[v->type].NextID();
+					auto &unitidgen = new_company->freeunits[v->type];
+					v->unitnumber = unitidgen.UseID(unitidgen.NextID());
 				}
 
 				/* Invalidate the vehicle's cargo payment "owner cache". */
@@ -666,7 +665,7 @@ static void CompaniesGenStatistics()
 		CompanyCheckBankrupt(c);
 	}
 
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company);
 
 	/* Pay Infrastructure Maintenance, if enabled */
 	if (_settings_game.economy.infrastructure_maintenance) {
@@ -829,7 +828,7 @@ void RecomputePrices()
 /** Let all companies pay the monthly interest on their loan. */
 static void CompaniesPayInterest()
 {
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company);
 	for (const Company *c : Company::Iterate()) {
 		cur_company.Change(c->index);
 
@@ -1210,7 +1209,7 @@ CargoPayment::~CargoPayment()
 
 	if (this->visual_profit == 0 && this->visual_transfer == 0) return;
 
-	Backup<CompanyID> cur_company(_current_company, this->front->owner, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, this->front->owner);
 
 	SubtractMoneyFromCompany(CommandCost(this->front->GetExpenseType(true), -this->route_profit));
 	this->front->profit_this_year += (this->visual_profit + this->visual_transfer) << 8;
@@ -1306,7 +1305,7 @@ void PrepareUnload(Vehicle *front_v)
 						front_v->last_station_visited, next_station,
 						front_v->current_order.GetUnloadType(), ge,
 						front_v->cargo_payment,
-						v->tile);
+						v->GetCargoTile());
 				if (v->cargo.UnloadCount() > 0) SetBit(v->vehicle_flags, VF_CARGO_UNLOADING);
 			}
 		}
@@ -1446,7 +1445,7 @@ struct ReturnCargoAction
 	 */
 	bool operator()(Vehicle *v)
 	{
-		v->cargo.Return(UINT_MAX, &this->st->goods[v->cargo_type].cargo, this->next_hop, v->tile);
+		v->cargo.Return(UINT_MAX, &this->st->goods[v->cargo_type].cargo, this->next_hop, v->GetCargoTile());
 		return true;
 	}
 };
@@ -1481,7 +1480,7 @@ struct FinalizeRefitAction
 	{
 		if (this->do_reserve) {
 			this->st->goods[v->cargo_type].cargo.Reserve(v->cargo_cap - v->cargo.RemainingCount(),
-					&v->cargo, this->next_station, v->tile);
+					&v->cargo, this->next_station, v->GetCargoTile());
 		}
 		this->consist_capleft[v->cargo_type] += v->cargo_cap - v->cargo.RemainingCount();
 		return true;
@@ -1501,7 +1500,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 	Vehicle *v_start = v->GetFirstEnginePart();
 	if (!IterateVehicleParts(v_start, IsEmptyAction())) return;
 
-	Backup<CompanyID> cur_company(_current_company, v->owner, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, v->owner);
 
 	CargoTypes refit_mask = v->GetEngine()->info.refit_mask;
 
@@ -1572,7 +1571,7 @@ struct ReserveCargoAction {
 	{
 		if (v->cargo_cap > v->cargo.RemainingCount() && MayLoadUnderExclusiveRights(st, v)) {
 			st->goods[v->cargo_type].cargo.Reserve(v->cargo_cap - v->cargo.RemainingCount(),
-					&v->cargo, *next_station, v->tile);
+					&v->cargo, *next_station, v->GetCargoTile());
 		}
 
 		return true;
@@ -1706,7 +1705,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 					uint new_remaining = v->cargo.RemainingCount() + v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER);
 					if (v->cargo_cap < new_remaining) {
 						/* Return some of the reserved cargo to not overload the vehicle. */
-						v->cargo.Return(new_remaining - v->cargo_cap, &ge->cargo, INVALID_STATION, v->tile);
+						v->cargo.Return(new_remaining - v->cargo_cap, &ge->cargo, INVALID_STATION, v->GetCargoTile());
 					}
 
 					/* Keep instead of delivering. This may lead to no cargo being unloaded, so ...*/
@@ -1733,7 +1732,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 				}
 			}
 
-			amount_unloaded = v->cargo.Unload(amount_unloaded, &ge->cargo, payment, v->tile);
+			amount_unloaded = v->cargo.Unload(amount_unloaded, &ge->cargo, payment, v->GetCargoTile());
 			remaining = v->cargo.UnloadCount() > 0;
 			if (amount_unloaded > 0) {
 				dirty_vehicle = true;
@@ -1803,7 +1802,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 				if (v->cargo.StoredCount() == 0) TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
 				if (_settings_game.order.gradual_loading) cap_left = std::min(cap_left, GetLoadAmount(v));
 
-				uint loaded = ge->cargo.Load(cap_left, &v->cargo, next_station, v->tile);
+				uint loaded = ge->cargo.Load(cap_left, &v->cargo, next_station, v->GetCargoTile());
 				if (v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0) {
 					/* Remember if there are reservations left so that we don't stop
 					 * loading before they're loaded. */
@@ -2067,8 +2066,8 @@ CommandCost CmdBuyCompany(DoCommandFlag flags, CompanyID target_company, bool ho
 	/* Do not allow companies to take over themselves */
 	if (target_company == _current_company) return CMD_ERROR;
 
-	/* Disable taking over when not allowed. */
-	if (!MayCompanyTakeOver(_current_company, target_company)) return CMD_ERROR;
+	/* Do not allow takeover if the resulting company would have too many vehicles. */
+	if (!CheckTakeoverVehicleLimit(_current_company, target_company)) return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 
 	/* Get the cost here as the company is deleted in DoAcquireCompany.
 	 * For bankruptcy this amount is calculated when the offer was made;

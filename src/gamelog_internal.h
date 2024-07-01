@@ -38,24 +38,24 @@ struct LoggedChange {
 
 struct LoggedChangeMode : LoggedChange {
 	LoggedChangeMode() : LoggedChange(GLCT_MODE) {}
-	LoggedChangeMode(byte mode, byte landscape) :
+	LoggedChangeMode(uint8_t mode, uint8_t landscape) :
 		LoggedChange(GLCT_MODE), mode(mode), landscape(landscape) {}
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
-	byte mode;      ///< new game mode - Editor x Game
-	byte landscape; ///< landscape (temperate, arctic, ...)
+	uint8_t mode;      ///< new game mode - Editor x Game
+	uint8_t landscape; ///< landscape (temperate, arctic, ...)
 };
 
 struct LoggedChangeRevision : LoggedChange {
 	LoggedChangeRevision() : LoggedChange(GLCT_REVISION) {}
-	LoggedChangeRevision(const std::string &text, uint32_t newgrf, uint16_t slver, byte modified) :
+	LoggedChangeRevision(const std::string &text, uint32_t newgrf, uint16_t slver, uint8_t modified) :
 		LoggedChange(GLCT_REVISION), text(text), newgrf(newgrf), slver(slver), modified(modified) {}
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	std::string text; ///< revision string, _openttd_revision
 	uint32_t newgrf;  ///< _openttd_newgrf_version
 	uint16_t slver;   ///< _sl_version
-	byte modified;    //< _openttd_revision_modified
+	uint8_t modified;    //< _openttd_revision_modified
 };
 
 struct LoggedChangeOldVersion : LoggedChange {
@@ -123,13 +123,13 @@ struct LoggedChangeSettingChanged : LoggedChange {
 
 struct LoggedChangeGRFBug : LoggedChange {
 	LoggedChangeGRFBug() : LoggedChange(GLCT_GRFBUG) {}
-	LoggedChangeGRFBug(uint64_t data, uint32_t grfid, byte bug) :
+	LoggedChangeGRFBug(uint64_t data, uint32_t grfid, uint8_t bug) :
 		LoggedChange(GLCT_GRFBUG), data(data), grfid(grfid), bug(bug) {}
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	uint64_t data;  ///< additional data
 	uint32_t grfid; ///< ID of problematic GRF
-	byte bug;       ///< type of bug, @see enum GRFBugs
+	uint8_t bug;       ///< type of bug, @see enum GRFBugs
 };
 
 struct LoggedChangeEmergencySave : LoggedChange {

@@ -115,17 +115,17 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 	Titem *item;
 	if (Tcache && this->alloc_cache != nullptr) {
 		assert(sizeof(Titem) == size);
-		item = (Titem *)this->alloc_cache;
+		item = reinterpret_cast<Titem *>(this->alloc_cache);
 		this->alloc_cache = this->alloc_cache->next;
 		if (Tzero) {
 			/* Explicitly casting to (void *) prevents a clang warning -
 			 * we are actually memsetting a (not-yet-constructed) object */
-			memset((void *)item, 0, sizeof(Titem));
+			memset(static_cast<void *>(item), 0, sizeof(Titem));
 		}
 	} else if (Tzero) {
-		item = (Titem *)CallocT<byte>(size);
+		item = reinterpret_cast<Titem *>(CallocT<uint8_t>(size));
 	} else {
-		item = (Titem *)MallocT<byte>(size);
+		item = reinterpret_cast<Titem *>(MallocT<uint8_t>(size));
 	}
 	this->data[index] = item;
 	SetBit(this->used_bitmap[index / BITMAP_SIZE], index % BITMAP_SIZE);
@@ -188,7 +188,7 @@ DEFINE_POOL_METHOD(void)::FreeItem(size_t index)
 	assert(index < this->size);
 	assert(this->data[index] != nullptr);
 	if (Tcache) {
-		AllocCache *ac = (AllocCache *)this->data[index];
+		AllocCache *ac = reinterpret_cast<AllocCache *>(this->data[index]);
 		ac->next = this->alloc_cache;
 		this->alloc_cache = ac;
 	} else {

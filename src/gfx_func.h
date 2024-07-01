@@ -48,9 +48,9 @@ void GameLoop();
 
 void CreateConsole();
 
-extern byte _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
+extern uint8_t _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
 extern bool _fullscreen;
-extern byte _support8bpp;
+extern uint8_t _support8bpp;
 extern CursorVars _cursor;
 extern bool _ctrl_pressed;   ///< Is Ctrl pressed?
 extern bool _shift_pressed;  ///< Is Shift pressed?
@@ -79,6 +79,7 @@ void ChangeGameSpeed(bool enable_fast_forward);
 void DrawMouseCursor();
 void ScreenSizeChanged();
 void GameSizeChanged();
+void UpdateGUIZoom();
 bool AdjustGUIZoom(bool automatic);
 void UndrawMouseCursor();
 
@@ -133,15 +134,14 @@ inline void GfxFillRect(const Rect &r, int colour, FillRectMode mode = FILLRECT_
 
 Dimension GetStringBoundingBox(std::string_view str, FontSize start_fontsize = FS_NORMAL);
 Dimension GetStringBoundingBox(StringID strid, FontSize start_fontsize = FS_NORMAL);
-uint GetStringListWidth(const StringID *list, FontSize fontsize = FS_NORMAL);
+uint GetStringListWidth(std::span<const StringID> list, FontSize fontsize = FS_NORMAL);
+Dimension GetStringListBoundingBox(std::span<const StringID> list, FontSize fontsize = FS_NORMAL);
 int GetStringHeight(std::string_view str, int maxw, FontSize fontsize = FS_NORMAL);
 int GetStringHeight(StringID str, int maxw);
 int GetStringLineCount(StringID str, int maxw);
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
 Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion);
 void LoadStringWidthTable(bool monospace = false);
-Point GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize = FS_NORMAL);
-ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize = FS_NORMAL);
 
 void DrawDirtyBlocks();
 void AddDirtyBlock(int left, int top, int right, int bottom);
@@ -181,8 +181,8 @@ void SortResolutions();
 bool ToggleFullScreen(bool fs);
 
 /* gfx.cpp */
-byte GetCharacterWidth(FontSize size, char32_t key);
-byte GetDigitWidth(FontSize size = FS_NORMAL);
+uint8_t GetCharacterWidth(FontSize size, char32_t key);
+uint8_t GetDigitWidth(FontSize size = FS_NORMAL);
 void GetBroadestDigit(uint *front, uint *next, FontSize size = FS_NORMAL);
 
 int GetCharacterHeight(FontSize size);

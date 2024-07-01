@@ -41,6 +41,8 @@ struct ViewportSign {
 	uint16_t width_normal; ///< The width when not zoomed out (normal font)
 	uint16_t width_small;  ///< The width when zoomed out (small font)
 
+	auto operator<=>(const ViewportSign &) const = default;
+
 	void UpdatePosition(int center, int top, StringID str, StringID str_small = STR_NULL);
 	void MarkDirty(ZoomLevel maxzoom = ZOOM_LVL_MAX) const;
 };
@@ -48,6 +50,8 @@ struct ViewportSign {
 /** Specialised ViewportSign that tracks whether it is valid for entering into a Kdtree */
 struct TrackedViewportSign : ViewportSign {
 	bool kdtree_valid; ///< Are the sign data valid for use with the _viewport_sign_kdtree?
+
+	auto operator<=>(const TrackedViewportSign &) const = default;
 
 	/**
 	 * Update the position of the viewport sign.
@@ -128,8 +132,10 @@ enum ViewportDragDropSelectionProcess {
 	DDSP_PLACE_ROAD_X_DIR,     ///< Road placement (X axis)
 	DDSP_PLACE_ROAD_Y_DIR,     ///< Road placement (Y axis)
 	DDSP_PLACE_AUTOROAD,       ///< Road placement (auto)
+	DDSP_BUILD_ROAD_WAYPOINT,  ///< Road stop placement (waypoint)
 	DDSP_BUILD_BUSSTOP,        ///< Road stop placement (buses)
 	DDSP_BUILD_TRUCKSTOP,      ///< Road stop placement (trucks)
+	DDSP_REMOVE_ROAD_WAYPOINT, ///< Road stop removal (waypoint)
 	DDSP_REMOVE_BUSSTOP,       ///< Road stop removal (buses)
 	DDSP_REMOVE_TRUCKSTOP,     ///< Road stop removal (trucks)
 	DDSP_CONVERT_ROAD,         ///< Road conversion
@@ -139,7 +145,7 @@ enum ViewportDragDropSelectionProcess {
 /**
  * Target of the viewport scrolling GS method
  */
-enum ViewportScrollTarget : byte {
+enum ViewportScrollTarget : uint8_t {
 	VST_EVERYONE, ///< All players
 	VST_COMPANY,  ///< All players in specific company
 	VST_CLIENT,   ///< Single player

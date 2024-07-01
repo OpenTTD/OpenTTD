@@ -241,7 +241,7 @@ CommandCost CmdChangeBankBalance(DoCommandFlag flags, TileIndex tile, Money delt
 
 	if (flags & DC_EXEC) {
 		/* Change company bank balance of company. */
-		Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, company);
 		SubtractMoneyFromCompany(CommandCost(expenses_type, -delta));
 		cur_company.Restore();
 

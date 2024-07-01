@@ -136,7 +136,7 @@ struct TranslationWriter : LanguageWriter {
 		/* We don't write the length. */
 	}
 
-	void Write(const byte *buffer, size_t length) override
+	void Write(const uint8_t *buffer, size_t length) override
 	{
 		this->strings.emplace_back((const char *)buffer, length);
 	}
@@ -180,7 +180,7 @@ public:
 	/**
 	 * Scan.
 	 */
-	void Scan(const char *directory)
+	void Scan(const std::string &directory)
 	{
 		this->FileScanner::Scan(".txt", directory, false);
 	}
@@ -241,7 +241,7 @@ GameStrings *LoadTranslations()
 			}
 		} else {
 			/* Scan filesystem */
-			scanner.Scan(ldir.c_str());
+			scanner.Scan(ldir);
 		}
 
 		gs->Compile();
@@ -386,7 +386,7 @@ void ReconsiderGameScriptLanguage()
 {
 	if (_current_data == nullptr) return;
 
-	std::string language = _current_language->file.stem().string();
+	std::string language = FS2OTTD(_current_language->file.stem());
 	for (auto &p : _current_data->compiled_strings) {
 		if (p.language == language) {
 			_current_data->cur_language = &p;

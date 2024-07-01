@@ -103,12 +103,12 @@ extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, Detaile
 static FVideoDriver_Dedicated iFVideoDriver_Dedicated;
 
 
-const char *VideoDriver_Dedicated::Start(const StringList &)
+std::optional<std::string_view> VideoDriver_Dedicated::Start(const StringList &)
 {
 	this->UpdateAutoResolution();
 
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
-	_dedicated_video_mem = (bpp == 0) ? nullptr : MallocT<byte>(static_cast<size_t>(_cur_resolution.width) * _cur_resolution.height * (bpp / 8));
+	_dedicated_video_mem = (bpp == 0) ? nullptr : MallocT<uint8_t>(static_cast<size_t>(_cur_resolution.width) * _cur_resolution.height * (bpp / 8));
 
 	_screen.width  = _screen.pitch = _cur_resolution.width;
 	_screen.height = _cur_resolution.height;
@@ -126,10 +126,12 @@ const char *VideoDriver_Dedicated::Start(const StringList &)
 #ifdef _MSC_VER
 	/* Disable the MSVC assertion message box. */
 	_set_error_mode(_OUT_TO_STDERR);
+	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
 #endif
 
 	Debug(driver, 1, "Loading dedicated server");
-	return nullptr;
+	return std::nullopt;
 }
 
 void VideoDriver_Dedicated::Stop()
@@ -217,7 +219,6 @@ void VideoDriver_Dedicated::MainLoop()
 		if (!_dedicated_forks) DedicatedHandleKeyInput();
 		this->DrainCommandQueue();
 
-		ChangeGameSpeed(_ddc_fastforward);
 		this->Tick();
 		this->SleepTillNextTick();
 	}

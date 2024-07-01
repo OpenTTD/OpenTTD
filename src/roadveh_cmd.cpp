@@ -12,7 +12,6 @@
 #include "command_func.h"
 #include "error_func.h"
 #include "news_func.h"
-#include "pathfinder/npf/npf_func.h"
 #include "station_base.h"
 #include "company_func.h"
 #include "articulated_vehicles.h"
@@ -342,12 +341,7 @@ static FindDepotData FindClosestRoadDepot(const RoadVehicle *v, int max_distance
 {
 	if (IsRoadDepotTile(v->tile)) return FindDepotData(v->tile, 0);
 
-	switch (_settings_game.pf.pathfinder_for_roadvehs) {
-		case VPF_NPF: return NPFRoadVehicleFindNearestDepot(v, max_distance);
-		case VPF_YAPF: return YapfRoadVehicleFindNearestDepot(v, max_distance);
-
-		default: NOT_REACHED();
-	}
+	return YapfRoadVehicleFindNearestDepot(v, max_distance);
 }
 
 ClosestDepot RoadVehicle::FindClosestDepot()
@@ -989,12 +983,8 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 		}
 	}
 
-	switch (_settings_game.pf.pathfinder_for_roadvehs) {
-		case VPF_NPF:  best_track = NPFRoadVehicleChooseTrack(v, tile, enterdir, path_found); break;
-		case VPF_YAPF: best_track = YapfRoadVehicleChooseTrack(v, tile, enterdir, trackdirs, path_found, v->path); break;
+	best_track = YapfRoadVehicleChooseTrack(v, tile, enterdir, trackdirs, path_found, v->path);
 
-		default: NOT_REACHED();
-	}
 	v->HandlePathfindingResult(path_found);
 
 found_best_track:;
@@ -1005,7 +995,7 @@ found_best_track:;
 }
 
 struct RoadDriveEntry {
-	byte x, y;
+	uint8_t x, y;
 };
 
 #include "table/roadveh_movement.h"
@@ -1066,7 +1056,7 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 		return _road_reverse_table[entry_dir];
 	}
 
-	byte prev_state = prev->state;
+	uint8_t prev_state = prev->state;
 	Trackdir dir;
 
 	if (prev_state == RVSB_WORMHOLE || prev_state == RVSB_IN_DEPOT) {
@@ -1135,7 +1125,7 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadType rt, RoadBits r)
 {
 	/* The 'current' company is not necessarily the owner of the vehicle. */
-	Backup<CompanyID> cur_company(_current_company, c, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, c);
 
 	CommandCost ret = Command<CMD_BUILD_ROAD>::Do(DC_NO_WATER, t, r, rt, DRD_NONE, 0);
 
@@ -1328,7 +1318,7 @@ again:
 					v->tile != tile) {
 				/* So, keep 'our' state */
 				dir = (Trackdir)v->state;
-			} else if (IsRoadStop(v->tile)) {
+			} else if (IsStationRoadStop(v->tile)) {
 				/* We're not continuing our drive through road stop, so leave. */
 				RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile))->Leave(v);
 			}
@@ -1338,7 +1328,7 @@ again:
 			TileIndex old_tile = v->tile;
 
 			v->tile = tile;
-			v->state = (byte)dir;
+			v->state = (uint8_t)dir;
 			v->frame = start_frame;
 			RoadTramType rtt = GetRoadTramType(v->roadtype);
 			if (GetRoadType(old_tile, rtt) != GetRoadType(tile, rtt)) {
@@ -1683,12 +1673,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 		return;
 	}
 
-	uint max_penalty;
-	switch (_settings_game.pf.pathfinder_for_roadvehs) {
-		case VPF_NPF:  max_penalty = _settings_game.pf.npf.maximum_go_to_depot_penalty;  break;
-		case VPF_YAPF: max_penalty = _settings_game.pf.yapf.maximum_go_to_depot_penalty; break;
-		default: NOT_REACHED();
-	}
+	uint max_penalty = _settings_game.pf.yapf.maximum_go_to_depot_penalty;
 
 	FindDepotData rfdd = FindClosestRoadDepot(v, max_penalty);
 	/* Only go to the depot if it is not too far out of our way. */
@@ -1728,6 +1713,7 @@ void RoadVehicle::OnNewCalendarDay()
 void RoadVehicle::OnNewEconomyDay()
 {
 	if (!this->IsFrontEngine()) return;
+	EconomyAgeVehicle(this);
 
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
 	if (this->blocked_ctr == 0) CheckVehicleBreakdown(this);

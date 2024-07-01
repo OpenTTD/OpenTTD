@@ -49,14 +49,14 @@ if(GIT_FOUND AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
     string(SUBSTRING "${FULLHASH}" 0 10 SHORTHASH)
 
     # Get the last commit date
-    execute_process(COMMAND ${GIT_EXECUTABLE} show -s --pretty=format:%ci HEAD
+    set(ENV{TZ} "UTC0")
+    execute_process(COMMAND ${GIT_EXECUTABLE} show -s --date=iso-local --pretty=format:%cd HEAD
                     OUTPUT_VARIABLE COMMITDATE
                     OUTPUT_STRIP_TRAILING_WHITESPACE
                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     )
     string(REGEX REPLACE "([0-9]+)-([0-9]+)-([0-9]+).*" "\\1\\2\\3" COMMITDATE "${COMMITDATE}")
     set(REV_ISODATE "${COMMITDATE}")
-    string(SUBSTRING "${REV_ISODATE}" 0 4 REV_YEAR)
 
     # Get the branch
     execute_process(COMMAND ${GIT_EXECUTABLE} symbolic-ref -q HEAD
@@ -113,7 +113,6 @@ elseif(EXISTS "${CMAKE_SOURCE_DIR}/.ottdrev")
     list(GET OTTDREV 3 REV_HASH)
     list(GET OTTDREV 4 REV_ISTAG)
     list(GET OTTDREV 5 REV_ISSTABLETAG)
-    list(GET OTTDREV 6 REV_YEAR)
 else()
     message(WARNING "No version detected; this build will NOT be network compatible")
     set(REV_VERSION "norev0000")
@@ -122,14 +121,19 @@ else()
     set(REV_HASH "unknown")
     set(REV_ISTAG 0)
     set(REV_ISSTABLETAG 0)
-    set(REV_YEAR "1970")
 endif()
+
+# Extract REV_YEAR and REV_DATE from REV_ISODATE
+string(SUBSTRING "${REV_ISODATE}" 0 4 REV_YEAR)
+string(SUBSTRING "${REV_ISODATE}" 4 4 REV_DATE)
+# Drop leading 0 in REV_DATE if any
+string(REGEX REPLACE "^0?([0-9]+)" "\\1" REV_DATE "${REV_DATE}")
 
 message(STATUS "Version string: ${REV_VERSION}")
 
 if(GENERATE_OTTDREV)
     message(STATUS "Generating .ottdrev")
-    file(WRITE ${CMAKE_SOURCE_DIR}/.ottdrev "${REV_VERSION}\t${REV_ISODATE}\t${REV_MODIFIED}\t${REV_HASH}\t${REV_ISTAG}\t${REV_ISSTABLETAG}\t${REV_YEAR}\n")
+    file(WRITE ${CMAKE_SOURCE_DIR}/.ottdrev "${REV_VERSION}\t${REV_ISODATE}\t${REV_MODIFIED}\t${REV_HASH}\t${REV_ISTAG}\t${REV_ISSTABLETAG}\n")
 else()
     message(STATUS "Generating rev.cpp")
     configure_file("${CMAKE_SOURCE_DIR}/src/rev.cpp.in"

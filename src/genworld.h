@@ -91,7 +91,7 @@ bool IsGeneratingWorldAborted();
 void HandleGeneratingWorldAbortion();
 
 /* genworld_gui.cpp */
-void SetNewLandscapeType(byte landscape);
+void SetNewLandscapeType(uint8_t landscape);
 void SetGeneratingWorldProgress(GenWorldProgress cls, uint total);
 void IncreaseGeneratingWorldProgress(GenWorldProgress cls);
 void PrepareGenerateWorldProgress();

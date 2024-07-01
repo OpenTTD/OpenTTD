@@ -308,7 +308,6 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}By enabl
 STR_BUTTON_DEFAULT                                              :{BLACK}Default
 STR_BUTTON_CANCEL                                               :{BLACK}Cancel
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Warning: Server administrators may be able to read any text entered here.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -437,6 +436,9 @@ STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Load heightmap
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Abandon scenario editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Quit
+
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generate towns
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Place houses
 
 # Settings menu
 ###length 16
@@ -621,14 +623,14 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Disable all
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Display all cargos on the cargo payment rates graph
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Display no cargos on the cargo payment rates graph
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Toggle graph for cargo type on/off
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Toggle graph of this cargo type
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Show detailed performance ratings
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Key to company graphs
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click here to toggle company's entry on graph on/off
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Toggle graph of this company
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Company League Table
@@ -708,7 +710,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Select '
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Select 'Ezy Street style music' program
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Select 'Custom 1' (user-defined) program
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Select 'Custom 2' (user-defined) program
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Toggle program shuffle on/off
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Toggle program shuffle
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Show music track selection window
 
 # Playlist window
@@ -791,7 +793,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Desert
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Snow
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Toggle town names on/off on map
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Toggle display of town names
 STR_SMALLMAP_CENTER                                             :{BLACK}Center the minimap on the current position
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -800,9 +802,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Disable all
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Enable all
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Show height
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Show industry names
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Display no industries on the map
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Display all industries on the map
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Toggle display of heightmap
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Toggle display of industry names
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Display no company property on the map
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Display all company property on the map
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Display no cargos on the map
@@ -956,18 +960,14 @@ STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Sound effects
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Music
 
-STR_GAME_OPTIONS_VOLUME_0                                       :0%
-STR_GAME_OPTIONS_VOLUME_25                                      :25%
-STR_GAME_OPTIONS_VOLUME_50                                      :50%
-STR_GAME_OPTIONS_VOLUME_75                                      :75%
-STR_GAME_OPTIONS_VOLUME_100                                     :100%
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Currency units
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Currency units selection
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :British Pound
 STR_GAME_OPTIONS_CURRENCY_USD                                   :American Dollar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -1011,6 +1011,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indian Rupee
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian Rupiah
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvian Lats
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portuguese Escudo
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosave
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Select interval between automatic game saves
@@ -1053,15 +1054,11 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Scale be
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Check this box to scale bevels by interface size
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Use traditional sprite font
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Check this box if you prefer to use the traditional fixed-size sprite font.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Check this box if you prefer to use the traditional fixed-size sprite font
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias fonts
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Check this box to anti-alias resizable fonts.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Check this box to anti-alias resizable fonts
 
-STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
-STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
-STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
-STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
-STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automated survey
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participate in automated survey
@@ -1090,6 +1087,9 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base mus
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Select the base music set to use
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Additional information about the base music set
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Get Content
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Check for new and updated content to download
+
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(no plugins to integrate with social platforms installed)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
@@ -1116,6 +1116,9 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchang
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Decrease the amount of your currency for one Pound (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Increase the amount of your currency for one Pound (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Set the exchange rate of your currency for one Pound (£)
+
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Set the separator for your currency
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Set the prefix string for your currency
@@ -1271,10 +1274,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Infinite money:
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Allow unlimited spending and disable bankruptcy of companies
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximum initial loan: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximum amount a company can loan (without taking inflation into account)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximum amount a company can loan (without taking inflation into account). If set to "No loan", no money will be available unless provided by a Game Script or the "Infinite money" setting
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :No loan {RED}Requires Game Script to provide initial funds
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :No loan
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Interest rate: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Loan interest rate; also controls inflation, if enabled
@@ -1355,7 +1358,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Slope steepness
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steepness of a sloped tile for a road vehicle. Higher values make it more difficult to climb a hill
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Forbid trains from making 90° turns: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 degree turns occur when a horizontal track is directly followed by a vertical track piece on the adjacent tile, thus making the train turn by 90 degrees when traversing the tile edge instead of the usual 45 degrees for other track combinations.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 degree turns occur when a horizontal track is directly followed by a vertical track piece on the adjacent tile, thus making the train turn by 90 degree when traversing the tile edge instead of the usual 45 degrees for other track combinations
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Allow joining stations not directly adjacent: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Allow adding parts to a station without directly touching the existing parts, by Ctrl+Clicking while placing the new parts
@@ -1467,7 +1470,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Starting compan
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Choose starting color for the company
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Starting company secondary color: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Choose starting secondary color for the company, if using a NewGRF that enables it.
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Choose starting secondary color for the company, if using a NewGRF that enables it
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Airports never expire: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Enabling this setting makes each airport type stay available forever after its introduction
@@ -1487,26 +1490,29 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warn if a vehic
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :When enabled, a news message gets sent when a vehicle has not made any profit within a year
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :When enabled, a news message gets sent when a vehicle has not made any profit within a period
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Warn if a vehicle is getting old: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :When enabled, a news message gets sent when a vehicle is getting old
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicles never expire: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :When enabled, all vehicle models remain available forever after their introduction
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Timekeeping: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Select the timekeeping units of the game. This cannot be changed later.{}{}Calendar-based is the classic OpenTTD experience, with a year consisting of 12 months, and each month having 28-31 days.{}{}In Wallclock-based time, vehicle movement, cargo production, and financials are instead based on one-minute increments, which is about as long as a 30 day month takes in Calendar-based mode. These are grouped into 12-minute periods, equivalent to a year in Calendar-based mode.{}{}In either mode there is always a classic calendar, which is used for introduction dates of vehicles, houses, and other infrastructure.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Select the timekeeping units of the game. This cannot be changed later.{}{}Calendar-based is the classic OpenTTD experience, with a year consisting of 12 months, and each month having 28-31 days.{}{}In Wallclock-based time, cargo production and financials are instead based on one-minute increments, which is about as long as a 30 day month takes in Calendar-based mode. These are grouped into 12-minute periods, equivalent to a year in Calendar-based mode.{}{}In either mode there is always a classic calendar, which is used for introduction dates of vehicles, houses, and other infrastructure
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendar
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Wallclock
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutes per year: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Choose the number of minutes in a calendar year. The default is 12 minutes. Set to 0 to stop calendar time from changing. This setting does not affect the economic simulation of the game, and is only available when using wallclock timekeeping.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Choose the number of minutes in a calendar year. The default is 12 minutes. Set to 0 to stop calendar time from changing. Increasing the length of the calendar year slows down the introduction of vehicles, houses, and other infrastructure. It does not affect vehicle speed or economic simulation, except for inflation. This setting is only available when using wallclock timekeeping
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (calendar time frozen)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Scale town cargo production: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Scale the cargo production of towns by this percentage.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Scale the cargo production of towns by this percentage
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Scale industry cargo production: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Scale the cargo production of industries by this percentage.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Scale the cargo production of industries by this percentage
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenew vehicle when it gets old: {STRING}
@@ -1525,7 +1531,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duration of err
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duration for displaying error messages in a red window. Note that some (critical) error messages are not closed automatically after this time, but must be closed manually
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Show tooltips: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Delay before tooltips are displayed when hovering the mouse over some interface element. Alternatively tooltips are bound to the right mouse button when this value is set to 0.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Delay before tooltips are displayed when hovering the mouse over some interface element. Alternatively tooltips are bound to the right mouse button when this value is set to 0
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hover for {COMMA} millisecond{P 0 "" s}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Right click
@@ -1537,8 +1543,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Thickness of li
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Width of the line in the graphs. A thin line is more precisely readable, a thicker line is easier to see and colors are easier to distinguish
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Show the NewGRF's name in the build vehicle window: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Add a line to the build vehicle window, showing which NewGRF the selected vehicle comes from.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Show the cargos the vehicles can carry in the list windows {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Add a line to the build vehicle window, showing which NewGRF the selected vehicle comes from
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Show the cargos the vehicles can carry in the list windows: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :If enabled, the vehicle's transportable load will appear above it in the vehicle lists
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landscape: {STRING}
@@ -1557,13 +1563,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industry densit
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Set how many industries should be generated and what level should be maintained during the game
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum distance from edge for Oil industries: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limit for how far from the map border oil refineries and oil rigs can be constructed. On island maps this ensures they are near the coast. On maps larger than 256 tiles, this value is scaled up.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limit for how far from the map border oil refineries and oil rigs can be constructed. On island maps this ensures they are near the coast. On maps larger than 256 tiles, this value is scaled up
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snow line height: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Choose at what height snow starts in sub-arctic landscape. Snow also affects industry generation and town growth requirements. Can only be modified via Scenario Editor or is otherwise calculated via "snow coverage"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Snow coverage: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Choose the approximate amount of snow on the sub-arctic landscape. Snow also affects industry generation and town growth requirements. Only used during map generation. Sea level and coast tiles never have snow.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Choose the approximate amount of snow on the sub-arctic landscape. Snow also affects industry generation and town growth requirements. Only used during map generation. Sea level and coast tiles never have snow
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Desert coverage: {STRING}
@@ -1571,7 +1577,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Choose the appr
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Choose the shape and number of hills. Smooth landscapes have fewer, wider hills, while rough landscapes have more, smaller hills.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Choose the shape and number of hills. Smooth landscapes have fewer, wider hills, while rough landscapes have more, smaller hills
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Very Smooth
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Smooth
@@ -1579,7 +1585,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rough
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Very Rough
 
 STR_CONFIG_SETTING_VARIETY                                      :Variety distribution: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Choose if the map contains both mountains and flat areas. The higher the variety, the more differences in elevation between mountainous and flat areas.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Choose if the map contains both mountains and flat areas. The higher the variety, the more differences in elevation between mountainous and flat areas
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :River amount: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Choose how many rivers to generate
@@ -1626,7 +1632,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dark green
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Purple
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Cargo flow overlay colors: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Set the color scheme used for the cargo flow overlay.
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Set the color scheme used for the cargo flow overlay
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Green to red (original)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Green to blue
@@ -1747,10 +1753,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Keep building t
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Keep the building tools for bridges, tunnels, etc. open after use
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatically remove signals during track construction: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatically remove signals during track construction if the signals are in the way. Note that this can potentially lead to train crashes.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatically remove signals during track construction if the signals are in the way. Note that this can potentially lead to train crashes
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Fast forward speed limit: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limit on how fast the game goes when fast forward is enabled. 0 = no limit (as fast as your computer allows). Values below 100% slow the game down. The upper-limit depends on the specification of your computer and can vary depending on the game.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limit on how fast the game goes when fast forward is enabled. 0 = no limit (as fast as your computer allows). Values below 100% slow the game down. The upper-limit depends on the specification of your computer and can vary depending on the game
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normal game speed
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :No limit (as fast as your computer allows)
@@ -1814,11 +1820,11 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Allow AI comput
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes before scripts are suspended: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximum number of computation steps that a script can take in one turn
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Max memory usage per script: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :How much memory a single script may consume before it's forcibly terminated. This may need to be increased for large maps.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :How much memory a single script may consume before it's forcibly terminated. This may need to be increased for large maps
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Maintenance intervals are in percents: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :When enabled, vehicles try to go for maintenance when their reliability drops by a given percentage of the maximum reliability.{}{}For example, if a vehicle's maximum reliability is 90% and the maintenance interval is 20%, the vehicle will try to go for maintenance when it reaches 72% reliability.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :When enabled, vehicles try to go for maintenance when their reliability drops by a given percentage of the maximum reliability.{}{}For example, if a vehicle's maximum reliability is 90% and the maintenance interval is 20%, the vehicle will try to go for maintenance when it reaches 72% reliability
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Default maintenance interval for trains: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Set the default maintenance interval for new rail vehicles, if no explicit maintenance interval is set for the vehicle
@@ -1828,7 +1834,11 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Default mainten
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Set the default maintenance interval for new aircraft, if no explicit maintenance interval is set for the vehicle
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Default maintenance interval for ships: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Set the default maintenance interval for new ships, if no explicit maintenance interval is set for the vehicle
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Day{P 0 "" s}/Minute{P 0 "" s}/%
+###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Day{P 0 "" s}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Minute{P 0 "" s}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Disabled
 
@@ -1836,7 +1846,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Disable mainten
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :When enabled, vehicles do not get maintained if they cannot break down
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Loading speed penalty for trains that are longer than the station: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :When enabled, trains which are too long for the station load more slowly than a train which fits the station. This setting does not affect pathfinding.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :When enabled, trains which are too long for the station load more slowly than a train which fits the station. This setting does not affect pathfinding
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Enable railroad car speed limits: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :When enabled, also use speed limits of wagons for deciding the maximum speed of a train
@@ -1901,13 +1911,13 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Year that the n
 STR_CONFIG_SETTING_STARTING_YEAR                                :Starting year: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Scoring end year: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Year the game ends for scoring purposes. At the end of this year, the company's score is recorded and the high-score screen is displayed, but the players can continue playing after that.{}If this is before the starting year, the high-score screen is never displayed.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Year the game ends for scoring purposes. At the end of this year, the company's score is recorded and the high-score screen is displayed, but the players can continue playing after that.{}If this is before the starting year, the high-score screen is never displayed
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Never
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Economy type: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Smooth economy makes production changes more often, and in smaller steps. Frozen economy stops production changes and industry closures. This setting may have no effect if industry types are provided by a NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Smooth economy makes production changes more often, and in smaller steps. Frozen economy stops production changes and industry closures. This setting may have no effect if industry types are provided by a NewGRF
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Smooth
@@ -1962,7 +1972,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Allowed
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Allowed, custom town layout
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Town cargo generation: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :How much cargo is produced by houses in towns, relative to the overall population of the town.{}Quadratic growth: A town twice the size generates four times as many passengers.{}Linear growth: A town twice the size generates twice the amount of passengers.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :How much cargo is produced by houses in towns, relative to the overall population of the town.{}Quadratic growth: A town twice the size generates four times as many passengers.{}Linear growth: A town twice the size generates twice the amount of passengers
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadratic (original)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
@@ -2003,7 +2013,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Highest resolution sprites to use: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limit the maximum resolution to use for sprites. Limiting sprite resolution will avoid using high resolution graphics even when available. This can help keep the game appearance unified when using a mix of GRF files with and without high resolution graphics.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limit the maximum resolution to use for sprites. Limiting sprite resolution will avoid using high resolution graphics even when available. This can help keep the game appearance unified when using a mix of GRF files with and without high resolution graphics
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2027,33 +2037,33 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial city si
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Average size of cities relative to normal towns at start of the game
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Update distribution graph every {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Time between subsequent recalculations of the link graph. Each recalculation calculates the plans for one component of the graph. That means that a value X for this setting does not mean the whole graph will be updated every X seconds. Only some component will. The shorter you set it the more CPU time will be necessary to calculate it. The longer you set it the longer it will take until the cargo distribution starts on new routes.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Time between subsequent recalculations of the link graph. Each recalculation calculates the plans for one component of the graph. That means that a value X for this setting does not mean the whole graph will be updated every X seconds. Only some component will. The shorter you set it the more CPU time will be necessary to calculate it. The longer you set it the longer it will take until the cargo distribution starts on new routes
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Take {STRING} for recalculation of distribution graph
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Time taken for each recalculation of a link graph component. When a recalculation is started, a thread is spawned which is allowed to run for this number of seconds. The shorter you set this the more likely it is that the thread is not finished when it's supposed to. Then the game stops until it is ("lag"). The longer you set it the longer it takes for the distribution to be updated when routes change.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Time taken for each recalculation of a link graph component. When a recalculation is started, a thread is spawned which is allowed to run for this number of seconds. The shorter you set this the more likely it is that the thread is not finished when it's supposed to. Then the game stops until it is ("lag"). The longer you set it the longer it takes for the distribution to be updated when routes change
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribution mode for passengers: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetric" means that roughly the same number of passengers will go from a station A to a station B as from B to A. "Asymmetric" means that arbitrary numbers of passengers can go in either direction. "Manual" means that no automatic distribution will take place for passengers.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetric" means that roughly the same number of passengers will go from a station A to a station B as from B to A. "Asymmetric" means that arbitrary numbers of passengers can go in either direction. "Manual" means that no automatic distribution will take place for passengers
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distribution mode for mail: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symmetric" means that roughly the same amount of mail will be sent from a station A to a station B as from B to A. "Asymmetric" means that arbitrary amounts of mail can be sent in either direction. "Manual" means that no automatic distribution will take place for mail.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symmetric" means that roughly the same amount of mail will be sent from a station A to a station B as from B to A. "Asymmetric" means that arbitrary amounts of mail can be sent in either direction. "Manual" means that no automatic distribution will take place for mail
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distribution mode for the ARMORED cargo class: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :The ARMORED cargo class contains valuables in the temperate, diamonds in the subtropical, or gold in the subarctic climate. NewGRFs may change that. "Symmetric" means that roughly the same amount of that cargo will be sent from a station A to a station B as from B to A. "Asymmetric" means that arbitrary amounts of that cargo can be sent in either direction. "Manual" means that no automatic distribution will take place for that cargo. It is recommended to set this to asymmetric or manual when playing subarctic or subtropic, as banks only receive cargo in these climates. For temperate you can also choose symmetric as banks will send valuables back to the origin bank.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :The ARMORED cargo class contains valuables in the temperate, diamonds in the subtropical, or gold in the subarctic climate. NewGRFs may change that. "Symmetric" means that roughly the same amount of that cargo will be sent from a station A to a station B as from B to A. "Asymmetric" means that arbitrary amounts of that cargo can be sent in either direction. "Manual" means that no automatic distribution will take place for that cargo. It is recommended to set this to asymmetric or manual when playing subarctic or subtropic, as banks only receive cargo in these climates. For temperate you can also choose symmetric as banks will send valuables back to the origin bank
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distribution mode for other cargo classes: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetric" means that arbitrary amounts of cargo can be sent in either direction. "Manual" means that no automatic distribution will take place for those cargoes.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetric" means that arbitrary amounts of cargo can be sent in either direction. "Manual" means that no automatic distribution will take place for those cargoes
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetric
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetric
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distribution accuracy: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :The higher you set this the more CPU time the calculation of the link graph will take. If it takes too long you may notice lag. If you set it to a low value, however, the distribution will be inaccurate, and you may notice cargo not being sent to the places you expect it to go.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :The higher you set this the more CPU time the calculation of the link graph will take. If it takes too long you may notice lag. If you set it to a low value, however, the distribution will be inaccurate, and you may notice cargo not being sent to the places you expect it to go
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effect of distance on demands: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :If you set this to a value higher than 0, the distance between the origin station A of some cargo and a possible destination B will have an effect on the amount of cargo sent from A to B. The further away B is from A the less cargo will be sent. The higher you set it, the less cargo will be sent to far away stations and the more cargo will be sent to near stations.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :If you set this to a value higher than 0, the distance between the origin station A of some cargo and a possible destination B will have an effect on the amount of cargo sent from A to B. The further away B is from A the less cargo will be sent. The higher you set it, the less cargo will be sent to far away stations and the more cargo will be sent to near stations
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Amount of returning cargo for symmetric mode: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Setting this to less than 100% makes the symmetric distribution behave more like the asymmetric one. Less cargo will be forcibly sent back if a certain amount is sent to a station. If you set it to 0% the symmetric distribution behaves just like the asymmetric one.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Setting this to less than 100% makes the symmetric distribution behave more like the asymmetric one. Less cargo will be forcibly sent back if a certain amount is sent to a station. If you set it to 0% the symmetric distribution behaves just like the asymmetric one
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturation of short paths before using high-capacity paths: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequently there are multiple paths between two given stations. Cargodist will saturate the shortest path first, then use the second shortest path until that is saturated and so on. Saturation is determined by an estimation of capacity and planned usage. Once it has saturated all paths, if there is still demand left, it will overload all paths, preferring the ones with high capacity. Most of the time the algorithm will not estimate the capacity accurately, though. This setting allows you to specify up to which percentage a shorter path must be saturated in the first pass before choosing the next longer one. Set it to less than 100% to avoid overcrowded stations in case of overestimated capacity.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequently there are multiple paths between two given stations. Cargodist will saturate the shortest path first, then use the second shortest path until that is saturated and so on. Saturation is determined by an estimation of capacity and planned usage. Once it has saturated all paths, if there is still demand left, it will overload all paths, preferring the ones with high capacity. Most of the time the algorithm will not estimate the capacity accurately, though. This setting allows you to specify up to which percentage a shorter path must be saturated in the first pass before choosing the next longer one. Set it to less than 100% to avoid overcrowded stations in case of overestimated capacity
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Speed units (land): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Speed units (nautical): {STRING}
@@ -2128,17 +2138,8 @@ STR_CONFIG_SETTING_AI                                           :Competitors
 STR_CONFIG_SETTING_AI_NPC                                       :Computer players
 STR_CONFIG_SETTING_NETWORK                                      :Network
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pathfinder for trains: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Path finder to use for trains
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pathfinder for road vehicles: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Path finder to use for road vehicles
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pathfinder for ships: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Path finder to use for ships
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatic reversing at signals: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Allow trains to reverse on a signal, if they waited there a long time
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recommended)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Change setting value
 
@@ -2457,7 +2458,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Fetching
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Disconnect
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is protected. Enter password
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company is protected. Enter password
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online players
@@ -2484,6 +2484,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Your player nam
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Administrative actions to perform for this client
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administrative actions to perform for this company
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Join this company
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Authorize this client to join your company
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Send a message to this player
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Send a message to all players of this company
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Send a message to all spectators
@@ -2506,13 +2507,11 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via rela
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kick
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Ban
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Delete
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Password unlock
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Admin action
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Are you sure you want to kick player '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Are you sure you want to ban player '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Are you sure you want to delete company '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Are you sure you want to reset the password of company '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Use relay?
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Failed to establish a connection between you and server '{STRING}'.{}Would you like to relay this session via '{STRING}'?
@@ -2529,19 +2528,9 @@ STR_NETWORK_ASK_SURVEY_YES                                      :Yes
 
 STR_NETWORK_SPECTATORS                                          :Spectators
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Do not save the entered password
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Give the company the new password
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Company password
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Default company password
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Use this company password as default for new companies
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Join
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Join and play as this company
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Password
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Password-protect your company to prevent unauthorized users from joining
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Set company password
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Send
@@ -2570,6 +2559,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Your pla
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Your server name has not been set. The name can be set at the top of the Multiplayer window
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}The revision of this client does not match the server's revision
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Wrong password
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}You are not on the list of allowed clients
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}The server is full
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}You are banned from this server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}You were kicked out of the game
@@ -2585,7 +2575,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Your pla
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possible connection loss
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}The last {NUM} second{P "" s} no data has arrived from the server
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :general error
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desync error
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :could not load map
@@ -2597,6 +2587,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :received invali
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :wrong revision
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :name already in use
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :wrong game-password
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :not on allow list
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :wrong company-id in DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :kicked by server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :was trying to use a cheat
@@ -2802,7 +2793,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Select r
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Waypoint
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Select waypoint type
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Rail Station Selection
@@ -2815,8 +2805,33 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Select l
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Build a station with drag & drop
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Select a station class to display
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Select the station type to build
+STR_PICKER_MODE_ALL                                             :All
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Toggle showing items from all classes
+STR_PICKER_MODE_USED                                            :Used
+STR_PICKER_MODE_USED_TOOLTIP                                    :Toggle showing only existing items
+STR_PICKER_MODE_SAVED                                           :Saved
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Toogle showing only saved items
+
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Select a station class to display
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Select a station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Select a waypoint class to display
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Select a waypoint to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Select a bus station class to display
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Select a bus station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Select a truck station class to display
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Select a truck station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Select an object class to display
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Select an object type to build. Ctrl+Click to add or remove in saved items. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Select a town zone to display
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Select a house type to build. Ctrl+Click to add or remove in saved items
+
+STR_HOUSE_PICKER_CAPTION                                        :House Selection
+
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Edge
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Outskirts
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Outer Suburbs
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Inner Suburbs
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Town center
 
 STR_STATION_CLASS_DFLT                                          :Default
 STR_STATION_CLASS_DFLT_STATION                                  :Default station
@@ -2871,6 +2886,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Build ro
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Build streetcar section using the Autorail mode. Ctrl+Click to remove streetcar section. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Build road vehicle depot (for buying and maintaining vehicles). Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Build streetcar vehicle depot (for buying and maintaining vehicles). Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Build waypoint on road. Ctrl+Click to select another waypoint to join. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Build waypoint on streetcar track. Ctrl+Click to select another waypoint to join. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Build bus station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Build passenger streetcar station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Build truck station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
@@ -2959,8 +2976,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Purchase
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Object Selection
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Select object to build. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Select class of the object to build
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Preview of the object
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Size: {GOLD}{NUM} x {NUM} tiles
 
@@ -2975,11 +2990,11 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Place tr
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Random Trees
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plant trees randomly throughout the landscape
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plant single trees by dragging over the landscape.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plant single trees by dragging over the landscape
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Grove
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plant small forests by dragging over the landscape.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plant small forests by dragging over the landscape
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Forest
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plant large forests by dragging over the landscape.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plant large forests by dragging over the landscape
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land Generation
@@ -3075,7 +3090,8 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Streetca
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Railroad owner: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Local authority: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :None
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Co-ordinates: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordinates: {LTBLUE}{NUM} x {NUM} x {NUM}
+STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}Tile index: {LTBLUE}{NUM} ({HEX})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Built/renovated: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Station class: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Station type: {LTBLUE}{STRING}
@@ -3193,11 +3209,11 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Frame Rate
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulation rate: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Number of game ticks simulated per second.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Number of game ticks simulated per second
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Graphics frame rate: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Number of video frames rendered per second.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Number of video frames rendered per second
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Current game speed factor: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}How fast the game is currently running, compared to the expected speed at normal simulation rate.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}How fast the game is currently running, compared to the expected speed at normal simulation rate
 STR_FRAMERATE_CURRENT                                           :{WHITE}Current
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Average
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memory
@@ -3386,10 +3402,13 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Do you 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% complete
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}World generation
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landscape generation
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}River generation
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tree generation
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Object generation
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Rough and rocky area generation
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Town generation
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industry generation
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Object generation
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tree generation
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Setting up game
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Running tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Running script
@@ -3481,7 +3500,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Road type
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x parameter (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aligning sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Aligning sprite: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Aligning sprite: Action 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Aligning sprite: Action 0x5, type {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Next sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Proceed to the next normal sprite, skipping any pseudo/recolor/font sprites and wrapping around from the last sprite to the first
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Go to sprite
@@ -3490,6 +3511,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Previous
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Proceed to the previous normal sprite, skipping any pseudo/recolor/font sprites and wrapping around from the first sprite to the last
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation of the currently selected sprite. The alignment is ignored when drawing this sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move the sprite around, changing the X and Y offsets. Ctrl+Click to move the sprite eight units at a time
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Offset centered
@@ -3598,7 +3620,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Go to pr
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Enter a name for the sign
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Towns
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Towns ({COMMA} of {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- None -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (City){BLACK} ({COMMA})
@@ -3726,7 +3748,7 @@ STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Global S
 STR_STORY_BOOK_SPECTATOR                                        :Global Story Book
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Page {NUM}
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Jump to a specific page by selecting it in this drop down list.
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Jump to a specific page by selecting it in this drop down list
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Previous
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Go to previous page
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Next
@@ -3932,7 +3954,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/period
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industries
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industries ({COMMA} of {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- None -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transported){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -4021,12 +4043,12 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ungrouped aircr
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groups - click on a group to list all vehicles of this group. Drag and drop groups to arrange hierarchy.
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groups - click on a group to list all vehicles of this group. Drag and drop groups to arrange hierarchy
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Click to create a group
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Delete the selected group
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Rename the selected group
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Change livery of the selected group
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click to protect this group from global autoreplace. Ctrl+Click to also protect sub-groups.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click to protect this group from global autoreplace. Ctrl+Click to also protect sub-groups
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Delete Group
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Are you sure you want to delete this group and any descendants?
@@ -4442,10 +4464,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacity
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer Credits: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Maintenance interval: {LTBLUE}{COMMA}{NBSP}days{BLACK}   {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Maintenance interval: {LTBLUE}{COMMA}{NBSP}minutes{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Maintenance interval: {LTBLUE}{COMMA}{NBSP}minute{P "" s}{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Maintenance interval: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Last maintenance: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Last maintenance: {LTBLUE}{NUM} minutes ago
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Last maintenance: {LTBLUE}{NUM} minute{P "" s} ago
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Increase maintenance interval by 10 days. Ctrl+Click to increase maintenance interval by 5 days
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Increase maintenance interval by 5 minutes. Ctrl+Click to increase maintenance interval by 1 minute
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Increase maintenance interval by 10 percent. Ctrl+Click to increase maintenance interval by 5 percent
@@ -4636,7 +4658,7 @@ STR_ORDER_REFIT_ORDER                                           :(Refit to {STRI
 STR_ORDER_REFIT_STOP_ORDER                                      :(Refit to {STRING} and stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(wait to unbunch)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :(Wait to unbunch)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Can't use station){POP_COLOUR} {STRING} {STATION} {STRING}
@@ -4840,8 +4862,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Close
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_SETTING_DEVIATION                               :{STRING}: {ORANGE}[{STRING}, {STRING}]
-STR_AI_SETTINGS_JUST_DEVIATION                                  :[{STRING}, {STRING}]
 
 
 # Textfile window
@@ -4894,9 +4914,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Estimate
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Saving still in progress,{}please wait until it is finished!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autosave failed
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Unable to read drive
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Game Save Failed{}{STRING}
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Game save failed...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Unable to delete file
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Game Load Failed{}{STRING}
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Game load failed...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Internal error: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Broken savegame - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Savegame is made with newer version
@@ -4990,7 +5010,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Can't bu
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Can't build company headquarters...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Can't build any towns
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Can't build any towns...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Can't rename town...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Can't found town here...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Can't expand town...
@@ -5001,6 +5021,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ther
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Road work in progress
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Can't delete this town...{}A station or depot is referring to the town or a town owned tile can't be removed
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... there is no suitable place for a statue in the center of this town
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Can't build house...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... too many industries
@@ -5038,6 +5059,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Can't bu
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjoins more than one existing station/loading area
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station too spread out
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... unsupported number of tracks
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... unsupported length
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Too many stations/loading areas
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Too many railroad station parts
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Too many bus stops
@@ -5073,11 +5096,14 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Adjoins 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Too close to another waypoint
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Can't build train waypoint here...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Can't build road waypoint here...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Can't place buoy here...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Can't change waypoint name...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Can't remove train waypoint here...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Can't remove road waypoint here...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Must remove rail waypoint first
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Must remove road waypoint first
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... buoy in the way
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... buoy is in use by another company!
 
@@ -5278,6 +5304,11 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Change y
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}No vehicles are available yet
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Start a new game after {DATE_SHORT} or use a NewGRF that provides early vehicles
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}No town-buildable road types are available
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Change your NewGRF configuration
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}No town-buildable road types are available yet
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Start a new game after {DATE_SHORT} or use a NewGRF that provides early town-buildable road types
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Can't make train pass signal at danger...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Can't reverse direction of train...
@@ -5320,6 +5351,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}There ar
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}This plane cannot land at this heliport
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}This helicopter cannot land at this airport
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}There is no railroad waypoint
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}There is no road waypoint
 STR_ERROR_NO_BUOY                                               :{WHITE}There is no buoy
 
 # Timetable related errors
@@ -5807,6 +5839,11 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
+
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
@@ -5823,6 +5860,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

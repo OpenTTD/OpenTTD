@@ -67,6 +67,15 @@ public:
 	static const WidgetDimensions unscaled; ///< Unscaled widget dimensions.
 	static WidgetDimensions scaled;         ///< Widget dimensions scaled for current zoom level.
 
+	static constexpr float ASPECT_LOCATION = 12.f / 14.f;
+	static constexpr float ASPECT_RENAME = 12.f / 14.f;
+	static constexpr float ASPECT_SETTINGS_BUTTON = 21.f / 12.f;
+	static constexpr float ASPECT_TOGGLE_SIZE = 12.f / 14.f;
+	static constexpr float ASPECT_LEFT_RIGHT_BUTTON = 8.f / 12.f;
+	static constexpr float ASPECT_UP_DOWN_BUTTON = 11.f / 12.f;
+	static constexpr float ASPECT_VEHICLE_ICON = 15.f / 12.f;
+	static constexpr float ASPECT_VEHICLE_FLAG = 11.f / 12.f;
+
 private:
 	/**
 	 * Distances used in drawing widgets.
@@ -152,21 +161,20 @@ struct HotkeyList;
  */
 struct WindowDesc : ZeroedMemoryAllocator {
 
-	WindowDesc(const char * const file, const int line, WindowPosition default_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
+	WindowDesc(WindowPosition default_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
 			WindowClass window_class, WindowClass parent_class, uint32_t flags,
-			const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, HotkeyList *hotkeys = nullptr);
+			const std::span<const NWidgetPart> nwid_parts, HotkeyList *hotkeys = nullptr,
+			const std::source_location location = std::source_location::current());
 
 	~WindowDesc();
 
-	const char * const file; ///< Source file of this definition
-	const int line; ///< Source line of this definition
+	const std::source_location source_location; ///< Source location of this definition
 	WindowPosition default_pos;    ///< Preferred position of the window. @see WindowPosition()
 	WindowClass cls;               ///< Class of the window, @see WindowClass.
 	WindowClass parent_cls;        ///< Class of the parent window. @see WindowClass
 	const char *ini_key;           ///< Key to store window defaults in openttd.cfg. \c nullptr if nothing shall be stored.
 	uint32_t flags;                  ///< Flags. @see WindowDefaultFlag
-	const NWidgetPart *nwid_begin; ///< Beginning of nested widget parts describing the window.
-	const NWidgetPart *nwid_end; ///< Ending of nested widget parts describing the window.
+	const std::span<const NWidgetPart> nwid_parts; ///< Span of nested widget parts describing the window.
 	HotkeyList *hotkeys;           ///< Hotkeys for the window.
 
 	bool pref_sticky;              ///< Preferred stickyness.
@@ -184,10 +192,11 @@ private:
 	int16_t default_height_trad;     ///< Preferred initial height of the window (pixels at 1x zoom).
 
 	/**
-	 * Dummy private copy constructor to prevent compilers from
+	 * Delete copy constructor to prevent compilers from
 	 * copying the structure, which fails due to _window_descs.
 	 */
-	WindowDesc(const WindowDesc &other);
+	WindowDesc(const WindowDesc &) = delete;
+	WindowDesc& operator=(const WindowDesc &) = delete;
 };
 
 /**
@@ -280,7 +289,7 @@ protected:
 	virtual ~Window();
 
 public:
-	Window(WindowDesc *desc);
+	Window(WindowDesc &desc);
 
 	/**
 	 * Helper allocation function to disallow something.
@@ -290,7 +299,7 @@ public:
 	 */
 	inline void *operator new[](size_t size) = delete;
 
-	WindowDesc *window_desc;    ///< Window description
+	WindowDesc &window_desc;    ///< Window description
 	WindowFlags flags;          ///< Window flags
 	WindowClass window_class;   ///< Window class
 	WindowNumber window_number; ///< Window number within the window class
@@ -475,7 +484,7 @@ public:
 	 * Marks a widget as raised and dirty (redraw), when it is marked as lowered.
 	 * @param widget_index index of this widget in the window
 	 */
-	inline void RaiseWidgetWhenLowered(byte widget_index)
+	inline void RaiseWidgetWhenLowered(WidgetID widget_index)
 	{
 		if (this->IsWidgetLowered(widget_index)) {
 			this->RaiseWidget(widget_index);
@@ -610,12 +619,12 @@ public:
 	 * and \a resize is taken to contain the resize steps. For the convenience of the callee, \a padding contains the amount of
 	 * padding between the content and the edge of the widget. This should be added to the returned size.
 	 * @param widget  Widget number.
-	 * @param size    Size of the widget.
+	 * @param[in,out] size Size of the widget.
 	 * @param padding Recommended amount of space between the widget content and the widget edge.
-	 * @param fill    Fill step of the widget.
-	 * @param resize  Resize step of the widget.
+	 * @param[in,out] fill Fill step of the widget.
+	 * @param[in,out] resize Resize step of the widget.
 	 */
-	virtual void UpdateWidgetSize([[maybe_unused]] WidgetID widget, [[maybe_unused]] Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) {}
+	virtual void UpdateWidgetSize([[maybe_unused]] WidgetID widget, [[maybe_unused]] Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) {}
 
 	/**
 	 * Initialize string parameters for a widget.
@@ -766,11 +775,11 @@ public:
 
 	/**
 	 * The query window opened from this window has closed.
-	 * @param str the new value of the string, nullptr if the window
+	 * @param str the new value of the string, \c std::nullopt if the window
 	 *            was cancelled or an empty string when the default
-	 *            button was pressed, i.e. StrEmpty(str).
+	 *            button was pressed, i.e. \c str->empty().
 	 */
-	virtual void OnQueryTextFinished([[maybe_unused]] char *str) {}
+	virtual void OnQueryTextFinished([[maybe_unused]] std::optional<std::string> str) {}
 
 	/**
 	 * Some data on this window has become invalid.
@@ -980,7 +989,7 @@ inline const NWID *Window::GetWidget(WidgetID widnum) const
 class PickerWindowBase : public Window {
 
 public:
-	PickerWindowBase(WindowDesc *desc, Window *parent) : Window(desc)
+	PickerWindowBase(WindowDesc &desc, Window *parent) : Window(desc)
 	{
 		this->parent = parent;
 	}
@@ -1006,9 +1015,9 @@ Window *BringWindowToFrontById(WindowClass cls, T number)
  * @return %Window pointer of the newly created window, or the existing one if \a return_existing is set, or \c nullptr.
  */
 template <typename Wcls>
-Wcls *AllocateWindowDescFront(WindowDesc *desc, int window_number, bool return_existing = false)
+Wcls *AllocateWindowDescFront(WindowDesc &desc, int window_number, bool return_existing = false)
 {
-	Wcls *w = static_cast<Wcls *>(BringWindowToFrontById(desc->cls, window_number));
+	Wcls *w = static_cast<Wcls *>(BringWindowToFrontById(desc.cls, window_number));
 	if (w != nullptr) return return_existing ? w : nullptr;
 	return new Wcls(desc, window_number);
 }
@@ -1024,7 +1033,7 @@ extern Point _cursorpos_drag_start;
 
 extern int _scrollbar_start_pos;
 extern int _scrollbar_size;
-extern byte _scroller_click_timeout;
+extern uint8_t _scroller_click_timeout;
 
 extern bool _scrolling_viewport;
 extern bool _mouse_hovering;

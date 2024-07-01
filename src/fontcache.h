@@ -26,7 +26,6 @@ protected:
 	int height;                       ///< The height of the font.
 	int ascender;                     ///< The ascender value of the font.
 	int descender;                    ///< The descender value of the font.
-	int units_per_em;                 ///< The units per EM value of the font.
 
 public:
 	FontCache(FontSize fs);
@@ -59,12 +58,6 @@ public:
 	 * @return The descender value of the font.
 	 */
 	inline int GetDescender() const{ return this->descender; }
-
-	/**
-	 * Get the units per EM value of the font.
-	 * @return The units per EM value of the font.
-	 */
-	inline int GetUnitsPerEM() const { return this->units_per_em; }
 
 	/**
 	 * Get the nominal font size of the font.
@@ -112,14 +105,6 @@ public:
 	 * @return The glyph ID used to draw the character.
 	 */
 	virtual GlyphID MapCharToGlyph(char32_t key, bool fallback = true) = 0;
-
-	/**
-	 * Read a font table from the font.
-	 * @param tag The of the table to load.
-	 * @param length The length of the read data.
-	 * @return The loaded table data.
-	 */
-	virtual const void *GetFontTable(uint32_t tag, size_t &length) = 0;
 
 	/**
 	 * Get the native OS font handle, if there is one.
@@ -207,7 +192,6 @@ inline bool GetDrawGlyphShadow(FontSize size)
 struct FontCacheSubSetting {
 	std::string font; ///< The name of the font, or path to the font.
 	uint size;        ///< The (requested) size of the font.
-	bool aa;          ///< Whether to do anti aliasing or not.
 
 	const void *os_handle = nullptr; ///< Optional native OS font info. Only valid during font search.
 };
@@ -240,11 +224,12 @@ inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
 	}
 }
 
+uint GetFontCacheFontSize(FontSize fs);
+std::string GetFontCacheFontName(FontSize fs);
 void InitFontCache(bool monospace);
 void UninitFontCache();
-bool HasAntialiasedFonts();
 
-bool GetFontAAState(FontSize size, bool check_blitter = true);
-void SetFont(FontSize fontsize, const std::string &font, uint size, bool aa);
+bool GetFontAAState();
+void SetFont(FontSize fontsize, const std::string &font, uint size);
 
 #endif /* FONTCACHE_H */

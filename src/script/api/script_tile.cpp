@@ -199,8 +199,7 @@
 {
 	if (!::IsValidTile(tile) || !::IsValidCorner((::Corner)corner)) return -1;
 
-	int z;
-	::Slope slope = ::GetTileSlope(tile, &z);
+	auto [slope, z] = ::GetTileSlopeZ(tile);
 	return (z + ::GetSlopeZInCorner(slope, (::Corner)corner));
 }
 
@@ -210,7 +209,7 @@
 	if (::IsTileType(tile, MP_HOUSE)) return ScriptCompany::COMPANY_INVALID;
 	if (::IsTileType(tile, MP_INDUSTRY)) return ScriptCompany::COMPANY_INVALID;
 
-	return ScriptCompany::ResolveCompanyID((ScriptCompany::CompanyID)(byte)::GetTileOwner(tile));
+	return ScriptCompany::ResolveCompanyID((ScriptCompany::CompanyID)(uint8_t)::GetTileOwner(tile));
 }
 
 /* static */ bool ScriptTile::HasTransportType(TileIndex tile, TransportType transport_type)

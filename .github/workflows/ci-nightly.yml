@@ -1,0 +1,82 @@
+name: CI - Nightly
+
+on:
+  schedule:
+  - cron: '0 3 * * *'
+  workflow_dispatch:
+
+env:
+  CTEST_OUTPUT_ON_FAILURE: 1
+
+jobs:
+  linux:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - name: GCC - SDL1.2
+          compiler: gcc
+          cxxcompiler: g++
+          libraries: libsdl1.2-dev
+
+    name: Linux (${{ matrix.name }})
+
+    uses: ./.github/workflows/ci-linux.yml
+    secrets: inherit
+
+    with:
+      compiler: ${{ matrix.compiler }}
+      cxxcompiler: ${{ matrix.cxxcompiler }}
+      libraries: ${{ matrix.libraries }}
+      extra-cmake-parameters:
+
+  macos:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - arch: x64
+          full_arch: x86_64
+
+    name: Mac OS (${{ matrix.arch }})
+
+    uses: ./.github/workflows/ci-macos.yml
+    secrets: inherit
+
+    with:
+      arch: ${{ matrix.arch }}
+      full_arch: ${{ matrix.full_arch }}
+
+  mingw:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - msystem: MINGW64
+          arch: x86_64
+        - msystem: MINGW32
+          arch: i686
+
+    name: MinGW (${{ matrix.arch }})
+
+    uses: ./.github/workflows/ci-mingw.yml
+    secrets: inherit
+
+    with:
+      msystem: ${{ matrix.msystem }}
+      arch: ${{ matrix.arch }}
+
+  check_annotations:
+    name: Check Annotations
+    needs:
+    - linux
+    - macos
+    - mingw
+
+    if: always()
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check annotations
+      uses: OpenTTD/actions/annotation-check@v5

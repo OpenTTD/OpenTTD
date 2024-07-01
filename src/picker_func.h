@@ -5,14 +5,12 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file dropdown_func.h Functions related to the drop down widget. */
+/** @file picker_func.h Functions/types etc. related to non-GUI parts of the Picker system. */
 
-#ifndef WIDGETS_DROPDOWN_FUNC_H
-#define WIDGETS_DROPDOWN_FUNC_H
+#ifndef PICKER_FUNC_H
+#define PICKER_FUNC_H
 
-#include "../window_gui.h"
+void PickerLoadConfig(const IniFile &ini);
+void PickerSaveConfig(IniFile &ini);
 
-/* Show drop down menu containing a fixed list of strings */
-void ShowDropDownMenu(Window *w, const StringID *strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, uint width = 0);
-
-#endif /* WIDGETS_DROPDOWN_FUNC_H */
+#endif /* PICKER_FUNC_H */

@@ -376,7 +376,13 @@ enum SaveLoadVersion : uint16_t {
 	SLV_MAX_LOAN_FOR_COMPANY,               ///< 330  PR#11224 Separate max loan for each company.
 	SLV_DEPOT_UNBUNCHING,                   ///< 331  PR#11945 Allow unbunching shared order vehicles at a depot.
 	SLV_AI_LOCAL_CONFIG,                    ///< 332  PR#12003 Config of running AI is stored inside Company.
-	SLV_SCRIPT_RANDOMIZER,                  ///< 333  PR#12063 v14.0 Save script randomizers.
+	SLV_SCRIPT_RANDOMIZER,                  ///< 333  PR#12063 v14.0-RC1 Save script randomizers.
+	SLV_VEHICLE_ECONOMY_AGE,                ///< 334  PR#12141 v14.0 Add vehicle age in economy year, for profit stats minimum age
+
+	SLV_COMPANY_ALLOW_LIST,                 ///< 335  PR#12337 Saving of list of client keys that are allowed to join this company.
+	SLV_GROUP_NUMBERS,                      ///< 336  PR#12297 Add per-company group numbers.
+	SLV_INCREASE_STATION_TYPE_FIELD_SIZE,   ///< 337  PR#12572 Increase size of StationType field in map array
+	SLV_ROAD_WAYPOINTS,                     ///< 338  PR#12572 Road waypoints
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
@@ -415,7 +421,8 @@ extern FileToSaveLoad _file_to_saveload;
 
 std::string GenerateDefaultSaveName();
 void SetSaveLoadError(StringID str);
-const char *GetSaveLoadErrorString();
+StringID GetSaveLoadErrorType();
+StringID GetSaveLoadErrorMessage();
 SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
 void WaitTillSaved();
 void ProcessAsyncSaveFinish();
@@ -673,7 +680,7 @@ enum VarTypes {
 typedef uint32_t VarType;
 
 /** Type of data saved. */
-enum SaveLoadType : byte {
+enum SaveLoadType : uint8_t {
 	SL_VAR         =  0, ///< Save/load a variable.
 	SL_REF         =  1, ///< Save/load a reference.
 	SL_STRUCT      =  2, ///< Save/load a struct.
@@ -941,6 +948,16 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @param to       Last savegame version that has the list.
  */
 #define SLE_CONDDEQUE(base, variable, type, from, to) SLE_GENERAL(SL_DEQUE, base, variable, type, 0, from, to, 0)
+
+/**
+ * Storage of a vector of #SL_VAR elements in some savegame versions.
+ * @param base     Name of the class or struct containing the list.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the list.
+ * @param to       Last savegame version that has the list.
+ */
+#define SLE_CONDVECTOR(base, variable, type, from, to) SLE_GENERAL(SL_VECTOR, base, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a variable in every version of a savegame.
@@ -1211,10 +1228,10 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @param minor Minor number of the version to check against. If \a minor is 0 or not specified, only the major number is checked.
  * @return Savegame version is earlier than the specified version.
  */
-inline bool IsSavegameVersionBefore(SaveLoadVersion major, byte minor = 0)
+inline bool IsSavegameVersionBefore(SaveLoadVersion major, uint8_t minor = 0)
 {
 	extern SaveLoadVersion _sl_version;
-	extern byte            _sl_minor_version;
+	extern uint8_t            _sl_minor_version;
 	return _sl_version < major || (minor > 0 && _sl_version == major && _sl_minor_version < minor);
 }
 
@@ -1277,8 +1294,8 @@ void SlSetLength(size_t length);
 size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld);
 size_t SlCalcObjLength(const void *object, const SaveLoadTable &slt);
 
-byte SlReadByte();
-void SlWriteByte(byte b);
+uint8_t SlReadByte();
+void SlWriteByte(uint8_t b);
 
 void SlGlobList(const SaveLoadTable &slt);
 void SlCopy(void *object, size_t length, VarType conv);

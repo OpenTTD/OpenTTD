@@ -15,24 +15,21 @@
 
 /** Font cache for fonts that are based on a freetype font. */
 class SpriteFontCache : public FontCache {
-private:
-	SpriteID **glyph_to_spriteid_map; ///< Mapping of glyphs to sprite IDs.
-	SpriteID GetUnicodeGlyph(char32_t key);
-
-	void ClearGlyphToSpriteMap();
 public:
 	SpriteFontCache(FontSize fs);
-	~SpriteFontCache();
 	void SetUnicodeGlyph(char32_t key, SpriteID sprite) override;
 	void InitializeUnicodeGlyphMap() override;
 	void ClearFontCache() override;
 	const Sprite *GetGlyph(GlyphID key) override;
 	uint GetGlyphWidth(GlyphID key) override;
 	bool GetDrawGlyphShadow() override;
-	GlyphID MapCharToGlyph(char32_t key, [[maybe_unused]] bool allow_fallback = true) override { assert(IsPrintable(key)); return SPRITE_GLYPH | key; }
-	const void *GetFontTable(uint32_t, size_t &length) override { length = 0; return nullptr; }
+	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
 	std::string GetFontName() override { return "sprite"; }
 	bool IsBuiltInFont() override { return true; }
+
+private:
+	std::unordered_map<GlyphID, SpriteID> glyph_to_spriteid_map{}; ///< Mapping of glyphs to sprite IDs.
+	SpriteID GetUnicodeGlyph(GlyphID key);
 };
 
 #endif /* SPRITEFONTCACHE_H */

@@ -154,7 +154,7 @@ public:
 	/**
 	 * Colour on mini-map
 	 */
-	byte map_colour;
+	uint8_t map_colour;
 
 	/**
 	 * Introduction date.
@@ -179,7 +179,7 @@ public:
 	/**
 	 * The sorting order of this roadtype for the toolbar dropdown.
 	 */
-	byte sorting_order;
+	uint8_t sorting_order;
 
 	/**
 	 * NewGRF providing the Action3 for the roadtype. nullptr if not available.
@@ -235,9 +235,9 @@ inline const RoadTypeInfo *GetRoadTypeInfo(RoadType roadtype)
  * Checks if an engine of the given RoadType got power on a tile with a given
  * RoadType. This would normally just be an equality check, but for electrified
  * roads (which also support non-electric vehicles).
- * @return Whether the engine got power on this tile.
  * @param  enginetype The RoadType of the engine we are considering.
  * @param  tiletype   The RoadType of the tile we are considering.
+ * @return Whether the engine got power on this tile.
  */
 inline bool HasPowerOnRoad(RoadType enginetype, RoadType tiletype)
 {

@@ -205,6 +205,7 @@ static bool _ValidateSignatureFile(const std::string &filename)
 
 	std::string text(filesize, '\0');
 	size_t len = fread(text.data(), filesize, 1, f);
+	FioFCloseFile(f);
 	if (len != 1) {
 		Debug(misc, 0, "Failed to validate signature: failed to read file: {}", filename);
 		return false;
@@ -244,7 +245,7 @@ static bool _ValidateSignatureFile(const std::string &filename)
 		return false;
 	}
 
-	std::string dirname = std::filesystem::path(filename).parent_path().string();
+	std::string dirname = FS2OTTD(std::filesystem::path(OTTD2FS(filename)).parent_path());
 
 	for (auto &signature : signatures["files"]) {
 		const std::string sig_filename = dirname + PATHSEPCHAR + signature["filename"].get<std::string>();

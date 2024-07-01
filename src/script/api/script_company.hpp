@@ -99,7 +99,7 @@ public:
 	 * Types of expenses.
 	 * @api -ai
 	 */
-	enum ExpensesType : byte {
+	enum ExpensesType : uint8_t {
 		EXPENSES_CONSTRUCTION = ::EXPENSES_CONSTRUCTION,     ///< Construction costs.
 		EXPENSES_NEW_VEHICLES = ::EXPENSES_NEW_VEHICLES,     ///< New vehicles.
 		EXPENSES_TRAIN_RUN    = ::EXPENSES_TRAIN_RUN,        ///< Running costs trains.
@@ -281,59 +281,64 @@ public:
 	static bool ChangeBankBalance(CompanyID company, Money delta, ExpensesType expenses_type, TileIndex tile);
 
 	/**
-	 * Get the income of the company in the given quarter.
+	 * Get the income of the company in the given economy-quarter.
 	 * Note that this function only considers recurring income from vehicles;
 	 * it does not include one-time income from selling stuff.
 	 * @param company The company to get the quarterly income of.
-	 * @param quarter The quarter to get the income of.
+	 * @param quarter The economy-quarter to get the income of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre quarter <= EARLIEST_QUARTER.
-	 * @return The gross income of the company in the given quarter.
+	 * @return The gross income of the company in the given economy-quarter.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetQuarterlyIncome(CompanyID company, SQInteger quarter);
 
 	/**
-	 * Get the expenses of the company in the given quarter.
+	 * Get the expenses of the company in the given economy-quarter.
 	 * Note that this function only considers recurring expenses from vehicle
 	 * running cost, maintenance and interests; it does not include one-time
 	 * expenses from construction and buying stuff.
 	 * @param company The company to get the quarterly expenses of.
-	 * @param quarter The quarter to get the expenses of.
+	 * @param quarter The economy-quarter to get the expenses of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre quarter <= EARLIEST_QUARTER.
-	 * @return The expenses of the company in the given quarter.
+	 * @return The expenses of the company in the given economy-quarter.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetQuarterlyExpenses(CompanyID company, SQInteger quarter);
 
 	/**
-	 * Get the amount of cargo delivered by the given company in the given quarter.
+	 * Get the amount of cargo delivered by the given company in the given economy-quarter.
 	 * @param company The company to get the amount of delivered cargo of.
-	 * @param quarter The quarter to get the amount of delivered cargo of.
+	 * @param quarter The economy-quarter to get the amount of delivered cargo of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre quarter <= EARLIEST_QUARTER.
-	 * @return The amount of cargo delivered by the given company in the given quarter.
+	 * @return The amount of cargo delivered by the given company in the given economy-quarter.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetQuarterlyCargoDelivered(CompanyID company, SQInteger quarter);
 
 	/**
-	 * Get the performance rating of the given company in the given quarter.
+	 * Get the performance rating of the given company in the given economy-quarter.
 	 * @param company The company to get the performance rating of.
-	 * @param quarter The quarter to get the performance rating of.
+	 * @param quarter The economy-quarter to get the performance rating of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre quarter <= EARLIEST_QUARTER.
 	 * @pre quarter != CURRENT_QUARTER.
-	 * @note The performance rating is calculated after every quarter, so the value for CURRENT_QUARTER is undefined.
-	 * @return The performance rating of the given company in the given quarter.
+	 * @note The performance rating is calculated after every economy-quarter, so the value for CURRENT_QUARTER is undefined.
+	 * @return The performance rating of the given company in the given economy-quarter.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static SQInteger GetQuarterlyPerformanceRating(CompanyID company, SQInteger quarter);
 
 	/**
-	 * Get the value of the company in the given quarter.
+	 * Get the value of the company in the given economy-quarter.
 	 * @param company The company to get the value of.
-	 * @param quarter The quarter to get the value of.
+	 * @param quarter The economy-quarter to get the value of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre quarter <= EARLIEST_QUARTER.
-	 * @return The value of the company in the given quarter.
+	 * @return The value of the company in the given economy-quarter.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetQuarterlyCompanyValue(CompanyID company, SQInteger quarter);
 
@@ -377,10 +382,11 @@ public:
 
 	/**
 	 * Set the number of months before/after max age to autorenew an engine for your company.
-	 * @param months The new months between autorenew.
+	 * @param months The number of calendar-months before/after max age of engine.
 	 *               The value will be clamped to MIN(int16_t) .. MAX(int16_t).
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if autorenew months has been modified.
+	 * @see \ref ScriptCalendarTime
 	 */
 	static bool SetAutoRenewMonths(SQInteger months);
 
@@ -388,7 +394,8 @@ public:
 	 * Return the number of months before/after max age to autorenew an engine for a company.
 	 * @param company The company to get the autorenew months of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
-	 * @return The months before/after max age of engine.
+	 * @return The number of calendar-months before/after max age of engine.
+	 * @see \ref ScriptCalendarTime
 	 */
 	static SQInteger GetAutoRenewMonths(CompanyID company);
 

@@ -14,7 +14,8 @@
 #include "../window_func.h"
 #include "../network/network.h"
 #include "../network/network_content.h"
-#include "../widgets/dropdown_func.h"
+#include "../dropdown_type.h"
+#include "../dropdown_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"
 
@@ -73,11 +74,11 @@ static constexpr NWidgetPart _nested_gs_config_widgets[] = {
 };
 
 /** Window definition for the configure GS window. */
-static WindowDesc _gs_config_desc(__FILE__, __LINE__,
+static WindowDesc _gs_config_desc(
 	WDP_CENTER, "settings_gs_config", 500, 350,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
-	std::begin(_nested_gs_config_widgets), std::end(_nested_gs_config_widgets)
+	_nested_gs_config_widgets
 );
 
 /**
@@ -95,7 +96,7 @@ struct GSConfigWindow : public Window {
 	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typdef for a vector of script settings
 	VisibleSettingsList visible_settings; ///< List of visible GS settings
 
-	GSConfigWindow() : Window(&_gs_config_desc),
+	GSConfigWindow() : Window(_gs_config_desc),
 		clicked_button(-1),
 		clicked_dropdown(false),
 		closing_dropdown(false)
@@ -135,19 +136,19 @@ struct GSConfigWindow : public Window {
 		this->vscroll->SetCount(this->visible_settings.size());
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_GSC_SETTINGS:
 				this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
-				resize->width = 1;
-				resize->height = this->line_height;
-				size->height = 5 * this->line_height;
+				resize.width = 1;
+				resize.height = this->line_height;
+				size.height = 5 * this->line_height;
 				break;
 
 			case WID_GSC_GSLIST:
 				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
-				size->height = 1 * this->line_height;
+				size.height = 1 * this->line_height;
 				break;
 		}
 	}
@@ -199,18 +200,10 @@ struct GSConfigWindow : public Window {
 					TextColour colour;
 					uint idx = 0;
 					if (config_item.description.empty()) {
-						if (Game::GetInstance() == nullptr && config_item.random_deviation != 0) {
-							str = STR_AI_SETTINGS_JUST_DEVIATION;
-						} else {
-							str = STR_JUST_STRING1;
-						}
+						str = STR_JUST_STRING1;
 						colour = TC_ORANGE;
 					} else {
-						if (Game::GetInstance() == nullptr && config_item.random_deviation != 0) {
-							str = STR_AI_SETTINGS_SETTING_DEVIATION;
-						} else {
-							str = STR_AI_SETTINGS_SETTING;
-						}
+						str = STR_AI_SETTINGS_SETTING;
 						colour = TC_LIGHT_BLUE;
 						SetDParamStr(idx++, config_item.description);
 					}
@@ -225,35 +218,13 @@ struct GSConfigWindow : public Window {
 							DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 						}
 
-						if (Game::GetInstance() != nullptr || config_item.random_deviation == 0) {
-							auto config_iterator = config_item.labels.find(current_value);
-							if (config_iterator != config_item.labels.end()) {
-								SetDParam(idx++, STR_JUST_RAW_STRING);
-								SetDParamStr(idx++, config_iterator->second);
-							} else {
-								SetDParam(idx++, STR_JUST_INT);
-								SetDParam(idx++, current_value);
-							}
+						auto config_iterator = config_item.labels.find(current_value);
+						if (config_iterator != config_item.labels.end()) {
+							SetDParam(idx++, STR_JUST_RAW_STRING);
+							SetDParamStr(idx++, config_iterator->second);
 						} else {
-							int min_deviated = std::max(config_item.min_value, current_value - config_item.random_deviation);
-							auto config_iterator = config_item.labels.find(min_deviated);
-							if (config_iterator != config_item.labels.end()) {
-								SetDParam(idx++, STR_JUST_RAW_STRING);
-								SetDParamStr(idx++, config_iterator->second);
-							} else {
-								SetDParam(idx++, STR_JUST_INT);
-								SetDParam(idx++, min_deviated);
-							}
-
-							int max_deviated = std::min(config_item.max_value, current_value + config_item.random_deviation);
-							config_iterator = config_item.labels.find(max_deviated);
-							if (config_iterator != config_item.labels.end()) {
-								SetDParam(idx++, STR_JUST_RAW_STRING);
-								SetDParamStr(idx++, config_iterator->second);
-							} else {
-								SetDParam(idx++, STR_JUST_INT);
-								SetDParam(idx++, max_deviated);
-							}
+							SetDParam(idx++, STR_JUST_INT);
+							SetDParam(idx++, current_value);
 						}
 					}
 
@@ -347,7 +318,7 @@ struct GSConfigWindow : public Window {
 
 							DropDownList list;
 							for (int i = config_item.min_value; i <= config_item.max_value; i++) {
-								list.push_back(std::make_unique<DropDownListStringItem>(config_item.labels.find(i)->second, i, false));
+								list.push_back(MakeDropDownListStringItem(config_item.labels.find(i)->second, i));
 							}
 
 							ShowDropDownListAt(this, std::move(list), old_val, WID_GSC_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
@@ -397,10 +368,10 @@ struct GSConfigWindow : public Window {
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (StrEmpty(str)) return;
-		int32_t value = atoi(str);
+		if (!str.has_value() || str->empty()) return;
+		int32_t value = atoi(str->c_str());
 		SetValue(value);
 	}
 

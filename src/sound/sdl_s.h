@@ -15,10 +15,10 @@
 /** Implementation of the SDL sound driver. */
 class SoundDriver_SDL : public SoundDriver {
 public:
-	const char *Start(const StringList &param) override;
+	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
-	const char *GetName() const override { return "sdl"; }
+	std::string_view GetName() const override { return "sdl"; }
 };
 
 /** Factory for the SDL sound driver. */

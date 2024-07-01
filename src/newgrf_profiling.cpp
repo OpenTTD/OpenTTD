@@ -157,7 +157,7 @@ std::string NewGRFProfiler::GetOutputFilename() const
 /**
  * Check whether profiling is active and should be finished.
  */
-static TimeoutTimer<TimerGameTick> _profiling_finish_timeout(0, []()
+static TimeoutTimer<TimerGameTick> _profiling_finish_timeout({ TimerGameTick::Priority::NONE, 0 }, []()
 {
 	NewGRFProfiler::FinishAll();
 });
@@ -167,7 +167,7 @@ static TimeoutTimer<TimerGameTick> _profiling_finish_timeout(0, []()
  */
 /* static */ void NewGRFProfiler::StartTimer(uint64_t ticks)
 {
-	_profiling_finish_timeout.Reset(ticks);
+	_profiling_finish_timeout.Reset({ TimerGameTick::Priority::NONE, static_cast<uint>(ticks) });
 }
 
 /**

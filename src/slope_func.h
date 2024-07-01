@@ -414,7 +414,7 @@ inline Foundation SpecialRailFoundation(Corner corner)
  */
 inline uint SlopeToSpriteOffset(Slope s)
 {
-	extern const byte _slope_to_sprite_offset[32];
+	extern const uint8_t _slope_to_sprite_offset[32];
 	return _slope_to_sprite_offset[s];
 }
 

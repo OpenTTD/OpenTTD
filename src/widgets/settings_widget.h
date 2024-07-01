@@ -30,16 +30,19 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_GUI_FONT_AA,            ///< Toggle whether to anti-alias fonts.
 	WID_GO_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF.
 	WID_GO_BASE_GRF_PARAMETERS,    ///< Base GRF parameters.
+	WID_GO_BASE_GRF_CONTENT_DOWNLOAD, ///< 'Get Content' button for base GRF.
 	WID_GO_BASE_GRF_OPEN_URL,      ///< Open base GRF URL.
 	WID_GO_BASE_GRF_TEXTFILE,      ///< Open base GRF readme, changelog (+1) or license (+2).
 	WID_GO_BASE_GRF_DESCRIPTION = WID_GO_BASE_GRF_TEXTFILE + TFT_CONTENT_END,     ///< Description of selected base GRF.
 	WID_GO_BASE_SFX_DROPDOWN,      ///< Use to select a base SFX.
+	WID_GO_BASE_SFX_CONTENT_DOWNLOAD, ///< 'Get Content' button for base SFX.
 	WID_GO_TEXT_SFX_VOLUME,        ///< Sound effects volume label.
 	WID_GO_BASE_SFX_VOLUME,        ///< Change sound effects volume.
 	WID_GO_BASE_SFX_OPEN_URL,      ///< Open base SFX URL.
 	WID_GO_BASE_SFX_TEXTFILE,      ///< Open base SFX readme, changelog (+1) or license (+2).
 	WID_GO_BASE_SFX_DESCRIPTION = WID_GO_BASE_SFX_TEXTFILE + TFT_CONTENT_END,     ///< Description of selected base SFX.
 	WID_GO_BASE_MUSIC_DROPDOWN,    ///< Use to select a base music set.
+	WID_GO_BASE_MUSIC_CONTENT_DOWNLOAD, ///< 'Get Content' button for base music.
 	WID_GO_TEXT_MUSIC_VOLUME,      ///< Music volume label.
 	WID_GO_BASE_MUSIC_VOLUME,      ///< Change music volume.
 	WID_GO_BASE_MUSIC_JUKEBOX,     ///< Open the jukebox.

@@ -45,10 +45,10 @@ static const uint8_t OBJECT_SIZE_1X1 = 0x11; ///< The value of a NewGRF's size p
 void ResetObjects();
 
 /** Class IDs for objects. */
-enum ObjectClassID : uint8_t {
-	OBJECT_CLASS_BEGIN   =    0, ///< The lowest valid value
-	OBJECT_CLASS_MAX     = 0xFF, ///< Maximum number of classes.
-	INVALID_OBJECT_CLASS = 0xFF, ///< Class for the less fortunate.
+enum ObjectClassID : uint16_t {
+	OBJECT_CLASS_BEGIN = 0, ///< The lowest valid value
+	OBJECT_CLASS_MAX = UINT16_MAX, ///< Maximum number of classes.
+	INVALID_OBJECT_CLASS = UINT16_MAX, ///< Class for the less fortunate.
 };
 /** Allow incrementing of ObjectClassID variables */
 DECLARE_POSTFIX_INCREMENT(ObjectClassID)
@@ -57,11 +57,10 @@ DECLARE_POSTFIX_INCREMENT(ObjectClassID)
  * @note If you change this struct, adopt the initialization of
  * default objects in table/object_land.h
  */
-struct ObjectSpec {
+struct ObjectSpec : NewGRFSpecBase<ObjectClassID> {
 	/* 2 because of the "normal" and "buy" sprite stacks. */
 	GRFFilePropsBase<2> grf_prop; ///< Properties related the the grf file
 	AnimationInfo animation;      ///< Information about the animation.
-	ObjectClassID cls_id;         ///< The class to which this spec belongs.
 	StringID name;                ///< The name for this object.
 
 	uint8_t climate;                ///< In which climates is this object available?
@@ -127,19 +126,18 @@ struct ObjectScopeResolver : public ScopeResolver {
 	}
 
 	uint32_t GetRandomBits() const override;
-	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const override;
 };
 
 /** A resolver object to be used with feature 0F spritegroups. */
 struct ObjectResolverObject : public ResolverObject {
 	ObjectScopeResolver object_scope; ///< The object scope resolver.
-	TownScopeResolver *town_scope;    ///< The town scope resolver (created on the first call).
+	std::optional<TownScopeResolver> town_scope = std::nullopt; ///< The town scope resolver (created on the first call).
 
 	ObjectResolverObject(const ObjectSpec *spec, Object *o, TileIndex tile, uint8_t view = 0,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0);
-	~ObjectResolverObject();
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF:
@@ -163,8 +161,8 @@ private:
 	TownScopeResolver *GetTown();
 };
 
-/** Struct containing information relating to object classes. */
-typedef NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX> ObjectClass;
+/** Class containing information relating to object classes. */
+using ObjectClass = NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX>;
 
 static const size_t OBJECT_SPRITE_GROUP_DEFAULT = 0;
 static const size_t OBJECT_SPRITE_GROUP_PURCHASE = 1;

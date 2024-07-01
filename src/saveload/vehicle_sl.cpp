@@ -249,7 +249,7 @@ static void CheckValidVehicles()
 	}
 }
 
-extern byte _age_cargo_skip_counter; // From misc_sl.cpp
+extern uint8_t _age_cargo_skip_counter; // From misc_sl.cpp
 
 /** Called after load to update coordinates */
 void AfterLoadVehicles(bool part_of_load)
@@ -398,6 +398,13 @@ void AfterLoadVehicles(bool part_of_load)
 				v->timetable_start = GetStartTickFromDate(v->timetable_start);
 			}
 		}
+
+		if (IsSavegameVersionBefore(SLV_VEHICLE_ECONOMY_AGE)) {
+			/* Set vehicle economy age based on calendar age. */
+			for (Vehicle *v : Vehicle::Iterate()) {
+				v->economy_age = v->age.base();
+			}
+		}
 	}
 
 	CheckValidVehicles();
@@ -517,6 +524,10 @@ void AfterLoadVehicles(bool part_of_load)
 			default: break;
 		}
 
+		if (part_of_load && v->unitnumber != 0) {
+			Company::Get(v->owner)->freeunits[v->type].UseID(v->unitnumber);
+		}
+
 		v->UpdateDeltaXY();
 		v->coord.left = INVALID_COORD;
 		v->sprite_cache.old_coord.left = INVALID_COORD;
@@ -623,17 +634,7 @@ static Money  _cargo_feeder_share;
 
 class SlVehicleCommon : public DefaultSaveLoadHandler<SlVehicleCommon, Vehicle> {
 public:
-#if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
-	/* This table access private members of other classes; they have this
-	 * class as friend. For MSVC CL 19.15 and 19.16 this doesn't work for
-	 * "inline static const", so we are forced to wrap the table in a
-	 * function. CL 19.16 is the latest for VS2017. */
-	inline static const SaveLoad description[] = {{}};
-	SaveLoadTable GetDescription() const override {
-#else
-	inline
-#endif
-	static const SaveLoad description[] = {
+	inline static const SaveLoad description[] = {
 		    SLE_VAR(Vehicle, subtype,               SLE_UINT8),
 
 		    SLE_REF(Vehicle, next,                  REF_VEHICLE_OLD),
@@ -714,6 +715,7 @@ public:
 
 		SLE_CONDVAR(Vehicle, age,                   SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
 		SLE_CONDVAR(Vehicle, age,                   SLE_INT32,                   SLV_31, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, economy_age,           SLE_INT32,  SLV_VEHICLE_ECONOMY_AGE, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, max_age,               SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
 		SLE_CONDVAR(Vehicle, max_age,               SLE_INT32,                   SLV_31, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, date_of_last_service,  SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
@@ -761,10 +763,7 @@ public:
 		SLE_CONDVAR(Vehicle, depot_unbunching_next_departure, SLE_UINT64,        SLV_DEPOT_UNBUNCHING, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, round_trip_time,       SLE_INT32,                   SLV_DEPOT_UNBUNCHING, SL_MAX_VERSION),
 	};
-#if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
-		return description;
-	}
-#endif
+
 	inline const static SaveLoadCompatTable compat_description = _vehicle_common_sl_compat;
 
 	void Save(Vehicle *v) const override
@@ -970,17 +969,7 @@ public:
 
 class SlVehicleDisaster : public DefaultSaveLoadHandler<SlVehicleDisaster, Vehicle> {
 public:
-#if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
-	/* This table access private members of other classes; they have this
-	 * class as friend. For MSVC CL 19.15 and 19.16 this doesn't work for
-	 * "inline static const", so we are forced to wrap the table in a
-	 * function. CL 19.16 is the latest for VS2017. */
-	inline static const SaveLoad description[] = {{}};
-	SaveLoadTable GetDescription() const override {
-#else
-	inline
-#endif
-	static const SaveLoad description[] = {
+	inline static const SaveLoad description[] = {
 		    SLE_REF(Vehicle, next,                  REF_VEHICLE_OLD),
 
 		    SLE_VAR(Vehicle, subtype,               SLE_UINT8),
@@ -1014,10 +1003,7 @@ public:
 		SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_UINT32,                 SLV_191, SL_MAX_VERSION),
 		SLE_CONDVAR(DisasterVehicle, flags,                     SLE_UINT8,                  SLV_194, SL_MAX_VERSION),
 	};
-#if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
-		return description;
-	}
-#endif
+
 	inline const static SaveLoadCompatTable compat_description = _vehicle_disaster_sl_compat;
 
 	void Save(Vehicle *v) const override

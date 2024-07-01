@@ -188,6 +188,7 @@ STR_COLOUR_GREY                                                 :خاکستری
 STR_COLOUR_WHITE                                                :سفید
 
 ###length 17
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :همانند اصلی
 
 
 # Units used in OpenTTD
@@ -199,6 +200,9 @@ STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}اسب بخار
 STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}کیلووات
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
 
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}{NBSP}تن
 STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}{NBSP}کیلوگرم
@@ -371,6 +375,7 @@ STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :بارگزار�
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :خارج شدن از محیط طراحی
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
+
 
 # Settings menu
 ###length 16
@@ -838,6 +843,14 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}موقع
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}تنظیمات بازی
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :عمومی
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}تنظیمات عمومی خود را انتخاب کنید
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :گرافیک
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}تنظیمات گرافیکی خود را انتخاب کنید
+STR_GAME_OPTIONS_TAB_SOUND                                      :صدا
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}تنظیمات صدا و موسیقی خود را انتخاب کنید
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :اجتماعی
+STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}تنظیمات ادغام اجتماعی خود را انتخاب کنید
 
 
 
@@ -845,7 +858,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}واحد
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}انتخب واحد پول
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :پوند
 STR_GAME_OPTIONS_CURRENCY_USD                                   :دلار
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :یورو
@@ -924,6 +937,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}اطلا
 
 
 
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}ناتوان در گرفتن تنظیمات نمایش
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}حالت تمام صفحه با شکست مواجه شد
 
@@ -934,6 +948,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}نرخ 
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}کم کردن ارزش واحد پول در ازای یک پوند (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}زیاد کردن ارزش واحد پول در ازای یک پوند (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}نرخ ارز واحد پول را در ازای یک پوند تنظیم کنید (£)
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}پیشوند: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}پیشوند واحد پولتان را انتخاب کنید
@@ -1200,6 +1215,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :از همه خ�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :هشدار هنگام منفی بودن درآمد خودرو: {STRING}
 ###length 2
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :وسایل نقلیه هیچگاه از بین نروند: {STRING}
 
 ###length 2
@@ -1237,7 +1253,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(فقط ترا�
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :تراکم مراکز تولید: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :چند کارخانه باید ایجاد شود و در چه درجه ای باید در بازی نگهداری شود
 
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :تمام پالایشگاه ها در لبه های تقشه ساخته می شوند که ساحل جزیره است
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :حداکثر فاصله از لبه برای صنایع نفتی: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :محدودیت برای میزان فاصله ای که نسبت به مرز نقشه سکو های نفتی و پالایشگاه نفت می‌توانند بنا شوند. در نقشه های جزیره ای این اطمینان حاصل میکند که کنار ساحل باشند. در نقشه های بزرگتر از ۲۵۶ کاشی، این مقدار افزایش می یابد
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ارتفاع خط برف: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :ارتفاع خط برف را در مناطق نیمه قطبی کنترل کنید. وجود برف بر ایجاد صنایع و اقلام ضروری رشد شهر تاثیر میگذارد.
@@ -1347,6 +1364,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :همه کاره
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :همه کارها
 
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :اسنفاده گروهی از لیست خودرو: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :فعال سازی استفاده از لیست های وسایل نقلیه پیشرفته برای گروه بندی
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :استفاده از نشانه‌های بارگیری/بارگذاری: {STRING}
 
@@ -1402,6 +1420,8 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :امکان حض
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes before scripts are suspended: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :درصد زمان برای تعمیر/نگهداری به نسبت زمان کار: {STRING}
+
+###length 3
 
 ###setting-zero-is-special
 
@@ -1573,13 +1593,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :توزیع مح
 STR_CONFIG_SETTING_AI                                           :رقیبان
 STR_CONFIG_SETTING_AI_NPC                                       :بازیگران رایانه
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :مسیریاب برای قطارها: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :مسیریاب برای خودروهای جاده ای: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :مسیریاب برای کشتی ها: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :برگشت خودکار با رسیدن به نشانه ها: {STRING}
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(توصیه می گردد)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}تغییر مقدار
 
@@ -1838,12 +1852,13 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}درخو
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}قطع
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}سرویس دهنده محافظت شده است.رمز را وارد نمایید
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}شرکت محافظت شده است.رمز را وارد نمایید
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}لیست سرویس گیرنده ها
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}این شمایید
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}این شخص میزبان بازی است
 
 # Matches ConnectionType
 ###length 5
@@ -1855,19 +1870,9 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}آیا 
 
 STR_NETWORK_SPECTATORS                                          :تماشاگران
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}رمز وارد شده را به خاطر نسپار
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}دادن رمز جدید به شرکت
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}رمز شرکت
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}رمز پیش فرض شرکت
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}استفاده از این رمز شرکت به عنوان پیش فرض برای شرکت های جدید
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}پیوستن
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}پیوستن و بازی به عنوان این شرکت
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}رمز
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}شرکت خود را با رمز محافظت کنید تا هر بازیگری نتواند به شرکت شما بپیوندد
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}ثبت رمز جدید
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}ارسال
@@ -1906,7 +1911,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}شما �
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}اتصال مورد استفاده قطع شد
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}در {NUM} ثانیه گذشته هیچ داده ای از سرویس دهنده دریافت نگردیده
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :خطای اصلی
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :خطای ناهمگام سازی
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :نمی توان نقشه را بارگزاری کرد
@@ -1951,6 +1956,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ب
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} یک شرکت جدید آغاز کرد (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} از بازی بیرون رفت ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} نامش را به {STRING} تغییر داد
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} داد {2:CURRENCY_LONG} به {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}سرویس دهنده جلسه را تعطیل کرد
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}راه اندازی مجدد سرویس دهنده...{}لطفا صبر کنید...
 
@@ -2097,7 +2103,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}جهت �
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}نقطه مسیر
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}نوع نقطه مسیر را انتخاب نمایید
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}انتخاب ایستگاه راه آهن
@@ -2110,8 +2115,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}انتخ
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}بکشید و بیاندازید
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}ساخت ایستگاه با استفاده از کشیدن و انداختن
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}کلاس ایستگاه را برای نمایش انتخاب کنید
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}ایک نوع ایستگاه را برای ساخت انتخاب کنید
+
+
+
 
 STR_STATION_CLASS_DFLT                                          :ایستگاه پیش فرض
 STR_STATION_CLASS_WAYP                                          :نقطه مسیر ها
@@ -2242,8 +2248,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}خرید
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}انتخاب شیء
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}شیء را برای ساخت انتخاب نمایید. گرفتن دکمه شیفت برآورد هزینه ساخت را نمایش می دهد
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}نوع شیء را برای ساخت انتخاب کنید
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}پیش نمای شیء
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}اندازه: {GOLD}{NUM} x {NUM} قطعه
 
@@ -2257,7 +2261,12 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}درخت
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}نشاندن درختان با نوع تصادفی.گرفتن دکمه شیفت برآورد هزینه ساخت را نمایش می دهد
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK} درخت های تصادفی
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK} به شکل تصافی در تمام محل درخت بکار
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK} با کشیدن بر روی زمین به شکل تکی درخت بکار
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}عادی
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK} کاشتن درخت ها بصورت تکی با کشیدن روی منظره
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}بیشه
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}کاشتن جنگل های کوچک با کشیدن روی منظره
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}جنگل
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}کاشتن جنگل های بزرگ با کشیدن روی منظره
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}طراحی اتوماتیک سرزمین
@@ -2327,6 +2336,9 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}نمای
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}نمایش صنایعی که بار را تولید و قبول می کنند
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}پیوند به نقشه کوچک
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}انتخاب صنایع نشان داده شده در نقشه کوچک
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}محموله را انتخاب کنید
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}محموله ای که میخواهید نشان داده شود را انتخاب کنید
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}صنعت موردنظر را انتخاب کنید
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}اطلاعات زمین
@@ -2340,7 +2352,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}مالک
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}مالک ریل راه آهن: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}فرماندار محلی: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :هیچکدام
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}مختصات: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordinates: {LTBLUE}{NUM} x {NUM} x {NUM}
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}ساخته شده در: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}کلاس ایستگاه: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}نوع ایستگاه: {LTBLUE}{STRING}
@@ -2561,9 +2573,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}ساخت دنیا
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}ساخت رودخانه
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}ساختن درخت
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}ساختن اشیاء
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}ساختن مناطق ناهموار و صخره ها
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}ساختن اشیاء
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}ساختن درخت
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}راه اندازی بازی
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}اجرای حلقه قطعه ها
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}کدهای در حال اجرا
@@ -2648,7 +2660,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :نوع ریل
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}متغیر NewGRF 60 + پارامتر (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}جابجا کردن تصویر گرافیک {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}تصویر بعدی
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}نمایش تصویر بعدی، بدون انجام دادن هر گونه تغییرات در آخر
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}رفتن به تصویر
@@ -2671,6 +2682,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}هشدار: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}خطا: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}خطای وخیم: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}The NewGRF "{STRING}" با یک خطای مهلک مواجه شده :{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} با TTDPatch که ویرایش آن توسط OpenTTD گزارش شده کار نمی کند
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} برای ویرایش {STRING}TTD می باشد
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} طراحی شده برای استفاده با {STRING}
@@ -2743,7 +2755,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}برو �
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}برای نشانه یک نام وارد کنید
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}شهرها
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- هیچکدام -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}نام شهرها - کلیک روی نام شهر آن را در وسط صفحه نمایش می دهد. کنترل + کلیک یک نمای اضافه از مکان شهر باز می کند
@@ -2863,6 +2874,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}قبول
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}نشان دادن لیست کالاهای قابل دریافت
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}قبول می کند: {WHITE}{CARGO_LIST}
 
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}این ایستگاه حقوق انحصاری حمل و نقل در این شهر دارد.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} حقوق انحصاری حمل و نقل این شهر را خرید.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}رده بندی
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان دادن رتبه بندی ایستگاه
@@ -2964,7 +2977,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}قطعه
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}فرودگاه ها
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :کارخانه ها
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- هیچ -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
@@ -3279,6 +3291,7 @@ STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}مجمو
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (تعمیر مجدد)
 STR_REFIT_TITLE                                                 :{GOLD}انتخاب محموله قابل حمل:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}ظرفیت جدید : {GOLD}{CARGO_LONG}{}{BLACK} بهای تعمیر مجدد: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}ظرفیت جدید: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}هزینه بازسازی: {RED}{CURRENCY_LONG}
 
 ###length VEHICLE_TYPES
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}انتخاب نوع محموله ای که این کشتی باید حمل کند
@@ -3463,9 +3476,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}در آ�
 
 # Saveload messages
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}درایو خوانده می شود
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}بازی ذخیره نشد{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}فایل حذف نمی شود
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}بازی بارگزاری نشد{}{STRING}
 
 # Map generation messages
 
@@ -3719,6 +3730,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... وس
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}بطور کلی هیچ خودرویی در دسترس نخواهد بود
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}تنظیمات مربوط به NewGRF را تغییر دهید
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}هنوز خودرویی در دسترس نیست
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}در هنگام خطر نمی توان علامت عبور قطار را داد
@@ -4228,6 +4240,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

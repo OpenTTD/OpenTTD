@@ -102,7 +102,7 @@ bool LinkRefresher::HandleRefit(CargoID refit_cargo)
 
 		/* Back up the vehicle's cargo type */
 		CargoID temp_cid = v->cargo_type;
-		byte temp_subtype = v->cargo_subtype;
+		uint8_t temp_subtype = v->cargo_subtype;
 		v->cargo_type = this->cargo;
 		v->cargo_subtype = GetBestFittingSubType(v, v, this->cargo);
 

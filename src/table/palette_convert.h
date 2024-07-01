@@ -8,7 +8,7 @@
 /** @file palette_convert.h Translation tables from one GRF to another GRF. */
 
 /** Converting from the Windows palette to the DOS palette */
-extern const byte _palmap_w2d[] = {
+extern const uint8_t _palmap_w2d[] = {
 	  0,   1,   2,   3,   4,   5,   6,   7, //   0..7
 	  8,   9,  10,  11,  12,  13,  14,  15, //   8..15
 	 16,  17,  18,  19,  20,  21,  22,  23, //  16..23
@@ -44,7 +44,7 @@ extern const byte _palmap_w2d[] = {
 };
 
 /** Converting from the DOS palette to the Windows palette */
-static const byte _palmap_d2w[] = {
+static const uint8_t _palmap_d2w[] = {
 	  0, 215, 216, 136,  88, 106,  32,  33, //   0..7
 	 40, 245,  10,  11,  12,  13,  14,  15, //   8..15
 	 16,  17,  18,  19,  20,  21,  22,  23, //  16..23

@@ -29,7 +29,7 @@ struct SubsidyListWindow : Window {
 	Scrollbar *vscroll;
 	Dimension cargo_icon_size;
 
-	SubsidyListWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
+	SubsidyListWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SUL_SCROLLBAR);
@@ -131,17 +131,17 @@ struct SubsidyListWindow : Window {
 		return 3 + num_awarded + num_not_awarded;
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_SUL_PANEL) return;
 		Dimension d = maxdim(GetStringBoundingBox(STR_SUBSIDIES_OFFERED_TITLE), GetStringBoundingBox(STR_SUBSIDIES_SUBSIDISED_TITLE));
 
-		resize->height = GetCharacterHeight(FS_NORMAL);
+		resize.height = GetCharacterHeight(FS_NORMAL);
 
 		d.height *= 5;
 		d.width += WidgetDimensions::scaled.framerect.Horizontal();
 		d.height += WidgetDimensions::scaled.framerect.Vertical();
-		*size = maxdim(*size, d);
+		size = maxdim(size, d);
 	}
 
 	void DrawCargoIcon(const Rect &r, int y_offset, CargoID cid) const
@@ -235,7 +235,7 @@ struct SubsidyListWindow : Window {
 
 	void OnResize() override
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_SUL_PANEL);
+		this->vscroll->SetCapacityFromWidget(this, WID_SUL_PANEL, WidgetDimensions::scaled.framerect.Vertical());
 	}
 
 	/**
@@ -267,15 +267,15 @@ static constexpr NWidgetPart _nested_subsidies_list_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _subsidies_list_desc(__FILE__, __LINE__,
+static WindowDesc _subsidies_list_desc(
 	WDP_AUTO, "list_subsidies", 500, 127,
 	WC_SUBSIDIES_LIST, WC_NONE,
 	0,
-	std::begin(_nested_subsidies_list_widgets), std::end(_nested_subsidies_list_widgets)
+	_nested_subsidies_list_widgets
 );
 
 
 void ShowSubsidiesList()
 {
-	AllocateWindowDescFront<SubsidyListWindow>(&_subsidies_list_desc, 0);
+	AllocateWindowDescFront<SubsidyListWindow>(_subsidies_list_desc, 0);
 }

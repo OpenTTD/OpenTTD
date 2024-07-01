@@ -35,7 +35,6 @@ struct ScriptConfigItem {
 	int min_value = 0;            ///< The minimal value this configuration setting can have.
 	int max_value = 1;            ///< The maximal value this configuration setting can have.
 	int default_value = 0;        ///< The default value of this configuration setting.
-	int random_deviation = 0;     ///< The maximum random deviation from the default value.
 	int step_size = 1;            ///< The step size in the gui.
 	ScriptConfigFlags flags = SCRIPTCONFIG_NONE; ///< Flags for the configuration setting.
 	LabelMapping labels;          ///< Text labels for the integer values.
@@ -74,7 +73,6 @@ public:
 	 * @param version The version of the Script to load, or -1 of latest.
 	 * @param force_exact_match If true try to find the exact same version
 	 *   as specified. If false any compatible version is ok.
-	 * @param is_random Is the Script chosen randomly?
 	 */
 	void Change(std::optional<const std::string> name, int version = -1, bool force_exact_match = false);
 
@@ -131,11 +129,6 @@ public:
 	 * Reset only editable and visible settings to their default value.
 	 */
 	void ResetEditableSettings(bool yet_to_start);
-
-	/**
-	 * Randomize all settings the Script requested to be randomized.
-	 */
-	void AddRandomDeviation(CompanyID owner);
 
 	/**
 	 * Is this config attached to an Script? In other words, is there a Script

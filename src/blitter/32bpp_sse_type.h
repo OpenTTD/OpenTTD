@@ -10,6 +10,12 @@
 #ifndef BLITTER_32BPP_SSE_TYPE_H
 #define BLITTER_32BPP_SSE_TYPE_H
 
+/* ATTENTION
+ * This file is compiled multiple times with different defines for SSE_VERSION.
+ * Be careful when declaring things with external linkage.
+ * Use internal linkage instead, i.e. "static".
+ */
+
 #ifdef WITH_SSE
 
 #include "32bpp_simple.hpp"
@@ -22,7 +28,7 @@
 #endif
 
 #define META_LENGTH 2 ///< Number of uint32_t inserted before each line of pixels in a sprite.
-#define MARGIN_NORMAL_THRESHOLD (zoom == ZOOM_LVL_OUT_32X ? 8 : 4) ///< Minimum width to use margins with BM_NORMAL.
+#define MARGIN_NORMAL_THRESHOLD (zoom == ZOOM_LVL_OUT_8X ? 8 : 4) ///< Minimum width to use margins with BM_NORMAL.
 #define MARGIN_REMAP_THRESHOLD 4 ///< Minimum width to use margins with BM_COLOUR_REMAP.
 
 #undef ALIGN

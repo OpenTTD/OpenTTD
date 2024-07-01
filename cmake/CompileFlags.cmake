@@ -74,12 +74,6 @@ macro(compile_flags)
 
             # We use 'ABCD' multichar for SaveLoad chunks identifiers
             -Wno-multichar
-
-            # Compilers complains about that we break strict-aliasing.
-            #  On most places we don't see how to fix it, and it doesn't
-            #  break anything. So disable strict-aliasing to make the
-            #  compiler all happy.
-            -fno-strict-aliasing
         )
 
         # Ninja processes the output so the output from the compiler

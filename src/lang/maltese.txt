@@ -272,6 +272,7 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni ind
 ###length 7
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 
+
 # Settings menu
 ###length 16
 
@@ -398,7 +399,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 
 
-###length 43
+###length 44
 
 
 # Autosave dropdown
@@ -426,7 +427,9 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
+
 # Custom currency window
+
 
 
 
@@ -557,6 +560,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avza jekk jinti
 ###length 2
 
 
+
 ###length 2
 
 
@@ -664,6 +668,8 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 
 
 
+###length 3
+
 ###setting-zero-is-special
 
 
@@ -738,7 +744,6 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 ###length 3
 
 
-###length 2
 
 
 # Config errors
@@ -810,8 +815,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 
 
-# Network set password
-
 # Network company info join/password
 
 # Network chat
@@ -820,7 +823,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 # Network messages
 
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :reviżjoni ħażina
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :isem diġa qed jintuża
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażin
@@ -872,6 +875,9 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 
 
 
+
+
+
 # Signal window
 
 # Bridge selection window
@@ -900,7 +906,6 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 # Landscaping toolbar
 
 # Object construction window
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Aghzel il-klassi tal-oggett li se tibni
 
 
 # Tree planting window (last eight for SE only)
@@ -1467,6 +1472,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Hemm wis
 
 
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ma tistax tbiddel id-direzzjoni tal-ferrovija...
 
@@ -1745,6 +1751,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

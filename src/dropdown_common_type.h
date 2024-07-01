@@ -5,54 +5,25 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file dropdown_type.h Types related to the drop down widget. */
+/** @file dropdown_common_type.h Common drop down list components. */
 
-#ifndef WIDGETS_DROPDOWN_TYPE_H
-#define WIDGETS_DROPDOWN_TYPE_H
+#ifndef DROPDOWN_COMMON_TYPE_H
+#define DROPDOWN_COMMON_TYPE_H
 
-#include "../window_type.h"
-#include "../gfx_func.h"
-#include "../gfx_type.h"
-#include "../palette_func.h"
-#include "../string_func.h"
-#include "../strings_func.h"
-#include "../table/strings.h"
-#include "../window_gui.h"
-
-/**
- * Base list item class from which others are derived.
- */
-class DropDownListItem {
-public:
-	int result; ///< Result value to return to window on selection.
-	bool masked; ///< Masked and unselectable item.
-	bool shaded; ///< Shaded item, affects text colour.
-
-	explicit DropDownListItem(int result, bool masked = false, bool shaded = false) : result(result), masked(masked), shaded(shaded) {}
-	virtual ~DropDownListItem() = default;
-
-	virtual bool Selectable() const { return true; }
-	virtual uint Height() const { return 0; }
-	virtual uint Width() const { return 0; }
-
-	virtual void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const
-	{
-		if (this->masked) GfxFillRect(full, _colour_gradient[bg_colour][5], FILLRECT_CHECKER);
-	}
-
-	TextColour GetColour(bool sel) const
-	{
-		if (this->shaded) return (sel ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
-		return sel ? TC_WHITE : TC_BLACK;
-	}
-};
+#include "gfx_func.h"
+#include "gfx_type.h"
+#include "palette_func.h"
+#include "string_func.h"
+#include "strings_func.h"
+#include "table/strings.h"
+#include "window_gui.h"
 
 /**
  * Drop down divider component.
  * @tparam TBase Base component.
  * @tparam TFs Font size -- used to determine height.
  */
-template<class TBase, FontSize TFs = FS_NORMAL>
+template <class TBase, FontSize TFs = FS_NORMAL>
 class DropDownDivider : public TBase {
 public:
 	template <typename... Args>
@@ -63,8 +34,8 @@ public:
 
 	void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const override
 	{
-		uint8_t c1 = _colour_gradient[bg_colour][3];
-		uint8_t c2 = _colour_gradient[bg_colour][7];
+		uint8_t c1 = GetColourGradient(bg_colour, SHADE_DARK);
+		uint8_t c2 = GetColourGradient(bg_colour, SHADE_LIGHTEST);
 
 		int mid = CenterBounds(full.top, full.bottom, 0);
 		GfxFillRect(full.left, mid - WidgetDimensions::scaled.bevel.bottom, full.right, mid - 1, c1);
@@ -78,7 +49,7 @@ public:
  * @tparam TFs Font size.
  * @tparam TEnd Position string at end if true, or start if false.
  */
-template<class TBase, FontSize TFs = FS_NORMAL, bool TEnd = false>
+template <class TBase, FontSize TFs = FS_NORMAL, bool TEnd = false>
 class DropDownString : public TBase {
 	std::string string; ///< String to be drawn.
 	Dimension dim; ///< Dimensions of string.
@@ -136,7 +107,7 @@ public:
  * @tparam TBase Base component.
  * @tparam TEnd Position icon at end if true, or start if false.
  */
-template<class TBase, bool TEnd = false>
+template <class TBase, bool TEnd = false>
 class DropDownIcon : public TBase {
 	SpriteID sprite; ///< Sprite ID to be drawn.
 	PaletteID palette; ///< Palette ID to use.
@@ -174,7 +145,7 @@ public:
  * @tparam TFs Font size.
  * @tparam TEnd Position checkmark at end if true, or start if false.
  */
-template<class TBase, bool TEnd = false, FontSize TFs = FS_NORMAL>
+template <class TBase, bool TEnd = false, FontSize TFs = FS_NORMAL>
 class DropDownCheck : public TBase {
 	bool checked; ///< Is item checked.
 	Dimension dim; ///< Dimension of checkmark.
@@ -204,17 +175,4 @@ using DropDownListStringItem = DropDownString<DropDownListItem>;
 using DropDownListIconItem = DropDownIcon<DropDownString<DropDownListItem>>;
 using DropDownListCheckedItem = DropDownCheck<DropDownString<DropDownListItem>>;
 
-/**
- * A drop down list is a collection of drop down list items.
- */
-typedef std::vector<std::unique_ptr<const DropDownListItem>> DropDownList;
-
-void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, bool instant_close = false, bool persist = false);
-
-void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width = 0, bool instant_close = false, bool persist = false);
-
-Dimension GetDropDownListDimension(const DropDownList &list);
-
-void ReplaceDropDownList(Window *parent, DropDownList &&list);
-
-#endif /* WIDGETS_DROPDOWN_TYPE_H */
+#endif /* DROPDOWN_COMMON_TYPE_H */

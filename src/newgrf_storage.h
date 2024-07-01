@@ -32,7 +32,7 @@ enum PersistentStorageMode {
  */
 struct BasePersistentStorageArray {
 	uint32_t grfid;    ///< GRFID associated to this persistent storage. A value of zero means "default".
-	byte feature;    ///< NOSAVE: Used to identify in the owner of the array in debug output.
+	uint8_t feature;    ///< NOSAVE: Used to identify in the owner of the array in debug output.
 	TileIndex tile;  ///< NOSAVE: Used to identify in the owner of the array in debug output.
 
 	virtual ~BasePersistentStorageArray();
@@ -136,7 +136,7 @@ struct TemporaryStorageArray {
 
 	StorageType storage{}; ///< Memory for the storage array
 	StorageInitType init{}; ///< Storage has been assigned, if this equals 'init_key'.
-	uint16_t init_key{1}; ///< Magic key to 'init'.
+	uint16_t init_key = 1; ///< Magic key to 'init'.
 
 	/**
 	 * Stores some value at a given position.
@@ -198,7 +198,7 @@ extern PersistentStoragePool _persistent_storage_pool;
  */
 struct PersistentStorage : PersistentStorageArray<int32_t, 256>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
-	PersistentStorage(const uint32_t new_grfid, byte feature, TileIndex tile)
+	PersistentStorage(const uint32_t new_grfid, uint8_t feature, TileIndex tile)
 	{
 		this->grfid = new_grfid;
 		this->feature = feature;
@@ -206,6 +206,6 @@ struct PersistentStorage : PersistentStorageArray<int32_t, 256>, PersistentStora
 	}
 };
 
-static_assert(cpp_lengthof(OldPersistentStorage, storage) <= cpp_lengthof(PersistentStorage, storage));
+static_assert(std::tuple_size_v<decltype(OldPersistentStorage::storage)> <= std::tuple_size_v<decltype(PersistentStorage::storage)>);
 
 #endif /* NEWGRF_STORAGE_H */

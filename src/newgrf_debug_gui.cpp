@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "core/backup_type.hpp"
+#include "core/geometry_func.hpp"
 #include "window_gui.h"
 #include "window_func.h"
 #include "random_access_file_type.h"
@@ -28,6 +29,7 @@
 #include "train.h"
 #include "roadveh.h"
 
+#include "newgrf_act5.h"
 #include "newgrf_airport.h"
 #include "newgrf_airporttiles.h"
 #include "newgrf_debug.h"
@@ -86,9 +88,9 @@ typedef const void *NIOffsetProc(const void *b);
 struct NIProperty {
 	const char *name;          ///< A (human readable) name for the property
 	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
-	byte read_size;            ///< Number of bytes (i.e. byte, word, dword etc)
-	byte prop;                 ///< The number of the property
-	byte type;
+	uint8_t read_size;            ///< Number of bytes (i.e. byte, word, dword etc)
+	uint8_t prop;                 ///< The number of the property
+	uint8_t type;
 };
 
 
@@ -99,8 +101,8 @@ struct NIProperty {
 struct NICallback {
 	const char *name;          ///< The human readable name of the callback
 	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
-	byte read_size;            ///< The number of bytes (i.e. byte, word, dword etc) to read
-	byte cb_bit;               ///< The bit that needs to be set for this callback to be enabled
+	uint8_t read_size;            ///< The number of bytes (i.e. byte, word, dword etc) to read
+	uint8_t cb_bit;               ///< The bit that needs to be set for this callback to be enabled
 	uint16_t cb_id;              ///< The number of the callback
 };
 /** Mask to show no bit needs to be enabled for the callback. */
@@ -109,7 +111,7 @@ static const int CBM_NO_BIT = UINT8_MAX;
 /** Representation on the NewGRF variables. */
 struct NIVariable {
 	const char *name;
-	byte var;
+	uint8_t var;
 };
 
 /** Helper class to wrap some functionality/queries in. */
@@ -167,7 +169,7 @@ public:
 	 * @param avail Return whether the variable is available.
 	 * @return The resolved variable's value.
 	 */
-	virtual uint Resolve(uint index, uint var, uint param, bool *avail) const = 0;
+	virtual uint Resolve(uint index, uint var, uint param, bool &avail) const = 0;
 
 	/**
 	 * Used to decide if the PSA needs a parameter or not.
@@ -179,25 +181,14 @@ public:
 	}
 
 	/**
-	 * Allows to know the size of the persistent storage.
+	 * Gets the span containing the persistent storage.
 	 * @param index Index of the item.
 	 * @param grfid Parameter for the PSA. Only required for items with parameters.
-	 * @return Size of the persistent storage in indices.
+	 * @return Span of the storage array or an empty span when not present.
 	 */
-	virtual uint GetPSASize([[maybe_unused]] uint index, [[maybe_unused]] uint32_t grfid) const
+	virtual const std::span<int32_t> GetPSA([[maybe_unused]] uint index, [[maybe_unused]] uint32_t grfid) const
 	{
-		return 0;
-	}
-
-	/**
-	 * Gets the first position of the array containing the persistent storage.
-	 * @param index Index of the item.
-	 * @param grfid Parameter for the PSA. Only required for items with parameters.
-	 * @return Pointer to the first position of the storage array or nullptr if not present.
-	 */
-	virtual const int32_t *GetPSAFirstPosition([[maybe_unused]] uint index, [[maybe_unused]] uint32_t grfid) const
-	{
-		return nullptr;
+		return {};
 	}
 
 protected:
@@ -284,7 +275,7 @@ struct NewGRFInspectWindow : Window {
 	uint chain_index;
 
 	/** The currently edited parameter, to update the right one. */
-	byte current_edit_param;
+	uint8_t current_edit_param;
 
 	Scrollbar *vscroll;
 
@@ -347,7 +338,7 @@ struct NewGRFInspectWindow : Window {
 		if (v == nullptr) this->chain_index = 0;
 	}
 
-	NewGRFInspectWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
+	NewGRFInspectWindow(WindowDesc &desc, WindowNumber wno) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NGRFI_SCROLLBAR);
@@ -366,21 +357,21 @@ struct NewGRFInspectWindow : Window {
 		GetFeatureHelper(this->window_number)->SetStringParameters(this->GetFeatureIndex());
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_NGRFI_VEH_CHAIN: {
 				assert(this->HasChainIndex());
 				GrfSpecFeature f = GetFeatureNum(this->window_number);
-				size->height = std::max(size->height, GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height + 2 + WidgetDimensions::scaled.bevel.Vertical());
+				size.height = std::max(size.height, GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height + 2 + WidgetDimensions::scaled.bevel.Vertical());
 				break;
 			}
 
 			case WID_NGRFI_MAINPANEL:
-				resize->height = std::max(11, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal);
-				resize->width  = 1;
+				resize.height = std::max(11, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal);
+				resize.width  = 1;
 
-				size->height = 5 * resize->height + WidgetDimensions::scaled.frametext.Vertical();
+				size.height = 5 * resize.height + WidgetDimensions::scaled.frametext.Vertical();
 				break;
 		}
 	}
@@ -458,7 +449,7 @@ struct NewGRFInspectWindow : Window {
 			for (const NIVariable *niv = nif->variables; niv->name != nullptr; niv++) {
 				bool avail = true;
 				uint param = HasVariableParameter(niv->var) ? NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][niv->var - 0x60] : 0;
-				uint value = nih->Resolve(index, niv->var, param, &avail);
+				uint value = nih->Resolve(index, niv->var, param, avail);
 
 				if (!avail) continue;
 
@@ -470,17 +461,16 @@ struct NewGRFInspectWindow : Window {
 			}
 		}
 
-		uint psa_size = nih->GetPSASize(index, this->caller_grfid);
-		const int32_t *psa = nih->GetPSAFirstPosition(index, this->caller_grfid);
-		if (psa_size != 0 && psa != nullptr) {
+		auto psa = nih->GetPSA(index, this->caller_grfid);
+		if (!psa.empty()) {
 			if (nih->PSAWithParameter()) {
 				this->DrawString(r, i++, fmt::format("Persistent storage [{:08X}]:", BSWAP32(this->caller_grfid)));
 			} else {
 				this->DrawString(r, i++, "Persistent storage:");
 			}
-			assert(psa_size % 4 == 0);
-			for (uint j = 0; j < psa_size; j += 4, psa += 4) {
-				this->DrawString(r, i++, fmt::format("  {}: {} {} {} {}", j, psa[0], psa[1], psa[2], psa[3]));
+			assert(psa.size() % 4 == 0);
+			for (size_t j = 0; j < psa.size(); j += 4) {
+				this->DrawString(r, i++, fmt::format("  {}: {} {} {} {}", j, psa[j], psa[j + 1], psa[j + 2], psa[j + 3]));
 			}
 		}
 
@@ -589,8 +579,8 @@ struct NewGRFInspectWindow : Window {
 				if (nif->variables == nullptr) return;
 
 				/* Get the line, make sure it's within the boundaries. */
-				int line = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NGRFI_MAINPANEL, WidgetDimensions::scaled.frametext.top);
-				if (line == INT_MAX) return;
+				int32_t line = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NGRFI_MAINPANEL, WidgetDimensions::scaled.frametext.top);
+				if (line == INT32_MAX) return;
 
 				/* Find the variable related to the line */
 				for (const NIVariable *niv = nif->variables; niv->name != nullptr; niv++, line--) {
@@ -605,11 +595,11 @@ struct NewGRFInspectWindow : Window {
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (StrEmpty(str)) return;
+		if (!str.has_value() || str->empty()) return;
 
-		NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][this->current_edit_param - 0x60] = std::strtol(str, nullptr, 16);
+		NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][this->current_edit_param - 0x60] = std::strtol(str->c_str(), nullptr, 16);
 		this->SetDirty();
 	}
 
@@ -679,18 +669,18 @@ static constexpr NWidgetPart _nested_newgrf_inspect_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _newgrf_inspect_chain_desc(__FILE__, __LINE__,
+static WindowDesc _newgrf_inspect_chain_desc(
 	WDP_AUTO, "newgrf_inspect_chain", 400, 300,
 	WC_NEWGRF_INSPECT, WC_NONE,
 	0,
-	std::begin(_nested_newgrf_inspect_chain_widgets), std::end(_nested_newgrf_inspect_chain_widgets)
+	_nested_newgrf_inspect_chain_widgets
 );
 
-static WindowDesc _newgrf_inspect_desc(__FILE__, __LINE__,
+static WindowDesc _newgrf_inspect_desc(
 	WDP_AUTO, "newgrf_inspect", 400, 300,
 	WC_NEWGRF_INSPECT, WC_NONE,
 	0,
-	std::begin(_nested_newgrf_inspect_widgets), std::end(_nested_newgrf_inspect_widgets)
+	_nested_newgrf_inspect_widgets
 );
 
 /**
@@ -707,7 +697,7 @@ void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index, const uint32_t 
 	if (!IsNewGRFInspectable(feature, index)) return;
 
 	WindowNumber wno = GetInspectWindowNumber(feature, index);
-	WindowDesc *desc = (feature == GSF_TRAINS || feature == GSF_ROADVEHICLES) ? &_newgrf_inspect_chain_desc : &_newgrf_inspect_desc;
+	WindowDesc &desc = (feature == GSF_TRAINS || feature == GSF_ROADVEHICLES) ? _newgrf_inspect_chain_desc : _newgrf_inspect_desc;
 	NewGRFInspectWindow *w = AllocateWindowDescFront<NewGRFInspectWindow>(desc, wno, true);
 	w->SetCallerGRFID(grfid);
 }
@@ -808,7 +798,6 @@ GrfSpecFeature GetGrfSpecFeature(VehicleType type)
 }
 
 
-
 /**** Sprite Aligner ****/
 
 /** Window used for aligning sprites. */
@@ -822,12 +811,17 @@ struct SpriteAlignerWindow : Window {
 	static inline ZoomLevel zoom = ZOOM_LVL_END;
 	static bool centre;
 	static bool crosshair;
+	const Action5Type *act5_type = nullptr; ///< Sprite Area of current selected sprite.
 
-	SpriteAlignerWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
+	SpriteAlignerWindow(WindowDesc &desc, WindowNumber wno) : Window(desc)
 	{
 		/* On first opening, set initial zoom to current zoom level. */
 		if (SpriteAlignerWindow::zoom == ZOOM_LVL_END) SpriteAlignerWindow::zoom = _gui_zoom;
 		SpriteAlignerWindow::zoom = Clamp(SpriteAlignerWindow::zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
+
+		/* Oh yes, we assume there is at least one normal sprite! */
+		while (GetSpriteType(this->current_sprite) != SpriteType::Normal) this->current_sprite++;
+		this->SelectAction5Type();
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SA_SCROLLBAR);
@@ -837,9 +831,6 @@ struct SpriteAlignerWindow : Window {
 		this->SetWidgetLoweredState(WID_SA_CENTRE, SpriteAlignerWindow::centre);
 		this->SetWidgetLoweredState(WID_SA_CROSSHAIR, SpriteAlignerWindow::crosshair);
 
-		/* Oh yes, we assume there is at least one normal sprite! */
-		while (GetSpriteType(this->current_sprite) != SpriteType::Normal) this->current_sprite++;
-
 		this->InvalidateData(0, true);
 	}
 
@@ -848,8 +839,22 @@ struct SpriteAlignerWindow : Window {
 		const Sprite *spr = GetSprite(this->current_sprite, SpriteType::Normal);
 		switch (widget) {
 			case WID_SA_CAPTION:
-				SetDParam(0, this->current_sprite);
-				SetDParamStr(1, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
+				if (this->act5_type != nullptr) {
+					SetDParam(0, STR_SPRITE_ALIGNER_CAPTION_ACTION5);
+					SetDParam(1, this->act5_type - GetAction5Types().data());
+					SetDParam(2, this->current_sprite - this->act5_type->sprite_base);
+					SetDParamStr(3, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
+					SetDParam(4, GetSpriteLocalID(this->current_sprite));
+				} else if (this->current_sprite < SPR_OPENTTD_BASE) {
+					SetDParam(0, STR_SPRITE_ALIGNER_CAPTION_ACTIONA);
+					SetDParam(1, this->current_sprite);
+					SetDParamStr(2, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
+					SetDParam(3, GetSpriteLocalID(this->current_sprite));
+				} else {
+					SetDParam(0, STR_SPRITE_ALIGNER_CAPTION_NO_ACTION);
+					SetDParamStr(1, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
+					SetDParam(2, GetSpriteLocalID(this->current_sprite));
+				}
 				break;
 
 			case WID_SA_OFFSETS_ABS:
@@ -877,19 +882,27 @@ struct SpriteAlignerWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_SA_SPRITE:
-				size->height = ScaleGUITrad(200);
+				size.height = ScaleGUITrad(200);
 				break;
-			case WID_SA_LIST:
-				SetDParamMaxDigits(0, 6);
-				size->width = GetStringBoundingBox(STR_JUST_COMMA).width + padding.width;
-				resize->height = GetCharacterHeight(FS_NORMAL) + padding.height;
-				resize->width  = 1;
-				fill->height = resize->height;
+
+			case WID_SA_LIST: {
+				Dimension d = {};
+				for (const auto &spritefile : GetCachedSpriteFiles()) {
+					SetDParamStr(0, spritefile->GetSimplifiedFilename());
+					SetDParamMaxDigits(1, 6);
+					d = maxdim(d, GetStringBoundingBox(STR_SPRITE_ALIGNER_SPRITE));
+				}
+				size.width = d.width + padding.width;
+				resize.height = GetCharacterHeight(FS_NORMAL) + padding.height;
+				resize.width = 1;
+				fill.height = resize.height;
 				break;
+			}
+
 			default:
 				break;
 		}
@@ -930,16 +943,26 @@ struct SpriteAlignerWindow : Window {
 			}
 
 			case WID_SA_LIST: {
+				/* Don't redraw sprite list while it is still being filled by picker. */
+				if (_newgrf_debug_sprite_picker.mode == SPM_REDRAW) break;
+
 				const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
 				int step_size = nwid->resize_y;
 
-				std::vector<SpriteID> &list = _newgrf_debug_sprite_picker.sprites;
-				int max = std::min<int>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), (uint)list.size());
+				const std::vector<SpriteID> &list = _newgrf_debug_sprite_picker.sprites;
 
 				Rect ir = r.Shrink(WidgetDimensions::scaled.matrix);
-				for (int i = this->vscroll->GetPosition(); i < max; i++) {
-					SetDParam(0, list[i]);
-					DrawString(ir, STR_JUST_COMMA, list[i] == this->current_sprite ? TC_WHITE : TC_BLACK, SA_RIGHT | SA_FORCE);
+				auto [first, last] = this->vscroll->GetVisibleRangeIterators(list);
+				for (auto it = first; it != last; ++it) {
+					const SpriteFile *file = GetOriginFile(*it);
+					if (file == nullptr) {
+						SetDParam(0, *it);
+						DrawString(ir, STR_JUST_COMMA, *it == this->current_sprite ? TC_WHITE : (TC_GREY | TC_NO_SHADE), SA_RIGHT | SA_FORCE);
+					} else {
+						SetDParamStr(0, file->GetSimplifiedFilename());
+						SetDParam(1, GetSpriteLocalID(*it));
+						DrawString(ir, STR_SPRITE_ALIGNER_SPRITE, *it == this->current_sprite ? TC_WHITE : TC_BLACK);
+					}
 					ir.top += step_size;
 				}
 				break;
@@ -954,6 +977,7 @@ struct SpriteAlignerWindow : Window {
 				do {
 					this->current_sprite = (this->current_sprite == 0 ? GetMaxSpriteID() :  this->current_sprite) - 1;
 				} while (GetSpriteType(this->current_sprite) != SpriteType::Normal);
+				this->SelectAction5Type();
 				this->SetDirty();
 				break;
 
@@ -965,6 +989,7 @@ struct SpriteAlignerWindow : Window {
 				do {
 					this->current_sprite = (this->current_sprite + 1) % GetMaxSpriteID();
 				} while (GetSpriteType(this->current_sprite) != SpriteType::Normal);
+				this->SelectAction5Type();
 				this->SetDirty();
 				break;
 
@@ -980,6 +1005,7 @@ struct SpriteAlignerWindow : Window {
 					SpriteID spr = *it;
 					if (GetSpriteType(spr) == SpriteType::Normal) this->current_sprite = spr;
 				}
+				this->SelectAction5Type();
 				this->SetDirty();
 				break;
 			}
@@ -1048,15 +1074,16 @@ struct SpriteAlignerWindow : Window {
 		}
 	}
 
-	void OnQueryTextFinished(char *str) override
+	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (StrEmpty(str)) return;
+		if (!str.has_value() || str->empty()) return;
 
-		this->current_sprite = atoi(str);
+		this->current_sprite = atoi(str->c_str());
 		if (this->current_sprite >= GetMaxSpriteID()) this->current_sprite = 0;
 		while (GetSpriteType(this->current_sprite) != SpriteType::Normal) {
 			this->current_sprite = (this->current_sprite + 1) % GetMaxSpriteID();
 		}
+		this->SelectAction5Type();
 		this->SetDirty();
 	}
 
@@ -1075,7 +1102,7 @@ struct SpriteAlignerWindow : Window {
 		}
 
 		SpriteAlignerWindow::zoom = Clamp(SpriteAlignerWindow::zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
-		for (ZoomLevel z = ZOOM_LVL_NORMAL; z < ZOOM_LVL_END; z++) {
+		for (ZoomLevel z = ZOOM_LVL_BEGIN; z < ZOOM_LVL_END; z++) {
 			this->SetWidgetsDisabledState(z < _settings_client.gui.zoom_min || z > _settings_client.gui.zoom_max, WID_SA_ZOOM + z);
 			this->SetWidgetsLoweredState(SpriteAlignerWindow::zoom == z, WID_SA_ZOOM + z);
 		}
@@ -1085,6 +1112,19 @@ struct SpriteAlignerWindow : Window {
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_SA_LIST);
 	}
+
+private:
+	void SelectAction5Type()
+	{
+		const auto act5types = GetAction5Types();
+		for (auto it = std::begin(act5types); it != std::end(act5types); ++it) {
+			if (it->sprite_base <= this->current_sprite && this->current_sprite < it->sprite_base + it->max_sprites) {
+				this->act5_type = &*it;
+				return;
+			}
+		}
+		this->act5_type = nullptr;
+	}
 };
 
 bool SpriteAlignerWindow::centre = true;
@@ -1093,7 +1133,7 @@ bool SpriteAlignerWindow::crosshair = true;
 static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SA_CAPTION), SetDataTip(STR_SPRITE_ALIGNER_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SA_CAPTION), SetDataTip(STR_JUST_STRING4, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
@@ -1144,12 +1184,12 @@ static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SA_SCROLLBAR),
 				EndContainer(),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_NORMAL), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN, STR_NULL), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_2X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X, STR_NULL), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_4X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL, STR_NULL), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_8X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X, STR_NULL), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_16X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X, STR_NULL), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_32X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X, STR_NULL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_IN_4X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN, STR_NULL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_IN_2X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X, STR_NULL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_NORMAL), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL, STR_NULL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_2X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X, STR_NULL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_4X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X, STR_NULL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_8X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X, STR_NULL), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
@@ -1160,11 +1200,11 @@ static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _sprite_aligner_desc(__FILE__, __LINE__,
+static WindowDesc _sprite_aligner_desc(
 	WDP_AUTO, "sprite_aligner", 400, 300,
 	WC_SPRITE_ALIGNER, WC_NONE,
 	0,
-	std::begin(_nested_sprite_aligner_widgets), std::end(_nested_sprite_aligner_widgets)
+	_nested_sprite_aligner_widgets
 );
 
 /**
@@ -1172,5 +1212,5 @@ static WindowDesc _sprite_aligner_desc(__FILE__, __LINE__,
  */
 void ShowSpriteAlignerWindow()
 {
-	AllocateWindowDescFront<SpriteAlignerWindow>(&_sprite_aligner_desc, 0);
+	AllocateWindowDescFront<SpriteAlignerWindow>(_sprite_aligner_desc, 0);
 }

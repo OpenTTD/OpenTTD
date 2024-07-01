@@ -33,7 +33,7 @@ struct EndGameHighScoreBaseWindow : Window {
 	uint32_t background_img;
 	int8_t rank;
 
-	EndGameHighScoreBaseWindow(WindowDesc *desc) : Window(desc)
+	EndGameHighScoreBaseWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->InitNested();
 		CLRBITS(this->flags, WF_WHITE_BORDER);
@@ -96,7 +96,7 @@ struct EndGameHighScoreBaseWindow : Window {
 
 /** End game window shown at the end of the game */
 struct EndGameWindow : EndGameHighScoreBaseWindow {
-	EndGameWindow(WindowDesc *desc) : EndGameHighScoreBaseWindow(desc)
+	EndGameWindow(WindowDesc &desc) : EndGameHighScoreBaseWindow(desc)
 	{
 		/* Pause in single-player to have a look at the highscore at your own leisure */
 		if (!_networking) Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, true);
@@ -158,7 +158,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 struct HighScoreWindow : EndGameHighScoreBaseWindow {
 	bool game_paused_by_player; ///< True if the game was paused by the player when the highscore window was opened.
 
-	HighScoreWindow(WindowDesc *desc, int difficulty, int8_t ranking) : EndGameHighScoreBaseWindow(desc)
+	HighScoreWindow(WindowDesc &desc, int difficulty, int8_t ranking) : EndGameHighScoreBaseWindow(desc)
 	{
 		/* pause game to show the chart */
 		this->game_paused_by_player = _pause_mode == PM_PAUSED_NORMAL;
@@ -214,18 +214,18 @@ static constexpr NWidgetPart _nested_highscore_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
 };
 
-static WindowDesc _highscore_desc(__FILE__, __LINE__,
+static WindowDesc _highscore_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_HIGHSCORE, WC_NONE,
 	0,
-	std::begin(_nested_highscore_widgets), std::end(_nested_highscore_widgets)
+	_nested_highscore_widgets
 );
 
-static WindowDesc _endgame_desc(__FILE__, __LINE__,
+static WindowDesc _endgame_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_ENDSCREEN, WC_NONE,
 	0,
-	std::begin(_nested_highscore_widgets), std::end(_nested_highscore_widgets)
+	_nested_highscore_widgets
 );
 
 /**
@@ -236,7 +236,7 @@ static WindowDesc _endgame_desc(__FILE__, __LINE__,
 void ShowHighscoreTable(int difficulty, int8_t ranking)
 {
 	CloseWindowByClass(WC_HIGHSCORE);
-	new HighScoreWindow(&_highscore_desc, difficulty, ranking);
+	new HighScoreWindow(_highscore_desc, difficulty, ranking);
 }
 
 /**
@@ -250,7 +250,7 @@ void ShowEndGameChart()
 
 	HideVitalWindows();
 	CloseWindowByClass(WC_ENDSCREEN);
-	new EndGameWindow(&_endgame_desc);
+	new EndGameWindow(_endgame_desc);
 }
 
 static IntervalTimer<TimerGameCalendar> _check_end_game({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)

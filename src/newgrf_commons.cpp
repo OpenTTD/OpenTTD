@@ -165,7 +165,11 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 		return;
 	}
 
-	*HouseSpec::Get(house_id) = *hs;
+	auto &house_specs = HouseSpec::Specs();
+
+	/* Now that we know we can use the given id, copy the spec to its final destination. */
+	if (house_id >= house_specs.size()) house_specs.resize(house_id + 1);
+	house_specs[house_id] = *hs;
 
 	/* Now add the overrides. */
 	for (int i = 0; i < this->max_offset; i++) {
@@ -403,7 +407,7 @@ uint32_t GetTerrainType(TileIndex tile, TileContext context)
  * @param axis Axis of a railways station.
  * @return The tile at the offset.
  */
-TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets, Axis axis)
+TileIndex GetNearbyTile(uint8_t parameter, TileIndex tile, bool signed_offsets, Axis axis)
 {
 	int8_t x = GB(parameter, 0, 4);
 	int8_t y = GB(parameter, 4, 4);
@@ -433,10 +437,12 @@ uint32_t GetNearbyTileInformation(TileIndex tile, bool grf_version8)
 	/* Fake tile type for trees on shore */
 	if (IsTileType(tile, MP_TREES) && GetTreeGround(tile) == TREE_GROUND_SHORE) tile_type = MP_WATER;
 
-	int z;
-	Slope tileh = GetTilePixelSlope(tile, &z);
+	/* Fake tile type for road waypoints */
+	if (IsRoadWaypointTile(tile)) tile_type = MP_ROAD;
+
+	auto [tileh, z] = GetTilePixelSlope(tile);
 	/* Return 0 if the tile is a land tile */
-	byte terrain_type = (HasTileWaterClass(tile) ? (GetWaterClass(tile) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
+	uint8_t terrain_type = (HasTileWaterClass(tile) ? (GetWaterClass(tile) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
 	if (grf_version8) z /= TILE_HEIGHT;
 	return tile_type << 24 | ClampTo<uint8_t>(z) << 16 | terrain_type << 8 | tileh;
 }

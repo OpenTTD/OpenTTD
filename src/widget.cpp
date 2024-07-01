@@ -29,7 +29,7 @@ WidgetDimensions WidgetDimensions::scaled = {};
 
 /**
  * Scale a RectPadding to GUI zoom level.
- * @param r RectPadding at ZOOM_LVL_BASE (traditional "normal" interface size).
+ * @param r RectPadding at ZOOM_BASE (traditional "normal" interface size).
  * @return RectPadding at #ZOOM_LVL_GUI (current interface size).
  */
 static inline RectPadding ScaleGUITrad(const RectPadding &r)
@@ -39,7 +39,7 @@ static inline RectPadding ScaleGUITrad(const RectPadding &r)
 
 /**
  * Scale a Dimension to GUI zoom level.
- * @param d Dimension at ZOOM_LVL_BASE (traditional "normal" interface size).
+ * @param d Dimension at ZOOM_BASE (traditional "normal" interface size).
  * @return Dimension at #ZOOM_LVL_GUI (current interface size).
  */
 static inline Dimension ScaleGUITrad(const Dimension &dim)
@@ -54,7 +54,7 @@ static inline Dimension ScaleGUITrad(const Dimension &dim)
 Dimension GetScaledSpriteSize(SpriteID sprid)
 {
 	Point offset;
-	Dimension d = GetSpriteSize(sprid, &offset, ZOOM_LVL_OUT_4X);
+	Dimension d = GetSpriteSize(sprid, &offset, ZOOM_LVL_NORMAL);
 	d.width  -= offset.x;
 	d.height -= offset.y;
 	return ScaleGUITrad(d);
@@ -275,17 +275,17 @@ WidgetID GetWidgetFromPos(const Window *w, int x, int y)
  * @param top    Top edge of the frame
  * @param right  Right edge of the frame
  * @param bottom Bottom edge of the frame
- * @param colour Colour table to use. @see _colour_gradient
+ * @param colour Colour table to use. @see Colours
  * @param flags  Flags controlling how to draw the frame. @see FrameFlags
  */
 void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags)
 {
 	assert(colour < COLOUR_END);
 
-	uint dark         = _colour_gradient[colour][3];
-	uint medium_dark  = _colour_gradient[colour][5];
-	uint medium_light = _colour_gradient[colour][6];
-	uint light        = _colour_gradient[colour][7];
+	uint dark         = GetColourGradient(colour, SHADE_DARK);
+	uint medium_dark  = GetColourGradient(colour, SHADE_LIGHT);
+	uint medium_light = GetColourGradient(colour, SHADE_LIGHTER);
+	uint light        = GetColourGradient(colour, SHADE_LIGHTEST);
 
 	if (flags & FR_TRANSPARENT) {
 		GfxFillRect(left, top, right, bottom, PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR);
@@ -423,7 +423,7 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
 		row_height = r.Height() / num_rows;
 	}
 
-	int col = _colour_gradient[colour & 0xF][6];
+	int col = GetColourGradient(colour, SHADE_LIGHTER);
 
 	int x = r.left;
 	for (int ctr = num_columns; ctr > 1; ctr--) {
@@ -437,7 +437,7 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
 		GfxFillRect(r.left + WidgetDimensions::scaled.bevel.left, x, r.right - WidgetDimensions::scaled.bevel.right, x + WidgetDimensions::scaled.bevel.top - 1, col);
 	}
 
-	col = _colour_gradient[colour & 0xF][4];
+	col = GetColourGradient(colour, SHADE_NORMAL);
 
 	x = r.left - 1;
 	for (int ctr = num_columns; ctr > 1; ctr--) {
@@ -469,8 +469,8 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
 	DrawImageButtons(r.WithHeight(height, false),  NWID_VSCROLLBAR, colour, up_clicked,   SPR_ARROW_UP,   SA_CENTER);
 	DrawImageButtons(r.WithHeight(height, true),   NWID_VSCROLLBAR, colour, down_clicked, SPR_ARROW_DOWN, SA_CENTER);
 
-	int c1 = _colour_gradient[colour & 0xF][3];
-	int c2 = _colour_gradient[colour & 0xF][7];
+	int c1 = GetColourGradient(colour, SHADE_DARK);
+	int c2 = GetColourGradient(colour, SHADE_LIGHTEST);
 
 	/* draw "shaded" background */
 	GfxFillRect(r.left, r.top + height, r.right, r.bottom - height, c2);
@@ -508,8 +508,8 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 	DrawImageButtons(r.WithWidth(width, false), NWID_HSCROLLBAR, colour, left_clicked,  SPR_ARROW_LEFT,  SA_CENTER);
 	DrawImageButtons(r.WithWidth(width, true),  NWID_HSCROLLBAR, colour, right_clicked, SPR_ARROW_RIGHT, SA_CENTER);
 
-	int c1 = _colour_gradient[colour & 0xF][3];
-	int c2 = _colour_gradient[colour & 0xF][7];
+	int c1 = GetColourGradient(colour, SHADE_DARK);
+	int c2 = GetColourGradient(colour, SHADE_LIGHTEST);
 
 	/* draw "shaded" background */
 	GfxFillRect(r.left + width, r.top, r.right - width, r.bottom, c2);
@@ -547,8 +547,8 @@ static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colo
 
 	if (str != STR_NULL) x2 = DrawString(r.left + WidgetDimensions::scaled.frametext.left, r.right - WidgetDimensions::scaled.frametext.right, r.top, str, text_colour, align, false, fs);
 
-	int c1 = _colour_gradient[colour][3];
-	int c2 = _colour_gradient[colour][7];
+	int c1 = GetColourGradient(colour, SHADE_DARK);
+	int c2 = GetColourGradient(colour, SHADE_LIGHTEST);
 
 	/* If the frame has text, adjust the top bar to fit half-way through */
 	Rect inner = r.Shrink(ScaleGUITrad(1));
@@ -645,7 +645,7 @@ static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bo
 	if (bevel) {
 		DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 	} else if (clicked) {
-		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[colour][6]);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(colour, SHADE_LIGHTER));
 	}
 	DrawSpriteIgnorePadding(at_left ? SPR_WINDOW_RESIZE_LEFT : SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.Shrink(ScaleGUITrad(2)), at_left ? (SA_LEFT | SA_BOTTOM | SA_FORCE) : (SA_RIGHT | SA_BOTTOM | SA_FORCE));
 }
@@ -685,7 +685,7 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
 	DrawFrameRect(ir, colour, company_owned ? FR_LOWERED | FR_DARKENED | FR_BORDERONLY : FR_LOWERED | FR_DARKENED);
 
 	if (company_owned) {
-		GfxFillRect(ir.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[_company_colours[owner]][4]);
+		GfxFillRect(ir.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(_company_colours[owner], SHADE_NORMAL));
 	}
 
 	if (str != STR_NULL) {
@@ -925,6 +925,20 @@ NWidgetBase *NWidgetBase::GetWidgetOfType(WidgetType tp)
 	return (this->type == tp) ? this : nullptr;
 }
 
+void NWidgetBase::ApplyAspectRatio()
+{
+	if (this->aspect_ratio == 0) return;
+	if (this->smallest_x == 0 || this->smallest_y == 0) return;
+
+	uint x = this->smallest_x;
+	uint y = this->smallest_y;
+	if ((this->aspect_flags & AspectFlags::ResizeX) == AspectFlags::ResizeX) x = std::max(this->smallest_x, static_cast<uint>(this->smallest_y * std::abs(this->aspect_ratio)));
+	if ((this->aspect_flags & AspectFlags::ResizeY) == AspectFlags::ResizeY) y = std::max(this->smallest_y, static_cast<uint>(this->smallest_x / std::abs(this->aspect_ratio)));
+
+	this->smallest_x = x;
+	this->smallest_y = y;
+}
+
 void NWidgetBase::AdjustPaddingForZoom()
 {
 	this->padding = ScaleGUITrad(this->uz_padding);
@@ -940,6 +954,28 @@ NWidgetResizeBase::NWidgetResizeBase(WidgetType tp, uint fill_x, uint fill_y) : 
 {
 	this->fill_x = fill_x;
 	this->fill_y = fill_y;
+}
+
+/**
+ * Set desired aspect ratio of this widget.
+ * @param ratio Desired aspect ratio, or 0 for none.
+ * @param flags Dimensions which should be resized.
+ */
+void NWidgetResizeBase::SetAspect(float ratio, AspectFlags flags)
+{
+	this->aspect_ratio = ratio;
+	this->aspect_flags = flags;
+}
+
+/**
+ * Set desired aspect ratio of this widget, in terms of horizontal and vertical dimensions.
+ * @param x_ratio Desired horizontal component of aspect ratio.
+ * @param y_ratio Desired vertical component of aspect ratio.
+ * @param flags Dimensions which should be resized.
+ */
+void NWidgetResizeBase::SetAspect(int x_ratio, int y_ratio, AspectFlags flags)
+{
+	this->SetAspect(static_cast<float>(x_ratio) / static_cast<float>(y_ratio), flags);
 }
 
 void NWidgetResizeBase::AdjustPaddingForZoom()
@@ -1216,7 +1252,7 @@ void NWidgetStacked::SetupSmallestSize(Window *w)
 		Dimension fill    = {(this->shown_plane == SZSP_HORIZONTAL), (this->shown_plane == SZSP_VERTICAL)};
 		Dimension resize  = {(this->shown_plane == SZSP_HORIZONTAL), (this->shown_plane == SZSP_VERTICAL)};
 		/* Here we're primarily interested in the value of resize */
-		if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, padding, &fill, &resize);
+		if (this->index >= 0) w->UpdateWidgetSize(this->index, size, padding, fill, resize);
 
 		this->smallest_x = size.width;
 		this->smallest_y = size.height;
@@ -1224,6 +1260,7 @@ void NWidgetStacked::SetupSmallestSize(Window *w)
 		this->fill_y = fill.height;
 		this->resize_x = resize.width;
 		this->resize_y = resize.height;
+		this->ApplyAspectRatio();
 		return;
 	}
 
@@ -1243,6 +1280,7 @@ void NWidgetStacked::SetupSmallestSize(Window *w)
 		this->fill_y = std::lcm(this->fill_y, child_wid->fill_y);
 		this->resize_x = std::lcm(this->resize_x, child_wid->resize_x);
 		this->resize_y = std::lcm(this->resize_y, child_wid->resize_y);
+		this->ApplyAspectRatio();
 	}
 }
 
@@ -1405,6 +1443,11 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w)
 		this->smallest_y = cur_height; // Smallest height got changed, try again.
 	}
 	/* 2. For containers that must maintain equal width, extend child minimal size. */
+	for (const auto &child_wid : this->children) {
+		child_wid->smallest_y = this->smallest_y - child_wid->padding.Vertical();
+		child_wid->ApplyAspectRatio();
+		longest = std::max(longest, child_wid->smallest_x);
+	}
 	if (this->flags & NC_EQUALSIZE) {
 		for (const auto &child_wid : this->children) {
 			if (child_wid->fill_x == 1) child_wid->smallest_x = longest;
@@ -1594,6 +1637,11 @@ void NWidgetVertical::SetupSmallestSize(Window *w)
 		this->smallest_x = cur_width; // Smallest width got changed, try again.
 	}
 	/* 2. For containers that must maintain equal width, extend children minimal size. */
+	for (const auto &child_wid : this->children) {
+		child_wid->smallest_x = this->smallest_x - child_wid->padding.Horizontal();
+		child_wid->ApplyAspectRatio();
+		highest = std::max(highest, child_wid->smallest_y);
+	}
 	if (this->flags & NC_EQUALSIZE) {
 		for (const auto &child_wid : this->children) {
 			if (child_wid->fill_y == 1) child_wid->smallest_y = highest;
@@ -1730,6 +1778,7 @@ void NWidgetSpacer::SetupSmallestSize(Window *)
 {
 	this->smallest_x = this->min_x;
 	this->smallest_y = this->min_y;
+	this->ApplyAspectRatio();
 }
 
 void NWidgetSpacer::FillWidgetLookup(WidgetLookup &)
@@ -1833,7 +1882,7 @@ void NWidgetMatrix::SetupSmallestSize(Window *w)
 	Dimension fill    = {0, 0};
 	Dimension resize  = {this->pip_inter + this->children.front()->smallest_x, this->pip_inter + this->children.front()->smallest_y};
 
-	if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, padding, &fill, &resize);
+	if (this->index >= 0) w->UpdateWidgetSize(this->index, size, padding, fill, resize);
 
 	this->smallest_x = size.width;
 	this->smallest_y = size.height;
@@ -1841,6 +1890,7 @@ void NWidgetMatrix::SetupSmallestSize(Window *w)
 	this->fill_y = fill.height;
 	this->resize_x = resize.width;
 	this->resize_y = resize.height;
+	this->ApplyAspectRatio();
 }
 
 void NWidgetMatrix::AssignSizePosition(SizingType, int x, int y, uint given_width, uint given_height, bool)
@@ -1906,7 +1956,7 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 /* virtual */ void NWidgetMatrix::Draw(const Window *w)
 {
 	/* Fill the background. */
-	GfxFillRect(this->GetCurrentRect(), _colour_gradient[this->colour & 0xF][5]);
+	GfxFillRect(this->GetCurrentRect(), GetColourGradient(this->colour, SHADE_LIGHT));
 
 	/* Set up a clipping area for the previews. */
 	bool rtl = _current_text_dir == TD_RTL;
@@ -2089,6 +2139,7 @@ void NWidgetBackground::SetupSmallestSize(Window *w)
 			this->smallest_x += this->child->padding.Horizontal();
 			this->smallest_y += this->child->padding.Vertical();
 		}
+		this->ApplyAspectRatio();
 	} else {
 		Dimension d = {this->min_x, this->min_y};
 		Dimension fill = {this->fill_x, this->fill_y};
@@ -2108,7 +2159,7 @@ void NWidgetBackground::SetupSmallestSize(Window *w)
 					case WWT_FRAME: padding = {WidgetDimensions::scaled.frametext.Horizontal(), WidgetDimensions::scaled.frametext.Vertical()}; break;
 					case WWT_INSET: padding = {WidgetDimensions::scaled.inset.Horizontal(),     WidgetDimensions::scaled.inset.Vertical()};     break;
 				}
-				w->UpdateWidgetSize(this->index, &d, padding, &fill, &resize);
+				w->UpdateWidgetSize(this->index, d, padding, fill, resize);
 			}
 		}
 		this->smallest_x = d.width;
@@ -2117,6 +2168,7 @@ void NWidgetBackground::SetupSmallestSize(Window *w)
 		this->fill_y = fill.height;
 		this->resize_x = resize.width;
 		this->resize_y = resize.height;
+		this->ApplyAspectRatio();
 	}
 }
 
@@ -2171,7 +2223,7 @@ void NWidgetBackground::Draw(const Window *w)
 	if (this->child != nullptr) this->child->Draw(w);
 
 	if (this->IsDisabled()) {
-		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(this->colour, SHADE_DARKER), FILLRECT_CHECKER);
 	}
 
 	DrawOutline(w, this);
@@ -2203,6 +2255,7 @@ void NWidgetViewport::SetupSmallestSize(Window *)
 {
 	this->smallest_x = this->min_x;
 	this->smallest_y = this->min_y;
+	this->ApplyAspectRatio();
 }
 
 void NWidgetViewport::Draw(const Window *w)
@@ -2262,13 +2315,13 @@ void NWidgetViewport::UpdateViewportCoordinates(Window *w)
  * @param widget      Widget number of the widget clicked in.
  * @param padding     Amount of empty space between the widget edge and the top of the first row. Default value is \c 0.
  * @param line_height Height of a single row. A negative value means using the vertical resize step of the widget.
- * @return Row number clicked at. If clicked at a wrong position, #INT_MAX is returned.
+ * @return Row number clicked at. If clicked at a wrong position, #Scrollbar::npos is returned.
  */
-int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, WidgetID widget, int padding, int line_height) const
+Scrollbar::size_type Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, WidgetID widget, int padding, int line_height) const
 {
-	uint pos = w->GetRowFromWidget(clickpos, widget, padding, line_height);
+	int pos = w->GetRowFromWidget(clickpos, widget, padding, line_height);
 	if (pos != INT_MAX) pos += this->GetPosition();
-	return (pos >= this->GetCount()) ? INT_MAX : pos;
+	return (pos < 0 || pos >= this->GetCount()) ? Scrollbar::npos : pos;
 }
 
 /**
@@ -2416,7 +2469,7 @@ void NWidgetScrollbar::Draw(const Window *w)
 	}
 
 	if (this->IsDisabled()) {
-		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(this->colour, SHADE_DARKER), FILLRECT_CHECKER);
 	}
 
 	DrawOutline(w, this);
@@ -2506,9 +2559,13 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t
 		case WWT_MATRIX:
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_PUSHBUTTON_DROPDOWN:
+			this->SetFill(0, 0);
+			break;
+
 		case WWT_ARROWBTN:
 		case WWT_PUSHARROWBTN:
 			this->SetFill(0, 0);
+			this->SetAspect(WidgetDimensions::ASPECT_LEFT_RIGHT_BUTTON);
 			break;
 
 		case WWT_EDITBOX:
@@ -2527,24 +2584,28 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WidgetDimensions::WD_STICKYBOX_WIDTH, WidgetDimensions::WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_STICKY);
+			this->SetAspect(this->min_x, this->min_y);
 			break;
 
 		case WWT_SHADEBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WidgetDimensions::WD_SHADEBOX_WIDTH, WidgetDimensions::WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_SHADE);
+			this->SetAspect(this->min_x, this->min_y);
 			break;
 
 		case WWT_DEBUGBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WidgetDimensions::WD_DEBUGBOX_WIDTH, WidgetDimensions::WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_DEBUG);
+			this->SetAspect(this->min_x, this->min_y);
 			break;
 
 		case WWT_DEFSIZEBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WidgetDimensions::WD_DEFSIZEBOX_WIDTH, WidgetDimensions::WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_DEFSIZE);
+			this->SetAspect(this->min_x, this->min_y);
 			break;
 
 		case WWT_RESIZEBOX:
@@ -2557,6 +2618,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WidgetDimensions::WD_CLOSEBOX_WIDTH, WidgetDimensions::WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_CLOSE_WINDOW);
+			this->SetAspect(this->min_x, this->min_y);
 			break;
 
 		case WWT_DROPDOWN:
@@ -2730,7 +2792,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w)
 			NOT_REACHED();
 	}
 
-	if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, padding, &fill, &resize);
+	if (this->index >= 0) w->UpdateWidgetSize(this->index, size, padding, fill, resize);
 
 	this->smallest_x = size.width;
 	this->smallest_y = size.height;
@@ -2738,6 +2800,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w)
 	this->fill_y = fill.height;
 	this->resize_x = resize.width;
 	this->resize_y = resize.height;
+	this->ApplyAspectRatio();
 }
 
 void NWidgetLeaf::Draw(const Window *w)
@@ -2867,7 +2930,7 @@ void NWidgetLeaf::Draw(const Window *w)
 	if (this->index >= 0) w->DrawWidget(r, this->index);
 
 	if (this->IsDisabled()) {
-		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(this->colour, SHADE_DARKER), FILLRECT_CHECKER);
 	}
 
 	DrawOutline(w, this);
@@ -2894,185 +2957,189 @@ bool NWidgetLeaf::ButtonHit(const Point &pt)
 /* == Conversion code from NWidgetPart array to NWidgetBase* tree == */
 
 /**
+ * Test if (an NWidgetPart) WidgetType is an attribute widget part type.
+ * @param tp WidgetType to test.
+ * @return True iff WidgetType is an attribute widget.
+ */
+static bool IsAttributeWidgetPartType(WidgetType tp)
+{
+	return tp > WPT_ATTRIBUTE_BEGIN && tp < WPT_ATTRIBUTE_END;
+}
+
+/**
+ * Apply an attribute NWidgetPart to an NWidget.
+ * @param nwid Attribute NWidgetPart
+ * @param dest NWidget to apply attribute to.
+ * @pre NWidgetPart must be an attribute NWidgetPart.
+ */
+static void ApplyNWidgetPartAttribute(const NWidgetPart &nwid, NWidgetBase *dest)
+{
+	switch (nwid.type) {
+		case WPT_RESIZE: {
+			NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest);
+			if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_RESIZE requires NWidgetResizeBase");
+			assert(nwid.u.xy.x >= 0 && nwid.u.xy.y >= 0);
+			nwrb->SetResize(nwid.u.xy.x, nwid.u.xy.y);
+			break;
+		}
+
+		case WPT_MINSIZE: {
+			NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest);
+			if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_MINSIZE requires NWidgetResizeBase");
+			assert(nwid.u.xy.x >= 0 && nwid.u.xy.y >= 0);
+			nwrb->SetMinimalSize(nwid.u.xy.x, nwid.u.xy.y);
+			break;
+		}
+
+		case WPT_MINTEXTLINES: {
+			NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest);
+			if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_MINTEXTLINES requires NWidgetResizeBase");
+			assert(nwid.u.text_lines.size >= FS_BEGIN && nwid.u.text_lines.size < FS_END);
+			nwrb->SetMinimalTextLines(nwid.u.text_lines.lines, nwid.u.text_lines.spacing, nwid.u.text_lines.size);
+			break;
+		}
+
+		case WPT_TEXTSTYLE: {
+			NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest);
+			if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_TEXTSTYLE requires NWidgetCore");
+			nwc->SetTextStyle(nwid.u.text_style.colour, nwid.u.text_style.size);
+			break;
+		}
+
+		case WPT_ALIGNMENT: {
+			NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest);
+			if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_ALIGNMENT requires NWidgetCore");
+			nwc->SetAlignment(nwid.u.align.align);
+			break;
+		}
+
+		case WPT_FILL: {
+			NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest);
+			if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_FILL requires NWidgetResizeBase");
+			nwrb->SetFill(nwid.u.xy.x, nwid.u.xy.y);
+			break;
+		}
+
+		case WPT_DATATIP: {
+			NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest);
+			if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_DATATIP requires NWidgetCore");
+			nwc->widget_data = nwid.u.data_tip.data;
+			nwc->tool_tip = nwid.u.data_tip.tooltip;
+			break;
+		}
+
+		case WPT_PADDING:
+			if (dest == nullptr) [[unlikely]] throw std::runtime_error("WPT_PADDING requires NWidgetBase");
+			dest->SetPadding(nwid.u.padding);
+			break;
+
+		case WPT_PIPSPACE: {
+			NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(dest);
+			if (nwc != nullptr) nwc->SetPIP(nwid.u.pip.pre, nwid.u.pip.inter, nwid.u.pip.post);
+
+			NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(dest);
+			if (nwb != nullptr) nwb->SetPIP(nwid.u.pip.pre, nwid.u.pip.inter, nwid.u.pip.post);
+
+			if (nwc == nullptr && nwb == nullptr) [[unlikely]] throw std::runtime_error("WPT_PIPSPACE requires NWidgetPIPContainer or NWidgetBackground");
+			break;
+		}
+
+		case WPT_PIPRATIO: {
+			NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(dest);
+			if (nwc != nullptr) nwc->SetPIPRatio(nwid.u.pip.pre, nwid.u.pip.inter, nwid.u.pip.post);
+
+			NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(dest);
+			if (nwb != nullptr) nwb->SetPIPRatio(nwid.u.pip.pre, nwid.u.pip.inter, nwid.u.pip.post);
+
+			if (nwc == nullptr && nwb == nullptr) [[unlikely]] throw std::runtime_error("WPT_PIPRATIO requires NWidgetPIPContainer or NWidgetBackground");
+			break;
+		}
+
+		case WPT_SCROLLBAR: {
+			NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest);
+			if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_SCROLLBAR requires NWidgetCore");
+			nwc->scrollbar_index = nwid.u.widget.index;
+			break;
+		}
+
+		case WPT_ASPECT: {
+			if (dest == nullptr) [[unlikely]] throw std::runtime_error("WPT_ASPECT requires NWidgetBase");
+			dest->aspect_ratio = nwid.u.aspect.ratio;
+			dest->aspect_flags = nwid.u.aspect.flags;
+			break;
+		}
+
+		default:
+			NOT_REACHED();
+	}
+}
+
+/**
+ * Make NWidget from an NWidgetPart.
+ * @param nwid NWidgetPart.
+ * @pre NWidgetPart must not be an attribute NWidgetPart nor WPT_ENDCONTAINER.
+ * @return Pointer to created NWidget.
+ */
+static std::unique_ptr<NWidgetBase> MakeNWidget(const NWidgetPart &nwid)
+{
+	assert(!IsAttributeWidgetPartType(nwid.type));
+	assert(nwid.type != WPT_ENDCONTAINER);
+
+	switch (nwid.type) {
+		case NWID_SPACER: return std::make_unique<NWidgetSpacer>(0, 0);
+
+		case WWT_PANEL: [[fallthrough]];
+		case WWT_INSET: [[fallthrough]];
+		case WWT_FRAME: return std::make_unique<NWidgetBackground>(nwid.type, nwid.u.widget.colour, nwid.u.widget.index);
+
+		case NWID_HORIZONTAL: return std::make_unique<NWidgetHorizontal>(nwid.u.cont_flags);
+		case NWID_HORIZONTAL_LTR: return std::make_unique<NWidgetHorizontalLTR>(nwid.u.cont_flags);
+		case NWID_VERTICAL: return std::make_unique<NWidgetVertical>(nwid.u.cont_flags);
+		case NWID_SELECTION: return std::make_unique<NWidgetStacked>(nwid.u.widget.index);
+		case NWID_MATRIX: return std::make_unique<NWidgetMatrix>(nwid.u.widget.colour, nwid.u.widget.index);
+		case NWID_VIEWPORT: return std::make_unique<NWidgetViewport>(nwid.u.widget.index);
+
+		case NWID_HSCROLLBAR: [[fallthrough]];
+		case NWID_VSCROLLBAR: return std::make_unique<NWidgetScrollbar>(nwid.type, nwid.u.widget.colour, nwid.u.widget.index);
+
+		case WPT_FUNCTION: return nwid.u.func_ptr();
+
+		default:
+			assert((nwid.type & WWT_MASK) < WWT_LAST || (nwid.type & WWT_MASK) == NWID_BUTTON_DROPDOWN);
+			return std::make_unique<NWidgetLeaf>(nwid.type, nwid.u.widget.colour, nwid.u.widget.index, 0x0, STR_NULL);
+	}
+}
+
+/**
  * Construct a single nested widget in \a *dest from its parts.
  *
  * Construct a NWidgetBase object from a #NWidget function, and apply all
- * settings that follow it, until encountering a #EndContainer, another
+ * attributes that follow it, until encountering a #EndContainer, another
  * #NWidget, or the end of the parts array.
  *
- * @param nwid_begin Pointer to beginning of nested widget parts.
- * @param nwid_end Pointer to ending of nested widget parts.
- * @param dest  Address of pointer to use for returning the composed widget.
- * @param fill_dest Fill the composed widget with child widgets.
- * @return Pointer to remaining nested widget parts.
+ * @param nwid_begin Iterator to beginning of nested widget parts.
+ * @param nwid_end Iterator to ending of nested widget parts.
+ * @param[out] dest Address of pointer to use for returning the composed widget.
+ * @param[out] fill_dest Fill the composed widget with child widgets.
+ * @return Iterator to remaining nested widget parts.
  */
-static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, std::unique_ptr<NWidgetBase> &dest, bool *fill_dest)
+static std::span<const NWidgetPart>::iterator MakeNWidget(std::span<const NWidgetPart>::iterator nwid_begin, std::span<const NWidgetPart>::iterator nwid_end, std::unique_ptr<NWidgetBase> &dest, bool &fill_dest)
 {
 	dest = nullptr;
-	*fill_dest = false;
 
-	while (nwid_begin < nwid_end) {
-		switch (nwid_begin->type) {
-			case NWID_SPACER:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetSpacer>(0, 0);
-				break;
+	if (IsAttributeWidgetPartType(nwid_begin->type)) [[unlikely]] throw std::runtime_error("Expected non-attribute NWidgetPart type");
+	if (nwid_begin->type == WPT_ENDCONTAINER) return nwid_begin;
 
-			case NWID_HORIZONTAL:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetHorizontal>(nwid_begin->u.cont_flags);
-				*fill_dest = true;
-				break;
+	fill_dest = IsContainerWidgetType(nwid_begin->type);
+	dest = MakeNWidget(*nwid_begin);
+	if (dest == nullptr) return nwid_begin;
 
-			case NWID_HORIZONTAL_LTR:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetHorizontalLTR>(nwid_begin->u.cont_flags);
-				*fill_dest = true;
-				break;
+	++nwid_begin;
 
-			case WWT_PANEL:
-			case WWT_INSET:
-			case WWT_FRAME:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetBackground>(nwid_begin->type, nwid_begin->u.widget.colour, nwid_begin->u.widget.index);
-				*fill_dest = true;
-				break;
-
-			case NWID_VERTICAL:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetVertical>(nwid_begin->u.cont_flags);
-				*fill_dest = true;
-				break;
-
-			case NWID_MATRIX: {
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetMatrix>(nwid_begin->u.widget.colour, nwid_begin->u.widget.index);
-				*fill_dest = true;
-				break;
-			}
-
-			case WPT_FUNCTION: {
-				if (dest != nullptr) return nwid_begin;
-				dest = nwid_begin->u.func_ptr();
-				*fill_dest = false;
-				break;
-			}
-
-			case WPT_RESIZE: {
-				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest.get());
-				if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_RESIZE requires NWidgetResizeBase");
-				assert(nwid_begin->u.xy.x >= 0 && nwid_begin->u.xy.y >= 0);
-				nwrb->SetResize(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
-				break;
-			}
-
-			case WPT_MINSIZE: {
-				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest.get());
-				if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_MINSIZE requires NWidgetResizeBase");
-				assert(nwid_begin->u.xy.x >= 0 && nwid_begin->u.xy.y >= 0);
-				nwrb->SetMinimalSize(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
-				break;
-			}
-
-			case WPT_MINTEXTLINES: {
-				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest.get());
-				if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_MINTEXTLINES requires NWidgetResizeBase");
-				assert(nwid_begin->u.text_lines.size >= FS_BEGIN && nwid_begin->u.text_lines.size < FS_END);
-				nwrb->SetMinimalTextLines(nwid_begin->u.text_lines.lines, nwid_begin->u.text_lines.spacing, nwid_begin->u.text_lines.size);
-				break;
-			}
-
-			case WPT_TEXTSTYLE: {
-				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest.get());
-				if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_TEXTSTYLE requires NWidgetCore");
-				nwc->SetTextStyle(nwid_begin->u.text_style.colour, nwid_begin->u.text_style.size);
-				break;
-			}
-
-			case WPT_ALIGNMENT: {
-				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest.get());
-				if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_ALIGNMENT requires NWidgetCore");
-				nwc->SetAlignment(nwid_begin->u.align.align);
-				break;
-			}
-
-			case WPT_FILL: {
-				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest.get());
-				if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_FILL requires NWidgetResizeBase");
-				nwrb->SetFill(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
-				break;
-			}
-
-			case WPT_DATATIP: {
-				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest.get());
-				if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_DATATIP requires NWidgetCore");
-				nwc->widget_data = nwid_begin->u.data_tip.data;
-				nwc->tool_tip = nwid_begin->u.data_tip.tooltip;
-				break;
-			}
-
-			case WPT_PADDING:
-				if (dest == nullptr) [[unlikely]] throw std::runtime_error("WPT_PADDING requires NWidgetBase");
-				dest->SetPadding(nwid_begin->u.padding);
-				break;
-
-			case WPT_PIPSPACE: {
-				NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(dest.get());
-				if (nwc != nullptr) nwc->SetPIP(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
-
-				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(dest.get());
-				if (nwb != nullptr) nwb->SetPIP(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
-
-				if (nwc == nullptr && nwb == nullptr) [[unlikely]] throw std::runtime_error("WPT_PIPSPACE requires NWidgetPIPContainer or NWidgetBackground");
-				break;
-			}
-
-			case WPT_PIPRATIO: {
-				NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(dest.get());
-				if (nwc != nullptr) nwc->SetPIPRatio(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
-
-				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(dest.get());
-				if (nwb != nullptr) nwb->SetPIPRatio(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
-
-				if (nwc == nullptr && nwb == nullptr) [[unlikely]] throw std::runtime_error("WPT_PIPRATIO requires NWidgetPIPContainer or NWidgetBackground");
-				break;
-			}
-
-			case WPT_SCROLLBAR: {
-				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest.get());
-				if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_SCROLLBAR requires NWidgetCore");
-				nwc->scrollbar_index = nwid_begin->u.widget.index;
-				break;
-			}
-
-			case WPT_ENDCONTAINER:
-				return nwid_begin;
-
-			case NWID_VIEWPORT:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetViewport>(nwid_begin->u.widget.index);
-				break;
-
-			case NWID_HSCROLLBAR:
-			case NWID_VSCROLLBAR:
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetScrollbar>(nwid_begin->type, nwid_begin->u.widget.colour, nwid_begin->u.widget.index);
-				break;
-
-			case NWID_SELECTION: {
-				if (dest != nullptr) return nwid_begin;
-				dest = std::make_unique<NWidgetStacked>(nwid_begin->u.widget.index);
-				*fill_dest = true;
-				break;
-			}
-
-			default:
-				if (dest != nullptr) return nwid_begin;
-				assert((nwid_begin->type & WWT_MASK) < WWT_LAST || (nwid_begin->type & WWT_MASK) == NWID_BUTTON_DROPDOWN);
-				dest = std::make_unique<NWidgetLeaf>(nwid_begin->type, nwid_begin->u.widget.colour, nwid_begin->u.widget.index, 0x0, STR_NULL);
-				break;
-		}
-		nwid_begin++;
+	/* Once a widget is created, we're now looking for attributes. */
+	while (nwid_begin != nwid_end && IsAttributeWidgetPartType(nwid_begin->type)) {
+		ApplyNWidgetPartAttribute(*nwid_begin, dest.get());
+		++nwid_begin;
 	}
 
 	return nwid_begin;
@@ -3091,12 +3158,12 @@ bool IsContainerWidgetType(WidgetType tp)
 
 /**
  * Build a nested widget tree by recursively filling containers with nested widgets read from their parts.
- * @param nwid_begin Pointer to beginning of nested widget parts.
- * @param nwid_end Pointer to ending of nested widget parts.
+ * @param nwid_begin Iterator to beginning of nested widget parts.
+ * @param nwid_end Iterator to ending of nested widget parts.
  * @param parent Pointer or container to use for storing the child widgets (*parent == nullptr or *parent == container or background widget).
- * @return Pointer to remaining nested widget parts.
+ * @return Iterator to remaining nested widget parts.
  */
-static const NWidgetPart *MakeWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, std::unique_ptr<NWidgetBase> &parent)
+static std::span<const NWidgetPart>::iterator MakeWidgetTree(std::span<const NWidgetPart>::iterator nwid_begin, std::span<const NWidgetPart>::iterator nwid_end, std::unique_ptr<NWidgetBase> &parent)
 {
 	/* If *parent == nullptr, only the first widget is read and returned. Otherwise, *parent must point to either
 	 * a #NWidgetContainer or a #NWidgetBackground object, and parts are added as much as possible. */
@@ -3104,10 +3171,10 @@ static const NWidgetPart *MakeWidgetTree(const NWidgetPart *nwid_begin, const NW
 	NWidgetBackground *nwid_parent = dynamic_cast<NWidgetBackground *>(parent.get());
 	assert(parent == nullptr || (nwid_cont != nullptr && nwid_parent == nullptr) || (nwid_cont == nullptr && nwid_parent != nullptr));
 
-	for (;;) {
+	while (nwid_begin != nwid_end) {
 		std::unique_ptr<NWidgetBase> sub_widget = nullptr;
 		bool fill_sub = false;
-		nwid_begin = MakeNWidget(nwid_begin, nwid_end, sub_widget, &fill_sub);
+		nwid_begin = MakeNWidget(nwid_begin, nwid_end, sub_widget, fill_sub);
 
 		/* Break out of loop when end reached */
 		if (sub_widget == nullptr) break;
@@ -3130,23 +3197,22 @@ static const NWidgetPart *MakeWidgetTree(const NWidgetPart *nwid_begin, const NW
 
 	assert(nwid_begin < nwid_end);
 	assert(nwid_begin->type == WPT_ENDCONTAINER);
-	return nwid_begin + 1; // *nwid_begin is also 'used'
+	return std::next(nwid_begin); // *nwid_begin is also 'used'
 }
 
 /**
  * Construct a nested widget tree from an array of parts.
- * @param nwid_begin Pointer to beginning of nested widget parts.
- * @param nwid_end Pointer to ending of nested widget parts.
+ * @param nwid_parts Span of nested widget parts.
  * @param container Container to add the nested widgets to. In case it is nullptr a vertical container is used.
  * @return Root of the nested widget tree, a vertical container containing the entire GUI.
  * @ingroup NestedWidgetParts
  */
-std::unique_ptr<NWidgetBase> MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, std::unique_ptr<NWidgetBase> &&container)
+std::unique_ptr<NWidgetBase> MakeNWidgets(std::span<const NWidgetPart> nwid_parts, std::unique_ptr<NWidgetBase> &&container)
 {
 	if (container == nullptr) container = std::make_unique<NWidgetVertical>();
-	[[maybe_unused]] const NWidgetPart *nwid_part = MakeWidgetTree(nwid_begin, nwid_end, container);
+	[[maybe_unused]] auto nwid_part = MakeWidgetTree(std::begin(nwid_parts), std::end(nwid_parts), container);
 #ifdef WITH_ASSERT
-	if (nwid_part != nwid_end) [[unlikely]] throw std::runtime_error("Did not consume all NWidgetParts");
+	if (nwid_part != std::end(nwid_parts)) [[unlikely]] throw std::runtime_error("Did not consume all NWidgetParts");
 #endif
 	return std::move(container);
 }
@@ -3155,14 +3221,16 @@ std::unique_ptr<NWidgetBase> MakeNWidgets(const NWidgetPart *nwid_begin, const N
  * Make a nested widget tree for a window from a parts array. Besides loading, it inserts a shading selection widget
  * between the title bar and the window body if the first widget in the parts array looks like a title bar (it is a horizontal
  * container with a caption widget) and has a shade box widget.
- * @param nwid_begin Pointer to beginning of nested widget parts.
- * @param nwid_end Pointer to ending of nested widget parts.
+ * @param nwid_parts Span of nested widget parts.
  * @param[out] shade_select Pointer to the inserted shade selection widget (\c nullptr if not unserted).
  * @return Root of the nested widget tree, a vertical container containing the entire GUI.
  * @ingroup NestedWidgetParts
  */
-std::unique_ptr<NWidgetBase> MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetStacked **shade_select)
+std::unique_ptr<NWidgetBase> MakeWindowNWidgetTree(std::span<const NWidgetPart> nwid_parts, NWidgetStacked **shade_select)
 {
+	auto nwid_begin = std::begin(nwid_parts);
+	auto nwid_end = std::end(nwid_parts);
+
 	*shade_select = nullptr;
 
 	/* Read the first widget recursively from the array. */
@@ -3181,13 +3249,13 @@ std::unique_ptr<NWidgetBase> MakeWindowNWidgetTree(const NWidgetPart *nwid_begin
 		auto shade_stack = std::make_unique<NWidgetStacked>(-1);
 		*shade_select = shade_stack.get();
 		/* Load the remaining parts into the shade stack. */
-		shade_stack->Add(MakeNWidgets(nwid_begin, nwid_end, std::make_unique<NWidgetVertical>()));
+		shade_stack->Add(MakeNWidgets({nwid_begin, nwid_end}, std::make_unique<NWidgetVertical>()));
 		root->Add(std::move(shade_stack));
 		return root;
 	}
 
 	/* Load the remaining parts into 'root'. */
-	return MakeNWidgets(nwid_begin, nwid_end, std::move(root));
+	return MakeNWidgets({nwid_begin, nwid_end}, std::move(root));
 }
 
 /**
@@ -3207,7 +3275,7 @@ std::unique_ptr<NWidgetBase> MakeCompanyButtonRows(WidgetID widget_first, Widget
 	std::unique_ptr<NWidgetHorizontal> hor = nullptr; // Storage for buttons in one row.
 	int hor_length = 0;
 
-	Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_OUT_4X);
+	Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_NORMAL);
 	sprite_size.width  += WidgetDimensions::unscaled.matrix.Horizontal();
 	sprite_size.height += WidgetDimensions::unscaled.matrix.Vertical();
 

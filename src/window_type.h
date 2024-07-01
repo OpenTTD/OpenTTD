@@ -376,6 +376,12 @@ enum WindowClass {
 	WC_BUILD_OBJECT,
 
 	/**
+	 * Build house; %Window numbers:
+	 *   - 0 = #BuildHouseWidgets
+	 */
+	WC_BUILD_HOUSE,
+
+	/**
 	 * Build vehicle; %Window numbers:
 	 *   - #VehicleType = #BuildVehicleWidgets
 	 *   - #TileIndex = #BuildVehicleWidgets
@@ -501,13 +507,6 @@ enum WindowClass {
 	 *   - #DestType = #NetWorkChatWidgets
 	 */
 	WC_SEND_NETWORK_MSG,
-
-	/**
-	 * Company password query; %Window numbers:
-	 *   - 0 = #NetworkCompanyPasswordWidgets
-	 */
-	WC_COMPANY_PASSWORD_WINDOW,
-
 
 	/**
 	 * Industry cargoes chain; %Window numbers:

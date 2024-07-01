@@ -28,7 +28,13 @@ struct SpriteCache {
 	int16_t lru;
 	SpriteType type;     ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
 	bool warned;         ///< True iff the user has been warned about incorrect use of this sprite
-	byte control_flags;  ///< Control flags, see SpriteCacheCtrlFlags
+	uint8_t control_flags;  ///< Control flags, see SpriteCacheCtrlFlags
+};
+
+/** SpriteAllocator that allocates memory from the sprite cache. */
+class CacheSpriteAllocator : public SpriteAllocator {
+protected:
+	void *AllocatePtr(size_t size) override;
 };
 
 inline bool IsMapgenSpriteID(SpriteID sprite)
@@ -36,7 +42,6 @@ inline bool IsMapgenSpriteID(SpriteID sprite)
 	return IsInsideMM(sprite, SPR_MAPGEN_BEGIN, SPR_MAPGEN_END);
 }
 
-void *AllocSprite(size_t mem_req);
 SpriteCache *AllocateSpriteCache(uint index);
 
 #endif /* SPRITECACHE_INTERNAL_H */

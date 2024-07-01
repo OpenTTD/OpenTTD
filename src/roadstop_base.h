@@ -64,14 +64,14 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 		void Rebuild(const RoadStop *rs, int side = -1);
 	};
 
-	TileIndex       xy;     ///< Position on the map
-	byte            status; ///< Current status of the Stop, @see RoadStopSatusFlag. Access using *Bay and *Busy functions.
-	struct RoadStop *next;  ///< Next stop of the given type at this station
+	uint8_t status; ///< Current status of the Stop, @see RoadStopSatusFlag. Access using *Bay and *Busy functions.
+	TileIndex xy; ///< Position on the map
+	RoadStop *next; ///< Next stop of the given type at this station
 
 	/** Initializes a RoadStop */
 	inline RoadStop(TileIndex tile = INVALID_TILE) :
-		xy(tile),
-		status((1 << RSSFB_BAY_COUNT) - 1)
+		status((1 << RSSFB_BAY_COUNT) - 1),
+		xy(tile)
 	{ }
 
 	~RoadStop();

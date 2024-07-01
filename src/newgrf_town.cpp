@@ -15,8 +15,13 @@
 
 #include "safeguards.h"
 
-/* virtual */ uint32_t TownScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t TownScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
+	if (this->t == nullptr) {
+		available = false;
+		return UINT_MAX;
+	}
+
 	CargoID cid;
 	switch (variable) {
 		/* Larger towns */
@@ -114,7 +119,7 @@
 
 	Debug(grf, 1, "Unhandled town variable 0x{:X}", variable);
 
-	*available = false;
+	available = false;
 	return UINT_MAX;
 }
 

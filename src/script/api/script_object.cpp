@@ -200,16 +200,6 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->allow_do_command;
 }
 
-/* static */ void ScriptObject::SetTimeMode(bool calendar)
-{
-	GetStorage()->time_mode = calendar;
-}
-
-/* static */ bool ScriptObject::IsCalendarTimeMode()
-{
-	return GetStorage()->time_mode;
-}
-
 /* static */ void ScriptObject::SetCompany(CompanyID company)
 {
 	if (GetStorage()->root_company == INVALID_OWNER) GetStorage()->root_company = company;
@@ -251,7 +241,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 
 /* static */ void ScriptObject::SetCallbackVariable(int index, int value)
 {
-	if ((size_t)index >= GetStorage()->callback_value.size()) GetStorage()->callback_value.resize(index + 1);
+	if (static_cast<size_t>(index) >= GetStorage()->callback_value.size()) GetStorage()->callback_value.resize(index + 1);
 	GetStorage()->callback_value[index] = value;
 }
 

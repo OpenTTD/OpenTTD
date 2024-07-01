@@ -16,6 +16,7 @@ std::string SurveyMemoryToText(uint64_t memory);
 
 void SurveyCompanies(nlohmann::json &survey);
 void SurveyCompiler(nlohmann::json &survey);
+void SurveyGameSession(nlohmann::json &survey);
 void SurveyConfiguration(nlohmann::json &survey);
 void SurveyFont(nlohmann::json &survey);
 void SurveyGameScript(nlohmann::json &survey);

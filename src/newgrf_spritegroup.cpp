@@ -53,7 +53,7 @@ TemporaryStorageArray<int32_t, 0x110> _temp_store;
 	}
 }
 
-static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *scope, byte variable, uint32_t parameter, bool *available)
+static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *scope, uint8_t variable, uint32_t parameter, bool &available)
 {
 	uint32_t value;
 	switch (variable) {
@@ -103,10 +103,10 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
  * @param[out] available Set to false, in case the variable does not exist.
  * @return Value
  */
-/* virtual */ uint32_t ScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
+/* virtual */ uint32_t ScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	Debug(grf, 1, "Unhandled scope variable 0x{:X}", variable);
-	*available = false;
+	available = false;
 	return UINT_MAX;
 }
 
@@ -132,7 +132,7 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
  * Get a resolver for the \a scope.
  * @return The resolver for the requested scope.
  */
-/* virtual */ ScopeResolver *ResolverObject::GetScope(VarSpriteGroupScope, byte)
+/* virtual */ ScopeResolver *ResolverObject::GetScope(VarSpriteGroupScope, uint8_t)
 {
 	return &this->default_scope;
 }
@@ -205,9 +205,9 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 
 			/* Note: 'last_value' and 'reseed' are shared between the main chain and the procedure */
 		} else if (adjust.variable == 0x7B) {
-			value = GetVariable(object, scope, adjust.parameter, last_value, &available);
+			value = GetVariable(object, scope, adjust.parameter, last_value, available);
 		} else {
-			value = GetVariable(object, scope, adjust.variable, adjust.parameter, &available);
+			value = GetVariable(object, scope, adjust.variable, adjust.parameter, available);
 		}
 
 		if (!available) {
@@ -258,7 +258,7 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 	ScopeResolver *scope = object.GetScope(this->var_scope, this->count);
 	if (object.callback == CBID_RANDOM_TRIGGER) {
 		/* Handle triggers */
-		byte match = this->triggers & object.waiting_triggers;
+		uint8_t match = this->triggers & object.waiting_triggers;
 		bool res = (this->cmp_mode == RSG_CMP_ANY) ? (match != 0) : (match == this->triggers);
 
 		if (res) {
@@ -268,7 +268,7 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 	}
 
 	uint32_t mask = ((uint)this->groups.size() - 1) << this->lowest_randbit;
-	byte index = (scope->GetRandomBits() & mask) >> this->lowest_randbit;
+	uint8_t index = (scope->GetRandomBits() & mask) >> this->lowest_randbit;
 
 	return SpriteGroup::Resolve(this->groups[index], object, false);
 }

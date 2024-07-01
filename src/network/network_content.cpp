@@ -13,6 +13,7 @@
 #include "../game/game.hpp"
 #include "../window_func.h"
 #include "../error.h"
+#include "../fileio_func.h"
 #include "../base_media_base.h"
 #include "../settings_type.h"
 #include "network_content.h"
@@ -62,16 +63,14 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 	ci->description = p.Recv_string(NETWORK_CONTENT_DESC_LENGTH, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
 
 	ci->unique_id = p.Recv_uint32();
-	for (size_t j = 0; j < ci->md5sum.size(); j++) {
-		ci->md5sum[j] = p.Recv_uint8();
-	}
+	p.Recv_bytes(ci->md5sum);
 
 	uint dependency_count = p.Recv_uint8();
 	ci->dependencies.reserve(dependency_count);
 	for (uint i = 0; i < dependency_count; i++) {
 		ContentID dependency_cid = (ContentID)p.Recv_uint32();
 		ci->dependencies.push_back(dependency_cid);
-		this->reverse_dependency_map.insert({ dependency_cid, ci->id });
+		this->reverse_dependency_map.emplace(dependency_cid, ci->id);
 	}
 
 	uint tag_count = p.Recv_uint8();
@@ -204,8 +203,8 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 
 	this->Connect();
 
-	auto p = std::make_unique<Packet>(PACKET_CONTENT_CLIENT_INFO_LIST);
-	p->Send_uint8 ((byte)type);
+	auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_INFO_LIST);
+	p->Send_uint8 ((uint8_t)type);
 	p->Send_uint32(0xffffffff);
 	p->Send_uint8 (1);
 	p->Send_string("vanilla");
@@ -238,9 +237,9 @@ void ClientNetworkContentSocketHandler::RequestContentList(uint count, const Con
 		 * A packet begins with the packet size and a byte for the type.
 		 * Then this packet adds a uint16_t for the count in this packet.
 		 * The rest of the packet can be used for the IDs. */
-		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16_t)) / sizeof(uint32_t));
+		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint16_t)) / sizeof(uint32_t));
 
-		auto p = std::make_unique<Packet>(PACKET_CONTENT_CLIENT_INFO_ID, TCP_MTU);
+		auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_INFO_ID, TCP_MTU);
 		p->Send_uint16(p_count);
 
 		for (uint i = 0; i < p_count; i++) {
@@ -265,20 +264,17 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 	this->Connect();
 
 	assert(cv->size() < 255);
-	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8_t)) /
+	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint8_t)) /
 			(sizeof(uint8_t) + sizeof(uint32_t) + (send_md5sum ? MD5_HASH_BYTES : 0)));
 
-	auto p = std::make_unique<Packet>(send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID, TCP_MTU);
+	auto p = std::make_unique<Packet>(this, send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID, TCP_MTU);
 	p->Send_uint8((uint8_t)cv->size());
 
 	for (const ContentInfo *ci : *cv) {
-		p->Send_uint8((byte)ci->type);
+		p->Send_uint8((uint8_t)ci->type);
 		p->Send_uint32(ci->unique_id);
 		if (!send_md5sum) continue;
-
-		for (size_t j = 0; j < ci->md5sum.size(); j++) {
-			p->Send_uint8(ci->md5sum[j]);
-		}
+		p->Send_bytes(ci->md5sum);
 	}
 
 	this->SendPacket(std::move(p));
@@ -363,9 +359,9 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const Co
 		 * A packet begins with the packet size and a byte for the type.
 		 * Then this packet adds a uint16_t for the count in this packet.
 		 * The rest of the packet can be used for the IDs. */
-		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16_t)) / sizeof(uint32_t));
+		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint16_t)) / sizeof(uint32_t));
 
-		auto p = std::make_unique<Packet>(PACKET_CONTENT_CLIENT_CONTENT, TCP_MTU);
+		auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_CONTENT, TCP_MTU);
 		p->Send_uint16(p_count);
 
 		for (uint i = 0; i < p_count; i++) {
@@ -420,7 +416,7 @@ static bool GunzipFile(const ContentInfo *ci)
 	if (fin == nullptr || fout == nullptr) {
 		ret = false;
 	} else {
-		byte buff[8192];
+		uint8_t buff[8192];
 		for (;;) {
 			int read = gzread(fin, buff, sizeof(buff));
 			if (read == 0) {
@@ -441,7 +437,7 @@ static bool GunzipFile(const ContentInfo *ci)
 				if (errnum != 0 && errnum != Z_STREAM_END) ret = false;
 				break;
 			}
-			if (read < 0 || (size_t)read != fwrite(buff, 1, read, fout)) {
+			if (read < 0 || static_cast<size_t>(read) != fwrite(buff, 1, read, fout)) {
 				/* If gzread() returns -1, there was an error in archive */
 				ret = false;
 				break;
@@ -495,7 +491,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 	} else {
 		/* We have a file opened, thus are downloading internal content */
 		size_t toRead = p.RemainingBytesToTransfer();
-		if (toRead != 0 && (size_t)p.TransferOut(TransferOutFWrite, this->curFile) != toRead) {
+		if (toRead != 0 && static_cast<size_t>(p.TransferOut(TransferOutFWrite, this->curFile)) != toRead) {
 			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
 			this->CloseConnection();
@@ -550,7 +546,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 	this->curFile = nullptr;
 
 	if (GunzipFile(this->curInfo)) {
-		unlink(GetFullFilename(this->curInfo, true).c_str());
+		FioRemove(GetFullFilename(this->curInfo, true));
 
 		Subdirectory sd = GetContentInfoSubDir(this->curInfo->type);
 		if (sd == NO_DIRECTORY) NOT_REACHED();
@@ -562,7 +558,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 		if (this->curInfo->type == CONTENT_TYPE_BASE_MUSIC) {
 			/* Music can't be in a tar. So extract the tar! */
 			ExtractTar(fname, BASESET_DIR);
-			unlink(fname.c_str());
+			FioRemove(fname);
 		}
 
 #ifdef __EMSCRIPTEN__

@@ -163,7 +163,7 @@ void UpdateCompanyHQ(TileIndex tile, uint score)
 {
 	if (tile == INVALID_TILE) return;
 
-	byte val = 0;
+	uint8_t val = 0;
 	if (score >= 170) val++;
 	if (score >= 350) val++;
 	if (score >= 520) val++;
@@ -267,8 +267,8 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 		}
 
 		/* So, now the surface is checked... check the slope of said surface. */
-		int allowed_z;
-		if (GetTileSlope(tile, &allowed_z) != SLOPE_FLAT) allowed_z++;
+		auto [slope, allowed_z] = GetTileSlopeZ(tile);
+		if (slope != SLOPE_FLAT) allowed_z++;
 
 		for (TileIndex t : ta) {
 			uint16_t callback = CALLBACK_FAILED;
@@ -492,8 +492,7 @@ static void DrawTile_Object(TileInfo *ti)
 static int GetSlopePixelZ_Object(TileIndex tile, uint x, uint y, bool)
 {
 	if (IsObjectType(tile, OBJECT_OWNED_LAND)) {
-		int z;
-		Slope tileh = GetTilePixelSlope(tile, &z);
+		auto [tileh, z] = GetTilePixelSlope(tile);
 
 		return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 	} else {
@@ -881,6 +880,10 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 	ObjectType type = GetObjectType(tile);
 	if ((type == OBJECT_OWNED_LAND || type >= NEW_OBJECT_OFFSET) && new_owner != INVALID_OWNER) {
 		SetTileOwner(tile, new_owner);
+		if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
+			Company::Get(old_owner)->infrastructure.water--;
+			Company::Get(new_owner)->infrastructure.water++;
+		}
 	} else if (type == OBJECT_STATUE) {
 		Town *t = Object::GetByTile(tile)->town;
 		ClrBit(t->statues, old_owner);

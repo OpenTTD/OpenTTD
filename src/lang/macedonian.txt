@@ -358,6 +358,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Напушти 
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Напушти
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :игра опции
@@ -762,7 +763,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 
 
 
-###length 43
+###length 44
 
 
 # Autosave dropdown
@@ -789,7 +790,9 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 
 
 
+
 # Custom currency window
+
 
 
 
@@ -911,6 +914,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Инфраст�
 ###length 2
 
 
+
 ###length 2
 
 
@@ -1019,6 +1023,8 @@ STR_CONFIG_SETTING_SOUND_VEHICLE                                :Возила: {
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#ОПкодови пред скрипти се суспендирани: {STRING}
 
 
+###length 3
+
 ###setting-zero-is-special
 
 
@@ -1121,7 +1127,6 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 ###length 3
 
 
-###length 2
 
 
 # Config errors
@@ -1214,8 +1219,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 
 
 
-# Network set password
-
 # Network company info join/password
 
 # Network chat
@@ -1225,7 +1228,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Ти беше испраќање премногу команди на серверот
 
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :испраќа премногу команди
 
 # Network related errors
@@ -1286,6 +1289,9 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Изгр
 
 
 
+
+
+
 # Signal window
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Влез сигнализација (електрика){}Зелено е се додека има барем еден зелен излез-сигнал во продолжението на траката, во спротивно е црвено.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Излез Сигнализација (електрика){}Се однесува на ист начин како блок-сигналот, но потребно е да ја има точната боја на влезен и комбо пресигнал.
@@ -1333,7 +1339,6 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Поди
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Избор на објект
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Одберете објект да се изгради
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Преглед на објектот
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Големина: {GOLD}{NUM} x {NUM} плочки
 
@@ -2116,6 +2121,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... во
 
 
 
+
 # Specific vehicle errors
 
 
@@ -2219,6 +2225,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

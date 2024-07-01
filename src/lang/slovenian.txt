@@ -534,6 +534,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Izhod iz urejev
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Izhod
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti igre
@@ -1009,7 +1010,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valute
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbira valut
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funt
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
@@ -1089,6 +1090,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatne 
 
 
 
+
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nalaganje seznama podprtih resolucij ni uspelo
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Celozaslonski način spodletel
 
@@ -1099,6 +1101,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Menjaln
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zmanjšaj količino svojega denarja za en funt (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Povečaj količino svojega denarja za en funt (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Nastavi tečaj menjave svoje valute za en funt (£)
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Predpona: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Nastavi oznako za svojo valuto
@@ -1436,6 +1439,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Opozori, če je
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Če je omogočeno, se odpre sporočilo, v kolikor neko vozilo ni ustvarilo dobička v koledarskem letu.
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila nikoli ne dotrajajo: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Če je omogočeno, vsi modeli vozil ostanejo omogočeni po uvedbi.
 
@@ -1718,7 +1722,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Privzeto servis
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Nastavitev privzetega obdobja servisiranja za letala, razen če ni izjemno nastavljeno obdobje za posamično letalo.
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Privzeto servisno obdobje ladij: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Nastavitev privzetega obdobja servisiranja za ladje, razen če ni izjemno nastavljeno obdobje za posamično ladjo.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} d{P 0 an neva dni dni}/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Onemogočeno
 
@@ -1976,17 +1981,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Razpored tovora
 STR_CONFIG_SETTING_AI                                           :Tekmeci
 STR_CONFIG_SETTING_AI_NPC                                       :Računalniški igralci
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Iskalnik poti za vlake: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Iskalnik poti za vlake.
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Iskalnik poti za vozila: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Iskalnik poti za cestna vozila.
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Logaritem poti za ladje: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Iskalnik poti za ladje.
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Avtomatično obračanje pri signalih: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Dovoli vlakom obračanje na signalih, če so tam čakali že dolgo.
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Priporočeno)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Spremeni vrednost
 
@@ -2257,7 +2253,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Iščem 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Odklopi
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Strežnik je zaščiten.Vnesi geslo
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Podjetje je zaščiteno. Vnesi geslo
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam gostov
@@ -2276,19 +2271,9 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Zagotov
 
 STR_NETWORK_SPECTATORS                                          :Gledalci
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne shrani vnešenega gesla
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Dodeli družbi novo geslo
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Geslo družbe
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Privzeto geslo družbe
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Uporabi geslo te družbe kot privzeto za nove družbe
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Pridruži se
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Pridruži se in igraj kot to podjetje
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Geslo
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Zaščiti svoje podjetje z geslom, da preprečiš priključitev drugih uporabnikov k podjetju
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Nastavi geslo podjetja
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Pošlji
@@ -2327,7 +2312,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Priklop 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Povezava je mogoče prekinjena
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Zadnj{P 0 o i e ih} {NUM} sekund{P o i e ""} ni bilo prejetih nobenih podatkov s strežnika
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :splošna napaka
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desinhronizacijska napaka
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :ni mogoče naložiti zemljevida
@@ -2525,7 +2510,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Izberi s
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Točka poti
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Izberi vrsto točke poti
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Izbira železniške postaje
@@ -2538,8 +2522,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Izberi d
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vleci in spusti
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Zgradi postajo s povleci in spusti
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Izberi vrsto postaje za prikaz
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Izberi vrsto postaje za gradnjo
+
+
+
 
 STR_STATION_CLASS_DFLT                                          :Privzeta postaja
 STR_STATION_CLASS_WAYP                                          :Točke poti
@@ -2671,8 +2656,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupi zem
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Izbor zgradbe
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Izberi zgradbo za postavitev. Shift preklaplja med izgradnjo in predvidenimi stroški
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Izberi vrsto objekta za gradnjo
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Predogled zgradbe
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost: {GOLD}{NUM} x {NUM} polj
 
@@ -2772,7 +2755,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Lastnik 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Lastnik železnice: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokalna oblast: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Brez
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinate: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Zgrajeno: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Razred postaje: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Vrsta postaje: {LTBLUE}{STRING}
@@ -2995,9 +2977,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% n
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Ustvarjanje sveta
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Ustvarjanje reke
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ustvarjanje dreves
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ustvarjanje zgradbe
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generiranje grobih in skalnatih tal
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ustvarjanje zgradbe
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ustvarjanje dreves
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavljanje igre
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Zagnano ponavljanje polj
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Poganjam skripto
@@ -3082,7 +3064,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tip železnice
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF spremenljivka 60+x parameter (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Uravnavam sličico {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Naslednja sličica
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Nadaljuj k naslednji navadni sličici, zanemari vse navidezne/pobarvane/besedilne sličice in okvir na koncu
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Pojdi na sličico
@@ -3191,7 +3172,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Pojdi na
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Vpiši ime za znak
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Mesta
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Brez -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Mesto){BLACK} ({COMMA})
@@ -3469,7 +3449,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Polja po
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Letališča
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrije
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Brez -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
@@ -4285,9 +4264,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Predvide
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Shranjevanje poteka,{}Prosim počakaj, da se zaključi!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Samodejno shranjevanje spodletelo
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Pogona ni mogoče prebrati
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Shranjevanje igre ni uspelo{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Datoteke ni mogoče zbrisati
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Nalaganje igre ni uspelo{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interna napaka: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Napaka v shranjeni igri - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Igra je bila shranjena z novejso razlicico
@@ -4647,6 +4624,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Sploh ni
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Zamenjaj svojo NewGRF konfiguracijo
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Ni še vozil na razpolago.
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Začni novo igro po {DATE_SHORT} ali uporabi NewGRF, ki vsebuje zgodnja vozila
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo signalov...
@@ -5203,6 +5181,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}

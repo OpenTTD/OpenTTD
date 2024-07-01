@@ -15,7 +15,7 @@
 /** The SDL video driver using default SDL backend. */
 class VideoDriver_SDL_Default : public VideoDriver_SDL_Base {
 public:
-	const char *GetName() const override { return "sdl"; }
+	std::string_view GetName() const override { return "sdl"; }
 
 protected:
 	bool AllocateBackingStore(int w, int h, bool force = false) override;

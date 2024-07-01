@@ -26,6 +26,7 @@
 #include "void_map.h"
 #include "town.h"
 #include "newgrf.h"
+#include "newgrf_house.h"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "progress.h"
@@ -86,7 +87,7 @@ static void CleanupGeneration()
 static void _GenerateWorld()
 {
 	/* Make sure everything is done via OWNER_NONE. */
-	Backup<CompanyID> _cur_company(_current_company, OWNER_NONE, FILE_LINE);
+	Backup<CompanyID> _cur_company(_current_company, OWNER_NONE);
 
 	try {
 		_generating_world = true;
@@ -102,6 +103,10 @@ static void _GenerateWorld()
 		IncreaseGeneratingWorldProgress(GWP_MAP_INIT);
 		/* Must start economy early because of the costs. */
 		StartupEconomy();
+		if (!CheckTownRoadTypes()) {
+			HandleGeneratingWorldAbortion();
+			return;
+		}
 
 		bool landscape_generated = false;
 
@@ -311,6 +316,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 
 	/* Load the right landscape stuff, and the NewGRFs! */
 	GfxLoadSprites();
+	InitializeBuildingCounts();
 	LoadStringWidthTable();
 
 	/* Re-init the windowing system */

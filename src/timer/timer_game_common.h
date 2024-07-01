@@ -23,7 +23,7 @@
  * Other than that, make sure you only set one callback per priority.
  *
  * For example:
- *   IntervalTimer<TimerGameCalendar>({TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [](uint count){});
+ *   IntervalTimer<TimerGameCalendar>({TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [](uint count) {});
  *
  * @note Callbacks are executed in the game-thread.
  */

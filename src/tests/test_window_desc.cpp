@@ -48,9 +48,9 @@ TEST_CASE("WindowDesc - ini_key validity")
 	const WindowDesc *window_desc = GENERATE(from_range(std::begin(*_window_descs), std::end(*_window_descs)));
 
 	bool has_inikey = window_desc->ini_key != nullptr;
-	bool has_widget = std::any_of(window_desc->nwid_begin, window_desc->nwid_end, [](const NWidgetPart &part) { return part.type == WWT_DEFSIZEBOX || part.type == WWT_STICKYBOX; });
+	bool has_widget = std::any_of(std::begin(window_desc->nwid_parts), std::end(window_desc->nwid_parts), [](const NWidgetPart &part) { return part.type == WWT_DEFSIZEBOX || part.type == WWT_STICKYBOX; });
 
-	INFO(fmt::format("{}:{}", window_desc->file, window_desc->line));
+	INFO(fmt::format("{}:{}", window_desc->source_location.file_name(), window_desc->source_location.line()));
 	CAPTURE(has_inikey);
 	CAPTURE(has_widget);
 
@@ -60,16 +60,15 @@ TEST_CASE("WindowDesc - ini_key validity")
 /**
  * Test if a NWidgetTree is properly closed, meaning the number of container-type parts matches the number of
  * EndContainer() parts.
- * @param nwid_begin Pointer to beginning of nested widget parts.
- * @param nwid_end Pointer to ending of nested widget parts.
+ * @param nwid_parts Span of nested widget parts.
  * @return True iff nested tree is properly closed.
  */
-static bool IsNWidgetTreeClosed(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end)
+static bool IsNWidgetTreeClosed(std::span<const NWidgetPart> nwid_parts)
 {
 	int depth = 0;
-	for (; nwid_begin < nwid_end; ++nwid_begin) {
-		if (IsContainerWidgetType(nwid_begin->type)) ++depth;
-		if (nwid_begin->type == WPT_ENDCONTAINER) --depth;
+	for (const auto nwid : nwid_parts) {
+		if (IsContainerWidgetType(nwid.type)) ++depth;
+		if (nwid.type == WPT_ENDCONTAINER) --depth;
 	}
 	return depth == 0;
 }
@@ -78,20 +77,20 @@ TEST_CASE("WindowDesc - NWidgetParts properly closed")
 {
 	const WindowDesc *window_desc = GENERATE(from_range(std::begin(*_window_descs), std::end(*_window_descs)));
 
-	INFO(fmt::format("{}:{}", window_desc->file, window_desc->line));
+	INFO(fmt::format("{}:{}", window_desc->source_location.file_name(), window_desc->source_location.line()));
 
-	CHECK(IsNWidgetTreeClosed(window_desc->nwid_begin, window_desc->nwid_end));
+	CHECK(IsNWidgetTreeClosed(window_desc->nwid_parts));
 }
 
 TEST_CASE_METHOD(WindowDescTestsFixture, "WindowDesc - NWidgetPart validity")
 {
 	const WindowDesc *window_desc = GENERATE(from_range(std::begin(*_window_descs), std::end(*_window_descs)));
 
-	INFO(fmt::format("{}:{}", window_desc->file, window_desc->line));
+	INFO(fmt::format("{}:{}", window_desc->source_location.file_name(), window_desc->source_location.line()));
 
 	NWidgetStacked *shade_select = nullptr;
 	std::unique_ptr<NWidgetBase> root = nullptr;
 
-	REQUIRE_NOTHROW(root = MakeWindowNWidgetTree(window_desc->nwid_begin, window_desc->nwid_end, &shade_select));
+	REQUIRE_NOTHROW(root = MakeWindowNWidgetTree(window_desc->nwid_parts, &shade_select));
 	CHECK((root != nullptr));
 }

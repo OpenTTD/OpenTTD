@@ -12,11 +12,16 @@ jobs:
   macos:
     name: MacOS
 
-    runs-on: macos-latest
+    runs-on: macos-14
     env:
       MACOSX_DEPLOYMENT_TARGET: 10.13
 
     steps:
+    - name: Setup Xcode version
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
     - name: Download source
       uses: actions/download-artifact@v4
       with:
@@ -40,6 +45,11 @@ jobs:
           core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
           core.exportVariable('VCPKG_BINARY_SOURCES', 'clear;x-gha,readwrite')
 
+    - name: Install vcpkg
+      run: |
+        git clone https://github.com/microsoft/vcpkg ${{ runner.temp }}/vcpkg
+        ${{ runner.temp }}/vcpkg/bootstrap-vcpkg.sh -disableMetrics
+
     - name: Install dependencies
       env:
         HOMEBREW_NO_AUTO_UPDATE: 1
@@ -52,7 +62,7 @@ jobs:
         echo "::endgroup::"
 
         echo "::group::Install breakpad dependencies"
-        cargo install dump_syms
+        cargo install --locked dump_syms
         echo "::endgroup::"
 
     - name: Install GCC problem matcher
@@ -76,7 +86,7 @@ jobs:
         echo "::endgroup::"
 
     - name: Import code signing certificates
-      uses: Apple-Actions/import-codesign-certs@v2
+      uses: Apple-Actions/import-codesign-certs@v3
       with:
         # The certificates in a PKCS12 file encoded as a base64 string
         p12-file-base64: ${{ secrets.APPLE_DEVELOPER_CERTIFICATE_P12_BASE64 }}
@@ -94,7 +104,7 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -DCMAKE_OSX_ARCHITECTURES=arm64 \
           -DVCPKG_TARGET_TRIPLET=arm64-osx \
-          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
@@ -115,7 +125,7 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -DCMAKE_OSX_ARCHITECTURES=x86_64 \
           -DVCPKG_TARGET_TRIPLET=x64-osx \
-          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \

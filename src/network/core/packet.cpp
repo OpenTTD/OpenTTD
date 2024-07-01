@@ -38,16 +38,24 @@ Packet::Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size)
 
 /**
  * Creates a packet to send
+ * @param cs    The socket handler associated with the socket we are writing to; could be \c nullptr.
  * @param type  The type of the packet to send
  * @param limit The maximum number of bytes the packet may have. Default is COMPAT_MTU.
  *              Be careful of compatibility with older clients/servers when changing
  *              the limit as it might break things if the other side is not expecting
  *              much larger packets than what they support.
  */
-Packet::Packet(PacketType type, size_t limit) : pos(0), limit(limit), cs(nullptr)
+Packet::Packet(NetworkSocketHandler *cs, PacketType type, size_t limit) : pos(0), limit(limit), cs(cs)
 {
 	/* Allocate space for the the size so we can write that in just before sending the packet. */
-	this->Send_uint16(0);
+	size_t size = EncodedLengthOfPacketSize();
+	if (cs != nullptr && cs->send_encryption_handler != nullptr) {
+		/* Allocate some space for the message authentication code of the encryption. */
+		size += cs->send_encryption_handler->MACSize();
+	}
+	assert(this->CanWriteToPacket(size));
+	this->buffer.resize(size, 0);
+
 	this->Send_uint8(type);
 }
 
@@ -57,10 +65,18 @@ Packet::Packet(PacketType type, size_t limit) : pos(0), limit(limit), cs(nullptr
  */
 void Packet::PrepareToSend()
 {
-	assert(this->cs == nullptr);
+	/* Prevent this to be called twice and for packets that have been received. */
+	assert(this->buffer[0] == 0 && this->buffer[1] == 0);
 
 	this->buffer[0] = GB(this->Size(), 0, 8);
 	this->buffer[1] = GB(this->Size(), 8, 8);
+
+	if (cs != nullptr && cs->send_encryption_handler != nullptr) {
+		size_t offset = EncodedLengthOfPacketSize();
+		size_t mac_size = cs->send_encryption_handler->MACSize();
+		size_t message_offset = offset + mac_size;
+		cs->send_encryption_handler->Encrypt(std::span(&this->buffer[offset], mac_size), std::span(&this->buffer[message_offset], this->buffer.size() - message_offset));
+	}
 
 	this->pos  = 0; // We start reading from here
 	this->buffer.shrink_to_fit();
@@ -164,7 +180,7 @@ void Packet::Send_string(const std::string_view data)
  * Copy a sized byte buffer into the packet.
  * @param data The data to send.
  */
-void Packet::Send_buffer(const std::vector<byte> &data)
+void Packet::Send_buffer(const std::vector<uint8_t> &data)
 {
 	assert(this->CanWriteToPacket(sizeof(uint16_t) + data.size()));
 	this->Send_uint16((uint16_t)data.size());
@@ -174,16 +190,15 @@ void Packet::Send_buffer(const std::vector<byte> &data)
 /**
  * Send as many of the bytes as possible in the packet. This can mean
  * that it is possible that not all bytes are sent. To cope with this
- * the function returns the amount of bytes that were actually sent.
- * @param begin The begin of the buffer to send.
- * @param end   The end of the buffer to send.
- * @return The number of bytes that were added to this packet.
+ * the function returns the span of bytes that were not sent.
+ * @param span The span describing the range of bytes to send.
+ * @return The span of bytes that were not written.
  */
-size_t Packet::Send_bytes(const byte *begin, const byte *end)
+std::span<const uint8_t> Packet::Send_bytes(const std::span<const uint8_t> span)
 {
-	size_t amount = std::min<size_t>(end - begin, this->limit - this->Size());
-	this->buffer.insert(this->buffer.end(), begin, begin + amount);
-	return amount;
+	size_t amount = std::min<size_t>(span.size(), this->limit - this->Size());
+	this->buffer.insert(this->buffer.end(), span.data(), span.data() + amount);
+	return span.subspan(amount);
 }
 
 /*
@@ -222,7 +237,7 @@ bool Packet::CanReadFromPacket(size_t bytes_to_read, bool close_connection)
  */
 bool Packet::HasPacketSizeData() const
 {
-	return this->pos >= sizeof(PacketSize);
+	return this->pos >= EncodedLengthOfPacketSize();
 }
 
 /**
@@ -243,27 +258,36 @@ size_t Packet::Size() const
  */
 bool Packet::ParsePacketSize()
 {
-	assert(this->cs != nullptr);
-	size_t size = (size_t)this->buffer[0];
-	size       += (size_t)this->buffer[1] << 8;
+	size_t size = static_cast<size_t>(this->buffer[0]);
+	size       += static_cast<size_t>(this->buffer[1]) << 8;
 
 	/* If the size of the packet is less than the bytes required for the size and type of
 	 * the packet, or more than the allowed limit, then something is wrong with the packet.
 	 * In those cases the packet can generally be regarded as containing garbage data. */
-	if (size < sizeof(PacketSize) + sizeof(PacketType) || size > this->limit) return false;
+	if (size < EncodedLengthOfPacketSize() + EncodedLengthOfPacketType() || size > this->limit) return false;
 
 	this->buffer.resize(size);
-	this->pos = sizeof(PacketSize);
+	this->pos = static_cast<PacketSize>(EncodedLengthOfPacketSize());
 	return true;
 }
 
 /**
  * Prepares the packet so it can be read
+ * @return True when the packet was valid, otherwise false.
  */
-void Packet::PrepareToRead()
+bool Packet::PrepareToRead()
 {
 	/* Put the position on the right place */
-	this->pos = sizeof(PacketSize);
+	this->pos = static_cast<PacketSize>(EncodedLengthOfPacketSize());
+
+	if (cs == nullptr || cs->receive_encryption_handler == nullptr) return true;
+
+	size_t mac_size = cs->receive_encryption_handler->MACSize();
+	if (this->buffer.size() <= pos + mac_size) return false;
+
+	bool valid = cs->receive_encryption_handler->Decrypt(std::span(&this->buffer[pos], mac_size), std::span(&this->buffer[pos + mac_size], this->buffer.size() - pos - mac_size));
+	this->pos += static_cast<PacketSize>(mac_size);
+	return valid;
 }
 
 /**
@@ -272,8 +296,10 @@ void Packet::PrepareToRead()
  */
 PacketType Packet::GetPacketType() const
 {
-	assert(this->Size() >= sizeof(PacketSize) + sizeof(PacketType));
-	return static_cast<PacketType>(buffer[sizeof(PacketSize)]);
+	assert(this->Size() >= EncodedLengthOfPacketSize() + EncodedLengthOfPacketType());
+	size_t offset = EncodedLengthOfPacketSize();
+	if (cs != nullptr && cs->send_encryption_handler != nullptr) offset += cs->send_encryption_handler->MACSize();
+	return static_cast<PacketType>(buffer[offset]);
 }
 
 /**
@@ -356,17 +382,33 @@ uint64_t Packet::Recv_uint64()
  * Extract a sized byte buffer from the packet.
  * @return The extracted buffer.
  */
-std::vector<byte> Packet::Recv_buffer()
+std::vector<uint8_t> Packet::Recv_buffer()
 {
 	uint16_t size = this->Recv_uint16();
 	if (size == 0 || !this->CanReadFromPacket(size, true)) return {};
 
-	std::vector<byte> data;
+	std::vector<uint8_t> data;
 	while (size-- > 0) {
 		data.push_back(this->buffer[this->pos++]);
 	}
 
 	return data;
+}
+
+/**
+ * Extract at most the length of the span bytes from the packet into the span.
+ * @param span The span to write the bytes to.
+ * @return The number of bytes that were actually read.
+ */
+size_t Packet::Recv_bytes(std::span<uint8_t> span)
+{
+	auto tranfer_to_span = [](std::span<uint8_t> destination, const char *source, size_t amount) {
+		size_t to_copy = std::min(amount, destination.size());
+		std::copy(source, source + to_copy, destination.data());
+		return to_copy;
+	};
+
+	return this->TransferOut(tranfer_to_span, span);
 }
 
 /**

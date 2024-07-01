@@ -47,8 +47,8 @@ bool ScriptInfo::CheckMethod(const char *name) const
 		"GetDate",
 		"CreateInstance",
 	};
-	for (size_t i = 0; i < lengthof(required_functions); i++) {
-		if (!info->CheckMethod(required_functions[i])) return SQ_ERROR;
+	for (const auto &required_function : required_functions) {
+		if (!info->CheckMethod(required_function)) return SQ_ERROR;
 	}
 
 	/* Get location information of the scanner */
@@ -87,9 +87,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 	ScriptConfigItem config;
 	uint items = 0;
 
-	int easy_value = INT32_MIN;
 	int medium_value = INT32_MIN;
-	int hard_value = INT32_MIN;
 
 	/* Read the table, and find all properties we care about */
 	sq_pushnull(vm);
@@ -124,9 +122,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 			config.max_value = ClampTo<int32_t>(res);
 			items |= 0x008;
 		} else if (key == "easy_value") {
-			SQInteger res;
-			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			easy_value = ClampTo<int32_t>(res);
+			// No longer parsed.
 			items |= 0x010;
 		} else if (key == "medium_value") {
 			SQInteger res;
@@ -134,9 +130,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 			medium_value = ClampTo<int32_t>(res);
 			items |= 0x020;
 		} else if (key == "hard_value") {
-			SQInteger res;
-			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			hard_value = ClampTo<int32_t>(res);
+			// No longer parsed.
 			items |= 0x040;
 		} else if (key == "custom_value") {
 			// No longer parsed.
@@ -146,10 +140,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 			config.default_value = ClampTo<int32_t>(res);
 			items |= 0x080;
 		} else if (key == "random_deviation") {
-			SQInteger res;
-			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.random_deviation = ClampTo<int32_t>(abs(res));
-			items |= 0x200;
+			// No longer parsed.
 		} else if (key == "step_size") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
@@ -179,26 +170,11 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		}
 
 		config.default_value = medium_value;
-		/* If not boolean and no random deviation set, calculate it based on easy/hard difference. */
-		if ((config.flags & SCRIPTCONFIG_BOOLEAN) == 0 && (items & 0x200) == 0) {
-			config.random_deviation = abs(hard_value - easy_value) / 2;
-			items |= 0x200;
-		}
 		items |= 0x080;
 	} else {
 		/* For compatibility, also act like the default sets the easy/medium/hard. */
 		items |= 0x010 | 0x020 | 0x040;
 	}
-
-	/* Don't allow both random_deviation and SCRIPTCONFIG_BOOLEAN to
-	 * be set for the same config item. */
-	if ((items & 0x200) != 0 && (config.flags & SCRIPTCONFIG_BOOLEAN) != 0) {
-		this->engine->ThrowError("setting both random_deviation and CONFIG_BOOLEAN is not allowed");
-		return SQ_ERROR;
-	}
-
-	/* Reset the bit for random_deviation as it's optional. */
-	items &= ~0x200;
 
 	/* Make sure all properties are defined */
 	uint mask = (config.flags & SCRIPTCONFIG_BOOLEAN) ? 0x1F3 : 0x1FF;

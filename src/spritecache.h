@@ -19,7 +19,7 @@ struct Sprite {
 	uint16_t width;  ///< Width of the sprite.
 	int16_t x_offs;  ///< Number of pixels to shift the sprite to the right.
 	int16_t y_offs;  ///< Number of pixels to shift the sprite downwards.
-	byte data[];   ///< Sprite data.
+	uint8_t data[];   ///< Sprite data.
 };
 
 enum SpriteCacheCtrlFlags {
@@ -31,10 +31,21 @@ enum SpriteCacheCtrlFlags {
 
 extern uint _sprite_cache_size;
 
-typedef void *AllocatorProc(size_t size);
+/** SpriteAllocate that uses malloc to allocate memory. */
+class SimpleSpriteAllocator : public SpriteAllocator {
+protected:
+	void *AllocatePtr(size_t size) override;
+};
 
-void *SimpleSpriteAlloc(size_t size);
-void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator = nullptr, SpriteEncoder *encoder = nullptr);
+/** SpriteAllocator that allocates memory via a unique_ptr array. */
+class UniquePtrSpriteAllocator : public SpriteAllocator {
+public:
+	std::unique_ptr<uint8_t[]> data;
+protected:
+	void *AllocatePtr(size_t size) override;
+};
+
+void *GetRawSprite(SpriteID sprite, SpriteType type, SpriteAllocator *allocator = nullptr, SpriteEncoder *encoder = nullptr);
 bool SpriteExists(SpriteID sprite);
 
 SpriteType GetSpriteType(SpriteID sprite);
@@ -50,10 +61,10 @@ inline const Sprite *GetSprite(SpriteID sprite, SpriteType type)
 	return (Sprite*)GetRawSprite(sprite, type);
 }
 
-inline const byte *GetNonSprite(SpriteID sprite, SpriteType type)
+inline const uint8_t *GetNonSprite(SpriteID sprite, SpriteType type)
 {
 	assert(type == SpriteType::Recolour);
-	return (byte*)GetRawSprite(sprite, type);
+	return (uint8_t*)GetRawSprite(sprite, type);
 }
 
 void GfxInitSpriteMem();
@@ -62,11 +73,12 @@ void GfxClearFontSpriteCache();
 void IncreaseSpriteLRU();
 
 SpriteFile &OpenCachedSpriteFile(const std::string &filename, Subdirectory subdir, bool palette_remap);
+std::span<const std::unique_ptr<SpriteFile>> GetCachedSpriteFiles();
 
 void ReadGRFSpriteOffsets(SpriteFile &file);
 size_t GetGRFSpriteOffset(uint32_t id);
 bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id);
-bool SkipSpriteData(SpriteFile &file, byte type, uint16_t num);
+bool SkipSpriteData(SpriteFile &file, uint8_t type, uint16_t num);
 void DupSprite(SpriteID old_spr, SpriteID new_spr);
 
 #endif /* SPRITECACHE_H */

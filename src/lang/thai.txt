@@ -385,6 +385,7 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :ออกจา
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :ออก
 
+
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ตัวเลือกเกม
@@ -863,7 +864,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}หน�
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}การเลือกสกุลเงิน
 
 
-###length 43
+###length 44
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :ปอนด์สเตอร์ลิง
 STR_GAME_OPTIONS_CURRENCY_USD                                   :ดอลลาร์สหรัฐ
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :ยูโร
@@ -946,6 +947,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}ข้�
 
 
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullscreen โหมดล้มเหลว
 
 # Custom currency window
@@ -955,6 +957,7 @@ STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}อั�
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}ลดจํานวนสกุลเงินของคุณสำหรับหนึ่งปอนด์ (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}เพิ่มจำนวนสกุลเงินของคุณสำหรับหนึ่งปอนด์ (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}กำหนดอัตราแลกเปลี่ยนของสกุลเงินหนึ่งปอนด์ (£)
+
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}คำนำหน้า: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}สัญลักษณ์หน้าสกุลเงินของท่าน
@@ -1291,6 +1294,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :เตือน
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :เมื่อเปิดใช้งาน จะแสดงข้อความแจ้งเตือนเมื่อพาหนะไม่สามารถทำกำไรได้เมื่อครบกำหนดสิ้นปี
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :ยานพาหนะไม่หมดอายุ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :เมื่อเปิดใช้งาน พาหนะทั้งหมดจะยังสามารถซื้อได้ตลอดไปหลังจากหมดช่วงระยะเวลา
 
@@ -1574,7 +1578,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :ตั้งค
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :ตั้งค่าแรกเริ่มสำหรับการเข้าซ่อมบำรุงสำหรับอากาศยาน เป็นหน่วยวัน หรือหากเลือกการตั้งค่าโดยคิดจากเปอร์เซนต์ของประสิทธิภาพ จะเปลี่ยนไปใช้่หน่วยเปอร์เซนต์แทน
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :ตั้งค่าแรกเริ่มสำหรับการเข้าซ่อมบำรุงของพาหนะทางน้ำ: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :ตั้งค่าแรกเริ่มสำหรับการเข้าซ่อมบำรุงสำหรับพาหนะทางน้ำ เป็นหน่วยวัน หรือหากเลือกการตั้งค่าโดยคิดจากเปอร์เซนต์ของประสิทธิ์ภาพ จะเปลี่ยนไปใช้่หน่วยเปอร์เซนต์แทน
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} วัน/%
+###length 3
+
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :ไม่ตั้ง
 
@@ -1837,17 +1842,8 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :การกร
 STR_CONFIG_SETTING_AI                                           :คู่แข่ง
 STR_CONFIG_SETTING_AI_NPC                                       :ผู้เล่นคอมพิวเตอร์
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :ตัวค้นหาเส้นทางสำหรับรถไฟ: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :การหาค้นหาเส้นทางของขบวนรถไฟ
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :ตัวค้นหาเส้นทางสำหรับรถยนต์: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :การค้นหาเส้นทางของยานพาหนะทางบก
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :ตัวค้นหาเส้นทางสำหรับเรือ: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :การค้นหาเส้นทางของยานพาหนะทางน้ำ
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :หมุนกลับขบวนอัตโนมัติที่เสาอาณัติสัญญาณ: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :อนุญาตให้ขบวนรถไฟกลับขบวนที่เสาอาณัติสัญญาณเมื่อมีการรอสัญญาณอนุญาตเป็นเวลานาน
-###length 2
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(แนะนำ)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}เปลี่ยนค่าการตั้งค่า
 
@@ -2125,7 +2121,6 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}รว�
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}ตัดการเชื่อมต่อ
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}เซิฟเวอร์มีการป้องกัน กรุณากรอกพาสเวิร์ด
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}บริษัทมีการป้องกัน. กรุณากรอกพาสเวิร์ด
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :รายชื่อผู้เล่นที่ออนไลน์
@@ -2150,7 +2145,6 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Behind N
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}ทางรีเลย์
 
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :ลบ
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :ปลดล็อครหัสผ่าน
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}คุณแน่ใจว่าจะเตะผู้เล่น '{STRING}' ใช่มั้ย?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}คุณแน่ใจหรือไม่ที่จะแบนผู้เล่น '{STRING}' คนนี้?
@@ -2162,19 +2156,9 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}ใช�
 
 STR_NETWORK_SPECTATORS                                          :ผู้ชม
 
-# Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}ไม่ทำการเก็บพาสเวิร์ดที่กรอกไว้แล้ว
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}ตั้งพาสเวิร์ดของบริษัทใหม่
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}พาสเวิร์ดของบริษัท
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}พาสเวิร์ดตั้งต้นของบริษัท
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}ใช้พาสเวิร์ดของบริษัทนี้เป็นพาสเวิร์ดตั้งต้นของบริษัทใหม่
-
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}เข้าร่วม
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}เข้าร่วมและเล่นเป็นบริษัทนี้
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}พาสเวิร์ด
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}รหัสผ่านป้องกันบริษัทของคุณจากผู้เล่นที่ไม่ได้รับอนุญาตให้เข้าร่วม
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}ตั้งพาสเวิร์ดของบริษัท
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}ส่ง
@@ -2216,7 +2200,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}ชื�
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}การเชื่อมต่อล้มเหลว
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}{NUM} วินาทีสุดท้ายไม่มีข้อมูลส่งถึงเครื่องแม่ข่าย
 
-###length 21
+###length 22
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :การผิดพลาดทั่วไป
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desync ผิดพลาด
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :ไม่สามารถโหลดแผนที่ได้
@@ -2416,7 +2400,6 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}เล�
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}จุดตรวจ
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}เลือกชนิดของจุดตรวจ
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}ตัวเลือกของสถานีรถไฟ
@@ -2429,8 +2412,9 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}เล�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}ลากและวาง
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}สร้างสถานีโดยใช้การลากและวาง
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}เลือกชนิดของสถานีที่จะแสดง
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}เลือกชนิดของสถานีที่จะสร้าง
+
+
+
 
 STR_STATION_CLASS_DFLT                                          :สถานีมาตรฐาน
 STR_STATION_CLASS_WAYP                                          :จุดตรวจ
@@ -2563,8 +2547,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}ซื�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}การเลือกวัตถุ
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}เลือกวัตถุเพื่อสร้าง กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้างและการแสดงมูลค่าโดยประมาณ
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}เลือกชนิดของวัตถุที่จะสร้าง
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}ตัวอย่างวัตถุ
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}ขนาด: {GOLD}{NUM} x {NUM} ช่อง
 
@@ -2669,7 +2651,6 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}ผู�
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}ผู้ครอบครองทางรถไฟ: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}ขึ้นตรงกับผู้ดูแลในท้องถิ่น: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :ไม่มี
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}ตำแหน่ง: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}สร้างเมื่อ: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}ประเภทของสถานี: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}รูปแบบของสถานี: {LTBLUE}{STRING}
@@ -2930,9 +2911,9 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}เครื่องมือสร้างแผนที่
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}สร้างแม่น้ำ
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}สร้างต้นไม่
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}สร้างวัตถุ
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}สร้างพื้นหิน
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}สร้างวัตถุ
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}สร้างต้นไม่
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}ตั้งค่าให้กับเกม
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Running tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Running script
@@ -3014,7 +2995,6 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :ประเภ
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF ตัวแปร 60+x parameter (hexadecimal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aligning sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}sprite ถัดไป
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}เคลื่อนไปยัง sprite ปกติอันถัดไป โดยข้าม pseudo/recolour/font และวกกลับเมื่อถึงจุดสิ้นสุด
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}ไปยัง sprite
@@ -3119,7 +3099,6 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}ไป�
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}กรอกชื่อสำหรับป้าย
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}เมือง
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- ไม่มี -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (เมือง){BLACK} ({COMMA})
@@ -3404,7 +3383,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}ชิ�
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}ท่าอากาศยาน
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}อุตสาหกรรม
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- ไม่มี -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
@@ -4242,9 +4220,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}รา�
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}ขณะนี้กำลังบันทึก,{}โปรดรอจนกว่าจะเสร็จ!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}บันทึกอัตโนมัติล้มเหลว!!!
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}ไม่สามารถอ่านข้อมูลได้
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}บันทึกเกมล้มเหลว!!!{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}ไม่สามารถทำการลบไฟล์
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}โหลดเกมล้มเหลว{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :ข้อผิดพลาดจากภายใน: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :เกมที่บันทึกไว้ เสีย - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :เกมที่บันทึกไว้ สำหรับเวอร์ชันใหม่
@@ -4603,6 +4579,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}ไม�
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}เปลี่ยนการกำหนดค่าสำหรับ NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}ยังไม่มียานพาหานะให้เลือก
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}เริ่มเกมหลังจาก {DATE_SHORT} หรือเลือกใช้งาน NewGRF ของยานพาหนะที่จัดเตรียมไว้ก่อนหน้านี้
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}ไม่สามารถสั่งให้รถไฟวิ่งผ่านเสาอาณัติสัญญาณที่แสดงท่า "ห้าม"...
@@ -5113,6 +5090,7 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
