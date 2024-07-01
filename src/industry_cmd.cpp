@@ -1102,7 +1102,7 @@ void PlantRandomFarmField(const Industry *i)
  */
 static bool SearchLumberMillTrees(TileIndex tile, void *)
 {
-	if (IsTileType(tile, MP_TREES) && GetTreeGrowth(tile) > 2) { ///< 3 and up means all fully grown trees
+	if (IsTileType(tile, MP_TREES) && GetTreeGrowth(tile) >= TreeGrowthStage::Grown) {
 		/* found a tree */
 
 		Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
