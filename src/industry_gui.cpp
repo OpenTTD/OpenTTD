@@ -375,7 +375,7 @@ class BuildIndustryWindow : public Window {
 
 		std::string cargostring;
 		size_t numcargo = 0;
-		size_t firstcargo;
+		size_t firstcargo = 0;
 
 		for (size_t j = 0; j < cargolist.size(); j++) {
 			if (!IsValidCargoID(cargolist[j])) continue;
