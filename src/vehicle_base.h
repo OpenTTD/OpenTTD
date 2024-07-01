@@ -254,7 +254,7 @@ private:
 
 public:
 	friend void FixOldVehicles();
-	friend void AfterLoadVehicles(bool part_of_load);             ///< So we can set the #previous and #first pointers while loading
+	friend void AfterLoadVehiclesPhase1(bool part_of_load);       ///< So we can set the #previous and #first pointers while loading
 	friend bool LoadOldVehicle(LoadgameState *ls, int num);       ///< So we can set the proper next pointer while loading
 	/* So we can use private/protected variables in the saveload code */
 	friend class SlVehicleCommon;
