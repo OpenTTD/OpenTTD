@@ -206,9 +206,6 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 	if ([ this->window respondsToSelector:@selector(toggleFullScreen:) ]) {
 		[ this->window performSelector:@selector(toggleFullScreen:) withObject:this->window ];
 
-		/* Hide the menu bar and the dock */
-		[ NSMenu setMenuBarVisible:!full_screen ];
-
 		this->UpdateVideoModes();
 		InvalidateWindowClassesData(WC_GAME_OPTIONS, 3);
 		return true;
