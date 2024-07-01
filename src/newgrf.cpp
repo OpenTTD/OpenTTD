@@ -2891,14 +2891,14 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 					if (prop == 0x13) {
 						map.openttd_id = lang->GetGenderIndex(name.data());
 						if (map.openttd_id >= MAX_NUM_GENDERS) {
-							GrfMsg(1, "GlobalVarChangeInfo: Gender name {} is not known, ignoring", name);
+							GrfMsg(1, "GlobalVarChangeInfo: Gender name {} is not known, ignoring", StrMakeValid(name));
 						} else {
 							_cur.grffile->language_map[curidx].gender_map.push_back(map);
 						}
 					} else {
 						map.openttd_id = lang->GetCaseIndex(name.data());
 						if (map.openttd_id >= MAX_NUM_CASES) {
-							GrfMsg(1, "GlobalVarChangeInfo: Case name {} is not known, ignoring", name);
+							GrfMsg(1, "GlobalVarChangeInfo: Case name {} is not known, ignoring", StrMakeValid(name));
 						} else {
 							_cur.grffile->language_map[curidx].case_map.push_back(map);
 						}
@@ -6261,7 +6261,7 @@ static void FeatureNewName(ByteReader &buf)
 
 	for (; id < endid && buf.HasData(); id++) {
 		const std::string_view name = buf.ReadString();
-		GrfMsg(8, "FeatureNewName: 0x{:04X} <- {}", id, name);
+		GrfMsg(8, "FeatureNewName: 0x{:04X} <- {}", id, StrMakeValid(name));
 
 		switch (feature) {
 			case GSF_TRAINS:
@@ -6985,7 +6985,7 @@ static void ScanInfo(ByteReader &buf)
 
 	if (grf_version < 2 || grf_version > 8) {
 		SetBit(_cur.grfconfig->flags, GCF_INVALID);
-		Debug(grf, 0, "{}: NewGRF \"{}\" (GRFID {:08X}) uses GRF version {}, which is incompatible with this version of OpenTTD.", _cur.grfconfig->filename, name, BSWAP32(grfid), grf_version);
+		Debug(grf, 0, "{}: NewGRF \"{}\" (GRFID {:08X}) uses GRF version {}, which is incompatible with this version of OpenTTD.", _cur.grfconfig->filename, StrMakeValid(name), BSWAP32(grfid), grf_version);
 	}
 
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
@@ -7030,7 +7030,7 @@ static void GRFInfo(ByteReader &buf)
 	_cur.grfconfig->status = _cur.stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
-	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, BSWAP32(grfid), name, (_cur.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur.grfconfig->version);
+	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, BSWAP32(grfid), StrMakeValid(name), (_cur.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur.grfconfig->version);
 }
 
 /**
@@ -7228,7 +7228,7 @@ static void GRFComment(ByteReader &buf)
 	if (!buf.HasData()) return;
 
 	std::string_view text = buf.ReadString();
-	GrfMsg(2, "GRFComment: {}", text);
+	GrfMsg(2, "GRFComment: {}", StrMakeValid(text));
 }
 
 /* Action 0x0D (GLS_SAFETYSCAN) */
