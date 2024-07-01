@@ -3453,7 +3453,7 @@ STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}文件�
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}版本：{SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}最低兼容版本：{SILVER}{NUM}
-STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 码：{SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5码：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}调色板：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :默认 (DOS)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :默认 (DOS) / 32 bpp
