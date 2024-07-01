@@ -29,7 +29,7 @@
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "window_func.h"
-#include "timer/timer_game_calendar.h"
+#include "timer/timer.h"
 #include "company_func.h"
 #include "gamelog.h"
 #include "ai/ai.hpp"
@@ -52,6 +52,24 @@
 
 /* scriptfile handling */
 static uint _script_current_depth; ///< Depth of scripts running (used to abort execution when #ConReturn is encountered).
+
+/* Scheduled execution handling. */
+static std::string _scheduled_monthly_script; ///< Script scheduled to execute by the 'schedule' console command (empty if no script is scheduled).
+
+/** Timer that runs every month of game time for the 'schedule' console command. */
+static IntervalTimer<TimerGameCalendar> _scheduled_monthly_timer = {{TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [](auto) {
+	if (_scheduled_monthly_script.empty()) {
+		return;
+	}
+
+	/* Clear the schedule before rather than after the script to allow the script to itself call
+	 * schedule without it getting immediately cleared. */
+	const std::string filename = _scheduled_monthly_script;
+	_scheduled_monthly_script.clear();
+
+	IConsolePrint(CC_DEFAULT, "Executing scheduled script file '{}'...", filename);
+	IConsoleCmdExec(std::string("exec") + " " + filename);
+}};
 
 /** File list storage for the console, for caching the last 'ls' command. */
 class ConsoleFileList : public FileList {
@@ -1151,6 +1169,35 @@ DEF_CONSOLE_CMD(ConExec)
 
 	if (_script_current_depth == script_depth) _script_current_depth--;
 	FioFCloseFile(script_file);
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConSchedule)
+{
+	if (argc < 3 || std::string_view(argv[1]) != "on-next-calendar-month") {
+		IConsolePrint(CC_HELP, "Schedule a local script to execute later. Usage: 'schedule on-next-calendar-month <script>'.");
+		return true;
+	}
+
+	/* Check if the file exists. It might still go away later, but helpful to show an error now. */
+	if (!FioCheckFileExists(argv[2], BASE_DIR)) {
+		IConsolePrint(CC_ERROR, "Script file '{}' not found.", argv[2]);
+		return true;
+	}
+
+	/* We only support a single script scheduled, so we tell the user what's happening if there was already one. */
+	const std::string_view filename = std::string_view(argv[2]);
+	if (!_scheduled_monthly_script.empty() && filename == _scheduled_monthly_script) {
+		IConsolePrint(CC_INFO, "Script file '{}' was already scheduled to execute at the start of next calendar month.", filename);
+	} else if (!_scheduled_monthly_script.empty() && filename != _scheduled_monthly_script) {
+		IConsolePrint(CC_INFO, "Script file '{}' scheduled to execute at the start of next calendar month, replacing the previously scheduled script file '{}'.", filename, _scheduled_monthly_script);
+	} else {
+		IConsolePrint(CC_INFO, "Script file '{}' scheduled to execute at the start of next calendar month.", filename);
+	}
+
+	/* Store the filename to be used by _schedule_timer on the start of next calendar month. */
+	_scheduled_monthly_script = filename;
+
 	return true;
 }
 
@@ -2721,6 +2768,7 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("echo",                    ConEcho);
 	IConsole::CmdRegister("echoc",                   ConEchoC);
 	IConsole::CmdRegister("exec",                    ConExec);
+	IConsole::CmdRegister("schedule",                ConSchedule);
 	IConsole::CmdRegister("exit",                    ConExit);
 	IConsole::CmdRegister("part",                    ConPart);
 	IConsole::CmdRegister("help",                    ConHelp);
