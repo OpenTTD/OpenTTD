@@ -228,11 +228,10 @@ inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
 	}
 }
 
-uint GetFontCacheFontSize(FontSize fs);
-std::string GetFontCacheFontName(FontSize fs);
-
 void DebugPrintFontSettings(const std::string &desc);
 bool GetFontAAState();
+std::string GetFontCacheFontName(FontSize fs);
+uint GetFontCacheFontSize(FontSize fs);
 void InitFontCache();
 bool IsDefaultFont(const FontCacheSubSetting &setting);
 void ResizeFont(FontSize font_size, uint size);
