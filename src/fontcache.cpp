@@ -89,14 +89,6 @@ int GetCharacterHeight(FontSize size)
 
 /* static */ void FontCache::InitializeFontCaches()
 {
-	/* Ensure SpriteFontCache is present for each size. */
-	for (FontSize fs = FS_BEGIN; fs != FS_END; fs++) {
-
-		if (std::any_of(std::begin(FontCache::caches), std::end(FontCache::caches),
-				[fs](const auto &fc) { return fc != nullptr && fc->fs == fs && fc->IsBuiltInFont(); })) continue;
-
-		new SpriteFontCache(fs); /* FontCache inserts itself into to the cache. */
-	}
 }
 
 /* Check if a glyph should be rendered with anti-aliasing. */
@@ -248,21 +240,15 @@ void InitFontCache(bool monospace)
 
 		Layouter::ResetFontCache(fs);
 		FontCache::character_to_fontcache[fs].clear();
+		FontCache::sprite_font_index[fs] = INVALID_FONT_INDEX;
+		FontCache::default_font_index[fs] = INVALID_FONT_INDEX;
 	}
 
-	FontCache::InitializeFontCaches();
-
-	/* Remove all non-built-in FontCaches. */
+	/* Remove all existing FontCaches. */
 	for (auto it = std::begin(FontCache::caches); it != std::end(FontCache::caches); ++it) {
 		if (*it == nullptr) continue;
 		if (monospace != ((*it)->fs == FS_MONO)) continue;
-		if (!(*it)->IsBuiltInFont()) {
-			it->reset();
-		} else {
-			/* This is now the default font for this size. */
-			FontCache::default_font_index[(*it)->fs] = (*it)->GetIndex();
-			(*it)->UpdateCharacterMap();
-		}
+		it->reset();
 	}
 
 	std::regex re("([^;]+)");
@@ -288,9 +274,8 @@ void InitFontCache(bool monospace)
 			std::string &f = *it;
 			StrTrimInPlace(f);
 			if (f == "default") {
-				if (_fcsettings.prefer_sprite) {
-					FontCache::GetSpriteFontCache(fs)->UpdateCharacterMap();
-				} else {
+				new SpriteFontCache(fs);
+				if (!_fcsettings.prefer_sprite) {
 					LoadFont(fs, "default", false, GetDefaultTruetypeFontFile(fs), {});
 				}
 			} else {
