@@ -41,6 +41,7 @@
 #include "timer/timer_game_tick.h"
 
 #include "widgets/statusbar_widget.h"
+#include "window_type.h"
 
 #include "table/strings.h"
 
@@ -90,7 +91,7 @@ Company::~Company()
  */
 void Company::PostDestructor(size_t index)
 {
-	InvalidateWindowData(WC_GRAPH_LEGEND, 0, (int)index);
+	InvalidateWindowData(WC_GRAPH_LEGEND, WN_GRAPH_SELECTOR_WINDOW_COMPANY, (int)index);
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, (int)index);
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 	InvalidateWindowData(WC_LINKGRAPH_LEGEND, 0);
@@ -622,7 +623,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 
 	GeneratePresidentName(c);
 
-	SetWindowDirty(WC_GRAPH_LEGEND, 0);
+	InvalidateWindowData(WC_GRAPH_LEGEND, WN_GRAPH_SELECTOR_WINDOW_COMPANY);
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
 	InvalidateWindowData(WC_LINKGRAPH_LEGEND, 0);
 	BuildOwnerLegend();
@@ -1131,6 +1132,7 @@ CommandCost CmdSetCompanyColour(DoCommandFlag flags, LiveryScheme scheme, bool p
 		InvalidateWindowData(WC_PERFORMANCE_HISTORY, 0);
 		InvalidateWindowData(WC_COMPANY_VALUE, 0);
 		InvalidateWindowData(WC_LINKGRAPH_LEGEND, 0);
+		InvalidateWindowData(WC_GRAPH_LEGEND, WN_GRAPH_SELECTOR_WINDOW_COMPANY);
 		/* The smallmap owner view also stores the company colours. */
 		BuildOwnerLegend();
 		InvalidateWindowData(WC_SMALLMAP, 0, 1);
