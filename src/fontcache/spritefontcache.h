@@ -13,12 +13,12 @@
 #include "../string_func.h"
 #include "../fontcache.h"
 
+using GlyphMap = std::unordered_map<GlyphID, SpriteID>; ///< Mapping of glyphs to sprite IDs.
+
 /** Font cache for fonts that are based on a freetype font. */
 class SpriteFontCache : public FontCache {
 public:
 	SpriteFontCache(FontSize fs);
-	void SetUnicodeGlyph(char32_t key, SpriteID sprite) override;
-	void InitializeUnicodeGlyphMap() override;
 	void ClearFontCache() override;
 	const Sprite *GetGlyph(GlyphID key) override;
 	uint GetGlyphWidth(GlyphID key) override;
@@ -28,7 +28,7 @@ public:
 	bool IsBuiltInFont() override { return true; }
 
 private:
-	std::unordered_map<GlyphID, SpriteID> glyph_to_spriteid_map{}; ///< Mapping of glyphs to sprite IDs.
+	const GlyphMap &glyph_map;
 	SpriteID GetUnicodeGlyph(GlyphID key);
 };
 

@@ -21,6 +21,8 @@
 
 static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 
+static std::array<GlyphMap, FS_END> _glyph_maps{}; ///< Glyph map for each font size.
+
 /**
  * Scale traditional pixel dimensions to font zoom level, for drawing sprite fonts.
  * @param value Pixel amount at #ZOOM_BASE (traditional "normal" interface size).
@@ -35,9 +37,8 @@ static int ScaleFontTrad(int value)
  * Create a new sprite font cache.
  * @param fs The font size to create the cache for.
  */
-SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs)
+SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs), glyph_map(_glyph_maps[fs])
 {
-	this->InitializeUnicodeGlyphMap();
 	this->height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
 	this->ascender = (this->height - ScaleFontTrad(FontCache::GetDefaultFontHeight(this->fs))) / 2;
 }
@@ -49,49 +50,9 @@ SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs)
  */
 SpriteID SpriteFontCache::GetUnicodeGlyph(GlyphID key)
 {
-	const auto found = this->glyph_to_spriteid_map.find(key & ~SPRITE_GLYPH);
-	if (found == std::end(this->glyph_to_spriteid_map)) return 0;
+	const auto found = this->glyph_map.find(key & ~SPRITE_GLYPH);
+	if (found == std::end(this->glyph_map)) return 0;
 	return found->second;
-}
-
-void SpriteFontCache::SetUnicodeGlyph(char32_t key, SpriteID sprite)
-{
-	this->glyph_to_spriteid_map[key] = sprite;
-}
-
-void SpriteFontCache::InitializeUnicodeGlyphMap()
-{
-	/* Clear out existing glyph map if it exists */
-	this->glyph_to_spriteid_map.clear();
-
-	SpriteID base;
-	switch (this->fs) {
-		default: NOT_REACHED();
-		case FS_MONO:   // Use normal as default for mono spaced font
-		case FS_NORMAL: base = SPR_ASCII_SPACE;       break;
-		case FS_SMALL:  base = SPR_ASCII_SPACE_SMALL; break;
-		case FS_LARGE:  base = SPR_ASCII_SPACE_BIG;   break;
-	}
-
-	for (uint i = ASCII_LETTERSTART; i < 256; i++) {
-		SpriteID sprite = base + i - ASCII_LETTERSTART;
-		if (!SpriteExists(sprite)) continue;
-		this->SetUnicodeGlyph(i, sprite);
-		this->SetUnicodeGlyph(i + SCC_SPRITE_START, sprite);
-	}
-
-	for (const auto &unicode_map : _default_unicode_map) {
-		uint8_t key = unicode_map.key;
-		if (key == CLRA) {
-			/* Clear the glyph. This happens if the glyph at this code point
-			 * is non-standard and should be accessed by an SCC_xxx enum
-			 * entry only. */
-			this->SetUnicodeGlyph(unicode_map.code, 0);
-		} else {
-			SpriteID sprite = base + key - ASCII_LETTERSTART;
-			this->SetUnicodeGlyph(unicode_map.code, sprite);
-		}
-	}
 }
 
 void SpriteFontCache::ClearFontCache()
@@ -126,4 +87,64 @@ GlyphID SpriteFontCache::MapCharToGlyph(char32_t key, [[maybe_unused]] bool allo
 bool SpriteFontCache::GetDrawGlyphShadow()
 {
 	return false;
+}
+
+/**
+ * Map a SpriteID to the font size and key.
+ * @param fs Font size to map.
+ * @param key Unicode character to map.
+ * @param sprite SpriteID of character.
+ */
+void SetUnicodeGlyph(FontSize fs, char32_t key, SpriteID sprite)
+{
+	_glyph_maps[fs][key] = sprite;
+}
+
+/**
+ * Initialize the glyph map for a font size.
+ * @param fs Font size to initialize.
+ */
+void InitializeUnicodeGlyphMap(FontSize fs)
+{
+	/* Clear existing glyph map. */
+	_glyph_maps[fs].clear();
+
+	SpriteID base;
+	switch (fs) {
+		default: NOT_REACHED();
+		case FS_MONO:   // Use normal as default for mono spaced font
+		case FS_NORMAL: base = SPR_ASCII_SPACE;       break;
+		case FS_SMALL:  base = SPR_ASCII_SPACE_SMALL; break;
+		case FS_LARGE:  base = SPR_ASCII_SPACE_BIG;   break;
+	}
+
+	for (uint i = ASCII_LETTERSTART; i < 256; i++) {
+		SpriteID sprite = base + i - ASCII_LETTERSTART;
+		if (!SpriteExists(sprite)) continue;
+		SetUnicodeGlyph(fs, i, sprite);
+		SetUnicodeGlyph(fs, i + SCC_SPRITE_START, sprite);
+	}
+
+	for (const auto &unicode_map : _default_unicode_map) {
+		uint8_t key = unicode_map.key;
+		if (key == CLRA) {
+			/* Clear the glyph. This happens if the glyph at this code point
+			 * is non-standard and should be accessed by an SCC_xxx enum
+			 * entry only. */
+			SetUnicodeGlyph(fs, unicode_map.code, 0);
+		} else {
+			SpriteID sprite = base + key - ASCII_LETTERSTART;
+			SetUnicodeGlyph(fs, unicode_map.code, sprite);
+		}
+	}
+}
+
+/**
+ * Initialize the glyph map.
+ */
+void InitializeUnicodeGlyphMap()
+{
+	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+		InitializeUnicodeGlyphMap(fs);
+	}
 }
