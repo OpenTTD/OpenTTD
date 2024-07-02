@@ -251,8 +251,8 @@ static void CheckValidVehicles()
 
 extern uint8_t _age_cargo_skip_counter; // From misc_sl.cpp
 
-/** Called after load to update coordinates */
-void AfterLoadVehicles(bool part_of_load)
+/** Called after load for phase 1 of vehicle initialisation */
+void AfterLoadVehiclesPhase1(bool part_of_load)
 {
 	for (Vehicle *v : Vehicle::Iterate()) {
 		/* Reinstate the previous pointer */
@@ -408,9 +408,13 @@ void AfterLoadVehicles(bool part_of_load)
 	}
 
 	CheckValidVehicles();
+}
 
+/** Called after load for phase 2 of vehicle initialisation */
+void AfterLoadVehiclesPhase2(bool part_of_load)
+{
 	for (Vehicle *v : Vehicle::Iterate()) {
-		assert(v->first != nullptr);
+		assert(v->First() != nullptr);
 
 		v->trip_occupancy = CalcPercentVehicleFilled(v, nullptr);
 
