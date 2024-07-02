@@ -65,16 +65,6 @@ public:
 	 */
 	virtual int GetFontSize() const { return this->height; }
 
-	/**
-	 * Map a SpriteID to the key
-	 * @param key The key to map to.
-	 * @param sprite The sprite that is being mapped.
-	 */
-	virtual void SetUnicodeGlyph(char32_t key, SpriteID sprite) = 0;
-
-	/** Initialize the glyph map */
-	virtual void InitializeUnicodeGlyphMap() = 0;
-
 	/** Clear the font cache. */
 	virtual void ClearFontCache() = 0;
 
@@ -148,20 +138,6 @@ public:
 	virtual bool IsBuiltInFont() = 0;
 };
 
-/** Map a SpriteID to the font size and key */
-inline void SetUnicodeGlyph(FontSize size, char32_t key, SpriteID sprite)
-{
-	FontCache::Get(size)->SetUnicodeGlyph(key, sprite);
-}
-
-/** Initialize the glyph map */
-inline void InitializeUnicodeGlyphMap()
-{
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		FontCache::Get(fs)->InitializeUnicodeGlyphMap();
-	}
-}
-
 inline void ClearFontCache(FontSizes fontsizes)
 {
 	for (FontSize fs : fontsizes) {
@@ -231,5 +207,9 @@ void UninitFontCache();
 
 bool GetFontAAState();
 void SetFont(FontSize fontsize, const std::string &font, uint size);
+
+/* Implemented in spritefontcache.cpp */
+void InitializeUnicodeGlyphMap();
+void SetUnicodeGlyph(FontSize size, char32_t key, SpriteID sprite);
 
 #endif /* FONTCACHE_H */
