@@ -523,6 +523,8 @@ static std::optional<std::string_view> InitializeSDL()
 	/* Check if the video-driver is already initialized. */
 	if (SDL_WasInit(SDL_INIT_VIDEO) != 0) return std::nullopt;
 
+	SDL_SetHint(SDL_HINT_APP_NAME, "OpenTTD");
+
 	if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) return SDL_GetError();
 	return std::nullopt;
 }
