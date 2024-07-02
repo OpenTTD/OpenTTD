@@ -2158,15 +2158,13 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileInd
 		Town *t;
 		if (random_location) {
 			t = CreateRandomTown(20, townnameparts, size, city, layout);
-			if (t == nullptr) {
-				cost = CommandCost(STR_ERROR_NO_SPACE_FOR_TOWN);
-			} else {
-				new_town = t->index;
-			}
+			if (t == nullptr) return { CommandCost(STR_ERROR_NO_SPACE_FOR_TOWN), 0, INVALID_TOWN };
 		} else {
 			t = new Town(tile);
 			DoCreateTown(t, tile, townnameparts, size, city, layout, true);
 		}
+
+		new_town = t->index;
 		UpdateNearestTownForRoadTiles(false);
 		old_generating_world.Restore();
 

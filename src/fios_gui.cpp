@@ -23,6 +23,7 @@
 #include "querystring_gui.h"
 #include "engine_func.h"
 #include "landscape_type.h"
+#include "genworld.h"
 #include "timer/timer_game_calendar.h"
 #include "core/geometry_func.hpp"
 #include "gamelog.h"
@@ -172,6 +173,48 @@ static constexpr NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
 	EndContainer(),
 };
 
+/** Load town data */
+static constexpr NWidgetPart _nested_load_town_data_dialog_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SL_CAPTION),
+		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
+	EndContainer(),
+	/* Current directory and free space */
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_BACKGROUND), SetFill(1, 0), SetResize(1, 0), EndContainer(),
+
+	/* Filter box with label */
+	NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), SetResize(1, 1),
+		NWidget(NWID_HORIZONTAL), SetPadding(WidgetDimensions::unscaled.framerect.top, 0, WidgetDimensions::unscaled.framerect.bottom, 0),
+				SetPIP(WidgetDimensions::unscaled.frametext.left, WidgetDimensions::unscaled.frametext.right, 0),
+			NWidget(WWT_TEXT, COLOUR_GREY), SetFill(0, 1), SetDataTip(STR_SAVELOAD_FILTER_TITLE , STR_NULL),
+			NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_FILTER), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+		EndContainer(),
+	EndContainer(),
+	/* Sort Buttons */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYNAME), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYDATE), SetDataTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
+		EndContainer(),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SL_HOME_BUTTON), SetAspect(1), SetDataTip(SPR_HOUSE_ICON, STR_SAVELOAD_HOME_BUTTON),
+	EndContainer(),
+	/* Files */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_FILE_BACKGROUND),
+			NWidget(WWT_INSET, COLOUR_GREY, WID_SL_DRIVES_DIRECTORIES_LIST), SetFill(1, 1), SetPadding(2, 2, 2, 2),
+					SetDataTip(0x0, STR_SAVELOAD_LIST_TOOLTIP), SetResize(1, 10), SetScrollbar(WID_SL_SCROLLBAR), EndContainer(),
+		EndContainer(),
+		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SL_SCROLLBAR),
+	EndContainer(),
+	/* Load button */
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_LOAD_BUTTON), SetResize(1, 0), SetFill(1, 0),
+				SetDataTip(STR_SAVELOAD_LOAD_BUTTON, STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+	EndContainer(),
+};
+
 /** Save game/scenario */
 static constexpr NWidgetPart _nested_save_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -242,6 +285,7 @@ static const TextColour _fios_colours[] = {
 	TC_ORANGE,       // DFT_GAME_FILE
 	TC_YELLOW,       // DFT_HEIGHTMAP_BMP
 	TC_ORANGE,       // DFT_HEIGHTMAP_PNG
+	TC_LIGHT_BROWN,  // DFT_TOWN_DATA_JSON
 	TC_LIGHT_BLUE,   // DFT_FIOS_DRIVE
 	TC_DARK_GREEN,   // DFT_FIOS_PARENT
 	TC_DARK_GREEN,   // DFT_FIOS_DIR
@@ -330,6 +374,7 @@ public:
 					break;
 
 				default:
+					/* It's not currently possible to save town data. */
 					NOT_REACHED();
 			}
 		}
@@ -354,6 +399,10 @@ public:
 
 			case FT_HEIGHTMAP:
 				caption_string = (this->fop == SLO_SAVE) ? STR_SAVELOAD_SAVE_HEIGHTMAP : STR_SAVELOAD_LOAD_HEIGHTMAP;
+				break;
+
+			case FT_TOWN_DATA:
+				caption_string = STR_SAVELOAD_LOAD_TOWN_DATA; // It's not currently possible to save town data.
 				break;
 
 			default:
@@ -391,6 +440,7 @@ public:
 				break;
 
 			case FT_HEIGHTMAP:
+			case FT_TOWN_DATA:
 				o_dir.name = FioFindDirectory(HEIGHTMAP_DIR);
 				break;
 
@@ -634,6 +684,9 @@ public:
 				if (this->abstract_filetype == FT_HEIGHTMAP) {
 					this->Close();
 					ShowHeightmapLoad();
+				} else if (this->abstract_filetype == FT_TOWN_DATA) {
+					this->Close();
+					LoadTownData();
 				} else if (!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()) {
 					_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
 					ClearErrorMessages();
@@ -689,7 +742,7 @@ public:
 				} else if (!_load_check_data.HasErrors()) {
 					this->selected = file;
 					if (this->fop == SLO_LOAD) {
-						if (this->abstract_filetype == FT_SAVEGAME || this->abstract_filetype == FT_SCENARIO) {
+						if (this->abstract_filetype == FT_SAVEGAME || this->abstract_filetype == FT_SCENARIO || this->abstract_filetype == FT_TOWN_DATA) {
 							this->OnClick(pt, WID_SL_LOAD_BUTTON, 1);
 						} else {
 							assert(this->abstract_filetype == FT_HEIGHTMAP);
@@ -856,6 +909,7 @@ public:
 
 				switch (this->abstract_filetype) {
 					case FT_HEIGHTMAP:
+					case FT_TOWN_DATA:
 						this->SetWidgetDisabledState(WID_SL_LOAD_BUTTON, this->selected == nullptr || _load_check_data.HasErrors());
 						break;
 
@@ -908,6 +962,14 @@ static WindowDesc _load_heightmap_dialog_desc(
 	_nested_load_heightmap_dialog_widgets
 );
 
+/** Load town data */
+static WindowDesc _load_town_data_dialog_desc(
+	WDP_CENTER, "load_town_data", 257, 320,
+	WC_SAVELOAD, WC_NONE,
+	0,
+	_nested_load_town_data_dialog_widgets
+);
+
 /** Save game/scenario */
 static WindowDesc _save_dialog_desc(
 	WDP_CENTER, "save_game", 500, 294,
@@ -929,6 +991,17 @@ void ShowSaveLoadDialog(AbstractFileType abstract_filetype, SaveLoadOperation fo
 		new SaveLoadWindow(_save_dialog_desc, abstract_filetype, fop);
 	} else {
 		/* Dialogue for loading a file. */
-		new SaveLoadWindow((abstract_filetype == FT_HEIGHTMAP) ? _load_heightmap_dialog_desc : _load_dialog_desc, abstract_filetype, fop);
+		switch (abstract_filetype) {
+			case FT_HEIGHTMAP:
+				new SaveLoadWindow(_load_heightmap_dialog_desc, abstract_filetype, fop);
+				break;
+
+			case FT_TOWN_DATA:
+				new SaveLoadWindow(_load_town_data_dialog_desc, abstract_filetype, fop);
+				break;
+
+			default:
+				new SaveLoadWindow(_load_dialog_desc, abstract_filetype, fop);
+		}
 	}
 }
