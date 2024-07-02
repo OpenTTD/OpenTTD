@@ -2575,7 +2575,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Je spele
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mogelijk verbinding verbroken
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}In de afgelopen {NUM} seconde{P "" n} is er geen data ontvangen van de server
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :algemene fout
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desynchronisatiefout
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :kan kaart niet laden

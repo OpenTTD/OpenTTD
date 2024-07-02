@@ -2595,7 +2595,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Il nome 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possibile perdita di connessione
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Per {NUM} second{P o i} non sono stati ricevuti dati dal server
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :errore generale
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :errore di sincronizzazione
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :impossibile caricare la mappa

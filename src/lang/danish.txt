@@ -2568,7 +2568,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Dit spil
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mulig forbindelses tab
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}De{P 0 t ""} sidste {NUM} sekund{P "" er} er der ikke ankommet data fra serveren
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generel fejl
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :synkroniseringsfejl
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :kunne ikke hente kortet

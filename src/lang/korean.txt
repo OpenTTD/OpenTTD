@@ -2576,7 +2576,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}사용�
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}가능한 연결 손실
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}마지막 {NUM}초간 서버로부터 데이터를 받지 못했습니다
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :일반 오류
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :비동기화 오류
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :지도 불러오기 실패

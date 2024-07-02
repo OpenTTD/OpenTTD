@@ -2108,7 +2108,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Disse na
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mooglik ferbinning kwyt
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}De lêste{NUM} seconde{P "" s} is gjin data oankom fan e server
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :algemiene flater
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :koe it lân net lade
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :ferbining kwyt

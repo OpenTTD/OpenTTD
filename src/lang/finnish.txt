@@ -2575,7 +2575,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Pelaajan
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mahdollinen yhteyden menetys
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Viimeisen {NUM} sekunnin{P "" ""} aikana palvelimelta ei ole vastaanotettu tietoja
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :yleinen virhe
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :tahdistusvirhe
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :karttaa ei voitu ladata

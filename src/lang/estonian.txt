@@ -2625,7 +2625,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Sinu mä
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Võimalik ühenduse katkemine
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Viimase {NUM} sekundi jooksul pole serverilt andmeid saabunud
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :üldine viga
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :sünkroniseerimise viga
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :ei saa kaarti laadida

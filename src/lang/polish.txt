@@ -2955,7 +2955,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Twoja na
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Możliwa utrata połączenia
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Przez ostatni{P 0 ą e e} {NUM} sekund{P ę y ""} nie otrzymano żadnych danych z serwera
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :błąd ogólny
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :błąd synchronizacji
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :nie można załadować mapy

@@ -2508,7 +2508,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Tu nombr
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Posible pérdida de conexión
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}No se han recibido datos del servidor desde hace {NUM} segundo{P "" s}
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :error general
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :error de desincronización
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :no se puede cargar el mapa

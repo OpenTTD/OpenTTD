@@ -1974,7 +1974,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允许，自定
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :城镇货物生成：{STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :城镇建筑的客货产出与人口的关系。{}平方增长：两倍大小的城镇生产四倍的旅客。{}线性增长：两倍大小的城镇生产两倍的旅客
 ###length 2
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :四倍（原版）
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :平方（原版）
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :线性
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :树木自动生长：{STRING}
@@ -2575,7 +2575,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}您的�
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}连接可能中断
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}已经有 {NUM} 秒没有从服务器收到任何数据
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般错误
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :同步错误
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :不能读取地图
@@ -3419,7 +3419,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF �
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF 详细信息
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}已激活 NewGRF
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}已停用 NewGRF
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}选择预设
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}选择预设：
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}搜索：
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}载入选定的预设
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}保存预设
@@ -3453,7 +3453,7 @@ STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}文件�
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}版本：{SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}最低兼容版本：{SILVER}{NUM}
-STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5码：{SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 码：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}调色板：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :默认 (DOS)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :默认 (DOS) / 32 bpp
@@ -4815,7 +4815,7 @@ STR_AI_CONFIG_RANDOM_AI                                         :随机 AI
 STR_AI_CONFIG_NONE                                              :（无）
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}电脑玩家数量上限：{ORANGE}{COMMA}
-STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}电脑公司建立间隔 {ORANGE}{COMMA} 分钟
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}电脑公司建立间隔：{ORANGE}{COMMA} 分钟
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}上移
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}在列表中将选择的 AI 上移

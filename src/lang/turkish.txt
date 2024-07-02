@@ -2561,7 +2561,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}İsminiz
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Olası bağlantı kaybı
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Son {NUM} saniyedir sunucudan hiç veri gelmedi
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :genel hata
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desync hatası
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :harita yüklenemiyor

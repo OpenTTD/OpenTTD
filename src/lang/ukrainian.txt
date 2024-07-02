@@ -2698,7 +2698,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Непр
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Можлива втрата з'єднання
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Впродовж {NUM} секунд{P и "" ""} не надійшло жодної інформації від сервера
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :фатальна помилка
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :помилка синхронізації
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :неможливо завантажити карту

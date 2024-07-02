@@ -1794,7 +1794,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}آپ ک�
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}ممکنہ طور پر کنکشن کا خاتمہ
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}آخری {NUM} سیکنڈ{P "" وں} سے سرور سے کوئی معلومات نہیں ملیں
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :عمومی خرابی
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desync خرابی
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :نقشہ لوڈ نہیں ہوسکا

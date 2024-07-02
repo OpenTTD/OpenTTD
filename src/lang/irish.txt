@@ -2330,7 +2330,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Níl d'a
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Seans gur cailleadh an nasc
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Le {NUM} {P sh sh s s s} ní bhfuarthas aon sonraí ón bhfreastalaí
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :earráid ghinearálta
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :earráid dísioncronaithe
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :níorbh fhéidir an léarscáil a lódáil

@@ -2510,7 +2510,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Nama pem
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Koneksi mungkin terputus
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Dalam {NUM} detik tak ada data diterima dari server
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Kesalahan umum
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :Kesalahan de-sinkronisasi
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :Tak dapat memuat peta

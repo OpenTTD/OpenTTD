@@ -2668,7 +2668,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Το ό�
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Πιθανή απώλεια σύνδεσης
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}T{P 0 ο α} τελευταί{P 0 ο α} {NUM} δευτερόλεπτ{P ο α} δεν έχουν παραληφθεί καθόλου δεδομένα από τον διακομιστή
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :γενικό πρόβλημα
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :πρόβλημα συγχρονισμού
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :δεν ήταν δυνατή η φόρτωση του χάρτη

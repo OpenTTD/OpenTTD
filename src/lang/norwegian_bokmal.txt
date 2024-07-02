@@ -2577,7 +2577,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Spillern
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mulig tap av tilkobling
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE} Siste {NUM} sekund{P "" er} har ingen data ankommet fra tjeneren
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generell feil
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :synkroniseringsfeil
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :kunne ikke åpne kartet

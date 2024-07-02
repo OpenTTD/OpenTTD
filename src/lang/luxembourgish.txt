@@ -2559,7 +2559,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Däi Spi
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Méigleche Verbindungsverloscht
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Déi lescht {NUM} Sekonn{P "" e} si keng Date vum Server komm
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generellen Feeler
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desync Feeler
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :konnt d'Kaart net lueden

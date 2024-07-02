@@ -811,7 +811,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :गलत प�
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}संपर्क विच्छेद संभावित
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :सामान्य त्रुटि
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :मानचित्र लोड नहीं हो सका
 

@@ -2726,7 +2726,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Неве
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Подключение утеряно
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}В течение {NUM} секунд{P ы "" ""} от сервера не поступало никаких данных
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :общая ошибка
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :ошибка синхронизации
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :не смог загрузить карту

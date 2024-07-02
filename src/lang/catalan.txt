@@ -803,9 +803,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactiva-ho tot
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activa-ho tot
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostra l'alçada
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Mostra els noms de les indústries
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}No mostris cap indústria al mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostra totes les indústries al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Mostra o amaga l'alçada del terreny al minimapa
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Mostra/amaga els noms de les indústries.
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}No mostris cap propietat de la companyia al mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostra totes les propietats de la companyia al mapa
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}No mostris cap càrrega al mapa
@@ -2574,7 +2576,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}El vostr
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possible pèrdua de connexió
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Durant el darrer {NUM} segon{P "" s} no han arribat dades del servidor
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :error general
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :error de sincronització
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :no es pot carregar el mapa

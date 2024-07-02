@@ -2557,7 +2557,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Numele t
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Posibilă pierdere a conexiunii
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}În ultimele {NUM} secunde nu s-au mai primit date de la server
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :eroare generală
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :eroare de desincronizare
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :nu pot încărca harta

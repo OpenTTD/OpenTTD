@@ -2632,7 +2632,7 @@ STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Meno va�
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Možná strata pripojenia
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Posledných {NUM} sekúnd nedorazili zo servera žiadne dáta
 
-###length 22
+###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :všeobecná chyba
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :chyba synchronizácie
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :nemôžem načítať mapu
