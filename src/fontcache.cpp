@@ -171,6 +171,12 @@ void ResizeFont(FontSize font_size, uint size)
 	if (_save_config) SaveToConfig();
 }
 
+/**
+ * Called to change a font or font size used by OpenTTD.
+ * @param font_size The FontSize(enum not pixel size) of the font to change.
+ * @param font The font name to use for this font.
+ * @param size The size(pixel size) to use for this font.
+ */
 void SetFont(FontSize font_size, const std::string &font, uint size)
 {
 	FontCacheSubSetting *setting = GetFontCacheSubSetting(font_size);
