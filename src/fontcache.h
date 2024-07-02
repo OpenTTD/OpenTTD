@@ -65,6 +65,8 @@ public:
 	 */
 	virtual int GetFontSize() const { return this->height; }
 
+	virtual void SetFontSize([[maybe_unused]] int pixels);
+
 	/**
 	 * Map a SpriteID to the key
 	 * @param key The key to map to.
@@ -206,6 +208,11 @@ struct FontCacheSettings {
 	bool global_aa;             ///< Whether to anti alias all font sizes.
 };
 
+const int DEFAULT_FONT_MAX_HEIGHT = 40; ///< The maximum height allowed by font sliders.
+const int DEFAULT_FONT_MIN_MAX_GAP = 14; ///< This controls how many steps will be on any slider. The gap between the low end of the slider and the high end.
+/** Because of the math that builds the font size sliders DEFAULT_FONT_MIN_MAX_GAP needs to be an even number: */
+static_assert(DEFAULT_FONT_MIN_MAX_GAP % 2 == 0);
+
 extern FontCacheSettings _fcsettings;
 
 /**
@@ -224,12 +231,14 @@ inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
 	}
 }
 
-uint GetFontCacheFontSize(FontSize fs);
-std::string GetFontCacheFontName(FontSize fs);
-void InitFontCache(bool monospace);
-void UninitFontCache();
-
+void DebugPrintFontSettings(const std::string &desc);
 bool GetFontAAState();
+std::string GetFontCacheFontName(FontSize fs);
+uint GetFontCacheFontSize(FontSize fs);
+void InitFontCache();
+bool IsDefaultFont(const FontCacheSubSetting &setting);
+void ResizeFont(FontSize font_size, uint size);
 void SetFont(FontSize fontsize, const std::string &font, uint size);
+void UninitFontCache();
 
 #endif /* FONTCACHE_H */
