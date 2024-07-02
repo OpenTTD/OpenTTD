@@ -36,7 +36,7 @@
 
 #include "safeguards.h"
 
-extern TileIndex _cur_tileloop_tile;
+extern uint32_t _cur_tileloop_seed;
 extern void MakeNewgameSettingsLive();
 
 void InitializeSound();
@@ -100,7 +100,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	_pause_mode = PM_UNPAUSED;
 	_game_speed = 100;
 	TimerGameTick::counter = 0;
-	_cur_tileloop_tile = 1;
+	_cur_tileloop_seed = 1;
 	_thd.redsq = INVALID_TILE;
 	if (reset_settings) MakeNewgameSettingsLive();
 
