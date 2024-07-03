@@ -158,31 +158,34 @@ void CreateConsole()
 }
 
 /** Temporary pointer to get the help message to the window */
-static const char *_help_msg;
+static std::string_view _help_msg;
 
 /** Callback function to handle the window */
 static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM)
 {
 	switch (msg) {
 		case WM_INITDIALOG: {
-			char help_msg[8192];
-			const char *p = _help_msg;
-			char *q = help_msg;
-			while (q != lastof(help_msg) && *p != '\0') {
-				if (*p == '\n') {
+			const size_t help_msg_size = 1 + _help_msg.size() + std::count(_help_msg.begin(), _help_msg.end(), '\n');
+			auto help_msg = std::make_unique<char[]>(help_msg_size);
+			char *q = help_msg.get();
+			char *last = q + help_msg_size - 1;
+			for (char c : _help_msg) {
+				if (q == last) break;
+				if (c == '\n') {
 					*q++ = '\r';
-					if (q == lastof(help_msg)) {
+					if (q == last) {
 						q[-1] = '\0';
 						break;
 					}
 				}
-				*q++ = *p++;
+				*q++ = c;
 			}
-			*q = '\0';
+			*q++ = '\0';
 			/* We need to put the text in a separate buffer because the default
 			 * buffer in OTTD2FS might not be large enough (512 chars). */
-			wchar_t help_msg_buf[8192];
-			SetDlgItemText(wnd, 11, convert_to_fs(help_msg, help_msg_buf, lengthof(help_msg_buf)));
+			const size_t help_msg_buf_size = ((q - help_msg.get()) * 3) / 2;
+			auto help_msg_buf = std::make_unique<wchar_t[]>(help_msg_buf_size);
+			SetDlgItemText(wnd, 11, convert_to_fs(help_msg.get(), help_msg_buf.get(), help_msg_buf_size));
 			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 		} return TRUE;
 
