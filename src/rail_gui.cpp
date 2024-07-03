@@ -438,8 +438,9 @@ struct BuildRailToolbarWindow : Window {
 
 	BuildRailToolbarWindow(WindowDesc &desc, RailType railtype) : Window(desc)
 	{
-		this->InitNested(TRANSPORT_RAIL);
+		this->CreateNestedTree();
 		this->SetupRailToolbar(railtype);
+		this->FinishInitNested(TRANSPORT_RAIL);
 		this->DisableWidget(WID_RAT_REMOVE);
 		this->OnInvalidateData();
 		this->last_user_action = INVALID_WID_RAT;
