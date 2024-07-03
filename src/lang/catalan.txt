@@ -2589,6 +2589,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revisió incorr
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nom ja utilitzat
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :contrasenya incorrecta
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :no en la llista de permesos
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :cap dels mètodes d'autenticació sol·licitats està disponible
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :id-companyia erroni en DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :tret pel servidor
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :s'ha intentat utilitzar una trampa
@@ -2811,7 +2812,7 @@ STR_PICKER_MODE_ALL_TOOLTIP                                     :Commuta entre m
 STR_PICKER_MODE_USED                                            :Fets servir
 STR_PICKER_MODE_USED_TOOLTIP                                    :Commuta entre mostrar o no només els elements que ja s'hagin construït.
 STR_PICKER_MODE_SAVED                                           :Desats
-STR_PICKER_MODE_SAVED_TOOLTIP                                   :Commuta entre mostrar o no només els elements desats.
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Commuta entre mostrar tots o bé només els elements desats.
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Trieu quina classe d'estació voleu veure.
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Trieu quin tipus d'estació voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.

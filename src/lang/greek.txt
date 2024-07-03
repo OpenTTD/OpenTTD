@@ -2681,6 +2681,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :λάθος έκ
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :το όνομα είναι ήδη σε χρήση
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :λανθασμένος κωδικός
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :δεν βρίσκεται στη λίστα επιτρεπτών τιμών
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :καμία από τις ζητούμενες μεθόδους ελέγχου ταυτότητας δεν είναι διαθέσιμη
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :λάθος εταιρία στο DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :εκδιωχθήκατε από τον διακομιστή
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :προσπάθησε να χρησιμοποιησει cheat

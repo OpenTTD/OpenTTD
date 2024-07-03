@@ -2589,6 +2589,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revisão incorr
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nome já está a ser utilizado
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :palavra-chave incorrecta
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :não está na lista de permissões
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :nenhum dos métodos de autenticação solicitados está disponível
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :ID da empresa errado na aplicação de rede
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :avisado pelo servidor
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :estava a tentar usar batota

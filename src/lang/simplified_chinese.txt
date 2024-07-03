@@ -2588,6 +2588,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :错误的版本
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :已经有人用这个名字了
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :错误的密码
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :不在白名单内
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :已请求的验证方式均不可用
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :错误的公司 ID 于 DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :被服务器踢出
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :正在尝试作弊
@@ -2836,7 +2837,7 @@ STR_HOUSE_PICKER_CLASS_ZONE5                                    :城镇中心
 STR_STATION_CLASS_DFLT                                          :默认
 STR_STATION_CLASS_DFLT_STATION                                  :默认车站
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :默认车站
-STR_STATION_CLASS_WAYP                                          :路标
+STR_STATION_CLASS_WAYP                                          :路点
 STR_STATION_CLASS_WAYP_WAYPOINT                                 :默认路点
 
 # Signal window

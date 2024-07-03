@@ -2588,6 +2588,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :väärä revisi
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nimi on jo käytössä
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :väärä salasana
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :ei sallittujen listalla
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :yksikään pyydetyistä tunnistautumismenetelmistä ei ole käytettävissä
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :väärä company-id DoCommandissa
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :palvelin potki pihalle
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :yritti käyttää huijausta

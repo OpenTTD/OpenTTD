@@ -2739,6 +2739,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :версии н
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :это имя уже используется
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :неверный пароль
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :нет в списке разрешённых
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :ни один из предложенных методов аутентификации не поддерживается
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :неправильный параметр company в DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :вас выкинул сервер
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :попытался применить чит
@@ -2981,7 +2982,7 @@ STR_PICKER_MODE_ALL_TOOLTIP                                     :Показат�
 STR_PICKER_MODE_USED                                            :Существующие
 STR_PICKER_MODE_USED_TOOLTIP                                    :Показать уже существующие элементы
 STR_PICKER_MODE_SAVED                                           :Избранное
-STR_PICKER_MODE_SAVED_TOOLTIP                                   :Показать сохранённые элементы
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Переключить отображение только сохранённых элементов
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Выберите тип станций для отображения
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Выберите станцию для строительства. Ctrl+щелчок добавит её в «избранное» или удалит.

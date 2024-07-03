@@ -2968,6 +2968,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :zła wersja
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nazwa już w użyciu
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :złe hasło gry
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :brak na liście dopuszczonych
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :żadna z wymaganych metod uwierzytelniania nie jest dostępna
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :zła nazwa firmy w DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :wyrzucony przez serwer
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :próbował użyć ułatwień
