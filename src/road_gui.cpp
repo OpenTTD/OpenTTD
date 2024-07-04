@@ -349,8 +349,9 @@ struct BuildRoadToolbarWindow : Window {
 	BuildRoadToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->Initialize(_cur_roadtype);
-		this->InitNested(window_number);
+		this->CreateNestedTree();
 		this->SetupRoadToolbar();
+		this->FinishInitNested(window_number);
 		this->SetWidgetDisabledState(WID_ROT_REMOVE, true);
 
 		if (RoadTypeIsRoad(this->roadtype)) {
