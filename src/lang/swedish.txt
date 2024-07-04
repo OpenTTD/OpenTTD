@@ -534,8 +534,8 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Visa bildfrekvens
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Justering av spriteobjekt
-STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Slå av/på yttre gränser för grafiska element
-STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Slå av/på färgläggning av smutsiga block
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Slå på/av yttre gränser för grafiska element
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Slå på/av färgläggning av smutsiga block
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Visa/dölj ramar på grafiska element
 
 ###length 31
@@ -710,7 +710,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Välj sp
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Välj spellistan 'Ezy Street style music'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Välj spellistan 'Personlig 1' (användardefinerad)
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Välj spellistan 'Personlig 2' (användardefinerad)
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Växla slumpning av/på
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Slå på/av slumpning
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Visa fönstret för val av musikspår
 
 # Playlist window
@@ -802,9 +802,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Inaktivera alla
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktivera alla
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Visa höjd
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Visa industrinamn
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Visa inga industrier på kartan
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Visa alla industrier på kartan
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Växla visning av höjdkarta
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Slå på/av visning av industrinamn
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Visa inga företags egendomar på kartan
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Visa alla företags egendomar på kartan
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Visa inga godstyper på kartan
@@ -2586,6 +2588,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :fel revision
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :namnet används redan
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :fel lösenord
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :ej på tillåt-listan
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :ingen av de efterfrågade autenticeringsmetoderna är tillgänglig
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :fel företags-id i DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :utkastad av servern
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :försökte fuska
@@ -2808,7 +2811,7 @@ STR_PICKER_MODE_ALL_TOOLTIP                                     :Slå av/på vis
 STR_PICKER_MODE_USED                                            :Använda
 STR_PICKER_MODE_USED_TOOLTIP                                    :Slå av/på visning av endast existerande objekt
 STR_PICKER_MODE_SAVED                                           :Sparade
-STR_PICKER_MODE_SAVED_TOOLTIP                                   :Slå av/på visning av endast sparade objekt
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Slå på/av visning av endast sparade objekt
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Välj vilken klass av stationer som ska visas
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Välj en stationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt

@@ -2589,6 +2589,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :n° de version/
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nom déjà utilisé
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :mot de passe de partie incorrect
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :pas sur la liste d'autorisation
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :aucune des méthodes d'authentification demandées ne sont disponibles
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :mauvais company-id dans DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :exclu par le serveur
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :a tenté de tricher
@@ -3621,7 +3622,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Aller au
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Entrer un nom pour le panneau
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Villes ({COMMA} sur {COMMA})
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Villes ({COMMA} de {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}− Aucune −
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Métropole){BLACK} ({COMMA})

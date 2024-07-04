@@ -2588,6 +2588,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :wrong revision
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :name already in use
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :wrong password
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :not on allow list
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :none of the requested authentication methods is available
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :wrong company in DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :kicked by server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :was trying to use a cheat

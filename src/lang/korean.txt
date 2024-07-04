@@ -2589,6 +2589,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :잘못된 버�
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :이미 사용중인 이름
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :잘못된 비밀번호
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :접속이 허용되지 않음
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :요청된 인증 방식을 모두 사용할 수 없습니다
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand 구문 내의 잘못된 회사
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :강제추방
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :치트 사용 시도
