@@ -804,9 +804,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Atspējot visu
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Iespējot visu
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Rādīt augstumu
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Rādīt ražotņu nosaukumus
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nerādīt uz kartes ražotnes
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Rādīt uz kartes visas ražotnes
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Pārslēgt augstumu kartes attēlošanu
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Pārslēgt nozares nosaukumu parādīšanu
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nerādīt neviena uzņēmuma īpašumus uz kartes
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Rādīt visu uzņēmumu īpašumus uz kartes
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nerādīt kravas uz kartes
@@ -2590,6 +2592,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :nepareiza versi
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :šo vārdu jau lieto
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :nepareiza parole
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :nav atļauto sarakstā
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :neviena no pieprasītajām autentifikācijas metodēm nav pieejama
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :VeiktKomandā nepareizs uzņēmums
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :serveris jūs izmeta
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :mēģināja blēdīties
