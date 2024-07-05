@@ -1878,12 +1878,12 @@ bool LanguagePackHeader::IsValid() const
 	       this->newgrflangid < MAX_LANG &&
 	       this->num_genders  < MAX_NUM_GENDERS &&
 	       this->num_cases    < MAX_NUM_CASES &&
-	       StrValid(this->name,                           lastof(this->name)) &&
-	       StrValid(this->own_name,                       lastof(this->own_name)) &&
-	       StrValid(this->isocode,                        lastof(this->isocode)) &&
-	       StrValid(this->digit_group_separator,          lastof(this->digit_group_separator)) &&
-	       StrValid(this->digit_group_separator_currency, lastof(this->digit_group_separator_currency)) &&
-	       StrValid(this->digit_decimal_separator,        lastof(this->digit_decimal_separator));
+	       StrValid(this->name) &&
+	       StrValid(this->own_name) &&
+	       StrValid(this->isocode) &&
+	       StrValid(this->digit_group_separator) &&
+	       StrValid(this->digit_group_separator_currency) &&
+	       StrValid(this->digit_decimal_separator);
 }
 
 /**

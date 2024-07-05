@@ -226,32 +226,35 @@ std::string StrMakeValid(std::string_view str, StringValidationSettings settings
 /**
  * Checks whether the given string is valid, i.e. contains only
  * valid (printable) characters and is properly terminated.
- * @param str  The string to validate.
- * @param last The last character of the string, i.e. the string
- *             must be terminated here or earlier.
+ * @note std::span is used instead of std::string_view as we are validating fixed-length string buffers, and
+ * std::string_view's constructor will assume a C-string that ends with a NUL terminator, which is one of the things
+ * we are checking.
+ * @param str Span of chars to validate.
  */
-bool StrValid(const char *str, const char *last)
+bool StrValid(std::span<const char> str)
 {
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
+	auto it = std::begin(str);
+	auto last = std::prev(std::end(str));
 
-	while (str <= last && *str != '\0') {
-		size_t len = Utf8EncodedCharLen(*str);
+	while (it <= last && *it != '\0') {
+		size_t len = Utf8EncodedCharLen(*it);
 		/* Encoded length is 0 if the character isn't known.
 		 * The length check is needed to prevent Utf8Decode to read
 		 * over the terminating '\0' if that happens to be placed
 		 * within the encoding of an UTF8 character. */
-		if (len == 0 || str + len > last) return false;
+		if (len == 0 || it + len > last) return false;
 
 		char32_t c;
-		len = Utf8Decode(&c, str);
+		len = Utf8Decode(&c, &*it);
 		if (!IsPrintable(c) || (c >= SCC_SPRITE_START && c <= SCC_SPRITE_END)) {
 			return false;
 		}
 
-		str += len;
+		it += len;
 	}
 
-	return *str == '\0';
+	return *it == '\0';
 }
 
 /**
