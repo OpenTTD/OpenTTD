@@ -1758,7 +1758,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Retire automati
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Seuil de vitesse d'avancement rapide: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limite de la vitesse du jeu lorsque l'avance rapide est activée. 0 = pas de limite (aussi rapidement que votre ordinateur le permet). Les valeurs inférieures à 100% ralentissent le jeu. Les limites supérieures dépendent des spécifications de votre ordinateur et peuvent varier en fonction du jeu
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% de la vitesse normal
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% de la vitesse normale
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Aucune limite (aussi rapidement que votre ordinateur le permet)
 
@@ -4738,7 +4738,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ce véhi
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ce véhicule est en retard de {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ce véhicule est en avance de {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Cet horaire n'a pas encore démarré
-STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Cet horaire démarrera le/à {STRING}
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Cet horaire commencera le {STRING}
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Cet horaire commencera dans {COMMA} seconde{P "" s}
 
 STR_TIMETABLE_START                                             :{BLACK}Démarrer l'horaire

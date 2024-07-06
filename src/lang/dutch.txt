@@ -2588,6 +2588,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :foute revisie
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :naam al in gebruik
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :fout spelwachtwoord
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :niet op toegestane lijst
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :geen van de gevraagde verificatiemethoden is beschikbaar
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :verkeerd bedrijfsnummer in verstuurd commando
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :eruit geschopt door server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :probeerde vals te spelen
