@@ -756,9 +756,9 @@ void StringReader::ParseFile()
 
 	/* For each new file we parse, reset the genders, and language codes. */
 	MemSetT(&_lang, 0);
-	strecpy(_lang.digit_group_separator, ",", lastof(_lang.digit_group_separator));
-	strecpy(_lang.digit_group_separator_currency, ",", lastof(_lang.digit_group_separator_currency));
-	strecpy(_lang.digit_decimal_separator, ".", lastof(_lang.digit_decimal_separator));
+	strecpy(_lang.digit_group_separator, ",");
+	strecpy(_lang.digit_group_separator_currency, ",");
+	strecpy(_lang.digit_decimal_separator, ".");
 
 	_cur_line = 1;
 	while (this->data.next_string_id < this->data.max_strings) {

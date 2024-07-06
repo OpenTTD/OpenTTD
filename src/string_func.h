@@ -17,7 +17,7 @@
 #include "core/bitmath_func.hpp"
 #include "string_type.h"
 
-char *strecpy(char *dst, const char *src, const char *last) NOACCESS(3);
+void strecpy(std::span<char> dst, std::string_view src);
 
 std::string FormatArrayAsHex(std::span<const uint8_t> data);
 
