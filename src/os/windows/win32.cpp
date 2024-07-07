@@ -157,32 +157,34 @@ void CreateConsole()
 	setvbuf(stderr, nullptr, _IONBF, 0);
 }
 
-/** Temporary pointer to get the help message to the window */
-static const char *_help_msg;
+/**
+ * Replace linefeeds with carriage-return and linefeed.
+ * @param msg string with LF linefeeds.
+ * @return String with Lf linefeeds converted to CrLf linefeeds.
+ */
+static std::string ConvertLfToCrLf(std::string_view msg)
+{
+	std::string output;
+
+	size_t last = 0;
+	size_t next = 0;
+	while ((next = msg.find('\n', last)) != std::string_view::npos) {
+		output += msg.substr(last, next - last);
+		output += "\r\n";
+		last = next + 1;
+	}
+	output += msg.substr(last);
+
+	return output;
+}
 
 /** Callback function to handle the window */
-static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM)
+static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg) {
 		case WM_INITDIALOG: {
-			char help_msg[8192];
-			const char *p = _help_msg;
-			char *q = help_msg;
-			while (q != lastof(help_msg) && *p != '\0') {
-				if (*p == '\n') {
-					*q++ = '\r';
-					if (q == lastof(help_msg)) {
-						q[-1] = '\0';
-						break;
-					}
-				}
-				*q++ = *p++;
-			}
-			*q = '\0';
-			/* We need to put the text in a separate buffer because the default
-			 * buffer in OTTD2FS might not be large enough (512 chars). */
-			wchar_t help_msg_buf[8192];
-			SetDlgItemText(wnd, 11, convert_to_fs(help_msg, help_msg_buf, lengthof(help_msg_buf)));
+			std::wstring &msg = *reinterpret_cast<std::wstring *>(lParam);
+			SetDlgItemText(wnd, 11, msg.c_str());
 			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 		} return TRUE;
 
@@ -206,17 +208,14 @@ void ShowInfoI(const std::string &str)
 		_left_button_clicked = _left_button_down = false;
 
 		old = MyShowCursor(true);
-		if (str.size() > 2048) {
+		std::wstring native_str = OTTD2FS(ConvertLfToCrLf(str));
+		if (native_str.size() > 2048) {
 			/* The minimum length of the help message is 2048. Other messages sent via
 			 * ShowInfo are much shorter, or so long they need this way of displaying
 			 * them anyway. */
-			_help_msg = str.c_str();
-			DialogBox(GetModuleHandle(nullptr), MAKEINTRESOURCE(101), nullptr, HelpDialogFunc);
+			DialogBoxParam(GetModuleHandle(nullptr), MAKEINTRESOURCE(101), nullptr, HelpDialogFunc, reinterpret_cast<LPARAM>(&native_str));
 		} else {
-			/* We need to put the text in a separate buffer because the default
-			 * buffer in OTTD2FS might not be large enough (512 chars). */
-			wchar_t help_msg_buf[8192];
-			MessageBox(GetActiveWindow(), convert_to_fs(str, help_msg_buf, lengthof(help_msg_buf)), L"OpenTTD", MB_ICONINFORMATION | MB_OK);
+			MessageBox(GetActiveWindow(), native_str.c_str(), L"OpenTTD", MB_ICONINFORMATION | MB_OK);
 		}
 		MyShowCursor(old);
 	}
