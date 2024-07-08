@@ -1420,7 +1420,7 @@ public:
 		uint spacer_i = 0;
 		uint button_i = 0;
 
-		/* Index into the arrangement indices. The macro lastof cannot be used here! */
+		/* Index into the arrangement indices. */
 		const WidgetID *slotp = rtl ? &arrangement[arrangable_count - 1] : arrangement;
 		for (uint i = 0; i < arrangable_count; i++) {
 			uint slot = lookup[*slotp];
