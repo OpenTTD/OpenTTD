@@ -1860,6 +1860,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Imposta l'inter
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervallo manutenzione predefinito navi: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Imposta l'intervallo di manutenzione predefinito per le nuove navi, quando non viene impostato nessun intervallo esplicito
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Giorn{P o i}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Minut{P o i}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Disabilitato
@@ -2832,7 +2835,13 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Costruis
 
 
 
+STR_HOUSE_PICKER_CAPTION                                        :Selezione casa
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Bordo
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferie
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Sobborghi esterni
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Sobborghi interni
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro città
 
 STR_STATION_CLASS_DFLT                                          :Predefinita
 STR_STATION_CLASS_DFLT_STATION                                  :Stazione predefinita

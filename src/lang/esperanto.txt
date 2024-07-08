@@ -453,6 +453,7 @@ STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :Averaĝa profit
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Neniu
+STR_GROUP_BY_SHARED_ORDERS                                      :Kundividitaj mendoj
 
 # Order button in shared orders vehicle list
 STR_GOTO_ORDER_VIEW                                             :{BLACK}Itinero
@@ -523,8 +524,10 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Forlasi
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludaj agordoj
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Agordoj
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AI agordoj
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Ludoskriptaj agordoj
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Agordoj de NewGRF
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sablujaj agordoj
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Ebloj por travidebleco
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Urbonomoj montriĝas
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stacionomoj montriĝas
@@ -1586,6 +1589,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Elektu la proks
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Nereguleco de tereno: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Elektu la formon kaj nombron da montetoj. Glataj pejzaĝoj havas pli malmultajn, pli larĝajn montetojn, dum malglataj pejzaĝoj havas pli multe, malgrandajn montetojn.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Tre Regule
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Regule
@@ -2756,6 +2760,9 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tiru por
 
 
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rando
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferioj
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Eksteraj Antaŭurboj
 
 STR_STATION_CLASS_DFLT                                          :Defaŭlta
 STR_STATION_CLASS_DFLT_STATION                                  :Defaŭlta stacio

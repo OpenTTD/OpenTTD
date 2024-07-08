@@ -167,7 +167,7 @@ STR_BAGS                                                        :{COMMA}{NBSP}�
 STR_TONS                                                        :{COMMA}{NBSP}英吨
 STR_LITERS                                                      :{COMMA}{NBSP}升
 STR_ITEMS                                                       :{COMMA}{NBSP}头
-STR_CRATES                                                      :{COMMA}{NBSP}件
+STR_CRATES                                                      :{COMMA}{NBSP}箱
 
 STR_COLOUR_DEFAULT                                              :默认
 ###length 17
@@ -636,14 +636,14 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}切换�
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}公司评价排名
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} “{STRING}”
 STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :车库主管
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :线路经理
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :工程师
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :交通管制员
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :运输代理
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :运输总监
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :运输经理
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :首席执行官
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :公司董事
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :董事长
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :董事长
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :总裁
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :运输大亨
 
 # Performance detail window
@@ -1055,7 +1055,7 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}选中�
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用位图字体
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}如果您想使用固定大小的传统位图字体，请勾选此框
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :字体抗锯齿
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}字体抗锯齿
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}勾选此框以对游戏字体应用抗锯齿
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
@@ -1093,7 +1093,7 @@ STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :查询并下载
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}（未安装社交平台插件）
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :平台：
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}平台：
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}插件状态：
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}正在运行
@@ -1107,7 +1107,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}无效签�
 STR_BASESET_STATUS                                              :{STRING} {RED}（共有 {NUM} 份缺失或损坏的文件）
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}检索支持的分辨率列表失败
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}无法切换到全屏模式{}尝试使用不同的分辨率
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}无法切换到全屏模式
 
 # Custom currency window
 
@@ -1123,7 +1123,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}选择�
 STR_CURRENCY_PREFIX                                             :{LTBLUE}前缀：{ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}设置自定义货币的首字
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}后缀：{ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}设置自定义货币的尾字
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}设置自定义货币的后缀
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}改用欧元：{ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}改用欧元：{ORANGE}不改用
@@ -1294,7 +1294,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :设置维修不
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :财政补贴系数：{STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :设置获得财政补贴的线路的利润倍数
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :财政补贴尺度：{STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :财政补贴时长：{STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :设置发放财政补贴的年数
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :设置发放财政补贴的周期数
@@ -1559,8 +1559,8 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :地貌类型：{STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :选择生成地图的起伏度
 
-STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :工业布局：{STRING}
-STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :设置地图生成过程中，工业数量及一、二级工业比例
+STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :工业密度：{STRING}
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :设置生成地图时工业设施的密度。游戏进行时地图的工业密度将保持在此水平。
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :石油工业距地图边缘的最大距离：{STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :限制炼油厂和油井到地图边缘或海岛海岸的最大距离。对于大于 256 格的地图，该值将按比例放大
@@ -1926,7 +1926,7 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :冻结
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :联运账面收入百分比：{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :设定在多程联运时，载具换班时前一程载具所占总收入的百分比。此选项允许更有效地控制收入
 
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :当拖动时，放置信号灯每隔：{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :拖动时每隔 {STRING} 设置一个信号
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :设置以拖动的方式建设时，自动放置信号灯时的间距，将以该间距放置信号灯，直到碰到障碍（信号灯，分支）
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}格
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :拖动方式建设时，保持固定的间距放置信号灯：{STRING}
@@ -2681,14 +2681,14 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}……无法下载内容！
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基本 GRF
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基础图形
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI 库
 STR_CONTENT_TYPE_SCENARIO                                       :场景
 STR_CONTENT_TYPE_HEIGHTMAP                                      :高度图
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :基本音效
-STR_CONTENT_TYPE_BASE_MUSIC                                     :基本音乐
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :基础音效
+STR_CONTENT_TYPE_BASE_MUSIC                                     :基础音乐
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :游戏脚本
 STR_CONTENT_TYPE_GS_LIBRARY                                     :脚本库
 
@@ -3929,7 +3929,7 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}为总�
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}色彩方案
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}修改公司载具颜色
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}公司名称
-STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}改变公司的名称
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}修改公司名称
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}总裁姓名
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}为总裁改名
 
@@ -4272,7 +4272,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}你将�
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}来自供货商的消息
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我们新近设计了一款{STRING}{}您愿意在产品正式上市前试用一年吗？
 
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :火车机车
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :铁路机车
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :电气化铁路机车
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :单轨机车
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁悬浮机车
@@ -4281,7 +4281,7 @@ STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :汽车
 STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :电车
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :飞机
-STR_ENGINE_PREVIEW_SHIP                                         :船只
+STR_ENGINE_PREVIEW_SHIP                                         :船舶
 
 STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
 STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
@@ -4977,7 +4977,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}……�
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}……已达地块清理限制
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}……已经达最大植树量
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名称重复！请重新命名
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}目标位置有 {1:STRING}
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}被 {1:STRING} 挡住
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}暂停时不能进行此操作
 
 # Local authority errors
@@ -4997,15 +4997,15 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}……�
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}这样的话，在它上面的桥梁会太高
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}不能为公司更名……
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}无法修改公司名称……
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}不能更改总裁的名字……
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}……最大贷款额度是{CURRENCY_LONG}
-STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}不能再贷款了……
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}无法借更多钱……
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}……没有要偿还的贷款了
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}……需要{CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}不能偿还贷款……
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}不能将银行的贷款送给别人……
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}不能给予银行贷款……
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}不能给予该公司资金……
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}不能收购公司……
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}不能设置公司总部……
@@ -5036,8 +5036,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}……�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}……只能在人口超过 1200 的城镇建造
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}……只能在雨林中建设
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}……只能在沙漠中建设
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}……只能在城镇中建设
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}……只能在靠近城市中心建造
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}……只能在城镇中建设（在房屋上建设）
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}……只能在城市中心附近建造
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}……只能在低海拔区域建设
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}……只能被放置在地图边缘
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}……林场只能设置在雪线以上的地方
@@ -5186,7 +5186,7 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}不能�
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}不能在这里加设河流……
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}……必须在水上建造
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}……不能在水上建造
-STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}……不能建在海上
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}……不能在海上建设
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}……不能在运河上建设
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}……不能在河流上建造
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}请先移除运河
@@ -5329,7 +5329,7 @@ STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}不能�
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}不能跳过当前命令……
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}不能跳转到选定的命令……
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}……车辆无法到达全部站点
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}……车辆无法到达那个车站
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}……载具无法前往车站
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}……一个共享此调度计划的载具无法到达那个车站
 STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}……并不是所有的车辆都有相同的指令
 STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}……并不是所有的车辆都有相同的指令
