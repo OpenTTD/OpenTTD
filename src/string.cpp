@@ -50,34 +50,27 @@
  * Copies characters from one buffer to another.
  *
  * Copies the source string to the destination buffer with respect of the
- * terminating null-character and the last pointer to the last element in
- * the destination buffer. If the last pointer is set to nullptr no boundary
- * check is performed.
+ * terminating null-character and the size of the destination buffer.
  *
- * @note usage: strecpy(dst, src, lastof(dst));
- * @note lastof() applies only to fixed size arrays
+ * @note usage: strecpy(dst, src);
  *
  * @param dst The destination buffer
  * @param src The buffer containing the string to copy
- * @param last The pointer to the last element of the destination buffer
- * @return The pointer to the terminating null-character in the destination buffer
  */
-char *strecpy(char *dst, const char *src, const char *last)
+void strecpy(std::span<char> dst, std::string_view src)
 {
-	assert(dst <= last);
-	while (dst != last && *src != '\0') {
-		*dst++ = *src++;
-	}
-	*dst = '\0';
-
-	if (dst == last && *src != '\0') {
+	/* Ensure source string fits with NUL terminator; dst must be at least 1 character longer than src. */
+	if (std::empty(dst) || std::size(src) >= std::size(dst) - 1U) {
 #if defined(STRGEN) || defined(SETTINGSGEN)
 		FatalError("String too long for destination buffer");
 #else /* STRGEN || SETTINGSGEN */
 		Debug(misc, 0, "String too long for destination buffer");
+		src = src.substr(0, std::size(dst) - 1U);
 #endif /* STRGEN || SETTINGSGEN */
 	}
-	return dst;
+
+	auto it = std::copy(std::begin(src), std::end(src), std::begin(dst));
+	*it = '\0';
 }
 
 /**
