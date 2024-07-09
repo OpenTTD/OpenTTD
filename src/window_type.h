@@ -38,6 +38,9 @@ enum WindowNumberEnum {
 
 	WN_NETWORK_STATUS_WINDOW_JOIN = 0,         ///< Network join status.
 	WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD, ///< Network content download status.
+
+	WN_GRAPH_SELECTOR_WINDOW_COMPANY = 0, ///< Company selector window for graphs.
+	WN_GRAPH_SELECTOR_WINDOW_CARGO,       ///< Cargo selector window for graphs.
 };
 
 /** %Window classes. */
@@ -516,7 +519,8 @@ enum WindowClass {
 
 	/**
 	 * Legend for graphs; %Window numbers:
-	 *   - 0 = #GraphLegendWidgets
+	 *   - 0 = #CompanyGraphLegendWidgets
+	 *   - 1 = #CargoGraphLegendWidgets
 	 */
 	WC_GRAPH_LEGEND,
 
