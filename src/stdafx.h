@@ -286,14 +286,6 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
 #define lengthof(array) (sizeof(ArraySizeHelper(array)))
 
 /**
- * Get the last element of an fixed size array.
- *
- * @param x The pointer to the first element of the array
- * @return The pointer to the last element of the array
- */
-#define lastof(x) (&x[lengthof(x) - 1])
-
-/**
  * Gets the size of a variable within a class.
  * @param base     The class the variable is in.
  * @param variable The variable to get the size of.

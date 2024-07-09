@@ -2680,14 +2680,15 @@ static const SaveLoadFormat _saveload_formats[] = {
  * uncompressed, or another type
  * @param full_name Name of the savegame format. If empty it picks the first available one
  * @param compression_level Output for telling what compression level we want.
- * @return Pointer to SaveLoadFormat struct giving all characteristics of this type of savegame
+ * @return Reference to SaveLoadFormat struct giving all characteristics of this type of savegame
  */
-static const SaveLoadFormat *GetSavegameFormat(const std::string &full_name, uint8_t *compression_level)
+static const SaveLoadFormat &GetSavegameFormat(const std::string &full_name, uint8_t *compression_level)
 {
-	const SaveLoadFormat *def = lastof(_saveload_formats);
+	/* Find default savegame format, the highest one with which files can be written. */
+	auto it = std::find_if(std::rbegin(_saveload_formats), std::rend(_saveload_formats), [](const auto &slf) { return slf.init_write != nullptr; });
+	if (it == std::rend(_saveload_formats)) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "no writeable savegame formats");
 
-	/* find default savegame format, the highest one with which files can be written */
-	while (!def->init_write) def--;
+	const SaveLoadFormat &def = *it;
 
 	if (!full_name.empty()) {
 		/* Get the ":..." of the compression level out of the way */
@@ -2711,15 +2712,15 @@ static const SaveLoadFormat *GetSavegameFormat(const std::string &full_name, uin
 						*compression_level = level;
 					}
 				}
-				return &slf;
+				return slf;
 			}
 		}
 
 		SetDParamStr(0, name);
-		SetDParamStr(1, def->name);
+		SetDParamStr(1, def.name);
 		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM, WL_CRITICAL);
 	}
-	*compression_level = def->default_compression;
+	*compression_level = def.default_compression;
 	return def;
 }
 
@@ -2805,13 +2806,13 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 {
 	try {
 		uint8_t compression;
-		const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format, &compression);
+		const SaveLoadFormat &fmt = GetSavegameFormat(_savegame_format, &compression);
 
 		/* We have written our stuff to memory, now write it to file! */
-		uint32_t hdr[2] = { fmt->tag, TO_BE32(SAVEGAME_VERSION << 16) };
+		uint32_t hdr[2] = { fmt.tag, TO_BE32(SAVEGAME_VERSION << 16) };
 		_sl.sf->Write((uint8_t*)hdr, sizeof(hdr));
 
-		_sl.sf = fmt->init_write(_sl.sf, compression);
+		_sl.sf = fmt.init_write(_sl.sf, compression);
 		_sl.dumper->Flush(_sl.sf);
 
 		ClearSaveLoadState();
