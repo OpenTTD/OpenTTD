@@ -67,7 +67,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	if ((metric->ntmFontSig.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (metric->ntmFontSig.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
 
 	char font_name[MAX_PATH];
-	convert_from_fs((const wchar_t *)logfont->elfFullName, font_name, lengthof(font_name));
+	convert_from_fs(logfont->elfFullName, font_name);
 
 	info->callback->SetFontNames(info->settings, font_name, &logfont->elfLogFont);
 	if (info->callback->FindMissingGlyphs()) return 1;
@@ -289,12 +289,12 @@ static bool TryLoadFontFromFile(const std::string &font_name, LOGFONT &logfont)
 
 	/* See if this is an absolute path. */
 	if (FileExists(font_name)) {
-		convert_to_fs(font_name, fontPath, lengthof(fontPath));
+		convert_to_fs(font_name, fontPath);
 	} else {
 		/* Scan the search-paths to see if it can be found. */
 		std::string full_font = FioFindFullPath(BASE_DIR, font_name);
 		if (!full_font.empty()) {
-			convert_to_fs(font_name, fontPath, lengthof(fontPath));
+			convert_to_fs(font_name, fontPath);
 		}
 	}
 
@@ -375,7 +375,7 @@ void LoadWin32Font(FontSize fs)
 
 	if (logfont.lfFaceName[0] == 0) {
 		logfont.lfWeight = strcasestr(font_name, " bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
-		convert_to_fs(font_name, logfont.lfFaceName, lengthof(logfont.lfFaceName));
+		convert_to_fs(font_name, logfont.lfFaceName);
 	}
 
 	LoadWin32Font(fs, logfont, GetFontCacheFontSize(fs), font_name);
