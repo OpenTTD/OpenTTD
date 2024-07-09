@@ -383,7 +383,7 @@ std::optional<std::string_view> MusicDriver_Win32::Start(const StringList &parm)
 			MIDIOUTCAPS moc{};
 			if (midiOutGetDevCaps(tryport, &moc, sizeof(moc)) == MMSYSERR_NOERROR) {
 				char tryportname[128];
-				convert_from_fs(moc.szPname, tryportname, lengthof(tryportname));
+				convert_from_fs(moc.szPname, tryportname);
 
 				/* Compare requested and detected port name.
 				 * If multiple ports have the same name, this will select the last matching port, and the debug output will be confusing. */

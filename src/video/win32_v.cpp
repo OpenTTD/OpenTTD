@@ -360,7 +360,7 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 
 			if (len > 0) {
 				static char utf8_buf[1024];
-				convert_from_fs(str.c_str(), utf8_buf, lengthof(utf8_buf));
+				convert_from_fs(str.c_str(), utf8_buf);
 
 				/* Convert caret position from bytes in the input string to a position in the UTF-8 encoded string. */
 				LONG caret_bytes = ImmGetCompositionString(hIMC, GCS_CURSORPOS, nullptr, 0);

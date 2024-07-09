@@ -1107,7 +1107,7 @@ std::optional<std::string_view> MusicDriver_DMusic::Start(const StringList &parm
 		Debug(driver, 1, "Detected DirectMusic ports:");
 		for (int i = 0; _music->EnumPort(i, &caps) == S_OK; i++) {
 			if (caps.dwClass == DMUS_PC_OUTPUTCLASS) {
-				Debug(driver, 1, " {}: {}{}", i, convert_from_fs(caps.wszDescription, desc, lengthof(desc)), i == pIdx ? " (selected)" : "");
+				Debug(driver, 1, " {}: {}{}", i, convert_from_fs(caps.wszDescription, desc), i == pIdx ? " (selected)" : "");
 			}
 		}
 	}

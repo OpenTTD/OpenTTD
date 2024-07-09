@@ -12,8 +12,8 @@
 
 bool MyShowCursor(bool show, bool toggle = false);
 
-char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen);
-wchar_t *convert_to_fs(const std::string_view name, wchar_t *utf16_buf, size_t buflen);
+char *convert_from_fs(const std::wstring_view src, std::span<char> dst_buf);
+wchar_t *convert_to_fs(const std::string_view src, std::span<wchar_t> dst_buf);
 
 void Win32SetCurrentLocaleName(const char *iso_code);
 int OTTDStringCompare(std::string_view s1, std::string_view s2);
