@@ -33,7 +33,7 @@ inline uint32_t GetRegister(uint i)
 }
 
 /* List of different sprite group types */
-enum SpriteGroupType {
+enum SpriteGroupType : uint8_t {
 	SGT_REAL,
 	SGT_DETERMINISTIC,
 	SGT_RANDOMIZED,
@@ -94,7 +94,7 @@ protected:
 };
 
 /* Shared by deterministic and random groups. */
-enum VarSpriteGroupScope {
+enum VarSpriteGroupScope : uint8_t {
 	VSG_BEGIN,
 
 	VSG_SCOPE_SELF = VSG_BEGIN, ///< Resolved object itself
@@ -105,19 +105,19 @@ enum VarSpriteGroupScope {
 };
 DECLARE_POSTFIX_INCREMENT(VarSpriteGroupScope)
 
-enum DeterministicSpriteGroupSize {
+enum DeterministicSpriteGroupSize : uint8_t {
 	DSG_SIZE_BYTE,
 	DSG_SIZE_WORD,
 	DSG_SIZE_DWORD,
 };
 
-enum DeterministicSpriteGroupAdjustType {
+enum DeterministicSpriteGroupAdjustType : uint8_t {
 	DSGA_TYPE_NONE,
 	DSGA_TYPE_DIV,
 	DSGA_TYPE_MOD,
 };
 
-enum DeterministicSpriteGroupAdjustOperation {
+enum DeterministicSpriteGroupAdjustOperation : uint8_t {
 	DSGA_OP_ADD,  ///< a + b
 	DSGA_OP_SUB,  ///< a - b
 	DSGA_OP_SMIN, ///< (signed) min(a, b)
@@ -182,7 +182,7 @@ protected:
 	const SpriteGroup *Resolve(ResolverObject &object) const override;
 };
 
-enum RandomizedSpriteGroupCompareMode {
+enum RandomizedSpriteGroupCompareMode : uint8_t {
 	RSG_CMP_ANY,
 	RSG_CMP_ALL,
 };
