@@ -10076,12 +10076,12 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 
 		if (stage == GLS_RESERVE) {
 			static const std::pair<uint32_t, uint32_t> default_grf_overrides[] = {
-				{ 0x44442202, 0x44440111 }, // UKRS addons modifies UKRS
-				{ 0x6D620402, 0x6D620401 }, // DBSetXL ECS extension modifies DBSetXL
-				{ 0x4D656f20, 0x4D656F17 }, // LV4cut modifies LV4
+				{ BSWAP32(0x44442202), BSWAP32(0x44440111) }, // UKRS addons modifies UKRS
+				{ BSWAP32(0x6D620402), BSWAP32(0x6D620401) }, // DBSetXL ECS extension modifies DBSetXL
+				{ BSWAP32(0x4D656f20), BSWAP32(0x4D656F17) }, // LV4cut modifies LV4
 			};
 			for (const auto &grf_override : default_grf_overrides) {
-				SetNewGRFOverride(BSWAP32(grf_override.first), BSWAP32(grf_override.second));
+				SetNewGRFOverride(grf_override.first, grf_override.second);
 			}
 		}
 
