@@ -242,13 +242,14 @@ struct ResultSpriteGroup : SpriteGroup {
 	 */
 	ResultSpriteGroup(SpriteID sprite, uint8_t num_sprites) :
 		SpriteGroup(SGT_RESULT),
-		sprite(sprite),
-		num_sprites(num_sprites)
+		num_sprites(num_sprites),
+		sprite(sprite)
 	{
 	}
 
-	SpriteID sprite;
 	uint8_t num_sprites;
+	SpriteID sprite;
+
 	SpriteID GetResult() const override { return this->sprite; }
 	uint8_t GetNumResults() const override { return this->num_sprites; }
 };
