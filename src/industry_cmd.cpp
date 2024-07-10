@@ -409,7 +409,7 @@ static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 	return FlatteningFoundation(tileh);
 }
 
-static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, CargoTypes *always_accepted)
+static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, CargoTypes &always_accepted)
 {
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
@@ -459,13 +459,13 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 		acceptance[a] += cargo_acceptance[i];
 
 		/* Maybe set 'always accepted' bit (if it's not set already) */
-		if (HasBit(*always_accepted, a)) continue;
+		if (HasBit(always_accepted, a)) continue;
 
 		/* Test whether the industry itself accepts the cargo type */
 		if (ind->IsCargoAccepted(a)) continue;
 
 		/* If the industry itself doesn't accept this cargo, set 'always accepted' bit */
-		SetBit(*always_accepted, a);
+		SetBit(always_accepted, a);
 	}
 }
 
