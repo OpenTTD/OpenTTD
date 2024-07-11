@@ -15,6 +15,7 @@
 #include "viewport_func.h"
 #include "train.h"
 #include "company_base.h"
+#include "pbs.h"
 
 #include "safeguards.h"
 
@@ -251,6 +252,9 @@ enum SigFlags {
 	SF_GREEN2 = 1 << 4, ///< two or more green exits found
 	SF_FULL   = 1 << 5, ///< some of buffers was full, do not continue
 	SF_PBS    = 1 << 6, ///< pbs signal found
+	SF_SPLIT  = 1 << 7, ///< track merge/split found
+	SF_ENTER  = 1 << 8, ///< signal entering the block found
+	SF_ENTER2 = 1 << 9, ///< two or more signals entering the block found
 };
 
 DECLARE_ENUM_AS_BIT_SET(SigFlags)
@@ -305,6 +309,9 @@ static SigFlags ExploreSegment(Owner owner)
 					if (!(flags & SF_TRAIN) && HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum)) flags |= SF_TRAIN;
 				}
 
+				/* Is this a track merge or split? */
+				if (!HasAtMostOneBit(tracks)) flags |= SF_SPLIT;
+
 				if (HasSignals(tile)) { // there is exactly one track - not zero, because there is exit from this tile
 					Track track = TrackBitsToTrack(tracks_masked); // mask TRACK_BIT_X and Y too
 					if (HasSignalOnTrack(tile, track)) { // now check whole track, not trackdir
@@ -315,11 +322,11 @@ static SigFlags ExploreSegment(Owner owner)
 						 * ANY conventional signal in REVERSE direction
 						 * (if it is a presignal EXIT and it changes, it will be added to 'to-be-done' set later) */
 						if (HasSignalOnTrackdir(tile, reversedir)) {
-							if (IsPbsSignal(sig)) {
-								flags |= SF_PBS;
-							} else if (!_tbuset.Add(tile, reversedir)) {
-								return flags | SF_FULL;
-							}
+							if (IsPbsSignal(sig)) flags |= SF_PBS;
+							if (flags & SF_ENTER) flags |= SF_ENTER2;
+							flags |= SF_ENTER;
+
+							if (!_tbuset.Add(tile, reversedir)) return flags | SF_FULL;
 						}
 						if (HasSignalOnTrackdir(tile, trackdir) && !IsOnewaySignal(tile, track)) flags |= SF_PBS;
 
@@ -411,12 +418,19 @@ static void UpdateSignalsAroundSegment(SigFlags flags)
 	while (_tbuset.Get(&tile, &trackdir)) {
 		assert(HasSignalOnTrackdir(tile, trackdir));
 
-		SignalType sig = GetSignalType(tile, TrackdirToTrack(trackdir));
+		Track track = TrackdirToTrack(trackdir);
+		SignalType sig = GetSignalType(tile, track);
 		SignalState newstate = SIGNAL_STATE_GREEN;
+
+		/* Signal state of reserved path signals is handled by the reserve/unreserve process. */
+		if (IsPbsSignal(sig) && (GetRailReservationTrackBits(tile) & TrackToTrackBits(track)) != TRACK_BIT_NONE) continue;
 
 		/* determine whether the new state is red */
 		if (flags & SF_TRAIN) {
 			/* train in the segment */
+			newstate = SIGNAL_STATE_RED;
+		} else if (IsPbsSignal(sig) && (flags & (SF_SPLIT | SF_ENTER2))) {
+			/* Turn path signals red if the segment has a junction or more than one way in. */
 			newstate = SIGNAL_STATE_RED;
 		} else {
 			/* is it a bidir combo? - then do not count its other signal direction as exit */

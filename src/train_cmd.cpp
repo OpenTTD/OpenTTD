@@ -2430,6 +2430,9 @@ void FreeTrainTrackReservation(const Train *v)
 					SetSignalStateByTrackdir(tile, td, SIGNAL_STATE_RED);
 					MarkTileDirtyByTile(tile);
 				}
+			} else if (HasPbsSignalOnTrackdir(tile, ReverseTrackdir(td))) {
+				/* Reservation passes an opposing path signal. Mark signal for update to re-establish the proper default state. */
+				AddSideToSignalBuffer(tile, TrackdirToExitdir(ReverseTrackdir(td)), v->owner);
 			} else if (HasSignalOnTrackdir(tile, ReverseTrackdir(td)) && IsOnewaySignal(tile, TrackdirToTrack(td))) {
 				break;
 			}
@@ -2440,6 +2443,8 @@ void FreeTrainTrackReservation(const Train *v)
 
 		free_tile = true;
 	}
+
+	UpdateSignalsInBuffer();
 }
 
 static const uint8_t _initial_tile_subcoord[6][4][3] = {
@@ -2481,6 +2486,8 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 
 	CFollowTrackRail ft(v);
 
+	std::vector<std::pair<TileIndex, Trackdir>> signals_set_to_red;
+
 	TileIndex tile = origin.tile;
 	Trackdir  cur_td = origin.trackdir;
 	while (ft.Follow(tile, cur_td)) {
@@ -2518,14 +2525,28 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 		tile = ft.m_new_tile;
 		cur_td = FindFirstTrackdir(ft.m_new_td_bits);
 
+		Trackdir rev_td = ReverseTrackdir(cur_td);
 		if (IsSafeWaitingPosition(v, tile, cur_td, true, _settings_game.pf.forbid_90_deg)) {
 			bool wp_free = IsWaitingPositionFree(v, tile, cur_td, _settings_game.pf.forbid_90_deg);
 			if (!(wp_free && TryReserveRailTrack(tile, TrackdirToTrack(cur_td)))) break;
+			/* Green path signal opposing the path? Turn to red. */
+			if (HasPbsSignalOnTrackdir(tile, rev_td) && GetSignalStateByTrackdir(tile, rev_td) == SIGNAL_STATE_GREEN) {
+				signals_set_to_red.emplace_back(tile, rev_td);
+				SetSignalStateByTrackdir(tile, rev_td, SIGNAL_STATE_RED);
+				MarkTileDirtyByTile(tile);
+			}
 			/* Safe position is all good, path valid and okay. */
 			return PBSTileInfo(tile, cur_td, true);
 		}
 
 		if (!TryReserveRailTrack(tile, TrackdirToTrack(cur_td))) break;
+
+		/* Green path signal opposing the path? Turn to red. */
+		if (HasPbsSignalOnTrackdir(tile, rev_td) && GetSignalStateByTrackdir(tile, rev_td) == SIGNAL_STATE_GREEN) {
+			signals_set_to_red.emplace_back(tile, rev_td);
+			SetSignalStateByTrackdir(tile, rev_td, SIGNAL_STATE_RED);
+			MarkTileDirtyByTile(tile);
+		}
 	}
 
 	if (ft.m_err == CFollowTrackRail::EC_OWNER || ft.m_err == CFollowTrackRail::EC_NO_WAY) {
@@ -2551,6 +2572,11 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 		cur_td = FindFirstTrackdir(ft.m_new_td_bits);
 
 		UnreserveRailTrack(tile, TrackdirToTrack(cur_td));
+	}
+
+	/* Re-instate green signals we turned to red. */
+	for (auto [sig_tile, td] : signals_set_to_red) {
+		SetSignalStateByTrackdir(sig_tile, td, SIGNAL_STATE_GREEN);
 	}
 
 	/* Path invalid. */

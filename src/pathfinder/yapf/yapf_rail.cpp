@@ -57,6 +57,8 @@ private:
 	Trackdir  m_res_fail_td;      ///< The trackdir where the reservation failed
 	TileIndex m_origin_tile;      ///< Tile our reservation will originate from
 
+	std::vector<std::pair<TileIndex, Trackdir>> m_signals_set_to_red; ///< List of signals turned red during a path reservation.
+
 	bool FindSafePositionProc(TileIndex tile, Trackdir td)
 	{
 		if (IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, !TrackFollower::Allow90degTurns())) {
@@ -88,8 +90,9 @@ private:
 	/** Try to reserve a single track/platform. */
 	bool ReserveSingleTrack(TileIndex tile, Trackdir td)
 	{
+		Trackdir rev_td = ReverseTrackdir(td);
 		if (IsRailStationTile(tile)) {
-			if (!ReserveRailStationPlatform(tile, TrackdirToExitdir(ReverseTrackdir(td)))) {
+			if (!ReserveRailStationPlatform(tile, TrackdirToExitdir(rev_td))) {
 				/* Platform could not be reserved, undo. */
 				m_res_fail_tile = tile;
 				m_res_fail_td = td;
@@ -100,6 +103,13 @@ private:
 				m_res_fail_tile = tile;
 				m_res_fail_td = td;
 				return false;
+			}
+
+			/* Green path signal opposing the path? Turn to red. */
+			if (HasPbsSignalOnTrackdir(tile, rev_td) && GetSignalStateByTrackdir(tile, rev_td) == SIGNAL_STATE_GREEN) {
+				m_signals_set_to_red.emplace_back(tile, rev_td);
+				SetSignalStateByTrackdir(tile, rev_td, SIGNAL_STATE_RED);
+				MarkTileDirtyByTile(tile);
 			}
 		}
 
@@ -159,6 +169,7 @@ public:
 		/* Don't bother if the target is reserved. */
 		if (!IsWaitingPositionFree(Yapf().GetVehicle(), m_res_dest, m_res_dest_td)) return false;
 
+		m_signals_set_to_red.clear();
 		for (Node *node = m_res_node; node->m_parent != nullptr; node = node->m_parent) {
 			node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::ReserveSingleTrack);
 			if (m_res_fail_tile != INVALID_TILE) {
@@ -170,6 +181,11 @@ public:
 					m_res_fail_tile = fail_node == node ? stop_tile : INVALID_TILE;
 					fail_node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::UnreserveSingleTrack);
 				} while (fail_node != node && (fail_node = fail_node->m_parent) != nullptr);
+
+				/* Re-instate green path signals we turned to red. */
+				for (auto [sig_tile, td] : m_signals_set_to_red) {
+					SetSignalStateByTrackdir(sig_tile, td, SIGNAL_STATE_GREEN);
+				}
 
 				return false;
 			}
