@@ -623,14 +623,14 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Bỏ toàn bộ
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Hiển thị toàn bộ loại hàng trên đồ thị tỉ lệ trả tiền của loại hàng
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Không hiển thị các loại hàng trên đồ thị tỉ lệ trả tiền của loại hàng
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/tắt đồ thị hàng hóa
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/tắt đồ thị cho hàng hóa này
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Hiện chi tiết đánh giá chỉ số năng suất
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Nút bật biểu đồ công ty
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click vào đây để bật/tắt thông tin công ty trên biểu đồ
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click vào đây để bật/tắt biểu đồ của công ty này
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bảng Tầm Cỡ Công Ty
@@ -3592,6 +3592,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Biển h
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Nhập tên của biển hiệu
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Đô Thị ({COMMA} đến {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Không Có -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (đô thị){BLACK} ({COMMA})
@@ -3925,6 +3926,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/chu kỳ
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Nhà máy ({COMMA} đến {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Không Có -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% đã vận chuyển){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
