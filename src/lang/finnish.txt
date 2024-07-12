@@ -433,7 +433,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Tallenna skenaa
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Lataa skenaario
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Tallenna korkeuskartta
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Lataa korkeuskartta
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Sulje skenaariomuokkain
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Hylkää skenaariomuokkain
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Lopeta
 
@@ -463,7 +463,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Läpinäkyvät 
 STR_FILE_MENU_SAVE_GAME                                         :Tallenna peli
 STR_FILE_MENU_LOAD_GAME                                         :Lataa peli
 STR_FILE_MENU_QUIT_GAME                                         :Lopeta peli
-STR_FILE_MENU_EXIT                                              :Sulje
+STR_FILE_MENU_EXIT                                              :Poistu
 
 # Map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Maailmankartta
@@ -2186,7 +2186,7 @@ STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-a
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tarkista online-sisältö
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Tekoälyasetukset
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Peliskriptiasetukset
-STR_INTRO_QUIT                                                  :{BLACK}Sulje
+STR_INTRO_QUIT                                                  :{BLACK}Poistu
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Aloita uusi peli. Ctrl+napsautus ohittaa kartan asetusten valinnan.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Lataa tallennettu peli
@@ -2214,14 +2214,14 @@ STR_INTRO_BASESET                                               :{BLACK}Valitust
 STR_INTRO_TRANSLATION                                           :{BLACK}Tästä käännöksestä puuttuu {NUM} merkkijono{P "" a}. Auta tekemään OpenTTD:stä parempi ryhtymällä kääntäjäksi. Lisätietoja readme.txt:ssä.
 
 # Quit window
-STR_QUIT_CAPTION                                                :{WHITE}Sulje
+STR_QUIT_CAPTION                                                :{WHITE}Poistu
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Haluatko varmasti poistua OpenTTD:stä?
 STR_QUIT_YES                                                    :{BLACK}Kyllä
 STR_QUIT_NO                                                     :{BLACK}Ei
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Pelin lopetus
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Lopetetaanko peli?
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Hylkää peli
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Haluatko varmasti hylätä tämän pelin?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Haluatko varmasti hylätä tämän skenaarion?
 
 # Help window
