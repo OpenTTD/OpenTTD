@@ -17,6 +17,10 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li AIOrder.OF_UNBUNCH_IN_DEPOT
+ * \li AIOrder.ERR_ORDER_UNBUNCH
+ *
  * \b 14.0
  *
  * API additions:
