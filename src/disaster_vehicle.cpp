@@ -384,13 +384,13 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		if (z <= u->z_pos && (u->vehstatus & VS_HIDDEN) == 0) {
 			v->age++;
 			if (u->crashed_ctr == 0) {
-				u->Crash();
+				uint victims = u->Crash();
 				u->disaster_vehicle = INVALID_VEHICLE;
 
 				AddTileNewsItem(STR_NEWS_DISASTER_SMALL_UFO, NT_ACCIDENT, u->tile);
 
-				AI::NewEvent(u->owner, new ScriptEventVehicleCrashed(u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO));
-				Game::NewEvent(new ScriptEventVehicleCrashed(u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO));
+				AI::NewEvent(u->owner, new ScriptEventVehicleCrashed(u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO, victims));
+				Game::NewEvent(new ScriptEventVehicleCrashed(u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO, victims));
 			}
 		}
 

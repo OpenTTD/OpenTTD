@@ -528,9 +528,9 @@ static Vehicle *EnumCheckRoadVehCrashTrain(Vehicle *v, void *data)
 
 uint RoadVehicle::Crash(bool flooded)
 {
-	uint pass = this->GroundVehicleBase::Crash(flooded);
+	uint victims = this->GroundVehicleBase::Crash(flooded);
 	if (this->IsFrontEngine()) {
-		pass += 1; // driver
+		victims += 1; // driver
 
 		/* If we're in a drive through road stop we ought to leave it */
 		if (IsInsideMM(this->state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END)) {
@@ -538,18 +538,18 @@ uint RoadVehicle::Crash(bool flooded)
 		}
 	}
 	this->crashed_ctr = flooded ? 2000 : 1; // max 2220, disappear pretty fast when flooded
-	return pass;
+	return victims;
 }
 
 static void RoadVehCrash(RoadVehicle *v)
 {
-	uint pass = v->Crash();
+	uint victims = v->Crash();
 
-	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_RV_LEVEL_CROSSING));
-	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_RV_LEVEL_CROSSING));
+	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_RV_LEVEL_CROSSING, victims));
+	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_RV_LEVEL_CROSSING, victims));
 
-	SetDParam(0, pass);
-	StringID newsitem = (pass == 1) ? STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER : STR_NEWS_ROAD_VEHICLE_CRASH;
+	SetDParam(0, victims);
+	StringID newsitem = (victims == 1) ? STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER : STR_NEWS_ROAD_VEHICLE_CRASH;
 	NewsType newstype = NT_ACCIDENT;
 
 	if (v->owner != _local_company) {

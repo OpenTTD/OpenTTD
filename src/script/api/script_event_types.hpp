@@ -38,12 +38,14 @@ public:
 	 * @param vehicle The vehicle that crashed.
 	 * @param crash_site Where the vehicle crashed.
 	 * @param crash_reason The reason why the vehicle crashed.
+	 * @param victims The number of victims caused by the crash.
 	 */
-	ScriptEventVehicleCrashed(VehicleID vehicle, TileIndex crash_site, CrashReason crash_reason) :
+	ScriptEventVehicleCrashed(VehicleID vehicle, TileIndex crash_site, CrashReason crash_reason, uint victims) :
 		ScriptEvent(ET_VEHICLE_CRASHED),
 		crash_site(crash_site),
 		vehicle(vehicle),
-		crash_reason(crash_reason)
+		crash_reason(crash_reason),
+		victims(victims)
 	{}
 #endif /* DOXYGEN_API */
 
@@ -72,10 +74,17 @@ public:
 	 */
 	CrashReason GetCrashReason() { return this->crash_reason; }
 
+	/**
+	 * Get the number of victims
+	 * @return The number of victims
+	 */
+	SQInteger GetVictims() { return this->victims; }
+
 private:
 	TileIndex crash_site;     ///< The location of the crash.
 	VehicleID vehicle;        ///< The crashed vehicle.
 	CrashReason crash_reason; ///< The reason for crashing.
+	uint victims; ///< The number of victims.
 };
 
 /**
