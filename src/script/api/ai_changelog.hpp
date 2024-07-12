@@ -17,6 +17,9 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li AIAirport::GetAirportPlaneCompatibility which returns AIAirport::AC_INCOMPATIBLE, AIAirport::AC_COMPATIBLE, AIAirport::AC_SHORT_RUNWAY or AIAirport::AC_INVALID
+ *
  * \b 14.0
  *
  * API additions:
