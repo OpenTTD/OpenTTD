@@ -707,7 +707,6 @@ struct SaveLoad {
 	uint16_t length;       ///< (Conditional) length of the variable (eg. arrays) (max array size is 65536 elements).
 	SaveLoadVersion version_from;   ///< Save/load the variable starting from this savegame version.
 	SaveLoadVersion version_to;     ///< Save/load the variable before this savegame version.
-	size_t size;                    ///< The sizeof size.
 	SaveLoadAddrProc *address_proc; ///< Callback proc the get the actual variable address in memory.
 	size_t extra_data;              ///< Extra data for the callback proc.
 	std::shared_ptr<SaveLoadHandler> handler; ///< Custom handler for Save/Load procs.
@@ -823,7 +822,7 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @note In general, it is better to use one of the SLE_* macros below.
  */
 #define SLE_GENERAL_NAME(cmd, name, base, variable, type, length, from, to, extra) \
-	SaveLoad {name, cmd, type, length, from, to, cpp_sizeof(base, variable), [] (void *b, size_t) -> void * { \
+	SaveLoad {name, cmd, type, length, from, to, [] (void *b, size_t) -> void * { \
 		static_assert(SlCheckVarSize(cmd, type, length, sizeof(static_cast<base *>(b)->variable))); \
 		assert(b != nullptr); \
 		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
@@ -1052,7 +1051,7 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @note In general, it is better to use one of the SLEG_* macros below.
  */
 #define SLEG_GENERAL(name, cmd, variable, type, length, from, to, extra) \
-	SaveLoad {name, cmd, type, length, from, to, sizeof(variable), [] (void *, size_t) -> void * { \
+	SaveLoad {name, cmd, type, length, from, to, [] (void *, size_t) -> void * { \
 		static_assert(SlCheckVarSize(cmd, type, length, sizeof(variable))); \
 		return static_cast<void *>(std::addressof(variable)); }, extra, nullptr}
 
@@ -1104,7 +1103,7 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @param from     First savegame version that has the struct.
  * @param to       Last savegame version that has the struct.
  */
-#define SLEG_CONDSTRUCT(name, handler, from, to) SaveLoad {name, SL_STRUCT, 0, 0, from, to, 0, nullptr, 0, std::make_shared<handler>()}
+#define SLEG_CONDSTRUCT(name, handler, from, to) SaveLoad {name, SL_STRUCT, 0, 0, from, to, nullptr, 0, std::make_shared<handler>()}
 
 /**
  * Storage of a global reference list in some savegame versions.
@@ -1133,7 +1132,7 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @param from     First savegame version that has the list.
  * @param to       Last savegame version that has the list.
  */
-#define SLEG_CONDSTRUCTLIST(name, handler, from, to) SaveLoad {name, SL_STRUCTLIST, 0, 0, from, to, 0, nullptr, 0, std::make_shared<handler>()}
+#define SLEG_CONDSTRUCTLIST(name, handler, from, to) SaveLoad {name, SL_STRUCTLIST, 0, 0, from, to, nullptr, 0, std::make_shared<handler>()}
 
 /**
  * Storage of a global variable in every savegame version.
