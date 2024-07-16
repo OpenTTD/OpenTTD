@@ -1606,6 +1606,35 @@ struct BuildVehicleWindow : Window {
 		return list;
 	}
 
+	void BuildVehicle()
+	{
+		EngineID sel_eng = this->sel_engine;
+		if (sel_eng == INVALID_ENGINE) return;
+
+		CargoID cargo = this->cargo_filter_criteria;
+		if (cargo == CargoFilterCriteria::CF_ANY || cargo == CargoFilterCriteria::CF_ENGINES || cargo == CargoFilterCriteria::CF_NONE) cargo = INVALID_CARGO;
+		if (this->vehicle_type == VEH_TRAIN && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) {
+			Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildWagon, this->window_number, sel_eng, true, cargo, INVALID_CLIENT_ID);
+		} else {
+			Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildPrimaryVehicle, this->window_number, sel_eng, true, cargo, INVALID_CLIENT_ID);
+		}
+
+		/* Update last used variant in hierarchy and refresh if necessary. */
+		bool refresh = false;
+		EngineID parent = sel_eng;
+		while (parent != INVALID_ENGINE) {
+			Engine *e = Engine::Get(parent);
+			refresh |= (e->display_last_variant != sel_eng);
+			e->display_last_variant = sel_eng;
+			parent = e->info.variant_id;
+		}
+
+		if (refresh) {
+			InvalidateWindowData(WC_REPLACE_VEHICLE, this->vehicle_type, 0); // Update the autoreplace window
+			InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
+		}
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
@@ -1668,34 +1697,9 @@ struct BuildVehicleWindow : Window {
 				break;
 			}
 
-			case WID_BV_BUILD: {
-				EngineID sel_eng = this->sel_engine;
-				if (sel_eng != INVALID_ENGINE) {
-					CargoID cargo = this->cargo_filter_criteria;
-					if (cargo == CargoFilterCriteria::CF_ANY || cargo == CargoFilterCriteria::CF_ENGINES || cargo == CargoFilterCriteria::CF_NONE) cargo = INVALID_CARGO;
-					if (this->vehicle_type == VEH_TRAIN && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) {
-						Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildWagon, this->window_number, sel_eng, true, cargo, INVALID_CLIENT_ID);
-					} else {
-						Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildPrimaryVehicle, this->window_number, sel_eng, true, cargo, INVALID_CLIENT_ID);
-					}
-
-					/* Update last used variant in hierarchy and refresh if necessary. */
-					bool refresh = false;
-					EngineID parent = sel_eng;
-					while (parent != INVALID_ENGINE) {
-						Engine *e = Engine::Get(parent);
-						refresh |= (e->display_last_variant != sel_eng);
-						e->display_last_variant = sel_eng;
-						parent = e->info.variant_id;
-					}
-					if (refresh) {
-						InvalidateWindowData(WC_REPLACE_VEHICLE, this->vehicle_type, 0); // Update the autoreplace window
-						InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
-						return;
-					}
-				}
+			case WID_BV_BUILD:
+				this->BuildVehicle();
 				break;
-			}
 
 			case WID_BV_RENAME: {
 				EngineID sel_eng = this->sel_engine;
