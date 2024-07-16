@@ -570,6 +570,12 @@ struct StationSettings {
 	uint8_t station_spread;                  ///< amount a station may spread
 };
 
+/** Settings related to depots. */
+struct DepotSettings {
+	uint8_t depot_spread;            ///< amount a depot may spread
+	bool    distant_join_depots;     ///< allow to join non-adjacent depots
+};
+
 /** Default settings for vehicles. */
 struct VehicleDefaultSettings {
 	bool   servint_ispercent;                ///< service intervals are in percents
@@ -603,6 +609,7 @@ struct GameSettings {
 	EconomySettings      economy;            ///< settings to change the economy
 	LinkGraphSettings    linkgraph;          ///< settings for link graph calculations
 	StationSettings      station;            ///< settings related to station management
+	DepotSettings        depot;              ///< settings related to depot management
 	LocaleSettings       locale;             ///< settings related to used currency/unit system in the current game
 };
 

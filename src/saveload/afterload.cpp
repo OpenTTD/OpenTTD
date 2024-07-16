@@ -799,6 +799,11 @@ bool AfterLoadGame()
 		_settings_game.linkgraph.recalc_time     *= CalendarTime::SECONDS_PER_DAY;
 	}
 
+	if (IsSavegameVersionBefore(SLV_DEPOT_SPREAD)) {
+		_settings_game.depot.depot_spread = DEF_MAX_DEPOT_SPREAD;
+		_settings_game.depot.distant_join_depots = true;
+	}
+
 	/* Load the sprites */
 	GfxLoadSprites();
 	LoadStringWidthTable();
