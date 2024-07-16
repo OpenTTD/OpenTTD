@@ -4704,7 +4704,7 @@ STR_ORDER_STOP_LOCATION_FAR_END                                 :[远端]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED}（下一个目的地距离过远）
 
-STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :跳至 {COMMA}
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :跳至 #{COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :跳至 #{COMMA} [如果{STRING}{STRING}{COMMA}]
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :跳至 #{COMMA} [如果{STRING}{STRING}]
 

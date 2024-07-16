@@ -2590,6 +2590,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :feil versjon
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :navnet er allerede i bruk
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :feil passord
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :ikke på tillattliste
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :ingen av de ønskede autentiseringsmetodene er tilgjengelige
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :feil selskap i DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :kastet ut av tjeneren
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :prøvde å jukse
