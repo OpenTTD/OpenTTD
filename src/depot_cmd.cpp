@@ -48,7 +48,7 @@ CommandCost CmdRenameDepot(DoCommandFlag flags, DepotID depot_id, const std::str
 	Depot *d = Depot::GetIfValid(depot_id);
 	if (d == nullptr) return CMD_ERROR;
 
-	CommandCost ret = CheckTileOwnership(d->xy);
+	CommandCost ret = CheckOwnership(d->owner);
 	if (ret.Failed()) return ret;
 
 	bool reset = text.empty();
@@ -71,8 +71,7 @@ CommandCost CmdRenameDepot(DoCommandFlag flags, DepotID depot_id, const std::str
 		SetWindowDirty(WC_VEHICLE_DEPOT, d->index);
 
 		/* Update the depot list */
-		VehicleType vt = GetDepotVehicleType(d->xy);
-		SetWindowDirty(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_DEPOT_LIST, vt, GetTileOwner(d->xy), d->index).Pack());
+		SetWindowDirty(GetWindowClassForVehicleType(d->veh_type), VehicleListIdentifier(VL_DEPOT_LIST, d->veh_type, d->owner, d->index).Pack());
 	}
 	return CommandCost();
 }

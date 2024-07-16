@@ -789,28 +789,11 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 
 				if (dp == nullptr) return CMD_ERROR;
 
-				ret = CheckOwnership(GetTileOwner(dp->xy));
+				ret = CheckOwnership(dp->owner);
 				if (ret.Failed()) return ret;
 
-				switch (v->type) {
-					case VEH_TRAIN:
-						if (!IsRailDepotTile(dp->xy)) return CMD_ERROR;
-						break;
-
-					case VEH_ROAD:
-						if (!IsRoadDepotTile(dp->xy)) return CMD_ERROR;
-						break;
-
-					case VEH_SHIP:
-						if (!IsShipDepotTile(dp->xy)) return CMD_ERROR;
-						break;
-
-					case VEH_AIRCRAFT:
-						if (!CanVehicleUseStation(v, Station::GetByTile(dp->xy)) || !IsHangarTile(dp->xy)) return CMD_ERROR;
-						break;
-
-						default: return CMD_ERROR;
-				}
+				if (v->type != dp->veh_type) return CMD_ERROR;
+				if (v->type == VEH_AIRCRAFT && !CanVehicleUseStation(v, Station::GetByTile(dp->xy))) return CMD_ERROR;
 			}
 
 			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && !v->IsGroundVehicle()) return CMD_ERROR;

@@ -737,9 +737,17 @@ void Airport::AddHangar()
 	assert(Depot::CanAllocateItem());
 	assert(this->GetNumHangars() > 0);
 	Station *st = Station::GetByTile(this->GetHangarTile(0));
-	this->hangar = new Depot(this->GetHangarTile(0));
+	this->hangar = new Depot(this->GetHangarTile(0), VEH_AIRCRAFT, st->owner, st);
 	this->hangar->build_date = st->build_date;
 	this->hangar->town = st->town;
+
+	this->hangar->ta.tile = st->airport.tile;
+	this->hangar->ta.w = st->airport.w;
+	this->hangar->ta.h = st->airport.h;
+
+	for (uint i = 0; i < this->GetNumHangars(); i++) {
+		this->hangar->depot_tiles.push_back(this->GetHangarTile(i));
+	}
 }
 
 /**

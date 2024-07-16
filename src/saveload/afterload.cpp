@@ -294,6 +294,10 @@ static void InitializeWindowsAndCaches()
 		}
 	}
 
+	for (Depot *dep : Depot::Iterate()) {
+		dep->RescanDepotTiles();
+	}
+
 	RecomputePrices();
 
 	GroupStatistics::UpdateAfterLoad();
@@ -2810,6 +2814,36 @@ bool AfterLoadGame()
 				StationID station_id = order->GetDestination();
 				Station *st = Station::Get(station_id);
 				order->SetDestination(st->airport.hangar->index);
+			}
+		}
+	}
+
+	if (IsSavegameVersionBefore(SLV_ADD_MEMBERS_TO_DEPOT_STRUCT)) {
+		for (Depot *depot : Depot::Iterate()) {
+			if (!IsDepotTile(depot->xy) || GetDepotIndex(depot->xy) != depot->index) {
+				/* It can happen there is no depot here anymore (TTO/TTD savegames) */
+				depot->veh_type = VEH_INVALID;
+				depot->owner = INVALID_OWNER;
+				delete depot;
+				continue;
+			}
+
+			depot->owner = GetTileOwner(depot->xy);
+			depot->veh_type = GetDepotVehicleType(depot->xy);
+			switch (depot->veh_type) {
+				case VEH_SHIP:
+					depot->AfterAddRemove(TileArea(depot->xy, 2, 2), true);
+					break;
+				case VEH_ROAD:
+				case VEH_TRAIN:
+					depot->AfterAddRemove(TileArea(depot->xy, 1, 1), true);
+					break;
+				case VEH_AIRCRAFT:
+					assert(IsHangarTile(depot->xy));
+					depot->station = Station::GetByTile(depot->xy);
+					break;
+				default:
+					break;
 			}
 		}
 	}
