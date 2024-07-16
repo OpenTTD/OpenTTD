@@ -2457,11 +2457,7 @@ static bool StationJoinerNeeded(TileArea ta, const StationPickerCmdProc &proc)
 	/* Now check if we could build there */
 	if (!proc(true, INVALID_STATION)) return false;
 
-	/* Test for adjacent station or station below selection.
-	 * If adjacent-stations is disabled and we are building next to a station, do not show the selection window.
-	 * but join the other station immediately. */
-	const BaseStation *st = FindStationsNearby<T>(ta, false);
-	return st == nullptr && (_settings_game.station.adjacent_stations || std::any_of(std::begin(_stations_nearby_list), std::end(_stations_nearby_list), [](StationID s) { return s != NEW_STATION; }));
+	return FindStationsNearby<T>(ta, false) == nullptr;
 }
 
 /**
