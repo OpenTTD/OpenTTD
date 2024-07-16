@@ -1322,10 +1322,10 @@ void Aircraft::MarkDirty()
 
 uint Aircraft::Crash(bool flooded)
 {
-	uint pass = Vehicle::Crash(flooded) + 2; // pilots
+	uint victims = Vehicle::Crash(flooded) + 2; // pilots
 	this->crashed_counter = flooded ? 9000 : 0; // max 10000, disappear pretty fast when flooded
 
-	return pass;
+	return victims;
 }
 
 /**
@@ -1336,8 +1336,8 @@ static void CrashAirplane(Aircraft *v)
 {
 	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 
-	uint pass = v->Crash();
-	SetDParam(0, pass);
+	uint victims = v->Crash();
+	SetDParam(0, victims);
 
 	v->cargo.Truncate();
 	v->Next()->cargo.Truncate();
@@ -1351,8 +1351,8 @@ static void CrashAirplane(Aircraft *v)
 		newsitem = STR_NEWS_AIRCRAFT_CRASH;
 	}
 
-	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
-	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
+	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING, victims));
+	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING, victims));
 
 	NewsType newstype = NT_ACCIDENT;
 	if (v->owner != _local_company) {
