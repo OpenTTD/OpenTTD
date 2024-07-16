@@ -38,6 +38,7 @@
 #include "querystring_gui.h"
 #include "stringfilter_type.h"
 #include "hotkeys.h"
+#include "depot_base.h"
 
 #include "widgets/build_vehicle_widget.h"
 
@@ -1163,6 +1164,25 @@ enum BuildVehicleHotkeys {
 	BVHK_FOCUS_FILTER_BOX, ///< Focus the edit box for editing the filter string
 };
 
+/**
+ * Return a unique window number for the BuildVehicleWindow.
+ * The BuildVehicleWindow can be opened for a valid depot or
+ * for a specific vehicle type ("Available Trains", "Available Ships"...).
+ * The corresponding unique window number is chosen as:
+ *     - For existing depots, the depot id.
+ *     - For vehicle types, it is MAX_DEPOTS + vehicle_type
+ * @param depot_id the depot id
+ * @param type the vehicle type
+ * @return the depot id for valid depots or MAX_DEPOTS + vehicle_type otherwise.
+ */
+DepotID GetBuildVehicleWindowNumber(DepotID depot_id, VehicleType type)
+{
+	assert(depot_id == INVALID_DEPOT || Depot::IsValidID(depot_id));
+	assert(IsCompanyBuildableVehicleType(type));
+	if (depot_id != INVALID_DEPOT) return depot_id;
+	return MAX_DEPOTS + type;
+}
+
 /** GUI for building vehicles. */
 struct BuildVehicleWindow : Window {
 	VehicleType vehicle_type;                   ///< Type of vehicles shown in the window.
@@ -1201,11 +1221,11 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	BuildVehicleWindow(WindowDesc &desc, TileIndex tile, VehicleType type) : Window(desc), vehicle_editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS)
+	BuildVehicleWindow(WindowDesc &desc, DepotID depot_id, VehicleType type) : Window(desc), vehicle_editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS)
 	{
 		this->vehicle_type = type;
-		this->listview_mode = tile == INVALID_TILE;
-		this->window_number = this->listview_mode ? (int)type : tile.base();
+		this->listview_mode = depot_id == INVALID_DEPOT;
+		this->window_number = GetBuildVehicleWindowNumber(depot_id, type);
 
 		this->sel_engine = INVALID_ENGINE;
 
@@ -1240,16 +1260,13 @@ struct BuildVehicleWindow : Window {
 
 		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9);
 
-		if (tile == INVALID_TILE) {
-			this->FinishInitNested(type);
-		} else {
-			this->FinishInitNested(tile);
-		}
+		this->FinishInitNested(this->window_number);
 
 		this->querystrings[WID_BV_FILTER] = &this->vehicle_editbox;
 		this->vehicle_editbox.cancel_button = QueryString::ACTION_CLEAR;
 
-		this->owner = (tile != INVALID_TILE) ? GetTileOwner(tile) : _local_company;
+		Depot *depot = Depot::GetIfValid(depot_id);
+		this->owner = (depot != nullptr) ? GetTileOwner(depot->xy) : _local_company;
 
 		this->eng_list.ForceRebuild();
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
@@ -1264,13 +1281,16 @@ struct BuildVehicleWindow : Window {
 	/** Set the filter type according to the depot type */
 	void UpdateFilterByTile()
 	{
+		TileIndex tile = INVALID_TILE;
+		if (!this->listview_mode) tile = Depot::Get(this->window_number)->xy;
+
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN:
 				if (this->listview_mode) {
 					this->filter.railtype = INVALID_RAILTYPE;
 				} else {
-					this->filter.railtype = GetRailType(this->window_number);
+					this->filter.railtype = GetRailType(tile);
 				}
 				break;
 
@@ -1278,9 +1298,9 @@ struct BuildVehicleWindow : Window {
 				if (this->listview_mode) {
 					this->filter.roadtype = INVALID_ROADTYPE;
 				} else {
-					this->filter.roadtype = GetRoadTypeRoad(this->window_number);
+					this->filter.roadtype = GetRoadTypeRoad(tile);
 					if (this->filter.roadtype == INVALID_ROADTYPE) {
-						this->filter.roadtype = GetRoadTypeTram(this->window_number);
+						this->filter.roadtype = GetRoadTypeTram(tile);
 					}
 				}
 				break;
@@ -1326,7 +1346,7 @@ struct BuildVehicleWindow : Window {
 
 		if (!this->listview_mode) {
 			/* Query for cost and refitted capacity */
-			auto [ret, veh_id, refit_capacity, refit_mail, cargo_capacities] = Command<CMD_BUILD_VEHICLE>::Do(DC_QUERY_COST, this->window_number, this->sel_engine, true, cargo, INVALID_CLIENT_ID);
+			auto [ret, veh_id, refit_capacity, refit_mail, cargo_capacities] = Command<CMD_BUILD_VEHICLE>::Do(DC_QUERY_COST, Depot::Get(this->window_number)->xy, this->sel_engine, true, cargo, INVALID_CLIENT_ID);
 			if (ret.Succeeded()) {
 				this->te.cost          = ret.GetCost() - e->GetCost();
 				this->te.capacity      = refit_capacity;
@@ -1613,10 +1633,15 @@ struct BuildVehicleWindow : Window {
 
 		CargoID cargo = this->cargo_filter_criteria;
 		if (cargo == CargoFilterCriteria::CF_ANY || cargo == CargoFilterCriteria::CF_ENGINES || cargo == CargoFilterCriteria::CF_NONE) cargo = INVALID_CARGO;
+
+		assert(Depot::IsValidID(this->window_number));
+		Depot *depot = Depot::Get(this->window_number);
+		assert(depot->xy != INVALID_TILE);
+
 		if (this->vehicle_type == VEH_TRAIN && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) {
-			Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildWagon, this->window_number, sel_eng, true, cargo, INVALID_CLIENT_ID);
+			Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildWagon, depot->xy, sel_eng, true, cargo, INVALID_CLIENT_ID);
 		} else {
-			Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildPrimaryVehicle, this->window_number, sel_eng, true, cargo, INVALID_CLIENT_ID);
+			Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildPrimaryVehicle, depot->xy, sel_eng, true, cargo, INVALID_CLIENT_ID);
 		}
 
 		/* Update last used variant in hierarchy and refresh if necessary. */
@@ -1930,17 +1955,11 @@ static WindowDesc _build_vehicle_desc(
 	&BuildVehicleWindow::hotkeys
 );
 
-void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
+void ShowBuildVehicleWindow(DepotID depot_id, VehicleType type)
 {
-	/* We want to be able to open both Available Train as Available Ships,
-	 *  so if tile == INVALID_TILE (Available XXX Window), use 'type' as unique number.
-	 *  As it always is a low value, it won't collide with any real tile
-	 *  number. */
-	uint num = (tile == INVALID_TILE) ? (int)type : tile.base();
-
 	assert(IsCompanyBuildableVehicleType(type));
 
-	CloseWindowById(WC_BUILD_VEHICLE, num);
+	CloseWindowById(WC_BUILD_VEHICLE, GetBuildVehicleWindowNumber(depot_id, type));
 
-	new BuildVehicleWindow(_build_vehicle_desc, tile, type);
+	new BuildVehicleWindow(_build_vehicle_desc, depot_id, type);
 }

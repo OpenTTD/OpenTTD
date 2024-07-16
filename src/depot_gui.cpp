@@ -769,7 +769,7 @@ struct DepotWindow : Window {
 
 			case WID_D_BUILD: // Build vehicle
 				ResetObjectToPlace();
-				ShowBuildVehicleWindow(tile, this->type);
+				ShowBuildVehicleWindow(this->window_number, this->type);
 				break;
 
 			case WID_D_CLONE: // Clone button
@@ -824,7 +824,7 @@ struct DepotWindow : Window {
 				break;
 
 			case WID_D_VEHICLE_LIST:
-				ShowVehicleListWindow(this->owner, this->type, tile);
+				ShowVehicleListWindowDepot(this->owner, this->type, this->window_number);
 				break;
 
 			case WID_D_AUTOREPLACE:

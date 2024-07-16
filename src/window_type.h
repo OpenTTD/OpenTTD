@@ -383,8 +383,8 @@ enum WindowClass {
 
 	/**
 	 * Build vehicle; %Window numbers:
-	 *   - #VehicleType = #BuildVehicleWidgets
-	 *   - #TileIndex = #BuildVehicleWidgets
+	 *   - #DepotID = #BuildVehicleWidgets, for existing depots
+	 *   - #MAX_DEPOTS + VehicleType = #BuildVehicleWidgets, for "Available Trains"...
 	 */
 	WC_BUILD_VEHICLE,
 

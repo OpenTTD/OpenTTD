@@ -14,7 +14,15 @@
 #include "core/pool_type.hpp"
 #include "timer/timer_game_calendar.h"
 
-typedef Pool<Depot, DepotID, 64, 64000> DepotPool;
+static const DepotID MAX_DEPOTS = 64000;
+/**
+ * For build_vehicle_window, each vehicle type needs its own unique value.
+ * So we need some special indexes: MAX_DEPOTS + VEH_TYPE_XXX.
+ * @see GetBuildVehicleWindowNumber
+ */
+static_assert(MAX_DEPOTS + VEH_COMPANY_END - 1 <= INVALID_DEPOT);
+
+typedef Pool<Depot, DepotID, 64, MAX_DEPOTS> DepotPool;
 extern DepotPool _depot_pool;
 
 struct Depot : DepotPool::PoolItem<&_depot_pool> {
