@@ -21,6 +21,9 @@
 
 struct Train;
 
+static const uint8_t _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
+static const uint8_t _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
+
 /** Rail vehicle flags. */
 enum VehicleRailFlags {
 	VRF_REVERSING                     = 0,
@@ -66,7 +69,7 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
 bool TrainOnCrossing(TileIndex tile);
-void NormalizeTrainVehInDepot(const Train *u);
+void NormalizeTrainVehInDepot(const Train *u, DoCommandFlag flags = DC_EXEC);
 
 /** Variables that are cached to improve performance and such */
 struct TrainCache {
@@ -120,7 +123,7 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 	Money GetRunningCost() const override;
 	int GetCursorImageOffset() const;
 	int GetDisplayImageWidth(Point *offset = nullptr) const;
-	bool IsInDepot() const override { return this->track == TRACK_BIT_DEPOT; }
+	bool IsInDepot() const override { return HasBit((uint8_t)this->track, TRACK_DEPOT); }
 	bool Tick() override;
 	void OnNewCalendarDay() override;
 	void OnNewEconomyDay() override;
@@ -352,5 +355,9 @@ protected: // These functions should not be called outside acceleration code.
 		return false;
 	}
 };
+
+bool HasCompatibleDepotTile(TileIndex tile, const Train *t);
+bool HandleTrainEnterDepot(Train *v);
+bool CheckReverseTrain(const Train *v);
 
 #endif /* TRAIN_H */

@@ -24,6 +24,7 @@
 #include "newgrf_animation_base.h"
 #include "newgrf_class_func.h"
 #include "timer/timer_game_calendar.h"
+#include "platform_func.h"
 
 #include "safeguards.h"
 

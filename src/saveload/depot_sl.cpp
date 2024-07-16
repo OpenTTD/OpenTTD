@@ -27,6 +27,13 @@ static const SaveLoad _depot_desc[] = {
 	 SLE_CONDVAR(Depot, town_cn,    SLE_UINT16,               SLV_141, SL_MAX_VERSION),
 	SLE_CONDSSTR(Depot, name,       SLE_STR,                  SLV_141, SL_MAX_VERSION),
 	 SLE_CONDVAR(Depot, build_date, SLE_INT32,                SLV_142, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, owner,      SLE_UINT8,                  SLV_ADD_MEMBERS_TO_DEPOT_STRUCT, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, veh_type,   SLE_UINT8,                  SLV_ADD_MEMBERS_TO_DEPOT_STRUCT, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, ta.tile,    SLE_UINT32,                 SLV_ADD_MEMBERS_TO_DEPOT_STRUCT, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, ta.w,       SLE_FILE_U8 | SLE_VAR_U16,  SLV_ADD_MEMBERS_TO_DEPOT_STRUCT, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, ta.h,       SLE_FILE_U8 | SLE_VAR_U16,  SLV_ADD_MEMBERS_TO_DEPOT_STRUCT, SL_MAX_VERSION),
+	 SLE_CONDREF(Depot, station,    REF_STATION,                SLV_ADD_MEMBERS_TO_DEPOT_STRUCT, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, delete_ctr, SLE_UINT8,                          SLV_KEEP_REMOVED_DEPOTS, SL_MAX_VERSION),
 };
 
 struct DEPTChunkHandler : ChunkHandler {

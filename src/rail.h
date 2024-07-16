@@ -338,6 +338,19 @@ inline bool HasPowerOnRail(RailType enginetype, RailType tiletype)
 }
 
 /**
+ * Checks if an engine with a given \a enginetype is powered on \a rail_types.
+ * This would normally just be an equality check,
+ * but for electric rails (which also support non-electric vehicles).
+ * @param  enginetype The RailType of the engine we are considering.
+ * @param  rail_types The RailTypes we are considering.
+ * @return Whether the engine got power on this tile.
+ */
+static inline bool HasPowerOnRails(RailType enginetype, RailTypes rail_types)
+{
+	return (GetRailTypeInfo(enginetype)->powered_railtypes & rail_types) != 0;
+}
+
+/**
  * Test if a RailType disallows build of level crossings.
  * @param rt The RailType to check.
  * @return Whether level crossings are not allowed.

@@ -336,6 +336,11 @@ public:
 	template <class NWID>
 	inline NWID *GetWidget(WidgetID widnum);
 
+	inline bool HasWidget(WidgetID widnum) const
+	{
+		return this->GetWidget<NWidgetCore>(widnum) != nullptr;
+	}
+
 	const Scrollbar *GetScrollbar(WidgetID widnum) const;
 	Scrollbar *GetScrollbar(WidgetID widnum);
 

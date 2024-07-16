@@ -26,6 +26,7 @@
 #include "core/random_func.hpp"
 #include "linkgraph/linkgraph.h"
 #include "linkgraph/linkgraphschedule.h"
+#include "depot_base.h"
 
 #include "table/strings.h"
 
@@ -266,43 +267,6 @@ void Station::MarkTilesDirty(bool cargo_change) const
 		}
 		tile += TileDiffXY(-w, 1);
 	}
-}
-
-/* virtual */ uint Station::GetPlatformLength(TileIndex tile) const
-{
-	assert(this->TileBelongsToRailStation(tile));
-
-	TileIndexDiff delta = (GetRailStationAxis(tile) == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
-
-	TileIndex t = tile;
-	uint len = 0;
-	do {
-		t -= delta;
-		len++;
-	} while (IsCompatibleTrainStationTile(t, tile));
-
-	t = tile;
-	do {
-		t += delta;
-		len++;
-	} while (IsCompatibleTrainStationTile(t, tile));
-
-	return len - 1;
-}
-
-/* virtual */ uint Station::GetPlatformLength(TileIndex tile, DiagDirection dir) const
-{
-	TileIndex start_tile = tile;
-	uint length = 0;
-	assert(IsRailStationTile(tile));
-	assert(dir < DIAGDIR_END);
-
-	do {
-		length++;
-		tile += TileOffsByDiagDir(dir);
-	} while (IsCompatibleTrainStationTile(tile, start_tile));
-
-	return length;
 }
 
 /**
@@ -725,6 +689,56 @@ Money AirportMaintenanceCost(Owner owner)
 	}
 	/* 3 bits fraction for the maintenance cost factor. */
 	return total_cost >> 3;
+}
+
+/**
+ * Create a hangar on the airport.
+ */
+void Airport::AddHangar()
+{
+	assert(this->hangar == nullptr);
+	assert(Depot::CanAllocateItem());
+	assert(this->GetNumHangars() > 0);
+	Station *st = Station::GetByTile(this->GetHangarTile(0));
+	this->hangar = new Depot(this->GetHangarTile(0), VEH_AIRCRAFT, st->owner, st);
+	this->hangar->build_date = st->build_date;
+	this->hangar->town = st->town;
+
+	this->hangar->ta.tile = st->airport.tile;
+	this->hangar->ta.w = st->airport.w;
+	this->hangar->ta.h = st->airport.h;
+
+	for (uint i = 0; i < this->GetNumHangars(); i++) {
+		this->hangar->depot_tiles.push_back(this->GetHangarTile(i));
+	}
+}
+
+/**
+ * Delete the hangar on the airport.
+ */
+void Airport::RemoveHangar()
+{
+	if (this->hangar == nullptr) return;
+
+	/* TODO Check this. */
+	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, this->hangar->index);
+
+	for (Aircraft *a : Aircraft::Iterate()) {
+		if (!a->IsNormalAircraft()) continue;
+		if (!a->current_order.IsType(OT_GOTO_DEPOT)) continue;
+		if (a->current_order.GetDestination() != this->hangar->index) continue;
+		a->current_order.MakeDummy();
+	}
+
+	this->hangar->Disuse();
+	delete this->hangar;
+	this->hangar = nullptr;
+}
+
+DepotID GetHangarIndex(TileIndex t) {
+	assert(IsAirportTile(t));
+	assert(Station::GetByTile(t)->airport.hangar != nullptr);
+	return Station::GetByTile(t)->airport.hangar->index;
 }
 
 bool StationCompare::operator() (const Station *lhs, const Station *rhs) const

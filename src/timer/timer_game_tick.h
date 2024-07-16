@@ -78,6 +78,7 @@ public:
 	static constexpr TimerGameTick::Ticks STATION_RATING_TICKS = 185; ///< Cycle duration for updating station rating.
 	static constexpr TimerGameTick::Ticks STATION_ACCEPTANCE_TICKS = 250; ///< Cycle duration for updating station acceptance.
 	static constexpr TimerGameTick::Ticks STATION_LINKGRAPH_TICKS = 504; ///< Cycle duration for cleaning dead links.
+	static constexpr TimerGameTick::Ticks DEPOT_REMOVAL_TICKS = 250; ///< Cycle duration for cleaning demolished depots.
 	static constexpr TimerGameTick::Ticks CARGO_AGING_TICKS = 185; ///< Cycle duration for aging cargo.
 	static constexpr TimerGameTick::Ticks INDUSTRY_PRODUCE_TICKS = 256; ///< Cycle duration for industry production.
 	static constexpr TimerGameTick::Ticks TOWN_GROWTH_TICKS = 70;  ///< Cycle duration for towns trying to grow (this originates from the size of the town array in TTD).

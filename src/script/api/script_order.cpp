@@ -245,18 +245,13 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 
 	const Order *order = ::ResolveOrder(vehicle_id, order_position);
 	if (order == nullptr || order->GetType() == OT_CONDITIONAL) return INVALID_TILE;
-	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 
 	switch (order->GetType()) {
 		case OT_GOTO_DEPOT: {
 			/* We don't know where the nearest depot is... (yet) */
 			if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) return INVALID_TILE;
 
-			if (v->type != VEH_AIRCRAFT) return ::Depot::Get(order->GetDestination())->xy;
-			/* Aircraft's hangars are referenced by StationID, not DepotID */
-			const Station *st = ::Station::Get(order->GetDestination());
-			if (!st->airport.HasHangar()) return INVALID_TILE;
-			return st->airport.GetHangarTile(0);
+			return ::Depot::Get(order->GetDestination())->xy;
 		}
 
 		case OT_GOTO_STATION: {
@@ -490,11 +485,10 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 				 * to a depot (other vehicle types). */
 				if (::Vehicle::Get(vehicle_id)->type == VEH_AIRCRAFT) {
 					if (!::IsTileType(destination, MP_STATION)) return false;
-					order.MakeGoToDepot(::GetStationIndex(destination), odtf, onsf, odaf);
 				} else {
 					if (::IsTileType(destination, MP_STATION)) return false;
-					order.MakeGoToDepot(::GetDepotIndex(destination), odtf, onsf, odaf);
 				}
+				order.MakeGoToDepot(::GetDepotIndex(destination), odtf, onsf, odaf);
 			}
 			break;
 		}

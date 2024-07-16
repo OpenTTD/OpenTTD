@@ -18,6 +18,7 @@
 #include "linkgraph/linkgraph_type.h"
 #include "newgrf_storage.h"
 #include "bitmap_type.h"
+#include "depot_type.h"
 
 static const uint8_t INITIAL_STATION_RATING = 175;
 static const uint8_t MAX_STATION_RATING = 255;
@@ -294,6 +295,7 @@ struct Airport : public TileArea {
 	uint8_t type;          ///< Type of this airport, @see AirportTypes
 	uint8_t layout;        ///< Airport layout number.
 	Direction rotation; ///< How this airport is rotated.
+	Depot *hangar;      ///< The corresponding hangar of this airport, if any.
 
 	PersistentStorage *psa; ///< Persistent storage for NewGRF airports.
 
@@ -404,6 +406,9 @@ struct Airport : public TileArea {
 		return num;
 	}
 
+	void AddHangar();
+	void RemoveHangar();
+
 private:
 	/**
 	 * Retrieve hangar information of a hangar at a given tile.
@@ -483,9 +488,6 @@ public:
 	void MoveSign(TileIndex new_xy) override;
 
 	void AfterStationTileSetChange(bool adding, StationType type);
-
-	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const override;
-	uint GetPlatformLength(TileIndex tile) const override;
 	void RecomputeCatchment(bool no_clear_nearby_lists = false);
 	static void RecomputeCatchmentForAll();
 

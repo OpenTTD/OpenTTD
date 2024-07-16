@@ -11,6 +11,7 @@
 #include "../void_map.h"
 #include "../signs_base.h"
 #include "../depot_base.h"
+#include "../depot_func.h"
 #include "../fios.h"
 #include "../gamelog_internal.h"
 #include "../network/network.h"
@@ -222,6 +223,7 @@ static inline RailType UpdateRailType(RailType rt, RailType min)
 void UpdateAllVirtCoords()
 {
 	UpdateAllStationVirtCoords();
+	UpdateAllDepotVirtCoords();
 	UpdateAllSignVirtCoords();
 	UpdateAllTownVirtCoords();
 	UpdateAllTextEffectVirtCoords();
@@ -292,6 +294,10 @@ static void InitializeWindowsAndCaches()
 		if (rv->IsFrontEngine()) {
 			rv->CargoChanged();
 		}
+	}
+
+	for (Depot *dep : Depot::Iterate()) {
+		dep->RescanDepotTiles();
 	}
 
 	RecomputePrices();
@@ -641,6 +647,15 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_DEPOTS_ALIGN_RAIL_DEPOT_BITS)) {
+		for (auto t : Map::Iterate()) {
+			if (IsTileType(t, MP_RAILWAY) && GetRailTileType(t) == 3) {
+				/* Change the rail type for depots from old value 3 to new value 2. */
+				SB(t.m5(), 6, 2, RAIL_TILE_DEPOT);
+			}
+		}
+	}
+
 	/* in version 2.1 of the savegame, town owner was unified. */
 	if (IsSavegameVersionBefore(SLV_2, 1)) ConvertTownOwner();
 
@@ -793,6 +808,24 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_LINKGRAPH_SECONDS)) {
 		_settings_game.linkgraph.recalc_interval *= CalendarTime::SECONDS_PER_DAY;
 		_settings_game.linkgraph.recalc_time     *= CalendarTime::SECONDS_PER_DAY;
+	}
+
+	if (IsSavegameVersionBefore(SLV_DEPOT_SPREAD)) {
+		_settings_game.depot.depot_spread = 1;
+		_settings_game.depot.adjacent_depots = true;
+		_settings_game.depot.distant_join_depots = true;
+	}
+
+	if (IsSavegameVersionBefore(SLV_ALLOW_INCOMPATIBLE_REPLACEMENTS)) {
+		_settings_game.depot.allow_no_comp_railtype_replacements = false;
+		_settings_game.depot.allow_no_comp_roadtype_replacements = false;
+	}
+
+	if (IsSavegameVersionBefore(SLV_EXTENDED_DEPOTS)) {
+		/* Set standard depots as the only available depots. */
+		_settings_game.depot.rail_depot_types = 1;
+		_settings_game.depot.road_depot_types = 1;
+		_settings_game.depot.water_depot_types = 1;
 	}
 
 	/* Load the sprites */
@@ -2425,28 +2458,6 @@ bool AfterLoadGame()
 		for (Depot *d : Depot::Iterate()) d->build_date = TimerGameCalendar::date;
 	}
 
-	/* In old versions it was possible to remove an airport while a plane was
-	 * taking off or landing. This gives all kind of problems when building
-	 * another airport in the same station so we don't allow that anymore.
-	 * For old savegames with such aircraft we just throw them in the air and
-	 * treat the aircraft like they were flying already. */
-	if (IsSavegameVersionBefore(SLV_146)) {
-		for (Aircraft *v : Aircraft::Iterate()) {
-			if (!v->IsNormalAircraft()) continue;
-			Station *st = GetTargetAirportIfValid(v);
-			if (st == nullptr && v->state != FLYING) {
-				v->state = FLYING;
-				UpdateAircraftCache(v);
-				AircraftNextAirportPos_and_Order(v);
-				/* get aircraft back on running altitude */
-				if ((v->vehstatus & VS_CRASHED) == 0) {
-					GetAircraftFlightLevelBounds(v, &v->z_pos, nullptr);
-					SetAircraftPosition(v, v->x_pos, v->y_pos, GetAircraftFlightLevel(v));
-				}
-			}
-		}
-	}
-
 	/* Move the animation frame to the same location (m7) for all objects. */
 	if (IsSavegameVersionBefore(SLV_147)) {
 		for (auto t : Map::Iterate()) {
@@ -2787,6 +2798,112 @@ bool AfterLoadGame()
 					delete st->airport.psa;
 					st->airport.psa = nullptr;
 
+				}
+			}
+		}
+	}
+
+	if (IsSavegameVersionBefore(SLV_ADD_DEPOTS_TO_HANGARS)) {
+		for (Station *st : Station::Iterate()) {
+			if ((st->facilities & FACIL_AIRPORT) && st->airport.HasHangar()) {
+				/* Add a built-in hangar for some airport types. */
+				assert(Depot::CanAllocateItem());
+				st->airport.AddHangar();
+			} else {
+				/* If airport has no hangar, remove old go to hangar orders
+				 * that could remain from removing an airport with a hangar
+				 * and rebuilding it with an airport with no hangar. */
+				RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, st->index);
+			}
+		}
+	}
+
+	if (IsSavegameVersionBefore(SLV_DEPOTID_IN_HANGAR_ORDERS)) {
+		/* Update go to hangar orders so they store the DepotID instead of StationID. */
+		for (Aircraft *a : Aircraft::Iterate()) {
+			if (!a->IsNormalAircraft()) continue;
+
+			/* Update current order. */
+			if (a->current_order.IsType(OT_GOTO_DEPOT)) {
+				Depot *dep = Station::Get(a->current_order.GetDestination())->airport.hangar;
+				if (dep == nullptr) {
+					/* Aircraft heading to a removed hangar. */
+					a->current_order.MakeDummy();
+				} else {
+					a->current_order.SetDestination(dep->index);
+				}
+			}
+
+			/* Update each aircraft order list once. */
+			if (a->orders == nullptr) continue;
+			if (a->orders->GetFirstSharedVehicle() != a) continue;
+
+			for (Order *order : a->Orders()) {
+				if (!order->IsType(OT_GOTO_DEPOT)) continue;
+				StationID station_id = order->GetDestination();
+				Station *st = Station::Get(station_id);
+				order->SetDestination(st->airport.hangar->index);
+			}
+		}
+	}
+
+	if (IsSavegameVersionBefore(SLV_ADD_MEMBERS_TO_DEPOT_STRUCT)) {
+		for (Depot *depot : Depot::Iterate()) {
+			if (!IsDepotTile(depot->xy) || GetDepotIndex(depot->xy) != depot->index) {
+				/* It can happen there is no depot here anymore (TTO/TTD savegames) */
+				depot->veh_type = VEH_INVALID;
+				depot->owner = INVALID_OWNER;
+				depot->Disuse();
+				delete depot;
+				continue;
+			}
+
+			depot->owner = GetTileOwner(depot->xy);
+			depot->veh_type = GetDepotVehicleType(depot->xy);
+			switch (depot->veh_type) {
+				case VEH_SHIP:
+					depot->AfterAddRemove(TileArea(depot->xy, 2, 2), true);
+					break;
+				case VEH_ROAD:
+				case VEH_TRAIN:
+					depot->AfterAddRemove(TileArea(depot->xy, 1, 1), true);
+					break;
+				case VEH_AIRCRAFT:
+					assert(IsHangarTile(depot->xy));
+					depot->station = Station::GetByTile(depot->xy);
+					break;
+				default:
+					break;
+			}
+		}
+
+		for (auto t : Map::Iterate()) {
+			if (!IsRoadDepotTile(t)) continue;
+			DiagDirection dir = (DiagDirection)GB(t.m5(), 0, 2);
+			SB(t.m5(), 0, 6, 0);
+			RoadBits rb = DiagDirToRoadBits(dir);
+			SetRoadBits(t, rb, HasRoadTypeRoad(t) ? RTT_ROAD : RTT_TRAM);
+			SB(t.m6(), 6, 2, dir);
+		}
+	}
+
+	/* In old versions it was possible to remove an airport while a plane was
+	 * taking off or landing. This gives all kind of problems when building
+	 * another airport in the same station so we don't allow that anymore.
+	 * For old savegames with such aircraft we just throw them in the air and
+	 * treat the aircraft like they were flying already. */
+	if (IsSavegameVersionBefore(SLV_146)) {
+		for (Aircraft *v : Aircraft::Iterate()) {
+			if (!v->IsNormalAircraft()) continue;
+			Station *st = GetTargetAirportIfValid(v);
+			if (st == nullptr && v->state != FLYING) {
+				v->state = FLYING;
+				UpdateAircraftCache(v);
+				AircraftNextAirportPos_and_Order(v);
+				/* get aircraft back on running altitude */
+				if ((v->vehstatus & VS_CRASHED) == 0) {
+					GetAircraftFlightLevelBounds(v, &v->z_pos, nullptr);
+					SetAircraftPosition(v, v->x_pos, v->y_pos, GetAircraftFlightLevel(v));
 				}
 			}
 		}

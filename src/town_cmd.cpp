@@ -44,6 +44,7 @@
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "depot_base.h"
+#include "depot_func.h"
 #include "object_map.h"
 #include "object_base.h"
 #include "ai/ai.hpp"
@@ -1254,7 +1255,7 @@ static bool CanRoadContinueIntoNextTile(const Town *t, const TileIndex tile, con
 
 	/* If the next tile is a road depot, allow if it's facing the right way. */
 	if (IsTileType(next_tile, MP_ROAD)) {
-		return IsRoadDepot(next_tile) && GetRoadDepotDirection(next_tile) == ReverseDiagDir(road_dir);
+		return IsRoadDepot(next_tile) && (GetRoadBits(next_tile, RTT_ROAD) & DiagDirToRoadBits(ReverseDiagDir(road_dir))) != ROAD_NONE;
 	}
 
 	/* If the next tile is a railroad track, check if towns are allowed to build level crossings.
@@ -3005,6 +3006,8 @@ CommandCost CmdRenameTown(DoCommandFlag flags, TownID town_id, const std::string
 		ClearAllStationCachedNames();
 		ClearAllIndustryCachedNames();
 		UpdateAllStationVirtCoords();
+		UpdateAllDepotVirtCoords();
+		RebuildViewportKdtree();
 	}
 	return CommandCost();
 }

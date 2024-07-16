@@ -145,7 +145,16 @@
 
 	DiagDirection entrance_dir = (::TileX(tile) == ::TileX(front)) ? (::TileY(tile) < ::TileY(front) ? DIAGDIR_SE : DIAGDIR_NW) : (::TileX(tile) < ::TileX(front) ? DIAGDIR_SW : DIAGDIR_NE);
 
-	return ScriptObject::Command<CMD_BUILD_TRAIN_DEPOT>::Do(tile, (::RailType)ScriptObject::GetRailType(), entrance_dir);
+	return ScriptObject::Command<CMD_BUILD_TRAIN_DEPOT>::Do(tile, (::RailType)ScriptObject::GetRailType(), entrance_dir, false, false, INVALID_DEPOT, tile);
+}
+
+/* static */ bool ScriptRail::RemoveRailDepot(TileIndex start_tile, TileIndex end_tile)
+{
+	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ::IsValidTile(start_tile));
+	EnforcePrecondition(false, ::IsValidTile(end_tile));
+
+	return ScriptObject::Command<CMD_REMOVE_TRAIN_DEPOT>::Do(start_tile, end_tile);
 }
 
 /* static */ bool ScriptRail::BuildRailStation(TileIndex tile, RailTrack direction, SQInteger num_platforms, SQInteger platform_length, StationID station_id)

@@ -17,12 +17,14 @@
  * Bit field layout of m5 for water tiles.
  */
 enum WaterTileTypeBitLayout {
-	WBL_TYPE_BEGIN        = 4,   ///< Start of the 'type' bitfield.
-	WBL_TYPE_COUNT        = 4,   ///< Length of the 'type' bitfield.
+	WBL_TYPE_BEGIN        = 6,   ///< Start of the 'type' bitfield.
+	WBL_TYPE_COUNT        = 2,   ///< Length of the 'type' bitfield.
 
 	WBL_TYPE_NORMAL       = 0x0, ///< Clear water or coast ('type' bitfield).
 	WBL_TYPE_LOCK         = 0x1, ///< Lock ('type' bitfield).
-	WBL_TYPE_DEPOT        = 0x8, ///< Depot ('type' bitfield).
+	WBL_TYPE_DEPOT        = 0x2, ///< Depot ('type' bitfield).
+
+	WBL_DEPOT_EXTENDED    = 5,   ///< Bit for the standard/extended depot flag.
 
 	WBL_COAST_FLAG        = 0,   ///< Flag for coast.
 
@@ -79,6 +81,16 @@ enum LockPart {
 bool IsPossibleDockingTile(Tile t);
 
 /**
+ * Get the type of water tile: clear, lock or depot.
+ * @param t Water tile to query.
+ * @return WBL_TYPE_NORMAL, WBL_TYPE_LOCK or WBL_TYPE_DEPOT.
+ */
+static inline WaterTileTypeBitLayout GetWaterTileClass(Tile t) {
+	assert(IsTileType(t, MP_WATER));
+	return (WaterTileTypeBitLayout)GB(t.m5(), WBL_TYPE_BEGIN, WBL_TYPE_COUNT);
+}
+
+/**
  * Get the water tile type at a tile.
  * @param t Water tile to query.
  * @return Water tile type at the tile.
@@ -87,7 +99,7 @@ inline WaterTileType GetWaterTileType(Tile t)
 {
 	assert(IsTileType(t, MP_WATER));
 
-	switch (GB(t.m5(), WBL_TYPE_BEGIN, WBL_TYPE_COUNT)) {
+	switch (GetWaterTileClass(t)) {
 		case WBL_TYPE_NORMAL: return HasBit(t.m5(), WBL_COAST_FLAG) ? WATER_TILE_COAST : WATER_TILE_CLEAR;
 		case WBL_TYPE_LOCK:   return WATER_TILE_LOCK;
 		case WBL_TYPE_DEPOT:  return WATER_TILE_DEPOT;
@@ -224,7 +236,8 @@ inline bool IsCoastTile(Tile t)
  */
 inline bool IsShipDepot(Tile t)
 {
-	return GetWaterTileType(t) == WATER_TILE_DEPOT;
+	assert(IsTileType(t, MP_WATER));
+	return GetWaterTileClass(t) == WBL_TYPE_DEPOT;
 }
 
 /**
@@ -305,7 +318,8 @@ inline TileIndex GetShipDepotNorthTile(Tile t)
  */
 inline bool IsLock(Tile t)
 {
-	return GetWaterTileType(t) == WATER_TILE_LOCK;
+	assert(IsTileType(t, MP_WATER));
+	return GetWaterTileClass(t) == WBL_TYPE_LOCK;
 }
 
 /**
@@ -452,11 +466,12 @@ inline void MakeCanal(Tile t, Owner o, uint8_t random_bits)
  * @param t    Tile to place the ship depot section.
  * @param o    Owner of the depot.
  * @param did  Depot ID.
+ * @param extended  True if building an extended depot.
  * @param part Depot part (either #DEPOT_PART_NORTH or #DEPOT_PART_SOUTH).
  * @param a    Axis of the depot.
  * @param original_water_class Original water class.
  */
-inline void MakeShipDepot(Tile t, Owner o, DepotID did, DepotPart part, Axis a, WaterClass original_water_class)
+inline void MakeShipDepot(Tile t, Owner o, DepotID did, bool extended, DepotPart part, Axis a, WaterClass original_water_class)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
@@ -465,7 +480,7 @@ inline void MakeShipDepot(Tile t, Owner o, DepotID did, DepotPart part, Axis a, 
 	t.m2() = did;
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = WBL_TYPE_DEPOT << WBL_TYPE_BEGIN | part << WBL_DEPOT_PART | a << WBL_DEPOT_AXIS;
+	t.m5() = WBL_TYPE_DEPOT << WBL_TYPE_BEGIN | extended << WBL_DEPOT_EXTENDED | part << WBL_DEPOT_PART | a << WBL_DEPOT_AXIS;
 	SB(t.m6(), 2, 4, 0);
 	t.m7() = 0;
 }

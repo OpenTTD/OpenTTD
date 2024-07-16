@@ -15,6 +15,7 @@
 #include "../map_func.h"
 #include "../core/bitmath_func.hpp"
 #include "../fios.h"
+#include "../tile_map.h"
 
 #include "../safeguards.h"
 
@@ -242,6 +243,16 @@ struct MAP5ChunkHandler : ChunkHandler {
 		for (TileIndex i = 0; i != size;) {
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m5() = buf[j];
+		}
+
+		if (IsSavegameVersionBefore(SLV_ALIGN_WATER_BITS)) {
+			/* Move some bits for alignment purposes. */
+			for (TileIndex i = 0; i != size; i++) {
+				if (IsTileType(i, MP_WATER)) {
+					SB(Tile(i).m5(), 6, 1, GB(Tile(i).m5(), 4, 1));
+					SB(Tile(i).m5(), 4, 1, 0);
+				}
+			}
 		}
 	}
 

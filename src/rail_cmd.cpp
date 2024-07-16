@@ -33,6 +33,7 @@
 #include "object_map.h"
 #include "rail_cmd.h"
 #include "landscape_cmd.h"
+#include "platform_func.h"
 
 #include "table/strings.h"
 #include "table/railtypes.h"
@@ -952,81 +953,163 @@ CommandCost CmdRemoveRailroadTrack(DoCommandFlag flags, TileIndex end_tile, Tile
 /**
  * Build a train depot
  * @param flags operation to perform
- * @param tile position of the train depot
+ * @param tile first position of the train depot
  * @param railtype rail type
  * @param dir entrance direction
+ * @param adjacent allow adjacent depots
+ * @param extended build extended depots
+ * @param join_to depot to join to
+ * @param end_tile end tile of the area to be built
  * @return the cost of this operation or an error
  *
  * @todo When checking for the tile slope,
  * distinguish between "Flat land required" and "land sloped in wrong direction"
  */
-CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType railtype, DiagDirection dir)
+CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType railtype, DiagDirection dir, bool adjacent, bool extended, DepotID join_to, TileIndex end_tile)
 {
 	/* check railtype and valid direction for depot (0 through 3), 4 in total */
 	if (!ValParamRailType(railtype) || !IsValidDiagDirection(dir)) return CMD_ERROR;
 
-	Slope tileh = GetTileSlope(tile);
+	if (Company::IsValidHumanID(_current_company) && !HasBit(_settings_game.depot.rail_depot_types, extended)) return_cmd_error(STR_ERROR_DEPOT_TYPE_NOT_AVAILABLE);
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
+	TileArea ta(tile, end_tile);
+	Depot *depot = nullptr;
+
+	/* Create a new depot or find a depot to join to. */
+	CommandCost ret = FindJoiningDepot(ta, VEH_TRAIN, join_to, depot, adjacent, flags);
+	if (ret.Failed()) return ret;
+
+	Axis axis = DiagDirToAxis(dir);
+	/* Do not allow extending already occupied platforms. */
+	if (extended && join_to != NEW_DEPOT) {
+		TileArea ta_ext = TileArea(ta.tile, ta.w, ta.h).Expand(1);
+
+		uint max_coord;
+		uint min_coord;
+		if (axis == AXIS_X) {
+			min_coord = TileY(ta.tile);
+			max_coord = min_coord + ta.h;
+		} else {
+			min_coord = TileX(ta.tile);
+			max_coord = min_coord + ta.w;
+		}
+
+		for (Tile t : ta_ext) {
+			if (!IsExtendedRailDepotTile(t)) continue;
+			if (GetDepotIndex(t) != depot->index) continue;
+			if (GetRailType(t) != railtype) continue;
+			if (!HasDepotReservation(t)) continue;
+			if (DiagDirToAxis(GetRailDepotDirection(t)) != axis) continue;
+			uint current = (axis == AXIS_X) ? TileY(t) : TileX(t);
+			if (!IsInsideMM(current, min_coord, max_coord)) continue;
+			return_cmd_error(STR_ERROR_DEPOT_EXTENDING_PLATFORMS);
+		}
+	}
+
+	uint8_t num_new_depot_tiles = 0;
+	uint8_t num_overbuilt_depot_tiles = 0;
 
 	/* Prohibit construction if
 	 * The tile is non-flat AND
 	 * 1) build-on-slopes is disabled
 	 * 2) the tile is steep i.e. spans two height levels
 	 * 3) the exit points in the wrong direction
+	 * 4) the tile is not an already built depot (or it is a compatible single rail tile for building extended depots)
 	 */
+	for (Tile t : ta) {
+		if (IsBridgeAbove(t)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	if (tileh != SLOPE_FLAT) {
-		if (!_settings_game.construction.build_on_slopes || !CanBuildDepotByTileh(dir, tileh)) {
-			return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
+		Slope tileh = GetTileSlope(t);
+		if (tileh != SLOPE_FLAT) {
+			if (!_settings_game.construction.build_on_slopes ||
+					!CanBuildDepotByTileh(dir, tileh)) {
+				return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
+			}
+			if (extended && !CanBuildDepotByTileh(ReverseDiagDir(dir), tileh)) {
+				return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
+			}
+			cost.AddCost(_price[PR_BUILD_FOUNDATION]);
 		}
-		cost.AddCost(_price[PR_BUILD_FOUNDATION]);
-	}
 
-	/* Allow the user to rotate the depot instead of having to destroy it and build it again */
-	bool rotate_existing_depot = false;
-	if (IsRailDepotTile(tile) && railtype == GetRailType(tile)) {
-		CommandCost ret = CheckTileOwnership(tile);
-		if (ret.Failed()) return ret;
+		if (extended) {
+			if (IsPlainRailTile(t) && !HasSignals(t) && GetRailType(t) == railtype) {
+				/* Allow overbuilding if the tile:
+				*  - has rail, but no signals
+				*  - it has exactly one track
+				*  - the track is in line with the depot
+				*  - the current rail type is the same as the to-be-built
+				*/
+				TrackBits tracks = GetTrackBits(t);
+				Track track = RemoveFirstTrack(&tracks);
+				uint invalid_dirs = 5 << DiagDirToAxis(dir);
+				Track expected_track = HasBit(invalid_dirs, DIAGDIR_NE) ? TRACK_X : TRACK_Y;
 
-		if (dir == GetRailDepotDirection(tile)) return CommandCost();
+				if (tracks == TRACK_BIT_NONE && track == expected_track) {
+					cost.AddCost(Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, t, track).GetCost());
+					/* With flags & ~DC_EXEC CmdLandscapeClear would fail since the rail still exists */
+					if (cost.Failed()) return cost;
+					goto new_depot_tile;
+				}
+			}
 
-		ret = EnsureNoVehicleOnGround(tile);
-		if (ret.Failed()) return ret;
+			/* Skip already existing and compatible extended depots. */
+			if (IsRailDepotTile(t) && IsExtendedRailDepotTile(t) &&
+					GetDepotIndex(t) == join_to && railtype == GetRailType(t)) {
+				if (axis == DiagDirToAxis(GetRailDepotDirection(t))) continue;
+			}
+		} else {
+			/* Check whether this is a standard depot tile and it needs to be rotated. */
+			if (IsRailDepotTile(t) && IsStandardRailDepotTile(t) &&
+					GetDepotIndex(t) == join_to && railtype == GetRailType(t)) {
+				if (dir == GetRailDepotDirection(t)) continue;
 
-		rotate_existing_depot = true;
-	}
+				ret = EnsureNoVehicleOnGround(t);
+				if (ret.Failed()) return ret;
 
-	if (!rotate_existing_depot) {
-		cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile));
+				num_overbuilt_depot_tiles++;
+				if (flags & DC_EXEC) {
+					SetRailDepotExitDirection(t, dir);
+					AddSideToSignalBuffer(t, INVALID_DIAGDIR, _current_company);
+					YapfNotifyTrackLayoutChange(t, DiagDirToDiagTrack(dir));
+					MarkTileDirtyByTile(t);
+				}
+				continue;
+			}
+		}
+
+		cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, t));
 		if (cost.Failed()) return cost;
 
-		if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+new_depot_tile:
+		num_new_depot_tiles++;
 
-		if (!Depot::CanAllocateItem()) return CMD_ERROR;
+		if (flags & DC_EXEC) {
+			MakeRailDepot(t, _current_company, depot->index, dir, railtype);
+			SB(t.m5(), 5, 1, extended);
+
+			if (extended) {
+				AddTrackToSignalBuffer(t, DiagDirToDiagTrack(dir), _current_company);
+			} else {
+				AddSideToSignalBuffer(t, INVALID_DIAGDIR, _current_company);
+			}
+			YapfNotifyTrackLayoutChange(t, DiagDirToDiagTrack(dir));
+			MarkTileDirtyByTile(t);
+		}
 	}
+
+	if (num_new_depot_tiles + num_overbuilt_depot_tiles == 0) return CommandCost();
+
+	cost.AddCost(_price[PR_BUILD_DEPOT_TRAIN] * (num_new_depot_tiles + num_overbuilt_depot_tiles));
+	cost.AddCost(RailBuildCost(railtype) * (num_new_depot_tiles + num_overbuilt_depot_tiles));
 
 	if (flags & DC_EXEC) {
-		if (rotate_existing_depot) {
-			SetRailDepotExitDirection(tile, dir);
-		} else {
-			Depot *d = new Depot(tile);
-			d->build_date = TimerGameCalendar::date;
-
-			MakeRailDepot(tile, _current_company, d->index, dir, railtype);
-			MakeDefaultName(d);
-
-			Company::Get(_current_company)->infrastructure.rail[railtype]++;
-			DirtyCompanyInfrastructureWindows(_current_company);
-		}
-
-		MarkTileDirtyByTile(tile);
-		AddSideToSignalBuffer(tile, INVALID_DIAGDIR, _current_company);
-		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
+		Company::Get(_current_company)->infrastructure.rail[railtype] += num_new_depot_tiles;
+		DirtyCompanyInfrastructureWindows(_current_company);
+		depot->AfterAddRemove(ta, true);
+		if (join_to == NEW_DEPOT) MakeDefaultName(depot);
 	}
 
-	cost.AddCost(_price[PR_BUILD_DEPOT_TRAIN]);
-	cost.AddCost(RailBuildCost(railtype));
 	return cost;
 }
 
@@ -1541,6 +1624,56 @@ static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 }
 
 /**
+ * Returns whether a depot has an extended depot
+ * tile which is reserved.
+ * @param Depot pointer to a depot
+ * @return true iff \a dep has an extended depot tile reserved.
+ */
+bool HasAnyExtendedDepotReservedTile(Depot *dep)
+{
+	assert(dep != nullptr);
+	for (TileIndex tile : dep->ta) {
+		if (!IsExtendedDepotTile(tile)) continue;
+		if (GetDepotIndex(tile) != dep->index) continue;
+		if (HasDepotReservation(tile)) return true;
+	}
+
+	return false;
+}
+
+CommandCost ConvertExtendedDepot(DoCommandFlag flags, Depot *dep, RailType rail_type)
+{
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	assert(dep->owner == _current_company);
+	Company *c = Company::Get(dep->owner);
+
+	for (TileIndex tile : dep->ta) {
+		if (!IsDepotTile(tile)) continue;
+		if (GetDepotIndex(tile) != dep->index) continue;
+		assert(!HasDepotReservation(tile));
+		assert(dep->owner == GetTileOwner(tile));
+
+		/* Original railtype we are converting from */
+		RailType type = GetRailType(tile);
+
+		if (type == rail_type || (_settings_game.vehicle.disable_elrails && rail_type == RAILTYPE_RAIL && type == RAILTYPE_ELECTRIC)) continue;
+
+		cost.AddCost(RailConvertCost(type, rail_type));
+
+		if (flags & DC_EXEC) {
+			c->infrastructure.rail[type]--;
+			c->infrastructure.rail[rail_type]++;
+			SetRailType(tile, rail_type);
+			MarkTileDirtyByTile(tile);
+			YapfNotifyTrackLayoutChange(tile, GetRailDepotTrack(tile));
+			DirtyCompanyInfrastructureWindows(c->index);
+		}
+	}
+
+	return cost;
+}
+
+/**
  * Convert one rail type to the other. You can convert normal rail to
  * monorail/maglev easily or vice-versa.
  * @param flags operation to perform
@@ -1558,6 +1691,7 @@ CommandCost CmdConvertRail(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 	if (area_start >= Map::Size()) return CMD_ERROR;
 
 	TrainList affected_trains;
+	std::vector<DepotID> affected_depots;
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost error = CommandCost(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK); // by default, there is no track to convert.
@@ -1647,31 +1781,27 @@ CommandCost CmdConvertRail(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 
 		switch (tt) {
 			case MP_RAILWAY:
-				switch (GetRailTileType(tile)) {
-					case RAIL_TILE_DEPOT:
-						if (flags & DC_EXEC) {
-							/* notify YAPF about the track layout change */
-							YapfNotifyTrackLayoutChange(tile, GetRailDepotTrack(tile));
+				found_convertible_track = true;
+				if (GetRailTileType(tile) == RAIL_TILE_DEPOT) {
+					if (flags & DC_EXEC) {
+						/* notify YAPF about the track layout change */
+						YapfNotifyTrackLayoutChange(tile, GetRailDepotTrack(tile));
+					}
 
-							/* Update build vehicle window related to this depot */
-							InvalidateWindowData(WC_VEHICLE_DEPOT, tile);
-							InvalidateWindowData(WC_BUILD_VEHICLE, tile);
-						}
-						found_convertible_track = true;
-						cost.AddCost(RailConvertCost(type, totype));
-						break;
+					if (find(affected_depots.begin(), affected_depots.end(), (tile)) == affected_depots.end()) {
+						affected_depots.push_back(GetDepotIndex(tile));
+					}
 
-					default: // RAIL_TILE_NORMAL, RAIL_TILE_SIGNALS
-						if (flags & DC_EXEC) {
-							/* notify YAPF about the track layout change */
-							TrackBits tracks = GetTrackBits(tile);
-							while (tracks != TRACK_BIT_NONE) {
-								YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(&tracks));
-							}
+					cost.AddCost(RailConvertCost(type, totype));
+				} else { // RAIL_TILE_NORMAL, RAIL_TILE_SIGNALS
+					if (flags & DC_EXEC) {
+						/* notify YAPF about the track layout change */
+						TrackBits tracks = GetTrackBits(tile);
+						while (tracks != TRACK_BIT_NONE) {
+							YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(&tracks));
 						}
-						found_convertible_track = true;
-						cost.AddCost(RailConvertCost(type, totype) * CountBits(GetTrackBits(tile)));
-						break;
+					}
+					cost.AddCost(RailConvertCost(type, totype) * CountBits(GetTrackBits(tile)));
 				}
 				break;
 
@@ -1753,6 +1883,17 @@ CommandCost CmdConvertRail(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 		}
 	}
 
+	/* Update affected depots. */
+	for (auto &depot_tile : affected_depots) {
+		Depot *dep = Depot::Get(depot_tile);
+		if (HasAnyExtendedDepotReservedTile(dep)) cost.MakeError(STR_ERROR_DEPOT_EXTENDED_RAIL_DEPOT_IS_NOT_FREE);
+
+		if (flags & DC_EXEC) {
+			dep->RescanDepotTiles();
+			InvalidateWindowData(WC_VEHICLE_DEPOT, dep->index);
+		}
+	}
+
 	if (flags & DC_EXEC) {
 		/* Railtype changed, update trains as when entering different track */
 		for (Train *v : affected_trains) {
@@ -1763,8 +1904,10 @@ CommandCost CmdConvertRail(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 	return found_convertible_track ? cost : error;
 }
 
-static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
+static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags, bool keep_rail)
 {
+	assert(IsRailDepotTile(tile));
+
 	if (_current_company != OWNER_WATER) {
 		CommandCost ret = CheckTileOwnership(tile);
 		if (ret.Failed()) return ret;
@@ -1773,10 +1916,21 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
 	CommandCost ret = EnsureNoVehicleOnGround(tile);
 	if (ret.Failed()) return ret;
 
+	if (HasDepotReservation(tile)) return CMD_ERROR;
+
+	CommandCost total_cost(EXPENSES_CONSTRUCTION);
+
+	if (keep_rail) {
+		/* Don't refund the 'steel' of the track when we keep the rail. */
+		total_cost.AddCost(-_price[PR_CLEAR_RAIL]);
+	}
+
 	if (flags & DC_EXEC) {
-		/* read variables before the depot is removed */
+		Depot *depot = Depot::GetByTile(tile);
+		Company *c = Company::GetIfValid(depot->owner);
+		assert(c != nullptr);
+
 		DiagDirection dir = GetRailDepotDirection(tile);
-		Owner owner = GetTileOwner(tile);
 		Train *v = nullptr;
 
 		if (HasDepotReservation(tile)) {
@@ -1784,17 +1938,57 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
 			if (v != nullptr) FreeTrainTrackReservation(v);
 		}
 
-		Company::Get(owner)->infrastructure.rail[GetRailType(tile)]--;
-		DirtyCompanyInfrastructureWindows(owner);
+		Track track = GetRailDepotTrack(tile);
+		RailType rt = GetRailType(tile);
+		bool is_extended_depot = IsExtendedDepot(tile);
 
-		delete Depot::GetByTile(tile);
 		DoClearSquare(tile);
-		AddSideToSignalBuffer(tile, dir, owner);
+
+		if (keep_rail) {
+			MakeRailNormal(tile, depot->owner, TrackToTrackBits(track), rt);
+		} else {
+			c->infrastructure.rail[GetRailType(tile)]--;
+			DirtyCompanyInfrastructureWindows(c->index);
+		}
+
+		if (is_extended_depot) {
+			AddTrackToSignalBuffer(tile, DiagDirToDiagTrack(dir), c->index);
+		} else {
+			AddSideToSignalBuffer(tile, dir, c->index);
+		}
+
 		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
 		if (v != nullptr) TryPathReserve(v, true);
+
+		depot->AfterAddRemove(TileArea(tile), false);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_DEPOT_TRAIN]);
+	total_cost.AddCost(_price[PR_CLEAR_DEPOT_TRAIN]);
+	return total_cost;
+}
+
+/**
+ * Remove train depots from an area
+ * @param flags operation to perform
+ * @param start_tile start tile of the area
+ * @param end_tile end tile of the area
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdRemoveTrainDepot(DoCommandFlag flags, TileIndex start_tile, TileIndex end_tile)
+{
+	assert(IsValidTile(start_tile));
+	assert(IsValidTile(end_tile));
+
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	TileArea ta(start_tile, end_tile);
+	for (TileIndex t : ta) {
+		if (!IsRailDepotTile(t)) continue;
+		CommandCost ret = RemoveTrainDepot(t, flags, IsExtendedDepot(t));
+		if (ret.Failed()) return ret;
+		cost.AddCost(ret);
+	}
+
+	return cost;
 }
 
 static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
@@ -1845,7 +2039,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 		}
 
 		case RAIL_TILE_DEPOT:
-			return RemoveTrainDepot(tile, flags);
+			return RemoveTrainDepot(tile, flags, false);
 
 		default:
 			return CMD_ERROR;
@@ -2072,7 +2266,12 @@ static inline void DrawTrackSprite(SpriteID sprite, PaletteID pal, const TileInf
 static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeInfo *rti)
 {
 	RailGroundType rgt = GetRailGroundType(ti->tile);
-	Foundation f = GetRailFoundation(ti->tileh, track);
+	Foundation f = FOUNDATION_NONE;
+	if (IsRailDepot(ti->tile)) {
+		if (ti->tileh != SLOPE_FLAT) f = FOUNDATION_LEVELED;
+	} else {
+		f = GetRailFoundation(ti->tileh, track);
+	}
 	Corner halftile_corner = CORNER_INVALID;
 
 	if (IsNonContinuousFoundation(f)) {
@@ -2112,7 +2311,18 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeIn
 	bool no_combine = ti->tileh == SLOPE_FLAT && HasBit(rti->flags, RTF_NO_SPRITE_COMBINE);
 	SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RTSG_OVERLAY);
 	SpriteID ground = GetCustomRailSprite(rti, ti->tile, no_combine ? RTSG_GROUND_COMPLETE : RTSG_GROUND);
-	TrackBits pbs = _settings_client.gui.show_track_reservation ? GetRailReservationTrackBits(ti->tile) : TRACK_BIT_NONE;
+
+	TrackBits pbs = TRACK_BIT_NONE;
+	if (_settings_client.gui.show_track_reservation) {
+		if (IsPlainRail(ti->tile)) {
+			pbs = GetRailReservationTrackBits(ti->tile);
+		} else {
+			assert(IsRailDepot(ti->tile));
+			if (HasDepotReservation(ti->tile)) {
+				pbs = track;
+			}
+		}
+	}
 
 	if (track == TRACK_BIT_NONE) {
 		/* Half-tile foundation, no track here? */
@@ -2342,7 +2552,14 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 	/* PBS debugging, draw reserved tracks darker */
 	if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation) {
 		/* Get reservation, but mask track on halftile slope */
-		TrackBits pbs = GetRailReservationTrackBits(ti->tile) & track;
+		TrackBits pbs = TRACK_BIT_NONE;
+		if (IsPlainRail(ti->tile)) {
+			pbs = GetRailReservationTrackBits(ti->tile) & track;
+		} else {
+			assert(IsRailDepot(ti->tile));
+			if (HasDepotReservation(ti->tile)) pbs = track;
+		}
+
 		if (pbs & TRACK_BIT_X) {
 			if (ti->tileh == SLOPE_FLAT || ti->tileh == SLOPE_ELEVATED) {
 				DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH);
@@ -2425,124 +2642,40 @@ static void DrawTile_Track(TileInfo *ti)
 
 	_drawtile_track_palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
 
+	TrackBits rails = TRACK_BIT_NONE;
 	if (IsPlainRail(ti->tile)) {
-		TrackBits rails = GetTrackBits(ti->tile);
-
-		DrawTrackBits(ti, rails);
-
-		if (HasBit(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti, rti);
-
-		if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
-
-		if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails, rti);
+		rails = GetTrackBits(ti->tile);
 	} else {
+		assert(IsRailDepot(ti->tile));
+		DiagDirection dir = GetRailDepotDirection(ti->tile);
+		if (IsDiagDirFacingSouth(dir) || IsTransparencySet(TO_BUILDINGS)) {
+			rails = TrackToTrackBits(GetRailDepotTrack(ti->tile));
+		}
+	}
+
+	DrawTrackBits(ti, rails);
+
+	if (IsPlainRail(ti->tile) && HasBit(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti, rti);
+
+	if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
+
+	if (IsRailDepot(ti->tile) && !IsInvisibilitySet(TO_BUILDINGS)) {
 		/* draw depot */
-		const DrawTileSprites *dts;
-		PaletteID pal = PAL_NONE;
-		SpriteID relocation;
-
-		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
-
-		if (IsInvisibilitySet(TO_BUILDINGS)) {
-			/* Draw rail instead of depot */
-			dts = &_depot_invisible_gfx_table[GetRailDepotDirection(ti->tile)];
-		} else {
-			dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
-		}
-
-		SpriteID image;
-		if (rti->UsesOverlay()) {
-			image = SPR_FLAT_GRASS_TILE;
-		} else {
-			image = dts->ground.sprite;
-			if (image != SPR_FLAT_GRASS_TILE) image += rti->GetRailtypeSpriteOffset();
-		}
-
-		/* Adjust ground tile for desert and snow. */
-		if (IsSnowRailGround(ti->tile)) {
-			if (image != SPR_FLAT_GRASS_TILE) {
-				image += rti->snow_offset; // tile with tracks
-			} else {
-				image = SPR_FLAT_SNOW_DESERT_TILE; // flat ground
-			}
-		}
-
-		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, _drawtile_track_palette));
-
-		if (rti->UsesOverlay()) {
-			SpriteID ground = GetCustomRailSprite(rti, ti->tile, RTSG_GROUND);
-
-			switch (GetRailDepotDirection(ti->tile)) {
-				case DIAGDIR_NE:
-					if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-					[[fallthrough]];
-				case DIAGDIR_SW:
-					DrawGroundSprite(ground + RTO_X, PAL_NONE);
-					break;
-				case DIAGDIR_NW:
-					if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-					[[fallthrough]];
-				case DIAGDIR_SE:
-					DrawGroundSprite(ground + RTO_Y, PAL_NONE);
-					break;
-				default:
-					break;
-			}
-
-			if (_settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile)) {
-				SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RTSG_OVERLAY);
-
-				switch (GetRailDepotDirection(ti->tile)) {
-					case DIAGDIR_NE:
-						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-						[[fallthrough]];
-					case DIAGDIR_SW:
-						DrawGroundSprite(overlay + RTO_X, PALETTE_CRASH);
-						break;
-					case DIAGDIR_NW:
-						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-						[[fallthrough]];
-					case DIAGDIR_SE:
-						DrawGroundSprite(overlay + RTO_Y, PALETTE_CRASH);
-						break;
-					default:
-						break;
-				}
-			}
-		} else {
-			/* PBS debugging, draw reserved tracks darker */
-			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile)) {
-				switch (GetRailDepotDirection(ti->tile)) {
-					case DIAGDIR_NE:
-						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-						[[fallthrough]];
-					case DIAGDIR_SW:
-						DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH);
-						break;
-					case DIAGDIR_NW:
-						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
-						[[fallthrough]];
-					case DIAGDIR_SE:
-						DrawGroundSprite(rti->base_sprites.single_y, PALETTE_CRASH);
-						break;
-					default:
-						break;
-				}
-			}
-		}
+		const DrawTileSprites *dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
 		int depot_sprite = GetCustomRailSprite(rti, ti->tile, RTSG_DEPOT);
-		relocation = depot_sprite != 0 ? depot_sprite - SPR_RAIL_DEPOT_SE_1 : rti->GetRailtypeSpriteOffset();
-
-		if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
+		SpriteID relocation = depot_sprite != 0 ? depot_sprite - SPR_RAIL_DEPOT_SE_1 : rti->GetRailtypeSpriteOffset();
 
 		DrawRailTileSeq(ti, dts, TO_BUILDINGS, relocation, 0, _drawtile_track_palette);
 	}
+
+	if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails, rti);
+
 	DrawBridgeMiddle(ti);
 }
 
 void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 {
-	const DrawTileSprites *dts = &_depot_gfx_table[dir];
+	const DrawTileSprites *dts = &_depot_gfx_gui_table[dir];
 	const RailTypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID image = rti->UsesOverlay() ? SPR_FLAT_GRASS_TILE : dts->ground.sprite;
 	uint32_t offset = rti->GetRailtypeSpriteOffset();
@@ -2758,6 +2891,13 @@ static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, 
 		}
 
 		case RAIL_TILE_DEPOT: {
+			if (IsExtendedRailDepot(tile)) {
+				Track track = GetRailDepotTrack(tile);
+				trackbits = TrackToTrackBits(track);
+				break;
+			}
+
+			/* Small depot. */
 			DiagDirection dir = GetRailDepotDirection(tile);
 
 			if (side != INVALID_DIAGDIR && side != dir) break;
@@ -2774,7 +2914,7 @@ static bool ClickTile_Track(TileIndex tile)
 {
 	if (!IsRailDepot(tile)) return false;
 
-	ShowDepotWindow(tile, VEH_TRAIN);
+	ShowDepotWindow(GetDepotIndex(tile));
 	return true;
 }
 
@@ -2855,7 +2995,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 		}
 
 		case RAIL_TILE_DEPOT:
-			td->str = STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT;
+			td->str = IsExtendedDepot(tile) ? STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT_EXTENDED : STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT;
 			if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) {
 				if (td->rail_speed > 0) {
 					td->rail_speed = std::min<uint16_t>(td->rail_speed, 61);
@@ -2915,6 +3055,7 @@ static const int8_t _deltacoord_leaveoffset[8] = {
  */
 int TicksToLeaveDepot(const Train *v)
 {
+	assert(IsStandardRailDepotTile(v->tile));
 	DiagDirection dir = GetRailDepotDirection(v->tile);
 	int length = v->CalcNextVehicleOffset();
 
@@ -2936,6 +3077,38 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 	/* This routine applies only to trains in depot tiles. */
 	if (u->type != VEH_TRAIN || !IsRailDepotTile(tile)) return VETSB_CONTINUE;
 
+	Train *v = Train::From(u);
+
+	if (IsExtendedRailDepot(tile)) {
+		DepotID depot_id = GetDepotIndex(tile);
+		if (!v->current_order.ShouldStopAtDepot(depot_id)) return VETSB_CONTINUE;
+
+		/* Stop position on platform is half the front vehicle length of the train. */
+		int stop_pos = v->gcache.cached_veh_length / 2;
+
+		int depot_ahead  = (GetPlatformLength(tile, DirToDiagDir(v->direction)) - 1) * TILE_SIZE;
+		if (depot_ahead > stop_pos) return VETSB_CONTINUE;
+
+		DiagDirection dir = DirToDiagDir(v->direction);
+
+		x &= 0xF;
+		y &= 0xF;
+
+		if (DiagDirToAxis(dir) != AXIS_X) Swap(x, y);
+		if (y == TILE_SIZE / 2) {
+			if (dir == DIAGDIR_SE || dir == DIAGDIR_SW) x = TILE_SIZE - 1 - x;
+
+			if (stop_pos == x) {
+				return VETSB_ENTERED_DEPOT_PLATFORM;
+			} else if (stop_pos < x) {
+				v->vehstatus |= VS_TRAIN_SLOWING;
+				uint16_t spd = std::max(0, stop_pos * 20 - 15);
+				if (spd < v->cur_speed) v->cur_speed = spd;
+			}
+		}
+		return VETSB_CONTINUE;
+	}
+
 	/* Depot direction. */
 	DiagDirection dir = GetRailDepotDirection(tile);
 
@@ -2943,8 +3116,6 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 
 	/* Make sure a train is not entering the tile from behind. */
 	if (_fractcoords_behind[dir] == fract_coord) return VETSB_CANNOT_ENTER;
-
-	Train *v = Train::From(u);
 
 	/* Leaving depot? */
 	if (v->direction == DiagDirToDir(dir)) {
@@ -2970,10 +3141,10 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 		v->track = TRACK_BIT_DEPOT,
 		v->vehstatus |= VS_HIDDEN;
 		v->direction = ReverseDir(v->direction);
-		if (v->Next() == nullptr) VehicleEnterDepot(v->First());
+		if (v->Next() == nullptr) HandleTrainEnterDepot(v->First());
 		v->tile = tile;
 
-		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
+		InvalidateWindowData(WC_VEHICLE_DEPOT, GetDepotIndex(v->tile));
 		return VETSB_ENTERED_WORMHOLE;
 	}
 
@@ -3080,6 +3251,14 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, int 
 		return CommandCost(EXPENSES_CONSTRUCTION, was_water ? _price[PR_CLEAR_WATER] : (Money)0);
 	} else if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() &&
 			AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) {
+		if (IsExtendedRailDepotTile(tile) && GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) {
+			DiagDirection direction = GetRailDepotDirection(tile);
+			if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, direction) ||
+					!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, ReverseDiagDir(direction))) {
+				return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+			}
+		}
+
 		return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 	}
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);

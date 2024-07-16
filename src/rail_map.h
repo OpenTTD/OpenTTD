@@ -23,7 +23,7 @@
 enum RailTileType {
 	RAIL_TILE_NORMAL   = 0, ///< Normal rail tile without signals
 	RAIL_TILE_SIGNALS  = 1, ///< Normal rail tile with signals
-	RAIL_TILE_DEPOT    = 3, ///< Depot (one entrance)
+	RAIL_TILE_DEPOT    = 2, ///< Depot
 };
 
 /**
@@ -105,6 +105,50 @@ debug_inline static bool IsRailDepot(Tile t)
 debug_inline static bool IsRailDepotTile(Tile t)
 {
 	return IsTileType(t, MP_RAILWAY) && IsRailDepot(t);
+}
+
+/**
+ * Is this rail depot tile an extended depot?
+ * @param t the tile to get the information from
+ * @pre IsRailDepotTile(t)
+ * @return true if and only if the tile is an extended rail depot
+ */
+static inline bool IsExtendedRailDepot(Tile t)
+{
+	assert(IsRailDepotTile(t));
+	return HasBit(t.m5(), 5);
+}
+
+/**
+ * Is this rail tile a standard rail depot?
+ * @param t the tile to get the information from
+ * @pre IsTileType(t, MP_RAILWAY)
+ * @return true if and only if the tile is a standard rail depot
+ */
+static inline bool IsStandardRailDepot(Tile t)
+{
+	assert(IsTileType(t, MP_RAILWAY));
+	return IsRailDepot(t) && !IsExtendedRailDepot(t);
+}
+
+/**
+ * Is this tile a standard rail depot?
+ * @param t the tile to get the information from
+ * @return true if and only if the tile is a standard rail depot
+ */
+static inline bool IsStandardRailDepotTile(TileIndex t)
+{
+	return IsTileType(t, MP_RAILWAY) && IsStandardRailDepot(t);
+}
+
+/**
+ * Is this tile rail tile and an extended rail depot?
+ * @param t the tile to get the information from
+ * @return true if and only if the tile is an extended rail depot
+ */
+static inline bool IsExtendedRailDepotTile(TileIndex t)
+{
+	return IsTileType(t, MP_RAILWAY) && IsRailDepotTile(t) && IsExtendedRailDepot(t);
 }
 
 /**

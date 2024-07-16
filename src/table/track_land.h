@@ -33,18 +33,18 @@ static const DrawTileSeqStruct _depot_gfx_NW[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSprites _depot_gfx_table[] = {
+static const DrawTileSprites _depot_gfx_gui_table[] = {
 	{ {SPR_FLAT_GRASS_TILE, PAL_NONE}, _depot_gfx_NE },
 	{ {SPR_RAIL_TRACK_Y,    PAL_NONE}, _depot_gfx_SE },
 	{ {SPR_RAIL_TRACK_X,    PAL_NONE}, _depot_gfx_SW },
 	{ {SPR_FLAT_GRASS_TILE, PAL_NONE}, _depot_gfx_NW }
 };
 
-static const DrawTileSprites _depot_invisible_gfx_table[] = {
-	{ {SPR_RAIL_TRACK_X, PAL_NONE}, _depot_gfx_NE },
-	{ {SPR_RAIL_TRACK_Y, PAL_NONE}, _depot_gfx_SE },
-	{ {SPR_RAIL_TRACK_X, PAL_NONE}, _depot_gfx_SW },
-	{ {SPR_RAIL_TRACK_Y, PAL_NONE}, _depot_gfx_NW }
+static const DrawTileSprites _depot_gfx_table[] = {
+	{ {SPR_FLAT_GRASS_TILE, PAL_NONE}, _depot_gfx_NE },
+	{ {SPR_FLAT_GRASS_TILE, PAL_NONE}, _depot_gfx_SE },
+	{ {SPR_FLAT_GRASS_TILE, PAL_NONE}, _depot_gfx_SW },
+	{ {SPR_FLAT_GRASS_TILE, PAL_NONE}, _depot_gfx_NW }
 };
 
 #undef TILE_SEQ_LINE

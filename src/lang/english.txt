@@ -278,6 +278,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Select f
 STR_BUTTON_SORT_BY                                              :{BLACK}Sort by
 STR_BUTTON_CATCHMENT                                            :{BLACK}Coverage
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Toggle coverage area display
+STR_BUTTON_HIGHLIGHT_DEPOT                                      :{BLACK}Highlight
+STR_TOOLTIP_HIGHLIGHT_DEPOT                                     :{BLACK}Toggle highlight on viewport for this depot
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Close window
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Window title - drag this to move window
@@ -908,6 +910,8 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} is lost
 STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}{VEHICLE}'s profit last year was {CURRENCY_LONG}
 STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}{VEHICLE}'s profit last period was {CURRENCY_LONG}
+STR_NEWS_VEHICLE_CAN_T_FIND_FREE_DEPOT                          :{WHITE}{VEHICLE} can't find a free depot
+STR_NEWS_VEHICLE_TOO_LONG_FOR_SERVICING                         :{WHITE}{VEHICLE} couldn't service in short platform
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} can't get to the next destination because it is out of range
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stopped because an ordered refit failed
@@ -1462,6 +1466,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Allow construct
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Allow drive-through road stops on roads owned by competitors: {STRING2}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Allow construction of drive-through road stops on roads owned by other companies
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing this setting is not possible when there are vehicles
+STR_CONFIG_SETTING_REPLACEMENTS_DIFF_TYPE                       :{WHITE}Disabling this setting is not possible during a game
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastructure maintenance: {STRING2}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :When enabled, infrastructure causes maintenance costs. The cost grows over-proportional with the network size, thus affecting bigger companies more than smaller ones
@@ -1614,6 +1619,28 @@ STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :The height leve
 ###length 2
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
+
+STR_CONFIG_SETTING_DISTANT_JOIN_DEPOTS                          :Allow to join depot parts not directly adjacent: {STRING2}
+STR_CONFIG_SETTING_DISTANT_JOIN_DEPOTS_HELPTEXT                 :Allow adding parts to a depot without directly touching the existing parts. Needs Ctrl+Click while placing the new parts
+STR_CONFIG_SETTING_DEPOT_SPREAD                                 :Maximum depot spread: {STRING2}
+STR_CONFIG_SETTING_DEPOT_SPREAD_HELPTEXT                        :Maximum area the parts of a single depot may be spread out on.
+
+STR_CONFIG_SETTING_RAIL_DEPOT_TYPES                             :Rail depot types: {STRING2}
+STR_CONFIG_SETTING_RAIL_DEPOT_TYPES_HELPTEXT                    :Available rail depot types for construction for human players.
+STR_CONFIG_SETTING_ROAD_DEPOT_TYPES                             :Road depot types: {STRING2}
+STR_CONFIG_SETTING_ROAD_DEPOT_TYPES_HELPTEXT                    :Available road depot types for construction for human players.
+STR_CONFIG_SETTING_WATER_DEPOT_TYPES                            :Water depot types: {STRING2}
+STR_CONFIG_SETTING_WATER_DEPOT_TYPES_HELPTEXT                   :Available water depot types for construction for human players.
+###length 3
+STR_CONFIG_SETTING_ONLY_STANDARD_DEPOT                          :Standard depots
+STR_CONFIG_SETTING_ONLY_EXTENDED_DEPOT                          :Extended depots
+STR_CONFIG_SETTING_BOTH_DEPOT_TYPES                             :Both depot types
+###next-name-looks-similar
+
+STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_RAIL                    :Allow replacing rail vehicles with incompatible rail types: {STRING2}
+STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_RAIL_HELPTEXT           :Allow replacing rail vehicles even if they are not compatible by rail type.
+STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_ROAD                    :Allow replacing road vehicles with incompatible road types: {STRING2}
+STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_ROAD_HELPTEXT           :Allow replacing road vehicles even if they are not compatible by road type.
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Maximum station spread: {STRING2}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maximum area the parts of a single station may be spread out on. Note that high values will slow the game
@@ -2137,6 +2164,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Trees
 STR_CONFIG_SETTING_AI                                           :Competitors
 STR_CONFIG_SETTING_AI_NPC                                       :Computer players
 STR_CONFIG_SETTING_NETWORK                                      :Network
+STR_CONFIG_SETTING_DEPOTS                                       :Depots
 
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatic reversing at signals: {STRING2}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Allow trains to reverse on a signal, if they waited there a long time
@@ -2763,6 +2791,11 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Build a
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Join waypoint
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Build a separate waypoint
 
+# Join depot window
+STR_JOIN_DEPOT_CAPTION                                          :{WHITE}Join depot
+STR_JOIN_DEPOT_CREATE_SPLITTED_DEPOT                            :{YELLOW}Build a separate depot
+STR_DEPOT_LIST_DEPOT                                            :{YELLOW}{DEPOT}
+
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Disabled as currently no vehicles are available for this infrastructure
 
@@ -2774,7 +2807,8 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev Construc
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Build railway track. Ctrl+Click to remove railway track. Also press Shift to show cost estimate only
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Build railway track using the Autorail mode. Ctrl+Click to remove railway track. Also press Shift to show cost estimate only
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Build train depot (for buying and servicing trains). Also press Shift to show cost estimate only
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT                      :{BLACK}Build standard train depot (for buying and servicing trains). Ctrl+Click to select another depot to join. Also press Shift to show cost estimate only
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_EXTENDED_TRAIN_DEPOT             :{BLACK}Build extended train depot (for buying and servicing trains). Ctrl+Click to select another depot to join. Also press Shift to show cost estimate only
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Build waypoint on railway. Ctrl+Click to select another waypoint to join. Also press Shift to show cost estimate only
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Build railway station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Build signal on railway. Ctrl+Click to build the alternate signal style{}Click+Drag to fill the selected section of rail with signals at the chosen spacing. Ctrl+Click+Drag to fill signals up to the next junction, station, or signal. Also press Shift to show cost estimate only
@@ -2885,8 +2919,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Build ro
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Build tramway section. Ctrl+Click to remove tramway section. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Build road section using the Autoroad mode. Ctrl+Click to remove road section. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Build tramway section using the Autotram mode. Ctrl+Click to remove tramway section. Also press Shift to show cost estimate only
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Build road vehicle depot (for buying and servicing vehicles). Also press Shift to show cost estimate only
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Build tram vehicle depot (for buying and servicing vehicles). Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Build standard road vehicle depot (for buying and servicing vehicles). Ctrl+Click to select another depot to join. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_EXTENDED_ROAD_VEHICLE_DEPOT      :{BLACK}Build extended road vehicle depot (for buying and servicing vehicles). Ctrl+Click to select another depot to join. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Build standard tram vehicle depot (for buying and servicing vehicles). Ctrl+Click to select another depot to join. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_EXTENDED_TRAM_VEHICLE_DEPOT      :{BLACK}Build extended tram vehicle depot (for buying and servicing vehicles). Ctrl+Click to select another depot to join. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Build waypoint on road. Ctrl+Click to select another waypoint to join. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Build waypoint on tramway. Ctrl+Click to select another waypoint to join. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Build bus station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
@@ -2927,7 +2963,8 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waterway
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterways
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Build canals. Also press Shift to show cost estimate only
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Build locks. Also press Shift to show cost estimate only
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Build ship depot (for buying and servicing ships). Also press Shift to show cost estimate only
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Build standard ship depot (for buying and servicing ships). Ctrl+Click to select another depot to join. Also press Shift to show cost estimate only
+STR_WATERWAYS_TOOLBAR_BUILD_EXTENDED_DEPOT_TOOLTIP              :{BLACK}Build extended ship depot (for buying and servicing ships). Ctrl+Click to select another depot to join. Also press Shift to show cost estimate only
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Build ship dock. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Place a buoy which can be used as a waypoint. Also press Shift to show cost estimate only
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Build aqueduct. Also press Shift to show cost estimate only
@@ -3140,12 +3177,14 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Railway track w
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Railway track with combo- and path signals
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Railway track with combo- and one-way path signals
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Railway track with path and one-way path signals
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Railway train depot
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Standard railway train depot
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT_EXTENDED                   :Extended railway train depot
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Road
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Road with street lights
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Tree-lined road
-STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Road vehicle depot
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Standard road vehicle depot
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT_EXTENDED            :Extended road vehicle depot
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Road/rail level crossing
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tramway
 
@@ -3170,7 +3209,8 @@ STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Lock
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :River
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Coast or riverbank
-STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Ship depot
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Standard ship depot
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT_EXTENDED                   :Extended ship depot
 
 # Industries come directly from their industry names
 
@@ -4407,6 +4447,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stopped
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - Stopping
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}No power
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Waiting for free path
+STR_VEHICLE_STATUS_SERVICING                                    :{LTBLUE}Servicing vehicle
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Too far to next destination
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Heading for {0:STATION}
@@ -4894,6 +4935,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_SERVICING_INDICATOR_SMALL                                   :{TINY_FONT}{LTBLUE}Servicing ({NUM}{NBSP}%)
+STR_SERVICING_INDICATOR                                         :{LTBLUE}Servicing ({NUM}{NBSP}%)
 STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
@@ -5110,10 +5153,18 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... buoy
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Can't build train depot here...
+STR_ERROR_CAN_T_REMOVE_TRAIN_DEPOT                              :{WHITE}Can't remove train depot here...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Can't build road vehicle depot here...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Can't build tram vehicle depot here...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Can't build ship depot here...
 
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING_DEPOT                  :{WHITE}... adjoins more than one existing depot
+STR_ERROR_DEPOT_TYPE_NOT_AVAILABLE                              :{WHITE}... depot type not available
+STR_ERROR_DEPOT_EXTENDING_PLATFORMS                             :{WHITE}Extending already reserved depot platforms
+STR_ERROR_DEPOT_EXTENDED_RAIL_DEPOT_IS_NOT_FREE                 :{WHITE}Extended rail depot has a reserved tile and can't be converted
+
+STR_ERROR_CAN_T_START_STOP_VEHICLES                             :{WHITE}Can't start at least one vehicle in the depot...
+STR_ERROR_CAN_T_REPLACE_VEHICLES                                :{WHITE}Can't replace vehicles in the depot...
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Can't rename depot...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... must be stopped inside a depot
@@ -5123,6 +5174,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... must
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trains can only be altered when stopped inside a depot
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Train too long
+STR_ERROR_INCOMPATIBLE_RAILTYPES_WITH_DEPOT                     :{WHITE}Train chain is incompatible with any tile of this depot
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Can't reverse direction of vehicle...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... consists of multiple units
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Incompatible rail types
@@ -5131,8 +5183,19 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Can't mo
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}The rear engine will always follow its front counterpart
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Unable to find route to local depot
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Unable to find local depot
+STR_ERROR_UNABLE_TO_FIND_APPROPRIATE_DEPOT_TILE                 :{WHITE}Unable to find appropriate depot tile
 
+STR_ERROR_DEPOT_TOO_SPREAD_OUT                                  :{WHITE}... depot too spread out
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Wrong depot type
+STR_ERROR_CAN_T_START_PLATFORM_TYPE                             :{WHITE}{VEHICLE} can't be started because there is no compatible platform in the depot for this type of train
+STR_ERROR_CAN_T_START_PLATFORM_LONG                             :{WHITE}{VEHICLE} can't be started because compatible platforms are not long enough
+STR_ERROR_DEPOT_FULL_DEPOT                                      :There is no free depot compatible with this type of vehicle
+###length 5
+STR_ADVICE_PLATFORM_TYPE                                        :{WHITE}{VEHICLE} can't leave depot because there is no compatible platform for this type of train
+STR_ADVICE_PLATFORM_LONG                                        :{WHITE}{VEHICLE} can't leave depot because compatible platforms are not long enough
+STR_ADVICE_VEHICLE_HAS_NO_POWER                                 :{WHITE}{VEHICLE} can't leave depot because it has no power in any tile of the depot
+STR_ADVICE_PLATFORM_FREE_PLATFORM                               :{WHITE}{VEHICLE} can't leave depot because compatible platforms are occupied
+STR_ADVICE_PLATFORM_SIGNALS                                     :{WHITE}{VEHICLE} can't leave depot because the segments of the compatible free platforms are occupied. Check the signaling of those segments.
 
 # Depot unbunching related errors
 STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... can only have one unbunching order
@@ -5297,6 +5360,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Too many
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Can't change servicing interval...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehicle is destroyed
+STR_ERROR_NO_FREE_DEPOT                                         :{WHITE}... there is no free depot
 
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... not all vehicles are identical
 
@@ -5314,6 +5378,7 @@ STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Start a 
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Can't make train pass signal at danger...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Can't reverse direction of train...
 STR_ERROR_TRAIN_START_NO_POWER                                  :Train has no power
+STR_ERROR_ROAD_VEHICLE_START_NO_POWER                           :Road vehicle has no power
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Can't make road vehicle turn around...
 
@@ -5824,6 +5889,9 @@ STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STA
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
 STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
+
+STR_VIEWPORT_DEPOT                                              :{DEPOT}
+STR_VIEWPORT_DEPOT_TINY                                         :{TINY_FONT}{DEPOT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}

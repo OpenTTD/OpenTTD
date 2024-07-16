@@ -22,12 +22,14 @@ struct ViewportSignKdtreeItem {
 		VKI_WAYPOINT,
 		VKI_TOWN,
 		VKI_SIGN,
+		VKI_DEPOT,
 	};
 	ItemType type;
 	union {
 		StationID station;
 		TownID town;
 		SignID sign;
+		DepotID depot;
 	} id;
 	int32_t center;
 	int32_t top;
@@ -43,6 +45,8 @@ struct ViewportSignKdtreeItem {
 				return this->id.town == other.id.town;
 			case VKI_SIGN:
 				return this->id.sign == other.id.sign;
+			case VKI_DEPOT:
+				return this->id.depot == other.id.depot;
 			default:
 				NOT_REACHED();
 		}
@@ -59,6 +63,8 @@ struct ViewportSignKdtreeItem {
 				return this->id.town < other.id.town;
 			case VKI_SIGN:
 				return this->id.sign < other.id.sign;
+			case VKI_DEPOT:
+				return this->id.depot < other.id.depot;
 			default:
 				NOT_REACHED();
 		}
@@ -68,6 +74,7 @@ struct ViewportSignKdtreeItem {
 	static ViewportSignKdtreeItem MakeWaypoint(StationID id);
 	static ViewportSignKdtreeItem MakeTown(TownID id);
 	static ViewportSignKdtreeItem MakeSign(SignID id);
+	static ViewportSignKdtreeItem MakeDepot(DepotID id);
 };
 
 inline int32_t Kdtree_ViewportSignXYFunc(const ViewportSignKdtreeItem &item, int dim)
