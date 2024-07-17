@@ -251,7 +251,7 @@ AirportResolverObject::AirportResolverObject(TileIndex tile, Station *st, uint8_
 
 SpriteID GetCustomAirportSprite(const AirportSpec *as, uint8_t layout)
 {
-	AirportResolverObject object(INVALID_TILE, nullptr, as->GetIndex(), layout);
+	AirportResolverObject object(INVALID_TILE, nullptr, as->index, layout);
 	const SpriteGroup *group = object.Resolve();
 	if (group == nullptr) return as->preview_sprite;
 
@@ -273,7 +273,7 @@ uint16_t GetAirportCallback(CallbackID callback, uint32_t param1, uint32_t param
  */
 StringID GetAirportTextCallback(const AirportSpec *as, uint8_t layout, uint16_t callback)
 {
-	AirportResolverObject object(INVALID_TILE, nullptr, as->GetIndex(), layout, (CallbackID)callback);
+	AirportResolverObject object(INVALID_TILE, nullptr, as->index, layout, (CallbackID)callback);
 	uint16_t cb_res = object.ResolveCallback();
 	if (cb_res == CALLBACK_FAILED || cb_res == 0x400) return STR_UNDEFINED;
 	if (cb_res > 0x400) {

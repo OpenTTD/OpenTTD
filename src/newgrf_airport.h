@@ -128,13 +128,6 @@ struct AirportSpec : NewGRFSpecBase<AirportClassID> {
 
 	static void ResetAirports();
 
-	/** Get the index of this spec. */
-	uint8_t GetIndex() const
-	{
-		assert(this >= std::begin(specs) && this < std::end(specs));
-		return static_cast<uint8_t>(std::distance(std::cbegin(specs), this));
-	}
-
 	static const AirportSpec dummy; ///< The dummy airport.
 
 private:

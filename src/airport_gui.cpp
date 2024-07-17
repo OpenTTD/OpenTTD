@@ -64,7 +64,7 @@ static void PlaceAirport(TileIndex tile)
 {
 	if (_selected_airport_index == -1) return;
 
-	uint8_t airport_type = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index)->GetIndex();
+	uint8_t airport_type = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index)->index;
 	uint8_t layout = _selected_airport_layout;
 	bool adjacent = _ctrl_pressed;
 
@@ -551,7 +551,7 @@ public:
 					if (as->IsAvailable()) {
 						_selected_airport_class = cls.Index();
 						this->vscroll->SetCount(cls.GetSpecCount());
-						this->SelectOtherAirport(as->GetIndex());
+						this->SelectOtherAirport(as->index);
 						return;
 					}
 				}
