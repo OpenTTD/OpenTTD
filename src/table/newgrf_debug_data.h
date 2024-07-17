@@ -548,7 +548,7 @@ class NIHAirport : public NIHelper {
 	uint Resolve(uint index, uint var, uint param, bool &avail) const override
 	{
 		Station *st = Station::Get(index);
-		AirportResolverObject ro(st->airport.tile, st, st->airport.type, st->airport.layout);
+		AirportResolverObject ro(st->airport.tile, st, AirportSpec::Get(st->airport.type), st->airport.layout);
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 

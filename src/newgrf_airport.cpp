@@ -183,7 +183,7 @@ GrfSpecFeature AirportResolverObject::GetFeature() const
 
 uint32_t AirportResolverObject::GetDebugID() const
 {
-	return AirportSpec::Get(this->airport_scope.airport_id)->grf_prop.local_id;
+	return this->airport_scope.spec->grf_prop.local_id;
 }
 
 /* virtual */ uint32_t AirportScopeResolver::GetRandomBits() const
@@ -236,22 +236,22 @@ TownScopeResolver *AirportResolverObject::GetTown()
  * Constructor of the airport resolver.
  * @param tile %Tile for the callback, only valid for airporttile callbacks.
  * @param st %Station of the airport for which the callback is run, or \c nullptr for build gui.
- * @param airport_id Type of airport for which the callback is run.
+ * @param spec AirportSpec for which the callback is run.
  * @param layout Layout of the airport to build.
  * @param callback Callback ID.
  * @param param1 First parameter (var 10) of the callback.
  * @param param2 Second parameter (var 18) of the callback.
  */
-AirportResolverObject::AirportResolverObject(TileIndex tile, Station *st, uint8_t airport_id, uint8_t layout,
+AirportResolverObject::AirportResolverObject(TileIndex tile, Station *st, const AirportSpec *spec, uint8_t layout,
 		CallbackID callback, uint32_t param1, uint32_t param2)
-	: ResolverObject(AirportSpec::Get(airport_id)->grf_prop.grffile, callback, param1, param2), airport_scope(*this, tile, st, airport_id, layout)
+	: ResolverObject(spec->grf_prop.grffile, callback, param1, param2), airport_scope(*this, tile, st, spec, layout)
 {
-	this->root_spritegroup = AirportSpec::Get(airport_id)->grf_prop.spritegroup[0];
+	this->root_spritegroup = spec->grf_prop.spritegroup[0];
 }
 
 SpriteID GetCustomAirportSprite(const AirportSpec *as, uint8_t layout)
 {
-	AirportResolverObject object(INVALID_TILE, nullptr, as->GetIndex(), layout);
+	AirportResolverObject object(INVALID_TILE, nullptr, as, layout);
 	const SpriteGroup *group = object.Resolve();
 	if (group == nullptr) return as->preview_sprite;
 
@@ -260,7 +260,7 @@ SpriteID GetCustomAirportSprite(const AirportSpec *as, uint8_t layout)
 
 uint16_t GetAirportCallback(CallbackID callback, uint32_t param1, uint32_t param2, Station *st, TileIndex tile)
 {
-	AirportResolverObject object(tile, st, st->airport.type, st->airport.layout, callback, param1, param2);
+	AirportResolverObject object(tile, st, AirportSpec::Get(st->airport.type), st->airport.layout, callback, param1, param2);
 	return object.ResolveCallback();
 }
 
@@ -273,7 +273,7 @@ uint16_t GetAirportCallback(CallbackID callback, uint32_t param1, uint32_t param
  */
 StringID GetAirportTextCallback(const AirportSpec *as, uint8_t layout, uint16_t callback)
 {
-	AirportResolverObject object(INVALID_TILE, nullptr, as->GetIndex(), layout, (CallbackID)callback);
+	AirportResolverObject object(INVALID_TILE, nullptr, as, layout, (CallbackID)callback);
 	uint16_t cb_res = object.ResolveCallback();
 	if (cb_res == CALLBACK_FAILED || cb_res == 0x400) return STR_UNDEFINED;
 	if (cb_res > 0x400) {
