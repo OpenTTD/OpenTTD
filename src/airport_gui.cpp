@@ -537,10 +537,9 @@ public:
 	{
 		/* First try to select an airport in the selected class. */
 		AirportClass *sel_apclass = AirportClass::Get(_selected_airport_class);
-		for (uint i = 0; i < sel_apclass->GetSpecCount(); i++) {
-			const AirportSpec *as = sel_apclass->GetSpec(i);
+		for (const AirportSpec *as : sel_apclass->Specs()) {
 			if (as->IsAvailable()) {
-				this->SelectOtherAirport(i);
+				this->SelectOtherAirport(as->index);
 				return;
 			}
 		}
