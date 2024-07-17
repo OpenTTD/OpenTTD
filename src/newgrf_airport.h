@@ -149,7 +149,7 @@ void BindAirportSpecs();
 /** Resolver for the airport scope. */
 struct AirportScopeResolver : public ScopeResolver {
 	struct Station *st; ///< Station of the airport for which the callback is run, or \c nullptr for build gui.
-	uint8_t airport_id;    ///< Type of airport for which the callback is run.
+	const AirportSpec *spec; ///< AirportSpec for which the callback is run.
 	uint8_t layout;        ///< Layout of the airport to build.
 	TileIndex tile;     ///< Tile for the callback, only valid for airporttile callbacks.
 
@@ -158,11 +158,11 @@ struct AirportScopeResolver : public ScopeResolver {
 	 * @param ro Surrounding resolver.
 	 * @param tile %Tile for the callback, only valid for airporttile callbacks.
 	 * @param st %Station of the airport for which the callback is run, or \c nullptr for build gui.
-	 * @param airport_id Type of airport for which the callback is run.
+	 * @param spec AirportSpec for which the callback is run.
 	 * @param layout Layout of the airport to build.
 	 */
-	AirportScopeResolver(ResolverObject &ro, TileIndex tile, Station *st, uint8_t airport_id, uint8_t layout)
-		: ScopeResolver(ro), st(st), airport_id(airport_id), layout(layout), tile(tile)
+	AirportScopeResolver(ResolverObject &ro, TileIndex tile, Station *st, const AirportSpec *spec, uint8_t layout)
+		: ScopeResolver(ro), st(st), spec(spec), layout(layout), tile(tile)
 	{
 	}
 
@@ -177,7 +177,7 @@ struct AirportResolverObject : public ResolverObject {
 	AirportScopeResolver airport_scope;
 	std::optional<TownScopeResolver> town_scope = std::nullopt; ///< The town scope resolver (created on the first call).
 
-	AirportResolverObject(TileIndex tile, Station *st, uint8_t airport_id, uint8_t layout,
+	AirportResolverObject(TileIndex tile, Station *st, const AirportSpec *spec, uint8_t layout,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
 	TownScopeResolver *GetTown();

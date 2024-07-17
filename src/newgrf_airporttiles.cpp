@@ -216,7 +216,7 @@ AirportTileResolverObject::AirportTileResolverObject(const AirportTileSpec *ats,
 		CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
 	: ResolverObject(ats->grf_prop.grffile, callback, callback_param1, callback_param2),
 		tiles_scope(*this, ats, tile, st),
-		airport_scope(*this, tile, st, st != nullptr ? st->airport.type : (uint8_t)AT_DUMMY, st != nullptr ? st->airport.layout : 0)
+		airport_scope(*this, tile, st, st != nullptr ? AirportSpec::Get(st->airport.type) : nullptr, st != nullptr ? st->airport.layout : 0)
 {
 	this->root_spritegroup = ats->grf_prop.spritegroup[0];
 }
