@@ -319,11 +319,11 @@ struct DropdownWindow : Window {
 				}
 				this->click_delay = 2;
 			} else {
-				if (_cursor.pos.y <= this->top + 2) {
+				if (_cursor.pos.y <= this->top + WidgetDimensions::scaled.dropdownlist.top) {
 					/* Cursor is above the list, set scroll up */
 					this->scrolling = -1;
 					return;
-				} else if (_cursor.pos.y >= this->top + this->height - 2) {
+				} else if (_cursor.pos.y >= this->top + this->height - WidgetDimensions::scaled.dropdownlist.bottom) {
 					/* Cursor is below list, set scroll down */
 					this->scrolling = 1;
 					return;
