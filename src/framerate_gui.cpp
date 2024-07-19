@@ -545,18 +545,18 @@ struct FramerateWindow : Window {
 		switch (widget) {
 			case WID_FRW_RATE_GAMELOOP:
 				SetDParam(0, STR_FRAMERATE_FPS_GOOD);
-				SetDParam(1, 999999);
+				SetDParamMaxDigits(1, 6);
 				SetDParam(2, 2);
 				size = GetStringBoundingBox(STR_FRAMERATE_RATE_GAMELOOP);
 				break;
 			case WID_FRW_RATE_DRAWING:
 				SetDParam(0, STR_FRAMERATE_FPS_GOOD);
-				SetDParam(1, 999999);
+				SetDParamMaxDigits(1, 6);
 				SetDParam(2, 2);
 				size = GetStringBoundingBox(STR_FRAMERATE_RATE_BLITTER);
 				break;
 			case WID_FRW_RATE_FACTOR:
-				SetDParam(0, 999999);
+				SetDParamMaxDigits(0, 6);
 				SetDParam(1, 2);
 				size = GetStringBoundingBox(STR_FRAMERATE_SPEED_FACTOR);
 				break;
@@ -585,7 +585,7 @@ struct FramerateWindow : Window {
 			case WID_FRW_TIMES_AVERAGE:
 			case WID_FRW_ALLOCSIZE: {
 				size = GetStringBoundingBox(STR_FRAMERATE_CURRENT + (widget - WID_FRW_TIMES_CURRENT));
-				SetDParam(0, 999999);
+				SetDParamMaxDigits(0, 6);
 				SetDParam(1, 2);
 				Dimension item_size = GetStringBoundingBox(STR_FRAMERATE_MS_GOOD);
 				size.width = std::max(size.width, item_size.width);
