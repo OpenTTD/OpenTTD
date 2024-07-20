@@ -178,11 +178,6 @@ struct GSConfigWindow : public Window {
 				break;
 			}
 			case WID_GSC_SETTINGS: {
-				ScriptConfig *config = this->gs_config;
-				VisibleSettingsList::const_iterator it = this->visible_settings.begin();
-				int i = 0;
-				for (; !this->vscroll->IsVisible(i); i++) it++;
-
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 				bool rtl = _current_text_dir == TD_RTL;
 				Rect br = ir.WithWidth(SETTING_BUTTON_WIDTH, rtl);
@@ -191,9 +186,11 @@ struct GSConfigWindow : public Window {
 				int y = r.top;
 				int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 				int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
-				for (; this->vscroll->IsVisible(i) && it != visible_settings.end(); i++, it++) {
+
+				const auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->visible_settings);
+				for (auto it = first; it != last; ++it) {
 					const ScriptConfigItem &config_item = **it;
-					int current_value = config->GetSetting((config_item).name);
+					int current_value = this->gs_config->GetSetting(config_item.name);
 					bool editable = this->IsEditableItem(config_item);
 
 					StringID str;
@@ -212,6 +209,7 @@ struct GSConfigWindow : public Window {
 						DrawBoolButton(br.left, y + button_y_offset, current_value != 0, editable);
 						SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 					} else {
+						int i = static_cast<int>(std::distance(std::begin(this->visible_settings), it));
 						if (config_item.complete_labels) {
 							DrawDropDownButton(br.left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && clicked_dropdown, editable);
 						} else {
