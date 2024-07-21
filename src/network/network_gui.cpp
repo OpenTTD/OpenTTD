@@ -100,8 +100,6 @@ public:
 		this->Add(std::make_unique<NWidgetLeaf>(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_YEARS, STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION, STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP));
 
 		leaf = std::make_unique<NWidgetLeaf>(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_INFO, STR_EMPTY, STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP);
-		leaf->SetMinimalSize(14 + GetSpriteSize(SPR_LOCK, nullptr, ZOOM_LVL_NORMAL).width
-		                        + GetSpriteSize(SPR_BLOT, nullptr, ZOOM_LVL_NORMAL).width, 12);
 		leaf->SetFill(0, 1);
 		this->Add(std::move(leaf));
 	}
@@ -193,8 +191,8 @@ protected:
 	QueryString filter_editbox;     ///< Editbox for filter on servers.
 	bool searched_internet = false; ///< Did we ever press "Search Internet" button?
 
-	int lock_offset; ///< Left offset for lock icon.
-	int blot_offset; ///< Left offset for green/yellow/red compatibility icon.
+	Dimension lock; /// Dimension of lock icon.
+	Dimension blot; /// Dimension of compatibility icon.
 
 	/**
 	 * (Re)build the GUI network game list (a.k.a. this->servers) as some
@@ -365,9 +363,8 @@ protected:
 
 		/* offsets to vertically centre text and icons */
 		int text_y_offset = (this->resize.step_height - GetCharacterHeight(FS_NORMAL)) / 2 + 1;
-		int icon_y_offset = (this->resize.step_height - GetSpriteSize(SPR_BLOT).height) / 2;
-		int lock_y_offset = (this->resize.step_height - GetSpriteSize(SPR_LOCK).height) / 2;
 
+		info = info.Shrink(WidgetDimensions::scaled.framerect);
 		name = name.Shrink(WidgetDimensions::scaled.framerect);
 		DrawString(name.left, name.right, y + text_y_offset, cur_item->info.server_name, TC_BLACK);
 
@@ -407,11 +404,18 @@ protected:
 				DrawString(years.left, years.right, y + text_y_offset, STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT, TC_BLACK, SA_HOR_CENTER);
 			}
 
+			/* Set top and bottom of info rect to current row. */
+			info.top = y;
+			info.bottom = y + this->resize.step_height - 1;
+
+			bool rtl = _current_text_dir == TD_RTL;
+
 			/* draw a lock if the server is password protected */
-			if (cur_item->info.use_password) DrawSprite(SPR_LOCK, PAL_NONE, info.left + this->lock_offset, y + lock_y_offset);
+			if (cur_item->info.use_password) DrawSpriteIgnorePadding(SPR_LOCK, PAL_NONE, info.WithWidth(this->lock.width, rtl), SA_CENTER);
 
 			/* draw red or green icon, depending on compatibility with server */
-			DrawSprite(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), info.left + this->blot_offset, y + icon_y_offset + 1);
+			PaletteID pal = cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED);
+			DrawSpriteIgnorePadding(SPR_BLOT, pal, info.WithWidth(this->blot.width, !rtl), SA_CENTER);
 		}
 	}
 
@@ -469,8 +473,8 @@ public:
 
 	void OnInit() override
 	{
-		this->lock_offset = ScaleGUITrad(5);
-		this->blot_offset = this->lock_offset + ScaleGUITrad(3) + GetSpriteSize(SPR_LOCK).width;
+		this->lock = GetScaledSpriteSize(SPR_LOCK);
+		this->blot = GetScaledSpriteSize(SPR_BLOT);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -515,6 +519,11 @@ public:
 				size.width += 2 * Window::SortButtonWidth(); // Make space for the arrow
 				SetDParamMaxValue(0, 5);
 				size = maxdim(size, GetStringBoundingBox(STR_JUST_INT));
+				break;
+
+			case WID_NG_INFO:
+				size.width = this->lock.width + WidgetDimensions::scaled.hsep_normal + this->blot.width + padding.width;
+				size.height = std::max(this->lock.height, this->blot.height) + padding.height;
 				break;
 		}
 	}
