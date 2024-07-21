@@ -195,7 +195,6 @@ protected:
 
 	int lock_offset; ///< Left offset for lock icon.
 	int blot_offset; ///< Left offset for green/yellow/red compatibility icon.
-	int flag_offset; ///< Left offset for language flag icon.
 
 	/**
 	 * (Re)build the GUI network game list (a.k.a. this->servers) as some
@@ -472,7 +471,6 @@ public:
 	{
 		this->lock_offset = ScaleGUITrad(5);
 		this->blot_offset = this->lock_offset + ScaleGUITrad(3) + GetSpriteSize(SPR_LOCK).width;
-		this->flag_offset = this->blot_offset + ScaleGUITrad(2) + GetSpriteSize(SPR_BLOT).width;
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
