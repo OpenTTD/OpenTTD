@@ -1503,7 +1503,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Väggklocka
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minuter per år: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Välj antalet minuter som går i ett kalenderår. Standard är 12 minuter. Sätt till 0 för att stoppa kalendertiden från att ändras. Denna inställning påverkar inte spelets ekonomiska simulering, och är endast tillgänglig för tidhållning medelst väggklocka
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Välj antalet minuter som går i ett kalenderår. Standard är 12 minuter. Sätt till 0 för att stoppa kalendertiden från att ändras. Ökning av kalenderårets längd fördröjer introduceringen av fordon, byggnader, och annan infrastruktur. Detta påverkar inte fordonshastigheter eller spelets ekonomiska simulering, med undantag för inflationen. Denna inställning är endast tillgänglig för tidhållning medelst väggklocka
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -2887,6 +2887,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bygg vä
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bygg spårvägssektion med Autospårvägläget. Ctrl+Klick för att ta bort spårvägssektion. Håll även in Shift för att endast visa uppskattad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bygg vägfordonsdepå (för köp och service av fordon). Håll även in Shift för att endast visa uppskattad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bygg spårvagnsdepå (för köp och service av fordon). Håll även in Shift för att endast visa uppskattad kostnad
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Bygg riktmärke på väg. Ctrl+Klick för att välja ett annat riktmärke att sammanlänka. Håll även in Shift för att endast visa uppskattad kostnad
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Bygg riktmärke på spårvagnsräls. Ctrl+Klick för att välja ett annat riktmärke att sammanlänka. Håll även in Shift för att endast visa uppskattad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bygg busshållplats. Ctrl+Klick för att välja en annan station att sammanlänka. Håll även in Shift för att endast visa uppskattad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bygg passagerarspårvagnsstation. Ctrl+Klick för att välja en annan station att sammanlänka. Håll även in Shift för att endast visa uppskattad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bygg laststation. Ctrl+Klick för att välja en annan station att sammanlänka. Håll även in Shift för att endast visa uppskattad kostnad

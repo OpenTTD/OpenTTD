@@ -796,6 +796,7 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}顯示�
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}地圖不顯示任何工業
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}地圖顯示所有工業
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}切換高度圖顯示
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}切換工業名稱
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}不要在地圖上顯示公司財產
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}在地圖上顯示所有公司財產
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}在地圖上不顯示任何貨物種類
@@ -2113,6 +2114,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}無法�
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}圖像設定錯誤...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}...找不到相容的顯示卡裝置，硬體加速已被停用
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}……GPU驅動程式導致遊戲崩潰。硬體加速已停用
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2206,13 +2208,15 @@ STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}顯示�
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}顯示船舶配色
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}顯示飛機配色
 STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}顯示列車群組的配色
-STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}顯示公路車輛群組的配色
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}顯示車輛群組的配色
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}顯示船舶群組的配色
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}顯示飛機群組的配色
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}選擇所選配色的主色調。如按住 Ctrl 鍵點選色調，則所有配色皆採用此顏色為主色調
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}選擇所選配色的副色調。如按住 Ctrl 掣點選色調，則所有配色皆採用此顏色為副色調
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}選擇要修改的配色，按住 CTRL 可同時選擇多種配色，勾選方框可切換是否使用配色
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :未有設置任何列車群組
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :未設立公路車輛群組
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :未設立船舶群組
 STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :未設立飛機群組
 
 ###length 23
@@ -2746,6 +2750,7 @@ STR_PICKER_MODE_SAVED_TOOLTIP                                   :切換僅顯示
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :選擇顯示的車站種類
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :選擇顯示的號誌站種類
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :選擇顯示的物品種類
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :選擇顯示的市鎮區域
 
 STR_HOUSE_PICKER_CAPTION                                        :房屋選擇
@@ -3220,11 +3225,13 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}地圖�
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}選擇地圖大小（單位為方格）。實際可供使用的方格數量會比所設定的值略低
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}市鎮數量：
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}選擇市鎮密度，或輸入自訂數字
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}市鎮名稱:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}選擇市鎮命名風格
 STR_MAPGEN_DATE                                                 :{BLACK}日期：
 STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}選擇開始日期
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工業數量：
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}選擇工業密度，或輸入自訂數字
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}最高峰：
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}將地圖上最高峰的最大高度增加1
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}將地圖上最高峰的最大高度減少1
@@ -3275,6 +3282,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :加泰隆尼亞
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}地圖邊緣：
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}選擇遊戲版圖邊界款式
 STR_MAPGEN_NORTHWEST                                            :{BLACK}西北方
 STR_MAPGEN_NORTHEAST                                            :{BLACK}東北方
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}東南方
@@ -3424,6 +3432,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}上一�
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}繼續處理上一個正常的子畫面，略過任何虛位／重新著色／文字字型相關的子畫面，並在到達第一個子畫面後，返回最後的子畫面繼續進行處理。
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}顯示目前選取的 sprite。當 sprite 正在描繪時會忽略其定位
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}移動 sprite 到指定的 X 及 Y 座標位移。Ctrl+點擊可以一次移動8個單元格。
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}置中位移值
@@ -3671,7 +3680,12 @@ STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOI
 STR_STATION_LIST_NONE                                           :{YELLOW}- 無 -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}選擇所有設施
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :所有貨物種類和沒有評價
+STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :多種貨物類型
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :無貨物種類
 STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :無貨物評價
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :選擇所有和無評價
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :無貨物評價
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :顯示更多…
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -4347,6 +4361,8 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}載重�
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年盈利：{LTBLUE}{CURRENCY_LONG} (去年盈利：{CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}今年盈利：{LTBLUE}{CURRENCY_LONG} (去年盈利：{CURRENCY_LONG}) {BLACK}最差表現：{LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}本期盈利：{LTBLUE}{CURRENCY_LONG}（上期盈利：{CURRENCY_LONG}）
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}本期盈利：{LTBLUE}{CURRENCY_LONG}（上期盈利：{CURRENCY_LONG}）{BLACK}最小功率：{LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}可靠度：{LTBLUE}{COMMA}%  {BLACK}上次維護後的故障次數：{LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}興建於：{LTBLUE}{NUM}{BLACK} 價值：{LTBLUE}{CURRENCY_LONG}
@@ -4475,7 +4491,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :停留
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
-STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}選擇車廠操作
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}選擇車廠動作
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}選擇車廠動作
 STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}選擇船塢動作
 ###next-name-looks-similar
 
@@ -4943,6 +4960,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}無法�
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}鄰接超過一個現有車站／載貨區
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... 車站範圍太大
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}……軌數不正確
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}……月台長度不正確
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}太多車站／載貨區
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}太多火車站元件
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}太多公車站
@@ -5233,6 +5252,7 @@ STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}無法�
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}車輛只能在車站停靠等候
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此車輛不會停靠此站
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... 時刻表並不完整
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :… 時刻表尚未開始
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 已有太多標誌
