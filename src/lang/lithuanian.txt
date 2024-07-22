@@ -2425,6 +2425,7 @@ STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Pasirink
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Pasirinkite antrinę spalvą pasirinktai schemai. Spustelėjus laikant nuspaustą Ctrl klavišą, pasirinkta spava bus nustatyta visoms schemoms
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Pasirinkite objektą, kurio spalvas norite pakeisti. Spragsint laikant nuspaustą Ctrl klavišą, galėsite pasirinkti iškart kelis objektus.
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Nėra nustatytų traukinių grupių
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Nėra sukurtų automobilių grupių
 STR_LIVERY_SHIP_GROUP_EMPTY                                     :Nėra nustatytų laivų grupių
 STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Lėktuvų grupės nesudarytos
 
@@ -2922,7 +2923,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Statyti 
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Paversti bėgius į kontrolės punktą. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus galima naująjį kontrolės punktą sujungti su jau egzistuojančiu. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Statyti traukinių stotelę. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus galima naująją stotelę sujungti su jau egzistuojančia. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Statyti geležinkelio signalus. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus statomi semaforai.{}Velkant signalai bus statomi vienodais atstumais išilgai tiesios bėgių linijos. Velkant ir laikant nuspaustą Ctrl klavišą, signalai bus automatiškai pastatyti iki artimiausios sankryžos. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos. Šį mygtuką spragtelėjus laikant nuspaustą Ctrl klavišą, nebus atvertas signalų pasirinkimo langas (jeigu toks yra aktyvintas nuostatose)
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Statyti geležinkelio tiltą. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Statyti geležinkelio tiltą. Spragtelėkite laikydami Shift klavišą, kad būtų parodomos apytikslės išlaidos
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Statyti geležinkelio tunelį. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Aktyvinti bėgių, signalų, kontrolės punktų ir stotelių šalinimo veikseną. Spragtelėjus stotelę laikant nuspaustą Ctrl klavišą, bus pašalinti ir bėgiai, ne tik stotelės elementas
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pakeisti geležinkelio bėgių tipą. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
@@ -5186,6 +5187,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Negalima
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Ribojasi su daugiau nei viena stotele/pakrovimo aikštele
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stotelė per daug išsiplėtusi
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... toks kiekis bėgių nėra palaikomas
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Per daug stotelių
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Perdaug traukinių stoties dalių
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Per daug autobusų stotelių
@@ -5462,6 +5464,9 @@ STR_ERROR_NO_DOCK                                               :{WHITE}Nėra do
 STR_ERROR_NO_AIRPORT                                            :{WHITE}Nėra jokio oro ar sraigtasparnio uosto
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Nėra jokių stabdymų su palaikomu keliu (tipu)
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Nėra jokių stabdymų su palaikomu tramvajaus tipu
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Šis lėktuvas negali nusileisti šiame sraigtasparnių oro uoste
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Šis sraigtasparnis negali nusileisti šiame oro uoste
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Nėra geležinkelio tarpinio taško
 STR_ERROR_NO_BUOY                                               :{WHITE}Nėra plūduro
 
 # Timetable related errors
@@ -6215,7 +6220,9 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_CURRENCY_SHORT_KILO                                         :{NBSP}tūkst.
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
 STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mlrd.
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tr
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

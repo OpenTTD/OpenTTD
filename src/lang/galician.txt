@@ -2589,6 +2589,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revisión erró
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :o nome xa está en uso
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :contrasinal incorrecto
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :non na lista permitida
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :ningún dos métodos de autenticación solicitados está disponible
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :compañía errónea nun DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :chimpado polo servidor
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :intentaba usar unha trampa

@@ -192,12 +192,12 @@ STR_COLOUR_WHITE                                                :Balta
 STR_COLOUR_RANDOM                                               :Nejaušs
 
 ###length 17
-STR_COLOUR_SECONDARY_DARK_BLUE                                  :Tumši Zila
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Tumši zila
 STR_COLOUR_SECONDARY_PALE_GREEN                                 :Gaiši Zaļa
 STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Rozā
 STR_COLOUR_SECONDARY_YELLOW                                     :Dzeltena
 STR_COLOUR_SECONDARY_RED                                        :Sarkana
-STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Gaiši Zila
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Gaiši zila
 STR_COLOUR_SECONDARY_GREEN                                      :Zaļa
 STR_COLOUR_SECONDARY_DARK_GREEN                                 :Tumši zaļa
 STR_COLOUR_SECONDARY_BLUE                                       :Zila
@@ -1205,7 +1205,7 @@ STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Pielāgots augs
 STR_CITY_APPROVAL_LENIENT                                       :Mīksts
 STR_CITY_APPROVAL_TOLERANT                                      :iecietīga
 STR_CITY_APPROVAL_HOSTILE                                       :naidīga
-STR_CITY_APPROVAL_PERMISSIVE                                    :Pieļaujoša (nav efekta kompānijas darbībām)
+STR_CITY_APPROVAL_PERMISSIVE                                    :Pieļaujoša (neietekmē uzņēmuma darbības)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nav pieejami derīgi MI...{}Jūs varat lejuplādēt dažādus MI, izmantojot sistēmu 'Tiešsaistes saturs'
 
@@ -1450,7 +1450,7 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Iestatīt lidma
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lidmašīnu avāriju daudzums: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Iestatīt nejaušu lidaparātu avāriju iespējamību.{}* Lielām lidmašīnām vienmēr ir risks avarēt, kad piezemējas mazās lidostās
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Iestatīt nejaušu lidaparātu avāriju iespējamību.{}* Lielām lidmašīnām vienmēr ir risks avarēt, kad tās nolaižas mazās lidostās
 ###length 3
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nav*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :samazināts
@@ -2242,7 +2242,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Ziņot p
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Kopiena
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Smilškastes Opcijas
+STR_CHEATS                                                      :{WHITE}Smilškastes opcijas
 STR_CHEAT_MONEY                                                 :{LTBLUE}Palielināt naudas līdzekļus par {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spēlēt kā uzņēmumam: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Burvju buldozers (nojauc ražotnes, nepārvietojamus objektus): {ORANGE}{STRING}
@@ -2808,7 +2808,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Izvēlē
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platformas garums
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Izvēlēties dzelzceļa stacijas garumu
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vilkt un nomest
-STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Būvēt staciju izmantojot "vilkt un nomest"
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Būvēt staciju, izmantojot "vilkt un nomest"
 
 STR_PICKER_MODE_ALL                                             :Visi
 STR_PICKER_MODE_ALL_TOOLTIP                                     :Pārslēgt visu klašu vienumu rādīšanu
@@ -3512,7 +3512,7 @@ STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Gariņu 
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nākamais gariņš
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Pāriet uz nākamo parasto gariņu, izlaižot visus pseido/pārkrāsotos/fonta gariņus
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Iet pie gariņa
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Iet pie dotā gariņa. Ja tas nav parastais gariņš, tad pāriet pie nākamā
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Iet pie esošā gariņa. Ja tas nav parastais gariņš, tad pāriet pie nākamā, parastā
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Iepriekšējais gariņš
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Iet pie iepriekšējā parastā gariņa, izlaižot visus pseido/pārkrāsotos/fonta gariņus
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Atlasītā gariņa attēlojums. To attēlojot, izkārtojums netiek ievērots
@@ -3521,7 +3521,7 @@ STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Nobīde centrēta
-STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Spraits centrēts
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Gariņš ir centrēts
 
 STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Krustpunkts
 
@@ -3759,7 +3759,7 @@ STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globāl�
 STR_STORY_BOOK_SPECTATOR                                        :Globālā stāstu grāmata
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :{NUM} lapa
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Pārlēkt uz konkrētu lapu spiežot to zemāk esošajā sarakstā
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Pārlēkt uz konkrētu lapu, atlasot to zemāk esošajā sarakstā
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Iepriekšējā
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Doties uz iepriekšējo lapu
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Nākamā
@@ -4338,7 +4338,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Parslēg
 STR_REPLACE_ENGINES                                             :Lokomotīves
 STR_REPLACE_WAGONS                                              :Vagoni
 STR_REPLACE_ALL_RAILTYPE                                        :Visi dzelzceļa transporta līdzekļi
-STR_REPLACE_ALL_ROADTYPE                                        :Visi ceļu transportlīdzekļi
+STR_REPLACE_ALL_ROADTYPE                                        :Visi ceļa transportlīdzekļi
 
 ###length 2
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Izvēlēties sliežu veidu, kuram vēlaties nomainīt lokomotīves
@@ -4757,13 +4757,13 @@ STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Atlasiet
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundes līdz grafika sākumam
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mainīt laiku
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mainiet laiku, kas nepieciešams iezīmētajam pasūtījumam. Ctrl+klikšķis iestata laiku visiem pasūtījumiem
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mainīt laiku, kas nepieciešams iezīmētajam pasūtījumam. Ctrl+klikšķis iestata laiku visiem pasūtījumiem
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Notīrīt laiku
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Dzēst iezīmētā pasūtījuma laiku. Ctrl+klikšķis notīra laiku visiem pasūtījumiem
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Mainīt ātruma ierobežojumu
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Mainiet izceltā pasūtījuma maksimālo braukšanas ātrumu. Ctrl+klikšķis iestata ātrumu visiem pasūtījumiem
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Mainīt izceltā pasūtījuma maksimālo braukšanas ātrumu. Ctrl+klikšķis iestata ātrumu visiem pasūtījumiem
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Nodzēst ātruma ierobežojumu
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Dzēst iezīmētā pasūtījuma maksimālo braukšanas ātrumu. Ctrl+klikšķis notīra ātrumu visiem pasūtījumiem
@@ -4819,7 +4819,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}MI/spē
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}MI iestatījumi
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Spēles Skripta Iestatījumi
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Spēles skripta Iestatījumi
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spēles skripts, kas tiks ielādēts nākamajā spēlē
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}MI, kas tiks ielādēts nākamajā spēlē
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Spēlētājs (cilvēks)
@@ -4839,7 +4839,7 @@ STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Paramet
 STR_AI_CONFIG_AI                                                :{SILVER}MI
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Izvēlēties MI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Izvētaties spēles skriptu
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}AtlasĪt spēles skriptu
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ielādēt citu skriptu. Ctrl+klikšķis, lai parādītu visas pieejamās versijas
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurēt
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigurēt skripta parametrus
@@ -4860,7 +4860,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Atcelt
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemainīt skriptu
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Uzņemt ekrānuzņēmumu
-STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normāls ekrānuzņēmums
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Parasts ekrānuzņēmums
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Pilnībā pietuvināts ekrānuzņēmums
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Noklusējuma tuvinājuma ekrānuzņēmums
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Visas kartes ekrānuzņēmums
@@ -4884,8 +4884,8 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Atgriezt
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Atgriezties uz priekšu navigācijas vēsturē
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Aplauzt tekstu
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Aplauzt tekstu logā, lai tas viss iekļautos un nevajadzētu ritināt
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Lasi_Mani
-STR_TEXTFILE_VIEW_README_TOOLTIP                                :Skatīt šī satura readme
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Lasi_mani
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Skatīt šī satura failu Lasi_mani
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Izmaiņu žurnāls
 STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Skatīt šī satura izmaiņu žurnālu
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
