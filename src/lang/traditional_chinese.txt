@@ -613,8 +613,11 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}運送�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}公司效率指標 (最高 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}公司價值
 
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}最後 72 分鐘
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}貨物運費表
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}運輸所用天數
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}運輸所用秒數
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}將 10 單位 (或 10,000 公升) 貨物運送 20 格的費用
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}全部啟用
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}全部停用
@@ -799,6 +802,7 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}全部停用
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}全部打開
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}顯示高度
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}顯示工業名稱
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}地圖不顯示任何工業
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}地圖顯示所有工業
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}切換高度圖顯示
@@ -926,6 +930,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING} 獲得補助！{}{}現在起 {4:UNITS_YEARS_OR_MINUTES} 期間內將 {1:STRING} 從 {2:STRING} 運到 {3:STRING} 的服務可收到三倍運費補助！
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} 獲得補助！{}{}現在起 {4:UNITS_YEARS_OR_MINUTES} 期間內將 {1:STRING} 從 {2:STRING} 運到 {3:STRING} 的服務可收到四倍運費補助！
 
+STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}在{TOWN}內出現交通混亂！{}{}由{STRING}贊助的道路重建計劃將為駕駛者帶來多達 6 個月的阻塞苦楚！
+STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}在{TOWN}內出現交通混亂！{}{}由{STRING}贊助的道路重建計劃將為駕駛者帶來多達 6 分鐘的阻塞苦楚！
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}運輸大亨!
 
 # Extra view window
@@ -951,6 +957,7 @@ STR_GAME_OPTIONS_VOLUME                                         :音量
 STR_GAME_OPTIONS_SFX_VOLUME                                     :音效
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :音樂
 
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}幣值單位
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}選擇幣值單位
@@ -1472,7 +1479,10 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :所有車輛
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :當車輛收入為負時發放警告：{STRING}
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :如啟用此選項，系統會為上一年度賺不到錢的車輛顯示訊息。
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :如啟用此選項，車輛在一週期內沒有盈利時會顯示訊息
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :車輛老化時發出警告︰{STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :如啟用此選項，車輛老化的時候會顯示訊息
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :車輛永不過期：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :如啟用此選項，所有車輛一經面世，就永遠可以選擇建造。
@@ -1705,9 +1715,11 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :使用裝載進
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :選擇是否在車輛裝卸的時候顯示裝載狀況。
 
 STR_CONFIG_SETTING_TIMETABLE_MODE                               :時刻表使用的時間單位：{STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :選擇車輛時刻表所使用的時間單位
 ###length 3
 STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :日
 STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :秒
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :刻
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :顯示時刻表排定的到離時間：{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :在時刻表上顯示預料的到站、出發時間。
@@ -1749,6 +1761,7 @@ STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :週期結束︰
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :在顯示年終報告時播放音效
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :在顯示週期終報告時播放音效
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :建造：{STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :在成功建造設施或執行其他動作時播放音效。
@@ -2035,12 +2048,14 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :如果把此值
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :如果最短路徑的飽和度超過{STRING}，把貨物改派往容量較大的路徑
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :貨物分配功能在派送貨物時，會優先使用最短路徑，至其飽和後改用第二短的路徑，如此類推。當所有路徑皆飽和但仍未滿足需求，系統會由容量較大的路徑開始繼續加載貨物。{}由於路徑飽和度難以準確估算，此設定容許您定義一值，使短路徑達至該飽和度後，系統便開始加載容量較大的路徑。{}如果此設定的值少於100%，即使系統高估路徑容量，也不會使過多的貨物滯留車站。
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度單位：{STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度單位（陸地）：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :速度單位（航海）：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :在界面上以所選擇的單位表示速度。
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :英制（英里/小時）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :米制（公里/小時）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :國際單位（米/秒）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :遊戲單位（格/天）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :遊戲單位（格/秒）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :節
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :車輛功率單位：{STRING}
@@ -2091,6 +2106,7 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :財務
 STR_CONFIG_SETTING_VEHICLES                                     :車輛
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :物理
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :路線
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :調度指令
 STR_CONFIG_SETTING_LIMITATIONS                                  :遊戲限制
 STR_CONFIG_SETTING_ACCIDENTS                                    :災難／事故
 STR_CONFIG_SETTING_GENWORLD                                     :地圖的產生
@@ -2454,8 +2470,8 @@ STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}加入�
 STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}授權此客戶端加入您的公司
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}傳送訊息給此玩家
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}傳送訊息給公司中的所有玩家
-STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}傳送訊息給所有旁觀者
-STR_NETWORK_CLIENT_LIST_SPECTATORS                              :旁觀者
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}傳送訊息給所有觀眾
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :觀眾
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :（新公司）
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}創立並加入一個新公司
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}這是你
@@ -2487,11 +2503,12 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}是，�
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}是，且不再詢問
 
 STR_NETWORK_ASK_SURVEY_CAPTION                                  :是否參與自動問卷？
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :預覽調查結果
 STR_NETWORK_ASK_SURVEY_LINK                                     :關於問卷和隱私
 STR_NETWORK_ASK_SURVEY_NO                                       :否
 STR_NETWORK_ASK_SURVEY_YES                                      :是
 
-STR_NETWORK_SPECTATORS                                          :旁觀者
+STR_NETWORK_SPECTATORS                                          :觀眾
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}加入
@@ -2585,7 +2602,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :離開中
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} 已加入遊戲
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} 已加入此遊戲 (用戶端 #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} 已加入公司 #{2:NUM}
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} 已加入為旁觀者
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} 已加入為觀眾
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} 已建立新公司 (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} 已離開遊戲 ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 已修改其名稱為 {STRING}
@@ -2688,6 +2705,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}切換�
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}切換橋樑是否透明。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}切換公用設施是否透明，如燈塔、天線塔等。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}切換供電線是否透明。按住 CTRL 點選可鎖定
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}切換裝載和盈利的提示是否透明。按住 <CTRL> 點選可鎖定
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}讓物件完全隱藏，而非透明顯示
 
 # Linkgraph legend window
@@ -2776,6 +2794,8 @@ STR_PICKER_MODE_SAVED_TOOLTIP                                   :切換僅顯示
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :選擇顯示的車站種類
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :選擇顯示的號誌站種類
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :選擇顯示的公車站種類
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :選擇建設的公車站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :選擇顯示的貨車場種類
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :選擇顯示的物品種類
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :選擇顯示的市鎮區域
@@ -3277,6 +3297,7 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}平滑度：
 STR_MAPGEN_VARIETY                                              :{BLACK}地形起伏分佈：
 STR_MAPGEN_GENERATE                                             :{WHITE}產生
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}建立世界和開始進行遊玩 OpenTTD！
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF 設定
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}顯示 NewGRF 設定
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI 設定
@@ -3338,6 +3359,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}平地
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}產生平地
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}隨機產生地形
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}平地高度：
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}選擇地面海拔高度
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}將平地高度下移一層
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}將平地高度上移一層
 
@@ -3731,6 +3753,8 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評價
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}顯示車站評價
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}每月供應量和本地評價︰
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}每分鐘供應量和本地評價︰
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}群組方式
@@ -3865,6 +3889,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}顯示�
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}給予資金
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}將資金給予此公司
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}敵意收購
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}對此公司進行敵意收購
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新臉孔
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}選擇總經理的新臉孔
@@ -4678,10 +4703,12 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}此車�
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}此車輛目前比表定時間遲 {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}此車輛目前比表定時間早 {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}此時刻表尚未實施
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}本時刻表將會在 {STRING} 開始
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}本時刻表將會在{COMMA}秒後開始
 
 STR_TIMETABLE_START                                             :{BLACK}開始時刻表
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :距離時刻表開始還有的秒數
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}修改時刻
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}修改選取指令所需的時間。按住 Ctrl 點選可設定所有指令的時間。
@@ -4738,7 +4765,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}繼續
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}取消暫停並繼續 AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}檢視此 AI 的除錯輸出資訊
 STR_AI_GAME_SCRIPT                                              :{BLACK}遊戲腳本
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}檢查腳本日誌
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}檢查遊戲腳本日誌。按住 <Ctrl> 點選以開啟新視窗
 
 STR_ERROR_AI_NO_AI_FOUND                                        :找不到適合的 AI 可以載入。{}此 AI 是虛擬 AI，沒有任何效果。{}您可以透過「線上內容」系統下載更多 AI。
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}正在運行中的其中一個 AI 發生錯誤。請打開「AI 除錯」視窗後擷取螢幕圖片，將此問題回報給 AI 作者。
@@ -5042,6 +5069,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}無法�
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}無法移除列車號誌站...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}無法移除道路號誌站...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}必須先移除鐵路號誌站
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}必須先移除道路號誌站
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... 被浮標擋住
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... 浮標正被其他公司使用！
 
@@ -5743,6 +5771,7 @@ STR_UNKNOWN_STATION                                             :未知車站
 STR_DEFAULT_SIGN_NAME                                           :標誌
 STR_COMPANY_SOMEONE                                             :某人
 
+STR_SAVEGAME_DURATION_REALTIME                                  :{NUM} 小時 {NUM} 分鐘
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :旁觀者, {1:STRING}
 
