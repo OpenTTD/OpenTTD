@@ -500,6 +500,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Pályaszerkeszt
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Kilépés az OpenTTD-ből
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Városok generálása
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Házak elhelyezése
 
 # Settings menu
 ###length 16
@@ -1116,6 +1118,7 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Jelöld 
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Betűtípusok simítása
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Jelöld be ezt, ha lesimított betűket akarsz.
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automata felmérés
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Részvétel automata felmérésben
@@ -1545,6 +1548,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Figyelmeztetés
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Üzenetek megjelenítése azokról a járművekről, melyek nem termeltek profitot egy év alatt
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Üzenetek megjelenítése azokról a járművekről, melyek nem termeltek profitot egy időszakon belül
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Jelezzen, ha egy jármű elöregedett: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Ha engedélyezve van, a rendszer üzenetet küld, amikor egy jármű elöregszik
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Járművek sosem avulnak el: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Bekapcsolva minden járműmodell örökké elérhető marad bevezetése után
@@ -2608,6 +2613,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}A játé
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}A szerver neve nem lett megadva. A szerver nevét az ablak tetején tudod beállítani.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}A gépeden és a szerveren lévő programnak nem egyezik meg a verziója
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Rossz jelszó
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Nem szerepelsz az engedélyezett felhasználók listáján!
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}A szerver tele van
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Ki vagy tiltva erről a szerverről
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Ki lettél rúgva a szerverről
@@ -2635,6 +2641,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ismeretlen vagy
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :rossz verzió
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :a név már használva van
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :rossz jelszó
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :a kért hitelesítési módok egyike sem elérhető
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :hibás vállalat azonosító (wrong company in DoCommand)
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :a szerver kirúgott
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :csalni próbált
@@ -2852,9 +2859,26 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}A vasút
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Fogd és dobd
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Állomás építése fogd és dobd módon
 
+STR_PICKER_MODE_ALL                                             :Összes
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Kapcsolja be az összes csoport elemeinek megjelenítését
+STR_PICKER_MODE_USED                                            :Használt
+STR_PICKER_MODE_USED_TOOLTIP                                    :Csak a meglévő elemek megjelenítése
+STR_PICKER_MODE_SAVED                                           :Mentve
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Csak a mentett elemek megjelenítése
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Válaszd ki a megjeleníteni kívánt állomástípust
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Válassz ki egy állomástípust az építéshez. Ctrl+kattintás a mentett elemek hozzáadásához vagy eltávolításához
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Válaszd ki a megjeleníteni kívánt buszállomás-típust
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Válaszd ki a megjelenítendő elemcsoportot
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Válaszd ki az építendő elem típusát. Ctrl+kattintás a mentett elemek hozzáadásához vagy eltávolításához. Ctrl+kattintás+húzás a terület átlós kijelöléséhez. Nyomd meg a Shift billentyűt is, ha csak a költségbecslést szeretnéd megjeleníteni
 
+STR_HOUSE_PICKER_CAPTION                                        :Ház kiválasztása
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Szél
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Külváros
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Külső kertváros
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Belső kertváros
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Városközpont
 
 STR_STATION_CLASS_DFLT                                          :Alapértelmezett
 STR_STATION_CLASS_DFLT_STATION                                  :Alapértelmezett állomás
@@ -2909,6 +2933,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Közút 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Villamospálya építése egyszerűsített módon. Ctrl+kattintás a pálya lerombolásához. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garázs építése (járművek vételére és karbantartására). Shift+kattintással csak a becsült költséget jeleníti meg
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Villamos remíz építése (járművek megépítésére és javítására). Shift+kattintással csak a becsült költséget jeleníti meg
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Útpont építése a villamosvonalon. Ctrl+kattintás másik csatlakozási pont kiválasztásához. Nyomd meg a Shift billentyűt is, ha csak a költségbecslést szeretnéd megjeleníteni
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Buszmegálló építése. Ctrl+kattintással egyesíthető más állomásokkal. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Villamosmegálló építése. Ctrl+kattintással egyesíthető más állomásokkal. SShift+kattintással csak a becsült költséget jeleníti meg
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Teherautó-állomás építése. Ctrl+kattintással egyesíthető más állomásokkal. Shift+kattintással csak a becsült költséget jeleníti meg
@@ -3638,6 +3663,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Előző 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Felirat szövegének szerkesztése
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Városok ({COMMA}, {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nincs -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Város){BLACK} ({COMMA})
@@ -3971,6 +3997,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/időszak
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Gazdasági épületek ({COMMA}, {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nincs -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% elszállítva){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -4930,7 +4957,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Becsült
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}A mentés még tart,{}kérlek várd meg a végét!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatikus mentés sikertelen
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Nem olvasható a meghajtó
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}A mentés sikertelen
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Nem sikerült törölni a fájlt
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}A betöltés sikertelen
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Belső hiba: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Hibás játékállás-mentés - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :A játékállást újabb verzió mentette el
@@ -5035,6 +5064,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ninc
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Útkarbantartás folyamatban
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nem törölheted ezt a várost...{}Egy állomás vagy járműtelep hivatkozik a városra, vagy egy városi tulajdonú mező nem eltávolítható
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nincs megfelelő hely egy szobornak a város központjában
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}A házépítés nem lehetséges
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... túl sok a gazdasági épület
@@ -5107,6 +5137,7 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Több l�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Túl közel van egy másik ellenőrző ponthoz
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Ide nem lehet vonat ellenőrző pontot építeni...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Ide nem lehet útpontot építeni...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nem rakhatsz ide bóját...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nem lehet megváltoztatni az ellenőrző pont nevét...
 
@@ -5315,6 +5346,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Indíts 
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Nincs városban építhető út-típus
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Saját NewGRF konfiguráció módosítása
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Még nem érhető el városban építhető úttípus
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Indítson új játékot {DATE_SHORT} után, vagy használjon olyan NewGRF-et, amely korai városépítési úttípusokat biztosít
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nem haladhatja meg a vonat a megállj jelzést...
@@ -5907,6 +5939,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
