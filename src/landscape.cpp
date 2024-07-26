@@ -759,49 +759,78 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlag flags, TileIndex tile,
 }
 
 
-TileIndex _cur_tileloop_tile;
+/* Tile loop repeats pattern every MIN_MAP_SIZE tiles. Having it too small might
+ * be noticeable, And too big is a waste of resources. */
+static_assert(MIN_MAP_SIZE == 64);
 
-/**
- * Gradually iterate over all tiles on the map, calling their TileLoopProcs once every TILE_UPDATE_FREQUENCY ticks.
+static const uint TILE_LOOP_PATTERN_SIZE = MIN_MAP_SIZE * MIN_MAP_SIZE; // Size of the pattern
+static uint8_t _cur_tile_loop_pattern[TILE_LOOP_PATTERN_SIZE]; // Tile loop pattern, changes every TILE_UPDATE_FREQUENCY ticks
+
+uint32_t _cur_tileloop_seed;  // Seed value that was used to generate current tile loop pattern
+
+/*
+ * Determines whether the tile loop was already called for the tile in the
+ * current cycle (TILE_UPDATE_FREQUENCY ticks).
+ * @param tile TileIndex of the tile
+ * @returns true iff tile was already iterated
  */
-void RunTileLoop()
+bool WasTileIteratedThisCycle(TileIndex tile)
 {
-	PerformanceAccumulator framerate(PFE_GL_LANDSCAPE);
+	uint pattern_index = (TileY(tile) % MIN_MAP_SIZE) * MIN_MAP_SIZE + TileX(tile) % MIN_MAP_SIZE;
+	return (_cur_tile_loop_pattern[pattern_index] <= TimerGameTick::counter % TILE_UPDATE_FREQUENCY);
+}
 
+/*
+ * Generates a pattern to use for the tile loop seeded on the value of _cur_tileloop_seed
+ */
+void GenerateTileLoopPattern() {
 	/* The pseudorandom sequence of tiles is generated using a Galois linear feedback
 	 * shift register (LFSR). This allows a deterministic pseudorandom ordering, but
 	 * still with minimal state and fast iteration. */
 
-	/* Maximal length LFSR feedback terms, from 12-bit (for 64x64 maps) to 24-bit (for 4096x4096 maps).
-	 * Extracted from http://www.ece.cmu.edu/~koopman/lfsr/ */
-	static const uint32_t feedbacks[] = {
-		0xD8F, 0x1296, 0x2496, 0x4357, 0x8679, 0x1030E, 0x206CD, 0x403FE, 0x807B8, 0x1004B2, 0x2006A8, 0x4004B2, 0x800B87
-	};
-	static_assert(lengthof(feedbacks) == 2 * MAX_MAP_SIZE_BITS - 2 * MIN_MAP_SIZE_BITS + 1);
-	const uint32_t feedback = feedbacks[Map::LogX() + Map::LogY() - 2 * MIN_MAP_SIZE_BITS];
+	static int16_t lfsr_current = _cur_tileloop_seed % TILE_LOOP_PATTERN_SIZE;
+	const uint32_t LFSR_FEEDBACK = 0xD8F;  // 12-bit feedback term extracted from http://www.ece.cmu.edu/~koopman/lfsr/
+	static_assert(TILE_LOOP_PATTERN_SIZE == 4096);  // If we ever change pattern size, we need a different feedback term.
 
-	/* We update every tile every TILE_UPDATE_FREQUENCY ticks, so divide the map size by 2^TILE_UPDATE_FREQUENCY_LOG = TILE_UPDATE_FREQUENCY */
-	static_assert(2 * MIN_MAP_SIZE_BITS >= TILE_UPDATE_FREQUENCY_LOG);
-	uint count = 1 << (Map::LogX() + Map::LogY() - TILE_UPDATE_FREQUENCY_LOG);
+	_cur_tile_loop_pattern[0] = 0; // LFSR doesn't iterate 0 so add it separately
+	for (uint i = 1; i < TILE_LOOP_PATTERN_SIZE; i++) {
+		lfsr_current = (lfsr_current >> 1) ^ (-(lfsr_current & 1) & LFSR_FEEDBACK);
+		_cur_tile_loop_pattern[lfsr_current] = i / (TILE_LOOP_PATTERN_SIZE >> TILE_UPDATE_FREQUENCY_LOG);
+	}
+}
 
-	TileIndex tile = _cur_tileloop_tile;
-	/* The LFSR cannot have a zeroed state. */
-	assert(tile != 0);
+void RunTileLoop()
+{
+	PerformanceAccumulator framerate(PFE_GL_LANDSCAPE);
 
-	/* Manually update tile 0 every TILE_UPDATE_FREQUENCY ticks - the LFSR never iterates over it itself.  */
+	/* Every TILE_UPDATE_FREQUENCY ticks generate a new tile pattern just to make it a bit more random. */
 	if (TimerGameTick::counter % TILE_UPDATE_FREQUENCY == 0) {
-		_tile_type_procs[GetTileType(0)]->tile_loop_proc(0);
-		count--;
+		/* Initialize starting value for LFSR from tick counter so we iterate all possible patterns. */
+		_cur_tileloop_seed = (TimerGameTick::counter >> 8) % (TILE_LOOP_PATTERN_SIZE - 1) + 1;
+		GenerateTileLoopPattern();
 	}
 
-	while (count--) {
-		_tile_type_procs[GetTileType(tile)]->tile_loop_proc(tile);
+	/* Having sizes equally divisible helps to avoid boundary checks in the loop. */
+	assert(Map::SizeX() % MIN_MAP_SIZE == 0);
+	assert(Map::SizeY() % MIN_MAP_SIZE == 0);
 
-		/* Get the next tile in sequence using a Galois LFSR. */
-		tile = (tile.base() >> 1) ^ (-(int32_t)(tile.base() & 1) & feedback);
+	/* We update every tile every TILE_UPDATE_FREQUENCY ticks, */
+	for (uint i = 0; i < TILE_LOOP_PATTERN_SIZE; i++) {
+
+		/* Find tiles in a pattern that need to be updated on a current iteration, */
+		if (_cur_tile_loop_pattern[i] != TimerGameTick::counter % TILE_UPDATE_FREQUENCY) continue;
+		uint dx = i % MIN_MAP_SIZE;
+		uint dy = i / MIN_MAP_SIZE;
+
+		/* Update tiles all over the map that correspond to this position in the pattern. */
+		for (uint y = 0; y < Map::SizeY(); y += MIN_MAP_SIZE) {
+			uint tile_y = y + dy;
+			for (uint x = 0; x < Map::SizeX(); x += MIN_MAP_SIZE) {
+				TileIndex tile = TileXY(x + dx, tile_y);
+				_tile_type_procs[GetTileType(tile)]->tile_loop_proc(tile);
+			}
+		}
 	}
-
-	_cur_tileloop_tile = tile;
 }
 
 void InitializeLandscape()
