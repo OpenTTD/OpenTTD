@@ -32,8 +32,6 @@
 class FreeTypeFontCache : public TrueTypeFontCache {
 private:
 	FT_Face face;  ///< The font face associated with this font.
-
-	void SetFontSize(int pixels);
 	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
 
 public:
@@ -44,6 +42,7 @@ public:
 	std::string GetFontName() override { return fmt::format("{}, {}", face->family_name, face->style_name); }
 	bool IsBuiltInFont() override { return false; }
 	const void *GetOSHandle() override { return &face; }
+	void SetFontSize(int pixels) override;
 };
 
 FT_Library _library = nullptr;
@@ -64,6 +63,8 @@ FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : Tr
 
 void FreeTypeFontCache::SetFontSize(int pixels)
 {
+	this->req_size = pixels;
+
 	if (pixels == 0) {
 		/* Try to determine a good height based on the minimal height recommended by the font. */
 		int scaled_height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
