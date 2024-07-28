@@ -3308,7 +3308,7 @@ STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}選擇�
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工業數量：
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}選擇工業密度，或輸入自訂數字
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}最高峰：
-STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}選擇遊戲版圖內最高峰的海拔，​​以海平面為基準計算
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}選擇遊戲版圖內最高峰的海拔，以海平面為基準計算
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}將地圖上最高峰的最大高度增加1
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}將地圖上最高峰的最大高度減少1
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}雪地覆蓋率:
