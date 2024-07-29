@@ -45,7 +45,7 @@ enum TownProductionEffect : uint8_t {
 };
 
 /** Cargo classes. */
-enum CargoClass {
+enum CargoClass : uint16_t {
 	CC_NOAVAILABLE  = 0,       ///< No cargo class has been specified
 	CC_PASSENGERS   = 1 <<  0, ///< Passengers
 	CC_MAIL         = 1 <<  1, ///< Mail
@@ -60,6 +60,9 @@ enum CargoClass {
 	CC_SPECIAL      = 1 << 15, ///< Special bit used for livery refit tricks instead of normal cargoes.
 };
 
+/** Bitmask of cargo classes. */
+using CargoClasses = uint16_t;
+
 static const uint8_t INVALID_CARGO_BITNUM = 0xFF; ///< Constant representing invalid cargo
 
 static const uint TOWN_PRODUCTION_DIVISOR = 256;
@@ -72,7 +75,7 @@ struct CargoSpec {
 	uint8_t rating_colour;
 	uint8_t weight;                    ///< Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
 	uint16_t multiplier = 0x100; ///< Capacity multiplier for vehicles. (8 fractional bits)
-	uint16_t classes;                  ///< Classes of this cargo type. @see CargoClass
+	CargoClasses classes; ///< Classes of this cargo type. @see CargoClass
 	int32_t initial_payment;           ///< Initial payment rate before inflation is applied.
 	uint8_t transit_periods[2];
 
