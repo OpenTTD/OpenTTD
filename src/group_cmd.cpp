@@ -19,6 +19,7 @@
 #include "core/pool_func.hpp"
 #include "order_backup.h"
 #include "group_cmd.h"
+#include "depot_map.h"
 
 #include "table/strings.h"
 
@@ -579,7 +580,7 @@ std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlag flags, GroupID
 				}
 			}
 
-			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
+			if (IsDepotTypeTile(v->tile, (TransportType)v->type)) SetWindowDirty(WC_VEHICLE_DEPOT, GetDepotIndex(v->tile));
 			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 			InvalidateWindowData(WC_VEHICLE_VIEW, v->index);

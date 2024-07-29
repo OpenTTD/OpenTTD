@@ -21,7 +21,7 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 CommandCost CmdOrderRefit(DoCommandFlag flags, VehicleID veh, VehicleOrderID order_number, CargoID cargo);
 CommandCost CmdCloneOrder(DoCommandFlag flags, CloneOptions action, VehicleID veh_dst, VehicleID veh_src);
 CommandCost CmdMoveOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID moving_order, VehicleOrderID target_order);
-CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, ClientID user_id);
+CommandCost CmdClearOrderBackup(DoCommandFlag flags, DepotID depot_id, ClientID user_id);
 
 DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER,      CmdSkipToOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)

@@ -90,6 +90,7 @@
 #include "network/network_func.h"
 #include "framerate_type.h"
 #include "viewport_cmd.h"
+#include "depot_map.h"
 
 #include <forward_list>
 #include <stack>
@@ -1002,6 +1003,7 @@ enum TileHighlightType {
 const Station *_viewport_highlight_station; ///< Currently selected station for coverage area highlight
 const Waypoint *_viewport_highlight_waypoint; ///< Currently selected waypoint for coverage area highlight
 const Town *_viewport_highlight_town; ///< Currently selected town for coverage area highlight
+DepotID _viewport_highlight_depot = INVALID_DEPOT; ///< Currently selected depot for depot highlight
 
 /**
  * Get tile highlight type of coverage area for a given tile.
@@ -1010,6 +1012,10 @@ const Town *_viewport_highlight_town; ///< Currently selected town for coverage 
  */
 static TileHighlightType GetTileHighlightType(TileIndex t)
 {
+	if (_viewport_highlight_depot != INVALID_DEPOT) {
+		if (IsDepotTile(t) && GetDepotIndex(t) == _viewport_highlight_depot) return THT_BLUE;
+	}
+
 	if (_viewport_highlight_station != nullptr) {
 		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_station->index) return THT_WHITE;
 		if (_viewport_highlight_station->TileIsInCatchment(t)) return THT_BLUE;
@@ -2674,6 +2680,8 @@ void UpdateTileSelection()
 			}
 			_thd.new_pos.x = x1 & ~TILE_UNIT_MASK;
 			_thd.new_pos.y = y1 & ~TILE_UNIT_MASK;
+			if (_thd.select_method == VPM_LIMITED_X_FIXED_Y) _thd.new_size.y = (TILE_SIZE * _thd.fixed_size) & ~TILE_UNIT_MASK;
+			if (_thd.select_method == VPM_LIMITED_Y_FIXED_X) _thd.new_size.x = (TILE_SIZE * _thd.fixed_size) & ~TILE_UNIT_MASK;
 		}
 	}
 
@@ -2764,6 +2772,15 @@ void VpStartDragging(ViewportDragDropSelectionProcess process)
 void VpSetPlaceSizingLimit(int limit)
 {
 	_thd.sizelimit = limit;
+}
+
+void VpSetPlaceFixedSize(uint8_t fixed)
+{
+	_thd.fixed_size = fixed;
+}
+
+void VpResetFixedSize() {
+	VpSetPlaceFixedSize(1);
 }
 
 /**
@@ -3237,7 +3254,7 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 	sx = _thd.selstart.x;
 	sy = _thd.selstart.y;
 
-	int limit = 0;
+	int limit = -1;
 
 	switch (method) {
 		case VPM_X_OR_Y: // drag in X or Y direction
@@ -3250,28 +3267,33 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 			}
 			goto calc_heightdiff_single_direction;
 
+		case VPM_LIMITED_Y_FIXED_X:
 		case VPM_X_LIMITED: // Drag in X direction (limited size).
 			limit = (_thd.sizelimit - 1) * TILE_SIZE;
 			[[fallthrough]];
 
 		case VPM_FIX_X: // drag in Y direction
-			x = sx;
+			x = sx + (method == VPM_LIMITED_Y_FIXED_X ? (TILE_SIZE * (_thd.fixed_size - 1)) : 0) ;
 			style = HT_DIR_Y;
 			goto calc_heightdiff_single_direction;
 
+		case VPM_LIMITED_X_FIXED_Y:
 		case VPM_Y_LIMITED: // Drag in Y direction (limited size).
 			limit = (_thd.sizelimit - 1) * TILE_SIZE;
 			[[fallthrough]];
 
 		case VPM_FIX_Y: // drag in X direction
-			y = sy;
+			y = sy + (method == VPM_LIMITED_X_FIXED_Y ? (TILE_SIZE * (_thd.fixed_size - 1)) : 0) ;
 			style = HT_DIR_X;
 
 calc_heightdiff_single_direction:;
-			if (limit > 0) {
-				x = sx + Clamp(x - sx, -limit, limit);
-				y = sy + Clamp(y - sy, -limit, limit);
+			if (limit >= 0) {
+				if (method != VPM_LIMITED_X_FIXED_Y) y = sy + Clamp(y - sy, -limit, limit);
+				if (method != VPM_LIMITED_Y_FIXED_X) x = sx + Clamp(x - sx, -limit, limit);
 			}
+
+			if (method == VPM_LIMITED_Y_FIXED_X || method == VPM_LIMITED_X_FIXED_Y) goto measure_area;
+
 			if (_settings_client.gui.measure_tooltip) {
 				TileIndex t0 = TileVirtXY(sx, sy);
 				TileIndex t1 = TileVirtXY(x, y);
@@ -3301,6 +3323,7 @@ calc_heightdiff_single_direction:;
 			[[fallthrough]];
 
 		case VPM_X_AND_Y: // drag an X by Y area
+measure_area:
 			if (_settings_client.gui.measure_tooltip) {
 				static const StringID measure_strings_area[] = {
 					STR_NULL, STR_NULL, STR_MEASURE_AREA, STR_MEASURE_AREA_HEIGHTDIFF
@@ -3589,6 +3612,9 @@ void MarkCatchmentTilesDirty()
 		}
 		MarkWholeScreenDirty();
 	}
+	if (_viewport_highlight_depot != INVALID_DEPOT) {
+		MarkWholeScreenDirty();
+	}
 }
 
 static void SetWindowDirtyForViewportCatchment()
@@ -3596,6 +3622,7 @@ static void SetWindowDirtyForViewportCatchment()
 	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
 	if (_viewport_highlight_waypoint != nullptr) SetWindowDirty(WC_WAYPOINT_VIEW, _viewport_highlight_waypoint->index);
 	if (_viewport_highlight_town != nullptr) SetWindowDirty(WC_TOWN_VIEW, _viewport_highlight_town->index);
+	if (_viewport_highlight_depot != INVALID_DEPOT) SetWindowDirty(WC_VEHICLE_DEPOT, _viewport_highlight_depot);
 }
 
 static void ClearViewportCatchment()
@@ -3604,6 +3631,7 @@ static void ClearViewportCatchment()
 	_viewport_highlight_station = nullptr;
 	_viewport_highlight_waypoint = nullptr;
 	_viewport_highlight_town = nullptr;
+	_viewport_highlight_depot = INVALID_DEPOT;
 }
 
 /**
@@ -3664,4 +3692,31 @@ void SetViewportCatchmentTown(const Town *t, bool sel)
 		MarkWholeScreenDirty();
 	}
 	if (_viewport_highlight_town != nullptr) SetWindowDirty(WC_TOWN_VIEW, _viewport_highlight_town->index);
+}
+
+static void MarkDepotTilesDirty()
+{
+	if (_viewport_highlight_depot != INVALID_DEPOT) {
+		MarkWholeScreenDirty();
+		return;
+	}
+}
+
+/**
+ * Select or deselect depot to highlight.
+ * @param *dep Depot in question
+ * @param sel Select or deselect given depot
+ */
+void SetViewportHighlightDepot(const DepotID dep, bool sel)
+{
+	SetWindowDirtyForViewportCatchment();
+	if (sel && _viewport_highlight_depot != dep) {
+		ClearViewportCatchment();
+		_viewport_highlight_depot = dep;
+		MarkDepotTilesDirty();
+	} else if (!sel && _viewport_highlight_depot == dep) {
+		MarkDepotTilesDirty();
+		_viewport_highlight_depot = INVALID_DEPOT;
+	}
+	if (_viewport_highlight_depot != INVALID_DEPOT) SetWindowDirty(WC_VEHICLE_DEPOT, _viewport_highlight_depot);
 }

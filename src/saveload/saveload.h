@@ -383,6 +383,13 @@ enum SaveLoadVersion : uint16_t {
 	SLV_GROUP_NUMBERS,                      ///< 336  PR#12297 Add per-company group numbers.
 	SLV_INCREASE_STATION_TYPE_FIELD_SIZE,   ///< 337  PR#12572 Increase size of StationType field in map array
 	SLV_ROAD_WAYPOINTS,                     ///< 338  PR#12572 Road waypoints
+	SLV_ADD_DEPOTS_TO_HANGARS,              ///< 339  PR#10691 Add depots to airports that have a hangar.
+
+	SLV_DEPOTID_IN_HANGAR_ORDERS,           ///< 340  PR#10691 Go to hangar orders store the DepotID instead of StationID.
+	SLV_DEPOTID_BACKUP_ORDERS,              ///< 341  PR#XXXXX Backup orders are indexed through DepotIDs.
+	SLV_ADD_MEMBERS_TO_DEPOT_STRUCT,        ///< 342  PR#XXXXX Add some members to depot struct.
+	SLV_DEPOT_SPREAD,                       ///< 343  PR#XXXXX Add a setting for max depot spread.
+	SLV_ALLOW_INCOMPATIBLE_REPLACEMENTS,    ///< 344  PR#XXXXX Allow incompatible vehicle replacements.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
@@ -598,6 +605,7 @@ enum SLRefType {
 	REF_STORAGE        =  9, ///< Load/save a reference to a persistent storage.
 	REF_LINK_GRAPH     = 10, ///< Load/save a reference to a link graph.
 	REF_LINK_GRAPH_JOB = 11, ///< Load/save a reference to a link graph job.
+	REF_DEPOT          = 12, ///< Load/save a reference to a depot.
 };
 
 /**

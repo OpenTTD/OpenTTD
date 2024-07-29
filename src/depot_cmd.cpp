@@ -48,7 +48,7 @@ CommandCost CmdRenameDepot(DoCommandFlag flags, DepotID depot_id, const std::str
 	Depot *d = Depot::GetIfValid(depot_id);
 	if (d == nullptr) return CMD_ERROR;
 
-	CommandCost ret = CheckTileOwnership(d->xy);
+	CommandCost ret = CheckOwnership(d->owner);
 	if (ret.Failed()) return ret;
 
 	bool reset = text.empty();
@@ -68,11 +68,76 @@ CommandCost CmdRenameDepot(DoCommandFlag flags, DepotID depot_id, const std::str
 
 		/* Update the orders and depot */
 		SetWindowClassesDirty(WC_VEHICLE_ORDERS);
-		SetWindowDirty(WC_VEHICLE_DEPOT, d->xy);
+		SetWindowDirty(WC_VEHICLE_DEPOT, d->index);
 
 		/* Update the depot list */
-		VehicleType vt = GetDepotVehicleType(d->xy);
-		SetWindowDirty(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_DEPOT_LIST, vt, GetTileOwner(d->xy), d->index).Pack());
+		SetWindowDirty(GetWindowClassForVehicleType(d->veh_type), VehicleListIdentifier(VL_DEPOT_LIST, d->veh_type, d->owner, d->index).Pack());
 	}
+	return CommandCost();
+}
+
+/**
+ * Look for or check depot to join to, building a new one if necessary.
+ * @param ta The area of the new depot.
+ * @param veh_type The vehicle type of the new depot.
+ * @param join_to DepotID of the depot to join to.
+ *                     If INVALID_DEPOT, look whether it is possible to join to an existing depot.
+ *                     If NEW_DEPOT, directly create a new depot.
+ * @param depot The pointer to the depot.
+ * @param adjacent Whether adjacent depots are allowed
+ * @return command cost with the error or 'okay'
+ */
+CommandCost FindJoiningDepot(TileArea ta, VehicleType veh_type, DepotID &join_to, Depot *&depot, bool adjacent, DoCommandFlag flags)
+{
+	/* Look for a joining depot if needed. */
+	if (join_to == INVALID_DEPOT) {
+		assert(depot == nullptr);
+		DepotID closest_depot = INVALID_DEPOT;
+
+		TileArea check_area(ta);
+		check_area.Expand(1);
+
+		/* Check around to see if there's any depot there. */
+		for (TileIndex tile_cur : check_area) {
+			if (IsValidTile(tile_cur) && IsDepotTile(tile_cur)) {
+				Depot *d = Depot::GetByTile(tile_cur);
+				assert(d != nullptr);
+				if (d->veh_type != veh_type) continue;
+				if (d->owner != _current_company) continue;
+
+				if (closest_depot == INVALID_DEPOT) {
+					closest_depot = d->index;
+				} else if (closest_depot != d->index) {
+					if (!adjacent) return_cmd_error(STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING_DEPOT);
+				}
+			}
+		}
+
+		if (closest_depot != INVALID_DEPOT) {
+			assert(Depot::IsValidID(closest_depot));
+			depot = Depot::Get(closest_depot);
+		}
+
+		join_to = depot == nullptr ? NEW_DEPOT : depot->index;
+	}
+
+	/* At this point, join_to is NEW_DEPOT or a valid DepotID. */
+
+	if (join_to == NEW_DEPOT) {
+		/* New depot needed. */
+		if (!Depot::CanAllocateItem()) return CMD_ERROR;
+		if (flags & DC_EXEC) {
+			depot = new Depot(ta.tile, veh_type, _current_company);
+			depot->build_date = TimerGameCalendar::date;
+		}
+	} else {
+		/* Joining depots. */
+		assert(Depot::IsValidID(join_to));
+		depot = Depot::Get(join_to);
+		assert(depot->owner == _current_company);
+		assert(depot->veh_type == veh_type);
+		return depot->BeforeAddTiles(ta);
+	}
+
 	return CommandCost();
 }

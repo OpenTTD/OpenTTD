@@ -43,6 +43,7 @@
 #include "picker_gui.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "depot_func.h"
 
 #include "widgets/road_widget.h"
 
@@ -170,13 +171,17 @@ void ConnectRoadToStructure(TileIndex tile, DiagDirection direction)
 	}
 }
 
-void CcRoadDepot(Commands, const CommandCost &result, TileIndex tile, RoadType, DiagDirection dir)
+void CcRoadDepot(Commands, const CommandCost &result, TileIndex start_tile, RoadType, DiagDirection dir, bool, DepotID, TileIndex end_tile)
 {
 	if (result.Failed()) return;
 
-	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, start_tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-	ConnectRoadToStructure(tile, dir);
+
+	TileArea ta(start_tile, end_tile);
+	for (TileIndex tile : ta) {
+		ConnectRoadToStructure(tile, dir);
+	}
 }
 
 /**
@@ -368,6 +373,7 @@ struct BuildRoadToolbarWindow : Window {
 	{
 		if (_game_mode == GM_NORMAL && (this->IsWidgetLowered(WID_ROT_BUS_STATION) || this->IsWidgetLowered(WID_ROT_TRUCK_STATION))) SetViewportCatchmentStation(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
+		if (_game_mode == GM_NORMAL && this->IsWidgetLowered(WID_ROT_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
 		this->Window::Close();
 	}
 
@@ -636,8 +642,10 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case WID_ROT_DEPOT:
-				Command<CMD_BUILD_ROAD_DEPOT>::Post(this->rti->strings.err_depot, CcRoadDepot,
-						tile, _cur_roadtype, _road_depot_orientation);
+				CloseWindowById(WC_SELECT_DEPOT, VEH_ROAD);
+
+				VpSetPlaceSizingLimit(_settings_game.depot.depot_spread);
+				VpStartPlaceSizing(tile, (DiagDirToAxis(_road_depot_orientation) == 0) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_DEPOT);
 				break;
 
 			case WID_ROT_BUILD_WAYPOINT:
@@ -673,6 +681,8 @@ struct BuildRoadToolbarWindow : Window {
 	{
 		if (_game_mode != GM_EDITOR && (this->IsWidgetLowered(WID_ROT_BUS_STATION) || this->IsWidgetLowered(WID_ROT_TRUCK_STATION))) SetViewportCatchmentStation(nullptr, true);
 
+		if (_game_mode == GM_NORMAL && this->IsWidgetLowered(WID_ROT_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
+
 		this->RaiseButtons();
 		this->SetWidgetDisabledState(WID_ROT_REMOVE, true);
 		this->SetWidgetDirty(WID_ROT_REMOVE);
@@ -687,6 +697,7 @@ struct BuildRoadToolbarWindow : Window {
 		CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_ROAD);
 		CloseWindowById(WC_BUILD_WAYPOINT, TRANSPORT_ROAD);
 		CloseWindowById(WC_SELECT_STATION, 0);
+		CloseWindowById(WC_SELECT_DEPOT, VEH_ROAD);
 		CloseWindowByClass(WC_BUILD_BRIDGE);
 	}
 
@@ -804,6 +815,18 @@ struct BuildRoadToolbarWindow : Window {
 						}
 					}
 					break;
+
+				case DDSP_BUILD_DEPOT: {
+					bool adjacent = _ctrl_pressed;
+					StringID error_string = this->rti->strings.err_depot;
+
+					auto proc = [=](DepotID join_to) -> bool {
+						return Command<CMD_BUILD_ROAD_DEPOT>::Post(error_string, CcRoadDepot, start_tile, _cur_roadtype, _road_depot_orientation, adjacent, join_to, end_tile);
+					};
+
+					ShowSelectDepotIfNeeded(TileArea(start_tile, end_tile), proc, VEH_ROAD);
+					break;
+				}
 
 				case DDSP_CONVERT_ROAD:
 					Command<CMD_CONVERT_ROAD>::Post(rti->strings.err_convert_road, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile, _cur_roadtype);
@@ -1106,6 +1129,12 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 		this->FinishInitNested(TRANSPORT_ROAD);
 	}
 
+	void Close([[maybe_unused]] int data = 0) override
+	{
+		CloseWindowById(WC_SELECT_DEPOT, VEH_ROAD);
+		this->PickerWindowBase::Close();
+	}
+
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (!IsInsideMM(widget, WID_BROD_DEPOT_NE, WID_BROD_DEPOT_NW + 1)) return;
@@ -1135,6 +1164,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 			case WID_BROD_DEPOT_NE:
 			case WID_BROD_DEPOT_SW:
 			case WID_BROD_DEPOT_SE:
+				CloseWindowById(WC_SELECT_DEPOT, VEH_ROAD);
 				this->RaiseWidget(WID_BROD_DEPOT_NE + _road_depot_orientation);
 				_road_depot_orientation = (DiagDirection)(widget - WID_BROD_DEPOT_NE);
 				this->LowerWidget(WID_BROD_DEPOT_NE + _road_depot_orientation);
@@ -1145,6 +1175,11 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 			default:
 				break;
 		}
+	}
+
+	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
+	{
+		CheckRedrawDepotHighlight(this, VEH_ROAD);
 	}
 };
 

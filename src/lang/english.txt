@@ -278,6 +278,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Select f
 STR_BUTTON_SORT_BY                                              :{BLACK}Sort by
 STR_BUTTON_CATCHMENT                                            :{BLACK}Coverage
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Toggle coverage area display
+STR_BUTTON_HIGHLIGHT_DEPOT                                      :{BLACK}Highlight
+STR_TOOLTIP_HIGHLIGHT_DEPOT                                     :{BLACK}Toggle highlight on viewport for this depot
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Close window
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Window title - drag this to move window
@@ -1462,6 +1464,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Allow construct
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Allow drive-through road stops on roads owned by competitors: {STRING2}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Allow construction of drive-through road stops on roads owned by other companies
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing this setting is not possible when there are vehicles
+STR_CONFIG_SETTING_REPLACEMENTS_DIFF_TYPE                       :{WHITE}Disabling this setting is not possible during a game
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastructure maintenance: {STRING2}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :When enabled, infrastructure causes maintenance costs. The cost grows over-proportional with the network size, thus affecting bigger companies more than smaller ones
@@ -1614,6 +1617,15 @@ STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :The height leve
 ###length 2
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
+
+STR_CONFIG_SETTING_DISTANT_JOIN_DEPOTS                          :Allow to join depot parts not directly adjacent: {STRING2}
+STR_CONFIG_SETTING_DISTANT_JOIN_DEPOTS_HELPTEXT                 :Allow adding parts to a depot without directly touching the existing parts. Needs Ctrl+Click while placing the new parts
+STR_CONFIG_SETTING_DEPOT_SPREAD                                 :Maximum depot spread: {STRING2}
+STR_CONFIG_SETTING_DEPOT_SPREAD_HELPTEXT                        :Maximum area the parts of a single depot may be spread out on
+STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_RAIL                    :Allow replacing rail vehicles with incompatible rail types: {STRING2}
+STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_RAIL_HELPTEXT           :Allow replacing rail vehicles even if they are not compatible by rail type
+STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_ROAD                    :Allow replacing road vehicles with incompatible road types: {STRING2}
+STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_ROAD_HELPTEXT           :Allow replacing road vehicles even if they are not compatible by road type
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Maximum station spread: {STRING2}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maximum area the parts of a single station may be spread out on. Note that high values will slow the game
@@ -2137,6 +2149,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :Trees
 STR_CONFIG_SETTING_AI                                           :Competitors
 STR_CONFIG_SETTING_AI_NPC                                       :Computer players
 STR_CONFIG_SETTING_NETWORK                                      :Network
+STR_CONFIG_SETTING_DEPOTS                                       :Depots
 
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatic reversing at signals: {STRING2}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Allow trains to reverse on a signal, if they waited there a long time
@@ -2762,6 +2775,11 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Build a
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Join waypoint
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Build a separate waypoint
+
+# Join depot window
+STR_JOIN_DEPOT_CAPTION                                          :{WHITE}Join depot
+STR_JOIN_DEPOT_CREATE_SPLITTED_DEPOT                            :{YELLOW}Build a separate depot
+STR_DEPOT_LIST_DEPOT                                            :{YELLOW}{DEPOT}
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Disabled as currently no vehicles are available for this infrastructure
@@ -5110,10 +5128,12 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... buoy
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Can't build train depot here...
+STR_ERROR_CAN_T_REMOVE_TRAIN_DEPOT                              :{WHITE}Can't remove train depot here...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Can't build road vehicle depot here...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Can't build tram vehicle depot here...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Can't build ship depot here...
 
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING_DEPOT                  :{WHITE}... adjoins more than one existing depot
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Can't rename depot...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... must be stopped inside a depot
@@ -5123,6 +5143,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... must
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trains can only be altered when stopped inside a depot
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Train too long
+STR_ERROR_INCOMPATIBLE_RAILTYPES_WITH_DEPOT                     :{WHITE}Train chain is incompatible with any tile of this depot
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Can't reverse direction of vehicle...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... consists of multiple units
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Incompatible rail types
@@ -5131,7 +5152,9 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Can't mo
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}The rear engine will always follow its front counterpart
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Unable to find route to local depot
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Unable to find local depot
+STR_ERROR_UNABLE_TO_FIND_APPROPRIATE_DEPOT_TILE                 :{WHITE}Unable to find appropriate depot tile
 
+STR_ERROR_DEPOT_TOO_SPREAD_OUT                                  :{WHITE}... depot too spread out
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Wrong depot type
 
 # Depot unbunching related errors

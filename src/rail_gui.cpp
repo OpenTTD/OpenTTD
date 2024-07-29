@@ -41,6 +41,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "picker_gui.h"
+#include "depot_func.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -116,7 +117,7 @@ static void GenericPlaceRail(TileIndex tile, Track track)
  */
 static void PlaceExtraDepotRail(TileIndex tile, DiagDirection dir, Track track)
 {
-	if (GetRailTileType(tile) == RAIL_TILE_DEPOT) return;
+	if (IsRailDepot(tile)) return;
 	if (GetRailTileType(tile) == RAIL_TILE_SIGNALS && !_settings_client.gui.auto_remove_signals) return;
 	if ((GetTrackBits(tile) & DiagdirReachesTracks(dir)) == 0) return;
 
@@ -137,24 +138,26 @@ static const DiagDirection _place_depot_extra_dir[12] = {
 	DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_NW, DIAGDIR_NE,
 };
 
-void CcRailDepot(Commands, const CommandCost &result, TileIndex tile, RailType, DiagDirection dir)
+void CcRailDepot(Commands, const CommandCost &result, TileIndex start_tile, RailType, DiagDirection dir, bool, DepotID, TileIndex end_tile)
 {
 	if (result.Failed()) return;
 
-	if (_settings_client.sound.confirm) SndPlayTileFx(SND_20_CONSTRUCTION_RAIL, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_20_CONSTRUCTION_RAIL, start_tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 
-	tile += TileOffsByDiagDir(dir);
+	TileArea ta(start_tile, end_tile);
+	for (TileIndex t : ta) {
+		TileIndex tile = t + TileOffsByDiagDir(dir);
 
-	if (IsTileType(tile, MP_RAILWAY)) {
-		PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir], _place_depot_extra_track[dir]);
+		if (IsTileType(tile, MP_RAILWAY)) {
+			PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir], _place_depot_extra_track[dir]);
 
-		/* Don't place the rail straight out of the depot of there is another depot across from it. */
-		Tile double_depot_tile = tile + TileOffsByDiagDir(dir);
-		bool is_double_depot = IsValidTile(double_depot_tile) && IsRailDepotTile(double_depot_tile);
-		if (!is_double_depot) PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir + 4], _place_depot_extra_track[dir + 4]);
+			Tile double_depot_tile = tile + TileOffsByDiagDir(dir);
+			bool is_double_depot = IsValidTile(double_depot_tile) && IsRailDepotTile(double_depot_tile);
+			if (!is_double_depot) PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir + 4], _place_depot_extra_track[dir + 4]);
 
-		PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir + 8], _place_depot_extra_track[dir + 8]);
+			PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir + 8], _place_depot_extra_track[dir + 8]);
+		}
 	}
 }
 
@@ -317,6 +320,7 @@ void CcBuildRailTunnel(Commands, const CommandCost &result, TileIndex tile)
 static void ToggleRailButton_Remove(Window *w)
 {
 	CloseWindowById(WC_SELECT_STATION, 0);
+	CloseWindowById(WC_SELECT_DEPOT, VEH_TRAIN);
 	w->ToggleWidgetLoweredState(WID_RAT_REMOVE);
 	w->SetWidgetDirty(WID_RAT_REMOVE);
 	_remove_button_clicked = w->IsWidgetLowered(WID_RAT_REMOVE);
@@ -333,8 +337,9 @@ static bool RailToolbar_CtrlChanged(Window *w)
 	if (w->IsWidgetDisabled(WID_RAT_REMOVE)) return false;
 
 	/* allow ctrl to switch remove mode only for these widgets */
+
 	for (WidgetID i = WID_RAT_BUILD_NS; i <= WID_RAT_BUILD_STATION; i++) {
-		if ((i <= WID_RAT_AUTORAIL || i >= WID_RAT_BUILD_WAYPOINT) && w->IsWidgetLowered(i)) {
+		if ((i <= WID_RAT_AUTORAIL || i >= WID_RAT_BUILD_DEPOT) && w->IsWidgetLowered(i)) {
 			ToggleRailButton_Remove(w);
 			return true;
 		}
@@ -454,6 +459,7 @@ struct BuildRailToolbarWindow : Window {
 		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) SetViewportCatchmentWaypoint(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
 		CloseWindowById(WC_SELECT_STATION, 0);
+		if (this->IsWidgetLowered(WID_RAT_BUILD_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
 		this->Window::Close();
 	}
 
@@ -533,6 +539,7 @@ struct BuildRailToolbarWindow : Window {
 			case WID_RAT_BUILD_EW:
 			case WID_RAT_BUILD_Y:
 			case WID_RAT_AUTORAIL:
+			case WID_RAT_BUILD_DEPOT:
 			case WID_RAT_BUILD_WAYPOINT:
 			case WID_RAT_BUILD_STATION:
 			case WID_RAT_BUILD_SIGNALS:
@@ -688,9 +695,14 @@ struct BuildRailToolbarWindow : Window {
 				PlaceProc_DemolishArea(tile);
 				break;
 
-			case WID_RAT_BUILD_DEPOT:
-				Command<CMD_BUILD_TRAIN_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT, CcRailDepot, tile, _cur_railtype, _build_depot_direction);
+			case WID_RAT_BUILD_DEPOT: {
+				CloseWindowById(WC_SELECT_DEPOT, VEH_TRAIN);
+
+				ViewportPlaceMethod vpm = (DiagDirToAxis(_build_depot_direction) == 0) ? VPM_X_LIMITED : VPM_Y_LIMITED;
+				VpStartPlaceSizing(tile, vpm, _remove_button_clicked ? DDSP_REMOVE_DEPOT : DDSP_BUILD_DEPOT);
+				VpSetPlaceSizingLimit(_settings_game.depot.depot_spread);
 				break;
+			}
 
 			case WID_RAT_BUILD_WAYPOINT:
 				PlaceRail_Waypoint(tile);
@@ -786,6 +798,20 @@ struct BuildRailToolbarWindow : Window {
 						}
 					}
 					break;
+
+				case DDSP_BUILD_DEPOT:
+					if (_remove_button_clicked) {
+						Command<CMD_REMOVE_TRAIN_DEPOT>::Post(STR_ERROR_CAN_T_REMOVE_TRAIN_DEPOT, CcPlaySound_CONSTRUCTION_RAIL, start_tile, end_tile);
+					} else {
+						bool adjacent = _ctrl_pressed;
+
+						auto proc = [=](DepotID join_to) -> bool {
+								return Command<CMD_BUILD_TRAIN_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT, CcRailDepot, start_tile, _cur_railtype, _build_depot_direction, adjacent, join_to, end_tile);
+						};
+
+						ShowSelectDepotIfNeeded(TileArea(start_tile, end_tile), proc, VEH_TRAIN);
+					}
+					break;
 			}
 		}
 	}
@@ -794,6 +820,8 @@ struct BuildRailToolbarWindow : Window {
 	{
 		if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) SetViewportCatchmentStation(nullptr, true);
 		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) SetViewportCatchmentWaypoint(nullptr, true);
+
+		if (this->IsWidgetLowered(WID_RAT_BUILD_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
 
 		this->RaiseButtons();
 		this->DisableWidget(WID_RAT_REMOVE);
@@ -804,6 +832,7 @@ struct BuildRailToolbarWindow : Window {
 		CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_RAIL);
 		CloseWindowById(WC_BUILD_WAYPOINT, TRANSPORT_RAIL);
 		CloseWindowById(WC_SELECT_STATION, 0);
+		CloseWindowById(WC_SELECT_DEPOT, VEH_TRAIN);
 		CloseWindowByClass(WC_BUILD_BRIDGE);
 	}
 
@@ -815,8 +844,11 @@ struct BuildRailToolbarWindow : Window {
 
 	EventState OnCTRLStateChange() override
 	{
-		/* do not toggle Remove button by Ctrl when placing station */
-		if (!this->IsWidgetLowered(WID_RAT_BUILD_STATION) && !this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT) && RailToolbar_CtrlChanged(this)) return ES_HANDLED;
+		/* do not toggle Remove button by Ctrl when placing station or depot */
+		if (!this->IsWidgetLowered(WID_RAT_BUILD_STATION) &&
+			!this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT) &&
+			!this->IsWidgetLowered(WID_RAT_BUILD_DEPOT) &&
+			RailToolbar_CtrlChanged(this)) return ES_HANDLED;
 		return ES_NOT_HANDLED;
 	}
 
@@ -1705,6 +1737,12 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 		this->LowerWidget(WID_BRAD_DEPOT_NE + _build_depot_direction);
 	}
 
+	void Close([[maybe_unused]] int data = 0) override
+	{
+		CloseWindowById(WC_SELECT_DEPOT, VEH_TRAIN);
+		this->PickerWindowBase::Close();
+	}
+
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (!IsInsideMM(widget, WID_BRAD_DEPOT_NE, WID_BRAD_DEPOT_NW + 1)) return;
@@ -1734,6 +1772,7 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 			case WID_BRAD_DEPOT_SE:
 			case WID_BRAD_DEPOT_SW:
 			case WID_BRAD_DEPOT_NW:
+				CloseWindowById(WC_SELECT_DEPOT, VEH_TRAIN);
 				this->RaiseWidget(WID_BRAD_DEPOT_NE + _build_depot_direction);
 				_build_depot_direction = (DiagDirection)(widget - WID_BRAD_DEPOT_NE);
 				this->LowerWidget(WID_BRAD_DEPOT_NE + _build_depot_direction);
@@ -1741,6 +1780,11 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 				this->SetDirty();
 				break;
 		}
+	}
+
+	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
+	{
+		CheckRedrawDepotHighlight(this, VEH_TRAIN);
 	}
 };
 

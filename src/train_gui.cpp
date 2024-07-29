@@ -15,6 +15,7 @@
 #include "vehicle_func.h"
 #include "zoom_func.h"
 #include "train_cmd.h"
+#include "depot_map.h"
 
 #include "table/strings.h"
 
@@ -29,11 +30,12 @@
 void CcBuildWagon(Commands, const CommandCost &result, VehicleID new_veh_id, uint, uint16_t, CargoArray, TileIndex tile, EngineID, bool, CargoID, ClientID)
 {
 	if (result.Failed()) return;
+	DepotID depot_id = GetDepotIndex(tile);
 
 	/* find a locomotive in the depot. */
 	const Vehicle *found = nullptr;
 	for (const Train *t : Train::Iterate()) {
-		if (t->IsFrontEngine() && t->tile == tile && t->IsStoppedInDepot()) {
+		if (t->IsFrontEngine() && t->IsStoppedInDepot() && GetDepotIndex(t->tile) == depot_id) {
 			if (found != nullptr) return; // must be exactly one.
 			found = t;
 		}
