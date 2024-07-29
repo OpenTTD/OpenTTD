@@ -296,7 +296,7 @@ struct NewsWindow : Window {
 		this->CreateNestedTree();
 
 		/* For company news with a face we have a separate headline in param[0] */
-		if (&desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = this->ni->params[0].data;
+		if (&desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = std::get<uint64_t>(this->ni->params[0]);
 
 		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP);
 		if (ni->reftype1 == NR_VEHICLE && nwid != nullptr) {
@@ -603,7 +603,7 @@ private:
 	{
 		/* Company news with a face have a separate headline, so the normal message is shifted by two params */
 		CopyInDParam(std::span(this->ni->params.data() + 2, this->ni->params.size() - 2));
-		return this->ni->params[1].data;
+		return std::get<uint64_t>(this->ni->params[1]);
 	}
 
 	StringID GetNewVehicleMessageString(WidgetID widget) const
@@ -986,7 +986,7 @@ void ChangeVehicleNews(VehicleID from_index, VehicleID to_index)
 	for (auto &ni : _news) {
 		if (ni.reftype1 == NR_VEHICLE && ni.ref1 == from_index) ni.ref1 = to_index;
 		if (ni.reftype2 == NR_VEHICLE && ni.ref2 == from_index) ni.ref2 = to_index;
-		if (ni.flags & NF_VEHICLE_PARAM0 && ni.params[0].data == from_index) ni.params[0] = to_index;
+		if (ni.flags & NF_VEHICLE_PARAM0 && std::get<uint64_t>(ni.params[0]) == from_index) ni.params[0] = to_index;
 	}
 }
 

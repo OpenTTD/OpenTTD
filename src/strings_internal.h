@@ -15,8 +15,7 @@
 
 /** The data required to format and validate a single parameter of a string. */
 struct StringParameter {
-	uint64_t data; ///< The data of the parameter.
-	std::unique_ptr<std::string> string; ///< Copied string value, if it has any.
+	StringParameterData data; ///< The data of the parameter.
 	char32_t type; ///< The #StringControlCode to interpret this data with when it's the first parameter, otherwise '\0'.
 };
 
@@ -93,7 +92,9 @@ public:
 	T GetNextParameter()
 	{
 		const auto &param = GetNextParameterReference();
-		return static_cast<T>(param.data);
+		const uint64_t *data = std::get_if<uint64_t>(&param.data);
+		if (data != nullptr) return static_cast<T>(*data);
+		return T{};
 	}
 
 	/**
@@ -105,7 +106,9 @@ public:
 	const char *GetNextParameterString()
 	{
 		const auto &param = GetNextParameterReference();
-		return param.string != nullptr ? param.string->c_str() : nullptr;
+		const std::string *data = std::get_if<std::string>(&param.data);
+		if (data != nullptr) return data->c_str();
+		return nullptr;
 	}
 
 	/**
@@ -146,11 +149,16 @@ public:
 		return this->parameters[offset].type;
 	}
 
+	void SetParam(size_t n, const StringParameterData &v)
+	{
+		assert(n < this->parameters.size());
+		this->parameters[n].data = v;
+	}
+
 	void SetParam(size_t n, uint64_t v)
 	{
 		assert(n < this->parameters.size());
 		this->parameters[n].data = v;
-		this->parameters[n].string.reset();
 	}
 
 	template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
@@ -162,8 +170,7 @@ public:
 	void SetParam(size_t n, const char *str)
 	{
 		assert(n < this->parameters.size());
-		this->parameters[n].data = 0;
-		this->parameters[n].string = std::make_unique<std::string>(str);
+		this->parameters[n].data = str;
 	}
 
 	void SetParam(size_t n, const std::string &str) { this->SetParam(n, str.c_str()); }
@@ -171,27 +178,13 @@ public:
 	void SetParam(size_t n, std::string &&str)
 	{
 		assert(n < this->parameters.size());
-		this->parameters[n].data = 0;
-		this->parameters[n].string = std::make_unique<std::string>(std::move(str));
+		this->parameters[n].data = std::move(str);
 	}
 
-	uint64_t GetParam(size_t n) const
+	const StringParameterData &GetParam(size_t n) const
 	{
 		assert(n < this->parameters.size());
-		assert(this->parameters[n].string == nullptr);
 		return this->parameters[n].data;
-	}
-
-	/**
-	 * Get the stored string of the parameter, or \c nullptr when there is none.
-	 * @param n The index into the parameters.
-	 * @return The stored string.
-	 */
-	const char *GetParamStr(size_t n) const
-	{
-		assert(n < this->parameters.size());
-		auto &param = this->parameters[n];
-		return param.string != nullptr ? param.string->c_str() : nullptr;
 	}
 };
 
