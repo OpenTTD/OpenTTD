@@ -385,6 +385,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ROAD_WAYPOINTS,                     ///< 338  PR#12572 Road waypoints
 	SLV_COMPANY_INAUGURATED_PERIOD,         ///< 339  PR#12798 Companies show the period inaugurated in wallclock mode.
 
+	SLV_ROAD_STOP_TILE_DATA,                ///< 340  PR#12883 Move storage of road stop tile data, also save for road waypoints.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 
