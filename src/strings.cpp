@@ -76,9 +76,9 @@ void StringParameters::PrepareForNextRun()
  * Get the next parameter from our parameters.
  * This updates the offset, so the next time this is called the next parameter
  * will be read.
- * @return The pointer to the next parameter.
+ * @return The next parameter.
  */
-StringParameter *StringParameters::GetNextParameterPointer()
+const StringParameter &StringParameters::GetNextParameterReference()
 {
 	assert(this->next_type == 0 || (SCC_CONTROL_START <= this->next_type && this->next_type <= SCC_CONTROL_END));
 	if (this->offset >= this->parameters.size()) {
@@ -92,7 +92,7 @@ StringParameter *StringParameters::GetNextParameterPointer()
 	}
 	param.type = this->next_type;
 	this->next_type = 0;
-	return &param;
+	return param;
 }
 
 
