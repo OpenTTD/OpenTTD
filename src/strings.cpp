@@ -191,7 +191,7 @@ void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num)
  * @param backup The backup to check against.
  * @return True when the parameters have changed, otherwise false.
  */
-bool HaveDParamChanged(const std::vector<StringParameterBackup> &backup)
+bool HaveDParamChanged(const std::span<const StringParameterBackup> backup)
 {
 	bool changed = false;
 	for (size_t i = 0; !changed && i < backup.size(); i++) {
