@@ -53,7 +53,7 @@ STR_CARGO_PLURAL_TOYS                                           :Играчки
 STR_CARGO_PLURAL_SWEETS                                         :Сладки
 STR_CARGO_PLURAL_COLA                                           :Кола
 STR_CARGO_PLURAL_CANDYFLOSS                                     :Захарен памук
-STR_CARGO_PLURAL_BUBBLES                                        :Балони
+STR_CARGO_PLURAL_BUBBLES                                        :Балончета
 STR_CARGO_PLURAL_TOFFEE                                         :Карамел
 STR_CARGO_PLURAL_BATTERIES                                      :Батерии
 STR_CARGO_PLURAL_PLASTIC                                        :Пластмаса
@@ -87,7 +87,7 @@ STR_CARGO_SINGULAR_TOY                                          :Играчки
 STR_CARGO_SINGULAR_SWEETS                                       :Сладки
 STR_CARGO_SINGULAR_COLA                                         :Кола
 STR_CARGO_SINGULAR_CANDYFLOSS                                   :Захарен памук
-STR_CARGO_SINGULAR_BUBBLE                                       :Балони
+STR_CARGO_SINGULAR_BUBBLE                                       :Балончета
 STR_CARGO_SINGULAR_TOFFEE                                       :Карамел
 STR_CARGO_SINGULAR_BATTERY                                      :Батерии
 STR_CARGO_SINGULAR_PLASTIC                                      :Пластмаса
@@ -105,11 +105,11 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} �
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} дърва
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} желязна руда
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} стомана
-STR_QUANTITY_VALUABLES                                          :{COMMA} чант{P а и} скъпоценности
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}торб{P а и} със скъпоценности
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} медна руда
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} царевица
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} плодове
-STR_QUANTITY_DIAMONDS                                           :{COMMA} чант{P а и} диаманти
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}торб{P а и} с диаманти
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} храна
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} хартия
 STR_QUANTITY_GOLD                                               :{COMMA} торб{P а и} със злато
@@ -121,7 +121,7 @@ STR_QUANTITY_TOYS                                               :{COMMA} игр�
 STR_QUANTITY_SWEETS                                             :{COMMA} торб{P а и} със сладки
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} кока-кола
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} захарен памук
-STR_QUANTITY_BUBBLES                                            :{COMMA} мехурче{P "" та}
+STR_QUANTITY_BUBBLES                                            :{COMMA} балонче{P "" та}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} карамел
 STR_QUANTITY_BATTERIES                                          :{COMMA} батери{P я ии}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} пластмаса
@@ -149,7 +149,7 @@ STR_ABBREV_FOOD                                                 :ХР
 STR_ABBREV_PAPER                                                :ХТ
 STR_ABBREV_GOLD                                                 :ЗЛ
 STR_ABBREV_WATER                                                :ВД
-STR_ABBREV_WHEAT                                                :ЗР
+STR_ABBREV_WHEAT                                                :ПШ
 STR_ABBREV_RUBBER                                               :КЧ
 STR_ABBREV_SUGAR                                                :ЗХ
 STR_ABBREV_TOYS                                                 :ИЧ
@@ -164,12 +164,12 @@ STR_ABBREV_FIZZY_DRINKS                                         :ГН
 STR_ABBREV_ALL                                                  :ВЧ
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} пътни{P к ци}
-STR_BAGS                                                        :{COMMA} торби
-STR_TONS                                                        :{COMMA} тона
-STR_LITERS                                                      :{COMMA} литри
-STR_ITEMS                                                       :{COMMA} елемента
-STR_CRATES                                                      :{COMMA} кашони
+STR_PASSENGERS                                                  :{COMMA}{NBSP}пътни{P к ци}
+STR_BAGS                                                        :{COMMA}{NBSP}торб{P а и}
+STR_TONS                                                        :{COMMA}{NBSP}тон{P "" а}
+STR_LITERS                                                      :{COMMA}{NBSP}лит{P ър ра}
+STR_ITEMS                                                       :{COMMA}{NBSP}бро{P й я}
+STR_CRATES                                                      :{COMMA}{NBSP}кашон{P "" а}
 
 STR_COLOUR_DEFAULT                                              :По подразбиране
 ###length 17
@@ -183,8 +183,8 @@ STR_COLOUR_GREEN                                                :Зелено
 STR_COLOUR_DARK_GREEN                                           :Тъмно зелено
 STR_COLOUR_BLUE                                                 :Синьо
 STR_COLOUR_CREAM                                                :Кремаво
-STR_COLOUR_MAUVE                                                :Бледомораво
-STR_COLOUR_PURPLE                                               :Пурпурно
+STR_COLOUR_MAUVE                                                :Бледолилаво
+STR_COLOUR_PURPLE                                               :Лилаво
 STR_COLOUR_ORANGE                                               :Оранжево
 STR_COLOUR_BROWN                                                :Кафяво
 STR_COLOUR_GREY                                                 :Сиво
@@ -202,8 +202,8 @@ STR_COLOUR_SECONDARY_GREEN                                      :Зелено
 STR_COLOUR_SECONDARY_DARK_GREEN                                 :Тъмно зелено
 STR_COLOUR_SECONDARY_BLUE                                       :Синьо
 STR_COLOUR_SECONDARY_CREAM                                      :Кремаво
-STR_COLOUR_SECONDARY_MAUVE                                      :Мораво
-STR_COLOUR_SECONDARY_PURPLE                                     :Пурпурно
+STR_COLOUR_SECONDARY_MAUVE                                      :Бледолилаво
+STR_COLOUR_SECONDARY_PURPLE                                     :Лилаво
 STR_COLOUR_SECONDARY_ORANGE                                     :Оранжево
 STR_COLOUR_SECONDARY_BROWN                                      :Кафяво
 STR_COLOUR_SECONDARY_GREY                                       :Сиво
@@ -212,29 +212,29 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Същото к
 
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} мил{P я и}/ч
-STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} км/ч
-STR_UNITS_VELOCITY_SI                                           :{DECIMAL} м/с
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}мил{P я и}/ч
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}км/ч
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}м/с
 
-STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL} к.с.
-STR_UNITS_POWER_METRIC                                          :{DECIMAL} к.с.
-STR_UNITS_POWER_SI                                              :{DECIMAL} kW
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}к.с.
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}к.с.
+STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}кВт
 
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}т
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL} т.
-STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL} кг.
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}т
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}{NBSP}т
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}{NBSP}кг
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL} тон{P "" а}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL} тон{P "" а}
-STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} кг
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}тон{P "" а}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP}тон{P "" а}
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}{NBSP}кг
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}гал
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL} л.
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}гал
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}{NBSP}л
 STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}{NBSP}м³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}галон{P "" и}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}лит{P ър ри}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}лит{P ър ра}
 STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}{NBSP}куб. м.
 
 STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL}{NBSP}lbf
@@ -250,7 +250,7 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}
 
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}Филтриращ низ:
+STR_LIST_FILTER_TITLE                                           :{BLACK}Филтър:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Въведете филтър
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Въведете ключова дума за филтър на списъка
 
@@ -264,11 +264,11 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Затв
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заглавие на прозорец - преместване на прозореца с мишката
 STR_TOOLTIP_SHADE                                               :{BLACK}Прибиране на прозореца - показва само заглавната лента
 STR_TOOLTIP_DEBUG                                               :{BLACK}Покажи debug информация за новите графики (NewGRF)
-STR_TOOLTIP_STICKY                                              :{BLACK}Маркиране прозореца като незатворяем от клавиша 'Затваряне всички прозороци'
+STR_TOOLTIP_STICKY                                              :{BLACK}Маркиране на прозореца като незатворяем от клавиша 'Затваряне на всички прозороци'. Ctrl+Click за запазване по подразбиране
 STR_TOOLTIP_RESIZE                                              :{BLACK}Преместете за оразмеряване прозореца
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Активирай голям/малък размер на прозореца
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Лента за позициониране - превърта списъка нагоре/надолу
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Превъртаща ивица - превърта списъка на ляво/дясно
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Превъртаща лента - превърта списъка нагоре/надолу
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Превъртаща лента - превърта списъка наляво/надясно
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Разруши постройки и др. върху квадрат от картата. Ctrl маркира по диагонал. Shift показва евентуалната цена на разрушението.
 
 # Show engines button
@@ -313,7 +313,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Чиста пе
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Чиста печалба тази година
 STR_SORT_BY_AGE                                                 :Възраст
 STR_SORT_BY_RELIABILITY                                         :Надеждност
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Обща вместимост по вида на товара
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Обща вместимост според вида на товара
 STR_SORT_BY_MAX_SPEED                                           :Максимална скорост
 STR_SORT_BY_MODEL                                               :Модел
 STR_SORT_BY_VALUE                                               :Цена
@@ -323,8 +323,8 @@ STR_SORT_BY_TIMETABLE_DELAY                                     :Закъсне�
 STR_SORT_BY_FACILITY                                            :Вид на гарата
 STR_SORT_BY_WAITING_TOTAL                                       :Целия чакащ товар
 STR_SORT_BY_WAITING_AVAILABLE                                   :Наличен чакащ товар
-STR_SORT_BY_RATING_MAX                                          :Най-голяма оценка на товари
-STR_SORT_BY_RATING_MIN                                          :Най-ниска оценка на товари
+STR_SORT_BY_RATING_MAX                                          :Товар с най-висок рейтинг
+STR_SORT_BY_RATING_MIN                                          :Товар с най-нисък рейтинг
 STR_SORT_BY_ENGINE_ID                                           :Двигател № (класическо сортиране)
 STR_SORT_BY_COST                                                :Цена
 STR_SORT_BY_POWER                                               :Мощност
@@ -347,30 +347,30 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауз
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Бързо превъртане на играта
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Настройки
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Запазване, прекъсване на играта, изход
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Покажи картата
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Покажи списъка с градове
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Покажи субсидиите
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Списък със станциите на компанията
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Показване на финансова информация за компанията
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Покажи обща информация за компанията
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Покази списък с целите
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Покажи графиките
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Покажи класирането на компаниите
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Инвестирай в нова индустрия
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Покажи списъка с влакове на компанията. Ctrl-click превключва между списъците с групи/превозни средства
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Покажи списъка с камиони/автобуси на компанията
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Покажи списъка с кораби на компанията. Ctrl+Click показва списък с корабите.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Покажи списъка със самолети на компанията. Ctrl+Click показва списъка със самолетите.
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Отвори карта, допълнителна камера, поток на товарите, или списък със знаци
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Отвори списък с градовете
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Отвори списък със субсидии
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Отвори списък със станциите на компанията
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Отвори финансова информация за компанията
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Отвори обща информация за компанията
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Отвори списък с целите
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Отвори графики на компанията и тарифи за доставка на стоки
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Отвори класиране на компаниите
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Отвори списък на индустриите, индустриални вериги, или инвестирай в нова индустрия
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Отвори списък с влаковете на компанията. Ctrl+Click показва/скрива групите с превозни средства
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Отвори списък с МПС-тата на компанията. Ctrl+Click показва/скрива групите с превозни средства
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Отвори списък с корабите на компанията. Ctrl+Click показва/скрива групите с превозни средства
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Отвори списък със самолетите на компанията. Ctrl+Click показва/скрива групите с превозни средства
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Увеличи мащаба
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Намаляване на мащаба
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Построй ЖП линии
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Построй пътища
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Построй пристанище
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Намали мащаба
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Построй железопътна инфраструктура
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Построй шосейна инфраструктура
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Построй пристанищна инфраструктура
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Построй летища
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Отворете лентата с инструменти за тераформиране за да повишавате/понижавате земя, засаждате дърва, и др.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Покажи прозореца за звук/музика
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Покажи последното съобщение/новини, покажи настройките на съобщенията
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация за земята, конзолата, ИИ дебъг, екранни снимки, за OpenTTD
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Отвори менюто за тераформиране, за засаждане на дървета, или за поставяне на знак
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Отвори прозореца за звук/музика
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Отвори последно съобщение/новини, история на съобщенията, или изтрий всички съобщения
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Отвори информация за терена, меню за скрийншоти, за OpenTTD, или програмни инструменти
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Размяна на ленти с инструменти
 
 # Extra tooltips for the scenario editor toolbar
@@ -417,9 +417,9 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Прозрач�
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Прозрачни табели
 
 # File menu
-STR_FILE_MENU_SAVE_GAME                                         :Запази игра
-STR_FILE_MENU_LOAD_GAME                                         :Отваряне на игра
-STR_FILE_MENU_QUIT_GAME                                         :Прекъсване на играта
+STR_FILE_MENU_SAVE_GAME                                         :Запазване на игра
+STR_FILE_MENU_LOAD_GAME                                         :Зареждане на игра
+STR_FILE_MENU_QUIT_GAME                                         :Прекъсване на игра
 STR_FILE_MENU_EXIT                                              :Изход
 
 # Map menu
@@ -438,7 +438,7 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсиди�
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Графика на капитала
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Графика на приходите
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Графика на доставките
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Графика на изпълнение
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Графика на производителността
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Стойност на компанията
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Тарифи за доставка на стоки
 
@@ -2011,11 +2011,12 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Пока
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Показване на цветови схеми за автомобилите
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Показване цветови схеми на корабите
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Показване цветовата схема на самолетите
-STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :Покажи цветовете за ППС
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Покажи цветовете за ППС
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Изберете основния цвят за избраната схема. Ctrl присвоява цвета за всички схеми
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Изберете допълнителен цвят за избраната схема. Ctrl присвоява цвета за всички схеми
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Изберете цветова схема за промяна или няколко - CTRL+щрак. Натиснете в кутията за да превключите използването на схемата
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Няма създадени групи от ППС
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Няма създадени групи от самолети
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Стандартен Ливъри
@@ -3360,10 +3361,10 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Открита: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Цветове:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Машини:
-STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} влак{P "" ове}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} автомобил{P "" и}
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} самолет
-STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} кораб{P "" и}
+STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} влак{P "" а}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} автомобил{P "" а}
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} самолет{P "" а}
+STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} кораб{P "" а}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Николко
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Стойност на Компанията: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Инфраструктура:
@@ -3434,10 +3435,10 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Пром
 
 # Vehicle lists
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Влак{P "" ове}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Кол{P а и}
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Кораб{P "" и}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Самолет
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Влак{P "" а}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Автомобил{P "" а}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Кораб{P "" а}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Самолет{P "" а}
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Влакове - кликни върху някой влак за повече информация
@@ -4863,7 +4864,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Вагон за
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Вагон за захар
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Вагон за захарен памук
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Вагон за карамел
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Вагон за въздушни мехури
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Вагон за балончета
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Цистерна за кола
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Вагон за сладки
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Вагон за играчки
@@ -4893,7 +4894,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Вагон за
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Вагон за захар
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Вагон за захарен памук
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Вагон за карамел
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Вагон за въздушни мехури
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Вагон за балончета
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Цистерна за кола
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Вагон за сладки
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Вагон за играчки
