@@ -498,10 +498,10 @@ STR_DAY_NUMBER_1ST                                              :1-ви
 STR_DAY_NUMBER_2ND                                              :2-ри
 STR_DAY_NUMBER_3RD                                              :3-ти
 STR_DAY_NUMBER_4TH                                              :4-ти
-STR_DAY_NUMBER_5TH                                              :5-и
-STR_DAY_NUMBER_6TH                                              :6-и
-STR_DAY_NUMBER_7TH                                              :7-и
-STR_DAY_NUMBER_8TH                                              :8-и
+STR_DAY_NUMBER_5TH                                              :5-ти
+STR_DAY_NUMBER_6TH                                              :6-ти
+STR_DAY_NUMBER_7TH                                              :7-ми
+STR_DAY_NUMBER_8TH                                              :8-ми
 STR_DAY_NUMBER_9TH                                              :9-ти
 STR_DAY_NUMBER_10TH                                             :10-ти
 STR_DAY_NUMBER_11TH                                             :11-ти
@@ -521,8 +521,8 @@ STR_DAY_NUMBER_24TH                                             :24-ти
 STR_DAY_NUMBER_25TH                                             :25-ти
 STR_DAY_NUMBER_26TH                                             :26-ти
 STR_DAY_NUMBER_27TH                                             :27-ми
-STR_DAY_NUMBER_28TH                                             :28-и
-STR_DAY_NUMBER_29TH                                             :29-и
+STR_DAY_NUMBER_28TH                                             :28-ми
+STR_DAY_NUMBER_29TH                                             :29-ти
 STR_DAY_NUMBER_30TH                                             :30-ти
 STR_DAY_NUMBER_31ST                                             :31-ви
 
@@ -565,13 +565,13 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Графика на оперативните приходи
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Графика на приходите
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Брой на доставените стоки
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Райтинг на представянето на компанията (максимален рейтинг=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рейтинг на представянето на компанията (максимален рейтинг=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Стойност на Компанията
 
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Заплащане за превоз на товар
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Заплащане на доставени 10 единици (или 10,000 литра) товар на разстояние 20 квадрата
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Пусни всичко
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Включи всичко
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Изключи всичко
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Покажи всички товари на графиката за заплащане на товарите
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Скрий всички товари на графиката за заплащане на товарите
@@ -594,7 +594,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Маршрут�
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Директор
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Шеф
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Председател
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Пресидент
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Президент
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Магнат
 
 # Performance detail window
@@ -619,11 +619,11 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Общо
 ###next-name-looks-similar
 
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Брой последно обслужени станции. Всяка част на станция (напр. ЖП гара, автогара, летище) се брои отделно, даже ако са свързани като една станция
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Сумата пари спечелена през месеца с най-ниска печалба от последните 12 четвъртини
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Сумата пари спечелена през месеца с най-висока печалба от последните 12 четвъртини
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Сумата пари спечелена през тримесечието с най-ниска печалба от последните 12 тримесечия
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Сумата пари спечелена през тримесечието с най-висока печалба от последните 12 тримесечия
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Единици товар доставени през последната година
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Брой различни видове товари доставени през последните 4 месеца
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Сума пари тази компания има в банката
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Брой различни видове товари доставени през последните 3 месеца
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Сума пари, която тази компания има в банката
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Големина на заема, който компанията е взела
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Натрупани точки от общия възможен брой
 
@@ -649,7 +649,7 @@ STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Прев
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Превърти до следващата песен
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Спри музиката
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Пусни музиката
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Преместете плъзгачите за промяна силата на звука
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Премести плъзгачите за промяна силата на звука
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Избери програма 'всички парчета'
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Избери програма 'стар стил музика'
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Избери програма 'нов стил музика'
@@ -665,8 +665,8 @@ STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLA
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Програма - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Изчисти
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Изчисти текущата програма (само Мой вкус1 или Мой вкус2)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Натисни върху музикално парче за да го добавиш към текущата програма (само Мой вкус1 или Мой вкус2)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Натиснете върху парче за да го премахнете от програмата (Custom1 и Custom2 само)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Кликнете върху музикално парче, за да го добавите към текущата програма (само Мой вкус1 или Мой вкус2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Кликнете върху музикално парче, за да го премахнете от текущата програма (само Мой вкус1 или Мой вкус2)
 
 # Highscore window
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
@@ -696,13 +696,13 @@ STR_SMALLMAP_TYPE_OWNERS                                        :Собстве�
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Покажи земните контури на картата
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Покажи превозните средства
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Покажи индустриите на картата
-STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Покажи на картата потока на товарите
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Покажи потока на товарите на картата
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Покажи транспортните маршрути на картата
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Покажи растителността на картата
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Покажи собствениците на земя на картата
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Натисни върху вид индустрия за превключване на показването. Ctrl деактивира всички освен избраната. Ctrl отново за активиране на всички
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Натисни върху компания за показване/скриване на нейната собственост. Ctrl деактивира всички компании освен избраната. Ctrl отново за активиране на всички компании
-STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Кликнете върху товара, за да превключите показването на неговите данни. Ctrl+Click изключва всички товари без текущо избрания. Направете отново Ctrl+Click въху него, за да включите отново всички товари
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Кликнете върху вид индустрия за превключване на показването. Ctrl+Click деактивира всички освен избраната. Ctrl+Click отново за активиране на всички индустрии
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Кликнете върху компания за превключване на показването. Ctrl+Click деактивира всички освен избраната. Ctrl+Click отново за активиране на всички компании
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Кликнете върху вид товар за превключване на показването. Ctrl+Click деактивира всички освен избрания. Ctrl+Click отново за активиране на всички товари
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Пътища
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}ЖП
@@ -710,7 +710,7 @@ STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Сгради/Индустрии
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Превозни средства
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Влакове
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Камиони/Автобуси
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}МПС-та
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Кораби
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Самолети
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Транспортни маршрути
@@ -740,7 +740,7 @@ STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COM
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Изключване на всички
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Включване на всички
-STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Височина на снега
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Покажи височина
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Не показвай индустрии на картата
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Покажи всички индустрии на картата
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Показване/скриване на височинна карта
@@ -749,7 +749,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Пока
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Покажи всички товари на картата
 
 # Status bar messages
-STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Покажи последното съобщение или отчет на новините
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Покажи последното съобщение или новина
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* * ИГРАТА Е В ПАУЗА  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}АВТОЗАПАЗВАНЕ
@@ -764,19 +764,19 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Съобщение
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Хората празнуват . . .{}Първи влак пристигна на {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първият автобус пристигнал в {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Хората празнуват . . .{}Първи камион пристигна на {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първият пътнически трамвай пристигна на {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първият товарен трамвай пристигна на {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първия кораб пристигнал в {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първия самолет кацнал на {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи влак пристига на {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи автобус пристига в {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи камион пристига на {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи пътнически трамвай пристига на {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи товарен трамвай пристига на {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи кораб пристига в {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи самолет каца на {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Влакова катастрофа!{}{COMMA} умрели в огнената експлозия
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Пътно-транспортно Произшествие!{}Шофьор загина на място при екплозия на МПС след сблъсък с влак
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Пътно-транспортно Произшествие!{}{COMMA} загинаха на място при екплозия на МПС след сблъсък с влак
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Самолетна катастрофа!{}{COMMA} умират в огъня на {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Самолетна катастрофа!{}Самолета остана без гориво, {COMMA} умряха в огненото кълбо!
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Влакова катастрофа!{}{COMMA} загиват в огнена експлозия
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Пътно-транспортно Произшествие!{}Шофьор загива на място в огнена експлозия след сблъсък на МПС с влак
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Пътно-транспортно Произшествие!{}{COMMA} загиват на място в огнена експлозия след сблъсък на МПС с влак
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Самолетна катастрофа!{}{COMMA} загиват в огъня на {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Самолетна катастрофа!{}Самолет остана без гориво, {COMMA} загиват в огнена експлозия
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Катастрофа с Цепелин на {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}МПС бе унищожено при сблъсък с НЛО!
@@ -787,7 +787,7 @@ STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Наводнения!{}Най-малко {COMMA} са изчезнали, считат се за загинали след значителни наводнения!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Транспортна компания в беда!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} ще бъде продадена или обявена в банкрут освен ако представянето й не се подобри скоро!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} ще бъде продадена или обявена в банкрут, освен ако представянето й не се подобри скоро!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Сливане на транспортни компании!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} беше продадена на {STRING} for {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Банкрут!
@@ -795,12 +795,12 @@ STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Нова транспортна компания стартира!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} започна строителство край {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} бе закупена от {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Manager)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Управител)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} спонсорирано построяване на нов град {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Нова {STRING} се строи близо до {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Нова {STRING} се засажда близо до {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}{G Нов Нова Ново Нови} {STRING} се строи близо до {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}{G Нов Нова Ново Нови} {STRING} се засажда близо до {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} обяви незабавно закриване!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Проблеми с доставките предизвикаха незабавно закриване на {STRING}!
@@ -3362,7 +3362,7 @@ STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Откр�
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Цветове:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Машини:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} влак{P "" а}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} автомобил{P "" а}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} МПС{P "" та}
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} самолет{P "" а}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} кораб{P "" а}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Николко
@@ -3436,7 +3436,7 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Пром
 # Vehicle lists
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Влак{P "" а}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Автомобил{P "" а}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} МПС{P "" та}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Кораб{P "" а}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Самолет{P "" а}
 
@@ -4733,43 +4733,43 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Детска к
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :Мина за въглища
-STR_INDUSTRY_NAME_POWER_STATION                                 :Електроцентрала
-STR_INDUSTRY_NAME_SAWMILL                                       :Дъскорезница
-STR_INDUSTRY_NAME_FOREST                                        :Гора
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Нефтена рафинерия
-STR_INDUSTRY_NAME_OIL_RIG                                       :Нефтен кладенец
-STR_INDUSTRY_NAME_FACTORY                                       :Завод
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :Печатница
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Стоманолеярна
-STR_INDUSTRY_NAME_FARM                                          :Ферма
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Медна мина
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Нефтени кладенци
-STR_INDUSTRY_NAME_BANK                                          :Банка
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Завод за обработка на храни
-STR_INDUSTRY_NAME_PAPER_MILL                                    :Завод за Хартия
-STR_INDUSTRY_NAME_GOLD_MINE                                     :Златна мина
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Банка
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Диамантена мина
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Желязна мина
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Офощна градина
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Каучукова плантация
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Водоизточник
-STR_INDUSTRY_NAME_WATER_TOWER                                   :Водна кула
-STR_INDUSTRY_NAME_FACTORY_2                                     :Завод
-STR_INDUSTRY_NAME_FARM_2                                        :Ферма
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Дърворезница
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Гора от захарен памук
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Завод за сладки
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Ферма за батерии
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Кола кладенци
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Магазин за играчки
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Завод за играчки
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Фонатани от пластмаса
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Завод за газирани напитки
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Генератор на балончета
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Карамелоломна
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :Захарна мина
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Мина за въглища
+STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Електроцентрала
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Дъскорезница
+STR_INDUSTRY_NAME_FOREST                                        :{G=f}Гора
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Нефтена рафинерия
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Нефтена платформа
+STR_INDUSTRY_NAME_FACTORY                                       :{G=m}Завод
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Печатница
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Стоманолеярна
+STR_INDUSTRY_NAME_FARM                                          :{G=f}Ферма
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Медна мина
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=p}Нефтени кладенци
+STR_INDUSTRY_NAME_BANK                                          :{G=f}Банка
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=m}Завод за обработка на храни
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=m}Завод за Хартия
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Златна мина
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=f}Банка
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Диамантена мина
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Желязна мина
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Плодова плантация
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Каучукова плантация
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Водоизточник
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Водна кула
+STR_INDUSTRY_NAME_FACTORY_2                                     :{G=m}Завод
+STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Ферма
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Дъскорезница
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=f}Гора от захарен памук
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=m}Завод за сладки
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Ферма за батерии
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=p}Кладенци за кока-кола
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=m}Магазин за играчки
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=m}Завод за играчки
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=p}Фонатани от пластмаса
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=m}Завод за газирани напитки
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Генератор за балончета
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Карамелоломна
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Захарна мина
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
