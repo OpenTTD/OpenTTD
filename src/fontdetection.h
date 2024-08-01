@@ -39,4 +39,59 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face);
  */
 bool SetFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, int winlangid, class MissingGlyphSearcher *callback);
 
+struct FontFamily {
+	std::string family;
+	std::string style;
+	int32_t slant;
+	int32_t weight;
+
+	FontFamily(std::string_view family, std::string_view style, int32_t slant, int32_t weight) : family(family), style(style), slant(slant), weight(weight) {}
+};
+
+bool FontFamilySorter(const FontFamily &a, const FontFamily &b);
+
+class FontSearcher {
+public:
+	FontSearcher();
+	virtual ~FontSearcher();
+
+	/**
+	 * Get the active FontSearcher instance.
+	 * @return FontSearcher instance, or nullptr if not present.
+	 */
+	static inline FontSearcher *GetFontSearcher() { return FontSearcher::instance; }
+
+	/**
+	 * Update cached font information.
+	 * @param language_isocode the language, e.g. en_GB.
+	 * @param winlangid the language ID windows style.
+	 */
+	virtual void UpdateCachedFonts(const std::string &language_isocode, int winlangid) = 0;
+
+	/**
+	 * List available fonts.
+	 * @param language_isocode the language, e.g. en_GB.
+	 * @param winlangid the language ID windows style.
+	 * @return vector containing font family names.
+	 */
+	std::vector<std::string_view> ListFamilies(const std::string &language_isocode, int winlangid);
+
+	/**
+	 * List available styles for a font family.
+	 * @param language_isocode the language, e.g. en_GB.
+	 * @param winlangid the language ID windows style.
+	 * @param font_family The font family to list.
+	 * @return vector containing style information for the family.
+	 */
+	std::vector<std::reference_wrapper<const FontFamily>> ListStyles(const std::string &language_isocode, int winlangid, std::string_view family);
+
+protected:
+	std::vector<FontFamily> cached_fonts;
+	std::string cached_language_isocode;
+	int cached_winlangid;
+
+private:
+	static inline FontSearcher *instance = nullptr;
+};
+
 #endif
