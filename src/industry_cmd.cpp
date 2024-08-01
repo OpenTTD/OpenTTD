@@ -603,8 +603,8 @@ static void AnimatePowerPlantSparks(TileIndex tile)
 		DeleteAnimatedTile(tile);
 	} else {
 		SetAnimationFrame(tile, m + 1);
-		MarkTileDirtyByTile(tile);
 	}
+	MarkTileDirtyByTile(tile);
 }
 
 static void AnimateToyFactory(TileIndex tile)
@@ -649,8 +649,8 @@ static void AnimateOilWell(TileIndex tile, IndustryGfx gfx)
 	} else {
 		SetAnimationFrame(tile, m);
 		SetIndustryGfx(tile, gfx);
-		MarkTileDirtyByTile(tile);
 	}
+	MarkTileDirtyByTile(tile);
 }
 
 static void AnimateMineTower(TileIndex tile)
@@ -906,6 +906,7 @@ static void TileLoop_Industry(TileIndex tile)
 			SetIndustryCompleted(tile);
 			SetIndustryConstructionStage(tile, 3);
 			DeleteAnimatedTile(tile);
+			MarkTileDirtyByTile(tile);
 		}
 		break;
 
