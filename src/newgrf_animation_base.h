@@ -128,7 +128,7 @@ struct AnimationBase {
 
 		switch (callback & 0xFF) {
 			case 0xFD: /* Do nothing. */         break;
-			case 0xFE: AddAnimatedTile(tile);    break;
+			case 0xFE: AddAnimatedTile(tile, false); break;
 			case 0xFF: DeleteAnimatedTile(tile); break;
 			default:
 				Tframehelper::Set(obj, tile, callback);
