@@ -28,7 +28,6 @@ void DeleteAnimatedTile(TileIndex tile)
 	if (to_remove != _animated_tiles.end()) {
 		/* The order of the remaining elements must stay the same, otherwise the animation loop may miss a tile. */
 		_animated_tiles.erase(to_remove);
-		MarkTileDirtyByTile(tile);
 	}
 }
 
