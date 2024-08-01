@@ -358,7 +358,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Отво
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Отвори класиране на компаниите
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Отвори списък на индустриите, индустриални вериги, или инвестирай в нова индустрия
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Отвори списък с влаковете на компанията. Ctrl+Click показва/скрива групите с превозни средства
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Отвори списък с МПС-тата на компанията. Ctrl+Click показва/скрива групите с превозни средства
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Отвори списък с автомобилите на компанията. Ctrl+Click показва/скрива групите с превозни средства
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Отвори списък с корабите на компанията. Ctrl+Click показва/скрива групите с превозни средства
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Отвори списък със самолетите на компанията. Ctrl+Click показва/скрива групите с превозни средства
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Увеличи мащаба
@@ -710,7 +710,7 @@ STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Сгради/Индустрии
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Превозни средства
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Влакове
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}МПС-та
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Автомобили
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Кораби
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Самолети
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Транспортни маршрути
@@ -799,8 +799,8 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} спонсорирано построяване на нов град {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}{G Нов Нова Ново Нови} {STRING} се строи близо до {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}{G Нов Нова Ново Нови} {STRING} се засажда близо до {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}{G Нов Нова Ново Нови} {STRING} се стрo{G 0 и и и ят} близо до {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}{G Нов Нова Ново Нови} {STRING} се засажд{G 0 а а а ат} близо до {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} обяви незабавно закриване!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Проблеми с доставките предизвикаха незабавно закриване на {STRING}!
@@ -2513,7 +2513,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Стро
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Строене на трамвайна линия. Ctrl превключва между строене/премахване на линия. Shift строеж/цена за построяване
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Построи отсечка от шосе използвайки Автоматичен режим. Ctrl превключва между строене/премахване на път. Shift строеж/цена за построяване
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Строене на трамвайна линия в Автоматичен режим. Ctrl превключва между строене/разрушаване на линия. Shift строеж/цена за построяване
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Строене на гараж (за строене и сервиз на МПС-та). Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Строене на автомобилно депо (за строене и сервиз на МПС-та). Shift за показване на цената за построяване
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Строене на трамвайно депо (за покупка и обслужване на трамваи). Shift строеж/цена за построяване
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Строене на автогара. Ctrl позволява съединяването на автогари. Shift строеж/цена за построяване
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Строене на пътническа трамвайна спирка. Ctrl позволява съединяването на спирки. Shift строеж/цена за построяване
@@ -2530,10 +2530,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Прев
 STR_ROAD_NAME_ROAD                                              :Път
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Ориентация на гараж
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Ориентация на гараж
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Посока на трамвайно депо
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Избор посоката на трамвайно депо
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Ориентация на депо
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Ориентация на автомобилно депо
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Ориентация на депо
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Ориентация на трамвайно депо
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Ориентация на автогара
@@ -3326,25 +3326,39 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Реда
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Финансов отчет на {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}Година
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}Период
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Приходи
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Оперативни разходи
 STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Капиталови разходи
 
 
 ###length 13
-STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Строеж
-STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Нови МПС-та
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Оперативни разходи на влаковете
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Оперативни разходи на МПС-то
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Оперативни разходи на самолетите
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Оперативни разходи на корабите
+STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Строене
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Нови превозни средства
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Влакове
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Автомобили
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Самолети
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Кораби
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Инфраструктура
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Влакове
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Автомобили
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Самолети
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Кораби
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Лихва по заема
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Други
 
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Общо
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Баланс на банковата сметка
-STR_FINANCES_LOAN_TITLE                                         :{WHITE}Заем
+STR_FINANCES_PROFIT                                             :{WHITE}Печалба
+STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Баланс по банкова сметка
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Собствени средства
+STR_FINANCES_LOAN_TITLE                                         :{WHITE}Текущ заем
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Лихвен процент: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Максимален заем: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
@@ -3362,7 +3376,7 @@ STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Откр�
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Цветове:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Машини:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} влак{P "" а}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} МПС{P "" та}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} автомобил{P "" а}
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} самолет{P "" а}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} кораб{P "" а}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Николко
@@ -3436,7 +3450,7 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Пром
 # Vehicle lists
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Влак{P "" а}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} МПС{P "" та}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Автомобил{P "" а}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Кораб{P "" а}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Самолет{P "" а}
 
@@ -3498,7 +3512,7 @@ STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Сигу
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Добави споделени превозни средства
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Премахни всички превозни средсва
 
-STR_GROUP_RENAME_CAPTION                                        :{BLACK}Преименовай група
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Преименувай група
 
 STR_GROUP_OCCUPANCY                                             :Използва се за:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
@@ -3506,18 +3520,18 @@ STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 # Build vehicle window
 ###length 4
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Нови Машини за Двурелсов път
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Нови електрически влакове
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Нови Електрически Влакове
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Нови Машини за Монорелсов път
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Нови Машини за Магниторелсов път
 
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Нова кола
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Нови Автомобили
 
 # Vehicle availability
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Нови ЖП превозни средства
-STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Ново пътно превозно средство
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Нови Машини за Двурелсов път
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Нови Автомобили
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Нови Кораби
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нова летателна машина
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нови Летателни средства
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} Тегло: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} (Цена преоборудване: {GOLD}{CURRENCY_LONG}{BLACK}) Тегло: {GOLD}{WEIGHT_SHORT}
@@ -3629,10 +3643,10 @@ STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Прем
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Преместете самолет тук за да го продадете
 
 ###length VEHICLE_TYPES
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Продажба всички влакове в депото
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Продажба всички автомобили в гаража
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Продажба всички кораби в депото
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Продажба всички самолети в хангара
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Продажба на всички влакове в депото
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Продажба на всички МПС-та в депото
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Продажба на всички кораби в депото
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Продажба на всички самолети в хангара
 
 ###length VEHICLE_TYPES
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Автоматична замяна на всички влакове в депото
@@ -3672,13 +3686,13 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Пози
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Списък на всички влакове с това депо в техния пътен лист
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Списък на всички автомобили с този гараж в техния пътен лист
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Списък на всички МПС-та с това депо в техния пътен лист
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Списък на всички кораби с това депо в техния пътен лист
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Списък на всички самолети с хангар на това летище в техния пътен лист
 
 ###length VEHICLE_TYPES
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Спиране на всички влакове в депото
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Спиране на всички автомобили в гаража
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Спиране на всички МПС-та в депото
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Спиране на всички кораби в депото
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Спиране на всички самолети в хангара
 
@@ -4373,7 +4387,7 @@ STR_ERROR_CAN_T_BUILD_HERE                                      :{G=m}{WHITE}Т�
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Този вид индустия, не може да бъде построена тук...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... прекалено близо до друга индустрия
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... първо трябва да основете град
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... само по един на град
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... само по един брой на град
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... може да бъде построен само в градове с население повече от 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... може да бъде построено само около и в джунглите
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... може да бъде построено само около и в пустините
@@ -4444,15 +4458,15 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... ша
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Тук не може да бъде построено влаково депо...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Тук не може да бъде построен гараж...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Тук не може да бъде построено депо за МПС-та...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Тук не може да бъде построено трамвайно депо...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Тук не може да бъде построен док...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Преименуването на депото не се получи...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... трябва да бъде спрян в депо
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... трябва да бъде спрян в автосервиз
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... трябва да е спрян в депото
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... трябва да бъде спрян в депо
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... трябва да бъде спрян в депо
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... трябва да бъде спрян в хангар
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Влаковете могат да бъдат променяни само когато са спрени в депото
@@ -4778,7 +4792,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Захар
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Неименован
 STR_SV_TRAIN_NAME                                               :Влак {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Автомобил {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :МПС #{COMMA}
 STR_SV_SHIP_NAME                                                :Кораб {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Самолет {COMMA}
 
