@@ -32,13 +32,13 @@ void DeleteAnimatedTile(TileIndex tile)
 }
 
 /**
- * Add the given tile to the animated tile table (if it does not exist
- * on that table yet). Also increases the size of the table if necessary.
+ * Add the given tile to the animated tile table (if it does not exist yet).
  * @param tile the tile to make animated
+ * @param mark_dirty whether to also mark the tile dirty.
  */
-void AddAnimatedTile(TileIndex tile)
+void AddAnimatedTile(TileIndex tile, bool mark_dirty)
 {
-	MarkTileDirtyByTile(tile);
+	if (mark_dirty) MarkTileDirtyByTile(tile);
 	include(_animated_tiles, tile);
 }
 

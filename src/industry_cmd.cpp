@@ -800,7 +800,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 	case GFX_PLASTIC_FOUNTAIN_ANIMATED_3: case GFX_PLASTIC_FOUNTAIN_ANIMATED_4:
 	case GFX_PLASTIC_FOUNTAIN_ANIMATED_5: case GFX_PLASTIC_FOUNTAIN_ANIMATED_6:
 	case GFX_PLASTIC_FOUNTAIN_ANIMATED_7: case GFX_PLASTIC_FOUNTAIN_ANIMATED_8:
-		AddAnimatedTile(tile);
+		AddAnimatedTile(tile, false);
 		break;
 	}
 }
