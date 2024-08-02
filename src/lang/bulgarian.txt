@@ -734,7 +734,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Сняг
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Покажи имената на градовете на картата
-STR_SMALLMAP_CENTER                                             :{BLACK}Фиксиране на малката карта на текущата позиция
+STR_SMALLMAP_CENTER                                             :{BLACK}Центриране на малката карта върху текущата позиция
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
@@ -2382,14 +2382,14 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Не, и
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Настройки на прозрачност
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Превключва прозрачност за знаци. Ctrl за заключване
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Използвай прозрачност за дървета. Ctrl+Click за заключване
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Използвай прозрачност за къщи. Ctrl+Click за заключване
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Използвай прозрачност за промишленост. Ctrl+Click за заключване
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Използвай прозрачност за сгради като гари, депа, пътни точки и висящи жици. Ctrl+Click за заключване
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Използвай прозрачност за мостове. Ctrl+Click за заключване
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Използвай прозрачност за сгради като фарове и антени, може би в бъдеще за украси
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Активирай прозрачност за висящите. CTRL+клик за фиксиране.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Превключване на прозрачност за знаци. Ctrl+Click за заключване
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Превключване на прозрачност за дървета. Ctrl+Click за заключване
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Превключване на прозрачност за къщи. Ctrl+Click за заключване
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Превключване на прозрачност за промишленост. Ctrl+Click за заключване
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Превключване на прозрачност за сгради като гари, депа и пътни точки. Ctrl+Click за заключване
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Превключване на прозрачност за мостове. Ctrl+Click за заключване
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Превключване на прозрачност за сгради като фарове и антени. Ctrl+Click за заключване
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Превключване на прозрачност за висящи жици. Ctrl+Click за заключване
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Направи обектите невидими вместо прозрачни
 
 # Linkgraph legend window
@@ -3136,7 +3136,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Въве
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Отсъства -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Град){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Имена на градовете - натисни на името за да фокусираш този град. Ctrl отваря нов изглед към града.
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Имена на градовете - натиснете на името, за да центрирате камерата върху този град. Ctrl+Click отваря прозорец с нов изглед към града
 STR_TOWN_POPULATION                                             :{BLACK}Обща популация на картата: {COMMA}
 
 # Town view window
@@ -3151,7 +3151,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (доставено)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Града {RED}не{BLACK} расте
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Лимит на шумът в градът: {ORANGE}{COMMA}{BLACK}  най-много: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Фиксиране на главния изглед върху града. Ctrl+Click отваря прозорец на нов изглед върху града.
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Центриране на камерата върху града. Ctrl+Click отваря прозорец с нов изглед към града
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Местни власти
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Показване на информация за местните власти
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Промяна на име на град
@@ -3202,7 +3202,7 @@ STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Пока
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Никакви -
 STR_GOALS_PROGRESS                                              :{ORANGE}напредък{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Кликни на задачата за да центрирате камерата на фабрика/град/плочка. Ctrl+Click отваря нов прозорец центриран на фабрика/град/плочка
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Кликнете на задачата, за да се центрира камерата върху фабрика/град/поле от картата. Ctrl+Click отваря прозорец с нов изглед към фабриката/града/полето от картата
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Въпрос
@@ -3236,7 +3236,7 @@ STR_SUBSIDIES_CAPTION                                           :{WHITE}Субс
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Субсидии за превоз на:
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Николко -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Субсидирани превози на:
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Натисни върху услугата за да се фокусира върху индустрията/града. Ctrl отваря нов изглед към индустрията/града
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Натиснете върху услугата, за да се центрира камерата върху индустрията/града. Ctrl+Click отваря нов изглед към индустрията/града
 
 # Story book window
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Прескочи до определена страница чрез избирането й в дроп-даун листата.
@@ -3245,7 +3245,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Отид
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Невалидна цел
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Имена на станции - натиснете върху името, за да фиксирате главния прозорец върху станцията
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Имена на станции - натиснете върху име, за да центрирате камерата върху станцията. Ctrl+Click отваря прозорец с нов изглед към станцията
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Задържете CTRL, за да изберете повече от един обект
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Станци{P я и}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -3301,7 +3301,7 @@ STR_CARGO_RATING_VERY_GOOD                                      :Много до
 STR_CARGO_RATING_EXCELLENT                                      :Отлично
 STR_CARGO_RATING_OUTSTANDING                                    :Невероятно
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Фокусиране на главния изглед върху станцията. Ctrl+Click отваря прозорец на нов изглед върху гарата.
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Центриране на камерата върху станцията. Ctrl+Click отваря прозорец с нов изглед към станцията
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Промяна името на станцията
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Показване на всички влакове които минават през гарата
@@ -3316,9 +3316,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Забр
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Фокусиране на основния изглед върху пътната точка . Ctrl+Клик отваря нов изглед върху пътната точка
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Центриране на камерата върху пътната точка. Ctrl+Click отваря прозорец с нов изглед към пътната точка
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Смяна на името на пътната точка
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Фиксиране на главния изглед върху шамандура. Ctrl+Click отваря прозорец на нов изглед върху шамандурата.
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Центриране на камерата върху шамандура. Ctrl+Click отваря прозорец с нов изглед към шамандурата
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Промяна на името на шамандурата
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Редакция името на пътна точка
@@ -3430,14 +3430,14 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Лети
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Отсъства -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Имена на индустриите - натисни за да фокусираш върху индустрията. Ctrl+Click отваря нов прозорец на изглед върху индустрията.
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Имена на индустриите - натиснете, за да центрирате камерата върху индустрията. Ctrl+Click отваря прозорец с нов изглед към индустрията
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Произведено миналия месец:
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :Произведено последната минута:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% превозено)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Фокусиране на основният изглед върху индустрията. Ctrl+Click отваря прозорец на нов изглед върху индустрията.
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Центриране камерата върху индустрията. Ctrl+Click отваря прозорец с нов изглед към индустрията.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ниво на производство: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Индустрията обяви незабавна ликвидация!
 
@@ -3560,40 +3560,40 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Обхв
 ###length 3
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Списък с влакове - натисни върху влак за информация
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Списък с избор на МПС-та - натисни върху МПС за информация
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Списък с избор на кораби - натисни върху кораб за информация
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Избор на самолет - натиснете върху самолет за информация
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Списък с избор на влакови машини - натиснете върху машина за информация. Ctrl+Click за показване/скриване
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Списък с избор на МПС-та - натиснете върху автомобил за информация. Ctrl+Click за показване/скриване
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Списък с избор на кораби - натиснете върху кораб за информация. Ctrl+Click за показване/скриване
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Списък с избор на летателни средства - натиснете върху машина за информация. Ctrl+Click за показване/скриване
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купи Машина
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купи Машина
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купи Автомобил
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Купи Кораб
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Купи самолет
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Купи Машина
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Купуване и преустройване на кораб
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Купуване и преустройване на самолет
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Купи маркираният влак. Shift строеж/цена за построяване
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Купи посоченото МПС. Shift строеж/цена за построяване
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Купи посоченият кораб. Shift строеж/цена за построяване
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купи посоченият самолет. Shift строеж/цена за построяване
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Купи маркираната влакова машина. Shift за показване на цената за построяване
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Купи маркирания автомобил. Shift за показване на цената за построяване
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Купи маркирания кораб. Shift за показване на цената за построяване
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купи маркирания самолет. Shift за показване на цената за построяване
 
 ###length VEHICLE_TYPES
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Преименувай
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Преименувай
-STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Промяна на име
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Смяна на името
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Преименувай
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Преименувай
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Преименуване на влак
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Преименувай МПС-то
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Промяна името на кораб
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Смяна името на самолета
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Преименуване на влакова машина
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Преименуване на автомобил
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Преименуване на кораб
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Преименуване на летателно средство
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Скрий
@@ -3608,16 +3608,16 @@ STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Пока
 STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Покажи
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Превключи показването на типа на локомотива
-STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Превключи показването на типа на автомобила
-STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Превключи показването на типа на кораба
-STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Превключи показването на типа на самолета
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Превключи показването на маркирания модел влакова машина
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Превключи показването на маркирания модел автомобил
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Превключи показването на маркирания модел кораб
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Превключи показването на маркирания модел летателно средство
 
 ###length VEHICLE_TYPES
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Преименуване на влак
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Преименувай МПС-то
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Промяна името на кораба
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Сняна името на самолета
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Преименуване на влакова машина
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Преименуване на автомобил
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Преименуване на кораб
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Преименуване на самолета
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -3631,70 +3631,70 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} п
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Влакове - кликни с дясното копче върху някой влак за повече информация, влачи с лявото копче машина за да я довавиш/премахнеш от влака. Задръж Ctrl, за да изпълниш и двете за повече от една машина
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}ПС - натиснете с дясното копче върху ПС за информация
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Кораби - натисни с дясното копче върху кораб за инфорамция
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Самолет - натиснете с дясното копче върху самолет за информация
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Влакове - кликнете с дясното копче върху влакова машина за повече информация. Преместете с лявото копче машина, за да я добавите/премахнете от влак. Ctrl+Click за добавяне/премахване на последваща група от машини
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Автомобили - натиснете с дясното копче върху МПС за информация
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Кораби - натиснете с дясното копче върху кораб за инфорамция
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Летателно средство - натиснете с дясното копче върху летателна машина за информация
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Домъкни ЖП машина тук, за да я продадеш
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Преместен автомобил тук ще го продаде
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Премести кораба тук, за да го продадеш
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Преместете самолет тук за да го продадете
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Преместете влакова машина тук, за да я продадете
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Преместете автомобил тук, за да го продадете
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Преместете кораба тук, за да го продадете
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Преместете летателно средство тук, за да го продадете
 
 ###length VEHICLE_TYPES
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Продажба на всички влакове в депото
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Продажба на всички МПС-та в депото
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Продажба на всички кораби в депото
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Продажба на всички самолети в хангара
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Продажба на всички влакови машини в депото
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Продажба на всички автомобили в депото
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Продажба на всички кораби в дока
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Продажба на всички летателни средства в хангара
 
 ###length VEHICLE_TYPES
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Автоматична замяна на всички влакове в депото
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Автоматична замяна на всички влакови машини в депото
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Автоматична замяна на всички автомобили в депото
-STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Автоматична замяна на всички кораби в депото
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Автоматична замяна на всички самолети в хангара
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Автоматична замяна на всички кораби в дока
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Автоматична замяна на всички летателни средства в хангара
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Нови ПС
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Ново превозно средство
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Нови Кораби
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Нова лететална машина
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Нови влакови машини
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Нови автомобили
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Нови кораби
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Нови лететални средства
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Купи нова ЖП машина
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Купи ново МПС
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Купи нова влакова машина
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Купи нов автомобил
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Купи нов кораб
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Купи нова лететелна машина
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Купи ново летателно средство
 
 ###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Клониране на влак
-STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Копиране на превозно средство
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Клониране на автомобил
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Клониране на кораб
-STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Клониране на летателната машина
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Клониране на летателно средство
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Така ще бъде закупено копие на влака, заедно с всички негови вагони. Натисни този бутон и след това върху влак вътре или вън от депото. Натисни Ctrl, за да споделиш задачите. Shift строеж/цена за построяване
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Така ще бъде закупено копие на МПС-то. Натисни този бутон и след това върху МПС-то вътре или вън от депото. Натисни Ctrl, за да споделиш задачите. Shift строеж/цена за построяване
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Така ще бъде закупено копие на кораб. Натисни този бутон и след това върху кораб вътре или вън от депото. Натисни Ctrl, за да споделиш задачите. Shift строеж/цена за построяване
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Така ще бъде закупено копие на летателната машина. Натисни този бутон и след това върху летателната машина вътре или вън от хангара. Натисни Ctrl, за да споделиш задачите. Shift строеж/цена за построяване
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Закупуване на копие на влак, заедно с всички негови вагони. Натиснете този бутон и след това върху влак вътре или вън от депото. Ctrl+Click за споделяне на задачите. Shift за показване на цената за построяване
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Закупуване на копие на автомобил. Натиснете този бутон и след това върху МПС вътре или вън от депото. Ctrl+Click за споделяне на задачите. Shift за показване на цената за построяване
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Закупуване на копие на кораб. Натиснете този бутон и след това върху кораб вътре или вън от дока. Ctrl+Click за споделяне на задачите. Shift за показване на цената за построяване
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Закупуванне на копие на летателно средство. Натиснете този бутон и след това върху летателна машина вътре или вън от хангара. Ctrl+Click за споделяне на задачите. Shift за показване на цената за построяване
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Фокусирай върху мястото на влаковото депо
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Фокусирай общия план върху местонахождението на МПС-депото
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Фокусирай общия план върху местонахождението на корабното депо
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Позициониране на главния изглед върху хангара. Ctrl+Click ще отвори прозорец за нов изглед върху хангара
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Центрирай картата върху влаковото депо. Ctrl+Click отваря прозорец с нов изглед към депото
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Центрирай картата върху автомобилното депо. Ctrl+Click отваря прозорец с нов изглед към депото
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Центрирай картата върху дока. Ctrl+Click отваря прозорец с нов изглед към дока
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Центрирай картата върху хангара. Ctrl+Click отваря прозорец с нов изглед към хангара
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Списък на всички влакове с това депо в техния пътен лист
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Списък на всички МПС-та с това депо в техния пътен лист
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Списък на всички автомобили с това депо в техния пътен лист
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Списък на всички кораби с това депо в техния пътен лист
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Списък на всички самолети с хангар на това летище в техния пътен лист
 
 ###length VEHICLE_TYPES
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Спиране на всички влакове в депото
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Спиране на всички МПС-та в депото
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Спиране на всички кораби в депото
-STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Спиране на всички самолети в хангара
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Спиране на всички автомобили в депото
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Спиране на всички кораби в дока
+STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Спиране на всички летателни апарати в хангара
 
 ###length VEHICLE_TYPES
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Стартиране на всички влакове в депото
@@ -3781,16 +3781,16 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 ###length VEHICLE_TYPES
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Изпращане влака в депо
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Изпращане на ПС в депо. Ctrl+клик изпраща само за преглед
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Прати кораба в депото
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Изпращане на самолета в хангар
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Изпращане на влака в депо. Ctrl+Click изпраща само за преглед без спиране
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Изпращане на автомобила в депо. Ctrl+Click изпраща само за преглед без спиране
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Изпращане на кораба в док. Ctrl+Click изпраща само за преглед без спиране
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Изпращане на летателното средство в хангар. Ctrl+Click изпраща само за преглед без спиране
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Така ще бъде закупено копие на влака заедно с всички негови вагони. Натисни Ctrl за да споделиш задачите. Shift строеж/цена за построяване
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Така ще бъде закупено копие на МПС-то. Натисни Ctrl за да споделиш задачите. Shift строеж/цена за построяване
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Така ще бъде закупено копие на кораба. Натисни Ctrl за да споделиш задачите. Shift строеж/цена за построяване
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Така ще бъде закупено копие на летателната машина. Натисни Ctrl за да споделиш задачите. Shift строеж/цена за построяване
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Закупуване на копие на влака, заедно с всички негови вагони. Ctrl+Click за споделяне на задачите. Shift за показване на цената за построяване
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Закупуване на копие на автомобила. Ctrl+Click за споделяне на задачите. Shift за показване на цената за построяване
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Закупуване на копие на кораба. Ctrl+Click за споделяне на задачите. Shift за показване на цената за построяване
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Закупуване на копие на летателния апарат. Ctrl+Click за споделяне на задачите. Shift за показване на цената за построяване
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Игнориране на семафор
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Обръщане посоката на влака
