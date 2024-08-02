@@ -8,6 +8,7 @@
 /** @file bmp.cpp Read and write support for bmps. */
 
 #include "stdafx.h"
+#include "fileio_type.h"
 #include "bmp.h"
 #include "core/bitmath_func.hpp"
 #include "core/alloc_func.hpp"
@@ -15,13 +16,7 @@
 
 #include "safeguards.h"
 
-void BmpInitializeBuffer(BmpBuffer *buffer, FILE *file)
-{
-	buffer->pos      = -1;
-	buffer->file     = file;
-	buffer->read     = 0;
-	buffer->real_pos = ftell(file);
-}
+BmpBuffer::BmpBuffer(FileHandle &&file) : pos(-1), read(0), file(std::move(file)), real_pos(std::ftell(this->file)) {}
 
 static inline void AdvanceBuffer(BmpBuffer *buffer)
 {
