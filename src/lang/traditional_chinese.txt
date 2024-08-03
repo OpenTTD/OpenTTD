@@ -669,7 +669,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}總計�
 
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}去年盈利的車輛數量。包括公路車輛、列車、船舶和飛機
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}上期盈利的車輛數量。包括公路車輛、列車、船舶和飛機
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最後提供服務的車站各部份數量。 每部份車站 (火車站、公車站、機場) 都算在内，就算連在一起亦然
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最近提供服務的車站各部份數量。火車站、公車站、機場等每部份即使連接成為同一個車站也是被獨立計算的
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}收入最低的車輛的盈利（僅計算超過兩年的車輛）
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}收入最低的車輛的盈利（僅計算超過兩週期的車輛）
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}最近三年的單季最低收入
@@ -1200,7 +1200,7 @@ STR_TERRAIN_TYPE_CUSTOM                                         :自訂高度
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :自訂高度（{NUM}）
 
 ###length 4
-STR_CITY_APPROVAL_LENIENT                                       :放任
+STR_CITY_APPROVAL_LENIENT                                       :寬容
 STR_CITY_APPROVAL_TOLERANT                                      :能忍受
 STR_CITY_APPROVAL_HOSTILE                                       :抱敵意
 STR_CITY_APPROVAL_PERMISSIVE                                    :放任（所有行為均不受影響）
@@ -1301,7 +1301,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :設定發放財
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :沒有補貼
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :沒有補助
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建造成本：{STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :設定建造和購買物件的成本水平。
@@ -1703,7 +1703,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :是
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :是（除已固定的視窗外）
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :使用 {STRING} 時間格式作為存檔檔名
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :在存檔的檔名中使用的日期格式。
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :在存檔的檔名中使用的日期格式
 ###length 3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :長格式 (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短格式 (31-12-2008)
@@ -1938,7 +1938,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :設定使用燈
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :按住 Ctrl 點選號誌時要切換的號誌種類：{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :選擇可按住 <Ctrl> 點選號誌工具以切換的號誌類型
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :僅限目前信號組
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :僅限目前號誌群組
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :所有可見的號誌
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :顯示號誌類型：{STRING}
@@ -1962,7 +1962,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :允許市鎮建
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :啟用此選項以容許市鎮自行興建平交道。
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :根據噪音水平限制機場建造︰{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :允許市鎮根據其噪音接受水平限制機場興建，噪音接受程度取決於市鎮的人口以及機場的規模和距離。如果禁用此設置時，每座市鎮僅允許興建兩個機場，除非地方政府態度設置為「寬容」
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :允許市鎮根據其噪音接受水平限制機場興建，噪音接受程度取決於市鎮的人口以及機場的規模和距離。如果禁用此設置時，每座市鎮僅允許興建兩個機場，除非地方政府態度設置為「放任」
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :於遊戲中興建新市鎮：{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :如啟用此選項，玩家可自行興建新市鎮。
@@ -2380,7 +2380,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}遊戲�
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}已進行遊戲的時間，不計算暫停的時間
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}語言、伺服器版本等
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}點選清單内的遊戲即可選擇
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}點選清單內的伺服器即可選擇遊戲
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}最後加入的伺服器：
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}點選您上次最後加入的伺服器
 
@@ -3582,7 +3582,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}缺少檔�
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' 的行為可能會造成失去同步或當機
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}' 不在機廠內卻發生動力車廂列車狀態的變動。
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' 不在機廠內卻發生列車長度的變動。
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}它會在 '{1:ENGINE}' 在機廠外或不在接受改装時改變其容量
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}它會在 '{1:ENGINE}' 在機廠外或不在接受改裝時改變其運載量
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}' 所擁有的列車 '{0:VEHICLE}' 長度無效。 這個錯誤可能是 NewGRFs 有問題所致，遊戲可能會無法同步或當機
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' 提供了錯誤的資訊。
@@ -3827,9 +3827,9 @@ STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}將車�
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}修改車站名稱
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}顯示所有指令內包含這個車站的列車
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}顯示所有指令内包含這個車站的車輛
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}顯示所有指令内包含這座機場的飛機
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}顯示所有指令内包含這個碼頭的船舶
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}顯示所有指令內包含這個車站的車輛
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}顯示所有指令內包含這座機場的飛機
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}顯示所有指令內包含這個碼頭的船舶
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :修改車站／載貨區名稱
 
@@ -3962,7 +3962,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}、{STRING}、{STRING}⋯⋯（尚有{NUM}個未顯示）
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}、{STRING}、{STRING}……（尚有 {NUM} 個未顯示）
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}工業名稱 - 點選名稱可將工業置於畫面中央。按住 <Ctrl> 點選可於工業位置開啟新視窗視野
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}接受貨物：{SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}產出的貨物: {SILVER}{STRING}
@@ -4023,8 +4023,8 @@ STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :送到車廠
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :送到船塢
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :送到機棚
 
-STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}點選此掣以停止清單上的所有車輛
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}點選此掣以起動清單内的所有車輛
+STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}點選此按鈕以停止清單上的所有車輛
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}點選此按鈕以起動清單上的所有車輛
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}顯示此車輛類別所有可用的引擎設計
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}由 {COMMA} 部車輛共用的指令清單
@@ -4206,16 +4206,16 @@ STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}將船�
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}將飛機拖到這裡即可出售
 
 ###length VEHICLE_TYPES
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}出售機廠内所有列車
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}出售車廠内所有車輛
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}出售船塢内所有船舶
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}出售機棚内所有飛機
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}出售機廠內的所有列車
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}出售車廠內的所有車輛
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}出售船塢內的所有船舶
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}出售機棚內的所有飛機
 
 ###length VEHICLE_TYPES
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}自動替換所有機廠内列車
-STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}自動替換所有車廠内車輛
-STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}自動替換所有船塢内船舶
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}自動替換所有機棚内飛機
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}自動替換機廠內的所有列車
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}自動替換車廠內的所有車輛
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}自動替換船塢內的所有船舶
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}自動替換機棚內的所有飛機
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}購買列車
@@ -4236,10 +4236,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}複製�
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}複製飛機
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}購買一列相同的列車，包含所有車廂。按下按鈕之後再點選機廠内或外的列車。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}購買一部相同的車輛。按下此鈕之後再點選車廠内或外的車輛。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}購買一艘相同的船舶。按下按鈕之後再點選船塢内或外的船舶。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}購買一架相同的飛機。按下此鈕之後再點選機棚内或外的飛機。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}購買一列相同的列車，包含所有車廂。按下按鈕之後再點選機廠內或外的列車。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}購買一部相同的車輛。按下此鈕之後再點選車廠內或外的車輛。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}購買一艘相同的船舶。按下按鈕之後再點選船塢內或外的船舶。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}購買一架相同的飛機。按下此鈕之後再點選機棚內或外的飛機。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}將鐵路機廠置於畫面中央。按住 <Ctrl> 點選可於鐵路機廠位置開啟新視窗視野
@@ -4248,25 +4248,25 @@ STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}將船�
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}將機棚置於畫面中央。按住 <Ctrl> 點選可於機棚位置開啟新視窗視野
 
 ###length VEHICLE_TYPES
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}取得所有指令内有這個機廠的列車
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}取得所有指令内有這個車廠的車輛
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}取得所有指令内有這個船塢的船舶
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}取得所有指令内有這個機場機棚的飛機
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}取得所有指令內有這個機廠的列車
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}取得所有指令內有這個車廠的車輛
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}取得所有指令內有這個船塢的船舶
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}取得所有指令內有這個機場機棚的飛機
 
 ###length VEHICLE_TYPES
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}點選可停止機廠内所有列車
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}點選可停止車廠内所有車輛
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}點選可停止船塢内所有船舶
-STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}點選可停止機棚内所有飛機
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}點選可停止機廠內的所有列車
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}點選可停止車廠內的所有車輛
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}點選可停止船塢內的所有船舶
+STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}點選可停止機棚內的所有飛機
 
 ###length VEHICLE_TYPES
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}點選可起動機廠内所有列車
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}點選可起動車廠内所有車輛
-STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}點選可起動船塢内所有船舶
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}點選可起動機棚内所有飛機
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}點選可起動機廠內的所有列車
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}點選可起動車廠內的所有車輛
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}點選可起動船塢內的所有船舶
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}點選可起動機棚內的所有飛機
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}將車頭拖至此即可出售整列車
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}您正準備出售車廠内所有車輛。確定嗎？
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}您正準備出售車廠內的所有車輛。確定嗎？
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}車輛製造商的訊息
@@ -5116,10 +5116,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}無法�
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}無法修改機廠名稱...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... 必須停在機廠内
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 必須停在車庫内
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... 必須停在船塢内
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... 必須停在機棚内
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}…必須停在機廠內
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}…必須停在車廠內
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}…必須停在船塢內
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}…必須停在機棚內
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車只有在停放於機廠內的時候才能變動
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車過長
@@ -5233,9 +5233,9 @@ STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}無法�
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}無法修改群組名稱...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}無法指定母群組
 STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... 多層群組結構中不能出現循環
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}無法從此群組移去所有車輛⋯⋯
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}無法從此群組移除所有車輛…
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}無法加入該車輛到此群組...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}無法加入共享指令的車輛到此群組⋯⋯
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}無法加入共享指令的車輛到此群組…
 
 # Generic vehicle errors
 

@@ -1893,6 +1893,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Alapértelmezet
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Alapértelmezett javítási intervallum hajóknak: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Alapértelmezett javítási intervallum beállítása új hajóknak, ha nincs külön javítási intervallum beállítva a járműre
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Nap
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Perc
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :kikapcsolva
