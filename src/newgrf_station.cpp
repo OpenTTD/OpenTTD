@@ -125,7 +125,7 @@ uint32_t GetPlatformInfo(Axis axis, uint8_t tile, int platforms, int length, int
 	}
 	SB(retval, 16, 4, std::min(15, length));
 	SB(retval, 20, 4, std::min(15, platforms));
-	SB(retval, 24, 4, tile);
+	SB(retval, 24, 8, tile);
 
 	return retval;
 }
