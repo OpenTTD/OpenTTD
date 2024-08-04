@@ -4043,15 +4043,15 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Премини 
 STR_ORDER_SERVICE_AT                                            :Сервизиране, когато е необходимо в
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Сервиз без спиране в
 
-STR_ORDER_NEAREST_DEPOT                                         :най-близкото депо
-STR_ORDER_NEAREST_HANGAR                                        :най-близкият хангар
+STR_ORDER_NEAREST_DEPOT                                         :{LRM}
+STR_ORDER_NEAREST_HANGAR                                        :най-близкия хангар
 ###length 3
-STR_ORDER_TRAIN_DEPOT                                           :Депо за влакове
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Депо за пътни превозни средства
-STR_ORDER_SHIP_DEPOT                                            :Депо за кораби
+STR_ORDER_TRAIN_DEPOT                                           :{G=n}влаково депо
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :{G=n}автомобилно депо
+STR_ORDER_SHIP_DEPOT                                            :{G=f}корабен док
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING}{G 2 "" най-близкия най-близкото най-близките} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Преоборудване към {STRING})
@@ -5112,23 +5112,23 @@ STR_FORMAT_GROUP_NAME                                           :Група {COM
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 
 ###length 2
-STR_FORMAT_BUOY_NAME                                            :{TOWN} Шамандура
-STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Шамандура #{COMMA}
+STR_FORMAT_BUOY_NAME                                            :Шамандура {TOWN}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :Шамандура {TOWN} #{COMMA}
 
 ###length 2
 STR_FORMAT_WAYPOINT_NAME                                        :Пътна точка {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Пътна точка {TOWN} #{COMMA}
 
 ###length 6
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Влаково депо
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Влаково депо #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Депо за автомобили
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Депо за автомобили #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Корабен док
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Корабен док #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Влаково депо {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Влаково депо {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Автомобилно депо {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Автомобилно депо {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Корабен док {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Корабен док {TOWN} #{COMMA}
 ###next-name-looks-similar
 
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Хангар
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Хангар {STATION}
 # _SERIAL version of AIRACRAFT doesn't exist
 
 STR_UNKNOWN_STATION                                             :неизвестна гара
