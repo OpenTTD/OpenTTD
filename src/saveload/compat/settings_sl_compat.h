@@ -129,7 +129,7 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_VAR("order.gradual_loading"),
 	SLC_VAR("construction.road_stop_on_town_road"),
 	SLC_VAR("construction.road_stop_on_competitor_road"),
-	SLC_VAR("station.adjacent_stations"),
+	SLC_NULL(1, SLV_62, SLV_TABLE_CHUNKS),
 	SLC_VAR("economy.station_noise_level"),
 	SLC_VAR("station.distant_join_stations"),
 	SLC_VAR("economy.inflation"),
