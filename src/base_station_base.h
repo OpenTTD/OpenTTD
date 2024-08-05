@@ -196,11 +196,11 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	}
 
 private:
-	void SetRoadStopTileData(TileIndex tile, uint8_t data, bool animation);
+	bool SetRoadStopTileData(TileIndex tile, uint8_t data, bool animation);
 
 public:
 	inline void SetRoadStopRandomBits(TileIndex tile, uint8_t random_bits) { this->SetRoadStopTileData(tile, random_bits, false); }
-	inline void SetRoadStopAnimationFrame(TileIndex tile, uint8_t frame) { this->SetRoadStopTileData(tile, frame, true); }
+	inline bool SetRoadStopAnimationFrame(TileIndex tile, uint8_t frame) { return this->SetRoadStopTileData(tile, frame, true); }
 	void RemoveRoadStopTileData(TileIndex tile);
 
 	static void PostDestructor(size_t index);

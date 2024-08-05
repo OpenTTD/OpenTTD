@@ -28,18 +28,17 @@ void DeleteAnimatedTile(TileIndex tile)
 	if (to_remove != _animated_tiles.end()) {
 		/* The order of the remaining elements must stay the same, otherwise the animation loop may miss a tile. */
 		_animated_tiles.erase(to_remove);
-		MarkTileDirtyByTile(tile);
 	}
 }
 
 /**
- * Add the given tile to the animated tile table (if it does not exist
- * on that table yet). Also increases the size of the table if necessary.
+ * Add the given tile to the animated tile table (if it does not exist yet).
  * @param tile the tile to make animated
+ * @param mark_dirty whether to also mark the tile dirty.
  */
-void AddAnimatedTile(TileIndex tile)
+void AddAnimatedTile(TileIndex tile, bool mark_dirty)
 {
-	MarkTileDirtyByTile(tile);
+	if (mark_dirty) MarkTileDirtyByTile(tile);
 	include(_animated_tiles, tile);
 }
 

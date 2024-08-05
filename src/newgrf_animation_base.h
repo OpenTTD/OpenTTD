@@ -20,7 +20,14 @@
 template <typename Tobj>
 struct TileAnimationFrameAnimationHelper {
 	static uint8_t Get(Tobj *, TileIndex tile) { return GetAnimationFrame(tile); }
-	static void Set(Tobj *, TileIndex tile, uint8_t frame) { SetAnimationFrame(tile, frame); }
+	static bool Set(Tobj *, TileIndex tile, uint8_t frame)
+	{
+		uint8_t prev_frame = GetAnimationFrame(tile);
+		if (prev_frame == frame) return false;
+
+		SetAnimationFrame(tile, frame);
+		return true;
+	}
 };
 
 /**
@@ -105,8 +112,8 @@ struct AnimationBase {
 			}
 		}
 
-		Tframehelper::Set(obj, tile, frame);
-		MarkTileDirtyByTile(tile);
+		bool changed = Tframehelper::Set(obj, tile, frame);
+		if (changed) MarkTileDirtyByTile(tile);
 	}
 
 	/**
@@ -128,11 +135,11 @@ struct AnimationBase {
 
 		switch (callback & 0xFF) {
 			case 0xFD: /* Do nothing. */         break;
-			case 0xFE: AddAnimatedTile(tile);    break;
+			case 0xFE: AddAnimatedTile(tile, false); break;
 			case 0xFF: DeleteAnimatedTile(tile); break;
 			default:
-				Tframehelper::Set(obj, tile, callback);
-				AddAnimatedTile(tile);
+				bool changed = Tframehelper::Set(obj, tile, callback);
+				AddAnimatedTile(tile, changed);
 				break;
 		}
 

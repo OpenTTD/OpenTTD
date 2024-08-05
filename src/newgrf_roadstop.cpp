@@ -344,7 +344,7 @@ uint16_t GetAnimRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t 
 
 struct RoadStopAnimationFrameAnimationHelper {
 	static uint8_t Get(BaseStation *st, TileIndex tile) { return st->GetRoadStopAnimationFrame(tile); }
-	static void Set(BaseStation *st, TileIndex tile, uint8_t frame) { st->SetRoadStopAnimationFrame(tile, frame); }
+	static bool Set(BaseStation *st, TileIndex tile, uint8_t frame) { return st->SetRoadStopAnimationFrame(tile, frame); }
 };
 
 /** Helper class for animation control. */
