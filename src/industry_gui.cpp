@@ -377,8 +377,15 @@ class BuildIndustryWindow : public Window {
 		size_t numcargo = 0;
 		size_t firstcargo = 0;
 
-		for (size_t j = 0; j < cargolist.size(); j++) {
-			if (!IsValidCargoID(cargolist[j])) continue;
+		/* Use map to sort cargo list. The data is in two separate spans, so keep the index of each entry. */
+		std::map<CargoID, size_t, CargoIDComparator> positions;
+		for (auto it = std::begin(cargolist); it != std::end(cargolist); ++it) {
+			if (!IsValidCargoID(*it)) continue;
+			positions.emplace(*it, std::distance(std::begin(cargolist), it));
+		}
+
+		for (const auto &pair : positions) {
+			size_t j = pair.second;
 			numcargo++;
 			if (numcargo == 1) {
 				firstcargo = j;
