@@ -282,7 +282,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Пока
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}С активирането на бутона всички скрити влакове също се показват
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}С активирането на бутона всички скрити автомобили също се показват
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}С активирането на бутона всички скрити кораби също се показват
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}С активирането на бутона всички скрити самолети също се показват
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}С активирането на бутона всички скрити летателни средства също се показват
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}По подразбиране
@@ -360,7 +360,7 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Отво
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Отвори списък с влаковете на компанията. Ctrl+Click показва/скрива групите с превозни средства
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Отвори списък с автомобилите на компанията. Ctrl+Click показва/скрива групите с превозни средства
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Отвори списък с корабите на компанията. Ctrl+Click показва/скрива групите с превозни средства
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Отвори списък със самолетите на компанията. Ctrl+Click показва/скрива групите с превозни средства
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Отвори списък с летателните средства на компанията. Ctrl+Click показва/скрива групите с превозни средства
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Увеличи мащаба
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Намали мащаба
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Построй железопътна инфраструктура
@@ -399,6 +399,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Изход от
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Изход
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Генерирай градове
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Постави къщи
 
 # Settings menu
 ###length 16
@@ -618,7 +620,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Заем
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Общо:
 ###next-name-looks-similar
 
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Брой последно обслужени станции. Всяка част на станция (напр. ЖП гара, автогара, летище) се брои отделно, даже ако са свързани като една станция
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Брой последно обслужени станции. Всяка част на станция (напр. влакова гара, автобусна спирка, летище) се брои отделно, дори ако са свързани като една станция
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Сумата пари спечелена през тримесечието с най-ниска печалба от последните 12 тримесечия
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Сумата пари спечелена през тримесечието с най-висока печалба от последните 12 тримесечия
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Единици товар доставени през последната година
@@ -712,17 +714,18 @@ STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Влакове
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Автомобили
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Кораби
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Самолети
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Летателни средства
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Транспортни маршрути
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Гора
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}ЖП гара
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Товарна гара
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Автогара
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Товарна станция за камиони
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Автобусна спирка
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Летище
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Док
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Неравна земя
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Тревна земя
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Пуста земя
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Tропическа гора
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Ниви
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Дървета
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Скали
@@ -765,18 +768,18 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Съоб
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи влак пристига на {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи автобус пристига в {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи автобус пристига на {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи камион пристига на {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи пътнически трамвай пристига на {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи товарен трамвай пристига на {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи кораб пристига в {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи самолет каца на {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първи кораб пристига на {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първо летателно средство каца на {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Влакова катастрофа!{}{COMMA} загиват в огнена експлозия
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Пътно-транспортно Произшествие!{}Шофьор загива на място в огнена експлозия след сблъсък на МПС с влак
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Пътно-транспортно Произшествие!{}{COMMA} загиват на място в огнена експлозия след сблъсък на МПС с влак
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Самолетна катастрофа!{}{COMMA} загиват в огъня на {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Самолетна катастрофа!{}Самолет остана без гориво, {COMMA} загиват в огнена експлозия
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Катастрофа с летателно средство!{}{COMMA} загиват в огъня на {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Катастрофа!{}Летателно средство остана без гориво, {COMMA} загиват в огнена експлозия
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Катастрофа с Цепелин на {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}МПС бе унищожено при сблъсък с НЛО!
@@ -1328,11 +1331,11 @@ STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Теглови 
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Определя значението на носения товар във влаковете. По-голяма стойност прави превозването на товар по-трудно, особено на хълмове
 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Фактор на скоростта за самолетите: {STRING}
-STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Задава относителната скорост на самолетите в сравнение с другите транспортни средства. Служи за намалявана на печалбите от летателни средства
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Задава относителната скорост на летателните в сравнение с другите транспортни средства. Служи за намаляване на печалбите от въздушен транспорт
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Разбивания на самолети: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Задава вероятността за катастрофа на летателно средство
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Задава вероятността за катастрофа на летателно средство.{}* Винаги има риск за катастрофа при приземяване на големи самолети на малки летища
 ###length 3
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Никакви
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Намалени
@@ -1381,6 +1384,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ако тази
 
 ###setting-zero-is-special
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Скалиране на производството в града: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Скалирай производството на товари в градовете с тази стойност
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автоматично поднови превозното средство, когато остарее: {STRING}
@@ -1627,8 +1632,8 @@ STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Максима�
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Макс. брой коли за компания: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Максимално количество пътни превозни средства на компанията
 
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Макс. брой самолети за компания: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Максимално количество самолети на компанията
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Макс. брой летателни средства за компания: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Максимално количество летателни средства на компанията
 
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Макс. брой кораби за компания: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Максимално количество кораби на компанията
@@ -1655,13 +1660,13 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Интерва�
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Изберете дали обслужването на превозните средства е предизвикано от времето изминало от последното им обслужване, или от падането на надеждността им под даден процент от максималната им надеждност
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Интервал на обслужване за влакове: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Задайте интервала за обслужване на новите влакове по подразбиране, ако такъв интервал не е зададен за превозното средство
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Задайте интервала по подразбиране за обслужване на нови влакове (ползва се, в случай че такъв интервал не е изрично зададен)
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Интервал на обслужване за автомобили: {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Задайте интервала за обслужване на новите пътни превозни средства по подразбиране, ако такъв интервал не е зададен за превозното средство
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Интервал на обслужване за самолети: {STRING}
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Задайте интервала за обслужване на новите въздухоплавателни средства по подразбиране, ако такъв интервал не е зададен за превозното средство
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Задайте интервала по подразбиране за обслужване на нови автомобили (ползва се, в случай че такъв интервал не е изрично зададен)
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Интервал на обслужване за летателни средства: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Задайте интервала по подразбиране за обслужване на нови летателни средства (ползва се, в случай че такъв интервал не е изрично зададен)
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Интервал на обслужване за кораби: {STRING}
-STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Задайте интервала за обслужване на новите кораби по подразбиране, ако такъв интервал не е изрично зададен за превозното средство
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Задайте интервала по подразбиране за обслужване на нови кораби (ползва се, в случай че такъв интервал не е изрично зададен)
 ###length 3
 
 ###setting-zero-is-special
@@ -1733,7 +1738,12 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Начална 
 
 ###setting-zero-is-special
 
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Тип на икономика: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :В уравновесената икономика се правят по-чести промени в производството с по-малки стъпки. В замразената икономика се прекъсват всякакви производствени промени и затваряния на индустрии. Тази настройка може да няма ефект, ако типовете индустрия се управляват от NewGRF
 ###length 3
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Оригинална
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Уравновесена
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Замразена
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Процент от leg profit to pay in feeder systems: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Процент от приходите, който се плаща на intermediate legs in feeder systems, давайки ви повече контрол върху приходите
@@ -1779,7 +1789,11 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Забране�
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Разрешено
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Разрешено с избираем план на града
 
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Генериране на товари в градовете: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Колко товар се създава от къщите в градовете, съотнесено към общата популация в града.{}Квадратичен растеж: Два пъти по-голям град произвежда четири пъти повече пътници.{}Линеен растеж: Два пъти по-голям град произвежда два пъти повече пътници
 ###length 2
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Квадратично (оригинална настр.)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Линейно
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Разпределяне на дърветата в гората: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Контролирайте случайното появяване на дървета по време на игра. Това може да засегне промишленостите, които зависят от растежа на дървета, като например дърводелниците
@@ -2010,18 +2024,18 @@ STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Пока
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Показване цветовите схеми на влаковете
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Показване на цветови схеми за автомобилите
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Показване цветови схеми на корабите
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Показване цветовата схема на самолетите
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Показване цветовата схема на летателните средства
 STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Покажи цветовете за ППС
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Изберете основния цвят за избраната схема. Ctrl присвоява цвета за всички схеми
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Изберете допълнителен цвят за избраната схема. Ctrl присвоява цвета за всички схеми
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Изберете цветова схема за промяна или няколко - CTRL+щрак. Натиснете в кутията за да превключите използването на схемата
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Няма създадени групи от ППС
-STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Няма създадени групи от самолети
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Няма създадени групи от летателни средства
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Стандартен Ливъри
 STR_LIVERY_STEAM                                                :Парен локомотив
-STR_LIVERY_DIESEL                                               :Диселов двигател
+STR_LIVERY_DIESEL                                               :Дизелов двигател
 STR_LIVERY_ELECTRIC                                             :Електрически локомотив
 STR_LIVERY_MONORAIL                                             :Монорелсов локомотив
 STR_LIVERY_MAGLEV                                               :Маглев локомотив
@@ -2202,6 +2216,9 @@ STR_NETWORK_CLIENT_LIST_SERVER                                  :Сървър
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :Име
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :Административни действия за извършване за този клиент
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :Административни действия за извършване за тази компания
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Изпрати съобщение до този играч
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Изпрати съобщение до всички играчи от тази компания
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Изпрати съобщение до всички наблюдатели
 
 # Matches ConnectionType
 ###length 5
@@ -2466,6 +2483,12 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Дълж
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Влачене & Пускане
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Строене на станция чрез изтегляне
 
+STR_PICKER_MODE_ALL                                             :Всичко
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Превключване показването на обекти от всички класове
+STR_PICKER_MODE_USED                                            :Използвано
+STR_PICKER_MODE_USED_TOOLTIP                                    :Превключване показването само на съществуващи обекти
+STR_PICKER_MODE_SAVED                                           :Записани
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Превключване показването само на записани обекти
 
 
 
@@ -2515,10 +2538,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Пост
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Строене на трамвайна линия в Автоматичен режим. Ctrl превключва между строене/разрушаване на линия. Shift строеж/цена за построяване
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Строене на автомобилно депо (за строене и сервиз на МПС-та). Shift за показване на цената за построяване
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Строене на трамвайно депо (за покупка и обслужване на трамваи). Shift строеж/цена за построяване
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Строене на автогара. Ctrl позволява съединяването на автогари. Shift строеж/цена за построяване
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Строене на пътническа трамвайна спирка. Ctrl позволява съединяването на спирки. Shift строеж/цена за построяване
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Строене на товарна гара. Ctrl позволява съединяването на гари. Shift строеж/цена за построяване
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Строене на товарна трамвайна спирка. Ctrl позволява съединяването на спирки. Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Строене на автобусна спирка. Ctrl+Click за съединяване с други товарни станции. Shift за показване на цената за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Строене на трамвайна спирка. Ctrl+Click за съединяване с други товарни станции. Shift за показване на цената за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Строене на товарна станция за камиони. Ctrl+Click позволява съединяването на гари. Shift за показване на цената за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Строене на товарна трамвайна станция. Ctrl+Click за съединяване с други товарни станции. Shift за показване на цената за построяване
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Активирай/Деактивирай еднопосочни пътища
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Построй пътен мост. Shift строеж/цена за построяване
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Строене на мост за трамваи. Shift строеж/цена за построяване
@@ -2536,14 +2559,14 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Орие
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Ориентация на трамвайно депо
 
 # Road vehicle station construction window
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Ориентация на автогара
-STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Ориентация на автогарата
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ориент. товарна гара
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Ориентация на товарната гара
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Посока на пътническата спирка за трамваи
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Избор посоката на пътническа трамвайна спирка
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Посока на товарната спирка за трамваи
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Избор посоката на товарна трамвайна спирка
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Ориентация на автобусна спирка
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Ориентация на автобусната спирка
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ориентация на товарна станция за камиони
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Ориентация на товарната станция за камиони
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Ориентация на трамвайна спирка
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Ориентация на трамвайната спирка
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Ориентация на товарна трамвайна станция
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Ориентация на товарната трамвайна станция
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Воднопътен строеж
@@ -2575,7 +2598,7 @@ STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Клас
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}План {NUM}
 
 STR_AIRPORT_SMALL                                               :Малко
-STR_AIRPORT_CITY                                                :Град
+STR_AIRPORT_CITY                                                :Градско
 STR_AIRPORT_METRO                                               :Метрополисно
 STR_AIRPORT_INTERNATIONAL                                       :Международно
 STR_AIRPORT_COMMUTER                                            :Комютър
@@ -2585,9 +2608,9 @@ STR_AIRPORT_HELIDEPOT                                           :Хеликоп�
 STR_AIRPORT_HELISTATION                                         :Хеликоптерна станция
 
 STR_AIRPORT_CLASS_SMALL                                         :Малки летища
-STR_AIRPORT_CLASS_LARGE                                         :Голямо летище
+STR_AIRPORT_CLASS_LARGE                                         :Големи летища
 STR_AIRPORT_CLASS_HUB                                           :Централни летища
-STR_AIRPORT_CLASS_HELIPORTS                                     :Хеликоптерни самолети
+STR_AIRPORT_CLASS_HELIPORTS                                     :Хеликоптерни летища
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Произведен шум: {GOLD}{COMMA}
 
@@ -2759,10 +2782,10 @@ STR_LAI_TREE_NAME_RAINFOREST                                    :Дъждовн�
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Кактуси
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :ЖП гара
-STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Хангар за самолети
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Хангар за летателни средства
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Летище
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Товарна гара
-STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Автогара
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Товарна станция за камиони
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Автобусна спирка
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Корабен док
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Шамандура
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Пътна точка
@@ -2812,6 +2835,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Скорост на кадрите
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Скороср на симулация: {STRING}
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Текущ коефициент за скорост на играта: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Колко бързо върви играта в момента, сравнено с очакваната скорост при нормална симулация
 STR_FRAMERATE_CURRENT                                           :{WHITE}Текущ
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Средно
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} кадри/сек
@@ -3306,13 +3330,13 @@ STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Пром
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Показване на всички влакове които минават през гарата
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Показване на всички автомобили които минават през гарата
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Показване на всички самолети които кацат на летището
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Показване на всички летателни средства които кацат на летището
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Показване на всички кораби които спират на пристанището
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Преименуване на станция
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Затвори летище
-STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Забранява кацането на самолети в летището
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Забранява кацането на летателни средства на това летище
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3340,12 +3364,12 @@ STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Стро�
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Нови превозни средства
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Влакове
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Автомобили
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Самолети
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Летателни средства
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Кораби
 STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Инфраструктура
 STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Влакове
 STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Автомобили
-STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Самолети
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Летателни средства
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Кораби
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Лихва по заема
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Други
@@ -3377,7 +3401,7 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Цвет�
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Машини:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} влак{P "" а}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} автомобил{P "" а}
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} самолет{P "" а}
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} летателн{P о и} средств{P о а}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} кораб{P "" а}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Николко
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Стойност на Компанията: {WHITE}{CURRENCY_LONG}
@@ -3429,8 +3453,14 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Лети
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Отсъства -
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% транспортирани){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} и още {NUM}...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Имена на индустриите - натиснете, за да центрирате камерата върху индустрията. Ctrl+Click отваря прозорец с нов изглед към индустрията
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Приеман товар {SILVER}{STRING}
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3452,19 +3482,19 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Пром
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Влак{P "" а}
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Автомобил{P "" а}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Кораб{P "" а}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Самолет{P "" а}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Летателн{P о и} средств{P о а}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Влакове - кликни върху някой влак за повече информация
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Коли - натиснете върху кола за информация
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораби - натисни върху кораб за информация
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Самолет - натиснете върху самолет за информация
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Влакове - кликнете върху влак за повече информация
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Автомобили - кликнете върху автомобил за повече информация
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораби - кликнете върху кораб за повече информация
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Летателни средства - натиснете върху летателно средство за повече информация
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Налични влакове
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Налични коли
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Налични автомобили
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Налични кораби
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Налични самолети
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Налични летателни средства
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Направи списък
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Прати инструкциите до всички машини в този лист
@@ -3491,13 +3521,13 @@ STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Спод
 STR_GROUP_ALL_TRAINS                                            :Всички влакове
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Всички пътни превозни средства
 STR_GROUP_ALL_SHIPS                                             :Всички кораби
-STR_GROUP_ALL_AIRCRAFTS                                         :Всички самолети
+STR_GROUP_ALL_AIRCRAFTS                                         :Всички летателни средства
 
 ###length VEHICLE_TYPES
 STR_GROUP_DEFAULT_TRAINS                                        :Безгрупни влакове
 STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Безгрупни пътни превозни средства
 STR_GROUP_DEFAULT_SHIPS                                         :Безгрупни кораби
-STR_GROUP_DEFAULT_AIRCRAFTS                                     :Безгрупни самолети
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Безгрупни летателни средства
 
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Групи - Щракни на група за да видиш списък на всички превозни средства от тази група
@@ -3579,7 +3609,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Купу
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Купи маркираната влакова машина. Shift за показване на цената за построяване
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Купи маркирания автомобил. Shift за показване на цената за построяване
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Купи маркирания кораб. Shift за показване на цената за построяване
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купи маркирания самолет. Shift за показване на цената за построяване
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купи маркираното летателно средство. Shift за показване на цената за построяване
 
 ###length VEHICLE_TYPES
 
@@ -3617,7 +3647,7 @@ STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Прев
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Преименуване на влакова машина
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Преименуване на автомобил
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Преименуване на кораб
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Преименуване на самолета
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Преименуване на летателно средство
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -3716,7 +3746,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :локомот�
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобил
 
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :самолет
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :летателно средство
 STR_ENGINE_PREVIEW_SHIP                                         :кораб
 
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :{CURRENCY_LONG} Тегло: {WEIGHT_SHORT}
@@ -3740,7 +3770,7 @@ STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Коло
 STR_REPLACE_VEHICLE_TRAIN                                       :Влак
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Автобус/камион
 STR_REPLACE_VEHICLE_SHIP                                        :Кораб
-STR_REPLACE_VEHICLE_AIRCRAFT                                    :Самолет
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :Летателно средство
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Избор на нов двигател за замяната
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Изберете нов двигател, който бихте желали да поставите на мястото на избрания в ляво двигател
@@ -3806,13 +3836,13 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Прео
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Пътен лист. Ctrl-click показва разписанието на влака
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Пътен лист. Ctrl-click показва разписанието на превозното средство
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Покажи маршрута на кораба. Ctrl-click показва разписанието на кораба
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Маршрут на самолета. Ctrl-click показва разписанието на самолета
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Маршрут на летателно средство. Ctrl+Click показва разписанието
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Показва информация за влака
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Показва информация за автомобила
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Покажи детайлите за кораба
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Информация за самолета
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Показва информация за кораба
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Показва информация за летателното средство
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Действие на текущо ПС - кликнете, за да спрете/пуснете ПС
@@ -3828,11 +3858,12 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Няма �
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Изчакване на свободен път
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Прекалено далече до следващата дестинация
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Отиващ към {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Отправя се към {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Без заповеди, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Отиващ към {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Отправя се към {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Сервиз в {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - Отправя се към {0:WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - Отправя се към {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Сервиз в {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Раздалечи и сервизирай в {0:DEPOT}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Не може да достигне {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Не може да достигне {WAYPOINT}, {VELOCITY}
@@ -4317,6 +4348,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Бяха
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Голям скрииншот
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Снимката на екрана ще е с резолюция от {COMMA} x {COMMA} пиксела. Правенето на снимката може да отнеме известно време. Искате ли да продължите?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Височинна карта успешно записана като '{STRING}'. Най-високият връх е {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Екраноснимката е успешно зъхранена с името '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Екраноснимката не се получи!
 
@@ -4409,11 +4441,11 @@ STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Няма
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Промяна на параметрите за генериране на карта, за да получите по-добра карта
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Тук не може да бъде построена ЖП гара...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Тук не може да бъде построена автогара...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Тук не може да бъде построена товарна гара...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Тук не може да бъде построена пътническа трамвайна спирка...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Тук не може да бъде построена товарна трамвайна спирка...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Тук не може да бъде построена влакова гара...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Тук не може да бъде построена автобусна спирка...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Тук не може да бъде построена товарна станция за камиони..
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Тук не може да бъде построена трамвайна спирка...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Тук не може да бъде построена товарна трамвайна станция...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Тук не може да бъде построено пристанище...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Тук не може да бъде построено летище...
 
@@ -4433,19 +4465,19 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... сп
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Не може да се премахва част от гарата...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Първо трябва да бъде разрушена ЖП гарата
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Не може да премахне автогарата...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Не може да премахне товарната гара...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Не може да се разруши пътническата трамвайната спирка...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Не може да се разруши товарната трамвайна спирка...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Първо трябва да бъде разрушена влаковата гара
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Не може да се премахне автобусната спирка...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Не може да се премахне товарната станция за камиони...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Не може да се премахне трамвайната спирка...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Не може да се премахне товарната трамвайна станция...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Първо трябва да бъде разрушена спирката
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... няма станция тук
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Първо трябва да бъде разрушена ЖП гарата
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Първо трябва да бъде разрушена автогарата
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Първо трябва да бъде разрушена товарната гара
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Първо трябва да бъде разрушена пътническата трамвайната спирка
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Първо трябва да бъде разрушена товарната трамвайна спирка
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Първо трябва да бъде разрушена влаковата гара
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Първо трябва да бъде разрушена автобусната спирка
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Първо трябва да бъде разрушена товарната станция за камиони
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Първо трябва да бъде разрушена трамвайната спирка
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Първо трябва да бъде разрушена товарната трамвайна станция
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Първо трябва да бъде разрушено пристанището
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Първо трябва да бъде разрушено летището
 
@@ -4584,27 +4616,27 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Поде
 
 ###length VEHICLE_TYPES
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Влак на пътя
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Кола на пътя
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Автомобил на пътя
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Кораб на пътя
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Самолет на пътя
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Летателно средство на пътя
 
 ###length VEHICLE_TYPES
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Превозното средство не е на разположение
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Превозното средство не е на разположение
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Влакът не е на разположение
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Автомобилът не е на разположение
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Корабът не е на разположение
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Самолетът не е на разположение
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Летателното средство не е на разположение
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Преоборудването на влака е невъзможно...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Преоборудването на автомобила е невъзможно...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Не може да преустрои кораб...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Не може да се преустрои самолета...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Преоборудването на кораба е невъзможно...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Преоборудването на летателното средство е невъзможно...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Влакът не може да се преименува...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Автомобилът не може да се преименува...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Корабът не може да се преименува...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Самолетът не може да се преименува...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Летателното средство не може да се преименува...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Влакът не може да се спре/пусне...
@@ -4656,7 +4688,7 @@ STR_ERROR_TRAIN_START_NO_POWER                                  :Влака ня
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Не може да обърне пътното превозно средство...
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Самолета е във въздуха
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Летателното средство е във въздуха
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Няма повече място за още заповеди
@@ -4675,14 +4707,14 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Не м�
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Не може да се спре споделянето на назначенията
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Не може да се копира списъка от задачи...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... прекалено далече от предходната цел
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... самолета няма достатъчен обхват
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... летателното средство няма достатъчен обхват
 
 # Extra messages which go on the third line of errors, explaining why orders failed
-STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Няма налична ЖП гара
-STR_ERROR_NO_BUS_STATION                                        :{WHITE}Няма налична автогара
-STR_ERROR_NO_DOCK                                               :{WHITE}Няма наличен док
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Няма налична влакова гара
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Няма налична автобусна спирка
+STR_ERROR_NO_DOCK                                               :{WHITE}Няма налично пристанище
 STR_ERROR_NO_AIRPORT                                            :{WHITE}Няма налично летище
-STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Няма спирки със съвместим тип
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Няма спирки от съвместим тип
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Няма спирки от съвместим тип
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Няма спирки, които да са подходящи за съчленени пътни превозни средства.{}Съчленените пътни превозни средства изискват спирка за преминаване, а не крайна спирка
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Няма налична ЖП пътна точка
