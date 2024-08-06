@@ -148,7 +148,7 @@ DiagDirection Rotate(DiagDirection dir, DiagDirDiff angle) {
  */
 Axis Rotate(Axis axis, DiagDirDiff angle) {
 	if (angle == DIAGDIRDIFF_90LEFT || angle == DIAGDIRDIFF_90RIGHT) {
-		return (Axis)(axis ^ 1);
+		return static_cast<Axis>(axis ^ 1);
 	}
 	return axis;
 }
