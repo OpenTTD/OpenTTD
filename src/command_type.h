@@ -317,8 +317,8 @@ enum Commands : uint16_t {
 	CMD_STORY_PAGE_BUTTON,            ///< selection via story page button
 
 	CMD_LEVEL_LAND,                   ///< level land
-	CMD_CLONE_AREA_COPY,              ///< Clone land
-	CMD_CLONE_AREA_PASTE,             ///< Clone land
+	CMD_CLONE_AREA_COPY,              ///< copy land
+	CMD_CLONE_AREA_PASTE,             ///< paste land
 
 	CMD_BUILD_LOCK,                   ///< build a lock
 
