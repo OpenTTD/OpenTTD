@@ -61,6 +61,7 @@ static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tr
 /**
  * Tests if a tile can be converted to MP_TREES
  * This is true for clear ground without farms or rocks.
+ * This test also considers the tree line in the subarctic climate.
  *
  * @param tile the tile of interest
  * @param allow_desert Allow planting trees on CLEAR_DESERT?
@@ -68,6 +69,9 @@ static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tr
  */
 static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 {
+	/* Trees do not grow in alpine terrain, above the tree line. */
+	if (_settings_game.game_creation.landscape == LT_ARCTIC && GetTileZ(tile) >= _settings_game.game_creation.tree_line_height) return false;
+
 	switch (GetTileType(tile)) {
 		case MP_WATER:
 			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
@@ -433,6 +437,12 @@ CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 			case MP_CLEAR: {
 				if (IsBridgeAbove(current_tile)) {
 					msg = STR_ERROR_SITE_UNSUITABLE;
+					continue;
+				}
+
+				/* Trees do not grow in alpine terrain, above the tree line. */
+				if (_settings_game.game_creation.landscape == LT_ARCTIC && GetTileZ(current_tile) >= _settings_game.game_creation.tree_line_height) {
+					msg = STR_ERROR_TREE_ABOVE_TREELINE;
 					continue;
 				}
 
