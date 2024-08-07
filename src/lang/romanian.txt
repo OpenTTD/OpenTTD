@@ -437,6 +437,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Ieșire din edi
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Ieșire din joc
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :{BLACK}Generați orașe
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Plasează case
 
 # Settings menu
 ###length 16
@@ -1006,6 +1008,7 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indiană
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indoneziană
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysian
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats leton
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portughez
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvare automată
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Alege intervalul de timp dintre salvările automate
@@ -1050,8 +1053,9 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Bifați 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Folosiți fontul tradițional al sprite-ului
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Bifați această casetă dacă preferați să utilizați fontul sprite tradițional cu dimensiune fixă.
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Fonturi anti-alias
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Bifați această casetă pentru anti-alias fonturi redimensionabile.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Bifați această casetă pentru a aplica anti-alias fonturilor redimensionabile.
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Sondaj automat
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participă în sondaje automate
@@ -1080,6 +1084,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Setul de
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selectați setul de muzică de bază
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informații adiționale despre setul de muzică de bază
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Obțineți conținut
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Verificați daca există conținut de actualizat
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(fără pluginuri care să fie integrate cu platformele sociale instalate)
 
@@ -1479,6 +1485,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avertisment dac
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Când este activat, un mesaj de știri este trimis atunci când un vehicul nu a realizat niciun profit într-un an
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Când este activat, un mesaj de știri este trimis atunci când un vehicul nu a realizat niciun profit într-o perioadă
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Primește mesaj dacă un vehicul este învechit: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Când este activat, un mesaj de înștiințare este trimis când un vehicul se învechește
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehiculele nu expiră niciodată: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :După activare, toate modelele de vehicule rămân disponibile permanent după introducerea lor
@@ -1740,7 +1748,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pastrează acti
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Menține barele de construcție pentru tunele, poduri șamd deschise după folosire
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Elimină automat semnalele pe durata construcției șinelor: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Elimină automat semnalele când construiești căi ferate dacă ele îți vin în cale. Nu uita că asta ar putea conduce la accidente feroviare.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Elimină automat semafoarele de semnalizare când construiești căi ferate dacă ele îți vin în cale. Nu uita că acest lucru poate duce la accidente feroviare.
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Limita de viteză pentru trecerea timpului: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limitează progresul jocului când este activată trecerea rapidă a timpului. 0 = fără limită (atât de rapid pe cât permite calculatorul tău). Valorile sub 100% încetinesc jocul. Plafonul vitezei depinde de specificațiile calculatorului tău și pot varia în funcție de joc.
@@ -2786,6 +2794,12 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Alege lu
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construiește o stație prin drag & drop
 
+STR_PICKER_MODE_ALL                                             :Toate
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Comutați afișarea articolelor din toate clasele
+STR_PICKER_MODE_USED                                            :Folosit
+STR_PICKER_MODE_USED_TOOLTIP                                    :Comutați afișarea numai a elementelor existente
+STR_PICKER_MODE_SAVED                                           :Salvat
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Comutați afișarea numai a elementelor salvate
 
 
 
@@ -4963,6 +4977,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nu m
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lucrari la drum in curs de desfasurare
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Acest oraș nu poate fi șters...{}O stație sau un depou face referire la acest oraș, sau o parcelă deținută de oraș nu poate fi eliminată
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nu există niciun loc potrivit pentru o statuie în centrul acestui oraș
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Nu s-a putut construi casă
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... prea multe industrii
@@ -5000,6 +5015,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nu se po
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Este adiacentă mai multor stații
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stație prea întinsă
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... număr neacceptat de șine
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... lungime neacceptată
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Prea multe stații
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Stația are prea multe componente
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Prea multe stații de autobuz
@@ -5035,6 +5052,7 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Unește 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Prea aproape de alt punct de tranzit
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Nu se poate plasa o haltă aici...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Nu s-a putut construi punct de drum aici...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nu se poate amplasa baliză aici...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nu pot schimba numele haltei...
 
@@ -5240,6 +5258,8 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Schimbă
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Niciun vehicul nu este disponibil încă
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Începe un joc nou după {DATE_SHORT} sau utilizează un NewGRF care oferă vehicule în avans
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Nu sunt disponibile tipuri de drumuri care pot fi construite în oraș
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Schimbă-ți configurația NewGRF
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nu se poate permite trenului să treacă în caz de pericol...
@@ -5770,6 +5790,8 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

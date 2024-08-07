@@ -1534,7 +1534,7 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :顯示工具提
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :設定游標需在工具按鈕之上停留多久才會顯示工具使用提示。如此選項的值為 0，您需在工具按鈕上按滑鼠右鍵以顯示工具使用提示
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :游標在按鈕之上停留 {COMMA} 秒
 ###setting-zero-is-special
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右撳
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右鍵點擊
 
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :於標籤顯示市鎮人口：{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :在地圖的市鎮標籤上顯示市鎮人口。
