@@ -849,7 +849,7 @@ static void ShipController(Ship *v)
 				v->y_pos = gp.y;
 				v->UpdatePosition();
 				if ((v->vehstatus & VS_HIDDEN) == 0) v->Vehicle::UpdateViewport(true);
-				return;
+				continue;
 			}
 
 			/* Ship is back on the bridge head, we need to consume its path
