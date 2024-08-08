@@ -551,7 +551,7 @@ public:
 					if (as->IsAvailable()) {
 						_selected_airport_class = cls.Index();
 						this->vscroll->SetCount(cls.GetSpecCount());
-						this->SelectOtherAirport(as->GetIndex());
+						this->SelectOtherAirport(as->index);
 						return;
 					}
 				}
