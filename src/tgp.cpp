@@ -670,9 +670,9 @@ static void HeightMapAdjustWaterLevel(Amplitude water_percent, Height h_max_new)
 	HeightMapGetMinMaxAvg(&h_min, &h_max, &h_avg);
 
 	/* Allocate histogram buffer and clear its cells */
-	int *hist_buf = CallocT<int>(h_max - h_min + 1);
+	std::vector<int> hist_buf(h_max - h_min + 1);
 	/* Fill histogram */
-	hist = HeightMapMakeHistogram(h_min, h_max, hist_buf);
+	hist = HeightMapMakeHistogram(h_min, h_max, hist_buf.data());
 
 	/* How many water tiles do we want? */
 	desired_water_tiles = A2I(((int64_t)water_percent) * (int64_t)(_height_map.size_x * _height_map.size_y));
@@ -696,8 +696,6 @@ static void HeightMapAdjustWaterLevel(Amplitude water_percent, Height h_max_new)
 		if (h < 0) h = I2H(0);
 		if (h >= h_max_new) h = h_max_new - 1;
 	}
-
-	free(hist_buf);
 }
 
 static double perlin_coast_noise_2D(const double x, const double y, const double p, const int prime);
