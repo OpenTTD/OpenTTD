@@ -802,9 +802,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Dezactivează toate
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activează toate
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Afișează înălțimea
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Afișați numele industriilor
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nu afișa nicio industrie pe hartă
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Afișează toate industriile pe hartă
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Comută afișarea hărții de înălțimi
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Comută afișarea numelor de industrie
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nu se afisează proprietățile companiilor pe hartă
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Afișează toate proprietățile companiei pe hartă
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nu afișa tipuri de încărcături pe hartă
@@ -1819,7 +1821,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Câtă memorie 
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervaluri de service în procente: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Dacă este activată, vehiculele încearcă să se repare când fiabilitatea le scade sub un anumit procent.{}{}De exemplu, dacă fiabilitatea maximă a unui vehicul este 90% și intervalul de service este 20%, vehiculul va încerca să intre în service când ajunge la 72% fiabilitate.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Dacă este activată, vehiculele încearcă să se repare când fiabilitatea le scade sub un anumit procent.{}{}De exemplu, dacă fiabilitatea maximă a unui vehicul este 90% și intervalul de service este 20%, vehiculul va încerca să intre în service când ajunge la 72% fiabilitate
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalul de întreținere implicit al trenurilor: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Alege perioada de întreținere implicită pentru noi vehicule feroviare, dacă nu există un interval de întreținere stabilit pentru vehicul
@@ -1830,6 +1832,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Alege perioada 
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalul de întreținere implicit al navelor: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Alege perioada de întreținere implicită pentru noi nave, dacă nu există un interval de întreținere stabilit pentru nave
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Zi{P "0" "" "s"}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Minut{P "0" "" "s"}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dezactivat
@@ -2476,6 +2481,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Numele tău în
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Acțiuni administrative de efectuat pentru acest client
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Acțiuni administrative de efectuat pentru această companie
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Intră în această companie
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Autorizați acest client să se alăture companiei dvs
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Trimite un mesaj acestui jucător
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Trimite un mesaj tuturor jucătorilor acestei companii
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Trimite un mesaj tuturor spectatorilor
@@ -2550,6 +2556,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Nu ți-a
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Nu ai setat numele serverului. Numele se setează din partea de sus a ferestrei Multiplayer
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Versiunea acestui client este diferită de cea a serverului
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Parolă greșită
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Nu sunteți pe lista clienților permisi
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serverul este plin
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Accesul tău este interzis pe acest server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Ai fost dat afară din joc
@@ -2577,6 +2584,8 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :recepționat pa
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :versiune incorectă
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nume folosit deja
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :parolă incorectă
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :nu este pe lista de permise
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :nici una dintre metodele de autentificare solicitate nu este disponibilă
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :Id de companie gresit in DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :dat afară de pe server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :a încercat să folosească un cheat
@@ -2801,8 +2810,26 @@ STR_PICKER_MODE_USED_TOOLTIP                                    :Comutați afiș
 STR_PICKER_MODE_SAVED                                           :Salvat
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Comutați afișarea numai a elementelor salvate
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Selectați o clasă de stație de afișat
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Selectați un tip de stație de construit. Ctrl+Click pentru a adăuga sau elimina elementele salvate
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selectați o clasă de punct de referință de afișat
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Selectați un punct de referință pentru a construi. Ctrl+Click pentru a adăuga sau elimina elementele salvate
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Selectați o clasă de stație de autobuz de afișat
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Selectați un tip de stație de autobuz pentru a construi. Ctrl+Click pentru a adăuga sau elimina elementele salvate
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selectați o clasă de stație de camion pentru a afișa
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Selectați un tip de stație de camion pentru a construi. Ctrl+Click pentru a adăuga sau elimina elementele salvate
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selectați o clasă de obiecte de afișat
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Selectați un tip de obiect de construit. Ctrl+Click pentru a adăuga sau elimina elementele salvate. Ctrl+Click+Trage pentru a selecta zona în diagonală. De asemenea, apăsați Shift pentru a afișa doar estimarea costurilor
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selectați o zonă de oraș pentru afișare
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selectați un tip de casă de construit. Ctrl+Click pentru a adăuga sau elimina elementele salvate
 
+STR_HOUSE_PICKER_CAPTION                                        :Selectia caselor
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Margine
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferie
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbiile periferice
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbiile urbane
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrul orașului
 
 STR_STATION_CLASS_DFLT                                          :Implicită
 STR_STATION_CLASS_DFLT_STATION                                  :Stație implicită
@@ -2857,6 +2884,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construiți secțiune de tramvai folosind modul Autotram. Ctrl+Clic pentru a elimina secțiunea de tramvai. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construiește o autobază (pentru achiziție și service vehicule). De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construiește un depou de tramvaie (pentru achiziție și service vehicule). De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Construiți un punct de referință pe linia de tramvai. Ctrl+Click pentru a selecta un alt punct de referință la care să vă alăturați. De asemenea, apăsați Shift pentru a afișa doar estimarea costurilor
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construiți stația de autobuz. Ctrl+Clic pentru a selecta o altă stație la care să se alăture. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construiește stație de tramvai pentru călători. Ctrl+Clic pentru a selecta o altă stație la care să se alăture. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construiți stația de camion. Ctrl+Clic pentru a selecta o altă stație la care să se alăture. De asemenea, apăsați Shift pentru a afișa numai estimarea costurilor
@@ -3059,6 +3087,8 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Propriet
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Proprietar al căii ferate: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoritatea locală: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Niciuna
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonate: {LTBLUE}{NUM} x {NUM} x {NUM}
+STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}Index de plăci: {LTBLUE}{NUM} ({HEX})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construit/renovat: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Clasa stației: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tip stație: {LTBLUE}{STRING}
@@ -3369,8 +3399,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Sigur d
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% efectuat
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generare lume
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Generare peisaj
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generarea râurilor
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generare zonă dură și pietroasă
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Generare oraș
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Generare industrie
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generare fixă
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generare arbori
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Se configurează jocul
@@ -4872,7 +4905,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Venit es
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Salvarea se efectueaza încã,{}vã rugãm asteptati pânã se încheie!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Auto-salvarea a esuat
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Discul nu a putut fi citit
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Salvarea jocului a eșuat...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Ștergerea fișierului a eșuat
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE} Încărcărcarea jocului a eșuat...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Eroare internă: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Salvare eronată - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Salvarea a fost făcută cu o versiune mai nouă
@@ -5058,6 +5093,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nu pot s
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nu se poate desființa halta de aici...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Trebuie îndepărtat punctul de tranzit feroviar mai intai
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Trebuie să eliminați mai întâi punctul de referință de pe drum
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... baliză în cale
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... baliza este folosită de o altă companie!
 
@@ -5260,6 +5296,8 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Începe 
 
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Nu sunt disponibile tipuri de drumuri care pot fi construite în oraș
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Schimbă-ți configurația NewGRF
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Nu sunt disponibile încă tipuri de drumuri care pot fi construite în oraș
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Începeți un nou joc după {DATE_SHORT} sau utilizați un NewGRF care oferă tipuri de drumuri de început care pot fi construite în oraș
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nu se poate permite trenului să treacă în caz de pericol...
@@ -5303,6 +5341,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Nu exist
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Acest avion nu poate ateriza la acest heliport
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Acest elicopter nu poate ateriza pe acest aeroport
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Nu există niciun punct intermediar feroviar
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Nu există niciun punct de referință rutier
 STR_ERROR_NO_BUOY                                               :{WHITE}Nu există geamanduri
 
 # Timetable related errors
@@ -5791,7 +5830,9 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}m
 STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
@@ -5809,6 +5850,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING2                                                :{STRING}
+STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

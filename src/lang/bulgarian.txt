@@ -246,8 +246,12 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}м
 
 # Time units used in string control characters
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}д{P ен ни}
 
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}месец{P "" а}
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}минут{P а и}
 
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}период{P "" а}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Филтър:
@@ -405,7 +409,7 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Постави 
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Игрови настройки
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Настройки
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Разширени настройки
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf настройки
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настройки на прозрачност
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показване имената на градовете
@@ -854,9 +858,15 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{STATION} се�
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Предложението за субсидия изтече:{}{}Превозът на {STRING} от {STRING} до {STRING} повече няма да получава субсидия
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Анулирана субсидия:{}{}Превозът на {STRING} от {STRING} до {STRING} вече не се субсидира
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Предложена субсидия:{}{}Първият превоз на {STRING} от {STRING} до {STRING} ще спечели {UNITS_YEARS_OR_MINUTES} субсидия от местните власти!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Субсидия е спечелена от {STRING}!{}{}{STRING} от {STRING} до {STRING} ще се заплаща с 50% повече за {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Субсидия е спечелена от {STRING}!{}{}{STRING} от {STRING} до {STRING} ще се заплаща двойно за {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Субсидия е спечелена от {STRING}!{}{}{STRING} от {STRING} до {STRING} ще се заплаща тройно за {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Субсидия е спечелена от {STRING}!{}{}{STRING} от {STRING} до {STRING} ще се заплаща четворно за {UNITS_YEARS_OR_MINUTES}!
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Монополист на транспорта!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}Местните власти в град {TOWN} подписват договор с {STRING} за 12 минути ексклузивни транспортни права!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Камера {COMMA}
@@ -866,7 +876,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Прем
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Преместване глобалната камера до тази
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Настройки
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Игрови настройки
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Основни
 STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Изберете основни настройки
@@ -1104,7 +1114,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Разреша�
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Няма подходящи AI...{}Можете да свалите допълнителни AI чрез системата Online Content (Онлайн Съдържание)
 
 # Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Настройки
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Разширени настройки
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Филтър:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Разгъни всички
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Сгъни всички
@@ -1355,25 +1365,25 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Начален 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Изберете начален цвят за компанията
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Втори цвят за стартиращата компания: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Изберете втори цвят за стартиращата компания, ако използвате NewGRF, който го позволява.
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Изберете втори цвят за стартиращата компания, ако използвате NewGRF, който го позволява
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Летишата не губят валидност: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Летищата не губят валидност: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Разрешавайки тази настройка, всеки вид летище остава завинаги достъпно след неговото представяне
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Предупреди за загубено превозно средство: {STRING}
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Съобщава за превозни средства, които не могат да намерят пък към назначената цел
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Съобщава за превозни средства, които не могат да намерят път към назначената цел
 
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Преглед на заповеди: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Ако тази настройка бъде активирана, заповедите на превозните средства ще се проверяват периодично и ако има някакви очевидни проблеми, ще получите съобщение, когато те бъдат засечени
 ###length 3
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Изключен
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Включен, но без спрените ПС
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :На всички превозни средства
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :На всички ПС
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Предупреждение ако превозното средство е на загуба: {STRING}
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ако тази настройка бъде активирана, ще получите съобщение ако някое от Вашите ПС не е донесло печалба през изминалата година
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Ако тази настройка бъде активирана, ще получите съобщение ако някое от Вашите ПС не е донесло печалба през периода
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Ако тази настройка бъде активирана, ще получите съобщение ако някое от Вашите ПС не е донесло печалба през даден период
 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :ПС не губят валидност: {STRING.n}
@@ -1388,10 +1398,10 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Скалира�
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Скалирай производството на товари в градовете с тази стойност
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автоматично поднови превозното средство, когато остарее: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ако тази настройка бъде активирана, дадено превозно средство ще бъде автоматично заменено когато е към края на своя живот, стига условията за това да са налице
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автоматично подновяване на превозното средство, когато остарее: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ако тази настройка бъде активирана, дадено превозно средство ще бъде автоматично заменено, когато е към края на своя живот, стига условията за това да са налице
 
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Автоматично обнови превозното средство когато е на {STRING} години
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Автоматично обнови ПС {STRING} достигане на максимална експлоатационна възраст
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Относителна възраст на превозното средство, след достигане на която се предприема автоматично обновяване
 ###length 2
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} месец{P 0 "" а} преди
@@ -1401,19 +1411,19 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Минимал�
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Минимално количество пари, които трябва да останат в банката преди да могат Вашите превозни средства да бъдат автоматично обновени
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Продължителност на съобщението за грешка: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Време през което съобщенията за грешки се показват в червен прозорец. Някой (критичните) съобщения за грешки не се затварят автоматично след това време, а трябва да бъдат затворени ръчно.
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Време през което съобщенията за грешки се показват в червен прозорец. Някои (критични) съобщения за грешки не се затварят автоматично след това време, а трябва да бъдат затворени ръчно
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Покажи съвети: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Изкачване преди съветът да се покаже, когато мишката е върху елемент от интерфейса. Алтернативно съветите могат да бъдат активирани с десния бутон на мишката ако стойността е 0
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Изчакване преди съветът да се покаже, когато мишката е върху елемент от интерфейса. Ако стойността е 0, съветите се активират с десния бутон на мишката
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Изчакай за {COMMA} секунд{P 0 а и}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Десен бутон
 
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Население в табелата на града: {STRING.n}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Показва на картата броя та населението до имената на градовете
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Показване на броя на населението до името на града: {STRING.n}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Показва на картата броя на населението до имената на градовете
 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелина на линиите в графиките: {STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Дебелина на линиите в графиките. Тънките линии са по-лесни за разчитане, но по-дебелите се забелязват и разграничават по-лесно.
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Дебелина на линиите в графиките. Тънките линии са по-лесни за разчитане, но по-дебелите се забелязват и разграничават по-лесно
 
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Показване на товарите, които ПС могат да превозват в прозорците със списък {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Ако е активирано, транспортируемият товар на ПС ще се появи над него в списъците с превозни средства
@@ -1422,29 +1432,29 @@ STR_CONFIG_SETTING_LANDSCAPE                                    :Терен: {ST
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Генератор на земя: {STRING}
 ###length 2
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :оригинален
-STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :тера-генезис
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Оригинален
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :Тера-генезис
 
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(само за TerraGenesis) Хълмистост на терена
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Избиране на височината на хълмовете и планините
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Задайте колко индустрии да се генерират и какво ниво да се поддържа по време на играта
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Максимално разстояние от ръба за нефтените рафинерии: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Нефтените рафинерии се изграждат само близо до края на картата
 
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Снежната ивица: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Височина на снежната ивица: {STRING}
 
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Покритие на пустинята: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Изберете приблизителното количество пустиня върху тропическия пейзаж. Пустинята също влияе върху генерирането на индустрията и изискванията за растеж на града. Използва се само по време на генериране на карта
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Изберете приблизителното количество пустиня върху тропическия пейзаж. Пустинята влияе също върху генерирането на индустриите и изискванията за растеж на града. Използва се само по време на генериране на карта
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Стръмност на терен (само за TerraGenesis): {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Неравност на терен: {STRING}
 ###length 4
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :много полегат
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :полегат
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :стръмен
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :много стръмен
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Много полегат
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Полегат
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Стръмен
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Много стръмен
 
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Количество на реките: {STRING}
@@ -1452,26 +1462,26 @@ STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Изберет�
 
 STR_CONFIG_SETTING_TREE_PLACER                                  :Алгоритъм за поставяне на дървета: {STRING}
 ###length 3
-STR_CONFIG_SETTING_TREE_PLACER_NONE                             :без дървета
-STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :оригинален
-STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :подобрен
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Без дървета
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Оригинален
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Подобрен
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Пътни превозни средства: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Изберете страна шофиране
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Изберете страна на шофиране
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :ляво
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :дясно
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Шофиране отляво
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Шофиране отдясно
 
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Завъртане на картата: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Завъртане на височинна карта: {STRING}
 ###length 2
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Обратрно на часовниковата стрелка
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Обратно на часовниковата стрелка
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовниковата стрелка
 
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Височина на картата за плосък сценарий: {STRING}
 ###length 2
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Една или повече плочи в северния край не са празни
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Един или повече от плочките в един от краищата не е вода
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Едно или повече полета в северния край не са празни
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Едно или повече полета в един от ъглите на картата не са покрити с вода
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Максимално разпростиране на гарата: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Максималната зона в която може да се разпростират индивидуалните части от дадена гара. По-голяма стойност може да забави играта
@@ -1494,23 +1504,23 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Виолето�
 STR_CONFIG_SETTING_SCROLLMODE                                   :Поведение при скролване на Viewport: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Поведение при преместване на картата. Настройките за „заключена позиция на мишката“ не работят на всички системи, като уеб базирани версии, тъчскрийн, Linux с Wayland и други
 ###length 4
-STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Преместете прозореца за изглед с десен бутон, позицията на мишката е заключена
-STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Преместете прозореца за изглед с ляв бутон, позицията на мишката е заключена
-STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Премести картата с десен бутон
-STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Премести картата с ляв бутон
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Преместване на прозореца за изглед с десен бутон, позицията на мишката е заключена
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Преместване на прозореца за изглед с ляв бутон, позицията на мишката е заключена
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Преместване на картата с десен бутон
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Преместване на картата с ляв бутон
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавно местене на камера: {STRING.n}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ако настройката е активирана, когато натиснете на малката карта камерата ще се придвижи до там плавно, ако не е активирана камерата ще отиде там директно
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ако настройката е активирана, когато натиснете на малката карта, камерата ще се придвижи до тази позиция плавно. Ако не е активирана, камерата ще отиде там директно
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Подсказка за разстояние при строене: {STRING.f}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Показване на разстояните между плочките и разликите във височините им докато строите
 
 STR_CONFIG_SETTING_LIVERIES                                     :Показване ливреите на: {STRING}
-STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Контролирано използване на превозни средства-вид специфични марки превозни средства(в противоречие на спецификата на компанията)
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Контролирайте използването на специфични за типа превозни средства ливреи (за разлика от специфичните за компанията)
 ###length 3
-STR_CONFIG_SETTING_LIVERIES_NONE                                :нито една компания
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :собствената компания
-STR_CONFIG_SETTING_LIVERIES_ALL                                 :всички компании
+STR_CONFIG_SETTING_LIVERIES_NONE                                :Нито една компания
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Собствената компания
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :Всички компании
 
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Разговор с отбора при натискане на <ENTER>: {STRING.n}
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Размени копчетата на чата на компанията и общия чат на <ENTER> респективно на <Ctrl+ENTER>
@@ -1521,9 +1531,9 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Задава ч
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Колелото на мишката: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Разрешава придвижването с колелцата на мишката за двете направления
 ###length 3
-STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :променя увеличението
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :превърта картата
-STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :не прави нищо
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Променя увеличението на картата
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Превърта картата
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Не прави нищо
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Виртуална клавиатура: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Изберете как да се отваря софтуерната клавиатура. Предназначено е за малки устройства, които нямат хардуерна клавиатура
@@ -1538,9 +1548,9 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Еднокра�
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Дясно-кликване емулация: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Избира метода за симулация на десния бутон на мишката
 ###length 3
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда-щракане
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол-щракане
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Изключен
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда+кликване
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Изключено
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Затвори прозореца с кликване на десен бутон: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Затваря прозорец чрез кликване с десен бутон вътре в него. Деактивира подсказката при кликване с десен бутон!
@@ -1549,7 +1559,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Не
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Да
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Да, освен залепени
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Използвай {STRING} формат на датата за имена на записаните игри.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Използвай {STRING} формат на датата за имена на записаните игри
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат на датата във файловете за запис на играта
 ###length 3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :дълъг (31st Dec 2008)
@@ -1557,12 +1567,12 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :къс (31-12-2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Игрите започват в пауза: {STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ако тази настройка бъде активирана, играта автоматично ще бъде паузирана, когато започнете нова игра, това ще Ви позволи да изучите по-подробно картата
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ако тази настройка бъде активирана, играта автоматично ще бъде паузирана, когато започнете нова игра. Това ще Ви позволи да изучите по-подробно картата
 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :По време на пауза разреши: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Избира кои действия са достъпни при пауза на играта
 ###length 4
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Без действия
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Никакви действия
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Всички нестроителни действия
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Всичко без действия за промяна на терена
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Всички действия
@@ -1575,27 +1585,27 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Изберет�
 
 ###length 3
 
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Покажи пристигането и заминаването в расписанията: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Показвай очакваните времена за пристигане и заминаване в таблиците
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Покажи пристигането и заминаването в разписанията: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Показвай очакваните времена за пристигане и заминаване в таблиците с разписания
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Бързо създаване на задачите на превозните средства: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Автоматичен избор на 'отиди на', когато се отвори списъка с направления
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Стандартни релси: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Какъв да бъде видът релси, които да бъдат селектирани пристартирането или зареждането на записана игра. "Първата възможна" избира най-стария модел релси, "Последната възможна" избира най-новия тип релси, "най-използваният" избира вида релси, които са най-използвани в момента
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Какъв да бъде видът релси, които да бъдат селектирани пристартирането или зареждането на записана игра. "Първите налични" избира най-стария модел релси, "Последните налични" избира най-новия модел релси, "Най-използваните" избира вида релси, които са най-използвани в момента
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :първите налични
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :последните налични
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :най-използваните
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Първите налични
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Последните налични
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Най-използваните
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Покажи запазените линии/пътища: {STRING}
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Оцветява запазените релси в различен цвят, за да спомогне на влаковете отказващи да навлезнат в своите линии
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Оцветява запазените релсови участъци в различен цвят, за да спомогне при проблеми с влакове, отказващи да навлязат в определени релсови секции
 
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Запази инстументите активни след употреба: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Запази инструментите активни след употреба: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Остави отворени инструментите за строеж на мостове, тунели и др. след като са използвани
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Автоматично премахване на семафори по време на изграждане на релси: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Автоматично премахване на семафори по време на изграждане на релса, ако пречат. Имайте предвид, че това може да доведе до катастрофи с влак.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Автоматично премахване на сигнали по време на изграждане на релса, ако пречат. Имайте предвид, че това може да доведе до влакови катастрофи
 
 ###setting-zero-is-special
 
@@ -1614,7 +1624,7 @@ STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Звуков с
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Конструкция: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Изпълнявай звуков ефект при успешно конструиране или други действия
 
-STR_CONFIG_SETTING_SOUND_CLICK                                  :Вутона натиска: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Кликове при натискане на бутони от интерфейса: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Звуков сигнал при натискане на бутони
 
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Бедствия/катастрофи: {STRING}
@@ -1629,7 +1639,7 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Изпълня�
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Макс. брой влакове за компания: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Максимално количество влакове на компанията
 
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Макс. брой коли за компания: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Макс. брой автомобили за компания: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Максимално количество пътни превозни средства на компанията
 
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Макс. брой летателни средства за компания: {STRING}
@@ -1656,8 +1666,8 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Разреши 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes before scripts are suspended: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Максималният брой изчислителни стъпки, които даден script може да направи за един ход
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Интервал на сервиз е в проценти: {STRING.n}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Изберете дали обслужването на превозните средства е предизвикано от времето изминало от последното им обслужване, или от падането на надеждността им под даден процент от максималната им надеждност
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Интервал на сервизиране в проценти: {STRING.n}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Когато е активирано, обслужването се извършва, когато надеждността на ПС спадне с определен процент от максималната надеждност.{}{}Например, ако максималната надеждност на превозното средство е 90%, а сервизният интервал е 20%, превозното средство ще се обслужи, когато надеждността му достигне 70%
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Интервал на обслужване за влакове: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Задайте интервала по подразбиране за обслужване на нови влакове (ползва се, в случай че такъв интервал не е изрично зададен)
@@ -1668,6 +1678,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Задайте 
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Интервал на обслужване за кораби: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Задайте интервала по подразбиране за обслужване на нови кораби (ползва се, в случай че такъв интервал не е изрично зададен)
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Д{P 0 ен ни}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Минут{P 0 а и}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Изключен
@@ -1679,7 +1692,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ако тази
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Вагоните имат ограничение на скоростта: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ако тази настройка бъде активирана, максималната скорост на вагоните ще се взима предвид при изчисляването на максималната скорост на влака
 
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Без електрически влакове: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Без електрифициране на релси: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Активирането на тази настройка премахва нуждата от електрифициране на двурелсовите линии, за да могат електрическите локомотиви да се движат по тях
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Първо превозно средство пристигнало в станция: {STRING}
@@ -1693,25 +1706,25 @@ STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Показва�
 
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация за компанията: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показване на вестник когато стартира нова компания, или когато компании са запплашени от фалит
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показване на вестник, когато стартира нова компания, или когато компании са запплашени от фалит
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Откриване на индустрии: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Показване на вестник когато отварят нови индустрии
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Показване на вестник, когато се отварят нови индустрии
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Закриане на индустрии: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Показване на вестник когато индустрии затварят
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Показване на вестник, когато се затварят индустрии
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Промени в икономиката: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Показване на вестник относно глобални икономически промени
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Показване на вестник при глобални икономически промени
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Промяна на продукцията в индустрии обслужвани от играча: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Показване на вестник когато нивото на производство, на индустриите обслужвани от компанията, се променя
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Показване на вестник, когато нивото на производство на индустриите обслужвани от компанията се променя
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Промяна в производството на индустрия обслужвана от конкуренцията: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Показване на вестник, когато нивото на производство на индустриите, които са обслужвани от конкуренцията, се променя
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Промяна в производството на индустрия: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Показване на вестник когато нивото на производство на индустриите, които не са обслужвани от компанията или конкуренцията, се променя
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Показване на вестник, когато нивото на производство на индустриите, които не са обслужвани от компанията или конкуренцията, се променя
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Съвет / инфомация относно превозните средства на играча: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Показване на съобщения за превозни средства изискващи внимание
@@ -1728,12 +1741,12 @@ STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Показва�
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Обща информация: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Показване на вестник за общи събития, като например купуване на ексклузивни права, или финансиране на местна реконструкция на пътища
 ###length 3
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :изключено
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Изключено
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Обобщение
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Пълно
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Цветни новини се появяват през: {STRING}
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Годината, когато вестникарските заглавия, ще станат цветни. Преди тази година, те са черно-бели
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Годината в която вестникарските заглавия ще станат цветни. Преди тази година те са черно-бели
 STR_CONFIG_SETTING_STARTING_YEAR                                :Начална година: {STRING}
 
 ###setting-zero-is-special
@@ -1745,20 +1758,20 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Оригина�
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Уравновесена
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Замразена
 
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Процент от печалбата за отделните отсечки,  получаван при фийдър системи: {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Процент от приходите, получаван за отделните отсечки от общия път при фийдър системи, давайки Ви повече контрол върху приходите.
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Процент от печалбата за отделните отсечки, получаван при фийдър системи: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Процент от приходите, получаван за отделните отсечки от общия път при фийдър системи, давайки Ви повече контрол върху приходите
 
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :При влачене, поставя сигнализация на всеки: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Задайте дистанцията между семафорите, които ще бъдат построени на линията до следващото препятсвие (друг сигнал, кръстовище), ако сигналите се поставят чрез влачене
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :При влачене поставя сигнализация на всеки: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Задайте дистанцията между сигналите, които ще бъдат построени на линията до следващото препятсвие (друг сигнал, кръстовище), ако сигналите се поставят чрез влачене
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} поле{P 0 "" та}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Когато се влачи, поддържа точно разстояние между сигналите: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Изберете поведението на поставянето на сигнал, когато натискате Ctrl и влачите мишката, за поставяне на сигнали. Ако е изключено, сигналите ще се поставят около тунели или мостове, за да се избегнат дълги отсечки без сигнали. Ако е включено, сигналите ще се поставят на всеки Х плочки, правейки подравняването на сигнали, поставяни на паралелни релси, по-лесно
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Изберете поведението на поставянето на сигнал, когато натискате Ctrl и влачите мишката за поставяне на сигнали. Ако е изключено, сигналите ще се поставят около тунели или мостове, за да се избегнат дълги отсечки без сигнали. Ако е включено, сигналите ще се поставят на всеки Х плочки, правейки подравняването на сигнали, поставяни на паралелни релси, по-лесно
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Поставяне на семафори преди: {STRING} година
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Задайте година, когато електрическите сигнали ще бъдат използвани при влаковите линии. Преди тази година, ще бъдат използвани семафорни сигнали (имат абсолютно същата функция, но изглеждат по различен начин)
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Задайте година, в която ще започне употребата на електрически сигнали при влаковите линии. Преди тази година, ще бъдат използвани семафорни сигнали (имат абсолютно същата функция, но изглеждат по различен начин)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Смяна на вида сигнал: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Изберете какъв вид сигнали да прегледате, когато Ctrl+clicking на строенето на сигнал
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Изберете между какви видове сигнали да превключвате с Ctrl+Click върху построен сигнал
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Всички
 
@@ -1774,7 +1787,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3х3 мрежа
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Случаен
 
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Градове са разрешени да изграждат пътища: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Разрешаване на градските власти да изграждат пътища: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Позволява на градовете да строят пътища, за да се разрастват. Деактивирайте, за да попречите на местните власти на градовете да строят пътища
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :На градовете е позолено да строят кръстовища: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Активирането на тази настройка позволява на градовете да строят пътища пресичащи влакови линии
@@ -1796,18 +1809,18 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Квадрат�
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Линейно
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Разпределяне на дърветата в гората: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Контролирайте случайното появяване на дървета по време на игра. Това може да засегне промишленостите, които зависят от растежа на дървета, като например дърводелниците
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Контролирайте случайното появяване на дървета по време на игра. Това може да засегне промишленостите, които зависят от растежа на дървета, като например дъскорезниците
 ###length 4
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Позиция на лентата за инструменти: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Хоризонтално позициониране на основната лента в горната част на екрана
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Разположение на лентата за състоянието: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Хоризонтално позициониране на статус лентата в най-долната част на екрана
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :Window snap radius: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Разстояние между прозорците, преди прозорецът да бъде автоматично добавен към близкостоящите до него прозорци
-STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} пиксел{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Радиус на автоматично прилепване на прозорците: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Разстояние между прозорците, преди прозорецът да бъде автоматично прилепен към близкостоящите до него прозорци
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} пиксел{P 0 "" а}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Изключен
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Изключено
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Максимално количество на прозорците без залепване: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Брой на отворените прозорци, преди старите прозорци да бъдат автоматично затворени, за да направят място за нови
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1943,6 +1956,7 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... пр
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Отвъд паметта
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Графичният драйвер крашна играта. Хардуерното ускорение е изключено
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1954,9 +1968,9 @@ STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Игра
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Редактор сценарии
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Онлайн играчи
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Настройки
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Игрови настройки
 STR_INTRO_HIGHSCORE                                             :{BLACK}Таблица с най-добрите резултати
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Настройки
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Разширени настройки
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF настройки
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Провери онлайн съдържанието
 STR_INTRO_QUIT                                                  :{BLACK}Изход
@@ -1984,6 +1998,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}На т�
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Изход
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Желаете ли да прекъснете играта?
 STR_QUIT_YES                                                    :{BLACK}Да
 STR_QUIT_NO                                                     :{BLACK}Не
 
@@ -2318,6 +2333,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} с
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} създаде нова компания (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} напусна играта ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} си промени името на {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} изпрати {2:CURRENCY_LONG} на {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сървърът прекъсна сесията
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сървърът се рестартира...{}Моля изчакайте...
 
@@ -2492,6 +2508,10 @@ STR_PICKER_MODE_SAVED_TOOLTIP                                   :Превклю�
 
 
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Край
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Покрайнини
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Външни предградия
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Вътрешни предградия
 
 STR_STATION_CLASS_DFLT                                          :Станция по подразбиране
 STR_STATION_CLASS_WAYP                                          :Пътни точки
@@ -2722,6 +2742,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Собс
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Собственик на железопътната линия: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Община: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Нищо
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Координати: {LTBLUE}{NUM} x {NUM} x {NUM}
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Построен: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Клас на станцията: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Тип на станцията: {LTBLUE}{STRING}
@@ -3075,6 +3096,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Внимание: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Грешка: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Критично: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF "{STRING}" върна грешка:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} няма да работи с версията на TTDPatch указана от OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} е за {STRING} версията на TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} е проектиран да работи с {STRING}
@@ -3157,6 +3179,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Отид
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Въведете име за знакът
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Градове ({COMMA} от {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Отсъства -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Град){BLACK} ({COMMA})
@@ -3173,6 +3196,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} доставено
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (все още трява)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (доставено)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Градът нараства всеки {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Градът нараства всеки {ORANGE}{UNITS_DAYS_OR_SECONDS} (субсидирано)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Града {RED}не{BLACK} расте
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Лимит на шумът в градът: {ORANGE}{COMMA}{BLACK}  най-много: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Центриране на камерата върху града. Ctrl+Click отваря прозорец с нов изглед към града
@@ -3203,15 +3228,17 @@ STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Голяма р
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Финансиране преустройството на местните пътища
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Построяване на статуя на собственика на компанията
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Финансиране построяването на нови сгради
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Покупка на специални транспортни права
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Покупка на ексклузивни транспортни права
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Подкупи местните власти
 ###next-name-looks-similar
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Иницииране на малка местна рекламна кампания за привличане на повече пътници и товар към Вашите транспортни услуги.{}Осигурява временно увеличение на рейтингите на спирките и товарните станции в малък радиус около центъра на града.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Иницииране на средна местна рекламна кампания за привличане на повече пътници и товар към Вашите транспортни услуги.{}Осигурява временно увеличение на рейтингите на спирките и товарните станции в среден радиус около центъра на града.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Иницииране на голяма местна рекламна кампания за привличане на повече пътници и товар към Вашите транспортни услуги.{}Осигурява временно увеличение на рейтингите на спирките и товарните станции в голям радиус около центъра на града.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Спонсориране реконструкцията на градската пътна мрежа.{}Предизвиква значително прекъсване на пътния трафик за до 6 месеца.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Спонсориране реконструкцията на градската пътна мрежа.{}Предизвиква значително прекъсване на пътния трафик за до 6 минути.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Строеж на статуя в чест на Вашата компания.{}Осигурява перманентно увеличение (с 10 пункта) на максималния рейтинг на станциите в града.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Финансиране изграждането на нови комерсиални сгради в града.{}Осигурява перманентно увеличение на растежа на популацията в този град.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Финансиране изграждането на нови комерсиални сгради в града.{}Осигурява временно увеличение на растежа на популацията в този град.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Купете ексклузивни транспортни права в града за 12 месеца.{}Градските власти няма да позволят на пътници и товари да използват станциите на Вашите конкуренти. Успешен подкуп от конкурент ще анулира този договор.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Купете ексклузивни транспортни права в града за 12 минути.{}Градските власти няма да позволят на пътници и товари да използват станциите на Вашите конкуренти. Успешен подкуп от конкурент ще анулира този договор.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Подкупване на местната власт за увеличаване на Вашия рейтинг и анулиране на всякакви договори на конкурентите Ви за ексклузивни транспортни права. Рискувате шестмесечна забрана за транспортни дейности в рамките на града, ако бъдете хванати.{}{POP_COLOUR}Цена: {CURRENCY_LONG}
@@ -3225,7 +3252,7 @@ STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Комп
 STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Покажи цели на компанията
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Никакви -
-STR_GOALS_PROGRESS                                              :{ORANGE}напредък{STRING}
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Кликнете на задачата, за да се центрира камерата върху фабрика/град/поле от картата. Ctrl+Click отваря прозорец с нов изглед към фабриката/града/полето от картата
 
 # Goal question window
@@ -3258,8 +3285,10 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Затвори
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидии
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Субсидии за превоз на:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} от {STRING} до {STRING}{YELLOW} ({STRING})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Николко -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Субсидирани превози на:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} от {STRING} до {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Натиснете върху услугата, за да се центрира камерата върху индустрията/града. Ctrl+Click отваря нов изглед към индустрията/града
 
 # Story book window
@@ -3452,6 +3481,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Част
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Летища
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Индустрии({COMMA} от {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Отсъства -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% транспортирани){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -3803,6 +3833,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Еднорел�
 STR_REPLACE_MAGLEV_VEHICLES                                     :Магниторелсови локомотиви
 
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Премахване на вагон ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Автоматичната замяна ще запази дължината на влака, като премахне вагони (започвайки от предните), ако замяната довежда до по-дълъг влак
 
 # Vehicle view
@@ -3907,6 +3938,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Капа
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Сума за преместване: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Интервал на обслужване {LTBLUE}{COMMA}{NBSP}дни{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Интервал на обслужване: {LTBLUE}{COMMA}%{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :{LTBLUE} преди {NUM} минути
 
@@ -3977,6 +4010,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Отва
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Пътен лист - натиснете върху заповед за маркиране. Ctrl+Click - центрира върху дестинацията
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Край на Заповедите - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Край на Споделения пътен лист - -
@@ -4034,6 +4068,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Възраст 
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Нужен сервиз
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Винаги
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Оставащ живот (години)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Максимална надеждност
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Как да сравня данните за превозното средсвто с дадената стойност
@@ -4314,7 +4349,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Приб
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Записването продължава,{}моля изчакайте да сръши!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Автозапазването е неуспешно
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Не може да прочете диска
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Записването на играта е неуспешно...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Изтриването на файла е неуспешно
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Зареждането на играта е неуспешно...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Вътрешна грешка: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Запазената игра е повредена - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Запазената игра е направена от по-нова версия
