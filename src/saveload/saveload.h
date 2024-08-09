@@ -383,6 +383,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_GROUP_NUMBERS,                      ///< 336  PR#12297 Add per-company group numbers.
 	SLV_INCREASE_STATION_TYPE_FIELD_SIZE,   ///< 337  PR#12572 Increase size of StationType field in map array
 	SLV_ROAD_WAYPOINTS,                     ///< 338  PR#12572 Road waypoints
+	SLV_COMPANY_INAUGURATED_PERIOD,         ///< 339  PR#12798 Companies show the period inaugurated in wallclock mode.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
