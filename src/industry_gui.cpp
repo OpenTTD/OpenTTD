@@ -377,8 +377,15 @@ class BuildIndustryWindow : public Window {
 		size_t numcargo = 0;
 		size_t firstcargo = 0;
 
-		for (size_t j = 0; j < cargolist.size(); j++) {
-			if (!IsValidCargoID(cargolist[j])) continue;
+		/* Use map to sort cargo list. The data is in two separate spans, so keep the index of each entry. */
+		std::map<CargoID, size_t, CargoIDComparator> positions;
+		for (auto it = std::begin(cargolist); it != std::end(cargolist); ++it) {
+			if (!IsValidCargoID(*it)) continue;
+			positions.emplace(*it, std::distance(std::begin(cargolist), it));
+		}
+
+		for (const auto &pair : positions) {
+			size_t j = pair.second;
 			numcargo++;
 			if (numcargo == 1) {
 				firstcargo = j;
@@ -880,8 +887,15 @@ public:
 		const int label_indent = WidgetDimensions::scaled.hsep_normal + this->cargo_icon_size.width;
 		bool stockpiling = HasBit(ind->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_mask, CBM_IND_PRODUCTION_256_TICKS);
 
-		for (const auto &a : i->accepted) {
-			if (!IsValidCargoID(a.cargo)) continue;
+		/* Use map to sort industry's accepted cargo list. */
+		std::map<CargoID, const Industry::AcceptedCargo &, CargoIDComparator> sorted_accepted;
+		for (auto it = std::begin(i->accepted); it != std::end(i->accepted); ++it) {
+			if (!IsValidCargoID(it->cargo)) continue;
+			sorted_accepted.emplace(it->cargo, *it);
+		}
+
+		for (const auto &pair : sorted_accepted) {
+			const auto &a = pair.second;
 			has_accept = true;
 			if (first) {
 				DrawString(ir, STR_INDUSTRY_VIEW_REQUIRES);
@@ -925,8 +939,16 @@ public:
 		int text_y_offset = (line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 		int button_y_offset = (line_height - SETTING_BUTTON_HEIGHT) / 2;
 		first = true;
-		for (const auto &p : i->produced) {
-			if (!IsValidCargoID(p.cargo)) continue;
+
+		/* Use map to sort industry's produced cargo list. */
+		std::map<CargoID, const Industry::ProducedCargo &, CargoIDComparator> sorted_produced;
+		for (auto it = std::begin(i->produced); it != std::end(i->produced); ++it) {
+			if (!IsValidCargoID(it->cargo)) continue;
+			sorted_produced.emplace(it->cargo, *it);
+		}
+
+		for (const auto &pair : sorted_produced) {
+			const auto &p = pair.second;
 			if (first) {
 				if (has_accept) ir.top += WidgetDimensions::scaled.vsep_wide;
 				DrawString(ir, TimerGameEconomy::UsingWallclockUnits() ? STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE : STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
