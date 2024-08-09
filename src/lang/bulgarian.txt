@@ -1663,7 +1663,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Активир�
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Позволи AI в мрежова игра: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Разреши ИИ играчите да участват в мрежови игри
 
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes before scripts are suspended: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Макс. брой изчислителни стъпки, преди скриптовете да бъдат спрени: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Максималният брой изчислителни стъпки, които даден script може да направи за един ход
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Интервал на сервизиране в проценти: {STRING.n}
@@ -2323,7 +2323,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Играта п
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :няма достатъчно играчи
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :влиза играч
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ръчно
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :игрови програмен език
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :игрови скрипт
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :напускам
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} се присъедини към играта
@@ -2391,7 +2391,7 @@ STR_CONTENT_TYPE_SCENARIO                                       :Сценари�
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Карта
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Базови звуци
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Базова музика
-STR_CONTENT_TYPE_GAME_SCRIPT                                    :Програмен език на играта
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Игрови скрипт
 STR_CONTENT_TYPE_GS_LIBRARY                                     :GS библиотека
 
 # Content downloading progress window
@@ -2989,7 +2989,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Гене
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Генерация на дърва
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Настройка на играта
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Изпълняване цикъл на плочките
-STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Пускане на програмен език
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Активен скрипт
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Подготвяне на играта
 
 # NewGRF settings
@@ -4241,7 +4241,7 @@ STR_AI_DEBUG                                                    :{WHITE}ИИ Д�
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Име на AI
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Настройки
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Промени настройките на програмния език
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Промени настройките на скрипта
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Презареждане AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Прекрати AI, презареди скрипта и рестартирай AI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Включи/изключи breaking when an AI log message matches the break string
@@ -4252,9 +4252,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Съвп
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Променя съвпадането на регистъра (малки/ големи букви) при сравнението на ИИ логовете с низа
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Продължи
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Възстанови от пауза и продължи ИИ
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Покажи прозорец за debug на AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Покажи прозорец за debug на ИИ. Ctrl+Click за отваряне в нов прозорец
 STR_AI_GAME_SCRIPT                                              :{BLACK}Игрови скрипт
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Провери лога на Игровия скрипт
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Провери лога на игровия скрипт. Ctrl+Click за отваряне в нов прозорец
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не е намерен подходящ ИИ, който да бъде зареден.{}Това ИИ няма да прави нищо.{}Можете да изтеглите ИИ чрез системата за 'Онлайн Съдържание'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Един от работещите ИИ се е сринал . Моля съобщете това на автора на ИИ със скрииншот на ИИ Дебъг прозореца
@@ -4276,9 +4276,9 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Прем
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Игрови скрипт
 STR_AI_CONFIG_AI                                                :{SILVER}AI-та
 
-STR_AI_CONFIG_CHANGE_AI                                         :AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Програмен език на играта
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Зареди друг скрипт
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Изберете ИИ
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Изберете игрови скрипт
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Зареди друг скрипт. Ctrl+Click за показване на всички налични версии
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Конфигуриране
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Конфигурирайте параметрите на AI
 
