@@ -208,15 +208,13 @@ static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, uint8_t **m
  */
 static void ReadHeightmapBMPImageData(uint8_t *map, const BmpInfo &info, const BmpData &data)
 {
-	uint x, y;
 	uint8_t gray_palette[256];
 
 	if (!data.palette.empty()) {
-		uint i;
 		bool all_gray = true;
 
 		if (info.palette_size != 2) {
-			for (i = 0; i < info.palette_size && (info.palette_size != 16 || all_gray); i++) {
+			for (uint i = 0; i < info.palette_size && (info.palette_size != 16 || all_gray); i++) {
 				all_gray &= data.palette[i].r == data.palette[i].g && data.palette[i].r == data.palette[i].b;
 				gray_palette[i] = RGBToGrayscale(data.palette[i].r, data.palette[i].g, data.palette[i].b);
 			}
@@ -228,7 +226,7 @@ static void ReadHeightmapBMPImageData(uint8_t *map, const BmpInfo &info, const B
 			 * level 1, etc.
 			 */
 			if (info.palette_size == 16 && !all_gray) {
-				for (i = 0; i < info.palette_size; i++) {
+				for (uint i = 0; i < info.palette_size; i++) {
 					gray_palette[i] = 256 * i / info.palette_size;
 				}
 			}
@@ -243,11 +241,11 @@ static void ReadHeightmapBMPImageData(uint8_t *map, const BmpInfo &info, const B
 	}
 
 	/* Read the raw image data and convert in 8-bit grayscale */
-	for (y = 0; y < info.height; y++) {
-		uint8_t *pixel = &map[y * info.width];
-		const uint8_t *bitmap = &data.bitmap[y * info.width * (info.bpp == 24 ? 3 : 1)];
+	for (uint y = 0; y < info.height; y++) {
+		uint8_t *pixel = &map[y * static_cast<size_t>(info.width)];
+		const uint8_t *bitmap = &data.bitmap[y * static_cast<size_t>(info.width) * (info.bpp == 24 ? 3 : 1)];
 
-		for (x = 0; x < info.width; x++) {
+		for (uint x = 0; x < info.width; x++) {
 			if (info.bpp != 24) {
 				*pixel++ = gray_palette[*bitmap++];
 			} else {
