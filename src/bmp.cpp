@@ -80,17 +80,14 @@ static inline void SetStreamOffset(BmpBuffer *buffer, int offset)
  */
 static inline bool BmpRead1(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
 {
-	uint x, y, i;
 	uint8_t pad = GB(4 - info.width / 8, 0, 2);
-	uint8_t *pixel_row;
-	uint8_t b;
-	for (y = info.height; y > 0; y--) {
-		x = 0;
-		pixel_row = &data.bitmap[(y - 1) * info.width];
+	for (uint y = info.height; y > 0; y--) {
+		uint x = 0;
+		uint8_t *pixel_row = &data.bitmap[(y - 1) * static_cast<size_t>(info.width)];
 		while (x < info.width) {
 			if (EndOfBuffer(buffer)) return false; // the file is shorter than expected
-			b = ReadByte(buffer);
-			for (i = 8; i > 0; i--) {
+			uint8_t b = ReadByte(buffer);
+			for (uint i = 8; i > 0; i--) {
 				if (x < info.width) *pixel_row++ = GB(b, i - 1, 1);
 				x++;
 			}
@@ -107,16 +104,13 @@ static inline bool BmpRead1(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
  */
 static inline bool BmpRead4(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
 {
-	uint x, y;
 	uint8_t pad = GB(4 - info.width / 2, 0, 2);
-	uint8_t *pixel_row;
-	uint8_t b;
-	for (y = info.height; y > 0; y--) {
-		x = 0;
-		pixel_row = &data.bitmap[(y - 1) * info.width];
+	for (uint y = info.height; y > 0; y--) {
+		uint x = 0;
+		uint8_t *pixel_row = &data.bitmap[(y - 1) * static_cast<size_t>(info.width)];
 		while (x < info.width) {
 			if (EndOfBuffer(buffer)) return false;  // the file is shorter than expected
-			b = ReadByte(buffer);
+			uint8_t b = ReadByte(buffer);
 			*pixel_row++ = GB(b, 4, 4);
 			x++;
 			if (x < info.width) {
@@ -138,7 +132,7 @@ static inline bool BmpRead4Rle(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
 {
 	uint x = 0;
 	uint y = info.height - 1;
-	uint8_t *pixel = &data.bitmap[y * info.width];
+	uint8_t *pixel = &data.bitmap[y * static_cast<size_t>(info.width)];
 	while (y != 0 || x < info.width) {
 		if (EndOfBuffer(buffer)) return false; // the file is shorter than expected
 
@@ -149,7 +143,7 @@ static inline bool BmpRead4Rle(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
 				case 0: // end of line
 					x = 0;
 					if (y == 0) return false;
-					pixel = &data.bitmap[--y * info.width];
+					pixel = &data.bitmap[--y * static_cast<size_t>(info.width)];
 					break;
 
 				case 1: // end of bitmap
@@ -210,14 +204,11 @@ static inline bool BmpRead4Rle(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
  */
 static inline bool BmpRead8(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
 {
-	uint i;
-	uint y;
 	uint8_t pad = GB(4 - info.width, 0, 2);
-	uint8_t *pixel;
-	for (y = info.height; y > 0; y--) {
+	for (uint y = info.height; y > 0; y--) {
 		if (EndOfBuffer(buffer)) return false; // the file is shorter than expected
-		pixel = &data.bitmap[(y - 1) * info.width];
-		for (i = 0; i < info.width; i++) *pixel++ = ReadByte(buffer);
+		uint8_t *pixel = &data.bitmap[(y - 1) * static_cast<size_t>(info.width)];
+		for (uint i = 0; i < info.width; i++) *pixel++ = ReadByte(buffer);
 		/* Padding for 32 bit align */
 		SkipBytes(buffer, pad);
 	}
@@ -231,7 +222,7 @@ static inline bool BmpRead8Rle(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
 {
 	uint x = 0;
 	uint y = info.height - 1;
-	uint8_t *pixel = &data.bitmap[y * info.width];
+	uint8_t *pixel = &data.bitmap[y * static_cast<size_t>(info.width)];
 	while (y != 0 || x < info.width) {
 		if (EndOfBuffer(buffer)) return false; // the file is shorter than expected
 
@@ -242,7 +233,7 @@ static inline bool BmpRead8Rle(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
 				case 0: // end of line
 					x = 0;
 					if (y == 0) return false;
-					pixel = &data.bitmap[--y * info.width];
+					pixel = &data.bitmap[--y * static_cast<size_t>(info.width)];
 					break;
 
 				case 1: // end of bitmap
@@ -258,7 +249,7 @@ static inline bool BmpRead8Rle(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
 
 					x += dx;
 					y -= dy;
-					pixel = &data.bitmap[y * info.width + x];
+					pixel = &data.bitmap[y * static_cast<size_t>(info.width) + x];
 					break;
 				}
 
@@ -291,12 +282,10 @@ static inline bool BmpRead8Rle(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
  */
 static inline bool BmpRead24(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
 {
-	uint x, y;
 	uint8_t pad = GB(4 - info.width * 3, 0, 2);
-	uint8_t *pixel_row;
-	for (y = info.height; y > 0; y--) {
-		pixel_row = &data.bitmap[(y - 1) * info.width * 3];
-		for (x = 0; x < info.width; x++) {
+	for (uint y = info.height; y > 0; --y) {
+		uint8_t *pixel_row = &data.bitmap[(y - 1) * static_cast<size_t>(info.width) * 3];
+		for (uint x = 0; x < info.width; ++x) {
 			if (EndOfBuffer(buffer)) return false; // the file is shorter than expected
 			*(pixel_row + 2) = ReadByte(buffer); // green
 			*(pixel_row + 1) = ReadByte(buffer); // blue
@@ -314,7 +303,6 @@ static inline bool BmpRead24(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
  */
 bool BmpReadHeader(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
 {
-	uint32_t header_size;
 	info = {};
 
 	/* Reading BMP header */
@@ -323,7 +311,7 @@ bool BmpReadHeader(BmpBuffer *buffer, BmpInfo &info, BmpData &data)
 	info.offset = ReadDword(buffer);
 
 	/* Reading info header */
-	header_size = ReadDword(buffer);
+	uint32_t header_size = ReadDword(buffer);
 	if (header_size < 12) return false; // info header should be at least 12 bytes long
 
 	info.os2_bmp = (header_size == 12); // OS/2 1.x or windows 2.x info header is 12 bytes long
