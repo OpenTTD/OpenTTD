@@ -806,6 +806,7 @@ STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Hiện t
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Không hiện nhà máy trên bản đồ
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Hiện tất cả nhà máy trên bản đồ
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Hiển thị bản đồ địa hình
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Bật/tắt tên nhà máy trên bản đồ
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Không hiện thị tài sản công ty trên bản đồ
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Hiển thị tất cả tài sản các công ty trên bản đồ
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Không hiển thị hàng hóa trên bản đồ
@@ -2587,6 +2588,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :sai phiên bả
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :tên đã dùng rồi
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :sai mật khẩu
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :không có trong danh sách cho phép
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :không hỗ trợ kiểu xác thực nào được yêu cầu
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :sai công ty trong DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :bí đá bởi server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :đã cố sử dụng cheat
@@ -2805,13 +2807,32 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Kéo & t
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Xây dựng ga bằng các kéo & thả
 
 STR_PICKER_MODE_ALL                                             :Tất cả
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Bật/tắt hiển thị hạng mục ở tất cả các loại
 STR_PICKER_MODE_USED                                            :Đã sử dụng
+STR_PICKER_MODE_USED_TOOLTIP                                    :Bật/tắt hiển thị những hạng mục còn hiện hữu
 STR_PICKER_MODE_SAVED                                           :Đã lưu
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Bật/tắt hiển thị những hạng mục được lưu
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Chọn loại ga bến cần hiển thị
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Chọn loại ga bến để xây. Ctrl+Click để thêm hoặc bớt vào danh sách lưu
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Chọn loại điểm mốc cần hiển thị
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Chọn loại điểm mốc để xây. Ctrl+Click để thêm hoặc xóa trong danh sách lưu
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Chọn loại bến xe để hiển thị
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Chọn loại bến xe khách để xây. Ctrl+Click để thêm hoặc bớt vào danh sách lưu
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Chọn loại bến xe tải để hiển thị
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Chọn loại bến xe tải để xây. Ctrl+Click để thêm hoặc bớt vào danh sách lưu
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Chọn loại đối tượng để hiển thị
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Chọn kiểu đối tượng để xây. Ctrl+Click để thêm hoặc bớt vào danh sách lưu. Ctrl+Click+Drag để chọn khu vực theo đường chéo. Bấm Shift để xem ước tính chi phí
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Chọn vùng đô thị để xem
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Chọn kiểu nhà để xây. Ctrl+Click để thêm hoặc xóa trong danh sách lưu
 
+STR_HOUSE_PICKER_CAPTION                                        :Chọn Kiểu Nhà
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Ngoài rìa
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Ngoại ô
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Phía ngoài ngoại ô
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Phía trong ngoại ô
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Nội thành
 
 STR_STATION_CLASS_DFLT                                          :Mặc định
 STR_STATION_CLASS_DFLT_STATION                                  :Trạm mặc định
@@ -2866,6 +2887,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Xây đ�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Xây đường xe điện dùng cơ chế tự xây. Ctrl đổi chế độ phá cho đường xe điện. Shift để xem chi phí dự tính
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Xây xưởng xe cộ (mua hoặc bảo trì xe cộ). Shift để xem chi phí dự tính
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Xây xưởng xe điện (mua hoặc bảo trì xe điện). Shift để xem chi phí dự tính
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Xây điểm mốc đường bộ. Ctrl+Click điểm mốc khác để kết nối. Bấm Shift để xem chi phí dự tính
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Xây điểm mốc ở đường xe điện. Ctrl+Click điểm mốc khác để kết nối. Bấm Shift để xem chi phí dự tính
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Xây bến xe buýt. Ctrl để nối liền các bến. Shift để xem chi phí dự tính
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Xây bến xe điện. Ctrl để nối các bến xe điện. Shift để xem chi phí dự tính
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Xây trạm bốc dỡ xe tải. Ctrl + Click để nối các trạm. Shift để xem chi phí dự tính
@@ -5037,6 +5060,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Không t
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Nối thêm nhiều hơn một ga, bến, cảng đã tồn tại
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... ga, bến, cảng trải quá rộng
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... không hỗ trợ số lượng đường ray này
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... không hỗ trợ độ dài này
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Quá nhiều ga, bến, cảng rồi
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Quá nhiều mảnh của ga tàu hoả
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Quá nhiều điểm đừng xe buýt
@@ -5072,10 +5097,12 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Kết n�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Quá gần điểm mốc khác
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Không thể xây điểm mốc tàu hoả ở đây...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Không thể xây điểm mốc đường bộ ở đây...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Không thể xây phao hàng hải ở đây...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Không thể thay đổi tên điểm mốc...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Không thể xoá bỏ điểm mốc tàu hoả...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Không thể xóa điểm mốc đường bộ ở đây...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Phải bỏ điểm mốc trước
 STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Phải bỏ điểm mốc trước
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... phao hàng hải nằm cản đường
@@ -5325,6 +5352,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :Không có đi�
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Không thể hạ cánh máy bay tại bãi đỗ trực thăng này
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Không thể hạ cánh trực thăng ở sân bay này
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Không có điểm mốc tàu hỏa
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Không có điểm mốc đường bộ
 STR_ERROR_NO_BUOY                                               :{WHITE}Không có cái phao nào
 
 # Timetable related errors
