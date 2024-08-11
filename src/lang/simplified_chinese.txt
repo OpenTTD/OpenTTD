@@ -1289,7 +1289,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :建设速度：
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :AI 建设频率的上限
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :载具损坏：{STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :设置维修不足的载具的故障频率
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :设置维护不足的载具的故障频率
 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :财政补贴系数：{STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :设置获得财政补贴的线路的利润倍数
@@ -1618,8 +1618,8 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}一个�
 STR_CONFIG_SETTING_STATION_SPREAD                               :最大车站范围：{STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :设置车站的最大范围，即最大长宽。请注意较高数值会使游戏变慢
 
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :直升机在降落平台自动保养：{STRING}
-STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :直升飞机在降落平台自动保养，即使机场没有机库
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :直升机在降落平台自动维护：{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :直升飞机在降落平台自动维护，即使机场没有机库
 
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :链接地形工具栏与铁路 / 公路 / 船只 / 机场工具栏：{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :设定否在开启建设交通设施的工具栏时同时开启地形工具栏
@@ -1824,16 +1824,16 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :单个脚本（
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :维护间隔以百分比 (%) 计算：{STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :启用后，载具会在其可靠度降低至最大可靠度的一定比例时自动前往维修设施进行保养。{}{}例如，如果一辆车的最大可靠性是 90%，而保养间隔是 20%，车辆会在可靠性为 72% 时去保养
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :启用后，载具会在其可靠度降低至最大可靠度的一定比例时自动前往维护设施进行维护。{}{}例如，如果一辆车的最大可靠性是 90%，而维护间隔是 20%，车辆会在可靠性为 72% 时去维护
 
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :火车默认保养周期：{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :如果没有为火车直接指定保养周期，设定默认火车保养周期
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :汽车默认保养周期：{STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :如果没有为汽车指定保养周期，设定汽车的默认保养周期
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :飞机默认保养周期：{STRING}
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :如果没有为飞机指定保养周期，设定飞机的默认保养周期
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :船只默认保养周期：{STRING}
-STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :如果没有为船只设定保养周期，按照这里设定的默认保养周期执行
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :火车默认维护周期：{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :如果没有为火车直接指定维护周期，设定默认火车维护周期
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :汽车默认维护周期：{STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :如果没有为汽车指定维护周期，设定汽车的默认维护周期
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :飞机默认维护周期：{STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :如果没有为飞机指定维护周期，设定飞机的默认维护周期
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :船只默认维护周期：{STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :如果没有为船只设定维护周期，按照这里设定的默认维护周期执行
 ###length 3
 STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}日
 STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}分
@@ -1842,7 +1842,7 @@ STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :关闭
 
-STR_CONFIG_SETTING_NOSERVICE                                    :在无故障模式下禁用保养周期：{STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :在无故障模式下禁用维护周期：{STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :启用时，如果载具设定为不故障，则载具不会进入车库维护
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :站台长度装卸惩罚：{STRING}
@@ -2927,7 +2927,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}水运�
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水运
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}修建运河。按住 <Shift> 键点选以显示预计费用
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}建设船闸。按住 <Shift> 键点选以显示预计费用
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}建造船坞（可以购买或保养船只），按住 <Shift> 键以显示预计费用
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}建造船坞（可以购买或维护船只），按住 <Shift> 键以显示预计费用
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}建造码头。按住 <Ctrl> 键以合并车站，按住 Shift 键以显示预计费用
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置浮标，可以用作路点。按住 <Shift> 键操作以显示预计费用
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}建设渡槽，按住 Shift 键操作可以显示所需资金
@@ -4011,7 +4011,7 @@ STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :可用的飞机
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}管理列表
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}向列表中所有载具发出指令
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :替换载具
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :进行保养
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :进行维护
 STR_VEHICLE_LIST_CREATE_GROUP                                   :创建分组
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}今年损益：{CURRENCY_LONG}（去年损益：{CURRENCY_LONG}）
 STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}本期损益：{CURRENCY_LONG}（上期：{CURRENCY_LONG}）
@@ -4357,10 +4357,10 @@ STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}将主�
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}将主视角中心移动到飞机所在的位置。双击将会在主视角中跟踪飞机。按 <Ctrl> 键操作以在新视点中显示飞机
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}命令列车前往车库。按住 <Ctrl> 键操作以仅作保养
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}命令汽车前往车库。按住 <Ctrl> 键操作以仅作保养
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}命令船舶前往船坞。按住 <Ctrl> 键操作以仅作保养
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}命令飞机前往机库。按住 <Ctrl> 键操作以仅作保养
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}命令列车前往车库。按住 <Ctrl> 键操作以仅作维护
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}命令汽车前往车库。按住 <Ctrl> 键操作以仅作维护
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}命令船舶前往船坞。按住 <Ctrl> 键操作以仅作维护
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}命令飞机前往机库。按住 <Ctrl> 键操作以仅作维护
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}复制这列火车。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用
@@ -4454,7 +4454,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年�
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}今年损益：{LTBLUE}{CURRENCY_LONG}（去年损益：{CURRENCY_LONG}）{BLACK}最小功率：{LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}本期损益：{LTBLUE}{CURRENCY_LONG}（上期损益：{CURRENCY_LONG}）
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}本期损益：{LTBLUE}{CURRENCY_LONG}（上期损益：{CURRENCY_LONG}）{BLACK}最小功率：{LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}可靠性：{LTBLUE}{COMMA}%  {BLACK}上次保养后抛锚的次数：{LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}可靠性：{LTBLUE}{COMMA}%  {BLACK}上次维护后抛锚的次数：{LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}建造年份：{LTBLUE}{NUM}{BLACK} 价值：{LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}运载能力：{LTBLUE}无{STRING}
@@ -4465,16 +4465,16 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}运载�
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}联运账面收入：{LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}每 {LTBLUE}{COMMA}{NBSP}天进行维护{BLACK}   上次维护日期：{LTBLUE}{STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}维修间隔：{LTBLUE}{COMMA}{NBSP}分钟{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}维护间隔：{LTBLUE}{COMMA}{NBSP}分钟{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}维护间隔：{LTBLUE}{COMMA}%{BLACK} {STRING}
-STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :最近保养：{LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :最近保养：{LTBLUE}{NUM}{NBSP}分钟前
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :将维修间隔增大 10 天。按住 <Ctrl> 点击可将维修间隔增大 5 天
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}将维修间隔增大 5 分。按住 <Ctrl> 点击可将维修间隔增大 1 分
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}将维修间隔增大 10%。按住 <Ctrl> 点击可将维修间隔增大 5%
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}将维修间隔缩短 10 天。按住 <Ctrl> 点击可将维修间隔缩短 5 天
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}将维修间隔缩短 5 分。按住 <Ctrl> 点击可将维修间隔缩短 1 分
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}将维修间隔缩短 10%。按住 <Ctrl> 点击可将维修间隔缩短 5%
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :最近维护：{LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :最近维护：{LTBLUE}{NUM} 分钟前
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}将维护间隔增加 10 天。按住 <Ctrl> 点击可将维护间隔增加 5 天
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}将维护间隔增加 5 分。按住 <Ctrl> 点击可将维护间隔增加 1 分
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}将维护间隔增加 10%。按住 <Ctrl> 点击可将维护间隔增加 5%
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}将维护间隔缩短 10 天。按住 <Ctrl> 点击可将维护间隔缩短 5 天
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}将维护间隔缩短 5 分。按住 <Ctrl> 点击可将维护间隔缩短 1 分
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}将维护间隔缩短 10%。按住 <Ctrl> 点击可将维护间隔缩短 5%
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}更改服务时间间隔类型
 STR_VEHICLE_DETAILS_DEFAULT                                     :默认
@@ -4600,7 +4600,7 @@ STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :装载进度
 STR_ORDER_CONDITIONAL_RELIABILITY                               :可靠性
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :最大速度
 STR_ORDER_CONDITIONAL_AGE                                       :寿命（年）
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :需要维修
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :需要维护
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :总是
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :剩余寿命年限（年）
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :最大可靠度
@@ -4641,8 +4641,8 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}显示�
 STR_ORDER_GO_TO_WAYPOINT                                        :经过 {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :经过（不停）{WAYPOINT}
 
-STR_ORDER_SERVICE_AT                                            :维修在
-STR_ORDER_SERVICE_NON_STOP_AT                                   :维修，不停靠于
+STR_ORDER_SERVICE_AT                                            :前往维护
+STR_ORDER_SERVICE_NON_STOP_AT                                   :直接前往维护
 
 STR_ORDER_NEAREST_DEPOT                                         :最近的车库
 STR_ORDER_NEAREST_HANGAR                                        :最近的机库
@@ -5294,7 +5294,7 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}不能�
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}不能出售飞机……
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}游戏中的载具过多
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能改变保养周期……
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能改变维护周期……
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}……载具已撞毁
 
