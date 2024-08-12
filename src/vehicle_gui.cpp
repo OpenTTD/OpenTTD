@@ -45,6 +45,7 @@
 #include "train_cmd.h"
 #include "hotkeys.h"
 #include "group_cmd.h"
+#include "depot_base.h"
 
 #include "safeguards.h"
 
@@ -3141,7 +3142,7 @@ public:
 
 				case OT_GOTO_DEPOT: {
 					SetDParam(0, v->type);
-					SetDParam(1, v->current_order.GetDestination());
+					SetDParam(1, GetTargetDestination(v->current_order, v->type == VEH_AIRCRAFT));
 					SetDParam(2, PackVelocity(v->GetDisplaySpeed(), v->type));
 					if (v->current_order.GetDestination() == INVALID_DEPOT) {
 						/* This case *only* happens when multiple nearest depot orders

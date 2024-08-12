@@ -23,6 +23,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../station_base.h"
+#include "../depot_base.h"
 #include "../thread.h"
 #include "../town.h"
 #include "../network/network.h"
@@ -1121,6 +1122,7 @@ static size_t ReferenceToInt(const void *obj, SLRefType rt)
 		case REF_STORAGE:        return ((const PersistentStorage*)obj)->index + 1;
 		case REF_LINK_GRAPH:     return ((const         LinkGraph*)obj)->index + 1;
 		case REF_LINK_GRAPH_JOB: return ((const      LinkGraphJob*)obj)->index + 1;
+		case REF_DEPOT:          return ((const             Depot*)obj)->index + 1;
 		default: NOT_REACHED();
 	}
 }
@@ -1201,6 +1203,10 @@ static void *IntToReference(size_t index, SLRefType rt)
 		case REF_LINK_GRAPH_JOB:
 			if (LinkGraphJob::IsValidID(index)) return LinkGraphJob::Get(index);
 			SlErrorCorrupt("Referencing invalid LinkGraphJob");
+
+		case REF_DEPOT:
+			if (Depot::IsValidID(index)) return Depot::Get(index);
+			SlErrorCorrupt("Referencing invalid Depot");
 
 		default: NOT_REACHED();
 	}
