@@ -1127,13 +1127,13 @@ static inline uint8_t *CreateMulti(uint8_t *layout, int n, uint8_t b)
  */
 void GetStationLayout(uint8_t *layout, uint numtracks, uint plat_len, const StationSpec *statspec)
 {
-	if (statspec != nullptr && statspec->layouts.size() >= plat_len &&
-			statspec->layouts[plat_len - 1].size() >= numtracks &&
-			!statspec->layouts[plat_len - 1][numtracks - 1].empty()) {
-		/* Custom layout defined, follow it. */
-		memcpy(layout, statspec->layouts[plat_len - 1][numtracks - 1].data(),
-			static_cast<size_t>(plat_len) * numtracks);
-		return;
+	if (statspec != nullptr) {
+		auto found = statspec->layouts.find(GetStationLayoutKey(numtracks, plat_len));
+		if (found != std::end(statspec->layouts)) {
+			/* Custom layout defined, copy to buffer. */
+			std::copy(std::begin(found->second), std::end(found->second), layout);
+			return;
+		}
 	}
 
 	if (plat_len == 1) {

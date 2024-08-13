@@ -2042,14 +2042,14 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 					if (length == 0 || number == 0) break;
 
-					if (statspec->layouts.size() < length) statspec->layouts.resize(length);
-					if (statspec->layouts[length - 1].size() < number) statspec->layouts[length - 1].resize(number);
+					const uint8_t *buf_layout = buf.ReadBytes(length * number);
 
-					const uint8_t *layout = buf.ReadBytes(length * number);
-					statspec->layouts[length - 1][number - 1].assign(layout, layout + length * number);
+					/* Create entry in layouts and assign the layout to it. */
+					auto &layout = statspec->layouts[GetStationLayoutKey(number, length)];
+					layout.assign(buf_layout, buf_layout + length * number);
 
 					/* Ensure the first bit, axis, is zero. The rest of the value is validated during rendering, as we don't know the range yet. */
-					for (auto &tile : statspec->layouts[length - 1][number - 1]) {
+					for (auto &tile : layout) {
 						if ((tile & ~1U) != tile) {
 							GrfMsg(1, "StationChangeInfo: Invalid tile {} in layout {}x{}", tile, length, number);
 							tile &= ~1U;
