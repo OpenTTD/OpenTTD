@@ -243,13 +243,6 @@ struct SignListWindow : Window, SignList {
 				break;
 			}
 
-			case WID_SIL_FILTER_ENTER_BTN:
-				if (this->signs.size() >= 1) {
-					const Sign *si = this->signs[0];
-					ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
-				}
-				break;
-
 			case WID_SIL_FILTER_MATCH_CASE_BTN:
 				SignList::match_case = !SignList::match_case; // Toggle match case
 				this->SetWidgetLoweredState(WID_SIL_FILTER_MATCH_CASE_BTN, SignList::match_case); // Toggle button pushed state
