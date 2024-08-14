@@ -2203,7 +2203,7 @@ bool AfterLoadGame()
 
 		for (auto tile = _animated_tiles.begin(); tile < _animated_tiles.end(); /* Nothing */) {
 			/* Remove if tile is not animated */
-			bool remove = _tile_type_procs[GetTileType(*tile)]->animate_tile_proc == nullptr;
+			bool remove = !MayAnimateTile(*tile);
 
 			/* and remove if duplicate */
 			for (auto j = _animated_tiles.begin(); !remove && j < tile; j++) {

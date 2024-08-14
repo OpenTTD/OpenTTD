@@ -194,6 +194,16 @@ inline void AddProducedCargo(TileIndex tile, CargoArray &produced)
 	proc(tile, produced);
 }
 
+/**
+ * Test if a tile may be animated.
+ * @param tile Tile to test.
+ * @returns True iff the type of the tile has a handler for tile animation.
+ */
+inline bool MayAnimateTile(TileIndex tile)
+{
+	return _tile_type_procs[GetTileType(tile)]->animate_tile_proc != nullptr;
+}
+
 inline void AnimateTile(TileIndex tile)
 {
 	AnimateTileProc *proc = _tile_type_procs[GetTileType(tile)]->animate_tile_proc;
