@@ -3895,6 +3895,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(pääjohtaja)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Avattu: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}Avattu: {WHITE}{NUM} (jakso {NUM})
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Väriteema:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Kulkuneuvot:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} juna{P "" a}

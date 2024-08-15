@@ -3989,6 +3989,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Διευθυντής)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Ίδρυση: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}Εγκαινιάστηκε: {WHITE}{NUM} (περίοδος {NUM})
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Χρωματισμός:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Οχήματα:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} τρέν{P ο α}

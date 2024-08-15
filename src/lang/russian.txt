@@ -4070,6 +4070,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Директор)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}В должности с {WHITE}{NUM} года
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}В должности: {WHITE}{NUM} (срок: {NUM})
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Цвет:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Транспорт:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} поезд{P "" а ов}
