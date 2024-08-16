@@ -3895,6 +3895,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(總經理)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}成立於：{WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}成立於：{WHITE}{NUM}（第 {NUM} 週期）
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}配色：
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}車輛總數：
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}列車 {COMMA} 列
