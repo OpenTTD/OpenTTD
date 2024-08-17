@@ -3895,6 +3895,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Directeur)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Opgericht: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}Opgericht: {WHITE}{NUM} (periode {NUM})
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Kleurenschema:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Voertuigen:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} trein{P "" en}

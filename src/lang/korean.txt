@@ -862,7 +862,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} 회사가 채권자에 의해 모든 자산이 팔려 파산하였습니다!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}새로운 운송회사 등장!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING}{G 0 "이" "가"} {TOWN}에서 공사를 시작했습니다!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} 회사가 비공개 금액에 {STRING} 회사로 인수되었습니다!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}비공개된 금액으로 {STRING} 회사가 {STRING} 회사에 인수되었습니다!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(사장)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING}은(는) 새로운 도시 {TOWN}을(를) 건설했습니다!
@@ -3896,6 +3896,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(사장)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}설립: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}설립: {WHITE}{NUM} (기간 {NUM})
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}색상:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}차량:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}열차 {COMMA}대
