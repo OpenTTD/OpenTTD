@@ -290,12 +290,11 @@ static bool PadSingleSprite(SpriteLoader::Sprite *sprite, ZoomLevel zoom, uint p
 
 	/* Copy source data and reallocate sprite memory. */
 	size_t sprite_size = static_cast<size_t>(sprite->width) * sprite->height;
-	SpriteLoader::CommonPixel *src_data = MallocT<SpriteLoader::CommonPixel>(sprite_size);
-	MemCpyT(src_data, sprite->data, sprite_size);
+	std::vector<SpriteLoader::CommonPixel> src_data(sprite->data, sprite->data + sprite_size);
 	sprite->AllocateData(zoom, static_cast<size_t>(width) * height);
 
 	/* Copy with padding to destination. */
-	SpriteLoader::CommonPixel *src = src_data;
+	SpriteLoader::CommonPixel *src = src_data.data();
 	SpriteLoader::CommonPixel *data = sprite->data;
 	for (uint y = 0; y < height; y++) {
 		if (y < pad_top || pad_bottom + y >= height) {
@@ -321,7 +320,6 @@ static bool PadSingleSprite(SpriteLoader::Sprite *sprite, ZoomLevel zoom, uint p
 			}
 		}
 	}
-	free(src_data);
 
 	/* Update sprite size. */
 	sprite->width   = width;
