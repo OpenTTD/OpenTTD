@@ -3896,6 +3896,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Presidente)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurado: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}Inaugurada: {WHITE}{NUM} (período {NUM})
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Cores:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Veículos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} comboio{P "" s}
