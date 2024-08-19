@@ -148,6 +148,9 @@ Town::~Town()
 	}
 
 	/* Clear the persistent storage list. */
+	for (auto &psa : this->psa_list) {
+		delete psa;
+	}
 	this->psa_list.clear();
 
 	DeleteSubsidyWith(SourceType::Town, this->index);
