@@ -191,9 +191,7 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 	char buffer[1024];
 	IniGroup *group = nullptr;
 
-	char *comment = nullptr;
-	uint comment_size = 0;
-	uint comment_alloc = 0;
+	std::string comment;
 
 	size_t end;
 	FILE *in = this->OpenFile(filename, subdir, &end);
@@ -214,18 +212,8 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 
 		/* Skip comments and empty lines outside IGT_SEQUENCE groups. */
 		if ((group == nullptr || group->type != IGT_SEQUENCE) && (*s == '#' || *s == ';' || *s == '\0')) {
-			uint ns = comment_size + (e - s + 1);
-			uint a = comment_alloc;
-			/* add to comment */
-			if (ns > a) {
-				a = std::max(a, 128U);
-				do a *= 2; while (a < ns);
-				comment = ReallocT(comment, comment_alloc = a);
-			}
-			uint pos = comment_size;
-			comment_size += (e - s + 1);
-			comment[pos + e - s] = '\n'; // comment newline
-			memcpy(comment + pos, s, e - s); // copy comment contents
+			comment += std::string_view(s, e - s);
+			comment += '\n'; // comment newline
 			continue;
 		}
 
@@ -238,18 +226,12 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 			}
 			s++; // skip [
 			group = &this->CreateGroup(std::string_view(s, e - s));
-			if (comment_size != 0) {
-				group->comment.assign(comment, comment_size);
-				comment_size = 0;
-			}
+			group->comment = std::move(comment);
 		} else if (group != nullptr) {
 			if (group->type == IGT_SEQUENCE) {
 				/* A sequence group, use the line as item name without further interpretation. */
 				IniItem &item = group->CreateItem(std::string_view(buffer, e - buffer));
-				if (comment_size) {
-					item.comment.assign(comment, comment_size);
-					comment_size = 0;
-				}
+				item.comment = std::move(comment);
 				continue;
 			}
 			char *t;
@@ -264,10 +246,7 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 
 			/* it's an item in an existing group */
 			IniItem &item = group->CreateItem(std::string_view(s, t - s));
-			if (comment_size != 0) {
-				item.comment.assign(comment, comment_size);
-				comment_size = 0;
-			}
+			item.comment = std::move(comment);
 
 			/* find start of parameter */
 			while (*t == '=' || *t == ' ' || *t == '\t') t++;
@@ -292,12 +271,8 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 		}
 	}
 
-	if (comment_size > 0) {
-		this->comment.assign(comment, comment_size);
-		comment_size = 0;
-	}
+	this->comment = std::move(comment);
 
-	free(comment);
 	fclose(in);
 }
 
