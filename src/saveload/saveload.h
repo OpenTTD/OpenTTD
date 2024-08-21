@@ -386,6 +386,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_COMPANY_INAUGURATED_PERIOD,         ///< 339  PR#12798 Companies show the period inaugurated in wallclock mode.
 
 	SLV_ROAD_STOP_TILE_DATA,                ///< 340  PR#12883 Move storage of road stop tile data, also save for road waypoints.
+	SLV_COMPANY_ALLOW_LIST_V2,              ///< 341  PR#12908 Fixed savegame format for saving of list of client keys that are allowed to join this company.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

@@ -441,6 +441,38 @@ public:
 	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
 };
 
+class SlAllowListData : public DefaultSaveLoadHandler<SlAllowListData, CompanyProperties> {
+public:
+	struct KeyWrapper {
+		std::string key;
+	};
+
+	inline static const SaveLoad description[] = {
+		SLE_SSTR(KeyWrapper, key, SLE_STR),
+	};
+	inline const static SaveLoadCompatTable compat_description = {};
+
+	void Save(CompanyProperties *cprops) const override
+	{
+		SlSetStructListLength(cprops->allow_list.size());
+		for (std::string &str : cprops->allow_list) {
+			SlObject(&str, this->GetDescription());
+		}
+	}
+
+	void Load(CompanyProperties *cprops) const override
+	{
+		size_t num_keys = SlGetStructListLength(UINT32_MAX);
+		cprops->allow_list.clear();
+		cprops->allow_list.resize(num_keys);
+		for (std::string &str : cprops->allow_list) {
+			SlObject(&str, this->GetLoadDescription());
+		}
+	}
+
+	void LoadCheck(CompanyProperties *cprops) const override { this->Load(cprops); }
+};
+
 /* Save/load of companies */
 static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, name_2,          SLE_UINT32),
@@ -451,7 +483,8 @@ static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, president_name_2, SLE_UINT32),
 	SLE_CONDSSTR(CompanyProperties, president_name,  SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
 
-	SLE_CONDVECTOR(CompanyProperties, allow_list, SLE_STR, SLV_COMPANY_ALLOW_LIST, SL_MAX_VERSION),
+	SLE_CONDVECTOR(CompanyProperties, allow_list, SLE_STR, SLV_COMPANY_ALLOW_LIST, SLV_COMPANY_ALLOW_LIST_V2),
+	SLEG_CONDSTRUCTLIST("allow_list", SlAllowListData, SLV_COMPANY_ALLOW_LIST_V2, SL_MAX_VERSION),
 
 	    SLE_VAR(CompanyProperties, face,            SLE_UINT32),
 
