@@ -960,7 +960,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 static bool StationUsesDefaultType(const BaseStation *bst)
 {
 	for (TileIndex t : bst->train_station) {
-		if (bst->TileBelongsToRailStation(t) && IsRailStation(t) && GetCustomStationSpecIndex(t) == 0) return true;
+		if (bst->TileBelongsToRailStation(t) && HasStationRail(t) && GetCustomStationSpecIndex(t) == 0) return true;
 	}
 	return false;
 }
