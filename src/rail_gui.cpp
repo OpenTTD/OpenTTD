@@ -1840,7 +1840,7 @@ public:
 			}
 			for (const auto &sm : wp->speclist) {
 				if (sm.spec == nullptr) continue;
-				items.insert({0, 0, sm.spec->class_index, sm.spec->index});
+				items.insert({sm.grfid, sm.localidx, sm.spec->class_index, sm.spec->index});
 			}
 		}
 	}
