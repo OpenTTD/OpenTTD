@@ -55,7 +55,7 @@ public:
 	 * @param scale Desired thickness of lines and size of station dots.
 	 */
 	LinkGraphOverlay(Window *w, WidgetID wid, CargoTypes cargo_mask, CompanyMask company_mask, uint scale) :
-			window(w), widget_id(wid), cargo_mask(cargo_mask), company_mask(company_mask), scale(scale)
+			window(w), widget_id(wid), cargo_mask(cargo_mask), company_mask(company_mask), scale(scale), dirty(true)
 	{}
 
 	void Draw(const DrawPixelInfo *dpi);
