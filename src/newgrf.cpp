@@ -1932,7 +1932,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 	if (_cur.grffile->stations.size() < stid + numinfo) _cur.grffile->stations.resize(stid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		StationSpec *statspec = _cur.grffile->stations[stid + i].get();
+		auto &statspec = _cur.grffile->stations[stid + i];
 
 		/* Check that the station we are modifying is defined. */
 		if (statspec == nullptr && prop != 0x08) {
@@ -1944,8 +1944,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 			case 0x08: { // Class ID
 				/* Property 0x08 is special; it is where the station is allocated */
 				if (statspec == nullptr) {
-					_cur.grffile->stations[stid + i] = std::make_unique<StationSpec>();
-					statspec = _cur.grffile->stations[stid + i].get();
+					statspec = std::make_unique<StationSpec>();
 				}
 
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
@@ -2173,7 +2172,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				break;
 
 			case 0x1D: // Station Class name
-				AddStringForMapping(buf.ReadWord(), [statspec](StringID str) { StationClass::Get(statspec->class_index)->name = str; });
+				AddStringForMapping(buf.ReadWord(), [statspec = statspec.get()](StringID str) { StationClass::Get(statspec->class_index)->name = str; });
 				break;
 
 			case 0x1E: { // Extended tile flags (replaces prop 11, 14 and 15)
@@ -2429,7 +2428,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 	if (_cur.grffile->housespec.size() < hid + numinfo) _cur.grffile->housespec.resize(hid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		HouseSpec *housespec = _cur.grffile->housespec[hid + i].get();
+		auto &housespec = _cur.grffile->housespec[hid + i];
 
 		if (prop != 0x08 && housespec == nullptr) {
 			/* If the house property 08 is not yet set, ignore this property */
@@ -2455,8 +2454,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				/* Allocate space for this house. */
 				if (housespec == nullptr) {
 					/* Only the first property 08 setting copies properties; if you later change it, properties will stay. */
-					_cur.grffile->housespec[hid + i] = std::make_unique<HouseSpec>(*HouseSpec::Get(subs_id));
-					housespec = _cur.grffile->housespec[hid + i].get();
+					housespec = std::make_unique<HouseSpec>(*HouseSpec::Get(subs_id));
 
 					housespec->enabled = true;
 					housespec->grf_prop.local_id = hid + i;
@@ -3294,7 +3292,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 	if (_cur.grffile->indtspec.size() < indtid + numinfo) _cur.grffile->indtspec.resize(indtid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		IndustryTileSpec *tsp = _cur.grffile->indtspec[indtid + i].get();
+		auto &tsp = _cur.grffile->indtspec[indtid + i];
 
 		if (prop != 0x08 && tsp == nullptr) {
 			ChangeInfoResult cir = IgnoreIndustryTileProperty(prop, buf);
@@ -3313,8 +3311,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 
 				/* Allocate space for this industry. */
 				if (tsp == nullptr) {
-					_cur.grffile->indtspec[indtid + i] = std::make_unique<IndustryTileSpec>(_industry_tile_specs[subs_id]);
-					tsp = _cur.grffile->indtspec[indtid + i].get();
+					tsp = std::make_unique<IndustryTileSpec>(_industry_tile_specs[subs_id]);
 
 					tsp->enabled = true;
 
@@ -3552,7 +3549,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 	if (_cur.grffile->industryspec.size() < indid + numinfo) _cur.grffile->industryspec.resize(indid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		IndustrySpec *indsp = _cur.grffile->industryspec[indid + i].get();
+		auto &indsp = _cur.grffile->industryspec[indid + i];
 
 		if (prop != 0x08 && indsp == nullptr) {
 			ChangeInfoResult cir = IgnoreIndustryProperty(prop, buf);
@@ -3578,8 +3575,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				 * Only need to do it once. If ever it is called again, it should not
 				 * do anything */
 				if (indsp == nullptr) {
-					_cur.grffile->industryspec[indid + i] = std::make_unique<IndustrySpec>(_origin_industry_specs[subs_id]);
-					indsp = _cur.grffile->industryspec[indid + i].get();
+					indsp = std::make_unique<IndustrySpec>(_origin_industry_specs[subs_id]);
 
 					indsp->enabled = true;
 					indsp->grf_prop.local_id = indid + i;
@@ -3927,7 +3923,7 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 	if (_cur.grffile->airportspec.size() < airport + numinfo) _cur.grffile->airportspec.resize(airport + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		AirportSpec *as = _cur.grffile->airportspec[airport + i].get();
+		auto &as = _cur.grffile->airportspec[airport + i];
 
 		if (as == nullptr && prop != 0x08 && prop != 0x09) {
 			GrfMsg(2, "AirportChangeInfo: Attempt to modify undefined airport {}, ignoring", airport + i);
@@ -3952,8 +3948,7 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 				 * Only need to do it once. If ever it is called again, it should not
 				 * do anything */
 				if (as == nullptr) {
-					_cur.grffile->airportspec[airport + i] = std::make_unique<AirportSpec>(*AirportSpec::GetWithoutOverride(subs_id));
-					as = _cur.grffile->airportspec[airport + i].get();
+					as = std::make_unique<AirportSpec>(*AirportSpec::GetWithoutOverride(subs_id));
 
 					as->enabled = true;
 					as->grf_prop.local_id = airport + i;
@@ -4127,7 +4122,7 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 	if (_cur.grffile->objectspec.size() < id + numinfo) _cur.grffile->objectspec.resize(id + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		ObjectSpec *spec = _cur.grffile->objectspec[id + i].get();
+		auto &spec = _cur.grffile->objectspec[id + i];
 
 		if (prop != 0x08 && spec == nullptr) {
 			/* If the object property 08 is not yet set, ignore this property */
@@ -4140,8 +4135,7 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 			case 0x08: { // Class ID
 				/* Allocate space for this object. */
 				if (spec == nullptr) {
-					_cur.grffile->objectspec[id + i] = std::make_unique<ObjectSpec>();
-					spec = _cur.grffile->objectspec[id + i].get();
+					spec = std::make_unique<ObjectSpec>();
 					spec->views = 1; // Default for NewGRFs that don't set it.
 					spec->size = OBJECT_SIZE_1X1; // Default for NewGRFs that manage to not set it (1x1)
 				}
@@ -4153,7 +4147,7 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 			}
 
 			case 0x09: { // Class name
-				AddStringForMapping(buf.ReadWord(), [spec](StringID str) { ObjectClass::Get(spec->class_index)->name = str; });
+				AddStringForMapping(buf.ReadWord(), [spec = spec.get()](StringID str) { ObjectClass::Get(spec->class_index)->name = str; });
 				break;
 			}
 
@@ -4694,7 +4688,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 	if (_cur.grffile->airtspec.size() < airtid + numinfo) _cur.grffile->airtspec.resize(airtid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		AirportTileSpec *tsp = _cur.grffile->airtspec[airtid + i].get();
+		auto &tsp = _cur.grffile->airtspec[airtid + i];
 
 		if (prop != 0x08 && tsp == nullptr) {
 			GrfMsg(2, "AirportTileChangeInfo: Attempt to modify undefined airport tile {}. Ignoring.", airtid + i);
@@ -4712,8 +4706,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 
 				/* Allocate space for this airport tile. */
 				if (tsp == nullptr) {
-					_cur.grffile->airtspec[airtid + i] = std::make_unique<AirportTileSpec>(*AirportTileSpec::Get(subs_id));
-					tsp = _cur.grffile->airtspec[airtid + i].get();
+					tsp = std::make_unique<AirportTileSpec>(*AirportTileSpec::Get(subs_id));
 
 					tsp->enabled = true;
 
@@ -4818,7 +4811,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 	if (_cur.grffile->roadstops.size() < id + numinfo) _cur.grffile->roadstops.resize(id + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		RoadStopSpec *rs = _cur.grffile->roadstops[id + i].get();
+		auto &rs = _cur.grffile->roadstops[id + i];
 
 		if (rs == nullptr && prop != 0x08) {
 			GrfMsg(1, "RoadStopChangeInfo: Attempt to modify undefined road stop {}, ignoring", id + i);
@@ -4830,8 +4823,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 		switch (prop) {
 			case 0x08: { // Road Stop Class ID
 				if (rs == nullptr) {
-					_cur.grffile->roadstops[id + i] = std::make_unique<RoadStopSpec>();
-					rs = _cur.grffile->roadstops[id + i].get();
+					rs = std::make_unique<RoadStopSpec>();
 				}
 
 				uint32_t classid = buf.ReadDWord();
@@ -4848,7 +4840,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 				break;
 
 			case 0x0B: // Road Stop Class name
-				AddStringForMapping(buf.ReadWord(), [rs](StringID str) { RoadStopClass::Get(rs->class_index)->name = str; });
+				AddStringForMapping(buf.ReadWord(), [rs = rs.get()](StringID str) { RoadStopClass::Get(rs->class_index)->name = str; });
 				break;
 
 			case 0x0C: // The draw mode
