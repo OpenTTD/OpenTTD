@@ -14,7 +14,7 @@
 
 [[noreturn]] void UserErrorI(const std::string &str);
 [[noreturn]] void FatalErrorI(const std::string &str);
-#define UserError(format_string, ...) UserErrorI(fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
-#define FatalError(format_string, ...) FatalErrorI(fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
+#define UserError(format_string, ...) UserErrorI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
+#define FatalError(format_string, ...) FatalErrorI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
 
 #endif /* ERROR_FUNC_H */
