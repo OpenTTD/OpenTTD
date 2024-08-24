@@ -26,16 +26,16 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 CommandCost CmdBuildSignalTrack(DoCommandFlags flags, TileIndex tile, TileIndex end_tile, Track track, SignalType sigtype, SignalVariant sigvar, bool mode, bool autofill, bool minimise_gaps, uint8_t signal_density);
 CommandCost CmdRemoveSignalTrack(DoCommandFlags flags, TileIndex tile, TileIndex end_tile, Track track, bool autofill);
 
-DEF_CMD_TRAIT(CMD_BUILD_RAILROAD_TRACK,  CmdBuildRailroadTrack,  CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REMOVE_RAILROAD_TRACK, CmdRemoveRailroadTrack, CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_SINGLE_RAIL,     CmdBuildSingleRail,     CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REMOVE_SINGLE_RAIL,    CmdRemoveSingleRail,    CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_TRAIN_DEPOT,     CmdBuildTrainDepot,     CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_SINGLE_SIGNAL,   CmdBuildSingleSignal,   CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REMOVE_SINGLE_SIGNAL,  CmdRemoveSingleSignal,  CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_CONVERT_RAIL,          CmdConvertRail,                0,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_SIGNAL_TRACK,    CmdBuildSignalTrack,    CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REMOVE_SIGNAL_TRACK,   CmdRemoveSignalTrack,   CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)
+template <> struct CommandTraits<CMD_BUILD_RAILROAD_TRACK>  : DefaultCommandTraits<CMD_BUILD_RAILROAD_TRACK,  "CmdBuildRailroadTrack",  CmdBuildRailroadTrack,  CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_REMOVE_RAILROAD_TRACK> : DefaultCommandTraits<CMD_REMOVE_RAILROAD_TRACK, "CmdRemoveRailroadTrack", CmdRemoveRailroadTrack, CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_BUILD_SINGLE_RAIL>     : DefaultCommandTraits<CMD_BUILD_SINGLE_RAIL,     "CmdBuildSingleRail",     CmdBuildSingleRail,     CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_REMOVE_SINGLE_RAIL>    : DefaultCommandTraits<CMD_REMOVE_SINGLE_RAIL,    "CmdRemoveSingleRail",    CmdRemoveSingleRail,    CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_BUILD_TRAIN_DEPOT>     : DefaultCommandTraits<CMD_BUILD_TRAIN_DEPOT,     "CmdBuildTrainDepot",     CmdBuildTrainDepot,     CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_BUILD_SINGLE_SIGNAL>   : DefaultCommandTraits<CMD_BUILD_SINGLE_SIGNAL,   "CmdBuildSingleSignal",   CmdBuildSingleSignal,   CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_REMOVE_SINGLE_SIGNAL>  : DefaultCommandTraits<CMD_REMOVE_SINGLE_SIGNAL,  "CmdRemoveSingleSignal",  CmdRemoveSingleSignal,  CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_CONVERT_RAIL>          : DefaultCommandTraits<CMD_CONVERT_RAIL,          "CmdConvertRail",         CmdConvertRail,         {},                      CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_BUILD_SIGNAL_TRACK>    : DefaultCommandTraits<CMD_BUILD_SIGNAL_TRACK,    "CmdBuildSignalTrack",    CmdBuildSignalTrack,    CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_REMOVE_SIGNAL_TRACK>   : DefaultCommandTraits<CMD_REMOVE_SIGNAL_TRACK,   "CmdRemoveSignalTrack",   CmdRemoveSignalTrack,   CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION> {};
 
 CommandCallback CcPlaySound_CONSTRUCTION_RAIL;
 CommandCallback CcStation;

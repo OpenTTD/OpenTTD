@@ -15,7 +15,7 @@
 CommandCost CmdChangeSetting(DoCommandFlags flags, const std::string &name, int32_t value);
 CommandCost CmdChangeCompanySetting(DoCommandFlags flags, const std::string &name, int32_t value);
 
-DEF_CMD_TRAIT(CMD_CHANGE_SETTING,         CmdChangeSetting,        CMD_SERVER | CMD_NO_EST, CMDT_SERVER_SETTING)
-DEF_CMD_TRAIT(CMD_CHANGE_COMPANY_SETTING, CmdChangeCompanySetting, CMD_NO_EST,              CMDT_COMPANY_SETTING)
+template <> struct CommandTraits<CMD_CHANGE_SETTING>         : DefaultCommandTraits<CMD_CHANGE_SETTING,         "CmdChangeSetting",        CmdChangeSetting,        CMD_SERVER | CMD_NO_EST, CMDT_SERVER_SETTING> {};
+template <> struct CommandTraits<CMD_CHANGE_COMPANY_SETTING> : DefaultCommandTraits<CMD_CHANGE_COMPANY_SETTING, "CmdChangeCompanySetting", CmdChangeCompanySetting, CMD_NO_EST,              CMDT_COMPANY_SETTING> {};
 
 #endif /* SETTINGS_CMD_H */

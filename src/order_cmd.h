@@ -23,14 +23,14 @@ CommandCost CmdCloneOrder(DoCommandFlags flags, CloneOptions action, VehicleID v
 CommandCost CmdMoveOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID moving_order, VehicleOrderID target_order);
 CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID user_id);
 
-DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER,      CmdSkipToOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_DELETE_ORDER,       CmdDeleteOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_INSERT_ORDER,       CmdInsertOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_ORDER_REFIT,        CmdOrderRefit,        CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CLONE_ORDER,        CmdCloneOrder,        CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_MOVE_ORDER,         CmdMoveOrder,         CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CLEAR_ORDER_BACKUP, CmdClearOrderBackup,  CMD_CLIENT_ID, CMDT_SERVER_SETTING)
+template <> struct CommandTraits<CMD_MODIFY_ORDER>       : DefaultCommandTraits<CMD_MODIFY_ORDER,       "CmdModifyOrder",      CmdModifyOrder,      CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_SKIP_TO_ORDER>      : DefaultCommandTraits<CMD_SKIP_TO_ORDER,      "CmdSkipToOrder",      CmdSkipToOrder,      CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_DELETE_ORDER>       : DefaultCommandTraits<CMD_DELETE_ORDER,       "CmdDeleteOrder",      CmdDeleteOrder,      CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_INSERT_ORDER>       : DefaultCommandTraits<CMD_INSERT_ORDER,       "CmdInsertOrder",      CmdInsertOrder,      CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_ORDER_REFIT>        : DefaultCommandTraits<CMD_ORDER_REFIT,        "CmdOrderRefit",       CmdOrderRefit,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_CLONE_ORDER>        : DefaultCommandTraits<CMD_CLONE_ORDER,        "CmdCloneOrder",       CmdCloneOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_MOVE_ORDER>         : DefaultCommandTraits<CMD_MOVE_ORDER,         "CmdMoveOrder",        CmdMoveOrder,        CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_CLEAR_ORDER_BACKUP> : DefaultCommandTraits<CMD_CLEAR_ORDER_BACKUP, "CmdClearOrderBackup", CmdClearOrderBackup, CMD_CLIENT_ID, CMDT_SERVER_SETTING> {};
 
 template <typename Tcont, typename Titer>
 inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &order)

@@ -16,6 +16,6 @@
 
 CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, NewsReferenceType reftype1, CompanyID company, uint32_t reference, const std::string &text);
 
-DEF_CMD_TRAIT(CMD_CUSTOM_NEWS_ITEM, CmdCustomNewsItem, CMD_STR_CTRL | CMD_DEITY, CMDT_OTHER_MANAGEMENT)
+template <> struct CommandTraits<CMD_CUSTOM_NEWS_ITEM> : DefaultCommandTraits<CMD_CUSTOM_NEWS_ITEM, "CmdCustomNewsItem", CmdCustomNewsItem, CMD_STR_CTRL | CMD_DEITY, CMDT_OTHER_MANAGEMENT> {};
 
 #endif /* NEWS_CMD_H */

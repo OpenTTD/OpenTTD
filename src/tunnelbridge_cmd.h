@@ -17,8 +17,8 @@
 CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, uint8_t road_rail_type);
 CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, TransportType transport_type, uint8_t road_rail_type);
 
-DEF_CMD_TRAIT(CMD_BUILD_BRIDGE, CmdBuildBridge, CMD_DEITY | CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_TUNNEL, CmdBuildTunnel, CMD_DEITY | CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)
+template <> struct CommandTraits<CMD_BUILD_BRIDGE> : DefaultCommandTraits<CMD_BUILD_BRIDGE, "CmdBuildBridge", CmdBuildBridge, CMD_DEITY | CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_BUILD_TUNNEL> : DefaultCommandTraits<CMD_BUILD_TUNNEL, "CmdBuildTunnel", CmdBuildTunnel, CMD_DEITY | CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION> {};
 
 void CcBuildBridge(Commands cmd, const CommandCost &result, TileIndex end_tile, TileIndex tile_start, TransportType transport_type, BridgeType, uint8_t);
 

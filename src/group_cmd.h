@@ -34,14 +34,14 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id);
 CommandCost CmdSetGroupFlag(DoCommandFlags flags, GroupID group_id, GroupFlag flag, bool value, bool recursive);
 CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool primary, Colours colour);
 
-DEF_CMD_TRAIT(CMD_CREATE_GROUP,              CmdCreateGroup,            0, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_DELETE_GROUP,              CmdDeleteGroup,            0, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_ALTER_GROUP,               CmdAlterGroup,             0, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_ADD_VEHICLE_GROUP,         CmdAddVehicleGroup,        0, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_ADD_SHARED_VEHICLE_GROUP,  CmdAddSharedVehicleGroup,  0, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_REMOVE_ALL_VEHICLES_GROUP, CmdRemoveAllVehiclesGroup, 0, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_GROUP_FLAG,            CmdSetGroupFlag,           0, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_GROUP_LIVERY,          CmdSetGroupLivery,         0, CMDT_ROUTE_MANAGEMENT)
+template <> struct CommandTraits<CMD_CREATE_GROUP>              : DefaultCommandTraits<CMD_CREATE_GROUP,              "CmdCreateGroup",            CmdCreateGroup,            {},       CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_DELETE_GROUP>              : DefaultCommandTraits<CMD_DELETE_GROUP,              "CmdDeleteGroup",            CmdDeleteGroup,            {},       CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_ALTER_GROUP>               : DefaultCommandTraits<CMD_ALTER_GROUP,               "CmdAlterGroup",             CmdAlterGroup,             {},       CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_ADD_VEHICLE_GROUP>         : DefaultCommandTraits<CMD_ADD_VEHICLE_GROUP,         "CmdAddVehicleGroup",        CmdAddVehicleGroup,        {},       CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_ADD_SHARED_VEHICLE_GROUP>  : DefaultCommandTraits<CMD_ADD_SHARED_VEHICLE_GROUP,  "CmdAddSharedVehicleGroup",  CmdAddSharedVehicleGroup,  {},       CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_REMOVE_ALL_VEHICLES_GROUP> : DefaultCommandTraits<CMD_REMOVE_ALL_VEHICLES_GROUP, "CmdRemoveAllVehiclesGroup", CmdRemoveAllVehiclesGroup, {},       CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_SET_GROUP_FLAG>            : DefaultCommandTraits<CMD_SET_GROUP_FLAG,            "CmdSetGroupFlag",           CmdSetGroupFlag,           {},       CMDT_ROUTE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_SET_GROUP_LIVERY>          : DefaultCommandTraits<CMD_SET_GROUP_LIVERY,          "CmdSetGroupLivery",         CmdSetGroupLivery,         {},       CMDT_ROUTE_MANAGEMENT> {};
 
 void CcCreateGroup(Commands cmd, const CommandCost &result, GroupID new_group, VehicleType vt, GroupID parent_group);
 void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, GroupID new_group, GroupID, VehicleID veh_id, bool, const VehicleListIdentifier &);

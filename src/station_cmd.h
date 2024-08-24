@@ -28,13 +28,13 @@ CommandCost CmdRemoveRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t widt
 CommandCost CmdRenameStation(DoCommandFlags flags, StationID station_id, const std::string &text);
 CommandCost CmdOpenCloseAirport(DoCommandFlags flags, StationID station_id);
 
-DEF_CMD_TRAIT(CMD_BUILD_AIRPORT,            CmdBuildAirport,          CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_DOCK,               CmdBuildDock,             CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_RAIL_STATION,       CmdBuildRailStation,      CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REMOVE_FROM_RAIL_STATION, CmdRemoveFromRailStation, 0,                       CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_ROAD_STOP,          CmdBuildRoadStop,         CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REMOVE_ROAD_STOP,         CmdRemoveRoadStop,        0,                       CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_RENAME_STATION,           CmdRenameStation,         0,                       CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_OPEN_CLOSE_AIRPORT,       CmdOpenCloseAirport,      0,                       CMDT_ROUTE_MANAGEMENT)
+template <> struct CommandTraits<CMD_BUILD_AIRPORT>            : DefaultCommandTraits<CMD_BUILD_AIRPORT,            "CmdBuildAirport",          CmdBuildAirport,          CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_BUILD_DOCK>               : DefaultCommandTraits<CMD_BUILD_DOCK,               "CmdBuildDock",             CmdBuildDock,             CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_BUILD_RAIL_STATION>       : DefaultCommandTraits<CMD_BUILD_RAIL_STATION,       "CmdBuildRailStation",      CmdBuildRailStation,      CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_REMOVE_FROM_RAIL_STATION> : DefaultCommandTraits<CMD_REMOVE_FROM_RAIL_STATION, "CmdRemoveFromRailStation", CmdRemoveFromRailStation, {},                      CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_BUILD_ROAD_STOP>          : DefaultCommandTraits<CMD_BUILD_ROAD_STOP,          "CmdBuildRoadStop",         CmdBuildRoadStop,         CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_REMOVE_ROAD_STOP>         : DefaultCommandTraits<CMD_REMOVE_ROAD_STOP,         "CmdRemoveRoadStop",        CmdRemoveRoadStop,        {},                      CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_RENAME_STATION>           : DefaultCommandTraits<CMD_RENAME_STATION,           "CmdRenameStation",         CmdRenameStation,         {},                      CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_OPEN_CLOSE_AIRPORT>       : DefaultCommandTraits<CMD_OPEN_CLOSE_AIRPORT,       "CmdOpenCloseAirport",      CmdOpenCloseAirport,      {},                      CMDT_ROUTE_MANAGEMENT> {};
 
 #endif /* STATION_CMD_H */

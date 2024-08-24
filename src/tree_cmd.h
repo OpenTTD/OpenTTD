@@ -14,6 +14,6 @@
 
 CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, uint8_t tree_to_plant, bool diagonal);
 
-DEF_CMD_TRAIT(CMD_PLANT_TREE, CmdPlantTree, CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION)
+template <> struct CommandTraits<CMD_PLANT_TREE> : DefaultCommandTraits<CMD_PLANT_TREE, "CmdPlantTree", CmdPlantTree, CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION> {};
 
 #endif /* TREE_CMD_H */

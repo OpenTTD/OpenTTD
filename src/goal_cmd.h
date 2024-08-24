@@ -22,13 +22,13 @@ CommandCost CmdSetGoalCompleted(DoCommandFlags flags, GoalID goal, bool complete
 CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t target, bool is_client, uint32_t button_mask, GoalQuestionType type, const std::string &text);
 CommandCost CmdGoalQuestionAnswer(DoCommandFlags flags, uint16_t uniqueid, uint8_t button);
 
-DEF_CMD_TRAIT(CMD_CREATE_GOAL,          CmdCreateGoal,         CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_REMOVE_GOAL,          CmdRemoveGoal,         CMD_DEITY,                CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_GOAL_DESTINATION, CmdSetGoalDestination, CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_GOAL_TEXT,        CmdSetGoalText,        CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_GOAL_PROGRESS,    CmdSetGoalProgress,    CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_GOAL_COMPLETED,   CmdSetGoalCompleted,   CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_GOAL_QUESTION,        CmdGoalQuestion,       CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_GOAL_QUESTION_ANSWER, CmdGoalQuestionAnswer, CMD_DEITY,                CMDT_OTHER_MANAGEMENT)
+template <> struct CommandTraits<CMD_CREATE_GOAL>          : DefaultCommandTraits<CMD_CREATE_GOAL,          "CmdCreateGoal",         CmdCreateGoal,         CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_REMOVE_GOAL>          : DefaultCommandTraits<CMD_REMOVE_GOAL,          "CmdRemoveGoal",         CmdRemoveGoal,         CMD_DEITY,                CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_SET_GOAL_DESTINATION> : DefaultCommandTraits<CMD_SET_GOAL_DESTINATION, "CmdSetGoalDestination", CmdSetGoalDestination, CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_SET_GOAL_TEXT>        : DefaultCommandTraits<CMD_SET_GOAL_TEXT,        "CmdSetGoalText",        CmdSetGoalText,        CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_SET_GOAL_PROGRESS>    : DefaultCommandTraits<CMD_SET_GOAL_PROGRESS,    "CmdSetGoalProgress",    CmdSetGoalProgress,    CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_SET_GOAL_COMPLETED>   : DefaultCommandTraits<CMD_SET_GOAL_COMPLETED,   "CmdSetGoalCompleted",   CmdSetGoalCompleted,   CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_GOAL_QUESTION>        : DefaultCommandTraits<CMD_GOAL_QUESTION,        "CmdGoalQuestion",       CmdGoalQuestion,       CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_GOAL_QUESTION_ANSWER> : DefaultCommandTraits<CMD_GOAL_QUESTION_ANSWER, "CmdGoalQuestionAnswer", CmdGoalQuestionAnswer, CMD_DEITY,                CMDT_OTHER_MANAGEMENT> {};
 
 #endif /* GOAL_CMD_H */

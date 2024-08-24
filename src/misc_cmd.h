@@ -27,11 +27,11 @@ CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 CommandCost CmdSetCompanyMaxLoan(DoCommandFlags flags, CompanyID company, Money amount);
 CommandCost CmdPause(DoCommandFlags flags, PauseMode mode, bool pause);
 
-DEF_CMD_TRAIT(CMD_MONEY_CHEAT,          CmdMoneyCheat,        CMD_OFFLINE,             CMDT_CHEAT)
-DEF_CMD_TRAIT(CMD_CHANGE_BANK_BALANCE,  CmdChangeBankBalance, CMD_DEITY,               CMDT_MONEY_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_INCREASE_LOAN,        CmdIncreaseLoan,      0,                       CMDT_MONEY_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_DECREASE_LOAN,        CmdDecreaseLoan,      0,                       CMDT_MONEY_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_COMPANY_MAX_LOAN, CmdSetCompanyMaxLoan, CMD_DEITY,               CMDT_MONEY_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_PAUSE,                CmdPause,             CMD_SERVER | CMD_NO_EST, CMDT_SERVER_SETTING)
+template <> struct CommandTraits<CMD_MONEY_CHEAT>          : DefaultCommandTraits<CMD_MONEY_CHEAT,          "CmdMoneyCheat",        CmdMoneyCheat,        CMD_OFFLINE,             CMDT_CHEAT> {};
+template <> struct CommandTraits<CMD_CHANGE_BANK_BALANCE>  : DefaultCommandTraits<CMD_CHANGE_BANK_BALANCE,  "CmdChangeBankBalance", CmdChangeBankBalance, CMD_DEITY,               CMDT_MONEY_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_INCREASE_LOAN>        : DefaultCommandTraits<CMD_INCREASE_LOAN,        "CmdIncreaseLoan",      CmdIncreaseLoan,      {},                      CMDT_MONEY_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_DECREASE_LOAN>        : DefaultCommandTraits<CMD_DECREASE_LOAN,        "CmdDecreaseLoan",      CmdDecreaseLoan,      {},                      CMDT_MONEY_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_SET_COMPANY_MAX_LOAN> : DefaultCommandTraits<CMD_SET_COMPANY_MAX_LOAN, "CmdSetCompanyMaxLoan", CmdSetCompanyMaxLoan, CMD_DEITY,               CMDT_MONEY_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_PAUSE>                : DefaultCommandTraits<CMD_PAUSE,                "CmdPause",             CmdPause,             CMD_SERVER | CMD_NO_EST, CMDT_SERVER_SETTING> {};
 
 #endif /* MISC_CMD_H */

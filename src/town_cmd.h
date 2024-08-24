@@ -29,16 +29,16 @@ CommandCost CmdExpandTown(DoCommandFlags flags, TownID town_id, uint32_t grow_am
 CommandCost CmdDeleteTown(DoCommandFlags flags, TownID town_id);
 CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, bool house_protected);
 
-DEF_CMD_TRAIT(CMD_FOUND_TOWN,       CmdFoundTown,      CMD_DEITY | CMD_NO_TEST,  CMDT_LANDSCAPE_CONSTRUCTION) // founding random town can fail only in exec run
-DEF_CMD_TRAIT(CMD_RENAME_TOWN,      CmdRenameTown,     CMD_DEITY | CMD_SERVER,   CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_DO_TOWN_ACTION,   CmdDoTownAction,   CMD_LOCATION,             CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_TOWN_CARGO_GOAL,  CmdTownCargoGoal,  CMD_DEITY,                CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_TOWN_GROWTH_RATE, CmdTownGrowthRate, CMD_DEITY,                CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_TOWN_RATING,      CmdTownRating,     CMD_DEITY,                CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_TOWN_SET_TEXT,    CmdTownSetText,    CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_EXPAND_TOWN,      CmdExpandTown,     CMD_DEITY,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_DELETE_TOWN,      CmdDeleteTown,     CMD_OFFLINE,              CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_PLACE_HOUSE,      CmdPlaceHouse,     CMD_DEITY,                CMDT_OTHER_MANAGEMENT)
+template <> struct CommandTraits<CMD_FOUND_TOWN>       : DefaultCommandTraits<CMD_FOUND_TOWN,       "CmdFoundTown",      CmdFoundTown,      CMD_DEITY | CMD_NO_TEST,  CMDT_LANDSCAPE_CONSTRUCTION> {}; // founding random town can fail only in exec run
+template <> struct CommandTraits<CMD_RENAME_TOWN>      : DefaultCommandTraits<CMD_RENAME_TOWN,      "CmdRenameTown",     CmdRenameTown,     CMD_DEITY | CMD_SERVER,   CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_DO_TOWN_ACTION>   : DefaultCommandTraits<CMD_DO_TOWN_ACTION,   "CmdDoTownAction",   CmdDoTownAction,   CMD_LOCATION,             CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_TOWN_CARGO_GOAL>  : DefaultCommandTraits<CMD_TOWN_CARGO_GOAL,  "CmdTownCargoGoal",  CmdTownCargoGoal,  CMD_DEITY,                CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_TOWN_GROWTH_RATE> : DefaultCommandTraits<CMD_TOWN_GROWTH_RATE, "CmdTownGrowthRate", CmdTownGrowthRate, CMD_DEITY,                CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_TOWN_RATING>      : DefaultCommandTraits<CMD_TOWN_RATING,      "CmdTownRating",     CmdTownRating,     CMD_DEITY,                CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_TOWN_SET_TEXT>    : DefaultCommandTraits<CMD_TOWN_SET_TEXT,    "CmdTownSetText",    CmdTownSetText,    CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_EXPAND_TOWN>      : DefaultCommandTraits<CMD_EXPAND_TOWN,      "CmdExpandTown",     CmdExpandTown,     CMD_DEITY,                CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_DELETE_TOWN>      : DefaultCommandTraits<CMD_DELETE_TOWN,      "CmdDeleteTown",     CmdDeleteTown,     CMD_OFFLINE,              CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_PLACE_HOUSE>      : DefaultCommandTraits<CMD_PLACE_HOUSE,      "CmdPlaceHouse",     CmdPlaceHouse,     CMD_DEITY,                CMDT_OTHER_MANAGEMENT> {};
 
 CommandCallback CcFoundTown;
 void CcFoundRandomTown(Commands cmd, const CommandCost &result, Money, TownID town_id);

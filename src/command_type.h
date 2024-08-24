@@ -450,19 +450,30 @@ struct CommandFunctionTraitHelper<Tret<CommandCost, Tretargs...>(*)(DoCommandFla
 /** Defines the traits of a command. */
 template <Commands Tcmd> struct CommandTraits;
 
-#define DEF_CMD_TRAIT(cmd_, proc_, flags_, type_) \
-	template <> struct CommandTraits<cmd_> { \
-		using ProcType = decltype(&proc_); \
-		using Args = typename CommandFunctionTraitHelper<ProcType>::Args; \
-		using RetTypes = typename CommandFunctionTraitHelper<ProcType>::RetTypes; \
-		using CbArgs = typename CommandFunctionTraitHelper<ProcType>::CbArgs; \
-		using RetCallbackProc = typename CommandFunctionTraitHelper<ProcType>::CbProcType; \
-		static constexpr Commands cmd = cmd_; \
-		static constexpr auto &proc = proc_; \
-		static constexpr CommandFlags flags = (CommandFlags)(flags_); \
-		static constexpr CommandType type = type_; \
-		static inline constexpr const char *name = #proc_; \
-	};
+template <size_t N>
+struct StringLiteral {
+	constexpr StringLiteral(const char (&str)[N])
+	{
+		std::copy_n(str, N, this->value);
+	}
+
+	char value[N];
+};
+
+template <Commands Tcmd, StringLiteral Tname, auto &Tproc, CommandFlags Tflags, CommandType Ttype>
+struct DefaultCommandTraits {
+public:
+	using ProcType = decltype(&Tproc);
+	using Args = typename CommandFunctionTraitHelper<ProcType>::Args;
+	using RetTypes = typename CommandFunctionTraitHelper<ProcType>::RetTypes;
+	using CbArgs = typename CommandFunctionTraitHelper<ProcType>::CbArgs;
+	using RetCallbackProc = typename CommandFunctionTraitHelper<ProcType>::CbProcType;
+	static constexpr Commands cmd = Tcmd;
+	static constexpr auto &proc = Tproc;
+	static constexpr CommandFlags flags = Tflags;
+	static constexpr CommandType type = Ttype;
+	static constexpr std::string_view name = Tname.value;
+};
 
 /** Storage buffer for serialized command data. */
 typedef std::vector<uint8_t> CommandDataBuffer;

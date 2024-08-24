@@ -25,11 +25,11 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 CommandCost CmdBuildRoadDepot(DoCommandFlags flags, TileIndex tile, RoadType rt, DiagDirection dir);
 CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_start, RoadType to_type);
 
-DEF_CMD_TRAIT(CMD_BUILD_LONG_ROAD,  CmdBuildLongRoad,  CMD_AUTO | CMD_NO_WATER | CMD_DEITY, CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REMOVE_LONG_ROAD, CmdRemoveLongRoad, CMD_AUTO | CMD_NO_TEST,              CMDT_LANDSCAPE_CONSTRUCTION) // towns may disallow removing road bits (as they are connected) in test, but in exec they're removed and thus removing is allowed.
-DEF_CMD_TRAIT(CMD_BUILD_ROAD,       CmdBuildRoad,      CMD_AUTO | CMD_NO_WATER | CMD_DEITY, CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_ROAD_DEPOT, CmdBuildRoadDepot, CMD_AUTO | CMD_NO_WATER,             CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_CONVERT_ROAD,     CmdConvertRoad,    0,                                   CMDT_LANDSCAPE_CONSTRUCTION)
+template <> struct CommandTraits<CMD_BUILD_LONG_ROAD>  : DefaultCommandTraits<CMD_BUILD_LONG_ROAD,  "CmdBuildLongRoad",  CmdBuildLongRoad,  CMD_AUTO | CMD_NO_WATER | CMD_DEITY, CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_REMOVE_LONG_ROAD> : DefaultCommandTraits<CMD_REMOVE_LONG_ROAD, "CmdRemoveLongRoad", CmdRemoveLongRoad, CMD_AUTO | CMD_NO_TEST,              CMDT_LANDSCAPE_CONSTRUCTION> {}; // towns may disallow removing road bits (as they are connected) in test, but in exec they're removed and thus removing is allowed.
+template <> struct CommandTraits<CMD_BUILD_ROAD>       : DefaultCommandTraits<CMD_BUILD_ROAD,       "CmdBuildRoad",      CmdBuildRoad,      CMD_AUTO | CMD_NO_WATER | CMD_DEITY, CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_BUILD_ROAD_DEPOT> : DefaultCommandTraits<CMD_BUILD_ROAD_DEPOT, "CmdBuildRoadDepot", CmdBuildRoadDepot, CMD_AUTO | CMD_NO_WATER,             CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_CONVERT_ROAD>     : DefaultCommandTraits<CMD_CONVERT_ROAD,     "CmdConvertRoad",    CmdConvertRoad,    {},                                  CMDT_LANDSCAPE_CONSTRUCTION> {};
 
 CommandCallback CcPlaySound_CONSTRUCTION_OTHER;
 CommandCallback CcBuildRoadTunnel;

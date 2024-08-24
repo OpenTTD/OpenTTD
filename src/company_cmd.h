@@ -25,12 +25,12 @@ CommandCost CmdRenamePresident(DoCommandFlags flags, const std::string &text);
 CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, CompanyManagerFace cmf);
 CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool primary, Colours colour);
 
-DEF_CMD_TRAIT(CMD_COMPANY_CTRL,             CmdCompanyCtrl,           CMD_SPECTATOR | CMD_CLIENT_ID | CMD_NO_EST, CMDT_SERVER_SETTING)
-DEF_CMD_TRAIT(CMD_COMPANY_ALLOW_LIST_CTRL,  CmdCompanyAllowListCtrl,  CMD_NO_EST,                                 CMDT_SERVER_SETTING)
-DEF_CMD_TRAIT(CMD_GIVE_MONEY,               CmdGiveMoney,             0,                                          CMDT_MONEY_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_RENAME_COMPANY,           CmdRenameCompany,         0,                                          CMDT_COMPANY_SETTING)
-DEF_CMD_TRAIT(CMD_RENAME_PRESIDENT,         CmdRenamePresident,       0,                                          CMDT_COMPANY_SETTING)
-DEF_CMD_TRAIT(CMD_SET_COMPANY_MANAGER_FACE, CmdSetCompanyManagerFace, 0,                                          CMDT_COMPANY_SETTING)
-DEF_CMD_TRAIT(CMD_SET_COMPANY_COLOUR,       CmdSetCompanyColour,      0,                                          CMDT_COMPANY_SETTING)
+template <> struct CommandTraits<CMD_COMPANY_CTRL>             : DefaultCommandTraits<CMD_COMPANY_CTRL,             "CmdCompanyCtrl",           CmdCompanyCtrl,           CMD_SPECTATOR | CMD_CLIENT_ID | CMD_NO_EST, CMDT_SERVER_SETTING> {};
+template <> struct CommandTraits<CMD_COMPANY_ALLOW_LIST_CTRL>  : DefaultCommandTraits<CMD_COMPANY_ALLOW_LIST_CTRL,  "CmdCompanyAllowListCtrl",  CmdCompanyAllowListCtrl,  CMD_NO_EST,                                 CMDT_SERVER_SETTING> {};
+template <> struct CommandTraits<CMD_GIVE_MONEY>               : DefaultCommandTraits<CMD_GIVE_MONEY,               "CmdGiveMoney",             CmdGiveMoney,             {},                                         CMDT_MONEY_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_RENAME_COMPANY>           : DefaultCommandTraits<CMD_RENAME_COMPANY,           "CmdRenameCompany",         CmdRenameCompany,         {},                                         CMDT_COMPANY_SETTING> {};
+template <> struct CommandTraits<CMD_RENAME_PRESIDENT>         : DefaultCommandTraits<CMD_RENAME_PRESIDENT,         "CmdRenamePresident",       CmdRenamePresident,       {},                                         CMDT_COMPANY_SETTING> {};
+template <> struct CommandTraits<CMD_SET_COMPANY_MANAGER_FACE> : DefaultCommandTraits<CMD_SET_COMPANY_MANAGER_FACE, "CmdSetCompanyManagerFace", CmdSetCompanyManagerFace, {},                                         CMDT_COMPANY_SETTING> {};
+template <> struct CommandTraits<CMD_SET_COMPANY_COLOUR>       : DefaultCommandTraits<CMD_SET_COMPANY_COLOUR,       "CmdSetCompanyColour",      CmdSetCompanyColour,      {},                                         CMDT_COMPANY_SETTING> {};
 
 #endif /* COMPANY_CMD_H */

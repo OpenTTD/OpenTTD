@@ -29,17 +29,17 @@ CommandCost CmdMassStartStopVehicle(DoCommandFlags flags, TileIndex tile, bool d
 CommandCost CmdDepotSellAllVehicles(DoCommandFlags flags, TileIndex tile, VehicleType vehicle_type);
 CommandCost CmdDepotMassAutoReplace(DoCommandFlags flags, TileIndex tile, VehicleType vehicle_type);
 
-DEF_CMD_TRAIT(CMD_BUILD_VEHICLE,           CmdBuildVehicle,         CMD_CLIENT_ID,                CMDT_VEHICLE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_SELL_VEHICLE,            CmdSellVehicle,          CMD_CLIENT_ID | CMD_LOCATION, CMDT_VEHICLE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REFIT_VEHICLE,           CmdRefitVehicle,         CMD_LOCATION,                 CMDT_VEHICLE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_SEND_VEHICLE_TO_DEPOT,   CmdSendVehicleToDepot,   0,                            CMDT_VEHICLE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CHANGE_SERVICE_INT,      CmdChangeServiceInt,     0,                            CMDT_VEHICLE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_RENAME_VEHICLE,          CmdRenameVehicle,        0,                            CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CLONE_VEHICLE,           CmdCloneVehicle,         CMD_NO_TEST,                  CMDT_VEHICLE_CONSTRUCTION) // NewGRF callbacks influence building and refitting making it impossible to correctly estimate the cost
-DEF_CMD_TRAIT(CMD_START_STOP_VEHICLE,      CmdStartStopVehicle,     CMD_LOCATION,                 CMDT_VEHICLE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_MASS_START_STOP,         CmdMassStartStopVehicle, 0,                            CMDT_VEHICLE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_DEPOT_SELL_ALL_VEHICLES, CmdDepotSellAllVehicles, 0,                            CMDT_VEHICLE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_DEPOT_MASS_AUTOREPLACE,  CmdDepotMassAutoReplace, 0,                            CMDT_VEHICLE_CONSTRUCTION)
+template <> struct CommandTraits<CMD_BUILD_VEHICLE>           : DefaultCommandTraits<CMD_BUILD_VEHICLE,           "CmdBuildVehicle",         CmdBuildVehicle,         CMD_CLIENT_ID,                CMDT_VEHICLE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_SELL_VEHICLE>            : DefaultCommandTraits<CMD_SELL_VEHICLE,            "CmdSellVehicle",          CmdSellVehicle,          CMD_CLIENT_ID | CMD_LOCATION, CMDT_VEHICLE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_REFIT_VEHICLE>           : DefaultCommandTraits<CMD_REFIT_VEHICLE,           "CmdRefitVehicle",         CmdRefitVehicle,         CMD_LOCATION,                 CMDT_VEHICLE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_SEND_VEHICLE_TO_DEPOT>   : DefaultCommandTraits<CMD_SEND_VEHICLE_TO_DEPOT,   "CmdSendVehicleToDepot",   CmdSendVehicleToDepot,   {},                           CMDT_VEHICLE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_CHANGE_SERVICE_INT>      : DefaultCommandTraits<CMD_CHANGE_SERVICE_INT,      "CmdChangeServiceInt",     CmdChangeServiceInt,     {},                           CMDT_VEHICLE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_RENAME_VEHICLE>          : DefaultCommandTraits<CMD_RENAME_VEHICLE,          "CmdRenameVehicle",        CmdRenameVehicle,        {},                           CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_CLONE_VEHICLE>           : DefaultCommandTraits<CMD_CLONE_VEHICLE,           "CmdCloneVehicle",         CmdCloneVehicle,         CMD_NO_TEST,                  CMDT_VEHICLE_CONSTRUCTION> {}; // NewGRF callbacks influence building and refitting making it impossible to correctly estimate the cost
+template <> struct CommandTraits<CMD_START_STOP_VEHICLE>      : DefaultCommandTraits<CMD_START_STOP_VEHICLE,      "CmdStartStopVehicle",     CmdStartStopVehicle,     CMD_LOCATION,                 CMDT_VEHICLE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_MASS_START_STOP>         : DefaultCommandTraits<CMD_MASS_START_STOP,         "CmdMassStartStopVehicle", CmdMassStartStopVehicle, {},                           CMDT_VEHICLE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_DEPOT_SELL_ALL_VEHICLES> : DefaultCommandTraits<CMD_DEPOT_SELL_ALL_VEHICLES, "CmdDepotSellAllVehicles", CmdDepotSellAllVehicles, {},                           CMDT_VEHICLE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_DEPOT_MASS_AUTOREPLACE>  : DefaultCommandTraits<CMD_DEPOT_MASS_AUTOREPLACE,  "CmdDepotMassAutoReplace", CmdDepotMassAutoReplace, {},                           CMDT_VEHICLE_CONSTRUCTION> {};
 
 void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16_t, CargoArray);
 void CcStartStopVehicle(Commands cmd, const CommandCost &result, VehicleID veh_id, bool);

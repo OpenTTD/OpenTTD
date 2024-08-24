@@ -20,10 +20,10 @@ CommandCost CmdUpdateLeagueTableElementData(DoCommandFlags flags, LeagueTableEle
 CommandCost CmdUpdateLeagueTableElementScore(DoCommandFlags flags, LeagueTableElementID element, int64_t rating, const std::string &score);
 CommandCost CmdRemoveLeagueTableElement(DoCommandFlags flags, LeagueTableElementID element);
 
-DEF_CMD_TRAIT(CMD_CREATE_LEAGUE_TABLE, CmdCreateLeagueTable, CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CREATE_LEAGUE_TABLE_ELEMENT, CmdCreateLeagueTableElement, CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_UPDATE_LEAGUE_TABLE_ELEMENT_DATA, CmdUpdateLeagueTableElementData, CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_UPDATE_LEAGUE_TABLE_ELEMENT_SCORE, CmdUpdateLeagueTableElementScore, CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_REMOVE_LEAGUE_TABLE_ELEMENT, CmdRemoveLeagueTableElement, CMD_DEITY, CMDT_OTHER_MANAGEMENT)
+template <> struct CommandTraits<CMD_CREATE_LEAGUE_TABLE>               : DefaultCommandTraits<CMD_CREATE_LEAGUE_TABLE,               "CmdCreateLeagueTable",             CmdCreateLeagueTable,             CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_CREATE_LEAGUE_TABLE_ELEMENT>       : DefaultCommandTraits<CMD_CREATE_LEAGUE_TABLE_ELEMENT,       "CmdCreateLeagueTableElement",      CmdCreateLeagueTableElement,      CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_UPDATE_LEAGUE_TABLE_ELEMENT_DATA>  : DefaultCommandTraits<CMD_UPDATE_LEAGUE_TABLE_ELEMENT_DATA,  "CmdUpdateLeagueTableElementData",  CmdUpdateLeagueTableElementData,  CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_UPDATE_LEAGUE_TABLE_ELEMENT_SCORE> : DefaultCommandTraits<CMD_UPDATE_LEAGUE_TABLE_ELEMENT_SCORE, "CmdUpdateLeagueTableElementScore", CmdUpdateLeagueTableElementScore, CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_REMOVE_LEAGUE_TABLE_ELEMENT>       : DefaultCommandTraits<CMD_REMOVE_LEAGUE_TABLE_ELEMENT,       "CmdRemoveLeagueTableElement",      CmdRemoveLeagueTableElement,      CMD_DEITY,                CMDT_OTHER_MANAGEMENT> {};
 
 #endif /* LEAGUE_CMD_H */

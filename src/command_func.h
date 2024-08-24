@@ -31,7 +31,7 @@ void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *cal
 
 bool IsValidCommand(Commands cmd);
 CommandFlags GetCommandFlags(Commands cmd);
-const char *GetCommandName(Commands cmd);
+std::string_view GetCommandName(Commands cmd);
 bool IsCommandAllowedWhilePaused(Commands cmd);
 
 template <Commands Tcmd>
