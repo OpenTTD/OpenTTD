@@ -5248,7 +5248,7 @@ STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Místo n
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Je nutné nejprve zničit tunel
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}V cestě je jiný tunel
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel by končil mimo mapu
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nelze vyrovnat zemi na druhém konci tunelu
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nelze vyrovnat zem na druhém konci tunelu
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunel je příliš dlouhý
 
 # Object related errors
