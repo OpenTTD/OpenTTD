@@ -2799,7 +2799,7 @@ static void SaveFileError()
  * We have written the whole game into memory, _memory_savegame, now find
  * and appropriate compressor and start writing to file.
  */
-static SaveOrLoadResult SaveFileToDisk(bool threaded)
+static SaveOrLoadResult SaveFileToDisk(bool threaded, const std::string &filename)
 {
 	try {
 		auto [fmt, compression] = GetSavegameFormat(_savegame_format);
@@ -2814,6 +2814,8 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		ClearSaveLoadState();
 
 		if (threaded) SetAsyncSaveFinish(SaveFileDone);
+
+		Debug(sl, 1, "Map saved as '{}'.", filename);
 
 		return SL_OK;
 	} catch (...) {
@@ -2834,6 +2836,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		} else {
 			asfp();
 		}
+
 		return SL_ERROR;
 	}
 }
@@ -2854,9 +2857,10 @@ void WaitTillSaved()
  * using the writer, either in threaded mode if possible, or single-threaded.
  * @param writer   The filter to write the savegame to.
  * @param threaded Whether to try to perform the saving asynchronously.
+ * @param filename The name of the savegame (when applicable).
  * @return Return the result of the action. #SL_OK or #SL_ERROR
  */
-static SaveOrLoadResult DoSave(std::shared_ptr<SaveFilter> writer, bool threaded)
+static SaveOrLoadResult DoSave(std::shared_ptr<SaveFilter> writer, bool threaded, const std::string &filename = "")
 {
 	assert(!_sl.saveinprogress);
 
@@ -2870,10 +2874,10 @@ static SaveOrLoadResult DoSave(std::shared_ptr<SaveFilter> writer, bool threaded
 
 	SaveFileStart();
 
-	if (!threaded || !StartNewThread(&_save_thread, "ottd:savegame", &SaveFileToDisk, true)) {
+	if (!threaded || !StartNewThread(&_save_thread, "ottd:savegame", &SaveFileToDisk, true, filename)) {
 		if (threaded) Debug(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 
-		SaveOrLoadResult result = SaveFileToDisk(false);
+		SaveOrLoadResult result = SaveFileToDisk(false, filename);
 		SaveFileDone();
 
 		return result;
@@ -3135,7 +3139,7 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 			Debug(desync, 1, "save: {:08x}; {:02x}; {}", TimerGameEconomy::date, TimerGameEconomy::date_fract, filename);
 			if (!_settings_client.gui.threaded_saves) threaded = false;
 
-			return DoSave(std::make_shared<FileWriter>(fh), threaded);
+			return DoSave(std::make_shared<FileWriter>(fh), threaded, filename);
 		}
 
 		/* LOAD game */
