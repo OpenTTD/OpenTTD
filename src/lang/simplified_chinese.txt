@@ -468,7 +468,7 @@ STR_FILE_MENU_EXIT                                              :退出
 # Map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :缩略地图
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :额外视点
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :客货流图标
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :客货流图表
 STR_MAP_MENU_SIGN_LIST                                          :标志列表
 
 # Town menu
@@ -2728,7 +2728,7 @@ STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}调整�
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}选择设置为：不显示或透明
 
 # Linkgraph legend window
-STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}客货流图标
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}客货流图表
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}全部
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}无
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}选择要查看的公司
