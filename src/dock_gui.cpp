@@ -442,14 +442,15 @@ public:
 
 		/* strings such as 'Size' and 'Coverage Area' */
 		Rect r = this->GetWidget<NWidgetBase>(BDSW_ACCEPTANCE)->GetCurrentRect();
-		int top = r.top;
-		top = DrawStationCoverageAreaText(r.left, r.right, top, SCT_ALL, rad, false) + WidgetDimensions::scaled.vsep_normal;
-		top = DrawStationCoverageAreaText(r.left, r.right, top, SCT_ALL, rad, true);
+		const int bottom = r.bottom;
+		r.bottom = INT_MAX; // Allow overflow as we want to know the required height.
+		r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, false) + WidgetDimensions::scaled.vsep_normal;
+		r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, true);
 		/* Resize background if the window is too small.
 		 * Never make the window smaller to avoid oscillating if the size change affects the acceptance.
 		 * (This is the case, if making the window bigger moves the mouse into the window.) */
-		if (top > r.bottom) {
-			ResizeWindow(this, 0, top - r.bottom, false);
+		if (r.top > bottom) {
+			ResizeWindow(this, 0, r.top - bottom, false);
 		}
 	}
 

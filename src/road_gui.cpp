@@ -1361,14 +1361,15 @@ public:
 		/* 'Accepts' and 'Supplies' texts. */
 		StationCoverageType sct = (this->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY;
 		Rect r = this->GetWidget<NWidgetBase>(WID_BROS_ACCEPTANCE)->GetCurrentRect();
-		int top = r.top;
-		top = DrawStationCoverageAreaText(r.left, r.right, top, sct, rad, false) + WidgetDimensions::scaled.vsep_normal;
-		top = DrawStationCoverageAreaText(r.left, r.right, top, sct, rad, true);
+		const int bottom = r.bottom;
+		r.bottom = INT_MAX; // Allow overflow as we want to know the required height.
+		r.top = DrawStationCoverageAreaText(r, sct, rad, false) + WidgetDimensions::scaled.vsep_normal;
+		r.top = DrawStationCoverageAreaText(r, sct, rad, true);
 		/* Resize background if the window is too small.
 		 * Never make the window smaller to avoid oscillating if the size change affects the acceptance.
 		 * (This is the case, if making the window bigger moves the mouse into the window.) */
-		if (top > r.bottom) {
-			this->coverage_height += top - r.bottom;
+		if (r.top > bottom) {
+			this->coverage_height += r.top - bottom;
 			this->ReInit();
 		}
 	}
