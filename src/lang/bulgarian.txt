@@ -849,7 +849,7 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLAC
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Катастрофа с Цепелин на {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}МПС бе унищожено при сблъсък с НЛО!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Екплозия в нефтена рафинерия близо до {TOWN}!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Експлозия в нефтена рафинерия близо до {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Фабрика бе унищожена при съмнителни обстоятелства близо до {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}НЛО кацна близо до {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Срутване на мина за въглища остави следи от разрушение близо до {TOWN}!
@@ -880,12 +880,12 @@ STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLAC
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Световна икономическа криза!{}{}Финансовите експерти очакват най-лошото от сриващата се световна икономика!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Световната икономическа криза отмина!{}{}Възходът на търговията дава увереност на индустриите в новата засилваща се икономическа реалност!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} увеличава прозводството!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} увеличава производството!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Нови залежи на въглища са намерени в {INDUSTRY}!{}Очаква се производството да се удвои!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Нови залежи на нефт са намерени в {INDUSTRY}!{}Очаква се производстото да се удвои!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Иноваторските селскостопански технологии в {INDUSTRY} се очаква да удвоят производството!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Производството на {STRING} в {INDUSTRY} нарасна с {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Прозиводството в {INDUSTRY} спадна с 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Производството в {INDUSTRY} спадна с 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Напаст от насекоми предизвика опустошение в {INDUSTRY}!{}Производството намаля с 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Производството на {STRING} в {INDUSTRY} намаля с {COMMA}%!
 
