@@ -4275,6 +4275,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Prezes)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inauguracja: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}Inauguracja: {WHITE}{NUM} (okres {NUM}.)
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Schemat kolorów:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Pojazdy:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} pociąg{P "" i ów}
