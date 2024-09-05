@@ -3895,6 +3895,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Giám đốc)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Thành lập: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}Đã khánh thành: {WHITE}{NUM} (kỳ {NUM})
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Phối màu:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Phương tiện:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tàu hoả

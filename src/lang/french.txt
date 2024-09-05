@@ -4328,7 +4328,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Appuyer 
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alterner entre les fenêtres de remplacement des locomotives ou des wagons
 STR_REPLACE_ENGINES                                             :Locomotives
 STR_REPLACE_WAGONS                                              :Wagons
-STR_REPLACE_ALL_RAILTYPE                                        :Tous le véhicules sur rail
+STR_REPLACE_ALL_RAILTYPE                                        :Tous les véhicules sur rail
 STR_REPLACE_ALL_ROADTYPE                                        :Tous les véhicules routiers
 
 ###length 2
