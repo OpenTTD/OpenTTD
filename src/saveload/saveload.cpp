@@ -1925,7 +1925,7 @@ void SlGlobList(const SaveLoadTable &slt)
  * @param proc The callback procedure that is called
  * @param arg The variable that will be used for the callback procedure
  */
-void SlAutolength(AutolengthProc *proc, void *arg)
+void SlAutolength(AutolengthProc *proc, int arg)
 {
 	assert(_sl.action == SLA_SAVE);
 

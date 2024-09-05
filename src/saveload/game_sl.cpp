@@ -32,7 +32,7 @@ static const SaveLoad _game_script_desc[] = {
 	    SLEG_VAR("version",   _game_saveload_version,   SLE_UINT32),
 };
 
-static void SaveReal_GSDT(int *)
+static void SaveReal_GSDT(int)
 {
 	GameConfig *config = GameConfig::GetConfig();
 
@@ -109,7 +109,7 @@ struct GSDTChunkHandler : ChunkHandler {
 	{
 		SlTableHeader(_game_script_desc);
 		SlSetArrayIndex(0);
-		SlAutolength((AutolengthProc *)SaveReal_GSDT, nullptr);
+		SlAutolength(SaveReal_GSDT, 0);
 	}
 };
 

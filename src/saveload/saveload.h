@@ -436,7 +436,7 @@ void DoAutoOrNetsave(FiosNumberedSaveName &counter);
 SaveOrLoadResult SaveWithFilter(std::shared_ptr<struct SaveFilter> writer, bool threaded);
 SaveOrLoadResult LoadWithFilter(std::shared_ptr<struct LoadFilter> reader);
 
-typedef void AutolengthProc(void *arg);
+typedef void AutolengthProc(int);
 
 /** Type of a chunk. */
 enum ChunkType {
@@ -1290,7 +1290,7 @@ int SlIterateArray();
 void SlSetStructListLength(size_t length);
 size_t SlGetStructListLength(size_t limit);
 
-void SlAutolength(AutolengthProc *proc, void *arg);
+void SlAutolength(AutolengthProc *proc, int arg);
 size_t SlGetFieldLength();
 void SlSetLength(size_t length);
 size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld);
