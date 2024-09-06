@@ -184,13 +184,6 @@ UBool ScriptRun::next()
                     parenStack[++startSP].scriptCode = scriptCode;
                 }
             }
-
-            // if this character is a close paired character,
-            // pop it from the stack
-            if (pairIndex >= 0 && (pairIndex & 1) != 0 && parenSP >= 0) {
-                parenSP -= 1;
-                startSP -= 1;
-            }
         } else {
             // if the run broke on a surrogate pair,
             // end it before the high surrogate
