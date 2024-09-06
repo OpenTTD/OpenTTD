@@ -101,7 +101,7 @@ static bool IsRoadStopEverAvailable(const RoadStopSpec *spec, StationType type)
 static bool IsRoadStopAvailable(const RoadStopSpec *spec, StationType type)
 {
 	if (spec == nullptr) return true;
-	if (IsRoadStopEverAvailable(spec, type)) return true;
+	if (!IsRoadStopEverAvailable(spec, type)) return false;
 
 	if (!HasBit(spec->callback_mask, CBM_ROAD_STOP_AVAIL)) return true;
 
