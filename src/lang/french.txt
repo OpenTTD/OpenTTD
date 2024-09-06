@@ -4411,17 +4411,17 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Pas de pui
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}En attente d'un chemin libre
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Trop éloigné de la prochaine destination
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}En route pour {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - En route pour {0:STATION}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - Aucun ordre
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - En route pour {0:WAYPOINT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}En route vers {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Entretien au {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Répartition et entretien au {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - En route vers {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - Entretien au {0:DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - Répartition et entretien au {0:DEPOT}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Impossible d'atteindre {0:STATION}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Impossible d'atteindre {0:WAYPOINT}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Ne peut pas atteindre {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Ne peut pas atteindre {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Impossible d'atteindre {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Impossible d'atteindre {0:DEPOT}
 
 # Vehicle stopped/started animations
 ###length 2
