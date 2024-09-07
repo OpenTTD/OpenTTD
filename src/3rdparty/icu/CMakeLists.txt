@@ -1,3 +1,5 @@
+add_subdirectory(tests)
+
 add_files(
     scriptrun.cpp
     scriptrun.h
