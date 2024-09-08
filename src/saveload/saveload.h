@@ -386,6 +386,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_COMPANY_INAUGURATED_PERIOD,         ///< 339  PR#12798 Companies show the period inaugurated in wallclock mode.
 
 	SLV_ROAD_STOP_TILE_DATA,                ///< 340  PR#12883 Move storage of road stop tile data, also save for road waypoints.
+	SLV_PATH_CACHE_FORMAT,                  ///< 341  PR#12345 Vehicle path cache format changed.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
@@ -942,6 +943,16 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
 #define SLE_CONDREFLIST(base, variable, type, from, to) SLE_GENERAL(SL_REFLIST, base, variable, type, 0, from, to, 0)
 
 /**
+ * Storage of a vector of #SL_VAR elements in some savegame versions.
+ * @param base     Name of the class or struct containing the list.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the list.
+ * @param to       Last savegame version that has the list.
+ */
+#define SLE_CONDVECTOR(base, variable, type, from, to) SLE_GENERAL(SL_VECTOR, base, variable, type, 0, from, to, 0)
+
+/**
  * Storage of a deque of #SL_VAR elements in some savegame versions.
  * @param base     Name of the class or struct containing the list.
  * @param variable Name of the variable in the class or struct referenced by \a base.
@@ -1319,5 +1330,55 @@ inline void SlSkipBytes(size_t length)
 
 extern std::string _savegame_format;
 extern bool _do_autosave;
+
+/**
+ * Default handler for saving/loading a vector to/from disk.
+ *
+ * This handles a few common things for handlers, meaning the actual handler
+ * needs less code.
+ *
+ * @tparam TImpl The class initializing this template.
+ * @tparam TObject The class of the object using this SaveLoadHandler.
+ * @tparam TVectorObject The class of the object contained within the vector.
+ */
+template <class TImpl, class TObject, class TVectorObject>
+class VectorSaveLoadHandler : public DefaultSaveLoadHandler<TImpl, TObject> {
+public:
+	using TVector = std::vector<TVectorObject>;
+
+	/**
+	 * Get instance of vector to load/save.
+	 * @param object Object containing vector.
+	 * @returns Vector to load/save.
+	 */
+	virtual TVector &GetVector(TObject *object) const = 0;
+
+	/**
+	 * Get number of elements to load into vector.
+	 * @returns Number of elements to load into the vector.
+	 * @note This is only overridden if the number of elements comes from a different location due to savegame changes.
+	 */
+	virtual size_t GetLength() const { return SlGetStructListLength(SIZE_MAX); }
+
+	void Save(TObject *object) const override
+	{
+		TVector &vec = this->GetVector(object);
+		SlSetStructListLength(vec.size());
+		for (TVectorObject &item : vec) {
+			SlObject(&item, this->GetDescription());
+		}
+	}
+
+	void Load(TObject *object) const override
+	{
+		TVector &vec = this->GetVector(object);
+		size_t count = this->GetLength();
+		vec.reserve(count);
+		while (count-- > 0) {
+			TVectorObject &item = vec.emplace_back();
+			SlObject(&item, this->GetLoadDescription());
+		}
+	}
+};
 
 #endif /* SAVELOAD_H */
