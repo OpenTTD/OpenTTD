@@ -84,6 +84,13 @@ class NIHVehicle : public NIHelper {
 		VehicleResolverObject ro(v->engine_type, v, VehicleResolverObject::WO_CACHED);
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
+
+	const SortedPersistentStorage GetPSA(uint index, uint32_t) const override
+	{
+		const Vehicle *v = Vehicle::Get(index);
+		if (v->psa == nullptr) return {};
+		return {std::begin(v->psa->storage), std::end(v->psa->storage)};
+	}
 };
 
 static const NIFeature _nif_vehicle = {
@@ -378,11 +385,11 @@ class NIHIndustry : public NIHelper {
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 
-	const std::span<int32_t> GetPSA(uint index, uint32_t) const override
+	const SortedPersistentStorage GetPSA(uint index, uint32_t) const override
 	{
 		const Industry *i = (const Industry *)this->GetInstance(index);
 		if (i->psa == nullptr) return {};
-		return i->psa->storage;
+		return {std::begin(i->psa->storage), std::end(i->psa->storage)};
 	}
 };
 
@@ -552,11 +559,11 @@ class NIHAirport : public NIHelper {
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 
-	const std::span<int32_t> GetPSA(uint index, uint32_t) const override
+	const SortedPersistentStorage GetPSA(uint index, uint32_t) const override
 	{
 		const Station *st = (const Station *)this->GetInstance(index);
 		if (st->airport.psa == nullptr) return {};
-		return st->airport.psa->storage;
+		return {std::begin(st->airport.psa->storage), std::end(st->airport.psa->storage)};
 	}
 };
 
@@ -598,12 +605,12 @@ class NIHTown : public NIHelper {
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 
-	const std::span<int32_t> GetPSA(uint index, uint32_t grfid) const override
+	const SortedPersistentStorage GetPSA(uint index, uint32_t grfid) const override
 	{
 		Town *t = Town::Get(index);
 
 		for (const auto &it : t->psa_list) {
-			if (it->grfid == grfid) return it->storage;
+			if (it->grfid == grfid) return {std::begin(it->storage), std::end(it->storage)};
 		}
 
 		return {};

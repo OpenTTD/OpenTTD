@@ -186,7 +186,8 @@ public:
 	 * @param grfid Parameter for the PSA. Only required for items with parameters.
 	 * @return Span of the storage array or an empty span when not present.
 	 */
-	virtual const std::span<int32_t> GetPSA([[maybe_unused]] uint index, [[maybe_unused]] uint32_t grfid) const
+	using SortedPersistentStorage = std::map<PersistentStorage::KeyType, PersistentStorage::ElementType>;
+	virtual const SortedPersistentStorage GetPSA([[maybe_unused]] uint index, [[maybe_unused]] uint32_t grfid) const
 	{
 		return {};
 	}
@@ -468,9 +469,9 @@ struct NewGRFInspectWindow : Window {
 			} else {
 				this->DrawString(r, i++, "Persistent storage:");
 			}
-			assert(psa.size() % 4 == 0);
-			for (size_t j = 0; j < psa.size(); j += 4) {
-				this->DrawString(r, i++, fmt::format("  {}: {} {} {} {}", j, psa[j], psa[j + 1], psa[j + 2], psa[j + 3]));
+			for (const auto &pair : psa) {
+				if (pair.second == 0) continue;
+				this->DrawString(r, i++, fmt::format("  {:02x}: {:08x} ({})", pair.first, pair.second, pair.second));
 			}
 		}
 
