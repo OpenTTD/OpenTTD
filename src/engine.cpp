@@ -987,7 +987,7 @@ CommandCost CmdSetVehicleVisibility(DoCommandFlag flags, EngineID engine_id, boo
 	if (!IsEngineBuildable(e->index, e->type, _current_company)) return CMD_ERROR;
 
 	if ((flags & DC_EXEC) != 0) {
-		SB(e->company_hidden, _current_company, 1, hide ? 1 : 0);
+		AssignBit(e->company_hidden, _current_company, hide);
 		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
 

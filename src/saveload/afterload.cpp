@@ -1512,7 +1512,7 @@ bool AfterLoadGame()
 				} else {
 					/* The "lift has destination" bit has been moved from
 					 * m5[7] to m7[0]. */
-					SB(t.m7(), 0, 1, HasBit(t.m5(), 7));
+					AssignBit(t.m7(), 0, HasBit(t.m5(), 7));
 					ClrBit(t.m5(), 7);
 
 					/* The "lift is moving" bit has been removed, as it does

@@ -141,7 +141,7 @@ static void GuiGroupListAddChildren(GUIGroupList &dst, const GUIGroupList &src, 
 	uint16_t level_mask = 0;
 	for (auto it = std::rbegin(dst); std::next(it) != std::rend(dst); ++it) {
 		auto next_it = std::next(it);
-		SB(level_mask, it->indent, 1, it->indent <= next_it->indent);
+		AssignBit(level_mask, it->indent, it->indent <= next_it->indent);
 		next_it->level_mask = level_mask;
 	}
 }

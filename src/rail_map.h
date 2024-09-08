@@ -83,7 +83,7 @@ inline bool HasSignals(Tile t)
 inline void SetHasSignals(Tile tile, bool signals)
 {
 	assert(IsPlainRailTile(tile));
-	SB(tile.m5(), 6, 1, signals);
+	AssignBit(tile.m5(), 6, signals);
 }
 
 /**
@@ -213,7 +213,7 @@ inline void SetTrackReservation(Tile t, TrackBits b)
 	assert(!TracksOverlap(b));
 	Track track = RemoveFirstTrack(&b);
 	SB(t.m2(), 8, 3, track == INVALID_TRACK ? 0 : track + 1);
-	SB(t.m2(), 11, 1, (uint8_t)(b != TRACK_BIT_NONE));
+	AssignBit(t.m2(), 11, b != TRACK_BIT_NONE);
 }
 
 /**
@@ -270,7 +270,7 @@ inline bool HasDepotReservation(Tile t)
 inline void SetDepotReservation(Tile t, bool b)
 {
 	assert(IsRailDepot(t));
-	SB(t.m5(), 4, 1, (uint8_t)b);
+	AssignBit(t.m5(), 4, b);
 }
 
 /**
