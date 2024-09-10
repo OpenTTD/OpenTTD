@@ -436,7 +436,7 @@ inline bool IsStationTileBlocked(Tile t)
 inline void SetStationTileBlocked(Tile t, bool b)
 {
 	assert(HasStationRail(t));
-	SB(t.m6(), 0, 1, b ? 1 : 0);
+	AssignBit(t.m6(), 0, b);
 }
 
 /**
@@ -460,7 +460,7 @@ inline bool CanStationTileHaveWires(Tile t)
 inline void SetStationTileHaveWires(Tile t, bool b)
 {
 	assert(HasStationRail(t));
-	SB(t.m6(), 1, 1, b ? 1 : 0);
+	AssignBit(t.m6(), 1, b);
 }
 
 /**
@@ -484,7 +484,7 @@ inline bool CanStationTileHavePylons(Tile t)
 inline void SetStationTileHavePylons(Tile t, bool b)
 {
 	assert(HasStationRail(t));
-	SB(t.m6(), 7, 1, b ? 1 : 0);
+	AssignBit(t.m6(), 7, b);
 }
 
 /**
@@ -564,7 +564,7 @@ inline bool HasStationReservation(Tile t)
 inline void SetRailStationReservation(Tile t, bool b)
 {
 	assert(HasStationRail(t));
-	SB(t.m6(), 2, 1, b ? 1 : 0);
+	AssignBit(t.m6(), 2, b);
 }
 
 /**

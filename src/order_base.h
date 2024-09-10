@@ -201,9 +201,9 @@ public:
 	inline uint16_t GetMaxSpeed() const { return this->max_speed; }
 
 	/** Set if the wait time is explicitly timetabled (unless the order is conditional). */
-	inline void SetWaitTimetabled(bool timetabled) { if (!this->IsType(OT_CONDITIONAL)) SB(this->flags, 3, 1, timetabled ? 1 : 0); }
+	inline void SetWaitTimetabled(bool timetabled) { if (!this->IsType(OT_CONDITIONAL)) AssignBit(this->flags, 3, timetabled); }
 	/** Set if the travel time is explicitly timetabled (unless the order is conditional). */
-	inline void SetTravelTimetabled(bool timetabled) { if (!this->IsType(OT_CONDITIONAL)) SB(this->flags, 7, 1, timetabled ? 1 : 0); }
+	inline void SetTravelTimetabled(bool timetabled) { if (!this->IsType(OT_CONDITIONAL)) AssignBit(this->flags, 7, timetabled); }
 
 	/**
 	 * Set the time in ticks to wait at the destination.

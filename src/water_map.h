@@ -364,7 +364,7 @@ inline bool HasTileWaterGround(Tile t)
 inline void SetDockingTile(Tile t, bool b)
 {
 	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_RAILWAY) || IsTileType(t, MP_STATION) || IsTileType(t, MP_TUNNELBRIDGE));
-	SB(t.m1(), 7, 1, b ? 1 : 0);
+	AssignBit(t.m1(), 7, b);
 }
 
 /**

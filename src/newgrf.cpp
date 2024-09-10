@@ -1793,7 +1793,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				break;
 
 			case 0x0A: // Large
-				SB(avi->subtype, 1, 1, (buf.ReadByte() != 0 ? 1 : 0)); // AIR_FAST
+				AssignBit(avi->subtype, 1, buf.ReadByte() != 0); // AIR_FAST
 				break;
 
 			case PROP_AIRCRAFT_COST_FACTOR: // 0x0B Cost factor

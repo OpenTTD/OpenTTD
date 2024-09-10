@@ -105,7 +105,7 @@ inline void SetTunnelBridgeReservation(Tile t, bool b)
 {
 	assert(IsTileType(t, MP_TUNNELBRIDGE));
 	assert(GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL);
-	SB(t.m5(), 4, 1, b ? 1 : 0);
+	AssignBit(t.m5(), 4, b);
 }
 
 /**

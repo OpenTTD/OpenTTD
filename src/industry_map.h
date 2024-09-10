@@ -88,7 +88,7 @@ IndustryType GetIndustryType(Tile tile);
 inline void SetIndustryCompleted(Tile tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
-	SB(tile.m1(), 7, 1, 1);
+	SetBit(tile.m1(), 7);
 }
 
 /**

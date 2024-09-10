@@ -184,6 +184,25 @@ constexpr T ToggleBit(T &x, const uint8_t y)
 }
 
 /**
+ * Assigns a bit in a variable.
+ *
+ * This function assigns a single bit in a variable. The variable is
+ * changed and the value is also returned. Parameter y defines the bit
+ * to assign and starts at the LSB with 0.
+ *
+ * @param x The variable to assign the bit
+ * @param y The bit position to assign
+ * @param value The new bit value
+ * @pre y < sizeof(T) * 8
+ * @return The new value of the old value with the bit assigned
+ */
+template <typename T>
+constexpr T AssignBit(T &x, const uint8_t y, bool value)
+{
+	return SB<T>(x, y, 1, value ? 1 : 0);
+}
+
+/**
  * Search the first set bit in a value.
  * When no bit is set, it returns 0.
  *
