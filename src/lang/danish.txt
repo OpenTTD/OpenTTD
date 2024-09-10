@@ -310,8 +310,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}Annuller
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-= qwertyuiop[]asdfghjkl;'#\zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :¬!"£$%^&*()_+ QWERTYUIOP{{}}ASDFGHJKL:@~|ZXCVBNM<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Længde: {NUM}
@@ -437,6 +437,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Forlad scenarie
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Afslut
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Skab byer
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Placer huse
 
 # Settings menu
 ###length 16
@@ -1497,7 +1499,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Vægur
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutter om året: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Vælg antallet af minutter i et kalenderår. Standard er 12 minutter. Indstil til 0 for at forhindre kalendertiden i at ændre sig. Denne indstilling påvirker ikke den økonomiske simulering af spillet og er kun tilgængelig, når du bruger vægurs tidtagning
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Vælg antallet af minutter i et kalenderår. Standard er 12 minutter. Indstil til 0 for at forhindre kalendertiden i at ændre sig. Forøgelse af kalenderårets længde bremser indførelsen af ​​køretøjer, huse og anden infrastruktur. Det påvirker ikke køretøjets hastighed eller økonomisk simulering, bortset fra inflation. Denne indstilling er kun tilgængelig, når du bruger vægurs tidtagning
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -2478,6 +2480,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Dit spillernavn
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Administrative handlinger der kan udføres for denne klient
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administrative handlinger der kan udføres for dette selskab
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Tilslut dette selskab
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Giv denne klient tilladelse til at blive medlem af din virksomhed
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Send en besked til denne spiller
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Send en besked til alle spillere i dette selskab
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Send en besked til alle tilskuere
@@ -2799,9 +2802,19 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Træk & 
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Byg en station vha. træk & slip
 
 STR_PICKER_MODE_ALL                                             :Alle
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Skift visning af elementer fra alle klasser
+STR_PICKER_MODE_USED                                            :Brugt
+STR_PICKER_MODE_SAVED                                           :Gemt
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Skift til kun at vise gemte elementer
+
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Vælg en byzone, der skal vises
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Vælg en hustype at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementer
 
 
-
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kant
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Udkant
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ydre Forstæder
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Indre Forstæder
 
 STR_STATION_CLASS_DFLT                                          :Standard station
 STR_STATION_CLASS_DFLT_STATION                                  :Standard station
@@ -3588,6 +3601,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Gå til 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Indtast et navn for skiltet
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Byer ({COMMA} of {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ingen -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (storby){BLACK} ({COMMA})
@@ -3921,6 +3935,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/periode
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrier ({COMMA} of {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transporteret){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -5063,6 +5078,7 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan ikke
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke omdøbe rutepunkt...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan ikke fjerne rutepunkt for tog her...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Kan ikke fjerne rutepunkt...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Jernbane-rutepunkt skal fjernes først
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... der er en bøje i vejen
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bøjen er i brug af et andet firma!
@@ -5311,6 +5327,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Der er i
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Dette fly kan ikke lande på denne heliport
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Denne helikopter kan ikke lande i denne lufthavn
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Der er ikke noget Jernbane vejpunkt
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Der er intet rutepunkt
 STR_ERROR_NO_BUOY                                               :{WHITE}Der er ingen bøje
 
 # Timetable related errors
