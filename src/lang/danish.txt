@@ -1499,7 +1499,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Vægur
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutter om året: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Vælg antallet af minutter i et kalenderår. Standard er 12 minutter. Indstil til 0 for at forhindre kalendertiden i at ændre sig. Forøgelse af kalenderårets længde bremser indførelsen af ​​køretøjer, huse og anden infrastruktur. Det påvirker ikke køretøjets hastighed eller økonomisk simulering, bortset fra inflation. Denne indstilling er kun tilgængelig, når du bruger vægurs tidtagning
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Vælg antallet af minutter i et kalenderår. Standard er 12 minutter. Indstil til 0 for at forhindre kalendertiden i at ændre sig. Forøgelse af kalenderårets længde bremser indførelsen af køretøjer, huse og anden infrastruktur. Det påvirker ikke køretøjets hastighed eller økonomisk simulering, bortset fra inflation. Denne indstilling er kun tilgængelig, når du bruger vægurs tidtagning
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
