@@ -319,7 +319,7 @@ GameStrings *_current_data = nullptr;
  */
 const char *GetGameStringPtr(uint id)
 {
-	if (id >= _current_data->cur_language->lines.size()) return GetStringPtr(STR_UNDEFINED);
+	if (_current_data == nullptr || _current_data->cur_language == nullptr || id >= _current_data->cur_language->lines.size()) return GetStringPtr(STR_UNDEFINED);
 	return _current_data->cur_language->lines[id].c_str();
 }
 
