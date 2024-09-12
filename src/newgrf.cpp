@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 
+#include "core/backup_type.hpp"
 #include "core/container_func.hpp"
 #include "debug.h"
 #include "fileio_func.h"
@@ -257,6 +258,12 @@ public:
 		return val | (ReadWord() << 16);
 	}
 
+	uint32_t PeekDWord()
+	{
+		AutoRestoreBackup backup(this->data, this->data);
+		return this->ReadDWord();
+	}
+
 	uint32_t ReadVarSize(uint8_t size)
 	{
 		switch (size) {
@@ -288,11 +295,6 @@ public:
 	inline bool HasData(size_t count = 1) const
 	{
 		return data + count <= end;
-	}
-
-	inline uint8_t *Data()
-	{
-		return data;
 	}
 
 	inline void Skip(size_t len)
@@ -1962,7 +1964,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					NewGRFSpriteLayout *dts = &statspec->renderdata.emplace_back();
 					dts->consistent_max_offset = UINT16_MAX; // Spritesets are unknown, so no limit.
 
-					if (buf.HasData(4) && *(uint32_t*)buf.Data() == 0) {
+					if (buf.HasData(4) && buf.PeekDWord() == 0) {
 						buf.Skip(4);
 						extern const DrawTileSprites _station_display_datas_rail[8];
 						dts->Clone(&_station_display_datas_rail[t % 8]);
