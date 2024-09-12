@@ -320,7 +320,7 @@ uint16_t Train::GetCurveSpeedLimit() const
 	int sum = 0;
 	int pos = 0;
 	int lastpos = -1;
-	for (const Vehicle *u = this; u->Next() != nullptr; u = u->Next(), pos++) {
+	for (const Train *u = this; u->Next() != nullptr; u = u->Next(), pos += u->gcache.cached_veh_length) {
 		Direction this_dir = u->direction;
 		Direction next_dir = u->Next()->direction;
 
@@ -333,7 +333,7 @@ uint16_t Train::GetCurveSpeedLimit() const
 			if (lastpos != -1) {
 				numcurve++;
 				sum += pos - lastpos;
-				if (pos - lastpos == 1 && max_speed > 88) {
+				if (pos - lastpos <= static_cast<int>(VEHICLE_LENGTH) && max_speed > 88) {
 					max_speed = 88;
 				}
 			}
@@ -350,6 +350,7 @@ uint16_t Train::GetCurveSpeedLimit() const
 		if (curvecount[0] == 1 && curvecount[1] == 1) {
 			max_speed = absolute_max_speed;
 		} else {
+			sum = CeilDiv(sum, VEHICLE_LENGTH);
 			sum /= numcurve;
 			max_speed = 232 - (13 - Clamp(sum, 1, 12)) * (13 - Clamp(sum, 1, 12));
 		}
