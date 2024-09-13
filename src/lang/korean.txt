@@ -620,8 +620,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}화물 �
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}운송 시간(일)
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}운송 시간(초)
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}10 단위(1만 리터)의 화물을 20칸 거리만큼 운송할 때의 운송비 지급량
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}모두 사용
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}모두 사용 안 함
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}모두
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}없음
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시 안 함
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화물의 그래프를 표시하거나 숨깁니다
@@ -800,8 +800,8 @@ STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STR
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}모두 사용 안 함
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}모두 사용
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}없음
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}모두
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}고도 표시
 STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}산업시설 이름 표시
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}지도 상의 모든 산업시설을 숨깁니다.

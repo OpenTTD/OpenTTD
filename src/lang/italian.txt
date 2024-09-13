@@ -439,6 +439,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Esci dall'edito
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Esci
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generare città
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Mette case
 
 # Settings menu
 ###length 16
@@ -2509,6 +2511,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Nome del tuo pe
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Azioni amministrative da eseguire per questo cliente
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Azioni amministrative da eseguire per questa compagnia
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Unisciti a questa compagnia
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Autorizzare questo cliente da unisce la tua compagnia
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Invia un messaggio a questo giocatore
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Invia un messaggio a tutti i giocatori di questa compagnia
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Invia un messaggio a tutti gli spettatori
@@ -2834,6 +2837,8 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & d
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Costruisce una stazione con il drag & drop
 
 
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Seleziona una classe di oggetti da visualizzare
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Seleziona un tipo d'oggetto da costruire. Ctrl+Clic per aggiungere o rimuovere in elementi salvati. Ctrl+Clic+trascinamento per selezionare l'area in diagonale. Premere anche Shift per mostrare solo la stima dei costi.
 
 STR_HOUSE_PICKER_CAPTION                                        :Selezione casa
 
@@ -5057,6 +5062,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Impossib
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Farebbe parte di due o più stazioni/aree di carico
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stazione troppo estesa
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... numero di binari non supportata
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... lunghezza non supportata
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Troppe stazioni/aree di carico
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Stazione composta da troppe parti
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Troppe stazioni degli autobus
@@ -5299,6 +5306,8 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Iniziare
 
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Nessun tipo di strade costruibile dalle città disponibile
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Cambia la configurazione dei tuoi  NewGRF
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Nessun tipo di strade costruibile dalle città disponibile
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Iniziare una nuova partita dopo il {DATE_SHORT} o utilizzare un NewGRF che fornisca veicoli a partire da date antecedenti
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Impossibile far passare al treno un segnale di pericolo...
