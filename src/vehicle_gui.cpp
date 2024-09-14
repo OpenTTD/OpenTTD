@@ -329,6 +329,82 @@ static bool CargoFilter(const GUIVehicleGroup *vehgroup, const CargoID cid)
 	return false;
 }
 
+/**
+ * Test if cargo icon overlays should be drawn.
+ * @returns true iff cargo icon overlays should be drawn.
+ */
+bool ShowCargoIconOverlay()
+{
+	return _shift_pressed && _ctrl_pressed;
+}
+
+/**
+ * Add a cargo icon to the list of overlays.
+ * @param overlays List of overlays.
+ * @param x Horizontal position.
+ * @param width Width available.
+ * @param v Vehicle to add.
+ */
+void AddCargoIconOverlay(std::vector<CargoIconOverlay> &overlays, int x, int width, const Vehicle *v)
+{
+	bool rtl = _current_text_dir == TD_RTL;
+	if (!v->IsArticulatedPart() || v->cargo_type != v->Previous()->cargo_type) {
+		/* Add new overlay slot. */
+		overlays.emplace_back(rtl ? x - width : x, rtl ? x : x + width, v->cargo_type, v->cargo_cap);
+	} else {
+		/* This is an articulated part with the same cargo type, adjust left or right of last overlay slot. */
+		if (rtl) {
+			overlays.back().left -= width;
+		} else {
+			overlays.back().right += width;
+		}
+		overlays.back().cargo_cap += v->cargo_cap;
+	}
+}
+
+/**
+ * Draw a cargo icon overlaying an existing sprite, with a black contrast outline.
+ * @param x Horizontal position from left.
+ * @param y Vertical position from top.
+ * @param cid Cargo ID to draw icon for.
+ */
+void DrawCargoIconOverlay(int x, int y, CargoID cid)
+{
+	if (!ShowCargoIconOverlay()) return;
+	if (!IsValidCargoID(cid)) return;
+
+	const CargoSpec *cs = CargoSpec::Get(cid);
+
+	SpriteID spr = cs->GetCargoIcon();
+	if (spr == 0) return;
+
+	Dimension d = GetSpriteSize(spr);
+	d.width /= 2;
+	d.height /= 2;
+	int one = ScaleGUITrad(1);
+
+	/* Draw the cargo icon in black shifted 4 times to create the outline. */
+	DrawSprite(spr, PALETTE_ALL_BLACK, x - d.width - one, y - d.height);
+	DrawSprite(spr, PALETTE_ALL_BLACK, x - d.width + one, y - d.height);
+	DrawSprite(spr, PALETTE_ALL_BLACK, x - d.width, y - d.height - one);
+	DrawSprite(spr, PALETTE_ALL_BLACK, x - d.width, y - d.height + one);
+	/* Draw the cargo icon normally. */
+	DrawSprite(spr, PAL_NONE, x - d.width, y - d.height);
+}
+
+/**
+ * Draw a list of cargo icon overlays.
+ * @param overlays List of overlays.
+ * @param y Vertical position.
+ */
+void DrawCargoIconOverlays(std::span<const CargoIconOverlay> overlays, int y)
+{
+	for (const auto &cio : overlays) {
+		if (cio.cargo_cap == 0) continue;
+		DrawCargoIconOverlay((cio.left + cio.right) / 2, y, cio.cargo_type);
+	}
+}
+
 static GUIVehicleGroupList::FilterFunction * const _vehicle_group_filter_funcs[] = {
 	&CargoFilter,
 };
@@ -2051,6 +2127,15 @@ public:
 		this->GetWidget<NWidgetCore>(WID_VL_FILTER_BY_CARGO)->widget_data = this->GetCargoFilterLabel(this->cargo_filter_criteria);
 
 		this->DrawWidgets();
+	}
+
+	bool last_overlay_state;
+	void OnMouseLoop() override
+	{
+		if (last_overlay_state != ShowCargoIconOverlay()) {
+			last_overlay_state = ShowCargoIconOverlay();
+			this->SetDirty();
+		}
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override

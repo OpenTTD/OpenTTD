@@ -97,6 +97,17 @@ void DrawAircraftImage(const Vehicle *v, const Rect &r, VehicleID selection, Eng
 
 	PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 	seq.Draw(x, y, pal, (v->vehstatus & VS_CRASHED) != 0);
+
+	/* Aircraft can store cargo in their shadow, show this if present. */
+	const Vehicle *u = v->Next();
+	assert(u != nullptr);
+	int dx = 0;
+	if (u->cargo_cap > 0 && u->cargo_type != v->cargo_type) {
+		dx = GetLargestCargoIconSize().width / 2;
+		DrawCargoIconOverlay(x + dx, y, u->cargo_type);
+	}
+	if (v->cargo_cap > 0) DrawCargoIconOverlay(x - dx, y, v->cargo_type);
+
 	if (helicopter) {
 		const Aircraft *a = Aircraft::From(v);
 		VehicleSpriteSeq rotor_seq;
