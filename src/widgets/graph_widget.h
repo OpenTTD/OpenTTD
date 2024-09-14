@@ -25,17 +25,18 @@ enum GraphLegendWidgets : WidgetID {
 enum GraphWidgets : WidgetID {
 	WID_GRAPH_KEY_BUTTON, ///< Key button.
 	WID_GRAPH_BACKGROUND, ///< Background of the window.
+	WID_GRAPH_CAPTION,    ///< Caption.
 	WID_GRAPH_GRAPH,      ///< Graph itself.
 	WID_GRAPH_RESIZE,     ///< Resize button.
 	WID_GRAPH_HEADER,     ///< Header.
 	WID_GRAPH_FOOTER,     ///< Footer.
 
-	WID_PHG_DETAILED_PERFORMANCE, ///< Detailed performance.
+	WID_GRAPH_ENABLE_CARGOES,  ///< Enable cargoes button.
+	WID_GRAPH_DISABLE_CARGOES, ///< Disable cargoes button.
+	WID_GRAPH_MATRIX,          ///< Cargo list.
+	WID_GRAPH_MATRIX_SCROLLBAR,///< Cargo list scrollbar.
 
-	WID_CPR_ENABLE_CARGOES,  ///< Enable cargoes button.
-	WID_CPR_DISABLE_CARGOES, ///< Disable cargoes button.
-	WID_CPR_MATRIX,          ///< Cargo list.
-	WID_CPR_MATRIX_SCROLLBAR,///< Cargo list scrollbar.
+	WID_PHG_DETAILED_PERFORMANCE, ///< Detailed performance.
 };
 
 /** Widget of the #PerformanceRatingDetailWindow class. */
