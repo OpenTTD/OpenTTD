@@ -18,7 +18,7 @@ TEST_CASE("HaveDParamChanged")
 	SetDParam(0, 0);
 	SetDParamStr(1, "some string");
 
-	std::vector<StringParameterBackup> backup;
+	std::vector<StringParameterData> backup;
 	CopyOutDParam(backup, 2);
 
 	CHECK(HaveDParamChanged(backup) == false);

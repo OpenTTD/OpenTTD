@@ -621,8 +621,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kravas a
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dienas ceļā
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Sekundes tranzītā
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Izmaksas par 10 vienību (vai 10,000 litru) kravas pārvadāšanu par 20 lauciņiem
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Iespējot visu
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Atspējot visu
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Viss
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Nav
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Rādīt visas kravas samaksu salīdzināšanas diagrammā
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nerādīt nevienu kravu samaksu salīdzināšanas diagrammā
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Paslēgt kravas veida diagrammu
@@ -801,8 +801,8 @@ STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STR
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Atspējot visu
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Iespējot visu
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Neviena
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Viss
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Rādīt augstumu
 STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Rādīt ražotņu nosaukumus
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nerādīt uz kartes ražotnes
@@ -3905,6 +3905,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(vadītājs)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Dibināts: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}Inaugurācija: {WHITE}{NUM} ({NUM}. period)
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Identitātes krāsu shēma
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Transportlīdzekļi:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} vilcien{P s i u}

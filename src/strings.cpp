@@ -76,9 +76,9 @@ void StringParameters::PrepareForNextRun()
  * Get the next parameter from our parameters.
  * This updates the offset, so the next time this is called the next parameter
  * will be read.
- * @return The pointer to the next parameter.
+ * @return The next parameter.
  */
-StringParameter *StringParameters::GetNextParameterPointer()
+const StringParameter &StringParameters::GetNextParameterReference()
 {
 	assert(this->next_type == 0 || (SCC_CONTROL_START <= this->next_type && this->next_type <= SCC_CONTROL_END));
 	if (this->offset >= this->parameters.size()) {
@@ -92,7 +92,7 @@ StringParameter *StringParameters::GetNextParameterPointer()
 	}
 	param.type = this->next_type;
 	this->next_type = 0;
-	return &param;
+	return param;
 }
 
 
@@ -113,7 +113,7 @@ void SetDParam(size_t n, uint64_t v)
  */
 uint64_t GetDParam(size_t n)
 {
-	return _global_string_params.GetParam(n);
+	return std::get<uint64_t>(_global_string_params.GetParam(n));
 }
 
 /**
@@ -156,15 +156,10 @@ void SetDParamMaxDigits(size_t n, uint count, FontSize size)
  * Copy the parameters from the backup into the global string parameter array.
  * @param backup The backup to copy from.
  */
-void CopyInDParam(const std::span<const StringParameterBackup> backup)
+void CopyInDParam(const std::span<const StringParameterData> backup)
 {
 	for (size_t i = 0; i < backup.size(); i++) {
-		auto &value = backup[i];
-		if (value.string.has_value()) {
-			_global_string_params.SetParam(i, value.string.value());
-		} else {
-			_global_string_params.SetParam(i, value.data);
-		}
+		_global_string_params.SetParam(i, backup[i]);
 	}
 }
 
@@ -173,16 +168,11 @@ void CopyInDParam(const std::span<const StringParameterBackup> backup)
  * @param backup The backup to write to.
  * @param num Number of string parameters to copy.
  */
-void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num)
+void CopyOutDParam(std::vector<StringParameterData> &backup, size_t num)
 {
 	backup.resize(num);
 	for (size_t i = 0; i < backup.size(); i++) {
-		const char *str = _global_string_params.GetParamStr(i);
-		if (str != nullptr) {
-			backup[i] = str;
-		} else {
-			backup[i] = _global_string_params.GetParam(i);
-		}
+		backup[i] = _global_string_params.GetParam(i);
 	}
 }
 
@@ -191,20 +181,12 @@ void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num)
  * @param backup The backup to check against.
  * @return True when the parameters have changed, otherwise false.
  */
-bool HaveDParamChanged(const std::vector<StringParameterBackup> &backup)
+bool HaveDParamChanged(const std::span<const StringParameterData> backup)
 {
-	bool changed = false;
-	for (size_t i = 0; !changed && i < backup.size(); i++) {
-		bool global_has_string = _global_string_params.GetParamStr(i) != nullptr;
-		if (global_has_string != backup[i].string.has_value()) return true;
-
-		if (global_has_string) {
-			changed = backup[i].string.value() != _global_string_params.GetParamStr(i);
-		} else {
-			changed = backup[i].data != _global_string_params.GetParam(i);
-		}
+	for (size_t i = 0; i < backup.size(); i++) {
+		if (backup[i] != _global_string_params.GetParam(i)) return true;
 	}
-	return changed;
+	return false;
 }
 
 static void StationGetSpecialString(StringBuilder &builder, StationFacility x);
@@ -271,14 +253,24 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 	switch (tab) {
 		case TEXT_TAB_TOWN:
 			if (index >= 0xC0 && !game_script) {
-				GetSpecialTownNameString(builder, index - 0xC0, args.GetNextParameter<uint32_t>());
+				try {
+					GetSpecialTownNameString(builder, index - 0xC0, args.GetNextParameter<uint32_t>());
+				} catch (const std::runtime_error &e) {
+					Debug(misc, 0, "GetStringWithArgs: {}", e.what());
+					builder += "(invalid string parameter)";
+				}
 				return;
 			}
 			break;
 
 		case TEXT_TAB_SPECIAL:
 			if (index >= 0xE4 && !game_script) {
-				GetSpecialNameString(builder, index - 0xE4, args);
+				try {
+					GetSpecialNameString(builder, index - 0xE4, args);
+				} catch (const std::runtime_error &e) {
+					Debug(misc, 0, "GetStringWithArgs: {}", e.what());
+					builder += "(invalid string parameter)";
+				}
 				return;
 			}
 			break;
@@ -1106,7 +1098,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				case SCC_PLURAL_LIST: { // {P}
 					int plural_form = *str++;          // contains the plural form for this string
 					size_t offset = orig_offset + (uint8_t)*str++;
-					int64_t v = args.GetParam(offset); // contains the number that determines plural
+					int64_t v = std::get<uint64_t>(args.GetParam(offset)); // contains the number that determines plural
 					str = ParseStringChoice(str, DeterminePluralForm(v, plural_form), builder);
 					break;
 				}
