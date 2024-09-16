@@ -2043,11 +2043,10 @@ const LanguageMetadata *GetLanguage(uint8_t newgrflangid)
  */
 static bool GetLanguageFileHeader(const std::string &file, LanguagePackHeader *hdr)
 {
-	FILE *f = fopen(file.c_str(), "rb");
-	if (f == nullptr) return false;
+	auto f = FileHandle::Open(file, "rb");
+	if (!f.has_value()) return false;
 
-	size_t read = fread(hdr, sizeof(*hdr), 1, f);
-	fclose(f);
+	size_t read = fread(hdr, sizeof(*hdr), 1, *f);
 
 	bool ret = read == 1 && hdr->IsValid();
 

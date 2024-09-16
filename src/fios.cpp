@@ -84,6 +84,10 @@ void FileList::BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperati
 			FiosGetHeightmapList(fop, show_dirs, *this);
 			break;
 
+		case FT_TOWN_DATA:
+			FiosGetTownDataList(fop, show_dirs, *this);
+			break;
+
 		default:
 			NOT_REACHED();
 	}
@@ -180,6 +184,7 @@ bool FiosBrowseTo(const FiosItem *item)
 		case FIOS_TYPE_OLD_SCENARIO:
 		case FIOS_TYPE_PNG:
 		case FIOS_TYPE_BMP:
+		case FIOS_TYPE_JSON:
 			return false;
 	}
 
@@ -385,12 +390,11 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
  */
 static std::string GetFileTitle(const std::string &file, Subdirectory subdir)
 {
-	FILE *f = FioFOpenFile(file + ".title", "r", subdir);
-	if (f == nullptr) return {};
+	auto f = FioFOpenFile(file + ".title", "r", subdir);
+	if (!f.has_value()) return {};
 
 	char title[80];
-	size_t read = fread(title, 1, lengthof(title), f);
-	FioFCloseFile(f);
+	size_t read = fread(title, 1, lengthof(title), *f);
 
 	assert(read <= lengthof(title));
 	return StrMakeValid({title, read});
@@ -555,6 +559,42 @@ void FiosGetHeightmapList(SaveLoadOperation fop, bool show_dirs, FileList &file_
 }
 
 /**
+ * Callback for FiosGetTownDataList.
+ * @param fop Purpose of collecting the list.
+ * @param file Name of the file to check.
+ * @return a FIOS_TYPE_JSON type of the found file, FIOS_TYPE_INVALID if not a valid JSON file, and the title of the file (if any).
+ */
+static std::tuple<FiosType, std::string> FiosGetTownDataListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext)
+{
+	if (fop == SLO_LOAD) {
+		if (StrEqualsIgnoreCase(ext, ".json")) {
+			return { FIOS_TYPE_JSON, GetFileTitle(file, SAVE_DIR) };
+		}
+	}
+
+	return { FIOS_TYPE_INVALID, {} };
+}
+
+/**
+ * Get a list of town data files.
+ * @param fop Purpose of collecting the list.
+ * @param show_dirs Whether to show directories.
+ * @param file_list Destination of the found files.
+ */
+void FiosGetTownDataList(SaveLoadOperation fop, bool show_dirs, FileList &file_list)
+{
+	static std::optional<std::string> fios_town_data_path;
+
+	if (!fios_town_data_path) fios_town_data_path = FioFindDirectory(HEIGHTMAP_DIR);
+
+	_fios_path = &(*fios_town_data_path);
+
+	std::string base_path = FioFindDirectory(HEIGHTMAP_DIR);
+	Subdirectory subdir = base_path == *_fios_path ? HEIGHTMAP_DIR : NO_DIRECTORY;
+	FiosGetFileList(fop, show_dirs, &FiosGetTownDataListCallback, subdir, file_list);
+}
+
+/**
  * Get the directory for screenshots.
  * @return path to screenshots
  */
@@ -607,12 +647,11 @@ public:
 
 	bool AddFile(const std::string &filename, size_t, const std::string &) override
 	{
-		FILE *f = FioFOpenFile(filename, "r", SCENARIO_DIR);
-		if (f == nullptr) return false;
+		auto f = FioFOpenFile(filename, "r", SCENARIO_DIR);
+		if (!f.has_value()) return false;
 
 		ScenarioIdentifier id;
-		int fret = fscanf(f, "%u", &id.scenid);
-		FioFCloseFile(f);
+		int fret = fscanf(*f, "%u", &id.scenid);
 		if (fret != 1) return false;
 		id.filename = filename;
 
@@ -624,16 +663,14 @@ public:
 		 * This is safe as we check on extension which
 		 * must always exist. */
 		f = FioFOpenFile(filename.substr(0, filename.rfind('.')), "rb", SCENARIO_DIR, &size);
-		if (f == nullptr) return false;
+		if (!f.has_value()) return false;
 
 		/* calculate md5sum */
-		while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {
+		while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, *f)) != 0 && size != 0) {
 			size -= len;
 			checksum.Append(buffer, len);
 		}
 		checksum.Finish(id.md5sum);
-
-		FioFCloseFile(f);
 
 		include(*this, id);
 		return true;

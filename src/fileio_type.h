@@ -18,6 +18,7 @@ enum AbstractFileType {
 	FT_SAVEGAME,  ///< old or new savegame
 	FT_SCENARIO,  ///< old or new scenario
 	FT_HEIGHTMAP, ///< heightmap file
+	FT_TOWN_DATA, ///< town data file
 
 	FT_INVALID = 7, ///< Invalid or unknown file type.
 	FT_NUMBITS = 3, ///< Number of bits required for storing a #AbstractFileType value.
@@ -33,6 +34,9 @@ enum DetailedFileType {
 	/* Heightmap files. */
 	DFT_HEIGHTMAP_BMP, ///< BMP file.
 	DFT_HEIGHTMAP_PNG, ///< PNG file.
+
+	/* Town data files. */
+	DFT_TOWN_DATA_JSON,  ///< JSON file.
 
 	/* fios 'files' */
 	DFT_FIOS_DRIVE,  ///< A drive (letter) entry.
@@ -78,6 +82,7 @@ enum FiosType {
 	FIOS_TYPE_OLD_SCENARIO = MAKE_FIOS_TYPE(FT_SCENARIO, DFT_OLD_GAME_FILE),
 	FIOS_TYPE_PNG          = MAKE_FIOS_TYPE(FT_HEIGHTMAP, DFT_HEIGHTMAP_PNG),
 	FIOS_TYPE_BMP          = MAKE_FIOS_TYPE(FT_HEIGHTMAP, DFT_HEIGHTMAP_BMP),
+	FIOS_TYPE_JSON         = MAKE_FIOS_TYPE(FT_TOWN_DATA, DFT_TOWN_DATA_JSON),
 
 	FIOS_TYPE_INVALID = MAKE_FIOS_TYPE(FT_INVALID, DFT_INVALID),
 };
@@ -149,5 +154,34 @@ enum Searchpath : unsigned {
 };
 
 DECLARE_POSTFIX_INCREMENT(Searchpath)
+
+class FileHandle {
+public:
+	static std::optional<FileHandle> Open(const std::string &filename, const std::string &mode);
+
+	inline void Close() { this->f.reset(); }
+
+	inline operator FILE *()
+	{
+		assert(this->f != nullptr);
+		return this->f.get();
+	}
+
+private:
+	/** Helper to close a FILE * with a \c std::unique_ptr. */
+	struct FileDeleter {
+		void operator ()(FILE *f)
+		{
+			if (f != nullptr) fclose(f);
+		}
+	};
+
+	std::unique_ptr<FILE, FileDeleter> f;
+
+	FileHandle(FILE *f) : f(f) { assert(this->f != nullptr); }
+};
+
+/* Ensure has_value() is used consistently. */
+template <> constexpr std::optional<FileHandle>::operator bool() const noexcept = delete;
 
 #endif /* FILEIO_TYPE_H */

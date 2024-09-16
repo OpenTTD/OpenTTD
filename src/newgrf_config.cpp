@@ -252,7 +252,7 @@ void UpdateNewGRFConfigPalette(int32_t)
  * @param f GRF.
  * @return Size of the data section or SIZE_MAX if the file has no separate data section.
  */
-size_t GRFGetSizeOfDataSection(FILE *f)
+size_t GRFGetSizeOfDataSection(FileHandle &f)
 {
 	extern const uint8_t _grf_cont_v2_sig[];
 	static const uint header_len = 14;
@@ -284,31 +284,27 @@ size_t GRFGetSizeOfDataSection(FILE *f)
  */
 static bool CalcGRFMD5Sum(GRFConfig *config, Subdirectory subdir)
 {
-	FILE *f;
 	Md5 checksum;
 	uint8_t buffer[1024];
 	size_t len, size;
 
 	/* open the file */
-	f = FioFOpenFile(config->filename, "rb", subdir, &size);
-	if (f == nullptr) return false;
+	auto f = FioFOpenFile(config->filename, "rb", subdir, &size);
+	if (!f.has_value()) return false;
 
-	long start = ftell(f);
-	size = std::min(size, GRFGetSizeOfDataSection(f));
+	long start = ftell(*f);
+	size = std::min(size, GRFGetSizeOfDataSection(*f));
 
-	if (start < 0 || fseek(f, start, SEEK_SET) < 0) {
-		FioFCloseFile(f);
+	if (start < 0 || fseek(*f, start, SEEK_SET) < 0) {
 		return false;
 	}
 
 	/* calculate md5sum */
-	while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {
+	while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, *f)) != 0 && size != 0) {
 		size -= len;
 		checksum.Append(buffer, len);
 	}
 	checksum.Finish(config->ident.md5sum);
-
-	FioFCloseFile(f);
 
 	return true;
 }

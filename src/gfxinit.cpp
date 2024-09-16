@@ -418,12 +418,10 @@ void GraphicsSet::CopyCompatibleConfig(const GraphicsSet &src)
 /* static */ MD5File::ChecksumResult GraphicsSet::CheckMD5(const MD5File *file, Subdirectory subdir)
 {
 	size_t size = 0;
-	FILE *f = FioFOpenFile(file->filename, "rb", subdir, &size);
-	if (f == nullptr) return MD5File::CR_NO_FILE;
+	auto f = FioFOpenFile(file->filename, "rb", subdir, &size);
+	if (!f.has_value()) return MD5File::CR_NO_FILE;
 
-	size_t max = GRFGetSizeOfDataSection(f);
-
-	FioFCloseFile(f);
+	size_t max = GRFGetSizeOfDataSection(*f);
 
 	return file->CheckMD5(subdir, max);
 }
@@ -441,9 +439,8 @@ void GraphicsSet::CopyCompatibleConfig(const GraphicsSet &src)
 MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir, size_t max_size) const
 {
 	size_t size;
-	FILE *f = FioFOpenFile(this->filename, "rb", subdir, &size);
-
-	if (f == nullptr) return CR_NO_FILE;
+	auto f = FioFOpenFile(this->filename, "rb", subdir, &size);
+	if (!f.has_value()) return CR_NO_FILE;
 
 	size = std::min(size, max_size);
 
@@ -452,12 +449,10 @@ MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir, size_t max_size) 
 	MD5Hash digest;
 	size_t len;
 
-	while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {
+	while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, *f)) != 0 && size != 0) {
 		size -= len;
 		checksum.Append(buffer, len);
 	}
-
-	FioFCloseFile(f);
 
 	checksum.Finish(digest);
 	return this->hash == digest ? CR_MATCH : CR_MISMATCH;

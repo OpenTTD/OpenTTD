@@ -26,10 +26,10 @@ RandomAccessFile::RandomAccessFile(const std::string &filename, Subdirectory sub
 {
 	size_t file_size;
 	this->file_handle = FioFOpenFile(filename, "rb", subdir, &file_size);
-	if (this->file_handle == nullptr) UserError("Cannot open file '{}'", filename);
+	if (!this->file_handle.has_value()) UserError("Cannot open file '{}'", filename);
 
 	/* When files are in a tar-file, the begin of the file might not be at 0. */
-	long pos = ftell(this->file_handle);
+	long pos = ftell(*this->file_handle);
 	if (pos < 0) UserError("Cannot read file '{}'", filename);
 
 	/* Make a note of start and end position for readers who check bounds. */
@@ -43,14 +43,6 @@ RandomAccessFile::RandomAccessFile(const std::string &filename, Subdirectory sub
 	strtolower(this->simplified_filename);
 
 	this->SeekTo(static_cast<size_t>(pos), SEEK_SET);
-}
-
-/**
- * Close the file's file handle.
- */
-RandomAccessFile::~RandomAccessFile()
-{
-	fclose(this->file_handle);
 }
 
 /**
@@ -100,7 +92,7 @@ void RandomAccessFile::SeekTo(size_t pos, int mode)
 	if (mode == SEEK_CUR) pos += this->GetPos();
 
 	this->pos = pos;
-	if (fseek(this->file_handle, this->pos, SEEK_SET) < 0) {
+	if (fseek(*this->file_handle, this->pos, SEEK_SET) < 0) {
 		Debug(misc, 0, "Seeking in {} failed", this->filename);
 	}
 
@@ -116,7 +108,7 @@ uint8_t RandomAccessFile::ReadByte()
 {
 	if (this->buffer == this->buffer_end) {
 		this->buffer = this->buffer_start;
-		size_t size = fread(this->buffer, 1, RandomAccessFile::BUFFER_SIZE, this->file_handle);
+		size_t size = fread(this->buffer, 1, RandomAccessFile::BUFFER_SIZE, *this->file_handle);
 		this->pos += size;
 		this->buffer_end = this->buffer_start + size;
 
@@ -153,7 +145,7 @@ uint32_t RandomAccessFile::ReadDword()
 void RandomAccessFile::ReadBlock(void *ptr, size_t size)
 {
 	this->SeekTo(this->GetPos(), SEEK_SET);
-	this->pos += fread(ptr, 1, size, this->file_handle);
+	this->pos += fread(ptr, 1, size, *this->file_handle);
 }
 
 /**
