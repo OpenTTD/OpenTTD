@@ -13,8 +13,7 @@
 #include "core/enum_type.hpp"
 #include "fileio_type.h"
 
-void FioFCloseFile(FILE *f);
-FILE *FioFOpenFile(const std::string &filename, const char *mode, Subdirectory subdir, size_t *filesize = nullptr);
+std::optional<FileHandle> FioFOpenFile(const std::string &filename, const char *mode, Subdirectory subdir, size_t *filesize = nullptr);
 bool FioCheckFileExists(const std::string &filename, Subdirectory subdir);
 std::string FioFindFullPath(Subdirectory subdir, const std::string &filename);
 std::string FioGetDirectory(Searchpath sp, Subdirectory subdir);
@@ -80,25 +79,5 @@ public:
 };
 
 DECLARE_ENUM_AS_BIT_SET(TarScanner::Mode)
-
-/** Auto-close a file upon scope exit. */
-class FileCloser {
-	FILE *f;
-
-public:
-	FileCloser(FILE *_f) : f(_f) {}
-	~FileCloser()
-	{
-		fclose(f);
-	}
-};
-
-/** Helper to manage a FILE with a \c std::unique_ptr. */
-struct FileDeleter {
-	void operator()(FILE *f)
-	{
-		if (f) fclose(f);
-	}
-};
 
 #endif /* FILEIO_FUNC_H */

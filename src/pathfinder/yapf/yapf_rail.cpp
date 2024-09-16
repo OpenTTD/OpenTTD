@@ -24,14 +24,12 @@ template <typename Tpf> void DumpState(Tpf &pf1, Tpf &pf2)
 	DumpTarget dmp1, dmp2;
 	pf1.DumpBase(dmp1);
 	pf2.DumpBase(dmp2);
-	FILE *f1 = fopen("yapf1.txt", "wt");
-	FILE *f2 = fopen("yapf2.txt", "wt");
-	assert(f1 != nullptr);
-	assert(f2 != nullptr);
-	fwrite(dmp1.m_out.c_str(), 1, dmp1.m_out.size(), f1);
-	fwrite(dmp2.m_out.c_str(), 1, dmp2.m_out.size(), f2);
-	fclose(f1);
-	fclose(f2);
+	auto f1 = FileHandle::Open("yapf1.txt", "wt");
+	auto f2 = FileHandle::Open("yapf2.txt", "wt");
+	assert(f1.has_value());
+	assert(f2.has_value());
+	fwrite(dmp1.m_out.c_str(), 1, dmp1.m_out.size(), *f1);
+	fwrite(dmp2.m_out.c_str(), 1, dmp2.m_out.size(), *f2);
 }
 
 template <class Types>

@@ -1130,15 +1130,14 @@ DEF_CONSOLE_CMD(ConExec)
 
 	if (argc < 2) return false;
 
-	FILE *script_file = FioFOpenFile(argv[1], "r", BASE_DIR);
+	auto script_file = FioFOpenFile(argv[1], "r", BASE_DIR);
 
-	if (script_file == nullptr) {
+	if (!script_file.has_value()) {
 		if (argc == 2 || atoi(argv[2]) != 0) IConsolePrint(CC_ERROR, "Script file '{}' not found.", argv[1]);
 		return true;
 	}
 
 	if (_script_current_depth == 11) {
-		FioFCloseFile(script_file);
 		IConsolePrint(CC_ERROR, "Maximum 'exec' depth reached; script A is calling script B is calling script C ... more than 10 times.");
 		return true;
 	}
@@ -1147,7 +1146,7 @@ DEF_CONSOLE_CMD(ConExec)
 	uint script_depth = _script_current_depth;
 
 	char cmdline[ICON_CMDLN_SIZE];
-	while (fgets(cmdline, sizeof(cmdline), script_file) != nullptr) {
+	while (fgets(cmdline, sizeof(cmdline), *script_file) != nullptr) {
 		/* Remove newline characters from the executing script */
 		for (char *cmdptr = cmdline; *cmdptr != '\0'; cmdptr++) {
 			if (*cmdptr == '\n' || *cmdptr == '\r') {
@@ -1163,12 +1162,11 @@ DEF_CONSOLE_CMD(ConExec)
 		if (_script_current_depth == script_depth - 1) break;
 	}
 
-	if (ferror(script_file)) {
+	if (ferror(*script_file) != 0) {
 		IConsolePrint(CC_ERROR, "Encountered error while trying to read from script file '{}'.", argv[1]);
 	}
 
 	if (_script_current_depth == script_depth) _script_current_depth--;
-	FioFCloseFile(script_file);
 	return true;
 }
 
@@ -1222,7 +1220,7 @@ extern void ShowFramerateWindow();
 
 DEF_CONSOLE_CMD(ConScript)
 {
-	extern FILE *_iconsole_output_file;
+	extern std::optional<FileHandle> _iconsole_output_file;
 
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Start or stop logging console output to a file. Usage: 'script <filename>'.");
@@ -1233,8 +1231,8 @@ DEF_CONSOLE_CMD(ConScript)
 	if (!CloseConsoleLogIfActive()) {
 		if (argc < 2) return false;
 
-		_iconsole_output_file = fopen(argv[1], "ab");
-		if (_iconsole_output_file == nullptr) {
+		_iconsole_output_file = FileHandle::Open(argv[1], "ab");
+		if (!_iconsole_output_file.has_value()) {
 			IConsolePrint(CC_ERROR, "Could not open console log file '{}'.", argv[1]);
 		} else {
 			IConsolePrint(CC_INFO, "Console log output started to '{}'.", argv[1]);

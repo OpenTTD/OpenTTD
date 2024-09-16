@@ -165,19 +165,13 @@
 #if !defined(STRGEN) && !defined(SETTINGSGEN)
 #	if defined(_WIN32)
 		char *getcwd(char *buf, size_t size);
-#		include <io.h>
-#		include <tchar.h>
-
-#		define fopen(file, mode) _wfopen(OTTD2FS(file).c_str(), _T(mode))
 
 		std::string FS2OTTD(const std::wstring &name);
 		std::wstring OTTD2FS(const std::string &name);
 #	elif defined(WITH_ICONV)
-#		define fopen(file, mode) fopen(OTTD2FS(file).c_str(), mode)
 		std::string FS2OTTD(const std::string &name);
 		std::string OTTD2FS(const std::string &name);
 #	else
-		// no override of fopen() since no transformation is required of the filename
 		template <typename T> std::string FS2OTTD(T name) { return name; }
 		template <typename T> std::string OTTD2FS(T name) { return name; }
 #	endif /* _WIN32 or WITH_ICONV */

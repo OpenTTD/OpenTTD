@@ -150,4 +150,33 @@ enum Searchpath : unsigned {
 
 DECLARE_POSTFIX_INCREMENT(Searchpath)
 
+class FileHandle {
+public:
+	static std::optional<FileHandle> Open(const std::string &filename, const std::string &mode);
+
+	inline void Close() { this->f.reset(); }
+
+	inline operator FILE *()
+	{
+		assert(this->f != nullptr);
+		return this->f.get();
+	}
+
+private:
+	/** Helper to close a FILE * with a \c std::unique_ptr. */
+	struct FileDeleter {
+		void operator ()(FILE *f)
+		{
+			if (f != nullptr) fclose(f);
+		}
+	};
+
+	std::unique_ptr<FILE, FileDeleter> f;
+
+	FileHandle(FILE *f) : f(f) { assert(this->f != nullptr); }
+};
+
+/* Ensure has_value() is used consistently. */
+template <> constexpr std::optional<FileHandle>::operator bool() const noexcept = delete;
+
 #endif /* FILEIO_TYPE_H */

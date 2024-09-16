@@ -385,12 +385,11 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
  */
 static std::string GetFileTitle(const std::string &file, Subdirectory subdir)
 {
-	FILE *f = FioFOpenFile(file + ".title", "r", subdir);
-	if (f == nullptr) return {};
+	auto f = FioFOpenFile(file + ".title", "r", subdir);
+	if (!f.has_value()) return {};
 
 	char title[80];
-	size_t read = fread(title, 1, lengthof(title), f);
-	FioFCloseFile(f);
+	size_t read = fread(title, 1, lengthof(title), *f);
 
 	assert(read <= lengthof(title));
 	return StrMakeValid({title, read});
@@ -607,12 +606,11 @@ public:
 
 	bool AddFile(const std::string &filename, size_t, const std::string &) override
 	{
-		FILE *f = FioFOpenFile(filename, "r", SCENARIO_DIR);
-		if (f == nullptr) return false;
+		auto f = FioFOpenFile(filename, "r", SCENARIO_DIR);
+		if (!f.has_value()) return false;
 
 		ScenarioIdentifier id;
-		int fret = fscanf(f, "%u", &id.scenid);
-		FioFCloseFile(f);
+		int fret = fscanf(*f, "%u", &id.scenid);
 		if (fret != 1) return false;
 		id.filename = filename;
 
@@ -624,16 +622,14 @@ public:
 		 * This is safe as we check on extension which
 		 * must always exist. */
 		f = FioFOpenFile(filename.substr(0, filename.rfind('.')), "rb", SCENARIO_DIR, &size);
-		if (f == nullptr) return false;
+		if (!f.has_value()) return false;
 
 		/* calculate md5sum */
-		while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {
+		while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, *f)) != 0 && size != 0) {
 			size -= len;
 			checksum.Append(buffer, len);
 		}
 		checksum.Finish(id.md5sum);
-
-		FioFCloseFile(f);
 
 		include(*this, id);
 		return true;

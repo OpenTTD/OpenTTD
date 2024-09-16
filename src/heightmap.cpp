@@ -136,12 +136,11 @@ static void ReadHeightmapPNGImageData(std::span<uint8_t> map, png_structp png_pt
  */
 static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, std::vector<uint8_t> *map)
 {
-	FILE *fp;
 	png_structp png_ptr = nullptr;
 	png_infop info_ptr  = nullptr;
 
-	fp = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
-	if (fp == nullptr) {
+	auto fp = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
+	if (!fp.has_value()) {
 		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_PNGMAP_FILE_NOT_FOUND, WL_ERROR);
 		return false;
 	}
@@ -149,19 +148,17 @@ static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, std::vector
 	png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, nullptr, nullptr, nullptr);
 	if (png_ptr == nullptr) {
 		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_PNGMAP_MISC, WL_ERROR);
-		fclose(fp);
 		return false;
 	}
 
 	info_ptr = png_create_info_struct(png_ptr);
 	if (info_ptr == nullptr || setjmp(png_jmpbuf(png_ptr))) {
 		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_PNGMAP_MISC, WL_ERROR);
-		fclose(fp);
 		png_destroy_read_struct(&png_ptr, &info_ptr, nullptr);
 		return false;
 	}
 
-	png_init_io(png_ptr, fp);
+	png_init_io(png_ptr, *fp);
 
 	/* Allocate memory and read image, without alpha or 16-bit samples
 	 * (result is either 8-bit indexed/grayscale or 24-bit RGB) */
@@ -172,7 +169,6 @@ static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, std::vector
 	 * (this should have been taken care of by stripping alpha and 16-bit samples on load) */
 	if ((png_get_channels(png_ptr, info_ptr) != 1) && (png_get_channels(png_ptr, info_ptr) != 3) && (png_get_bit_depth(png_ptr, info_ptr) != 8)) {
 		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_PNGMAP_IMAGE_TYPE, WL_ERROR);
-		fclose(fp);
 		png_destroy_read_struct(&png_ptr, &info_ptr, nullptr);
 		return false;
 	}
@@ -182,7 +178,6 @@ static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, std::vector
 
 	if (!IsValidHeightmapDimension(width, height)) {
 		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_HEIGHTMAP_TOO_LARGE, WL_ERROR);
-		fclose(fp);
 		png_destroy_read_struct(&png_ptr, &info_ptr, nullptr);
 		return false;
 	}
@@ -195,7 +190,6 @@ static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, std::vector
 	*x = width;
 	*y = height;
 
-	fclose(fp);
 	png_destroy_read_struct(&png_ptr, &info_ptr, nullptr);
 	return true;
 }
@@ -263,15 +257,15 @@ static void ReadHeightmapBMPImageData(std::span<uint8_t> map, const BmpInfo &inf
  */
 static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, std::vector<uint8_t> *map)
 {
-	BmpInfo info{};
-	BmpData data{};
-
-	if (!FioCheckFileExists(filename, HEIGHTMAP_DIR)) {
+	auto f = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
+	if (!f.has_value()) {
 		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_PNGMAP_FILE_NOT_FOUND, WL_ERROR);
 		return false;
 	}
 
 	RandomAccessFile file(filename, HEIGHTMAP_DIR);
+	BmpInfo info{};
+	BmpData data{};
 
 	if (!BmpReadHeader(file, info, data)) {
 		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_BMPMAP_IMAGE_TYPE, WL_ERROR);

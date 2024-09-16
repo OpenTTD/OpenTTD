@@ -17,7 +17,7 @@ static const uint BUFFER_SIZE = 4096;
 static const uint OLD_MAP_SIZE = 256;
 
 struct LoadgameState {
-	FILE *file;
+	std::optional<FileHandle> file;
 
 	uint chunk_size;
 
