@@ -380,16 +380,16 @@ void LoadTownData()
 {
 	/* Load the JSON file as a string initially. We'll parse it soon. */
 	size_t filesize;
-	FILE *f = FioFOpenFile(_file_to_saveload.name, "rb", HEIGHTMAP_DIR, &filesize);
+	auto f = FioFOpenFile(_file_to_saveload.name, "rb", HEIGHTMAP_DIR, &filesize);
 
-	if (f == nullptr) {
+	if (!f.has_value()) {
 		ShowErrorMessage(STR_TOWN_DATA_ERROR_LOAD_FAILED, STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY, WL_ERROR);
 		return;
 	}
 
 	std::string text(filesize, '\0');
-	size_t len = fread(text.data(), filesize, 1, f);
-	FioFCloseFile(f);
+	size_t len = fread(text.data(), filesize, 1, *f);
+	f.reset();
 	if (len != 1) {
 		ShowErrorMessage(STR_TOWN_DATA_ERROR_LOAD_FAILED, STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY, WL_ERROR);
 		return;
