@@ -2261,7 +2261,7 @@ struct FileWriter : SaveFilter {
 	void Write(uint8_t *buf, size_t size) override
 	{
 		/* We're in the process of shutting down, i.e. in "failure" mode. */
-		if (this->file.has_value()) return;
+		if (!this->file.has_value()) return;
 
 		if (fwrite(buf, 1, size, *this->file) != size) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 	}
