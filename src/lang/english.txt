@@ -3422,7 +3422,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparin
 STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Town data load failed
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON file formatted incorrectly
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{RAW_STRING} data formatted incorrectly
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{RAW_STRING} coordinates formatted incorrectly, must be 0..1 as a percentage of the total heightmap dimension
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{RAW_STRING} coordinates formatted incorrectly, must be 0 to 1 as a proportion of the total heightmap dimension
 
 STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Could not find valid location to found {NUM} town{P "" s}. Created {P "a " ""}sign{P "" s} at the intended location{P "" s} instead
 
