@@ -326,7 +326,7 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t, const std::st
  */
 static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAndNameProc *callback_proc, Subdirectory subdir, FileList &file_list)
 {
-	size_t sort_start;
+	size_t sort_start = 0;
 
 	file_list.clear();
 
@@ -341,6 +341,7 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 			fios.name = "..";
 			SetDParamStr(0, "..");
 			fios.title = GetString(STR_SAVELOAD_PARENT_DIRECTORY);
+			sort_start = file_list.size();
 		}
 
 		/* Show subdirectories */
@@ -360,7 +361,7 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 		/* Sort the subdirs always by name, ascending, remember user-sorting order */
 		SortingBits order = _savegame_sort_order;
 		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
-		std::sort(file_list.begin(), file_list.end());
+		std::sort(file_list.begin() + sort_start, file_list.end());
 		_savegame_sort_order = order;
 	}
 
