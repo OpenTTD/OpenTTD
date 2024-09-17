@@ -2966,6 +2966,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}מריץ
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}מריץ סקריפט
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}מכין את המשחק לפעולה
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}(NewGRF) הגדרות שדרוג גראפי
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}מידע NewGRF מפורט

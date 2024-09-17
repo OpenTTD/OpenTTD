@@ -3416,6 +3416,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}A prepar
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script a correr
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}A preparar jogo
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definições NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informação detalhada do NewGRF

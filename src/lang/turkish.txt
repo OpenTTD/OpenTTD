@@ -3374,6 +3374,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}tile-loo
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Betik çalıştırılıyor
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Oyun hazırlanıyor
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Ayarları
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Ayrıntılı NewGRF bilgileri

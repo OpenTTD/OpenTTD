@@ -3069,6 +3069,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Izvršav
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Izvođenje skripte u tijeku
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pripremam igru
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF postavke
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detaljne NewGRF informacije

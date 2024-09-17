@@ -3087,6 +3087,8 @@ STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}ஆட�
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}வரிவடிவம் செயல்படுத்தப்படுகின்றது
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}ஆட்டம் தயாராகிறது
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF அமைப்புகள்
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}விவரமான NewGRF தகவல்

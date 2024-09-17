@@ -3307,6 +3307,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Menyiapk
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Menjalankan skrip
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Menyiapkan permainan
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Pengaturan NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Rincian Informasi NewGRF

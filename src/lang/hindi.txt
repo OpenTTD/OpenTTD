@@ -999,6 +999,8 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}या�
 # Map generation progress
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 
+
+
 # NewGRF settings
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}फ़िल्टर:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}चुने गये पूर्वनिश्चित समायोजन को खोलें

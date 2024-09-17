@@ -3415,6 +3415,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Đang ch
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Đang chạy tập lệnh
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Chuẩn bị ván chơi
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Thiết Lập NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Thông tin chi tiết của NewGRF

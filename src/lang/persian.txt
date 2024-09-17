@@ -2581,6 +2581,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}اجرا
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}کدهای در حال اجرا
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}آماده سازی بازی
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}تنظیمات NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}اطلاعات مفصل NewGRF

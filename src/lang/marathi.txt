@@ -1336,6 +1336,8 @@ STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% पूर्ण
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 
+
+
 # NewGRF settings
 
 

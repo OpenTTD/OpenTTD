@@ -3414,6 +3414,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Initiali
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Se rulează script-ul
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pregătesc jocul
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Setări NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informație detaliată NewGRF

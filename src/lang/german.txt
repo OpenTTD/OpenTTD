@@ -3416,6 +3416,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Spielfel
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Führe Skript aus
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Spiel wird vorbereitet
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Einstellungen
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailierte NewGRF-Informationen

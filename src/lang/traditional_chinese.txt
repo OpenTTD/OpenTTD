@@ -3415,6 +3415,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}執行�
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}正在運行腳本
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}準備遊戲中
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 設定
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF 詳細資訊

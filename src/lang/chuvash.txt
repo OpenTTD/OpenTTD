@@ -1223,6 +1223,8 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Катталу�
 # Map generation progress
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Объект туни
 
+
+
 # NewGRF settings
 
 

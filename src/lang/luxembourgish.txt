@@ -3372,6 +3372,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Felder-V
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Lafende Script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparéiren d'Spill
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Astellungen
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailléiert NewGRF Informatioun

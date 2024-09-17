@@ -3415,6 +3415,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}地貌�
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}当前脚本
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}准备游戏
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 设置
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF 详细信息

@@ -3055,6 +3055,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Tegularu
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Scriptum exsequens
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Ludum parans
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Optiones NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Indicia NewGRF descripta

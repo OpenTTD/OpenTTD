@@ -3180,6 +3180,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}タイ�
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}スクリプト実行中
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}ゲームを準備中
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF設定
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF 詳細情報

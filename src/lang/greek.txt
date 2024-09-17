@@ -3508,6 +3508,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Εκτέ
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Τρέχουσα δέσμη ενεργειών
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Προετοιμασία παιχνιδιού
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ρυθμίσεις NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Λεπτομερείς πληροφορίες για το NewGRF

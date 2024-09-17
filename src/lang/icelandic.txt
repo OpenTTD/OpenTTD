@@ -2681,6 +2681,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Keyri re
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Keyri forskrift
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Undirbý leik
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Stillingar
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Nákvæmar NewGRF upplýsingar

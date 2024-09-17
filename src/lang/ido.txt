@@ -1063,6 +1063,8 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 
 # Map generation progress
 
+
+
 # NewGRF settings
 
 

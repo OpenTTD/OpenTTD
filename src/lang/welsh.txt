@@ -3415,6 +3415,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Rhedeg d
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Rhedeg sgript
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Paratoi gêm
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Gosodiadau NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Gwybodaeth NewGRF manwl

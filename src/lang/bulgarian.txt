@@ -3425,6 +3425,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Изпъ
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Активен скрипт
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Подготвяне на играта
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF настройки
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Подробна NewGRF информация

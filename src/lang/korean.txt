@@ -3416,6 +3416,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}타일 �
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}스크립트 생성 중
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}게임 준비 중
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 설정
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF 상세 정보

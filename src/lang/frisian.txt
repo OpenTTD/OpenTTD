@@ -2714,6 +2714,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Trochrin
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Fiert skript út
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Riedt spul ta
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-ynstellings
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}útgebreide NewGRF ynformaasje

@@ -1456,6 +1456,8 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Цел на генерација
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Вклучување на скрипта
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE} Детални НовGRF информации
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Активни НовGRF датотеки

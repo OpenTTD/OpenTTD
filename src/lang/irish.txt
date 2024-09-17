@@ -3103,6 +3103,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Lúb tí
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script reatha
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Cluiche á ullmhú
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Socruithe NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Faisnéis NewGRF mionsonraithe

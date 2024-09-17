@@ -3450,6 +3450,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Spúšť
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Spúšťanie skriptu
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pripravovanie hry
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavenia NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailné NewGRF informácie

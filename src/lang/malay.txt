@@ -2580,6 +2580,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Lingkara
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Skrip sedang berjalan
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Permainan sedang disediakan
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Tetapan NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Maklumat NewGRF terperinci

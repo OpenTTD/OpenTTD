@@ -3321,6 +3321,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Trakuran
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Ruligas la skripton
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparante ludon
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Agordoj
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detalaj informoj de NewGRF

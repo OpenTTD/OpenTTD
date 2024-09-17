@@ -2241,6 +2241,8 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}دستی
 
 # Map generation progress
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE} تفصیلی NewGRF معلومات
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE} متحرک NewGRF فائلیں

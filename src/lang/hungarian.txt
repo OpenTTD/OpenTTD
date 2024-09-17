@@ -3475,6 +3475,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Mezők v
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Futó szkript
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Játék előkészítése
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF beállítások
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Részletes NewGRF információ

@@ -2575,6 +2575,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Koyrir p
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Koyrir skript
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Fyrireikar spæl
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Innstillingar
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Víðka NewGRF kunning

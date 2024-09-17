@@ -2901,6 +2901,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Hardloop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Lopende skrif
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Voorbereiding speletjie
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF stellings
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Gedetaileerde NewGRF inligting

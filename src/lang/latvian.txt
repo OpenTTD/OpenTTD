@@ -3420,6 +3420,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Skrejoš
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Strādājošs skripts
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Sagatavo spēli
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF iestatījumi
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF detalizēta informācija

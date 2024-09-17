@@ -2742,6 +2742,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Lauki bu
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Scripta abiarazten
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Jokoa prestatzen
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF ezarpenak
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF-aren informazio zehaztua

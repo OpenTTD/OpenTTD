@@ -2919,6 +2919,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Running 
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Running script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}กำลังเตรียมพร้อมสำหรับเกม
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}กำหนดค่า NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}รายบะเอียดเกี่ยวกับข้อมูลของ NewGRF

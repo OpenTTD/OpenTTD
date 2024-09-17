@@ -2762,6 +2762,8 @@ STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}تجهي
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK} تشغيل المتكررة
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}يُجَهِز اللعبه
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}إعدادات اﻹضافات
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}تفاصيل الاضافات الجديدة

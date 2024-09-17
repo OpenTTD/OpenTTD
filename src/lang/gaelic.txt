@@ -3087,6 +3087,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}A' ruith
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}A' ruith sgriobt
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Ag ullachadh a' gheama
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Roghainnean NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Mion-fhiosrachadh NewGRF

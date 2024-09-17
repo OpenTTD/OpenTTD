@@ -3459,6 +3459,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Spoušt�
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Rozbíhání skriptu
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Připravování hry
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavení grafických souborů
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Podrobné informace o grafikách

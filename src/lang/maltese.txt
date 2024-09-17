@@ -966,6 +966,8 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 
 # Map generation progress
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informazzjoni dettaljata dwar NewGRF
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}NewGRF fajls attivi

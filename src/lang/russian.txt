@@ -3590,6 +3590,8 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Подг
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Выполняется скрипт
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Подготовка игры
 
+
+
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Настройки NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Информация о модуле NewGRF
