@@ -3112,6 +3112,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Τυχα
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Ίδρυση πόλης σε τυχαία τοποθεσία
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Πολλές τυχαίες πόλεις
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Κάλυψη του χάρτη με τυχαία τοποθετημένες πόλεις
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Φόρτωση από αρχείο
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Εισαγωγή δεδομένων πόλης από αρχείο JSON
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Επέκταση όλων των πόλεων
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Κάνε όλες τις πόλεις να επεκτείνονται πολύ λίγο
 
@@ -3364,6 +3366,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Αποθ
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Φόρτωση Σεναρίου
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Φόρτωση Χάρτη Υψομετρίας
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Αποθήκευση Χάρτη Υψομετρίας
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Φόρτωση δεδομένων πόλης
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Πατήστε εδώ για να μεταβείτε στον τρέχοντα φάκελο αποθήκευσης/φόρτωσης
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ελεύθερα
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Λίστα δισκών, φακέλων και αποθηκευμένων παιχνιδιών
@@ -3375,6 +3378,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Αποθ
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Φόρτωση
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Φόρτωση του επιλεγμένου παιχνιδιού
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Φόρτωση του επιλεγμένου χάρτη υψομετρίας
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Φόρτωση των δεδομένων της επιλεγμένης πόλης
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Λεπτομέρειες Παιχνιδιού
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Δεν υπάρχουν πληροφορίες.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3508,7 +3512,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Εκτέ
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Τρέχουσα δέσμη ενεργειών
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Προετοιμασία παιχνιδιού
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Η φόρτωση δεδομένων πόλης απέτυχε
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Το αρχείο JSON έχει μορφοποιηθεί εσφαλμένα
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} δεδομένα έχουν μορφοποιηθεί εσφαλμένα
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :Οι συντεταγμένες {WHITE}{STRING} δεν έχουν μορφοποιηθεί σωστά, πρέπει να είναι 0..1 ως ποσοστό της συνολικής διάστασης του χάρτη ύψους
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Δεν ήταν δυνατή η εύρεση έγκυρης τοποθεσίας για την ίδρυση {NUM} πόλ{P "ης" εων}. Αντ' αυτού δημιουργήθηκ{P "ε" "αν"} σήμα{P "" τα} {P "στην προβλεπόμενη τοποθεσία" "στις προβλεπόμενες τοποθεσίες"}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ρυθμίσεις NewGRF

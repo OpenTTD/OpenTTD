@@ -3023,6 +3023,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Nejauša
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Dibināt pilsētu nejaušā vietā
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Daudz nejauši izveidotu pilsētu
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Pārklāt karti ar nejauši izvietotām pilsētām
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Ielādēt no faila
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Importējiet pilsētas datus no JSON faila
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Palielināt visas pilsētas
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Likt visām pilsētām nedaudz palielināties
 
@@ -3276,6 +3278,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Saglabā
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Ielādēt scenāriju
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Ielādēt augstumu karti
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Saglabāt augstumu karti
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Ielādēt pilsētas datus
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikšķināt šeit, lai pārietu uz pašreizējo saglabāšanas/ielādēšanas mapi
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} brīv{P s i u}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Disku, mapju un saglabāto spēļu failu saraksts
@@ -3287,6 +3290,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Saglabā
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Ielādēt
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ielādēt izvēlēto spēli
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ielādēt atlasīto augstumu karti
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Ielādējiet atlasīto pilsētas datus
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spēles īpašības
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nav pieejamas informācijas
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3420,6 +3424,10 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Skrejoš
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Strādājošs skripts
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Sagatavo spēli
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Pilsētas datu ielāde neizdevās
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON fails ir formatēts nepareizi
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} dati ir formatēti nepareizi
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} koordinātas ir formatētas nepareizi, tām jābūt 0..1 procentos no kopējā augstuma kartes izmēra
 
 
 # NewGRF settings

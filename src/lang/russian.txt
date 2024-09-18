@@ -3194,6 +3194,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Случ
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Создать город в случайном месте
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Множество различных городов
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Разместить на карте различные города случайным образом
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Загрузить из файла
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Импортировать данные для создания городов из файла JSON
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Расширить все города
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Увеличить размер всех городов
 
@@ -3446,6 +3448,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Сохр
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Загрузить сценарий
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Загрузить карту
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Сохранить карту высот
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Загрузка параметров городов
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Переход в каталог загрузки и сохранения, установленный по умолчанию
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} свободно
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Список дисков, папок и сохранённых игр
@@ -3457,6 +3460,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Сохр
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Загрузить
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Загрузить выбранную игру
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Загрузить выбранную карту высот
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Загрузка выбранного файла для создания городов
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Информация об игре
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Нет информации.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3590,7 +3594,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Подг
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Выполняется скрипт
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Подготовка игры
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Не удалось загрузить данные для создания городов
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Некорректный формат файла JSON
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}Неверно указаны параметры города {STRING}
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}Координаты {STRING} указаны неверно. Значения должны быть в диапазоне от 0 до 1. Они указывают положение города относительно размеров карты высот.
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Для размещения {NUM} город{P а ов ов} не нашлось подходящего места. Вместо этого на карте по предполагаемым координатам поставлены метки.
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Настройки NewGRF

@@ -3019,6 +3019,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Satunnai
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Perusta kunta satunnaiseen paikkaan
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Monta satunnaista kuntaa
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Täytä kartta satunnaisesti sijoitetuilla kunnilla
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Lataa tiedostosta
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Lataa kuntatiedot JSON-tiedostosta
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Laajenna kaikkia kuntia
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Kasvata kaikkia kuntia hieman
 
@@ -3271,6 +3273,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Tallenna
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Lataa skenaario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Lataa korkeuskartta
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Tallenna korkeuskartta
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Lataa kuntatietoja
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Siirry tallennusten oletuskansioon napsauttamalla tätä
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} vapaana
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista asemista, hakemistoista ja tallennetuista peleistä
@@ -3282,6 +3285,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Tallenna
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Lataa
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Lataa valittu peli
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Lataa valittu korkeuskartta
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Lataa valitut kuntatiedot
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Tietoja pelistä
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Tietoja ei ole saatavilla
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3415,7 +3419,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Ajetaan 
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Suoritetaan skriptiä
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Valmistellaan peliä
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Kuntatietojen lataaminen epäonnistui
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Virheellisesti muotoiltu JSON-tiedosto
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}Virhe tiedon {STRING} muotoilussa
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}Virhe {STRING}-koordinaattien muotoilussa: arvon tulee olla väliltä 0…1 osuutena korkeuskartan kokonaismitasta
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}{NUM} kunnan perustamiseksi ei löytynyt kelvollis{P ta ia} paikk{P a oj}a. Aiottu{P u ihi}n paikk{P aa oihi}n sijoitettiin sen sijaan kylt{P ti it}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-asetukset
