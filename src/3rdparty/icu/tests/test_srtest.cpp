@@ -8,6 +8,8 @@
  */
 /** @file test_srtest.cpp Test icu::ScriptRun result. */
 
+#include "../../../stdafx.h"
+
 #include "../../../3rdparty/catch2/catch.hpp"
 #include "../../../3rdparty/fmt/core.h"
 
