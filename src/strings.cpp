@@ -1098,8 +1098,12 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				case SCC_PLURAL_LIST: { // {P}
 					int plural_form = *str++;          // contains the plural form for this string
 					size_t offset = orig_offset + (uint8_t)*str++;
-					int64_t v = std::get<uint64_t>(args.GetParam(offset)); // contains the number that determines plural
-					str = ParseStringChoice(str, DeterminePluralForm(v, plural_form), builder);
+					const uint64_t *v = std::get_if<uint64_t>(&args.GetParam(offset)); // contains the number that determines plural
+					if (v != nullptr) {
+						str = ParseStringChoice(str, DeterminePluralForm(static_cast<int64_t>(*v), plural_form), builder);
+					} else {
+						builder += "(invalid PLURAL parameter)";
+					}
 					break;
 				}
 
