@@ -94,7 +94,7 @@ public:
 		const auto &param = GetNextParameterReference();
 		const uint64_t *data = std::get_if<uint64_t>(&param.data);
 		if (data != nullptr) return static_cast<T>(*data);
-		throw std::runtime_error("Attempt to read string parameter as integer");
+		throw std::out_of_range("Attempt to read string parameter as integer");
 	}
 
 	/**
@@ -108,7 +108,7 @@ public:
 		const auto &param = GetNextParameterReference();
 		const std::string *data = std::get_if<std::string>(&param.data);
 		if (data != nullptr) return data->c_str();
-		throw std::runtime_error("Attempt to read integer parameter as string");
+		throw std::out_of_range("Attempt to read integer parameter as string");
 	}
 
 	/**
