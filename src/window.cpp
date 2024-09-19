@@ -3462,6 +3462,8 @@ void RelocateAllWindows(int neww, int newh)
 		switch (w->window_class) {
 			case WC_MAIN_WINDOW:
 			case WC_BOOTSTRAP:
+			case WC_HIGHSCORE:
+			case WC_ENDSCREEN:
 				ResizeWindow(w, neww, newh);
 				continue;
 
