@@ -256,8 +256,9 @@ public:
 			case WID_GO_SOCIAL_PLUGIN_TITLE:
 				/* For SetupSmallestSize, use the longest string we have. */
 				if (this->current_index < 0) {
-					SetDParamStr(0, GetWidestPlugin(&SocialIntegrationPlugin::name));
-					SetDParamStr(1, GetWidestPlugin(&SocialIntegrationPlugin::version));
+					SetDParam(0, STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE);
+					SetDParamStr(1, GetWidestPlugin(&SocialIntegrationPlugin::name));
+					SetDParamStr(2, GetWidestPlugin(&SocialIntegrationPlugin::version));
 					break;
 				}
 
