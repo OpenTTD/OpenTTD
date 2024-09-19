@@ -3019,6 +3019,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}随机�
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}随机新增一个城镇
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}大量随机城镇
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}在地图上随机创建大量城镇
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}从文件读取
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}从 JSON 文件导入城镇数据
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}扩展所有城镇
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}使所有城镇略微成长
 
@@ -3271,6 +3273,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}保存�
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}读取场景
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}读取地形图
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}保存高度图
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}加载城镇数据
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}点击这里返回默认的游戏存档目录
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 可用
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}驱动器、目录和游戏存档列表
@@ -3282,6 +3285,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}以选�
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}载入
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}载入所选
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}载入选定的高度图
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}载入选定的城镇数据
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}游戏详情
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}无可用信息
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}：{WHITE}{STRING}
@@ -3415,7 +3419,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}地貌�
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}当前脚本
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}准备游戏
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}城镇数据读取失败
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON 文件格式不正确
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} 的数据格式不正确
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} 的坐标数据格式不正确。坐标必须为 0…1 之间的一个数，代表在高度图上的位置
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}无法为 {NUM} 座城镇找到合适的生成位置；已在这些城镇的原定位置放置标志
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 设置

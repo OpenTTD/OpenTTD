@@ -3429,6 +3429,7 @@ STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON fai
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} dati ir formatēti nepareizi
 STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} koordinātas ir formatētas nepareizi, tām jābūt 0..1 procentos no kopējā augstuma kartes izmēra
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Netika atrasta piemērota vieta, kur novietot {NUM} pilsēt {P u as as}. Tā vietā kartē tiek novietotas atzīmes paredzētajās koordinātēs.
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF iestatījumi

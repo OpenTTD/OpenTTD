@@ -3020,6 +3020,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Localida
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar uma localidade num local aleatório
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Várias localidades aleatórias
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cobrir o mapa com localidades colocadas aleatoriamente
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Carregar de um ficheiro
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Importar dados da localidade de um ficheiro JSON
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Expandir todas as localidades
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Fazer com que todas as localidades cresçam ligeiramente
 
@@ -3272,6 +3274,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Guardar 
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Abrir Cenário
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carregar mapa de alturas
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Guardar mapa de alturas
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Carregar Dados da Localidade
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clique aqui para saltar para o diretório atual de gravação/carregamento padrão
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} livres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, directorias e ficheiros de jogos guardados
@@ -3283,6 +3286,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Guardar 
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carregar
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carregar o jogo selecionado
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carregar mapa de alturas seleccionado
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Carregar dados da localidade selecionada
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalhes do Jogo
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nenhuma informação disponível
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3416,7 +3420,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}A prepar
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script a correr
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}A preparar jogo
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Falha ao carregar dados da localidade
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Ficheiro JSON formatado incorretamente
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}Dados de {STRING} formatados incorretamente
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} coordenadas mal formatadas, devem ser 0..1 como uma percentagem da dimensão total do mapa de alturas
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Não foi possível encontrar um local válido para fundar {NUM} localidade{P "" s}. Uma placa foi colocada no{P "" s} loca{P l is} desejado{P "" s}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definições NewGRF
