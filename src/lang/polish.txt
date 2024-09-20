@@ -3399,6 +3399,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Losowe m
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Budowa miasta w losowym miejscu
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Wiele losowych miast
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Pokryj mapę losowo położonymi miastami
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Wczytaj z pliku
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Rozszerz wszystkie miasta
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Zwiększ trochę rozmiar wszystkich miast
 

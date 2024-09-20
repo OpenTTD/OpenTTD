@@ -3515,7 +3515,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Προε
 STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Η φόρτωση δεδομένων πόλης απέτυχε
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Το αρχείο JSON έχει μορφοποιηθεί εσφαλμένα
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} δεδομένα έχουν μορφοποιηθεί εσφαλμένα
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :Οι συντεταγμένες {WHITE}{STRING} δεν έχουν μορφοποιηθεί σωστά, πρέπει να είναι 0..1 ως ποσοστό της συνολικής διάστασης του χάρτη ύψους
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :Οι συντεταγμένες {WHITE}{STRING} δεν έχουν μορφοποιηθεί σωστά, πρέπει να είναι 0 έως 1, ως ποσοστό της συνολικής διάστασης του χάρτη ύψους
 
 STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Δεν ήταν δυνατή η εύρεση έγκυρης τοποθεσίας για την ίδρυση {NUM} πόλ{P "ης" εων}. Αντ' αυτού δημιουργήθηκ{P "ε" "αν"} σήμα{P "" τα} {P "στην προβλεπόμενη τοποθεσία" "στις προβλεπόμενες τοποθεσίες"}
 

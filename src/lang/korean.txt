@@ -3020,6 +3020,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}무작�
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}무작위 위치에 도시를 건설합니다
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}무작위로 여러 도시 건설
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}무작위로 도시를 건설합니다
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}파일에서 불러오기
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}JSON 파일에서 도시 데이터 가져오기
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}모든 도시 확장
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}모든 도시를 조금씩 확장시킵니다
 
@@ -3272,6 +3274,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}시나�
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}시나리오 불러오기
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}높이맵 불러오기
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}높이맵 저장
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}도시 데이터 불러오기
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}기본 저장/불러오기 폴더로 이동하려면 여기를 클릭하세요
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 남음
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}드라이브, 폴더, 저장된 게임 파일의 목록입니다
@@ -3283,6 +3286,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}선택�
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}불러오기
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}선택한 게임을 불러옵니다
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}선택한 높이맵을 불러옵니다
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}선택한 도시 데이터를 불러옵니다
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}게임 상세 정보
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}사용 가능한 정보 없음
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3416,7 +3420,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}타일 �
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}스크립트 생성 중
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}게임 준비 중
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}도시 데이터 불러오기 실패
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON 파일 형식이 올바르지 않습니다
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} 데이터 형식이 올바르지 않습니다
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} 좌표 형식이 올바르지 않습니다. 전체 높이맵 크기에 대한 0 ~ 1 사이의 비율 값이어야 합니다
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}{NUM}개의 도시를 세울 적절한 장소를 찾지 못했습니다. 대신 세우려고 했던 자리에 팻말을 생성하였습니다
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 설정

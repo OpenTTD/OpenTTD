@@ -3422,7 +3422,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Valmiste
 STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Kuntatietojen lataaminen epäonnistui
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Virheellisesti muotoiltu JSON-tiedosto
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}Virhe tiedon {STRING} muotoilussa
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}Virhe {STRING}-koordinaattien muotoilussa: arvon tulee olla väliltä 0…1 osuutena korkeuskartan kokonaismitasta
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}Virhe {STRING}-koordinaattien muotoilussa: arvon tulee olla väliltä 0–1 osuutena korkeuskartan kokonaismitasta
 
 STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}{NUM} kunnan perustamiseksi ei löytynyt kelvollis{P ta ia} paikk{P a oj}a. Aiottu{P u ihi}n paikk{P aa oihi}n sijoitettiin sen sijaan kylt{P ti it}
 

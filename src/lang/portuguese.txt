@@ -3423,7 +3423,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}A prepar
 STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Falha ao carregar dados da localidade
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Ficheiro JSON formatado incorretamente
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}Dados de {STRING} formatados incorretamente
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} coordenadas mal formatadas, devem ser 0..1 como uma percentagem da dimensão total do mapa de alturas
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} coordenadas mal formatadas, devem ser de 0 a 1 como uma proporção da dimensão total do mapa de alturas
 
 STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Não foi possível encontrar um local válido para fundar {NUM} localidade{P "" s}. Uma placa foi colocada no{P "" s} loca{P l is} desejado{P "" s}
 

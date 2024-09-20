@@ -3139,6 +3139,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Atsitikt
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Pastatyti miestą atsitiktinėje vietoje
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Daug atsitiktinių miestų
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Sukuria miestus atsitiktinėse žemėlapio vietose
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Užkrauti iš failo.
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Įkelti miesto duomenis iš JSON failo
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Išplėsti visus miestus
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Kad visi miestai šiek tiek didėtų
 
@@ -3737,10 +3739,11 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Eiti pri
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Įrašykite ženklo pavadinimą
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Miestai ({COMMA} of {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}Nėra
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Miestas){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Spragtelėjus ant pavadinimo, miestas bus parodytas ekrano centre. Spragtelėjus laikant nuspaudus „Ctrl“ klavišą, bus atvertas papildomas peržiūros langas į pasirinktą miestą
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Spragtelėjus ant pavadinimo, miestas bus parodytas ekrano centre. Spragtelėkite laikant nuspaudus „Ctrl“ klavišą, kad atverti papildomą peržiūros langą į pasirinktą miestą
 STR_TOWN_POPULATION                                             :{BLACK}Pasaulio populiacija: {COMMA}
 
 # Town view window
@@ -5153,6 +5156,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... daug
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vyksta kelio darbai
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Negalima panaikinti šio miesto...{}Mieste yra stotelė arba depas, arba miestui priklausantis vienas iš laukelių negali būti pašalintas
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nėra tinkamos vietos statulai šio miesto centre
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Negaliu pastatyti namo...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... per daug pramonės įmonių
@@ -5225,6 +5229,7 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Liečias
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Per arti kito kontrolės punkto
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Čia neįmanoma pastatyti traukinių kontrolės punkto...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Čia negalima sukurti kelio taško...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Negalima cia statyti pluduro...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Neįmanoma pakeisti punkto vardo...
 
