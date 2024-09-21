@@ -3019,6 +3019,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Willekeu
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Hiermee sticht je een stad op een willekeurige locatie
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Veel willekeurige steden
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Verspreid willekeurig geplaatste steden over de kaart
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Laden uit bestand
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Stadsgegevens importeren uit een JSON-bestand
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Alle steden uitbreiden
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Laat alle steden een klein beetje groeien
 
@@ -3271,6 +3273,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Scenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Scenario laden
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Hoogtekaart laden
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Hoogtekaart opslaan
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Stadsgegevens laden
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik hier om naar de standaard-opslagmap te gaan
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} vrij
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lijst van schijven, mappen en opgeslagen spellen
@@ -3282,6 +3285,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Het huid
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Laden
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Laad het geselecteerde spel
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Laad de geselecteerde hoogtekaart
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Geselecteerde stadsgegevens laden
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Speldetails
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Geen informatie beschikbaar
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3415,7 +3419,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Bezig me
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script loopt
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Voorbereiden spel
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Laden stadsgegevens mislukt
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON-bestand heeft onjuiste indeling
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} gegevens met onjuiste indeling
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} coördinaten met onjuiste indeling, moeten tussen 0 en 1 liggen als verhouding tot de totale afmeting van de hoogtekaart
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Kon geen geldige locatie vinden voor het stichten van {NUM} st{P ad eden}. {P "een " ""}bordje{P "" s} geplaatst op de bedoelde locatie{P "" s}.
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-instellingen
