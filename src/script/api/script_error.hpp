@@ -30,11 +30,12 @@
  * @param returnval The value to return on failure.
  * @param condition The condition that must be obeyed.
  * @param error_code The error code passed to ScriptObject::SetLastError.
+ * @param extra_error_code The extra error code passed to ScriptObject::SetExtraLastError.
  */
-#define EnforcePreconditionCustomError(returnval, condition, error_code)   \
+#define EnforcePreconditionCustomError(returnval, condition, error_code, extra_error_code)   \
 	if (!(condition)) {                                                      \
 		ScriptObject::SetLastError(error_code);                                    \
-		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);             \
+		ScriptObject::SetExtraLastError(extra_error_code);             \
 		return returnval;                                                      \
 	}
 
@@ -55,7 +56,7 @@
  * @param returnval The value to return on failure.
  */
 #define EnforceCompanyModeValid(returnval) \
-	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsValid(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY)
+	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsValid(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY, ScriptError::ERR_UNKNOWN)
 
 /**
  * Helper to enforce the precondition that the company mode is valid.
@@ -72,14 +73,14 @@
  * @param returnval The value to return on failure.
  */
 #define EnforceDeityMode(returnval) \
-	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsDeity(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY)
+	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsDeity(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY, ScriptError::ERR_UNKNOWN)
 
 /**
  * Helper to enforce the precondition that the company mode is valid or that we are a deity.
  * @param returnval The value to return on failure.
  */
 #define EnforceDeityOrCompanyModeValid(returnval) \
-	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsDeity() || ScriptCompanyMode::IsValid(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY)
+	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsDeity() || ScriptCompanyMode::IsValid(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY, ScriptError::ERR_UNKNOWN)
 
 /**
  * Helper to enforce the precondition that the company mode is valid or that we are a deity.

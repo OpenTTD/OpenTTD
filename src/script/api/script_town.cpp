@@ -49,7 +49,7 @@
 	std::string text;
 	if (name != nullptr) {
 		text = name->GetDecodedText();
-		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG, ScriptError::ERR_UNKNOWN);
 	}
 
 	return ScriptObject::Command<CMD_RENAME_TOWN>::Do(town_id, text);
@@ -300,7 +300,7 @@
 	std::string text;
 	if (name != nullptr) {
 		text = name->GetDecodedText();
-		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG, ScriptError::ERR_UNKNOWN);
 	}
 	uint32_t townnameparts;
 	if (!GenerateTownName(ScriptObject::GetRandomizer(), &townnameparts)) {
