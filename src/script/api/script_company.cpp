@@ -52,7 +52,7 @@
 	EnforcePrecondition(false, name != nullptr);
 	const std::string &text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
-	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_COMPANY_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_COMPANY_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG, ScriptError::ERR_UNKNOWN);
 
 	return ScriptObject::Command<CMD_RENAME_COMPANY>::Do(text);
 }
@@ -74,7 +74,7 @@
 	EnforcePrecondition(false, name != nullptr);
 	const std::string &text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
-	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_PRESIDENT_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_PRESIDENT_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG, ScriptError::ERR_UNKNOWN);
 
 	return ScriptObject::Command<CMD_RENAME_PRESIDENT>::Do(text);
 }

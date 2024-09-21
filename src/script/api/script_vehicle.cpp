@@ -79,7 +79,7 @@
 
 	::VehicleType type = ::Engine::Get(engine_id)->type;
 
-	EnforcePreconditionCustomError(VEHICLE_INVALID, !ScriptGameSettings::IsDisabledVehicleType((ScriptVehicle::VehicleType)type), ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED);
+	EnforcePreconditionCustomError(VEHICLE_INVALID, !ScriptGameSettings::IsDisabledVehicleType((ScriptVehicle::VehicleType)type), ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED, ScriptError::ERR_UNKNOWN);
 
 	if (!ScriptObject::Command<CMD_BUILD_VEHICLE>::Do(&ScriptInstance::DoCommandReturnVehicleID, depot, engine_id, true, cargo, INVALID_CLIENT_ID)) return VEHICLE_INVALID;
 
@@ -254,7 +254,7 @@
 	EnforcePrecondition(false, name != nullptr);
 	const std::string &text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
-	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_VEHICLE_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_VEHICLE_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG, ScriptError::ERR_UNKNOWN);
 
 	return ScriptObject::Command<CMD_RENAME_VEHICLE>::Do(vehicle_id, text);
 }
