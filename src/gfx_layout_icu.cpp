@@ -461,9 +461,11 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
 
 		/* See if there is a good breakpoint inside this run. */
 		int32_t break_pos = break_iterator->preceding(char_pos + 1);
-		if (break_pos != icu::BreakIterator::DONE && break_pos > overflow_run->start + this->partial_offset) {
+		auto overflow_run_start = overflow_run->start;
+		if (overflow_run == start_run) overflow_run_start += this->partial_offset;
+		if (break_pos != icu::BreakIterator::DONE && break_pos > overflow_run_start) {
 			/* There is a line-break inside this run that is suitable. */
-			new_partial_length = break_pos - overflow_run->start - this->partial_offset;
+			new_partial_length = break_pos - overflow_run_start;
 		} else if (overflow_run != start_run) {
 			/* There is no suitable line-break in this run, but it is also not
 			 * the only run on this line. So we remove the run. */
@@ -472,7 +474,7 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
 			/* There is no suitable line-break and this is the only run on the
 			 * line. So we break at the cluster. This is not pretty, but the
 			 * best we can do. */
-			new_partial_length = char_pos - overflow_run->start - this->partial_offset;
+			new_partial_length = char_pos - overflow_run_start;
 		}
 	}
 
@@ -520,6 +522,7 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
 
 	if (new_partial_length > 0) {
 		this->current_run = last_run - 1;
+		if (this->current_run != start_run) this->partial_offset = 0;
 		this->partial_offset += new_partial_length;
 	} else {
 		this->current_run = last_run;
