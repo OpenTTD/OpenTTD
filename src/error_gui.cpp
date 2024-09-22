@@ -394,11 +394,11 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 		std::string message = GetString(summary_msg);
 		if (detailed_msg != INVALID_STRING_ID) {
 			message += " ";
-			message += GetString(detailed_msg);
+			AppendStringInPlace(message, detailed_msg);
 		}
 		if (extra_msg != INVALID_STRING_ID) {
 			message += " ";
-			message += GetString(extra_msg);
+			AppendStringInPlace(message, extra_msg);
 		}
 
 		if (textref_stack_size > 0) StopTextRefStackUsage();

@@ -386,7 +386,7 @@ class BuildIndustryWindow : public Window {
 			}
 			SetDParam(0, CargoSpec::Get(cargolist[j])->name);
 			SetDParamStr(1, cargo_suffix[j].text);
-			cargostring += GetString(STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION);
+			AppendStringInPlace(cargostring, STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION);
 		}
 
 		if (numcargo > 0) {

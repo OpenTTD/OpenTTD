@@ -394,7 +394,7 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 				const auto time = link.time ? back_time ? ((link.time + back_time) / 2) : link.time : back_time;
 				if (time > 0) {
 					SetDParam(0, time);
-					tooltip_extension += GetString(STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION);
+					AppendStringInPlace(tooltip_extension, STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION);
 				}
 				SetDParam(0, link.cargo);
 				SetDParam(1, link.Usage());
