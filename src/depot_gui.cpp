@@ -974,6 +974,15 @@ struct DepotWindow : Window {
 		}
 	}
 
+	bool last_overlay_state;
+	void OnMouseLoop() override
+	{
+		if (last_overlay_state != ShowCargoIconOverlay()) {
+			last_overlay_state = ShowCargoIconOverlay();
+			this->SetDirty();
+		}
+	}
+
 	void OnMouseDrag(Point pt, WidgetID widget) override
 	{
 		if (this->sel == INVALID_VEHICLE) return;

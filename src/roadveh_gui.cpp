@@ -132,6 +132,10 @@ void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, Engi
 
 	AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
+	bool do_overlays = ShowCargoIconOverlay();
+	/* List of overlays, only used if cargo icon overlays are enabled. */
+	static std::vector<CargoIconOverlay> overlays;
+
 	int px = rtl ? max_width + skip : -skip;
 	int y = r.Height() / 2;
 	for (; u != nullptr && (rtl ? px > 0 : px < max_width); u = u->Next())
@@ -146,7 +150,13 @@ void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, Engi
 			seq.Draw(px + (rtl ? -offset.x : offset.x), y + offset.y, pal, (u->vehstatus & VS_CRASHED) != 0);
 		}
 
+		if (do_overlays) AddCargoIconOverlay(overlays, px, width, u);
 		px += rtl ? -width : width;
+	}
+
+	if (do_overlays) {
+		DrawCargoIconOverlays(overlays, y);
+		overlays.clear();
 	}
 
 	if (v->index == selection) {

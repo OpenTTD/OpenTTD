@@ -692,6 +692,15 @@ public:
 		}
 	}
 
+	bool last_overlay_state;
+	void OnMouseLoop() override
+	{
+		if (last_overlay_state != ShowCargoIconOverlay()) {
+			last_overlay_state = ShowCargoIconOverlay();
+			this->SetDirty();
+		}
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {

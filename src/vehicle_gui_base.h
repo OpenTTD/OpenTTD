@@ -139,6 +139,22 @@ struct BaseVehicleListWindow : public Window {
 	}
 };
 
+struct CargoIconOverlay {
+	int left;
+	int right;
+	CargoID cargo_type;
+	uint cargo_cap;
+
+	constexpr CargoIconOverlay(int left, int right, CargoID cargo_type, uint cargo_cap)
+		: left(left), right(right), cargo_type(cargo_type), cargo_cap(cargo_cap)
+	{ }
+};
+
+bool ShowCargoIconOverlay();
+void AddCargoIconOverlay(std::vector<CargoIconOverlay> &overlays, int x, int width, const Vehicle *v);
+void DrawCargoIconOverlay(int x, int y, CargoID cid);
+void DrawCargoIconOverlays(std::span<const CargoIconOverlay> overlays, int y);
+
 uint GetVehicleListHeight(VehicleType type, uint divisor = 1);
 
 struct Sorting {
