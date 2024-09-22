@@ -3424,7 +3424,7 @@ STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON 文
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} 的数据格式不正确
 STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} 的坐标数据格式不正确。坐标必须为 0…1 之间的一个数，代表在高度图上的位置
 
-STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}无法为 {NUM} 座城镇找到合适的生成位置；已在这些城镇的原定位置放置标志
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}无法为 {NUM} 座城镇找到合适的生成位置；已在城镇的原定位置放置标志
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 设置

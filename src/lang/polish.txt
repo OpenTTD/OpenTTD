@@ -3400,6 +3400,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Budowa m
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Wiele losowych miast
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Pokryj mapę losowo położonymi miastami
 STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Wczytaj z pliku
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Importuj dane o miastach z pliku JSON
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Rozszerz wszystkie miasta
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Zwiększ trochę rozmiar wszystkich miast
 
@@ -3652,6 +3653,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Zapisz s
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Wczytaj scenariusz
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Wczytaj mapę wysokości
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Zapisz mapę wysokości
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Wczytaj Dane o Miastach
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknij tutaj, aby przejść do domyślnego katalogu zapisów
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} wolnego miejsca
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista napędów, katalogów i zapisanych gier
@@ -3663,6 +3665,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Zapisz b
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Wczytaj
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Wczytaj wybraną grę
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Wczytaj wybraną mapę wysokości
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Wczytaj zaznaczone dane o miastach
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Szczegóły gry
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Brak dostępnych informacji
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3796,7 +3799,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Uaktywni
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Uruchamianie skryptu
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Przygotowywanie gry
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Wczytanie danych o miastach nie powiodło się
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Nieprawidłowo sformatowany plik JSON
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}Nieprawidłowo sformatowane dane miasta {STRING}
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}Nieprawidłowo sformatowane współrzędne miasta {STRING}, muszą wynosić od 0 do 1 jako ułamek całkowitego wymiaru mapy wysokości
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Nie znaleziono prawidłowej lokalizacji dla {NUM} miast{P a "" ""}. Zamiast tego w dany{P m ch ch} miejsc{P u ach ach} utworzono napis{P "" y y}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ustawienia NewGRF
