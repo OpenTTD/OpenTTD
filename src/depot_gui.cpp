@@ -258,6 +258,7 @@ struct DepotWindow : Window {
 	VehicleID vehicle_over; ///< Rail vehicle over which another one is dragged, \c INVALID_VEHICLE if none.
 	VehicleType type;
 	bool generate_list;
+	bool check_unitnumber_digits;
 	WidgetID hovered_widget; ///< Index of the widget being hovered during drag/drop. -1 if no drag is in progress.
 	VehicleList vehicle_list;
 	VehicleList wagon_list;
@@ -273,6 +274,7 @@ struct DepotWindow : Window {
 		this->sel = INVALID_VEHICLE;
 		this->vehicle_over = INVALID_VEHICLE;
 		this->generate_list = true;
+		this->check_unitnumber_digits = true;
 		this->hovered_widget = -1;
 		this->type = type;
 		this->num_columns = 1; // for non-trains this gets set in FinishInitNested()
@@ -441,8 +443,10 @@ struct DepotWindow : Window {
 		MODE_START_STOP,
 	};
 
-	DepotGUIAction GetVehicleFromDepotWndPt(int x, int y, const Vehicle **veh, GetDepotVehiclePtData *d) const
+	DepotGUIAction GetVehicleFromDepotWndPt(int x, int y, const Vehicle **veh, GetDepotVehiclePtData *d)
 	{
+		this->RefreshVehicleList();
+
 		const NWidgetCore *matrix_widget = this->GetWidget<NWidgetCore>(WID_D_MATRIX);
 		/* Make X relative to widget. Y is left alone for GetScrolledRowFromWidget(). */
 		x -= matrix_widget->pos_x;
@@ -706,7 +710,7 @@ struct DepotWindow : Window {
 		this->generate_list = true;
 	}
 
-	void OnPaint() override
+	void RefreshVehicleList()
 	{
 		if (this->generate_list) {
 			/* Generate the vehicle list
@@ -715,6 +719,16 @@ struct DepotWindow : Window {
 			this->generate_list = false;
 			DepotSortList(&this->vehicle_list);
 
+			this->check_unitnumber_digits = true;
+		}
+	}
+
+	void OnPaint() override
+	{
+		this->RefreshVehicleList();
+
+		if (this->check_unitnumber_digits) {
+			this->check_unitnumber_digits = false;
 			uint new_unitnumber_digits = GetUnitNumberDigits(this->vehicle_list);
 			/* Only increase the size; do not decrease to prevent constant changes */
 			if (this->unitnumber_digits < new_unitnumber_digits) {
