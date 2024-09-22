@@ -612,7 +612,7 @@ void CalcEngineReliability(Engine *e, bool new_month)
 {
 	/* Get source engine for reliability age. This is normally our engine unless variant reliability syncing is requested. */
 	Engine *re = e;
-	while (re->info.variant_id != INVALID_ENGINE && (re->info.extra_flags & ExtraEngineFlags::SyncReliability) != ExtraEngineFlags::None) {
+	while (re->info.variant_id != INVALID_ENGINE && HasFlag(re->info.extra_flags, ExtraEngineFlags::SyncReliability)) {
 		re = Engine::Get(re->info.variant_id);
 	}
 
@@ -714,7 +714,7 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 
 	/* Get parent variant index for syncing reliability via random seed. */
 	const Engine *re = e;
-	while (re->info.variant_id != INVALID_ENGINE && (re->info.extra_flags & ExtraEngineFlags::SyncReliability) != ExtraEngineFlags::None) {
+	while (re->info.variant_id != INVALID_ENGINE && HasFlag(re->info.extra_flags, ExtraEngineFlags::SyncReliability)) {
 		re = Engine::Get(re->info.variant_id);
 	}
 
@@ -865,7 +865,7 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company, int recursion_d
 
 	/* Find variants to be included in preview. */
 	for (Engine *ve : Engine::IterateType(e->type)) {
-		if (ve->index != eid && ve->info.variant_id == eid && (ve->info.extra_flags & ExtraEngineFlags::JoinPreview) != ExtraEngineFlags::None) {
+		if (ve->index != eid && ve->info.variant_id == eid && HasFlag(ve->info.extra_flags, ExtraEngineFlags::JoinPreview)) {
 			AcceptEnginePreview(ve->index, company, recursion_depth + 1);
 		}
 	}
@@ -1092,7 +1092,7 @@ static void NewVehicleAvailable(Engine *e)
 	if (!IsVehicleTypeDisabled(e->type, true)) AI::BroadcastNewEvent(new ScriptEventEngineAvailable(index));
 
 	/* Only provide the "New Vehicle available" news paper entry, if engine can be built. */
-	if (!IsVehicleTypeDisabled(e->type, false) && (e->info.extra_flags & ExtraEngineFlags::NoNews) == ExtraEngineFlags::None) {
+	if (!IsVehicleTypeDisabled(e->type, false) && !HasFlag(e->info.extra_flags, ExtraEngineFlags::NoNews)) {
 		SetDParam(0, GetEngineCategoryName(index));
 		SetDParam(1, PackEngineNameDParam(index, EngineNameContext::PreviewNews));
 		AddNewsItem(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE, NT_NEW_VEHICLES, NF_VEHICLE, NR_ENGINE, index);
@@ -1137,7 +1137,7 @@ void CalendarEnginesMonthlyLoop()
 				if (IsWagon(e->index)) continue;
 
 				/* Engine has no preview */
-				if ((e->info.extra_flags & ExtraEngineFlags::NoPreview) != ExtraEngineFlags::None) continue;
+				if (HasFlag(e->info.extra_flags, ExtraEngineFlags::NoPreview)) continue;
 
 				/* Show preview dialog to one of the companies. */
 				e->flags |= ENGINE_EXCLUSIVE_PREVIEW;

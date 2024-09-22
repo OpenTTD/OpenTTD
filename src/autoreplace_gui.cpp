@@ -594,7 +594,7 @@ public:
 				if (it != this->engines[click_side].end()) {
 					const auto &item = *it;
 					const Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix).WithWidth(WidgetDimensions::scaled.hsep_indent * (item.indent + 1), _current_text_dir == TD_RTL);
-					if ((item.flags & EngineDisplayFlags::HasVariants) != EngineDisplayFlags::None && IsInsideMM(r.left, r.right, pt.x)) {
+					if (HasFlag(item.flags, EngineDisplayFlags::HasVariants) && IsInsideMM(r.left, r.right, pt.x)) {
 						/* toggle folded flag on engine */
 						assert(item.variant_id != INVALID_ENGINE);
 						Engine *engine = Engine::Get(item.variant_id);
@@ -604,7 +604,7 @@ public:
 						InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
 						return;
 					}
-					if ((item.flags & EngineDisplayFlags::Shaded) == EngineDisplayFlags::None) e = item.engine_id;
+					if (!HasFlag(item.flags, EngineDisplayFlags::Shaded)) e = item.engine_id;
 				}
 
 				/* If Ctrl is pressed on the left side and we don't have any engines of the selected type, stop autoreplacing.

@@ -1326,9 +1326,9 @@ static StationSpec::TileFlags GetStationTileFlags(StationGfx gfx, const StationS
 void SetRailStationTileFlags(TileIndex tile, const StationSpec *statspec)
 {
 	const auto flags = GetStationTileFlags(GetStationGfx(tile), statspec);
-	SetStationTileBlocked(tile, (flags & StationSpec::TileFlags::Blocked) == StationSpec::TileFlags::Blocked);
-	SetStationTileHavePylons(tile, (flags & StationSpec::TileFlags::Pylons) == StationSpec::TileFlags::Pylons);
-	SetStationTileHaveWires(tile, (flags & StationSpec::TileFlags::NoWires) != StationSpec::TileFlags::NoWires);
+	SetStationTileBlocked(tile, HasFlag(flags, StationSpec::TileFlags::Blocked));
+	SetStationTileHavePylons(tile, HasFlag(flags, StationSpec::TileFlags::Pylons));
+	SetStationTileHaveWires(tile, !HasFlag(flags, StationSpec::TileFlags::NoWires));
 }
 
 /**

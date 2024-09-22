@@ -2593,7 +2593,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 
 	if (this->current_order.IsType(OT_GOTO_DEPOT)) {
 		bool halt_in_depot = (this->current_order.GetDepotActionType() & ODATFB_HALT) != 0;
-		if (((command & DepotCommand::Service) != DepotCommand::None) == halt_in_depot) {
+		if (HasFlag(command, DepotCommand::Service) == halt_in_depot) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
@@ -2605,7 +2605,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 			return CommandCost();
 		}
 
-		if ((command & DepotCommand::DontCancel) != DepotCommand::None) return CMD_ERROR; // Requested no cancellation of depot orders
+		if (HasFlag(command, DepotCommand::DontCancel)) return CMD_ERROR; // Requested no cancellation of depot orders
 		if (flags & DC_EXEC) {
 			/* If the orders to 'goto depot' are in the orders list (forced servicing),
 			 * then skip to the next order; effectively cancelling this forced service */
@@ -2636,7 +2636,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 
 		this->SetDestTile(closestDepot.location);
 		this->current_order.MakeGoToDepot(closestDepot.destination, ODTF_MANUAL);
-		if ((command & DepotCommand::Service) == DepotCommand::None) this->current_order.SetDepotActionType(ODATFB_HALT);
+		if (!HasFlag(command, DepotCommand::Service)) this->current_order.SetDepotActionType(ODATFB_HALT);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 
 		/* If there is no depot in front and the train is not already reversing, reverse automatically (trains only) */

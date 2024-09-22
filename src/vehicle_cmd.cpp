@@ -1046,10 +1046,10 @@ static CommandCost SendAllVehiclesToDepot(DoCommandFlag flags, bool service, con
  */
 CommandCost CmdSendVehicleToDepot(DoCommandFlag flags, VehicleID veh_id, DepotCommand depot_cmd, const VehicleListIdentifier &vli)
 {
-	if ((depot_cmd & DepotCommand::MassSend) != DepotCommand::None) {
+	if (HasFlag(depot_cmd, DepotCommand::MassSend)) {
 		/* Mass goto depot requested */
 		if (!vli.Valid()) return CMD_ERROR;
-		return SendAllVehiclesToDepot(flags, (depot_cmd & DepotCommand::Service) != DepotCommand::None, vli);
+		return SendAllVehiclesToDepot(flags, HasFlag(depot_cmd, DepotCommand::Service), vli);
 	}
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
