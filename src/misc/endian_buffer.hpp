@@ -50,7 +50,7 @@ public:
 	EndianBufferWriter &operator <<(const T data)
 	{
 		if constexpr (std::is_enum_v<T>) {
-			this->Write(static_cast<std::underlying_type_t<const T>>(data));
+			this->Write(to_underlying(data));
 		} else if constexpr (std::is_base_of_v<StrongTypedefBase, T>) {
 			this->Write(data.base());
 		} else {
