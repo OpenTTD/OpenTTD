@@ -44,4 +44,16 @@
 		return static_cast<OtherEnumType>(static_cast<typename std::underlying_type<OtherEnumType>::type>(m1) + static_cast<typename std::underlying_type<EnumType>::type>(m2)); \
 	}
 
+/**
+ * Checks if a value in a bitset enum is set.
+ * @param x The value to check.
+ * @param y The flag to check.
+ * @return True iff the flag is set.
+ */
+template <typename T, class = typename std::enable_if_t<std::is_enum_v<T>>>
+debug_inline constexpr bool HasFlag(const T x, const T y)
+{
+	return (x & y) == y;
+}
+
 #endif /* ENUM_TYPE_HPP */
