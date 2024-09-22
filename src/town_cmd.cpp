@@ -2395,11 +2395,15 @@ bool GenerateTowns(TownLayout layout)
 		town_names.insert(town->GetCachedName());
 	}
 
+	/* Randomised offset for city status. This means with e.g. 1-in-4 towns being cities, a map with 10 towns
+	 * may have 2 or 3 cities, instead of always 3. */
+	uint city_random_offset = Random() % _settings_game.economy.larger_towns;
+
 	/* First attempt will be made at creating the suggested number of towns.
 	 * Note that this is really a suggested value, not a required one.
 	 * We would not like the system to lock up just because the user wanted 100 cities on a 64*64 map, would we? */
 	do {
-		bool city = (_settings_game.economy.larger_towns != 0 && Chance16(1, _settings_game.economy.larger_towns));
+		bool city = (_settings_game.economy.larger_towns != 0 && ((city_random_offset + current_number) % _settings_game.economy.larger_towns)  == 0);
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
 		/* Get a unique name for the town. */
 		if (!GenerateTownName(_random, &townnameparts, &town_names)) continue;
