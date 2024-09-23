@@ -597,7 +597,7 @@ void AnimateNewHouseTile(TileIndex tile)
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 	if (hs == nullptr) return;
 
-	HouseAnimationBase::AnimateTile(hs, Town::GetByTile(tile), tile, HasBit(hs->extra_flags, CALLBACK_1A_RANDOM_BITS));
+	HouseAnimationBase::AnimateTile(hs, Town::GetByTile(tile), tile, HasFlag(hs->extra_flags, CALLBACK_1A_RANDOM_BITS));
 }
 
 void AnimateNewHouseConstruction(TileIndex tile)
