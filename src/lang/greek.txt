@@ -2471,7 +2471,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Τρέχ
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}ω {NUM}λ
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Χρόνος παιχνιδιού
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Χρόνος παιχνιδιού χωρίς{}το παιχνίδι να βρίσκεται σε παύση
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Γλώσσα, έκδοση διακομιστή, κλπ.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Στοιχεία συμβατότητας διακομιστή και ελέγχου ταυτότητας
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Πατήστε σε ένα παιχνίδι από τη λίστα για το επιλέξετε
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Ο διακομιστής που συμμετείχατε την τελευταία φορά:

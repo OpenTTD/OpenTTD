@@ -2529,7 +2529,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Теку
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}{NBSP}ч. {NUM}{NBSP}мин.
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Прошедшее время
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Время, проведённое в игре{}(без учёта времени, когда игра была приостановлена)
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Язык, версия сервера и{NBSP}т.{NBSP}п.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Совместимость с версией сервера и статус аутентификации
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Выберите игру из списка
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Последний сервер, к которому вы подключались:

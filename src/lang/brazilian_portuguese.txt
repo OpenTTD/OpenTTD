@@ -2379,7 +2379,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Data atu
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}min
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Tempo de jogo
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Tempo de jogo enquanto{}o jogo não estava pausado
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Idioma, versão do servidor, etc.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Compatibilidade do servidor e informação de autenticação
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Clique num jogo da lista para selecioná-lo
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Servidor no qual você entrou na última vez:
