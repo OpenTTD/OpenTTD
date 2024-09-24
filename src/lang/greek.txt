@@ -4103,10 +4103,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Αεροσκάφ{P ος η}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Τρένα - πατήστε στο τρένο για πληροφορίες
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Οδικά Οχήματα - πατήστε στο όχημα για πληροφορίες
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Πλοία - πατήστε στο πλοίο για πληροφορίες
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Αεροσκάφη - πατήστε στο αεροσκάφος για πληροφορίες
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Τρένα - πατήστε στο τρένο για πληροφορίες. Κρατήστε πατημένο το Ctrl+Shift για εμφάνιση είδους φορτίου
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Οδικά Οχήματα - πατήστε στο όχημα για πληροφορίες. Κρατήστε πατημένο το Ctrl+Shift για εμφάνιση είδους φορτίου
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Πλοία - πατήστε στο πλοίο για πληροφορίες. Κρατήστε πατημένο το Ctrl+Shift για εμφάνιση είδους φορτίου
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Αεροσκάφη - πατήστε στο αεροσκάφος για πληροφορίες. Κρατήστε πατημένο το Ctrl+Shift για εμφάνιση είδους φορτίου
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Διαθέσιμα Τρένα

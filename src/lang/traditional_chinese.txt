@@ -619,8 +619,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}貨物�
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}運輸所用天數
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}運輸所用秒數
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}將 10 單位 (或 10,000 公升) 貨物運送 20 格的費用
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}全部啟用
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}全部停用
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}全部
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}無
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}於貨物運費表顯示所有類型的貨物
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}於貨物運費表隱藏所有類型的貨物
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切換該貨物類型圖示
@@ -799,8 +799,8 @@ STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STR
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}全部停用
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}全部打開
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}無
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}全部
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}顯示高度
 STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}顯示工業名稱
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}地圖不顯示任何工業
@@ -2378,7 +2378,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}目前�
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}{NBSP}小時{NBSP}{NUM}{NBSP}分鐘
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}遊戲經過時間
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}已進行遊戲的時間，不計算暫停的時間
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}語言、伺服器版本等
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}伺服器相容性和身份驗證資息
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}點選清單內的伺服器即可選擇遊戲
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}最後加入的伺服器：
@@ -3019,6 +3019,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}隨機�
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}隨機選址建立市鎮
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}許多隨機市鎮
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}以隨機分佈的市鎮佈滿地圖
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}從檔案載入
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}從 JSON 檔案匯入市鎮數據
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}擴展所有市鎮
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}讓所有市鎮略為成長
 
@@ -3271,6 +3273,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}儲存�
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}載入場景
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}載入高度圖
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}儲存高度圖
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}載入市鎮數據
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}點選這裡跳到預設儲存目錄
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}空間尚有 {BYTES}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}列出磁碟、目錄與遊戲存檔
@@ -3282,6 +3285,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}以選�
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}載入
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}載入所選的遊戲
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}載入所選的高度圖
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}載入所選的市鎮數據
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}遊戲詳細資料
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}沒有可用的資訊
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3415,7 +3419,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}執行�
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}正在運行腳本
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}準備遊戲中
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}市鎮資料載入失敗
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON 檔案格式不正確
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} 的資料格式不正確
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} 的座標格式不正確，代表高度圖總尺寸比例的座標必須為 0 到 1 之間的一個小數位數值
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}無法為 {NUM} 座市鎮找到適當的生產地點，並已在市鎮的原定地點建立了標誌
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 設定
@@ -4000,10 +4009,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - 飛機 {COMMA} 架
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}列車 - 點選列車檢視資訊
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}車輛 - 點選車輛檢視詳細資料
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船舶 - 點選船舶顯示詳細資料
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飛機 - 點選飛機顯示詳細資料
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}列車 - 點選列車檢視資訊。同時按住 <Ctrl> 及 <Shift> 鍵可在列車上顯示貨物種類
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}車輛 - 點選車輛檢視詳細資料。同時按住 <Ctrl> 及 <Shift> 鍵可在車輛上顯示貨物種類
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船舶 - 點選船舶顯示詳細資料。同時按住 <Ctrl> 及 <Shift> 鍵可在船舶上顯示貨物種類
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飛機 - 點選飛機顯示詳細資料。同時按住 <Ctrl> 及 <Shift> 鍵可在飛機上顯示貨物種類
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :可用列車

@@ -786,7 +786,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Budowa l
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otwórz menu kształtowania krajobrazu, sadzenia drzew lub umieść napis
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Otwórz okno dźwięku/muzyki
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Otwórz ostatnią wiadomość/ogłoszenie, historię wiadomości lub usuń wszystkie wiadomości
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Otwórz informacje o terenie, menu zrzutu ekranu, informacje o OpenTTD lub narzędzia dla deweloperów
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Otwórz informacje o terenie, menu zrzutu obrazu, informacje o OpenTTD lub narzędzia dla deweloperów
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Przełącz paski narzędzi
 
 # Extra tooltips for the scenario editor toolbar
@@ -909,7 +909,7 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacje o te
 STR_ABOUT_MENU_HELP                                             :Pomoc i instrukcje
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Włącz/wyłącz konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :Debugowanie SI / Game Script
-STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu
+STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut obrazu
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Wyświetl liczbę klatek na sekundę
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Informacje o „OpenTTD”
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite'ów
@@ -1101,8 +1101,8 @@ STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLA
 STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Zmień zestaw
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Wyczyść obecny program (tylko Wlasny1 lub Wlasny2)
 STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Zmień wybór muzyki na następny zainstalowany zestaw
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kliknij na ścieżce aby dodać do obecnego programu (Wlasny1 lub Wlasny2)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknij na ścieżce muzycznej aby usunąć ją z wybranego programu (Wlasny1 lub Wlasny2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kliknij na ścieżkę muzyczną, aby dodać ją do obecnego programu (tylko Własny 1 lub Własny 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknij na ścieżkę muzyczną, aby usunąć ją z wybranego programu (tylko Własny 1 lub Własny 2)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Najlepsze firmy
@@ -1597,36 +1597,36 @@ STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(wyjaśnienie n
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Domyślna wartość: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ ustawienia: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Ustawienie klienta (nie przechowywane w plikach zapisu; ma wpływ na wszystkie gry)
-STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Ustawienie gry (przechowywane w plikach zapisu; ma wpływ tylko na nowe gry)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Ustawienie gry (przechowywane w pliku zapisu; ma wpływ tylko na aktualną grę)
-STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ustawienie firmy (przechowywane w plikach zapisu; ma wpływ tylko na nowe gry)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Ustawienie klienta (nie przechowywane w plikach zapisu; ma wpływ na wszystkie rozgrywki)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Ustawienie rozgrywki (przechowywane w plikach zapisu; ma wpływ tylko na nowe rozgrywki)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Ustawienie rozgrywki (przechowywane w pliku zapisu; ma wpływ tylko na aktualną rozgrywkę)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ustawienie firmy (przechowywane w plikach zapisu; ma wpływ tylko na nowe rozgrywki)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ustawienie firmy (przechowywane w pliku zapisu; ma wpływ tylko na aktualną firmę)
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Uwaga!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Ta czynność spowoduje przywrócenie wszystkich ustawień gry do wartości domyślnych.{}Czy na pewno chcesz kontynuować?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ogranicza poniższą listę używając zdefiniowanych filtrów
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ogranicza poniższą listę, używając określonych filtrów
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Podstawowe (pokaż tylko ważne opcje)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Zaawansowane (pokaż większość opcji)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert (pokaż wszystkie opcje, włącznie z dziwnymi)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ustawienie z inną wartością niż domyślna
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ustawienia z wartościami innymi niż twoje ustawienia dla nowej gry
 
-STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Ogranicza poniższą listę do pewnych typów ustawień
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Ogranicza poniższą listę do określonych typów ustawień
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Wszystkie typy ustawień
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Ustawienia klienta (nie przechowywane w plikach zapisu; wpływa na wszystkie gry)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ustawienia gry (przechowywane w pliku zapisu; wpływa tylko na nowo rozpoczęte gry)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Ustawienia gry (przechowywane w pliku zapisu; wpływa tylko na aktualną grę)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Ustawienia firmy (przechowywane w pliku zapisu; wpływa tylko na nowo rozpoczęte gry)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Ustawienia firmy (przechowywane w pliku zapisu; wpływa tylko na aktualną firmę)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Ustawienia klienta (nie przechowywane w plikach zapisu; ma wpływ na wszystkie rozgrywki)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ustawienia rozgrywki (przechowywane w plikach zapisu; mają wpływ tylko na nowe rozgrywki)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Ustawienia gry (przechowywane w pliku zapisu; mają wpływ tylko na aktualną rozgrywkę)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Ustawienia firmy (przechowywane w plikach zapisu; mają wpływ tylko na nowe rozgrywki)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Ustawienia firmy (przechowywane w pliku zapisu; mają wpływ tylko na aktualną firmę)
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Żadne -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Pokaż wszystkie wyniki wyszukiwania według ustawień{}{SILVER}Kategoria {BLACK}do {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Pokaż wszystkie wyniki wyszukiwania według ustawień{}{SILVER}Typ {BLACK}do {WHITE}Wszystkie typy ustawień
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Pokaż wszystkie wyniki według ustawień{}{SILVER}Kategorii {BLACK} {WHITE}{STRING} {BLACK}i {SILVER} Typu {BLACK} {WHITE}Wszystkie typy ustawień
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Zobacz wszystkie wyniki wyszukiwania, ustawiając{}{SILVER}Kategorię {BLACK}na {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Zobacz wszystkie wyniki wyszukiwania, ustawiając{}{SILVER}Typ {BLACK}na {WHITE}Wszystkie typy ustawień
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Zobacz wszystkie wyniki wyszukiwania, ustawiając{}{SILVER}Kategorię {BLACK}na {WHITE}{STRING} {BLACK}oraz {SILVER} Typ {BLACK}na {WHITE}Wszystkie typy ustawień
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :wył.
@@ -1818,7 +1818,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Pozwalaj na spo
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Pozwalaj firmom na przekazywanie miastom funduszy na rekonstrukcję dróg, by sabotować transport drogowy w mieście
 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Pozwól na wysyłanie pieniędzy do innych firm: {STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Pozwalaj na przelewy pieniężne pomiędzy firmami w trybie gry dla wielu graczy
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Pozwalaj na przelewy pieniężne pomiędzy firmami w trybie rozgrywki dla wielu graczy
 
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Mnożnik wagi dla symulacji ciężkich pociągów towarowych: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Ustaw wpływ przewozu ładunków w pociągach. Wyższa wartość sprawia, że przewóz ładunków jest bardziej wymagający dla pociągów, zwłaszcza na wzniesieniach.
@@ -2040,8 +2040,8 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :brak
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :własnej firmy
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :wszystkich firm
 
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Preferuj czat drużynowy po użyciu <ENTER> lub <T>: {STRING}
-STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Przypisz przyciski <ENTER> i <Ctrl+ENTER> odpowiednio do czatu firmowego i czatu publicznego
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Używaj klawisza <ENTER> do czatu drużynowego: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Zaznacz tę opcję, aby używać klawisza <ENTER> do czatu firmowego, a kombinacji <Ctrl+ENTER> do czatu publicznego
 
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Prędkość przesuwania widoku: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontroluj czułość przewijania kółkiem myszki
@@ -2194,8 +2194,8 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Włączona opcj
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Statki niedostępne dla komputera: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Włączona opcja nie pozwala na budowanie statków graczom komputerowym
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Pozwól na SI w grze wieloosobowej: {STRING}
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Pozwól komputerowym graczom SI na udział w grach dla wielu graczy
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Pozwól na SI w rozgrywce wieloosobowej: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Pozwól komputerowym graczom SI na udział w rozgrywkach dla wielu graczy
 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Liczba wysyłanych kodów instrukcji przed zawieszeniem skryptów: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksymalna liczba kroków obliczeniowych, jakie skrypt może zrobić w jednej kolejce
@@ -2551,29 +2551,29 @@ STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Ster
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Nowa gra
-STR_INTRO_LOAD_GAME                                             :{BLACK}Wczytaj grę
+STR_INTRO_NEW_GAME                                              :{BLACK}Nowa Gra
+STR_INTRO_LOAD_GAME                                             :{BLACK}Wczytaj Grę
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Scenariusze
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Graj z mapą wysokościową
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Mapy Wysokości
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Edytor scenariuszy
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Gra wieloosobowa
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Gra Wieloosobowa
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcje gry
-STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela wyników
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcje Gry
+STR_INTRO_HIGHSCORE                                             :{BLACK}Najwyższe Wyniki
 STR_INTRO_HELP                                                  :{BLACK}Pomoc i Instrukcje
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ustawienia
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ustawienia NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sprawdź Dodatki Online
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pobierz Dodatki
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Ustawienia SI
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Ustawienia Game Script
 STR_INTRO_QUIT                                                  :{BLACK}Wyjście
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Rozpocznij nową grę. Użyj Ctrl, aby pominąć konfigurowanie mapy
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Wczytaj zapisaną grę
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Rozpocznij nowa grę, używając mapy wysokości jako krajobrazu
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Rozpocznij nową grę, używając przygotowanego scenariusza
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Rozpocznij nową rozgrywkę. Użyj Ctrl, aby pominąć konfigurowanie mapy
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Wczytaj zapisaną rozgrywkę
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Rozpocznij nową rozgrywkę, używając mapy wysokości jako krajobrazu
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Rozpocznij nową rozgrywkę, korzystając z przygotowanego scenariusza
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Stwórz własny świat/scenariusz
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Rozpocznij grę wieloosobową
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Rozpocznij rozgrywkę wieloosobową
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Wybierz krajobraz „umiarkowany”
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Wybierz krajobraz „arktyczny”
@@ -2581,11 +2581,11 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Wybierz 
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Wybierz krajobraz „zabawkowy”
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Otwórz opcje gry
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Otwórz tabelę wyników
-STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Uzyskaj dostęp do dokumentacji i zasobów online
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Otwórz tabelę najwyższych wyników
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Skorzystaj z dokumentacji i zasobów online
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Otwórz ustawienia gry
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Otwórz ustawienia NewGRF
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Poszukaj nowych lub zaktualizowanych dodatków do pobrania
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Otwórz ustawienia dodatków NewGRF
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Poszukaj nowych dodatków lub aktualizacji do pobrania
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Otwórz ustawienia SI
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Otwórz ustawienia Game Script
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Wyjdź z „OpenTTD”
@@ -2743,7 +2743,7 @@ STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Tylko na zapros
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Gra wieloosobowa
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nazwa gracza:
-STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}To jest nazwa pod którą będą Cię widzieć inni gracze
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}To jest nazwa, pod którą inni gracze będą cię rozpoznawać
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nazwa
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Nazwa gry
@@ -2758,11 +2758,11 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Bieżąc
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}min
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Czas gry
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Czas rozgrywki,{}gdy gra nie była wstrzymana
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Język, wersja serwera, itp.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Informacje o zgodności serwera i uwierzytelnianiu
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Kliknij na grze z listy by ją wybrać
-STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Serwer, do którego ostatnio dołączyłeś:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kliknij, aby wybrać serwer na którym grałeś ostatnio
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Kliknij na rozgrywkę na tej liście, aby ją zaznaczyć
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Ostatnio używany serwer:
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kliknij, aby wybrać ostatnio używany serwer
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACJE O GRZE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienci: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -2796,8 +2796,8 @@ STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaje s
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Uruchom serwer
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Uruchom własny serwer
 
-STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Wprowadź swoje imię
-STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Wprowadź adres serwera lub kod zaproszenia
+STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Wpisz swoje imię
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Wpisz adres serwera lub kod zaproszenia
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Rozpocznij nową grę wieloosobową
@@ -2837,7 +2837,7 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Uzyskiwa
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Rozłącz
 
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serwer jest chroniony. Wprowadź hasło
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serwer jest chroniony. Wpisz hasło
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Połączeni gracze
@@ -2924,7 +2924,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Prywatna] {STR
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Prywatna] Do {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Wszyscy] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
-STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Wprowadź tekst do czatu sieciowego
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Wpisz tekst do czatu sieciowego
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nie znaleziono urządzeń sieciowych
@@ -2942,11 +2942,11 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Złe has
 STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Nie ma cię na liście dopuszczonych klientów
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serwer jest pełny
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Masz zabroniony dostęp do tego serwera
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}Zostałeś wyrzucony z serwera
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Wyrzucono cię z rozgrywki
 STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Powód: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ułatwienia są niedozwolone na tym serwerze
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Wysyłano zbyt dużo komend na serwer
-STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Zbyt długo wprowadzałeś hasło
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Wpisywanie hasła trwało zbyt długo
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Twój komputer jest zbyt wolny, by nadążyć za serwerem
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Twój komputer zbyt długo pobierał mapę
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Twój komputer zbyt długo łączył się z serwerem
@@ -3021,7 +3021,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Typ
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Rodzaj zawartości
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nazwa
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Nazwa zawartości
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Kliknij na linii, aby zobaczyć szczegóły{}Kliknij na kwadracie wyboru, aby zaznaczyć go do pobrania
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Kliknij na pozycję z listy, aby zobaczyć szczegóły{}Kliknij na kwadrat wyboru, aby zaznaczyć ją do pobrania
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Zaznacz wszystko
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Zaznacz całą zawartość do pobrania
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Wybierz uaktualnienia
@@ -3066,7 +3066,7 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :SI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Biblioteka SI
 STR_CONTENT_TYPE_SCENARIO                                       :Scenariusz
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa wysokościowa
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa wysokości
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Podstawowe dźwięki
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Podstawowa muzyka
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Skrypt gry
@@ -3243,7 +3243,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zwiększ
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Wybierz rodzaj mostu kolejowego
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Wybierz most drogowy
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Wybór mostu - kliknij na wybranym moście, aby go zbudować
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Wybór mostu - kliknij na wybrany most, aby go zbudować
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
 STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
@@ -3405,7 +3405,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Rozszerz
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Zwiększ trochę rozmiar wszystkich miast
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nazwa miasta:
-STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Wprowadź nazwę miasta
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Wpisz nazwę miasta
 STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Kliknij by wprowadzić nazwę miasta
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Losowa nazwa
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Stwórz nową losową nazwę
@@ -3676,7 +3676,7 @@ STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Czy na 
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (folder)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (folder nadrzędny)
 
-STR_SAVELOAD_OSKTITLE                                           :{BLACK}Wprowadź nazwę dla zapisywanej gry
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Wpisz nazwę dla zapisywanej gry
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Tworzenie świata
@@ -3862,7 +3862,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{G=n}{RED}Nieko
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Zapis schematu
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista dostępnych schematów. Wybierz jeden z nich, aby wykonać zapis z taką nazwą
-STR_SAVE_PRESET_TITLE                                           :{BLACK}Wprowadź nazwę schematu
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Wpisz nazwę schematu
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Aktualna nazwa dla zapisywanego schematu
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Anuluj
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Nie wprowadzaj zmian
@@ -4092,7 +4092,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Brak -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu, aby wyśrodkować widok na przedsiębiorstwie/mieście/polu. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na cel, aby wyśrodkować widok główny na przedsiębiorstwie/mieście/polu. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pytanie
@@ -4389,10 +4389,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} samolot{P "" y ów}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Pociągi - klik na pojeździe aby uzyskać informacje
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Pojazdy drogowe - klik na pojeździe po więcej informacji
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Statki - kliknij aby uzyskać informacje o statku
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Samolot - klik na samolocie aby uzyskać informacje
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Pociągi - kliknij na pociąg, aby uzyskać informacje. Przytrzymaj Ctrl+Shift, aby wyświetlić typ ładunku
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Pojazdy drogowe - kliknij na pojazd, aby uzyskać informacje. Przytrzymaj Ctrl+Shift, aby wyświetlić typ ładunku
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Statki - kliknij na statek, aby uzyskać informacje. Przytrzymaj Ctrl+Shift, aby wyświetlić typ ładunku
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Samolot - kliknij na samolot, aby uzyskać informacje. Przytrzymaj Ctrl+Shift, aby wyświetlić typ ładunku
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostępne lokomotywy
@@ -4631,7 +4631,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonuj s
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Kup kopię pociągu wraz ze wszystkimi wagonami. Kliknij na ten przycisk, a następnie na pociąg wewnątrz lub na zewnątrz warsztatów. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Kup kopię pojazdu drogowego. Kliknij na ten przycisk, a następnie na pojazd wewnątrz lub na zewnątrz zajezdni. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Kup kopię statku. Kliknij na ten przycisk, a następnie na statek wewnątrz lub na zewnątrz stoczni. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Kup kopię samolotu. Kliknij na ten przycisk, a następnie na samolot wewnątrz lub na zewnątrz hangaru. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Kup kopię samolotu. Kliknij ten przycisk, a następnie na samolot wewnątrz lub na zewnątrz hangaru. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Wyśrodkuj widok główny na lokalizacji warsztatów. Użyj Ctrl, aby otworzyć nowy podgląd na ich lokalizację
@@ -4941,7 +4941,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Rozkład
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Otwórz widok rozkładu jazdy
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista poleceń - kliknij na poleceniu, aby zaznaczyć. Ctrl+klik przenosi do stacji docelowej
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista poleceń - kliknij na polecenie, aby je zaznaczyć. Użyj Ctrl, aby przenieść się do miejsca docelowego
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
@@ -5024,7 +5024,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Usuń
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Usuń podświetlone polecenie
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Usuń wszystkie polecenia
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Przestań dzielić
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Przestań współdzielić listę poleceń. Ctrl+klik dodatkowo usuwa wszystkie polecenia tego pojazdu
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Przestań współdzielić listę poleceń. Użyj Ctrl, aby dodatkowo usunąć wszystkie polecenia tego pojazdu
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idź do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idź do najbliższego serwisu
@@ -5113,7 +5113,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Polecenia
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Przełącz do okna poleceń
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rozkład jazdy - kliknij na poleceniu aby je zaznaczyć
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rozkład jazdy - kliknij na polecenie, aby je zaznaczyć
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nie podróżuje
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Podróż (automatycznie; zaplanowana przez następne ręczne polecenie)
@@ -5201,12 +5201,12 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Game Scr
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Sprawdź log tego Game Script. Użyj Ctrl, aby otworzyć w nowym oknie
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz pobrać kilka SI z przeglądarki „Dodatków Online”
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jeden z uruchomionych skryptów przestał działać. Prosimy o zgłoszenie tego autorowi skryptu dołączając zrzut ekranu okna debugowania SI / GameScript
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jeden z uruchomionych skryptów przestał działać. Prosimy o zgłoszenie tego autorowi skryptu dołączając zrzut obrazu okna debugowania SI / GameScript
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania SI / Game Script jest dostępne tylko dla serwera
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Ustawienia SI
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Ustawienia Game Script
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Ustawienia Skryptu
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Game Script, który zostanie załadowany podczas kolejnej gry
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}SI, które zostaną załadowane podczas kolejnej gry
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ludzki gracz
@@ -5246,13 +5246,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Wybierz 
 STR_AI_LIST_CANCEL                                              :{BLACK}Anuluj
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nie zmieniaj skryptu
 
-STR_SCREENSHOT_CAPTION                                          :{WHITE}Zrób zrzut ekranu
-STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalny zrzut ekranu
-STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Zrzut ekranu z maksymalnym przybliżeniem
-STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Zrzut ekranu z domyślnym przybliżeniem
-STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Zrzut ekranu całej mapy
-STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Zrzut ekranu mapy wysokościowej
-STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Zrzut ekranu minimapy
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Zrób zrzut obrazu
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalny zrzut obrazu
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Zrzut obrazu z maksymalnym przybliżeniem
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Zrzut obrazu z domyślnym przybliżeniem
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Zrzut obrazu całej mapy
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Zrzut obrazu mapy wysokości
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Zrzut obrazu minimapy
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametry
@@ -5347,12 +5347,12 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Nie zal
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Znaleziono tylko podstawowy schemat dźwiękowy. Jeśli chcesz mieć pełny dźwięk, zainstaluj inny schemat dźwiękowy używając menadżera pobierania
 
 # Screenshot related messages
-STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Ogromny zrzut ekranu
-STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Zrzut ekranu będzie miał rozdzielczość {COMMA} x {COMMA} pikseli. Zrzut ekranu może zająć chwilę. Kontynuować?
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Ogromny zrzut obrazu
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Zrzut obrazu będzie miał rozdzielczość {COMMA} x {COMMA} pikseli. Wykonanie go może potrwać dłuższą chwilę. Czy chcesz kontynuować?
 
 STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa wysokości pomyślnie zapisana jako „{STRING}”. Najwyższy szczyt wynosi {NUM}
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Zrzut ekranu zapisany na dysk z powodzeniem „{STRING}”
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Błąd zrzutu ekranu!
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Zrzut obrazu został pomyślnie zapisany jako „{STRING}”
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Błąd zrzutu obrazu!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Wiadomość
