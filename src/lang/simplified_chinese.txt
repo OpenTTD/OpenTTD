@@ -1548,7 +1548,7 @@ STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :在载具列表
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :启用后将会在载具列表上方显示载具的可运载货物
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :景观：{STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :此设置决定基本的游戏场景、有什么货物可供运输，以及城镇发展的所需条件。然而，NewGRF 及游戏脚本可以比此设置更加细致地设置游戏场景
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :此设置决定基本的游戏场景、可供运输的货物种类，以及城镇发展的所需条件。然而，NewGRF 及游戏脚本可以比此设置更加细致地设置游戏场景
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :地形算法：{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :使用原始算法时，系统会依赖基础图形组去生成固定的地形。新算法 TerraGenesis 是一个基于柏林噪声的地形生成程序，支持较为细致的地形设置
@@ -2211,7 +2211,7 @@ STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}显示�
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}退出 OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}当前选定的基础图形组缺少 {NUM} 个贴图。请检查基础图形组有无更新。
-STR_INTRO_TRANSLATION                                           :{BLACK}简体中文翻译缺失了 {NUM} 条翻译。请注册成为翻译人员以帮助开发 OpenTTD。{}详见 readme.txt。
+STR_INTRO_TRANSLATION                                           :{BLACK}简体中文翻译缺失了 {NUM} 条字符串。请注册成为翻译人员以帮助开发 OpenTTD。{}详见 readme.txt。
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}退出
@@ -3580,7 +3580,7 @@ STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}加入�
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}已为缺失的文件载入兼容的 GRF
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}缺失的 GRF 文件已经被禁用
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}无法找到 GRF 文件
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消暂停可能造成错误。请不要把接下来可能发生的错误当做 Bug。{}继续么？
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消暂停可能造成 OpenTTD 游戏错误，请不要将向开发人员报告接下来可能出现的错误情形。{}确定要取消暂停吗？
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :空
@@ -4009,10 +4009,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} 架飞机
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}列车 - 点击可以查看详细信息
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}汽车 - 单击载具查看详细信息
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船只列表 - 点击可以查看详细信息
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飞机 - 点击可以查看详细信息
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}列车 - 点击查看详细信息。同时按住 <Ctrl> 与 <Shift> 键以显示货物种类
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}汽车 - 点击查看详细信息。同时按住 <Ctrl> 与 <Shift> 键以显示货物种类
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船只 - 点击查看详细信息。同时按住 <Ctrl> 与 <Shift> 键以显示货物种类
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飞机 - 点击查看详细信息。同时按住 <Ctrl> 与 <Shift> 键以显示货物种类
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :可用的列车
@@ -4064,7 +4064,7 @@ STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}改变�
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}点击以停止本组自动更新功能的使用。按下 CTRL 并点击来同样应用于子组
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}删除分组
-STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}确定要删除这个分组及其下级分组么？
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}你确定要删除这个分组及其子分组吗？
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :添加共享计划的载具
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有载具

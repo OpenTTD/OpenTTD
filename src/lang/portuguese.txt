@@ -2379,7 +2379,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Data de 
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Tempo de jogo
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Tempo jogado enquanto{}o jogo não esteve em pausa
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Idioma, versão do servidor, etc.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Compatibilidade do servidor e informação de autenticação
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Clique num jogo da lista para o selecionar
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}O servidor em que entraste na última vez:
@@ -4010,10 +4010,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave{P "" s}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Comboios - clique num comboio para informações
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Veículos rodoviários - clique num veículo para informações
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navios - clique num navio para informações
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronaves - clique numa aeronave para informações
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Comboios - clique num comboio para informações. Pressione Ctrl+Shift para sobrepor o tipo de carga
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Veículos rodoviários - clique num veículo para informações. Pressione Ctrl+Shift para sobrepor o tipo de carga
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navios - clique num navio para informações. Pressione Ctrl+Shift para sobrepor o tipo de carga
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronaves - clique numa aeronave para informações. Pressione Ctrl+Shift para sobrepor o tipo de carga
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Comboios Disponíveis

@@ -868,7 +868,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Stawki płatno�
 # Company league menu
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Ranking firm
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Szczegóły oceny wydajności
-STR_GRAPH_MENU_HIGHSCORE                                        :Tabela wyników
+STR_GRAPH_MENU_HIGHSCORE                                        :Tabela najwyższych wyników
 
 # Industry menu
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Spis przedsiębiorstw
@@ -2555,7 +2555,7 @@ STR_INTRO_NEW_GAME                                              :{BLACK}Nowa Gra
 STR_INTRO_LOAD_GAME                                             :{BLACK}Wczytaj Grę
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Scenariusze
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Mapy Wysokości
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Edytor scenariuszy
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Edytor Scenariuszy
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Gra Wieloosobowa
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcje Gry
@@ -2565,7 +2565,7 @@ STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ustawien
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ustawienia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pobierz Dodatki
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Ustawienia SI
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Ustawienia Game Script
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Ustawienia Skryptu
 STR_INTRO_QUIT                                                  :{BLACK}Wyjście
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Rozpocznij nową rozgrywkę. Użyj Ctrl, aby pominąć konfigurowanie mapy
@@ -2590,7 +2590,7 @@ STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Otwórz 
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Otwórz ustawienia Game Script
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Wyjdź z „OpenTTD”
 
-STR_INTRO_BASESET                                               :{BLACK}Aktualnie używany podstawowy zestaw graficzny nie posiada {NUM} wymagan{P ego ych ych} sprite{P 'u 'ów 'ów}. Proszę poszukać aktualizacji dla zestawu podstawowego.
+STR_INTRO_BASESET                                               :{BLACK}W aktualnie wybranym podstawowym zestawie grafik brakuje {NUM} sprite{P 'a 'ów 'ów}. Sprawdź dostępność aktualizacji dla tego zestawu.
 STR_INTRO_TRANSLATION                                           :{BLACK}Tej wersji językowej brakuje jeszcze {NUM} wpis{P "" y ów}. Możesz pomóc ulepszyć nam OpenTTD, rejestrując się jako tłumacz. Szczegóły znajdziesz w pliku „readme”.
 
 # Quit window
@@ -2792,7 +2792,7 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Znajdź 
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Przeszukaj LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Znajdź serwery w sieci lokalnej
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Zapisz serwer
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaje serwer do listy. Może to być adres serwera lub kod zaproszenia
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaj serwer do listy. Może to być adres serwera lub kod zaproszenia
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Uruchom serwer
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Uruchom własny serwer
 
@@ -3647,11 +3647,11 @@ STR_FRAMETIME_CAPTION_AI                                        :SI {NUM} {STRIN
 
 
 # Save/load game/scenario
-STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Zapisz grę
-STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Wczytaj grę
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Zapisz Grę
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Wczytaj Grę
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Zapisz scenariusz
-STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Wczytaj scenariusz
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Wczytaj mapę wysokości
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Wczytaj Scenariusz
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Wczytaj Mapę Wysokości
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Zapisz mapę wysokości
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Wczytaj Dane o Miastach
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknij tutaj, aby przejść do domyślnego katalogu zapisów
@@ -3679,7 +3679,7 @@ STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (folde
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Wpisz nazwę dla zapisywanej gry
 
 # World generation
-STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Tworzenie świata
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Tworzenie Świata
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Rozmiar mapy:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Wybierz rozmiar mapy w kwadratach. Liczba dostępnych kwadratów będzie nieco mniejsza
 STR_MAPGEN_BY                                                   :{BLACK}*
@@ -3839,7 +3839,7 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Zmień p
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Zastosuj zmiany
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Znajdź brakujące dodatki online
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Sprawdź czy zagubiony dodatek może być znaleziony online
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Sprawdź, czy brakujący dodatek można znaleźć online
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nazwa pliku: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}Identyfikator GRF: {SILVER}{STRING}
@@ -5213,7 +5213,7 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :Ludzki gracz
 STR_AI_CONFIG_RANDOM_AI                                         :Losowe SI
 STR_AI_CONFIG_NONE                                              :(brak)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maksymalna liczba przeciwników: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maksymalna liczba rywali: {ORANGE}{COMMA}
 STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Odstęp czasowy pomiędzy uruchamianiem rywali: {ORANGE}{COMMA} minut{P a y ""}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Przesuń w górę
@@ -5234,7 +5234,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigur
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Dostępne {STRING}
 STR_AI_LIST_CAPTION_AI                                          :SI
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Game Scripty
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skrypty
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Kliknij, aby wybrać skrypt
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
