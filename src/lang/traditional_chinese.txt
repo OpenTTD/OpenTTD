@@ -4009,10 +4009,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - 飛機 {COMMA} 架
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}列車 - 點選列車檢視資訊。同時按住 <Ctrl> 及 <Shift> 鍵可在列車上顯示貨物種類
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}車輛 - 點選車輛檢視詳細資料。同時按住 <Ctrl> 及 <Shift> 鍵可在車輛上顯示貨物種類
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船舶 - 點選船舶顯示詳細資料。同時按住 <Ctrl> 及 <Shift> 鍵可在船舶上顯示貨物種類
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飛機 - 點選飛機顯示詳細資料。同時按住 <Ctrl> 及 <Shift> 鍵可在飛機上顯示貨物種類
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}列車 - 點選列車檢視詳細資訊。同時按住 <Ctrl> 及 <Shift> 鍵可在列車上顯示貨物種類
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}車輛 - 點選車輛檢視詳細資訊。同時按住 <Ctrl> 及 <Shift> 鍵可在車輛上顯示貨物種類
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船舶 - 點選船舶檢視詳細資訊。同時按住 <Ctrl> 及 <Shift> 鍵可在船舶上顯示貨物種類
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飛機 - 點選飛機檢視詳細資訊。同時按住 <Ctrl> 及 <Shift> 鍵可在飛機上顯示貨物種類
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :可用列車

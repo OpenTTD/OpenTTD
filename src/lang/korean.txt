@@ -2379,7 +2379,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}현재 �
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}시간 {NUM}분
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}플레이 시간
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}일시 정지한 시간을 제외하고{}게임을 플레이한 시간입니다
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}언어, 서버 버전 등
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}서버 호환성 및 인증 정보
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}선택하려면 목록에서 게임을 클릭하세요
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}최근에 접속한 서버:
@@ -2882,7 +2882,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :실리콘 원�
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}도로 건설
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}전찻길 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}도로를 짓습니다. CTRL +클릭면 도로 일부분을 제거할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}도로를 짓습니다. CTRL +클릭하면 도로 일부분을 제거할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}전차 선로를 짓습니다. CTRL+클릭하면 전찻길 일부분을 제거할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}자동건설 모드로 도로를 짓습니다. CTRL 키를 누르고 있으면 건설/제거 모드를 바꿀 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}자동건설 모드로 전차 선로를 짓습니다. CTRL+클릭하면 전찻길 일부분을 제거할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
@@ -4010,10 +4010,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA}대의 항공기
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}열차 - 열차의 정보를 보려면 클릭하세요
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}차량 - 차량의 정보를 보려면 클릭하세요
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}열차 - 열차의 정보를 보려면 클릭하세요. CTRL+SHIFT를 누른 채로 사용하면 화물 종류를 위에 표시합니다
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}차량 - 차량의 정보를 보려면 클릭하세요. CTRL+SHIFT를 누른 채로 사용하면 화물 종류를 위에 표시합니다
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요. CTRL+SHIFT를 누른 채로 사용하면 화물 종류를 위에 표시합니다
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요. CTRL+SHIFT를 누른 채로 사용하면 화물 종류를 위에 표시합니다
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :사용 가능한 열차
