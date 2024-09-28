@@ -2378,7 +2378,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Huidige 
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}u {NUM}m
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Speeltijd
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Tijd gespeeld terwijl{}het spel niet was gepauzeerd
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Taal, serverversie, etc.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Info over servercompatibiliteit en verificatie
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik op een spel uit de lijst om dit te selecteren
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}De server waarmee je het laatste verbonden was:
@@ -4009,10 +4009,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Vliegtuig{P "" en}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Treinen - klik op een trein voor informatie
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Wegvoertuigen - klik op een wegvoertuig voor informatie
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schepen - klik op een schip voor informatie
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Vliegtuig - klik op een vliegtuig voor informatie
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Treinen - klik op een trein voor informatie. Ctrl+Shift voor vrachttype weergeven
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Wegvoertuigen - klik op een wegvoertuig voor informatie. Ctrl+Shift voor vrachttype weergeven
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schepen - klik op een schip voor informatie. Ctrl+Shift voor vrachttype weergeven
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Vliegtuig - klik op een vliegtuig voor informatie. Ctrl+Shift voor vrachttype weergeven
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Beschikbare spoorvoertuigen
