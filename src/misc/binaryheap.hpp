@@ -53,7 +53,8 @@ template <class T>
 class CBinaryHeapT {
 private:
 	size_t items = 0; ///< Number of valid items in the heap
-	std::vector<T *> data; ///< The pointer to the heap item pointers
+	size_t counter = 0; ///< Counter to maintain insertion order
+	std::vector<std::pair<T *, size_t>> data;  ///< The pointer to the heap item pointers
 
 public:
 	/**
@@ -76,7 +77,7 @@ protected:
 	 * @param item The proposed item for filling the gap
 	 * @return The (gap)position where the item fits
 	 */
-	inline size_t HeapifyDown(size_t gap, T *item)
+	inline size_t HeapifyDown(size_t gap, std::pair<T *, size_t> item)
 	{
 		assert(gap != 0);
 
@@ -86,11 +87,11 @@ protected:
 		/* while children are valid */
 		while (child <= this->items) {
 			/* choose the smaller child */
-			if (child < this->items && *this->data[child + 1] < *this->data[child]) {
+			if (child < this->items && std::tie(*this->data[child + 1].first, this->data[child + 1].second) < std::tie(*this->data[child].first, this->data[child].second)) {
 				child++;
 			}
 			/* is it smaller than our parent? */
-			if (!(*this->data[child] < *item)) {
+			if (std::tie(*this->data[child].first, this->data[child].second) >= std::tie(*item.first, item.second)) {
 				/* the smaller child is still bigger or same as parent => we are done */
 				break;
 			}
@@ -112,7 +113,7 @@ protected:
 	 * @param item The proposed item for filling the gap
 	 * @return The (gap)position where the item fits
 	 */
-	inline size_t HeapifyUp(size_t gap, T *item)
+	inline size_t HeapifyUp(size_t gap, std::pair<T *, size_t> item)
 	{
 		assert(gap != 0);
 
@@ -121,7 +122,7 @@ protected:
 		while (gap > 1) {
 			/* compare [gap] with its parent */
 			parent = gap / 2;
-			if (!(*item < *this->data[parent])) {
+			if (std::tie(*item.first, item.second) >= std::tie(*this->data[parent].first, this->data[parent].second)) {
 				/* we don't need to continue upstairs */
 				break;
 			}
@@ -138,7 +139,7 @@ protected:
 		assert(this->items == this->data.size() - 1);
 		for (size_t child = 2; child <= this->items; child++) {
 			size_t parent = child / 2;
-			assert(!(*this->data[child] < *this->data[parent]));
+			assert(std::tie(*this->data[child].first, this->data[child].second) >= std::tie(*this->data[parent].first, this->data[parent].second));
 		}
 	}
 #endif
@@ -172,6 +173,12 @@ public:
 	inline T *Begin()
 	{
 		assert(!this->IsEmpty());
+		return this->data[1].first;
+	}
+
+	inline std::pair<T *, size_t> First()
+	{
+		assert(!this->IsEmpty());
 		return this->data[1];
 	}
 
@@ -183,6 +190,11 @@ public:
 	 * @return The last item
 	 */
 	inline T *End()
+	{
+		return this->data[1 + this->items].first;
+	}
+
+	inline std::pair<T *, size_t> Last()
 	{
 		return this->data[1 + this->items];
 	}
@@ -196,8 +208,8 @@ public:
 	{
 		/* Make place for new item. A gap is now at the end of the tree. */
 		this->data.emplace_back();
-		size_t gap = this->HeapifyUp(++items, new_item);
-		this->data[gap] = new_item;
+		size_t gap = this->HeapifyUp(++items, std::make_pair(new_item, counter++));
+		this->data[gap] = std::make_pair(new_item, counter - 1);
 		CHECK_CONSISTY();
 	}
 
@@ -211,18 +223,18 @@ public:
 	{
 		assert(!this->IsEmpty());
 
-		T *first = this->Begin();
+		auto first = this->First();
 
 		this->items--;
 		/* at index 1 we have a gap now */
-		T *last = this->End();
+		auto last = this->Last();
 		size_t gap = this->HeapifyDown(1, last);
 		/* move last item to the proper place */
 		if (!this->IsEmpty()) this->data[gap] = last;
 		this->data.pop_back();
 
 		CHECK_CONSISTY();
-		return first;
+		return first.first;
 	}
 
 	/**
@@ -237,7 +249,7 @@ public:
 			this->items--;
 			/* at position index we have a gap now */
 
-			T *last = this->End();
+			auto last = this->Last();
 			/* Fix binary tree up and downwards */
 			size_t gap = this->HeapifyUp(index, last);
 			gap = this->HeapifyDown(gap, last);
@@ -262,7 +274,7 @@ public:
 	 */
 	inline size_t FindIndex(const T &item) const
 	{
-		auto it = std::find(this->data.begin(), this->data.end(), &item);
+		auto it = std::find_if(this->data.begin(), this->data.end(), [&](std::pair<T *, size_t> elem) { return elem.first == &item; });
 		return it == this->data.end() ? 0 : std::distance(this->data.begin(), it);
 	}
 
