@@ -2379,7 +2379,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Data act
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}{NBSP}h{NBSP}{NUM}{NBSP}m
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Temps de joc
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Temps de joc{}sense contar pauses
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Idioma, versió de servidor, etc.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Compatibilitat amb el servidor i informació d'autenticació
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Clica en una partida de la llista per triar-la
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}El servidor en què vas entrar el darrer cop:
@@ -4010,10 +4010,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} aeronau{P "" s}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trens - clica al tren per més informació
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Automòbils - clica en un vehicle per més informació
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Vaixells - clica en un vaixell per més informació
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Avió - clica sobre l'avió per més informació
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trens - Feu clic en un vehicle per a obtenir més informació. Amb Ctrl+Maj, es mostrarà el tipus de càrrega.
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Automòbils - Feu clic en un vehicle per a obtenir més informació. Amb Ctrl+Maj, es mostrarà el tipus de càrrega.
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Vaixells - Feu clic en un vehicle per a obtenir més informació. Amb Ctrl+Maj, es mostrarà el tipus de càrrega.
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronaus - Feu clic en un vehicle per a obtenir més informació. Amb Ctrl+Maj, es mostrarà el tipus de càrrega.
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trens disponibles
