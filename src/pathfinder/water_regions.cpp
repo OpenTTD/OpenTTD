@@ -222,14 +222,14 @@ public:
 std::vector<WaterRegionData> _water_region_data;
 std::vector<bool> _is_water_region_valid;
 
-TileIndex GetTileIndexFromLocalCoordinate(int region_x, int region_y, int local_x, int local_y)
+static TileIndex GetTileIndexFromLocalCoordinate(int region_x, int region_y, int local_x, int local_y)
 {
 	assert(local_x >= 0 && local_x < WATER_REGION_EDGE_LENGTH);
 	assert(local_y >= 0 && local_y < WATER_REGION_EDGE_LENGTH);
 	return TileXY(WATER_REGION_EDGE_LENGTH * region_x + local_x, WATER_REGION_EDGE_LENGTH * region_y + local_y);
 }
 
-TileIndex GetEdgeTileCoordinate(int region_x, int region_y, DiagDirection side, int x_or_y)
+static TileIndex GetEdgeTileCoordinate(int region_x, int region_y, DiagDirection side, int x_or_y)
 {
 	assert(x_or_y >= 0 && x_or_y < WATER_REGION_EDGE_LENGTH);
 	switch (side) {
@@ -241,7 +241,7 @@ TileIndex GetEdgeTileCoordinate(int region_x, int region_y, DiagDirection side, 
 	}
 }
 
-WaterRegion GetUpdatedWaterRegion(uint16_t region_x, uint16_t region_y)
+static WaterRegion GetUpdatedWaterRegion(uint16_t region_x, uint16_t region_y)
 {
 	const int index = GetWaterRegionIndex(region_x, region_y);
 	WaterRegion water_region(region_x, region_y, _water_region_data[index]);
@@ -252,7 +252,7 @@ WaterRegion GetUpdatedWaterRegion(uint16_t region_x, uint16_t region_y)
 	return water_region;
 }
 
-WaterRegion GetUpdatedWaterRegion(TileIndex tile)
+static WaterRegion GetUpdatedWaterRegion(TileIndex tile)
 {
 	return GetUpdatedWaterRegion(GetWaterRegionX(tile), GetWaterRegionY(tile));
 }
@@ -261,7 +261,7 @@ WaterRegion GetUpdatedWaterRegion(TileIndex tile)
  * Returns the index of the water region.
  * @param water_region The water region to return the index for.
  */
-TWaterRegionIndex GetWaterRegionIndex(const WaterRegionDesc &water_region)
+static TWaterRegionIndex GetWaterRegionIndex(const WaterRegionDesc &water_region)
 {
 	return GetWaterRegionIndex(water_region.x, water_region.y);
 }
