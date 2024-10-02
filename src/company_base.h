@@ -195,7 +195,7 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 */
 inline uint32_t GetMaxLoanFromPercentage()
 {
- 	return ((_settings_game.difficulty.max_loan_percentage / 100) * 300000) * GetCurrency().rate; 
+ 	return ((_settings_game.difficulty.max_loan_percentage / 100) * (300000 * GetCurrency().rate)); 
 }
 
 
