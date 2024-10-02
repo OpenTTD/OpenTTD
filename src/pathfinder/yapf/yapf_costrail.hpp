@@ -12,6 +12,7 @@
 
 
 #include "../../pbs.h"
+#include "../../vehiclelist.h"
 
 template <class Types>
 class CYapfCostRailT : public CYapfCostBase {
@@ -395,6 +396,18 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			} else if (IsRailDepotTile(cur.tile)) {
 				/* We will end in this pass (depot is possible target) */
 				end_segment_reason |= ESRB_DEPOT;
+				/* Add a penalty for each non-stopped train in the depot.
+				 * The penalty is capped at 8 trains. */
+				VehicleList vl;
+				BuildDepotVehicleList(VEH_TRAIN, cur.tile, &vl, nullptr, false);
+				int count = 0;
+				for (auto v : vl) {
+					if (!(v->vehstatus & VS_STOPPED)) {
+						count++;
+						if (count == 8) break;
+					}
+				}
+				segment_cost += Yapf().PfGetSettings().rail_pbs_cross_penalty * count;
 
 			} else if (cur.tile_type == MP_STATION && IsRailWaypoint(cur.tile)) {
 				if (v->current_order.IsType(OT_GOTO_WAYPOINT) &&
