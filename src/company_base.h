@@ -17,6 +17,7 @@
 #include "timer/timer_game_economy.h"
 #include "settings_type.h"
 #include "group.h"
+#include "currency.h"
 
 static const Money COMPANY_MAX_LOAN_DEFAULT = INT64_MIN;
 
@@ -188,6 +189,15 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 
 	static void PostDestructor(size_t index);
 };
+
+/**
+* Function to get the max loan from the saved percentage in the settings (inline makes it avoid many unwanted errors)
+*/
+inline uint32_t GetMaxLoanFromPercentage()
+{
+ 	return ((_settings_game.difficulty.max_loan_percentage / 100) * 300000) * GetCurrency().rate; 
+}
+
 
 Money CalculateCompanyValue(const Company *c, bool including_loan = true);
 Money CalculateHostileTakeoverValue(const Company *c);
