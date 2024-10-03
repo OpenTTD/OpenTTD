@@ -4327,7 +4327,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Choisir 
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Choisir le nouveau type de véhicule devant remplacer celui sélectionné à gauche
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Démarrer le remplacement
-STR_REPLACE_VEHICLES_NOW                                        :Rempacer maintenant tous les véhicules
+STR_REPLACE_VEHICLES_NOW                                        :Remplacer maintenant tous les véhicules
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Ne remplacer que les vieux véhicules
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Appuyer sur ce bouton pour commencer le remplacement du type de véhicule sélectionné à gauche par celui sélectionné à droite
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Pas en cours de remplacement

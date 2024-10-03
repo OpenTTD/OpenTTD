@@ -2380,7 +2380,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Gjeldend
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}t {NUM}m
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Spilletid
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Tid spilt mens{}spillet ikke var pauset
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Språk, tjenerversjon, osv.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Kompatibilitet og autentiseringsinformasjon
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikk på et spill i listen for å velge det
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Tjeneren du koblet til forrige gang:
@@ -3021,6 +3021,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tilfeldi
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grunnlegg en by på et tilfeldig sted
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mange tilfeldige byer
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dekk kartet med tilfeldig plasserte byer
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Last fra fil
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Importer bydata fra JSON-fil
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Vis alle byer
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}La alle byer vokse litt
 
@@ -3273,6 +3275,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Lagre sc
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Last inn scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Last inn høydekart
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Lagre høydekart
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Last inn bydata
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikk her for å komme til standardmappen for lagring og innlasting
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ledig
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste over disker, mapper og lagrede spill
@@ -3283,7 +3286,8 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Lagre
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Lagre gjeldende spill ved å bruke navnet som er valgt
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Last inn
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Last inn det valgte spillet
-STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Last inn det valgte høydekartet
+STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Last inn valgte høydekart
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Last inn valgte bydata
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spilldetaljer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen informasjon tilgjengelig.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3417,7 +3421,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kjører 
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kjører skript
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Gjør klart spillet
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Lasting av data om byen feilet
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Feilformatert JSON-fil
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} data er feilformatert
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} feilformaterte koordinater, må være mellom 0 og 1 proporsjonalt med største høyde i høydekartet
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Kunne ikke finne plassering for å grunnlegge {NUM} by{P "" er}. Lagde {P "et " ""}skilt på de{P "n" ""} tiltenkte plassen{P "" "e"} i stedet
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Innstillinger for NewGRF
@@ -4002,10 +4011,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} luftfartøy
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Tog - klikk på tog for mer informasjon
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Kjøretøy - klikk på kjøretøy for informasjon
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skip - klikk på skip for mer informasjon
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Luftfartøy - klikk på luftfartøy for mer informasjon
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Tog - klikk på tog for mer informasjon. Hold Ctrl+Shift for å vise varetype
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Kjøretøy - klikk på kjøretøy for informasjon. Hold Ctrl+Shift for å vise varetype
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skip - klikk på skip for mer informasjon. Hold Ctrl+Shift for å vise varetype
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Luftfartøy - klikk på luftfartøy for mer informasjon. Hold Ctrl+Shift for å vise varetype
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tilgjengelige tog
