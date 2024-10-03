@@ -432,12 +432,12 @@ void PrintWaterRegionDebugInfo(TileIndex tile)
 
 /**
  * Tests the provided callback function on all tiles of the water patch of the region
- * and returns the first tile that passes the callback test.
+ * and returns true on the first tile that passes the callback test.
  * @param callback The test function that will be called for the water patch.
  * @param water_region_patch Water patch within the water region to test the callback.
- * @return the first tile which passed the callback test, or INVALID_TILE if the callback failed.
+ * @return true if it passes the callback test, or false if the callback failed.
  */
-TileIndex GetTileInWaterRegionPatch(const WaterRegionPatchDesc &water_region_patch, TestTileIndexCallBack &callback)
+bool TestTileInWaterRegionPatch(const WaterRegionPatchDesc &water_region_patch, TestTileIndexCallBack &callback)
 {
 	const WaterRegion region = GetUpdatedWaterRegion(water_region_patch.x, water_region_patch.y);
 
@@ -445,8 +445,67 @@ TileIndex GetTileInWaterRegionPatch(const WaterRegionPatchDesc &water_region_pat
 	for (const TileIndex tile : region) {
 		if (region.GetLabel(tile) != water_region_patch.label || !callback(tile)) continue;
 
-		return tile;
+		return true;
 	}
 
-	return INVALID_TILE;
+	return false;
+}
+
+/**
+ * Tests the provided callback function on all tiles of the current water patch of the region, collects the
+ * tiles which passed the callback and returns the tile closest to the edge from where the region is entered from.
+ * @param high_level_path A span containing at least current and parent water patches.
+ * @param callback The test function that will be called for each tile in the water patch.
+ * @return The tile closest to the edge from where it came from that passed the callback test, or INVALID_TILE if no tile passed.
+ */
+TileIndex FindClosestEnteringTile(const std::span<WaterRegionPatchDesc> high_level_path, TestTileIndexCallBack &callback)
+{
+	assert(high_level_path.size() > 1);
+
+	const WaterRegionPatchDesc &current_water_region_patch = high_level_path.back();
+	const WaterRegion current_region = GetUpdatedWaterRegion(current_water_region_patch.x, current_water_region_patch.y);
+
+	/* Check if the current region has a tile which passes the callback test. */
+	std::vector<TileIndex> tile_list;
+	for (const TileIndex tile : current_region) {
+		if (current_region.GetLabel(tile) != current_water_region_patch.label || !callback(tile)) continue;
+
+		/* We collect the tiles when we know which region we came from for further evaluation. */
+		tile_list.push_back(tile);
+	}
+
+	/* If there aren't any tiles that passed the callback, return with an invalid tile. */
+	if (tile_list.empty()) return INVALID_TILE;
+
+	/* If there's only one, just return it. */
+	if (tile_list.size() == 1) return tile_list.front();
+
+	const TileIndex top_tile = current_region.begin();
+	const TileIndex bot_tile = TileAddXY(top_tile, WATER_REGION_EDGE_LENGTH - 1, WATER_REGION_EDGE_LENGTH - 1);
+
+	/* Get the side from which the current region is entered from. */
+	const WaterRegionPatchDesc &parent_water_region_patch = high_level_path[high_level_path.size() - 2];
+	const WaterRegion parent_region = GetUpdatedWaterRegion(parent_water_region_patch.x, parent_water_region_patch.y);
+	const DiagDirection side = DiagdirBetweenTiles(top_tile, parent_region.begin());
+
+	/* Depending on the side, determine which corner tile to use to extract their x or y coordinates. */
+	const bool is_at_top = side == DIAGDIR_NE || side == DIAGDIR_NW;
+	const TileIndex edge_tile = is_at_top ? top_tile : bot_tile;
+	const bool is_axis_x = DiagDirToAxis(side) == AXIS_X;
+	const int x_or_y_edge = is_axis_x ? TileX(edge_tile) : TileY(edge_tile);
+
+	/* With more than one tile passing the callback, calculate the tile that is closest to the edge from whence it came. */
+	TileIndex best_tile = INVALID_TILE;
+	int best_dist = WATER_REGION_EDGE_LENGTH;
+	for (const TileIndex &tile : tile_list) {
+		const int x_or_y_tile = is_axis_x ? TileX(tile) : TileY(tile);
+		const int dist_to_edge = std::abs(x_or_y_tile - x_or_y_edge);
+		assert(dist_to_edge < WATER_REGION_EDGE_LENGTH);
+		if (dist_to_edge >= best_dist) continue;
+
+		best_dist = dist_to_edge;
+		best_tile = tile;
+	}
+
+	return best_tile;
 }

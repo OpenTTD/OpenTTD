@@ -155,7 +155,7 @@ public:
 	inline bool PfDetectDestination(Node &n)
 	{
 		if (this->any_ship_depot) {
-			return GetTileInWaterRegionPatch(n.key.water_region_patch, this->detect_ship_depot) != INVALID_TILE;
+			return TestTileInWaterRegionPatch(n.key.water_region_patch, this->detect_ship_depot);
 		}
 
 		return n.key == this->dest;

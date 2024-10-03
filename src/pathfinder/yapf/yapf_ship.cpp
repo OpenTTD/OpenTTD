@@ -100,9 +100,9 @@ public:
 		return tile == this->dest_tile && ((this->dest_trackdirs & TrackdirToTrackdirBits(trackdir)) != TRACKDIR_BIT_NONE);
 	}
 
-	inline TileIndex GetShipDepotDestination(const WaterRegionPatchDesc &water_region_patch)
+	inline TileIndex GetShipDepotDestination(const std::span<WaterRegionPatchDesc> high_level_path)
 	{
-		return GetTileInWaterRegionPatch(water_region_patch, this->detect_ship_depot);
+		return FindClosestEnteringTile(high_level_path, this->detect_ship_depot);
 	}
 
 	/**
@@ -268,7 +268,7 @@ public:
 
 			/* Return early when only searching for the closest depot tile. */
 			if (find_closest_depot) {
-				tile = is_intermediate_destination ? pf.GetShipDepotDestination(high_level_path.back()) : node->GetTile();
+				tile = is_intermediate_destination ? pf.GetShipDepotDestination(high_level_path) : node->GetTile();
 				return INVALID_TRACKDIR;
 			}
 
