@@ -156,7 +156,7 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 	} else {
 		uint height = force_reflow ? this->ReflowContent() : this->GetContentHeight();
 		this->vscroll->SetCount(ClampTo<uint16_t>(height));
-		this->hscroll->SetCount(this->max_length + WidgetDimensions::scaled.frametext.Horizontal());
+		this->hscroll->SetCount(this->max_length);
 	}
 
 	this->SetWidgetDisabledState(WID_TF_HSCROLLBAR, IsWidgetLowered(WID_TF_WRAPTEXT));
@@ -568,6 +568,9 @@ void TextfileWindow::AfterLoadMarkdown()
 	/* Draw content (now coordinates given to DrawString* are local to the new clipping region). */
 	fr = fr.Translate(-fr.left, -fr.top);
 	int line_height = GetCharacterHeight(FS_MONO);
+
+	if (!IsWidgetLowered(WID_TF_WRAPTEXT)) fr = ScrollRect(fr, *this->hscroll, 1);
+
 	int pos = this->vscroll->GetPosition();
 	int cap = this->vscroll->GetCapacity();
 
@@ -577,9 +580,9 @@ void TextfileWindow::AfterLoadMarkdown()
 
 		int y_offset = (line.top - pos) * line_height;
 		if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
-			DrawStringMultiLine(0, fr.right, y_offset, fr.bottom, line.text, line.colour, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawStringMultiLine(fr.left, fr.right, y_offset, fr.bottom, line.text, line.colour, SA_TOP | SA_LEFT, false, FS_MONO);
 		} else {
-			DrawString(-this->hscroll->GetPosition(), fr.right, y_offset, line.text, line.colour, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawString(fr.left, fr.right, y_offset, line.text, line.colour, SA_TOP | SA_LEFT, false, FS_MONO);
 		}
 	}
 }
