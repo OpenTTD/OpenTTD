@@ -454,6 +454,9 @@ void Aircraft::OnNewCalendarDay()
 void Aircraft::OnNewEconomyDay()
 {
 	if (!this->IsNormalAircraft()) return;
+
+	PerformanceAccumulator framerate(PFE_GL_AIRCRAFT);
+
 	EconomyAgeVehicle(this);
 
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);

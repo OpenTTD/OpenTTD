@@ -1722,6 +1722,9 @@ void RoadVehicle::OnNewCalendarDay()
 void RoadVehicle::OnNewEconomyDay()
 {
 	if (!this->IsFrontEngine()) return;
+
+	PerformanceAccumulator framerate(PFE_GL_ROADVEHS);
+
 	EconomyAgeVehicle(this);
 
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
