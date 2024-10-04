@@ -1712,8 +1712,7 @@ public:
 
 				AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
-				ir.left -= this->hscroll->GetPosition();
-				ir.right += this->hscroll->GetCapacity() - this->hscroll->GetPosition();
+				ir = ScrollRect(ir, *this->hscroll, 1);
 
 				if (this->industries.empty()) {
 					DrawString(ir, STR_INDUSTRY_DIRECTORY_NONE);

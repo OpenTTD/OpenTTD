@@ -910,7 +910,7 @@ struct ScriptDebugWindow : public Window {
 
 		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
-		fr.left -= this->hscroll->GetPosition();
+		fr = ScrollRect(fr, *this->hscroll, 1);
 
 		auto [first, last] = this->vscroll->GetVisibleRangeIterators(log);
 		for (auto it = first; it != last; ++it) {
