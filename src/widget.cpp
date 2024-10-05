@@ -2402,6 +2402,35 @@ void Scrollbar::SetCapacityFromWidget(Window *w, WidgetID widget, int padding)
 }
 
 /**
+ * Apply 'scroll' to a rect to be drawn in.
+ * @param r Rect to be 'scrolled'.
+ * @param sb The scrollbar affecting the scroll.
+ * @param resize_step Resize step of the widget/scrollbar (1 if the scrollbar is pixel-based.)
+ * @returns Scrolled rect.
+ */
+Rect ScrollRect(Rect r, const Scrollbar &sb, int resize_step)
+{
+	const int count = sb.GetCount() * resize_step;
+	const int position = sb.GetPosition() * resize_step;
+
+	if (sb.IsVertical()) {
+		r.top -= position;
+		r.bottom = r.top + count;
+	} else {
+		bool rtl = _current_text_dir == TD_RTL;
+		if (rtl) {
+			r.right += position;
+			r.left = r.right - count;
+		} else {
+			r.left -= position;
+			r.right = r.left + count;
+		}
+	}
+
+	return r;
+}
+
+/**
  * Scrollbar widget.
  * @param tp     Scrollbar type. (horizontal/vertical)
  * @param colour Colour of the scrollbar.
