@@ -3498,7 +3498,7 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}초기�
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}모든 매개 변숫값을 기본값으로 설정합니다
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :매개 변수 {NUM}번
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
-STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}매개 변수 번호: {ORANGE}{NUM}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}매개 변수 개수: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}NEWGRF 검사 - {STRING}

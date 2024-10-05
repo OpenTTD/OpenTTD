@@ -2382,7 +2382,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Šībrī
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Spēles laiks
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Spēles laiks, kamēr{} spēle netika apturēta
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Valoda, servera versija utt.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Informācija par servera saderību un autentifikāciju
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikšķināt sarakstā uz spēles, lai to izvēlētos
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Serveris, kuram jūs pievienojāties pēdējoreiz:
@@ -3427,7 +3427,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Sagatavo
 STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Pilsētas datu ielāde neizdevās
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON fails ir formatēts nepareizi
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} dati ir formatēti nepareizi
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} koordinātas ir formatētas nepareizi, tām jābūt 0..1 procentos no kopējā augstuma kartes izmēra
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} koordinātas ir formatētas nepareizi, tām jābūt no 0 līdz 1 kā proporcijai no kopējā augstuma kartes izmēra
 
 STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Netika atrasta piemērota vieta, kur novietot {NUM} pilsēt {P u as as}. Tā vietā kartē tiek novietotas atzīmes paredzētajās koordinātēs.
 
@@ -4020,10 +4020,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} lidaparāt{P s i u}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vilcieni - klikšķināt uz vilciena, lai uzzinātu vairāk
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Autotransporta līdzekļi - klikšķināt uz transportlīdzekļa, lai uzzinātu vairāk
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Kuģi - klikšķināt uz kuģa, lai uzzinātu vairāk
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lidaparāts - klikšķināt uz lidaparāta, lai uzzinātu vairāk
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vilcieni - klikšķināt uz vilciena, lai uzzinātu vairāk. Turiet nospiestu taustiņus Ctrl+Shift, pārvadājamās kravas attēlošanai
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Autotransporta līdzekļi - noklikšķiniet uz transportlīdzekļa, lai iegūtu informāciju. Turiet nospiestu taustiņus Ctrl+Shift, pārvadājamās kravas attēlošanai
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Kuģi - noklikšķiniet uz kuģa, lai iegūtu informāciju. Turiet nospiestu taustiņus Ctrl+Shift, pārvadājamās kravas attēlošanai
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lidaparāts - klikšķināt uz lidaparāta, lai uzzinātu vairāk. Turiet nospiestu taustiņus Ctrl+Shift, pārvadājamās kravas attēlošanai
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Pieejamie vilcieni
