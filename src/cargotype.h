@@ -57,6 +57,11 @@ enum CargoClass : uint16_t {
 	CC_REFRIGERATED = 1 <<  7, ///< Refrigerated cargo (Food, Fruit)
 	CC_HAZARDOUS    = 1 <<  8, ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
 	CC_COVERED      = 1 <<  9, ///< Covered/Sheltered Freight (Transportation in Box Vans, Silo Wagons, etc.)
+	CC_OVERSIZED    = 1 << 10, ///< Oversized (stake/flatbed wagon)
+	CC_POWDERIZED   = 1 << 11, ///< Powderized, moist protected (powder/silo wagon)
+	CC_NOT_POURABLE = 1 << 12, ///< Not Pourable (open wagon, but not hopper wagon)
+	CC_POTABLE      = 1 << 13, ///< Potable / food / clean.
+	CC_NON_POTABLE  = 1 << 14, ///< Non-potable / non-food / dirty.
 	CC_SPECIAL      = 1 << 15, ///< Special bit used for livery refit tricks instead of normal cargoes.
 };
 
