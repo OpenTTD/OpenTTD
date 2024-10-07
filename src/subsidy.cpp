@@ -12,7 +12,7 @@
 #include "industry.h"
 #include "town.h"
 #include "news_func.h"
-#include "ai/ai.hpp"
+#include "script/script_trigger.hpp"
 #include "station_base.h"
 #include "strings_func.h"
 #include "window_func.h"
@@ -21,7 +21,6 @@
 #include "core/pool_func.hpp"
 #include "core/random_func.hpp"
 #include "core/container_func.hpp"
-#include "game/game.hpp"
 #include "command_func.h"
 #include "string_func.h"
 #include "tile_cmd.h"
@@ -60,8 +59,7 @@ void Subsidy::AwardTo(CompanyID company)
 		reftype.first, this->src, reftype.second, this->dst,
 		company_name
 	);
-	AI::BroadcastNewEvent(new ScriptEventSubsidyAwarded(this->index));
-	Game::NewEvent(new ScriptEventSubsidyAwarded(this->index));
+	ScriptTrigger::BroadcastNewEvent<ScriptEventSubsidyAwarded>(this->index);
 
 	InvalidateWindowData(WC_SUBSIDIES_LIST, 0);
 }
@@ -226,8 +224,7 @@ void CreateSubsidy(CargoID cid, SourceType src_type, SourceID src, SourceType ds
 	AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NT_SUBSIDIES, NF_NORMAL, reftype.first, s->src, reftype.second, s->dst);
 	SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
 	SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
-	AI::BroadcastNewEvent(new ScriptEventSubsidyOffer(s->index));
-	Game::NewEvent(new ScriptEventSubsidyOffer(s->index));
+	ScriptTrigger::BroadcastNewEvent<ScriptEventSubsidyOffer>(s->index);
 
 	InvalidateWindowData(WC_SUBSIDIES_LIST, 0);
 }
@@ -490,15 +487,13 @@ static IntervalTimer<TimerGameEconomy> _economy_subsidies_monthly({TimerGameEcon
 			if (!s->IsAwarded()) {
 				std::pair<NewsReferenceType, NewsReferenceType> reftype = SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::NewsWithdrawn);
 				AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NT_SUBSIDIES, NF_NORMAL, reftype.first, s->src, reftype.second, s->dst);
-				AI::BroadcastNewEvent(new ScriptEventSubsidyOfferExpired(s->index));
-				Game::NewEvent(new ScriptEventSubsidyOfferExpired(s->index));
+				ScriptTrigger::BroadcastNewEvent<ScriptEventSubsidyOfferExpired>(s->index);
 			} else {
 				if (s->awarded == _local_company) {
 					std::pair<NewsReferenceType, NewsReferenceType> reftype = SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::NewsWithdrawn);
 					AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NT_SUBSIDIES, NF_NORMAL, reftype.first, s->src, reftype.second, s->dst);
 				}
-				AI::BroadcastNewEvent(new ScriptEventSubsidyExpired(s->index));
-				Game::NewEvent(new ScriptEventSubsidyExpired(s->index));
+				ScriptTrigger::BroadcastNewEvent<ScriptEventSubsidyExpired>(s->index);
 			}
 			delete s;
 			modified = true;
