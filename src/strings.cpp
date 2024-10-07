@@ -323,6 +323,19 @@ std::string GetString(StringID string)
 }
 
 /**
+ * Resolve the given StringID and append in place into an existing std::string with all the associated
+ * DParam lookups and formatting.
+ * @param result The std::string to place the translated string.
+ * @param string The unique identifier of the translatable string.
+ */
+void AppendStringInPlace(std::string &result, StringID string)
+{
+	_global_string_params.PrepareForNextRun();
+	StringBuilder builder(result);
+	GetStringWithArgs(builder, string, _global_string_params);
+}
+
+/**
  * Get a parsed string with most special stringcodes replaced by the string parameters.
  * @param string The ID of the string to parse.
  * @param args   Arguments for the string.

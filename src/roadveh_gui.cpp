@@ -60,10 +60,10 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 
 				SetDParam(0, cid);
 				SetDParam(1, max_cargo[cid]);
-				capacity += GetString(STR_JUST_CARGO);
+				AppendStringInPlace(capacity, STR_JUST_CARGO);
 
 				if (subtype_text[cid] != STR_NULL) {
-					capacity += GetString(subtype_text[cid]);
+					AppendStringInPlace(capacity, subtype_text[cid]);
 				}
 
 				first = false;
