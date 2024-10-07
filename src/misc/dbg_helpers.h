@@ -156,7 +156,7 @@ struct DumpTarget {
 		std::string known_as;
 		if (FindKnownName(type_id, s, known_as)) {
 			/* We already know this one, no need to dump it. */
-			std::string known_as_str = std::string("known_as.") + name;
+			std::string known_as_str = std::string("known_as.") + known_as;
 			WriteValue(name, known_as_str);
 		} else {
 			/* Still unknown, dump it */
@@ -179,7 +179,7 @@ struct DumpTarget {
 		std::string known_as;
 		if (FindKnownName(type_id, s, known_as)) {
 			/* We already know this one, no need to dump it. */
-			std::string known_as_str = std::string("known_as.") + name;
+			std::string known_as_str = std::string("known_as.") + known_as;
 			WriteValue(name, known_as_str);
 		} else {
 			/* Still unknown, dump it */
