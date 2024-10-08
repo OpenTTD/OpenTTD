@@ -1215,17 +1215,6 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
 #define SLC_NULL(length, from, to) {{}, SLE_FILE_U8, length, from, to}
 
 /**
- * Empty space in every savegame version that was filled with a string.
- * @param length Number of strings in the empty space.
- * @param from   First savegame version that has the empty space.
- * @param to     Last savegame version that has the empty space.
- */
-#define SLC_NULL_STR(length, from, to) {{}, SLE_FILE_STRING, length, from, to}
-
-/** End marker of compat variables save or load. */
-#define SLC_END() {{}, 0, 0, SL_MIN_VERSION, SL_MIN_VERSION}
-
-/**
  * Checks whether the savegame is below \a major.\a minor.
  * @param major Major number of the version to check against.
  * @param minor Minor number of the version to check against. If \a minor is 0 or not specified, only the major number is checked.

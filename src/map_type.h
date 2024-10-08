@@ -39,18 +39,6 @@ static const uint MAX_MAP_SIZE_BITS = 12;                      ///< Maximal size
 static const uint MIN_MAP_SIZE      = 1U << MIN_MAP_SIZE_BITS; ///< Minimal map size = 64
 static const uint MAX_MAP_SIZE      = 1U << MAX_MAP_SIZE_BITS; ///< Maximal map size = 4096
 
-/**
- * Approximation of the length of a straight track, relative to a diagonal
- * track (ie the size of a tile side).
- *
- * \#defined instead of const so it can
- * stay integer. (no runtime float operations) Is this needed?
- * Watch out! There are _no_ brackets around here, to prevent intermediate
- * rounding! Be careful when using this!
- * This value should be sqrt(2)/2 ~ 0.7071
- */
-#define STRAIGHT_TRACK_LENGTH 7071/10000
-
 /** Argument for CmdLevelLand describing what to do. */
 enum LevelMode : uint8_t {
 	LM_LEVEL, ///< Level the land.

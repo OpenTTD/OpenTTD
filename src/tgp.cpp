@@ -187,8 +187,6 @@ static HeightMap _height_map = { {}, 0, 0, 0 };
 /** Conversion: Height to int */
 #define H2I(i) ((i) >> height_decimal_bits)
 
-/** Conversion: int to Amplitude */
-#define I2A(i) ((i) << amplitude_decimal_bits)
 /** Conversion: Amplitude to int */
 #define A2I(i) ((i) >> amplitude_decimal_bits)
 
