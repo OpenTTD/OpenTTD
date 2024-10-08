@@ -33,6 +33,7 @@
 #include "group_gui.h"
 #include "zoom_func.h"
 #include "news_cmd.h"
+#include "news_func.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
 #include "timer/timer_game_calendar.h"
@@ -890,9 +891,8 @@ CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceT
 	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
 
 	if (flags & DC_EXEC) {
-		NewsStringData *news = new NewsStringData(text);
-		SetDParamStr(0, news->string);
-		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NF_NORMAL, reftype1, reference, NR_NONE, UINT32_MAX, news);
+		SetDParamStr(0, text);
+		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NF_NORMAL, reftype1, reference, NR_NONE, UINT32_MAX);
 	}
 
 	return CommandCost();
