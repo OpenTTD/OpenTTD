@@ -450,28 +450,22 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
 		first_time = false;
 	}
 
+	int len_s1 = MultiByteToWideChar(CP_UTF8, 0, s1.data(), (int)s1.size(), nullptr, 0);
+	int len_s2 = MultiByteToWideChar(CP_UTF8, 0, s2.data(), (int)s2.size(), nullptr, 0);
+
+	std::wstring str_s1(len_s1, L'\0');
+	std::wstring str_s2(len_s2, L'\0');
+
+	if (len_s1 != 0) MultiByteToWideChar(CP_UTF8, 0, s1.data(), (int)s1.size(), str_s1.data(), len_s1);
+	if (len_s2 != 0) MultiByteToWideChar(CP_UTF8, 0, s2.data(), (int)s2.size(), str_s2.data(), len_s2);
+
+	/* CompareStringEx takes UTF-16 strings, even in ANSI-builds. */
 	if (_CompareStringEx != nullptr) {
-		/* CompareStringEx takes UTF-16 strings, even in ANSI-builds. */
-		int len_s1 = MultiByteToWideChar(CP_UTF8, 0, s1.data(), (int)s1.size(), nullptr, 0);
-		int len_s2 = MultiByteToWideChar(CP_UTF8, 0, s2.data(), (int)s2.size(), nullptr, 0);
-
-		if (len_s1 != 0 && len_s2 != 0) {
-			std::wstring str_s1(len_s1, L'\0'); // len includes terminating null
-			std::wstring str_s2(len_s2, L'\0');
-
-			MultiByteToWideChar(CP_UTF8, 0, s1.data(), (int)s1.size(), str_s1.data(), len_s1);
-			MultiByteToWideChar(CP_UTF8, 0, s2.data(), (int)s2.size(), str_s2.data(), len_s2);
-
-			int result = _CompareStringEx(_cur_iso_locale, LINGUISTIC_IGNORECASE | SORT_DIGITSASNUMBERS, str_s1.c_str(), -1, str_s2.c_str(), -1, nullptr, nullptr, 0);
-			if (result != 0) return result;
-		}
+		int result = _CompareStringEx(_cur_iso_locale, LINGUISTIC_IGNORECASE | SORT_DIGITSASNUMBERS, str_s1.c_str(), len_s1, str_s2.c_str(), len_s2, nullptr, nullptr, 0);
+		if (result != 0) return result;
 	}
 
-	wchar_t s1_buf[512], s2_buf[512];
-	convert_to_fs(s1, s1_buf);
-	convert_to_fs(s2, s2_buf);
-
-	return CompareString(MAKELCID(_current_language->winlangid, SORT_DEFAULT), NORM_IGNORECASE, s1_buf, -1, s2_buf, -1);
+	return CompareString(MAKELCID(_current_language->winlangid, SORT_DEFAULT), NORM_IGNORECASE, str_s1.c_str(), len_s1, str_s2.c_str(), len_s2);
 }
 
 /**
@@ -499,13 +493,13 @@ int Win32StringContains(const std::string_view str, const std::string_view value
 		int len_value = MultiByteToWideChar(CP_UTF8, 0, value.data(), (int)value.size(), nullptr, 0);
 
 		if (len_str != 0 && len_value != 0) {
-			std::wstring str_str(len_str, L'\0'); // len includes terminating null
+			std::wstring str_str(len_str, L'\0');
 			std::wstring str_value(len_value, L'\0');
 
 			MultiByteToWideChar(CP_UTF8, 0, str.data(), (int)str.size(), str_str.data(), len_str);
 			MultiByteToWideChar(CP_UTF8, 0, value.data(), (int)value.size(), str_value.data(), len_value);
 
-			return _FindNLSStringEx(_cur_iso_locale, FIND_FROMSTART | (case_insensitive ? LINGUISTIC_IGNORECASE : 0), str_str.data(), -1, str_value.data(), -1, nullptr, nullptr, nullptr, 0) >= 0 ? 1 : 0;
+			return _FindNLSStringEx(_cur_iso_locale, FIND_FROMSTART | (case_insensitive ? LINGUISTIC_IGNORECASE : 0), str_str.data(), len_str, str_value.data(), len_value, nullptr, nullptr, nullptr, 0) >= 0 ? 1 : 0;
 		}
 	}
 
