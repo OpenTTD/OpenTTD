@@ -2192,12 +2192,12 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileInd
 				AddTileNewsItem(STR_NEWS_NEW_TOWN_UNSPONSORED, NT_INDUSTRY_OPEN, tile);
 			} else {
 				SetDParam(0, _current_company);
-				NewsStringData *company_name = new NewsStringData(GetString(STR_COMPANY_NAME));
+				std::string company_name = GetString(STR_COMPANY_NAME);
 
-				SetDParamStr(0, company_name->string);
+				SetDParamStr(0, company_name);
 				SetDParam(1, t->index);
 
-				AddTileNewsItem(STR_NEWS_NEW_TOWN, NT_INDUSTRY_OPEN, tile, company_name);
+				AddTileNewsItem(STR_NEWS_NEW_TOWN, NT_INDUSTRY_OPEN, tile);
 			}
 			AI::BroadcastNewEvent(new ScriptEventTownFounded(t->index));
 			Game::NewEvent(new ScriptEventTownFounded(t->index));
@@ -3342,14 +3342,14 @@ static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlag flags)
 		t->road_build_months = 6;
 
 		SetDParam(0, _current_company);
-		NewsStringData *company_name = new NewsStringData(GetString(STR_COMPANY_NAME));
+		std::string company_name = GetString(STR_COMPANY_NAME);
 
 		SetDParam(0, t->index);
-		SetDParamStr(1, company_name->string);
+		SetDParamStr(1, company_name);
 
 		AddNewsItem(
 			TimerGameEconomy::UsingWallclockUnits() ? STR_NEWS_ROAD_REBUILDING_MINUTES : STR_NEWS_ROAD_REBUILDING_MONTHS,
-			NT_GENERAL, NF_NORMAL, NR_TOWN, t->index, NR_NONE, UINT32_MAX, company_name);
+			NT_GENERAL, NF_NORMAL, NR_TOWN, t->index, NR_NONE, UINT32_MAX);
 		AI::BroadcastNewEvent(new ScriptEventRoadReconstruction((ScriptCompany::CompanyID)(Owner)_current_company, t->index));
 		Game::NewEvent(new ScriptEventRoadReconstruction((ScriptCompany::CompanyID)(Owner)_current_company, t->index));
 	}

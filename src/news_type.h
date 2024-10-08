@@ -144,12 +144,6 @@ struct NewsItem {
 	NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data);
 };
 
-/** Container for a single string to be passed as NewsAllocatedData. */
-struct NewsStringData : NewsAllocatedData {
-	std::string string; ///< The string to retain.
-	NewsStringData(const std::string &str) : string(str) {}
-};
-
 /**
  * Data that needs to be stored for company news messages.
  * The problem with company news messages are the custom name

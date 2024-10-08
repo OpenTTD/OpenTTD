@@ -48,17 +48,16 @@ void Subsidy::AwardTo(CompanyID company)
 	this->remaining = _settings_game.difficulty.subsidy_duration * CalendarTime::MONTHS_IN_YEAR;
 
 	SetDParam(0, company);
-	NewsStringData *company_name = new NewsStringData(GetString(STR_COMPANY_NAME));
+	std::string company_name = GetString(STR_COMPANY_NAME);
 
 	/* Add a news item */
 	std::pair<NewsReferenceType, NewsReferenceType> reftype = SetupSubsidyDecodeParam(this, SubsidyDecodeParamType::NewsAwarded, 1);
 
-	SetDParamStr(0, company_name->string);
+	SetDParamStr(0, company_name);
 	AddNewsItem(
 		STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF + _settings_game.difficulty.subsidy_multiplier,
 		NT_SUBSIDIES, NF_NORMAL,
-		reftype.first, this->src, reftype.second, this->dst,
-		company_name
+		reftype.first, this->src, reftype.second, this->dst
 	);
 	AI::BroadcastNewEvent(new ScriptEventSubsidyAwarded(this->index));
 	Game::NewEvent(new ScriptEventSubsidyAwarded(this->index));

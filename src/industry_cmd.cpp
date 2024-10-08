@@ -2207,10 +2207,8 @@ CommandCost CmdIndustrySetProduction(DoCommandFlag flags, IndustryID ind_id, uin
 			}
 
 			/* Set parameters of news string */
-			NewsAllocatedData *data = nullptr;
 			if (str == STR_NEWS_CUSTOM_ITEM) {
-				NewsStringData *news = new NewsStringData(custom_news);
-				SetDParamStr(0, news->string);
+				SetDParamStr(0, custom_news);
 			} else if (str > STR_LAST_STRINGID) {
 				SetDParam(0, STR_TOWN_NAME);
 				SetDParam(1, ind->town->index);
@@ -2218,7 +2216,7 @@ CommandCost CmdIndustrySetProduction(DoCommandFlag flags, IndustryID ind_id, uin
 			} else {
 				SetDParam(0, ind->index);
 			}
-			AddIndustryNewsItem(str, nt, ind->index, data);
+			AddIndustryNewsItem(str, nt, ind->index);
 		}
 	}
 
