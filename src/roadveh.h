@@ -82,8 +82,37 @@ void RoadVehUpdateCache(RoadVehicle *v, bool same_length = false);
 void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
 struct RoadVehPathCache {
+	friend class SlVehicleRoadVeh;
+private:
 	std::deque<Trackdir> td;
 	std::deque<TileIndex> tile;
+
+public:
+	struct Item {
+		TileIndex tile;
+		Trackdir trackdir;
+	};
+
+	Item front() { return {this->tile.front(), this->td.front()}; }
+	Item back() { return {this->tile.back(), this->td.back()}; }
+
+	inline void push_front(Item item)
+	{
+		this->tile.push_front(item.tile);
+		this->td.push_front(item.trackdir);
+	}
+
+	inline void pop_front()
+	{
+		this->td.pop_front();
+		this->tile.pop_front();
+	}
+
+	inline void pop_back()
+	{
+		this->td.pop_back();
+		this->tile.pop_back();
+	}
 
 	inline bool empty() const { return this->td.empty(); }
 
