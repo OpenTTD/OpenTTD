@@ -252,8 +252,7 @@ public:
 
 	/**
 	 * Create the builder of an external buffer.
-	 * @param start The start location to write to.
-	 * @param last  The last location to write to.
+	 * @param string The string to write to.
 	 */
 	StringBuilder(std::string &string) : string(&string) {}
 
@@ -309,7 +308,6 @@ public:
 	/**
 	 * Remove the given amount of characters from the back of the string.
 	 * @param amount The amount of characters to remove.
-	 * @return true iff there was enough space and the character got added.
 	 */
 	void RemoveElementsFromBack(size_t amount)
 	{
