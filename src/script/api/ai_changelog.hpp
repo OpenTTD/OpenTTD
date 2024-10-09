@@ -19,6 +19,8 @@
  *
  * API additions:
  * \li AIEventVehicleCrashed::GetVictims
+ * \li AIOrder.OF_UNBUNCH_IN_DEPOT
+ * \li AIOrder.ERR_ORDER_UNBUNCH
  *
  * \b 14.0
  *
