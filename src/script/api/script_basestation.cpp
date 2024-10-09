@@ -44,7 +44,7 @@
 	EnforcePrecondition(false, name != nullptr);
 	const std::string &text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
-	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_STATION_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_STATION_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG, ScriptError::ERR_UNKNOWN);
 
 	if (::Station::IsValidID(station_id)) {
 		return ScriptObject::Command<CMD_RENAME_STATION>::Do(station_id, text);
