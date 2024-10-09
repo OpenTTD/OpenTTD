@@ -817,19 +817,8 @@ bool AfterLoadGame()
 	 * filled; and that could eventually lead to desyncs. */
 	CargoPacket::AfterLoad();
 
-	/* Oilrig was moved from id 15 to 9. We have to do this conversion
-	 * here as AfterLoadVehicles can check it indirectly via the newgrf
-	 * code. */
-	if (IsSavegameVersionBefore(SLV_139)) {
-		for (Station *st : Station::Iterate()) {
-			if (st->airport.tile != INVALID_TILE && st->airport.type == 15) {
-				st->airport.type = AT_OILRIG;
-			}
-		}
-	}
-
-	/* Update all vehicles */
-	AfterLoadVehicles(true);
+	/* Update all vehicles: Phase 1 */
+	AfterLoadVehiclesPhase1(true);
 
 	/* make sure there is a town in the game */
 	if (_game_mode == GM_NORMAL && Town::GetNumItems() == 0) {
@@ -1356,11 +1345,6 @@ bool AfterLoadGame()
 					break;
 			}
 		}
-
-		for (Train *v : Train::Iterate()) {
-			if (v->IsFrontEngine() || v->IsFreeWagon()) v->ConsistChanged(CCF_TRACK);
-		}
-
 	}
 
 	/* In version 16.1 of the savegame a company can decide if trains, which get
@@ -1493,7 +1477,7 @@ bool AfterLoadGame()
 	 * preference of a user, let elrails enabled; it can be disabled manually */
 	if (IsSavegameVersionBefore(SLV_38)) _settings_game.vehicle.disable_elrails = false;
 	/* do the same as when elrails were enabled/disabled manually just now */
-	SettingsDisableElrail(_settings_game.vehicle.disable_elrails);
+	UpdateDisableElrailSettingState(_settings_game.vehicle.disable_elrails, false);
 	InitializeRailGUI();
 
 	/* From version 53, the map array was changed for house tiles to allow
@@ -2398,6 +2382,15 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Oilrig was moved from id 15 to 9. */
+	if (IsSavegameVersionBefore(SLV_139)) {
+		for (Station *st : Station::Iterate()) {
+			if (st->airport.tile != INVALID_TILE && st->airport.type == 15) {
+				st->airport.type = AT_OILRIG;
+			}
+		}
+	}
+
 	if (IsSavegameVersionBefore(SLV_140)) {
 		for (Station *st : Station::Iterate()) {
 			if (st->airport.tile != INVALID_TILE) {
@@ -2815,9 +2808,6 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* The center of train vehicles was changed, fix up spacing. */
-	if (IsSavegameVersionBefore(SLV_164)) FixupTrainLengths();
-
 	if (IsSavegameVersionBefore(SLV_165)) {
 		for (Town *t : Town::Iterate()) {
 			/* Set the default cargo requirement for town growth */
@@ -2924,6 +2914,14 @@ bool AfterLoadGame()
 			}
 		}
 	}
+
+	/* Beyond this point, tile types which can be accessed by vehicles must be in a valid state. */
+
+	/* Update all vehicles: Phase 2 */
+	AfterLoadVehiclesPhase2(true);
+
+	/* The center of train vehicles was changed, fix up spacing. */
+	if (IsSavegameVersionBefore(SLV_164)) FixupTrainLengths();
 
 	/* In version 2.2 of the savegame, we have new airports, so status of all aircraft is reset.
 	 * This has to be called after all map array updates */
@@ -3342,7 +3340,8 @@ void ReloadNewGRFData()
 	RecomputePrices();
 	/* reload vehicles */
 	ResetVehicleHash();
-	AfterLoadVehicles(false);
+	AfterLoadVehiclesPhase1(false);
+	AfterLoadVehiclesPhase2(false);
 	StartupEngines();
 	GroupStatistics::UpdateAfterLoad();
 	/* update station graphics */

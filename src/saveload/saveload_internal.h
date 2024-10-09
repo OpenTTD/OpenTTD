@@ -24,7 +24,8 @@ void ResetOldWaypoints();
 void MoveBuoysToWaypoints();
 void MoveWaypointsToBaseStations();
 
-void AfterLoadVehicles(bool part_of_load);
+void AfterLoadVehiclesPhase1(bool part_of_load);
+void AfterLoadVehiclesPhase2(bool part_of_load);
 void FixupTrainLengths();
 void AfterLoadStations();
 void AfterLoadRoadStops();
