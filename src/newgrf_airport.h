@@ -12,6 +12,7 @@
 
 #include "airport.h"
 #include "timer/timer_game_calendar.h"
+#include "newgrf_badge_type.h"
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
@@ -119,6 +120,7 @@ struct AirportSpec : NewGRFSpecBase<AirportClassID> {
 	/* Newgrf data */
 	bool enabled;                          ///< Entity still available (by default true). Newgrf can disable it, though.
 	struct GRFFileProps grf_prop;          ///< Properties related to the grf file.
+	std::vector<BadgeID> badges;
 
 	static const AirportSpec *Get(uint8_t type);
 	static AirportSpec *GetWithoutOverride(uint8_t type);

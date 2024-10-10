@@ -19,6 +19,7 @@
 #include "timer/timer_game_calendar.h"
 #include "sound_type.h"
 #include "strings_type.h"
+#include "newgrf_badge_type.h"
 
 /** Unique identification number of an engine. */
 using EngineID = PoolID<uint16_t, struct EngineIDTag, 64000, 0xFFFF>;

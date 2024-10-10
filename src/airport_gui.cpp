@@ -21,6 +21,7 @@
 #include "company_base.h"
 #include "station_type.h"
 #include "newgrf_airport.h"
+#include "newgrf_badge.h"
 #include "newgrf_callbacks.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
@@ -445,6 +446,7 @@ public:
 			}
 
 			/* strings such as 'Size' and 'Coverage Area' */
+			r.top = DrawBadgeNameList(r, as->badges, GSF_AIRPORTS) + WidgetDimensions::scaled.vsep_normal;
 			r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, false) + WidgetDimensions::scaled.vsep_normal;
 			r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, true);
 		}

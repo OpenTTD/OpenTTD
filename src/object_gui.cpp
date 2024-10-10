@@ -12,6 +12,7 @@
 #include "company_func.h"
 #include "hotkeys.h"
 #include "newgrf.h"
+#include "newgrf_badge.h"
 #include "newgrf_object.h"
 #include "newgrf_text.h"
 #include "object.h"
@@ -45,6 +46,8 @@ class ObjectPickerCallbacks : public PickerCallbacksNewGRFClass<ObjectClass> {
 public:
 	ObjectPickerCallbacks() : PickerCallbacksNewGRFClass<ObjectClass>("fav_objects") {}
 
+	GrfSpecFeature GetFeature() const override { return GSF_OBJECTS; }
+
 	StringID GetClassTooltip() const override { return STR_PICKER_OBJECT_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_OBJECT_TYPE_TOOLTIP; }
 
@@ -75,6 +78,13 @@ public:
 	{
 		const auto *spec = this->GetSpec(cls_id, id);
 		return (spec == nullptr || !spec->IsEverAvailable()) ? INVALID_STRING_ID : spec->name;
+	}
+
+	std::span<const BadgeID> GetTypeBadges(int cls_id, int id) const override
+	{
+		const auto *spec = this->GetSpec(cls_id, id);
+		if (spec == nullptr || !spec->IsEverAvailable()) return {};
+		return spec->badges;
 	}
 
 	bool IsTypeAvailable(int cls_id, int id) const override
@@ -222,6 +232,11 @@ public:
 				const ObjectSpec *spec = objclass->GetSpec(_object_gui.sel_type);
 				if (spec == nullptr) break;
 
+				Rect tr = r;
+				const int bottom = tr.bottom;
+				tr.bottom = INT16_MAX;
+				tr.top = DrawBadgeNameList(tr, spec->badges, GSF_OBJECTS);
+
 				/* Get the extra message for the GUI */
 				if (spec->callback_mask.Test(ObjectCallbackMask::FundMoreText)) {
 					uint16_t callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, nullptr, INVALID_TILE, _object_gui.sel_view);
@@ -235,17 +250,19 @@ public:
 								/* Use all the available space left from where we stand up to the
 								 * end of the window. We ALSO enlarge the window if needed, so we
 								 * can 'go' wild with the bottom of the window. */
-								int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, message, TC_ORANGE) - r.top - 1;
+								tr.top = DrawStringMultiLine(tr, message, TC_ORANGE);
 								StopTextRefStackUsage();
-								if (y > this->info_height) {
-									BuildObjectWindow *bow = const_cast<BuildObjectWindow *>(this);
-									bow->info_height = y;
-									bow->ReInit();
-								}
 							}
 						}
 					}
 				}
+
+				if (tr.top > bottom) {
+					BuildObjectWindow *bow = const_cast<BuildObjectWindow *>(this);
+					bow->info_height += tr.top - bottom;
+					bow->ReInit();
+				}
+
 				break;
 			}
 

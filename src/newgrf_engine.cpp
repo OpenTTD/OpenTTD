@@ -12,6 +12,7 @@
 #include "train.h"
 #include "roadveh.h"
 #include "company_func.h"
+#include "newgrf_badge.h"
 #include "newgrf_cargo.h"
 #include "newgrf_spritegroup.h"
 #include "timer/timer_game_calendar.h"
@@ -692,6 +693,8 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 				default: return 0x00;
 			}
 
+		case 0x7A: return GetBadgeVariableResult(*object->ro.grffile, v->GetEngine()->badges, parameter);
+
 		case 0xFE:
 		case 0xFF: {
 			uint16_t modflags = 0;
@@ -959,6 +962,9 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			case 0x48: return Engine::Get(this->self_type)->flags.base(); // Vehicle Type Info
 			case 0x49: return TimerGameCalendar::year.base(); // 'Long' format build year
 			case 0x4B: return TimerGameCalendar::date.base(); // Long date of last service
+
+			case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, Engine::Get(this->self_type)->badges, parameter);
+
 			case 0x92: return ClampTo<uint16_t>(TimerGameCalendar::date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // Date of last service
 			case 0x93: return GB(ClampTo<uint16_t>(TimerGameCalendar::date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR), 8, 8);
 			case 0xC4: return (Clamp(TimerGameCalendar::year, CalendarTime::ORIGINAL_BASE_YEAR, CalendarTime::ORIGINAL_MAX_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR).base(); // Build year

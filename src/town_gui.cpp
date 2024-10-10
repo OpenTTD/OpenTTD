@@ -1524,6 +1524,8 @@ public:
 		STR_HOUSE_PICKER_CLASS_ZONE5,
 	};
 
+	GrfSpecFeature GetFeature() const override { return GSF_HOUSES; }
+
 	StringID GetClassTooltip() const override { return STR_PICKER_HOUSE_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_HOUSE_TYPE_TOOLTIP; }
 	bool IsActive() const override { return true; }
@@ -1572,6 +1574,21 @@ public:
 		}
 
 		return GetHouseName(spec);
+	}
+
+	std::span<const BadgeID> GetTypeBadges(int cls_id, int id) const override
+	{
+		const auto *spec = HouseSpec::Get(id);
+		if (spec == nullptr) return {};
+		if (!spec->enabled) return {};
+		if ((spec->building_availability & climate_mask) == 0) return {};
+		if (!HasBit(spec->building_availability, cls_id)) return {};
+		for (int i = 0; i < cls_id; i++) {
+			/* Don't include if it's already included in an earlier zone. */
+			if (HasBit(spec->building_availability, i)) return {};
+		}
+
+		return spec->badges;
 	}
 
 	bool IsTypeAvailable(int, int id) const override

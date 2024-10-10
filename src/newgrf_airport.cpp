@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "timer/timer_game_calendar.h"
+#include "newgrf_badge.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_text.h"
 #include "station_base.h"
@@ -158,6 +159,8 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 {
 	switch (variable) {
 		case 0x40: return this->layout;
+
+		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->spec->badges, parameter);
 	}
 
 	if (this->st == nullptr) {

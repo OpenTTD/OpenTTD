@@ -12,6 +12,7 @@
 
 #include "core/enum_type.hpp"
 #include "newgrf_animation_type.h"
+#include "newgrf_badge_type.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
@@ -173,6 +174,8 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 
 	/** Custom platform layouts, keyed by platform and length combined. */
 	std::unordered_map<uint16_t, std::vector<uint8_t>> layouts;
+
+	std::vector<BadgeID> badges;
 };
 
 /** Class containing information relating to station classes. */

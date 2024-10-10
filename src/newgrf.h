@@ -14,6 +14,7 @@
 #include "rail_type.h"
 #include "road_type.h"
 #include "fileio_type.h"
+#include "newgrf_badge_type.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_text_type.h"
 #include "core/bitmath_func.hpp"
@@ -87,6 +88,7 @@ enum GrfSpecFeature : uint8_t {
 	GSF_ROADTYPES,
 	GSF_TRAMTYPES,
 	GSF_ROADSTOPS,
+	GSF_BADGES,
 	GSF_END,
 
 	GSF_FAKE_TOWNS = GSF_END, ///< Fake town GrfSpecFeature for NewGRF debugging (parent scope)
@@ -94,6 +96,7 @@ enum GrfSpecFeature : uint8_t {
 
 	GSF_INVALID = 0xFF,       ///< An invalid spec feature
 };
+using GrfSpecFeatures = EnumBitSet<GrfSpecFeature, uint32_t, GrfSpecFeature::GSF_END>;
 
 static const uint32_t INVALID_GRFID = 0xFFFFFFFF;
 
@@ -129,6 +132,9 @@ struct GRFFile : ZeroedMemoryAllocator {
 
 	std::vector<CargoLabel> cargo_list;             ///< Cargo translation table (local ID -> label)
 	std::array<uint8_t, NUM_CARGO> cargo_map{}; ///< Inverse cargo translation table (CargoType -> local ID)
+
+	std::vector<BadgeID> badge_list; ///< Badge translation table (local index -> global index)
+	std::unordered_map<uint16_t, BadgeID> badge_map;
 
 	std::vector<RailTypeLabel> railtype_list;       ///< Railtype translation table
 	std::array<RailType, RAILTYPE_END> railtype_map{};

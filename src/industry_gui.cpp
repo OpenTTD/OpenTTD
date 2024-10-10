@@ -19,6 +19,7 @@
 #include "industry.h"
 #include "town.h"
 #include "cheat_type.h"
+#include "newgrf_badge.h"
 #include "newgrf_industries.h"
 #include "newgrf_text.h"
 #include "newgrf_debug.h"
@@ -578,6 +579,8 @@ public:
 				GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, nullptr, this->selected_type, indsp, indsp->produced_cargo, cargo_suffix);
 				cargostring = this->MakeCargoListString(indsp->produced_cargo, cargo_suffix, STR_INDUSTRY_VIEW_PRODUCES_N_CARGO);
 				ir.top = DrawStringMultiLine(ir, cargostring);
+
+				ir.top = DrawBadgeNameList(ir, indsp->badges, GSF_INDUSTRIES);
 
 				/* Get the additional purchase info text, if it has not already been queried. */
 				if (indsp->callback_mask.Test(IndustryCallbackMask::FundMoreText)) {
