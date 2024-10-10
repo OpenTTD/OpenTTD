@@ -259,16 +259,12 @@ static const LegendAndColour * const _legend_table[] = {
 #define MKCOLOUR(x)         TO_LE32X(x)
 
 #define MKCOLOUR_XXXX(x)    (MKCOLOUR(0x01010101) * (uint)(x))
-#define MKCOLOUR_X0X0(x)    (MKCOLOUR(0x01000100) * (uint)(x))
-#define MKCOLOUR_0X0X(x)    (MKCOLOUR(0x00010001) * (uint)(x))
 #define MKCOLOUR_0XX0(x)    (MKCOLOUR(0x00010100) * (uint)(x))
 #define MKCOLOUR_X00X(x)    (MKCOLOUR(0x01000001) * (uint)(x))
 
-#define MKCOLOUR_XYXY(x, y) (MKCOLOUR_X0X0(x) | MKCOLOUR_0X0X(y))
 #define MKCOLOUR_XYYX(x, y) (MKCOLOUR_X00X(x) | MKCOLOUR_0XX0(y))
 
 #define MKCOLOUR_0000       MKCOLOUR_XXXX(0x00)
-#define MKCOLOUR_0FF0       MKCOLOUR_0XX0(0xFF)
 #define MKCOLOUR_F00F       MKCOLOUR_X00X(0xFF)
 #define MKCOLOUR_FFFF       MKCOLOUR_XXXX(0xFF)
 
