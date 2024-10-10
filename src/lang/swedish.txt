@@ -619,8 +619,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Fraktfö
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Dagar av resa
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Sekunder av resa
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Betalning för leverans av 10 enheter (eller 10,000 liter) gods på ett avstånd av 20 rutor
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Aktivera alla
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Inaktivera alla
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Alla
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Inga
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Visa alla godstyper på grafen över fraktförtjänster
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Visa inga godstyper på grafen över fraktförtjänster
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Slå på/av denna godstyps graf
@@ -799,8 +799,8 @@ STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STR
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Inaktivera alla
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktivera alla
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Inga
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Alla
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Visa höjd
 STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Visa industrinamn
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Visa inga industrier på kartan
@@ -2378,7 +2378,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Nuvarand
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Speltid
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Tid spelad när{}spelet inte var pausat
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Språk, serverversion, mm
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Serverkompatibilitet och autenticeringsinfo
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klicka på ett spel från listan för att välja det
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Servern du senast anslöt till:
@@ -3019,6 +3019,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Slumpmä
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grunda stad på slumpmässig plats
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Många slumpmässiga städer
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Täck kartan med slumpmässigt placerade städer
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Läs in från fil
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Importera stadsdata från en JSON-fil
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Utöka alla städer
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Gör så att alla städer växer en aning
 
@@ -3271,6 +3273,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Spara sc
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Öppna scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Läs höjdkarta
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Spara höjdkarta
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Läs in stadsdata
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klicka här för att gå till standardkatalogen för spara/ladda
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ledigt
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Listar enheter, kataloger och sparade spel
@@ -3282,6 +3285,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Spara sp
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Ladda
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ladda valt spel
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ladda vald höjdkarta
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Läs in vald stadsdata
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Speldetaljer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen information tillgänglig
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3415,7 +3419,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kör til
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kör skript
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Förbereder spel
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Inläsning av stadsdata misslyckades
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON-filen är felaktigt formaterad
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING}s data är felaktigt formaterad
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} koordinater är felaktigt formaterade; måste vara mellan 0 och 1 i proportion till höjdkartans totala dimension
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Kunde ej finna någon lämplig plats för att grunda {NUM} st{P ad äder}. Skapade istället {P "en " ""}skylt{P "" ar} på de{P n ""} tilltänkta platse{P n rna}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-inställningar
@@ -4000,10 +4009,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} flygplan
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Tåg - klicka på tåg för information
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vägfordon - klicka på fordon för information
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skepp - klicka på skepp för information
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flygplan - Klicka på flygplan för information
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Tåg - klicka på tåg för information. Håll nere Ctrl+Shift för att överlägga godstyp
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vägfordon - klicka på fordon för information. Håll nere Ctrl+Shift för att överlägga godstyp
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skepp - klicka på skepp för information. Håll nere Ctrl+Shift för att överlägga godstyp
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flygplan - Klicka på flygplan för information. Håll nere Ctrl+Shift för att överlägga godstyp
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tillgängliga tåg
@@ -4926,7 +4935,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Trasig sparfil 
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sparfilen är gjord med en nyare version
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Filen är inte läsbar
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Filen är inte skrivbar
-STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritetskontrollen på datan misslyckades
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritetskontrollen av datan misslyckades
 STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Sparat spel är från en modifierad version
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort

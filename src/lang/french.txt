@@ -2379,7 +2379,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Date cou
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Temps de jeu
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Temps joué quand la{}partie n'était pas en pause
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Langue, version du serveur, etc.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Compatibilité serveur et informations d'authentification
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Cliquer sur une partie dans la liste pour la sélectionner
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Dernier serveur utilisé{NBSP}:
@@ -3423,7 +3423,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Prépara
 STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Échec du chargement des données des villes
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}format du fichier JSON incorrect
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}format des données de {STRING} incorrect
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}format des coordonnées de {STRING} incorrect, doit être 0..1 en tant que pourcentage de la dimension totale de la carte d'altitude
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}format des coordonnées de {STRING} incorrect, doit être compris entre 0 et 1 en tant que proportion de la dimension totale de la carte d'altitude
 
 STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Pas d'emplacement valide trouvé pour fonder {NUM} ville{P "" s}. À la place, {P un des} panneau{P "" x} {P a ont} été créé{P "" s} {P "à l'" aux} emplacement{P "" s} prévu{P "" s}
 
@@ -4010,10 +4010,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} aéronef{P "" s}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trains - Cliquer sur un train pour obtenir des informations
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Véhicules routiers - Cliquer sur un véhicule pour obtenir des informations
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navires - Cliquer sur un navire pour obtenir des informations
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aéronef - Cliquer sur un aéronef pour obtenir des informations
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trains - Cliquer sur un train pour obtenir des informations. Maintenir Ctrl+Shift pour afficher les types de cargo
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Véhicules routiers - Cliquer sur un véhicule pour obtenir des informations. Maintenir Ctrl+Shift pour afficher les types de cargo
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navires - Cliquer sur un navire pour obtenir des informations. Maintenir Ctrl+Shift pour afficher les types de cargo
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aéronef - Cliquer sur un aéronef pour obtenir des informations. Maintenir Ctrl+Shift pour afficher les types de cargo
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trains disponibles
