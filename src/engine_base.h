@@ -81,6 +81,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	 */
 	GRFFilePropsBase<NUM_CARGO + 2> grf_prop;
 	std::vector<WagonOverride> overrides;
+	std::vector<BadgeID> badges;
 
 	Engine() {}
 	Engine(VehicleType type, EngineID base);
