@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "industry.h"
+#include "newgrf_badge.h"
 #include "newgrf_industries.h"
 #include "newgrf_town.h"
 #include "newgrf_cargo.h"
@@ -166,6 +167,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 		/* Variables available during construction check. */
 
 		switch (variable) {
+			case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, GetIndustrySpec(this->type)->badges, parameter);
+
 			case 0x80: return this->tile.base();
 			case 0x81: return GB(this->tile.base(), 8, 8);
 
@@ -349,6 +352,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 			if (variable == 0x6F) return it->waiting;
 			NOT_REACHED();
 		}
+
+		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, GetIndustrySpec(this->type)->badges, parameter);
 
 		/* Get a variable from the persistent storage */
 		case 0x7C: return (this->industry->psa != nullptr) ? this->industry->psa->GetValue(parameter) : 0;

@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "landscape.h"
+#include "newgrf_badge.h"
 #include "newgrf_industrytiles.h"
 #include "newgrf_sound.h"
 #include "industry.h"
@@ -91,6 +92,8 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 
 		/* Get industry tile ID at offset */
 		case 0x62: return GetIndustryIDAtOffset(GetNearbyTile(parameter, this->tile), this->industry, this->ro.grffile->grfid);
+
+		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, GetIndustryTileSpec(GetIndustryGfx(this->tile))->badges, parameter);
 	}
 
 	Debug(grf, 1, "Unhandled industry tile variable 0x{:X}", variable);
