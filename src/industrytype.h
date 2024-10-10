@@ -16,6 +16,7 @@
 #include "landscape_type.h"
 #include "cargo_type.h"
 #include "newgrf_animation_type.h"
+#include "newgrf_badge_type.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_commons.h"
 
@@ -132,6 +133,7 @@ struct IndustrySpec {
 	bool enabled;                               ///< entity still available (by default true).newgrf can disable it, though
 	GRFFileProps grf_prop;                      ///< properties related to the grf file
 	std::vector<uint8_t> random_sounds; ///< Random sounds;
+	std::vector<BadgeID> badges;
 
 	std::array<std::variant<CargoLabel, MixedCargoType>, INDUSTRY_ORIGINAL_NUM_OUTPUTS> produced_cargo_label; ///< Cargo labels of produced cargo for default industries.
 	std::array<std::variant<CargoLabel, MixedCargoType>, INDUSTRY_ORIGINAL_NUM_INPUTS> accepts_cargo_label; ///< Cargo labels of accepted cargo for default industries.
@@ -164,6 +166,7 @@ struct IndustryTileSpec {
 	IndustryTileSpecialFlags special_flags; ///< Bitmask of extra flags used by the tile
 	bool enabled;                         ///< entity still available (by default true).newgrf can disable it, though
 	GRFFileProps grf_prop;                ///< properties related to the grf file
+	std::vector<BadgeID> badges;
 
 	std::array<std::variant<CargoLabel, MixedCargoType>, INDUSTRY_ORIGINAL_NUM_INPUTS> accepts_cargo_label; ///< Cargo labels of accepted cargo for default industry tiles.
 };

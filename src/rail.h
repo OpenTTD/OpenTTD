@@ -21,6 +21,7 @@
 #include "timer/timer_game_calendar.h"
 #include "signal_type.h"
 #include "settings_type.h"
+#include "newgrf_badge_type.h"
 
 /** Railtype flag bit numbers. */
 enum class RailTypeFlag : uint8_t {
@@ -269,6 +270,8 @@ public:
 	 * Sprite groups for resolving sprites
 	 */
 	const SpriteGroup *group[RTSG_END];
+
+	std::vector<BadgeID> badges;
 
 	inline bool UsesOverlay() const
 	{

@@ -9,9 +9,11 @@
 
 #include "stdafx.h"
 #include "core/backup_type.hpp"
+#include "company_func.h"
 #include "gui.h"
 #include "hotkeys.h"
 #include "ini_type.h"
+#include "newgrf_badge.h"
 #include "picker_gui.h"
 #include "querystring_gui.h"
 #include "settings_type.h"
@@ -234,6 +236,8 @@ void PickerWindow::ConstructWindow()
 
 	this->FinishInitNested(this->window_number);
 
+	this->badge_classes = GUIBadgeClasses(this->callbacks.GetFeature());
+
 	this->InvalidateData(PICKER_INVALIDATION_ALL);
 }
 
@@ -301,6 +305,12 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 				int y = (ir.Height() + ScaleSpriteTrad(PREVIEW_HEIGHT)) / 2 - ScaleSpriteTrad(PREVIEW_BOTTOM);
 
 				this->callbacks.DrawType(x, y, item.class_index, item.index);
+
+				int by = ir.Height() - ScaleGUITrad(12);
+
+				GrfSpecFeature feature = this->callbacks.GetFeature();
+				DrawBadgeColumn({0, by, ir.Width() - 1, ir.Height() - 1}, 0, this->badge_classes, this->callbacks.GetTypeBadges(item.class_index, item.index), feature, std::nullopt, PAL_NONE);
+
 				if (this->callbacks.saved.contains(item)) {
 					DrawSprite(SPR_BLOT, PALETTE_TO_YELLOW, 0, 0);
 				}

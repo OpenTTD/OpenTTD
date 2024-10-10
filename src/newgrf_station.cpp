@@ -12,6 +12,7 @@
 #include "station_base.h"
 #include "waypoint_base.h"
 #include "roadstop_base.h"
+#include "newgrf_badge.h"
 #include "newgrf_cargo.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
@@ -292,6 +293,8 @@ TownScopeResolver *StationResolverObject::GetTown()
 				}
 				break;
 
+			case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->statspec->badges, parameter);
+
 			case 0xFA: return ClampTo<uint16_t>(TimerGameCalendar::date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // Build date, clamped to a 16 bit value
 		}
 
@@ -392,6 +395,8 @@ TownScopeResolver *StationResolverObject::GetTown()
 
 			return 0xFFFE;
 		}
+
+		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->statspec->badges, parameter);
 
 		/* General station variables */
 		case 0x82: return 50;

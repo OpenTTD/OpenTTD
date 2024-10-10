@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "newgrf_airporttiles.h"
+#include "newgrf_badge.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_sound.h"
 #include "station_base.h"
@@ -190,6 +191,8 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint
 
 		/* Get airport tile ID at offset */
 		case 0x62: return GetAirportTileIDAtOffset(GetNearbyTile(parameter, this->tile), this->st, this->ro.grffile->grfid);
+
+		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->ats->badges, parameter);
 	}
 
 	Debug(grf, 1, "Unhandled airport tile variable 0x{:X}", variable);

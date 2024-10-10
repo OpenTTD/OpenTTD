@@ -17,6 +17,7 @@
 #include "timer/timer_game_calendar.h"
 #include "core/enum_type.hpp"
 #include "newgrf.h"
+#include "newgrf_badge_type.h"
 #include "economy_func.h"
 
 
@@ -180,6 +181,8 @@ public:
 	 * Sprite groups for resolving sprites
 	 */
 	const SpriteGroup *group[ROTSG_END];
+
+	std::vector<BadgeID> badges;
 
 	inline bool UsesOverlay() const
 	{

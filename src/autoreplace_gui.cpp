@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "command_func.h"
 #include "vehicle_gui.h"
+#include "newgrf_badge.h"
 #include "newgrf_engine.h"
 #include "rail.h"
 #include "road.h"
@@ -89,6 +90,7 @@ class ReplaceVehicleWindow : public Window {
 	RailType sel_railtype;        ///< Type of rail tracks selected. #INVALID_RAILTYPE to show all.
 	RoadType sel_roadtype;        ///< Type of road selected. #INVALID_ROADTYPE to show all.
 	Scrollbar *vscroll[2];
+	GUIBadgeClasses badge_classes;
 
 	/**
 	 * Figure out if an engine should be added to a list.
@@ -275,6 +277,8 @@ public:
 		this->sel_engine[0] = EngineID::Invalid();
 		this->sel_engine[1] = EngineID::Invalid();
 		this->show_hidden_engines = _engine_sort_show_hidden_engines[vehicletype];
+
+		this->badge_classes = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_TRAINS + vehicletype));
 
 		this->CreateNestedTree();
 		this->vscroll[0] = this->GetScrollbar(WID_RV_LEFT_SCROLLBAR);
@@ -463,7 +467,7 @@ public:
 				int side = (widget == WID_RV_LEFT_MATRIX) ? 0 : 1;
 
 				/* Do the actual drawing */
-				DrawEngineList(this->window_number, r, this->engines[side], *this->vscroll[side], this->sel_engine[side], side == 0, this->sel_group);
+				DrawEngineList(this->window_number, r, this->engines[side], *this->vscroll[side], this->sel_engine[side], side == 0, this->sel_group, this->badge_classes);
 				break;
 			}
 		}

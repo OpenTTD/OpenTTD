@@ -724,5 +724,6 @@ static const NIFeature * const _nifeatures[] = {
 	&_nif_tramtype,     // GSF_TRAMTYPES
 	&_nif_roadstop,     // GSF_ROADSTOPS
 	&_nif_town,         // GSF_FAKE_TOWNS
+	nullptr,
 };
 static_assert(lengthof(_nifeatures) == GSF_FAKE_END);
