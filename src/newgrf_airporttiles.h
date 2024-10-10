@@ -13,6 +13,7 @@
 #include "airport.h"
 #include "station_map.h"
 #include "newgrf_animation_type.h"
+#include "newgrf_badge_type.h"
 #include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
 #include "station_base.h"
@@ -72,6 +73,7 @@ struct AirportTileSpec {
 	uint8_t animation_special_flags;        ///< Extra flags to influence the animation
 	bool enabled;                         ///< entity still available (by default true). newgrf can disable it, though
 	GRFFileProps grf_prop;                ///< properties related the the grf file
+	std::vector<BadgeID> badges;
 
 	static const AirportTileSpec *Get(StationGfx gfx);
 	static const AirportTileSpec *GetByTile(TileIndex tile);
