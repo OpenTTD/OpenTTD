@@ -156,12 +156,18 @@ public:
 		if (n.m_num_signals_passed >= m_sig_look_ahead_costs.size() / 2) return 0;
 		if (!IsPbsSignal(n.m_last_signal_type)) return 0;
 
+		const Train *v = Yapf().GetVehicle();
+		assert(v != nullptr);
+		assert(v->type == VEH_TRAIN);
+		/* the longer a train waits, the more it will consider longer routes around blocking trains */
+		int impatience = std::max(0, v->wait_counter - DAY_TICKS / 2);
+
 		if (IsRailStationTile(tile) && IsAnyStationTileReserved(tile, trackdir, skipped)) {
-			return Yapf().PfGetSettings().rail_pbs_station_penalty * (skipped + 1);
+			return Yapf().PfGetSettings().rail_pbs_station_penalty * (skipped + 1) + impatience;
 		} else if (TrackOverlapsTracks(GetReservedTrackbits(tile), TrackdirToTrack(trackdir))) {
 			int cost = Yapf().PfGetSettings().rail_pbs_cross_penalty;
 			if (!IsDiagonalTrackdir(trackdir)) cost = (cost * YAPF_TILE_CORNER_LENGTH) / YAPF_TILE_LENGTH;
-			return cost * (skipped + 1);
+			return cost * (skipped + 1) + impatience;
 		}
 		return 0;
 	}
