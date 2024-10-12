@@ -40,15 +40,9 @@ inline uint ManhattanDistance(const CYapfRegionPatchNodeKey &a, const CYapfRegio
 
 /** Yapf Node for water regions. */
 template <class Tkey_>
-struct CYapfRegionNodeT {
+struct CYapfRegionNodeT : CYapfNodeT<Tkey_, CYapfRegionNodeT<Tkey_> > {
 	typedef Tkey_ Key;
 	typedef CYapfRegionNodeT<Tkey_> Node;
-
-	Tkey_ key;
-	Node *hash_next;
-	Node *parent;
-	int cost;
-	int estimate;
 
 	inline void Set(Node *parent, const WaterRegionPatchDesc &water_region_patch)
 	{
@@ -66,7 +60,7 @@ struct CYapfRegionNodeT {
 
 	DiagDirection GetDiagDirFromParent() const
 	{
-		if (!this->parent) return INVALID_DIAGDIR;
+		if (this->parent == nullptr) return INVALID_DIAGDIR;
 		const int dx = this->key.water_region_patch.x - this->parent->key.water_region_patch.x;
 		const int dy = this->key.water_region_patch.y - this->parent->key.water_region_patch.y;
 		if (dx > 0 && dy == 0) return DIAGDIR_SW;
@@ -75,13 +69,6 @@ struct CYapfRegionNodeT {
 		if (dx == 0 && dy < 0) return DIAGDIR_NW;
 		return INVALID_DIAGDIR;
 	}
-
-	inline Node *GetHashNext() { return this->hash_next; }
-	inline void SetHashNext(Node *pNext) { this->hash_next = pNext; }
-	inline const Tkey_ &GetKey() const { return this->key; }
-	inline int GetCost() { return this->cost; }
-	inline int GetCostEstimate() { return this->estimate; }
-	inline bool operator<(const Node &other) const { return this->estimate < other.estimate; }
 };
 
 /** YAPF origin for water regions. */
