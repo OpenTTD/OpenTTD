@@ -11,7 +11,7 @@ jobs:
   upload:
     name: Upload (GOG)
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Download source
