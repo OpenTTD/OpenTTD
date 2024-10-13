@@ -24,7 +24,7 @@
 
 static const std::string README_FILENAME = "README.md";
 static const std::string CHANGELOG_FILENAME = "changelog.txt";
-static const std::string KNOWN_BUGS_FILENAME = "known-bugs.txt";
+static const std::string KNOWN_BUGS_FILENAME = "known-bugs.md";
 static const std::string LICENSE_FILENAME = "COPYING.md";
 
 static const std::string WEBSITE_LINK = "https://www.openttd.org/";
