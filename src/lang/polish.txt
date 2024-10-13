@@ -5264,7 +5264,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
-STR_TEXTFILE_JUMPLIST                                           :{WHITE}Spis Treści
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Spi
 STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Przeskocz do wybranej sekcji w wyświetlanym pliku za pomocą tej listy
 STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Cofnij się w historii nawigacji
