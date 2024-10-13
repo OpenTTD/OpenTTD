@@ -23,7 +23,7 @@ jobs:
   linux:
     name: CI
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       CC: ${{ inputs.compiler }}
       CXX: ${{ inputs.cxxcompiler }}

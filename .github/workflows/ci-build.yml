@@ -26,8 +26,8 @@ jobs:
       matrix:
         include:
         - name: Clang
-          compiler: clang-15
-          cxxcompiler: clang++-15
+          compiler: clang
+          cxxcompiler: clang++
           libraries: libsdl2-dev
         - name: GCC - SDL2
           compiler: gcc
