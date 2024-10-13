@@ -131,7 +131,7 @@ void CreateConsole()
 		_close(fd);
 		CloseHandle(hand);
 
-		ShowInfo("Unable to open an output handle to the console. Check known-bugs.txt for details.");
+		ShowInfo("Unable to open an output handle to the console. Check known-bugs.md for details.");
 		return;
 	}
 
