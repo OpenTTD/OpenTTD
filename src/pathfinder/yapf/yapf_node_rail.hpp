@@ -23,43 +23,43 @@ struct CYapfRailSegmentKey
 
 	inline CYapfRailSegmentKey(const CYapfNodeKeyTrackDir &node_key)
 	{
-		Set(node_key);
+		this->Set(node_key);
 	}
 
 	inline void Set(const CYapfRailSegmentKey &src)
 	{
-		m_value = src.m_value;
+		this->m_value = src.m_value;
 	}
 
 	inline void Set(const CYapfNodeKeyTrackDir &node_key)
 	{
-		m_value = (node_key.m_tile.base() << 4) | node_key.m_td;
+		this->m_value = (node_key.m_tile.base() << 4) | node_key.m_td;
 	}
 
 	inline int32_t CalcHash() const
 	{
-		return m_value;
+		return this->m_value;
 	}
 
 	inline TileIndex GetTile() const
 	{
-		return (TileIndex)(m_value >> 4);
+		return (TileIndex)(this->m_value >> 4);
 	}
 
 	inline Trackdir GetTrackdir() const
 	{
-		return (Trackdir)(m_value & 0x0F);
+		return (Trackdir)(this->m_value & 0x0F);
 	}
 
 	inline bool operator==(const CYapfRailSegmentKey &other) const
 	{
-		return m_value == other.m_value;
+		return this->m_value == other.m_value;
 	}
 
 	void Dump(DumpTarget &dmp) const
 	{
-		dmp.WriteTile("tile", GetTile());
-		dmp.WriteEnumT("td", GetTrackdir());
+		dmp.WriteTile("tile", this->GetTile());
+		dmp.WriteEnumT("td", this->GetTrackdir());
 	}
 };
 
@@ -90,33 +90,33 @@ struct CYapfRailSegment
 
 	inline const Key &GetKey() const
 	{
-		return m_key;
+		return this->m_key;
 	}
 
 	inline TileIndex GetTile() const
 	{
-		return m_key.GetTile();
+		return this->m_key.GetTile();
 	}
 
 	inline CYapfRailSegment *GetHashNext()
 	{
-		return m_hash_next;
+		return this->m_hash_next;
 	}
 
 	inline void SetHashNext(CYapfRailSegment *next)
 	{
-		m_hash_next = next;
+		this->m_hash_next = next;
 	}
 
 	void Dump(DumpTarget &dmp) const
 	{
-		dmp.WriteStructT("m_key", &m_key);
-		dmp.WriteTile("m_last_tile", m_last_tile);
-		dmp.WriteEnumT("m_last_td", m_last_td);
-		dmp.WriteValue("m_cost", m_cost);
-		dmp.WriteTile("m_last_signal_tile", m_last_signal_tile);
-		dmp.WriteEnumT("m_last_signal_td", m_last_signal_td);
-		dmp.WriteEnumT("m_end_segment_reason", m_end_segment_reason);
+		dmp.WriteStructT("m_key", &this->m_key);
+		dmp.WriteTile("m_last_tile", this->m_last_tile);
+		dmp.WriteEnumT("m_last_td", this->m_last_td);
+		dmp.WriteValue("m_cost", this->m_cost);
+		dmp.WriteTile("m_last_signal_tile", this->m_last_signal_tile);
+		dmp.WriteEnumT("m_last_signal_td", this->m_last_signal_td);
+		dmp.WriteEnumT("m_end_segment_reason", this->m_end_segment_reason);
 	}
 };
 
@@ -143,12 +143,12 @@ struct CYapfRailNodeT
 
 	inline void Set(CYapfRailNodeT *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
-		base::Set(parent, tile, td, is_choice);
-		m_segment = nullptr;
+		this->base::Set(parent, tile, td, is_choice);
+		this->m_segment = nullptr;
 		if (parent == nullptr) {
-			m_num_signals_passed      = 0;
-			flags_u.m_inherited_flags = 0;
-			m_last_red_signal_type    = SIGTYPE_BLOCK;
+			this->m_num_signals_passed      = 0;
+			this->flags_u.m_inherited_flags = 0;
+			this->m_last_red_signal_type    = SIGTYPE_BLOCK;
 			/* We use PBS as initial signal type because if we are in
 			 * a PBS section and need to route, i.e. we're at a safe
 			 * waiting point of a station, we need to account for the
@@ -159,43 +159,43 @@ struct CYapfRailNodeT
 			 * then avoiding that train with help of the reservation
 			 * costs is not a bad thing, actually it would probably
 			 * be a good thing to do. */
-			m_last_signal_type        = SIGTYPE_PBS;
+			this->m_last_signal_type        = SIGTYPE_PBS;
 		} else {
-			m_num_signals_passed      = parent->m_num_signals_passed;
-			flags_u.m_inherited_flags = parent->flags_u.m_inherited_flags;
-			m_last_red_signal_type    = parent->m_last_red_signal_type;
-			m_last_signal_type        = parent->m_last_signal_type;
+			this->m_num_signals_passed      = parent->m_num_signals_passed;
+			this->flags_u.m_inherited_flags = parent->flags_u.m_inherited_flags;
+			this->m_last_red_signal_type    = parent->m_last_red_signal_type;
+			this->m_last_signal_type        = parent->m_last_signal_type;
 		}
-		flags_u.flags_s.m_choice_seen |= is_choice;
+		this->flags_u.flags_s.m_choice_seen |= is_choice;
 	}
 
 	inline TileIndex GetLastTile() const
 	{
-		assert(m_segment != nullptr);
-		return m_segment->m_last_tile;
+		assert(this->m_segment != nullptr);
+		return this->m_segment->m_last_tile;
 	}
 
 	inline Trackdir GetLastTrackdir() const
 	{
-		assert(m_segment != nullptr);
-		return m_segment->m_last_td;
+		assert(this->m_segment != nullptr);
+		return this->m_segment->m_last_td;
 	}
 
 	inline void SetLastTileTrackdir(TileIndex tile, Trackdir td)
 	{
-		assert(m_segment != nullptr);
-		m_segment->m_last_tile = tile;
-		m_segment->m_last_td = td;
+		assert(this->m_segment != nullptr);
+		this->m_segment->m_last_tile = tile;
+		this->m_segment->m_last_td = td;
 	}
 
 	template <class Tbase, class Tfunc, class Tpf>
 	bool IterateTiles(const Train *v, Tpf &yapf, Tbase &obj, bool (Tfunc::*func)(TileIndex, Trackdir)) const
 	{
 		typename Tbase::TrackFollower ft(v, yapf.GetCompatibleRailTypes());
-		TileIndex cur = base::GetTile();
-		Trackdir  cur_td = base::GetTrackdir();
+		TileIndex cur = this->base::GetTile();
+		Trackdir  cur_td = this->base::GetTrackdir();
 
-		while (cur != GetLastTile() || cur_td != GetLastTrackdir()) {
+		while (cur != this->GetLastTile() || cur_td != this->GetLastTrackdir()) {
 			if (!((obj.*func)(cur, cur_td))) return false;
 
 			if (!ft.Follow(cur, cur_td)) break;
@@ -209,13 +209,13 @@ struct CYapfRailNodeT
 
 	void Dump(DumpTarget &dmp) const
 	{
-		base::Dump(dmp);
-		dmp.WriteStructT("m_segment", m_segment);
-		dmp.WriteValue("m_num_signals_passed", m_num_signals_passed);
-		dmp.WriteValue("m_targed_seen", flags_u.flags_s.m_targed_seen ? "Yes" : "No");
-		dmp.WriteValue("m_choice_seen", flags_u.flags_s.m_choice_seen ? "Yes" : "No");
-		dmp.WriteValue("m_last_signal_was_red", flags_u.flags_s.m_last_signal_was_red ? "Yes" : "No");
-		dmp.WriteEnumT("m_last_red_signal_type", m_last_red_signal_type);
+		this->base::Dump(dmp);
+		dmp.WriteStructT("m_segment", this->m_segment);
+		dmp.WriteValue("m_num_signals_passed", this->m_num_signals_passed);
+		dmp.WriteValue("m_targed_seen", this->flags_u.flags_s.m_targed_seen ? "Yes" : "No");
+		dmp.WriteValue("m_choice_seen", this->flags_u.flags_s.m_choice_seen ? "Yes" : "No");
+		dmp.WriteValue("m_last_signal_was_red", this->flags_u.flags_s.m_last_signal_was_red ? "Yes" : "No");
+		dmp.WriteEnumT("m_last_red_signal_type", this->m_last_red_signal_type);
 	}
 };
 

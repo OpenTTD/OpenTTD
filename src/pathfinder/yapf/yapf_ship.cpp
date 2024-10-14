@@ -46,21 +46,21 @@ public:
 	void SetDestination(const Ship *v)
 	{
 		if (v->current_order.IsType(OT_GOTO_STATION)) {
-			m_destStation = v->current_order.GetDestination();
-			m_destTile = CalcClosestStationTile(m_destStation, v->tile, STATION_DOCK);
-			m_destTrackdirs = INVALID_TRACKDIR_BIT;
+			this->m_destStation = v->current_order.GetDestination();
+			this->m_destTile = CalcClosestStationTile(this->m_destStation, v->tile, STATION_DOCK);
+			this->m_destTrackdirs = INVALID_TRACKDIR_BIT;
 		} else {
-			m_destStation = INVALID_STATION;
-			m_destTile = v->dest_tile;
-			m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_WATER, 0));
+			this->m_destStation = INVALID_STATION;
+			this->m_destTile = v->dest_tile;
+			this->m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_WATER, 0));
 		}
 	}
 
 	void SetIntermediateDestination(const WaterRegionPatchDesc &water_region_patch)
 	{
-		m_has_intermediate_dest = true;
-		m_intermediate_dest_tile = GetWaterRegionCenterTile(water_region_patch);
-		m_intermediate_dest_region_patch = water_region_patch;
+		this->m_has_intermediate_dest = true;
+		this->m_intermediate_dest_tile = GetWaterRegionCenterTile(water_region_patch);
+		this->m_intermediate_dest_region_patch = water_region_patch;
 	}
 
 protected:
@@ -74,20 +74,20 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination. */
 	inline bool PfDetectDestination(Node &n)
 	{
-		return PfDetectDestinationTile(n.m_segment_last_tile, n.m_segment_last_td);
+		return this->PfDetectDestinationTile(n.m_segment_last_tile, n.m_segment_last_td);
 	}
 
 	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
 	{
-		if (m_has_intermediate_dest) {
+		if (this->m_has_intermediate_dest) {
 			/* GetWaterRegionInfo is much faster than GetWaterRegionPatchInfo so we try that first. */
-			if (GetWaterRegionInfo(tile) != m_intermediate_dest_region_patch) return false;
-			return GetWaterRegionPatchInfo(tile) == m_intermediate_dest_region_patch;
+			if (GetWaterRegionInfo(tile) != this->m_intermediate_dest_region_patch) return false;
+			return GetWaterRegionPatchInfo(tile) == this->m_intermediate_dest_region_patch;
 		}
 
-		if (m_destStation != INVALID_STATION) return IsDockingTile(tile) && IsShipDestinationTile(tile, m_destStation);
+		if (this->m_destStation != INVALID_STATION) return IsDockingTile(tile) && IsShipDestinationTile(tile, this->m_destStation);
 
-		return tile == m_destTile && ((m_destTrackdirs & TrackdirToTrackdirBits(trackdir)) != TRACKDIR_BIT_NONE);
+		return tile == this->m_destTile && ((this->m_destTrackdirs & TrackdirToTrackdirBits(trackdir)) != TRACKDIR_BIT_NONE);
 	}
 
 	/**
@@ -96,11 +96,11 @@ public:
 	 */
 	inline bool PfCalcEstimate(Node &n)
 	{
-		const TileIndex destination_tile = m_has_intermediate_dest ? m_intermediate_dest_tile : m_destTile;
+		const TileIndex destination_tile = this->m_has_intermediate_dest ? this->m_intermediate_dest_tile : this->m_destTile;
 
 		static const int dg_dir_to_x_offs[] = { -1, 0, 1, 0 };
 		static const int dg_dir_to_y_offs[] = { 0, 1, 0, -1 };
-		if (PfDetectDestination(n)) {
+		if (this->PfDetectDestination(n)) {
 			n.m_estimate = n.m_cost;
 			return true;
 		}
@@ -151,9 +151,9 @@ public:
 	{
 		TrackFollower F(Yapf().GetVehicle());
 		if (F.Follow(old_node.m_key.m_tile, old_node.m_key.m_td)) {
-			if (m_water_region_corridor.empty()
-					|| std::find(m_water_region_corridor.begin(), m_water_region_corridor.end(),
-						GetWaterRegionInfo(F.m_new_tile)) != m_water_region_corridor.end()) {
+			if (this->m_water_region_corridor.empty()
+					|| std::find(this->m_water_region_corridor.begin(), this->m_water_region_corridor.end(),
+						GetWaterRegionInfo(F.m_new_tile)) != this->m_water_region_corridor.end()) {
 				Yapf().AddMultipleNodes(&old_node, F);
 			}
 		}
@@ -162,8 +162,8 @@ public:
 	/** Restricts the search by creating corridor or water regions through which the ship is allowed to travel. */
 	inline void RestrictSearch(const std::vector<WaterRegionPatchDesc> &path)
 	{
-		m_water_region_corridor.clear();
-		for (const WaterRegionPatchDesc &path_entry : path) m_water_region_corridor.push_back(path_entry);
+		this->m_water_region_corridor.clear();
+		for (const WaterRegionPatchDesc &path_entry : path) this->m_water_region_corridor.push_back(path_entry);
 	}
 
 	/** Return debug report character to identify the transportation type. */
@@ -373,7 +373,7 @@ public:
 		/* Base tile cost depending on distance. */
 		int c = IsDiagonalTrackdir(n.GetTrackdir()) ? YAPF_TILE_LENGTH : YAPF_TILE_CORNER_LENGTH;
 		/* Additional penalty for curves. */
-		c += CurveCost(n.m_parent->GetTrackdir(), n.GetTrackdir());
+		c += this->CurveCost(n.m_parent->GetTrackdir(), n.GetTrackdir());
 
 		if (IsDockingTile(n.GetTile())) {
 			/* Check docking tile for occupancy. */
@@ -420,7 +420,7 @@ struct CYapfShip_TypesT
 
 struct CYapfShip : CYapfT<CYapfShip_TypesT<CYapfShip, CFollowTrackWater, CShipNodeListExitDir > >
 {
-	explicit CYapfShip(int max_nodes) { m_max_search_nodes = max_nodes; }
+	explicit CYapfShip(int max_nodes) { this->m_max_search_nodes = max_nodes; }
 };
 
 /** Ship controller helper - path finder invoker. */

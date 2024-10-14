@@ -25,9 +25,9 @@ struct CYapfShipNodeT : CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_> > {
 
 	void Set(CYapfShipNodeT *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
-		base::Set(parent, tile, td, is_choice);
-		m_segment_last_tile = tile;
-		m_segment_last_td   = td;
+		this->base::Set(parent, tile, td, is_choice);
+		this->m_segment_last_tile = tile;
+		this->m_segment_last_td   = td;
 	}
 };
 

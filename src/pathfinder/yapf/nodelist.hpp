@@ -39,7 +39,7 @@ public:
 	/** default constructor */
 	CNodeList_HashTableT() : m_open_queue(2048)
 	{
-		m_new_node = nullptr;
+		this->m_new_node = nullptr;
 	}
 
 	/** destructor */
@@ -50,28 +50,28 @@ public:
 	/** return number of open nodes */
 	inline int OpenCount()
 	{
-		return m_open.Count();
+		return this->m_open.Count();
 	}
 
 	/** return number of closed nodes */
 	inline int ClosedCount()
 	{
-		return m_closed.Count();
+		return this->m_closed.Count();
 	}
 
 	/** allocate new data item from m_arr */
 	inline Titem_ *CreateNewNode()
 	{
-		if (m_new_node == nullptr) m_new_node = &m_arr.emplace_back();
-		return m_new_node;
+		if (this->m_new_node == nullptr) this->m_new_node = &this->m_arr.emplace_back();
+		return this->m_new_node;
 	}
 
 	/** Notify the nodelist that we don't want to discard the given node. */
 	inline void FoundBestNode(Titem_ &item)
 	{
 		/* for now it is enough to invalidate m_new_node if it is our given node */
-		if (&item == m_new_node) {
-			m_new_node = nullptr;
+		if (&item == this->m_new_node) {
+			this->m_new_node = nullptr;
 		}
 		/* TODO: do we need to store best nodes found in some extra list/array? Probably not now. */
 	}
@@ -79,19 +79,19 @@ public:
 	/** insert given item as open node (into m_open and m_open_queue) */
 	inline void InsertOpenNode(Titem_ &item)
 	{
-		assert(m_closed.Find(item.GetKey()) == nullptr);
-		m_open.Push(item);
-		m_open_queue.Include(&item);
-		if (&item == m_new_node) {
-			m_new_node = nullptr;
+		assert(this->m_closed.Find(item.GetKey()) == nullptr);
+		this->m_open.Push(item);
+		this->m_open_queue.Include(&item);
+		if (&item == this->m_new_node) {
+			this->m_new_node = nullptr;
 		}
 	}
 
 	/** return the best open node */
 	inline Titem_ *GetBestOpenNode()
 	{
-		if (!m_open_queue.IsEmpty()) {
-			return m_open_queue.Begin();
+		if (!this->m_open_queue.IsEmpty()) {
+			return this->m_open_queue.Begin();
 		}
 		return nullptr;
 	}
@@ -99,9 +99,9 @@ public:
 	/** remove and return the best open node */
 	inline Titem_ *PopBestOpenNode()
 	{
-		if (!m_open_queue.IsEmpty()) {
-			Titem_ *item = m_open_queue.Shift();
-			m_open.Pop(*item);
+		if (!this->m_open_queue.IsEmpty()) {
+			Titem_ *item = this->m_open_queue.Shift();
+			this->m_open.Pop(*item);
 			return item;
 		}
 		return nullptr;
@@ -110,49 +110,49 @@ public:
 	/** return the open node specified by a key or nullptr if not found */
 	inline Titem_ *FindOpenNode(const Key &key)
 	{
-		Titem_ *item = m_open.Find(key);
+		Titem_ *item = this->m_open.Find(key);
 		return item;
 	}
 
 	/** remove and return the open node specified by a key */
 	inline Titem_ &PopOpenNode(const Key &key)
 	{
-		Titem_ &item = m_open.Pop(key);
-		size_t idxPop = m_open_queue.FindIndex(item);
-		m_open_queue.Remove(idxPop);
+		Titem_ &item = this->m_open.Pop(key);
+		size_t idxPop = this->m_open_queue.FindIndex(item);
+		this->m_open_queue.Remove(idxPop);
 		return item;
 	}
 
 	/** close node */
 	inline void InsertClosedNode(Titem_ &item)
 	{
-		assert(m_open.Find(item.GetKey()) == nullptr);
-		m_closed.Push(item);
+		assert(this->m_open.Find(item.GetKey()) == nullptr);
+		this->m_closed.Push(item);
 	}
 
 	/** return the closed node specified by a key or nullptr if not found */
 	inline Titem_ *FindClosedNode(const Key &key)
 	{
-		Titem_ *item = m_closed.Find(key);
+		Titem_ *item = this->m_closed.Find(key);
 		return item;
 	}
 
 	/** The number of items. */
 	inline int TotalCount()
 	{
-		return m_arr.Length();
+		return this->m_arr.Length();
 	}
 
 	/** Get a particular item. */
 	inline Titem_ &ItemAt(int idx)
 	{
-		return m_arr[idx];
+		return this->m_arr[idx];
 	}
 
 	/** Helper for creating output of this array. */
 	template <class D> void Dump(D &dmp) const
 	{
-		dmp.WriteStructT("m_arr", &m_arr);
+		dmp.WriteStructT("m_arr", &this->m_arr);
 	}
 };
 

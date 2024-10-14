@@ -103,7 +103,7 @@ protected:
 public:
 	inline void SetMaxCost(int max_cost)
 	{
-		m_max_cost = max_cost;
+		this->m_max_cost = max_cost;
 	}
 
 	/**
@@ -130,7 +130,7 @@ public:
 
 			/* Finish if we already exceeded the maximum path cost (i.e. when
 			 * searching for the nearest depot). */
-			if (m_max_cost > 0 && (parent_cost + segment_cost) > m_max_cost) {
+			if (this->m_max_cost > 0 && (parent_cost + segment_cost) > this->m_max_cost) {
 				return false;
 			}
 
@@ -241,27 +241,27 @@ public:
 	void SetDestination(const RoadVehicle *v)
 	{
 		if (v->current_order.IsType(OT_GOTO_STATION)) {
-			m_dest_station  = v->current_order.GetDestination();
-			m_station_type  = v->IsBus() ? STATION_BUS : STATION_TRUCK;
-			m_destTile      = CalcClosestStationTile(m_dest_station, v->tile, m_station_type);
-			m_non_artic     = !v->HasArticulatedPart();
-			m_destTrackdirs = INVALID_TRACKDIR_BIT;
+			this->m_dest_station  = v->current_order.GetDestination();
+			this->m_station_type  = v->IsBus() ? STATION_BUS : STATION_TRUCK;
+			this->m_destTile      = CalcClosestStationTile(this->m_dest_station, v->tile, this->m_station_type);
+			this->m_non_artic     = !v->HasArticulatedPart();
+			this->m_destTrackdirs = INVALID_TRACKDIR_BIT;
 		} else if (v->current_order.IsType(OT_GOTO_WAYPOINT)) {
-			m_dest_station  = v->current_order.GetDestination();
-			m_station_type  = STATION_ROADWAYPOINT;
-			m_destTile      = CalcClosestStationTile(m_dest_station, v->tile, m_station_type);
-			m_non_artic     = !v->HasArticulatedPart();
-			m_destTrackdirs = INVALID_TRACKDIR_BIT;
+			this->m_dest_station  = v->current_order.GetDestination();
+			this->m_station_type  = STATION_ROADWAYPOINT;
+			this->m_destTile      = CalcClosestStationTile(this->m_dest_station, v->tile, this->m_station_type);
+			this->m_non_artic     = !v->HasArticulatedPart();
+			this->m_destTrackdirs = INVALID_TRACKDIR_BIT;
 		} else {
-			m_dest_station  = INVALID_STATION;
-			m_destTile      = v->dest_tile;
-			m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_ROAD, GetRoadTramType(v->roadtype)));
+			this->m_dest_station  = INVALID_STATION;
+			this->m_destTile      = v->dest_tile;
+			this->m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_ROAD, GetRoadTramType(v->roadtype)));
 		}
 	}
 
 	const Station *GetDestinationStation() const
 	{
-		return m_dest_station != INVALID_STATION ? Station::GetIfValid(m_dest_station) : nullptr;
+		return this->m_dest_station != INVALID_STATION ? Station::GetIfValid(this->m_dest_station) : nullptr;
 	}
 
 protected:
@@ -275,19 +275,19 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(Node &n)
 	{
-		return PfDetectDestinationTile(n.m_segment_last_tile, n.m_segment_last_td);
+		return this->PfDetectDestinationTile(n.m_segment_last_tile, n.m_segment_last_td);
 	}
 
 	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
 	{
-		if (m_dest_station != INVALID_STATION) {
+		if (this->m_dest_station != INVALID_STATION) {
 			return IsTileType(tile, MP_STATION) &&
-				GetStationIndex(tile) == m_dest_station &&
-				(m_station_type == GetStationType(tile)) &&
-				(m_non_artic || IsDriveThroughStopTile(tile));
+				GetStationIndex(tile) == this->m_dest_station &&
+				(this->m_station_type == GetStationType(tile)) &&
+				(this->m_non_artic || IsDriveThroughStopTile(tile));
 		}
 
-		return tile == m_destTile && HasTrackdir(m_destTrackdirs, trackdir);
+		return tile == this->m_destTile && HasTrackdir(this->m_destTrackdirs, trackdir);
 	}
 
 	/**
@@ -298,7 +298,7 @@ public:
 	{
 		static const int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
 		static const int dg_dir_to_y_offs[] = {0, 1, 0, -1};
-		if (PfDetectDestination(n)) {
+		if (this->PfDetectDestination(n)) {
 			n.m_estimate = n.m_cost;
 			return true;
 		}
@@ -307,8 +307,8 @@ public:
 		DiagDirection exitdir = TrackdirToExitdir(n.m_segment_last_td);
 		int x1 = 2 * TileX(tile) + dg_dir_to_x_offs[(int)exitdir];
 		int y1 = 2 * TileY(tile) + dg_dir_to_y_offs[(int)exitdir];
-		int x2 = 2 * TileX(m_destTile);
-		int y2 = 2 * TileY(m_destTile);
+		int x2 = 2 * TileX(this->m_destTile);
+		int y2 = 2 * TileY(this->m_destTile);
 		int dx = abs(x1 - x2);
 		int dy = abs(y1 - y2);
 		int dmin = std::min(dx, dy);
@@ -443,7 +443,7 @@ public:
 			return 0;
 		}
 
-		if (!SetOriginFromVehiclePos(v)) return UINT_MAX;
+		if (!this->SetOriginFromVehiclePos(v)) return UINT_MAX;
 
 		/* get available trackdirs on the destination tile */
 		Yapf().SetDestination(v);

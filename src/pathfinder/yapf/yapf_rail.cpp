@@ -60,8 +60,8 @@ private:
 	bool FindSafePositionProc(TileIndex tile, Trackdir td)
 	{
 		if (IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, !TrackFollower::Allow90degTurns())) {
-			m_res_dest = tile;
-			m_res_dest_td = td;
+			this->m_res_dest = tile;
+			this->m_res_dest_td = td;
 			return false;   // Stop iterating segment
 		}
 		return true;
@@ -78,7 +78,7 @@ private:
 			SetRailStationReservation(tile, true);
 			MarkTileDirtyByTile(tile);
 			tile = TileAdd(tile, diff);
-		} while (IsCompatibleTrainStationTile(tile, start) && tile != m_origin_tile);
+		} while (IsCompatibleTrainStationTile(tile, start) && tile != this->m_origin_tile);
 
 		TriggerStationRandomisation(nullptr, start, SRT_PATH_RESERVATION);
 
@@ -92,26 +92,26 @@ private:
 		if (IsRailStationTile(tile)) {
 			if (!ReserveRailStationPlatform(tile, TrackdirToExitdir(rev_td))) {
 				/* Platform could not be reserved, undo. */
-				m_res_fail_tile = tile;
-				m_res_fail_td = td;
+				this->m_res_fail_tile = tile;
+				this->m_res_fail_td = td;
 			}
 		} else {
 			if (!TryReserveRailTrack(tile, TrackdirToTrack(td))) {
 				/* Tile couldn't be reserved, undo. */
-				m_res_fail_tile = tile;
-				m_res_fail_td = td;
+				this->m_res_fail_tile = tile;
+				this->m_res_fail_td = td;
 				return false;
 			}
 
 			/* Green path signal opposing the path? Turn to red. */
 			if (HasPbsSignalOnTrackdir(tile, rev_td) && GetSignalStateByTrackdir(tile, rev_td) == SIGNAL_STATE_GREEN) {
-				m_signals_set_to_red.emplace_back(tile, rev_td);
+				this->m_signals_set_to_red.emplace_back(tile, rev_td);
 				SetSignalStateByTrackdir(tile, rev_td, SIGNAL_STATE_RED);
 				MarkTileDirtyByTile(tile);
 			}
 		}
 
-		return tile != m_res_dest || td != m_res_dest_td;
+		return tile != this->m_res_dest || td != this->m_res_dest_td;
 	}
 
 	/** Unreserve a single track/platform. Stops when the previous failer is reached. */
@@ -120,23 +120,23 @@ private:
 		if (IsRailStationTile(tile)) {
 			TileIndex     start = tile;
 			TileIndexDiff diff = TileOffsByDiagDir(TrackdirToExitdir(ReverseTrackdir(td)));
-			while ((tile != m_res_fail_tile || td != m_res_fail_td) && IsCompatibleTrainStationTile(tile, start)) {
+			while ((tile != this->m_res_fail_tile || td != this->m_res_fail_td) && IsCompatibleTrainStationTile(tile, start)) {
 				SetRailStationReservation(tile, false);
 				tile = TileAdd(tile, diff);
 			}
-		} else if (tile != m_res_fail_tile || td != m_res_fail_td) {
+		} else if (tile != this->m_res_fail_tile || td != this->m_res_fail_td) {
 			UnreserveRailTrack(tile, TrackdirToTrack(td));
 		}
-		return (tile != m_res_dest || td != m_res_dest_td) && (tile != m_res_fail_tile || td != m_res_fail_td);
+		return (tile != this->m_res_dest || td != this->m_res_dest_td) && (tile != this->m_res_fail_tile || td != this->m_res_fail_td);
 	}
 
 public:
 	/** Set the target to where the reservation should be extended. */
 	inline void SetReservationTarget(Node *node, TileIndex tile, Trackdir td)
 	{
-		m_res_node = node;
-		m_res_dest = tile;
-		m_res_dest_td = td;
+		this->m_res_node = node;
+		this->m_res_dest = tile;
+		this->m_res_dest_td = td;
 	}
 
 	/** Check the node for a possible reservation target. */
@@ -148,40 +148,40 @@ public:
 		if (node->m_parent->m_num_signals_passed >= 2) return;
 
 		if (!node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::FindSafePositionProc)) {
-			m_res_node = node;
+			this->m_res_node = node;
 		}
 	}
 
 	/** Try to reserve the path till the reservation target. */
 	bool TryReservePath(PBSTileInfo *target, TileIndex origin)
 	{
-		m_res_fail_tile = INVALID_TILE;
-		m_origin_tile = origin;
+		this->m_res_fail_tile = INVALID_TILE;
+		this->m_origin_tile = origin;
 
 		if (target != nullptr) {
-			target->tile = m_res_dest;
-			target->trackdir = m_res_dest_td;
+			target->tile = this->m_res_dest;
+			target->trackdir = this->m_res_dest_td;
 			target->okay = false;
 		}
 
 		/* Don't bother if the target is reserved. */
-		if (!IsWaitingPositionFree(Yapf().GetVehicle(), m_res_dest, m_res_dest_td)) return false;
+		if (!IsWaitingPositionFree(Yapf().GetVehicle(), this->m_res_dest, this->m_res_dest_td)) return false;
 
-		m_signals_set_to_red.clear();
-		for (Node *node = m_res_node; node->m_parent != nullptr; node = node->m_parent) {
+		this->m_signals_set_to_red.clear();
+		for (Node *node = this->m_res_node; node->m_parent != nullptr; node = node->m_parent) {
 			node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::ReserveSingleTrack);
-			if (m_res_fail_tile != INVALID_TILE) {
+			if (this->m_res_fail_tile != INVALID_TILE) {
 				/* Reservation failed, undo. */
-				Node *fail_node = m_res_node;
-				TileIndex stop_tile = m_res_fail_tile;
+				Node *fail_node = this->m_res_node;
+				TileIndex stop_tile = this->m_res_fail_tile;
 				do {
 					/* If this is the node that failed, stop at the failed tile. */
-					m_res_fail_tile = fail_node == node ? stop_tile : INVALID_TILE;
+					this->m_res_fail_tile = fail_node == node ? stop_tile : INVALID_TILE;
 					fail_node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::UnreserveSingleTrack);
 				} while (fail_node != node && (fail_node = fail_node->m_parent) != nullptr);
 
 				/* Re-instate green path signals we turned to red. */
-				for (auto [sig_tile, td] : m_signals_set_to_red) {
+				for (auto [sig_tile, td] : this->m_signals_set_to_red) {
 					SetSignalStateByTrackdir(sig_tile, td, SIGNAL_STATE_GREEN);
 				}
 
@@ -191,7 +191,7 @@ public:
 
 		if (target != nullptr) target->okay = true;
 
-		if (Yapf().CanUseGlobalCache(*m_res_node)) {
+		if (Yapf().CanUseGlobalCache(*this->m_res_node)) {
 			YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
 		}
 

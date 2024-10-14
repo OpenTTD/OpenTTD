@@ -21,18 +21,18 @@ protected:
 public:
 	void SetDestination(const Train *v, bool override_rail_type = false)
 	{
-		m_compatible_railtypes = v->compatible_railtypes;
-		if (override_rail_type) m_compatible_railtypes |= GetRailTypeInfo(v->railtype)->compatible_railtypes;
+		this->m_compatible_railtypes = v->compatible_railtypes;
+		if (override_rail_type) this->m_compatible_railtypes |= GetRailTypeInfo(v->railtype)->compatible_railtypes;
 	}
 
 	bool IsCompatibleRailType(RailType rt)
 	{
-		return HasBit(m_compatible_railtypes, rt);
+		return HasBit(this->m_compatible_railtypes, rt);
 	}
 
 	RailTypes GetCompatibleRailTypes() const
 	{
-		return m_compatible_railtypes;
+		return this->m_compatible_railtypes;
 	}
 };
 
@@ -52,7 +52,7 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(Node &n)
 	{
-		return PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
+		return this->PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
@@ -90,7 +90,7 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(Node &n)
 	{
-		return PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
+		return this->PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
@@ -133,7 +133,7 @@ protected:
 public:
 	void SetDestination(const Train *v)
 	{
-		m_any_depot = false;
+		this->m_any_depot = false;
 		switch (v->current_order.GetType()) {
 			case OT_GOTO_WAYPOINT:
 				if (!Waypoint::Get(v->current_order.GetDestination())->IsSingleTile()) {
@@ -147,46 +147,46 @@ public:
 				[[fallthrough]];
 
 			case OT_GOTO_STATION:
-				m_destTile = CalcClosestStationTile(v->current_order.GetDestination(), v->tile, v->current_order.IsType(OT_GOTO_STATION) ? STATION_RAIL : STATION_WAYPOINT);
-				m_dest_station_id = v->current_order.GetDestination();
-				m_destTrackdirs = INVALID_TRACKDIR_BIT;
+				this->m_destTile = CalcClosestStationTile(v->current_order.GetDestination(), v->tile, v->current_order.IsType(OT_GOTO_STATION) ? STATION_RAIL : STATION_WAYPOINT);
+				this->m_dest_station_id = v->current_order.GetDestination();
+				this->m_destTrackdirs = INVALID_TRACKDIR_BIT;
 				break;
 
 			case OT_GOTO_DEPOT:
 				if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
-					m_any_depot = true;
+					this->m_any_depot = true;
 				}
 				[[fallthrough]];
 
 			default:
-				m_destTile = v->dest_tile;
-				m_dest_station_id = INVALID_STATION;
-				m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_RAIL, 0));
+				this->m_destTile = v->dest_tile;
+				this->m_dest_station_id = INVALID_STATION;
+				this->m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_RAIL, 0));
 				break;
 		}
-		CYapfDestinationRailBase::SetDestination(v);
+		this->CYapfDestinationRailBase::SetDestination(v);
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(Node &n)
 	{
-		return PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
+		return this->PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
-		if (m_dest_station_id != INVALID_STATION) {
+		if (this->m_dest_station_id != INVALID_STATION) {
 			return HasStationTileRail(tile)
-				&& (GetStationIndex(tile) == m_dest_station_id)
+				&& (GetStationIndex(tile) == this->m_dest_station_id)
 				&& (GetRailStationTrack(tile) == TrackdirToTrack(td));
 		}
 
-		if (m_any_depot) {
+		if (this->m_any_depot) {
 			return IsRailDepotTile(tile);
 		}
 
-		return (tile == m_destTile) && HasTrackdir(m_destTrackdirs, td);
+		return (tile == this->m_destTile) && HasTrackdir(this->m_destTrackdirs, td);
 	}
 
 	/**
@@ -197,7 +197,7 @@ public:
 	{
 		static const int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
 		static const int dg_dir_to_y_offs[] = {0, 1, 0, -1};
-		if (PfDetectDestination(n)) {
+		if (this->PfDetectDestination(n)) {
 			n.m_estimate = n.m_cost;
 			return true;
 		}
@@ -206,8 +206,8 @@ public:
 		DiagDirection exitdir = TrackdirToExitdir(n.GetLastTrackdir());
 		int x1 = 2 * TileX(tile) + dg_dir_to_x_offs[(int)exitdir];
 		int y1 = 2 * TileY(tile) + dg_dir_to_y_offs[(int)exitdir];
-		int x2 = 2 * TileX(m_destTile);
-		int y2 = 2 * TileY(m_destTile);
+		int x2 = 2 * TileX(this->m_destTile);
+		int y2 = 2 * TileY(this->m_destTile);
 		int dx = abs(x1 - x2);
 		int dy = abs(y1 - y2);
 		int dmin = std::min(dx, dy);
