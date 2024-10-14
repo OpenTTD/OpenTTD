@@ -56,33 +56,24 @@ public:
 	typedef typename Node::Key Key;            ///< key to hash tables
 
 
-	NodeList             m_nodes;              ///< node list multi-container
-protected:
-	Node                *m_pBestDestNode;      ///< pointer to the destination node found at last round
-	Node                *m_pBestIntermediateNode; ///< here should be node closest to the destination if path not found
-	const YAPFSettings  *m_settings;           ///< current settings (_settings_game.yapf)
-	int                  m_max_search_nodes;   ///< maximum number of nodes we are allowed to visit before we give up
-	const VehicleType   *m_veh;                ///< vehicle that we are trying to drive
+	NodeList m_nodes; ///< node list multi-container
 
-	int                  m_stats_cost_calcs;   ///< stats - how many node's costs were calculated
-	int                  m_stats_cache_hits;   ///< stats - how many node's costs were reused from cache
+protected:
+	Node *m_pBestDestNode = nullptr; ///< pointer to the destination node found at last round
+	Node *m_pBestIntermediateNode = nullptr; ///< here should be node closest to the destination if path not found
+	const YAPFSettings *m_settings; ///< current settings (_settings_game.yapf)
+	int m_max_search_nodes; ///< maximum number of nodes we are allowed to visit before we give up
+	const VehicleType *m_veh = nullptr; ///< vehicle that we are trying to drive
+
+	int m_stats_cost_calcs = 0; ///< stats - how many node's costs were calculated
+	int m_stats_cache_hits = 0; ///< stats - how many node's costs were reused from cache
 
 public:
-	int                  m_num_steps;          ///< this is there for debugging purposes (hope it doesn't hurt)
+	int m_num_steps = 0; ///< this is there for debugging purposes (hope it doesn't hurt)
 
 public:
 	/** default constructor */
-	inline CYapfBaseT()
-		: m_pBestDestNode(nullptr)
-		, m_pBestIntermediateNode(nullptr)
-		, m_settings(&_settings_game.pf.yapf)
-		, m_max_search_nodes(PfGetSettings().max_search_nodes)
-		, m_veh(nullptr)
-		, m_stats_cost_calcs(0)
-		, m_stats_cache_hits(0)
-		, m_num_steps(0)
-	{
-	}
+	inline CYapfBaseT() : m_settings(&_settings_game.pf.yapf), m_max_search_nodes(PfGetSettings().max_search_nodes) {}
 
 	/** default destructor */
 	~CYapfBaseT() {}

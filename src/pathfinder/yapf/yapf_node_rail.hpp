@@ -68,25 +68,16 @@ struct CYapfRailSegment
 {
 	typedef CYapfRailSegmentKey Key;
 
-	CYapfRailSegmentKey    m_key;
-	TileIndex              m_last_tile;
-	Trackdir               m_last_td;
-	int                    m_cost;
-	TileIndex              m_last_signal_tile;
-	Trackdir               m_last_signal_td;
-	EndSegmentReasonBits   m_end_segment_reason;
-	CYapfRailSegment      *m_hash_next;
+	CYapfRailSegmentKey m_key;
+	TileIndex m_last_tile = INVALID_TILE;
+	Trackdir m_last_td = INVALID_TRACKDIR;
+	int m_cost = -1;
+	TileIndex m_last_signal_tile = INVALID_TILE;
+	Trackdir m_last_signal_td = INVALID_TRACKDIR;
+	EndSegmentReasonBits m_end_segment_reason = ESRB_NONE;
+	CYapfRailSegment *m_hash_next = nullptr;
 
-	inline CYapfRailSegment(const CYapfRailSegmentKey &key)
-		: m_key(key)
-		, m_last_tile(INVALID_TILE)
-		, m_last_td(INVALID_TRACKDIR)
-		, m_cost(-1)
-		, m_last_signal_tile(INVALID_TILE)
-		, m_last_signal_td(INVALID_TRACKDIR)
-		, m_end_segment_reason(ESRB_NONE)
-		, m_hash_next(nullptr)
-	{}
+	inline CYapfRailSegment(const CYapfRailSegmentKey &key) : m_key(key) {}
 
 	inline const Key &GetKey() const
 	{
