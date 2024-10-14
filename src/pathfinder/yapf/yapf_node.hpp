@@ -10,6 +10,9 @@
 #ifndef YAPF_NODE_HPP
 #define YAPF_NODE_HPP
 
+#include "../../track_func.h"
+#include "../../misc/dbg_helpers.h"
+
 /** Yapf Node Key that evaluates hash from (and compares) tile & exit dir. */
 struct CYapfNodeKeyExitDir {
 	TileIndex      m_tile;

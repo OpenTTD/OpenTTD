@@ -10,6 +10,12 @@
 #ifndef YAPF_NODE_RAIL_HPP
 #define YAPF_NODE_RAIL_HPP
 
+#include "../../misc/dbg_helpers.h"
+#include "../../train.h"
+#include "nodelist.hpp"
+#include "yapf_node.hpp"
+#include "yapf_type.hpp"
+
 /** key for cached segment cost for rail YAPF */
 struct CYapfRailSegmentKey
 {

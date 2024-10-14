@@ -12,6 +12,8 @@
 
 #include "../../debug.h"
 #include "../../settings_type.h"
+#include "../../misc/dbg_helpers.h"
+#include "yapf_type.hpp"
 
 /**
  * CYapfBaseT - A-star type path finder base class.
