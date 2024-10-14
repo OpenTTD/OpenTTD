@@ -26,9 +26,9 @@ void AyStar::OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g)
 {
 	/* Add a new Node to the OpenList */
 	PathNode *new_node = this->nodes.CreateNewNode();
-	new_node->Set(parent, node->m_tile, node->m_td, true);
-	new_node->m_estimate = f;
-	new_node->m_cost = g;
+	new_node->Set(parent, node->tile, node->td, true);
+	new_node->estimate = f;
+	new_node->cost = g;
 	this->nodes.InsertOpenNode(*new_node);
 }
 
@@ -48,7 +48,7 @@ void AyStar::CheckTile(AyStarNode *current, PathNode *parent)
 	/* There should not be given any other error-code.. */
 	assert(new_g >= 0);
 	/* Add the parent g-value to the new g-value */
-	new_g += parent->m_cost;
+	new_g += parent->cost;
 	if (this->max_path_cost != 0 && new_g > this->max_path_cost) return;
 
 	/* Calculate the h-value */
@@ -60,18 +60,18 @@ void AyStar::CheckTile(AyStarNode *current, PathNode *parent)
 	int new_f = new_g + new_h;
 
 	/* Get the pointer to the parent in the ClosedList (the current one is to a copy of the one in the OpenList) */
-	PathNode *closedlist_parent = this->nodes.FindClosedNode(parent->m_key);
+	PathNode *closedlist_parent = this->nodes.FindClosedNode(parent->key);
 
 	/* Check if this item is already in the OpenList */
 	PathNode *check = this->nodes.FindOpenNode(*current);
 	if (check != nullptr) {
 		/* Yes, check if this g value is lower.. */
-		if (new_g > check->m_cost) return;
-		this->nodes.PopOpenNode(check->m_key);
+		if (new_g > check->cost) return;
+		this->nodes.PopOpenNode(check->key);
 		/* It is lower, so change it to this item */
-		check->m_estimate = new_f;
-		check->m_cost = new_g;
-		check->m_parent = closedlist_parent;
+		check->estimate = new_f;
+		check->cost = new_g;
+		check->parent = closedlist_parent;
 		/* Re-add it in the openlist_queue. */
 		this->nodes.InsertOpenNode(*check);
 	} else {
@@ -97,7 +97,7 @@ int AyStar::Loop()
 	if (current == nullptr) return AYSTAR_EMPTY_OPENLIST;
 
 	/* Check for end node and if found, return that code */
-	if (this->EndNodeCheck(this, current) == AYSTAR_FOUND_END_NODE && current->m_parent != nullptr) {
+	if (this->EndNodeCheck(this, current) == AYSTAR_FOUND_END_NODE && current->parent != nullptr) {
 		if (this->FoundEndNode != nullptr) {
 			this->FoundEndNode(this, current);
 		}

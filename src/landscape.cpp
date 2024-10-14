@@ -1229,7 +1229,7 @@ static int32_t River_CalculateG(AyStar *, AyStarNode *, PathNode *)
 /* AyStar callback for getting the estimated cost to the destination. */
 static int32_t River_CalculateH(AyStar *aystar, AyStarNode *current, PathNode *)
 {
-	return DistanceManhattan(*(TileIndex*)aystar->user_target, current->m_tile);
+	return DistanceManhattan(*(TileIndex*)aystar->user_target, current->tile);
 }
 
 /* AyStar callback for getting the neighbouring nodes of the given node. */
@@ -1242,8 +1242,8 @@ static void River_GetNeighbours(AyStar *aystar, PathNode *current)
 		TileIndex t2 = tile + TileOffsByDiagDir(d);
 		if (IsValidTile(t2) && FlowsDown(tile, t2)) {
 			auto &neighbour = aystar->neighbours.emplace_back();
-			neighbour.m_tile = t2;
-			neighbour.m_td = INVALID_TRACKDIR;
+			neighbour.tile = t2;
+			neighbour.td = INVALID_TRACKDIR;
 		}
 	}
 }
@@ -1255,7 +1255,7 @@ static void River_FoundEndNode(AyStar *aystar, PathNode *current)
 
 	/* First, build the river without worrying about its width. */
 	uint cur_pos = 0;
-	for (PathNode *path = current->m_parent; path != nullptr; path = path->m_parent, cur_pos++) {
+	for (PathNode *path = current->parent; path != nullptr; path = path->parent, cur_pos++) {
 		TileIndex tile = path->GetTile();
 		if (!IsWaterTile(tile)) {
 			MakeRiverAndModifyDesertZoneAround(tile);
@@ -1271,14 +1271,14 @@ static void River_FoundEndNode(AyStar *aystar, PathNode *current)
 		uint radius;
 
 		cur_pos = 0;
-		for (PathNode *path = current->m_parent; path != nullptr; path = path->m_parent, cur_pos++) {
+		for (PathNode *path = current->parent; path != nullptr; path = path->parent, cur_pos++) {
 			TileIndex tile = path->GetTile();
 
 			/* Check if we should widen river depending on how far we are away from the source. */
 			current_river_length = DistanceManhattan(data->spring, tile);
 			radius = std::min(3u, (current_river_length / (long_river_length / 3u)) + 1u);
 
-			if (radius > 1) CircularTileSearch(&tile, radius, RiverMakeWider, (void *)&path->m_key.m_tile);
+			if (radius > 1) CircularTileSearch(&tile, radius, RiverMakeWider, (void *)&path->key.tile);
 		}
 	}
 }
@@ -1304,8 +1304,8 @@ static void BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool ma
 	finder.user_data = &user_data;
 
 	AyStarNode start;
-	start.m_tile = begin;
-	start.m_td = INVALID_TRACKDIR;
+	start.tile = begin;
+	start.td = INVALID_TRACKDIR;
 	finder.AddStartNode(&start, 0);
 	finder.Main();
 }
