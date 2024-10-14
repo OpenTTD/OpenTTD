@@ -40,18 +40,18 @@ public:
 	/** Set origin tile / trackdir mask */
 	void SetOrigin(TileIndex tile, TrackdirBits trackdirs)
 	{
-		m_orgTile = tile;
-		m_orgTrackdirs = trackdirs;
+		this->m_orgTile = tile;
+		this->m_orgTrackdirs = trackdirs;
 	}
 
 	/** Called when YAPF needs to place origin nodes into open list */
 	void PfSetStartupNodes()
 	{
-		bool is_choice = (KillFirstBit(m_orgTrackdirs) != TRACKDIR_BIT_NONE);
-		for (TrackdirBits tdb = m_orgTrackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
+		bool is_choice = (KillFirstBit(this->m_orgTrackdirs) != TRACKDIR_BIT_NONE);
+		for (TrackdirBits tdb = this->m_orgTrackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
 			Trackdir td = (Trackdir)FindFirstBit(tdb);
 			Node &n1 = Yapf().CreateNewNode();
-			n1.Set(nullptr, m_orgTile, td, is_choice);
+			n1.Set(nullptr, this->m_orgTile, td, is_choice);
 			Yapf().AddStartupNode(n1);
 		}
 	}
@@ -84,26 +84,26 @@ public:
 	/** set origin (tiles, trackdirs, etc.) */
 	void SetOrigin(TileIndex tile, Trackdir td, TileIndex tiler = INVALID_TILE, Trackdir tdr = INVALID_TRACKDIR, int reverse_penalty = 0, bool treat_first_red_two_way_signal_as_eol = true)
 	{
-		m_orgTile = tile;
-		m_orgTd = td;
-		m_revTile = tiler;
-		m_revTd = tdr;
-		m_reverse_penalty = reverse_penalty;
-		m_treat_first_red_two_way_signal_as_eol = treat_first_red_two_way_signal_as_eol;
+		this->m_orgTile = tile;
+		this->m_orgTd = td;
+		this->m_revTile = tiler;
+		this->m_revTd = tdr;
+		this->m_reverse_penalty = reverse_penalty;
+		this->m_treat_first_red_two_way_signal_as_eol = treat_first_red_two_way_signal_as_eol;
 	}
 
 	/** Called when YAPF needs to place origin nodes into open list */
 	void PfSetStartupNodes()
 	{
-		if (m_orgTile != INVALID_TILE && m_orgTd != INVALID_TRACKDIR) {
+		if (this->m_orgTile != INVALID_TILE && this->m_orgTd != INVALID_TRACKDIR) {
 			Node &n1 = Yapf().CreateNewNode();
-			n1.Set(nullptr, m_orgTile, m_orgTd, false);
+			n1.Set(nullptr, this->m_orgTile, this->m_orgTd, false);
 			Yapf().AddStartupNode(n1);
 		}
-		if (m_revTile != INVALID_TILE && m_revTd != INVALID_TRACKDIR) {
+		if (this->m_revTile != INVALID_TILE && this->m_revTd != INVALID_TRACKDIR) {
 			Node &n2 = Yapf().CreateNewNode();
-			n2.Set(nullptr, m_revTile, m_revTd, false);
-			n2.m_cost = m_reverse_penalty;
+			n2.Set(nullptr, this->m_revTile, this->m_revTd, false);
+			n2.m_cost = this->m_reverse_penalty;
 			Yapf().AddStartupNode(n2);
 		}
 	}
@@ -111,7 +111,7 @@ public:
 	/** return true if first two-way signal should be treated as dead end */
 	inline bool TreatFirstRedTwoWaySignalAsEOL()
 	{
-		return Yapf().PfGetSettings().rail_firstred_twoway_eol && m_treat_first_red_two_way_signal_as_eol;
+		return Yapf().PfGetSettings().rail_firstred_twoway_eol && this->m_treat_first_red_two_way_signal_as_eol;
 	}
 };
 
@@ -132,8 +132,8 @@ public:
 	/** set the destination tile / more trackdirs */
 	void SetDestination(TileIndex tile, TrackdirBits trackdirs)
 	{
-		m_destTile = tile;
-		m_destTrackdirs = trackdirs;
+		this->m_destTile = tile;
+		this->m_destTrackdirs = trackdirs;
 	}
 
 protected:
@@ -147,7 +147,7 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(Node &n)
 	{
-		return (n.m_key.m_tile == m_destTile) && HasTrackdir(m_destTrackdirs, n.GetTrackdir());
+		return (n.m_key.m_tile == this->m_destTile) && HasTrackdir(this->m_destTrackdirs, n.GetTrackdir());
 	}
 
 	/**
@@ -158,7 +158,7 @@ public:
 	{
 		static const int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
 		static const int dg_dir_to_y_offs[] = {0, 1, 0, -1};
-		if (PfDetectDestination(n)) {
+		if (this->PfDetectDestination(n)) {
 			n.m_estimate = n.m_cost;
 			return true;
 		}
@@ -167,8 +167,8 @@ public:
 		DiagDirection exitdir = TrackdirToExitdir(n.GetTrackdir());
 		int x1 = 2 * TileX(tile) + dg_dir_to_x_offs[(int)exitdir];
 		int y1 = 2 * TileY(tile) + dg_dir_to_y_offs[(int)exitdir];
-		int x2 = 2 * TileX(m_destTile);
-		int y2 = 2 * TileY(m_destTile);
+		int x2 = 2 * TileX(this->m_destTile);
+		int y2 = 2 * TileY(this->m_destTile);
 		int dx = abs(x1 - x2);
 		int dy = abs(y1 - y2);
 		int dmin = std::min(dx, dy);

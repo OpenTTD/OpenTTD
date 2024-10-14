@@ -81,17 +81,17 @@ struct CSegmentCostCacheT : public CSegmentCostCacheBase {
 	/** flush (clear) the cache */
 	inline void Flush()
 	{
-		m_map.Clear();
-		m_heap.clear();
+		this->m_map.Clear();
+		this->m_heap.clear();
 	}
 
 	inline Tsegment &Get(Key &key, bool *found)
 	{
-		Tsegment *item = m_map.Find(key);
+		Tsegment *item = this->m_map.Find(key);
 		if (item == nullptr) {
 			*found = false;
 			item = &m_heap.emplace_back(key);
-			m_map.Push(*item);
+			this->m_map.Push(*item);
 		} else {
 			*found = true;
 		}
@@ -150,12 +150,12 @@ public:
 		CacheKey key(n.GetKey());
 
 		if (!Yapf().CanUseGlobalCache(n)) {
-			Yapf().ConnectNodeToCachedData(n, m_local_cache.emplace_back(key));
+			Yapf().ConnectNodeToCachedData(n, this->m_local_cache.emplace_back(key));
 			return false;
 		}
 
 		bool found;
-		CachedData &item = m_global_cache.Get(key, &found);
+		CachedData &item = this->m_global_cache.Get(key, &found);
 		Yapf().ConnectNodeToCachedData(n, item);
 		return found;
 	}

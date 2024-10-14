@@ -61,10 +61,10 @@ protected:
 		int p0 = Yapf().PfGetSettings().rail_look_ahead_signal_p0;
 		int p1 = Yapf().PfGetSettings().rail_look_ahead_signal_p1;
 		int p2 = Yapf().PfGetSettings().rail_look_ahead_signal_p2;
-		m_sig_look_ahead_costs.clear();
-		m_sig_look_ahead_costs.reserve(Yapf().PfGetSettings().rail_look_ahead_max_signals);
+		this->m_sig_look_ahead_costs.clear();
+		this->m_sig_look_ahead_costs.reserve(Yapf().PfGetSettings().rail_look_ahead_max_signals);
 		for (uint i = 0; i < Yapf().PfGetSettings().rail_look_ahead_max_signals; i++) {
-			m_sig_look_ahead_costs.push_back(p0 + i * (p1 + i * p2));
+			this->m_sig_look_ahead_costs.push_back(p0 + i * (p1 + i * p2));
 		}
 	}
 
@@ -145,7 +145,7 @@ public:
 	/** The cost for reserved tiles, including skipped ones. */
 	inline int ReservationCost(Node &n, TileIndex tile, Trackdir trackdir, int skipped)
 	{
-		if (n.m_num_signals_passed >= m_sig_look_ahead_costs.size() / 2) return 0;
+		if (n.m_num_signals_passed >= this->m_sig_look_ahead_costs.size() / 2) return 0;
 		if (!IsPbsSignal(n.m_last_signal_type)) return 0;
 
 		if (IsRailStationTile(tile) && IsAnyStationTileReserved(tile, trackdir, skipped)) {
@@ -176,7 +176,7 @@ public:
 					n.m_last_signal_type = sig_type;
 
 					/* cache the look-ahead polynomial constant only if we didn't pass more signals than the look-ahead limit is */
-					int look_ahead_cost = (n.m_num_signals_passed < m_sig_look_ahead_costs.size()) ? m_sig_look_ahead_costs[n.m_num_signals_passed] : 0;
+					int look_ahead_cost = (n.m_num_signals_passed < this->m_sig_look_ahead_costs.size()) ? this->m_sig_look_ahead_costs[n.m_num_signals_passed] : 0;
 					if (sig_state != SIGNAL_STATE_RED) {
 						/* green signal */
 						n.flags_u.flags_s.m_last_signal_was_red = false;
@@ -250,7 +250,7 @@ public:
 public:
 	inline void SetMaxCost(int max_cost)
 	{
-		m_max_cost = max_cost;
+		this->m_max_cost = max_cost;
 	}
 
 	/**
@@ -450,7 +450,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 
 			/* Apply min/max speed penalties only when inside the look-ahead radius. Otherwise
 			 * it would cause desync in MP. */
-			if (n.m_num_signals_passed < m_sig_look_ahead_costs.size())
+			if (n.m_num_signals_passed < this->m_sig_look_ahead_costs.size())
 			{
 				int min_speed = 0;
 				int max_speed = tf->GetSpeedLimit(&min_speed);
@@ -465,7 +465,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 
 			/* Finish if we already exceeded the maximum path cost (i.e. when
 			 * searching for the nearest depot). */
-			if (m_max_cost > 0 && (parent_cost + segment_entry_cost + segment_cost) > m_max_cost) {
+			if (this->m_max_cost > 0 && (parent_cost + segment_entry_cost + segment_cost) > this->m_max_cost) {
 				end_segment_reason |= ESRB_PATH_TOO_LONG;
 			}
 
@@ -603,9 +603,9 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 
 	inline bool CanUseGlobalCache(Node &n) const
 	{
-		return !m_disable_cache
+		return !this->m_disable_cache
 			&& (n.m_parent != nullptr)
-			&& (n.m_parent->m_num_signals_passed >= m_sig_look_ahead_costs.size());
+			&& (n.m_parent->m_num_signals_passed >= this->m_sig_look_ahead_costs.size());
 	}
 
 	inline void ConnectNodeToCachedData(Node &n, CachedData &ci)
@@ -619,7 +619,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 
 	void DisableCache(bool disable)
 	{
-		m_disable_cache = disable;
+		this->m_disable_cache = disable;
 	}
 };
 

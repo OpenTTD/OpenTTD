@@ -98,7 +98,7 @@ public:
 	/** return current settings (can be custom - company based - but later) */
 	inline const YAPFSettings &PfGetSettings() const
 	{
-		return *m_settings;
+		return *this->m_settings;
 	}
 
 	/**
@@ -112,38 +112,38 @@ public:
 	 */
 	inline bool FindPath(const VehicleType *v)
 	{
-		m_veh = v;
+		this->m_veh = v;
 
 		Yapf().PfSetStartupNodes();
 
 		for (;;) {
-			m_num_steps++;
-			Node *best_open_node = m_nodes.GetBestOpenNode();
+			this->m_num_steps++;
+			Node *best_open_node = this->m_nodes.GetBestOpenNode();
 			if (best_open_node == nullptr) break;
 
 			if (Yapf().PfDetectDestination(*best_open_node)) {
-				m_pBestDestNode = best_open_node;
+				this->m_pBestDestNode = best_open_node;
 				break;
 			}
 
 			Yapf().PfFollowNode(*best_open_node);
-			if (m_max_search_nodes != 0 && m_nodes.ClosedCount() >= m_max_search_nodes) break;
+			if (this->m_max_search_nodes != 0 && this->m_nodes.ClosedCount() >= this->m_max_search_nodes) break;
 
-			m_nodes.PopOpenNode(best_open_node->GetKey());
-			m_nodes.InsertClosedNode(*best_open_node);
+			this->m_nodes.PopOpenNode(best_open_node->GetKey());
+			this->m_nodes.InsertClosedNode(*best_open_node);
 		}
 
-		const bool destination_found = (m_pBestDestNode != nullptr);
+		const bool destination_found = (this->m_pBestDestNode != nullptr);
 
 		if (_debug_yapf_level >= 3) {
-			const UnitID veh_idx = (m_veh != nullptr) ? m_veh->unitnumber : 0;
+			const UnitID veh_idx = (this->m_veh != nullptr) ? this->m_veh->unitnumber : 0;
 			const char ttc = Yapf().TransportTypeChar();
-			const float cache_hit_ratio = (m_stats_cache_hits == 0) ? 0.0f : ((float)m_stats_cache_hits / (float)(m_stats_cache_hits + m_stats_cost_calcs) * 100.0f);
-			const int cost = destination_found ? m_pBestDestNode->m_cost : -1;
-			const int dist = destination_found ? m_pBestDestNode->m_estimate - m_pBestDestNode->m_cost : -1;
+			const float cache_hit_ratio = (this->m_stats_cache_hits == 0) ? 0.0f : ((float)this->m_stats_cache_hits / (float)(this->m_stats_cache_hits + this->m_stats_cost_calcs) * 100.0f);
+			const int cost = destination_found ? this->m_pBestDestNode->m_cost : -1;
+			const int dist = destination_found ? this->m_pBestDestNode->m_estimate - this->m_pBestDestNode->m_cost : -1;
 
 			Debug(yapf, 3, "[YAPF{}]{}{:4d} - {} rounds - {} open - {} closed - CHR {:4.1f}% - C {} D {}",
-				ttc, destination_found ? '-' : '!', veh_idx, m_num_steps, m_nodes.OpenCount(), m_nodes.ClosedCount(), cache_hit_ratio, cost, dist
+				ttc, destination_found ? '-' : '!', veh_idx, this->m_num_steps, this->m_nodes.OpenCount(), this->m_nodes.ClosedCount(), cache_hit_ratio, cost, dist
 			);
 		}
 
@@ -156,7 +156,7 @@ public:
 	 */
 	inline Node *GetBestNode()
 	{
-		return (m_pBestDestNode != nullptr) ? m_pBestDestNode : m_pBestIntermediateNode;
+		return (this->m_pBestDestNode != nullptr) ? this->m_pBestDestNode : this->m_pBestIntermediateNode;
 	}
 
 	/**
@@ -165,7 +165,7 @@ public:
 	 */
 	inline Node &CreateNewNode()
 	{
-		Node &node = *m_nodes.CreateNewNode();
+		Node &node = *this->m_nodes.CreateNewNode();
 		return node;
 	}
 
@@ -174,8 +174,8 @@ public:
 	{
 		Yapf().PfNodeCacheFetch(n);
 		/* insert the new node only if it is not there */
-		if (m_nodes.FindOpenNode(n.m_key) == nullptr) {
-			m_nodes.InsertOpenNode(n);
+		if (this->m_nodes.FindOpenNode(n.m_key) == nullptr) {
+			this->m_nodes.InsertOpenNode(n);
 		} else {
 			/* if we are here, it means that node is already there - how it is possible?
 			 *   probably the train is in the position that both its ends point to the same tile/exit-dir
@@ -222,9 +222,9 @@ public:
 		/* evaluate the node */
 		bool bCached = Yapf().PfNodeCacheFetch(n);
 		if (!bCached) {
-			m_stats_cost_calcs++;
+			this->m_stats_cost_calcs++;
 		} else {
-			m_stats_cache_hits++;
+			this->m_stats_cache_hits++;
 		}
 
 		bool bValid = Yapf().PfCalcCost(n, &tf);
@@ -236,26 +236,26 @@ public:
 
 		/* The new node can be set as the best intermediate node only once we're
 		 * certain it will be finalized by being inserted into the open list. */
-		bool set_intermediate = m_max_search_nodes > 0 && (m_pBestIntermediateNode == nullptr || (m_pBestIntermediateNode->GetCostEstimate() - m_pBestIntermediateNode->GetCost()) > (n.GetCostEstimate() - n.GetCost()));
+		bool set_intermediate = this->m_max_search_nodes > 0 && (this->m_pBestIntermediateNode == nullptr || (this->m_pBestIntermediateNode->GetCostEstimate() - this->m_pBestIntermediateNode->GetCost()) > (n.GetCostEstimate() - n.GetCost()));
 
 		/* check new node against open list */
-		Node *openNode = m_nodes.FindOpenNode(n.GetKey());
+		Node *openNode = this->m_nodes.FindOpenNode(n.GetKey());
 		if (openNode != nullptr) {
 			/* another node exists with the same key in the open list
 			 * is it better than new one? */
 			if (n.GetCostEstimate() < openNode->GetCostEstimate()) {
 				/* update the old node by value from new one */
-				m_nodes.PopOpenNode(n.GetKey());
+				this->m_nodes.PopOpenNode(n.GetKey());
 				*openNode = n;
 				/* add the updated old node back to open list */
-				m_nodes.InsertOpenNode(*openNode);
-				if (set_intermediate) m_pBestIntermediateNode = openNode;
+				this->m_nodes.InsertOpenNode(*openNode);
+				if (set_intermediate) this->m_pBestIntermediateNode = openNode;
 			}
 			return;
 		}
 
 		/* check new node against closed list */
-		Node *closedNode = m_nodes.FindClosedNode(n.GetKey());
+		Node *closedNode = this->m_nodes.FindClosedNode(n.GetKey());
 		if (closedNode != nullptr) {
 			/* another node exists with the same key in the closed list
 			 * is it better than new one? */
@@ -274,19 +274,19 @@ public:
 		}
 		/* the new node is really new
 		 * add it to the open list */
-		m_nodes.InsertOpenNode(n);
-		if (set_intermediate) m_pBestIntermediateNode = &n;
+		this->m_nodes.InsertOpenNode(n);
+		if (set_intermediate) this->m_pBestIntermediateNode = &n;
 	}
 
 	const VehicleType * GetVehicle() const
 	{
-		return m_veh;
+		return this->m_veh;
 	}
 
 	void DumpBase(DumpTarget &dmp) const
 	{
-		dmp.WriteStructT("m_nodes", &m_nodes);
-		dmp.WriteValue("m_num_steps", m_num_steps);
+		dmp.WriteStructT("m_nodes", &this->m_nodes);
+		dmp.WriteValue("m_num_steps", this->m_num_steps);
 	}
 };
 
