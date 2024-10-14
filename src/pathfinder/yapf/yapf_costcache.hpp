@@ -73,25 +73,25 @@ struct CSegmentCostCacheT : public CSegmentCostCacheBase {
 	using Heap = std::deque<Tsegment>;
 	typedef typename Tsegment::Key Key;    ///< key to hash table
 
-	HashTable    m_map;
-	Heap         m_heap;
+	HashTable map;
+	Heap heap;
 
 	inline CSegmentCostCacheT() {}
 
 	/** flush (clear) the cache */
 	inline void Flush()
 	{
-		this->m_map.Clear();
-		this->m_heap.clear();
+		this->map.Clear();
+		this->heap.clear();
 	}
 
 	inline Tsegment &Get(Key &key, bool *found)
 	{
-		Tsegment *item = this->m_map.Find(key);
+		Tsegment *item = this->map.Find(key);
 		if (item == nullptr) {
 			*found = false;
-			item = &m_heap.emplace_back(key);
-			this->m_map.Push(*item);
+			item = &heap.emplace_back(key);
+			this->map.Push(*item);
 		} else {
 			*found = true;
 		}
@@ -116,10 +116,10 @@ public:
 	using LocalCache = std::deque<CachedData>;
 
 protected:
-	Cache &m_global_cache;
-	LocalCache m_local_cache;
+	Cache &global_cache;
+	LocalCache local_cache;
 
-	inline CYapfSegmentCostCacheGlobalT() : m_global_cache(stGetGlobalCache()) {};
+	inline CYapfSegmentCostCacheGlobalT() : global_cache(stGetGlobalCache()) {};
 
 	/** to access inherited path finder */
 	inline Tpf &Yapf()
@@ -150,12 +150,12 @@ public:
 		CacheKey key(n.GetKey());
 
 		if (!Yapf().CanUseGlobalCache(n)) {
-			Yapf().ConnectNodeToCachedData(n, this->m_local_cache.emplace_back(key));
+			Yapf().ConnectNodeToCachedData(n, this->local_cache.emplace_back(key));
 			return false;
 		}
 
 		bool found;
-		CachedData &item = this->m_global_cache.Get(key, &found);
+		CachedData &item = this->global_cache.Get(key, &found);
 		Yapf().ConnectNodeToCachedData(n, item);
 		return found;
 	}
