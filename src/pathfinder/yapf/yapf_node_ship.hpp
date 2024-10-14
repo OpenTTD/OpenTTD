@@ -20,14 +20,14 @@ template <class Tkey_>
 struct CYapfShipNodeT : CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_> > {
 	typedef CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_> > base;
 
-	TileIndex m_segment_last_tile;
-	Trackdir  m_segment_last_td;
+	TileIndex segment_last_tile;
+	Trackdir segment_last_td;
 
 	void Set(CYapfShipNodeT *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
 		this->base::Set(parent, tile, td, is_choice);
-		this->m_segment_last_tile = tile;
-		this->m_segment_last_td   = td;
+		this->segment_last_tile = tile;
+		this->segment_last_td   = td;
 	}
 };
 

@@ -48,20 +48,20 @@ protected:
 	}
 
 private:
-	TileIndex m_res_dest;         ///< The reservation target tile
-	Trackdir  m_res_dest_td;      ///< The reservation target trackdir
-	Node      *m_res_node;        ///< The reservation target node
-	TileIndex m_res_fail_tile;    ///< The tile where the reservation failed
-	Trackdir  m_res_fail_td;      ///< The trackdir where the reservation failed
-	TileIndex m_origin_tile;      ///< Tile our reservation will originate from
+	TileIndex res_dest_tile; ///< The reservation target tile
+	Trackdir res_dest_td; ///< The reservation target trackdir
+	Node *res_dest_node; ///< The reservation target node
+	TileIndex res_fail_tile; ///< The tile where the reservation failed
+	Trackdir res_fail_td; ///< The trackdir where the reservation failed
+	TileIndex origin_tile; ///< Tile our reservation will originate from
 
-	std::vector<std::pair<TileIndex, Trackdir>> m_signals_set_to_red; ///< List of signals turned red during a path reservation.
+	std::vector<std::pair<TileIndex, Trackdir>> signals_set_to_red; ///< List of signals turned red during a path reservation.
 
 	bool FindSafePositionProc(TileIndex tile, Trackdir td)
 	{
 		if (IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, !TrackFollower::Allow90degTurns())) {
-			this->m_res_dest = tile;
-			this->m_res_dest_td = td;
+			this->res_dest_tile = tile;
+			this->res_dest_td = td;
 			return false;   // Stop iterating segment
 		}
 		return true;
@@ -78,7 +78,7 @@ private:
 			SetRailStationReservation(tile, true);
 			MarkTileDirtyByTile(tile);
 			tile = TileAdd(tile, diff);
-		} while (IsCompatibleTrainStationTile(tile, start) && tile != this->m_origin_tile);
+		} while (IsCompatibleTrainStationTile(tile, start) && tile != this->origin_tile);
 
 		TriggerStationRandomisation(nullptr, start, SRT_PATH_RESERVATION);
 
@@ -92,26 +92,26 @@ private:
 		if (IsRailStationTile(tile)) {
 			if (!ReserveRailStationPlatform(tile, TrackdirToExitdir(rev_td))) {
 				/* Platform could not be reserved, undo. */
-				this->m_res_fail_tile = tile;
-				this->m_res_fail_td = td;
+				this->res_fail_tile = tile;
+				this->res_fail_td = td;
 			}
 		} else {
 			if (!TryReserveRailTrack(tile, TrackdirToTrack(td))) {
 				/* Tile couldn't be reserved, undo. */
-				this->m_res_fail_tile = tile;
-				this->m_res_fail_td = td;
+				this->res_fail_tile = tile;
+				this->res_fail_td = td;
 				return false;
 			}
 
 			/* Green path signal opposing the path? Turn to red. */
 			if (HasPbsSignalOnTrackdir(tile, rev_td) && GetSignalStateByTrackdir(tile, rev_td) == SIGNAL_STATE_GREEN) {
-				this->m_signals_set_to_red.emplace_back(tile, rev_td);
+				this->signals_set_to_red.emplace_back(tile, rev_td);
 				SetSignalStateByTrackdir(tile, rev_td, SIGNAL_STATE_RED);
 				MarkTileDirtyByTile(tile);
 			}
 		}
 
-		return tile != this->m_res_dest || td != this->m_res_dest_td;
+		return tile != this->res_dest_tile || td != this->res_dest_td;
 	}
 
 	/** Unreserve a single track/platform. Stops when the previous failer is reached. */
@@ -120,68 +120,68 @@ private:
 		if (IsRailStationTile(tile)) {
 			TileIndex     start = tile;
 			TileIndexDiff diff = TileOffsByDiagDir(TrackdirToExitdir(ReverseTrackdir(td)));
-			while ((tile != this->m_res_fail_tile || td != this->m_res_fail_td) && IsCompatibleTrainStationTile(tile, start)) {
+			while ((tile != this->res_fail_tile || td != this->res_fail_td) && IsCompatibleTrainStationTile(tile, start)) {
 				SetRailStationReservation(tile, false);
 				tile = TileAdd(tile, diff);
 			}
-		} else if (tile != this->m_res_fail_tile || td != this->m_res_fail_td) {
+		} else if (tile != this->res_fail_tile || td != this->res_fail_td) {
 			UnreserveRailTrack(tile, TrackdirToTrack(td));
 		}
-		return (tile != this->m_res_dest || td != this->m_res_dest_td) && (tile != this->m_res_fail_tile || td != this->m_res_fail_td);
+		return (tile != this->res_dest_tile || td != this->res_dest_td) && (tile != this->res_fail_tile || td != this->res_fail_td);
 	}
 
 public:
 	/** Set the target to where the reservation should be extended. */
 	inline void SetReservationTarget(Node *node, TileIndex tile, Trackdir td)
 	{
-		this->m_res_node = node;
-		this->m_res_dest = tile;
-		this->m_res_dest_td = td;
+		this->res_dest_node = node;
+		this->res_dest_tile = tile;
+		this->res_dest_td = td;
 	}
 
 	/** Check the node for a possible reservation target. */
 	inline void FindSafePositionOnNode(Node *node)
 	{
-		assert(node->m_parent != nullptr);
+		assert(node->parent != nullptr);
 
 		/* We will never pass more than two signals, no need to check for a safe tile. */
-		if (node->m_parent->m_num_signals_passed >= 2) return;
+		if (node->parent->num_signals_passed >= 2) return;
 
 		if (!node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::FindSafePositionProc)) {
-			this->m_res_node = node;
+			this->res_dest_node = node;
 		}
 	}
 
 	/** Try to reserve the path till the reservation target. */
 	bool TryReservePath(PBSTileInfo *target, TileIndex origin)
 	{
-		this->m_res_fail_tile = INVALID_TILE;
-		this->m_origin_tile = origin;
+		this->res_fail_tile = INVALID_TILE;
+		this->origin_tile = origin;
 
 		if (target != nullptr) {
-			target->tile = this->m_res_dest;
-			target->trackdir = this->m_res_dest_td;
+			target->tile = this->res_dest_tile;
+			target->trackdir = this->res_dest_td;
 			target->okay = false;
 		}
 
 		/* Don't bother if the target is reserved. */
-		if (!IsWaitingPositionFree(Yapf().GetVehicle(), this->m_res_dest, this->m_res_dest_td)) return false;
+		if (!IsWaitingPositionFree(Yapf().GetVehicle(), this->res_dest_tile, this->res_dest_td)) return false;
 
-		this->m_signals_set_to_red.clear();
-		for (Node *node = this->m_res_node; node->m_parent != nullptr; node = node->m_parent) {
+		this->signals_set_to_red.clear();
+		for (Node *node = this->res_dest_node; node->parent != nullptr; node = node->parent) {
 			node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::ReserveSingleTrack);
-			if (this->m_res_fail_tile != INVALID_TILE) {
+			if (this->res_fail_tile != INVALID_TILE) {
 				/* Reservation failed, undo. */
-				Node *fail_node = this->m_res_node;
-				TileIndex stop_tile = this->m_res_fail_tile;
+				Node *fail_node = this->res_dest_node;
+				TileIndex stop_tile = this->res_fail_tile;
 				do {
 					/* If this is the node that failed, stop at the failed tile. */
-					this->m_res_fail_tile = fail_node == node ? stop_tile : INVALID_TILE;
+					this->res_fail_tile = fail_node == node ? stop_tile : INVALID_TILE;
 					fail_node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::UnreserveSingleTrack);
-				} while (fail_node != node && (fail_node = fail_node->m_parent) != nullptr);
+				} while (fail_node != node && (fail_node = fail_node->parent) != nullptr);
 
 				/* Re-instate green path signals we turned to red. */
-				for (auto [sig_tile, td] : this->m_signals_set_to_red) {
+				for (auto [sig_tile, td] : this->signals_set_to_red) {
 					SetSignalStateByTrackdir(sig_tile, td, SIGNAL_STATE_GREEN);
 				}
 
@@ -191,7 +191,7 @@ public:
 
 		if (target != nullptr) target->okay = true;
 
-		if (Yapf().CanUseGlobalCache(*this->m_res_node)) {
+		if (Yapf().CanUseGlobalCache(*this->res_dest_node)) {
 			YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
 		}
 
@@ -280,13 +280,13 @@ public:
 
 		/* walk through the path back to the origin */
 		Node *pNode = n;
-		while (pNode->m_parent != nullptr) {
-			pNode = pNode->m_parent;
+		while (pNode->parent != nullptr) {
+			pNode = pNode->parent;
 		}
 
 		/* if the origin node is our front vehicle tile/Trackdir then we didn't reverse
 		 * but we can also look at the cost (== 0 -> not reversed, == reverse_penalty -> reversed) */
-		return FindDepotData(n->GetLastTile(), n->m_cost, pNode->m_cost != 0);
+		return FindDepotData(n->GetLastTile(), n->cost, pNode->cost != 0);
 	}
 };
 
@@ -362,9 +362,9 @@ public:
 
 		/* Walk through the path back to the origin. */
 		Node *pPrev = nullptr;
-		while (pNode->m_parent != nullptr) {
+		while (pNode->parent != nullptr) {
 			pPrev = pNode;
-			pNode = pNode->m_parent;
+			pNode = pNode->parent;
 
 			this->FindSafePositionOnNode(pPrev);
 		}
@@ -454,9 +454,9 @@ public:
 			/* path was found or at least suggested
 			 * walk through the path back to the origin */
 			Node *pPrev = nullptr;
-			while (pNode->m_parent != nullptr) {
+			while (pNode->parent != nullptr) {
 				pPrev = pNode;
-				pNode = pNode->m_parent;
+				pNode = pNode->parent;
 
 				this->FindSafePositionOnNode(pPrev);
 			}
@@ -476,7 +476,7 @@ public:
 		}
 
 		/* Treat the path as found if stopped on the first two way signal(s). */
-		path_found |= Yapf().m_stopped_on_first_two_way_signal;
+		path_found |= Yapf().stopped_on_first_two_way_signal;
 		return next_trackdir;
 	}
 
@@ -513,13 +513,13 @@ public:
 		/* path was found
 		 * walk through the path back to the origin */
 		Node *pNode = Yapf().GetBestNode();
-		while (pNode->m_parent != nullptr) {
-			pNode = pNode->m_parent;
+		while (pNode->parent != nullptr) {
+			pNode = pNode->parent;
 		}
 
 		/* check if it was reversed origin */
 		Node &best_org_node = *pNode;
-		bool reversed = (best_org_node.m_cost != 0);
+		bool reversed = (best_org_node.cost != 0);
 		return reversed;
 	}
 };

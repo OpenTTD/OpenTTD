@@ -15,32 +15,32 @@
 
 /** Yapf Node Key that evaluates hash from (and compares) tile & exit dir. */
 struct CYapfNodeKeyExitDir {
-	TileIndex      m_tile;
-	Trackdir       m_td;
-	DiagDirection  m_exitdir;
+	TileIndex tile;
+	Trackdir td;
+	DiagDirection exitdir;
 
 	inline void Set(TileIndex tile, Trackdir td)
 	{
-		this->m_tile = tile;
-		this->m_td = td;
-		this->m_exitdir = (this->m_td == INVALID_TRACKDIR) ? INVALID_DIAGDIR : TrackdirToExitdir(this->m_td);
+		this->tile = tile;
+		this->td = td;
+		this->exitdir = (this->td == INVALID_TRACKDIR) ? INVALID_DIAGDIR : TrackdirToExitdir(this->td);
 	}
 
 	inline int CalcHash() const
 	{
-		return this->m_exitdir | (this->m_tile.base() << 2);
+		return this->exitdir | (this->tile.base() << 2);
 	}
 
 	inline bool operator==(const CYapfNodeKeyExitDir &other) const
 	{
-		return this->m_tile == other.m_tile && this->m_exitdir == other.m_exitdir;
+		return this->tile == other.tile && this->exitdir == other.exitdir;
 	}
 
 	void Dump(DumpTarget &dmp) const
 	{
-		dmp.WriteTile("m_tile", this->m_tile);
-		dmp.WriteEnumT("m_td", this->m_td);
-		dmp.WriteEnumT("m_exitdir", this->m_exitdir);
+		dmp.WriteTile("tile", this->tile);
+		dmp.WriteEnumT("td", this->td);
+		dmp.WriteEnumT("exitdir", this->exitdir);
 	}
 };
 
@@ -48,12 +48,12 @@ struct CYapfNodeKeyTrackDir : public CYapfNodeKeyExitDir
 {
 	inline int CalcHash() const
 	{
-		return this->m_td | (this->m_tile.base() << 4);
+		return this->td | (this->tile.base() << 4);
 	}
 
 	inline bool operator==(const CYapfNodeKeyTrackDir &other) const
 	{
-		return this->m_tile == other.m_tile && this->m_td == other.m_td;
+		return this->tile == other.tile && this->td == other.td;
 	}
 };
 
@@ -63,74 +63,74 @@ struct CYapfNodeT {
 	typedef Tkey_ Key;
 	typedef Tnode Node;
 
-	Tkey_       m_key;
-	Node       *m_hash_next;
-	Node       *m_parent;
-	int         m_cost;
-	int         m_estimate;
-	bool        m_is_choice;
+	Tkey_ key;
+	Node *hash_next;
+	Node *parent;
+	int cost;
+	int estimate;
+	bool is_choice;
 
 	inline void Set(Node *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
-		this->m_key.Set(tile, td);
-		this->m_hash_next = nullptr;
-		this->m_parent = parent;
-		this->m_cost = 0;
-		this->m_estimate = 0;
-		this->m_is_choice = is_choice;
+		this->key.Set(tile, td);
+		this->hash_next = nullptr;
+		this->parent = parent;
+		this->cost = 0;
+		this->estimate = 0;
+		this->is_choice = is_choice;
 	}
 
 	inline Node *GetHashNext()
 	{
-		return this->m_hash_next;
+		return this->hash_next;
 	}
 
 	inline void SetHashNext(Node *pNext)
 	{
-		this->m_hash_next = pNext;
+		this->hash_next = pNext;
 	}
 
 	inline TileIndex GetTile() const
 	{
-		return this->m_key.m_tile;
+		return this->key.tile;
 	}
 
 	inline Trackdir GetTrackdir() const
 	{
-		return this->m_key.m_td;
+		return this->key.td;
 	}
 
 	inline const Tkey_ &GetKey() const
 	{
-		return this->m_key;
+		return this->key;
 	}
 
 	inline int GetCost() const
 	{
-		return this->m_cost;
+		return this->cost;
 	}
 
 	inline int GetCostEstimate() const
 	{
-		return this->m_estimate;
+		return this->estimate;
 	}
 
 	inline bool GetIsChoice() const
 	{
-		return this->m_is_choice;
+		return this->is_choice;
 	}
 
 	inline bool operator<(const Node &other) const
 	{
-		return this->m_estimate < other.m_estimate;
+		return this->estimate < other.estimate;
 	}
 
 	void Dump(DumpTarget &dmp) const
 	{
-		dmp.WriteStructT("m_key", &this->m_key);
-		dmp.WriteStructT("m_parent", this->m_parent);
-		dmp.WriteValue("m_cost", this->m_cost);
-		dmp.WriteValue("m_estimate", this->m_estimate);
+		dmp.WriteStructT("key", &this->key);
+		dmp.WriteStructT("parent", this->parent);
+		dmp.WriteValue("cost", this->cost);
+		dmp.WriteValue("estimate", this->estimate);
 	}
 };
 
