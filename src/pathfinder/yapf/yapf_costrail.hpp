@@ -31,21 +31,9 @@ protected:
 		TileType    tile_type;
 		RailType    rail_type;
 
-		TILE()
-		{
-			tile = INVALID_TILE;
-			td = INVALID_TRACKDIR;
-			tile_type = MP_VOID;
-			rail_type = INVALID_RAILTYPE;
-		}
+		TILE() : tile(INVALID_TILE), td(INVALID_TRACKDIR), tile_type(MP_VOID), rail_type(INVALID_RAILTYPE) { }
 
-		TILE(TileIndex tile, Trackdir td)
-		{
-			this->tile = tile;
-			this->td = td;
-			this->tile_type = GetTileType(tile);
-			this->rail_type = GetTileRailType(tile);
-		}
+		TILE(TileIndex tile, Trackdir td) : tile(tile), td(td), tile_type(GetTileType(tile)), rail_type(GetTileRailType(tile)) { }
 	};
 
 protected:
