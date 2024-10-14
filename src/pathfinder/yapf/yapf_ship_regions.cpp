@@ -26,11 +26,11 @@ struct CYapfRegionPatchNodeKey {
 
 	inline void Set(const WaterRegionPatchDesc &water_region_patch)
 	{
-		m_water_region_patch = water_region_patch;
+		this->m_water_region_patch = water_region_patch;
 	}
 
-	inline int CalcHash() const { return CalculateWaterRegionPatchHash(m_water_region_patch); }
-	inline bool operator==(const CYapfRegionPatchNodeKey &other) const { return CalcHash() == other.CalcHash(); }
+	inline int CalcHash() const { return CalculateWaterRegionPatchHash(this->m_water_region_patch); }
+	inline bool operator==(const CYapfRegionPatchNodeKey &other) const { return this->CalcHash() == other.CalcHash(); }
 };
 
 inline uint ManhattanDistance(const CYapfRegionPatchNodeKey &a, const CYapfRegionPatchNodeKey &b)
@@ -52,23 +52,23 @@ struct CYapfRegionNodeT {
 
 	inline void Set(Node *parent, const WaterRegionPatchDesc &water_region_patch)
 	{
-		m_key.Set(water_region_patch);
-		m_hash_next = nullptr;
-		m_parent = parent;
-		m_cost = 0;
-		m_estimate = 0;
+		this->m_key.Set(water_region_patch);
+		this->m_hash_next = nullptr;
+		this->m_parent = parent;
+		this->m_cost = 0;
+		this->m_estimate = 0;
 	}
 
 	inline void Set(Node *parent, const Key &key)
 	{
-		Set(parent, key.m_water_region_patch);
+		this->Set(parent, key.m_water_region_patch);
 	}
 
 	DiagDirection GetDiagDirFromParent() const
 	{
-		if (!m_parent) return INVALID_DIAGDIR;
-		const int dx = m_key.m_water_region_patch.x - m_parent->m_key.m_water_region_patch.x;
-		const int dy = m_key.m_water_region_patch.y - m_parent->m_key.m_water_region_patch.y;
+		if (!this->m_parent) return INVALID_DIAGDIR;
+		const int dx = this->m_key.m_water_region_patch.x - this->m_parent->m_key.m_water_region_patch.x;
+		const int dy = this->m_key.m_water_region_patch.y - this->m_parent->m_key.m_water_region_patch.y;
 		if (dx > 0 && dy == 0) return DIAGDIR_SW;
 		if (dx < 0 && dy == 0) return DIAGDIR_NE;
 		if (dx == 0 && dy > 0) return DIAGDIR_SE;
@@ -76,12 +76,12 @@ struct CYapfRegionNodeT {
 		return INVALID_DIAGDIR;
 	}
 
-	inline Node *GetHashNext() { return m_hash_next; }
-	inline void SetHashNext(Node *pNext) { m_hash_next = pNext; }
-	inline const Tkey_ &GetKey() const { return m_key; }
-	inline int GetCost() { return m_cost; }
-	inline int GetCostEstimate() { return m_estimate; }
-	inline bool operator<(const Node &other) const { return m_estimate < other.m_estimate; }
+	inline Node *GetHashNext() { return this->m_hash_next; }
+	inline void SetHashNext(Node *pNext) { this->m_hash_next = pNext; }
+	inline const Tkey_ &GetKey() const { return this->m_key; }
+	inline int GetCost() { return this->m_cost; }
+	inline int GetCostEstimate() { return this->m_estimate; }
+	inline bool operator<(const Node &other) const { return this->m_estimate < other.m_estimate; }
 };
 
 /** YAPF origin for water regions. */
@@ -103,17 +103,17 @@ public:
 	void AddOrigin(const WaterRegionPatchDesc &water_region_patch)
 	{
 		if (water_region_patch.label == INVALID_WATER_REGION_PATCH) return;
-		if (!HasOrigin(water_region_patch)) m_origin_keys.push_back(CYapfRegionPatchNodeKey{ water_region_patch });
+		if (!HasOrigin(water_region_patch)) this->m_origin_keys.push_back(CYapfRegionPatchNodeKey{ water_region_patch });
 	}
 
 	bool HasOrigin(const WaterRegionPatchDesc &water_region_patch)
 	{
-		return std::find(m_origin_keys.begin(), m_origin_keys.end(), CYapfRegionPatchNodeKey{ water_region_patch }) != m_origin_keys.end();
+		return std::find(this->m_origin_keys.begin(), this->m_origin_keys.end(), CYapfRegionPatchNodeKey{ water_region_patch }) != this->m_origin_keys.end();
 	}
 
 	void PfSetStartupNodes()
 	{
-		for (const CYapfRegionPatchNodeKey &origin_key : m_origin_keys) {
+		for (const CYapfRegionPatchNodeKey &origin_key : this->m_origin_keys) {
 			Node &node = Yapf().CreateNewNode();
 			node.Set(nullptr, origin_key);
 			Yapf().AddStartupNode(node);
@@ -136,7 +136,7 @@ protected:
 public:
 	void SetDestination(const WaterRegionPatchDesc &water_region_patch)
 	{
-		m_dest.Set(water_region_patch);
+		this->m_dest.Set(water_region_patch);
 	}
 
 protected:
@@ -145,17 +145,17 @@ protected:
 public:
 	inline bool PfDetectDestination(Node &n) const
 	{
-		return n.m_key == m_dest;
+		return n.m_key == this->m_dest;
 	}
 
 	inline bool PfCalcEstimate(Node &n)
 	{
-		if (PfDetectDestination(n)) {
+		if (this->PfDetectDestination(n)) {
 			n.m_estimate = n.m_cost;
 			return true;
 		}
 
-		n.m_estimate = n.m_cost + ManhattanDistance(n.m_key, m_dest);
+		n.m_estimate = n.m_cost + ManhattanDistance(n.m_key, this->m_dest);
 
 		return true;
 	}
@@ -297,7 +297,7 @@ typedef CNodeList_HashTableT<CYapfRegionNodeT<CYapfRegionPatchNodeKey>, 12, 12> 
 
 struct CYapfRegionWater : CYapfT<CYapfRegion_TypesT<CYapfRegionWater, CRegionNodeListWater>>
 {
-	explicit CYapfRegionWater(int max_nodes) { m_max_search_nodes = max_nodes; }
+	explicit CYapfRegionWater(int max_nodes) { this->m_max_search_nodes = max_nodes; }
 };
 
 /**
