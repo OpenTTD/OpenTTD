@@ -11,6 +11,9 @@
 #define YAPF_COSTCACHE_HPP
 
 #include "../../timer/timer_game_calendar.h"
+#include "../../misc/hashtable.hpp"
+#include "../../tile_type.h"
+#include "../../track_type.h"
 
 /**
  * CYapfSegmentCostCacheNoneT - the formal only yapf cost cache provider that implements

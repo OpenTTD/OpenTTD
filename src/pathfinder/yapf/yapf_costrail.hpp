@@ -12,6 +12,10 @@
 
 
 #include "../../pbs.h"
+#include "../follow_track.hpp"
+#include "../pathfinder_type.h"
+#include "yapf_type.hpp"
+#include "yapf_costbase.hpp"
 
 template <class Types>
 class CYapfCostRailT : public CYapfCostBase {

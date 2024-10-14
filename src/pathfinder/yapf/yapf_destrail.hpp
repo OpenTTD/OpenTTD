@@ -10,6 +10,10 @@
 #ifndef YAPF_DESTRAIL_HPP
 #define YAPF_DESTRAIL_HPP
 
+#include "../../train.h"
+#include "../pathfinder_func.h"
+#include "../pathfinder_type.h"
+
 class CYapfDestinationRailBase {
 protected:
 	RailTypes m_compatible_railtypes;

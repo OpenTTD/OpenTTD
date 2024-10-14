@@ -10,6 +10,11 @@
 #ifndef YAPF_NODE_ROAD_HPP
 #define YAPF_NODE_ROAD_HPP
 
+#include "../../tile_type.h"
+#include "../../track_type.h"
+#include "nodelist.hpp"
+#include "yapf_node.hpp"
+
 /** Yapf Node for road YAPF */
 template <class Tkey_>
 struct CYapfRoadNodeT : CYapfNodeT<Tkey_, CYapfRoadNodeT<Tkey_> > {
