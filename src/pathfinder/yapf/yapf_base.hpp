@@ -56,24 +56,24 @@ public:
 	typedef typename Node::Key Key;            ///< key to hash tables
 
 
-	NodeList m_nodes; ///< node list multi-container
+	NodeList nodes; ///< node list multi-container
 
 protected:
-	Node *m_pBestDestNode = nullptr; ///< pointer to the destination node found at last round
-	Node *m_pBestIntermediateNode = nullptr; ///< here should be node closest to the destination if path not found
-	const YAPFSettings *m_settings; ///< current settings (_settings_game.yapf)
-	int m_max_search_nodes; ///< maximum number of nodes we are allowed to visit before we give up
-	const VehicleType *m_veh = nullptr; ///< vehicle that we are trying to drive
+	Node *best_dest_node = nullptr; ///< pointer to the destination node found at last round
+	Node *best_intermediate_node = nullptr; ///< here should be node closest to the destination if path not found
+	const YAPFSettings *settings; ///< current settings (_settings_game.yapf)
+	int max_search_nodes; ///< maximum number of nodes we are allowed to visit before we give up
+	const VehicleType *vehicle = nullptr; ///< vehicle that we are trying to drive
 
-	int m_stats_cost_calcs = 0; ///< stats - how many node's costs were calculated
-	int m_stats_cache_hits = 0; ///< stats - how many node's costs were reused from cache
+	int stats_cost_calcs = 0; ///< stats - how many node's costs were calculated
+	int stats_cache_hits = 0; ///< stats - how many node's costs were reused from cache
 
 public:
-	int m_num_steps = 0; ///< this is there for debugging purposes (hope it doesn't hurt)
+	int num_steps = 0; ///< this is there for debugging purposes (hope it doesn't hurt)
 
 public:
 	/** default constructor */
-	inline CYapfBaseT() : m_settings(&_settings_game.pf.yapf), m_max_search_nodes(PfGetSettings().max_search_nodes) {}
+	inline CYapfBaseT() : settings(&_settings_game.pf.yapf), max_search_nodes(PfGetSettings().max_search_nodes) {}
 
 	/** default destructor */
 	~CYapfBaseT() {}
@@ -89,7 +89,7 @@ public:
 	/** return current settings (can be custom - company based - but later) */
 	inline const YAPFSettings &PfGetSettings() const
 	{
-		return *this->m_settings;
+		return *this->settings;
 	}
 
 	/**
@@ -98,43 +98,43 @@ public:
 	 *   - main loop that stops if:
 	 *      - the destination was found
 	 *      - or the open list is empty (no route to destination).
-	 *      - or the maximum amount of loops reached - m_max_search_nodes (default = 10000)
+	 *      - or the maximum amount of loops reached - max_search_nodes (default = 10000)
 	 * @return true if the path was found
 	 */
 	inline bool FindPath(const VehicleType *v)
 	{
-		this->m_veh = v;
+		this->vehicle = v;
 
 		Yapf().PfSetStartupNodes();
 
 		for (;;) {
-			this->m_num_steps++;
-			Node *best_open_node = this->m_nodes.GetBestOpenNode();
+			this->num_steps++;
+			Node *best_open_node = this->nodes.GetBestOpenNode();
 			if (best_open_node == nullptr) break;
 
 			if (Yapf().PfDetectDestination(*best_open_node)) {
-				this->m_pBestDestNode = best_open_node;
+				this->best_dest_node = best_open_node;
 				break;
 			}
 
 			Yapf().PfFollowNode(*best_open_node);
-			if (this->m_max_search_nodes != 0 && this->m_nodes.ClosedCount() >= this->m_max_search_nodes) break;
+			if (this->max_search_nodes != 0 && this->nodes.ClosedCount() >= this->max_search_nodes) break;
 
-			this->m_nodes.PopOpenNode(best_open_node->GetKey());
-			this->m_nodes.InsertClosedNode(*best_open_node);
+			this->nodes.PopOpenNode(best_open_node->GetKey());
+			this->nodes.InsertClosedNode(*best_open_node);
 		}
 
-		const bool destination_found = (this->m_pBestDestNode != nullptr);
+		const bool destination_found = (this->best_dest_node != nullptr);
 
 		if (_debug_yapf_level >= 3) {
-			const UnitID veh_idx = (this->m_veh != nullptr) ? this->m_veh->unitnumber : 0;
+			const UnitID veh_idx = (this->vehicle != nullptr) ? this->vehicle->unitnumber : 0;
 			const char ttc = Yapf().TransportTypeChar();
-			const float cache_hit_ratio = (this->m_stats_cache_hits == 0) ? 0.0f : ((float)this->m_stats_cache_hits / (float)(this->m_stats_cache_hits + this->m_stats_cost_calcs) * 100.0f);
-			const int cost = destination_found ? this->m_pBestDestNode->m_cost : -1;
-			const int dist = destination_found ? this->m_pBestDestNode->m_estimate - this->m_pBestDestNode->m_cost : -1;
+			const float cache_hit_ratio = (this->stats_cache_hits == 0) ? 0.0f : ((float)this->stats_cache_hits / (float)(this->stats_cache_hits + this->stats_cost_calcs) * 100.0f);
+			const int cost = destination_found ? this->best_dest_node->cost : -1;
+			const int dist = destination_found ? this->best_dest_node->estimate - this->best_dest_node->cost : -1;
 
 			Debug(yapf, 3, "[YAPF{}]{}{:4d} - {} rounds - {} open - {} closed - CHR {:4.1f}% - C {} D {}",
-				ttc, destination_found ? '-' : '!', veh_idx, this->m_num_steps, this->m_nodes.OpenCount(), this->m_nodes.ClosedCount(), cache_hit_ratio, cost, dist
+				ttc, destination_found ? '-' : '!', veh_idx, this->num_steps, this->nodes.OpenCount(), this->nodes.ClosedCount(), cache_hit_ratio, cost, dist
 			);
 		}
 
@@ -147,7 +147,7 @@ public:
 	 */
 	inline Node *GetBestNode()
 	{
-		return (this->m_pBestDestNode != nullptr) ? this->m_pBestDestNode : this->m_pBestIntermediateNode;
+		return (this->best_dest_node != nullptr) ? this->best_dest_node : this->best_intermediate_node;
 	}
 
 	/**
@@ -156,7 +156,7 @@ public:
 	 */
 	inline Node &CreateNewNode()
 	{
-		Node &node = *this->m_nodes.CreateNewNode();
+		Node &node = *this->nodes.CreateNewNode();
 		return node;
 	}
 
@@ -165,8 +165,8 @@ public:
 	{
 		Yapf().PfNodeCacheFetch(n);
 		/* insert the new node only if it is not there */
-		if (this->m_nodes.FindOpenNode(n.m_key) == nullptr) {
-			this->m_nodes.InsertOpenNode(n);
+		if (this->nodes.FindOpenNode(n.key) == nullptr) {
+			this->nodes.InsertOpenNode(n);
 		} else {
 			/* if we are here, it means that node is already there - how it is possible?
 			 *   probably the train is in the position that both its ends point to the same tile/exit-dir
@@ -177,11 +177,11 @@ public:
 	/** add multiple nodes - direct children of the given node */
 	inline void AddMultipleNodes(Node *parent, const TrackFollower &tf)
 	{
-		bool is_choice = (KillFirstBit(tf.m_new_td_bits) != TRACKDIR_BIT_NONE);
-		for (TrackdirBits rtds = tf.m_new_td_bits; rtds != TRACKDIR_BIT_NONE; rtds = KillFirstBit(rtds)) {
+		bool is_choice = (KillFirstBit(tf.new_td_bits) != TRACKDIR_BIT_NONE);
+		for (TrackdirBits rtds = tf.new_td_bits; rtds != TRACKDIR_BIT_NONE; rtds = KillFirstBit(rtds)) {
 			Trackdir td = (Trackdir)FindFirstBit(rtds);
 			Node &n = Yapf().CreateNewNode();
-			n.Set(parent, tf.m_new_tile, td, is_choice);
+			n.Set(parent, tf.new_tile, td, is_choice);
 			Yapf().AddNewNode(n, tf);
 		}
 	}
@@ -197,11 +197,11 @@ public:
 	void PruneIntermediateNodeBranch(Node *n)
 	{
 		bool intermediate_on_branch = false;
-		while (n != nullptr && (n->m_segment->m_end_segment_reason & ESRB_CHOICE_FOLLOWS) == 0) {
-			if (n == Yapf().m_pBestIntermediateNode) intermediate_on_branch = true;
-			n = n->m_parent;
+		while (n != nullptr && (n->segment->end_segment_reason & ESRB_CHOICE_FOLLOWS) == 0) {
+			if (n == Yapf().best_intermediate_node) intermediate_on_branch = true;
+			n = n->parent;
 		}
-		if (intermediate_on_branch) Yapf().m_pBestIntermediateNode = n;
+		if (intermediate_on_branch) Yapf().best_intermediate_node = n;
 	}
 
 	/**
@@ -211,47 +211,47 @@ public:
 	void AddNewNode(Node &n, const TrackFollower &tf)
 	{
 		/* evaluate the node */
-		bool bCached = Yapf().PfNodeCacheFetch(n);
-		if (!bCached) {
-			this->m_stats_cost_calcs++;
+		bool cached = Yapf().PfNodeCacheFetch(n);
+		if (!cached) {
+			this->stats_cost_calcs++;
 		} else {
-			this->m_stats_cache_hits++;
+			this->stats_cache_hits++;
 		}
 
-		bool bValid = Yapf().PfCalcCost(n, &tf);
+		bool valid = Yapf().PfCalcCost(n, &tf);
 
-		if (bValid) bValid = Yapf().PfCalcEstimate(n);
+		if (valid) valid = Yapf().PfCalcEstimate(n);
 
 		/* have the cost or estimate callbacks marked this node as invalid? */
-		if (!bValid) return;
+		if (!valid) return;
 
 		/* The new node can be set as the best intermediate node only once we're
 		 * certain it will be finalized by being inserted into the open list. */
-		bool set_intermediate = this->m_max_search_nodes > 0 && (this->m_pBestIntermediateNode == nullptr || (this->m_pBestIntermediateNode->GetCostEstimate() - this->m_pBestIntermediateNode->GetCost()) > (n.GetCostEstimate() - n.GetCost()));
+		bool set_intermediate = this->max_search_nodes > 0 && (this->best_intermediate_node == nullptr || (this->best_intermediate_node->GetCostEstimate() - this->best_intermediate_node->GetCost()) > (n.GetCostEstimate() - n.GetCost()));
 
 		/* check new node against open list */
-		Node *openNode = this->m_nodes.FindOpenNode(n.GetKey());
-		if (openNode != nullptr) {
+		Node *open_node = this->nodes.FindOpenNode(n.GetKey());
+		if (open_node != nullptr) {
 			/* another node exists with the same key in the open list
 			 * is it better than new one? */
-			if (n.GetCostEstimate() < openNode->GetCostEstimate()) {
+			if (n.GetCostEstimate() < open_node->GetCostEstimate()) {
 				/* update the old node by value from new one */
-				this->m_nodes.PopOpenNode(n.GetKey());
-				*openNode = n;
+				this->nodes.PopOpenNode(n.GetKey());
+				*open_node = n;
 				/* add the updated old node back to open list */
-				this->m_nodes.InsertOpenNode(*openNode);
-				if (set_intermediate) this->m_pBestIntermediateNode = openNode;
+				this->nodes.InsertOpenNode(*open_node);
+				if (set_intermediate) this->best_intermediate_node = open_node;
 			}
 			return;
 		}
 
 		/* check new node against closed list */
-		Node *closedNode = this->m_nodes.FindClosedNode(n.GetKey());
-		if (closedNode != nullptr) {
+		Node *closed_node = this->nodes.FindClosedNode(n.GetKey());
+		if (closed_node != nullptr) {
 			/* another node exists with the same key in the closed list
 			 * is it better than new one? */
 			int node_est = n.GetCostEstimate();
-			int closed_est = closedNode->GetCostEstimate();
+			int closed_est = closed_node->GetCostEstimate();
 			if (node_est < closed_est) {
 				/* If this assert occurs, you have probably problem in
 				 * your Tderived::PfCalcCost() or Tderived::PfCalcEstimate().
@@ -265,19 +265,19 @@ public:
 		}
 		/* the new node is really new
 		 * add it to the open list */
-		this->m_nodes.InsertOpenNode(n);
-		if (set_intermediate) this->m_pBestIntermediateNode = &n;
+		this->nodes.InsertOpenNode(n);
+		if (set_intermediate) this->best_intermediate_node = &n;
 	}
 
 	const VehicleType * GetVehicle() const
 	{
-		return this->m_veh;
+		return this->vehicle;
 	}
 
 	void DumpBase(DumpTarget &dmp) const
 	{
-		dmp.WriteStructT("m_nodes", &this->m_nodes);
-		dmp.WriteValue("m_num_steps", this->m_num_steps);
+		dmp.WriteStructT("nodes", &this->nodes);
+		dmp.WriteValue("num_steps", this->num_steps);
 	}
 };
 
