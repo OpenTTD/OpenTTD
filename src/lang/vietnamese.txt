@@ -306,7 +306,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Khi bậ
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Mặc định
-STR_BUTTON_CANCEL                                               :{BLACK}Thôi
+STR_BUTTON_CANCEL                                               :{BLACK}Hủy bỏ
 STR_BUTTON_OK                                                   :{BLACK}Đồng ý
 
 # On screen keyboard window
@@ -443,7 +443,7 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Sắp xếp nh�
 # Settings menu
 ###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Cấu hình trò chơi
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Thiết lập
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Thiết Lập
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Thiết lập AI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Thiết lập kịch bản màn chơi
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Thông số NewGRF
@@ -454,7 +454,7 @@ STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Hiển thị t�
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Hiển thị tên điểm mốc
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Hiển thị ký hiệu
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Hiển thị biển hiệu và tên của đối thủ
-STR_SETTINGS_MENU_FULL_ANIMATION                                :Animation đầy đủ
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Hoạt họa đầy đủ
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Chi tiết
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Làm trong suốt nhà cửa
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Làm trong suốt biển hiệu
@@ -462,7 +462,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Làm trong su�
 # File menu
 STR_FILE_MENU_SAVE_GAME                                         :Lưu game
 STR_FILE_MENU_LOAD_GAME                                         :Nạp game
-STR_FILE_MENU_QUIT_GAME                                         :Bỏ game
+STR_FILE_MENU_QUIT_GAME                                         :Bỏ dở ván chơi
 STR_FILE_MENU_EXIT                                              :Thoát
 
 # Map menu
@@ -489,7 +489,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Bảng giá cư
 # Company league menu
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bảng tầm cỡ công ty
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Chi tiết hệ số năng suất
-STR_GRAPH_MENU_HIGHSCORE                                        :Bảng điểm chơi cao nhất
+STR_GRAPH_MENU_HIGHSCORE                                        :Bảng Thành Tích
 
 # Industry menu
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Danh mục các ngành
@@ -527,9 +527,9 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Xoá tất cả
 
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Thông tin vùng đất
-STR_ABOUT_MENU_HELP                                             :Trợ giúp & hướng dẫn
+STR_ABOUT_MENU_HELP                                             :Trợ Giúp & Hướng Dẫn
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Bật/tắt bảng lệnh
-STR_ABOUT_MENU_AI_DEBUG                                         :Gỡ rối AI / Game script
+STR_ABOUT_MENU_AI_DEBUG                                         :Gỡ rối AI / tập lệnh trò chơi
 STR_ABOUT_MENU_SCREENSHOT                                       :Ảnh chụp màn hình
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Hiển thị tốc độ khung hình
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Giới thiệu 'OpenTTD'
@@ -1232,7 +1232,7 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Tùy chọn cơ
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Tùy chọn nâng cao
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Thiết lập chuyên gia/tất cả thiết lập
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Thiết lập khác với giá trị mặc định
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :THiết lập giá trị mới khác với giá trị cho ván chơi mới
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Thiết lập giá trị khác với giá trị cho ván chơi mới
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Hạn chế danh mục sau đối với mỗi kiểu thiết lập
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tất cả loại thiết lập
@@ -1274,7 +1274,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Tiền vô hạ
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Cho phép chi tiêu không giới hạn và tắt bỏ việc phá sản của các công ty
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Khoảng vay khởi nghiệp tối đa: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hạn mức vay khởi nghiệp tối đa một công ty có thể vay (không tính lạm phát). Nếu chọn "Không có khoản vay", tiền sẽ không có sẵn trừ khi được cung cấp bằng Game Script hoặc thiêt lập "Tiền vô hạn"
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hạn mức vay khởi nghiệp tối đa một công ty có thể vay (không tính lạm phát). Nếu chọn "Không có khoản vay", tiền sẽ không có sẵn trừ khi được cung cấp bằng Tập Lệnh Trò Chơi hoặc thiêt lập "Tiền vô hạn"
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Không có khoản vay
@@ -2174,34 +2174,34 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Màn Chơi Mới
 STR_INTRO_LOAD_GAME                                             :{BLACK}Nạp Ván Chơi
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Chơi Kịch Bản Này
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Chơi Bản Đồ Độ Cao
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Chơi Bằng Bản Đồ Địa Hình
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Biên Tập Màn Chơi Kịch Bản
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Nhiều Người Chơi
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Ván Chơi Mạng
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Cấu Hình Trò Chơi
-STR_INTRO_HIGHSCORE                                             :{BLACK}Bảng điểm chơi cao nhất
+STR_INTRO_HIGHSCORE                                             :{BLACK}Bảng Thành Tích
 STR_INTRO_HELP                                                  :{BLACK}Trợ giúp & hướng dẫn
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Thiết lập
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Thiết Lập NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Các Nội Dung Trên Mạng
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Nội Dung Trực Tuyến
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Thiết Lập AI
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Thiết lập Game Script
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Thiết Lập Tập Lệnh Trò Chơi
 STR_INTRO_QUIT                                                  :{BLACK}Thoát
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Màn chơi mới.Ctrl+Click để bỏ qua phần điều chỉnh màn
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Tải trò chơi
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Nạp ván chơi đã lưu trước đó
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Chơi ván mới, dùng bản đồ địa hình làm nền đất
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Chơi ván mới, dùng màn chơi kịch bản theo ý riêng
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Tạo màn chơi kịch bản/bản đồ theo ý riêng
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Bắt đầu ván chơi trên mạng nhiều người
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Chọn kiểu quang cảnh 'ôn hòa'
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Chọn kiểu quang cảnh 'ôn đới'
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Chọn kiểu quang cảnh 'giá rét'
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Chọn kiểu quang cảnh 'nhiệt đới'
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Chọn kiểu quang cảnh 'đồ chơi'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Hiển thị cấu hình của trò chơi
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hiện bảng điểm chơi cao nhất
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hiện bảng thành tích
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Truy cập vào tài liệu và tài nguyên trực tuyến
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Thiết lập hiển thị
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Hiển thị tùy chỉnh NewGRF
@@ -2220,12 +2220,12 @@ STR_QUIT_YES                                                    :{BLACK}Đồng 
 STR_QUIT_NO                                                     :{BLACK}Không đồng ý
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Loại bỏ Game
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Bỏ Dở Ván Chơi
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bạn có chắc chắn muốn bỏ màn chơi này không?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bạn có chắc bạn muốn bỏ màn chơi kịch bản này?
 
 # Help window
-STR_HELP_WINDOW_CAPTION                                         :{WHITE}Trợ giúp & hướng dẫn
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Trợ Giúp & Hướng Dẫn
 STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Websites
 STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Tài liệu
 STR_HELP_WINDOW_README                                          :{BLACK}Readme
@@ -2384,7 +2384,7 @@ STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Chọn m
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server bạn đã vào lần trước:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Chọn server bạn đã chơi lần trước
 
-STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}THÔNG TIN GAME
+STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}THÔNG TIN VÁN CHƠI
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Máy trạm: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Địa hình: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Cỡ bản đồ: {WHITE}{COMMA}x{COMMA}
@@ -2394,7 +2394,7 @@ STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Mã tha
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Ngày bắt đầu: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Ngày hiện tại: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}Thời gian chơi: {WHITE}{NUM}h {NUM}m
-STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Game Script: {WHITE}{STRING} (v{NUM})
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Tập Lệnh Trò Chơi: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Mật khẩu bảo vệ!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER ĐẦY
@@ -2404,17 +2404,17 @@ STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}SAI PHI
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}SAI NEWGRF
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Vào game
-STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Refresh server
-STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Refresh thông tin server
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Làm mới máy chủ
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Làm mới thông tin máy chủ
 
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Tìm trên internet
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Tìm máy chủ công cộng trên internet
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Tìm trên LAN
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Tìm trong mạng nội bộ
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Tìm máy chủ trên mạng nội bộ
-STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Thêm server
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Thêm server vào danh sách. Đây có thể là địa chỉ của server hoặc mã tham gia
-STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tạo server
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tạo server của riêng bạn
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Thêm máy chủ
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Thêm máy chủ vào danh sách. Đây có thể là địa chỉ của máy chủ hoặc mã tham gia
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tạo máy chủ
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tạo máy chủ của riêng bạn
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Gõ tên của bạn
 STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Nhập địa chỉ server hoặc mã tham gia
@@ -3335,8 +3335,8 @@ STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Thiết 
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Hiển thị tùy chỉnh NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Thiết lập AI
 STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Hiển thị tùy chỉnh AI
-STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Thiết lập Game Script
-STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Hiển thị thiết lập game script
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Thiết Lập Tập Lệnh Trò Chơi
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Hiển thị thiết lập tập lệnh trò chơi
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Tiếng Anh (Nguyên bản)
@@ -3372,7 +3372,7 @@ STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Dạng T
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Nước
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ngẫu Nhiên
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ngẫu Nhiên
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Bằng Tay
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Điều Chỉnh
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Xoay bản đồ địa hình:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Tên bản đồ địa hình:
@@ -3458,7 +3458,7 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Đổi b
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Đổi bảng màu của NewGRF.{}Hãy thực hiện việc này nếu NewGRF bị chuyển màu hồng trong khi chơi
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Áp dụng thay đổi
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Tìm kiếm nội dung thiếu online
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Tìm nội dung còn thiếu trên mạng
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Kiểm tra xem nội dung thiếu có thể tải về hay không
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Tên file: {SILVER}{STRING}
@@ -3694,7 +3694,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Thực hiện chiến dịch quảng cáo lớn để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm xung quanh & xa trung tâm trong thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Tài trợ cải tạo lại mạng đường phố trong đô thị.{}Nó sẽ gây ra sự gián đoạn với giao thông đường bộ đáng kể trong vòng 6 tháng.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Tài trợ cải tạo lại mạng đường phố trong đô thị.{}Nó sẽ gây ra sự gián đoạn với giao thông đường bộ đáng kể trong vòng 6 phút.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Dựng tượng đài tôn vinh để quảng bá hình ảnh công ty.{} Tăng xếp hạng cho các trạm trong khu vực.{}{POP_COLOUR} Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Dựng tượng đài tôn vinh để quảng bá hình ảnh công ty.{}Tăng xếp hạng cho các trạm trong khu vực.{}{POP_COLOUR} Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Tài trợ xây dựng các toà nhà để thúc đẩy phát triển đô thị.{}Tăng sự phát triển đô thị trong một thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Mua hợp đồng giấy phép vận tải độc quyền ở địa phương trong 12 tháng.{}Chính quyền địa phương sẽ không cho hành khách và hàng hoá sử dụng các ga, bến, cảng của đối thủ. Nhưng nếu đối thủ thực hiện hối lộ thành công thì sẽ huỷ bỏ hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Mua hợp đồng giấy phép vận tải độc quyền ở địa phương trong 12 phút.{}Chính quyền địa phương sẽ không cho hành khách và hàng hoá sử dụng các ga, bến, cảng của đối thủ. Nhưng nếu đối thủ thực hiện hối lộ thành công thì sẽ huỷ bỏ hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
@@ -4811,17 +4811,17 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Thay đ�
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Tiếp tục
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Cho máy tiếp tục chơi
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Xem thông tin debug của AI này. Ctrl+Click để mở cửa sổ mới
-STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kiểm tra lịch sử Game Script. Ctrl+Click mở cửa sổ mới
+STR_AI_GAME_SCRIPT                                              :{BLACK}Tập Lệnh Trò Chơi
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kiểm tra lịch sử Tập Lệnh Trò Chơi. Ctrl+Click mở cửa sổ mới
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Không có AI phù hợp để nạp.{}AI này là AI giả và sẽ không làm gì cả.{}Bạn có thể tải các AI tại mục 'Nội dung trực tuyến'.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Có một script bị treo. Hãy báo cho tác giả script kèm với màn hình chụp cửa sổ gỡ lỗi AI/Game Script
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Cửa sổ gỡ lỗi AI/Game Script chỉ có trên server
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Có một tập lệnh bị treo. Hãy báo cho tác giả tập lệnh kèm với màn hình chụp cửa sổ gỡ lỗi AI/tập lệnh trò chơi
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Cửa sổ gỡ lỗi AI/tập lệnh trò chơi chỉ có trên máy chủ
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Cấu hình AI
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Cấu hình Game Script
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Các Game Script sẽ được chạy trong ván chơi tiếp theo
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Cấu Hình Tập Lệnh Trò Chơi
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Các Tập Lệnh Trò Chơi sẽ được chạy trong ván chơi tiếp theo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Các AIs sẽ được chạy trong ván chơi tiếp theo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Nhân vật người
 STR_AI_CONFIG_RANDOM_AI                                         :AI ngẫu nhiên
@@ -4835,12 +4835,12 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Di chuy�
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Di Chuyển Xuống
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Di chuyển AI xuống dưới danh sách
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Game Script
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Tập Lệnh Trò Chơi
 STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Tham số
 STR_AI_CONFIG_AI                                                :{SILVER}AIs
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Chọn AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Chọn Game Script
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Chọn Tập Lệnh Trò Chơi
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Chạy tập lệnh khác. Ctrl+Click để hiển thị những phiên bản sẵn có
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Tham Số
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Cấu hình tham số cho AI
@@ -4848,7 +4848,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Cấu h�
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Có Sẵn {STRING}
 STR_AI_LIST_CAPTION_AI                                          :AIs
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Game Scripts
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Tập Lệnh Trò Chơi
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Chọn một AI
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Tác giả: {ORANGE}{STRING}
@@ -4871,7 +4871,7 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Chụp m
 # Script Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Tham số
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Tập Lệnh Trò Chơi
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết Lập Lại
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

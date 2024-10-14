@@ -808,6 +808,7 @@ STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Mostra i
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nasconde tutte le industrie dalla mappa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostra tutte le industrie sulla mappa
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Attiva/disattiva la visualizzazione della mappa altimetrica
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Attiva/disattiva la visualizzazione dei nomi delle industrie
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nasconde le proprietà di tutte le compagnie dalla mappa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostra le proprietà di tutte le compagnie sulla mappa
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nasconde tutti i carichi dalla mappa
@@ -2857,6 +2858,7 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Seleziona una c
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Seleziona un tipo di stazione dei camion da costruire. Ctrl+Click per aggiungere o rimuovere dagli oggetti salvati
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Seleziona una classe di oggetti da visualizzare
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Seleziona un tipo d'oggetto da costruire. Ctrl+Clic per aggiungere o rimuovere in elementi salvati. Ctrl+Clic+trascinamento per selezionare l'area in diagonale. Premere anche Shift per mostrare solo la stima dei costi.
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Seleziona un tipo di casa da costruire. Ctrl+Click per aggiungere o rimuovere dagli oggetti salvati
 
 STR_HOUSE_PICKER_CAPTION                                        :Selezione casa
 
@@ -3050,6 +3052,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fonda un
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Alcune città casuali
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Copre la mappa con città posizionate casualmente
 STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Carica da file
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Importa i dati della città da un file JSON
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Espandi tutte le città
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Fa crescere leggermente tutte le città
 
@@ -4494,7 +4497,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacit�
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crediti di trasferimento: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervallo di manutenzione: {LTBLUE}{COMMA}{NBSP}giorni{BLACK}   {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervallo di manutenzione: {LTBLUE}{COMMA}{NBSP}minuti{BLACK}   {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervallo di manutenzione: {LTBLUE}{COMMA}{NBSP}minuti{P "" s}{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervallo di manutenzione: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Ultima manutenzione: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Last service: {LTBLUE}{NUM} minuti fa
