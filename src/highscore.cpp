@@ -56,9 +56,6 @@ StringID EndGameGetPerformanceTitleFromValue(uint value)
  */
 int8_t SaveHighScoreValue(const Company *c)
 {
-	/* Exclude cheaters from the honour of being in the highscore table */
-	if (CheatHasBeenUsed()) return -1;
-
 	auto &highscores = _highscore_table[SP_CUSTOM];
 	uint16_t score = c->old_economy[0].performance_history;
 
