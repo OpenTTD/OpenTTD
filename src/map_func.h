@@ -388,6 +388,8 @@ debug_inline static TileIndex TileXY(uint x, uint y)
  */
 inline TileIndexDiff TileDiffXY(int x, int y)
 {
+	assert(IsInsideMM(x, -static_cast<int>(Map::SizeX()) / 2, Map::SizeX() / 2));
+	assert(IsInsideMM(y, -static_cast<int>(Map::SizeY()) / 2, Map::SizeY() / 2));
 	/* Multiplication gives much better optimization on MSVC than shifting.
 	 * 0 << shift isn't optimized to 0 properly.
 	 * Typically x and y are constants, and then this doesn't result
