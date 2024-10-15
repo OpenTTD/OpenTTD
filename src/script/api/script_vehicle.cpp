@@ -247,7 +247,7 @@
 
 /* static */ bool ScriptVehicle::SetName(VehicleID vehicle_id, Text *name)
 {
-	CCountedPtr<Text> counter(name);
+	ScriptObjectRef counter(name);
 
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));

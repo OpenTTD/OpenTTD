@@ -37,7 +37,7 @@
 
 /* static */ bool ScriptBaseStation::SetName(StationID station_id, Text *name)
 {
-	CCountedPtr<Text> counter(name);
+	ScriptObjectRef counter(name);
 
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidBaseStation(station_id));

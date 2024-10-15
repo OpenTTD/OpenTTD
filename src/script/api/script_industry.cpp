@@ -58,7 +58,7 @@
 
 /* static */ bool ScriptIndustry::SetText(IndustryID industry_id, Text *text)
 {
-	CCountedPtr<Text> counter(text);
+	ScriptObjectRef counter(text);
 
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidIndustry(industry_id));
@@ -305,7 +305,7 @@
 
 /* static */ bool ScriptIndustry::SetProductionLevel(IndustryID industry_id, SQInteger prod_level, bool show_news, Text *custom_news)
 {
-	CCountedPtr<Text> counter(custom_news);
+	ScriptObjectRef counter(custom_news);
 
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidIndustry(industry_id));

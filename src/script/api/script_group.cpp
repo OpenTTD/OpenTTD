@@ -56,7 +56,7 @@
 
 /* static */ bool ScriptGroup::SetName(GroupID group_id, Text *name)
 {
-	CCountedPtr<Text> counter(name);
+	ScriptObjectRef counter(name);
 
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidGroup(group_id));
