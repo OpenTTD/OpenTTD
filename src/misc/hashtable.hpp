@@ -183,6 +183,7 @@ public:
 	inline void Clear()
 	{
 		for (int i = 0; i < Tcapacity; i++) m_slots[i].Clear();
+		this->m_num_items = 0;
 	}
 
 	/** const item search */
