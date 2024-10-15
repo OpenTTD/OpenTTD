@@ -26,9 +26,9 @@
 
 /* static */ ScriptLeagueTable::LeagueTableID ScriptLeagueTable::New(Text *title, Text *header, Text *footer)
 {
-	CCountedPtr<Text> title_counter(title);
-	CCountedPtr<Text> header_counter(header);
-	CCountedPtr<Text> footer_counter(footer);
+	ScriptObjectRef title_counter(title);
+	ScriptObjectRef header_counter(header);
+	ScriptObjectRef footer_counter(footer);
 
 	EnforceDeityMode(LEAGUE_TABLE_INVALID);
 	EnforcePrecondition(LEAGUE_TABLE_INVALID, title != nullptr);
@@ -51,8 +51,8 @@
 
 /* static */ ScriptLeagueTable::LeagueTableElementID ScriptLeagueTable::NewElement(ScriptLeagueTable::LeagueTableID table, SQInteger rating, ScriptCompany::CompanyID company, Text *text, Text *score, LinkType link_type, SQInteger link_target)
 {
-	CCountedPtr<Text> text_counter(text);
-	CCountedPtr<Text> score_counter(score);
+	ScriptObjectRef text_counter(text);
+	ScriptObjectRef score_counter(score);
 
 	EnforceDeityMode(LEAGUE_TABLE_ELEMENT_INVALID);
 
@@ -80,7 +80,7 @@
 
 /* static */ bool ScriptLeagueTable::UpdateElementData(LeagueTableElementID element, ScriptCompany::CompanyID company, Text *text, LinkType link_type, SQInteger link_target)
 {
-	CCountedPtr<Text> text_counter(text);
+	ScriptObjectRef text_counter(text);
 
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidLeagueTableElement(element));
@@ -100,7 +100,7 @@
 
 /* static */ bool ScriptLeagueTable::UpdateElementScore(LeagueTableElementID element, SQInteger rating, Text *score)
 {
-	CCountedPtr<Text> score_counter(score);
+	ScriptObjectRef score_counter(score);
 
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidLeagueTableElement(element));

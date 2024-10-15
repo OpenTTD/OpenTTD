@@ -11,8 +11,8 @@
 #define SCRIPT_INFO_HPP
 
 #include <squirrel.h>
-#include "../misc/countedptr.hpp"
 
+#include "script_object.hpp"
 #include "script_config.hpp"
 
 /** The maximum number of operations for saving or loading the data of a script. */

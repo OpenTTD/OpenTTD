@@ -12,7 +12,6 @@
 
 #include "strings_type.h"
 #include "core/alloc_type.hpp"
-#include "misc/countedptr.hpp"
 #include "fileio_type.h"
 #include "textfile_type.h"
 #include "newgrf_text.h"

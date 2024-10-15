@@ -10,7 +10,6 @@
 #ifndef SCRIPT_OBJECT_HPP
 #define SCRIPT_OBJECT_HPP
 
-#include "../../misc/countedptr.hpp"
 #include "../../road_type.h"
 #include "../../rail_type.h"
 #include "../../string_func.h"
@@ -33,6 +32,27 @@ typedef bool (ScriptModeProc)();
  * The callback function for Async Mode-classes.
  */
 typedef bool (ScriptAsyncModeProc)();
+
+/**
+ * Simple counted object. Use it as base of your struct/class if you want to use
+ *  basic reference counting. Your struct/class will destroy and free itself when
+ *  last reference to it is released (using Release() method). The initial reference
+ *  count (when it is created) is zero (don't forget AddRef() at least one time if
+ *  not using ScriptObjectRef.
+ * @api -all
+ */
+class SimpleCountedObject {
+public:
+	SimpleCountedObject() : ref_count(0) {}
+	virtual ~SimpleCountedObject() {}
+
+	inline void AddRef() { ++this->ref_count; }
+	void Release();
+	virtual void FinalRelease() {};
+
+private:
+	int32_t ref_count;
+};
 
 /**
  * Uper-parent object of all API classes. You should never use this class in
@@ -406,7 +426,7 @@ public:
 	 */
 	ScriptObjectRef(T *data) : data(data)
 	{
-		this->data->AddRef();
+		if (this->data != nullptr) this->data->AddRef();
 	}
 
 	/* No copy constructor. */

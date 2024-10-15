@@ -42,7 +42,7 @@
 
 /* static */ bool ScriptTown::SetName(TownID town_id, Text *name)
 {
-	CCountedPtr<Text> counter(name);
+	ScriptObjectRef counter(name);
 
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidTown(town_id));
@@ -57,7 +57,7 @@
 
 /* static */ bool ScriptTown::SetText(TownID town_id, Text *text)
 {
-	CCountedPtr<Text> counter(text);
+	ScriptObjectRef counter(text);
 
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidTown(town_id));
@@ -283,7 +283,7 @@
 
 /* static */ bool ScriptTown::FoundTown(TileIndex tile, TownSize size, bool city, RoadLayout layout, Text *name)
 {
-	CCountedPtr<Text> counter(name);
+	ScriptObjectRef counter(name);
 
 	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, ScriptCompanyMode::IsDeity() || _settings_game.economy.found_town != TF_FORBIDDEN);
