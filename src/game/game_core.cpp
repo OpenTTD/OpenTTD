@@ -145,18 +145,15 @@
 
 /* static */ void Game::NewEvent(ScriptEvent *event)
 {
-	/* AddRef() and Release() need to be called at least once, so do it here */
-	event->AddRef();
+	ScriptObjectRef counter(event);
 
 	/* Clients should ignore events */
 	if (_networking && !_network_server) {
-		event->Release();
 		return;
 	}
 
 	/* Check if Game instance is alive */
 	if (Game::instance == nullptr) {
-		event->Release();
 		return;
 	}
 
@@ -164,8 +161,6 @@
 	Backup<CompanyID> cur_company(_current_company, OWNER_DEITY);
 	Game::instance->InsertEvent(event);
 	cur_company.Restore();
-
-	event->Release();
 }
 
 /* static */ void Game::ResetConfig()
