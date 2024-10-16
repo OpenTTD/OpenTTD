@@ -345,6 +345,7 @@ add_files(
     picker_gui.h
     progress.cpp
     progress.h
+    provider_manager.h
     querystring_gui.h
     rail.cpp
     rail.h
