@@ -13,6 +13,9 @@
 #include <iomanip>
 #include <sstream>
 
+#include "../../core/enum_type.hpp"
+#include "../../misc/dbg_helpers.h"
+
 /* Enum used in PfCalcCost() to see why was the segment closed. */
 enum EndSegmentReason {
 	/* The following reasons can be saved into cached segment */

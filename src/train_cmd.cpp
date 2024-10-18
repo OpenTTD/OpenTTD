@@ -2245,16 +2245,16 @@ static void CheckNextTrainTile(Train *v)
 	CFollowTrackRail ft(v);
 	if (!ft.Follow(v->tile, td)) return;
 
-	if (!HasReservedTracks(ft.m_new_tile, TrackdirBitsToTrackBits(ft.m_new_td_bits))) {
+	if (!HasReservedTracks(ft.new_tile, TrackdirBitsToTrackBits(ft.new_td_bits))) {
 		/* Next tile is not reserved. */
-		if (KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE) {
-			if (HasPbsSignalOnTrackdir(ft.m_new_tile, FindFirstTrackdir(ft.m_new_td_bits))) {
+		if (KillFirstBit(ft.new_td_bits) == TRACKDIR_BIT_NONE) {
+			if (HasPbsSignalOnTrackdir(ft.new_tile, FindFirstTrackdir(ft.new_td_bits))) {
 				/* If the next tile is a PBS signal, try to make a reservation. */
-				TrackBits tracks = TrackdirBitsToTrackBits(ft.m_new_td_bits);
-				if (Rail90DegTurnDisallowed(GetTileRailType(ft.m_old_tile), GetTileRailType(ft.m_new_tile))) {
-					tracks &= ~TrackCrossesTracks(TrackdirToTrack(ft.m_old_td));
+				TrackBits tracks = TrackdirBitsToTrackBits(ft.new_td_bits);
+				if (Rail90DegTurnDisallowed(GetTileRailType(ft.old_tile), GetTileRailType(ft.new_tile))) {
+					tracks &= ~TrackCrossesTracks(TrackdirToTrack(ft.old_td));
 				}
-				ChooseTrainTrack(v, ft.m_new_tile, ft.m_exitdir, tracks, false, nullptr, false);
+				ChooseTrainTrack(v, ft.new_tile, ft.exitdir, tracks, false, nullptr, false);
 			}
 		}
 	}
@@ -2410,8 +2410,8 @@ void FreeTrainTrackReservation(const Train *v)
 
 	CFollowTrackRail ft(v, GetRailTypeInfo(v->railtype)->compatible_railtypes);
 	while (ft.Follow(tile, td)) {
-		tile = ft.m_new_tile;
-		TrackdirBits bits = ft.m_new_td_bits & TrackBitsToTrackdirBits(GetReservedTrackbits(tile));
+		tile = ft.new_tile;
+		TrackdirBits bits = ft.new_td_bits & TrackBitsToTrackdirBits(GetReservedTrackbits(tile));
 		td = RemoveFirstTrackdir(&bits);
 		assert(bits == TRACKDIR_BIT_NONE);
 
@@ -2441,7 +2441,7 @@ void FreeTrainTrackReservation(const Train *v)
 		}
 
 		/* Don't free first station/bridge/tunnel if we are on it. */
-		if (free_tile || (!(ft.m_is_station && GetStationIndex(ft.m_new_tile) == station_id) && !ft.m_is_tunnel && !ft.m_is_bridge)) ClearPathReservation(v, tile, td);
+		if (free_tile || (!(ft.is_station && GetStationIndex(ft.new_tile) == station_id) && !ft.is_tunnel && !ft.is_bridge)) ClearPathReservation(v, tile, td);
 
 		free_tile = true;
 	}
@@ -2493,39 +2493,39 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 	TileIndex tile = origin.tile;
 	Trackdir  cur_td = origin.trackdir;
 	while (ft.Follow(tile, cur_td)) {
-		if (KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE) {
+		if (KillFirstBit(ft.new_td_bits) == TRACKDIR_BIT_NONE) {
 			/* Possible signal tile. */
-			if (HasOnewaySignalBlockingTrackdir(ft.m_new_tile, FindFirstTrackdir(ft.m_new_td_bits))) break;
+			if (HasOnewaySignalBlockingTrackdir(ft.new_tile, FindFirstTrackdir(ft.new_td_bits))) break;
 		}
 
-		if (Rail90DegTurnDisallowed(GetTileRailType(ft.m_old_tile), GetTileRailType(ft.m_new_tile))) {
-			ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(ft.m_old_td);
-			if (ft.m_new_td_bits == TRACKDIR_BIT_NONE) break;
+		if (Rail90DegTurnDisallowed(GetTileRailType(ft.old_tile), GetTileRailType(ft.new_tile))) {
+			ft.new_td_bits &= ~TrackdirCrossesTrackdirs(ft.old_td);
+			if (ft.new_td_bits == TRACKDIR_BIT_NONE) break;
 		}
 
 		/* Station, depot or waypoint are a possible target. */
-		bool target_seen = ft.m_is_station || (IsTileType(ft.m_new_tile, MP_RAILWAY) && !IsPlainRail(ft.m_new_tile));
-		if (target_seen || KillFirstBit(ft.m_new_td_bits) != TRACKDIR_BIT_NONE) {
+		bool target_seen = ft.is_station || (IsTileType(ft.new_tile, MP_RAILWAY) && !IsPlainRail(ft.new_tile));
+		if (target_seen || KillFirstBit(ft.new_td_bits) != TRACKDIR_BIT_NONE) {
 			/* Choice found or possible target encountered.
 			 * On finding a possible target, we need to stop and let the pathfinder handle the
 			 * remaining path. This is because we don't know if this target is in one of our
 			 * orders, so we might cause pathfinding to fail later on if we find a choice.
 			 * This failure would cause a bogous call to TryReserveSafePath which might reserve
 			 * a wrong path not leading to our next destination. */
-			if (HasReservedTracks(ft.m_new_tile, TrackdirBitsToTrackBits(TrackdirReachesTrackdirs(ft.m_old_td)))) break;
+			if (HasReservedTracks(ft.new_tile, TrackdirBitsToTrackBits(TrackdirReachesTrackdirs(ft.old_td)))) break;
 
 			/* If we did skip some tiles, backtrack to the first skipped tile so the pathfinder
 			 * actually starts its search at the first unreserved tile. */
-			if (ft.m_tiles_skipped != 0) ft.m_new_tile -= TileOffsByDiagDir(ft.m_exitdir) * ft.m_tiles_skipped;
+			if (ft.tiles_skipped != 0) ft.new_tile -= TileOffsByDiagDir(ft.exitdir) * ft.tiles_skipped;
 
 			/* Choice found, path valid but not okay. Save info about the choice tile as well. */
-			if (new_tracks != nullptr) *new_tracks = TrackdirBitsToTrackBits(ft.m_new_td_bits);
-			if (enterdir != nullptr) *enterdir = ft.m_exitdir;
-			return PBSTileInfo(ft.m_new_tile, ft.m_old_td, false);
+			if (new_tracks != nullptr) *new_tracks = TrackdirBitsToTrackBits(ft.new_td_bits);
+			if (enterdir != nullptr) *enterdir = ft.exitdir;
+			return PBSTileInfo(ft.new_tile, ft.old_td, false);
 		}
 
-		tile = ft.m_new_tile;
-		cur_td = FindFirstTrackdir(ft.m_new_td_bits);
+		tile = ft.new_tile;
+		cur_td = FindFirstTrackdir(ft.new_td_bits);
 
 		Trackdir rev_td = ReverseTrackdir(cur_td);
 		if (IsSafeWaitingPosition(v, tile, cur_td, true, _settings_game.pf.forbid_90_deg)) {
@@ -2551,27 +2551,27 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 		}
 	}
 
-	if (ft.m_err == CFollowTrackRail::EC_OWNER || ft.m_err == CFollowTrackRail::EC_NO_WAY) {
+	if (ft.err == CFollowTrackRail::EC_OWNER || ft.err == CFollowTrackRail::EC_NO_WAY) {
 		/* End of line, path valid and okay. */
-		return PBSTileInfo(ft.m_old_tile, ft.m_old_td, true);
+		return PBSTileInfo(ft.old_tile, ft.old_td, true);
 	}
 
 	/* Sorry, can't reserve path, back out. */
 	tile = origin.tile;
 	cur_td = origin.trackdir;
-	TileIndex stopped = ft.m_old_tile;
-	Trackdir  stopped_td = ft.m_old_td;
+	TileIndex stopped = ft.old_tile;
+	Trackdir  stopped_td = ft.old_td;
 	while (tile != stopped || cur_td != stopped_td) {
 		if (!ft.Follow(tile, cur_td)) break;
 
-		if (Rail90DegTurnDisallowed(GetTileRailType(ft.m_old_tile), GetTileRailType(ft.m_new_tile))) {
-			ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(ft.m_old_td);
-			assert(ft.m_new_td_bits != TRACKDIR_BIT_NONE);
+		if (Rail90DegTurnDisallowed(GetTileRailType(ft.old_tile), GetTileRailType(ft.new_tile))) {
+			ft.new_td_bits &= ~TrackdirCrossesTrackdirs(ft.old_td);
+			assert(ft.new_td_bits != TRACKDIR_BIT_NONE);
 		}
-		assert(KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE);
+		assert(KillFirstBit(ft.new_td_bits) == TRACKDIR_BIT_NONE);
 
-		tile = ft.m_new_tile;
-		cur_td = FindFirstTrackdir(ft.m_new_td_bits);
+		tile = ft.new_tile;
+		cur_td = FindFirstTrackdir(ft.new_td_bits);
 
 		UnreserveRailTrack(tile, TrackdirToTrack(cur_td));
 	}

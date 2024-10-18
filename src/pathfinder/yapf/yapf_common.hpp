@@ -10,6 +10,13 @@
 #ifndef YAPF_COMMON_HPP
 #define YAPF_COMMON_HPP
 
+#include "../../core/bitmath_func.hpp"
+#include "../../direction_type.h"
+#include "../../map_func.h"
+#include "../../tile_type.h"
+#include "../../track_type.h"
+#include "../pathfinder_type.h"
+
 /** YAPF origin provider base class - used when origin is one tile / multiple trackdirs */
 template <class Types>
 class CYapfOriginTileT
@@ -20,8 +27,8 @@ public:
 	typedef typename Node::Key Key;               ///< key to hash tables
 
 protected:
-	TileIndex    m_orgTile;                       ///< origin tile
-	TrackdirBits m_orgTrackdirs;                  ///< origin trackdir mask
+	TileIndex    origin_tile;                       ///< origin tile
+	TrackdirBits origin_trackdirs;                  ///< origin trackdir mask
 
 	/** to access inherited path finder */
 	inline Tpf &Yapf()
@@ -33,18 +40,18 @@ public:
 	/** Set origin tile / trackdir mask */
 	void SetOrigin(TileIndex tile, TrackdirBits trackdirs)
 	{
-		m_orgTile = tile;
-		m_orgTrackdirs = trackdirs;
+		this->origin_tile = tile;
+		this->origin_trackdirs = trackdirs;
 	}
 
 	/** Called when YAPF needs to place origin nodes into open list */
 	void PfSetStartupNodes()
 	{
-		bool is_choice = (KillFirstBit(m_orgTrackdirs) != TRACKDIR_BIT_NONE);
-		for (TrackdirBits tdb = m_orgTrackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
+		bool is_choice = (KillFirstBit(this->origin_trackdirs) != TRACKDIR_BIT_NONE);
+		for (TrackdirBits tdb = this->origin_trackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
 			Trackdir td = (Trackdir)FindFirstBit(tdb);
 			Node &n1 = Yapf().CreateNewNode();
-			n1.Set(nullptr, m_orgTile, td, is_choice);
+			n1.Set(nullptr, this->origin_tile, td, is_choice);
 			Yapf().AddStartupNode(n1);
 		}
 	}
@@ -60,12 +67,12 @@ public:
 	typedef typename Node::Key Key;               ///< key to hash tables
 
 protected:
-	TileIndex   m_orgTile;                        ///< first origin tile
-	Trackdir    m_orgTd;                          ///< first origin trackdir
-	TileIndex   m_revTile;                        ///< second (reversed) origin tile
-	Trackdir    m_revTd;                          ///< second (reversed) origin trackdir
-	int         m_reverse_penalty;                ///< penalty to be added for using the reversed origin
-	bool        m_treat_first_red_two_way_signal_as_eol; ///< in some cases (leaving station) we need to handle first two-way signal differently
+	TileIndex origin_tile; ///< first origin tile
+	Trackdir origin_td; ///< first origin trackdir
+	TileIndex reversed_tile; ///< second (reversed) origin tile
+	Trackdir reversed_td; ///< second (reversed) origin trackdir
+	int reverse_penalty; ///< penalty to be added for using the reversed origin
+	bool treat_first_red_two_way_signal_as_eol; ///< in some cases (leaving station) we need to handle first two-way signal differently
 
 	/** to access inherited path finder */
 	inline Tpf &Yapf()
@@ -77,26 +84,26 @@ public:
 	/** set origin (tiles, trackdirs, etc.) */
 	void SetOrigin(TileIndex tile, Trackdir td, TileIndex tiler = INVALID_TILE, Trackdir tdr = INVALID_TRACKDIR, int reverse_penalty = 0, bool treat_first_red_two_way_signal_as_eol = true)
 	{
-		m_orgTile = tile;
-		m_orgTd = td;
-		m_revTile = tiler;
-		m_revTd = tdr;
-		m_reverse_penalty = reverse_penalty;
-		m_treat_first_red_two_way_signal_as_eol = treat_first_red_two_way_signal_as_eol;
+		this->origin_tile = tile;
+		this->origin_td = td;
+		this->reversed_tile = tiler;
+		this->reversed_td = tdr;
+		this->reverse_penalty = reverse_penalty;
+		this->treat_first_red_two_way_signal_as_eol = treat_first_red_two_way_signal_as_eol;
 	}
 
 	/** Called when YAPF needs to place origin nodes into open list */
 	void PfSetStartupNodes()
 	{
-		if (m_orgTile != INVALID_TILE && m_orgTd != INVALID_TRACKDIR) {
+		if (this->origin_tile != INVALID_TILE && this->origin_td != INVALID_TRACKDIR) {
 			Node &n1 = Yapf().CreateNewNode();
-			n1.Set(nullptr, m_orgTile, m_orgTd, false);
+			n1.Set(nullptr, this->origin_tile, this->origin_td, false);
 			Yapf().AddStartupNode(n1);
 		}
-		if (m_revTile != INVALID_TILE && m_revTd != INVALID_TRACKDIR) {
+		if (this->reversed_tile != INVALID_TILE && this->reversed_td != INVALID_TRACKDIR) {
 			Node &n2 = Yapf().CreateNewNode();
-			n2.Set(nullptr, m_revTile, m_revTd, false);
-			n2.m_cost = m_reverse_penalty;
+			n2.Set(nullptr, this->reversed_tile, this->reversed_td, false);
+			n2.cost = this->reverse_penalty;
 			Yapf().AddStartupNode(n2);
 		}
 	}
@@ -104,7 +111,7 @@ public:
 	/** return true if first two-way signal should be treated as dead end */
 	inline bool TreatFirstRedTwoWaySignalAsEOL()
 	{
-		return Yapf().PfGetSettings().rail_firstred_twoway_eol && m_treat_first_red_two_way_signal_as_eol;
+		return Yapf().PfGetSettings().rail_firstred_twoway_eol && this->treat_first_red_two_way_signal_as_eol;
 	}
 };
 
@@ -118,15 +125,15 @@ public:
 	typedef typename Node::Key Key;               ///< key to hash tables
 
 protected:
-	TileIndex    m_destTile;                      ///< destination tile
-	TrackdirBits m_destTrackdirs;                 ///< destination trackdir mask
+	TileIndex dest_tile; ///< destination tile
+	TrackdirBits dest_trackdirs; ///< destination trackdir mask
 
 public:
 	/** set the destination tile / more trackdirs */
 	void SetDestination(TileIndex tile, TrackdirBits trackdirs)
 	{
-		m_destTile = tile;
-		m_destTrackdirs = trackdirs;
+		this->dest_tile = tile;
+		this->dest_trackdirs = trackdirs;
 	}
 
 protected:
@@ -140,19 +147,19 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(Node &n)
 	{
-		return (n.m_key.m_tile == m_destTile) && HasTrackdir(m_destTrackdirs, n.GetTrackdir());
+		return (n.key.tile == this->dest_tile) && HasTrackdir(this->dest_trackdirs, n.GetTrackdir());
 	}
 
 	/**
 	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
-	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate
+	 *  adds it to the actual cost from origin and stores the sum to the Node::estimate
 	 */
 	inline bool PfCalcEstimate(Node &n)
 	{
 		static const int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
 		static const int dg_dir_to_y_offs[] = {0, 1, 0, -1};
-		if (PfDetectDestination(n)) {
-			n.m_estimate = n.m_cost;
+		if (this->PfDetectDestination(n)) {
+			n.estimate = n.cost;
 			return true;
 		}
 
@@ -160,15 +167,15 @@ public:
 		DiagDirection exitdir = TrackdirToExitdir(n.GetTrackdir());
 		int x1 = 2 * TileX(tile) + dg_dir_to_x_offs[(int)exitdir];
 		int y1 = 2 * TileY(tile) + dg_dir_to_y_offs[(int)exitdir];
-		int x2 = 2 * TileX(m_destTile);
-		int y2 = 2 * TileY(m_destTile);
+		int x2 = 2 * TileX(this->dest_tile);
+		int y2 = 2 * TileY(this->dest_tile);
 		int dx = abs(x1 - x2);
 		int dy = abs(y1 - y2);
 		int dmin = std::min(dx, dy);
 		int dxy = abs(dx - dy);
 		int d = dmin * YAPF_TILE_CORNER_LENGTH + (dxy - 1) * (YAPF_TILE_LENGTH / 2);
-		n.m_estimate = n.m_cost + d;
-		assert(n.m_estimate >= n.m_parent->m_estimate);
+		n.estimate = n.cost + d;
+		assert(n.estimate >= n.parent->estimate);
 		return true;
 	}
 };
