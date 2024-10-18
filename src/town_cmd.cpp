@@ -2934,7 +2934,7 @@ TileIndexDiff GetHouseNorthPart(HouseID &house)
 			return TileDiffXY(-1, -1);
 		}
 	}
-	return 0;
+	return TileDiffXY(0, 0);
 }
 
 /**

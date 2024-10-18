@@ -44,7 +44,7 @@ void RebuildTownCaches()
 		if (IsHouseCompleted(t)) town->cache.population += HouseSpec::Get(house_id)->population;
 
 		/* Increase the number of houses for every house, but only once. */
-		if (GetHouseNorthPart(house_id) == 0) town->cache.num_houses++;
+		if (GetHouseNorthPart(house_id) == TileDiffXY(0, 0)) town->cache.num_houses++;
 	}
 
 	/* Update the population and num_house dependent values */
