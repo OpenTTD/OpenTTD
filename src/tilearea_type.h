@@ -218,7 +218,7 @@ public:
 			this->tile++;
 		} else if (--this->y > 0) {
 			this->x = this->w;
-			this->tile += TileDiffXY(1, 1) - this->w;
+			this->tile += TileDiffXY(1 - this->w, 1);
 		} else {
 			this->tile = INVALID_TILE;
 		}
