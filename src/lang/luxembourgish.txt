@@ -1052,6 +1052,7 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Klick d�
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias Schrëften
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Klick dës Optioun fir verännerbar Schrëften ze anti-aliasen
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatesch Emfro
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}An enger automatescher Emfro matmaachen
@@ -1466,7 +1467,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Wiel d'Sekundä
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Fluchhäfen lafen nie of: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wann ugeschalt, bleift all Fluchhafentyp säit senger Aféierung bestoen
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warnen wann en Gefier verluer ass: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warnen wann e Gefier verluer ass: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Messagen uweisen wann Gefierer keen Wee op hiert Ziel fannen
 
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Opträg vun de Gefierer nopréifen: {STRING}
@@ -1476,11 +1477,13 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nee
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Jo, mee net déi gestoppten Gefierer
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Vun allen Gefierer
 
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen wann en Gefier en negativt Akommes huet: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen wann e Gefier en negativt Akommes huet: {STRING}
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wann ugeschalt, gëtt e Noorichtemessage gesent, wann e Gefier ee Joer laang kee Profit gemeet huet
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Wann ugeschalt gëtt e Message geschéckt wann e Gefier eng Period laang kee Profit gemet huet
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Warne wann e Gefier aal gëtt: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Wann ugeschalt gëtt eng News geschéckt wann d'Gefier aal gëtt
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Gefierer lafen nie of: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wann ugeschalt, bleiwen all Modeller vu Gefierer éiweg verfügbar
@@ -2470,6 +2473,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Däi Spillernum
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Administrativ Actiounen déi fir dese Client ze man sinn
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administrativ Actiounen déi ze man sinn fir des Firma
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Deser Firma bäitrieden
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Dësem Client erlaben denger Firma bäizetrieden
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Desem Spiller e Message schécken
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Send e Message un all d'Leit vun deser Firma
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}E Message un all Zuschauer schécken
@@ -2788,13 +2792,27 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Wielt d'
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}D'Statioun per drag & drop bauen
 
+STR_PICKER_MODE_ALL                                             :All
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Wiesselen tëschent Objeten vun alle Klassen
+STR_PICKER_MODE_USED                                            :Benotzt
+STR_PICKER_MODE_USED_TOOLTIP                                    :Wiesselen tëschent Objeten déi existéieren
+STR_PICKER_MODE_SAVED                                           :Gespäichert
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Wiesselen tëschent gespäicherten Objeten
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Wiel eng Statiounsklass fir unzeweisen
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wiel en Typ vu Statioun fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Wiel eng Objetsklass fir unzeweisen
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Wiel en Typ vun Objet fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäi ze setzen oder ewech ze huelen.Ctrl+Klick+Zéien fir en Areal diagonal auszewielen. Mat Shift ginn nëmmen d'ongeféier Käschten ugewisen
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wiel eng Stad-Zone fir unzeweisen
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Wiel en Haustyp fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
 
+STR_HOUSE_PICKER_CAPTION                                        :Häiserauswiel
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rand
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Ausseberäich
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Aner Viruerter
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Bannescht Viruerter
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadzentrum
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstatioun
@@ -2979,6 +2997,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Zoufalls
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grënn d'Stad op enger zoufälleger Plaz
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Vill zoufälleg Dierfer
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}D'Kaart zoufälleg mat Dierfer fëllen
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Aus Datei lueden
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Importéier Date fir Stied aus enger JSON file
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}All Dierfer vergréisseren
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}All Dierfer e bësse wuesse loossen
 
@@ -3363,8 +3383,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Wëlls 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% komplett
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Welt-Generatioun
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Landschaftsgeneratioun
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generéiren vu Flëss
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generatioun vu knubbelegem a stengege Land
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Stiedgeneratioun
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Industriegeneratioun
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objets-Generatioun
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Baam Generatioun
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spill gëtt opgestallt
@@ -3372,6 +3395,7 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Felder-V
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Lafende Script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparéiren d'Spill
 
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON Dateiformat net korrekt
 
 
 # NewGRF settings
@@ -3460,6 +3484,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Stroossentyp
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF Variabel 60+x Parameter (hexadezimal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Aligning sprite: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Aligning sprite: Action 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Aligning sprite: Action 0x5, type {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nächst Sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Géi weider op déi nächst normal Sprite, iwwersprang all pseudo/recolour/font Sprite an sprang un den Ufank no der leschter.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Géi op Sprite
@@ -5250,6 +5277,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Änner d
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nach keng Gefierer verfügbar
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}En neit Spill no {DATE_SHORT} ufenken oder benotz en NewGRF den al Gefierer erlaabt
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Keng Stroossen déi an der Stad gebaut kënne ginn si verfügbar
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Änner deng NewGRF Konfiguratioun
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Et gëtt nach keng Stroossentypen déi an enger Stad kënne gebaut ginn
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}En neit Spill no {DATE_SHORT} starten oder en NewGRF benotzen de fréizäiteg Stroossentype fir Stied huet
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kann den Zuch net bei Gefor durch d'Signal schécken...
