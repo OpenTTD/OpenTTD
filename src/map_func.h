@@ -439,7 +439,7 @@ debug_inline static uint TileY(TileIndex tile)
  */
 inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 {
-	return (tidc.y << Map::LogX()) + tidc.x;
+	return TileDiffXY(tidc.x, tidc.y);
 }
 
 
