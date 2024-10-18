@@ -364,18 +364,6 @@ public:
 };
 
 /**
- * An offset value between two tiles.
- *
- * This value is used for the difference between
- * two tiles. It can be added to a TileIndex to get
- * the resulting TileIndex of the start tile applied
- * with this saved difference.
- *
- * @see TileDiffXY(int, int)
- */
-typedef int32_t TileIndexDiff;
-
-/**
  * Returns the TileIndex of a coordinate.
  *
  * @param x The x coordinate of the tile
