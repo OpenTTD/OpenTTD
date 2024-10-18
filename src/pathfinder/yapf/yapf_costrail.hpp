@@ -53,7 +53,7 @@ public:
 	bool stopped_on_first_two_way_signal;
 
 protected:
-	static const int s_max_segment_cost = 10000;
+	static constexpr int MAX_SEGMENT_COST = 10000;
 
 	CYapfCostRailT() : max_cost(0), disable_cache(false), stopped_on_first_two_way_signal(false)
 	{
@@ -522,7 +522,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 				break;
 			}
 
-			if (segment_cost > s_max_segment_cost) {
+			if (segment_cost > MAX_SEGMENT_COST) {
 				/* Potentially in the infinite loop (or only very long segment?). We should
 				 * not force it to finish prematurely unless we are on a regular tile. */
 				if (IsTileType(tf->new_tile, MP_RAILWAY)) {
