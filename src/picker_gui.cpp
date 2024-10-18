@@ -197,10 +197,14 @@ void PickerWindow::ConstructWindow()
 	this->classes.SetSortFuncs(_class_sorter_funcs);
 	this->classes.SetFilterFuncs(_class_filter_funcs);
 
+	/* Update saved type information. */
+	this->callbacks.saved = this->callbacks.UpdateSavedItems(this->callbacks.saved);
+
+	/* Clear used type information. */
+	this->callbacks.used.clear();
+
 	if (this->has_type_picker) {
-		/* Update used and saved type information. */
-		this->callbacks.saved = this->callbacks.UpdateSavedItems(this->callbacks.saved);
-		this->callbacks.used.clear();
+		/* Populate used type information. */
 		this->callbacks.FillUsedItems(this->callbacks.used);
 
 		SetWidgetDisabledState(WID_PW_MODE_ALL, !this->callbacks.HasClassChoice());
