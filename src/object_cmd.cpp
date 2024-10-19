@@ -364,7 +364,10 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 
 	if (flags & DC_EXEC) {
 		BuildObject(type, tile, _current_company == OWNER_DEITY ? OWNER_NONE : _current_company, nullptr, view);
-		for (TileIndex t : ta) InvalidateWaterRegion(t);
+		for (TileIndex t : ta) {
+			InvalidateWaterRegion(t);
+			if (IsWaterTile(t)) ClearNeighbourNonFloodingStates(t);
+		}
 
 		/* Make sure the HQ starts at the right size. */
 		if (type == OBJECT_HQ) UpdateCompanyHQ(tile, hq_score);
