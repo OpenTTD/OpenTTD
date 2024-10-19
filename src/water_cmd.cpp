@@ -1254,6 +1254,9 @@ void TileLoop_Water(TileIndex tile)
 				/* do not try to flood water tiles - increases performance a lot */
 				if (IsTileType(dest, MP_WATER)) continue;
 
+				/* Buoys and docks cannot be flooded. */
+				if (IsTileType(dest, MP_STATION) && (IsBuoy(dest) || IsDock(dest))) continue;
+
 				can_flood = true;
 
 				/* TREE_GROUND_SHORE is the sign of a previous flood. */
