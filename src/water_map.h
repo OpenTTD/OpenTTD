@@ -516,4 +516,24 @@ inline void MakeLock(Tile t, Owner o, DiagDirection d, WaterClass wc_lower, Wate
 	MakeLockTile(upper_tile, IsWaterTile(upper_tile) ? GetTileOwner(upper_tile) : o, LOCK_PART_UPPER, d, wc_upper);
 }
 
+/**
+ * Set the non-flooding water tile state of a tile.
+ * @param t the tile
+ * @param b the non-flooding water tile state
+ */
+inline void SetNonFloodingWaterTile(Tile t, bool b)
+{
+	assert(IsTileType(t, MP_WATER));
+	AssignBit(t.m3(), 0, b);
+}
+/**
+ * Checks whether the tile is marked as a non-flooding water tile.
+ * @return true iff the tile is marked as a non-flooding water tile.
+ */
+inline bool IsNonFloodingWaterTile(Tile t)
+{
+	assert(IsTileType(t, MP_WATER));
+	return HasBit(t.m3(), 0);
+}
+
 #endif /* WATER_MAP_H */
