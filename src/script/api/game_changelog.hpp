@@ -19,6 +19,7 @@
  *
  * API additions:
  * \li GSEventVehicleCrashed::GetVictims
+ * \li GSAirport::GetAirportNumTerminals
  *
  * \b 14.0
  *
