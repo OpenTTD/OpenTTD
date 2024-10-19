@@ -90,6 +90,17 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
 	}
 }
 
+/**
+ * Clear non-flooding state of the tiles around a tile.
+ * @param tile The centre of the tile where other tiles' non-flooding state is cleared.
+ */
+void ClearNeighbourNonFloodingStates(TileIndex tile)
+{
+	for (Direction dir = DIR_BEGIN; dir != DIR_END; dir++) {
+		TileIndex dest = tile + TileOffsByDir(dir);
+		if (IsValidTile(dest) && IsTileType(dest, MP_WATER)) SetNonFloodingWaterTile(dest, false);
+	}
+}
 
 /**
  * Build a ship depot.
@@ -403,6 +414,7 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 			MakeRiver(tile, Random());
 		} else {
 			DoClearSquare(tile);
+			ClearNeighbourNonFloodingStates(tile);
 		}
 		MakeWaterKeepingClass(tile + delta, GetTileOwner(tile + delta));
 		MakeWaterKeepingClass(tile - delta, GetTileOwner(tile - delta));
@@ -565,6 +577,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 				}
 				DoClearSquare(tile);
 				MarkCanalsAndRiversAroundDirty(tile);
+				ClearNeighbourNonFloodingStates(tile);
 			}
 
 			return CommandCost(EXPENSES_CONSTRUCTION, base_cost);
@@ -580,6 +593,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 			if (flags & DC_EXEC) {
 				DoClearSquare(tile);
 				MarkCanalsAndRiversAroundDirty(tile);
+				ClearNeighbourNonFloodingStates(tile);
 			}
 			if (IsSlopeWithOneCornerRaised(slope)) {
 				return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WATER]);
@@ -1230,16 +1244,23 @@ static void DoDryUp(TileIndex tile)
  */
 void TileLoop_Water(TileIndex tile)
 {
-	if (IsTileType(tile, MP_WATER)) AmbientSoundEffect(tile);
+	if (IsTileType(tile, MP_WATER)) {
+		AmbientSoundEffect(tile);
+		if (IsNonFloodingWaterTile(tile)) return;
+	}
 
 	switch (GetFloodingBehaviour(tile)) {
-		case FLOOD_ACTIVE:
+		case FLOOD_ACTIVE: {
+			bool continue_flooding = false;
 			for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
 				/* Contrary to drying up, flooding does not consider MP_VOID tiles. */
 				if (!IsValidTile(dest)) continue;
 				/* do not try to flood water tiles - increases performance a lot */
 				if (IsTileType(dest, MP_WATER)) continue;
+
+				/* This neighbour tile might be floodable later if the tile is cleared, so allow flooding to continue. */
+				continue_flooding = true;
 
 				/* TREE_GROUND_SHORE is the sign of a previous flood. */
 				if (IsTileType(dest, MP_TREES) && GetTreeGround(dest) == TREE_GROUND_SHORE) continue;
@@ -1251,7 +1272,9 @@ void TileLoop_Water(TileIndex tile)
 
 				DoFloodTile(dest);
 			}
+			if (!continue_flooding && IsTileType(tile, MP_WATER)) SetNonFloodingWaterTile(tile, true);
 			break;
+		}
 
 		case FLOOD_DRYUP: {
 			Slope slope_here = std::get<0>(GetFoundationSlope(tile)) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;

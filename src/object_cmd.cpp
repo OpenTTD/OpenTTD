@@ -120,6 +120,8 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	assert(o->town != nullptr);
 
 	for (TileIndex t : ta) {
+		if (IsWaterTile(t)) ClearNeighbourNonFloodingStates(t);
+		if (HasTileWaterGround(t)) InvalidateWaterRegion(t);
 		WaterClass wc = (IsWaterTile(t) ? GetWaterClass(t) : WATER_CLASS_INVALID);
 		/* Update company infrastructure counts for objects build on canals owned by nobody. */
 		if (wc == WATER_CLASS_CANAL && owner != OWNER_NONE && (IsTileOwner(t, OWNER_NONE) || IsTileOwner(t, OWNER_WATER))) {
@@ -364,7 +366,6 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 
 	if (flags & DC_EXEC) {
 		BuildObject(type, tile, _current_company == OWNER_DEITY ? OWNER_NONE : _current_company, nullptr, view);
-		for (TileIndex t : ta) InvalidateWaterRegion(t);
 
 		/* Make sure the HQ starts at the right size. */
 		if (type == OBJECT_HQ) UpdateCompanyHQ(tile, hq_score);

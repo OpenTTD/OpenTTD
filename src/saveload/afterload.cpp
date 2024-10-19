@@ -2218,6 +2218,13 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_NONFLOODING_WATER_TILES)) {
+		for (auto t : Map::Iterate()) {
+			if (!IsTileType(t, MP_WATER)) continue;
+			SetNonFloodingWaterTile(t, false);
+		}
+	}
+
 	if (IsSavegameVersionBefore(SLV_124) && !IsSavegameVersionBefore(SLV_1)) {
 		/* The train station tile area was added, but for really old (TTDPatch) it's already valid. */
 		for (Waypoint *wp : Waypoint::Iterate()) {

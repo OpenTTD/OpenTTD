@@ -537,6 +537,7 @@ void DoClearSquare(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 	if (remove) RemoveDockingTile(tile);
 
+	ClearNeighbourNonFloodingStates(tile);
 	InvalidateWaterRegion(tile);
 }
 
@@ -693,6 +694,7 @@ CommandCost CmdLandscapeClear(DoCommandFlag flags, TileIndex tile)
 				}
 			}
 			DoClearSquare(tile);
+			ClearNeighbourNonFloodingStates(tile);
 		}
 	}
 	return cost;
