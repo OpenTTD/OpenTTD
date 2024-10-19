@@ -235,9 +235,12 @@ static const uint MAX_FRAMES     = 64;
 		CONTEXT ctx;
 		memcpy(&ctx, ep->ContextRecord, sizeof(ctx));
 
-		/* Allocate space for symbol info. */
-		char sym_info_raw[sizeof(IMAGEHLP_SYMBOL64) + MAX_SYMBOL_LEN - 1];
-		IMAGEHLP_SYMBOL64 *sym_info = (IMAGEHLP_SYMBOL64*)sym_info_raw;
+		/* Allocate space for symbol info.
+		 * The total initialised size must be sufficient for a null-terminating char at sym_info->Name[sym_info->MaxNameLength],
+		 * SymGetSymFromAddr64 is not required to write a null-terminating char.
+		 * sizeof(IMAGEHLP_SYMBOL64) includes at least one char of the Name buffer. */
+		std::array<char, sizeof(IMAGEHLP_SYMBOL64) + MAX_SYMBOL_LEN> sym_info_raw{};
+		IMAGEHLP_SYMBOL64 *sym_info = reinterpret_cast<IMAGEHLP_SYMBOL64*>(sym_info_raw.data());
 		sym_info->SizeOfStruct = sizeof(IMAGEHLP_SYMBOL64);
 		sym_info->MaxNameLength = MAX_SYMBOL_LEN;
 
