@@ -611,7 +611,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Eenheete
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Firme-Leeschtungsbewäertung (max Bewäertung=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmewäertgrafik
 
-STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Dauert 72 Minuten
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Dauert 72 Minutten
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Luedungs Bezuelraten
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Deeg am Transit
@@ -800,9 +800,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}All ausschalten
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}All uschalten
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}D'Héicht uweisen
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Weis Industrienimm un
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Keng Industrien op der Kaart uweisen
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}All Industrien op der Kaart uweisen
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Wiessel d'Usiicht vun der Héichtenkaart
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK} Uweise vun Industrienimm wiesselen
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Weis kee Besëtz vun der Firma op der Kaart un
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Weis de ganze Besëtz vun der Firma op der Kaart un
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Weis keng Wueren op der Kaart
@@ -1081,6 +1083,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis Mu
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Wiel de Basis Musikset dee soll benotzt ginn
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Méi Informatiounen iwwer de Basis Musikset
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Inhalt eroflueden
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Sich no neiem an geupdateten Inhalt fir erofzelueden
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(keng Plugins déi mat Social Platforms kommunizéiren installéiert)
 
@@ -1489,7 +1493,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Gefierer lafen 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wann ugeschalt, bleiwen all Modeller vu Gefierer éiweg verfügbar
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Zäitmiessung: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Wiel d'Zäitmiessungsuniten déi am Spill benotzt ginn. Dat kann spéider net méi geännert ginn.{}{}Kalennerbaséiert ass d'standart OpenTTD Erfahrung, wou all Joer 12 Méint huet an all Mount 28-31 Deeg.{}{}Wann d'Auer un der Mauer ausgewielt gëtt, Wuereproduktioun an finanziell Saachen op 1-Minut-Schrëtt baséiert, wat ongeféiert esou laang ass wéi en 30 Deeg Mount am kalennerbaséierte Modus. Déi si gruppéiert an 12-Minute Perdioden, equivalent zu engem Joer am kalennerbaséierte Modus.{}{}An béide Modi gëtt et emmer e klassesche Kalenner de gebraucht fir d'Aféirungsdaten fir Gefier, Häiser an aner Infrastrukturen.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Wiel d'Zäitmiessungsuniten déi am Spill benotzt ginn. Dat kann spéider net méi geännert ginn.{}{}Kalennerbaséiert ass d'standart OpenTTD Erfahrung, wou all Joer 12 Méint huet an all Mount 28-31 Deeg.{}{}Wann d'Auer un der Mauer ausgewielt gëtt, Wuereproduktioun an finanziell Saachen op 1-Minutt-Schrëtt baséiert, wat ongeféiert esou laang ass wéi en 30 Deeg Mount am kalennerbaséierte Modus. Déi si gruppéiert an 12-Minutte Perdioden, equivalent zu engem Joer am kalennerbaséierte Modus.{}{}An béide Modi gëtt et emmer e klassesche Kalenner de gebraucht fir d'Aféirungsdaten fir Gefier, Häiser an aner Infrastrukturen.
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalenner
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Auer un der Mauer
@@ -1816,7 +1820,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Wéivill Späic
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Revisiounsintervallen a Prozenter: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Wann ugeschalt probéiren Gefierer eng Revisioun ze maachen wann hier Zouverlässegkeet em e gewëssene Prozentsaz vun hierer Maximalzouverlässegkeet fällt.{}{}Z.b, wann d'Maximalzouverlässegkeet 90% ass, an de Revisiounsintervall ass 20%, dann probéiert d'Gefier an d'Revisioun ze goe wann et 72% Zouverlässegkeet erreecht huet.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Wann ugeschalt probéiren Gefierer eng Revisioun ze maachen wann hier Zouverlässegkeet em e gewëssene Prozentsaz vun hierer Maximalzouverlässegkeet fällt.{}{}Z.b, wann d'Maximalzouverlässegkeet 90% ass, an de Revisiounsintervall ass 20%, dann probéiert d'Gefier an d'Revisioun ze goe wann et 72% Zouverlässegkeet erreecht huet
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard Revisiounsintervall fir Zich: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Definéiert de Standardrevisiounsintervall fir nei Zich, wann keen expliziten Revisiounsintervall uginn ass
@@ -1827,6 +1831,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Definéiert de 
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard Revisiounsintervall fir Schëffer: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Definéiert de Standardrevisiounsintervall fir nei Schëffer, wann keen expliziten Revisiounsintervall uginn ass
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}D{P ag eeg}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Minutt{P 0 "" en}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Ausgeschalt
@@ -2194,7 +2201,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Beschtel
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Hei kritt een Dokumentatiounen an online Ressourcen
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Astellungen opman
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF Astellungen opman
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check op neien Inhalt kann downgeload gin
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check op neien Inhalt kann erofgelude ginn
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}KI-Astellungen opman
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Spillscriptastellungen opman
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Aus 'OpenTTD' eraus goen
@@ -2575,6 +2582,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :invaliden oder 
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :Falsch Versioun
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :Numm gëtt schon benotzt
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :falscht Passwuert
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :net op der erlaabt-Lëscht
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :falsch Firmen-ID am "DoCommand"
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :vum Server gekickt
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :huet probéiert ze cheaten
@@ -2801,6 +2809,8 @@ STR_PICKER_MODE_SAVED_TOOLTIP                                   :Wiesselen tësc
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Wiel eng Statiounsklass fir unzeweisen
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wiel en Typ vu Statioun fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Wiel eng Busarrêtsklass fir unzeweisen
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Wiel en Typ vu Busarrêt fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Wiel eng Objetsklass fir unzeweisen
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Wiel en Typ vun Objet fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäi ze setzen oder ewech ze huelen.Ctrl+Klick+Zéien fir en Areal diagonal auszewielen. Mat Shift ginn nëmmen d'ongeféier Käschten ugewisen
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wiel eng Stad-Zone fir unzeweisen
@@ -3395,8 +3405,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Felder-V
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Lafende Script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparéiren d'Spill
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Stieddate konnte net geluede ginn
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON Dateiformat net korrekt
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} Date net korrekt formatéiert
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} Koordinate falsch formatéiert, muss 0 oder 1 sinn als Proportioun vun der totaler Héicht vun der Héichtekaart
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Konnt keng geegent Plaz fannen fir {NUM} St{P ad ied} ze bauen. {P "E " ""}Schëld{P "" er} gouf{P "" en} amplaz dohi gesat
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Astellungen
@@ -3614,7 +3628,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Stad)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Awunner: {ORANGE}{COMMA}{BLACK}  Haiser: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} leschte Mount: {ORANGE}{COMMA}{BLACK}  Max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} lescht Minut: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} lescht Minutt: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Gidder gebraucht fir Stadwuesstum:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} gebraucht
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} gebraucht am Wanter
@@ -3952,7 +3966,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Keng
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produktioun leschte Mount:
-STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produktioun déi läscht Minut:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produktioun déi läscht Minutt:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportéiert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Zentréiert d'Siicht op d'Industrie. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktiounslevel: {YELLOW}{COMMA}%
@@ -4448,7 +4462,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Revisiou
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Revisiounsintervall: {LTBLUE}{COMMA}{NBSP}Minute{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Revisiounsintervall: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Lescht Revisioun: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Lescht Revisioun: {LTBLUE}Firu {NUM} Minuten
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Lescht Revisioun: {LTBLUE}Firu {NUM} Minutten
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}De Revisiounsintervall em 10 Deeg eropsetzen. Ctrl+Klick fir en em 5 Deeg eropzesetzen
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}De Revisiounsintervall em 5 Minuten eropsetzen. Ctrl+Klick fir en em 1 Minut eropzesetzen
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}De Revisiounsintervall em 10 Prozent eropsetzen. Ctrl+Klick fir en em 5 Prozent eropzesetzen
@@ -5037,6 +5051,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kann de 
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenzt un méi wéi eng Gare un
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... Statioun ze ausgebreed
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... net supportéiert Unzuel u Schinnen
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... net supportéiert Längt
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Ze vill Garen/Luedstatiounen
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Ze vill Garesdeeler
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Ze vill Busarrêten
