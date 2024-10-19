@@ -135,35 +135,23 @@ static std::tuple<CommandCost, TileIndex> TerraformTileHeight(TerraformerState *
 	total_cost.AddCost(_price[PR_TERRAFORM]);
 
 	/* Recurse to neighboured corners if height difference is larger than 1 */
-	{
-		TileIndex orig_tile = tile;
-		static const TileIndexDiffC _terraform_tilepos[] = {
-			{ 1,  0}, // move to tile in SE
-			{-2,  0}, // undo last move, and move to tile in NW
-			{ 1,  1}, // undo last move, and move to tile in SW
-			{ 0, -2}  // undo last move, and move to tile in NE
-		};
+	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+		TileIndex neighbour_tile = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDiagDir(dir));
 
-		for (const auto &ttm : _terraform_tilepos) {
-			tile += ToTileIndexDiff(ttm);
+		/* Not using IsValidTile as we want to also change MP_VOID tiles, which IsValidTile excludes. */
+		if (neighbour_tile == INVALID_TILE) continue;
 
-			if (tile >= Map::Size()) continue;
-			/* Make sure we don't wrap around the map */
-			if (Delta(TileX(orig_tile), TileX(tile)) == Map::SizeX() - 1) continue;
-			if (Delta(TileY(orig_tile), TileY(tile)) == Map::SizeY() - 1) continue;
+		/* Get TileHeight of neighboured tile as of current terraform progress */
+		int r = TerraformGetHeightOfTile(ts, neighbour_tile);
+		int height_diff = height - r;
 
-			/* Get TileHeight of neighboured tile as of current terraform progress */
-			int r = TerraformGetHeightOfTile(ts, tile);
-			int height_diff = height - r;
-
-			/* Is the height difference to the neighboured corner greater than 1? */
-			if (abs(height_diff) > 1) {
-				/* Terraform the neighboured corner. The resulting height difference should be 1. */
-				height_diff += (height_diff < 0 ? 1 : -1);
-				auto [cost, err_tile] = TerraformTileHeight(ts, tile, r + height_diff);
-				if (cost.Failed()) return { cost, err_tile };
-				total_cost.AddCost(cost);
-			}
+		/* Is the height difference to the neighboured corner greater than 1? */
+		if (abs(height_diff) > 1) {
+			/* Terraform the neighboured corner. The resulting height difference should be 1. */
+			height_diff += (height_diff < 0 ? 1 : -1);
+			auto [cost, err_tile] = TerraformTileHeight(ts, neighbour_tile, r + height_diff);
+			if (cost.Failed()) return { cost, err_tile };
+			total_cost.AddCost(cost);
 		}
 	}
 
