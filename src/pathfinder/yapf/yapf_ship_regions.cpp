@@ -40,23 +40,18 @@ inline uint ManhattanDistance(const CYapfRegionPatchNodeKey &a, const CYapfRegio
 
 /** Yapf Node for water regions. */
 template <class Tkey_>
-struct CYapfRegionNodeT {
+struct CYapfRegionNodeT : CYapfNodeT<Tkey_, CYapfRegionNodeT<Tkey_> > {
+	typedef CYapfNodeT<Tkey_, CYapfRegionNodeT<Tkey_> > base;
 	typedef Tkey_ Key;
 	typedef CYapfRegionNodeT<Tkey_> Node;
 
-	Tkey_       m_key;
-	Node       *m_hash_next;
-	Node       *m_parent;
-	int         m_cost;
-	int         m_estimate;
-
 	inline void Set(Node *parent, const WaterRegionPatchDesc &water_region_patch)
 	{
-		m_key.Set(water_region_patch);
-		m_hash_next = nullptr;
-		m_parent = parent;
-		m_cost = 0;
-		m_estimate = 0;
+		base::m_key.Set(water_region_patch);
+		base::m_hash_next = nullptr;
+		base::m_parent = parent;
+		base::m_cost = 0;
+		base::m_estimate = 0;
 	}
 
 	inline void Set(Node *parent, const Key &key)
@@ -66,22 +61,15 @@ struct CYapfRegionNodeT {
 
 	DiagDirection GetDiagDirFromParent() const
 	{
-		if (!m_parent) return INVALID_DIAGDIR;
-		const int dx = m_key.m_water_region_patch.x - m_parent->m_key.m_water_region_patch.x;
-		const int dy = m_key.m_water_region_patch.y - m_parent->m_key.m_water_region_patch.y;
+		if (!base::m_parent) return INVALID_DIAGDIR;
+		const int dx = base::m_key.m_water_region_patch.x - base::m_parent->m_key.m_water_region_patch.x;
+		const int dy = base::m_key.m_water_region_patch.y - base::m_parent->m_key.m_water_region_patch.y;
 		if (dx > 0 && dy == 0) return DIAGDIR_SW;
 		if (dx < 0 && dy == 0) return DIAGDIR_NE;
 		if (dx == 0 && dy > 0) return DIAGDIR_SE;
 		if (dx == 0 && dy < 0) return DIAGDIR_NW;
 		return INVALID_DIAGDIR;
 	}
-
-	inline Node *GetHashNext() { return m_hash_next; }
-	inline void SetHashNext(Node *pNext) { m_hash_next = pNext; }
-	inline const Tkey_ &GetKey() const { return m_key; }
-	inline int GetCost() { return m_cost; }
-	inline int GetCostEstimate() { return m_estimate; }
-	inline bool operator<(const Node &other) const { return m_estimate < other.m_estimate; }
 };
 
 /** YAPF origin for water regions. */
