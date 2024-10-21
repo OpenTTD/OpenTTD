@@ -165,11 +165,11 @@ public:
 					/* By using a TrackFollower we "play by the same rules" as the actual ship pathfinder */
 					CFollowTrackWater ft;
 					if (ft.Follow(tile, dir)) {
-						if (this->tile_area.Contains(ft.m_new_tile)) {
-							tiles_to_check.push_back(ft.m_new_tile);
-						} else if (!ft.m_is_bridge) {
-							assert(DistanceManhattan(ft.m_new_tile, tile) == 1);
-							const auto side = DiagdirBetweenTiles(tile, ft.m_new_tile);
+						if (this->tile_area.Contains(ft.new_tile)) {
+							tiles_to_check.push_back(ft.new_tile);
+						} else if (!ft.is_bridge) {
+							assert(DistanceManhattan(ft.new_tile, tile) == 1);
+							const auto side = DiagdirBetweenTiles(tile, ft.new_tile);
 							const int local_x_or_y = DiagDirToAxis(side) == AXIS_X ? TileY(tile) - TileY(this->tile_area.tile) : TileX(tile) - TileX(this->tile_area.tile);
 							SetBit(this->data.edge_traversability_bits[side], local_x_or_y);
 						} else {

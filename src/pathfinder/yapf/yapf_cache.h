@@ -10,6 +10,7 @@
 #ifndef YAPF_CACHE_H
 #define YAPF_CACHE_H
 
+#include "../../tile_type.h"
 #include "../../track_type.h"
 
 /**
