@@ -916,34 +916,32 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
 			}
 		}
 	} else {
-		/* Rail type is only valid when building a railway station; if station to
-			* build isn't a rail station it's INVALID_RAILTYPE. */
-		if (rt != INVALID_RAILTYPE &&
-				IsPlainRailTile(tile_cur) && !HasSignals(tile_cur) &&
-				HasPowerOnRail(GetRailType(tile_cur), rt)) {
-			/* Allow overbuilding if the tile:
-				*  - has rail, but no signals
-				*  - it has exactly one track
-				*  - the track is in line with the station
-				*  - the current rail type has power on the to-be-built type (e.g. convert normal rail to el rail)
-				*/
-			TrackBits tracks = GetTrackBits(tile_cur);
-			Track track = RemoveFirstTrack(&tracks);
-			Track expected_track = HasBit(invalid_dirs, DIAGDIR_NE) ? TRACK_X : TRACK_Y;
+		/* If we are building a station with a valid railtype, we may be able to overbuild an existing rail tile. */
+		if (rt != INVALID_RAILTYPE && IsPlainRailTile(tile_cur)) {
+			/* Don't overbuild signals. */
+			if (HasSignals(tile_cur)) return_cmd_error(STR_ERROR_MUST_REMOVE_SIGNALS_FIRST);
 
-			if (tracks == TRACK_BIT_NONE && track == expected_track) {
-				/* Check for trains having a reservation for this tile. */
-				if (HasBit(GetRailReservationTrackBits(tile_cur), track)) {
-					Train *v = GetTrainForReservation(tile_cur, track);
-					if (v != nullptr) {
-						affected_vehicles.push_back(v);
+			/* The current rail type must have power on the to-be-built type (e.g. convert normal rail to electrified rail). */
+			if (HasPowerOnRail(GetRailType(tile_cur), rt)) {
+				TrackBits tracks = GetTrackBits(tile_cur);
+				Track track = RemoveFirstTrack(&tracks);
+				Track expected_track = HasBit(invalid_dirs, DIAGDIR_NE) ? TRACK_X : TRACK_Y;
+
+				/* The existing track must align with the desired station axis. */
+				if (tracks == TRACK_BIT_NONE && track == expected_track) {
+					/* Check for trains having a reservation for this tile. */
+					if (HasBit(GetRailReservationTrackBits(tile_cur), track)) {
+						Train *v = GetTrainForReservation(tile_cur, track);
+						if (v != nullptr) {
+							affected_vehicles.push_back(v);
+						}
 					}
+					ret = Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile_cur, track);
+					if (ret.Failed()) return ret;
+					cost.AddCost(ret);
+					/* With flags & ~DC_EXEC CmdLandscapeClear would fail since the rail still exists */
+					return cost;
 				}
-				ret = Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile_cur, track);
-				if (ret.Failed()) return ret;
-				cost.AddCost(ret);
-				/* With flags & ~DC_EXEC CmdLandscapeClear would fail since the rail still exists */
-				return cost;
 			}
 		}
 		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_cur);
