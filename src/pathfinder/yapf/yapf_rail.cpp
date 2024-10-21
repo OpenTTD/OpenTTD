@@ -353,8 +353,7 @@ public:
 		Yapf().SetOrigin(t1, td);
 		Yapf().SetDestination(v, override_railtype);
 
-		bool bFound = Yapf().FindPath(v);
-		if (!bFound) return false;
+		if (!Yapf().FindPath(v)) return false;
 
 		/* Found a destination, set as reservation target. */
 		Node *pNode = Yapf().GetBestNode();
@@ -506,9 +505,7 @@ public:
 		Yapf().SetDestination(v);
 
 		/* find the best path */
-		bool bFound = Yapf().FindPath(v);
-
-		if (!bFound) return false;
+		if (!Yapf().FindPath(v)) return false;
 
 		/* path was found
 		 * walk through the path back to the origin */
@@ -518,8 +515,7 @@ public:
 		}
 
 		/* check if it was reversed origin */
-		Node &best_org_node = *pNode;
-		bool reversed = (best_org_node.cost != 0);
+		bool reversed = (pNode->cost != 0);
 		return reversed;
 	}
 };
