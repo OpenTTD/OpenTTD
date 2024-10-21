@@ -482,7 +482,7 @@ Do not mention two keywords; if two apply, pick one that best represents the com
 
 The `<details>` part starts with a capital and does not end with a dot.
 Try to be descriptive to what the player will notice, not to what is actually being changed in the code.
-See `changelog.txt` for inspiration.
+See `changelog.md` for inspiration.
 
 To further structure the changelog, you can add components. Example are:
 * "Network" for network specific changes.

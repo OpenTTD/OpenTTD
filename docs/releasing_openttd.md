@@ -20,7 +20,7 @@ This guide is for OpenTTD developers/maintainers, to release a new version of Op
 
 ## Step 1: Prepare changelog documentation
 
-1. Update the [changelog](../changelog.txt) with new changes since the last release.
+1. Update the [changelog](../changelog.md) with new changes since the last release.
    * Changelog entries are typically PR titles, but can be edited to be more helpful without context.
    * Don't include fixes to things which haven't previously been released (like fixes to features which are in the same changelog).
    * Order the entries by importance: `Feature > Add > Change > Fix`, then numerically by PR number.
