@@ -553,16 +553,10 @@ struct CYapfAnySafeTileRail2 : CYapfT<CYapfRail_TypesT<CYapfAnySafeTileRail2, CF
 
 Track YapfTrainChooseTrack(const Train *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, bool reserve_track, PBSTileInfo *target, TileIndex *dest)
 {
-	/* default is YAPF type 2 */
-	typedef Trackdir (*PfnChooseRailTrack)(const Train*, TileIndex, DiagDirection, TrackBits, bool&, bool, PBSTileInfo*, TileIndex*);
-	PfnChooseRailTrack pfnChooseRailTrack = &CYapfRail1::stChooseRailTrack;
+	Trackdir td_ret = _settings_game.pf.forbid_90_deg
+		? CYapfRail2::stChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target, dest)
+		: CYapfRail1::stChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target, dest);
 
-	/* check if non-default YAPF type needed */
-	if (_settings_game.pf.forbid_90_deg) {
-		pfnChooseRailTrack = &CYapfRail2::stChooseRailTrack; // Trackdir, forbid 90-deg
-	}
-
-	Trackdir td_ret = pfnChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target, dest);
 	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : FindFirstTrack(tracks);
 }
 
@@ -609,18 +603,12 @@ bool YapfTrainCheckReverse(const Train *v)
 		reverse_penalty += DistanceManhattan(cur_tile, tile_rev) * YAPF_TILE_LENGTH;
 	}
 
-	typedef bool (*PfnCheckReverseTrain)(const Train*, TileIndex, Trackdir, TileIndex, Trackdir, int);
-	PfnCheckReverseTrain pfnCheckReverseTrain = CYapfRail1::stCheckReverseTrain;
-
-	/* check if non-default YAPF type needed */
-	if (_settings_game.pf.forbid_90_deg) {
-		pfnCheckReverseTrain = &CYapfRail2::stCheckReverseTrain; // Trackdir, forbid 90-deg
-	}
-
 	/* slightly hackish: If the pathfinders finds a path, the cost of the first node is tested to distinguish between forward- and reverse-path. */
 	if (reverse_penalty == 0) reverse_penalty = 1;
 
-	bool reverse = pfnCheckReverseTrain(v, tile, td, tile_rev, td_rev, reverse_penalty);
+	bool reverse = _settings_game.pf.forbid_90_deg
+		? CYapfRail2::stCheckReverseTrain(v, tile, td, tile_rev, td_rev, reverse_penalty)
+		: CYapfRail1::stCheckReverseTrain(v, tile, td, tile_rev, td_rev, reverse_penalty);
 
 	return reverse;
 }
@@ -633,28 +621,16 @@ FindDepotData YapfTrainFindNearestDepot(const Train *v, int max_penalty)
 	TileIndex last_tile = last_veh->tile;
 	Trackdir td_rev = ReverseTrackdir(last_veh->GetVehicleTrackdir());
 
-	typedef FindDepotData (*PfnFindNearestDepotTwoWay)(const Train*, TileIndex, Trackdir, TileIndex, Trackdir, int, int);
-	PfnFindNearestDepotTwoWay pfnFindNearestDepotTwoWay = &CYapfAnyDepotRail1::stFindNearestDepotTwoWay;
-
-	/* check if non-default YAPF type needed */
-	if (_settings_game.pf.forbid_90_deg) {
-		pfnFindNearestDepotTwoWay = &CYapfAnyDepotRail2::stFindNearestDepotTwoWay; // Trackdir, forbid 90-deg
-	}
-
-	return pfnFindNearestDepotTwoWay(v, origin.tile, origin.trackdir, last_tile, td_rev, max_penalty, YAPF_INFINITE_PENALTY);
+	return _settings_game.pf.forbid_90_deg
+		? CYapfAnyDepotRail2::stFindNearestDepotTwoWay(v, origin.tile, origin.trackdir, last_tile, td_rev, max_penalty, YAPF_INFINITE_PENALTY)
+		: CYapfAnyDepotRail1::stFindNearestDepotTwoWay(v, origin.tile, origin.trackdir, last_tile, td_rev, max_penalty, YAPF_INFINITE_PENALTY);
 }
 
 bool YapfTrainFindNearestSafeTile(const Train *v, TileIndex tile, Trackdir td, bool override_railtype)
 {
-	typedef bool (*PfnFindNearestSafeTile)(const Train*, TileIndex, Trackdir, bool);
-	PfnFindNearestSafeTile pfnFindNearestSafeTile = CYapfAnySafeTileRail1::stFindNearestSafeTile;
-
-	/* check if non-default YAPF type needed */
-	if (_settings_game.pf.forbid_90_deg) {
-		pfnFindNearestSafeTile = &CYapfAnySafeTileRail2::stFindNearestSafeTile;
-	}
-
-	return pfnFindNearestSafeTile(v, tile, td, override_railtype);
+	return _settings_game.pf.forbid_90_deg
+		? CYapfAnySafeTileRail2::stFindNearestSafeTile(v, tile, td, override_railtype)
+		: CYapfAnySafeTileRail1::stFindNearestSafeTile(v, tile, td, override_railtype);
 }
 
 /** if any track changes, this counter is incremented - that will invalidate segment cost cache */

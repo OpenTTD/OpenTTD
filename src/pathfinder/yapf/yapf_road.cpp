@@ -533,16 +533,10 @@ struct CYapfRoadAnyDepot2 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot2, CRoadNod
 
 Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found, RoadVehPathCache &path_cache)
 {
-	/* default is YAPF type 2 */
-	typedef Trackdir (*PfnChooseRoadTrack)(const RoadVehicle*, TileIndex, DiagDirection, bool &path_found, RoadVehPathCache &path_cache);
-	PfnChooseRoadTrack pfnChooseRoadTrack = &CYapfRoad2::stChooseRoadTrack; // default: ExitDir, allow 90-deg
+	Trackdir td_ret = _settings_game.pf.yapf.disable_node_optimization
+		? CYapfRoad1::stChooseRoadTrack(v, tile, enterdir, path_found, path_cache) // Trackdir
+		: CYapfRoad2::stChooseRoadTrack(v, tile, enterdir, path_found, path_cache); // ExitDir, allow 90-deg
 
-	/* check if non-default YAPF type should be used */
-	if (_settings_game.pf.yapf.disable_node_optimization) {
-		pfnChooseRoadTrack = &CYapfRoad1::stChooseRoadTrack; // Trackdir
-	}
-
-	Trackdir td_ret = pfnChooseRoadTrack(v, tile, enterdir, path_found, path_cache);
 	return (td_ret != INVALID_TRACKDIR) ? td_ret : (Trackdir)FindFirstBit(trackdirs);
 }
 
@@ -555,14 +549,7 @@ FindDepotData YapfRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_dist
 		return FindDepotData();
 	}
 
-	/* default is YAPF type 2 */
-	typedef FindDepotData (*PfnFindNearestDepot)(const RoadVehicle*, TileIndex, Trackdir, int);
-	PfnFindNearestDepot pfnFindNearestDepot = &CYapfRoadAnyDepot2::stFindNearestDepot;
-
-	/* check if non-default YAPF type should be used */
-	if (_settings_game.pf.yapf.disable_node_optimization) {
-		pfnFindNearestDepot = &CYapfRoadAnyDepot1::stFindNearestDepot; // Trackdir
-	}
-
-	return pfnFindNearestDepot(v, tile, trackdir, max_distance);
+	return _settings_game.pf.yapf.disable_node_optimization
+		? CYapfRoadAnyDepot1::stFindNearestDepot(v, tile, trackdir, max_distance) // Trackdir
+		: CYapfRoadAnyDepot2::stFindNearestDepot(v, tile, trackdir, max_distance); // ExitDir
 }
