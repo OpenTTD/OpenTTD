@@ -67,14 +67,12 @@ struct CSegmentCostCacheBase
  */
 template <class Tsegment>
 struct CSegmentCostCacheT : public CSegmentCostCacheBase {
-	static const int C_HASH_BITS = 14;
+	static constexpr int HASH_BITS = 14;
 
-	typedef CHashTableT<Tsegment, C_HASH_BITS> HashTable;
-	using Heap = std::deque<Tsegment>;
-	typedef typename Tsegment::Key Key;    ///< key to hash table
+	using Key = typename Tsegment::Key; ///< key to hash table
 
-	HashTable map;
-	Heap heap;
+	HashTable<Tsegment, HASH_BITS> map;
+	std::deque<Tsegment> heap;
 
 	inline CSegmentCostCacheT() {}
 
