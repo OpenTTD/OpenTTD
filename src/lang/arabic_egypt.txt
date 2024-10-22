@@ -1243,9 +1243,11 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :السماح ب
 
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :مضاعفة وزن الشحنة لمحاكاة القطارات الثقيلة: {STRING}
 
+STR_CONFIG_SETTING_PLANE_SPEED                                  :عامل سرعة الطائرة: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 
 STR_CONFIG_SETTING_PLANE_CRASHES                                :عدد الطائرات المتحطمة: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :حدد فرصة وقوع حادث طائرة عشوائي.{}* الطائرات الكبيرة دائماً تواجه خطر التحطم عندما تهبط في مطار صغير
 ###length 3
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :بدون
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :منخفض
@@ -3068,6 +3070,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}يستق
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}عرض لائحة بالبضائع المقبولة
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}يقبل: {WHITE}{CARGO_LIST}
 
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}هذه المحطة لديها حقوق نقل حصرية في هذه المدينة.
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} اشترى حقوق النقل الحصرية في هذه المدينة.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}معدل النقل
