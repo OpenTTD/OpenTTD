@@ -468,6 +468,12 @@ struct BuildRailToolbarWindow : Window {
 	{
 		if (!gui_scope) return;
 
+		if (!ValParamRailType(this->railtype)) {
+			/* Close toolbar if rail type is not available. */
+			this->Close();
+			return;
+		}
+
 		bool can_build = CanBuildVehicleInfrastructure(VEH_TRAIN);
 		for (const WidgetID widget : can_build_widgets) this->SetWidgetDisabledState(widget, !can_build);
 		if (!can_build) {

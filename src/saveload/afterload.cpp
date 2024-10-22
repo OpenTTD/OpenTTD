@@ -68,6 +68,7 @@
 #include <signal.h>
 
 #include "../safeguards.h"
+#include "window_func.h"
 
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
 
@@ -3377,6 +3378,7 @@ void ReloadNewGRFData()
 	for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) InvalidateWindowData(WC_COMPANY_COLOUR, i);
 	/* Update company infrastructure counts. */
 	InvalidateWindowClassesData(WC_COMPANY_INFRASTRUCTURE);
+	InvalidateWindowClassesData(WC_BUILD_TOOLBAR);
 	/* redraw the whole screen */
 	MarkWholeScreenDirty();
 	CheckTrainsLengths();
