@@ -347,9 +347,8 @@ struct BuildRoadToolbarWindow : Window {
 
 	BuildRoadToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
-		this->Initialize(_cur_roadtype);
+		this->roadtype = _cur_roadtype;
 		this->CreateNestedTree();
-		this->SetupRoadToolbar();
 		this->FinishInitNested(window_number);
 		this->SetWidgetDisabledState(WID_ROT_REMOVE, true);
 
@@ -361,6 +360,11 @@ struct BuildRoadToolbarWindow : Window {
 		this->last_started_action = INVALID_WID_ROT;
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
+	}
+
+	void OnInit() override
+	{
+		this->SetupRoadToolbar();
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -409,12 +413,6 @@ struct BuildRoadToolbarWindow : Window {
 		}
 	}
 
-	void Initialize(RoadType roadtype)
-	{
-		assert(roadtype < ROADTYPE_END);
-		this->roadtype = roadtype;
-	}
-
 	/**
 	 * Configures the road toolbar for roadtype given
 	 * @param roadtype the roadtype to display
@@ -438,8 +436,7 @@ struct BuildRoadToolbarWindow : Window {
 	 */
 	void ModifyRoadType(RoadType roadtype)
 	{
-		this->Initialize(roadtype);
-		this->SetupRoadToolbar();
+		this->roadtype = roadtype;
 		this->ReInit();
 	}
 
