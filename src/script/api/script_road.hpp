@@ -248,7 +248,7 @@ public:
 	 *         they are build or 2 when building the first part automatically
 	 *         builds the second part. -1 means the preconditions are not met.
 	 */
-	static SQInteger CanBuildConnectedRoadParts(ScriptTile::Slope slope, Array<> &&existing, TileIndex start, TileIndex end);
+	static SQInteger CanBuildConnectedRoadParts(ScriptTile::Slope slope, Array<TileIndex> &&existing, TileIndex start, TileIndex end);
 
 	/**
 	 * Lookup function for building road parts independent of whether the
