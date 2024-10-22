@@ -336,20 +336,27 @@ inline StationGfx GetAirportGfx(Tile t)
 }
 
 /**
- * Gets the direction the road stop entrance points towards.
+ * Gets the direction the bay road stop entrance points towards.
  * @param t the tile of the road stop
- * @pre IsAnyRoadStopTile(t)
+ * @pre IsBayRoadStopTile(t)
  * @return the direction of the entrance
  */
-inline DiagDirection GetRoadStopDir(Tile t)
+inline DiagDirection GetBayRoadStopDir(Tile t)
 {
-	StationGfx gfx = GetStationGfx(t);
-	assert(IsAnyRoadStopTile(t));
-	if (gfx < GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET) {
-		return (DiagDirection)(gfx);
-	} else {
-		return (DiagDirection)(gfx - GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET);
-	}
+	assert(IsBayRoadStopTile(t));
+	return static_cast<DiagDirection>(GetStationGfx(t));
+}
+
+/**
+ * Gets the axis of the drive through stop.
+ * @param t the tile of the road stop
+ * @pre IsDriveThroughStopTile(t)
+ * @return the axis the drive through is in
+ */
+inline Axis GetDriveThroughStopAxis(Tile t)
+{
+	assert(IsDriveThroughStopTile(t));
+	return static_cast<Axis>(GetStationGfx(t) - GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET);
 }
 
 /**

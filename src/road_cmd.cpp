@@ -791,7 +791,7 @@ CommandCost CmdBuildRoad(DoCommandFlag flags, TileIndex tile, RoadBits pieces, R
 			if ((GetAnyRoadBits(tile, rtt) & pieces) == pieces) return_cmd_error(STR_ERROR_ALREADY_BUILT);
 			if (!IsDriveThroughStopTile(tile)) goto do_clear;
 
-			RoadBits curbits = AxisToRoadBits(DiagDirToAxis(GetRoadStopDir(tile)));
+			RoadBits curbits = AxisToRoadBits(GetDriveThroughStopAxis(tile));
 			if (pieces & ~curbits) goto do_clear;
 			pieces = curbits; // we need to pay for both roadbits
 
@@ -1463,10 +1463,10 @@ void DrawRoadCatenary(const TileInfo *ti)
 	} else if (IsTileType(ti->tile, MP_STATION)) {
 		if (IsAnyRoadStop(ti->tile)) {
 			if (IsDriveThroughStopTile(ti->tile)) {
-				Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;
+				Axis axis = GetDriveThroughStopAxis(ti->tile);
 				tram = road = (axis == AXIS_X ? ROAD_X : ROAD_Y);
 			} else {
-				tram = road = DiagDirToRoadBits(GetRoadStopDir(ti->tile));
+				tram = road = DiagDirToRoadBits(GetBayRoadStopDir(ti->tile));
 			}
 		}
 	} else {

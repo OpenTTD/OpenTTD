@@ -1252,7 +1252,9 @@ static bool CanRoadContinueIntoNextTile(const Town *t, const TileIndex tile, con
 	/* If the next tile is a station, allow if it's a road station facing the proper direction. Otherwise return false. */
 	if (IsTileType(next_tile, MP_STATION)) {
 		/* If the next tile is a road station, allow if it can be entered by the new tunnel/bridge, otherwise disallow. */
-		return IsAnyRoadStop(next_tile) && (GetRoadStopDir(next_tile) == ReverseDiagDir(road_dir) || (IsDriveThroughStopTile(next_tile) && GetRoadStopDir(next_tile) == road_dir));
+		if (IsDriveThroughStopTile(next_tile)) return GetDriveThroughStopAxis(next_tile) == DiagDirToAxis(road_dir);
+		if (IsBayRoadStopTile(next_tile)) return GetBayRoadStopDir(next_tile) == ReverseDiagDir(road_dir);
+		return false;
 	}
 
 	/* If the next tile is a road depot, allow if it's facing the right way. */
