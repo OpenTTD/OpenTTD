@@ -22,67 +22,59 @@ static std::vector<RailTypeLabel> _railtype_list;
 
 /**
  * Test if any saved rail type labels are different to the currently loaded
- * rail types, which therefore requires conversion.
- * @return true if (and only if) conversion due to rail type changes is needed.
+ * rail types. Rail types stored in the map will be converted if necessary.
  */
-static bool NeedRailTypeConversion()
+static void ConvertRailTypes()
 {
-	for (uint i = 0; i < _railtype_list.size(); i++) {
-		if ((RailType)i < RAILTYPE_END) {
-			const RailTypeInfo *rti = GetRailTypeInfo((RailType)i);
-			if (rti->label != _railtype_list[i]) return true;
-		} else {
-			if (_railtype_list[i] != 0) return true;
+	std::vector<RailType> railtype_conversion_map;
+	bool needs_conversion = false;
+
+	for (auto it = std::begin(_railtype_list); it != std::end(_railtype_list); ++it) {
+		RailType rt = GetRailTypeByLabel(*it);
+		if (rt == INVALID_RAILTYPE) {
+			rt = RAILTYPE_RAIL;
+		}
+
+		railtype_conversion_map.push_back(rt);
+
+		/* Conversion is needed if the rail type is in a different position than the list. */
+		if (*it != 0 && rt != std::distance(std::begin(_railtype_list), it)) needs_conversion = true;
+	}
+	if (!needs_conversion) return;
+
+	for (TileIndex t : Map::Iterate()) {
+		switch (GetTileType(t)) {
+			case MP_RAILWAY:
+				SetRailType(t, railtype_conversion_map[GetRailType(t)]);
+				break;
+
+			case MP_ROAD:
+				if (IsLevelCrossing(t)) {
+					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
+				}
+				break;
+
+			case MP_STATION:
+				if (HasStationRail(t)) {
+					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
+				}
+				break;
+
+			case MP_TUNNELBRIDGE:
+				if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
+					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
+				}
+				break;
+
+			default:
+				break;
 		}
 	}
-
-	/* No rail type conversion is necessary */
-	return false;
 }
 
 void AfterLoadLabelMaps()
 {
-	if (NeedRailTypeConversion()) {
-		std::vector<RailType> railtype_conversion_map;
-
-		for (uint i = 0; i < _railtype_list.size(); i++) {
-			RailType r = GetRailTypeByLabel(_railtype_list[i]);
-			if (r == INVALID_RAILTYPE) r = RAILTYPE_BEGIN;
-
-			railtype_conversion_map.push_back(r);
-		}
-
-		for (TileIndex t = 0; t < Map::Size(); t++) {
-			switch (GetTileType(t)) {
-				case MP_RAILWAY:
-					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
-					break;
-
-				case MP_ROAD:
-					if (IsLevelCrossing(t)) {
-						SetRailType(t, railtype_conversion_map[GetRailType(t)]);
-					}
-					break;
-
-				case MP_STATION:
-					if (HasStationRail(t)) {
-						SetRailType(t, railtype_conversion_map[GetRailType(t)]);
-					}
-					break;
-
-				case MP_TUNNELBRIDGE:
-					if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
-						SetRailType(t, railtype_conversion_map[GetRailType(t)]);
-					}
-					break;
-
-				default:
-					break;
-			}
-		}
-	}
-
-	ResetLabelMaps();
+	ConvertRailTypes();
 }
 
 void ResetLabelMaps()
@@ -119,8 +111,6 @@ struct RAILChunkHandler : ChunkHandler {
 	void Load() const override
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_label_object_desc, _label_object_sl_compat);
-
-		ResetLabelMaps();
 
 		LabelObject lo;
 
