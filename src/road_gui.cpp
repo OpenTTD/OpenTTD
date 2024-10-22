@@ -347,9 +347,8 @@ struct BuildRoadToolbarWindow : Window {
 
 	BuildRoadToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
-		this->Initialize(_cur_roadtype);
+		this->roadtype = _cur_roadtype;
 		this->CreateNestedTree();
-		this->SetupRoadToolbar();
 		this->FinishInitNested(window_number);
 		this->SetWidgetDisabledState(WID_ROT_REMOVE, true);
 
@@ -409,18 +408,9 @@ struct BuildRoadToolbarWindow : Window {
 		}
 	}
 
-	void Initialize(RoadType roadtype)
+	void OnInit() override
 	{
-		assert(roadtype < ROADTYPE_END);
-		this->roadtype = roadtype;
-	}
-
-	/**
-	 * Configures the road toolbar for roadtype given
-	 * @param roadtype the roadtype to display
-	 */
-	void SetupRoadToolbar()
-	{
+		/* Configure the road toolbar for the roadtype. */
 		const RoadTypeInfo *rti = GetRoadTypeInfo(this->roadtype);
 		this->GetWidget<NWidgetCore>(WID_ROT_ROAD_X)->widget_data = rti->gui_sprites.build_x_road;
 		this->GetWidget<NWidgetCore>(WID_ROT_ROAD_Y)->widget_data = rti->gui_sprites.build_y_road;
@@ -438,8 +428,7 @@ struct BuildRoadToolbarWindow : Window {
 	 */
 	void ModifyRoadType(RoadType roadtype)
 	{
-		this->Initialize(roadtype);
-		this->SetupRoadToolbar();
+		this->roadtype = roadtype;
 		this->ReInit();
 	}
 
