@@ -343,7 +343,6 @@ static bool RoadToolbar_CtrlChanged(Window *w)
 /** Road toolbar window handler. */
 struct BuildRoadToolbarWindow : Window {
 	RoadType roadtype;          ///< Road type to build.
-	const RoadTypeInfo *rti;    ///< Information about current road type
 	int last_started_action;    ///< Last started user action.
 
 	BuildRoadToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
@@ -414,7 +413,6 @@ struct BuildRoadToolbarWindow : Window {
 	{
 		assert(roadtype < ROADTYPE_END);
 		this->roadtype = roadtype;
-		this->rti = GetRoadTypeInfo(this->roadtype);
 	}
 
 	/**
@@ -423,6 +421,7 @@ struct BuildRoadToolbarWindow : Window {
 	 */
 	void SetupRoadToolbar()
 	{
+		const RoadTypeInfo *rti = GetRoadTypeInfo(this->roadtype);
 		this->GetWidget<NWidgetCore>(WID_ROT_ROAD_X)->widget_data = rti->gui_sprites.build_x_road;
 		this->GetWidget<NWidgetCore>(WID_ROT_ROAD_Y)->widget_data = rti->gui_sprites.build_y_road;
 		this->GetWidget<NWidgetCore>(WID_ROT_AUTOROAD)->widget_data = rti->gui_sprites.auto_road;
@@ -447,12 +446,13 @@ struct BuildRoadToolbarWindow : Window {
 	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget == WID_ROT_CAPTION) {
-			if (this->rti->max_speed > 0) {
+			const RoadTypeInfo *rti = GetRoadTypeInfo(this->roadtype);
+			if (rti->max_speed > 0) {
 				SetDParam(0, STR_TOOLBAR_RAILTYPE_VELOCITY);
-				SetDParam(1, this->rti->strings.toolbar_caption);
-				SetDParam(2, PackVelocity(this->rti->max_speed / 2, VEH_ROAD));
+				SetDParam(1, rti->strings.toolbar_caption);
+				SetDParam(2, PackVelocity(rti->max_speed / 2, VEH_ROAD));
 			} else {
-				SetDParam(0, this->rti->strings.toolbar_caption);
+				SetDParam(0, rti->strings.toolbar_caption);
 			}
 		}
 	}
@@ -518,17 +518,17 @@ struct BuildRoadToolbarWindow : Window {
 		_one_way_button_clicked = false;
 		switch (widget) {
 			case WID_ROT_ROAD_X:
-				HandlePlacePushButton(this, WID_ROT_ROAD_X, this->rti->cursor.road_nwse, HT_RECT);
+				HandlePlacePushButton(this, WID_ROT_ROAD_X, GetRoadTypeInfo(this->roadtype)->cursor.road_nwse, HT_RECT);
 				this->last_started_action = widget;
 				break;
 
 			case WID_ROT_ROAD_Y:
-				HandlePlacePushButton(this, WID_ROT_ROAD_Y, this->rti->cursor.road_swne, HT_RECT);
+				HandlePlacePushButton(this, WID_ROT_ROAD_Y, GetRoadTypeInfo(this->roadtype)->cursor.road_swne, HT_RECT);
 				this->last_started_action = widget;
 				break;
 
 			case WID_ROT_AUTOROAD:
-				HandlePlacePushButton(this, WID_ROT_AUTOROAD, this->rti->cursor.autoroad, HT_RECT);
+				HandlePlacePushButton(this, WID_ROT_AUTOROAD, GetRoadTypeInfo(this->roadtype)->cursor.autoroad, HT_RECT);
 				this->last_started_action = widget;
 				break;
 
@@ -538,7 +538,7 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case WID_ROT_DEPOT:
-				if (HandlePlacePushButton(this, WID_ROT_DEPOT, this->rti->cursor.depot, HT_RECT)) {
+				if (HandlePlacePushButton(this, WID_ROT_DEPOT, GetRoadTypeInfo(this->roadtype)->cursor.depot, HT_RECT)) {
 					ShowRoadDepotPicker(this);
 					this->last_started_action = widget;
 				}
@@ -578,7 +578,7 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case WID_ROT_BUILD_TUNNEL:
-				HandlePlacePushButton(this, WID_ROT_BUILD_TUNNEL, this->rti->cursor.tunnel, HT_SPECIAL);
+				HandlePlacePushButton(this, WID_ROT_BUILD_TUNNEL, GetRoadTypeInfo(this->roadtype)->cursor.tunnel, HT_SPECIAL);
 				this->last_started_action = widget;
 				break;
 
@@ -591,7 +591,7 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case WID_ROT_CONVERT_ROAD:
-				HandlePlacePushButton(this, WID_ROT_CONVERT_ROAD, this->rti->cursor.convert_road, HT_RECT);
+				HandlePlacePushButton(this, WID_ROT_CONVERT_ROAD, GetRoadTypeInfo(this->roadtype)->cursor.convert_road, HT_RECT);
 				this->last_started_action = widget;
 				break;
 
@@ -636,7 +636,7 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case WID_ROT_DEPOT:
-				Command<CMD_BUILD_ROAD_DEPOT>::Post(this->rti->strings.err_depot, CcRoadDepot,
+				Command<CMD_BUILD_ROAD_DEPOT>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_depot, CcRoadDepot,
 						tile, _cur_roadtype, _road_depot_orientation);
 				break;
 
@@ -749,10 +749,10 @@ struct BuildRoadToolbarWindow : Window {
 					bool start_half = _place_road_dir == AXIS_Y ? _place_road_start_half_y : _place_road_start_half_x;
 
 					if (_remove_button_clicked) {
-						Command<CMD_REMOVE_LONG_ROAD>::Post(this->rti->strings.err_remove_road, CcPlaySound_CONSTRUCTION_OTHER,
+						Command<CMD_REMOVE_LONG_ROAD>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_remove_road, CcPlaySound_CONSTRUCTION_OTHER,
 								end_tile, start_tile, _cur_roadtype, _place_road_dir, start_half, _place_road_end_half);
 					} else {
-						Command<CMD_BUILD_LONG_ROAD>::Post(this->rti->strings.err_build_road, CcPlaySound_CONSTRUCTION_OTHER,
+						Command<CMD_BUILD_LONG_ROAD>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_build_road, CcPlaySound_CONSTRUCTION_OTHER,
 								end_tile, start_tile, _cur_roadtype, _place_road_dir, _one_way_button_clicked ? DRD_NORTHBOUND : DRD_NONE, start_half, _place_road_end_half, false);
 					}
 					break;
@@ -786,9 +786,9 @@ struct BuildRoadToolbarWindow : Window {
 					if (this->IsWidgetLowered(WID_ROT_BUS_STATION) && GetIfClassHasNewStopsByType(RoadStopClass::Get(_roadstop_gui.sel_class), ROADSTOP_BUS, _cur_roadtype)) {
 						if (_remove_button_clicked) {
 							TileArea ta(start_tile, end_tile);
-							Command<CMD_REMOVE_ROAD_STOP>::Post(this->rti->strings.err_remove_station[ROADSTOP_BUS], CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, ROADSTOP_BUS, _ctrl_pressed);
+							Command<CMD_REMOVE_ROAD_STOP>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_remove_station[ROADSTOP_BUS], CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, ROADSTOP_BUS, _ctrl_pressed);
 						} else {
-							PlaceRoadStop(start_tile, end_tile, ROADSTOP_BUS, _ctrl_pressed, _cur_roadtype, this->rti->strings.err_build_station[ROADSTOP_BUS]);
+							PlaceRoadStop(start_tile, end_tile, ROADSTOP_BUS, _ctrl_pressed, _cur_roadtype, GetRoadTypeInfo(this->roadtype)->strings.err_build_station[ROADSTOP_BUS]);
 						}
 					}
 					break;
@@ -798,15 +798,15 @@ struct BuildRoadToolbarWindow : Window {
 					if (this->IsWidgetLowered(WID_ROT_TRUCK_STATION) && GetIfClassHasNewStopsByType(RoadStopClass::Get(_roadstop_gui.sel_class), ROADSTOP_TRUCK, _cur_roadtype)) {
 						if (_remove_button_clicked) {
 							TileArea ta(start_tile, end_tile);
-							Command<CMD_REMOVE_ROAD_STOP>::Post(this->rti->strings.err_remove_station[ROADSTOP_TRUCK], CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, ROADSTOP_TRUCK, _ctrl_pressed);
+							Command<CMD_REMOVE_ROAD_STOP>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_remove_station[ROADSTOP_TRUCK], CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, ROADSTOP_TRUCK, _ctrl_pressed);
 						} else {
-							PlaceRoadStop(start_tile, end_tile, ROADSTOP_TRUCK, _ctrl_pressed, _cur_roadtype, this->rti->strings.err_build_station[ROADSTOP_TRUCK]);
+							PlaceRoadStop(start_tile, end_tile, ROADSTOP_TRUCK, _ctrl_pressed, _cur_roadtype, GetRoadTypeInfo(this->roadtype)->strings.err_build_station[ROADSTOP_TRUCK]);
 						}
 					}
 					break;
 
 				case DDSP_CONVERT_ROAD:
-					Command<CMD_CONVERT_ROAD>::Post(rti->strings.err_convert_road, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile, _cur_roadtype);
+					Command<CMD_CONVERT_ROAD>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_convert_road, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile, _cur_roadtype);
 					break;
 			}
 		}
