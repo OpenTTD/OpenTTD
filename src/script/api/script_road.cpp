@@ -442,7 +442,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 		case MP_STATION:
 			if (::IsDriveThroughStopTile(neighbour_tile)) {
-				return (::DiagDirToAxis(neighbour) == ::DiagDirToAxis(::GetRoadStopDir(neighbour_tile)));
+				return ::DiagDirToAxis(neighbour) == ::GetDriveThroughStopAxis(neighbour_tile);
 			}
 			return false;
 
@@ -478,14 +478,16 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 {
 	if (!IsRoadStationTile(station)) return INVALID_TILE;
 
-	return station + ::TileOffsByDiagDir(::GetRoadStopDir(station));
+	if (::IsBayRoadStopTile(station)) return station + ::TileOffsByDiagDir(::GetBayRoadStopDir(station));
+
+	return station - ::TileOffsByAxis(::GetDriveThroughStopAxis(station));
 }
 
 /* static */ TileIndex ScriptRoad::GetDriveThroughBackTile(TileIndex station)
 {
 	if (!IsDriveThroughRoadStationTile(station)) return INVALID_TILE;
 
-	return station + ::TileOffsByDiagDir(::ReverseDiagDir(::GetRoadStopDir(station)));
+	return station + ::TileOffsByAxis(::GetDriveThroughStopAxis(station));
 }
 
 /* static */ bool ScriptRoad::_BuildRoadInternal(TileIndex start, TileIndex end, bool one_way, bool full)

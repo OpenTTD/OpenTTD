@@ -987,7 +987,7 @@ CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, DoCommandF
 				return ClearTile_Station(cur_tile, DC_AUTO); // Get error message.
 			}
 			/* Drive-through station in the wrong direction. */
-			if (is_drive_through && IsDriveThroughStopTile(cur_tile) && DiagDirToAxis(GetRoadStopDir(cur_tile)) != axis) {
+			if (is_drive_through && IsDriveThroughStopTile(cur_tile) && GetDriveThroughStopAxis(cur_tile) != axis) {
 				return_cmd_error(STR_ERROR_DRIVE_THROUGH_DIRECTION);
 			}
 			StationID st = GetStationIndex(cur_tile);
@@ -2344,7 +2344,7 @@ static CommandCost RemoveGenericRoadStop(DoCommandFlag flags, const TileArea &ro
 				/* If we don't want to preserve our roads then restore only roads of others. */
 				if (remove_road && road_owner[rtt] == _current_company) road_type[rtt] = INVALID_ROADTYPE;
 			}
-			road_bits = AxisToRoadBits(DiagDirToAxis(GetRoadStopDir(cur_tile)));
+			road_bits = AxisToRoadBits(GetDriveThroughStopAxis(cur_tile));
 		}
 
 		CommandCost ret;
@@ -3269,7 +3269,7 @@ draw_default_foundation:
 			}
 		}
 	} else if (IsRoadWaypointTile(ti->tile)) {
-		RoadBits bits = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? ROAD_X : ROAD_Y;
+		RoadBits bits = AxisToRoadBits(GetDriveThroughStopAxis(ti->tile));
 		RoadType road_rt = GetRoadTypeRoad(ti->tile);
 		RoadType tram_rt = GetRoadTypeTram(ti->tile);
 		RoadBits road = (road_rt != INVALID_ROADTYPE) ? bits : ROAD_NONE;
@@ -3339,7 +3339,6 @@ draw_default_foundation:
 		const RoadTypeInfo *road_rti = road_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(road_rt);
 		const RoadTypeInfo *tram_rti = tram_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(tram_rt);
 
-		Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;
 		StationGfx view = GetStationGfx(ti->tile);
 		StationType type = GetStationType(ti->tile);
 
@@ -3374,7 +3373,7 @@ draw_default_foundation:
 
 		if (IsDriveThroughStopTile(ti->tile)) {
 			if (type != STATION_ROADWAYPOINT && (stopspec == nullptr || (stop_draw_mode & ROADSTOP_DRAW_MODE_OVERLAY) != 0)) {
-				uint sprite_offset = axis == AXIS_X ? 1 : 0;
+				uint sprite_offset = GetDriveThroughStopAxis(ti->tile) == AXIS_X ? 1 : 0;
 				DrawRoadOverlays(ti, PAL_NONE, road_rti, tram_rti, sprite_offset, sprite_offset);
 			}
 		} else {
@@ -3599,14 +3598,15 @@ static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode
 				RoadTramType rtt = (RoadTramType)sub_mode;
 				if (!HasTileRoadType(tile, rtt)) break;
 
-				DiagDirection dir = GetRoadStopDir(tile);
-				Axis axis = DiagDirToAxis(dir);
-
-				if (side != INVALID_DIAGDIR) {
-					if (axis != DiagDirToAxis(side) || (IsBayRoadStopTile(tile) && dir != side)) break;
+				if (IsBayRoadStopTile(tile)) {
+					DiagDirection dir = GetBayRoadStopDir(tile);
+					if (side != INVALID_DIAGDIR && dir != side) break;
+					trackbits = DiagDirToDiagTrackBits(dir);
+				} else {
+					Axis axis = GetDriveThroughStopAxis(tile);
+					if (side != INVALID_DIAGDIR && axis != DiagDirToAxis(side)) break;
+					trackbits = AxisToTrackBits(axis);
 				}
-
-				trackbits = AxisToTrackBits(axis);
 			}
 			break;
 
@@ -4754,9 +4754,7 @@ static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, in
 			switch (GetStationType(tile)) {
 				case STATION_WAYPOINT:
 				case STATION_RAIL: {
-					DiagDirection direction = AxisToDiagDir(GetRailStationAxis(tile));
-					if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, direction)) break;
-					if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, ReverseDiagDir(direction))) break;
+					if (!AutoslopeCheckForAxis(tile, z_new, tileh_new, GetRailStationAxis(tile))) break;
 					return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 				}
 
@@ -4765,10 +4763,10 @@ static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, in
 
 				case STATION_TRUCK:
 				case STATION_BUS: {
-					DiagDirection direction = GetRoadStopDir(tile);
-					if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, direction)) break;
 					if (IsDriveThroughStopTile(tile)) {
-						if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, ReverseDiagDir(direction))) break;
+						if (!AutoslopeCheckForAxis(tile, z_new, tileh_new, GetDriveThroughStopAxis(tile))) break;
+					} else {
+						if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetBayRoadStopDir(tile))) break;
 					}
 					return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 				}

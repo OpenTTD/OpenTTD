@@ -123,7 +123,7 @@ Axis GetAxisForNewRailWaypoint(TileIndex tile)
 Axis GetAxisForNewRoadWaypoint(TileIndex tile)
 {
 	/* The axis for existing road waypoints is easy. */
-	if (IsRoadWaypointTile(tile)) return DiagDirToAxis(GetRoadStopDir(tile));
+	if (IsRoadWaypointTile(tile)) return GetDriveThroughStopAxis(tile);
 
 	/* Non-plain road type, no valid axis for waypoints. */
 	if (!IsNormalRoadTile(tile)) return INVALID_AXIS;
