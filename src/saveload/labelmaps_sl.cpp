@@ -130,11 +130,27 @@ static void ConvertRoadTypes()
 	}
 }
 
+/** Populate label lists with current values. */
+static void SetCurrentLabelLists()
+{
+	_railtype_list.clear();
+	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+		_railtype_list.push_back({GetRailTypeInfo(rt)->label, 0});
+	}
+
+	_roadtype_list.clear();
+	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+		_roadtype_list.push_back({GetRoadTypeInfo(rt)->label, GetRoadTramType(rt)});
+	}
+}
+
 /** Perform rail type and road type conversion if necessary. */
 void AfterLoadLabelMaps()
 {
 	ConvertRailTypes();
 	ConvertRoadTypes();
+
+	SetCurrentLabelLists();
 }
 
 void ResetLabelMaps()

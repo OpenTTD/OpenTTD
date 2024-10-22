@@ -3362,6 +3362,7 @@ void ReloadNewGRFData()
 	RecomputePrices();
 	/* reload vehicles */
 	ResetVehicleHash();
+	AfterLoadLabelMaps();
 	AfterLoadVehiclesPhase1(false);
 	AfterLoadVehiclesPhase2(false);
 	StartupEngines();
