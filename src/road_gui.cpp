@@ -377,6 +377,13 @@ struct BuildRoadToolbarWindow : Window {
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
+
+		if (!ValParamRoadType(this->roadtype)) {
+			/* Close toolbar if road type is not available. */
+			this->Close();
+			return;
+		}
+
 		RoadTramType rtt = GetRoadTramType(this->roadtype);
 
 		bool can_build = CanBuildVehicleInfrastructure(VEH_ROAD, rtt);
