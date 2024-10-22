@@ -253,6 +253,8 @@ RoadTypes GetRoadTypes(bool introduces)
  */
 RoadType GetRoadTypeByLabel(RoadTypeLabel label, bool allow_alternate_labels)
 {
+	if (label == 0) return INVALID_ROADTYPE;
+
 	/* Loop through each road type until the label is found */
 	for (RoadType r = ROADTYPE_BEGIN; r != ROADTYPE_END; r++) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(r);
