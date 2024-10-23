@@ -33,6 +33,7 @@
 #include "sound_func.h"
 #include "autoreplace_func.h"
 #include "company_gui.h"
+#include "company_base.h"
 #include "signs_base.h"
 #include "subsidy_base.h"
 #include "subsidy_func.h"
@@ -762,7 +763,7 @@ bool AddInflation(bool check_year)
 void RecomputePrices()
 {
 	/* Setup maximum loan as a rounded down multiple of LOAN_INTERVAL. */
-	_economy.max_loan = ((uint64_t)_settings_game.difficulty.max_loan * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL;
+	_economy.max_loan = ((uint64_t)GetMaxLoanFromPercentage() * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL;
 
 	/* Setup price bases */
 	for (Price i = PR_BEGIN; i < PR_END; i++) {
