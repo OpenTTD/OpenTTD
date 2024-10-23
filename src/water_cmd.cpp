@@ -101,7 +101,7 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
 CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis)
 {
 	if (!IsValidAxis(axis)) return CMD_ERROR;
-	TileIndex tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+	TileIndex tile2 = tile + TileOffsByAxis(axis);
 
 	if (!HasTileWaterGround(tile) || !HasTileWaterGround(tile2)) {
 		return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);

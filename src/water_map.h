@@ -280,7 +280,7 @@ inline DiagDirection GetShipDepotDirection(Tile t)
  */
 inline TileIndex GetOtherShipDepotTile(Tile t)
 {
-	return TileIndex(t) + (GetShipDepotPart(t) != DEPOT_PART_NORTH ? -1 : 1) * (GetShipDepotAxis(t) != AXIS_X ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
+	return TileIndex(t) + (GetShipDepotPart(t) != DEPOT_PART_NORTH ? -1 : 1) * TileOffsByAxis(GetShipDepotAxis(t));
 }
 
 /**

@@ -1430,8 +1430,8 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 			st->cached_anim_triggers |= statspec->animation.triggers;
 		}
 
-		TileIndexDiff tile_delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1)); // offset to go to the next platform tile
-		TileIndexDiff track_delta = (axis == AXIS_X ? TileDiffXY(0, 1) : TileDiffXY(1, 0)); // offset to go to the next track
+		TileIndexDiff tile_delta = TileOffsByAxis(axis); // offset to go to the next platform tile
+		TileIndexDiff track_delta = TileOffsByAxis(OtherAxis(axis)); // offset to go to the next track
 		Track track = AxisToTrack(axis);
 
 		std::vector<uint8_t> layouts(numtracks * plat_len);
