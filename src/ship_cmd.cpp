@@ -260,6 +260,8 @@ void Ship::OnNewCalendarDay()
 /** Economy day handler. */
 void Ship::OnNewEconomyDay()
 {
+	PerformanceAccumulator framerate(PFE_GL_SHIPS);
+
 	EconomyAgeVehicle(this);
 
 	if ((++this->day_counter & 7) == 0) {
