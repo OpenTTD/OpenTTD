@@ -544,6 +544,20 @@ uint DistanceFromEdge(TileIndex); ///< shortest distance from any edge of the ma
 uint DistanceFromEdgeDir(TileIndex, DiagDirection); ///< distance from the map edge in given direction
 
 /**
+ * Convert an Axis to a TileIndexDiff
+ *
+ * @param axis The Axis
+ * @return The resulting TileIndexDiff in southern direction (either SW or SE).
+ */
+inline TileIndexDiff TileOffsByAxis(Axis axis)
+{
+	extern const TileIndexDiffC _tileoffs_by_axis[];
+
+	assert(IsValidAxis(axis));
+	return ToTileIndexDiff(_tileoffs_by_axis[axis]);
+}
+
+/**
  * Convert a DiagDirection to a TileIndexDiff
  *
  * @param dir The DiagDirection
