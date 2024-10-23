@@ -3340,15 +3340,13 @@ draw_default_foundation:
 		const RoadTypeInfo *tram_rti = tram_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(tram_rt);
 
 		Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;
-		DiagDirection dir = GetRoadStopDir(ti->tile);
+		StationGfx view = GetStationGfx(ti->tile);
 		StationType type = GetStationType(ti->tile);
 
 		const RoadStopSpec *stopspec = GetRoadStopSpec(ti->tile);
 		RoadStopDrawMode stop_draw_mode{};
 		if (stopspec != nullptr) {
 			stop_draw_mode = stopspec->draw_mode;
-			int view = dir;
-			if (IsDriveThroughStopTile(ti->tile)) view += 4;
 			st = BaseStation::GetByTile(ti->tile);
 			RoadStopResolverObject object(stopspec, st, ti->tile, INVALID_ROADTYPE, type, view);
 			const SpriteGroup *group = object.Resolve();
@@ -3385,7 +3383,7 @@ draw_default_foundation:
 
 			if ((stopspec == nullptr || (stop_draw_mode & ROADSTOP_DRAW_MODE_ROAD) != 0) && road_rti->UsesOverlay()) {
 				SpriteID ground = GetCustomRoadSprite(road_rti, ti->tile, ROTSG_ROADSTOP);
-				DrawGroundSprite(ground + dir, PAL_NONE);
+				DrawGroundSprite(ground + view, PAL_NONE);
 			}
 		}
 

@@ -704,8 +704,7 @@ class NIHRoadStop : public NIHelper {
 
 	uint Resolve(uint index, uint var, uint32_t param, bool &avail) const override
 	{
-		int view = GetRoadStopDir(index);
-		if (IsDriveThroughStopTile(index)) view += 4;
+		StationGfx view = GetStationGfx(index);
 		RoadStopResolverObject ro(GetRoadStopSpec(index), BaseStation::GetByTile(index), index, INVALID_ROADTYPE, GetStationType(index), view);
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
