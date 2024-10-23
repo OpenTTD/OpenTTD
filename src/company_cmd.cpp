@@ -1184,6 +1184,8 @@ CommandCost CmdRenameCompany(DoCommandFlag flags, const std::string &text)
 		}
 		MarkWholeScreenDirty();
 		CompanyAdminUpdate(c);
+		AI::BroadcastNewEvent(new ScriptEventCompanyRenamed(c->index), c->index);
+		Game::NewEvent(new ScriptEventCompanyRenamed(c->index));
 	}
 
 	return CommandCost();
