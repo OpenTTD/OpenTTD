@@ -388,6 +388,8 @@ debug_inline static TileIndex TileXY(uint x, uint y)
  */
 inline TileIndexDiff TileDiffXY(int x, int y)
 {
+	assert(IsInsideMM(x, -static_cast<int>(Map::SizeX()) / 2, Map::SizeX() / 2));
+	assert(IsInsideMM(y, -static_cast<int>(Map::SizeY()) / 2, Map::SizeY() / 2));
 	/* Multiplication gives much better optimization on MSVC than shifting.
 	 * 0 << shift isn't optimized to 0 properly.
 	 * Typically x and y are constants, and then this doesn't result
@@ -445,6 +447,10 @@ inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 
 /**
  * Adds a given offset to a tile.
+ *
+ * Due to the way \c offset works, it is not possible to differentiate between going left and down by one, versus going right by map's side length minus one.
+ * To check whether the offset does not overflow, the assumption is made that the absolute offset in X and Y direction are at most half the map's side length minus one.
+ * So, practically the maximum always safe offset is +- 31 in X and Y direction.
  *
  * @param tile The tile to add an offset to.
  * @param offset The offset to add.
