@@ -49,7 +49,7 @@ class WaterRegionData {
 	std::array<TWaterRegionTraversabilityBits, DIAGDIR_END> edge_traversability_bits{};
 	std::unique_ptr<TWaterRegionPatchLabelArray> tile_patch_labels; // Tile patch labels, this may be nullptr in the following trivial cases: region is invalid, region is only land (0 patches), region is only water (1 patch)
 	bool has_cross_region_aqueducts = false;
-	TWaterRegionPatchLabel number_of_patches = 0; // 0 = no water, 1 = one single patch of water, etc...
+	TWaterRegionPatchLabel highest_assigned_label = INVALID_WATER_REGION_PATCH; // INVALID_WATER_REGION_PATCH = no water, FIRST_REGION_LABEL = one single patch of water, etc...
 };
 
 /**
@@ -95,10 +95,10 @@ public:
 	TWaterRegionTraversabilityBits GetEdgeTraversabilityBits(DiagDirection side) const { return this->data.edge_traversability_bits[side]; }
 
 	/**
-	 * @returns The amount of individual water patches present within the water region. A value of
-	 * 0 means there is no water present in the water region at all.
+	 * @returns The highest assigned water patch label present within the water region. A value of
+	 * INVALID_WATER_REGION_PATCH means there is no water present in the water region at all.
 	 */
-	int NumberOfPatches() const { return this->data.number_of_patches; }
+	TWaterRegionPatchLabel HighestAssignedLabel() const { return this->data.highest_assigned_label; }
 
 	/**
 	 * @returns Whether the water region contains aqueducts that cross the region boundaries.
@@ -114,9 +114,9 @@ public:
 	{
 		assert(this->tile_area.Contains(tile));
 		if (this->data.tile_patch_labels == nullptr) {
-			return this->NumberOfPatches() == 0 ? INVALID_WATER_REGION_PATCH : 1;
+			return this->HighestAssignedLabel() == INVALID_WATER_REGION_PATCH ? INVALID_WATER_REGION_PATCH : FIRST_REGION_LABEL;
 		}
-		return (*this->data.tile_patch_labels)[GetLocalIndex(tile)];
+		return (*this->data.tile_patch_labels)[this->GetLocalIndex(tile)];
 	}
 
 	/**
@@ -136,12 +136,12 @@ public:
 		this->data.tile_patch_labels->fill(INVALID_WATER_REGION_PATCH);
 		this->data.edge_traversability_bits.fill(0);
 
-		TWaterRegionPatchLabel current_label = 1;
-		TWaterRegionPatchLabel highest_assigned_label = 0;
+		TWaterRegionPatchLabel current_label = FIRST_REGION_LABEL;
+		TWaterRegionPatchLabel highest_assigned_label = INVALID_WATER_REGION_PATCH;
 
 		/* Perform connected component labeling. This uses a flooding algorithm that expands until no
 		 * additional tiles can be added. Only tiles inside the water region are considered. */
-		for (const TileIndex start_tile : tile_area) {
+		for (const TileIndex start_tile : this->tile_area) {
 			static std::vector<TileIndex> tiles_to_check;
 			tiles_to_check.clear();
 			tiles_to_check.push_back(start_tile);
@@ -154,7 +154,7 @@ public:
 				const TrackdirBits valid_dirs = TrackBitsToTrackdirBits(GetWaterTracks(tile));
 				if (valid_dirs == TRACKDIR_BIT_NONE) continue;
 
-				TWaterRegionPatchLabel &tile_patch = (*this->data.tile_patch_labels)[GetLocalIndex(tile)];
+				TWaterRegionPatchLabel &tile_patch = (*this->data.tile_patch_labels)[this->GetLocalIndex(tile)];
 				if (tile_patch != INVALID_WATER_REGION_PATCH) continue;
 
 				tile_patch = current_label;
@@ -182,10 +182,10 @@ public:
 			if (increase_label) current_label++;
 		}
 
-		this->data.number_of_patches = highest_assigned_label;
+		this->data.highest_assigned_label = highest_assigned_label;
 
-		if (this->data.number_of_patches == 0 || (this->data.number_of_patches == 1 &&
-				std::all_of(this->data.tile_patch_labels->begin(), this->data.tile_patch_labels->end(), [](TWaterRegionPatchLabel label) { return label == 1; }))) {
+		if (this->HighestAssignedLabel() == INVALID_WATER_REGION_PATCH || (this->HighestAssignedLabel() == FIRST_REGION_LABEL &&
+				std::all_of(this->data.tile_patch_labels->begin(), this->data.tile_patch_labels->end(), [](TWaterRegionPatchLabel label) { return label == FIRST_REGION_LABEL; }))) {
 			/* No need for patch storage: trivial cases */
 			this->data.tile_patch_labels.reset();
 		}
@@ -193,26 +193,26 @@ public:
 
 	void PrintDebugInfo()
 	{
-		Debug(map, 9, "Water region {},{} labels and edge traversability = ...", GetWaterRegionX(tile_area.tile), GetWaterRegionY(tile_area.tile));
+		Debug(map, 9, "Water region {},{} labels and edge traversability = ...", GetWaterRegionX(this->tile_area.tile), GetWaterRegionY(this->tile_area.tile));
 
-		const size_t max_element_width = std::to_string(this->data.number_of_patches).size();
+		const size_t max_element_width = std::to_string(this->HighestAssignedLabel()).size();
 
-		std::string traversability = fmt::format("{:0{}b}", this->data.edge_traversability_bits[DIAGDIR_NW], WATER_REGION_EDGE_LENGTH);
+		std::string traversability = fmt::format("{:0{}b}", this->GetEdgeTraversabilityBits(DIAGDIR_NW), WATER_REGION_EDGE_LENGTH);
 		Debug(map, 9, "    {:{}}", fmt::join(traversability, " "), max_element_width);
 		Debug(map, 9, "  +{:->{}}+", "", WATER_REGION_EDGE_LENGTH * (max_element_width + 1) + 1);
 
 		for (int y = 0; y < WATER_REGION_EDGE_LENGTH; ++y) {
 			std::string line{};
 			for (int x = 0; x < WATER_REGION_EDGE_LENGTH; ++x) {
-				const auto label = this->GetLabel(TileAddXY(tile_area.tile, x, y));
+				const auto label = this->GetLabel(TileAddXY(this->tile_area.tile, x, y));
 				const std::string label_str = label == INVALID_WATER_REGION_PATCH ? "." : std::to_string(label);
 				line = fmt::format("{:{}}", label_str, max_element_width) + " " + line;
 			}
-			Debug(map, 9, "{} | {}| {}", GB(this->data.edge_traversability_bits[DIAGDIR_SW], y, 1), line, GB(this->data.edge_traversability_bits[DIAGDIR_NE], y, 1));
+			Debug(map, 9, "{} | {}| {}", GB(this->GetEdgeTraversabilityBits(DIAGDIR_SW), y, 1), line, GB(this->GetEdgeTraversabilityBits(DIAGDIR_NE), y, 1));
 		}
 
 		Debug(map, 9, "  +{:->{}}+", "", WATER_REGION_EDGE_LENGTH * (max_element_width + 1) + 1);
-		traversability = fmt::format("{:0{}b}", this->data.edge_traversability_bits[DIAGDIR_SE], WATER_REGION_EDGE_LENGTH);
+		traversability = fmt::format("{:0{}b}", this->GetEdgeTraversabilityBits(DIAGDIR_SE), WATER_REGION_EDGE_LENGTH);
 		Debug(map, 9, "    {:{}}", fmt::join(traversability, " "), max_element_width);
 	}
 };
@@ -241,7 +241,7 @@ static TileIndex GetEdgeTileCoordinate(int region_x, int region_y, DiagDirection
 
 static WaterRegion GetUpdatedWaterRegion(uint16_t region_x, uint16_t region_y)
 {
-	const int index = GetWaterRegionIndex(region_x, region_y);
+	const TWaterRegionIndex index = GetWaterRegionIndex(region_x, region_y);
 	WaterRegion water_region(region_x, region_y, _water_region_data[index]);
 	if (!_is_water_region_valid[index]) {
 		water_region.ForceUpdate();
@@ -299,7 +299,7 @@ WaterRegionDesc GetWaterRegionInfo(TileIndex tile)
 WaterRegionPatchDesc GetWaterRegionPatchInfo(TileIndex tile)
 {
 	const WaterRegion region = GetUpdatedWaterRegion(tile);
-	return WaterRegionPatchDesc{ GetWaterRegionX(tile), GetWaterRegionY(tile), region.GetLabel(tile)};
+	return WaterRegionPatchDesc{ GetWaterRegionX(tile), GetWaterRegionY(tile), region.GetLabel(tile) };
 }
 
 /**
@@ -311,7 +311,7 @@ void InvalidateWaterRegion(TileIndex tile)
 	if (!IsValidTile(tile)) return;
 
 	auto invalidate_region = [](TileIndex tile) {
-		const int water_region_index = GetWaterRegionIndex(tile);
+		const TWaterRegionIndex water_region_index = GetWaterRegionIndex(tile);
 		if (!_is_water_region_valid[water_region_index]) Debug(map, 3, "Invalidated water region ({},{})", GetWaterRegionX(tile), GetWaterRegionY(tile));
 		_is_water_region_valid[water_region_index] = false;
 	};
@@ -355,7 +355,7 @@ static inline void VisitAdjacentWaterRegionPatchNeighbors(const WaterRegionPatch
 		& neighboring_region.GetEdgeTraversabilityBits(opposite_side);
 	if (traversability_bits == 0) return;
 
-	if (current_region.NumberOfPatches() == 1 && neighboring_region.NumberOfPatches() == 1) {
+	if (current_region.HighestAssignedLabel() == FIRST_REGION_LABEL && neighboring_region.HighestAssignedLabel() == FIRST_REGION_LABEL) {
 		func(WaterRegionPatchDesc{ nx, ny, FIRST_REGION_LABEL }); // No further checks needed because we know there is just one patch for both adjacent regions
 		return;
 	}
