@@ -2707,10 +2707,11 @@ enum MouseClick {
 	MC_RIGHT,
 	MC_DOUBLE_LEFT,
 	MC_HOVER,
-
-	MAX_OFFSET_DOUBLE_CLICK = 5,     ///< How much the mouse is allowed to move to call it a double click
-	MAX_OFFSET_HOVER = 5,            ///< Maximum mouse movement before stopping a hover event.
 };
+
+static constexpr int MAX_OFFSET_DOUBLE_CLICK = 5; ///< How much the mouse is allowed to move to call it a double click
+static constexpr int MAX_OFFSET_HOVER = 5; ///< Maximum mouse movement before stopping a hover event.
+
 extern EventState VpHandlePlaceSizingDrag();
 
 const std::chrono::milliseconds TIME_BETWEEN_DOUBLE_CLICK(500); ///< Time between 2 left clicks before it becoming a double click.

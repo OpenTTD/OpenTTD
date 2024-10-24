@@ -25,17 +25,15 @@ extern IndustryPool _industry_pool;
 
 static const TimerGameEconomy::Year PROCESSING_INDUSTRY_ABANDONMENT_YEARS = 5; ///< If a processing industry doesn't produce for this many consecutive economy years, it may close.
 
-/**
+/*
  * Production level maximum, minimum and default values.
  * It is not a value been really used in order to change, but rather an indicator
  * of how the industry is behaving.
  */
-enum ProductionLevels {
-	PRODLEVEL_CLOSURE = 0x00,  ///< signal set to actually close the industry
-	PRODLEVEL_MINIMUM = 0x04,  ///< below this level, the industry is set to be closing
-	PRODLEVEL_DEFAULT = 0x10,  ///< default level set when the industry is created
-	PRODLEVEL_MAXIMUM = 0x80,  ///< the industry is running at full speed
-};
+static constexpr uint8_t PRODLEVEL_CLOSURE = 0x00; ///< signal set to actually close the industry
+static constexpr uint8_t PRODLEVEL_MINIMUM = 0x04; ///< below this level, the industry is set to be closing
+static constexpr uint8_t PRODLEVEL_DEFAULT = 0x10; ///< default level set when the industry is created
+static constexpr uint8_t PRODLEVEL_MAXIMUM = 0x80; ///< the industry is running at full speed
 
 /**
  * Flags to control/override the behaviour of an industry.

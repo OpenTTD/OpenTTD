@@ -81,17 +81,14 @@ private:
 	 * Distances used in drawing widgets.
 	 * These constants should not be used elsewhere, use scaled/unscaled WidgetDimensions instead.
 	 */
-	enum WidgetDrawDistances {
-		WD_SHADEBOX_WIDTH   = 12, ///< Minimum width of a standard shade box widget.
-		WD_STICKYBOX_WIDTH  = 12, ///< Minimum width of a standard sticky box widget.
-		WD_DEBUGBOX_WIDTH   = 12, ///< Minimum width of a standard debug box widget.
-		WD_DEFSIZEBOX_WIDTH = 12, ///< Minimum width of a standard defsize box widget.
-		WD_RESIZEBOX_WIDTH  = 12, ///< Minimum width of a resize box widget.
-		WD_CLOSEBOX_WIDTH   = 11, ///< Minimum width of a close box widget.
-
-		WD_CAPTION_HEIGHT   = 14, ///< Minimum height of a title bar.
-		WD_DROPDOWN_HEIGHT  = 12, ///< Minimum height of a drop down widget.
-	};
+	static constexpr uint WD_SHADEBOX_WIDTH = 12; ///< Minimum width of a standard shade box widget.
+	static constexpr uint WD_STICKYBOX_WIDTH = 12; ///< Minimum width of a standard sticky box widget.
+	static constexpr uint WD_DEBUGBOX_WIDTH = 12; ///< Minimum width of a standard debug box widget.
+	static constexpr uint WD_DEFSIZEBOX_WIDTH = 12; ///< Minimum width of a standard defsize box widget.
+	static constexpr uint WD_RESIZEBOX_WIDTH = 12; ///< Minimum width of a resize box widget.
+	static constexpr uint WD_CLOSEBOX_WIDTH = 11; ///< Minimum width of a close box widget.
+	static constexpr uint WD_CAPTION_HEIGHT = 14; ///< Minimum height of a title bar.
+	static constexpr uint WD_DROPDOWN_HEIGHT = 12; ///< Minimum height of a drop down widget.
 
 	friend NWidgetLeaf;
 };

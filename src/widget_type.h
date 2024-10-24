@@ -18,15 +18,13 @@
 #include "window_type.h"
 
 /** Bits of the #WWT_MATRIX widget data. */
-enum MatrixWidgetValues {
-	/* Number of column bits of the WWT_MATRIX widget data. */
-	MAT_COL_START = 0, ///< Lowest bit of the number of columns.
-	MAT_COL_BITS  = 8, ///< Number of bits for the number of columns in the matrix.
+/* Number of column bits of the WWT_MATRIX widget data. */
+static constexpr uint8_t MAT_COL_START = 0; ///< Lowest bit of the number of columns.
+static constexpr uint8_t MAT_COL_BITS = 8; ///< Number of bits for the number of columns in the matrix.
 
-	/* Number of row bits of the WWT_MATRIX widget data. */
-	MAT_ROW_START = 8, ///< Lowest bit of the number of rows.
-	MAT_ROW_BITS  = 8, ///< Number of bits for the number of rows in the matrix.
-};
+/* Number of row bits of the WWT_MATRIX widget data. */
+static constexpr uint8_t MAT_ROW_START = 8; ///< Lowest bit of the number of rows.
+static constexpr uint8_t MAT_ROW_BITS = 8; ///< Number of bits for the number of rows in the matrix.
 
 /** Values for an arrow widget */
 enum ArrowWidgetValues {

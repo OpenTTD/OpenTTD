@@ -1312,11 +1312,9 @@ struct StationViewWindow : public Window {
 	int accepts_lines;            ///< Number of lines in the accepted cargo view.
 	Scrollbar *vscroll;
 
-	/** Height of the #WID_SV_ACCEPT_RATING_LIST widget for different views. */
-	enum AcceptListHeight {
-		ALH_RATING  = 13, ///< Height of the cargo ratings view.
-		ALH_ACCEPTS = 3,  ///< Height of the accepted cargo view.
-	};
+	/* Height of the #WID_SV_ACCEPT_RATING_LIST widget for different views. */
+	static constexpr uint RATING_LINES = 13; ///< Height in lines of the cargo ratings view.
+	static constexpr uint ACCEPTS_LINES = 3; ///< Height in lines of the accepted cargo view.
 
 	/** Names of the sorting options in the dropdown. */
 	static inline const StringID sort_names[] = {
@@ -1358,8 +1356,8 @@ struct StationViewWindow : public Window {
 	StationViewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc),
 		scroll_to_row(INT_MAX), grouping_index(0)
 	{
-		this->rating_lines  = ALH_RATING;
-		this->accepts_lines = ALH_ACCEPTS;
+		this->rating_lines  = RATING_LINES;
+		this->accepts_lines = ACCEPTS_LINES;
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SV_SCROLLBAR);
