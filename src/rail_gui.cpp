@@ -438,14 +438,19 @@ struct BuildRailToolbarWindow : Window {
 
 	BuildRailToolbarWindow(WindowDesc &desc, RailType railtype) : Window(desc)
 	{
+		this->railtype = railtype;
 		this->CreateNestedTree();
-		this->SetupRailToolbar(railtype);
 		this->FinishInitNested(TRANSPORT_RAIL);
 		this->DisableWidget(WID_RAT_REMOVE);
 		this->OnInvalidateData();
 		this->last_user_action = INVALID_WID_RAT;
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
+	}
+
+	void OnInit() override
+	{
+		this->SetupRailToolbar();
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -467,6 +472,12 @@ struct BuildRailToolbarWindow : Window {
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
+
+		if (!ValParamRailType(this->railtype)) {
+			/* Close toolbar if rail type is not available. */
+			this->Close();
+			return;
+		}
 
 		bool can_build = CanBuildVehicleInfrastructure(VEH_TRAIN);
 		for (const WidgetID widget : can_build_widgets) this->SetWidgetDisabledState(widget, !can_build);
@@ -492,14 +503,10 @@ struct BuildRailToolbarWindow : Window {
 
 	/**
 	 * Configures the rail toolbar for railtype given
-	 * @param railtype the railtype to display
 	 */
-	void SetupRailToolbar(RailType railtype)
+	void SetupRailToolbar()
 	{
-		this->railtype = railtype;
-		const RailTypeInfo *rti = GetRailTypeInfo(railtype);
-
-		assert(railtype < RAILTYPE_END);
+		const RailTypeInfo *rti = GetRailTypeInfo(this->railtype);
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_NS)->widget_data     = rti->gui_sprites.build_ns_rail;
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_X)->widget_data      = rti->gui_sprites.build_x_rail;
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_EW)->widget_data     = rti->gui_sprites.build_ew_rail;
@@ -516,7 +523,7 @@ struct BuildRailToolbarWindow : Window {
 	 */
 	void ModifyRailType(RailType railtype)
 	{
-		this->SetupRailToolbar(railtype);
+		this->railtype = railtype;
 		this->ReInit();
 	}
 
