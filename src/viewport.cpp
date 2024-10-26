@@ -161,6 +161,9 @@ typedef std::vector<StringSpriteToDraw> StringSpriteToDrawVector;
 typedef std::vector<ParentSpriteToDraw> ParentSpriteToDrawVector;
 typedef std::vector<ChildScreenSpriteToDraw> ChildScreenSpriteToDrawVector;
 
+constexpr int LAST_CHILD_NONE = -1; ///< There is no last_child to fill.
+constexpr int LAST_CHILD_PARENT = -2; ///< Fill last_child of the most recent parent sprite.
+
 /** Data structure storing rendering information */
 struct ViewportDrawer {
 	DrawPixelInfo dpi;
@@ -171,13 +174,13 @@ struct ViewportDrawer {
 	ParentSpriteToSortVector parent_sprites_to_sort; ///< Parent sprite pointer array used for sorting
 	ChildScreenSpriteToDrawVector child_screen_sprites_to_draw;
 
-	int *last_child;
+	int last_child;
 
 	SpriteCombineMode combine_sprites;               ///< Current mode of "sprite combining". @see StartSpriteCombine
 
 	int foundation[FOUNDATION_PART_END];             ///< Foundation sprites (index into parent_sprites_to_draw).
 	FoundationPart foundation_part;                  ///< Currently active foundation for ground sprite drawing.
-	int *last_foundation_child[FOUNDATION_PART_END]; ///< Tail of ChildSprite list of the foundations. (index into child_screen_sprites_to_draw)
+	int last_foundation_child[FOUNDATION_PART_END];  ///< Tail of ChildSprite list of the foundations. (index into child_screen_sprites_to_draw)
 	Point foundation_offset[FOUNDATION_PART_END];    ///< Pixel offset for ground sprites on the foundations.
 };
 
@@ -541,13 +544,8 @@ static void AddChildSpriteToFoundation(SpriteID image, PaletteID pal, const SubS
 	Point offs = _vd.foundation_offset[foundation_part];
 
 	/* Change the active ChildSprite list to the one of the foundation */
-	int *old_child = _vd.last_child;
-	_vd.last_child = _vd.last_foundation_child[foundation_part];
-
+	AutoRestoreBackup backup(_vd.last_child, _vd.last_foundation_child[foundation_part]);
 	AddChildSpriteScreen(image, pal, offs.x + extra_offs_x, offs.y + extra_offs_y, false, sub, false, false);
-
-	/* Switch back to last ChildSprite list */
-	_vd.last_child = old_child;
 }
 
 /**
@@ -611,8 +609,8 @@ void OffsetGroundSprite(int x, int y)
 		default: NOT_REACHED();
 	}
 
-	/* _vd.last_child == nullptr if foundation sprite was clipped by the viewport bounds */
-	if (_vd.last_child != nullptr) _vd.foundation[_vd.foundation_part] = (uint)_vd.parent_sprites_to_draw.size() - 1;
+	/* _vd.last_child is LAST_CHILD_NONE if foundation sprite was clipped by the viewport bounds */
+	if (_vd.last_child != LAST_CHILD_NONE) _vd.foundation[_vd.foundation_part] = static_cast<uint>(_vd.parent_sprites_to_draw.size()) - 1;
 
 	_vd.foundation_offset[_vd.foundation_part].x = x * ZOOM_BASE;
 	_vd.foundation_offset[_vd.foundation_part].y = y * ZOOM_BASE;
@@ -687,7 +685,7 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int w,
 		return;
 	}
 
-	_vd.last_child = nullptr;
+	_vd.last_child = LAST_CHILD_NONE;
 
 	Point pt = RemapCoords(x, y, z);
 	int tmp_left, tmp_top, tmp_x = pt.x, tmp_y = pt.y;
@@ -741,9 +739,9 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int w,
 	ps.zmin = z + bb_offset_z;
 	ps.zmax = z + std::max(bb_offset_z, dz) - 1;
 
-	ps.first_child = -1;
+	ps.first_child = LAST_CHILD_NONE;
 
-	_vd.last_child = &ps.first_child;
+	_vd.last_child = LAST_CHILD_PARENT;
 
 	if (_vd.combine_sprites == SPRITE_COMBINE_PENDING) _vd.combine_sprites = SPRITE_COMBINE_ACTIVE;
 }
@@ -831,7 +829,7 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
 	/* If the ParentSprite was clipped by the viewport bounds, do not draw the ChildSprites either */
-	if (_vd.last_child == nullptr) return;
+	if (_vd.last_child == LAST_CHILD_NONE) return;
 
 	/* make the sprites transparent with the right palette */
 	if (transparent) {
@@ -839,7 +837,12 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 		pal = PALETTE_TO_TRANSPARENT;
 	}
 
-	*_vd.last_child = (uint)_vd.child_screen_sprites_to_draw.size();
+	int32_t child_id = static_cast<int32_t>(_vd.child_screen_sprites_to_draw.size());
+	if (_vd.last_child != LAST_CHILD_PARENT) {
+		_vd.child_screen_sprites_to_draw[_vd.last_child].next = child_id;
+	} else {
+		_vd.parent_sprites_to_draw.back().first_child = child_id;
+	}
 
 	ChildScreenSpriteToDraw &cs = _vd.child_screen_sprites_to_draw.emplace_back();
 	cs.image = image;
@@ -848,14 +851,14 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 	cs.x = scale ? x * ZOOM_BASE : x;
 	cs.y = scale ? y * ZOOM_BASE : y;
 	cs.relative = relative;
-	cs.next = -1;
+	cs.next = LAST_CHILD_NONE;
 
 	/* Append the sprite to the active ChildSprite list.
 	 * If the active ParentSprite is a foundation, update last_foundation_child as well.
 	 * Note: ChildSprites of foundations are NOT sequential in the vector, as selection sprites are added at last. */
-	if (_vd.last_foundation_child[0] == _vd.last_child) _vd.last_foundation_child[0] = &cs.next;
-	if (_vd.last_foundation_child[1] == _vd.last_child) _vd.last_foundation_child[1] = &cs.next;
-	_vd.last_child = &cs.next;
+	if (_vd.last_foundation_child[0] == _vd.last_child) _vd.last_foundation_child[0] = child_id;
+	if (_vd.last_foundation_child[1] == _vd.last_child) _vd.last_foundation_child[1] = child_id;
+	_vd.last_child = child_id;
 }
 
 static void AddStringToDraw(int x, int y, StringID string, Colours colour, uint16_t width)
@@ -1285,8 +1288,8 @@ static void ViewportAddLandscape()
 				_vd.foundation_part = FOUNDATION_PART_NONE;
 				_vd.foundation[0] = -1;
 				_vd.foundation[1] = -1;
-				_vd.last_foundation_child[0] = nullptr;
-				_vd.last_foundation_child[1] = nullptr;
+				_vd.last_foundation_child[0] = LAST_CHILD_NONE;
+				_vd.last_foundation_child[1] = LAST_CHILD_NONE;
 
 				_tile_type_procs[tile_type]->draw_tile_proc(&_cur_ti);
 				if (_cur_ti.tile != INVALID_TILE) DrawTileSelection(&_cur_ti);
@@ -1746,7 +1749,7 @@ void ViewportDoDraw(const Viewport *vp, int left, int top, int right, int bottom
 	_vd.dpi.left = left & mask;
 	_vd.dpi.top = top & mask;
 	_vd.dpi.pitch = _cur_dpi->pitch;
-	_vd.last_child = nullptr;
+	_vd.last_child = LAST_CHILD_NONE;
 
 	int x = UnScaleByZoom(_vd.dpi.left - (vp->virtual_left & mask), vp->zoom) + vp->left;
 	int y = UnScaleByZoom(_vd.dpi.top - (vp->virtual_top & mask), vp->zoom) + vp->top;
