@@ -1050,98 +1050,92 @@
      <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> (for sea, rivers, and coasts normally <tt>11</tt>)</li>
      <li>m2: Depot index (for depots only)</li>
      <li>m4: Random data for canal or river tiles</li>
-     <li>m5: tile type:
+     <li>m5 bits 7..4: Water tile type:
       <table>
-       <tr>
-        <td nowrap valign=top><tt>00</tt>&nbsp; </td>
-        <td align=left>water, canal or river</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>01</tt>&nbsp; </td>
-        <td align=left>coast or riverbank</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>10</tt>..<tt>1B</tt>&nbsp; </td>
-        <td align=left>canal locks
-         <table>
-          <tr>
-           <td nowrap valign=top><tt>10</tt>&nbsp; </td>
-           <td align=left>middle part, (SW-NE direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>11</tt>&nbsp; </td>
-           <td align=left>middle part, (NW-SE direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>12</tt>&nbsp; </td>
-           <td align=left>middle part, (NE-SW direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>13</tt>&nbsp; </td>
-           <td align=left>middle part, (SE-NW direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>14</tt>&nbsp; </td>
-           <td align=left>lower part, (SW-NE direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>15</tt>&nbsp; </td>
-           <td align=left>lower part, (NW-SE direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>16</tt>&nbsp; </td>
-           <td align=left>lower part, (NE-SW direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>17</tt>&nbsp; </td>
-           <td align=left>lower part, (SE-NW direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>18</tt>&nbsp; </td>
-           <td align=left>upper part, (SW-NE direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>19</tt>&nbsp; </td>
-           <td align=left>upper part, (NW-SE direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>1A</tt>&nbsp; </td>
-           <td align=left>upper part, (NE-SW direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>1B</tt>&nbsp; </td>
-           <td align=left>upper part, (SE-NW direction)</td>
-          </tr>
-         </table>
-        </td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>80</tt>..<tt>83</tt>&nbsp; </td>
-        <td align=left>ship depots
-         <table>
-          <tr>
-           <td nowrap valign=top><tt>80</tt>&nbsp; </td>
-           <td align=left>ship depot, NE part (X direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>81</tt>&nbsp; </td>
-           <td align=left>ship depot, SW part (X direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>82</tt>&nbsp; </td>
-           <td align=left>ship depot, NW part (Y direction)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>83</tt>&nbsp; </td>
-           <td align=left>ship depot, SE part (Y direction)</td>
-          </tr>
-         </table>
-        </td>
-       </tr>
-      </table>
+        <tr>
+         <td><tt>0</tt>&nbsp; </td>
+         <td>water, canal or river</td>
+        </tr>
+        <tr>
+         <td><tt>1</tt>&nbsp; </td>
+         <td>coast or riverbank</td>
+        </tr>
+        <tr>
+         <td nowrap valign=top><tt>2</tt>&nbsp; </td>
+         <td>canal lock<br>
+          <ul>
+           <li>m5 bits 3..2: Lock part
+            <table>
+             <tr>
+              <td><tt>0</tt>&nbsp; </td>
+              <td>Middle part</td>
+             </tr>
+             <tr>
+              <td><tt>1</tt>&nbsp; </td>
+              <td>Lower part</td>
+             </tr>
+             <tr>
+              <td><tt>2</tt>&nbsp; </td>
+              <td>Upper part</td>
+             </tr>
+            </table>
+           </li>
+           <li>m5 bits 1..0: Lock direction
+            <table>
+             <tr>
+              <td><tt>0</tt>&nbsp; </td>
+              <td>NE raised</td>
+             </tr>
+             <tr>
+              <td><tt>1</tt>&nbsp; </td>
+              <td>SE raised</td>
+             </tr>
+             <tr>
+              <td><tt>2</tt>&nbsp; </td>
+              <td>SW raised</td>
+             </tr>
+             <tr>
+              <td><tt>3</tt>&nbsp; </td>
+              <td>NW raised</td>
+             </tr>
+            </table>
+           </li>
+          </ul>
+         </td>
+        </tr>
+        <tr>
+         <td nowrap valign=top><tt>3</tt>&nbsp; </td>
+         <td>depot<br>
+          <ul>
+           <li>m5 bit 1: Depot axis
+            <table>
+             <tr>
+              <td><tt>0</tt>&nbsp; </td>
+              <td>X direction (NE-SW)</td>
+             </tr>
+             <tr>
+              <td><tt>1</tt>&nbsp; </td>
+              <td>Y direction (NW-SE)</td>
+             </tr>
+            </table>
+           </li>
+           <li>m5 bit 0: Depot part
+            <table>
+             <tr>
+              <td><tt>0</tt>&nbsp; </td>
+              <td>North part</td>
+             </tr>
+             <tr>
+              <td><tt>1</tt>&nbsp; </td>
+              <td>South part</td>
+             </tr>
+            </table>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+      </li>
      </li>
     </ul>
    </td>
