@@ -489,19 +489,16 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 
 	/*  Change ownership of tiles */
 	{
-		TileIndex tile = 0;
-		do {
+		for (const auto tile : Map::Iterate()) {
 			ChangeTileOwner(tile, old_owner, new_owner);
-		} while (++tile != Map::Size());
+		}
 
 		if (new_owner != INVALID_OWNER) {
 			/* Update all signals because there can be new segment that was owned by two companies
 			 * and signals were not propagated
 			 * Similar with crossings - it is needed to bar crossings that weren't before
 			 * because of different owner of crossing and approaching train */
-			tile = 0;
-
-			do {
+			for (const auto tile : Map::Iterate()) {
 				if (IsTileType(tile, MP_RAILWAY) && IsTileOwner(tile, new_owner) && HasSignals(tile)) {
 					TrackBits tracks = GetTrackBits(tile);
 					do { // there may be two tracks with signals for TRACK_BIT_HORZ and TRACK_BIT_VERT
@@ -511,7 +508,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				} else if (IsLevelCrossingTile(tile) && IsTileOwner(tile, new_owner)) {
 					UpdateLevelCrossing(tile);
 				}
-			} while (++tile != Map::Size());
+			}
 		}
 
 		/* update signals in buffer */
