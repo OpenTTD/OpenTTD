@@ -542,6 +542,22 @@ char *strcasestr(const char *haystack, const char *needle)
 #endif /* DEFINE_STRCASESTR */
 
 /**
+ * Test if a unicode character is considered garbage to be skipped.
+ * @param c Character to test.
+ * @returns true iff the character should be skipped.
+ */
+static bool IsGarbageCharacter(char32_t c)
+{
+	if (c >= '0' && c <= '9') return false;
+	if (c >= 'A' && c <= 'Z') return false;
+	if (c >= 'a' && c <= 'z') return false;
+	if (c >= SCC_CONTROL_START && c <= SCC_CONTROL_END) return true;
+	if (c >= 0xC0 && c <= 0x10FFFF) return false;
+
+	return true;
+}
+
+/**
  * Skip some of the 'garbage' in the string that we don't want to use
  * to sort on. This way the alphabetical sorting will work better as
  * we would be actually using those characters instead of some other
@@ -551,8 +567,15 @@ char *strcasestr(const char *haystack, const char *needle)
  */
 static std::string_view SkipGarbage(std::string_view str)
 {
-	while (!str.empty() && (static_cast<uint8_t>(str[0]) < '0' || IsInsideMM(str[0], ';', '@' + 1) || IsInsideMM(str[0], '[', '`' + 1) || IsInsideMM(str[0], '{', '~' + 1))) str.remove_prefix(1);
-	return str;
+	auto first = std::begin(str);
+	auto last = std::end(str);
+	while (first < last) {
+		char32_t c;
+		size_t len = Utf8Decode(&c, &*first);
+		if (!IsGarbageCharacter(c)) break;
+		first += len;
+	}
+	return {first, last};
 }
 
 /**
