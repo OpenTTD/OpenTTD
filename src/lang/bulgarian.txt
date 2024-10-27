@@ -621,8 +621,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Запл
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Дни в транзит
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Секунди в транзит
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Заплащане на доставени 10 единици (или 10,000 литра) товар на разстояние 20 квадрата
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Включи всичко
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Изключи всичко
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Всички
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Без
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Покажи всички товари на графиката за заплащане на товарите
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Скрий всички товари на графиката за заплащане на товарите
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Активирай/деактивирай графиката за видовете товар
@@ -801,8 +801,8 @@ STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STR
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Изключване на всички
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Включване на всички
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Без
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Всички
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Покажи височина
 STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Покажи имената на индустриите
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Не показвай индустрии на картата
@@ -2388,7 +2388,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Наст
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Изиграно време
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Играно време, докато{}играта не е била на пауза
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Език, версия на сървъра, и др.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Съвместимост на сървъра и информация за удостоверяване
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Кликнете върху игра от списъка, за да я изберете
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Последно използвания сървър:
@@ -3029,6 +3029,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Случ
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Основаване на град на произволно място
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Много случайни градове
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Покриване на картата със случайно поставени градове
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Зареждане от файл
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Импортиране на данни за града от JSON файл
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Растеж на всички градове
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Всички градове растат леко
 
@@ -3281,6 +3283,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Запи
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Зареждане на сценарий
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Отваряне на височинна карта
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Запис на височинна карта
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Зареждане на данни за града
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Прескачане към директорията за запис/зареждане по подразбиране
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} свободно
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Списък с хард-дисковете, директориите и запазените игри
@@ -3292,6 +3295,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Запа
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Отвори
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Отвори избраната игра
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Зареждане на избраната височинна карта
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Зареждане на избраните данни за града
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Детайли за играта
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Няма налична информация
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3425,7 +3429,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Изпъ
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Активен скрипт
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Подготвяне на играта
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Неуспешно зареждане на данни за град
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Некоректно форматиране на JSON файл
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :Данните за {WHITE}{STRING} са форматирани неправилно
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :Координатите {WHITE}{STRING} са форматирани неправилно, трябва да бъдат 0 към 1 пропорционално от общия размер на височинната карта
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Няма валидно местоположение за основаване на {NUM} град{P "" а}. Вместо това се създад{P е оха} зна{P к ци} на планиран{P ото ите} {P място места}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF настройки
@@ -4010,10 +4019,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Летателн{P о и} средств{P о а}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Влакове - кликнете върху влак за повече информация
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Автомобили - кликнете върху автомобил за повече информация
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораби - кликнете върху кораб за повече информация
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Летателни средства - кликнете върху летателно средство за повече информация
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Влакове - кликнете върху влак за повече информация. Задръжте Ctrl + Shift за наслагване на тип товар
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Автомобили - кликнете върху автомобил за повече информация. Задръжте Ctrl + Shift за наслагване на тип товар
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораби - кликнете върху кораб за повече информация. Задръжте Ctrl + Shift за наслагване на тип товар
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Летателни средства - кликнете върху летателно средство за повече информация. Задръжте Ctrl + Shift за наслагване на тип товар
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Налични влакове
