@@ -656,7 +656,7 @@ bool AfterLoadGame()
 	 * (4.3) version, so I just check when versions are older, and then
 	 * walk through the whole map.. */
 	if (IsSavegameVersionBefore(SLV_4, 3)) {
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, MP_WATER) && GetTileOwner(t) >= MAX_COMPANIES) {
 				SetTileOwner(t, OWNER_WATER);
 			}
@@ -927,7 +927,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	for (auto t : Map::Iterate()) {
+	for (const auto t : Map::Iterate()) {
 		switch (GetTileType(t)) {
 			case MP_STATION: {
 				BaseStation *bst = BaseStation::GetByTile(t);
@@ -1339,7 +1339,7 @@ bool AfterLoadGame()
 		}
 
 		/* .. so we convert the entire map from normal to elrail (so maintain "fairness") */
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case MP_RAILWAY:
 					SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
@@ -1468,7 +1468,7 @@ bool AfterLoadGame()
 	 *  To give this prettiness to old savegames, we remove all farmfields and
 	 *  plant new ones. */
 	if (IsSavegameVersionBefore(SLV_32)) {
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_FIELDS)) {
 				/* remove fields */
 				MakeClear(t, CLEAR_GRASS, 3);
@@ -1690,7 +1690,7 @@ bool AfterLoadGame()
 	/* From version 82, old style canals (above sealevel (0), WATER owner) are no longer supported.
 	    Replace the owner for those by OWNER_NONE. */
 	if (IsSavegameVersionBefore(SLV_82)) {
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, MP_WATER) &&
 					GetWaterTileType(t) == WATER_TILE_CLEAR &&
 					GetTileOwner(t) == OWNER_WATER &&
@@ -1860,7 +1860,7 @@ bool AfterLoadGame()
 		/* Update locks, depots, docks and buoys to have a water class based
 		 * on its neighbouring tiles. Done after river and canal updates to
 		 * ensure neighbours are correct. */
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			if (!IsTileFlat(t)) continue;
 
 			if (IsTileType(t, MP_WATER) && IsLock(t)) SetWaterClassDependingOnSurroundings(t, false);
@@ -1869,7 +1869,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_87)) {
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			/* skip oil rigs at borders! */
 			if ((IsTileType(t, MP_WATER) || IsBuoyTile(t)) &&
 					(TileX(t) == 0 || TileY(t) == 0 || TileX(t) == Map::MaxX() - 1 || TileY(t) == Map::MaxY() - 1)) {
@@ -2391,7 +2391,7 @@ bool AfterLoadGame()
 			{119, 15}, // 14 unused tiles (radar)
 			{140,  4}, // APT_GRASS_FENCE_NE_FLAG_2
 		};
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			if (IsAirportTile(t)) {
 				StationGfx old_gfx = GetStationGfx(t);
 				uint8_t offset = 0;
@@ -2430,7 +2430,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_141)) {
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			/* Reset tropic zone for VOID tiles, they shall not have any. */
 			if (IsTileType(t, MP_VOID)) SetTropicZone(t, TROPICZONE_NORMAL);
 		}
@@ -2510,7 +2510,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_149)) {
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			if (!IsTileType(t, MP_STATION)) continue;
 			if (!IsBuoy(t) && !IsOilRig(t) && !(IsDock(t) && IsTileFlat(t))) {
 				SetWaterClass(t, WATER_CLASS_INVALID);
@@ -2867,7 +2867,7 @@ bool AfterLoadGame()
 
 	/* The road owner of standard road stops was not properly accounted for. */
 	if (IsSavegameVersionBefore(SLV_172)) {
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			if (!IsBayRoadStopTile(t)) continue;
 			Owner o = GetTileOwner(t);
 			SetRoadOwner(t, RTT_ROAD, o);
@@ -2894,7 +2894,7 @@ bool AfterLoadGame()
 	{
 		/* Station blocked, wires and pylon flags need to be stored in the map. This is effectively cached data, so no
 		 * version check is necessary. This is done here as the SLV_182 check below needs the blocked status. */
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			if (HasStationTileRail(t)) SetRailStationTileFlags(t, GetStationSpec(t));
 		}
 	}
@@ -2910,7 +2910,7 @@ bool AfterLoadGame()
 
 		/* Blocked tiles could be reserved due to a bug, which causes
 		 * other places to assert upon e.g. station reconstruction. */
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			if (HasStationTileRail(t) && IsStationTileBlocked(t)) {
 				SetRailStationReservation(t, false);
 			}
@@ -3128,14 +3128,14 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_TREES_WATER_CLASS)) {
 		/* Update water class for trees. */
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, MP_TREES)) SetWaterClass(t, GetTreeGround(t) == TREE_GROUND_SHORE ? WATER_CLASS_SEA : WATER_CLASS_INVALID);
 		}
 	}
 
 	/* Update structures for multitile docks */
 	if (IsSavegameVersionBefore(SLV_MULTITILE_DOCKS)) {
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			/* Clear docking tile flag from relevant tiles as it
 			 * was not previously cleared. */
 			if (IsTileType(t, MP_WATER) || IsTileType(t, MP_RAILWAY) || IsTileType(t, MP_STATION) || IsTileType(t, MP_TUNNELBRIDGE)) {
@@ -3157,7 +3157,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBeforeOrAt(SLV_ENDING_YEAR)) {
 		/* Reset roadtype/streetcartype info for non-road bridges. */
-		for (auto t : Map::Iterate()) {
+		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) != TRANSPORT_ROAD) {
 				SetRoadTypes(t, INVALID_ROADTYPE, INVALID_ROADTYPE);
 			}
@@ -3248,7 +3248,7 @@ bool AfterLoadGame()
 		}
 
 		/* Refresh all level crossings to bar adjacent crossing tiles, if needed. */
-		for (auto tile : Map::Iterate()) {
+		for (const auto tile : Map::Iterate()) {
 			if (IsLevelCrossingTile(tile)) UpdateLevelCrossing(tile, false);
 		}
 	}

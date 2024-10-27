@@ -1299,7 +1299,7 @@ void TileLoop_Water(TileIndex tile)
 
 void ConvertGroundTilesIntoWaterTiles()
 {
-	for (TileIndex tile = 0; tile < Map::Size(); ++tile) {
+	for (const auto tile : Map::Iterate()) {
 		auto [slope, z] = GetTileSlopeZ(tile);
 		if (IsTileType(tile, MP_CLEAR) && z == 0) {
 			/* Make both water for tiles at level 0

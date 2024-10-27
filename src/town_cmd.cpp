@@ -128,7 +128,7 @@ Town::~Town()
 #endif /* WITH_ASSERT */
 
 	/* Check no tile is related to us. */
-	for (TileIndex tile = 0; tile < Map::Size(); ++tile) {
+	for (const auto tile : Map::Iterate()) {
 		switch (GetTileType(tile)) {
 			case MP_HOUSE:
 				assert(GetTownIndex(tile) != this->index);
@@ -3221,7 +3221,7 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
 	 * these do not directly have an owner so we need to check adjacent
 	 * tiles. This won't work correctly in the same loop if the adjacent
 	 * tile was already deleted earlier in the loop. */
-	for (TileIndex current_tile = 0; current_tile < Map::Size(); ++current_tile) {
+	for (const auto current_tile : Map::Iterate()) {
 		if (IsTileType(current_tile, MP_TUNNELBRIDGE) && TestTownOwnsBridge(current_tile, t)) {
 			CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, current_tile);
 			if (ret.Failed()) return ret;
@@ -3229,7 +3229,7 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
 	}
 
 	/* Check all remaining tiles for town ownership. */
-	for (TileIndex current_tile = 0; current_tile < Map::Size(); ++current_tile) {
+	for (const auto current_tile : Map::Iterate()) {
 		bool try_clear = false;
 		switch (GetTileType(current_tile)) {
 			case MP_ROAD:
@@ -4044,7 +4044,7 @@ static IntervalTimer<TimerGameEconomy> _economy_towns_monthly({TimerGameEconomy:
 static IntervalTimer<TimerGameEconomy> _economy_towns_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::TOWN}, [](auto)
 {
 	/* Increment house ages */
-	for (TileIndex t = 0; t < Map::Size(); t++) {
+	for (const auto t : Map::Iterate()) {
 		if (!IsTileType(t, MP_HOUSE)) continue;
 		IncrementHouseAge(t);
 	}

@@ -1471,7 +1471,7 @@ static uint CalculateCoverageLine(uint coverage, uint edge_multiplier)
 	std::array<int, MAX_TILE_HEIGHT + 1> edge_histogram = {};
 
 	/* Build a histogram of the map height. */
-	for (TileIndex tile = 0; tile < Map::Size(); tile++) {
+	for (const auto tile : Map::Iterate()) {
 		uint h = TileHeight(tile);
 		histogram[h]++;
 
