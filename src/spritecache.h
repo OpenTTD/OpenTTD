@@ -77,7 +77,7 @@ std::span<const std::unique_ptr<SpriteFile>> GetCachedSpriteFiles();
 
 void ReadGRFSpriteOffsets(SpriteFile &file);
 size_t GetGRFSpriteOffset(uint32_t id);
-bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id);
+bool LoadNextSprite(SpriteID load_index, SpriteFile &file, uint file_sprite_id);
 bool SkipSpriteData(SpriteFile &file, uint8_t type, uint16_t num);
 void DupSprite(SpriteID old_spr, SpriteID new_spr);
 
