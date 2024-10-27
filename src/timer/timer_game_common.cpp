@@ -35,20 +35,18 @@ static constexpr uint16_t _month_date_from_year_day[] = {
 };
 #undef M
 
-enum DaysTillMonth {
-	ACCUM_JAN = 0,
-	ACCUM_FEB = ACCUM_JAN + 31,
-	ACCUM_MAR = ACCUM_FEB + 29,
-	ACCUM_APR = ACCUM_MAR + 31,
-	ACCUM_MAY = ACCUM_APR + 30,
-	ACCUM_JUN = ACCUM_MAY + 31,
-	ACCUM_JUL = ACCUM_JUN + 30,
-	ACCUM_AUG = ACCUM_JUL + 31,
-	ACCUM_SEP = ACCUM_AUG + 31,
-	ACCUM_OCT = ACCUM_SEP + 30,
-	ACCUM_NOV = ACCUM_OCT + 31,
-	ACCUM_DEC = ACCUM_NOV + 30,
-};
+static constexpr uint16_t ACCUM_JAN = 0;
+static constexpr uint16_t ACCUM_FEB = ACCUM_JAN + 31;
+static constexpr uint16_t ACCUM_MAR = ACCUM_FEB + 29;
+static constexpr uint16_t ACCUM_APR = ACCUM_MAR + 31;
+static constexpr uint16_t ACCUM_MAY = ACCUM_APR + 30;
+static constexpr uint16_t ACCUM_JUN = ACCUM_MAY + 31;
+static constexpr uint16_t ACCUM_JUL = ACCUM_JUN + 30;
+static constexpr uint16_t ACCUM_AUG = ACCUM_JUL + 31;
+static constexpr uint16_t ACCUM_SEP = ACCUM_AUG + 31;
+static constexpr uint16_t ACCUM_OCT = ACCUM_SEP + 30;
+static constexpr uint16_t ACCUM_NOV = ACCUM_OCT + 31;
+static constexpr uint16_t ACCUM_DEC = ACCUM_NOV + 30;
 
 /** Number of days to pass from the first day in the year before reaching the first of a month. */
 static constexpr uint16_t _accum_days_for_month[] = {

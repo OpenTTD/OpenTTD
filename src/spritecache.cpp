@@ -661,7 +661,7 @@ bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id)
 
 	if (type == SpriteType::Invalid) return false;
 
-	if (load_index >= MAX_SPRITES) {
+	if (static_cast<uint>(load_index) >= MAX_SPRITES) {
 		UserError("Tried to load too many sprites (#{}; max {})", load_index, MAX_SPRITES);
 	}
 
