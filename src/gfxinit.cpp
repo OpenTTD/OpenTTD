@@ -43,10 +43,10 @@ static const SpriteID * const _landscape_spriteindexes[] = {
  * @param needs_palette_remap Whether the colours in the GRF file need a palette remap.
  * @return The number of loaded sprites.
  */
-static uint LoadGrfFile(const std::string &filename, uint load_index, bool needs_palette_remap)
+static uint LoadGrfFile(const std::string &filename, SpriteID load_index, bool needs_palette_remap)
 {
-	uint load_index_org = load_index;
-	uint sprite_id = 0;
+	SpriteID load_index_org = load_index;
+	SpriteID sprite_id = 0;
 
 	SpriteFile &file = OpenCachedSpriteFile(filename, BASESET_DIR, needs_palette_remap);
 

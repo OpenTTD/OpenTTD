@@ -6469,7 +6469,7 @@ static void GraphicsNew(ByteReader &buf)
 
 	for (; num > 0; num--) {
 		_cur.nfo_line++;
-		int load_index = (replace == 0 ? _cur.spriteid++ : replace++);
+		SpriteID load_index = (replace == 0 ? _cur.spriteid++ : replace++);
 		LoadNextSprite(load_index, *_cur.file, _cur.nfo_line);
 		if (dup_oneway_sprites) {
 			DupSprite(load_index, load_index + SPR_ONEWAY_SLOPE_N_OFFSET);
@@ -7084,7 +7084,7 @@ static void SpriteReplace(ByteReader &buf)
 		}
 
 		for (uint j = 0; j < num_sprites; j++) {
-			int load_index = first_sprite + j;
+			SpriteID load_index = first_sprite + j;
 			_cur.nfo_line++;
 			LoadNextSprite(load_index, *_cur.file, _cur.nfo_line); // XXX
 
@@ -10014,7 +10014,7 @@ static void AfterLoadGRFs()
  * @param load_index The offset for the first sprite to add.
  * @param num_baseset Number of NewGRFs at the front of the list to look up in the baseset dir instead of the newgrf dir.
  */
-void LoadNewGRF(uint load_index, uint num_baseset)
+void LoadNewGRF(SpriteID load_index, uint num_baseset)
 {
 	/* In case of networking we need to "sync" the start values
 	 * so all NewGRFs are loaded equally. For this we use the
