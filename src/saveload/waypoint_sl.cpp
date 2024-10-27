@@ -101,14 +101,16 @@ void MoveWaypointsToBaseStations()
 		 * the map array. If this is the case, try to locate the actual location in the map array */
 		if (!IsTileType(t, MP_RAILWAY) || GetRailTileType(t) != 2 /* RAIL_TILE_WAYPOINT */ || Tile(t).m2() != wp.index) {
 			Debug(sl, 0, "Found waypoint tile {} with invalid position", t);
-			for (t = 0; t < Map::Size(); t++) {
-				if (IsTileType(t, MP_RAILWAY) && GetRailTileType(t) == 2 /* RAIL_TILE_WAYPOINT */ && Tile(t).m2() == wp.index) {
-					Debug(sl, 0, "Found actual waypoint position at {}", t);
+			t = INVALID_TILE;
+			for (auto tile : Map::Iterate()) {
+				if (IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile) == 2 /* RAIL_TILE_WAYPOINT */ && tile.m2() == wp.index) {
+					t = TileIndex(tile);
+					Debug(sl, 0, "Found actual waypoint position at {}", TileIndex(tile));
 					break;
 				}
 			}
 		}
-		if (t == Map::Size()) {
+		if (t == INVALID_TILE) {
 			SlErrorCorrupt("Waypoint with invalid tile");
 		}
 
