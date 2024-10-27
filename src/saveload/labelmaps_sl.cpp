@@ -52,7 +52,7 @@ static void ConvertRailTypes()
 	}
 	if (!needs_conversion) return;
 
-	for (TileIndex t : Map::Iterate()) {
+	for (const auto t : Map::Iterate()) {
 		switch (GetTileType(t)) {
 			case MP_RAILWAY:
 				SetRailType(t, railtype_conversion_map[GetRailType(t)]);

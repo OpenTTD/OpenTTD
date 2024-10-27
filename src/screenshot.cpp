@@ -819,7 +819,7 @@ bool MakeHeightmapScreenshot(const char *filename)
 	}
 
 	_heightmap_highest_peak = 0;
-	for (TileIndex tile = 0; tile < Map::Size(); tile++) {
+	for (const auto tile : Map::Iterate()) {
 		uint h = TileHeight(tile);
 		_heightmap_highest_peak = std::max(h, _heightmap_highest_peak);
 	}
