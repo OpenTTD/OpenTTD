@@ -53,6 +53,7 @@ static constexpr int RATING_GROWTH_MAXIMUM = RATING_MEDIOCRE; ///< ... up to RAT
 static constexpr int RATING_STATION_UP_STEP = 12; ///< when a town grows, company gains reputation for all well serviced stations ...
 static constexpr int RATING_STATION_DOWN_STEP = -15; ///< ... but loses for badly serviced stations
 
+static constexpr int RATING_TUNNEL_BRIDGE_UP_STEP = 50; ///< rating increase for improving a town-owned bridge
 static constexpr int RATING_TUNNEL_BRIDGE_DOWN_STEP = -250; ///< penalty for removing town owned tunnel or bridge
 static constexpr int RATING_TUNNEL_BRIDGE_MINIMUM = 0; ///< minimum rating after removing tunnel or bridge
 static constexpr int RATING_TUNNEL_BRIDGE_NEEDED_LENIENT = 144; ///< rating needed, "Lenient" difficulty settings
