@@ -620,8 +620,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Frachtbe
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Tage unterwegs
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Sekunden unterwegs
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Zahlung für 10 gelieferte Einheiten (oder 10.000 Liter) Fracht über eine Strecke von 20 Feldern
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Alle auswählen
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Alle abwählen
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Alle
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Keine
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zeige alle Frachtarten im Frachtraten-Diagramm an
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Zeige keine Fracht im Frachtraten-Diagramm an
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Diagramm für diesen Frachttyp ein/aus
@@ -800,8 +800,8 @@ STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STR
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Alles ausblenden
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Alles einblenden
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Keine
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Alle
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Zeige Höhe
 STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Industrienamen anzeigen
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Industrien ausblenden
@@ -2379,7 +2379,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Momentan
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Spielzeit
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Zeit gespielt während{}Spiel nicht pausiert war
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Sprache, Server-Version, etc.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Serverkompatibilität und Authentifizierungsinfo
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Ein Spiel der Liste durch Anklicken wählen
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Zuletzt besuchtes Spiel:
@@ -3020,6 +3020,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Zufälli
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Stadt an zufälligem Ort gründen
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Viele zufällige Städte
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Das Spielfeld mit zufällig platzierten Städten füllen
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Aus Datei laden
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Stadtdaten aus einer JSON-Datei importieren
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Alle Städte ausbreiten
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Lässt alle Städte sich leicht ausbreiten
 
@@ -3272,6 +3274,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Szenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Szenario laden
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Reliefkarte laden
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Reliefkarte speichern
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Stadtdaten laden
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hier klicken, um zum Standardverzeichnis für Spielstände zu gehen
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} frei
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste der Laufwerke, Verzeichnisse und gespeicherten Spiele
@@ -3283,6 +3286,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Speicher
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Laden
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ausgewählten Spielstand laden
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ausgewähltes Höhenrelief laden
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Die ausgewählten Stadtdaten laden
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spielstand-Details
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Keine Informationen verfügbar
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3416,7 +3420,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Spielfel
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Führe Skript aus
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Spiel wird vorbereitet
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Laden der Stadtdaten fehlgeschlagen
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON-Datei ist nicht korrekt formatiert
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} Daten inkorrekt formatiert
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING}-Koordinaten sind nicht korrekt formatiert, muss zwischen 0 und 1 liegen, als ein Verhältnis der gesamten Höhenkartenabmessung
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Ein gültiger Standort für die Gründung von {NUM} {P "Stadt" "Städten"} konnte nicht gefunden werden. Stattdessen {P "wurde ein" "wurden"} Schild{P "" "er"} {P "am gewünschten Standort" "an den gewünschten Standorten"} erstellt
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Einstellungen
@@ -3898,6 +3907,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Manager)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Gegründet: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}Einführung: {WHITE}{NUM} (Zeitraum {NUM})
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Farbschema
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Fahrzeuge:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} Z{P ug üge}
@@ -4000,10 +4010,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} – {COMMA} Flugzeug{P "" e}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Züge – für Einzelheiten auf den Zug klicken
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Straßenfahrzeuge – für Einzelheiten auf das Fahrzeug klicken
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schiffe – für Einzelheiten auf das Schiff klicken
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flugzeuge – für Einzelheiten auf das Flugzeug klicken
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Züge – für Einzelheiten auf den Zug klicken. Strg+Umschalt halten, um Frachttyp einzublenden
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Straßenfahrzeuge – für Einzelheiten auf das Fahrzeug klicken. Strg+Umschalt halten, um Frachttyp einzublenden
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schiffe – für Einzelheiten auf das Schiff klicken. Strg+Umschalt halten, um Frachttyp einzublenden
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flugzeuge – für Einzelheiten auf das Flugzeug klicken. Strg+Umschalt halten, um Frachttyp einzublenden
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Verfügbare Züge
