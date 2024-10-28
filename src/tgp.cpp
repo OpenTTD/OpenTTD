@@ -558,7 +558,7 @@ static void HeightMapCurves(uint level)
 	const ControlPoint curve_map_4[] = { { F(0.0), F(0.0) }, { F(0.4),  F(0.3)  }, { F(0.7), F(0.8)  }, { F(0.92), F(0.99) }, { F(1.0), F(0.99) } };
 #undef F
 
-	static const std::span<const ControlPoint> curve_maps[] = { curve_map_1, curve_map_2, curve_map_3, curve_map_4 };
+	const std::span<const ControlPoint> curve_maps[] = { curve_map_1, curve_map_2, curve_map_3, curve_map_4 };
 
 	std::array<Height, std::size(curve_maps)> ht{};
 
