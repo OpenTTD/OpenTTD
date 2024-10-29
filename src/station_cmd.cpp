@@ -4762,7 +4762,8 @@ static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, in
 					return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 
 				case STATION_TRUCK:
-				case STATION_BUS: {
+				case STATION_BUS:
+				case STATION_ROADWAYPOINT: {
 					if (IsDriveThroughStopTile(tile)) {
 						if (!AutoslopeCheckForAxis(tile, z_new, tileh_new, GetDriveThroughStopAxis(tile))) break;
 					} else {
