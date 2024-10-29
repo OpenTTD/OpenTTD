@@ -88,7 +88,7 @@ struct CSegmentCostCacheT : public CSegmentCostCacheBase {
 		Tsegment *item = this->map.Find(key);
 		if (item == nullptr) {
 			*found = false;
-			item = &heap.emplace_back(key);
+			item = &this->heap.emplace_back(key);
 			this->map.Push(*item);
 		} else {
 			*found = true;
