@@ -1173,6 +1173,7 @@ static void DoFloodTile(TileIndex target)
 		UpdateSignalsInBuffer();
 
 		if (IsPossibleDockingTile(target)) CheckForDockingTile(target);
+		InvalidateWaterRegion(target);
 	}
 
 	cur_company.Restore();
