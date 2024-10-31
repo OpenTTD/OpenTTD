@@ -310,6 +310,8 @@ RailTypes GetRailTypes(bool introduces)
  */
 RailType GetRailTypeByLabel(RailTypeLabel label, bool allow_alternate_labels)
 {
+	if (label == 0) return INVALID_RAILTYPE;
+
 	/* Loop through each rail type until the label is found */
 	for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
 		const RailTypeInfo *rti = GetRailTypeInfo(r);
