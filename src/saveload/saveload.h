@@ -388,6 +388,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ROAD_STOP_TILE_DATA,                ///< 340  PR#12883 Move storage of road stop tile data, also save for road waypoints.
 	SLV_COMPANY_ALLOW_LIST_V2,              ///< 341  PR#12908 Fixed savegame format for saving of list of client keys that are allowed to join this company.
 	SLV_WATER_TILE_TYPE,                    ///< 342  PR#13030 Simplify water tile type.
+	SLV_PRODUCTION_HISTORY,                 ///< 343  PR#10541 Industry production history.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
