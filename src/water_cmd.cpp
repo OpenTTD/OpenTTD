@@ -320,7 +320,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 	if (ret.Failed()) return ret;
 
 	/* middle tile */
-	WaterClass wc_middle = HasTileWaterGround(tile) ? GetWaterClass(tile) : WATER_CLASS_CANAL;
+	WaterClass wc_middle = HasTileWaterClass(tile) && IsTileOnWater(tile) ? GetWaterClass(tile) : WATER_CLASS_CANAL;
 	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret);
