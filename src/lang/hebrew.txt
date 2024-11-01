@@ -577,6 +577,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}הצג �
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}הצג/הסתר סוג מטען
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}הצג דירוגי ביצועים מפורטים
 
 # Graph key window

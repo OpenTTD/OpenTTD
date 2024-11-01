@@ -586,6 +586,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}全貨�
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}この貨物の運送報酬相場の表示/非表示を切り替えます
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}格付の詳細情報を表示します
 
 # Graph key window

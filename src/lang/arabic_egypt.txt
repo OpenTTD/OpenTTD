@@ -590,6 +590,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}لا ت�
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}اظهار / اخفاء الشحن
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}عرض كامل تفاصيل الأداء
 
 # Graph key window

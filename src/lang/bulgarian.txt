@@ -628,6 +628,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Скри
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Активирай/деактивирай графиката за видовете товар
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Покажи подробен рейтинг на представянето
 
 # Graph key window

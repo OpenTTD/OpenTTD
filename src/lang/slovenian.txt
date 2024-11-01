@@ -711,6 +711,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ne prika
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Prikaži graf za tip tovora vključen/izključen
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Prikaz detajliranih ocen uspeha
 
 # Graph key window

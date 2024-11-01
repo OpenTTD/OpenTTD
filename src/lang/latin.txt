@@ -748,6 +748,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Monstrar
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Monstrare celareve aspectum huius oneris in grapho
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Monstrare censiones effectus descriptas
 
 # Graph key window

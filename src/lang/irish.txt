@@ -574,6 +574,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ná tais
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Scoránaigh an graf don chineál lastais air/as
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Taispeáin rátálacha feidhmíochta mionsonraithe
 
 # Graph key window

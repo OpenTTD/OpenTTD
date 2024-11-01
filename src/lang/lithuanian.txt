@@ -809,6 +809,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nerodyti
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Įjungti/išjungti grafiką krovinių tipui
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Parodyti išsamų našumo reitingą
 
 # Graph key window

@@ -621,6 +621,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}எந�
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}சரக்கு வகையினை graph இல் காட்டவும்/மறைக்கவும்
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}விவரமான செயல்திறன் விவரங்களை காண்பி
 
 # Graph key window

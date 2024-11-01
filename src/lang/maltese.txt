@@ -322,6 +322,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 
 
 
+
 # Graph key window
 
 # Company league window
