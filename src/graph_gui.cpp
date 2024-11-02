@@ -185,7 +185,6 @@ protected:
 	static const int MIN_GRID_PIXEL_SIZE    =  20; ///< Minimum distance between graph lines.
 
 	uint64_t excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
-	uint8_t num_dataset;
 	uint8_t num_on_x_axis;
 	uint8_t num_vert_lines;
 
@@ -202,8 +201,23 @@ protected:
 	uint16_t x_values_increment;
 
 	StringID format_str_y_axis;
-	uint8_t colours[GRAPH_MAX_DATASETS];
-	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][GRAPH_NUM_MONTHS]; ///< Stored costs for the last #GRAPH_NUM_MONTHS months
+
+	struct DataSet {
+		std::array<OverflowSafeInt64, GRAPH_NUM_MONTHS> values;
+		uint8_t colour;
+		uint8_t exclude_bit;
+	};
+	std::vector<DataSet> data;
+
+	/**
+	 * Get appropriate part of dataset values for the current number of horizontal points.
+	 * @param dataset Dataset to get values of
+	 * @returns span covering dataset's current valid range.
+	 */
+	std::span<const OverflowSafeInt64> GetDataSetRange(const DataSet &dataset) const
+	{
+		return {std::begin(dataset.values), std::begin(dataset.values) + this->num_on_x_axis};
+	}
 
 	/**
 	 * Get the interval that contains the graph's data. Excluded data is ignored to show smaller values in
@@ -219,11 +233,10 @@ protected:
 		current_interval.highest = INT64_MIN;
 		current_interval.lowest  = INT64_MAX;
 
-		for (int i = 0; i < this->num_dataset; i++) {
-			if (HasBit(this->excluded_data, i)) continue;
-			for (int j = 0; j < this->num_on_x_axis; j++) {
-				OverflowSafeInt64 datapoint = this->cost[i][j];
+		for (const DataSet &dataset : this->data) {
+			if (HasBit(this->excluded_data, dataset.exclude_bit)) continue;
 
+			for (const OverflowSafeInt64 &datapoint : this->GetDataSetRange(dataset)) {
 				if (datapoint != INVALID_DATAPOINT) {
 					current_interval.highest = std::max(current_interval.highest, datapoint);
 					current_interval.lowest  = std::min(current_interval.lowest, datapoint);
@@ -441,60 +454,57 @@ protected:
 		uint linewidth = _settings_client.gui.graph_line_thickness;
 		uint pointoffs1 = (linewidth + 1) / 2;
 		uint pointoffs2 = linewidth + 1 - pointoffs1;
-		for (int i = 0; i < this->num_dataset; i++) {
-			if (!HasBit(this->excluded_data, i)) {
-				/* Centre the dot between the grid lines. */
-				x = r.left + (x_sep / 2);
 
-				uint8_t colour  = this->colours[i];
-				uint prev_x = INVALID_DATAPOINT_POS;
-				uint prev_y = INVALID_DATAPOINT_POS;
+		for (const DataSet &dataset : this->data) {
+			if (HasBit(this->excluded_data, dataset.exclude_bit)) continue;
 
-				for (int j = 0; j < this->num_on_x_axis; j++) {
-					OverflowSafeInt64 datapoint = this->cost[i][j];
+			/* Centre the dot between the grid lines. */
+			x = r.left + (x_sep / 2);
 
-					if (datapoint != INVALID_DATAPOINT) {
-						/*
-						 * Check whether we need to reduce the 'accuracy' of the
-						 * datapoint value and the highest value to split overflows.
-						 * And when 'drawing' 'one million' or 'one million and one'
-						 * there is no significant difference, so the least
-						 * significant bits can just be removed.
-						 *
-						 * If there are more bits needed than would fit in a 32 bits
-						 * integer, so at about 31 bits because of the sign bit, the
-						 * least significant bits are removed.
-						 */
-						int mult_range = FindLastBit<uint32_t>(x_axis_offset) + FindLastBit<uint64_t>(abs(datapoint));
-						int reduce_range = std::max(mult_range - 31, 0);
+			uint prev_x = INVALID_DATAPOINT_POS;
+			uint prev_y = INVALID_DATAPOINT_POS;
 
-						/* Handle negative values differently (don't shift sign) */
-						if (datapoint < 0) {
-							datapoint = -(abs(datapoint) >> reduce_range);
-						} else {
-							datapoint >>= reduce_range;
-						}
-						y = r.top + x_axis_offset - ((r.bottom - r.top) * datapoint) / (interval_size >> reduce_range);
+			for (OverflowSafeInt64 datapoint : this->GetDataSetRange(dataset)) {
+				if (datapoint != INVALID_DATAPOINT) {
+					/*
+						* Check whether we need to reduce the 'accuracy' of the
+						* datapoint value and the highest value to split overflows.
+						* And when 'drawing' 'one million' or 'one million and one'
+						* there is no significant difference, so the least
+						* significant bits can just be removed.
+						*
+						* If there are more bits needed than would fit in a 32 bits
+						* integer, so at about 31 bits because of the sign bit, the
+						* least significant bits are removed.
+						*/
+					int mult_range = FindLastBit<uint32_t>(x_axis_offset) + FindLastBit<uint64_t>(abs(datapoint));
+					int reduce_range = std::max(mult_range - 31, 0);
 
-						/* Draw the point. */
-						GfxFillRect(x - pointoffs1, y - pointoffs1, x + pointoffs2, y + pointoffs2, colour);
-
-						/* Draw the line connected to the previous point. */
-						if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, colour, linewidth);
-
-						prev_x = x;
-						prev_y = y;
+					/* Handle negative values differently (don't shift sign) */
+					if (datapoint < 0) {
+						datapoint = -(abs(datapoint) >> reduce_range);
 					} else {
-						prev_x = INVALID_DATAPOINT_POS;
-						prev_y = INVALID_DATAPOINT_POS;
+						datapoint >>= reduce_range;
 					}
+					y = r.top + x_axis_offset - ((r.bottom - r.top) * datapoint) / (interval_size >> reduce_range);
 
-					x += x_sep;
+					/* Draw the point. */
+					GfxFillRect(x - pointoffs1, y - pointoffs1, x + pointoffs2, y + pointoffs2, dataset.colour);
+
+					/* Draw the line connected to the previous point. */
+					if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, dataset.colour, linewidth);
+
+					prev_x = x;
+					prev_y = y;
+				} else {
+					prev_x = INVALID_DATAPOINT_POS;
+					prev_y = INVALID_DATAPOINT_POS;
 				}
+
+				x += x_sep;
 			}
 		}
 	}
-
 
 	BaseGraphWindow(WindowDesc &desc, StringID format_str_y_axis) :
 			Window(desc),
@@ -627,26 +637,26 @@ public:
 		this->year = yr;
 		this->month = mo;
 
-		int numd = 0;
+		this->data.clear();
 		for (CompanyID k = COMPANY_FIRST; k < MAX_COMPANIES; k++) {
 			const Company *c = Company::GetIfValid(k);
-			if (c != nullptr) {
-				this->colours[numd] = GetColourGradient(c->colour, SHADE_LIGHTER);
-				for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
-					if (j >= c->num_valid_stat_ent) {
-						this->cost[numd][i] = INVALID_DATAPOINT;
-					} else {
-						/* Ensure we never assign INVALID_DATAPOINT, as that has another meaning.
-						 * Instead, use the value just under it. Hopefully nobody will notice. */
-						this->cost[numd][i] = std::min(GetGraphData(c, j), INVALID_DATAPOINT - 1);
-					}
-					i++;
-				}
-			}
-			numd++;
-		}
+			if (c == nullptr) continue;
 
-		this->num_dataset = numd;
+			DataSet &dataset = this->data.emplace_back();
+			dataset.colour = GetColourGradient(c->colour, SHADE_LIGHTER);
+			dataset.exclude_bit = k;
+
+			for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
+				if (j >= c->num_valid_stat_ent) {
+					dataset.values[i] = INVALID_DATAPOINT;
+				} else {
+					/* Ensure we never assign INVALID_DATAPOINT, as that has another meaning.
+					 * Instead, use the value just under it. Hopefully nobody will notice. */
+					dataset.values[i] = std::min(GetGraphData(c, j), INVALID_DATAPOINT - 1);
+				}
+				i++;
+			}
+		}
 	}
 };
 
@@ -1120,15 +1130,16 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	{
 		this->UpdateExcludedData();
 
-		int i = 0;
+		this->data.clear();
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-			this->colours[i] = cs->legend_colour;
+			DataSet &dataset = this->data.emplace_back();
+			dataset.colour = cs->legend_colour;
+			dataset.exclude_bit = cs->Index();
+
 			for (uint j = 0; j != this->num_on_x_axis; j++) {
-				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, cs->Index());
+				dataset.values[j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, cs->Index());
 			}
-			i++;
 		}
-		this->num_dataset = i;
 	}
 };
 
@@ -1463,12 +1474,10 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 	{
 		this->excluded_data = 0;
 
-		int index = 0;
 		const Industry *i = Industry::Get(this->window_number);
 		for (const auto &p : i->produced) {
 			if (!IsValidCargoID(p.cargo)) continue;
-			if (HasBit(_legend_excluded_cargo_production_history, p.cargo)) SetBit(this->excluded_data, index);
-			index++;
+			if (HasBit(_legend_excluded_cargo_production_history, p.cargo)) SetBit(this->excluded_data, p.cargo);
 		}
 	}
 
@@ -1555,14 +1564,12 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 
 			case WID_GRAPH_DISABLE_CARGOES: {
 				/* Add all cargoes to the excluded lists. */
-				int index = 0;
 				const Industry *i = Industry::Get(this->window_number);
 				for (const auto &p : i->produced) {
 					if (!IsValidCargoID(p.cargo)) continue;
 
 					SetBit(_legend_excluded_cargo_production_history, p.cargo);
-					SetBit(this->excluded_data, index);
-					index++;
+					SetBit(this->excluded_data, p.cargo);
 				}
 				this->SetDirty();
 				break;
@@ -1617,22 +1624,23 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		this->year = yr;
 		this->month = mo;
 
-		int index = 0;
 		const Industry *i = Industry::Get(this->window_number);
+
+		this->data.clear();
 		for (const auto &p : i->produced) {
 			if (!IsValidCargoID(p.cargo)) continue;
-
 			const CargoSpec *cs = CargoSpec::Get(p.cargo);
 
-			this->colours[index] = cs->legend_colour;
+			DataSet &dataset = this->data.emplace_back();
+			dataset.colour = cs->legend_colour;
+			dataset.exclude_bit = cs->Index();
+
 			for (uint j = 0; j < GRAPH_NUM_MONTHS; j++) {
-				this->cost[index][j] = p.history[GRAPH_NUM_MONTHS - j].production;
+				dataset.values[j] = p.history[GRAPH_NUM_MONTHS - j].production;
 			}
-			index++;
 		}
 
-		this->num_dataset = index;
-		this->vscroll->SetCount(index);
+		this->vscroll->SetCount(std::size(this->data));
 
 		this->SetDirty();
 	}
