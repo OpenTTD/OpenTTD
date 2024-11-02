@@ -751,6 +751,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Коли
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рейтинг компании (макс=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}График изменения стоимости компании
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Последние 24 минуты
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Последние 72 минуты
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Оплата за перевозку грузов
@@ -764,6 +765,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Скры
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Включить/выключить отображение груза на графике
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}График производительности: {INDUSTRY}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Показать составляющие части рейтинга
 
@@ -4163,6 +4165,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Прои
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Произведено за минуту:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% перевезено)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Показать предприятие в основном окне. Ctrl+щелчок{NBSP}- показать в дополнительном окне.
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}График производительности
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Показать график производительности этого предприятия
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Производительность: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Предприятие скоро закрывается!
 

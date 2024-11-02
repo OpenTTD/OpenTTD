@@ -613,6 +613,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}运输�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}公司评价表现指数（最大指数为 1000）
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}公司市值图表
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}最后 24 分
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}最后 72 分
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}货物运输价格
@@ -626,6 +627,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}在货�
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切换显示货物
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - 产量历史
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}查看详细数据
 
@@ -3988,6 +3990,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月�
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}上分钟产量：
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK}（{COMMA}% 已运输）
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏幕中心移动到当前工业的位置。按住 <Ctrl> 键点选会在新视点中显示工业位置
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}产量图表
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}显示工业产量历史图表
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生产等级：{YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}此工业已经宣布即刻停业倒闭！
 

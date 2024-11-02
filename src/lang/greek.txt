@@ -706,6 +706,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Μονά
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ποσοστά απόδοσης εταιρίας (μέγιστη τιμή=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Γράφημα αξίας εταιρίας
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Τελευταία 24 λεπτά
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Τελευταία 72 λεπτά
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Ποσοστά Πληρωμής Φορτίων
@@ -719,6 +720,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Εμφά
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Εναλλαγή γραφήματος αυτού του τύπου φορτίου
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Ιστορικό Παραγωγής
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Εμφάνιση λεπτομεριών αποδόσεων
 
@@ -4082,6 +4084,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Παρα
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Παραγωγή τελευταίου λεπτού:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% μεταφέρθηκαν)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας. Ctrl+Κλικ για άνοιγμα νέου παραθύρου προβολής στην περιοχή της βιομηχανίας
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Γράφημα Παραγωγής
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Εμφανίζει το γράφημα ιστορικού παραγωγής της βιομηχανίας
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Επίπεδο παραγωγής: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Η βιομηχανία έχει ανακοινώσει άμεσο κλείσιμο!
 

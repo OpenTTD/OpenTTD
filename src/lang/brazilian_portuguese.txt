@@ -614,6 +614,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Classificação do desempenho das empresas (máximo=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gráfico de Valor da Empresa
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últimos 24 minutos
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últimos 72 minutos
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas por Carga
@@ -627,6 +628,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não mos
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar/Ocultar gráfico para este tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Histórico da Produção
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar avaliações detalhadas de desempenho
 
@@ -3989,6 +3991,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produç�
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produção no último minuto:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportado)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centralizar visualização principal na localização da indústria. Ctrl+Clique para abrir uma nova visualização na localização da indústria
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Gráfico de Produção
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Mostrar gráfico do histórico de produção da indústria
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nível de produção: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}A indústria anunciou fechamento iminente!
 
