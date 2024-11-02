@@ -30,7 +30,7 @@
 #include "table/landscape_sprite.h"
 
 /** Offsets for loading the different "replacement" sprites in the files. */
-static const SpriteID * const _landscape_spriteindexes[] = {
+static constexpr std::span<const std::pair<SpriteID, SpriteID>> _landscape_spriteindexes[] = {
 	_landscape_spriteindexes_arctic,
 	_landscape_spriteindexes_tropic,
 	_landscape_spriteindexes_toyland,
@@ -80,9 +80,8 @@ static uint LoadGrfFile(const std::string &filename, SpriteID load_index, bool n
  * @param needs_palette_remap Whether the colours in the GRF file need a palette remap.
  * @return The number of loaded sprites.
  */
-static void LoadGrfFileIndexed(const std::string &filename, const SpriteID *index_tbl, bool needs_palette_remap)
+static void LoadGrfFileIndexed(const std::string &filename, std::span<const std::pair<SpriteID, SpriteID>> index_tbl, bool needs_palette_remap)
 {
-	uint start;
 	uint sprite_id = 0;
 
 	SpriteFile &file = OpenCachedSpriteFile(filename, BASESET_DIR, needs_palette_remap);
@@ -98,14 +97,12 @@ static void LoadGrfFileIndexed(const std::string &filename, const SpriteID *inde
 		if (compression != 0) UserError("Unsupported compression format");
 	}
 
-	while ((start = *index_tbl++) != END) {
-		uint end = *index_tbl++;
-
-		do {
-			[[maybe_unused]] bool b = LoadNextSprite(start, file, sprite_id);
+	for (const auto &pair : index_tbl) {
+		for (SpriteID load_index = pair.first; load_index <= pair.second; ++load_index) {
+			[[maybe_unused]] bool b = LoadNextSprite(load_index, file, sprite_id);
 			assert(b);
 			sprite_id++;
-		} while (++start <= end);
+		}
 	}
 }
 
