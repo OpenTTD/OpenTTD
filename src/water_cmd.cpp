@@ -429,7 +429,7 @@ CommandCost CmdBuildLock(DoCommandFlag flags, TileIndex tile)
 }
 
 /** Callback to create non-desert around a river tile. */
-bool RiverModifyDesertZone(TileIndex tile, void *)
+static bool RiverModifyDesertZone(TileIndex tile, void *)
 {
 	if (GetTropicZone(tile) == TROPICZONE_DESERT) SetTropicZone(tile, TROPICZONE_NORMAL);
 	return false;
@@ -1114,7 +1114,7 @@ FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 /**
  * Floods a tile.
  */
-void DoFloodTile(TileIndex target)
+static void DoFloodTile(TileIndex target)
 {
 	assert(!IsTileType(target, MP_WATER));
 
