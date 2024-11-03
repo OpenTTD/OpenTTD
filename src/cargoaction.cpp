@@ -107,7 +107,7 @@ bool CargoDelivery::operator()(CargoPacket *cp)
 {
 	uint remove = this->Preprocess(cp);
 	this->source->RemoveFromMeta(cp, VehicleCargoList::MTA_DELIVER, remove);
-	this->payment->PayFinalDelivery(cp, remove, this->current_tile);
+	this->payment->PayFinalDelivery(this->cargo, cp, remove, this->current_tile);
 	return this->Postprocess(cp, remove);
 }
 

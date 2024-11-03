@@ -24,7 +24,6 @@ extern CargoPaymentPool _cargo_payment_pool;
 struct CargoPayment : CargoPaymentPool::PoolItem<&_cargo_payment_pool> {
 	/* CargoPaymentID index member of CargoPaymentPool is 4 bytes. */
 	StationID current_station; ///< NOSAVE: The current station
-	CargoID ct; ///< NOSAVE: The currently handled cargo type
 	Company *owner; ///< NOSAVE: The owner of the vehicle
 
 	Vehicle *front;        ///< The front vehicle to do the payment of
@@ -37,14 +36,8 @@ struct CargoPayment : CargoPaymentPool::PoolItem<&_cargo_payment_pool> {
 	CargoPayment(Vehicle *front);
 	~CargoPayment();
 
-	Money PayTransfer(const CargoPacket *cp, uint count, TileIndex current_tile);
-	void PayFinalDelivery(const CargoPacket *cp, uint count, TileIndex current_tile);
-
-	/**
-	 * Sets the currently handled cargo type.
-	 * @param ct the cargo type to handle from now on.
-	 */
-	void SetCargo(CargoID ct) { this->ct = ct; }
+	Money PayTransfer(CargoID cargo, const CargoPacket *cp, uint count, TileIndex current_tile);
+	void PayFinalDelivery(CargoID cargo, const CargoPacket *cp, uint count, TileIndex current_tile);
 };
 
 #endif /* ECONOMY_BASE_H */

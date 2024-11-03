@@ -432,11 +432,12 @@ void VehicleCargoList::AgeCargo()
  * @param next_station ID of the station the vehicle will go to next.
  * @param order_flags OrderUnloadFlags that will apply to the unload operation.
  * @param ge GoodsEntry for getting the flows.
+ * @param cargo The cargo type of the cargo.
  * @param payment Payment object for registering transfers.
  * @param current_tile Current tile the cargo handling is happening on.
  * return If any cargo will be unloaded.
  */
-bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoPayment *payment, TileIndex current_tile)
+bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoID cargo, CargoPayment *payment, TileIndex current_tile)
 {
 	this->AssertCountConsistency();
 	assert(this->action_counts[MTA_LOAD] == 0);
@@ -512,7 +513,7 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationID
 			case MTA_TRANSFER:
 				this->packets.push_front(cp);
 				/* Add feeder share here to allow reusing field for next station. */
-				share = payment->PayTransfer(cp, cp->count, current_tile);
+				share = payment->PayTransfer(cargo, cp, cp->count, current_tile);
 				cp->AddFeederShare(share);
 				this->feeder_share += share;
 				cp->next_hop = cargo_next;
@@ -619,11 +620,12 @@ uint VehicleCargoList::Shift(uint max_move, VehicleCargoList *dest)
  * ranges defined by designation_counts.
  * @param dest StationCargoList to add transferred cargo to.
  * @param max_move Maximum amount of cargo to move.
+ * @param cargo The cargo type of the cargo.
  * @param payment Payment object to register payments in.
  * @param current_tile Current tile the cargo handling is happening on.
  * @return Amount of cargo actually unloaded.
  */
-uint VehicleCargoList::Unload(uint max_move, StationCargoList *dest, CargoPayment *payment, TileIndex current_tile)
+uint VehicleCargoList::Unload(uint max_move, StationCargoList *dest, CargoID cargo, CargoPayment *payment, TileIndex current_tile)
 {
 	uint moved = 0;
 	if (this->action_counts[MTA_TRANSFER] > 0) {
@@ -633,7 +635,7 @@ uint VehicleCargoList::Unload(uint max_move, StationCargoList *dest, CargoPaymen
 	}
 	if (this->action_counts[MTA_TRANSFER] == 0 && this->action_counts[MTA_DELIVER] > 0 && moved < max_move) {
 		uint move = std::min(this->action_counts[MTA_DELIVER], max_move - moved);
-		this->ShiftCargo(CargoDelivery(this, move, payment, current_tile));
+		this->ShiftCargo(CargoDelivery(this, move, cargo, payment, current_tile));
 		moved += move;
 	}
 	return moved;
