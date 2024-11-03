@@ -614,7 +614,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}수송 �
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}회사 성취도 (최고 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}회사가치 그래프
 
-STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}지난 72분
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}최근 24분
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}최근 72분
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}화물 운송단가 비율
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}운송 시간(일)
@@ -627,6 +628,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}화물 �
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화물의 그래프를 표시하거나 숨깁니다
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - 생산량 이력
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}상세 성취도를 봅니다.
 
@@ -3989,6 +3991,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}지난�
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}지난 1분간 생산량:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% 수송됨)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}이 산업시설로 이동합니다. CTRL+클릭하면 이 산업시설을 기준으로 새로운 외부 화면을 엽니다
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}생산량 그래프
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}산업시설 생산량 이력 그래프를 보여줍니다
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}생산 수준: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}산업시설이 곧 폐쇄됩니다!
 

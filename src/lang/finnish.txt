@@ -613,6 +613,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Rahtia k
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Yhtiön suoritearvio (enimmäisarvio=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Yhtiöiden arvot kuvaajana
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Viime 24 minuuttia
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Viime 72 minuuttia
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Rahtitaksat
@@ -626,6 +627,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Älä n�
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Valitse, näytetäänkö tämän rahdin kuvaaja
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} – Tuotantohistoria
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näytä tarkat suorituskykyarviot
 
@@ -3988,6 +3990,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Tuotanto
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Tuotanto viime minuutissa:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% kuljetettu)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Keskitä päänäkymä tuotantolaitoksen sijaintiin. Ctrl+napsautus avataksesi uuden näkymäikkunan laitoksen sijaintiin
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Tuotannon kuvaaja
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Näyttää tuotantohistorian kuvaajana
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tuotantotaso: {YELLOW}{COMMA}{NBSP}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Teollisuuslaitos ilmoittaa välittömästä lakkautuksesta!
 
