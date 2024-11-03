@@ -1504,6 +1504,11 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 	Scrollbar *vscroll; ///< Cargo list scrollbar.
 	uint legend_width;  ///< Width of legend 'blob'.
 
+	static inline constexpr StringID RANGE_LABELS[] = {
+		STR_GRAPH_INDUSTRY_RANGE_PRODUCED,
+		STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED
+	};
+
 	IndustryProductionGraphWindow(WindowDesc &desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, STR_JUST_COMMA)
 	{
@@ -1513,6 +1518,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		this->x_values_start = ECONOMY_MONTH_MINUTES;
 		this->x_values_increment = ECONOMY_MONTH_MINUTES;
 		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
+		this->ranges = RANGE_LABELS;
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_GRAPH_MATRIX_SCROLLBAR);
@@ -1705,12 +1711,23 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 			if (!IsValidCargoID(p.cargo)) continue;
 			const CargoSpec *cs = CargoSpec::Get(p.cargo);
 
-			DataSet &dataset = this->data.emplace_back();
-			dataset.colour = cs->legend_colour;
-			dataset.exclude_bit = cs->Index();
+			DataSet &produced = this->data.emplace_back();
+			produced.colour = cs->legend_colour;
+			produced.exclude_bit = cs->Index();
+			produced.range_bit = 0;
 
 			for (uint j = 0; j < GRAPH_NUM_MONTHS; j++) {
-				dataset.values[j] = p.history[GRAPH_NUM_MONTHS - j].production;
+				produced.values[j] = p.history[GRAPH_NUM_MONTHS - j].production;
+			}
+
+			DataSet &transported = this->data.emplace_back();
+			transported.colour = cs->legend_colour;
+			transported.exclude_bit = cs->Index();
+			transported.range_bit = 1;
+			transported.dash = 2;
+
+			for (uint j = 0; j < GRAPH_NUM_MONTHS; j++) {
+				transported.values[j] = p.history[GRAPH_NUM_MONTHS - j].transported;
 			}
 		}
 

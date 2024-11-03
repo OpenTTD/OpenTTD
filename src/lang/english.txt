@@ -628,6 +628,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Toggle g
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Production History
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produced
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transported
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Show detailed performance ratings
 
