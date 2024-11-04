@@ -120,12 +120,14 @@ int GetTileZ(TileIndex tile)
 	uint x2 = std::min(x1 + 1, Map::MaxX());
 	uint y2 = std::min(y1 + 1, Map::MaxY());
 
-	return std::min({
-		TileHeight(tile),           // N corner
-		TileHeight(TileXY(x2, y1)), // W corner
-		TileHeight(TileXY(x1, y2)), // E corner
-		TileHeight(TileXY(x2, y2)), // S corner
-	});
+	return std::min(
+		std::min(
+			TileHeight(tile),            // N corner
+			TileHeight(TileXY(x2, y1))), // W corner
+		std::min(
+			TileHeight(TileXY(x1, y2)),  // E corner
+			TileHeight(TileXY(x2, y2)))  // S corner
+	);
 }
 
 /**
@@ -140,10 +142,12 @@ int GetTileMaxZ(TileIndex t)
 	uint x2 = std::min(x1 + 1, Map::MaxX());
 	uint y2 = std::min(y1 + 1, Map::MaxY());
 
-	return std::max({
-		TileHeight(t),              // N corner
-		TileHeight(TileXY(x2, y1)), // W corner
-		TileHeight(TileXY(x1, y2)), // E corner
-		TileHeight(TileXY(x2, y2)), // S corner
-	});
+	return std::max(
+		std::max(
+			TileHeight(t),               // N corner
+			TileHeight(TileXY(x2, y1))), // W corner
+		std::max(
+			TileHeight(TileXY(x1, y2)),  // E corner
+			TileHeight(TileXY(x2, y2)))  // S corner
+	);
 }
