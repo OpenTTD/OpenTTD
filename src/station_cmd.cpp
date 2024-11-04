@@ -518,7 +518,7 @@ CargoTypes GetEmptyMask(const Station *st)
 	CargoTypes mask = 0;
 
 	for (auto it = std::begin(st->goods); it != std::end(st->goods); ++it) {
-		if (it->cargo.TotalCount() == 0) SetBit(mask, std::distance(std::begin(st->goods), it));
+		if (!it->HasData() || it->GetData().cargo.TotalCount() == 0) SetBit(mask, std::distance(std::begin(st->goods), it));
 	}
 	return mask;
 }
@@ -3819,8 +3819,10 @@ static void TruncateCargo(const CargoSpec *cs, GoodsEntry *ge, uint amount = UIN
 	/* If truncating also punish the source stations' ratings to
 	 * decrease the flow of incoming cargo. */
 
+	if (!ge->HasData()) return;
+
 	StationCargoAmountMap waiting_per_source;
-	ge->cargo.Truncate(amount, &waiting_per_source);
+	ge->GetData().cargo.Truncate(amount, &waiting_per_source);
 	for (StationCargoAmountMap::iterator i(waiting_per_source.begin()); i != waiting_per_source.end(); ++i) {
 		Station *source_station = Station::GetIfValid(i->first);
 		if (source_station == nullptr) continue;
@@ -3859,12 +3861,12 @@ static void UpdateStationRating(Station *st)
 
 			bool skip = false;
 			int rating = 0;
-			uint waiting = ge->cargo.AvailableCount();
+			uint waiting = ge->HasData() ? ge->GetData().cargo.AvailableCount() : 0;
 
 			/* num_dests is at least 1 if there is any cargo as
 			 * INVALID_STATION is also a destination.
 			 */
-			uint num_dests = (uint)ge->cargo.Packets()->MapSize();
+			uint num_dests = ge->HasData() ? static_cast<uint>(ge->GetData().cargo.Packets()->MapSize()) : 0;
 
 			/* Average amount of cargo per next hop, but prefer solitary stations
 			 * with only one or two next hops. They are allowed to have more
@@ -3967,12 +3969,12 @@ static void UpdateStationRating(Station *st)
 
 				/* We can't truncate cargo that's already reserved for loading.
 				 * Thus StoredCount() here. */
-				if (waiting_changed && waiting < ge->cargo.AvailableCount()) {
+				if (waiting_changed && waiting < (ge->HasData() ? ge->GetData().cargo.AvailableCount() : 0)) {
 					/* Feed back the exact own waiting cargo at this station for the
 					 * next rating calculation. */
 					ge->max_waiting_cargo = 0;
 
-					TruncateCargo(cs, ge, ge->cargo.AvailableCount() - waiting);
+					TruncateCargo(cs, ge, ge->GetData().cargo.AvailableCount() - waiting);
 				} else {
 					/* If the average number per next hop is low, be more forgiving. */
 					ge->max_waiting_cargo = waiting_avg;
@@ -4002,7 +4004,7 @@ void RerouteCargo(Station *st, CargoID c, StationID avoid, StationID avoid2)
 	GoodsEntry &ge = st->goods[c];
 
 	/* Reroute cargo in station. */
-	ge.cargo.Reroute(UINT_MAX, &ge.cargo, avoid, avoid2, &ge);
+	if (ge.HasData()) ge.GetData().cargo.Reroute(UINT_MAX, &ge.GetData().cargo, avoid, avoid2, &ge);
 
 	/* Reroute cargo staged to be transferred. */
 	for (Vehicle *v : st->loading_vehicles) {
@@ -4085,12 +4087,12 @@ void DeleteStaleLinks(Station *from)
 				if (!updated) {
 					/* If it's still considered dead remove it. */
 					to_remove.emplace_back(to->goods[c].node);
-					ge.flows.DeleteFlows(to->index);
+					if (ge.HasData()) ge.GetData().flows.DeleteFlows(to->index);
 					RerouteCargo(from, c, to->index, from->index);
 				}
 			} else if (edge.last_unrestricted_update != EconomyTime::INVALID_DATE && TimerGameEconomy::date - edge.last_unrestricted_update > timeout) {
 				edge.Restrict();
-				ge.flows.RestrictFlows(to->index);
+				if (ge.HasData()) ge.GetData().flows.RestrictFlows(to->index);
 				RerouteCargo(from, c, to->index, from->index);
 			} else if (edge.last_restricted_update != EconomyTime::INVALID_DATE && TimerGameEconomy::date - edge.last_restricted_update > timeout) {
 				edge.Release();
@@ -4261,7 +4263,7 @@ static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 	if (amount == 0) return 0;
 
 	StationID next = ge.GetVia(st->index);
-	ge.cargo.Append(new CargoPacket(st->index, amount, source_type, source_id), next);
+	ge.GetOrCreateData().cargo.Append(new CargoPacket(st->index, amount, source_type, source_id), next);
 	LinkGraph *lg = nullptr;
 	if (ge.link_graph == INVALID_LINK_GRAPH) {
 		if (LinkGraph::CanAllocateItem()) {

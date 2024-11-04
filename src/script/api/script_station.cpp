@@ -59,7 +59,10 @@ template<bool Tfrom, bool Tvia>
 		return -1;
 	}
 
-	const StationCargoList &cargo_list = ::Station::Get(station_id)->goods[cargo_id].cargo;
+	const ::GoodsEntry &goods = ::Station::Get(station_id)->goods[cargo_id];
+	if (!goods.HasData()) return 0;
+
+	const StationCargoList &cargo_list = goods.GetData().cargo;
 	if (!Tfrom && !Tvia) return cargo_list.TotalCount();
 
 	uint16_t cargo_count = 0;
@@ -107,7 +110,10 @@ template<bool Tfrom, bool Tvia>
 		return -1;
 	}
 
-	const FlowStatMap &flows = ::Station::Get(station_id)->goods[cargo_id].flows;
+	const ::GoodsEntry &goods = ::Station::Get(station_id)->goods[cargo_id];
+	if (!goods.HasData()) return 0;
+
+	const FlowStatMap &flows = goods.GetData().flows;
 	if (Tfrom) {
 		return Tvia ? flows.GetFlowFromVia(from_station_id, via_station_id) :
 					  flows.GetFlowFrom(from_station_id);

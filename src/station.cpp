@@ -84,7 +84,8 @@ Station::~Station()
 {
 	if (CleaningPool()) {
 		for (GoodsEntry &ge : this->goods) {
-			ge.cargo.OnCleanPool();
+			if (!ge.HasData()) continue;
+			ge.GetData().cargo.OnCleanPool();
 		}
 		return;
 	}
@@ -104,9 +105,10 @@ Station::~Station()
 
 		for (NodeID node = 0; node < lg->Size(); ++node) {
 			Station *st = Station::Get((*lg)[node].station);
-			st->goods[c].flows.erase(this->index);
+			if (!st->goods[c].HasData()) continue;
+			st->goods[c].GetData().flows.erase(this->index);
 			if ((*lg)[node].HasEdgeTo(this->goods[c].node) && (*lg)[node][this->goods[c].node].LastUpdate() != EconomyTime::INVALID_DATE) {
-				st->goods[c].flows.DeleteFlows(this->index);
+				st->goods[c].GetData().flows.DeleteFlows(this->index);
 				RerouteCargo(st, c, this->index, st->index);
 			}
 		}
@@ -149,7 +151,8 @@ Station::~Station()
 	DeleteStationNews(this->index);
 
 	for (GoodsEntry &ge : this->goods) {
-		ge.cargo.Truncate();
+		if (!ge.HasData()) continue;
+		ge.GetData().cargo.Truncate();
 	}
 
 	CargoPacket::InvalidateAllFrom(this->index);

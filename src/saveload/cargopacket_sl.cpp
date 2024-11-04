@@ -44,7 +44,8 @@
 		 * station */
 		for (Station *st : Station::Iterate()) {
 			for (GoodsEntry &ge : st->goods) {
-				const StationCargoPacketMap *packets = ge.cargo.Packets();
+				if (!ge.HasData()) continue;
+				const StationCargoPacketMap *packets = ge.GetData().cargo.Packets();
 				for (StationCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 					CargoPacket *cp = *it;
 					cp->source_xy = Station::IsValidID(cp->first_station) ? Station::Get(cp->first_station)->xy : st->xy;
@@ -67,7 +68,10 @@
 		for (Vehicle *v : Vehicle::Iterate()) v->cargo.InvalidateCache();
 
 		for (Station *st : Station::Iterate()) {
-			for (GoodsEntry &ge : st->goods) ge.cargo.InvalidateCache();
+			for (GoodsEntry &ge : st->goods) {
+				if (!ge.HasData()) continue;
+				ge.GetData().cargo.InvalidateCache();
+			}
 		}
 	}
 
@@ -80,7 +84,9 @@
 		/* Update the cargo-traveled in stations as if they arrived from the source tile. */
 		for (Station *st : Station::Iterate()) {
 			for (GoodsEntry &ge : st->goods) {
-				for (auto it = ge.cargo.Packets()->begin(); it != ge.cargo.Packets()->end(); ++it) {
+				if (!ge.HasData()) continue;
+				StationCargoList &cargo_list = ge.GetData().cargo;
+				for (auto it = cargo_list.Packets()->begin(); it != cargo_list.Packets()->end(); ++it) {
 					for (CargoPacket *cp : it->second) {
 						if (cp->source_xy != INVALID_TILE && cp->source_xy != st->xy) {
 							cp->travelled.x = TileX(cp->source_xy) - TileX(st->xy);

@@ -122,6 +122,7 @@ LinkGraphJob::~LinkGraphJob()
 
 		LinkGraph *lg = LinkGraph::Get(ge.link_graph);
 		FlowStatMap &flows = from.flows;
+		FlowStatMap &geflows = ge.GetOrCreateData().flows;
 
 		for (const auto &edge : from.edges) {
 			if (edge.Flow() == 0) continue;
@@ -137,7 +138,7 @@ LinkGraphJob::~LinkGraphJob()
 				/* Delete old flows for source stations which have been deleted
 				 * from the new flows. This avoids flow cycles between old and
 				 * new flows. */
-				while (!erased.IsEmpty()) ge.flows.erase(erased.Pop());
+				while (!erased.IsEmpty()) geflows.erase(erased.Pop());
 			} else if ((*lg)[node_id][dest_id].last_unrestricted_update == EconomyTime::INVALID_DATE) {
 				/* Edge is fully restricted. */
 				flows.RestrictFlows(to);
@@ -148,7 +149,7 @@ LinkGraphJob::~LinkGraphJob()
 		 * really delete them as we could then end up with unroutable cargo
 		 * somewhere. Do delete them and also reroute relevant cargo if
 		 * automatic distribution has been turned off for that cargo. */
-		for (FlowStatMap::iterator it(ge.flows.begin()); it != ge.flows.end();) {
+		for (FlowStatMap::iterator it(geflows.begin()); it != geflows.end();) {
 			FlowStatMap::iterator new_it = flows.find(it->first);
 			if (new_it == flows.end()) {
 				if (_settings_game.linkgraph.GetDistributionType(this->Cargo()) != DT_MANUAL) {
@@ -157,7 +158,7 @@ LinkGraphJob::~LinkGraphJob()
 				} else {
 					FlowStat shares(INVALID_STATION, 1);
 					it->second.SwapShares(shares);
-					ge.flows.erase(it++);
+					geflows.erase(it++);
 					for (FlowStat::SharesMap::const_iterator shares_it(shares.GetShares()->begin());
 							shares_it != shares.GetShares()->end(); ++shares_it) {
 						RerouteCargo(st, this->Cargo(), shares_it->second, st->index);
@@ -169,7 +170,8 @@ LinkGraphJob::~LinkGraphJob()
 				++it;
 			}
 		}
-		ge.flows.insert(flows.begin(), flows.end());
+		geflows.insert(flows.begin(), flows.end());
+		if (ge.GetData().IsEmpty()) ge.ClearData();
 		InvalidateWindowData(WC_STATION_VIEW, st->index, this->Cargo());
 	}
 }
