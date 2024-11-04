@@ -243,6 +243,7 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vel sort
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vel sorteringskriterium
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vel filtreringskriterium
 STR_BUTTON_SORT_BY                                              :{BLACK}Sorter etter
+STR_BUTTON_CATCHMENT                                            :Dekning
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lukk vindauge
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tittel på vindauget - dra for å flytte vindauget
@@ -473,6 +474,7 @@ STR_ABOUT_MENU_HELP                                             :Hjelp og manual
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gøym konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI- / Spelscriptfeilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Vis biletfrekvens
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Syne/gøym markeringsramme
@@ -788,7 +790,7 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponsa konstruksjon av ny by {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Ny {STRING} byggjast i nærleiken av {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Ny{G "" "" tt} {STRING} vert bygd i nærleiken av {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Ny {STRING} plantast i nærleiken av {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} legg ned verksemda straks!
@@ -1515,12 +1517,18 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillat AI datam
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes føre script er avbrotne: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Vedlikehaldsintervall er i prosent: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Når innstillinga er på, forsøkjer køyretøy å utføre vedlikehald når pålitelegheita er redusert med ein gjeven prosentverdi av maksimal pålitelegheit.{}{}Til dømes vil eit køyretøy med maksimum pålitelegheit på 90 % forsøkje å utføre vedlikehald når køyretøyet har 72 % pålitelegheit eller mindre.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard vedlikehaldsintervall for tog: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standard vedlikehaldsintervall for veg-køyrety: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Vel standard vedlikehaldsintervall for nye vegkøyretøy. Vedlikehaldsintervallet kan overstyrast for det enkelte køyretøy.
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard vedlikehaldsintervall for fly: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Vel standard vedlikehaldsintervall for nye fly. Vedlikehaldsintervallet kan overstyrast for det enkelte fly.
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard vedlikehaldsintervall for skip: {STRING}
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}dag{P 0 "" ar}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}minutt
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktivert
@@ -2535,8 +2543,12 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Flyplass
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Godtekne varer: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Jernbanetype: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Vegtype: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Trikketype: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Fartsgrense for jernbanespor: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Veg-fartsgrense: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Fartsgrense for trikk: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Steinar
@@ -2636,6 +2648,8 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} OpenTTD-teamet
 
 # Framerate display window
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 
 ###length 15
 
@@ -3142,8 +3156,10 @@ STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruks
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nye køyretøy
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Driftskostnader på tog
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Driftskostnader på køyretøy
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Driftskostnader på luftfartøy
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Driftskostnader på skip
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Fly
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Skip
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Fly
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Skip
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Renter
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Anna
 
@@ -3204,15 +3220,18 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Namnet til sjef
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Me ser etter eit firma som er villig til å overta firmaet vårt.{}{}Vil du kjøpe {COMPANY} for {CURRENCY_LONG}?
 
 # Company infrastructure window
-STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktur tilhøyrer {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastrukturen til {COMPANY}
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Togsporbitar:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signal
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Vegstubbar:
-STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vannruter:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}:Trikkesporbitar:
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vassruter:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanalar
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stasjonar:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stasjonsruter
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Flyplassar
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/år
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/periode
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen -
@@ -3349,6 +3368,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Bygg ski
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Bygg luftfartøy
 
 ###length VEHICLE_TYPES
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Kjøp og bygg om køyretøy
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Bygg den valde farkosten. Skift-klikk viser prisoverslag utan å kjøpe.
@@ -3449,7 +3469,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klon luf
 
 ###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil lage ein kopi av eit lokomotiv inkludert alle vognene. Klikk på denne knappen og etter det på eit anna tog. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil lage ein kopi av eit køyretøy. Klikk denne knappen og etter det på eit køyretyg inni eller utanfor garasjen. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil kjøpe ein kopi av eit køyretøy. Klikk på denne knappen og deretter på eit køyretøy i eller utanfor garasjen. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil laga ein kopi av eit skip. Klikk på denne knappen og etter det på eit anna skip. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil lage ein kopi av eit luftfartøy. Klikk denne knappen og etter det på eit anna luftfartøy. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
 
@@ -3943,6 +3963,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein AI h
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI- / Spelscript-feilsøkingvindauget er kun tilgjengeleg for tenaren
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI-innstillingar
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Spelscript-innstillingar
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spelscriptet som blir lasta i neste spel
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AIane som blir lasta i neste spel
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskeleg spelar
@@ -4486,7 +4508,8 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Sparebøsse
 STR_INDUSTRY_NAME_COAL_MINE                                     :Kolgruve
 STR_INDUSTRY_NAME_POWER_STATION                                 :Kraftstasjon
 STR_INDUSTRY_NAME_SAWMILL                                       :Sagbruk
-STR_INDUSTRY_NAME_FOREST                                        :Skog
+STR_INDUSTRY_NAME_FOREST                                        :{G=masculine}Skog
+STR_INDUSTRY_NAME_FOREST.small                                  :skog
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Oljeraffineri
 STR_INDUSTRY_NAME_OIL_RIG                                       :Oljeplattform
 STR_INDUSTRY_NAME_FACTORY                                       :Fabrikk
@@ -4495,7 +4518,8 @@ STR_INDUSTRY_NAME_STEEL_MILL                                    :Smelteverk
 STR_INDUSTRY_NAME_FARM                                          :Gard
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Kopargruve
 STR_INDUSTRY_NAME_OIL_WELLS                                     :Oljebrønn
-STR_INDUSTRY_NAME_BANK                                          :Bank
+STR_INDUSTRY_NAME_BANK                                          :{G=masculine}Bank
+STR_INDUSTRY_NAME_BANK.small                                    :bank
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Matforedlingsfabrikk
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Papirfabrikk
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Gullgruve
