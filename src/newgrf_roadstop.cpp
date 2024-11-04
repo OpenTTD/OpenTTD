@@ -232,7 +232,7 @@ RoadStopResolverObject::RoadStopResolverObject(const RoadStopSpec *roadstopspec,
 		/* Pick the first cargo that we have waiting */
 		for (const CargoSpec *cs : CargoSpec::Iterate()) {
 			if (roadstopspec->grf_prop.spritegroup[cs->Index()] != nullptr &&
-					station->goods[cs->Index()].cargo.TotalCount() > 0) {
+					station->goods[cs->Index()].HasData() && station->goods[cs->Index()].GetData().cargo.TotalCount() > 0) {
 				ctype = cs->Index();
 				break;
 			}
