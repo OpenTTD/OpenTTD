@@ -90,15 +90,7 @@ Direction GetDirectionTowards(const Vehicle *v, int x, int y);
  */
 inline bool IsCompanyBuildableVehicleType(VehicleType type)
 {
-	switch (type) {
-		case VEH_TRAIN:
-		case VEH_ROAD:
-		case VEH_SHIP:
-		case VEH_AIRCRAFT:
-			return true;
-
-		default: return false;
-	}
+	return type < VEH_COMPANY_END;
 }
 
 /**
