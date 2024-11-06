@@ -564,7 +564,6 @@ struct LinkGraphSettings {
 struct StationSettings {
 	bool   modified_catchment;               ///< different-size catchment areas
 	bool   serve_neutral_industries;         ///< company stations can serve industries with attached neutral stations
-	bool   adjacent_stations;                ///< allow stations to be built directly adjacent to other stations
 	bool   distant_join_stations;            ///< allow to join non-adjacent stations
 	bool   never_expire_airports;            ///< never expire airports
 	uint8_t station_spread;                  ///< amount a station may spread

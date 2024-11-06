@@ -1167,24 +1167,22 @@ CommandCost FindJoiningBaseStation(StationID existing_station, StationID station
 	assert(*st == nullptr);
 	bool check_surrounding = true;
 
-	if (_settings_game.station.adjacent_stations) {
-		if (existing_station != INVALID_STATION) {
-			if (adjacent && existing_station != station_to_join) {
-				/* You can't build an adjacent station over the top of one that
-				 * already exists. */
-				return_cmd_error(error_message);
-			} else {
-				/* Extend the current station, and don't check whether it will
-				 * be near any other stations. */
-				T *candidate = T::GetIfValid(existing_station);
-				if (candidate != nullptr && filter(candidate)) *st = candidate;
-				check_surrounding = (*st == nullptr);
-			}
+	if (existing_station != INVALID_STATION) {
+		if (adjacent && existing_station != station_to_join) {
+			/* You can't build an adjacent station over the top of one that
+			 * already exists. */
+			return_cmd_error(error_message);
 		} else {
-			/* There's no station here. Don't check the tiles surrounding this
-			 * one if the company wanted to build an adjacent station. */
-			if (adjacent) check_surrounding = false;
+			/* Extend the current station, and don't check whether it will
+			 * be near any other stations. */
+			T *candidate = T::GetIfValid(existing_station);
+			if (candidate != nullptr && filter(candidate)) *st = candidate;
+			check_surrounding = (*st == nullptr);
 		}
+	} else {
+		/* There's no station here. Don't check the tiles surrounding this
+		 * one if the company wanted to build an adjacent station. */
+		if (adjacent) check_surrounding = false;
 	}
 
 	if (check_surrounding) {
