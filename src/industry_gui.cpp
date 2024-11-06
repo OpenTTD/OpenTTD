@@ -1480,8 +1480,7 @@ protected:
 	/**
 	 * Returns percents of cargo transported if industry produces this cargo, else -1
 	 *
-	 * @param i industry to check
-	 * @param id cargo slot
+	 * @param p industry produced cargo
 	 * @return percents of cargo transported, or -1 if industry doesn't use this cargo slot
 	 */
 	static inline int GetCargoTransportedPercentsIfValid(const Industry::ProducedCargo &p)
