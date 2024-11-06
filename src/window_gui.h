@@ -156,7 +156,7 @@ struct HotkeyList;
 /**
  * High level window description
  */
-struct WindowDesc : ZeroedMemoryAllocator {
+struct WindowDesc {
 
 	WindowDesc(WindowPosition default_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
 			WindowClass window_class, WindowClass parent_class, uint32_t flags,
@@ -166,17 +166,17 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	~WindowDesc();
 
 	const std::source_location source_location; ///< Source location of this definition
-	WindowPosition default_pos;    ///< Preferred position of the window. @see WindowPosition()
-	WindowClass cls;               ///< Class of the window, @see WindowClass.
-	WindowClass parent_cls;        ///< Class of the parent window. @see WindowClass
-	const char *ini_key;           ///< Key to store window defaults in openttd.cfg. \c nullptr if nothing shall be stored.
-	uint32_t flags;                  ///< Flags. @see WindowDefaultFlag
+	const WindowPosition default_pos; ///< Preferred position of the window. @see WindowPosition()
+	const WindowClass cls; ///< Class of the window, @see WindowClass.
+	const WindowClass parent_cls; ///< Class of the parent window. @see WindowClass
+	const char *ini_key; ///< Key to store window defaults in openttd.cfg. \c nullptr if nothing shall be stored.
+	const uint32_t flags; ///< Flags. @see WindowDefaultFlag
 	const std::span<const NWidgetPart> nwid_parts; ///< Span of nested widget parts describing the window.
-	HotkeyList *hotkeys;           ///< Hotkeys for the window.
+	const HotkeyList *hotkeys; ///< Hotkeys for the window.
 
-	bool pref_sticky;              ///< Preferred stickyness.
-	int16_t pref_width;              ///< User-preferred width of the window. Zero if unset.
-	int16_t pref_height;             ///< User-preferred height of the window. Zero if unset.
+	bool pref_sticky = false; ///< Preferred stickyness.
+	int16_t pref_width = 0; ///< User-preferred width of the window. Zero if unset.
+	int16_t pref_height = 0; ///< User-preferred height of the window. Zero if unset.
 
 	int16_t GetDefaultWidth() const;
 	int16_t GetDefaultHeight() const;
@@ -185,8 +185,8 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	static void SaveToConfig();
 
 private:
-	int16_t default_width_trad;      ///< Preferred initial width of the window (pixels at 1x zoom).
-	int16_t default_height_trad;     ///< Preferred initial height of the window (pixels at 1x zoom).
+	const int16_t default_width_trad; ///< Preferred initial width of the window (pixels at 1x zoom).
+	const int16_t default_height_trad; ///< Preferred initial height of the window (pixels at 1x zoom).
 
 	/**
 	 * Delete copy constructor to prevent compilers from
