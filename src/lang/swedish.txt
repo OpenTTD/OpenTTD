@@ -613,6 +613,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Enheter 
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Företagets prestationsgraderingar (maxgradering=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Företagsvärdesgraf
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Senaste 24 minuterna
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Senaste 72 minuterna
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Fraktförtjänster
@@ -626,6 +627,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Visa ing
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Slå på/av denna godstyps graf
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Produktionshistorik
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Visa detaljerad prestationsgradering
 
@@ -3988,6 +3990,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkti
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produktion förra minuten:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transporterat)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrera huvudvyn ovanför industrin. Ctrl+Klick för att öppna en ny fönstervy industrins läge
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Produktionsgraf
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Visar en graf över den historiska industriproduktionen
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktionsnivå: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industrin har annonserat att den snart kommer att stänga!
 
