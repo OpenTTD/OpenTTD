@@ -1297,6 +1297,11 @@ public:
 					default: NOT_REACHED();
 				}
 
+				list->clear();
+				if constexpr (std::is_same_v<SlStorageT, std::vector<Tvar, Tallocator>>) {
+					list->reserve(length);
+				}
+
 				/* Load each value and push to the end of the storage. */
 				for (size_t i = 0; i < length; i++) {
 					Tvar &data = list->emplace_back();
