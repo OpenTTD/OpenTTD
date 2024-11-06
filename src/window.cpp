@@ -114,9 +114,6 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16_t def_
 	flags(flags),
 	nwid_parts(nwid_parts),
 	hotkeys(hotkeys),
-	pref_sticky(false),
-	pref_width(0),
-	pref_height(0),
 	default_width_trad(def_width_trad),
 	default_height_trad(def_height_trad)
 {
