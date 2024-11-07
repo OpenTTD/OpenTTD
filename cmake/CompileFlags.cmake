@@ -56,6 +56,11 @@ macro(compile_flags)
             # This flag disables the broken optimisation to work around the bug
             add_compile_options(/d2ssa-rse-)
         endif()
+        if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+            add_compile_options(
+                -Wno-multichar
+            )
+        endif()
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
         add_compile_options(
             -W
