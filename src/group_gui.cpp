@@ -1150,20 +1150,32 @@ public:
 
 };
 
-
-static WindowDesc _other_group_desc(
-	WDP_AUTO, "list_groups", 460, 246,
-	WC_INVALID, WC_NONE,
-	0,
-	_nested_group_widgets
-);
-
-static WindowDesc _train_group_desc(
-	WDP_AUTO, "list_groups_train", 525, 246,
-	WC_TRAINS_LIST, WC_NONE,
-	0,
-	_nested_group_widgets
-);
+static WindowDesc _vehicle_group_desc[] = {
+	{
+		WDP_AUTO, "list_groups_train", 525, 246,
+		WC_TRAINS_LIST, WC_NONE,
+		0,
+		_nested_group_widgets
+	},
+	{
+		WDP_AUTO, "list_groups_roadveh", 460, 246,
+		WC_ROADVEH_LIST, WC_NONE,
+		0,
+		_nested_group_widgets
+	},
+	{
+		WDP_AUTO, "list_groups_ship", 460, 246,
+		WC_SHIPS_LIST, WC_NONE,
+		0,
+		_nested_group_widgets
+	},
+	{
+		WDP_AUTO, "list_groups_aircraft", 460, 246,
+		WC_AIRCRAFT_LIST, WC_NONE,
+		0,
+		_nested_group_widgets
+	},
+};
 
 /**
  * Show the group window for the given company and vehicle type.
@@ -1176,14 +1188,9 @@ void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type, GroupID group
 {
 	if (!Company::IsValidID(company)) return;
 
+	assert(vehicle_type < std::size(_vehicle_group_desc));
 	const WindowNumber num = VehicleListIdentifier(VL_GROUP_LIST, vehicle_type, company).Pack();
-	VehicleGroupWindow *w;
-	if (vehicle_type == VEH_TRAIN) {
-		w = AllocateWindowDescFront<VehicleGroupWindow>(_train_group_desc, num, need_existing_window);
-	} else {
-		_other_group_desc.cls = GetWindowClassForVehicleType(vehicle_type);
-		w = AllocateWindowDescFront<VehicleGroupWindow>(_other_group_desc, num, need_existing_window);
-	}
+	VehicleGroupWindow *w = AllocateWindowDescFront<VehicleGroupWindow>(_vehicle_group_desc[vehicle_type], num, need_existing_window);
 	if (w != nullptr) w->SelectGroup(group);
 }
 
