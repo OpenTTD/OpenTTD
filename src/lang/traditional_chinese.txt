@@ -613,6 +613,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}運送�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}公司效率指標 (最高 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}公司市值圖表
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}最後 24 分鐘
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}最後 72 分鐘
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}貨物運費表
@@ -626,6 +627,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}於貨�
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切換該貨物類型圖示
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - 產量歷史
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}顯示詳細營運評比
 
@@ -3988,6 +3990,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月�
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}上分鐘產量︰
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} (運送了 {COMMA}%)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}將工業置於畫面中央。按住 <Ctrl> 點選可於工業位置開啟新視窗視野
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}產量圖表
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}顯示工業產量歷史圖表
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}產出等級：{YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}該工業已宣佈關閉！
 
