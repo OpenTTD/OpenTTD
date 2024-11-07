@@ -373,23 +373,24 @@ CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex ti
 			}
 		}
 
-		/* Do not replace town bridges with lower speed bridges, unless in scenario editor. */
-		if (!(flags & DC_QUERY_COST) && IsTileOwner(tile_start, OWNER_TOWN) &&
-				GetBridgeSpec(bridge_type)->speed < GetBridgeSpec(GetBridgeType(tile_start))->speed &&
-				_game_mode != GM_EDITOR) {
-			Town *t = ClosestTownFromTile(tile_start, UINT_MAX);
-
-			if (t == nullptr) {
-				return CMD_ERROR;
-			} else {
-				SetDParam(0, t->index);
-				return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
+		if (!(flags & DC_QUERY_COST)) {
+			/* Do not replace the bridge with the same bridge type. */
+			if ((bridge_type == GetBridgeType(tile_start)) && (transport_type != TRANSPORT_ROAD || road_rt == roadtype || tram_rt == roadtype)) {
+				return_cmd_error(STR_ERROR_ALREADY_BUILT);
 			}
-		}
 
-		/* Do not replace the bridge with the same bridge type. */
-		if (!(flags & DC_QUERY_COST) && (bridge_type == GetBridgeType(tile_start)) && (transport_type != TRANSPORT_ROAD || road_rt == roadtype || tram_rt == roadtype)) {
-			return_cmd_error(STR_ERROR_ALREADY_BUILT);
+			/* Do not replace town bridges with lower speed bridges, unless in scenario editor. */
+			if (IsTileOwner(tile_start, OWNER_TOWN) && _game_mode != GM_EDITOR) {
+				Town *t = ClosestTownFromTile(tile_start, UINT_MAX);
+				if (t == nullptr) return CMD_ERROR;
+
+				if (GetBridgeSpec(bridge_type)->speed < GetBridgeSpec(GetBridgeType(tile_start))->speed) {
+					SetDParam(0, t->index);
+					return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
+				} else {
+					ChangeTownRating(t, RATING_TUNNEL_BRIDGE_UP_STEP, RATING_MAXIMUM, flags);
+				}
+			}
 		}
 
 		/* Do not allow replacing another company's bridges. */
