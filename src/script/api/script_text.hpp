@@ -11,7 +11,6 @@
 #define SCRIPT_TEXT_HPP
 
 #include "script_object.hpp"
-#include "../../core/alloc_type.hpp"
 
 #include <variant>
 
@@ -42,7 +41,7 @@ public:
  */
 class RawText : public Text {
 public:
-	RawText(const std::string &text);
+	RawText(const std::string &text) : text(text) {}
 
 	std::string GetEncodedText() override { return this->text; }
 private:
@@ -72,7 +71,7 @@ private:
  *
  * @api game
  */
-class ScriptText : public Text , public ZeroedMemoryAllocator {
+class ScriptText : public Text {
 public:
 	static const int SCRIPT_TEXT_MAX_PARAMETERS = 20; ///< The maximum amount of parameters you can give to one object.
 
@@ -136,10 +135,10 @@ private:
 		StringID owner;
 		int idx;
 		Param *param;
-		bool used;
-		const char *cmd;
+		bool used = false;
+		const char *cmd = nullptr;
 
-		ParamCheck(StringID owner, int idx, Param *param) : owner(owner), idx(idx), param(param), used(false), cmd(nullptr) {}
+		ParamCheck(StringID owner, int idx, Param *param) : owner(owner), idx(idx), param(param) {}
 
 		void Encode(std::back_insert_iterator<std::string> &output, const char *cmd);
 	};
@@ -148,8 +147,8 @@ private:
 	using ParamSpan = std::span<ParamCheck>;
 
 	StringID string;
-	Param param[SCRIPT_TEXT_MAX_PARAMETERS];
-	int paramc;
+	std::array<Param, SCRIPT_TEXT_MAX_PARAMETERS> param = {};
+	int paramc = 0;
 
 	/**
 	 * Internal function to recursively fill a list of parameters.
