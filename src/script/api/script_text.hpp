@@ -75,8 +75,6 @@ private:
  */
 class ScriptText : public Text {
 public:
-	static const int SCRIPT_TEXT_MAX_PARAMETERS = 20; ///< The maximum amount of parameters you can give to one object.
-
 #ifndef DOXYGEN_API
 	/**
 	 * The constructor wrapper from Squirrel.
@@ -128,10 +126,15 @@ public:
 	 */
 	EncodedString GetEncodedText() override;
 
+	/**
+	 * @api -all
+	 */
+	static void SetPadParameterCount(HSQUIRRELVM vm);
+
 private:
 	using ScriptTextRef = ScriptObjectRef<ScriptText>;
 	using ScriptTextList = std::vector<ScriptText *>;
-	using Param = std::variant<SQInteger, std::string, ScriptTextRef>;
+	using Param = std::variant<std::monostate, SQInteger, std::string, ScriptTextRef>;
 
 	struct ParamCheck {
 		StringIndexInTab owner;
@@ -149,8 +152,9 @@ private:
 	using ParamSpan = std::span<ParamCheck>;
 
 	StringIndexInTab string;
-	std::array<Param, SCRIPT_TEXT_MAX_PARAMETERS> param = {};
-	int paramc = 0;
+	std::vector<Param> param{};
+
+	static inline int pad_parameter_count = 0; ///< Pad parameters for relaxed string validation.
 
 	/**
 	 * Internal function to recursively fill a list of parameters.

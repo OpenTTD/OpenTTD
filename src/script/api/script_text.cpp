@@ -56,7 +56,7 @@ ScriptText::ScriptText(HSQUIRRELVM vm)
 
 SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 {
-	if (parameter >= SCRIPT_TEXT_MAX_PARAMETERS) return SQ_ERROR;
+	if (static_cast<size_t>(parameter) >= std::size(this->param)) this->param.resize(parameter + 1);
 
 	switch (sq_gettype(vm, -1)) {
 		case OT_STRING: {
@@ -98,10 +98,13 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 			break;
 		}
 
+		case OT_NULL:
+			this->param[parameter] = {};
+			break;
+
 		default: return SQ_ERROR;
 	}
 
-	if (this->paramc <= parameter) this->paramc = parameter + 1;
 	return 0;
 }
 
@@ -112,7 +115,6 @@ SQInteger ScriptText::SetParam(HSQUIRRELVM vm)
 	SQInteger k;
 	sq_getinteger(vm, 2, &k);
 
-	if (k > SCRIPT_TEXT_MAX_PARAMETERS) return SQ_ERROR;
 	if (k < 1) return SQ_ERROR;
 	k--;
 
@@ -122,7 +124,7 @@ SQInteger ScriptText::SetParam(HSQUIRRELVM vm)
 SQInteger ScriptText::AddParam(HSQUIRRELVM vm)
 {
 	SQInteger res;
-	res = this->_SetParam(this->paramc, vm);
+	res = this->_SetParam(static_cast<int>(std::size(this->param)), vm);
 	if (res != 0) return res;
 
 	/* Push our own instance back on top of the stack */
@@ -139,7 +141,7 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 		sq_getstring(vm, 2, view);
 
 		std::string str = StrMakeValid(view);
-		if (!str.starts_with("param_") || str.size() > 8) return SQ_ERROR;
+		if (!str.starts_with("param_")) return SQ_ERROR;
 
 		k = stoi(str.substr(6));
 	} else if (sq_gettype(vm, 2) == OT_INTEGER) {
@@ -150,11 +152,33 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 		return SQ_ERROR;
 	}
 
-	if (k > SCRIPT_TEXT_MAX_PARAMETERS) return SQ_ERROR;
 	if (k < 1) return SQ_ERROR;
 	k--;
 
 	return this->_SetParam(k, vm);
+}
+
+/**
+ * Set the number of padding parameters to use, for compatibility with old scripts.
+ * This is called during RegisterGameTranslation.
+ */
+void ScriptText::SetPadParameterCount(HSQUIRRELVM vm)
+{
+	ScriptText::pad_parameter_count = 0;
+
+	SQInteger top = sq_gettop(vm);
+	sq_pushroottable(vm);
+	sq_pushstring(vm, "GSText", -1);
+	if (!SQ_FAILED(sq_get(vm, -2))) {
+		sq_pushstring(vm, "SCRIPT_TEXT_MAX_PARAMETERS", -1);
+		if (!SQ_FAILED(sq_get(vm, -2))) {
+			SQInteger value;
+			if (!SQ_FAILED(sq_getinteger(vm, -1, &value))) {
+				ScriptText::pad_parameter_count = value;
+			}
+		}
+	}
+	sq_pop(vm, top);
 }
 
 EncodedString ScriptText::GetEncodedText()
@@ -166,7 +190,6 @@ EncodedString ScriptText::GetEncodedText()
 	StringBuilder builder(result);
 	this->_FillParamList(params, seen_texts);
 	this->_GetEncodedText(builder, param_count, params, true);
-	if (param_count > SCRIPT_TEXT_MAX_PARAMETERS) throw Script_FatalError(fmt::format("{}: Too many parameters", GetGameStringName(this->string)));
 	return ::EncodedString{std::move(result)};
 }
 
@@ -175,21 +198,21 @@ void ScriptText::_FillParamList(ParamList &params, ScriptTextList &seen_texts)
 	if (std::ranges::find(seen_texts, this) != seen_texts.end()) throw Script_FatalError(fmt::format("{}: Circular reference detected", GetGameStringName(this->string)));
 	seen_texts.push_back(this);
 
-	for (int i = 0; i < this->paramc; i++) {
-		Param *p = &this->param[i];
-		params.emplace_back(this->string, i, p);
-		if (!std::holds_alternative<ScriptTextRef>(*p)) continue;
-		std::get<ScriptTextRef>(*p)->_FillParamList(params, seen_texts);
+	for (int idx = 0; Param &p : this->param) {
+		params.emplace_back(this->string, idx, &p);
+		++idx;
+		if (!std::holds_alternative<ScriptTextRef>(p)) continue;
+		std::get<ScriptTextRef>(p)->_FillParamList(params, seen_texts);
 	}
 
 	seen_texts.pop_back();
 
-	/* Fill with dummy parameters to match FormatString() behaviour. */
-	if (seen_texts.empty()) {
-		static Param dummy = 0;
-		int nb_extra = SCRIPT_TEXT_MAX_PARAMETERS - (int)params.size();
-		for (int i = 0; i < nb_extra; i++)
-			params.emplace_back(StringIndexInTab(-1), i, &dummy);
+	/* Fill with dummy parameters to match old FormatString() compatibility behaviour. */
+	if (seen_texts.empty() && ScriptText::pad_parameter_count > 0) {
+		static Param dummy = {};
+		for (int idx = static_cast<int>(std::size(this->param)); idx < ScriptText::pad_parameter_count; ++idx) {
+			params.emplace_back(StringIndexInTab(-1), idx, &dummy);
+		}
 	}
 }
 
@@ -200,6 +223,8 @@ void ScriptText::ParamCheck::Encode(StringBuilder &builder, std::string_view cmd
 
 	struct visitor {
 		StringBuilder &builder;
+
+		void operator()(const std::monostate &) { }
 
 		void operator()(std::string value)
 		{
