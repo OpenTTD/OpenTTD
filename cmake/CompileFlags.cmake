@@ -8,11 +8,9 @@ macro(compile_flags)
         # C++11 standard". We need C++11 for the way we use threads.
         add_compile_options(/Zc:rvalueCast)
 
-        # Needed for __VA_OPT__() in macros.
-        add_compile_options(/Zc:preprocessor)
-
         if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
             add_compile_options(
+                /Zc:preprocessor # Needed for __VA_OPT__() in macros.
                 /MP # Enable multi-threaded compilation.
                 /FC # Display the full path of source code files passed to the compiler in diagnostics.
             )
