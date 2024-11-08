@@ -8,11 +8,9 @@ macro(compile_flags)
         # C++11 standard". We need C++11 for the way we use threads.
         add_compile_options(/Zc:rvalueCast)
 
-        # Needed for __VA_OPT__() in macros.
-        add_compile_options(/Zc:preprocessor)
-
         if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
             add_compile_options(
+                /Zc:preprocessor # Needed for __VA_OPT__() in macros.
                 /MP # Enable multi-threaded compilation.
                 /FC # Display the full path of source code files passed to the compiler in diagnostics.
             )
@@ -57,6 +55,11 @@ macro(compile_flags)
             # Starting with version 19.30 (fixed in version 19.37), there is an optimisation bug, see #9966 for details
             # This flag disables the broken optimisation to work around the bug
             add_compile_options(/d2ssa-rse-)
+        endif()
+        if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+            add_compile_options(
+                -Wno-multichar
+            )
         endif()
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
         add_compile_options(
