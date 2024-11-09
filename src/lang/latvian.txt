@@ -615,6 +615,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Pārvad�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Uzņēmuma darbības vērtējumi (maksimālais ir 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Uzņēmuma vērtības diagramma
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Pēdējās 24 minūtes
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Pēdējās 72 minūtes
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kravas apmaksas cenas
@@ -628,6 +629,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nerādī
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Paslēgt kravas veida diagrammu
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Ražošanas Vēsture
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Rādīt detalizētus uzņēmējdarbības vērtējumus
 
@@ -3999,6 +4001,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Iepriek�
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Ražošanas pēdējā minūtē:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} (pārvadāti {COMMA}%)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrēt galveno skatu uz ražotni. Ctrl+klikšķis atvērs skatu uz ražotni jaunā skatlaukā
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Ražošanas Grafiks
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Parāda nozares ražošanas vēstures grafiku
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ražošanas līmenis: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Nozare ir paziņojusi par nenovēršamu slēgšanu!
 
