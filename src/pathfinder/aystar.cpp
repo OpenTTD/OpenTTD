@@ -25,11 +25,11 @@
 void AyStar::OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g)
 {
 	/* Add a new Node to the OpenList */
-	PathNode *new_node = this->nodes.CreateNewNode();
-	new_node->Set(parent, node->tile, node->td, true);
-	new_node->estimate = f;
-	new_node->cost = g;
-	this->nodes.InsertOpenNode(*new_node);
+	PathNode &new_node = this->nodes.CreateNewNode();
+	new_node.Set(parent, node->tile, node->td, true);
+	new_node.estimate = f;
+	new_node.cost = g;
+	this->nodes.InsertOpenNode(new_node);
 }
 
 /**

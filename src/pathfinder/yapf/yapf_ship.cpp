@@ -28,10 +28,10 @@ template <class Types>
 class CYapfDestinationTileWaterT
 {
 public:
-	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class).
+	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class).
 	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Titem Node;        ///< this will be our node type.
-	typedef typename Node::Key Key;                      ///< key to hash tables.
+	typedef typename Types::NodeList::Item Node; ///< this will be our node type.
+	typedef typename Node::Key Key; ///< key to hash tables.
 
 protected:
 	TileIndex dest_tile;
@@ -127,10 +127,10 @@ template <class Types>
 class CYapfFollowShipT
 {
 public:
-	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class).
+	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class).
 	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Titem Node;        ///< this will be our node type.
-	typedef typename Node::Key Key;                      ///< key to hash tables.
+	typedef typename Types::NodeList::Item Node; ///< this will be our node type.
+	typedef typename Node::Key Key; ///< key to hash tables.
 
 protected:
 	/** to access inherited path finder */
@@ -327,10 +327,10 @@ template <class Types>
 class CYapfCostShipT
 {
 public:
-	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class).
+	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class).
 	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Titem Node; ///< this will be our node type.
-	typedef typename Node::Key Key;               ///< key to hash tables.
+	typedef typename Types::NodeList::Item Node; ///< this will be our node type.
+	typedef typename Node::Key Key; ///< key to hash tables.
 
 	/** to access inherited path finder */
 	Tpf &Yapf()
