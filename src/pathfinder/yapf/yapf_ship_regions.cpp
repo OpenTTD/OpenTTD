@@ -89,9 +89,9 @@ template <class Types>
 class CYapfOriginRegionT
 {
 public:
-	typedef typename Types::Tpf Tpf;              ///< The pathfinder class (derived from THIS class).
-	typedef typename Types::NodeList::Titem Node; ///< This will be our node type.
-	typedef typename Node::Key Key;               ///< Key to hash tables.
+	typedef typename Types::Tpf Tpf; ///< The pathfinder class (derived from THIS class).
+	typedef typename Types::NodeList::Item Node; ///< This will be our node type.
+	typedef typename Node::Key Key; ///< Key to hash tables.
 
 protected:
 	inline Tpf &Yapf() { return *static_cast<Tpf*>(this); }
@@ -126,9 +126,9 @@ template <class Types>
 class CYapfDestinationRegionT
 {
 public:
-	typedef typename Types::Tpf Tpf;              ///< The pathfinder class (derived from THIS class).
-	typedef typename Types::NodeList::Titem Node; ///< This will be our node type.
-	typedef typename Node::Key Key;               ///< Key to hash tables.
+	typedef typename Types::Tpf Tpf; ///< The pathfinder class (derived from THIS class).
+	typedef typename Types::NodeList::Item Node; ///< This will be our node type.
+	typedef typename Node::Key Key; ///< Key to hash tables.
 
 protected:
 	Key dest;
@@ -166,10 +166,10 @@ template <class Types>
 class CYapfFollowRegionT
 {
 public:
-	typedef typename Types::Tpf Tpf;                     ///< The pathfinder class (derived from THIS class).
+	typedef typename Types::Tpf Tpf; ///< The pathfinder class (derived from THIS class).
 	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Titem Node;        ///< This will be our node type.
-	typedef typename Node::Key Key;                      ///< Key to hash tables.
+	typedef typename Types::NodeList::Item Node; ///< This will be our node type.
+	typedef typename Node::Key Key; ///< Key to hash tables.
 
 protected:
 	inline Tpf &Yapf() { return *static_cast<Tpf*>(this); }
@@ -238,10 +238,10 @@ template <class Types>
 class CYapfCostRegionT
 {
 public:
-	typedef typename Types::Tpf Tpf;              ///< The pathfinder class (derived from THIS class).
+	typedef typename Types::Tpf Tpf; ///< The pathfinder class (derived from THIS class).
 	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Titem Node; ///< This will be our node type.
-	typedef typename Node::Key Key;               ///< Key to hash tables.
+	typedef typename Types::NodeList::Item Node; ///< This will be our node type.
+	typedef typename Node::Key Key; ///< Key to hash tables.
 
 protected:
 	/** To access inherited path finder. */
@@ -293,7 +293,7 @@ struct CYapfRegion_TypesT
 	typedef CYapfCostRegionT<Types>           PfCost;        ///< Cost provider.
 };
 
-typedef CNodeList_HashTableT<CYapfRegionNodeT<CYapfRegionPatchNodeKey>, 12, 12> CRegionNodeListWater;
+typedef NodeList<CYapfRegionNodeT<CYapfRegionPatchNodeKey>, 12, 12> CRegionNodeListWater;
 
 struct CYapfRegionWater : CYapfT<CYapfRegion_TypesT<CYapfRegionWater, CRegionNodeListWater>>
 {

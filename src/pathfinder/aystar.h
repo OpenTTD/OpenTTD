@@ -136,7 +136,7 @@ struct AyStar {
 	void CheckTile(AyStarNode *current, PathNode *parent);
 
 protected:
-	CNodeList_HashTableT<PathNode, 8, 10> nodes;
+	NodeList<PathNode, 8, 10> nodes;
 
 	void OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g);
 };
