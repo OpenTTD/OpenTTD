@@ -265,7 +265,7 @@ RoadType GetRoadTypeByLabel(RoadTypeLabel label, bool allow_alternate_labels)
 		/* Test if any road type defines the label as an alternate. */
 		for (RoadType r = ROADTYPE_BEGIN; r != ROADTYPE_END; r++) {
 			const RoadTypeInfo *rti = GetRoadTypeInfo(r);
-			if (std::find(rti->alternate_labels.begin(), rti->alternate_labels.end(), label) != rti->alternate_labels.end()) return r;
+			if (std::ranges::find(rti->alternate_labels, label) != rti->alternate_labels.end()) return r;
 		}
 	}
 

@@ -262,7 +262,7 @@ public:
 	 */
 	inline size_t FindIndex(const T &item) const
 	{
-		auto it = std::find(this->data.begin(), this->data.end(), &item);
+		auto it = std::ranges::find(this->data, &item);
 		return it == this->data.end() ? 0 : std::distance(this->data.begin(), it);
 	}
 

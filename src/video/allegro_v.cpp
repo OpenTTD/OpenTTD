@@ -152,7 +152,7 @@ static void GetVideoModes()
 		uint w = modes[i].width;
 		uint h = modes[i].height;
 		if (w < 640 || h < 480) continue;
-		if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(w, h)) != _resolutions.end()) continue;
+		if (std::ranges::find(_resolutions, Dimension(w, h)) != _resolutions.end()) continue;
 		_resolutions.emplace_back(w, h);
 	}
 
@@ -167,7 +167,7 @@ static void GetAvailableVideoMode(uint *w, uint *h)
 	if (_resolutions.empty()) return;
 
 	/* is the wanted mode among the available modes? */
-	if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(*w, *h)) != _resolutions.end()) return;
+	if (std::ranges::find(_resolutions, Dimension(*w, *h)) != _resolutions.end()) return;
 
 	/* use the closest possible resolution */
 	uint best = 0;

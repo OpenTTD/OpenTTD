@@ -287,7 +287,7 @@ static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary &su
 		new_item.subtype = GetCargoSubtypeText(v);
 		if (!IsValidCargoID(new_item.cargo) && new_item.subtype == STR_EMPTY) continue;
 
-		auto item = std::find(std::begin(summary), std::end(summary), new_item);
+		auto item = std::ranges::find(summary, new_item);
 		if (item == std::end(summary)) {
 			item = summary.emplace(std::end(summary));
 			item->cargo = new_item.cargo;

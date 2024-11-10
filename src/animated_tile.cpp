@@ -24,7 +24,7 @@ std::vector<TileIndex> _animated_tiles;
  */
 void DeleteAnimatedTile(TileIndex tile)
 {
-	auto to_remove = std::find(_animated_tiles.begin(), _animated_tiles.end(), tile);
+	auto to_remove = std::ranges::find(_animated_tiles, tile);
 	if (to_remove != _animated_tiles.end()) {
 		/* The order of the remaining elements must stay the same, otherwise the animation loop may miss a tile. */
 		_animated_tiles.erase(to_remove);

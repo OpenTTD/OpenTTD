@@ -800,7 +800,7 @@ static void FindResolutions(uint8_t bpp)
 	DEVMODE dm;
 	for (uint i = 0; EnumDisplaySettings(nullptr, i, &dm) != 0; i++) {
 		if (dm.dmBitsPerPel != bpp || dm.dmPelsWidth < 640 || dm.dmPelsHeight < 480) continue;
-		if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(dm.dmPelsWidth, dm.dmPelsHeight)) != _resolutions.end()) continue;
+		if (std::ranges::find(_resolutions, Dimension(dm.dmPelsWidth, dm.dmPelsHeight)) != _resolutions.end()) continue;
 		_resolutions.emplace_back(dm.dmPelsWidth, dm.dmPelsHeight);
 	}
 

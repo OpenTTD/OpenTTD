@@ -301,7 +301,7 @@ static void DumpSections(const IniLoadFile &ifile)
 	/* Output every group, using its name as template name. */
 	for (const IniGroup &grp : ifile.groups) {
 		/* Exclude special group names. */
-		if (std::find(std::begin(special_group_names), std::end(special_group_names), grp.name) != std::end(special_group_names)) continue;
+		if (std::ranges::find(special_group_names, grp.name) != std::end(special_group_names)) continue;
 
 		const IniItem *template_item = templates_grp->GetItem(grp.name); // Find template value.
 		if (template_item == nullptr || !template_item->value.has_value()) {

@@ -126,7 +126,7 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16_t def_
 
 WindowDesc::~WindowDesc()
 {
-	_window_descs->erase(std::find(_window_descs->begin(), _window_descs->end(), this));
+	_window_descs->erase(std::ranges::find(*_window_descs, this));
 }
 
 /**

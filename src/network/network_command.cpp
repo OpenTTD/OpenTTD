@@ -178,8 +178,8 @@ static CommandQueue _local_execution_queue;
  */
 static size_t FindCallbackIndex(CommandCallback *callback)
 {
-	if (auto it = std::find(std::cbegin(_callback_table), std::cend(_callback_table), callback); it != std::cend(_callback_table)) {
-		return static_cast<size_t>(std::distance(std::cbegin(_callback_table), it));
+	if (auto it = std::ranges::find(_callback_table, callback); it != std::end(_callback_table)) {
+		return static_cast<size_t>(std::distance(std::begin(_callback_table), it));
 	}
 
 	return std::numeric_limits<size_t>::max();

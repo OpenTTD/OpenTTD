@@ -443,7 +443,7 @@ void BaseVehicleListWindow::FilterVehicleList()
 	if (this->vehicles.empty()) {
 		/* No vehicle passed through the filter, invalidate the previously selected vehicle */
 		this->vehicle_sel = INVALID_VEHICLE;
-	} else if (this->vehicle_sel != INVALID_VEHICLE && std::find(this->vehicles.begin(), this->vehicles.end(), Vehicle::Get(this->vehicle_sel)) == this->vehicles.end()) { // previously selected engine didn't pass the filter, remove selection
+	} else if (this->vehicle_sel != INVALID_VEHICLE && std::ranges::find(this->vehicles, Vehicle::Get(this->vehicle_sel)) == this->vehicles.end()) { // previously selected engine didn't pass the filter, remove selection
 		this->vehicle_sel = INVALID_VEHICLE;
 	}
 }
@@ -636,7 +636,7 @@ uint8_t GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_carg
 				StringID subtype = GetCargoSubtypeText(v);
 				if (subtype == STR_EMPTY) break;
 
-				if (std::find(subtypes.begin(), subtypes.end(), subtype) == subtypes.end()) continue;
+				if (std::ranges::find(subtypes, subtype) == subtypes.end()) continue;
 
 				/* We found something matching. */
 				ret_refit_cyc = refit_cyc;
@@ -787,7 +787,7 @@ struct RefitWindow : public Window {
 		GetVehicleSet(vehicles_to_refit, Vehicle::Get(this->selected_vehicle), this->num_vehicles);
 
 		do {
-			if (v->type == VEH_TRAIN && std::find(vehicles_to_refit.begin(), vehicles_to_refit.end(), v->index) == vehicles_to_refit.end()) continue;
+			if (v->type == VEH_TRAIN && std::ranges::find(vehicles_to_refit, v->index) == vehicles_to_refit.end()) continue;
 			const Engine *e = v->GetEngine();
 			CargoTypes cmask = e->info.refit_mask;
 			uint8_t callback_mask = e->info.callback_mask;
@@ -1081,7 +1081,7 @@ struct RefitWindow : public Window {
 
 						for (Train *u = Train::From(v); u != nullptr; u = u->Next()) {
 							/* Start checking. */
-							const bool contained = std::find(vehicles_to_refit.begin(), vehicles_to_refit.end(), u->index) != vehicles_to_refit.end();
+							const bool contained = std::ranges::find(vehicles_to_refit, u->index) != vehicles_to_refit.end();
 							if (contained && left == INT32_MIN) {
 								left = x - this->hscroll->GetPosition() + r.left + this->vehicle_margin;
 								width = 0;
