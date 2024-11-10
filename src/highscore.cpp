@@ -59,7 +59,7 @@ int8_t SaveHighScoreValue(const Company *c)
 	auto &highscores = _highscore_table[SP_CUSTOM];
 	uint16_t score = c->old_economy[0].performance_history;
 
-	auto it = std::find_if(highscores.begin(), highscores.end(), [&score](auto &highscore) { return highscore.score <= score; });
+	auto it = std::ranges::find_if(highscores, [&score](auto &highscore) { return highscore.score <= score; });
 
 	/* If we cannot find it, our score is not high enough. */
 	if (it == highscores.end()) return -1;

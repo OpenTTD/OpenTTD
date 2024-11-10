@@ -560,7 +560,7 @@ StringID AddGRFString(uint32_t grfid, uint16_t stringid, uint8_t langid_to_add, 
 		}
 	}
 
-	auto it = std::find_if(std::begin(_grf_text), std::end(_grf_text), [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
+	auto it = std::ranges::find_if(_grf_text, [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
 	if (it == std::end(_grf_text)) {
 		/* Too many strings allocated, return empty. */
 		if (_grf_text.size() == TAB_SIZE_NEWGRF) return STR_EMPTY;
@@ -586,7 +586,7 @@ StringID AddGRFString(uint32_t grfid, uint16_t stringid, uint8_t langid_to_add, 
  */
 StringID GetGRFStringID(uint32_t grfid, StringID stringid)
 {
-	auto it = std::find_if(std::begin(_grf_text), std::end(_grf_text), [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
+	auto it = std::ranges::find_if(_grf_text, [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
 	if (it != std::end(_grf_text)) {
 		uint id = static_cast<uint>(it - std::begin(_grf_text));
 		return MakeStringID(TEXT_TAB_NEWGRF_START, id);

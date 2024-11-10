@@ -312,7 +312,7 @@ void TextfileWindow::CheckHyperlinkClick(Point pt)
 	size_t line_index;
 	size_t subline;
 	if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
-		auto it = std::find_if(std::begin(this->lines), std::end(this->lines), [clicked_row](const Line &l) { return l.top <= clicked_row && l.bottom > clicked_row; });
+		auto it = std::ranges::find_if(this->lines, [clicked_row](const Line &l) { return l.top <= clicked_row && l.bottom > clicked_row; });
 		if (it == this->lines.cend()) return;
 		line_index = it - this->lines.cbegin();
 		subline = clicked_row - it->top;

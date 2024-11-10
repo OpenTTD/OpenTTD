@@ -101,7 +101,7 @@ public:
 		 */
 		EdgeAnnotation &operator[](NodeID to)
 		{
-			auto it = std::find_if(this->edges.begin(), this->edges.end(), [=] (const EdgeAnnotation &e) { return e.base.dest_node == to; });
+			auto it = std::ranges::find_if(this->edges, [=] (const EdgeAnnotation &e) { return e.base.dest_node == to; });
 			assert(it != this->edges.end());
 			return *it;
 		}
@@ -113,7 +113,7 @@ public:
 		 */
 		const EdgeAnnotation &operator[](NodeID to) const
 		{
-			auto it = std::find_if(this->edges.begin(), this->edges.end(), [=] (const EdgeAnnotation &e) { return e.base.dest_node == to; });
+			auto it = std::ranges::find_if(this->edges, [=] (const EdgeAnnotation &e) { return e.base.dest_node == to; });
 			assert(it != this->edges.end());
 			return *it;
 		}

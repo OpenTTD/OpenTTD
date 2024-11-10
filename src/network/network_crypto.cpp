@@ -363,7 +363,7 @@ NetworkAuthenticationServerHandler::ResponseResult X25519AuthenticationHandler::
 	NetworkAuthenticationMethod method = static_cast<NetworkAuthenticationMethod>(p.Recv_uint8());
 
 	auto is_of_method = [method](Handler &handler) { return handler->GetAuthenticationMethod() == method; };
-	auto it = std::find_if(handlers.begin(), handlers.end(), is_of_method);
+	auto it = std::ranges::find_if(handlers, is_of_method);
 	if (it == handlers.end()) return INVALID;
 
 	this->current_handler = it->get();
