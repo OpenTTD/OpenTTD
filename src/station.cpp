@@ -388,7 +388,7 @@ void Station::AddIndustryToDeliver(Industry *ind, TileIndex tile)
 	uint distance = DistanceMax(this->xy, tile);
 
 	/* Don't check further if this industry is already in the list but update the distance if it's closer */
-	auto pos = std::find_if(this->industries_near.begin(), this->industries_near.end(), [&](const IndustryListEntry &e) { return e.industry->index == ind->index; });
+	auto pos = std::ranges::find(this->industries_near, ind, &IndustryListEntry::industry);
 	if (pos != this->industries_near.end()) {
 		if (pos->distance > distance) {
 			auto node = this->industries_near.extract(pos);
@@ -410,7 +410,7 @@ void Station::AddIndustryToDeliver(Industry *ind, TileIndex tile)
  */
 void Station::RemoveIndustryToDeliver(Industry *ind)
 {
-	auto pos = std::find_if(this->industries_near.begin(), this->industries_near.end(), [&](const IndustryListEntry &e) { return e.industry->index == ind->index; });
+	auto pos = std::ranges::find(this->industries_near, ind, &IndustryListEntry::industry);
 	if (pos != this->industries_near.end()) {
 		this->industries_near.erase(pos);
 	}

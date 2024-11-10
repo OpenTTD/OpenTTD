@@ -188,7 +188,7 @@ void MusicSystem::ChangeMusicSet(const std::string &set_name)
  */
 void MusicSystem::SetPositionBySetIndex(uint set_index)
 {
-	auto it = std::find_if(std::begin(this->active_playlist), std::end(this->active_playlist), [&set_index](const PlaylistEntry &ple) { return ple.set_index == set_index; });
+	auto it = std::ranges::find(this->active_playlist, set_index, &PlaylistEntry::set_index);
 	if (it != std::end(this->active_playlist)) this->playlist_position = std::distance(std::begin(this->active_playlist), it);
 }
 

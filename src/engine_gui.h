@@ -25,9 +25,6 @@ struct GUIEngineListItem {
 	uint16_t level_mask; ///< Mask of level continuations.
 
 	GUIEngineListItem(EngineID engine_id, EngineID variant_id, EngineDisplayFlags flags, uint8_t indent) : engine_id(engine_id), variant_id(variant_id), flags(flags), indent(indent), level_mask(0) {}
-
-	/* Used when searching list only by engine_id. */
-	bool operator == (const EngineID &other) const { return this->engine_id == other; }
 };
 
 typedef GUIList<GUIEngineListItem, std::nullptr_t, CargoID> GUIEngineList;
