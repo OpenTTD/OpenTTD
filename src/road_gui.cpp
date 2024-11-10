@@ -1204,7 +1204,7 @@ public:
 
 	bool HasClassChoice() const override
 	{
-		return std::count_if(std::begin(RoadStopClass::Classes()), std::end(RoadStopClass::Classes()), IsClassChoice);
+		return std::ranges::count_if(RoadStopClass::Classes(), IsClassChoice);
 	}
 
 	int GetSelectedClass() const override { return _roadstop_gui.sel_class; }
@@ -1614,7 +1614,7 @@ public:
 
 	bool HasClassChoice() const override
 	{
-		return std::count_if(std::begin(RoadStopClass::Classes()), std::end(RoadStopClass::Classes()), IsWaypointClass) > 1;
+		return std::ranges::count_if(RoadStopClass::Classes(), IsWaypointClass) > 1;
 	}
 
 	void Close(int) override { ResetObjectToPlace(); }

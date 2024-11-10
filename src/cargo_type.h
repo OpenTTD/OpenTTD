@@ -128,7 +128,7 @@ struct CargoArray : std::array<uint, NUM_CARGO> {
 	 */
 	inline uint GetCount() const
 	{
-		return std::count_if(this->begin(), this->end(), [](uint amount) { return amount != 0; });
+		return std::ranges::count_if(*this, [](uint amount) { return amount != 0; });
 	}
 };
 

@@ -387,7 +387,7 @@ bool FindSubsidyIndustryCargoRoute()
 	CargoID cid;
 
 	/* Randomize cargo type */
-	int num_cargos = std::count_if(std::begin(src_ind->produced), std::end(src_ind->produced), [](const auto &p) { return IsValidCargoID(p.cargo); });
+	int num_cargos = std::ranges::count_if(src_ind->produced, [](const auto &p) { return IsValidCargoID(p.cargo); });
 	if (num_cargos == 0) return false; // industry produces nothing
 	int cargo_num = RandomRange(num_cargos) + 1;
 

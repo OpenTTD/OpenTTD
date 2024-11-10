@@ -472,7 +472,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			std::string crashlog = CrashLogWindows::current->survey.dump(4);
 			size_t crashlog_length = crashlog.size() + 1;
 			/* Reserve extra space for LF to CRLF conversion. */
-			crashlog_length += std::count(crashlog.begin(), crashlog.end(), '\n');
+			crashlog_length += std::ranges::count(crashlog, '\n');
 
 			const size_t filename_count = 4;
 			const size_t filename_buf_length = MAX_PATH + 1;
