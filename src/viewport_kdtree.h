@@ -70,12 +70,14 @@ struct ViewportSignKdtreeItem {
 	static ViewportSignKdtreeItem MakeSign(SignID id);
 };
 
-inline int32_t Kdtree_ViewportSignXYFunc(const ViewportSignKdtreeItem &item, int dim)
-{
-	return (dim == 0) ? item.center : item.top;
-}
+struct Kdtree_ViewportSignXYFunc {
+	inline int32_t operator()(const ViewportSignKdtreeItem &item, int dim)
+	{
+		return (dim == 0) ? item.center : item.top;
+	}
+};
 
-typedef Kdtree<ViewportSignKdtreeItem, decltype(&Kdtree_ViewportSignXYFunc), int32_t, int32_t> ViewportSignKdtree;
+using ViewportSignKdtree = Kdtree<ViewportSignKdtreeItem, Kdtree_ViewportSignXYFunc, int32_t, int32_t>;
 extern ViewportSignKdtree _viewport_sign_kdtree;
 
 void RebuildViewportKdtree();

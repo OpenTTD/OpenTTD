@@ -68,7 +68,7 @@ TownPool _town_pool("Town");
 INSTANTIATE_POOL_METHODS(Town)
 
 
-TownKdtree _town_kdtree(&Kdtree_TownXYFunc);
+TownKdtree _town_kdtree{};
 
 void RebuildTownKdtree()
 {
