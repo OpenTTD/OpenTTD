@@ -87,7 +87,7 @@ void MoveWaypointsToBaseStations()
 		 * from the GRF ID / station index. */
 		for (OldWaypoint &wp : _old_waypoints) {
 			const auto specs = StationClass::Get(STAT_CLASS_WAYP)->Specs();
-			auto found = std::find_if(std::begin(specs), std::end(specs), [&wp](const StationSpec *spec) { return spec != nullptr && spec->grf_prop.grffile->grfid == wp.grfid && spec->grf_prop.local_id == wp.localidx; });
+			auto found = std::ranges::find_if(specs, [&wp](const StationSpec *spec) { return spec != nullptr && spec->grf_prop.grffile->grfid == wp.grfid && spec->grf_prop.local_id == wp.localidx; });
 			if (found != std::end(specs)) wp.spec = *found;
 		}
 	}

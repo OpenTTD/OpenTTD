@@ -167,7 +167,7 @@ bool NetworkCanJoinCompany(CompanyID company_id)
  */
 static auto FindKey(auto *authorized_keys, std::string_view authorized_key)
 {
-	return std::find_if(authorized_keys->begin(), authorized_keys->end(), [authorized_key](auto &value) { return StrEqualsIgnoreCase(value, authorized_key); });
+	return std::ranges::find_if(*authorized_keys, [authorized_key](auto &value) { return StrEqualsIgnoreCase(value, authorized_key); });
 }
 
 /**

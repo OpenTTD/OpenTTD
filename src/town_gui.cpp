@@ -1562,7 +1562,7 @@ public:
 				dst.insert(item);
 			} else {
 				/* Search for spec by grfid and local index. */
-				auto it = std::find_if(specs.begin(), specs.end(), [&item](const HouseSpec &spec) { return spec.grf_prop.grffile != nullptr && spec.grf_prop.grffile->grfid == item.grfid && spec.grf_prop.local_id == item.local_id; });
+				auto it = std::ranges::find_if(specs, [&item](const HouseSpec &spec) { return spec.grf_prop.grffile != nullptr && spec.grf_prop.grffile->grfid == item.grfid && spec.grf_prop.local_id == item.local_id; });
 				if (it == specs.end()) {
 					/* Not preset, hide from UI. */
 					dst.insert({item.grfid, item.local_id, -1, -1});

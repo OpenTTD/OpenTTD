@@ -612,7 +612,7 @@ void PickerWindow::EnsureSelectedTypeIsVisible()
 	int class_index = this->callbacks.GetSelectedClass();
 	int index = this->callbacks.GetSelectedType();
 
-	auto it = std::find_if(std::begin(this->types), std::end(this->types), [class_index, index](const auto &item) { return item.class_index == class_index && item.index == index; });
+	auto it = std::ranges::find_if(this->types, [class_index, index](const auto &item) { return item.class_index == class_index && item.index == index; });
 	if (it == std::end(this->types)) return;
 
 	int pos = static_cast<int>(std::distance(std::begin(this->types), it));
