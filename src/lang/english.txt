@@ -4747,6 +4747,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(travel for {ST
 STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING1}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :and travel for {STRING1}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}This timetable will take approximately {STRING1} to complete
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}This timetable will take {STRING1} to complete
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}This timetable will take at least {STRING1} to complete (not all timetabled)
 
