@@ -147,6 +147,8 @@ static bool TypeIDSorter(PickerItem const &a, PickerItem const &b)
 /** Filter types by class name. */
 static bool TypeTagNameFilter(PickerItem const *item, PickerFilterData &filter)
 {
+	if (filter.btf->Filter(filter.callbacks->GetTypeBadges(item->class_index, item->index))) return true;
+
 	filter.ResetState();
 	filter.AddLine(GetString(filter.callbacks->GetTypeName(item->class_index, item->index)));
 	return filter.GetState();
@@ -581,9 +583,13 @@ void PickerWindow::BuildPickerTypeList()
 		}
 	}
 
+	type_string_filter.btf = std::make_unique<BadgeTextFilter>(this->type_string_filter, this->callbacks.GetFeature());
+
 	this->types.Filter(this->type_string_filter);
 	this->types.RebuildDone();
 	this->types.Sort();
+
+	type_string_filter.btf.reset();
 
 	if (!this->has_type_picker) return;
 	this->GetWidget<NWidgetMatrix>(WID_PW_TYPE_MATRIX)->SetCount(static_cast<int>(this->types.size()));
