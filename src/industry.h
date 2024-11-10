@@ -167,7 +167,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	inline ProducedCargoes::iterator GetCargoProduced(CargoID cargo)
 	{
 		if (!IsValidCargoID(cargo)) return std::end(this->produced);
-		return std::find_if(std::begin(this->produced), std::end(this->produced), [&cargo](const auto &p) { return p.cargo == cargo; });
+		return std::ranges::find(this->produced, cargo, &ProducedCargo::cargo);
 	}
 
 	/**
@@ -178,7 +178,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	inline ProducedCargoes::const_iterator GetCargoProduced(CargoID cargo) const
 	{
 		if (!IsValidCargoID(cargo)) return std::end(this->produced);
-		return std::find_if(std::begin(this->produced), std::end(this->produced), [&cargo](const auto &p) { return p.cargo == cargo; });
+		return std::ranges::find(this->produced, cargo, &ProducedCargo::cargo);
 	}
 
 	/**
@@ -189,7 +189,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	inline AcceptedCargoes::iterator GetCargoAccepted(CargoID cargo)
 	{
 		if (!IsValidCargoID(cargo)) return std::end(this->accepted);
-		return std::find_if(std::begin(this->accepted), std::end(this->accepted), [&cargo](const auto &a) { return a.cargo == cargo; });
+		return std::ranges::find(this->accepted, cargo, &AcceptedCargo::cargo);
 	}
 
 	/**
@@ -200,7 +200,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	inline AcceptedCargoes::const_iterator GetCargoAccepted(CargoID cargo) const
 	{
 		if (!IsValidCargoID(cargo)) return std::end(this->accepted);
-		return std::find_if(std::begin(this->accepted), std::end(this->accepted), [&cargo](const auto &a) { return a.cargo == cargo; });
+		return std::ranges::find(this->accepted, cargo, &AcceptedCargo::cargo);
 	}
 
 	/**

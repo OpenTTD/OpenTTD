@@ -1624,9 +1624,7 @@ protected:
 		 * because this is the one the player interested in, and that way it is not hidden in the 'n' more cargos */
 		const CargoID cid = this->produced_cargo_filter_criteria;
 		if (cid != CargoFilterCriteria::CF_ANY && cid != CargoFilterCriteria::CF_NONE) {
-			auto filtered_ci = std::find_if(cargos.begin(), cargos.end(), [cid](const CargoInfo &ci) -> bool {
-				return ci.cargo_id == cid;
-			});
+			auto filtered_ci = std::ranges::find(cargos, cid, &CargoInfo::cargo_id);
 			if (filtered_ci != cargos.end()) {
 				std::rotate(cargos.begin(), filtered_ci, filtered_ci + 1);
 			}

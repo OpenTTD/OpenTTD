@@ -65,8 +65,6 @@ struct TouchBarButton {
 	SpriteID                 sprite;
 	MainToolbarHotkeys       hotkey;
 	NSString                *fallback_text;
-
-	bool operator ==(const NSTouchBarItemIdentifier other) const { return this->key == other; }
 };
 
 /* 9 items can be displayed on the touch bar when using default buttons. */
@@ -493,7 +491,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 - (void)touchBarButtonAction:(id)sender
 {
 	NSButton *btn = (NSButton *)sender;
-	if (auto item = std::find(_touchbar_buttons.cbegin(), _touchbar_buttons.cend(), (NSTouchBarItemIdentifier)btn.identifier); item != _touchbar_buttons.cend()) {
+	if (auto item = std::ranges::find(_touchbar_buttons, (NSTouchBarItemIdentifier)btn.identifier, &TouchBarButton::key); item != _touchbar_buttons.end()) {
 		HandleToolbarHotkey(item->hotkey);
 	}
 }
@@ -519,8 +517,8 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 - (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier
 {
-	auto item = std::find(_touchbar_buttons.cbegin(), _touchbar_buttons.cend(), identifier);
-	assert(item != _touchbar_buttons.cend());
+	auto item = std::ranges::find(_touchbar_buttons, identifier, &TouchBarButton::key);
+	assert(item != _touchbar_buttons.end());
 
 	NSButton *button = [ NSButton buttonWithTitle:item->fallback_text target:self action:@selector(touchBarButtonAction:) ];
 	button.identifier = identifier;
@@ -540,8 +538,8 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 	/* Re-create button images from OTTD sprites. */
 	for (NSTouchBarItemIdentifier ident in self.touchBar.itemIdentifiers) {
-		auto item = std::find(_touchbar_buttons.cbegin(), _touchbar_buttons.cend(), ident);
-		if (item == _touchbar_buttons.cend()) continue;
+		auto item = std::ranges::find(_touchbar_buttons, ident, &TouchBarButton::key);
+		if (item == _touchbar_buttons.end()) continue;
 
 		NSCustomTouchBarItem *tb_item = [ self.touchBar itemForIdentifier:ident ];
 		NSButton *button = tb_item.view;
@@ -830,7 +828,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	BOOL interpret_keys = YES;
 	if (down) {
 		/* Map keycode to OTTD code. */
-		auto vk = std::find_if(std::begin(_vk_mapping), std::end(_vk_mapping), [=](const CocoaVkMapping &m) { return m.vk_from == keycode; });
+		auto vk = std::ranges::find(_vk_mapping, keycode, &CocoaVkMapping::vk_from);
 		uint32_t pressed_key = vk != std::end(_vk_mapping) ? vk->map_to : 0;
 
 		if (modifiers & NSEventModifierFlagShift)   pressed_key |= WKC_SHIFT;

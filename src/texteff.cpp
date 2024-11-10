@@ -42,7 +42,7 @@ TextEffectID AddTextEffect(StringID msg, int center, int y, uint8_t duration, Te
 {
 	if (_game_mode == GM_MENU) return INVALID_TE_ID;
 
-	auto it = std::find_if(std::begin(_text_effects), std::end(_text_effects), [](const TextEffect &te) { return te.string_id == INVALID_STRING_ID; });
+	auto it = std::ranges::find(_text_effects, INVALID_STRING_ID, &TextEffect::string_id);
 	if (it == std::end(_text_effects)) {
 		/* _text_effects.size() is the maximum ID + 1 that has been allocated. We should not allocate INVALID_TE_ID or beyond. */
 		if (_text_effects.size() >= INVALID_TE_ID) return INVALID_TE_ID;

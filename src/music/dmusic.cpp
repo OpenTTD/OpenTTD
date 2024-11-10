@@ -70,11 +70,6 @@ struct DLSFile {
 
 		WSMPL wave_sample;
 		std::vector<WLOOP> wave_loops;
-
-		bool operator ==(long offset) const
-		{
-			return this->file_offset == offset;
-		}
 	};
 
 	std::vector<DLSInstrument> instruments;
@@ -503,7 +498,7 @@ bool DLSFile::LoadFile(const std::string &file)
 
 	/* Resolve wave pool table. */
 	for (std::vector<POOLCUE>::iterator cue = this->pool_cues.begin(); cue != this->pool_cues.end(); cue++) {
-		std::vector<DLSWave>::iterator w = std::find(this->waves.begin(), this->waves.end(), cue->ulOffset);
+		std::vector<DLSWave>::iterator w = std::ranges::find(this->waves, cue->ulOffset, &DLSWave::file_offset);
 		if (w != this->waves.end()) {
 			cue->ulOffset = (ULONG)(w - this->waves.begin());
 		} else {

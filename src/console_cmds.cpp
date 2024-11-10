@@ -2454,7 +2454,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		IConsolePrint(CC_INFO, "Loaded GRF files:");
 		int i = 1;
 		for (GRFFile *grf : files) {
-			auto profiler = std::find_if(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; });
+			auto profiler = std::ranges::find(_newgrf_profilers, grf, &NewGRFProfiler::grffile);
 			bool selected = profiler != _newgrf_profilers.end();
 			bool active = selected && profiler->active;
 			TextColour tc = active ? TC_LIGHT_BLUE : selected ? TC_GREEN : CC_INFO;
@@ -2496,8 +2496,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				continue;
 			}
 			GRFFile *grf = files[grfnum - 1];
-			auto pos = std::find_if(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; });
-			if (pos != _newgrf_profilers.end()) _newgrf_profilers.erase(pos);
+			_newgrf_profilers.erase(std::ranges::find(_newgrf_profilers, grf, &NewGRFProfiler::grffile));
 		}
 		return true;
 	}

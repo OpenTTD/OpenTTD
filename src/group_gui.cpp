@@ -1131,7 +1131,7 @@ public:
 		if (g_id != ALL_GROUP && g_id != DEFAULT_GROUP) {
 			const Group *g = Group::Get(g_id);
 
-			auto found = std::find_if(std::begin(this->groups), std::end(this->groups), [g](const auto &item) { return item.group == g; });
+			auto found = std::ranges::find(this->groups, g, &GUIGroupListItem::group);
 			if (found == std::end(this->groups)) {
 				/* The group's branch is maybe collapsed, so try to expand it. */
 				for (auto pg = Group::GetIfValid(g->parent); pg != nullptr; pg = Group::GetIfValid(pg->parent)) {
@@ -1140,7 +1140,7 @@ public:
 				this->groups.ForceRebuild();
 				this->BuildGroupList(this->owner);
 				this->group_sb->SetCount(this->groups.size());
-				found = std::find_if(std::begin(this->groups), std::end(this->groups), [g](const auto &item) { return item.group == g; });
+				found = std::ranges::find(this->groups, g, &GUIGroupListItem::group);
 			}
 			if (found != std::end(this->groups)) this->group_sb->ScrollTowards(std::distance(std::begin(this->groups), found));
 		}

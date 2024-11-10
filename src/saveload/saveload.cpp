@@ -2935,7 +2935,7 @@ SaveOrLoadResult SaveWithFilter(std::shared_ptr<SaveFilter> writer, bool threade
  */
 static const SaveLoadFormat *DetermineSaveLoadFormat(uint32_t tag, uint32_t raw_version)
 {
-	auto fmt = std::find_if(std::begin(_saveload_formats), std::end(_saveload_formats), [tag](const auto &fmt) { return fmt.tag == tag; });
+	auto fmt = std::ranges::find(_saveload_formats, tag, &SaveLoadFormat::tag);
 	if (fmt != std::end(_saveload_formats)) {
 		/* Check version number */
 		_sl_version = (SaveLoadVersion)(TO_BE32(raw_version) >> 16);
@@ -2958,7 +2958,7 @@ static const SaveLoadFormat *DetermineSaveLoadFormat(uint32_t tag, uint32_t raw_
 	_sl_minor_version = 0;
 
 	/* Try to find the LZO savegame format; it uses 'OTTD' as tag. */
-	fmt = std::find_if(std::begin(_saveload_formats), std::end(_saveload_formats), [](const auto &fmt) { return fmt.tag == SAVEGAME_TAG_LZO; });
+	fmt = std::ranges::find(_saveload_formats, SAVEGAME_TAG_LZO, &SaveLoadFormat::tag);
 	if (fmt == std::end(_saveload_formats)) {
 		/* Who removed the LZO savegame format definition? When built without LZO support,
 		 * the formats must still list it just without a method to read the file.

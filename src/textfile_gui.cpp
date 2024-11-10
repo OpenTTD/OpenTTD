@@ -403,7 +403,7 @@ void TextfileWindow::NavigateHistory(int delta)
 	switch (ClassifyHyperlink(link.destination, this->trusted)) {
 		case HyperlinkType::Internal:
 		{
-			auto it = std::find_if(this->link_anchors.cbegin(), this->link_anchors.cend(), [&](const Hyperlink &other) { return link.destination == other.destination; });
+			auto it = std::ranges::find(this->link_anchors, link.destination, &Hyperlink::destination);
 			if (it != this->link_anchors.cend()) {
 				this->AppendHistory(this->filepath);
 				this->ScrollToLine(it->line);
@@ -484,7 +484,7 @@ void TextfileWindow::NavigateToFile(std::string newfile, size_t line)
 	if (anchor.empty() || line != 0) {
 		this->ScrollToLine(line);
 	} else {
-		auto anchor_dest = std::find_if(this->link_anchors.cbegin(), this->link_anchors.cend(), [&](const Hyperlink &other) { return anchor == other.destination; });
+		auto anchor_dest = std::ranges::find(this->link_anchors, anchor, &Hyperlink::destination);
 		if (anchor_dest != this->link_anchors.cend()) {
 			this->ScrollToLine(anchor_dest->line);
 			this->UpdateHistoryScrollpos();
