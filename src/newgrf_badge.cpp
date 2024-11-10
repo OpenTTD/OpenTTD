@@ -12,6 +12,7 @@
 #include "dropdown_common_type.h"
 #include "newgrf.h"
 #include "newgrf_badge.h"
+#include "newgrf_badge_config.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_spritegroup.h"
 #include "stringfilter_type.h"
@@ -40,13 +41,17 @@ static Badges _badges = {};
 /**
  * Assign a BadgeClassID to the given badge.
  * @param index Badge ID of badge that should be assigned.
+ * @param label Label of badge.
  * @returns new or existing BadgeClassID.
  */
-static BadgeClassID GetOrCreateBadgeClass(BadgeID index)
+static BadgeClassID GetOrCreateBadgeClass(BadgeID index, std::string_view label)
 {
 	auto it = std::ranges::find(_badges.classes, index);
 	if (it == std::end(_badges.classes)) {
 		it = _badges.classes.emplace(it, index);
+
+		/* Inform user configuration about this label. */
+		AddBadgeClassToConfiguration(label);
 	}
 
 	return static_cast<BadgeClassID>(std::distance(std::begin(_badges.classes), it));
@@ -84,7 +89,7 @@ Badge &GetOrCreateBadge(std::string_view label)
 	BadgeID index = std::distance(std::begin(_badges.specs), it);
 	if (sep == std::string_view::npos) {
 		/* There is no separator, so this badge is a class badge. */
-		class_index = GetOrCreateBadgeClass(index);
+		class_index = GetOrCreateBadgeClass(index, label);
 	}
 
 	it = _badges.specs.emplace(it, label, index, class_index);
@@ -359,6 +364,7 @@ GUIBadgeClasses::GUIBadgeClasses(GrfSpecFeature feature)
 		uint sort_order = UINT_MAX;
 
 		std::string_view label = GetClassBadge(class_index)->label;
+		ApplyBadgeClassConfiguration(feature, label, visible, column, sort_order);
 
 		this->gui_classes.emplace_back(class_index, column, visible, sort_order, size, label);
 		if (visible) max_column = std::max<uint>(max_column, column);
