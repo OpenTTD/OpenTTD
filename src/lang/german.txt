@@ -614,6 +614,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Beförde
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Bewertung der Firmenleistung (Höchstwert: 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmenwertdiagramm
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Letzten 24 Minuten
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Letzten 72 Minuten
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Frachtbeförderungspreise
@@ -627,6 +628,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Zeige ke
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Diagramm für diesen Frachttyp ein/aus
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Produktionshistorie
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Zeige detailierte Leistungsaufschlüsselung
 
@@ -3989,6 +3991,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkti
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produktion in der letzten Minute:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% befördert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Hauptansicht auf den Industriestandort zentrieren. Mit Strg+Klick wird eine neue Zusatzansicht auf den Industriestandort geöffnet
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Produktionsgraph
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Zeigt den Graphen der Produktionshistorie der Industrie an
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktionsrate: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Diese Industrie wird in Kürze schließen!
 

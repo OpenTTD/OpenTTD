@@ -614,6 +614,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Cargaiso
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Historique de performance (performance max. = 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Graphique de la valeur de la compagnie
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}24 dernières minutes
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Dernières 72 minutes
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Valeur des marchandises
@@ -627,6 +628,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}N'affich
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Afficher/Cacher le type de marchandise
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Historique de production
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Afficher le détail de l'évaluation de la performance
 
@@ -3989,6 +3991,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producti
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Production la minute précédente{NBSP}:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transporté{P "" s})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer la vue sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie.
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Graphe de production
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Affiche le graphe de l'historique de la production des industries
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Niveau de production{NBSP}: {YELLOW}{COMMA}{NBSP}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}L'industrie a annoncé sa fermeture imminente{NBSP}!
 
