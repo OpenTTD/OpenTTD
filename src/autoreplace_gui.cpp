@@ -167,7 +167,7 @@ class ReplaceVehicleWindow : public Window {
 		if (side == 1) {
 			/* ensure primary engine of variant group is in list */
 			for (const auto &variant : variants) {
-				if (std::find(list.begin(), list.end(), variant) == list.end()) {
+				if (std::ranges::find(list, variant, &GUIEngineListItem::engine_id) == list.end()) {
 					const Engine *e = Engine::Get(variant);
 					list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlags::Shaded, 0);
 				}

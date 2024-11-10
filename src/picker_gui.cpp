@@ -49,7 +49,7 @@ PickerCallbacks::PickerCallbacks(const std::string &ini_group) : ini_group(ini_g
 PickerCallbacks::~PickerCallbacks()
 {
 	auto &callbacks = GetPickerCallbacks();
-	callbacks.erase(std::find(callbacks.begin(), callbacks.end(), this));
+	callbacks.erase(std::ranges::find(callbacks, this));
 }
 
 /**
@@ -500,7 +500,7 @@ void PickerWindow::EnsureSelectedClassIsVisible()
 	if (!this->has_class_picker) return;
 	if (this->classes.empty()) return;
 
-	auto it = std::find(std::begin(this->classes), std::end(this->classes), this->callbacks.GetSelectedClass());
+	auto it = std::ranges::find(this->classes, this->callbacks.GetSelectedClass());
 	if (it == std::end(this->classes)) return;
 
 	int pos = static_cast<int>(std::distance(std::begin(this->classes), it));

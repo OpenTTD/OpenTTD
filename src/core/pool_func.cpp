@@ -19,7 +19,7 @@
 /* virtual */ PoolBase::~PoolBase()
 {
 	PoolVector *pools = PoolBase::GetPools();
-	pools->erase(std::find(pools->begin(), pools->end(), this));
+	pools->erase(std::ranges::find(*pools, this));
 	if (pools->empty()) delete pools;
 }
 

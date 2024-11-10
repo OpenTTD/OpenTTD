@@ -86,7 +86,7 @@ static const void *ResolveObject(const GameSettings *settings_ptr, const IntSett
  */
 static uint GetCurrentResolutionIndex()
 {
-	auto it = std::find(_resolutions.begin(), _resolutions.end(), Dimension(_screen.width, _screen.height));
+	auto it = std::ranges::find(_resolutions, Dimension(_screen.width, _screen.height));
 	return std::distance(_resolutions.begin(), it);
 }
 

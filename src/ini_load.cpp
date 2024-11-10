@@ -162,8 +162,8 @@ IniGroup &IniLoadFile::GetOrCreateGroup(std::string_view name)
 IniGroup &IniLoadFile::CreateGroup(std::string_view name)
 {
 	IniGroupType type = IGT_VARIABLES;
-	if (std::find(this->list_group_names.begin(), this->list_group_names.end(), name) != this->list_group_names.end()) type = IGT_LIST;
-	if (std::find(this->seq_group_names.begin(), this->seq_group_names.end(), name) != this->seq_group_names.end()) type = IGT_SEQUENCE;
+	if (std::ranges::find(this->list_group_names, name) != this->list_group_names.end()) type = IGT_LIST;
+	if (std::ranges::find(this->seq_group_names, name) != this->seq_group_names.end()) type = IGT_SEQUENCE;
 
 	return this->groups.emplace_back(name, type);
 }

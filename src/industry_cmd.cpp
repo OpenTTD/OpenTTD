@@ -424,10 +424,10 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 	if (itspec->special_flags & INDTILE_SPECIAL_ACCEPTS_ALL_CARGO) {
 		/* Copy all accepted cargoes from industry itself */
 		for (const auto &a : ind->accepted) {
-			auto pos = std::find(std::begin(accepts_cargo), std::end(accepts_cargo), a.cargo);
+			auto pos = std::ranges::find(accepts_cargo, a.cargo);
 			if (pos == std::end(accepts_cargo)) {
 				/* Not found, insert */
-				pos = std::find(std::begin(accepts_cargo), std::end(accepts_cargo), INVALID_CARGO);
+				pos = std::ranges::find(accepts_cargo, INVALID_CARGO);
 				if (pos == std::end(accepts_cargo)) continue; // nowhere to place, give up on this one
 				*pos = a.cargo;
 			}
@@ -1879,7 +1879,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 				continue;
 			}
 			/* Verify valid cargo */
-			if (std::find(std::begin(indspec->accepts_cargo), std::end(indspec->accepts_cargo), cargo) == std::end(indspec->accepts_cargo)) {
+			if (std::ranges::find(indspec->accepts_cargo, cargo) == std::end(indspec->accepts_cargo)) {
 				/* Cargo not in spec, error in NewGRF */
 				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_INPUT_CARGO_TYPES, res);
 				break;
@@ -1915,7 +1915,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 				continue;
 			}
 			/* Verify valid cargo */
-			if (std::find(std::begin(indspec->produced_cargo), std::end(indspec->produced_cargo), cargo) == std::end(indspec->produced_cargo)) {
+			if (std::ranges::find(indspec->produced_cargo, cargo) == std::end(indspec->produced_cargo)) {
 				/* Cargo not in spec, error in NewGRF */
 				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_OUTPUT_CARGO_TYPES, res);
 				break;

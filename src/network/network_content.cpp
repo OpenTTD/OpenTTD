@@ -838,7 +838,7 @@ void ClientNetworkContentSocketHandler::SendReceive()
 void ClientNetworkContentSocketHandler::DownloadContentInfo(ContentID cid)
 {
 	/* When we tried to download it already, don't try again */
-	if (std::find(this->requested.begin(), this->requested.end(), cid) != this->requested.end()) return;
+	if (std::ranges::find(this->requested, cid) != this->requested.end()) return;
 
 	this->requested.push_back(cid);
 	this->RequestContentList(1, &cid);

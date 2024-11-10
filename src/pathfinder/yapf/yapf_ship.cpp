@@ -151,8 +151,7 @@ public:
 		TrackFollower F(Yapf().GetVehicle());
 		if (F.Follow(old_node.key.tile, old_node.key.td)) {
 			if (this->water_region_corridor.empty()
-					|| std::find(this->water_region_corridor.begin(), this->water_region_corridor.end(),
-						GetWaterRegionInfo(F.new_tile)) != this->water_region_corridor.end()) {
+					|| std::ranges::find(this->water_region_corridor, GetWaterRegionInfo(F.new_tile)) != this->water_region_corridor.end()) {
 				Yapf().AddMultipleNodes(&old_node, F);
 			}
 		}
@@ -255,7 +254,7 @@ public:
 			while (node->parent) {
 				const WaterRegionPatchDesc node_water_patch = GetWaterRegionPatchInfo(node->GetTile());
 
-				const bool node_water_patch_on_high_level_path = std::find(high_level_path.begin(), high_level_path.end(), node_water_patch) != high_level_path.end();
+				const bool node_water_patch_on_high_level_path = std::ranges::find(high_level_path, node_water_patch) != high_level_path.end();
 				const bool add_full_path = !is_intermediate_destination && node_water_patch != end_water_patch;
 
 				/* The cached path must always lead to a region patch that's on the high level path.

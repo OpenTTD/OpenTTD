@@ -95,7 +95,7 @@ public:
 
 	bool HasOrigin(const WaterRegionPatchDesc &water_region_patch)
 	{
-		return std::find(this->origin_keys.begin(), this->origin_keys.end(), CYapfRegionPatchNodeKey{ water_region_patch }) != this->origin_keys.end();
+		return std::ranges::find(this->origin_keys, CYapfRegionPatchNodeKey{ water_region_patch }) != this->origin_keys.end();
 	}
 
 	void PfSetStartupNodes()

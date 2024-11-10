@@ -65,7 +65,7 @@ static void FindResolutions()
 			SDL_GetDisplayMode(display, i, &mode);
 
 			if (mode.w < 640 || mode.h < 480) continue;
-			if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(mode.w, mode.h)) != _resolutions.end()) continue;
+			if (std::ranges::find(_resolutions, Dimension(mode.w, mode.h)) != _resolutions.end()) continue;
 			_resolutions.emplace_back(mode.w, mode.h);
 		}
 	}
@@ -84,7 +84,7 @@ static void GetAvailableVideoMode(uint *w, uint *h)
 	if (!_fullscreen || _resolutions.empty()) return;
 
 	/* Is the wanted mode among the available modes? */
-	if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(*w, *h)) != _resolutions.end()) return;
+	if (std::ranges::find(_resolutions, Dimension(*w, *h)) != _resolutions.end()) return;
 
 	/* Use the closest possible resolution */
 	uint best = 0;

@@ -267,7 +267,7 @@ HotkeyList::HotkeyList(const std::string &ini_group, const std::vector<Hotkey> &
 
 HotkeyList::~HotkeyList()
 {
-	_hotkey_lists->erase(std::find(_hotkey_lists->begin(), _hotkey_lists->end(), this));
+	_hotkey_lists->erase(std::ranges::find(*_hotkey_lists, this));
 }
 
 /**
