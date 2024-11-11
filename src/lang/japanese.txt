@@ -185,11 +185,26 @@ STR_COLOUR_MAUVE                                                :藤紫
 STR_COLOUR_PURPLE                                               :紫
 STR_COLOUR_ORANGE                                               :橙
 STR_COLOUR_BROWN                                                :茶
-STR_COLOUR_GREY                                                 :灰
+STR_COLOUR_GREY                                                 :グレー
 STR_COLOUR_WHITE                                                :白
 STR_COLOUR_RANDOM                                               :ランダム
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :紺
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :薄緑
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :桃
+STR_COLOUR_SECONDARY_RED                                        :赤
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :薄青
+STR_COLOUR_SECONDARY_GREEN                                      :緑
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :濃緑
+STR_COLOUR_SECONDARY_BLUE                                       :青
+STR_COLOUR_SECONDARY_CREAM                                      :薄黄
+STR_COLOUR_SECONDARY_MAUVE                                      :藤紫
+STR_COLOUR_SECONDARY_PURPLE                                     :紫
+STR_COLOUR_SECONDARY_ORANGE                                     :橙
+STR_COLOUR_SECONDARY_BROWN                                      :茶
+STR_COLOUR_SECONDARY_GREY                                       :グレー
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :プライマリカラーと同一
 
 
 # Units used in OpenTTD
@@ -584,6 +599,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}貨物�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}格付の推移(最大1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}総資産の推移
 
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}直近72分
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}運送報酬の相場
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}貨物を10単位(又は10,000リットル)を20マス運送したときの報酬
@@ -765,6 +781,7 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}すべて非表示
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}すべて表示
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}標高を表示
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}産業の名前を表示
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}全産業を非表示にします
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}全産業を表示します
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}標高別の色分けを切り替えます
@@ -1021,6 +1038,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}基本�
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}使用する音楽セットを選択します
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}基本音楽セットについての追加情報
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :コンテンツを取得
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :新しいコンテンツや更新をチェックする
 
 
 
@@ -1335,10 +1354,12 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :する (ビュ�
 STR_CONFIG_SETTING_BRIBE                                        :議会の買収: {STRING}
 ###length 2
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :街で議会買収を企てられるようになります。成功すれば街での評判が良くなりますが、地元当局に事が発覚した場合罰金を受けた上評判が悪くなり、その上その街では半年間何もできなくなります
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :会社が議会買収を企てられるようにします。もし当局に事が発覚した場合、買収した会社は当該自治体では半年間何もできなくなります
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :独占運送契約の締結: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :会社と街との間で独占運送契約を結ぶことが可能になります。この契約が締結されると、その街にあるすべての競争相手の停留施設は丸一年間、旅客・貨物問わず何も受け入れできなくなります
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :もし会社が独占運送契約を当該自治体と交わすと、競合他社は当該自治体で12ヶ月に渡り旅客と貨物を取り扱えなくなります。
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :もし会社が独占運送契約を当該自治体と交わすと、競合他社は当該自治体で12ヶ月に渡り旅客と貨物を取り扱えなくなります
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :街の開発に出資: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :街に新たなビルを建てるための開発資金を提供できるようになります。
@@ -1635,7 +1656,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :建設ツール
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :橋やトンネルなどを建設した後もツールバーを開いたままにします
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :線路の敷設中に自動的に信号を除去します: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :信号が経路上に存在する場合線路設置の際にすべて自動的に除去されます。鉄道車両の衝突につながる危険性があります。
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :信号が経路上に存在する場合線路設置の際にすべて自動的に除去されます。鉄道車両の衝突につながる危険性があります
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :ゲーム進行速度の加速制限: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :早送りが有効になっている場合のゲーム進行速度を制限します。0 = 制限なし(コンピュータの許す限り高速にする)。100%より下げると進行速度が遅くなります。制限の上限はコンピュータの仕様によって異なり、ゲームの設定にも依存します。
@@ -2104,7 +2125,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}バグ�
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}コミュニティ
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}チート
+STR_CHEATS                                                      :{WHITE}サンドボックスのオプション
 STR_CHEAT_MONEY                                                 :{LTBLUE}預金残高を{CURRENCY_LONG}増やす
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}会社: {ORANGE}{COMMA}を乗っ取ってプレイする
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}魔法のブルドーザー(産業拠点等、何でも撤去できる): {ORANGE}{STRING}
@@ -2645,6 +2666,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}駅の�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}任意のサイズ
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}ドラッグ&ドロップで任意のサイズの駅を建設します
 
+STR_PICKER_MODE_ALL                                             :すべて
 
 
 
@@ -2824,7 +2846,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}地図�
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}街の建設
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}新規街
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}新しい街を造成します。Shift+クリックで費用を見積もります
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}新しい街を設置します。Shift を同時に押すことで購入費を見積もれます
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}ランダムな街
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}ランダムなところに街を建設します
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}多くのランダムな街
@@ -3021,7 +3043,7 @@ STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE}
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}シミュレーションレート: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}一秒あたりに計算されるゲームのティック数。
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}グラフィックフレームレート：{STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}一秒あたりに描写されるフレームの数。
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}一秒あたりに描写されるフレームの数
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}現在のゲーム速度：{DECIMAL} x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}通常の速度に比べたゲーム進行速度の加速率
 STR_FRAMERATE_CURRENT                                           :{WHITE}現在
@@ -3297,6 +3319,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :線路の種類
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRFの可変60+xパラメーター (16進)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}スプライトを整列: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}スプライトを整列: アクション 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}スプライトを整列: アクション 0x5, 種類 {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}次のスプライト
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}次のノーマルスプライトに進みます。始端と終端は連続しているものとみなし、疑似/リカラー/フォントスプライトはスキップします
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}スプライトへ飛ぶ
@@ -3528,6 +3553,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}指定�
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :{DATE_SHORT} まで
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :{UNITS_MONTHS_OR_MINUTES}以内
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :{DATE_SHORT}まで
+STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :残り{UNITS_MONTHS_OR_MINUTES}
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} ゲーム背景
@@ -3691,7 +3717,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}本社�
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}本社ビルを見る
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}本社ビルのある場所を見ます
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}本社ビルを移動
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}本社ビルを移転します(費用は社の総資産の1%になります)。Shift+クリックで費用を見積もります
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}会社価値の1%の費用をかけて本社ビルを移転します。Shift を同時に押すことで購入費を見積もれます
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}詳細
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}インフラ設備の詳細な個数・タイル数を表示します
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}お金を渡す
@@ -3782,6 +3808,7 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}この�
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :輸送機器更新
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :回送して点検
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}収益(今年): {CURRENCY_LONG} (収益(去年): {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :列車庫へ回送
@@ -3853,6 +3880,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}最高�
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}最高速度: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}外洋/湖での航行速度: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}水路/川での航行速度: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}維持費: {GOLD}{CURRENCY_LONG}/年
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}収容量: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(改造可能)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}設計年: {GOLD}{NUM}{BLACK}　耐用年数: {GOLD}{COMMA}年
@@ -3897,16 +3925,16 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}船の�
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}航空機の購入と修理
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}選択した列車を購入します。Shift+クリックで購入費を見積もります
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}選択した車両を購入します。Shift+クリックで購入費を見積もります
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}選択した船舶を購入します。Shift+クリックで購入費を見積もります
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}選択した航空機を購入します。Shift+クリックで購入費を見積もります
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}選択した列車を購入します。Shift を同時に押すことで購入費を見積もれます
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}選択した車両を購入します。Shift を同時に押すことで購入費を見積もれます
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}選択した船舶を購入します。Shift を同時に押すことで購入費を見積もれます。
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}選択した航空機を購入します。Shift を同時に押すことで購入費を見積もれます
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}ハイライトされた車両を購入して改造します。Shift+クリックで購入はせずに推定コストを算出します。
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}ハイライトされた車両を購入して修理します。Shift+クリックで購入はせずに推定コストを算出します。
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}ハイライトされた船を購入して修理します。Shift +クリックすると、購入なしの推定コストが表示されます
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}ハイライトされた航空機を購入して再配置します。Shift +クリックすると、購入なしの推定コストが表示されます
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}ハイライトされた車両を購入して改造します。Shift を同時に押すことで購入費を見積もれます
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}ハイライトされた車両を購入して修理します。Shift を同時に押すことで購入費を見積もれます。
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}ハイライトされた船を購入して修理します。Shift を同時に押すことで購入費を見積もれます。
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}ハイライトされた航空機を購入して再配置します。Shift を同時に押すことで購入費を見積もれます。
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}名称を変更
@@ -4154,7 +4182,7 @@ STR_VEHICLE_STATUS_CRASHED                                      :{RED}事故!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}故障!
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}運用停止中
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}減速中　{VELOCITY}
-STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}動力がありません
+STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}動力車がありません
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}先の区間が空くのを待っています
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}次の目的地が遠すぎます
 
@@ -4209,9 +4237,12 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}収容�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}転送による部分払い: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}点検周期: {LTBLUE}{COMMA}{NBSP}日{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}点検周期: {LTBLUE}{COMMA}%{BLACK} {STRING}
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}点検周期の変更
 STR_VEHICLE_DETAILS_DEFAULT                                     :既定
+STR_VEHICLE_DETAILS_DAYS                                        :日
 STR_VEHICLE_DETAILS_PERCENT                                     :パーセント
 
 ###length VEHICLE_TYPES
@@ -4515,17 +4546,17 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}文字�
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AIのログメッセージと停止条件の文字列を比較する際に、大文字/小文字を区別するかどうかを切り替えます
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}再開
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}ポーズを解除し、AIを継続運用します
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}このAIのデバッグ出力を見ます
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}このAIのデバッグ出力を開きます。Ctrl + クリックで新規ウィンドウで開きます。
 STR_AI_GAME_SCRIPT                                              :{BLACK}ゲームスクリプト
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}ゲームスクリプトのログを確認します
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}ゲームスクリプトのログを確認します。Ctrl + クリックで新規ウィンドウで開きます。
 
 STR_ERROR_AI_NO_AI_FOUND                                        :適切なAIが見つかりません。{}このAIはダミーAIで何も行いません。{}AIは「オンラインコンテンツの確認」経由でダウンロード可能です
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}実行中のAIの一つがクラッシュしました。AIの作者にデバッグウインドウのスクリーンショットを付け、ご報告ください
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/ゲームスクリプトのデバッグウインドウはサーバーでのみ使用できます
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI 設定
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}ゲームスクリプトの構成
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AIの設定
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}ゲームスクリプトの設定
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}このゲームスクリプトは次のゲーム開始時からロードされます
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}このAIは次のゲーム開始時からロードされます
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人間のプレーヤー
@@ -4583,6 +4614,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}目次
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}テキストのラップ
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}ウィンドウ内のテキストをラップするだけでスクロールなしで領域に合うようになります
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readmeを見る
@@ -4592,6 +4624,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}ライ�
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING}のReadme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}の変更履歴
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING}のライセンス
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD のドキュメント '{STRING}'
 
 
 # Vehicle loading indicators
@@ -4653,7 +4686,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}リサ�
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}ソース地図をリサイズしすぎることはお勧めしません。地形作成を続けてもよろしいですか？
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}フェイルバック用の効果音セットしか見つかりませんでした。効果音セットは「オンラインコンテンツを確認」からダウンロード可能です
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}フォールバック用効果音セットのみが見つかりました。もし効果音が必要な場合は「オンラインコンテンツの確認」経由でダウンロード可能です
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}巨大なスクリーンショット
@@ -4718,7 +4751,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}会社�
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}会社の本社ビルを建設できません
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}街を開設できません
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}街を設置できません...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}街名を変更できません
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}ここには街を建設できません
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}街を拡大できません
@@ -4774,7 +4807,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}荷役�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}他の埠頭に近すぎます
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}他の空港に近すぎます
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}駅名を変更できません
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}これは街所有の道です
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... 道路は街が所有しています
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}道の向きが違います
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}路側型停留所は曲がり角には設置できません
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}路側型停留所は交差点には設置できません
