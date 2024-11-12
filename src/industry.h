@@ -343,4 +343,6 @@ enum IndustryDirectoryInvalidateWindowData {
 
 void TrimIndustryAcceptedProduced(Industry *ind);
 
+void RebuildTownIndustryCounts();
+
 #endif /* INDUSTRY_H */

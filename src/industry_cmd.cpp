@@ -201,6 +201,8 @@ Industry::~Industry()
 	for (Station *st : this->stations_near) {
 		st->RemoveIndustryToDeliver(this);
 	}
+
+	this->town->cache.industry_counts[this->type]--;
 }
 
 /**
@@ -1428,17 +1430,15 @@ static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
  * @pre \c *t != nullptr
  * @post \c *t points to a town on success, and \c nullptr on failure.
  */
-static CommandCost FindTownForIndustry(TileIndex tile, int type, Town **t)
+static CommandCost FindTownForIndustry(TileIndex tile, IndustryType type, Town **t)
 {
 	*t = ClosestTownFromTile(tile, UINT_MAX);
 
 	if (_settings_game.economy.multiple_industry_per_town) return CommandCost();
 
-	for (const Industry *i : Industry::Iterate()) {
-		if (i->type == (uint8_t)type && i->town == *t) {
-			*t = nullptr;
-			return_cmd_error(STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN);
-		}
+	if ((*t)->cache.industry_counts[type] != 0) {
+		*t = nullptr;
+		return_cmd_error(STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN);
 	}
 
 	return CommandCost();
@@ -1812,6 +1812,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	}
 
 	i->town = t;
+	t->cache.industry_counts[i->type]++;
 	i->owner = OWNER_NONE;
 
 	uint16_t r = Random();
@@ -3234,4 +3235,15 @@ void TrimIndustryAcceptedProduced(Industry *ind)
 	auto itp = std::find_if(std::rbegin(ind->produced), std::rend(ind->produced), [](const auto &p) { return IsValidCargoID(p.cargo); });
 	ind->produced.erase(itp.base(), std::end(ind->produced));
 	ind->produced.shrink_to_fit();
+}
+
+void RebuildTownIndustryCounts()
+{
+	for (Town *t : Town::Iterate()) {
+		std::ranges::fill(t->cache.industry_counts, 0);
+	}
+
+	for (const Industry *ind : Industry::Iterate()) {
+		ind->town->cache.industry_counts[ind->type]++;
+	}
 }

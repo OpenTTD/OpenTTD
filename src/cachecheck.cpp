@@ -47,6 +47,7 @@ void CheckCaches()
 
 	RebuildTownCaches();
 	RebuildSubsidisedSourceAndDestinationCache();
+	RebuildTownIndustryCounts();
 
 	uint i = 0;
 	for (Town *t : Town::Iterate()) {

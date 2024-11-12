@@ -16,6 +16,7 @@
 #include "subsidy_type.h"
 #include "newgrf_storage.h"
 #include "cargotype.h"
+#include "industry_type.h"
 
 template <typename T>
 struct BuildingCounts {
@@ -46,6 +47,7 @@ struct TownCache {
 	PartOfSubsidy part_of_subsidy;            ///< Is this town a source/destination of a subsidy?
 	std::array<uint32_t, HZB_END> squared_town_zone_radius; ///< UpdateTownRadius updates this given the house count
 	BuildingCounts<uint16_t> building_counts;   ///< The number of each type of building in the town
+	uint16_t industry_counts[NUM_INDUSTRYTYPES]; ///< The number of each type of industry in the town
 
 	auto operator<=>(const TownCache &) const = default;
 };

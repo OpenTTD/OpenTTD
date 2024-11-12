@@ -2059,6 +2059,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 	UpdateTownGrowthRate(t);
 	UpdateTownMaxPass(t);
 	UpdateAirportsNoise();
+	std::ranges::fill(t->cache.industry_counts, 0);
 }
 
 /**

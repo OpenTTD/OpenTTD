@@ -311,6 +311,8 @@ static void InitializeWindowsAndCaches()
 
 	/* Rebuild the smallmap list of owners. */
 	BuildOwnerLegend();
+
+	RebuildTownIndustryCounts();
 }
 
 typedef void (CDECL *SignalHandlerPointer)(int);
