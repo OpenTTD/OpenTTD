@@ -229,7 +229,6 @@ struct INDYChunkHandler : ChunkHandler {
 			} else if (IsSavegameVersionBefore(SLV_INDUSTRY_CARGO_REORGANISE)) {
 				LoadMoveAcceptsProduced(i, INDUSTRY_NUM_INPUTS, INDUSTRY_NUM_OUTPUTS);
 			}
-			Industry::IncIndustryTypeCount(i->type);
 		}
 	}
 
@@ -237,6 +236,7 @@ struct INDYChunkHandler : ChunkHandler {
 	{
 		for (Industry *i : Industry::Iterate()) {
 			SlObject(i, _industry_desc);
+			Industry::IncIndustryTypeCount(i);
 		}
 	}
 };

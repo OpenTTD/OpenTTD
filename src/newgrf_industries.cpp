@@ -145,12 +145,13 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 	} else {
 		/* Count only those who match the same industry type and layout filter
 		 * Unfortunately, we have to do it manually */
-		for (const Industry *i : Industry::Iterate()) {
-			if (i->type == ind_index && i != current && (i->selected_layout == layout_filter || layout_filter == 0) && (!town_filter || i->town == current->town)) {
+		count = Industry::CountTownIndustriesOfTypeMatchingCondition(ind_index, town_filter ? current->town : nullptr, false, [&](const Industry *i) {
+			if (i != current && (layout_filter == 0 || i->selected_layout == layout_filter)) {
 				closest_dist = std::min(closest_dist, DistanceManhattan(current->location.tile, i->location.tile));
-				count++;
+				return true;
 			}
-		}
+			return false;
+		});
 	}
 
 	return count << 16 | GB(closest_dist, 0, 16);

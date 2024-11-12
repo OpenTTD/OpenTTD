@@ -63,7 +63,7 @@ void BuildOilRig(TileIndex tile);
 static uint8_t _industry_sound_ctr;
 static TileIndex _industry_sound_tile;
 
-uint16_t Industry::counts[NUM_INDUSTRYTYPES];
+std::array<std::vector<std::pair<TownID, std::vector<IndustryID>>>, NUM_INDUSTRYTYPES> Industry::counts;
 
 IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
@@ -189,7 +189,7 @@ Industry::~Industry()
 	/* Clear the persistent storage. */
 	delete this->psa;
 
-	DecIndustryTypeCount(this->type);
+	DecIndustryTypeCount(this);
 
 	DeleteIndustryNews(this->index);
 	CloseWindowById(WC_INDUSTRY_VIEW, this->index);
@@ -1434,11 +1434,9 @@ static CommandCost FindTownForIndustry(TileIndex tile, IndustryType type, Town *
 
 	if (_settings_game.economy.multiple_industry_per_town) return CommandCost();
 
-	for (const Industry *i : Industry::Iterate()) {
-		if (i->type == type && i->town == *t) {
-			*t = nullptr;
-			return_cmd_error(STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN);
-		}
+	if (Industry::HasTownIndustryOfType(type, *t)) {
+		*t = nullptr;
+		return_cmd_error(STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN);
 	}
 
 	return CommandCost();
@@ -1787,7 +1785,6 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 
 	i->location = TileArea(tile, 1, 1);
 	i->type = type;
-	Industry::IncIndustryTypeCount(type);
 
 	for (size_t index = 0; index < std::size(indspec->produced_cargo); ++index) {
 		if (!IsValidCargoID(indspec->produced_cargo[index])) break;
@@ -1812,6 +1809,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	}
 
 	i->town = t;
+	Industry::IncIndustryTypeCount(i);
 	i->owner = OWNER_NONE;
 
 	uint16_t r = Random();

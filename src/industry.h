@@ -18,6 +18,7 @@
 #include "station_base.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
+#include "town.h"
 
 
 typedef Pool<Industry, IndustryID, 64, 64000> IndustryPool;
@@ -244,42 +245,193 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	static void PostDestructor(size_t index);
 
 	/**
-	 * Increment the count of industries for this type.
-	 * @param type IndustryType to increment
-	 * @pre type < NUM_INDUSTRYTYPES
+	 * Increment the count of industries of the specified type in a town.
+	 *
+	 * @param ind Pointer to the Industry to increment its type count in the town.
+	 * @pre ind != nullptr
 	 */
-	static inline void IncIndustryTypeCount(IndustryType type)
+	static inline void IncIndustryTypeCount(const Industry *ind)
 	{
-		assert(type < NUM_INDUSTRYTYPES);
-		counts[type]++;
+		assert(ind != nullptr);
+
+		/* Find the correct position to insert or update the town entry using lower_bound. */
+		auto &type_vector = counts[ind->type];
+		auto pair_it = std::ranges::lower_bound(type_vector, ind->town->index, {}, &std::pair<TownID, std::vector<IndustryID>>::first);
+
+		if (pair_it != std::end(type_vector) && pair_it->first == ind->town->index) {
+			/* Create a reference to the town's industry list. */
+			auto &iid_vector = pair_it->second;
+
+			/* Ensure the town's industry list is not empty. */
+			assert(!std::empty(iid_vector));
+
+			/* Ensure the industry is not already in the town's industry list. */
+			assert(std::ranges::all_of(iid_vector, [&](auto &iid) {
+				return iid != ind->index;
+			}));
+
+			/* Find the correct position to insert the industry ID in sorted order. */
+			auto iid_it = std::ranges::lower_bound(iid_vector, ind->index);
+
+			/* Add the industry ID to the town's industry list in the correct position. */
+			iid_vector.insert(iid_it, ind->index);
+		} else {
+			/* Create a new vector for the industry IDs and add the industry ID. */
+			std::vector<IndustryID> iid_vector;
+			iid_vector.emplace_back(ind->index);
+
+			/* Insert the new pair (town index and vector of industry IDs) into the correct position. */
+			type_vector.emplace(pair_it, ind->town->index, std::move(iid_vector));
+		}
 	}
 
 	/**
-	 * Decrement the count of industries for this type.
-	 * @param type IndustryType to decrement
+	 * Decrement the count of industries of the specified type in a town.
+	 *
+	 * @param ind Pointer to the Industry to decrement its type count in the town.
+	 * @pre ind != nullptr
+	 */
+	static inline void DecIndustryTypeCount(const Industry *ind)
+	{
+		assert(ind != nullptr);
+
+		/* Find the correct position of the town entry using lower_bound. */
+		auto &type_vector = counts[ind->type];
+		auto pair_it = std::ranges::lower_bound(type_vector, ind->town->index, {}, &std::pair<TownID, std::vector<IndustryID>>::first);
+
+		/* Ensure the pair was found in the array. */
+		assert(pair_it != std::end(type_vector) && pair_it->first == ind->town->index);
+
+		/* Create a reference to the town's industry list. */
+		auto &iid_vector = pair_it->second;
+
+		/* Ensure the town's industry list is not empty. */
+		assert(!std::empty(iid_vector));
+
+		/* Find the industry ID within the town's industry list. */
+		auto iid_it = std::ranges::lower_bound(iid_vector, ind->index);
+
+		/* Ensure the industry ID was found in the list. */
+		assert(iid_it != std::end(iid_vector) && *iid_it == ind->index);
+
+		/* Erase the industry ID from the town's industry list. */
+		iid_vector.erase(iid_it);
+
+		/* If the town's industry list is now empty, erase the town from the counts array. */
+		if (std::empty(iid_vector)) {
+			type_vector.erase(pair_it);
+		}
+	}
+
+private:
+	/**
+	 * Applies the function to each industry and counts those that satisfy the function.
+	 * Also verifies that all industries belong to the specified town.
+	 *
+	 * @param industries Vector of IndustryIDs to be processed.
+	 * @param town Pointer to the Town for validation.
+	 * @param return_early Return as soon as the count is different than zero.
+	 * @param func Function to apply to each industry.
+	 * @return The count of industries that satisfy the function.
+	 */
+	template<typename Func>
+	static inline uint16_t ProcessIndustries(const std::vector<IndustryID> &industries, [[maybe_unused]] const Town *town, bool return_early, Func func)
+	{
+		uint16_t count = 0;
+
+		for (const auto &iid : industries) {
+			const Industry *ind = Industry::Get(iid);
+
+			/* Verify the industry belongs to the specified town. */
+			assert(ind->town == town);
+
+			if (func(ind)) count++;
+			if (return_early && count != 0) break;
+		}
+
+		return count;
+	}
+
+public:
+	/**
+	 * Get the count of industries for a specified type in a town or in all towns.
+	 *
+	 * @param type IndustryType to query.
+	 * @param town Town to query, or nullptr to query all towns.
+	 * @param return_early Return as soon as the count is different than zero.
+	 * @param func Function to apply to each industry.
+	 * @return The count of industries for the specified type.
 	 * @pre type < NUM_INDUSTRYTYPES
 	 */
-	static inline void DecIndustryTypeCount(IndustryType type)
+	template<typename Func>
+	static inline uint16_t CountTownIndustriesOfTypeMatchingCondition(IndustryType type, const Town *town, bool return_early, Func func)
 	{
 		assert(type < NUM_INDUSTRYTYPES);
-		counts[type]--;
+
+		uint16_t count = 0;
+		if (town != nullptr) {
+			/* Find the correct position of the town entry using lower_bound. */
+			auto pair_it = std::ranges::lower_bound(counts[type], town->index, {}, &std::pair<TownID, std::vector<IndustryID>>::first);
+
+			if (pair_it != std::end(counts[type]) && pair_it->first == town->index) {
+				/* Create a reference to the town's industry list. */
+				auto &iid_vector = pair_it->second;
+
+				/* Ensure the town's industry list is not empty. */
+				assert(!std::empty(iid_vector));
+				count = ProcessIndustries(iid_vector, town, return_early, func);
+			}
+		} else {
+			/* Count industries in all towns. */
+			for (auto &pair : counts[type]) {
+				/* Create a reference to the town's industry list. */
+				auto &iid_vector = pair.second;
+
+				/* Ensure the town's industry list is not empty. */
+				assert(!std::empty(iid_vector));
+				count += ProcessIndustries(iid_vector, Town::Get(pair.first), return_early, func);
+				if (return_early && count != 0) break;
+			}
+		}
+
+		return count;
 	}
 
 	/**
-	 * Get the count of industries for this type.
-	 * @param type IndustryType to query
-	 * @pre type < NUM_INDUSTRYTYPES
+	 * Get the count of industries for a specified type.
+	 *
+	 * @param type The type of industry to count.
+	 * @return uint16_t The count of industries of the specified type.
 	 */
 	static inline uint16_t GetIndustryTypeCount(IndustryType type)
 	{
-		assert(type < NUM_INDUSTRYTYPES);
-		return counts[type];
+		return CountTownIndustriesOfTypeMatchingCondition(type, nullptr, false, [](const Industry *) { return true; });
 	}
 
-	/** Resets industry counts. */
+	/**
+	 * Check if a town has an industry of the specified type.
+	 *
+	 * @param type The type of industry to check for.
+	 * @param town Pointer to the town to check.
+	 * @return bool True if the town has an industry of the specified type, false otherwise.
+	 */
+	static inline bool HasTownIndustryOfType(IndustryType type, const Town *town)
+	{
+		assert(town != nullptr);
+
+		return CountTownIndustriesOfTypeMatchingCondition(type, town, true, [](const Industry *) { return true; }) != 0;
+	}
+
+	/**
+	 * Resets the industry counts for all industry types.
+	 *
+	 * Clears the vector of industry counts for each industry type,
+	 * effectively resetting the count of industries per type in all towns.
+	 */
 	static inline void ResetIndustryCounts()
 	{
-		memset(&counts, 0, sizeof(counts));
+		/* Clear the vector for each industry type in the counts array. */
+		std::ranges::for_each(counts, [](auto &type) { type.clear(); });
 	}
 
 	inline const std::string &GetCachedName() const
@@ -292,7 +444,12 @@ private:
 	void FillCachedName() const;
 
 protected:
-	static uint16_t counts[NUM_INDUSTRYTYPES]; ///< Number of industries per type ingame
+	/**
+	 * Array containing vectors of industry types.
+	 * Each vector corresponds to a specific IndustryType and
+	 * contains pairs of TownIDs and their associated lists of IndustryIDs.
+	 */
+	static std::array<std::vector<std::pair<TownID, std::vector<IndustryID>>>, NUM_INDUSTRYTYPES> counts;
 };
 
 void ClearAllIndustryCachedNames();
