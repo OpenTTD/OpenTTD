@@ -39,9 +39,45 @@ BasePersistentStorageArray::~BasePersistentStorageArray()
  * arrays, which saves quite a few clears, etc. after callbacks.
  * @param storage the array that has changed
  */
-void AddChangedPersistentStorage(BasePersistentStorageArray *storage)
+static void AddChangedPersistentStorage(BasePersistentStorageArray *storage)
 {
 	_changed_storage_arrays->insert(storage);
+}
+
+/**
+ * Stores some value at a given position.
+ * If there is no backup of the data that backup is made and then
+ * we write the data.
+ * @param pos   the position to write at
+ * @param value the value to write
+ */
+void PersistentStorageArray::StoreValue(uint pos, int32_t value)
+{
+	/* Out of the scope of the array */
+	if (pos >= PersistentStorageArray::SIZE) return;
+
+	if (pos >= std::size(this->storage)) {
+		if (value == 0) return;
+
+		this->storage.resize(pos + 1);
+	} else {
+		/* The value hasn't changed, so we pretend nothing happened.
+		 * Saves a few cycles and such and it's pretty easy to check. */
+		if (value == this->storage[pos]) return;
+	}
+
+	/* We do not have made a backup; lets do so */
+	if (AreChangesPersistent()) {
+		assert(!this->prev_storage);
+	} else if (!this->prev_storage) {
+		this->prev_storage = std::make_unique<StorageType>(this->storage);
+
+		/* We only need to register ourselves when we made the backup
+		 * as that is the only time something will have changed */
+		AddChangedPersistentStorage(this);
+	}
+
+	this->storage[pos] = value;
 }
 
 /**

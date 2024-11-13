@@ -2800,16 +2800,7 @@ bool AfterLoadGame()
 			for (Industry *ind : Industry::Iterate()) {
 				assert(ind->psa != nullptr);
 
-				/* Check if the old storage was empty. */
-				bool is_empty = true;
-				for (uint i = 0; i < sizeof(ind->psa->storage); i++) {
-					if (ind->psa->GetValue(i) != 0) {
-						is_empty = false;
-						break;
-					}
-				}
-
-				if (!is_empty) {
+				if (!ind->psa->storage.empty()) {
 					ind->psa->grfid = _industry_mngr.GetGRFID(ind->type);
 				} else {
 					delete ind->psa;
@@ -2823,21 +2814,11 @@ bool AfterLoadGame()
 				if (!(st->facilities & FACIL_AIRPORT)) continue;
 				assert(st->airport.psa != nullptr);
 
-				/* Check if the old storage was empty. */
-				bool is_empty = true;
-				for (uint i = 0; i < sizeof(st->airport.psa->storage); i++) {
-					if (st->airport.psa->GetValue(i) != 0) {
-						is_empty = false;
-						break;
-					}
-				}
-
-				if (!is_empty) {
+				if (!st->airport.psa->storage.empty()) {
 					st->airport.psa->grfid = _airport_mngr.GetGRFID(st->airport.type);
 				} else {
 					delete st->airport.psa;
 					st->airport.psa = nullptr;
-
 				}
 			}
 		}

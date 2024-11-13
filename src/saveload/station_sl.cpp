@@ -182,7 +182,8 @@ struct FlowSaveLoad {
 
 typedef std::pair<const StationID, std::list<CargoPacket *> > StationCargoPair;
 
-static OldPersistentStorage _old_st_persistent_storage;
+/** Old persistent storage for stations was a fixed array of 16 elements. */
+static std::array<int32_t, 16> _old_st_persistent_storage;
 
 /**
  * Swap the temporary packets with the packets without specific destination in
@@ -399,9 +400,7 @@ public:
 		/* Before savegame version 161, persistent storages were not stored in a pool. */
 		if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_145) && st->facilities & FACIL_AIRPORT) {
 			/* Store the old persistent storage. The GRFID will be added later. */
-			assert(PersistentStorage::CanAllocateItem());
-			st->airport.psa = new PersistentStorage(0, 0, TileIndex{});
-			std::copy(std::begin(_old_st_persistent_storage.storage), std::end(_old_st_persistent_storage.storage), std::begin(st->airport.psa->storage));
+			st->airport.psa = ConvertOldPersistentStorage(_old_st_persistent_storage);
 		}
 
 		auto end = std::next(std::begin(st->goods), std::min(this->GetNumCargo(), std::size(st->goods)));
@@ -610,7 +609,7 @@ public:
 		SLE_CONDVAR(Station, airport.layout,             SLE_UINT8,                 SLV_145, SL_MAX_VERSION),
 		    SLE_VAR(Station, airport.flags,              SLE_UINT64),
 		SLE_CONDVAR(Station, airport.rotation,           SLE_UINT8,                 SLV_145, SL_MAX_VERSION),
-		SLEG_CONDARR("storage", _old_st_persistent_storage.storage,  SLE_UINT32, 16, SLV_145, SLV_161),
+		SLEG_CONDARR("storage", _old_st_persistent_storage,  SLE_FILE_U32 | SLE_VAR_I32, 16, SLV_145, SLV_161),
 		SLE_CONDREF(Station, airport.psa,                REF_STORAGE,               SLV_161, SL_MAX_VERSION),
 
 		    SLE_VAR(Station, indtype,                    SLE_UINT8),
@@ -709,6 +708,7 @@ struct STNNChunkHandler : ChunkHandler {
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_station_desc, _station_sl_compat);
 
+		_old_st_persistent_storage.fill(0);
 		_old_num_flows = 0;
 
 		int index;
