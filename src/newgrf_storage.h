@@ -60,12 +60,11 @@ private:
 /**
  * Class for persistent storage of data.
  * On #ClearChanges that data is either reverted or saved.
- * @tparam TYPE the type of variable to store.
  * @tparam SIZE the size of the array.
  */
-template <typename TYPE, uint SIZE>
+template <uint SIZE>
 struct PersistentStorageArray : BasePersistentStorageArray {
-	using StorageType = std::array<TYPE, SIZE>;
+	using StorageType = std::array<int32_t, SIZE>;
 
 	StorageType storage{}; ///< Memory for the storage array
 	std::unique_ptr<StorageType> prev_storage{}; ///< Temporary memory to store previous state so it can be reverted, e.g. for command tests.
@@ -105,7 +104,7 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 	 * @param pos the position to get the data from
 	 * @return the data from that position
 	 */
-	TYPE GetValue(uint pos) const
+	int32_t GetValue(uint pos) const
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return 0;
@@ -126,12 +125,11 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 /**
  * Class for temporary storage of data.
  * On #ClearChanges that data is always zero-ed.
- * @tparam TYPE the type of variable to store.
- * @tparam SIZE the size of the array.
  */
-template <typename TYPE, uint SIZE>
 struct TemporaryStorageArray {
-	using StorageType = std::array<TYPE, SIZE>;
+	static constexpr size_t SIZE = 0x110;
+
+	using StorageType = std::array<int32_t, SIZE>;
 	using StorageInitType = std::array<uint16_t, SIZE>;
 
 	StorageType storage{}; ///< Memory for the storage array
@@ -143,7 +141,7 @@ struct TemporaryStorageArray {
 	 * @param pos   the position to write at
 	 * @param value the value to write
 	 */
-	void StoreValue(uint pos, int32_t value)
+	inline void StoreValue(uint pos, int32_t value)
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return;
@@ -157,7 +155,7 @@ struct TemporaryStorageArray {
 	 * @param pos the position to get the data from
 	 * @return the data from that position
 	 */
-	TYPE GetValue(uint pos) const
+	inline int32_t GetValue(uint pos) const
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return 0;
@@ -170,7 +168,7 @@ struct TemporaryStorageArray {
 		return this->storage[pos];
 	}
 
-	void ClearChanges()
+	inline void ClearChanges()
 	{
 		/* Increment init_key to invalidate all storage */
 		this->init_key++;
@@ -184,7 +182,7 @@ struct TemporaryStorageArray {
 
 void AddChangedPersistentStorage(BasePersistentStorageArray *storage);
 
-typedef PersistentStorageArray<int32_t, 16> OldPersistentStorage;
+typedef PersistentStorageArray<16> OldPersistentStorage;
 
 typedef uint32_t PersistentStorageID;
 
@@ -196,7 +194,7 @@ extern PersistentStoragePool _persistent_storage_pool;
 /**
  * Class for pooled persistent storage of data.
  */
-struct PersistentStorage : PersistentStorageArray<int32_t, 256>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
+struct PersistentStorage : PersistentStorageArray<256>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	PersistentStorage(const uint32_t new_grfid, uint8_t feature, TileIndex tile)
 	{

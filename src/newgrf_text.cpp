@@ -797,7 +797,7 @@ void RestoreTextRefStackBackup(struct TextRefStack *backup)
  */
 void StartTextRefStackUsage(const GRFFile *grffile, uint8_t numEntries, const uint32_t *values)
 {
-	extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
+	extern TemporaryStorageArray _temp_store;
 
 	_newgrf_textrefstack.ResetStack(grffile);
 

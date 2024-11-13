@@ -18,7 +18,7 @@
 SpriteGroupPool _spritegroup_pool("SpriteGroup");
 INSTANTIATE_POOL_METHODS(SpriteGroup)
 
-TemporaryStorageArray<int32_t, 0x110> _temp_store;
+TemporaryStorageArray _temp_store;
 
 
 /**
