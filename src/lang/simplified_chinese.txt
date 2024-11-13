@@ -54,7 +54,7 @@ STR_CARGO_PLURAL_CANDYFLOSS                                     :棉花糖
 STR_CARGO_PLURAL_BUBBLES                                        :泡泡
 STR_CARGO_PLURAL_TOFFEE                                         :太妃糖
 STR_CARGO_PLURAL_BATTERIES                                      :电池
-STR_CARGO_PLURAL_PLASTIC                                        :塑料块
+STR_CARGO_PLURAL_PLASTIC                                        :塑料
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :汽水
 
 # Singular cargo name
@@ -69,7 +69,7 @@ STR_CARGO_SINGULAR_GRAIN                                        :谷物
 STR_CARGO_SINGULAR_WOOD                                         :木材
 STR_CARGO_SINGULAR_IRON_ORE                                     :铁矿石
 STR_CARGO_SINGULAR_STEEL                                        :钢材
-STR_CARGO_SINGULAR_VALUABLES                                    :金块
+STR_CARGO_SINGULAR_VALUABLES                                    :贵重品
 STR_CARGO_SINGULAR_COPPER_ORE                                   :铜矿石
 STR_CARGO_SINGULAR_MAIZE                                        :玉米
 STR_CARGO_SINGULAR_FRUIT                                        :水果
