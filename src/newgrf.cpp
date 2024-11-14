@@ -3380,7 +3380,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 						tsp->accepts_cargo[i] = INVALID_CARGO;
 						tsp->acceptance[i] = 0;
 					}
-					tsp->accepts_cargo_label[i] = CT_INVALID;
+					if (i < std::size(tsp->accepts_cargo_label)) tsp->accepts_cargo_label[i] = CT_INVALID;
 				}
 				break;
 			}
@@ -3821,7 +3821,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 					} else {
 						indsp->produced_cargo[i] = INVALID_CARGO;
 					}
-					indsp->produced_cargo_label[i] = CT_INVALID;
+					if (i < std::size(indsp->produced_cargo_label)) indsp->produced_cargo_label[i] = CT_INVALID;
 				}
 				break;
 			}
@@ -3840,7 +3840,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 					} else {
 						indsp->accepts_cargo[i] = INVALID_CARGO;
 					}
-					indsp->accepts_cargo_label[i] = CT_INVALID;
+					if (i < std::size(indsp->accepts_cargo_label)) indsp->accepts_cargo_label[i] = CT_INVALID;
 				}
 				break;
 			}
@@ -9457,17 +9457,17 @@ static void FinaliseIndustriesArray()
 		}
 
 		/* Apply default cargo translation map for unset cargo slots */
-		for (size_t i = 0; i < std::size(indsp.produced_cargo); ++i) {
+		for (size_t i = 0; i < std::size(indsp.produced_cargo_label); ++i) {
 			if (!IsValidCargoID(indsp.produced_cargo[i])) indsp.produced_cargo[i] = GetCargoIDByLabel(GetActiveCargoLabel(indsp.produced_cargo_label[i]));
 		}
-		for (size_t i = 0; i < std::size(indsp.accepts_cargo); ++i) {
+		for (size_t i = 0; i < std::size(indsp.accepts_cargo_label); ++i) {
 			if (!IsValidCargoID(indsp.accepts_cargo[i])) indsp.accepts_cargo[i] = GetCargoIDByLabel(GetActiveCargoLabel(indsp.accepts_cargo_label[i]));
 		}
 	}
 
 	for (auto &indtsp : _industry_tile_specs) {
 		/* Apply default cargo translation map for unset cargo slots */
-		for (size_t i = 0; i < indtsp.accepts_cargo.size(); ++i) {
+		for (size_t i = 0; i < std::size(indtsp.accepts_cargo_label); ++i) {
 			if (!IsValidCargoID(indtsp.accepts_cargo[i])) indtsp.accepts_cargo[i] = GetCargoIDByLabel(GetActiveCargoLabel(indtsp.accepts_cargo_label[i]));
 		}
 	}
