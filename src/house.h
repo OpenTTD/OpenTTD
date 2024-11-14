@@ -101,7 +101,6 @@ struct HouseSpec {
 	uint8_t mail_generation;                     ///< mail generation multiplier (tile based, as the acceptances below)
 	uint8_t cargo_acceptance[HOUSE_NUM_ACCEPTS]; ///< acceptance level for the cargo slots
 	CargoID accepts_cargo[HOUSE_NUM_ACCEPTS]; ///< input cargo slots
-	CargoLabel accepts_cargo_label[HOUSE_NUM_ACCEPTS]; ///< input landscape cargo slots
 	BuildingFlags building_flags;             ///< some flags that describe the house (size, stadium etc...)
 	HouseZones building_availability;         ///< where can it be built (climates, zones)
 	bool enabled;                             ///< the house is available to build (true by default, but can be disabled by newgrf)
@@ -117,6 +116,8 @@ struct HouseSpec {
 	uint8_t processing_time;                     ///< Periodic refresh multiplier
 	uint8_t minimum_life;                        ///< The minimum number of years this house will survive before the town rebuilds it
 	CargoTypes watched_cargoes;               ///< Cargo types watched for acceptance.
+
+	CargoLabel accepts_cargo_label[HOUSE_ORIGINAL_NUM_ACCEPTS]; ///< input landscape cargo slots
 
 	HouseID Index() const;
 	Money GetRemovalCost() const;

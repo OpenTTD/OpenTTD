@@ -2639,7 +2639,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 						housespec->accepts_cargo[i] = INVALID_CARGO;
 						housespec->cargo_acceptance[i] = 0;
 					}
-					housespec->accepts_cargo_label[i] = CT_INVALID;
+					if (i < std::size(housespec->accepts_cargo_label)) housespec->accepts_cargo_label[i] = CT_INVALID;
 				}
 				break;
 			}
@@ -9376,7 +9376,7 @@ static void FinaliseHouseArray()
 		}
 
 		/* Apply default cargo translation map for unset cargo slots */
-		for (uint i = 0; i < lengthof(hs->accepts_cargo); ++i) {
+		for (uint i = 0; i < lengthof(hs->accepts_cargo_label); ++i) {
 			if (!IsValidCargoID(hs->accepts_cargo[i])) hs->accepts_cargo[i] = GetCargoIDByLabel(hs->accepts_cargo_label[i]);
 			/* Disable acceptance if cargo type is invalid. */
 			if (!IsValidCargoID(hs->accepts_cargo[i])) hs->cargo_acceptance[i] = 0;
