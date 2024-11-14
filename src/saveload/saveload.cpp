@@ -565,6 +565,7 @@ static uint8_t GetSavegameFileType(const SaveLoad &sld)
 			return IsSavegameVersionBefore(SLV_69) ? SLE_FILE_U16 : SLE_FILE_U32;
 
 		case SL_REFLIST:
+		case SL_REFVECTOR:
 			return (IsSavegameVersionBefore(SLV_69) ? SLE_FILE_U16 : SLE_FILE_U32) | SLE_FILE_HAS_LENGTH_FIELD;
 
 		case SL_SAVEBYTE:
@@ -1353,6 +1354,33 @@ static void SlRefList(void *list, VarType conv)
 }
 
 /**
+ * Return the size in bytes of a vector.
+ * @param vector The std::vector to find the size of.
+ * @param conv VarType type of variable that is used for calculating the size.
+ */
+static size_t SlCalcRefVectorLen(const void *vector, VarType conv)
+{
+	return SlStorageHelper<std::vector, void *>::SlCalcLen(vector, conv, SL_REF);
+}
+
+/**
+ * Save/Load a vector.
+ * @param vector The vector being manipulated.
+ * @param conv VarType type of variable that is used for calculating the size.
+ */
+static void SlRefVector(void *vector, VarType conv)
+{
+	/* Automatically calculate the length? */
+	if (_sl.need_length != NL_NONE) {
+		SlSetLength(SlCalcRefVectorLen(vector, conv));
+		/* Determine length only? */
+		if (_sl.need_length == NL_CALCLENGTH) return;
+	}
+
+	SlStorageHelper<std::vector, void *>::SlSaveLoad(vector, conv, SL_REF);
+}
+
+/**
  * Return the size in bytes of a std::deque.
  * @param deque The std::deque to find the size of
  * @param conv VarType type of variable that is used for calculating the size
@@ -1530,6 +1558,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 		case SL_REF: return SlCalcRefLen();
 		case SL_ARR: return SlCalcArrayLen(sld.length, sld.conv);
 		case SL_REFLIST: return SlCalcRefListLen(GetVariableAddress(object, sld), sld.conv);
+		case SL_REFVECTOR: return SlCalcRefVectorLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_VECTOR: return SlCalcVectorLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_STDSTR: return SlCalcStdStringLen(GetVariableAddress(object, sld));
@@ -1575,6 +1604,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 		case SL_REF:
 		case SL_ARR:
 		case SL_REFLIST:
+		case SL_REFVECTOR:
 		case SL_DEQUE:
 		case SL_VECTOR:
 		case SL_STDSTR: {
@@ -1585,6 +1615,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 				case SL_REF: SlSaveLoadRef(ptr, conv); break;
 				case SL_ARR: SlArray(ptr, sld.length, conv); break;
 				case SL_REFLIST: SlRefList(ptr, conv); break;
+				case SL_REFVECTOR: SlRefVector(ptr, conv); break;
 				case SL_DEQUE: SlDeque(ptr, conv); break;
 				case SL_VECTOR: SlVector(ptr, conv); break;
 				case SL_STDSTR: SlStdString(ptr, sld.conv); break;
