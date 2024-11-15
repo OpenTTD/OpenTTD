@@ -431,7 +431,7 @@ inline bool IsHangarTile(Tile t)
 inline bool IsStationTileBlocked(Tile t)
 {
 	assert(HasStationRail(t));
-	return HasBit(t.m6(), 0);
+	return HasBit(t.m3(), 0);
 }
 
 /**
@@ -443,7 +443,7 @@ inline bool IsStationTileBlocked(Tile t)
 inline void SetStationTileBlocked(Tile t, bool b)
 {
 	assert(HasStationRail(t));
-	AssignBit(t.m6(), 0, b);
+	AssignBit(t.m3(), 0, b);
 }
 
 /**
@@ -455,7 +455,7 @@ inline void SetStationTileBlocked(Tile t, bool b)
 inline bool CanStationTileHaveWires(Tile t)
 {
 	assert(HasStationRail(t));
-	return HasBit(t.m6(), 1);
+	return HasBit(t.m3(), 1);
 }
 
 /**
@@ -467,7 +467,7 @@ inline bool CanStationTileHaveWires(Tile t)
 inline void SetStationTileHaveWires(Tile t, bool b)
 {
 	assert(HasStationRail(t));
-	AssignBit(t.m6(), 1, b);
+	AssignBit(t.m3(), 1, b);
 }
 
 /**
@@ -479,7 +479,7 @@ inline void SetStationTileHaveWires(Tile t, bool b)
 inline bool CanStationTileHavePylons(Tile t)
 {
 	assert(HasStationRail(t));
-	return HasBit(t.m6(), 7);
+	return HasBit(t.m3(), 2);
 }
 
 /**
@@ -491,7 +491,7 @@ inline bool CanStationTileHavePylons(Tile t)
 inline void SetStationTileHavePylons(Tile t, bool b)
 {
 	assert(HasStationRail(t));
-	AssignBit(t.m6(), 7, b);
+	AssignBit(t.m3(), 2, b);
 }
 
 /**
