@@ -3606,8 +3606,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 							definition_size = UINT32_MAX;
 						}
 
-						layout.push_back(IndustryTileLayoutTile{});
-						IndustryTileLayoutTile &it = layout.back();
+						IndustryTileLayoutTile &it = layout.emplace_back();
 
 						it.ti.x = buf.ReadByte(); // Offsets from northermost tile
 						++bytes_read;

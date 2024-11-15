@@ -77,8 +77,8 @@ public:
 
 			/* Build edge list from edge matrix. */
 			for (NodeID to = edges[_linkgraph_from].dest_node; to != INVALID_NODE; to = edges[to].dest_node) {
-				bn->edges.push_back(edges[to]);
-				bn->edges.back().dest_node = to;
+				auto &edge = bn->edges.emplace_back(edges[to]);
+				edge.dest_node = to;
 			}
 			/* Sort by destination. */
 			std::sort(bn->edges.begin(), bn->edges.end());
