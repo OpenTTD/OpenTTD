@@ -210,8 +210,7 @@ static bool ReadTrackChunk(FileHandle &file, MidiFile &target)
 		return false;
 	}
 
-	target.blocks.push_back(MidiFile::DataBlock());
-	MidiFile::DataBlock *block = &target.blocks.back();
+	MidiFile::DataBlock *block = &target.blocks.emplace_back();
 
 	uint8_t last_status = 0;
 	bool running_sysex = false;
@@ -222,8 +221,7 @@ static bool ReadTrackChunk(FileHandle &file, MidiFile &target)
 			return false;
 		}
 		if (deltatime > 0) {
-			target.blocks.push_back(MidiFile::DataBlock(block->ticktime + deltatime));
-			block = &target.blocks.back();
+			block = &target.blocks.emplace_back(block->ticktime + deltatime);
 		}
 
 		/* Read status byte */
@@ -792,8 +790,7 @@ struct MpsMachine {
 		 * a maximum (about 10 minutes) avoids getting stuck,
 		 * in case of corrupted data. */
 		for (uint32_t tick = 0; tick < 100000; tick += 1) {
-			this->target.blocks.push_back(MidiFile::DataBlock());
-			auto &block = this->target.blocks.back();
+			auto &block = this->target.blocks.emplace_back();
 			block.ticktime = tick;
 			if (!this->PlayFrame(block)) {
 				break;
