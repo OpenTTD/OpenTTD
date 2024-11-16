@@ -9,7 +9,6 @@
 
 #include "../../stdafx.h"
 #include "../../ship.h"
-#include "../../industry.h"
 #include "../../vehicle_func.h"
 
 #include "yapf.hpp"
