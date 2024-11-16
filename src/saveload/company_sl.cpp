@@ -136,7 +136,7 @@ void AfterLoadCompanyStats()
 	}
 
 	Company *c;
-	for (const auto tile : Map::Iterate()) {
+	for (const auto tile : Map::IterateIndex()) {
 		switch (GetTileType(tile)) {
 			case TileType::Railway:
 				c = Company::GetIfValid(GetTileOwner(tile));

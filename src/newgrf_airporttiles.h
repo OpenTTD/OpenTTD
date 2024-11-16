@@ -78,7 +78,7 @@ struct AirportTileSpec {
 	std::vector<BadgeID> badges;
 
 	static const AirportTileSpec *Get(StationGfx gfx);
-	static const AirportTileSpec *GetByTile(TileIndex tile);
+	static const AirportTileSpec *GetByTile(Tile tile);
 
 	static void ResetAirportTiles();
 

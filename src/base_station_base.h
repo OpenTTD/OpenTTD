@@ -164,7 +164,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	 * @param tile The tile to get the base station from.
 	 * @return the station associated with that tile.
 	 */
-	static inline BaseStation *GetByTile(TileIndex tile)
+	static inline BaseStation *GetByTile(Tile tile)
 	{
 		return BaseStation::Get(GetStationIndex(tile));
 	}
@@ -274,7 +274,7 @@ struct SpecializedStation : public BaseStation {
 	 * @param tile The tile to get the station from.
 	 * @return the station associated with that tile.
 	 */
-	static inline T *GetByTile(TileIndex tile)
+	static inline T *GetByTile(Tile tile)
 	{
 		return GetIfValid(GetStationIndex(tile));
 	}

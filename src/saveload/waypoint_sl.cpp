@@ -103,10 +103,11 @@ void MoveWaypointsToBaseStations()
 		if (!IsTileType(t, TileType::Railway) || GetRailTileType(t) != RailTileType{2} /* RAIL_TILE_WAYPOINT */ || Tile(t).m2() != wp.index) {
 			Debug(sl, 0, "Found waypoint tile {} with invalid position", t);
 			t = INVALID_TILE;
-			for (auto tile : Map::Iterate()) {
+			for (auto index : Map::IterateIndex()) {
+				Tile tile(index);
 				if (IsTileType(tile, TileType::Railway) && GetRailTileType(tile) == RailTileType{2} /* RAIL_TILE_WAYPOINT */ && tile.m2() == wp.index) {
-					t = TileIndex(tile);
-					Debug(sl, 0, "Found actual waypoint position at {}", TileIndex(tile));
+					t = index;
+					Debug(sl, 0, "Found actual waypoint position at {}", index);
 					break;
 				}
 			}
@@ -140,7 +141,7 @@ void MoveWaypointsToBaseStations()
 			if (specindex.has_value()) AssignSpecToStation(wp.spec, new_wp, *specindex);
 			SetCustomStationSpecIndex(tile, specindex.value_or(0));
 		}
-		new_wp->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
+		new_wp->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
 
 		wp.new_index = new_wp->index;
 	}

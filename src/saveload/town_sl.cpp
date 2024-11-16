@@ -77,7 +77,7 @@ void UpdateHousesAndTowns()
 	}
 
 	/* Check for cases when a NewGRF has set a wrong house substitute type. */
-	for (const TileIndex &t : Map::Iterate()) {
+	for (const TileIndex &t : Map::IterateIndex()) {
 		if (!IsTileType(t, TileType::House)) continue;
 
 		HouseID house_type = GetCleanHouseType(t);

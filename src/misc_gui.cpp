@@ -110,7 +110,7 @@ public:
 		}
 	}
 
-	LandInfoWindow(Tile tile) : Window(_land_info_desc), tile(tile)
+	LandInfoWindow(TileIndex tile) : Window(_land_info_desc), tile(tile)
 	{
 		this->InitNested();
 
@@ -119,17 +119,18 @@ public:
 #else
 #	define LANDINFOD_LEVEL 1
 #endif
-		Debug(misc, LANDINFOD_LEVEL, "TILE: {0} (0x{0:x}) ({1},{2})", (TileIndex)tile, TileX(tile), TileY(tile));
-		Debug(misc, LANDINFOD_LEVEL, "type   = 0x{:x}", tile.type());
-		Debug(misc, LANDINFOD_LEVEL, "height = 0x{:x}", tile.height());
-		Debug(misc, LANDINFOD_LEVEL, "m1     = 0x{:x}", tile.m1());
-		Debug(misc, LANDINFOD_LEVEL, "m2     = 0x{:x}", tile.m2());
-		Debug(misc, LANDINFOD_LEVEL, "m3     = 0x{:x}", tile.m3());
-		Debug(misc, LANDINFOD_LEVEL, "m4     = 0x{:x}", tile.m4());
-		Debug(misc, LANDINFOD_LEVEL, "m5     = 0x{:x}", tile.m5());
-		Debug(misc, LANDINFOD_LEVEL, "m6     = 0x{:x}", tile.m6());
-		Debug(misc, LANDINFOD_LEVEL, "m7     = 0x{:x}", tile.m7());
-		Debug(misc, LANDINFOD_LEVEL, "m8     = 0x{:x}", tile.m8());
+		Tile t(tile);
+		Debug(misc, LANDINFOD_LEVEL, "TILE: {0} (0x{0:x}) ({1},{2})", tile.base(), TileX(tile), TileY(tile));
+		Debug(misc, LANDINFOD_LEVEL, "type   = 0x{:x}", t.type());
+		Debug(misc, LANDINFOD_LEVEL, "height = 0x{:x}", t.height());
+		Debug(misc, LANDINFOD_LEVEL, "m1     = 0x{:x}", t.m1());
+		Debug(misc, LANDINFOD_LEVEL, "m2     = 0x{:x}", t.m2());
+		Debug(misc, LANDINFOD_LEVEL, "m3     = 0x{:x}", t.m3());
+		Debug(misc, LANDINFOD_LEVEL, "m4     = 0x{:x}", t.m4());
+		Debug(misc, LANDINFOD_LEVEL, "m5     = 0x{:x}", t.m5());
+		Debug(misc, LANDINFOD_LEVEL, "m6     = 0x{:x}", t.m6());
+		Debug(misc, LANDINFOD_LEVEL, "m7     = 0x{:x}", t.m7());
+		Debug(misc, LANDINFOD_LEVEL, "m8     = 0x{:x}", t.m8());
 
 		PrintWaterRegionDebugInfo(tile);
 #undef LANDINFOD_LEVEL

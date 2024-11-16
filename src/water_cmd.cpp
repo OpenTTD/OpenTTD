@@ -172,11 +172,11 @@ CommandCost CmdBuildShipDepot(DoCommandFlags flags, TileIndex tile, Axis axis)
 
 /**
  * Check whether it is feasible that the given tile could be a docking tile.
- * @param t The tile to query.
+ * @param t The index of the tile to query.
  * @return \c true iff there is a chance the tile could be a docking tile.
  * @see CheckForDockingTile
  */
-bool IsPossibleDockingTile(Tile t)
+bool IsPossibleDockingTile(TileIndex t)
 {
 	assert(IsValidTile(t));
 	switch (GetTileType(t)) {
@@ -1350,7 +1350,7 @@ void TileLoop_Water(TileIndex tile)
 
 void ConvertGroundTilesIntoWaterTiles()
 {
-	for (const auto tile : Map::Iterate()) {
+	for (const auto tile : Map::IterateIndex()) {
 		auto [slope, z] = GetTileSlopeZ(tile);
 		if (IsTileType(tile, TileType::Clear) && z == 0) {
 			/* Make both water for tiles at level 0

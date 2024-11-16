@@ -890,7 +890,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 }
 
 
-const StationSpec *GetStationSpec(TileIndex t)
+const StationSpec *GetStationSpec(Tile t)
 {
 	if (!IsCustomStationSpecIndex(t)) return nullptr;
 

@@ -28,7 +28,7 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	Depot(DepotID index, TileIndex xy = INVALID_TILE) : DepotPool::PoolItem<&_depot_pool>(index), xy(xy), build_date(TimerGameCalendar::date) {}
 	~Depot();
 
-	static inline Depot *GetByTile(TileIndex tile)
+	static inline Depot *GetByTile(Tile tile)
 	{
 		return Depot::Get(GetDepotIndex(tile));
 	}

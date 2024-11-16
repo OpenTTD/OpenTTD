@@ -49,7 +49,7 @@ AirportTileOverrideManager _airporttile_mngr(NEW_AIRPORTTILE_OFFSET, NUM_AIRPORT
  * @param tile The airport tile.
  * @return A pointer to the corresponding AirportTileSpec.
  */
-/* static */ const AirportTileSpec *AirportTileSpec::GetByTile(TileIndex tile)
+/* static */ const AirportTileSpec *AirportTileSpec::GetByTile(Tile tile)
 {
 	return AirportTileSpec::Get(GetAirportGfx(tile));
 }

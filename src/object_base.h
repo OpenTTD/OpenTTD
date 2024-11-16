@@ -34,7 +34,7 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 	/** Make sure the right destructor is called as well! */
 	~Object() {}
 
-	static Object *GetByTile(TileIndex tile);
+	static Object *GetByTile(Tile tile);
 
 	/**
 	 * Increment the count of objects for this type.

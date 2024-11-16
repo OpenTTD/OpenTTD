@@ -133,7 +133,7 @@ Town::~Town()
 	}
 
 	/* Check no tile is related to us. */
-	for (const auto tile : Map::Iterate()) {
+	for (const auto tile : Map::IterateIndex()) {
 		switch (GetTileType(tile)) {
 			case TileType::House:
 				assert(GetTownIndex(tile) != this->index);
@@ -3362,7 +3362,7 @@ CommandCost CmdDeleteTown(DoCommandFlags flags, TownID town_id)
 	 * these do not directly have an owner so we need to check adjacent
 	 * tiles. This won't work correctly in the same loop if the adjacent
 	 * tile was already deleted earlier in the loop. */
-	for (const auto current_tile : Map::Iterate()) {
+	for (const auto current_tile : Map::IterateIndex()) {
 		if (IsTileType(current_tile, TileType::TunnelBridge) && TestTownOwnsBridge(current_tile, t)) {
 			CommandCost ret = Command<Commands::LandscapeClear>::Do(flags, current_tile);
 			if (ret.Failed()) return ret;
@@ -3370,7 +3370,7 @@ CommandCost CmdDeleteTown(DoCommandFlags flags, TownID town_id)
 	}
 
 	/* Check all remaining tiles for town ownership. */
-	for (const auto current_tile : Map::Iterate()) {
+	for (const auto current_tile : Map::IterateIndex()) {
 		bool try_clear = false;
 		switch (GetTileType(current_tile)) {
 			case TileType::Road:

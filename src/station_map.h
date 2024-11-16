@@ -839,10 +839,10 @@ inline void MakeBuoy(Tile t, StationID sid, WaterClass wc)
  * @param d the direction of the dock
  * @param wc the type of water on this tile
  */
-inline void MakeDock(Tile t, Owner o, StationID sid, DiagDirection d, WaterClass wc)
+inline void MakeDock(TileIndex t, Owner o, StationID sid, DiagDirection d, WaterClass wc)
 {
 	MakeStation(t, o, sid, StationType::Dock, d);
-	MakeStation(TileIndex(t) + TileOffsByDiagDir(d), o, sid, StationType::Dock, GFX_DOCK_BASE_WATER_PART + DiagDirToAxis(d), wc);
+	MakeStation(t + TileOffsByDiagDir(d), o, sid, StationType::Dock, GFX_DOCK_BASE_WATER_PART + DiagDirToAxis(d), wc);
 }
 
 /**

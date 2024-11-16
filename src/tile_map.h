@@ -28,7 +28,7 @@
  */
 [[debug_inline]] inline static uint TileHeight(Tile tile)
 {
-	assert(tile < Map::Size());
+	assert(tile.IsValid());
 	return tile.height();
 }
 
@@ -56,7 +56,7 @@ inline uint TileHeightOutsideMap(int x, int y)
  */
 inline void SetTileHeight(Tile tile, uint height)
 {
-	assert(tile < Map::Size());
+	assert(tile.IsValid());
 	assert(height <= MAX_TILE_HEIGHT);
 	tile.height() = height;
 }
@@ -95,7 +95,7 @@ inline uint TilePixelHeightOutsideMap(int x, int y)
  */
 [[debug_inline]] inline static TileType GetTileType(Tile tile)
 {
-	assert(tile < Map::Size());
+	assert(tile.IsValid());
 	return TileType(GB(tile.type(), 4, TILE_TYPE_BITS));
 }
 
@@ -106,7 +106,7 @@ inline uint TilePixelHeightOutsideMap(int x, int y)
  * @return Whether the tile is in the interior of the map
  * @pre tile < Map::Size()
  */
-inline bool IsInnerTile(Tile tile)
+inline bool IsInnerTile(TileIndex tile)
 {
 	assert(tile < Map::Size());
 
@@ -130,11 +130,7 @@ inline bool IsInnerTile(Tile tile)
  */
 inline void SetTileType(Tile tile, TileType type)
 {
-	assert(tile < Map::Size());
-	/* VOID tiles (and no others) are exactly allowed at the lower left and right
-	 * edges of the map. If _settings_game.construction.freeform_edges is true,
-	 * the upper edges of the map are also VOID tiles. */
-	assert(IsInnerTile(tile) == (type != TileType::Void));
+	assert(tile.IsValid());
 	SB(tile.type(), 4, TILE_TYPE_BITS, to_underlying(type));
 }
 
@@ -158,9 +154,20 @@ inline void SetTileType(Tile tile, TileType type)
  * @param tile The tile to check
  * @return True if the tile is on the map and not one of TileType::Void.
  */
-inline bool IsValidTile(Tile tile)
+inline bool IsValidTile(TileIndex tile)
 {
 	return tile < Map::Size() && !IsTileType(tile, TileType::Void);
+}
+
+/**
+ * Checks if a tile is valid
+ *
+ * @param tile The tile to check
+ * @return True if the tile is on the map and not one of MP_VOID.
+ */
+inline bool IsValidTile(Tile tile)
+{
+	return tile.IsValid() && !IsTileType(tile, TileType::Void);
 }
 
 /**
@@ -224,7 +231,7 @@ inline bool IsTileOwner(Tile tile, Owner owner)
  */
 inline void SetTropicZone(Tile tile, TropicZone type)
 {
-	assert(tile < Map::Size());
+	assert(tile.IsValid());
 	assert(!IsTileType(tile, TileType::Void) || type == TropicZone::Normal);
 	SB(tile.type(), 0, 2, to_underlying(type));
 }
@@ -237,7 +244,7 @@ inline void SetTropicZone(Tile tile, TropicZone type)
  */
 inline TropicZone GetTropicZone(Tile tile)
 {
-	assert(tile < Map::Size());
+	assert(tile.IsValid());
 	return static_cast<TropicZone>(GB(tile.type(), 0, 2));
 }
 

@@ -75,7 +75,7 @@ inline void SetTunnelBridgeSnowOrDesert(Tile t, bool snow_or_desert)
  * @pre IsTileType(t, TileType::TunnelBridge)
  * @return other end
  */
-inline TileIndex GetOtherTunnelBridgeEnd(Tile t)
+inline TileIndex GetOtherTunnelBridgeEnd(TileIndex t)
 {
 	assert(IsTileType(t, TileType::TunnelBridge));
 	return IsTunnel(t) ? GetOtherTunnelEnd(t) : GetOtherBridgeEnd(t);
