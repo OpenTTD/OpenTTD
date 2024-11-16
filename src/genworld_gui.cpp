@@ -1339,7 +1339,7 @@ static constexpr NWidgetPart _nested_generate_progress_widgets[] = {
 static WindowDesc _generate_progress_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_MODAL_PROGRESS, WC_NONE,
-	0,
+	WDF_NO_CLOSE,
 	_nested_generate_progress_widgets
 );
 
