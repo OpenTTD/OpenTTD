@@ -1022,7 +1022,7 @@ static int GetSlopePixelZ_Water(TileIndex tile, uint x, uint y, [[maybe_unused]]
 }
 
 /** @copydoc GetTileDescProc */
-static void GetTileDesc_Water(TileIndex tile, TileDesc &td)
+static void GetTileDesc_Water(TileIndex, Tile tile, TileDesc &td)
 {
 	switch (GetWaterTileType(tile)) {
 		case WaterTileType::Clear:

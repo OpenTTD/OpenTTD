@@ -41,7 +41,7 @@ static int GetSlopePixelZ_Void([[maybe_unused]] TileIndex tile, uint x, uint y, 
 }
 
 /** @copydoc GetTileDescProc */
-static void GetTileDesc_Void([[maybe_unused]] TileIndex tile, TileDesc &td)
+static void GetTileDesc_Void([[maybe_unused]] TileIndex index, [[maybe_unused]] Tile tile, TileDesc &td)
 {
 	td.str = STR_EMPTY;
 	td.owner[0] = OWNER_NONE;

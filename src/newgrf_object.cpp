@@ -66,7 +66,7 @@ size_t ObjectSpec::Count()
  * @param tile The tile to fetch the data for.
  * @return The specification.
  */
-/* static */ const ObjectSpec *ObjectSpec::GetByTile(TileIndex tile)
+/* static */ const ObjectSpec *ObjectSpec::GetByTile(Tile tile)
 {
 	return ObjectSpec::Get(GetObjectType(tile));
 }

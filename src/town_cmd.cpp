@@ -845,7 +845,7 @@ CargoArray GetAcceptedCargoOfHouse(const HouseSpec *hs)
 }
 
 /** @copydoc GetTileDescProc */
-static void GetTileDesc_Town(TileIndex tile, TileDesc &td)
+static void GetTileDesc_Town(TileIndex index, Tile tile, TileDesc &td)
 {
 	const HouseID house = GetHouseType(tile);
 	const HouseSpec *hs = HouseSpec::Get(house);
@@ -855,7 +855,7 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc &td)
 	td.town_can_upgrade = !IsHouseProtected(tile);
 
 	std::array<int32_t, 1> regs100;
-	uint16_t callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, house_completed ? 1 : 0, 0, house, Town::GetByTile(tile), tile, regs100);
+	uint16_t callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, house_completed ? 1 : 0, 0, house, Town::GetByTile(tile), index, regs100);
 	if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
 		StringID new_name = STR_NULL;
 		if (callback_res == 0x40F) {

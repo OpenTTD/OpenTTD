@@ -370,7 +370,7 @@ get_out:;
 }
 
 /** @copydoc GetTileDescProc */
-static void GetTileDesc_Clear(TileIndex tile, TileDesc &td)
+static void GetTileDesc_Clear(TileIndex, Tile tile, TileDesc &td)
 {
 	/* Each pair holds a normal and a snowy ClearGround description. */
 	static constexpr std::pair<StringID, StringID> clear_land_str[to_underlying(ClearGround::MaxSize)] = {
