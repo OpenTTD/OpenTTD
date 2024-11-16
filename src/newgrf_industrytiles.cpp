@@ -195,14 +195,14 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 		bool draw_old_one = true;
 		if (inds->callback_mask.Test(IndustryTileCallbackMask::DrawFoundations)) {
 			/* Called to determine the type (if any) of foundation to draw for industry tile */
-			uint32_t callback_res = GetIndustryTileCallback(CBID_INDTILE_DRAW_FOUNDATIONS, 0, 0, gfx, i, ti->tile);
+			uint32_t callback_res = GetIndustryTileCallback(CBID_INDTILE_DRAW_FOUNDATIONS, 0, 0, gfx, i, ti->index);
 			if (callback_res != CALLBACK_FAILED) draw_old_one = ConvertBooleanCallback(inds->grf_prop.grffile, CBID_INDTILE_DRAW_FOUNDATIONS, callback_res);
 		}
 
 		if (draw_old_one) DrawFoundation(ti, FOUNDATION_LEVELED);
 	}
 
-	IndustryTileResolverObject object(gfx, ti->tile, i);
+	IndustryTileResolverObject object(gfx, ti->index, i);
 
 	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
 	if (group == nullptr) return false;

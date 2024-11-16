@@ -348,7 +348,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 
 std::optional<SpriteLayoutProcessor> GetRoadStopLayout(TileInfo *ti, const RoadStopSpec *spec, BaseStation *st, StationType type, int view, std::span<int32_t> regs100)
 {
-	RoadStopResolverObject object(spec, st, ti->tile, INVALID_ROADTYPE, type, view);
+	RoadStopResolverObject object(spec, st, ti->index, INVALID_ROADTYPE, type, view);
 	auto group = object.Resolve<TileLayoutSpriteGroup>();
 	if (group == nullptr) return std::nullopt;
 	for (uint i = 0; i < regs100.size(); ++i) {

@@ -21,7 +21,7 @@
  * @return the reserved trackbits. TRACK_BIT_NONE on nothing reserved or
  *     a tile without rail.
  */
-TrackBits GetReservedTrackbits(TileIndex t)
+TrackBits GetReservedTrackbits(Tile t)
 {
 	switch (GetTileType(t)) {
 		case TileType::Railway:

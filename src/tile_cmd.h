@@ -31,7 +31,8 @@ using VehicleEnterTileStates = EnumBitSet<VehicleEnterTileState, uint8_t>;
 /** Tile information, used while rendering the tile */
 struct TileInfo : Coord3D<int> {
 	Slope tileh;    ///< Slope of the tile
-	TileIndex tile; ///< Tile index
+	TileIndex index; ///< Tile index
+	Tile tile; ///< Tile pointer
 };
 
 /** Tile description for the 'land area information' tool */

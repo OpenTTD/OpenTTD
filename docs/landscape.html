@@ -110,14 +110,8 @@
     </li>
    </ul>
   </li>
-  <li><span style="font-weight: bold;">m8:</span><br>
-   <a name="TramType"></a>
-   Tram roadtype. Used for all tiles with road (road, station, tunnelbridge).
-   <ul>
-    <li>
-     Bits 11..6: Tram roadtype, 0x3F for no tram.
-    </li>
-   </ul>
+  <li><span style="font-weight: bold;">m7:</span><br>
+   Animation frame/state. Used for houses, industries, objects and stations.
   </li>
   <li><span style="font-weight: bold;">m8:</span><br>
    <ul>
@@ -125,10 +119,15 @@
      <a name="RailType"></a>
      Bits 5..0: Railtype. Used for all tiles with rail (road, rail, station, tunnelbridge).
     </li>
+    <li>
+     <a name="TramType"></a>
+     Bits 11..6: Tram roadtype, 0x3F for no tram. Used for all tiles with road (road, station, tunnelbridge).
+    </li>
+    <li>
+     <a name="AssociatedFlag"></a>
+     Bit 14: Associated tile flag. Marks if the next tile is still part of this TileIndex.
+    </li>
    </ul>
-  </li>
-  <li><span style="font-weight: bold;">m7:</span><br>
-   Animation frame/state. Used for houses, industries, objects and stations.
   </li>
  </ul>
 
@@ -240,6 +239,7 @@
       </table>
      </li>
      <li>m6 bits 4..2: type of hedge on NW border of the tile</li>
+     <li>m8 bit 14: Next tile is associated with this tile</li>
     </ul>
    </td>
   </tr>
@@ -1145,6 +1145,7 @@
        </tr>
       </table>
      </li>
+     <li>m8 bit 14: Next tile is associated with this tile</li>
     </ul>
    </td>
   </tr>

@@ -63,6 +63,7 @@
 #include "stdafx.h"
 #include "core/backup_type.hpp"
 #include "landscape.h"
+#include "tile_type.h"
 #include "viewport_func.h"
 #include "station_base.h"
 #include "waypoint_base.h"
@@ -909,7 +910,7 @@ static void DrawSelectionSprite(SpriteID image, PaletteID pal, const TileInfo *t
  */
 static void DrawTileSelectionRect(const TileInfo *ti, PaletteID pal)
 {
-	if (!IsValidTile(ti->tile)) return;
+	if (!IsValidTile(ti->index)) return;
 
 	SpriteID sel;
 	if (IsHalftileSlope(ti->tileh)) {
@@ -1086,22 +1087,22 @@ static void HighlightTownLocalAuthorityTiles(const TileInfo *ti)
 	if (_town_local_authority_kdtree.Count() == 0) return;
 
 	/* Tile belongs to town regardless of distance from town. */
-	if (GetTileType(ti->tile) == TileType::House) {
-		if (!Town::GetByTile(ti->tile)->show_zone) return;
+	if (GetTileType(Tile(ti->index)) == TileType::House) {
+		if (!Town::GetByTile(Tile(ti->index))->show_zone) return;
 
 		DrawTileSelectionRect(ti, PALETTE_CRASH);
 		return;
 	}
 
 	/* If the closest town in the highlighted list is far, we can stop searching. */
-	TownID tid = _town_local_authority_kdtree.FindNearest(TileX(ti->tile), TileY(ti->tile));
+	TownID tid = _town_local_authority_kdtree.FindNearest(TileX(ti->index), TileY(ti->index));
 	Town *closest_highlighted_town = Town::Get(tid);
 
-	if (DistanceManhattan(ti->tile, closest_highlighted_town->xy) >= _settings_game.economy.dist_local_authority) return;
+	if (DistanceManhattan(ti->index, closest_highlighted_town->xy) >= _settings_game.economy.dist_local_authority) return;
 
 	/* Tile is inside of the local autrhority distance of a highlighted town,
 	   but it is possible that a non-highlighted town is even closer. */
-	Town *closest_town = ClosestTownFromTile(ti->tile, _settings_game.economy.dist_local_authority);
+	Town *closest_town = ClosestTownFromTile(ti->index, _settings_game.economy.dist_local_authority);
 
 	if (closest_town->show_zone) {
 		DrawTileSelectionRect(ti, PALETTE_CRASH);
@@ -1119,10 +1120,10 @@ static void DrawTileSelection(const TileInfo *ti)
 	HighlightTownLocalAuthorityTiles(ti);
 
 	/* Draw a red error square? */
-	bool is_redsq = _thd.redsq == ti->tile;
+	bool is_redsq = _thd.redsq == ti->index;
 	if (is_redsq) DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING);
 
-	TileHighlightType tht = GetTileHighlightType(ti->tile);
+	TileHighlightType tht = GetTileHighlightType(ti->index);
 	DrawTileHighlightType(ti, tht);
 
 	/* No tile selection active? */
@@ -1170,7 +1171,7 @@ draw_inner:
 				side = 0;
 			} else {
 				TileIndex start = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
-				side = Delta(Delta(TileX(start), TileX(ti->tile)), Delta(TileY(start), TileY(ti->tile)));
+				side = Delta(Delta(TileX(start), TileX(ti->index)), Delta(TileY(start), TileY(ti->index)));
 			}
 
 			DrawAutorailSelection(ti, _autorail_type[dir][side]);
@@ -1253,16 +1254,17 @@ static void ViewportAddLandscape()
 
 			if (IsInsideBS(tilecoord.x, 0, Map::SizeX()) && IsInsideBS(tilecoord.y, 0, Map::SizeY())) {
 				/* This includes the south border at Map::MaxX / Map::MaxY. When terraforming we still draw tile selections there. */
-				_cur_ti.tile = TileXY(tilecoord.x, tilecoord.y);
-				tile_type = GetTileType(_cur_ti.tile);
+				_cur_ti.index = TileXY(tilecoord.x, tilecoord.y);
 			} else {
-				_cur_ti.tile = INVALID_TILE;
+				_cur_ti.index = INVALID_TILE;
 				tile_type = TileType::Void;
 			}
+			_cur_ti.tile = Tile(_cur_ti.index);
+			tile_type = _cur_ti.tile.IsValid() ? _cur_ti.tile.GetTileType() : TileType::Void;
 
 			if (tile_type != TileType::Void) {
 				/* We are inside the map => paint landscape. */
-				std::tie(_cur_ti.tileh, _cur_ti.z) = GetTilePixelSlope(_cur_ti.tile);
+				std::tie(_cur_ti.tileh, _cur_ti.z) = GetTilePixelSlope(_cur_ti.index);
 			} else {
 				/* We are outside the map => paint black. */
 				std::tie(_cur_ti.tileh, _cur_ti.z) = GetTilePixelSlopeOutsideMap(tilecoord.x, tilecoord.y);
@@ -1286,7 +1288,7 @@ static void ViewportAddLandscape()
 
 				if (IsBridgeAbove(_cur_ti.tile)) {
 					/* Is the bridge visible? */
-					TileIndex bridge_tile = GetNorthernBridgeEnd(_cur_ti.tile);
+					TileIndex bridge_tile = GetNorthernBridgeEnd(_cur_ti.index);
 					int bridge_height = ZOOM_BASE * (GetBridgePixelHeight(bridge_tile) - TilePixelHeight(_cur_ti.tile));
 					if (min_visible_height < bridge_height + MAX_TILE_EXTENT_TOP) tile_visible = true;
 				}
@@ -1308,8 +1310,11 @@ static void ViewportAddLandscape()
 				_vd.last_foundation_child[0] = LAST_CHILD_NONE;
 				_vd.last_foundation_child[1] = LAST_CHILD_NONE;
 
-				_tile_type_procs[tile_type]->draw_tile_proc(&_cur_ti);
-				if (_cur_ti.tile != INVALID_TILE) DrawTileSelection(&_cur_ti);
+				do {
+					tile_type = _cur_ti.tile.IsValid() ? _cur_ti.tile.GetTileType() : TileType::Void;
+					_tile_type_procs[tile_type]->draw_tile_proc(&_cur_ti);
+				} while (++_cur_ti.tile);
+				if (_cur_ti.index != INVALID_TILE) DrawTileSelection(&_cur_ti);
 			}
 		}
 	}

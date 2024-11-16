@@ -440,7 +440,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 	assert(f != FOUNDATION_STEEP_BOTH);
 
 	uint sprite_block = 0;
-	auto [slope, z] = GetFoundationPixelSlope(ti->tile);
+	auto [slope, z] = GetFoundationPixelSlope(ti->index);
 
 	/* Select the needed block of foundations sprites
 	 * Block 0: Walls at NW and NE edge
@@ -448,8 +448,8 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 	 * Block 2: Wall  at NW        edge
 	 * Block 3: No walls at NW or NE edge
 	 */
-	if (!HasFoundationNW(ti->tile, slope, z)) sprite_block += 1;
-	if (!HasFoundationNE(ti->tile, slope, z)) sprite_block += 2;
+	if (!HasFoundationNW(ti->index, slope, z)) sprite_block += 1;
+	if (!HasFoundationNE(ti->index, slope, z)) sprite_block += 2;
 
 	/* Use the original slope sprites if NW and NE borders should be visible */
 	SpriteID leveled_base = (sprite_block == 0 ? (int)SPR_FOUNDATION_BASE : (SPR_SLOPES_VIRTUAL_BASE + sprite_block * TRKFOUND_BLOCK_SIZE));

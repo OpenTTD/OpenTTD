@@ -475,7 +475,7 @@ static void DrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, co
 void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec)
 {
 	Object *o = Object::GetByTile(ti->tile);
-	ObjectResolverObject object(spec, o, ti->tile);
+	ObjectResolverObject object(spec, o, ti->index);
 
 	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
 	if (group == nullptr) return;

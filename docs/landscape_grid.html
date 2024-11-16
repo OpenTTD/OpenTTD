@@ -35,7 +35,7 @@ the array so you can quickly see what is used and what is not.
   <li><span style="font-weight: bold;">m5</span> - 8 bits in size, is used for general storage</li>
   <li><span style="font-weight: bold;">m6</span> - 8 bits in size, is used for general storage</li>
   <li><span style="font-weight: bold;">m7</span> - 8 bits in size, is used for general storage</li>
-  <li><span style="font-weight: bold;">m8</span> - 16 bits in size, is used for general storage</li>
+  <li><span style="font-weight: bold;">m8</span> - 16 bits in size, is used for general storage, bit 14 is used as the associated tile flag</li>
 </ul>
 <p>
 <ul>
@@ -87,7 +87,7 @@ the array so you can quickly see what is used and what is not.
       <td class="bits" rowspan=2><span class="used" title="Type of hedge on SW border">XXX</span> <span class="used" title="Type of hedge on SE border">XXX</span><span class="free">OO</span></td>
       <td class="bits" rowspan=2><span class="used" title="Update counter">XXX</span> <span class="used" title="Type: grass, rough land, rocks, fields, snow, desert">XXX</span> <span class="used" title="Density">XX</span></td><td class="bits" rowspan=2><span class="free" >OOO</span><span class="used" title="Type of hedge on NW border">X XX</span><span class="free">OO</span></td>
       <td class="bits" rowspan=2><span class="free">OOOO OOOO</span></td>
-      <td class="bits" rowspan=2><span class="free">OOOO OOOO OOOO OOOO</span></td>
+      <td class="bits" rowspan=2><span class="free">O</span><span class="used" title="Associated tile flag">X</span><span class="free">OO OOOO OOOO OOOO</span></td>
     </tr>
     <tr>
       <td class="caption">farmland</td>
@@ -249,7 +249,7 @@ the array so you can quickly see what is used and what is not.
       <td class="bits"><span class="used" title="Water tile type: coast, clear, lock, depot">0000</span> <span class="free">OOOO</span></td>
       <td class="bits" rowspan=5><span class="free">OOOO OOOO</span></td>
       <td class="bits" rowspan=5><span class="free">OOOO OOOO</span></td>
-      <td class="bits" rowspan=5><span class="free">OOOO OOOO OOOO OOOO</span></td>
+      <td class="bits" rowspan=5><span class="free">O</span><span class="used" title="Associated tile flag">X</span><span class="free">OO OOOO OOOO OOOO</span></td>
     </tr>
     <tr>
       <td class="caption">canal, river</td>

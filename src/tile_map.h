@@ -91,12 +91,12 @@ inline uint TilePixelHeightOutsideMap(int x, int y)
  *
  * @param tile The tile to get the TileType
  * @return The tiletype of the tile
- * @pre tile < Map::Size()
+ * @pre tile.IsValid()
  */
-[[debug_inline]] inline static TileType GetTileType(Tile tile)
+[[debug_inline]] inline static TileType GetTileType(const Tile &tile)
 {
 	assert(tile.IsValid());
-	return TileType(GB(tile.type(), 4, TILE_TYPE_BITS));
+	return tile.GetTileType();
 }
 
 /**
