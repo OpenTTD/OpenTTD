@@ -185,6 +185,7 @@ protected:
 	static const int MIN_GRID_PIXEL_SIZE    =  20; ///< Minimum distance between graph lines.
 
 	uint64_t excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
+	uint64_t excluded_range; ///< bitmask of ranges that should not be displayed.
 	uint8_t num_on_x_axis;
 	uint8_t num_vert_lines;
 
@@ -206,8 +207,12 @@ protected:
 		std::array<OverflowSafeInt64, GRAPH_NUM_MONTHS> values;
 		uint8_t colour;
 		uint8_t exclude_bit;
+		uint8_t range_bit;
+		uint8_t dash;
 	};
 	std::vector<DataSet> data;
+
+	std::span<const StringID> ranges = {};
 
 	/**
 	 * Get appropriate part of dataset values for the current number of horizontal points.
@@ -235,6 +240,7 @@ protected:
 
 		for (const DataSet &dataset : this->data) {
 			if (HasBit(this->excluded_data, dataset.exclude_bit)) continue;
+			if (HasBit(this->excluded_range, dataset.range_bit)) continue;
 
 			for (const OverflowSafeInt64 &datapoint : this->GetDataSetRange(dataset)) {
 				if (datapoint != INVALID_DATAPOINT) {
@@ -457,6 +463,7 @@ protected:
 
 		for (const DataSet &dataset : this->data) {
 			if (HasBit(this->excluded_data, dataset.exclude_bit)) continue;
+			if (HasBit(this->excluded_range, dataset.range_bit)) continue;
 
 			/* Centre the dot between the grid lines. */
 			x = r.left + (x_sep / 2);
@@ -464,6 +471,7 @@ protected:
 			uint prev_x = INVALID_DATAPOINT_POS;
 			uint prev_y = INVALID_DATAPOINT_POS;
 
+			const uint dash = ScaleGUITrad(dataset.dash);
 			for (OverflowSafeInt64 datapoint : this->GetDataSetRange(dataset)) {
 				if (datapoint != INVALID_DATAPOINT) {
 					/*
@@ -492,7 +500,7 @@ protected:
 					GfxFillRect(x - pointoffs1, y - pointoffs1, x + pointoffs2, y + pointoffs2, dataset.colour);
 
 					/* Draw the line connected to the previous point. */
-					if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, dataset.colour, linewidth);
+					if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, dataset.colour, linewidth, dash);
 
 					prev_x = x;
 					prev_y = y;
@@ -533,45 +541,89 @@ protected:
 public:
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		if (widget != WID_GRAPH_GRAPH) return;
-
-		uint x_label_width = 0;
-
-		/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
-		if (this->draw_dates) {
-			TimerGameEconomy::Month month = this->month;
-			TimerGameEconomy::Year year = this->year;
-			for (int i = 0; i < this->num_on_x_axis; i++) {
-				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
-				SetDParam(1, year);
-				x_label_width = std::max(x_label_width, GetStringBoundingBox(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH).width);
-
-				month += this->month_increment;
-				if (month >= 12) {
-					month = 0;
-					year++;
+		switch (widget) {
+			case WID_GRAPH_RANGE_MATRIX:
+				for (const StringID &str : this->ranges) {
+					size = maxdim(size, GetStringBoundingBox(str, FS_SMALL));
 				}
+
+				size.width += WidgetDimensions::scaled.framerect.Horizontal();
+				size.height += WidgetDimensions::scaled.framerect.Vertical();
+
+				/* Set fixed height for number of ranges. */
+				size.height *= static_cast<uint>(std::size(this->ranges));
+
+				resize.width = 0;
+				resize.height = 0;
+				this->GetWidget<NWidgetCore>(WID_GRAPH_RANGE_MATRIX)->SetDataTip((1 << MAT_COL_START) | (static_cast<uint16_t>(std::size(this->ranges)) << MAT_ROW_START), 0);
+				break;
+
+			case WID_GRAPH_GRAPH: {
+				uint x_label_width = 0;
+
+				/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
+				if (this->draw_dates) {
+					TimerGameEconomy::Month month = this->month;
+					TimerGameEconomy::Year year = this->year;
+					for (int i = 0; i < this->num_on_x_axis; i++) {
+						SetDParam(0, month + STR_MONTH_ABBREV_JAN);
+						SetDParam(1, year);
+						x_label_width = std::max(x_label_width, GetStringBoundingBox(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH).width);
+
+						month += this->month_increment;
+						if (month >= 12) {
+							month = 0;
+							year++;
+						}
+					}
+				} else {
+					/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates). */
+					SetDParamMaxValue(0, this->x_values_start + this->num_on_x_axis * this->x_values_increment, 0, FS_SMALL);
+					x_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL_NUMBER).width;
+				}
+
+				SetDParam(0, this->format_str_y_axis);
+				SetDParam(1, INT64_MAX);
+				uint y_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL).width;
+
+				size.width  = std::max<uint>(size.width,  ScaleGUITrad(5) + y_label_width + this->num_vert_lines * (x_label_width + ScaleGUITrad(5)) + ScaleGUITrad(9));
+				size.height = std::max<uint>(size.height, ScaleGUITrad(5) + (1 + MIN_GRAPH_NUM_LINES_Y * 2 + (this->draw_dates ? 3 : 1)) * GetCharacterHeight(FS_SMALL) + ScaleGUITrad(4));
+				size.height = std::max<uint>(size.height, size.width / 3);
+				break;
 			}
-		} else {
-			/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates). */
-			SetDParamMaxValue(0, this->x_values_start + this->num_on_x_axis * this->x_values_increment, 0, FS_SMALL);
-			x_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL_NUMBER).width;
+
+			default: break;
 		}
-
-		SetDParam(0, this->format_str_y_axis);
-		SetDParam(1, INT64_MAX);
-		uint y_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL).width;
-
-		size.width  = std::max<uint>(size.width,  ScaleGUITrad(5) + y_label_width + this->num_vert_lines * (x_label_width + ScaleGUITrad(5)) + ScaleGUITrad(9));
-		size.height = std::max<uint>(size.height, ScaleGUITrad(5) + (1 + MIN_GRAPH_NUM_LINES_Y * 2 + (this->draw_dates ? 3 : 1)) * GetCharacterHeight(FS_SMALL) + ScaleGUITrad(4));
-		size.height = std::max<uint>(size.height, size.width / 3);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
-		if (widget != WID_GRAPH_GRAPH) return;
+		switch (widget) {
+			case WID_GRAPH_GRAPH:
+				this->DrawGraph(r);
+				break;
 
-		DrawGraph(r);
+			case WID_GRAPH_RANGE_MATRIX: {
+				uint line_height = GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.framerect.Vertical();
+				uint index = 0;
+				Rect line = r.WithHeight(line_height);
+				for (const auto &str : this->ranges) {
+					bool lowered = !HasBit(this->excluded_range, index);
+
+					/* Redraw frame if lowered */
+					if (lowered) DrawFrameRect(line, COLOUR_BROWN, FR_LOWERED);
+
+					const Rect text = line.Shrink(WidgetDimensions::scaled.framerect);
+					DrawString(text, str, TC_BLACK, SA_CENTER, false, FS_SMALL);
+
+					line = line.Translate(0, line_height);
+					++index;
+				}
+				break;
+			}
+
+			default: break;
+		}
 	}
 
 	virtual OverflowSafeInt64 GetGraphData(const Company *, int)
@@ -582,7 +634,21 @@ public:
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		/* Clicked on legend? */
-		if (widget == WID_GRAPH_KEY_BUTTON) ShowGraphLegend();
+		switch (widget) {
+			case WID_GRAPH_KEY_BUTTON:
+				ShowGraphLegend();
+				break;
+
+			case WID_GRAPH_RANGE_MATRIX: {
+				int row = GetRowFromWidget(pt.y, widget, 0, GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.framerect.Vertical());
+
+				ToggleBit(this->excluded_range, row);
+				this->SetDirty();
+				break;
+			}
+
+			default: break;
+		}
 	}
 
 	void OnGameTick() override
@@ -1094,6 +1160,10 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 				}
 				break;
 			}
+
+			default:
+				this->BaseGraphWindow::OnClick(pt, widget, click_count);
+				break;
 		}
 	}
 
@@ -1591,6 +1661,10 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 				}
 				break;
 			}
+
+			default:
+				this->BaseGraphWindow::OnClick(pt, widget, click_count);
+				break;
 		}
 	}
 
@@ -1659,6 +1733,8 @@ static constexpr NWidgetPart _nested_industry_production_widgets[] = {
 			NWidget(WWT_EMPTY, COLOUR_BROWN, WID_GRAPH_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_RANGE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GRAPH_ENABLE_CARGOES), SetDataTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL), SetFill(1, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GRAPH_DISABLE_CARGOES), SetDataTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL), SetFill(1, 0),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
