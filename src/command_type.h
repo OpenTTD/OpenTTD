@@ -21,12 +21,12 @@ struct GRFFile;
  * a possible error message/state together.
  */
 class CommandCost {
-	ExpensesType expense_type;                  ///< the type of expence as shown on the finances view
 	Money cost;                                 ///< The cost of this action
 	StringID message;                           ///< Warning message for when success is unset
+	ExpensesType expense_type;                  ///< the type of expence as shown on the finances view
 	bool success;                               ///< Whether the command went fine up to this moment
-	const GRFFile *textref_stack_grffile;       ///< NewGRF providing the #TextRefStack content.
-	uint textref_stack_size;                    ///< Number of uint32_t values to put on the #TextRefStack for the error message.
+	const GRFFile *textref_stack_grffile = nullptr; ///< NewGRF providing the #TextRefStack content.
+	uint textref_stack_size = 0; ///< Number of uint32_t values to put on the #TextRefStack for the error message.
 	StringID extra_message = INVALID_STRING_ID; ///< Additional warning message for when success is unset
 
 	static uint32_t textref_stack[16];
@@ -35,25 +35,25 @@ public:
 	/**
 	 * Creates a command cost return with no cost and no error
 	 */
-	CommandCost() : expense_type(INVALID_EXPENSES), cost(0), message(INVALID_STRING_ID), success(true), textref_stack_grffile(nullptr), textref_stack_size(0) {}
+	CommandCost() : cost(0), message(INVALID_STRING_ID), expense_type(INVALID_EXPENSES), success(true) {}
 
 	/**
 	 * Creates a command return value with one, or optionally two, error message strings.
 	 */
-	explicit CommandCost(StringID msg, StringID extra_msg = INVALID_STRING_ID) : expense_type(INVALID_EXPENSES), cost(0), message(msg), success(false), textref_stack_grffile(nullptr), textref_stack_size(0), extra_message(extra_msg) {}
+	explicit CommandCost(StringID msg, StringID extra_msg = INVALID_STRING_ID) : cost(0), message(msg), expense_type(INVALID_EXPENSES), success(false), extra_message(extra_msg) {}
 
 	/**
 	 * Creates a command cost with given expense type and start cost of 0
 	 * @param ex_t the expense type
 	 */
-	explicit CommandCost(ExpensesType ex_t) : expense_type(ex_t), cost(0), message(INVALID_STRING_ID), success(true), textref_stack_grffile(nullptr), textref_stack_size(0) {}
+	explicit CommandCost(ExpensesType ex_t) : cost(0), message(INVALID_STRING_ID), expense_type(ex_t), success(true) {}
 
 	/**
 	 * Creates a command return value with the given start cost and expense type
 	 * @param ex_t the expense type
 	 * @param cst the initial cost of this command
 	 */
-	CommandCost(ExpensesType ex_t, const Money &cst) : expense_type(ex_t), cost(cst), message(INVALID_STRING_ID), success(true), textref_stack_grffile(nullptr), textref_stack_size(0) {}
+	CommandCost(ExpensesType ex_t, const Money &cst) : cost(cst), message(INVALID_STRING_ID), expense_type(ex_t), success(true) {}
 
 
 	/**
