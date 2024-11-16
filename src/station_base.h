@@ -496,6 +496,9 @@ public:
 	void RemoveIndustryToDeliver(Industry *ind);
 	void RemoveFromAllNearbyLists();
 
+	Owner GetExclusivityConsumer() const;
+	Owner GetExclusivitySupplier() const;
+
 	inline bool TileIsInCatchment(TileIndex tile) const
 	{
 		return this->catchment_tiles.HasTile(tile);
