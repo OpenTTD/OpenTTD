@@ -14,6 +14,6 @@
 
 CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, uint8_t tree_to_plant, bool diagonal);
 
-DEF_CMD_TRAIT(CMD_PLANT_TREE, CmdPlantTree, CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_PLANT_TREE, CmdPlantTree, CMD_DEITY | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION)
 
 #endif /* TREE_CMD_H */
