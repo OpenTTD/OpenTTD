@@ -105,7 +105,7 @@ public:
 	 * @param area the area to search from
 	 */
 	StationFinder(const TileArea &area) : TileArea(area) {}
-	const StationList *GetStations();
+	const StationList &GetStations();
 };
 
 #endif /* STATION_TYPE_H */

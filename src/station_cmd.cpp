@@ -4344,10 +4344,10 @@ CommandCost CmdRenameStation(DoCommandFlag flags, StationID station_id, const st
 	return CommandCost();
 }
 
-static void AddNearbyStationsByCatchment(TileIndex tile, StationList *stations, StationList &nearby)
+static void AddNearbyStationsByCatchment(TileIndex tile, StationList &stations, StationList &nearby)
 {
 	for (Station *st : nearby) {
-		if (st->TileIsInCatchment(tile)) stations->insert(st);
+		if (st->TileIsInCatchment(tile)) stations.insert(st);
 	}
 }
 
@@ -4355,13 +4355,13 @@ static void AddNearbyStationsByCatchment(TileIndex tile, StationList *stations, 
  * Run a tile loop to find stations around a tile, on demand. Cache the result for further requests
  * @return pointer to a StationList containing all stations found
  */
-const StationList *StationFinder::GetStations()
+const StationList &StationFinder::GetStations()
 {
 	if (this->tile != INVALID_TILE) {
 		if (IsTileType(this->tile, MP_HOUSE)) {
 			/* Town nearby stations need to be filtered per tile. */
 			assert(this->w == 1 && this->h == 1);
-			AddNearbyStationsByCatchment(this->tile, &this->stations, Town::GetByTile(this->tile)->stations_near);
+			AddNearbyStationsByCatchment(this->tile, this->stations, Town::GetByTile(this->tile)->stations_near);
 		} else {
 			ForAllStationsAroundTiles(*this, [this](Station *st, TileIndex) {
 				this->stations.insert(st);
@@ -4370,7 +4370,7 @@ const StationList *StationFinder::GetStations()
 		}
 		this->tile = INVALID_TILE;
 	}
-	return &this->stations;
+	return this->stations;
 }
 
 
@@ -4395,17 +4395,17 @@ static bool CanMoveGoodsToStation(const Station *st, CargoID type)
 	return true;
 }
 
-uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, SourceID source_id, const StationList *all_stations, Owner exclusivity)
+uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, SourceID source_id, const StationList &all_stations, Owner exclusivity)
 {
 	/* Return if nothing to do. Also the rounding below fails for 0. */
-	if (all_stations->empty()) return 0;
+	if (all_stations.empty()) return 0;
 	if (amount == 0) return 0;
 
 	Station *first_station = nullptr;
 	typedef std::pair<Station *, uint> StationInfo;
 	std::vector<StationInfo> used_stations;
 
-	for (Station *st : *all_stations) {
+	for (Station *st : all_stations) {
 		if (exclusivity != INVALID_OWNER && exclusivity != st->owner) continue;
 		if (!CanMoveGoodsToStation(st, type)) continue;
 

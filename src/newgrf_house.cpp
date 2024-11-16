@@ -455,11 +455,10 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 			TileIndex testtile = Map::WrapToMap(this->tile + TileDiffXY(x_offs, y_offs));
 
 			StationFinder stations(TileArea(testtile, 1, 1));
-			const StationList *sl = stations.GetStations();
 
 			/* Collect acceptance stats. */
 			uint32_t res = 0;
-			for (Station *st : *sl) {
+			for (Station *st : stations.GetStations()) {
 				if (HasBit(st->goods[cid].status, GoodsEntry::GES_EVER_ACCEPTED))    SetBit(res, 0);
 				if (HasBit(st->goods[cid].status, GoodsEntry::GES_LAST_MONTH))       SetBit(res, 1);
 				if (HasBit(st->goods[cid].status, GoodsEntry::GES_CURRENT_MONTH))    SetBit(res, 2);
