@@ -36,6 +36,8 @@ enum GraphWidgets : WidgetID {
 	WID_GRAPH_MATRIX,          ///< Cargo list.
 	WID_GRAPH_MATRIX_SCROLLBAR,///< Cargo list scrollbar.
 
+	WID_GRAPH_RANGE_MATRIX, ///< Range list.
+
 	WID_PHG_DETAILED_PERFORMANCE, ///< Detailed performance.
 };
 
