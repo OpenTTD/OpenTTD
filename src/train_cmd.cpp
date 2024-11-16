@@ -2167,11 +2167,6 @@ static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 {
 	assert(!(v->vehstatus & VS_CRASHED));
 
-	if (IsRailDepotTile(v->tile)) return FindDepotData(v->tile, 0);
-
-	PBSTileInfo origin = FollowTrainReservation(v);
-	if (IsRailDepotTile(origin.tile)) return FindDepotData(origin.tile, 0);
-
 	return YapfTrainFindNearestDepot(v, max_distance);
 }
 
