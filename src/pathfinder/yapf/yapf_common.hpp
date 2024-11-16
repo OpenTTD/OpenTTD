@@ -11,11 +11,8 @@
 #define YAPF_COMMON_HPP
 
 #include "../../core/bitmath_func.hpp"
-#include "../../direction_type.h"
-#include "../../map_func.h"
 #include "../../tile_type.h"
 #include "../../track_type.h"
-#include "../pathfinder_type.h"
 
 /** YAPF origin provider base class - used when origin is one tile / multiple trackdirs */
 template <class Types>
