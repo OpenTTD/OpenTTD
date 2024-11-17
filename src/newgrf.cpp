@@ -320,8 +320,9 @@ struct GRFTempEngineData {
 		NONEMPTY,       ///< GRF defined the vehicle as refittable. If the refitmask is empty after translation (cargotypes not available), disable the vehicle.
 	};
 
-	CargoClasses cargo_allowed;
-	CargoClasses cargo_disallowed;
+	CargoClasses cargo_allowed;          ///< Bitmask of cargo classes that are allowed as a refit.
+	CargoClasses cargo_allowed_required; ///< Bitmask of cargo classes that are required to be all present to allow a cargo as a refit.
+	CargoClasses cargo_disallowed;       ///< Bitmask of cargo classes that are disallowed as a refit.
 	RailTypeLabel railtypelabel;
 	uint8_t roadtramtype;
 	const GRFFile *defaultcargo_grf; ///< GRF defining the cargo translation table to use if the default cargo is the 'first refittable'.
@@ -1336,6 +1337,10 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				SB(ei->callback_mask, 8, 8, buf.ReadByte());
 				break;
 
+			case 0x32: // Cargo classes required for a refit.
+				_gted[e->index].cargo_allowed_required = buf.ReadWord();
+				break;
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1537,6 +1542,10 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				SB(ei->callback_mask, 8, 8, buf.ReadByte());
 				break;
 
+			case 0x29: // Cargo classes required for a refit.
+				_gted[e->index].cargo_allowed_required = buf.ReadWord();
+				break;
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1724,6 +1733,10 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				svi->acceleration = std::max<uint8_t>(1, buf.ReadByte());
 				break;
 
+			case 0x25: // Cargo classes required for a refit.
+				_gted[e->index].cargo_allowed_required = buf.ReadWord();
+				break;
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1887,6 +1900,10 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 
 			case 0x22: // Callback additional mask
 				SB(ei->callback_mask, 8, 8, buf.ReadByte());
+				break;
+
+			case 0x23: // Cargo classes required for a refit.
+				_gted[e->index].cargo_allowed_required = buf.ReadWord();
 				break;
 
 			default:
@@ -9084,7 +9101,7 @@ static void CalculateRefitMasks()
 			if (_gted[engine].cargo_allowed != 0) {
 				/* Build up the list of cargo types from the set cargo classes. */
 				for (const CargoSpec *cs : CargoSpec::Iterate()) {
-					if (_gted[engine].cargo_allowed    & cs->classes) SetBit(mask,     cs->Index());
+					if ((_gted[engine].cargo_allowed & cs->classes) != 0 && (_gted[engine].cargo_allowed_required & cs->classes) == _gted[engine].cargo_allowed_required) SetBit(mask, cs->Index());
 					if (_gted[engine].cargo_disallowed & cs->classes) SetBit(not_mask, cs->Index());
 				}
 			}
