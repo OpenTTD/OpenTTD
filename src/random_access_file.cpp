@@ -144,7 +144,15 @@ uint32_t RandomAccessFile::ReadDword()
  */
 void RandomAccessFile::ReadBlock(void *ptr, size_t size)
 {
-	this->SeekTo(this->GetPos(), SEEK_SET);
+	if (this->buffer != this->buffer_end) {
+		size_t to_copy = std::min<size_t>(size, this->buffer_end - this->buffer);
+		memcpy(ptr, this->buffer, to_copy);
+		this->buffer += to_copy;
+		size -= to_copy;
+		if (size == 0) return;
+		ptr = static_cast<char *>(ptr) + to_copy;
+	}
+
 	this->pos += fread(ptr, 1, size, *this->file_handle);
 }
 
