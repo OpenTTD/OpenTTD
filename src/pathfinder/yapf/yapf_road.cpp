@@ -14,6 +14,13 @@
 
 #include "../../safeguards.h"
 
+static const uint YAPF_ROAD_MAXIMUM_GO_TO_DEPOT_PENALTY = 20 * YAPF_TILE_LENGTH; ///< What is the maximum penalty that may be endured for going to a depot
+static const uint YAPF_ROAD_SLOPE_PENALTY               =  2 * YAPF_TILE_LENGTH; ///< penalty for up-hill slope
+static const uint YAPF_ROAD_CURVE_PENALTY               =  1 * YAPF_TILE_LENGTH; ///< penalty for curves
+static const uint YAPF_ROAD_CROSSING_PENALTY            =  3 * YAPF_TILE_LENGTH; ///< penalty for level crossing
+static const uint YAPF_ROAD_STOP_PENALTY                =  8 * YAPF_TILE_LENGTH; ///< penalty for going through a drive-through road stop
+static const uint YAPF_ROAD_STOP_OCCUPIED_PENALTY       =  8 * YAPF_TILE_LENGTH; ///< penalty multiplied by the fill percentage of a drive-through road stop
+static const uint YAPF_ROAD_STOP_BAY_OCCUPIED_PENALTY   = 15 * YAPF_TILE_LENGTH; ///< penalty multiplied by the fill percentage of a road bay
 
 template <class Types>
 class CYapfCostRoadT
@@ -49,7 +56,7 @@ protected:
 
 		if (z2 - z1 > 1) {
 			/* Slope up */
-			return Yapf().PfGetSettings().road_slope_penalty;
+			return YAPF_ROAD_SLOPE_PENALTY;
 		}
 		return 0;
 	}
@@ -65,7 +72,7 @@ protected:
 				case MP_ROAD:
 					/* Increase the cost for level crossings */
 					if (IsLevelCrossing(tile)) {
-						cost += Yapf().PfGetSettings().road_crossing_penalty;
+						cost += YAPF_ROAD_CROSSING_PENALTY;
 					}
 					break;
 
@@ -75,17 +82,17 @@ protected:
 					const RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
 					if (IsDriveThroughStopTile(tile)) {
 						/* Increase the cost for drive-through road stops */
-						cost += Yapf().PfGetSettings().road_stop_penalty;
+						cost += YAPF_ROAD_STOP_PENALTY;
 						DiagDirection dir = TrackdirToExitdir(trackdir);
 						if (!RoadStop::IsDriveThroughRoadStopContinuation(tile, tile - TileOffsByDiagDir(dir))) {
 							/* When we're the first road stop in a 'queue' of them we increase
 							 * cost based on the fill percentage of the whole queue. */
 							const RoadStop::Entry *entry = rs->GetEntry(dir);
-							cost += entry->GetOccupied() * Yapf().PfGetSettings().road_stop_occupied_penalty / entry->GetLength();
+							cost += entry->GetOccupied() * YAPF_ROAD_STOP_OCCUPIED_PENALTY / entry->GetLength();
 						}
 					} else {
 						/* Increase cost for filled road stops */
-						cost += Yapf().PfGetSettings().road_stop_bay_occupied_penalty * (!rs->IsFreeBay(0) + !rs->IsFreeBay(1)) / 2;
+						cost += YAPF_ROAD_STOP_BAY_OCCUPIED_PENALTY * (!rs->IsFreeBay(0) + !rs->IsFreeBay(1)) / 2;
 					}
 					break;
 				}
@@ -95,7 +102,7 @@ protected:
 			}
 		} else {
 			/* non-diagonal trackdir */
-			cost = YAPF_TILE_CORNER_LENGTH + Yapf().PfGetSettings().road_curve_penalty;
+			cost = YAPF_TILE_CORNER_LENGTH + YAPF_ROAD_CURVE_PENALTY;
 		}
 		return cost;
 	}
@@ -479,10 +486,10 @@ public:
 		return true;
 	}
 
-	static FindDepotData stFindNearestDepot(const RoadVehicle *v, TileIndex tile, Trackdir td, int max_distance)
+	static FindDepotData stFindNearestDepot(const RoadVehicle *v, TileIndex tile, Trackdir td)
 	{
 		Tpf pf;
-		return pf.FindNearestDepot(v, tile, td, max_distance);
+		return pf.FindNearestDepot(v, tile, td);
 	}
 
 	/**
@@ -490,13 +497,12 @@ public:
 	 * @param v Vehicle
 	 * @param tile Tile of the vehicle.
 	 * @param td Trackdir of the vehicle.
-	 * @param max_distance max length (penalty) for paths.
 	 */
-	inline FindDepotData FindNearestDepot(const RoadVehicle *v, TileIndex tile, Trackdir td, int max_distance)
+	inline FindDepotData FindNearestDepot(const RoadVehicle *v, TileIndex tile, Trackdir td)
 	{
 		/* Set origin. */
 		Yapf().SetOrigin(tile, TrackdirToTrackdirBits(td));
-		Yapf().SetMaxCost(max_distance);
+		Yapf().SetMaxCost(YAPF_ROAD_MAXIMUM_GO_TO_DEPOT_PENALTY);
 
 		/* Find the best path and return if no depot is found. */
 		if (!Yapf().FindPath(v)) return FindDepotData();
@@ -524,23 +530,17 @@ struct CYapfRoad_TypesT
 	typedef CYapfCostRoadT<Types>             PfCost;
 };
 
-struct CYapfRoad1         : CYapfT<CYapfRoad_TypesT<CYapfRoad1        , CRoadNodeListTrackDir, CYapfDestinationTileRoadT    > > {};
-struct CYapfRoad2         : CYapfT<CYapfRoad_TypesT<CYapfRoad2        , CRoadNodeListExitDir , CYapfDestinationTileRoadT    > > {};
-
-struct CYapfRoadAnyDepot1 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot1, CRoadNodeListTrackDir, CYapfDestinationAnyDepotRoadT> > {};
-struct CYapfRoadAnyDepot2 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot2, CRoadNodeListExitDir , CYapfDestinationAnyDepotRoadT> > {};
+struct CYapfRoad         : CYapfT<CYapfRoad_TypesT<CYapfRoad        , CRoadNodeListExitDir , CYapfDestinationTileRoadT    > > {};
+struct CYapfRoadAnyDepot : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot, CRoadNodeListExitDir , CYapfDestinationAnyDepotRoadT> > {};
 
 
 Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found, RoadVehPathCache &path_cache)
 {
-	Trackdir td_ret = _settings_game.pf.yapf.disable_node_optimization
-		? CYapfRoad1::stChooseRoadTrack(v, tile, enterdir, path_found, path_cache) // Trackdir
-		: CYapfRoad2::stChooseRoadTrack(v, tile, enterdir, path_found, path_cache); // ExitDir, allow 90-deg
-
+	Trackdir td_ret = CYapfRoad::stChooseRoadTrack(v, tile, enterdir, path_found, path_cache);
 	return (td_ret != INVALID_TRACKDIR) ? td_ret : (Trackdir)FindFirstBit(trackdirs);
 }
 
-FindDepotData YapfRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_distance)
+FindDepotData YapfRoadVehicleFindNearestDepot(const RoadVehicle *v)
 {
 	TileIndex tile = v->tile;
 	Trackdir trackdir = v->GetVehicleTrackdir();
@@ -549,7 +549,5 @@ FindDepotData YapfRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_dist
 		return FindDepotData();
 	}
 
-	return _settings_game.pf.yapf.disable_node_optimization
-		? CYapfRoadAnyDepot1::stFindNearestDepot(v, tile, trackdir, max_distance) // Trackdir
-		: CYapfRoadAnyDepot2::stFindNearestDepot(v, tile, trackdir, max_distance); // ExitDir
+	return CYapfRoadAnyDepot::stFindNearestDepot(v, tile, trackdir);
 }

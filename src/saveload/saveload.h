@@ -392,6 +392,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ROAD_TYPE_LABEL_MAP,                ///< 344  PR#13021 Add road type label map to allow upgrade/conversion of road types.
 	SLV_NONFLOODING_WATER_TILES,            ///< 345  PR#13013 Store water tile non-flooding state.
 
+	SLV_REMOVE_PF_SETTINGS,                 ///< 345  PR#10623 Removal of pathfinder settings.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

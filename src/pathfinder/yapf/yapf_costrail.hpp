@@ -17,6 +17,25 @@
 #include "yapf_type.hpp"
 #include "yapf_costbase.hpp"
 
+static const uint YAPF_RAIL_FIRSTRED_PENALTY        =  10 * YAPF_TILE_LENGTH; ///< penalty for first red signal
+static const uint YAPF_RAIL_FIRSTRED_EXIT_PENALTY   = 100 * YAPF_TILE_LENGTH; ///< penalty for first red exit signal
+static const uint YAPF_RAIL_LASTRED_PENALTY         =  10 * YAPF_TILE_LENGTH; ///< penalty for last red signal
+static const uint YAPF_RAIL_LASTRED_EXIT_PENALTY    = 100 * YAPF_TILE_LENGTH; ///< penalty for last red exit signal
+static const uint YAPF_RAIL_STATION_PENALTY         =  10 * YAPF_TILE_LENGTH; ///< penalty for non-target station tile
+static const uint YAPF_RAIL_SLOPE_PENALTY           =   2 * YAPF_TILE_LENGTH; ///< penalty for up-hill slope
+static const uint YAPF_RAIL_CURVE45_PENALTY         =   1 * YAPF_TILE_LENGTH; ///< penalty for curve
+static const uint YAPF_RAIL_CURVE90_PENALTY         =   6 * YAPF_TILE_LENGTH; ///< penalty for 90-deg curve
+static const uint YAPF_RAIL_DEPOT_REVERSE_PENALTY   =  50 * YAPF_TILE_LENGTH; ///< penalty for reversing in the depot
+static const uint YAPF_RAIL_CROSSING_PENALTY        =   3 * YAPF_TILE_LENGTH; ///< penalty for level crossing
+static const uint YAPF_RAIL_PBS_CROSS_PENALTY       =   3 * YAPF_TILE_LENGTH; ///< penalty for crossing a reserved tile
+static const uint YAPF_RAIL_PBS_STATION_PENALTY     =   8 * YAPF_TILE_LENGTH; ///< penalty for crossing a reserved station tile
+static const uint YAPF_RAIL_PBS_SIGNAL_BACK_PENALTY =  15 * YAPF_TILE_LENGTH; ///< penalty for passing a pbs signal from the backside
+static const uint YAPF_RAIL_DOUBLESLIP_PENALTY      =   1 * YAPF_TILE_LENGTH; ///< penalty for passing a double slip switch
+static const uint YAPF_RAIL_LONGER_PLATFORM_PENALTY           = 8 * YAPF_TILE_LENGTH; ///< penalty for longer  station platform than train
+static const uint YAPF_RAIL_LONGER_PLATFORM_PER_TILE_PENALTY  = 0 * YAPF_TILE_LENGTH; ///< penalty for longer  station platform than train (per tile)
+static const uint YAPF_RAIL_SHORTER_PLATFORM_PENALTY          = 8 * YAPF_TILE_LENGTH; ///< penalty for shorter station platform than train
+static const uint YAPF_RAIL_SHORTER_PLATFORM_PER_TILE_PENALTY = 0 * YAPF_TILE_LENGTH; ///< penalty for shorter station platform than train (per tile)
+
 template <class Types>
 class CYapfCostRailT : public CYapfCostBase {
 public:
@@ -47,7 +66,24 @@ protected:
 	 */
 	int max_cost;
 	bool disable_cache;
-	std::vector<int> sig_look_ahead_costs;
+
+	static const int LOOK_AHEAD_MAX_SIGNALS = 10; ///< max. number of signals taken into consideration in look-ahead load balancer
+
+	static const int LOOK_AHEAD_SIGNAL_P0 = 500; ///< constant in polynomial penalty function
+	static const int LOOK_AHEAD_SIGNAL_P1 = -100; ///< constant in polynomial penalty function
+	static const int LOOK_AHEAD_SIGNAL_P2 = 5; ///< constant in polynomial penalty function
+
+	/** Pre-computes look-ahead penalties into array */
+	static constexpr std::array<int, LOOK_AHEAD_MAX_SIGNALS> init_lookahead_costs()
+	{
+		std::array<int, LOOK_AHEAD_MAX_SIGNALS> costs{};
+		for (int i = 0; i < LOOK_AHEAD_MAX_SIGNALS; i++) {
+			costs[i] = LOOK_AHEAD_SIGNAL_P0 + i * (LOOK_AHEAD_SIGNAL_P1 + i * LOOK_AHEAD_SIGNAL_P2);
+		}
+		return costs;
+	}
+
+	static constexpr auto sig_look_ahead_costs = init_lookahead_costs();
 
 public:
 	bool stopped_on_first_two_way_signal;
@@ -56,17 +92,7 @@ protected:
 	static constexpr int MAX_SEGMENT_COST = 10000;
 
 	CYapfCostRailT() : max_cost(0), disable_cache(false), stopped_on_first_two_way_signal(false)
-	{
-		/* pre-compute look-ahead penalties into array */
-		int p0 = Yapf().PfGetSettings().rail_look_ahead_signal_p0;
-		int p1 = Yapf().PfGetSettings().rail_look_ahead_signal_p1;
-		int p2 = Yapf().PfGetSettings().rail_look_ahead_signal_p2;
-		this->sig_look_ahead_costs.clear();
-		this->sig_look_ahead_costs.reserve(Yapf().PfGetSettings().rail_look_ahead_max_signals);
-		for (uint i = 0; i < Yapf().PfGetSettings().rail_look_ahead_max_signals; i++) {
-			this->sig_look_ahead_costs.push_back(p0 + i * (p1 + i * p2));
-		}
-	}
+	{}
 
 	/** to access inherited path finder */
 	Tpf &Yapf()
@@ -78,7 +104,7 @@ public:
 	inline int SlopeCost(TileIndex tile, Trackdir td)
 	{
 		if (!stSlopeCost(tile, td)) return 0;
-		return Yapf().PfGetSettings().rail_slope_penalty;
+		return YAPF_RAIL_SLOPE_PENALTY;
 	}
 
 	inline int CurveCost(Trackdir td1, Trackdir td2)
@@ -89,10 +115,10 @@ public:
 		if (TrackFollower::Allow90degTurns()
 				&& HasTrackdir(TrackdirCrossesTrackdirs(td1), td2)) {
 			/* 90-deg curve penalty */
-			cost += Yapf().PfGetSettings().rail_curve90_penalty;
+			cost += YAPF_RAIL_CURVE90_PENALTY;
 		} else if (td2 != NextTrackdir(td1)) {
 			/* 45-deg curve penalty */
-			cost += Yapf().PfGetSettings().rail_curve45_penalty;
+			cost += YAPF_RAIL_CURVE45_PENALTY;
 		}
 		return cost;
 	}
@@ -102,7 +128,7 @@ public:
 		if (IsPlainRailTile(tile1) && IsPlainRailTile(tile2)) {
 			bool t1 = KillFirstBit(GetTrackBits(tile1) & DiagdirReachesTracks(ReverseDiagDir(exitdir))) != TRACK_BIT_NONE;
 			bool t2 = KillFirstBit(GetTrackBits(tile2) & DiagdirReachesTracks(exitdir)) != TRACK_BIT_NONE;
-			if (t1 && t2) return Yapf().PfGetSettings().rail_doubleslip_penalty;
+			if (t1 && t2) return YAPF_RAIL_DOUBLESLIP_PENALTY;
 		}
 		return 0;
 	}
@@ -118,7 +144,7 @@ public:
 				case MP_ROAD:
 					/* Increase the cost for level crossings */
 					if (IsLevelCrossing(tile)) {
-						cost += Yapf().PfGetSettings().rail_crossing_penalty;
+						cost += YAPF_RAIL_CROSSING_PENALTY;
 					}
 					break;
 
@@ -149,9 +175,9 @@ public:
 		if (!IsPbsSignal(n.last_signal_type)) return 0;
 
 		if (IsRailStationTile(tile) && IsAnyStationTileReserved(tile, trackdir, skipped)) {
-			return Yapf().PfGetSettings().rail_pbs_station_penalty * (skipped + 1);
+			return YAPF_RAIL_PBS_STATION_PENALTY * (skipped + 1);
 		} else if (TrackOverlapsTracks(GetReservedTrackbits(tile), TrackdirToTrack(trackdir))) {
-			int cost = Yapf().PfGetSettings().rail_pbs_cross_penalty;
+			int cost = YAPF_RAIL_PBS_CROSS_PENALTY;
 			if (!IsDiagonalTrackdir(trackdir)) cost = (cost * YAPF_TILE_CORNER_LENGTH) / YAPF_TILE_LENGTH;
 			return cost * (skipped + 1);
 		}
@@ -208,9 +234,9 @@ public:
 						if (n.num_signals_passed == 0) {
 							switch (sig_type) {
 								case SIGTYPE_COMBO:
-								case SIGTYPE_EXIT:   cost += Yapf().PfGetSettings().rail_firstred_exit_penalty; break; // first signal is red pre-signal-exit
+								case SIGTYPE_EXIT:   cost += YAPF_RAIL_FIRSTRED_EXIT_PENALTY; break; // first signal is red pre-signal-exit
 								case SIGTYPE_BLOCK:
-								case SIGTYPE_ENTRY:  cost += Yapf().PfGetSettings().rail_firstred_penalty; break;
+								case SIGTYPE_ENTRY:  cost += YAPF_RAIL_FIRSTRED_PENALTY; break;
 								default: break;
 							}
 						}
@@ -222,7 +248,7 @@ public:
 				}
 
 				if (has_signal_against && IsPbsSignal(GetSignalType(tile, TrackdirToTrack(trackdir)))) {
-					cost += n.num_signals_passed < Yapf().PfGetSettings().rail_look_ahead_max_signals ? Yapf().PfGetSettings().rail_pbs_signal_back_penalty : 0;
+					cost += n.num_signals_passed < LOOK_AHEAD_MAX_SIGNALS ? YAPF_RAIL_PBS_SIGNAL_BACK_PENALTY : 0;
 				}
 			}
 		}
@@ -239,10 +265,10 @@ public:
 		int missing_platform_length = CeilDiv(v->gcache.cached_total_length, TILE_SIZE) - platform_length;
 		if (missing_platform_length < 0) {
 			/* apply penalty for longer platform than needed */
-			cost += Yapf().PfGetSettings().rail_longer_platform_penalty + Yapf().PfGetSettings().rail_longer_platform_per_tile_penalty * -missing_platform_length;
+			cost += YAPF_RAIL_LONGER_PLATFORM_PENALTY + YAPF_RAIL_LONGER_PLATFORM_PER_TILE_PENALTY * -missing_platform_length;
 		} else if (missing_platform_length > 0) {
 			/* apply penalty for shorter platform than needed */
-			cost += Yapf().PfGetSettings().rail_shorter_platform_penalty + Yapf().PfGetSettings().rail_shorter_platform_per_tile_penalty * missing_platform_length;
+			cost += YAPF_RAIL_SHORTER_PLATFORM_PENALTY + YAPF_RAIL_SHORTER_PLATFORM_PER_TILE_PENALTY * missing_platform_length;
 		}
 		return cost;
 	}
@@ -382,7 +408,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			if (cur.tile == prev.tile) {
 				/* Penalty for reversing in a depot. */
 				assert(IsRailDepot(cur.tile));
-				segment_cost += Yapf().PfGetSettings().rail_depot_reverse_penalty;
+				segment_cost += YAPF_RAIL_DEPOT_REVERSE_PENALTY;
 
 			} else if (IsRailDepotTile(cur.tile)) {
 				/* We will end in this pass (depot is possible target) */
@@ -426,7 +452,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 					if (td == INVALID_TRACKDIR ||
 							!IsSafeWaitingPosition(v, t, td, true, _settings_game.pf.forbid_90_deg) ||
 							!IsWaitingPositionFree(v, t, td, _settings_game.pf.forbid_90_deg)) {
-						extra_cost += Yapf().PfGetSettings().rail_lastred_penalty;
+						extra_cost += YAPF_RAIL_LASTRED_PENALTY;
 					}
 				}
 				/* Waypoint is also a good reason to finish. */
@@ -437,7 +463,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 				uint platform_length = tf->tiles_skipped + 1;
 				/* We don't know yet if the station is our target or not. Act like
 				 * if it is pass-through station (not our destination). */
-				segment_cost += Yapf().PfGetSettings().rail_station_penalty * platform_length;
+				segment_cost += YAPF_RAIL_STATION_PENALTY * platform_length;
 				/* We will end in this pass (station is possible target) */
 				end_segment_reason |= ESRB_STATION;
 
@@ -505,7 +531,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 				} else if (HasSignalOnTrackdir(next.tile, ReverseTrackdir(next.td)) && GetSignalType(next.tile, TrackdirToTrack(next.td)) == SIGTYPE_PBS_ONEWAY) {
 					/* Possible safe tile, but not so good as it's the back of a signal... */
 					end_segment_reason |= ESRB_SAFE_TILE | ESRB_DEAD_END;
-					extra_cost += Yapf().PfGetSettings().rail_lastred_exit_penalty;
+					extra_cost += YAPF_RAIL_LASTRED_EXIT_PENALTY;
 				}
 			}
 
@@ -576,10 +602,10 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			if (n.flags_u.flags_s.last_signal_was_red) {
 				if (n.last_red_signal_type == SIGTYPE_EXIT) {
 					/* last signal was red pre-signal-exit */
-					extra_cost += Yapf().PfGetSettings().rail_lastred_exit_penalty;
+					extra_cost += YAPF_RAIL_LASTRED_EXIT_PENALTY;
 				} else if (!IsPbsSignal(n.last_red_signal_type)) {
 					/* Last signal was red, but not exit or path signal. */
-					extra_cost += Yapf().PfGetSettings().rail_lastred_penalty;
+					extra_cost += YAPF_RAIL_LASTRED_PENALTY;
 				}
 			}
 
@@ -589,7 +615,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 				assert(st != nullptr);
 				uint platform_length = st->GetPlatformLength(n.GetLastTile(), ReverseDiagDir(TrackdirToExitdir(n.GetLastTrackdir())));
 				/* Reduce the extra cost caused by passing-station penalty (each station receives it in the segment cost). */
-				extra_cost -= Yapf().PfGetSettings().rail_station_penalty * platform_length;
+				extra_cost -= YAPF_RAIL_STATION_PENALTY * platform_length;
 				/* Add penalty for the inappropriate platform length. */
 				extra_cost += PlatformLengthPenalty(platform_length);
 			}
