@@ -285,6 +285,12 @@ enum CallbackID {
 
 	/** Called to determine probability during build. */
 	CBID_VEHICLE_BUILD_PROBABILITY       = 0x162, // 15 bit callback
+
+	/**
+	 * Called to get custom engine refit mask. Called once
+	 * for each defined cargo after all NewGRFs are loaded.
+	 */
+	CBID_VEHICLE_CUSTOM_REFIT            = 0x0163, // 15 bit callback
 };
 
 /**
@@ -301,6 +307,7 @@ enum VehicleCallbackMask {
 	CBM_VEHICLE_COLOUR_REMAP   = 6, ///< Change colour mapping of vehicle
 	CBM_VEHICLE_SOUND_EFFECT   = 7, ///< Vehicle uses custom sound effects
 	CBM_VEHICLE_NAME           = 8, ///< Engine name
+	CBM_VEHICLE_CUSTOM_REFIT   = 9, ///< Custom refit mask
 };
 
 /**

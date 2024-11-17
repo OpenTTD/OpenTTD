@@ -9111,6 +9111,25 @@ static void CalculateRefitMasks()
 			/* Apply explicit refit includes/excludes. */
 			ei->refit_mask |= _gted[engine].ctt_include_mask;
 			ei->refit_mask &= ~_gted[engine].ctt_exclude_mask;
+
+			/* Custom refit mask callback. */
+			const GRFFile *file = _gted[e->index].defaultcargo_grf;
+			if (file == nullptr) file = e->GetGRF();
+			if (file != nullptr && HasBit(e->info.callback_mask, CBM_VEHICLE_CUSTOM_REFIT)) {
+				for (const CargoSpec *cs : CargoSpec::Iterate()) {
+					uint8_t local_slot = file->cargo_map[cs->Index()];
+					uint16_t callback = GetVehicleCallback(CBID_VEHICLE_CUSTOM_REFIT, cs->classes, local_slot, engine, nullptr);
+					switch (callback) {
+						case CALLBACK_FAILED:
+						case 0:
+							break; // Do nothing.
+						case 1: SetBit(ei->refit_mask, cs->Index()); break;
+						case 2: ClrBit(ei->refit_mask, cs->Index()); break;
+
+						default: ErrorUnknownCallbackResult(file->grfid, CBID_VEHICLE_CUSTOM_REFIT, callback);
+					}
+				}
+			}
 		}
 
 		/* Clear invalid cargoslots (from default vehicles or pre-NewCargo GRFs) */
