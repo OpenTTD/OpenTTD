@@ -615,6 +615,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Vareenhe
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Prestasjonsvurdering av selskap (største poengsum=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Graf over selskapsverdi
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Siste 24 minutter
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Siste 72 minutter
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Varetakster
@@ -628,6 +629,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Skjul al
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Vis/skjul graf for en bestemt varetype
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Produksjonshistorikk
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vis detaljerte prestasjonsmålinger
 
@@ -3990,6 +3992,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produksj
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produksjon forrige minutt:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transportert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Sentrer hovedvisningen på industrilokasjon. Ctrl+klikk for å åpne et nytt tilleggsvindu på industrilokasjon
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Graf over produksjon
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Viser grafen for industriell produksjonshistorikk
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produksjonsnivå: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Næringen har annonsert snarlig nedleggelse!
 
