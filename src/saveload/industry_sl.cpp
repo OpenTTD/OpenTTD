@@ -211,7 +211,6 @@ struct INDYChunkHandler : ChunkHandler {
 
 		SlIndustryAccepted::ResetOldStructure();
 		SlIndustryProduced::ResetOldStructure();
-		Industry::ResetIndustryCounts();
 
 		while ((index = SlIterateArray()) != -1) {
 			Industry *i = new (index) Industry();
@@ -229,7 +228,7 @@ struct INDYChunkHandler : ChunkHandler {
 			} else if (IsSavegameVersionBefore(SLV_INDUSTRY_CARGO_REORGANISE)) {
 				LoadMoveAcceptsProduced(i, INDUSTRY_NUM_INPUTS, INDUSTRY_NUM_OUTPUTS);
 			}
-			Industry::IncIndustryTypeCount(i->type);
+			Industry::industries[i->type].push_back(i->index); // Assume savegame indices are sorted.
 		}
 	}
 
