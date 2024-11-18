@@ -1428,14 +1428,14 @@ static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
  * @pre \c *t != nullptr
  * @post \c *t points to a town on success, and \c nullptr on failure.
  */
-static CommandCost FindTownForIndustry(TileIndex tile, int type, Town **t)
+static CommandCost FindTownForIndustry(TileIndex tile, IndustryType type, Town **t)
 {
 	*t = ClosestTownFromTile(tile, UINT_MAX);
 
 	if (_settings_game.economy.multiple_industry_per_town) return CommandCost();
 
 	for (const Industry *i : Industry::Iterate()) {
-		if (i->type == (uint8_t)type && i->town == *t) {
+		if (i->type == type && i->town == *t) {
 			*t = nullptr;
 			return_cmd_error(STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN);
 		}
@@ -1530,7 +1530,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
  * @param[out] custom_shape_check Perform custom check for the site.
  * @return Failed or succeeded command.
  */
-static CommandCost CheckIfIndustryTileSlopes(TileIndex tile, const IndustryTileLayout &layout, size_t layout_index, int type, uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type, bool *custom_shape_check = nullptr)
+static CommandCost CheckIfIndustryTileSlopes(TileIndex tile, const IndustryTileLayout &layout, size_t layout_index, IndustryType type, uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type, bool *custom_shape_check = nullptr)
 {
 	bool refused_slope = false;
 	bool custom_shape = false;
@@ -1572,7 +1572,7 @@ static CommandCost CheckIfIndustryTileSlopes(TileIndex tile, const IndustryTileL
  * @param t    Town authority that the industry belongs to.
  * @return Succeeded or failed command.
  */
-static CommandCost CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town *t)
+static CommandCost CheckIfIndustryIsAllowed(TileIndex tile, IndustryType type, const Town *t)
 {
 	if ((GetIndustrySpec(type)->behaviour & INDUSTRYBEH_TOWN1200_MORE) && t->cache.population < 1200) {
 		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200);
@@ -1689,7 +1689,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
  * @param type Type of the new industry.
  * @return Succeeded or failed command.
  */
-static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, int type)
+static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, IndustryType type)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
