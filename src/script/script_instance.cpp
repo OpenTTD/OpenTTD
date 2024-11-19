@@ -613,52 +613,46 @@ bool ScriptInstance::IsPaused()
 	ScriptDataVariant value = data->front();
 	data->pop_front();
 
-	if (std::holds_alternative<SQInteger>(value)) {
-		sq_pushinteger(vm, std::get<SQInteger>(value));
-		return true;
-	}
+	struct visitor {
+		HSQUIRRELVM vm;
+		ScriptData *data;
 
-	if (std::holds_alternative<std::string>(value)) {
-		sq_pushstring(vm, std::get<std::string>(value), -1);
-		return true;
-	}
+		bool operator()(const SQInteger &value) { sq_pushinteger(this->vm, value); return true; }
+		bool operator()(const std::string &value) { sq_pushstring(this->vm, value, -1); return true; }
+		bool operator()(const SQBool &value) { sq_pushbool(this->vm, value); return true; }
+		bool operator()(const SQSaveLoadType &type)
+		{
+			switch (type) {
+				case SQSL_ARRAY:
+					sq_newarray(this->vm, 0);
+					while (LoadObjects(this->vm, this->data)) {
+						sq_arrayappend(this->vm, -2);
+						/* The value is popped from the stack by squirrel. */
+					}
+					return true;
 
-	if (std::holds_alternative<SQBool>(value)) {
-		sq_pushbool(vm, std::get<SQBool>(value));
-		return true;
-	}
+				case SQSL_TABLE:
+					sq_newtable(this->vm);
+					while (LoadObjects(this->vm, this->data)) {
+						LoadObjects(this->vm, this->data);
+						sq_rawset(this->vm, -3);
+						/* The key (-2) and value (-1) are popped from the stack by squirrel. */
+					}
+					return true;
 
-	switch (std::get<SQSaveLoadType>(value)) {
-		case SQSL_ARRAY: {
-			sq_newarray(vm, 0);
-			while (LoadObjects(vm, data)) {
-				sq_arrayappend(vm, -2);
-				/* The value is popped from the stack by squirrel. */
+				case SQSL_NULL:
+					sq_pushnull(this->vm);
+					return true;
+
+				case SQSL_ARRAY_TABLE_END:
+					return false;
+
+				default: NOT_REACHED();
 			}
-			return true;
 		}
+	};
 
-		case SQSL_TABLE: {
-			sq_newtable(vm);
-			while (LoadObjects(vm, data)) {
-				LoadObjects(vm, data);
-				sq_rawset(vm, -3);
-				/* The key (-2) and value (-1) are popped from the stack by squirrel. */
-			}
-			return true;
-		}
-
-		case SQSL_NULL: {
-			sq_pushnull(vm);
-			return true;
-		}
-
-		case SQSL_ARRAY_TABLE_END: {
-			return false;
-		}
-
-		default: NOT_REACHED();
-	}
+	return std::visit(visitor{vm, data}, value);
 }
 
 /* static */ void ScriptInstance::LoadEmpty()
