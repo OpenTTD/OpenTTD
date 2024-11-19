@@ -580,6 +580,7 @@ bool AfterLoadGame()
 	/* This needs to be done even before conversion, because some conversions will destroy objects
 	 * that otherwise won't exist in the tree. */
 	RebuildViewportKdtree();
+	Industry::RebuildIndustryKdtree();
 
 	if (IsSavegameVersionBefore(SLV_98)) _gamelog.GRFAddList(_grfconfig);
 

@@ -236,7 +236,7 @@ struct INDYChunkHandler : ChunkHandler {
 	{
 		for (Industry *i : Industry::Iterate()) {
 			SlObject(i, _industry_desc);
-			Industry::IncIndustryTypeCount(i);
+			i->IncIndustryTypeCount();
 		}
 	}
 };

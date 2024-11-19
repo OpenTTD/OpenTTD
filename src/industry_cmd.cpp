@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "clear_map.h"
 #include "industry.h"
+#include "industry_kdtree.h"
 #include "station_base.h"
 #include "landscape.h"
 #include "viewport_func.h"
@@ -63,7 +64,7 @@ void BuildOilRig(TileIndex tile);
 static uint8_t _industry_sound_ctr;
 static TileIndex _industry_sound_tile;
 
-std::array<std::vector<std::pair<TownID, std::vector<IndustryID>>>, NUM_INDUSTRYTYPES> Industry::counts;
+std::array<Industry::IndustryTypeCountCaches, NUM_INDUSTRYTYPES> Industry::counts;
 
 IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
@@ -189,7 +190,7 @@ Industry::~Industry()
 	/* Clear the persistent storage. */
 	delete this->psa;
 
-	DecIndustryTypeCount(this);
+	this->DecIndustryTypeCount();
 
 	DeleteIndustryNews(this->index);
 	CloseWindowById(WC_INDUSTRY_VIEW, this->index);
@@ -1693,33 +1694,18 @@ static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, Indus
 
 	/* On a large map with many industries, it may be faster to check an area. */
 	static const int dmax = 14;
-	if (Industry::GetNumItems() > static_cast<size_t>(dmax * dmax * 2)) {
-		const Industry *i = nullptr;
-		TileArea tile_area = TileArea(tile, 1, 1).Expand(dmax);
-		for (TileIndex atile : tile_area) {
-			if (GetTileType(atile) == MP_INDUSTRY) {
-				const Industry *i2 = Industry::GetByTile(atile);
-				if (i == i2) continue;
-				i = i2;
-				if (DistanceMax(tile, i->location.tile) > (uint)dmax) continue;
-				if (i->type == indspec->conflicting[0] ||
-						i->type == indspec->conflicting[1] ||
-						i->type == indspec->conflicting[2]) {
-					return_cmd_error(STR_ERROR_INDUSTRY_TOO_CLOSE);
-				}
-			}
-		}
-		return CommandCost();
-	}
+	for (IndustryType conflicting_type : indspec->conflicting) {
+		if (conflicting_type >= NUM_INDUSTRYTYPES) continue;
 
-	for (const Industry *i : Industry::Iterate()) {
-		/* Within 14 tiles from another industry is considered close */
-		if (DistanceMax(tile, i->location.tile) > 14) continue;
+		std::vector<IndustryID> nearby_industries = Industry::FindContained(tile, conflicting_type, dmax);
+
+		auto is_conflicting = [&tile](IndustryID iid) {
+			/* Within 14 tiles from another industry is considered close */
+			return DistanceMax(tile, Industry::Get(iid)->location.tile) <= dmax;
+		};
 
 		/* check if there are any conflicting industry types around */
-		if (i->type == indspec->conflicting[0] ||
-				i->type == indspec->conflicting[1] ||
-				i->type == indspec->conflicting[2]) {
+		if (std::ranges::any_of(nearby_industries, is_conflicting)) {
 			return_cmd_error(STR_ERROR_INDUSTRY_TOO_CLOSE);
 		}
 	}
@@ -1809,7 +1795,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	}
 
 	i->town = t;
-	Industry::IncIndustryTypeCount(i);
+	i->IncIndustryTypeCount();
 	i->owner = OWNER_NONE;
 
 	uint16_t r = Random();
@@ -2500,6 +2486,9 @@ void GenerateIndustries()
 		PlaceInitialIndustry(it, false);
 	}
 	_industry_builder.Reset();
+
+	/* Build the industry k-d tree again to make sure it's well balanced */
+	Industry::RebuildIndustryKdtree();
 }
 
 /**

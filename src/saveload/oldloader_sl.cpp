@@ -874,7 +874,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 			i->random_colour = RemapTTOColour(i->random_colour);
 		}
 
-		Industry::IncIndustryTypeCount(i);
+		i->IncIndustryTypeCount();
 	} else {
 		delete i;
 	}

@@ -221,6 +221,8 @@ add_files(
     industry_cmd.cpp
     industry_cmd.h
     industry_gui.cpp
+    industry_kdtree.cpp
+    industry_kdtree.h
     industry_map.h
     industry_type.h
     industrytype.h

@@ -92,13 +92,20 @@ uint32_t GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32_t cur_g
 static uint32_t GetClosestIndustry(TileIndex tile, IndustryType type, const Industry *current)
 {
 	uint32_t best_dist = UINT32_MAX;
-	for (const Industry *i : Industry::Iterate()) {
-		if (i->type != type || i == current) continue;
 
-		best_dist = std::min(best_dist, DistanceManhattan(tile, i->location.tile));
+	const size_t count = Industry::GetIndustryTypeCount(type);
+	if (count == 0) return best_dist;
+
+	IndustryID iid;
+	if (current->index == INVALID_INDUSTRY || type != current->type) {
+		iid = Industry::FindNearest(tile, type);
+	} else {
+		if (count == 1) return best_dist;
+		iid = Industry::FindNearestExcept(tile, type, current->index);
+		assert(iid != current->index);
 	}
 
-	return best_dist;
+	return DistanceManhattan(tile, Industry::Get(iid)->location.tile);
 }
 
 /**
@@ -279,9 +286,12 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 		}
 
 		/* Distance of nearest industry of given type */
-		case 0x64:
+		case 0x64: {
 			if (this->tile == INVALID_TILE) break;
-			return GetClosestIndustry(this->tile, MapNewGRFIndustryType(parameter, indspec->grf_prop.grffile->grfid), this->industry);
+			IndustryType type = MapNewGRFIndustryType(parameter, indspec->grf_prop.grffile->grfid);
+			if (type >= NUM_INDUSTRYTYPES) return UINT32_MAX;
+			return GetClosestIndustry(this->tile, type, this->industry);
+		}
 		/* Get town zone and Manhattan distance of closest town */
 		case 0x65: {
 			if (this->tile == INVALID_TILE) break;

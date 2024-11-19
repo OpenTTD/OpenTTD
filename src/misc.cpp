@@ -31,6 +31,7 @@
 #include "station_kdtree.h"
 #include "town_kdtree.h"
 #include "viewport_kdtree.h"
+#include "industry.h"
 #include "newgrf_profiling.h"
 #include "3rdparty/monocypher/monocypher.h"
 
@@ -126,6 +127,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	RebuildStationKdtree();
 	RebuildTownKdtree();
 	RebuildViewportKdtree();
+	Industry::RebuildIndustryKdtree();
 
 	ResetPersistentNewGRFData();
 
