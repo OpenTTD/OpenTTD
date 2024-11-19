@@ -91,10 +91,13 @@ public:
 	template <typename T>
 	T GetNextParameter()
 	{
+		struct visitor {
+			uint64_t operator()(const uint64_t &arg) { return arg; }
+			uint64_t operator()(const std::string &) { throw std::out_of_range("Attempt to read string parameter as integer"); }
+		};
+
 		const auto &param = GetNextParameterReference();
-		const uint64_t *data = std::get_if<uint64_t>(&param.data);
-		if (data != nullptr) return static_cast<T>(*data);
-		throw std::out_of_range("Attempt to read string parameter as integer");
+		return static_cast<T>(std::visit(visitor{}, param.data));
 	}
 
 	/**
@@ -105,10 +108,13 @@ public:
 	 */
 	const char *GetNextParameterString()
 	{
+		struct visitor {
+			const char *operator()(const uint64_t &) { throw std::out_of_range("Attempt to read integer parameter as string"); }
+			const char *operator()(const std::string &arg) { return arg.c_str(); }
+		};
+
 		const auto &param = GetNextParameterReference();
-		const std::string *data = std::get_if<std::string>(&param.data);
-		if (data != nullptr) return data->c_str();
-		throw std::out_of_range("Attempt to read integer parameter as string");
+		return std::visit(visitor{}, param.data);
 	}
 
 	/**
