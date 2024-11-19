@@ -85,8 +85,6 @@ uint32_t _sync_seed_2;                  ///< Second part of the seed.
 uint32_t _sync_frame;                   ///< The frame to perform the sync check.
 bool _network_first_time;             ///< Whether we have finished joining or not.
 
-static_assert((int)NETWORK_COMPANY_NAME_LENGTH == MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH);
-
 /** The amount of clients connected */
 uint8_t _network_clients_connected = 0;
 
