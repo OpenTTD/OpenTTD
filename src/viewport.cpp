@@ -102,7 +102,7 @@
 Point _tile_fract_coords;
 
 
-ViewportSignKdtree _viewport_sign_kdtree(&Kdtree_ViewportSignXYFunc);
+ViewportSignKdtree _viewport_sign_kdtree{};
 static int _viewport_sign_maxwidth = 0;
 
 

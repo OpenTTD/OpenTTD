@@ -36,7 +36,7 @@ StationPool _station_pool("Station");
 INSTANTIATE_POOL_METHODS(Station)
 
 
-StationKdtree _station_kdtree(Kdtree_StationXYFunc);
+StationKdtree _station_kdtree{};
 
 void RebuildStationKdtree()
 {

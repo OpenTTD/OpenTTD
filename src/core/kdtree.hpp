@@ -47,7 +47,6 @@ class Kdtree {
 	std::vector<node> nodes;       ///< Pool of all nodes in the tree
 	std::vector<size_t> free_list; ///< List of dead indices in the nodes vector
 	size_t root;                   ///< Index of root node
-	TxyFunc xyfunc;                ///< Functor to extract a coordinate from an element
 	size_t unbalanced;             ///< Number approximating how unbalanced the tree might be
 
 	/** Create one new node in the tree, return its index in the pool */
@@ -69,8 +68,8 @@ class Kdtree {
 	CoordT SelectSplitCoord(It begin, It end, int level)
 	{
 		It mid = begin + (end - begin) / 2;
-		std::nth_element(begin, mid, end, [&](T a, T b) { return this->xyfunc(a, level % 2) < this->xyfunc(b, level % 2); });
-		return this->xyfunc(*mid, level % 2);
+		std::nth_element(begin, mid, end, [&](T a, T b) { return TxyFunc()(a, level % 2) < TxyFunc()(b, level % 2); });
+		return TxyFunc()(*mid, level % 2);
 	}
 
 	/** Construct a subtree from elements between begin and end iterators, return index of root */
@@ -85,7 +84,7 @@ class Kdtree {
 			return this->AddNode(*begin);
 		} else if (count > 1) {
 			CoordT split_coord = SelectSplitCoord(begin, end, level);
-			It split = std::partition(begin, end, [&](T v) { return this->xyfunc(v, level % 2) < split_coord; });
+			It split = std::partition(begin, end, [&](T v) { return TxyFunc()(v, level % 2) < split_coord; });
 			size_t newidx = this->AddNode(*split);
 			this->nodes[newidx].left = this->BuildSubtree(begin, split, level + 1);
 			this->nodes[newidx].right = this->BuildSubtree(split + 1, end, level + 1);
@@ -129,9 +128,9 @@ class Kdtree {
 		node &n = this->nodes[node_idx];
 
 		/* Coordinate of element splitting at this node */
-		CoordT nc = this->xyfunc(n.element, dim);
+		CoordT nc = TxyFunc()(n.element, dim);
 		/* Coordinate of the new element */
-		CoordT ec = this->xyfunc(element, dim);
+		CoordT ec = TxyFunc()(element, dim);
 		/* Which side to insert on */
 		size_t &next = (ec < nc) ? n.left : n.right;
 
@@ -202,9 +201,9 @@ class Kdtree {
 			/* Dimension index of current level */
 			int dim = level % 2;
 			/* Coordinate of element splitting at this node */
-			CoordT nc = this->xyfunc(n.element, dim);
+			CoordT nc = TxyFunc()(n.element, dim);
 			/* Coordinate of the element being removed */
-			CoordT ec = this->xyfunc(element, dim);
+			CoordT ec = TxyFunc()(element, dim);
 			/* Which side to remove from */
 			size_t next = (ec < nc) ? n.left : n.right;
 			assert(next != INVALID_NODE); // node must exist somewhere and must be found before a leaf is reached
@@ -222,7 +221,7 @@ class Kdtree {
 
 	DistT ManhattanDistance(const T &element, CoordT x, CoordT y) const
 	{
-		return abs((DistT)this->xyfunc(element, 0) - (DistT)x) + abs((DistT)this->xyfunc(element, 1) - (DistT)y);
+		return abs((DistT)TxyFunc()(element, 0) - (DistT)x) + abs((DistT)TxyFunc()(element, 1) - (DistT)y);
 	}
 
 	/** A data element and its distance to a searched-for point */
@@ -245,7 +244,7 @@ class Kdtree {
 		const node &n = this->nodes[node_idx];
 
 		/* Coordinate of element splitting at this node */
-		CoordT c = this->xyfunc(n.element, dim);
+		CoordT c = TxyFunc()(n.element, dim);
 		/* This node's distance to target */
 		DistT thisdist = ManhattanDistance(n.element, xy[0], xy[1]);
 		/* Assume this node is the best choice for now */
@@ -280,9 +279,9 @@ class Kdtree {
 		const node &n = this->nodes[node_idx];
 
 		/* Coordinate of element splitting at this node */
-		CoordT ec = this->xyfunc(n.element, dim);
+		CoordT ec = TxyFunc()(n.element, dim);
 		/* Opposite coordinate of element */
-		CoordT oc = this->xyfunc(n.element, 1 - dim);
+		CoordT oc = TxyFunc()(n.element, 1 - dim);
 
 		/* Test if this element is within rectangle */
 		if (ec >= p1[dim] && ec < p2[dim] && oc >= p1[1 - dim] && oc < p2[1 - dim]) outputter(n.element);
@@ -321,8 +320,8 @@ class Kdtree {
 		if (node_idx == INVALID_NODE) return;
 
 		const node &n = this->nodes[node_idx];
-		CoordT cx = this->xyfunc(n.element, 0);
-		CoordT cy = this->xyfunc(n.element, 1);
+		CoordT cx = TxyFunc()(n.element, 0);
+		CoordT cy = TxyFunc()(n.element, 1);
 
 		assert(cx >= min_x);
 		assert(cx < max_x);
@@ -350,7 +349,7 @@ class Kdtree {
 
 public:
 	/** Construct a new Kdtree with the given xyfunc */
-	Kdtree(TxyFunc xyfunc) : root(INVALID_NODE), xyfunc(xyfunc), unbalanced(0) { }
+	Kdtree() : root(INVALID_NODE), unbalanced(0) { }
 
 	/**
 	 * Clear and rebuild the tree from a new sequence of elements,

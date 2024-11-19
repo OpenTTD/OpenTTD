@@ -15,8 +15,14 @@
 #include "station_base.h"
 #include "map_func.h"
 
-inline uint16_t Kdtree_StationXYFunc(StationID stid, int dim) { return (dim == 0) ? TileX(BaseStation::Get(stid)->xy) : TileY(BaseStation::Get(stid)->xy); }
-typedef Kdtree<StationID, decltype(&Kdtree_StationXYFunc), uint16_t, int> StationKdtree;
+struct Kdtree_StationXYFunc {
+	inline uint16_t operator()(StationID stid, int dim)
+	{
+		return (dim == 0) ? TileX(BaseStation::Get(stid)->xy) : TileY(BaseStation::Get(stid)->xy);
+	}
+};
+
+using StationKdtree = Kdtree<StationID, Kdtree_StationXYFunc, uint16_t, int>;
 extern StationKdtree _station_kdtree;
 
 /**
