@@ -237,7 +237,7 @@ class Kdtree {
 		NOT_REACHED(); // a.first == b.first: same element must not be inserted twice
 	}
 	/** Search a sub-tree for the element nearest to a given point */
-	node_distance FindNearestRecursive(CoordT xy[2], size_t node_idx, int level, DistT limit = std::numeric_limits<DistT>::max()) const
+	node_distance FindNearestRecursive(CoordT xy[2], size_t node_idx, int level, std::optional<T> e = std::nullopt, DistT limit = std::numeric_limits<DistT>::max()) const
 	{
 		/* Dimension index of current level */
 		int dim = level % 2;
@@ -247,7 +247,7 @@ class Kdtree {
 		/* Coordinate of element splitting at this node */
 		CoordT c = TxyFunc()(n.element, dim);
 		/* This node's distance to target */
-		DistT thisdist = ManhattanDistance(n.element, xy[0], xy[1]);
+		DistT thisdist = !e.has_value() || n.element != e.value() ? ManhattanDistance(n.element, xy[0], xy[1]) : std::numeric_limits<DistT>::max();
 		/* Assume this node is the best choice for now */
 		node_distance best = std::make_pair(n.element, thisdist);
 
@@ -255,7 +255,8 @@ class Kdtree {
 		size_t next = (xy[dim] < c) ? n.left : n.right;
 		if (next != INVALID_NODE) {
 			/* Check if there is a better node down the tree */
-			best = SelectNearestNodeDistance(best, this->FindNearestRecursive(xy, next, level + 1));
+			node_distance candidate = this->FindNearestRecursive(xy, next, level + 1, e);
+			best = SelectNearestNodeDistance(best, candidate);
 		}
 
 		limit = std::min(best.second, limit);
@@ -264,7 +265,7 @@ class Kdtree {
 		 * if it is we also need to check the other side of the split. */
 		size_t opposite = (xy[dim] >= c) ? n.left : n.right; // reverse of above
 		if (opposite != INVALID_NODE && limit >= abs((int)xy[dim] - (int)c)) {
-			node_distance other_candidate = this->FindNearestRecursive(xy, opposite, level + 1, limit);
+			node_distance other_candidate = this->FindNearestRecursive(xy, opposite, level + 1, e, limit);
 			best = SelectNearestNodeDistance(best, other_candidate);
 		}
 
@@ -437,6 +438,9 @@ public:
 	 * Find the element closest to given coordinate, in Manhattan distance.
 	 * For multiple elements with the same distance, the one comparing smaller with
 	 * a less-than comparison is chosen.
+	 * @param x First coordinate.
+	 * @param y Second coordinate.
+	 * @return T The element closest to the given coordinate.
 	 */
 	T FindNearest(CoordT x, CoordT y) const
 	{
@@ -444,6 +448,24 @@ public:
 
 		CoordT xy[2] = { x, y };
 		return this->FindNearestRecursive(xy, this->root, 0).first;
+	}
+
+	/**
+	 * Find the element closest to the given coordinate, excluding a specified element.
+	 * For multiple elements with the same distance, the one comparing smaller with
+	 * a less-than comparison is chosen.
+	 * @note If the tree has only one element and it is the excluded one, this function will return that element.
+	 * @param x First coordinate.
+	 * @param y Second coordinate.
+	 * @param e The element to be excluded from the search.
+	 * @return The element closest to the given coordinate.
+	 */
+	T FindNearestExcept(CoordT x, CoordT y, T e) const
+	{
+		assert(this->Count() > 0);
+
+		CoordT xy[2] = { x, y };
+		return this->FindNearestRecursive(xy, this->root, 0, e).first;
 	}
 
 	/**
@@ -471,6 +493,11 @@ public:
 	/**
 	 * Find all items contained within the given rectangle.
 	 * @note End coordinates are exclusive, x1<x2 && y1<y2 is a precondition.
+	 * @param x1 Start first coordinate, points found are greater or equals to this.
+	 * @param y1 Start second coordinate, points found are greater or equals to this.
+	 * @param x2 End first coordinate, points found are less than this.
+	 * @param y2 End second coordinate, points found are less than this.
+	 * @return std::vector<T> A vector of items contained within the given rectangle.
 	 */
 	std::vector<T> FindContained(CoordT x1, CoordT y1, CoordT x2, CoordT y2) const
 	{
