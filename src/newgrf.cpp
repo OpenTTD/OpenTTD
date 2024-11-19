@@ -8971,16 +8971,20 @@ static CargoLabel GetActiveCargoLabel(const std::initializer_list<CargoLabel> &l
  */
 static CargoLabel GetActiveCargoLabel(const std::variant<CargoLabel, MixedCargoType> &label)
 {
-	if (std::holds_alternative<CargoLabel>(label)) return std::get<CargoLabel>(label);
-	if (std::holds_alternative<MixedCargoType>(label)) {
-		switch (std::get<MixedCargoType>(label)) {
-			case MCT_LIVESTOCK_FRUIT: return GetActiveCargoLabel({CT_LIVESTOCK, CT_FRUIT});
-			case MCT_GRAIN_WHEAT_MAIZE: return GetActiveCargoLabel({CT_GRAIN, CT_WHEAT, CT_MAIZE});
-			case MCT_VALUABLES_GOLD_DIAMONDS: return GetActiveCargoLabel({CT_VALUABLES, CT_GOLD, CT_DIAMONDS});
-			default: NOT_REACHED();
+	struct visitor {
+		CargoLabel operator()(const CargoLabel &label) { return label; }
+		CargoLabel operator()(const MixedCargoType &mixed)
+		{
+			switch (mixed) {
+				case MCT_LIVESTOCK_FRUIT: return GetActiveCargoLabel({CT_LIVESTOCK, CT_FRUIT});
+				case MCT_GRAIN_WHEAT_MAIZE: return GetActiveCargoLabel({CT_GRAIN, CT_WHEAT, CT_MAIZE});
+				case MCT_VALUABLES_GOLD_DIAMONDS: return GetActiveCargoLabel({CT_VALUABLES, CT_GOLD, CT_DIAMONDS});
+				default: NOT_REACHED();
+			}
 		}
-	}
-	NOT_REACHED();
+	};
+
+	return std::visit(visitor{}, label);
 }
 
 /**
