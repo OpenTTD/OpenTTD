@@ -1437,11 +1437,12 @@ protected:
 	 */
 	uint GetIndustryListWidth() const
 	{
-		uint width = 0;
-		for (const Industry *i : this->industries) {
-			width = std::max(width, GetStringBoundingBox(this->GetIndustryString(i)).width);
+		uint width = this->hscroll->GetCount();
+		auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->industries);
+		for (auto it = first; it != last; ++it) {
+			width = std::max(width, GetStringBoundingBox(this->GetIndustryString(*it)).width);
 		}
-		return width + WidgetDimensions::scaled.framerect.Horizontal();
+		return width;
 	}
 
 	/** (Re)Build industries list */
@@ -1467,7 +1468,6 @@ protected:
 
 			this->industries.Filter(filter);
 
-			this->hscroll->SetCount(this->GetIndustryListWidth());
 			this->vscroll->SetCount(this->industries.size()); // Update scrollbar as well.
 		}
 
@@ -1682,6 +1682,7 @@ public:
 	void OnInit() override
 	{
 		this->SetCargoFilterArray();
+		this->hscroll->SetCount(0);
 	}
 
 	void SetStringParameters(WidgetID widget) const override
@@ -1875,6 +1876,7 @@ public:
 	void OnPaint() override
 	{
 		if (this->industries.NeedRebuild()) this->BuildSortIndustriesList();
+		this->hscroll->SetCount(this->GetIndustryListWidth());
 		this->DrawWidgets();
 	}
 
