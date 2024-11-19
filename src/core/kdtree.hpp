@@ -42,7 +42,8 @@ class Kdtree {
 		node(T element) : element(element), left(INVALID_NODE), right(INVALID_NODE) { }
 	};
 
-	static const size_t INVALID_NODE = SIZE_MAX; ///< Index value indicating no-such-node
+	static const size_t INVALID_NODE = SIZE_MAX;     ///< Index value indicating no-such-node
+	static const size_t MIN_REBALANCE_THRESHOLD = 8; ///< Arbitrary value for "not worth rebalancing"
 
 	std::vector<node> nodes;       ///< Pool of all nodes in the tree
 	std::vector<size_t> free_list; ///< List of dead indices in the nodes vector
@@ -99,7 +100,7 @@ class Kdtree {
 	bool Rebuild(const T *include_element, const T *exclude_element)
 	{
 		size_t initial_count = this->Count();
-		if (initial_count < 8) return false; // arbitrary value for "not worth rebalancing"
+		if (initial_count < MIN_REBALANCE_THRESHOLD) return false;
 
 		T root_element = this->nodes[this->root].element;
 		std::vector<T> elements = this->FreeSubtree(this->root);
@@ -311,8 +312,8 @@ class Kdtree {
 	bool IsUnbalanced()
 	{
 		size_t count = this->Count();
-		if (count < 8) return false;
-		return this->unbalanced > this->Count() / 4;
+		if (count < MIN_REBALANCE_THRESHOLD) return false;
+		return this->unbalanced > count / 4;
 	}
 
 	/** Verify that the invariant is true for a sub-tree, assert if not */
