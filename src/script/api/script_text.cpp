@@ -198,13 +198,21 @@ void ScriptText::ParamCheck::Encode(std::back_insert_iterator<std::string> &outp
 {
 	if (this->cmd == nullptr) this->cmd = cmd;
 	if (this->used) return;
-	if (std::holds_alternative<std::string>(*this->param)) fmt::format_to(output, ":\"{}\"", std::get<std::string>(*this->param));
-	if (std::holds_alternative<SQInteger>(*this->param)) fmt::format_to(output, ":{:X}", std::get<SQInteger>(*this->param));
-	if (std::holds_alternative<ScriptTextRef>(*this->param)) {
-		fmt::format_to(output, ":");
-		Utf8Encode(output, SCC_ENCODED);
-		fmt::format_to(output, "{:X}", std::get<ScriptTextRef>(*this->param)->string);
-	}
+
+	struct visitor {
+		std::back_insert_iterator<std::string> &output;
+
+		void operator()(const std::string &value) { fmt::format_to(this->output, ":\"{}\"", value); }
+		void operator()(const SQInteger &value) { fmt::format_to(this->output, ":{:X}", value); }
+		void operator()(const ScriptTextRef &value)
+		{
+			fmt::format_to(this->output, ":");
+			Utf8Encode(this->output, SCC_ENCODED);
+			fmt::format_to(this->output, "{:X}", value->string);
+		}
+	};
+
+	std::visit(visitor{output}, *this->param);
 	this->used = true;
 }
 
