@@ -72,21 +72,24 @@ void SetupCargoForClimate(LandscapeID l)
 	auto insert = std::begin(CargoSpec::array);
 	for (const auto &cl : _default_climate_cargo[l]) {
 
-		/* Check if value is an index into the cargo table */
-		if (std::holds_alternative<int>(cl)) {
-			/* Copy the default cargo by index. */
-			*insert = _default_cargo[std::get<int>(cl)];
-		} else {
-			/* Search for label in default cargo types and copy if found. */
-			CargoLabel label = std::get<CargoLabel>(cl);
-			auto found = std::find_if(std::begin(_default_cargo), std::end(_default_cargo), [&label](const CargoSpec &cs) { return cs.label == label; });
-			if (found != std::end(_default_cargo)) {
-				*insert = *found;
-			} else {
+		struct visitor {
+			const CargoSpec &operator()(const int &index)
+			{
+				/* Copy the default cargo by index. */
+				return _default_cargo[index];
+			}
+			const CargoSpec &operator()(const CargoLabel &label)
+			{
+				/* Search for label in default cargo types and copy if found. */
+				auto found = std::ranges::find(_default_cargo, label, &CargoSpec::label);
+				if (found != std::end(_default_cargo)) return *found;
+
 				/* Index or label is invalid, this should not happen. */
 				NOT_REACHED();
 			}
-		}
+		};
+
+		*insert = std::visit(visitor{}, cl);
 
 		if (insert->IsValid()) {
 			SetBit(_cargo_mask, insert->Index());
