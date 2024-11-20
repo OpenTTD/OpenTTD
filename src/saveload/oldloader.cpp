@@ -269,6 +269,7 @@ bool LoadOldSaveGame(const std::string &file)
 
 	if (!ls.file.has_value()) {
 		Debug(oldloader, 0, "Cannot open file '{}'", file);
+		SetSaveLoadError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 		return false;
 	}
 
