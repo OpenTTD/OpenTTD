@@ -1341,6 +1341,16 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				_gted[e->index].cargo_allowed_required = buf.ReadWord();
 				break;
 
+			case 0x80: { // Copy existing train properties
+				uint16_t sourceid = buf->ReadWord();
+				Engine *source = GetNewEngine(_cur.grffile, VEH_TRAIN, sourceid, true);
+				if (source == nullptr) break;
+				*ei = source->info;
+				*rvi = source->u.rail;
+				_gted[e->index] = _gted[source->index];
+				break;
+			}
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1546,6 +1556,16 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				_gted[e->index].cargo_allowed_required = buf.ReadWord();
 				break;
 
+			case 0x80: { // Copy existing road vehicle properties
+				uint16_t sourceid = buf->ReadWord();
+				Engine *source = GetNewEngine(_cur.grffile, VEH_ROAD, sourceid, true);
+				if (source == nullptr) break;
+				*ei = source->info;
+				*rvi = source->u.road;
+				_gted[e->index] = _gted[source->index];
+				break;
+			}
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1737,6 +1757,16 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				_gted[e->index].cargo_allowed_required = buf.ReadWord();
 				break;
 
+			case 0x80: { // Copy existing ship properties
+				uint16_t sourceid = buf->ReadWord();
+				Engine *source = GetNewEngine(_cur.grffile, VEH_SHIP, sourceid, true);
+				if (source == nullptr) break;
+				*ei = source->info;
+				*svi = source->u.ship;
+				_gted[e->index] = _gted[source->index];
+				break;
+			}
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1905,6 +1935,16 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 			case 0x23: // Cargo classes required for a refit.
 				_gted[e->index].cargo_allowed_required = buf.ReadWord();
 				break;
+
+			case 0x80: { // Copy existing aircraft properties
+				uint16_t sourceid = buf->ReadWord();
+				Engine *source = GetNewEngine(_cur.grffile, VEH_AIRCRAFT, sourceid, true);
+				if (source == nullptr) break;
+				*ei = source->info;
+				*avi = source->u.air;
+				_gted[e->index] = _gted[source->index];
+				break;
+			}
 
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
