@@ -20,13 +20,8 @@
 
 #include "../../safeguards.h"
 
-RawText::RawText(const std::string &text) : text(text)
-{
-}
 
-
-ScriptText::ScriptText(HSQUIRRELVM vm) :
-	ZeroedMemoryAllocator()
+ScriptText::ScriptText(HSQUIRRELVM vm)
 {
 	int nparam = sq_gettop(vm) - 1;
 	if (nparam < 1) {
