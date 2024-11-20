@@ -1190,7 +1190,7 @@ STR_SUBSIDY_X4                                                  :x4
 ###length 4
 STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :温带景观
 STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :寒带景观
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :沙漠景观
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :热带景观
 STR_CLIMATE_TOYLAND_LANDSCAPE                                   :奇幻景观
 
 ###length 7
@@ -1224,7 +1224,7 @@ STR_CONFIG_SETTING_TYPE_CLIENT                                  :当前客户端
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :当前游戏设置（可保存在存档中，仅对新游戏生效）
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :当前游戏设置（可保存在存档中，仅对当前游戏生效）
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :当前公司设置（可保存在存档中，仅对新游戏生效）
-STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :当前公司设置（可保存在存档中，仅对现行公司生效）
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :当前公司设置（可保存在存档中，仅对当前公司生效）
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}注意！
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}该操作将重置所有游戏设置为默认值。{}确认继续？
 
@@ -2200,8 +2200,8 @@ STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}开始�
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}选择“温带”景观风格
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}选择“寒带”景观风格
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}选择“沙漠”景观风格
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}选择“玩具”景观风格
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}选择“热带”景观风格
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}选择“奇幻”景观风格
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}显示游戏选项
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}显示高分榜

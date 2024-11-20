@@ -801,8 +801,9 @@ STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STR
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Slå alle fra
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Slå alle til
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Alle
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Vis højde
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Vis industri navne
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Vis ingen industrier på kortet
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Vis alle industrier på kortet
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Slå visning af højdekort til/fra
@@ -1490,6 +1491,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Advar hvis et k
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Når aktiveret, bliver en nyhedsmeddelelse sendt når et køretøj der ikke har haft overskud inden for et år
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Når det er aktiveret, sendes en nyhedsmeddelelse, når et køretøj ikke har tjent noget inden for en periode
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Advar, hvis et køretøj er ved at blive gammelt: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Når den er aktiveret, sendes en nyhedsmeddelelse, når et køretøj er ved at blive gammelt
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køretøjernes levealder udløber aldrig: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Når aktiveret, forbliver alle biltyper tilgængelige for evigt efter indførelse
@@ -2806,6 +2809,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Byg en s
 STR_PICKER_MODE_ALL                                             :Alle
 STR_PICKER_MODE_ALL_TOOLTIP                                     :Skift visning af elementer fra alle klasser
 STR_PICKER_MODE_USED                                            :Brugt
+STR_PICKER_MODE_USED_TOOLTIP                                    :Skift til kun at vise eksisterende elementer
 STR_PICKER_MODE_SAVED                                           :Gemt
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Skift til kun at vise gemte elementer
 
@@ -2876,6 +2880,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Byg vejs
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Byg sporvognssektion ved hjælp af Autotram-tilstand. Ctrl+klik for at fjerne sporvejssektionen. Tryk også på Shift for kun at vise omkostningsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Byg værksted (til køb og servicering af vejkøretøjer). Shift skifter mellem at bygge og vise prisoverslag.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Byg sporvognsremise (til køb og serviceing af sporvogne). Shift skifter mellem at bygge og vise prisoverslag.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Byg et rutepunkt på sporvogn. Ctrl+klik for at vælge et andet rutepunkt, der skal deltage. Tryk også på Shift for kun at vise omkostningsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Byg busstation. Ctrl+klik for at vælge en anden station at deltage i. Tryk også på Shift for kun at vise omkostningsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Byg en passager-sporvognsstation. Ctrl+klik muliggør sammenslutning af stationer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Byg lastbilstation. Ctrl+klik gør det muligt at tilslutte stationer. Shift skifter mellem at bygge/vise omkostningsestimat
@@ -3260,6 +3265,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Gem scen
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Hent scenarie
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Hent højdekort
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Gem højdekort
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Indlæs bydata
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik her for at gå til den nuværende standard gem/indlæs mappe
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} fri
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste over drev, biblioteker og gemte spilfiler
@@ -3271,6 +3277,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Gem det 
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Åbn
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Åbn det markerede spil
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Indlæs valgte højdemap
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Indlæs de valgte bydata
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spil Detaljer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen information til rådighed
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3404,7 +3411,9 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kører f
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kørende script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Forbereder spil
 
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON-filen er formateret forkert
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} data formateret forkert
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING}koordinater, der er formateret forkert, skal være 0 til 1 som en andel af den samlede højdekortdimension
 
 
 # NewGRF settings
@@ -3968,6 +3977,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkti
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produktion sidste minut:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transporteret)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer skærmen over industriens lokalitet. Ctrl+Klik åbner et nyt vindue ved industriens lokalitet.
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Produktionsgraf
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Viser grafen over industriens produktionshistorie
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktions niveauet: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industrien har rapporteret øjeblikkelig nedlukning!
 
@@ -3990,10 +4001,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Fly
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Tog - klik på et tog for information
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Køretøjer - klik på et køretøj for information
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skibe - klik på et skib for information
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fly - klik på et fly for information
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Tog - klik på tog for information. Hold Ctrl+Shift nede for at se lasttype
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vejkøretøjer - klik på køretøj for information. Hold Ctrl+Shift nede for at se lasttype
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skibe - klik på skib for information. Hold Ctrl+Shift nede for at se lasttype
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fly – klik på fly for information. Hold Ctrl+Shift nede for at se lasttype
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tilgængelige tog
@@ -5053,6 +5064,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan ikke
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grænser op til mere end en eksisterende station/fragtcentral
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stationen er for spredt
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... ikke-understøttet antal numre
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... ikke-understøttet længde
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}For mange stationer/fragtcentraler
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Banegården er i for mange dele
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}For mange busterminaler
@@ -5095,6 +5108,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan ikke fjerne rutepunkt for tog her...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Kan ikke fjerne rutepunkt...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Jernbane-rutepunkt skal fjernes først
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Skal først fjerne vej rutepunkt
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... der er en bøje i vejen
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bøjen er i brug af et andet firma!
 
