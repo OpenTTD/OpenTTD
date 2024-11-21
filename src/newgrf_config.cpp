@@ -127,9 +127,9 @@ void GRFConfig::SetParameterDefaults()
 
 	if (!this->has_param_defaults) return;
 
-	for (uint i = 0; i < this->param_info.size(); i++) {
-		if (!this->param_info[i]) continue;
-		this->param_info[i]->SetValue(this, this->param_info[i]->def_value);
+	for (const auto &info : this->param_info) {
+		if (!info.has_value()) continue;
+		this->SetValue(info.value(), info->def_value);
 	}
 }
 
@@ -176,49 +176,35 @@ GRFError::GRFError(StringID severity, StringID message) : message(message), seve
 }
 
 /**
- * Create a new empty GRFParameterInfo object.
- * @param nr The newgrf parameter that is changed.
- */
-GRFParameterInfo::GRFParameterInfo(uint nr) :
-	name(),
-	desc(),
-	type(PTYPE_UINT_ENUM),
-	min_value(0),
-	max_value(UINT32_MAX),
-	def_value(0),
-	param_nr(nr),
-	first_bit(0),
-	num_bit(32),
-	value_names(),
-	complete_labels(false)
-{}
-
-/**
- * Get the value of this user-changeable parameter from the given config.
- * @param config The GRFConfig to get the value from.
+ * Get the value of the given user-changeable parameter.
+ * @param info The grf parameter info to get the value for.
  * @return The value of this parameter.
  */
-uint32_t GRFParameterInfo::GetValue(struct GRFConfig *config) const
+uint32_t GRFConfig::GetValue(const GRFParameterInfo &info) const
 {
 	/* GB doesn't work correctly with nbits == 32, so handle that case here. */
-	if (this->num_bit == 32) return config->param[this->param_nr];
-	return GB(config->param[this->param_nr], this->first_bit, this->num_bit);
+	if (info.num_bit == 32) return this->param[info.param_nr];
+
+	return GB(this->param[info.param_nr], info.first_bit, info.num_bit);
 }
 
 /**
- * Set the value of this user-changeable parameter in the given config.
- * @param config The GRFConfig to set the value in.
+ * Set the value of the given user-changeable parameter.
+ * @param info The grf parameter info to set the value for.
  * @param value The new value.
  */
-void GRFParameterInfo::SetValue(struct GRFConfig *config, uint32_t value)
+void GRFConfig::SetValue(const GRFParameterInfo &info, uint32_t value)
 {
+	value = Clamp(value, info.min_value, info.max_value);
+
 	/* SB doesn't work correctly with nbits == 32, so handle that case here. */
-	if (this->num_bit == 32) {
-		config->param[this->param_nr] = value;
+	if (info.num_bit == 32) {
+		this->param[info.param_nr] = value;
 	} else {
-		SB(config->param[this->param_nr], this->first_bit, this->num_bit, value);
+		SB(this->param[info.param_nr], info.first_bit, info.num_bit, value);
 	}
-	config->num_params = std::max<uint>(config->num_params, this->param_nr + 1);
+
+	this->num_params = std::max<uint>(this->num_params, info.param_nr + 1);
 	SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
 }
 

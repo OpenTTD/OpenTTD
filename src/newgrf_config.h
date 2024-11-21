@@ -116,7 +116,7 @@ struct GRFError {
 };
 
 /** The possible types of a newgrf parameter. */
-enum GRFParameterType {
+enum GRFParameterType : uint8_t {
 	PTYPE_UINT_ENUM, ///< The parameter allows a range of numbers, each of which can have a special name
 	PTYPE_BOOL,      ///< The parameter is either 0 or 1
 	PTYPE_END,       ///< Invalid parameter type
@@ -124,21 +124,29 @@ enum GRFParameterType {
 
 /** Information about one grf parameter. */
 struct GRFParameterInfo {
-	GRFParameterInfo(uint nr);
-	GRFTextList name;      ///< The name of this parameter
-	GRFTextList desc;      ///< The description of this parameter
-	GRFParameterType type; ///< The type of this parameter
-	uint32_t min_value;      ///< The minimal value this parameter can have
-	uint32_t max_value;      ///< The maximal value of this parameter
-	uint32_t def_value;      ///< Default value of this parameter
-	uint8_t param_nr;         ///< GRF parameter to store content in
-	uint8_t first_bit;        ///< First bit to use in the GRF parameter
-	uint8_t num_bit;          ///< Number of bits to use for this parameter
-	std::map<uint32_t, GRFTextList> value_names; ///< Names for each value.
-	bool complete_labels;  ///< True if all values have a label.
+	/**
+	 * Create a new empty GRFParameterInfo object.
+	 * @param nr The newgrf parameter that is changed.
+	 */
+	explicit GRFParameterInfo(uint nr) : param_nr(nr) {}
 
-	uint32_t GetValue(struct GRFConfig *config) const;
-	void SetValue(struct GRFConfig *config, uint32_t value);
+	GRFTextList name = {}; ///< The name of this parameter
+	GRFTextList desc = {}; ///< The description of this parameter
+
+	uint32_t min_value = 0; ///< The minimal value this parameter can have
+	uint32_t max_value = UINT32_MAX; ///< The maximal value of this parameter
+	uint32_t def_value = 0; ///< Default value of this parameter
+
+	GRFParameterType type = PTYPE_UINT_ENUM; ///< The type of this parameter
+
+	uint8_t param_nr; ///< GRF parameter to store content in
+	uint8_t first_bit = 0; ///< First bit to use in the GRF parameter
+	uint8_t num_bit = 32; ///< Number of bits to use for this parameter
+
+	bool complete_labels = false; ///< True if all values have a label.
+
+	std::map<uint32_t, GRFTextList> value_names = {}; ///< Names for each value.
+
 	void Finalize();
 };
 
@@ -175,6 +183,9 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	bool IsCompatible(uint32_t old_version) const;
 	void SetParams(const std::vector<uint32_t> &pars);
 	void CopyParams(const GRFConfig &src);
+
+	uint32_t GetValue(const GRFParameterInfo &info) const;
+	void SetValue(const GRFParameterInfo &info, uint32_t value);
 
 	std::optional<std::string> GetTextfile(TextfileType type) const;
 	const char *GetName() const;
