@@ -565,7 +565,13 @@ struct TimetableWindow : Window {
 		TimerGameTick::Ticks total_time = v->orders != nullptr ? v->orders->GetTimetableDurationIncomplete() : 0;
 		if (total_time != 0) {
 			SetTimetableParams(0, 1, total_time);
-			DrawString(tr, v->orders->IsCompleteTimetable() ? STR_TIMETABLE_TOTAL_TIME : STR_TIMETABLE_TOTAL_TIME_INCOMPLETE);
+			if (!v->orders->IsCompleteTimetable()) {
+				DrawString(tr, STR_TIMETABLE_TOTAL_TIME_INCOMPLETE);
+			} else if (total_time % TicksPerTimetableUnit() == 0) {
+				DrawString(tr, STR_TIMETABLE_TOTAL_TIME);
+			} else {
+				DrawString(tr, STR_TIMETABLE_APPROX_TIME);
+			}
 		}
 		tr.top += GetCharacterHeight(FS_NORMAL);
 
