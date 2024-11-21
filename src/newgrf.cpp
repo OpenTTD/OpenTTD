@@ -5131,14 +5131,35 @@ static void SkipAct1(ByteReader &buf)
 	GrfMsg(3, "SkipAct1: Skipping {} sprites", _cur.skip_sprites);
 }
 
+using CachedCallback = std::pair<uint16_t, SpriteGroupID>;
+static std::vector<CachedCallback> _cached_callback_groups; ///< Sorted list of cached callback result spritegroups.
+
+static const SpriteGroup *GetCallbackResultGroup(uint16_t value)
+{
+	/* Old style callback results (only valid for version < 8) have the highest byte 0xFF to signify it is a callback result.
+	 * New style ones only have the highest bit set (allows 15-bit results, instead of just 8) */
+	if (_cur.grffile->grf_version < 8 && GB(value, 8, 8) == 0xFF) {
+		value &= ~0xFF00;
+	} else {
+		value &= ~0x8000;
+	}
+
+	/* Find position for value within the cached callback list. */
+	auto it = std::ranges::lower_bound(_cached_callback_groups, value, std::less{}, &CachedCallback::first);
+	if (it != std::end(_cached_callback_groups) && it->first == value) return SpriteGroup::Get(it->second);
+
+	/* Result value is not present, so make it and add to cache. */
+	assert(CallbackResultSpriteGroup::CanAllocateItem());
+	const SpriteGroup *group = new CallbackResultSpriteGroup(value);
+	it = _cached_callback_groups.emplace(it, value, group->index);
+	return group;
+}
+
 /* Helper function to either create a callback or link to a previously
  * defined spritegroup. */
 static const SpriteGroup *GetGroupFromGroupID(uint8_t setid, uint8_t type, uint16_t groupid)
 {
-	if (HasBit(groupid, 15)) {
-		assert(CallbackResultSpriteGroup::CanAllocateItem());
-		return new CallbackResultSpriteGroup(groupid, _cur.grffile->grf_version >= 8);
-	}
+	if (HasBit(groupid, 15)) return GetCallbackResultGroup(groupid);
 
 	if (groupid > MAX_SPRITEGROUP || _cur.spritegroups[groupid] == nullptr) {
 		GrfMsg(1, "GetGroupFromGroupID(0x{:02X}:0x{:02X}): Groupid 0x{:04X} does not exist, leaving empty", setid, type, groupid);
@@ -5158,10 +5179,7 @@ static const SpriteGroup *GetGroupFromGroupID(uint8_t setid, uint8_t type, uint1
  */
 static const SpriteGroup *CreateGroupFromGroupID(uint8_t feature, uint8_t setid, uint8_t type, uint16_t spriteid)
 {
-	if (HasBit(spriteid, 15)) {
-		assert(CallbackResultSpriteGroup::CanAllocateItem());
-		return new CallbackResultSpriteGroup(spriteid, _cur.grffile->grf_version >= 8);
-	}
+	if (HasBit(spriteid, 15)) return GetCallbackResultGroup(spriteid);
 
 	if (!_cur.IsValidSpriteSet(feature, spriteid)) {
 		GrfMsg(1, "CreateGroupFromGroupID(0x{:02X}:0x{:02X}): Sprite set {} invalid", setid, type, spriteid);
@@ -8861,6 +8879,7 @@ void ResetNewGRFData()
 
 	InitializeSoundPool();
 	_spritegroup_pool.CleanPool();
+	_cached_callback_groups.clear();
 }
 
 /**
@@ -9936,6 +9955,10 @@ extern void InitGRFTownGeneratorNames();
 /** Finish loading NewGRFs and execute needed post-processing */
 static void AfterLoadGRFs()
 {
+	/* Cached callback groups are no longer needed. */
+	_cached_callback_groups.clear();
+	_cached_callback_groups.shrink_to_fit();
+
 	for (StringIDMapping &it : _string_to_grf_mapping) {
 		it.func(MapGRFStringID(it.grfid, it.source));
 	}
