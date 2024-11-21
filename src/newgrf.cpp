@@ -653,8 +653,8 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 
 		/* Reserve the engine slot */
 		if (!static_access) {
-			EngineIDMapping *eid = _engine_mngr.data() + engine;
-			eid->grfid           = scope_grfid; // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
+			EngineIDMapping &eid = _engine_mngr.mappings[engine];
+			eid.grfid = scope_grfid; // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
 		}
 
 		return e;
@@ -675,13 +675,13 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 	e->grf_prop.grffile = file;
 
 	/* Reserve the engine slot */
-	assert(_engine_mngr.size() == e->index);
-	_engine_mngr.push_back({
+	assert(_engine_mngr.mappings.size() == e->index);
+	_engine_mngr.mappings.emplace_back(
 			scope_grfid, // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
 			internal_id,
 			type,
 			std::min<uint8_t>(internal_id, _engine_counts[type]) // substitute_id == _engine_counts[subtype] means "no substitute"
-	});
+	);
 
 	if (engine_pool_size != Engine::GetPoolSize()) {
 		/* Resize temporary engine data ... */
@@ -9250,7 +9250,7 @@ static void FinaliseEngineArray()
 {
 	for (Engine *e : Engine::Iterate()) {
 		if (e->GetGRF() == nullptr) {
-			const EngineIDMapping &eid = _engine_mngr[e->index];
+			const EngineIDMapping &eid = _engine_mngr.mappings[e->index];
 			if (eid.grfid != INVALID_GRFID || eid.internal_id != eid.substitute_id) {
 				e->info.string_id = STR_NEWGRF_INVALID_ENGINE;
 			}
@@ -9302,7 +9302,7 @@ static void FinaliseEngineArray()
 			/* Engine looped back on itself, so clear the variant. */
 			e->info.variant_id = INVALID_ENGINE;
 
-			GrfMsg(1, "FinaliseEngineArray: Variant of engine {:x} in '{}' loops back on itself", _engine_mngr[e->index].internal_id, e->GetGRF()->filename);
+			GrfMsg(1, "FinaliseEngineArray: Variant of engine {:x} in '{}' loops back on itself", _engine_mngr.mappings[e->index].internal_id, e->GetGRF()->filename);
 			break;
 		}
 

@@ -1311,8 +1311,8 @@ void AlterVehicleListOrder(EngineID engine, uint target)
  */
 static bool EnginePreSort(const EngineID &a, const EngineID &b)
 {
-	const EngineIDMapping &id_a = _engine_mngr.at(a);
-	const EngineIDMapping &id_b = _engine_mngr.at(b);
+	const EngineIDMapping &id_a = _engine_mngr.mappings.at(a);
+	const EngineIDMapping &id_b = _engine_mngr.mappings.at(b);
 
 	/* 1. Sort by engine type */
 	if (id_a.type != id_b.type) return (int)id_a.type < (int)id_b.type;
@@ -1341,10 +1341,10 @@ void CommitVehicleListOrderChanges()
 		EngineID source = it.engine;
 		uint local_target = it.target;
 
-		const EngineIDMapping *id_source = _engine_mngr.data() + source;
-		if (id_source->internal_id == local_target) continue;
+		const EngineIDMapping &id_source = _engine_mngr.mappings[source];
+		if (id_source.internal_id == local_target) continue;
 
-		EngineID target = _engine_mngr.GetID(id_source->type, local_target, id_source->grfid);
+		EngineID target = _engine_mngr.GetID(id_source.type, local_target, id_source.grfid);
 		if (target == INVALID_ENGINE) continue;
 
 		int source_index = find_index(ordering, source);
