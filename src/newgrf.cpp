@@ -641,7 +641,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 	}
 
 	/* Check if there is an unreserved slot */
-	EngineID engine = _engine_mngr.GetID(type, internal_id, INVALID_GRFID);
+	EngineID engine = _engine_mngr.UseUnreservedID(type, internal_id, scope_grfid, static_access);
 	if (engine != INVALID_ENGINE) {
 		Engine *e = Engine::Get(engine);
 
@@ -649,12 +649,6 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 			e->grf_prop.grfid = file->grfid;
 			e->grf_prop.grffile = file;
 			GrfMsg(5, "Replaced engine at index {} for GRFID {:x}, type {}, index {}", e->index, BSWAP32(file->grfid), type, internal_id);
-		}
-
-		/* Reserve the engine slot */
-		if (!static_access) {
-			EngineIDMapping &eid = _engine_mngr.mappings[engine];
-			eid.grfid = scope_grfid; // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
 		}
 
 		return e;
@@ -675,13 +669,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 	e->grf_prop.grffile = file;
 
 	/* Reserve the engine slot */
-	assert(_engine_mngr.mappings.size() == e->index);
-	_engine_mngr.mappings.emplace_back(
-			scope_grfid, // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
-			internal_id,
-			type,
-			std::min<uint8_t>(internal_id, _engine_counts[type]) // substitute_id == _engine_counts[subtype] means "no substitute"
-	);
+	_engine_mngr.SetID(type, internal_id, scope_grfid, std::min<uint8_t>(internal_id, _engine_counts[type]), e->index);
 
 	if (engine_pool_size != Engine::GetPoolSize()) {
 		/* Resize temporary engine data ... */
@@ -9214,8 +9202,8 @@ static void FinaliseEngineArray()
 {
 	for (Engine *e : Engine::Iterate()) {
 		if (e->GetGRF() == nullptr) {
-			const EngineIDMapping &eid = _engine_mngr.mappings[e->index];
-			if (eid.grfid != INVALID_GRFID || eid.internal_id != eid.substitute_id) {
+			auto found = std::ranges::find(_engine_mngr.mappings[e->type], e->index, &EngineIDMapping::engine);
+			if (found == std::end(_engine_mngr.mappings[e->type]) || found->grfid != INVALID_GRFID || found->internal_id != found->substitute_id) {
 				e->info.string_id = STR_NEWGRF_INVALID_ENGINE;
 			}
 		}
@@ -9266,7 +9254,7 @@ static void FinaliseEngineArray()
 			/* Engine looped back on itself, so clear the variant. */
 			e->info.variant_id = INVALID_ENGINE;
 
-			GrfMsg(1, "FinaliseEngineArray: Variant of engine {:x} in '{}' loops back on itself", _engine_mngr.mappings[e->index].internal_id, e->GetGRF()->filename);
+			GrfMsg(1, "FinaliseEngineArray: Variant of engine {:x} in '{}' loops back on itself", e->grf_prop.local_id, e->GetGRF()->filename);
 			break;
 		}
 

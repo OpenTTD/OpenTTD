@@ -198,10 +198,20 @@ struct EngineIDMapping {
 	uint16_t internal_id; ///< The internal ID within the GRF file
 	VehicleType type; ///< The engine type
 	uint8_t substitute_id; ///< The (original) entity ID to use if this GRF is not available (currently not used)
+	EngineID engine;
+
+	static inline uint64_t Key(uint32_t grfid, uint16_t internal_id) { return static_cast<uint64_t>(grfid) << 32 | internal_id; }
+
+	inline uint64_t Key() const { return Key(this->grfid, this->internal_id); }
 
 	EngineIDMapping() {}
-	EngineIDMapping(uint32_t grfid, uint16_t internal_id, VehicleType type, uint8_t substitute_id)
-		: grfid(grfid), internal_id(internal_id),type(type), substitute_id(substitute_id) {}
+	EngineIDMapping(uint32_t grfid, uint16_t internal_id, VehicleType type, uint8_t substitute_id, EngineID engine)
+		: grfid(grfid), internal_id(internal_id), type(type), substitute_id(substitute_id), engine(engine) {}
+};
+
+/** Projection to get a unique key of an EngineIDMapping, used for sorting in EngineOverrideManager. */
+struct EngineIDMappingKeyProjection {
+	inline size_t operator()(const EngineIDMapping &eid) const { return eid.Key(); }
 };
 
 /**
@@ -209,12 +219,12 @@ struct EngineIDMapping {
  * Note: This is not part of Engine, as the data in the EngineOverrideManager and the engine pool get resetted in different cases.
  */
 struct EngineOverrideManager {
-	std::vector<EngineIDMapping> mappings;
-
-	static const uint NUM_DEFAULT_ENGINES; ///< Number of default entries
+	std::array<std::vector<EngineIDMapping>, VEH_COMPANY_END> mappings;
 
 	void ResetToDefaultMapping();
 	EngineID GetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid);
+	EngineID UseUnreservedID(VehicleType type, uint16_t grf_local_id, uint32_t grfid, bool static_access);
+	void SetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid, uint8_t substitute_id, EngineID engine);
 
 	static bool ResetToCurrentNewGRFConfig();
 };
