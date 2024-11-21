@@ -189,11 +189,25 @@ struct EIDSChunkHandler : ChunkHandler {
 	{
 		SlTableHeader(_engine_id_mapping_desc);
 
-		uint index = 0;
-		for (EngineIDMapping &eid : _engine_mngr.mappings) {
-			SlSetArrayIndex(index);
+		/* Count total entries needed for combined list. */
+		size_t total = 0;
+		for (const auto &mapping : _engine_mngr.mappings) {
+			total += std::size(mapping);
+		}
+
+		/* Combine per-type mappings into single list for all types. */
+		std::vector<EngineIDMapping> temp;
+		temp.reserve(total);
+		for (const auto &mapping : _engine_mngr.mappings) {
+			temp.insert(std::end(temp), std::begin(mapping), std::end(mapping));
+		}
+
+		/* Sort combined list by EngineID */
+		std::ranges::sort(temp, std::less{}, &EngineIDMapping::engine);
+
+		for (EngineIDMapping &eid : temp) {
+			SlSetArrayIndex(eid.engine);
 			SlObject(&eid, _engine_id_mapping_desc);
-			index++;
 		}
 	}
 
@@ -201,11 +215,13 @@ struct EIDSChunkHandler : ChunkHandler {
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_engine_id_mapping_desc, _engine_id_mapping_sl_compat);
 
-		_engine_mngr.mappings.clear();
+		_engine_mngr.mappings = {};
 
-		while (SlIterateArray() != -1) {
-			EngineIDMapping *eid = &_engine_mngr.mappings.emplace_back();
-			SlObject(eid, slt);
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			EngineIDMapping eid;
+			SlObject(&eid, slt);
+			_engine_mngr.SetID(eid.type, eid.internal_id, eid.grfid, eid.substitute_id, index);
 		}
 	}
 };

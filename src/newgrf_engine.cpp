@@ -1311,17 +1311,17 @@ void AlterVehicleListOrder(EngineID engine, uint target)
  */
 static bool EnginePreSort(const EngineID &a, const EngineID &b)
 {
-	const EngineIDMapping &id_a = _engine_mngr.mappings.at(a);
-	const EngineIDMapping &id_b = _engine_mngr.mappings.at(b);
+	const Engine &engine_a = *Engine::Get(a);
+	const Engine &engine_b = *Engine::Get(b);
 
 	/* 1. Sort by engine type */
-	if (id_a.type != id_b.type) return (int)id_a.type < (int)id_b.type;
+	if (engine_a.type != engine_b.type) return static_cast<int>(engine_a.type) < static_cast<int>(engine_b.type);
 
 	/* 2. Sort by scope-GRFID */
-	if (id_a.grfid != id_b.grfid) return id_a.grfid < id_b.grfid;
+	if (engine_a.grf_prop.grfid != engine_b.grf_prop.grfid) return engine_a.grf_prop.grfid < engine_b.grf_prop.grfid;
 
 	/* 3. Sort by local ID */
-	return (int)id_a.internal_id < (int)id_b.internal_id;
+	return static_cast<int>(engine_a.grf_prop.local_id) < static_cast<int>(engine_b.grf_prop.local_id);
 }
 
 /**
@@ -1341,10 +1341,10 @@ void CommitVehicleListOrderChanges()
 		EngineID source = it.engine;
 		uint local_target = it.target;
 
-		const EngineIDMapping &id_source = _engine_mngr.mappings[source];
-		if (id_source.internal_id == local_target) continue;
+		Engine *engine_source = Engine::Get(source);
+		if (engine_source->grf_prop.local_id == local_target) continue;
 
-		EngineID target = _engine_mngr.GetID(id_source.type, local_target, id_source.grfid);
+		EngineID target = _engine_mngr.GetID(engine_source->type, local_target, engine_source->grf_prop.grfid);
 		if (target == INVALID_ENGINE) continue;
 
 		int source_index = find_index(ordering, source);

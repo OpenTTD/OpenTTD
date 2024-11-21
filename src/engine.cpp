@@ -8,6 +8,7 @@
 /** @file engine.cpp Base for all engine handling. */
 
 #include "stdafx.h"
+#include "core/container_func.hpp"
 #include "company_func.h"
 #include "command_func.h"
 #include "news_func.h"
@@ -66,8 +67,6 @@ const uint8_t _engine_offsets[4] = {
 };
 
 static_assert(lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info) + lengthof(_orig_ship_vehicle_info) + lengthof(_orig_aircraft_vehicle_info) == lengthof(_orig_engine_info));
-
-const uint EngineOverrideManager::NUM_DEFAULT_ENGINES = _engine_counts[VEH_TRAIN] + _engine_counts[VEH_ROAD] + _engine_counts[VEH_SHIP] + _engine_counts[VEH_AIRCRAFT];
 
 Engine::Engine(VehicleType type, EngineID base)
 {
@@ -509,10 +508,12 @@ bool Engine::IsVariantHidden(CompanyID c) const
  */
 void EngineOverrideManager::ResetToDefaultMapping()
 {
-	this->mappings.clear();
+	EngineID id = 0;
 	for (VehicleType type = VEH_TRAIN; type <= VEH_AIRCRAFT; type++) {
-		for (uint internal_id = 0; internal_id < _engine_counts[type]; internal_id++) {
-			this->mappings.emplace_back(INVALID_GRFID, internal_id, type, internal_id);
+		auto &map = this->mappings[type];
+		map.clear();
+		for (uint internal_id = 0; internal_id < _engine_counts[type]; internal_id++, id++) {
+			map.emplace_back(INVALID_GRFID, internal_id, type, internal_id, id);
 		}
 	}
 }
@@ -528,14 +529,52 @@ void EngineOverrideManager::ResetToDefaultMapping()
  */
 EngineID EngineOverrideManager::GetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid)
 {
-	EngineID index = 0;
-	for (const EngineIDMapping &eid : this->mappings) {
-		if (eid.type == type && eid.grfid == grfid && eid.internal_id == grf_local_id) {
-			return index;
-		}
-		index++;
+	const auto &map = this->mappings[type];
+	const auto key = EngineIDMapping::Key(grfid, grf_local_id);
+	auto it = std::ranges::lower_bound(map, key, std::less{}, EngineIDMappingKeyProjection{});
+	if (it == std::end(map) || it->Key() != key) return INVALID_ENGINE;
+	return it->engine;
+}
+
+/**
+ * Look for an unreserved EngineID matching the local id, and reserve it if found.
+ * @param type Vehicle type
+ * @param grf_local_id The local id in the newgrf
+ * @param grfid The GrfID that defines the scope of grf_local_id.
+ *              If a newgrf overrides the engines of another newgrf, the "scope grfid" is the ID of the overridden newgrf.
+ *              If dynnamic_engines is disabled, all newgrf share the same ID scope identified by INVALID_GRFID.
+ * @param static_access Whether to actually reserve the EngineID.
+ * @return The engine ID if present and now reserved, or INVALID_ENGINE if not.
+ */
+EngineID EngineOverrideManager::UseUnreservedID(VehicleType type, uint16_t grf_local_id, uint32_t grfid, bool static_access)
+{
+	auto &map = _engine_mngr.mappings[type];
+	const auto key = EngineIDMapping::Key(INVALID_GRFID, grf_local_id);
+	auto it = std::ranges::lower_bound(map, key, std::less{}, EngineIDMappingKeyProjection{});
+	if (it == std::end(map) || it->Key() != key) return INVALID_ENGINE;
+
+	if (!static_access && grfid != INVALID_GRFID) {
+		/* Reserve the engine slot for the new grfid. */
+		it->grfid = grfid;
+
+		/* Relocate entry to its new position in the mapping list to keep it sorted. */
+		auto p = std::ranges::lower_bound(map, EngineIDMapping::Key(grfid, grf_local_id), std::less{}, EngineIDMappingKeyProjection{});
+		it = Slide(it, std::next(it), p).first;
 	}
-	return INVALID_ENGINE;
+
+	return it->engine;
+}
+
+void EngineOverrideManager::SetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid, uint8_t substitute_id, EngineID engine)
+{
+	auto &map = this->mappings[type];
+	const auto key = EngineIDMapping::Key(grfid, grf_local_id);
+	auto it = std::ranges::lower_bound(map, key, std::less{}, EngineIDMappingKeyProjection{});
+	if (it == std::end(map) || it->Key() != key) {
+		map.emplace(it, grfid, grf_local_id, type, substitute_id, engine);
+	} else {
+		it->engine = engine;
+	}
 }
 
 /**
@@ -564,15 +603,15 @@ void SetupEngines()
 	CloseWindowByClass(WC_ENGINE_PREVIEW);
 	_engine_pool.CleanPool();
 
-	assert(_engine_mngr.mappings.size() >= EngineOverrideManager::NUM_DEFAULT_ENGINES);
-	[[maybe_unused]] uint index = 0;
-	for (const EngineIDMapping &eid : _engine_mngr.mappings) {
-		/* Assert is safe; there won't be more than 256 original vehicles
-		 * in any case, and we just cleaned the pool. */
-		assert(Engine::CanAllocateItem());
-		[[maybe_unused]] const Engine *e = new Engine(eid.type, eid.internal_id);
-		assert(e->index == index);
-		index++;
+	for (VehicleType type = VEH_BEGIN; type != VEH_COMPANY_END; type++) {
+		const auto &mapping = _engine_mngr.mappings[type];
+
+		/* Verify that the engine override manager has at least been set up with the default engines. */
+		assert(std::size(mapping) >= _engine_counts[type]);
+
+		for (const EngineIDMapping &eid : mapping) {
+			new (eid.engine) Engine(type, eid.internal_id);
+		}
 	}
 }
 
