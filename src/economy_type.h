@@ -86,7 +86,7 @@ struct ScoreInfo {
  * Enumeration of all base prices for use with #Prices.
  * The prices are ordered as they are expected by NewGRF cost multipliers, so don't shuffle them.
  */
-enum Price {
+enum Price : uint8_t {
 	PR_BEGIN = 0,
 	PR_STATION_VALUE = 0,
 	PR_BUILD_RAIL,

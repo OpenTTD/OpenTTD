@@ -23,14 +23,14 @@ typedef uint16_t EngineID; ///< Unique identification number of an engine.
 struct Engine;
 
 /** Available types of rail vehicles. */
-enum RailVehicleTypes {
+enum RailVehicleTypes : uint8_t {
 	RAILVEH_SINGLEHEAD,  ///< indicates a "standalone" locomotive
 	RAILVEH_MULTIHEAD,   ///< indicates a combination of two locomotives
 	RAILVEH_WAGON,       ///< simple wagon, not motorized
 };
 
 /** Type of rail engine. */
-enum EngineClass {
+enum EngineClass : uint8_t {
 	EC_STEAM,    ///< Steam rail engine.
 	EC_DIESEL,   ///< Diesel rail engine.
 	EC_ELECTRIC, ///< Electric rail engine.
@@ -45,6 +45,7 @@ struct RailVehicleInfo {
 	uint8_t cost_factor;               ///< Purchase cost factor;      For multiheaded engines the sum of both engine prices.
 	RailType railtype;              ///< Railtype, mangled if elrail is disabled.
 	RailType intended_railtype;     ///< Intended railtype, regardless of elrail being enabled or disabled.
+	uint8_t ai_passenger_only;         ///< Bit value to tell AI that this engine is for passenger use only
 	uint16_t max_speed;               ///< Maximum speed (1 unit = 1/1.6 mph = 1 km-ish/h)
 	uint16_t power;                   ///< Power of engine (hp);      For multiheaded engines the sum of both engine powers.
 	uint16_t weight;                  ///< Weight of vehicle (tons);  For multiheaded engines the weight of each single engine.
@@ -52,7 +53,6 @@ struct RailVehicleInfo {
 	Price running_cost_class;
 	EngineClass engclass;           ///< Class of engine for this vehicle
 	uint8_t capacity;                  ///< Cargo capacity of vehicle; For multiheaded engines the capacity of each single engine.
-	uint8_t ai_passenger_only;         ///< Bit value to tell AI that this engine is for passenger use only
 	uint16_t pow_wag_power;           ///< Extra power applied to consist if wagon should be powered
 	uint8_t pow_wag_weight;            ///< Extra weight applied to consist if wagon should be powered
 	uint8_t visual_effect;             ///< Bitstuffed NewGRF visual effect data
@@ -67,10 +67,10 @@ struct RailVehicleInfo {
 struct ShipVehicleInfo {
 	uint8_t image_index;
 	uint8_t cost_factor;
+	uint8_t running_cost;
 	uint8_t acceleration;    ///< Acceleration (1 unit = 1/3.2 mph per tick = 0.5 km-ish/h per tick)
 	uint16_t max_speed;      ///< Maximum speed (1 unit = 1/3.2 mph = 0.5 km-ish/h)
 	uint16_t capacity;
-	uint8_t running_cost;
 	SoundID sfx;
 	bool old_refittable;   ///< Is ship refittable; only used during initialisation. Later use EngineInfo::refit_mask.
 	uint8_t visual_effect;    ///< Bitstuffed NewGRF visual effect data
@@ -103,8 +103,8 @@ struct AircraftVehicleInfo {
 	uint8_t running_cost;
 	uint8_t subtype;               ///< Type of aircraft. @see AircraftSubTypeBits
 	SoundID sfx;
-	uint8_t acceleration;
 	uint16_t max_speed;           ///< Maximum speed (1 unit = 8 mph = 12.8 km-ish/h)
+	uint8_t acceleration;
 	uint8_t mail_capacity;         ///< Mail capacity (bags).
 	uint16_t passenger_capacity;  ///< Passenger capacity (persons).
 	uint16_t max_range;           ///< Maximum range of this aircraft.
@@ -128,7 +128,11 @@ struct RoadVehicleInfo {
 	RoadType roadtype;       ///< Road type
 };
 
-enum class ExtraEngineFlags : uint32_t {
+/**
+ * Extra engine flags for NewGRF features.
+ * This is defined in the specification a 32 bit value, but most bits are not currently used.
+ */
+enum class ExtraEngineFlags : uint16_t {
 	None = 0,
 	NoNews          = (1U << 0), ///< No 'new vehicle' news will be generated.
 	NoPreview       = (1U << 1), ///< No exclusive preview will be offered.
@@ -155,10 +159,10 @@ struct EngineInfo {
 	uint8_t misc_flags;         ///< Miscellaneous flags. @see EngineMiscFlags
 	uint16_t callback_mask;    ///< Bitmask of vehicle callbacks that have to be called
 	int8_t retire_early;       ///< Number of years early to retire vehicle
+	ExtraEngineFlags extra_flags;
 	StringID string_id;      ///< Default name of engine
 	uint16_t cargo_age_period; ///< Number of ticks before carried cargo is aged.
 	EngineID variant_id;     ///< Engine variant ID. If set, will be treated specially in purchase lists.
-	ExtraEngineFlags extra_flags;
 };
 
 /**
