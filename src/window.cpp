@@ -42,7 +42,7 @@
 #include "safeguards.h"
 
 /** Values for _settings_client.gui.auto_scrolling */
-enum ViewportAutoscrolling {
+enum ViewportAutoscrolling : uint8_t {
 	VA_DISABLED,                  //!< Do not autoscroll when mouse is at edge of viewport.
 	VA_MAIN_VIEWPORT_FULLSCREEN,  //!< Scroll main viewport at edge when using fullscreen.
 	VA_MAIN_VIEWPORT,             //!< Scroll main viewport at edge.
@@ -1924,7 +1924,7 @@ static void HandleMouseOver()
 }
 
 /** Direction for moving the window. */
-enum PreventHideDirection {
+enum PreventHideDirection : uint8_t {
 	PHD_UP,   ///< Above v is a safe position.
 	PHD_DOWN, ///< Below v is a safe position.
 };
@@ -2705,7 +2705,7 @@ static void HandleAutoscroll()
 	}
 }
 
-enum MouseClick {
+enum MouseClick : uint8_t {
 	MC_NONE = 0,
 	MC_LEFT,
 	MC_RIGHT,

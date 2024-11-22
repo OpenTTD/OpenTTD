@@ -13,7 +13,7 @@
 #include "../strings_type.h"
 
 struct StringParam {
-	enum ParamType {
+	enum ParamType : uint8_t {
 		UNUSED,
 		RAW_STRING,
 		STRING,

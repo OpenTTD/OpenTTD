@@ -477,7 +477,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 }
 
 /** Hotkeys for order window. */
-enum {
+enum OrderHotKeys : int32_t {
 	OHK_SKIP,
 	OHK_DELETE,
 	OHK_GOTO,
@@ -534,7 +534,7 @@ enum {
 struct OrdersWindow : public Window {
 private:
 	/** Under what reason are we using the PlaceObject functionality? */
-	enum OrderPlaceObjectState {
+	enum OrderPlaceObjectState : uint8_t {
 		OPOS_NONE,
 		OPOS_GOTO,
 		OPOS_CONDITIONAL,
@@ -543,7 +543,7 @@ private:
 	};
 
 	/** Displayed planes of the #NWID_SELECTION widgets. */
-	enum DisplayPane {
+	enum DisplayPane : uint8_t {
 		/* WID_O_SEL_TOP_ROW_GROUNDVEHICLE */
 		DP_GROUNDVEHICLE_ROW_NORMAL      = 0, ///< Display the row for normal/depot orders in the top row of the train/rv order window.
 		DP_GROUNDVEHICLE_ROW_CONDITIONAL = 1, ///< Display the row for conditional orders in the top row of the train/rv order window.

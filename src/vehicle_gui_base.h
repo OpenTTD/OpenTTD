@@ -88,7 +88,7 @@ struct BaseVehicleListWindow : public Window {
 	typedef GUIVehicleGroupList::SortFunction VehicleGroupSortFunction;
 	typedef GUIVehicleList::SortFunction VehicleIndividualSortFunction;
 
-	enum ActionDropdownItem {
+	enum ActionDropdownItem : uint8_t {
 		ADI_REPLACE,
 		ADI_SERVICE,
 		ADI_DEPOT,

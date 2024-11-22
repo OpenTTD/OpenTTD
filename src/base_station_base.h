@@ -34,8 +34,7 @@ struct RoadStopTileData {
 
 /** StationRect - used to track station spread out rectangle - cheaper than scanning whole map */
 struct StationRect : public Rect {
-	enum StationRectMode
-	{
+	enum StationRectMode : uint8_t {
 		ADD_TEST = 0,
 		ADD_TRY,
 		ADD_FORCE

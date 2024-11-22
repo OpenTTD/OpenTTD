@@ -44,7 +44,7 @@ static const uint DEF_DESERT_COVERAGE = 50;                    ///< Default dese
  *
  * @note A railway with a crossing street is marked as MP_ROAD.
  */
-enum TileType {
+enum TileType : uint8_t {
 	MP_CLEAR,               ///< A tile without any structures, i.e. grass, rocks, farm fields etc.
 	MP_RAILWAY,             ///< A railway
 	MP_ROAD,                ///< A tile with road (or tram tracks)
@@ -73,7 +73,7 @@ enum TileType {
  *  TROPICZONE_DESERT: Placed manually.
  *  TROPICZONE_RAINFOREST: Placed if you plant certain rainforest-trees.
  */
-enum TropicZone {
+enum TropicZone : uint8_t {
 	TROPICZONE_NORMAL     = 0,      ///< Normal tropiczone
 	TROPICZONE_DESERT     = 1,      ///< Tile is desert
 	TROPICZONE_RAINFOREST = 2,      ///< Rainforest tile

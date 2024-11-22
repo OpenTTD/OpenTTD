@@ -222,7 +222,7 @@ public:
 class NetworkAuthenticationClientHandler : public NetworkAuthenticationHandler {
 public:
 	/** The processing result of receiving a request. */
-	enum RequestResult {
+	enum RequestResult : uint8_t {
 		AWAIT_USER_INPUT, ///< We have requested some user input, but must wait on that.
 		READY_FOR_RESPONSE, ///< We do not have to wait for user input, and can immediately respond to the server.
 		INVALID, ///< We have received an invalid request.
@@ -258,7 +258,7 @@ public:
 class NetworkAuthenticationServerHandler : public NetworkAuthenticationHandler {
 public:
 	/** The processing result of receiving a response. */
-	enum ResponseResult {
+	enum ResponseResult : uint8_t {
 		AUTHENTICATED, ///< The client was authenticated successfully.
 		NOT_AUTHENTICATED, ///< All authentications for this handler have been exhausted.
 		RETRY_NEXT_METHOD, ///< The client failed to authenticate, but there is another method to try.

@@ -25,7 +25,7 @@ static const uint MAX_CLIENT_SLOTS = 256;
 /**
  * Vehicletypes in the order they are send in info packets.
  */
-enum NetworkVehicleType {
+enum NetworkVehicleType : uint8_t {
 	NETWORK_VEH_TRAIN = 0,
 	NETWORK_VEH_LORRY,
 	NETWORK_VEH_BUS,
@@ -87,7 +87,7 @@ DECLARE_ENUM_AS_ADDABLE(DestType)
  * Actions that can be used for NetworkTextMessage.
  * @warning The values of the enum items are part of the admin network API. Only append at the end.
  */
-enum NetworkAction {
+enum NetworkAction : uint8_t {
 	NETWORK_ACTION_JOIN,
 	NETWORK_ACTION_LEAVE,
 	NETWORK_ACTION_SERVER_MESSAGE,
@@ -107,7 +107,7 @@ enum NetworkAction {
  * The error codes we send around in the protocols.
  * @warning The values of the enum items are part of the admin network API. Only append at the end.
  */
-enum NetworkErrorCode {
+enum NetworkErrorCode : uint8_t {
 	NETWORK_ERROR_GENERAL, // Try to use this one like never
 
 	/* Signals from clients */

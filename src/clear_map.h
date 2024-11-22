@@ -16,7 +16,7 @@
 /**
  * Ground types. Valid densities in comments after the enum.
  */
-enum ClearGround {
+enum ClearGround : uint8_t {
 	CLEAR_GRASS  = 0, ///< 0-3
 	CLEAR_ROUGH  = 1, ///< 3
 	CLEAR_ROCKS  = 2, ///< 3

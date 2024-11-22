@@ -24,7 +24,7 @@ struct PalSpriteID {
 	PaletteID pal;    ///< The palette (use \c PAL_NONE) if not needed)
 };
 
-enum WindowKeyCodes {
+enum WindowKeyCodes : uint16_t {
 	WKC_SHIFT = 0x8000,
 	WKC_CTRL  = 0x4000,
 	WKC_ALT   = 0x2000,
@@ -239,7 +239,7 @@ static_assert(sizeof(Colour) == sizeof(uint32_t));
 
 
 /** Available font sizes */
-enum FontSize {
+enum FontSize : uint8_t {
 	FS_NORMAL, ///< Index of the normal font in the font tables.
 	FS_SMALL,  ///< Index of the small font in the font tables.
 	FS_LARGE,  ///< Index of the large font in the font tables.
@@ -291,7 +291,7 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(Colours)
 DECLARE_ENUM_AS_ADDABLE(Colours)
 
 /** Colour of the strings, see _string_colourmap in table/string_colours.h or docs/ottd-colourtext-palette.png */
-enum TextColour {
+enum TextColour : uint16_t {
 	TC_BEGIN       = 0x00,
 	TC_FROMSTRING  = 0x00,
 	TC_BLUE        = 0x00,
@@ -328,14 +328,14 @@ static constexpr uint8_t PALETTE_ANIM_SIZE = 28; ///< number of animated colours
 static constexpr uint8_t PALETTE_ANIM_START = 227; ///< Index in  the _palettes array from which all animations are taking places (table/palettes.h)
 
 /** Define the operation GfxFillRect performs */
-enum FillRectMode {
+enum FillRectMode : uint8_t {
 	FILLRECT_OPAQUE,  ///< Fill rectangle with a single colour
 	FILLRECT_CHECKER, ///< Draw only every second pixel, used for greying-out
 	FILLRECT_RECOLOUR, ///< Apply a recolour sprite to the screen content
 };
 
 /** Palettes OpenTTD supports. */
-enum PaletteType {
+enum PaletteType : uint8_t {
 	PAL_DOS,        ///< Use the DOS palette.
 	PAL_WINDOWS,    ///< Use the Windows palette.
 };
@@ -364,14 +364,14 @@ struct Palette {
 };
 
 /** Modes for 8bpp support */
-enum Support8bpp {
+enum Support8bpp : uint8_t {
 	S8BPP_NONE = 0, ///< No support for 8bpp by OS or hardware, force 32bpp blitters.
 	S8BPP_SYSTEM,   ///< No 8bpp support by hardware, do not try to use 8bpp video modes or hardware palettes.
 	S8BPP_HARDWARE, ///< Full 8bpp support by OS and hardware.
 };
 
 	/** How to align the to-be drawn text. */
-enum StringAlignment {
+enum StringAlignment : uint8_t {
 	SA_LEFT        = 0 << 0, ///< Left align the text.
 	SA_HOR_CENTER  = 1 << 0, ///< Horizontally center the text.
 	SA_RIGHT       = 2 << 0, ///< Right align the text (must be a single bit).

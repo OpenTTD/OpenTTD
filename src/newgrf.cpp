@@ -314,7 +314,7 @@ static const uint NUM_STATIONS_PER_GRF = UINT16_MAX - 1;
 /** Temporary engine data used when loading only */
 struct GRFTempEngineData {
 	/** Summary state of refittability properties */
-	enum Refittability {
+	enum Refittability : uint8_t {
 		UNSET    =  0,  ///< No properties assigned. Default refit masks shall be activated.
 		EMPTY,          ///< GRF defined vehicle as not-refittable. The vehicle shall only carry the default cargo.
 		NONEMPTY,       ///< GRF defined the vehicle as refittable. If the refitmask is empty after translation (cargotypes not available), disable the vehicle.
@@ -997,7 +997,7 @@ static void ConvertTTDBasePrice(uint32_t base_pointer, const char *error_locatio
 }
 
 /** Possible return values for the FeatureChangeInfo functions */
-enum ChangeInfoResult {
+enum ChangeInfoResult : uint8_t {
 	CIR_SUCCESS,    ///< Variable was parsed and read
 	CIR_DISABLED,   ///< GRF was disabled due to error
 	CIR_UNHANDLED,  ///< Variable was parsed but unread

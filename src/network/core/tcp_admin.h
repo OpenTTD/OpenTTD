@@ -70,7 +70,7 @@ enum PacketAdminType : uint8_t {
 };
 
 /** Status of an admin. */
-enum AdminStatus {
+enum AdminStatus : uint8_t {
 	ADMIN_STATUS_INACTIVE,      ///< The admin is not connected nor active.
 	ADMIN_STATUS_AUTHENTICATE,  ///< The admin is connected and working on authentication.
 	ADMIN_STATUS_ACTIVE,        ///< The admin is active.
@@ -78,7 +78,7 @@ enum AdminStatus {
 };
 
 /** Update types an admin can register a frequency for */
-enum AdminUpdateType {
+enum AdminUpdateType : uint8_t {
 	ADMIN_UPDATE_DATE,            ///< Updates about the date of the game.
 	ADMIN_UPDATE_CLIENT_INFO,     ///< Updates about the information of clients.
 	ADMIN_UPDATE_COMPANY_INFO,    ///< Updates about the generic information of companies.
@@ -93,7 +93,7 @@ enum AdminUpdateType {
 };
 
 /** Update frequencies an admin can register. */
-enum AdminUpdateFrequency {
+enum AdminUpdateFrequency : uint8_t {
 	ADMIN_FREQUENCY_POLL      = 0x01, ///< The admin can poll this.
 	ADMIN_FREQUENCY_DAILY     = 0x02, ///< The admin gets information about this on a daily basis.
 	ADMIN_FREQUENCY_WEEKLY    = 0x04, ///< The admin gets information about this on a weekly basis.
@@ -105,7 +105,7 @@ enum AdminUpdateFrequency {
 DECLARE_ENUM_AS_BIT_SET(AdminUpdateFrequency)
 
 /** Reasons for removing a company - communicated to admins. */
-enum AdminCompanyRemoveReason {
+enum AdminCompanyRemoveReason : uint8_t {
 	ADMIN_CRR_MANUAL,    ///< The company is manually removed.
 	ADMIN_CRR_AUTOCLEAN, ///< The company is removed due to autoclean.
 	ADMIN_CRR_BANKRUPT,  ///< The company went belly-up.

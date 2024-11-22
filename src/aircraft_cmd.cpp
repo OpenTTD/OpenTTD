@@ -107,7 +107,7 @@ bool IsValidImageIndex<VEH_AIRCRAFT>(uint8_t image_index)
 }
 
 /** Helicopter rotor animation states */
-enum HelicopterRotorStates {
+enum HelicopterRotorStates : uint8_t {
 	HRS_ROTOR_STOPPED,
 	HRS_ROTOR_MOVING_1,
 	HRS_ROTOR_MOVING_2,

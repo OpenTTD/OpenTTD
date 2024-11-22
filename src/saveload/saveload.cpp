@@ -66,7 +66,7 @@ std::string _savegame_format; ///< how to compress savegames
 bool _do_autosave;            ///< are we doing an autosave at the moment?
 
 /** What are we currently doing? */
-enum SaveLoadAction {
+enum SaveLoadAction : uint8_t {
 	SLA_LOAD,        ///< loading
 	SLA_SAVE,        ///< saving
 	SLA_PTRS,        ///< fixing pointers
@@ -74,7 +74,7 @@ enum SaveLoadAction {
 	SLA_LOAD_CHECK,  ///< partial loading into #_load_check_data
 };
 
-enum NeedLength {
+enum NeedLength : uint8_t {
 	NL_NONE = 0,       ///< not working in NeedLength mode
 	NL_WANTLENGTH = 1, ///< writing length and data
 	NL_CALCLENGTH = 2, ///< need to calculate the length

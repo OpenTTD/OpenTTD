@@ -133,7 +133,7 @@ bool SignList::match_case = false;
 std::string SignList::default_name;
 
 /** Enum referring to the Hotkeys in the sign list window */
-enum SignListHotkeys {
+enum SignListHotkeys : int32_t {
 	SLHK_FOCUS_FILTER_BOX, ///< Focus the edit box for editing the filter string
 };
 

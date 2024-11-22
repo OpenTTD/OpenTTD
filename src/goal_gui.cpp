@@ -31,7 +31,7 @@
 #include "safeguards.h"
 
 /** Goal list columns. */
-enum GoalColumn {
+enum GoalColumn : uint8_t {
 	GC_GOAL = 0, ///< Goal text column.
 	GC_PROGRESS, ///< Goal progress column.
 };

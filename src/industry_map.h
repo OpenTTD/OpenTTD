@@ -19,7 +19,7 @@
  * They all are pointing toward array _industry_draw_tile_data, in table/industry_land.h
  * How to calculate the correct position ? GFXid << 2 | IndustryStage (0 to 3)
  */
-enum IndustryGraphics {
+enum IndustryGraphics : uint8_t {
 	GFX_COAL_MINE_TOWER_NOT_ANIMATED   =   0,
 	GFX_COAL_MINE_TOWER_ANIMATED       =   1,
 	GFX_POWERPLANT_CHIMNEY             =   8,

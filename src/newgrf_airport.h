@@ -67,7 +67,7 @@ public:
 };
 
 /** List of default airport classes. */
-enum AirportClassID {
+enum AirportClassID : uint8_t {
 	APC_BEGIN     = 0,  ///< Lowest valid airport class id
 	APC_SMALL     = 0,  ///< id for small airports class
 	APC_LARGE,          ///< id for large airports class
@@ -80,7 +80,7 @@ enum AirportClassID {
 DECLARE_INCREMENT_DECREMENT_OPERATORS(AirportClassID)
 
 /** TTDP airport types. Used to map our types to TTDPatch's */
-enum TTDPAirportType {
+enum TTDPAirportType : uint8_t {
 	ATP_TTDP_SMALL,    ///< Same as AT_SMALL
 	ATP_TTDP_LARGE,    ///< Same as AT_LARGE
 	ATP_TTDP_HELIPORT, ///< Same as AT_HELIPORT

@@ -1313,7 +1313,7 @@ static WindowDesc _client_list_desc(
  * The possibly entries in a DropDown for an admin.
  * Client and companies are mixed; they just have to be unique.
  */
-enum DropDownAdmin {
+enum DropDownAdmin : uint8_t {
 	DD_CLIENT_ADMIN_KICK,
 	DD_CLIENT_ADMIN_BAN,
 	DD_COMPANY_ADMIN_RESET,

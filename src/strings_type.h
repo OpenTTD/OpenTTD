@@ -21,13 +21,13 @@ static const int MAX_CHAR_LENGTH        = 4;      ///< Max. length of UTF-8 enco
 static const uint MAX_LANG              = 0x7F;   ///< Maximum number of languages supported by the game, and the NewGRF specs
 
 /** Directions a text can go to */
-enum TextDirection {
+enum TextDirection : uint8_t {
 	TD_LTR, ///< Text is written left-to-right by default
 	TD_RTL, ///< Text is written right-to-left by default
 };
 
 /** StringTabs to group StringIDs */
-enum StringTab {
+enum StringTab : uint8_t {
 	/* Tabs 0..1 for regular strings */
 	TEXT_TAB_TOWN             =  4,
 	TEXT_TAB_INDUSTRY         =  9,

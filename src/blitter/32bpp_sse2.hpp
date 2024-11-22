@@ -38,14 +38,14 @@ public:
 	static_assert(sizeof(MapValue) == 2);
 
 	/** Helper for creating specialised functions for specific optimisations. */
-	enum ReadMode {
+	enum ReadMode : uint8_t {
 		RM_WITH_SKIP,   ///< Use normal code for skipping empty pixels.
 		RM_WITH_MARGIN, ///< Use cached number of empty pixels at begin and end of line to reduce work.
 		RM_NONE,        ///< No specialisation.
 	};
 
 	/** Helper for creating specialised functions for the case where the sprite width is odd or even. */
-	enum BlockType {
+	enum BlockType : uint8_t {
 		BT_EVEN, ///< An even number of pixels in the width; no need for a special case for the last pixel.
 		BT_ODD,  ///< An odd number of pixels in the width; special case for the last pixel.
 		BT_NONE, ///< No specialisation for either case.
@@ -56,7 +56,7 @@ public:
 	 *  - calculations (alpha blending),
 	 *  - heavy branching (remap lookups and animation buffer handling).
 	 */
-	enum SpriteFlags {
+	enum SpriteFlags : uint8_t {
 		SF_NONE        = 0,
 		SF_TRANSLUCENT = 1 << 1, ///< The sprite has at least 1 translucent pixel.
 		SF_NO_REMAP    = 1 << 2, ///< The sprite has no remappable colour pixel.

@@ -39,7 +39,7 @@
  * the grf base will not be used in order to find the string, but rather for
  * jumping from standard langID scheme to the new one.
  */
-enum GRFBaseLanguages {
+enum GRFBaseLanguages : uint8_t {
 	GRFLB_AMERICAN    = 0x01,
 	GRFLB_ENGLISH     = 0x02,
 	GRFLB_GERMAN      = 0x04,
@@ -48,7 +48,7 @@ enum GRFBaseLanguages {
 	GRFLB_GENERIC     = 0x80,
 };
 
-enum GRFExtendedLanguages {
+enum GRFExtendedLanguages : uint8_t {
 	GRFLX_AMERICAN    = 0x00,
 	GRFLX_ENGLISH     = 0x01,
 	GRFLX_GERMAN      = 0x02,

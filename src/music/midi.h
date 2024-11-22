@@ -20,7 +20,7 @@ struct SMFHeader {
 };
 
 /** MIDI status byte codes */
-enum MidiStatus {
+enum MidiStatus : uint8_t {
 	/* Bytes with top bit unset are data bytes i.e. not status bytes */
 	/* Channel status messages, require channel number in lower nibble */
 	MIDIST_NOTEOFF     = 0x80,
@@ -55,7 +55,7 @@ enum MidiStatus {
  * MIDI controller numbers.
  * Complete list per General MIDI, missing values are not defined.
  */
-enum MidiController {
+enum MidiController : uint8_t {
 	/* Standard continuous controllers (MSB control) */
 	MIDICT_BANKSELECT        =   0,
 	MIDICT_MODWHEEL          =   1,
@@ -141,7 +141,7 @@ enum MidiController {
 
 
 /** Well-known MIDI system exclusive message values for use with the MidiGetStandardSysexMessage function. */
-enum class MidiSysexMessage {
+enum class MidiSysexMessage : uint8_t {
 	/** Reset device to General MIDI defaults */
 	ResetGM,
 	/** Reset device to (Roland) General Standard defaults */

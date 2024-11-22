@@ -35,7 +35,7 @@ const size_t MAX_SLE_INT32 = INT32_MAX;
 const size_t MAX_SLE_INT = INT_MAX;
 
 /** Settings profiles and highscore tables. */
-enum SettingsProfile {
+enum SettingsProfile : uint8_t {
 	SP_BEGIN = 0,
 	SP_EASY = SP_BEGIN,                       ///< Easy difficulty.
 	SP_MEDIUM,                                ///< Medium difficulty.
@@ -51,7 +51,7 @@ enum SettingsProfile {
 };
 
 /** Available industry map generation densities. */
-enum IndustryDensity {
+enum IndustryDensity : uint8_t {
 	ID_FUND_ONLY, ///< The game does not build industries.
 	ID_MINIMAL,   ///< Start with just the industries that must be present.
 	ID_VERY_LOW,  ///< Very few industries at game start.
@@ -118,7 +118,7 @@ struct DifficultySettings {
 };
 
 /** Settings relating to viewport/smallmap scrolling. */
-enum ViewportScrollMode {
+enum ViewportScrollMode : uint8_t {
 	VSM_VIEWPORT_RMB_FIXED, ///< Viewport moves with mouse movement on holding right mouse button, cursor position is fixed.
 	VSM_MAP_RMB_FIXED,      ///< Map moves with mouse movement on holding right mouse button, cursor position is fixed.
 	VSM_MAP_RMB,            ///< Map moves with mouse movement on holding right mouse button, cursor moves.
@@ -127,7 +127,7 @@ enum ViewportScrollMode {
 };
 
 /** Settings related to scroll wheel behavior. */
-enum ScrollWheelScrollingSetting {
+enum ScrollWheelScrollingSetting : uint8_t {
 	SWS_ZOOM_MAP = 0,       ///< Scroll wheel zooms the map.
 	SWS_SCROLL_MAP = 1,     ///< Scroll wheel scrolls the map.
 	SWS_OFF = 2             ///< Scroll wheel has no effect.

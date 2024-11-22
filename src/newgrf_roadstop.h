@@ -34,7 +34,7 @@ enum RoadStopClassID : uint16_t {
 DECLARE_INCREMENT_DECREMENT_OPERATORS(RoadStopClassID)
 
 /* Some Triggers etc. */
-enum RoadStopRandomTrigger {
+enum RoadStopRandomTrigger : uint8_t {
 	RSRT_NEW_CARGO,       ///< Trigger roadstop on arrival of new cargo.
 	RSRT_CARGO_TAKEN,     ///< Trigger roadstop when cargo is completely taken.
 	RSRT_VEH_ARRIVES,     ///< Trigger roadstop when road vehicle arrives.
@@ -66,7 +66,7 @@ enum RoadStopDrawMode : uint8_t {
 };
 DECLARE_ENUM_AS_BIT_SET(RoadStopDrawMode)
 
-enum RoadStopSpecFlags {
+enum RoadStopSpecFlags : uint8_t {
 	RSF_CB141_RANDOM_BITS       = 0, ///< Callback 141 needs random bits.
 	RSF_NO_CATENARY             = 2, ///< Do not show catenary.
 	RSF_DRIVE_THROUGH_ONLY      = 3, ///< Stop is drive-through only.
@@ -76,7 +76,7 @@ enum RoadStopSpecFlags {
 	RSF_DRAW_MODE_REGISTER      = 8, ///< Read draw mode from register 0x100.
 };
 
-enum RoadStopView {
+enum RoadStopView : uint8_t {
 	RSV_BAY_NE                  = 0, ///< Bay road stop, facing Northeast
 	RSV_BAY_SE                  = 1, ///< Bay road stop, facing Southeast
 	RSV_BAY_SW                  = 2, ///< Bay road stop, facing Southwest

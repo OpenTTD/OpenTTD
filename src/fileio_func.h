@@ -60,7 +60,7 @@ class TarScanner : FileScanner {
 	uint DoScan(Subdirectory sd);
 public:
 	/** The mode of tar scanning. */
-	enum Mode {
+	enum Mode : uint8_t {
 		NONE     = 0,      ///< Scan nothing.
 		BASESET  = 1 << 0, ///< Scan for base sets.
 		NEWGRF   = 1 << 1, ///< Scan for non-base sets.

@@ -400,7 +400,7 @@ enum SaveLoadVersion : uint16_t {
 };
 
 /** Save or load result codes. */
-enum SaveOrLoadResult {
+enum SaveOrLoadResult : uint8_t {
 	SL_OK     = 0, ///< completed successfully
 	SL_ERROR  = 1, ///< error that was caught before internal structures were modified
 	SL_REINIT = 2, ///< error that was caught in the middle of updating game state, need to clear it. (can only happen during load)
@@ -420,7 +420,7 @@ struct FileToSaveLoad {
 };
 
 /** Types of save games. */
-enum SavegameType {
+enum SavegameType : uint8_t {
 	SGT_TTD,    ///< TTD  savegame (can be detected incorrectly)
 	SGT_TTDP1,  ///< TTDP savegame ( -//- ) (data at NW border)
 	SGT_TTDP2,  ///< TTDP savegame in new format (data at SE border)
@@ -448,7 +448,7 @@ SaveOrLoadResult LoadWithFilter(std::shared_ptr<struct LoadFilter> reader);
 typedef void AutolengthProc(int);
 
 /** Type of a chunk. */
-enum ChunkType {
+enum ChunkType : uint8_t {
 	CH_RIFF = 0,
 	CH_ARRAY = 1,
 	CH_SPARSE_ARRAY = 2,
@@ -597,7 +597,7 @@ public:
 };
 
 /** Type of reference (#SLE_REF, #SLE_CONDREF). */
-enum SLRefType {
+enum SLRefType : uint8_t {
 	REF_ORDER          =  0, ///< Load/save a reference to an order.
 	REF_VEHICLE        =  1, ///< Load/save a reference to a vehicle.
 	REF_STATION        =  2, ///< Load/save a reference to a station.
@@ -620,7 +620,7 @@ enum SLRefType {
  * the first 8 bits (0-3 SLE_FILE, 4-7 SLE_VAR).
  * Bits 8-15 are reserved for various flags as explained below
  */
-enum VarTypes {
+enum VarTypes : uint16_t {
 	/* 4 bits allocated a maximum of 16 types for NumberType.
 	 * NOTE: the SLE_FILE_NNN values are stored in the savegame! */
 	SLE_FILE_END      =  0, ///< Used to mark end-of-header in tables.

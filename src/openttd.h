@@ -15,7 +15,7 @@
 #include "core/enum_type.hpp"
 
 /** Mode which defines the state of the game. */
-enum GameMode {
+enum GameMode : uint8_t {
 	GM_MENU,
 	GM_NORMAL,
 	GM_EDITOR,
@@ -23,7 +23,7 @@ enum GameMode {
 };
 
 /** Mode which defines what mode we're switching to. */
-enum SwitchMode {
+enum SwitchMode : uint8_t {
 	SM_NONE,
 	SM_NEWGAME,           ///< New Game --> 'Random game'.
 	SM_RESTARTGAME,       ///< Restart --> 'Random game' with current settings.
@@ -42,7 +42,7 @@ enum SwitchMode {
 };
 
 /** Display Options */
-enum DisplayOptions {
+enum DisplayOptions : uint8_t {
 	DO_SHOW_TOWN_NAMES     = 0, ///< Display town names.
 	DO_SHOW_STATION_NAMES  = 1, ///< Display station names.
 	DO_SHOW_SIGNS          = 2, ///< Display signs.

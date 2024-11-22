@@ -13,7 +13,7 @@
 #include <squirrel.h>
 
 /** The type of script we're working with, i.e. for who is it? */
-enum class ScriptType {
+enum class ScriptType : uint8_t {
 	AI, ///< The script is for AI scripts.
 	GS, ///< The script is for Game scripts.
 };

@@ -56,7 +56,7 @@ DECLARE_ENUM_AS_BIT_SET(RoadTypeFlags)
 struct SpriteGroup;
 
 /** Sprite groups for a roadtype. */
-enum RoadTypeSpriteGroup {
+enum RoadTypeSpriteGroup : uint8_t {
 	ROTSG_CURSORS,        ///< Optional: Cursor and toolbar icon images
 	ROTSG_OVERLAY,        ///< Optional: Images for overlaying track
 	ROTSG_GROUND,         ///< Required: Main group of ground images

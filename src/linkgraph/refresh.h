@@ -25,7 +25,7 @@ protected:
 	 * Various flags about properties of the last examined link that might have
 	 * an influence on the next one.
 	 */
-	enum RefreshFlags {
+	enum RefreshFlags : uint8_t {
 		USE_NEXT,     ///< There was a conditional jump. Try to use the given next order when looking for a new one.
 		HAS_CARGO,    ///< Consist could leave the last stop where it could interact with cargo carrying cargo (i.e. not an "unload all" + "no loading" order).
 		WAS_REFIT,    ///< Consist was refit since the last stop where it could interact with cargo.

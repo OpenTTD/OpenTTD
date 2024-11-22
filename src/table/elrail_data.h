@@ -17,7 +17,7 @@
  * Tile Location group.
  * This defines whether the X and or Y coordinate of a tile is even
  */
-enum TLG {
+enum TLG : uint8_t {
 	XEVEN_YEVEN = 0,
 	XEVEN_YODD  = 1,
 	XODD_YEVEN  = 2,
@@ -30,7 +30,7 @@ enum TLG {
  * into account: the tile being drawn itself (the home tile, the one in
  * ti->tile), and the neighbouring tile
  */
-enum TileSource {
+enum TileSource : uint8_t {
 	TS_HOME      = 0,
 	TS_NEIGHBOUR = 1,
 
@@ -254,7 +254,7 @@ static const int8_t y_ppp_offsets[DIR_END] = {-2,  0,  2,  4,  2,  0, -2, -4};
 /**
  * Offset for pylon sprites from the base pylon sprite.
  */
-enum PylonSpriteOffset {
+enum PylonSpriteOffset : uint8_t {
 	PSO_Y_NE,
 	PSO_Y_SW,
 	PSO_X_NW,
@@ -280,7 +280,7 @@ static const uint8_t pylon_sprites[] = {
 /**
  * Offset for wire sprites from the base wire sprite.
  */
-enum WireSpriteOffset {
+enum WireSpriteOffset : uint8_t {
 	WSO_X_SHORT,
 	WSO_Y_SHORT,
 	WSO_EW_SHORT,
@@ -419,7 +419,7 @@ static const SortableSpriteStruct RailCatenarySpriteData_Tunnel[] = {
  * <li>Position of the Pylon relative to the track</li>
  * <li>Position of the Pylon inside the tile</li></ol>
  */
-enum RailCatenarySprite {
+enum RailCatenarySprite : uint8_t {
 	WIRE_X_FLAT_SW,
 	WIRE_X_FLAT_NE,
 	WIRE_X_FLAT_BOTH,

@@ -520,7 +520,7 @@ struct MpsMachine {
 	MidiFile &target;     ///< recipient of data
 
 	/** Overridden MIDI status codes used in the data format */
-	enum MpsMidiStatus {
+	enum MpsMidiStatus : uint8_t {
 		MPSMIDIST_SEGMENT_RETURN = 0xFD, ///< resume playing master track from stored position
 		MPSMIDIST_SEGMENT_CALL   = 0xFE, ///< store current position of master track playback, and begin playback of a segment
 		MPSMIDIST_ENDSONG        = 0xFF, ///< immediately end the song

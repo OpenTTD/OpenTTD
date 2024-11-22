@@ -24,7 +24,7 @@ public:
 	using Ticks = int32_t; ///< The type to store ticks in
 	using TickCounter = uint64_t; ///< The type that the tick counter is stored in
 
-	enum Priority {
+	enum Priority : uint8_t {
 		NONE, ///< These timers can be executed in any order; the order is not relevant.
 
 		/* For all other priorities, the order is important.

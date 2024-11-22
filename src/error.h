@@ -20,7 +20,7 @@
 struct GRFFile;
 
 /** Message severity/type */
-enum WarningLevel {
+enum WarningLevel : uint8_t {
 	WL_INFO,     ///< Used for DoCommand-like (and some non-fatal AI GUI) errors/information
 	WL_WARNING,  ///< Other information
 	WL_ERROR,    ///< Errors (eg. saving/loading failed)

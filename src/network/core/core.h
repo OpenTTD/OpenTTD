@@ -20,7 +20,7 @@ bool NetworkCoreInitialize();
 void NetworkCoreShutdown();
 
 /** Status of a network client; reasons why a client has quit */
-enum NetworkRecvStatus {
+enum NetworkRecvStatus : uint8_t {
 	NETWORK_RECV_STATUS_OKAY,             ///< Everything is okay.
 	NETWORK_RECV_STATUS_DESYNC,           ///< A desync did occur.
 	NETWORK_RECV_STATUS_NEWGRF_MISMATCH,  ///< We did not have the required NewGRFs.

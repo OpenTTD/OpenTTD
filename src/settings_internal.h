@@ -39,7 +39,7 @@ DECLARE_ENUM_AS_BIT_SET(SettingFlag)
  * The grouping is meant to be inclusive, i.e. all settings in #SC_BASIC also will be included
  * in the set of settings in #SC_ADVANCED. The group #SC_EXPERT contains all settings.
  */
-enum SettingCategory {
+enum SettingCategory : uint8_t {
 	SC_NONE = 0,
 
 	/* Filters for the list */
@@ -58,7 +58,7 @@ enum SettingCategory {
 /**
  * Type of settings for filtering.
  */
-enum SettingType {
+enum SettingType : uint8_t {
 	ST_GAME,      ///< Game setting.
 	ST_COMPANY,   ///< Company setting.
 	ST_CLIENT,    ///< Client setting.

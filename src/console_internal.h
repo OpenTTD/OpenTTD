@@ -16,7 +16,7 @@ static const uint ICON_CMDLN_SIZE     = 1024; ///< maximum length of a typed in 
 static const uint ICON_MAX_STREAMSIZE = 2048; ///< maximum length of a totally expanded command
 
 /** Return values of console hooks (#IConsoleHook). */
-enum ConsoleHookResult {
+enum ConsoleHookResult : uint8_t {
 	CHR_ALLOW,    ///< Allow command execution.
 	CHR_DISALLOW, ///< Disallow command execution.
 	CHR_HIDE,     ///< Hide the existence of the command.

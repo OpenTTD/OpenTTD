@@ -879,7 +879,7 @@ static void DrawCargoIcons(CargoType i, uint waiting, int left, int right, int y
 	} while (--num);
 }
 
-enum SortOrder {
+enum SortOrder : uint8_t {
 	SO_DESCENDING,
 	SO_ASCENDING
 };
@@ -1284,7 +1284,7 @@ struct StationViewWindow : public Window {
 	/**
 	 * Type of data invalidation.
 	 */
-	enum Invalidation {
+	enum Invalidation : uint16_t {
 		INV_FLOWS = 0x100, ///< The planned flows have been recalculated and everything has to be updated.
 		INV_CARGO = 0x200  ///< Some cargo has been added or removed.
 	};
@@ -1292,7 +1292,7 @@ struct StationViewWindow : public Window {
 	/**
 	 * Type of grouping used in each of the "columns".
 	 */
-	enum Grouping {
+	enum Grouping : uint8_t {
 		GR_SOURCE,      ///< Group by source of cargo ("from").
 		GR_NEXT,        ///< Group by next station ("via").
 		GR_DESTINATION, ///< Group by estimated final destination ("to").
@@ -1302,7 +1302,7 @@ struct StationViewWindow : public Window {
 	/**
 	 * Display mode of the cargo view.
 	 */
-	enum Mode {
+	enum Mode : uint8_t {
 		MODE_WAITING, ///< Show cargo waiting at the station.
 		MODE_PLANNED  ///< Show cargo planned to pass through the station.
 	};

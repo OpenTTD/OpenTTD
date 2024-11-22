@@ -24,7 +24,7 @@ void BuildLandLegend();
 void BuildOwnerLegend();
 
 /** Enum for how to include the heightmap pixels/colours in small map related functions */
-enum class IncludeHeightmap {
+enum class IncludeHeightmap : uint8_t {
 	Never,      ///< Never include the heightmap
 	IfEnabled,  ///< Only include the heightmap if its enabled in the gui by the player
 	Always      ///< Always include the heightmap

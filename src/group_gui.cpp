@@ -190,7 +190,7 @@ void BuildGuiGroupList(GUIGroupList &dst, bool fold, Owner owner, VehicleType ve
 class VehicleGroupWindow : public BaseVehicleListWindow {
 private:
 	/* Columns in the group list */
-	enum ListColumns {
+	enum ListColumns : uint8_t {
 		VGC_FOLD,          ///< Fold / Unfold button.
 		VGC_NAME,          ///< Group name.
 		VGC_PROTECT,       ///< Autoreplace protect icon.

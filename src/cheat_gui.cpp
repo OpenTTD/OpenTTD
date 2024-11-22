@@ -168,7 +168,7 @@ static int32_t ClickChangeMaxHlCheat(int32_t new_value, int32_t)
 }
 
 /** Available cheats. */
-enum CheatNumbers {
+enum CheatNumbers : uint8_t {
 	CHT_MONEY,           ///< Change amount of money.
 	CHT_CHANGE_COMPANY,  ///< Switch company.
 	CHT_EXTRA_DYNAMITE,  ///< Dynamite anything.

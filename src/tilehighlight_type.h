@@ -16,7 +16,7 @@
 #include "viewport_type.h"
 
 /** Highlighting draw styles */
-enum HighLightStyle {
+enum HighLightStyle : uint16_t {
 	HT_NONE      = 0x000, ///< default
 	HT_RECT      = 0x010, ///< rectangle (stations, depots, ...)
 	HT_POINT     = 0x020, ///< point (lower land, raise land, level land, ...)

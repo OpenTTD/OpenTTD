@@ -17,7 +17,7 @@
 #include "../../misc/dbg_helpers.h"
 
 /* Enum used in PfCalcCost() to see why was the segment closed. */
-enum EndSegmentReason {
+enum EndSegmentReason : uint8_t {
 	/* The following reasons can be saved into cached segment */
 	ESR_DEAD_END = 0,      ///< track ends here
 	ESR_RAIL_TYPE,         ///< the next tile has a different rail type than our tiles
@@ -40,7 +40,7 @@ enum EndSegmentReason {
 	ESR_NONE = 0xFF,          ///< no reason to end the segment here
 };
 
-enum EndSegmentReasonBits {
+enum EndSegmentReasonBits : uint16_t {
 	ESRB_NONE = 0,
 
 	ESRB_DEAD_END          = 1 << ESR_DEAD_END,

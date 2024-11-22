@@ -46,7 +46,7 @@ protected:
 	};
 	typedef std::vector<LayoutCacheElement> LayoutCache;
 
-	enum class ElementFloat {
+	enum class ElementFloat : uint8_t {
 		None,
 		Left,
 		Right,

@@ -20,7 +20,7 @@
 #include <thread>
 
 /** The states of sending the packets. */
-enum SendPacketsState {
+enum SendPacketsState : uint8_t {
 	SPS_CLOSED,      ///< The connection got closed.
 	SPS_NONE_SENT,   ///< The buffer is still full, so no (parts of) packets could be sent.
 	SPS_PARTLY_SENT, ///< The packets are partly sent; there are more packets to be sent in the queue.
@@ -80,7 +80,7 @@ private:
 	 * game-thread, and not at another random time where we might not have the
 	 * lock on the game-state.
 	 */
-	enum class Status {
+	enum class Status : uint8_t {
 		Init,       ///< TCPConnecter is created but resolving hasn't started.
 		Resolving,  ///< The hostname is being resolved (threaded).
 		Failure,    ///< Resolving failed.

@@ -13,7 +13,7 @@
 #include "vehicle_base.h"
 
 /** Different sub types of disaster vehicles. */
-enum DisasterSubType {
+enum DisasterSubType : uint8_t {
 	ST_ZEPPELINER,               ///< Zeppelin, crashes at airports.
 	ST_ZEPPELINER_SHADOW,        ///< Shadow of the zeppelin.
 	ST_SMALL_UFO,                ///< Small UFO, tries to find a road vehicle to destroy.

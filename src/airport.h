@@ -25,7 +25,7 @@ static const uint NEW_AIRPORTTILE_OFFSET = 74;               ///< offset of firs
 static const uint INVALID_AIRPORTTILE    = NUM_AIRPORTTILES; ///< id for an invalid airport tile
 
 /** Airport types */
-enum AirportTypes {
+enum AirportTypes : uint8_t {
 	AT_SMALL           =   0, ///< Small airport.
 	AT_LARGE           =   1, ///< Large airport.
 	AT_HELIPORT        =   2, ///< Heli port.
@@ -44,7 +44,7 @@ enum AirportTypes {
 };
 
 /** Flags for airport movement data. */
-enum AirportMovingDataFlags {
+enum AirportMovingDataFlags : uint16_t {
 	AMED_NOSPDCLAMP = 1 << 0, ///< No speed restrictions.
 	AMED_TAKEOFF    = 1 << 1, ///< Takeoff movement.
 	AMED_SLOWTURN   = 1 << 2, ///< Turn slowly (mostly used in the air).
@@ -57,7 +57,7 @@ enum AirportMovingDataFlags {
 };
 
 /** Movement States on Airports (headings target) */
-enum AirportMovementStates {
+enum AirportMovementStates : uint8_t {
 	TO_ALL         =   0, ///< Go in this direction for every target.
 	HANGAR         =   1, ///< Heading for hangar.
 	TERM1          =   2, ///< Heading for terminal 1.
@@ -143,7 +143,7 @@ struct AirportFTAbuildup;
 struct AirportFTAClass {
 public:
 	/** Bitmask of airport flags. */
-	enum Flags {
+	enum Flags : uint8_t {
 		AIRPLANES   = 0x1,                     ///< Can planes land on this airport type?
 		HELICOPTERS = 0x2,                     ///< Can helicopters land on this airport type?
 		ALL         = AIRPLANES | HELICOPTERS, ///< Mask to check for both planes and helicopters.

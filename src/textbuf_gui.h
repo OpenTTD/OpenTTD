@@ -15,7 +15,7 @@
 #include "strings_type.h"
 
 /** Flags used in ShowQueryString() call */
-enum QueryStringFlags {
+enum QueryStringFlags : uint8_t {
 	QSF_NONE             =    0,
 	QSF_ACCEPT_UNCHANGED = 0x01, ///< return success even when the text didn't change
 	QSF_ENABLE_DEFAULT   = 0x02, ///< enable the 'Default' button ("\0" is returned)

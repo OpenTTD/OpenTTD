@@ -17,7 +17,7 @@
  * industry, etc.
  * Names are formatted as CBID_<CLASS>_<CALLBACK>
  */
-enum CallbackID {
+enum CallbackID : uint16_t {
 	/** Set when using the callback resolve system, but not to resolve a callback. */
 	CBID_NO_CALLBACK                     = 0x00,
 
@@ -297,7 +297,7 @@ enum CallbackID {
  * Callback masks for vehicles, indicates which callbacks are used by a vehicle.
  * Some callbacks are always used and don't have a mask.
  */
-enum VehicleCallbackMask {
+enum VehicleCallbackMask : uint8_t {
 	CBM_VEHICLE_VISUAL_EFFECT  = 0, ///< Visual effects and wagon power (trains, road vehicles and ships)
 	CBM_VEHICLE_LENGTH         = 1, ///< Vehicle length (trains and road vehicles)
 	CBM_VEHICLE_LOAD_AMOUNT    = 2, ///< Load amount
@@ -313,7 +313,7 @@ enum VehicleCallbackMask {
 /**
  * Callback masks for stations.
  */
-enum StationCallbackMask {
+enum StationCallbackMask : uint8_t {
 	CBM_STATION_AVAIL                = 0, ///< Availability of station in construction window
 	CBM_STATION_DRAW_TILE_LAYOUT     = 1, ///< Use callback to select a tile layout to use when drawing.
 	CBM_STATION_ANIMATION_NEXT_FRAME = 2, ///< Use a custom next frame callback
@@ -324,7 +324,7 @@ enum StationCallbackMask {
 /**
  * Callback masks for road stops.
  */
-enum RoadStopCallbackMask {
+enum RoadStopCallbackMask : uint8_t {
 	CBM_ROAD_STOP_AVAIL                = 0, ///< Availability of road stop in construction window
 	CBM_ROAD_STOP_ANIMATION_NEXT_FRAME = 1, ///< Use a custom next frame callback
 	CBM_ROAD_STOP_ANIMATION_SPEED      = 2, ///< Customize the animation speed of the road stop
@@ -333,7 +333,7 @@ enum RoadStopCallbackMask {
 /**
  * Callback masks for houses.
  */
-enum HouseCallbackMask {
+enum HouseCallbackMask : uint8_t {
 	CBM_HOUSE_ALLOW_CONSTRUCTION        =  0, ///< decide whether the house can be built on a given tile
 	CBM_HOUSE_ANIMATION_NEXT_FRAME      =  1, ///< decides next animation frame
 	CBM_HOUSE_ANIMATION_START_STOP      =  2, ///< periodically start/stop the animation
@@ -352,14 +352,14 @@ enum HouseCallbackMask {
 /**
  * Callback masks for canals.
  */
-enum CanalCallbackMask {
+enum CanalCallbackMask : uint8_t {
 	CBM_CANAL_SPRITE_OFFSET       = 0, ///< Enable add sprite offset callback
 };
 
 /**
  * Callback masks for cargoes.
  */
-enum CargoCallbackMask {
+enum CargoCallbackMask : uint8_t {
 	CBM_CARGO_PROFIT_CALC         = 0, ///< custom profit calculation
 	CBM_CARGO_STATION_RATING_CALC = 1, ///< custom station rating for this cargo type
 };
@@ -367,7 +367,7 @@ enum CargoCallbackMask {
 /**
  * Callback masks for Industries
  */
-enum IndustryCallbackMask {
+enum IndustryCallbackMask : uint8_t {
 	CBM_IND_PROBABILITY               =  0, ///< industry availability/probability callback
 	CBM_IND_PRODUCTION_CARGO_ARRIVAL  =  1, ///< call production callback when cargo arrives at the industry
 	CBM_IND_PRODUCTION_256_TICKS      =  2, ///< call production callback every 256 ticks
@@ -388,7 +388,7 @@ enum IndustryCallbackMask {
 /**
  * Callback masks for industry tiles
  */
-enum IndustryTileCallbackMask {
+enum IndustryTileCallbackMask : uint8_t {
 	CBM_INDT_ANIM_NEXT_FRAME          = 0,  ///< decides next animation frame
 	CBM_INDT_ANIM_SPEED               = 1,  ///< decides animation speed
 	CBM_INDT_CARGO_ACCEPTANCE         = 2,  ///< decides amount of cargo acceptance
@@ -401,7 +401,7 @@ enum IndustryTileCallbackMask {
 /**
  * Callback masks for objects
  */
-enum ObjectCallbackMask {
+enum ObjectCallbackMask : uint8_t {
 	CBM_OBJ_SLOPE_CHECK               =  0, ///< decides slope suitability
 	CBM_OBJ_ANIMATION_NEXT_FRAME      =  1, ///< decides next animation frame
 	CBM_OBJ_ANIMATION_SPEED           =  2, ///< decides animation speed
@@ -413,7 +413,7 @@ enum ObjectCallbackMask {
 /**
  * Callback masks for airport tiles
  */
-enum AirportTileCallbackMask {
+enum AirportTileCallbackMask : uint8_t {
 	CBM_AIRT_ANIM_NEXT_FRAME          = 0,  ///< decides next animation frame
 	CBM_AIRT_ANIM_SPEED               = 1,  ///< decides animation speed
 	CBM_AIRT_SHAPE_CHECK              = 4,  ///< decides slope suitability

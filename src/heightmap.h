@@ -16,7 +16,7 @@
  * Order of these enums has to be the same as in lang/english.txt
  * Otherwise you will get inconsistent behaviour.
  */
-enum HeightmapRotation {
+enum HeightmapRotation : uint8_t {
 	HM_COUNTER_CLOCKWISE, ///< Rotate the map counter clockwise 45 degrees
 	HM_CLOCKWISE,         ///< Rotate the map clockwise 45 degrees
 };

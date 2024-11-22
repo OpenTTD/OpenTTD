@@ -77,7 +77,7 @@ static inline uint GetInspectWindowNumber(GrfSpecFeature feature, uint index)
  * The type of a property to show. This is used to
  * provide an appropriate representation in the GUI.
  */
-enum NIType {
+enum NIType : uint8_t {
 	NIT_INT,   ///< The property is a simple integer
 	NIT_CARGO, ///< The property is a cargo
 };

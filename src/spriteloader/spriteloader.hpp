@@ -18,7 +18,7 @@
 struct Sprite;
 
 /** The different colour components a sprite can have. */
-enum SpriteColourComponent {
+enum SpriteColourComponent : uint8_t {
 	SCC_RGB   = 1 << 0, ///< Sprite has RGB.
 	SCC_ALPHA = 1 << 1, ///< Sprite has alpha.
 	SCC_PAL   = 1 << 2, ///< Sprite has palette data.

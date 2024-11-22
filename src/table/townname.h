@@ -1696,7 +1696,7 @@ static const char * const _name_czech_real[] = {
  * with cloning this for your own language. */
 
 /* Sing., pl. */
-enum CzechGender {
+enum CzechGender : uint8_t {
 	CZG_SMASC,
 	CZG_SFEM,
 	CZG_SNEUT,
@@ -1709,7 +1709,7 @@ enum CzechGender {
 	CZG_NFREE
 };
 
-enum CzechPattern {
+enum CzechPattern : uint8_t {
 	CZP_JARNI,
 	CZP_MLADY,
 	CZP_PRIVL
@@ -1729,22 +1729,22 @@ static const char * const _name_czech_patmod[][3] = {
 
 /* This way the substantive can choose only some adjectives/endings:
  * At least one of these flags must be satisfied: */
-enum CzechAllow {
+enum CzechAllow : uint8_t {
 	CZA_SHORT = 1,
 	CZA_MIDDLE = 2,
 	CZA_LONG = 4,
-	CZA_ALL = ~0
+	CZA_ALL = CZA_SHORT | CZA_MIDDLE | CZA_LONG,
 };
 
 DECLARE_ENUM_AS_BIT_SET(CzechAllow)
 
 /* All these flags must be satisfied (in the stem->others direction): */
-enum CzechChoose {
+enum CzechChoose : uint8_t {
 	CZC_NONE = 0, // No requirements.
 	CZC_COLOR = 1,
 	CZC_POSTFIX = 2, // Matched if postfix was inserted.
 	CZC_NOPOSTFIX = 4, // Matched if no postfix was inserted.
-	CZC_ANY = ~0
+	CZC_ANY = CZC_COLOR | CZC_POSTFIX | CZC_NOPOSTFIX,
 };
 
 DECLARE_ENUM_AS_BIT_SET(CzechChoose)

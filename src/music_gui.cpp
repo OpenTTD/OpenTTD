@@ -47,7 +47,7 @@ struct MusicSystem {
 	};
 	typedef std::vector<PlaylistEntry> Playlist;
 
-	enum PlaylistChoices {
+	enum PlaylistChoices : uint8_t {
 		PLCH_ALLMUSIC,
 		PLCH_OLDSTYLE,
 		PLCH_NEWSTYLE,

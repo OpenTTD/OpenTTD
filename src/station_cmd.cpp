@@ -212,7 +212,7 @@ static bool CMSATree(TileIndex tile)
 
 #define M(x) ((x) - STR_SV_STNAME)
 
-enum StationNaming {
+enum StationNaming : uint8_t {
 	STATIONNAMING_RAIL,
 	STATIONNAMING_ROAD,
 	STATIONNAMING_AIRPORT,

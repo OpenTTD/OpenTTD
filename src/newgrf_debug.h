@@ -15,7 +15,7 @@
 #include "vehicle_type.h"
 
 /** Current state of spritepicker */
-enum NewGrfDebugSpritePickerMode {
+enum NewGrfDebugSpritePickerMode : uint8_t {
 	SPM_NONE,
 	SPM_WAIT_CLICK,
 	SPM_REDRAW,

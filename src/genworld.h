@@ -14,7 +14,7 @@
 #include <thread>
 
 /** Constants related to world generation */
-enum LandscapeGenerator {
+enum LandscapeGenerator : uint8_t {
 	/* Order of these enums has to be the same as in lang/english.txt
 	 * Otherwise you will get inconsistent behaviour. */
 	LG_ORIGINAL     = 0,  ///< The original landscape generator
@@ -24,7 +24,7 @@ enum LandscapeGenerator {
 static const uint32_t GENERATE_NEW_SEED = UINT32_MAX; ///< Create a new random seed
 
 /** Modes for GenerateWorld */
-enum GenWorldMode {
+enum GenWorldMode : uint8_t {
 	GWM_NEWGAME   = 0, ///< Generate a map for a new game
 	GWM_EMPTY     = 1, ///< Generate an empty map (sea-level)
 	GWM_RANDOM    = 2, ///< Generate a random map for SE
@@ -32,7 +32,7 @@ enum GenWorldMode {
 };
 
 /** Smoothness presets. */
-enum TgenSmoothness {
+enum TgenSmoothness : uint8_t {
 	TGEN_SMOOTHNESS_BEGIN,      ///< First smoothness value.
 	TGEN_SMOOTHNESS_VERY_SMOOTH = TGEN_SMOOTHNESS_BEGIN, ///< Smoothness preset 'very smooth'.
 	TGEN_SMOOTHNESS_SMOOTH,     ///< Smoothness preset 'smooth'.
@@ -66,7 +66,7 @@ struct GenWorldInfo {
 };
 
 /** Current stage of world generation process */
-enum GenWorldProgress {
+enum GenWorldProgress : uint8_t {
 	GWP_MAP_INIT,    ///< Initialize/allocate the map, start economy
 	GWP_LANDSCAPE,   ///< Create the landscape
 	GWP_RIVER,       ///< Create the rivers

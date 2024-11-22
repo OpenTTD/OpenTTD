@@ -19,7 +19,7 @@
 #include "newgrf_commons.h"
 
 /** Available types of industry lifetimes. */
-enum IndustryLifeType {
+enum IndustryLifeType : uint8_t {
 	INDUSTRYLIFE_BLACK_HOLE =      0, ///< Like power plants and banks
 	INDUSTRYLIFE_EXTRACTIVE = 1 << 0, ///< Like mines
 	INDUSTRYLIFE_ORGANIC    = 1 << 1, ///< Like forests
@@ -30,7 +30,7 @@ enum IndustryLifeType {
  * Available procedures to check whether an industry may build at a given location.
  * @see CheckNewIndustryProc, _check_new_industry_procs[]
  */
-enum CheckProc {
+enum CheckProc : uint8_t {
 	CHECK_NOTHING,    ///< Always succeeds.
 	CHECK_FOREST,     ///< %Industry should be build above snow-line in arctic climate.
 	CHECK_REFINERY,   ///< %Industry should be positioned near edge of the map.
@@ -44,7 +44,7 @@ enum CheckProc {
 };
 
 /** How was the industry created */
-enum IndustryConstructionType {
+enum IndustryConstructionType : uint8_t {
 	ICT_UNKNOWN,          ///< in previous game version or without newindustries activated
 	ICT_NORMAL_GAMEPLAY,  ///< either by user or random creation process
 	ICT_MAP_GENERATION,   ///< during random map creation
@@ -52,7 +52,7 @@ enum IndustryConstructionType {
 };
 
 /** Various industry behaviours mostly to represent original TTD specialities */
-enum IndustryBehaviour {
+enum IndustryBehaviour : uint32_t {
 	INDUSTRYBEH_NONE                  =      0,
 	INDUSTRYBEH_PLANT_FIELDS          = 1 << 0,  ///< periodically plants fields around itself (temp and arctic farms)
 	INDUSTRYBEH_CUT_TREES             = 1 << 1,  ///< cuts trees and produce first output cargo from them (lumber mill)
@@ -79,7 +79,7 @@ enum IndustryBehaviour {
 DECLARE_ENUM_AS_BIT_SET(IndustryBehaviour)
 
 /** Flags for miscellaneous industry tile specialities */
-enum IndustryTileSpecialFlags {
+enum IndustryTileSpecialFlags : uint8_t {
 	INDTILE_SPECIAL_NONE                  = 0,
 	INDTILE_SPECIAL_NEXTFRAME_RANDOMBITS  = 1 << 0, ///< Callback 0x26 needs random bits
 	INDTILE_SPECIAL_ACCEPTS_ALL_CARGO     = 1 << 1, ///< Tile always accepts all cargoes the associated industry accepts

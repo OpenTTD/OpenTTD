@@ -19,7 +19,7 @@
 
 
 /** Special values for save-load window for the data parameter of #InvalidateWindowData. */
-enum SaveLoadInvalidateWindowData {
+enum SaveLoadInvalidateWindowData : uint8_t {
 	SLIWD_RESCAN_FILES,          ///< Rescan all files (when changed directory, ...)
 	SLIWD_SELECTION_CHANGES,     ///< File selection has changed (user click, ...)
 	SLIWD_FILTER_CHANGES,        ///< The filename filter has changed (via the editbox)
@@ -91,7 +91,7 @@ public:
 	const FiosItem *FindItem(const std::string_view file);
 };
 
-enum SortingBits {
+enum SortingBits : uint8_t {
 	SORT_ASCENDING  = 0,
 	SORT_DESCENDING = 1,
 	SORT_BY_DATE    = 0,

@@ -14,7 +14,7 @@
 class StringIterator {
 public:
 	/** Type of the iterator. */
-	enum IterType {
+	enum IterType : uint8_t {
 		ITER_CHARACTER, ///< Iterate over characters (or more exactly grapheme clusters).
 		ITER_WORD,      ///< Iterate over words.
 	};

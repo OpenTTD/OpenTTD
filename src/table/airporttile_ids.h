@@ -10,7 +10,7 @@
 #ifndef AIRPORTTILE_IDS_H
 #define AIRPORTTILE_IDS_H
 
-enum AirportTiles {
+enum AirportTiles : uint8_t {
 	APT_APRON,
 	APT_APRON_FENCE_NW,
 	APT_APRON_FENCE_SW,

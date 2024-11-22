@@ -78,14 +78,14 @@ RoadType _last_built_roadtype;
 RoadType _last_built_tramtype;
 
 /** Toobar modes */
-enum ToolbarMode {
+enum ToolbarMode : uint8_t {
 	TB_NORMAL,
 	TB_UPPER,
 	TB_LOWER
 };
 
 /** Callback functions. */
-enum CallBackFunction {
+enum CallBackFunction : uint8_t {
 	CBF_NONE,
 	CBF_PLACE_SIGN,
 	CBF_PLACE_LANDINFO,
@@ -226,7 +226,7 @@ static CallBackFunction ToolbarFastForwardClick(Window *)
 /**
  * Game Option button menu entries.
  */
-enum OptionMenuEntries {
+enum OptionMenuEntries : uint8_t {
 	OME_GAMEOPTIONS,
 	OME_SETTINGS,
 	OME_AI_SETTINGS,
@@ -352,7 +352,7 @@ static CallBackFunction MenuClickSettings(int index)
 /**
  * SaveLoad entries in scenario editor mode.
  */
-enum SaveLoadEditorMenuEntries {
+enum SaveLoadEditorMenuEntries : uint8_t {
 	SLEME_SAVE_SCENARIO = 0,
 	SLEME_LOAD_SCENARIO,
 	SLEME_SAVE_HEIGHTMAP,
@@ -364,7 +364,7 @@ enum SaveLoadEditorMenuEntries {
 /**
  * SaveLoad entries in normal game mode.
  */
-enum SaveLoadNormalMenuEntries {
+enum SaveLoadNormalMenuEntries : uint8_t {
 	SLNME_SAVE_GAME = 0,
 	SLNME_LOAD_GAME,
 	SLNME_EXIT_TOINTRO,
@@ -428,7 +428,7 @@ static CallBackFunction MenuClickSaveLoad(int index = 0)
 
 /* --- Map button menu --- */
 
-enum MapMenuEntries {
+enum MapMenuEntries : uint8_t {
 	MME_SHOW_SMALLMAP        = 0,
 	MME_SHOW_EXTRAVIEWPORTS,
 	MME_SHOW_LINKGRAPH,
@@ -2300,7 +2300,7 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarSwitchClick,
 };
 
-enum MainToolbarEditorHotkeys {
+enum MainToolbarEditorHotkeys : int32_t {
 	MTEHK_PAUSE,
 	MTEHK_FASTFORWARD,
 	MTEHK_SETTINGS,

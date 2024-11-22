@@ -103,7 +103,7 @@ DECLARE_ENUM_AS_BIT_SET(NewsFlag)
 /**
  * News display options
  */
-enum NewsDisplay {
+enum NewsDisplay : uint8_t {
 	ND_OFF,        ///< Only show a reminder in the status bar
 	ND_SUMMARY,    ///< Show ticker
 	ND_FULL,       ///< Show newspaper

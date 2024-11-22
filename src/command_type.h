@@ -184,7 +184,7 @@ public:
  *
  * @see _command_proc_table
  */
-enum Commands : uint16_t {
+enum Commands : uint8_t {
 	CMD_BUILD_RAILROAD_TRACK,         ///< build a rail track
 	CMD_REMOVE_RAILROAD_TRACK,        ///< remove a rail track
 	CMD_BUILD_SINGLE_RAIL,            ///< build a single rail track
@@ -371,7 +371,7 @@ enum Commands : uint16_t {
  *
  * This enums defines some flags which can be used for the commands.
  */
-enum DoCommandFlag {
+enum DoCommandFlag : uint16_t {
 	DC_NONE                  = 0x000, ///< no flag is set
 	DC_EXEC                  = 0x001, ///< execute the given command
 	DC_AUTO                  = 0x002, ///< don't allow building on structures
@@ -393,7 +393,7 @@ DECLARE_ENUM_AS_BIT_SET(DoCommandFlag)
  *
  * This enumeration defines flags for the _command_proc_table.
  */
-enum CommandFlags {
+enum CommandFlags : uint16_t {
 	CMD_SERVER    = 0x001, ///< the command can only be initiated by the server
 	CMD_SPECTATOR = 0x002, ///< the command may be initiated by a spectator
 	CMD_OFFLINE   = 0x004, ///< the command cannot be executed in a multiplayer game; single-player only
@@ -410,7 +410,7 @@ enum CommandFlags {
 DECLARE_ENUM_AS_BIT_SET(CommandFlags)
 
 /** Types of commands we have. */
-enum CommandType {
+enum CommandType : uint8_t {
 	CMDT_LANDSCAPE_CONSTRUCTION, ///< Construction and destruction of objects on the map.
 	CMDT_VEHICLE_CONSTRUCTION,   ///< Construction, modification (incl. refit) and destruction of vehicles.
 	CMDT_MONEY_MANAGEMENT,       ///< Management of money, i.e. loans.
@@ -425,7 +425,7 @@ enum CommandType {
 };
 
 /** Different command pause levels. */
-enum CommandPauseLevel {
+enum CommandPauseLevel : uint8_t {
 	CMDPL_NO_ACTIONS,      ///< No user actions may be executed.
 	CMDPL_NO_CONSTRUCTION, ///< No construction actions may be executed.
 	CMDPL_NO_LANDSCAPING,  ///< No landscaping actions may be executed.
