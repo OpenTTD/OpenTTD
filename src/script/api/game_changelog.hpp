@@ -19,6 +19,8 @@
  *
  * API additions:
  * \li GSEventVehicleCrashed::GetVictims
+ * \li GSError::GetExtraLastError
+ * \li GSError::GetExtraLastErrorString
  *
  * \b 14.0
  *

@@ -21,6 +21,7 @@
 #define EnforcePrecondition(returnval, condition)               \
 	if (!(condition)) {                                           \
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_FAILED);   \
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);             \
 		return returnval;                                           \
 	}
 
@@ -29,10 +30,12 @@
  * @param returnval The value to return on failure.
  * @param condition The condition that must be obeyed.
  * @param error_code The error code passed to ScriptObject::SetLastError.
+ * @param extra_error_code The extra error code passed to ScriptObject::SetExtraLastError.
  */
-#define EnforcePreconditionCustomError(returnval, condition, error_code)   \
+#define EnforcePreconditionCustomError(returnval, condition, error_code, extra_error_code)   \
 	if (!(condition)) {                                                      \
 		ScriptObject::SetLastError(error_code);                                    \
+		ScriptObject::SetExtraLastError(extra_error_code);             \
 		return returnval;                                                      \
 	}
 
@@ -44,6 +47,7 @@
 #define EnforcePreconditionEncodedText(returnval, string)   \
 	if (string.empty()) { \
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_FAILED); \
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);             \
 		return returnval; \
 	}
 
@@ -52,7 +56,7 @@
  * @param returnval The value to return on failure.
  */
 #define EnforceCompanyModeValid(returnval) \
-	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsValid(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY)
+	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsValid(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY, ScriptError::ERR_UNKNOWN)
 
 /**
  * Helper to enforce the precondition that the company mode is valid.
@@ -60,6 +64,7 @@
 #define EnforceCompanyModeValid_Void() \
 	if (!ScriptCompanyMode::IsValid()) { \
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_INVALID_COMPANY); \
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);             \
 		return; \
 	}
 
@@ -68,14 +73,14 @@
  * @param returnval The value to return on failure.
  */
 #define EnforceDeityMode(returnval) \
-	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsDeity(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY)
+	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsDeity(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY, ScriptError::ERR_UNKNOWN)
 
 /**
  * Helper to enforce the precondition that the company mode is valid or that we are a deity.
  * @param returnval The value to return on failure.
  */
 #define EnforceDeityOrCompanyModeValid(returnval) \
-	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsDeity() || ScriptCompanyMode::IsValid(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY)
+	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsDeity() || ScriptCompanyMode::IsValid(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY, ScriptError::ERR_UNKNOWN)
 
 /**
  * Helper to enforce the precondition that the company mode is valid or that we are a deity.
@@ -83,6 +88,7 @@
 #define EnforceDeityOrCompanyModeValid_Void() \
 	if (!(ScriptCompanyMode::IsDeity() || ScriptCompanyMode::IsValid())) { \
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_INVALID_COMPANY); \
+		ScriptObject::SetExtraLastError(ScriptError::ERR_UNKNOWN);             \
 		return; \
 	}
 
@@ -191,10 +197,22 @@ public:
 	static ScriptErrorType GetLastError();
 
 	/**
+	 * Get the extra last error.
+	 * @return An ErrorMessages enum value.
+	 */
+	static ScriptErrorType GetExtraLastError();
+
+	/**
 	 * Get the last error in string format (for human readability).
 	 * @return An ErrorMessage enum item, as string.
 	 */
 	static std::optional<std::string> GetLastErrorString();
+
+	/**
+	 * Get the extra last error in string format (for human readability).
+	 * @return An ErrorMessage enum item, as string.
+	 */
+	static std::optional<std::string> GetExtraLastErrorString();
 
 	/**
 	 * Get the error based on the OpenTTD StringID.
