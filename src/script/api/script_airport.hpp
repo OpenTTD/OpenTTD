@@ -117,7 +117,7 @@ public:
 	/**
 	 * Get the number of hangars of the airport.
 	 * @param tile Any tile of the airport.
-	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptTile::IsStationTile(tile).
 	 * @return The number of hangars of the airport.
 	 */
 	static SQInteger GetNumHangars(TileIndex tile);
@@ -216,6 +216,14 @@ public:
 	 * @return Number of helipads of this type of airport. When 0 helicopters will go to normal terminals.
 	 */
 	static SQInteger GetAirportNumHelipads(AirportType type);
+
+	/**
+	 * Get the number of hangars of this type of airport.
+	 * @param type The type of airport.
+	 * @pre IsAirportInformationAvailable(type)
+	 * @return Number of hangars of this type of airport.
+	 */
+	static SQInteger GetAirportNumHangars(AirportType type);
 };
 
 #endif /* SCRIPT_AIRPORT_HPP */
