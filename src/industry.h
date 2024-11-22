@@ -244,28 +244,6 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	static void PostDestructor(size_t index);
 
 	/**
-	 * Increment the count of industries for this type.
-	 * @param type IndustryType to increment
-	 * @pre type < NUM_INDUSTRYTYPES
-	 */
-	static inline void IncIndustryTypeCount(IndustryType type)
-	{
-		assert(type < NUM_INDUSTRYTYPES);
-		counts[type]++;
-	}
-
-	/**
-	 * Decrement the count of industries for this type.
-	 * @param type IndustryType to decrement
-	 * @pre type < NUM_INDUSTRYTYPES
-	 */
-	static inline void DecIndustryTypeCount(IndustryType type)
-	{
-		assert(type < NUM_INDUSTRYTYPES);
-		counts[type]--;
-	}
-
-	/**
 	 * Get the count of industries for this type.
 	 * @param type IndustryType to query
 	 * @pre type < NUM_INDUSTRYTYPES
@@ -273,13 +251,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	static inline uint16_t GetIndustryTypeCount(IndustryType type)
 	{
 		assert(type < NUM_INDUSTRYTYPES);
-		return counts[type];
-	}
-
-	/** Resets industry counts. */
-	static inline void ResetIndustryCounts()
-	{
-		memset(&counts, 0, sizeof(counts));
+		return static_cast<uint16_t>(std::size(industries[type]));
 	}
 
 	inline const std::string &GetCachedName() const
@@ -288,11 +260,10 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		return this->cached_name;
 	}
 
+	static std::array<std::vector<IndustryID>, NUM_INDUSTRYTYPES> industries; ///< List of industries of each type.
+
 private:
 	void FillCachedName() const;
-
-protected:
-	static uint16_t counts[NUM_INDUSTRYTYPES]; ///< Number of industries per type ingame
 };
 
 void ClearAllIndustryCachedNames();
