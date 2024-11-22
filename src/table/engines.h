@@ -24,7 +24,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MT(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MT(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, ExtraEngineFlags::None, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE }
 
 /**
  * Writes the properties of a multiple-unit train into the EngineInfo struct.
@@ -37,7 +37,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MM(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 1 << EF_RAIL_IS_MU, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MM(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 1 << EF_RAIL_IS_MU, 0, 0, ExtraEngineFlags::None, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE }
 
 /**
  * Writes the properties of a train carriage into the EngineInfo struct.
@@ -50,7 +50,7 @@
  * @see MT
  * @note the 5 between b and f is the load amount
  */
-#define MW(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MW(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, ExtraEngineFlags::None, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE }
 
 /**
  * Writes the properties of a road vehicle into the EngineInfo struct.
@@ -63,7 +63,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MR(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MR(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, ExtraEngineFlags::None, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE }
 
 /**
  * Writes the properties of a ship into the EngineInfo struct.
@@ -75,7 +75,7 @@
  * @param f Bitmask of the climates
  * @note the 10 between b and f is the load amount
  */
-#define MS(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MS(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, f, INVALID_CARGO, e, 0, 8, 0, 0, 0, ExtraEngineFlags::None, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE }
 
 /**
  * Writes the properties of an aeroplane into the EngineInfo struct.
@@ -86,7 +86,7 @@
  * @param e Bitmask of the climates
  * @note the 20 between b and e is the load amount
  */
-#define MA(a, b, c, d, e) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 20, e, INVALID_CARGO, CT_INVALID, 0, 8, 0, 0, 0, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE, ExtraEngineFlags::None }
+#define MA(a, b, c, d, e) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 20, e, INVALID_CARGO, CT_INVALID, 0, 8, 0, 0, 0, ExtraEngineFlags::None, STR_EMPTY, Ticks::CARGO_AGING_TICKS, INVALID_ENGINE }
 
 /* Climates
  * T = Temperate
@@ -97,7 +97,7 @@
 #define A 2
 #define S 4
 #define Y 8
-static const EngineInfo _orig_engine_info[] = {
+static constexpr EngineInfo _orig_engine_info[] = {
 	/*      base_intro     base_life
 	 *      |    decay_speed         cargo_type
 	 *      |    |    lifelength     |         climates
@@ -386,7 +386,7 @@ static const EngineInfo _orig_engine_info[] = {
  * Tractive effort coefficient by default is the same as TTDPatch, 0.30*256=76
  * Air drag value depends on the top speed of the vehicle.
  */
-#define RVI(a, b, c, d, e, f, g, h, i, j, k) { a, b, c, j, j, d, e, f, g, h, k, i, 0, 0, 0, VE_DEFAULT, 0, 76, 0, 0, 0 }
+#define RVI(a, b, c, d, e, f, g, h, i, j, k) { a, b, c, j, j, 0, d, e, f, g, h, k, i, 0, 0, VE_DEFAULT, 0, 76, 0, 0, 0 }
 #define M RAILVEH_MULTIHEAD
 #define W RAILVEH_WAGON
 #define G RAILVEH_SINGLEHEAD
@@ -408,7 +408,7 @@ static const EngineInfo _orig_engine_info[] = {
 #define RC_E PR_RUNNING_TRAIN_ELECTRIC
 #define RC_W INVALID_PRICE
 
-static const RailVehicleInfo _orig_rail_vehicle_info[] = {
+static constexpr RailVehicleInfo _orig_rail_vehicle_info[] = {
 	/*   image_index  max_speed          running_cost      engclass
 	 *   |  type      |        power       |  running_cost_class
 	 *   |  |    cost_factor   |    weight |  |      capacity
@@ -564,8 +564,8 @@ static const RailVehicleInfo _orig_rail_vehicle_info[] = {
  * @param g sound effect
  * @param h refittable
  */
-#define SVI(a, b, c, d, e, f, g, h) { a, b, c, d, e, f, g, h, VE_DEFAULT, 0, 0 }
-static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
+#define SVI(a, b, c, d, e, f, g, h) { a, b, f, c, d, e, g, h, VE_DEFAULT, 0, 0 }
+static constexpr ShipVehicleInfo _orig_ship_vehicle_info[] = {
 	/*   image_index  max_speed         sfx                      refittable
 	 *   |    cost_factor  capacity     |                        |
 	 *   |    |  acceleration   running_cost                     |
@@ -597,11 +597,11 @@ static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
  * @param h mail_capacity (bags)
  * @param i passenger_capacity (persons)
  */
-#define AVI(a, b, c, d, e, f, g, h, i) { a, b, c, d, e, f, (g * 128) / 10, h, i, 0 }
+#define AVI(a, b, c, d, e, f, g, h, i) { a, b, c, d, e, (g * 128) / 10, f, h, i, 0 }
 #define H AIR_HELI
 #define P AIR_CTOL
 #define J AIR_CTOL | AIR_FAST
-static const AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
+static constexpr AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
 	/*    image_index         sfx                             acceleration
 	 *    |   cost_factor     |                               |    max_speed
 	 *    |   |    running_cost                               |    |   mail_capacity
@@ -669,7 +669,7 @@ static const AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
  * Air drag value depends on the top speed of the vehicle.
  */
 #define ROV(a, b, c, d, e, f, g, h) { a, b, c, PR_RUNNING_ROADVEH, d, e, f, g, h, 76, 0, VE_DEFAULT, 0, ROADTYPE_ROAD }
-static const RoadVehicleInfo _orig_road_vehicle_info[] = {
+static constexpr RoadVehicleInfo _orig_road_vehicle_info[] = {
 	/*    image_index       sfx                            max_speed    power
 	 *    |    cost_factor  |                              |   capacity |
 	 *    |    |    running_cost                           |   |    weight
