@@ -19,6 +19,8 @@
  *
  * API additions:
  * \li GSEventVehicleCrashed::GetVictims
+ * \li GSOrder.OF_UNBUNCH_IN_DEPOT
+ * \li GSOrder.ERR_ORDER_UNBUNCH
  *
  * \b 14.0
  *
