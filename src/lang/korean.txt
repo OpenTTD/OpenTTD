@@ -258,8 +258,8 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL}m
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}일
-STR_UNITS_SECONDS                                               :{COMMA}초
-STR_UNITS_TICKS                                                 :{COMMA}틱
+STR_UNITS_SECONDS                                               :{G=f}{COMMA}초
+STR_UNITS_TICKS                                                 :{G=m}{COMMA}틱
 
 STR_UNITS_MONTHS                                                :{NUM}개월
 STR_UNITS_MINUTES                                               :{NUM}분
@@ -4748,8 +4748,9 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :({STRING} 동�
 STR_TIMETABLE_STAY_FOR                                          :& {STRING} 동안 정차
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :& 다음 목적지({STRING})로 이동
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}이 시간표는 완주하는데 {STRING}이 걸립니다
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}이 시간표를 완주하는데 최소 {STRING}이 필요합니다 (시간표가 일부만 지정됨)
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}이 시간표는 완주하는데 대략 {0:STRING}{G 0 "이" "가"} 걸립니다
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}이 시간표는 완주하는데 {0:STRING}{G 0 "이" "가"} 걸립니다
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}이 시간표는 완주하는데 최소 {0:STRING}{G 0 "이" "가"} 걸립니다 (시간표가 일부만 지정됨)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}이 차량은 지금 정시운행 중입니다
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}이 차량은 현재 {STRING} 늦게 운행하고 있습니다

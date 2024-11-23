@@ -4747,6 +4747,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(運行 {STRING
 STR_TIMETABLE_STAY_FOR                                          :並等待 {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :並運行 {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}此時刻表跑完全程大約需時 {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}此時刻表跑完全程需時 {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}此時刻表跑完全程至少需時 {STRING} (此表尚未完成)
 

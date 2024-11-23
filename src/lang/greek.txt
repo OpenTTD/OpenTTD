@@ -4848,6 +4848,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(ταξίδι �
 STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :και ταξίδεψε για {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Θα χρειαστούν περίπου {STRING} για να ολοκληρωθεί αυτό το χρονοδιάγραμμα
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Το δρομολόγιο αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Το δρομολόγιο αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί (δεν είναι όλα τα χρονοδιαγράμματα)
 

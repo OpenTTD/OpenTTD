@@ -4747,6 +4747,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reis gedurende
 STR_TIMETABLE_STAY_FOR                                          :en blijf gedurende {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijd {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Deze dienstregeling heeft ongeveer {STRING} nodig om te voltooien.
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Deze dienstregeling duurt {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Deze dienstregeling duurt minstens {STRING} (niet alles ingeroosterd)
 
