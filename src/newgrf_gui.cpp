@@ -284,12 +284,12 @@ struct NewGRFParametersWindow : public Window {
 		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 		for (int32_t i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
 			GRFParameterInfo &par_info = this->GetParameterInfo(i);
-			uint32_t current_value = par_info.GetValue(this->grf_config);
+			uint32_t current_value = this->grf_config->GetValue(par_info);
 			bool selected = (i == this->clicked_row);
 
 			if (par_info.type == PTYPE_BOOL) {
 				DrawBoolButton(buttons_left, ir.top + button_y_offset, current_value != 0, this->editable);
-				SetDParam(2, par_info.GetValue(this->grf_config) == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
+				SetDParam(2, this->grf_config->GetValue(par_info) == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else if (par_info.type == PTYPE_UINT_ENUM) {
 				if (par_info.complete_labels) {
 					DrawDropDownButton(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && this->clicked_dropdown, this->editable);
@@ -371,7 +371,7 @@ struct NewGRFParametersWindow : public Window {
 				GRFParameterInfo &par_info = this->GetParameterInfo(num);
 
 				/* One of the arrows is clicked */
-				uint32_t old_val = par_info.GetValue(this->grf_config);
+				uint32_t old_val = this->grf_config->GetValue(par_info);
 				if (par_info.type != PTYPE_BOOL && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && par_info.complete_labels) {
 					if (this->clicked_dropdown) {
 						/* unclick the dropdown */
@@ -416,7 +416,7 @@ struct NewGRFParametersWindow : public Window {
 						}
 					}
 					if (val != old_val) {
-						par_info.SetValue(this->grf_config, val);
+						this->grf_config->SetValue(par_info, val);
 
 						this->clicked_button = num;
 						this->unclick_timeout.Reset();
@@ -448,8 +448,7 @@ struct NewGRFParametersWindow : public Window {
 		if (!str.has_value() || str->empty()) return;
 		int32_t value = atoi(str->c_str());
 		GRFParameterInfo &par_info = this->GetParameterInfo(this->clicked_row);
-		uint32_t val = Clamp<uint32_t>(value, par_info.min_value, par_info.max_value);
-		par_info.SetValue(this->grf_config, val);
+		this->grf_config->SetValue(par_info, value);
 		this->SetDirty();
 	}
 
@@ -458,7 +457,7 @@ struct NewGRFParametersWindow : public Window {
 		if (widget != WID_NP_SETTING_DROPDOWN) return;
 		assert(this->clicked_dropdown);
 		GRFParameterInfo &par_info = this->GetParameterInfo(this->clicked_row);
-		par_info.SetValue(this->grf_config, index);
+		this->grf_config->SetValue(par_info, index);
 		this->SetDirty();
 	}
 
