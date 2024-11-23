@@ -77,11 +77,11 @@ bool ScriptAdminMakeJSON(nlohmann::json &json, HSQUIRRELVM vm, SQInteger index, 
 
 			sq_pushnull(vm);
 			while (SQ_SUCCEEDED(sq_next(vm, index - 1))) {
-				/* Squirrel ensure the key is a string. */
-				assert(sq_gettype(vm, -2) == OT_STRING);
+				sq_tostring(vm, -2);
 				const SQChar *buf;
-				sq_getstring(vm, -2, &buf);
+				sq_getstring(vm, -1, &buf);
 				std::string key = std::string(buf);
+				sq_pop(vm, 1);
 
 				nlohmann::json value;
 				bool res = ScriptAdminMakeJSON(value, vm, -1, depth + 1);
