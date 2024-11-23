@@ -132,7 +132,7 @@ void BindAirportSpecs()
 
 void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 {
-	uint8_t airport_id = this->AddEntityID(as->grf_prop.local_id, as->grf_prop.grffile->grfid, as->grf_prop.subst_id);
+	uint8_t airport_id = this->AddEntityID(as->grf_prop.local_id, as->grf_prop.grfid, as->grf_prop.subst_id);
 
 	if (airport_id == this->invalid_id) {
 		GrfMsg(1, "Airport.SetEntitySpec: Too many airports allocated. Ignoring.");
@@ -145,7 +145,7 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 	for (int i = 0; i < this->max_offset; i++) {
 		AirportSpec *overridden_as = AirportSpec::GetWithoutOverride(i);
 
-		if (this->entity_overrides[i] != as->grf_prop.local_id || this->grfid_overrides[i] != as->grf_prop.grffile->grfid) continue;
+		if (this->entity_overrides[i] != as->grf_prop.local_id || this->grfid_overrides[i] != as->grf_prop.grfid) continue;
 
 		overridden_as->grf_prop.override = airport_id;
 		overridden_as->enabled = false;
@@ -277,9 +277,9 @@ StringID GetAirportTextCallback(const AirportSpec *as, uint8_t layout, uint16_t 
 	uint16_t cb_res = object.ResolveCallback();
 	if (cb_res == CALLBACK_FAILED || cb_res == 0x400) return STR_UNDEFINED;
 	if (cb_res > 0x400) {
-		ErrorUnknownCallbackResult(as->grf_prop.grffile->grfid, callback, cb_res);
+		ErrorUnknownCallbackResult(as->grf_prop.grfid, callback, cb_res);
 		return STR_UNDEFINED;
 	}
 
-	return GetGRFStringID(as->grf_prop.grffile->grfid, 0xD000 + cb_res);
+	return GetGRFStringID(as->grf_prop.grfid, 0xD000 + cb_res);
 }

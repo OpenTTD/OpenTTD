@@ -570,7 +570,7 @@ int AllocateSpecToRoadStop(const RoadStopSpec *statspec, BaseStation *st, bool e
 	if (exec) {
 		if (i >= st->roadstop_speclist.size()) st->roadstop_speclist.resize(i + 1);
 		st->roadstop_speclist[i].spec     = statspec;
-		st->roadstop_speclist[i].grfid    = statspec->grf_prop.grffile->grfid;
+		st->roadstop_speclist[i].grfid    = statspec->grf_prop.grfid;
 		st->roadstop_speclist[i].localidx = statspec->grf_prop.local_id;
 
 		RoadStopUpdateCachedTriggers(st);

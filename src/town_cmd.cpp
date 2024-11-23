@@ -869,9 +869,9 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 	uint16_t callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, house_completed ? 1 : 0, 0, house, Town::GetByTile(tile), tile);
 	if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
 		if (callback_res > 0x400) {
-			ErrorUnknownCallbackResult(hs->grf_prop.grffile->grfid, CBID_HOUSE_CUSTOM_NAME, callback_res);
+			ErrorUnknownCallbackResult(hs->grf_prop.grfid, CBID_HOUSE_CUSTOM_NAME, callback_res);
 		} else {
-			StringID new_name = GetGRFStringID(hs->grf_prop.grffile->grfid, 0xD000 + callback_res);
+			StringID new_name = GetGRFStringID(hs->grf_prop.grfid, 0xD000 + callback_res);
 			if (new_name != STR_NULL && new_name != STR_UNDEFINED) {
 				td->str = new_name;
 			}
@@ -883,8 +883,8 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 		td->str = STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION;
 	}
 
-	if (hs->grf_prop.grffile != nullptr) {
-		const GRFConfig *gc = GetGRFConfig(hs->grf_prop.grffile->grfid);
+	if (hs->grf_prop.HasGrfFile()) {
+		const GRFConfig *gc = GetGRFConfig(hs->grf_prop.grfid);
 		td->grf = gc->GetName();
 	}
 

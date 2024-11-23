@@ -71,7 +71,7 @@ uint32_t GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32_t cur_g
 		/* Overridden */
 		const IndustryTileSpec *tile_ovr = GetIndustryTileSpec(indtsp->grf_prop.override);
 
-		if (tile_ovr->grf_prop.grffile->grfid == cur_grfid) {
+		if (tile_ovr->grf_prop.grfid == cur_grfid) {
 			return tile_ovr->grf_prop.local_id; // same grf file
 		} else {
 			return 0xFFFE; // not the same grf file
@@ -79,7 +79,7 @@ uint32_t GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32_t cur_g
 	}
 	/* Not an 'old type' tile */
 	if (indtsp->grf_prop.spritegroup[0] != nullptr) { // tile has a spritegroup ?
-		if (indtsp->grf_prop.grffile->grfid == cur_grfid) { // same industry, same grf ?
+		if (indtsp->grf_prop.grfid == cur_grfid) { // same industry, same grf ?
 			return indtsp->grf_prop.local_id;
 		} else {
 			return 0xFFFE; // Defined in another grf file
@@ -126,7 +126,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 			break;
 
 		case 0xFFFFFFFF: // current grf
-			GrfID = GetIndustrySpec(current->type)->grf_prop.grffile->grfid;
+			GrfID = GetIndustrySpec(current->type)->grf_prop.grfid;
 			[[fallthrough]];
 
 		default: // use the grfid specified in register 100h
@@ -284,7 +284,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 		/* Distance of nearest industry of given type */
 		case 0x64: {
 			if (this->tile == INVALID_TILE) break;
-			IndustryType type = MapNewGRFIndustryType(parameter, indspec->grf_prop.grffile->grfid);
+			IndustryType type = MapNewGRFIndustryType(parameter, indspec->grf_prop.grfid);
 			if (type >= NUM_INDUSTRYTYPES) return UINT32_MAX;
 			return GetClosestIndustry(this->tile, type, this->industry);
 		}
@@ -443,9 +443,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 
 		/* Create storage on first modification. */
 		const IndustrySpec *indsp = GetIndustrySpec(this->industry->type);
-		uint32_t grfid = (indsp->grf_prop.grffile != nullptr) ? indsp->grf_prop.grffile->grfid : 0;
 		assert(PersistentStorage::CanAllocateItem());
-		this->industry->psa = new PersistentStorage(grfid, GSF_INDUSTRIES, this->industry->location.tile);
+		this->industry->psa = new PersistentStorage(indsp->grf_prop.grfid, GSF_INDUSTRIES, this->industry->location.tile);
 	}
 
 	this->industry->psa->StoreValue(pos, value);
@@ -584,7 +583,7 @@ uint32_t GetIndustryProbabilityCallback(IndustryType type, IndustryAvailabilityC
 				if (res < 0x100) {
 					default_prob = res;
 				} else if (res > 0x100) {
-					ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_PROBABILITY, res);
+					ErrorUnknownCallbackResult(indspec->grf_prop.grfid, CBID_INDUSTRY_PROBABILITY, res);
 				}
 			}
 		}

@@ -708,7 +708,7 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 	if (exec) {
 		if (i >= st->speclist.size()) st->speclist.resize(i + 1);
 		st->speclist[i].spec     = statspec;
-		st->speclist[i].grfid    = statspec->grf_prop.grffile->grfid;
+		st->speclist[i].grfid    = statspec->grf_prop.grfid;
 		st->speclist[i].localidx = statspec->grf_prop.local_id;
 
 		StationUpdateCachedTriggers(st);
