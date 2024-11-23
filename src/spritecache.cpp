@@ -418,10 +418,12 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite
 /**
  * Load a recolour sprite into memory.
  * @param file GRF we're reading from.
+ * @param file_pos Position within file.
  * @param num Size of the sprite in the GRF.
+ * @param allocator Sprite allocator to use.
  * @return Sprite data.
  */
-static void *ReadRecolourSprite(SpriteFile &file, uint num, SpriteAllocator &allocator)
+static void *ReadRecolourSprite(SpriteFile &file, size_t file_pos, uint num, SpriteAllocator &allocator)
 {
 	/* "Normal" recolour sprites are ALWAYS 257 bytes. Then there is a small
 	 * number of recolour sprites that are 17 bytes that only exist in DOS
@@ -430,6 +432,7 @@ static void *ReadRecolourSprite(SpriteFile &file, uint num, SpriteAllocator &all
 	static const uint RECOLOUR_SPRITE_SIZE = 257;
 	uint8_t *dest = allocator.Allocate<uint8_t>(std::max(RECOLOUR_SPRITE_SIZE, num));
 
+	file.SeekTo(file_pos, SEEK_SET);
 	if (file.NeedsPaletteRemap()) {
 		uint8_t *dest_tmp = new uint8_t[std::max(RECOLOUR_SPRITE_SIZE, num)];
 
@@ -634,9 +637,9 @@ bool LoadNextSprite(SpriteID load_index, SpriteFile &file, uint file_sprite_id)
 			file.ReadByte();
 			return false;
 		}
+		file_pos = file.GetPos();
 		type = SpriteType::Recolour;
-		CacheSpriteAllocator allocator;
-		data = ReadRecolourSprite(file, num, allocator);
+		file.SkipBytes(num);
 	} else if (file.GetContainerVersion() >= 2 && grf_type == 0xFD) {
 		if (num != 4) {
 			/* Invalid sprite section include, ignore. */
@@ -675,6 +678,7 @@ bool LoadNextSprite(SpriteID load_index, SpriteFile &file, uint file_sprite_id)
 	SpriteCache *sc = AllocateSpriteCache(load_index);
 	sc->file = &file;
 	sc->file_pos = file_pos;
+	sc->length = num;
 	sc->ptr = data;
 	sc->lru = 0;
 	sc->id = file_sprite_id;
@@ -835,7 +839,7 @@ static void DeleteEntryFromSpriteCache()
 	cur_lru = 0xffff;
 	for (SpriteID i = 0; i != _spritecache_items; i++) {
 		SpriteCache *sc = GetSpriteCache(i);
-		if (sc->type != SpriteType::Recolour && sc->ptr != nullptr && sc->lru < cur_lru) {
+		if (sc->ptr != nullptr && sc->lru < cur_lru) {
 			cur_lru = sc->lru;
 			best = i;
 		}
@@ -977,7 +981,13 @@ void *GetRawSprite(SpriteID sprite, SpriteType type, SpriteAllocator *allocator,
 		sc->lru = ++_sprite_lru_counter;
 
 		/* Load the sprite, if it is not loaded, yet */
-		if (sc->ptr == nullptr) sc->ptr = ReadSprite(sc, sprite, type, cache_allocator, nullptr);
+		if (sc->ptr == nullptr) {
+			if (sc->type == SpriteType::Recolour) {
+				sc->ptr = ReadRecolourSprite(*sc->file, sc->file_pos, sc->length, cache_allocator);
+			} else {
+				sc->ptr = ReadSprite(sc, sprite, type, cache_allocator, nullptr);
+			}
+		}
 
 		return sc->ptr;
 	} else {
@@ -1056,7 +1066,7 @@ void GfxClearSpriteCache()
 	/* Clear sprite ptr for all cached items */
 	for (uint i = 0; i != _spritecache_items; i++) {
 		SpriteCache *sc = GetSpriteCache(i);
-		if (sc->type != SpriteType::Recolour && sc->ptr != nullptr) DeleteEntryFromSpriteCache(i);
+		if (sc->ptr != nullptr) DeleteEntryFromSpriteCache(i);
 	}
 
 	VideoDriver::GetInstance()->ClearSystemSprites();

@@ -24,6 +24,7 @@ struct SpriteCache {
 	void *ptr;
 	size_t file_pos;
 	SpriteFile *file;    ///< The file the sprite in this entry can be found in.
+	uint32_t length; ///< Length of sprite data.
 	uint32_t id;
 	int16_t lru;
 	SpriteType type;     ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
