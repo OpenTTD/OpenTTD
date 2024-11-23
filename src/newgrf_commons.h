@@ -309,8 +309,15 @@ bool Convert8bitBooleanCallback(const struct GRFFile *grffile, uint16_t cbid, ui
 template <size_t Tcnt>
 struct GRFFilePropsBase {
 	uint16_t local_id = 0; ///< id defined by the grf file for this entity
+	uint32_t grfid = 0; ///< grfid that introduced this entity.
 	const struct GRFFile *grffile = nullptr; ///< grf file that introduced this entity
 	std::array<const struct SpriteGroup *, Tcnt> spritegroup{}; ///< pointers to the different sprites of the entity
+
+	/**
+	 * Test if this entity was introduced by NewGRF.
+	 * @returns true iff the grfid property is set.
+	 */
+	inline bool HasGrfFile() const { return this->grffile != nullptr; }
 };
 
 /** Data related to the handling of grf files. */

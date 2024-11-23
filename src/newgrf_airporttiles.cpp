@@ -66,7 +66,7 @@ void AirportTileSpec::ResetAirportTiles()
 
 void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts)
 {
-	StationGfx airpt_id = this->AddEntityID(airpts->grf_prop.local_id, airpts->grf_prop.grffile->grfid, airpts->grf_prop.subst_id);
+	StationGfx airpt_id = this->AddEntityID(airpts->grf_prop.local_id, airpts->grf_prop.grfid, airpts->grf_prop.subst_id);
 
 	if (airpt_id == this->invalid_id) {
 		GrfMsg(1, "AirportTile.SetEntitySpec: Too many airport tiles allocated. Ignoring.");
@@ -79,7 +79,7 @@ void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts)
 	for (int i = 0; i < this->max_offset; i++) {
 		AirportTileSpec *overridden_airpts = &AirportTileSpec::tiles[i];
 
-		if (this->entity_overrides[i] != airpts->grf_prop.local_id || this->grfid_overrides[i] != airpts->grf_prop.grffile->grfid) continue;
+		if (this->entity_overrides[i] != airpts->grf_prop.local_id || this->grfid_overrides[i] != airpts->grf_prop.grfid) continue;
 
 		overridden_airpts->grf_prop.override = airpt_id;
 		overridden_airpts->enabled = false;
@@ -141,7 +141,7 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint
 		/* Overridden */
 		const AirportTileSpec *tile_ovr = AirportTileSpec::Get(ats->grf_prop.override);
 
-		if (tile_ovr->grf_prop.grffile->grfid == cur_grfid) {
+		if (tile_ovr->grf_prop.grfid == cur_grfid) {
 			return tile_ovr->grf_prop.local_id; // same grf file
 		} else {
 			return 0xFFFE; // not the same grf file
@@ -149,7 +149,7 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint
 	}
 	/* Not an 'old type' tile */
 	if (ats->grf_prop.spritegroup[0] != nullptr) { // tile has a spritegroup ?
-		if (ats->grf_prop.grffile->grfid == cur_grfid) { // same airport, same grf ?
+		if (ats->grf_prop.grfid == cur_grfid) { // same airport, same grf ?
 			return ats->grf_prop.local_id;
 		} else {
 			return 0xFFFE; // Defined in another grf file

@@ -113,7 +113,7 @@ public:
 	PickerItem GetPickerItem(const typename T::spec_type *spec, int cls_id = -1, int id = -1) const
 	{
 		if (spec == nullptr) return {0, 0, cls_id, id};
-		return {spec->grf_prop.grffile == nullptr ? 0 : spec->grf_prop.grffile->grfid, spec->grf_prop.local_id, spec->class_index, spec->index};
+		return {spec->grf_prop.grfid, spec->grf_prop.local_id, spec->class_index, spec->index};
 	}
 
 	PickerItem GetPickerItem(int cls_id, int id) const override

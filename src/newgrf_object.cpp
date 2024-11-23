@@ -173,11 +173,11 @@ static uint32_t GetObjectIDAtOffset(TileIndex tile, uint32_t cur_grfid)
 	const ObjectSpec *spec = ObjectSpec::Get(o->type);
 
 	/* Default objects have no associated NewGRF file */
-	if (spec->grf_prop.grffile == nullptr) {
+	if (!spec->grf_prop.HasGrfFile()) {
 		return 0xFFFE; // Defined in another grf file
 	}
 
-	if (spec->grf_prop.grffile->grfid == cur_grfid) { // same object, same grf ?
+	if (spec->grf_prop.grfid == cur_grfid) { // same object, same grf ?
 		return spec->grf_prop.local_id | o->view << 16;
 	}
 

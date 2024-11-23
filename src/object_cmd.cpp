@@ -112,7 +112,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	if (HasBit(spec->callback_mask, CBM_OBJ_COLOUR)) {
 		uint16_t res = GetObjectCallback(CBID_OBJECT_COLOUR, o->colour, 0, spec, o, tile);
 		if (res != CALLBACK_FAILED) {
-			if (res >= 0x100) ErrorUnknownCallbackResult(spec->grf_prop.grffile->grfid, CBID_OBJECT_COLOUR, res);
+			if (res >= 0x100) ErrorUnknownCallbackResult(spec->grf_prop.grfid, CBID_OBJECT_COLOUR, res);
 			o->colour = GB(res, 0, 8);
 		}
 	}
@@ -665,8 +665,8 @@ static void GetTileDesc_Object(TileIndex tile, TileDesc *td)
 	td->owner[0] = GetTileOwner(tile);
 	td->build_date = Object::GetByTile(tile)->build_date;
 
-	if (spec->grf_prop.grffile != nullptr) {
-		td->grf = GetGRFConfig(spec->grf_prop.grffile->grfid)->GetName();
+	if (spec->grf_prop.HasGrfFile()) {
+		td->grf = GetGRFConfig(spec->grf_prop.grfid)->GetName();
 	}
 }
 

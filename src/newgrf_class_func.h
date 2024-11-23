@@ -131,7 +131,7 @@ const Tspec *NewGRFClass<Tspec, Tindex, Tmax>::GetByGrf(uint32_t grfid, uint16_t
 		for (const auto &spec : cls.spec) {
 			if (spec == nullptr) continue;
 			if (spec->grf_prop.local_id != local_id) continue;
-			if ((spec->grf_prop.grffile == nullptr ? 0 : spec->grf_prop.grffile->grfid) == grfid) return spec;
+			if (spec->grf_prop.grfid == grfid) return spec;
 		}
 	}
 

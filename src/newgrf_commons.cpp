@@ -158,7 +158,7 @@ uint16_t OverrideManagerBase::GetSubstituteID(uint16_t entity_id) const
  */
 void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 {
-	HouseID house_id = this->AddEntityID(hs->grf_prop.local_id, hs->grf_prop.grffile->grfid, hs->grf_prop.subst_id);
+	HouseID house_id = this->AddEntityID(hs->grf_prop.local_id, hs->grf_prop.grfid, hs->grf_prop.subst_id);
 
 	if (house_id == this->invalid_id) {
 		GrfMsg(1, "House.SetEntitySpec: Too many houses allocated. Ignoring.");
@@ -175,7 +175,7 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 	for (int i = 0; i < this->max_offset; i++) {
 		HouseSpec *overridden_hs = HouseSpec::Get(i);
 
-		if (this->entity_overrides[i] != hs->grf_prop.local_id || this->grfid_overrides[i] != hs->grf_prop.grffile->grfid) continue;
+		if (this->entity_overrides[i] != hs->grf_prop.local_id || this->grfid_overrides[i] != hs->grf_prop.grfid) continue;
 
 		overridden_hs->grf_prop.override = house_id;
 		this->entity_overrides[i] = this->invalid_id;
@@ -222,7 +222,7 @@ uint16_t IndustryOverrideManager::AddEntityID(uint16_t grf_local_id, uint32_t gr
 		/* This industry must be one that is not available(enabled), mostly because of climate.
 		 * And it must not already be used by a grf (grffile == nullptr).
 		 * So reserve this slot here, as it is the chosen one */
-		if (!inds->enabled && inds->grf_prop.grffile == nullptr) {
+		if (!inds->enabled && !inds->grf_prop.HasGrfFile()) {
 			EntityIDMapping *map = &this->mappings[id];
 
 			if (map->entity_id == 0 && map->grfid == 0) {
@@ -247,14 +247,14 @@ uint16_t IndustryOverrideManager::AddEntityID(uint16_t grf_local_id, uint32_t gr
 void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 {
 	/* First step : We need to find if this industry is already specified in the savegame data. */
-	IndustryType ind_id = this->GetID(inds->grf_prop.local_id, inds->grf_prop.grffile->grfid);
+	IndustryType ind_id = this->GetID(inds->grf_prop.local_id, inds->grf_prop.grfid);
 
 	if (ind_id == this->invalid_id) {
 		/* Not found.
 		 * Or it has already been overridden, so you've lost your place.
 		 * Or it is a simple substitute.
 		 * We need to find a free available slot */
-		ind_id = this->AddEntityID(inds->grf_prop.local_id, inds->grf_prop.grffile->grfid, inds->grf_prop.subst_id);
+		ind_id = this->AddEntityID(inds->grf_prop.local_id, inds->grf_prop.grfid, inds->grf_prop.subst_id);
 		inds->grf_prop.override = this->invalid_id;  // make sure it will not be detected as overridden
 	}
 
@@ -271,7 +271,7 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 
 void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 {
-	IndustryGfx indt_id = this->AddEntityID(its->grf_prop.local_id, its->grf_prop.grffile->grfid, its->grf_prop.subst_id);
+	IndustryGfx indt_id = this->AddEntityID(its->grf_prop.local_id, its->grf_prop.grfid, its->grf_prop.subst_id);
 
 	if (indt_id == this->invalid_id) {
 		GrfMsg(1, "IndustryTile.SetEntitySpec: Too many industry tiles allocated. Ignoring.");
@@ -284,7 +284,7 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 	for (int i = 0; i < this->max_offset; i++) {
 		IndustryTileSpec *overridden_its = &_industry_tile_specs[i];
 
-		if (this->entity_overrides[i] != its->grf_prop.local_id || this->grfid_overrides[i] != its->grf_prop.grffile->grfid) continue;
+		if (this->entity_overrides[i] != its->grf_prop.local_id || this->grfid_overrides[i] != its->grf_prop.grfid) continue;
 
 		overridden_its->grf_prop.override = indt_id;
 		overridden_its->enabled = false;
@@ -302,14 +302,14 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
 {
 	/* First step : We need to find if this object is already specified in the savegame data. */
-	ObjectType type = this->GetID(spec->grf_prop.local_id, spec->grf_prop.grffile->grfid);
+	ObjectType type = this->GetID(spec->grf_prop.local_id, spec->grf_prop.grfid);
 
 	if (type == this->invalid_id) {
 		/* Not found.
 		 * Or it has already been overridden, so you've lost your place.
 		 * Or it is a simple substitute.
 		 * We need to find a free available slot */
-		type = this->AddEntityID(spec->grf_prop.local_id, spec->grf_prop.grffile->grfid, OBJECT_TRANSMITTER);
+		type = this->AddEntityID(spec->grf_prop.local_id, spec->grf_prop.grfid, OBJECT_TRANSMITTER);
 	}
 
 	if (type == this->invalid_id) {

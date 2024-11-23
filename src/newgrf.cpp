@@ -632,7 +632,10 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 		EngineID engine = _engine_mngr.GetID(type, internal_id, scope_grfid);
 		if (engine != INVALID_ENGINE) {
 			Engine *e = Engine::Get(engine);
-			if (e->grf_prop.grffile == nullptr) e->grf_prop.grffile = file;
+			if (!e->grf_prop.HasGrfFile()) {
+				e->grf_prop.grfid = file->grfid;
+				e->grf_prop.grffile = file;
+			}
 			return e;
 		}
 	}
@@ -642,7 +645,8 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 	if (engine != INVALID_ENGINE) {
 		Engine *e = Engine::Get(engine);
 
-		if (e->grf_prop.grffile == nullptr) {
+		if (!e->grf_prop.HasGrfFile()) {
+			e->grf_prop.grfid = file->grfid;
 			e->grf_prop.grffile = file;
 			GrfMsg(5, "Replaced engine at index {} for GRFID {:x}, type {}, index {}", e->index, BSWAP32(file->grfid), type, internal_id);
 		}
@@ -667,6 +671,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 
 	/* ... it's not, so create a new one based off an existing engine */
 	Engine *e = new Engine(type, internal_id);
+	e->grf_prop.grfid = file->grfid;
 	e->grf_prop.grffile = file;
 
 	/* Reserve the engine slot */
@@ -2463,6 +2468,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 					housespec->enabled = true;
 					housespec->grf_prop.local_id = hid + i;
 					housespec->grf_prop.subst_id = subs_id;
+					housespec->grf_prop.grfid = _cur.grffile->grfid;
 					housespec->grf_prop.grffile = _cur.grffile;
 					/* Set default colours for randomization, used if not overridden. */
 					housespec->random_colour[0] = COLOUR_RED;
@@ -3327,6 +3333,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 
 					tsp->grf_prop.local_id = indtid + i;
 					tsp->grf_prop.subst_id = subs_id;
+					tsp->grf_prop.grfid = _cur.grffile->grfid;
 					tsp->grf_prop.grffile = _cur.grffile;
 					_industile_mngr.AddEntityID(indtid + i, _cur.grffile->grfid, subs_id); // pre-reserve the tile slot
 				}
@@ -3584,6 +3591,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 					indsp->enabled = true;
 					indsp->grf_prop.local_id = indid + i;
 					indsp->grf_prop.subst_id = subs_id;
+					indsp->grf_prop.grfid = _cur.grffile->grfid;
 					indsp->grf_prop.grffile = _cur.grffile;
 					/* If the grf industry needs to check its surrounding upon creation, it should
 					 * rely on callbacks, not on the original placement functions */
@@ -3956,6 +3964,7 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 					as->enabled = true;
 					as->grf_prop.local_id = airport + i;
 					as->grf_prop.subst_id = subs_id;
+					as->grf_prop.grfid = _cur.grffile->grfid;
 					as->grf_prop.grffile = _cur.grffile;
 					/* override the default airport */
 					_airport_mngr.Add(airport + i, _cur.grffile->grfid, subs_id);
@@ -4717,6 +4726,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 
 					tsp->grf_prop.local_id = airtid + i;
 					tsp->grf_prop.subst_id = subs_id;
+					tsp->grf_prop.grfid = _cur.grffile->grfid;
 					tsp->grf_prop.grffile = _cur.grffile;
 					_airporttile_mngr.AddEntityID(airtid + i, _cur.grffile->grfid, subs_id); // pre-reserve the tile slot
 				}
@@ -5733,12 +5743,13 @@ static void StationMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		if (statspec->grf_prop.grffile != nullptr) {
+		if (statspec->grf_prop.HasGrfFile()) {
 			GrfMsg(1, "StationMapSpriteGroup: Station {} mapped multiple times, skipping", station);
 			continue;
 		}
 
 		statspec->grf_prop.spritegroup[SpriteGroupCargo::SG_DEFAULT] = _cur.spritegroups[groupid];
+		statspec->grf_prop.grfid = _cur.grffile->grfid;
 		statspec->grf_prop.grffile = _cur.grffile;
 		statspec->grf_prop.local_id = station;
 		StationClass::Assign(statspec);
@@ -5917,12 +5928,13 @@ static void ObjectMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		if (spec->grf_prop.grffile != nullptr) {
+		if (spec->grf_prop.HasGrfFile()) {
 			GrfMsg(1, "ObjectMapSpriteGroup: Object {} mapped multiple times, skipping", object);
 			continue;
 		}
 
 		spec->grf_prop.spritegroup[OBJECT_SPRITE_GROUP_DEFAULT] = _cur.spritegroups[groupid];
+		spec->grf_prop.grfid = _cur.grffile->grfid;
 		spec->grf_prop.grffile = _cur.grffile;
 		spec->grf_prop.local_id = object;
 	}
@@ -6103,12 +6115,13 @@ static void RoadStopMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		if (roadstopspec->grf_prop.grffile != nullptr) {
+		if (roadstopspec->grf_prop.HasGrfFile()) {
 			GrfMsg(1, "RoadStopMapSpriteGroup: Road stop {} mapped multiple times, skipping", roadstop);
 			continue;
 		}
 
 		roadstopspec->grf_prop.spritegroup[SpriteGroupCargo::SG_DEFAULT] = _cur.spritegroups[groupid];
+		roadstopspec->grf_prop.grfid = _cur.grffile->grfid;
 		roadstopspec->grf_prop.grffile = _cur.grffile;
 		roadstopspec->grf_prop.local_id = roadstop;
 		RoadStopClass::Assign(roadstopspec);
@@ -9453,25 +9466,25 @@ static void FinaliseIndustriesArray()
 			/* process the conversion of text at the end, so to be sure everything will be fine
 			 * and available.  Check if it does not return undefind marker, which is a very good sign of a
 			 * substitute industry who has not changed the string been examined, thus using it as such */
-			strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->name);
+			strid = GetGRFStringID(indsp->grf_prop.grfid, indsp->name);
 			if (strid != STR_UNDEFINED) indsp->name = strid;
 
-			strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->closure_text);
+			strid = GetGRFStringID(indsp->grf_prop.grfid, indsp->closure_text);
 			if (strid != STR_UNDEFINED) indsp->closure_text = strid;
 
-			strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->production_up_text);
+			strid = GetGRFStringID(indsp->grf_prop.grfid, indsp->production_up_text);
 			if (strid != STR_UNDEFINED) indsp->production_up_text = strid;
 
-			strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->production_down_text);
+			strid = GetGRFStringID(indsp->grf_prop.grfid, indsp->production_down_text);
 			if (strid != STR_UNDEFINED) indsp->production_down_text = strid;
 
-			strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->new_industry_text);
+			strid = GetGRFStringID(indsp->grf_prop.grfid, indsp->new_industry_text);
 			if (strid != STR_UNDEFINED) indsp->new_industry_text = strid;
 
 			if (indsp->station_name != STR_NULL) {
 				/* STR_NULL (0) can be set by grf.  It has a meaning regarding assignation of the
 				 * station's name. Don't want to lose the value, therefore, do not process. */
-				strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->station_name);
+				strid = GetGRFStringID(indsp->grf_prop.grfid, indsp->station_name);
 				if (strid != STR_UNDEFINED) indsp->station_name = strid;
 			}
 
@@ -9486,9 +9499,9 @@ static void FinaliseIndustriesArray()
 	}
 
 	for (auto &indsp : _industry_specs) {
-		if (indsp.enabled && indsp.grf_prop.grffile != nullptr) {
+		if (indsp.enabled && indsp.grf_prop.HasGrfFile()) {
 			for (auto &conflicting : indsp.conflicting) {
-				conflicting = MapNewGRFIndustryType(conflicting, indsp.grf_prop.grffile->grfid);
+				conflicting = MapNewGRFIndustryType(conflicting, indsp.grf_prop.grfid);
 			}
 		}
 		if (!indsp.enabled) {
@@ -9521,7 +9534,7 @@ static void FinaliseObjectsArray()
 {
 	for (GRFFile * const file : _grf_files) {
 		for (auto &objectspec : file->objectspec) {
-			if (objectspec != nullptr && objectspec->grf_prop.grffile != nullptr && objectspec->IsEnabled()) {
+			if (objectspec != nullptr && objectspec->grf_prop.HasGrfFile() && objectspec->IsEnabled()) {
 				_object_mngr.SetEntitySpec(objectspec.get());
 			}
 		}

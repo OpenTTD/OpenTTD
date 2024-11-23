@@ -86,7 +86,7 @@ public:
 	void DrawType(int x, int y, int cls_id, int id) const override
 	{
 		const auto *spec = this->GetSpec(cls_id, id);
-		if (spec->grf_prop.grffile == nullptr) {
+		if (!spec->grf_prop.HasGrfFile()) {
 			extern const DrawTileSprites _objects[];
 			const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
 			DrawOrigTileSeqInGUI(x, y, dts, PAL_NONE);
@@ -207,7 +207,7 @@ public:
 					int x = (ir.Width()  - ScaleSpriteTrad(PREVIEW_WIDTH)) / 2 + ScaleSpriteTrad(PREVIEW_LEFT);
 					int y = (ir.Height() + ScaleSpriteTrad(PREVIEW_HEIGHT)) / 2 - ScaleSpriteTrad(PREVIEW_BOTTOM);
 
-					if (spec->grf_prop.grffile == nullptr) {
+					if (!spec->grf_prop.HasGrfFile()) {
 						extern const DrawTileSprites _objects[];
 						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
 						DrawOrigTileSeqInGUI(x, y, dts, PAL_NONE);
@@ -228,9 +228,9 @@ public:
 					uint16_t callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, nullptr, INVALID_TILE, _object_gui.sel_view);
 					if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
 						if (callback_res > 0x400) {
-							ErrorUnknownCallbackResult(spec->grf_prop.grffile->grfid, CBID_OBJECT_FUND_MORE_TEXT, callback_res);
+							ErrorUnknownCallbackResult(spec->grf_prop.grfid, CBID_OBJECT_FUND_MORE_TEXT, callback_res);
 						} else {
-							StringID message = GetGRFStringID(spec->grf_prop.grffile->grfid, 0xD000 + callback_res);
+							StringID message = GetGRFStringID(spec->grf_prop.grfid, 0xD000 + callback_res);
 							if (message != STR_NULL && message != STR_UNDEFINED) {
 								StartTextRefStackUsage(spec->grf_prop.grffile, 6);
 								/* Use all the available space left from where we stand up to the
