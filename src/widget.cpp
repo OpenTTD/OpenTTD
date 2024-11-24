@@ -145,15 +145,17 @@ static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom, bo
 	top += button_size;    // top    points to just below the up-button
 	bottom -= button_size; // bottom points to top of the down-button
 
-	int height = (bottom - top);
-	int pos = sb->GetPosition();
 	int count = sb->GetCount();
 	int cap = sb->GetCapacity();
 
-	if (count != 0) top += height * pos / count;
+	if (count > cap) {
+		int height = (bottom - top);
+		int slider_height = std::max(button_size, cap * height / count);
+		height -= slider_height;
 
-	if (cap > count) cap = count;
-	if (count != 0) bottom -= (count - pos - cap) * height / count;
+		top += height * sb->GetPosition() / (count - cap);
+		bottom = top + slider_height;
+	}
 
 	Point pt;
 	if (horizontal && _current_text_dir == TD_RTL) {
@@ -216,7 +218,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 			changed = sb->UpdatePosition(rtl ? -1 : 1, Scrollbar::SS_BIG);
 		} else {
 			_scrollbar_start_pos = pt.x - mi - button_size;
-			_scrollbar_size = ma - mi - button_size * 2;
+			_scrollbar_size = ma - mi - button_size * 2 - (pt.y - pt.x);
 			w->mouse_capture_widget = sb->index;
 			_cursorpos_drag_start = _cursor.pos;
 		}
