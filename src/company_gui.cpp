@@ -333,8 +333,11 @@ static constexpr NWidgetPart _nested_company_finances_widgets[] = {
 
 /** Window class displaying the company finances. */
 struct CompanyFinancesWindow : Window {
+	static constexpr int NUM_PERIODS = WID_CF_EXPS_PRICE3 - WID_CF_EXPS_PRICE1 + 1;
+
 	static Money max_money; ///< The maximum amount of money a company has had this 'run'
 	bool small;             ///< Window is toggled to 'small'.
+	uint8_t first_visible = NUM_PERIODS - 1; ///< First visible expenses column. The last column (current) is always visible.
 
 	CompanyFinancesWindow(WindowDesc &desc, CompanyID company) : Window(desc)
 	{
@@ -344,6 +347,7 @@ struct CompanyFinancesWindow : Window {
 		this->FinishInitNested(company);
 
 		this->owner = (Owner)this->window_number;
+		this->InvalidateData();
 	}
 
 	void SetStringParameters(WidgetID widget) const override
@@ -426,12 +430,12 @@ struct CompanyFinancesWindow : Window {
 			case WID_CF_EXPS_PRICE1:
 			case WID_CF_EXPS_PRICE2:
 			case WID_CF_EXPS_PRICE3: {
+				int period = widget - WID_CF_EXPS_PRICE1;
+				if (period < this->first_visible) break;
+
 				const Company *c = Company::Get((CompanyID)this->window_number);
-				auto age = std::min(TimerGameEconomy::year - c->inaugurated_year, TimerGameEconomy::Year(2));
-				int wid_offset = widget - WID_CF_EXPS_PRICE1;
-				if (wid_offset <= age) {
-					DrawYearColumn(r, TimerGameEconomy::year - (age - wid_offset), c->yearly_expenses[(age - wid_offset).base()]);
-				}
+				const auto &expenses = c->yearly_expenses[NUM_PERIODS - period - 1];
+				DrawYearColumn(r, TimerGameEconomy::year - (NUM_PERIODS - period - 1), expenses);
 				break;
 			}
 
@@ -512,6 +516,24 @@ struct CompanyFinancesWindow : Window {
 				ShowCompanyInfrastructure((CompanyID)this->window_number);
 				break;
 		}
+	}
+
+	void RefreshVisibleColumns()
+	{
+		for (uint period = 0; period < this->first_visible; ++period) {
+			const Company *c = Company::Get((CompanyID)this->window_number);
+			const Expenses &expenses = c->yearly_expenses[NUM_PERIODS - period - 1];
+			/* Show expenses column if it has any non-zero value in it. */
+			if (std::ranges::any_of(expenses, [](const Money &value) { return value != 0; })) {
+				this->first_visible = period;
+				break;
+			}
+		}
+	}
+
+	void OnInvalidateData(int, bool) override
+	{
+		this->RefreshVisibleColumns();
 	}
 
 	/**
