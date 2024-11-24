@@ -1214,7 +1214,35 @@ static bool FlowsDown(TileIndex begin, TileIndex end)
 struct River_UserData {
 	TileIndex spring; ///< The current spring during river generation.
 	bool main_river;  ///< Whether the current river is a big river that others flow into.
+	std::vector<TileIndex> &begin_end_points; ///< Stores all begin and end points for each flow segment of the entire river.
 };
+
+static int32_t RiverTest_EndNodeCheck(const AyStar *aystar, const PathNode *current)
+{
+	TileIndex tile = current->GetTile();
+	if (IsWaterTile(tile) && tile == *(TileIndex *)aystar->user_target) return AYSTAR_FOUND_END_NODE;
+	return AYSTAR_DONE;
+}
+
+static void RiverTest_GetNeighbours(AyStar *aystar, PathNode *current)
+{
+	TileIndex tile = current->GetTile();
+
+	aystar->neighbours.clear();
+	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+		TileIndex t2 = tile + TileOffsByDiagDir(d);
+		if (IsValidTile(t2) && IsWaterTile(t2)) {
+			auto &neighbour = aystar->neighbours.emplace_back();
+			neighbour.tile = t2;
+			neighbour.td = INVALID_TRACKDIR;
+		}
+	}
+}
+
+static void RiverTest_FoundEndNode(AyStar *, PathNode *)
+{
+	return;
+}
 
 /* AyStar callback for checking whether we reached our destination. */
 static int32_t River_EndNodeCheck(const AyStar *aystar, const PathNode *current)
@@ -1250,14 +1278,31 @@ static void River_GetNeighbours(AyStar *aystar, PathNode *current)
 	}
 }
 
+static bool TestRiverConnection(TileIndex begin, TileIndex end)
+{
+	AyStar finder = {};
+	finder.CalculateG = River_CalculateG;
+	finder.CalculateH = River_CalculateH;
+	finder.GetNeighbours = RiverTest_GetNeighbours;
+	finder.EndNodeCheck = RiverTest_EndNodeCheck;
+	finder.FoundEndNode = RiverTest_FoundEndNode;
+	finder.user_target = &end;
+
+	AyStarNode start;
+	start.tile = begin;
+	start.td = INVALID_TRACKDIR;
+	finder.AddStartNode(&start, 0);
+	return finder.Main() == AYSTAR_FOUND_END_NODE;
+}
+
+
 /* AyStar callback when an route has been found. */
 static void River_FoundEndNode(AyStar *aystar, PathNode *current)
 {
-	River_UserData *data = (River_UserData *)aystar->user_data;
+	River_UserData *data = static_cast<River_UserData *>(aystar->user_data);
 
 	/* First, build the river without worrying about its width. */
-	uint cur_pos = 0;
-	for (PathNode *path = current->parent; path != nullptr; path = path->parent, cur_pos++) {
+	for (PathNode *path = current->parent; path != nullptr; path = path->parent) {
 		TileIndex tile = path->GetTile();
 		if (!IsWaterTile(tile)) {
 			MakeRiverAndModifyDesertZoneAround(tile);
@@ -1268,20 +1313,35 @@ static void River_FoundEndNode(AyStar *aystar, PathNode *current)
 	 * Don't make wide rivers if we're using the original landscape generator.
 	 */
 	if (_settings_game.game_creation.land_generator != LG_ORIGINAL && data->main_river) {
-		const uint long_river_length = _settings_game.game_creation.min_river_length * 4;
-		uint current_river_length;
-		uint radius;
+		/* Pre-mark river tiles at all begin and end points with canals to prevent the terraform command in RiverMakeWider
+		 * from possibly disconnecting the river. They will be turned into river at a later stage in CreateRiver. */
+		for (TileIndex tile : data->begin_end_points) {
+			if (IsWaterTile(tile) && IsCanal(tile)) break; // already marked all points
+			assert(IsTileFlat(tile) && (!IsWaterTile(tile) || IsRiver(tile)));
+			MakeCanal(tile, _current_company, Random());
+		}
 
-		cur_pos = 0;
-		for (PathNode *path = current->parent; path != nullptr; path = path->parent, cur_pos++) {
+		const uint long_river_length = _settings_game.game_creation.min_river_length * 4;
+
+		for (PathNode *path = current->parent; path != nullptr; path = path->parent) {
 			TileIndex tile = path->GetTile();
 
 			/* Check if we should widen river depending on how far we are away from the source. */
-			current_river_length = DistanceManhattan(data->spring, tile);
-			radius = std::min(3u, (current_river_length / (long_river_length / 3u)) + 1u);
+			uint current_river_length = DistanceManhattan(data->spring, tile);
+			uint radius = std::min<uint>(3, (current_river_length / (long_river_length / 3)) + 1);
 
-			if (radius > 1) CircularTileSearch(&tile, radius, RiverMakeWider, (void *)&path->key.tile);
+			if (radius > 1) {
+				CircularTileSearch(&tile, radius, RiverMakeWider, reinterpret_cast<void *>(&path->key.tile));
+			}
 		}
+
+		/* Make sure the river is still intact. */
+		TileIndex begin = current->GetTile();
+		TileIndex end;
+		for (PathNode *path = current->parent; path != nullptr; path = path->parent) {
+			end = path->GetTile();
+		}
+		assert(TestRiverConnection(begin, end));
 	}
 }
 
@@ -1291,10 +1351,12 @@ static void River_FoundEndNode(AyStar *aystar, PathNode *current)
  * @param end The end of the river.
  * @param spring The springing point of the river.
  * @param main_river Whether the current river is a big river that others flow into.
+ * @param begin_end_points Collection of all begin and end points for each flow segment of the entire river.
+ * @return true if the river is successfully built, otherwise false.
  */
-static void BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool main_river)
+static bool BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool main_river, std::vector<TileIndex> &begin_end_points)
 {
-	River_UserData user_data = { spring, main_river };
+	River_UserData user_data = { spring, main_river, begin_end_points };
 
 	AyStar finder = {};
 	finder.CalculateG = River_CalculateG;
@@ -1309,7 +1371,7 @@ static void BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool ma
 	start.tile = begin;
 	start.td = INVALID_TRACKDIR;
 	finder.AddStartNode(&start, 0);
-	finder.Main();
+	return finder.Main() == AYSTAR_FOUND_END_NODE;
 }
 
 /**
@@ -1317,14 +1379,13 @@ static void BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool ma
  * @param spring The springing point of the river.
  * @param begin  The begin point we are looking from; somewhere down hill from the spring.
  * @param min_river_length The minimum length for the river.
+ * @param begin_end_points Collection of all begin and end points for each flow segment of the entire river.
  * @return First element: True iff a river could/has been built, otherwise false; second element: River ends at sea.
  */
-static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint min_river_length)
+static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint min_river_length, std::vector<TileIndex> &begin_end_points)
 {
 #	define SET_MARK(x) marks.insert(x)
 #	define IS_MARKED(x) (marks.find(x) != marks.end())
-
-	uint height = TileHeight(begin);
 
 	if (IsWaterTile(begin)) {
 		return { DistanceManhattan(spring, begin) > min_river_length, GetTileZ(begin) == 0 };
@@ -1340,12 +1401,13 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 	bool found = false;
 	uint count = 0; // Number of tiles considered; to be used for lake location guessing.
 	TileIndex end;
+	int height = TileHeight(begin);
+	int height2;
 	do {
 		end = queue.front();
 		queue.pop_front();
 
-		uint height2 = TileHeight(end);
-		if (IsTileFlat(end) && (height2 < height || (height2 == height && IsWaterTile(end)))) {
+		if (IsTileFlat(end, &height2) && (height2 < height || (height2 == height && IsWaterTile(end)))) {
 			found = true;
 			break;
 		}
@@ -1363,7 +1425,9 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 	bool main_river = false;
 	if (found) {
 		/* Flow further down hill. */
-		std::tie(found, main_river) = FlowRiver(spring, end, min_river_length);
+		if (begin_end_points.empty()) begin_end_points.push_back(begin);
+		if (height2 != 0) begin_end_points.push_back(end); // don't collect end point if it ends at sea
+		std::tie(found, main_river) = FlowRiver(spring, end, min_river_length, begin_end_points);
 	} else if (count > 32) {
 		/* Maybe we can make a lake. Find the Nth of the considered tiles. */
 		std::set<TileIndex>::const_iterator cit = marks.cbegin();
@@ -1393,8 +1457,27 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 	}
 
 	marks.clear();
-	if (found) BuildRiver(begin, end, spring, main_river);
+	if (found) found = BuildRiver(begin, end, spring, main_river, begin_end_points);
 	return { found, main_river };
+}
+
+static bool CreateRiver(TileIndex spring, uint min_river_length)
+{
+	std::vector<TileIndex> begin_end_points;
+	auto is_created = FlowRiver(spring, spring, min_river_length, begin_end_points);
+
+	/* Once a main river is created, even if partially, the marked canal tiles at
+	 * River_FoundEndNode must be converted back to rivers. */
+	if (_settings_game.game_creation.land_generator != LG_ORIGINAL && std::get<1>(is_created)) {
+		for (TileIndex tile : begin_end_points) {
+			if (IsTileType(tile, MP_WATER) && IsCanal(tile)) {
+				assert(IsTileFlat(tile));
+				MakeRiverAndModifyDesertZoneAround(tile);
+			}
+		}
+	}
+
+	return std::get<0>(is_created);
 }
 
 /**
@@ -1415,7 +1498,7 @@ static void CreateRivers()
 		for (int tries = 0; tries < 512; tries++) {
 			TileIndex t = RandomTile();
 			if (!CircularTileSearch(&t, 8, FindSpring, nullptr)) continue;
-			if (std::get<0>(FlowRiver(t, t, _settings_game.game_creation.min_river_length * 4))) break;
+			if (CreateRiver(t, _settings_game.game_creation.min_river_length * 4)) break;
 		}
 	}
 
@@ -1425,12 +1508,9 @@ static void CreateRivers()
 		for (int tries = 0; tries < 128; tries++) {
 			TileIndex t = RandomTile();
 			if (!CircularTileSearch(&t, 8, FindSpring, nullptr)) continue;
-			if (std::get<0>(FlowRiver(t, t, _settings_game.game_creation.min_river_length))) break;
+			if (CreateRiver(t, _settings_game.game_creation.min_river_length)) break;
 		}
 	}
-
-	/* Widening rivers may have left some tiles requiring to be watered. */
-	ConvertGroundTilesIntoWaterTiles();
 
 	/* Run tile loop to update the ground density. */
 	for (uint i = 0; i != TILE_UPDATE_FREQUENCY; i++) {

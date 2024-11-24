@@ -19,6 +19,7 @@
 #include "core/backup_type.hpp"
 #include "terraform_cmd.h"
 #include "landscape_cmd.h"
+#include "water.h"
 
 #include "table/strings.h"
 
@@ -295,6 +296,13 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, 
 			int height = it.second;
 
 			SetTileHeight(t, (uint)height);
+		}
+
+		if (_generating_world && _settings_game.game_creation.land_generator != LG_ORIGINAL && _settings_game.game_creation.amount_of_rivers != 0) {
+			for (const auto &t : ts.dirty_tiles) {
+				/* Immediately convert ground tiles into water tiles during the river widening process. */
+				ConvertGroundTileIntoWaterTile(t);
+			}
 		}
 
 		if (c != nullptr) c->terraform_limit -= (uint32_t)ts.tile_to_new_height.size() << 16;
