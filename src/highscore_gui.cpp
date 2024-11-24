@@ -175,7 +175,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		if (_game_mode != GM_MENU) ShowVitalWindows();
+		if (_game_mode != GM_MENU && !_exit_game) ShowVitalWindows();
 
 		if (!_networking && !this->game_paused_by_player) Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, false); // unpause
 
