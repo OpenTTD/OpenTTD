@@ -628,6 +628,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Slå på
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Produktionshistorik
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Producerat
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transporterat
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Visa detaljerad prestationsgradering
 
@@ -4747,7 +4749,8 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(resor för {ST
 STR_TIMETABLE_STAY_FOR                                          :och stanna i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :och res i {STRING}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Den här tidtabellen kommer ta {STRING} att slutföra
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Den här tidtabellen kommer att ta ungefär {STRING} att slutföra
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Den här tidtabellen kommer att ta {STRING} att slutföra
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denna tidtabell kommer att ta åtminstone {STRING} att slutföra (allt är inte inlagt i en tidtabell)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Detta fordon kör enligt tidtabellen

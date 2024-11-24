@@ -721,6 +721,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Εναλ
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Ιστορικό Παραγωγής
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Παράχθηκε/αν
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Μεταφέρθηκε/αν
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Εμφάνιση λεπτομεριών αποδόσεων
 
@@ -2836,8 +2838,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}υπερφορτωμένο
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} προς μεταφορά ανά μήνα από {STATION} προς {STATION} ({COMMA}% of capacity){STRING}
-STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} προς μεταφορά ανά λεπτό από {STATION} προς {STATION} ({COMMA}% of capacity){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} προς μεταφορά ανά μήνα από {STATION} προς {STATION} ({COMMA}% της χωρητικότητας){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} προς μεταφορά ανά λεπτό από {STATION} προς {STATION} ({COMMA}% της χωρητικότητας){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} προς μεταφορά πίσω ({COMMA}% της χωρητικότητας)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Μέσος χρόνος ταξιδιού: {UNITS_DAYS_OR_SECONDS}
 

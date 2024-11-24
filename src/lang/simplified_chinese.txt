@@ -628,6 +628,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切换�
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - 产量历史
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :已生产
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :已运输
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}查看详细数据
 
@@ -4747,6 +4749,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :（驶往 {STRI
 STR_TIMETABLE_STAY_FOR                                          :并且停留 {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :并行驶{STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}完成该时刻表大约需要 {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}完成该时刻表需要 {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}完成该时刻表至少需要 {STRING} （时刻表尚未完成）
 

@@ -628,6 +628,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切換�
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - 產量歷史
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :已產出
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :已運送
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}顯示詳細營運評比
 

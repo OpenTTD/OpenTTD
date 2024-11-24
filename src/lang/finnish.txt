@@ -628,6 +628,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Valitse,
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} – Tuotantohistoria
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Tuotettu
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Kuljetettu
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näytä tarkat suorituskykyarviot
 
@@ -4747,8 +4749,9 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(matkusta {STRI
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja kulje {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Aikataulun kesto on noin {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Aikataulun kesto on {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Aikataulun kesto on vähintään {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Aikataulun kesto on vähintään {STRING} (osa aikatauluttamatta)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Kulkuneuvo on aikataulussa
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Kulkuneuvo on {STRING} myöhässä

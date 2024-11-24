@@ -1007,6 +1007,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Przełą
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Historia Produkcji
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Wyprodukowano
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Przetransportowano
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Pokaż szczegóły oceny wydajności
 
@@ -1786,10 +1788,10 @@ STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :Pokazuj okno fi
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Jeśli włączone, to okienko finansowe pokazuje się na zakończenie każdego roku, by ułatwić śledzenie sytuacji finansowej firmy
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Jeśli włączone, to okienko finansowe pokazuje się na zakończenie każdego okresu, by ułatwić śledzenie sytuacji finansowej firmy
 
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nowe polecenia są domyślnie „bez zatrzymywania się”: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Domyślnie nowe polecenia mają „bezpośredni” sposób przejazdu: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalnie pojazd zatrzyma się na każdej stacji, przez którą przejeżdża. Po włączeniu tej opcji, pojazd przejedzie do swojego celu bez zatrzymywania się. Zwróć uwagę na to, że to ustawienie ma wpływ tylko na nowe polecenia. Pojedyncze polecenia mogą być ustalane bez względu na wartość tej opcji
 
-STR_CONFIG_SETTING_STOP_LOCATION                                :Nowe polecenia pociągu domyślnie kończą się na {STRING} peronu
+STR_CONFIG_SETTING_STOP_LOCATION                                :Domyślnie pociągi zatrzymują się na {STRING} peronu
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Miejsce, w którym pociąg domyślnie zatrzyma się na peronie. „Początek” oznacza blisko wjazdu, „środek” oznacza środkową część peronu, a „koniec” oznacza daleko od wjazdu. Pamiętaj, że to ustawienie określa tylko domyślną wartość dla nowych poleceń. Miejsce zatrzymania poszczególnych poleceń można ustawić, klikając na tekst danego polecenia
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :początku
@@ -2120,7 +2122,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Pokazuj przyjaz
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Wyświetlanie przewidywanego przyjazdu i odjazdu w rozkładach
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Szybkie tworzenie poleceń pojazdu: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Po wybraniu stacji docelowej automatycznie włącz ponownie narzędzie „idź do”
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Po otworzeniu okna pustej listy poleceń pojazdu automatycznie wybierz narzędzie „idź do”
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Domyślny typ torów: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Rodzaj torów wybierany przy rozpoczęciu lub załadowaniu gry. „Pierwszy dostępny” wybiera najstarszy rodzaj torów, „najnowszy” wybiera najnowszy rodzaj torów, a „najczęściej używany” wybiera ten, który jest używany najczęściej
@@ -4319,9 +4321,9 @@ STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Przekaż
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Wrogie przejęcie
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Dokonaj wrogiego przejęcia tej firmy
 
-STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nowa twarz
+STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nowa Twarz
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Wybierz nową twarz prezesa
-STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Schemat kolorów
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Schemat Kolorów
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Zmień kolor pojazdów firmy
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nazwa Firmy
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Zmień nazwę firmy
@@ -4959,21 +4961,21 @@ STR_ORDER_GO_TO                                                 :Idź do
 STR_ORDER_GO_NON_STOP_TO                                        :Idź bezpośrednio do
 STR_ORDER_GO_VIA                                                :Idź przez
 STR_ORDER_GO_NON_STOP_VIA                                       :Idź bezpośrednio przez
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmień sposób przejazdu w podświetlonym poleceniu
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmień sposób przejazdu w zaznaczonym poleceniu
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pełny załadunek któregoś z towarów
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pełny załadunek czegokolwiek
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Załaduj jeśli dostępne
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pełny załadunek wszystkiego
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pełny załadunek któregoś z towarów
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pełny załadunek czegokolwiek
 STR_ORDER_DROP_NO_LOADING                                       :Nie ładuj
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmień sposób załadunku w podświetlonym poleceniu
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmień sposób załadunku w zaznaczonym poleceniu
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Rozładuj i załaduj
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Rozładuj wszystko
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Rozładuj jeśli akceptowane
 STR_ORDER_DROP_UNLOAD                                           :Rozładuj wszystko
 STR_ORDER_DROP_TRANSFER                                         :Pozostaw do przeładunku
 STR_ORDER_DROP_NO_UNLOADING                                     :Nie rozładowuj
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmień sposób wyładunku w podświetlonym poleceniu
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmień sposób rozładunku w zaznaczonym poleceniu
 
 STR_ORDER_REFIT                                                 :{BLACK}Przebudowa
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wybierz typ ładunku do przebudowy. Ctrl+klik usuwa polecenie
@@ -5026,7 +5028,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Pomiń
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Pomiń obecne polecenie i rozpocznij kolejne. Ctrl+klik pomija aż do zaznaczonego polecenia
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Usuń
-STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Usuń podświetlone polecenie
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Usuń zaznaczone polecenie
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Usuń wszystkie polecenia
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Przestań dzielić
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Przestań współdzielić listę poleceń. Użyj Ctrl, aby dodatkowo usunąć wszystkie polecenia tego pojazdu
@@ -5036,7 +5038,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idź do najbli�
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Leć do najbliższego hangaru
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
 STR_ORDER_SHARE                                                 :Współdzielenie poleceń
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Dodaj nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Użyj Ctrl, aby ustawić polecenie stacji na „pełny załadunek któregoś z towarów”, posterunku na odwrotność opcji „domyślnie bez zatrzymywania się”, a zajezdni na „separuj”. Kliknij na inny pojazd, aby skopiować jego polecenia lub użyj Ctrl, aby współdzielić z nim jego polecenia. Polecenie do zajezdni wyłącza automatyczne serwisowanie tego pojazdu
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Dodaj nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Użyj Ctrl, aby ustawić polecenie stacji na „pełny załadunek czegokolwiek”, posterunku na odwrotność opcji „domyślnie bezpośrednio”, a zajezdni na „separuj”. Kliknij na inny pojazd, aby skopiować jego polecenia lub użyj Ctrl, aby współdzielić z nim jego polecenia. Polecenie do zajezdni wyłącza automatyczne serwisowanie tego pojazdu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
@@ -5070,30 +5072,30 @@ STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{R
 STR_ORDER_IMPLICIT                                              :(sugerowany)
 
 STR_ORDER_FULL_LOAD                                             :(Pełny załadunek)
-STR_ORDER_FULL_LOAD_ANY                                         :(Pełny załadunek dowolnego towaru)
+STR_ORDER_FULL_LOAD_ANY                                         :(Pełny załadunek czegokolwiek)
 STR_ORDER_NO_LOAD                                               :(Nie ładuj)
 STR_ORDER_UNLOAD                                                :(Rozładuj i zabierz ładunek)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Rozładuj i czekaj na pełny załadunek)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Rozładuj i czekaj na pełny załadunek któregoś z towarów)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Rozładuj i czekaj na pełny załadunek czegokolwiek)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Rozładuj i pozostaw pusty)
-STR_ORDER_TRANSFER                                              :(Przeładunek i zabranie ładunku)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Przeładunek i oczekiwanie na pełny załadunek)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Przeładunek i oczekiwanie na pełny załadunek któregoś z towarów)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Przeładunek, pozostaw pusty)
+STR_ORDER_TRANSFER                                              :(Pozostaw do przeładunku i załaduj)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Pozostaw do przeładunku i czekaj na pełny załadunek)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Pozostaw do przeładunku i czekaj na pełny załadunek czegokolwiek)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Pozostaw do przeładunku i nie ładuj)
 STR_ORDER_NO_UNLOAD                                             :(Nie rozładowuj i zabierz ładunek)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozładowuj i czekaj na pełny załadunek)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozładowuj i czekaj na pełny załadunek któregoś z towarów)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozładowuj i czekaj na pełny załadunek czegokolwiek)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Nie rozładowuj i nie ładuj)
 
 STR_ORDER_AUTO_REFIT                                            :(Przebuduj na {STRING.b})
 STR_ORDER_FULL_LOAD_REFIT                                       :(Przebuduj na {STRING.b} i czekaj na pełny załadunek)
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Przebuduj na {STRING.b} i czekaj na pełny załadunek któregoś z towarów)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Przebuduj na {STRING.b} i czekaj na pełny załadunek czegokolwiek)
 STR_ORDER_UNLOAD_REFIT                                          :(Rozładuj, przebuduj na {STRING.b} i zabierz ładunek)
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Rozładuj, przebuduj na {STRING.b} i czekaj na pełny załadunek)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Rozładuj, przebuduj na {STRING.b} i czekaj na pełny załadunek któregoś z towarów)
-STR_ORDER_TRANSFER_REFIT                                        :(Przeładunek, przebudowa na {STRING.b} i zabranie ładunku)
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Przeładunek, przebudowa na {STRING.b} i oczekiwanie na pełny załadunek)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Przeładunek, przebudowa na {STRING.b} i oczekiwanie na dowolny pełny załadunek)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Rozładuj, przebuduj na {STRING.b} i czekaj na pełny załadunek czegokolwiek)
+STR_ORDER_TRANSFER_REFIT                                        :(Pozostaw do przeładunku, przebuduj na {STRING.b} i załaduj)
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Pozostaw do przeładunku, przebuduj na {STRING.b} i czekaj na pełny załadunek)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Pozostaw do przeładunku, przebuduj na {STRING.b} i czekaj na pełny załadunek czegokolwiek)
 STR_ORDER_NO_UNLOAD_REFIT                                       :(Nie rozładowuj, przebuduj na {STRING.b} i zabierz ładunek)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nie rozładowuj, przebuduj na {STRING.b} i czekaj na pełny załadunek)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nie rozładowuj, przebuduj na {STRING.b} i czekaj na dowolny pełny załadunek)
@@ -5133,8 +5135,9 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(przejazd przez
 STR_TIMETABLE_STAY_FOR                                          :i zostań tam przez {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :i podróżuje przez{STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Ten rozkład jazdy zajmie około {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ten rozkład jazdy zajmie {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ten rozkład jazdy zajmie przynajmniej {STRING} (nie wszystkie stacje są na rozkładzie)
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ten rozkład jazdy zajmie co najmniej {STRING} (nie wszystko jest zaplanowane)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ten pojazd podróżuje teraz zgodnie z rozkładem jazdy
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ten pojazd jest teraz spóźniony o {STRING}
@@ -5143,32 +5146,32 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ten rozk
 STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Ten rozkład jazdy rozpocznie się {STRING}
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Ten rozkład jazdy rozpocznie się za {COMMA} sekund{P ę y ""}
 
-STR_TIMETABLE_START                                             :{BLACK}Początek rozkładu
+STR_TIMETABLE_START                                             :{BLACK}Początek Rozkładu
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Wybierz moment rozpoczęcia tego rozkładu jazdy. Użyj Ctrl, aby rozłożyć równomiernie momenty startu wszystkich pojazdów współdzielących te polecenia w oparciu o ich względną kolejność, o ile rozkład jest w pełni zaplanowany
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundy do uruchomienia rozkładu jazdy
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień czas
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień Czas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ustal ilość czasu, jaką powinno zająć zaznaczone polecenie. Użyj Ctrl, aby ustalić taki czas dla wszystkich poleceń
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Wyczyść czas
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Wyczyść Czas
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Wyczyść podany czas w zaznaczonym poleceniu. Użyj Ctrl, aby wyczyścić czasy we wszystkich poleceniach
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmień limit prędkości
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmień Limit Prędkości
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ustal maksymalną prędkość przejazdu w zaznaczonym poleceniu. Użyj Ctrl, aby ustalić taką prędkość we wszystkich poleceniach
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Wyczyść limit prędkości
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Wyczyść Limit Prędkości
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść maksymalną prędkość przejazdu w zaznaczonym poleceniu. Użyj Ctrl, aby wyczyścić prędkości we wszystkich poleceniach
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Wyzeruj spóźnienia
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Wyzeruj Spóźnienia
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy. Użyj Ctrl, aby wyzerować całą grupę, dzięki czemu ostatni pojazd będzie punktualny, a wszystkie pozostałe będą przed czasem
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automat. wypełnienie
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autowypełnienie
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij automatycznie rozkład jazdy wartościami z następnego przejazdu. Ctrl+klik, aby spróbować utrzymać czasy oczekiwania
 
-STR_TIMETABLE_EXPECTED                                          :{BLACK}Wymagany
-STR_TIMETABLE_SCHEDULED                                         :{BLACK}Zaplanowany
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Przełącz między spodziewanymi i zaplanowanymi
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Spodziewane
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planowane
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Przełącz między spodziewanymi i planowanymi
 
 STR_TIMETABLE_ARRIVAL_DATE                                      :P: {COLOUR}{DATE_TINY}
 STR_TIMETABLE_DEPARTURE_DATE                                    :O: {COLOUR}{DATE_TINY}
@@ -5305,12 +5308,12 @@ STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED
 STR_INCOME_FLOAT_COST                                           :{RED}Koszt: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Przychód: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Przychód: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}
-STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Zysk: {CURRENCY_LONG}
-STR_FEEDER_INCOME                                               :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Zysk: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Koszt: {CURRENCY_LONG}
-STR_FEEDER_COST                                                 :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Koszt: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Przeładunek: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Przeładunek: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Przeładunek: {CURRENCY_LONG}{WHITE} / {GREEN}Zysk: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Przeładunek: {CURRENCY_LONG}{WHITE} / {GREEN}Zysk: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Przeładunek: {CURRENCY_LONG}{WHITE} / {RED}Koszt: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Przeładunek: {CURRENCY_LONG}{WHITE} / {RED}Koszt: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Szacowany koszt: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Szacowany przychód: {CURRENCY_LONG}
 
@@ -5927,7 +5930,7 @@ STR_SV_STNAME_WOODS                                             :{STRING} Podles
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Jezioro
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Wymiana
 STR_SV_STNAME_AIRPORT                                           :Lotnisko {STRING}
-STR_SV_STNAME_OILFIELD                                          :Platforma Wiertnicza {STRING}
+STR_SV_STNAME_OILFIELD                                          :Platforma {STRING}
 STR_SV_STNAME_MINES                                             :{STRING} Kopalnia
 STR_SV_STNAME_DOCKS                                             :{STRING} Port
 STR_SV_STNAME_BUOY                                              :{STRING}

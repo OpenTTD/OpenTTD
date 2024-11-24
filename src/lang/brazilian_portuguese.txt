@@ -629,6 +629,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar/
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Histórico da Produção
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produzido
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar avaliações detalhadas de desempenho
 
@@ -4748,6 +4750,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar durante
 STR_TIMETABLE_STAY_FOR                                          :e ficar por {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viajar durante {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Este horário levará aproximadamente {STRING} para ser concluído
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Este horário levará {STRING} para ser concluído
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Este horário levará pelo menos {STRING} para ser concluído (nem tudo está programado)
 

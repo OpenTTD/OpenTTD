@@ -766,6 +766,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Вклю
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}График производительности: {INDUSTRY}
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Произведено
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Перевезено
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Показать составляющие части рейтинга
 
@@ -4934,6 +4936,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(в пути {S
 STR_TIMETABLE_STAY_FOR                                          :и ждать {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :и идти в {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Прохождение этого маршрут займёт примерно {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Весь маршрут займёт {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Движение по маршруту займёт {STRING} (не всё учтено)
 
