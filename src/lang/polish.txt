@@ -662,8 +662,8 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zamknij 
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tytuł okna - przeciągnij, aby przesunąć okno
 STR_TOOLTIP_SHADE                                               :{BLACK}Zwiń okno - pokaż tylko nagłówek
 STR_TOOLTIP_DEBUG                                               :{BLACK}Pokaż informacje debugerra NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Zmień rozmiar okna na domyślny. Ctrl+klik zapisze obecne wymiary jako domyślne
-STR_TOOLTIP_STICKY                                              :{BLACK}Zaznacz to okno jako niezamykalne przyciskiem „Zamknij wszystkie okna”. Ctrl+klik dodatkowo zapisze to ustawienie jako domyślne
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Zmień rozmiar okna na domyślny. Użyj Ctrl, aby zapamiętać obecny rozmiar jako domyślny
+STR_TOOLTIP_STICKY                                              :{BLACK}Oznacz to okno jako niezamykalne przyciskiem „Zamknij Wszystkie Okna”. Użyj Ctrl, aby zapamiętać to ustawienie jako domyślne
 STR_TOOLTIP_RESIZE                                              :{BLACK}Kliknij i przeciągnij, by zmienić rozmiar okna
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Przełącz na duży/mały rozmiar okna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Suwak - przesuwa listę w górę/w dół
@@ -4786,7 +4786,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Przebudo
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Pokaż polecenia pociągu. Ctrl+klik pokazuje rozkład jazdy pociągu
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Pokaż polecenia pojazdu. Ctrl+klik pokazuje rozkład jazdy pojazdu
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Pokaż polecenia pojazdu. Użyj Ctrl, aby pokazać rozkład jazdy pojazdu
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Pokaż polecenia statku. Ctrl+klik pokazuje harmonogram rejsów statku.
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Pokaż polecenia samolotu. Ctrl+klik pokazuje harmonogram lotów samolotu.
 
@@ -4978,9 +4978,9 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Nie rozładowuj
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmień sposób rozładunku w zaznaczonym poleceniu
 
 STR_ORDER_REFIT                                                 :{BLACK}Przebudowa
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wybierz typ ładunku do przebudowy. Ctrl+klik usuwa polecenie
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Przebudowa na stacji
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wybierz typ ładunku do przebudowy. Ctrl+klik usuwa polecenie. Przebudowa na stacji zostanie wykonana jedynie, jeśli dany pojazd na to pozwala i nie powoduje to zmiany jego wyglądu
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wybierz typ ładunku do przebudowy. Użyj Ctrl, aby usunąć polecenie przebudowy
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Przebuduj na stacji
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wybierz typ ładunku do przebudowy. Użyj Ctrl, aby usunąć polecenie przebudowy. Przebudowa na stacji zostanie wykonana jedynie, jeśli dany pojazd ma taką możliwość
 STR_ORDER_DROP_REFIT_AUTO                                       :Ustalony ładunek
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostępny ładunek
 
@@ -5025,7 +5025,7 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wartoś�
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Podaj wartość do porównania
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Pomiń
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Pomiń obecne polecenie i rozpocznij kolejne. Ctrl+klik pomija aż do zaznaczonego polecenia
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Pomiń obecne polecenie i rozpocznij kolejne. Użyj Ctrl, aby pominąć aż do zaznaczonego polecenia
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Usuń
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Usuń zaznaczone polecenie
@@ -5147,7 +5147,7 @@ STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Ten rozk
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Ten rozkład jazdy rozpocznie się za {COMMA} sekund{P ę y ""}
 
 STR_TIMETABLE_START                                             :{BLACK}Początek Rozkładu
-STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Wybierz moment rozpoczęcia tego rozkładu jazdy. Użyj Ctrl, aby rozłożyć równomiernie momenty startu wszystkich pojazdów współdzielących te polecenia w oparciu o ich względną kolejność, o ile rozkład jest w pełni zaplanowany
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Wybierz moment rozpoczęcia tego rozkładu jazdy. Użyj Ctrl, aby rozłożyć równomiernie momenty startów każdego z pojazdów współdzielących te polecenia w oparciu o ich względną kolejność (jeśli rozkład jest w pełni zaplanowany)
 
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundy do uruchomienia rozkładu jazdy
 
@@ -5158,16 +5158,16 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Wyczyś�
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Wyczyść podany czas w zaznaczonym poleceniu. Użyj Ctrl, aby wyczyścić czasy we wszystkich poleceniach
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmień Limit Prędkości
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ustal maksymalną prędkość przejazdu w zaznaczonym poleceniu. Użyj Ctrl, aby ustalić taką prędkość we wszystkich poleceniach
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ustal ograniczenie prędkości przejazdu w zaznaczonym poleceniu. Użyj Ctrl, aby ustalić takie ograniczenie we wszystkich poleceniach
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Wyczyść Limit Prędkości
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść maksymalną prędkość przejazdu w zaznaczonym poleceniu. Użyj Ctrl, aby wyczyścić prędkości we wszystkich poleceniach
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Wyczyść Limit
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść ograniczenie prędkości przejazdu w zaznaczonym poleceniu. Użyj Ctrl, aby wyczyścić ograniczenia we wszystkich poleceniach
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Wyzeruj Spóźnienia
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy. Użyj Ctrl, aby wyzerować całą grupę, dzięki czemu ostatni pojazd będzie punktualny, a wszystkie pozostałe będą przed czasem
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autowypełnienie
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij automatycznie rozkład jazdy wartościami z następnego przejazdu. Ctrl+klik, aby spróbować utrzymać czasy oczekiwania
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij automatycznie rozkład jazdy wartościami z następnego przejazdu. Użyj Ctrl, aby spróbować zachować czasy oczekiwania
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Spodziewane
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planowane

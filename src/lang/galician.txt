@@ -614,6 +614,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Puntuación de rendemento da compañía (máximo=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gráfico do valor da compañía
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últimos 24 minutos
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últimos 72 minutos
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Taxas de pago por carga
@@ -627,6 +628,9 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Non amos
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Amosar/ocultar gráfica para o tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Historial de produción
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Producido
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Amosar puntuacións de rendemento detalladas
 
@@ -3989,6 +3993,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produci�
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producción no último minuto:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportado)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar a vista principal na localización da industria. Ctrl+Clic abre unha nova fiestra na localización da industria
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Gráfico de produción
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Amosa o gráfico co histórico de produción industrial
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de produción: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}A industria anunció un peche inminente
 
@@ -4744,6 +4750,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viaxe para {ST
 STR_TIMETABLE_STAY_FOR                                          :e parar durante {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viaxar durante {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Completar este horario levará aproximadamente {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Levará {STRING} completar este horario
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Este horario levará {STRING} completalo (non está completo)
 

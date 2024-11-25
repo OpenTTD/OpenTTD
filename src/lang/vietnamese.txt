@@ -628,6 +628,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/t�
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Lịch Sử Sản Xuất
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Đã cung cấp
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Đã vận chuyển
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Hiện chi tiết đánh giá chỉ số năng suất
 
@@ -4747,6 +4749,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(di chuyển đ
 STR_TIMETABLE_STAY_FOR                                          :và ở lại trong {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :và di chuyển trong {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Lịch trình này sẽ mất khoảng {STRING} để hoàn thành
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Lịch trình này sẽ mất {STRING} để hoàn thành
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Lịch trình này sẽ mất ít nhất {STRING} để hoàn thành (không phải tất cả điểm được lập lịch trình)
 
