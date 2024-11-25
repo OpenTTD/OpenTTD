@@ -2309,6 +2309,7 @@ static void HandleScrollbarScrolling(Window *w)
 
 	/* Find the item we want to move to. SetPosition will make sure it's inside bounds. */
 	int range = sb->GetCount() - sb->GetCapacity();
+	if (range <= 0) return;
 
 	int pos = RoundDivSU((i + _scrollbar_start_pos) * range, _scrollbar_size);
 	if (rtl) pos = range - pos;
