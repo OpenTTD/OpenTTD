@@ -52,7 +52,7 @@ public:
 	 * @param fontMapping THe mapping of the fonts.
 	 * @return The ParagraphLayout instance.
 	 */
-	static ParagraphLayouter *GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping);
+	static std::unique_ptr<ParagraphLayouter> GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping);
 
 	/**
 	 * Append a wide character to the internal buffer.

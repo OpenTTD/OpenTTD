@@ -276,7 +276,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	return items;
 }
 
-/* static */ ParagraphLayouter *UniscribeParagraphLayoutFactory::GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping)
+/* static */ std::unique_ptr<ParagraphLayouter> UniscribeParagraphLayoutFactory::GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping)
 {
 	int32_t length = buff_end - buff;
 	/* Can't layout an empty string. */
@@ -315,7 +315,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 		}
 	}
 
-	return new UniscribeParagraphLayout(std::move(ranges), buff);
+	return std::make_unique<UniscribeParagraphLayout>(std::move(ranges), buff);
 }
 
 /* virtual */ std::unique_ptr<const ParagraphLayouter::Line> UniscribeParagraphLayout::NextLine(int max_width)
