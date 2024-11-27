@@ -102,7 +102,7 @@ public:
 
 				/* Extract font information for this run. */
 				CFRange chars = CTRunGetStringRange(run);
-				auto map = fontMapping.upper_bound(chars.location);
+				auto map = std::ranges::upper_bound(fontMapping, chars.location, std::less{}, &std::pair<int, Font *>::first);
 
 				this->emplace_back(run, map->second, buff);
 			}
