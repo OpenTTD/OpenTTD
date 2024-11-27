@@ -353,7 +353,7 @@ std::vector<ICURun> ItemizeStyle(std::vector<ICURun> &runs_current, FontMap &fon
 	return runs;
 }
 
-/* static */ ParagraphLayouter *ICUParagraphLayoutFactory::GetParagraphLayout(UChar *buff, UChar *buff_end, FontMap &font_mapping)
+/* static */ std::unique_ptr<ParagraphLayouter> ICUParagraphLayoutFactory::GetParagraphLayout(UChar *buff, UChar *buff_end, FontMap &font_mapping)
 {
 	size_t length = buff_end - buff;
 	/* Can't layout an empty string. */
@@ -374,7 +374,7 @@ std::vector<ICURun> ItemizeStyle(std::vector<ICURun> &runs_current, FontMap &fon
 		run.Shape(buff, length);
 	}
 
-	return new ICUParagraphLayout(std::move(runs), buff, length);
+	return std::make_unique<ICUParagraphLayout>(std::move(runs), buff, length);
 }
 
 /* static */ std::unique_ptr<icu::BreakIterator> ICUParagraphLayoutFactory::break_iterator;

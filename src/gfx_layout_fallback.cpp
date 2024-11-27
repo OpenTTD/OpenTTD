@@ -82,9 +82,9 @@ public:
  * @param fontMapping THe mapping of the fonts.
  * @return The ParagraphLayout instance.
  */
-/* static */ ParagraphLayouter *FallbackParagraphLayoutFactory::GetParagraphLayout(char32_t *buff, char32_t *buff_end, FontMap &fontMapping)
+/* static */ std::unique_ptr<ParagraphLayouter> FallbackParagraphLayoutFactory::GetParagraphLayout(char32_t *buff, char32_t *buff_end, FontMap &fontMapping)
 {
-	return new FallbackParagraphLayout(buff, buff_end - buff, fontMapping);
+	return std::make_unique<FallbackParagraphLayout>(buff, buff_end - buff, fontMapping);
 }
 
 /**

@@ -171,10 +171,10 @@ public:
 		FontMap runs;              ///< Accessed by our ParagraphLayout::nextLine.
 
 		FontState state_after;     ///< Font state after the line.
-		ParagraphLayouter *layout; ///< Layout of the line.
+		std::unique_ptr<ParagraphLayouter> layout = nullptr; ///< Layout of the line.
 
-		LineCacheItem() : buffer(nullptr), layout(nullptr) {}
-		~LineCacheItem() { delete layout; free(buffer); }
+		LineCacheItem() : buffer(nullptr) {}
+		~LineCacheItem() { free(buffer); }
 	};
 private:
 	typedef std::map<LineCacheKey, LineCacheItem, LineCacheCompare> LineCache;
