@@ -50,6 +50,7 @@ add_files(
     airport_gui.cpp
     animated_tile.cpp
     animated_tile_func.h
+    animated_tile_map.h
     articulated_vehicles.cpp
     articulated_vehicles.h
     autocompletion.cpp
