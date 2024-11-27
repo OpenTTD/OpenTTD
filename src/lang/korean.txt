@@ -629,6 +629,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화�
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - 생산량 이력
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :생산량
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :수송량
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}상세 성취도를 봅니다.
 
