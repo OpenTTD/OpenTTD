@@ -5254,6 +5254,7 @@ static void NewSpriteGroup(ByteReader &buf)
 				if (adjust.type != DSGA_TYPE_NONE) {
 					adjust.add_val    = buf.ReadVarSize(varsize);
 					adjust.divmod_val = buf.ReadVarSize(varsize);
+					if (adjust.divmod_val == 0) adjust.divmod_val = 1; // Ensure that divide by zero cannot occur
 				} else {
 					adjust.add_val    = 0;
 					adjust.divmod_val = 0;
