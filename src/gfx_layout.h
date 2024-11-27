@@ -81,7 +81,7 @@ public:
 };
 
 /** Mapping from index to font. The pointer is owned by FontColourMap. */
-using FontMap = std::map<int, Font *>;
+using FontMap = std::vector<std::pair<int, Font *>>;
 
 /**
  * Interface to glue fallback and normal layouter into one.

@@ -105,8 +105,8 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 			continue;
 		}
 
-		if (fontMapping.count(buff - buff_begin) == 0) {
-			fontMapping[buff - buff_begin] = f;
+		if (fontMapping.empty() || fontMapping.back().first != buff - buff_begin) {
+			fontMapping.emplace_back(buff - buff_begin, f);
 		}
 		f = Layouter::GetFont(state.fontsize, state.cur_colour);
 	}
@@ -114,8 +114,8 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 	/* Better safe than sorry. */
 	*buff = '\0';
 
-	if (fontMapping.count(buff - buff_begin) == 0) {
-		fontMapping[buff - buff_begin] = f;
+	if (fontMapping.empty() || fontMapping.back().first != buff - buff_begin) {
+		fontMapping.emplace_back(buff - buff_begin, f);
 	}
 	line.layout = T::GetParagraphLayout(buff_begin, buff, fontMapping);
 	line.state_after = state;
