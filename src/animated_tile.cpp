@@ -8,7 +8,7 @@
 /** @file animated_tile.cpp Everything related to animated tiles. */
 
 #include "stdafx.h"
-#include "core/container_func.hpp"
+#include "animated_tile_map.h"
 #include "tile_cmd.h"
 #include "viewport_func.h"
 #include "framerate_type.h"
@@ -19,16 +19,13 @@
 std::vector<TileIndex> _animated_tiles;
 
 /**
- * Removes the given tile from the animated tile table.
+ * Stops animation on the given tile.
  * @param tile the tile to remove
  */
 void DeleteAnimatedTile(TileIndex tile)
 {
-	auto to_remove = std::ranges::find(_animated_tiles, tile);
-	if (to_remove != _animated_tiles.end()) {
-		/* The order of the remaining elements must stay the same, otherwise the animation loop may miss a tile. */
-		_animated_tiles.erase(to_remove);
-	}
+	/* If the tile was animated, mark it for deletion from the tile list on the next animation loop. */
+	if (GetAnimatedTileState(tile) == AnimatedTileState::Animated) SetAnimatedTileState(tile, AnimatedTileState::Deleted);
 }
 
 /**
@@ -39,7 +36,17 @@ void DeleteAnimatedTile(TileIndex tile)
 void AddAnimatedTile(TileIndex tile, bool mark_dirty)
 {
 	if (mark_dirty) MarkTileDirtyByTile(tile);
-	include(_animated_tiles, tile);
+
+	const AnimatedTileState state = GetAnimatedTileState(tile);
+
+	/* Tile is already animated so nothing needs to happen. */
+	if (state == AnimatedTileState::Animated) return;
+
+	/* Tile has no previous animation state, so add to the tile list. If the state is anything
+	 * other than None then the tile will still be in the list and does not need to be added again. */
+	if (state == AnimatedTileState::None) _animated_tiles.push_back(tile);
+
+	SetAnimatedTileState(tile, AnimatedTileState::Animated);
 }
 
 /**
@@ -47,22 +54,29 @@ void AddAnimatedTile(TileIndex tile, bool mark_dirty)
  */
 void AnimateAnimatedTiles()
 {
-	PerformanceAccumulator framerate(PFE_GL_LANDSCAPE);
+	PerformanceAccumulator landscape_framerate(PFE_GL_LANDSCAPE);
 
-	const TileIndex *ti = _animated_tiles.data();
-	while (ti < _animated_tiles.data() + _animated_tiles.size()) {
-		const TileIndex curr = *ti;
-		AnimateTile(curr);
-		/* During the AnimateTile call, DeleteAnimatedTile could have been called,
-		 * deleting an element we've already processed and pushing the rest one
-		 * slot to the left. We can detect this by checking whether the index
-		 * in the current slot has changed - if it has, an element has been deleted,
-		 * and we should process the current slot again instead of going forward.
-		 * NOTE: this will still break if more than one animated tile is being
-		 *       deleted during the same AnimateTile call, but no code seems to
-		 *       be doing this anyway.
-		 */
-		if (*ti == curr) ++ti;
+	for (auto it = std::begin(_animated_tiles); it != std::end(_animated_tiles); /* nothing */) {
+		TileIndex &tile = *it;
+
+		if (GetAnimatedTileState(tile) != AnimatedTileState::Animated) {
+			/* Tile should not be animated any more, mark it as not animated and erase it from the list. */
+			SetAnimatedTileState(tile, AnimatedTileState::None);
+
+			/* Removing the last entry, no need to swap and continue. */
+			if (std::next(it) == std::end(_animated_tiles)) {
+				_animated_tiles.pop_back();
+				break;
+			}
+
+			/* Replace the current list entry with the back of the list to avoid moving elements. */
+			*it = _animated_tiles.back();
+			_animated_tiles.pop_back();
+			continue;
+		}
+
+		AnimateTile(tile);
+		++it;
 	}
 }
 

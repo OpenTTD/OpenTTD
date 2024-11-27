@@ -43,6 +43,7 @@
 #include "../game/game.hpp"
 #include "../town.h"
 #include "../economy_base.h"
+#include "../animated_tile_map.h"
 #include "../animated_tile_func.h"
 #include "../subsidy_base.h"
 #include "../subsidy_func.h"
@@ -2222,6 +2223,23 @@ bool AfterLoadGame()
 		for (auto t : Map::Iterate()) {
 			if (!IsTileType(t, MP_WATER)) continue;
 			SetNonFloodingWaterTile(t, false);
+		}
+	}
+
+	if (IsSavegameVersionBefore(SLV_ANIMATED_TILE_STATE_IN_MAP)) {
+		/* Animated tile state is stored in the map array, allowing
+		 * quicker addition and deletion of animated tiles. */
+
+		extern std::vector<TileIndex> _animated_tiles;
+
+		for (auto t : Map::Iterate()) {
+			/* Ensure there is no spurious animated tile state. */
+			if (MayAnimateTile(t)) SetAnimatedTileState(t, AnimatedTileState::None);
+		}
+
+		/* Set animated flag for all valid animated tiles. */
+		for (const TileIndex &tile : _animated_tiles) {
+			if (tile != INVALID_TILE) SetAnimatedTileState(tile, AnimatedTileState::Animated);
 		}
 	}
 
