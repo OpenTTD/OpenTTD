@@ -1217,7 +1217,7 @@ struct River_UserData {
 };
 
 /* AyStar callback for checking whether we reached our destination. */
-static int32_t River_EndNodeCheck(const AyStar *aystar, const PathNode *current)
+static AyStarStatus River_EndNodeCheck(const AyStar *aystar, const PathNode *current)
 {
 	return current->GetTile() == *(TileIndex*)aystar->user_target ? AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
 }
