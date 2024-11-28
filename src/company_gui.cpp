@@ -2016,8 +2016,6 @@ struct CompanyInfrastructureWindow : Window
 
 		for (auto il = first; il != last; ++il, y += GetLineHeight()) {
 
-			CIWInfrastructureCache gil = *il;
-
 			switch (il->type) {
 				case CIW_ENTRY_LABEL_VALUES:
 
