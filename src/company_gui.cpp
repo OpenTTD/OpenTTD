@@ -1853,12 +1853,10 @@ struct CompanyInfrastructureWindow : Window
 	{
 		const Company *c = Company::Get((CompanyID)this->window_number);
 
-		Money maintenance_cost = 0;
+		Money maintenance_cost       = 0;
 		Money total_maintenance_cost = 0;
 
-
 		infrastructurelist.clear();
-
 
 		/* railtypes + signals. */
 		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT);
@@ -1866,14 +1864,14 @@ struct CompanyInfrastructureWindow : Window
 		if (this->railtypes != RAILTYPES_NONE) {
 			for (const auto &rt : _sorted_railtypes) {
 				if (HasBit(this->railtypes, rt)) {
-					maintenance_cost = RailMaintenanceCost(rt, c->infrastructure.rail[rt], c->infrastructure.GetRailTotal());
+					maintenance_cost        = RailMaintenanceCost(rt, c->infrastructure.rail[rt], c->infrastructure.GetRailTotal());
 					total_maintenance_cost += maintenance_cost;
 
 					infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, GetRailTypeInfo(rt)->strings.name, c->infrastructure.rail[rt], maintenance_cost);
 				}
 			}
 
-			maintenance_cost = SignalMaintenanceCost(c->infrastructure.signal);
+			maintenance_cost        = SignalMaintenanceCost(c->infrastructure.signal);
 			total_maintenance_cost += maintenance_cost;
 
 			infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS, c->infrastructure.signal, maintenance_cost);
@@ -1887,7 +1885,7 @@ struct CompanyInfrastructureWindow : Window
 
 		for (const auto &rt : _sorted_roadtypes) {
 			if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt)) {
-				maintenance_cost = RoadMaintenanceCost(rt, c->infrastructure.road[rt], c->infrastructure.GetRoadTotal());
+				maintenance_cost        = RoadMaintenanceCost(rt, c->infrastructure.road[rt], c->infrastructure.GetRoadTotal());
 				total_maintenance_cost += maintenance_cost;
 
 				infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, GetRoadTypeInfo(rt)->strings.name, c->infrastructure.road[rt], maintenance_cost);
@@ -1902,9 +1900,9 @@ struct CompanyInfrastructureWindow : Window
 
 		for (const auto &rt : _sorted_roadtypes) {
 			if (HasBit(this->roadtypes, rt) && RoadTypeIsTram(rt)) {
-				maintenance_cost = RoadMaintenanceCost(rt, c->infrastructure.road[rt], c->infrastructure.GetRoadTotal());
+				maintenance_cost        = RoadMaintenanceCost(rt, c->infrastructure.road[rt], c->infrastructure.GetRoadTotal());
 				total_maintenance_cost += maintenance_cost;
-				has_trams = true;
+				has_trams               = true;
 
 				infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, GetRoadTypeInfo(rt)->strings.name, c->infrastructure.road[rt], maintenance_cost);
 			}
@@ -1917,7 +1915,7 @@ struct CompanyInfrastructureWindow : Window
 		/* water-ways. */
 		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT);
 
-		maintenance_cost = CanalMaintenanceCost(c->infrastructure.water);
+		maintenance_cost        = CanalMaintenanceCost(c->infrastructure.water);
 		total_maintenance_cost += maintenance_cost;
 
 		infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS, c->infrastructure.water, maintenance_cost);
@@ -1926,12 +1924,12 @@ struct CompanyInfrastructureWindow : Window
 		/* air-ways. */
 		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT);
 
-		maintenance_cost = StationMaintenanceCost(c->infrastructure.station);
+		maintenance_cost        = StationMaintenanceCost(c->infrastructure.station);
 		total_maintenance_cost += maintenance_cost;
 
 		infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS, c->infrastructure.station, maintenance_cost);
 
-		maintenance_cost = AirportMaintenanceCost(c->index);
+		maintenance_cost        = AirportMaintenanceCost(c->index);
 		total_maintenance_cost += maintenance_cost;
 
 		infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS, c->infrastructure.airport, maintenance_cost);
@@ -1963,13 +1961,13 @@ struct CompanyInfrastructureWindow : Window
 		if (widget != WID_CI_LIST) return;
 
 		uint  max_lwidth = 0;
-		uint  max_count = 10000;    // Some random number to reserve enough space.
-		Money max_cost = 1000000;   // Some random number to reserve enough space.
+		uint  max_count  = 10000;    // Some random number to reserve enough space.
+		Money max_cost   = 1000000;   // Some random number to reserve enough space.
 
 		for (const auto &ie : this->infrastructurelist) {
 			max_lwidth = std::max(max_lwidth, GetStringBoundingBox(ie.label).width);
-			max_cost = std::max(max_cost, ie.monthly_cost);
-			max_count = std::max(max_count, ie.count);
+			max_cost   = std::max(max_cost, ie.monthly_cost);
+			max_count  = std::max(max_count, ie.count);
 		}
 
 		/* add ident to labels */
@@ -1978,20 +1976,20 @@ struct CompanyInfrastructureWindow : Window
 		SetDParam(0, max_count);
 
 		max_count_width = GetStringBoundingBox(STR_JUST_COMMA).width + padding.width * 2;
-		size.height = static_cast<uint>(this->infrastructurelist.size() * GetLineHeight());
+		size.height     = static_cast<uint>(this->infrastructurelist.size() * GetLineHeight());
 
 		if (_settings_game.economy.infrastructure_maintenance) {
 			SetDParam(0, max_cost * 12);
 			max_cost_width = GetStringBoundingBox(TimerGameEconomy::UsingWallclockUnits()
 					? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR).width;
 
-			size.height += WidgetDimensions::unscaled.vsep_normal * 2;
+			size.height   += WidgetDimensions::unscaled.vsep_normal * 2;
 		} else {
 			max_cost_width = 0;
 		}
 
-		size.height = Clamp(size.height, 0, GetLineHeight() * 25);   // max 25 lines otherwise expand widow manually
-		size.width = max_label_width + WidgetDimensions::scaled.hsep_normal + max_cost_width + WidgetDimensions::scaled.hsep_normal + max_count_width;
+		size.height   = Clamp(size.height, 0, GetLineHeight() * 25);   // max 25 lines otherwise expand widow manually
+		size.width    = max_label_width + WidgetDimensions::scaled.hsep_normal + max_cost_width + WidgetDimensions::scaled.hsep_normal + max_count_width;
 
 		resize.height = GetLineHeight();
 	}
@@ -2005,9 +2003,9 @@ struct CompanyInfrastructureWindow : Window
 		Rect ir = rr.Indent(WidgetDimensions::scaled.hsep_indent, _current_text_dir == TD_RTL);
 
 		int label_right = rr.left + this->max_label_width;          // resize rect to handle text direction change
-		int count_left = ir.right - this->max_count_width;
-		int cost_right = count_left - WidgetDimensions::scaled.hsep_normal;
-		int cost_left = cost_right - this->max_cost_width;
+		int count_left  = ir.right - this->max_count_width;
+		int cost_right  = count_left - WidgetDimensions::scaled.hsep_normal;
+		int cost_left   = cost_right - this->max_cost_width;
 
 
 		this->BuildCompanyInfrastructureList();
