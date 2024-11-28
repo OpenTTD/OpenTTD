@@ -28,13 +28,13 @@
 static const int AYSTAR_DEF_MAX_SEARCH_NODES = 10000; ///< Reference limit for #AyStar::max_search_nodes
 
 /** Return status of #AyStar methods. */
-enum AyStarStatus {
-	AYSTAR_FOUND_END_NODE, ///< An end node was found.
-	AYSTAR_EMPTY_OPENLIST, ///< All items are tested, and no path has been found.
-	AYSTAR_STILL_BUSY,     ///< Some checking was done, but no path found yet, and there are still items left to try.
-	AYSTAR_NO_PATH,        ///< No path to the goal was found.
-	AYSTAR_LIMIT_REACHED,  ///< The #AyStar::max_search_nodes limit has been reached, aborting search.
-	AYSTAR_DONE,           ///< Not an end-tile, or wrong direction.
+enum class AyStarStatus : uint8_t {
+	FoundEndNode, ///< An end node was found.
+	EmptyOpenList, ///< All items are tested, and no path has been found.
+	StillBusy, ///< Some checking was done, but no path found yet, and there are still items left to try.
+	NoPath, ///< No path to the goal was found.
+	LimitReached, ///< The #AyStar::max_search_nodes limit has been reached, aborting search.
+	Done, ///< Not an end-tile, or wrong direction.
 };
 
 static const int AYSTAR_INVALID_NODE = -1; ///< Item is not valid (for example, not walkable).
@@ -59,8 +59,8 @@ struct AyStar;
  * don't try to enter the file tile with a 90-degree curve. So please, leave
  * this an #OpenListNode, it works just fine.
  * @return Status of the node:
- *  - #AYSTAR_FOUND_END_NODE : indicates this is the end tile
- *  - #AYSTAR_DONE : indicates this is not the end tile (or direction was wrong)
+ *  - #AyStarStatus::FoundEndNode : indicates this is the end tile
+ *  - #AyStarStatus::Done : indicates this is not the end tile (or direction was wrong)
  */
 typedef AyStarStatus AyStar_EndNodeCheck(const AyStar *aystar, const PathNode *current);
 
