@@ -81,14 +81,34 @@ static const std::initializer_list<ExpensesType> _expenses_list_capital_costs = 
 	EXPENSES_OTHER,
 };
 
+/** Company Ifrastructure Window infrastructure cache type. */
+enum CIWInfrastructureType : int {
+	CIW_ENTRY_HEADER,               ///< Section Header.
+	CIW_ENTRY_BLANK_LINE,           ///< Blank line.
+	CIW_ENTRY_LABEL_ONLY,           ///< Label only entry, no values.
+	CIW_ENTRY_LABEL_VALUES,         ///< Infrastructure name + values (count/cost).
+	CIW_ENTRY_TOTAL_COST,           ///< Infrastructure maintainance total cost.
+};
+
+/**
+ * Infrastructure count and maintenance cost cache container.
+ * container for total infrastructure running cost, monthly maintenance cost and infrastructure count
+ * for drawing the CompanyInfrastructureWindow with a scrollbar.
+*/
+struct CIWInfrastructureCache {
+	CIWInfrastructureType   type;         ///< Section Header.
+	StringID                label;
+	uint                    count;
+	Money                   monthycost;
+};
+
 /** Expense list container. */
 struct ExpensesList {
 	const StringID title; ///< StringID of list title.
 	const std::initializer_list<ExpensesType> &items; ///< List of expenses types.
 
 	ExpensesList(StringID title, const std::initializer_list<ExpensesType> &list) : title(title), items(list)
-	{
-	}
+	{}
 
 	uint GetHeight() const
 	{
@@ -358,19 +378,22 @@ struct CompanyFinancesWindow : Window {
 				SetDParam(1, (CompanyID)this->window_number);
 				break;
 
-			case WID_CF_BALANCE_VALUE: {
+			case WID_CF_BALANCE_VALUE:
+			{
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				SetDParam(0, c->money);
 				break;
 			}
 
-			case WID_CF_LOAN_VALUE: {
+			case WID_CF_LOAN_VALUE:
+			{
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				SetDParam(0, c->current_loan);
 				break;
 			}
 
-			case WID_CF_OWN_VALUE: {
+			case WID_CF_OWN_VALUE:
+			{
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				SetDParam(0, c->money - c->current_loan);
 				break;
@@ -380,7 +403,8 @@ struct CompanyFinancesWindow : Window {
 				SetDParam(0, _settings_game.difficulty.initial_interest);
 				break;
 
-			case WID_CF_MAXLOAN_VALUE: {
+			case WID_CF_MAXLOAN_VALUE:
+			{
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				SetDParam(0, c->GetMaxLoan());
 				break;
@@ -397,7 +421,7 @@ struct CompanyFinancesWindow : Window {
 	{
 		switch (widget) {
 			case WID_CF_EXPS_CATEGORY:
-				size.width  = GetMaxCategoriesWidth();
+				size.width = GetMaxCategoriesWidth();
 				size.height = GetTotalCategoriesHeight();
 				break;
 
@@ -429,7 +453,8 @@ struct CompanyFinancesWindow : Window {
 
 			case WID_CF_EXPS_PRICE1:
 			case WID_CF_EXPS_PRICE2:
-			case WID_CF_EXPS_PRICE3: {
+			case WID_CF_EXPS_PRICE3:
+			{
 				int period = widget - WID_CF_EXPS_PRICE1;
 				if (period < this->first_visible) break;
 
@@ -540,14 +565,14 @@ struct CompanyFinancesWindow : Window {
 	 * Check on a regular interval if the maximum amount of money has changed.
 	 * If it has, rescale the window to fit the new amount.
 	 */
-	IntervalTimer<TimerWindow> rescale_interval = {std::chrono::seconds(3), [this](auto) {
+	IntervalTimer<TimerWindow> rescale_interval = { std::chrono::seconds(3), [this](auto) {
 		const Company *c = Company::Get((CompanyID)this->window_number);
 		if (c->money > CompanyFinancesWindow::max_money) {
 			CompanyFinancesWindow::max_money = std::max(c->money * 2, CompanyFinancesWindow::max_money * 4);
 			this->SetupWidgets();
 			this->ReInit();
 		}
-	}};
+	} };
 };
 
 /** First conservative estimate of the maximum amount of money */
@@ -590,9 +615,8 @@ static const LiveryClass _livery_class[LS_END] = {
 template <SpriteID TSprite = SPR_SQUARE>
 class DropDownListColourItem : public DropDownIcon<DropDownString<DropDownListItem>> {
 public:
-	DropDownListColourItem(int colour, bool masked) : DropDownIcon<DropDownString<DropDownListItem>>(TSprite, GENERAL_SPRITE_COLOUR(colour % COLOUR_END), colour < COLOUR_END ? (STR_COLOUR_DARK_BLUE + colour) : STR_COLOUR_DEFAULT, colour, masked)
-	{
-	}
+	DropDownListColourItem(int colour, bool masked) : DropDownIcon<DropDownString<DropDownListItem>>(TSprite, GENERAL_SPRITE_COLOUR(colour %COLOUR_END), colour < COLOUR_END ? (STR_COLOUR_DARK_BLUE + colour) : STR_COLOUR_DEFAULT, colour, masked)
+	{}
 };
 
 /** Company livery colour scheme window. */
@@ -742,9 +766,10 @@ public:
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
-			case WID_SCL_SPACER_DROPDOWN: {
-				/* The matrix widget below needs enough room to print all the schemes. */
-				Dimension d = {0, 0};
+			case WID_SCL_SPACER_DROPDOWN:
+			{
+/* The matrix widget below needs enough room to print all the schemes. */
+				Dimension d = { 0, 0 };
 				for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 					d = maxdim(d, GetStringBoundingBox(STR_LIVERY_DEFAULT + scheme));
 				}
@@ -761,8 +786,9 @@ public:
 				break;
 			}
 
-			case WID_SCL_MATRIX: {
-				/* 11 items in the default rail class */
+			case WID_SCL_MATRIX:
+			{
+/* 11 items in the default rail class */
 				this->square = GetSpriteSize(SPR_SQUARE);
 				this->line_height = std::max(this->square.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
 
@@ -779,7 +805,8 @@ public:
 				}
 				[[fallthrough]];
 
-			case WID_SCL_PRI_COL_DROPDOWN: {
+			case WID_SCL_PRI_COL_DROPDOWN:
+			{
 				this->square = GetSpriteSize(SPR_SQUARE);
 				int string_padding = this->square.width + WidgetDimensions::scaled.hsep_normal + padding.width;
 				for (Colours colour = COLOUR_BEGIN; colour != COLOUR_END; colour++) {
@@ -813,7 +840,8 @@ public:
 				break;
 
 			case WID_SCL_PRI_COL_DROPDOWN:
-			case WID_SCL_SEC_COL_DROPDOWN: {
+			case WID_SCL_SEC_COL_DROPDOWN:
+			{
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
 				StringID colour = STR_COLOUR_DEFAULT;
@@ -869,7 +897,7 @@ public:
 
 		Rect ir = r.WithHeight(this->resize.step_height).Shrink(WidgetDimensions::scaled.matrix);
 		int square_offs = (ir.Height() - this->square.height) / 2;
-		int text_offs   = (ir.Height() - GetCharacterHeight(FS_NORMAL)) / 2;
+		int text_offs = (ir.Height() - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		int y = ir.top;
 
@@ -965,7 +993,8 @@ public:
 				ShowColourDropDownMenu(WID_SCL_SEC_COL_DROPDOWN);
 				break;
 
-			case WID_SCL_MATRIX: {
+			case WID_SCL_MATRIX:
+			{
 				if (this->livery_class < LC_GROUP_RAIL) {
 					uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget);
 					if (row >= this->rows) return;
@@ -1062,7 +1091,7 @@ public:
 		}
 
 		if (!current_class_valid) {
-			Point pt = {0, 0};
+			Point pt = { 0, 0 };
 			this->OnClick(pt, WID_SCL_CLASS_GENERAL, 1);
 		}
 	}
@@ -1132,9 +1161,9 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, Colours colour, const Rect &
 	int x = CenterBounds(r.left, r.right, d.width);
 	int y = CenterBounds(r.top, r.bottom, d.height);
 
-	bool has_moustache   = !HasBit(ge, GENDER_FEMALE) && GetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE,   ge) != 0;
+	bool has_moustache = !HasBit(ge, GENDER_FEMALE) && GetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE, ge) != 0;
 	bool has_tie_earring = !HasBit(ge, GENDER_FEMALE) || GetCompanyManagerFaceBits(cmf, CMFV_HAS_TIE_EARRING, ge) != 0;
-	bool has_glasses     = GetCompanyManagerFaceBits(cmf, CMFV_HAS_GLASSES, ge) != 0;
+	bool has_glasses = GetCompanyManagerFaceBits(cmf, CMFV_HAS_GLASSES, ge) != 0;
 	PaletteID pal;
 
 	/* Modify eye colour palette only if 2 or more valid values exist */
@@ -1323,8 +1352,7 @@ static constexpr NWidgetPart _nested_select_company_manager_face_widgets[] = {
 };
 
 /** Management class for customizing the face of the company manager. */
-class SelectCompanyManagerFaceWindow : public Window
-{
+class SelectCompanyManagerFaceWindow : public Window {
 	CompanyManagerFace face; ///< company manager face bits
 	bool advanced; ///< advanced company manager face selection window
 
@@ -1366,8 +1394,8 @@ class SelectCompanyManagerFaceWindow : public Window
 		this->is_moust_male = !is_female && GetCompanyManagerFaceBits(this->face, CMFV_HAS_MOUSTACHE, this->ge) != 0; // is a male face with moustache
 
 		this->GetWidget<NWidgetCore>(WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT)->widget_data = this->is_female ? STR_FACE_EARRING : STR_FACE_MOUSTACHE;
-		this->GetWidget<NWidgetCore>(WID_SCMF_TIE_EARRING_TEXT)->widget_data           = this->is_female ? STR_FACE_EARRING : STR_FACE_TIE;
-		this->GetWidget<NWidgetCore>(WID_SCMF_LIPS_MOUSTACHE_TEXT)->widget_data        = this->is_moust_male ? STR_FACE_MOUSTACHE : STR_FACE_LIPS;
+		this->GetWidget<NWidgetCore>(WID_SCMF_TIE_EARRING_TEXT)->widget_data = this->is_female ? STR_FACE_EARRING : STR_FACE_TIE;
+		this->GetWidget<NWidgetCore>(WID_SCMF_LIPS_MOUSTACHE_TEXT)->widget_data = this->is_moust_male ? STR_FACE_MOUSTACHE : STR_FACE_LIPS;
 	}
 
 public:
@@ -1407,10 +1435,10 @@ public:
 	{
 		/* Size of the boolean yes/no button. */
 		Dimension yesno_dim = maxdim(GetStringBoundingBox(STR_FACE_YES), GetStringBoundingBox(STR_FACE_NO));
-		yesno_dim.width  += WidgetDimensions::scaled.framerect.Horizontal();
+		yesno_dim.width += WidgetDimensions::scaled.framerect.Horizontal();
 		yesno_dim.height += WidgetDimensions::scaled.framerect.Vertical();
 		/* Size of the number button + arrows. */
-		Dimension number_dim = {0, 0};
+		Dimension number_dim = { 0, 0 };
 		for (int val = 1; val <= 12; val++) {
 			SetDParam(0, val);
 			number_dim = maxdim(number_dim, GetStringBoundingBox(STR_JUST_INT));
@@ -1472,13 +1500,13 @@ public:
 	{
 		/* lower the non-selected gender button */
 		this->SetWidgetsLoweredState(!this->is_female, WID_SCMF_MALE, WID_SCMF_MALE2);
-		this->SetWidgetsLoweredState( this->is_female, WID_SCMF_FEMALE, WID_SCMF_FEMALE2);
+		this->SetWidgetsLoweredState(this->is_female, WID_SCMF_FEMALE, WID_SCMF_FEMALE2);
 
 		/* advanced company manager face selection window */
 
 		/* lower the non-selected ethnicity button */
 		this->SetWidgetLoweredState(WID_SCMF_ETHNICITY_EUR, !HasBit(this->ge, ETHNICITY_BLACK));
-		this->SetWidgetLoweredState(WID_SCMF_ETHNICITY_AFR,  HasBit(this->ge, ETHNICITY_BLACK));
+		this->SetWidgetLoweredState(WID_SCMF_ETHNICITY_AFR, HasBit(this->ge, ETHNICITY_BLACK));
 
 
 		/* Disable dynamically the widgets which CompanyManagerFaceVariable has less than 2 options
@@ -1536,7 +1564,7 @@ public:
 				if (this->is_female) { // Only for female faces
 					this->SetFaceStringParameters(WID_SCMF_HAS_MOUSTACHE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_HAS_TIE_EARRING, this->ge), true);
 				} else { // Only for male faces
-					this->SetFaceStringParameters(WID_SCMF_HAS_MOUSTACHE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_HAS_MOUSTACHE,   this->ge), true);
+					this->SetFaceStringParameters(WID_SCMF_HAS_MOUSTACHE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_HAS_MOUSTACHE, this->ge), true);
 				}
 				break;
 
@@ -1548,44 +1576,44 @@ public:
 				if (this->is_moust_male) { // Only for male faces with moustache
 					this->SetFaceStringParameters(WID_SCMF_LIPS_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_MOUSTACHE, this->ge), false);
 				} else { // Only for female faces or male faces without moustache
-					this->SetFaceStringParameters(WID_SCMF_LIPS_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_LIPS,      this->ge), false);
+					this->SetFaceStringParameters(WID_SCMF_LIPS_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_LIPS, this->ge), false);
 				}
 				break;
 
 			case WID_SCMF_HAS_GLASSES:
-				this->SetFaceStringParameters(WID_SCMF_HAS_GLASSES, GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES, this->ge), true );
+				this->SetFaceStringParameters(WID_SCMF_HAS_GLASSES, GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES, this->ge), true);
 				break;
 
 			case WID_SCMF_HAIR:
-				this->SetFaceStringParameters(WID_SCMF_HAIR,        GetCompanyManagerFaceBits(this->face, CMFV_HAIR,        this->ge), false);
+				this->SetFaceStringParameters(WID_SCMF_HAIR, GetCompanyManagerFaceBits(this->face, CMFV_HAIR, this->ge), false);
 				break;
 
 			case WID_SCMF_EYEBROWS:
-				this->SetFaceStringParameters(WID_SCMF_EYEBROWS,    GetCompanyManagerFaceBits(this->face, CMFV_EYEBROWS,    this->ge), false);
+				this->SetFaceStringParameters(WID_SCMF_EYEBROWS, GetCompanyManagerFaceBits(this->face, CMFV_EYEBROWS, this->ge), false);
 				break;
 
 			case WID_SCMF_EYECOLOUR:
-				this->SetFaceStringParameters(WID_SCMF_EYECOLOUR,   GetCompanyManagerFaceBits(this->face, CMFV_EYE_COLOUR,  this->ge), false);
+				this->SetFaceStringParameters(WID_SCMF_EYECOLOUR, GetCompanyManagerFaceBits(this->face, CMFV_EYE_COLOUR, this->ge), false);
 				break;
 
 			case WID_SCMF_GLASSES:
-				this->SetFaceStringParameters(WID_SCMF_GLASSES,     GetCompanyManagerFaceBits(this->face, CMFV_GLASSES,     this->ge), false);
+				this->SetFaceStringParameters(WID_SCMF_GLASSES, GetCompanyManagerFaceBits(this->face, CMFV_GLASSES, this->ge), false);
 				break;
 
 			case WID_SCMF_NOSE:
-				this->SetFaceStringParameters(WID_SCMF_NOSE,        GetCompanyManagerFaceBits(this->face, CMFV_NOSE,        this->ge), false);
+				this->SetFaceStringParameters(WID_SCMF_NOSE, GetCompanyManagerFaceBits(this->face, CMFV_NOSE, this->ge), false);
 				break;
 
 			case WID_SCMF_CHIN:
-				this->SetFaceStringParameters(WID_SCMF_CHIN,        GetCompanyManagerFaceBits(this->face, CMFV_CHIN,        this->ge), false);
+				this->SetFaceStringParameters(WID_SCMF_CHIN, GetCompanyManagerFaceBits(this->face, CMFV_CHIN, this->ge), false);
 				break;
 
 			case WID_SCMF_JACKET:
-				this->SetFaceStringParameters(WID_SCMF_JACKET,      GetCompanyManagerFaceBits(this->face, CMFV_JACKET,      this->ge), false);
+				this->SetFaceStringParameters(WID_SCMF_JACKET, GetCompanyManagerFaceBits(this->face, CMFV_JACKET, this->ge), false);
 				break;
 
 			case WID_SCMF_COLLAR:
-				this->SetFaceStringParameters(WID_SCMF_COLLAR,      GetCompanyManagerFaceBits(this->face, CMFV_COLLAR,      this->ge), false);
+				this->SetFaceStringParameters(WID_SCMF_COLLAR, GetCompanyManagerFaceBits(this->face, CMFV_COLLAR, this->ge), false);
 				break;
 		}
 	}
@@ -1752,32 +1780,11 @@ static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.framerect), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_RAIL_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_RAIL_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_ROAD_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_ROAD_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TRAM_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TRAM_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_WATER_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_WATER_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_STATION_DESC), SetMinimalTextLines(3, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_STATION_COUNT), SetMinimalTextLines(3, 0), SetFill(0, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TOTAL_DESC), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TOTAL), SetFill(0, 1),
-			EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_CI_LIST), SetFill(1, 0), SetResize(0, 10), SetScrollbar(WID_CI_SCROLLBAR), EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_CI_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1785,18 +1792,31 @@ static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
 /**
  * Window with detailed information about the company's infrastructure.
  */
-struct CompanyInfrastructureWindow : Window
-{
+struct CompanyInfrastructureWindow : Window {
 	RailTypes railtypes; ///< Valid railtypes.
 	RoadTypes roadtypes; ///< Valid roadtypes.
 
-	uint total_width; ///< String width of the total cost line.
+	uint      max_label_width; ///< Infrastructure label size.
+	uint      max_cost_width;  ///< Infratructure maintenance cost text size.
+	uint      max_count_width; ///< Infrastructure count text size.
+
+	Scrollbar *vscroll;        ///< scroll bar widget.
+
+	mutable std::vector<CIWInfrastructureCache> infrastructurelist; ///< infrastructure + total maintenance cost cache vector.
 
 	CompanyInfrastructureWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->UpdateRailRoadTypes();
 
-		this->InitNested(window_number);
+		this->CreateNestedTree();
+
+		this->vscroll = this->GetScrollbar(WID_CI_SCROLLBAR);
+		this->BuildCompanyInfrastructureList();
+
+		this->SetWidgetDirty(WID_CI_LIST);                         // Force repaint of the company infrastructure.
+
+		this->FinishInitNested(window_number);
+
 		this->owner = (Owner)this->window_number;
 	}
 
@@ -1827,29 +1847,103 @@ struct CompanyInfrastructureWindow : Window
 		this->roadtypes &= ~_roadtypes_hidden_mask;
 	}
 
-	/** Get total infrastructure maintenance cost. */
-	Money GetTotalMaintenanceCost() const
+	/**
+	 * Build a vector of infrastructure types(roads, trains, trams, airports, stations, water vehicles) to be displayed.
+	 *   Total maintenance cost of all infrastructure types is last entry in vector.
+	 */
+	void BuildCompanyInfrastructureList() const
 	{
 		const Company *c = Company::Get((CompanyID)this->window_number);
-		Money total;
 
-		uint32_t rail_total = c->infrastructure.GetRailTotal();
-		for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-			if (HasBit(this->railtypes, rt)) total += RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total);
+		Money maintenance_cost = 0;
+		Money total_maintenance_cost = 0;
+
+
+		infrastructurelist.clear();
+
+
+		/* railtypes + signals. */
+		infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT));
+
+		if (this->railtypes != RAILTYPES_NONE) {
+			for (const auto &rt : _sorted_railtypes) {
+				if (HasBit(this->railtypes, rt)) {
+					maintenance_cost = RailMaintenanceCost(rt, c->infrastructure.rail[rt], c->infrastructure.GetRailTotal());
+					total_maintenance_cost += maintenance_cost;
+
+					infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_LABEL_VALUES, GetRailTypeInfo(rt)->strings.name, c->infrastructure.rail[rt], maintenance_cost));
+				}
+			}
+
+			maintenance_cost = SignalMaintenanceCost(c->infrastructure.signal);
+			total_maintenance_cost += maintenance_cost;
+
+			infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS, c->infrastructure.signal, maintenance_cost));
+		} else {
+			/* No valid railtype. */
+			infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_LABEL_ONLY, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE));
 		}
-		total += SignalMaintenanceCost(c->infrastructure.signal);
 
-		uint32_t road_total = c->infrastructure.GetRoadTotal();
-		uint32_t tram_total = c->infrastructure.GetTramTotal();
-		for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-			if (HasBit(this->roadtypes, rt)) total += RoadMaintenanceCost(rt, c->infrastructure.road[rt], RoadTypeIsRoad(rt) ? road_total : tram_total);
+		/* roadtypes. */
+		infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT));
+
+		for (const auto &rt : _sorted_roadtypes) {
+			if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt)) {
+				maintenance_cost = RoadMaintenanceCost(rt, c->infrastructure.road[rt], c->infrastructure.GetRoadTotal());
+				total_maintenance_cost += maintenance_cost;
+
+				infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_LABEL_VALUES, GetRoadTypeInfo(rt)->strings.name, c->infrastructure.road[rt], maintenance_cost));
+			}
 		}
 
-		total += CanalMaintenanceCost(c->infrastructure.water);
-		total += StationMaintenanceCost(c->infrastructure.station);
-		total += AirportMaintenanceCost(c->index);
 
-		return total;
+		/* trams. */
+		infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT));
+
+		bool has_trams = false;
+
+		for (const auto &rt : _sorted_roadtypes) {
+			if (HasBit(this->roadtypes, rt) && RoadTypeIsTram(rt)) {
+				maintenance_cost = RoadMaintenanceCost(rt, c->infrastructure.road[rt], c->infrastructure.GetRoadTotal());
+				total_maintenance_cost += maintenance_cost;
+				has_trams = true;
+
+				infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_LABEL_VALUES, GetRoadTypeInfo(rt)->strings.name, c->infrastructure.road[rt], maintenance_cost));
+			}
+		}
+
+		/* No valid trams. */
+		if (!has_trams) infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_BLANK_LINE, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE));
+
+
+		/* water-ways. */
+		infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT));
+
+		maintenance_cost = CanalMaintenanceCost(c->infrastructure.water);
+		total_maintenance_cost += maintenance_cost;
+
+		infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS, c->infrastructure.water, maintenance_cost));
+
+
+		/* air-ways. */
+		infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT));
+
+		maintenance_cost = StationMaintenanceCost(c->infrastructure.station);
+		total_maintenance_cost += maintenance_cost;
+
+		infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS, c->infrastructure.station, maintenance_cost));
+
+		maintenance_cost = AirportMaintenanceCost(c->index);
+		total_maintenance_cost += maintenance_cost;
+
+		infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS, c->infrastructure.airport, maintenance_cost));
+
+
+		/* total maintenance cost. */
+		infrastructurelist.push_back(CIWInfrastructureCache(CIW_ENTRY_TOTAL_COST, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE, 0, total_maintenance_cost));
+
+
+		this->vscroll->SetCount(this->infrastructurelist.size());  // Update scrollbar as well.
 	}
 
 	void SetStringParameters(WidgetID widget) const override
@@ -1861,231 +1955,111 @@ struct CompanyInfrastructureWindow : Window
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
+	inline int GetLineHeight() const
 	{
-		const Company *c = Company::Get((CompanyID)this->window_number);
-
-		switch (widget) {
-			case WID_CI_RAIL_DESC: {
-				uint lines = 1; // Starts at 1 because a line is also required for the section title
-
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT).width + padding.width);
-
-				for (const auto &rt : _sorted_railtypes) {
-					if (HasBit(this->railtypes, rt)) {
-						lines++;
-						size.width = std::max(size.width, GetStringBoundingBox(GetRailTypeInfo(rt)->strings.name).width + padding.width + WidgetDimensions::scaled.hsep_indent);
-					}
-				}
-				if (this->railtypes != RAILTYPES_NONE) {
-					lines++;
-					size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
-				}
-
-				size.height = std::max(size.height, lines * GetCharacterHeight(FS_NORMAL));
-				break;
-			}
-
-			case WID_CI_ROAD_DESC:
-			case WID_CI_TRAM_DESC: {
-				uint lines = 1; // Starts at 1 because a line is also required for the section title
-
-				size.width = std::max(size.width, GetStringBoundingBox(widget == WID_CI_ROAD_DESC ? STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT : STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT).width + padding.width);
-
-				for (const auto &rt : _sorted_roadtypes) {
-					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_DESC)) {
-						lines++;
-						size.width = std::max(size.width, GetStringBoundingBox(GetRoadTypeInfo(rt)->strings.name).width + padding.width + WidgetDimensions::scaled.hsep_indent);
-					}
-				}
-
-				size.height = std::max(size.height, lines * GetCharacterHeight(FS_NORMAL));
-				break;
-			}
-
-			case WID_CI_WATER_DESC:
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT).width + padding.width);
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
-				break;
-
-			case WID_CI_STATION_DESC:
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT).width + padding.width);
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
-				break;
-
-			case WID_CI_RAIL_COUNT:
-			case WID_CI_ROAD_COUNT:
-			case WID_CI_TRAM_COUNT:
-			case WID_CI_WATER_COUNT:
-			case WID_CI_STATION_COUNT:
-			case WID_CI_TOTAL: {
-				/* Find the maximum count that is displayed. */
-				uint32_t max_val = 1000;  // Some random number to reserve enough space.
-				Money max_cost = 10000; // Some random number to reserve enough space.
-				uint32_t rail_total = c->infrastructure.GetRailTotal();
-				for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
-					max_val = std::max(max_val, c->infrastructure.rail[rt]);
-					max_cost = std::max(max_cost, RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total));
-				}
-				max_val = std::max(max_val, c->infrastructure.signal);
-				max_cost = std::max(max_cost, SignalMaintenanceCost(c->infrastructure.signal));
-				uint32_t road_total = c->infrastructure.GetRoadTotal();
-				uint32_t tram_total = c->infrastructure.GetTramTotal();
-				for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
-					max_val = std::max(max_val, c->infrastructure.road[rt]);
-					max_cost = std::max(max_cost, RoadMaintenanceCost(rt, c->infrastructure.road[rt], RoadTypeIsRoad(rt) ? road_total : tram_total));
-
-				}
-				max_val = std::max(max_val, c->infrastructure.water);
-				max_cost = std::max(max_cost, CanalMaintenanceCost(c->infrastructure.water));
-				max_val = std::max(max_val, c->infrastructure.station);
-				max_cost = std::max(max_cost, StationMaintenanceCost(c->infrastructure.station));
-				max_val = std::max(max_val, c->infrastructure.airport);
-				max_cost = std::max(max_cost, AirportMaintenanceCost(c->index));
-
-				SetDParamMaxValue(0, max_val);
-				uint count_width = GetStringBoundingBox(STR_JUST_COMMA).width + WidgetDimensions::scaled.hsep_indent; // Reserve some wiggle room
-
-				if (_settings_game.economy.infrastructure_maintenance) {
-					StringID str_total = TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR;
-					SetDParamMaxValue(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
-					this->total_width = GetStringBoundingBox(str_total).width + WidgetDimensions::scaled.hsep_indent * 2;
-					size.width = std::max(size.width, this->total_width);
-
-					SetDParamMaxValue(0, max_cost * 12); // Convert to per year
-					count_width += std::max(this->total_width, GetStringBoundingBox(str_total).width);
-				}
-
-				size.width = std::max(size.width, count_width);
-
-				/* Set height of the total line. */
-				if (widget == WID_CI_TOTAL) {
-					size.height = _settings_game.economy.infrastructure_maintenance ? std::max<uint>(size.height, WidgetDimensions::scaled.vsep_normal + GetCharacterHeight(FS_NORMAL)) : 0;
-				}
-				break;
-			}
-		}
+		return GetCharacterHeight(FS_NORMAL) + WidgetDimensions::unscaled.vsep_normal / 2;
 	}
 
-	/**
-	 * Helper for drawing the counts line.
-	 * @param r            The bounds to draw in.
-	 * @param y            The y position to draw at.
-	 * @param count        The count to show on this line.
-	 * @param monthly_cost The monthly costs.
-	 */
-	void DrawCountLine(const Rect &r, int &y, int count, Money monthly_cost) const
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		SetDParam(0, count);
-		DrawString(r.left, r.right, y += GetCharacterHeight(FS_NORMAL), STR_JUST_COMMA, TC_WHITE, SA_RIGHT);
+		if (widget != WID_CI_LIST) return;
+
+		uint  max_lwidth = 0;
+		uint  max_count = 10000;    // Some random number to reserve enough space.
+		Money max_cost = 1000000;   // Some random number to reserve enough space.
+
+		for (const auto &ie : this->infrastructurelist) {
+			max_lwidth = std::max(max_lwidth, GetStringBoundingBox(ie.label).width);
+			max_cost = std::max(max_cost, ie.monthycost);
+			max_count = std::max(max_count, ie.count);
+		}
+
+		/* add ident to labels */
+		max_label_width = max_lwidth + WidgetDimensions::scaled.hsep_indent;
+
+		SetDParam(0, max_count);
+
+		max_count_width = GetStringBoundingBox(STR_JUST_COMMA).width + padding.width * 2;
+		size.height = static_cast<uint>(this->infrastructurelist.size() * GetLineHeight());
 
 		if (_settings_game.economy.infrastructure_maintenance) {
-			SetDParam(0, monthly_cost * 12); // Convert to per year
-			Rect tr = r.WithWidth(this->total_width, _current_text_dir == TD_RTL);
-			DrawString(tr.left, tr.right, y,
-				TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR,
-				TC_FROMSTRING, SA_RIGHT);
+			SetDParam(0, max_cost * 12);
+			max_cost_width = GetStringBoundingBox(TimerGameEconomy::UsingWallclockUnits()
+					? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR).width;
+
+			size.height += WidgetDimensions::unscaled.vsep_normal * 2;
+		} else {
+			max_cost_width = 0;
 		}
+
+		size.height = Clamp(size.height, 0, GetLineHeight() * 25);   // max 25 lines otherwise expand widow manually
+		size.width = max_label_width + WidgetDimensions::scaled.hsep_normal + max_cost_width + WidgetDimensions::scaled.hsep_normal + max_count_width;
+
+		resize.height = GetLineHeight();
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
-		const Company *c = Company::Get((CompanyID)this->window_number);
+		if (widget != WID_CI_LIST) return;
 
-		int y = r.top;
+		int y = r.top + 1;
+		Rect rr = r.Shrink(WidgetDimensions::scaled.hsep_normal);
+		Rect ir = rr.Indent(WidgetDimensions::scaled.hsep_indent, _current_text_dir == TD_RTL);
 
-		Rect ir = r.Indent(WidgetDimensions::scaled.hsep_indent, _current_text_dir == TD_RTL);
-		switch (widget) {
-			case WID_CI_RAIL_DESC:
-				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT);
+		int label_right = rr.left + this->max_label_width;          // resize rect to handle text direction change
+		int count_left = ir.right - this->max_count_width;
+		int cost_right = count_left - WidgetDimensions::scaled.hsep_normal;
+		int cost_left = cost_right - this->max_cost_width;
 
-				if (this->railtypes != RAILTYPES_NONE) {
-					/* Draw name of each valid railtype. */
-					for (const auto &rt : _sorted_railtypes) {
-						if (HasBit(this->railtypes, rt)) {
-							DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), GetRailTypeInfo(rt)->strings.name, TC_WHITE);
+
+		this->BuildCompanyInfrastructureList();
+
+		auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->infrastructurelist);
+
+		for (auto il = first; il != last; ++il, y += GetLineHeight()) {
+
+			CIWInfrastructureCache gil = *il;
+
+			switch (il->type) {
+				case CIW_ENTRY_LABEL_VALUES:
+
+					SetDParam(0, il->count);
+					DrawString(count_left, ir.right, y, STR_JUST_COMMA, TC_WHITE, SA_RIGHT);
+
+					[[fallthrough]];
+
+				case CIW_ENTRY_TOTAL_COST:
+					if (_settings_game.economy.infrastructure_maintenance) {
+
+						if (il->type == CIW_ENTRY_TOTAL_COST) {
+							GfxFillRect(cost_left, y, cost_right, y + WidgetDimensions::scaled.bevel.top - 1, PC_WHITE);
+							y += 2;
 						}
-					}
-					DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS);
-				} else {
-					/* No valid railtype. */
-					DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
-				}
 
-				break;
+						SetDParam(0, il->monthycost * 12);             // Convert to per year
+						DrawString(cost_left, cost_right, y, TimerGameEconomy::UsingWallclockUnits()
+							? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, TC_FROMSTRING, SA_RIGHT);
 
-			case WID_CI_RAIL_COUNT: {
-				/* Draw infrastructure count for each valid railtype. */
-				uint32_t rail_total = c->infrastructure.GetRailTotal();
-				for (const auto &rt : _sorted_railtypes) {
-					if (HasBit(this->railtypes, rt)) {
-						this->DrawCountLine(r, y, c->infrastructure.rail[rt], RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total));
+						if (il->type == CIW_ENTRY_TOTAL_COST) break;
 					}
-				}
-				if (this->railtypes != RAILTYPES_NONE) {
-					this->DrawCountLine(r, y, c->infrastructure.signal, SignalMaintenanceCost(c->infrastructure.signal));
-				}
-				break;
+
+					[[fallthrough]];
+
+				case CIW_ENTRY_LABEL_ONLY:
+					DrawString(ir.left, label_right, y, il->label, TC_WHITE);
+					break;
+				case CIW_ENTRY_HEADER:
+					DrawString(rr.left, label_right, y, il->label);
+					break;
+				case CIW_ENTRY_BLANK_LINE:
+					break;
 			}
-
-			case WID_CI_ROAD_DESC:
-			case WID_CI_TRAM_DESC: {
-				DrawString(r.left, r.right, y, widget == WID_CI_ROAD_DESC ? STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT : STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT);
-
-				/* Draw name of each valid roadtype. */
-				for (const auto &rt : _sorted_roadtypes) {
-					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_DESC)) {
-						DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), GetRoadTypeInfo(rt)->strings.name, TC_WHITE);
-					}
-				}
-
-				break;
-			}
-
-			case WID_CI_ROAD_COUNT:
-			case WID_CI_TRAM_COUNT: {
-				uint32_t road_tram_total = widget == WID_CI_ROAD_COUNT ? c->infrastructure.GetRoadTotal() : c->infrastructure.GetTramTotal();
-				for (const auto &rt : _sorted_roadtypes) {
-					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_COUNT)) {
-						this->DrawCountLine(r, y, c->infrastructure.road[rt], RoadMaintenanceCost(rt, c->infrastructure.road[rt], road_tram_total));
-					}
-				}
-				break;
-			}
-
-			case WID_CI_WATER_DESC:
-				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT);
-				DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS);
-				break;
-
-			case WID_CI_WATER_COUNT:
-				this->DrawCountLine(r, y, c->infrastructure.water, CanalMaintenanceCost(c->infrastructure.water));
-				break;
-
-			case WID_CI_TOTAL:
-				if (_settings_game.economy.infrastructure_maintenance) {
-					Rect tr = r.WithWidth(this->total_width, _current_text_dir == TD_RTL);
-					GfxFillRect(tr.left, y, tr.right, y + WidgetDimensions::scaled.bevel.top - 1, PC_WHITE);
-					y += WidgetDimensions::scaled.vsep_normal;
-					SetDParam(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
-					DrawString(tr.left, tr.right, y,
-						TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR,
-						TC_FROMSTRING, SA_RIGHT);
-				}
-				break;
-
-			case WID_CI_STATION_DESC:
-				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT);
-				DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS);
-				DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS);
-				break;
-
-			case WID_CI_STATION_COUNT:
-				this->DrawCountLine(r, y, c->infrastructure.station, StationMaintenanceCost(c->infrastructure.station));
-				this->DrawCountLine(r, y, c->infrastructure.airport, AirportMaintenanceCost(c->index));
-				break;
 		}
+	}
+
+	void OnResize() override
+	{
+		this->vscroll->SetCapacityFromWidget(this, WID_CI_LIST, WidgetDimensions::scaled.framerect.Vertical());
 	}
 
 	/**
@@ -2203,8 +2177,7 @@ static const StringID _company_view_vehicle_count_strings[] = {
 /**
  * Window with general information about a company
  */
-struct CompanyWindow : Window
-{
+struct CompanyWindow : Window {
 	CompanyWidgets query_widget;
 
 	/** Display planes in the company window. */
@@ -2269,7 +2242,8 @@ struct CompanyWindow : Window
 				size = maxdim(size, GetScaledSpriteSize(SPR_GRADIENT));
 				break;
 
-			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
+			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE:
+			{
 				Point offset;
 				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
 				d.width -= offset.x;
@@ -2396,7 +2370,8 @@ struct CompanyWindow : Window
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 
-			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
+			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE:
+			{
 				Point offset;
 				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
 				d.height -= offset.y;
@@ -2468,7 +2443,8 @@ struct CompanyWindow : Window
 				ShowQueryString(STR_COMPANY_NAME, STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION, MAX_LENGTH_COMPANY_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
 				break;
 
-			case WID_C_VIEW_HQ: {
+			case WID_C_VIEW_HQ:
+			{
 				TileIndex tile = Company::Get((CompanyID)this->window_number)->location_of_HQ;
 				if (_ctrl_pressed) {
 					ShowExtraViewportWindow(tile);
@@ -2516,7 +2492,8 @@ struct CompanyWindow : Window
 				ShowBuyCompanyDialog((CompanyID)this->window_number, true);
 				break;
 
-			case WID_C_COMPANY_JOIN: {
+			case WID_C_COMPANY_JOIN:
+			{
 				this->query_widget = WID_C_COMPANY_JOIN;
 				CompanyID company = (CompanyID)this->window_number;
 				if (_network_server) {
@@ -2532,9 +2509,9 @@ struct CompanyWindow : Window
 	}
 
 	/** Redraw the window on a regular interval. */
-	IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
+	IntervalTimer<TimerWindow> redraw_interval = { std::chrono::seconds(3), [this](auto) {
 		this->SetDirty();
-	}};
+	} };
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
@@ -2556,7 +2533,8 @@ struct CompanyWindow : Window
 		switch (this->query_widget) {
 			default: NOT_REACHED();
 
-			case WID_C_GIVE_MONEY: {
+			case WID_C_GIVE_MONEY:
+			{
 				Money money = std::strtoull(str->c_str(), nullptr, 10) / GetCurrency().rate;
 				Command<CMD_GIVE_MONEY>::Post(STR_ERROR_CAN_T_GIVE_MONEY, money, (CompanyID)this->window_number);
 				break;
@@ -2647,13 +2625,15 @@ struct BuyCompanyWindow : Window {
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
-			case WID_BC_FACE: {
+			case WID_BC_FACE:
+			{
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				DrawCompanyManagerFace(c->face, c->colour, r);
 				break;
 			}
 
-			case WID_BC_QUESTION: {
+			case WID_BC_QUESTION:
+			{
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				SetDParam(0, c->index);
 				SetDParam(1, this->company_value);
@@ -2679,7 +2659,7 @@ struct BuyCompanyWindow : Window {
 	/**
 	 * Check on a regular interval if the company value has changed.
 	 */
-	IntervalTimer<TimerWindow> rescale_interval = {std::chrono::seconds(3), [this](auto) {
+	IntervalTimer<TimerWindow> rescale_interval = { std::chrono::seconds(3), [this](auto) {
 		/* Value can't change when in bankruptcy. */
 		if (!this->hostile_takeover) return;
 
@@ -2689,7 +2669,7 @@ struct BuyCompanyWindow : Window {
 			this->company_value = new_value;
 			this->ReInit();
 		}
-	}};
+	} };
 
 private:
 	bool hostile_takeover; ///< Whether the window is showing a hostile takeover.
