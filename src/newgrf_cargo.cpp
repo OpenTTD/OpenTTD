@@ -79,14 +79,17 @@ uint16_t GetCargoCallback(CallbackID callback, uint32_t param1, uint32_t param2,
  */
 CargoID GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit)
 {
+	/* We can't use GetCargoTranslationTable here as the usebit flag changes behviour. */
 	/* Pre-version 7 uses the bitnum lookup from (standard in v8) instead of climate dependent in some places.. */
-	if (grffile->grf_version < 7 && usebit) {
-		auto default_table = GetDefaultCargoTranslationTable(8);
-		if (cargo < default_table.size()) return GetCargoIDByLabel(default_table[cargo]);
-		return INVALID_CARGO;
+	std::span<const CargoLabel> cargo_list;
+	if (grffile->grf_version < 7 && !usebit) {
+		cargo_list = GetClimateDependentCargoTranslationTable();
+	} else if (!grffile->cargo_list.empty()) {
+		cargo_list = grffile->cargo_list;
+	} else {
+		cargo_list = GetClimateIndependentCargoTranslationTable();
 	}
 
-	/* Look in translation table. */
-	if (cargo < grffile->cargo_list.size()) return GetCargoIDByLabel(grffile->cargo_list[cargo]);
+	if (cargo < cargo_list.size()) return GetCargoIDByLabel(cargo_list[cargo]);
 	return INVALID_CARGO;
 }
