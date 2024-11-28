@@ -1861,7 +1861,7 @@ struct CompanyInfrastructureWindow : Window
 
 
 		/* railtypes + signals. */
-		infrastructurelist.push_back({CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT});
+		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT);
 
 		if (this->railtypes != RAILTYPES_NONE) {
 			for (const auto &rt : _sorted_railtypes) {
@@ -1869,34 +1869,34 @@ struct CompanyInfrastructureWindow : Window
 					maintenance_cost = RailMaintenanceCost(rt, c->infrastructure.rail[rt], c->infrastructure.GetRailTotal());
 					total_maintenance_cost += maintenance_cost;
 
-					infrastructurelist.push_back({CIW_ENTRY_LABEL_VALUES, GetRailTypeInfo(rt)->strings.name, c->infrastructure.rail[rt], maintenance_cost});
+					infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, GetRailTypeInfo(rt)->strings.name, c->infrastructure.rail[rt], maintenance_cost);
 				}
 			}
 
 			maintenance_cost = SignalMaintenanceCost(c->infrastructure.signal);
 			total_maintenance_cost += maintenance_cost;
 
-			infrastructurelist.push_back({CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS, c->infrastructure.signal, maintenance_cost});
+			infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS, c->infrastructure.signal, maintenance_cost);
 		} else {
 			/* No valid railtype. */
-			infrastructurelist.push_back({CIW_ENTRY_LABEL_ONLY, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE});
+			infrastructurelist.emplace_back(CIW_ENTRY_LABEL_ONLY, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
 		}
 
 		/* roadtypes. */
-		infrastructurelist.push_back({CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT});
+		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT);
 
 		for (const auto &rt : _sorted_roadtypes) {
 			if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt)) {
 				maintenance_cost = RoadMaintenanceCost(rt, c->infrastructure.road[rt], c->infrastructure.GetRoadTotal());
 				total_maintenance_cost += maintenance_cost;
 
-				infrastructurelist.push_back({CIW_ENTRY_LABEL_VALUES, GetRoadTypeInfo(rt)->strings.name, c->infrastructure.road[rt], maintenance_cost});
+				infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, GetRoadTypeInfo(rt)->strings.name, c->infrastructure.road[rt], maintenance_cost);
 			}
 		}
 
 
 		/* trams. */
-		infrastructurelist.push_back({CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT});
+		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT);
 
 		bool has_trams = false;
 
@@ -1906,39 +1906,39 @@ struct CompanyInfrastructureWindow : Window
 				total_maintenance_cost += maintenance_cost;
 				has_trams = true;
 
-				infrastructurelist.push_back({CIW_ENTRY_LABEL_VALUES, GetRoadTypeInfo(rt)->strings.name, c->infrastructure.road[rt], maintenance_cost});
+				infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, GetRoadTypeInfo(rt)->strings.name, c->infrastructure.road[rt], maintenance_cost);
 			}
 		}
 
 		/* No valid trams. */
-		if (!has_trams) infrastructurelist.push_back({CIW_ENTRY_BLANK_LINE, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE});
+		if (!has_trams) infrastructurelist.emplace_back(CIW_ENTRY_BLANK_LINE, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
 
 
 		/* water-ways. */
-		infrastructurelist.push_back({CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT});
+		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT);
 
 		maintenance_cost = CanalMaintenanceCost(c->infrastructure.water);
 		total_maintenance_cost += maintenance_cost;
 
-		infrastructurelist.push_back({CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS, c->infrastructure.water, maintenance_cost});
+		infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS, c->infrastructure.water, maintenance_cost);
 
 
 		/* air-ways. */
-		infrastructurelist.push_back({CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT});
+		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT);
 
 		maintenance_cost = StationMaintenanceCost(c->infrastructure.station);
 		total_maintenance_cost += maintenance_cost;
 
-		infrastructurelist.push_back({CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS, c->infrastructure.station, maintenance_cost});
+		infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS, c->infrastructure.station, maintenance_cost);
 
 		maintenance_cost = AirportMaintenanceCost(c->index);
 		total_maintenance_cost += maintenance_cost;
 
-		infrastructurelist.push_back({CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS, c->infrastructure.airport, maintenance_cost});
+		infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS, c->infrastructure.airport, maintenance_cost);
 
 
 		/* total maintenance cost. */
-		infrastructurelist.push_back({CIW_ENTRY_TOTAL_COST, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE, 0, total_maintenance_cost});
+		infrastructurelist.emplace_back(CIW_ENTRY_TOTAL_COST, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE, 0, total_maintenance_cost);
 
 
 		this->vscroll->SetCount(this->infrastructurelist.size());  // Update scrollbar as well.
