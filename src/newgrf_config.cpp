@@ -34,10 +34,7 @@
  * Create a new GRFConfig.
  * @param filename Set the filename of this GRFConfig to filename.
  */
-GRFConfig::GRFConfig(const std::string &filename) :
-	filename(filename), num_valid_params(ClampTo<uint8_t>(GRFConfig::param.size()))
-{
-}
+GRFConfig::GRFConfig(const std::string &filename) : filename(filename), num_valid_params(MAX_NUM_PARAMS) {}
 
 /**
  * Create a new GRFConfig that is a deep copy of an existing config.
@@ -57,19 +54,17 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	flags(config.flags & ~(1 << GCF_COPY)),
 	status(config.status),
 	grf_bugs(config.grf_bugs),
-	param(config.param),
-	num_params(config.num_params),
 	num_valid_params(config.num_valid_params),
 	palette(config.palette),
+	has_param_defaults(config.has_param_defaults),
 	param_info(config.param_info),
-	has_param_defaults(config.has_param_defaults)
+	param(config.param)
 {
 }
 
-void GRFConfig::SetParams(const std::vector<uint32_t> &pars)
+void GRFConfig::SetParams(std::span<const uint32_t> pars)
 {
-	this->num_params = static_cast<uint8_t>(std::min(this->param.size(), pars.size()));
-	std::copy(pars.begin(), pars.begin() + this->num_params, this->param.begin());
+	this->param.assign(std::begin(pars), std::end(pars));
 }
 
 /**
@@ -86,7 +81,6 @@ bool GRFConfig::IsCompatible(uint32_t old_version) const
  */
 void GRFConfig::CopyParams(const GRFConfig &src)
 {
-	this->num_params = src.num_params;
 	this->param = src.param;
 }
 
@@ -122,8 +116,7 @@ const char *GRFConfig::GetURL() const
 /** Set the default value for all parameters as specified by action14. */
 void GRFConfig::SetParameterDefaults()
 {
-	this->num_params = 0;
-	this->param = {};
+	this->param.clear();
 
 	if (!this->has_param_defaults) return;
 
@@ -182,6 +175,9 @@ GRFError::GRFError(StringID severity, StringID message) : message(message), seve
  */
 uint32_t GRFConfig::GetValue(const GRFParameterInfo &info) const
 {
+	/* If the parameter is not set then it must be 0. */
+	if (info.param_nr >= std::size(this->param)) return 0;
+
 	/* GB doesn't work correctly with nbits == 32, so handle that case here. */
 	if (info.num_bit == 32) return this->param[info.param_nr];
 
@@ -197,6 +193,9 @@ void GRFConfig::SetValue(const GRFParameterInfo &info, uint32_t value)
 {
 	value = Clamp(value, info.min_value, info.max_value);
 
+	/* Allocate the new parameter if it's not already present. */
+	if (info.param_nr >= std::size(this->param)) this->param.resize(info.param_nr + 1);
+
 	/* SB doesn't work correctly with nbits == 32, so handle that case here. */
 	if (info.num_bit == 32) {
 		this->param[info.param_nr] = value;
@@ -204,7 +203,6 @@ void GRFConfig::SetValue(const GRFParameterInfo &info, uint32_t value)
 		SB(this->param[info.param_nr], info.first_bit, info.num_bit, value);
 	}
 
-	this->num_params = std::max<uint>(this->num_params, info.param_nr + 1);
 	SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
 }
 
@@ -711,9 +709,9 @@ GRFConfig *GetGRFConfig(uint32_t grfid, uint32_t mask)
 std::string GRFBuildParamList(const GRFConfig *c)
 {
 	std::string result;
-	for (uint i = 0; i < c->num_params; i++) {
+	for (const uint32_t &value : c->param) {
 		if (!result.empty()) result += ' ';
-		result += std::to_string(c->param[i]);
+		result += std::to_string(value);
 	}
 	return result;
 }
