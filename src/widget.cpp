@@ -1237,14 +1237,6 @@ NWidgetStacked::NWidgetStacked(WidgetID index) : NWidgetContainer(NWID_SELECTION
 {
 }
 
-void NWidgetStacked::AdjustPaddingForZoom()
-{
-	for (const auto &child_wid : this->children) {
-		child_wid->AdjustPaddingForZoom();
-	}
-	NWidgetContainer::AdjustPaddingForZoom();
-}
-
 void NWidgetStacked::SetupSmallestSize(Window *w)
 {
 	/* Zero size plane selected */

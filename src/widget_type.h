@@ -499,7 +499,6 @@ class NWidgetStacked : public NWidgetContainer {
 public:
 	NWidgetStacked(WidgetID index);
 
-	void AdjustPaddingForZoom() override;
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
