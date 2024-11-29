@@ -5562,20 +5562,39 @@ static void NewSpriteGroup(ByteReader &buf)
 	_cur.spritegroups[setid] = act_group;
 }
 
+/**
+ * Get the cargo translation table to use for the given GRF file.
+ * @param grffile GRF file.
+ * @returns Readonly cargo translation table to use.
+ */
+std::span<const CargoLabel> GetCargoTranslationTable(const GRFFile &grffile)
+{
+	/* Always use the translation table if it's installed. */
+	if (!grffile.cargo_list.empty()) return grffile.cargo_list;
+
+	/* Pre-v7 use climate-dependent "slot" table. */
+	if (grffile.grf_version < 7) return GetClimateDependentCargoTranslationTable();
+
+	/* Otherwise use climate-independent "bitnum" table. */
+	return GetClimateIndependentCargoTranslationTable();
+}
+
 static CargoID TranslateCargo(uint8_t feature, uint8_t ctype)
 {
 	/* Special cargo types for purchase list and stations */
 	if ((feature == GSF_STATIONS || feature == GSF_ROADSTOPS) && ctype == 0xFE) return SpriteGroupCargo::SG_DEFAULT_NA;
 	if (ctype == 0xFF) return SpriteGroupCargo::SG_PURCHASE;
 
+	auto cargo_list = GetCargoTranslationTable(*_cur.grffile);
+
 	/* Check if the cargo type is out of bounds of the cargo translation table */
-	if (ctype >= _cur.grffile->cargo_list.size()) {
+	if (ctype >= cargo_list.size()) {
 		GrfMsg(1, "TranslateCargo: Cargo type {} out of range (max {}), skipping.", ctype, (unsigned int)_cur.grffile->cargo_list.size() - 1);
 		return INVALID_CARGO;
 	}
 
 	/* Look up the cargo label from the translation table */
-	CargoLabel cl = _cur.grffile->cargo_list[ctype];
+	CargoLabel cl = cargo_list[ctype];
 	if (cl == CT_INVALID) {
 		GrfMsg(5, "TranslateCargo: Cargo type {} not available in this climate, skipping.", ctype);
 		return INVALID_CARGO;
@@ -7058,13 +7077,6 @@ static void GRFInfo(ByteReader &buf)
 
 	_cur.grffile->grf_version = version;
 	_cur.grfconfig->status = _cur.stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
-
-	/* Install the default cargo translation table. */
-	if (_cur.stage < GLS_RESERVE && _cur.grffile->cargo_list.empty()) {
-		auto default_table = GetDefaultCargoTranslationTable(version);
-		_cur.grffile->cargo_list.assign(default_table.begin(), default_table.end());
-		GrfMsg(3, "GRFInfo: Installing default GRFv{} translation table for {:08X}", version, BSWAP32(grfid));
-	}
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
 	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, BSWAP32(grfid), StrMakeValid(name), (_cur.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur.grfconfig->version);
@@ -8905,11 +8917,13 @@ static void BuildCargoTranslationMap()
 {
 	_cur.grffile->cargo_map.fill(UINT8_MAX);
 
+	auto cargo_list = GetCargoTranslationTable(*_cur.grffile);
+
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		if (!cs->IsValid()) continue;
 
 		/* Check the translation table for this cargo's label */
-		int idx = find_index(_cur.grffile->cargo_list, {cs->label});
+		int idx = find_index(cargo_list, cs->label);
 		if (idx >= 0) _cur.grffile->cargo_map[cs->Index()] = idx;
 	}
 }
