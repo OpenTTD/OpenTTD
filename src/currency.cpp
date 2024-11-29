@@ -67,7 +67,7 @@ static const std::array<CurrencySpec, CURRENCY_END> origin_currency_specs = {{
 	{    8, "", CF_NOEURO, "\u00a5",   "",             "CNY", 0, STR_GAME_OPTIONS_CURRENCY_CNY    }, ///< chinese renminbi
 	{   10, "", CF_NOEURO, "HKD" NBSP, "",             "HKD", 0, STR_GAME_OPTIONS_CURRENCY_HKD    }, ///< hong kong dollar
 	{   90, "", CF_NOEURO, "\u20b9",   "",             "INR", 0, STR_GAME_OPTIONS_CURRENCY_INR    }, ///< Indian Rupee
-	{   19, "", CF_NOEURO, "Rp",       "",             "IDR", 0, STR_GAME_OPTIONS_CURRENCY_IDR    }, ///< Indonesian Rupiah
+	{   20, "", CF_NOEURO, "Rp",       "",             "IDR", 0, STR_GAME_OPTIONS_CURRENCY_IDR    }, ///< Indonesian Rupiah
 	{    5, "", CF_NOEURO, "RM",       "",             "MYR", 0, STR_GAME_OPTIONS_CURRENCY_MYR    }, ///< Malaysian Ringgit
 	{    1, "", 2014,      "",         NBSP "Ls",      "LVL", 1, STR_GAME_OPTIONS_CURRENCY_LVL    }, ///< latvian lats
 	{  400, "", 2002,      "",         "$00",          "PTE", 1, STR_GAME_OPTIONS_CURRENCY_PTE    }, ///< portuguese escudo
