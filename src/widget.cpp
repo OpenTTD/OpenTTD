@@ -1350,6 +1350,70 @@ bool NWidgetStacked::SetDisplayedPlane(int plane)
 	return true;
 }
 
+class NWidgetLayer : public NWidgetContainer {
+public:
+	NWidgetLayer(WidgetID index);
+
+	void SetupSmallestSize(Window *w) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
+
+	void Draw(const Window *w) override;
+
+	const WidgetID index; ///< If non-negative, index in the #Window::widget_lookup.
+};
+
+NWidgetLayer::NWidgetLayer(WidgetID index) : NWidgetContainer(NWID_LAYER), index(index) {}
+
+void NWidgetLayer::SetupSmallestSize(Window *w)
+{
+	/* First sweep, recurse down and compute minimal size and filling. */
+	this->smallest_x = 0;
+	this->smallest_y = 0;
+	this->fill_x = this->IsEmpty() ? 0 : 1;
+	this->fill_y = this->IsEmpty() ? 0 : 1;
+	this->resize_x = this->IsEmpty() ? 0 : 1;
+	this->resize_y = this->IsEmpty() ? 0 : 1;
+	for (const auto &child_wid : this->children) {
+		child_wid->SetupSmallestSize(w);
+
+		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding.Horizontal());
+		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
+		this->fill_x = std::lcm(this->fill_x, child_wid->fill_x);
+		this->fill_y = std::lcm(this->fill_y, child_wid->fill_y);
+		this->resize_x = std::lcm(this->resize_x, child_wid->resize_x);
+		this->resize_y = std::lcm(this->resize_y, child_wid->resize_y);
+		this->ApplyAspectRatio();
+	}
+}
+
+void NWidgetLayer::AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl)
+{
+	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
+	this->StoreSizePosition(sizing, x, y, given_width, given_height);
+
+	for (const auto &child_wid : this->children) {
+		uint hor_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetHorizontalStepSize(sizing);
+		uint child_width = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding.Horizontal(), hor_step);
+		uint child_pos_x = (rtl ? child_wid->padding.right : child_wid->padding.left);
+
+		uint vert_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetVerticalStepSize(sizing);
+		uint child_height = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding.Vertical(), vert_step);
+		uint child_pos_y = child_wid->padding.top;
+
+		child_wid->AssignSizePosition(sizing, x + child_pos_x, y + child_pos_y, child_width, child_height, rtl);
+	}
+}
+
+void NWidgetLayer::Draw(const Window *w)
+{
+	/* Draw in reverse order, as layers are arranged top-down. */
+	for (auto it = std::rbegin(this->children); it != std::rend(this->children); ++it) {
+		(*it)->Draw(w);
+	}
+
+	DrawOutline(w, this);
+}
+
 NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags) : NWidgetContainer(tp)
 {
 	this->flags = flags;
@@ -3129,6 +3193,7 @@ static std::unique_ptr<NWidgetBase> MakeNWidget(const NWidgetPart &nwid)
 		case NWID_SELECTION: return std::make_unique<NWidgetStacked>(nwid.u.widget.index);
 		case NWID_MATRIX: return std::make_unique<NWidgetMatrix>(nwid.u.widget.colour, nwid.u.widget.index);
 		case NWID_VIEWPORT: return std::make_unique<NWidgetViewport>(nwid.u.widget.index);
+		case NWID_LAYER: return std::make_unique<NWidgetLayer>(nwid.u.widget.index);
 
 		case NWID_HSCROLLBAR: [[fallthrough]];
 		case NWID_VSCROLLBAR: return std::make_unique<NWidgetScrollbar>(nwid.type, nwid.u.widget.colour, nwid.u.widget.index);
@@ -3184,7 +3249,7 @@ static std::span<const NWidgetPart>::iterator MakeNWidget(std::span<const NWidge
 bool IsContainerWidgetType(WidgetType tp)
 {
 	return tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL || tp == NWID_MATRIX
-		|| tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET || tp == NWID_SELECTION;
+		|| tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET || tp == NWID_SELECTION || tp == NWID_LAYER;
 }
 
 /**
