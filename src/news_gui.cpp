@@ -101,15 +101,25 @@ static TileIndex GetReferenceTile(NewsReferenceType reftype, uint32_t ref)
 /* Normal news items. */
 static constexpr NWidgetPart _nested_normal_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
-		NWidget(NWID_HORIZONTAL), SetPadding(1, 1, 0, 1),
-			NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX), SetPadding(0, 0, 0, 1),
-			NWidget(NWID_SPACER), SetFill(1, 0),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_LABEL, COLOUR_WHITE, WID_N_DATE), SetDataTip(STR_JUST_DATE_LONG, STR_NULL), SetTextStyle(TC_BLACK, FS_SMALL),
-				NWidget(NWID_SPACER), SetFill(0, 1),
+		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
+			NWidget(NWID_LAYER),
+				/* Layer 1 */
+				NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1),
+					NWidget(NWID_HORIZONTAL), SetPIPRatio(0, 1, 0),
+						NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX),
+						NWidget(WWT_LABEL, COLOUR_WHITE, WID_N_DATE),
+								SetDataTip(STR_JUST_DATE_LONG, STR_NULL),
+								SetTextStyle(TC_BLACK, FS_SMALL),
+								SetAlignment(SA_RIGHT | SA_TOP),
+					EndContainer(),
+				EndContainer(),
+				/* Layer 2 */
+				NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MESSAGE),
+						SetMinimalTextLines(8, 0, FS_LARGE),
+						SetMinimalSize(400, 0),
+						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
 			EndContainer(),
 		EndContainer(),
-		NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MESSAGE), SetMinimalSize(428, 154), SetPadding(0, 5, 1, 5),
 	EndContainer(),
 };
 
@@ -123,18 +133,38 @@ static WindowDesc _normal_news_desc(
 /* New vehicles news items. */
 static constexpr NWidgetPart _nested_vehicle_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
-		NWidget(NWID_HORIZONTAL), SetPadding(1, 1, 0, 1),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX), SetPadding(0, 0, 0, 1),
-				NWidget(NWID_SPACER), SetFill(0, 1),
+		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
+			NWidget(NWID_LAYER),
+				/* Layer 1 */
+				NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1),
+					NWidget(NWID_HORIZONTAL), SetPIPRatio(0, 1, 0),
+						NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX),
+					EndContainer(),
+				EndContainer(),
+				/* Layer 2 */
+				NWidget(WWT_LABEL, COLOUR_WHITE, WID_N_VEH_TITLE),
+						SetFill(1, 1),
+						SetMinimalTextLines(2, 0, FS_LARGE),
+						SetMinimalSize(400, 0),
+						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
+						SetDataTip(STR_EMPTY, STR_NULL),
 			EndContainer(),
-			NWidget(WWT_LABEL, COLOUR_WHITE, WID_N_VEH_TITLE), SetFill(1, 1), SetMinimalSize(419, 55), SetDataTip(STR_EMPTY, STR_NULL),
-		EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_VEH_BKGND), SetPadding(0, 25, 1, 25),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_VEH_NAME), SetMinimalSize(369, 33), SetFill(1, 0),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_VEH_SPR),  SetMinimalSize(369, 32), SetFill(1, 0),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_VEH_INFO), SetMinimalSize(369, 46), SetFill(1, 0),
+			NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_VEH_BKGND), SetPadding(WidgetDimensions::unscaled.fullbevel),
+				NWidget(NWID_VERTICAL),
+					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_VEH_NAME),
+							SetMinimalTextLines(1, 0, FS_LARGE),
+							SetMinimalSize(350, 0),
+							SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
+							SetFill(1, 0),
+					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_VEH_SPR),
+							SetMinimalSize(350, 32),
+							SetFill(1, 0),
+					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_VEH_INFO),
+							SetMinimalTextLines(3, 0, FS_NORMAL),
+							SetMinimalSize(350, 0),
+							SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
+							SetFill(1, 0),
+				EndContainer(),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -150,20 +180,36 @@ static WindowDesc _vehicle_news_desc(
 /* Company news items. */
 static constexpr NWidgetPart _nested_company_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
-		NWidget(NWID_HORIZONTAL), SetPadding(1, 1, 0, 1),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX), SetPadding(0, 0, 0, 1),
-				NWidget(NWID_SPACER), SetFill(0, 1),
+		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
+			NWidget(NWID_LAYER),
+				/* Layer 1 */
+				NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1),
+					NWidget(NWID_HORIZONTAL), SetPIPRatio(0, 1, 0),
+						NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX),
+					EndContainer(),
+				EndContainer(),
+				/* Layer 2 */
+				NWidget(WWT_LABEL, COLOUR_WHITE, WID_N_TITLE),
+						SetFill(1, 1),
+						SetMinimalTextLines(1, 0, FS_LARGE),
+						SetMinimalSize(400, 0),
+						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_normal),
+						SetDataTip(STR_EMPTY, STR_NULL),
 			EndContainer(),
-			NWidget(WWT_LABEL, COLOUR_WHITE, WID_N_TITLE), SetFill(1, 1), SetMinimalSize(410, 20), SetDataTip(STR_EMPTY, STR_NULL),
-		EndContainer(),
-		NWidget(NWID_HORIZONTAL), SetPadding(0, 1, 1, 1),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MGR_FACE), SetMinimalSize(93, 119), SetPadding(2, 6, 2, 1),
-				NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MGR_NAME), SetMinimalSize(93, 24), SetPadding(0, 0, 0, 1),
-				NWidget(NWID_SPACER), SetFill(0, 1),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0), SetPadding(2),
+					NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MGR_FACE),
+							SetFill(0, 0),
+							SetMinimalSize(93, 119),
+					NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MGR_NAME),
+							SetFill(0, 1),
+							SetMinimalTextLines(2, 0),
+				EndContainer(),
+				NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_COMPANY_MSG),
+						SetFill(1, 1),
+						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
+						SetMinimalSize(300, 0),
 			EndContainer(),
-			NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_COMPANY_MSG), SetFill(1, 1), SetMinimalSize(328, 150),
 		EndContainer(),
 	EndContainer(),
 };
@@ -178,16 +224,27 @@ static WindowDesc _company_news_desc(
 /* Thin news items. */
 static constexpr NWidgetPart _nested_thin_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
-		NWidget(NWID_HORIZONTAL), SetPadding(1, 1, 0, 1),
-			NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX), SetPadding(0, 0, 0, 1),
-			NWidget(NWID_SPACER), SetFill(1, 0),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_LABEL, COLOUR_WHITE, WID_N_DATE), SetDataTip(STR_JUST_DATE_LONG, STR_NULL), SetTextStyle(TC_BLACK, FS_SMALL),
-				NWidget(NWID_SPACER), SetFill(0, 1),
+		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
+			NWidget(NWID_LAYER),
+				/* Layer 1 */
+				NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1),
+					NWidget(NWID_HORIZONTAL), SetPIPRatio(0, 1, 0),
+						NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX),
+						NWidget(WWT_LABEL, COLOUR_WHITE, WID_N_DATE),
+								SetDataTip(STR_JUST_DATE_LONG, STR_NULL),
+								SetTextStyle(TC_BLACK, FS_SMALL),
+								SetAlignment(SA_RIGHT | SA_TOP),
+					EndContainer(),
+				EndContainer(),
+				/* Layer 2 */
+				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_MESSAGE),
+						SetMinimalTextLines(3, 0, FS_LARGE),
+						SetMinimalSize(400, 0),
+						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_normal),
 			EndContainer(),
+			NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_N_VIEWPORT), SetMinimalSize(426, 70),
+					SetPadding(WidgetDimensions::unscaled.fullbevel),
 		EndContainer(),
-		NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MESSAGE), SetMinimalSize(428, 48), SetFill(1, 0), SetPadding(0, 5, 0, 5),
-		NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_N_VIEWPORT), SetMinimalSize(426, 70), SetPadding(1, 2, 2, 2),
 	EndContainer(),
 };
 
@@ -385,11 +442,6 @@ struct NewsWindow : Window {
 				size = maxdim(size, GetScaledSpriteSize(SPR_GRADIENT));
 				break;
 
-			case WID_N_MGR_NAME:
-				SetDParamStr(0, static_cast<const CompanyNewsInformation *>(this->ni->data.get())->president_name);
-				str = STR_JUST_RAW_STRING;
-				break;
-
 			case WID_N_MESSAGE:
 				CopyInDParam(this->ni->params);
 				str = this->ni->string_id;
@@ -558,6 +610,13 @@ struct NewsWindow : Window {
 			if (ni->reftype1 != NR_VEHICLE) {
 				ScrollWindowToTile(GetReferenceTile(ni->reftype1, ni->ref1), this, true); // Re-center viewport.
 			}
+		}
+
+		NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_N_MGR_NAME);
+		if (wid != nullptr) {
+			SetDParamStr(0, static_cast<const CompanyNewsInformation *>(this->ni->data.get())->president_name);
+			int y = GetStringHeight(STR_JUST_RAW_STRING, wid->current_x);
+			if (wid->UpdateVerticalSize(y)) this->ReInit(0, 0);
 		}
 	}
 
