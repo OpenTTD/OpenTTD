@@ -200,20 +200,29 @@ static WindowDesc _thin_news_desc(
 
 /* Small news items. */
 static constexpr NWidgetPart _nested_small_news_widgets[] = {
-	/* Caption + close box. The caption is no WWT_CAPTION as the window shall not be moveable and so on. */
+	/* Caption + close box. The caption is not WWT_CAPTION as the window shall not be moveable and so on. */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, WID_N_CLOSEBOX),
-		NWidget(WWT_EMPTY, COLOUR_LIGHT_BLUE, WID_N_CAPTION), SetFill(1, 0),
-		NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_N_SHOW_GROUP), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetResize(1, 0),
+		NWidget(WWT_EMPTY, COLOUR_LIGHT_BLUE, WID_N_CAPTION),
+		NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_N_SHOW_GROUP),
+				SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON),
+				SetResize(1, 0),
 				SetDataTip(STR_NULL /* filled in later */, STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP),
 	EndContainer(),
 
 	/* Main part */
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, WID_N_HEADLINE),
-		NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, WID_N_INSET), SetPadding(2, 2, 2, 2),
-			NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_N_VIEWPORT), SetMinimalSize(274, 47), SetFill(1, 0),
+		NWidget(NWID_VERTICAL),
+				SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
+				SetPadding(2),
+			NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, WID_N_INSET),
+				NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_N_VIEWPORT),
+						SetMinimalSize(274, 47),
+			EndContainer(),
+			NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MESSAGE),
+					SetMinimalTextLines(2, 0),
+					SetMinimalSize(275, 0),
 		EndContainer(),
-		NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MESSAGE), SetMinimalSize(275, 20), SetFill(1, 0), SetPadding(0, 5, 0, 5),
 	EndContainer(),
 };
 
