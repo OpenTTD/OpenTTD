@@ -84,24 +84,24 @@ void AyStar::CheckTile(AyStarNode *current, PathNode *parent)
  * This function is the core of %AyStar. It handles one item and checks
  * its neighbour items. If they are valid, they are added to be checked too.
  * @return Possible values:
- *  - #AYSTAR_EMPTY_OPENLIST : indicates all items are tested, and no path has been found.
- *  - #AYSTAR_LIMIT_REACHED : Indicates that the max_search_nodes limit has been reached.
- *  - #AYSTAR_FOUND_END_NODE : indicates we found the end. Path_found now is true, and in path is the path found.
- *  - #AYSTAR_STILL_BUSY : indicates we have done this tile, did not found the path yet, and have items left to try.
+ *  - #AyStarStatus::EmptyOpenList
+ *  - #AyStarStatus::LimitReached
+ *  - #AyStarStatus::FoundEndNode
+ *  - #AyStarStatus::StillBusy
  */
 AyStarStatus AyStar::Loop()
 {
 	/* Get the best node from OpenList */
 	PathNode *current = this->nodes.PopBestOpenNode();
 	/* If empty, drop an error */
-	if (current == nullptr) return AYSTAR_EMPTY_OPENLIST;
+	if (current == nullptr) return AyStarStatus::EmptyOpenList;
 
 	/* Check for end node and if found, return that code */
-	if (this->EndNodeCheck(this, current) == AYSTAR_FOUND_END_NODE && current->parent != nullptr) {
+	if (this->EndNodeCheck(this, current) == AyStarStatus::FoundEndNode && current->parent != nullptr) {
 		if (this->FoundEndNode != nullptr) {
 			this->FoundEndNode(this, current);
 		}
-		return AYSTAR_FOUND_END_NODE;
+		return AyStarStatus::FoundEndNode;
 	}
 
 	/* Add the node to the ClosedList */
@@ -118,43 +118,43 @@ AyStarStatus AyStar::Loop()
 
 	if (this->max_search_nodes != 0 && this->nodes.ClosedCount() >= this->max_search_nodes) {
 		/* We've expanded enough nodes */
-		return AYSTAR_LIMIT_REACHED;
+		return AyStarStatus::LimitReached;
 	} else {
 		/* Return that we are still busy */
-		return AYSTAR_STILL_BUSY;
+		return AyStarStatus::StillBusy;
 	}
 }
 
 /**
  * This is the function you call to run AyStar.
  * @return Possible values:
- *  - #AYSTAR_FOUND_END_NODE : indicates we found an end node.
- *  - #AYSTAR_NO_PATH : indicates that there was no path found.
- *  - #AYSTAR_STILL_BUSY : indicates we have done some checked, that we did not found the path yet, and that we still have items left to try.
- * @note When the algorithm is done (when the return value is not #AYSTAR_STILL_BUSY) #Clear() is called automatically.
+ *  - #AyStarStatus::FoundEndNode
+ *  - #AyStarStatus::NoPath
+ *  - #AyStarStatus::StillBusy
+ * @note When the algorithm is done (when the return value is not #AyStarStatus::StillBusy) #Clear() is called automatically.
  *       When you stop the algorithm halfway, you should call #Clear() yourself!
  */
 AyStarStatus AyStar::Main()
 {
-	AyStarStatus r = AYSTAR_FOUND_END_NODE;
+	AyStarStatus r = AyStarStatus::FoundEndNode;
 	int i = 0;
 	/* Loop through the OpenList
-	 *  Quit if result is no AYSTAR_STILL_BUSY or is more than loops_per_tick */
-	while ((r = this->Loop()) == AYSTAR_STILL_BUSY && (this->loops_per_tick == 0 || ++i < this->loops_per_tick)) { }
+	 *  Quit if result is no AyStarStatus::StillBusy or is more than loops_per_tick */
+	while ((r = this->Loop()) == AyStarStatus::StillBusy && (this->loops_per_tick == 0 || ++i < this->loops_per_tick)) { }
 #ifdef AYSTAR_DEBUG
 	switch (r) {
-		case AYSTAR_FOUND_END_NODE: Debug(misc, 0, "[AyStar] Found path!"); break;
-		case AYSTAR_EMPTY_OPENLIST: Debug(misc, 0, "[AyStar] OpenList run dry, no path found"); break;
-		case AYSTAR_LIMIT_REACHED:  Debug(misc, 0, "[AyStar] Exceeded search_nodes, no path found"); break;
+		case AyStarStatus::FoundEndNode: Debug(misc, 0, "[AyStar] Found path!"); break;
+		case AyStarStatus::EmptyOpenList: Debug(misc, 0, "[AyStar] OpenList run dry, no path found"); break;
+		case AyStarStatus::LimitReached: Debug(misc, 0, "[AyStar] Exceeded search_nodes, no path found"); break;
 		default: break;
 	}
 #endif
 
 	switch (r) {
-		case AYSTAR_FOUND_END_NODE: return AYSTAR_FOUND_END_NODE;
-		case AYSTAR_EMPTY_OPENLIST:
-		case AYSTAR_LIMIT_REACHED:  return AYSTAR_NO_PATH;
-		default:                    return AYSTAR_STILL_BUSY;
+		case AyStarStatus::FoundEndNode: return AyStarStatus::FoundEndNode;
+		case AyStarStatus::EmptyOpenList:
+		case AyStarStatus::LimitReached: return AyStarStatus::NoPath;
+		default: return AyStarStatus::StillBusy;
 	}
 }
 
