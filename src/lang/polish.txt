@@ -792,7 +792,7 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Przełą
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Zapisz, wczytaj lub opuść edytor scenariuszy, zamknij program
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Edytor scenariuszy
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Edytor Scenariuszy
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Zmień datę początkową do tyłu o 1 rok
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Zmień datę początkową do przodu o 1 rok
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Kliknij aby wpisać datę początkową
@@ -2796,7 +2796,7 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Przeszuk
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Znajdź w internecie serwery publiczne
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Przeszukaj LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Znajdź serwery w sieci lokalnej
-STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Zapisz serwer
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Dodaj serwer
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaj serwer do listy. Może to być adres serwera lub kod zaproszenia
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Uruchom serwer
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Uruchom własny serwer
