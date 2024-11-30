@@ -1233,6 +1233,17 @@ constexpr NWidgetPart SetPadding(uint8_t top, uint8_t right, uint8_t bottom, uin
 
 /**
  * Widget part function for setting additional space around a widget.
+ * @param horizontal The padding on either side of the widget.
+ * @param vertical The padding above and below the widget.
+ * @ingroup NestedWidgetParts
+ */
+constexpr NWidgetPart SetPadding(uint8_t horizontal, uint8_t vertical)
+{
+	return NWidgetPart{WPT_PADDING, NWidgetPartPaddings{horizontal, vertical, horizontal, vertical}};
+}
+
+/**
+ * Widget part function for setting additional space around a widget.
  * @param r The padding around the widget.
  * @ingroup NestedWidgetParts
  */
