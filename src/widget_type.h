@@ -78,6 +78,7 @@ enum WidgetType {
 	NWID_MATRIX,          ///< Matrix container.
 	NWID_SPACER,          ///< Invisible widget that takes some space.
 	NWID_SELECTION,       ///< Stacked widgets, only one visible at a time (eg in a panel with tabs).
+	NWID_LAYER,           ///< Layered widgets, all visible together.
 	NWID_VIEWPORT,        ///< Nested widget containing a viewport.
 	NWID_BUTTON_DROPDOWN, ///< Button with a drop-down.
 	NWID_HSCROLLBAR,      ///< Horizontal scrollbar
