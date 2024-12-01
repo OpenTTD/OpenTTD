@@ -152,6 +152,8 @@ struct GRFParameterInfo {
 
 /** Information about GRF, used in the game and (part of it) in savegames */
 struct GRFConfig : ZeroedMemoryAllocator {
+	static constexpr uint8_t MAX_NUM_PARAMS = 0x80;
+
 	GRFConfig(const std::string &filename = std::string{});
 	GRFConfig(const GRFConfig &config);
 
@@ -171,17 +173,16 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	uint8_t flags; ///< NOSAVE: GCF_Flags, bitset
 	GRFStatus status; ///< NOSAVE: GRFStatus, enum
 	uint32_t grf_bugs; ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
-	std::array<uint32_t, 0x80> param; ///< GRF parameters
-	uint8_t num_params; ///< Number of used parameters
 	uint8_t num_valid_params; ///< NOSAVE: Number of valid parameters (action 0x14)
 	uint8_t palette; ///< GRFPalette, bitset
-	std::vector<std::optional<GRFParameterInfo>> param_info; ///< NOSAVE: extra information about the parameters
 	bool has_param_defaults; ///< NOSAVE: did this newgrf specify any defaults for it's parameters
+	std::vector<std::optional<GRFParameterInfo>> param_info; ///< NOSAVE: extra information about the parameters
+	std::vector<uint32_t> param; ///< GRF parameters
 
 	struct GRFConfig *next; ///< NOSAVE: Next item in the linked list
 
 	bool IsCompatible(uint32_t old_version) const;
-	void SetParams(const std::vector<uint32_t> &pars);
+	void SetParams(std::span<const uint32_t> pars);
 	void CopyParams(const GRFConfig &src);
 
 	uint32_t GetValue(const GRFParameterInfo &info) const;

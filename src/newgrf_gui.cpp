@@ -108,7 +108,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 
 	/* Show GRF parameter list */
 	if (show_params) {
-		if (c->num_params > 0) {
+		if (!c->param.empty()) {
 			SetDParam(0, STR_JUST_RAW_STRING);
 			SetDParamStr(1, GRFBuildParamList(c));
 		} else {
@@ -221,7 +221,7 @@ struct NewGRFParametersWindow : public Window {
 			}
 
 			case WID_NP_NUMPAR: {
-				SetDParamMaxValue(0, this->grf_config->param.size());
+				SetDParamMaxValue(0, GRFConfig::MAX_NUM_PARAMS);
 				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
 				d.width += padding.width;
 				d.height += padding.height;
@@ -335,8 +335,8 @@ struct NewGRFParametersWindow : public Window {
 	{
 		switch (widget) {
 			case WID_NP_NUMPAR_DEC:
-				if (this->editable && !this->action14present && this->grf_config->num_params > 0) {
-					this->grf_config->num_params--;
+				if (this->editable && !this->action14present && !this->grf_config->param.empty()) {
+					this->grf_config->param.pop_back();
 					this->InvalidateData();
 					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
 				}
@@ -344,8 +344,8 @@ struct NewGRFParametersWindow : public Window {
 
 			case WID_NP_NUMPAR_INC: {
 				GRFConfig *c = this->grf_config;
-				if (this->editable && !this->action14present && c->num_params < c->num_valid_params) {
-					c->param[c->num_params++] = 0;
+				if (this->editable && !this->action14present && c->param.size() < c->num_valid_params) {
+					this->grf_config->param.emplace_back(0);
 					this->InvalidateData();
 					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
 				}
@@ -487,11 +487,11 @@ struct NewGRFParametersWindow : public Window {
 	{
 		if (!gui_scope) return;
 		if (!this->action14present) {
-			this->SetWidgetDisabledState(WID_NP_NUMPAR_DEC, !this->editable || this->grf_config->num_params == 0);
-			this->SetWidgetDisabledState(WID_NP_NUMPAR_INC, !this->editable || this->grf_config->num_params >= this->grf_config->num_valid_params);
+			this->SetWidgetDisabledState(WID_NP_NUMPAR_DEC, !this->editable || this->grf_config->param.empty());
+			this->SetWidgetDisabledState(WID_NP_NUMPAR_INC, !this->editable || std::size(this->grf_config->param) >= this->grf_config->num_valid_params);
 		}
 
-		this->vscroll->SetCount(this->action14present ? this->grf_config->num_valid_params : this->grf_config->num_params);
+		this->vscroll->SetCount(this->action14present ? this->grf_config->num_valid_params : GRFConfig::MAX_NUM_PARAMS);
 		if (this->clicked_row != INT32_MAX && this->clicked_row >= this->vscroll->GetCount()) {
 			this->clicked_row = INT32_MAX;
 			this->CloseChildWindows(WC_QUERY_STRING);

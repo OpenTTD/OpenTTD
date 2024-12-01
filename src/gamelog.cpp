@@ -663,7 +663,7 @@ void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 				this->GRFCompatible(&nl[n]->ident);
 			}
 
-			if (og->num_params != ng->num_params || og->param == ng->param) {
+			if (og->param != ng->param) {
 				this->GRFParameters(ol[o]->ident.grfid);
 			}
 

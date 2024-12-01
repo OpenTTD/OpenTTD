@@ -814,7 +814,7 @@ struct GameOptionsWindow : Window {
 				auto *used_set = BaseGraphics::GetUsedSet();
 				if (used_set == nullptr || !used_set->IsConfigurable()) break;
 				GRFConfig &extra_cfg = used_set->GetOrCreateExtraConfig();
-				if (extra_cfg.num_params == 0) extra_cfg.SetParameterDefaults();
+				if (extra_cfg.param.empty()) extra_cfg.SetParameterDefaults();
 				OpenGRFParameterWindow(true, &extra_cfg, _game_mode == GM_MENU);
 				if (_game_mode == GM_MENU) this->reload = true;
 				break;

@@ -1196,8 +1196,9 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @param name     The name of the field.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
+ * @param length   Number of elements in the array.
  */
-#define SLEG_ARR(name, variable, type) SLEG_CONDARR(name, variable, type, lengthof(variable), SL_MIN_VERSION, SL_MAX_VERSION)
+#define SLEG_ARR(name, variable, type, length) SLEG_CONDARR(name, variable, type, length, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Storage of a global \c std::string in every savegame version.

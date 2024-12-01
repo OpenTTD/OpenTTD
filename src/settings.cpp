@@ -1220,7 +1220,7 @@ static void GraphicsSetSaveConfig(IniFile &ini)
 	group.GetOrCreateItem("shortname").SetValue(fmt::format("{:08X}", BSWAP32(used_set->shortname)));
 
 	const GRFConfig *extra_cfg = used_set->GetExtraConfig();
-	if (extra_cfg != nullptr && extra_cfg->num_params > 0) {
+	if (extra_cfg != nullptr && !extra_cfg->param.empty()) {
 		group.GetOrCreateItem("extra_version").SetValue(fmt::format("{}", extra_cfg->version));
 		group.GetOrCreateItem("extra_params").SetValue(GRFBuildParamList(extra_cfg));
 	}

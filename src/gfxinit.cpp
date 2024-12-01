@@ -191,7 +191,7 @@ static void LoadSpriteTables()
 
 	/* Baseset extra graphics */
 	GRFConfig *extra = new GRFConfig(used_set->GetOrCreateExtraConfig());
-	if (extra->num_params == 0) extra->SetParameterDefaults();
+	if (extra->param.empty()) extra->SetParameterDefaults();
 	ClrBit(extra->flags, GCF_INIT_ONLY);
 
 	extra->next = top;
@@ -397,7 +397,7 @@ bool GraphicsSet::IsConfigurable() const
 void GraphicsSet::CopyCompatibleConfig(const GraphicsSet &src)
 {
 	const GRFConfig *src_cfg = src.GetExtraConfig();
-	if (src_cfg == nullptr || src_cfg->num_params == 0) return;
+	if (src_cfg == nullptr || src_cfg->param.empty()) return;
 	GRFConfig &dest_cfg = this->GetOrCreateExtraConfig();
 	if (dest_cfg.IsCompatible(src_cfg->version)) return;
 	dest_cfg.CopyParams(*src_cfg);
