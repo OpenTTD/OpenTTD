@@ -145,7 +145,8 @@ struct GRFParameterInfo {
 
 	bool complete_labels = false; ///< True if all values have a label.
 
-	std::map<uint32_t, GRFTextList> value_names = {}; ///< Names for each value.
+	using ValueName = std::pair<uint32_t, GRFTextList>;
+	std::vector<ValueName> value_names; ///< Names for each value.
 
 	void Finalize();
 };
