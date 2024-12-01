@@ -41,7 +41,7 @@ static const std::string HWACCELERATION_TEST_FILE = "hwaccel.dat"; ///< Filename
  * @param name The parameter name we're looking for.
  * @return The parameter value.
  */
-const char *GetDriverParam(const StringList &parm, const char *name)
+const char *GetDriverParam(std::span<const std::string> parm, const char *name)
 {
 	if (parm.empty()) return nullptr;
 
@@ -61,7 +61,7 @@ const char *GetDriverParam(const StringList &parm, const char *name)
  * @param name The parameter name we're looking for.
  * @return The parameter value.
  */
-bool GetDriverParamBool(const StringList &parm, const char *name)
+bool GetDriverParamBool(std::span<const std::string> parm, const char *name)
 {
 	return GetDriverParam(parm, name) != nullptr;
 }
@@ -73,7 +73,7 @@ bool GetDriverParamBool(const StringList &parm, const char *name)
  * @param def  The default value if the parameter doesn't exist.
  * @return The parameter value.
  */
-int GetDriverParamInt(const StringList &parm, const char *name, int def)
+int GetDriverParamInt(std::span<const std::string> parm, const char *name, int def)
 {
 	const char *p = GetDriverParam(parm, name);
 	return p != nullptr ? atoi(p) : def;

@@ -18,7 +18,7 @@
 /** Factory for BeOS' midi player. */
 static FMusicDriver_BeMidi iFMusicDriver_BeMidi;
 
-std::optional<std::string_view> MusicDriver_BeMidi::Start(const StringList &parm)
+std::optional<std::string_view> MusicDriver_BeMidi::Start(std::span<const std::string>)
 {
 	return std::nullopt;
 }

@@ -53,9 +53,9 @@ bool VideoDriver_SDL_OpenGL::CreateMainWindow(uint w, uint h, uint flags)
 	return this->VideoDriver_SDL_Base::CreateMainWindow(w, h, flags | SDL_WINDOW_OPENGL);
 }
 
-std::optional<std::string_view> VideoDriver_SDL_OpenGL::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_SDL_OpenGL::Start(std::span<const std::string> parm)
 {
-	auto error = VideoDriver_SDL_Base::Start(param);
+	auto error = VideoDriver_SDL_Base::Start(parm);
 	if (error) return error;
 
 	error = this->AllocateContext();

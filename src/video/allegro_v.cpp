@@ -420,7 +420,7 @@ bool VideoDriver_Allegro::PollEvent()
  */
 int _allegro_instance_count = 0;
 
-std::optional<std::string_view> VideoDriver_Allegro::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_Allegro::Start(std::span<const std::string> parm)
 {
 	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
 		Debug(driver, 0, "allegro: install_allegro failed '{}'", allegro_error);
@@ -448,7 +448,7 @@ std::optional<std::string_view> VideoDriver_Allegro::Start(const StringList &par
 	MarkWholeScreenDirty();
 	set_close_button_callback(HandleExitGameRequest);
 
-	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
+	this->is_game_threaded = !GetDriverParamBool(parm, "no_threads") && !GetDriverParamBool(parm, "no_thread");
 
 	return std::nullopt;
 }

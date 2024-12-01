@@ -50,7 +50,7 @@ void SoundDriver_Allegro::MainLoop()
  */
 extern int _allegro_instance_count;
 
-std::optional<std::string_view> SoundDriver_Allegro::Start(const StringList &parm)
+std::optional<std::string_view> SoundDriver_Allegro::Start(std::span<const std::string> parm)
 {
 	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
 		Debug(driver, 0, "allegro: install_allegro failed '{}'", allegro_error);

@@ -14,7 +14,7 @@
 
 class SoundDriver_Cocoa : public SoundDriver {
 public:
-	std::optional<std::string_view> Start(const StringList &param) override;
+	std::optional<std::string_view> Start(std::span<const std::string> parm) override;
 
 	void Stop() override;
 	std::string_view GetName() const override { return "cocoa"; }

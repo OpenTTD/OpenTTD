@@ -26,7 +26,7 @@ static MIDI *_midi = nullptr;
  */
 extern int _allegro_instance_count;
 
-std::optional<std::string_view> MusicDriver_Allegro::Start(const StringList &)
+std::optional<std::string_view> MusicDriver_Allegro::Start(std::span<const std::string> )
 {
 	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
 		Debug(driver, 0, "allegro: install_allegro failed '{}'", allegro_error);

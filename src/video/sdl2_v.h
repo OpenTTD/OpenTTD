@@ -19,7 +19,7 @@ class VideoDriver_SDL_Base : public VideoDriver {
 public:
 	VideoDriver_SDL_Base(bool uses_hardware_acceleration = false) : VideoDriver(uses_hardware_acceleration), sdl_window(nullptr), buffer_locked(false) {}
 
-	std::optional<std::string_view> Start(const StringList &param) override;
+	std::optional<std::string_view> Start(std::span<const std::string> parm) override;
 
 	void Stop() override;
 

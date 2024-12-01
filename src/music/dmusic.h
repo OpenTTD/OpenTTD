@@ -17,7 +17,7 @@ class MusicDriver_DMusic : public MusicDriver {
 public:
 	virtual ~MusicDriver_DMusic();
 
-	std::optional<std::string_view> Start(const StringList &param) override;
+	std::optional<std::string_view> Start(std::span<const std::string> parm) override;
 
 	void Stop() override;
 

@@ -185,7 +185,7 @@ static bool _allowSoftware;
 static FVideoDriver_CocoaOpenGL iFVideoDriver_CocoaOpenGL;
 
 
-std::optional<std::string_view> VideoDriver_CocoaOpenGL::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_CocoaOpenGL::Start(std::span<const std::string> parm)
 {
 	auto err = this->Initialize();
 	if (err) return err;

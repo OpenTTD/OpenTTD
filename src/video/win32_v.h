@@ -79,7 +79,7 @@ class VideoDriver_Win32GDI : public VideoDriver_Win32Base {
 public:
 	VideoDriver_Win32GDI() : dib_sect(nullptr), gdi_palette(nullptr), buffer_bits(nullptr) {}
 
-	std::optional<std::string_view> Start(const StringList &param) override;
+	std::optional<std::string_view> Start(std::span<const std::string> parm) override;
 
 	void Stop() override;
 
@@ -120,7 +120,7 @@ class VideoDriver_Win32OpenGL : public VideoDriver_Win32Base {
 public:
 	VideoDriver_Win32OpenGL() : VideoDriver_Win32Base(true), dc(nullptr), gl_rc(nullptr), anim_buffer(nullptr), driver_info(this->GetName()) {}
 
-	std::optional<std::string_view> Start(const StringList &param) override;
+	std::optional<std::string_view> Start(std::span<const std::string> parm) override;
 
 	void Stop() override;
 

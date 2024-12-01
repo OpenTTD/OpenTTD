@@ -589,7 +589,7 @@ VideoDriver_CocoaQuartz::VideoDriver_CocoaQuartz()
 	this->cgcontext     = nullptr;
 }
 
-std::optional<std::string_view> VideoDriver_CocoaQuartz::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_CocoaQuartz::Start(std::span<const std::string> parm)
 {
 	auto err = this->Initialize();
 	if (err) return err;
@@ -613,7 +613,7 @@ std::optional<std::string_view> VideoDriver_CocoaQuartz::Start(const StringList 
 	this->GameSizeChanged();
 	this->UpdateVideoModes();
 
-	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
+	this->is_game_threaded = !GetDriverParamBool(parm, "no_threads") && !GetDriverParamBool(parm, "no_thread");
 
 	return std::nullopt;
 

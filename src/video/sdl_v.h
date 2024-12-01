@@ -15,7 +15,7 @@
 /** The SDL video driver. */
 class VideoDriver_SDL : public VideoDriver {
 public:
-	std::optional<std::string_view> Start(const StringList &param) override;
+	std::optional<std::string_view> Start(std::span<const std::string> parm) override;
 
 	void Stop() override;
 

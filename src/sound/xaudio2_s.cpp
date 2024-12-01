@@ -138,7 +138,7 @@ static HRESULT CreateXAudio(API_XAudio2Create xAudio2Create)
  * @return An error message if unsuccessful, or std::nullopt otherwise.
  *
  */
-std::optional<std::string_view> SoundDriver_XAudio2::Start(const StringList &parm)
+std::optional<std::string_view> SoundDriver_XAudio2::Start(std::span<const std::string> parm)
 {
 	HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 

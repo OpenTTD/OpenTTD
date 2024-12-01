@@ -1030,7 +1030,7 @@ void VideoDriver_Win32Base::UnlockVideoBuffer()
 
 static FVideoDriver_Win32GDI iFVideoDriver_Win32GDI;
 
-std::optional<std::string_view> VideoDriver_Win32GDI::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_Win32GDI::Start(std::span<const std::string> parm)
 {
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
 
@@ -1042,7 +1042,7 @@ std::optional<std::string_view> VideoDriver_Win32GDI::Start(const StringList &pa
 
 	MarkWholeScreenDirty();
 
-	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
+	this->is_game_threaded = !GetDriverParamBool(parm, "no_threads") && !GetDriverParamBool(parm, "no_thread");
 
 	return std::nullopt;
 }
@@ -1320,7 +1320,7 @@ static void LoadWGLExtensions()
 
 static FVideoDriver_Win32OpenGL iFVideoDriver_Win32OpenGL;
 
-std::optional<std::string_view> VideoDriver_Win32OpenGL::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_Win32OpenGL::Start(std::span<const std::string> parm)
 {
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
 
@@ -1356,7 +1356,7 @@ std::optional<std::string_view> VideoDriver_Win32OpenGL::Start(const StringList 
 
 	MarkWholeScreenDirty();
 
-	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
+	this->is_game_threaded = !GetDriverParamBool(parm, "no_threads") && !GetDriverParamBool(parm, "no_thread");
 
 	return std::nullopt;
 }

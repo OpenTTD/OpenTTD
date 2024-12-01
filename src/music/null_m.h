@@ -15,7 +15,7 @@
 /** The music player that does nothing. */
 class MusicDriver_Null : public MusicDriver {
 public:
-	std::optional<std::string_view> Start(const StringList &) override { return std::nullopt; }
+	std::optional<std::string_view> Start(std::span<const std::string>) override { return std::nullopt; }
 
 	void Stop() override { }
 

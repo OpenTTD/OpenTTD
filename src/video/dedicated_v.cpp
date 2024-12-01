@@ -103,7 +103,7 @@ extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, Detaile
 static FVideoDriver_Dedicated iFVideoDriver_Dedicated;
 
 
-std::optional<std::string_view> VideoDriver_Dedicated::Start(const StringList &)
+std::optional<std::string_view> VideoDriver_Dedicated::Start(std::span<const std::string>)
 {
 	this->UpdateAutoResolution();
 

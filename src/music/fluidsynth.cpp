@@ -58,11 +58,11 @@ static void RenderMusicStream(int16_t *buffer, size_t samples)
 	fluid_synth_write_s16(_midi.synth, samples, buffer, 0, 2, buffer, 1, 2);
 }
 
-std::optional<std::string_view> MusicDriver_FluidSynth::Start(const StringList &param)
+std::optional<std::string_view> MusicDriver_FluidSynth::Start(std::span<const std::string> parm)
 {
 	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
 
-	const char *sfont_name = GetDriverParam(param, "soundfont");
+	const char *sfont_name = GetDriverParam(parm, "soundfont");
 	int sfont_id;
 
 	Debug(driver, 1, "Fluidsynth: sf {}", sfont_name != nullptr ? sfont_name : "(null)");

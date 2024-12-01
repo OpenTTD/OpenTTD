@@ -14,7 +14,7 @@ class VideoDriver_SDL_OpenGL : public VideoDriver_SDL_Base {
 public:
 	VideoDriver_SDL_OpenGL() : VideoDriver_SDL_Base(true), gl_context(nullptr), anim_buffer(nullptr) {}
 
-	std::optional<std::string_view> Start(const StringList &param) override;
+	std::optional<std::string_view> Start(std::span<const std::string> parm) override;
 
 	void Stop() override;
 

@@ -540,7 +540,7 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Initialize()
 	return std::nullopt;
 }
 
-std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &param)
+std::optional<std::string_view> VideoDriver_SDL_Base::Start(std::span<const std::string> parm)
 {
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
 
@@ -548,7 +548,7 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &pa
 	if (error) return error;
 
 #ifdef SDL_HINT_MOUSE_AUTO_CAPTURE
-	if (GetDriverParamBool(param, "no_mouse_capture")) {
+	if (GetDriverParamBool(parm, "no_mouse_capture")) {
 		/* By default SDL captures the mouse, while a button is pressed.
 		 * This is annoying during debugging, when OpenTTD is suspended while the button was pressed.
 		 */
@@ -560,7 +560,7 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &pa
 	SDL_SetHint(SDL_HINT_APP_NAME, "OpenTTD");
 #endif
 
-	this->startup_display = FindStartupDisplay(GetDriverParamInt(param, "display", -1));
+	this->startup_display = FindStartupDisplay(GetDriverParamInt(parm, "display", -1));
 
 	if (!CreateMainSurface(_cur_resolution.width, _cur_resolution.height, false)) {
 		return SDL_GetError();
@@ -582,7 +582,7 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &pa
 #ifdef __EMSCRIPTEN__
 	this->is_game_threaded = false;
 #else
-	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
+	this->is_game_threaded = !GetDriverParamBool(parm, "no_threads") && !GetDriverParamBool(parm, "no_thread");
 #endif
 
 	return std::nullopt;

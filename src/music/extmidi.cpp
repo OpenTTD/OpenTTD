@@ -35,7 +35,7 @@
 /** Factory for the midi player that uses external players. */
 static FMusicDriver_ExtMidi iFMusicDriver_ExtMidi;
 
-std::optional<std::string_view> MusicDriver_ExtMidi::Start(const StringList &parm)
+std::optional<std::string_view> MusicDriver_ExtMidi::Start(std::span<const std::string> parm)
 {
 	if (VideoDriver::GetInstance()->GetName() == "allegro" ||
 			SoundDriver::GetInstance()->GetName() == "allegro") {

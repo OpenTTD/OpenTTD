@@ -11,11 +11,10 @@
 #define DRIVER_H
 
 #include "core/enum_type.hpp"
-#include "string_type.h"
 
-const char *GetDriverParam(const StringList &parm, const char *name);
-bool GetDriverParamBool(const StringList &parm, const char *name);
-int GetDriverParamInt(const StringList &parm, const char *name, int def);
+const char *GetDriverParam(std::span<const std::string> parm, const char *name);
+bool GetDriverParamBool(std::span<const std::string> parm, const char *name);
+int GetDriverParamInt(std::span<const std::string> parm, const char *name, int def);
 
 /** A driver for communicating with the user. */
 class Driver {
@@ -25,7 +24,7 @@ public:
 	 * @param parm Parameters passed to the driver.
 	 * @return std::nullopt if everything went okay, otherwise an error message.
 	 */
-	virtual std::optional<std::string_view> Start(const StringList &parm) = 0;
+	virtual std::optional<std::string_view> Start(std::span<const std::string> parm) = 0;
 
 	/**
 	 * Stop this driver.

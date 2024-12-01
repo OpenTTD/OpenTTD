@@ -79,7 +79,7 @@ static void DoSetVolume()
 /**
  * Initialized the MIDI player, including QuickTime initialization.
  */
-std::optional<std::string_view> MusicDriver_Cocoa::Start(const StringList &)
+std::optional<std::string_view> MusicDriver_Cocoa::Start(std::span<const std::string>)
 {
 	if (NewMusicPlayer(&_player) != noErr) return "failed to create music player";
 

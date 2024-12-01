@@ -25,7 +25,7 @@ class VideoDriver_CocoaOpenGL : public VideoDriver_Cocoa {
 public:
 	VideoDriver_CocoaOpenGL() : VideoDriver_Cocoa(true), gl_context(nullptr), anim_buffer(nullptr), driver_info(this->GetName()) {}
 
-	std::optional<std::string_view> Start(const StringList &param) override;
+	std::optional<std::string_view> Start(std::span<const std::string> parm) override;
 	void Stop() override;
 
 	bool HasEfficient8Bpp() const override { return true; }
