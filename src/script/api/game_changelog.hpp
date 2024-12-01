@@ -19,6 +19,17 @@
  *
  * API additions:
  * \li GSEventVehicleCrashed::GetVictims
+ * \li GSGroup::GetOwner
+ * \li GSEventVehicleLost
+ * \li GSEventVehicleWaitingInDepot
+ * \li GSEventVehicleUnprofitable
+ * \li GSEventEngineAvailable
+ * \li GSEventDisasterZeppelinerCrashed
+ * \li GSEventDisasterZeppelinerCleared
+ * \li GSEventAircraftDestTooFar
+ * \li GSEventVehicleAutoReplaced
+ * \li GSEventCompanyAskMerger
+ * \li GSEventEnginePreview
  *
  * \b 14.0
  *
