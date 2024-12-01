@@ -629,6 +629,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Alternar
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Histórico da Produção
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produzido
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Exibir classificações detalhadas de desempenho
 
@@ -4748,8 +4750,9 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar durante
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viaja para {STRING}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Este horário vai levar {STRING} a completar
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Este horário vai levar pelo menos {STRING} a completar (nem tudo está programado)
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Este horário levará aproximadamente {STRING} para concluir
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Este horário vai levar {STRING} a concluir
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Este horário vai levar pelo menos {STRING} a concluir (nem tudo está programado)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este veículo está actualmente a andar a horas
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este veículo está presentemente atrasado {STRING}
