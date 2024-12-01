@@ -175,7 +175,7 @@ public:
 
 	inline char TransportTypeChar() const { return '^'; }
 
-	static std::vector<WaterRegionPatchDesc> FindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length)
+	static std::vector<WaterRegionPatchDesc> FindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length, const std::span<TileIndex> dest_tiles)
 	{
 		const WaterRegionPatchDesc start_water_region_patch = GetWaterRegionPatchInfo(start_tile);
 
@@ -184,18 +184,7 @@ public:
 		Tpf pf(std::min(static_cast<int>(Map::Size() * NODES_PER_REGION) / WATER_REGION_NUMBER_OF_TILES, MAX_NUMBER_OF_NODES));
 		pf.SetDestination(start_water_region_patch);
 
-		if (v->current_order.IsType(OT_GOTO_STATION)) {
-			DestinationID station_id = v->current_order.GetDestination();
-			const BaseStation *station = BaseStation::Get(station_id);
-			TileArea tile_area;
-			station->GetTileArea(&tile_area, STATION_DOCK);
-			for (const auto &tile : tile_area) {
-				if (IsDockingTile(tile) && IsShipDestinationTile(tile, station_id)) {
-					pf.AddOrigin(GetWaterRegionPatchInfo(tile));
-				}
-			}
-		} else {
-			TileIndex tile = v->dest_tile;
+		for (const TileIndex &tile : dest_tiles) {
 			pf.AddOrigin(GetWaterRegionPatchInfo(tile));
 		}
 
@@ -292,9 +281,10 @@ struct CYapfRegionWater : CYapfT<CYapfRegion_TypesT<CYapfRegionWater, CRegionNod
  * @param v The ship to find a path for.
  * @param start_tile The tile to start searching from.
  * @param max_returned_path_length The maximum length of the path that will be returned.
+ * @param dest_tiles List of destination tiles.
  * @returns A path of water region patches, or an empty vector if no path was found.
  */
-std::vector<WaterRegionPatchDesc> YapfShipFindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length)
+std::vector<WaterRegionPatchDesc> YapfShipFindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length, const std::span<TileIndex> dest_tiles)
 {
-	return CYapfRegionWater::FindWaterRegionPath(v, start_tile, max_returned_path_length);
+	return CYapfRegionWater::FindWaterRegionPath(v, start_tile, max_returned_path_length, dest_tiles);
 }
