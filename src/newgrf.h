@@ -131,13 +131,13 @@ struct GRFFile : ZeroedMemoryAllocator {
 	std::array<uint8_t, NUM_CARGO> cargo_map{}; ///< Inverse cargo translation table (CargoID -> local ID)
 
 	std::vector<RailTypeLabel> railtype_list;       ///< Railtype translation table
-	RailType railtype_map[RAILTYPE_END];
+	std::array<RailType, RAILTYPE_END> railtype_map{};
 
 	std::vector<RoadTypeLabel> roadtype_list;       ///< Roadtype translation table (road)
-	RoadType roadtype_map[ROADTYPE_END];
+	std::array<RoadType, ROADTYPE_END> roadtype_map{};
 
 	std::vector<RoadTypeLabel> tramtype_list;       ///< Roadtype translation table (tram)
-	RoadType tramtype_map[ROADTYPE_END];
+	std::array<RoadType, ROADTYPE_END> tramtype_map{};
 
 	CanalProperties canal_local_properties[CF_END]; ///< Canal properties as set by this NewGRF
 
