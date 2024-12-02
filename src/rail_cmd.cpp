@@ -773,13 +773,13 @@ bool FloodHalftile(TileIndex t)
 		TrackBits lower_track = CornerToTrackBits(OppositeCorner(GetHighestSlopeCorner(tileh)));
 
 		TrackBits to_remove = lower_track & rail_bits;
-		if (to_remove != 0) {
+		if (to_remove != TRACK_BIT_NONE) {
 			Backup<CompanyID> cur_company(_current_company, OWNER_WATER);
 			flooded = Command<CMD_REMOVE_SINGLE_RAIL>::Do(DC_EXEC, t, FindFirstTrack(to_remove)).Succeeded();
 			cur_company.Restore();
 			if (!flooded) return flooded; // not yet floodable
 			rail_bits = rail_bits & ~to_remove;
-			if (rail_bits == 0) {
+			if (rail_bits == TRACK_BIT_NONE) {
 				MakeShore(t);
 				MarkTileDirtyByTile(t);
 				return flooded;
