@@ -88,6 +88,6 @@ enum SpecialStrings {
 	SPECSTR_PRESIDENT_NAME     = 0x70E7,
 };
 
-using StringParameterData = std::variant<uint64_t, std::string>;
+using StringParameterData = std::variant<std::monostate, uint64_t, std::string>;
 
 #endif /* STRINGS_TYPE_H */
