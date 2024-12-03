@@ -15,14 +15,19 @@
  * by strgen to generate the language files.
  */
 enum StringControlCode : uint16_t {
+	SCC_RECORD_SEPARATOR = 0x1E,
+
 	SCC_CONTROL_START = 0xE000,
 	SCC_CONTROL_END   = 0xE1FF,
 
 	SCC_SPRITE_START  = 0xE200,
 	SCC_SPRITE_END    = SCC_SPRITE_START + 0xFF,
 
-	/* This must be the first entry. It's encoded in strings that are saved. */
-	SCC_ENCODED = SCC_CONTROL_START,
+	/* All SCC_ENCODED* control codes must have stable ids are they are stored in strings that are saved in savegames. */
+	SCC_ENCODED = SCC_CONTROL_START, ///< Encoded string marker and sub-string parameter.
+	SCC_ENCODED_RESERVED, ///< Reserved for future non-GS encoded strings.
+	SCC_ENCODED_NUMERIC, ///< Encoded numeric parameter.
+	SCC_ENCODED_STRING, ///< Encoded string parameter.
 
 	/* Font selection codes, must be in same order as FontSize enum */
 	SCC_FIRST_FONT,

@@ -197,16 +197,26 @@ void ScriptText::ParamCheck::Encode(std::back_insert_iterator<std::string> &outp
 	struct visitor {
 		std::back_insert_iterator<std::string> &output;
 
-		void operator()(const std::string &value) { fmt::format_to(this->output, ":\"{}\"", value); }
-		void operator()(const SQInteger &value) { fmt::format_to(this->output, ":{:X}", value); }
+		void operator()(const std::string &value)
+		{
+			Utf8Encode(this->output, SCC_ENCODED_STRING);
+			fmt::format_to(this->output, "{}", value);
+		}
+
+		void operator()(const SQInteger &value)
+		{
+			Utf8Encode(this->output, SCC_ENCODED_NUMERIC);
+			fmt::format_to(this->output, "{:X}", value);
+		}
+
 		void operator()(const ScriptTextRef &value)
 		{
-			fmt::format_to(this->output, ":");
 			Utf8Encode(this->output, SCC_ENCODED);
 			fmt::format_to(this->output, "{:X}", value->string);
 		}
 	};
 
+	*output = SCC_RECORD_SEPARATOR;
 	std::visit(visitor{output}, *this->param);
 	this->used = true;
 }
