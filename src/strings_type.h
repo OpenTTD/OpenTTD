@@ -72,7 +72,7 @@ static constexpr StringID SPECSTR_SILLY_NAME = 0x70E5; ///< Special string for s
 static constexpr StringID SPECSTR_ANDCO_NAME = 0x70E6; ///< Special string for Surname & Co company names.
 static constexpr StringID SPECSTR_PRESIDENT_NAME = 0x70E7; ///< Special string for the president's name.
 
-using StringParameterData = std::variant<uint64_t, std::string>;
+using StringParameterData = std::variant<std::monostate, uint64_t, std::string>;
 
 /** The data required to format and validate a single parameter of a string. */
 struct StringParameter {
@@ -82,6 +82,7 @@ struct StringParameter {
 	StringParameter() = default;
 	inline StringParameter(StringParameterData &&data) : data(std::move(data)), type(0) {}
 
+	inline StringParameter(const std::monostate &data) : data(data), type(0) {}
 	inline StringParameter(uint64_t data) : data(data), type(0) {}
 
 	inline StringParameter(const char *data) : data(std::string{data}), type(0) {}
