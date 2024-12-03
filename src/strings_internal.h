@@ -92,6 +92,7 @@ public:
 	T GetNextParameter()
 	{
 		struct visitor {
+			uint64_t operator()(const std::monostate &) { throw std::out_of_range("Attempt to read uninitialised parameter as integer"); }
 			uint64_t operator()(const uint64_t &arg) { return arg; }
 			uint64_t operator()(const std::string &) { throw std::out_of_range("Attempt to read string parameter as integer"); }
 		};
@@ -109,6 +110,7 @@ public:
 	const char *GetNextParameterString()
 	{
 		struct visitor {
+			const char *operator()(const std::monostate &) { throw std::out_of_range("Attempt to read uninitialised parameter as string"); }
 			const char *operator()(const uint64_t &) { throw std::out_of_range("Attempt to read integer parameter as string"); }
 			const char *operator()(const std::string &arg) { return arg.c_str(); }
 		};
