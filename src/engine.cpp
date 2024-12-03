@@ -85,8 +85,9 @@ Engine::Engine(VehicleType type, EngineID base)
 		this->info.base_life = 0xFF;
 		/* Set road vehicle tractive effort to the default value */
 		if (type == VEH_ROAD) this->u.road.tractive_effort = 0x4C;
-		/* Aircraft must have INVALID_CARGO as default, as there is no property */
-		if (type == VEH_AIRCRAFT) this->info.cargo_type = INVALID_CARGO;
+		/* Aircraft must have CT_INVALID as default, as there is no property */
+		this->info.cargo_type = INVALID_CARGO;
+		this->info.cargo_label = (type == VEH_AIRCRAFT) ? CT_INVALID : CT_PASSENGERS;
 		/* Ships must have a non-zero acceleration. */
 		if (type == VEH_SHIP) this->u.ship.acceleration = 1;
 		/* Set visual effect to the default value */
