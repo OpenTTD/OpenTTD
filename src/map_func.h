@@ -376,26 +376,6 @@ debug_inline static TileIndex TileXY(uint x, uint y)
 }
 
 /**
- * Calculates an offset for the given coordinate(-offset).
- *
- * This function calculate an offset value which can be added to a
- * #TileIndex. The coordinates can be negative.
- *
- * @param x The offset in x direction
- * @param y The offset in y direction
- * @return The resulting offset value of the given coordinate
- * @see ToTileIndexDiff(TileIndexDiffC)
- */
-inline TileIndexDiff TileDiffXY(int x, int y)
-{
-	/* Multiplication gives much better optimization on MSVC than shifting.
-	 * 0 << shift isn't optimized to 0 properly.
-	 * Typically x and y are constants, and then this doesn't result
-	 * in any actual multiplication in the assembly code.. */
-	return (y * Map::SizeX()) + x;
-}
-
-/**
  * Get a tile from the virtual XY-coordinate.
  * @param x The virtual x coordinate of the tile.
  * @param y The virtual y coordinate of the tile.
@@ -428,6 +408,126 @@ debug_inline static uint TileY(TileIndex tile)
 }
 
 /**
+ * An offset value between two tiles.
+ *
+ * This value is used for the difference between two tiles. It can be added to
+ * a TileIndex to get the resulting TileIndex of the start tile applied with
+ * this saved difference.
+ *
+ * When being built with debugging, the internal structure is different to be
+ * able to perform stringent overflow checks on the X and Y axes. However,
+ * that structure has negative performance impacts not warranted for releases.
+ *
+ * @see TileDiffXY(int, int)
+ */
+struct TileIndexDiff {
+public:
+	friend inline TileIndexDiff TileDiffXY(int x, int y);
+	friend inline TileIndex operator-(const TileIndex &tile, const TileIndexDiff &offset);
+	friend inline TileIndex operator+(const TileIndex &tile, const TileIndexDiff &offset);
+
+	debug_inline TileIndexDiff operator*(int amount) const
+	{
+		int32_t new_offset = this->offset * amount;
+#ifdef _DEBUG
+		TileIndexDiff result = TileIndexDiff(this->x * amount, this->y * amount);
+		assert(result.offset == new_offset);
+		return result;
+#else
+		return TileIndexDiff(new_offset);
+#endif /* _DEBUG */
+	}
+
+	debug_inline TileIndexDiff& operator*=(int amount)
+	{
+		this->offset *= amount;
+#ifdef _DEBUG
+		this->x *= amount;
+		this->y *= amount;
+		assert(this->offset == GetOffset(this->x, this->y));
+#endif /* _DEBUG */
+		return *this;
+	}
+
+	debug_inline TileIndexDiff& operator+=(const TileIndexDiff &other)
+	{
+		this->offset += other.offset;
+#ifdef _DEBUG
+		this->x += other.x;
+		this->y += other.y;
+		assert(this->offset == GetOffset(this->x, this->y));
+#endif /* _DEBUG */
+		return *this;
+	}
+
+	debug_inline constexpr auto operator<=>(const TileIndexDiff&) const = default;
+
+private:
+	int32_t offset;
+#ifdef _DEBUG
+	int32_t x;
+	int32_t y;
+#endif /* _DEBUG */
+
+	debug_inline explicit TileIndexDiff(int32_t x, int32_t y) : offset(GetOffset(x, y))
+#ifdef _DEBUG
+	, x(x), y(y)
+#endif /* _DEBUG */
+	{
+	}
+#ifndef _DEBUG
+	debug_inline explicit TileIndexDiff(int32_t offset) : offset(offset) {}
+#endif /* !_DEBUG */
+
+	debug_inline static int32_t GetOffset(int32_t x, int32_t y)
+	{
+		return (y << Map::LogX()) + x;
+	}
+};
+
+debug_inline TileIndex operator+(const TileIndex &tile, const TileIndexDiff &offset)
+{
+	TileIndex result = tile + offset.offset;
+#ifdef _DEBUG
+	uint x = TileX(tile) + offset.x;
+	uint y = TileY(tile) + offset.y;
+	assert(x < Map::SizeX());
+	assert(y < Map::SizeY());
+	assert(result == TileXY(x, y));
+#endif /* _DEBUG */
+	return result;
+}
+
+debug_inline TileIndex operator-(const TileIndex &tile, const TileIndexDiff &offset)
+{
+	TileIndex result = tile - offset.offset;
+#ifdef _DEBUG
+	assert(result == tile + TileIndexDiff(-offset.x, -offset.y));
+#endif /* _DEBUG */
+	return result;
+}
+
+debug_inline TileIndexDiff operator*(int amount, const TileIndexDiff &offset) { return offset * amount; }
+debug_inline TileIndex& operator-=(TileIndex &tile, const TileIndexDiff &offset) { tile = tile - offset; return tile; }
+debug_inline TileIndex& operator+=(TileIndex &tile, const TileIndexDiff &offset) { tile = tile + offset; return tile; }
+
+/**
+ * Calculates an offset for the given coordinate(-offset).
+ *
+ * This function calculate an offset value which can be added to a
+ * #TileIndex. The coordinates can be negative.
+ *
+ * @param x The offset in x direction
+ * @param y The offset in y direction
+ * @return The resulting offset value of the given coordinate
+ * @see ToTileIndexDiff(TileIndexDiffC)
+ */
+inline TileIndexDiff TileDiffXY(int x, int y)
+{
+	return TileIndexDiff(x, y);
+}
+
+/**
  * Return the offset between two tiles from a TileIndexDiffC struct.
  *
  * This function works like #TileDiffXY(int, int) and returns the
@@ -450,11 +550,7 @@ inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
  * @param offset The offset to add.
  * @return The resulting tile.
  */
-#ifndef _DEBUG
-	constexpr TileIndex TileAdd(TileIndex tile, TileIndexDiff offset) { return tile + offset; }
-#else
-	TileIndex TileAdd(TileIndex tile, TileIndexDiff offset);
-#endif
+inline TileIndex TileAdd(TileIndex tile, TileIndexDiff offset) { return tile + offset; }
 
 /**
  * Adds a given offset to a tile.
