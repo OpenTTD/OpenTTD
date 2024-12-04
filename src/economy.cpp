@@ -597,11 +597,11 @@ static void CompanyCheckBankrupt(Company *c)
 
 		/* Warn about bankruptcy after 3 months */
 		case 4: {
-			CompanyNewsInformation *cni = new CompanyNewsInformation(c);
+			auto cni = std::make_unique<CompanyNewsInformation>(c);
 			SetDParam(0, STR_NEWS_COMPANY_IN_TROUBLE_TITLE);
 			SetDParam(1, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
-			AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, cni);
+			AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, std::move(cni));
 			AI::BroadcastNewEvent(new ScriptEventCompanyInTrouble(c->index));
 			Game::NewEvent(new ScriptEventCompanyInTrouble(c->index));
 			break;
@@ -2011,14 +2011,14 @@ static void DoAcquireCompany(Company *c, bool hostile_takeover)
 {
 	CompanyID ci = c->index;
 
-	CompanyNewsInformation *cni = new CompanyNewsInformation(c, Company::Get(_current_company));
+	auto cni = std::make_unique<CompanyNewsInformation>(c, Company::Get(_current_company));
 
 	SetDParam(0, STR_NEWS_COMPANY_MERGER_TITLE);
 	SetDParam(1, hostile_takeover ? STR_NEWS_MERGER_TAKEOVER_TITLE : STR_NEWS_COMPANY_MERGER_DESCRIPTION);
 	SetDParamStr(2, cni->company_name);
 	SetDParamStr(3, cni->other_company_name);
 	SetDParam(4, c->bankrupt_value);
-	AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, cni);
+	AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, std::move(cni));
 	AI::BroadcastNewEvent(new ScriptEventCompanyMerger(ci, _current_company));
 	Game::NewEvent(new ScriptEventCompanyMerger(ci, _current_company));
 

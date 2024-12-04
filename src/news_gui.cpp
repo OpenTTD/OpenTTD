@@ -873,8 +873,8 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
  *
  * @see NewsSubtype
  */
-NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data) :
-	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(data)
+NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data) :
+	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(std::move(data))
 {
 	/* show this news message in colour? */
 	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
@@ -894,12 +894,12 @@ NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsRefere
  *
  * @see NewsSubtype
  */
-void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data)
+void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data)
 {
 	if (_game_mode == GM_MENU) return;
 
 	/* Create new news item node */
-	_news.emplace_front(string, type, flags, reftype1, ref1, reftype2, ref2, data);
+	_news.emplace_front(string, type, flags, reftype1, ref1, reftype2, ref2, std::move(data));
 
 	/* Keep the number of stored news items to a managable number */
 	if (std::size(_news) > MAX_NEWS_AMOUNT) {
