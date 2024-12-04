@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.16)
 
 if(NOT SCRIPT_API_SOURCE_FILE)
     message(FATAL_ERROR "Script needs SCRIPT_API_SOURCE_FILE defined")
