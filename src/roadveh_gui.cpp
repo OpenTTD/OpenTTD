@@ -51,12 +51,13 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 		}
 
 		std::string capacity = GetString(STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY);
+		std::string_view list_separator = GetListSeparator();
 
 		bool first = true;
 		for (const CargoSpec *cs : _sorted_cargo_specs) {
 			CargoID cid = cs->Index();
 			if (max_cargo[cid] > 0) {
-				if (!first) capacity += ", ";
+				if (!first) capacity += list_separator;
 
 				SetDParam(0, cid);
 				SetDParam(1, max_cargo[cid]);

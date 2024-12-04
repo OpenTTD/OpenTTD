@@ -109,6 +109,7 @@ extern TextDirection _current_text_dir; ///< Text direction of the currently sel
 
 void InitializeLanguagePacks();
 const char *GetCurrentLanguageIsoCode();
+std::string_view GetListSeparator();
 
 /**
  * A searcher for missing glyphs.

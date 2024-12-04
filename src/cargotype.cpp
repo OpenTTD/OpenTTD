@@ -268,6 +268,8 @@ uint64_t CargoSpec::WeightOfNUnitsInTrain(uint32_t n) const
  */
 std::optional<std::string> BuildCargoAcceptanceString(const CargoArray &acceptance, StringID label)
 {
+	std::string_view list_separator = GetListSeparator();
+
 	/* Cargo acceptance is displayed in a extra multiline */
 	std::stringstream line;
 	line << GetString(label);
@@ -277,7 +279,7 @@ std::optional<std::string> BuildCargoAcceptanceString(const CargoArray &acceptan
 		CargoID cid = cs->Index();
 		if (acceptance[cid] > 0) {
 			/* Add a comma between each item. */
-			if (found) line << ", ";
+			if (found) line << list_separator;
 			found = true;
 
 			/* If the accepted value is less than 8, show it in 1/8:ths */
