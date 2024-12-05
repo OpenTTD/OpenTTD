@@ -69,7 +69,6 @@ protected:
 	TileIndex reverse_tile; ///< second (reverse) origin tile
 	Trackdir reverse_td; ///< second (reverse) origin trackdir
 	int reverse_penalty; ///< penalty to be added for using the reverse origin
-	bool treat_first_red_two_way_signal_as_eol; ///< in some cases (leaving station) we need to handle first two-way signal differently
 
 	/** to access inherited path finder */
 	inline Tpf &Yapf()
@@ -79,14 +78,13 @@ protected:
 
 public:
 	/** set origin (tiles, trackdirs, etc.) */
-	void SetOrigin(TileIndex tile, Trackdir td, TileIndex tiler = INVALID_TILE, Trackdir tdr = INVALID_TRACKDIR, int reverse_penalty = 0, bool treat_first_red_two_way_signal_as_eol = true)
+	void SetOrigin(TileIndex tile, Trackdir td, TileIndex tiler = INVALID_TILE, Trackdir tdr = INVALID_TRACKDIR, int reverse_penalty = 0)
 	{
 		this->origin_tile = tile;
 		this->origin_td = td;
 		this->reverse_tile = tiler;
 		this->reverse_td = tdr;
 		this->reverse_penalty = reverse_penalty;
-		this->treat_first_red_two_way_signal_as_eol = treat_first_red_two_way_signal_as_eol;
 	}
 
 	/** Called when YAPF needs to place origin nodes into open list */
@@ -103,12 +101,6 @@ public:
 			n2.cost = this->reverse_penalty;
 			Yapf().AddStartupNode(n2);
 		}
-	}
-
-	/** return true if first two-way signal should be treated as dead end */
-	inline bool TreatFirstRedTwoWaySignalAsEOL()
-	{
-		return Yapf().PfGetSettings().rail_firstred_twoway_eol && this->treat_first_red_two_way_signal_as_eol;
 	}
 };
 
