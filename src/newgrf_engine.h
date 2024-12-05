@@ -122,7 +122,7 @@ enum VehicleTrigger {
 };
 void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
 
-void AlterVehicleListOrder(EngineID engine, uint target);
+void AlterVehicleListOrder(EngineID engine, uint16_t target);
 void CommitVehicleListOrderChanges();
 
 EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16_t internal_id);
