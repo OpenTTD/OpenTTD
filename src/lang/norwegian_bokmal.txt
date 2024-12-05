@@ -630,6 +630,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Vis/skju
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Produksjonshistorikk
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produsert
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportert
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vis detaljerte prestasjonsmålinger
 
@@ -4749,6 +4751,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reise for {STR
 STR_TIMETABLE_STAY_FOR                                          :og bli værende i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og reis i {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Denne rutetabellen vil ta omtrent {STRING} å fullføre
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Det vil ta {STRING} å fullføre rutetabellen
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Det vil ta minst {STRING} å fullføre denne rutetabellen (rutetabell ikke fullstendig)
 
