@@ -45,17 +45,18 @@ protected:
 	 * @note maximum cost doesn't work with caching enabled
 	 * @todo fix maximum cost failing with caching (e.g. FS#2900)
 	 */
-	int max_cost;
-	bool disable_cache;
-	std::vector<int> sig_look_ahead_costs;
+	int max_cost = 0;
+	bool disable_cache = false;
+	std::vector<int> sig_look_ahead_costs = {};
+	bool treat_first_red_two_way_signal_as_eol = false;
 
 public:
-	bool stopped_on_first_two_way_signal;
+	bool stopped_on_first_two_way_signal = false;
 
 protected:
 	static constexpr int MAX_SEGMENT_COST = 10000;
 
-	CYapfCostRailT() : max_cost(0), disable_cache(false), stopped_on_first_two_way_signal(false)
+	CYapfCostRailT()
 	{
 		/* pre-compute look-ahead penalties into array */
 		int p0 = Yapf().PfGetSettings().rail_look_ahead_signal_p0;
@@ -75,6 +76,18 @@ protected:
 	}
 
 public:
+	/** Sets whether the first two-way signal should be treated as a dead end */
+	void SetTreatFirstRedTwoWaySignalAsEOL(bool enabled)
+	{
+		this->treat_first_red_two_way_signal_as_eol = enabled;
+	}
+
+	/** Returns whether the first two-way signal should be treated as a dead end */
+	inline bool TreatFirstRedTwoWaySignalAsEOL()
+	{
+		return Yapf().PfGetSettings().rail_firstred_twoway_eol && this->treat_first_red_two_way_signal_as_eol;
+	}
+
 	inline int SlopeCost(TileIndex tile, Trackdir td)
 	{
 		if (!stSlopeCost(tile, td)) return 0;
