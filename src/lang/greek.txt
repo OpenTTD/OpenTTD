@@ -2925,6 +2925,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Επιλέξτ�
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Επιλογή τύπου σπιτιού για κατασκευή. Ctrl+κλικ για προσθήκη σε ή αφαίρεση από αποθηκευμένα στοιχεία
 
 STR_HOUSE_PICKER_CAPTION                                        :Επιλογή Σπιτιού
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Όνομα: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Πληθυσμός: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Έτη: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Έτη: {ORANGE}Όσα
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Έτη: {ORANGE}Από {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Έτη: {ORANGE}Έως {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Μέγεθος: {ORANGE}{NUM}x{NUM} τετραγωνίδια
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Αποδεκτό φορτίο: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Άκρη
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Περίχωρα

@@ -629,6 +629,8 @@ STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Afficher
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Historique de production
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produit
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transporté
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Afficher le détail de l'évaluation de la performance
 
@@ -2831,6 +2833,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Séléctionner 
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Séléctionner un type de maison à construire. Ctrl+Clic pour ajouter ou retirer des éléments sauvegardés.
 
 STR_HOUSE_PICKER_CAPTION                                        :Séléction de maison
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nom{NBSP}: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Population{NBSP}: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Années{NBSP}: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Années{NBSP}: {ORANGE}Toutes
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Années{NBSP}: {ORANGE}À partir de {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Années{NBSP}: {ORANGE}Jusqu'à {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Taille{NBSP}: {ORANGE}{NUM}{NBSP}x{NBSP}{NUM} cases
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Cargaison acceptée{NBSP}: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Bord
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Périphérie
@@ -4748,6 +4758,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(voyager pendan
 STR_TIMETABLE_STAY_FOR                                          :et rester pendant {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :et voyager pendant {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}C'est horaire prendra approximativement {STRING} pour s'achever
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Cet horaire prendra {STRING} pour s'achever
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Cet horaire prendra au moins {STRING} pour s'achever (horaire incomplet)
 

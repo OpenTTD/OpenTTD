@@ -3003,6 +3003,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Выберит�
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Выберите дом для строительства. Ctrl+щелчок добавит его в «избранное» или удалит.
 
 STR_HOUSE_PICKER_CAPTION                                        :Выбор типов домов
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Название: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Кол-во жителей: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Дата: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Дата: {ORANGE}любая
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Дата: {ORANGE}с {NUM} г.
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Дата: {ORANGE}до {NUM} г.
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Размер: {ORANGE}{NUM}×{NUM} клеток
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Принимаемый груз: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Край
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Окраина

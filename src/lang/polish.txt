@@ -3212,6 +3212,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wybierz strefę
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Wybierz typ budynku do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
 
 STR_HOUSE_PICKER_CAPTION                                        :Wybór Budynków
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nazwa: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Populacja: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Lata: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Lata: {ORANGE}Kiedykolwiek
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Lata: {ORANGE}Od {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Lata: {ORANGE}Do {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Rozmiar: {ORANGE}{NUM}x{NUM} pól
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Akceptowany ładunek: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Obrzeża
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Peryferia

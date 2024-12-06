@@ -2833,6 +2833,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecionar uma 
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selecionar um tipo de casa para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
 
 STR_HOUSE_PICKER_CAPTION                                        :Seleção de Casas
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nome: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}População: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Anos: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Anos: {ORANGE}Qualquer
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Anos: {ORANGE}De {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Anos: {ORANGE}Até {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Tamanho: {ORANGE}{NUM}x{NUM} quadrados
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Carga aceita: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Borda
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Subúrbio
