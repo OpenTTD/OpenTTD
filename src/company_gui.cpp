@@ -81,6 +81,31 @@ static const std::initializer_list<ExpensesType> _expenses_list_capital_costs = 
 	EXPENSES_OTHER,
 };
 
+/** Company Ifrastructure Window infrastructure cache type. */
+enum CIWInfrastructureType : int {
+	CIW_ENTRY_HEADER,               ///< Section Header.
+	CIW_ENTRY_BLANK_LINE,           ///< Blank line.
+	CIW_ENTRY_LABEL_ONLY,           ///< Label only entry, no values.
+	CIW_ENTRY_LABEL_VALUES,         ///< Infrastructure name + values (count/cost).
+	CIW_ENTRY_TOTAL_COST,           ///< Infrastructure maintainance total cost.
+};
+
+/**
+ * Infrastructure count and maintenance cost cache container.
+ * container for total infrastructure running cost, monthly maintenance cost and infrastructure count
+ * for drawing the CompanyInfrastructureWindow with a scrollbar.
+*/
+struct CIWInfrastructureCache {
+	CIWInfrastructureType   type;         ///< Section Header.
+	StringID                label;
+	uint                    count;
+	Money                   monthly_cost;
+
+	CIWInfrastructureCache(CIWInfrastructureType type, StringID label, uint count = 0, Money monthly_cost = 0) : type(type), label(label), count(count), monthly_cost(monthly_cost)
+	{
+	}
+};
+
 /** Expense list container. */
 struct ExpensesList {
 	const StringID title; ///< StringID of list title.
@@ -1752,32 +1777,11 @@ static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.framerect), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_RAIL_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_RAIL_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_ROAD_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_ROAD_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TRAM_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TRAM_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_WATER_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_WATER_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_STATION_DESC), SetMinimalTextLines(3, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_STATION_COUNT), SetMinimalTextLines(3, 0), SetFill(0, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TOTAL_DESC), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TOTAL), SetFill(0, 1),
-			EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_CI_LIST), SetFill(1, 0), SetResize(0, 10), SetScrollbar(WID_CI_SCROLLBAR), EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_CI_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1790,13 +1794,27 @@ struct CompanyInfrastructureWindow : Window
 	RailTypes railtypes; ///< Valid railtypes.
 	RoadTypes roadtypes; ///< Valid roadtypes.
 
-	uint total_width; ///< String width of the total cost line.
+	uint      max_label_width; ///< Infrastructure label size.
+	uint      max_cost_width;  ///< Infratructure maintenance cost text size.
+	uint      max_count_width; ///< Infrastructure count text size.
+
+	Scrollbar *vscroll;        ///< scroll bar widget.
+
+	mutable std::vector<CIWInfrastructureCache> infrastructurelist; ///< infrastructure + total maintenance cost cache vector.
 
 	CompanyInfrastructureWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->UpdateRailRoadTypes();
 
-		this->InitNested(window_number);
+		this->CreateNestedTree();
+
+		this->vscroll = this->GetScrollbar(WID_CI_SCROLLBAR);
+		this->BuildCompanyInfrastructureList();
+
+		this->SetWidgetDirty(WID_CI_LIST);                         // Force repaint of the company infrastructure.
+
+		this->FinishInitNested(window_number);
+
 		this->owner = (Owner)this->window_number;
 	}
 
@@ -1827,29 +1845,101 @@ struct CompanyInfrastructureWindow : Window
 		this->roadtypes &= ~_roadtypes_hidden_mask;
 	}
 
-	/** Get total infrastructure maintenance cost. */
-	Money GetTotalMaintenanceCost() const
+	/**
+	 * Build a vector of infrastructure types(roads, trains, trams, airports, stations, water vehicles) to be displayed.
+	 *   Total maintenance cost of all infrastructure types is last entry in vector.
+	 */
+	void BuildCompanyInfrastructureList() const
 	{
 		const Company *c = Company::Get((CompanyID)this->window_number);
-		Money total;
 
-		uint32_t rail_total = c->infrastructure.GetRailTotal();
-		for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-			if (HasBit(this->railtypes, rt)) total += RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total);
+		Money maintenance_cost       = 0;
+		Money total_maintenance_cost = 0;
+
+		infrastructurelist.clear();
+
+		/* railtypes + signals. */
+		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT);
+
+		if (this->railtypes != RAILTYPES_NONE) {
+			for (const auto &rt : _sorted_railtypes) {
+				if (HasBit(this->railtypes, rt)) {
+					maintenance_cost        = RailMaintenanceCost(rt, c->infrastructure.rail[rt], c->infrastructure.GetRailTotal());
+					total_maintenance_cost += maintenance_cost;
+
+					infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, GetRailTypeInfo(rt)->strings.name, c->infrastructure.rail[rt], maintenance_cost);
+				}
+			}
+
+			maintenance_cost        = SignalMaintenanceCost(c->infrastructure.signal);
+			total_maintenance_cost += maintenance_cost;
+
+			infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS, c->infrastructure.signal, maintenance_cost);
+		} else {
+			/* No valid railtype. */
+			infrastructurelist.emplace_back(CIW_ENTRY_LABEL_ONLY, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
 		}
-		total += SignalMaintenanceCost(c->infrastructure.signal);
 
-		uint32_t road_total = c->infrastructure.GetRoadTotal();
-		uint32_t tram_total = c->infrastructure.GetTramTotal();
-		for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-			if (HasBit(this->roadtypes, rt)) total += RoadMaintenanceCost(rt, c->infrastructure.road[rt], RoadTypeIsRoad(rt) ? road_total : tram_total);
+		/* roadtypes. */
+		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT);
+
+		for (const auto &rt : _sorted_roadtypes) {
+			if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt)) {
+				maintenance_cost        = RoadMaintenanceCost(rt, c->infrastructure.road[rt], c->infrastructure.GetRoadTotal());
+				total_maintenance_cost += maintenance_cost;
+
+				infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, GetRoadTypeInfo(rt)->strings.name, c->infrastructure.road[rt], maintenance_cost);
+			}
 		}
 
-		total += CanalMaintenanceCost(c->infrastructure.water);
-		total += StationMaintenanceCost(c->infrastructure.station);
-		total += AirportMaintenanceCost(c->index);
 
-		return total;
+		/* trams. */
+		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT);
+
+		bool has_trams = false;
+
+		for (const auto &rt : _sorted_roadtypes) {
+			if (HasBit(this->roadtypes, rt) && RoadTypeIsTram(rt)) {
+				maintenance_cost        = RoadMaintenanceCost(rt, c->infrastructure.road[rt], c->infrastructure.GetRoadTotal());
+				total_maintenance_cost += maintenance_cost;
+				has_trams               = true;
+
+				infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, GetRoadTypeInfo(rt)->strings.name, c->infrastructure.road[rt], maintenance_cost);
+			}
+		}
+
+		/* No valid trams. */
+		if (!has_trams) infrastructurelist.emplace_back(CIW_ENTRY_BLANK_LINE, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
+
+
+		/* water-ways. */
+		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT);
+
+		maintenance_cost        = CanalMaintenanceCost(c->infrastructure.water);
+		total_maintenance_cost += maintenance_cost;
+
+		infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS, c->infrastructure.water, maintenance_cost);
+
+
+		/* air-ways. */
+		infrastructurelist.emplace_back(CIW_ENTRY_HEADER, STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT);
+
+		maintenance_cost        = StationMaintenanceCost(c->infrastructure.station);
+		total_maintenance_cost += maintenance_cost;
+
+		infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS, c->infrastructure.station, maintenance_cost);
+
+		maintenance_cost        = AirportMaintenanceCost(c->index);
+		total_maintenance_cost += maintenance_cost;
+
+		infrastructurelist.emplace_back(CIW_ENTRY_LABEL_VALUES, STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS, c->infrastructure.airport, maintenance_cost);
+
+
+		/* total maintenance cost. */
+		infrastructurelist.emplace_back(CIW_ENTRY_TOTAL_COST, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE, 0, total_maintenance_cost);
+
+
+		this->vscroll->SetCount(this->infrastructurelist.size());  // Update scrollbar as well.
 	}
 
 	void SetStringParameters(WidgetID widget) const override
@@ -1861,231 +1951,109 @@ struct CompanyInfrastructureWindow : Window
 		}
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
+	inline int GetLineHeight() const
 	{
-		const Company *c = Company::Get((CompanyID)this->window_number);
-
-		switch (widget) {
-			case WID_CI_RAIL_DESC: {
-				uint lines = 1; // Starts at 1 because a line is also required for the section title
-
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT).width + padding.width);
-
-				for (const auto &rt : _sorted_railtypes) {
-					if (HasBit(this->railtypes, rt)) {
-						lines++;
-						size.width = std::max(size.width, GetStringBoundingBox(GetRailTypeInfo(rt)->strings.name).width + padding.width + WidgetDimensions::scaled.hsep_indent);
-					}
-				}
-				if (this->railtypes != RAILTYPES_NONE) {
-					lines++;
-					size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
-				}
-
-				size.height = std::max(size.height, lines * GetCharacterHeight(FS_NORMAL));
-				break;
-			}
-
-			case WID_CI_ROAD_DESC:
-			case WID_CI_TRAM_DESC: {
-				uint lines = 1; // Starts at 1 because a line is also required for the section title
-
-				size.width = std::max(size.width, GetStringBoundingBox(widget == WID_CI_ROAD_DESC ? STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT : STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT).width + padding.width);
-
-				for (const auto &rt : _sorted_roadtypes) {
-					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_DESC)) {
-						lines++;
-						size.width = std::max(size.width, GetStringBoundingBox(GetRoadTypeInfo(rt)->strings.name).width + padding.width + WidgetDimensions::scaled.hsep_indent);
-					}
-				}
-
-				size.height = std::max(size.height, lines * GetCharacterHeight(FS_NORMAL));
-				break;
-			}
-
-			case WID_CI_WATER_DESC:
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT).width + padding.width);
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
-				break;
-
-			case WID_CI_STATION_DESC:
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT).width + padding.width);
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
-				break;
-
-			case WID_CI_RAIL_COUNT:
-			case WID_CI_ROAD_COUNT:
-			case WID_CI_TRAM_COUNT:
-			case WID_CI_WATER_COUNT:
-			case WID_CI_STATION_COUNT:
-			case WID_CI_TOTAL: {
-				/* Find the maximum count that is displayed. */
-				uint32_t max_val = 1000;  // Some random number to reserve enough space.
-				Money max_cost = 10000; // Some random number to reserve enough space.
-				uint32_t rail_total = c->infrastructure.GetRailTotal();
-				for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
-					max_val = std::max(max_val, c->infrastructure.rail[rt]);
-					max_cost = std::max(max_cost, RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total));
-				}
-				max_val = std::max(max_val, c->infrastructure.signal);
-				max_cost = std::max(max_cost, SignalMaintenanceCost(c->infrastructure.signal));
-				uint32_t road_total = c->infrastructure.GetRoadTotal();
-				uint32_t tram_total = c->infrastructure.GetTramTotal();
-				for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
-					max_val = std::max(max_val, c->infrastructure.road[rt]);
-					max_cost = std::max(max_cost, RoadMaintenanceCost(rt, c->infrastructure.road[rt], RoadTypeIsRoad(rt) ? road_total : tram_total));
-
-				}
-				max_val = std::max(max_val, c->infrastructure.water);
-				max_cost = std::max(max_cost, CanalMaintenanceCost(c->infrastructure.water));
-				max_val = std::max(max_val, c->infrastructure.station);
-				max_cost = std::max(max_cost, StationMaintenanceCost(c->infrastructure.station));
-				max_val = std::max(max_val, c->infrastructure.airport);
-				max_cost = std::max(max_cost, AirportMaintenanceCost(c->index));
-
-				SetDParamMaxValue(0, max_val);
-				uint count_width = GetStringBoundingBox(STR_JUST_COMMA).width + WidgetDimensions::scaled.hsep_indent; // Reserve some wiggle room
-
-				if (_settings_game.economy.infrastructure_maintenance) {
-					StringID str_total = TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR;
-					SetDParamMaxValue(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
-					this->total_width = GetStringBoundingBox(str_total).width + WidgetDimensions::scaled.hsep_indent * 2;
-					size.width = std::max(size.width, this->total_width);
-
-					SetDParamMaxValue(0, max_cost * 12); // Convert to per year
-					count_width += std::max(this->total_width, GetStringBoundingBox(str_total).width);
-				}
-
-				size.width = std::max(size.width, count_width);
-
-				/* Set height of the total line. */
-				if (widget == WID_CI_TOTAL) {
-					size.height = _settings_game.economy.infrastructure_maintenance ? std::max<uint>(size.height, WidgetDimensions::scaled.vsep_normal + GetCharacterHeight(FS_NORMAL)) : 0;
-				}
-				break;
-			}
-		}
+		return GetCharacterHeight(FS_NORMAL) + WidgetDimensions::unscaled.vsep_normal / 2;
 	}
 
-	/**
-	 * Helper for drawing the counts line.
-	 * @param r            The bounds to draw in.
-	 * @param y            The y position to draw at.
-	 * @param count        The count to show on this line.
-	 * @param monthly_cost The monthly costs.
-	 */
-	void DrawCountLine(const Rect &r, int &y, int count, Money monthly_cost) const
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		SetDParam(0, count);
-		DrawString(r.left, r.right, y += GetCharacterHeight(FS_NORMAL), STR_JUST_COMMA, TC_WHITE, SA_RIGHT);
+		if (widget != WID_CI_LIST) return;
+
+		uint  max_lwidth = 0;
+		uint  max_count  = 10000;    // Some random number to reserve enough space.
+		Money max_cost   = 1000000;   // Some random number to reserve enough space.
+
+		for (const auto &ie : this->infrastructurelist) {
+			max_lwidth = std::max(max_lwidth, GetStringBoundingBox(ie.label).width);
+			max_cost   = std::max(max_cost, ie.monthly_cost);
+			max_count  = std::max(max_count, ie.count);
+		}
+
+		/* add ident to labels */
+		max_label_width = max_lwidth + WidgetDimensions::scaled.hsep_indent;
+
+		SetDParam(0, max_count);
+
+		max_count_width = GetStringBoundingBox(STR_JUST_COMMA).width + padding.width * 2;
+		size.height     = static_cast<uint>(this->infrastructurelist.size() * GetLineHeight());
 
 		if (_settings_game.economy.infrastructure_maintenance) {
-			SetDParam(0, monthly_cost * 12); // Convert to per year
-			Rect tr = r.WithWidth(this->total_width, _current_text_dir == TD_RTL);
-			DrawString(tr.left, tr.right, y,
-				TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR,
-				TC_FROMSTRING, SA_RIGHT);
+			SetDParam(0, max_cost * 12);
+			max_cost_width = GetStringBoundingBox(TimerGameEconomy::UsingWallclockUnits()
+					? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR).width;
+
+			size.height   += WidgetDimensions::unscaled.vsep_normal * 2;
+		} else {
+			max_cost_width = 0;
 		}
+
+		size.height   = Clamp(size.height, 0, GetLineHeight() * 25);   // max 25 lines otherwise expand widow manually
+		size.width    = max_label_width + WidgetDimensions::scaled.hsep_normal + max_cost_width + WidgetDimensions::scaled.hsep_normal + max_count_width;
+
+		resize.height = GetLineHeight();
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
-		const Company *c = Company::Get((CompanyID)this->window_number);
+		if (widget != WID_CI_LIST) return;
 
-		int y = r.top;
+		int y = r.top + 1;
+		Rect rr = r.Shrink(WidgetDimensions::scaled.hsep_normal);
+		Rect ir = rr.Indent(WidgetDimensions::scaled.hsep_indent, _current_text_dir == TD_RTL);
 
-		Rect ir = r.Indent(WidgetDimensions::scaled.hsep_indent, _current_text_dir == TD_RTL);
-		switch (widget) {
-			case WID_CI_RAIL_DESC:
-				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT);
+		int label_right = rr.left + this->max_label_width;          // resize rect to handle text direction change
+		int count_left  = ir.right - this->max_count_width;
+		int cost_right  = count_left - WidgetDimensions::scaled.hsep_normal;
+		int cost_left   = cost_right - this->max_cost_width;
 
-				if (this->railtypes != RAILTYPES_NONE) {
-					/* Draw name of each valid railtype. */
-					for (const auto &rt : _sorted_railtypes) {
-						if (HasBit(this->railtypes, rt)) {
-							DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), GetRailTypeInfo(rt)->strings.name, TC_WHITE);
+
+		this->BuildCompanyInfrastructureList();
+
+		auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->infrastructurelist);
+
+		for (auto il = first; il != last; ++il, y += GetLineHeight()) {
+
+			switch (il->type) {
+				case CIW_ENTRY_LABEL_VALUES:
+
+					SetDParam(0, il->count);
+					DrawString(count_left, ir.right, y, STR_JUST_COMMA, TC_WHITE, SA_RIGHT);
+
+					[[fallthrough]];
+
+				case CIW_ENTRY_TOTAL_COST:
+					if (_settings_game.economy.infrastructure_maintenance) {
+
+						if (il->type == CIW_ENTRY_TOTAL_COST) {
+							GfxFillRect(cost_left, y, cost_right, y + WidgetDimensions::scaled.bevel.top - 1, PC_WHITE);
+							y += 2;
 						}
-					}
-					DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS);
-				} else {
-					/* No valid railtype. */
-					DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
-				}
 
-				break;
+						SetDParam(0, il->monthly_cost * 12);             // Convert to per year
+						DrawString(cost_left, cost_right, y, TimerGameEconomy::UsingWallclockUnits()
+							? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, TC_FROMSTRING, SA_RIGHT);
 
-			case WID_CI_RAIL_COUNT: {
-				/* Draw infrastructure count for each valid railtype. */
-				uint32_t rail_total = c->infrastructure.GetRailTotal();
-				for (const auto &rt : _sorted_railtypes) {
-					if (HasBit(this->railtypes, rt)) {
-						this->DrawCountLine(r, y, c->infrastructure.rail[rt], RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total));
+						if (il->type == CIW_ENTRY_TOTAL_COST) break;
 					}
-				}
-				if (this->railtypes != RAILTYPES_NONE) {
-					this->DrawCountLine(r, y, c->infrastructure.signal, SignalMaintenanceCost(c->infrastructure.signal));
-				}
-				break;
+
+					[[fallthrough]];
+
+				case CIW_ENTRY_LABEL_ONLY:
+					DrawString(ir.left, label_right, y, il->label, TC_WHITE);
+					break;
+				case CIW_ENTRY_HEADER:
+					DrawString(rr.left, label_right, y, il->label);
+					break;
+				case CIW_ENTRY_BLANK_LINE:
+					break;
 			}
-
-			case WID_CI_ROAD_DESC:
-			case WID_CI_TRAM_DESC: {
-				DrawString(r.left, r.right, y, widget == WID_CI_ROAD_DESC ? STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT : STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT);
-
-				/* Draw name of each valid roadtype. */
-				for (const auto &rt : _sorted_roadtypes) {
-					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_DESC)) {
-						DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), GetRoadTypeInfo(rt)->strings.name, TC_WHITE);
-					}
-				}
-
-				break;
-			}
-
-			case WID_CI_ROAD_COUNT:
-			case WID_CI_TRAM_COUNT: {
-				uint32_t road_tram_total = widget == WID_CI_ROAD_COUNT ? c->infrastructure.GetRoadTotal() : c->infrastructure.GetTramTotal();
-				for (const auto &rt : _sorted_roadtypes) {
-					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_COUNT)) {
-						this->DrawCountLine(r, y, c->infrastructure.road[rt], RoadMaintenanceCost(rt, c->infrastructure.road[rt], road_tram_total));
-					}
-				}
-				break;
-			}
-
-			case WID_CI_WATER_DESC:
-				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT);
-				DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS);
-				break;
-
-			case WID_CI_WATER_COUNT:
-				this->DrawCountLine(r, y, c->infrastructure.water, CanalMaintenanceCost(c->infrastructure.water));
-				break;
-
-			case WID_CI_TOTAL:
-				if (_settings_game.economy.infrastructure_maintenance) {
-					Rect tr = r.WithWidth(this->total_width, _current_text_dir == TD_RTL);
-					GfxFillRect(tr.left, y, tr.right, y + WidgetDimensions::scaled.bevel.top - 1, PC_WHITE);
-					y += WidgetDimensions::scaled.vsep_normal;
-					SetDParam(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
-					DrawString(tr.left, tr.right, y,
-						TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR,
-						TC_FROMSTRING, SA_RIGHT);
-				}
-				break;
-
-			case WID_CI_STATION_DESC:
-				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT);
-				DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS);
-				DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS);
-				break;
-
-			case WID_CI_STATION_COUNT:
-				this->DrawCountLine(r, y, c->infrastructure.station, StationMaintenanceCost(c->infrastructure.station));
-				this->DrawCountLine(r, y, c->infrastructure.airport, AirportMaintenanceCost(c->index));
-				break;
 		}
+	}
+
+	void OnResize() override
+	{
+		this->vscroll->SetCapacityFromWidget(this, WID_CI_LIST, WidgetDimensions::scaled.framerect.Vertical());
 	}
 
 	/**
