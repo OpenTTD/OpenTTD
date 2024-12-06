@@ -44,7 +44,7 @@ typedef bool (ScriptAsyncModeProc)();
 class SimpleCountedObject {
 public:
 	SimpleCountedObject() : ref_count(0) {}
-	virtual ~SimpleCountedObject() {}
+	virtual ~SimpleCountedObject() = default;
 
 	inline void AddRef() { ++this->ref_count; }
 	void Release();

@@ -30,7 +30,7 @@ using GrfIDMapping = std::map<uint32_t, GRFPresence>;
 
 struct LoggedChange {
 	LoggedChange(GamelogChangeType type = GLCT_NONE) : ct(type) {}
-	virtual ~LoggedChange() {}
+	virtual ~LoggedChange() = default;
 	virtual void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) = 0;
 
 	GamelogChangeType ct;

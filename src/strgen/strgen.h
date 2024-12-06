@@ -62,7 +62,7 @@ struct StringReader {
 	bool translation; ///< Are we reading a translation, implies !master. However, the base translation will have this false.
 
 	StringReader(StringData &data, const std::string &file, bool master, bool translation);
-	virtual ~StringReader() {}
+	virtual ~StringReader() = default;
 	void HandleString(char *str);
 
 	/**

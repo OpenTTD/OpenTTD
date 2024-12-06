@@ -40,7 +40,7 @@
  */
 class NetworkEncryptionHandler {
 public:
-	virtual ~NetworkEncryptionHandler() {}
+	virtual ~NetworkEncryptionHandler() = default;
 
 	/**
 	 * Get the size of the MAC (Message Authentication Code) used by the underlying encryption protocol.
@@ -70,7 +70,7 @@ public:
  */
 class NetworkAuthenticationPasswordRequest {
 public:
-	virtual ~NetworkAuthenticationPasswordRequest() {}
+	virtual ~NetworkAuthenticationPasswordRequest() = default;
 
 	/**
 	 * Reply to the request with the given password.
@@ -108,7 +108,7 @@ public:
  */
 class NetworkAuthenticationPasswordProvider {
 public:
-	virtual ~NetworkAuthenticationPasswordProvider() {}
+	virtual ~NetworkAuthenticationPasswordProvider() = default;
 
 	/**
 	 * Callback to return the password where to validate against.
@@ -139,7 +139,7 @@ public:
  */
 class NetworkAuthenticationAuthorizedKeyHandler {
 public:
-	virtual ~NetworkAuthenticationAuthorizedKeyHandler() {}
+	virtual ~NetworkAuthenticationAuthorizedKeyHandler() = default;
 
 	/**
 	 * Check whether the key handler can be used, i.e. whether there are authorized keys to check against.
@@ -189,7 +189,7 @@ using NetworkAuthenticationMethodMask = uint16_t;
  */
 class NetworkAuthenticationHandler {
 public:
-	virtual ~NetworkAuthenticationHandler() {}
+	virtual ~NetworkAuthenticationHandler() = default;
 
 	/**
 	 * Get the name of the handler for debug messages.
