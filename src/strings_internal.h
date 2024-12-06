@@ -13,12 +13,6 @@
 #include "strings_func.h"
 #include "string_func.h"
 
-/** The data required to format and validate a single parameter of a string. */
-struct StringParameter {
-	StringParameterData data; ///< The data of the parameter.
-	char32_t type; ///< The #StringControlCode to interpret this data with when it's the first parameter, otherwise '\0'.
-};
-
 class StringParameters {
 protected:
 	StringParameters *parent = nullptr; ///< If not nullptr, this instance references data from this parent instance.
@@ -26,10 +20,6 @@ protected:
 
 	size_t offset = 0; ///< Current offset in the parameters span.
 	char32_t next_type = 0; ///< The type of the next data that is retrieved.
-
-	StringParameters(std::span<StringParameter> parameters = {}) :
-		parameters(parameters)
-	{}
 
 	const StringParameter &GetNextParameterReference();
 
@@ -42,6 +32,8 @@ public:
 		parent(&parent),
 		parameters(parent.parameters.subspan(parent.offset, size))
 	{}
+
+	StringParameters(std::span<StringParameter> parameters = {}) : parameters(parameters) {}
 
 	void PrepareForNextRun();
 	void SetTypeOfNextParameter(char32_t type) { this->next_type = type; }
@@ -226,21 +218,6 @@ public:
 };
 
 /**
- * Helper to create the StringParameters with its own buffer with the given
- * parameter values.
- * @param args The parameters to set for the to be created StringParameters.
- * @return The constructed StringParameters.
- */
-template <typename... Args>
-static auto MakeParameters(const Args&... args)
-{
-	ArrayStringParameters<sizeof...(args)> parameters;
-	size_t index = 0;
-	(parameters.SetParam(index++, std::forward<const Args&>(args)), ...);
-	return parameters;
-}
-
-/**
  * Equivalent to the std::back_insert_iterator in function, with some
  * convenience helpers for string concatenation.
  */
@@ -339,6 +316,7 @@ public:
 };
 
 void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters &args, uint case_index = 0, bool game_script = false);
+void GetStringWithArgs(StringBuilder &builder, StringID string, std::span<StringParameter> params, uint case_index = 0, bool game_script = false);
 std::string GetStringWithArgs(StringID string, StringParameters &args);
 
 /* Do not leak the StringBuilder to everywhere. */

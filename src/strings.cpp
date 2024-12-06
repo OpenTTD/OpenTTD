@@ -194,6 +194,22 @@ static bool GetSpecialNameString(StringBuilder &builder, StringID string, String
 
 static void FormatString(StringBuilder &builder, const char *str, StringParameters &args, uint case_index = 0, bool game_script = false, bool dry_run = false);
 
+/**
+ * Parse most format codes within a string and write the result to a buffer.
+ * This is a wrapper for a span of StringParameter which creates the StringParameters state and forwards to the regular call.
+ * @param builder The string builder to write the final string to.
+ * @param str Pointer to string to format.
+ * @param params The span of parameters to pass.
+ * @param case_index The current case index.
+ * @param game_script True when doing GameScript text processing.
+ * @param dry_run True when the args' type data is not yet initialized.
+ */
+static void FormatString(StringBuilder &builder, const char *str, std::span<StringParameter> params, uint case_index = 0, bool game_script = false, bool dry_run = false)
+{
+	StringParameters tmp_params{params};
+	FormatString(builder, str, tmp_params, case_index, game_script, dry_run);
+}
+
 struct LanguagePack : public LanguagePackHeader {
 	char data[]; // list of strings
 };
@@ -322,6 +338,19 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 	FormatString(builder, GetStringPtr(string), args, case_index);
 }
 
+/**
+ * Get a parsed string with most special stringcodes replaced by the string parameters.
+ * @param builder The builder of the string.
+ * @param string The ID of the string to parse.
+ * @param args Span of arguments for the string.
+ * @param case_index The "case index". This will only be set when FormatString wants to print the string in a different case.
+ * @param game_script The string is coming directly from a game script.
+ */
+void GetStringWithArgs(StringBuilder &builder, StringID string, std::span<StringParameter> params, uint case_index, bool game_script)
+{
+	StringParameters tmp_params{params};
+	GetStringWithArgs(builder, string, tmp_params, case_index, game_script);
+}
 
 /**
  * Resolve the given StringID into a std::string with all the associated
@@ -355,6 +384,14 @@ void AppendStringInPlace(std::string &result, StringID string)
  * @return The parsed string.
  */
 std::string GetStringWithArgs(StringID string, StringParameters &args)
+{
+	std::string result;
+	StringBuilder builder(result);
+	GetStringWithArgs(builder, string, args);
+	return result;
+}
+
+std::string GetStringWithArgs(StringID string, std::span<StringParameter> args)
 {
 	std::string result;
 	StringBuilder builder(result);
@@ -563,8 +600,7 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator_currency;
 	FormatNumber(builder, number, separator);
 	if (number_str != STR_NULL) {
-		auto tmp_params = ArrayStringParameters<0>();
-		FormatString(builder, GetStringPtr(number_str), tmp_params);
+		FormatString(builder, GetStringPtr(number_str), {});
 	}
 
 	/* Add suffix part, following symbol_pos specification.
@@ -1559,8 +1595,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						}
 					}
 
-					auto tmp_params = ArrayStringParameters<0>();
-					GetStringWithArgs(builder, e->info.string_id, tmp_params);
+					GetStringWithArgs(builder, e->info.string_id, {});
 					break;
 				}
 
@@ -1586,8 +1621,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					if (_scan_for_gender_data) {
 						/* Gender is defined by the industry type.
 						 * STR_FORMAT_INDUSTRY_NAME may have the town first, so it would result in the gender of the town name */
-						auto tmp_params = ArrayStringParameters<0>();
-						FormatString(builder, GetStringPtr(GetIndustrySpec(i->type)->name), tmp_params, next_substr_case_index);
+						FormatString(builder, GetStringPtr(GetIndustrySpec(i->type)->name), {}, next_substr_case_index);
 					} else if (use_cache) { // Use cached version if first call
 						AutoRestoreBackup cache_backup(use_cache, false);
 						builder += i->GetCachedName();
@@ -1622,8 +1656,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						/* The station doesn't exist anymore. The only place where we might
 						 * be "drawing" an invalid station is in the case of cargo that is
 						 * in transit. */
-						auto tmp_params = ArrayStringParameters<0>();
-						GetStringWithArgs(builder, STR_UNKNOWN_STATION, tmp_params);
+						GetStringWithArgs(builder, STR_UNKNOWN_STATION, {});
 						break;
 					}
 
@@ -1723,8 +1756,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						auto tmp_params = MakeParameters(si->name);
 						GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 					} else {
-						auto tmp_params = ArrayStringParameters<0>();
-						GetStringWithArgs(builder, STR_DEFAULT_SIGN_NAME, tmp_params);
+						GetStringWithArgs(builder, STR_DEFAULT_SIGN_NAME, {});
 					}
 					break;
 				}

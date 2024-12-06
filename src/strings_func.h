@@ -59,6 +59,7 @@ inline StringID MakeStringID(StringTab tab, StringIndexInTab index)
 	return (tab << TAB_SIZE_BITS) + index.base();
 }
 
+std::string GetStringWithArgs(StringID string, std::span<StringParameter> args);
 std::string GetString(StringID string);
 const char *GetStringPtr(StringID string);
 void AppendStringInPlace(std::string &result, StringID string);
@@ -108,6 +109,18 @@ extern TextDirection _current_text_dir; ///< Text direction of the currently sel
 void InitializeLanguagePacks();
 const char *GetCurrentLanguageIsoCode();
 std::string_view GetListSeparator();
+
+/**
+ * Helper to create the StringParameters with its own buffer with the given
+ * parameter values.
+ * @param args The parameters to set for the to be created StringParameters.
+ * @return The constructed StringParameters.
+ */
+template <typename... Args>
+auto MakeParameters(Args &&... args)
+{
+	return std::array<StringParameter, sizeof...(args)>({std::forward<StringParameter>(args)...});
+}
 
 /**
  * A searcher for missing glyphs.
