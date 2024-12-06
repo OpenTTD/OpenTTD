@@ -90,4 +90,19 @@ enum SpecialStrings {
 
 using StringParameterData = std::variant<std::monostate, uint64_t, std::string>;
 
+/** The data required to format and validate a single parameter of a string. */
+struct StringParameter {
+	StringParameterData data; ///< The data of the parameter.
+	char32_t type; ///< The #StringControlCode to interpret this data with when it's the first parameter, otherwise '\0'.
+
+	StringParameter() : data(), type(0) {}
+
+	/* The constructors allow implicitly creating a StringParameter. */
+	StringParameter(uint64_t value) : data(value), type(0) {}
+	StringParameter(std::string &&value) : data(std::move(value)), type(0) {}
+	StringParameter(const std::string &value) : data(value), type(0) {}
+	StringParameter(StringParameterData &&data, char32_t type) : data(std::move(data)), type(type) {}
+	StringParameter(const StringParameterData &data, char32_t type) : data(data), type(type) {}
+};
+
 #endif /* STRINGS_TYPE_H */

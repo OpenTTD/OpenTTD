@@ -195,6 +195,22 @@ static void GetSpecialNameString(StringBuilder &builder, int ind, StringParamete
 
 static void FormatString(StringBuilder &builder, const char *str, StringParameters &args, uint case_index = 0, bool game_script = false, bool dry_run = false);
 
+/**
+ * Parse most format codes within a string and write the result to a buffer.
+ * This is a wrapper for a span of StringParameter which creates the StringParameters state and forwards to the regular call.
+ * @param builder The string builder to write the final string to.
+ * @param str
+ * @param params The span of parameters to pass.
+ * @param case_index The current case index.
+ * @param game_script True when doing GameScript text processing.
+ * @param dry_run True when the args' type data is not yet initialized.
+ */
+static void FormatString(StringBuilder &builder, const char *str, std::span<StringParameter> params, uint case_index = 0, bool game_script = false, bool dry_run = false)
+{
+	StringParameters tmp_params = params;
+	FormatString(builder, str, tmp_params, case_index, game_script, dry_run);
+}
+
 struct LanguagePack : public LanguagePackHeader {
 	char data[]; // list of strings
 };
@@ -323,6 +339,19 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 	FormatString(builder, GetStringPtr(string), args, case_index);
 }
 
+/**
+ * Get a parsed string with most special stringcodes replaced by the string parameters.
+ * @param builder The builder of the string.
+ * @param string The ID of the string to parse.
+ * @param args Span of arguments for the string.
+ * @param case_index The "case index". This will only be set when FormatString wants to print the string in a different case.
+ * @param game_script The string is coming directly from a game script.
+ */
+void GetStringWithArgs(StringBuilder &builder, StringID string, std::span<StringParameter> params, uint case_index, bool game_script)
+{
+	StringParameters tmp_params{params};
+	GetStringWithArgs(builder, string, tmp_params, case_index, game_script);
+}
 
 /**
  * Resolve the given StringID into a std::string with all the associated
@@ -356,6 +385,14 @@ void AppendStringInPlace(std::string &result, StringID string)
  * @return The parsed string.
  */
 std::string GetStringWithArgs(StringID string, StringParameters &args)
+{
+	std::string result;
+	StringBuilder builder(result);
+	GetStringWithArgs(builder, string, args);
+	return result;
+}
+
+std::string GetStringWithArgs(StringID string, std::span<StringParameter> args)
 {
 	std::string result;
 	StringBuilder builder(result);

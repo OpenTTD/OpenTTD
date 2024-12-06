@@ -59,6 +59,7 @@ inline StringID MakeStringID(StringTab tab, uint index)
 	return (tab << TAB_SIZE_BITS) + index;
 }
 
+std::string GetStringWithArgs(StringID string, std::span<StringParameter> args);
 std::string GetString(StringID string);
 const char *GetStringPtr(StringID string);
 void AppendStringInPlace(std::string &result, StringID string);
@@ -110,6 +111,52 @@ extern TextDirection _current_text_dir; ///< Text direction of the currently sel
 void InitializeLanguagePacks();
 const char *GetCurrentLanguageIsoCode();
 std::string_view GetListSeparator();
+
+/**
+ * Simplified StringParameter container with statically sized buffer for the paramterers.
+ */
+template <size_t N>
+class ArrayStringParametersWriter {
+	std::array<StringParameter, N> parameters{}; ///< The actual parameters
+
+public:
+	void SetParam(size_t n, StringParameterData &&v)
+	{
+		assert(n < this->parameters.size());
+		this->parameters[n].data = std::move(v);
+	}
+
+	void SetParam(size_t n, uint64_t v)
+	{
+		assert(n < this->parameters.size());
+		this->parameters[n].data = v;
+	}
+
+	template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
+	void SetParam(size_t n, T v)
+	{
+		SetParam(n, v.base());
+	}
+
+	StringParameter *begin() { return &*std::begin(parameters); }
+	StringParameter *end() { return &*std::end(parameters); }
+	size_t size() { return std::size(parameters); }
+};
+
+/**
+ * Helper to create the StringParameters with its own buffer with the given
+ * parameter values.
+ * @param args The parameters to set for the to be created StringParameters.
+ * @return The constructed StringParameters.
+ */
+template <typename... Args>
+static auto MakeParameters(const Args&... args)
+{
+	ArrayStringParametersWriter<sizeof...(args)> parameters;
+	size_t index = 0;
+	(parameters.SetParam(index++, std::forward<const Args&>(args)), ...);
+	return parameters;
+}
 
 /**
  * A searcher for missing glyphs.
