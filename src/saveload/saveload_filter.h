@@ -24,9 +24,7 @@ struct LoadFilter {
 	}
 
 	/** Make sure the writers are properly closed. */
-	virtual ~LoadFilter()
-	{
-	}
+	virtual ~LoadFilter() = default;
 
 	/**
 	 * Read a given number of bytes from the savegame.
@@ -69,9 +67,7 @@ struct SaveFilter {
 	}
 
 	/** Make sure the writers are properly closed. */
-	virtual ~SaveFilter()
-	{
-	}
+	virtual ~SaveFilter() = default;
 
 	/**
 	 * Write a given number of bytes into the savegame.

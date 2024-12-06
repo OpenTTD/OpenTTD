@@ -56,7 +56,7 @@ struct IniLoadFile {
 	const IniGroupNameList seq_group_names;  ///< list of group names that are sequences.
 
 	IniLoadFile(const IniGroupNameList &list_group_names = {}, const IniGroupNameList &seq_group_names = {});
-	virtual ~IniLoadFile() { }
+	virtual ~IniLoadFile() = default;
 
 	const IniGroup *GetGroup(std::string_view name) const;
 	IniGroup *GetGroup(std::string_view name);
