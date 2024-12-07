@@ -674,10 +674,9 @@ public:
 		if (widget != WID_RV_TRAIN_WAGONREMOVE_TOGGLE) return false;
 
 		if (Group::IsValidID(this->sel_group)) {
-			SetDParam(0, STR_REPLACE_REMOVE_WAGON_TOOLTIP);
-			GuiShowTooltips(this, STR_REPLACE_REMOVE_WAGON_GROUP_HELP, close_cond, 1);
+			GuiShowTooltips(this, GetEncodedString(STR_REPLACE_REMOVE_WAGON_GROUP_HELP, STR_REPLACE_REMOVE_WAGON_TOOLTIP), close_cond);
 		} else {
-			GuiShowTooltips(this, STR_REPLACE_REMOVE_WAGON_TOOLTIP, close_cond);
+			GuiShowTooltips(this, GetEncodedString(STR_REPLACE_REMOVE_WAGON_TOOLTIP), close_cond);
 		}
 		return true;
 	}

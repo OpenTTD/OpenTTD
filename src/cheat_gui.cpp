@@ -584,7 +584,7 @@ struct CheatWindow : Window {
 
 		const SettingDesc *desc = this->sandbox_settings[row];
 		const IntSettingDesc *sd = desc->AsIntSetting();
-		GuiShowTooltips(this, sd->GetHelp(), close_cond);
+		GuiShowTooltips(this, GetEncodedString(sd->GetHelp()), close_cond);
 
 		return true;
 	}

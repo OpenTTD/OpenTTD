@@ -653,15 +653,12 @@ static WindowDesc _tool_tips_desc(
 /** Window for displaying a tooltip. */
 struct TooltipsWindow : public Window
 {
-	StringID string_id;               ///< String to display as tooltip.
-	std::vector<StringParameterData> params; ///< The string parameters.
+	EncodedString text; ///< String to display as tooltip.
 	TooltipCloseCondition close_cond; ///< Condition for closing the window.
 
-	TooltipsWindow(Window *parent, StringID str, uint paramcount, TooltipCloseCondition close_tooltip) : Window(_tool_tips_desc)
+	TooltipsWindow(Window *parent, EncodedString &&text, TooltipCloseCondition close_tooltip) : Window(_tool_tips_desc), text(std::move(text))
 	{
 		this->parent = parent;
-		this->string_id = str;
-		CopyOutDParam(this->params, paramcount);
 		this->close_cond = close_tooltip;
 
 		this->InitNested();
@@ -692,10 +689,10 @@ struct TooltipsWindow : public Window
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget != WID_TT_BACKGROUND) return;
-		CopyInDParam(this->params);
 
-		size.width  = std::min<uint>(GetStringBoundingBox(this->string_id).width, ScaleGUITrad(194));
-		size.height = GetStringHeight(this->string_id, size.width);
+		auto str = this->text.GetDecodedString();
+		size.width  = std::min<uint>(GetStringBoundingBox(str).width, ScaleGUITrad(194));
+		size.height = GetStringHeight(str, size.width);
 
 		/* Increase slightly to have some space around the box. */
 		size.width  += WidgetDimensions::scaled.framerect.Horizontal()  + WidgetDimensions::scaled.fullbevel.Horizontal();
@@ -708,8 +705,7 @@ struct TooltipsWindow : public Window
 		GfxFillRect(r, PC_BLACK);
 		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_LIGHT_YELLOW);
 
-		CopyInDParam(this->params);
-		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect).Shrink(WidgetDimensions::scaled.fullbevel), this->string_id, TC_BLACK, SA_CENTER);
+		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect).Shrink(WidgetDimensions::scaled.fullbevel), this->text.GetDecodedString(), TC_BLACK, SA_CENTER);
 	}
 
 	void OnMouseLoop() override
@@ -739,17 +735,16 @@ struct TooltipsWindow : public Window
 /**
  * Shows a tooltip
  * @param parent The window this tooltip is related to.
- * @param str String to be displayed
+ * @param text String to be displayed. May include encoded parameters.
  * @param close_tooltip the condition under which the tooltip closes
- * @param paramcount number of params to deal with
  */
-void GuiShowTooltips(Window *parent, StringID str, TooltipCloseCondition close_tooltip, uint paramcount)
+void GuiShowTooltips(Window *parent, EncodedString &&text, TooltipCloseCondition close_tooltip)
 {
 	CloseWindowById(WC_TOOLTIPS, 0);
 
-	if (str == STR_NULL || !_cursor.in_window) return;
+	if (text.empty() || !_cursor.in_window) return;
 
-	new TooltipsWindow(parent, str, paramcount, close_tooltip);
+	new TooltipsWindow(parent, std::move(text), close_tooltip);
 }
 
 void QueryString::HandleEditBox(Window *w, WidgetID wid)
