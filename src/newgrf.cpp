@@ -6824,7 +6824,7 @@ static void CfgApply(ByteReader &buf)
 
 		/* If the parameter is a GRF parameter (not an internal variable) check
 		 * if it (and all further sequential parameters) has been defined. */
-		if (param_num < 0x80 && (param_num + (param_size - 1) / 4) >= _cur.grffile->param_end) {
+		if (param_num < 0x80 && (param_num + (param_size - 1) / 4) >= std::size(_cur.grffile->param)) {
 			GrfMsg(2, "CfgApply: Ignoring (param {} not set)", (param_num + (param_size - 1) / 4));
 			break;
 		}
@@ -6897,7 +6897,7 @@ static void SkipIf(ByteReader &buf)
 		default: break;
 	}
 
-	if (param < 0x80 && _cur.grffile->param_end <= param) {
+	if (param < 0x80 && std::size(_cur.grffile->param) <= param) {
 		GrfMsg(7, "SkipIf: Param {} undefined, skipping test", param);
 		return;
 	}
@@ -7489,7 +7489,7 @@ static void ParamSet(ByteReader &buf)
 	 * - it OR A PARAMETER WITH HIGHER NUMBER has been set to any value by
 	 *   an earlier action D */
 	if (HasBit(oper, 7)) {
-		if (target < 0x80 && target < _cur.grffile->param_end) {
+		if (target < 0x80 && target < std::size(_cur.grffile->param)) {
 			GrfMsg(7, "ParamSet: Param {} already defined, skipping", target);
 			return;
 		}
@@ -7741,9 +7741,9 @@ static void ParamSet(ByteReader &buf)
 
 		default:
 			if (target < 0x80) {
+				/* Resize (and fill with zeroes) if needed. */
+				if (target >= std::size(_cur.grffile->param)) _cur.grffile->param.resize(target + 1);
 				_cur.grffile->param[target] = res;
-				/* param is zeroed by default */
-				if (target + 1U > _cur.grffile->param_end) _cur.grffile->param_end = target + 1;
 			} else {
 				GrfMsg(7, "ParamSet: Skipping unknown target 0x{:02X}", target);
 			}
@@ -9003,12 +9003,8 @@ GRFFile::GRFFile(const GRFConfig *config)
 	this->tramtype_map.fill(INVALID_ROADTYPE);
 	this->tramtype_map[0] = ROADTYPE_TRAM;
 
-	/* Copy the initial parameter list
-	 * 'Uninitialised' parameters are zeroed as that is their default value when dynamically creating them. */
-	this->param = {};
-
-	auto last = std::begin(config->param) + std::min<size_t>(std::size(config->param), GRFConfig::MAX_NUM_PARAMS);
-	std::copy(std::begin(config->param), last, std::begin(this->param));
+	/* Copy the initial parameter list */
+	this->param = config->param;
 }
 
 /**
