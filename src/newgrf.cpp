@@ -603,6 +603,20 @@ static void SetNewGRFOverride(uint32_t source_grfid, uint32_t target_grfid)
 }
 
 /**
+ * Get overridden GRF for current GRF if present.
+ * @return Overridden GRFFile if present, or nullptr.
+ */
+static GRFFile *GetCurrentGRFOverride()
+{
+	auto found = _grf_id_overrides.find(_cur.grffile->grfid);
+	if (found != std::end(_grf_id_overrides)) {
+		GRFFile *grffile = GetFileByGRFID(found->second);
+		if (grffile != nullptr) return grffile;
+	}
+	return nullptr;
+}
+
+/**
  * Returns the engine associated to a certain internal_id, resp. allocates it.
  * @param file NewGRF that wants to change the engine.
  * @param type Vehicle type.
@@ -2687,22 +2701,31 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
  * @param gvid ID of the global variable. This is basically only checked for zerones.
  * @param numinfo Number of subsequent IDs to change the property for.
  * @param buf The property value.
- * @param[in,out] translation_table Storage location for the translation table.
+ * @param gettable Function to get storage for the translation table.
  * @param name Name of the table for debug output.
  * @return ChangeInfoResult.
  */
-template <typename T>
-static ChangeInfoResult LoadTranslationTable(uint gvid, int numinfo, ByteReader &buf, std::vector<T> &translation_table, const char *name)
+template <typename T, typename TGetTableFunc>
+static ChangeInfoResult LoadTranslationTable(uint gvid, int numinfo, ByteReader &buf, TGetTableFunc gettable, std::string_view name)
 {
 	if (gvid != 0) {
 		GrfMsg(1, "LoadTranslationTable: {} translation table must start at zero", name);
 		return CIR_INVALID_ID;
 	}
 
+	std::vector<T> &translation_table = gettable(*_cur.grffile);
 	translation_table.clear();
 	translation_table.reserve(numinfo);
 	for (int i = 0; i < numinfo; i++) {
 		translation_table.push_back(T(BSWAP32(buf.ReadDWord())));
+	}
+
+	GRFFile *grf_override = GetCurrentGRFOverride();
+	if (grf_override != nullptr) {
+		/* GRF override is present, copy the translation table to the overridden GRF as well. */
+		GrfMsg(1, "LoadTranslationTable: Copying {} translation table to override GRFID '{}'", name, BSWAP32(grf_override->grfid));
+		std::vector<T> &override_table = gettable(*grf_override);
+		override_table = translation_table;
 	}
 
 	return CIR_SUCCESS;
@@ -2734,16 +2757,16 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 	/* Properties which are handled as a whole */
 	switch (prop) {
 		case 0x09: // Cargo Translation Table; loading during both reservation and activation stage (in case it is selected depending on defined cargos)
-			return LoadTranslationTable(gvid, numinfo, buf, _cur.grffile->cargo_list, "Cargo");
+			return LoadTranslationTable<CargoLabel>(gvid, numinfo, buf, [](GRFFile &grf) -> std::vector<CargoLabel> & { return grf.cargo_list; }, "Cargo");
 
 		case 0x12: // Rail type translation table; loading during both reservation and activation stage (in case it is selected depending on defined railtypes)
-			return LoadTranslationTable(gvid, numinfo, buf, _cur.grffile->railtype_list, "Rail type");
+			return LoadTranslationTable<RailTypeLabel>(gvid, numinfo, buf, [](GRFFile &grf) -> std::vector<RailTypeLabel> & { return grf.railtype_list; }, "Rail type");
 
-		case 0x16: // Road type translation table; loading during both reservation and activation stage (in case it is selected depending on defined railtypes)
-			return LoadTranslationTable(gvid, numinfo, buf, _cur.grffile->roadtype_list, "Road type");
+		case 0x16: // Road type translation table; loading during both reservation and activation stage (in case it is selected depending on defined roadtypes)
+			return LoadTranslationTable<RoadTypeLabel>(gvid, numinfo, buf, [](GRFFile &grf) -> std::vector<RoadTypeLabel> & { return grf.roadtype_list; }, "Road type");
 
-		case 0x17: // Tram type translation table; loading during both reservation and activation stage (in case it is selected depending on defined railtypes)
-			return LoadTranslationTable(gvid, numinfo, buf, _cur.grffile->tramtype_list, "Tram type");
+		case 0x17: // Tram type translation table; loading during both reservation and activation stage (in case it is selected depending on defined tramtypes)
+			return LoadTranslationTable<RoadTypeLabel>(gvid, numinfo, buf, [](GRFFile &grf) -> std::vector<RoadTypeLabel> & { return grf.tramtype_list; }, "Tram type");
 
 		default:
 			break;
@@ -2952,16 +2975,16 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 	/* Properties which are handled as a whole */
 	switch (prop) {
 		case 0x09: // Cargo Translation Table; loading during both reservation and activation stage (in case it is selected depending on defined cargos)
-			return LoadTranslationTable(gvid, numinfo, buf, _cur.grffile->cargo_list, "Cargo");
+			return LoadTranslationTable<CargoLabel>(gvid, numinfo, buf, [](GRFFile &grf) -> std::vector<CargoLabel> & { return grf.cargo_list; }, "Cargo");
 
 		case 0x12: // Rail type translation table; loading during both reservation and activation stage (in case it is selected depending on defined railtypes)
-			return LoadTranslationTable(gvid, numinfo, buf, _cur.grffile->railtype_list, "Rail type");
+			return LoadTranslationTable<RailTypeLabel>(gvid, numinfo, buf, [](GRFFile &grf) -> std::vector<RailTypeLabel> & { return grf.railtype_list; }, "Rail type");
 
 		case 0x16: // Road type translation table; loading during both reservation and activation stage (in case it is selected depending on defined roadtypes)
-			return LoadTranslationTable(gvid, numinfo, buf, _cur.grffile->roadtype_list, "Road type");
+			return LoadTranslationTable<RoadTypeLabel>(gvid, numinfo, buf, [](GRFFile &grf) -> std::vector<RoadTypeLabel> & { return grf.roadtype_list; }, "Road type");
 
 		case 0x17: // Tram type translation table; loading during both reservation and activation stage (in case it is selected depending on defined tramtypes)
-			return LoadTranslationTable(gvid, numinfo, buf, _cur.grffile->tramtype_list, "Tram type");
+			return LoadTranslationTable<RoadTypeLabel>(gvid, numinfo, buf, [](GRFFile &grf) -> std::vector<RoadTypeLabel> & { return grf.tramtype_list; }, "Tram type");
 
 		default:
 			break;
