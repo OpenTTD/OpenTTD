@@ -139,6 +139,18 @@ EncodedString GetEncodedString(StringID str);
 EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParameter> params);
 
 /**
+ * Encode a string with no parameters into an encoded string, if the string id is valid.
+ * @note the return encoded string will be empty if the string id is not valid.
+ * @param str String to encode.
+ * @returns an EncodedString.
+ */
+static inline EncodedString GetEncodedStringIfValid(StringID str)
+{
+	if (str == INVALID_STRING_ID) return {};
+	return GetEncodedString(str);
+}
+
+/**
  * Get an encoded string with parameters.
  * @param string String ID to encode.
  * @param args The parameters to set.

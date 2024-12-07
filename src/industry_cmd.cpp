@@ -505,8 +505,11 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlags flags)
 			(_current_company == OWNER_WATER &&
 				(indspec->behaviour.Test(IndustryBehaviour::BuiltOnWater) ||
 				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
-		SetDParam(1, indspec->name);
-		return CommandCost(flags.Test(DoCommandFlag::Auto) ? STR_ERROR_GENERIC_OBJECT_IN_THE_WAY : INVALID_STRING_ID);
+
+		if (flags.Test(DoCommandFlag::Auto)) {
+			return CommandCostWithParam(STR_ERROR_GENERIC_OBJECT_IN_THE_WAY, indspec->name);
+		}
+		return CommandCost(INVALID_STRING_ID);
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -2103,9 +2106,9 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 			}
 			if (ret.Failed() && IsLocalCompany()) {
 				if (prospect_success) {
-					ShowErrorMessage(STR_ERROR_CAN_T_PROSPECT_INDUSTRY, STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING, WL_INFO);
+					ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_PROSPECT_INDUSTRY), GetEncodedString(STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING), WL_INFO);
 				} else {
-					ShowErrorMessage(STR_ERROR_CAN_T_PROSPECT_INDUSTRY, STR_ERROR_PROSPECTING_WAS_UNLUCKY, WL_INFO);
+					ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_PROSPECT_INDUSTRY), GetEncodedString(STR_ERROR_PROSPECTING_WAS_UNLUCKY), WL_INFO);
 				}
 			}
 		}
@@ -3095,8 +3098,8 @@ void CheckIndustries()
 		if (chance == 0 || !force_at_least_one) continue; // Types that are not available can be skipped.
 
 		const IndustrySpec *is = GetIndustrySpec(it);
-		SetDParam(0, is->name);
-		ShowErrorMessage(STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES, STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION, WL_WARNING);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES, is->name),
+			GetEncodedString(STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION), WL_WARNING);
 
 		count++;
 		if (count >= 3) break; // Don't swamp the user with errors.

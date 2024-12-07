@@ -1274,7 +1274,7 @@ public:
 				Backup<bool> old_generating_world(_generating_world, true);
 				UpdateNearestTownForRoadTiles(true);
 				if (!GenerateTowns(this->town_layout)) {
-					ShowErrorMessage(STR_ERROR_CAN_T_GENERATE_TOWN, STR_ERROR_NO_SPACE_FOR_TOWN, WL_INFO);
+					ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_GENERATE_TOWN), GetEncodedString(STR_ERROR_NO_SPACE_FOR_TOWN), WL_INFO);
 				}
 				UpdateNearestTownForRoadTiles(false);
 				old_generating_world.Restore();

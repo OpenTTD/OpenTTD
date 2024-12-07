@@ -717,7 +717,7 @@ struct GameOptionsWindow : Window {
 			case WID_GO_FULLSCREEN_BUTTON: // Click fullscreen on/off
 				/* try to toggle full-screen on/off */
 				if (!ToggleFullScreen(!_fullscreen)) {
-					ShowErrorMessage(STR_ERROR_FULLSCREEN_FAILED, INVALID_STRING_ID, WL_ERROR);
+					ShowErrorMessage(GetEncodedString(STR_ERROR_FULLSCREEN_FAILED), {}, WL_ERROR);
 				}
 				this->SetWidgetLoweredState(WID_GO_FULLSCREEN_BUTTON, _fullscreen);
 				this->SetWidgetDirty(WID_GO_FULLSCREEN_BUTTON);
@@ -725,7 +725,7 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_VIDEO_ACCEL_BUTTON:
 				_video_hw_accel = !_video_hw_accel;
-				ShowErrorMessage(STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART, INVALID_STRING_ID, WL_INFO);
+				ShowErrorMessage(GetEncodedString(STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART), {}, WL_INFO);
 				this->SetWidgetLoweredState(WID_GO_VIDEO_ACCEL_BUTTON, _video_hw_accel);
 				this->SetWidgetDirty(WID_GO_VIDEO_ACCEL_BUTTON);
 #ifndef __APPLE__
@@ -880,7 +880,7 @@ struct GameOptionsWindow : Window {
 				if (!list.empty()) {
 					ShowDropDownList(this, std::move(list), selected, widget);
 				} else {
-					if (widget == WID_GO_RESOLUTION_DROPDOWN) ShowErrorMessage(STR_ERROR_RESOLUTION_LIST_FAILED, INVALID_STRING_ID, WL_ERROR);
+					if (widget == WID_GO_RESOLUTION_DROPDOWN) ShowErrorMessage(GetEncodedString(STR_ERROR_RESOLUTION_LIST_FAILED), {}, WL_ERROR);
 				}
 				break;
 			}
@@ -936,7 +936,7 @@ struct GameOptionsWindow : Window {
 				if (_settings_client.gui.refresh_rate > 60) {
 					/* Show warning to the user that this refresh rate might not be suitable on
 					 * larger maps with many NewGRFs and vehicles. */
-					ShowErrorMessage(STR_GAME_OPTIONS_REFRESH_RATE_WARNING, INVALID_STRING_ID, WL_INFO);
+					ShowErrorMessage(GetEncodedString(STR_GAME_OPTIONS_REFRESH_RATE_WARNING), {}, WL_INFO);
 				}
 				break;
 			}

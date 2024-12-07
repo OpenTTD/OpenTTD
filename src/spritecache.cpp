@@ -14,6 +14,7 @@
 #include "gfx_func.h"
 #include "error.h"
 #include "error_func.h"
+#include "strings_func.h"
 #include "zoom_func.h"
 #include "settings_type.h"
 #include "blitter/factory.hpp"
@@ -1028,9 +1029,7 @@ static void GfxInitSpriteCache()
 		if (_allocated_sprite_cache_size != target_size) {
 			Debug(misc, 0, "Not enough memory to allocate {} MiB of spritecache. Spritecache was reduced to {} MiB.", target_size / 1024 / 1024, _allocated_sprite_cache_size / 1024 / 1024);
 
-			ErrorMessageData msg(STR_CONFIG_ERROR_OUT_OF_MEMORY, STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG);
-			msg.SetDParam(0, target_size);
-			msg.SetDParam(1, _allocated_sprite_cache_size);
+			ErrorMessageData msg(GetEncodedString(STR_CONFIG_ERROR_OUT_OF_MEMORY), GetEncodedString(STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG, target_size, _allocated_sprite_cache_size));
 			ScheduleErrorMessage(msg);
 		}
 	}

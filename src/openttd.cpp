@@ -721,8 +721,7 @@ int openttd_main(std::span<char * const> arguments)
 	if (!valid_graphics_set) {
 		BaseGraphics::SetSet(nullptr);
 
-		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND);
-		msg.SetDParamStr(0, graphics_set);
+		ErrorMessageData msg(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND, graphics_set));
 		ScheduleErrorMessage(msg);
 	}
 
@@ -775,8 +774,7 @@ int openttd_main(std::span<char * const> arguments)
 		if (sounds_set.empty() || !BaseSounds::SetSet({})) {
 			UserError("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 1.4 of README.md.");
 		} else {
-			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND);
-			msg.SetDParamStr(0, sounds_set);
+			ErrorMessageData msg(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND, sounds_set));
 			ScheduleErrorMessage(msg);
 		}
 	}
@@ -787,8 +785,7 @@ int openttd_main(std::span<char * const> arguments)
 		if (music_set.empty() || !BaseMusic::SetSet({})) {
 			UserError("Failed to find a music set. Please acquire a music set for OpenTTD. See section 1.4 of README.md.");
 		} else {
-			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND);
-			msg.SetDParamStr(0, music_set);
+			ErrorMessageData msg(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND, music_set));
 			ScheduleErrorMessage(msg);
 		}
 	}
@@ -1159,7 +1156,7 @@ void SwitchToMode(SwitchMode new_mode)
 		case SM_MENU: // Switch to game intro menu
 			LoadIntroGame();
 			if (BaseSounds::ini_set.empty() && BaseSounds::GetUsedSet()->fallback && SoundDriver::GetInstance()->HasOutput()) {
-				ShowErrorMessage(STR_WARNING_FALLBACK_SOUNDSET, INVALID_STRING_ID, WL_CRITICAL);
+				ShowErrorMessage(GetEncodedString(STR_WARNING_FALLBACK_SOUNDSET), {}, WL_CRITICAL);
 				BaseSounds::ini_set = BaseSounds::GetUsedSet()->name;
 			}
 			if (_settings_client.network.participate_survey == PS_ASK) {

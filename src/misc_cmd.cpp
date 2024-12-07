@@ -41,8 +41,7 @@ CommandCost CmdIncreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 	Company *c = Company::Get(_current_company);
 	Money max_loan = c->GetMaxLoan();
 	if (c->current_loan >= max_loan) {
-		SetDParam(0, max_loan);
-		return CommandCost(STR_ERROR_MAXIMUM_PERMITTED_LOAN);
+		return CommandCostWithParam(STR_ERROR_MAXIMUM_PERMITTED_LOAN, max_loan);
 	}
 
 	Money loan;
@@ -106,8 +105,7 @@ CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 	}
 
 	if (GetAvailableMoneyForCommand() < loan) {
-		SetDParam(0, loan);
-		return CommandCost(STR_ERROR_CURRENCY_REQUIRED);
+		return CommandCostWithParam(STR_ERROR_CURRENCY_REQUIRED, loan);
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {

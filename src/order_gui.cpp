@@ -393,15 +393,15 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			bool failed = false;
 			if (v->HasFullLoadOrder()) {
 				/* We don't allow unbunching if the vehicle has a full load order. */
-				ShowErrorMessage(STR_ERROR_CAN_T_INSERT_NEW_ORDER, STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD, WL_INFO);
+				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_INSERT_NEW_ORDER), GetEncodedString(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD), WL_INFO);
 				failed = true;
 			} else if (v->HasUnbunchingOrder()) {
 				/* Don't allow a new unbunching order if we already have one. */
-				ShowErrorMessage(STR_ERROR_CAN_T_INSERT_NEW_ORDER, STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED, WL_INFO);
+				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_INSERT_NEW_ORDER), GetEncodedString(STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED), WL_INFO);
 				failed = true;
 			} else if (v->HasConditionalOrder()) {
 				/* We don't allow unbunching if the vehicle has a conditional order. */
-				ShowErrorMessage(STR_ERROR_CAN_T_INSERT_NEW_ORDER, STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL, WL_INFO);
+				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_INSERT_NEW_ORDER), GetEncodedString(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL), WL_INFO);
 				failed = true;
 			}
 
@@ -1543,7 +1543,7 @@ public:
 			})) {
 				OnVehicleSelect(*begin);
 			} else {
-				ShowErrorMessage(STR_ERROR_CAN_T_COPY_ORDER_LIST, STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST, WL_INFO);
+				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_COPY_ORDER_LIST), GetEncodedString(STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST), WL_INFO);
 			}
 		} else {
 			/* If CTRL is pressed: If all the vehicles in this list share orders, then copy orders */
@@ -1552,7 +1552,7 @@ public:
 			})) {
 				OnVehicleSelect(*begin);
 			} else {
-				ShowErrorMessage(STR_ERROR_CAN_T_SHARE_ORDER_LIST, STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST, WL_INFO);
+				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_SHARE_ORDER_LIST), GetEncodedString(STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST), WL_INFO);
 			}
 		}
 

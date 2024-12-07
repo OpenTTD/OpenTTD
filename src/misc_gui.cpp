@@ -185,9 +185,12 @@ public:
 		for (uint i = 0; i < 4; i++) {
 			if (td.owner_type[i] == STR_NULL) continue;
 
-			SetDParam(0, STR_LAND_AREA_INFORMATION_OWNER_N_A);
-			if (td.owner[i] != OWNER_NONE && td.owner[i] != OWNER_WATER) SetDParamsForOwnedBy(td.owner[i], tile);
-			this->landinfo_data.push_back(GetString(td.owner_type[i]));
+			if (td.owner[i] != OWNER_NONE && td.owner[i] != OWNER_WATER) {
+				this->landinfo_data.push_back(GetString(td.owner_type[i], STR_LAND_AREA_INFORMATION_OWNER_N_A));
+			} else {
+				auto params = GetParamsForOwnedBy(td.owner[i], tile);
+				this->landinfo_data.push_back(GetStringWithArgs(td.owner_type[i], params));
+			}
 		}
 
 		/* Cost to clear/revenue when cleared */
@@ -522,8 +525,7 @@ void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 		cost = -cost;
 		msg = STR_MESSAGE_ESTIMATED_INCOME;
 	}
-	SetDParam(0, cost);
-	ShowErrorMessage(msg, INVALID_STRING_ID, WL_INFO, x, y);
+	ShowErrorMessage(GetEncodedString(msg, cost), {}, WL_INFO, x, y);
 }
 
 /**
