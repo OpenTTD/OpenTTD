@@ -268,6 +268,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}år
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P "" er}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrer:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv inn ett eller flere nøkkelord for å søkeord for å filtrere listen med

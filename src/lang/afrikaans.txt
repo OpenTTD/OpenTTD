@@ -231,6 +231,7 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}
 
 
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter string:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sleutel filter string in

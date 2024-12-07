@@ -266,6 +266,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}分
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}年
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}个周期
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}搜索：
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}输入关键字筛选
@@ -2832,6 +2833,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :选择显示的
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :选择建造的房屋类型。按住 <Ctrl> 键操作以保存或删除当前项目
 
 STR_HOUSE_PICKER_CAPTION                                        :房屋选择
+STR_HOUSE_PICKER_NAME                                           :{BLACK}名称：{ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}人口：{ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}可用年份：{ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}可用年份：{ORANGE}不限
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}可用年份：{ORANGE}自 {NUM} 年起可用
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}可用年份：{ORANGE}至 {NUM} 年前可用
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}大小：{ORANGE}{NUM}×{NUM} 格
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}接受货物：{ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :城镇边缘
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :郊区边缘

@@ -221,6 +221,7 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
 
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Внесете филтер низа
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Внесете клучни зборови за филтрирање на списокот за

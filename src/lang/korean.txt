@@ -267,6 +267,7 @@ STR_UNITS_MINUTES                                               :{NUM}분
 STR_UNITS_YEARS                                                 :{NUM}년
 STR_UNITS_PERIODS                                               :{NUM}기간
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}검색:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}검색할 단어를 하나 이상 입력하세요

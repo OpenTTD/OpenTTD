@@ -453,6 +453,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P "" a a}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Pretraga:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unesi jednu ili više ključnih reči za pretragu liste

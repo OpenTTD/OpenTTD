@@ -579,6 +579,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}хв
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}{P год года гадоў}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}цыкл{P "" а аў}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтар:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Увядзіце ключавыя словы для фільтраваньня сьпісу

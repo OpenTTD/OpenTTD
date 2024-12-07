@@ -645,6 +645,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}{P rok lata lat}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}okres{P "" y ów}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtr:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Wpisz słowa kluczowe, aby przefiltrować listę
@@ -3218,7 +3219,7 @@ STR_HOUSE_PICKER_YEARS                                          :{BLACK}Lata: {O
 STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Lata: {ORANGE}Kiedykolwiek
 STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Lata: {ORANGE}Od {NUM}
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Lata: {ORANGE}Do {NUM}
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Rozmiar: {ORANGE}{NUM}x{NUM} pól
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Rozmiar: {ORANGE}{NUM}x{NUM} p{P ole ola ól}
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Akceptowany ładunek: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Obrzeża
@@ -3371,7 +3372,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakup te
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Wybór obiektu
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Podgląd obiektu
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Rozmiar: {GOLD}{NUM} x {NUM} pól
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Rozmiar: {GOLD}{NUM} x {NUM} p{P ole ola ól}
 
 STR_OBJECT_CLASS_LTHS                                           :Latarnie morskie
 STR_OBJECT_CLASS_TRNS                                           :Nadajniki
@@ -4703,7 +4704,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Koszt: {CURRENC
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Prędkość: {VELOCITY}  Moc: {POWER}
 STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :Typ samolotu: {STRING}
-STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Typ samolotu: {STRING}   Zasięg: {COMMA} pól
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Typ samolotu: {STRING} Zasięg: {COMMA} p{P ole ola ól}
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Kosz Utrzymania: {CURRENCY_LONG}/rok
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Kosz Utrzymania: {CURRENCY_LONG}/okres
 STR_ENGINE_PREVIEW_CAPACITY                                     :Ładowność: {CARGO_LONG}

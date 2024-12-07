@@ -349,6 +349,7 @@ STR_UNITS_YEARS                                                 :{NUM}{NBSP}jaro
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}periodo{P "" j}
 STR_UNITS_PERIODS.n                                             :{NUM}{NBSP}periodo{P "" j}n
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtroteksto:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entajpu filtrotekston.

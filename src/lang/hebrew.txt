@@ -243,6 +243,7 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL} מ'
 
 
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}מחרוזת סינון:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}הכנס מחרוזת סינון

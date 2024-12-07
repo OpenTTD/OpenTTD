@@ -268,6 +268,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}ми
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}годин{P а и}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}период{P "" а}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Филтър:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Въведете една или повече ключови думи, по които да филтрирате списъка

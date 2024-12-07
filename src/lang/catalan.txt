@@ -267,6 +267,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}any{P "" s}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}període{P "" s}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introduïu una o més paraules per a filtrar la llista de

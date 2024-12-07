@@ -267,6 +267,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}Jahr{P "" e}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}Zykl{P "us" "en"}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Einen oder mehrere Schlüsselwörter für den Listenfilter eingeben

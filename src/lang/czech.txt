@@ -341,6 +341,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}{P rok roky let}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}období
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrovat řetězec:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vložte jedno nebo více klíčových slov pro filtr seznamu

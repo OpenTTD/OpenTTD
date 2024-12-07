@@ -328,6 +328,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}λε
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}έτ{P 0 ος η}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}περίοδ{P 0 ος οι}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Φιλτράρισμα λίστας:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Εισαγώγη μιας ή περισσότερων λέξεων για φιλτράρισμα

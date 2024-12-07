@@ -392,6 +392,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}ми
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}{P год года лет}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}цикл{P "" а ов}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фильтр:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введите ключевые слова для фильтрации списка

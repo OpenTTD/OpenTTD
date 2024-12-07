@@ -266,6 +266,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}分
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}年
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}個週期
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}篩選：
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}輸入一個或多個關鍵字詞以篩選此列表

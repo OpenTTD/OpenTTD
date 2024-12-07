@@ -266,6 +266,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}Minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}Joer{P "" ""}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}Period{P "" en}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Gëff een oder méi Wieder an fir d'Lëscht ze filteren

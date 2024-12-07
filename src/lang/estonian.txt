@@ -323,6 +323,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}aasta{P "" t}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}ajavahemik{P "" ku}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Märksõna:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sisesta üks või enam märksõna mille järgi nimekirja filtreerida

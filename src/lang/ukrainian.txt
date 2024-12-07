@@ -400,6 +400,7 @@ STR_UNITS_PERIODS                                               :{NUM}{NBSP}пе
 STR_UNITS_PERIODS.d                                             :{NUM}{NBSP}періоди
 STR_UNITS_PERIODS.z                                             :{NUM}{NBSP}періодів
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтр:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введіть одне чи більше слів для фільтрування списку

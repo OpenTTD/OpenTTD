@@ -266,6 +266,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}år{P "" erne}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P 0 "" er}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrer udtryk:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Indtast filterstreng

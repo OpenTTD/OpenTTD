@@ -266,6 +266,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}jaar
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P "" en}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Voer een of meer woorden in waarop de lijst wordt gefilterd
@@ -2832,6 +2833,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecteer een s
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selecteer een type huizen om te bouwen. Ctrl+klik om toe te voegen aan of te verwijderen uit opgeslagen onderdelen
 
 STR_HOUSE_PICKER_CAPTION                                        :Huizen selecteren
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Naam: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Bevolking: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Jaar: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Jaar: {ORANGE}Willekeurig
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Jaar: {ORANGE}Vanaf {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Jaar: {ORANGE}Tot en met {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Grootte: {ORANGE}{NUM}x{NUM} tegels
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Geaccepteerde vracht: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rand
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Buitenwijken

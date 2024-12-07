@@ -267,6 +267,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}daki
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}yıl
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}dönem{P "ler"}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Listeyi filtrelemek için anahtar sözcük girin

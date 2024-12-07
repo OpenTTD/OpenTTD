@@ -262,6 +262,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}分
 
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}年
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}フィルター:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}フィルタリングするキーワードを入力

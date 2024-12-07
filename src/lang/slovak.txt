@@ -330,6 +330,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}{P m
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}roky{P "" y ov}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}{P obdobie obdobia období}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vložiť aspoň jedno klúčové slovo pre filtrovanie

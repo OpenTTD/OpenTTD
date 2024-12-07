@@ -222,6 +222,7 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
 
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtur strong:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriva inn filtur strong

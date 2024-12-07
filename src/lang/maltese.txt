@@ -175,6 +175,7 @@ STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
 
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Daħħal sentenza għall-iffiltrar
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Daħħal kelma biex tiffiltra din il-lista għall-

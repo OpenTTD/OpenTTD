@@ -266,6 +266,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}munu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}blwyddyn{P "" ""}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}cyfnod{P "" ""}
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Hidlydd:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Rhowch un neu fwy o allweddeiriau i hildio'r rhestr

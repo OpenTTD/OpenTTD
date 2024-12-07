@@ -233,6 +233,7 @@ STR_UNITS_MONTHS                                                :{NUM}{NBSP}mån
 STR_UNITS_MINUTES                                               :{NUM}{NBSP}minutt
 
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Søkefilter:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv inn søkefilter

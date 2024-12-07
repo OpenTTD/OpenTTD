@@ -266,6 +266,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}phú
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}năm
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}kỳ
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Lọc:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Nhập một hoặc nhiều từ khóa để lọc danh sách

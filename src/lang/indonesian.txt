@@ -265,6 +265,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}meni
 
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}periode
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Saring:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan satu atau lebih kata kunci untuk penyaringan pada list

@@ -329,6 +329,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}perc
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}év
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}időszak
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Szűrő kifejezés:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Egy vagy több kulcsszó megadása a szűréshez
