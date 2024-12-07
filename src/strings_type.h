@@ -92,4 +92,27 @@ struct StringParameter {
 	inline StringParameter(const ConvertibleThroughBase auto &data) : data(static_cast<uint64_t>(data.base())), type(0) {}
 };
 
+/**
+ * Container for an encoded string, created by GetEncodedString.
+ */
+class EncodedString {
+public:
+	EncodedString() = default;
+
+	auto operator<=>(const EncodedString &) const = default;
+
+	std::string GetDecodedString() const;
+
+	inline void clear() { this->string.clear(); }
+	inline bool empty() const { return this->string.empty(); }
+
+private:
+	std::string string; ///< The encoded string.
+
+	/* An EncodedString can only be created by GetEncodedStringWithArgs(). */
+	explicit EncodedString(std::string &&string) : string(std::move(string)) {}
+
+	friend EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParameter> params);
+};
+
 #endif /* STRINGS_TYPE_H */

@@ -25,7 +25,7 @@ enum StringControlCode : uint16_t {
 
 	/* All SCC_ENCODED* control codes must have stable ids are they are stored in strings that are saved in savegames. */
 	SCC_ENCODED = SCC_CONTROL_START, ///< Encoded string marker and sub-string parameter.
-	SCC_ENCODED_RESERVED, ///< Reserved for future non-GS encoded strings.
+	SCC_ENCODED_INTERNAL, ///< Encoded text from OpenTTD.
 	SCC_ENCODED_NUMERIC, ///< Encoded numeric parameter.
 	SCC_ENCODED_STRING, ///< Encoded string parameter.
 

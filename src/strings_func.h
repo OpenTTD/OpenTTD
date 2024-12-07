@@ -135,6 +135,22 @@ std::string GetString(StringID string, Args &&... args)
 	return GetStringWithArgs(string, params);
 }
 
+EncodedString GetEncodedString(StringID str);
+EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParameter> params);
+
+/**
+ * Get an encoded string with parameters.
+ * @param string String ID to encode.
+ * @param args The parameters to set.
+ * @return The encoded string.
+ */
+template <typename... Args>
+EncodedString GetEncodedString(StringID string, const Args&... args)
+{
+	auto params = MakeParameters(std::forward<const Args&>(args)...);
+	return GetEncodedStringWithArgs(string, params);
+}
+
 /**
  * A searcher for missing glyphs.
  */
