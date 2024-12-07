@@ -120,21 +120,18 @@ public:
 		this->ConstructWindow();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_BO_OBJECT_SIZE: {
 				ObjectClass *objclass = ObjectClass::Get(_object_gui.sel_class);
 				const ObjectSpec *spec = objclass->GetSpec(_object_gui.sel_type);
 				int size = spec == nullptr ? 0 : spec->size;
-				SetDParam(0, GB(size, HasBit(_object_gui.sel_view, 0) ? 4 : 0, 4));
-				SetDParam(1, GB(size, HasBit(_object_gui.sel_view, 0) ? 0 : 4, 4));
-				break;
+				return GetString(stringid, GB(size, HasBit(_object_gui.sel_view, 0) ? 4 : 0, 4), GB(size, HasBit(_object_gui.sel_view, 0) ? 0 : 4, 4));
 			}
 
 			default:
-				this->PickerWindow::SetStringParameters(widget);
-				break;
+				return this->PickerWindow::GetWidgetString(widget, stringid);
 		}
 	}
 

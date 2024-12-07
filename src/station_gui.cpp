@@ -552,24 +552,20 @@ public:
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_STL_CAPTION) {
-			SetDParam(0, this->window_number);
-			SetDParam(1, this->vscroll->GetCount());
+			return GetString(stringid, this->window_number, this->vscroll->GetCount());
 		}
 
 		if (widget == WID_STL_CARGODROPDOWN) {
-			if (this->filter.cargoes == 0) {
-				SetDParam(0, this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING : STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES);
-			} else if (this->filter.cargoes == _cargo_mask) {
-				SetDParam(0, this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING : STR_CARGO_TYPE_FILTER_ALL);
-			} else if (CountBits(this->filter.cargoes) == 1 && !this->filter.include_no_rating) {
-				SetDParam(0, CargoSpec::Get(FindFirstBit(this->filter.cargoes))->name);
-			} else {
-				SetDParam(0, STR_STATION_LIST_CARGO_FILTER_MULTIPLE);
-			}
+			if (this->filter.cargoes == 0) return GetString(stringid, this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING : STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES);
+			if (this->filter.cargoes == _cargo_mask) return GetString(stringid, this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING : STR_CARGO_TYPE_FILTER_ALL);
+			if (CountBits(this->filter.cargoes) == 1 && !this->filter.include_no_rating) return GetString(stringid, CargoSpec::Get(FindFirstBit(this->filter.cargoes))->name);
+			return GetString(stringid, STR_STATION_LIST_CARGO_FILTER_MULTIPLE);
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	DropDownList BuildCargoDropDownList(bool expanded) const
@@ -1512,13 +1508,14 @@ struct StationViewWindow : public Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_SV_CAPTION) {
 			const Station *st = Station::Get(this->window_number);
-			SetDParam(0, st->index);
-			SetDParam(1, st->facilities);
+			return GetString(stringid, st->index, st->facilities);
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	/**

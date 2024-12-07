@@ -109,9 +109,11 @@ public:
 		this->Window::Close();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_W_CAPTION) SetDParam(0, this->wp->index);
+		if (widget == WID_W_CAPTION) return GetString(stringid, this->wp->index);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void OnPaint() override

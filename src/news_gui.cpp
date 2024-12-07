@@ -497,16 +497,18 @@ struct NewsWindow : Window {
 		size = maxdim(size, d);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_N_DATE) SetDParam(0, this->ni->date);
+		if (widget == WID_N_DATE) return GetString(stringid, this->ni->date);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_N_CAPTION:
-				DrawCaption(r, COLOUR_LIGHT_BLUE, this->owner, TC_FROMSTRING, STR_NEWS_MESSAGE_CAPTION, SA_CENTER, FS_NORMAL);
+				DrawCaption(r, COLOUR_LIGHT_BLUE, this->owner, TC_FROMSTRING, GetString(STR_NEWS_MESSAGE_CAPTION), SA_CENTER, FS_NORMAL);
 				break;
 
 			case WID_N_PANEL:

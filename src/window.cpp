@@ -499,6 +499,12 @@ bool Window::SetFocusedWidget(WidgetID widget_index)
 	return true;
 }
 
+std::string Window::GetWidgetString([[maybe_unused]] WidgetID widget, StringID stringid) const
+{
+	if (stringid == STR_NULL) return {};
+	return GetString(stringid);
+}
+
 /**
  * Called when window gains focus
  */

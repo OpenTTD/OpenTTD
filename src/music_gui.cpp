@@ -486,15 +486,17 @@ struct MusicTrackSelectionWindow : public Window {
 		this->LowerWidget(WID_MTS_ALL + _settings_client.music.playlist);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_MTS_PLAYLIST:
-				SetDParam(0, STR_MUSIC_PLAYLIST_ALL + _settings_client.music.playlist);
-				break;
+				return GetString(stringid, STR_MUSIC_PLAYLIST_ALL + _settings_client.music.playlist);
+
 			case WID_MTS_CAPTION:
-				SetDParamStr(0, BaseMusic::GetUsedSet()->name);
-				break;
+				return GetString(stringid, BaseMusic::GetUsedSet()->name);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

@@ -431,11 +431,8 @@ struct FramerateWindow : Window {
 			this->strid = (value < threshold_good) ? STR_FRAMERATE_MS_GOOD : (value > threshold_bad) ? STR_FRAMERATE_MS_BAD : STR_FRAMERATE_MS_WARN;
 		}
 
-		inline void InsertDParams(uint n) const
-		{
-			SetDParam(n, this->value);
-			SetDParam(n + 1, 2);
-		}
+		inline uint32_t GetValue() const { return this->value; }
+		inline uint32_t GetDecimals() const { return 2; }
 	};
 
 	CachedDecimal rate_gameloop;            ///< cached game loop tick rate
@@ -500,31 +497,29 @@ struct FramerateWindow : Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_FRW_CAPTION:
 				/* When the window is shaded, the caption shows game loop rate and speed factor */
-				if (!this->small) break;
-				SetDParam(0, this->rate_gameloop.strid);
-				this->rate_gameloop.InsertDParams(1);
-				this->speed_gameloop.InsertDParams(3);
-				break;
+				if (!this->small) GetString(widget, stringid);
+
+				return GetString(stringid, this->rate_gameloop.strid, this->rate_gameloop.GetValue(), this->rate_gameloop.GetDecimals(), this->speed_gameloop.GetValue(), this->speed_gameloop.GetDecimals());
 
 			case WID_FRW_RATE_GAMELOOP:
-				SetDParam(0, this->rate_gameloop.strid);
-				this->rate_gameloop.InsertDParams(1);
-				break;
+				return GetString(stringid, this->rate_gameloop.strid, this->rate_gameloop.GetValue(), this->rate_gameloop.GetDecimals());
+
 			case WID_FRW_RATE_DRAWING:
-				SetDParam(0, this->rate_drawing.strid);
-				this->rate_drawing.InsertDParams(1);
-				break;
+				return GetString(stringid, this->rate_drawing.strid, this->rate_drawing.GetValue(), this->rate_drawing.GetDecimals());
+
 			case WID_FRW_RATE_FACTOR:
-				this->speed_gameloop.InsertDParams(0);
-				break;
+				return GetString(stringid, this->speed_gameloop.GetValue(), this->speed_gameloop.GetDecimals());
+
 			case WID_FRW_INFO_DATA_POINTS:
-				SetDParam(0, NUM_FRAMERATE_POINTS);
-				break;
+				return GetString(stringid, NUM_FRAMERATE_POINTS);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -587,8 +582,7 @@ struct FramerateWindow : Window {
 			if (skip > 0) {
 				skip--;
 			} else {
-				values[e].InsertDParams(0);
-				DrawString(r.left, r.right, y, values[e].strid, TC_FROMSTRING, SA_RIGHT);
+				DrawString(r.left, r.right, y, GetString(values[e].strid, values[e].GetValue(), values[e].GetDecimals()), TC_FROMSTRING, SA_RIGHT);
 				y += GetCharacterHeight(FS_NORMAL);
 				drawable--;
 				if (drawable == 0) break;
@@ -742,18 +736,17 @@ struct FrametimeGraphWindow : Window {
 		this->UpdateScale();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_FGW_CAPTION:
 				if (this->element < PFE_AI0) {
-					SetDParam(0, STR_FRAMETIME_CAPTION_GAMELOOP + this->element);
-				} else {
-					SetDParam(0, STR_FRAMETIME_CAPTION_AI);
-					SetDParam(1, this->element - PFE_AI0 + 1);
-					SetDParamStr(2, GetAIName(this->element - PFE_AI0));
+					return GetString(stringid, STR_FRAMETIME_CAPTION_GAMELOOP + this->element);
 				}
-				break;
+				return GetString(stringid, STR_FRAMETIME_CAPTION_AI, this->element - PFE_AI0 + 1, GetAIName(this->element - PFE_AI0));
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
