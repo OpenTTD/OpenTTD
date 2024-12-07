@@ -9007,7 +9007,8 @@ GRFFile::GRFFile(const GRFConfig *config)
 	 * 'Uninitialised' parameters are zeroed as that is their default value when dynamically creating them. */
 	this->param = {};
 
-	auto last = std::begin(config->param) + std::min<size_t>(std::size(config->param), GRFConfig::MAX_NUM_PARAMS);
+	this->param_end = std::min<uint>(static_cast<uint>(std::size(config->param)), GRFConfig::MAX_NUM_PARAMS);
+	auto last = std::begin(config->param) + this->param_end;
 	std::copy(std::begin(config->param), last, std::begin(this->param));
 }
 
