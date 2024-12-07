@@ -238,7 +238,11 @@ const char *GetStringPtr(StringID string)
 		/* 0xD0xx and 0xD4xx IDs have been converted earlier. */
 		case TEXT_TAB_OLD_NEWGRF: NOT_REACHED();
 		case TEXT_TAB_NEWGRF_START: return GetGRFStringPtr(GetStringIndex(string));
-		default: return _langpack.offsets[_langpack.langtab_start[GetStringTab(string)] + GetStringIndex(string)];
+		default: {
+			const uint offset = _langpack.langtab_start[GetStringTab(string)] + GetStringIndex(string);
+			if (offset < _langpack.offsets.size()) return _langpack.offsets[offset];
+			return nullptr;
+		}
 	}
 }
 
@@ -1063,13 +1067,23 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 				case SCC_NEWGRF_STRINL: {
 					StringID substr = Utf8Consume(&str);
-					str_stack.push(GetStringPtr(substr));
+					const char *ptr = GetStringPtr(substr);
+					if (ptr == nullptr) {
+						builder += "(invalid NewGRF string)";
+					} else {
+						str_stack.push(ptr);
+					}
 					break;
 				}
 
 				case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
 					StringID substr = args.GetNextParameter<StringID>();
-					str_stack.push(GetStringPtr(substr));
+					const char *ptr = GetStringPtr(substr);
+					if (ptr == nullptr) {
+						builder += "(invalid NewGRF string)";
+					} else {
+						str_stack.push(ptr);
+					}
 					case_index = next_substr_case_index;
 					next_substr_case_index = 0;
 					break;
@@ -1195,8 +1209,8 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					StringID string_id = args.GetNextParameter<StringID>();
 					if (game_script && GetStringTab(string_id) != TEXT_TAB_GAMESCRIPT_START) break;
 					uint size = b - SCC_STRING1 + 1;
-					if (game_script && size > args.GetDataLeft()) {
-						builder += "(too many parameters)";
+					if (size > args.GetDataLeft()) {
+						builder += "(consumed too many parameters)";
 					} else {
 						StringParameters sub_args(args, game_script ? args.GetDataLeft() : size);
 						GetStringWithArgs(builder, string_id, sub_args, next_substr_case_index, game_script);
