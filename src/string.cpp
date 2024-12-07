@@ -100,6 +100,7 @@ static bool IsSccEncodedCode(char32_t c)
 	switch (c) {
 		case SCC_RECORD_SEPARATOR:
 		case SCC_ENCODED:
+		case SCC_ENCODED_INTERNAL:
 		case SCC_ENCODED_NUMERIC:
 		case SCC_ENCODED_STRING:
 			return true;
