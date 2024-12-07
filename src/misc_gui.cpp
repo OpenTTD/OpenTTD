@@ -565,8 +565,7 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 		cost = -cost;
 		msg = STR_INCOME_FLOAT_INCOME;
 	}
-	SetDParam(0, cost);
-	AddTextEffect(msg, pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+	AddTextEffect(GetEncodedString(msg, cost), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
 }
 
 /**
@@ -581,17 +580,15 @@ void ShowFeederIncomeAnimation(int x, int y, int z, Money transfer, Money income
 {
 	Point pt = RemapCoords(x, y, z);
 
-	SetDParam(0, transfer);
 	if (income == 0) {
-		AddTextEffect(STR_FEEDER, pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+		AddTextEffect(GetEncodedString(STR_FEEDER, transfer), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
 	} else {
 		StringID msg = STR_FEEDER_COST;
 		if (income < 0) {
 			income = -income;
 			msg = STR_FEEDER_INCOME;
 		}
-		SetDParam(1, income);
-		AddTextEffect(msg, pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+		AddTextEffect(GetEncodedString(msg, transfer, income), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
 	}
 }
 
@@ -610,8 +607,7 @@ TextEffectID ShowFillingPercent(int x, int y, int z, uint8_t percent, StringID s
 
 	assert(string != STR_NULL);
 
-	SetDParam(0, percent);
-	return AddTextEffect(string, pt.x, pt.y, 0, TE_STATIC);
+	return AddTextEffect(GetEncodedString(string, percent), pt.x, pt.y, 0, TE_STATIC);
 }
 
 /**
@@ -623,8 +619,7 @@ void UpdateFillingPercent(TextEffectID te_id, uint8_t percent, StringID string)
 {
 	assert(string != STR_NULL);
 
-	SetDParam(0, percent);
-	UpdateTextEffect(te_id, string);
+	UpdateTextEffect(te_id, GetEncodedString(string, percent));
 }
 
 /**
