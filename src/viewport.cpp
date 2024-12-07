@@ -1463,21 +1463,18 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
  * @param str    the string to show in the sign
  * @param str_small the string to show when zoomed out. STR_NULL means same as \a str
  */
-void ViewportSign::UpdatePosition(int center, int top, StringID str, StringID str_small)
+void ViewportSign::UpdatePosition(int center, int top, std::string_view str, std::string_view str_small)
 {
 	if (this->width_normal != 0) this->MarkDirty();
 
 	this->top = top;
 
-	std::string name = GetString(str);
-	this->width_normal = WidgetDimensions::scaled.fullbevel.left + Align(GetStringBoundingBox(name).width, 2) + WidgetDimensions::scaled.fullbevel.right;
+	this->width_normal = WidgetDimensions::scaled.fullbevel.left + Align(GetStringBoundingBox(str).width, 2) + WidgetDimensions::scaled.fullbevel.right;
 	this->center = center;
 
 	/* zoomed out version */
-	if (str_small != STR_NULL) {
-		name = GetString(str_small);
-	}
-	this->width_small = WidgetDimensions::scaled.fullbevel.left + Align(GetStringBoundingBox(name, FS_SMALL).width, 2) + WidgetDimensions::scaled.fullbevel.right;
+	if (str_small.empty()) str_small = str;
+	this->width_small = WidgetDimensions::scaled.fullbevel.left + Align(GetStringBoundingBox(str, FS_SMALL).width, 2) + WidgetDimensions::scaled.fullbevel.right;
 
 	this->MarkDirty();
 }
