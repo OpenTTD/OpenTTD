@@ -105,4 +105,28 @@ struct StringParameter {
 	StringParameter(const StringParameterData &data, char32_t type) : data(data), type(type) {}
 };
 
+/**
+ * Container for an encoded string, created by GetEncodedString.
+ */
+class EncodedString {
+public:
+	constexpr EncodedString() = default;
+
+	auto operator<=>(const EncodedString &) const = default;
+
+	std::string GetDecodedString() const;
+
+	void clear() { this->string.clear(); }
+	bool empty() const { return this->string.empty(); }
+
+private:
+	std::string string; ///< The encoded string.
+
+	/* An EncodedString can only be created by GetEncodedString(). */
+	explicit EncodedString(std::string &&string) : string(std::move(string)) {}
+
+	friend EncodedString GetEncodedString(StringID str);
+	friend EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParameter> params);
+};
+
 #endif /* STRINGS_TYPE_H */
