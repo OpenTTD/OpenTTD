@@ -54,7 +54,7 @@ struct ViewportSign {
 
 	auto operator<=>(const ViewportSign &) const = default;
 
-	void UpdatePosition(int center, int top, StringID str, StringID str_small = STR_NULL);
+	void UpdatePosition(int center, int top, std::string_view str, std::string_view str_small = {});
 	void MarkDirty(ZoomLevel maxzoom = ZOOM_LVL_MAX) const;
 };
 
@@ -68,7 +68,7 @@ struct TrackedViewportSign : ViewportSign {
 	 * Update the position of the viewport sign.
 	 * Note that this function hides the base class function.
 	 */
-	void UpdatePosition(int center, int top, StringID str, StringID str_small = STR_NULL)
+	void UpdatePosition(int center, int top, std::string_view str, std::string_view str_small = {})
 	{
 		this->kdtree_valid = true;
 		this->ViewportSign::UpdatePosition(center, top, str, str_small);

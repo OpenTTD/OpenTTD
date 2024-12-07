@@ -60,7 +60,7 @@ TextEffectID AddTextEffect(StringID msg, int center, int y, uint8_t duration, Te
 
 	/* Make sure we only dirty the new area */
 	te.width_normal = 0;
-	te.UpdatePosition(center, y, msg);
+	te.UpdatePosition(center, y, GetString(te.string_id));
 
 	return static_cast<TextEffectID>(it - std::begin(_text_effects));
 }
@@ -73,7 +73,7 @@ void UpdateTextEffect(TextEffectID te_id, StringID msg)
 	te.string_id = msg;
 	CopyOutDParam(te.params, 2);
 
-	te.UpdatePosition(te.center, te.top, te.string_id);
+	te.UpdatePosition(te.center, te.top, GetString(te.string_id));
 }
 
 void UpdateAllTextEffectVirtCoords()
@@ -81,7 +81,7 @@ void UpdateAllTextEffectVirtCoords()
 	for (auto &te : _text_effects) {
 		if (te.string_id == INVALID_STRING_ID) continue;
 		CopyInDParam(te.params);
-		te.UpdatePosition(te.center, te.top, te.string_id);
+		te.UpdatePosition(te.center, te.top, GetString(te.string_id));
 	}
 }
 

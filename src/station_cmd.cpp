@@ -448,9 +448,7 @@ void Station::UpdateVirtCoord()
 
 	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(this->index));
 
-	SetDParam(0, this->index);
-	SetDParam(1, this->facilities);
-	this->sign.UpdatePosition(pt.x, pt.y, STR_VIEWPORT_STATION, STR_STATION_NAME);
+	this->sign.UpdatePosition(pt.x, pt.y, GetString(STR_VIEWPORT_STATION, this->index, this->facilities), GetString(STR_STATION_NAME, this->index, this->facilities));
 
 	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(this->index));
 
