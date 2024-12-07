@@ -72,7 +72,7 @@ void UpdateTextEffect(TextEffectID te_id, StringID msg)
 	te.string_id = msg;
 	CopyOutDParam(te.params, 2);
 
-	te.UpdatePosition(te.center, te.top, te.string_id, te.string_id - 1);
+	te.UpdatePosition(te.center, te.top, te.string_id);
 }
 
 void UpdateAllTextEffectVirtCoords()
@@ -80,7 +80,7 @@ void UpdateAllTextEffectVirtCoords()
 	for (auto &te : _text_effects) {
 		if (te.string_id == INVALID_STRING_ID) continue;
 		CopyInDParam(te.params);
-		te.UpdatePosition(te.center, te.top, te.string_id, te.string_id - 1);
+		te.UpdatePosition(te.center, te.top, te.string_id);
 	}
 }
 
@@ -124,7 +124,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 		if (te.string_id == INVALID_STRING_ID) continue;
 		if (te.mode == TE_RISING || _settings_client.gui.loading_indicators) {
 			CopyInDParam(te.params);
-			ViewportAddString(dpi, ZOOM_LVL_TEXT_EFFECT, &te, te.string_id, te.string_id - 1, STR_NULL);
+			ViewportAddString(dpi, ZOOM_LVL_TEXT_EFFECT, &te, te.string_id, te.string_id, STR_NULL);
 		}
 	}
 }
