@@ -1785,10 +1785,10 @@ public:
 
 				if (IsInsideMM(pt.x, player_icon_x, player_icon_x + d2.width)) {
 					if (index == this->player_self_index) {
-						GuiShowTooltips(this, STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP, close_cond);
+						GuiShowTooltips(this, GetEncodedString(STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP), close_cond);
 						return true;
 					} else if (index == this->player_host_index) {
-						GuiShowTooltips(this, STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP, close_cond);
+						GuiShowTooltips(this, GetEncodedString(STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP), close_cond);
 						return true;
 					}
 				}
@@ -1796,7 +1796,7 @@ public:
 				ButtonCommon *button = this->GetButtonAtPoint(pt);
 				if (button == nullptr) return false;
 
-				GuiShowTooltips(this, button->tooltip, close_cond);
+				GuiShowTooltips(this, GetEncodedString(button->tooltip), close_cond);
 				return true;
 			};
 		}

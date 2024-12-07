@@ -396,20 +396,15 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 					SetDParam(0, time);
 					AppendStringInPlace(tooltip_extension, STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION);
 				}
-				SetDParam(0, link.cargo);
-				SetDParam(1, link.Usage());
-				SetDParam(2, i->first);
-				SetDParam(3, j->first);
-				SetDParam(4, link.Usage() * 100 / (link.capacity + 1));
-				SetDParamStr(5, tooltip_extension);
 				GuiShowTooltips(this->window,
-					TimerGameEconomy::UsingWallclockUnits() ? STR_LINKGRAPH_STATS_TOOLTIP_MINUTE : STR_LINKGRAPH_STATS_TOOLTIP_MONTH,
-					close_cond, 7);
+					GetEncodedString(TimerGameEconomy::UsingWallclockUnits() ? STR_LINKGRAPH_STATS_TOOLTIP_MINUTE : STR_LINKGRAPH_STATS_TOOLTIP_MONTH,
+						link.cargo, link.Usage(), i->first, j->first, link.Usage() * 100 / (link.capacity + 1), tooltip_extension),
+					close_cond);
 				return true;
 			}
 		}
 	}
-	GuiShowTooltips(this->window, STR_NULL, close_cond);
+	GuiShowTooltips(this->window, {}, close_cond);
 	return false;
 }
 
@@ -641,17 +636,19 @@ bool LinkGraphLegendWindow::OnTooltip([[maybe_unused]] Point, WidgetID widget, T
 {
 	if (IsInsideMM(widget, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) {
-			GuiShowTooltips(this, STR_LINKGRAPH_LEGEND_SELECT_COMPANIES, close_cond);
+			GuiShowTooltips(this, GetEncodedString(STR_LINKGRAPH_LEGEND_SELECT_COMPANIES), close_cond);
 		} else {
-			SetDParam(0, STR_LINKGRAPH_LEGEND_SELECT_COMPANIES);
-			SetDParam(1, (CompanyID)(widget - WID_LGL_COMPANY_FIRST));
-			GuiShowTooltips(this, STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP, close_cond, 2);
+			GuiShowTooltips(this,
+				GetEncodedString(STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP,
+					STR_LINKGRAPH_LEGEND_SELECT_COMPANIES,
+					widget - WID_LGL_COMPANY_FIRST),
+				close_cond);
 		}
 		return true;
 	}
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
 		const CargoSpec *cargo = _sorted_cargo_specs[widget - WID_LGL_CARGO_FIRST];
-		GuiShowTooltips(this, cargo->name, close_cond);
+		GuiShowTooltips(this, GetEncodedString(cargo->name), close_cond);
 		return true;
 	}
 	return false;
