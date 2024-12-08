@@ -267,6 +267,7 @@ STR_UNITS_MINUTES                                               :{G=f}{NUM}{NBSP
 STR_UNITS_YEARS                                                 :{G=f}{NUM}{NBSP}année{P "" s}
 STR_UNITS_PERIODS                                               :{G=f}{NUM}{NBSP}période{P "" s}
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre{NBSP}:

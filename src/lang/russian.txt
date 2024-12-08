@@ -392,6 +392,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}ми
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}{P год года лет}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}цикл{P "" а ов}
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фильтр:
@@ -3001,22 +3002,22 @@ STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Выберит�
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Выберите тип объектов для отображения
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Выберите объект для строительства. Ctrl+щелчок добавит его в «избранное» или удалит. Ctrl+перетаскивание - выбор диагональной области. При нажатом Shift - оценка стоимости строительства.
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Выберите городскую зону для отображения соответствующих строений
-STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Выберите дом для строительства. Ctrl+щелчок добавит его в «избранное» или удалит.
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Выберите здание для строительства. Ctrl+щелчок добавит его в «избранное» или удалит.
 
-STR_HOUSE_PICKER_CAPTION                                        :Выбор типов домов
+STR_HOUSE_PICKER_CAPTION                                        :Выбор типов зданий
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Название: {ORANGE}{STRING}
 STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Кол-во жителей: {ORANGE}{NUM}
 STR_HOUSE_PICKER_YEARS                                          :{BLACK}Дата: {ORANGE}{NUM}-{NUM}
 STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Дата: {ORANGE}любая
 STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Дата: {ORANGE}с {NUM} г.
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Дата: {ORANGE}до {NUM} г.
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Размер: {ORANGE}{NUM}×{NUM} клеток
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Размер: {ORANGE}{NUM}×{NUM} клет{P ку ки ок}
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Принимаемый груз: {ORANGE}
 
-STR_HOUSE_PICKER_CLASS_ZONE1                                    :Край
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Пригород
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Окраина
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Периферия
-STR_HOUSE_PICKER_CLASS_ZONE4                                    :Пригород
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Центральные районы
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Центр
 
 STR_STATION_CLASS_DFLT                                          :Стандартная станция
@@ -3033,13 +3034,13 @@ STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Вход
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Выходной семафор{}Работает как обычный семафор, но его состояние учитывается при работе входных и комбинированных сигналов.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Комбинированный семафор{}Работает одновременно как входной и выходной семафор. Это позволяет построить большую разветвлённую сеть.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Маршрутный семафор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Допускает следование поездов в обе стороны.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Односторонний маршрутн. семафор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Не допускает следования поездов в обратную сторону.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Односторонний маршрутный семафор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Не допускает следования поездов в обратную сторону.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Стандартный светофор{}Не позволяет нескольким поездам одновременно находиться на одном блок-участке.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Входной светофор{}Открыт, если хотя бы один из выходных сигналов на следующей секции путей открыт. В остальных случаях закрыт.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Выходной светофор{}Работает как обычный светофор, но его состояние учитывается при работе входных и комбинированных сигналов.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Комбинированный светофор{}Работает одновременно как входной и выходной светофор. Это позволяет построить большую разветвлённую сеть.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Маршрутный светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Допускает следование поездов в обе стороны.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Односторонний маршрутн. светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Не допускает следования поездов в обратную сторону.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Односторонний маршрутный светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Не допускает следования поездов в обратную сторону.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Изменение типа сигнала{}Когда кнопка нажата, щелчок по существующему сигналу преобразует его в выбранный тип. Ctrl+щелчок - перебор существующих вариантов. Shift+щелчок - оценка стоимости преобразования.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Расстояние между сигналами при протягивании
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Уменьшить расстояние между сигналами при протягивании
@@ -5243,7 +5244,7 @@ STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Нево
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... слишком много предприятий
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Невозможно создать предприятия...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Здесь нельзя создать {STRING}...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Здесь нельзя построить {STRING.acc}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Построить это предприятие невозможно...
 STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Не удалось разведать месторождение...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... слишком близко к другому предприятию
@@ -5641,78 +5642,115 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Хрюшка-К
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Угольная шахта
 STR_INDUSTRY_NAME_COAL_MINE.gen                                 :угольной шахты
+STR_INDUSTRY_NAME_COAL_MINE.acc                                 :угольную шахту
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Электростанция
 STR_INDUSTRY_NAME_POWER_STATION.gen                             :электростанции
+STR_INDUSTRY_NAME_POWER_STATION.acc                             :электростанцию
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Лесопилка
 STR_INDUSTRY_NAME_SAWMILL.gen                                   :лесопилки
+STR_INDUSTRY_NAME_SAWMILL.acc                                   :лесопилку
 STR_INDUSTRY_NAME_FOREST                                        :{G=m}Лес
 STR_INDUSTRY_NAME_FOREST.gen                                    :леса
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=m}Нефтезавод
-STR_INDUSTRY_NAME_OIL_REFINERY.gen                              :нефтезавода
+STR_INDUSTRY_NAME_FOREST.acc                                    :лес
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=m}Нефтеперерабатывающий завод
+STR_INDUSTRY_NAME_OIL_REFINERY.gen                              :нефтеперерабатывающего завода
+STR_INDUSTRY_NAME_OIL_REFINERY.acc                              :нефтеперерабатывающий завод
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Нефтяная вышка
 STR_INDUSTRY_NAME_OIL_RIG.gen                                   :нефтяной вышки
+STR_INDUSTRY_NAME_OIL_RIG.acc                                   :нефтяную вышку
 STR_INDUSTRY_NAME_FACTORY                                       :{G=m}Завод
 STR_INDUSTRY_NAME_FACTORY.gen                                   :завода
+STR_INDUSTRY_NAME_FACTORY.acc                                   :завод
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Типография
 STR_INDUSTRY_NAME_PRINTING_WORKS.gen                            :типографии
+STR_INDUSTRY_NAME_PRINTING_WORKS.acc                            :типографию
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=m}Сталелитейный завод
 STR_INDUSTRY_NAME_STEEL_MILL.gen                                :сталелитейного завода
+STR_INDUSTRY_NAME_STEEL_MILL.acc                                :сталелитейный завод
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Ферма
 STR_INDUSTRY_NAME_FARM.gen                                      :фермы
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Шахта медной руды
-STR_INDUSTRY_NAME_COPPER_ORE_MINE.gen                           :шахты медной руды
+STR_INDUSTRY_NAME_FARM.acc                                      :ферму
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=m}Медный рудник
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.gen                           :медного рудника
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.acc                           :медный рудник
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=f}Нефтяная скважина
 STR_INDUSTRY_NAME_OIL_WELLS.gen                                 :нефтяной скважины
+STR_INDUSTRY_NAME_OIL_WELLS.acc                                 :нефтяную скважину
 STR_INDUSTRY_NAME_BANK                                          :{G=m}Банк
 STR_INDUSTRY_NAME_BANK.gen                                      :банка
+STR_INDUSTRY_NAME_BANK.acc                                      :банк
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=m}Продуктовый завод
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.gen                     :продуктового завода
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.acc                     :продуктовый завод
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Бумажная фабрика
 STR_INDUSTRY_NAME_PAPER_MILL.gen                                :бумажной фабрики
+STR_INDUSTRY_NAME_PAPER_MILL.acc                                :бумажную фабрику
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Золотая шахта
 STR_INDUSTRY_NAME_GOLD_MINE.gen                                 :золотой шахты
+STR_INDUSTRY_NAME_GOLD_MINE.acc                                 :золотую шахту
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Банк
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.gen                        :банка
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.acc                        :банк
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=p}Алмазные копи
 STR_INDUSTRY_NAME_DIAMOND_MINE.gen                              :алмазных копей
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Шахта железной руды
-STR_INDUSTRY_NAME_IRON_ORE_MINE.gen                             :шахты железной руды
+STR_INDUSTRY_NAME_DIAMOND_MINE.acc                              :алмазные копи
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=m}Железный рудник
+STR_INDUSTRY_NAME_IRON_ORE_MINE.gen                             :железного рудника
+STR_INDUSTRY_NAME_IRON_ORE_MINE.acc                             :железный рудник
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Фруктовая плантация
 STR_INDUSTRY_NAME_FRUIT_PLANTATION.gen                          :фруктовой плантации
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.acc                          :фруктовую плантацию
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Плантация гевеи
 STR_INDUSTRY_NAME_RUBBER_PLANTATION.gen                         :плантации гевеи
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.acc                         :плантацию гевеи
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=f}Водная скважина
 STR_INDUSTRY_NAME_WATER_SUPPLY.gen                              :водной скважины
+STR_INDUSTRY_NAME_WATER_SUPPLY.acc                              :водную скважину
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Водонапорная башня
 STR_INDUSTRY_NAME_WATER_TOWER.gen                               :водонапорной башни
+STR_INDUSTRY_NAME_WATER_TOWER.acc                               :водонапорную башню
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=m}Завод
 STR_INDUSTRY_NAME_FACTORY_2.gen                                 :завода
+STR_INDUSTRY_NAME_FACTORY_2.acc                                 :завод
 STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Ферма
 STR_INDUSTRY_NAME_FARM_2.gen                                    :фермы
+STR_INDUSTRY_NAME_FARM_2.acc                                    :ферму
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Лесопилка
 STR_INDUSTRY_NAME_LUMBER_MILL.gen                               :лесопилки
+STR_INDUSTRY_NAME_LUMBER_MILL.acc                               :лесопилку
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Лес сахарной ваты
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.gen                       :леса сахарной ваты
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.acc                       :лес сахарной ваты
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Конфетная фабрика
 STR_INDUSTRY_NAME_CANDY_FACTORY.gen                             :конфетной фабрики
+STR_INDUSTRY_NAME_CANDY_FACTORY.acc                             :конфетную фабрику
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=n}Поле батареек
 STR_INDUSTRY_NAME_BATTERY_FARM.gen                              :поля батареек
+STR_INDUSTRY_NAME_BATTERY_FARM.acc                              :поле батареек
 STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=p}Колодцы колы
 STR_INDUSTRY_NAME_COLA_WELLS.gen                                :колодцев колы
+STR_INDUSTRY_NAME_COLA_WELLS.acc                                :колодцы колы
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=m}Магазин игрушек
 STR_INDUSTRY_NAME_TOY_SHOP.gen                                  :магазина игрушек
+STR_INDUSTRY_NAME_TOY_SHOP.acc                                  :магазин игрушек
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=m}Завод игрушек
 STR_INDUSTRY_NAME_TOY_FACTORY.gen                               :завода игрушек
+STR_INDUSTRY_NAME_TOY_FACTORY.acc                               :завод игрушек
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=p}Фонтаны пластика
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.gen                         :фонтанов пластика
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.acc                         :фонтаны пластика
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=m}Завод газировки
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.gen                       :завода газировки
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.acc                       :завод газировки
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Генератор пузырьков
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR.gen                          :генератора пузырьков
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.acc                          :генератор пузырьков
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}Ирисовый карьер
 STR_INDUSTRY_NAME_TOFFEE_QUARRY.gen                             :ирисового карьера
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.acc                             :ирисовый карьер
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Сахарная шахта
 STR_INDUSTRY_NAME_SUGAR_MINE.gen                                :сахарной шахты
+STR_INDUSTRY_NAME_SUGAR_MINE.acc                                :сахарную шахту
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!

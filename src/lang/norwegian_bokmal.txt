@@ -2835,6 +2835,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Velg byområdet
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Velg type hus å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 
 STR_HOUSE_PICKER_CAPTION                                        :Husvalg
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Navn: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Beboere: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}År: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}År: {ORANGE}Ethvert
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {ORANGE}Fra {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {ORANGE}Til {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Størrelse: {ORANGE}{NUM}x{NUM} ruter
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Godtatte varer: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kant
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Ytterkant
