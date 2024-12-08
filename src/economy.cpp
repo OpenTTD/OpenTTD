@@ -2064,7 +2064,7 @@ CommandCost CmdBuyCompany(DoCommandFlag flags, CompanyID target_company, bool ho
 	if (target_company == _current_company) return CMD_ERROR;
 
 	/* Do not allow takeover if the resulting company would have too many vehicles. */
-	if (!CheckTakeoverVehicleLimit(_current_company, target_company)) return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
+	if (!CheckTakeoverVehicleLimit(_current_company, target_company)) return CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 
 	/* Get the cost here as the company is deleted in DoAcquireCompany.
 	 * For bankruptcy this amount is calculated when the offer was made;

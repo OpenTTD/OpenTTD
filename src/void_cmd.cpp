@@ -41,7 +41,7 @@ static Foundation GetFoundation_Void(TileIndex, Slope)
 
 static CommandCost ClearTile_Void(TileIndex, DoCommandFlag)
 {
-	return_cmd_error(STR_ERROR_OFF_EDGE_OF_MAP);
+	return CommandCost(STR_ERROR_OFF_EDGE_OF_MAP);
 }
 
 
@@ -69,7 +69,7 @@ static TrackStatus GetTileTrackStatus_Void(TileIndex, TransportType, uint, DiagD
 
 static CommandCost TerraformTile_Void(TileIndex, DoCommandFlag, int, Slope)
 {
-	return_cmd_error(STR_ERROR_OFF_EDGE_OF_MAP);
+	return CommandCost(STR_ERROR_OFF_EDGE_OF_MAP);
 }
 
 extern const TileTypeProcs _tile_type_void_procs = {

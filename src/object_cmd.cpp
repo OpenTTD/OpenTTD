@@ -220,14 +220,14 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 	if ((spec->flags & OBJECT_FLAG_ONLY_IN_GAME) != 0 && (_generating_world || _game_mode != GM_NORMAL || _current_company > MAX_COMPANIES)) return CMD_ERROR;
 	if (view >= spec->views) return CMD_ERROR;
 
-	if (!Object::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_OBJECTS);
-	if (Town::GetNumItems() == 0) return_cmd_error(STR_ERROR_MUST_FOUND_TOWN_FIRST);
+	if (!Object::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_OBJECTS);
+	if (Town::GetNumItems() == 0) return CommandCost(STR_ERROR_MUST_FOUND_TOWN_FIRST);
 
 	int size_x = GB(spec->size, HasBit(view, 0) ? 4 : 0, 4);
 	int size_y = GB(spec->size, HasBit(view, 0) ? 0 : 4, 4);
 	TileArea ta(tile, size_x, size_y);
 	for (TileIndex t : ta) {
-		if (!IsValidTile(t)) return_cmd_error(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB); // Might be off the map
+		if (!IsValidTile(t)) return CommandCost(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB); // Might be off the map
 	}
 
 	if (type == OBJECT_OWNED_LAND) {
@@ -241,7 +241,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 		bool allow_ground = (spec->flags & OBJECT_FLAG_NOT_ON_LAND) == 0;
 		for (TileIndex t : ta) {
 			if (HasTileWaterGround(t)) {
-				if (!allow_water) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
+				if (!allow_water) return CommandCost(STR_ERROR_CAN_T_BUILD_ON_WATER);
 				if (!IsWaterTile(t)) {
 					/* Normal water tiles don't have to be cleared. For all other tile types clear
 					 * the tile but leave the water. */
@@ -255,7 +255,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 					cost.AddCost(EnsureNoVehicleOnGround(t));
 				}
 			} else {
-				if (!allow_ground) return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
+				if (!allow_ground) return CommandCost(STR_ERROR_MUST_BE_BUILT_ON_WATER);
 				/* For non-water tiles, we'll have to clear it before building. */
 
 				/* When relocating HQ, allow it to be relocated (partial) on itself. */
@@ -310,7 +310,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 		if (IsBridgeAbove(t) && (
 				!(spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) ||
 				(GetTileMaxZ(t) + spec->height >= GetBridgeHeight(GetSouthernBridgeEnd(t))))) {
-			return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+			return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
 	}
 
@@ -319,14 +319,14 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 	switch (type) {
 		case OBJECT_TRANSMITTER:
 		case OBJECT_LIGHTHOUSE:
-			if (!IsTileFlat(tile)) return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
+			if (!IsTileFlat(tile)) return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
 			break;
 
 		case OBJECT_OWNED_LAND:
 			if (IsTileType(tile, MP_OBJECT) &&
 					IsTileOwner(tile, _current_company) &&
 					IsObjectType(tile, OBJECT_OWNED_LAND)) {
-				return_cmd_error(STR_ERROR_YOU_ALREADY_OWN_IT);
+				return CommandCost(STR_ERROR_YOU_ALREADY_OWN_IT);
 			}
 			break;
 
@@ -334,7 +334,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 			Company *c = Company::Get(_current_company);
 			if (c->location_of_HQ != INVALID_TILE) {
 				/* Don't relocate HQ on the same location. */
-				if (c->location_of_HQ == tile) return_cmd_error(STR_ERROR_ALREADY_BUILT);
+				if (c->location_of_HQ == tile) return CommandCost(STR_ERROR_ALREADY_BUILT);
 				/* We need to persuade a bit harder to remove the old HQ. */
 				_current_company = OWNER_WATER;
 				cost.AddCost(ClearTile_Object(c->location_of_HQ, flags));
@@ -361,7 +361,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 	/* Don't allow building more objects if the company has reached its limit. */
 	Company *c = Company::GetIfValid(_current_company);
 	if (c != nullptr && GB(c->build_object_limit, 16, 16) < build_object_size) {
-		return_cmd_error(STR_ERROR_BUILD_OBJECT_LIMIT_REACHED);
+		return CommandCost(STR_ERROR_BUILD_OBJECT_LIMIT_REACHED);
 	}
 
 	if (flags & DC_EXEC) {
@@ -558,10 +558,10 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 	if (_current_company != OWNER_WATER) {
 		if ((flags & DC_NO_WATER) && IsTileOnWater(tile)) {
 			/* There is water under the object, treat it as water tile. */
-			return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
+			return CommandCost(STR_ERROR_CAN_T_BUILD_ON_WATER);
 		} else if (!(spec->flags & OBJECT_FLAG_AUTOREMOVE) && (flags & DC_AUTO)) {
 			/* No automatic removal by overbuilding stuff. */
-			return_cmd_error(type == OBJECT_HQ ? STR_ERROR_COMPANY_HEADQUARTERS_IN : STR_ERROR_OBJECT_IN_THE_WAY);
+			return CommandCost(type == OBJECT_HQ ? STR_ERROR_COMPANY_HEADQUARTERS_IN : STR_ERROR_OBJECT_IN_THE_WAY);
 		} else if (_game_mode == GM_EDITOR) {
 			/* No further limitations for the editor. */
 		} else if (GetTileOwner(tile) == OWNER_NONE) {
@@ -569,11 +569,11 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 			if (!_cheats.magic_bulldozer.value && (spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0) return CMD_ERROR;
 		} else if (CheckTileOwnership(tile).Failed()) {
 			/* We don't own it!. */
-			return_cmd_error(STR_ERROR_OWNED_BY);
+			return CommandCost(STR_ERROR_OWNED_BY);
 		} else if ((spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0 && (spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0) {
 			/* In the game editor or with cheats we can remove, otherwise we can't. */
 			if (!_cheats.magic_bulldozer.value) {
-				if (type == OBJECT_HQ) return_cmd_error(STR_ERROR_COMPANY_HEADQUARTERS_IN);
+				if (type == OBJECT_HQ) return CommandCost(STR_ERROR_COMPANY_HEADQUARTERS_IN);
 				return CMD_ERROR;
 			}
 

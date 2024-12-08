@@ -505,7 +505,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlag flags)
 				((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) ||
 				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
 		SetDParam(1, indspec->name);
-		return_cmd_error(flags & DC_AUTO ? STR_ERROR_GENERIC_OBJECT_IN_THE_WAY : INVALID_STRING_ID);
+		return CommandCost(flags & DC_AUTO ? STR_ERROR_GENERIC_OBJECT_IN_THE_WAY : INVALID_STRING_ID);
 	}
 
 	if (flags & DC_EXEC) {
@@ -1273,7 +1273,7 @@ static CommandCost CheckNewIndustry_Forest(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) < HighestSnowLine() + 2) {
-			return_cmd_error(STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED);
+			return CommandCost(STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED);
 		}
 	}
 	return CommandCost();
@@ -1313,7 +1313,7 @@ static CommandCost CheckNewIndustry_OilRefinery(TileIndex tile)
 
 	if (CheckScaledDistanceFromEdge(TileAddXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
 
-	return_cmd_error(STR_ERROR_CAN_ONLY_BE_POSITIONED);
+	return CommandCost(STR_ERROR_CAN_ONLY_BE_POSITIONED);
 }
 
 extern bool _ignore_restrictions;
@@ -1330,7 +1330,7 @@ static CommandCost CheckNewIndustry_OilRig(TileIndex tile)
 	if (TileHeight(tile) == 0 &&
 			CheckScaledDistanceFromEdge(TileAddXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
 
-	return_cmd_error(STR_ERROR_CAN_ONLY_BE_POSITIONED);
+	return CommandCost(STR_ERROR_CAN_ONLY_BE_POSITIONED);
 }
 
 /**
@@ -1342,7 +1342,7 @@ static CommandCost CheckNewIndustry_Farm(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) + 2 >= HighestSnowLine()) {
-			return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+			return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 		}
 	}
 	return CommandCost();
@@ -1356,7 +1356,7 @@ static CommandCost CheckNewIndustry_Farm(TileIndex tile)
 static CommandCost CheckNewIndustry_Plantation(TileIndex tile)
 {
 	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
-		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+		return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	}
 	return CommandCost();
 }
@@ -1369,7 +1369,7 @@ static CommandCost CheckNewIndustry_Plantation(TileIndex tile)
 static CommandCost CheckNewIndustry_Water(TileIndex tile)
 {
 	if (GetTropicZone(tile) != TROPICZONE_DESERT) {
-		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT);
+		return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT);
 	}
 	return CommandCost();
 }
@@ -1382,7 +1382,7 @@ static CommandCost CheckNewIndustry_Water(TileIndex tile)
 static CommandCost CheckNewIndustry_Lumbermill(TileIndex tile)
 {
 	if (GetTropicZone(tile) != TROPICZONE_RAINFOREST) {
-		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST);
+		return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST);
 	}
 	return CommandCost();
 }
@@ -1395,7 +1395,7 @@ static CommandCost CheckNewIndustry_Lumbermill(TileIndex tile)
 static CommandCost CheckNewIndustry_BubbleGen(TileIndex tile)
 {
 	if (GetTileZ(tile) > 4) {
-		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS);
+		return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS);
 	}
 	return CommandCost();
 }
@@ -1439,7 +1439,7 @@ static CommandCost FindTownForIndustry(TileIndex tile, IndustryType type, Town *
 	for (const IndustryID &industry : Industry::industries[type]) {
 		if (Industry::Get(industry)->town == *t) {
 			*t = nullptr;
-			return_cmd_error(STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN);
+			return CommandCost(STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN);
 		}
 	}
 
@@ -1479,28 +1479,28 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 		TileIndex cur_tile = TileAddWrap(tile, it.ti.x, it.ti.y);
 
 		if (!IsValidTile(cur_tile)) {
-			return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+			return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 		}
 
 		if (gfx == GFX_WATERTILE_SPECIALCHECK) {
 			if (!IsWaterTile(cur_tile) ||
 					!IsTileFlat(cur_tile)) {
-				return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+				return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 			}
 		} else {
 			CommandCost ret = EnsureNoVehicleOnGround(cur_tile);
 			if (ret.Failed()) return ret;
-			if (IsBridgeAbove(cur_tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+			if (IsBridgeAbove(cur_tile)) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 
 			const IndustryTileSpec *its = GetIndustryTileSpec(gfx);
 
 			/* Perform land/water check if not disabled */
-			if (!HasBit(its->slopes_refused, 5) && ((HasTileWaterClass(cur_tile) && IsTileOnWater(cur_tile)) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+			if (!HasBit(its->slopes_refused, 5) && ((HasTileWaterClass(cur_tile) && IsTileOnWater(cur_tile)) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 
 			if ((ind_behav & (INDUSTRYBEH_ONLY_INTOWN | INDUSTRYBEH_TOWN1200_MORE)) || // Tile must be a house
 					((ind_behav & INDUSTRYBEH_ONLY_NEARTOWN) && IsTileType(cur_tile, MP_HOUSE))) { // Tile is allowed to be a house (and it is a house)
 				if (!IsTileType(cur_tile, MP_HOUSE)) {
-					return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS);
+					return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS);
 				}
 
 				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
@@ -1564,7 +1564,7 @@ static CommandCost CheckIfIndustryTileSlopes(TileIndex tile, const IndustryTileL
 	if (!refused_slope || (_settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape && !_ignore_restrictions)) {
 		return CommandCost();
 	}
-	return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+	return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 }
 
 /**
@@ -1577,11 +1577,11 @@ static CommandCost CheckIfIndustryTileSlopes(TileIndex tile, const IndustryTileL
 static CommandCost CheckIfIndustryIsAllowed(TileIndex tile, IndustryType type, const Town *t)
 {
 	if ((GetIndustrySpec(type)->behaviour & INDUSTRYBEH_TOWN1200_MORE) && t->cache.population < 1200) {
-		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200);
+		return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200);
 	}
 
 	if ((GetIndustrySpec(type)->behaviour & INDUSTRYBEH_ONLY_NEARTOWN) && DistanceMax(t->xy, tile) > 9) {
-		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER);
+		return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER);
 	}
 
 	return CommandCost();
@@ -1702,7 +1702,7 @@ static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, Indus
 			/* Within 14 tiles from another industry is considered close */
 			if (DistanceMax(tile, Industry::Get(industry)->location.tile) > 14) continue;
 
-			return_cmd_error(STR_ERROR_INDUSTRY_TOO_CLOSE);
+			return CommandCost(STR_ERROR_INDUSTRY_TOO_CLOSE);
 		}
 	}
 	return CommandCost();
@@ -2021,10 +2021,10 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 
 	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world &&
 			!_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER, layout)) {
-		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+		return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	}
 
-	if (!Industry::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_INDUSTRIES);
+	if (!Industry::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_INDUSTRIES);
 
 	if (flags & DC_EXEC) {
 		*ip = new Industry(tile);
