@@ -123,6 +123,19 @@ auto MakeParameters(Args &&... args)
 }
 
 /**
+ * Get a parsed string with most special stringcodes replaced by the string parameters.
+ * @param string String ID to format.
+ * @param args The parameters to set.
+ * @return The parsed string.
+ */
+template <typename... Args>
+std::string GetString(StringID string, Args &&... args)
+{
+	auto params = MakeParameters(std::forward<Args &&>(args)...);
+	return GetStringWithArgs(string, params);
+}
+
+/**
  * A searcher for missing glyphs.
  */
 class MissingGlyphSearcher {
