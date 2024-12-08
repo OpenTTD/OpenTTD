@@ -856,7 +856,7 @@ Dimension GetStringBoundingBox(std::string_view str, FontSize start_fontsize)
 }
 
 /**
- * Get bounding box of a string. Uses parameters set by #SetDParam if needed.
+ * Get bounding box of a string.
  * Has the same restrictions as #GetStringBoundingBox(std::string_view str, FontSize start_fontsize).
  * @param strid String to examine.
  * @return Width and height of the bounding box for the string in pixels.

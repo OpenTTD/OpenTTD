@@ -512,13 +512,13 @@ public:
 	}
 
 	/**
-	 * Gets the speed in km-ish/h that can be sent into SetDParam for string processing.
+	 * Gets the speed in km-ish/h that can be sent into string parameters for string processing.
 	 * @return the vehicle's speed
 	 */
 	virtual int GetDisplaySpeed() const { return 0; }
 
 	/**
-	 * Gets the maximum speed in km-ish/h that can be sent into SetDParam for string processing.
+	 * Gets the maximum speed in km-ish/h that can be sent into string parameters for string processing.
 	 * @return the vehicle's maximum speed
 	 */
 	virtual int GetDisplayMaxSpeed() const { return 0; }
@@ -599,19 +599,19 @@ public:
 	virtual Trackdir GetVehicleTrackdir() const { return INVALID_TRACKDIR; }
 
 	/**
-	 * Gets the running cost of a vehicle  that can be sent into SetDParam for string processing.
+	 * Gets the running cost of a vehicle  that can be sent into string parameters for string processing.
 	 * @return the vehicle's running cost
 	 */
 	Money GetDisplayRunningCost() const { return (this->GetRunningCost() >> 8); }
 
 	/**
-	 * Gets the profit vehicle had this year. It can be sent into SetDParam for string processing.
+	 * Gets the profit vehicle had this year. It can be sent into string parameters for string processing.
 	 * @return the vehicle's profit this year
 	 */
 	Money GetDisplayProfitThisYear() const { return (this->profit_this_year >> 8); }
 
 	/**
-	 * Gets the profit vehicle had last year. It can be sent into SetDParam for string processing.
+	 * Gets the profit vehicle had last year. It can be sent into string parameters for string processing.
 	 * @return the vehicle's profit last year
 	 */
 	Money GetDisplayProfitLastYear() const { return (this->profit_last_year >> 8); }
