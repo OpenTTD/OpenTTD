@@ -21,6 +21,7 @@
 #include "company_base.h"
 #include "station_type.h"
 #include "newgrf_airport.h"
+#include "newgrf_badge.h"
 #include "newgrf_callbacks.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
@@ -422,7 +423,8 @@ public:
 		this->DrawWidgets();
 
 		Rect r = this->GetWidget<NWidgetBase>(WID_AP_ACCEPTANCE)->GetCurrentRect();
-		int top = r.top;
+		const int bottom = r.bottom;
+		r.bottom = INT16_MAX; // Allow overflow.
 
 		if (_selected_airport_index != -1) {
 			const AirportSpec *as = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index);
@@ -432,27 +434,28 @@ public:
 			if (_settings_game.economy.station_noise_level) {
 				/* show the noise of the selected airport */
 				SetDParam(0, as->noise_level);
-				DrawString(r.left, r.right, top, STR_STATION_BUILD_NOISE);
-				top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+				DrawString(r, STR_STATION_BUILD_NOISE);
+				r.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 			}
 
 			if (_settings_game.economy.infrastructure_maintenance) {
 				Money monthly = _price[PR_INFRASTRUCTURE_AIRPORT] * as->maintenance_cost >> 3;
 				SetDParam(0, monthly * 12);
-				DrawString(r.left, r.right, top, TimerGameEconomy::UsingWallclockUnits() ? STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD : STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR);
-				top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+				DrawString(r, TimerGameEconomy::UsingWallclockUnits() ? STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD : STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR);
+				r.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 			}
 
 			/* strings such as 'Size' and 'Coverage Area' */
-			top = DrawStationCoverageAreaText(r.left, r.right, top, SCT_ALL, rad, false) + WidgetDimensions::scaled.vsep_normal;
-			top = DrawStationCoverageAreaText(r.left, r.right, top, SCT_ALL, rad, true);
+			r.top = DrawBadgeNameList(r, as->badges, GSF_AIRPORTS) + WidgetDimensions::scaled.vsep_normal;
+			r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, false) + WidgetDimensions::scaled.vsep_normal;
+			r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, true);
 		}
 
 		/* Resize background if the window is too small.
 		 * Never make the window smaller to avoid oscillating if the size change affects the acceptance.
 		 * (This is the case, if making the window bigger moves the mouse into the window.) */
-		if (top > r.bottom) {
-			ResizeWindow(this, 0, top - r.bottom, false);
+		if (r.top > bottom) {
+			ResizeWindow(this, 0, r.top - bottom, false);
 		}
 	}
 
