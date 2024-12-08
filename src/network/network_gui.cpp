@@ -1823,40 +1823,39 @@ public:
 				break;
 
 			case WID_CL_MATRIX: {
-				StringID text = STR_NULL;
 				QueryCallbackProc *callback = nullptr;
 
+				EncodedString text;
 				switch (index) {
 					case DD_CLIENT_ADMIN_KICK:
 						_admin_client_id = this->dd_client_id;
-						text = STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK;
 						callback = AdminClientKickCallback;
-						SetDParamStr(0, NetworkClientInfo::GetByClientID(_admin_client_id)->client_name);
+						text = GetEncodedString(STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK, NetworkClientInfo::GetByClientID(_admin_client_id)->client_name);
 						break;
 
 					case DD_CLIENT_ADMIN_BAN:
 						_admin_client_id = this->dd_client_id;
-						text = STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN;
 						callback = AdminClientBanCallback;
-						SetDParamStr(0, NetworkClientInfo::GetByClientID(_admin_client_id)->client_name);
+						text = GetEncodedString(STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN, NetworkClientInfo::GetByClientID(_admin_client_id)->client_name);
 						break;
 
 					case DD_COMPANY_ADMIN_RESET:
 						_admin_company_id = this->dd_company_id;
-						text = STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET;
 						callback = AdminCompanyResetCallback;
-						SetDParam(0, _admin_company_id);
+						text = GetEncodedString(STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET, _admin_company_id);
 						break;
 
 					default:
 						NOT_REACHED();
 				}
 
-				assert(text != STR_NULL);
 				assert(callback != nullptr);
 
 				/* Always ask confirmation for all admin actions. */
-				ShowQuery(STR_NETWORK_CLIENT_LIST_ASK_CAPTION, text, this, callback);
+				ShowQuery(
+					GetEncodedString(STR_NETWORK_CLIENT_LIST_ASK_CAPTION),
+					std::move(text),
+					this, callback);
 
 				break;
 			}

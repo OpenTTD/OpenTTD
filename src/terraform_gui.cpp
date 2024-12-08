@@ -638,7 +638,10 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				break;
 
 			case WID_ETT_RESET_LANDSCAPE: // Reset landscape
-				ShowQuery(STR_QUERY_RESET_LANDSCAPE_CAPTION, STR_RESET_LANDSCAPE_CONFIRMATION_TEXT, nullptr, ResetLandscapeConfirmationCallback);
+				ShowQuery(
+					GetEncodedString(STR_QUERY_RESET_LANDSCAPE_CAPTION),
+					GetEncodedString(STR_RESET_LANDSCAPE_CONFIRMATION_TEXT),
+					nullptr, ResetLandscapeConfirmationCallback);
 				break;
 
 			default: NOT_REACHED();

@@ -1097,8 +1097,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				if (!this->editable) break;
 				if (this->execute) {
 					ShowQuery(
-						STR_NEWGRF_POPUP_CAUTION_CAPTION,
-						STR_NEWGRF_CONFIRMATION_TEXT,
+						GetEncodedString(STR_NEWGRF_POPUP_CAUTION_CAPTION),
+						GetEncodedString(STR_NEWGRF_CONFIRMATION_TEXT),
 						this,
 						NewGRFConfirmationCallback
 					);
