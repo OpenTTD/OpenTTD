@@ -84,7 +84,7 @@ class Kdtree {
 		} else if (count == 1) {
 			return this->AddNode(*begin);
 		} else if (count > 1) {
-			CoordT split_coord = SelectSplitCoord(begin, end, level);
+			CoordT split_coord = this->SelectSplitCoord(begin, end, level);
 			It split = std::partition(begin, end, [&](T v) { return TxyFunc()(v, level % 2) < split_coord; });
 			size_t newidx = this->AddNode(*split);
 			this->nodes[newidx].left = this->BuildSubtree(begin, split, level + 1);
@@ -247,7 +247,7 @@ class Kdtree {
 		/* Coordinate of element splitting at this node */
 		CoordT c = TxyFunc()(n.element, dim);
 		/* This node's distance to target */
-		DistT thisdist = ManhattanDistance(n.element, xy[0], xy[1]);
+		DistT thisdist = this->ManhattanDistance(n.element, xy[0], xy[1]);
 		/* Assume this node is the best choice for now */
 		node_distance best = std::make_pair(n.element, thisdist);
 
@@ -299,7 +299,7 @@ class Kdtree {
 	{
 		if (node_idx == INVALID_NODE) return 0;
 		const node &n = this->nodes[node_idx];
-		return CountValue(element, n.left) + CountValue(element, n.right) + ((n.element == element) ? 1 : 0);
+		return this->CountValue(element, n.left) + this->CountValue(element, n.right) + ((n.element == element) ? 1 : 0);
 	}
 
 	void IncrementUnbalanced(size_t amount = 1)
@@ -331,12 +331,12 @@ class Kdtree {
 
 		if (level % 2 == 0) {
 			// split in dimension 0 = x
-			CheckInvariant(n.left,  level + 1, min_x, cx, min_y, max_y);
-			CheckInvariant(n.right, level + 1, cx, max_x, min_y, max_y);
+			this->CheckInvariant(n.left,  level + 1, min_x, cx, min_y, max_y);
+			this->CheckInvariant(n.right, level + 1, cx, max_x, min_y, max_y);
 		} else {
 			// split in dimension 1 = y
-			CheckInvariant(n.left,  level + 1, min_x, max_x, min_y, cy);
-			CheckInvariant(n.right, level + 1, min_x, max_x, cy, max_y);
+			this->CheckInvariant(n.left,  level + 1, min_x, max_x, min_y, cy);
+			this->CheckInvariant(n.right, level + 1, min_x, max_x, cy, max_y);
 		}
 	}
 
@@ -344,7 +344,7 @@ class Kdtree {
 	void CheckInvariant() const
 	{
 #ifdef KDTREE_DEBUG
-		CheckInvariant(this->root, 0, std::numeric_limits<CoordT>::min(), std::numeric_limits<CoordT>::max(), std::numeric_limits<CoordT>::min(), std::numeric_limits<CoordT>::max());
+		this->CheckInvariant(this->root, 0, std::numeric_limits<CoordT>::min(), std::numeric_limits<CoordT>::max(), std::numeric_limits<CoordT>::min(), std::numeric_limits<CoordT>::max());
 #endif
 	}
 
@@ -368,7 +368,7 @@ public:
 		this->nodes.reserve(end - begin);
 
 		this->root = this->BuildSubtree(begin, end, 0);
-		CheckInvariant();
+		this->CheckInvariant();
 	}
 
 	/**
@@ -404,7 +404,7 @@ public:
 				this->InsertRecursive(element, this->root, 0);
 				this->IncrementUnbalanced();
 			}
-			CheckInvariant();
+			this->CheckInvariant();
 		}
 	}
 
@@ -423,7 +423,7 @@ public:
 			this->root = this->RemoveRecursive(element, this->root, 0);
 			this->IncrementUnbalanced();
 		}
-		CheckInvariant();
+		this->CheckInvariant();
 	}
 
 	/** Get number of elements stored in tree */
