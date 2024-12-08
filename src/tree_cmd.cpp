@@ -506,7 +506,7 @@ CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 	}
 
 	if (cost.GetCost() == 0) {
-		return_cmd_error(msg);
+		return CommandCost(msg);
 	} else {
 		return cost;
 	}

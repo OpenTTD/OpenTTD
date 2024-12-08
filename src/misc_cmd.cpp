@@ -42,7 +42,7 @@ CommandCost CmdIncreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 	Money max_loan = c->GetMaxLoan();
 	if (c->current_loan >= max_loan) {
 		SetDParam(0, max_loan);
-		return_cmd_error(STR_ERROR_MAXIMUM_PERMITTED_LOAN);
+		return CommandCost(STR_ERROR_MAXIMUM_PERMITTED_LOAN);
 	}
 
 	Money loan;
@@ -87,7 +87,7 @@ CommandCost CmdDecreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 {
 	Company *c = Company::Get(_current_company);
 
-	if (c->current_loan == 0) return_cmd_error(STR_ERROR_LOAN_ALREADY_REPAYED);
+	if (c->current_loan == 0) return CommandCost(STR_ERROR_LOAN_ALREADY_REPAYED);
 
 	Money loan;
 	switch (cmd) {
@@ -107,7 +107,7 @@ CommandCost CmdDecreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 
 	if (GetAvailableMoneyForCommand() < loan) {
 		SetDParam(0, loan);
-		return_cmd_error(STR_ERROR_CURRENCY_REQUIRED);
+		return CommandCost(STR_ERROR_CURRENCY_REQUIRED);
 	}
 
 	if (flags & DC_EXEC) {

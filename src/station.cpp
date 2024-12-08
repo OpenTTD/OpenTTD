@@ -588,7 +588,7 @@ CommandCost StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 		int h = new_rect.Height();
 		if (mode != ADD_FORCE && (w > _settings_game.station.station_spread || h > _settings_game.station.station_spread)) {
 			assert(mode != ADD_TRY);
-			return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);
+			return CommandCost(STR_ERROR_STATION_TOO_SPREAD_OUT);
 		}
 
 		/* spread-out ok, return true */

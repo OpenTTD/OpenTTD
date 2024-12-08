@@ -368,7 +368,7 @@ CommandCost CheckOwnership(Owner owner, TileIndex tile)
 	if (owner == _current_company) return CommandCost();
 
 	SetDParamsForOwnedBy(owner, tile);
-	return_cmd_error(STR_ERROR_OWNED_BY);
+	return CommandCost(STR_ERROR_OWNED_BY);
 }
 
 /**
@@ -388,7 +388,7 @@ CommandCost CheckTileOwnership(TileIndex tile)
 
 	/* no need to get the name of the owner unless we're the local company (saves some time) */
 	if (IsLocalCompany()) SetDParamsForOwnedBy(owner, tile);
-	return_cmd_error(STR_ERROR_OWNED_BY);
+	return CommandCost(STR_ERROR_OWNED_BY);
 }
 
 /**
@@ -1172,7 +1172,7 @@ CommandCost CmdRenameCompany(DoCommandFlag flags, const std::string &text)
 
 	if (!reset) {
 		if (Utf8StringLength(text) >= MAX_LENGTH_COMPANY_NAME_CHARS) return CMD_ERROR;
-		if (!IsUniqueCompanyName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
+		if (!IsUniqueCompanyName(text)) return CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
@@ -1215,7 +1215,7 @@ CommandCost CmdRenamePresident(DoCommandFlag flags, const std::string &text)
 
 	if (!reset) {
 		if (Utf8StringLength(text) >= MAX_LENGTH_PRESIDENT_NAME_CHARS) return CMD_ERROR;
-		if (!IsUniquePresidentName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
+		if (!IsUniquePresidentName(text)) return CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
@@ -1301,7 +1301,7 @@ CommandCost CmdGiveMoney(DoCommandFlag flags, Money money, CompanyID dest_compan
 	CommandCost amount(EXPENSES_OTHER, std::min<Money>(money, 20000000LL));
 
 	/* You can only transfer funds that is in excess of your loan */
-	if (c->money - c->current_loan < amount.GetCost() || amount.GetCost() < 0) return_cmd_error(STR_ERROR_INSUFFICIENT_FUNDS);
+	if (c->money - c->current_loan < amount.GetCost() || amount.GetCost() < 0) return CommandCost(STR_ERROR_INSUFFICIENT_FUNDS);
 	if (!Company::IsValidID(dest_company)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
