@@ -772,7 +772,17 @@ static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void *data)
 {
 	const OvertakeData *od = (OvertakeData*)data;
 
-	return (v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v) ? v : nullptr;
+	/**
+	* first ensure that the vehicle we are looking at is a road vehicle
+	* also ensure that the vehicle we are looking at is neither of the vehicles stored in OvertakeData
+	* 
+	* A block can only happen if more than two vehicles are involved, so we can skip past this if there are only two
+	*/
+	if ((v->type == VEH_ROAD && v->First() == v) && (v != od->u && v != od->v)) {
+		/* ensure that third vehicle overtaking does not get stuck in place by allowing it to overtake */
+		return (((RoadVehicle *)v)->overtaking && v->cur_speed == 0) ? v : nullptr;
+	}
+	return nullptr;
 }
 
 /**
