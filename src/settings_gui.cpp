@@ -175,6 +175,65 @@ static StringID VolumeMarkFunc(int, int mark, int value)
 	return STR_GAME_OPTIONS_VOLUME_MARK;
 }
 
+static const uint FONT_SLIDER_MARK_COUNT = 15; ///< Labeled at every other number. 8 Labeled marks and 7 unlabeled ones.
+static const uint FONT_HALF_GAP = (FONT_SLIDER_MARK_COUNT - 1) / 2;
+/* FONT_SLIDER_MARK_COUNT needs to be an odd number: */
+static_assert(FONT_SLIDER_MARK_COUNT % 2 == 1);
+
+
+/**
+ * Callback to get the mark string for the font size sliders. Labels every other number starting from the min_*_font_size
+ *
+ * @param mark_count Ignored here but the number of marks on the slider.
+ * @param mark The mark number.
+ * @param value The value of the slider at that mark.
+ * @return A string ID for the string this mark uses. Either raw_int (labelled) or empty string.
+ */
+static StringID FontSizeMarkFunction([[maybe_unused]] int mark_count, int mark, int value)
+{
+	if ((mark & 1) == 1) {
+		return STR_NULL;
+	}
+
+	SetDParam(0, value);
+
+	return STR_JUST_INT;
+}
+
+/**
+ * Calculates the starting mark value for a font size slider. Taking into account the allowed minimum and the need to have
+ * FONT_SLIDER_MARK_COUNT marks. (The max allowed font size value is currently the same for all fonts)
+ *
+ * @param current_size The current size of the font in question.
+ * @param minimum_size The allowed minimum value for this font size.
+ * @return An int value that serves as the minimum value that will be on a slider.
+ */
+static int CalculateFontSliderMin(int current_size, int minimum_size)
+{
+	/* This works fine unless the scale is towards the high end of the allowable range: */
+	int first_pass_minimum = std::max(current_size - static_cast<int>(FONT_HALF_GAP), minimum_size);
+
+	/* Adjust for the cases where marks are missing because the top end of the slider has hit the max value: */
+	return std::min(first_pass_minimum, static_cast<int>(DEFAULT_FONT_MAX_HEIGHT - (FONT_SLIDER_MARK_COUNT - 1)));
+}
+
+/**
+ * Calculates the ending mark value for a font size slider. Taking into account the allowed maximum and the need to have
+ * FONT_SLIDER_MARK_COUNT marks. (The max allowed font size value is currently the same for all fonts)
+ *
+ * @param current_size The current size of the font in question.
+ * @param minimum_size The allowed minimum value for this font size.
+ * @return An int value that serves as the maximum value that will be on a slider.
+ */
+static int CalculateFontSliderMax(int current_size, int minimum_size)
+{
+	/* This works fine unless the scale is towards the low end of the allowable range: */
+	int first_pass_maximum = std::min(current_size + static_cast<int>(FONT_HALF_GAP), static_cast<int>(DEFAULT_FONT_MAX_HEIGHT));
+
+	/* Adjust for the cases where marks are missing because the bottom end of the slider has hit the minimum value: */
+	return std::max(first_pass_maximum, minimum_size + static_cast<int>(FONT_SLIDER_MARK_COUNT - 1));
+}
+
 static constexpr NWidgetPart _nested_social_plugins_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_FRAME, COLOUR_GREY, WID_GO_SOCIAL_PLUGIN_TITLE), SetDataTip(STR_JUST_STRING2, STR_NULL),
@@ -358,6 +417,21 @@ struct GameOptionsWindow : Window {
 	GameSettings *opt;
 	bool reload;
 	int gui_scale;
+
+	int min_small_font_size;
+	int max_small_font_size;
+	int min_medium_font_size;
+	int max_medium_font_size;
+	int min_large_font_size;
+	int max_large_font_size;
+	int min_monospaced_font_size;
+	int max_monospaced_font_size;
+
+	int small_font_size;
+	int medium_font_size;
+	int large_font_size;
+	int monospaced_font_size;
+
 	static inline WidgetID active_tab = WID_GO_TAB_GENERAL;
 
 	GameOptionsWindow(WindowDesc &desc) : Window(desc)
@@ -365,6 +439,24 @@ struct GameOptionsWindow : Window {
 		this->opt = &GetGameSettings();
 		this->reload = false;
 		this->gui_scale = _gui_scale;
+
+		/* Retrieve the current fonts settings. This requires some bounds checking as fonts sizes could be zero here. */
+		this->small_font_size      = std::clamp(static_cast<int>(_fcsettings.small.size), FontCache::GetDefaultFontHeight(FS_SMALL), DEFAULT_FONT_MAX_HEIGHT);
+		this->medium_font_size     = std::clamp(static_cast<int>(_fcsettings.medium.size), FontCache::GetDefaultFontHeight(FS_NORMAL), DEFAULT_FONT_MAX_HEIGHT);
+		this->large_font_size      = std::clamp(static_cast<int>(_fcsettings.large.size), FontCache::GetDefaultFontHeight(FS_LARGE), DEFAULT_FONT_MAX_HEIGHT);
+		this->monospaced_font_size = std::clamp(static_cast<int>(_fcsettings.mono.size), FontCache::GetDefaultFontHeight(FS_MONO), DEFAULT_FONT_MAX_HEIGHT);
+
+		this->min_small_font_size = CalculateFontSliderMin(this->small_font_size, FontCache::GetDefaultFontHeight(FS_SMALL));
+		this->max_small_font_size = CalculateFontSliderMax(this->small_font_size, FontCache::GetDefaultFontHeight(FS_SMALL));
+
+		this->min_medium_font_size = CalculateFontSliderMin(this->medium_font_size, FontCache::GetDefaultFontHeight(FS_NORMAL));
+		this->max_medium_font_size = CalculateFontSliderMax(this->medium_font_size, FontCache::GetDefaultFontHeight(FS_NORMAL));
+
+		this->min_large_font_size = CalculateFontSliderMin(this->large_font_size, FontCache::GetDefaultFontHeight(FS_LARGE));
+		this->max_large_font_size = CalculateFontSliderMax(this->large_font_size, FontCache::GetDefaultFontHeight(FS_LARGE));
+
+		this->min_monospaced_font_size = CalculateFontSliderMin(this->monospaced_font_size, FontCache::GetDefaultFontHeight(FS_MONO));
+		this->max_monospaced_font_size = CalculateFontSliderMax(this->monospaced_font_size, FontCache::GetDefaultFontHeight(FS_MONO));
 
 		AddCustomRefreshRates();
 
@@ -542,6 +634,22 @@ struct GameOptionsWindow : Window {
 				plugin->SetStringParameters(widget);
 				break;
 			}
+
+			case WID_GO_FONT_SMALL_FONT_LABEL:
+				SetDParamStr(0, FontCache::Get(FS_SMALL)->GetFontName());
+				break;
+
+			case WID_GO_FONT_MEDIUM_FONT_LABEL:
+				SetDParamStr(0, FontCache::Get(FS_NORMAL)->GetFontName());
+				break;
+
+			case WID_GO_FONT_LARGE_FONT_LABEL:
+				SetDParamStr(0, FontCache::Get(FS_LARGE)->GetFontName());
+				break;
+
+			case WID_GO_FONT_MONOSPACED_FONT_LABEL:
+				SetDParamStr(0, FontCache::Get(FS_MONO)->GetFontName());
+				break;
 		}
 	}
 
@@ -572,6 +680,22 @@ struct GameOptionsWindow : Window {
 				DrawStringMultiLine(r, STR_GAME_OPTIONS_VIDEO_DRIVER_INFO);
 				break;
 
+			case WID_GO_FONT_SMALL_FONT_SIZE_SLIDER:
+				DrawSliderWidget(r, this->min_small_font_size, this->max_small_font_size, FONT_SLIDER_MARK_COUNT, this->small_font_size, FontSizeMarkFunction);
+				break;
+
+			case WID_GO_FONT_MEDIUM_FONT_SIZE_SLIDER:
+				DrawSliderWidget(r, this->min_medium_font_size, this->max_medium_font_size, FONT_SLIDER_MARK_COUNT, this->medium_font_size, FontSizeMarkFunction);
+				break;
+
+			case WID_GO_FONT_LARGE_FONT_SIZE_SLIDER:
+				DrawSliderWidget(r, this->min_large_font_size, this->max_large_font_size, FONT_SLIDER_MARK_COUNT, this->large_font_size, FontSizeMarkFunction);
+				break;
+
+			case WID_GO_FONT_MONOSPACED_FONT_SIZE_SLIDER:
+				DrawSliderWidget(r, this->min_monospaced_font_size, this->max_monospaced_font_size, FONT_SLIDER_MARK_COUNT, this->monospaced_font_size, FontSizeMarkFunction);
+				break;
+
 			case WID_GO_BASE_SFX_VOLUME:
 				DrawSliderWidget(r, 0, INT8_MAX, VOLUME_NMARKS, _settings_client.music.effect_vol, VolumeMarkFunc);
 				break;
@@ -585,6 +709,9 @@ struct GameOptionsWindow : Window {
 	void SetTab(WidgetID widget)
 	{
 		this->SetWidgetsLoweredState(false, WID_GO_TAB_GENERAL, WID_GO_TAB_GRAPHICS, WID_GO_TAB_SOUND, WID_GO_TAB_SOCIAL);
+#ifdef HAS_TRUETYPE_FONT
+		this->SetWidgetsLoweredState(false, WID_GO_TAB_FONTS);
+#endif
 		this->LowerWidget(widget);
 		GameOptionsWindow::active_tab = widget;
 
@@ -592,8 +719,14 @@ struct GameOptionsWindow : Window {
 		switch (widget) {
 			case WID_GO_TAB_GENERAL: pane = 0; break;
 			case WID_GO_TAB_GRAPHICS: pane = 1; break;
+#ifdef HAS_TRUETYPE_FONT
+			case WID_GO_TAB_FONTS: pane = 2; break;
+			case WID_GO_TAB_SOUND: pane = 3; break;
+			case WID_GO_TAB_SOCIAL: pane = 4; break;
+#else
 			case WID_GO_TAB_SOUND: pane = 2; break;
 			case WID_GO_TAB_SOCIAL: pane = 3; break;
+#endif
 			default: NOT_REACHED();
 		}
 
@@ -687,6 +820,9 @@ struct GameOptionsWindow : Window {
 		switch (widget) {
 			case WID_GO_TAB_GENERAL:
 			case WID_GO_TAB_GRAPHICS:
+#ifdef HAS_TRUETYPE_FONT
+			case WID_GO_TAB_FONTS:
+#endif
 			case WID_GO_TAB_SOUND:
 			case WID_GO_TAB_SOCIAL:
 				this->SetTab(widget);
@@ -760,32 +896,34 @@ struct GameOptionsWindow : Window {
 				break;
 			}
 
-#ifdef HAS_TRUETYPE_FONT
-			case WID_GO_GUI_FONT_SPRITE:
+			case WID_GO_FONT_SPRITE:
 				_fcsettings.prefer_sprite = !_fcsettings.prefer_sprite;
 
-				this->SetWidgetLoweredState(WID_GO_GUI_FONT_SPRITE, _fcsettings.prefer_sprite);
-				this->SetWidgetDisabledState(WID_GO_GUI_FONT_AA, _fcsettings.prefer_sprite);
+				this->SetWidgetLoweredState(WID_GO_FONT_SPRITE, _fcsettings.prefer_sprite);
+				this->SetWidgetDisabledState(WID_GO_FONT_AA, _fcsettings.prefer_sprite);
+				this->SetWidgetDisabledState(WID_GO_FONT_SMALL_FONT_SIZE_SLIDER, _fcsettings.prefer_sprite && IsDefaultFont(_fcsettings.small));
+				this->SetWidgetDisabledState(WID_GO_FONT_MEDIUM_FONT_SIZE_SLIDER, _fcsettings.prefer_sprite && IsDefaultFont(_fcsettings.medium));
+				this->SetWidgetDisabledState(WID_GO_FONT_LARGE_FONT_SIZE_SLIDER, _fcsettings.prefer_sprite && IsDefaultFont(_fcsettings.large));
+				this->SetWidgetDisabledState(WID_GO_FONT_MONOSPACED_FONT_SIZE_SLIDER, _fcsettings.prefer_sprite && IsDefaultFont(_fcsettings.mono));
 				this->SetDirty();
 
-				InitFontCache(false);
-				InitFontCache(true);
 				ClearFontCache();
+				InitFontCache();
+
 				CheckForMissingGlyphs();
 				SetupWidgetDimensions();
 				UpdateAllVirtCoords();
 				ReInitAllWindows(true);
 				break;
 
-			case WID_GO_GUI_FONT_AA:
+			case WID_GO_FONT_AA:
 				_fcsettings.global_aa = !_fcsettings.global_aa;
 
-				this->SetWidgetLoweredState(WID_GO_GUI_FONT_AA, _fcsettings.global_aa);
+				this->SetWidgetLoweredState(WID_GO_FONT_AA, _fcsettings.global_aa);
 				MarkWholeScreenDirty();
 
 				ClearFontCache();
 				break;
-#endif /* HAS_TRUETYPE_FONT */
 
 			case WID_GO_GUI_SCALE:
 				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, _ctrl_pressed ? 0 : SCALE_NMARKS, this->gui_scale)) {
@@ -819,6 +957,35 @@ struct GameOptionsWindow : Window {
 				if (_game_mode == GM_MENU) this->reload = true;
 				break;
 			}
+
+
+			case WID_GO_FONT_SMALL_FONT_SIZE_SLIDER:
+				ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, this->min_small_font_size, this->max_small_font_size, FONT_SLIDER_MARK_COUNT, this->small_font_size);
+				this->SetWidgetDirty(widget);
+
+				if (click_count > 0) this->mouse_capture_widget = widget;
+				break;
+
+			case WID_GO_FONT_MEDIUM_FONT_SIZE_SLIDER:
+				ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, this->min_medium_font_size, this->max_medium_font_size, FONT_SLIDER_MARK_COUNT, this->medium_font_size);
+				this->SetWidgetDirty(widget);
+
+				if (click_count > 0) this->mouse_capture_widget = widget;
+				break;
+
+			case WID_GO_FONT_LARGE_FONT_SIZE_SLIDER:
+				ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, this->min_large_font_size, this->max_large_font_size, FONT_SLIDER_MARK_COUNT, this->large_font_size);
+				this->SetWidgetDirty(widget);
+
+				if (click_count > 0) this->mouse_capture_widget = widget;
+				break;
+
+			case WID_GO_FONT_MONOSPACED_FONT_SIZE_SLIDER:
+				ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, this->min_monospaced_font_size, this->max_monospaced_font_size, FONT_SLIDER_MARK_COUNT, this->monospaced_font_size);
+				this->SetWidgetDirty(widget);
+
+				if (click_count > 0) this->mouse_capture_widget = widget;
+				break;
 
 			case WID_GO_BASE_SFX_VOLUME:
 			case WID_GO_BASE_MUSIC_VOLUME: {
@@ -891,14 +1058,30 @@ struct GameOptionsWindow : Window {
 
 	void OnMouseLoop() override
 	{
-		if (_left_button_down || this->gui_scale == _gui_scale) return;
+		/* Nothing will have changed if the mouse button isn't down, so bail out. */
+		if (_left_button_down) return;
 
-		_gui_scale_cfg = this->gui_scale;
+		if (this->gui_scale != _gui_scale) {
+			_gui_scale_cfg = this->gui_scale;
 
-		if (AdjustGUIZoom(false)) {
-			ReInitAllWindows(true);
-			this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, false);
-			this->SetDirty();
+			if (AdjustGUIZoom(false)) {
+				ReInitAllWindows(true);
+				this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, false);
+				this->SetDirty();
+			}
+		}
+
+		if (static_cast<uint>(this->small_font_size) != _fcsettings.small.size) {
+			ResizeFont(FS_SMALL, this->small_font_size);
+		}
+		if (static_cast<uint>(this->medium_font_size) != _fcsettings.medium.size) {
+			ResizeFont(FS_NORMAL, static_cast<uint>(this->medium_font_size));
+		}
+		if (static_cast<uint>(this->large_font_size) != _fcsettings.large.size) {
+			ResizeFont(FS_LARGE, static_cast<uint>(this->large_font_size));
+		}
+		if (static_cast<uint>(this->monospaced_font_size) != _fcsettings.mono.size) {
+			ResizeFont(FS_MONO, static_cast<uint>(this->monospaced_font_size));
 		}
 	}
 
@@ -984,9 +1167,14 @@ struct GameOptionsWindow : Window {
 		this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, _gui_scale_cfg == -1);
 		this->SetWidgetLoweredState(WID_GO_GUI_SCALE_BEVEL_BUTTON, _settings_client.gui.scale_bevels);
 #ifdef HAS_TRUETYPE_FONT
-		this->SetWidgetLoweredState(WID_GO_GUI_FONT_SPRITE, _fcsettings.prefer_sprite);
-		this->SetWidgetLoweredState(WID_GO_GUI_FONT_AA, _fcsettings.global_aa);
-		this->SetWidgetDisabledState(WID_GO_GUI_FONT_AA, _fcsettings.prefer_sprite);
+		this->SetWidgetLoweredState(WID_GO_FONT_SPRITE, _fcsettings.prefer_sprite);
+		this->SetWidgetLoweredState(WID_GO_FONT_AA, _fcsettings.global_aa);
+		this->SetWidgetDisabledState(WID_GO_FONT_AA, _fcsettings.prefer_sprite);
+
+		this->SetWidgetDisabledState(WID_GO_FONT_SMALL_FONT_SIZE_SLIDER, _fcsettings.prefer_sprite && IsDefaultFont(_fcsettings.small));
+		this->SetWidgetDisabledState(WID_GO_FONT_MEDIUM_FONT_SIZE_SLIDER, _fcsettings.prefer_sprite && IsDefaultFont(_fcsettings.medium));
+		this->SetWidgetDisabledState(WID_GO_FONT_LARGE_FONT_SIZE_SLIDER, _fcsettings.prefer_sprite && IsDefaultFont(_fcsettings.large));
+		this->SetWidgetDisabledState(WID_GO_FONT_MONOSPACED_FONT_SIZE_SLIDER, _fcsettings.prefer_sprite && IsDefaultFont(_fcsettings.mono));
 #endif /* HAS_TRUETYPE_FONT */
 
 		this->SetWidgetDisabledState(WID_GO_BASE_GRF_DROPDOWN, _game_mode != GM_MENU);
@@ -1016,6 +1204,9 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(WidgetDimensions::unscaled.sparse),
 			NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GO_TAB_GENERAL),  SetMinimalTextLines(2, 0), SetDataTip(STR_GAME_OPTIONS_TAB_GENERAL, STR_GAME_OPTIONS_TAB_GENERAL_TT), SetFill(1, 0),
 			NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GO_TAB_GRAPHICS), SetMinimalTextLines(2, 0), SetDataTip(STR_GAME_OPTIONS_TAB_GRAPHICS, STR_GAME_OPTIONS_TAB_GRAPHICS_TT), SetFill(1, 0),
+#ifdef HAS_TRUETYPE_FONT
+			NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GO_TAB_FONTS),    SetMinimalTextLines(2, 0), SetDataTip(STR_GAME_OPTIONS_TAB_FONTS, STR_GAME_OPTIONS_TAB_FONTS_TT), SetFill(1, 0),
+#endif
 			NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GO_TAB_SOUND),    SetMinimalTextLines(2, 0), SetDataTip(STR_GAME_OPTIONS_TAB_SOUND, STR_GAME_OPTIONS_TAB_SOUND_TT), SetFill(1, 0),
 			NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GO_TAB_SOCIAL),   SetMinimalTextLines(2, 0), SetDataTip(STR_GAME_OPTIONS_TAB_SOCIAL, STR_GAME_OPTIONS_TAB_SOCIAL_TT), SetFill(1, 0),
 		EndContainer(),
@@ -1049,6 +1240,7 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
+			/* End general tab */
 
 			/* Graphics tab */
 			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.sparse), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
@@ -1063,16 +1255,6 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 							NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_GUI_SCALE_BEVELS, STR_NULL),
 							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_GUI_SCALE_BEVEL_BUTTON), SetAspect(WidgetDimensions::ASPECT_SETTINGS_BUTTON), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP),
 						EndContainer(),
-#ifdef HAS_TRUETYPE_FONT
-						NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
-							NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_GUI_FONT_SPRITE, STR_NULL),
-							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_GUI_FONT_SPRITE), SetAspect(WidgetDimensions::ASPECT_SETTINGS_BUTTON), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP),
-						EndContainer(),
-						NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
-							NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_GUI_FONT_AA, STR_NULL),
-							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_GUI_FONT_AA), SetAspect(WidgetDimensions::ASPECT_SETTINGS_BUTTON), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP),
-						EndContainer(),
-#endif /* HAS_TRUETYPE_FONT */
 					EndContainer(),
 				EndContainer(),
 
@@ -1125,6 +1307,76 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
+			/* End graphics tab */
+
+#ifdef HAS_TRUETYPE_FONT
+			/* Fonts tab */
+			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.sparse), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
+				/* Global Font Options: */
+				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_GUI_FONT_SPRITE, STR_NULL),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_FONT_SPRITE), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP),
+				EndContainer(),
+				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_GUI_FONT_AA, STR_NULL),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_FONT_AA), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP),
+				EndContainer(),
+
+				/* Small font: */
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_SMALL_FONT_FRAME, STR_NULL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+						NWidget(WWT_LABEL, COLOUR_GREY, WID_GO_FONT_SMALL_FONT_LABEL), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_SMALL_FONT_TOOLTIP),
+								SetFill(1, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetMinimalTextLines(1, 6, FS_SMALL), SetAlignment(SA_CENTER),
+					EndContainer(),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+						NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_TEXT_FONT_SIZE), SetMinimalSize(0, 12), SetDataTip(STR_GAME_OPTIONS_FONT_SIZE, STR_NULL),
+						NWidget(WWT_EMPTY, COLOUR_GREY, WID_GO_FONT_SMALL_FONT_SIZE_SLIDER), SetMinimalTextLines(1, 12 + WidgetDimensions::unscaled.vsep_normal, FS_NORMAL),
+								SetMinimalSize(67, 0), SetFill(1, 0), SetResize(1, 0), SetDataTip(0x0, STR_GAME_OPTIONS_SMALL_FONT_SIZE_SLIDER_TOOLTIP),
+					EndContainer(),
+				EndContainer(),
+
+				/* Medium font: */
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_MEDIUM_FONT_FRAME, STR_NULL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+						NWidget(WWT_LABEL, COLOUR_GREY, WID_GO_FONT_MEDIUM_FONT_LABEL), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_MEDIUM_FONT_TOOLTIP),
+								SetFill(1, 0), SetTextStyle(TC_BLACK, FS_NORMAL), SetMinimalTextLines(1, 6, FS_NORMAL), SetAlignment(SA_CENTER),
+					EndContainer(),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+						NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_TEXT_FONT_SIZE), SetMinimalSize(0, 12), SetDataTip(STR_GAME_OPTIONS_FONT_SIZE, STR_NULL),
+						NWidget(WWT_EMPTY, COLOUR_GREY, WID_GO_FONT_MEDIUM_FONT_SIZE_SLIDER), SetMinimalTextLines(1, 12 + WidgetDimensions::unscaled.vsep_normal, FS_NORMAL),
+								SetMinimalSize(67, 0), SetFill(1, 0), SetResize(1, 0), SetDataTip(0x0, STR_GAME_OPTIONS_MEDIUM_FONT_SIZE_SLIDER_TOOLTIP),
+					EndContainer(),
+				EndContainer(),
+
+				/* Large font: */
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_LARGE_FONT_FRAME, STR_NULL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+						NWidget(WWT_LABEL, COLOUR_GREY, WID_GO_FONT_LARGE_FONT_LABEL), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_LARGE_FONT_TOOLTIP),
+								SetFill(1, 0), SetTextStyle(TC_BLACK, FS_LARGE), SetMinimalTextLines(1, 6, FS_LARGE), SetAlignment(SA_CENTER),
+					EndContainer(),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+						NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_TEXT_FONT_SIZE), SetMinimalSize(0, 12), SetDataTip(STR_GAME_OPTIONS_FONT_SIZE, STR_NULL),
+						NWidget(WWT_EMPTY, COLOUR_GREY, WID_GO_FONT_LARGE_FONT_SIZE_SLIDER), SetMinimalTextLines(1, 12 + WidgetDimensions::unscaled.vsep_normal, FS_NORMAL),
+								SetMinimalSize(67, 0), SetFill(1, 0), SetResize(1, 0), SetDataTip(0x0, STR_GAME_OPTIONS_LARGE_FONT_SIZE_SLIDER_TOOLTIP),
+					EndContainer(),
+				EndContainer(),
+
+				/* Monospaced font */
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_MONOSPACED_FONT_FRAME, STR_NULL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+						NWidget(WWT_LABEL, COLOUR_GREY, WID_GO_FONT_MONOSPACED_FONT_LABEL), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_MONOSPACED_FONT_TOOLTIP),
+								SetFill(1, 0), SetTextStyle(TC_BLACK, FS_MONO), SetMinimalTextLines(1, 6, FS_MONO), SetAlignment(SA_CENTER),
+					EndContainer(),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+						NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_TEXT_FONT_SIZE), SetMinimalSize(0, 12), SetDataTip(STR_GAME_OPTIONS_FONT_SIZE, STR_NULL),
+						NWidget(WWT_EMPTY, COLOUR_GREY, WID_GO_FONT_MONOSPACED_FONT_SIZE_SLIDER), SetMinimalTextLines(1, 12 + WidgetDimensions::unscaled.vsep_normal, FS_NORMAL),
+								SetMinimalSize(67, 0), SetFill(1, 0), SetResize(1, 0), SetDataTip(0x0, STR_GAME_OPTIONS_MONOSPACED_FONT_SIZE_SLIDER_TOOLTIP),
+					EndContainer(),
+				EndContainer(),
+
+			EndContainer(),
+			/* End font tab */
+#endif
 
 			/* Sound/Music tab */
 			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.sparse), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
@@ -1180,11 +1432,13 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
+			/* End sound/music tab */
 
 			/* Social tab */
 			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.sparse), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 				NWidgetFunction(MakeNWidgetSocialPlugins),
 			EndContainer(),
+			/* End social tab */
 		EndContainer(),
 	EndContainer(),
 };
