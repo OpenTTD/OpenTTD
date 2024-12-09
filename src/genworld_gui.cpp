@@ -1125,7 +1125,7 @@ struct CreateScenarioWindow : public Window
 			case WID_CS_TROPICAL: case WID_CS_TOYLAND:
 				size.width += WidgetDimensions::scaled.fullbevel.Horizontal();
 				size.height += WidgetDimensions::scaled.fullbevel.Vertical();
-				break;
+				return;
 
 			case WID_CS_START_DATE_TEXT:
 				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1));
