@@ -3573,12 +3573,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Berriku
 
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Geldituta
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Geldituta
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Hasita
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Hasita
 
 # Vehicle details
@@ -3972,25 +3967,16 @@ STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Kostea: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Kostea: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Sarrerak: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Sarrerak: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transferitu: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transferitu: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transferitu: {CURRENCY_LONG}{WHITE} / {GREEN}Sarrera: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Transferitu: {CURRENCY_LONG}{WHITE} / {GREEN}Sarrera: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transferitu: {CURRENCY_LONG}{WHITE} / {RED}Kostua: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Transferitu: {CURRENCY_LONG}{WHITE} / {RED}Kostua: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Gutxi gora beherako kostea: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Gutxi gora beherako sarrerak: {CURRENCY_LONG}

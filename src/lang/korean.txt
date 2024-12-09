@@ -267,6 +267,7 @@ STR_UNITS_MINUTES                                               :{NUM}분
 STR_UNITS_YEARS                                                 :{NUM}년
 STR_UNITS_PERIODS                                               :{NUM}기간
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}검색:
@@ -2834,6 +2835,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :표시할 도�
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :지으려는 건물 종류를 선택하세요. CTRL+클릭하면 즐겨찾기 추가/제거가 가능합니다
 
 STR_HOUSE_PICKER_CAPTION                                        :건물 선택
+STR_HOUSE_PICKER_NAME                                           :{BLACK}이름: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}인구: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}연도: {ORANGE}{NUM} ~ {NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}연도: {ORANGE}항상
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}연도: {ORANGE}{NUM}년부터
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}연도: {ORANGE}{NUM}년까지
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}크기: {ORANGE}{NUM}x{NUM}칸
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}받는 화물: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :가장자리
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :교외
@@ -4443,12 +4452,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELO
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - {0:DEPOT}에 갈 수 없음
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}정지
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}정지
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}출발
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}출발
 
 # Vehicle details
@@ -4910,25 +4914,16 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD 
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}지출: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}지출: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}수익: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}수익: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}환승: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}환승: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {GREEN}수익: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {GREEN}수익: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {RED}지출: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {RED}지출: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}예상 가격: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}예상 수익: {CURRENCY_LONG}

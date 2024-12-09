@@ -4453,12 +4453,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELO
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Ei leia teed depoosse {0:DEPOT}
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}peatatud
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Peatatud
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Alustatud
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Started
 
 # Vehicle details
@@ -4920,25 +4915,16 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD 
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Hind: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Hind: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Tulu: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Tulu: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Kanna üle: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Kanna üle: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Ümberlaadimine: {CURRENCY_LONG}{WHITE} / {GREEN}Sissetulek: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Ümberlaadimine: {CURRENCY_LONG}{WHITE} / {GREEN}Sissetulek: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Ümberlaadimine: {CURRENCY_LONG}{WHITE} / {RED}Hind: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Ümberlaadimine: {CURRENCY_LONG}{WHITE} / {RED}Hind: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Eeldatav kulu: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Eeldatavad tulud: {CURRENCY_LONG}

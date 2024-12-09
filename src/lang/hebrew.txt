@@ -3857,12 +3857,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}קבל�
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}לא יכול להגיע ל {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}הופסק
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}הופסק
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}הותחל
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}הותחל
 
 # Vehicle details
@@ -4271,25 +4266,16 @@ STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}{CURRENCY_LONG} :מחיר
 STR_INCOME_FLOAT_COST                                           :{RED}{CURRENCY_LONG} :מחיר
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN} {CURRENCY_LONG} :הכנסה
 STR_INCOME_FLOAT_INCOME                                         :{GREEN} {CURRENCY_LONG} :הכנסה
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}העברה: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}העברה: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}העברה: {CURRENCY_LONG}{WHITE} / {GREEN}הכנסה:{CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}העברה:  {CURRENCY_LONG}{WHITE} / {GREEN}הכנסה: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}העברה: {CURRENCY_LONG}{WHITE} / {RED}עלות: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}העברה: {CURRENCY_LONG}{WHITE} / {RED}עלות: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}{CURRENCY_LONG} :מחיר משוער
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}{CURRENCY_LONG} :הכנסה משוערת

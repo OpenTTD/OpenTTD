@@ -3478,12 +3478,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}ûnderh
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Kin {DEPOT}, {VELOCITY} net berikke
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Stoppe
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Stoppe
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Starte
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Starte
 
 # Vehicle details
@@ -3824,22 +3819,14 @@ STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Kostet: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Kostet: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Opbringst: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Opbringst: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Omwikselje: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Oerdracht: {CURRENCY_LONG}{WHITE} / {GREEN}Opbringst: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Oerdracht: {CURRENCY_LONG}{WHITE} / {GREEN}Opbringst: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Oerdracht: {CURRENCY_LONG}{WHITE} / {RED}Kosten: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Dit gjit {CURRENCY_LONG} kosten.

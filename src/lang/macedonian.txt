@@ -1817,9 +1817,6 @@ STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Пре�
 
 
 # Vehicle stopped/started animations
-###length 2
-
-###length 2
 
 # Vehicle details
 

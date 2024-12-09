@@ -3835,12 +3835,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis 
 
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Ustavljeno
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Ustavljeno
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Začeto
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Začeto
 
 # Vehicle details
@@ -4241,25 +4236,16 @@ STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Cena: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Cena: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Prihodki: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Prihodki: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Prenos: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Prenos: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Pretovori: {CURRENCY_LONG}{WHITE} / {GREEN}Prihodek: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Pretovori: {CURRENCY_LONG}{WHITE} / {GREEN}Prihodek: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Pretovori: {CURRENCY_LONG}{WHITE} / {RED}Cena: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Pretovori: {CURRENCY_LONG}{WHITE} / {RED}Cena: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Ocenjeni stroški: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Predvideni prihodki: {CURRENCY_LONG}

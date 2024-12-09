@@ -4486,12 +4486,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELO
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - {0:DEPOT} nem elérhető
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Megállítva
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Megállítva
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Elindítva
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Elindítva
 
 # Vehicle details
@@ -4952,25 +4947,16 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD 
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}{CURRENCY_LONG} KIADÁS
 STR_INCOME_FLOAT_COST                                           :{RED}{CURRENCY_LONG} kiadás
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}{CURRENCY_LONG} BEVÉTEL
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}{CURRENCY_LONG} bevétel
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Eleszállít: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Elszállít: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Elszállítás: {CURRENCY_LONG}{WHITE} / {GREEN}Bevétel: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Elszállítás: {CURRENCY_LONG}{WHITE} / {GREEN}Bevétel: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Elszállítás: {CURRENCY_LONG}{WHITE} / {RED}Költség: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Elszállítás: {CURRENCY_LONG}{WHITE} / {RED}Költség: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Becsült ár: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Becsült bevétel: {CURRENCY_LONG}

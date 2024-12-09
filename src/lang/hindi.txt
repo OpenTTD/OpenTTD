@@ -1309,9 +1309,6 @@ STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}वर�
 
 
 # Vehicle stopped/started animations
-###length 2
-
-###length 2
 
 # Vehicle details
 

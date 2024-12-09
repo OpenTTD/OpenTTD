@@ -2589,12 +2589,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE} {DEPOT
 
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED} روک دیا گیا
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED} روک دیا گیا
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN} شروع کر دیا گیا
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN} شروع کر دیا گیا
 
 # Vehicle details

@@ -4284,12 +4284,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Tidak d
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Tidak dapat mencapai {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Berhenti
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Berhenti
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Mulai
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Mulai
 
 # Vehicle details
@@ -4728,25 +4723,16 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE} dokumen
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Biaya: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Biaya: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Pemasukan: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Pemasukan: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Pemasukan: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Pemasukan: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Biaya: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Biaya: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Perkiraan Biaya: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Perkiraan Pemasukan: {CURRENCY_LONG}

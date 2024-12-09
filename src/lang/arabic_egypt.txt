@@ -3612,12 +3612,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}الص�
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}لا يمكن الوصول إلى {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}متوقف
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}متوقف
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}ابتدا
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}ابتدا
 
 # Vehicle details
@@ -4020,23 +4015,15 @@ STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}تكلفة: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}تكلفة: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}الدخل: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}الدخل: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}التحويل: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}حول: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}تحويل:{CURRENCY_LONG}{WHITE} / {GREEN}الدخل: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}التكلفة التقديرية {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}الدخل التقديري: {CURRENCY_LONG}
 

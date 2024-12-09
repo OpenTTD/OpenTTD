@@ -4455,12 +4455,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELO
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Nedokáže sa dostať do {0:DEPOT}
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Zastavené
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Zastavené
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Spustené
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Spustené
 
 # Vehicle details
@@ -4921,25 +4916,16 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD 
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Cena: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Cena: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Zisk: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Zisk: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Prekládka: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Prekládka: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Prevod: {CURRENCY_LONG}{WHITE} / {GREEN}Zisk: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Prevod: {CURRENCY_LONG}{WHITE} / {GREEN}Zisk: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Prevod: {CURRENCY_LONG}{WHITE} / {RED}Náklady: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Prevod: {CURRENCY_LONG}{WHITE} / {RED}Náklady: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Odhadovaná cena: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Odhadovaný zisk: {CURRENCY_LONG}

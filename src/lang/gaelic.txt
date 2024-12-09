@@ -3950,12 +3950,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Obair-g
 
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Na stad
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Na stad
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Air tòiseachadh
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Air tòiseachadh
 
 # Vehicle details
@@ -4357,25 +4352,16 @@ STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ceadacha
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Cosgais: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Cosgais: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Teachd a-steach: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Teachd a-steach: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Tar-aiseag: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Tar-aiseag: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Tar-aiseag: {CURRENCY_LONG}{WHITE} / {GREEN}Teachd a-steach: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Tar-aiseag: {CURRENCY_LONG}{WHITE} / {GREEN}Teachd a-steach: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Tar-aiseig: {CURRENCY_LONG}{WHITE} / {RED}Cosgaisean: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Tar-aiseag: {CURRENCY_LONG}{WHITE} / {RED}Cosgaisean: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Tuairmse chosgaisean: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Tuairmse air an teachd a-steach: {CURRENCY_LONG}

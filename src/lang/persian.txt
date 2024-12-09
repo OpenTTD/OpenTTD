@@ -3243,9 +3243,6 @@ STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}برا�
 
 
 # Vehicle stopped/started animations
-###length 2
-
-###length 2
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (جزئیات)
@@ -3471,9 +3468,7 @@ STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}
 # Vehicle loading indicators
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}مخارج: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}مخارج: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}درآمد : {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}درآمد: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}مخارج تقریبی: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}در آمد تقریبی: {CURRENCY_LONG}

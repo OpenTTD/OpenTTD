@@ -1233,9 +1233,6 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 
 # Vehicle stopped/started animations
-###length 2
-
-###length 2
 
 # Vehicle details
 

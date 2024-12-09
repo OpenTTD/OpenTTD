@@ -4452,12 +4452,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELO
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Impossible d'atteindre {0:DEPOT}
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Arrêté
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Arrêté
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Démarré
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Démarré
 
 # Vehicle details
@@ -4919,25 +4914,16 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Document
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}{NBSP}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}{NBSP}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}{NBSP}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}{NBSP}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Coût{NBSP}: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Coût{NBSP}: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Revenu{NBSP}: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Revenu{NBSP}: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}{WHITE} / {GREEN}Revenu{NBSP}: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}{WHITE} / {GREEN}Revenu{NBSP}: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}{WHITE} / {RED}Coût{NBSP}: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}{WHITE} / {RED}Coût{NBSP}: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Coût estimé{NBSP}: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Revenu estimé{NBSP}: {CURRENCY_LONG}

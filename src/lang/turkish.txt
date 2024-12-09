@@ -4380,12 +4380,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELO
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - {0:DEPOT} garajına ulaşamıyor
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Durdu
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Durdu
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Başladı
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Başladı
 
 # Vehicle details
@@ -4846,25 +4841,16 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD 
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}%{NUM}{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}%{NUM}{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}%{NUM}{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}%{NUM}{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}%{NUM}{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}%{NUM}{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}%{NUM}
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Gider: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Gider: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Gelir: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Gelir: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Gönder: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Gönder: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Aktarım: {CURRENCY_LONG}{WHITE} / {GREEN}Gelir: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Aktarım: {CURRENCY_LONG}{WHITE} / {GREEN}Gelir: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Aktarım: {CURRENCY_LONG}{WHITE} / {RED}Ücret: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Aktarım: {CURRENCY_LONG}{WHITE} / {RED}Ücret: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Tahmini Gider: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Tahmini Gelir: {CURRENCY_LONG}

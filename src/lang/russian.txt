@@ -566,7 +566,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Выход
 
 STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Создание городов
-STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Размещение домов
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Размещение зданий
 
 # Settings menu
 ###length 16
@@ -3005,13 +3005,13 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Выберит�
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Выберите здание для строительства. Ctrl+щелчок добавит его в «избранное» или удалит.
 
 STR_HOUSE_PICKER_CAPTION                                        :Выбор типов зданий
-STR_HOUSE_PICKER_NAME                                           :{BLACK}Название: {ORANGE}{STRING}
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Здание: {ORANGE}{STRING}
 STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Кол-во жителей: {ORANGE}{NUM}
 STR_HOUSE_PICKER_YEARS                                          :{BLACK}Дата: {ORANGE}{NUM}-{NUM}
 STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Дата: {ORANGE}любая
 STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Дата: {ORANGE}с {NUM} г.
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Дата: {ORANGE}до {NUM} г.
-STR_HOUSE_PICKER_SIZE                                           :{BLACK}Размер: {ORANGE}{NUM}×{NUM} клет{P ку ки ок}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Размеры: {ORANGE}{NUM}×{NUM}
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Принимаемый груз: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Пригород
@@ -3168,7 +3168,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Поку
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Выбор объекта
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Предварительный просмотр объекта
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Размер: {GOLD}{NUM} × {NUM} клеток
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Размеры: {GOLD}{NUM} × {NUM}
 
 STR_OBJECT_CLASS_LTHS                                           :Маяки
 STR_OBJECT_CLASS_TRNS                                           :Передатчики
@@ -4182,9 +4182,9 @@ STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Пока
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Производительность: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Предприятие скоро закрывается!
 
-STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Требует: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Производит: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Требует: {YELLOW}{STRING.acc}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Производит: {YELLOW}{STRING.acc}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING.acc}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Требуется:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
@@ -4638,12 +4638,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELO
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - нет пути до {0:DEPOT}
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Остановлен
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Остановлен
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Запущен
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Запущен
 
 # Vehicle details
@@ -4950,9 +4945,9 @@ STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Прох
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Весь маршрут займёт {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Движение по маршруту займёт {STRING} (не всё учтено)
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Этот транспорт приходит вовремя
-STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Этот транспорт опаздывает на {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Этот транспорт опережает график на {STRING}
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Это ТС приходит вовремя
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Это ТС опаздывает на {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Это ТС опережает график на {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}График движения ещё не установлен
 STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Этот график будет запущен {STRING}
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}До запуска графика осталось {COMMA} секунд{P а ы ""}
@@ -5105,25 +5100,16 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Доку
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Расход: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Расход: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Доход: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Доход: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Трансфер: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Трансфер: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Перевозка: {CURRENCY_LONG}{WHITE} / {GREEN}Доход: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Перевозка: {CURRENCY_LONG}{WHITE} / {GREEN}Доход: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Перевозка: {CURRENCY_LONG}{WHITE} / {RED}Стоимость: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Перевозка: {CURRENCY_LONG}{WHITE} / {RED}Стоимость: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Предполагаемая цена: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Предполагаемый доход: {CURRENCY_LONG}

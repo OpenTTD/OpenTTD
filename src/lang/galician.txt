@@ -267,6 +267,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}ano{P "" s}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}período{P "" s}
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrar:
@@ -2834,6 +2835,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecciona unha
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selecciona un tipo de casa a construír. Ctrl+Click para engadir ou eliminar nos elementos gardados.
 
 STR_HOUSE_PICKER_CAPTION                                        :Selección de casas
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nome: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Poboación: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Anos: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Anos: {ORANGE}Calquera
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Anos: {ORANGE}Dende {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Anos: {ORANGE}Ata {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Tamaño: {ORANGE}{NUM}x{NUM} cadros
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Carga aceptada: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Borde
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferia
@@ -4443,12 +4452,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELO
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Non pode chegar a {0:DEPOT}
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Parado
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Parado
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Arrancado
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Arrancado
 
 # Vehicle details
@@ -4910,25 +4914,16 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD,
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Custo: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Custo: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Ingreso: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Ingreso: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transferir: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transferir: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transferir: {CURRENCY_LONG}{WHITE} / {GREEN}Ingresos: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Transferencia: {CURRENCY_LONG}{WHITE} / {GREEN}Ingreso: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transferencia: {CURRENCY_LONG}{WHITE} / {RED}Custo: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Transferencia: {CURRENCY_LONG}{WHITE} / {RED}Custo: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Custo estimado: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ingreso estimado: {CURRENCY_LONG}

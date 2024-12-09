@@ -3619,12 +3619,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Vedlike
 
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Stoppet
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Stoppet
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Startet
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Startet
 
 # Vehicle details
@@ -4023,25 +4018,16 @@ STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}{NBSP}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}{NBSP}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}{NBSP}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}{NBSP}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Kostnad: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Kostnad: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Inntekt: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Inntekt: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Overføring: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Overføring: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Overføring: {CURRENCY_LONG}{WHITE} / {GREEN}Inntekt: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Overføring: {CURRENCY_LONG}{WHITE} / {GREEN}Inntekt: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Overføring: {CURRENCY_LONG}{WHITE} / {RED}Kostnad: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Overføring: {CURRENCY_LONG}{WHITE} / {RED}Kostnad: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Berekna kostnad: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Berekna inntekt: {CURRENCY_LONG}

@@ -4013,12 +4013,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELO
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - {0:DEPOT}-இனை அடைய முடியவில்லை
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}நிறுத்தப்பட்டுள்ளது
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}நிறுத்தப்பட்டுள்ளது
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}கிளம்பியது
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}கிளம்பியது
 
 # Vehicle details
@@ -4446,25 +4441,16 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD 
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}செலவு: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}செலவு: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}வருவாய்: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}வருவாய்: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}இடமாற்றம்: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}இடமாற்றம்: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}மாற்றல்: {CURRENCY_LONG}{WHITE} / {GREEN}வருமானம்: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}மாற்றல்: {CURRENCY_LONG}{WHITE} / {GREEN}வருமானம்: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}மாற்றல்: {CURRENCY_LONG}{WHITE} / {RED}செலவு: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}மாற்றல்: {CURRENCY_LONG}{WHITE} / {RED}செலவு: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}மதிப்பிடப்பட்டுள்ள செலவு: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}மதிப்பிடப்பட்டுள்ள வரவு: {CURRENCY_LONG}

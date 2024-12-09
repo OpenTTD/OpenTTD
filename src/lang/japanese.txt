@@ -4199,12 +4199,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE} {DEPOT
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE} {DEPOT}車両基地に到達できません, {VELOCITY}
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}運用停止中
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}運用停止中
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}発進中
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}運用開始
 
 # Vehicle details
@@ -4629,25 +4624,16 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD 
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}費用: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}費用: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}収益: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}収益: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}転送: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}転送: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}転送: {CURRENCY_LONG}{WHITE} / {GREEN}収益: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}転送: {CURRENCY_LONG}{WHITE} / {GREEN}収益: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}転送: {CURRENCY_LONG}{WHITE} / {RED}費用: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}転送: {CURRENCY_LONG}{WHITE} / {RED}費用: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}費用(見積): {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}収益(見積): {CURRENCY_LONG}

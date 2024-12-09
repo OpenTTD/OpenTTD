@@ -1643,9 +1643,6 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 
 # Vehicle stopped/started animations
-###length 2
-
-###length 2
 
 # Vehicle details
 
@@ -1767,17 +1764,12 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}किंमत: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}किंमत: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}कमाई: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}कमाई: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}अंदाजी किंमत: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}अंदाजी कमाई: {CURRENCY_LONG}

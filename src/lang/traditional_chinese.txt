@@ -266,6 +266,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}分
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}年
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}個週期
 
+STR_LIST_SEPARATOR                                              :、
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}篩選：
@@ -2833,6 +2834,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :選擇顯示的
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :選擇建設的房屋類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
 
 STR_HOUSE_PICKER_CAPTION                                        :房屋選擇
+STR_HOUSE_PICKER_NAME                                           :{BLACK}名稱：{ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}人口：{ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}可用年份：{ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}可用年份：{ORANGE}不限
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}可用年份：{ORANGE}自 {NUM} 年起可用
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}可用年份：{ORANGE}至 {NUM} 年前可用
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}大小：{ORANGE}{NUM}x{NUM} 格
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}接受貨物： {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :市鎮邊緣
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :郊區邊緣
@@ -3108,7 +3117,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}機場�
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}機場名稱：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}機場區塊名稱：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF：{LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接收貨物：{LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接受貨物：{LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}鐵軌類型：{LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}道路類型：{LTBLUE}{STRING}
@@ -4442,12 +4451,7 @@ STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELO
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - 無法前往 {0:DEPOT}
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}已停止
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}已停止
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}已起動
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}已起動
 
 # Vehicle details
@@ -4909,25 +4913,16 @@ STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD 
 
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}花費：{CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}花費：{CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}收入：{CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}收入：{CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}轉運：{CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}轉運：{CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}轉運：{CURRENCY_LONG}{WHITE} / {GREEN}收入：{CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}轉運：{CURRENCY_LONG}{WHITE} / {GREEN}收入：{CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}轉運：{CURRENCY_LONG}{WHITE} / {RED}花費：{CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}轉運：{CURRENCY_LONG}{WHITE} / {RED}花費：{CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}預估費用：{CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}預估收入：{CURRENCY_LONG}

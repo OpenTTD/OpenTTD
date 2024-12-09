@@ -1365,12 +1365,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servado
 
 
 # Vehicle stopped/started animations
-###length 2
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Haltinta
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Haltinta
-
-###length 2
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Komencinta
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Komencinta
 
 # Vehicle details
