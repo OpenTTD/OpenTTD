@@ -282,16 +282,15 @@ WidgetID GetWidgetFromPos(const Window *w, int x, int y)
  */
 void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags)
 {
-	assert(colour < COLOUR_END);
-
-	uint dark         = GetColourGradient(colour, SHADE_DARK);
-	uint medium_dark  = GetColourGradient(colour, SHADE_LIGHT);
-	uint medium_light = GetColourGradient(colour, SHADE_LIGHTER);
-	uint light        = GetColourGradient(colour, SHADE_LIGHTEST);
-
 	if (flags & FR_TRANSPARENT) {
 		GfxFillRect(left, top, right, bottom, PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR);
 	} else {
+		assert(colour < COLOUR_END);
+
+		const uint dark         = GetColourGradient(colour, SHADE_DARK);
+		const uint medium_dark  = GetColourGradient(colour, SHADE_LIGHT);
+		const uint medium_light = GetColourGradient(colour, SHADE_LIGHTER);
+		const uint light        = GetColourGradient(colour, SHADE_LIGHTEST);
 		uint interior;
 
 		Rect outer = {left, top, right, bottom};                   // Outside rectangle
