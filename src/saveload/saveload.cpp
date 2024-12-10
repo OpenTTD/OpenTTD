@@ -906,9 +906,9 @@ static inline size_t SlCalcStdStringLen(const void *ptr)
 
 
 /**
- * Scan the string for old values of SCC_ENCODED and fix it to it's new, value.
+ * Scan the string for old values of SCC_ENCODED_GS and fix it to its new value.
  * Note that at the moment this runs, the string has not been validated yet
- * because the validation looks for SCC_ENCODED. If there is something invalid,
+ * because the validation looks for SCC_ENCODED_GS. If there is something invalid,
  * just bail out and do not continue trying to replace the tokens.
  * @param str the string to fix.
  */
@@ -920,7 +920,7 @@ static void FixSCCEncoded(std::string &str)
 
 		char32_t c;
 		Utf8Decode(&c, &str[i]);
-		if (c == 0xE028 || c == 0xE02A) Utf8Encode(&str[i], SCC_ENCODED);
+		if (c == 0xE028 || c == 0xE02A) Utf8Encode(&str[i], SCC_ENCODED_GS);
 		i += len;
 	}
 }
