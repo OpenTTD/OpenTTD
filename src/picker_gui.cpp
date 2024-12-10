@@ -9,9 +9,11 @@
 
 #include "stdafx.h"
 #include "core/backup_type.hpp"
+#include "company_func.h"
 #include "gui.h"
 #include "hotkeys.h"
 #include "ini_type.h"
+#include "newgrf_badge.h"
 #include "picker_gui.h"
 #include "querystring_gui.h"
 #include "settings_type.h"
@@ -145,6 +147,8 @@ static bool TypeIDSorter(PickerItem const &a, PickerItem const &b)
 /** Filter types by class name. */
 static bool TypeTagNameFilter(PickerItem const *item, PickerFilterData &filter)
 {
+	if (filter.btf->Filter(filter.callbacks->GetTypeBadges(item->class_index, item->index))) return true;
+
 	filter.ResetState();
 	filter.AddLine(GetString(filter.callbacks->GetTypeName(item->class_index, item->index)));
 	return filter.GetState();
@@ -234,6 +238,8 @@ void PickerWindow::ConstructWindow()
 
 	this->FinishInitNested(this->window_number);
 
+	this->badge_classes = GUIBadgeClasses(this->callbacks.GetFeature());
+
 	this->InvalidateData(PFI_CLASS | PFI_TYPE | PFI_POSITION | PFI_VALIDATE);
 }
 
@@ -301,6 +307,12 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 				int y = (ir.Height() + ScaleSpriteTrad(PREVIEW_HEIGHT)) / 2 - ScaleSpriteTrad(PREVIEW_BOTTOM);
 
 				this->callbacks.DrawType(x, y, item.class_index, item.index);
+
+				int by = ir.Height() - ScaleGUITrad(12);
+
+				GrfSpecFeature feature = this->callbacks.GetFeature();
+				DrawBadgeColumn({0, by, ir.Width() - 1, ir.Height() - 1}, 0, this->badge_classes, this->callbacks.GetTypeBadges(item.class_index, item.index), feature, std::nullopt, PAL_NONE);
+
 				if (this->callbacks.saved.contains(item)) {
 					DrawSprite(SPR_BLOT, PALETTE_TO_YELLOW, 0, 0);
 				}
@@ -571,9 +583,13 @@ void PickerWindow::BuildPickerTypeList()
 		}
 	}
 
+	type_string_filter.btf = std::make_unique<BadgeTextFilter>(this->type_string_filter, this->callbacks.GetFeature());
+
 	this->types.Filter(this->type_string_filter);
 	this->types.RebuildDone();
 	this->types.Sort();
+
+	type_string_filter.btf.reset();
 
 	if (!this->has_type_picker) return;
 	this->GetWidget<NWidgetMatrix>(WID_PW_TYPE_MATRIX)->SetCount(static_cast<int>(this->types.size()));
