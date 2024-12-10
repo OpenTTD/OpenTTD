@@ -22,6 +22,7 @@
 #include "window_func.h"
 #include "timer/timer_game_calendar.h"
 #include "vehicle_func.h"
+#include "ship.h"
 #include "string_func.h"
 #include "company_func.h"
 #include "newgrf_station.h"
@@ -487,8 +488,14 @@ CommandCost CmdBuildBuoy(DoCommandFlag flags, TileIndex tile)
 		if (wp == nullptr) {
 			wp = new Waypoint(tile);
 		} else {
-			/* Move existing (recently deleted) buoy to the new location */
-			wp->xy = tile;
+			if (wp->xy != tile) {
+				/* Move existing (recently deleted) buoy to the new location. */
+				wp->xy = tile;
+				for (Ship *v : Ship::Iterate()) {
+					if (!v->current_order.IsType(OT_GOTO_WAYPOINT) || v->current_order.GetDestination() != wp->index) continue;
+					v->SetDestTile(wp->xy);
+				}
+			}
 			InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
 		}
 		wp->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
