@@ -12,6 +12,7 @@
 #include "company_func.h"
 #include "debug.h"
 #include "genworld.h"
+#include "newgrf_badge.h"
 #include "newgrf_object.h"
 #include "newgrf_class_func.h"
 #include "newgrf_sound.h"
@@ -286,6 +287,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t local_id, uint32_t 
 			/* Object view */
 			case 0x48: return this->view;
 
+			case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->spec->badges, parameter);
+
 			/*
 			 * Disallow the rest:
 			 * 0x40: Relative position is passed as parameter during construction.
@@ -356,6 +359,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t local_id, uint32_t 
 
 		/* Count of object, distance of closest instance */
 		case 0x64: return GetCountAndDistanceOfClosestInstance(parameter, this->ro.grffile->grfid, this->tile, this->obj);
+
+		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->spec->badges, parameter);
 	}
 
 unhandled:

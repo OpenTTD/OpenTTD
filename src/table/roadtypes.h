@@ -95,6 +95,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 
 		{ nullptr },
 		{ nullptr },
+		{},
 	},
 
 	/* Electrified Tram */
@@ -175,6 +176,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 
 		{ nullptr },
 		{ nullptr },
+		{},
 	},
 };
 

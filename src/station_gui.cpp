@@ -66,15 +66,13 @@ using RoadWaypointTypeFilter = GenericWaypointTypeFilter<true, MP_ROAD>;
 
 /**
  * Calculates and draws the accepted or supplied cargo around the selected tile(s)
- * @param left x position where the string is to be drawn
- * @param right the right most position to draw on
- * @param top y position where the string is to be drawn
+ * @param r Rect where the string is to be drawn.
  * @param sct which type of cargo is to be displayed (passengers/non-passengers)
  * @param rad radius around selected tile(s) to be searched
  * @param supplies if supplied cargoes should be drawn, else accepted cargoes
  * @return Returns the y value below the string that was drawn
  */
-int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageType sct, int rad, bool supplies)
+int DrawStationCoverageAreaText(const Rect &r, StationCoverageType sct, int rad, bool supplies)
 {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
 	CargoTypes cargo_mask = 0;
@@ -98,7 +96,7 @@ int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageTyp
 		}
 	}
 	SetDParam(0, cargo_mask);
-	return DrawStringMultiLine(left, right, top, INT32_MAX, supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO);
+	return DrawStringMultiLine(r, supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO);
 }
 
 /**
