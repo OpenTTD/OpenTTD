@@ -412,11 +412,11 @@ void Town::UpdateVirtCoord()
 
 	if (this->cache.sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeTown(this->index));
 
-	SetDParam(0, this->index);
-	SetDParam(1, this->cache.population);
 	this->cache.sign.UpdatePosition(pt.x, pt.y - 24 * ZOOM_BASE,
-		_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
-		STR_VIEWPORT_TOWN_TINY_WHITE);
+		_settings_client.gui.population_in_label
+			? GetString(STR_VIEWPORT_TOWN_POP, this->index, this->cache.population)
+			: GetString(STR_VIEWPORT_TOWN, this->index),
+		GetString(STR_VIEWPORT_TOWN_TINY_WHITE, this->index));
 
 	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeTown(this->index));
 

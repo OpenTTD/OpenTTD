@@ -95,6 +95,57 @@ const StringParameter &StringParameters::GetNextParameterReference()
 	return param;
 }
 
+/**
+ * Encode a string with no parameters into an encoded string.
+ * The encoded string can be stored and decoded later without requiring parameters to be stored separately.
+ * @param str The StringID to format.
+ * @returns The encoded string.
+ */
+EncodedString GetEncodedString(StringID str)
+{
+	/* Shortcut to avoid calling Utf8Encode to compose the character byte-by-byte. */
+	static_assert(SCC_ENCODED_INTERNAL == 0xE001);
+	return EncodedString{fmt::format("\ue001{:X}", str)};
+}
+
+/**
+ * Encode a string with its parameters into an encoded string.
+ * The encoded string can be stored and decoded later without requiring parameters to be stored separately.
+ * @param str The StringID to format.
+ * @param params The parameters of the string.
+ * @returns The encoded string.
+ */
+EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParameter> params)
+{
+	std::string result;
+	auto output = std::back_inserter(result);
+	Utf8Encode(output, SCC_ENCODED_INTERNAL);
+	fmt::format_to(output, "{:X}", str);
+
+	struct visitor {
+		std::back_insert_iterator<std::string> &output;
+
+		void operator()(const std::monostate &) { fmt::format_to(this->output, ":"); }
+		void operator()(const uint64_t &arg) { fmt::format_to(this->output, ":{:X}", arg); }
+		void operator()(const std::string &arg) { fmt::format_to(this->output, ":\"{}\"", arg); }
+	};
+
+	visitor v{output};
+	for (const auto &param : params) {
+		std::visit(v, param.data);
+	}
+
+	return EncodedString{std::move(result)};
+}
+
+/**
+ * Decode the encoded string.
+ * @returns Decoded raw string.
+ */
+std::string EncodedString::GetDecodedString() const
+{
+	return GetString(STR_JUST_RAW_STRING, this->string);
+}
 
 /**
  * Set a string parameter \a v at index \a n in the global string parameter array.
@@ -194,6 +245,22 @@ static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32_t s
 static void GetSpecialNameString(StringBuilder &builder, int ind, StringParameters &args);
 
 static void FormatString(StringBuilder &builder, const char *str, StringParameters &args, uint case_index = 0, bool game_script = false, bool dry_run = false);
+
+/**
+ * Parse most format codes within a string and write the result to a buffer.
+ * This is a wrapper for a span of StringParameter which creates the StringParameters state and forwards to the regular call.
+ * @param builder The string builder to write the final string to.
+ * @param str
+ * @param params The span of parameters to pass.
+ * @param case_index The current case index.
+ * @param game_script True when doing GameScript text processing.
+ * @param dry_run True when the args' type data is not yet initialized.
+ */
+static void FormatString(StringBuilder &builder, const char *str, std::span<StringParameter> params, uint case_index = 0, bool game_script = false, bool dry_run = false)
+{
+	StringParameters tmp_params = params;
+	FormatString(builder, str, tmp_params, case_index, game_script, dry_run);
+}
 
 struct LanguagePack : public LanguagePackHeader {
 	char data[]; // list of strings
@@ -323,6 +390,19 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 	FormatString(builder, GetStringPtr(string), args, case_index);
 }
 
+/**
+ * Get a parsed string with most special stringcodes replaced by the string parameters.
+ * @param builder The builder of the string.
+ * @param string The ID of the string to parse.
+ * @param args Span of arguments for the string.
+ * @param case_index The "case index". This will only be set when FormatString wants to print the string in a different case.
+ * @param game_script The string is coming directly from a game script.
+ */
+void GetStringWithArgs(StringBuilder &builder, StringID string, std::span<StringParameter> params, uint case_index, bool game_script)
+{
+	StringParameters tmp_params{params};
+	GetStringWithArgs(builder, string, tmp_params, case_index, game_script);
+}
 
 /**
  * Resolve the given StringID into a std::string with all the associated
@@ -356,6 +436,14 @@ void AppendStringInPlace(std::string &result, StringID string)
  * @return The parsed string.
  */
 std::string GetStringWithArgs(StringID string, StringParameters &args)
+{
+	std::string result;
+	StringBuilder builder(result);
+	GetStringWithArgs(builder, string, args);
+	return result;
+}
+
+std::string GetStringWithArgs(StringID string, std::span<StringParameter> args)
 {
 	std::string result;
 	StringBuilder builder(result);
@@ -983,7 +1071,8 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 			args.SetTypeOfNextParameter(b);
 			switch (b) {
-				case SCC_ENCODED: {
+				case SCC_ENCODED_GS:
+				case SCC_ENCODED_INTERNAL: {
 					ArrayStringParameters<20> sub_args;
 
 					char *p;
@@ -1036,7 +1125,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 							/* Check if we want to look up another string */
 							char32_t l;
 							size_t len = Utf8Decode(&l, s);
-							bool lookup = (l == SCC_ENCODED);
+							bool lookup = (l == SCC_ENCODED_GS);
 							if (lookup) s += len;
 
 							param = std::strtoull(s, &p, 16);
@@ -1060,7 +1149,8 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					/* If we didn't error out, we can actually print the string. */
 					if (*str != '\0') {
 						str = p;
-						GetStringWithArgs(builder, MakeStringID(TEXT_TAB_GAMESCRIPT_START, stringid), sub_args, true);
+						if (b == SCC_ENCODED_GS) stringid = MakeStringID(TEXT_TAB_GAMESCRIPT_START, stringid);
+						GetStringWithArgs(builder, stringid, sub_args, true);
 					}
 					break;
 				}
