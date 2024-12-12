@@ -78,7 +78,7 @@ protected:
 	typedef std::set<Hop> HopSet;
 
 	Vehicle *vehicle;           ///< Vehicle for which the links should be refreshed.
-	CargoArray capacities; ///< Current added capacities per cargo ID in the consist.
+	CargoArray capacities{}; ///< Current added capacities per cargo ID in the consist.
 	RefitList refit_capacities; ///< Current state of capacity remaining from previous refits versus overall capacity per vehicle in the consist.
 	HopSet *seen_hops;          ///< Hops already seen. If the same hop is seen twice we stop the algorithm. This is shared between all Refreshers of the same run.
 	CargoID cargo;              ///< Cargo given in last refit order.
