@@ -404,13 +404,25 @@ bool VideoDriver_SDL_Base::PollEvent()
 			break;
 		}
 
-		case SDL_MOUSEWHEEL:
+		case SDL_MOUSEWHEEL: {
 			if (ev.wheel.y > 0) {
 				_cursor.wheel--;
 			} else if (ev.wheel.y < 0) {
 				_cursor.wheel++;
 			}
+
+			/* Handle 2D scrolling. */
+			const float SCROLL_BUILTIN_MULTIPLIER = 14.0f;
+#if SDL_VERSION_ATLEAST(2, 18, 0)
+			_cursor.v_wheel -= ev.wheel.preciseY * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
+			_cursor.h_wheel += ev.wheel.preciseX * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
+#else
+			_cursor.v_wheel -= static_cast<float>(ev.wheel.y * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier);
+			_cursor.h_wheel += static_cast<float>(ev.wheel.x * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier);
+#endif
+			_cursor.wheel_moved = true;
 			break;
+		}
 
 		case SDL_MOUSEBUTTONDOWN:
 			if (_rightclick_emulate && SDL_GetModState() & KMOD_CTRL) {
