@@ -266,6 +266,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}år{P "" ""}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P "" er}
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Sökfilter:
@@ -2833,6 +2834,13 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken st
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Välj en hustyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
 
 STR_HOUSE_PICKER_CAPTION                                        :Husval
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Namn: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Invånarantal: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}År: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {ORANGE}Från {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {ORANGE}Till {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Storlek: {ORANGE}{NUM}x{NUM} rutor
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Accepterat gods: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Gräns
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Utkanter
