@@ -19,7 +19,7 @@
 #define NO_SHOBJIDL_SORTDIRECTION // Avoid multiple definition of SORT_ASCENDING
 #include <shlobj.h> /* SHGetFolderPath */
 #include <shellapi.h>
-#include <WinNls.h>
+#include <winnls.h>
 #include "win32.h"
 #include "../../fios.h"
 #include "../../core/alloc_func.hpp"
