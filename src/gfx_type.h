@@ -127,10 +127,10 @@ struct CursorVars {
 	int wheel;                    ///< mouse wheel movement
 	bool fix_at;                  ///< mouse is moving, but cursor is not (used for scrolling)
 
-	/* We need two different vars to keep track of how far the scrollwheel moved.
-	 * OSX uses this for scrolling around the map. */
-	int v_wheel;
-	int h_wheel;
+	/* 2D wheel scrolling for moving around the map */
+	bool wheel_moved;
+	float v_wheel;
+	float h_wheel;
 
 	/* Mouse appearance */
 	std::vector<CursorSprite> sprites; ///< Sprites comprising cursor.

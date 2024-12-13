@@ -2355,7 +2355,7 @@ static EventState HandleActiveWidget()
  */
 static EventState HandleViewportScroll()
 {
-	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == SWS_SCROLL_MAP && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
+	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == SWS_SCROLL_MAP && _cursor.wheel_moved;
 
 	if (!_scrolling_viewport) return ES_NOT_HANDLED;
 
@@ -2381,10 +2381,13 @@ static EventState HandleViewportScroll()
 	Point delta;
 	if (scrollwheel_scrolling) {
 		/* We are using scrollwheels for scrolling */
-		delta.x = _cursor.h_wheel;
-		delta.y = _cursor.v_wheel;
-		_cursor.v_wheel = 0;
-		_cursor.h_wheel = 0;
+		/* Use the integer part for movement */
+		delta.x = static_cast<int>(_cursor.h_wheel);
+		delta.y = static_cast<int>(_cursor.v_wheel);
+		/* Keep the fractional part so that subtle movement is accumulated */
+		float temp;
+		_cursor.v_wheel = std::modf(_cursor.v_wheel, &temp);
+		_cursor.h_wheel = std::modf(_cursor.h_wheel, &temp);
 	} else {
 		if (_settings_client.gui.scroll_mode != VSM_VIEWPORT_RMB_FIXED) {
 			delta.x = -_cursor.delta.x;
@@ -2400,6 +2403,7 @@ static EventState HandleViewportScroll()
 
 	_cursor.delta.x = 0;
 	_cursor.delta.y = 0;
+	_cursor.wheel_moved = false;
 	return ES_HANDLED;
 }
 
@@ -2791,7 +2795,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 
 	HandleMouseOver();
 
-	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == SWS_SCROLL_MAP && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
+	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == SWS_SCROLL_MAP && _cursor.wheel_moved;
 	if (click == MC_NONE && mousewheel == 0 && !scrollwheel_scrolling) return;
 
 	int x = _cursor.pos.x;
@@ -2870,8 +2874,9 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	}
 
 	/* We're not doing anything with 2D scrolling, so reset the value.  */
-	_cursor.h_wheel = 0;
-	_cursor.v_wheel = 0;
+	_cursor.h_wheel = 0.0f;
+	_cursor.v_wheel = 0.0f;
+	_cursor.wheel_moved = false;
 }
 
 /**

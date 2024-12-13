@@ -763,8 +763,9 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		deltaY = [ event deltaY ] * 5;
 	}
 
-	_cursor.h_wheel -= (int)(deltaX * _settings_client.gui.scrollwheel_multiplier);
-	_cursor.v_wheel -= (int)(deltaY * _settings_client.gui.scrollwheel_multiplier);
+	_cursor.h_wheel -= static_cast<float>(deltaX * _settings_client.gui.scrollwheel_multiplier);
+	_cursor.v_wheel -= static_cast<float>(deltaY * _settings_client.gui.scrollwheel_multiplier);
+	_cursor.wheel_moved = true;
 }
 
 - (void)magnifyWithEvent:(NSEvent *)event
