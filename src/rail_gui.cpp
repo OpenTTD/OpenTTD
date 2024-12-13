@@ -1600,12 +1600,6 @@ public:
 				}
 				break;
 
-			case WID_BS_TOGGLE_SIZE:
-				_settings_client.gui.signal_gui_mode = (_settings_client.gui.signal_gui_mode == SIGNAL_GUI_ALL) ? SIGNAL_GUI_PATH : SIGNAL_GUI_ALL;
-				this->SetSignalUIMode();
-				this->ReInit();
-				break;
-
 			default: break;
 		}
 
@@ -1635,7 +1629,6 @@ static constexpr NWidgetPart _nested_signal_builder_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, WID_BS_CAPTION), SetStringTip(STR_BUILD_SIGNAL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_BS_TOGGLE_SIZE), SetSpriteTip(SPR_LARGE_SMALL_WINDOW, STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP), SetAspect(WidgetDimensions::ASPECT_TOGGLE_SIZE),
 	EndContainer(),
 
 	/* Container for both signal groups, spacers, and convert/autofill buttons. */
