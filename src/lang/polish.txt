@@ -4421,7 +4421,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Zarządz
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Wyślij instrukcje wszystkim pojazdom na tej liście
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Zastąp pojazdy
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Wyślij do serwisu
-STR_VEHICLE_LIST_CREATE_GROUP                                   :Stwórz grupę
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Utwórz grupę
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Zysk w tym roku: {CURRENCY_LONG} (poprzedni rok: {CURRENCY_LONG})
 STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Zysk w tym okresie: {CURRENCY_LONG} (w poprzednim okresie: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
@@ -4454,14 +4454,14 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Samoloty bez gr
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupy - kliknij na grupę, aby wyświetlić listę wszystkich pojazdów należących do tej grupy. Przeciągnij i upuść grupę, aby uporządkować hierarchię
-STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Kliknij aby stworzyć grupę
+STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Kliknij, aby utworzyć grupę
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Usuń zaznaczoną grupę
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Zmień nazwę zaznaczonej grupy
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Zmień kolor zaznaczonej grupy
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kliknij, aby chronić tę grupę przed globalną zamianą pojazdów. Użyj Ctrl, aby chronić również podgrupy
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Skasuj grupę
-STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Czy na pewno chcesz skasować tę grupę i wszystkie podrzędne?
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Czy na pewno chcesz usunąć tę grupę i wszystkie podrzędne?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Dodaj poj. współdzielące
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Usuń wszystkie pojazdy
@@ -4729,7 +4729,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wybierz 
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wybierz, jakim typem pojazdu chcesz zastąpić typ pojazdu zaznaczony po lewej stronie
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Rozpocznij zastępowanie
-STR_REPLACE_VEHICLES_NOW                                        :Zastąp wszystkie pojazdy teraz
+STR_REPLACE_VEHICLES_NOW                                        :Zastąp wszystkie pojazdy
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Zastąp tylko stare pojazdy
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Wciśnij, aby rozpocząć zastępowanie typu pojazdu zaznaczonego po lewej stronie na typ pojazdu zaznaczony po prawej stronie
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nie zastępowane
@@ -4758,8 +4758,8 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Kolej Maglev
 STR_REPLACE_ROAD_VEHICLES                                       :Pojazdy drogowe
 STR_REPLACE_TRAM_VEHICLES                                       :Tramwaje
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usunięcie wagonów: ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymiana zachowuje długość pociągu poprzez usuwanie wagonów (począwszy od początku), jeśli wymiana lokomotywy spowoduje wydłużenie pociągu
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usuwanie wagonów ({STRING}): {ORANGE}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Usuń ostatnie wagony podczas zamiany, aby zachować tę samą długość pociągu
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Użyj Ctrl, aby zastosować również do podgrup
 
 # Vehicle view
@@ -5322,11 +5322,11 @@ STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Nie moż
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Nie można wczytać gry...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Błąd wewnętrzny: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Zepsuta zapisana gra - {STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Zapisana gra zrobiona w nowszej wersji
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Zapis został stworzony w nowszej wersji gry
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Plik nie jest odczytywalny
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Plik nie jest zapisywalny
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Sprawdzenie integralności danych nie powiodło się
-STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Zapis jest stworzony w zmodyfikowanej wersji gry
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Zapis został stworzony w zmodyfikowanej wersji gry
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Gra została zapisana w wersji nie obsługującej tramwajów. Wszystkie tramwaje zostały usunięte
 
@@ -5428,7 +5428,7 @@ STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Nie moż
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... zbyt wiele przedsiębiorstw
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nie można stworzyć przedsiębiorstw...
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nie można wygenerować przedsiębiorstw...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Nie można tutaj zbudować: {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nie można tutaj zbudować przedsiębiorstwa tego typu...
 STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Nie można znaleźć przedsiębiorstwa...
@@ -5630,7 +5630,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... to j
 STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... osiągnięto limit budowy obiektów
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nie można stworzyć grupy...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nie można utworzyć grupy...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nie można usunąć tej grupy...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nie można zmienić nazwy grupy...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Nie można ustawić grupy nadrzędnej...
