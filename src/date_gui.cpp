@@ -130,9 +130,9 @@ struct SetDateWindow : Window {
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
-			case WID_SD_DAY:   return GetString(stringid, STR_DAY_NUMBER_1ST + this->date.day - 1);
-			case WID_SD_MONTH: return GetString(stringid, STR_MONTH_JAN + this->date.month);
-			case WID_SD_YEAR:  return GetString(stringid, this->date.year);
+			case WID_SD_DAY:   return GetString(STR_DAY_NUMBER_1ST + this->date.day - 1);
+			case WID_SD_MONTH: return GetString(STR_MONTH_JAN + this->date.month);
+			case WID_SD_YEAR:  return GetString(STR_JUST_INT, this->date.year);
 			default:
 				return this->Window::GetWidgetString(widget, stringid);
 		}

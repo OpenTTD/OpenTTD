@@ -785,9 +785,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	{
 		switch (widget) {
 			case WID_NS_PRESET_LIST:
-				if (this->preset == -1) return GetString(stringid, STR_NUM_CUSTOM);
+				if (this->preset == -1) return GetString(STR_NUM_CUSTOM);
 
-				return GetString(stringid, STR_JUST_RAW_STRING, this->grf_presets[this->preset]);
+				return GetString(STR_JUST_RAW_STRING, this->grf_presets[this->preset]);
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);

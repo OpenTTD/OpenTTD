@@ -554,9 +554,9 @@ struct BuildRailToolbarWindow : Window {
 		if (widget == WID_RAT_CAPTION) {
 			const RailTypeInfo *rti = GetRailTypeInfo(this->railtype);
 			if (rti->max_speed > 0) {
-				return GetString(stringid, STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.toolbar_caption, PackVelocity(rti->max_speed, VEH_TRAIN));
+				return GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.toolbar_caption, PackVelocity(rti->max_speed, VEH_TRAIN));
 			}
-			return GetString(stringid, rti->strings.toolbar_caption);
+			return GetString(rti->strings.toolbar_caption);
 		}
 
 		return this->Window::GetWidgetString(widget, stringid);
@@ -1529,7 +1529,7 @@ public:
 	{
 		switch (widget) {
 			case WID_BS_DRAG_SIGNALS_DENSITY_LABEL:
-				return GetString(stringid, _settings_client.gui.drag_signals_density);
+				return GetString(STR_JUST_INT, _settings_client.gui.drag_signals_density);
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);

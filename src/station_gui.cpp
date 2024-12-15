@@ -557,10 +557,10 @@ public:
 		}
 
 		if (widget == WID_STL_CARGODROPDOWN) {
-			if (this->filter.cargoes == 0) return GetString(stringid, this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING : STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES);
-			if (this->filter.cargoes == _cargo_mask) return GetString(stringid, this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING : STR_CARGO_TYPE_FILTER_ALL);
-			if (CountBits(this->filter.cargoes) == 1 && !this->filter.include_no_rating) return GetString(stringid, CargoSpec::Get(FindFirstBit(this->filter.cargoes))->name);
-			return GetString(stringid, STR_STATION_LIST_CARGO_FILTER_MULTIPLE);
+			if (this->filter.cargoes == 0) return GetString(this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING : STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES);
+			if (this->filter.cargoes == _cargo_mask) return GetString(this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING : STR_CARGO_TYPE_FILTER_ALL);
+			if (CountBits(this->filter.cargoes) == 1 && !this->filter.include_no_rating) return GetString(CargoSpec::Get(FindFirstBit(this->filter.cargoes))->name);
+			return GetString(STR_STATION_LIST_CARGO_FILTER_MULTIPLE);
 		}
 
 		return this->Window::GetWidgetString(widget, stringid);

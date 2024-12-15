@@ -350,13 +350,13 @@ struct GoalQuestionWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GQ_BUTTON_1:
-				return GetString(stringid, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[0]);
+				return GetString(STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[0]);
 
 			case WID_GQ_BUTTON_2:
-				return GetString(stringid, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[1]);
+				return GetString(STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[1]);
 
 			case WID_GQ_BUTTON_3:
-				return GetString(stringid, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[2]);
+				return GetString(STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[2]);
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);

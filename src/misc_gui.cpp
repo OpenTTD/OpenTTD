@@ -426,8 +426,8 @@ struct AboutWindow : public Window {
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_A_WEBSITE) return GetString(stringid, "Website: https://www.openttd.org");
-		if (widget == WID_A_COPYRIGHT) return GetString(stringid, _openttd_revision_year);
+		if (widget == WID_A_WEBSITE) return GetString(STR_JUST_RAW_STRING, "Website: https://www.openttd.org");
+		if (widget == WID_A_COPYRIGHT) return GetString(STR_ABOUT_COPYRIGHT_OPENTTD, _openttd_revision_year);
 		return this->Window::GetWidgetString(widget, stringid);
 	}
 
@@ -934,7 +934,7 @@ struct QueryStringWindow : public Window
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_QS_CAPTION) return GetString(stringid, this->editbox.caption);
+		if (widget == WID_QS_CAPTION) return GetString(this->editbox.caption);
 
 		return this->Window::GetWidgetString(widget, stringid);
 	}
@@ -1051,7 +1051,7 @@ struct QueryWindow : public Window {
 	{
 		switch (widget) {
 			case WID_Q_CAPTION:
-				return GetString(stringid, this->caption.GetDecodedString());
+				return this->caption.GetDecodedString();
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);

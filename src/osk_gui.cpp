@@ -90,7 +90,7 @@ struct OskWindow : public Window {
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_OSK_CAPTION) return GetString(stringid, this->caption);
+		if (widget == WID_OSK_CAPTION) return GetString(this->caption);
 
 		return this->Window::GetWidgetString(widget, stringid);
 	}

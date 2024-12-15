@@ -822,10 +822,10 @@ public:
 				return GetString(stringid, this->vscroll->GetCount(), Town::GetNumItems());
 
 			case WID_TD_WORLD_POPULATION:
-				return GetString(stringid, GetWorldPopulation());
+				return GetString(STR_TOWN_POPULATION, GetWorldPopulation());
 
 			case WID_TD_SORT_CRITERIA:
-				return GetString(stringid, TownDirectoryWindow::sorter_names[this->towns.SortType()]);
+				return GetString(TownDirectoryWindow::sorter_names[this->towns.SortType()]);
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);

@@ -443,9 +443,10 @@ struct BuildRoadToolbarWindow : Window {
 		if (widget == WID_ROT_CAPTION) {
 			const RoadTypeInfo *rti = GetRoadTypeInfo(this->roadtype);
 			if (rti->max_speed > 0) {
-				return GetString(stringid, STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.toolbar_caption, PackVelocity(rti->max_speed / 2, VEH_ROAD));
+				return GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.toolbar_caption, PackVelocity(rti->max_speed / 2, VEH_ROAD));
 			}
-			return GetString(stringid, rti->strings.toolbar_caption);
+			return GetString(rti->strings.toolbar_caption);
+
 		}
 
 		return this->Window::GetWidgetString(widget, stringid);

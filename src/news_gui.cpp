@@ -493,7 +493,7 @@ struct NewsWindow : Window {
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_N_DATE) {
-			return GetString(stringid, this->ni->date);
+			return GetString(STR_JUST_DATE_LONG, this->ni->date);
 		} else if (widget == WID_N_TITLE) {
 			const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
 			return GetString(cni->title);
