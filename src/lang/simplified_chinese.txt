@@ -25,7 +25,7 @@ STR_JUST_NOTHING                                                :无
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
-STR_CARGO_PLURAL_PASSENGERS                                     :旅客
+STR_CARGO_PLURAL_PASSENGERS                                     :乘客
 STR_CARGO_PLURAL_COAL                                           :煤炭
 STR_CARGO_PLURAL_MAIL                                           :邮件
 STR_CARGO_PLURAL_OIL                                            :原油
@@ -59,7 +59,7 @@ STR_CARGO_PLURAL_FIZZY_DRINKS                                   :汽水
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :旅客
+STR_CARGO_SINGULAR_PASSENGER                                    :乘客
 STR_CARGO_SINGULAR_COAL                                         :煤炭
 STR_CARGO_SINGULAR_MAIL                                         :邮件
 STR_CARGO_SINGULAR_OIL                                          :原油
@@ -93,7 +93,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :汽水
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}位旅客
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}位乘客
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG}煤炭
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}包邮件
 STR_QUANTITY_OIL                                                :{VOLUME_LONG}原油
@@ -162,7 +162,7 @@ STR_ABBREV_FIZZY_DRINKS                                         :汽
 STR_ABBREV_ALL                                                  :全
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA}{NBSP}旅客
+STR_PASSENGERS                                                  :{COMMA}{NBSP}乘客
 STR_BAGS                                                        :{COMMA}{NBSP}包
 STR_TONS                                                        :{COMMA}{NBSP}英吨
 STR_LITERS                                                      :{COMMA}{NBSP}升
@@ -1979,7 +1979,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允许
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允许，自定义城镇布局
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :城镇货物生成：{STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :城镇建筑的客货产出与人口的关系。{}平方增长：两倍大小的城镇生产四倍的旅客。{}线性增长：两倍大小的城镇生产两倍的旅客
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :城镇建筑的客货产出与人口的关系。{}平方增长：城镇人口规模增长为原来的两倍时乘客的生成量为原来的四倍。{}线性增长：城镇人口规模增长为原来的两倍时乘客生成量为原来的两倍
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :平方（原版）
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :线性
@@ -2295,7 +2295,7 @@ STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :客运机车（
 STR_LIVERY_FREIGHT_WAGON                                        :货运车厢
 STR_LIVERY_BUS                                                  :巴士
 STR_LIVERY_TRUCK                                                :卡车
-STR_LIVERY_PASSENGER_SHIP                                       :旅客轮渡
+STR_LIVERY_PASSENGER_SHIP                                       :客运渡轮
 STR_LIVERY_FREIGHT_SHIP                                         :货运轮船
 STR_LIVERY_HELICOPTER                                           :直升机
 STR_LIVERY_SMALL_PLANE                                          :小型飞机
@@ -3704,9 +3704,9 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :购买运输专
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :贿赂地方政府
 ###next-name-looks-similar
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}进行小型的广告宣传，以吸引更多的旅客和货物选择贵公司的服务。{}为位于该城镇中心较近距离内的车站提供暂时的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}进行中型的广告宣传，以吸引更多的旅客和货物选择贵公司的服务。{}为位于该城镇中心中等距离内的车站提供暂时的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}进行大型的广告宣传，以吸引更多的旅客和货物选择贵公司的服务。{}为位于该城镇中心较远距离内的车站提供暂时的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}进行小型的广告宣传，以吸引更多的乘客和货物选择贵公司的服务。{}为位于该城镇中心较近距离内的车站提供暂时的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}进行中型的广告宣传，以吸引更多的乘客和货物选择贵公司的服务。{}为位于该城镇中心中等距离内的车站提供暂时的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}进行大型的广告宣传，以吸引更多的乘客和货物选择贵公司的服务。{}为位于该城镇中心较远距离内的车站提供暂时的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}资助城镇路网重建。{}这将堵塞城镇交通 6 个月。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}资助城镇路网重建。{}这将堵塞城镇交通 6 分钟。{}{POP_COLOUR}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}以公司的名义设立一尊塑像。{}为位于该城镇的车站提供永久的评分增益。{}{POP_COLOUR}费用：{CURRENCY_LONG}
