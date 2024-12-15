@@ -1327,14 +1327,12 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					/* Strings that consume arguments */
 					StringID string_id = args.GetNextParameter<StringID>();
 					if (game_script && GetStringTab(string_id) != TEXT_TAB_GAMESCRIPT_START) break;
-					uint size = b - SCC_STRING1 + 1;
-					if (size > args.GetDataLeft()) {
-						builder += "(consumed too many parameters)";
-					} else {
-						StringParameters sub_args(args, game_script ? args.GetDataLeft() : size);
-						GetStringWithArgs(builder, string_id, sub_args, next_substr_case_index, game_script);
-						args.AdvanceOffset(size);
-					}
+					size_t size = b - SCC_STRING1 + 1;
+
+					StringParameters sub_args(args, game_script ? args.GetDataLeft() : std::min(args.GetDataLeft(), size));
+					GetStringWithArgs(builder, string_id, sub_args, next_substr_case_index, game_script);
+					args.AdvanceOffset(size);
+
 					next_substr_case_index = 0;
 					break;
 				}

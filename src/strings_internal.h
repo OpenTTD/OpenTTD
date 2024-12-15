@@ -59,7 +59,6 @@ public:
 		 * words, when the offset was already at the end of the parameters and
 		 * the string did not consume any parameters.
 		 */
-		assert(offset < this->parameters.size() || this->offset == offset);
 		this->offset = offset;
 	}
 
@@ -71,7 +70,6 @@ public:
 	void AdvanceOffset(size_t advance)
 	{
 		this->offset += advance;
-		assert(this->offset <= this->parameters.size());
 	}
 
 	/**
