@@ -1620,7 +1620,6 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	/* We do not allow changes of some items when we are a client in a networkgame */
 	bool editable = sd->IsEditable();
 
-	SetDParam(0, STR_CONFIG_SETTING_VALUE);
 	auto [min_val, max_val] = sd->GetRange();
 	int32_t value = sd->Read(ResolveObject(settings_ptr, sd));
 	if (sd->IsBoolSetting()) {
@@ -1634,8 +1633,8 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state,
 				editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
 	}
-	sd->SetValueDParams(1, value);
-	DrawString(text_left, text_right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, sd->GetTitle(), highlight ? TC_WHITE : TC_LIGHT_BLUE);
+	auto [param1, param2] = sd->GetValueParams(value);
+	DrawString(text_left, text_right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), highlight ? TC_WHITE : TC_LIGHT_BLUE);
 }
 
 /* == SettingsContainer methods == */
@@ -2509,8 +2508,8 @@ struct GameSettingsWindow : Window {
 					DrawString(tr, STR_CONFIG_SETTING_TYPE);
 					tr.top += GetCharacterHeight(FS_NORMAL);
 
-					sd->SetValueDParams(0, sd->GetDefaultValue());
-					DrawString(tr, STR_CONFIG_SETTING_DEFAULT_VALUE);
+					auto [param1, param2] = sd->GetValueParams(sd->GetDefaultValue());
+					DrawString(tr, GetString(STR_CONFIG_SETTING_DEFAULT_VALUE, param1, param2));
 					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 
 					DrawStringMultiLine(tr, sd->GetHelp(), TC_WHITE);
@@ -2641,8 +2640,8 @@ struct GameSettingsWindow : Window {
 
 					DropDownList list;
 					for (int32_t i = min_val; i <= static_cast<int32_t>(max_val); i++) {
-						sd->SetValueDParams(0, i);
-						list.push_back(MakeDropDownListStringItem(STR_JUST_STRING2, i));
+						auto [param1, param2] = sd->GetValueParams(i);
+						list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_STRING1, param1, param2), i));
 					}
 
 					ShowDropDownListAt(this, std::move(list), value, WID_GS_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);

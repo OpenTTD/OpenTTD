@@ -344,7 +344,7 @@ struct CheatWindow : Window {
 		/* We do not allow changes of some items when we are a client in a network game */
 		bool editable = sd->IsEditable();
 
-		SetDParam(0, STR_CONFIG_SETTING_VALUE);
+		auto [min_val, max_val] = sd->GetRange();
 		int32_t value = sd->Read(&GetGameSettings());
 		if (sd->IsBoolSetting()) {
 			/* Draw checkbox for boolean-value either on/off */
@@ -355,10 +355,10 @@ struct CheatWindow : Window {
 		} else {
 			/* Draw [<][>] boxes for settings of an integer-type */
 			DrawArrowButtons(buttons.left, buttons.top, COLOUR_YELLOW, state,
-					editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : sd->min), editable && static_cast<uint32_t>(value) != sd->max);
+					editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
 		}
-		sd->SetValueDParams(1, value);
-		DrawString(text.left, text.right, text.top, sd->GetTitle(), TC_LIGHT_BLUE);
+		auto [param1, param2] = sd->GetValueParams(value);
+		DrawString(text.left, text.right, text.top, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), TC_LIGHT_BLUE);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -417,9 +417,8 @@ struct CheatWindow : Window {
 		for (const auto &desc : this->sandbox_settings) {
 			const IntSettingDesc *sd = desc->AsIntSetting();
 
-			SetDParam(0, STR_CONFIG_SETTING_VALUE);
-			sd->SetValueDParams(1, sd->max);
-			width = std::max(width, GetStringBoundingBox(sd->GetTitle()).width);
+			auto [param1, param2] = sd->GetValueParams(sd->GetDefaultValue());
+			width = std::max(width, GetStringBoundingBox(GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2)).width);
 		}
 
 		size.width = width + WidgetDimensions::scaled.hsep_wide * 2 + SETTING_BUTTON_WIDTH;
