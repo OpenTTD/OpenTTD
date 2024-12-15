@@ -841,15 +841,15 @@ struct ScriptDebugWindow : public Window {
 		if (this->filter.script_debug_company == OWNER_DEITY) {
 			const GameInfo *info = Game::GetInfo();
 			assert(info != nullptr);
-			return GetString(stringid, STR_AI_DEBUG_NAME_AND_VERSION, info->GetName(), info->GetVersion());
+			return GetString(STR_AI_DEBUG_NAME_AND_VERSION, info->GetName(), info->GetVersion());
 		}
 		if (this->filter.script_debug_company == CompanyID::Invalid() || !Company::IsValidAiID(this->filter.script_debug_company)) {
-			return GetString(stringid, STR_EMPTY);
+			return GetString(STR_EMPTY);
 		}
 
 		const AIInfo *info = Company::Get(this->filter.script_debug_company)->ai_info;
 		assert(info != nullptr);
-		return GetString(stringid, STR_AI_DEBUG_NAME_AND_VERSION, info->GetName(), info->GetVersion());
+		return GetString(STR_AI_DEBUG_NAME_AND_VERSION, info->GetName(), info->GetVersion());
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override

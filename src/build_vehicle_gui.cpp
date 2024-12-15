@@ -1674,26 +1674,26 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_CAPTION:
 				if (this->vehicle_type == VEH_TRAIN && !this->listview_mode) {
 					const RailTypeInfo *rti = GetRailTypeInfo(this->filter.railtype);
-					return GetString(stringid, rti->strings.build_caption);
+					return GetString(rti->strings.build_caption);
 				}
 				if (this->vehicle_type == VEH_ROAD && !this->listview_mode) {
 					const RoadTypeInfo *rti = GetRoadTypeInfo(this->filter.roadtype);
-					return GetString(stringid, rti->strings.build_caption);
+					return GetString(rti->strings.build_caption);
 				}
-				return GetString(stringid, (this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + this->vehicle_type);
+				return GetString((this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + this->vehicle_type);
 
 			case WID_BV_SORT_DROPDOWN:
-				return GetString(stringid, std::data(_engine_sort_listing[this->vehicle_type])[this->sort_criteria]);
+				return GetString(std::data(_engine_sort_listing[this->vehicle_type])[this->sort_criteria]);
 
 			case WID_BV_CARGO_FILTER_DROPDOWN:
-				return GetString(stringid, this->GetCargoFilterLabel(this->cargo_filter_criteria));
+				return GetString(this->GetCargoFilterLabel(this->cargo_filter_criteria));
 
 			case WID_BV_SHOW_HIDE: {
 				const Engine *e = (this->sel_engine == EngineID::Invalid()) ? nullptr : Engine::Get(this->sel_engine);
 				if (e != nullptr && e->IsHidden(_local_company)) {
-					return GetString(stringid, STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + this->vehicle_type);
+					return GetString(STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + this->vehicle_type);
 				}
-				return GetString(stringid, STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + this->vehicle_type);
+				return GetString(STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + this->vehicle_type);
 			}
 
 			default:

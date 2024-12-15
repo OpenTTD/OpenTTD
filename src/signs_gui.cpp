@@ -470,7 +470,7 @@ struct SignWindow : Window, SignList {
 	{
 		switch (widget) {
 			case WID_QES_CAPTION:
-				return GetString(stringid, this->name_editbox.caption);
+				return GetString(this->name_editbox.caption);
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);

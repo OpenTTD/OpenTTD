@@ -508,10 +508,10 @@ public:
 	{
 		switch (widget) {
 			case WID_GL_FILTER_BY_CARGO:
-				return GetString(stringid, this->GetCargoFilterLabel(this->cargo_filter_criteria));
+				return GetString(this->GetCargoFilterLabel(this->cargo_filter_criteria));
 
 			case WID_GL_AVAILABLE_VEHICLES:
-				return GetString(stringid, STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vli.vtype);
+				return GetString(STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vli.vtype);
 
 			case WID_GL_CAPTION:
 				/* If selected_group == DEFAULT_GROUP || ALL_GROUP, draw the standard caption

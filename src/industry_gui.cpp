@@ -504,13 +504,13 @@ public:
 				 * In Editor, you just build, while ingame, or you fund or you prospect */
 				if (_game_mode == GM_EDITOR) {
 					/* We've chosen many random industries but no industries have been specified */
-					return GetString(stringid, STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY);
+					return GetString(STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY);
 				}
 				if (this->selected_type != IT_INVALID) {
 					const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
-					return GetString(stringid, (_settings_game.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY : STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
+					return GetString((_settings_game.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY : STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
 				}
-				return GetString(stringid, STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
+				return GetString(STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);
@@ -1689,7 +1689,7 @@ public:
 				return GetString(stringid, this->vscroll->GetCount(), Industry::GetNumItems());
 
 			case WID_ID_DROPDOWN_CRITERIA:
-				return GetString(stringid, IndustryDirectoryWindow::sorter_names[this->industries.SortType()]);
+				return GetString(IndustryDirectoryWindow::sorter_names[this->industries.SortType()]);
 
 			case WID_ID_FILTER_BY_ACC_CARGO:
 				return GetString(stringid, this->GetCargoFilterLabel(this->accepted_cargo_filter_criteria));

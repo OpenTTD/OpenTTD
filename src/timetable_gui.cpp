@@ -408,7 +408,7 @@ struct TimetableWindow : Window {
 	{
 		switch (widget) {
 			case WID_VT_CAPTION: return GetString(stringid, this->vehicle->index);
-			case WID_VT_EXPECTED: return GetString(stringid, this->show_expected ? STR_TIMETABLE_EXPECTED : STR_TIMETABLE_SCHEDULED);
+			case WID_VT_EXPECTED: return GetString(this->show_expected ? STR_TIMETABLE_EXPECTED : STR_TIMETABLE_SCHEDULED);
 			default: return this->Window::GetWidgetString(widget, stringid);
 		}
 	}

@@ -249,28 +249,28 @@ public:
 		return *longest;
 	}
 
-	std::string GetWidgetString(WidgetID widget, StringID stringid) const
+	std::string GetWidgetString(WidgetID widget, StringID) const
 	{
 		switch (widget) {
 			case WID_GO_SOCIAL_PLUGIN_TITLE:
 				/* For SetupSmallestSize, use the longest string we have. */
 				if (this->current_index < 0) {
-					return GetString(stringid, STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE, GetWidestPlugin(&SocialIntegrationPlugin::name), GetWidestPlugin(&SocialIntegrationPlugin::version));
+					return GetString(STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE, GetWidestPlugin(&SocialIntegrationPlugin::name), GetWidestPlugin(&SocialIntegrationPlugin::version));
 				}
 
 				if (this->plugins[this->current_index]->name.empty()) {
-					return GetString(stringid, STR_JUST_RAW_STRING, this->plugins[this->current_index]->basepath);
+					return GetString(STR_JUST_RAW_STRING, this->plugins[this->current_index]->basepath);
 				} else {
-					return GetString(stringid, STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE, this->plugins[this->current_index]->name, this->plugins[this->current_index]->version);
+					return GetString(STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE, this->plugins[this->current_index]->name, this->plugins[this->current_index]->version);
 				}
 
 			case WID_GO_SOCIAL_PLUGIN_PLATFORM:
 				/* For SetupSmallestSize, use the longest string we have. */
 				if (this->current_index < 0) {
-					return GetString(stringid, GetWidestPlugin(&SocialIntegrationPlugin::social_platform));
+					return GetString(STR_JUST_RAW_STRING, GetWidestPlugin(&SocialIntegrationPlugin::social_platform));
 				}
 
-				return GetString(stringid, this->plugins[this->current_index]->social_platform);
+				return GetString(STR_JUST_RAW_STRING, this->plugins[this->current_index]->social_platform);
 
 			case WID_GO_SOCIAL_PLUGIN_STATE: {
 				static const std::pair<SocialIntegrationPlugin::State, StringID> state_to_string[] = {
@@ -290,28 +290,28 @@ public:
 					/* Set the longest plugin when looking for the longest status. */
 					StringID longest = STR_NULL;
 					int longest_length = 0;
-					for (const auto &state : state_to_string) {
-						int length = GetStringBoundingBox(GetString(state.second, longest_plugin)).width;
+					for (const auto &[state, string] : state_to_string) {
+						int length = GetStringBoundingBox(GetString(string, longest_plugin)).width;
 						if (length > longest_length) {
 							longest_length = length;
-							longest = state.second;
+							longest = string;
 						}
 					}
 
-					return GetString(stringid, longest, longest_plugin);
+					return GetString(longest, longest_plugin);
 				}
 
 				const auto plugin = this->plugins[this->current_index];
 
 				/* Find the string for the state. */
-				for (const auto &state : state_to_string) {
-					if (plugin->state == state.first) {
-						return GetString(stringid, state.second, plugin->social_platform);
+				for (const auto &[state, string] : state_to_string) {
+					if (plugin->state == state) {
+						return GetString(string, plugin->social_platform);
 					}
 				}
 
 				/* Default string, in case no state matches. */
-				return GetString(stringid, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED, plugin->social_platform);
+				return GetString(STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED, plugin->social_platform);
 			}
 
 			default: NOT_REACHED();
@@ -482,8 +482,8 @@ struct GameOptionsWindow : Window {
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: {
 				const CurrencySpec &currency = _currency_specs[this->opt->locale.currency];
-				if (currency.code.empty()) return GetString(stringid, currency.name);
-				return GetString(stringid, STR_GAME_OPTIONS_CURRENCY_CODE, currency.name, currency.code);
+				if (currency.code.empty()) return GetString(currency.name);
+				return GetString(STR_GAME_OPTIONS_CURRENCY_CODE, currency.name, currency.code);
 			}
 
 			case WID_GO_AUTOSAVE_DROPDOWN: {
@@ -492,21 +492,21 @@ struct GameOptionsWindow : Window {
 					index++;
 					if (_settings_client.gui.autosave_interval <= minutes) break;
 				}
-				return GetString(stringid, _autosave_dropdown[index - 1]);
+				return GetString(_autosave_dropdown[index - 1]);
 			}
 
-			case WID_GO_LANG_DROPDOWN:         return GetString(stringid, _current_language->own_name);
-			case WID_GO_BASE_GRF_DROPDOWN:     return GetString(stringid, BaseGraphics::GetUsedSet()->GetListLabel());
-			case WID_GO_BASE_SFX_DROPDOWN:     return GetString(stringid, BaseSounds::GetUsedSet()->GetListLabel());
-			case WID_GO_BASE_MUSIC_DROPDOWN:   return GetString(stringid, BaseMusic::GetUsedSet()->GetListLabel());
-			case WID_GO_REFRESH_RATE_DROPDOWN: return GetString(stringid, _settings_client.gui.refresh_rate);
+			case WID_GO_LANG_DROPDOWN:         return GetString(STR_JUST_RAW_STRING, _current_language->own_name);
+			case WID_GO_BASE_GRF_DROPDOWN:     return GetString(STR_JUST_RAW_STRING, BaseGraphics::GetUsedSet()->GetListLabel());
+			case WID_GO_BASE_SFX_DROPDOWN:     return GetString(STR_JUST_RAW_STRING, BaseSounds::GetUsedSet()->GetListLabel());
+			case WID_GO_BASE_MUSIC_DROPDOWN:   return GetString(STR_JUST_RAW_STRING, BaseMusic::GetUsedSet()->GetListLabel());
+			case WID_GO_REFRESH_RATE_DROPDOWN: return GetString(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, _settings_client.gui.refresh_rate);
 			case WID_GO_RESOLUTION_DROPDOWN: {
 				auto current_resolution = GetCurrentResolutionIndex();
 
 				if (current_resolution == _resolutions.size()) {
-					return GetString(stringid, STR_GAME_OPTIONS_RESOLUTION_OTHER);
+					return GetString(STR_GAME_OPTIONS_RESOLUTION_OTHER);
 				}
-				return GetString(stringid, STR_GAME_OPTIONS_RESOLUTION_ITEM, _resolutions[current_resolution].width, _resolutions[current_resolution].height);
+				return GetString(STR_GAME_OPTIONS_RESOLUTION_ITEM, _resolutions[current_resolution].width, _resolutions[current_resolution].height);
 			}
 
 			case WID_GO_SOCIAL_PLUGIN_TITLE:
@@ -2420,14 +2420,14 @@ struct GameSettingsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GS_RESTRICT_DROPDOWN:
-				return GetString(stringid, _game_settings_restrict_dropdown[this->filter.mode]);
+				return GetString(_game_settings_restrict_dropdown[this->filter.mode]);
 
 			case WID_GS_TYPE_DROPDOWN:
 				switch (this->filter.type) {
-					case ST_GAME:    return GetString(stringid, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME);
-					case ST_COMPANY: return GetString(stringid, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME);
-					case ST_CLIENT:  return GetString(stringid, STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT);
-					default:         return GetString(stringid, STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL);
+					case ST_GAME:    return GetString(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME);
+					case ST_COMPANY: return GetString(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME);
+					case ST_CLIENT:  return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT);
+					default:         return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL);
 				}
 
 			default:
@@ -2986,9 +2986,7 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_PREFIX:    return GetString(stringid, GetCustomCurrency().prefix);
 			case WID_CC_SUFFIX:    return GetString(stringid, GetCustomCurrency().suffix);
 			case WID_CC_YEAR:
-				return GetString(stringid,
-					(GetCustomCurrency().to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER,
-					GetCustomCurrency().to_euro);
+				return GetString((GetCustomCurrency().to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, GetCustomCurrency().to_euro);
 
 			case WID_CC_PREVIEW:
 				return GetString(stringid, 10000);

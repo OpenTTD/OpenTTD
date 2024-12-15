@@ -648,9 +648,9 @@ public:
 
 			case WID_SB_CAPTION:
 				if (this->window_number == CompanyID::Invalid()) {
-					return GetString(stringid, STR_STORY_BOOK_SPECTATOR_CAPTION);
+					return GetString(STR_STORY_BOOK_SPECTATOR_CAPTION);
 				}
-				return GetString(stringid, STR_STORY_BOOK_CAPTION, this->window_number);
+				return GetString(STR_STORY_BOOK_CAPTION, this->window_number);
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);

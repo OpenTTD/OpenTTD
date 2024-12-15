@@ -995,7 +995,7 @@ struct NetworkStartServerWindow : public Window {
 	{
 		switch (widget) {
 			case WID_NSS_CONNTYPE_BTN:
-				return GetString(stringid, STR_NETWORK_SERVER_VISIBILITY_LOCAL + _settings_client.network.server_game_type);
+				return GetString(STR_NETWORK_SERVER_VISIBILITY_LOCAL + _settings_client.network.server_game_type);
 
 			case WID_NSS_CLIENTS_TXT:
 				return GetString(stringid, _settings_client.network.max_clients);

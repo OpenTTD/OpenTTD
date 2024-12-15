@@ -1181,9 +1181,8 @@ public:
 				if (order != nullptr && order->IsType(OT_CONDITIONAL)) {
 					uint value = order->GetConditionValue();
 					if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value, this->vehicle->type);
-					return GetString(stringid, value);
+					return GetString(STR_JUST_COMMA, value);
 				}
-				// TODO: No parameter was set before which means it must have used an uninitialised parameter
 				return {};
 			}
 
@@ -1193,17 +1192,14 @@ public:
 			case WID_O_DEPOT_ACTION: {
 				VehicleOrderID sel = this->OrderGetSel();
 				const Order *order = this->vehicle->GetOrder(sel);
-				if (order == nullptr || !order->IsType(OT_GOTO_DEPOT)) {
-					/* We can't leave this param unset or the undefined behavior can cause a crash. */
-					return GetString(stringid, STR_EMPTY);
-				};
+				if (order == nullptr || !order->IsType(OT_GOTO_DEPOT)) return {};
 
 				/* Select the current action selected in the dropdown. The flags don't match the dropdown so we can't just use an index. */
-				if (order->GetDepotOrderType() & ODTFB_SERVICE) return GetString(stringid, STR_ORDER_DROP_SERVICE_DEPOT);
-				if (order->GetDepotActionType() & ODATFB_HALT) return GetString(stringid, STR_ORDER_DROP_HALT_DEPOT);
-				if (order->GetDepotActionType() & ODATFB_UNBUNCH) return GetString(stringid, STR_ORDER_DROP_UNBUNCH);
+				if (order->GetDepotOrderType() & ODTFB_SERVICE) return GetString(STR_ORDER_DROP_SERVICE_DEPOT);
+				if (order->GetDepotActionType() & ODATFB_HALT) return GetString(STR_ORDER_DROP_HALT_DEPOT);
+				if (order->GetDepotActionType() & ODATFB_UNBUNCH) return GetString(STR_ORDER_DROP_UNBUNCH);
 
-				return GetString(stringid, STR_ORDER_DROP_GO_ALWAYS_DEPOT);
+				return GetString(STR_ORDER_DROP_GO_ALWAYS_DEPOT);
 			}
 
 			default:

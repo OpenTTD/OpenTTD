@@ -2397,13 +2397,11 @@ struct CompanyWindow : Window
 
 			case WID_C_DESC_INAUGURATION:
 				if (TimerGameEconomy::UsingWallclockUnits()) {
-					return GetString(stringid,
-						STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK,
+					return GetString(STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK,
 						Company::Get(static_cast<CompanyID>(this->window_number))->inaugurated_year_calendar,
 						Company::Get(static_cast<CompanyID>(this->window_number))->inaugurated_year);
 				} else {
-					return GetString(stringid,
-						STR_COMPANY_VIEW_INAUGURATED_TITLE,
+					return GetString(STR_COMPANY_VIEW_INAUGURATED_TITLE,
 						Company::Get(static_cast<CompanyID>(this->window_number))->inaugurated_year);
 				}
 

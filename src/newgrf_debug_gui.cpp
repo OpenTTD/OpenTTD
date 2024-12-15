@@ -867,22 +867,19 @@ struct SpriteAlignerWindow : Window {
 		switch (widget) {
 			case WID_SA_CAPTION:
 				if (this->act5_type != nullptr) {
-					return GetString(stringid,
-						STR_SPRITE_ALIGNER_CAPTION_ACTION5,
+					return GetString(STR_SPRITE_ALIGNER_CAPTION_ACTION5,
 						this->act5_type - GetAction5Types().data(),
 						this->current_sprite - this->act5_type->sprite_base,
 						GetOriginFile(this->current_sprite)->GetSimplifiedFilename(),
 						GetSpriteLocalID(this->current_sprite));
 				}
 				if (this->current_sprite < SPR_OPENTTD_BASE) {
-					return GetString(stringid,
-						STR_SPRITE_ALIGNER_CAPTION_ACTIONA,
+					return GetString(STR_SPRITE_ALIGNER_CAPTION_ACTIONA,
 						this->current_sprite,
 						GetOriginFile(this->current_sprite)->GetSimplifiedFilename(),
 						GetSpriteLocalID(this->current_sprite));
 				}
-				return GetString(stringid,
-					STR_SPRITE_ALIGNER_CAPTION_NO_ACTION,
+				return GetString(STR_SPRITE_ALIGNER_CAPTION_NO_ACTION,
 					GetOriginFile(this->current_sprite)->GetSimplifiedFilename(),
 					GetSpriteLocalID(this->current_sprite));
 

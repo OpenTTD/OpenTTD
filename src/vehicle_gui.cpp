@@ -2022,10 +2022,10 @@ public:
 	{
 		switch (widget) {
 			case WID_VL_AVAILABLE_VEHICLES:
-				return GetString(stringid, STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vli.vtype);
+				return GetString(STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vli.vtype);
 
 			case WID_VL_FILTER_BY_CARGO:
-				return GetString(stringid, this->GetCargoFilterLabel(this->cargo_filter_criteria));
+				return GetString(this->GetCargoFilterLabel(this->cargo_filter_criteria));
 
 			case WID_VL_CAPTION:
 			case WID_VL_CAPTION_SHARED_ORDERS: {
