@@ -146,6 +146,64 @@ EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParam
 	return EncodedString{std::move(result)};
 }
 
+EncodedString EncodedString::ReplaceParam(size_t param, StringParameter &&value)
+{
+	std::vector<StringParameter> params;
+
+	const char *p = &*std::begin(this->string);
+	const char *e = &*std::end(this->string);
+
+	[[maybe_unused]] char32_t c = Utf8Consume(p);
+	assert(c == SCC_ENCODED_INTERNAL);
+
+	StringID str;
+	auto [ptr, err] = std::from_chars(p, e, str, 16);
+	assert(*ptr == ':' || ptr == e);
+	p = ptr;
+
+	while (p != e) {
+		auto s = ++p;
+
+		/* Find end of the parameter. */
+		for (; p != e && *p != SCC_RECORD_SEPARATOR; ++p) {}
+
+		if (s == p) {
+			/* This is an empty parameter. */
+			params.emplace_back(std::monostate{});
+			continue;
+		}
+
+		/* Get the parameter type. */
+		char32_t parameter_type;
+		size_t len = Utf8Decode(&parameter_type, s);
+		s += len;
+
+		switch (parameter_type) {
+			case SCC_ENCODED:
+			case SCC_ENCODED_NUMERIC: {
+				uint64_t param;
+				auto [ptr, err] = std::from_chars(s, p, param, 16);
+				assert(err == std::errc{} && ptr == p);
+				params.emplace_back(param);
+				break;
+			}
+
+			case SCC_ENCODED_STRING: {
+				params.emplace_back(std::string(s, p - s));
+				break;
+			}
+
+			default:
+				/* Unknown parameter, make it blank. */
+				params.emplace_back(std::monostate{});
+				break;
+		}
+	}
+
+	params[param] = value;
+	return GetEncodedStringWithArgs(str, params);
+}
+
 /**
  * Decode the encoded string.
  * @returns Decoded raw string.

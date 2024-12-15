@@ -365,9 +365,6 @@ struct NewsWindow : Window {
 
 		this->CreateNestedTree();
 
-		/* For company news with a face we have a separate headline in param[0] */
-		if (&desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->SetString(static_cast<StringID>(std::get<uint64_t>(this->ni->params[0])));
-
 		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP);
 		if (std::holds_alternative<VehicleID>(ni->ref1) && nwid != nullptr) {
 			const Vehicle *v = Vehicle::Get(std::get<VehicleID>(ni->ref1));
@@ -446,12 +443,8 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_MESSAGE:
-				CopyInDParam(this->ni->params);
-				str = GetString(this->ni->string_id);
-				break;
-
 			case WID_N_COMPANY_MSG:
-				str = this->GetCompanyMessageString();
+				str = this->ni->headline.GetDecodedString();
 				break;
 
 			case WID_N_VEH_NAME:
@@ -500,6 +493,10 @@ struct NewsWindow : Window {
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_N_DATE) return GetString(STR_JUST_DATE_LONG, this->ni->date);
+		if (widget == WID_N_TITLE) {
+			const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
+			return GetString(cni->title);
+		}
 
 		return this->Window::GetWidgetString(widget, stringid);
 	}
@@ -516,8 +513,8 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_MESSAGE:
-				CopyInDParam(this->ni->params);
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
+			case WID_N_COMPANY_MSG:
+				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->ni->headline.GetDecodedString(), TC_FROMSTRING, SA_CENTER);
 				break;
 
 			case WID_N_MGR_FACE: {
@@ -531,9 +528,6 @@ struct NewsWindow : Window {
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, GetString(STR_JUST_RAW_STRING, cni->president_name), TC_FROMSTRING, SA_CENTER);
 				break;
 			}
-			case WID_N_COMPANY_MSG:
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->GetCompanyMessageString(), TC_FROMSTRING, SA_CENTER);
-				break;
 
 			case WID_N_VEH_BKGND:
 				GfxFillRect(r.left, r.top, r.right, r.bottom, PC_GREY);
@@ -669,13 +663,6 @@ private:
 		this->top = newtop;
 
 		AddDirtyBlock(this->left, mintop, this->left + this->width, maxtop + this->height);
-	}
-
-	std::string GetCompanyMessageString() const
-	{
-		/* Company news with a face have a separate headline, so the normal message is shifted by two params */
-		CopyInDParam(std::span(this->ni->params.data() + 2, this->ni->params.size() - 2));
-		return GetString(std::get<uint64_t>(this->ni->params[1]));
 	}
 
 	std::string GetNewVehicleMessageString(WidgetID widget) const
@@ -873,12 +860,22 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
  *
  * @see NewsSubtype
  */
-NewsItem::NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
-	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), advice_type(advice_type), style(style), flags(flags), ref1(ref1), ref2(ref2), data(std::move(data))
+NewsItem::NewsItem(EncodedString &&headline, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
+	headline(std::move(headline)), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), advice_type(advice_type), style(style), flags(flags), ref1(ref1), ref2(ref2), data(std::move(data))
 {
 	/* show this news message in colour? */
 	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags.Set(NewsFlag::InColour);
-	CopyOutDParam(this->params, 10);
+}
+
+std::string NewsItem::GetStatusText() const
+{
+	if (this->data != nullptr) {
+		/* CompanyNewsInformation is the only type of additional data used. */
+		const CompanyNewsInformation &cni = *static_cast<const CompanyNewsInformation*>(this->data.get());
+		return GetString(STR_MESSAGE_NEWS_FORMAT, cni.title, this->headline.GetDecodedString());
+	}
+
+	return this->headline.GetDecodedString();
 }
 
 /**
@@ -893,12 +890,12 @@ NewsItem::NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlags
  *
  * @see NewsSubtype
  */
-void AddNewsItem(StringID string, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type)
+void AddNewsItem(EncodedString &&headline, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type)
 {
 	if (_game_mode == GM_MENU) return;
 
 	/* Create new news item node */
-	_news.emplace_front(string, type, style, flags, ref1, ref2, std::move(data), advice_type);
+	_news.emplace_front(std::move(headline), type, style, flags, ref1, ref2, std::move(data), advice_type);
 
 	/* Keep the number of stored news items to a manageable number */
 	if (std::size(_news) > MAX_NEWS_AMOUNT) {
@@ -961,8 +958,7 @@ CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID com
 	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		SetDParamStr(0, text);
-		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NewsStyle::Normal, {}, reference, {});
+		AddNewsItem(GetEncodedString(STR_NEWS_CUSTOM_ITEM, text), type, NewsStyle::Normal, {}, reference, {});
 	}
 
 	return CommandCost();
@@ -1082,7 +1078,7 @@ void ChangeVehicleNews(VehicleID from_index, VehicleID to_index)
 	for (auto &ni : _news) {
 		ChangeObject(ni.ref1, from_index, to_index);
 		ChangeObject(ni.ref2, from_index, to_index);
-		if (ni.flags.Test(NewsFlag::VehicleParam0) && std::get<uint64_t>(ni.params[0]) == from_index) ni.params[0] = to_index.base();
+		if (ni.flags.Test(NewsFlag::VehicleParam0) && IsReferenceObject(ni.ref1, to_index)) ni.headline = ni.headline.ReplaceParam(0, to_index.base());
 	}
 }
 
@@ -1184,10 +1180,8 @@ void ShowLastNewsMessage()
  */
 static void DrawNewsString(uint left, uint right, int y, TextColour colour, const NewsItem *ni)
 {
-	CopyInDParam(ni->params);
-
 	/* Get the string, replaces newlines with spaces and remove control codes from the string. */
-	std::string message = StrMakeValid(GetString(ni->string_id), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
+	std::string message = StrMakeValid(ni->GetStatusText(), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
 
 	/* Truncate and show string; postfixed by '...' if necessary */
 	DrawString(left, right, y, message, colour);

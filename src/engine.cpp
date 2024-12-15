@@ -1129,9 +1129,10 @@ static void NewVehicleAvailable(Engine *e)
 
 	/* Only provide the "New Vehicle available" news paper entry, if engine can be built. */
 	if (!IsVehicleTypeDisabled(e->type, false) && !e->info.extra_flags.Test(ExtraEngineFlag::NoNews)) {
-		SetDParam(0, GetEngineCategoryName(index));
-		SetDParam(1, PackEngineNameDParam(index, EngineNameContext::PreviewNews));
-		AddNewsItem(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE, NewsType::NewVehicles, NewsStyle::Vehicle, {}, index);
+		AddNewsItem(GetEncodedString(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE,
+				GetEngineCategoryName(index),
+				PackEngineNameDParam(index, EngineNameContext::PreviewNews)),
+			NewsType::NewVehicles, NewsStyle::Vehicle, {}, index);
 	}
 
 	/* Update the toolbar. */

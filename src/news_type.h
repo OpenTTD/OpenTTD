@@ -134,7 +134,7 @@ struct NewsAllocatedData {
 
 /** Information about a single item of news. */
 struct NewsItem {
-	StringID string_id;           ///< Message text
+	EncodedString headline; ///< Headline of news.
 	TimerGameCalendar::Date date; ///< Calendar date to show for the news
 	TimerGameEconomy::Date economy_date; ///< Economy date of the news item, never shown but used to calculate age
 	NewsType type;                ///< Type of the news
@@ -147,9 +147,9 @@ struct NewsItem {
 
 	std::unique_ptr<NewsAllocatedData> data; ///< Custom data for the news item that will be deallocated (deleted) when the news item has reached its end.
 
-	std::vector<StringParameterData> params; ///< Parameters for string resolving.
+	NewsItem(EncodedString &&headline, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type);
 
-	NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type);
+	std::string GetStatusText() const;
 };
 
 /**
@@ -163,10 +163,11 @@ struct CompanyNewsInformation : NewsAllocatedData {
 	std::string president_name;     ///< The name of the president
 	std::string other_company_name; ///< The name of the company taking over this one
 
+	StringID title;
 	uint32_t face; ///< The face of the president
 	Colours colour; ///< The colour related to the company
 
-	CompanyNewsInformation(const struct Company *c, const struct Company *other = nullptr);
+	CompanyNewsInformation(StringID title, const struct Company *c, const struct Company *other = nullptr);
 };
 
 using NewsContainer = std::list<NewsItem>; ///< Container type for storing news items.
