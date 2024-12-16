@@ -266,6 +266,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}phú
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}năm
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}kỳ
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Lọc:
@@ -2833,6 +2834,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Chọn vùng đ
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Chọn kiểu nhà để xây. Ctrl+Click để thêm hoặc xóa trong danh sách lưu
 
 STR_HOUSE_PICKER_CAPTION                                        :Chọn Kiểu Nhà
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Tên: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Dân số: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Năm: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Năm: {ORANGE}Tất cả
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Năm: {ORANGE}Từ {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Năm: {ORANGE}Đến {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Kích thước: {ORANGE}{NUM}x{NUM} ô
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Hàng hóa được chấp nhận: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Ngoài rìa
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Ngoại ô
