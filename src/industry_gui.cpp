@@ -104,7 +104,9 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 			if (GB(callback, 0, 8) == 0xFF) return;
 			if (callback < 0x400) {
 				StartTextRefStackUsage(indspec->grf_prop.grffile, 6);
-				suffix.text = GetString(GetGRFStringID(indspec->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback));
+				/* We don't know how many parameters the TextRefStack uses, so pessimistically allow all 20. */
+				std::array<StringParameter, 20> params{};
+				suffix.text = GetStringWithArgs(GetGRFStringID(indspec->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback), params);
 				StopTextRefStackUsage();
 				suffix.display = CSD_CARGO_AMOUNT_TEXT;
 				return;
@@ -120,14 +122,18 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 			}
 			if (callback < 0x400) {
 				StartTextRefStackUsage(indspec->grf_prop.grffile, 6);
-				suffix.text = GetString(GetGRFStringID(indspec->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback));
+				/* We don't know how many parameters the TextRefStack uses, so pessimistically allow all 20. */
+				std::array<StringParameter, 20> params{};
+				suffix.text = GetStringWithArgs(GetGRFStringID(indspec->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback), params);
 				StopTextRefStackUsage();
 				suffix.display = CSD_CARGO_AMOUNT_TEXT;
 				return;
 			}
 			if (callback >= 0x800 && callback < 0xC00) {
 				StartTextRefStackUsage(indspec->grf_prop.grffile, 6);
-				suffix.text = GetString(GetGRFStringID(indspec->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback - 0x800));
+				/* We don't know how many parameters the TextRefStack uses, so pessimistically allow all 20. */
+				std::array<StringParameter, 20> params{};
+				suffix.text = GetStringWithArgs(GetGRFStringID(indspec->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback - 0x800), params);
 				StopTextRefStackUsage();
 				suffix.display = CSD_CARGO_TEXT;
 				return;
@@ -585,7 +591,9 @@ public:
 							StringID str = GetGRFStringID(indsp->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback_res);  // No. here's the new string
 							if (str != STR_UNDEFINED) {
 								StartTextRefStackUsage(indsp->grf_prop.grffile, 6);
-								DrawStringMultiLine(ir, str, TC_YELLOW);
+								/* We don't know how many parameters the TextRefStack uses, so pessimistically allow all 20. */
+								std::array<StringParameter, 20> params{};
+								DrawStringMultiLine(ir, GetStringWithArgs(str, params), TC_YELLOW);
 								StopTextRefStackUsage();
 							}
 						}
@@ -981,10 +989,12 @@ public:
 						ir.top += WidgetDimensions::scaled.vsep_wide;
 
 						StartTextRefStackUsage(ind->grf_prop.grffile, 6);
+						/* We don't know how many parameters the TextRefStack uses, so pessimistically allow all 20. */
+						std::array<StringParameter, 20> params{};
 						/* Use all the available space left from where we stand up to the
 						 * end of the window. We ALSO enlarge the window if needed, so we
 						 * can 'go' wild with the bottom of the window. */
-						ir.top = DrawStringMultiLine(ir.left, ir.right, ir.top, UINT16_MAX, message, TC_BLACK);
+						ir.top = DrawStringMultiLine(ir.left, ir.right, ir.top, UINT16_MAX, GetStringWithArgs(message, params), TC_BLACK);
 						StopTextRefStackUsage();
 					}
 				}

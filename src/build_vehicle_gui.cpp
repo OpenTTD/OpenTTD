@@ -823,7 +823,9 @@ static std::optional<std::string> GetNewGRFAdditionalText(EngineID engine)
 	}
 
 	StartTextRefStackUsage(grffile, 6);
-	std::string result = GetString(GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + callback));
+	/* We don't know how many parameters the TextRefStack uses, so pessimistically allow all 20. */
+	std::array<StringParameter, 20> params{};
+	std::string result = GetStringWithArgs(GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + callback), params);
 	StopTextRefStackUsage();
 	return result;
 }

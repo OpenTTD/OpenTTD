@@ -229,10 +229,12 @@ public:
 							StringID message = GetGRFStringID(spec->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback_res);
 							if (message != STR_NULL && message != STR_UNDEFINED) {
 								StartTextRefStackUsage(spec->grf_prop.grffile, 6);
+								/* We don't know how many parameters the TextRefStack uses, so pessimistically allow all 20. */
+								std::array<StringParameter, 20> params{};
 								/* Use all the available space left from where we stand up to the
 								 * end of the window. We ALSO enlarge the window if needed, so we
 								 * can 'go' wild with the bottom of the window. */
-								int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, message, TC_ORANGE) - r.top - 1;
+								int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, GetStringWithArgs(message, params), TC_ORANGE) - r.top - 1;
 								StopTextRefStackUsage();
 								if (y > this->info_height) {
 									BuildObjectWindow *bow = const_cast<BuildObjectWindow *>(this);
