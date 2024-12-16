@@ -1119,7 +1119,7 @@ uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type)
  */
 static const char *DecodeEncodedString(const char *str, bool game_script, StringBuilder &builder)
 {
-	ArrayStringParameters<20> sub_args;
+	std::vector<StringParameter> sub_args;
 
 	char *p;
 	StringIndexInTab id(std::strtoul(str, &p, 16));
@@ -1134,8 +1134,7 @@ static const char *DecodeEncodedString(const char *str, bool game_script, String
 		return p;
 	}
 
-	int i = 0;
-	while (*p != '\0' && i < 20) {
+	while (*p != '\0') {
 		/* The start of parameter. */
 		const char *s = ++p;
 
@@ -1144,7 +1143,7 @@ static const char *DecodeEncodedString(const char *str, bool game_script, String
 
 		if (s == p) {
 			/* This is an empty parameter. */
-			sub_args.SetParam(i++, std::monostate{});
+			sub_args.emplace_back(std::monostate{});
 			continue;
 		}
 
@@ -1162,24 +1161,24 @@ static const char *DecodeEncodedString(const char *str, bool game_script, String
 					return p;
 				}
 				param = MakeStringID(TEXT_TAB_GAMESCRIPT_START, StringIndexInTab(param));
-				sub_args.SetParam(i++, param);
+				sub_args.emplace_back(param);
 				break;
 			}
 
 			case SCC_ENCODED_NUMERIC: {
 				uint64_t param = std::strtoull(s, &p, 16);
-				sub_args.SetParam(i++, param);
+				sub_args.emplace_back(param);
 				break;
 			}
 
 			case SCC_ENCODED_STRING: {
-				sub_args.SetParam(i++, std::string(s, p - s));
+				sub_args.emplace_back(std::string(s, p - s));
 				break;
 			}
 
 			default:
 				/* Unknown parameter, make it blank. */
-				sub_args.SetParam(i++, std::monostate{});
+				sub_args.emplace_back(std::monostate{});
 				break;
 		}
 	}
