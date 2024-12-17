@@ -5620,7 +5620,7 @@ STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Дома
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Кинотеатр
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Торговый центр
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Иглу
-STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Хижины
+STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Вигвамы
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Домик-Чайник
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Хрюшка-Копилка
 

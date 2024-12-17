@@ -2639,7 +2639,7 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Włącz
 STR_CHEAT_STATION_RATING                                        :{LTBLUE}Ustaw oceny stacji na 100%: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Schemat kolorów
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Schemat Kolorów
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Pokaż ogólne schematy koloru
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Pokaż schematy koloru pociągów
@@ -2684,7 +2684,7 @@ STR_LIVERY_PASSENGER_TRAM                                       :Tramwaj pasaże
 STR_LIVERY_FREIGHT_TRAM                                         :Tramwaj towarowy
 
 # Face selection window
-STR_FACE_CAPTION                                                :{WHITE}Wybór twarzy
+STR_FACE_CAPTION                                                :{WHITE}Wybór Twarzy
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Anuluj wybór nowej twarzy
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Zatwierdź wybór nowej twarzy
 STR_FACE_RANDOM                                                 :{BLACK}Losuj
@@ -2694,11 +2694,11 @@ STR_FACE_MALE_TOOLTIP                                           :{BLACK}Wybierz 
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}Kobieta
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Wybierz kobiecą twarz
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nowa twarz
-STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Stwórz nową losową twarz
-STR_FACE_ADVANCED                                               :{BLACK}Zaawansowane
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Zaawansowany widok wyboru twarzy
-STR_FACE_SIMPLE                                                 :{BLACK}Prosty widok
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Prosty widok wyboru twarzy
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Wygeneruj nową losową twarz
+STR_FACE_ADVANCED                                               :{BLACK}Szczegółowy
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Szczegółowy widok wyboru twarzy
+STR_FACE_SIMPLE                                                 :{BLACK}Uproszczony
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Uproszczony widok wyboru twarzy
 STR_FACE_LOAD                                                   :{BLACK}Wczytaj
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Wczytaj ulubioną twarz
 STR_FACE_LOAD_DONE                                              :{WHITE}Twoja ulubiona twarz została wczytana z pliku konfiguracyjnego OpenTTD
@@ -3423,7 +3423,7 @@ STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nazwa m
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Wpisz nazwę miasta
 STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Kliknij by wprowadzić nazwę miasta
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Losowa nazwa
-STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Stwórz nową losową nazwę
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Wygeneruj nową losową nazwę
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Wielkość miasta:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Małe
@@ -3459,8 +3459,8 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Usuń ws
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Czy na pewno chcesz usunąć wszystkie istniejące przedsiębiorstwa?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Łańcuch produkcji - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Łańcuch przetwarzania - {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Łańcuch Produkcji - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Łańcuch Przetwarzania - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Przedsiębiorstwa produkujące
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Przedsiębiorstwa odbierające
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domy
@@ -4338,10 +4338,10 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Zmień k
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nazwa Firmy
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Zmień nazwę firmy
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Prezes
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Zmień imię prezesa
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Zmień nazwisko prezesa
 
-STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nazwa firmy
-STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nazwisko prezesa
+STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nazwa Firmy
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nazwisko Prezesa
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Wpisz kwotę, jaką chcesz przekazać
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Szukamy firmy transportowej, która przejęłaby naszą firmę.{}{}Chcesz zakupić {COMPANY} za {CURRENCY_LONG}?
