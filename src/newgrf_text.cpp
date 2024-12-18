@@ -825,7 +825,7 @@ void StopTextRefStackUsage()
  * @param modify_parameters When true, modify the OpenTTD string formatting parameters.
  * @return the string control code to "execute" now
  */
-uint RemapNewGRFStringControlCode(uint scc, const char **str, StringParameters &parameters, bool modify_parameters)
+char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str, StringParameters &parameters, bool modify_parameters)
 {
 	switch (scc) {
 		default: break;
