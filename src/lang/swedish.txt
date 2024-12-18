@@ -2837,6 +2837,7 @@ STR_HOUSE_PICKER_CAPTION                                        :Husval
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Namn: {ORANGE}{STRING}
 STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Invånarantal: {ORANGE}{NUM}
 STR_HOUSE_PICKER_YEARS                                          :{BLACK}År: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}År: {ORANGE}Alla
 STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {ORANGE}Från {NUM}
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {ORANGE}Till {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Storlek: {ORANGE}{NUM}x{NUM} rutor

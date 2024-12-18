@@ -2858,18 +2858,18 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :默认路点
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号选择
 STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}是否显示高级信号灯类型
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}区块信号灯（悬臂）{}最基础的信号灯，同一时间内，只允许一列列车通过信号灯后的区块
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}通过信号灯（悬臂）{}最基础的信号灯，同一时间内，只允许一列列车通过信号灯后的区间
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号灯（悬臂）{}在下一轨道区间上至少有一个出口信号灯是绿色时此信号亮绿灯，否则亮红灯
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号灯（悬臂）{}功能与区块信号灯相同，但必须要配合入口信号灯和复合信号灯才能够正常使用
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号灯（悬臂）{}功能与通过信号灯相同，但它的状态还可以触发入口及复合信号灯
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}复合信号灯（悬臂）{}复合信号灯是入口和出口信号灯的组合，这样允许建立大型“树状”预警信号灯系统
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}路径信号灯（悬臂）{}如果同一区块路径内存在有多条可以安全停入列车的路径，路径信号灯可以让多列列车同时进入该区块路径。列车可以从路径信号灯背面通过
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}单向路径信号灯（悬臂）{}如果同一区块路径内存在有多条可以安全停入列车的路径，路径信号灯可以让多列列车同时进入该区块路径。列车无法从单向路径信号灯背面通过
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}区块信号灯（电子）{}最基础的信号灯，同一时间内，只允许一列列车通过信号灯后的区块
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}通过信号灯（电子）{}最基础的信号灯，同一时间内，只允许一列列车通过信号灯后的区间
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口信号灯（电子）{}当下一轨道区间至少有一个出口信号灯是绿色时，此信号灯亮绿灯，否则亮红灯
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口信号灯（电子）{}功能与区块信号灯相同，但必须要配合入口信号灯和复合信号灯才能够正常使用
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口信号灯（电子）{}功能与通过信号灯相同，但它的状态还可以触发入口及复合信号灯
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}复合信号（电子）{}复合信号灯是入口和出口信号灯的组合，这样允许建立大型“树状”预警信号灯系统
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}路径信号灯（电子）{}如果同一区块路径内存在有多条可以安全停入列车的路径，路径信号灯可以让多列列车同时进入该区块路径。列车可以从路径信号灯背面通过
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}单向路径信号灯（电子）{}如果同一区块路径内存在有多条可以安全停入列车的路径，路径信号灯可以让多列列车同时进入该区块路径。列车无法从单向路径信号灯背面通过
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}路径信号灯（电子）{}如果同一区间路径内存在有多条可以安全停入列车的路径，路径信号灯可以让多列列车同时进入该区间路径。列车可以从路径信号灯背面通过
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}单向路径信号灯（电子）{}如果同一区间路径内存在有多条可以安全停入列车的路径，路径信号灯可以让多列列车同时进入该区间路径。列车无法从单向路径信号灯背面通过
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号灯转换{}使用此工具时可以将现有的信号灯转换成选择的信号灯种类及风格。按住 <Ctrl> 键单击以仅在灯式/悬臂式之间切换。按住 <Shift> 键单击以显示预计费用
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}拖拽布置信号灯的间隔距离
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}减少拖拽布置信号的间隔距离
@@ -3136,17 +3136,17 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :雪地
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :沙漠
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :铁路 轨道
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :有区块信号灯的铁路轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :有通过信号灯的铁路轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :有入口信号灯的铁路轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :有出口信号灯的铁路轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :有复合信号灯的铁路轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :有路径信号灯的铁路轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :有单向路径信号灯的铁路轨道
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :有区块信号灯和预输入信号灯的铁路轨道
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :有区块信号灯和出口信号灯的铁路轨道
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :有区块信号灯和复合信号灯的铁路轨道
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :有区块信号灯和路径信号灯的铁路轨道
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :有区块信号灯和单向路径信号灯的铁路轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :有通过信号灯和预输入信号灯的铁路轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :有通过信号灯和出口信号灯的铁路轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :有通过信号灯和复合信号灯的铁路轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :有通过信号灯和路径信号灯的铁路轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :有通过信号灯和单向路径信号灯的铁路轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :有入口信号灯和出口信号灯的铁路轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :有入口信号灯和复合信号灯的铁路轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :有入口信号灯和路径信号灯的铁路轨道
@@ -5327,7 +5327,7 @@ STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}目前�
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}在 {DATE_SHORT} 后开始新游戏，或使用一款能提供早期城镇可建造的道路类型的 NewGRF
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}无法让列车闯红灯……
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}无法让列车通过处于危险状态的信号灯……
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}不能命令列车调头……
 STR_ERROR_TRAIN_START_NO_POWER                                  :没有接触网！
 

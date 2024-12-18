@@ -2759,7 +2759,7 @@ STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Klientó
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Klientów podłączonych / maks.{}Firm podłączonych / maks.
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Rozmiar mapy
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Rozmiar mapy{}Kliknij, by sortować wg powierzchni
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Rozmiar mapy w grze{}Kliknij, aby posortować wg powierzchni
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Bieżąca data
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}min
@@ -3041,7 +3041,7 @@ STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Opuszcza
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Warunki pobierania dodatków z zewnętrznych stron internetowych są inne.{}Będziesz musiał(a) odnieść się do zewnętrznych stron w celu uzyskania wskazówek dotyczących instalacji dodatku w OpenTTD.{}Czy chcesz kontynuować?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr etykiety/nazwy:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Strona internetowa
-STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Wejdź na stronę, by pobrać tę zawartość
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Odwiedź stronę internetową dotyczącą tej zawartości
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Pobierz
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Rozpocznij pobieranie zaznaczonych danych
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Całkowity rozmiar: {WHITE}{BYTES}
