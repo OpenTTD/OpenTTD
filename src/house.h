@@ -22,12 +22,12 @@
  */
 static const uint8_t TOWN_HOUSE_COMPLETED = 3;
 
-static const HouseID NUM_HOUSES_PER_GRF = 255;    ///< Number of supported houses per NewGRF; limited to 255 to allow extending Action3 with an extended byte later on.
-
 static const uint HOUSE_NO_CLASS      = 0;
-static const HouseID NEW_HOUSE_OFFSET = 110;    ///< Offset for new houses.
-static const HouseID NUM_HOUSES       = 512;    ///< Total number of houses.
-static const HouseID INVALID_HOUSE_ID = 0xFFFF;
+static const HouseID NEW_HOUSE_OFFSET = 110; ///< Offset for new houses.
+static const HouseID NUM_HOUSES       = 4096; ///< Total number of houses.
+static const HouseID INVALID_HOUSE_ID = UINT16_MAX;
+
+static const HouseID NUM_HOUSES_PER_GRF = NUM_HOUSES; ///< Number of supported houses per NewGRF.
 
 static const uint HOUSE_NUM_ACCEPTS = 16; ///< Max number of cargoes accepted by a tile
 static const uint HOUSE_ORIGINAL_NUM_ACCEPTS = 3; ///< Original number of accepted cargo types.
