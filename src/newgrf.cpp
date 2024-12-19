@@ -22,6 +22,8 @@
 #include "fontcache.h"
 #include "currency.h"
 #include "landscape.h"
+#include "newgrf_badge.h"
+#include "newgrf_badge_type.h"
 #include "newgrf_cargo.h"
 #include "newgrf_house.h"
 #include "newgrf_sound.h"
@@ -1050,6 +1052,50 @@ static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteRe
 }
 
 /**
+ * Skip a list of badges.
+ * @param buf Buffer reader containing list of badges to skip.
+ */
+static void SkipBadgeList(ByteReader &buf)
+{
+	uint16_t count = buf.ReadExtendedByte();
+	while (count-- > 0) {
+		buf.ReadWord();
+	}
+}
+
+/**
+ * Read a list of badges.
+ * @param buf Buffer reader containing list of badges to read.
+ * @param feature The feature of the badge list.
+ * @returns list of badges.
+ */
+static std::vector<BadgeID> ReadBadgeList(ByteReader &buf, GrfSpecFeature feature)
+{
+	uint16_t count = buf.ReadExtendedByte();
+
+	std::vector<BadgeID> badges;
+	badges.reserve(count);
+
+	while (count-- > 0) {
+		uint16_t local_index = buf.ReadWord();
+		if (local_index >= std::size(_cur.grffile->badge_list)) {
+			GrfMsg(1, "ReadBadgeList: Badge label {} out of range (max {}), skipping.", local_index, std::size(_cur.grffile->badge_list) - 1);
+			continue;
+		}
+
+		BadgeID index = _cur.grffile->badge_list[local_index];
+
+		/* Is badge already present? */
+		if (std::ranges::find(badges, index) != std::end(badges)) continue;
+
+		badges.push_back(index);
+		MarkBadgeSeen(index, feature);
+	}
+
+	return badges;
+}
+
+/**
  * Define properties for rail vehicles
  * @param engine :ocal ID of the first vehicle.
  * @param numinfo Number of subsequent IDs to change the property for.
@@ -1348,6 +1394,10 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				_gted[e->index].cargo_allowed_required = buf.ReadWord();
 				break;
 
+			case 0x33: // Badge list
+				e->badges = ReadBadgeList(buf, GSF_TRAINS);
+				break;
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1553,6 +1603,10 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				_gted[e->index].cargo_allowed_required = buf.ReadWord();
 				break;
 
+			case 0x2A: // Badge list
+				e->badges = ReadBadgeList(buf, GSF_ROADVEHICLES);
+				break;
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1744,6 +1798,10 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				_gted[e->index].cargo_allowed_required = buf.ReadWord();
 				break;
 
+			case 0x26: // Badge list
+				e->badges = ReadBadgeList(buf, GSF_SHIPS);
+				break;
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1911,6 +1969,10 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 
 			case 0x23: // Cargo classes required for a refit.
 				_gted[e->index].cargo_allowed_required = buf.ReadWord();
+				break;
+
+			case 0x24: // Badge list
+				e->badges = ReadBadgeList(buf, GSF_AIRCRAFT);
 				break;
 
 			default:
@@ -2192,6 +2254,10 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				statspec->tileflags.assign(flags, flags + tiles);
 				break;
 			}
+
+			case 0x1F: // Badge list
+				statspec->badges = ReadBadgeList(buf, GSF_STATIONS);
+				break;
 
 			default:
 				ret = CIR_UNKNOWN;
@@ -2669,6 +2735,10 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				break;
 			}
 
+			case 0x24: // Badge list
+				housespec->badges = ReadBadgeList(buf, GSF_HOUSES);
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -2731,6 +2801,23 @@ static ChangeInfoResult LoadTranslationTable(uint gvid, int numinfo, ByteReader 
 	return CIR_SUCCESS;
 }
 
+static ChangeInfoResult LoadBadgeTranslationTable(uint gvid, int numinfo, ByteReader &buf, std::vector<BadgeID> &translation_table, const char *name)
+{
+	if (gvid != 0) {
+		GrfMsg(1, "LoadBadgeTranslationTable: {} translation table must start at zero", name);
+		return CIR_INVALID_ID;
+	}
+
+	translation_table.clear();
+	translation_table.reserve(numinfo);
+	for (int i = 0; i < numinfo; i++) {
+		std::string_view label = buf.ReadString();
+		translation_table.push_back(GetOrCreateBadge(label).index);
+	}
+
+	return CIR_SUCCESS;
+}
+
 /**
  * Helper to read a DWord worth of bytes from the reader
  * and to return it as a valid string.
@@ -2767,6 +2854,9 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 		case 0x17: // Tram type translation table; loading during both reservation and activation stage (in case it is selected depending on defined tramtypes)
 			return LoadTranslationTable<RoadTypeLabel>(gvid, numinfo, buf, [](GRFFile &grf) -> std::vector<RoadTypeLabel> & { return grf.tramtype_list; }, "Tram type");
+
+		case 0x18: // Badge translation table
+			return LoadBadgeTranslationTable(gvid, numinfo, buf, _cur.grffile->badge_list, "Badge");
 
 		default:
 			break;
@@ -2985,6 +3075,9 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 
 		case 0x17: // Tram type translation table; loading during both reservation and activation stage (in case it is selected depending on defined tramtypes)
 			return LoadTranslationTable<RoadTypeLabel>(gvid, numinfo, buf, [](GRFFile &grf) -> std::vector<RoadTypeLabel> & { return grf.tramtype_list; }, "Tram type");
+
+		case 0x18: // Badge translation table
+			return LoadBadgeTranslationTable(gvid, numinfo, buf, _cur.grffile->badge_list, "Badge");
 
 		default:
 			break;
@@ -3420,6 +3513,10 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 				break;
 			}
 
+			case 0x14: // Badge list
+				tsp->badges = ReadBadgeList(buf, GSF_INDUSTRYTILES);
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -3512,6 +3609,10 @@ static ChangeInfoResult IgnoreIndustryProperty(int prop, ByteReader &buf)
 			buf.Skip(num_inputs * num_outputs * 2);
 			break;
 		}
+
+		case 0x29: // Badge list
+			SkipBadgeList(buf);
+			break;
 
 		default:
 			ret = CIR_UNKNOWN;
@@ -3915,6 +4016,10 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				break;
 			}
 
+			case 0x29: // Badge list
+				indsp->badges = ReadBadgeList(buf, GSF_INDUSTRIES);
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -4070,6 +4175,10 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 				as->maintenance_cost = buf.ReadWord();
 				break;
 
+			case 0x12: // Badge list
+				as->badges = ReadBadgeList(buf, GSF_AIRPORTS);
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -4114,6 +4223,10 @@ static ChangeInfoResult IgnoreObjectProperty(uint prop, ByteReader &buf)
 		case 0x0E:
 		case 0x0F:
 			buf.ReadDWord();
+			break;
+
+		case 0x19: // Badge list
+			SkipBadgeList(buf);
 			break;
 
 		default:
@@ -4243,6 +4356,10 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 
 			case 0x18: // Amount placed on 256^2 map on map creation
 				spec->generate_amount = buf.ReadByte();
+				break;
+
+			case 0x19: // Badge list
+				spec->badges = ReadBadgeList(buf, GSF_OBJECTS);
 				break;
 
 			default:
@@ -4383,6 +4500,10 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				for (int j = buf.ReadByte(); j != 0; j--) buf.ReadDWord();
 				break;
 
+			case 0x1E: // Badge list
+				rti->badges = ReadBadgeList(buf, GSF_RAILTYPES);
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -4461,6 +4582,10 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 
 			case 0x17: // Introduction date
 				buf.ReadDWord();
+				break;
+
+			case 0x1E: // Badge list
+				SkipBadgeList(buf);
 				break;
 
 			default:
@@ -4590,6 +4715,10 @@ static ChangeInfoResult RoadTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				for (int j = buf.ReadByte(); j != 0; j--) buf.ReadDWord();
 				break;
 
+			case 0x1E: // Badge list
+				rti->badges = ReadBadgeList(buf, GSF_ROADTYPES);
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -4677,6 +4806,10 @@ static ChangeInfoResult RoadTypeReserveInfo(uint id, int numinfo, int prop, Byte
 
 			case 0x17: // Introduction date
 				buf.ReadDWord();
+				break;
+
+			case 0x1E: // Badge list
+				SkipBadgeList(buf);
 				break;
 
 			default:
@@ -4774,6 +4907,10 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 				tsp->animation.triggers = buf.ReadByte();
 				break;
 
+			case 0x12: // Badge list
+				tsp->badges = ReadBadgeList(buf, GSF_TRAMTYPES);
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -4815,9 +4952,56 @@ static ChangeInfoResult IgnoreRoadStopProperty(uint prop, ByteReader &buf)
 			buf.ReadDWord();
 			break;
 
+		case 0x16: // Badge list
+			SkipBadgeList(buf);
+			break;
+
 		default:
 			ret = CIR_UNKNOWN;
 			break;
+	}
+
+	return ret;
+}
+
+static ChangeInfoResult BadgeChangeInfo(uint id, int numinfo, int prop, ByteReader &buf)
+{
+	static const int NUM_BADGES_PER_GRF = 16384;
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	if (id + numinfo > NUM_BADGES_PER_GRF) {
+		GrfMsg(1, "BadgeChangeInfo: Tag {} is invalid, max {}, ignoring", id + numinfo, NUM_BADGES_PER_GRF);
+		return CIR_INVALID_ID;
+	}
+
+	for (int i = 0; i < numinfo; i++) {
+		if (_cur.grffile->badge_map.count(id + i) == 0 && prop != 0x08) {
+			GrfMsg(1, "BadgeChangeInfo: Attempt to modify undefined tag {}, ignoring", id + i);
+			return CIR_INVALID_ID;
+		}
+
+		Badge *badge;
+		if (prop != 0x08) badge = GetBadge(_cur.grffile->badge_map[id + i]);
+
+		switch (prop) {
+			case 0x08: { // Label
+				std::string_view label = buf.ReadString();
+				_cur.grffile->badge_map[id + i] = GetOrCreateBadge(label).index;
+				break;
+			}
+
+			case 0x09: // Flags
+				badge->flags = static_cast<BadgeFlags>(buf.ReadDWord());
+				break;
+
+			case 0x0A: // Short name
+				AddStringForMapping(buf.ReadWord(), [index = badge->index](StringID str) { GetBadge(index)->name = str; });
+				break;
+
+			default:
+				ret = CIR_UNKNOWN;
+				break;
+		}
 	}
 
 	return ret;
@@ -4901,6 +5085,10 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 				rs->clear_cost_multiplier = buf.ReadByte();
 				break;
 
+			case 0x16: // Badge list
+				rs->badges = ReadBadgeList(buf, GSF_ROADSTOPS);
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -4975,6 +5163,7 @@ static void FeatureChangeInfo(ByteReader &buf)
 		/* GSF_ROADTYPES */     RoadTypeChangeInfo,
 		/* GSF_TRAMTYPES */     TramTypeChangeInfo,
 		/* GSF_ROADSTOPS */     RoadStopChangeInfo,
+		/* GSF_BADGES */        BadgeChangeInfo,
 	};
 	static_assert(GSF_END == lengthof(handler));
 
@@ -5405,6 +5594,7 @@ static void NewSpriteGroup(ByteReader &buf)
 				case GSF_RAILTYPES:
 				case GSF_ROADTYPES:
 				case GSF_TRAMTYPES:
+				case GSF_BADGES:
 				{
 					uint8_t num_loaded  = type;
 					uint8_t num_loading = buf.ReadByte();
@@ -6177,6 +6367,56 @@ static void RoadStopMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 	}
 }
 
+static void BadgeMapSpriteGroup(ByteReader &buf, uint8_t idcount)
+{
+	if (_cur.grffile->badge_map.empty()) {
+		GrfMsg(1, "BadgeMapSpriteGroup: No badges defined, skipping");
+		return;
+	}
+
+	std::vector<uint16_t> local_ids;
+	local_ids.reserve(idcount);
+	for (uint i = 0; i < idcount; i++) {
+		local_ids.push_back(buf.ReadExtendedByte());
+	}
+
+	uint8_t cidcount = buf.ReadByte();
+	for (uint c = 0; c < cidcount; c++) {
+		uint8_t ctype = buf.ReadByte();
+		uint16_t groupid = buf.ReadWord();
+		if (!IsValidGroupID(groupid, "BadgeMapSpriteGroup")) continue;
+
+		if (ctype >= GSF_END) continue;
+
+		for (const auto &local_id : local_ids) {
+			auto found = _cur.grffile->badge_map.find(local_id);
+			if (found == std::end(_cur.grffile->badge_map)) {
+				GrfMsg(1, "BadgeMapSpriteGroup: Badge {} undefined, skipping", local_id);
+				continue;
+			}
+
+			auto &badge = *GetBadge(found->second);
+			badge.grf_prop.spritegroup[ctype] = _cur.spritegroups[groupid];
+		}
+	}
+
+	uint16_t groupid = buf.ReadWord();
+	if (!IsValidGroupID(groupid, "BadgeMapSpriteGroup")) return;
+
+	for (auto &local_id : local_ids) {
+		auto found = _cur.grffile->badge_map.find(local_id);
+		if (found == std::end(_cur.grffile->badge_map)) {
+			GrfMsg(1, "BadgeMapSpriteGroup: Badge {} undefined, skipping", local_id);
+			continue;
+		}
+
+		auto &badge = *GetBadge(found->second);
+		badge.grf_prop.spritegroup[GSF_END] = _cur.spritegroups[groupid];
+		badge.grf_prop.grffile = _cur.grffile;
+		badge.grf_prop.local_id = local_id;
+	}
+}
+
 /* Action 0x03 */
 static void FeatureMapSpriteGroup(ByteReader &buf)
 {
@@ -6280,6 +6520,10 @@ static void FeatureMapSpriteGroup(ByteReader &buf)
 			RoadStopMapSpriteGroup(buf, idcount);
 			return;
 
+		case GSF_BADGES:
+			BadgeMapSpriteGroup(buf, idcount);
+			break;
+
 		default:
 			GrfMsg(1, "FeatureMapSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 			return;
@@ -6350,6 +6594,17 @@ static void FeatureNewName(ByteReader &buf)
 					AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, true, name, STR_UNDEFINED);
 				}
 				break;
+
+			case GSF_BADGES: {
+				auto found = _cur.grffile->badge_map.find(id);
+				if (found == std::end(_cur.grffile->badge_map)) {
+					GrfMsg(1, "FeatureNewName: Attempt to name undefined badge 0x{:X}, ignoring", id);
+				} else {
+					Badge &badge = *GetBadge(found->second);
+					badge.name = AddGRFString(_cur.grffile->grfid, id, lang, true, false, name, STR_UNDEFINED); break;
+				}
+				break;
+			}
 
 			default:
 				if (IsInsideMM(id, 0xD000, 0xD400) || IsInsideMM(id, 0xD800, 0x10000)) {
@@ -8829,6 +9084,8 @@ void ResetNewGRFData()
 	CleanUpStrings();
 	CleanUpGRFTownNames();
 
+	ResetBadges();
+
 	/* Copy/reset original engine info data */
 	SetupEngines();
 
@@ -9270,6 +9527,12 @@ static void FinaliseEngineArray()
 		}
 
 		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
+
+		switch (e->type) {
+			case VEH_TRAIN: AppendCopyableBadgeList(e->badges, GetRailTypeInfo(e->u.rail.railtype)->badges, GSF_TRAINS); break;
+			case VEH_ROAD: AppendCopyableBadgeList(e->badges, GetRoadTypeInfo(e->u.road.roadtype)->badges, GSF_ROADVEHICLES); break;
+			default: break;
+		}
 
 		/* Skip wagons, there livery is defined via the engine */
 		if (e->type != VEH_TRAIN || e->u.rail.railveh_type != RAILVEH_WAGON) {
@@ -9988,6 +10251,42 @@ static void FinalisePriceBaseMultipliers()
 	}
 }
 
+template <typename T>
+void AddBadgeToSpecs(T &specs, GrfSpecFeature feature, Badge &badge)
+{
+	for (auto &spec : specs) {
+		if (spec == nullptr) continue;
+		spec->badges.push_back(badge.index);
+		badge.SetFeature(feature);
+	}
+}
+
+/** Finish up applying badges to things */
+static void FinaliseBadges()
+{
+	for (GRFFile * const file : _grf_files) {
+		Badge *badge = GetBadgeByLabel(fmt::format("newgrf/{:08x}", BSWAP32(file->grfid)));
+		if (badge == nullptr) continue;
+
+		for (Engine *e : Engine::Iterate()) {
+			if (e->grf_prop.grffile != file) continue;
+			e->badges.push_back(badge->index);
+			badge->SetFeature(static_cast<GrfSpecFeature>(GSF_TRAINS + e->type));
+		}
+
+		AddBadgeToSpecs(file->stations, GSF_STATIONS, *badge);
+		AddBadgeToSpecs(file->housespec, GSF_HOUSES, *badge);
+		AddBadgeToSpecs(file->industryspec, GSF_INDUSTRIES, *badge);
+		AddBadgeToSpecs(file->indtspec, GSF_INDUSTRYTILES, *badge);
+		AddBadgeToSpecs(file->objectspec, GSF_OBJECTS, *badge);
+		AddBadgeToSpecs(file->airportspec, GSF_AIRPORTS, *badge);
+		AddBadgeToSpecs(file->airtspec, GSF_AIRPORTTILES, *badge);
+		AddBadgeToSpecs(file->roadstops, GSF_ROADSTOPS, *badge);
+	}
+
+	ApplyBadgeFeaturesToClassBadges();
+}
+
 extern void InitGRFTownGeneratorNames();
 
 /** Finish loading NewGRFs and execute needed post-processing */
@@ -10004,6 +10303,8 @@ static void AfterLoadGRFs()
 
 	/* Clear the action 6 override sprites. */
 	_grf_line_to_action6_sprite_override.clear();
+
+	FinaliseBadges();
 
 	/* Polish cargoes */
 	FinaliseCargoArray();

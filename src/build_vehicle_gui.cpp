@@ -17,6 +17,8 @@
 #include "command_func.h"
 #include "company_func.h"
 #include "vehicle_gui.h"
+#include "newgrf_badge.h"
+#include "newgrf_badge_config.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
 #include "group.h"
@@ -72,8 +74,11 @@ static constexpr NWidgetPart _nested_build_vehicle_widgets[] = {
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BV_SHOW_HIDDEN_ENGINES),
 			NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_BV_CARGO_FILTER_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_FILTER_CRITERIA),
 		EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_GREY),
-			NWidget(WWT_EDITBOX, COLOUR_GREY, WID_BV_FILTER), SetResize(1, 0), SetFill(1, 0), SetPadding(2), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PANEL, COLOUR_GREY),
+				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_BV_FILTER), SetResize(1, 0), SetFill(1, 0), SetPadding(2), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+			EndContainer(),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BV_CONFIGURE_BADGES), SetResize(0, 0), SetFill(0, 1), SetDataTip(STR_JUST_STRING, STR_NULL),
 		EndContainer(),
 	EndContainer(),
 	/* Vehicle list. */
@@ -976,6 +981,8 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 
 	if (refittable) y = ShowRefitOptionsList(left, right, y, engine_number);
 
+	y = DrawBadgeNameList({left, y, right, INT16_MAX}, e->badges, static_cast<GrfSpecFeature>(GSF_TRAINS + e->type));
+
 	/* Additional text from NewGRF */
 	y = ShowAdditionalText(left, right, y, engine_number);
 
@@ -990,6 +997,11 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 	return y;
 }
 
+static void DrawEngineBadgeColumn(Rect r, int column_group, const GUIBadgeClasses &badge_classes, const Engine *e, PaletteID remap)
+{
+	DrawBadgeColumn(r, column_group, badge_classes, e->badges, static_cast<GrfSpecFeature>(GSF_TRAINS + e->type), e->info.base_intro, remap);
+}
+
 /**
  * Engine drawing loop
  * @param type Type of vehicle (VEH_*)
@@ -1000,9 +1012,9 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
  * @param show_count Whether to show the amount of engines or not
  * @param selected_group the group to list the engines of
  */
-void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group)
+void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes)
 {
-	static const int sprite_y_offsets[] = { -1, -1, -2, -2 };
+	static const std::array<int8_t, VehicleType::VEH_COMPANY_END> sprite_y_offsets = { 0, 0, -1, -1 };
 
 	auto [first, last] = sb.GetVisibleRangeIterators(eng_list);
 
@@ -1014,7 +1026,9 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 	int circle_width = std::max(GetScaledSpriteSize(SPR_CIRCLE_FOLDED).width, GetScaledSpriteSize(SPR_CIRCLE_UNFOLDED).width);
 	int linecolour = GetColourGradient(COLOUR_ORANGE, SHADE_NORMAL);
 
-	Rect ir      = r.WithHeight(step_size).Shrink(WidgetDimensions::scaled.matrix);
+	auto badge_column_widths = badge_classes.GetColumnWidths();
+
+	Rect ir = r.WithHeight(step_size).Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero);
 	int sprite_y_offset = ScaleSpriteTrad(sprite_y_offsets[type]) + ir.Height() / 2;
 
 	Dimension replace_icon = {0, 0};
@@ -1032,44 +1046,88 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		count_width = GetStringBoundingBox(STR_JUST_COMMA, FS_SMALL).width;
 	}
 
-	Rect tr = ir.Indent(circle_width + WidgetDimensions::scaled.hsep_normal + sprite_width + WidgetDimensions::scaled.hsep_wide, rtl); // Name position
-	Rect cr = tr.Indent(replace_icon.width + WidgetDimensions::scaled.hsep_wide, !rtl).WithWidth(count_width, !rtl);  // Count position
-	Rect rr = tr.WithWidth(replace_icon.width, !rtl);                                                                 // Replace icon position
-	if (show_count) tr = tr.Indent(count_width + WidgetDimensions::scaled.hsep_normal + replace_icon.width + WidgetDimensions::scaled.hsep_wide, !rtl);
-
-	int normal_text_y_offset = (ir.Height() - GetCharacterHeight(FS_NORMAL)) / 2;
-	int small_text_y_offset  = ir.Height() - GetCharacterHeight(FS_SMALL);
-	int replace_icon_y_offset = (ir.Height() - replace_icon.height) / 2;
+	const int text_row_height = ir.Shrink(WidgetDimensions::scaled.matrix).Height();
+	const int normal_text_y_offset = (text_row_height - GetCharacterHeight(FS_NORMAL)) / 2;
+	const int small_text_y_offset  = text_row_height - GetCharacterHeight(FS_SMALL);
 
 	const int offset = (rtl ? -circle_width : circle_width) / 2;
 	const int level_width = rtl ? -WidgetDimensions::scaled.hsep_indent : WidgetDimensions::scaled.hsep_indent;
 
-	int y = ir.top;
 	for (auto it = first; it != last; ++it) {
 		const auto &item = *it;
+		const Engine *e = Engine::Get(item.engine_id);
+
 		uint indent       = item.indent * WidgetDimensions::scaled.hsep_indent;
 		bool has_variants = HasFlag(item.flags, EngineDisplayFlags::HasVariants);
 		bool is_folded    = HasFlag(item.flags, EngineDisplayFlags::IsFolded);
 		bool shaded       = HasFlag(item.flags, EngineDisplayFlags::Shaded);
 
+		Rect textr = ir.Shrink(WidgetDimensions::scaled.matrix);
+		Rect tr = ir.Indent(indent, rtl);
+
 		if (item.indent > 0) {
 			/* Draw tree continuation lines. */
 			int tx = (rtl ? ir.right : ir.left) + offset;
-			int ty = y - WidgetDimensions::scaled.matrix.top;
 			for (uint lvl = 1; lvl <= item.indent; ++lvl) {
-				if (HasBit(item.level_mask, lvl)) GfxDrawLine(tx, ty, tx, ty + step_size - 1, linecolour, WidgetDimensions::scaled.fullbevel.top);
+				if (HasBit(item.level_mask, lvl)) GfxDrawLine(tx, ir.top, tx, ir.bottom, linecolour, WidgetDimensions::scaled.fullbevel.top);
 				if (lvl < item.indent) tx += level_width;
 			}
 			/* Draw our node in the tree. */
-			int ycentre = y + normal_text_y_offset + GetCharacterHeight(FS_NORMAL) / 2 - 1;
-			if (!HasBit(item.level_mask, item.indent)) GfxDrawLine(tx, ty, tx, ycentre, linecolour, WidgetDimensions::scaled.fullbevel.top);
+			int ycentre = CenterBounds(textr.top, textr.bottom, WidgetDimensions::scaled.fullbevel.top);
+			if (!HasBit(item.level_mask, item.indent)) GfxDrawLine(tx, ir.top, tx, ycentre, linecolour, WidgetDimensions::scaled.fullbevel.top);
 			GfxDrawLine(tx, ycentre, tx + offset - (rtl ? -1 : 1), ycentre, linecolour, WidgetDimensions::scaled.fullbevel.top);
 		}
 
+		if (has_variants) {
+			Rect fr = tr.WithWidth(circle_width, rtl);
+			DrawSpriteIgnorePadding(is_folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, {fr.left, textr.top, fr.right, textr.bottom}, SA_CENTER);
+		}
+
+		tr = tr.Indent(circle_width + WidgetDimensions::scaled.hsep_normal, rtl);
+
 		/* Note: num_engines is only used in the autoreplace GUI, so it is correct to use _local_company here. */
 		const uint num_engines = GetGroupNumEngines(_local_company, selected_group, item.engine_id);
+		const PaletteID pal = (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(item.engine_id, _local_company);
 
-		const Engine *e = Engine::Get(item.engine_id);
+		if (badge_column_widths.size() >= 1 && badge_column_widths[0] > 0) {
+			Rect br = tr.WithWidth(badge_column_widths[0], rtl);
+			DrawEngineBadgeColumn(br, 0, badge_classes, e, pal);
+			tr = tr.Indent(badge_column_widths[0], rtl);
+		}
+
+		int sprite_x = tr.WithWidth(sprite_width, rtl).left + sprite_left;
+		DrawVehicleEngine(r.left, r.right, sprite_x, tr.top + sprite_y_offset, item.engine_id, pal, EIT_PURCHASE);
+
+		tr = tr.Indent(sprite_width + WidgetDimensions::scaled.hsep_wide, rtl);
+
+		if (badge_column_widths.size() >= 2 && badge_column_widths[1] > 0) {
+			Rect br = tr.WithWidth(badge_column_widths[1], rtl);
+			DrawEngineBadgeColumn(br, 1, badge_classes, e, pal);
+			tr = tr.Indent(badge_column_widths[1], rtl);
+		}
+
+		if (show_count) {
+			/* Rect for replace-protection icon. */
+			Rect rr = tr.WithWidth(replace_icon.width, !rtl);
+			tr = tr.Indent(replace_icon.width + WidgetDimensions::scaled.hsep_normal, !rtl);
+			/* Rect for engine type count text. */
+			Rect cr = tr.WithWidth(count_width, !rtl);
+			tr = tr.Indent(count_width + WidgetDimensions::scaled.hsep_normal, !rtl);
+
+			SetDParam(0, num_engines);
+			DrawString(cr.left, cr.right, textr.top + small_text_y_offset, STR_JUST_COMMA, TC_BLACK, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+
+			if (EngineHasReplacementForCompany(Company::Get(_local_company), item.engine_id, selected_group)) {
+				DrawSpriteIgnorePadding(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, rr, SA_CENTER);
+			}
+		}
+
+		if (badge_column_widths.size() >= 3 && badge_column_widths[2] > 0) {
+			Rect br = tr.WithWidth(badge_column_widths[2], !rtl).Indent(WidgetDimensions::scaled.hsep_wide, rtl);
+			DrawEngineBadgeColumn(br, 2, badge_classes, e, pal);
+			tr = tr.Indent(badge_column_widths[2], !rtl);
+		}
+
 		bool hidden = HasBit(e->company_hidden, _local_company);
 		StringID str = hidden ? STR_HIDDEN_ENGINE_NAME : STR_ENGINE_NAME;
 		TextColour tc = (item.engine_id == selected_id) ? TC_WHITE : ((hidden | shaded) ? (TC_GREY | TC_FORCED | TC_NO_SHADE) : TC_BLACK);
@@ -1080,20 +1138,9 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		} else {
 			SetDParam(0, PackEngineNameDParam(item.engine_id, EngineNameContext::PurchaseList, item.indent));
 		}
-		Rect itr = tr.Indent(indent, rtl);
-		DrawString(itr.left, itr.right, y + normal_text_y_offset, str, tc);
-		int sprite_x = ir.Indent(indent + circle_width + WidgetDimensions::scaled.hsep_normal, rtl).WithWidth(sprite_width, rtl).left + sprite_left;
-		DrawVehicleEngine(r.left, r.right, sprite_x, y + sprite_y_offset, item.engine_id, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(item.engine_id, _local_company), EIT_PURCHASE);
-		if (show_count) {
-			SetDParam(0, num_engines);
-			DrawString(cr.left, cr.right, y + small_text_y_offset, STR_JUST_COMMA, TC_BLACK, SA_RIGHT | SA_FORCE, false, FS_SMALL);
-			if (EngineHasReplacementForCompany(Company::Get(_local_company), item.engine_id, selected_group)) DrawSprite(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, rr.left, y + replace_icon_y_offset);
-		}
-		if (has_variants) {
-			Rect fr = ir.Indent(indent, rtl).WithWidth(circle_width, rtl);
-			DrawSpriteIgnorePadding(is_folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, {fr.left, y, fr.right, y + ir.Height() - 1}, SA_CENTER);
-		}
-		y += step_size;
+		DrawString(tr.left, tr.right, textr.top + normal_text_y_offset, str, tc);
+
+		ir = ir.Translate(0, step_size);
 	}
 }
 
@@ -1172,6 +1219,7 @@ struct BuildVehicleWindow : Window {
 	} filter;                                   ///< Filter to apply.
 	bool descending_sort_order;                 ///< Sort direction, @see _engine_sort_direction
 	uint8_t sort_criteria;                         ///< Current sort criterium.
+
 	bool show_hidden_engines;                   ///< State of the 'show hidden engines' button.
 	bool listview_mode;                         ///< If set, only display the available vehicles and do not show a 'build' button.
 	EngineID sel_engine;                        ///< Currently selected engine, or #INVALID_ENGINE
@@ -1181,6 +1229,7 @@ struct BuildVehicleWindow : Window {
 	int details_height;                         ///< Minimal needed height of the details panels, in text lines (found so far).
 	Scrollbar *vscroll;
 	TestedEngineDetails te;                     ///< Tested cost and capacity after refit.
+	GUIBadgeClasses badge_classes;
 
 	StringFilter string_filter;                 ///< Filter for vehicle name
 	QueryString vehicle_editbox;                ///< Filter editbox
@@ -1201,6 +1250,11 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
+	void BuildBadgeClasses()
+	{
+		this->badge_classes = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type));
+	}
+
 	BuildVehicleWindow(WindowDesc &desc, TileIndex tile, VehicleType type) : Window(desc), vehicle_editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS)
 	{
 		this->vehicle_type = type;
@@ -1212,6 +1266,8 @@ struct BuildVehicleWindow : Window {
 		this->sort_criteria         = _engine_sort_last_criteria[type];
 		this->descending_sort_order = _engine_sort_last_order[type];
 		this->show_hidden_engines   = _engine_sort_show_hidden_engines[type];
+
+		this->BuildBadgeClasses();
 
 		this->UpdateFilterByTile();
 
@@ -1392,6 +1448,8 @@ struct BuildVehicleWindow : Window {
 
 		list.clear();
 
+		BadgeTextFilter btf(this->string_filter, GSF_TRAINS);
+
 		/* Make list of all available train engines and wagons.
 		 * Also check to see if the previously selected engine is still available,
 		 * and if not, reset selection to INVALID_ENGINE. This could be the case
@@ -1408,7 +1466,7 @@ struct BuildVehicleWindow : Window {
 			if (!FilterSingleEngine(eid)) continue;
 
 			/* Filter by name or NewGRF extra text */
-			if (!FilterByText(e)) continue;
+			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
 
 			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
@@ -1457,6 +1515,8 @@ struct BuildVehicleWindow : Window {
 
 		this->eng_list.clear();
 
+		BadgeTextFilter btf(this->string_filter, GSF_ROADVEHICLES);
+
 		for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
@@ -1464,7 +1524,7 @@ struct BuildVehicleWindow : Window {
 			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->u.road.roadtype, this->filter.roadtype)) continue;
 
 			/* Filter by name or NewGRF extra text */
-			if (!FilterByText(e)) continue;
+			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
 
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
@@ -1479,13 +1539,15 @@ struct BuildVehicleWindow : Window {
 		EngineID sel_id = INVALID_ENGINE;
 		this->eng_list.clear();
 
+		BadgeTextFilter btf(this->string_filter, GSF_SHIPS);
+
 		for (const Engine *e : Engine::IterateType(VEH_SHIP)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
 
 			/* Filter by name or NewGRF extra text */
-			if (!FilterByText(e)) continue;
+			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
 
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
@@ -1503,6 +1565,8 @@ struct BuildVehicleWindow : Window {
 
 		const Station *st = this->listview_mode ? nullptr : Station::GetByTile(this->window_number);
 
+		BadgeTextFilter btf(this->string_filter, GSF_AIRCRAFT);
+
 		/* Make list of all available planes.
 		 * Also check to see if the previously selected plane is still available,
 		 * and if not, reset selection to INVALID_ENGINE. This could be the case
@@ -1515,7 +1579,7 @@ struct BuildVehicleWindow : Window {
 			if (!this->listview_mode && !CanVehicleUseStation(eid, st)) continue;
 
 			/* Filter by name or NewGRF extra text */
-			if (!FilterByText(e)) continue;
+			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
 
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
@@ -1606,6 +1670,12 @@ struct BuildVehicleWindow : Window {
 		return list;
 	}
 
+	DropDownList BuildBadgeConfigurationList() const
+	{
+		static const auto separators = { STR_BADGE_CONFIG_PREVIEW, STR_BADGE_CONFIG_NAME };
+		return ::BuildBadgeClassConfigurationList(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type), 3, separators);
+	}
+
 	void BuildVehicle()
 	{
 		EngineID sel_eng = this->sel_engine;
@@ -1689,6 +1759,10 @@ struct BuildVehicleWindow : Window {
 				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget);
 				break;
 
+			case WID_BV_CONFIGURE_BADGES:
+				ShowDropDownList(this, this->BuildBadgeConfigurationList(), -1, widget, 0, false, true);
+				break;
+
 			case WID_BV_SHOW_HIDE: {
 				const Engine *e = (this->sel_engine == INVALID_ENGINE) ? nullptr : Engine::Get(this->sel_engine);
 				if (e != nullptr) {
@@ -1763,6 +1837,10 @@ struct BuildVehicleWindow : Window {
 				}
 				break;
 			}
+
+			case WID_BV_CONFIGURE_BADGES:
+				SetDParam(0, STR_BADGES);
+				break;
 		}
 	}
 
@@ -1772,7 +1850,7 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_LIST:
 				resize.height = GetEngineListHeight(this->vehicle_type);
 				size.height = 3 * resize.height;
-				size.width = std::max(size.width, GetVehicleImageCellSize(this->vehicle_type, EIT_PURCHASE).extend_left + GetVehicleImageCellSize(this->vehicle_type, EIT_PURCHASE).extend_right + 165) + padding.width;
+				size.width = std::max(size.width, this->badge_classes.GetTotalColumnsWidth() + GetVehicleImageCellSize(this->vehicle_type, EIT_PURCHASE).extend_left + GetVehicleImageCellSize(this->vehicle_type, EIT_PURCHASE).extend_right + 165) + padding.width;
 				break;
 
 			case WID_BV_PANEL:
@@ -1818,7 +1896,8 @@ struct BuildVehicleWindow : Window {
 					*this->vscroll,
 					this->sel_engine,
 					false,
-					DEFAULT_GROUP
+					DEFAULT_GROUP,
+					this->badge_classes
 				);
 				break;
 
@@ -1885,6 +1964,40 @@ struct BuildVehicleWindow : Window {
 					this->SelectEngine(this->sel_engine);
 				}
 				break;
+
+			case WID_BV_CONFIGURE_BADGES: {
+				if (index < 0) return;
+
+				GrfSpecFeature feature = static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type);
+				if (index == INT_MAX) {
+					ResetBadgeClassConfiguration(feature);
+					this->BuildBadgeClasses();
+					this->SetDirty();
+
+					this->CloseChildWindows(WC_DROPDOWN_MENU);
+					return;
+				}
+
+				int w = NWidgetScrollbar::GetVerticalDimension().width;
+
+				extern Point _dropdown_hit;
+				if (_dropdown_hit.y - _dropdown_hit.x < w) {
+					/* Move down */
+					BadgeClassMoveNext(feature, index, 3);
+				} else if (_dropdown_hit.y - _dropdown_hit.x < w * 2) {
+					/* Move up */
+					BadgeClassMovePrevious(feature, index);
+				} else {
+					/* Toggle */
+					BadgeClassToggleVisibility(feature, index);
+				}
+
+				this->BuildBadgeClasses();
+				this->SetDirty();
+
+				ReplaceDropDownList(this, this->BuildBadgeConfigurationList(), -1);
+				break;
+			}
 		}
 		this->SetDirty();
 	}
