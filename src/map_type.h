@@ -10,17 +10,7 @@
 #ifndef MAP_TYPE_H
 #define MAP_TYPE_H
 
-/**
- * An offset value between two tiles.
- *
- * This value is used for the difference between
- * two tiles. It can be added to a TileIndex to get
- * the resulting TileIndex of the start tile applied
- * with this saved difference.
- *
- * @see TileDiffXY(int, int)
- */
-typedef int32_t TileIndexDiff;
+struct TileIndexDiff;
 
 /**
  * A pair-construct of a TileIndexDiff.
