@@ -273,6 +273,12 @@ public:
 		return this->vehicle;
 	}
 
+	inline void SetVehicle(const VehicleType *v)
+	{
+		assert(this->vehicle == nullptr);
+		this->vehicle = v;
+	}
+
 	void DumpBase(DumpTarget &dmp) const
 	{
 		dmp.WriteStructT("nodes", &this->nodes);
