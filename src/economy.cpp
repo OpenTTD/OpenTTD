@@ -1444,7 +1444,7 @@ struct ReturnCargoAction
 	 */
 	bool operator()(Vehicle *v)
 	{
-		v->cargo.Return(UINT_MAX, &this->st->goods[v->cargo_type].cargo, this->next_hop, v->GetCargoTile());
+		v->cargo.Return(UINT_MAX, &this->st->goods[v->cargo_type].GetOrCreateData().cargo, this->next_hop, v->GetCargoTile());
 		return true;
 	}
 };
@@ -1478,7 +1478,7 @@ struct FinalizeRefitAction
 	bool operator()(Vehicle *v)
 	{
 		if (this->do_reserve) {
-			this->st->goods[v->cargo_type].cargo.Reserve(v->cargo_cap - v->cargo.RemainingCount(),
+			this->st->goods[v->cargo_type].GetOrCreateData().cargo.Reserve(v->cargo_cap - v->cargo.RemainingCount(),
 					&v->cargo, this->next_station, v->GetCargoTile());
 		}
 		this->consist_capleft[v->cargo_type] += v->cargo_cap - v->cargo.RemainingCount();
@@ -1511,7 +1511,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 		/* Get a refittable cargo type with waiting cargo for next_station or INVALID_STATION. */
 		new_cid = v_start->cargo_type;
 		for (CargoID cid : SetCargoBitIterator(refit_mask)) {
-			if (st->goods[cid].cargo.HasCargoFor(next_station)) {
+			if (st->goods[cid].HasData() && st->goods[cid].GetData().cargo.HasCargoFor(next_station)) {
 				/* Try to find out if auto-refitting would succeed. In case the refit is allowed,
 				 * the returned refit capacity will be greater than zero. */
 				auto [cc, refit_capacity, mail_capacity, cargo_capacities] = Command<CMD_REFIT_VEHICLE>::Do(DC_QUERY_COST, v_start->index, cid, 0xFF, true, false, 1); // Auto-refit and only this vehicle including artic parts.
@@ -1523,7 +1523,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 				 * of 0 for all cargoes. */
 				if (refit_capacity > 0 && (consist_capleft[cid] < consist_capleft[new_cid] ||
 						(consist_capleft[cid] == consist_capleft[new_cid] &&
-						st->goods[cid].cargo.AvailableCount() > st->goods[new_cid].cargo.AvailableCount()))) {
+						st->goods[cid].GetData().cargo.AvailableCount() > st->goods[new_cid].GetData().cargo.AvailableCount()))) {
 					new_cid = cid;
 				}
 			}
@@ -1569,7 +1569,7 @@ struct ReserveCargoAction {
 	bool operator()(Vehicle *v)
 	{
 		if (v->cargo_cap > v->cargo.RemainingCount() && MayLoadUnderExclusiveRights(st, v)) {
-			st->goods[v->cargo_type].cargo.Reserve(v->cargo_cap - v->cargo.RemainingCount(),
+			st->goods[v->cargo_type].GetOrCreateData().cargo.Reserve(v->cargo_cap - v->cargo.RemainingCount(),
 					&v->cargo, *next_station, v->GetCargoTile());
 		}
 
@@ -1701,7 +1701,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 					uint new_remaining = v->cargo.RemainingCount() + v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER);
 					if (v->cargo_cap < new_remaining) {
 						/* Return some of the reserved cargo to not overload the vehicle. */
-						v->cargo.Return(new_remaining - v->cargo_cap, &ge->cargo, INVALID_STATION, v->GetCargoTile());
+						v->cargo.Return(new_remaining - v->cargo_cap, &ge->GetOrCreateData().cargo, INVALID_STATION, v->GetCargoTile());
 					}
 
 					/* Keep instead of delivering. This may lead to no cargo being unloaded, so ...*/
@@ -1729,7 +1729,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 			}
 
 			assert(payment != nullptr);
-			amount_unloaded = v->cargo.Unload(amount_unloaded, &ge->cargo, v->cargo_type, payment, v->GetCargoTile());
+			amount_unloaded = v->cargo.Unload(amount_unloaded, &ge->GetOrCreateData().cargo, v->cargo_type, payment, v->GetCargoTile());
 			remaining = v->cargo.UnloadCount() > 0;
 			if (amount_unloaded > 0) {
 				dirty_vehicle = true;
@@ -1795,11 +1795,11 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 			/* If there's goods waiting at the station, and the vehicle
 			 * has capacity for it, load it on the vehicle. */
-			if ((v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0 || ge->cargo.AvailableCount() > 0) && MayLoadUnderExclusiveRights(st, v)) {
+			if ((v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0 || (ge->HasData() && ge->GetData().cargo.AvailableCount() > 0)) && MayLoadUnderExclusiveRights(st, v)) {
 				if (v->cargo.StoredCount() == 0) TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
 				if (_settings_game.order.gradual_loading) cap_left = std::min(cap_left, GetLoadAmount(v));
 
-				uint loaded = ge->cargo.Load(cap_left, &v->cargo, next_station, v->GetCargoTile());
+				uint loaded = ge->GetOrCreateData().cargo.Load(cap_left, &v->cargo, next_station, v->GetCargoTile());
 				if (v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0) {
 					/* Remember if there are reservations left so that we don't stop
 					 * loading before they're loaded. */
@@ -1827,7 +1827,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 					st->time_since_load = 0;
 					st->last_vehicle_type = v->type;
 
-					if (ge->cargo.TotalCount() == 0) {
+					if (ge->GetData().cargo.TotalCount() == 0) {
 						TriggerStationRandomisation(st, st->xy, SRT_CARGO_TAKEN, v->cargo_type);
 						TriggerStationAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
 						AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);

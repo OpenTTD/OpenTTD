@@ -1387,7 +1387,7 @@ static void MaybeCrashAirplane(Aircraft *v)
 	/* Crash the airplane. Remove all goods stored at the station. */
 	for (GoodsEntry &ge : st->goods) {
 		ge.rating = 1;
-		ge.cargo.Truncate();
+		if (ge.HasData()) ge.GetData().cargo.Truncate();
 	}
 
 	CrashAirplane(v);

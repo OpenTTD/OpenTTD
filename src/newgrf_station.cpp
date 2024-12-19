@@ -434,10 +434,10 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 		const GoodsEntry *ge = &this->goods[c];
 
 		switch (variable) {
-			case 0x60: return std::min(ge->cargo.TotalCount(), 4095u);
+			case 0x60: return ge->HasData() ? std::min(ge->GetData().cargo.TotalCount(), 4095u) : 0;
 			case 0x61: return ge->HasVehicleEverTriedLoading() ? ge->time_since_pickup : 0;
 			case 0x62: return ge->HasRating() ? ge->rating : 0xFFFFFFFF;
-			case 0x63: return ge->cargo.PeriodsInTransit();
+			case 0x63: return ge->HasData() ? ge->GetData().cargo.PeriodsInTransit() : 0;
 			case 0x64: return ge->HasVehicleEverTriedLoading() ? ge->last_speed | (ge->last_age << 8) : 0xFF00;
 			case 0x65: return GB(ge->status, GoodsEntry::GES_ACCEPTANCE, 1) << 3;
 			case 0x69: {
@@ -453,12 +453,12 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 	if (variable >= 0x8C && variable <= 0xEC) {
 		const GoodsEntry *g = &this->goods[GB(variable - 0x8C, 3, 4)];
 		switch (GB(variable - 0x8C, 0, 3)) {
-			case 0: return g->cargo.TotalCount();
-			case 1: return GB(std::min(g->cargo.TotalCount(), 4095u), 0, 4) | (GB(g->status, GoodsEntry::GES_ACCEPTANCE, 1) << 7);
+			case 0: return g->HasData() ? g->GetData().cargo.TotalCount() : 0;
+			case 1: return GB(g->HasData() ? std::min(g->GetData().cargo.TotalCount(), 4095u) : 0, 0, 4) | (GB(g->status, GoodsEntry::GES_ACCEPTANCE, 1) << 7);
 			case 2: return g->time_since_pickup;
 			case 3: return g->rating;
-			case 4: return g->cargo.GetFirstStation();
-			case 5: return g->cargo.PeriodsInTransit();
+			case 4: return g->HasData() ? g->GetData().cargo.GetFirstStation() : INVALID_STATION;
+			case 5: return g->HasData() ? g->GetData().cargo.PeriodsInTransit() : 0;
 			case 6: return g->last_speed;
 			case 7: return g->last_age;
 		}
@@ -520,13 +520,16 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 
 		case SpriteGroupCargo::SG_DEFAULT:
 			for (const GoodsEntry &ge : st->goods) {
-				cargo += ge.cargo.TotalCount();
+				if (!ge.HasData()) continue;
+				cargo += ge.GetData().cargo.TotalCount();
 			}
 			break;
 
-		default:
-			cargo = st->goods[this->station_scope.cargo_type].cargo.TotalCount();
+		default: {
+			const GoodsEntry &ge = st->goods[this->station_scope.cargo_type];
+			cargo = ge.HasData() ? ge.GetData().cargo.TotalCount() : 0;
 			break;
+		}
 	}
 
 	if (HasBit(this->station_scope.statspec->flags, SSF_DIV_BY_STATION_SIZE)) cargo /= (st->train_station.w + st->train_station.h);
@@ -584,7 +587,7 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 		/* Pick the first cargo that we have waiting */
 		for (const CargoSpec *cs : CargoSpec::Iterate()) {
 			if (this->station_scope.statspec->grf_prop.spritegroup[cs->Index()] != nullptr &&
-					st->goods[cs->Index()].cargo.TotalCount() > 0) {
+					st->goods[cs->Index()].HasData() && st->goods[cs->Index()].GetData().cargo.TotalCount() > 0) {
 				ctype = cs->Index();
 				break;
 			}

@@ -170,11 +170,14 @@ void CheckCaches()
 
 	for (Station *st : Station::Iterate()) {
 		for (GoodsEntry &ge : st->goods) {
-			[[maybe_unused]] const auto a = ge.cargo.PeriodsInTransit();
-			[[maybe_unused]] const auto b = ge.cargo.TotalCount();
-			ge.cargo.InvalidateCache();
-			assert(a == ge.cargo.PeriodsInTransit());
-			assert(b == ge.cargo.TotalCount());
+			if (!ge.HasData()) continue;
+
+			StationCargoList &cargo_list = ge.GetData().cargo;
+			[[maybe_unused]] const auto a = cargo_list.PeriodsInTransit();
+			[[maybe_unused]] const auto b = cargo_list.TotalCount();
+			cargo_list.InvalidateCache();
+			assert(a == cargo_list.PeriodsInTransit());
+			assert(b == cargo_list.TotalCount());
 		}
 
 		/* Check docking tiles */
