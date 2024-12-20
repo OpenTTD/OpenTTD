@@ -125,7 +125,6 @@ Town::~Town()
 	for (const Object *o : Object::Iterate()) {
 		assert(o->town != this);
 	}
-#endif /* WITH_ASSERT */
 
 	/* Check no tile is related to us. */
 	for (const auto tile : Map::Iterate()) {
@@ -146,6 +145,7 @@ Town::~Town()
 				break;
 		}
 	}
+#endif /* WITH_ASSERT */
 
 	/* Clear the persistent storage list. */
 	for (auto &psa : this->psa_list) {
