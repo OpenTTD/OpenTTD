@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "map_func.h"
 #include "water_regions.h"
-#include "map_func.h"
 #include "tilearea_type.h"
 #include "track_func.h"
 #include "transport_type.h"
