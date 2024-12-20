@@ -88,6 +88,45 @@ enum SpecialStrings {
 	SPECSTR_PRESIDENT_NAME     = 0x70E7,
 };
 
-using StringParameterData = std::variant<uint64_t, std::string>;
+using StringParameterData = std::variant<std::monostate, uint64_t, std::string>;
+
+/** The data required to format and validate a single parameter of a string. */
+struct StringParameter {
+	StringParameterData data; ///< The data of the parameter.
+	char32_t type; ///< The #StringControlCode to interpret this data with when it's the first parameter, otherwise '\0'.
+
+	StringParameter() : data(), type(0) {}
+
+	/* The constructors allow implicitly creating a StringParameter. */
+	StringParameter(uint64_t value) : data(value), type(0) {}
+	StringParameter(std::string &&value) : data(std::move(value)), type(0) {}
+	StringParameter(const std::string &value) : data(value), type(0) {}
+	StringParameter(StringParameterData &&data, char32_t type) : data(std::move(data)), type(type) {}
+	StringParameter(const StringParameterData &data, char32_t type) : data(data), type(type) {}
+};
+
+/**
+ * Container for an encoded string, created by GetEncodedString.
+ */
+class EncodedString {
+public:
+	EncodedString() = default;
+
+	auto operator<=>(const EncodedString &) const = default;
+
+	std::string GetDecodedString() const;
+
+	void clear() { this->string.clear(); }
+	bool empty() const { return this->string.empty(); }
+
+private:
+	std::string string; ///< The encoded string.
+
+	/* An EncodedString can only be created by GetEncodedString(). */
+	explicit EncodedString(std::string &&string) : string(std::move(string)) {}
+
+	friend EncodedString GetEncodedString(StringID str);
+	friend EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParameter> params);
+};
 
 #endif /* STRINGS_TYPE_H */
