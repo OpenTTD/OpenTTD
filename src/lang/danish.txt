@@ -2595,7 +2595,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :forkert revisio
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :navnet er allerede i brug
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :forkert spil kodeord
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :ikke på listen over tilladelser
-STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :ingen af ​​de anmodede godkendelsesmetoder er tilgængelige
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :ingen af de anmodede godkendelsesmetoder er tilgængelige
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :forkert firma-id i DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :smidt ud af serveren
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :prøvede at snyde
