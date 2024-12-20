@@ -63,7 +63,7 @@ Font::Font(FontSize size, TextColour colour) :
 template <typename T>
 static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view str, FontState &state)
 {
-	if (line.buffer != nullptr) free(line.buffer);
+	free(line.buffer);
 
 	typename T::CharType *buff_begin = MallocT<typename T::CharType>(str.size() + 1);
 	const typename T::CharType *buffer_last = buff_begin + str.size() + 1;
