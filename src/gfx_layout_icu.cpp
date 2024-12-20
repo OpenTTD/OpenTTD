@@ -338,12 +338,12 @@ std::vector<ICURun> ItemizeStyle(std::vector<ICURun> &runs_current, FontMap &fon
 
 	int cur_pos = 0;
 	auto cur_run = runs_current.begin();
-	for (auto const &font_map : font_mapping) {
-		while (cur_pos < font_map.first && cur_run != runs_current.end()) {
-			int stop_pos = std::min(font_map.first, cur_run->start + cur_run->length);
+	for (auto const &[position, font] : font_mapping) {
+		while (cur_pos < position && cur_run != runs_current.end()) {
+			int stop_pos = std::min(position, cur_run->start + cur_run->length);
 			assert(stop_pos - cur_pos > 0);
 
-			runs.emplace_back(cur_pos, stop_pos - cur_pos, cur_run->level, cur_run->script, font_map.second);
+			runs.emplace_back(cur_pos, stop_pos - cur_pos, cur_run->level, cur_run->script, font);
 
 			if (stop_pos == cur_run->start + cur_run->length) cur_run++;
 			cur_pos = stop_pos;
@@ -360,8 +360,8 @@ std::vector<ICURun> ItemizeStyle(std::vector<ICURun> &runs_current, FontMap &fon
 	if (length == 0) return nullptr;
 
 	/* Can't layout our in-built sprite fonts. */
-	for (auto const &pair : font_mapping) {
-		if (pair.second->fc->IsBuiltInFont()) return nullptr;
+	for (auto const &[position, font] : font_mapping) {
+		if (font->fc->IsBuiltInFont()) return nullptr;
 	}
 
 	auto runs = ItemizeBidi(buff, length);
