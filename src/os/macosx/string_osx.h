@@ -49,10 +49,10 @@ public:
 	 * Get the actual ParagraphLayout for the given buffer.
 	 * @param buff The begin of the buffer.
 	 * @param buff_end The location after the last element in the buffer.
-	 * @param fontMapping THe mapping of the fonts.
+	 * @param font_mapping The mapping of the fonts.
 	 * @return The ParagraphLayout instance.
 	 */
-	static std::unique_ptr<ParagraphLayouter> GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping);
+	static std::unique_ptr<ParagraphLayouter> GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &font_mapping);
 
 	/**
 	 * Append a wide character to the internal buffer.

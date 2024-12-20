@@ -25,7 +25,7 @@ public:
 	/** Helper for GetLayouter, to get whether the layouter supports RTL. */
 	static const bool SUPPORTS_RTL = true;
 
-	static std::unique_ptr<ParagraphLayouter> GetParagraphLayout(UChar *buff, UChar *buff_end, FontMap &fontMapping);
+	static std::unique_ptr<ParagraphLayouter> GetParagraphLayout(UChar *buff, UChar *buff_end, FontMap &font_mapping);
 	static size_t AppendToBuffer(UChar *buff, const UChar *buffer_last, char32_t c);
 
 	static void InitializeLayouter();
