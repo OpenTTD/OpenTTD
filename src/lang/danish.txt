@@ -266,6 +266,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}år{P "" erne}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P 0 "" er}
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrer udtryk:
@@ -614,6 +615,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Aflevere
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Selskabets præstationsrang (maksimal rang=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Selskabsværdier
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Sidste 24 minutter
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}sidste 72 minutter
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Lastudbetalingsrater
@@ -627,6 +629,9 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Vis inte
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skift grafen for denne lasttype til/fra
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Produktionshistorie
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produceret
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transporteret
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vis detaljeret præstationsoversigt
 
@@ -2590,6 +2595,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :forkert revisio
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :navnet er allerede i brug
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :forkert spil kodeord
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :ikke på listen over tilladelser
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :ingen af ​​de anmodede godkendelsesmetoder er tilgængelige
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :forkert firma-id i DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :smidt ud af serveren
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :prøvede at snyde
@@ -2816,11 +2822,26 @@ STR_PICKER_MODE_SAVED_TOOLTIP                                   :Skift til kun a
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Vælg en stationsklasse, der skal vises
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Vælg en stationstype at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementer
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Vælg et rutepunkt-klasse, der skal vises
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Vælg et rutepunkt at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementer
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Vælg en busstationsklasse, der skal vises
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Vælg en busstationstype at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementer
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Vælg en lastbilstationsklasse, der skal vises
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Select a lorry station tyVælg en lastbilstationstype at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementerpe to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Vælg en objektklasse, der skal vises
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Vælg en objekttype, der skal bygges. Ctrl+klik for at tilføje eller fjerne i gemte elementer. Ctrl+klik+træk for at markere området diagonalt. Tryk også på Shift for kun at vise omkostningsestimat
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Vælg en byzone, der skal vises
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Vælg en hustype at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementer
 
 STR_HOUSE_PICKER_CAPTION                                        :Husvalg
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Navn: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Befolkning: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}År: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}År: {ORANGE}Any
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {ORANGE}Fra {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {ORANGE}til {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Størrelse: {ORANGE}{NUM}x{NUM} fliser
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Gods accepteret: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kant
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Udkant
@@ -2881,6 +2902,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Byg vejs
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Byg sporvognssektion ved hjælp af Autotram-tilstand. Ctrl+klik for at fjerne sporvejssektionen. Tryk også på Shift for kun at vise omkostningsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Byg værksted (til køb og servicering af vejkøretøjer). Shift skifter mellem at bygge og vise prisoverslag.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Byg sporvognsremise (til køb og serviceing af sporvogne). Shift skifter mellem at bygge og vise prisoverslag.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Byg et rutepunkt på vejen. Ctrl+klik for at vælge et andet waypoint, der skal deltage. Tryk også på Shift for kun at vise omkostningsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Byg et rutepunkt på sporvogn. Ctrl+klik for at vælge et andet rutepunkt, der skal deltage. Tryk også på Shift for kun at vise omkostningsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Byg busstation. Ctrl+klik for at vælge en anden station at deltage i. Tryk også på Shift for kun at vise omkostningsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Byg en passager-sporvognsstation. Ctrl+klik muliggør sammenslutning af stationer. Shift skifter mellem at bygge og vise prisoverslag.
@@ -3412,10 +3434,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kører f
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kørende script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Forbereder spil
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}By data indlæsning mislykkedes
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON-filen er formateret forkert
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} data formateret forkert
 STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING}koordinater, der er formateret forkert, skal være 0 til 1 som en andel af den samlede højdekortdimension
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Kunne ikke finde en gyldig placering {NUM} by{P "" er}. Oprettet {P "a " ""}skilt{P "" s} på det påtænkte sted{P "" s} i stedet
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF indstillinger
@@ -4730,6 +4754,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(rejse for {STR
 STR_TIMETABLE_STAY_FOR                                          :og vent i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og rejs i {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Denne tidsplan vil tage ca {STRING} at fuldføre
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Denne køreplan vil tage {STRING} at fuldføre
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denne køreplan vil tage mindst {STRING} at fuldføre (ikke alt indført i køreplan)
 
