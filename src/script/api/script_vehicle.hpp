@@ -33,7 +33,7 @@ public:
 		/** Vehicle is not available */
 		ERR_VEHICLE_NOT_AVAILABLE,              // [STR_ERROR_AIRCRAFT_NOT_AVAILABLE, STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE, STR_ERROR_SHIP_NOT_AVAILABLE, STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE]
 
-		/** Vehicle can't be build due to game settigns */
+		/** Vehicle can't be built due to game settings */
 		ERR_VEHICLE_BUILD_DISABLED,             // [STR_ERROR_CAN_T_BUY_TRAIN, STR_ERROR_CAN_T_BUY_ROAD_VEHICLE, STR_ERROR_CAN_T_BUY_SHIP, STR_ERROR_CAN_T_BUY_AIRCRAFT]
 
 		/** Vehicle can't be build in the selected depot */
