@@ -276,14 +276,14 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	return items;
 }
 
-/* static */ std::unique_ptr<ParagraphLayouter> UniscribeParagraphLayoutFactory::GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping)
+/* static */ std::unique_ptr<ParagraphLayouter> UniscribeParagraphLayoutFactory::GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &font_mapping)
 {
 	int32_t length = buff_end - buff;
 	/* Can't layout an empty string. */
 	if (length == 0) return nullptr;
 
 	/* Can't layout our in-built sprite fonts. */
-	for (auto const &pair : fontMapping) {
+	for (auto const &pair : font_mapping) {
 		if (pair.second->fc->IsBuiltInFont()) return nullptr;
 	}
 
@@ -297,7 +297,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 
 	int cur_pos = 0;
 	std::vector<SCRIPT_ITEM>::iterator cur_item = items.begin();
-	for (auto const &i : fontMapping) {
+	for (auto const &i : font_mapping) {
 		while (cur_pos < i.first && cur_item != items.end() - 1) {
 			/* Add a range that spans the intersection of the remaining item and font run. */
 			int stop_pos = std::min(i.first, (cur_item + 1)->iCharPos);

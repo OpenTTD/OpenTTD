@@ -68,11 +68,11 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 	typename T::CharType *buff_begin = MallocT<typename T::CharType>(str.size() + 1);
 	const typename T::CharType *buffer_last = buff_begin + str.size() + 1;
 	typename T::CharType *buff = buff_begin;
-	FontMap &fontMapping = line.runs;
+	FontMap &font_mapping = line.runs;
 	Font *f = Layouter::GetFont(state.fontsize, state.cur_colour);
 
 	line.buffer = buff_begin;
-	fontMapping.clear();
+	font_mapping.clear();
 
 	auto cur = str.begin();
 
@@ -105,8 +105,8 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 			continue;
 		}
 
-		if (fontMapping.empty() || fontMapping.back().first != buff - buff_begin) {
-			fontMapping.emplace_back(buff - buff_begin, f);
+		if (font_mapping.empty() || font_mapping.back().first != buff - buff_begin) {
+			font_mapping.emplace_back(buff - buff_begin, f);
 		}
 		f = Layouter::GetFont(state.fontsize, state.cur_colour);
 	}
@@ -114,10 +114,10 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 	/* Better safe than sorry. */
 	*buff = '\0';
 
-	if (fontMapping.empty() || fontMapping.back().first != buff - buff_begin) {
-		fontMapping.emplace_back(buff - buff_begin, f);
+	if (font_mapping.empty() || font_mapping.back().first != buff - buff_begin) {
+		font_mapping.emplace_back(buff - buff_begin, f);
 	}
-	line.layout = T::GetParagraphLayout(buff_begin, buff, fontMapping);
+	line.layout = T::GetParagraphLayout(buff_begin, buff, font_mapping);
 	line.state_after = state;
 }
 
