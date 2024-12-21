@@ -62,7 +62,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 		void Leave(const RoadVehicle *rv);
 		void Enter(const RoadVehicle *rv);
 		void CheckIntegrity(const RoadStop *rs) const;
-		void Rebuild(const RoadStop *rs);
+		void Rebuild(const RoadStop *rs, int side = -1);
 	};
 
 	uint8_t status; ///< Current status of the Stop, @see RoadStopSatusFlag. Access using *Bay and *Busy functions.
