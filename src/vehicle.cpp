@@ -2622,7 +2622,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 		return CommandCost();
 	}
 
-	ClosestDepot closestDepot = this->FindClosestDepot();
+	ClosestDepot closestDepot = this->FindClosestDepot(true);
 	static const StringID no_depot[] = {STR_ERROR_UNABLE_TO_FIND_ROUTE_TO, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR};
 	if (!closestDepot.found) return CommandCost(no_depot[this->type]);
 

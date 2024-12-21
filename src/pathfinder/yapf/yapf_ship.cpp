@@ -369,9 +369,10 @@ public:
 	 * Find the best depot for a ship.
 	 * @param v Ship
 	 * @param max_penalty maximum pathfinder cost.
+	 * @param may_reverse whether the ship is allowed to reverse.
 	 * @return FindDepotData with the best depot tile, cost and whether to reverse.
 	 */
-	static inline FindDepotData FindNearestDepot(const Ship *v, int max_penalty)
+	static inline FindDepotData FindNearestDepot(const Ship *v, int max_penalty, bool may_reverse)
 	{
 		FindDepotData depot;
 
@@ -379,7 +380,7 @@ public:
 		ShipPathCache dummy_cache;
 		TileIndex tile = INVALID_TILE;
 		Trackdir best_origin_dir = INVALID_TRACKDIR;
-		const bool search_both_ways = max_penalty == 0;
+		const bool search_both_ways = may_reverse && max_penalty == 0;
 		const Trackdir forward_dir = v->GetVehicleTrackdir();
 		const Trackdir reverse_dir = ReverseTrackdir(forward_dir);
 		const TrackdirBits forward_dirs = TrackdirToTrackdirBits(forward_dir);
@@ -522,7 +523,7 @@ bool YapfShipCheckReverse(const Ship *v, Trackdir *trackdir)
 	return CYapfShip::CheckShipReverse(v, trackdir);
 }
 
-FindDepotData YapfShipFindNearestDepot(const Ship *v, int max_penalty)
+FindDepotData YapfShipFindNearestDepot(const Ship *v, int max_penalty, bool may_reverse)
 {
-	return CYapfShip::FindNearestDepot(v, max_penalty);
+	return CYapfShip::FindNearestDepot(v, max_penalty, may_reverse);
 }

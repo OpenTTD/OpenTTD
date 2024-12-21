@@ -142,12 +142,12 @@ void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpri
 	result->Set(_ship_sprites[spritenum] + direction);
 }
 
-static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
+static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance, bool may_reverse = false)
 {
 	const TileIndex tile = v->tile;
 	if (IsShipDepotTile(tile) && IsTileOwner(tile, v->owner)) return Depot::GetByTile(tile);
 
-	FindDepotData sfdd = YapfShipFindNearestDepot(Ship::From(v), max_distance);
+	FindDepotData sfdd = YapfShipFindNearestDepot(Ship::From(v), max_distance, may_reverse);
 
 	if (sfdd.tile == INVALID_TILE) return nullptr;
 	return Depot::GetByTile(sfdd.tile);
@@ -908,9 +908,9 @@ CommandCost CmdBuildShip(DoCommandFlag flags, TileIndex tile, const Engine *e, V
 	return CommandCost();
 }
 
-ClosestDepot Ship::FindClosestDepot()
+ClosestDepot Ship::FindClosestDepot(bool may_reverse)
 {
-	const Depot *depot = FindClosestShipDepot(this, 0);
+	const Depot *depot = FindClosestShipDepot(this, 0, may_reverse);
 	if (depot == nullptr) return ClosestDepot();
 
 	return ClosestDepot(depot->xy, depot->index);
