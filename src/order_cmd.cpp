@@ -1894,10 +1894,11 @@ VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
  * Update the vehicle's destination tile from an order.
  * @param order the order the vehicle currently has
  * @param v the vehicle to update
+ * @param may_reverse Whether the vehicle is allowed to reverse when executing the updated order.
  * @param conditional_depth the depth (amount of steps) to go with conditional orders. This to prevent infinite loops.
  * @param pbs_look_ahead Whether we are forecasting orders for pbs reservations in advance. If true, the order indices must not be modified.
  */
-bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool pbs_look_ahead)
+bool UpdateOrderDest(Vehicle *v, const Order *order, bool may_reverse, int conditional_depth, bool pbs_look_ahead)
 {
 	if (conditional_depth > v->GetNumOrders()) {
 		v->current_order.Free();
@@ -1924,7 +1925,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 				if (v->dest_tile == 0 && TimerGameEconomy::date_fract != (v->index % Ticks::DAY_TICKS)) break;
 
 				/* We need to search for the nearest depot (hangar). */
-				ClosestDepot closest_depot = v->FindClosestDepot();
+				ClosestDepot closest_depot = v->FindClosestDepot(may_reverse);
 
 				if (closest_depot.found) {
 					/* PBS reservations cannot reverse */
@@ -2016,7 +2017,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 	}
 
 	v->current_order = *order;
-	return UpdateOrderDest(v, order, conditional_depth + 1, pbs_look_ahead);
+	return UpdateOrderDest(v, order, may_reverse, conditional_depth + 1, pbs_look_ahead);
 }
 
 /**
@@ -2114,7 +2115,7 @@ bool ProcessOrders(Vehicle *v)
 			break;
 	}
 
-	return UpdateOrderDest(v, order) && may_reverse;
+	return UpdateOrderDest(v, order, may_reverse) && may_reverse;
 }
 
 /**

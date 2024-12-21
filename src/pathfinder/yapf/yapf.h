@@ -40,9 +40,10 @@ bool YapfShipCheckReverse(const Ship *v, Trackdir *trackdir);
  * @param max_penalty  max distance (in pathfinder penalty) from the current ship position
  *                     (used also as optimization - the pathfinder can stop path finding if max_penalty
  *                     was reached and no depot was seen)
+ * @param may_reverse  whether the ship is allowed to reverse
  * @return             the data about the depot
  */
-FindDepotData YapfShipFindNearestDepot(const Ship *v, int max_penalty);
+FindDepotData YapfShipFindNearestDepot(const Ship *v, int max_penalty, bool may_reverse);
 
 /**
  * Finds the best path for given road vehicle using YAPF.
