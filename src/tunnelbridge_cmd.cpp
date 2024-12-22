@@ -88,7 +88,7 @@ void ResetBridges()
 	/* First, free sprite table data */
 	for (BridgeType i = 0; i < MAX_BRIDGES; i++) {
 		if (_bridge[i].sprite_table != nullptr) {
-			for (BridgePieces j = BRIDGE_PIECE_NORTH; j < BRIDGE_PIECE_INVALID; j++) free(_bridge[i].sprite_table[j]);
+			for (BridgePieces j = BRIDGE_PIECE_NORTH; j < NUM_BRIDGE_PIECES; j++) free(_bridge[i].sprite_table[j]);
 			free(_bridge[i].sprite_table);
 		}
 	}
@@ -152,7 +152,7 @@ bool HasBridgeFlatRamp(Slope tileh, Axis axis)
 static inline const PalSpriteID *GetBridgeSpriteTable(int index, BridgePieces table)
 {
 	const BridgeSpec *bridge = GetBridgeSpec(index);
-	assert(table < BRIDGE_PIECE_INVALID);
+	assert(table < NUM_BRIDGE_PIECES);
 	if (bridge->sprite_table == nullptr || bridge->sprite_table[table] == nullptr) {
 		return _bridge_sprite_table[index][table];
 	} else {

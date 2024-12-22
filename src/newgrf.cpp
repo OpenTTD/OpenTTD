@@ -2292,21 +2292,21 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 
 				if (bridge->sprite_table == nullptr) {
 					/* Allocate memory for sprite table pointers and zero out */
-					bridge->sprite_table = CallocT<PalSpriteID*>(7);
+					bridge->sprite_table = CallocT<PalSpriteID*>(NUM_BRIDGE_PIECES);
 				}
 
 				for (; numtables-- != 0; tableid++) {
-					if (tableid >= 7) { // skip invalid data
-						GrfMsg(1, "BridgeChangeInfo: Table {} >= 7, skipping", tableid);
-						for (uint8_t sprite = 0; sprite < 32; sprite++) buf.ReadDWord();
+					if (tableid >= NUM_BRIDGE_PIECES) { // skip invalid data
+						GrfMsg(1, "BridgeChangeInfo: Table {} >= {}, skipping", tableid, NUM_BRIDGE_PIECES);
+						for (uint8_t sprite = 0; sprite < SPRITES_PER_BRIDGE_PIECE; sprite++) buf.ReadDWord();
 						continue;
 					}
 
 					if (bridge->sprite_table[tableid] == nullptr) {
-						bridge->sprite_table[tableid] = MallocT<PalSpriteID>(32);
+						bridge->sprite_table[tableid] = MallocT<PalSpriteID>(SPRITES_PER_BRIDGE_PIECE);
 					}
 
-					for (uint8_t sprite = 0; sprite < 32; sprite++) {
+					for (uint8_t sprite = 0; sprite < SPRITES_PER_BRIDGE_PIECE; sprite++) {
 						SpriteID image = buf.ReadWord();
 						PaletteID pal  = buf.ReadWord();
 
