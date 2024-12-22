@@ -48,7 +48,7 @@ inline void SetTownIndex(Tile t, TownID index)
 inline HouseID GetCleanHouseType(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
-	return t.m4() | (GB(t.m3(), 6, 1) << 8);
+	return GB(t.m8(), 0, 12);
 }
 
 /**
@@ -71,8 +71,7 @@ inline HouseID GetHouseType(Tile t)
 inline void SetHouseType(Tile t, HouseID house_id)
 {
 	assert(IsTileType(t, MP_HOUSE));
-	t.m4() = GB(house_id, 0, 8);
-	SB(t.m3(), 6, 1, GB(house_id, 8, 1));
+	SB(t.m8(), 0, 12, house_id);
 }
 
 /**

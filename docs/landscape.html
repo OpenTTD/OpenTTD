@@ -721,10 +721,9 @@
         </ul>
        </li>
       </ul>
-     <li>m3 bit 6 : bit 8 of house type (m4), allowing 512 different types.</li>
-     <li>m3 bit 5 : free</li>
+     <li>m3 bits 6..5 : free</li>
      <li>m3 bits 4..0 : triggers activated <a href="#newhouses">(newhouses)</a></li>
-     <li>m4 : <a href="landscape_externals.html">town building type</a> (with m3[6] bit)</li>
+     <li>m4 : free</li>
      <li>m5 : see m3 bit 7</li>
      <li>m6 :
       <ul>
@@ -760,10 +759,12 @@
        </li>
       </ul>
      </li>
+     <li>m8 bits 15..12 : free</li>
+     <li>m8 bits 11..0 : <a href="landscape_externals.html">town building type</a></li>
     </ul>
     <small><a name="newhouses"></a>Newhouses is the name englobing a newGRF feature developed by TTDPatch devs (mainly Csaboka).<br>
     It allows the replacement of the properties as well as the graphics of houses in the game.<br>
-    To distinguish between the standard behaviour and the newGRF one, HouseID (m4 + m3[6]) is tested for anything above 110.<br>
+    To distinguish between the standard behaviour and the newGRF one, HouseID is tested for anything above 110.<br>
     110 is the count of standard houses. So above 110 means there is a new definition of at least one house</small>
    </td>
   </tr>
