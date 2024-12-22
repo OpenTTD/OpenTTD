@@ -50,6 +50,7 @@ void ApplyBadgeFeaturesToClassBadges();
 Badge *GetBadge(BadgeID index);
 Badge *GetBadgeByLabel(std::string_view label);
 Badge *GetClassBadge(BadgeClassID class_index);
+std::span<const BadgeID> GetClassBadges();
 
 class GUIBadgeClasses {
 public:
