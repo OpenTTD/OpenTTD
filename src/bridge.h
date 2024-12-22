@@ -27,12 +27,13 @@ enum BridgePieces {
 	BRIDGE_PIECE_MIDDLE_ODD,
 	BRIDGE_PIECE_MIDDLE_EVEN,
 	BRIDGE_PIECE_HEAD,
-	BRIDGE_PIECE_INVALID,
+	NUM_BRIDGE_PIECES,
 };
 
 DECLARE_POSTFIX_INCREMENT(BridgePieces)
 
 static const uint MAX_BRIDGES = 13; ///< Maximal number of available bridge specs.
+constexpr uint SPRITES_PER_BRIDGE_PIECE = 32; ///< Number of sprites there are per bridge piece.
 
 typedef uint BridgeType; ///< Bridge spec number.
 
