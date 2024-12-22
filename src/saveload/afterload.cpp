@@ -1539,6 +1539,17 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_INCREASE_HOUSE_LIMIT)) {
+		for (auto t : Map::Iterate()) {
+			if (IsTileType(t, MP_HOUSE)) {
+				/* House type is moved from m4 + m3[6] to m8. */
+				SetHouseType(t, t.m4() | (GB(t.m3(), 6, 1) << 8));
+				t.m4() = 0;
+				ClrBit(t.m3(), 6);
+			}
+		}
+	}
+
 	/* Check and update house and town values */
 	UpdateHousesAndTowns();
 
