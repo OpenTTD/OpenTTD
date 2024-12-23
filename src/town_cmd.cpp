@@ -2936,7 +2936,6 @@ static void DoClearTownHouseHelper(TileIndex tile, Town *t, HouseID house)
 	assert(IsTileType(tile, MP_HOUSE));
 	DecreaseBuildingCount(t, house);
 	DoClearSquare(tile);
-	DeleteAnimatedTile(tile);
 
 	DeleteNewGRFInspectWindow(GSF_HOUSES, tile.base());
 }
