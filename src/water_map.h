@@ -17,7 +17,7 @@
  * Bit field layout of m5 for water tiles.
  */
 static constexpr uint8_t WBL_TYPE_BEGIN = 4; ///< Start of the 'type' bitfield.
-static constexpr uint8_t WBL_TYPE_COUNT = 4; ///< Length of the 'type' bitfield.
+static constexpr uint8_t WBL_TYPE_COUNT = 2; ///< Length of the 'type' bitfield.
 
 static constexpr uint8_t WBL_LOCK_ORIENT_BEGIN = 0; ///< Start of lock orientation bitfield.
 static constexpr uint8_t WBL_LOCK_ORIENT_COUNT = 2; ///< Length of lock orientation bitfield.
