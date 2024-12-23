@@ -8,6 +8,7 @@
 /** @file animated_tile.cpp Everything related to animated tiles. */
 
 #include "stdafx.h"
+#include "animated_tile_func.h"
 #include "animated_tile_map.h"
 #include "tile_cmd.h"
 #include "viewport_func.h"
@@ -21,9 +22,28 @@ std::vector<TileIndex> _animated_tiles;
 /**
  * Stops animation on the given tile.
  * @param tile the tile to remove
+ * @param immediate immediately delete the tile from the animated tile list instead of waiting for the next tick.
  */
-void DeleteAnimatedTile(TileIndex tile)
+void DeleteAnimatedTile(TileIndex tile, bool immediate)
 {
+	if (immediate) {
+		if (GetAnimatedTileState(tile) == AnimatedTileState::None) return;
+
+		/* The tile may be switched to a non-animatable tile soon, so we should remove it from the
+		 * animated tile list early. */
+		SetAnimatedTileState(tile, AnimatedTileState::None);
+
+		/* To avoid having to move everything after this tile in the animated tile list, look for this tile
+		 * in the animated tile list and replace with last entry if not last. */
+		auto it = std::ranges::find(_animated_tiles, tile);
+		if (it == std::end(_animated_tiles)) return;
+
+		if (std::next(it) != std::end(_animated_tiles)) *it = _animated_tiles.back();
+		_animated_tiles.pop_back();
+
+		return;
+	}
+
 	/* If the tile was animated, mark it for deletion from the tile list on the next animation loop. */
 	if (GetAnimatedTileState(tile) == AnimatedTileState::Animated) SetAnimatedTileState(tile, AnimatedTileState::Deleted);
 }
@@ -43,7 +63,7 @@ void AddAnimatedTile(TileIndex tile, bool mark_dirty)
 	if (state == AnimatedTileState::Animated) return;
 
 	/* Tile has no previous animation state, so add to the tile list. If the state is anything
-	 * other than None then the tile will still be in the list and does not need to be added again. */
+	 * other than None (e.g. Deleted) then the tile will still be in the list and does not need to be added again. */
 	if (state == AnimatedTileState::None) _animated_tiles.push_back(tile);
 
 	SetAnimatedTileState(tile, AnimatedTileState::Animated);
