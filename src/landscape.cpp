@@ -1043,6 +1043,20 @@ static bool MakeLake(TileIndex tile, void *user_data)
 	return false;
 }
 
+bool _river_terraform = false;
+
+/**
+ * Terraform land around river.
+ * @param tile tile to terraform
+ * @param slope corners to terraform (SLOPE_xxx)
+ * @param dir_up direction; eg up (true) or down (false)
+ */
+static void RiverTerraform(TileIndex tile, Slope slope, bool dir_up)
+{
+	AutoRestoreBackup old_river_terraform(_river_terraform, true);
+	Command<CMD_TERRAFORM_LAND>::Do(DC_EXEC | DC_AUTO, tile, slope, dir_up);
+}
+
 /**
  * Widen a river by expanding into adjacent tiles via circular tile search.
  * @param tile The tile to try expanding the river into.
@@ -1056,9 +1070,6 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 
 	/* If the tile is already sea or river, don't expand. */
 	if (IsWaterTile(tile)) return false;
-
-	/* If the tile is at height 0 after terraforming but the ocean hasn't flooded yet, don't build river. */
-	if (GetTileMaxZ(tile) == 0) return false;
 
 	TileIndex origin_tile = *static_cast<TileIndex *>(user_data);
 	Slope cur_slope = GetTileSlope(tile);
@@ -1116,7 +1127,7 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 				TileIndex other_tile = TileAddByDiagDir(tile, d);
 				if (IsInclinedSlope(GetTileSlope(other_tile)) && IsWaterTile(other_tile)) return false;
 			}
-			Command<CMD_TERRAFORM_LAND>::Do(DC_EXEC | DC_AUTO, tile, ComplementSlope(cur_slope), true);
+			RiverTerraform(tile, ComplementSlope(cur_slope), true);
 
 		/* If the river is descending and the adjacent tile has either one or three corners raised, we want to make it match the slope. */
 		} else if (IsInclinedSlope(desired_slope)) {
@@ -1137,14 +1148,14 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 			/* Lower unwanted corners first. If only one corner is raised, no corners need lowering. */
 			if (!IsSlopeWithOneCornerRaised(cur_slope)) {
 				to_change = to_change & ComplementSlope(desired_slope);
-				Command<CMD_TERRAFORM_LAND>::Do(DC_EXEC | DC_AUTO, tile, to_change, false);
+				RiverTerraform(tile, to_change, false);
 			}
 
 			/* Now check the match and raise any corners needed. */
 			cur_slope = GetTileSlope(tile);
 			if (cur_slope != desired_slope && IsSlopeWithOneCornerRaised(cur_slope)) {
 				to_change = cur_slope ^ desired_slope;
-				Command<CMD_TERRAFORM_LAND>::Do(DC_EXEC | DC_AUTO, tile, to_change, true);
+				RiverTerraform(tile, to_change, true);
 			}
 		}
 		/* Update cur_slope after possibly terraforming. */
@@ -1161,7 +1172,7 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 		/* Don't look outside the map. */
 		if (!IsValidTile(upstream_tile) || !IsValidTile(downstream_tile)) return false;
 
-		/* Downstream might be new ocean created by our terraforming, and it hasn't flooded yet. */
+		/* Downstream might be new ocean created by our terraforming. */
 		bool downstream_is_ocean = GetTileZ(downstream_tile) == 0 && (GetTileSlope(downstream_tile) == SLOPE_FLAT || IsSlopeWithOneCornerRaised(GetTileSlope(downstream_tile)));
 
 		/* If downstream is dry, flat, and not ocean, try making it a river tile. */
@@ -1421,9 +1432,6 @@ static void CreateRivers()
 			if (std::get<0>(FlowRiver(t, t, _settings_game.game_creation.min_river_length))) break;
 		}
 	}
-
-	/* Widening rivers may have left some tiles requiring to be watered. */
-	ConvertGroundTilesIntoWaterTiles();
 
 	/* Run tile loop to update the ground density. */
 	for (uint i = 0; i != TILE_UPDATE_FREQUENCY; i++) {

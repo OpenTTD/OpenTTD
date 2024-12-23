@@ -19,6 +19,8 @@
 #include "core/backup_type.hpp"
 #include "terraform_cmd.h"
 #include "landscape_cmd.h"
+#include "water.h"
+#include "landscape.h"
 
 #include "table/strings.h"
 
@@ -295,6 +297,14 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, 
 			int height = it.second;
 
 			SetTileHeight(t, (uint)height);
+		}
+
+		if (_river_terraform) {
+			for (const auto &t : ts.dirty_tiles) {
+				/* Immediately convert ground tiles into water tiles during river generation. */
+				ConvertGroundTileIntoWaterTile(t);
+				MarkTileDirtyByTile(t);
+			}
 		}
 
 		if (c != nullptr) c->terraform_limit -= (uint32_t)ts.tile_to_new_height.size() << 16;

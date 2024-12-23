@@ -137,5 +137,6 @@ void RunTileLoop();
 
 void InitializeLandscape();
 bool GenerateLandscape(uint8_t mode);
+extern bool _river_terraform;
 
 #endif /* LANDSCAPE_H */

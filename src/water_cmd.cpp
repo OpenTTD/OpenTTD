@@ -1297,38 +1297,45 @@ void TileLoop_Water(TileIndex tile)
 	}
 }
 
+void ConvertGroundTileIntoWaterTile(TileIndex tile)
+{
+	assert(tile < Map::Size());
+
+	auto [slope, z] = GetTileSlopeZ(tile);
+	if (IsTileType(tile, MP_CLEAR) && z == 0) {
+		/* Make both water for tiles at level 0
+		 * and make shore, as that looks much better
+		 * during the generation. */
+		switch (slope) {
+			case SLOPE_FLAT:
+				MakeSea(tile);
+				break;
+
+			case SLOPE_N:
+			case SLOPE_E:
+			case SLOPE_S:
+			case SLOPE_W:
+				MakeShore(tile);
+				break;
+
+			default:
+				for (Direction dir : SetBitIterator<Direction>(_flood_from_dirs[slope & ~SLOPE_STEEP])) {
+					TileIndex dest = TileAddByDir(tile, dir);
+					Slope slope_dest = GetTileSlope(dest) & ~SLOPE_STEEP;
+					if (slope_dest == SLOPE_FLAT || IsSlopeWithOneCornerRaised(slope_dest) || IsTileType(dest, MP_VOID)) {
+						MakeShore(tile);
+						break;
+					}
+				}
+				break;
+		}
+	}
+}
+
 void ConvertGroundTilesIntoWaterTiles()
 {
 	for (const auto tile : Map::Iterate()) {
-		auto [slope, z] = GetTileSlopeZ(tile);
-		if (IsTileType(tile, MP_CLEAR) && z == 0) {
-			/* Make both water for tiles at level 0
-			 * and make shore, as that looks much better
-			 * during the generation. */
-			switch (slope) {
-				case SLOPE_FLAT:
-					MakeSea(tile);
-					break;
-
-				case SLOPE_N:
-				case SLOPE_E:
-				case SLOPE_S:
-				case SLOPE_W:
-					MakeShore(tile);
-					break;
-
-				default:
-					for (Direction dir : SetBitIterator<Direction>(_flood_from_dirs[slope & ~SLOPE_STEEP])) {
-						TileIndex dest = TileAddByDir(tile, dir);
-						Slope slope_dest = GetTileSlope(dest) & ~SLOPE_STEEP;
-						if (slope_dest == SLOPE_FLAT || IsSlopeWithOneCornerRaised(slope_dest) || IsTileType(dest, MP_VOID)) {
-							MakeShore(tile);
-							break;
-						}
-					}
-					break;
-			}
-		}
+		ConvertGroundTileIntoWaterTile(tile);
 	}
 }
 
