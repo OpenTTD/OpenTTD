@@ -65,14 +65,14 @@ public:
 	/** Notify the nodelist that we don't want to discard the given node. */
 	inline void FoundBestNode(Titem &item)
 	{
-		/* for now it is enough to invalidate m_new_node if it is our given node */
+		/* for now it is enough to invalidate new_node if it is our given node */
 		if (&item == this->new_node) {
 			this->new_node = nullptr;
 		}
 		/* TODO: do we need to store best nodes found in some extra list/array? Probably not now. */
 	}
 
-	/** insert given item as open node (into m_open and m_open_queue) */
+	/** insert given item as open node (into open_nodes and open_queue) */
 	inline void InsertOpenNode(Titem &item)
 	{
 		assert(this->closed_nodes.Find(item.GetKey()) == nullptr);
