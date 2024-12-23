@@ -2196,8 +2196,6 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags, int repla
 		Company::Get(st->owner)->infrastructure.station--;
 		DirtyCompanyInfrastructureWindows(st->owner);
 
-		DeleteAnimatedTile(tile);
-
 		uint specindex = GetCustomRoadStopSpecIndex(tile);
 
 		DeleteNewGRFInspectWindow(GSF_ROADSTOPS, tile.base());
@@ -2205,6 +2203,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags, int repla
 		if (IsDriveThroughStopTile(tile)) {
 			/* Clears the tile for us */
 			cur_stop->ClearDriveThrough();
+			DeleteAnimatedTile(tile);
 		} else {
 			DoClearSquare(tile);
 		}
@@ -2278,8 +2277,6 @@ CommandCost RemoveRoadWaypointStop(TileIndex tile, DoCommandFlag flags, int repl
 
 		Company::Get(wp->owner)->infrastructure.station--;
 		DirtyCompanyInfrastructureWindows(wp->owner);
-
-		DeleteAnimatedTile(tile);
 
 		uint specindex = GetCustomRoadStopSpecIndex(tile);
 
@@ -2702,7 +2699,6 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 		cost.AddCost(_price[PR_CLEAR_STATION_AIRPORT]);
 
 		if (flags & DC_EXEC) {
-			DeleteAnimatedTile(tile_cur);
 			DoClearSquare(tile_cur);
 			DeleteNewGRFInspectWindow(GSF_AIRPORTTILES, tile_cur.base());
 		}
