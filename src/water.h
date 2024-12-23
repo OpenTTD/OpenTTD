@@ -29,6 +29,7 @@ void ClearNeighbourNonFloodingStates(TileIndex tile);
 void TileLoop_Water(TileIndex tile);
 bool FloodHalftile(TileIndex t);
 
+void ConvertGroundTileIntoWaterTile(TileIndex tile);
 void ConvertGroundTilesIntoWaterTiles();
 
 void DrawShipDepotSprite(int x, int y, Axis axis, DepotPart part);
