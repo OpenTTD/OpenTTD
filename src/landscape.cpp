@@ -530,7 +530,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 void DoClearSquare(TileIndex tile)
 {
 	/* If the tile can have animation and we clear it, delete it from the animated tile list. */
-	if (MayAnimateTile(tile)) DeleteAnimatedTile(tile);
+	if (MayAnimateTile(tile)) DeleteAnimatedTile(tile, true);
 
 	bool remove = IsDockingTile(tile);
 	MakeClear(tile, CLEAR_GRASS, _generating_world ? 3 : 0);
