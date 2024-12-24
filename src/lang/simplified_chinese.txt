@@ -3564,12 +3564,12 @@ STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF "
 STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF "{STRING}" 发生了一个错误：{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} 不能与 OpenTTD 报告的 TTDPatch 版本兼容
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} 是为 {2:STRING} 版 TTD 开发的
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} 应当与 {2:STRING} 配合
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :“{1:STRING}”必须与“{2:STRING}”一起使用
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING} 具有无效参数：参数 {2:STRING}（{3:NUM}）
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} 必须在 {2:STRING} 之前加载
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} 必须在 {2:STRING} 后加载
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} 需要 OpenTTD {2:STRING} 或更高版本
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 被设计为可平移
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :被设计为可翻译的 GRF 文件
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :加载的 NewGRF 太多
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :载入 {1:STRING} 为静态 NewGRF 时载入 {2:STRING} 可能造成同步错误
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :未预期的 sprite（sprite {3:NUM}）
