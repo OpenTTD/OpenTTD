@@ -90,10 +90,10 @@ jobs:
 
     - name: Generate metadata
       id: metadata
+      shell: bash
       run: |
         echo "::group::Prepare metadata files"
         cmake -DGENERATE_OTTDREV=1 -P cmake/scripts/FindVersion.cmake
-        ./.github/changelog.sh > .changelog
         TZ='UTC' date +"%Y-%m-%d %H:%M UTC" > .release_date
         cat .ottdrev | cut -f 1 -d$'\t' > .version
 
@@ -103,6 +103,8 @@ jobs:
 
           FOLDER="${{ env.FOLDER_RELEASES }}"
           TRIGGER_TYPE="new-tag"
+
+          python3 ./.github/changelog.py "$(cat .version)" > .changelog
         else
           IS_TAG="false"
 
@@ -123,6 +125,13 @@ jobs:
             # put in their own folder.
             FOLDER="${{ env.FOLDER_BRANCHES }}/${BRANCH}"
             TRIGGER_TYPE="new-branch"
+
+            # For nightlies, use the git log of the last 7 days as changelog.
+            revdate=$(git log -1 --pretty=format:"%ci")
+            last_week=$(date -d "$revdate -7days" +"%Y-%m-%d %H:%M")
+            echo "## Version $(cat .version) - changes since ${last_week}" > .changelog
+            echo "" >> .changelog
+            git log --oneline --after="${last_week}" >> .changelog
           fi
         fi
 
