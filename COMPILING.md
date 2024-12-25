@@ -104,7 +104,9 @@ builds.
 
 - `-DCMAKE_BUILD_TYPE=RelWithDebInfo`: build a release build. This is
    significantly faster than a debug build, but has far less useful information
-   in case of a crash.
+   in case of a crash. Binaries still contain symbols, aka "unstripped".
+- `-DCMAKE_BUILD_TYPE=Release`: Same as previous option, without symbols,
+   aka "stripped".
 - `-DOPTION_DEDICATED=ON`: build OpenTTD without a GUI. Useful if you are
    running a headless server, as it requires less libraries to operate.
 - `-DOPTION_USE_ASSERTS=OFF`: disable asserts. Use with care, as assert
