@@ -2091,9 +2091,7 @@ static void ReverseTrainDirection(Train *consist)
 	if (UpdateSignalsOnSegment(moving_front->tile, dir, consist->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
 		/* If we are currently on a tile with conventional signals, we can't treat the
 		 * current tile as a safe tile or we would enter a PBS block without a reservation. */
-		bool first_tile_okay = !(IsTileType(moving_front->tile, TileType::Railway) &&
-			HasSignalOnTrackdir(moving_front->tile, moving_front->GetVehicleTrackdir()) &&
-			!IsPbsSignal(GetSignalType(moving_front->tile, FindFirstTrack(moving_front->track))));
+		bool first_tile_okay = !HasBlockSignalOnTrackdir(moving_front->tile, moving_front->GetVehicleTrackdir());
 
 		/* If we are on a depot tile facing outwards, do not treat the current tile as safe. */
 		if (IsRailDepotTile(moving_front->tile) && TrackdirToExitdir(moving_front->GetVehicleTrackdir()) == GetRailDepotDirection(moving_front->tile)) first_tile_okay = false;
@@ -2314,9 +2312,7 @@ static void CheckNextTrainTile(Train *consist)
 	Trackdir td = moving_front->GetVehicleTrackdir();
 
 	/* On a tile with a red non-pbs signal, don't look ahead. */
-	if (IsTileType(moving_front->tile, TileType::Railway) && HasSignalOnTrackdir(moving_front->tile, td) &&
-			!IsPbsSignal(GetSignalType(moving_front->tile, TrackdirToTrack(td))) &&
-			GetSignalStateByTrackdir(moving_front->tile, td) == SIGNAL_STATE_RED) return;
+	if (HasBlockSignalOnTrackdir(moving_front->tile, td) && GetSignalStateByTrackdir(moving_front->tile, td) == SIGNAL_STATE_RED) return;
 
 	CFollowTrackRail ft(consist);
 	if (!ft.Follow(moving_front->tile, td)) return;
