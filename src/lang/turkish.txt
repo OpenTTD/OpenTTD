@@ -803,6 +803,7 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Hepsini kapa
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Hepsini aç
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Yüksekliği göster
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Fabrika isimlerini göster
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Haritada fabrika gösterme
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Haritada tüm fabrikaları göster
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Yükseklik haritasının gösterimini aç/kapa
@@ -2576,6 +2577,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :yanlış düzel
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :isim kullanımda
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :yanlış parola
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :izin verilenler listesinde değil
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :İstenilen kimlik doğrulama yöntemlerinden hiçbiri mevcut değil
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand için yanlış company-id
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :sunucu tarafından atıldı
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :hile yapmaya çalıştı
@@ -2793,9 +2795,32 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Tren ist
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Sürükle Bırak
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Sürükle bırak tekniğiyle istasyon kur
 
+STR_PICKER_MODE_ALL                                             :Tümü
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Tüm kategorilerdeki öğelerin görüntülenmesini aç/kapat
+STR_PICKER_MODE_USED                                            :Kullanılmış
+STR_PICKER_MODE_USED_TOOLTIP                                    :Yalnızca mevcut öğeleri göstermeyi aç/kapat
+STR_PICKER_MODE_SAVED                                           :Kaydedildi
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Yalnızca kaydedilen öğeleri göstermeyi aç/kapat
 
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Görüntülenecek bir yol noktası türünü seçin
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Görüntülenecek bir kamyon istasyonu türünü seçin
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :İnşa edilecek bir tür kamyon istasyonu seçin. Kaydedilen öğelerde eklemek veya kaldırmak istiyorsanız Ctrl+Tık ile yapabilirsiniz.
 
+STR_HOUSE_PICKER_CAPTION                                        :Ev Seçimi
+STR_HOUSE_PICKER_NAME                                           :{BLACK}İsim: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Nüfus: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Yıl: {ORANGE}{NUM}-{NUM} arası
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Yıl: {ORANGE}Her zaman
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Yıl: {ORANGE}{NUM} tarihinden beri
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Yıl: {ORANGE}{NUM} tarihine kadar
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Boyut: {ORANGE}{NUM}x{NUM} kare
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Kabul edilen kargo: {ORANGE}
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kenar
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Banliyöler
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Dış banliyöler
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :İç banliyöler
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Şehir merkezi
 
 STR_STATION_CLASS_DFLT                                          :Varsayılan
 STR_STATION_CLASS_DFLT_STATION                                  :Varsayılan istasyon
@@ -2980,6 +3005,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Rastgele
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Rastgele bir yerde şehir kur
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Birçok rastgele şehir
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Haritayı rastgele şehirlerle doldur
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Dosyadan yükle
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}JSON dosyasından şehir verilerini içe aktar
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Tüm şehirleri genişlet
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Tüm şehirleri birazcık büyüt
 
@@ -3232,6 +3259,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Senaryoy
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Senaryoyu Yükle
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Yükseklik haritası yükle
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Yükseklik Haritasını Kaydet
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Şehir verisi yükle
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Şu anki varsayılan kayıt/yükleme dizinine gitmek için tıklayın
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} bos
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Sürücü, klasör ve kayıtli oyun listesi
@@ -3243,6 +3271,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Oyunu se
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Yükle
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Seçili oyunu yükle
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Seçili yükseklik haritasını yükle
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Seçili şehir verisini yükle
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Oyun Ayrıntıları
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Mevcut bilgi yok
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3465,6 +3494,8 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF d
 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Hizalanan Görüntü: ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Hizalanan Görüntü: Hareket 0xA, {COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Hizalanan Görüntü: Hareket 0x5, tür {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sonraki nesne
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Tüm sahte/yeniden renklendirme/yazı tipi nesnelerini ve sondaki nesneden atlayarak bir sonraki normal nesneye geç
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Nesneye git
@@ -3473,6 +3504,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Önceki 
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Tüm sahte/yeniden renklendirme/yazı tipi nesnelerini ve baştaki sargıyı atlayarak bir önceki normal nesneye geç
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Seçili nesnenin mevcut gösterimi. Bu nesneyi çizerken hizalama ihmal edilir
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Nesneyi X ve Y ofsetlerini değiştirerek gezdir. Ctrl+Tıklama ile nesneleri bir kerede sekiz birim kaydır
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Ofset ortalandı
@@ -3854,6 +3886,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Yönetici)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Kuruluş: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}Kuruluş: {WHITE}{NUM} (period {NUM})
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Renk:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Araçlar:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren
