@@ -125,14 +125,14 @@ jobs:
             # put in their own folder.
             FOLDER="${{ env.FOLDER_BRANCHES }}/${BRANCH}"
             TRIGGER_TYPE="new-branch"
-
-            # For nightlies, use the git log of the last 7 days as changelog.
-            revdate=$(git log -1 --pretty=format:"%ci")
-            last_week=$(date -d "$revdate -7days" +"%Y-%m-%d %H:%M")
-            echo "## Version $(cat .version) - changes since ${last_week}" > .changelog
-            echo "" >> .changelog
-            git log --oneline --after="${last_week}" >> .changelog
           fi
+
+          # For nightlies / branches, use the git log of the last 7 days as changelog.
+          revdate=$(git log -1 --pretty=format:"%ci")
+          last_week=$(date -d "$revdate -7days" +"%Y-%m-%d %H:%M")
+          echo "## Version $(cat .version) - changes since ${last_week}" > .changelog
+          echo "" >> .changelog
+          git log --oneline --after="${last_week}" >> .changelog
         fi
 
         mkdir -p build/bundles
