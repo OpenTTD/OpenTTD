@@ -484,15 +484,16 @@ static std::vector<OptionData> CreateOptions()
 	std::vector<OptionData> options;
 	/* Options that require a parameter. */
 	for (char c : "GIMSbcmnpqrstv") options.push_back({ .type = ODF_HAS_VALUE, .id = c, .shortname = c });
-#if !defined(_WIN32)
-	options.push_back({ .type = ODF_HAS_VALUE, .id = 'f', .shortname = 'f' });
-#endif
 
 	/* Options with an optional parameter. */
 	for (char c : "Ddg") options.push_back({ .type = ODF_OPTIONAL_VALUE, .id = c, .shortname = c });
 
 	/* Options without a parameter. */
 	for (char c : "QXehx") options.push_back({ .type = ODF_NO_VALUE, .id = c, .shortname = c });
+#if !defined(_WIN32)
+	options.push_back({ .type = ODF_NO_VALUE, .id = 'f', .shortname = 'f' });
+#endif
+
 	return options;
 }
 
