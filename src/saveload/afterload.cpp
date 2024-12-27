@@ -2920,14 +2920,6 @@ bool AfterLoadGame()
 		}
 	}
 
-	{
-		/* Station blocked, wires and pylon flags need to be stored in the map. This is effectively cached data, so no
-		 * version check is necessary. This is done here as the SLV_182 check below needs the blocked status. */
-		for (const auto t : Map::Iterate()) {
-			if (HasStationTileRail(t)) SetRailStationTileFlags(t, GetStationSpec(t));
-		}
-	}
-
 	if (IsSavegameVersionBefore(SLV_182)) {
 		/* Aircraft acceleration variable was bonkers */
 		for (Aircraft *v : Aircraft::Iterate()) {

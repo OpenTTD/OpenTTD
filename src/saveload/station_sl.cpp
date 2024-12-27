@@ -130,6 +130,12 @@ void AfterLoadStations()
 		StationUpdateCachedTriggers(st);
 		RoadStopUpdateCachedTriggers(st);
 	}
+
+	/* Station blocked, wires and pylon flags need to be stored in the map. This is effectively cached data, so no
+	 * version check is necessary. */
+	for (const auto t : Map::Iterate()) {
+		if (HasStationTileRail(t)) SetRailStationTileFlags(t, GetStationSpec(t));
+	}
 }
 
 /**
