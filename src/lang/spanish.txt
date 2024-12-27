@@ -267,6 +267,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}año{P "" s}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}periodo{P "" s}
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
@@ -312,8 +313,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}Aceptar
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :º1234567890'¡\qwertyuiop`+asdfghjklñ´ç<zxcvbnm,.- .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :ª!"·$%&/()=?¿|QWERTYUIOP^*ASDFGHJKLÑ¨Ç>ZXCVBNM;:_ .
+STR_OSK_KEYBOARD_LAYOUT                                         :º1234567890'¡qwertyuiop`+asdfghjklñ´ç<zxcvbnm,.- .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :ª!"·$%&/()=?¿QWERTYUIOP^*ASDFGHJKLÑ¨Ç>ZXCVBNM;:_ .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Longitud: {NUM}
@@ -439,6 +440,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Salir del edito
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Salir
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generar municipios
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Colocar edificios
 
 # Settings menu
 ###length 16
@@ -613,25 +616,29 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Nivel de desempeño de empresas (máximo=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gráfica de Valor de la Empresa
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últimos 24 minutos
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Últimos 72 minutos
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas de pago de cargas
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Días en tránsito
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Segundos en tránsito
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pago por entregar 10 unidades (o 10 000 litros) de carga a una distancia de 20 casillas
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activar todos
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desactivar todos
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Todas
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Ninguna
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Muestra todos los tipos de carga en la gráfica de tarifas de pago de cargas
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Oculta todos los tipos de carga en la gráfica de tarifas de pago de cargas
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Alterna entre mostrar/ocultar la gráfica para este tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Historial de Producción
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Producido
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Muestra detalles del nivel de desempeño
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Leyenda de las gráficas
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Clica aquí para alternan entre mostrar/ocultar la empresa
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Alterna entre mostrar/ocultar la gráfica para esta empresa
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabla de Clasificación de Empresas
@@ -670,7 +677,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Número de vehículos que consiguieron beneficios el último año. Se incluyen vehículos de carretera, trenes, barcos y aeronaves
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Número de vehículos que consiguieron beneficios en el último periodo. Se incluyen vehículos de carretera, trenes, barcos y aeronaves
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Cantidad de partes de estación que han tenido servicio. Las estaciones de tren, paradas de autobús, aeropuertos y demás son contabilizadas por separado, incluso si pertenecen a la misma estación
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Cantidad de partes de estación que han tenido servicio. Las estaciones de trenes, paradas de autobuses, aeropuertos y demás son contabilizadas por separado, incluso si pertenecen a la misma estación
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}El beneficio del vehículo con menos ingresos (sólo se consideran los vehículos con más de dos años de antigüedad)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}El beneficio del vehículo con menos ingresos (sólo se consideran los vehículos con más de dos periodos de antigüedad)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en el trimestre con el menor beneficio de los últimos 12 trimestres
@@ -794,18 +801,20 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Desierto
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Nieve
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Muestra/Oculta los nombres de los municipios en el mapa
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Muestra los nombres de los municipios en el mapa
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrar mapa en la posición actual
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactivar todo
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activar todo
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Ninguno
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Todos
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar altura
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Mostrar nombres de industrias
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Oculta las industrias en el mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Muestra todas las industrias en el mapa
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Muestra/Oculta el mapa de alturas
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Muestra/Oculta el nombre de las industrias
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Oculta las propiedades de empresa en el mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Muestra las propiedades de todas las empresas en el mapa
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Oculta las cargas en el mapa
@@ -959,6 +968,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Volumen
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efectos de sonido
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Música
 
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidad monetaria
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecciona la nnidad monetaria
@@ -1056,6 +1066,7 @@ STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marca es
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Tipos de letra suavizadas
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marca esta casilla para suavizar los tipos de letra escalables
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Encuesta automática
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participar en la encuesta automática
@@ -1084,6 +1095,8 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Seleccionar conjunto de música base a usar
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Información adicional sobre el conjunto de música base
 
+STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Conseguir contenido
+STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Comprueba si hay contenido nuevo y actualizado para descargar
 
 STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(no se han instalado "plugins" para integrar plataformas sociales)
 
@@ -1096,7 +1109,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}No se ha p
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} no se está ejecutando
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}Descargado
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}"Plugin" duplicado
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Versión no soportada
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Versión no permitida
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Firma no válida
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} archivos{P "" s} ausentes/corruptos)
@@ -1485,6 +1498,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar si las g
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Si se activa, se muestra un mensaje cuando un vehículo no haya generado ningún beneficio durante un año
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Si se activa, se muestra un mensaje cuando un vehículo no haya obtenido ningún beneficio durante un período dado
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Avisar si un vehículo se está volviendo viejo: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Si se activa, se muestra un mensaje cuando un vehículo se está volviendo viejo
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Los vehículos nunca caducan: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Si se activa, todos los modelos de vehículos permanecen disponibles para siempre una vez han sido introducidos
@@ -1496,7 +1511,7 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendario
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Reloj
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutos por año: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Selecciona el número de minutos de un año de calendario. Por defecto es 12 minutos. Introduce 0 para evitar que cambie el tiempo del calendario. Este ajuste no afecta a la simulación de la economía del juego y sólo está disponible cuando se usa el modo "Reloj"
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Selecciona el número de minutos de un año de calendario. Por defecto es de 12 minutos. Introduce 0 para evitar que cambie el tiempo de calendario. Aumentar la duración del año de calendario ralentiza la aparición de nuevos modelos de vehículos, edificios y otra infraestructura. No afecta a la simulación de la economía, excepto para la inflación. Este ajuste sólo está disponible cuando se usa el modo "Reloj"
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -1828,6 +1843,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Fija el interva
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo de mantenimiento por defecto para barcos: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Fija el intervalo de mantenimiento por defecto para barcos nuevos, que se empleará si no se define un intervalo de forma explícita para ése vehículo
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Día{P 0 "" s}
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Minuto{P 0 "" s}
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deshabilitado
@@ -2368,7 +2386,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Fecha ac
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Tiempo de juego
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Tiempo jugado mientras el{}juego no estaba en pausa
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Idioma, versión del servidor, etc.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Compatibilidad del servidor e información de autentificación
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Clica en una partida de la lista para seleccionarla
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Servidor al que te conectaste la última vez:
@@ -2474,6 +2492,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Tu nombre de ju
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Acciones de administrador a realizar para este cliente
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Acciones de administrador a realizar para esta empresa
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Unirse a esta empresa
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Autorizar a este cliente unirse a tu empresa
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Envía un mensaje a este jugador
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Envía un mensaje a todos los jugadores de esta empresa
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Envía un mensaje a todos los observadores
@@ -2577,6 +2596,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :versión incorr
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nombre en uso
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :contraseña incorrecta
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :no está en la lista de permitidos
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :ninguno de los métodos de autenticación solicitados está disponible
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :empresa incorrecta en un DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :expulsado por el servidor
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :ha intentado usar un truco
@@ -2719,7 +2739,7 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Establec
 STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Leyenda de flujos de carga
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Todas
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Ninguna
-STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Seleccione las empresas a mostrar
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Seleccionar las empresas a mostrar
 STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
@@ -2763,8 +2783,8 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcción d
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construye tramos de ferrocarril. Ctrl+clic retira tramos de ferrocarril. Con Mayús sólo muestra una estimación del coste
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construye tramos de ferrocarril usando el modo Autorraíl. Ctrl+clic retira tramos de ferrocarril. Con Mayús sólo muestra una estimación del coste
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construye un depósito de trenes (para comprar y dar mantenimiento a trenes). Mayús permite mostrar una estimación del precio
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construye puntos de ruta sobre la vía del ferrocarril. Ctrl+clic para seleccionar otro punto de ruta al que unirlos. Con Mayús sólo muestra una estimación del coste
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construye estaciones de ferrocarril. Ctrl+clic para seleccionar otra estación a la que unirlas. Con Mayús sólo muestra una estimación del coste
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construye puntos de ruta sobre la vía del ferrocarril. Ctrl+clic para seleccionar otro punto de ruta al que unirlo. Con Mayús sólo muestra una estimación del coste
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construye estaciones de ferrocarril. Ctrl+clic para seleccionar otra estación a la que unirla. Con Mayús sólo muestra una estimación del coste
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construye señales de ferrocarril. Ctrl+clic para alternar entre estilos de señales{}Clic+arrastra para construir señales con la distancia elegida en el trampo de vía seleccionado. Ctrl+clic+arrastrar para construir señales hasta el cruce, estación o señal más próximo. Con Mayús sólo muestra una estimación del coste
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construye puentes de ferrocarril. Mayús permite mostrar una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construye túneles ferroviarios. Con Mayús sólo muestra una estimación del coste
@@ -2795,9 +2815,40 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastra
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construye una estación arrastrando y soltando
 
 STR_PICKER_MODE_ALL                                             :Todos
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Muestra/Oculta elementos de todas las clases
+STR_PICKER_MODE_USED                                            :Utilizados
+STR_PICKER_MODE_USED_TOOLTIP                                    :Muestra/Oculta sólo elementos existentes
+STR_PICKER_MODE_SAVED                                           :Guardados
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Muestra/Oculta sólo los elementos guardados
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecciona una clase de estación para mostrar
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Selecciona un tipo de estación para construir. Ctrl+clic para añadir o eliminar en elementos guardados
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selecciona una clase de punto de ruta para mostrar
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Selecciona un tipo de punto de ruta para construir. Ctrl+clic para añadir o eliminar en elementos guardados
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Selecciona una clase de estación de autobús para mostrar
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Selecciona un tipo de estación de autobús para construir. Ctrl+clic para añadir o eliminar en elementos guardados
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecciona una clase de estación de camiones para mostrar
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Selecciona un tipo de estación de camiones para construir. Ctrl+clic para añadir o eliminar en elementos guardados
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecciona una clase de objeto para mostrar
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Selecciona un tipo de objeto para colocar. Ctrl+clic para añadir o eliminar en elementos guardados. Ctrl+clic+arrastrar permite seleccionar un área diagonalmente. Con Mayús sólo muestra una estimación del coste
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecciona una zona urbana a mostrar
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selecciona un tipo de edificio para construir. Ctrl+clic para añadir o eliminar en elementos guardados
 
+STR_HOUSE_PICKER_CAPTION                                        :Selección de Edificios
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nombre: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Población: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Años: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Años: {ORANGE}Cualquiera
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Años: {ORANGE}Desde {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Años: {ORANGE}Hasta {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Tamaño: {ORANGE}{NUM}x{NUM} casillas
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Carga aceptada: {ORANGE}
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Afueras
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferia
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbios exteriores
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbios interiores
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro urbano
 
 STR_STATION_CLASS_DFLT                                          :Por defecto
 STR_STATION_CLASS_DFLT_STATION                                  :Estación por defecto
@@ -2852,10 +2903,12 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construy
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construye tramos de tranvía usando el modo de Autotranvías. Ctrl+clic retira tramos de tranvía. Con Mayús sólo muestra una estimación del coste
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construye un depósito de carretera (para comprar y dar mantenimiento a vehículos). Con Mayús sólo muestra una estimación del coste
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construye un depósito de tranvías (para comprar y dar mantenimiento a tranvías). Con Mayús sólo muestra una estimación del coste
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construye estaciones de autobús. Ctrl+clic para seleccionar otra estación a la que unirlas. Con Mayús sólo muestra una estimación del coste
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construye estaciones de tranvía de pasajeros. Ctrl+clic para seleccionar otra estación a la que unirlas. Con Mayús sólo muestra una estimación del coste
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construye estaciones de carga para camiones. Ctrl+clic para seleccionar otra estación a la que unirlas. Con Mayús sólo muestra una estimación del coste
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construye estaciones de tranvía de carga. Ctrl+clic para seleccionar otra estación a la que unirlas. Con Mayús sólo muestra una estimación del coste
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Construye un punto de ruta sobre la carretera. Ctrl+clic para seleccionar otro punto de ruta al que unirlo. Con Mayús sólo muestra una estimación del coste
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Construye un punto de ruta sobre la vía de tranvía. Ctrl+clic para seleccionar otro punto de ruta al que unirlo. Con Mayús sólo muestra una estimación del coste
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construye estaciones de autobuses. Ctrl+clic para seleccionar otra estación a la que unirla. Con Mayús sólo muestra una estimación del coste
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construye estaciones de tranvía de pasajeros. Ctrl+clic para seleccionar otra estación a la que unirla. Con Mayús sólo muestra una estimación del coste
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construye estaciones de carga para camiones. Ctrl+clic para seleccionar otra estación a la que unirla. Con Mayús sólo muestra una estimación del coste
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construye estaciones de tranvía de carga. Ctrl+clic para seleccionar otra estación a la que unirla. Con Mayús sólo muestra una estimación del coste
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activa/Desactiva carreteras de sentido único
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construye puentes de carretera. Mayús sólo muestra una estimación del coste
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construye puentes de tranvía. Con Mayús sólo muestra una estimación del coste
@@ -2876,8 +2929,8 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientac
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selecciona la orientación del depósito de tranvías
 
 # Road vehicle station construction window
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientación Estación de Autobús
-STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selecciona la orientación de la estación de autobús
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientación de la Estación de Autobuses
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selecciona la orientación de la estación de autobuses
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientación Estación de Camiones
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecciona la orientación de la estación de camiones
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientación Estación de Tranvía Pasajeros
@@ -2891,7 +2944,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canales
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construye canales. Con Mayús sólo muestra una estimación del coste
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construye esclusas. Con Mayús sólo muestra una estimación del coste
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Contruye un astillero (para comprar y dar mantenimiento a barcos). Con Mayús sólo muestra una estimación del coste
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construye muelles. Ctrl+clic para seleccionar otra estación a la que unirlos. Con Mayús sólo muestra una estimación del coste
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construye muelles. Ctrl+clic para seleccionar otra estación a la que unirlo. Con Mayús sólo muestra una estimación del coste
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Coloca una boya que puede ser usada como punto de ruta. Con Mayús sólo muestra una estimación del coste
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construye un acueducto. Con Mayús sólo muestra una estimación del coste
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Construye canales. Ctrl+clic a nivel del mar para inundar con agua marina
@@ -2906,7 +2959,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Muelle
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeropuertos
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeropuerto. Ctrl+clic para seleccionar otra estación a la que unirlas. Con Mayús sólo muestra una estimación del coste
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeropuerto. Ctrl+clic para seleccionar otra estación a la que unirla. Con Mayús sólo muestra una estimación del coste
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Selección de aeropuerto
@@ -2976,12 +3029,14 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}¿Estás
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Creación de Municipios
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nuevo Municipio
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nuevo municipio
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Funda un nuevo municipio. Con Mayús sólo muestra una estimación del coste
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Municipio al Azar
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Municipio al azar
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Funda un municipio en un lugar aleatorio
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Varios municipios al azar
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cubre el mapa con municipios colocados al azar
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Cargar desde archivo
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Importa datos de los municipios desde un archivo JSON
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Expandir todos los municipios
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Expande levemente todos los municipios
 
@@ -3123,7 +3178,7 @@ STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Estación de tr
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar de aeronaves
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Aeropuerto
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Estación de camiones
-STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Estación de autobús
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Estación de autobuses
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Muelle
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boya
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Punto de ruta
@@ -3234,6 +3289,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Guardar 
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Cargar Escenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Cargar Mapa de Alturas
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Guardar Mapa de Alturas
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Carga de Datos de Municipios
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clica aquí para ir al directorio de carga/guardado por defecto
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Listado de unidades, directorios y partidas guardadas
@@ -3245,6 +3301,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Guarda l
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Cargar
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Cargar la partida seleccionada
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Cargar el mapa de alturas seleccionado
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Carga los datos de municipios seleccionados
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalles de la Partida
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hay información disponible
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3366,8 +3423,11 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}¿Desea
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% completado
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generación de mundo
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}Generación de terreno
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generación de ríos
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generación de áreas ásperas o rocosas
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}Generación de municipios
+STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}Generación de industrias
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generación de inamovibles
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generación de árboles
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurar juego
@@ -3375,7 +3435,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Ejecutar
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script en funcionamiento
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparando juego
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Carga de datos de municipios fallida
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}El formato del archivo JSON es incorrecto
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :El formato de los datos {WHITE}{STRING} es incorrecto
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :El formato de las coordenadas {WHITE}{STRING} es incorrecto, deben valer desde 0 hasta 1 como proporción de las dimensiones totales del mapa de alturas
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}No se ha podido encontrar una localización válida para {NUM} municipio{P "" s}. Se ha{P "" "n"} creado {P "un " ""}letrero{P "" s} en la{P "" s} localizaci{P ó o}n{P "" es} planeada{P "" s} en su lugar
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuración de NewGRF
@@ -3583,6 +3648,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir al le
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Introduce un nombre para el letrero
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Municipios ({COMMA} of {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ninguna -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Ciudad){BLACK} ({COMMA})
@@ -3856,6 +3922,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Presidente)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurada en: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}Inaugurada en: {WHITE}{NUM} (periodo {NUM})
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema de Color:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehículos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren{P "" es}
@@ -3916,6 +3983,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/periodo
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrias ({COMMA} of {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ninguna -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportado){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -3935,6 +4003,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producci
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producción el minuto anterior:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportado)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la vista principal sobre la industria. Ctrl+clic abre un punto de vista en dicha posición
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Gráfico de Producción
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Muestra el gráfico del historial de producción de la industria
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de producción: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La industria ha anunciado su cierre inminente!
 
@@ -3957,10 +4027,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave{P "" s}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenes - Clica en el tren para más información
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehículos de carretera - Clica en el vehículo para más información
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Barcos - Clica en el barco para más información
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronave - Clica en la aeronave para ver la información
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenes - Clica en el tren para más información. Ctrl+Mayús muestra el tipo de carga
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehículos de carretera - Clica en el vehículo para más información. Ctrl+Mayús muestra el tipo de carga
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Barcos - Clica en el barco para más información. Ctrl+Mayús muestra el tipo de carga
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronave - Clica en la aeronave para ver la información. Ctrl+Mayús muestra el tipo de carga
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenes disponibles
@@ -4685,6 +4755,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar durante
 STR_TIMETABLE_STAY_FOR                                          :y permanecer {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
 
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}El horario tardará aproximadamente {STRING} en recorrerse
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}El horario tardará {STRING} en recorrerse
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}El horario tardará al menos {STRING} en recorrerse (no todas las órdenes)
 
@@ -4968,6 +5039,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... no h
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obras de carretera en progreso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede borrar este municipio...{}Quedan estaciones o depósitos relacionados con él, o una propiedad suya no puede ser retirada
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no existe un lugar apropiado para una estatua en el centro de este municipio
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}No se puede construir edificio...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... demasiadas industrias
@@ -5005,21 +5077,23 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}No puede
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Contigua a más de una estación/zona de carga existente
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... estación demasiado extendida
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... número de vías no permitido
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... longitud no permitido
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Demasiadas estaciones/zonas de carga
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes de estación de tren
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de autobús
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de autobuses
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiadas paradas de camión
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Demasiado cerca de otro muelle
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado cerca de otro aeropuerto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}No se puede renombrar estación...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... carretera propiedad del municipio
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... carretera en dirección incorrecta
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... las estaciones de autobús de paso no pueden tener esquinas
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... las estaciones de autobús de paso no pueden tener intersecciones
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... las estaciones de autobuses de paso no pueden tener esquinas
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... las estaciones de autobuses de paso no pueden tener intersecciones
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}No se puede retirar parte de la estación...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Primero se debe retirar la estación de tren
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Primero se debe retirar la estación de trenes
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}No se puede retirar estación de bus...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}No se puede retirar estación de camiones...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}No se puede retirar estación de tranvía de pasajeros...
@@ -5027,9 +5101,9 @@ STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}No se pu
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Primero debe retirar la parada
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... no hay ninguna estación aquí
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Primero debe demolerse estación de trenes
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Primero debe demolerse estación de autobús
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Primero debe demolerse estación de camiones
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Primero debe demolerse la estación de trenes
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Primero debe demolerse la estación de autobuses
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Primero debe demolerse la estación de camiones
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Primero debe demolerse la estación de tranvía de pasajeros
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Primero debe demolerse la estacion de tranvia de carga
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Primero debe demolerse el muelle
@@ -5039,12 +5113,15 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Primero 
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Contiguo a más de un punto de ruta existente
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Demasiado cerca de otro punto de ruta
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}No se puede construir punto de ruta para trenes aquí...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}No se puede construir punto de ruta de ferrocarril aquí...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}No se puede construir punto de ruta de carretera aquí...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}No se puede colocar boya aquí...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No se puede cambiar el nombre del punto de ruta...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}No se puede retirar punto de ruta aquí...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Primero se debe retirar el punto de ruta
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}No se puede retirar punto de ruta de ferrocarril aquí...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}No se puede retirar punto de ruta de carretera aquí...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Primero se debe retirar el punto de ruta de ferrocarril
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Primero se debe retirar el punto de ruta de carretera
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boya en medio
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... ¡boya en uso por otra empresa!
 
@@ -5245,6 +5322,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Es neces
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}En esta fecha no hay vehículos disponibles
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Comienza una nueva partida después de {DATE_SHORT} o usa un NewGRF que provea vehículos más antiguos
 
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}No hay tipos de carreteras que los municipios puedan construir
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Es necesario modificar la configuración NewGRF
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}No hay tipos de carreteras que los municipios puedan construir todavía
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Comienza una nueva partida después de {DATE_SHORT} o usa un NewGRF que provea tipos de carreteras que los municipios puedan construir más antiguos
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No se puede pasar la señal en peligro al tren...
@@ -5277,8 +5358,8 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... dema
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... la aeronave no tiene suficiente alcance
 
 # Extra messages which go on the third line of errors, explaining why orders failed
-STR_ERROR_NO_RAIL_STATION                                       :{WHITE}No hay estación de tren
-STR_ERROR_NO_BUS_STATION                                        :{WHITE}No hay estación de autobús
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}No hay estación de trenes
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}No hay estación de autobuses
 STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}No hay estación de camiones
 STR_ERROR_NO_DOCK                                               :{WHITE}No hay puerto
 STR_ERROR_NO_AIRPORT                                            :{WHITE}No hay aeropuerto/helipuerto
@@ -5288,6 +5369,7 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}No hay p
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Este avión no puede aterrizar en este helipuerto
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Este helicóptero no puede aterrizar en este aeropuerto
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}No hay punto de ruta de ferrocarril
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}No hay punto de ruta de carretera
 STR_ERROR_NO_BUOY                                               :{WHITE}No boya
 
 # Timetable related errors
