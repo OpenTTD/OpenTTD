@@ -2163,7 +2163,7 @@ STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :系统 NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :与当前版本 OpenTTD 不兼容
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :未知
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}……压缩等级“{STRING}”无效
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}……存档格式“{STRING}”不适用。请转换成“{STRING}”
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}……本版本不支持存档格式“{STRING}”，现改用“{STRING}”格式
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}……禁用基础图形设置“{STRING}”：未找到
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}……禁用基础音效设置“{STRING}”：未找到
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}……禁用基础音乐设置“{STRING}”：未找到
@@ -4815,7 +4815,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 设�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}修改 AI 设置
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重载 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}关闭 AI 并重启 AI
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}启用／停用 当 AI 记录信息符合断点字符串时中断执行的功能
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}启用或停用当 AI 记录信息符合断点字符串时中断执行的功能
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}中断点：
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}中断点
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}当 AI 记录信息与该字符串相符时暂停游戏

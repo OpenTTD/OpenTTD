@@ -614,6 +614,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Eenheete
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Firme-Leeschtungsbewäertung (max Bewäertung=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmewäertgrafik
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Lescht 24 Minuten
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Dauert 72 Minutten
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Luedungs Bezuelraten
@@ -627,6 +628,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Keng Wue
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Schalt d'Grafik fir de Wuerentyp em
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Produktiounshistorie
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produzéiert
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportéiert
 
@@ -2831,6 +2833,14 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wiel eng Stad-Z
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Wiel en Haustyp fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
 
 STR_HOUSE_PICKER_CAPTION                                        :Häiserauswiel
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Numm: {ORANGE}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Awunner: {ORANGE}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Joer: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Joer: {ORANGE}All
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Joer: {ORANGE}Vun {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Joer: {ORANGE}Bis {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Gréisst: {ORANGE}{NUM}x{NUM} Felder
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Akzeptéiert Wuer: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rand
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Ausseberäich

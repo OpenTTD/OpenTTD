@@ -805,7 +805,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Budowani
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Budowa infrastruktury drogowej
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Budowanie infrastruktury tramwajowej
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadź drzewa. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umieść napis
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umieść tablicę z napisem
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umieść obiekt. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 # Scenario editor file menu
@@ -834,11 +834,11 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Wyświetlanie n
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Wyświetlanie nazw stacji
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wyświetlanie nazw posterunków
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Wyświetlanie napisów
-STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Znaki konkurentów i nazwy są wyświetlane
-STR_SETTINGS_MENU_FULL_ANIMATION                                :Pełna animacja
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Wyświetlanie napisów i nazw rywali
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Pełne animacje
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Wszystkie detale
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Przeźroczyste budynki
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Przeźroczyste znaki
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Przeźroczyste tablice
 
 # File menu
 STR_FILE_MENU_SAVE_GAME                                         :Zapisz grę
@@ -1841,8 +1841,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Brak*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Zredukowana
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalna
 
-STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Pozwól na skrzyżowania dróg z torami kolejowymi należącymi do konkurentów: {STRING}
-STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Pozwala budować przejazdy kolejowe przez drogi lub tory należące do konkurentów
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Pozwól na skrzyżowania dróg z torami kolejowymi należącymi do rywali: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Pozwala budować przejazdy kolejowe przez drogi lub tory należące do rywali
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Pozwól na budowę przystanków przelotowych na drogach miejskich: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Pozwalaj budować przystanki przelotowe na drogach będących własnością miast
@@ -2250,8 +2250,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Wyświetl wiado
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Wypadki / klęski: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Wyświetl wiadomość w gazecie kiedy zdarzy się wypadek lub nastąpi katastrofa
 
-STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Wypadki pojazdów konkurentów: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Wyświetl wiadomość w gazecie o rozbitych pojazdach konkurentów
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Wypadki pojazdów rywali: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Wyświetl wiadomość w gazecie o rozbitych pojazdach rywali
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacja firmy: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Wyświetl wiadomość w gazecie kiedy powstaje nowa firma lub kiedy istniejącym firmom grozi bankructwo
@@ -2748,15 +2748,15 @@ STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Publiczny
 STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Tylko na zaproszenie
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Gra wieloosobowa
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Gra Wieloosobowa
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nazwa gracza:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}To jest nazwa, pod którą inni gracze będą cię rozpoznawać
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nazwa
-STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Nazwa gry
+STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Nazwa rozgrywki
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Klientów
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Klientów podłączonych / maks.{}Firm podłączonych / maks.
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Gracze
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Liczba klientów podłączonych / maks.{}Firm istniejących / maks.
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Rozmiar mapy
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Rozmiar mapy w grze{}Kliknij, aby posortować wg powierzchni
@@ -2764,7 +2764,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Bieżąca data
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}min
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Czas gry
-STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Czas rozgrywki,{}gdy gra nie była wstrzymana
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Czas trwania rozgrywki,{}gdy nie była wstrzymana
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Informacje o zgodności serwera i uwierzytelnianiu
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Kliknij na rozgrywkę na tej liście, aby ją zaznaczyć
@@ -2881,7 +2881,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Utwórz 
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}To jesteś ty
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}To jest gospodarz gry
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" ów ów} - {NUM}/{NUM} firm{P ę y ""}
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Liczba aktualnie podłączonych klientów, liczba firm oraz maksymalna liczba firm dozwolona przez administratora serwera
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Liczba aktualnie podłączonych klientów oraz liczba istniejących firm i maksymalna liczba firm dozwolona przez administratora serwera
 
 # Matches ConnectionType
 ###length 5
@@ -3023,7 +3023,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Twój se
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Inni gracze nie będą mogli połączyć się z twoim serwerem
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Przeglądarka dodatkowej zawartości
+STR_CONTENT_TITLE                                               :{WHITE}Pobieranie Dodatkowej Zawartości
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Typ
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Rodzaj zawartości
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nazwa
@@ -3039,7 +3039,7 @@ STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Przeszuk
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Przeszukaj dodatki niedostępne w serwisie OpenTTD na stronach nie współpracujących z OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Opuszczasz OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Warunki pobierania dodatków z zewnętrznych stron internetowych są inne.{}Będziesz musiał(a) odnieść się do zewnętrznych stron w celu uzyskania wskazówek dotyczących instalacji dodatku w OpenTTD.{}Czy chcesz kontynuować?
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr etykiety/nazwy:
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr tagu/nazwy:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Strona internetowa
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Odwiedź stronę internetową dotyczącą tej zawartości
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Pobierz
@@ -3048,9 +3048,9 @@ STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Całkow
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}OPIS ZAWARTOŚCI
 
 ###length 5
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Ten dodatek nie został wybrany do pobrania
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Dodatek ten został wybrany do pobrania
-STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Zależność ta została wybrana do pobrania
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Nie zaznaczono do pobrania
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Zaznaczono do pobrania
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Zaznaczono tę zależność do pobrania
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Już to posiadasz
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ta zawartość jest nieznana i nie może zostać pobrana do OpenTTD
 
@@ -4019,7 +4019,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Wielkoś
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Przełącz uwzględnianie wielkości liter przy porównywaniu tekstu napisu z filtrem
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edycja tekstu napisu
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edycja treści napisu
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Wyśrodkuj widok główny na lokalizacji napisu. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Idź do następnego napisu
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Idź do poprzedniego napisu
@@ -4091,9 +4091,9 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Ufunduj remont sieci dróg miejskich.{}Spowoduje to znaczne zakłócenia w ruchu ulicznym trwające do 6 minut.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Zbuduj statuę dla uczczenia swojej firmy.{}Trwale podniesie to ocenę twoich stacji w pobliżu tego miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Ufunduj nowe budynki w mieście.{}Zapewnia tymczasowe przyspieszenie rozwoju tego miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Kup prawo do wyłączności na usługi transportowe w mieście na okres 12 miesięcy.{}Władze miasta nie pozwolą pasażerom i ładunkom korzystać ze stacji konkurencji. Pomyślne wręczenie łapówki przez przeciwnika spowoduje anulowanie tej umowy.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Kup prawo do wyłączności na usługi transportowe w mieście na okres 12 minut.{}Władze miasta nie pozwolą pasażerom i ładunkom korzystać ze stacji konkurencji. Pomyślne wręczenie łapówki przez przeciwnika spowoduje anulowanie tej umowy.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Przekup lokalne władze, aby zwiększyć swoją ocenę i unieważnić wyłączność transportową konkurenta, ryzykując surową karę w przypadku przyłapania.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Kup prawo do wyłączności na usługi transportowe w mieście na okres 12 miesięcy.{}Władze miasta nie pozwolą pasażerom i ładunkom korzystać ze stacji należących do twoich rywali. Pomyślne wręczenie łapówki przez rywala spowoduje anulowanie tej umowy.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Kup prawo do wyłączności na usługi transportowe w mieście na okres 12 minut.{}Władze miasta nie pozwolą pasażerom i ładunkom korzystać ze stacji należących do twoich rywali. Pomyślne wręczenie łapówki przez rywala spowoduje anulowanie tej umowy.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Przekup lokalne władze (ryzykując surową karą w przypadku przyłapania), aby zwiększyć swoją ocenę i ewentualnie unieważnić wyłączność transportową rywala.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Cele firmy {COMPANY}
@@ -4157,9 +4157,9 @@ STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Strona {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Przejdź do określonej strony, wybierając ją z rozwijanej listy
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Wstecz
-STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Idź na poprzednią stronę
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Przejdź do poprzedniej strony
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Dalej
-STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Idź na następną stronę
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Przejdź do następnej strony
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Niepoprawne odniesienie do celu
 
 # Station list window
@@ -4460,7 +4460,7 @@ STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Zmień n
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Zmień kolor zaznaczonej grupy
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kliknij, aby chronić tę grupę przed globalną zamianą pojazdów. Użyj Ctrl, aby chronić również podgrupy
 
-STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Skasuj grupę
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Usuwanie grupy
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Czy na pewno chcesz usunąć tę grupę i wszystkie podrzędne?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Dodaj poj. współdzielące
