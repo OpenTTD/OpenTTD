@@ -211,7 +211,7 @@ BEGIN {
 }
 
 # Maybe the end of the class, if so we can start with the Squirrel export pretty soon
-/};/ {
+/^[ 	]*};/ {
 	comment_buffer = ""
 	cls_level--
 	if (cls_level != 0) {
