@@ -141,6 +141,8 @@ To run the container, run, `docker run --rm -v ./openttd.cfg:/config/openttd.cfg
 
 Use the example file (openttd.cfg-example) as a starting point for customizing the server.
 
+As an alternative, use this prebuilt image: `docker pull moriartee/openttd-server`
+
 ## 2.0) Contact and Community
 
 'Official' channels
