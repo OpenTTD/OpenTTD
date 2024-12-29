@@ -1061,7 +1061,7 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Zysk poj
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Kwota pieniędzy zarobionych w kwartale z najniższym zyskiem spośród poprzednich 12 kwartałów
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Kwota pieniędzy zarobionych w kwartale z najwyższym zyskiem spośród poprzednich 12 kwartałów
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Ilość ładunku dostarczonego w poprzednich 4 kwartałach
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Ilość różnych typów ładunku dostarczonych w poprzednim kwartale
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Liczba różnych rodzajów ładunków dostarczonych w poprzednim kwartale
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ilość dostępnych środków pieniężnych
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Wielkość pożyczki wziętej przez firmę
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Suma przyznanych punktów
