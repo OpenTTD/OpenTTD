@@ -3,18 +3,19 @@
 ## Table of contents
 
 - 1.0) [About](#10-about)
-    - 1.1) [Downloading OpenTTD](#11-downloading-openttd)
-    - 1.2) [OpenTTD gameplay manual](#12-openttd-gameplay-manual)
-    - 1.3) [Supported platforms](#13-supported-platforms)
-    - 1.4) [Installing and running OpenTTD](#14-installing-and-running-openttd)
-    - 1.5) [Add-on content / mods](#15-add-on-content--mods)
-    - 1.6) [OpenTTD directories](#16-openttd-directories)
-    - 1.7) [Compiling OpenTTD](#17-compiling-openttd)
+  - 1.1) [Downloading OpenTTD](#11-downloading-openttd)
+  - 1.2) [OpenTTD gameplay manual](#12-openttd-gameplay-manual)
+  - 1.3) [Supported platforms](#13-supported-platforms)
+  - 1.4) [Installing and running OpenTTD](#14-installing-and-running-openttd)
+  - 1.5) [Add-on content / mods](#15-add-on-content--mods)
+  - 1.6) [OpenTTD directories](#16-openttd-directories)
+  - 1.7) [Compiling OpenTTD](#17-compiling-openttd)
+  - 1.8) [Build docker image](#18-build-docker-image)
 - 2.0) [Contact and community](#20-contact-and-community)
-    - 2.1) [Multiplayer games](#21-multiplayer-games)
-    - 2.2) [Contributing to OpenTTD](#22-contributing-to-openttd)
-    - 2.3) [Reporting bugs](#23-reporting-bugs)
-    - 2.4) [Translating](#24-translating)
+  - 2.1) [Multiplayer games](#21-multiplayer-games)
+  - 2.2) [Contributing to OpenTTD](#22-contributing-to-openttd)
+  - 2.3) [Reporting bugs](#23-reporting-bugs)
+  - 2.4) [Translating](#24-translating)
 - 3.0) [Licensing](#30-licensing)
 - 4.0) [Credits](#40-credits)
 
@@ -37,11 +38,9 @@ Both 'stable' and 'nightly' versions are available for download:
 
 OpenTTD is also available for free on [Steam](https://store.steampowered.com/app/1536610/OpenTTD/), [GOG.com](https://www.gog.com/game/openttd), and the [Microsoft Store](https://www.microsoft.com/p/openttd-official/9ncjg5rvrr1c). On some platforms OpenTTD will be available via your OS package manager or a similar service.
 
-
 ## 1.2) OpenTTD gameplay manual
 
 OpenTTD has a [community-maintained wiki](https://wiki.openttd.org/), including a gameplay manual and tips.
-
 
 ## 1.3) Supported platforms
 
@@ -56,6 +55,7 @@ The currently supported platforms are:
 Other platforms may also work (in particular various BSD systems), but we don't actively test or maintain these.
 
 ### 1.3.1) Legacy support
+
 Platforms, languages and compilers change.
 We'll keep support going on old platforms as long as someone is interested in supporting them, except where it means the project can't move forward to keep up with language and compiler features.
 
@@ -72,7 +72,6 @@ For some platforms these will be downloaded during the installation process if r
 
 For some platforms, you will need to refer to [the installation guide](https://wiki.openttd.org/en/Manual/Installation).
 
-
 ### 1.4.1) Free graphics and sound files
 
 The free data files, split into OpenGFX for graphics, OpenSFX for sounds and
@@ -85,7 +84,6 @@ OpenMSX for music can be found at:
 Please follow the readme of these packages about the installation procedure.
 The Windows installer can optionally download and install these packages.
 
-
 ### 1.4.2) Original Transport Tycoon Deluxe graphics and sound files
 
 If you want to play with the original Transport Tycoon Deluxe data files you have to copy the data files from the CD-ROM into the baseset/ directory.
@@ -93,6 +91,7 @@ It does not matter whether you copy them from the DOS or Windows version of Tran
 The Windows install can optionally copy these files.
 
 You need to copy the following files:
+
 - sample.cat
 - trg1r.grf or TRG1.GRF
 - trgcr.grf or TRGC.GRF
@@ -100,14 +99,13 @@ You need to copy the following files:
 - trgir.grf or TRGI.GRF
 - trgtr.grf or TRGT.GRF
 
-
 ### 1.4.3) Original Transport Tycoon Deluxe music
 
 If you want the Transport Tycoon Deluxe music, copy the appropriate files from the original game into the baseset folder.
+
 - TTD for Windows: All files in the gm/ folder (gm_tt00.gm up to gm_tt21.gm)
 - TTD for DOS: The GM.CAT file
 - Transport Tycoon Original: The GM.CAT file, but rename it to GM-TTO.CAT
-
 
 ## 1.5) Add-on content / mods
 
@@ -117,7 +115,6 @@ Most types of add-on content can be downloaded within OpenTTD via the 'Check Onl
 
 Add-on content can also be installed manually, but that's more complicated; the [OpenTTD wiki](https://wiki.openttd.org/) may offer help with that, or the [OpenTTD directory structure guide](./docs/directory_structure.md).
 
-
 ### 1.5.1) Social Integration
 
 OpenTTD has the ability to load plugins to integrate with Social Platforms like Steam, Discord, etc.
@@ -125,7 +122,6 @@ OpenTTD has the ability to load plugins to integrate with Social Platforms like 
 To enable such integration, the plugin for the specific platform has to be downloaded and stored in the `social_integration` folder.
 
 See [OpenTTD's website](https://www.openttd.org), under Downloads, for what plugins are available.
-
 
 ### 1.6) OpenTTD directories
 
@@ -137,6 +133,13 @@ For more information, see the [directory structure guide](./docs/directory_struc
 
 If you want to compile OpenTTD from source, instructions can be found in [COMPILING.md](./COMPILING.md).
 
+### 1.8) Build docker image
+
+Run `docker build . -topenttd-server:<VERSION>`
+
+To run the container, run, `docker run --rm -v ./openttd.cfg:/config/openttd.cfg -p3979:3979 -p3979:3979/udp openttd-server`
+
+Use the example file (openttd.cfg-example) as a starting point for customizing the server.
 
 ## 2.0) Contact and Community
 
@@ -153,31 +156,26 @@ If you want to compile OpenTTD from source, instructions can be found in [COMPIL
 
 - the OpenTTD wiki has a [page listing OpenTTD communities](https://wiki.openttd.org/en/Community/Community) including some in languages other than English
 
-
 ### 2.1) Multiplayer games
 
 You can play OpenTTD with others, either cooperatively or competitively.
 
 See the [multiplayer documentation](./docs/multiplayer.md) for more details.
 
-
 ### 2.2) Contributing to OpenTTD
 
-We welcome contributors to OpenTTD.  More information for contributors can be found in [CONTRIBUTING.md](./CONTRIBUTING.md)
-
+We welcome contributors to OpenTTD. More information for contributors can be found in [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ### 2.3) Reporting bugs
 
-Good bug reports are very helpful.  We have a [guide to reporting bugs](./CONTRIBUTING.md#bug-reports) to help with this.
+Good bug reports are very helpful. We have a [guide to reporting bugs](./CONTRIBUTING.md#bug-reports) to help with this.
 
 Desyncs in multiplayer are complex to debug and report (some software development skils are required).
 Instructions can be found in [debugging and reporting desyncs](./docs/debugging_desyncs.md).
 
-
 ### 2.4) Translating
 
-OpenTTD is translated into many languages.  Translations are added and updated via the [online translation tool](https://translator.openttd.org).
-
+OpenTTD is translated into many languages. Translations are added and updated via the [online translation tool](https://translator.openttd.org).
 
 ## 3.0) Licensing
 

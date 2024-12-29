@@ -1,0 +1,85 @@
+[server]
+# Password required for clients to join
+#server_password = "secretpassword"
+
+# Password for any company if used
+#company_password = "companypass"
+
+# Password for administration console (RCON)
+server_admin_password = "adminpass"
+
+# The port the server listens on for incoming connections (default is 3979)
+server_port = 3979
+
+# Whether or not to advertise this server (true/false)
+server_advertise = true
+
+# How many companies can exist in the game
+max_companies = 8
+
+# How many clients can be connected at once
+max_clients = 50
+
+# If true, the game starts paused, waiting for players
+start_paused = false
+
+# If false, the game continues running even if no players are connected
+pause_when_no_clients = false
+
+
+[network]
+# The maximum time (in milliseconds) the server waits for a response before disconnecting
+network_max_tcp_clients = 20
+
+# The name that appears in the multiplayer server list
+server_name = "OpenTTD Server (v14.1) on Docker"
+
+# Extra lines you can tweak, e.g.:
+# network_frame_freq = 2
+# network_sync_enable = true
+
+
+[game_creation]
+starting_year = 1990
+map_x = 10
+map_y = 10
+
+[misc]
+# Language file (if available)
+language = english.lng
+
+# Save autosaves to a dedicated folder
+# autosave_on_exit = true
+
+# Keep some number of autosave files
+# keep_all_autosave = false
+
+
+[gui]
+# If this is a dedicated server, the GUI sections aren’t typically used
+# but they can exist here for reference or local hosting with a GUI.
+fullscreen = false
+
+
+[difficulty]
+# Various difficulty settings (e.g., cost factors for building, vehicle running costs, etc.)
+# ...
+# max_no_competitors = 0
+# number_towns = 3
+# industry_density = 5
+# max_loan = 300000
+# initial_interest = 2
+# vehicle_costs = 0
+# competitor_speed = 2
+# vehicle_breakdowns = 1
+# subsidy_multiplier = 2
+# subsidy_duration = 1
+# construction_cost = 0
+# terrain_type = 1
+# quantity_sea_lakes = 0
+# economy = false
+# line_reverse_mode = false
+# disasters = false
+# town_council_tolerance = 0
+# competitors_interval = 10
+# infinite_money = false
