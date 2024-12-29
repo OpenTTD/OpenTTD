@@ -1,0 +1,33 @@
+name: Docker Publish
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) Check out your repository code
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      # 2) Log in to Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      # 3) Build and push the Docker image
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          # Path to your Docker context (where Dockerfile is located)
+          context: .
+          # Build arguments or other build options can go here if needed
+          push: true
+          # Set image name(s) and tag(s); 'latest' is a simple default
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/openttd-server:latest, ${{ secrets.DOCKERHUB_USERNAME }}/openttd-server:$(date +%s)
+
