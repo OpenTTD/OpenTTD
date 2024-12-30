@@ -1241,6 +1241,11 @@ CommandCost CmdRenamePresident(DoCommandFlag flags, const std::string &text)
 		InvalidateWindowClassesData(WC_COMPANY, 1);
 		MarkWholeScreenDirty();
 		CompanyAdminUpdate(c);
+
+		SetDParam(0, c->index);
+		std::string new_name = GetString(STR_PRESIDENT_NAME);
+		AI::BroadcastNewEvent(new ScriptEventPresidentRenamed(c->index, new_name));
+		Game::NewEvent(new ScriptEventPresidentRenamed(c->index, new_name));
 	}
 
 	return CommandCost();
