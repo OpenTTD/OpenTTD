@@ -1373,4 +1373,48 @@ private:
 	VehicleID vehicle_id;
 };
 
+
+/**
+ * Event President Renamed, indicating a company's president's name has changed.
+ * This event is not sent to the company for who the president's name changed.
+ * @api ai game
+ */
+class ScriptEventPresidentRenamed : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	/**
+	 * @param company The company of the president.
+	 * @param new_name The new name of the president.
+	 */
+	ScriptEventPresidentRenamed(CompanyID company, const std::string &new_name) :
+		ScriptEvent(ET_PRESIDENT_RENAMED),
+		company(static_cast<ScriptCompany::CompanyID>(company)),
+		new_name(new_name)
+	{}
+#endif /* DOXYGEN_API */
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventPresidentRenamed *Convert(ScriptEvent *instance) { return static_cast<ScriptEventPresidentRenamed *>(instance); }
+
+	/**
+	 * Get the CompanyID of the company that got its president renamed.
+	 * @return The CompanyID of the company.
+	 */
+	ScriptCompany::CompanyID GetCompanyID() { return this->company; }
+
+	/**
+	 * Get the new name of the president.
+	 * @return The new name of the president.
+	 */
+	std::optional<std::string> GetNewName() { return this->new_name; }
+
+private:
+	ScriptCompany::CompanyID company; ///< The company of the renamed president.
+	std::string new_name; ///< The new name of the president.
+};
+
 #endif /* SCRIPT_EVENT_TYPES_HPP */
