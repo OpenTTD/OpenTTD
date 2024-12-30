@@ -39,6 +39,19 @@ static std::tuple<std::string, std::string> SplitFontFamilyAndStyle(std::string_
 	return { std::string(font_name.substr(0, separator)), std::string(font_name.substr(begin)) };
 }
 
+/**
+ * Get language string for FontConfig pattern matching.
+ * @param language_isocode Language's ISO code.
+ * @return Language code for FontConfig.
+ */
+static std::string GetFontConfigLanguage(const std::string &language_isocode)
+{
+	/* Fontconfig doesn't handle full language isocodes, only the part
+	 * before the _ of e.g. en_GB is used, so "remove" everything after
+	 * the _. */
+	return fmt::format(":lang={}", language_isocode.substr(0, language_isocode.find('_')));
+}
+
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 {
 	FT_Error err = FT_Err_Cannot_Open_Resource;
@@ -107,10 +120,7 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	auto fc_instance = FcConfigReference(nullptr);
 	assert(fc_instance != nullptr);
 
-	/* Fontconfig doesn't handle full language isocodes, only the part
-	 * before the _ of e.g. en_GB is used, so "remove" everything after
-	 * the _. */
-	std::string lang = fmt::format(":lang={}", language_isocode.substr(0, language_isocode.find('_')));
+	std::string lang = GetFontConfigLanguage(language_isocode);
 
 	/* First create a pattern to match the wanted language. */
 	FcPattern *pat = FcNameParse((const FcChar8 *)lang.c_str());
@@ -180,3 +190,69 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	FcConfigDestroy(fc_instance);
 	return ret;
 }
+
+/**
+ * FontConfig implementation of FontSearcher.
+ */
+class FontConfigFontSearcher : public FontSearcher {
+public:
+	void UpdateCachedFonts(const std::string &language_isocode, int winlangid) override;
+};
+
+void FontConfigFontSearcher::UpdateCachedFonts(const std::string &language_isocode, int)
+{
+	this->cached_fonts.clear();
+
+	if (!FcInit()) return;
+
+	FcConfig *fc_instance = FcConfigReference(nullptr);
+	assert(fc_instance != nullptr);
+
+	std::string lang = GetFontConfigLanguage(language_isocode);
+
+	/* First create a pattern to match the wanted language. */
+	FcPattern *pat = FcNameParse(reinterpret_cast<const FcChar8 *>(lang.c_str()));
+	/* We want to know this attributes. */
+	FcObjectSet *os = FcObjectSetCreate();
+	FcObjectSetAdd(os, FC_FAMILY);
+	FcObjectSetAdd(os, FC_STYLE);
+	FcObjectSetAdd(os, FC_SLANT);
+	FcObjectSetAdd(os, FC_WEIGHT);
+	/* Get the list of filenames matching the wanted language. */
+	FcFontSet *fs = FcFontList(nullptr, pat, os);
+
+	/* We don't need these anymore. */
+	FcObjectSetDestroy(os);
+	FcPatternDestroy(pat);
+
+	if (fs != nullptr) {
+		this->cached_fonts.reserve(fs->nfont);
+		for (const FcPattern *font : std::span(fs->fonts, fs->nfont)) {
+			FcChar8 *family;
+			FcChar8 *style;
+			int32_t slant;
+			int32_t weight;
+
+			if (FcPatternGetString(font, FC_FAMILY, 0, &family) != FcResultMatch) continue;
+			if (FcPatternGetString(font, FC_STYLE, 0, &style) != FcResultMatch) continue;
+			if (FcPatternGetInteger(font, FC_SLANT, 0, &slant) != FcResultMatch) continue;
+			if (FcPatternGetInteger(font, FC_WEIGHT, 0, &weight) != FcResultMatch) continue;
+
+			/* Don't add duplicate fonts. */
+			std::string_view sv_family = reinterpret_cast<const char *>(family);
+			std::string_view sv_style = reinterpret_cast<const char *>(style);
+			if (std::any_of(std::begin(this->cached_fonts), std::end(this->cached_fonts), [&sv_family, &sv_style](const FontFamily &ff) { return ff.family == sv_family && ff.style == sv_style; })) continue;
+
+			this->cached_fonts.emplace_back(sv_family, sv_style, slant, weight);
+		}
+
+		/* Clean up the list of filenames. */
+		FcFontSetDestroy(fs);
+	}
+
+	FcConfigDestroy(fc_instance);
+
+	std::sort(std::begin(this->cached_fonts), std::end(this->cached_fonts), FontFamilySorter);
+}
+
+static FontConfigFontSearcher _fcfs_instance;
