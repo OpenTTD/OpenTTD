@@ -38,6 +38,7 @@ extern TransparencyOptionBits _transparency_opt;
 extern TransparencyOptionBits _transparency_lock;
 extern TransparencyOptionBits _invisibility_opt;
 extern uint8_t _display_opt;
+extern uint8_t _facility_display_opt;
 
 /**
  * Check if the transparency option bit is set

@@ -47,9 +47,9 @@ std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(const Dimension &dim,
 	return std::make_unique<DropDownListIconItem>(dim, sprite, palette, str, value, masked, shaded);
 }
 
-std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, StringID str, int value, bool masked, bool shaded)
+std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, StringID str, int value, bool masked, bool shaded, uint indent)
 {
-	return std::make_unique<DropDownListCheckedItem>(checked, str, value, masked, shaded);
+	return std::make_unique<DropDownListCheckedItem>(indent, checked, str, value, masked, shaded);
 }
 
 static constexpr NWidgetPart _nested_dropdown_menu_widgets[] = {
