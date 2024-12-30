@@ -28,8 +28,6 @@ private:
 
 	ReusableBuffer<uint8_t> render_buffer; ///< Temporary buffer for rendering glyphs.
 
-	void SetFontSize(int pixels);
-
 protected:
 	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
 
@@ -40,6 +38,7 @@ public:
 	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
 	std::string GetFontName() override { return this->fontname; }
 	const void *GetOSHandle() override { return &this->logfont; }
+	void SetFontSize(int pixels) override;
 };
 
 void LoadWin32Font(FontSize fs);

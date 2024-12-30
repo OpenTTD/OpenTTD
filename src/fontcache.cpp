@@ -28,6 +28,8 @@ static const int _default_font_ascender[FS_END] = { 8, 5, 15,  8};
 
 FontCacheSettings _fcsettings;
 
+static void LoadFontHelper(FontSize fs);
+
 /**
  * Create a new font cache.
  * @param fs The size of the font.
@@ -51,6 +53,11 @@ FontCache::~FontCache()
 int FontCache::GetDefaultFontHeight(FontSize fs)
 {
 	return _default_font_height[fs];
+}
+
+void FontCache::SetFontSize([[maybe_unused]] int pixels)
+{
+	Debug(fontcache, 0, "Font {} isn't resizable.", this->GetFontName());
 }
 
 /**
@@ -98,9 +105,81 @@ bool GetFontAAState()
 	return _fcsettings.global_aa;
 }
 
-void SetFont(FontSize fontsize, const std::string &font, uint size)
+/**
+ * Prints the font name information. Output is:
+ *
+ * The provided desc.
+ * (FontSize Enum) : Actual Font=(string name) Setting=(string name)
+ *  etc for all the font sizes.
+ *
+ * Actual font is what's currently loaded and in use. Setting is what is recorded in the config file.
+ *
+ * @param desc - A string used to give context for this debug print.
+ */
+void DebugPrintFontSettings(const std::string &desc)
 {
-	FontCacheSubSetting *setting = GetFontCacheSubSetting(fontsize);
+	Debug(fontcache, 3, "{}", desc);
+
+	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+		FontCache *loaded_font = FontCache::Get(fs);
+		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
+
+		Debug(fontcache, 3, "  {}: Actual Font=\"{}\" Setting=\"{}\"", FontSizeToName(fs), (loaded_font == NULL) ? "NULL" : loaded_font->GetFontName(), setting->font);
+	}
+}
+
+#ifdef WITH_FREETYPE
+extern void LoadFreeTypeFont(FontSize fs);
+extern void UninitFreeType();
+#elif defined(_WIN32)
+extern void LoadWin32Font(FontSize fs);
+#elif defined(WITH_COCOA)
+extern void LoadCoreTextFont(FontSize fs);
+#endif
+
+static void LoadFontHelper([[maybe_unused]] FontSize fs)
+{
+#ifdef WITH_FREETYPE
+	LoadFreeTypeFont(fs);
+#elif defined(_WIN32)
+	LoadWin32Font(fs);
+#elif defined(WITH_COCOA)
+	LoadCoreTextFont(fs);
+#endif
+}
+
+/**
+ * Called to change the size setting of a font in OpenTTD.
+ * @param font_size FontSize(enum not pixel size) of the font to change.
+ * @param size The new pixel size to use for this font.
+ */
+void ResizeFont(FontSize font_size, uint size)
+{
+	FontCacheSubSetting *setting = GetFontCacheSubSetting(font_size);
+
+	if (setting->size == size) return;
+
+	setting->size = size;
+
+	FontCache *loaded_font = FontCache::Get(font_size);
+	loaded_font->SetFontSize(size);
+
+	LoadStringWidthTable();
+	UpdateAllVirtCoords();
+	ReInitAllWindows(true);
+
+	if (_save_config) SaveToConfig();
+}
+
+/**
+ * Called to change a font or font size used by OpenTTD.
+ * @param font_size The FontSize(enum not pixel size) of the font to change.
+ * @param font The font name to use for this font.
+ * @param size The size(pixel size) to use for this font.
+ */
+void SetFont(FontSize font_size, const std::string &font, uint size)
+{
+	FontCacheSubSetting *setting = GetFontCacheSubSetting(font_size);
 	bool changed = false;
 
 	if (setting->font != font) {
@@ -115,19 +194,7 @@ void SetFont(FontSize fontsize, const std::string &font, uint size)
 
 	if (!changed) return;
 
-	if (fontsize != FS_MONO) {
-		/* Try to reload only the modified font. */
-		FontCacheSettings backup = _fcsettings;
-		for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-			if (fs == fontsize) continue;
-			FontCache *fc = FontCache::Get(fs);
-			GetFontCacheSubSetting(fs)->font = fc->HasParent() ? fc->GetFontName() : "";
-		}
-		CheckForMissingGlyphs();
-		_fcsettings = backup;
-	} else {
-		InitFontCache(true);
-	}
+	CheckForMissingGlyphs();
 
 	LoadStringWidthTable();
 	UpdateAllVirtCoords();
@@ -136,20 +203,12 @@ void SetFont(FontSize fontsize, const std::string &font, uint size)
 	if (_save_config) SaveToConfig();
 }
 
-#ifdef WITH_FREETYPE
-extern void LoadFreeTypeFont(FontSize fs);
-extern void UninitFreeType();
-#elif defined(_WIN32)
-extern void LoadWin32Font(FontSize fs);
-#elif defined(WITH_COCOA)
-extern void LoadCoreTextFont(FontSize fs);
-#endif
-
 /**
  * Test if a font setting uses the default font.
+ * @param setting The font setting to check.
  * @return true iff the font is not configured and no fallback font data is present.
  */
-static bool IsDefaultFont(const FontCacheSubSetting &setting)
+bool IsDefaultFont(const FontCacheSubSetting &setting)
 {
 	return setting.font.empty() && setting.os_handle == nullptr;
 }
@@ -162,16 +221,18 @@ static bool IsDefaultFont(const FontCacheSubSetting &setting)
 uint GetFontCacheFontSize(FontSize fs)
 {
 	const FontCacheSubSetting &setting = *GetFontCacheSubSetting(fs);
-	return IsDefaultFont(setting) ? FontCache::GetDefaultFontHeight(fs) : setting.size;
+
+	if (IsDefaultFont(setting) && setting.size == 0) return FontCache::GetDefaultFontHeight(fs);
+
+	return setting.size;
 }
 
-#if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 /**
  * Get name of default font file for a given font size.
  * @param fs Font size.
  * @return Name of default font file.
  */
-static std::string GetDefaultTruetypeFont(FontSize fs)
+[[maybe_unused]] static std::string GetDefaultTruetypeFont(FontSize fs)
 {
 	switch (fs) {
 		case FS_NORMAL: return "OpenTTD-Sans.ttf";
@@ -181,7 +242,6 @@ static std::string GetDefaultTruetypeFont(FontSize fs)
 		default: NOT_REACHED();
 	}
 }
-#endif /* defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA) */
 
 /**
  * Get path of default font file for a given font size.
@@ -213,26 +273,23 @@ std::string GetFontCacheFontName(FontSize fs)
 
 /**
  * (Re)initialize the font cache related things, i.e. load the non-sprite fonts.
- * @param monospace Whether to initialise the monospace or regular fonts.
  */
-void InitFontCache(bool monospace)
+void InitFontCache()
 {
 	FontCache::InitializeFontCaches();
 
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		if (monospace != (fs == FS_MONO)) continue;
 
 		FontCache *fc = FontCache::Get(fs);
-		if (fc->HasParent()) delete fc;
 
-#ifdef WITH_FREETYPE
-		LoadFreeTypeFont(fs);
-#elif defined(_WIN32)
-		LoadWin32Font(fs);
-#elif defined(WITH_COCOA)
-		LoadCoreTextFont(fs);
-#endif
+		if (fc->HasParent()) {
+			delete fc;
+		}
+
+		LoadFontHelper(fs);
 	}
+
+	DebugPrintFontSettings("End of initFontCache()");
 }
 
 /**

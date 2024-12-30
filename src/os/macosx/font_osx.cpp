@@ -126,6 +126,8 @@ void CoreTextFontCache::ClearFontCache()
 
 void CoreTextFontCache::SetFontSize(int pixels)
 {
+	this->req_size = pixels;
+
 	if (pixels == 0) {
 		/* Try to determine a good height based on the height recommended by the font. */
 		int scaled_height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
