@@ -266,6 +266,7 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}Minu
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}Joer{P "" ""}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}Period{P "" en}
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
@@ -4001,6 +4002,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkti
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produktioun déi läscht Minutt:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportéiert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Zentréiert d'Siicht op d'Industrie. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Produktiounsgrafik
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Weist d'Grafik vun der Industrieproduktiounshistorie un
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktiounslevel: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}D'Industrie annoncéiert dass se zougemaach gëtt
 
@@ -4751,7 +4754,8 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(fuer während 
 STR_TIMETABLE_STAY_FOR                                          :an bleif fir {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :an ënnerwee während {STRING}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Dësen Zäitplang brauch {STRING} fir faërdeg ze ginn
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Dësen Zäitplang brauch ongeféier {STRING} fir fäerdeg ze ginn
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Dësen Zäitplang brauch {STRING} fir fäerdeg ze ginn
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Dësen Zäitplang brauch op manst {STRING} (net all geplangt)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}D'Gefier ass mat Zäit

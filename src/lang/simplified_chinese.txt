@@ -5823,7 +5823,7 @@ STR_DEFAULT_SIGN_NAME                                           :标志
 STR_COMPANY_SOMEONE                                             :某人
 
 STR_SAVEGAME_DURATION_REALTIME                                  :{NUM} 时 {NUM} 分
-STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}，{STRING}
+STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :观众，{1:STRING}
 
 # Viewport strings
