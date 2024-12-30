@@ -19,6 +19,7 @@
  *
  * API additions:
  * \li AIEventVehicleCrashed::GetVictims
+ * \li AIEventPresidentRenamed
  *
  * \b 14.0
  *
