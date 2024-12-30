@@ -113,11 +113,11 @@ static const int MAX_TILE_EXTENT_BOTTOM = ZOOM_BASE * (TILE_PIXELS + 2 * TILE_HE
 
 struct StringSpriteToDraw {
 	std::string string;
-	StringID string_id;
+	uint16_t width;
 	Colours colour;
+	ViewportStringFlags flags;
 	int32_t x;
 	int32_t y;
-	uint16_t width;
 };
 
 struct TileSpriteToDraw {
@@ -861,16 +861,26 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 	_vd.last_child = child_id;
 }
 
-static void AddStringToDraw(int x, int y, StringID string, Colours colour, uint16_t width)
+/**
+ * Add a string to draw to a viewport.
+ * @param x Left position of string.
+ * @param y Top position of string.
+ * @param colour Colour of string.
+ * @param flags ViewportStringFlags to control the string's appearance.
+ * @param width Width of the string.
+ * @returns Reference to raw string which should be filled in by the caller.
+ */
+static std::string &AddStringToDraw(int x, int y, Colours colour, ViewportStringFlags flags, uint16_t width)
 {
 	assert(width != 0);
 	StringSpriteToDraw &ss = _vd.string_sprites_to_draw.emplace_back();
-	ss.string = GetString(string);
-	ss.string_id = string;
+	ss.colour = colour;
+	ss.flags = flags;
 	ss.x = x;
 	ss.y = y;
 	ss.width = width;
-	ss.colour = colour;
+
+	return ss.string;
 }
 
 
@@ -1299,24 +1309,22 @@ static void ViewportAddLandscape()
 }
 
 /**
- * Add a string to draw in the viewport
+ * Add a string to draw in the current viewport.
  * @param dpi current viewport area
  * @param small_from Zoomlevel from when the small font should be used
  * @param sign sign position and dimension
- * @param string_normal String for normal and 2x zoom level
- * @param string_small String for 4x and 8x zoom level
- * @param string_small_shadow Shadow string for 4x and 8x zoom level; or #STR_NULL if no shadow
+ * @param flags ViewportStringFlags to control the string's appearance.
  * @param colour colour of the sign background; or INVALID_COLOUR if transparent
+ * @returns Pointer to std::string to filled with sign, or nullptr if string would be outside the viewport bounds.
  */
-void ViewportAddString(const DrawPixelInfo *dpi, ZoomLevel small_from, const ViewportSign *sign, StringID string_normal, StringID string_small, StringID string_small_shadow, Colours colour)
+std::string *ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign, ViewportStringFlags flags, Colours colour)
 {
-	bool small = dpi->zoom >= small_from;
-
 	int left   = dpi->left;
 	int top    = dpi->top;
 	int right  = left + dpi->width;
 	int bottom = top + dpi->height;
 
+	bool small = HasFlag(flags, ViewportStringFlags::Small);
 	int sign_height     = ScaleByZoom(WidgetDimensions::scaled.fullbevel.top + GetCharacterHeight(small ? FS_SMALL : FS_NORMAL) + WidgetDimensions::scaled.fullbevel.bottom, dpi->zoom);
 	int sign_half_width = ScaleByZoom((small ? sign->width_small : sign->width_normal) / 2, dpi->zoom);
 
@@ -1324,19 +1332,10 @@ void ViewportAddString(const DrawPixelInfo *dpi, ZoomLevel small_from, const Vie
 			top   > sign->top + sign_height ||
 			right < sign->center - sign_half_width ||
 			left  > sign->center + sign_half_width) {
-		return;
+		return nullptr;
 	}
 
-	if (!small) {
-		AddStringToDraw(sign->center - sign_half_width, sign->top, string_normal, colour, sign->width_normal);
-	} else {
-		int shadow_offset = 0;
-		if (string_small_shadow != STR_NULL) {
-			shadow_offset = 4;
-			AddStringToDraw(sign->center - sign_half_width + shadow_offset, sign->top, string_small_shadow, INVALID_COLOUR, sign->width_small | 0x8000);
-		}
-		AddStringToDraw(sign->center - sign_half_width, sign->top - shadow_offset, string_small, colour, sign->width_small | 0x8000);
-	}
+	return &AddStringToDraw(sign->center - sign_half_width, sign->top, colour, flags, small ? sign->width_small : sign->width_normal);
 }
 
 static Rect ExpandRectWithViewportSignMargins(Rect r, ZoomLevel zoom)
@@ -1352,6 +1351,84 @@ static Rect ExpandRectWithViewportSignMargins(Rect r, ZoomLevel zoom)
 	r.bottom += expand_y;
 
 	return r;
+}
+
+/**
+ * Add town strings to a viewport.
+ * @param dpi Current viewport area.
+ * @param towns List of towns to add.
+ * @param small Add small versions of strings.
+ */
+static void ViewportAddTownStrings(DrawPixelInfo *dpi, const std::vector<const Town *> &towns, bool small)
+{
+	ViewportStringFlags flags{};
+	if (small) flags = ViewportStringFlags::Small | ViewportStringFlags::Shadow;
+
+	StringID stringid = !small && _settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_TOWN_NAME;
+	for (const auto *t : towns) {
+		std::string *str = ViewportAddString(dpi, &t->cache.sign, flags, INVALID_COLOUR);
+		if (str != nullptr) {
+			SetDParam(0, t->index);
+			SetDParam(1, t->cache.population);
+			*str = GetString(stringid);
+		}
+	}
+}
+
+/**
+ * Add sign strings to a viewport.
+ * @param dpi Current viewport area.
+ * @param towns List of signs to add.
+ * @param small Add small versions of strings.
+ */
+static void ViewportAddSignStrings(DrawPixelInfo *dpi, const std::vector<const Sign *> &signs, bool small)
+{
+	ViewportStringFlags flags{};
+	if (small) flags = ViewportStringFlags::Small;
+
+	/* Signs placed by a game script don't have a frame at all. */
+	ViewportStringFlags deity_flags = flags;
+	flags |= IsTransparencySet(TO_SIGNS) ? ViewportStringFlags::TransparentRect : ViewportStringFlags::ColourRect;
+
+	for (const auto *si : signs) {
+		std::string *str = ViewportAddString(dpi, &si->sign, (si->owner == OWNER_DEITY) ? deity_flags : flags,
+			(si->owner == OWNER_NONE) ? COLOUR_GREY : (si->owner == OWNER_DEITY ? INVALID_COLOUR : _company_colours[si->owner]));
+		if (str != nullptr) {
+			SetDParam(0, si->index);
+			*str = GetString(STR_SIGN_NAME);
+		}
+	}
+}
+
+/**
+ * Add station strings to a viewport.
+ * @param dpi Current viewport area.
+ * @param towns List of stations to add.
+ * @param small Add small versions of strings.
+ */
+static void ViewportAddStationStrings(DrawPixelInfo *dpi, const std::vector<const BaseStation *> &stations, bool small)
+{
+	ViewportStringFlags flags = IsTransparencySet(TO_SIGNS) ? ViewportStringFlags::TextColour : ViewportStringFlags::ColourRect;
+	if (small) flags = ViewportStringFlags::Small;
+
+	for (const auto *st : stations) {
+		if (Station::IsExpected(st)) {
+			/* Station */
+			std::string *str = ViewportAddString(dpi, &st->sign, flags, (st->owner == OWNER_NONE || !st->IsInUse()) ? COLOUR_GREY : _company_colours[st->owner]);
+			if (str != nullptr) {
+				SetDParam(0, st->index);
+				SetDParam(1, st->facilities);
+				*str = GetString(small ? STR_STATION_NAME : STR_VIEWPORT_STATION);
+			}
+		} else {
+			/* Waypoint */
+			std::string *str = ViewportAddString(dpi, &st->sign, flags, (st->owner == OWNER_NONE || !st->IsInUse()) ? COLOUR_GREY : _company_colours[st->owner]);
+			if (str != nullptr) {
+				SetDParam(0, st->index);
+				*str = GetString(STR_WAYPOINT_NAME);
+			}
+		}
+	}
 }
 
 static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
@@ -1417,42 +1494,17 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 		}
 	});
 
-	/* Layering order (bottom to top): Town names, signs, stations */
+	/* Small versions of signs are used zoom level 4X and higher. */
+	bool small = dpi->zoom >= ZOOM_LVL_OUT_4X;
 
-	for (const auto *t : towns) {
-		SetDParam(0, t->index);
-		SetDParam(1, t->cache.population);
-		ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &t->cache.sign,
-			_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
-			STR_VIEWPORT_TOWN_TINY_WHITE, STR_VIEWPORT_TOWN_TINY_BLACK);
-	}
+	/* Layering order (bottom to top): Town names, signs, stations */
+	ViewportAddTownStrings(dpi, towns, small);
 
 	/* Do not draw signs nor station names if they are set invisible */
 	if (IsInvisibilitySet(TO_SIGNS)) return;
 
-	for (const auto *si : signs) {
-		SetDParam(0, si->index);
-		ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &si->sign,
-			STR_WHITE_SIGN,
-			(IsTransparencySet(TO_SIGNS) || si->owner == OWNER_DEITY) ? STR_VIEWPORT_SIGN_SMALL_WHITE : STR_VIEWPORT_SIGN_SMALL_BLACK, STR_NULL,
-			(si->owner == OWNER_NONE) ? COLOUR_GREY : (si->owner == OWNER_DEITY ? INVALID_COLOUR : _company_colours[si->owner]));
-	}
-
-	for (const auto *st : stations) {
-		SetDParam(0, st->index);
-		SetDParam(1, st->facilities);
-		if (Station::IsExpected(st)) {
-			/* Station */
-			ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &st->sign,
-				STR_VIEWPORT_STATION, STR_VIEWPORT_STATION_TINY, STR_NULL,
-				(st->owner == OWNER_NONE || !st->IsInUse()) ? COLOUR_GREY : _company_colours[st->owner]);
-		} else {
-			/* Waypoint */
-			ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &st->sign,
-				STR_VIEWPORT_WAYPOINT, STR_VIEWPORT_WAYPOINT_TINY, STR_NULL,
-				(st->owner == OWNER_NONE || !st->IsInUse()) ? COLOUR_GREY : _company_colours[st->owner]);
-		}
-	}
+	ViewportAddSignStrings(dpi, signs, small);
+	ViewportAddStationStrings(dpi, stations, small);
 }
 
 
@@ -1463,21 +1515,18 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
  * @param str    the string to show in the sign
  * @param str_small the string to show when zoomed out. STR_NULL means same as \a str
  */
-void ViewportSign::UpdatePosition(int center, int top, StringID str, StringID str_small)
+void ViewportSign::UpdatePosition(int center, int top, std::string_view str, std::string_view str_small)
 {
 	if (this->width_normal != 0) this->MarkDirty();
 
 	this->top = top;
 
-	std::string name = GetString(str);
-	this->width_normal = WidgetDimensions::scaled.fullbevel.left + Align(GetStringBoundingBox(name).width, 2) + WidgetDimensions::scaled.fullbevel.right;
+	this->width_normal = WidgetDimensions::scaled.fullbevel.left + Align(GetStringBoundingBox(str).width, 2) + WidgetDimensions::scaled.fullbevel.right;
 	this->center = center;
 
 	/* zoomed out version */
-	if (str_small != STR_NULL) {
-		name = GetString(str_small);
-	}
-	this->width_small = WidgetDimensions::scaled.fullbevel.left + Align(GetStringBoundingBox(name, FS_SMALL).width, 2) + WidgetDimensions::scaled.fullbevel.right;
+	if (str_small.empty()) str_small = str;
+	this->width_small = WidgetDimensions::scaled.fullbevel.left + Align(GetStringBoundingBox(str, FS_SMALL).width, 2) + WidgetDimensions::scaled.fullbevel.right;
 
 	this->MarkDirty();
 }
@@ -1710,30 +1759,36 @@ static void ViewportDrawDirtyBlocks()
 static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *sstdv)
 {
 	for (const StringSpriteToDraw &ss : *sstdv) {
-		TextColour colour = TC_BLACK;
-		bool small = HasBit(ss.width, 15);
-		int w = GB(ss.width, 0, 15);
+		bool small = HasFlag(ss.flags, ViewportStringFlags::Small);
+		int w = ss.width;
 		int x = UnScaleByZoom(ss.x, zoom);
 		int y = UnScaleByZoom(ss.y, zoom);
 		int h = WidgetDimensions::scaled.fullbevel.top + GetCharacterHeight(small ? FS_SMALL : FS_NORMAL) + WidgetDimensions::scaled.fullbevel.bottom;
 
-		if (ss.colour != INVALID_COLOUR) {
-			if (IsTransparencySet(TO_SIGNS) && ss.string_id != STR_WHITE_SIGN) {
-				/* Don't draw the rectangle.
-				 * Real colours need the TC_IS_PALETTE_COLOUR flag.
-				 * Otherwise colours from _string_colourmap are assumed. */
-				colour = (TextColour)GetColourGradient(ss.colour, SHADE_LIGHTER) | TC_IS_PALETTE_COLOUR;
-			} else {
-				/* Draw the rectangle if 'transparent station signs' is off,
-				 * or if we are drawing a general text sign (STR_WHITE_SIGN). */
-				DrawFrameRect(
-					x, y, x + w - 1, y + h - 1, ss.colour,
-					IsTransparencySet(TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
-				);
-			}
+		TextColour colour = TC_WHITE;
+		if (HasFlag(ss.flags, ViewportStringFlags::ColourRect)) {
+			if (ss.colour != INVALID_COLOUR) DrawFrameRect(x, y, x + w - 1, y + h - 1, ss.colour, FR_NONE);
+			colour = TC_BLACK;
+		} else if (HasFlag(ss.flags, ViewportStringFlags::TransparentRect)) {
+			DrawFrameRect(x, y, x + w - 1, y + h - 1, ss.colour, FR_TRANSPARENT);
 		}
 
-		DrawString(x + WidgetDimensions::scaled.fullbevel.left, x + w - 1 - WidgetDimensions::scaled.fullbevel.right, y + WidgetDimensions::scaled.fullbevel.top, ss.string, colour, SA_HOR_CENTER, false, small ? FS_SMALL : FS_NORMAL);
+		if (HasFlag(ss.flags, ViewportStringFlags::TextColour)) {
+			if (ss.colour != INVALID_COLOUR) colour = static_cast<TextColour>(GetColourGradient(ss.colour, SHADE_LIGHTER) | TC_IS_PALETTE_COLOUR);
+		}
+
+		int left = x + WidgetDimensions::scaled.fullbevel.left;
+		int right = x + w - 1 - WidgetDimensions::scaled.fullbevel.right;
+		int top = y + WidgetDimensions::scaled.fullbevel.top;
+
+		int shadow_offset = 0;
+		if (small && HasFlag(ss.flags, ViewportStringFlags::Shadow)) {
+			/* Shadow needs to be shifted 1 pixel. */
+			shadow_offset = WidgetDimensions::scaled.fullbevel.top;
+			DrawString(left + shadow_offset, right + shadow_offset, top, ss.string, TC_BLACK, SA_HOR_CENTER, false, FS_SMALL);
+		}
+
+		DrawString(left, right, top - shadow_offset, ss.string, colour, SA_HOR_CENTER, false, small ? FS_SMALL : FS_NORMAL);
 	}
 }
 
@@ -2704,13 +2759,12 @@ void UpdateTileSelection()
 
 /**
  * Displays the measurement tooltips when selecting multiple tiles
- * @param str String to be displayed
- * @param paramcount number of params to deal with
+ * @param text String to be displayed
  */
-static inline void ShowMeasurementTooltips(StringID str, uint paramcount)
+static inline void ShowMeasurementTooltips(EncodedString &&text)
 {
 	if (!_settings_client.gui.measure_tooltip) return;
-	GuiShowTooltips(_thd.GetCallbackWnd(), str, TCC_EXIT_VIEWPORT, paramcount);
+	GuiShowTooltips(_thd.GetCallbackWnd(), std::move(text), TCC_EXIT_VIEWPORT);
 }
 
 static void HideMeasurementTooltips()
@@ -2786,8 +2840,7 @@ void VpSetPresizeRange(TileIndex from, TileIndex to)
 
 	/* show measurement only if there is any length to speak of */
 	if (distance > 1) {
-		SetDParam(0, distance);
-		ShowMeasurementTooltips(STR_MEASURE_LENGTH, 1);
+		ShowMeasurementTooltips(GetEncodedString(STR_MEASURE_LENGTH, distance));
 	} else {
 		HideMeasurementTooltips();
 	}
@@ -2961,8 +3014,6 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 	if (swap) Swap(h0, h1);
 	return (int)(h1 - h0) * TILE_HEIGHT_STEP;
 }
-
-static const StringID measure_strings_length[] = {STR_NULL, STR_MEASURE_LENGTH, STR_MEASURE_LENGTH_HEIGHTDIFF};
 
 /**
  * Check for underflowing the map.
@@ -3183,9 +3234,10 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 		TileIndex t0 = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
 		TileIndex t1 = TileVirtXY(x, y);
 		uint distance = DistanceManhattan(t0, t1) + 1;
-		uint8_t index = 0;
 
-		if (distance != 1) {
+		if (distance == 1) {
+			HideMeasurementTooltips();
+		} else {
 			int heightdiff = CalcHeightdiff(b, distance, t0, t1);
 			/* If we are showing a tooltip for horizontal or vertical drags,
 			 * 2 tiles have a length of 1. To bias towards the ceiling we add
@@ -3194,11 +3246,12 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 				distance = CeilDiv(distance, 2);
 			}
 
-			SetDParam(index++, distance);
-			if (heightdiff != 0) SetDParam(index++, heightdiff);
+			if (heightdiff == 0) {
+				ShowMeasurementTooltips(GetEncodedString(STR_MEASURE_LENGTH, distance));
+			} else {
+				ShowMeasurementTooltips(GetEncodedString(STR_MEASURE_LENGTH_HEIGHTDIFF, distance, heightdiff));
+			}
 		}
-
-		ShowMeasurementTooltips(measure_strings_length[index], index);
 	}
 
 	_thd.selend.x = x;
@@ -3279,9 +3332,10 @@ calc_heightdiff_single_direction:;
 				TileIndex t0 = TileVirtXY(sx, sy);
 				TileIndex t1 = TileVirtXY(x, y);
 				uint distance = DistanceManhattan(t0, t1) + 1;
-				uint8_t index = 0;
 
-				if (distance != 1) {
+				if (distance == 1) {
+					HideMeasurementTooltips();
+				} else {
 					/* With current code passing a HT_LINE style to calculate the height
 					 * difference is enough. However if/when a point-tool is created
 					 * with this method, function should be called with new_style (below)
@@ -3289,11 +3343,12 @@ calc_heightdiff_single_direction:;
 					 * new_style := (_thd.next_drawstyle & HT_RECT) ? HT_LINE | style : _thd.next_drawstyle; */
 					int heightdiff = CalcHeightdiff(HT_LINE | style, 0, t0, t1);
 
-					SetDParam(index++, distance);
-					if (heightdiff != 0) SetDParam(index++, heightdiff);
+					if (heightdiff == 0) {
+						ShowMeasurementTooltips(GetEncodedString(STR_MEASURE_LENGTH, distance));
+					} else {
+						ShowMeasurementTooltips(GetEncodedString(STR_MEASURE_LENGTH_HEIGHTDIFF, distance, heightdiff));
+					}
 				}
-
-				ShowMeasurementTooltips(measure_strings_length[index], index);
 			}
 			break;
 
@@ -3305,15 +3360,10 @@ calc_heightdiff_single_direction:;
 
 		case VPM_X_AND_Y: // drag an X by Y area
 			if (_settings_client.gui.measure_tooltip) {
-				static const StringID measure_strings_area[] = {
-					STR_NULL, STR_NULL, STR_MEASURE_AREA, STR_MEASURE_AREA_HEIGHTDIFF
-				};
-
 				TileIndex t0 = TileVirtXY(sx, sy);
 				TileIndex t1 = TileVirtXY(x, y);
 				uint dx = Delta(TileX(t0), TileX(t1)) + 1;
 				uint dy = Delta(TileY(t0), TileY(t1)) + 1;
-				uint8_t index = 0;
 
 				/* If dragging an area (eg dynamite tool) and it is actually a single
 				 * row/column, change the type to 'line' to get proper calculation for height */
@@ -3358,12 +3408,15 @@ calc_heightdiff_single_direction:;
 				if (dx != 1 || dy != 1) {
 					int heightdiff = CalcHeightdiff(style, 0, t0, t1);
 
-					SetDParam(index++, dx - (style & HT_POINT ? 1 : 0));
-					SetDParam(index++, dy - (style & HT_POINT ? 1 : 0));
-					if (heightdiff != 0) SetDParam(index++, heightdiff);
-				}
+					dx -= (style & HT_POINT ? 1 : 0);
+					dy -= (style & HT_POINT ? 1 : 0);
 
-				ShowMeasurementTooltips(measure_strings_area[index], index);
+					if (heightdiff == 0) {
+						ShowMeasurementTooltips(GetEncodedString(STR_MEASURE_AREA, dx, dy));
+					} else {
+						ShowMeasurementTooltips(GetEncodedString(STR_MEASURE_AREA_HEIGHTDIFF, dx, dy, heightdiff));
+					}
+				}
 			}
 			break;
 

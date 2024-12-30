@@ -202,7 +202,7 @@ void ScriptText::ParamCheck::Encode(std::back_insert_iterator<std::string> &outp
 		void operator()(const ScriptTextRef &value)
 		{
 			fmt::format_to(this->output, ":");
-			Utf8Encode(this->output, SCC_ENCODED);
+			Utf8Encode(this->output, SCC_ENCODED_GS);
 			fmt::format_to(this->output, "{:X}", value->string);
 		}
 	};
@@ -216,7 +216,7 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 	const std::string &name = GetGameStringName(this->string);
 
 	if (first) {
-		Utf8Encode(output, SCC_ENCODED);
+		Utf8Encode(output, SCC_ENCODED_GS);
 		fmt::format_to(output, "{:X}", this->string);
 	}
 

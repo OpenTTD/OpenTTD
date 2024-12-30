@@ -22,7 +22,8 @@ enum StringControlCode {
 	SCC_SPRITE_END    = SCC_SPRITE_START + 0xFF,
 
 	/* This must be the first entry. It's encoded in strings that are saved. */
-	SCC_ENCODED = SCC_CONTROL_START,
+	SCC_ENCODED_GS = SCC_CONTROL_START, ///< Encoded text from Game Scripts.
+	SCC_ENCODED_INTERNAL, ///< Encoded text from OpenTTD.
 
 	/* Font selection codes, must be in same order as FontSize enum */
 	SCC_FIRST_FONT,
