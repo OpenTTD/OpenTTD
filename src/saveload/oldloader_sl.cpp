@@ -538,7 +538,7 @@ static void ReadTTDPatchFlags()
 	_bump_assert_value = (_old_vehicle_multiplier - 1) * 850 * 128;
 
 	/* The first 17 bytes are used by TTDP1, which translates to the first 9 m3s and first 8 m4s. */
-	for (TileIndex i = 0; i <= 8; i++) { // check tile 0, too
+	for (TileIndex i{}; i <= 8; i++) { // check tile 0, too
 		Tile tile(i);
 		if (tile.m3() != 0 || (i != 8 && tile.m4() != 0)) _savegame_type = SGT_TTDP1;
 	}
@@ -555,7 +555,7 @@ static void ReadTTDPatchFlags()
 	_old_extra_chunk_nums = extra_chunk_tile.m3() | extra_chunk_tile.m4() << 8;
 
 	/* Clean the misused places */
-	for (TileIndex i = 0; i < 9; i++) ClearOldMap3(i);
+	for (TileIndex i{}; i < 9; i++) ClearOldMap3(i);
 	for (TileIndex i = TileXY(0, Map::MaxY()); i < Map::Size(); i++) ClearOldMap3(i);
 
 	if (_savegame_type == SGT_TTDP2) Debug(oldloader, 2, "Found TTDPatch game");

@@ -2956,7 +2956,7 @@ TileIndex Train::GetOrderStationLocation(StationID station)
 	if (!(st->facilities & FACIL_TRAIN)) {
 		/* The destination station has no trainstation tiles. */
 		this->IncrementRealOrderIndex();
-		return 0;
+		return TileIndex{};
 	}
 
 	return st->xy;

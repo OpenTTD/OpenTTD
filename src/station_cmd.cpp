@@ -1838,7 +1838,7 @@ static CommandCost RemoveRailStation(TileIndex tile, DoCommandFlag flags)
 {
 	/* if there is flooding, remove platforms tile by tile */
 	if (_current_company == OWNER_WATER) {
-		return Command<CMD_REMOVE_FROM_RAIL_STATION>::Do(DC_EXEC, tile, 0, false);
+		return Command<CMD_REMOVE_FROM_RAIL_STATION>::Do(DC_EXEC, tile, TileIndex{}, false);
 	}
 
 	Station *st = Station::GetByTile(tile);
@@ -1859,7 +1859,7 @@ static CommandCost RemoveRailWaypoint(TileIndex tile, DoCommandFlag flags)
 {
 	/* if there is flooding, remove waypoints tile by tile */
 	if (_current_company == OWNER_WATER) {
-		return Command<CMD_REMOVE_FROM_RAIL_WAYPOINT>::Do(DC_EXEC, tile, 0, false);
+		return Command<CMD_REMOVE_FROM_RAIL_WAYPOINT>::Do(DC_EXEC, tile, TileIndex{}, false);
 	}
 
 	return RemoveRailStation(Waypoint::GetByTile(tile), flags, _price[PR_CLEAR_WAYPOINT_RAIL]);

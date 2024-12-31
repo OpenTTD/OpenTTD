@@ -792,7 +792,7 @@ void RunTileLoop()
 
 	/* Manually update tile 0 every TILE_UPDATE_FREQUENCY ticks - the LFSR never iterates over it itself.  */
 	if (TimerGameTick::counter % TILE_UPDATE_FREQUENCY == 0) {
-		_tile_type_procs[GetTileType(0)]->tile_loop_proc(0);
+		_tile_type_procs[GetTileType(0)]->tile_loop_proc(TileIndex{});
 		count--;
 	}
 

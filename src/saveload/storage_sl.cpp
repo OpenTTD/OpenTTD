@@ -35,7 +35,7 @@ struct PSACChunkHandler : ChunkHandler {
 
 		while ((index = SlIterateArray()) != -1) {
 			assert(PersistentStorage::CanAllocateItem());
-			PersistentStorage *ps = new (index) PersistentStorage(0, 0, 0);
+			PersistentStorage *ps = new (index) PersistentStorage(0, 0, TileIndex{});
 			SlObject(ps, slt);
 		}
 	}

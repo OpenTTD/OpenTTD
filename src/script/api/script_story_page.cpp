@@ -80,7 +80,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, type != SPET_GOAL || !(StoryPage::Get(story_page_id)->company == INVALID_COMPANY && Goal::Get(reference)->company != INVALID_COMPANY));
 
 	uint32_t refid = 0;
-	TileIndex reftile = 0;
+	TileIndex reftile{};
 	switch (type) {
 		case SPET_LOCATION:
 			reftile = reference;
@@ -129,7 +129,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforcePrecondition(false, type != ::SPET_GOAL || !(p->company == INVALID_COMPANY && Goal::Get(reference)->company != INVALID_COMPANY));
 
 	uint32_t refid = 0;
-	TileIndex reftile = 0;
+	TileIndex reftile{};
 	switch (type) {
 		case ::SPET_LOCATION:
 			reftile = reference;

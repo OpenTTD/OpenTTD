@@ -228,7 +228,7 @@ private:
 	 * Iterable ensemble of all Tiles
 	 */
 	struct IterateWrapper {
-		Iterator begin() { return Iterator(0); }
+		Iterator begin() { return Iterator(TileIndex{}); }
 		Iterator end() { return Iterator(Map::Size()); }
 		bool empty() { return false; }
 	};
