@@ -733,7 +733,7 @@ static void Disaster_Zeppeliner_Init()
 	if (!Vehicle::CanAllocateItem(2)) return;
 
 	/* Pick a random place, unless we find a small airport */
-	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
+	int x = TileX(RandomTile()) * TILE_SIZE + TILE_SIZE / 2;
 
 	for (const Station *st : Station::Iterate()) {
 		if (st->airport.tile != INVALID_TILE && (st->airport.type == AT_SMALL || st->airport.type == AT_LARGE)) {
@@ -757,7 +757,7 @@ static void Disaster_Small_Ufo_Init()
 {
 	if (!Vehicle::CanAllocateItem(2)) return;
 
-	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
+	int x = TileX(RandomTile()) * TILE_SIZE + TILE_SIZE / 2;
 	DisasterVehicle *v = new DisasterVehicle(x, 0, DIR_SE, ST_SMALL_UFO);
 	v->dest_tile = TileXY(Map::SizeX() / 2, Map::SizeY() / 2);
 
@@ -827,7 +827,7 @@ static void Disaster_Big_Ufo_Init()
 {
 	if (!Vehicle::CanAllocateItem(2)) return;
 
-	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
+	int x = TileX(RandomTile()) * TILE_SIZE + TILE_SIZE / 2;
 	int y = Map::MaxX() * TILE_SIZE - 1;
 
 	DisasterVehicle *v = new DisasterVehicle(x, y, DIR_NW, ST_BIG_UFO);
@@ -846,7 +846,7 @@ static void Disaster_Submarine_Init(DisasterSubType subtype)
 	int y;
 	Direction dir;
 	uint32_t r = Random();
-	int x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
+	int x = TileX(RandomTileSeed(r)) * TILE_SIZE + TILE_SIZE / 2;
 
 	if (HasBit(r, 31)) {
 		y = Map::MaxY() * TILE_SIZE - TILE_SIZE / 2 - 1;
