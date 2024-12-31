@@ -1018,7 +1018,7 @@ static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteRe
 {
 	switch (prop) {
 		case 0x00: // Introduction date
-			ei->base_intro = buf.ReadWord() + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+			ei->base_intro = CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + buf.ReadWord();
 			break;
 
 		case 0x02: // Decay speed
