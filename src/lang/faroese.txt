@@ -3213,28 +3213,28 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=n}Akfar
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=n}Flogfar
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vel slagi av motori at býta um
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vel ta nýggja slagi av motori tú vil nýta ið staðin fyri tann tú valdi til vinstru
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Vel slagi av motori at býta um
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Vel ta nýggja slagi av motori tú vil nýta ið staðin fyri tann tú valdi til vinstru
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Byrja umbýting av flutningstólum
 STR_REPLACE_VEHICLES_NOW                                        :Být øll flutningstól um nú
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Být bert gomul flutningstól um
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Trýst fyri at byrja umbýtanina av motor slagnum tú valdi á vinstru síðu við tað tú valdi á høgru síðu
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Trýst fyri at byrja umbýtanina av motor slagnum tú valdi á vinstru síðu við tað tú valdi á høgru síðu
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Býtur ikki um
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Einki flutningstól valt
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} tá gamalt
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Steðga umbýting av flutningstólum
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Trýst fyri at steðga umbýtanini av motor slagnum tú valdi á vinstru síðu
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Trýst fyri at steðga umbýtanini av motor slagnum tú valdi á vinstru síðu
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift ímillum motor og vogna umbýtingar vindeyga
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Skift ímillum motor og vogna umbýtingar vindeyga
 STR_REPLACE_ENGINES                                             :Motorar
 STR_REPLACE_WAGONS                                              :Vognar
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vel jarnbreyta slagi hjá motorunum tú vil býta um
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Vel jarnbreyta slagi hjá motorunum tú vil býta um
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Vísur hvønn motor tann markai á vinstru síðu verður býttur um vi, um nakran
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Vísur hvønn motor tann markai á vinstru síðu verður býttur um vi, um nakran
 STR_REPLACE_RAIL_VEHICLES                                       :Jarnbreyta flutningstól
 STR_REPLACE_ELRAIL_VEHICLES                                     :Ravmagns jarnbreyta flutningstól
 STR_REPLACE_MONORAIL_VEHICLES                                   :Einsporaði jarnbreyta flutningstól

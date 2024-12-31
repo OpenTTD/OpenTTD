@@ -4440,31 +4440,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Οδικό όχ
 STR_REPLACE_VEHICLE_SHIP                                        :Πλοίο
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Αεροσκάφος
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Επιλέξτε τον τύπο μηχανής για αντικατάσταση
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Επιλέξτε τον νέο τύπο μηχανής που θέλετε να χρησιμοποιηθεί στην θέση του επιλεγμένου τύπου μηχανής στα αριστερά
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Επιλέξτε τον τύπο μηχανής για αντικατάσταση
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Επιλέξτε τον νέο τύπο μηχανής που θέλετε να χρησιμοποιηθεί στην θέση του επιλεγμένου τύπου μηχανής στα αριστερά
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Εκκίνηση Αντικατάστασης Οχημάτων
 STR_REPLACE_VEHICLES_NOW                                        :Αντικατάσταση όλων των οχημάτων τώρα
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Αντικατάσταση μόνο παλιών οχημάτων
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Πατήστε για να ξεκινήσει η αντικατάσταση του αριστερά επιλεγμένου τύπου μηχανής με τον τύπο μηχανής επιλεγμένο δεξιά
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Πατήστε για να ξεκινήσει η αντικατάσταση του αριστερά επιλεγμένου τύπου μηχανής με τον τύπο μηχανής επιλεγμένο δεξιά
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Δεν γίνεται αντικατάσταση
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Δεν έχει επιλεχτεί όχημα
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} όταν είναι παλιό
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Διακοπή Αντικατάστασης Οχημάτων
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Πατήστε για να σταματήσει η αντικατάσταση του τύπου μηχανής επιλεγμένος στα αριστερά
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Πατήστε για να σταματήσει η αντικατάσταση του τύπου μηχανής επιλεγμένος στα αριστερά
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Εναλλαγή μεταξύ των παραθύρων αντικατάστασης μηχανών και βαγονιών
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Εναλλαγή μεταξύ των παραθύρων αντικατάστασης μηχανών και βαγονιών
 STR_REPLACE_ENGINES                                             :Μηχανές
 STR_REPLACE_WAGONS                                              :Βαγόνια
 STR_REPLACE_ALL_RAILTYPE                                        :Όλα τα σιδηροδρομικά οχήματα
 STR_REPLACE_ALL_ROADTYPE                                        :Όλα τα οδικά οχήματα
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Επιλέξτε τον τύπο σιδηροδρόμου για τον οποίο θέλετε να γίνει η αντικατάσταση των μηχανών
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Επιλέξτε τον τύπο δρόμου για τον οποίο θέλετε να γίνει η αντικατάσταση των μηχανών
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Επιλέξτε τον τύπο σιδηροδρόμου για τον οποίο θέλετε να γίνει η αντικατάσταση των μηχανών
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Επιλέξτε τον τύπο δρόμου για τον οποίο θέλετε να γίνει η αντικατάσταση των μηχανών
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Εμφανίζει ποια μηχανή αυτή στα αριστερά θα αντικατασταθεί, εάν υπάρχει
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Εμφανίζει ποια μηχανή αυτή στα αριστερά θα αντικατασταθεί, εάν υπάρχει
 STR_REPLACE_RAIL_VEHICLES                                       :Σιδηροδρομικά οχήματα
 STR_REPLACE_ELRAIL_VEHICLES                                     :Οχήματα Ηλεκτρικού Σιδηροδρόμου
 STR_REPLACE_MONORAIL_VEHICLES                                   :Οχήματα Μονοτρόχιου
@@ -4474,7 +4474,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Οδικά οχ
 STR_REPLACE_TRAM_VEHICLES                                       :Οχήματα τροχιοδρόμου
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Αφαίρεση βαγονιού: ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Υποχρεώνει την αυτόματη αντικατάσταση να διατηρεί σταθερό το μήκος του τρένου αφαιρώντας βαγόνια (ξεκινώντας από μπροστά), όταν η αντικατάσταση της μηχανής κάνει το τρένο μεγαλύτερο
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Υποχρεώνει την αυτόματη αντικατάσταση να διατηρεί σταθερό το μήκος του τρένου αφαιρώντας βαγόνια (ξεκινώντας από μπροστά), όταν η αντικατάσταση της μηχανής κάνει το τρένο μεγαλύτερο
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Πατήστε Ctrl+Κλικ για εφαρμογή επίσης στην υπό-ομάδα
 
 # Vehicle view

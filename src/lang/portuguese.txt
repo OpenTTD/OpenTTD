@@ -4340,31 +4340,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Veículo rodovi
 STR_REPLACE_VEHICLE_SHIP                                        :Navio
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronave
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Seleccione o tipo de motor a substituir
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Seleccione o novo tipo de motor para substituir o que seleccionou à esquerda
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Seleccione o tipo de motor a substituir
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Seleccione o novo tipo de motor para substituir o que seleccionou à esquerda
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar Subst. de Veículos
 STR_REPLACE_VEHICLES_NOW                                        :Substituir todos os veículos agora
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Substituir apenas veículos velhos
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pressione para iniciar a substituição do tipo de motor que seleccionou à esquerda, com o tipo de motor seleccionado à direita
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Pressione para iniciar a substituição do tipo de motor que seleccionou à esquerda, com o tipo de motor seleccionado à direita
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Não substituindo
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nenhum veículo seleccionado
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} quando velho
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar Subst. de Veículos
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pressione para parar a subsituição do tipo de motor que seleccionou à esquerda
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Pressione para parar a subsituição do tipo de motor que seleccionou à esquerda
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alternar entre a janela de substituição de locomotivas e a janela de substituição de vagões
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Alternar entre a janela de substituição de locomotivas e a janela de substituição de vagões
 STR_REPLACE_ENGINES                                             :Locomotivas
 STR_REPLACE_WAGONS                                              :Vagões
 STR_REPLACE_ALL_RAILTYPE                                        :Todos os veículos ferroviários
 STR_REPLACE_ALL_ROADTYPE                                        :Todos os veículos rodoviários
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecione o tipo de carril para o qual deseja efectuar a substituição dos motores
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Selecione o tipo de estrada para o qual deseja efectuar a substituição dos motores
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Selecione o tipo de carril para o qual deseja efectuar a substituição dos motores
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Selecione o tipo de estrada para o qual deseja efectuar a substituição dos motores
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
 STR_REPLACE_RAIL_VEHICLES                                       :Comboios
 STR_REPLACE_ELRAIL_VEHICLES                                     :Comboios eléctricos
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monocarris
@@ -4374,7 +4374,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Veículos rodov
 STR_REPLACE_TRAM_VEHICLES                                       :Elétricos
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remover vagões ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o comprimento do comboio, removendo vagões (do início), nas situações em que a substituição da locomotiva pode resultar num comboio mais comprido.
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Forçar a substituição automática a manter o comprimento do comboio, removendo vagões (do início), nas situações em que a substituição da locomotiva pode resultar num comboio mais comprido.
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Clique para aplicar também a sub-grupos
 
 # Vehicle view

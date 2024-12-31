@@ -3882,31 +3882,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Cestovno vozilo
 STR_REPLACE_VEHICLE_SHIP                                        :Brod
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Zrakoplov
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Odaberi vrstu motora koju želiš zamijeniti
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Odaberite novu vrstu lokomotive koji želite koristiti umjesto lijevo odabrane vrste lokomotive
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Odaberi vrstu motora koju želiš zamijeniti
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Odaberite novu vrstu lokomotive koji želite koristiti umjesto lijevo odabrane vrste lokomotive
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Počni zamijenjivati vozila
 STR_REPLACE_VEHICLES_NOW                                        :Zamijeni sva vozila sada
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Zamijeni samo stara vozila
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klikni za početak zamjene lijevo odabrane lokomotive sa desno odabranom vrstom
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Klikni za početak zamjene lijevo odabrane lokomotive sa desno odabranom vrstom
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ne zamijenjujem
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Niti jedno vozilo nije odabrano
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kada je staro
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Prestani zamijenjivati vozila
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klikni za zaustavljanje zamjene lijevo odabrane vrste lokomotive
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Klikni za zaustavljanje zamjene lijevo odabrane vrste lokomotive
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Prebaci između prozora za izmjenu lokomotiva i vagona
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Prebaci između prozora za izmjenu lokomotiva i vagona
 STR_REPLACE_ENGINES                                             :Lokomotive
 STR_REPLACE_WAGONS                                              :Vagoni
 STR_REPLACE_ALL_RAILTYPE                                        :Sva pružna vozila
 STR_REPLACE_ALL_ROADTYPE                                        :Sva cestovna vozila
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Odaberite vrstu željeznice za koju želite zamijeniti lokomotive
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Odaberite vrstu ceste za koju želite zamijeniti vozila
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Odaberite vrstu željeznice za koju želite zamijeniti lokomotive
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Odaberite vrstu ceste za koju želite zamijeniti vozila
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Prikazuje sa kojom se lokomotivom zamjenjuje lijevo odabrana lokomotiva, ako postoji koji
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Prikazuje sa kojom se lokomotivom zamjenjuje lijevo odabrana lokomotiva, ako postoji koji
 STR_REPLACE_RAIL_VEHICLES                                       :Pružna vozila
 STR_REPLACE_ELRAIL_VEHICLES                                     :Električna pružna vozila
 STR_REPLACE_MONORAIL_VEHICLES                                   :Jednotračna vozila
@@ -3916,7 +3916,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Cestovna vozila
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvaji
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Uklanjanje vagona ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automatska zamjena zadržava istu dužinu vlaka tako da ukloni suvišne vagone (počevši od naprijed), ako bi zamjena lokomotive učinila vlak dužim
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Automatska zamjena zadržava istu dužinu vlaka tako da ukloni suvišne vagone (počevši od naprijed), ako bi zamjena lokomotive učinila vlak dužim
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

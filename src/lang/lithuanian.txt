@@ -4455,31 +4455,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE.ka                             :Automobilį
 STR_REPLACE_VEHICLE_SHIP                                        :Laivas
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lėktuvus
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Pasirink tr. priemonės tipą, kurią reikės keisti
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Pasirink tr. priemonės tipą, kuria bus keičiamos pasirinktos tr. priemonės
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Pasirink tr. priemonės tipą, kurią reikės keisti
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Pasirink tr. priemonės tipą, kuria bus keičiamos pasirinktos tr. priemonės
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Pradėti tr. priemonių keitimą
 STR_REPLACE_VEHICLES_NOW                                        :Atnaujinti visas transporto priemones
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Atnaujinti tik pasenusias transporto priemones
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Spustelk, jei nori pradėti pažymėto tipo tr. priemonių keitimo procedūrą
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Spustelk, jei nori pradėti pažymėto tipo tr. priemonių keitimo procedūrą
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nekeičiama
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nėra pažymėta nei viena tr. priemonė
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} jei paseno
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stabdyti tr. priemonių keitimą
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Spustelk, jei nori sustabdyti šiuo metu vykdomą keitimo procedūrą
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Spustelk, jei nori sustabdyti šiuo metu vykdomą keitimo procedūrą
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Pereidinėti tarp garvežių ir vagonų pakeitimo langų
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Pereidinėti tarp garvežių ir vagonų pakeitimo langų
 STR_REPLACE_ENGINES                                             :Varikliai
 STR_REPLACE_WAGONS                                              :Vagonai
 STR_REPLACE_ALL_RAILTYPE                                        :Visas bėgines transporto priemones
 STR_REPLACE_ALL_ROADTYPE                                        :Visas kelių transporto priemones
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Pasirinkite bėgio tipą, kur dėl variklio norėtumėte pakeisti
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Pasirinkite kelio tipą, kurio automobilius norite pakeisti
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Pasirinkite bėgio tipą, kur dėl variklio norėtumėte pakeisti
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Pasirinkite kelio tipą, kurio automobilius norite pakeisti
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Kaireje lango dalyje pazymeta tr. priemone bus pakeista tr. priemone, kuri yra pazymeta desineje lango puseje
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Kaireje lango dalyje pazymeta tr. priemone bus pakeista tr. priemone, kuri yra pazymeta desineje lango puseje
 STR_REPLACE_RAIL_VEHICLES                                       :Paprasti traukiniai
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrifikuoti Traukiniai
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vienbegiai traukiniai
@@ -4489,7 +4489,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Automobilius
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvajinės transporto priemonės
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagono pašalinimas ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Pakeitimo metu išlaikyti traukinio ilgį atjungiant vagonus (pradedant nuo priekio), jeigu pakeitus garvežį traukinys pailgėtų
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Pakeitimo metu išlaikyti traukinio ilgį atjungiant vagonus (pradedant nuo priekio), jeigu pakeitus garvežį traukinys pailgėtų
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

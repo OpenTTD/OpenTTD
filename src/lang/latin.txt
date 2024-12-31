@@ -3849,36 +3849,36 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vehiculum Viari
 STR_REPLACE_VEHICLE_SHIP                                        :Navem
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeroplanum
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Eligere typum mutandum
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Eligere novum typum in loco typi sinistri utendum
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Eligere typum mutandum
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Eligere novum typum in loco typi sinistri utendum
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Mutationem Vehiculorum Incipere
 STR_REPLACE_VEHICLES_NOW                                        :Omnia vehicula statim mutare
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Vehicula vetera solum mutare
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Preme ut vehiculum sinistrum electum incipiat commutari vehiculo dextro electo
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Preme ut vehiculum sinistrum electum incipiat commutari vehiculo dextro electo
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Non mutandum est
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nullum vehiculum electum
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} cum vetus
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Consistere mutationem vehiculorum
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Preme ut mutatio vehiculi sinistri consistatur
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Preme ut mutatio vehiculi sinistri consistatur
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Mutare inter mutationem hamaxarum curruumque
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Mutare inter mutationem hamaxarum curruumque
 STR_REPLACE_ENGINES                                             :Hamaxarum
 STR_REPLACE_WAGONS                                              :Curruum
 STR_REPLACE_ALL_RAILTYPE                                        :Omnia vehicula ferriviaria
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Eligere typum astarii cui est hamaxas commutandas
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Eligere typum astarii cui est hamaxas commutandas
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Haec monstrat novum vehiculum desideratum, si adest
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Haec monstrat novum vehiculum desideratum, si adest
 STR_REPLACE_RAIL_VEHICLES                                       :Vehicula Ferriviaria
 STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicula Ferriviaria Electrica
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vehicula Monoorbitalia
 STR_REPLACE_MAGLEV_VEHICLES                                     :Vehicula Maglev
 
 
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facere ut automutatio longitudinem traminis contineat ablatione curruum (primo primorum), si tramen longius fiat mutatione hamaxae
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Facere ut automutatio longitudinem traminis contineat ablatione curruum (primo primorum), si tramen longius fiat mutatione hamaxae
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

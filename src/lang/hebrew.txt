@@ -3758,30 +3758,30 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :רכב
 STR_REPLACE_VEHICLE_SHIP                                        :כלי שייט
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :כלי טייס
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}בחר את סוג המנוע/קטר שברצונך להחליף
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}בחר את הקטר/מנוע שברצונך לבנות במקום הקטר/מנוע הקיים
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}בחר את סוג המנוע/קטר שברצונך להחליף
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}בחר את הקטר/מנוע שברצונך לבנות במקום הקטר/מנוע הקיים
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}החל בהחלפת הכלים
 STR_REPLACE_VEHICLES_NOW                                        :החלף את כל כלי הרכב כעת
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :החלף כלי רכב ישנים בלבד
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}לחץ כאן על מנת להתחיל בהחלפה
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}לחץ כאן על מנת להתחיל בהחלפה
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}לא מחליף
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}לא נבחר כלי
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} כאשר ישן
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}הפסק את החלפת הכלים
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}לחץ כאן להפסיק את ההחלפה
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}לחץ כאן להפסיק את ההחלפה
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}החלף בין חלונות החלפת קרון וקטר
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}החלף בין חלונות החלפת קרון וקטר
 STR_REPLACE_ENGINES                                             :מנועים/קטרים
 STR_REPLACE_WAGONS                                              :קרונות
 STR_REPLACE_ALL_RAILTYPE                                        :כלל הרכבות
 STR_REPLACE_ALL_ROADTYPE                                        :כל הכלי רכב
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}בחר את סוג המסילה עבורה ברצונך להחליף קטרים
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}בחר את סוג המסילה עבורה ברצונך להחליף קטרים
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK} מציג אילו קטרים מוחלפים זה בזה
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK} מציג אילו קטרים מוחלפים זה בזה
 STR_REPLACE_RAIL_VEHICLES                                       :רכבות
 STR_REPLACE_ELRAIL_VEHICLES                                     :רכבות חשמליות
 STR_REPLACE_MONORAIL_VEHICLES                                   :רכבות חד-פס
@@ -3790,7 +3790,7 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :רכבות פס
 STR_REPLACE_ROAD_VEHICLES                                       :רכבי כביש
 STR_REPLACE_TRAM_VEHICLES                                       :רכבות קלות
 
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}שמור על האורך המקורי של הרכבת בעת שימוש בהחלפה אוטומטית, במידה והקטר מאריך את הרכבת הסר קרונות מתחילת הרכבת
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}שמור על האורך המקורי של הרכבת בעת שימוש בהחלפה אוטומטית, במידה והקטר מאריך את הרכבת הסר קרונות מתחילת הרכבת
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

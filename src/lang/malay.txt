@@ -3287,32 +3287,32 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Kenderaan Jalan
 STR_REPLACE_VEHICLE_SHIP                                        :Kapal
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Pesawat
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Pilih jenis enjin untuk diganti
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Pilih jenis enjin baru yang anda ingin guna untuk menggantikan jenis enjin sebelah kiri
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Pilih jenis enjin untuk diganti
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Pilih jenis enjin baru yang anda ingin guna untuk menggantikan jenis enjin sebelah kiri
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Mulakan Penggantian Kenderaan
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tekan untuk memulakan penggantian jenis enjin yang dipilih di sebelah kiri dengan jenis enjin yang dipilih di sebelah kanan
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Tekan untuk memulakan penggantian jenis enjin yang dipilih di sebelah kiri dengan jenis enjin yang dipilih di sebelah kanan
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Tidak digantikan
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Tiada kenderaan telah dipilih
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Hentikan Penggantian Kenderaan
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Menekan untuk menghentikan ketukaran jenis engin yang telah dipilih di sebelah kiri
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Menekan untuk menghentikan ketukaran jenis engin yang telah dipilih di sebelah kiri
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Beralih antara tetingkap enjin dan penggantian wagon
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Beralih antara tetingkap enjin dan penggantian wagon
 STR_REPLACE_ENGINES                                             :Enjin
 STR_REPLACE_WAGONS                                              :Gerabak
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Pilih jenis landasan yang anda mahu enjin digantikan
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Pilih jenis landasan yang anda mahu enjin digantikan
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Paparkan enjin yang mana di sebelah kiri yang dipilih untuk digantikan dengan, sekiranya ada
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Paparkan enjin yang mana di sebelah kiri yang dipilih untuk digantikan dengan, sekiranya ada
 STR_REPLACE_RAIL_VEHICLES                                       :Kenderaan keretapi
 STR_REPLACE_ELRAIL_VEHICLES                                     :Kenderaan Keretapi Elektrik
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorel Kenderaan
 STR_REPLACE_MAGLEV_VEHICLES                                     :Kenderaan Maglev
 
 
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat penukaran secara automatik menyimpan kepanjangan keretapi yang sama dengan mengeluarkan gerabak (bermula dari bahagian hadapan), sekiranya menyebabkan kereta api lebih panjang
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Membuat penukaran secara automatik menyimpan kepanjangan keretapi yang sama dengan mengeluarkan gerabak (bermula dari bahagian hadapan), sekiranya menyebabkan kereta api lebih panjang
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

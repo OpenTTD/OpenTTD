@@ -4089,31 +4089,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :車両
 STR_REPLACE_VEHICLE_SHIP                                        :船舶
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :航空機
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}置換対象を選択
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}左で選択した輸送機器を置き換える輸送機器を選択します
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}置換対象を選択
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}左で選択した輸送機器を置き換える輸送機器を選択します
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}置換開始
 STR_REPLACE_VEHICLES_NOW                                        :全輸送機器を置換
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :老朽機器のみ置換
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}クリックすると左で選択した輸送機器を右で選択した輸送機器へ置換を開始します
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}クリックすると左で選択した輸送機器を右で選択した輸送機器へ置換を開始します
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}置換なし
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}車両が選択されていません
 STR_REPLACE_REPLACING_WHEN_OLD                                  :老朽化したら{ENGINE}に置換
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}置換終了
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}クリックすると選択した輸送機器の置換を終了します
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}クリックすると選択した輸送機器の置換を終了します
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}置換対象を機関車/貨車に切り替えます
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}置換対象を機関車/貨車に切り替えます
 STR_REPLACE_ENGINES                                             :機関車
 STR_REPLACE_WAGONS                                              :貨車
 STR_REPLACE_ALL_RAILTYPE                                        :すべての鉄道車両
 STR_REPLACE_ALL_ROADTYPE                                        :すべての車両
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}置換対象となる線路種類を切り替えます
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}置換対象となる道路種類を切り替えます
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}置換対象となる線路種類を切り替えます
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}置換対象となる道路種類を切り替えます
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}左で選択された機関車の置換対象を(あれば)表示します
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}左で選択された機関車の置換対象を(あれば)表示します
 STR_REPLACE_RAIL_VEHICLES                                       :機関車(非電化)
 STR_REPLACE_ELRAIL_VEHICLES                                     :電気機関車・電車
 STR_REPLACE_MONORAIL_VEHICLES                                   :モノレール車両
@@ -4123,7 +4123,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :車両
 STR_REPLACE_TRAM_VEHICLES                                       :路面電車の車両
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}列車の短縮({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}機関車の交換で列車長が長くなる場合、列車長を維持する為に客車/貨車を減らすことができます。外されるのは従属部分の先頭からになります
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}機関車の交換で列車長が長くなる場合、列車長を維持する為に客車/貨車を減らすことができます。外されるのは従属部分の先頭からになります
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+クリックでサブグループにも適用
 
 # Vehicle view

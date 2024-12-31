@@ -3192,7 +3192,7 @@ STR_REPLACE_VEHICLE_SHIP                                        :کشتی
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :هواپیما
 
 
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}برای توقف جایگزین کردن برای نوع انتخاب شده در سمت چپ کلیک کنید
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}برای توقف جایگزین کردن برای نوع انتخاب شده در سمت چپ کلیک کنید
 
 STR_REPLACE_ENGINES                                             :موتور ها
 

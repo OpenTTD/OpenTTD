@@ -4164,19 +4164,19 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Stratveturilo
 STR_REPLACE_VEHICLE_SHIP                                        :Ŝipo
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aviadilo
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Elektu maŝinon por anstataŭi
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Elektu novan maŝinon por uzi anstataŭ la maldekstre elektitan
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Elektu maŝinon por anstataŭi
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Elektu novan maŝinon por uzi anstataŭ la maldekstre elektitan
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Komencu Anstataŭi
 STR_REPLACE_VEHICLES_NOW                                        :Anstataŭigu ĉiujn veturilojn nun
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Anstataŭigu nur malnovajn veturilojn
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Premu por komenci anstataŭi la maldekstre elektitan maŝinon per la dekstre elektitan
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Premu por komenci anstataŭi la maldekstre elektitan maŝinon per la dekstre elektitan
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ne anstataŭante
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ne elektiĝis veturilo
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Ĉesu Anstataŭi
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Premu por ĉesi anstataŭi la maldekstre elektitan maŝinon
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Premu por ĉesi anstataŭi la maldekstre elektitan maŝinon
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Ŝaltu inter maŝina kaj vagona anstataŭigo
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Ŝaltu inter maŝina kaj vagona anstataŭigo
 STR_REPLACE_ENGINES                                             :Maŝinoj
 STR_REPLACE_WAGONS                                              :Vagonoj
 STR_REPLACE_ALL_RAILTYPE                                        :Ĉiuj relveturiloj
@@ -4184,11 +4184,11 @@ STR_REPLACE_ALL_RAILTYPE.n                                      :Ĉiujn relvetur
 STR_REPLACE_ALL_ROADTYPE                                        :Ĉiuj stratveturiloj
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Elektu fervojtipon por kiu vi volas anstataŭigi maŝinojn
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Elektu la vojtipon por kiu vi volas anstataŭigi veturilojn
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Elektu fervojtipon por kiu vi volas anstataŭigi maŝinojn
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Elektu la vojtipon por kiu vi volas anstataŭigi veturilojn
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Montras ontan maŝinecon de la maldekstra maŝino, se anstataŭote
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Montras ontan maŝinecon de la maldekstra maŝino, se anstataŭote
 STR_REPLACE_RAIL_VEHICLES                                       :Relaj Veturiloj
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektraj Relaj Veturiloj
 STR_REPLACE_MONORAIL_VEHICLES                                   :Unurelaj Veturiloj
@@ -4200,7 +4200,7 @@ STR_REPLACE_TRAM_VEHICLES                                       :Tramvojaj vetur
 STR_REPLACE_TRAM_VEHICLES.n                                     :Tramvojajn veturilojn
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagonforigo ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ĉe aŭtomata anstataŭigo tenu saman longecon de la vagonaro per forigo de vagonoj (defronte), se per nova maŝino la vagonaro plilongiĝas
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Ĉe aŭtomata anstataŭigo tenu saman longecon de la vagonaro per forigo de vagonoj (defronte), se per nova maŝino la vagonaro plilongiĝas
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

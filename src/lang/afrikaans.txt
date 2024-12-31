@@ -3703,31 +3703,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Pad voertuig
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Vliegtuig
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Kies die enjin tipe om te vervang
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Kies die nuwe enjin tipe wat jy wil gebruik in plaas van die linker gekose enjin tipe
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Kies die enjin tipe om te vervang
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Kies die nuwe enjin tipe wat jy wil gebruik in plaas van die linker gekose enjin tipe
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Vervang voertuie
 STR_REPLACE_VEHICLES_NOW                                        :Vervand alle voertuie nou
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Vervang net ou voertuie
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Druk om vervanging van die linker gekose enjin tipe met die regter gekose enjin tipe te begin
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Druk om vervanging van die linker gekose enjin tipe met die regter gekose enjin tipe te begin
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Word nie vervang nie
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Geen voertuig gekies
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} waneer oud
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Staak vervanging
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Druk om die vervanging van die linker gekose enjin tipe te stop
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Druk om die vervanging van die linker gekose enjin tipe te stop
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skakel tussen enjin en wa vervang vensters
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Skakel tussen enjin en wa vervang vensters
 STR_REPLACE_ENGINES                                             :Enjin
 STR_REPLACE_WAGONS                                              :Waens
 STR_REPLACE_ALL_RAILTYPE                                        :Alle spoorvoertuie
 STR_REPLACE_ALL_ROADTYPE                                        :Alle padvoertuie
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Kies die soort spoor waarvoor lokomotiewe vervang moet word
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Kies die padtipe waarvoor u enjins wil vervang
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Kies die soort spoor waarvoor lokomotiewe vervang moet word
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Kies die padtipe waarvoor u enjins wil vervang
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Toon aan watter enjin die linker gekose enjin mee vervang moet word , indien enige
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Toon aan watter enjin die linker gekose enjin mee vervang moet word , indien enige
 STR_REPLACE_RAIL_VEHICLES                                       :Treine
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektriese treine
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monospoor voertuie
@@ -3736,7 +3736,7 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Voertuie
 STR_REPLACE_ROAD_VEHICLES                                       :Padvoertuie
 STR_REPLACE_TRAM_VEHICLES                                       :Tremweg voertuie
 
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Maak autovervanging die lengte van 'n trein dieselfde hou deur verwydering waens (deur voor te begin), indien die enjin vervanging die trein langer sal maak
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Maak autovervanging die lengte van 'n trein dieselfde hou deur verwydering waens (deur voor te begin), indien die enjin vervanging die trein langer sal maak
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

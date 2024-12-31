@@ -4341,31 +4341,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :maanteesõiduke
 STR_REPLACE_VEHICLE_SHIP                                        :laevu
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :õhusõidukeid
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vali asendatav veduritüüp
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vali uus vedur, millega sa soovid vasakult valitud vedurit asendada.
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Vali asendatav veduritüüp
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Vali uus vedur, millega sa soovid vasakult valitud vedurit asendada.
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusta sõidukite asendamist
 STR_REPLACE_VEHICLES_NOW                                        :Asenda kohe kõik sõidukid
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Asenda ainult vanu sõidukeid
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Vajuta vasakul asuva veduri asendamiseks paremal valitud veduriga
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Vajuta vasakul asuva veduri asendamiseks paremal valitud veduriga
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ei asenda praegu
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ühtegi sõidukit pole valitud
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kui vana
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lõpeta sõidukite asendamine
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Vajuta lõpetamaks vasakult valitud veduri asendust
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Vajuta lõpetamaks vasakult valitud veduri asendust
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Vaheta aken mootori ja vaguni asendamise aknate vahel
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Vaheta aken mootori ja vaguni asendamise aknate vahel
 STR_REPLACE_ENGINES                                             :Vedurid
 STR_REPLACE_WAGONS                                              :Vagunid
 STR_REPLACE_ALL_RAILTYPE                                        :Kõik rööbassõidukid
 STR_REPLACE_ALL_ROADTYPE                                        :Kõik maanteesõidukid
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vali rööbasteetüüp mille vedureid sa soovid asendada
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Vali teeliik, mille vedureid vahetada
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Vali rööbasteetüüp mille vedureid sa soovid asendada
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Vali teeliik, mille vedureid vahetada
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Näitab mis veduriga soovitakse vasakult valitud vedurit asendada, kui üldse
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Näitab mis veduriga soovitakse vasakult valitud vedurit asendada, kui üldse
 STR_REPLACE_RAIL_VEHICLES                                       :Raudteesõidukid
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrirongid
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorelssveerem
@@ -4375,7 +4375,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Maanteesõiduki
 STR_REPLACE_TRAM_VEHICLES                                       :Trammid
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagunite kõrvaldamine ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaatne asendamine hoiab rongi pikkuse samana, vajadusel kõrvaldab vaguneid (alates esiotsast), kui muidu rongikoosseis suureneks
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Automaatne asendamine hoiab rongi pikkuse samana, vajadusel kõrvaldab vaguneid (alates esiotsast), kui muidu rongikoosseis suureneks
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+klõps, et rakendada ka alamgruppidele
 
 # Vehicle view

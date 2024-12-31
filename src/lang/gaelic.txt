@@ -3859,36 +3859,36 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Carbad-rathaid
 STR_REPLACE_VEHICLE_SHIP                                        :{G=f}Long
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Carbad-adhair
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Tagh seòrsa an einnsein airson leasachadh
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Tagh an seòrsa ùr dhen einnsean a bu toil leat a chleachdadh an àite an fhir a thagh thu air an taobh chlì
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Tagh seòrsa an einnsein airson leasachadh
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Tagh an seòrsa ùr dhen einnsean a bu toil leat a chleachdadh an àite an fhir a thagh thu air an taobh chlì
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Tòisich le leasachadh nan carbadan
 STR_REPLACE_VEHICLES_NOW                                        :Leasaich a h-uile carbad an-dràsta
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Na leasaich ach seann charbadan
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Brùth gus tòiseachadh le leasachadh an t-seòrsa einnsein a thagh thu air an taobh chlì type leis an t-seòrsa einnsein a thagh thu air an taobh deas
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Brùth gus tòiseachadh le leasachadh an t-seòrsa einnsein a thagh thu air an taobh chlì type leis an t-seòrsa einnsein a thagh thu air an taobh deas
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Gun leasachadh
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Cha deach carbad sam bith a thaghadh
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} nuair a bhios e sean
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Sguir dhe leasachadh nan carbadan
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Briog air ach nach tèid einnseanan dhen t-seòrsa a thagh thu air an taobh chlì a leasachadh
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Briog air ach nach tèid einnseanan dhen t-seòrsa a thagh thu air an taobh chlì a leasachadh
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Gearr leum eadar uinneagan leasachadh nan einnseanan is nan carbadan
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Gearr leum eadar uinneagan leasachadh nan einnseanan is nan carbadan
 STR_REPLACE_ENGINES                                             :Einnseanan
 STR_REPLACE_WAGONS                                              :Carbadan
 STR_REPLACE_ALL_RAILTYPE                                        :A h-uile carbad-rèile
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Tagh an seòrsa dhe rèile is tu airson einnseanan a leasachadh air a shon
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Tagh an seòrsa dhe rèile is tu airson einnseanan a leasachadh air a shon
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Seallaidh seo an einnsean a tha ga chur an àite an einnsein a thagh thu air an taobh chlì, ma tha gin ann
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Seallaidh seo an einnsean a tha ga chur an àite an einnsein a thagh thu air an taobh chlì, ma tha gin ann
 STR_REPLACE_RAIL_VEHICLES                                       :Carbadan-rèile
 STR_REPLACE_ELRAIL_VEHICLES                                     :Carbadan-rèile dealain
 STR_REPLACE_MONORAIL_VEHICLES                                   :Carbadan aona-rèile
 STR_REPLACE_MAGLEV_VEHICLES                                     :Carbadan magnaiteach
 
 
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Glèidh faide aig trèan nuair a thèid fhèin-leasachadh le toirt air falbh nan carbadan (bho thoiseach na trèan a-mach) ma dh'fhàsas an trèan nas fhaide le einnsean ùr
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Glèidh faide aig trèan nuair a thèid fhèin-leasachadh le toirt air falbh nan carbadan (bho thoiseach na trèan a-mach) ma dh'fhàsas an trèan nas fhaide le einnsean ùr
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

@@ -3921,31 +3921,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Feithicil Bóth
 STR_REPLACE_VEHICLE_SHIP                                        :Long
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aerárthach
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Roghnaigh an cineál innill le hathsholáthar
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Roghnaigh an cineál nua innill is mian leat a úsáid in ionad an chineáil innill atá roghnaithe ar chlé
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Roghnaigh an cineál innill le hathsholáthar
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Roghnaigh an cineál nua innill is mian leat a úsáid in ionad an chineáil innill atá roghnaithe ar chlé
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Tosaigh ag athsholáthar Feithiclí
 STR_REPLACE_VEHICLES_NOW                                        :Ionadaigh gach feithicil anois
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Ionadaigh seanfheithiclí amháin
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Brúigh le tús a chur leis an gcineál innill atá roghnaithe ar chlé a athsholáthar leis an gcineál innill atá roghnaithe ar dheis
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Brúigh le tús a chur leis an gcineál innill atá roghnaithe ar chlé a athsholáthar leis an gcineál innill atá roghnaithe ar dheis
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Níl athsholáthar ar bun
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Níl aon fheithicil roghnaithe
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} má tá sé sean
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stad ag athsholáthar Feithiclí
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Brúigh chun deireadh a chur le hathsholáthar den chineál innill atá roghnaithe ar chlé
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Brúigh chun deireadh a chur le hathsholáthar den chineál innill atá roghnaithe ar chlé
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Athraigh idir na fuinneoga athsholáthair innill agus vaigíní
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Athraigh idir na fuinneoga athsholáthair innill agus vaigíní
 STR_REPLACE_ENGINES                                             :Innill
 STR_REPLACE_WAGONS                                              :Vaigíní
 STR_REPLACE_ALL_RAILTYPE                                        :Gach feithicil iarnróid
 STR_REPLACE_ALL_ROADTYPE                                        :Gach feithicil bóthair
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Roghnaigh an cineál ráille is mian leat innill a athsholáthar air
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Roghnaigh an cineál bóthair is mian leat na hinnill a ionadú air
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Roghnaigh an cineál ráille is mian leat innill a athsholáthar air
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Roghnaigh an cineál bóthair is mian leat na hinnill a ionadú air
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Taispeántar cén inneall a dhéanfar an t-inneall atá roghnaithe ar chlé a athsholáthar leis, má dhéanfar é a athsholáthar
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Taispeántar cén inneall a dhéanfar an t-inneall atá roghnaithe ar chlé a athsholáthar leis, má dhéanfar é a athsholáthar
 STR_REPLACE_RAIL_VEHICLES                                       :Feithiclí Iarnróid
 STR_REPLACE_ELRAIL_VEHICLES                                     :Feithiclí Iarnróid Leictreacha
 STR_REPLACE_MONORAIL_VEHICLES                                   :Feithiclí Aonráille
@@ -3955,7 +3955,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Feithiclí Bót
 STR_REPLACE_TRAM_VEHICLES                                       :Feithiclí Trambhealaigh
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaigíní a bhaint ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ceangail ar uath-athsholáthar fad na traenach a choinneáil mar an gcéanna trí vaigíní a bhaint (ag tosú ag an tosach), má tharlaíonn sé go mbeadh an traein níos faide tar éis an t-inneall a athsholáthar.
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Ceangail ar uath-athsholáthar fad na traenach a choinneáil mar an gcéanna trí vaigíní a bhaint (ag tosú ag an tosach), má tharlaíonn sé go mbeadh an traein níos faide tar éis an t-inneall a athsholáthar.
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Cliceáil chun é a chur i bhfeidhm i leith foghrúpaí freisin
 
 # Vehicle view

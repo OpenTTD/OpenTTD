@@ -4340,31 +4340,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vehículo de ca
 STR_REPLACE_VEHICLE_SHIP                                        :Barco
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronave
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecciona el tipo de vehículo a reemplazar
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecciona un nuevo tipo de vehículo a usar en lugar del vehículo seleccionado a la izquierda
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Selecciona el tipo de vehículo a reemplazar
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Selecciona un nuevo tipo de vehículo a usar en lugar del vehículo seleccionado a la izquierda
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Comenzar a reemplazar vehículos
 STR_REPLACE_VEHICLES_NOW                                        :Reemplazar ahora todos los vehículos
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Reemplazar sólo vehículos viejos
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Presiona este botón para reemplazar el vehículo seleccionado a la izquierda por el seleccionado a la derecha
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Presiona este botón para reemplazar el vehículo seleccionado a la izquierda por el seleccionado a la derecha
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}No reemplazar
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}No hay vehículos seleccionados
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} cuando esté viejo
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Detener el reemplazo de vehículos
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Presiona este botón para detener el reemplazo del vehículo situado a la izquierda
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Presiona este botón para detener el reemplazo del vehículo situado a la izquierda
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alterna la ventana de reemplazo entre locomotoras y vagones
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Alterna la ventana de reemplazo entre locomotoras y vagones
 STR_REPLACE_ENGINES                                             :Locomotoras
 STR_REPLACE_WAGONS                                              :Vagones
 STR_REPLACE_ALL_RAILTYPE                                        :Todos los vehículos de Ferrocarril
 STR_REPLACE_ALL_ROADTYPE                                        :Todos los vehículos de carretera
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecciona el tipo de ferrocarril al que pertenecen los vehiculos a reemplazar
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Selecciona el tipo de carretera al que pertenecen los vehiculos a reemplazar
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Selecciona el tipo de ferrocarril al que pertenecen los vehiculos a reemplazar
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Selecciona el tipo de carretera al que pertenecen los vehiculos a reemplazar
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Muestra con qué vehículo está siendo reemplazado el vehículo de la izquierda
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Muestra con qué vehículo está siendo reemplazado el vehículo de la izquierda
 STR_REPLACE_RAIL_VEHICLES                                       :Vehículos de Ferrocarril
 STR_REPLACE_ELRAIL_VEHICLES                                     :Vehículos de Ferrocarril Eléctrico
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vehículos de Monorraíl
@@ -4374,7 +4374,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Vehículos de C
 STR_REPLACE_TRAM_VEHICLES                                       :Tranvías
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retirar vagones ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fuerza que el reemplazo automático mantenga la longitud del tren, quitando vagones (empezando por la parte delantera) si el reemplazo de vehículos produce un tren más largo
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Fuerza que el reemplazo automático mantenga la longitud del tren, quitando vagones (empezando por la parte delantera) si el reemplazo de vehículos produce un tren más largo
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+clic para aplicar también a subgrupos
 
 # Vehicle view

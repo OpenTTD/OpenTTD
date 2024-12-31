@@ -3412,7 +3412,7 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Auto
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Fleanmasine
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selektearje it type lokomotyf om te ferfangen
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Selektearje it type lokomotyf om te ferfangen
 
 STR_REPLACE_VEHICLES_NOW                                        :No alle fiertugen ferfange
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Ferfang allinech âlde weinen

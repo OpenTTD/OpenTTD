@@ -3745,35 +3745,35 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Cestno vozilo
 STR_REPLACE_VEHICLE_SHIP                                        :Ladja
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Letalo
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izberi tip lokomotive za zamenjati
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izberi vrsto lokomotive, ki jo hočeš prestaviti na levo označeno mesto
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Izberi tip lokomotive za zamenjati
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Izberi vrsto lokomotive, ki jo hočeš prestaviti na levo označeno mesto
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Začni menjavo vozil
 STR_REPLACE_VEHICLES_NOW                                        :Zamenjaj vsa vozila zdaj
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Zamenjaj samo stara vozila
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pritisni za začetek menjave levo označenega tipa lokomotive s tistim na desni.
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Pritisni za začetek menjave levo označenega tipa lokomotive s tistim na desni.
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ni menjave
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ni izbranih vozil
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} ko se postara
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Ustavi menjavo vozil
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pritisni za zaustavitev zamenjave na levi izbranega tipa lokomotive
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Pritisni za zaustavitev zamenjave na levi izbranega tipa lokomotive
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Preklop med okni za menjavo lokomotiv in vagonov
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Preklop med okni za menjavo lokomotiv in vagonov
 STR_REPLACE_ENGINES                                             :Lokomotive
 STR_REPLACE_WAGONS                                              :Vagoni
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Izberi tip tirov, za katere želiš menjati lokomotive
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Izberi tip tirov, za katere želiš menjati lokomotive
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Prikaz tipa lokomotive, s katero bo zamenjana levo označena
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Prikaz tipa lokomotive, s katero bo zamenjana levo označena
 STR_REPLACE_RAIL_VEHICLES                                       :Tirna vozila
 STR_REPLACE_ELRAIL_VEHICLES                                     :Električna tirna vozila
 STR_REPLACE_MONORAIL_VEHICLES                                   :Enotirna vozila
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetna tirna vozila
 
 
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Dovoli samozamenjavi, da z odstranitvijo vagonov, začenši na začetku, ohrani isto dolžino vlaka, če bi ga menjava lokomotive podaljšala
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Dovoli samozamenjavi, da z odstranitvijo vagonov, začenši na začetku, ohrani isto dolžino vlaka, če bi ga menjava lokomotive podaljšala
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

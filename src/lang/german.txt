@@ -4329,31 +4329,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Straßenfahrzeu
 STR_REPLACE_VEHICLE_SHIP                                        :Schiff
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Flugzeug
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Zu ersetzenden Fahrzeugtyp auswählen
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Fahrzeugtyp auswählen, der anstelle des links gewählten Typs verwendet werden soll
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Zu ersetzenden Fahrzeugtyp auswählen
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Fahrzeugtyp auswählen, der anstelle des links gewählten Typs verwendet werden soll
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Fahrzeugersetzung an
 STR_REPLACE_VEHICLES_NOW                                        :Alle Fahrzeuge jetzt ersetzen
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Ersetze nur alte Fahrzeuge
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klick zum Ersetzen des Fahrzeugtyps auf der linken Seite mit dem auf der rechten Seite
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Klick zum Ersetzen des Fahrzeugtyps auf der linken Seite mit dem auf der rechten Seite
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Keine Ersetzung
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Kein Fahrzeug gewählt
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} wenn alt
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Fahrzeugersetzung aus
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klick zum Abbrechen der Ersetzung des Fahrzeugtyps auf der linken Seite
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Klick zum Abbrechen der Ersetzung des Fahrzeugtyps auf der linken Seite
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Umschalter für Lok- oder Waggonersetzung
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Umschalter für Lok- oder Waggonersetzung
 STR_REPLACE_ENGINES                                             :Schienenfahrzeuge
 STR_REPLACE_WAGONS                                              :Waggons
 STR_REPLACE_ALL_RAILTYPE                                        :Alle Schienenfahrzeuge
 STR_REPLACE_ALL_ROADTYPE                                        :Alle Straßenfahrzeuge
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Gleistyp auswählen, für den Loks ersetzt werden sollen
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Straßentyp auswählen, für den Fahrzeuge ersetzt werden sollen
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Gleistyp auswählen, für den Loks ersetzt werden sollen
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Straßentyp auswählen, für den Fahrzeuge ersetzt werden sollen
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hier wird angezeigt, gegen welches Fahrzeug das auf der linken Seite gewählte ersetzt wird
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Hier wird angezeigt, gegen welches Fahrzeug das auf der linken Seite gewählte ersetzt wird
 STR_REPLACE_RAIL_VEHICLES                                       :Schienenfahrzeuge
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrische Schienenfahrzeuge
 STR_REPLACE_MONORAIL_VEHICLES                                   :Einschienenbahn
@@ -4363,7 +4363,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Straßenfahrzeu
 STR_REPLACE_TRAM_VEHICLES                                       :Straßenbahnfahrzeuge
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-Entfernung ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ursprüngliche Länge des Zugs beibehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Ursprüngliche Länge des Zugs beibehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Strg+Klick, um auch an Untergruppen anzuwenden
 
 # Vehicle view

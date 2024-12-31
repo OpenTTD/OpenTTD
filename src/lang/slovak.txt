@@ -4343,31 +4343,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=s}Cestné vo
 STR_REPLACE_VEHICLE_SHIP                                        :{G=z}Loď
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=s}Lietadlo
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Zvoľte typ vozidla na výmenu
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Zvoľte nový typ vozidla, ktorý chceš použiť namiesto typu z ľavého zoznamu
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Zvoľte typ vozidla na výmenu
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Zvoľte nový typ vozidla, ktorý chceš použiť namiesto typu z ľavého zoznamu
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Začať výmenu vozidiel
 STR_REPLACE_VEHICLES_NOW                                        :Vymeniť všetky vozidlá teraz !
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Vymeniť len staré vozidlá
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Stlačte pre začatie výmeny typu lokomotívy v ľavom zozname za lokomotívu v pravom zozname
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Stlačte pre začatie výmeny typu lokomotívy v ľavom zozname za lokomotívu v pravom zozname
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nevymieňa sa
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nie je označené vozidlo
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} ked je staré
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zastaviť výmenu vozidiel
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Stlačte pre zastavenie výmeny lokomotívy vybranej z ľavého zoznamu
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Stlačte pre zastavenie výmeny lokomotívy vybranej z ľavého zoznamu
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Prepne medzi oknami na výmenu lokomotív a vagónov
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Prepne medzi oknami na výmenu lokomotív a vagónov
 STR_REPLACE_ENGINES                                             :Lokomotívy
 STR_REPLACE_WAGONS                                              :Vagónov
 STR_REPLACE_ALL_RAILTYPE                                        :Všetky železničné vozidlá
 STR_REPLACE_ALL_ROADTYPE                                        :Všetky cestné vozidlá
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vybrať typ železnice, pre ktorú chceš vymieňať lokomotívy
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Vybrať typ cesty, pre ktorú chceš vymieňať vozidlá
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Vybrať typ železnice, pre ktorú chceš vymieňať lokomotívy
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Vybrať typ cesty, pre ktorú chceš vymieňať vozidlá
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Zobrazí, ak existuje lokomotíva z ľavého zoznamu, ktorá sa zamení s ňou
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Zobrazí, ak existuje lokomotíva z ľavého zoznamu, ktorá sa zamení s ňou
 STR_REPLACE_RAIL_VEHICLES                                       :Lokomotívy
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrické lokomotívy
 STR_REPLACE_MONORAIL_VEHICLES                                   :Lokomotíva pre jednokoľajku
@@ -4377,7 +4377,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Automobily
 STR_REPLACE_TRAM_VEHICLES                                       :Električky
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstránenie vagónu ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zachovanie pôvodnej dĺžky vlaku, odstránením vagónov (odpredu), keď by funkcia automatickej zmeny rušňa vlak predĺžila
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Zachovanie pôvodnej dĺžky vlaku, odstránením vagónov (odpredu), keď by funkcia automatickej zmeny rušňa vlak predĺžila
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+klik aplikuje aj na podskupiny
 
 # Vehicle view

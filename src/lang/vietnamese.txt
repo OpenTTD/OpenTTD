@@ -4339,31 +4339,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Xe cộ
 STR_REPLACE_VEHICLE_SHIP                                        :Tàu thủy
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Máy bay
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Lựa chọn đầu máy để thay thế
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Lựa chọn đầu máy mới để thay thế đầu máy đã chọn
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Lựa chọn đầu máy để thay thế
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Lựa chọn đầu máy mới để thay thế đầu máy đã chọn
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Bắt đầu thay thế
 STR_REPLACE_VEHICLES_NOW                                        :Thay thế ngay tất cả các phương tiện
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Chỉ thay thế các phương tiện cũ
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Bấm để bắt đầu thay thế đầu máy đã chọn bởi loại mới chọn
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Bấm để bắt đầu thay thế đầu máy đã chọn bởi loại mới chọn
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Không thay thế
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Chưa chọn đầu máy
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} khi đã cũ
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Ngừng thay thế phương tiện
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Bấm để ngừng việc thay thế kiểu đầu máy đã chọn
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Bấm để ngừng việc thay thế kiểu đầu máy đã chọn
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Chuyển qua lại cửa sổ thay thế đầu máy và toa xe
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Chuyển qua lại cửa sổ thay thế đầu máy và toa xe
 STR_REPLACE_ENGINES                                             :Đầu máy
 STR_REPLACE_WAGONS                                              :Toa xe
 STR_REPLACE_ALL_RAILTYPE                                        :Tất cả toa xe đầu máy
 STR_REPLACE_ALL_ROADTYPE                                        :Tất cả các xe
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Chọn kiểu đường ray bạn muốn thay thế
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Chọn loại đường bạn muốn thay đổi động cơ xe
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Chọn kiểu đường ray bạn muốn thay thế
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Chọn loại đường bạn muốn thay đổi động cơ xe
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hiện thị đầu máy nào đang được thay thế, nếu có
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Hiện thị đầu máy nào đang được thay thế, nếu có
 STR_REPLACE_RAIL_VEHICLES                                       :Đầu máy/toa tàu hoả
 STR_REPLACE_ELRAIL_VEHICLES                                     :Đầu máy/toa xe điện
 STR_REPLACE_MONORAIL_VEHICLES                                   :Đầu máy ray đơn
@@ -4373,7 +4373,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Xe Cộ
 STR_REPLACE_TRAM_VEHICLES                                       :Các xe điện
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Xoá bỏ toa xe ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Tự động thay thế sẽ giữ nguyên độ dài đoàn tàu bằng cách bỏ bớt toa xe (bỏ từ phía đầu), nếu như việc thay thế đầu máy làm đoàn tàu dài hơn.
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Tự động thay thế sẽ giữ nguyên độ dài đoàn tàu bằng cách bỏ bớt toa xe (bỏ từ phía đầu), nếu như việc thay thế đầu máy làm đoàn tàu dài hơn.
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Click để áp dụng cho nhóm con
 
 # Vehicle view

@@ -4350,31 +4350,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Autotransporta 
 STR_REPLACE_VEHICLE_SHIP                                        :Kuģis
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lidaparāts
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izvēlēties lokomotīves veidu, kuru vēlaties mainīt
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izvēlēties jaunu lokomotīves veidu, kuru vēlaties lietot kreisajā pusē atlasītās lokomotīves vietā
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Izvēlēties lokomotīves veidu, kuru vēlaties mainīt
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Izvēlēties jaunu lokomotīves veidu, kuru vēlaties lietot kreisajā pusē atlasītās lokomotīves vietā
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Sākt transportlīdzekļu nomaiņu
 STR_REPLACE_VEHICLES_NOW                                        :Nomainīt visus transportlīdzekļus
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Nomainīt tikai vecos transportlīdzekļus
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Nospiest, lai sāktu kreisajā pusē atlasītās lokomotīves aizstāšanu ar labajā pusē atlasīto lokomotīvi
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Nospiest, lai sāktu kreisajā pusē atlasītās lokomotīves aizstāšanu ar labajā pusē atlasīto lokomotīvi
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Netiks nomainīts
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nav atlasītu transportlīdzekļu
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kad vecs
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Pārtraukt transportlīdzekļu nomaiņu
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nospiest, lai apturētu kreisajā pusē atlasītās lokomotīves aizstāšanu
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Nospiest, lai apturētu kreisajā pusē atlasītās lokomotīves aizstāšanu
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Parslēgties starp lokomotīves un vagona aizstāšanas logiem
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Parslēgties starp lokomotīves un vagona aizstāšanas logiem
 STR_REPLACE_ENGINES                                             :Lokomotīves
 STR_REPLACE_WAGONS                                              :Vagoni
 STR_REPLACE_ALL_RAILTYPE                                        :Visi dzelzceļa transporta līdzekļi
 STR_REPLACE_ALL_ROADTYPE                                        :Visi ceļa transportlīdzekļi
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Izvēlēties sliežu veidu, kuram vēlaties nomainīt lokomotīves
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Izvēlēties ceļu veidu, kuram vēlaties nomainīt dzinējus
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Izvēlēties sliežu veidu, kuram vēlaties nomainīt lokomotīves
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Izvēlēties ceļu veidu, kuram vēlaties nomainīt dzinējus
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Parāda kura lokomotīve no kreisajā pusē atlasītajām tiek nomainīta, ja vien kāda ir
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Parāda kura lokomotīve no kreisajā pusē atlasītajām tiek nomainīta, ja vien kāda ir
 STR_REPLACE_RAIL_VEHICLES                                       :Sliežu transportlīdzekļi
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrificētā dzelzceļa transportlīdzekļi
 STR_REPLACE_MONORAIL_VEHICLES                                   :Viensliedes transportlīdzekļi
@@ -4384,7 +4384,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Autotransporta 
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvaji
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagona noņemšana ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automātiskā aizvietošana saglabās esošo vilciena garumu noņemot vagonus (sākot no priekšgala), ja mainot lokomotīvi tas kļūtu garāks
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Automātiskā aizvietošana saglabās esošo vilciena garumu noņemot vagonus (sākot no priekšgala), ja mainot lokomotīvi tas kļūtu garāks
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Klikšķiniet Ctrl+Click lai iestatītu arī apakšgrupas
 
 # Vehicle view

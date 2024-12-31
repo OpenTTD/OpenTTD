@@ -4339,31 +4339,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :車輛
 STR_REPLACE_VEHICLE_SHIP                                        :船舶
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :飛機
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}選擇要替換的車頭種類
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}選擇您想替換左方選定車頭的新車頭種類
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}選擇要替換的車頭種類
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}選擇您想替換左方選定車頭的新車頭種類
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}開始替換車輛
 STR_REPLACE_VEHICLES_NOW                                        :立刻替換所有車輛
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :僅替換老舊的車輛
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}按下之後就會開始將左方選定的車頭替換成右方指定的車頭
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}按下之後就會開始將左方選定的車頭替換成右方指定的車頭
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}不替換
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}未選擇任何車輛
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} 老舊時
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}停止替換車輛
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}按下之後會停止替換左方指定的車頭
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}按下之後會停止替換左方指定的車頭
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}在車頭及車廂替換畫面間切換。
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}在車頭及車廂替換畫面間切換。
 STR_REPLACE_ENGINES                                             :車頭
 STR_REPLACE_WAGONS                                              :車廂
 STR_REPLACE_ALL_RAILTYPE                                        :所有鐵路車輛
 STR_REPLACE_ALL_ROADTYPE                                        :所有公路車輛
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}選擇您要替換機車頭的軌道種類
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}選擇您要替換車輛的道路類型
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}選擇您要替換機車頭的軌道種類
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}選擇您要替換車輛的道路類型
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}顯示左方的車頭要替換成哪種車頭
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}顯示左方的車頭要替換成哪種車頭
 STR_REPLACE_RAIL_VEHICLES                                       :列車
 STR_REPLACE_ELRAIL_VEHICLES                                     :電氣化列車
 STR_REPLACE_MONORAIL_VEHICLES                                   :單軌列車
@@ -4373,7 +4373,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :車輛
 STR_REPLACE_TRAM_VEHICLES                                       :電車車輛
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}移除車廂 ({STRING})：{ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}如果替換後的車廂較長的話，讓自動替換功能移除多餘的車廂 (從頭開始) 以便維持列車長度
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}如果替換後的車廂較長的話，讓自動替換功能移除多餘的車廂 (從頭開始) 以便維持列車長度
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. 按住Ctrl並點擊以套用到所有子群組
 
 # Vehicle view

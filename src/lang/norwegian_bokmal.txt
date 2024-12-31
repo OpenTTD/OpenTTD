@@ -4341,31 +4341,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Kjøretøy
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=neuter}Luftfartøy
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Velg lokomotivtype som skal erstattes
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Velg lokomotivtypen du ønsker at skal erstatte den du har valgt til venstre
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Velg lokomotivtype som skal erstattes
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Velg lokomotivtypen du ønsker at skal erstatte den du har valgt til venstre
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start erstatning av kjøretøy
 STR_REPLACE_VEHICLES_NOW                                        :Bytt ut alle kjøretøy nå
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Bytt ut bare gamle kjøretøy
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klikk denne knappen hvis du vil erstatte det valgte lokomotivet på venstresiden med det valgte lokomotivet på høyresiden
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Klikk denne knappen hvis du vil erstatte det valgte lokomotivet på venstresiden med det valgte lokomotivet på høyresiden
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Erstatter ikke
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ingen kjøretøy valgt
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} når gammel
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopp erstatning av kjøretøy
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klikk denne knappen for å stoppe erstatning av lokomotivet som er valgt på venstresiden
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Klikk denne knappen for å stoppe erstatning av lokomotivet som er valgt på venstresiden
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Veksle mellom lokomotiv- og vognerstatningsvinduene
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Veksle mellom lokomotiv- og vognerstatningsvinduene
 STR_REPLACE_ENGINES                                             :Lokomotiv
 STR_REPLACE_WAGONS                                              :Vogner
 STR_REPLACE_ALL_RAILTYPE                                        :Alt jernbanemateriell
 STR_REPLACE_ALL_ROADTYPE                                        :Alle kjøretøy
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Velg jernbanetypen du vil bytte ut lokomotiv på
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Velg veitypen du vil bytte ut kjøretøy på
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Velg jernbanetypen du vil bytte ut lokomotiv på
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Velg veitypen du vil bytte ut kjøretøy på
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Viser hvilket lokomotiv som overtar for det valgte lokomotivet på venstresiden
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Viser hvilket lokomotiv som overtar for det valgte lokomotivet på venstresiden
 STR_REPLACE_RAIL_VEHICLES                                       :Jernbanemateriell
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrisk jernbanemateriell
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail-materiell
@@ -4375,7 +4375,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Kjøretøy
 STR_REPLACE_TRAM_VEHICLES                                       :Trikkekjøretøy
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}La autoerstatningen beholde lengen på toget ved å fjerne vogner (fra første vogn), hvis utskiftningen gjør toget lengre.
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}La autoerstatningen beholde lengen på toget ved å fjerne vogner (fra første vogn), hvis utskiftningen gjør toget lengre.
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+klikk for å også gjelde undergrupper
 
 # Vehicle view

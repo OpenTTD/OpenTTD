@@ -4340,31 +4340,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=f}자동차/
 STR_REPLACE_VEHICLE_SHIP                                        :{G=m}선박
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=f}항공기
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}교체할 기관차 종류를 선택하세요
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}새로 교체될 기관차를 선택하세요
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}교체할 기관차 종류를 선택하세요
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}새로 교체될 기관차를 선택하세요
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}차량 교체 시작
 STR_REPLACE_VEHICLES_NOW                                        :모든 차량을 지금 교체
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :오래된 차량만 교체
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}왼쪽에서 선택한 기관차를 오른쪽의 새 기관차로 교체하려면 누르세요
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}왼쪽에서 선택한 기관차를 오른쪽의 새 기관차로 교체하려면 누르세요
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}교체 안 됨
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}차량이 선택되지 않았음
 STR_REPLACE_REPLACING_WHEN_OLD                                  :낡으면 {ENGINE}{G 0 "으" ""}로 교체
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}차량 교체 중지
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}왼쪽에서 선택한 기관차의 차량교체를 중지하려면 이 버튼을 누르세요
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}왼쪽에서 선택한 기관차의 차량교체를 중지하려면 이 버튼을 누르세요
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}기관차/화물차 교체 창으로 전환합니다
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}기관차/화물차 교체 창으로 전환합니다
 STR_REPLACE_ENGINES                                             :기관차
 STR_REPLACE_WAGONS                                              :화물차
 STR_REPLACE_ALL_RAILTYPE                                        :모든 철도 차량
 STR_REPLACE_ALL_ROADTYPE                                        :모든 자동차
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}교체할 기관차의 선로 종류를 고르세요
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}교체할 차량이 속한 도로 종류를 고르세요
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}교체할 기관차의 선로 종류를 고르세요
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}교체할 차량이 속한 도로 종류를 고르세요
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}왼쪽의 선택한 기관차가 어떤 기관차로 교체되고 있는지 표시합니다
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}왼쪽의 선택한 기관차가 어떤 기관차로 교체되고 있는지 표시합니다
 STR_REPLACE_RAIL_VEHICLES                                       :철도 차량
 STR_REPLACE_ELRAIL_VEHICLES                                     :전기철도 차량
 STR_REPLACE_MONORAIL_VEHICLES                                   :모노레일 차량
@@ -4374,7 +4374,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :자동차
 STR_REPLACE_TRAM_VEHICLES                                       :전차 차량
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물차 제거 ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동 교체시 열차의 길이가 교체 전보다 길어지면 객차/화차를 (앞쪽부터) 제거하여 열차의 전체 길이가 달라지지 않도록 합니다
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}자동 교체시 열차의 길이가 교체 전보다 길어지면 객차/화차를 (앞쪽부터) 제거하여 열차의 전체 길이가 달라지지 않도록 합니다
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. CTRL+클릭하면 하위 그룹에도 적용됩니다
 
 # Vehicle view

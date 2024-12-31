@@ -4344,31 +4344,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Automezzo
 STR_REPLACE_VEHICLE_SHIP                                        :Nave
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeromobile
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selezionare il tipo di locomotiva da rimpiazzare
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selezionare il nuovo modello di locomotiva che si desidera usare al posto di quello selezionato a sinistra
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Selezionare il tipo di locomotiva da rimpiazzare
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Selezionare il nuovo modello di locomotiva che si desidera usare al posto di quello selezionato a sinistra
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Inizia rimpiazzamento
 STR_REPLACE_VEHICLES_NOW                                        :Rimpiazza tutti i veicoli adesso
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Rimpiazza solo i veicoli vecchi
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Premere per iniziare il rimpiazzamento del modello di locomotiva selezionato a sinistra con quello selezionato a destra
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Premere per iniziare il rimpiazzamento del modello di locomotiva selezionato a sinistra con quello selezionato a destra
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nessun rimpiazzo
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nessun veicolo selezionato
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} una volta vecchio
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Interrompi rimpiazzamento
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Premere per interrompere il rimpiazzamento del modello di locomotiva selezionato a sinistra
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Premere per interrompere il rimpiazzamento del modello di locomotiva selezionato a sinistra
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Scambia tra loro le finestre di rimpiazzamento delle locomotive e dei vagoni
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Scambia tra loro le finestre di rimpiazzamento delle locomotive e dei vagoni
 STR_REPLACE_ENGINES                                             :Locomotive
 STR_REPLACE_WAGONS                                              :Vagoni
 STR_REPLACE_ALL_RAILTYPE                                        :Tutti i veicoli ferroviari
 STR_REPLACE_ALL_ROADTYPE                                        :Tutti i veicoli stradali
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selezionare il tipo di rotaie per il quale si desidera rimpiazzare le locomotive
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Selezionare il tipo di strada per il quale si desidera rimpiazzare i veicoli
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Selezionare il tipo di rotaie per il quale si desidera rimpiazzare le locomotive
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Selezionare il tipo di strada per il quale si desidera rimpiazzare i veicoli
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra con quale locomotiva sarà rimpiazzato il modello eventualmente selezionato a sinistra
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Mostra con quale locomotiva sarà rimpiazzato il modello eventualmente selezionato a sinistra
 STR_REPLACE_RAIL_VEHICLES                                       :Veicoli ferroviari
 STR_REPLACE_ELRAIL_VEHICLES                                     :Veicoli ferroviari elettrici
 STR_REPLACE_MONORAIL_VEHICLES                                   :Veicoli monorotaia
@@ -4378,7 +4378,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Veicoli stradal
 STR_REPLACE_TRAM_VEHICLES                                       :Veicoli tranviari
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimozione vagoni ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fa sì che il rimpiazzamento automatico mantenga costante la lunghezza dei treni rimuovendo vagoni (iniziando dalla testa) nel caso in cui la sostituzione della locomotiva rendesse il treno più lungo
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Fa sì che il rimpiazzamento automatico mantenga costante la lunghezza dei treni rimuovendo vagoni (iniziando dalla testa) nel caso in cui la sostituzione della locomotiva rendesse il treno più lungo
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Clic per applicare anche ai sotto-gruppi
 
 # Vehicle view
