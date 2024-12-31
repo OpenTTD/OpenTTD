@@ -442,6 +442,9 @@ inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 	return TileDiffXY(tidc.x, tidc.y);
 }
 
+/* Helper functions to provide explicit +=/-= operators for TileIndex and TileIndexDiff. */
+constexpr TileIndex &operator+=(TileIndex &tile, TileIndexDiff offset) { tile = tile + TileIndex(offset); return tile; }
+constexpr TileIndex &operator-=(TileIndex &tile, TileIndexDiff offset) { tile = tile - TileIndex(offset); return tile; }
 
 /**
  * Adds a given offset to a tile.

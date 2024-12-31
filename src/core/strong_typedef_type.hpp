@@ -127,8 +127,8 @@ namespace StrongType {
 			friend constexpr bool operator >=(const TType &lhs, TCompatibleType rhs) { return lhs.value >= static_cast<TBaseType>(rhs); }
 			friend constexpr bool operator >(const TType &lhs, TCompatibleType rhs) { return lhs.value > static_cast<TBaseType>(rhs); }
 
-			friend constexpr TType operator +(const TType &lhs, TCompatibleType rhs) { return { static_cast<TBaseType>(lhs.value + rhs) }; }
-			friend constexpr TType operator -(const TType &lhs, TCompatibleType rhs) { return { static_cast<TBaseType>(lhs.value - rhs) }; }
+			friend constexpr TType operator +(const TType &lhs, TCompatibleType rhs) { return TType{ static_cast<TBaseType>(lhs.value + rhs) }; }
+			friend constexpr TType operator -(const TType &lhs, TCompatibleType rhs) { return TType{ static_cast<TBaseType>(lhs.value - rhs) }; }
 		};
 	};
 
@@ -154,7 +154,7 @@ namespace StrongType {
 		constexpr Typedef(const Typedef &) = default;
 		constexpr Typedef(Typedef &&) = default;
 
-		constexpr Typedef(const TBaseType &value) : value(value) {}
+		explicit constexpr Typedef(const TBaseType &value) : value(value) {}
 
 		constexpr Typedef &operator =(const Typedef &rhs) { this->value = rhs.value; return *this; }
 		constexpr Typedef &operator =(Typedef &&rhs) { this->value = std::move(rhs.value); return *this; }
