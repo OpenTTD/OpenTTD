@@ -746,7 +746,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}ثلج
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}عرض/اخفاء اسماء المدن
-STR_SMALLMAP_CENTER                                             :{BLACK}وسط الخريطة الصغيرة على الموقع الحالي
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}وسط الخريطة الصغيرة على الموقع الحالي
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -2445,7 +2445,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}غطي �
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}اسم المدينة
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}ادخل اسم المدينة
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}اضغط هنا لادخال اسم المدينة
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}اضغط هنا لادخال اسم المدينة
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}اسم عشوائي
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}ولد اسم عشوائي جديد
 
@@ -2459,7 +2459,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}مدين
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK} المدن الكبيرة تنمو اسرع من المدن العادية.{} كلما كانت اكبر عند انشائها, بالاعتماد على الاعدادات.
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW} تصميم طرق المدينة
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK} اختر تصميم الطرق لهذه المدينة
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK} اختر تصميم الطرق لهذه المدينة
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK} اصلي
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK} طرق افضل
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK} نمط 2 * 2
@@ -2653,7 +2653,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}حفظ �
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}فتح خريطة
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}حمل خريطة مرتفعات
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}حفظ خريطة مرتفعات مصورة
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}اضغط هنا لتوجة الى دليل الحفظ/الفتح القياسي
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}اضغط هنا لتوجة الى دليل الحفظ/الفتح القياسي
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} متاح
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}قائمة بالاقراص - المجلدات - الملفات المخزنة
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}الاسم المختار حاليا لحفظ اللعبة
@@ -3057,12 +3057,12 @@ STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}التا
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}اسم المحطة - اضغط على اسم المحطة لتوسيطها في الشاشة. اضغط + كنترول لفتح شاشة عرض جديدة بمنطقة المحطة.
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}اضغط بشكل متواصل على مفتاح كنترول لاختيار اكثر من وحدة
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}اضغط بشكل متواصل على مفتاح كنترول لاختيار اكثر من وحدة
 STR_STATION_LIST_CAPTION                                        :{WHITE}محطات شركة {COMPANY} - {COMMA} محطة
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- بدون -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}اختر جميع المرافق
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}اختر جميع المرافق
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3116,7 +3116,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK} ركز شاشة العرض على نقطة العبور
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}غير اسم نقطة العبور
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK} ضع العوامة في مركز الشاشة. Ctrl+Click لفتح نافذة لموقع العوامة
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK} غير اسم العومة
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK} غير اسم العومة
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}عدل اسم نقطة العبور
 
@@ -3178,7 +3178,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}ابني
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}عرض مبنى الشركة الئيسي
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}اعرض مقر الشركة
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}اعادة بناء مقر الشركة
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}اعادة بناء مقر الشركة بمكان آخر و بتكلفة 1% من قيمة الشركة.
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}اعادة بناء مقر الشركة بمكان آخر و بتكلفة 1% من قيمة الشركة.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}التفاصيل
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}عرض تفاصيل حسابات البنية التحتية
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}أعطاء المال
@@ -3216,7 +3216,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}-بدو
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}، {STRING}، {STRING} و{NUM} اكثر...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}اسماء المصانع - اضغط على اسم المصنع لتوسيط الشاشة عليه. اضغط + كنترول لفتح شاشة عرض جديدة لمنطقة المصنع.
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}اسماء المصانع - اضغط على اسم المصنع لتوسيط الشاشة عليه. اضغط + كنترول لفتح شاشة عرض جديدة لمنطقة المصنع.
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :جميع انواع الحمولة
 STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :بدون
 

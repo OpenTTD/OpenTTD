@@ -1108,7 +1108,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Сьнег
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Паказаць/схаваць назвы гарадоў на мапе
-STR_SMALLMAP_CENTER                                             :{BLACK}Цэнтраваць мінімапу па гэтай пазыцыі
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Цэнтраваць мінімапу па гэтай пазыцыі
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3316,7 +3316,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Павя
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Назва горада:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Увядзіце назву горада
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Пстрыкніце, каб зьмяніць назву горада
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Пстрыкніце, каб зьмяніць назву горада
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Выпадковая назва
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Спарадзіць новую выпадковую назву
 
@@ -3330,7 +3330,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Мэґа
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Мэґаполісы растуць хутчэй за звычайныя гарады (мястэчкі).{}У залежнасьці ад наладак, яны большыя ўжо падчас заснаваньня.
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Сетка гарадзкіх дарогаў:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Выберыце альґарытм будаўніцтва дарогаў гэтым горадам
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Выберыце альґарытм будаўніцтва дарогаў гэтым горадам
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Арыґінальная
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Палепшаная
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Краты 2×2
@@ -3561,7 +3561,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Заха
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Загрузіць сцэнар
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Загрузіць мапу вышыняў
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Захаваць мапу вышыняў
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Націсьніце тут, каб перайсьці да вызначанага па змоўчаньні каталёга захаваньня/загрузкі
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Націсьніце тут, каб перайсьці да вызначанага па змоўчаньні каталёга захаваньня/загрузкі
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} вольна
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Сьпіс дыскаў, каталёґаў і файлаў захаваных гульняў
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Выбраная назва для захаваньня гульні
@@ -4042,12 +4042,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Няпра
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Сьпіс станцыяў: пстрычка па назьве паказвае станцыю ў асноўным вакне. Ctrl+пстрычка — у дадатковым вакне.
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Можна выбраць некалькі варыянтаў, пстрыкаючы па іх з заціснутым Ctrl
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Можна выбраць некалькі варыянтаў, пстрыкаючы па іх з заціснутым Ctrl
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} — {COMMA} станцы{P я i яў}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Няма -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Паказаць усе станцыі
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Паказаць усе станцыі
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Усе станцыі
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Некалькі тыпаў грузаў
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Няма тыпу грузу
@@ -4125,7 +4125,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Паказаць маршрутны пункт у асноўным вакне. Ctrl+клік — паказаць у дадатковым вакне.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Перайменаваць маршрутны пункт
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Паказаць буй у асноўным вакне. Ctrl+пстрычка — паказаць у дадатковым вакне.
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Зьмяніць назву буя
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Зьмяніць назву буя
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Назва маршрутнага пункта
 
@@ -4200,7 +4200,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Пабу
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Агледзець штаб
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Агледзець штаб-кватэру кампаніі
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Перамясьціць
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Перамясьціць штаб-кватэру кампаніі ў іншае месца за 1% ацэнкавага кошту капіталу кампаніі. Пры націснутым Shift — ацэнка кошту пераносу.
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Перамясьціць штаб-кватэру кампаніі ў іншае месца за 1% ацэнкавага кошту капіталу кампаніі. Пры націснутым Shift — ацэнка кошту пераносу.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Дэталi
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Паказаць дэталёвыя iнфраструктурныя падлiкi
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Перадаць грошы
@@ -4246,7 +4246,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} і яшчэ {NUM}...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Сьпіс прадпрыемстваў: пстрычка па назьве паказвае прадпрыемства ў асноўным вакне. Ctrl+клік - у дадатковым вакне.
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Сьпіс прадпрыемстваў: пстрычка па назьве паказвае прадпрыемства ў асноўным вакне. Ctrl+клік - у дадатковым вакне.
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Прыманы груз: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Выраблены груз: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Любы

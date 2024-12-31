@@ -691,7 +691,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}برف
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}نقشے پر شہروں کے ناموں کی تدویم کیجئیے
-STR_SMALLMAP_CENTER                                             :{BLACK}موجودہ جگہ پر چھوٹا نقشہ درمیان سے دیکھیں
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}موجودہ جگہ پر چھوٹا نقشہ درمیان سے دیکھیں
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
@@ -2156,7 +2156,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}شہر �
 STR_FOUND_TOWN_CITY                                             :{BLACK}شہر
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}شہر کی سڑکوں کا پھیلائو:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}اس شہر کیلئے سڑکوں کا بھیلائو منتخب کرو
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}اس شہر کیلئے سڑکوں کا بھیلائو منتخب کرو
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}اصلی
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}بہتر سڑکیں
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{G=f}{BLACK}کوئٰ سی
@@ -2359,7 +2359,7 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}غلط م�
 # Station list window
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}تمام سہولتوں کا انتخاب کرو
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}تمام سہولتوں کا انتخاب کرو
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}

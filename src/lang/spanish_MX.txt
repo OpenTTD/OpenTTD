@@ -785,7 +785,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Nieve
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostrar nombres de localidades
-STR_SMALLMAP_CENTER                                             :{BLACK}Centrar en ubicación actual
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Centrar en ubicación actual
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -2930,7 +2930,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Hacer qu
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nombre de la localidad:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Ingresar el nombre de la localidad
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Clic para ingresar el nombre de la localidad
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Clic para ingresar el nombre de la localidad
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nombre aleatorio
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generar nuevo nombre al azar
 
@@ -2944,7 +2944,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Ciudad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Las ciudades crecen más rápido que las localidades{}Según la configuración del juego, al ser creadas son más grandes
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Diseño urbano:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Elegir el diseño urbano de esta localidad
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Elegir el diseño urbano de esta localidad
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Mejorado
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Rejilla de 2×2
@@ -3175,7 +3175,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Guardar 
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Cargar mapa
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Cargar mapa de alturas
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Guardar mapa de alturas
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clic para ir a la carpeta de guardado por defecto
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Clic para ir a la carpeta de guardado por defecto
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades de almacenamiento, carpetas y partidas guardadas
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nombre elegido para la partida a guardar
@@ -3637,12 +3637,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referencia
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estaciones. Clic para centrar la vista en la estación. Ctrl+Clic abre una vista aparte
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantener pulsado Ctrl para seleccionar más de un elemento
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Mantener pulsado Ctrl para seleccionar más de un elemento
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY}: {COMMA} estaci{P ón ones}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ninguna -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Elegir todos los tipos de estación
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Elegir todos los tipos de estación
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3713,7 +3713,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar la vista en el punto de ruta. Ctrl+Clic abre una vista aparte
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambiar nombre de punto de ruta
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar la vista en la boya. Ctrl+Clic abre una vista aparte
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Cambiar nombre de boya
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambiar nombre de boya
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Cambiar nombre de punto de ruta
 
@@ -3788,7 +3788,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver sede
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver edificio de las oficinas centrales de la empresa
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Reubicar sede
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reubicar la sede de la empresa pagando el 1% del valor total de la empresa. Mayús+Clic muestra un costo estimado de reubicación
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Reubicar la sede de la empresa pagando el 1% del valor total de la empresa. Mayús+Clic muestra un costo estimado de reubicación
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalles
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver informe detallado de infraestructura
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Transferir capital
@@ -3834,7 +3834,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} y {NUM} más...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nombres de industrias. Clic para centrar la vista en la industria. Ctrl+Clic abre una vista aparte
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Nombres de industrias. Clic para centrar la vista en la industria. Ctrl+Clic abre una vista aparte
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Carga aceptada: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Carga producida: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Todos los tipos

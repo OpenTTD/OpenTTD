@@ -724,7 +724,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Snø
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Skru av/på bynamn på kartet
-STR_SMALLMAP_CENTER                                             :{BLACK}Midtstill oversiktskartet på den gjeldande posisjonen
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Midtstill oversiktskartet på den gjeldande posisjonen
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -2475,7 +2475,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dekk kar
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Bynamn:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Skriv inn bynamn
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klikk for å skriva inn namn på byen
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Klikk for å skriva inn namn på byen
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Tilfeldig namn
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generer eit nytt tilfeldig namn
 
@@ -2489,7 +2489,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}By
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storbyar veks raskare enn vanlege byar{}Instillingane avgjer om dei er større når dei vert grunnlagt
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Byars vegløysing:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Vel vegløysing nytta for denne byen
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Vel vegløysing nytta for denne byen
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Orginal
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Betre vegar
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 rutenett
@@ -2664,7 +2664,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Lagre sc
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Last inn scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Last inn høgdekart
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Lagre høgdekart
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikk her for å kome til standardmappa for lagring og innlasting
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Klikk her for å kome til standardmappa for lagring og innlasting
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ledig
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste over diskar, mapper og lagra spel
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Gjeldande namn for vald lagra spel
@@ -3067,12 +3067,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Ugyldig m�
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stasjonsnamn - Klikk på namnet for å syne stasjonen i hovedvisninga. CTRL+klikk syner stasjonen i eit tilleggsvindauge
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hald inne CTRL for å velje fleire
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Hald inne CTRL for å velje fleire
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stasjon{P "" ar}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ingen -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Vel alle anlegga
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Vel alle anlegga
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3141,7 +3141,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Midtstill hovedvisninga på kontrollpunktet. CTRL+klikk syner kontrollpunktet i eit nytt tilleggsvindauge
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Byt namn på kontrollpunkt
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Midtstill hovedvisninga på bøyen. CTRL+klikk syner bøyen i eit nytt tilleggsvindauge
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Byt namn på bøyen
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Byt namn på bøyen
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Endre namn på kontrollpunkt
 
@@ -3202,7 +3202,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg fir
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Syne hovudkontor
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Syne firmaets hovudkontor
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Omplasser hovudkvarter
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Flytt hovudkontoret til firmaet, til ein kostnad av 1{NBSP}% av firmaverdien. Shift+klikk viser prisoverslag utan å flytte hovudkontoret.
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Flytt hovudkontoret til firmaet, til ein kostnad av 1{NBSP}% av firmaverdien. Shift+klikk viser prisoverslag utan å flytte hovudkontoret.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaljar
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Vis detaljert infrastrukturteljing
 
@@ -3239,7 +3239,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportert){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - Klikk på namnet for å syne industrien i hovedvisninga. CTRL+klikk syner industrien i eit tilleggsvindauge
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Industrinamn - Klikk på namnet for å syne industrien i hovedvisninga. CTRL+klikk syner industrien i eit tilleggsvindauge
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}

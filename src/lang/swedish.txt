@@ -801,7 +801,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Snö
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Slå på/av visning av stadsnamn
-STR_SMALLMAP_CENTER                                             :{BLACK}Centrera minikartan på den nuvarande positionen
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Centrera minikartan på den nuvarande positionen
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3041,7 +3041,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Gör så
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Stadsnamn:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Skriv in stadsnamn
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klicka för att skriva in stadsnamn
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Klicka för att skriva in stadsnamn
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Slumpmässigt namn
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generera nytt slumpmässigt namn
 
@@ -3055,7 +3055,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storstäder växer snabbare än vanliga städer{}Beroende på inställningarna så är de större när de grundas
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Utformning av stadens vägnät:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Välj vägnätets utformning för denna stad
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Välj vägnätets utformning för denna stad
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Bättre vägar
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 rutnät
@@ -3289,7 +3289,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Öppna s
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Läs höjdkarta
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Spara höjdkarta
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Läs in stadsdata
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klicka här för att gå till standardkatalogen för spara/ladda
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Klicka här för att gå till standardkatalogen för spara/ladda
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ledigt
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Listar enheter, kataloger och sparade spel
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Valt namn för spelet
@@ -3784,12 +3784,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Ogiltig m�
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamn - klicka på ett namn för att centrera huvudvyn på stationen. Ctrl+Klick för att öppna en ny fönstervy över stationens läge
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+Klick för att markera flera objekt
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Ctrl+Klick för att markera flera objekt
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P "" er}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Inga -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Markera alla inrättningar
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Markera alla inrättningar
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Alla godstyper och ingen värdering
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Flera godstyper
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Inga godstyper
@@ -3867,7 +3867,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrera huvudvyn på riktmärket. Ctrl+Klick för att öppna en ny fönstervy över riktmärkets läge
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Byt namn på riktmärke
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera huvudvyn på bojen. Ctrl+Klick för att öppna en ny skärmvy över bojens läge
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Ändra namn på boj
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ändra namn på boj
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ändra namn på riktmärke
 
@@ -3943,7 +3943,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg fö
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Visa högkvarter
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vy av företagets huvudkontor
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytta högkvarter
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Flytta högkvarter till annan plats för 1% av företagets värde. Håll även in Shift för att endast visa uppskattad kostnad
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Flytta högkvarter till annan plats för 1% av företagets värde. Håll även in Shift för att endast visa uppskattad kostnad
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaljer
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Visa detaljerat antal infrastruktur-element
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Ge pengar
@@ -3990,7 +3990,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} och {NUM} till...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - klicka på namnet för att centrera huvudvyn över industrin. Ctrl+Klick för att öppna en ny fönstervy över industrins läge
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Industrinamn - klicka på namnet för att centrera huvudvyn över industrin. Ctrl+Klick för att öppna en ny fönstervy över industrins läge
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Accepterat gods: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Producerat fraktgods: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Alla godstyper

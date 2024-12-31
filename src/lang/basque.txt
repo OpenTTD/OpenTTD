@@ -709,7 +709,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Elurra
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Aukeratu hirien izenak on/off mapan
-STR_SMALLMAP_CENTER                                             :{BLACK}Mapa txikia orain zauden posizioan zentratu
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Mapa txikia orain zauden posizioan zentratu
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -2450,7 +2450,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Mapa aus
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Herriaren izena:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Herriaren izena sartu
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klikatu izena emateko
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Klikatu izena emateko
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Ausazko izena
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Auszko izen berria sortu
 
@@ -2464,7 +2464,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Hiria
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Hiriak herriak baino azkarrago hazten dira{}Ezarpenen arabera sortzerakoan handiagoak izan daitezke
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Herri errepideen diseinua:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Herriaren errepide diseinua aukeratu
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Herriaren errepide diseinua aukeratu
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Jatorrizkoa
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Errepideen hobekuntza
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 errepideak
@@ -2640,7 +2640,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Eszenato
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Eszenatokia kargatu
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Garaiera mapa kargatu
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Garaiera mapa gorde
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hemen klikatu gorde/kargatu direktoriora joateko
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Hemen klikatu gorde/kargatu direktoriora joateko
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libre
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Driver, direktorio eta gordetako joko artxiboen zerrenda
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Jokoa gordetzeko aukeratutako izena
@@ -3035,12 +3035,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Helburu er
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Geltokien izenak - Klikatu geltokiaren izenean ikuspegi nagusia geltokian zentratzeko. Ktrl+Klik Ikuspegi lehio berria irekiko du geltokiaren kokapenean
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantendu Ktrl geltoki bat baino gehiago aukeratzeko
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Mantendu Ktrl geltoki bat baino gehiago aukeratzeko
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Geltoki
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ezer ez -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Ibilgailu mota guztiak aukeratu
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Ibilgailu mota guztiak aukeratu
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3108,7 +3108,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Ikuspegi nagusia bidepuntuan kokatu. Ktrl+Klik Ikuspegi lehio berria irekiko du bidepuntuaren kokapenerakin
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Bidepuntuaren izena aldatu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Ikuspegi nagusia buian kokatu. ktrl+Klik Ikuspegi lehio berria irekiko du buiaren kokapenarekin
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Buiaren izena aldatu
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Buiaren izena aldatu
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Bidepuntuaren izena aldatu
 
@@ -3167,7 +3167,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Konpaini
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Konpainiaren egoitza ikusi
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Konpainiaren egoitza ikusi
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Konpainiaren egoitza birkokatu
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Konpainiaren egoitza birkokatu, konpainiaren balioaren %1 gatik. Shift+klik gutxi gora beherako kostea erakutsi
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Konpainiaren egoitza birkokatu, konpainiaren balioaren %1 gatik. Shift+klik gutxi gora beherako kostea erakutsi
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Xehetasunak
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Azpiegitura kantitateak xehetasunez ikusi
 
@@ -3199,7 +3199,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aireport
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ezer ez -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industria izenak - Klikatu izenean ikuspegi nagusia industrian kokatzeko. Ktrl+Klik ikuspegi lehio berri bat irekitzen du industriaren kokapenarekin
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Industria izenak - Klikatu izenean ikuspegi nagusia industrian kokatzeko. Ktrl+Klik ikuspegi lehio berri bat irekitzen du industriaren kokapenarekin
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}

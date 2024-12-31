@@ -802,7 +802,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}눈
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}도시 이름을 표시하거나 숨깁니다
-STR_SMALLMAP_CENTER                                             :{BLACK}소형지도 내부창의 위치를 현재 게임 화면 위치로 이동시킵니다.
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}소형지도 내부창의 위치를 현재 게임 화면 위치로 이동시킵니다.
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3042,7 +3042,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}모든 �
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}도시 이름:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}도시 이름 입력
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}도시 이름을 입력하려면 클릭하세요
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}도시 이름을 입력하려면 클릭하세요
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}무작위 이름
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}무작위 이름 생성
 
@@ -3056,7 +3056,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}대도�
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}대도시는 도시보다 빠르게 성장합니다.{}도시를 만들었을 때, 위 설정에 따라 더욱 커집니다
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}도시 도로 설계:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}이 도시에 사용할 도로 설계를 선택합니다
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}이 도시에 사용할 도로 설계를 선택합니다
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}오리지널
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}개선된 도로
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 칸
@@ -3290,7 +3290,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}시나�
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}높이맵 불러오기
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}높이맵 저장
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}도시 데이터 불러오기
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}기본 저장/불러오기 폴더로 이동하려면 여기를 클릭하세요
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}기본 저장/불러오기 폴더로 이동하려면 여기를 클릭하세요
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 남음
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}드라이브, 폴더, 저장된 게임 파일의 목록입니다
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}현재 입력된 게임 저장 파일의 이름입니다
@@ -3785,12 +3785,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}잘못된 
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}역 이름 - 이 역의 위치로 시점을 변경하려면 클릭하세요. CTRL+클릭하면 이 역 위치를 기준으로 새로운 외부 화면을 엽니다
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}하나 이상의 항목을 동시에 선택하려면 CTRL+클릭하세요
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}하나 이상의 항목을 동시에 선택하려면 CTRL+클릭하세요
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}개 역사
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 없음 -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}모든 시설을 선택합니다.
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}모든 시설을 선택합니다.
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :모든 화물
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :여러 개의 화물
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :등급 없는 화물
@@ -3868,7 +3868,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}이 경유지의 위치로 시점을 변경합니다. CTRL+클릭하면 이 경유지 위치를 기준으로 새로운 외부 화면을 엽니다
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}이 경유지의 이름을 변경합니다
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 부표의 위치로 이동합니다. CTRL+클릭하면 이 부표 위치를 기준으로 새로운 외부 화면을 엽니다
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}부표 이름 바꾸기
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}부표 이름 바꾸기
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}경유지 이름 설정
 
@@ -3944,7 +3944,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}회사 �
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}본사 보기
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}회사 본사 위치로 이동합니다
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}본사 위치 변경
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}회사가치의 1% 가격을 들여 본사를 다른 위치로 옮깁니다. SHIFT+클릭을 사용하면 예상 비용을 볼 수 있습니다
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}회사가치의 1% 가격을 들여 본사를 다른 위치로 옮깁니다. SHIFT+클릭을 사용하면 예상 비용을 볼 수 있습니다
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}상세정보
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}기반시설 상세정보 창을 엽니다
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}돈 보내기
@@ -3991,7 +3991,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} 및 {NUM}종의 화물
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}산업시설 이름 - 산업시설로 이동하려면 이름을 클릭하세요. CTRL+클릭하면 이 산업시설의 위치를 기준으로 새로운 외부 화면을 엽니다
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}산업시설 이름 - 산업시설로 이동하려면 이름을 클릭하세요. CTRL+클릭하면 이 산업시설의 위치를 기준으로 새로운 외부 화면을 엽니다
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}받는 화물: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}생산 화물: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :모든 화물

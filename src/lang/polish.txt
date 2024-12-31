@@ -1181,7 +1181,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Śnieg
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Przełącz wyświetlanie nazw miast
-STR_SMALLMAP_CENTER                                             :{BLACK}Wyśrodkuj mapę na aktualnej lokalizacji
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Wyśrodkuj mapę na aktualnej lokalizacji
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3421,7 +3421,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Zwiększ
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nazwa miasta:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Wpisz nazwę miasta
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Kliknij by wprowadzić nazwę miasta
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Kliknij by wprowadzić nazwę miasta
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Losowa nazwa
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Wygeneruj nową losową nazwę
 
@@ -3435,7 +3435,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Metropol
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Metropolie rozwijają się szybciej od zwykłych miast{}W zależności od ustawień, są one większe przy zakładaniu
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Układ dróg miasta:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Wybierz układ dróg dla tego miasta
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Wybierz układ dróg dla tego miasta
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Oryginalnie
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Lepsze drogi
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Siatka 2x2
@@ -3669,7 +3669,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Wczytaj 
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Wczytaj Mapę Wysokości
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Zapisz mapę wysokości
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Wczytaj Dane o Miastach
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknij tutaj, aby przejść do domyślnego katalogu zapisów
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Kliknij tutaj, aby przejść do domyślnego katalogu zapisów
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} wolnego miejsca
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista napędów, katalogów i zapisanych gier
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Obecnie wybrana nazwa dla zapisywanej gry
@@ -4164,12 +4164,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Niepoprawn
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nazwy stacji - kliknij na nazwę, aby wyśrodkować na niej widok główny. Użyj Ctrl, aby otworzyć nowy podgląd na lokalizację stacji
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Kliknij z użyciem Ctrl, aby zaznaczyć więcej niż jedną opcję
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Kliknij z użyciem Ctrl, aby zaznaczyć więcej niż jedną opcję
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nic -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Zaznacz wszystkie typy stacji
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Zaznacz wszystkie typy stacji
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Wszystkie typy ładunków lub bez ocen
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Wiele typów ładunku
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Brak typów ładunku
@@ -4247,7 +4247,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Wyśrodkuj widok główny na lokalizacji posterunku. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmień nazwę posterunku
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Wyśrodkuj widok główny na lokalizacji boi. Użyj Ctrl, aby otworzyć nowy podgląd na jej lokalizację
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Zmień nazwę boi
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Zmień nazwę boi
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę posterunku
 
@@ -4323,7 +4323,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Zbuduj s
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Zobacz Siedzibę
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Zobacz siedzibę firmy
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Przenieś Siedzibę
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Zbuduj siedzibę główną w innym miejscu za cenę 1% wartości firmy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Zbuduj siedzibę główną w innym miejscu za cenę 1% wartości firmy. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Szczegóły
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Zobacz szczegółowe wartości infrastruktury
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Przekaż pieniądze
@@ -4370,7 +4370,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} i {NUM} więcej...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nazwy przedsiębiorstw - kliknij na nazwę przedsiębiorstwa, aby wyśrodkować na nim widok główny. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Nazwy przedsiębiorstw - kliknij na nazwę przedsiębiorstwa, aby wyśrodkować na nim widok główny. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Akceptowany ładunek: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produkowany ładunek: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Wszystkie typy ładunków

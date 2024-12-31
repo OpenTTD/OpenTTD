@@ -796,7 +796,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Eira
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Toglu dangos enwau trefi
-STR_SMALLMAP_CENTER                                             :{BLACK}Canoli'r map bach ar y lleoliad presennol
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Canoli'r map bach ar y lleoliad presennol
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3026,7 +3026,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Gwneud i
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Enw tref:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Rhowch enw'r dref
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Cliciwch i fewnbynnu enw'r dref
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Cliciwch i fewnbynnu enw'r dref
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Enw ar hap
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Cynhyrchu enw newydd ar hap
 
@@ -3040,7 +3040,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Dinas
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Mae dinasoedd yn tyfu'n gynt na threfi arferol{}Yn dibynnu ar y gosodiadau, maent hefyd yn fwy pan gânt eu sefydlu
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Cynllun ffyrdd tref
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Dewiswch y cynllun ffyrdd i'w ddefnyddio ar gyfer y dref hon
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Dewiswch y cynllun ffyrdd i'w ddefnyddio ar gyfer y dref hon
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Gwreiddiol
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Gwell ffyrdd
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Grid 2x2
@@ -3273,7 +3273,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Cadw Sen
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Llwytho Senario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Llwytho Heightmap
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Cadw Siart Uchder
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Cliciwch yma i newid i'r cyfeiriadur cadw/llwytho diofyn cyfredol
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Cliciwch yma i newid i'r cyfeiriadur cadw/llwytho diofyn cyfredol
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} yn rhydd
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Rhestr o yriannau, cyfeiriaduron ffeiliau gemau wedi'i cadw
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Enw sydd wedi'i dewis ar gyfer gêm wedi'i chadw
@@ -3762,12 +3762,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Cyfeiriad 
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Enwau gorsafoedd - cliciwch ar enw i ganoli'r brif olygfa ar yr orsaf. Ctrl+Clic i agor ffenest golwg newydd ar leoliad yr orsaf
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+Clic i ddewis mwy nag un eitem
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Ctrl+Clic i ddewis mwy nag un eitem
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Gorsaf
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Dim -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Dewis pob cyfleuster
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Dewis pob cyfleuster
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Bob math cargo a dim graddfa
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Mathau cargo lluosog
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Dim mathau cargo
@@ -3845,7 +3845,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Canoli'r brif olygfa ar leoliad y pwynt llwybro. Ctrl+Clic i agor ffenest olygfa newydd ar leoliad y pwynt llwybro
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Newid enw pwynt llwybro
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Canoli'r brif olygfa ar leoliad y bwï. Ctrl+Clic i agor ffenestr olygfa newydd ar leoliad y bwï
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Newid enw bwï
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Newid enw bwï
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Golygu enw pwynt llwybro
 
@@ -3920,7 +3920,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Adeiladu
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Gweld pencadlys cwmni
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Gweld pencadlys y cwmni
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Ail-leoli pencadlys cwmni
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ailadeiladu pencadlys cwmni mewn man arall am 1% o werth y cwmni. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Ailadeiladu pencadlys cwmni mewn man arall am 1% o werth y cwmni. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Manylion
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Gweld cyfansymau tanadeiledd manwl
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Rhoi arian
@@ -3967,7 +3967,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} a {NUM} mwy...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Enwau diwydiannau - cliciwch ar enw i ganoli'r sgrin ar ddiwydiant. Ctrl+Clic i agor ffenest golwg newydd ar leoliad y diwydiant
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Enwau diwydiannau - cliciwch ar enw i ganoli'r sgrin ar ddiwydiant. Ctrl+Clic i agor ffenest golwg newydd ar leoliad y diwydiant
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Llwythi a dderbynir: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Cargo a gynhyrchir: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Pob math o lwyth

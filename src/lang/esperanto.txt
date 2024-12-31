@@ -867,7 +867,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Neĝo
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Vidu aŭ ne vidu urbonomojn sur la mapo
-STR_SMALLMAP_CENTER                                             :{BLACK}Centrigi la mapeton al la nuna loko
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Centrigi la mapeton al la nuna loko
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -2947,7 +2947,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Ĉiuj ur
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Urbnomo:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Enigu urbnomon
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klaku por enigi urbnomon
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Klaku por enigi urbnomon
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Hazarda nomo
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Kreu hazardan novan urbnomon
 
@@ -2961,7 +2961,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Urbo
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Urbegoj kreskas pli rapide ol kutimaj urboj{}Depende de agordoj, ili pli grandas je fondiĝo
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Urba strataranĝo:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Selektu strataranĝon uzendan por ĉi tiu urbo
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Selektu strataranĝon uzendan por ĉi tiu urbo
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originale
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Pli bonaj stratoj
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 krado
@@ -3191,7 +3191,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Konservu
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Ŝarĝu Scenaron
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Ŝarĝu Altecmapon
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Konservu altecmapon
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klaku ĉi tie por salti al la nuna defaŭlta konserva dosierujo
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Klaku ĉi tie por salti al la nuna defaŭlta konserva dosierujo
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libera{P "" j}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Listo da diskoj, dosierujoj kaj luddosieroj
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nune elektita nomo por luddosiero
@@ -3630,12 +3630,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Malvalida 
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stacionomoj - klaku nomon por centri vidpunkto ĉe la stacio. Ctrl+Klak por malfermi novan vidujon ĉe la stacioloko
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tenu Ctrl-klavon por elekti plurajn erojn
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Tenu Ctrl-klavon por elekti plurajn erojn
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stacio{P "" j}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Neniu -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Elektu ĉiujn konstruaĵojn
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Elektu ĉiujn konstruaĵojn
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Neniaj ŝarĝoj
 STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Sen ŝarĝotakso
 
@@ -3706,7 +3706,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centri ĉefvidon ĉe la vojpunkto. Stir+Klak por malfermi novan vidujon ĉe la loko.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ŝanĝi nomon de vojpunkto.
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centri ĉefvidon ĉe la buo. Ctrl+Klak por malfermi novan vidujon ĉe la bua loko.
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Ŝanĝi nomon de la buo.
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ŝanĝi nomon de la buo.
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ŝanĝu vojpunktonomon
 
@@ -3783,7 +3783,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Konstrui
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vidu HQ
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Rigardi kompanian administraciejon
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Relokigu HQ
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rekonstruu kompanian ĉefkonstruaĵon aliloke por 1% de kompanivaloro. Tenu maljuskliga klavo + Klak por (kost)taksi sen rekonstrui ĉefkonstruaĵon
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Rekonstruu kompanian ĉefkonstruaĵon aliloke por 1% de kompanivaloro. Tenu maljuskliga klavo + Klak por (kost)taksi sen rekonstrui ĉefkonstruaĵon
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaloj
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Vidu detalajn nombrojn de infrastruktureroj
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Donu monon
@@ -3827,7 +3827,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} kaj {NUM} pliaj...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrionomoj - klaku nomon por centri vidon ĉe la industrio. Ctrl+Klak por malfermi novan vidujon ĉe la loko
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Industrionomoj - klaku nomon por centri vidon ĉe la industrio. Ctrl+Klak por malfermi novan vidujon ĉe la loko
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Ŝarĝo akceptata: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produktata kargo: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Ĉiaj ŝarĝoj

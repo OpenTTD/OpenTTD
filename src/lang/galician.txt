@@ -802,7 +802,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Neve
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Amosar/ocultar nomes das vilas no mapa
-STR_SMALLMAP_CENTER                                             :{BLACK}Centrar o minimapa na posición actual
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Centrar o minimapa na posición actual
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3042,7 +3042,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Facer qu
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nome da poboación:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Escribe o nome da poboación
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Pincha para introducir o nome da cidade
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Pincha para introducir o nome da cidade
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nome aleatorio
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Xerar novo nome aleatoriamente
 
@@ -3056,7 +3056,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Cidade
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}As cidades crecen máis rápido que os pobos{}Segundo a configuración, son máis grandes cando se fundan
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposición das estradas das poboacións:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Selecciona a disposición das estradas para esta poboación
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Selecciona a disposición das estradas para esta poboación
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Orixinal
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Mellores estradas
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Grella 2x2
@@ -3290,7 +3290,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Cargar e
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Cargar mapa de alturas
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Gravar mapa de alturas
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Cargar datos das vilas
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pincha aquí para ir ao directorio por defecto actual para gravar/cargar
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Pincha aquí para ir ao directorio por defecto actual para gravar/cargar
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libre{P "" s}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, directorios e arquivos de partida
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nome seleccionado actualmente para partidas gravadas
@@ -3785,12 +3785,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referencia
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomes das estacións - pincha nun nome para centrar a vista na estación. Ctrl+Clic abre unha nova fiestra na localización da estación
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+Clic para seleccionar múltiples ítems
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Ctrl+Clic para seleccionar múltiples ítems
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estación{P "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ningunha -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar tódolos edificios
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Seleccionar tódolos edificios
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Todos os tipos de carga e sen calificación
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Múltiples tipos de carga
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Ningún tipo de carga
@@ -3868,7 +3868,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra a vista principal na localización do punto de ruta. Ctrl+Clic abre unha nova ventá na localización do punto de ruta
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambiar o nome do punto de ruta
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar a vista principal na localización da boia. Ctrl+Clic abre unha nova ventá na localización da boia
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Cambiar o nome da boia
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambiar o nome da boia
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar o nome do punto de ruta
 
@@ -3944,7 +3944,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Constru�
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver sede
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver a sede da compañía
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Reposicionar sede
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Recontruír a sede da compañía en calquera outro lugar cun custo do 1% do valor da compañía. Tamén podes premer Shift para amosar unha estimación do custo
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Recontruír a sede da compañía en calquera outro lugar cun custo do 1% do valor da compañía. Tamén podes premer Shift para amosar unha estimación do custo
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalles
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver contas detalladas de infraestrutura
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dar cartos
@@ -3991,7 +3991,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} e {NUM} máis...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomes das industrias - pincha nun nome para centrar a vista nela. Ctrl+Click abre una nova fiestra na localización da industria
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Nomes das industrias - pincha nun nome para centrar a vista nela. Ctrl+Click abre una nova fiestra na localización da industria
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Carga aceptada: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Carga producida: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Tódolos tipos de carga

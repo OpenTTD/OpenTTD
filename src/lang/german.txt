@@ -799,7 +799,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Schnee
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Städtenamen anzeigen ein/aus
-STR_SMALLMAP_CENTER                                             :{BLACK}Zusatzansicht zur aktuellen Position scrollen
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Zusatzansicht zur aktuellen Position scrollen
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3031,7 +3031,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Lässt a
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Stadtname
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Stadtnamen eingeben
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klicken, um einen Stadtnamen einzugeben
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Klicken, um einen Stadtnamen einzugeben
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Zufälliger Name
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Zufälligen neuen Namen erzeugen
 
@@ -3045,7 +3045,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Großsta
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Großstädte wachsen schneller als normale Städte und sind (abhängig von den Einstellungen) bereits bei der Gründung größer
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Städtischer Straßenbauplan:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Straßenbauplan für diese Stadt auswählen
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Straßenbauplan für diese Stadt auswählen
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Bessere Straßen
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2×2-Muster
@@ -3279,7 +3279,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Szenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Reliefkarte laden
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Reliefkarte speichern
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Stadtdaten laden
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hier klicken, um zum Standardverzeichnis für Spielstände zu gehen
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Hier klicken, um zum Standardverzeichnis für Spielstände zu gehen
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} frei
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste der Laufwerke, Verzeichnisse und gespeicherten Spiele
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Ausgewählter Spielstandsname
@@ -3774,12 +3774,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Ungültige
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen – Klick auf den Namen zentriert Hauptansicht auf die Station. Mit Strg+Klick wird eine neue Zusatzansicht zentriert auf die Station geöffnet
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Strg+Klick, um mehrere Einträge auszuwählen
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Strg+Klick, um mehrere Einträge auszuwählen
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} – {COMMA} Haltestelle{P "" n}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Keine -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Alle Stationstypen auswählen
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Alle Stationstypen auswählen
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Alle Frachttypen und ohne Bewertung
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Mehrere Gütertypen
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Keine Gütertypen
@@ -3857,7 +3857,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Hauptansicht auf den Wegpunktstandort zentrieren. Mit Strg+Klick wird neue Zusatzansicht beim Wegpunktstandort geöffnet
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Namen der Wegpunkte ändern
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hauptansicht zum Bojenstandort zentrierten. Mit Strg+Klick wird eine neue Zusatzansicht beim Bojenstandort geöffnet
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Namen der Boje ändern
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Namen der Boje ändern
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namen des Wegpunkts ändern
 
@@ -3933,7 +3933,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Firmensi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Firmensitz
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Firmensitz anzeigen
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Verlegen
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Errichte Firmensitz für 1% des Firmenwertes an anderer Stelle neu. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Errichte Firmensitz für 1% des Firmenwertes an anderer Stelle neu. Außerdem Umschalt drücken, um nur einen Kostenvoranschlag anzuzeigen
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Details
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Detaillierte Informationen zur Infrastruktur dieser Firma anzeigen
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Verschenke Geld
@@ -3980,7 +3980,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} und {NUM} weitere ...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen – Klick auf den Namen zentriert Hauptansicht auf die Industrie. Mit Strg+Klick wird neue Zusatzansicht auf die Industrie geöffnet
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Industrienamen – Klick auf den Namen zentriert Hauptansicht auf die Industrie. Mit Strg+Klick wird neue Zusatzansicht auf die Industrie geöffnet
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Angenommene Fracht: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produzierte Fracht: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Alle Frachtarten

@@ -802,7 +802,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Neu
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostra/amaga el nom de les poblacions al mapa
-STR_SMALLMAP_CENTER                                             :{BLACK}Centra el minimapa a la posició actual
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Centra el minimapa a la posició actual
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3042,7 +3042,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Fes que 
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nom de la població nova:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Introdueix el nom de la població
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Clica per introduir el nom de la població
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Clica per introduir el nom de la població
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nom aleatori
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Genera un nom aleatori nou
 
@@ -3056,7 +3056,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Ciutat
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Les ciutats creixen més ràpid que els pobles{}Depenent de la configuració, són més grans quan es funden
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposició de les carreteres de la població:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Selecciona la disposició de les carreteres utilitzades per a aquesta població
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Selecciona la disposició de les carreteres utilitzades per a aquesta població
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Distribució original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Distribució millorada
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Graella 2x2
@@ -3290,7 +3290,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Carrega 
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carrega un mapa d'alçades
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Desa el mapa d'alçades
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Carrega les dades de les poblacions
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clica aquí per anar a la carpeta predeterminada de desa/carrega actual
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Clica aquí per anar a la carpeta predeterminada de desa/carrega actual
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} lliures
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Llista de dispositius de disc, carpetes i arxius de partides desades
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nom amb què es guardarà la partida actual
@@ -3785,12 +3785,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referènci
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Noms d'estació - feu clic sobre el nom per a centrar la vista principal a l'estació. Amb Ctrl+clic, s'obre una vista nova al lloc de l'estació.
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Amb Ctrl+clic, es pot seleccionar més d'un element.
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Amb Ctrl+clic, es pot seleccionar més d'un element.
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estacions/Parades
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Cap -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Selecciona totes les instal·lacions.
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Selecciona totes les instal·lacions.
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Tots els tipus de càrrega i sense rati
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Múltiples tipus de càrrega
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Cap tipus de càrrega
@@ -3868,7 +3868,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la vista principal al lloc del punt de pas. Amb Ctrl+clic, s'obre una vista al lloc del punt de pas.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Canvia el nom del punt de pas
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal en la boia. Amb Ctrl+clic, s'obre una vista centrada a la boia.
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Canvia el nom de la boia
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Canvia el nom de la boia
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita el nom del punt de pas
 
@@ -3944,7 +3944,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construe
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Veure la seu
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Veure la seu de la companyia.
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Trasllada la seu
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Trasllada la seu a un altre lloc amb el cost d'un 1{NBSP}% del valor de la companyia. Amb Maj+clic, es mostra només el cost estimat sense traslladar la seu.
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Trasllada la seu a un altre lloc amb el cost d'un 1{NBSP}% del valor de la companyia. Amb Maj+clic, es mostra només el cost estimat sense traslladar la seu.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalls
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Veure els detalls de la infraestructura de la companyia.
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dóna diners
@@ -3991,7 +3991,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING} i {STRING}.
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} i {NUM} més...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Noms de les indústries - feu clic al nom d'una indústria per a centrar-hi la vista principal. Amb Ctrl+clic, s'obre una vista nova al lloc on hi ha la indústria.
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Noms de les indústries - feu clic al nom d'una indústria per a centrar-hi la vista principal. Amb Ctrl+clic, s'obre una vista nova al lloc on hi ha la indústria.
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Càrrega acceptada: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Càrrega produïda: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Tots els tipus de càrrega

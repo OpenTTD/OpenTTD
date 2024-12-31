@@ -946,7 +946,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Снег
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Включить/выключить названия городов
-STR_SMALLMAP_CENTER                                             :{BLACK}Центрировать миникарту по этой позиции
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Центрировать миникарту по этой позиции
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3216,7 +3216,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Увел
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Название города:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Введите название города
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Щёлкните, чтобы переименовать город
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Щёлкните, чтобы переименовать город
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Случайное название
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Выбрать случайное название
 
@@ -3230,7 +3230,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Мега
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Большие города растут быстрее, чем маленькие.{}В зависимости от настроек, они при создании имеют больший размер.
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Сеть городских дорог:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Тип сети городских дорог
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Тип сети городских дорог
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Стандартная
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Улучшенная
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Решётка 2x2
@@ -3464,7 +3464,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Загр
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Загрузить карту
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Сохранить карту высот
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Загрузка параметров городов
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Переход в каталог загрузки и сохранения, установленный по умолчанию
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Переход в каталог загрузки и сохранения, установленный по умолчанию
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} свободно
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Список дисков, папок и сохранённых игр
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Выбранное название для сохранения игры
@@ -3959,12 +3959,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Невер
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Список станций. Щелчок по названию показывает станцию в основном окне. Ctrl+щелчок показывает в дополнительном окне.
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Можно выбрать несколько вариантов, щёлкая по ним с зажатым Ctrl
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Можно выбрать несколько вариантов, щёлкая по ним с зажатым Ctrl
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} станци{P я и й}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Нет -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Показать все станции
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Показать все станции
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Все станции
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Несколько видов грузов
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Нет типа груза
@@ -4042,7 +4042,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показать маршрутную точку в основном окне. Ctrl+щелчок{}NBSP- показать в дополнительном окне.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Переименовать маршрутную точку
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать буй в основном окне. Ctrl+щелчок - показать в дополнительном окне.
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Изменить название буя
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Изменить название буя
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Название маршрутной точки
 
@@ -4118,7 +4118,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Пост
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Осмотреть штаб
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Осмотреть штаб-квартиру компании
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Переместить
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Переместить штаб-квартиру компании в другое место за 1% оценочной стоимости компании. Shift+щелчок - оценка стоимости переноса.
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Переместить штаб-квартиру компании в другое место за 1% оценочной стоимости компании. Shift+щелчок - оценка стоимости переноса.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Подробности
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Посмотреть подробный состав инфраструктуры
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Передать деньги
@@ -4165,7 +4165,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} и ещё {NUM}...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Список предприятий. Щелчок по названию показывает предприятие в основном окне. Ctrl+щелчок показывает в дополнительном окне.
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Список предприятий. Щелчок по названию показывает предприятие в основном окне. Ctrl+щелчок показывает в дополнительном окне.
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Принимаемый груз: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Производимый груз: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Любой

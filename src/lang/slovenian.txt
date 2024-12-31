@@ -871,7 +871,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Sneg
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Vključi/izključi imena mest na zemljevidu
-STR_SMALLMAP_CENTER                                             :{BLACK}Centrira majhen zemljevid na trenutno lokacijo
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Centrira majhen zemljevid na trenutno lokacijo
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -2697,7 +2697,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Postavi 
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Ime mesta:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Vnesi ime mesta
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klikni in vnesi ime mesta
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Klikni in vnesi ime mesta
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Naključno ime
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Zgeneriraj novo naključno ime
 
@@ -2711,7 +2711,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Mesto
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Mesta rastejo hitreje kot navadna naselja{}Odvisno od nastavitev, so večja, ko so ustanovljena
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Oblika mestnih cest:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Izberi obliko cest za to mesto
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Izberi obliko cest za to mesto
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Boljše ceste
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 mreža
@@ -2881,7 +2881,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Shrani s
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Naloži scenarij
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Naloži višinsko karto
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Shrani višinsko karto
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikni tukaj za skok v mapo shrani/naloži
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Klikni tukaj za skok v mapo shrani/naloži
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} prosto
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Seznam pogonov, map in shranjenih iger
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Trenutno izbrano ime za shranjevanje
@@ -3290,12 +3290,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Neveljavna
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena postaj - klikni na ime za pogled na postajo. Ctrl+Klik odpre nov pogled na lokaciji postaje
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Drži Ctrl za izbor več stvari
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Drži Ctrl za izbor več stvari
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Postaj{P a i e ""}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Brez -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Izberi vse pripomočke
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Izberi vse pripomočke
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3364,7 +3364,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Osredotoči pogled na lokacijo točke poti. Ctrl+Klik odpre nov pogled na lokaciji točke poti
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Spremeni ime točke poti
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Osredotoči pogled na lokacijo boje. Ctrl+Klik odpre nov pogled na lokaciji boje
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Spremeni ime boje
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Spremeni ime boje
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Uredi ime točke poti
 
@@ -3423,7 +3423,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Zgradi s
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Poglej sedež podjetja
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Poglej sedež podjetja
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Preseli sedež
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Preseli sedež podjetja drugam za ceno 1% vrednosti podjetja. Shift+Klik prikaže predviden strošek brez selitve
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Preseli sedež podjetja drugam za ceno 1% vrednosti podjetja. Shift+Klik prikaže predviden strošek brez selitve
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Podrobnosti
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Podrobni prikaz količine infrastrukture
 
@@ -3456,7 +3456,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Letališ
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Brez -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Imena industrij - klikni na ime za pogled na industrijo. Ctrl+Klik odpre nov pogled na lokaciji industrije
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Imena industrij - klikni na ime za pogled na industrijo. Ctrl+Klik odpre nov pogled na lokaciji industrije
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}

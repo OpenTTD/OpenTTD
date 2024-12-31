@@ -860,7 +860,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Hó
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Városnevek be/ki
-STR_SMALLMAP_CENTER                                             :{BLACK}A térkép közepét a jelenlegi helyre állítja
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}A térkép közepét a jelenlegi helyre állítja
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3086,7 +3086,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Minden v
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Városnév:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}A város nevének megadása
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Kattints ide a város nevének beírásához
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Kattints ide a város nevének beírásához
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Véletlen név
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Új véletlen név generálása
 
@@ -3100,7 +3100,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Város
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Átlagosnál gyorsabban növekedő városok{}Beállítástól függően nagyobbak alapításkor
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Település úthálózat építési mintája:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Válassz úthálózati elrendezést ehhez a városhoz
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Válassz úthálózati elrendezést ehhez a városhoz
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Eredeti
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Jobb utak
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2-es háló
@@ -3333,7 +3333,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Pálya m
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Pálya betöltése
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Magasságtérkép betöltése
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Magasságtérkép mentése
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kattints ide az aktuális mentési könyvtárra való ugráshoz
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Kattints ide az aktuális mentési könyvtárra való ugráshoz
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} szabad
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Meghajtók, könyvtárak és mentések listája
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}A mentés neve
@@ -3822,12 +3822,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Érvényte
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Állomásnevek - kattints egy névre az állomás megnézéséhez. Ctrl+kattintással új nézet nyílik az állomás helyzeténél
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+kattintás több elem kiválasztásához
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Ctrl+kattintás több elem kiválasztásához
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} állomásai - {COMMA}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nincs -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Minden szállítóegység kiválasztása
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Minden szállítóegység kiválasztása
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Minden rakománytípus és semmi minősítés
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Többféle rakománytípus
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Semmilyen rakománytípus
@@ -3905,7 +3905,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}A fő nézetet az ellenőrző pontra állítja. Ctrl+kattintással új nézet nyílik az ellenőrzőpontnál
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Átnevezi az ellenőrző pontot
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}A fő nézetet a bójára állítja. Ctrl+kattintással új nézet nyílik a bója helyzeténél
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Bója átnevezése
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Bója átnevezése
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ellenőrző pont nevének módosítása
 
@@ -3980,7 +3980,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}A válla
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Székház
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Székház megtekintése
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}SZH áthelyezése
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}A vállalat székházának újraépítése máshol a vállalat értékének 1%-áért. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}A vállalat székházának újraépítése máshol a vállalat értékének 1%-áért. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Részletek
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Részletes információk megtekintése az infrastruktúráról
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Adományozz pénzt
@@ -4027,7 +4027,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} és {NUM} további...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Gazdasági épületek neve - a névre kattintva a fő nézetet a választott objektumra irányíthatod. Ctrl+kattintással új nézet nyílik a gazdasági épület helyzeténél
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Gazdasági épületek neve - a névre kattintva a fő nézetet a választott objektumra irányíthatod. Ctrl+kattintással új nézet nyílik a gazdasági épület helyzeténél
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Elfogad: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Termel: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Minden rakománytípus
