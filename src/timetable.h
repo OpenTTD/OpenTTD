@@ -14,7 +14,7 @@
 #include "timer/timer_game_economy.h"
 #include "vehicle_type.h"
 
-static const TimerGameEconomy::Year MAX_TIMETABLE_START_YEARS = 15; ///< The maximum start date offset, in economy years.
+static const TimerGameEconomy::Year MAX_TIMETABLE_START_YEARS{15}; ///< The maximum start date offset, in economy years.
 
 enum class TimetableMode : uint8_t {
 	Days,

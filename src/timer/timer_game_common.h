@@ -160,37 +160,37 @@ public:
 	 */
 
 	/** The minimum starting year/base year of the original TTD */
-	static constexpr typename TimerGame<T>::Year ORIGINAL_BASE_YEAR = 1920;
+	static constexpr typename TimerGame<T>::Year ORIGINAL_BASE_YEAR{1920};
 	/** The original ending year */
-	static constexpr typename TimerGame<T>::Year ORIGINAL_END_YEAR = 2051;
+	static constexpr typename TimerGame<T>::Year ORIGINAL_END_YEAR{2051};
 	/** The maximum year of the original TTD */
-	static constexpr typename TimerGame<T>::Year ORIGINAL_MAX_YEAR = 2090;
+	static constexpr typename TimerGame<T>::Year ORIGINAL_MAX_YEAR{2090};
 
 	/**
 	 * MAX_YEAR, nicely rounded value of the number of years that can
 	 * be encoded in a single 32 bits date, about 2^31 / 366 years.
 	 */
-	static constexpr typename TimerGame<T>::Year MAX_YEAR = 5000000;
+	static constexpr typename TimerGame<T>::Year MAX_YEAR{5000000};
 
 	/** The absolute minimum year in OTTD */
-	static constexpr typename TimerGame<T>::Year MIN_YEAR = 0;
+	static constexpr typename TimerGame<T>::Year MIN_YEAR{0};
 
 	/** The default starting year */
-	static constexpr typename TimerGame<T>::Year DEF_START_YEAR = 1950;
+	static constexpr typename TimerGame<T>::Year DEF_START_YEAR{1950};
 	/** The default scoring end year */
-	static constexpr typename TimerGame<T>::Year DEF_END_YEAR = ORIGINAL_END_YEAR - 1;
+	static constexpr typename TimerGame<T>::Year DEF_END_YEAR{ORIGINAL_END_YEAR - 1};
 
 	/** The date of the first day of the original base year. */
-	static constexpr typename TimerGame<T>::Date DAYS_TILL_ORIGINAL_BASE_YEAR = TimerGame<T>::DateAtStartOfYear(ORIGINAL_BASE_YEAR);
+	static constexpr typename TimerGame<T>::Date DAYS_TILL_ORIGINAL_BASE_YEAR{TimerGame<T>::DateAtStartOfYear(ORIGINAL_BASE_YEAR)};
 
 	/** The date of the last day of the max year. */
-	static constexpr typename TimerGame<T>::Date MAX_DATE = TimerGame<T>::DateAtStartOfYear(MAX_YEAR + 1) - 1;
+	static constexpr typename TimerGame<T>::Date MAX_DATE{TimerGame<T>::DateAtStartOfYear(MAX_YEAR + 1) - 1};
 
 	/** The date on January 1, year 0. */
-	static constexpr typename TimerGame<T>::Date MIN_DATE = 0;
+	static constexpr typename TimerGame<T>::Date MIN_DATE{0};
 
-	static constexpr typename TimerGame<T>::Year INVALID_YEAR = -1; ///< Representation of an invalid year
-	static constexpr typename TimerGame<T>::Date INVALID_DATE = -1; ///< Representation of an invalid date
+	static constexpr typename TimerGame<T>::Year INVALID_YEAR{-1}; ///< Representation of an invalid year
+	static constexpr typename TimerGame<T>::Date INVALID_DATE{-1}; ///< Representation of an invalid date
 };
 
 #endif /* TIMER_GAME_COMMON_H */
