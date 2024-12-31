@@ -949,21 +949,21 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Tilleggsvindu {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopier til tilleggsvindu
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopier hovedvisningen til dette tilleggsvinduet
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}Kopier hovedvisningen til dette tilleggsvinduet
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Endre hovedsynsfelt
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}flytt plasseringen i dette tilleggsvinduet til hovedvisningen
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}flytt plasseringen i dette tilleggsvinduet til hovedvisningen
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spillinnstillinger
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Generelt
-STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Velg generelle innstillinger
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Velg generelle innstillinger
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafikk
-STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Velg grafikkinnstillinger
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Velg grafikkinnstillinger
 STR_GAME_OPTIONS_TAB_SOUND                                      :Lyd
-STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Velg lyd- og musikkinnstillinger
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Velg lyd- og musikkinnstillinger
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Sosial
-STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Velg sosiale integrasjonsinnstillinger
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Velg sosiale integrasjonsinnstillinger
 
 STR_GAME_OPTIONS_VOLUME                                         :Volum
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Lydeffekter

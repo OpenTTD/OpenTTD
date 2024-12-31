@@ -812,9 +812,9 @@ STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}دہکھنے والی کھڑکی {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}دہکھنے والی کھڑکی کی نقل
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}بنیادی منظر میں نظر آنے والی جگہ کو دیکھنے والی کھڑکی میں نقل کریں
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}بنیادی منظر میں نظر آنے والی جگہ کو دیکھنے والی کھڑکی میں نقل کریں
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}دہکھنے والی کھڑکی سے نقل کریں
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}دیکھنے والی کھڑکی میں نظر آنے والی جگہ کو بنیادی منظر میں نقل کریں
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}دیکھنے والی کھڑکی میں نظر آنے والی جگہ کو بنیادی منظر میں نقل کریں
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}کھیل کے اختیارات

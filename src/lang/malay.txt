@@ -818,9 +818,9 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Tetingkap Pemandangan {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Ubah tetingkap paparan
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Salin lokasi pemandangan global kepada tetingkap pemandangan ini
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}Salin lokasi pemandangan global kepada tetingkap pemandangan ini
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Ubah paparan utama
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Salin lokasi tetingkap paparan ini ke paparan utama
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Salin lokasi tetingkap paparan ini ke paparan utama
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pilihan Permainan

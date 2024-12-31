@@ -944,21 +944,21 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Mini visuale {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Cambia mini visuale
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copia la posizione della visuale principale in questa mini visuale
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}Copia la posizione della visuale principale in questa mini visuale
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Cambia vis. principale
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copia la posizione di questa mini visuale nella visuale principale
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Copia la posizione di questa mini visuale nella visuale principale
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opzioni di gioco
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Generale
-STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Scegliere le impostazioni generali
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Scegliere le impostazioni generali
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafica
-STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Scegliere le impostazioni grafiche
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Scegliere le impostazioni grafiche
 STR_GAME_OPTIONS_TAB_SOUND                                      :Suono
-STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Scegliere le impostazioni audio e musicali
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Scegliere le impostazioni audio e musicali
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
-STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Scegli le impostazioni di integrazione social
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Scegli le impostazioni di integrazione social
 
 STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Effetti sonori

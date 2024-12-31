@@ -1005,19 +1005,19 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vidujo {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiu al vidujo
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiu la lokon de la ĉefvido al ĉi tiu vidujo
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}Kopiu la lokon de la ĉefvido al ĉi tiu vidujo
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Gluu de vidujo
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Gluu la lokon de ĉi tiu vidujo al la ĉefvido
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Gluu la lokon de ĉi tiu vidujo al la ĉefvido
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludaj agordoj
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Ĝenerale
-STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Elektu ĝeneralajn agordojn
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Elektu ĝeneralajn agordojn
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafiko
-STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Elektu agordojn pri grafiko
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Elektu agordojn pri grafiko
 STR_GAME_OPTIONS_TAB_SOUND                                      :Sono
-STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Elektu agordojn pri sono kaj muziko
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Elektu agordojn pri sono kaj muziko
 
 STR_GAME_OPTIONS_VOLUME                                         :Laŭteco
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Sonefektoj

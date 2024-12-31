@@ -940,21 +940,21 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Görünüm {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Görüş alanını değiştir
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Ana görünümü bu pencereye kopyala
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}Ana görünümü bu pencereye kopyala
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Ana görünümü değiştir
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Bu görüş alanını ana görünüme kopyala
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Bu görüş alanını ana görünüme kopyala
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Seçenekler
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Genel
-STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Genel ayarları seçin
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Genel ayarları seçin
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafikler
-STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Grafik ayarlarını seçin
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Grafik ayarlarını seçin
 STR_GAME_OPTIONS_TAB_SOUND                                      :Ses
-STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Ses ve müzik ayarlarını seçin
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Ses ve müzik ayarlarını seçin
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Sosyal
-STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Sosyal entegre ayarlarını seçin
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Sosyal entegre ayarlarını seçin
 
 STR_GAME_OPTIONS_VOLUME                                         :Ses seviyesi
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Ses efektleri

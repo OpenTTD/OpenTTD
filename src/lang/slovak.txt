@@ -1006,21 +1006,21 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Pohľad {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Pohľad podľa mapy
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Nastaviť pohľad podľa hlavného pohľadu
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}Nastaviť pohľad podľa hlavného pohľadu
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Mapa podľa pohľadu
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastaviť hlavný pohľad na mapu podľa tohto pohľadu
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Nastaviť hlavný pohľad na mapu podľa tohto pohľadu
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Možnosti hry
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Všeobecné
-STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Vyberte všeobecné nastavenia
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Vyberte všeobecné nastavenia
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafika
-STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Vyberte nastavenia grafiky
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Vyberte nastavenia grafiky
 STR_GAME_OPTIONS_TAB_SOUND                                      :Zvuk
-STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Vyberte nastavenia zvuku a hudby
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Vyberte nastavenia zvuku a hudby
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Sociálne
-STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Vyberte nastavenia sociálnej integrácie
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Vyberte nastavenia sociálnej integrácie
 
 STR_GAME_OPTIONS_VOLUME                                         :Hlasitosť
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Zvukové efekty
