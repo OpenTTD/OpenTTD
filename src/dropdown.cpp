@@ -68,6 +68,8 @@ static WindowDesc _dropdown_desc(
 	_nested_dropdown_menu_widgets
 );
 
+Point _dropdown_hit;
+
 /** Drop-down menu window */
 struct DropdownWindow : Window {
 	WidgetID parent_button;       ///< Parent widget number where the window is dropped from.
@@ -241,6 +243,7 @@ struct DropdownWindow : Window {
 
 			if (y < item_height) {
 				if (item->masked || !item->Selectable()) return false;
+				_dropdown_hit = {_cursor.pos.x - this->left - r.left, r.Width()};
 				value = item->result;
 				return true;
 			}
@@ -339,9 +342,10 @@ struct DropdownWindow : Window {
 		}
 	}
 
-	void ReplaceList(DropDownList &&list)
+	void ReplaceList(DropDownList &&list, std::optional<int> selected_result)
 	{
 		this->list = std::move(list);
+		if (selected_result.has_value()) this->selected_result = *selected_result;
 		this->UpdateSizeAndPosition();
 		this->ReInit(0, 0);
 		this->InitializePositionSize(this->position.x, this->position.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
@@ -349,10 +353,10 @@ struct DropdownWindow : Window {
 	}
 };
 
-void ReplaceDropDownList(Window *parent, DropDownList &&list)
+void ReplaceDropDownList(Window *parent, DropDownList &&list, std::optional<int> selected_result)
 {
 	DropdownWindow *ddw = dynamic_cast<DropdownWindow *>(parent->FindChildWindow(WC_DROPDOWN_MENU));
-	if (ddw != nullptr) ddw->ReplaceList(std::move(list));
+	if (ddw != nullptr) ddw->ReplaceList(std::move(list), selected_result);
 }
 
 /**
