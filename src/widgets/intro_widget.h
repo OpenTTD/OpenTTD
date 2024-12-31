@@ -29,7 +29,6 @@ enum SelectGameIntroWidgets : WidgetID {
 	WID_SGI_OPTIONS,               ///< Options button.
 	WID_SGI_HIGHSCORE,             ///< Highscore button.
 	WID_SGI_HELP,                  ///< Help and manuals button.
-	WID_SGI_SETTINGS_OPTIONS,      ///< Settings button.
 	WID_SGI_GRF_SETTINGS,          ///< NewGRF button.
 	WID_SGI_CONTENT_DOWNLOAD,      ///< Content Download button.
 	WID_SGI_AI_SETTINGS,           ///< AI button.
