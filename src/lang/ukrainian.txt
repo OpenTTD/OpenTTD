@@ -936,7 +936,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Сніг
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Показувати назви міст на карті
-STR_SMALLMAP_CENTER                                             :{BLACK}Центрувати мінікарту по поточній позиції
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Центрувати мінікарту по поточній позиції
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3169,7 +3169,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Усі �
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Назва міста:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Введіть назву міста
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Натисніть для введення назви міста
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Натисніть для введення назви міста
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Випадкова назва
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Створити нову випадкову назву
 
@@ -3183,7 +3183,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Мега
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Мегаполіси ростуть швидше за звичайні міста{}Вони більші при заснуванні, якщо вказано у настройках
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Тип сітки міських доріг:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Оберіть тип сітки доріг для цього міста:
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Оберіть тип сітки доріг для цього міста:
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Стандартний
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Покращений
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Сітка 2x2
@@ -3416,7 +3416,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Збер
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Завантажити сценарій
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Завантажити ландшафт
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Зберегти карту висот
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Натисніть для переходу до поточного каталогу збереження/завантаження
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Натисніть для переходу до поточного каталогу збереження/завантаження
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} вільно
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Список пристроїв, каталогів і збережених файлів гри
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Поточне вибране ім'я файлу для збереження гри
@@ -3906,12 +3906,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Невір
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Назви станцій - натисніть на назву, щоб показати станцію в центрі екрану. Ctrl+клац мишею відкриває нове вікно з видом на станцію
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+клац для вибору кількох пунктів
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Ctrl+клац для вибору кількох пунктів
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} станці{P я ї й}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- немає -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Вибрати весь транспорт
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Вибрати весь транспорт
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Всі типи вантажів без рейтингу
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Кілька типів вантажів
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Жодного типу вантажів
@@ -3989,7 +3989,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показати точку маршруту в центрі екрану. Ctrl+клац мишею відкриє нове вікно з видом на точку маршруту
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Перейменувати точку маршруту
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показати буй в центрі екрану. Ctrl+клац мишею відкриє нове вікно з видом на розташування буя
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Перейменувати буй
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Перейменувати буй
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Перейменуйте точку маршруту
 
@@ -4064,7 +4064,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Побу
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Показати Офіс
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Показати офіс компанії
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Перенести Офіс
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Перенесення офісу в інше місце. Коштує 1% від вартості компанії. Утримуйте Shift для показу очікуваних витрат на перенесення
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Перенесення офісу в інше місце. Коштує 1% від вартості компанії. Утримуйте Shift для показу очікуваних витрат на перенесення
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Деталі
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Переглянути детальну інформацію про інфраструктуру
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Дати грошей
@@ -4111,7 +4111,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} і {NUM} ще...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Назви підприємств - клацніть мишею на назву, щоб показати підприємство у центрі екрану. Ctrl+клац мишею відкриє додаткове вікно з підприємством у центрі
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Назви підприємств - клацніть мишею на назву, щоб показати підприємство у центрі екрану. Ctrl+клац мишею відкриє додаткове вікно з підприємством у центрі
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Приймається вантаж: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Виробництво: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Усі вантажі

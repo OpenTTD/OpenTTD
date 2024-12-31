@@ -803,7 +803,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Snø
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Skru av/på bynavn
-STR_SMALLMAP_CENTER                                             :{BLACK}Midstill oversiktskartet på gjeldende posisjon
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Midstill oversiktskartet på gjeldende posisjon
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3043,7 +3043,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}La alle 
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Navn på by:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Skriv inn navn på by
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klikk for å skrive navn på by
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Klikk for å skrive navn på by
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Tilfeldig navn
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generer et tilfeldig navn
 
@@ -3057,7 +3057,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}By
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storbyer vokser raskere enn vanlige byer{}Avhengig av innstillinger er de større når de blir grunnlagt
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Byers veiløsning:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Velg veiløsning for denne byen
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Velg veiløsning for denne byen
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Bedre veier
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 rutenett
@@ -3291,7 +3291,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Last inn
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Last inn høydekart
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Lagre høydekart
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Last inn bydata
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikk her for å komme til standardmappen for lagring og innlasting
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Klikk her for å komme til standardmappen for lagring og innlasting
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ledig
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste over disker, mapper og lagrede spill
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Gjeldende navn for valgt lagret spill
@@ -3786,12 +3786,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Ugyldig m�
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stasjonsnavn - klikk på navnet for å sentrere hovedvisningen på stasjonen. Ctrl+klikk for å åpne et nytt tilleggsvindu på stasjonslokasjon.
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+klikk for å velge flere elementer
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Ctrl+klikk for å velge flere elementer
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stasjon{P "" er}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ingen -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Velg alle anlegg
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Velg alle anlegg
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Alle varetyper og ingen vurdering
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Flere varetyper
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Ingen varetyper
@@ -3869,7 +3869,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Sentrer hovedvinduet på veipunktets lokasjon. Ctrl+klikk for å åpne et nytt tilleggsvindu på veipunktets lokasjon
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Endre veipunktets navn
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sentrer hovedvinduet på bøyens lokasjon. Ctrl+klikk for å åpne et nytt tilleggsvindu på bøyens lokasjon
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Endre navn på bøye
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Endre navn på bøye
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Endre navn på veipunkt
 
@@ -3945,7 +3945,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg sel
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vis hovedkontor
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vis selskapets hovedkontor
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytt selskapets hovedkontor
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Flytt selskapets hovedkontor til et annet sted for en kostnad av 1% av verdien til selskapet. Trykk også Shift for å kun vise kostnadsestimat
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Flytt selskapets hovedkontor til et annet sted for en kostnad av 1% av verdien til selskapet. Trykk også Shift for å kun vise kostnadsestimat
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaljer
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Vis detaljert infrastrukturtelling
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Gi penger
@@ -3992,7 +3992,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} og {NUM} flere...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinavn - klikk på navn for å sentrere hovedvisningen på industrien. Ctrl+klikk for å åpne et nytt tilleggsvindu på industrilokasjonen
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Industrinavn - klikk på navn for å sentrere hovedvisningen på industrien. Ctrl+klikk for å åpne et nytt tilleggsvindu på industrilokasjonen
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Godtatte varer:{SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produserte varer: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Alle varetyper

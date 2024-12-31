@@ -719,7 +719,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Snie
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Set stêdsnammen oan/út op 'e kaart
-STR_SMALLMAP_CENTER                                             :{BLACK}Set dit plak sintraal yn de kaart
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Set dit plak sintraal yn de kaart
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -2420,7 +2420,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Pleats S
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Stêd namme:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Typ namme fan in stêd
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klik hjire om in stêd namme oan te meitsje
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Klik hjire om in stêd namme oan te meitsje
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Samar in namme
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Meitsje in willekeurich nije namme
 
@@ -2434,7 +2434,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Stêd
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Stêden groeien flugger as doarpen{}Ôfhinklik fan ynstellings binne se grutter at se makke wurde
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Strjittenpatroan
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Selektear strjittenpatroan foar dit plak
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Selektear strjittenpatroan foar dit plak
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Orizjiniel
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Bettere diken
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 raster
@@ -2609,7 +2609,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sla Scen
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Laad Scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laad Hichtemap
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Hichtekaart bewarje
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hjir klikke om nei standert opslach- en laadtriemtafel te gean
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Hjir klikke om nei standert opslach- en laadtriemtafel te gean
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} frij
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}List fan skiven, mappen en bestânen
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Op dit stuit selektearre namme foar bewarre spul
@@ -3004,7 +3004,7 @@ STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Folgjend
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Gean nei de folgjende pagina
 
 # Station list window
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hâld CTRL yndrukt om meardere objekten te selektearje
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Hâld CTRL yndrukt om meardere objekten te selektearje
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stasjon{P "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -3071,7 +3071,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Sintrearje it byld op de lokaasje fan dizze kontrôlepost
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Namme fan kontrôlepost oanpasse
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sintrearje it byld op de lokaasje fan dizze boei
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Namme fan boei oanpasse
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Namme fan boei oanpasse
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namme fan kontrôlepost oanpasse
 

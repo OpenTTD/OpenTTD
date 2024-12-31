@@ -777,7 +777,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}பனி
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}வரைபடத்தில் நகரத்தின் பெயர்களை மறை/காட்டு
-STR_SMALLMAP_CENTER                                             :{BLACK}தற்போதைய இடத்தினை சிறுவரைபடத்தின் நடுவில் காட்டவும்
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}தற்போதைய இடத்தினை சிறுவரைபடத்தின் நடுவில் காட்டவும்
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -2724,7 +2724,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}எல�
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}நகரத்தின் பெயர்:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}நகரத்தின் பெயரினை இடு
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}நகரத்தின் பெயரினை இட இங்கே சொடுக்கவும்
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}நகரத்தின் பெயரினை இட இங்கே சொடுக்கவும்
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}ஏதோ ஒரு பெயர்
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}புதிய பெயர் ஒன்றை உருவாக்கு
 
@@ -2738,7 +2738,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}மா�
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}மாநகரங்கள் சாதாரண நகரங்களைவிட வேகமாக வளரும்{}அமைப்புகளைப் பொருத்து அவை பெரியதாக அமையும்
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}நகரத்தின் சாலை அமைப்பு:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}இந்த நகரத்திற்கான சாலை அமைப்பினை தேர்ந்தெடு
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}இந்த நகரத்திற்கான சாலை அமைப்பினை தேர்ந்தெடு
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}அசல்
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}நல்ல சாலைகள்
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 கட்டங்கள்
@@ -3396,12 +3396,12 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}அட�
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}செல்லுபடியாகாத குறிக்கோள் மேற்கோள்
 
 # Station list window
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl அழுத்தி ஒன்றிற்கும் மேற்ப்பட்ட பொருட்களைத் தேர்ந்தெடுக்கவும்
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Ctrl அழுத்தி ஒன்றிற்கும் மேற்ப்பட்ட பொருட்களைத் தேர்ந்தெடுக்கவும்
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} நிலையம்{P "நிலையம்" நிலையங்கள்}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- ஒன்றுமில்லை -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}அனைத்து வசதிகளையும் தேர்ந்தெடு
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}அனைத்து வசதிகளையும் தேர்ந்தெடு
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3468,7 +3468,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}வி�
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}பாதைப்புள்ளியின் பெயரை மாற்று
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}மிதவையின் பெயரை மாற்று
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}மிதவையின் பெயரை மாற்று
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}பாதைப்புள்ளியின் பெயரை திருத்து
 
@@ -3587,7 +3587,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} மற்றும் {NUM} மேலும்...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}தொழிற்சாலைகளின் பெயர்கள் - தொழிற்சாலயை முக்கிய காட்சியில் நடுவில் காட்ட பெயரில் கிளிக் செய்யவும். தொழிற்சாலையின் இடத்தில் புதிய காட்சியை திறக்க Ctrl+கிளிக் செய்யவும்.
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}தொழிற்சாலைகளின் பெயர்கள் - தொழிற்சாலயை முக்கிய காட்சியில் நடுவில் காட்ட பெயரில் கிளிக் செய்யவும். தொழிற்சாலையின் இடத்தில் புதிய காட்சியை திறக்க Ctrl+கிளிக் செய்யவும்.
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}ஏற்றுக்கொள்ளப்படும் சரக்குகள்: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}உற்பத்தி செய்யப்பட்ட சரக்குகள்: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :அனைத்து சரக்கு வகைகள்

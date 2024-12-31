@@ -691,7 +691,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Snjór
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Sýna/fela bæjarnöfn á korti
-STR_SMALLMAP_CENTER                                             :{BLACK}Miðjustilla smákortið miðað við núverandi staðsetningu
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Miðjustilla smákortið miðað við núverandi staðsetningu
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
@@ -2397,7 +2397,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Þekja l
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nafn bæjar:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Sláðu inn nafn bæjar
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Smelltu til að slá inn nafn bæjar
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Smelltu til að slá inn nafn bæjar
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Handahófskennt nafn
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Mynda nýtt handahófskennt nafn
 
@@ -2411,7 +2411,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Borg
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Borgir vaxa hraðar en venjulegir bæir{}Möguleiki á aukinni upphafsstærð í stillingum
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Vegaskipulag bæja
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Veldu það skipulag sem þessi bær notar fyrir sína vegi
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Veldu það skipulag sem þessi bær notar fyrir sína vegi
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Upphaflegt
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Betri vegir
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 reitir
@@ -2579,7 +2579,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Vista ko
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Opna kort
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Hlaða hæðakorti
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Vista hæðarkort
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Smelltu hér til að opna möppu fyrir vistaða leiki
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Smelltu hér til að opna möppu fyrir vistaða leiki
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} laus
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Listi yfir drif, möppur og vistaða leiki
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nafn fyrir vistun leiks
@@ -2954,12 +2954,12 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Ýttu á
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nöfn stöðva - ýttu á nafn til að færa miðju sjónarhorns á stöð. Ctrl+smelltu til að opna nýtt sjónarhorn yfir þessari stöð
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haltu CTRL inni til að velja fleiri en einn hlut
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Haltu CTRL inni til að velja fleiri en einn hlut
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stöð{P "" var}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ekkert -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Velja allar gerðir
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Velja allar gerðir
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3007,7 +3007,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Færa sjónarhorn á staðsetningu millistöðvar. Ctrl+Smelltu til að opna sýniglugg á þessa staðsetningu
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Breyta nafni á vegleiðara
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Færa sjónarhorn á staðsetningu bauju. Ctrl+Smelltu til að opna sýnisglugga á þessa staðsetningu.
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Breyta nafni bauju
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Breyta nafni bauju
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Breyta nafni millistöðvar
 
@@ -3066,7 +3066,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Byggja h
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Skoða HS
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Sjá höfuðstöðvar fyrirtækisins
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytja HS
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Endurreisa höfuðstöðvarnar annarsstaðar fyrir 1% af verðmæti fyrirtækis. Shift sýnir áætlaðan kostnað við flutning á höfuðstöðvum
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Endurreisa höfuðstöðvarnar annarsstaðar fyrir 1% af verðmæti fyrirtækis. Shift sýnir áætlaðan kostnað við flutning á höfuðstöðvum
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Nánar
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Skoða nánar fjölda innviða
 
@@ -3098,7 +3098,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Flugvell
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Enginn -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Iðnaðar nöfn - smella á nafn til að færa miðju sjónarhorns á iðnað. Ctrl+smella til að opna nýtt sjónarhorn yfir þessum iðnaði
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Iðnaðar nöfn - smella á nafn til að færa miðju sjónarhorns á iðnað. Ctrl+smella til að opna nýtt sjónarhorn yfir þessum iðnaði
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}

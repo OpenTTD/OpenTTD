@@ -911,7 +911,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Nix
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Monstrare celareve nomina oppidorum in tabula
-STR_SMALLMAP_CENTER                                             :{BLACK}Movere tabulam geographicam supra conspectum praesentem
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Movere tabulam geographicam supra conspectum praesentem
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -2757,7 +2757,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Condere 
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nomen Oppidi:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Inscribe nomen oppidi
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Preme ut oppidi nomen inscribas
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Preme ut oppidi nomen inscribas
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nomen fortuitum
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Creare novum nomen fortuitum
 
@@ -2771,7 +2771,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Urbs
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Urbes crescunt oppidis celerius{}Etiam maiores sunt cum conduntur
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Dispositio viarum oppidi:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Eligere dispositionem viarum huic oppido adhibendam
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Eligere dispositionem viarum huic oppido adhibendam
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originalis
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Viae satius
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Cancelli 2x2
@@ -2949,7 +2949,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Servare 
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Legere Scaenarium
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Legere tabulam altitudinum
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Servare tabulam altitudinum
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Preme ut salias ad currens directorium solitum servandi/legendi
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Preme ut salias ad currens directorium solitum servandi/legendi
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} reliqua
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Index discorum, directoriorum, et ludorum servatorum
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nomen electum ludo servato
@@ -3370,12 +3370,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Propositum
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomina stationum - preme in nomen ut conspectus moveatur supra stationem. Ctrl+Preme ut nova fenestra conspectus aperiatur supra stationem
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Comprime Ctrl ut plures res eligantur
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Comprime Ctrl ut plures res eligantur
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Statio{P "" nes}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nullae -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Omnes eligere
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Omnes eligere
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3444,7 +3444,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Movere conspectum supra hunc interlocum. ut nova fenestra conspectus aperiatur supra interlocum
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mutare nomen interloci
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Movere conspectum supra hoc signum monitorium. ut nova fenestra conspectus aperiatur supra signum monitorium
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Mutare nomen signi monitorii
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Mutare nomen signi monitorii
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Recensere nomen interloci
 
@@ -3503,7 +3503,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Struere 
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Videre sedem
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Videre primariam sedem societatis
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Movere sedem
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Movere primariam sedem societatis aliquo pretio 1% aestimationis valoris societatis. Shift+Preme ut pretium monstretur sine sedem movendo
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Movere primariam sedem societatis aliquo pretio 1% aestimationis valoris societatis. Shift+Preme ut pretium monstretur sine sedem movendo
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Indicia
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Videre indicia descripta infrastructurae
 
@@ -3535,7 +3535,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aeroport
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nullae -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomina industriarum - preme in nomen ut conspectus moveatur supra industriam. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Nomina industriarum - preme in nomen ut conspectus moveatur supra industriam. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}

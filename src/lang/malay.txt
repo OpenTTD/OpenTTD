@@ -695,7 +695,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Salji
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Papar atau padamkan nama bandar dalam peta
-STR_SMALLMAP_CENTER                                             :{BLACK}Ketengahkan peta kecil ke kedudukan semasa
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Ketengahkan peta kecil ke kedudukan semasa
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
@@ -2295,7 +2295,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Liputi p
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nama bandar:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Masukkan nama bandar
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klik untuk memasukkan nama bandar
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Klik untuk memasukkan nama bandar
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Rambangkan nama
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Janakan nama rambang yang baru
 
@@ -2309,7 +2309,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Bandar
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Bandaraya membesar dengan lebih cepat daripada bandar{}Bergantung kepada tetapan, bandaraya akan lebih besar sewaktu dibina
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Susunan jalanraya bandar:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Pilih susunan jalanraya untuk bandar ini
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Pilih susunan jalanraya untuk bandar ini
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Asal
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Jalanraya yang lebih baik
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Grid 2x2
@@ -2478,7 +2478,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Simpan S
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Buka Senario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Buka Heightmap
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Simpan Heightmap
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik di sini untuk terus ke direktori lazim semasa untuk simpan/buka
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Klik di sini untuk terus ke direktori lazim semasa untuk simpan/buka
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} bebas
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Senarai cakera, direktori dan fail-fail permainan yang tersimpan
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nama yang kini terpilih untuk permainan yang tersimpan
@@ -2860,12 +2860,12 @@ STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Seterusn
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nama stesen - klik pada nama untuk memusatkan pemandangan ke stesen. Ctrl+Klik membuka tetingkap pemandangan di lokasi stesen
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tekan Ctrl untuk memilih lebih daripada satu butiran
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Tekan Ctrl untuk memilih lebih daripada satu butiran
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stesen
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Tiada -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Pilih semua kemudahan
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Pilih semua kemudahan
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -2912,7 +2912,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Pusatkan pemandangan utama ke lokasi tandatuju. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi tandatuju
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Tukar nama tandatuju
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Pusatkan pemandangan utama ke lokasi pelampung. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi pelampung
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Tukar nama pelampung
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Tukar nama pelampung
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Tukar nama tandatuju
 
@@ -2971,7 +2971,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bina ibu
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Lihat Ibu Pejabat
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Lihat ibu pejabat syarikat
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Tempatkan semula ibu pejabat
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Bina semula ibu pejabat syarikat di tempat lain dengan kos 1% nilai syarikat. Shift+Klik untuk menunjukkan anggaran kos tanpa pemindahan HQ
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Bina semula ibu pejabat syarikat di tempat lain dengan kos 1% nilai syarikat. Shift+Klik untuk menunjukkan anggaran kos tanpa pemindahan HQ
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Butiran
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Lihat kiraan infrastruktur secara terperinci
 
@@ -3003,7 +3003,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Lapangan
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Tiada -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nama industri - klik pada nama untuk memusatkan pemandangan ke industri. Ctrl+Klik membuka tetingkap pemandangan di lokasi industri
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Nama industri - klik pada nama untuk memusatkan pemandangan ke industri. Ctrl+Klik membuka tetingkap pemandangan di lokasi industri
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}

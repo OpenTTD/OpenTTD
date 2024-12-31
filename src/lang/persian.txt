@@ -712,7 +712,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}برف
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}نشان دادن یا ندادن اسم شهر ها در نقشه
-STR_SMALLMAP_CENTER                                             :{BLACK}موقعیت فعلی را به عنوان مرکز نقشه کوچک قرار بده
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}موقعیت فعلی را به عنوان مرکز نقشه کوچک قرار بده
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -2295,7 +2295,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}پوشا
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}نام شهر:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}نام شهر
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}برای وارد کردن نام شهر کلیک کنید
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}برای وارد کردن نام شهر کلیک کنید
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}نام تصادفی
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}تولید نام تصادفی جدید
 
@@ -2309,7 +2309,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}شهر
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}شهرها از شهرستان های معمولی سریعتر رشد می کنند{}بسته به تنظیمات، موقع ساختن بزرگتر از شهرستان ها هستند
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}نمای خیابان های شهر:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}نمای خیابان ها را برای این شهر انتخاب کنید
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}نمای خیابان ها را برای این شهر انتخاب کنید
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}اصلی
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}راه های بهتر
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}شبکه ۲x۲
@@ -2480,7 +2480,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}ذخیر
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}بارگذاری سناریو
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}بارگذاری نقشه پستی/بلندی
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}ذخیره Heightmap
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}برای برگشت به پوشه پیش فرض ذخیره اینجا را کلیک کنید
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}برای برگشت به پوشه پیش فرض ذخیره اینجا را کلیک کنید
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} فضای آزاد
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}لیست درایو ها، پوشه ها و بازی های ذخیره شده
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}نام فعلی انتخاب شده برای ذخیره بازی
@@ -2863,12 +2863,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}رجوع �
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}نام ایستگاه ها- بر روی نام کلیک کنید تا مرکز صفحه را بر روی ایستگاه قرار دهد. Ctrl+Click برای گشودن یک پنجره نمای جدا از ایستگاه
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}برای انتخاب بیش از یک آیتم، کنترل را بگیرید
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}برای انتخاب بیش از یک آیتم، کنترل را بگیرید
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} ایستگاه{P "" ها}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- هیچکدام -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}انتخاب تمامی تسهیلات
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}انتخاب تمامی تسهیلات
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -2924,7 +2924,7 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :نام گذار
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}تغییر نام نقطه مسیر
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}تغییر نام شناور
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}تغییر نام شناور
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}ویرایش نام نقطه راه
 

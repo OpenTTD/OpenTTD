@@ -888,7 +888,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Sníh
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Zobrazovat na mapě jména měst
-STR_SMALLMAP_CENTER                                             :{BLACK}Vystředit malou mapu na tomto místě
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Vystředit malou mapu na tomto místě
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3114,7 +3114,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Nechte v
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Název města:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Zadej název města
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klikni k zadání názvu města
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Klikni k zadání názvu města
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Náhodný název
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generovat nový náhodný název
 
@@ -3128,7 +3128,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Velkomě
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Velkoměsta rostou rychleji než běžná města. V závislosti na nastavení jsou při založení větší
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Silniční síť města:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Zvolte rozvržení silniční sítě v tomto městě
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Zvolte rozvržení silniční sítě v tomto městě
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Původní
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Lepší silnice
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Mřížka 2x2
@@ -3366,7 +3366,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Otevří
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Nahrát výškovou mapu
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Uložit výškovou mapu
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Načíst data města
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknutím sem se přesuneš do současného výchozího ukládacího adresáře
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Kliknutím sem se přesuneš do současného výchozího ukládacího adresáře
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} voln{P ý é ých}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Seznam jednotek, adresářů a uložených her
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Zvolené jméno uložené hry
@@ -3853,12 +3853,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Neplatný 
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Jména stanic - pohled na stanici zaměříš kliknutím na její jméno. Při stisknutém Ctrl otevřeš nový pohled
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}S přidrženým Ctrl a kliknutím můžeš označit více položek
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}S přidrženým Ctrl a kliknutím můžeš označit více položek
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stanic{P e e ""}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nic -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Označit všechny druhy stanic
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Označit všechny druhy stanic
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Všechny druhy nákladu a bez hodnocení
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Více druhů nákladu
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Žádný druh nákladu
@@ -3936,7 +3936,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Zaměřit hlavní pohled na umístění bodu na trase. Při stisknutí Ctrl+Klik otevřete nové okno na umístění bodu na trase
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Přejmenovat směrování
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vystředit pohled na bójku. Ctrl+Klik otevře nové okno náhledu
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Přejmenovat bójku
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Přejmenovat bójku
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Přejmenovat směrování
 
@@ -4011,7 +4011,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Postavit
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ředitelství
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Zobrazit sídlo společnosti
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Přesídlit
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Sídlo společnosti můžeš vystavit jinde za 1{NBSP}% její hodnoty. Podrž Shift pro zobrazení odhadu ceny
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Sídlo společnosti můžeš vystavit jinde za 1{NBSP}% její hodnoty. Podrž Shift pro zobrazení odhadu ceny
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaily
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Zobrazit detaily a souhrny o infrastruktuře
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Poslat peníze
@@ -4057,7 +4057,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} a {NUM} další...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Název průmyslu - pohled na něj zaměříš kliknutím na jeho jméno. Při stisknutém Ctrl otevřeš nový pohled
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Název průmyslu - pohled na něj zaměříš kliknutím na jeho jméno. Při stisknutém Ctrl otevřeš nový pohled
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Přijímá náklad: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produkuje náklad: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Všechny druhy nákladu

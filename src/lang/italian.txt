@@ -798,7 +798,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Neve
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Attiva/disattiva la visualizzazione dei nomi delle città sulla mappa
-STR_SMALLMAP_CENTER                                             :{BLACK}Centra la minimappa sulla posizione corrente
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Centra la minimappa sulla posizione corrente
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3060,7 +3060,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Fa cresc
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nome città:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Inserire il nome della città
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Fare clic per inserire il nome della città
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Fare clic per inserire il nome della città
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nome casuale
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Genera un nuovo nome casuale
 
@@ -3074,7 +3074,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Metropol
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Le metropoli crescono più rapidamente delle normali città.{}A seconda delle impostazioni, sono più grandi quando vengono fondate.
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposizione strade:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Seleziona la disposizione delle strade per questa città
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Seleziona la disposizione delle strade per questa città
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originale
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Migliorata
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Griglia 2x2
@@ -3307,7 +3307,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salva sc
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Carica scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carica heightmap
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Salva Heightmap
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Fare clic qui per spostarsi nella cartella di salvataggio predefinita
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Fare clic qui per spostarsi nella cartella di salvataggio predefinita
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} liber{P o i}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Elenco delle unità, delle cartelle e dei file delle partite salvate
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nome del salvataggio selezionato
@@ -3793,12 +3793,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Riferiment
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomi delle stazioni - fare clic su un nome per centrare la visuale principale sulla stazione. Ctrl+Clic per aprire una nuova finestra di visualizzazione sulla posizione della stazione
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl+Clic per selezionare più di un elemento
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Ctrl+Clic per selezionare più di un elemento
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stazion{P 1 e i}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nessuna -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleziona tutti i fabbricati
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Seleziona tutti i fabbricati
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Tutti i tipi di carico e nessun punteggio
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Tipi di carico multipli
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Nessun tipo di carico
@@ -3876,7 +3876,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la vista principale sulla posizione del waypoint. Ctrl+Clic per aprire una nuova finestra sulla posizione del waypoint.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambia il nome del waypoint
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della boa. Ctrl+Clic per aprire una nuova finestra di visualizzazione sulla posizione della boa
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Cambia il nome della boa
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambia il nome della boa
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Rinomina il waypoint
 
@@ -3951,7 +3951,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Costruis
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vedi sede
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Visualizza la sede della compagnia
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Sposta sede
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ricostruisce la sede della compagnia in un altro luogo pagando l'1% del valore della compagnia. Premere anche Shift per visualizzare solo la stima dei costi
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Ricostruisce la sede della compagnia in un altro luogo pagando l'1% del valore della compagnia. Premere anche Shift per visualizzare solo la stima dei costi
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Dettagli
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Visualizza i conteggi dettagliati delle infrastrutture
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Trasferisci denaro
@@ -3997,7 +3997,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} e {NUM} ancora...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomi delle industrie - fare clic su un nome per centrare la visuale sull'industria. Ctrl+Clic per aprire una nuova finestra sulla posizione dell'industria
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Nomi delle industrie - fare clic su un nome per centrare la visuale sull'industria. Ctrl+Clic per aprire una nuova finestra sulla posizione dell'industria
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Carichi accettati: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Carico prodotto: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Tutti i tipi di carico

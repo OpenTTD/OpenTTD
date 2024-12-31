@@ -692,7 +692,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Kavi
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Vís/fjal bygda nøvn á kortinum
-STR_SMALLMAP_CENTER                                             :{BLACK}Miðsavna lítlakorti á núverðandi stað
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Miðsavna lítlakorti á núverðandi stað
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
@@ -2291,7 +2291,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Stovnað
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Bygdar navn:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Skriva návn á bygdini
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Trýst fyri at skriva navn á bygdini
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Trýst fyri at skriva navn á bygdini
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Tilvildarligt navn
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Framleið nýtt tilvildarligt navn
 
@@ -2305,7 +2305,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Býur
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Býir vaksa skjótari enn vanligar bygdir{}Treyta av innstillingum, eru teir størri tá teir verða stovnaðir
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Bygda vegakervi:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Vel hvat vegakervi skal nýtast í hesi bygdini
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Vel hvat vegakervi skal nýtast í hesi bygdini
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Upprunaligt
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Betri vegir
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 rimaverk
@@ -2473,7 +2473,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Goym til
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Heinta tilburð
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Heinta hæddarkort
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Goym hæddarkort
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Trýst her fyri at leypa til verðandi vanligu goym/heinta fíluskránna
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Trýst her fyri at leypa til verðandi vanligu goym/heinta fíluskránna
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} frí
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Listi yvir driv, fíluskráðir og goymt-spæl fílur
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Núverðandi valda navn á goymdum spæli
@@ -2800,12 +2800,12 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Trýst �
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nøvn á støðum - trýst á eitt navn fyri at savna høvuðs sýni á støðina. Ctrl+trýst letur upp ein nýggjan sýnisglugga á støðina
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Halt Ctrl fyri at velja meira enn eitt punkt
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Halt Ctrl fyri at velja meira enn eitt punkt
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Støð{P "" ir}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Eingin -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Vel allar hentleikar
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Vel allar hentleikar
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -2852,7 +2852,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Savna høvuðs sýni á waypoint. Ctrl+trýst letur nýggjan sýnisglugga upp við sýni á waypoint
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Broyt navn á waypoint
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Savna høvuðs sýni á boyjuna. Ctrl+trýst letur nýggjan sýnisglugga upp á boyjuna
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Broyt navn á boyju
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Broyt navn á boyju
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Rætta waypoint navn
 
@@ -2911,7 +2911,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg hø
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Sjá HB
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Sjá høvuðsborg hjá fyritøku
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flyt HB
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Endurbygg fyritøku høvuðsborg aðrastaðni fyri 1% av virðinum á fyritøkuni. Shift+trýst vísur kostnaðar meting uttan at flyta høvuðsborgina
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Endurbygg fyritøku høvuðsborg aðrastaðni fyri 1% av virðinum á fyritøkuni. Shift+trýst vísur kostnaðar meting uttan at flyta høvuðsborgina
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Smálutir
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Sjá innankervi í smálutum
 
@@ -2943,7 +2943,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Floghavn
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Einki -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ídnaðar nøvn - trýst á eitt navn fyri at savna høvuðs sýni á ídnað. Ctrl+trýst letur ein nýggjan sýnisglugga upp á ídnaðin
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Ídnaðar nøvn - trýst á eitt navn fyri at savna høvuðs sýni á ídnað. Ctrl+trýst letur ein nýggjan sýnisglugga upp á ídnaðin
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}

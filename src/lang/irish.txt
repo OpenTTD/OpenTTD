@@ -738,7 +738,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Sneachta
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Scoránaigh ainmneacha na mbailte air/as ar an léarscáil
-STR_SMALLMAP_CENTER                                             :{BLACK}Láraigh an léarscáil beag ar an suíomh reatha
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Láraigh an léarscáil beag ar an suíomh reatha
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -2736,7 +2736,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Clúdaig
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Ainm an bhaile:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Ionchur ainm an bhaile
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Cliceáil chun ainm an bhaile a ionchur
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Cliceáil chun ainm an bhaile a ionchur
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Ainm fánach
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Cruthaigh ainm fánach nua
 
@@ -2750,7 +2750,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Cathair
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Fásann cathracha níos mó ná gnáthbhailte{}Ag brath ar na socruithe, bíonn siad níos mó nuair a bhunaítear iad
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Leagan amach bóithre an bhaile:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Roghnaigh leagan amach na mbóithre don bhaile seo
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Roghnaigh leagan amach na mbóithre don bhaile seo
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Bunaidh
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Bóithre níos fearr
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}greille 2x2
@@ -2980,7 +2980,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sábhái
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Lódáil Scéal
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Lódáil Mapa airde
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Sábháil Mapa airde
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Cliceáil anseo le léim chuig an comhadlann réamhshocraithe sábhála/lódála reatha
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Cliceáil anseo le léim chuig an comhadlann réamhshocraithe sábhála/lódála reatha
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} saor
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liosta na dtiomántán, na gcomhadlann agus na gcomhad cluichí sábháilte
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Ainm atá roghnaithe faoi láthair don chluiche sábháilte
@@ -3424,12 +3424,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Tagairt ne
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ainmneacha na stáisiún - cliceáil ar ainm chun an t-amharc a lárú ar stáisiún. Osclaítear amharc nua ar shuíomh an stáisiúin le Ctrl+Cliceáil
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Coinnigh síos Ctrl le níos mó ná rud amháin a roghnú
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Coinnigh síos Ctrl le níos mó ná rud amháin a roghnú
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stáisiú{P "" "" "" "" ""}n
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ceann ar bith -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Roghnaigh gach áis
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Roghnaigh gach áis
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3498,7 +3498,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Láraigh an príomhamharc ar shuíomh an phointe bealaigh. Osclaítear amharc nua ar shuíomh an phointe bealaigh le Ctrl+Cliceáil
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Athraigh ainm an phointe bealaigh
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Láraigh an príomhamharc ar shuíomh an bhaoi. Osclaítear amharc nua ar shuíomh an bhaoi le Ctrl+Cliceáil
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Athraigh ainm an bhaoi
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Athraigh ainm an bhaoi
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Cuir ainm an phointe bealaigh in eagar
 
@@ -3557,7 +3557,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Tóg cea
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Breathanaigh ar CC
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Breathnaigh ar cheanncheathrú na cuideachta
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Athlonnaigh an CC
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Tóg ceanncheathrú na cuideachta in áit eile ar chostas 1% de luach na cuideachta
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Tóg ceanncheathrú na cuideachta in áit eile ar chostas 1% de luach na cuideachta
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Sonraí
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Taispeáin líon mionsonraithe na bpíosaí bonneagair
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Tabhair airgead
@@ -3598,7 +3598,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} agus {NUM} sa bhreis...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ainmneacha na dtionscal - cliceáil ar ainm chun an príomh-amharc a lárú ar thionscal. Osclaítear amharc nua ar shuíomh an tionscail le Ctrl+Cliceáil
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Ainmneacha na dtionscal - cliceáil ar ainm chun an príomh-amharc a lárú ar thionscal. Osclaítear amharc nua ar shuíomh an tionscail le Ctrl+Cliceáil
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Lastas a ghlactar leis: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Lastas a tháirgtear: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Gach cineál lastais

@@ -851,7 +851,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Lumi
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Asustuste nimede sisse- ja välja lülitamine
-STR_SMALLMAP_CENTER                                             :{BLACK}Näita väikekaardil praegust asukohta
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Näita väikekaardil praegust asukohta
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -3059,7 +3059,7 @@ STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Kõik as
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Asula nimi:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Sisesta asula nimi
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klõpsa asulale nime andmiseks
+STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP                              :{BLACK}Klõpsa asulale nime andmiseks
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Suvaline nimi
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Loo suvaline nimi
 
@@ -3073,7 +3073,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Linn
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Linnad kasvavad kiiremini, kui tavalised asulad{}Sõltuvalt seadetest on need ka alguses suuremad
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Asula teeplaneering
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Vali selle asula teeplaneering
+STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Vali selle asula teeplaneering
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Algne
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Paremad teed
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 ruudustik
@@ -3306,7 +3306,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salvesta
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Laadi stsenaariumit
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laadi kõrguskaart
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Salvesta kõrguskaart
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Vajutamisel avaneb salvestuste ja jätkamiste jaoks määratud algne kataloog
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Vajutamisel avaneb salvestuste ja jätkamiste jaoks määratud algne kataloog
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} vaba
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Nimekiri ketastest, kataloogidest ja salvestatud mängudest
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Mängu salvestuse nimi
@@ -3790,12 +3790,12 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Vigane vii
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Jaamanimed - nimel vajutades viiakse vaade jaamale. Ctrl+klõps avab jaama asukohas uue vaate.
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mitme asja valimiseks kasuta Ctrl-klahvi
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Mitme asja valimiseks kasuta Ctrl-klahvi
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} jaam{P "" a}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Puudub -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Vali kõik tööstused
+STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Vali kõik tööstused
 STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :Kõik veoseliigid ja mitte hinnang
 STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :Mitu kaubaliiki
 STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Ilma kaubaliikideta
@@ -3873,7 +3873,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Keskenda vaade teemärgisel. Ctrl+klõps avab teemärgisel uue vaate
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Muuda meldepunkti nime
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskenda vaade poi kohale. Ctrl+klõps avab poi kohal uue vaateakna
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Muuda poi nime
+STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Muuda poi nime
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muuda meldepunkti nime
 
@@ -3948,7 +3948,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Ehita et
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vaata peakorterit
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ettevõtte peakorteri vaatamine
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Liiguta peakorterit
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ehita ettevõtte peakorter mujale 1% firmaväärtuse tasu eest. Shift+klõps näitab toimingu eeldatavat maksumust
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Ehita ettevõtte peakorter mujale 1% firmaväärtuse tasu eest. Shift+klõps näitab toimingu eeldatavat maksumust
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Täpsustused
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Vaata täpset taristu hulka
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Saada raha
@@ -3994,7 +3994,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} ja veel {NUM}...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Tööstuste nimed - klõpsates keskendatakse vaade tööstusele. Ctrl+klõps avab uue vaate ettevõtte asukohast
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Tööstuste nimed - klõpsates keskendatakse vaade tööstusele. Ctrl+klõps avab uue vaate ettevõtte asukohast
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Vastuvõetud veosed: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Toodetud veosed: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Kõik veoseliigid
