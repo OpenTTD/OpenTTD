@@ -351,7 +351,6 @@ struct SelectGameWindow : public Window {
 			case WID_SGI_OPTIONS:         ShowGameOptions(); break;
 			case WID_SGI_HIGHSCORE:       ShowHighscoreTable(); break;
 			case WID_SGI_HELP:            ShowHelpWindow(); break;
-			case WID_SGI_SETTINGS_OPTIONS:ShowGameSettings(); break;
 			case WID_SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, _grfconfig_newgame); break;
 			case WID_SGI_CONTENT_DOWNLOAD:
 				if (!_network_available) {
@@ -414,10 +413,7 @@ static constexpr NWidgetPart _nested_select_game_widgets[] = {
 
 			NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
 				/* 'Game Options' and 'Settings' buttons */
-				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_OPTIONS), SetStringTip(STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS), SetFill(1, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_SETTINGS_OPTIONS), SetStringTip(STR_INTRO_CONFIG_SETTINGS_TREE, STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE), SetFill(1, 0),
-				EndContainer(),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_OPTIONS), SetStringTip(STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS), SetFill(1, 0),
 
 				/* 'AI Settings' and 'Game Script Settings' buttons */
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
