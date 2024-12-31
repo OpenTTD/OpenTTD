@@ -913,14 +913,14 @@ struct Disaster {
 };
 
 static const Disaster _disasters[] = {
-	{Disaster_Zeppeliner_Init,      1930, 1955}, // zeppeliner
-	{Disaster_Small_Ufo_Init,       1940, 1970}, // ufo (small)
-	{Disaster_Airplane_Init,        1960, 1990}, // airplane
-	{Disaster_Helicopter_Init,      1970, 2000}, // helicopter
-	{Disaster_Big_Ufo_Init,         2000, 2100}, // ufo (big)
-	{Disaster_Small_Submarine_Init, 1940, 1965}, // submarine (small)
-	{Disaster_Big_Submarine_Init,   1975, 2010}, // submarine (big)
-	{Disaster_CoalMine_Init,        1950, 1985}, // coalmine
+	{Disaster_Zeppeliner_Init,      TimerGameCalendar::Year{1930}, TimerGameCalendar::Year{1955}}, // zeppeliner
+	{Disaster_Small_Ufo_Init,       TimerGameCalendar::Year{1940}, TimerGameCalendar::Year{1970}}, // ufo {small}
+	{Disaster_Airplane_Init,        TimerGameCalendar::Year{1960}, TimerGameCalendar::Year{1990}}, // airplane
+	{Disaster_Helicopter_Init,      TimerGameCalendar::Year{1970}, TimerGameCalendar::Year{2000}}, // helicopter
+	{Disaster_Big_Ufo_Init,         TimerGameCalendar::Year{2000}, TimerGameCalendar::Year{2100}}, // ufo {big}
+	{Disaster_Small_Submarine_Init, TimerGameCalendar::Year{1940}, TimerGameCalendar::Year{1965}}, // submarine {small}
+	{Disaster_Big_Submarine_Init,   TimerGameCalendar::Year{1975}, TimerGameCalendar::Year{2010}}, // submarine {big}
+	{Disaster_CoalMine_Init,        TimerGameCalendar::Year{1950}, TimerGameCalendar::Year{1985}}, // coalmine
 };
 
 static void DoDisaster()
