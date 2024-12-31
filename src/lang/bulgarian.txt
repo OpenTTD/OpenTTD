@@ -946,21 +946,21 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Камера {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Преместване на камерата
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Преместване на тази камера до глобалната
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}Преместване на тази камера до глобалната
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Преместване глобалната камера
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Преместване глобалната камера до тази
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Преместване глобалната камера до тази
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Игрови настройки
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Основни
-STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Изберете основни настройки
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Изберете основни настройки
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Графични
-STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Изберете графични настройки
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Изберете графични настройки
 STR_GAME_OPTIONS_TAB_SOUND                                      :Звукови
-STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Изберете звукови и музикални настройки
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Изберете звукови и музикални настройки
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Социални
-STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Изберете настройки за социална интеграция
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Изберете настройки за социална интеграция
 
 STR_GAME_OPTIONS_VOLUME                                         :Височина на звук
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Звукови ефекти

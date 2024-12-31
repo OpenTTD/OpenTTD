@@ -321,7 +321,7 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 
 
 # Extra view window
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}इस व्यूपोर्ट के स्थान को मुख्य दृश्य में कॉपी करें
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}इस व्यूपोर्ट के स्थान को मुख्य दृश्य में कॉपी करें
 
 # Game options window
 

@@ -1125,21 +1125,21 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Peržiūros langas {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopijuoti į peržiūros langą
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopijuoti pagrindinio lango padėtį į šį peržiūros langą
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}Kopijuoti pagrindinio lango padėtį į šį peržiūros langą
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Įkelti iš peržiūros lango
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Įkelti esamą padėtį į pagrindinį langą
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Įkelti esamą padėtį į pagrindinį langą
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pagrindinės nuostatos
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Bendras
-STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Pasirinkti bendrus nustatymus
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Pasirinkti bendrus nustatymus
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Vaizdas
-STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Pasirinkti vaizdo nustatymus
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Pasirinkti vaizdo nustatymus
 STR_GAME_OPTIONS_TAB_SOUND                                      :Garsas
-STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Pasirinkti garso ir muzikos nustatymus
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Pasirinkti garso ir muzikos nustatymus
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Socialumas
-STR_GAME_OPTIONS_TAB_SOCIAL_TT                                  :{BLACK}Pasirinkti socialumo integracijos nustatymus
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Pasirinkti socialumo integracijos nustatymus
 
 STR_GAME_OPTIONS_VOLUME                                         :Tūris
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Garso efektai
