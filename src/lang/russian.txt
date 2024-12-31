@@ -4526,31 +4526,31 @@ STR_REPLACE_VEHICLE_SHIP.gen                                    :судов
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Авиатранспорт
 STR_REPLACE_VEHICLE_AIRCRAFT.gen                                :воздушного транспорта
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбор заменяемой модели транспортного средства
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбор заменяющей модели транспортного средства
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Выбор заменяемой модели транспортного средства
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Выбор заменяющей модели транспортного средства
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Начать замену
 STR_REPLACE_VEHICLES_NOW                                        :Начать замену всех ТС
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Заменять только устаревшие ТС
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Начать замену выбранных типов транспорта
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Начать замену выбранных типов транспорта
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Нет замены
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Транспорт не выбран
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} когда устареет
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Прекратить замену
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Прекратить замену транспорта
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Прекратить замену транспорта
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Переключение между окнами замены локомотивов и вагонов
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Переключение между окнами замены локомотивов и вагонов
 STR_REPLACE_ENGINES                                             :Локомотивы
 STR_REPLACE_WAGONS                                              :Вагоны
 STR_REPLACE_ALL_RAILTYPE                                        :Весь ж/д транспорт
 STR_REPLACE_ALL_ROADTYPE                                        :Все автомобили
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип ж/д транспорта, подлежащего замене
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Выбор вида транспорта для замены
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Тип ж/д транспорта, подлежащего замене
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Выбор вида транспорта для замены
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Транспорт, на который происходит замена
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Транспорт, на который происходит замена
 STR_REPLACE_RAIL_VEHICLES                                       :Поезда
 STR_REPLACE_ELRAIL_VEHICLES                                     :Электропоезда
 STR_REPLACE_MONORAIL_VEHICLES                                   :Монорельсовые
@@ -4560,7 +4560,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Автотра�
 STR_REPLACE_TRAM_VEHICLES                                       :Трамваи
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Удаление вагонов ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Разрешить при автозамене сохранять длину составов путём удаления вагонов (начиная с головы поезда), если при замене локомотива увеличится длина состава.
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Разрешить при автозамене сохранять длину составов путём удаления вагонов (начиная с головы поезда), если при замене локомотива увеличится длина состава.
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}{}Ctrl+щелчок - применить также и к вложенным группам.
 
 # Vehicle view

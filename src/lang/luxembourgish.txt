@@ -4339,31 +4339,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Stroossegefier
 STR_REPLACE_VEHICLE_SHIP                                        :Schëff
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Fliger
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wielt de Maschinentyp fir auszetauschen
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wielt den neien Typ de benotzt soll ginn amplaz vun der lénks gewielter Maschin
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Wielt de Maschinentyp fir auszetauschen
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Wielt den neien Typ de benotzt soll ginn amplaz vun der lénks gewielter Maschin
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Gefieraustosch
 STR_REPLACE_VEHICLES_NOW                                        :All Gefier elo ersetzen
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Nëmmen al Gefierer ersetzen
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Drécken fir den Austosch vun der lénker mat der rietser Maschin unzefenken
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Drécken fir den Austosch vun der lénker mat der rietser Maschin unzefenken
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Net ausgetosch:
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Keen gefier gewielt
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} wann al
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Gefieraustosch
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Drécken fir den Austosch ze stoppen
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Drécken fir den Austosch ze stoppen
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wiessel tëscht Maschin- an Waggonaustosch-Fënster
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Wiessel tëscht Maschin- an Waggonaustosch-Fënster
 STR_REPLACE_ENGINES                                             :Lokomotiven
 STR_REPLACE_WAGONS                                              :Waggonen
 STR_REPLACE_ALL_RAILTYPE                                        :All Zich
 STR_REPLACE_ALL_ROADTYPE                                        :All Stroossegefierer
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wielt de Schinnentyp fir déi Lokomotiven ausgetosch ginn
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Wielt de Stroossentyp fir déi d'Maschinnen ausgetosch ginn
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Wielt de Schinnentyp fir déi Lokomotiven ausgetosch ginn
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Wielt de Stroossentyp fir déi d'Maschinnen ausgetosch ginn
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Weist un wellech Lokomotiv vun der lénks ugewielter Lokomotiv ausgetosch soll ginn, wann et zoutrëfft
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Weist un wellech Lokomotiv vun der lénks ugewielter Lokomotiv ausgetosch soll ginn, wann et zoutrëfft
 STR_REPLACE_RAIL_VEHICLES                                       :Zich
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektresch Zich
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail Gefierer
@@ -4373,7 +4373,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Stroossegefiere
 STR_REPLACE_TRAM_VEHICLES                                       :Tram-Gefierer
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon raushuelen: ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mécht dass d'automatescht Austauschen d'Längt vum Zuch behält, an dem e Waggonen (vu lénks un) wechhëllt, wann d'Lok den Zuch ze laang mécht
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Mécht dass d'automatescht Austauschen d'Längt vum Zuch behält, an dem e Waggonen (vu lénks un) wechhëllt, wann d'Lok den Zuch ze laang mécht
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Klick fir och ob Ennergruppen ze applizéiren
 
 # Vehicle view

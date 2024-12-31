@@ -4309,31 +4309,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Autovehicolul
 STR_REPLACE_VEHICLE_SHIP                                        :Nava
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronava
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Alege tipul de motor pentru înlocuire
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Alege noul tip de motor pe care dorești să-l folosești în locul motorului selectat în stânga
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Alege tipul de motor pentru înlocuire
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Alege noul tip de motor pe care dorești să-l folosești în locul motorului selectat în stânga
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Incepere inlocuire vehicule
 STR_REPLACE_VEHICLES_NOW                                        :Înlocuiește toate vehiculele acum
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Înlocuiește doar vehiculele vechi
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Apasă aici pentru a începe înlocuirea motorului selectat în stânga cu cel selectat în dreapta
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Apasă aici pentru a începe înlocuirea motorului selectat în stânga cu cel selectat în dreapta
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Neinlocuire
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nici un vehicul selectat
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} când este învechit
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Oprire înlocuire vehicule
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Apasă aici pentru a opri înlocuirea motorului selectat în stânga
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Apasă aici pentru a opri înlocuirea motorului selectat în stânga
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Comutã între ferestrele de înlocuire motoare si vagoane
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Comutã între ferestrele de înlocuire motoare si vagoane
 STR_REPLACE_ENGINES                                             :Locomotive
 STR_REPLACE_WAGONS                                              :Vagoane
 STR_REPLACE_ALL_RAILTYPE                                        :Toate vehiculele pe șine
 STR_REPLACE_ALL_ROADTYPE                                        :Toate vehiculele rutiere
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un tip de cale ferată pentru care dorești să înlocuiești locomotivele
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Alege tipul de drum pentru care vrei să înlocuiești motoarele
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Alege un tip de cale ferată pentru care dorești să înlocuiești locomotivele
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Alege tipul de drum pentru care vrei să înlocuiești motoarele
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Arată locomotiva ceva înlocui locomotiva selectată în stânga
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Arată locomotiva ceva înlocui locomotiva selectată în stânga
 STR_REPLACE_RAIL_VEHICLES                                       :Vehicule feroviare
 STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicule electrificate pe șine
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vehicule Monorail
@@ -4343,7 +4343,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Autovehicule
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvaie
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fă optiunea de autoînlocuire să păstreze identică lungimea unui tren prin eliminarea vagoanelor (începând din față) dacă înlocuirea locomotivei ar face trenul mai lung
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Fă optiunea de autoînlocuire să păstreze identică lungimea unui tren prin eliminarea vagoanelor (începând din față) dacă înlocuirea locomotivei ar face trenul mai lung
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+clic pentru aplicare și la sub-grupuri
 
 # Vehicle view

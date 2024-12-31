@@ -3369,35 +3369,35 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Bifreið
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Flugvél
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Veldu vagntegund til að skipta út
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Velja vagntegund sem þú myndir vilja nota í staðin fyrir vagntegundina sem valinn er vinstra megin
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Veldu vagntegund til að skipta út
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Velja vagntegund sem þú myndir vilja nota í staðin fyrir vagntegundina sem valinn er vinstra megin
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Hefja skipti
 STR_REPLACE_VEHICLES_NOW                                        :Skipta út öllum farartækjum
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Skipta út gömlum farartækjum
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Smelltu til að hefja skipti á vagntegundinni sem valin er til vinstri með vagntegundinni sem valin er til hægri
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Smelltu til að hefja skipti á vagntegundinni sem valin er til vinstri með vagntegundinni sem valin er til hægri
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Skipti ekki
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Enginn vagn valinn
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} ef gömul
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stöðva skipti
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Smelltu til að stöðva skipti á vagntegundinni sem valin er vinstra megin
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Smelltu til að stöðva skipti á vagntegundinni sem valin er vinstra megin
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skipta á milli útskiptiglugga dráttar- og flutningavagna
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Skipta á milli útskiptiglugga dráttar- og flutningavagna
 STR_REPLACE_ENGINES                                             :Dráttarvagnar
 STR_REPLACE_WAGONS                                              :Vagnar
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Veldu hvaða tegund lesta það er sem þú vilt skipta út
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Veldu hvaða tegund lesta það er sem þú vilt skipta út
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Sýnir hvaða vagn kemur í stað þess sem valinn er vinstra megin
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Sýnir hvaða vagn kemur í stað þess sem valinn er vinstra megin
 STR_REPLACE_RAIL_VEHICLES                                       :Járnbrautavagnar
 STR_REPLACE_ELRAIL_VEHICLES                                     :Rafdrifnir lestarvagnar
 STR_REPLACE_MONORAIL_VEHICLES                                   :Einteinungsvagnar
 STR_REPLACE_MAGLEV_VEHICLES                                     :Segulsvifvagnar
 
 
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Heldur lengd lestar með því að fjarlægja vagna (framan frá), ef útskipting dráttarvagna myndi lengja hana
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Heldur lengd lestar með því að fjarlægja vagna (framan frá), ef útskipting dráttarvagna myndi lengja hana
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

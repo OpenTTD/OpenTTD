@@ -3482,28 +3482,28 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Errepide ibilga
 STR_REPLACE_VEHICLE_SHIP                                        :Itsasontzia
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Hegazkina
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Aukeratu aldatu beharreko motore mota
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK} Aukeratu motore mota zaharra ordezkatuko duen motore berria
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Aukeratu aldatu beharreko motore mota
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK} Aukeratu motore mota zaharra ordezkatuko duen motore berria
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Ibilgailuak ordezkatzen hasi
 STR_REPLACE_VEHICLES_NOW                                        :Ibilgailuak orain ordezkatu
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Bakarrik ibilgailu zaharrak ordezkatu
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klikatu ezkerrean aukeratutako motore mota eskuinean aukeratutakoarekin ordezkatzen hasteko
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Klikatu ezkerrean aukeratutako motore mota eskuinean aukeratutakoarekin ordezkatzen hasteko
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ez ordezkatzen
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ez da ibilgailurik aukeratu
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} zaharra denean
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Ibilgailuak ordezkatzen gelditu
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klikatu ezkerrean aukeratutako motore motaren ordezkapena gelditzeko
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Klikatu ezkerrean aukeratutako motore motaren ordezkapena gelditzeko
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Aldatu motore pantaila eta bagoi paintailaren artean
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Aldatu motore pantaila eta bagoi paintailaren artean
 STR_REPLACE_ENGINES                                             :Motoreak
 STR_REPLACE_WAGONS                                              :Bagoiak
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Aukeratu trenbide mota ezberdinen artean
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Aukeratu trenbide mota ezberdinen artean
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Ezkerrean aukeratutako motorea ordezkatzen ari den motorearekin erakutsi
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Ezkerrean aukeratutako motorea ordezkatzen ari den motorearekin erakutsi
 STR_REPLACE_RAIL_VEHICLES                                       :Tren ibilgailuak
 STR_REPLACE_ELRAIL_VEHICLES                                     :Tren ibilgailu elektrikoak
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail trenak
@@ -3511,7 +3511,7 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Tren magnetikoa
 
 STR_REPLACE_TRAM_VEHICLES                                       :Tranbia ibilgailuak
 
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ordezkatze automatikoari agindu trenaren luzera errespetatzea, bagoiak ezabatuz luzera handitzen badute (trenaren hasierako bagoietik hasita)
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Ordezkatze automatikoari agindu trenaren luzera errespetatzea, bagoiak ezabatuz luzera handitzen badute (trenaren hasierako bagoietik hasita)
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

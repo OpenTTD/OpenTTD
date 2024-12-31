@@ -4339,31 +4339,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Road Vehicle
 STR_REPLACE_VEHICLE_SHIP                                        :Ship
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aircraft
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Select the engine type to replace
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Select the new engine type you would like to use in place of the left selected engine type
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Select the engine type to replace
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Select the new engine type you would like to use in place of the left selected engine type
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Replacing Vehicles
 STR_REPLACE_VEHICLES_NOW                                        :Replace all vehicles now
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Replace only old vehicles
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Press to begin replacement of the left selected engine type with the right selected engine type
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Press to begin replacement of the left selected engine type with the right selected engine type
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Not replacing
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}No vehicle selected
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} when old
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Replacing Vehicles
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Press to stop the replacement of the engine type selected on the left
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Press to stop the replacement of the engine type selected on the left
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Switch between engine and wagon replacement windows
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Switch between engine and wagon replacement windows
 STR_REPLACE_ENGINES                                             :Engines
 STR_REPLACE_WAGONS                                              :Wagons
 STR_REPLACE_ALL_RAILTYPE                                        :All rail vehicles
 STR_REPLACE_ALL_ROADTYPE                                        :All road vehicles
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choose the rail type you want to replace engines for
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Choose the road type you want to replace engines for
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Choose the rail type you want to replace engines for
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Choose the road type you want to replace engines for
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Displays which engine the left selected engine is being replaced with, if any
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Displays which engine the left selected engine is being replaced with, if any
 STR_REPLACE_RAIL_VEHICLES                                       :Rail Vehicles
 STR_REPLACE_ELRAIL_VEHICLES                                     :Electrified Rail Vehicles
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail Vehicles
@@ -4373,7 +4373,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Road Vehicles
 STR_REPLACE_TRAM_VEHICLES                                       :Tramway Vehicles
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon removal ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing wagons (starting at the front), if replacing the engine would make the train longer
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Make autoreplace keep the length of a train the same by removing wagons (starting at the front), if replacing the engine would make the train longer
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Click to also apply to sub-groups
 
 # Vehicle view

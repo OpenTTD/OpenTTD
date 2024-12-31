@@ -4339,31 +4339,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :ajoneuvoja
 STR_REPLACE_VEHICLE_SHIP                                        :laivoja
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :lentokoneita
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Valitse korvattava veturityyppi.
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Valitse vasemmalla näkyvän veturityypinn korvaava uusi veturityyppi.
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Valitse korvattava veturityyppi.
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Valitse vasemmalla näkyvän veturityypinn korvaava uusi veturityyppi.
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita kulkuneuvojen korvaaminen
 STR_REPLACE_VEHICLES_NOW                                        :Korvaa kaikki kulkuneuvot heti
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Korvaa vain vanhat kulkuneuvot
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Napsauta aloittaaksesi vasemmalta valitun veturityypin korvauksen oikealta valitulla veturityypillä.
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Napsauta aloittaaksesi vasemmalta valitun veturityypin korvauksen oikealta valitulla veturityypillä.
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ei korvata
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ei kulkuneuvoa valittuna
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kun vanha
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lopeta kulkuneuvojen korvaaminen
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Napsauta pysäyttääksesi vasemmalta valitun veturityypin korvauksen.
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Napsauta pysäyttääksesi vasemmalta valitun veturityypin korvauksen.
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Vaihda toiseen korvausikkunaan
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Vaihda toiseen korvausikkunaan
 STR_REPLACE_ENGINES                                             :Veturit
 STR_REPLACE_WAGONS                                              :Vaunut
 STR_REPLACE_ALL_RAILTYPE                                        :Kaikki junat
 STR_REPLACE_ALL_ROADTYPE                                        :Kaikki ajoneuvot
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Valitse rautatietyyppi, jolle veturikorvaukset tehdään.
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Valitse tien tyyppi, jolle ajoneuvojen korvaukset tehdään
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Valitse rautatietyyppi, jolle veturikorvaukset tehdään.
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Valitse tien tyyppi, jolle ajoneuvojen korvaukset tehdään
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Näyttää, millä vasemmalta valittu veturi korvataan, jos millään.
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Näyttää, millä vasemmalta valittu veturi korvataan, jos millään.
 STR_REPLACE_RAIL_VEHICLES                                       :Junat
 STR_REPLACE_ELRAIL_VEHICLES                                     :Sähköjunat
 STR_REPLACE_MONORAIL_VEHICLES                                   :Yksiraiteiset
@@ -4373,7 +4373,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Ajoneuvot
 STR_REPLACE_TRAM_VEHICLES                                       :Raitiovaunut
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaunun poisto ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaattikorvauksessa junapituus pidetään samana poistamalla vaunuja (edestä) jos veturi pidentäisi junaa
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Automaattikorvauksessa junapituus pidetään samana poistamalla vaunuja (edestä) jos veturi pidentäisi junaa
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+napsautus kohdistaaksesi myös aliryhmiin.
 
 # Vehicle view

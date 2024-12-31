@@ -4725,31 +4725,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Pojazd
 STR_REPLACE_VEHICLE_SHIP                                        :Statek
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Samolot
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wybierz typ pojazdu do zastąpienia
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wybierz, jakim typem pojazdu chcesz zastąpić typ pojazdu zaznaczony po lewej stronie
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Wybierz typ pojazdu do zastąpienia
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Wybierz, jakim typem pojazdu chcesz zastąpić typ pojazdu zaznaczony po lewej stronie
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Rozpocznij zastępowanie
 STR_REPLACE_VEHICLES_NOW                                        :Zastąp wszystkie pojazdy
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Zastąp tylko stare pojazdy
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Wciśnij, aby rozpocząć zastępowanie typu pojazdu zaznaczonego po lewej stronie na typ pojazdu zaznaczony po prawej stronie
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Wciśnij, aby rozpocząć zastępowanie typu pojazdu zaznaczonego po lewej stronie na typ pojazdu zaznaczony po prawej stronie
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nie zastępowane
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Brak zaznaczonych pojazdów
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kiedy stary
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zatrzymaj zastępowanie
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Wciśnij, aby przerwać zastępowanie typu pojazdu zaznaczonego po lewej stronie
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Wciśnij, aby przerwać zastępowanie typu pojazdu zaznaczonego po lewej stronie
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Przejdź pomiędzy oknami zamiany lokomotyw i wagonów
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Przejdź pomiędzy oknami zamiany lokomotyw i wagonów
 STR_REPLACE_ENGINES                                             :Lokomotywy
 STR_REPLACE_WAGONS                                              :Wagony
 STR_REPLACE_ALL_RAILTYPE                                        :Wszystkie pojazdy szynowe
 STR_REPLACE_ALL_ROADTYPE                                        :Wszystkie pojazdy drogowe
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wybierz, dla jakiego typu torów chcesz zastąpić lokomotywy
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Wybierz, dla jakiego typu dróg chcesz zastąpić pojazdy
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Wybierz, dla jakiego typu torów chcesz zastąpić lokomotywy
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Wybierz, dla jakiego typu dróg chcesz zastąpić pojazdy
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Wyświetla jakim pojazdem zostanie zastąpiony pojazd zaznaczony po lewej stronie
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Wyświetla jakim pojazdem zostanie zastąpiony pojazd zaznaczony po lewej stronie
 STR_REPLACE_RAIL_VEHICLES                                       :Kolej
 STR_REPLACE_ELRAIL_VEHICLES                                     :Kolej elektryczna
 STR_REPLACE_MONORAIL_VEHICLES                                   :Kolej jednoszynowa
@@ -4759,7 +4759,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Pojazdy drogowe
 STR_REPLACE_TRAM_VEHICLES                                       :Tramwaje
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usuwanie wagonów ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Usuń ostatnie wagony podczas zamiany, aby zachować tę samą długość pociągu
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Usuń ostatnie wagony podczas zamiany, aby zachować tę samą długość pociągu
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Użyj Ctrl, aby zastosować również do podgrup
 
 # Vehicle view

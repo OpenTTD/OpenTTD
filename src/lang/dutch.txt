@@ -4339,31 +4339,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Wegvoertuig
 STR_REPLACE_VEHICLE_SHIP                                        :Schip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Vliegtuig
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecteer het type locomotief om te vervangen
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecteer een nieuw type locomotief die je wilt gebruiken om het links geselecteerde type locomotief te vervangen
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Selecteer het type locomotief om te vervangen
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Selecteer een nieuw type locomotief die je wilt gebruiken om het links geselecteerde type locomotief te vervangen
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start het vervangen
 STR_REPLACE_VEHICLES_NOW                                        :Vervang alle voertuigen nu
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Vervang alleen oude voertuigen
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klik op deze knop als je de links geselecteerde locomotief wilt vervangen met de rechtse
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Klik op deze knop als je de links geselecteerde locomotief wilt vervangen met de rechtse
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Niet vervangen
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Geen voertuig geselecteerd
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} als oud
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop het vervangen
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klik op deze knop als je de links geselecteerde locomotief niet wilt vervangen
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Klik op deze knop als je de links geselecteerde locomotief niet wilt vervangen
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wissel tussen locomotief- en wagonvervangvensters
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Wissel tussen locomotief- en wagonvervangvensters
 STR_REPLACE_ENGINES                                             :Motoren
 STR_REPLACE_WAGONS                                              :Wagons
 STR_REPLACE_ALL_RAILTYPE                                        :Alle treinen
 STR_REPLACE_ALL_ROADTYPE                                        :Alle wegvoertuigen
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecteer een spoortype waar je locomotieven voor wilt vervangen
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Selecteer het type weg waar je voertuigen voor wilt vervangen
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Selecteer een spoortype waar je locomotieven voor wilt vervangen
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Selecteer het type weg waar je voertuigen voor wilt vervangen
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geeft weer waarmee de links geselecteerde locomotief vervangen wordt
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Dit geeft weer waarmee de links geselecteerde locomotief vervangen wordt
 STR_REPLACE_RAIL_VEHICLES                                       :Spoorvoertuigen
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrische spoorvoertuigen
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorailvoertuigen
@@ -4373,7 +4373,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Wegvoertuigen
 STR_REPLACE_TRAM_VEHICLES                                       :Trams
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Met Ctrl+klik geldt dit ook voor subgroepen
 
 # Vehicle view

@@ -4339,31 +4339,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vejkøretøj
 STR_REPLACE_VEHICLE_SHIP                                        :Skib
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Fly
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vælg en køretøjstype, som du ønsker udskiftet
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vælg en køretøjstype, som du ønker benyttet i stedet for den type, du har valgt i venste side
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Vælg en køretøjstype, som du ønsker udskiftet
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Vælg en køretøjstype, som du ønker benyttet i stedet for den type, du har valgt i venste side
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start udskiftning
 STR_REPLACE_VEHICLES_NOW                                        :Erstat alle køretøjer nu
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Erstat kun gamle køretøjer
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tryk for at begynde at udskifte køretøjstypen til venstre med køretøjstypen til højre
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Tryk for at begynde at udskifte køretøjstypen til venstre med køretøjstypen til højre
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Udskifter ikke
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Intet køretøj valgt
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} når det er gammelt
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop udskiftning
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tryk for at stoppe udskiftningen at den køretøjstype, som du har valgt til venstre
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Tryk for at stoppe udskiftningen at den køretøjstype, som du har valgt til venstre
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift imellem lokomotiv- og vognudskiftningsvindue
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Skift imellem lokomotiv- og vognudskiftningsvindue
 STR_REPLACE_ENGINES                                             :Lokomotiver
 STR_REPLACE_WAGONS                                              :Vogne
 STR_REPLACE_ALL_RAILTYPE                                        :Alle jernbanevogne
 STR_REPLACE_ALL_ROADTYPE                                        :Alle vejkøretøjer
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vælg den skinne type, du ønsker at udskifte lokomotiver til
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Vælg vejtypen du ønsker at udskifte køretøjer for
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Vælg den skinne type, du ønsker at udskifte lokomotiver til
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Vælg vejtypen du ønsker at udskifte køretøjer for
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Viser hvilket køretøj det valgte køretøj til venstre bliver udskiftet med, hvis det udskiftes
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Viser hvilket køretøj det valgte køretøj til venstre bliver udskiftet med, hvis det udskiftes
 STR_REPLACE_RAIL_VEHICLES                                       :Jernbane
 STR_REPLACE_ELRAIL_VEHICLES                                     :Eltog
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail
@@ -4373,7 +4373,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Vejkøretøjer
 STR_REPLACE_TRAM_VEHICLES                                       :Sporvogne
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Fjern vogne ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få autoudskift til at bevare længden af tog ved at fjerne vogne (startende fra fronten), hvis autoudskiftningen gør toget længere.
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Få autoudskift til at bevare længden af tog ved at fjerne vogne (startende fra fronten), hvis autoudskiftningen gør toget længere.
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+klik for også at anvende på undergrupper
 
 # Vehicle view

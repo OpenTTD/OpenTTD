@@ -3518,26 +3518,26 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :مركبات
 STR_REPLACE_VEHICLE_SHIP                                        :سفن
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :طائرات
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK} اختر نوع المحرك لاستبدالة
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK} اختر نوع المحرك المراد إحلاله محل المحرك المختار في القائمة اليسرى
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK} اختر نوع المحرك لاستبدالة
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK} اختر نوع المحرك المراد إحلاله محل المحرك المختار في القائمة اليسرى
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK} بدأ تبديل العربات
 STR_REPLACE_VEHICLES_NOW                                        :استبدل جميع المركبات الآن
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}اضغط لبدأ عملية تبديل المحركات المختارة في القائمة اليسرى بالمحركات المختارة في القائمة اليمنى
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}اضغط لبدأ عملية تبديل المحركات المختارة في القائمة اليسرى بالمحركات المختارة في القائمة اليمنى
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}لم يتم التبديل
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}لم يتم اختيار اي عربة
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK} اوقف تبديل العربات
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK} اضغط لايقاف تبديل المحركات المختارة في اليسار
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK} اضغط لايقاف تبديل المحركات المختارة في اليسار
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} بدل بين نافذة استبدال المحركات و العربات
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK} بدل بين نافذة استبدال المحركات و العربات
 STR_REPLACE_ENGINES                                             :محركات
 STR_REPLACE_WAGONS                                              :عربات
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK} اختر نوع القطارالمراد تغييرالمحرك اليه
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK} اختر نوع القطارالمراد تغييرالمحرك اليه
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK} اعرض اي نوع من المحركات سوف يتم تغيير المحرك له - اذا وجد ...
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK} اعرض اي نوع من المحركات سوف يتم تغيير المحرك له - اذا وجد ...
 STR_REPLACE_RAIL_VEHICLES                                       :عربات القطار
 STR_REPLACE_ELRAIL_VEHICLES                                     :سكة حديد كهربائية
 STR_REPLACE_MONORAIL_VEHICLES                                   :عربات احادية السكة
@@ -3546,7 +3546,7 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :مركبات م
 STR_REPLACE_TRAM_VEHICLES                                       :مركبات الترام
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK} إزالة العربة ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK} المحافظة على طول القطار بازالة عربات ابتداء من المقدمة عند التبديل - عندما يكون التبدل ينتج قطارا اطول.
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK} المحافظة على طول القطار بازالة عربات ابتداء من المقدمة عند التبديل - عندما يكون التبدل ينتج قطارا اطول.
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl + Click للتطبيق أيضًا على المجموعات الفرعية
 
 # Vehicle view

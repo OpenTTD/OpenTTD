@@ -4339,31 +4339,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :汽车
 STR_REPLACE_VEHICLE_SHIP                                        :船只
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :飞机
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}选择要替换的载具类型
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}选择用来替换左侧选定载具的新载具
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}选择要替换的载具类型
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}选择用来替换左侧选定载具的新载具
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}开始更新
 STR_REPLACE_VEHICLES_NOW                                        :立刻替换所有载具
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :只替换旧的
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}按下以开始将左侧选定的载具替换为右侧指定的载具
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}按下以开始将左侧选定的载具替换为右侧指定的载具
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}没有更新
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}请选择要更新的对象
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} 变老旧时
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}停止更新
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}按下以停止替换左侧指定的载具
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}按下以停止替换左侧指定的载具
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}可以切换 机车/挂车 替换项目
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}可以切换 机车/挂车 替换项目
 STR_REPLACE_ENGINES                                             :机车
 STR_REPLACE_WAGONS                                              :挂车
 STR_REPLACE_ALL_RAILTYPE                                        :所有铁路载具
 STR_REPLACE_ALL_ROADTYPE                                        :所有道路载具
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}选择更新载具的对应铁路类型
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}选择更新载具的对应道路类型
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}选择更新载具的对应铁路类型
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}选择更新载具的对应道路类型
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}显示用来替换左侧选定载具的新载具
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}显示用来替换左侧选定载具的新载具
 STR_REPLACE_RAIL_VEHICLES                                       :普通列车
 STR_REPLACE_ELRAIL_VEHICLES                                     :电力机车
 STR_REPLACE_MONORAIL_VEHICLES                                   :单轨列车
@@ -4373,7 +4373,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :路面交通工
 STR_REPLACE_TRAM_VEHICLES                                       :电车
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}移除车厢（{STRING}）：{ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}如果替换会使列车更长。则从列车前方开始自动移除车厢以维持目前长度
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}如果替换会使列车更长。则从列车前方开始自动移除车厢以维持目前长度
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}。按住 <Ctrl> 键点击以套用至所有子分组
 
 # Vehicle view

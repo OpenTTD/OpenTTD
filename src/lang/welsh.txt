@@ -4314,31 +4314,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Mae Cerbyd Ffor
 STR_REPLACE_VEHICLE_SHIP                                        :Mae Llong
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Mae Awyren
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Dewiswch y math injan i'w ddisodli
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Dewiswch y math injan newydd yr hoffech chi ei ddefnyddio yn lle'r math injan ar y chwith
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Dewiswch y math injan i'w ddisodli
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Dewiswch y math injan newydd yr hoffech chi ei ddefnyddio yn lle'r math injan ar y chwith
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Dechrau Disodli Cerbydau
 STR_REPLACE_VEHICLES_NOW                                        :Disodli pob cerbyd yn awr
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Disodli hen gerbydau yn unig
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pwyswch i ddechrau disodli'r math injan a ddewiswyd ar y chwith gyda'r math injan a ddewiswyd ar y dde
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Pwyswch i ddechrau disodli'r math injan a ddewiswyd ar y chwith gyda'r math injan a ddewiswyd ar y dde
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ddim yn disodli
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Dim cerbyd wedi'i ddewis
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} pan yn hen
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Gorffen Disodli Cerbydau
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Gwasgwch i atal disodli'r math injan sydd wedi'i ddewis ar y chwith
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Gwasgwch i atal disodli'r math injan sydd wedi'i ddewis ar y chwith
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Newid rhwng y ffenest disodli wagenni a'r un injanau
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Newid rhwng y ffenest disodli wagenni a'r un injanau
 STR_REPLACE_ENGINES                                             :Injanau
 STR_REPLACE_WAGONS                                              :Wagenni
 STR_REPLACE_ALL_RAILTYPE                                        :Pob cerbyd rheilffordd
 STR_REPLACE_ALL_ROADTYPE                                        :Pob cerbyd ffordd
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Dewiswch y math o reilffordd yr hoffech chi ddisodli injans ar ei gyfer
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Dewiswch y math o ffordd yr hoffech ddisodli injans ar ei gyfer
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Dewiswch y math o reilffordd yr hoffech chi ddisodli injans ar ei gyfer
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Dewiswch y math o ffordd yr hoffech ddisodli injans ar ei gyfer
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dangoswch pa injan (os unrhyw) y mae'r injan ar y chwith yn cael ei disodli gyda
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Dangoswch pa injan (os unrhyw) y mae'r injan ar y chwith yn cael ei disodli gyda
 STR_REPLACE_RAIL_VEHICLES                                       :Cerbydau Rheilffordd
 STR_REPLACE_ELRAIL_VEHICLES                                     :Cerbydau Rheilffordd Drydan
 STR_REPLACE_MONORAIL_VEHICLES                                   :Cerbydau Monoreilffordd
@@ -4348,7 +4348,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Cerbydau Ffordd
 STR_REPLACE_TRAM_VEHICLES                                       :Cerbydau Tramffordd
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Tynnu wagenni: ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gwneud i awtoddisodli gadw hyd y trên yr un peth drwy dynnu wagenni (gan ddechrau yn y blaen), os byddai newid yr injan yn gwneud y trên yn hirach
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Gwneud i awtoddisodli gadw hyd y trên yr un peth drwy dynnu wagenni (gan ddechrau yn y blaen), os byddai newid yr injan yn gwneud y trên yn hirach
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Clic i weithredu ar is-grwpiau hefyd
 
 # Vehicle view

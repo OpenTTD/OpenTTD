@@ -4458,31 +4458,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Авто
 STR_REPLACE_VEHICLE_SHIP                                        :Корабель
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Літак
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Виберіть транспорт для оновлення
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Виберіть новий транспорт, яким ви бажаєте замінити старий
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Виберіть транспорт для оновлення
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Виберіть новий транспорт, яким ви бажаєте замінити старий
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Почати оновлення
 STR_REPLACE_VEHICLES_NOW                                        :Замінити усі ТС зараз
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Замінювати лише застарілі ТС
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натисніть для запуску оновлення потягів, що вибрані ліворуч, на потяги, що вибрані праворуч
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Натисніть для запуску оновлення потягів, що вибрані ліворуч, на потяги, що вибрані праворуч
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Поки що не оновлюється
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Не вибрано транспортного засобу
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} коли застаріє
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Зупинити оновлення
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натисніть для припинення процесу оновлення потягів, що вибрані ліворуч
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Натисніть для припинення процесу оновлення потягів, що вибрані ліворуч
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Переключення між вікнами заміни потягів та вагонів.
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Переключення між вікнами заміни потягів та вагонів.
 STR_REPLACE_ENGINES                                             :Локомотиви
 STR_REPLACE_WAGONS                                              :Вагони
 STR_REPLACE_ALL_RAILTYPE                                        :Весь залізничний транспорт
 STR_REPLACE_ALL_ROADTYPE                                        :Всі автомобілі
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якої ви збираєтесь оновити потяги
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Виберіть тип дороги, на який хочете замінити двигуни
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Виберіть тип колії, для якої ви збираєтесь оновити потяги
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Виберіть тип дороги, на який хочете замінити двигуни
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Показує, яким потягом буде замінено потяг, вибраний ліворуч
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Показує, яким потягом буде замінено потяг, вибраний ліворуч
 STR_REPLACE_RAIL_VEHICLES                                       :Неелектрифіковані поїзди
 STR_REPLACE_ELRAIL_VEHICLES                                     :Електрифіковані поїзди
 STR_REPLACE_MONORAIL_VEHICLES                                   :Монорейкові поїзди
@@ -4492,7 +4492,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Авто
 STR_REPLACE_TRAM_VEHICLES                                       :Трамвайні транспортні засоби
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Ліквідація зайвих вагонів: ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони, зберігаючи довжину потягу (починаючи спереду), якщо оновлення робить поїзд довшим
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Дозволити автооновленню видаляти вагони, зберігаючи довжину потягу (починаючи спереду), якщо оновлення робить поїзд довшим
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl + клац також діє на підгрупи
 
 # Vehicle view

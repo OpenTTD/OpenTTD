@@ -3687,28 +3687,28 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :ยานพา
 STR_REPLACE_VEHICLE_SHIP                                        :ยานพาหนะทางน้ำ
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :อากาศยาน
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}เลือกประเภทของรถจักรที่จะแทนที่
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}เลือกประเภทของพาหนะที่จะแทนที่ทางซ้ายมือ
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}เลือกประเภทของรถจักรที่จะแทนที่
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}เลือกประเภทของพาหนะที่จะแทนที่ทางซ้ายมือ
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}เริ่มต้นการแทนที่ยานพาหนะ
 STR_REPLACE_VEHICLES_NOW                                        :แทนที่ยานพาหนะทั้งหมดเดี๋ยวนี้
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :แทนที่เฉพาะยานพาหนะที่เก่าแล้ว
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}กดเพื่อเริ่มต้นการแทนที่ยานพาหนะตามที่เลือกไว้ในรายการ
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}กดเพื่อเริ่มต้นการแทนที่ยานพาหนะตามที่เลือกไว้ในรายการ
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}ไม่เปลี่ยน
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}ไม่มียานพาหนะที่เลือกไว้
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} เมื่อเก่า
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}หยุดการแทนที่ยานพาหนะ
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}กดเพื่อเริ่มหยุดการแทนที่ยานพาหนะตามที่เลือกไว้ในรายการ
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}กดเพื่อเริ่มหยุดการแทนที่ยานพาหนะตามที่เลือกไว้ในรายการ
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}สลับระหว่างหน้าต่างการแทนที่ของรถจักรและรถพ่วง
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}สลับระหว่างหน้าต่างการแทนที่ของรถจักรและรถพ่วง
 STR_REPLACE_ENGINES                                             :รถจักร
 STR_REPLACE_WAGONS                                              :รถพ่วง
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}เลือกประเภทของรถจักรและรถพ่วงที่จะแทนที่ใหม่
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}เลือกประเภทของรถจักรและรถพ่วงที่จะแทนที่ใหม่
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}แสดงพาหนะที่จะแทนที่ทางด้านซ้าย
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}แสดงพาหนะที่จะแทนที่ทางด้านซ้าย
 STR_REPLACE_RAIL_VEHICLES                                       :ยานพาหนะประเภทรถไฟ
 STR_REPLACE_ELRAIL_VEHICLES                                     :ยานพาหนะที่ใช้ไฟฟ้า
 STR_REPLACE_MONORAIL_VEHICLES                                   :ยานพาหนะประเภทรถไฟรางเดี่ยว
@@ -3718,7 +3718,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :ถนนสำ
 STR_REPLACE_TRAM_VEHICLES                                       :รถราง
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}แทนที่รถจักรและรถพ่วง({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}ทำให้การแทนที่ขบวนรถไฟทำให้ความยาวของขบวนยังเท่าเดิม
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}ทำให้การแทนที่ขบวนรถไฟทำให้ความยาวของขบวนยังเท่าเดิม
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Click ที่กลุ่มที่เลือกไว้ สามารถเปิดกลุ่มย่อยได้ด้วยเช่นกัน
 
 # Vehicle view

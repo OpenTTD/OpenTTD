@@ -4374,31 +4374,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Közúti járm�
 STR_REPLACE_VEHICLE_SHIP                                        :Hajók
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Repülőgépek
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Cserélendő járműtípus kiválasztása
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}A bal oldalon kiválasztott járműtípus helyett kívánt új járműtípus kiválasztása
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Cserélendő járműtípus kiválasztása
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}A bal oldalon kiválasztott járműtípus helyett kívánt új járműtípus kiválasztása
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Járműcsere elkezdése
 STR_REPLACE_VEHICLES_NOW                                        :Az összes jármű azonnali lecserélése
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Csak az elöregedett járművek lecserélése
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Nyomd meg ezt a gombot hogy a bal oldalon kiválasztott járműveket lecseréld a jobb oldalon kiválasztottra
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Nyomd meg ezt a gombot hogy a bal oldalon kiválasztott járműveket lecseréld a jobb oldalon kiválasztottra
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nem cserélendő
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nincs kiválasztva jármű
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} - csak ha elöregedett
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Járműcsere befejezése
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nyomd meg ezt a gombot, ha be akarod fejezni a bal oldalon kiválasztott járművek cseréjét
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Nyomd meg ezt a gombot, ha be akarod fejezni a bal oldalon kiválasztott járművek cseréjét
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Váltás a mozdony és a vagoncserélő ablak között
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Váltás a mozdony és a vagoncserélő ablak között
 STR_REPLACE_ENGINES                                             :Mozdonyok
 STR_REPLACE_WAGONS                                              :Vagonok
 STR_REPLACE_ALL_RAILTYPE                                        :Minden vasúti jármű
 STR_REPLACE_ALL_ROADTYPE                                        :Minden típus
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Cserélendő egységek vasúttípusának kiválasztása
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Cserélendő járművek úttípusának kiválasztása
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Cserélendő egységek vasúttípusának kiválasztása
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Cserélendő járművek úttípusának kiválasztása
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Megmutatja, hogy melyik bal oldali egységet akarod kicserélni
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Megmutatja, hogy melyik bal oldali egységet akarod kicserélni
 STR_REPLACE_RAIL_VEHICLES                                       :Normál vasúti járművek
 STR_REPLACE_ELRAIL_VEHICLES                                     :Villamosított vasúti járművek
 STR_REPLACE_MONORAIL_VEHICLES                                   :Egysínű Vasutak
@@ -4408,7 +4408,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Közúti járm�
 STR_REPLACE_TRAM_VEHICLES                                       :Villamosok
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon törlés ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automatikus cserénél a szerelvény hosszának a megtartása vagonok eltávolításával (mozdony utántól kezdve), ha a csere után a szerelvény hosszabb lenne
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Az automatikus cserénél a szerelvény hosszának a megtartása vagonok eltávolításával (mozdony utántól kezdve), ha a csere után a szerelvény hosszabb lenne
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+kattintással az alárendelt csoportokra is alkalmazhatod ezt.
 
 # Vehicle view

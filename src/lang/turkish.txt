@@ -4301,31 +4301,31 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Karayolu taşı
 STR_REPLACE_VEHICLE_SHIP                                        :Gemi
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Uçak
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Değiştirilecek türü seçin
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Değiştirilecek türün yerine geçecek türü seçin
+STR_REPLACE_LEFT_ARRAY_TOOLTIP                                  :{BLACK}Değiştirilecek türü seçin
+STR_REPLACE_RIGHT_ARRAY_TOOLTIP                                 :{BLACK}Değiştirilecek türün yerine geçecek türü seçin
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Araçları Değiştirmeye Başla
 STR_REPLACE_VEHICLES_NOW                                        :Tüm araçları hemen değiştir
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Yalnız eski araçları değiştir
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Değiştirme işlemini başlatmak için basın
+STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}Değiştirme işlemini başlatmak için basın
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Değiştirilmiyor
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Hiç Araç Seçilmedi
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} eskidiğinde
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Araçları değiştirmeyi durdur
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Değiştirme işlemini durdurmak için basın
+STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}Değiştirme işlemini durdurmak için basın
 
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Lokomotif ve vagon değişimi pencereleri arasında geçiş yap.
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}Lokomotif ve vagon değişimi pencereleri arasında geçiş yap.
 STR_REPLACE_ENGINES                                             :Lokomotifler
 STR_REPLACE_WAGONS                                              :Vagon
 STR_REPLACE_ALL_RAILTYPE                                        :Tüm demiryolu araçları
 STR_REPLACE_ALL_ROADTYPE                                        :Tüm karayolu araçları
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Lokomatiflerini değiştireceğiniz ray türünü seçin
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Motorlarını değiştirmek istediğin yol tipini seç
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Lokomatiflerini değiştireceğiniz ray türünü seçin
+STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Motorlarını değiştirmek istediğin yol tipini seç
 ###next-name-looks-similar
 
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Soldaki değiştiriliyorsa neyle değiştirildiğini göster
+STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP                            :{BLACK}Soldaki değiştiriliyorsa neyle değiştirildiğini göster
 STR_REPLACE_RAIL_VEHICLES                                       :Demiryolu Araçları
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrikli Trenler
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monoray Araçları
@@ -4335,7 +4335,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Yol Araçları
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvay Araçları
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon kaldırma ({STRING}): {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik yenilemede tren boyutunun artması gerekiyorsa vagonları kaldır (en önden başlayarak yeterli sayıda vagon silinir)
+STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Otomatik yenilemede tren boyutunun artması gerekiyorsa vagonları kaldır (en önden başlayarak yeterli sayıda vagon silinir)
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Alt gruplara da uygulamak için Ctrl+Tıkla
 
 # Vehicle view
