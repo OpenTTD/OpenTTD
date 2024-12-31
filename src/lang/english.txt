@@ -1924,7 +1924,10 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Never
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Economy type: {STRING2}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Smooth economy makes production changes more often, and in smaller steps. Frozen economy stops production changes and industry closures. This setting may have no effect if industry types are provided by a NewGRF
+###length 2
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Smooth economy makes production changes more often, and in smaller steps. Frozen economy stops production changes and industry closures. This setting may have no effect if industry types are provided by a NewGRF.{}{}Industry production per month may still appear to vary if the economy is Frozen, because production is triggered at fixed intervals which do not exactly correspond to months
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :Smooth economy makes production changes more often, and in smaller steps. Frozen economy stops production changes and industry closures. This setting may have no effect if industry types are provided by a NewGRF.{}{}Industry production per minute may still appear to vary if the economy is Frozen, because production is triggered at fixed intervals which do not exactly correspond to minutes
+
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Smooth
