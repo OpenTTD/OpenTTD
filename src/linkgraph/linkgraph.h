@@ -170,10 +170,10 @@ public:
 	static const uint MIN_TIMEOUT_DISTANCE = 32;
 
 	/** Number of days before deleting links served only by vehicles stopped in depot. */
-	static constexpr TimerGameEconomy::Date STALE_LINK_DEPOT_TIMEOUT = 1024;
+	static constexpr TimerGameEconomy::Date STALE_LINK_DEPOT_TIMEOUT{1024};
 
 	/** Minimum number of days between subsequent compressions of a LG. */
-	static constexpr TimerGameEconomy::Date COMPRESSION_INTERVAL = 256;
+	static constexpr TimerGameEconomy::Date COMPRESSION_INTERVAL{256};
 
 	/**
 	 * Scale a value from a link graph of age orig_age for usage in one of age
