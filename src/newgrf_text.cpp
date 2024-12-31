@@ -905,7 +905,7 @@ char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str, StringPara
 
 			/* Dates from NewGRFs have 1920-01-01 as their zero point, convert it to OpenTTD's epoch. */
 			case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
-			case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  parameters.SetParam(0, _newgrf_textrefstack.PopUnsignedWord() + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); break;
+			case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  parameters.SetParam(0, CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + _newgrf_textrefstack.PopUnsignedWord()); break;
 
 			case SCC_NEWGRF_DISCARD_WORD:           _newgrf_textrefstack.PopUnsignedWord(); break;
 
