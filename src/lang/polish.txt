@@ -1642,8 +1642,8 @@ STR_CONFIG_SETTING_DISABLED                                     :Wyłączone
 
 ###length 3
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Wył.
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Dla własnej firmy
-STR_CONFIG_SETTING_COMPANIES_ALL                                :dla wszystkich firm
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Własnej firmy
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Wszystkich firm
 
 ###length 3
 STR_CONFIG_SETTING_NONE                                         :brak
@@ -1705,11 +1705,11 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ustaw katastrof
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Nastawienie władz lokalnych: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Wybierz, jak bardzo hałas i niszczenie środowiska przez firmy wpływają na ich ocenę w mieście i na dalsze działania związane z budową na jego obszarze
 
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limit wysokości mapy: {STRING}
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Ustawia limit wysokości mapy. Z ustawieniem „(automatyczna)” odpowiednia wartość zostanie dobrana po wygenerowaniu terenu
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limit wysokości terenu: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Ustal maksymalną wysokość terenu. W przypadku ustawienia „(automatycznie)” odpowiednia wartość zostanie ustalona po wygenerowaniu terenu
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatyczna)
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatycznie)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nie możesz ustawić limitu wysokości mapy na tę wartość. Co najmniej jedna góra na mapie jest wyższa
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Pozwól na zmiany terenu pod budynkami, torami itp.: {STRING}
@@ -2064,8 +2064,8 @@ STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klawiatura ekra
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Wybierz metodę włączania klawiatury ekranowej do wprowadzania tekstu do pól tekstowych używając tylko urządzenia wskazującego. Jest to dedykowane dla małych urządzeń bez klawiatury
 ###length 4
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Wyłączone
-STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Podwójne kliknięcie
-STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Pojedyncze kliknięcie (po odczekaniu chwili)
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Podwójne Kliknięcie
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Pojedyncze kliknięcie (Po odczekaniu chwili)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Pojedyncze kliknięcie (natychmiast)
 
 STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Używanie usługi przekaźnika: {STRING}
@@ -2322,13 +2322,13 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Wybierz sposób
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatycznie buduj semafory przed: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ustaw rok, w którym semafory świetlne będą używane. Przed tym rokiem w użyciu będą semafory kształtowe (które mają te same właściwości, tylko inny wygląd)
 
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Przełączaj typy sygnalizatorów: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Przełączaj między typami sygnalizatorów: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Wybierz, między jakimi typami sygnalizatorów przełączać, używając Ctrl przy budowaniu sygnalizacji
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Tylko bieżąca grupa
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Wszystkie widoczne
 
-STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Pokazuj typy sygnalizatorów: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Pokaż typ sygnalizatorów: {STRING}
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Wybierz, które typy sygnalizatorów mają być wyświetlane na pasku narzędzi sygnalizatorów
 ###length 2
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Tylko sygnalizatory trasy
