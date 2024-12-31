@@ -588,7 +588,7 @@ TileIndex RoadVehicle::GetOrderStationLocation(StationID station)
 	if (!CanVehicleUseStation(this, st)) {
 		/* There is no stop left at the station, so don't even TRY to go there */
 		this->IncrementRealOrderIndex();
-		return 0;
+		return TileIndex{};
 	}
 
 	return st->xy;

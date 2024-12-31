@@ -2217,7 +2217,7 @@ public:
 
 			case WID_VL_STOP_ALL:
 			case WID_VL_START_ALL:
-				Command<CMD_MASS_START_STOP>::Post(0, widget == WID_VL_START_ALL, true, this->vli);
+				Command<CMD_MASS_START_STOP>::Post(TileIndex{}, widget == WID_VL_START_ALL, true, this->vli);
 				break;
 		}
 	}

@@ -324,7 +324,7 @@ TileIndex Ship::GetOrderStationLocation(StationID station)
 		return st->xy;
 	} else {
 		this->IncrementRealOrderIndex();
-		return 0;
+		return TileIndex{};
 	}
 }
 

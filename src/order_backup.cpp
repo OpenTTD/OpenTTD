@@ -173,7 +173,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, ClientID us
 		/* If it's not a backup of us, ignore it. */
 		if (ob->user != user) continue;
 
-		Command<CMD_CLEAR_ORDER_BACKUP>::Post(0, static_cast<ClientID>(user));
+		Command<CMD_CLEAR_ORDER_BACKUP>::Post(TileIndex{}, static_cast<ClientID>(user));
 		return;
 	}
 }

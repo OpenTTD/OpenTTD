@@ -1999,7 +1999,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 {
 	if (conditional_depth > v->GetNumOrders()) {
 		v->current_order.Free();
-		v->SetDestTile(0);
+		v->SetDestTile(TileIndex{});
 		return false;
 	}
 
@@ -2093,7 +2093,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 		}
 
 		default:
-			v->SetDestTile(0);
+			v->SetDestTile(TileIndex{});
 			return false;
 	}
 
@@ -2109,7 +2109,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 
 	if (order == nullptr) {
 		v->current_order.Free();
-		v->SetDestTile(0);
+		v->SetDestTile(TileIndex{});
 		return false;
 	}
 
@@ -2184,7 +2184,7 @@ bool ProcessOrders(Vehicle *v)
 		}
 
 		v->current_order.Free();
-		v->SetDestTile(0);
+		v->SetDestTile(TileIndex{});
 		return false;
 	}
 

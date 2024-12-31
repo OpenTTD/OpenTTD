@@ -74,7 +74,7 @@ struct MAPTChunkHandler : ChunkHandler {
 		std::array<uint8_t, MAP_SL_BUF_SIZE> buf;
 		uint size = Map::Size();
 
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).type() = buf[j];
 		}
@@ -86,7 +86,7 @@ struct MAPTChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		SlSetLength(size);
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).type();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 		}
@@ -101,7 +101,7 @@ struct MAPHChunkHandler : ChunkHandler {
 		std::array<uint8_t, MAP_SL_BUF_SIZE> buf;
 		uint size = Map::Size();
 
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).height() = buf[j];
 		}
@@ -113,7 +113,7 @@ struct MAPHChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		SlSetLength(size);
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).height();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 		}
@@ -128,7 +128,7 @@ struct MAPOChunkHandler : ChunkHandler {
 		std::array<uint8_t, MAP_SL_BUF_SIZE> buf;
 		uint size = Map::Size();
 
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m1() = buf[j];
 		}
@@ -140,7 +140,7 @@ struct MAPOChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		SlSetLength(size);
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m1();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 		}
@@ -155,7 +155,7 @@ struct MAP2ChunkHandler : ChunkHandler {
 		std::array<uint16_t, MAP_SL_BUF_SIZE> buf;
 		uint size = Map::Size();
 
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE,
 				/* In those versions the m2 was 8 bits */
 				IsSavegameVersionBefore(SLV_5) ? SLE_FILE_U8 | SLE_VAR_U16 : SLE_UINT16
@@ -170,7 +170,7 @@ struct MAP2ChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		SlSetLength(static_cast<uint32_t>(size) * sizeof(uint16_t));
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m2();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT16);
 		}
@@ -185,7 +185,7 @@ struct M3LOChunkHandler : ChunkHandler {
 		std::array<uint8_t, MAP_SL_BUF_SIZE> buf;
 		uint size = Map::Size();
 
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m3() = buf[j];
 		}
@@ -197,7 +197,7 @@ struct M3LOChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		SlSetLength(size);
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m3();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 		}
@@ -212,7 +212,7 @@ struct M3HIChunkHandler : ChunkHandler {
 		std::array<uint8_t, MAP_SL_BUF_SIZE> buf;
 		uint size = Map::Size();
 
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m4() = buf[j];
 		}
@@ -224,7 +224,7 @@ struct M3HIChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		SlSetLength(size);
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m4();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 		}
@@ -239,7 +239,7 @@ struct MAP5ChunkHandler : ChunkHandler {
 		std::array<uint8_t, MAP_SL_BUF_SIZE> buf;
 		uint size = Map::Size();
 
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m5() = buf[j];
 		}
@@ -251,7 +251,7 @@ struct MAP5ChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		SlSetLength(size);
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m5();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 		}
@@ -267,7 +267,7 @@ struct MAPEChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		if (IsSavegameVersionBefore(SLV_42)) {
-			for (TileIndex i = 0; i != size;) {
+			for (TileIndex i{}; i != size;) {
 				/* 1024, otherwise we overflow on 64x64 maps! */
 				SlCopy(buf.data(), 1024, SLE_UINT8);
 				for (uint j = 0; j != 1024; j++) {
@@ -278,7 +278,7 @@ struct MAPEChunkHandler : ChunkHandler {
 				}
 			}
 		} else {
-			for (TileIndex i = 0; i != size;) {
+			for (TileIndex i{}; i != size;) {
 				SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 				for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m6() = buf[j];
 			}
@@ -291,7 +291,7 @@ struct MAPEChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		SlSetLength(size);
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m6();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 		}
@@ -306,7 +306,7 @@ struct MAP7ChunkHandler : ChunkHandler {
 		std::array<uint8_t, MAP_SL_BUF_SIZE> buf;
 		uint size = Map::Size();
 
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m7() = buf[j];
 		}
@@ -318,7 +318,7 @@ struct MAP7ChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		SlSetLength(size);
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m7();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
 		}
@@ -333,7 +333,7 @@ struct MAP8ChunkHandler : ChunkHandler {
 		std::array<uint16_t, MAP_SL_BUF_SIZE> buf;
 		uint size = Map::Size();
 
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT16);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m8() = buf[j];
 		}
@@ -345,7 +345,7 @@ struct MAP8ChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		SlSetLength(static_cast<uint32_t>(size) * sizeof(uint16_t));
-		for (TileIndex i = 0; i != size;) {
+		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m8();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT16);
 		}
