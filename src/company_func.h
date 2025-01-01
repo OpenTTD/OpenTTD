@@ -31,7 +31,7 @@ Money GetAvailableMoneyForCommand();
 bool CheckCompanyHasMoney(CommandCost &cost);
 void SubtractMoneyFromCompany(const CommandCost &cost);
 void SubtractMoneyFromCompanyFract(CompanyID company, const CommandCost &cost);
-CommandCost CheckOwnership(Owner owner, TileIndex tile = 0U);
+CommandCost CheckOwnership(Owner owner, TileIndex tile = {});
 CommandCost CheckTileOwnership(TileIndex tile);
 
 extern CompanyID _local_company;

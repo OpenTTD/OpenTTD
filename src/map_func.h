@@ -229,7 +229,7 @@ private:
 	 */
 	struct IterateWrapper {
 		Iterator begin() { return Iterator(TileIndex{}); }
-		Iterator end() { return Iterator(Map::Size()); }
+		Iterator end() { return Iterator(TileIndex{Map::Size()}); }
 		bool empty() { return false; }
 	};
 
@@ -316,7 +316,7 @@ public:
 	 */
 	static inline TileIndex WrapToMap(TileIndex tile)
 	{
-		return tile.base() & Map::tile_mask;
+		return TileIndex{tile.base() & Map::tile_mask};
 	}
 
 	/**
@@ -372,7 +372,7 @@ public:
  */
 debug_inline static TileIndex TileXY(uint x, uint y)
 {
-	return (y << Map::LogX()) + x;
+	return TileIndex{(y << Map::LogX()) + x};
 }
 
 /**
@@ -403,7 +403,7 @@ inline TileIndexDiff TileDiffXY(int x, int y)
  */
 debug_inline static TileIndex TileVirtXY(uint x, uint y)
 {
-	return (y >> 4 << Map::LogX()) + (x >> 4);
+	return TileIndex{(y >> 4 << Map::LogX()) + (x >> 4)};
 }
 
 
@@ -649,7 +649,7 @@ bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOn
  */
 inline TileIndex RandomTileSeed(uint32_t r)
 {
-	return Map::WrapToMap(r);
+	return Map::WrapToMap(TileIndex{r});
 }
 
 /**
