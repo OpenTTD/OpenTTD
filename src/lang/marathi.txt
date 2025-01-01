@@ -338,13 +338,13 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}सा�
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}ओपेन टीटीडी
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}सुरुवातीची तारीख एक वर्ष मागे न्या
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}सुरुवातीची तारीख एक वर्ष पुढे न्या
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}सुरुवातीचं वर्ष पुरवण्यासाठी क्लिक करा
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}नकाशा, शहरांची यादी दाखवा
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}प्रदेश उत्पन्न करणे
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}गावे उत्पन्न करणे
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}इंडस्ट्री उत्पन्न करणे
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}रस्तेबांधणी
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}चिन्ह लावा
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}सुरुवातीचं वर्ष पुरवण्यासाठी क्लिक करा
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}नकाशा, शहरांची यादी दाखवा
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}प्रदेश उत्पन्न करणे
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}गावे उत्पन्न करणे
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}इंडस्ट्री उत्पन्न करणे
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}रस्तेबांधणी
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}चिन्ह लावा
 
 # Scenario editor file menu
 ###length 7

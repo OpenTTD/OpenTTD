@@ -336,20 +336,20 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landslag
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift amboðslinju
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Goym tilburð, heinta tilburð, far frá tilburðs ritara, gevst
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Goym tilburð, heinta tilburð, far frá tilburðs ritara, gevst
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Tilburðs ritil
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Flyt byrjunar dato 1 ár aftur
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Flyt byrjunar dato 1 ár fram
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Trýst her fyri at seta inn byrjunar dato
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Vís kort, bygdar lista
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landslags framleiðsla
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Bygda framleiðsla
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Ídnaðar framleiðsla
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Vegagerð
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planta trø. Shift skiftur millum at byggja/vísa kostnaðar meting
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Set tekin
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Legg lut. Shift skiftur millum at byggja/vísa kostnaðar meting
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Trýst her fyri at seta inn byrjunar dato
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Vís kort, bygdar lista
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Landslags framleiðsla
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Bygda framleiðsla
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Ídnaðar framleiðsla
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Vegagerð
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Planta trø. Shift skiftur millum at byggja/vísa kostnaðar meting
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Set tekin
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Legg lut. Shift skiftur millum at byggja/vísa kostnaðar meting
 
 # Scenario editor file menu
 ###length 7

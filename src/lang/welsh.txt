@@ -412,21 +412,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Agor gwy
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Amnewid bariau offer
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Cadw Senario, llwytho senario, gwaredu a'r golygydd senario, gadael
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Cadw Senario, llwytho senario, gwaredu a'r golygydd senario, gadael
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Golygydd Senario
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Symud y dyddiad cychwyn yn ôl 1 blwyddyn
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Symud y dyddiad cychwyn ymlaen 2 flynedd
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Cliciwch i fewnbynnu'r flwyddyn dechreuol
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Agor map, porth golwg ychwanegol, rhestr arwyddion neu cyfeiriadur diwydiant
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Agor y ddewislen tirweddu neu gynhyrchu byd newydd
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Adeiladu neu gynhyrchu trefi
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Adeiladu neu gynhyrchu diwydiannau
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Adeiladu tanadeiledd ffordd
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Adeiladu tanadeiledd tramffordd
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plannu coed. Ctrl+Clic+Llusgo i ddewis yr ardal yn ddeiagonal. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Gosod arwydd
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Gosod. Ctrl+Clic+Llusgo i ddewis yr ardal yn ddeiagonal. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Cliciwch i fewnbynnu'r flwyddyn dechreuol
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Agor map, porth golwg ychwanegol, rhestr arwyddion neu cyfeiriadur diwydiant
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Agor y ddewislen tirweddu neu gynhyrchu byd newydd
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Adeiladu neu gynhyrchu trefi
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Adeiladu neu gynhyrchu diwydiannau
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Adeiladu tanadeiledd ffordd
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Adeiladu tanadeiledd tramffordd
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Plannu coed. Ctrl+Clic+Llusgo i ddewis yr ardal yn ddeiagonal. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Gosod arwydd
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Gosod. Ctrl+Clic+Llusgo i ddewis yr ardal yn ddeiagonal. Pwyso Shift hefyd i ddangos amcangyfrif o'r gost yn unig
 
 # Scenario editor file menu
 ###length 7

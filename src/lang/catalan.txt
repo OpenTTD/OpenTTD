@@ -414,21 +414,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Obre les
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Commuta barres d'eines
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Desa o carrega un escenari o bé surt de l'editor o de l'OpenTTD
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Desa o carrega un escenari o bé surt de l'editor o de l'OpenTTD
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor d'escenaris
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Retarda la data d'inici 1 any
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Avança la data d'inici 1 any
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Clica per introduir l'any d'inici
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Obre el mapa, vistes addicionals, llista de signes o el llistat de poblacions i indústries.
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Obre el menú de terreny/generació d'un món nou.
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Construcció i generació de poblacions
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Construcció i generació d'indústries
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Infraestructura de carreteres
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construcció de vies de tramvia i infraestructures relacionades
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planta arbres. Amb Ctrl, se selecciona una àrea diagonal. Amb Maj, només es mostrarà el cost estimat de plantar els arbres.
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Situa un senyal
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Construeix un objecte al mapa. Amb Ctrl+clic+arrossega, se selecciona una àrea diagonal. Si premeu Maj, es mostrarà només el cost estimat.
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Clica per introduir l'any d'inici
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Obre el mapa, vistes addicionals, llista de signes o el llistat de poblacions i indústries.
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Obre el menú de terreny/generació d'un món nou.
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Construcció i generació de poblacions
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Construcció i generació d'indústries
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Infraestructura de carreteres
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Construcció de vies de tramvia i infraestructures relacionades
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Planta arbres. Amb Ctrl, se selecciona una àrea diagonal. Amb Maj, només es mostrarà el cost estimat de plantar els arbres.
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Situa un senyal
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Construeix un objecte al mapa. Amb Ctrl+clic+arrossega, se selecciona una àrea diagonal. Si premeu Maj, es mostrarà només el cost estimat.
 
 # Scenario editor file menu
 ###length 7

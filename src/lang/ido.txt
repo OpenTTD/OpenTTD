@@ -281,13 +281,13 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Konstruk
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Montras sono/muziko fenestro
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvas cenaro, kargas cenaro, abandonas cenaro-redaktisto, ekiras
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Salvas cenaro, kargas cenaro, abandonas cenaro-redaktisto, ekiras
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Cenaro-Redaktisto
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Voyo konstruktado
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantacas arbori
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Situas signalo
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Pozez objekto
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Voyo konstruktado
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Plantacas arbori
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Situas signalo
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Pozez objekto
 
 # Scenario editor file menu
 ###length 7

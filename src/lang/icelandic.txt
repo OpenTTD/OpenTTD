@@ -336,20 +336,20 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landsvæ
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skipta á tækjaslá
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Vista kort, opna kort, hætta í kortagerð, hætta í OpenTTD
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Vista kort, opna kort, hætta í kortagerð, hætta í OpenTTD
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Kortagerð
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Færa byrjunardagsetninguna aftur um 1 ár
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Færa byrjunardagsetninguna fram um 1 ár
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Smelltu til að stilla upphafsár
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Sýna kort, bæjarmöppu
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landslagsgerð
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Bæjargerð
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Iðnaðargerð
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Vegagerð
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Gróðursetja tré. Shift sýnir áætlaðan kostnað
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Setja skilti
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Setja hlut. Shift sýnir áætlaðan kostnað
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Smelltu til að stilla upphafsár
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Sýna kort, bæjarmöppu
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Landslagsgerð
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Bæjargerð
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Iðnaðargerð
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Vegagerð
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Gróðursetja tré. Shift sýnir áætlaðan kostnað
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Setja skilti
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Setja hlut. Shift sýnir áætlaðan kostnað
 
 # Scenario editor file menu
 ###length 7

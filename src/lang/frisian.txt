@@ -357,20 +357,20 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Lânynfo
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skeakelje tusken ark
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Senario opslaan, senario lade, senariobouwer ferlitte, ôfslute
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Senario opslaan, senario lade, senariobouwer ferlitte, ôfslute
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}Iepen TTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Senariobouwer
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Set it startjier 1 jier efterút
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Set it startjier 1 jier foarút
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik om it startjier yn te fieren
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Kaart sjen litte, stêdlist sjen litte
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Lânskipgeneraasje
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stêdgeneraasje
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Yndustry generaasje
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Dikenbou
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Beammen plantsje. Shift skeakelt tusken bouwe/taksearje fan de kosten
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Set in buordsje del
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Pleats in objekt. Shift skeakelt tusken bouwe/taksearje fan de kosten
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Klik om it startjier yn te fieren
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Kaart sjen litte, stêdlist sjen litte
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Lânskipgeneraasje
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Stêdgeneraasje
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Yndustry generaasje
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Dikenbou
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Beammen plantsje. Shift skeakelt tusken bouwe/taksearje fan de kosten
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Set in buordsje del
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Pleats in objekt. Shift skeakelt tusken bouwe/taksearje fan de kosten
 
 # Scenario editor file menu
 ###length 7

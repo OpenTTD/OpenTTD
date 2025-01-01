@@ -414,21 +414,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Отво
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Размяна на ленти с инструменти
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Запис, зареждане на сценарий, затваряне на редактора, изход
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Запис, зареждане на сценарий, затваряне на редактора, изход
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Редактор на сценарии
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Премести назад началната дата с 1 година
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Премести напред началната дата с 1 година
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Натиснете, за да въведете година на започване
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Отворете карта, допълнителен прозорец за изглед, или списък със знаци, градове или отрасли
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Отваряне на меню за тераформиране или генериране на нов свят
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Създаване или генериране на градове
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Построяване или генериране на индустрии
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Строене на пътна инфраструктура
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Строене на трамвайна инфраструктура
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Засаждане на дърва. Ctrl+Click за маркиране по диагонал. Shift за показване на цената за засаждане
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Поставяне табела
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Постави обект. Ctrl+Click за маркиране по диагонал. Shift за показване на цената за построяване
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Натиснете, за да въведете година на започване
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Отворете карта, допълнителен прозорец за изглед, или списък със знаци, градове или отрасли
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Отваряне на меню за тераформиране или генериране на нов свят
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Създаване или генериране на градове
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Построяване или генериране на индустрии
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Строене на пътна инфраструктура
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Строене на трамвайна инфраструктура
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Засаждане на дърва. Ctrl+Click за маркиране по диагонал. Shift за показване на цената за засаждане
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Поставяне табела
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Постави обект. Ctrl+Click за маркиране по диагонал. Shift за показване на цената за построяване
 
 # Scenario editor file menu
 ###length 7

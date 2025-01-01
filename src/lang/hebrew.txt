@@ -372,20 +372,20 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}מידע
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}החלף סרגל כלים
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}שמור תרחיש, טען תרחיש, עזוב את עורך התרחישים, צא
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}שמור תרחיש, טען תרחיש, עזוב את עורך התרחישים, צא
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}עורך התרחישים
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}שנה את שנת ההתחלה לשנה 1 פחות
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}שנה את שנת ההתחלה לשנה 1 יותר
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}לחץ כאן להכנסת שנת ההתחלה
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}הצג מפה, מדריך עיירות
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}יצירת קרקע
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}יצירת ערים
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}יצירת תעשיות
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}סלילת כבישים
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}נטע עצים. מקש ה-Shift מעביר בין מצב בנייה לבין מצב הצגת הערכת עלות
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}מקם סימניה
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}מקם פריט. מקש ה-Shift מעביר בין מצב בנייה לבין מצב הצגת הערכת עלות
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}לחץ כאן להכנסת שנת ההתחלה
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}הצג מפה, מדריך עיירות
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}יצירת קרקע
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}יצירת ערים
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}יצירת תעשיות
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}סלילת כבישים
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}נטע עצים. מקש ה-Shift מעביר בין מצב בנייה לבין מצב הצגת הערכת עלות
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}מקם סימניה
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}מקם פריט. מקש ה-Shift מעביר בין מצב בנייה לבין מצב הצגת הערכת עלות
 
 # Scenario editor file menu
 ###length 7
