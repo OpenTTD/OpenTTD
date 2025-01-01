@@ -204,7 +204,7 @@ void GrfMsgI(int severity, const std::string &msg);
 
 bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile);
 
-StringID MapGRFStringID(uint32_t grfid, StringID str);
+StringID MapGRFStringID(uint32_t grfid, GRFStringID str);
 void ShowNewGRFError();
 
 #endif /* NEWGRF_H */

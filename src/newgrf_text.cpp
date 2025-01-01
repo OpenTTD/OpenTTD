@@ -67,7 +67,7 @@ struct GRFTextEntry {
 	GRFTextList textholder;
 	StringID def_string;
 	uint32_t grfid;
-	uint16_t stringid;
+	GRFStringID stringid;
 };
 
 
@@ -304,11 +304,11 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 			case 0x81:
 			{
 				if (src[0] == '\0' || src[1] == '\0') goto string_end;
-				StringID string;
+				uint16_t string;
 				string = static_cast<uint8_t>(*src++);
 				string |= static_cast<uint8_t>(*src++) << 8;
 				Utf8Encode(d, SCC_NEWGRF_STRINL);
-				Utf8Encode(d, MapGRFStringID(grfid, string));
+				Utf8Encode(d, MapGRFStringID(grfid, GRFStringID{string}));
 				break;
 			}
 			case 0x82:
@@ -540,7 +540,7 @@ void AddGRFTextToList(GRFTextWrapper &list, std::string_view text_to_add)
 /**
  * Add the new read string into our structure.
  */
-StringID AddGRFString(uint32_t grfid, uint16_t stringid, uint8_t langid_to_add, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string)
+StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid_to_add, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string)
 {
 	/* When working with the old language scheme (grf_version is less than 7) and
 	 * English or American is among the set bits, simply add it as English in
@@ -584,7 +584,7 @@ StringID AddGRFString(uint32_t grfid, uint16_t stringid, uint8_t langid_to_add, 
 /**
  * Returns the index for this stringid associated with its grfID
  */
-StringID GetGRFStringID(uint32_t grfid, StringID stringid)
+StringID GetGRFStringID(uint32_t grfid, GRFStringID stringid)
 {
 	auto it = std::ranges::find_if(_grf_text, [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
 	if (it != std::end(_grf_text)) {
@@ -920,7 +920,7 @@ char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str, StringPara
 				break;
 
 			case SCC_NEWGRF_PRINT_WORD_STRING_ID:
-				parameters.SetParam(0, MapGRFStringID(_newgrf_textrefstack.grffile->grfid, _newgrf_textrefstack.PopUnsignedWord()));
+				parameters.SetParam(0, MapGRFStringID(_newgrf_textrefstack.grffile->grfid, GRFStringID{_newgrf_textrefstack.PopUnsignedWord()}));
 				break;
 
 			case SCC_NEWGRF_PRINT_WORD_CARGO_NAME: {

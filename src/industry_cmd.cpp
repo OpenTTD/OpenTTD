@@ -2812,7 +2812,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		if (res != CALLBACK_FAILED) { // failed callback means "do nothing"
 			suppress_message = HasBit(res, 7);
 			/* Get the custom message if any */
-			if (HasBit(res, 8)) str = MapGRFStringID(indspec->grf_prop.grfid, GB(GetRegister(0x100), 0, 16));
+			if (HasBit(res, 8)) str = MapGRFStringID(indspec->grf_prop.grfid, GRFStringID(GB(GetRegister(0x100), 0, 16)));
 			res = GB(res, 0, 4);
 			switch (res) {
 				default: NOT_REACHED();

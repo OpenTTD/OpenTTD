@@ -1553,7 +1553,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 							StartTextRefStackUsage(grffile, 6);
 							ArrayStringParameters<6> tmp_params;
-							GetStringWithArgs(builder, GetGRFStringID(grffile->grfid, 0xD000 + callback), tmp_params);
+							GetStringWithArgs(builder, GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + callback), tmp_params);
 							StopTextRefStackUsage();
 
 							break;

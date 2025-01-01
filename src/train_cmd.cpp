@@ -1056,11 +1056,11 @@ static CommandCost CheckTrainAttachment(Train *t)
 
 				if (head->GetGRF()->grf_version < 8) {
 					if (callback == 0xFD) error = STR_ERROR_INCOMPATIBLE_RAIL_TYPES;
-					if (callback  < 0xFD) error = GetGRFStringID(head->GetGRFID(), 0xD000 + callback);
+					if (callback  < 0xFD) error = GetGRFStringID(head->GetGRFID(), GRFSTR_MISC_GRF_TEXT + callback);
 					if (callback >= 0x100) ErrorUnknownCallbackResult(head->GetGRFID(), CBID_TRAIN_ALLOW_WAGON_ATTACH, callback);
 				} else {
 					if (callback < 0x400) {
-						error = GetGRFStringID(head->GetGRFID(), 0xD000 + callback);
+						error = GetGRFStringID(head->GetGRFID(), GRFSTR_MISC_GRF_TEXT + callback);
 					} else {
 						switch (callback) {
 							case 0x400: // allow if railtypes match (always the case for OpenTTD)

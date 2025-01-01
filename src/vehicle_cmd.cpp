@@ -609,10 +609,10 @@ CommandCost CmdStartStopVehicle(DoCommandFlag flags, VehicleID veh_id, bool eval
 		if (callback != CALLBACK_FAILED) {
 			if (v->GetGRF()->grf_version < 8) {
 				/* 8 bit result 0xFF means 'allow' */
-				if (callback < 0x400 && GB(callback, 0, 8) != 0xFF) error = GetGRFStringID(v->GetGRFID(), 0xD000 + callback);
+				if (callback < 0x400 && GB(callback, 0, 8) != 0xFF) error = GetGRFStringID(v->GetGRFID(), GRFSTR_MISC_GRF_TEXT + callback);
 			} else {
 				if (callback < 0x400) {
-					error = GetGRFStringID(v->GetGRFID(), 0xD000 + callback);
+					error = GetGRFStringID(v->GetGRFID(), GRFSTR_MISC_GRF_TEXT + callback);
 				} else {
 					switch (callback) {
 						case 0x400: // allow

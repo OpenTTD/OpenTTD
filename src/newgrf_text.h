@@ -14,8 +14,8 @@
 #include "strings_type.h"
 #include "table/control_codes.h"
 
-StringID AddGRFString(uint32_t grfid, uint16_t stringid, uint8_t langid, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string);
-StringID GetGRFStringID(uint32_t grfid, StringID stringid);
+StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string);
+StringID GetGRFStringID(uint32_t grfid, GRFStringID stringid);
 const char *GetGRFStringFromGRFText(const GRFTextList &text_list);
 const char *GetGRFStringFromGRFText(const GRFTextWrapper &text);
 const char *GetGRFStringPtr(uint32_t stringid);
