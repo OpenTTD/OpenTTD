@@ -9506,32 +9506,6 @@ static void FinaliseIndustriesArray()
 		for (const auto &indsp : file->industryspec) {
 			if (indsp == nullptr || !indsp->enabled) continue;
 
-			StringID strid;
-			/* process the conversion of text at the end, so to be sure everything will be fine
-			 * and available.  Check if it does not return undefind marker, which is a very good sign of a
-			 * substitute industry who has not changed the string been examined, thus using it as such */
-			strid = GetGRFStringID(indsp->grf_prop.grfid, indsp->name);
-			if (strid != STR_UNDEFINED) indsp->name = strid;
-
-			strid = GetGRFStringID(indsp->grf_prop.grfid, indsp->closure_text);
-			if (strid != STR_UNDEFINED) indsp->closure_text = strid;
-
-			strid = GetGRFStringID(indsp->grf_prop.grfid, indsp->production_up_text);
-			if (strid != STR_UNDEFINED) indsp->production_up_text = strid;
-
-			strid = GetGRFStringID(indsp->grf_prop.grfid, indsp->production_down_text);
-			if (strid != STR_UNDEFINED) indsp->production_down_text = strid;
-
-			strid = GetGRFStringID(indsp->grf_prop.grfid, indsp->new_industry_text);
-			if (strid != STR_UNDEFINED) indsp->new_industry_text = strid;
-
-			if (indsp->station_name != STR_NULL) {
-				/* STR_NULL (0) can be set by grf.  It has a meaning regarding assignation of the
-				 * station's name. Don't want to lose the value, therefore, do not process. */
-				strid = GetGRFStringID(indsp->grf_prop.grfid, indsp->station_name);
-				if (strid != STR_UNDEFINED) indsp->station_name = strid;
-			}
-
 			_industry_mngr.SetEntitySpec(indsp.get());
 		}
 
