@@ -4265,10 +4265,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Schëff 
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Fliger klonen
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Bau eng Kopie vun engem Zuch mat all de Waggonen. Klick op dese Knäppchen an dann op en Zuch am Schapp oder baussen. Ctrl+Klick fir Opträg ze deelen. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Keeft eng Kopie vum Stroossegefier. Klick dese Kneppchen an dann op e Stroossegefier am oder baussent dem Schapp. Ctrl+Klick deelt och d'Opträg. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Bau eng Kopie vum Schëff. Klick op dese Knäppchen an dann op en Schëff an der Werft oder baussen. Ctrl+Klick kopéiert och d'Opträg. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Baut eng Kopie vun engem Fliger. Klick op dese Knäppchen, an dann op en Fliger am Hangar oder baussen. Ctrl+Klick fir Opträg ze deelen. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Bau eng Kopie vun engem Zuch mat all de Waggonen. Klick op dese Knäppchen an dann op en Zuch am Schapp oder baussen. Ctrl+Klick fir Opträg ze deelen. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Keeft eng Kopie vum Stroossegefier. Klick dese Kneppchen an dann op e Stroossegefier am oder baussent dem Schapp. Ctrl+Klick deelt och d'Opträg. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Bau eng Kopie vum Schëff. Klick op dese Knäppchen an dann op en Schëff an der Werft oder baussen. Ctrl+Klick kopéiert och d'Opträg. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Baut eng Kopie vun engem Fliger. Klick op dese Knäppchen, an dann op en Fliger am Hangar oder baussen. Ctrl+Klick fir Opträg ze deelen. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Zentréiert d'Usiicht op de Schapp. Ctrl+Klick erstellt eng nei Usiicht op de Schapp

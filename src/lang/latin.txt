@@ -3789,10 +3789,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Duplicar
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Duplicare Aeroplanum
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Emet exemplar hamaxostichi electi et omnes currus eius. Preme hunc globulum deinde in hamaxostichum vel intra vel extra receptaculum. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Emet exemplar vehiculi viarii electi. Preme hunc globulum deinde in vehiculum viarium vel intra vel extra receptaculum. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Emet exemplar navis electae. Preme hunc globulum deinde in navem vel intra vel extra receptaculum. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Emet exemplar aeroplani electi. Preme hunc globulum deinde in aeroplanum vel intra vel extra receptaculum. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Emet exemplar hamaxostichi electi et omnes currus eius. Preme hunc globulum deinde in hamaxostichum vel intra vel extra receptaculum. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Emet exemplar vehiculi viarii electi. Preme hunc globulum deinde in vehiculum viarium vel intra vel extra receptaculum. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Emet exemplar navis electae. Preme hunc globulum deinde in navem vel intra vel extra receptaculum. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Emet exemplar aeroplani electi. Preme hunc globulum deinde in aeroplanum vel intra vel extra receptaculum. Ctrl+Preme ut iussa communicentur. Shift+Preme ut pretium monstretur sine emptione
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Movere conspectum supra hoc receptaculum ferriviarium. Ctrl+Preme ut nova fenestra conspectus aperiatur supra receptaculum ferriviarium

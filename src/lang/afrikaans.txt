@@ -3641,10 +3641,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kloon Sk
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kloon Vliegtuig
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Klik hier en dan op 'n bestaande trein om 'n spieëlbeeld van die bestaande trein te koop. Ctrl+Klik om die opdragte tel deel. Shift+klik vir kwotasie
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Klik hier en dan op 'n bestaande voertuig om 'n spieëlbeeld van die bestaande voertuig te koop. Shift+klik vir kwotasie
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Klik hier en dan op 'n bestaande skip om 'n spieëlbeeld van die bestaande skip te koop. Shift+klik vir kwotasie
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Klik hier en dan op 'n bestaande vliegtuig om 'n spieëlbeeld van die bestaande vliegtuig te koop. Shift+klik vir kwotasie
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Klik hier en dan op 'n bestaande trein om 'n spieëlbeeld van die bestaande trein te koop. Ctrl+Klik om die opdragte tel deel. Shift+klik vir kwotasie
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Klik hier en dan op 'n bestaande voertuig om 'n spieëlbeeld van die bestaande voertuig te koop. Shift+klik vir kwotasie
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Klik hier en dan op 'n bestaande skip om 'n spieëlbeeld van die bestaande skip te koop. Shift+klik vir kwotasie
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Klik hier en dan op 'n bestaande vliegtuig om 'n spieëlbeeld van die bestaande vliegtuig te koop. Shift+klik vir kwotasie
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Skuif skerm na trein diensstasie. Ctrl+klik om 'n nuwe venster vir die trein diensstasie oop te maak

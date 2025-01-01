@@ -3424,10 +3424,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Itsasont
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Hegazkina klonatu
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Trena eta bagoi guztien kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen tren batean klikatu. Ctrl+klik aginduak konpartitzeko. Mayus+Klik batez besteko kostua erakusten du, erosi gabe
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Errepide ibilgauaren kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen ibilgailu batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Itsasontzi kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen itsasontzi batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hegazkinaren kopia erosiko du. Klikatu botoia eta gero hangar barnean edo kanpoan dagoen hegazkin batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Trena eta bagoi guztien kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen tren batean klikatu. Ctrl+klik aginduak konpartitzeko. Mayus+Klik batez besteko kostua erakusten du, erosi gabe
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Errepide ibilgauaren kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen ibilgailu batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Itsasontzi kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen itsasontzi batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Hegazkinaren kopia erosiko du. Klikatu botoia eta gero hangar barnean edo kanpoan dagoen hegazkin batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Ikuspegi nagusia gordailuan kokatu. Ktrl+klik ikuspegi lehio berria irekiko du gordailuaren kokapenarekin
