@@ -170,18 +170,8 @@ enum SelectCompanyManagerFaceWidgets : WidgetID {
 /** Widgets of the #CompanyInfrastructureWindow class. */
 enum CompanyInfrastructureWidgets : WidgetID {
 	WID_CI_CAPTION,       ///< Caption of window.
-	WID_CI_RAIL_DESC,     ///< Description of rail.
-	WID_CI_RAIL_COUNT,    ///< Count of rail.
-	WID_CI_ROAD_DESC,     ///< Description of road.
-	WID_CI_ROAD_COUNT,    ///< Count of road.
-	WID_CI_TRAM_DESC,     ///< Description of tram.
-	WID_CI_TRAM_COUNT,    ///< Count of tram.
-	WID_CI_WATER_DESC,    ///< Description of water.
-	WID_CI_WATER_COUNT,   ///< Count of water.
-	WID_CI_STATION_DESC,  ///< Description of station.
-	WID_CI_STATION_COUNT, ///< Count of station.
-	WID_CI_TOTAL_DESC,    ///< Description of total.
-	WID_CI_TOTAL,         ///< Count of total.
+	WID_CI_LIST,          ///< Infrastructure list.
+	WID_CI_SCROLLBAR,     ///< Infrastructure list scroll bar.
 };
 
 /** Widgets of the #BuyCompanyWindow class. */
