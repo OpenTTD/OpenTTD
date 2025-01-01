@@ -719,7 +719,7 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32_t width, uin
 			vp->zoom = ZOOM_LVL_WORLD_SCREENSHOT;
 
 			TileIndex north_tile = _settings_game.construction.freeform_edges ? TileXY(1, 1) : TileXY(0, 0);
-			TileIndex south_tile = Map::Size() - 1;
+			TileIndex south_tile{Map::Size() - 1};
 
 			/* We need to account for a hill or high building at tile 0,0. */
 			int extra_height_top = TilePixelHeight(north_tile) + 150;

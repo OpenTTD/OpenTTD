@@ -1138,7 +1138,7 @@ struct VEHSChunkHandler : ChunkHandler {
 
 			if (_cargo_count != 0 && IsCompanyBuildableVehicleType(v) && CargoPacket::CanAllocateItem()) {
 				/* Don't construct the packet with station here, because that'll fail with old savegames */
-				CargoPacket *cp = new CargoPacket(_cargo_count, _cargo_periods, _cargo_source, _cargo_source_xy, _cargo_feeder_share);
+				CargoPacket *cp = new CargoPacket(_cargo_count, _cargo_periods, _cargo_source, TileIndex{_cargo_source_xy}, _cargo_feeder_share);
 				v->cargo.Append(cp);
 			}
 
