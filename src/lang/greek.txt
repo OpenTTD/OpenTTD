@@ -478,8 +478,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Εναλ
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Αποθήκευση σεναρίου, φόρτωση, εγκατάλειψη προγράμματος επεξεργασίας σεναρίων, έξοδος
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Πρόγραμμα Επεξεργασίας Σεναρίου
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο πίσω
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Μετακινήστε την ημερομηνία εκκίνησης 1 χρόνο μπροστά
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο πίσω
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Μετακινήστε την ημερομηνία εκκίνησης 1 χρόνο μπροστά
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Πατήστε εδώ για να εισαγάγετε την χρονιά έναρξης
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Εμφάνιση χάρτη, επιπλέον παραθύρου προβολής, λίστας πινακίδων ή λίστας πόλεων ή βιομηχανιών
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Εμφάνιση μενού δημιουργίας τοπίου ή δημιουργία νέου κόσμου
@@ -3421,15 +3421,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθ
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Επιλέξτε την πυκνότητα των βιομηχανιών ή έναν προσαρμοσμένο αριθμό
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Υψηλότερη κορυφή:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Επιλέξτε την υψηλότερη κορυφή που θα προσπαθήσει να δημιουργήσει το παιχνίδι, μετρημένη σε υψόμετρο πάνω από την επιφάνεια της θάλασσας
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Αύξηση του μέγιστου ύψους της υψηλότερης κορυφής στον χάρτη κατά ένα
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Μειώστε το μέγιστο ύψος της υψηλότερης κορυφής στον χάρτη κατά ένα
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Αύξηση του μέγιστου ύψους της υψηλότερης κορυφής στον χάρτη κατά ένα
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Μειώστε το μέγιστο ύψος της υψηλότερης κορυφής στον χάρτη κατά ένα
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Κάλυψη χιονιού:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Αύξηση κάλυψης χιονιού κατά δέκα τοις εκατό
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Μείωση κάλυψης χιονιού κατά δέκα τοις εκατό
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Αύξηση κάλυψης χιονιού κατά δέκα τοις εκατό
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Μείωση κάλυψης χιονιού κατά δέκα τοις εκατό
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Κάλυψη ερήμου:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Αύξηση κάλυψης ερήμου κατά δέκα τοις εκατό
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Μείωση κάλυψης ερήμου κατά δέκα τοις εκατό
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Αύξηση κάλυψης ερήμου κατά δέκα τοις εκατό
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Μείωση κάλυψης ερήμου κατά δέκα τοις εκατό
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Επίπεδο θάλασσας:
@@ -3502,8 +3502,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Δημι
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Τυχαίο έδαφος
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Ύψος επίπεδης γης:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Επιλέξτε το ύψος της ξηράς πάνω από την επιφάνεια της θάλασσας
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφους ένα κάτω
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφους ένα πάνω
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφους ένα κάτω
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφους ένα πάνω
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Αλλαγή του ύψους του επίπεδου εδαφους
 

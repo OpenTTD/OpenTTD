@@ -375,8 +375,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}החלף
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}שמור תרחיש, טען תרחיש, עזוב את עורך התרחישים, צא
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}עורך התרחישים
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}שנה את שנת ההתחלה לשנה 1 פחות
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}שנה את שנת ההתחלה לשנה 1 יותר
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}שנה את שנת ההתחלה לשנה 1 פחות
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}שנה את שנת ההתחלה לשנה 1 יותר
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}לחץ כאן להכנסת שנת ההתחלה
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}הצג מפה, מדריך עיירות
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}יצירת קרקע
@@ -2889,7 +2889,7 @@ STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}בחר �
 STR_MAPGEN_DATE                                                 :{BLACK} :תאריך
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK} :מספר התעשיות
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}הפסגה הגבוהה ביותר:
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}הקטן את הגובה המרבי של הפסגה הגבוהה ביותר במפה באחד
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}הקטן את הגובה המרבי של הפסגה הגבוהה ביותר במפה באחד
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} :סוג הקרקע
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK} :כמות ימים/אגמים
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}נהרות:
@@ -2946,8 +2946,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}קרקע
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}צור קרקע שטוחה
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}קרקע אקראית
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK} :עומק הקרקע
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}הנמך את גובה האדמה השטוחה ברמה אחת
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}הגדל את עומק הקרקע
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}הנמך את גובה האדמה השטוחה ברמה אחת
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}הגדל את עומק הקרקע
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}שינוי עומק הקרקע
 

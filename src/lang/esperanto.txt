@@ -497,8 +497,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Ŝalti i
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Konservu scenaron, ŝarĝu scenaron, foriru el la kreilo, fermu
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenarkreilon
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Movu la komencdaton 1 jaron posten
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Movu la komencdaton 1 jaron antaŭen
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Movu la komencdaton 1 jaron posten
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Movu la komencdaton 1 jaron antaŭen
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klaku por enigi komencjaron
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Malfermu mapon, ekstran vidujon, liston de ŝildoj, aŭ katalogon de urboj aŭ industriejoj
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landaspekta generado
@@ -3225,15 +3225,15 @@ STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Kiom da industrioj:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Elektu densecon de industriejoj, aŭ specifan nombron
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Plej alta pinto:
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Pliigu la maksimuman altecon de la plej alta pinto sur la mapo je unu
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Malpliigu la maksimuman altecon de la plej alta pinto sur la mapo je unu
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Pliigu la maksimuman altecon de la plej alta pinto sur la mapo je unu
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Malpliigu la maksimuman altecon de la plej alta pinto sur la mapo je unu
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Neĝa kovro:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Pliigu neĝan kovron je dek procentoj
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Malpliigu neĝan kovron je dek procentoj
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Pliigu neĝan kovron je dek procentoj
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Malpliigu neĝan kovron je dek procentoj
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Dezerta kovro:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Pliigu dezertan kovron je dek procentoj
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Malpliigu dezertan kovron je dek procentoj
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Pliigu dezertan kovron je dek procentoj
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Malpliigu dezertan kovron je dek procentoj
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terentipo:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Marnivelo:
@@ -3301,8 +3301,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Ebena la
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generu ebenan landon
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Hazarda lando
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Alteco de ebena lando:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Malaltigu la altecon de ebena lando per unu
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Altigu la altecon de ebena lando per unu
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Malaltigu la altecon de ebena lando per unu
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Altigu la altecon de ebena lando per unu
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Ŝanĝu altecon de ebena lando
 

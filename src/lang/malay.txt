@@ -342,8 +342,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Tukarkan
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Simpan senario, muat semula senario, abai penyunting senario, keluar
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Penyunting Senario
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pindah tarikh permulaan 1 tahun belakang
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Pindah tarikh permulaan 1 tahun ke hadapan
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Pindah tarikh permulaan 1 tahun belakang
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Pindah tarikh permulaan 1 tahun ke hadapan
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik untuk memasuki tahun permulaan
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Paparkan peta, direktori bandar
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Pembentukan lanskap
@@ -2560,8 +2560,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Tanah ra
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Janakan tanah rata
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Tanah rambang
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Ketinggian tanah rata:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Rendahkan ketinggian tanah rata satu petak
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Tinggikan ketinggian tanah rata satu petak
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Rendahkan ketinggian tanah rata satu petak
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Tinggikan ketinggian tanah rata satu petak
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Tukar ketinggian tanah rata
 

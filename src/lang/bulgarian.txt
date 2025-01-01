@@ -417,8 +417,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Разм
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Запис, зареждане на сценарий, затваряне на редактора, изход
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Редактор на сценарии
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Премести назад началната дата с 1 година
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Премести напред началната дата с 1 година
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Премести назад началната дата с 1 година
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Премести напред началната дата с 1 година
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Натиснете, за да въведете година на започване
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Отворете карта, допълнителен прозорец за изглед, или списък със знаци, градове или отрасли
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Отваряне на меню за тераформиране или генериране на нов свят
@@ -3327,15 +3327,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Брой
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Изберете гъстотата на индустриите или въведете число ръчно
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Най-висок връх:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Изберете най-високия връх, който играта ще се опита да създаде, измерен във височина над морското равнище
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Увеличете максималната височина на най-високия връх на картата с едно
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Намалете максималната височина на най-високия връх на картата с едно
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Увеличете максималната височина на най-високия връх на картата с едно
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Намалете максималната височина на най-високия връх на картата с едно
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Снежно покритие:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Увеличи снежното покритие с десет процента
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Намали снежното покритие с десет процента
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Увеличи снежното покритие с десет процента
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Намали снежното покритие с десет процента
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Пустинно покритие:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Увеличаване на пустинното покритие с десет процента
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Намаляване на пустиното покритие с десет процента
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Увеличаване на пустинното покритие с десет процента
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Намаляване на пустиното покритие с десет процента
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип на терен:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Морско равнище:
@@ -3408,8 +3408,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Гене
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Случайна карта
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Височина на плоска земя:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Изберете височината на земята над морското равнище
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Намаляване на височината на плоска земя
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Увеличаване на височината на плоска земя
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Намаляване на височината на плоска земя
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Увеличаване на височината на плоска земя
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Промяна височината на плоска земя
 
