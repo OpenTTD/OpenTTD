@@ -998,7 +998,7 @@ static TimerGameCalendar::Date GetTownRoadTypeFirstIntroductionDate()
 		best = rti;
 	}
 
-	if (best == nullptr) return INT32_MAX;
+	if (best == nullptr) return TimerGameCalendar::Date(INT32_MAX);
 	return best->introduction_date;
 }
 

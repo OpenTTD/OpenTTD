@@ -740,7 +740,7 @@ bool AfterLoadGame()
 
 	/* Update economy year. If we don't have a separate economy date saved, follow the calendar date. */
 	if (IsSavegameVersionBefore(SLV_ECONOMY_DATE)) {
-		TimerGameEconomy::SetDate(TimerGameCalendar::date.base(), TimerGameCalendar::date_fract);
+		TimerGameEconomy::SetDate(TimerGameEconomy::Date{TimerGameCalendar::date.base()}, TimerGameCalendar::date_fract);
 	} else {
 		TimerGameEconomy::SetDate(TimerGameEconomy::date, TimerGameEconomy::date_fract);
 	}
@@ -1965,7 +1965,7 @@ bool AfterLoadGame()
 
 			/* Replace "house construction year" with "house age" */
 			if (IsTileType(t, MP_HOUSE) && IsHouseCompleted(t)) {
-				t.m5() = ClampTo<uint8_t>(TimerGameCalendar::year - (t.m5() + CalendarTime::ORIGINAL_BASE_YEAR));
+				t.m5() = ClampTo<uint8_t>(TimerGameCalendar::year - (CalendarTime::ORIGINAL_BASE_YEAR + t.m5()));
 			}
 		}
 	}

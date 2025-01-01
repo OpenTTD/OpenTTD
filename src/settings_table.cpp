@@ -604,7 +604,7 @@ static void ChangeTimekeepingUnits(int32_t)
 
 		if (TimerGameEconomy::UsingWallclockUnits()) {
 			/* If the new mode is wallclock units, set the economy year back to 1. */
-			new_economy_date = TimerGameEconomy::ConvertYMDToDate(1, 0, 1);
+			new_economy_date = TimerGameEconomy::ConvertYMDToDate(TimerGameEconomy::Year{1}, 0, 1);
 			new_economy_date_fract = 0;
 		} else {
 			/* If the new mode is calendar units, sync the economy year with the calendar year. */

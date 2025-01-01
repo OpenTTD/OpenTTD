@@ -249,7 +249,7 @@ inline void IncrementHouseAge(Tile t)
 inline TimerGameCalendar::Year GetHouseAge(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
-	return IsHouseCompleted(t) ? t.m5() : 0;
+	return TimerGameCalendar::Year{IsHouseCompleted(t) ? t.m5() : 0};
 }
 
 /**

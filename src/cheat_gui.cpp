@@ -113,7 +113,7 @@ static int32_t ClickChangeDateCheat(int32_t new_value, int32_t)
 	/* If not using wallclock units, we keep economy date in sync with calendar date and must change it also. */
 	if (!TimerGameEconomy::UsingWallclockUnits()) {
 		/* Keep economy and calendar dates synced. */
-		TimerGameEconomy::Date new_economy_date = new_calendar_date.base();
+		TimerGameEconomy::Date new_economy_date{new_calendar_date.base()};
 
 		/* Shift cached dates before we change the date. */
 		for (auto v : Vehicle::Iterate()) v->ShiftDates(new_economy_date - TimerGameEconomy::date);

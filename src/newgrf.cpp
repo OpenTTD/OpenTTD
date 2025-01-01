@@ -2264,7 +2264,7 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 			case 0x08: { // Year of availability
 				/* We treat '0' as always available */
 				uint8_t year = buf.ReadByte();
-				bridge->avail_year = (year > 0 ? CalendarTime::ORIGINAL_BASE_YEAR + year : 0);
+				bridge->avail_year = (year > 0 ? CalendarTime::ORIGINAL_BASE_YEAR + year : TimerGameCalendar::Year{});
 				break;
 			}
 
@@ -2856,7 +2856,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 			case 0x0F: { //  Euro introduction dates
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
-				TimerGameCalendar::Year year_euro = buf.ReadWord();
+				TimerGameCalendar::Year year_euro{buf.ReadWord()};
 
 				if (curidx < CURRENCY_END) {
 					_currency_specs[curidx].to_euro = year_euro;
