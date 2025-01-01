@@ -63,7 +63,7 @@ INSTANTIATE_POOL_METHODS(Company)
  * @param name_1 Name of the company.
  * @param is_ai  A computer program is running for this company.
  */
-Company::Company(uint16_t name_1, bool is_ai)
+Company::Company(StringID name_1, bool is_ai)
 {
 	this->name_1 = name_1;
 	this->location_of_HQ = INVALID_TILE;

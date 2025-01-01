@@ -1025,7 +1025,7 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 
 		if (num == 0) {
 			/* If the first company has no name, make sure we call it UNNAMED */
-			if (c->name_1 == 0) {
+			if (c->name_1 == STR_NULL) {
 				c->name_1 = STR_SV_UNNAMED;
 			}
 		} else {

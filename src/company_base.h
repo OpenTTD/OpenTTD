@@ -131,7 +131,7 @@ struct CompanyProperties {
 };
 
 struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
-	Company(uint16_t name_1 = 0, bool is_ai = false);
+	Company(StringID name_1 = STR_NULL, bool is_ai = false);
 	~Company();
 
 	RailTypes avail_railtypes;         ///< Rail types available to this company.
