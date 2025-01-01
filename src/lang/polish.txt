@@ -2064,8 +2064,8 @@ STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klawiatura ekra
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Wybierz metodę włączania klawiatury ekranowej do wprowadzania tekstu do pól tekstowych używając tylko urządzenia wskazującego. Jest to dedykowane dla małych urządzeń bez klawiatury
 ###length 4
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Wyłączone
-STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Podwójne Kliknięcie
-STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Pojedyncze kliknięcie (Po odczekaniu chwili)
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Podwójne kliknięcie
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Pojedyncze kliknięcie (po odczekaniu chwili)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Pojedyncze kliknięcie (natychmiast)
 
 STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Używanie usługi przekaźnika: {STRING}
@@ -2107,7 +2107,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Wszystkie niezw
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Wszystkie oprócz modyfikowania terenu
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Wszystkie działania
 
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Używaj grup w liście pojazdów: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Używaj grup na liście pojazdów: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Wlącz obsługę zaawansowanych list pojazdów do grupowania pojazdów
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Pokazuj wskaźniki załadunku: {STRING}
