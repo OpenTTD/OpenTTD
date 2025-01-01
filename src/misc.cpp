@@ -112,10 +112,10 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 
 		if (TimerGameEconomy::UsingWallclockUnits()) {
 			/* If using wallclock units, start at year 1. */
-			TimerGameEconomy::SetDate(TimerGameEconomy::ConvertYMDToDate(1, 0, 1), 0);
+			TimerGameEconomy::SetDate(TimerGameEconomy::ConvertYMDToDate(TimerGameEconomy::Year{1}, 0, 1), 0);
 		} else {
 			/* Otherwise, we always keep the economy date synced with the calendar date. */
-			TimerGameEconomy::SetDate(new_date.base(), 0);
+			TimerGameEconomy::SetDate(TimerGameEconomy::Date{new_date.base()}, 0);
 		}
 		InitializeOldNames();
 	}

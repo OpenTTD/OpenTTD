@@ -396,7 +396,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 				/* If the start date is 0, the vehicle is not waiting to start and can be ignored. */
 				if (v->timetable_start == 0) continue;
 
-				v->timetable_start = GetStartTickFromDate(v->timetable_start);
+				v->timetable_start = GetStartTickFromDate(TimerGameEconomy::Date(v->timetable_start));
 			}
 		}
 

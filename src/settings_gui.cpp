@@ -3151,7 +3151,7 @@ struct CustomCurrencyWindow : Window {
 				break;
 
 			case WID_CC_YEAR: { // Year to switch to euro
-				TimerGameCalendar::Year val = atoi(str->c_str());
+				TimerGameCalendar::Year val{atoi(str->c_str())};
 
 				GetCustomCurrency().to_euro = (val < MIN_EURO_YEAR ? CF_NOEURO : std::min(val, CalendarTime::MAX_YEAR));
 				break;

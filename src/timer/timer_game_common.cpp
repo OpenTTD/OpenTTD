@@ -68,28 +68,28 @@ template <class T>
 	 */
 
 	/* There are 97 leap years in 400 years */
-	Year yr = 400 * (date.base() / (TimerGameConst<T>::DAYS_IN_YEAR * 400 + 97));
+	Year yr{400 * (date.base() / (TimerGameConst<T>::DAYS_IN_YEAR * 400 + 97))};
 	int rem = date.base() % (TimerGameConst<T>::DAYS_IN_YEAR * 400 + 97);
 
 	if (rem >= TimerGameConst<T>::DAYS_IN_YEAR * 100 + 25) {
 		/* There are 25 leap years in the first 100 years after
 		 * every 400th year, as every 400th year is a leap year */
-		yr += 100;
+		yr += Year{100};
 		rem -= TimerGameConst<T>::DAYS_IN_YEAR * 100 + 25;
 
 		/* There are 24 leap years in the next couple of 100 years */
-		yr += 100 * (rem / (TimerGameConst<T>::DAYS_IN_YEAR * 100 + 24));
+		yr += Year{100 * (rem / (TimerGameConst<T>::DAYS_IN_YEAR * 100 + 24))};
 		rem = (rem % (TimerGameConst<T>::DAYS_IN_YEAR * 100 + 24));
 	}
 
 	if (!IsLeapYear(yr) && rem >= TimerGameConst<T>::DAYS_IN_YEAR * 4) {
 		/* The first 4 year of the century are not always a leap year */
-		yr += 4;
+		yr += Year{4};
 		rem -= TimerGameConst<T>::DAYS_IN_YEAR * 4;
 	}
 
 	/* There is 1 leap year every 4 years */
-	yr += 4 * (rem / (TimerGameConst<T>::DAYS_IN_YEAR * 4 + 1));
+	yr += Year{4 * (rem / (TimerGameConst<T>::DAYS_IN_YEAR * 4 + 1))};
 	rem = rem % (TimerGameConst<T>::DAYS_IN_YEAR * 4 + 1);
 
 	/* The last (max 3) years to account for; the first one

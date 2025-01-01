@@ -443,7 +443,7 @@ uint Engine::GetDisplayMaxTractiveEffort() const
 TimerGameCalendar::Date Engine::GetLifeLengthInDays() const
 {
 	/* Assume leap years; this gives the player a bit more than the given amount of years, but never less. */
-	return (this->info.lifelength + _settings_game.vehicle.extend_vehicle_life).base() * CalendarTime::DAYS_IN_LEAP_YEAR;
+	return TimerGameCalendar::Date{(this->info.lifelength + _settings_game.vehicle.extend_vehicle_life).base() * CalendarTime::DAYS_IN_LEAP_YEAR};
 }
 
 /**
@@ -1320,7 +1320,7 @@ bool IsEngineRefittable(EngineID engine)
  */
 void CheckEngines()
 {
-	TimerGameCalendar::Date min_date = INT32_MAX;
+	TimerGameCalendar::Date min_date{INT32_MAX};
 
 	for (const Engine *e : Engine::Iterate()) {
 		if (!e->IsEnabled()) continue;

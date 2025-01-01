@@ -196,7 +196,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
 	EnforceDeityMode(false);
 
-	return ScriptObject::Command<CMD_SET_STORY_PAGE_DATE>::Do(story_page_id, date);
+	return ScriptObject::Command<CMD_SET_STORY_PAGE_DATE>::Do(story_page_id, ::TimerGameCalendar::Date{date});
 }
 
 

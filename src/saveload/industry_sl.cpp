@@ -39,7 +39,7 @@ public:
 	{
 		SlIndustryAccepted::old_cargo.fill(INVALID_CARGO);
 		SlIndustryAccepted::old_waiting.fill(0);
-		SlIndustryAccepted::old_last_accepted.fill(0);
+		SlIndustryAccepted::old_last_accepted.fill(TimerGameEconomy::Date{});
 	}
 };
 
