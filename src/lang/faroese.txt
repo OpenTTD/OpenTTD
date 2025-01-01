@@ -339,8 +339,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift am
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Goym tilburð, heinta tilburð, far frá tilburðs ritara, gevst
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Tilburðs ritil
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Flyt byrjunar dato 1 ár aftur
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Flyt byrjunar dato 1 ár fram
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Flyt byrjunar dato 1 ár aftur
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Flyt byrjunar dato 1 ár fram
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Trýst her fyri at seta inn byrjunar dato
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Vís kort, bygdar lista
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landslags framleiðsla
@@ -2555,8 +2555,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Flatt le
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Framleið eitt flatt lendi
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Tilvildarligt lendi
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hædd á flatt lendi:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Flyt hæddina á flatt lendi eitt niður
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Flyt hæddina á flatt lendi eitt upp
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Flyt hæddina á flatt lendi eitt niður
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Flyt hæddina á flatt lendi eitt upp
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Broyt hæddina á flatt lendi
 

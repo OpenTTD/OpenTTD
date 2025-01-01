@@ -364,8 +364,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}เป�
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}บันทึกฉาก, โหลดฉาก, ยกเลิกการแก้ไขฉาก, ออก
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}โปรแกรมแก้ไขแผนที่
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}เลื่อนวันที่เริ่มต้นย้อนไป 1 ปี
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}เลือนวันที่เริ่มต้นไปอีก 1 ปี
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}เลื่อนวันที่เริ่มต้นย้อนไป 1 ปี
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}เลือนวันที่เริ่มต้นไปอีก 1 ปี
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}คลิกเพื่อใส่ปีเริ่มต้น
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}แสดงแผนที่และทำเนียบชื่อเมือง
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}สร้างภูมิประเทศ
@@ -2838,9 +2838,9 @@ STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}เล�
 STR_MAPGEN_DATE                                                 :{BLACK}วันที่:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}จำนวนอุตสาหกรรม:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}จุดที่พีคมากที่สุด:
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}เพิ่มขนาดความสูงที่สุดของยอดเขาบนแผนที่
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}ลดขนาดความสูงที่สุดของยอดเขาบนแผนที่
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}เพิ่มการครอบคลุมหิมะไปถึงสิบเปอร์เซ็นต์
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}เพิ่มขนาดความสูงที่สุดของยอดเขาบนแผนที่
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}ลดขนาดความสูงที่สุดของยอดเขาบนแผนที่
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}เพิ่มการครอบคลุมหิมะไปถึงสิบเปอร์เซ็นต์
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}การปกคลุมของทะเลทราย:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}ประเภทภูมิประเทศ:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}ระดับทะเล:
@@ -2899,8 +2899,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}ที�
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}สร้างที่ราบ
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}สุ่มพื้นดิน
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}ระดับความสูงของพื้นราบ:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}ปรับเปลี่ยนความสูงพื้นราบลงมา 1 ระดับ
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}ปรับเปลี่ยนความสูงพื้นราบขึ้นไป 1 ระดับ
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}ปรับเปลี่ยนความสูงพื้นราบลงมา 1 ระดับ
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}ปรับเปลี่ยนความสูงพื้นราบขึ้นไป 1 ระดับ
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}เปลี่ยนความสูงของพื้นราบ
 

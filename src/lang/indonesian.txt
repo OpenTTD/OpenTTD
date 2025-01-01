@@ -410,8 +410,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Berpinda
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Simpan skenario, buka skenario, batalkan skenario editor, keluar
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor Skenario
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Mundurkan tanggal mulai sejauh 1 tahun
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Majukan tanggal mulai sejauh 1 tahun
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Mundurkan tanggal mulai sejauh 1 tahun
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Majukan tanggal mulai sejauh 1 tahun
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik untuk mengisi tahun mulai
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Tampilkan peta, daftar kota
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Pertumbuhan Lansekap
@@ -3211,15 +3211,15 @@ STR_MAPGEN_DATE                                                 :{BLACK}Tgl:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah industri:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :Pilih kepadatan sektor industri, atau angka tertentu
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Puncak tertinggi:
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Menambah satu ketinggian maksimum puncak tertinggi di peta
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Kurangi satu ketinggian maksimum puncak tertinggi di peta
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Menambah satu ketinggian maksimum puncak tertinggi di peta
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Kurangi satu ketinggian maksimum puncak tertinggi di peta
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Cakupan salju:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Meningkatkan cakupan salju sepuluh persen
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Kurangi cakupan salju hingga sepuluh persen
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Meningkatkan cakupan salju sepuluh persen
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Kurangi cakupan salju hingga sepuluh persen
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Cakupan gurun:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Meningkatkan cakupan gurun sepuluh persen
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Kurangi cakupan gurun pasir sebesar sepuluh persen
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Meningkatkan cakupan gurun sepuluh persen
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Kurangi cakupan gurun pasir sebesar sepuluh persen
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis dataran:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Area perairan:
@@ -3287,8 +3287,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Pulau da
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Membuat dataran yang datar
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Pulau bergelombang
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Tinggi daratan:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Turunkan ketinggian dataran satu level. (0 = laut)
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Naikkan ketinggian dataran satu level. (0 = laut)
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Turunkan ketinggian dataran satu level. (0 = laut)
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Naikkan ketinggian dataran satu level. (0 = laut)
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Ubah ketinggian dataran
 

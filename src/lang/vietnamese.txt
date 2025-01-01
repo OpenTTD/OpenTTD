@@ -416,8 +416,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Chuyển
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Lưu, nạp màn chơi kịch bản, thoát trình chỉnh sửa màn chơi, thoát chương trình
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Biên Tập Màn Chơi Kịch Bản
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Chuyển ngày bắt đầu về phía sau 1 năm
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Chuyển ngày bắt đầu về phía trước 1 năm
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Chuyển ngày bắt đầu về phía sau 1 năm
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Chuyển ngày bắt đầu về phía trước 1 năm
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Nháy vào để nhập năm bắt đầu ván chơi
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Hiển thị bản đồ, thư mục thị trấn, danh mục nhãn, hoặc chỉ mục đô thị, nhà máy
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Mở menu địa hình hoặc tạo một thế giới
@@ -3328,15 +3328,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Số lư
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :Chọn độ dày đặc của nhà máy, hoặc nhập một số tự chọn
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Độ cao đỉnh cao nhất:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Chọn mức độ cao nhất mà trò chơi có thể tạo ra, đo đạc và nâng lên trên mực được biển
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Tăng chiều cao tối đa của đỉnh cao nhất lên một đơn vị
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Giảm độ cao tối đa của đỉnh cao nhất trên bản đồ một đơn vị
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Tăng chiều cao tối đa của đỉnh cao nhất lên một đơn vị
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Giảm độ cao tối đa của đỉnh cao nhất trên bản đồ một đơn vị
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Độ phủ địa hình tuyết:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Tăng độ phủ địa hình tuyết lên mười phần trăm
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Giảm độ phủ của tuyết đi mười phần trăm
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Tăng độ phủ địa hình tuyết lên mười phần trăm
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Giảm độ phủ của tuyết đi mười phần trăm
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Độ phủ sa mạc:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Tăng độ phủ sa mạc lên mười phần trăm
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Giảm độ phủ sa mạc đi mười phần trăm
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Tăng độ phủ sa mạc lên mười phần trăm
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Giảm độ phủ sa mạc đi mười phần trăm
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu nền đất:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Mực nước biển:
@@ -3409,8 +3409,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Tạo ra
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Nền đất ngẫu nhiên
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Độ cao của đồng bằng:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Chọn độ cao của đất so với mực nước biển
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Hạ độ cao của đồng bằng xuống một
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Nâng độ cao của đồng bằng lên một
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Hạ độ cao của đồng bằng xuống một
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Nâng độ cao của đồng bằng lên một
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Thay đổi độ cao của đồng bằng
 

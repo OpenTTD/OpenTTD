@@ -417,8 +417,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}툴바�
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}시나리오를 저장하거나, 불러오거나, 시나리오 에디터를 종료하거나, 게임을 종료합니다
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}시나리오 에디터
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}시작 일시를 1년 앞당깁니다.
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}시작 일시를 1년 늦춥니다.
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}시작 일시를 1년 앞당깁니다.
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}시작 일시를 1년 늦춥니다.
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}시작 연도를 입력하세요.
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}지도, 추가 외부 화면, 팻말 목록, 또는 도시나 산업 시설 목록을 엽니다
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}지형 편집 메뉴 또는 새로운 세계 생성 메뉴를 엽니다
@@ -3329,15 +3329,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}산업�
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}산업 시설의 수를 선택하거나, 직접 그 개수를 입력합니다
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}가장 높은 지점의 높이:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}해수면을 기준으로, 게임이 생성하려고 하는 가장 높은 곳의 높이를 선택합니다.
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}지도에서 가장 높은 지점의 최대 높이를 1만큼 높입니다
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}지도에서 가장 높은 지점의 최대 높이를 1만큼 낮춥니다
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}지도에서 가장 높은 지점의 최대 높이를 1만큼 높입니다
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}지도에서 가장 높은 지점의 최대 높이를 1만큼 낮춥니다
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}눈 비율:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}눈 지역의 비율을 10%p 늘립니다.
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}눈 지역의 비율을 10%p 줄입니다.
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}눈 지역의 비율을 10%p 늘립니다.
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}눈 지역의 비율을 10%p 줄입니다.
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}사막 비율:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}눈이 내린 곳의 비율을 10%p 줄입니다.
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}사막 지역의 비율을 10%p 줄입니다.
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}눈이 내린 곳의 비율을 10%p 줄입니다.
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}사막 지역의 비율을 10%p 줄입니다.
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}지형 종류:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}해수면:
@@ -3410,8 +3410,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}평평�
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}무작위 지형
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}평지의 높이:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}해수면 위의 땅 높이를 선택합니다
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}평지의 높이를 1칸 낮춥니다
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}평지의 높이를 1칸 높입니다
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}평지의 높이를 1칸 낮춥니다
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}평지의 높이를 1칸 높입니다
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}평지의 높이 변경
 

@@ -345,8 +345,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK} ٹول 
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK} منظر محفوظ کیجئے، منظر کھولیں، منظر دست بردار کیجیئے، منظر چھوڑیئے
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW} منظر نامھ
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}شروع کرنے کی تاریخ کو ایک سال پیچھے کرو
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}شروع کرنے کی تاریخ کو ایک سال آگے کرو
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}شروع کرنے کی تاریخ کو ایک سال پیچھے کرو
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}شروع کرنے کی تاریخ کو ایک سال آگے کرو
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK} کلک کر کے ابتدائی سال درج کیجیئے
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK} نقشھ، کتبِ قصبات
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK} منظر تخلیق

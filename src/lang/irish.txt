@@ -373,8 +373,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Athraigh
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sábháil scéal, lódáil scéal, fág eagarthóir na scéalta, scoir
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Eagarthóir Scéalta
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Cuir an dáta tosaigh siar bliain amháin
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Cuir an dáta tosaigh ar aghaidh bliain amháin
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Cuir an dáta tosaigh siar bliain amháin
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Cuir an dáta tosaigh ar aghaidh bliain amháin
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Cliceáil chun an dáta tosaigh a iontráil
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Taispeáin léarscáil, liosta na mbailte
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Tírdhreach a chruthú
@@ -3014,15 +3014,15 @@ STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Roghnaig
 STR_MAPGEN_DATE                                                 :{BLACK}Dáta:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Líon na dtionscal:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}An beann is airde:
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Méadaigh airde uasta an bhinn is airde ar an léarscáil d'aon leibhéal amháin
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Laghdaigh airde uasta an bhinn is airde ar an léarscáil d'aon leibhéal amháin
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Méadaigh airde uasta an bhinn is airde ar an léarscáil d'aon leibhéal amháin
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Laghdaigh airde uasta an bhinn is airde ar an léarscáil d'aon leibhéal amháin
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Clúdach sneachta:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Méadaigh clúdach an tsneachta deich faoin gcéad
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Laghdaigh clúdach an tsneachta deich faoin gcéad
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Méadaigh clúdach an tsneachta deich faoin gcéad
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Laghdaigh clúdach an tsneachta deich faoin gcéad
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Clúdach an fhásaigh:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Méadaigh clúdach an fhásaigh deich faoin gcéad
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Laghdaigh clúdach an fhásaigh deich faoin gcéad
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Méadaigh clúdach an fhásaigh deich faoin gcéad
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Laghdaigh clúdach an fhásaigh deich faoin gcéad
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Cineál tír-raoin:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Leibhéal na farraige:
@@ -3083,8 +3083,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Talamh r
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Cruthaigh talamh réidh
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Talamh randamach
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Airde na talún réidh:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Bog airde na talún réidh síos ceann amháin
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Bog airde na talún réidh suas ceann amháin
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Bog airde na talún réidh síos ceann amháin
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Bog airde na talún réidh suas ceann amháin
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Athraigh airde na talún réidh
 

@@ -417,8 +417,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Alterna 
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salva scenario, carica scenario, abbandona l'editor di scenari, esci
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor di scenari
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Sposta la data d'inizio indietro di 1 anno
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Sposta la data d'inizio avanti di 1 anno
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Sposta la data d'inizio indietro di 1 anno
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Sposta la data d'inizio avanti di 1 anno
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Fare clic per inserire l'anno d'inizio
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Apre la mappa, la finestra extra, l'elenco dei cartelli, l'elenco delle città o delle industrie
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Aprire il menu Paesaggio o generare un nuovo mondo
@@ -3345,15 +3345,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numero i
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Selezionare la densità delle industrie o un numero personalizzato.
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Picco massimo:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Scegliere la vetta più alta che il gioco tenterà di creare, misurata in altezza sul livello del mare
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Aumenta la massima altezza del picco più alto sulla mappa di uno
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Diminuisci la massima altezza del picco più alto sulla mappa di uno
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Aumenta la massima altezza del picco più alto sulla mappa di uno
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Diminuisci la massima altezza del picco più alto sulla mappa di uno
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Aree innevate:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Aumenta la copertura della neve del dieci per cento
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Diminuisci la copertura della neve del dieci per cento
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Aumenta la copertura della neve del dieci per cento
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Diminuisci la copertura della neve del dieci per cento
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Aree desertiche:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Aumenta la copertura del deserto del dieci percento
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Diminuisci la copertura del deserto del dieci percento
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Aumenta la copertura del deserto del dieci percento
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Diminuisci la copertura del deserto del dieci percento
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo di terreno:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Livello di mare:
@@ -3426,8 +3426,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Genera u
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Casuale
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altezza terreno pianeggiante:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Scegliere l'altitudine del terreno sul livello del mare
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Sposta in giù di uno l'altezza del terreno pianeggiante
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Sposta in su di uno l'altezza del terreno pianeggiante
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Sposta in giù di uno l'altezza del terreno pianeggiante
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Sposta in su di uno l'altezza del terreno pianeggiante
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Cambia l'altezza del terreno pianeggiante
 

@@ -356,8 +356,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Tresna b
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Eszenarioa gorde, eszenarioa kargatu, eszenarioaren editorea itxi, irten
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Eszenario Editorea
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Mugitu hasierako data urte 1 atzerago
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Mugitu hasierako data urte 1 aurrerago
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Mugitu hasierako data urte 1 atzerago
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Mugitu hasierako data urte 1 aurrerago
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klikatu hasiera data ezartzeko
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Erakutsi mapa, herri direktorioa
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Paisaiaren sorkuntza
@@ -2722,8 +2722,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Paisai l
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Paisai laua sortu
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Ausazko paisaia
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Paisai lauaren garaiera:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Paisai lauaren garaiera puntu bat jeitsi
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Paisai lauaren garaiera puntu bat igo
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Paisai lauaren garaiera puntu bat jeitsi
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Paisai lauaren garaiera puntu bat igo
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Paisai lauaren garaiera aldatu
 

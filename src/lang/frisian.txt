@@ -360,8 +360,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skeakelj
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Senario opslaan, senario lade, senariobouwer ferlitte, ôfslute
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}Iepen TTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Senariobouwer
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Set it startjier 1 jier efterút
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Set it startjier 1 jier foarút
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Set it startjier 1 jier efterút
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Set it startjier 1 jier foarút
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik om it startjier yn te fieren
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Kaart sjen litte, stêdlist sjen litte
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Lânskipgeneraasje
@@ -2694,8 +2694,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Sljocht 
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}In sljocht lânskip generearje
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Samar in lânskip
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hichte sljocht lânskip:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}De hichte fan it sljochte lânskip oanpasse
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Hichte sljocht lânskip ien omheech ferpleatse
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}De hichte fan it sljochte lânskip oanpasse
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Hichte sljocht lânskip ien omheech ferpleatse
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Hichte sljocht lânskip oanpasse
 

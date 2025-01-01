@@ -549,8 +549,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Пере
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Зберегти сценарій, завантажити сценарій, вийти з редактору сценаріїв, вихід
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Редактор сценаріїв
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Перенести початкову дату на 1 рік назад
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Перенести початкову дату на 1 рік вперед
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Перенести початкову дату на 1 рік назад
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Перенести початкову дату на 1 рік вперед
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Натисніть, щоб ввести рік початку
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Показати мапу, додаткове вікно, список позначок, або перелік міст чи підприємств
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Відкрити меню створення ландшафту або нового світу
@@ -3454,15 +3454,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кіль
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :BLACK}Оберіть щільність виробництв або випадкову кількість
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Найвища гора:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Обрати найвищу гору відносно рівня моря, яку гра спробує створити.
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Збільшити на одиницю максимальну висоту найвищої гори на мапі
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Зменшити на одиницю максимальну висоту найвищої гори на мапі
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Збільшити на одиницю максимальну висоту найвищої гори на мапі
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Зменшити на одиницю максимальну висоту найвищої гори на мапі
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Покриття снігом:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Збільшити покриття снігом на 10%
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Зменшити покриття снігом на 10%
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Збільшити покриття снігом на 10%
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Зменшити покриття снігом на 10%
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Покриття пустелею:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Збільшити покриття пустелею на 10%
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Зменшити покриття пустелею на 10%
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Збільшити покриття пустелею на 10%
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Зменшити покриття пустелею на 10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафту:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Рівень моря:
@@ -3535,8 +3535,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Гене
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Випадково
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Висота рівня моря
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Обрати висоту суходолу над рівнем моря
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Підняти рівень рівної землі на 1
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Опустити рівень рівної землі на 1
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Підняти рівень рівної землі на 1
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Опустити рівень рівної землі на 1
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Змінити висоту рівня рівної землі
 

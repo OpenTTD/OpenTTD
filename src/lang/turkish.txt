@@ -416,8 +416,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Araç ç
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Senaryoyu kaydet, senaryoyu yükle, editörden çık, oyundan çık
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Senaryo Düzenleyicisi
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Başlangıç tarihini 1 yıl gerilet
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Başlangıç tarihini 1 yıl ilerlet
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Başlangıç tarihini 1 yıl gerilet
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Başlangıç tarihini 1 yıl ilerlet
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Başlangıç yılını girmek için tıklayın
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Haritayı, Ekstra görünüm alanını, Tabela listesini, veya Şehir veya Fabrika listesini açın
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Arazi inşaa menüsünü açın ya da yeni bir dünya oluşturun
@@ -3299,15 +3299,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fabrika 
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Fabrikaların yoğunluğunu seçin, veya özel bir sayı girin
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}En yüksek tepe:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Oyunun oluşturmaya çalışacağı en yüksek zirve yüksekliğini seçin. Yükseklik deniz seviyesinden itibaren ölçülür.
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Haritadaki en yüksek tepenin azami yüksekliğini 1 arttırın
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Haritadaki en yüksek tepenin azami yüksekliğini 1 düşürün
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Haritadaki en yüksek tepenin azami yüksekliğini 1 arttırın
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Haritadaki en yüksek tepenin azami yüksekliğini 1 düşürün
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Kar örtüsü:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Kar örtüsünü yüzde on arttır
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Kar örtüsünü yüzde on azalt
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Kar örtüsünü yüzde on arttır
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Kar örtüsünü yüzde on azalt
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}%{NUM}
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Çöl örtüsü:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Çöl örtüsünü yüzde on arttır
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Çöl örtüsünü yüzde on azalt
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Çöl örtüsünü yüzde on arttır
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Çöl örtüsünü yüzde on azalt
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}%{NUM}
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Arazi türü:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Deniz seviyesi:
@@ -3380,8 +3380,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Düzlük
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Rastgele alan
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Düzlüğün Yüksekliği:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Arazinin deniz seviyesinden yüksekliğini seçin
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Düzlüğü bir alçalt
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Düzlüğün yüksekliğini bir arttır
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Düzlüğü bir alçalt
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Düzlüğün yüksekliğini bir arttır
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Düzlüğün yüksekliğini değiştir
 

@@ -598,8 +598,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Zamenjuj
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Čuvanje scenarija, učitavanje scenarija, napuštanje editora, izlaz
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Uređivač scenarija
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pomeranje datuma početka za jednu godinu unazad
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Pomeranje datuma početka za jednu godinu unapred
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Pomeranje datuma početka za jednu godinu unazad
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Pomeranje datuma početka za jednu godinu unapred
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klikni za unos početne godine
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Prikazuje kartu, popis naselja
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Oblikovanje reljefa
@@ -3401,15 +3401,15 @@ STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Izaberi 
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Broj fabrika:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Najviši vrh:
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Povećaj maksimalnu visinu najvišeg vrha za jedan korak
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Smanji maksimalnu visinu najvišeg vrha za jedan korak
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Povećaj maksimalnu visinu najvišeg vrha za jedan korak
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Smanji maksimalnu visinu najvišeg vrha za jedan korak
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Pokrivenost snegom:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Povećaj pokrivenost snegom za deset procenata
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Smanji pokrivenost snegom za deset procenata
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Povećaj pokrivenost snegom za deset procenata
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Smanji pokrivenost snegom za deset procenata
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Pokrivenost pustinjom:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Povećaj pokrivenost pustinjom za deset procenata
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Smanji pokrivenost pustinjom za deset procenata
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Povećaj pokrivenost pustinjom za deset procenata
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Smanji pokrivenost pustinjom za deset procenata
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Nivo mora:
@@ -3477,8 +3477,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Ravan te
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Postavlja ravno zemljište
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Proizvoljan oblik terena
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Visina ravnog terena:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Smanjuje visinu ravnog terena za jedan
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Povećava visinu ravnog terena za jedan
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Smanjuje visinu ravnog terena za jedan
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Povećava visinu ravnog terena za jedan
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Promena visine ravnog terena
 

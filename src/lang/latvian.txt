@@ -418,8 +418,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Pārslē
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Saglabāt scenāriju, ielādēt scenāriju, pamest scenāriju redaktoru, iziet
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}scenāriju redaktors
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pārvietot sākuma datumu 1 gadu atpakaļ
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Pārvietot sākuma datumu 1 gadu uz priekšu
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Pārvietot sākuma datumu 1 gadu atpakaļ
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Pārvietot sākuma datumu 1 gadu uz priekšu
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klikšķināt, lai ievadītu sākuma gadu
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Atvērt karti, papildu skata logu, zīmju sarakstu vai pilsētas vai ražotņu sarakstu
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Atvērt ainavu izvēlni vai izveidot jaunu pasauli
@@ -3333,15 +3333,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Ražotņ
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Atlasiet nozaru blīvumu vai pielāgojiet daudzumu
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Augstākā virsotne:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Izvēlieties augstāko virsotni, ko spēle mēģinās izveidot, mērot augstumu virs jūras līmeņa
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Palielināt augstāko punktu virsotnes pa vienai
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Pa vienai samazināt kartes augstākās virsotnes maksimālo augstumu
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Palielināt augstāko punktu virsotnes pa vienai
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Pa vienai samazināt kartes augstākās virsotnes maksimālo augstumu
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Sniega pārklājums:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Palielināt sniega segumu par desmit procentiem
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Samazināt sniega pārklājumu par desmit procentiem
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Palielināt sniega segumu par desmit procentiem
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Samazināt sniega pārklājumu par desmit procentiem
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Tuksneša pārklājums:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Palielināt tuksneša pārklājumu par desmit procentiem
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Samazināt tuksneša pārklājumu par desmit procentiem
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Palielināt tuksneša pārklājumu par desmit procentiem
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Samazināt tuksneša pārklājumu par desmit procentiem
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Apvidus reljefs:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Jūras līmenis:
@@ -3414,8 +3414,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Radīt l
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Nejauša zeme
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Līdzenas zemes augstums:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Izvēlieties zemes augstumu virs jūras līmeņa
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Par vienu līmeni samazināt līdzenas zemes augstumu
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Par vienu līmeni palielināt līdzenas zemes augstumu
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Par vienu līmeni samazināt līdzenas zemes augstumu
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Par vienu līmeni palielināt līdzenas zemes augstumu
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Mainīt zemes augstumu
 

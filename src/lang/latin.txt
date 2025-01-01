@@ -549,8 +549,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Mutare i
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Servare scaenarium, legere scaenarium, relinquere scriptorium scaenarii, exire
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scriptorium Scaenarii
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Facit ut dies initii uno anno procedatur
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Facit ut dies initii uno anno recedatur
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Facit ut dies initii uno anno procedatur
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Facit ut dies initii uno anno recedatur
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Mutare diem initii
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Monstrare tabulam geographicam vel indicem oppidorum
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Plasmatio terrae
@@ -3035,8 +3035,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Terra pl
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Creare terram planam
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Terrae fortuitae
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altitudo terrae planae:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Inclinere altitudinem terram planam
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Tollere altitudinem terram planam
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Inclinere altitudinem terram planam
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Tollere altitudinem terram planam
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Mutare altitudinem planae terrae
 

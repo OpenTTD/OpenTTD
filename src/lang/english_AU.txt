@@ -416,8 +416,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Switch t
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Save scenario, load scenario, abandon scenario editor, exit
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenario Editor
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Move the starting date backward 1 year
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Move the starting date forward 1 year
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Move the starting date backward 1 year
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Move the starting date forward 1 year
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Click to enter the starting year
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Open map, extra viewport, sign list, or town or industry directory
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Open landscaping menu or generate a new world
@@ -3328,15 +3328,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. of i
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Select the density of industries, or a custom number
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Highest peak:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Choose the highest peak that the game will attempt to create, measured in elevation above sea level
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Increase the maximum height of highest peak on the map by one
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Decrease the maximum height of highest peak on the map by one
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Increase the maximum height of highest peak on the map by one
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Decrease the maximum height of highest peak on the map by one
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Snow coverage:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Increase snow coverage by ten percent
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Decrease snow coverage by ten percent
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Increase snow coverage by ten percent
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Decrease snow coverage by ten percent
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Desert coverage:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Increase desert coverage by ten percent
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Decrease desert coverage by ten percent
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Increase desert coverage by ten percent
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Decrease desert coverage by ten percent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain type:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Sea level:
@@ -3409,8 +3409,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generate
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Random land
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Height of flat land:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Choose the height of the land above sea level
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Move the height of flat land one down
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Move the height of flat land one up
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Move the height of flat land one down
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Move the height of flat land one up
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Change height of flat land
 

@@ -416,8 +416,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift v�
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Gem scenarie, hent scenarie, forlad scenarieeditoren, afslut
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenarieeditor
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Flyt startdatoen 1 år tilbage
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Flyt startdatoen 1 år frem
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Flyt startdatoen 1 år tilbage
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Flyt startdatoen 1 år frem
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik for at angive startdatoen
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Åbn kort, ekstra visnings af skilteliste eller by- eller brancheoversigt
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Åbn landskabsmenuen, eller generer en ny verden
@@ -3328,15 +3328,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal in
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Vælg tætheden af industrier eller et brugerdefineret tal
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Højeste bjergtop:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Vælg den højeste top, som spillet vil forsøge at skabe, målt i højde over havets overflade
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Forøger den maksimale højde på højeste bjergtop på kortet med én
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Sænker den maksimale højde på højeste bjergtop på kortet med én
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Forøger den maksimale højde på højeste bjergtop på kortet med én
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Sænker den maksimale højde på højeste bjergtop på kortet med én
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Snedække:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Forøger snedækket med ti procent
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Sænker snedækket med ti procent
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Forøger snedækket med ti procent
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Sænker snedækket med ti procent
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Ørkendækning:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Forøger ørkendækningen med ti procent
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Sænker ørkendækningen med ti procent
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Forøger ørkendækningen med ti procent
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Sænker ørkendækningen med ti procent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terræntype:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Havniveau
@@ -3409,8 +3409,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generer 
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Tilfældigt land
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Højde af fladt landskab:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Vælg højden af landet over havets overflade
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Sæt højden af fladt landskab en ned
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Sæt højden af fladt landskab en op
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Sæt højden af fladt landskab en ned
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Sæt højden af fladt landskab en op
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Ændre højden af fladt landskab
 

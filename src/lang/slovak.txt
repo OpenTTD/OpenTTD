@@ -479,8 +479,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Prepnú�
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Uložiť scenár, nahrať scenár, opustiť editor scenára, ukončiť
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor scenára
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Posunúť začiatok o rok dozadu
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Posunúť začiatok o rok dopredu
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Posunúť začiatok o rok dozadu
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Posunúť začiatok o rok dopredu
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Kliknúť pre zadanie počiatočného roku
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Zobraziť mapu, extra výrez, zoznam miest, priemyslu a značiek
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Otvoriť menu pre úpravu terénu alebo vytváranie nového sveta
@@ -3346,15 +3346,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Počet p
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Zvoľte hustotu priemyslu, alebo zadajte vlastné číslo
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Najvyšší vrchol:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Vyberte najvyšší vrchol, ktorý sa hra pokúsi vytvoriť, meraný v nadmorskej výške
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Zvýšiť maximálnu výšku najvyššieho vrchola na mape o jeden
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Znížiť maximálnu výšku najvyššieho vrchola na mape o jeden
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Zvýšiť maximálnu výšku najvyššieho vrchola na mape o jeden
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Znížiť maximálnu výšku najvyššieho vrchola na mape o jeden
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Pokrytie snehom:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Zvýšiť pokrytie snehom o desať percent
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Znížiť pokrytie snehom o desať percent
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Zvýšiť pokrytie snehom o desať percent
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Znížiť pokrytie snehom o desať percent
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Pokrytie púšťou:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Zvýšiť pokrytie púšťou o desať percent
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Znížiť pokrytie púšťou o desať percent
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Zvýšiť pokrytie púšťou o desať percent
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Znížiť pokrytie púšťou o desať percent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terénu:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Rozloha mora:
@@ -3427,8 +3427,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generova
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Náhodná krajina
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Výška rovnej krajiny:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Vyberte výšku zeme nad hladinou mora
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Znizit vysku rovnej krajiny o jedno
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Zvýšiť výšku rovnej krajiny o jedno
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Znizit vysku rovnej krajiny o jedno
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Zvýšiť výšku rovnej krajiny o jedno
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Zmeniť výšku rovnej krajiny
 

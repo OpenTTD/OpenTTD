@@ -728,8 +728,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Пера
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Захаваньне/загрузка сцэнара, выхад з рэдактара, выхад
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Рэдактар сцэнараў
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Зьменшыць пачатковую дату гульні на 1 год
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Павялічыць пачатковую дату гульні на 1 год
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Зьменшыць пачатковую дату гульні на 1 год
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Павялічыць пачатковую дату гульні на 1 год
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Клікніце, каб зьмяніць пачатковую дату гульні
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Паказаць мапу, дадатковае вакно прагляду, сьпіс знакаў, гарадоў, прадпрыемстваў
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Адкрыць меню ляндшафту ці стварыць новы свет
@@ -3599,15 +3599,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Коль
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Выберыце шчыльнасць размяшчэньня прадпрыемстваў на карце, ці азначце іх дакладную колькасць
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Cамая высокая вяршыня:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Азначце максімальную вышыню гор, створаных генератарам карт (адносна ўзроўня мора)
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Павялічыць максімальную вышыню гор на карце на 1
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Паменшыць максімальную вышыню гор на карце на 1
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Павялічыць максімальную вышыню гор на карце на 1
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Паменшыць максімальную вышыню гор на карце на 1
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Снежнае пакрыццё:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Павялічыць плошчу снежнага пакрыцця на 10%
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Паменшыць плошчу снежнага пакрыцця на 10%
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Павялічыць плошчу снежнага пакрыцця на 10%
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Паменшыць плошчу снежнага пакрыцця на 10%
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Пяшчанае пакрыццё:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Павялічыць плошчу пяшчанага пакрыцця на 10%
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Паменшыць плошчу пяшчанага пакрыцця на 10%
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Павялічыць плошчу пяшчанага пакрыцця на 10%
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Паменшыць плошчу пяшчанага пакрыцця на 10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тып ляндшафту:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Колькасьць азёраў/мораў:
@@ -3680,8 +3680,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Ства
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Выпадковы рэльеф
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Вышыня над узроўнем мора:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Абярыце вышыню ландшафту над узроўнем мора
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Падняць ўзровень роўнай зямлі на 1
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Апусьціць ўзровень роўнай зямлі на 1
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Падняць ўзровень роўнай зямлі на 1
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Апусьціць ўзровень роўнай зямлі на 1
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Зьмяніць вышыню роўнай зямлі
 

@@ -417,8 +417,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Commuta 
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Desa o carrega un escenari o bé surt de l'editor o de l'OpenTTD
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor d'escenaris
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Retarda la data d'inici 1 any
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Avança la data d'inici 1 any
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Retarda la data d'inici 1 any
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Avança la data d'inici 1 any
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Clica per introduir l'any d'inici
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Obre el mapa, vistes addicionals, llista de signes o el llistat de poblacions i indústries.
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Obre el menú de terreny/generació d'un món nou.
@@ -3329,15 +3329,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nombre d
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Trieu la densitat de les indústries o un nombre personalitzat.
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Alçada del cim més alt:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Trieu l'altura del cim més alt que el joc mirarà de crear, mesurat respecte el nivell de mar.
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Augmenta l'alçada màxima o l'alçada màxima dels cims en una unitat
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Redueix l'alçada màxima o l'alçada màxima dels cims en una unitat
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Augmenta l'alçada màxima o l'alçada màxima dels cims en una unitat
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Redueix l'alçada màxima o l'alçada màxima dels cims en una unitat
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Proporció de terreny nevat:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Augmenta un 10 % la proporció de terreny nevat
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Redueix un 10 % la proporció de terreny nevat
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Augmenta un 10 % la proporció de terreny nevat
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Redueix un 10 % la proporció de terreny nevat
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}{NBSP}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Proporció de terreny desèrtic:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Augmenta un 10 % la proporció de terreny desèrtic
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Redueix un 10 % la proporció de terreny desèrtic
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Augmenta un 10 % la proporció de terreny desèrtic
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Redueix un 10 % la proporció de terreny desèrtic
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}{NBSP}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipus de terreny:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Nivell de mar:
@@ -3410,8 +3410,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generar 
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Terreny aleatori
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Alçada del terreny pla:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Trieu l'altura de la terra per damunt del nivell de la mar.
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mou l'alçada del terreny pla un pas avall
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mou l'alçada del terreny pla un pas amunt
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Mou l'alçada del terreny pla un pas avall
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Mou l'alçada del terreny pla un pas amunt
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Canvia l'alçada del terreny pla
 

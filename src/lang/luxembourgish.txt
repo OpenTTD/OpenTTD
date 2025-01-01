@@ -416,8 +416,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Wiessel 
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Szenario späicheren, Szenario lueden, Eraus aus dem Szenarioeditor, Eraus
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Szenarien Editor
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Änner de Startdatum 1 Joer nohannen
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Änner de Startdatum 1 Joer no vir
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Änner de Startdatum 1 Joer nohannen
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Änner de Startdatum 1 Joer no vir
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klick fir d'Startjoer festzeleeën
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Kaart opman, Extrausiicht, Stiedverzeeschnëss oder Stied- oder Industrie-Verzeechnis
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landschaftsmenu opman oder nei Welt generéiren
@@ -3328,15 +3328,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Unz. Ind
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}D'Dicht vun Industrien auswielen oder eng eegen Zuel aginn
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Héchste Punkt:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Wiel den héchste Punkt den d'Spill probéiert ze erstellen, gemooss an Héicht iwwert dem Mieresspigel
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Setzt d'Maximalhéicht vum héchste Punkt op der Kaart em een erop
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Setzt d'Maximalhéicht vum héchste Punkt op der Kaart em een erof
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Setzt d'Maximalhéicht vum héchste Punkt op der Kaart em een erop
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Setzt d'Maximalhéicht vum héchste Punkt op der Kaart em een erof
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Schnéiundeel
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Schnéiundeel em zéng Prozent eropsetzen
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Schnéiundeel em zéng Prozent erofsetzen
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Schnéiundeel em zéng Prozent eropsetzen
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Schnéiundeel em zéng Prozent erofsetzen
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Wüstenundeel:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Wüstenundeel em zéng Prozent eropsetzen
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Wüstenundeel em zéng Prozent erofsetzen
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Wüstenundeel em zéng Prozent eropsetzen
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Wüstenundeel em zéng Prozent erofsetzen
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain Typ:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Mieresspigel:
@@ -3409,8 +3409,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generéi
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Zoufallsland
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Héicht vum flaache Land:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Wiel d'Héicht vum Land iwwert dem Mieresspigel
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Héicht vum flaache Land 1 erofsetzen
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Héicht vum flaache Land 1 eropsetzen
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Héicht vum flaache Land 1 erofsetzen
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Héicht vum flaache Land 1 eropsetzen
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Héicht vum flaache Land änneren
 

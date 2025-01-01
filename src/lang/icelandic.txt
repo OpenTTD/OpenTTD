@@ -339,8 +339,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skipta �
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Vista kort, opna kort, hætta í kortagerð, hætta í OpenTTD
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Kortagerð
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Færa byrjunardagsetninguna aftur um 1 ár
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Færa byrjunardagsetninguna fram um 1 ár
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Færa byrjunardagsetninguna aftur um 1 ár
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Færa byrjunardagsetninguna fram um 1 ár
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Smelltu til að stilla upphafsár
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Sýna kort, bæjarmöppu
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landslagsgerð
@@ -2661,8 +2661,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Slétt l
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Mynda slétt land
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Handahófskennt land
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hæð slétts lands yfir sjávarmáli
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Lækka slétt land niður um eitt þrep
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Hækka slétt land upp um eitt þrep
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Lækka slétt land niður um eitt þrep
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Hækka slétt land upp um eitt þrep
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Breyta hæð á sléttu landi
 

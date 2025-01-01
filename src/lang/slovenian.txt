@@ -513,8 +513,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Preklopi
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Shrani, naloži scenarij, zapusti urejevalnik scenarijev, izhod
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Urejevalnik scenarijev
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Premakni začetni datum za 1 leto nazaj
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Premakni začetni datum za 1 leto naprej
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Premakni začetni datum za 1 leto nazaj
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Premakni začetni datum za 1 leto naprej
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klikni in vnesi začetno leto
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Prikaži zemljevid, imenik mest
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generator pokrajine
@@ -2965,8 +2965,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Raven te
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Ustvari raven teren
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Naključni teren
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Višina ravnega terena:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Premik višine ravnega terena eno enoto nižje
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Premik višine ravnega terena eno enoto višje
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Premik višine ravnega terena eno enoto nižje
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Premik višine ravnega terena eno enoto višje
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Spremeni višino ravnega terena
 

@@ -416,8 +416,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Knoppenb
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Scenario opslaan of laden, scenariobewerker verlaten, afsluiten
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenariobewerker
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Startdatum 1 jaar terugzetten
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Startdatum 1 jaar vooruitzetten
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Startdatum 1 jaar terugzetten
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Startdatum 1 jaar vooruitzetten
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik om het startjaar op te geven
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Kaart, extra venster, lijst met bordjes, stedenlijst of lijst met industrieën openen
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Menu Landschapsontwikkeling openen of nieuwe wereld genereren
@@ -3328,15 +3328,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Aantal i
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Kies de dichtheid van industrieën of een aangepast getal
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Hoogste berg:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Kies de hoogste piek die het spel probeert te creëren, gemeten in hoogte boven zeeniveau
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Verhoogt de maximale hoogte van de hoogste berg op de kaart met één
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Verlaagt de maximale hoogte van de hoogste berg op de kaart met één
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Verhoogt de maximale hoogte van de hoogste berg op de kaart met één
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Verlaagt de maximale hoogte van de hoogste berg op de kaart met één
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Sneeuwoppervlak:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Vergroot het sneeuwoppervlak met tien procent
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Verkleint het sneeuwoppervlak met tien procent
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Vergroot het sneeuwoppervlak met tien procent
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Verkleint het sneeuwoppervlak met tien procent
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Woestijnoppervlak:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Vergroot het woestijnoppervlak met tien procent
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Verkleint het woestijnoppervlak met tien procent
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Vergroot het woestijnoppervlak met tien procent
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Verkleint het woestijnoppervlak met tien procent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Zeeniveau:
@@ -3409,8 +3409,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Genereer
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Willekeurig land
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hoogte van vlak land:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Kies de hoogte van het land boven zee
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Verlaag de hoogte van vlak land met één
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Verhoog de hoogte van vlak land met één
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Verlaag de hoogte van vlak land met één
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Verhoog de hoogte van vlak land met één
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Verander hoogte van vlak land
 

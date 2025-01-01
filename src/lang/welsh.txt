@@ -415,8 +415,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Amnewid 
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Cadw Senario, llwytho senario, gwaredu a'r golygydd senario, gadael
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Golygydd Senario
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Symud y dyddiad cychwyn yn ôl 1 blwyddyn
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Symud y dyddiad cychwyn ymlaen 2 flynedd
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Symud y dyddiad cychwyn yn ôl 1 blwyddyn
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Symud y dyddiad cychwyn ymlaen 2 flynedd
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Cliciwch i fewnbynnu'r flwyddyn dechreuol
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Agor map, porth golwg ychwanegol, rhestr arwyddion neu cyfeiriadur diwydiant
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Agor y ddewislen tirweddu neu gynhyrchu byd newydd
@@ -3311,15 +3311,15 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nifer di
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :BLACK}Dewis dwysedd y diwydiannau, neu rif addasedig
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Copa uchaf:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Dewis y copa uchaf y bydd y gêm yn ceisio ei greu, mesurwyd o lefel y môr
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Cynyddu uchder uchafsymol y copa uchaf ar y map o un
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Lleihau uchder uchafsymol y copa uchaf ar y map o un
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Cynyddu uchder uchafsymol y copa uchaf ar y map o un
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Lleihau uchder uchafsymol y copa uchaf ar y map o un
 STR_MAPGEN_SNOW_COVERAGE                                        :Gorchuddiad eira:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Cynyddu gorchudd eira o 10 y cant
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Lleihau gorchudd eira o 10 y cant
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Cynyddu gorchudd eira o 10 y cant
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Lleihau gorchudd eira o 10 y cant
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Gorchudd anialwch:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Cynyddu gorchudd anialwch o 10 y cant
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Lleihau gorchudd anialwch o 10 y cant
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Cynyddu gorchudd anialwch o 10 y cant
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Lleihau gorchudd anialwch o 10 y cant
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Math Tirwedd:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Lefel y Môr:
@@ -3392,8 +3392,8 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Cynhyrch
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Tir ar hap
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}uchder tir gwastad:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Dewis uchder y tir uwchben lefel y môr
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Symud uchder tir gwastad un yn uwch
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Symud uchder tir gwastad un yn is
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Symud uchder tir gwastad un yn uwch
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Symud uchder tir gwastad un yn is
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Newid uchder tir gwastad
 

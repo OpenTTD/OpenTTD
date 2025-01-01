@@ -463,8 +463,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Promijen
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Spremi scenarij, učitaj scenarij, napusti uređivanje scenarija, izađi
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Uređivanje scenarija
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pomakni početni datum 1 godinu unatrag
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Pomakni početni datum 1 godinu unaprijed
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Pomakni početni datum 1 godinu unatrag
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Pomakni početni datum 1 godinu unaprijed
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klikni kako bi upisao početnu godinu
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Prikaži kartu, popis gradova
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Stvaranje krajolika
@@ -2989,8 +2989,8 @@ STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Odaberi 
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Broj industrija:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Najviši vrh:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Povećaj pokrivenost snijega za deset posto
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Smanji pokrivenost snijega za deset posto
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Povećaj pokrivenost snijega za deset posto
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Smanji pokrivenost snijega za deset posto
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Pustinjska pokrivenost:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Razina mora:
@@ -3049,8 +3049,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Ravna ze
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Kreiraj ravan teren
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Nasumični teren
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Visina ravne površine:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Snizi ravnu površinu za jedan korak
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Povisi ravnu površinu za jedan korak
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Snizi ravnu površinu za jedan korak
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Povisi ravnu površinu za jedan korak
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Promijeni visinu ravne površine
 

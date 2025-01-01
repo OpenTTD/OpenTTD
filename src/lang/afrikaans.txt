@@ -365,8 +365,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skakel n
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Stoor scenario, laai scenario, verlaat scenario redigeerder, verlaat
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenario Redigeerder
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Beweeg die begin datum 1 jaar terug
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Beweeg die begin datum 1 jaar voorentoe
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Beweeg die begin datum 1 jaar terug
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Beweeg die begin datum 1 jaar voorentoe
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik om die beginjaar in te voer
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Vertoon kaart, dorp gids
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landskap generasie
@@ -2881,8 +2881,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Plat ter
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Genereer 'n plat terrein
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Lukraake land
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hoogte van plat terrein:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Beweeg die hoogte van plat terrein een af
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Beweeg die hoogte van plat terrein een op
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Beweeg die hoogte van plat terrein een af
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Beweeg die hoogte van plat terrein een op
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Verander die hoogte van plat terrein
 

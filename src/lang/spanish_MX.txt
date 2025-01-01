@@ -411,8 +411,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Cambiar 
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Guardar mapa personalizado, cargar mapa personalizado, salir del editor, salir
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor de mapas personalizados
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Retroceder un año la fecha de inicio
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Avanzar un año la fecha de inicio
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Retroceder un año la fecha de inicio
+STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Avanzar un año la fecha de inicio
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Clic para establecer el año inicial
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Mostrar mapa, guía de localidades
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generación de terreno
@@ -3211,15 +3211,15 @@ STR_MAPGEN_DATE                                                 :{BLACK}Fecha:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Núm. de industrias:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Selecciona la densidad industrial, o un número personalizado
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Cima más alta:
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Incrementar altura de cima más alta en 1
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Disminuir altura de cima más alta en 1
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Incrementar altura de cima más alta en 1
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Disminuir altura de cima más alta en 1
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Extensión de nieve:
-STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Incrementar extensión de nieve un 10%
-STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Disminuir extensión de nieve un 10%
+STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}Incrementar extensión de nieve un 10%
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}Disminuir extensión de nieve un 10%
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Extensión de desierto:
-STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Incrementar extensión de desierto un 10%
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Disminuir extensión de desierto un 10%
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Incrementar extensión de desierto un 10%
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Disminuir extensión de desierto un 10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Nivel del mar:
@@ -3288,8 +3288,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Terreno 
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generar un mapa plano
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Terreno aleatorio
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Elevación terreno plano:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Reducir la elevación del terreno plano
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Aumentar la elevación del terreno plano
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Reducir la elevación del terreno plano
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Aumentar la elevación del terreno plano
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Cambiar elevación de terreno plano
 
