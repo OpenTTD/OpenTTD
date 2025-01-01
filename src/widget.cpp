@@ -2627,12 +2627,18 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t
 
 	switch (tp) {
 		case WWT_EMPTY:
+			if (colour != INVALID_COLOUR) [[unlikely]] throw std::runtime_error("WWT_EMPTY should not have a colour");
 			break;
 
 		case WWT_TEXT:
+			if (colour != INVALID_COLOUR) [[unlikely]] throw std::runtime_error("WWT_TEXT should not have a colour");
 			this->SetFill(0, 0);
 			this->SetAlignment(SA_LEFT | SA_VERT_CENTER);
 			break;
+
+		case WWT_LABEL:
+			if (colour != INVALID_COLOUR) [[unlikely]] throw std::runtime_error("WWT_LABEL should not have a colour");
+			[[fallthrough]];
 
 		case WWT_PUSHBTN:
 		case WWT_IMGBTN:
@@ -2641,7 +2647,6 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t
 		case WWT_TEXTBTN:
 		case WWT_PUSHTXTBTN:
 		case WWT_TEXTBTN_2:
-		case WWT_LABEL:
 		case WWT_MATRIX:
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_PUSHBUTTON_DROPDOWN:

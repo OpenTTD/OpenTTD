@@ -518,7 +518,7 @@ static constexpr NWidgetPart _nested_newgrf_parameter_widgets[] = {
 			NWidget(NWID_HORIZONTAL), SetPIP(4, 0, 4),
 				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_NP_NUMPAR_DEC), SetMinimalSize(12, 12), SetDataTip(AWV_DECREASE, STR_NULL),
 				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_NP_NUMPAR_INC), SetMinimalSize(12, 12), SetDataTip(AWV_INCREASE, STR_NULL),
-				NWidget(WWT_TEXT, COLOUR_MAUVE, WID_NP_NUMPAR), SetResize(1, 0), SetFill(1, 0), SetPadding(0, 0, 0, 4), SetDataTip(STR_NEWGRF_PARAMETERS_NUM_PARAM, STR_NULL),
+				NWidget(WWT_TEXT, INVALID_COLOUR, WID_NP_NUMPAR), SetResize(1, 0), SetFill(1, 0), SetPadding(0, 0, 0, 4), SetDataTip(STR_NEWGRF_PARAMETERS_NUM_PARAM, STR_NULL),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -1811,7 +1811,7 @@ static constexpr NWidgetPart _nested_newgrf_actives_widgets[] = {
 		/* Left side, presets. */
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_TEXT, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_SELECT_PRESET, STR_NULL),
+				NWidget(WWT_TEXT, INVALID_COLOUR), SetDataTip(STR_NEWGRF_SETTINGS_SELECT_PRESET, STR_NULL),
 						SetPadding(0, WidgetDimensions::unscaled.hsep_wide, 0, 0),
 				NWidget(WWT_DROPDOWN, COLOUR_YELLOW, WID_NS_PRESET_LIST), SetFill(1, 0), SetResize(1, 0),
 						SetDataTip(STR_JUST_STRING1, STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP),
@@ -1865,7 +1865,7 @@ static constexpr NWidgetPart _nested_newgrf_availables_widgets[] = {
 	NWidget(WWT_FRAME, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_INACTIVE_LIST, STR_NULL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 		/* Left side, available grfs, filter edit box. */
 		NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-			NWidget(WWT_TEXT, COLOUR_MAUVE), SetFill(0, 1), SetDataTip(STR_NEWGRF_FILTER_TITLE, STR_NULL),
+			NWidget(WWT_TEXT, INVALID_COLOUR), SetFill(0, 1), SetDataTip(STR_NEWGRF_FILTER_TITLE, STR_NULL),
 			NWidget(WWT_EDITBOX, COLOUR_MAUVE, WID_NS_FILTER), SetFill(1, 0), SetResize(1, 0),
 					SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 		EndContainer(),
@@ -1898,8 +1898,8 @@ static constexpr NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 	NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 		/* Right side, info panel. */
 		NWidget(WWT_PANEL, COLOUR_MAUVE),
-			NWidget(WWT_EMPTY, COLOUR_MAUVE, WID_NS_NEWGRF_INFO_TITLE), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_EMPTY, COLOUR_MAUVE, WID_NS_NEWGRF_INFO), SetFill(1, 1), SetResize(1, 1), SetMinimalSize(150, 100),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NS_NEWGRF_INFO_TITLE), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NS_NEWGRF_INFO), SetFill(1, 1), SetResize(1, 1), SetMinimalSize(150, 100),
 		EndContainer(),
 
 		/* Right side, info buttons. */

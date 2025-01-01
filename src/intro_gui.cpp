@@ -412,13 +412,13 @@ static constexpr NWidgetPart _nested_select_game_widgets[] = {
 
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SGI_BASESET_SELECTION),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_EMPTY, COLOUR_ORANGE, WID_SGI_BASESET), SetFill(1, 0),
+					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SGI_BASESET), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SGI_TRANSLATION_SELECTION),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_EMPTY, COLOUR_ORANGE, WID_SGI_TRANSLATION), SetFill(1, 0),
+					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SGI_TRANSLATION), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 

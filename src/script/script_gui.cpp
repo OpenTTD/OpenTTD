@@ -1269,7 +1269,7 @@ static constexpr NWidgetPart _nested_script_debug_widgets[] = {
 				NWidget(WWT_IMGBTN_2, COLOUR_GREY, WID_SCRD_BREAK_STR_ON_OFF_BTN), SetAspect(WidgetDimensions::ASPECT_VEHICLE_FLAG), SetFill(0, 1), SetDataTip(SPR_FLAG_VEH_STOPPED, STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP),
 				NWidget(WWT_PANEL, COLOUR_GREY),
 					NWidget(NWID_HORIZONTAL),
-						NWidget(WWT_LABEL, COLOUR_GREY), SetPadding(2, 2, 2, 4), SetDataTip(STR_AI_DEBUG_BREAK_ON_LABEL, 0x0),
+						NWidget(WWT_LABEL, INVALID_COLOUR), SetPadding(2, 2, 2, 4), SetDataTip(STR_AI_DEBUG_BREAK_ON_LABEL, 0x0),
 						NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SCRD_BREAK_STR_EDIT_BOX), SetFill(1, 1), SetResize(1, 0), SetPadding(2, 2, 2, 2), SetDataTip(STR_AI_DEBUG_BREAK_STR_OSKTITLE, STR_AI_DEBUG_BREAK_STR_TOOLTIP),
 					EndContainer(),
 				EndContainer(),

@@ -1044,7 +1044,7 @@ static constexpr NWidgetPart _nested_network_content_list_widgets[] = {
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.sparse_resize),
 			/* Top */
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NCL_FILTER_CAPT), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_CONTENT_FILTER_TITLE, STR_NULL), SetAlignment(SA_RIGHT | SA_VERT_CENTER),
+				NWidget(WWT_TEXT, INVALID_COLOUR, WID_NCL_FILTER_CAPT), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_CONTENT_FILTER_TITLE, STR_NULL), SetAlignment(SA_RIGHT | SA_VERT_CENTER),
 				NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, WID_NCL_FILTER), SetFill(1, 0), SetResize(1, 0),
 						SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 			EndContainer(),
