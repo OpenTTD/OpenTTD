@@ -27,48 +27,48 @@ using CargoID = uint8_t;
  */
 
 /* Temperate */
-static constexpr CargoLabel CT_PASSENGERS   = CargoLabel{'PASS'};
-static constexpr CargoLabel CT_COAL         = CargoLabel{'COAL'};
-static constexpr CargoLabel CT_MAIL         = CargoLabel{'MAIL'};
-static constexpr CargoLabel CT_OIL          = CargoLabel{'OIL_'};
-static constexpr CargoLabel CT_LIVESTOCK    = CargoLabel{'LVST'};
-static constexpr CargoLabel CT_GOODS        = CargoLabel{'GOOD'};
-static constexpr CargoLabel CT_GRAIN        = CargoLabel{'GRAI'};
-static constexpr CargoLabel CT_WOOD         = CargoLabel{'WOOD'};
-static constexpr CargoLabel CT_IRON_ORE     = CargoLabel{'IORE'};
-static constexpr CargoLabel CT_STEEL        = CargoLabel{'STEL'};
-static constexpr CargoLabel CT_VALUABLES    = CargoLabel{'VALU'};
+static constexpr CargoLabel CT_PASSENGERS{'PASS'};
+static constexpr CargoLabel CT_COAL{'COAL'};
+static constexpr CargoLabel CT_MAIL{'MAIL'};
+static constexpr CargoLabel CT_OIL{'OIL_'};
+static constexpr CargoLabel CT_LIVESTOCK{'LVST'};
+static constexpr CargoLabel CT_GOODS{'GOOD'};
+static constexpr CargoLabel CT_GRAIN{'GRAI'};
+static constexpr CargoLabel CT_WOOD{'WOOD'};
+static constexpr CargoLabel CT_IRON_ORE{'IORE'};
+static constexpr CargoLabel CT_STEEL{'STEL'};
+static constexpr CargoLabel CT_VALUABLES{'VALU'};
 
 /* Arctic */
-static constexpr CargoLabel CT_WHEAT        = CargoLabel{'WHEA'};
-static constexpr CargoLabel CT_PAPER        = CargoLabel{'PAPR'};
-static constexpr CargoLabel CT_GOLD         = CargoLabel{'GOLD'};
-static constexpr CargoLabel CT_FOOD         = CargoLabel{'FOOD'};
+static constexpr CargoLabel CT_WHEAT{'WHEA'};
+static constexpr CargoLabel CT_PAPER{'PAPR'};
+static constexpr CargoLabel CT_GOLD{'GOLD'};
+static constexpr CargoLabel CT_FOOD{'FOOD'};
 
 /* Tropic */
-static constexpr CargoLabel CT_RUBBER       = CargoLabel{'RUBR'};
-static constexpr CargoLabel CT_FRUIT        = CargoLabel{'FRUT'};
-static constexpr CargoLabel CT_MAIZE        = CargoLabel{'MAIZ'};
-static constexpr CargoLabel CT_COPPER_ORE   = CargoLabel{'CORE'};
-static constexpr CargoLabel CT_WATER        = CargoLabel{'WATR'};
-static constexpr CargoLabel CT_DIAMONDS     = CargoLabel{'DIAM'};
+static constexpr CargoLabel CT_RUBBER{'RUBR'};
+static constexpr CargoLabel CT_FRUIT{'FRUT'};
+static constexpr CargoLabel CT_MAIZE{'MAIZ'};
+static constexpr CargoLabel CT_COPPER_ORE{'CORE'};
+static constexpr CargoLabel CT_WATER{'WATR'};
+static constexpr CargoLabel CT_DIAMONDS{'DIAM'};
 
 /* Toyland */
-static constexpr CargoLabel CT_SUGAR        = CargoLabel{'SUGR'};
-static constexpr CargoLabel CT_TOYS         = CargoLabel{'TOYS'};
-static constexpr CargoLabel CT_BATTERIES    = CargoLabel{'BATT'};
-static constexpr CargoLabel CT_CANDY        = CargoLabel{'SWET'};
-static constexpr CargoLabel CT_TOFFEE       = CargoLabel{'TOFF'};
-static constexpr CargoLabel CT_COLA         = CargoLabel{'COLA'};
-static constexpr CargoLabel CT_COTTON_CANDY = CargoLabel{'CTCD'};
-static constexpr CargoLabel CT_BUBBLES      = CargoLabel{'BUBL'};
-static constexpr CargoLabel CT_PLASTIC      = CargoLabel{'PLST'};
-static constexpr CargoLabel CT_FIZZY_DRINKS = CargoLabel{'FZDR'};
+static constexpr CargoLabel CT_SUGAR{'SUGR'};
+static constexpr CargoLabel CT_TOYS{'TOYS'};
+static constexpr CargoLabel CT_BATTERIES{'BATT'};
+static constexpr CargoLabel CT_CANDY{'SWET'};
+static constexpr CargoLabel CT_TOFFEE{'TOFF'};
+static constexpr CargoLabel CT_COLA{'COLA'};
+static constexpr CargoLabel CT_COTTON_CANDY{'CTCD'};
+static constexpr CargoLabel CT_BUBBLES{'BUBL'};
+static constexpr CargoLabel CT_PLASTIC{'PLST'};
+static constexpr CargoLabel CT_FIZZY_DRINKS{'FZDR'};
 
 /** Dummy label for engines that carry no cargo; they actually carry 0 passengers. */
-static constexpr CargoLabel CT_NONE         = CT_PASSENGERS;
+static constexpr CargoLabel CT_NONE = CT_PASSENGERS;
 
-static constexpr CargoLabel CT_INVALID      = CargoLabel{UINT32_MAX}; ///< Invalid cargo type.
+static constexpr CargoLabel CT_INVALID{UINT32_MAX}; ///< Invalid cargo type.
 
 static const CargoID NUM_ORIGINAL_CARGO = 12; ///< Original number of cargo types.
 static const CargoID NUM_CARGO = 64; ///< Maximum number of cargo types in a game.
