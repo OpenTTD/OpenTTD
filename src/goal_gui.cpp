@@ -112,7 +112,7 @@ struct GoalListWindow : public Window {
 
 			case GT_TILE:
 				if (!IsValidTile(s->dst)) return;
-				xy = s->dst;
+				xy = TileIndex{s->dst};
 				break;
 
 			case GT_INDUSTRY:

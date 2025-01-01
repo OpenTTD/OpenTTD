@@ -558,7 +558,7 @@ int openttd_main(std::span<char * const> arguments)
 			scanner->join_server_password = mgo.opt;
 			break;
 		case 'r': ParseResolution(&resolution, mgo.opt); break;
-		case 't': scanner->startyear = atoi(mgo.opt); break;
+		case 't': scanner->startyear = TimerGameCalendar::Year(atoi(mgo.opt)); break;
 		case 'd': {
 #if defined(_WIN32)
 				CreateConsole();

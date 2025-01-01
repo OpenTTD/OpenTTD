@@ -423,7 +423,7 @@ void AddArticulatedParts(Vehicle *first)
 		v->vehstatus = first->vehstatus & ~VS_STOPPED;
 
 		v->cargo_subtype = 0;
-		v->max_age = 0;
+		v->max_age = CalendarTime::MIN_DATE;
 		v->engine_type = engine_type;
 		v->value = 0;
 		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);

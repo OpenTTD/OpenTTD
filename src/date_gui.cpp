@@ -166,7 +166,7 @@ struct SetDateWindow : Window {
 				break;
 
 			case WID_SD_YEAR:
-				this->date.year = index;
+				this->date.year = TimerGameEconomy::Year{index};
 				break;
 		}
 		this->SetDirty();

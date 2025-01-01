@@ -146,7 +146,7 @@ public:
 		if constexpr (std::is_enum_v<T>) {
 			data = static_cast<T>(this->Read<std::underlying_type_t<T>>());
 		} else if constexpr (std::is_base_of_v<StrongTypedefBase, T>) {
-			data = this->Read<typename T::BaseType>();
+			data = T{this->Read<typename T::BaseType>()};
 		} else {
 			data = this->Read<T>();
 		}

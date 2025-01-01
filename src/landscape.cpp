@@ -800,7 +800,7 @@ void RunTileLoop()
 		_tile_type_procs[GetTileType(tile)]->tile_loop_proc(tile);
 
 		/* Get the next tile in sequence using a Galois LFSR. */
-		tile = (tile.base() >> 1) ^ (-(int32_t)(tile.base() & 1) & feedback);
+		tile = TileIndex{(tile.base() >> 1) ^ (-(int32_t)(tile.base() & 1) & feedback)};
 	}
 
 	_cur_tileloop_tile = tile;

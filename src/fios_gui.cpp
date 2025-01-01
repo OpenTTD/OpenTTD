@@ -53,7 +53,7 @@ void LoadCheckData::Clear()
 	this->error_msg.clear();
 
 	this->map_size_x = this->map_size_y = 256; // Default for old savegames which do not store mapsize.
-	this->current_date = 0;
+	this->current_date = CalendarTime::MIN_DATE;
 	this->settings = {};
 
 	companies.clear();

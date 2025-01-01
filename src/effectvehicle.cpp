@@ -572,7 +572,7 @@ EffectVehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
 	v->x_pos = x;
 	v->y_pos = y;
 	v->z_pos = z;
-	v->tile = 0;
+	v->tile = TileIndex{};
 	v->UpdateDeltaXY();
 	v->vehstatus = VS_UNCLICKABLE;
 
