@@ -1412,7 +1412,7 @@ StringID GetCargoSubtypeText(const Vehicle *v)
 			if (cb >= 0x400 || (v->GetGRF()->grf_version < 8 && cb == 0xFF)) cb = CALLBACK_FAILED;
 		}
 		if (cb != CALLBACK_FAILED) {
-			return GetGRFStringID(v->GetGRFID(), 0xD000 + cb);
+			return GetGRFStringID(v->GetGRFID(), GRFSTR_MISC_GRF_TEXT + cb);
 		}
 	}
 	return STR_EMPTY;

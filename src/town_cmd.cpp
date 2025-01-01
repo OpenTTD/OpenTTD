@@ -871,7 +871,7 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 		if (callback_res > 0x400) {
 			ErrorUnknownCallbackResult(hs->grf_prop.grfid, CBID_HOUSE_CUSTOM_NAME, callback_res);
 		} else {
-			StringID new_name = GetGRFStringID(hs->grf_prop.grfid, 0xD000 + callback_res);
+			StringID new_name = GetGRFStringID(hs->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback_res);
 			if (new_name != STR_NULL && new_name != STR_UNDEFINED) {
 				td->str = new_name;
 			}
