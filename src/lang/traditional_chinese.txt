@@ -413,21 +413,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}開啟�
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}切換工具列
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}儲存場景、載入場景、離開編輯器、結束
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}儲存場景、載入場景、離開編輯器、結束
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}場景編輯器
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}將開始時間往前 1 年
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}將開始時間往後 1 年
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}點選可輸入開始年份
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}開啟地圖、額外視野、標誌清單、市鎮或工業目錄
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}修改或產生地形
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}建立或產生市鎮
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}建立或產生工業
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}鋪設道路設施
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}鋪設電車路軌設施
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}植樹。按住 <Ctrl> 以對角線選擇區域。按住 <Shift> 可顯示預估成本
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}放置標誌
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}放置物件。按住 <Ctrl> 以對角線選擇區域。按住 <Shift> 可顯示預估成本
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}點選可輸入開始年份
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}開啟地圖、額外視野、標誌清單、市鎮或工業目錄
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}修改或產生地形
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}建立或產生市鎮
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}建立或產生工業
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}鋪設道路設施
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}鋪設電車路軌設施
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}植樹。按住 <Ctrl> 以對角線選擇區域。按住 <Shift> 可顯示預估成本
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}放置標誌
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}放置物件。按住 <Ctrl> 以對角線選擇區域。按住 <Shift> 可顯示預估成本
 
 # Scenario editor file menu
 ###length 7

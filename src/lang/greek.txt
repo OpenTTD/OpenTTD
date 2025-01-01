@@ -475,21 +475,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Πληρ
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Εναλλάγη μπαρών εργασίας
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Αποθήκευση σεναρίου, φόρτωση, εγκατάλειψη προγράμματος επεξεργασίας σεναρίων, έξοδος
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Αποθήκευση σεναρίου, φόρτωση, εγκατάλειψη προγράμματος επεξεργασίας σεναρίων, έξοδος
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Πρόγραμμα Επεξεργασίας Σεναρίου
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο πίσω
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Μετακινήστε την ημερομηνία εκκίνησης 1 χρόνο μπροστά
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Πατήστε εδώ για να εισαγάγετε την χρονιά έναρξης
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Εμφάνιση χάρτη, επιπλέον παραθύρου προβολής, λίστας πινακίδων ή λίστας πόλεων ή βιομηχανιών
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Εμφάνιση μενού δημιουργίας τοπίου ή δημιουργία νέου κόσμου
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Δημιουργία πόλης
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Δημιουργία βιομηχανίας
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Κατασκευή δρόμου
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}{BLACK}Κατασκευή τροχιοδρόμου
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Φύτευση Δέντρων. Ctrl+Κλικ για διαγώνια επιλογή περιοχής. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Τοποθέτηση πινακίδας
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Τοποθέτηση αντικειμένου. Ctrl+Κλικ για διαγώνια επιλογή περιοχής. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Πατήστε εδώ για να εισαγάγετε την χρονιά έναρξης
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Εμφάνιση χάρτη, επιπλέον παραθύρου προβολής, λίστας πινακίδων ή λίστας πόλεων ή βιομηχανιών
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Εμφάνιση μενού δημιουργίας τοπίου ή δημιουργία νέου κόσμου
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Δημιουργία πόλης
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Δημιουργία βιομηχανίας
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Κατασκευή δρόμου
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}{BLACK}Κατασκευή τροχιοδρόμου
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Φύτευση Δέντρων. Ctrl+Κλικ για διαγώνια επιλογή περιοχής. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Τοποθέτηση πινακίδας
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Τοποθέτηση αντικειμένου. Ctrl+Κλικ για διαγώνια επιλογή περιοχής. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 
 # Scenario editor file menu
 ###length 7

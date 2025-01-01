@@ -402,21 +402,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域�
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}ツールバーを切り替えます
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}シナリオのセーブ、シナリオのロード、シナリオエディタの終了、OpenTTDの終了ができます
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}シナリオのセーブ、シナリオのロード、シナリオエディタの終了、OpenTTDの終了ができます
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}シナリオエディタ
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}開始年月日を1年戻します
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}開始年月日を1年進めます
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}クリックで開始年を入力できます
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}地図と街の一覧を表示します
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}地形の生成をします
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}街を生成する
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}産業を生成します
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}道路を敷設します
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}軌道敷設
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}木を植えます。Ctrlで斜めに選択できます。Shiftキーを押しながら決定すると費用を見積もります
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}標識を設置します
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}オブジェクトを設置します。Ctrlで斜めに選択できます。Shiftを押しながら決定すると費用を見積もります
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}クリックで開始年を入力できます
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}地図と街の一覧を表示します
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}地形の生成をします
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}街を生成する
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}産業を生成します
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}道路を敷設します
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}軌道敷設
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}木を植えます。Ctrlで斜めに選択できます。Shiftキーを押しながら決定すると費用を見積もります
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}標識を設置します
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}オブジェクトを設置します。Ctrlで斜めに選択できます。Shiftを押しながら決定すると費用を見積もります
 
 # Scenario editor file menu
 ###length 7

@@ -413,21 +413,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Arazi bi
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Araç çubuklarını değiştir
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Senaryoyu kaydet, senaryoyu yükle, editörden çık, oyundan çık
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Senaryoyu kaydet, senaryoyu yükle, editörden çık, oyundan çık
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Senaryo Düzenleyicisi
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Başlangıç tarihini 1 yıl gerilet
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Başlangıç tarihini 1 yıl ilerlet
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Başlangıç yılını girmek için tıklayın
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Haritayı, Ekstra görünüm alanını, Tabela listesini, veya Şehir veya Fabrika listesini açın
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Arazi inşaa menüsünü açın ya da yeni bir dünya oluşturun
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Şehir inşa edin ya da oluşturun
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Fabrika oluşturun ya da inşaa edin
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Karayolları inşaası
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK} Tramvay inşaası
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Ağaç dik. Ctrl + Sol Tık'a basılı tutarak sürüklerseniz çapraz olarak seçersiniz. Ayrıca Shift tuşuna basılı tutarsanız sadece maliyetini görüntülersiniz..
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tabela koy
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Nesneyi yerleştirin. Ctrl + Sol Tık'a basılı tutarak sürüklerseniz çapraz olarak seçersiniz. Ayrıca Shift tuşuna basılı tutarsanız sadece maliyetini görüntülersiniz.
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Başlangıç yılını girmek için tıklayın
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Haritayı, Ekstra görünüm alanını, Tabela listesini, veya Şehir veya Fabrika listesini açın
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Arazi inşaa menüsünü açın ya da yeni bir dünya oluşturun
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Şehir inşa edin ya da oluşturun
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Fabrika oluşturun ya da inşaa edin
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Karayolları inşaası
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK} Tramvay inşaası
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Ağaç dik. Ctrl + Sol Tık'a basılı tutarak sürüklerseniz çapraz olarak seçersiniz. Ayrıca Shift tuşuna basılı tutarsanız sadece maliyetini görüntülersiniz..
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Tabela koy
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Nesneyi yerleştirin. Ctrl + Sol Tık'a basılı tutarak sürüklerseniz çapraz olarak seçersiniz. Ayrıca Shift tuşuna basılı tutarsanız sadece maliyetini görüntülersiniz.
 
 # Scenario editor file menu
 ###length 7

@@ -410,21 +410,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}நி�
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}கருவிப் பட்டை மாற்று
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}சித்திரக்காட்சியினை பதிவுசெய், பதிவேற்றவும், திருத்தியைவிட்டு வெளியேறவும், வெளியேறவும்
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}சித்திரக்காட்சியினை பதிவுசெய், பதிவேற்றவும், திருத்தியைவிட்டு வெளியேறவும், வெளியேறவும்
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}சித்திரக்காட்சி திருத்தி
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}ஆட்டத்தின் ஆரம்ப தேதியினை ஒரு வருடம் பின் நகர்த்து
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}ஆட்டத்தின் ஆரம்ப தேதியினை ஒரு வருடம் முன் நகர்த்து
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}ஆரம்பிக்கும் வருடத்தை எழுது
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}வரைபடம் மற்றும் நகரங்களின் பட்டியலை காட்டு
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}நிலத்தோற்றம் உருவாக்கு
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}நகரம் உருவாக்கு
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}தொழிற்சாலை உருவாக்கு
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}சாலை திருத்த வேலை
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}டிராம்வே கட்டுமானம்
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}மரங்களை நடு. Shift toggles கட்டடம்/மொத்த செலவுகள்
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}தகவல் பலகை வை
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}பொருளினை இடவும். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடுகள்
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}ஆரம்பிக்கும் வருடத்தை எழுது
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}வரைபடம் மற்றும் நகரங்களின் பட்டியலை காட்டு
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}நிலத்தோற்றம் உருவாக்கு
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}நகரம் உருவாக்கு
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}தொழிற்சாலை உருவாக்கு
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}சாலை திருத்த வேலை
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}டிராம்வே கட்டுமானம்
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}மரங்களை நடு. Shift toggles கட்டடம்/மொத்த செலவுகள்
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}தகவல் பலகை வை
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}பொருளினை இடவும். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடுகள்
 
 # Scenario editor file menu
 ###length 7

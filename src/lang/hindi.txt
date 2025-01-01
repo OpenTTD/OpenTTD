@@ -142,13 +142,13 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}परिदृश्य संपादक
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}प्रारंभ दिनांक को 1 वर्ष पीछे ले जाएँ
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}शुरुआती तारीख को 1 साल आगे ले जाएं
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}मानचित्र, नगर निर्देशिका दिखायें
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}भूनिर्माण मेनू खोलें या एक नई दुनिया उत्पन्न करें
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}उद्योगों का निर्माण या सृजन
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}सड़क के बुनियादी ढांचे का निर्माण
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}पेड़ लगाओ। क्षेत्र को तिरछे चुनने के लिए Ctrl+क्लिक करें+खींचें. केवल लागत अनुमान दिखाने के लिए Shift दबाएं
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK} स्थान चिन्ह
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}वस्तु रखें। क्षेत्र को तिरछे चुनने के लिए Ctrl+क्लिक करें+खींचें. केवल लागत अनुमान दिखाने के लिए Shift दबाएं
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}मानचित्र, नगर निर्देशिका दिखायें
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}भूनिर्माण मेनू खोलें या एक नई दुनिया उत्पन्न करें
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}उद्योगों का निर्माण या सृजन
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}सड़क के बुनियादी ढांचे का निर्माण
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}पेड़ लगाओ। क्षेत्र को तिरछे चुनने के लिए Ctrl+क्लिक करें+खींचें. केवल लागत अनुमान दिखाने के लिए Shift दबाएं
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK} स्थान चिन्ह
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}वस्तु रखें। क्षेत्र को तिरछे चुनने के लिए Ctrl+क्लिक करें+खींचें. केवल लागत अनुमान दिखाने के लिए Shift दबाएं
 
 # Scenario editor file menu
 ###length 7

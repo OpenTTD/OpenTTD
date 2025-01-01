@@ -792,21 +792,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Otwórz 
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Przełącz paski narzędzi
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Zapisz, wczytaj lub opuść edytor scenariuszy, zamknij program
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Zapisz, wczytaj lub opuść edytor scenariuszy, zamknij program
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Edytor Scenariuszy
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Zmień datę początkową do tyłu o 1 rok
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Zmień datę początkową do przodu o 1 rok
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Kliknij aby wpisać datę początkową
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Otwórz mapę, dodatkowy podgląd, listę napisów, miast lub spis przedsiębiorstw
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Otwórz menu kształtowania krajobrazu lub wygeneruj nowy świat
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Budowanie oraz generowanie miast
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Budowanie lub generowanie przedsiębiorstw
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Budowa infrastruktury drogowej
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Budowanie infrastruktury tramwajowej
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadź drzewa. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umieść tablicę z napisem
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umieść obiekt. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Kliknij aby wpisać datę początkową
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Otwórz mapę, dodatkowy podgląd, listę napisów, miast lub spis przedsiębiorstw
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Otwórz menu kształtowania krajobrazu lub wygeneruj nowy świat
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Budowanie oraz generowanie miast
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Budowanie lub generowanie przedsiębiorstw
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Budowa infrastruktury drogowej
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Budowanie infrastruktury tramwajowej
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Posadź drzewa. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Umieść tablicę z napisem
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Umieść obiekt. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 # Scenario editor file menu
 ###length 7

@@ -488,21 +488,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informac
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Prohodit lišty
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Uložit mapu, otevřít mapu, opustit editor map, ukončit...
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Uložit mapu, otevřít mapu, opustit editor map, ukončit...
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor mapy
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Posunout startovní rok o rok zpět
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Posunout startovní rok o rok vpřed
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klikni pro zadání počátečního roku
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Otevřít mapu, další zobrazení, seznam značek, nebo adresář měst a průmyslových objektů
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Otevřít menu úprav krajiny nebo vygenerovat nový svět
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generování měst
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Vytvořit nebo generovat průmyslové objekty
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Výstavba silniční sítě
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Výstavba tramvajové tratě
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Vysadit stromy. Pro výběr oblasti diagonálně použijte Ctrl+Klik+Táhnout. Pro zobrazení pouze odhadu ceny stiskněte Shift.
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umístit popisek
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umístit objekt. Pro výběr oblasti diagonálně použij Ctrl+Klik+Táhnout. Podrž Shift pro zobrazení odhadu ceny.
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Klikni pro zadání počátečního roku
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Otevřít mapu, další zobrazení, seznam značek, nebo adresář měst a průmyslových objektů
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Otevřít menu úprav krajiny nebo vygenerovat nový svět
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Generování měst
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Vytvořit nebo generovat průmyslové objekty
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Výstavba silniční sítě
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Výstavba tramvajové tratě
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Vysadit stromy. Pro výběr oblasti diagonálně použijte Ctrl+Klik+Táhnout. Pro zobrazení pouze odhadu ceny stiskněte Shift.
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Umístit popisek
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Umístit objekt. Pro výběr oblasti diagonálně použij Ctrl+Klik+Táhnout. Podrž Shift pro zobrazení odhadu ceny.
 
 # Scenario editor file menu
 ###length 7

@@ -352,20 +352,20 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}توضی
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}عوض کردن نوار ابزار
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}ذخیره سناریو، بارگزاری سناریو، خروج از ویرایشگر سناریو، خروج
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}ذخیره سناریو، بارگزاری سناریو، خروج از ویرایشگر سناریو، خروج
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}ویرایشگر سناریو
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}روز شروع بازی را یک سال به عقب برگردان
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}روز شروع بازی را یک سال جلو ببر
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}برای وارد کردن سال شروع کلیک کنید
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}نقشه، لیست شهر ها را نشان می دهد
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}طراحی اتوماتیک سرزمین
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}طراحی مشخصات شهر ها
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}طراحی مشخصات کارخانه ها
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}طراحی مشخصات کارخانه ها
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}کاشت درخت.دکمه Shift برآورد قيمت را نشان مي دهد.
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}علامت گذاری
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}قراردادن شیء. گرفتن Shift برآورد هزینه ساخت را نمایش می دهد
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}برای وارد کردن سال شروع کلیک کنید
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}نقشه، لیست شهر ها را نشان می دهد
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}طراحی اتوماتیک سرزمین
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}طراحی مشخصات شهر ها
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}طراحی مشخصات کارخانه ها
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}طراحی مشخصات کارخانه ها
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}کاشت درخت.دکمه Shift برآورد قيمت را نشان مي دهد.
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}علامت گذاری
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}قراردادن شیء. گرفتن Shift برآورد هزینه ساخت را نمایش می دهد
 
 # Scenario editor file menu
 ###length 7

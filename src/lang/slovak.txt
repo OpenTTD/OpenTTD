@@ -476,21 +476,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Otvoriť
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Prepnúť panely nástrojov
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Uložiť scenár, nahrať scenár, opustiť editor scenára, ukončiť
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Uložiť scenár, nahrať scenár, opustiť editor scenára, ukončiť
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor scenára
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Posunúť začiatok o rok dozadu
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Posunúť začiatok o rok dopredu
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Kliknúť pre zadanie počiatočného roku
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Zobraziť mapu, extra výrez, zoznam miest, priemyslu a značiek
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Otvoriť menu pre úpravu terénu alebo vytváranie nového sveta
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Postaviť alebo generovať mestá
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Postaviť alebo generovať priemysel
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Výstavba cestnej infraštruktúry
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Výstavba električkovej infraštruktúry
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Sadiť stromy. Ctrl+Klik+Ťah myšou označí oblasť diagonálne. Shift zobrazí odhadovanú cenu
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umiestniť popis
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umiestniť objekt. Ctrl+Klik+Ťah myšou označí oblasť diagonálne. Shift zobrazí odhadovanú cenu
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Kliknúť pre zadanie počiatočného roku
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Zobraziť mapu, extra výrez, zoznam miest, priemyslu a značiek
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Otvoriť menu pre úpravu terénu alebo vytváranie nového sveta
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Postaviť alebo generovať mestá
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Postaviť alebo generovať priemysel
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Výstavba cestnej infraštruktúry
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Výstavba električkovej infraštruktúry
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Sadiť stromy. Ctrl+Klik+Ťah myšou označí oblasť diagonálne. Shift zobrazí odhadovanú cenu
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Umiestniť popis
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Umiestniť objekt. Ctrl+Klik+Ťah myšou označí oblasť diagonálne. Shift zobrazí odhadovanú cenu
 
 # Scenario editor file menu
 ###length 7

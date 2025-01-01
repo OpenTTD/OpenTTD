@@ -362,21 +362,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land geb
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skakel nutsbalke
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Stoor scenario, laai scenario, verlaat scenario redigeerder, verlaat
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Stoor scenario, laai scenario, verlaat scenario redigeerder, verlaat
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenario Redigeerder
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Beweeg die begin datum 1 jaar terug
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Beweeg die begin datum 1 jaar voorentoe
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik om die beginjaar in te voer
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Vertoon kaart, dorp gids
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landskap generasie
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Dorp generasie
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Nywerheid generasie
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Pad konstruksie
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Tremweg konstruksie
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant bome. Shift skakel gebou/wys koste beraaming
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Plaas teken
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plaas voorwerp. Shift skakel tussen bou/aanduiding koste beraming
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Klik om die beginjaar in te voer
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Vertoon kaart, dorp gids
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Landskap generasie
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Dorp generasie
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Nywerheid generasie
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Pad konstruksie
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Tremweg konstruksie
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Plant bome. Shift skakel gebou/wys koste beraaming
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Plaas teken
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Plaas voorwerp. Shift skakel tussen bou/aanduiding koste beraming
 
 # Scenario editor file menu
 ###length 7

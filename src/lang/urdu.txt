@@ -342,20 +342,20 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمین
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK} ٹول بآر منتقل کیجیئے
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK} منظر محفوظ کیجئے، منظر کھولیں، منظر دست بردار کیجیئے، منظر چھوڑیئے
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK} منظر محفوظ کیجئے، منظر کھولیں، منظر دست بردار کیجیئے، منظر چھوڑیئے
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW} منظر نامھ
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}شروع کرنے کی تاریخ کو ایک سال پیچھے کرو
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}شروع کرنے کی تاریخ کو ایک سال آگے کرو
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK} کلک کر کے ابتدائی سال درج کیجیئے
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK} نقشھ، کتبِ قصبات
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK} منظر تخلیق
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK} قصبھ تخلیق
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK} صنعت تخلیق
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK} سڑک کی تعمیر
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK} درخت لگایئے۔ Shift تعپیر/اندازاً خرچے میں تدویم کرتا ھے
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK} اشارھ لگایئے
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK} چیز لگایئے۔ Shift تعپیر/اندازاً خرچے میں تدویم کرتا ھے
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK} کلک کر کے ابتدائی سال درج کیجیئے
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK} نقشھ، کتبِ قصبات
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK} منظر تخلیق
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK} قصبھ تخلیق
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK} صنعت تخلیق
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK} سڑک کی تعمیر
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK} درخت لگایئے۔ Shift تعپیر/اندازاً خرچے میں تدویم کرتا ھے
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK} اشارھ لگایئے
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK} چیز لگایئے۔ Shift تعپیر/اندازاً خرچے میں تدویم کرتا ھے
 
 # Scenario editor file menu
 ###length 7

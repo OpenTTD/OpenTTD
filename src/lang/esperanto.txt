@@ -494,21 +494,21 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informoj
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Ŝalti ilobretojn
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Konservu scenaron, ŝarĝu scenaron, foriru el la kreilo, fermu
+STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP        :{BLACK}Konservu scenaron, ŝarĝu scenaron, foriru el la kreilo, fermu
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenarkreilon
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Movu la komencdaton 1 jaron posten
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Movu la komencdaton 1 jaron antaŭen
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klaku por enigi komencjaron
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Malfermu mapon, ekstran vidujon, liston de ŝildoj, aŭ katalogon de urboj aŭ industriejoj
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landaspekta generado
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Urba generado
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industria generado
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Konstruu stratan infrastrukturon
-STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Konstruado de tramvojo
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantu arbojn. «Shift» aktivigita konstruado/montrante kosto takso
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Metu signon
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Metu objekton. Ctrl+klak+tiru por elekti areon diagonale. Ankaŭ premu Shift por nur montri kostotakson
+STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Klaku por enigi komencjaron
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Malfermu mapon, ekstran vidujon, liston de ŝildoj, aŭ katalogon de urboj aŭ industriejoj
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Landaspekta generado
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Urba generado
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Industria generado
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Konstruu stratan infrastrukturon
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Konstruado de tramvojo
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Plantu arbojn. «Shift» aktivigita konstruado/montrante kosto takso
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Metu signon
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Metu objekton. Ctrl+klak+tiru por elekti areon diagonale. Ankaŭ premu Shift por nur montri kostotakson
 
 # Scenario editor file menu
 ###length 7
