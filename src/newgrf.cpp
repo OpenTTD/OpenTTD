@@ -2327,18 +2327,17 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 				bridge->avail_year = Clamp(TimerGameCalendar::Year(buf.ReadDWord()), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
 				break;
 
-			case 0x10: { // purchase string
-				StringID newone = GetGRFStringID(_cur.grffile->grfid, buf.ReadWord());
-				if (newone != STR_UNDEFINED) bridge->material = newone;
+			case 0x10: // purchase string
+				AddStringForMapping(buf.ReadWord(), &bridge->material);
 				break;
-			}
 
-			case 0x11: // description of bridge with rails or roads
-			case 0x12: {
-				StringID newone = GetGRFStringID(_cur.grffile->grfid, buf.ReadWord());
-				if (newone != STR_UNDEFINED) bridge->transport_name[prop - 0x11] = newone;
+			case 0x11: // description of bridge with rails
+				AddStringForMapping(buf.ReadWord(), &bridge->transport_name[0]);
 				break;
-			}
+
+			case 0x12: // description of bridge with roads
+				AddStringForMapping(buf.ReadWord(), &bridge->transport_name[1]);
+				break;
 
 			case 0x13: // 16 bits cost multiplier
 				bridge->price = buf.ReadWord();
@@ -2790,11 +2789,13 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 			case 0x0A: { // Currency display names
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
-				StringID newone = GetGRFStringID(_cur.grffile->grfid, buf.ReadWord());
-
-				if ((newone != STR_UNDEFINED) && (curidx < CURRENCY_END)) {
-					_currency_specs[curidx].name = newone;
-					_currency_specs[curidx].code.clear();
+				if (curidx < CURRENCY_END) {
+					AddStringForMapping(buf.ReadWord(), [curidx](StringID str) {
+						_currency_specs[curidx].name = str;
+						_currency_specs[curidx].code.clear();
+					});
+				} else {
+					buf.ReadWord();
 				}
 				break;
 			}
