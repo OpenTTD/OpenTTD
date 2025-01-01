@@ -3051,7 +3051,7 @@ struct CustomCurrencyWindow : Window {
 	{
 		int line = 0;
 		int len = 0;
-		StringID str = 0;
+		StringID str = STR_NULL;
 		CharSetFilter afilter = CS_ALPHANUMERAL;
 
 		switch (widget) {
