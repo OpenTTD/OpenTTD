@@ -1061,13 +1061,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 	void UpdateExcludedData()
 	{
-		this->excluded_data = 0;
-
-		int i = 0;
-		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-			if (HasBit(_legend_excluded_cargo_payment_rates, cs->Index())) SetBit(this->excluded_data, i);
-			i++;
-		}
+		this->excluded_data = _legend_excluded_cargo_payment_rates;
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -1141,11 +1135,9 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 			case WID_GRAPH_DISABLE_CARGOES: {
 				/* Add all cargoes to the excluded lists. */
-				int i = 0;
 				for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
 					SetBit(_legend_excluded_cargo_payment_rates, cs->Index());
-					SetBit(this->excluded_data, i);
-					i++;
+					SetBit(this->excluded_data, cs->Index());
 				}
 				this->SetDirty();
 				break;
