@@ -72,12 +72,12 @@ public:
 	/**
 	 * Implicit conversion to the TileIndex.
 	 */
-	debug_inline constexpr operator TileIndex() const { return tile; }
+	debug_inline constexpr operator TileIndex() const { return this->tile; }
 
 	/**
 	 * Implicit conversion to the uint for bounds checking.
 	 */
-	debug_inline constexpr operator uint() const { return tile.base(); }
+	debug_inline constexpr operator uint() const { return this->tile.base(); }
 
 	/**
 	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
@@ -88,7 +88,7 @@ public:
 	 */
 	debug_inline uint8_t &type()
 	{
-		return base_tiles[tile.base()].type;
+		return base_tiles[this->tile.base()].type;
 	}
 
 	/**
@@ -100,7 +100,7 @@ public:
 	 */
 	debug_inline uint8_t &height()
 	{
-		return base_tiles[tile.base()].height;
+		return base_tiles[this->tile.base()].height;
 	}
 
 	/**
@@ -112,7 +112,7 @@ public:
 	 */
 	debug_inline uint8_t &m1()
 	{
-		return base_tiles[tile.base()].m1;
+		return base_tiles[this->tile.base()].m1;
 	}
 
 	/**
@@ -124,7 +124,7 @@ public:
 	 */
 	debug_inline uint16_t &m2()
 	{
-		return base_tiles[tile.base()].m2;
+		return base_tiles[this->tile.base()].m2;
 	}
 
 	/**
@@ -136,7 +136,7 @@ public:
 	 */
 	debug_inline uint8_t &m3()
 	{
-		return base_tiles[tile.base()].m3;
+		return base_tiles[this->tile.base()].m3;
 	}
 
 	/**
@@ -148,7 +148,7 @@ public:
 	 */
 	debug_inline uint8_t &m4()
 	{
-		return base_tiles[tile.base()].m4;
+		return base_tiles[this->tile.base()].m4;
 	}
 
 	/**
@@ -160,7 +160,7 @@ public:
 	 */
 	debug_inline uint8_t &m5()
 	{
-		return base_tiles[tile.base()].m5;
+		return base_tiles[this->tile.base()].m5;
 	}
 
 	/**
@@ -172,7 +172,7 @@ public:
 	 */
 	debug_inline uint8_t &m6()
 	{
-		return extended_tiles[tile.base()].m6;
+		return extended_tiles[this->tile.base()].m6;
 	}
 
 	/**
@@ -184,7 +184,7 @@ public:
 	 */
 	debug_inline uint8_t &m7()
 	{
-		return extended_tiles[tile.base()].m7;
+		return extended_tiles[this->tile.base()].m7;
 	}
 
 	/**
@@ -196,7 +196,7 @@ public:
 	 */
 	debug_inline uint16_t &m8()
 	{
-		return extended_tiles[tile.base()].m8;
+		return extended_tiles[this->tile.base()].m8;
 	}
 };
 
