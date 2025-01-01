@@ -106,7 +106,7 @@ struct GRFIdentifier {
 
 /** Information about why GRF had problems during initialisation */
 struct GRFError {
-	GRFError(StringID severity, StringID message = 0);
+	GRFError(StringID severity, StringID message = {});
 
 	std::string custom_message{}; ///< Custom message (if present)
 	std::string data{}; ///< Additional data for message and custom_message
