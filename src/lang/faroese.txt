@@ -1866,7 +1866,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Mál, se
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Trýst á eitt spæl á listanum fyri at velja ta
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Servarin tú hevði samband við seinast:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Trýst fyri at velja servaran tú spældi á seinast
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Trýst fyri at velja servaran tú spældi á seinast
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}KUNNING UM SPÆL
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klientar: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

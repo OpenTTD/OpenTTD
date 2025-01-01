@@ -1804,7 +1804,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Bahasa, 
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik salah satu permainan dalam senarai untuk memilihnya
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Pelayan yang disambung anda sebelum ini:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klik untuk memilih pelayan yang anda main sebelum ini
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klik untuk memilih pelayan yang anda main sebelum ini
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}MAKLUMAT PERMAINAN
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klien: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

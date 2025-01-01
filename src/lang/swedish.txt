@@ -2389,7 +2389,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Serverko
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klicka på ett spel från listan för att välja det
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Servern du senast anslöt till:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Välj servern du senast spelade på
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Välj servern du senast spelade på
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPELINFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienter: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

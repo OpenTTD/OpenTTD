@@ -2769,7 +2769,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Informac
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Kliknij na rozgrywkę na tej liście, aby ją zaznaczyć
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Ostatnio używany serwer:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kliknij, aby wybrać ostatnio używany serwer
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Kliknij, aby wybrać ostatnio używany serwer
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACJE O GRZE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienci: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

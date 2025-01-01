@@ -2389,7 +2389,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Palvelim
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Napsauta peliä luettelossa valitaksesi
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Edellinen palvelin:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Valitse edellinen palvelin, jolla pelasit
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Valitse edellinen palvelin, jolla pelasit
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}PELITIEDOT
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Pelaajat: {WHITE}{COMMA} / {COMMA} – {COMMA} / {COMMA}

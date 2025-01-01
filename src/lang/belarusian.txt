@@ -2684,7 +2684,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Мова
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Выберыце гульню са сьпіса й клікніце
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Апошні сэрвэр, да якога вы далучаліся:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Клікніце для выбару апошняга сэрвэра
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Клікніце для выбару апошняга сэрвэра
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ІНФАРМАЦЫЯ АБ ГУЛЬНІ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Кліенты: {WHITE}{COMMA} / {COMMA} — {COMMA} / {COMMA}

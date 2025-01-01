@@ -1675,7 +1675,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Language
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}فہرست میں سے ایک کھیل کو چُننے کے لئے ایک پر کلک کریں
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}آپ کا پچھلی مرتبہ اختیار کیا ہُوا سرور:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}اپنے چھلی مرتبہ اختیار شدہ سرور کو منتخب کرنے کے لئے کلک کریں
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}اپنے چھلی مرتبہ اختیار شدہ سرور کو منتخب کرنے کے لئے کلک کریں
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}کھیل کی معلومات
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clients: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

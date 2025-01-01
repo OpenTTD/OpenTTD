@@ -2353,7 +2353,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Lingvo, 
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Alklaku ludon el la listo por elekti ĝin
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}La servilo kiun vi laste ensalutis:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klaku por selekti la servilon kie vi ludis la lastan fojon
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klaku por selekti la servilon kie vi ludis la lastan fojon
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}LUDINFORMOJ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klientoj: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

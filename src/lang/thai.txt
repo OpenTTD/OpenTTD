@@ -2053,7 +2053,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}ภา�
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}คลิกที่เกมจากรายการเพื่อเลือก
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}เซิร์ฟเวอร์ที่เข้าร่วมล่าสุด:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}คลิกเพื่อเลือกเซิร์ฟเวอร์ที่เล่นล่าสุด
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}คลิกเพื่อเลือกเซิร์ฟเวอร์ที่เล่นล่าสุด
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ข้อมูลเกม
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}ลูกข่าย: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

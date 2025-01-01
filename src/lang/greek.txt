@@ -2482,7 +2482,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Στοι
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Πατήστε σε ένα παιχνίδι από τη λίστα για το επιλέξετε
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Ο διακομιστής που συμμετείχατε την τελευταία φορά:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Πατήστε για να επιλέξετε το διακομιστή που συμμετείχατε την τελευταία φορά
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Πατήστε για να επιλέξετε το διακομιστή που συμμετείχατε την τελευταία φορά
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ΠΛΗΡΟΦΟΡΙΕΣ ΠΑΙΧΝΙΔΙΟΥ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Συμμετέχοντες:: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

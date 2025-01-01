@@ -1989,7 +1989,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Wizigje 
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik in spul út de list om it te selektearjen
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server wert dast it lêst op spiele hast
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klik om server wert dast it lêst op spiele hast te selektearje
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klik om server wert dast it lêst op spiele hast te selektearje
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}Spul INFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliïnten: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

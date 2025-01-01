@@ -2321,7 +2321,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Bahasa, 
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik untuk memilih sesi permainan dari daftar
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server yang diikuti dulu:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klik untuk memilih server yang digunakan sebelumnya
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klik untuk memilih server yang digunakan sebelumnya
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO PERMAINAN
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klien: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

@@ -2433,7 +2433,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Suhtlusk
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Loendis mängu klõpsamine valib selle
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server, kus sa viimati mängisid:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klõpsa, et valida server, kus sa viimati mängisid
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klõpsa, et valida server, kus sa viimati mängisid
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}MÄNGU ANDMED
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliente: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

@@ -2446,7 +2446,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Nyelv, s
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Kattintással a listában szereplő játék kiválasztása
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}A szerver amihez legutóbb csatlakoztál:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kattints ide a legutóbb használt szerver kiválasztásához
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Kattints ide a legutóbb használt szerver kiválasztásához
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}JÁTÉK INFÓ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliensek: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

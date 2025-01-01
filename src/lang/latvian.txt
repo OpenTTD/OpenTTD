@@ -2393,7 +2393,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Informā
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikšķināt sarakstā uz spēles, lai to izvēlētos
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Serveris, kuram jūs pievienojāties pēdējoreiz:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikšķis, lai izvēlētos serveri kurā jūs spēlējāt pēdējoreiz
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klikšķis, lai izvēlētos serveri kurā jūs spēlējāt pēdējoreiz
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPĒLES INFORMĀCIJA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Spēlētāji: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

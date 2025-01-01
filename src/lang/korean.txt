@@ -2390,7 +2390,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}서버 �
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}선택하려면 목록에서 게임을 클릭하세요
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}최근에 접속한 서버:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}최근에 플레이한 서버를 선택하려면 클릭하세요
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}최근에 플레이한 서버를 선택하려면 클릭하세요
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}게임 정보
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}접속현황: {WHITE}{COMMA} / {COMMA}명 - 회사 {COMMA} / {COMMA}개

@@ -2190,7 +2190,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Jezik, r
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikni na igro v seznamu, da jo izbereš
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Zadnjič obiskani strežnik:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikni za izbiro zadnjič obiskanega strežnika
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klikni za izbiro zadnjič obiskanega strežnika
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}IGRA - INFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Gosti: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

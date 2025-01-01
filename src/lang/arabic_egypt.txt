@@ -1922,7 +1922,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}اللغ
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}أضغط على لعبة من القائمة لإختيارها
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}الخادم الذي أنضممت إليه آخر مره:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}اضغط للعب الخادم الذي لعبت به آخر مرة.
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}اضغط للعب الخادم الذي لعبت به آخر مرة.
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}معلومات اللعبة
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}عملاء:{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

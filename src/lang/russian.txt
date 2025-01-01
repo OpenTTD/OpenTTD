@@ -2540,7 +2540,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Совм
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Выберите игру из списка
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Последний сервер, к которому вы подключались:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Нажмите для выбора последнего сервера
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Нажмите для выбора последнего сервера
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ИНФОРМАЦИЯ ОБ ИГРЕ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Клиенты: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
