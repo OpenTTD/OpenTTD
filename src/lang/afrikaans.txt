@@ -2015,9 +2015,9 @@ STR_FACE_SAVE                                                   :{BLACK}Spaar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Spaar gunsteling gesig
 STR_FACE_SAVE_DONE                                              :{WHITE}Die gesig sal as u gunsteling gesig in die OpenTTD stellings lêer gespaar word.
 STR_FACE_EUROPEAN                                               :{BLACK}Europiese
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Kies europese gesigte
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Kies europese gesigte
 STR_FACE_AFRICAN                                                :{BLACK}Afrikaanse
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Kies Afrikaanse gesigte
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Kies Afrikaanse gesigte
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nee
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Aktiveer snor of oorbel

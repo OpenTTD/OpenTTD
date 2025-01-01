@@ -2360,9 +2360,9 @@ STR_FACE_SAVE                                                   :{BLACK}Salva
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salva come faccia preferita
 STR_FACE_SAVE_DONE                                              :{WHITE}La faccia corrente è stata salvata come preferita nel file di configurazione di OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Europea
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Seleziona le facce europee
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Seleziona le facce europee
 STR_FACE_AFRICAN                                                :{BLACK}Africana
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Seleziona le facce africane
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Seleziona le facce africane
 STR_FACE_YES                                                    :Sì
 STR_FACE_NO                                                     :No
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Abilita i baffi o l'orecchino

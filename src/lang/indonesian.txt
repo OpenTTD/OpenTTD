@@ -2263,9 +2263,9 @@ STR_FACE_SAVE                                                   :{BLACK}Simpan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Simpan wajah kesukaanmu
 STR_FACE_SAVE_DONE                                              :{WHITE}Wajah ini akan disimpan sebagai favorit dalam berkas config OpenTTD.
 STR_FACE_EUROPEAN                                               :{BLACK}Eropa
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Pilih wajah Eropa
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Pilih wajah Eropa
 STR_FACE_AFRICAN                                                :{BLACK}Afrika
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Pilih wajah afrika
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Pilih wajah afrika
 STR_FACE_YES                                                    :Ya
 STR_FACE_NO                                                     :Tanpa
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Punya kumis atau anting-anting

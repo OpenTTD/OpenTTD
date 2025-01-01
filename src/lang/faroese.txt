@@ -1814,9 +1814,9 @@ STR_FACE_SAVE                                                   :{BLACK}Goym
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Goym yndis andlit
 STR_FACE_SAVE_DONE                                              :{WHITE}Hetta andliti verur goymt sum títt yndis andlit í OpenTTD uppsetanar fíluni
 STR_FACE_EUROPEAN                                               :{BLACK}Evropeiskt
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vel Evropeisk andlit
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Vel Evropeisk andlit
 STR_FACE_AFRICAN                                                :{BLACK}Afrikansk
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vel Afrikonsk andlit
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Vel Afrikonsk andlit
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nei
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Tendra yvirskegg ella oyraring

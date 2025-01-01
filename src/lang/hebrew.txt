@@ -2044,9 +2044,9 @@ STR_FACE_SAVE                                                   :{BLACK}שמור
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}שמור את הפנים לקובץ
 STR_FACE_SAVE_DONE                                              :{WHITE}פנים אלה ישמרו כהעדפה אישית שלך בקובץ ההגדרות של המשחק
 STR_FACE_EUROPEAN                                               :{BLACK}אירופאי
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}בחר תווי פנים אירופאיים
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}בחר תווי פנים אירופאיים
 STR_FACE_AFRICAN                                                :{BLACK}אפריקני
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}בחר תווי פנים אפריקניים
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}בחר תווי פנים אפריקניים
 STR_FACE_YES                                                    :כן
 STR_FACE_NO                                                     :לא
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}אפשר זקן/עגילים

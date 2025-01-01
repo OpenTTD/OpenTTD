@@ -2482,9 +2482,9 @@ STR_FACE_SAVE                                                   :{BLACK}Сохр
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Сохранить внешность
 STR_FACE_SAVE_DONE                                              :{WHITE}Внешность сохранена в файле конфигурации.
 STR_FACE_EUROPEAN                                               :{BLACK}Европ.
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Выбрать европеоидный тип лица
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Выбрать европеоидный тип лица
 STR_FACE_AFRICAN                                                :{BLACK}Африк.
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Выбрать африканский тип лица
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Выбрать африканский тип лица
 STR_FACE_YES                                                    :Да
 STR_FACE_NO                                                     :Нет
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Включить усы или серьги

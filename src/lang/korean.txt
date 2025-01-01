@@ -2332,9 +2332,9 @@ STR_FACE_SAVE                                                   :{BLACK}저장
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}즐겨찾는 얼굴로 저장
 STR_FACE_SAVE_DONE                                              :{WHITE}이 얼굴이 OpenTTD 설정 파일에 즐겨찾는 얼굴로 저장될 것입니다.
 STR_FACE_EUROPEAN                                               :{BLACK}유럽인
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}유럽인 얼굴 선택
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}유럽인 얼굴 선택
 STR_FACE_AFRICAN                                                :{BLACK}흑인
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}흑인 얼굴 선택
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}흑인 얼굴 선택
 STR_FACE_YES                                                    :예
 STR_FACE_NO                                                     :아니요
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}콧수염이나 귀걸이 착용

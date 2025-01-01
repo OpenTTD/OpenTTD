@@ -2331,9 +2331,9 @@ STR_FACE_SAVE                                                   :{BLACK}Spara
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Spara favoritansikte
 STR_FACE_SAVE_DONE                                              :{WHITE}Det här ansiktet kommer att sparas som ditt favoritansikte i OpenTTDs konfigurationsfil.
 STR_FACE_EUROPEAN                                               :{BLACK}Europeisk
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Välj europeiska ansikten
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Välj europeiska ansikten
 STR_FACE_AFRICAN                                                :{BLACK}Afrikanska
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Välj afrikanska ansikten
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Välj afrikanska ansikten
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nej
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Aktivera mustasch eller örhänge

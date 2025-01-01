@@ -1752,9 +1752,9 @@ STR_FACE_SAVE                                                   :{BLACK}Simpan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Simpan wajah kegemaran anda
 STR_FACE_SAVE_DONE                                              :{WHITE}Wajah ini akan disimpan sebagai wajah kegemaran anda dalam fail config OpenTTD.
 STR_FACE_EUROPEAN                                               :{BLACK}Eropah
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Pilih wajah orang Eropah
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Pilih wajah orang Eropah
 STR_FACE_AFRICAN                                                :{BLACK}Afrika
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Pilih wajah orang Afrika
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Pilih wajah orang Afrika
 STR_FACE_YES                                                    :Ya
 STR_FACE_NO                                                     :Tidak
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Benarkan misai atau anting-anting

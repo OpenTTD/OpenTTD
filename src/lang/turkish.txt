@@ -2315,9 +2315,9 @@ STR_FACE_SAVE                                                   :{BLACK}Kaydet
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tercih edilen yüzü kaydet
 STR_FACE_SAVE_DONE                                              :{WHITE}Bu yüz OpenTTD ayar dosyasına favoriniz olarak kaydedilecek
 STR_FACE_EUROPEAN                                               :{BLACK}Avrupalı
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Avrupalı yüz seç
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Avrupalı yüz seç
 STR_FACE_AFRICAN                                                :{BLACK}Afrikalı
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Siyah yüz seç
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Siyah yüz seç
 STR_FACE_YES                                                    :Evet
 STR_FACE_NO                                                     :Hayır
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Bıyık veya küpeyi etkinleştir

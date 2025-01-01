@@ -2331,9 +2331,9 @@ STR_FACE_SAVE                                                   :{BLACK}Save
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Save favorite face
 STR_FACE_SAVE_DONE                                              :{WHITE}This face will be saved as your favorite in the OpenTTD configuration file
 STR_FACE_EUROPEAN                                               :{BLACK}European
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Select European faces
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Select European faces
 STR_FACE_AFRICAN                                                :{BLACK}African
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Select African faces
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Select African faces
 STR_FACE_YES                                                    :Yes
 STR_FACE_NO                                                     :No
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Enable mustache or earring

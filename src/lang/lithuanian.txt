@@ -2484,9 +2484,9 @@ STR_FACE_SAVE                                                   :{BLACK}Išsaugo
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Išsaugoti mėgstamą veidą
 STR_FACE_SAVE_DONE                                              :{WHITE}Šis veidas bus išsaugotas kaip tavo mėgstamas OpenTTD nustatymų faile.
 STR_FACE_EUROPEAN                                               :{BLACK}Europietiškas
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Pasirinkti europietiškus veidus
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Pasirinkti europietiškus veidus
 STR_FACE_AFRICAN                                                :{BLACK}Afrikietiškas
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Pasirinkti afrikietiškus veidus
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Pasirinkti afrikietiškus veidus
 STR_FACE_YES                                                    :Taip
 STR_FACE_NO                                                     :Ne
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Įjungti ūsus arba auskarą

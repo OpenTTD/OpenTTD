@@ -2711,9 +2711,9 @@ STR_FACE_SAVE                                                   :{BLACK}Zapisz
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Zapisz ulubioną twarz
 STR_FACE_SAVE_DONE                                              :{WHITE}Ta twarz będzie zapisana w pliku konfiguracyjnym OpenTTD jako twoja ulubiona
 STR_FACE_EUROPEAN                                               :{BLACK}Europejska
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Wybierz twarz o karnacji europejskiej
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Wybierz twarz o karnacji europejskiej
 STR_FACE_AFRICAN                                                :{BLACK}Afrykańska
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Wybierz twarz o karnacji afrykańskiej
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Wybierz twarz o karnacji afrykańskiej
 STR_FACE_YES                                                    :Tak
 STR_FACE_NO                                                     :Nie
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Pokaż wąsy lub kolczyk

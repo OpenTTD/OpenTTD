@@ -1923,9 +1923,9 @@ STR_FACE_SAVE                                                   :{BLACK}Lagre
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Lagre favoritandlete
 STR_FACE_SAVE_DONE                                              :{WHITE}Dette andletet vil verte lagra som favoriten din i OpenTTDs konfigurasjonfil
 STR_FACE_EUROPEAN                                               :{BLACK}Europeisk
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Velg europeiske andlet
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Velg europeiske andlet
 STR_FACE_AFRICAN                                                :{BLACK}Afrikans
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Velg afrikanske andlet
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Velg afrikanske andlet
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nei
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Slå på bart eller øyrering

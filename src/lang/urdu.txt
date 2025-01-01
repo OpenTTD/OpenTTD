@@ -1623,9 +1623,9 @@ STR_FACE_SAVE                                                   :{BLACK}بچائ
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}پسندیدہ چہرہ بچائیں
 STR_FACE_SAVE_DONE                                              :{WHITE}یہ چہرہ آپ کے پسندیدہ چہرے کے طور پر OpenTTD configuration file میں محفوظ کر لیا جائے گا
 STR_FACE_EUROPEAN                                               :{BLACK}یورپئین
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}یورپئین چہرہ چنئے
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}یورپئین چہرہ چنئے
 STR_FACE_AFRICAN                                                :{BLACK}افریقی
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}افریقی چہرہ چنئے
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}افریقی چہرہ چنئے
 STR_FACE_YES                                                    :ہاں
 STR_FACE_NO                                                     :نہیں
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}مونچھیں یا کان کی بالیاں فعال کریں

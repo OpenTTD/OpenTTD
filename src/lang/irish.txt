@@ -2095,9 +2095,9 @@ STR_FACE_SAVE                                                   :{BLACK}Sábhái
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Sábháil aghaidh is fearr leat
 STR_FACE_SAVE_DONE                                              :{WHITE}Sábhálfar an aghaidh mar an ceann is fearr leat i gcomhad cumraíochta OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Eorpach
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Roghnaigh aghaidheanna Eorpacha
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Roghnaigh aghaidheanna Eorpacha
 STR_FACE_AFRICAN                                                :{BLACK}Afraiceach
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Roghnaigh aghaidheanna Afraiceacha
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Roghnaigh aghaidheanna Afraiceacha
 STR_FACE_YES                                                    :Tá
 STR_FACE_NO                                                     :Níl
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Cumasaigh croiméal nó fáinne cluasa

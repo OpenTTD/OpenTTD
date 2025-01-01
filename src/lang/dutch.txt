@@ -2331,9 +2331,9 @@ STR_FACE_SAVE                                                   :{BLACK}Opslaan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Favoriet gezicht opslaan
 STR_FACE_SAVE_DONE                                              :{WHITE}Dit gezicht wordt in het OpenTTD-configuratiebestand opgeslagen als jouw favoriet
 STR_FACE_EUROPEAN                                               :{BLACK}Europeaans
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selecteer Europese gezichten
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Selecteer Europese gezichten
 STR_FACE_AFRICAN                                                :{BLACK}Afrikaans
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Selecteer Afrikaanse gezichten
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Selecteer Afrikaanse gezichten
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nee
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Geef het gezicht een snor of oorbel

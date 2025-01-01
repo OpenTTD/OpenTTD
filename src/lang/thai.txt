@@ -1998,9 +1998,9 @@ STR_FACE_SAVE                                                   :{BLACK}บั�
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}บันทึกใบหน้าโปรด
 STR_FACE_SAVE_DONE                                              :{WHITE}ใบหน้านี้จะถูกบันทึกเป็นใบหน้าโปรดในไฟล์การตั้งค่าของ OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}ยุโรป
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}เลือกใบหน้ายุโรป
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}เลือกใบหน้ายุโรป
 STR_FACE_AFRICAN                                                :{BLACK}แอฟริกัน
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}เลือกใบหน้าแอฟริกัน
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}เลือกใบหน้าแอฟริกัน
 STR_FACE_YES                                                    :ใช่
 STR_FACE_NO                                                     :ไม่
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}เปิดใช้งานหนวด

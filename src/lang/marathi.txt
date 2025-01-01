@@ -1077,9 +1077,9 @@ STR_FACE_SIMPLE                                                 :{BLACK}सु�
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}सुटसुटीत चेहेरा निवड
 STR_FACE_FACECODE                                               :{BLACK}खेळाडू चेहेरा क्र.
 STR_FACE_EUROPEAN                                               :{BLACK}युरोपिअन
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}युरोपिअन चेहेरा निवडा
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}युरोपिअन चेहेरा निवडा
 STR_FACE_AFRICAN                                                :{BLACK}अफ्रिकन
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}आफ्रिकन चेहेरा निवडा
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}आफ्रिकन चेहेरा निवडा
 STR_FACE_YES                                                    :हो
 STR_FACE_NO                                                     :नाही
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}मिशी अथवा कर्णफुले असू द्या

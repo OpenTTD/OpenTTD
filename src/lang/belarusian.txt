@@ -2626,9 +2626,9 @@ STR_FACE_SAVE                                                   :{BLACK}Заха
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Захаваць улюбёны твар
 STR_FACE_SAVE_DONE                                              :{WHITE}Гэты твар быў захаваны як ваш улюбёны ў файле канфігурацыі OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Эўрапейскі
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Выбар твараў эўрапейскага тыпу
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Выбар твараў эўрапейскага тыпу
 STR_FACE_AFRICAN                                                :{BLACK}Афрыканскі
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Выбар твараў афрыканскага тыпу
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Выбар твараў афрыканскага тыпу
 STR_FACE_YES                                                    :Так
 STR_FACE_NO                                                     :Не
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Уключыць вусы ці завушніцы

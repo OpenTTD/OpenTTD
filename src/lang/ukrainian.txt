@@ -2465,9 +2465,9 @@ STR_FACE_SAVE                                                   :{BLACK}Збер
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Зберегти обране обличчя
 STR_FACE_SAVE_DONE                                              :{WHITE}Це обличчя буде збережене як обране у файлі конфігурації OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Європейські
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Вибрати європейські обличчя
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Вибрати європейські обличчя
 STR_FACE_AFRICAN                                                :{BLACK}Африканські
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Вибрати африканські обличчя
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Вибрати африканські обличчя
 STR_FACE_YES                                                    :Так
 STR_FACE_NO                                                     :Ні
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Дозволити вуса або сережки
