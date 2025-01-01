@@ -2389,7 +2389,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}服务�
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}点击列表中的服务器可以选定它
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}上一次加入的服务器：
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}点击选择您上次加入的服务器
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}点击选择您上次加入的服务器
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}游戏信息
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}客户端：{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

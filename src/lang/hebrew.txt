@@ -2097,7 +2097,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}'שפה,
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}בחר משחק מהרשימה
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}השרת אליו התחברת לאחרונה
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}לחץ להתחברות חוזרת לשרת אליו התחברת לאחרונה
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}לחץ להתחברות חוזרת לשרת אליו התחברת לאחרונה
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}מידע על המשחק
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}לקוחות: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

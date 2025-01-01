@@ -2240,7 +2240,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Cànan, 
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Briog air geama air an liosta gus a thaghadh
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Am frithealaiche sa ghabh thu an turas mu dheireadh:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Briog gus am frithealaiche a thaghadh air an do chluich thu an turas mu dheireadh
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Briog gus am frithealaiche a thaghadh air an do chluich thu an turas mu dheireadh
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}FIOSRACHADH A' GHEAMA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Cliantan: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

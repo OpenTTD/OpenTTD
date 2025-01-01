@@ -1904,7 +1904,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Tungumá
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Ýttu á leik á listanum til að velja hann
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Þjónninn sem þú tengdist síðast:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Smelltu til að velja þjóninn sem þú tengdist í síðast
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Smelltu til að velja þjóninn sem þú tengdist í síðast
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}UPPLÝSINGAR UM LEIK
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Notendur: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

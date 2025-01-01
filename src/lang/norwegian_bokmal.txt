@@ -2391,7 +2391,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Kompatib
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikk på et spill i listen for å velge det
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Tjeneren du koblet til forrige gang:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikk for å velge tjeneren du spilte på forrige gang
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klikk for å velge tjeneren du spilte på forrige gang
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPILLOVERSIKT
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienter: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

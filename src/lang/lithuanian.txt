@@ -2542,7 +2542,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Kalba, s
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Pasirink iš sąrašo žaidimą
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Serveris, kuriame žaidėte paskutinį kartą:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Spragtelkite ant serverio, kuriame žaidėte paskutinį kartą
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Spragtelkite ant serverio, kuriame žaidėte paskutinį kartą
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}Žaidimo informacija
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Žaidėjai: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

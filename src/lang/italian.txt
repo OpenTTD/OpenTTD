@@ -2418,7 +2418,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Lingua, 
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Fare clic su una partita in elenco per selezionarla
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Ultimo server utilizzato:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Fare clic per selezionare il server su cui si è giocato l'ultima volta
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Fare clic per selezionare il server su cui si è giocato l'ultima volta
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMAZIONI PARTITA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Client: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

@@ -2516,7 +2516,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Jezik, v
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikom na igru sa spiska vrši se njen odabir
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server sa prošle igre:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikom se označava server sa prošle igre
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klikom se označava server sa prošle igre
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}PODACI O IGRI
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Igrača: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

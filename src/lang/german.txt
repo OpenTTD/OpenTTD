@@ -2387,7 +2387,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Serverko
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Ein Spiel der Liste durch Anklicken wählen
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Zuletzt besuchtes Spiel:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Zuletzt besuchten Server auswählen
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Zuletzt besuchten Server auswählen
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPIEL-INFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Teilnehmer: {WHITE}{COMMA} / {COMMA} – {COMMA} / {COMMA}

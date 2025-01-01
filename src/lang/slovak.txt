@@ -2442,7 +2442,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Jazyk, v
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Vyberte hru zo zoznamu
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server na ktorý si bol pripojený naposledy:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikni pre výber servera na ktorom si hral naposledy
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Klikni pre výber servera na ktorom si hral naposledy
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO O HRE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klientov: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

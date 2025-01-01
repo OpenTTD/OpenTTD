@@ -2384,7 +2384,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Iaith, f
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Cliciwch gêm o'r rhestr i'w ddewis
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Y gweinydd yr ymunoch chi ag o ddiwethaf:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Cliciwch i ddewis y gweinydd y chwaraeoch chi ddiwethaf
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Cliciwch i ddewis y gweinydd y chwaraeoch chi ddiwethaf
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}GWYBODAETH AM Y GÊM
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Gwesteion: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

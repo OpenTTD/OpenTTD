@@ -2067,7 +2067,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Taal, be
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik 'n speletjie in die lys om dit te kies
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Die bedienaar wat jy laaste aan deelgeneem het
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Die bedienaar wat jy laaste op gespeel het
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Die bedienaar wat jy laaste op gespeel het
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPEL INFORMASIE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliënte: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

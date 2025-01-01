@@ -2150,7 +2150,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Teanga, 
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Cliceáil ar chluiche ón liosta lena roghnú
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}An freastalaí a ndeachaidh tú isteach ann an uair deiridh:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Cliceáil chun an freastalaí ina raibh tú ag imirt an uair deiridh a roghnú
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Cliceáil chun an freastalaí ina raibh tú ag imirt an uair deiridh a roghnú
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}FAISNÉIS FAOIN gCLUICHE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Cliaint: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

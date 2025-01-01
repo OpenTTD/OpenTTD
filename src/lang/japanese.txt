@@ -2258,7 +2258,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}言語�
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}選択するにはリスト内のゲームをクリックします
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}前回参加したサーバー:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}クリックすると前回参加したサーバーを選択します
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}クリックすると前回参加したサーバーを選択します
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ゲーム情報
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}クライアント: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

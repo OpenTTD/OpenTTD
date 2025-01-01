@@ -2383,7 +2383,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Limba, v
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Click pe un joc din listă pentru a-l selecta
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server-ul la care v-ați conectat data trecută:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Click pentru a alege serverul de data trecută
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Click pentru a alege serverul de data trecută
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO JOC
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clienți: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}

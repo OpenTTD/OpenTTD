@@ -2469,7 +2469,7 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Jazyk, v
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Hru vybereš kliknutím do seznamu
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Naposledy navštívený server:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kliknutím vybereš server, kde jsi hrál(a) naposledy
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Kliknutím vybereš server, kde jsi hrál(a) naposledy
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO O HŘE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klientů: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
