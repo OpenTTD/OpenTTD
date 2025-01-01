@@ -4266,10 +4266,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}선박 �
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}항공기 복제
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}객차/화차를 포함한 열차 전체를 복제합니다. 이 버튼을 클릭하고 차량기지 안이나 밖에 있는 열차를 클릭하세요. CTRL+클릭하면 경로를 같이 공유합니다
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}차량을 복제합니다. 이 버튼을 클릭하고 차고지 안이나 밖에 있는 열차를 클릭하세요. CTRL+클릭하면 경로를 같이 공유합니다
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}선박을 복제합니다. 이 버튼을 누르고 정류소의 안이나 밖에 있는 선박을 클릭하세요. CTRL+클릭하면 경로를 같이 공유합니다
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}항공기를 복제합니다. 이 버튼을 누르고 격납고의 안이나 밖에 있는 항공기를 클릭하세요. CTRL+클릭하면 경로를 같이 공유합니다
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}객차/화차를 포함한 열차 전체를 복제합니다. 이 버튼을 클릭하고 차량기지 안이나 밖에 있는 열차를 클릭하세요. CTRL+클릭하면 경로를 같이 공유합니다
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}차량을 복제합니다. 이 버튼을 클릭하고 차고지 안이나 밖에 있는 열차를 클릭하세요. CTRL+클릭하면 경로를 같이 공유합니다
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}선박을 복제합니다. 이 버튼을 누르고 정류소의 안이나 밖에 있는 선박을 클릭하세요. CTRL+클릭하면 경로를 같이 공유합니다
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}항공기를 복제합니다. 이 버튼을 누르고 격납고의 안이나 밖에 있는 항공기를 클릭하세요. CTRL+클릭하면 경로를 같이 공유합니다
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}이 차량기지로 이동합니다. CTRL+클릭하면 이 차량기지의 위치를 기준으로 새로운 외부 화면을 엽니다

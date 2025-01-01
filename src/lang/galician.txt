@@ -4266,10 +4266,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar b
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar aeronave
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Isto mercará unha copia dun tren incluídos tódolos vagóns. Pincha neste botón e despois nun tren dentro ou fóra do depósito. Ctrl+clic comparte as ordes. Tamén podes premer Shift para amosar unha estimación do custo
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Merca unha copia do vehículo de estrada. Pincha neste botón e despois nun vehículo dentro ou fóra do depósito. Ctrl+clic para compralo coas mesmas ordes. Tamén podes premer Shift para amosar unha estimación do custo
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Merca unha copia dun barco. Pincha neste botón e despois nun barco dentro ou fóra do depósito. Ctrl+clic para compralo coas mesmas ordes. Tamén podes premer Shift para amosar unha estimación do custo
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Merca unha copia dunha aeronave. Pincha neste botón e despois nunha aeronave dentro ou fóra do depósito. Ctrl+clic para compralo coas mesmas ordes. Tamén podes premer Shift para amosar unha estimación do custo
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Isto mercará unha copia dun tren incluídos tódolos vagóns. Pincha neste botón e despois nun tren dentro ou fóra do depósito. Ctrl+clic comparte as ordes. Tamén podes premer Shift para amosar unha estimación do custo
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Merca unha copia do vehículo de estrada. Pincha neste botón e despois nun vehículo dentro ou fóra do depósito. Ctrl+clic para compralo coas mesmas ordes. Tamén podes premer Shift para amosar unha estimación do custo
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Merca unha copia dun barco. Pincha neste botón e despois nun barco dentro ou fóra do depósito. Ctrl+clic para compralo coas mesmas ordes. Tamén podes premer Shift para amosar unha estimación do custo
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Merca unha copia dunha aeronave. Pincha neste botón e despois nunha aeronave dentro ou fóra do depósito. Ctrl+clic para compralo coas mesmas ordes. Tamén podes premer Shift para amosar unha estimación do custo
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar a vista principal na situación do depósito. Ctrl+Clic abrirá unha nova fiestra na localización do depósito

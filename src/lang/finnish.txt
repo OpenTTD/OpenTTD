@@ -4265,10 +4265,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kloonaa 
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kloonaa ilma-alus
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Osta kopio junasta kaikkine vaunuineen. Napsauta tätä painiketta ja sen jälkeen junaa varikon sisä- tai ulkopuolella. Ctrl+napsautus jakaa käskyt. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Tämä ostaa kopion ajoneuvosta. Napsauta tätä painiketta ja sen jälkeen ajoneuvoa varikon sisä- tai ulkopuolella. Ctrl+napsautus jakaa käskyt. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Osta laivan kopio. Napsauta tätä painiketta ja sitten laivaa telakan sisä- tai ulkopuolella. Ctrl+napsautus jakaa komennot. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Osta ilma-aluksen kopio. Napsauta tätä painiketta ja sitten ilma-alusta lentokonehallin sisä- tai ulkopuolella. Ctrl+napsautus jakaa komennot. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Osta kopio junasta kaikkine vaunuineen. Napsauta tätä painiketta ja sen jälkeen junaa varikon sisä- tai ulkopuolella. Ctrl+napsautus jakaa käskyt. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Tämä ostaa kopion ajoneuvosta. Napsauta tätä painiketta ja sen jälkeen ajoneuvoa varikon sisä- tai ulkopuolella. Ctrl+napsautus jakaa käskyt. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Osta laivan kopio. Napsauta tätä painiketta ja sitten laivaa telakan sisä- tai ulkopuolella. Ctrl+napsautus jakaa komennot. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Osta ilma-aluksen kopio. Napsauta tätä painiketta ja sitten ilma-alusta lentokonehallin sisä- tai ulkopuolella. Ctrl+napsautus jakaa komennot. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Keskitä päänäkymä veturitallin sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan veturitallin sijaintiin

@@ -4645,10 +4645,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonuj s
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonuj samolot
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Kup kopię pociągu wraz ze wszystkimi wagonami. Kliknij na ten przycisk, a następnie na pociąg wewnątrz lub na zewnątrz warsztatów. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Kup kopię pojazdu drogowego. Kliknij na ten przycisk, a następnie na pojazd wewnątrz lub na zewnątrz zajezdni. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Kup kopię statku. Kliknij na ten przycisk, a następnie na statek wewnątrz lub na zewnątrz stoczni. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Kup kopię samolotu. Kliknij ten przycisk, a następnie na samolot wewnątrz lub na zewnątrz hangaru. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Kup kopię pociągu wraz ze wszystkimi wagonami. Kliknij na ten przycisk, a następnie na pociąg wewnątrz lub na zewnątrz warsztatów. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Kup kopię pojazdu drogowego. Kliknij na ten przycisk, a następnie na pojazd wewnątrz lub na zewnątrz zajezdni. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Kup kopię statku. Kliknij na ten przycisk, a następnie na statek wewnątrz lub na zewnątrz stoczni. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Kup kopię samolotu. Kliknij ten przycisk, a następnie na samolot wewnątrz lub na zewnątrz hangaru. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Wyśrodkuj widok główny na lokalizacji warsztatów. Użyj Ctrl, aby otworzyć nowy podgląd na ich lokalizację

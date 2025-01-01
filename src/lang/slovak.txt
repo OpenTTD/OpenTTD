@@ -4269,10 +4269,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonova�
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonovať lietadlo
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Zakúpiť kópiu vlaku vrátane vagónov. Kliknite na toto tlačidlo a potom na vlak v depe alebo mimo neho. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Zakúpiť kópiu cestného vozidla. Kliknite na toto tlačidlo a potom na vozidlo v garáži alebo mimo nej. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Zakúpiť kópiu lode. Kliknite na toto tlačidlo a potom na loď v lodenici alebo mimo nej. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Zakúpiť kópiu lietadla. Kliknite na toto tlačidlo a potom na lietadlo v hangári alebo mimo neho. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Zakúpiť kópiu vlaku vrátane vagónov. Kliknite na toto tlačidlo a potom na vlak v depe alebo mimo neho. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Zakúpiť kópiu cestného vozidla. Kliknite na toto tlačidlo a potom na vozidlo v garáži alebo mimo nej. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Zakúpiť kópiu lode. Kliknite na toto tlačidlo a potom na loď v lodenici alebo mimo nej. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Zakúpiť kópiu lietadla. Kliknite na toto tlačidlo a potom na lietadlo v hangári alebo mimo neho. Ctrl+Klik bude zdieľať príkazy. Shift zobrazí odhadovanú cenu
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Vycentrovať pohľad na pozíciu depa. Ctrl+Klik otvorí nové okno s pohľadom na depo

@@ -3685,10 +3685,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kloniraj
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kloniraj letalo
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}To bo kupilo kopijo vlaka vključno z vsemi vagoni. Klikni na ta gumb in nato na vlak v ali zunaj garaže. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}To bo kupilo kopijo vozila. Klikni na ta gumb in nato na vozilo v ali zunaj garaže. Ctrl+Klik skopira tudi ukaze. Shift+Klik prikaže predviden strošek brez nakupa
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}To bo kupilo kopijo ladje. Klikni na ta gumb in nato na ladjo v ali zunaj ladjedelnice. Ctrl+Klik skopira tudi ukaze. Shift+Klik prikaže predviden strošek brez nakupa
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}To bo kupilo kopijo letala. Klikni na ta gumb in nato na letalo v ali zunaj hangarja. Ctrl+Klik skopira tudi ukaze. Shift+Klik prikaže predviden strošek brez nakupa
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}To bo kupilo kopijo vlaka vključno z vsemi vagoni. Klikni na ta gumb in nato na vlak v ali zunaj garaže. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}To bo kupilo kopijo vozila. Klikni na ta gumb in nato na vozilo v ali zunaj garaže. Ctrl+Klik skopira tudi ukaze. Shift+Klik prikaže predviden strošek brez nakupa
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}To bo kupilo kopijo ladje. Klikni na ta gumb in nato na ladjo v ali zunaj ladjedelnice. Ctrl+Klik skopira tudi ukaze. Shift+Klik prikaže predviden strošek brez nakupa
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}To bo kupilo kopijo letala. Klikni na ta gumb in nato na letalo v ali zunaj hangarja. Ctrl+Klik skopira tudi ukaze. Shift+Klik prikaže predviden strošek brez nakupa
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Osredotoči pogled na lokacijo železniške garaže. Ctrl+Klik odpre nov pogled na lokaciji zelezniške garaže

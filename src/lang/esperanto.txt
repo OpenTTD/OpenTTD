@@ -4093,10 +4093,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonu Ŝ
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonu aviadilon
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Aĉeti kopion de vagonaro kun ĉiuj vagonoj. Klaku ĉi tiun butonon kaj poste vagonaron en aŭ ekster la garaĝo. Ctrl+Klak kunhavigas la itineron. Maljuskliga klavo+klaku montras taksatan koston sen aĉeti
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Aĉeti kopion de stratveturilo. Klaku ĉi tiun butonon kaj poste veturilon en aŭ ekster la garaĝo. Ctrl+Klak kunhavigas la itineron. Maljuskliga klavo+klaku montras taksatan koston sen aĉeti
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Aĉeti kopion de ŝipo. Klaku ĉi tiun butonon kaj poste ŝipon en aŭ ekster garaĝo. Ctrl+Klak kunhavigas la itineron. Maljuskliga klavo+klaku montras taksatan koston sen aĉeti
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Aĉetu kopion de aviadilo. Klaku ĉi tiun butonon kaj poste aviadilon en aŭ ekster la hangaro. Ctrl+Klak kunhavigas la ordonojn. Ankaŭ premu Shift por nur montri kostotakson
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Aĉeti kopion de vagonaro kun ĉiuj vagonoj. Klaku ĉi tiun butonon kaj poste vagonaron en aŭ ekster la garaĝo. Ctrl+Klak kunhavigas la itineron. Maljuskliga klavo+klaku montras taksatan koston sen aĉeti
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Aĉeti kopion de stratveturilo. Klaku ĉi tiun butonon kaj poste veturilon en aŭ ekster la garaĝo. Ctrl+Klak kunhavigas la itineron. Maljuskliga klavo+klaku montras taksatan koston sen aĉeti
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Aĉeti kopion de ŝipo. Klaku ĉi tiun butonon kaj poste ŝipon en aŭ ekster garaĝo. Ctrl+Klak kunhavigas la itineron. Maljuskliga klavo+klaku montras taksatan koston sen aĉeti
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Aĉetu kopion de aviadilo. Klaku ĉi tiun butonon kaj poste aviadilon en aŭ ekster la hangaro. Ctrl+Klak kunhavigas la ordonojn. Ankaŭ premu Shift por nur montri kostotakson
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centri ĉefvidon ĉe la vagonartenejo. Stir+Klak por malfermi novan vidujon ĉe la vagonartenejo loko.

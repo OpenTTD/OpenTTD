@@ -3859,10 +3859,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clónái
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clónáil Aerárthach
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ceannóidh sé seo cóip de thraein lena n-áirítear gach vaigín. Cliceáil ar an gcnaipe seo agus ansin ar thraein laistigh nó lasmuigh den iosta. Déantar na horduithe a chomhroinnt le Ctrl+Cliceáil
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ceannóidh sé seo cóip d'fheithicil bóthair. Cliceáil ar an gcnaipe seo agus ansin ar fheithicil bóthair laistigh nó lasmuigh den iosta. Déantar na horduithe a chomhroinnt le Ctrl+Cliceáil
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ceannóidh sé seo cóip de long. Cliceáil ar an gcnaipe seo agus ansin ar long laistigh nó lasmuigh den iosta. Déantar na horduithe a chomhroinnt le Ctrl+Cliceáil
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ceannóidh sé seo cóip d'aerárthach. Cliceáil ar an gcnaipe seo agus ansin ar aerárthach laistigh nó lasmuigh den iosta. Déantar na horduithe a chomhroinnt le Ctrl+Cliceáil
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Ceannóidh sé seo cóip de thraein lena n-áirítear gach vaigín. Cliceáil ar an gcnaipe seo agus ansin ar thraein laistigh nó lasmuigh den iosta. Déantar na horduithe a chomhroinnt le Ctrl+Cliceáil
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Ceannóidh sé seo cóip d'fheithicil bóthair. Cliceáil ar an gcnaipe seo agus ansin ar fheithicil bóthair laistigh nó lasmuigh den iosta. Déantar na horduithe a chomhroinnt le Ctrl+Cliceáil
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Ceannóidh sé seo cóip de long. Cliceáil ar an gcnaipe seo agus ansin ar long laistigh nó lasmuigh den iosta. Déantar na horduithe a chomhroinnt le Ctrl+Cliceáil
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Ceannóidh sé seo cóip d'aerárthach. Cliceáil ar an gcnaipe seo agus ansin ar aerárthach laistigh nó lasmuigh den iosta. Déantar na horduithe a chomhroinnt le Ctrl+Cliceáil
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Láraigh an príomhamharc ar shuíomh an iosta traenach. Osclaítear amharc nua ar shuíomh an iosta traenach le Ctrl+Cliceáil

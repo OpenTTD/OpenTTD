@@ -4227,10 +4227,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Gemiyi k
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Uçağı kopyala
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir trene tıklayın.  Ctrl+ Sol tık yaparsanız kopyalanan tren ile aynı emirleri paylaşır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Karayolu aracının bir kopyasını yapar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir araca tıklayın. Ctrl+ Sol Tıklama talimatları paylaştırır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Geminin bir kopyasını oluşturun. Önce bu düğmeye sonra da tersanenin içindeki veya dışındaki bir gemiye tıklayın. Ctrl+ Sol tık yaparsanız kopyalanan gemi aynı emirleri paylaşır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Uçağın bir kopyasını oluşturur. Önce bu düğmeye sonra da hangarın içindeki veya dışındaki bir uçaga tıklayın. Ctrl+ Sol tık yaparsanız kopyalanan uçak ile aynı emirleri paylaşır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir trene tıklayın.  Ctrl+ Sol tık yaparsanız kopyalanan tren ile aynı emirleri paylaşır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Karayolu aracının bir kopyasını yapar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir araca tıklayın. Ctrl+ Sol Tıklama talimatları paylaştırır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Geminin bir kopyasını oluşturun. Önce bu düğmeye sonra da tersanenin içindeki veya dışındaki bir gemiye tıklayın. Ctrl+ Sol tık yaparsanız kopyalanan gemi aynı emirleri paylaşır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Uçağın bir kopyasını oluşturur. Önce bu düğmeye sonra da hangarın içindeki veya dışındaki bir uçaga tıklayın. Ctrl+ Sol tık yaparsanız kopyalanan uçak ile aynı emirleri paylaşır. Shift'e basılı tutarak tıklarsanız sadece maliyetini gösterir.
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Tren garını göster. Ctrl + Sol Tıklama garın olduğu yere ait bir görünüm penceresi açar.

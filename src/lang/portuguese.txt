@@ -4266,10 +4266,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar n
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar Aeronave
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Comprar uma cópia de um comboio, incluindo todos os veículos rebocados. Clique neste botão e de seguida, num comboio que se encontre dentro ou fora do depósito ferroviário. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Comprar uma cópia de um veículo rodoviário. Clique neste botão e de seguida num veículo rodoviário que se encontre dentro ou fora da garagem. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Comprar uma cópia de um navio. Clique neste botão e de seguida, num navio dentro ou fora do estaleiro naval. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Comprar uma cópia de uma aeronave. Clique neste botão e de seguida, numa aeronave que se encontre dentro ou fora do hangar. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Comprar uma cópia de um comboio, incluindo todos os veículos rebocados. Clique neste botão e de seguida, num comboio que se encontre dentro ou fora do depósito ferroviário. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Comprar uma cópia de um veículo rodoviário. Clique neste botão e de seguida num veículo rodoviário que se encontre dentro ou fora da garagem. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Comprar uma cópia de um navio. Clique neste botão e de seguida, num navio dentro ou fora do estaleiro naval. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Comprar uma cópia de uma aeronave. Clique neste botão e de seguida, numa aeronave que se encontre dentro ou fora do hangar. Ctrl+Clique para partilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar visualização na localização do depósito ferroviário. Ctrl+Clique para abrir um novo visualizador na localização do depósito ferroviário

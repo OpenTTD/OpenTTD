@@ -4267,10 +4267,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klooni l
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klooni õhusõiduk
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ostetakse samasugune rong koos kõikide vagunitega. Vajuta sellele nupule, ning seejärel rongile depoo sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ostetakse samasugune mootorsõiduk. Vajuta sellele nupule, ning seejärel mootorsõidukil depoos või sellest väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ostetakse samasugune laev. Vajuta sellele nupule, ning seejärel laevale laevaremonditehase sees või väljas. «Ctrl»+klõps jagab korraldusi. Hoia all shift-klahvi, et näidata ainult hinnangulist maksumust
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ostetakse samasugune õhusõiduk. Vajuta sellele nupule, ning seejärel õhusõidukile angaari sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Ostetakse samasugune rong koos kõikide vagunitega. Vajuta sellele nupule, ning seejärel rongile depoo sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Ostetakse samasugune mootorsõiduk. Vajuta sellele nupule, ning seejärel mootorsõidukil depoos või sellest väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Ostetakse samasugune laev. Vajuta sellele nupule, ning seejärel laevale laevaremonditehase sees või väljas. «Ctrl»+klõps jagab korraldusi. Hoia all shift-klahvi, et näidata ainult hinnangulist maksumust
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Ostetakse samasugune õhusõiduk. Vajuta sellele nupule, ning seejärel õhusõidukile angaari sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Keskenda põhivaade rongidepoo kohale
