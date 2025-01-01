@@ -2331,9 +2331,9 @@ STR_FACE_SAVE                                                   :{BLACK}Tallenna
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tallenna suosikkikasvot
 STR_FACE_SAVE_DONE                                              :{WHITE}Nämä kasvot tallennetaan suosikkikasvoiksesi OpenTTD:n kokoonpanotiedostoon.
 STR_FACE_EUROPEAN                                               :{BLACK}Eurooppalainen
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Valitse eurooppalaisia kasvoja
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Valitse eurooppalaisia kasvoja
 STR_FACE_AFRICAN                                                :{BLACK}Afrikkalainen
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Valitse afrikkalaisia kasvoja
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Valitse afrikkalaisia kasvoja
 STR_FACE_YES                                                    :Kyllä
 STR_FACE_NO                                                     :Ei
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Käytä viiksiä tai korvakorua

@@ -2138,9 +2138,9 @@ STR_FACE_SAVE                                                   :{BLACK}Shrani
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Shrani priljubljen obraz
 STR_FACE_SAVE_DONE                                              :{WHITE}Ta obraz bo shranjen kot tvoj priljubljen v konfiguracijo OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Evropski
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Izbor evropskih obrazov
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Izbor evropskih obrazov
 STR_FACE_AFRICAN                                                :{BLACK}Afriški
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Izbor afriških obrazov
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Izbor afriških obrazov
 STR_FACE_YES                                                    :Da
 STR_FACE_NO                                                     :Ne
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Vklop brk ali uhanov

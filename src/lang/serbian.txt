@@ -2458,9 +2458,9 @@ STR_FACE_SAVE                                                   :{BLACK}Sačuvaj
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Čuvanje omiljenog lica
 STR_FACE_SAVE_DONE                                              :{WHITE}Ovo lice će biti sačuvano kao omiljeno u OpenTTD datoteci podešavanja
 STR_FACE_EUROPEAN                                               :{BLACK}Evropski
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Evropski izgled lica
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Evropski izgled lica
 STR_FACE_AFRICAN                                                :{BLACK}Afrički
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Afrički izgled lica
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Afrički izgled lica
 STR_FACE_YES                                                    :Da
 STR_FACE_NO                                                     :Ne
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Dodavanje brkova ili minđuša

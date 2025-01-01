@@ -2331,9 +2331,9 @@ STR_FACE_SAVE                                                   :{BLACK}储存�
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}储存喜好的头像
 STR_FACE_SAVE_DONE                                              :{WHITE}该头像将作为你的喜好储存至 OpenTTD 配置文件中
 STR_FACE_EUROPEAN                                               :{BLACK}欧洲人
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}使用欧洲人面孔
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}使用欧洲人面孔
 STR_FACE_AFRICAN                                                :{BLACK}非洲人
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}使用非洲人面孔
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}使用非洲人面孔
 STR_FACE_YES                                                    :是
 STR_FACE_NO                                                     :否
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}是否有胡子或耳环

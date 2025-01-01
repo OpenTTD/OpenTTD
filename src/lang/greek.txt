@@ -2424,9 +2424,9 @@ STR_FACE_SAVE                                                   :{BLACK}Αποθ
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Αποθήκευση αγαπημένου προσώπου
 STR_FACE_SAVE_DONE                                              :{WHITE}Αυτό το πρόσωπο θα αποθηκευτεί ως αγαπημένο στο αρχείο ρυθμίσεων του OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Ευρωπαϊκό
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Επιλογή ευρωπαϊκών προσώπων
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Επιλογή ευρωπαϊκών προσώπων
 STR_FACE_AFRICAN                                                :{BLACK}Αφρικάνικο
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Επιλογή αφρικάνικων προσώπων
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Επιλογή αφρικάνικων προσώπων
 STR_FACE_YES                                                    :Ναι
 STR_FACE_NO                                                     :Όχι
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Ενεργοποίηση μουστακιού ή σκουλαρικιού

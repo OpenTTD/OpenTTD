@@ -2267,9 +2267,9 @@ STR_FACE_SAVE                                                   :{BLACK}Guardar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Guardar cara favorita
 STR_FACE_SAVE_DONE                                              :{WHITE}Cara guardada como favorita en el archivo de configuración
 STR_FACE_EUROPEAN                                               :{BLACK}Europea
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Elegir cara con rasgos europeos
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Elegir cara con rasgos europeos
 STR_FACE_AFRICAN                                                :{BLACK}Africana
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Elegir cara con rasgos africanos
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Elegir cara con rasgos africanos
 STR_FACE_YES                                                    :Sí
 STR_FACE_NO                                                     :No
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Añadir bigotes o aretes

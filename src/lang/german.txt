@@ -2329,9 +2329,9 @@ STR_FACE_SAVE                                                   :{BLACK}Speicher
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Speichere bevorzugtes Gesicht
 STR_FACE_SAVE_DONE                                              :{WHITE}Dieses Gesicht wird als bevorzugtes Gesicht in der OpenTTD-Konfigurationsdatei gespeichert
 STR_FACE_EUROPEAN                                               :{BLACK}Europäisch
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Auswahl europäischer Gesichter
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Auswahl europäischer Gesichter
 STR_FACE_AFRICAN                                                :{BLACK}Afrikanisch
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Auswahl afrikanischer Gesichter
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Auswahl afrikanischer Gesichter
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nein
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Schnauzbart oder Ohrring erlauben

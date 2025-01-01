@@ -2375,9 +2375,9 @@ STR_FACE_SAVE                                                   :{BLACK}Salvesta
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salvesta lemmiknägu
 STR_FACE_SAVE_DONE                                              :{WHITE}See nägu salvestatakse sinu lemmikuna OpenTTD seadete faili.
 STR_FACE_EUROPEAN                                               :{BLACK}Eurooplane
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vali euroopa näod
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Vali euroopa näod
 STR_FACE_AFRICAN                                                :{BLACK}Aafriklane
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vali aafrika näod
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Vali aafrika näod
 STR_FACE_YES                                                    :Jah
 STR_FACE_NO                                                     :Ei
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Vuntsid või kõrvarõngad on lubatud

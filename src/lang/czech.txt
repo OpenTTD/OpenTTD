@@ -2411,9 +2411,9 @@ STR_FACE_SAVE                                                   :{BLACK}Uložit
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Uložit oblíbený obličej
 STR_FACE_SAVE_DONE                                              :{WHITE}Tato tvář bude uložena do konfiguračního souboru jako tvá oblíbená
 STR_FACE_EUROPEAN                                               :{BLACK}Europoidní
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vybrat europoidní tváře
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Vybrat europoidní tváře
 STR_FACE_AFRICAN                                                :{BLACK}Africká
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vybrat africké tváře
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Vybrat africké tváře
 STR_FACE_YES                                                    :Ano
 STR_FACE_NO                                                     :Ne
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Povolit knír nebo náušnici

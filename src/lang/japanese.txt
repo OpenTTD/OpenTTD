@@ -2203,9 +2203,9 @@ STR_FACE_SAVE                                                   :{BLACK}保存
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}お気に入りの顔として保存します
 STR_FACE_SAVE_DONE                                              :{WHITE}この顔をお気に入りの顔として、OpenTTDの設定ファイルに保存します
 STR_FACE_EUROPEAN                                               :{BLACK}ヨーロッパ系
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}ヨーロッパ系の顔を選択します
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}ヨーロッパ系の顔を選択します
 STR_FACE_AFRICAN                                                :{BLACK}アフリカ系
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}アフリカ系の顔を選択します
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}アフリカ系の顔を選択します
 STR_FACE_YES                                                    :あり
 STR_FACE_NO                                                     :なし
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}口ひげかイヤリングを付けます

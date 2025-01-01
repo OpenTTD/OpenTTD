@@ -2335,9 +2335,9 @@ STR_FACE_SAVE                                                   :{BLACK}Saglabā
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Saglabāt iecienīto seju
 STR_FACE_SAVE_DONE                                              :{WHITE}Šī seja tiks saglabāta OpenTDD konfigurācijas failā kā iecienītā seja
 STR_FACE_EUROPEAN                                               :{BLACK}Eiropietis
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Izvēlēties eiropiešu sejas
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Izvēlēties eiropiešu sejas
 STR_FACE_AFRICAN                                                :{BLACK}Afrikānis
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Izvēlēties afrikāņu sejas
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Izvēlēties afrikāņu sejas
 STR_FACE_YES                                                    :Ir
 STR_FACE_NO                                                     :Nav
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Iespējot ūsas vai auskarus

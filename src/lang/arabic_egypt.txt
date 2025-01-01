@@ -1870,9 +1870,9 @@ STR_FACE_SAVE                                                   :{BLACK}حفظ
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}حفظ الوجه المفضل
 STR_FACE_SAVE_DONE                                              :{WHITE}هذا الوجه سيحفظ كالمفضل في ملف تكوينك الخاص بـ Open TTD.
 STR_FACE_EUROPEAN                                               :{BLACK}أوربي
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}إختيار وجوه أوربيه
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}إختيار وجوه أوربيه
 STR_FACE_AFRICAN                                                :{BLACK}أفريقي
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}إختيار وجوه أفريقيه
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}إختيار وجوه أفريقيه
 STR_FACE_YES                                                    :نعم
 STR_FACE_NO                                                     :لا
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}تفعيل الشوارب أو أقراط الأذان

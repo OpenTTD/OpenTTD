@@ -2384,9 +2384,9 @@ STR_FACE_SAVE                                                   :{BLACK}Uložiť
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Uložiť obľúbenú tvár
 STR_FACE_SAVE_DONE                                              :{WHITE}Táto tvár bude uložená ako obľúbená do konfiguračného súboru OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Európan
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vybrať európske tváre
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Vybrať európske tváre
 STR_FACE_AFRICAN                                                :{BLACK}Afričan
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vybrať africké tváre
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Vybrať africké tváre
 STR_FACE_YES                                                    :áno
 STR_FACE_NO                                                     :nie
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Povoliť fúzy alebo náušnicu

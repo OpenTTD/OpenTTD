@@ -2331,9 +2331,9 @@ STR_FACE_SAVE                                                   :{BLACK}Späiche
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Späichert favoriséiert Gesiicht
 STR_FACE_SAVE_DONE                                              :{WHITE}Dëst Gesiicht gëtt als favoriséiert an der OpenTTD Konfiguratiounsdatei gespäichert.
 STR_FACE_EUROPEAN                                               :{BLACK}Europäesch
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Wielt europäesch Gesiichter
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Wielt europäesch Gesiichter
 STR_FACE_AFRICAN                                                :{BLACK}Afrikanesch
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Wielt afrikanesch Gesiichter
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Wielt afrikanesch Gesiichter
 STR_FACE_YES                                                    :Jo
 STR_FACE_NO                                                     :Nee
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Schalt Schnauz oder Ouerréng un

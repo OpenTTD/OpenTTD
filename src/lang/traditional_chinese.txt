@@ -2331,9 +2331,9 @@ STR_FACE_SAVE                                                   :{BLACK}儲存
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}儲存喜愛臉孔
 STR_FACE_SAVE_DONE                                              :{WHITE}這將被當成您喜愛的臉孔存入 OpenTTD 設定檔
 STR_FACE_EUROPEAN                                               :{BLACK}歐洲人
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}選擇歐洲人臉孔
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}選擇歐洲人臉孔
 STR_FACE_AFRICAN                                                :{BLACK}非洲人
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}選擇非洲人臉孔
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}選擇非洲人臉孔
 STR_FACE_YES                                                    :確定
 STR_FACE_NO                                                     :取消
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}增加鬍鬚或耳飾

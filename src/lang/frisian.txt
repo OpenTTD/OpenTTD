@@ -1939,9 +1939,9 @@ STR_FACE_FACECODE                                               :{BLACK}Spielers
 STR_FACE_SAVE                                                   :{BLACK}Opslaan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Favorite gesicht opslaan
 STR_FACE_EUROPEAN                                               :{BLACK}Jeropeesk
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selektearje jeropeeske gesichten
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Selektearje jeropeeske gesichten
 STR_FACE_AFRICAN                                                :{BLACK}Afrikaans
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Selektearje Afrikaanske gesichten
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Selektearje Afrikaanske gesichten
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :#
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Snorren en earbellen

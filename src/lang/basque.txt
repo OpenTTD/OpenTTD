@@ -1903,9 +1903,9 @@ STR_FACE_SAVE                                                   :{BLACK}Gorde
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Aurpegia gorde
 STR_FACE_SAVE_DONE                                              :{WHITE}Aurpegia zure aurpegi gogoko bezala gorde da OpenTTDko konfigurazio artxiboan
 STR_FACE_EUROPEAN                                               :{BLACK}Europarra
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Europarren aurpegiak aukeratu
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Europarren aurpegiak aukeratu
 STR_FACE_AFRICAN                                                :{BLACK}Afrikarra
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Afrikarren aurpegiak aukeratu
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Afrikarren aurpegiak aukeratu
 STR_FACE_YES                                                    :Bai
 STR_FACE_NO                                                     :Ez
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Gaitu biboteak eta belarritakoak

@@ -2332,9 +2332,9 @@ STR_FACE_SAVE                                                   :{BLACK}Enregist
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Enregistrer le visage favori
 STR_FACE_SAVE_DONE                                              :{WHITE}Ce visage sera enregistré comme favori dans le fichier de configuration d'OpenTTD.
 STR_FACE_EUROPEAN                                               :{BLACK}Européen
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Choisir les visages européens
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Choisir les visages européens
 STR_FACE_AFRICAN                                                :{BLACK}Africain
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Choisir les visages africains
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Choisir les visages africains
 STR_FACE_YES                                                    :Oui
 STR_FACE_NO                                                     :Non
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Activer la moustache ou la boucle d'oreille

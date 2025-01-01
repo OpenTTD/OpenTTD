@@ -2326,9 +2326,9 @@ STR_FACE_SAVE                                                   :{BLACK}Cadw
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Cadw hoff wyneb
 STR_FACE_SAVE_DONE                                              :{WHITE}Bydd yr wyneb hwn yn cael ei gadw fel eich ffefryn yn y ffeil ffurfweddu OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Ewropeiaidd
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Dewis gwyneb Ewropeaidd
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Dewis gwyneb Ewropeaidd
 STR_FACE_AFRICAN                                                :{BLACK}Affricanaidd
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Dewis gwyneb Affricanaidd
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Dewis gwyneb Affricanaidd
 STR_FACE_YES                                                    :Ie
 STR_FACE_NO                                                     :Na
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Galluogi mwstásh neu glustdlws

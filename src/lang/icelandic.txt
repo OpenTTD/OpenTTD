@@ -1852,9 +1852,9 @@ STR_FACE_SAVE                                                   :{BLACK}Vista
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Vista uppáhalds andlit
 STR_FACE_SAVE_DONE                                              :{WHITE}Þetta andlit mun verða vistað sem þitt uppahald í OpenTTD stilliskrá
 STR_FACE_EUROPEAN                                               :{BLACK}Evrópskt
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Velja evrópskt andlit
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Velja evrópskt andlit
 STR_FACE_AFRICAN                                                :{BLACK}Afrískt
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Velja blökkuandlit
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Velja blökkuandlit
 STR_FACE_YES                                                    :Já
 STR_FACE_NO                                                     :Nei
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Virkja yfirvaraskegg eða eyrnalokk

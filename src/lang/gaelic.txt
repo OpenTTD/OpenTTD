@@ -2188,9 +2188,9 @@ STR_FACE_SAVE                                                   :{BLACK}Sàbhail
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Sàbhail mar an t-aodann as fhearr leat
 STR_FACE_SAVE_DONE                                              :{WHITE}Thèid an t-aodann seo a shàbhaladh mar am fear as fhearr leat san fhaidhle rèiteachaidh aig OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Eòrpach
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Tagh aodann Eòrpach
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Tagh aodann Eòrpach
 STR_FACE_AFRICAN                                                :{BLACK}Afraganach
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Tagh aodann Afraganach
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Tagh aodann Afraganach
 STR_FACE_YES                                                    :Air/Oirre
 STR_FACE_NO                                                     :—
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Cuir stais no fàinne-chluaise an comas

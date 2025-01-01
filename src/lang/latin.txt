@@ -2190,9 +2190,9 @@ STR_FACE_SAVE                                                   :{BLACK}Servare
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Servare faciem dilectam
 STR_FACE_SAVE_DONE                                              :{WHITE}Haec facies servabit ad dilectam tuam in fasciculo OpenTTD configurationis
 STR_FACE_EUROPEAN                                               :{BLACK}Europaea
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Eligere facies Europaeas
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Eligere facies Europaeas
 STR_FACE_AFRICAN                                                :{BLACK}Africana
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Eligere facies Africanas
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Eligere facies Africanas
 STR_FACE_YES                                                    :Ita
 STR_FACE_NO                                                     :Non
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Apponere mystacem vel inaurem

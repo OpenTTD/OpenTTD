@@ -2338,9 +2338,9 @@ STR_FACE_SAVE                                                   :{BLACK}Запа
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Запази любимо лице
 STR_FACE_SAVE_DONE                                              :{WHITE}Това лице ще бъде запазено като Вашето любимо в OpenTTD config файла
 STR_FACE_EUROPEAN                                               :{BLACK}Eвропеец
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Избери Европейски лица
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Избери Европейски лица
 STR_FACE_AFRICAN                                                :{BLACK}Aфриканец
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Избери Африкански лица
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Избери Африкански лица
 STR_FACE_YES                                                    :Дa
 STR_FACE_NO                                                     :He
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Позволи мустак или обица

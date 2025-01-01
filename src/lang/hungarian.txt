@@ -2388,9 +2388,9 @@ STR_FACE_SAVE                                                   :{BLACK}Mentés
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Kedvenc arc elmentése
 STR_FACE_SAVE_DONE                                              :{WHITE}Ez az arc mint a kedvenc arcod kerül az OpenTTD konfig-fájlba mentésre.
 STR_FACE_EUROPEAN                                               :{BLACK}Európai
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Európai arc választása
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Európai arc választása
 STR_FACE_AFRICAN                                                :{BLACK}Afrikai
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Afrikai arc választása
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Afrikai arc választása
 STR_FACE_YES                                                    :Igen
 STR_FACE_NO                                                     :Nem
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Engedélyez bajuszt vagy a fülbevalót

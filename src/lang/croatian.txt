@@ -2137,9 +2137,9 @@ STR_FACE_SAVE                                                   :{BLACK}Spremi
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Spremi omiljeno lice
 STR_FACE_SAVE_DONE                                              :{WHITE}Ovo lice bit će spremljeno kao tvoje omiljeno u OpenTTD konfiguracijsku datoteku.
 STR_FACE_EUROPEAN                                               :{BLACK}Europljanin
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Odaberi europska lica
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Odaberi europska lica
 STR_FACE_AFRICAN                                                :{BLACK}Afrikanac
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Odaberi afrička lica
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Odaberi afrička lica
 STR_FACE_YES                                                    :Da
 STR_FACE_NO                                                     :Ne
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Uključi brkove ili naušnicu

@@ -1738,9 +1738,9 @@ STR_FACE_SAVE                                                   :{BLACK}ذخیر
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}ذخیره صورت دلخواه
 STR_FACE_SAVE_DONE                                              :{WHITE}این صورت به عنوان صورت دلخواه شما در فایل تنظیمات بازی ذخیره می گردد
 STR_FACE_EUROPEAN                                               :{BLACK}اروپایی
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}انتخاب صورت های اروپایی
+STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}انتخاب صورت های اروپایی
 STR_FACE_AFRICAN                                                :{BLACK}آفریقایی
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}انتخاب صورت های آفریقایی
+STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}انتخاب صورت های آفریقایی
 STR_FACE_YES                                                    :بله
 STR_FACE_NO                                                     :خیر
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}فعال کردن سبیل و یا گوشواره
