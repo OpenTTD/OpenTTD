@@ -569,7 +569,7 @@ bool AfterLoadGame()
 
 	extern TileIndex _cur_tileloop_tile; // From landscape.cpp.
 	/* The LFSR used in RunTileLoop iteration cannot have a zeroed state, make it non-zeroed. */
-	if (_cur_tileloop_tile == 0) _cur_tileloop_tile = 1;
+	if (_cur_tileloop_tile == 0) _cur_tileloop_tile = TileIndex{1};
 
 	if (IsSavegameVersionBefore(SLV_98)) _gamelog.Oldver();
 
@@ -3084,7 +3084,7 @@ bool AfterLoadGame()
 				if (IsValidCargoID(a.cargo)) {
 					a.last_accepted = i->GetAccepted(0).last_accepted;
 				} else {
-					a.last_accepted = 0;
+					a.last_accepted = EconomyTime::MIN_DATE;
 				}
 			}
 		}
@@ -3299,7 +3299,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_NEWGRF_LAST_SERVICE)) {
 		/* Set service date provided to NewGRF. */
 		for (Vehicle *v : Vehicle::Iterate()) {
-			v->date_of_last_service_newgrf = v->date_of_last_service.base();
+			v->date_of_last_service_newgrf = TimerGameCalendar::Date{v->date_of_last_service.base()};
 		}
 	}
 

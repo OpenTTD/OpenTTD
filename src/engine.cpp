@@ -81,7 +81,7 @@ Engine::Engine(VehicleType type, EngineID base)
 		/* 'power' defaults to zero, so we also have to default to 'wagon' */
 		if (type == VEH_TRAIN) this->u.rail.railveh_type = RAILVEH_WAGON;
 		/* Set model life to maximum to make wagons available */
-		this->info.base_life = 0xFF;
+		this->info.base_life = TimerGameCalendar::Year{0xFF};
 		/* Set road vehicle tractive effort to the default value */
 		if (type == VEH_ROAD) this->u.road.tractive_effort = 0x4C;
 		/* Aircraft must have CT_INVALID as default, as there is no property */
@@ -116,7 +116,7 @@ Engine::Engine(VehicleType type, EngineID base)
 			this->info.string_id = STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM + base;
 
 			/* Set the default model life of original wagons to "infinite" */
-			if (this->u.rail.railveh_type == RAILVEH_WAGON) this->info.base_life = 0xFF;
+			if (this->u.rail.railveh_type == RAILVEH_WAGON) this->info.base_life = TimerGameCalendar::Year{0xFF};
 
 			break;
 
@@ -693,7 +693,7 @@ void CalcEngineReliability(Engine *e, bool new_month)
 void SetYearEngineAgingStops()
 {
 	/* Determine last engine aging year, default to 2050 as previously. */
-	_year_engine_aging_stops = 2050;
+	_year_engine_aging_stops = TimerGameCalendar::Year{2050};
 
 	for (const Engine *e : Engine::Iterate()) {
 		const EngineInfo *ei = &e->info;

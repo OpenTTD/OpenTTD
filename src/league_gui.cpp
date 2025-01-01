@@ -220,7 +220,7 @@ static void HandleLinkClick(Link link)
 
 		case LT_TILE:
 			if (!IsValidTile(link.target)) return;
-			xy = link.target;
+			xy = TileIndex{link.target};
 			break;
 
 		case LT_INDUSTRY:

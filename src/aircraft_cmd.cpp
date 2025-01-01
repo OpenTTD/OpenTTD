@@ -927,7 +927,7 @@ static bool AircraftController(Aircraft *v)
 			u->cur_speed = 32;
 			int count = UpdateAircraftSpeed(v);
 			if (count > 0) {
-				v->tile = 0;
+				v->tile = TileIndex{};
 
 				int z_dest;
 				GetAircraftFlightLevelBounds(v, &z_dest, nullptr);
@@ -1100,7 +1100,7 @@ static bool AircraftController(Aircraft *v)
 
 		v->tile = gp.new_tile;
 		/* If vehicle is in the air, use tile coordinate 0. */
-		if (amd.flag & (AMED_TAKEOFF | AMED_SLOWTURN | AMED_LAND)) v->tile = 0;
+		if (amd.flag & (AMED_TAKEOFF | AMED_SLOWTURN | AMED_LAND)) v->tile = TileIndex{};
 
 		/* Adjust Z for land or takeoff? */
 		int z = v->z_pos;

@@ -347,8 +347,8 @@ void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfo
 		}
 
 		case 3:
-			info.calendar_date = Clamp(p.Recv_uint32(), 0, CalendarTime::MAX_DATE.base());
-			info.calendar_start = Clamp(p.Recv_uint32(), 0, CalendarTime::MAX_DATE.base());
+			info.calendar_date = TimerGameCalendar::Date{Clamp(p.Recv_uint32(), 0, CalendarTime::MAX_DATE.base())};
+			info.calendar_start = TimerGameCalendar::Date{Clamp(p.Recv_uint32(), 0, CalendarTime::MAX_DATE.base())};
 			[[fallthrough]];
 
 		case 2:

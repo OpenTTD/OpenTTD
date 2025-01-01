@@ -65,7 +65,7 @@ void LinkGraph::ShiftDates(TimerGameEconomy::Date interval)
 
 void LinkGraph::Compress()
 {
-	this->last_compression = (TimerGameEconomy::date + this->last_compression).base() / 2;
+	this->last_compression = TimerGameEconomy::Date{(TimerGameEconomy::date + this->last_compression).base() / 2};
 	for (NodeID node1 = 0; node1 < this->Size(); ++node1) {
 		this->nodes[node1].supply /= 2;
 		for (BaseEdge &edge : this->nodes[node1].edges) {

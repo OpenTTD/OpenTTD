@@ -1026,11 +1026,11 @@ static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteRe
 			break;
 
 		case 0x03: // Vehicle life
-			ei->lifelength = buf.ReadByte();
+			ei->lifelength = TimerGameCalendar::Year{buf.ReadByte()};
 			break;
 
 		case 0x04: // Model life
-			ei->base_life = buf.ReadByte();
+			ei->base_life = TimerGameCalendar::Year{buf.ReadByte()};
 			break;
 
 		case 0x06: // Climates available
@@ -1307,7 +1307,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x2A: // Long format introduction date (days since year 0)
-				ei->base_intro = buf.ReadDWord();
+				ei->base_intro = TimerGameCalendar::Date(buf.ReadDWord());
 				break;
 
 			case PROP_TRAIN_CARGO_AGE_PERIOD: // 0x2B Cargo aging period
@@ -1498,7 +1498,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x1F: // Long format introduction date (days since year 0)
-				ei->base_intro = buf.ReadDWord();
+				ei->base_intro = TimerGameCalendar::Date(buf.ReadDWord());
 				break;
 
 			case 0x20: // Alter purchase list sort order
@@ -1685,7 +1685,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x1A: // Long format introduction date (days since year 0)
-				ei->base_intro = buf.ReadDWord();
+				ei->base_intro = TimerGameCalendar::Date(buf.ReadDWord());
 				break;
 
 			case 0x1B: // Alter purchase list sort order
@@ -1868,7 +1868,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				break;
 
 			case 0x1A: // Long format introduction date (days since year 0)
-				ei->base_intro = buf.ReadDWord();
+				ei->base_intro = TimerGameCalendar::Date(buf.ReadDWord());
 				break;
 
 			case 0x1B: // Alter purchase list sort order
@@ -2638,11 +2638,11 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 			}
 
 			case 0x21: // long introduction year
-				housespec->min_year = buf.ReadWord();
+				housespec->min_year = TimerGameCalendar::Year{buf.ReadWord()};
 				break;
 
 			case 0x22: // long maximum year
-				housespec->max_year = buf.ReadWord();
+				housespec->max_year = TimerGameCalendar::Year{buf.ReadWord()};
 				if (housespec->max_year == UINT16_MAX) housespec->max_year = CalendarTime::MAX_YEAR;
 				break;
 
@@ -4045,8 +4045,8 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 			}
 
 			case 0x0C:
-				as->min_year = buf.ReadWord();
-				as->max_year = buf.ReadWord();
+				as->min_year = TimerGameCalendar::Year{buf.ReadWord()};
+				as->max_year = TimerGameCalendar::Year{buf.ReadWord()};
 				if (as->max_year == 0xFFFF) as->max_year = CalendarTime::MAX_YEAR;
 				break;
 
@@ -4196,11 +4196,11 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 				break;
 
 			case 0x0E: // Introduction date
-				spec->introduction_date = buf.ReadDWord();
+				spec->introduction_date = TimerGameCalendar::Date(buf.ReadDWord());
 				break;
 
 			case 0x0F: // End of life
-				spec->end_of_life_date = buf.ReadDWord();
+				spec->end_of_life_date = TimerGameCalendar::Date(buf.ReadDWord());
 				break;
 
 			case 0x10: // Flags
@@ -4363,7 +4363,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				break;
 
 			case 0x17: // Introduction date
-				rti->introduction_date = buf.ReadDWord();
+				rti->introduction_date = TimerGameCalendar::Date(buf.ReadDWord());
 				break;
 
 			case 0x1A: // Sort order
@@ -4570,7 +4570,7 @@ static ChangeInfoResult RoadTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				break;
 
 			case 0x17: // Introduction date
-				rti->introduction_date = buf.ReadDWord();
+				rti->introduction_date = TimerGameCalendar::Date(buf.ReadDWord());
 				break;
 
 			case 0x1A: // Sort order
@@ -9412,7 +9412,7 @@ static void EnsureEarlyHouse(HouseZones bitmask)
 	for (auto &hs : HouseSpec::Specs()) {
 		if (!hs.enabled) continue;
 		if ((hs.building_availability & bitmask) != bitmask) continue;
-		if (hs.min_year == min_year) hs.min_year = 0;
+		if (hs.min_year == min_year) hs.min_year = CalendarTime::MIN_YEAR;
 	}
 }
 
@@ -10136,7 +10136,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 		TimerGameCalendar::date = TimerGameCalendar::ConvertYMDToDate(TimerGameCalendar::year, 0, 1);
 		TimerGameCalendar::date_fract = 0;
 
-		TimerGameEconomy::year = _settings_game.game_creation.starting_year.base();
+		TimerGameEconomy::year = TimerGameEconomy::Year{_settings_game.game_creation.starting_year.base()};
 		TimerGameEconomy::date = TimerGameEconomy::ConvertYMDToDate(TimerGameEconomy::year, 0, 1);
 		TimerGameEconomy::date_fract = 0;
 

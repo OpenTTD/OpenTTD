@@ -2465,10 +2465,10 @@ struct ScenarioEditorToolbarWindow : Window {
 
 		TimerGameCalendar::Year value;
 		if (!str->empty()) {
-			value = atoi(str->c_str());
+			value = TimerGameCalendar::Year{atoi(str->c_str())};
 		} else {
 			/* An empty string means revert to the default */
-			value = CalendarTime::DEF_START_YEAR.base();
+			value = TimerGameCalendar::Year{CalendarTime::DEF_START_YEAR.base()};
 		}
 		SetStartingYear(value);
 

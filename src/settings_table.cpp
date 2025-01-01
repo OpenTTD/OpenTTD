@@ -608,7 +608,7 @@ static void ChangeTimekeepingUnits(int32_t)
 			new_economy_date_fract = 0;
 		} else {
 			/* If the new mode is calendar units, sync the economy year with the calendar year. */
-			new_economy_date = TimerGameCalendar::date.base();
+			new_economy_date = TimerGameEconomy::Date{TimerGameCalendar::date.base()};
 			new_economy_date_fract = TimerGameCalendar::date_fract;
 		}
 

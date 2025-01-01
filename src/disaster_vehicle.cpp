@@ -235,7 +235,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		if (v->state == 1) {
 			if (++v->age == 38) {
 				v->state = 2;
-				v->age = 0;
+				v->age = CalendarTime::MIN_DATE;
 			}
 
 			if (GB(v->tick_counter, 0, 3) == 0) CreateEffectVehicleRel(v, 0, -17, 2, EV_CRASH_SMOKE);
@@ -243,7 +243,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		} else if (v->state == 0) {
 			if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
 				v->state = 1;
-				v->age = 0;
+				v->age = CalendarTime::MIN_DATE;
 
 				SetDParam(0, GetStationIndex(v->tile));
 				AddTileNewsItem(STR_NEWS_DISASTER_ZEPPELIN, NT_ACCIDENT, v->tile);
@@ -297,7 +297,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		}
 	} else if (v->age == 350) {
 		v->state = 3;
-		v->age = 0;
+		v->age = CalendarTime::MIN_DATE;
 	}
 
 	if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
@@ -354,8 +354,8 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 					return false;
 				}
 				/* Target it. */
-				v->dest_tile = u->index;
-				v->age = 0;
+				v->dest_tile = TileIndex{u->index};
+				v->age = CalendarTime::MIN_DATE;
 				u->disaster_vehicle = v->index;
 				break;
 			}
@@ -460,7 +460,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, b
 	} else if (v->state == 1) {
 		if (++v->age == 112) {
 			v->state = 2;
-			v->age = 0;
+			v->age = CalendarTime::MIN_DATE;
 
 			Industry *i = Industry::Get(v->dest_tile.base()); // Industry destructor calls ReleaseDisastersTargetingIndustry, so this is valid
 			DestructIndustry(i);
@@ -479,11 +479,11 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, b
 		if (!IsTileType(tile, MP_INDUSTRY)) return true;
 
 		IndustryID ind = GetIndustryIndex(tile);
-		v->dest_tile = ind;
+		v->dest_tile = TileIndex{ind};
 
 		if (GetIndustrySpec(Industry::Get(ind)->type)->behaviour & industry_flag) {
 			v->state = 1;
-			v->age = 0;
+			v->age = CalendarTime::MIN_DATE;
 		}
 	}
 
@@ -611,7 +611,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 			if (is_valid_target(t) && (n-- == 0)) {
 				/* Target it. */
 				v->dest_tile = t->tile;
-				v->age = 0;
+				v->age = CalendarTime::MIN_DATE;
 				break;
 			}
 		}
@@ -991,7 +991,7 @@ void ReleaseDisasterVehicle(VehicleID vehicle)
 	v->state = 0;
 	v->dest_tile = RandomTile();
 	GetAircraftFlightLevelBounds(v, &v->z_pos, nullptr);
-	v->age = 0;
+	v->age = CalendarTime::MIN_DATE;
 }
 
 void DisasterVehicle::UpdateDeltaXY()

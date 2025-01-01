@@ -190,7 +190,7 @@ void UpdateOldAircraft()
 			a->state = FLYING;
 			AircraftNextAirportPos_and_Order(a); // move it to the entry point of the airport
 			GetNewVehiclePosResult gp = GetNewVehiclePos(a);
-			a->tile = 0; // aircraft in air is tile=0
+			a->tile = TileIndex{}; // aircraft in air is tile=0
 
 			/* correct speed of helicopter-rotors */
 			if (a->subtype == AIR_HELICOPTER) a->Next()->Next()->cur_speed = 32;
@@ -403,7 +403,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 		if (IsSavegameVersionBefore(SLV_VEHICLE_ECONOMY_AGE)) {
 			/* Set vehicle economy age based on calendar age. */
 			for (Vehicle *v : Vehicle::Iterate()) {
-				v->economy_age = v->age.base();
+				v->economy_age = TimerGameEconomy::Date{v->age.base()};
 			}
 		}
 	}
