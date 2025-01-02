@@ -1325,19 +1325,17 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			has_missing    |= c->status == GCS_NOT_FOUND;
 			has_compatible |= HasBit(c->flags, GCF_COMPATIBLE);
 		}
-		uint32_t widget_data;
+		StringID text;
 		StringID tool_tip;
 		if (has_missing || has_compatible) {
-			widget_data = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON;
-			tool_tip    = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP;
+			text = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON;
+			tool_tip = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP;
 		} else {
-			widget_data = STR_INTRO_ONLINE_CONTENT;
-			tool_tip    = STR_INTRO_TOOLTIP_ONLINE_CONTENT;
+			text = STR_INTRO_ONLINE_CONTENT;
+			tool_tip = STR_INTRO_TOOLTIP_ONLINE_CONTENT;
 		}
-		this->GetWidget<NWidgetCore>(WID_NS_CONTENT_DOWNLOAD)->widget_data  = widget_data;
-		this->GetWidget<NWidgetCore>(WID_NS_CONTENT_DOWNLOAD)->tool_tip     = tool_tip;
-		this->GetWidget<NWidgetCore>(WID_NS_CONTENT_DOWNLOAD2)->widget_data = widget_data;
-		this->GetWidget<NWidgetCore>(WID_NS_CONTENT_DOWNLOAD2)->tool_tip    = tool_tip;
+		this->GetWidget<NWidgetCore>(WID_NS_CONTENT_DOWNLOAD)->SetStringTip(text, tool_tip);
+		this->GetWidget<NWidgetCore>(WID_NS_CONTENT_DOWNLOAD2)->SetStringTip(text, tool_tip);
 
 		this->SetWidgetDisabledState(WID_NS_PRESET_SAVE, has_missing);
 	}
