@@ -20,6 +20,9 @@
  * API additions:
  * \li GSEventVehicleCrashed::GetVictims
  *
+ * Other changes:
+ * \li GSAircraft::GetHangarOfAirport adds an optional parameter for the index of the hangar
+ *
  * \b 14.0
  *
  * API additions:
