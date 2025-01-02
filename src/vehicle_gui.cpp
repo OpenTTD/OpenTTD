@@ -3069,7 +3069,7 @@ public:
 			SPR_SEND_AIRCRAFT_TODEPOT,
 		};
 		const Vehicle *v = Vehicle::Get(window_number);
-		this->GetWidget<NWidgetCore>(WID_VV_GOTO_DEPOT)->widget_data = vehicle_view_goto_depot_sprites[v->type];
+		this->GetWidget<NWidgetCore>(WID_VV_GOTO_DEPOT)->SetSprite(vehicle_view_goto_depot_sprites[v->type]);
 
 		/* Sprites for the 'clone vehicle' button indexed by vehicle type. */
 		static const SpriteID vehicle_view_clone_sprites[] = {
@@ -3078,7 +3078,7 @@ public:
 			SPR_CLONE_SHIP,
 			SPR_CLONE_AIRCRAFT,
 		};
-		this->GetWidget<NWidgetCore>(WID_VV_CLONE)->widget_data = vehicle_view_clone_sprites[v->type];
+		this->GetWidget<NWidgetCore>(WID_VV_CLONE)->SetSprite(vehicle_view_clone_sprites[v->type]);
 
 		switch (v->type) {
 			case VEH_TRAIN:

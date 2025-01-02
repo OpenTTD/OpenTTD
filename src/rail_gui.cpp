@@ -500,14 +500,14 @@ struct BuildRailToolbarWindow : Window {
 	{
 		/* Configure the rail toolbar for the railtype. */
 		const RailTypeInfo *rti = GetRailTypeInfo(this->railtype);
-		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_NS)->widget_data     = rti->gui_sprites.build_ns_rail;
-		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_X)->widget_data      = rti->gui_sprites.build_x_rail;
-		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_EW)->widget_data     = rti->gui_sprites.build_ew_rail;
-		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_Y)->widget_data      = rti->gui_sprites.build_y_rail;
-		this->GetWidget<NWidgetCore>(WID_RAT_AUTORAIL)->widget_data     = rti->gui_sprites.auto_rail;
-		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_DEPOT)->widget_data  = rti->gui_sprites.build_depot;
-		this->GetWidget<NWidgetCore>(WID_RAT_CONVERT_RAIL)->widget_data = rti->gui_sprites.convert_rail;
-		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_TUNNEL)->widget_data = rti->gui_sprites.build_tunnel;
+		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_NS)->SetSprite(rti->gui_sprites.build_ns_rail);
+		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_X)->SetSprite(rti->gui_sprites.build_x_rail);
+		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_EW)->SetSprite(rti->gui_sprites.build_ew_rail);
+		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_Y)->SetSprite(rti->gui_sprites.build_y_rail);
+		this->GetWidget<NWidgetCore>(WID_RAT_AUTORAIL)->SetSprite(rti->gui_sprites.auto_rail);
+		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_DEPOT)->SetSprite(rti->gui_sprites.build_depot);
+		this->GetWidget<NWidgetCore>(WID_RAT_CONVERT_RAIL)->SetSprite(rti->gui_sprites.convert_rail);
+		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_TUNNEL)->SetSprite(rti->gui_sprites.build_tunnel);
 	}
 
 	/**
