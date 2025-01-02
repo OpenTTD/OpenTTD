@@ -1753,7 +1753,7 @@ public:
 	{
 		switch (widget) {
 			case WID_ID_DROPDOWN_ORDER: {
-				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->GetString());
 				d.width += padding.width + Window::SortButtonWidth() * 2; // Doubled since the string is centred and it also looks better.
 				d.height += padding.height;
 				size = maxdim(size, d);

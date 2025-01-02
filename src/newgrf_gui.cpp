@@ -222,7 +222,7 @@ struct NewGRFParametersWindow : public Window {
 
 			case WID_NP_NUMPAR: {
 				SetDParamMaxValue(0, GRFConfig::MAX_NUM_PARAMS);
-				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->GetString());
 				d.width += padding.width;
 				d.height += padding.height;
 				size = maxdim(size, d);

@@ -1172,6 +1172,15 @@ void NWidgetCore::SetAlignment(StringAlignment align)
 	this->align = align;
 }
 
+/**
+ * Get the string that has been set for this nested widget.
+ * @return The string.
+ */
+StringID NWidgetCore::GetString() const
+{
+	return this->widget_data;
+}
+
 void NWidgetCore::FillWidgetLookup(WidgetLookup &widget_lookup)
 {
 	if (this->index >= 0) widget_lookup[this->index] = this;
@@ -2191,13 +2200,13 @@ void NWidgetBackground::SetupSmallestSize(Window *w)
 		if (this->type == WWT_FRAME) {
 			/* Account for the size of the frame's text if that exists */
 			this->child->padding     = WidgetDimensions::scaled.frametext;
-			this->child->padding.top = std::max<uint8_t>(WidgetDimensions::scaled.frametext.top, this->widget_data != STR_NULL ? GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.frametext.top / 2 : 0);
+			this->child->padding.top = std::max<uint8_t>(WidgetDimensions::scaled.frametext.top, this->GetString() != STR_NULL ? GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.frametext.top / 2 : 0);
 
 			this->smallest_x += this->child->padding.Horizontal();
 			this->smallest_y += this->child->padding.Vertical();
 
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			this->smallest_x = std::max(this->smallest_x, GetStringBoundingBox(this->widget_data, this->text_size).width + WidgetDimensions::scaled.frametext.Horizontal());
+			this->smallest_x = std::max(this->smallest_x, GetStringBoundingBox(this->GetString(), this->text_size).width + WidgetDimensions::scaled.frametext.Horizontal());
 		} else if (this->type == WWT_INSET) {
 			/* Apply automatic padding for bevel thickness. */
 			this->child->padding = WidgetDimensions::scaled.bevel;
@@ -2213,7 +2222,7 @@ void NWidgetBackground::SetupSmallestSize(Window *w)
 		if (w != nullptr) { // A non-nullptr window pointer acts as switch to turn dynamic widget size on.
 			if (this->type == WWT_FRAME || this->type == WWT_INSET) {
 				if (this->index >= 0) w->SetStringParameters(this->index);
-				Dimension background = GetStringBoundingBox(this->widget_data, this->text_size);
+				Dimension background = GetStringBoundingBox(this->GetString(), this->text_size);
 				background.width += (this->type == WWT_FRAME) ? (WidgetDimensions::scaled.frametext.Horizontal()) : (WidgetDimensions::scaled.inset.Horizontal());
 				d = maxdim(d, background);
 			}
@@ -2273,12 +2282,12 @@ void NWidgetBackground::Draw(const Window *w)
 
 		case WWT_FRAME:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawFrame(r, this->colour, this->text_colour, this->widget_data, this->align, this->text_size);
+			DrawFrame(r, this->colour, this->text_colour, this->GetString(), this->align, this->text_size);
 			break;
 
 		case WWT_INSET:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawInset(r, this->colour, this->text_colour, this->widget_data, this->align, this->text_size);
+			DrawInset(r, this->colour, this->text_colour, this->GetString(), this->align, this->text_size);
 			break;
 
 		default:
@@ -2851,7 +2860,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w)
 		case WWT_TEXTBTN_2: {
 			padding = {WidgetDimensions::scaled.framerect.Horizontal(), WidgetDimensions::scaled.framerect.Vertical()};
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			Dimension d2 = GetStringBoundingBox(this->widget_data, this->text_size);
+			Dimension d2 = GetStringBoundingBox(this->GetString(), this->text_size);
 			d2.width += padding.width;
 			d2.height += padding.height;
 			size = maxdim(size, d2);
@@ -2860,13 +2869,13 @@ void NWidgetLeaf::SetupSmallestSize(Window *w)
 		case WWT_LABEL:
 		case WWT_TEXT: {
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			size = maxdim(size, GetStringBoundingBox(this->widget_data, this->text_size));
+			size = maxdim(size, GetStringBoundingBox(this->GetString(), this->text_size));
 			break;
 		}
 		case WWT_CAPTION: {
 			padding = {WidgetDimensions::scaled.captiontext.Horizontal(), WidgetDimensions::scaled.captiontext.Vertical()};
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			Dimension d2 = GetStringBoundingBox(this->widget_data, this->text_size);
+			Dimension d2 = GetStringBoundingBox(this->GetString(), this->text_size);
 			d2.width += padding.width;
 			d2.height += padding.height;
 			size = maxdim(size, d2);
@@ -2882,7 +2891,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w)
 			}
 			padding = {WidgetDimensions::scaled.dropdowntext.Horizontal() + NWidgetLeaf::dropdown_dimension.width + WidgetDimensions::scaled.fullbevel.Horizontal(), WidgetDimensions::scaled.dropdowntext.Vertical()};
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			Dimension d2 = GetStringBoundingBox(this->widget_data, this->text_size);
+			Dimension d2 = GetStringBoundingBox(this->GetString(), this->text_size);
 			d2.width += padding.width;
 			d2.height = std::max(d2.height + padding.height, NWidgetLeaf::dropdown_dimension.height);
 			size = maxdim(size, d2);
@@ -2944,7 +2953,7 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_TEXTBTN_2:
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align, this->text_size);
+			DrawLabel(r, this->type, clicked, this->text_colour, this->GetString(), this->align, this->text_size);
 			break;
 
 		case WWT_ARROWBTN:
@@ -2963,12 +2972,12 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_LABEL:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align, this->text_size);
+			DrawLabel(r, this->type, clicked, this->text_colour, this->GetString(), this->align, this->text_size);
 			break;
 
 		case WWT_TEXT:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawText(r, this->text_colour, this->widget_data, this->align, this->text_size);
+			DrawText(r, this->text_colour, this->GetString(), this->align, this->text_size);
 			break;
 
 		case WWT_MATRIX:
@@ -2983,7 +2992,7 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_CAPTION:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawCaption(r, this->colour, w->owner, this->text_colour, this->widget_data, this->align, this->text_size);
+			DrawCaption(r, this->colour, w->owner, this->text_colour, this->GetString(), this->align, this->text_size);
 			break;
 
 		case WWT_SHADEBOX:
@@ -3015,13 +3024,13 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_DROPDOWN:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawButtonDropdown(r, this->colour, false, clicked, this->widget_data, this->align);
+			DrawButtonDropdown(r, this->colour, false, clicked, this->GetString(), this->align);
 			break;
 
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_PUSHBUTTON_DROPDOWN:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawButtonDropdown(r, this->colour, clicked, (this->disp_flags & ND_DROPDOWN_ACTIVE) != 0, this->widget_data, this->align);
+			DrawButtonDropdown(r, this->colour, clicked, (this->disp_flags & ND_DROPDOWN_ACTIVE) != 0, this->GetString(), this->align);
 			break;
 
 		default:

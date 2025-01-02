@@ -465,7 +465,7 @@ struct NewsWindow : Window {
 
 			case WID_N_SHOW_GROUP:
 				if (this->ni->reftype1 == NR_VEHICLE) {
-					Dimension d2 = GetStringBoundingBox(this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP)->widget_data);
+					Dimension d2 = GetStringBoundingBox(this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP)->GetString());
 					d2.height += WidgetDimensions::scaled.captiontext.Vertical();
 					d2.width += WidgetDimensions::scaled.captiontext.Horizontal();
 					size = d2;

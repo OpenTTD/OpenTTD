@@ -381,6 +381,8 @@ public:
 	void SetTextStyle(TextColour colour, FontSize size);
 	void SetAlignment(StringAlignment align);
 
+	StringID GetString() const;
+
 	inline void SetLowered(bool lowered);
 	inline bool IsLowered() const;
 	inline void SetDisabled(bool disabled);

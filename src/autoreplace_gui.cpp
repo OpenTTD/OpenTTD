@@ -295,7 +295,7 @@ public:
 	{
 		switch (widget) {
 			case WID_RV_SORT_ASCENDING_DESCENDING: {
-				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->GetString());
 				d.width += padding.width + Window::SortButtonWidth() * 2; // Doubled since the string is centred and it also looks better.
 				d.height += padding.height;
 				size = maxdim(size, d);
@@ -314,7 +314,7 @@ public:
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
-				StringID str = this->GetWidget<NWidgetCore>(widget)->widget_data;
+				StringID str = this->GetWidget<NWidgetCore>(widget)->GetString();
 				SetDParam(0, STR_CONFIG_SETTING_ON);
 				Dimension d = GetStringBoundingBox(str);
 				SetDParam(0, STR_CONFIG_SETTING_OFF);
