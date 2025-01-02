@@ -427,7 +427,7 @@ protected:
 			TimerGameEconomy::Month month = this->month;
 			TimerGameEconomy::Year year = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
-				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
+				SetDParam(0, STR_MONTH_ABBREV_JAN + month);
 				SetDParam(1, year);
 				DrawStringMultiLine(x, x + x_sep, y, this->height, month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
 
@@ -566,7 +566,7 @@ public:
 					TimerGameEconomy::Month month = this->month;
 					TimerGameEconomy::Year year = this->year;
 					for (int i = 0; i < this->num_on_x_axis; i++) {
-						SetDParam(0, month + STR_MONTH_ABBREV_JAN);
+						SetDParam(0, STR_MONTH_ABBREV_JAN + month);
 						SetDParam(1, year);
 						x_label_width = std::max(x_label_width, GetStringBoundingBox(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH).width);
 

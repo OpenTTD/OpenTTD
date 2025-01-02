@@ -132,8 +132,8 @@ struct SetDateWindow : Window {
 	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
-			case WID_SD_DAY:   SetDParam(0, this->date.day - 1 + STR_DAY_NUMBER_1ST); break;
-			case WID_SD_MONTH: SetDParam(0, this->date.month + STR_MONTH_JAN); break;
+			case WID_SD_DAY:   SetDParam(0, STR_DAY_NUMBER_1ST + this->date.day - 1); break;
+			case WID_SD_MONTH: SetDParam(0, STR_MONTH_JAN + this->date.month); break;
 			case WID_SD_YEAR:  SetDParam(0, this->date.year); break;
 		}
 	}
