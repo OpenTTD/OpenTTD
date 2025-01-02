@@ -555,7 +555,7 @@ public:
 
 				resize.width = 0;
 				resize.height = 0;
-				this->GetWidget<NWidgetCore>(WID_GRAPH_RANGE_MATRIX)->SetDataTip((1 << MAT_COL_START) | (static_cast<uint16_t>(std::size(this->ranges)) << MAT_ROW_START), 0);
+				this->GetWidget<NWidgetCore>(WID_GRAPH_RANGE_MATRIX)->SetMatrixDataTip(1, ClampTo<uint8_t>(std::size(this->ranges)), STR_NULL);
 				break;
 
 			case WID_GRAPH_GRAPH: {
@@ -1045,7 +1045,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		this->vscroll->SetCount(_sorted_standard_cargo_specs.size());
 
 		auto *wid = this->GetWidget<NWidgetCore>(WID_GRAPH_FOOTER);
-		wid->SetDataTip(TimerGameEconomy::UsingWallclockUnits() ? STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS: STR_GRAPH_CARGO_PAYMENT_RATES_DAYS, STR_NULL);
+		wid->SetStringTip(TimerGameEconomy::UsingWallclockUnits() ? STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS: STR_GRAPH_CARGO_PAYMENT_RATES_DAYS, STR_NULL);
 
 		/* Initialise the dataset */
 		this->UpdatePaymentRates();
@@ -1524,7 +1524,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		this->vscroll->SetCount(count);
 
 		auto *wid = this->GetWidget<NWidgetCore>(WID_GRAPH_FOOTER);
-		wid->SetDataTip(TimerGameEconomy::UsingWallclockUnits() ? STR_GRAPH_LAST_24_MINUTES_TIME_LABEL : STR_EMPTY, STR_NULL);
+		wid->SetStringTip(TimerGameEconomy::UsingWallclockUnits() ? STR_GRAPH_LAST_24_MINUTES_TIME_LABEL : STR_EMPTY, STR_NULL);
 
 		this->FinishInitNested(window_number);
 

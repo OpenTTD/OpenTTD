@@ -1082,7 +1082,7 @@ struct QueryWindow : public Window {
 		this->parent  = parent;
 
 		this->CreateNestedTree();
-		this->GetWidget<NWidgetCore>(WID_Q_CAPTION)->SetDataTip(caption, STR_NULL);
+		this->GetWidget<NWidgetCore>(WID_Q_CAPTION)->SetStringTip(caption, STR_NULL);
 		this->FinishInitNested(WN_CONFIRM_POPUP_QUERY);
 	}
 
