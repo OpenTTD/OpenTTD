@@ -52,7 +52,7 @@ struct OskWindow : public Window {
 
 		assert(parent->querystrings.count(button) != 0);
 		this->qs         = parent->querystrings.find(button)->second;
-		this->caption = (par_wid->widget_data != STR_NULL) ? par_wid->widget_data : this->qs->caption;
+		this->caption = (par_wid->GetString() != STR_NULL) ? par_wid->GetString() : this->qs->caption;
 		this->text_btn   = button;
 		this->text       = &this->qs->text;
 		this->querystrings[WID_OSK_TEXT] = this->qs;
