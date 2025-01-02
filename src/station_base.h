@@ -207,8 +207,15 @@ struct GoodsEntry {
 		GES_ACCEPTED_BIGTICK,
 	};
 
-	StationCargoList cargo{}; ///< The cargo packets of cargo waiting in this station
-	FlowStatMap flows{}; ///< Planned flows through this station.
+	struct GoodsEntryData {
+		StationCargoList cargo{}; ///< The cargo packets of cargo waiting in this station
+		FlowStatMap flows{}; ///< Planned flows through this station.
+
+		bool IsEmpty() const
+		{
+			return this->cargo.TotalCount() == 0 && this->flows.empty();
+		}
+	};
 
 	uint max_waiting_cargo = 0; ///< Max cargo from this station waiting at any station.
 	NodeID node = INVALID_NODE; ///< ID of node in link graph referring to this goods entry.
@@ -267,8 +274,10 @@ struct GoodsEntry {
 	 */
 	inline StationID GetVia(StationID source) const
 	{
-		FlowStatMap::const_iterator flow_it(this->flows.find(source));
-		return flow_it != this->flows.end() ? flow_it->second.GetVia() : INVALID_STATION;
+		if (!this->HasData()) return INVALID_STATION;
+
+		FlowStatMap::const_iterator flow_it(this->GetData().flows.find(source));
+		return flow_it != this->GetData().flows.end() ? flow_it->second.GetVia() : INVALID_STATION;
 	}
 
 	/**
@@ -281,9 +290,57 @@ struct GoodsEntry {
 	 */
 	inline StationID GetVia(StationID source, StationID excluded, StationID excluded2 = INVALID_STATION) const
 	{
-		FlowStatMap::const_iterator flow_it(this->flows.find(source));
-		return flow_it != this->flows.end() ? flow_it->second.GetVia(excluded, excluded2) : INVALID_STATION;
+		if (!this->HasData()) return INVALID_STATION;
+
+		FlowStatMap::const_iterator flow_it(this->GetData().flows.find(source));
+		return flow_it != this->GetData().flows.end() ? flow_it->second.GetVia(excluded, excluded2) : INVALID_STATION;
 	}
+
+	/**
+	 * Test if this goods entry has optional cargo packet/flow data.
+	 * @returns true iff optional data is present.
+	 */
+	debug_inline bool HasData() const { return this->data != nullptr; }
+
+	/**
+	 * Clear optional cargo packet/flow data.
+	 */
+	void ClearData() { this->data.reset(); }
+
+	/**
+	 * Get optional cargo packet/flow data.
+	 * @pre HasData()
+	 * @returns cargo packet/flow data.
+	 */
+	debug_inline const GoodsEntryData &GetData() const
+	{
+		assert(this->HasData());
+		return *this->data;
+	}
+
+	/**
+	 * Get non-const optional cargo packet/flow data.
+	 * @pre HasData()
+	 * @returns non-const cargo packet/flow data.
+	 */
+	debug_inline GoodsEntryData &GetData()
+	{
+		assert(this->HasData());
+		return *this->data;
+	}
+
+	/**
+	 * Get optional cargo packet/flow data. The data is create if it is not already present.
+	 * @returns cargo packet/flow data.
+	 */
+	inline GoodsEntryData &GetOrCreateData()
+	{
+		if (!this->HasData()) this->data = std::make_unique<GoodsEntryData>();
+		return *this->data;
+	}
+
+private:
+	std::unique_ptr<GoodsEntryData> data = nullptr; ///< Optional cargo packet and flow data.
 };
 
 /** All airport-related information. Only valid if tile != INVALID_TILE. */

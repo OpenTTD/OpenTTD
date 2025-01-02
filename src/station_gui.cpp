@@ -362,7 +362,7 @@ protected:
 		int diff = 0;
 
 		for (CargoID j : SetCargoBitIterator(cargo_filter)) {
-			diff += a->goods[j].cargo.TotalCount() - b->goods[j].cargo.TotalCount();
+			diff += (a->goods[j].HasData() ? a->goods[j].GetData().cargo.TotalCount() : 0) - (b->goods[j].HasData() ? b->goods[j].GetData().cargo.TotalCount() : 0);
 		}
 
 		return diff < 0;
@@ -374,7 +374,7 @@ protected:
 		int diff = 0;
 
 		for (CargoID j : SetCargoBitIterator(cargo_filter)) {
-			diff += a->goods[j].cargo.AvailableCount() - b->goods[j].cargo.AvailableCount();
+			diff += (a->goods[j].HasData() ? a->goods[j].GetData().cargo.AvailableCount() : 0) - (b->goods[j].HasData() ? b->goods[j].GetData().cargo.AvailableCount() : 0);
 		}
 
 		return diff < 0;
@@ -536,7 +536,7 @@ public:
 								x -= rating_width + rating_spacing;
 								if (x < tr.left) break;
 							}
-							StationsWndShowStationRating(x, x + rating_width, tr.top, cid, st->goods[cid].cargo.TotalCount(), st->goods[cid].rating);
+							StationsWndShowStationRating(x, x + rating_width, tr.top, cid, st->goods[cid].HasData() ? st->goods[cid].GetData().cargo.TotalCount() : 0, st->goods[cid].rating);
 							if (!rtl) {
 								x += rating_width + rating_spacing;
 								if (x > tr.right) break;
@@ -1534,7 +1534,9 @@ struct StationViewWindow : public Window {
 		CargoDataEntry *cargo_entry = cached_destinations.InsertOrRetrieve(i);
 		cargo_entry->Clear();
 
-		for (const auto &it : st->goods[i].flows) {
+		if (!st->goods[i].HasData()) return;
+
+		for (const auto &it : st->goods[i].GetData().flows) {
 			StationID from = it.first;
 			CargoDataEntry *source_entry = cargo_entry->InsertOrRetrieve(from);
 			uint32_t prev_count = 0;
@@ -1563,8 +1565,11 @@ struct StationViewWindow : public Window {
 	void EstimateDestinations(CargoID cargo, StationID source, StationID next, uint count, CargoDataEntry *dest)
 	{
 		if (Station::IsValidID(next) && Station::IsValidID(source)) {
+			GoodsEntry &ge = Station::Get(next)->goods[cargo];
+			if (!ge.HasData()) return;
+
 			CargoDataEntry tmp;
-			const FlowStatMap &flowmap = Station::Get(next)->goods[cargo].flows;
+			const FlowStatMap &flowmap = ge.GetData().flows;
 			FlowStatMap::const_iterator map_it = flowmap.find(source);
 			if (map_it != flowmap.end()) {
 				const FlowStat::SharesMap *shares = map_it->second.GetShares();
@@ -1691,10 +1696,13 @@ struct StationViewWindow : public Window {
 				this->RecalcDestinations(i);
 			}
 
+			const GoodsEntry &ge = st->goods[i];
+			if (!ge.HasData()) continue;
+
 			if (this->current_mode == MODE_WAITING) {
-				this->BuildCargoList(i, st->goods[i].cargo, cargo);
+				this->BuildCargoList(i, ge.GetData().cargo, cargo);
 			} else {
-				this->BuildFlowList(i, st->goods[i].flows, cargo);
+				this->BuildFlowList(i, ge.GetData().flows, cargo);
 			}
 		}
 	}
@@ -1856,9 +1864,12 @@ struct StationViewWindow : public Window {
 						sym = "+";
 					} else {
 						/* Only draw '+' if there is something to be shown. */
-						const StationCargoList &list = Station::Get(this->window_number)->goods[cargo].cargo;
-						if (grouping == GR_CARGO && (list.ReservedCount() > 0 || cd->HasTransfers())) {
-							sym = "+";
+						const GoodsEntry &ge = Station::Get(this->window_number)->goods[cargo];
+						if (ge.HasData()) {
+							const StationCargoList &cargo_list = ge.GetData().cargo;
+							if (grouping == GR_CARGO && (cargo_list.ReservedCount() > 0 || cd->HasTransfers())) {
+								sym = "+";
+							}
 						}
 					}
 					if (sym != nullptr) DrawString(shrink.left, shrink.right, y, sym, TC_YELLOW);

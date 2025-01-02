@@ -1730,7 +1730,7 @@ bool AfterLoadGame()
 		for (Station *st : Station::Iterate()) {
 			for (GoodsEntry &ge : st->goods) {
 				ge.last_speed = 0;
-				if (ge.cargo.AvailableCount() != 0) SetBit(ge.status, GoodsEntry::GES_RATING);
+				if (ge.HasData() && ge.GetData().cargo.AvailableCount() != 0) SetBit(ge.status, GoodsEntry::GES_RATING);
 			}
 		}
 	}

@@ -191,7 +191,7 @@ static OldPersistentStorage _old_st_persistent_storage;
  */
 static void SwapPackets(GoodsEntry *ge)
 {
-	StationCargoPacketMap &ge_packets = const_cast<StationCargoPacketMap &>(*ge->cargo.Packets());
+	StationCargoPacketMap &ge_packets = const_cast<StationCargoPacketMap &>(*ge->GetOrCreateData().cargo.Packets());
 
 	if (_packets.empty()) {
 		std::map<StationID, std::list<CargoPacket *> >::iterator it(ge_packets.find(INVALID_STATION));
@@ -240,8 +240,14 @@ public:
 
 	void Save(GoodsEntry *ge) const override
 	{
-		SlSetStructListLength(ge->cargo.Packets()->MapSize());
-		for (StationCargoPacketMap::ConstMapIterator it(ge->cargo.Packets()->begin()); it != ge->cargo.Packets()->end(); ++it) {
+		if (!ge->HasData()) {
+			SlSetStructListLength(0);
+			return;
+		}
+
+		const auto *packets = ge->GetData().cargo.Packets();
+		SlSetStructListLength(packets->MapSize());
+		for (StationCargoPacketMap::ConstMapIterator it(packets->begin()); it != packets->end(); ++it) {
 			SlObject(const_cast<StationCargoPacketMap::value_type *>(&(*it)), this->GetDescription());
 		}
 	}
@@ -249,18 +255,22 @@ public:
 	void Load(GoodsEntry *ge) const override
 	{
 		size_t num_dests = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _old_num_dests : SlGetStructListLength(UINT32_MAX);
+		if (num_dests == 0) return;
 
+		GoodsEntry::GoodsEntryData &data = ge->GetOrCreateData();
 		StationCargoPair pair;
 		for (uint j = 0; j < num_dests; ++j) {
 			SlObject(&pair, this->GetLoadDescription());
-			const_cast<StationCargoPacketMap &>(*(ge->cargo.Packets()))[pair.first].swap(pair.second);
+			const_cast<StationCargoPacketMap &>(*(data.cargo.Packets()))[pair.first].swap(pair.second);
 			assert(pair.second.empty());
 		}
 	}
 
 	void FixPointers(GoodsEntry *ge) const override
 	{
-		for (StationCargoPacketMap::ConstMapIterator it = ge->cargo.Packets()->begin(); it != ge->cargo.Packets()->end(); ++it) {
+		if (!ge->HasData()) return;
+
+		for (StationCargoPacketMap::ConstMapIterator it = ge->GetData().cargo.Packets()->begin(); it != ge->GetData().cargo.Packets()->end(); ++it) {
 			SlObject(const_cast<StationCargoPair *>(&(*it)), this->GetDescription());
 		}
 	}
@@ -278,13 +288,18 @@ public:
 
 	void Save(GoodsEntry *ge) const override
 	{
+		if (!ge->HasData()) {
+			SlSetStructListLength(0);
+			return;
+		}
+
 		size_t num_flows = 0;
-		for (const auto &it : ge->flows) {
+		for (const auto &it : ge->GetData().flows) {
 			num_flows += it.second.GetShares()->size();
 		}
 		SlSetStructListLength(num_flows);
 
-		for (const auto &outer_it : ge->flows) {
+		for (const auto &outer_it : ge->GetData().flows) {
 			const FlowStat::SharesMap *shares = outer_it.second.GetShares();
 			uint32_t sum_shares = 0;
 			FlowSaveLoad flow;
@@ -303,14 +318,16 @@ public:
 	void Load(GoodsEntry *ge) const override
 	{
 		size_t num_flows = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _old_num_flows : SlGetStructListLength(UINT32_MAX);
+		if (num_flows == 0) return;
 
+		GoodsEntry::GoodsEntryData &data = ge->GetOrCreateData();
 		FlowSaveLoad flow;
 		FlowStat *fs = nullptr;
 		StationID prev_source = INVALID_STATION;
 		for (uint32_t j = 0; j < num_flows; ++j) {
 			SlObject(&flow, this->GetLoadDescription());
 			if (fs == nullptr || prev_source != flow.source) {
-				fs = &(ge->flows.emplace(flow.source, FlowStat(flow.via, flow.share, flow.restricted))).first->second;
+				fs = &(data.flows.emplace(flow.source, FlowStat(flow.via, flow.share, flow.restricted))).first->second;
 			} else {
 				fs->AppendShare(flow.via, flow.share, flow.restricted);
 			}
@@ -321,6 +338,8 @@ public:
 
 class SlStationGoods : public DefaultSaveLoadHandler<SlStationGoods, BaseStation> {
 public:
+	static inline uint cargo_reserved_count;
+
 	inline static const SaveLoad description[] = {
 		SLEG_CONDVAR("waiting_acceptance", _waiting_acceptance, SLE_UINT16,        SL_MIN_VERSION, SLV_68),
 		 SLE_CONDVAR(GoodsEntry, status,               SLE_UINT8,                  SLV_68, SL_MAX_VERSION),
@@ -337,7 +356,7 @@ public:
 		 SLE_CONDVAR(GoodsEntry, amount_fract,         SLE_UINT8,                 SLV_150, SL_MAX_VERSION),
 		SLEG_CONDREFLIST("packets", _packets,          REF_CARGO_PACKET,           SLV_68, SLV_183),
 		SLEG_CONDVAR("old_num_dests", _old_num_dests,  SLE_UINT32,                SLV_183, SLV_SAVELOAD_LIST_LENGTH),
-		 SLE_CONDVAR(GoodsEntry, cargo.reserved_count, SLE_UINT,                  SLV_181, SL_MAX_VERSION),
+		SLEG_CONDVAR("cargo.reserved_count", SlStationGoods::cargo_reserved_count, SLE_UINT,                  SLV_181, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, link_graph,           SLE_UINT16,                SLV_183, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, node,                 SLE_UINT16,                SLV_183, SL_MAX_VERSION),
 		SLEG_CONDVAR("old_num_flows", _old_num_flows,  SLE_UINT32,                SLV_183, SLV_SAVELOAD_LIST_LENGTH),
@@ -368,6 +387,7 @@ public:
 		SlSetStructListLength(NUM_CARGO);
 
 		for (GoodsEntry &ge : st->goods) {
+			SlStationGoods::cargo_reserved_count = ge.HasData() ? ge.GetData().cargo.reserved_count : 0;
 			SlObject(&ge, this->GetDescription());
 		}
 	}
@@ -388,6 +408,9 @@ public:
 		for (auto it = std::begin(st->goods); it != end; ++it) {
 			GoodsEntry &ge = *it;
 			SlObject(&ge, this->GetLoadDescription());
+			if (!IsSavegameVersionBefore(SLV_181) && SlStationGoods::cargo_reserved_count != 0) {
+				ge.GetOrCreateData().cargo.reserved_count = SlStationGoods::cargo_reserved_count;
+			}
 			if (IsSavegameVersionBefore(SLV_183)) {
 				SwapPackets(&ge);
 			}
@@ -405,7 +428,7 @@ public:
 
 					/* Don't construct the packet with station here, because that'll fail with old savegames */
 					CargoPacket *cp = new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_periods, source, TileIndex{_cargo_source_xy}, _cargo_feeder_share);
-					ge.cargo.Append(cp, INVALID_STATION);
+					ge.GetOrCreateData().cargo.Append(cp, INVALID_STATION);
 					SetBit(ge.status, GoodsEntry::GES_RATING);
 				}
 			}
