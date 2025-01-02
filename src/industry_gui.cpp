@@ -2827,7 +2827,7 @@ struct IndustryCargoesWindow : public Window {
 	 */
 	void ComputeIndustryDisplay(IndustryType displayed_it)
 	{
-		this->GetWidget<NWidgetCore>(WID_IC_CAPTION)->widget_data = STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION;
+		this->GetWidget<NWidgetCore>(WID_IC_CAPTION)->SetString(STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION);
 		this->ind_cargo = displayed_it;
 		_displayed_industries.reset();
 		_displayed_industries.set(displayed_it);
@@ -2905,7 +2905,7 @@ struct IndustryCargoesWindow : public Window {
 	 */
 	void ComputeCargoDisplay(CargoID cid)
 	{
-		this->GetWidget<NWidgetCore>(WID_IC_CAPTION)->widget_data = STR_INDUSTRY_CARGOES_CARGO_CAPTION;
+		this->GetWidget<NWidgetCore>(WID_IC_CAPTION)->SetString(STR_INDUSTRY_CARGOES_CARGO_CAPTION);
 		this->ind_cargo = cid + NUM_INDUSTRYTYPES;
 		_displayed_industries.reset();
 

@@ -441,7 +441,7 @@ public:
 			if (HasBit(this->filter.facilities, i)) this->LowerWidget(i + WID_STL_TRAIN);
 		}
 
-		this->GetWidget<NWidgetCore>(WID_STL_SORTDROPBTN)->widget_data = CompanyStationsWindow::sorter_names[this->stations.SortType()];
+		this->GetWidget<NWidgetCore>(WID_STL_SORTDROPBTN)->SetString(CompanyStationsWindow::sorter_names[this->stations.SortType()]);
 	}
 
 	~CompanyStationsWindow()
@@ -682,7 +682,7 @@ public:
 				this->stations.SetSortType(index);
 
 				/* Display the current sort variant */
-				this->GetWidget<NWidgetCore>(WID_STL_SORTDROPBTN)->widget_data = CompanyStationsWindow::sorter_names[this->stations.SortType()];
+				this->GetWidget<NWidgetCore>(WID_STL_SORTDROPBTN)->SetString(CompanyStationsWindow::sorter_names[this->stations.SortType()]);
 
 				this->SetDirty();
 			}
@@ -2086,7 +2086,7 @@ struct StationViewWindow : public Window {
 				NOT_REACHED();
 		}
 		/* Display the current sort variant */
-		this->GetWidget<NWidgetCore>(WID_SV_SORT_BY)->widget_data = StationViewWindow::sort_names[index];
+		this->GetWidget<NWidgetCore>(WID_SV_SORT_BY)->SetString(StationViewWindow::sort_names[index]);
 		this->SetDirty();
 	}
 
@@ -2098,7 +2098,7 @@ struct StationViewWindow : public Window {
 	{
 		this->grouping_index = index;
 		_settings_client.gui.station_gui_group_order = index;
-		this->GetWidget<NWidgetCore>(WID_SV_GROUP_BY)->widget_data = StationViewWindow::group_names[index];
+		this->GetWidget<NWidgetCore>(WID_SV_GROUP_BY)->SetString(StationViewWindow::group_names[index]);
 		switch (StationViewWindow::group_names[index]) {
 			case STR_STATION_VIEW_GROUP_S_V_D:
 				this->groupings[1] = GR_SOURCE;
@@ -2321,7 +2321,7 @@ struct SelectStationWindow : Window {
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_JS_SCROLLBAR);
-		this->GetWidget<NWidgetCore>(WID_JS_CAPTION)->widget_data = T::IsWaypoint() ? STR_JOIN_WAYPOINT_CAPTION : STR_JOIN_STATION_CAPTION;
+		this->GetWidget<NWidgetCore>(WID_JS_CAPTION)->SetString(T::IsWaypoint() ? STR_JOIN_WAYPOINT_CAPTION : STR_JOIN_STATION_CAPTION);
 		this->FinishInitNested(0);
 		this->OnInvalidateData(0);
 

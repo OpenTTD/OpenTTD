@@ -327,7 +327,7 @@ struct NetworkChatWindow : public Window {
 		assert((uint)this->dtype < lengthof(chat_captions));
 
 		this->CreateNestedTree();
-		this->GetWidget<NWidgetCore>(WID_NC_DESTINATION)->widget_data = chat_captions[this->dtype];
+		this->GetWidget<NWidgetCore>(WID_NC_DESTINATION)->SetString(chat_captions[this->dtype]);
 		this->FinishInitNested(type);
 
 		this->SetFocusedWidget(WID_NC_TEXTBOX);

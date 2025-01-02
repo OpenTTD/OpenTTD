@@ -363,23 +363,23 @@ struct NewsWindow : Window {
 		this->CreateNestedTree();
 
 		/* For company news with a face we have a separate headline in param[0] */
-		if (&desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = std::get<uint64_t>(this->ni->params[0]);
+		if (&desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->SetString(static_cast<StringID>(std::get<uint64_t>(this->ni->params[0])));
 
 		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP);
 		if (ni->reftype1 == NR_VEHICLE && nwid != nullptr) {
 			const Vehicle *v = Vehicle::Get(ni->ref1);
 			switch (v->type) {
 				case VEH_TRAIN:
-					nwid->widget_data = STR_TRAIN;
+					nwid->SetString(STR_TRAIN);
 					break;
 				case VEH_ROAD:
-					nwid->widget_data = RoadVehicle::From(v)->IsBus() ? STR_BUS : STR_LORRY;
+					nwid->SetString(RoadVehicle::From(v)->IsBus() ? STR_BUS : STR_LORRY);
 					break;
 				case VEH_SHIP:
-					nwid->widget_data = STR_SHIP;
+					nwid->SetString(STR_SHIP);
 					break;
 				case VEH_AIRCRAFT:
-					nwid->widget_data = STR_PLANE;
+					nwid->SetString(STR_PLANE);
 					break;
 				default:
 					break; // Do nothing

@@ -1959,14 +1959,14 @@ public:
 
 		NWidgetStacked *nwi = this->GetWidget<NWidgetStacked>(WID_VL_CAPTION_SELECTION);
 		if (this->vli.type == VL_SHARED_ORDERS) {
-			this->GetWidget<NWidgetCore>(WID_VL_CAPTION_SHARED_ORDERS)->widget_data = STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION;
+			this->GetWidget<NWidgetCore>(WID_VL_CAPTION_SHARED_ORDERS)->SetString(STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION);
 			/* If we are in the shared orders window, then disable the group-by dropdown menu.
 			 * Remove this when the group-by dropdown menu has another option apart from grouping by shared orders. */
 			this->SetWidgetDisabledState(WID_VL_GROUP_ORDER, true);
 			this->SetWidgetDisabledState(WID_VL_GROUP_BY_PULLDOWN, true);
 			nwi->SetDisplayedPlane(BP_SHARED_ORDERS);
 		} else {
-			this->GetWidget<NWidgetCore>(WID_VL_CAPTION)->widget_data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vli.vtype;
+			this->GetWidget<NWidgetCore>(WID_VL_CAPTION)->SetString(STR_VEHICLE_LIST_TRAIN_CAPTION + this->vli.vtype);
 			nwi->SetDisplayedPlane(BP_NORMAL);
 		}
 
@@ -2118,12 +2118,12 @@ public:
 		}
 
 		/* Set text of group by dropdown widget. */
-		this->GetWidget<NWidgetCore>(WID_VL_GROUP_BY_PULLDOWN)->widget_data = std::data(this->vehicle_group_by_names)[this->grouping];
+		this->GetWidget<NWidgetCore>(WID_VL_GROUP_BY_PULLDOWN)->SetString(std::data(this->vehicle_group_by_names)[this->grouping]);
 
 		/* Set text of sort by dropdown widget. */
-		this->GetWidget<NWidgetCore>(WID_VL_SORT_BY_PULLDOWN)->widget_data = this->GetVehicleSorterNames()[this->vehgroups.SortType()];
+		this->GetWidget<NWidgetCore>(WID_VL_SORT_BY_PULLDOWN)->SetString(this->GetVehicleSorterNames()[this->vehgroups.SortType()]);
 
-		this->GetWidget<NWidgetCore>(WID_VL_FILTER_BY_CARGO)->widget_data = this->GetCargoFilterLabel(this->cargo_filter_criteria);
+		this->GetWidget<NWidgetCore>(WID_VL_FILTER_BY_CARGO)->SetString(this->GetCargoFilterLabel(this->cargo_filter_criteria));
 
 		this->DrawWidgets();
 	}
@@ -2766,7 +2766,7 @@ struct VehicleDetailsWindow : Window {
 			!v->ServiceIntervalIsCustom() ? STR_VEHICLE_DETAILS_DEFAULT :
 			v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_PERCENT :
 			TimerGameEconomy::UsingWallclockUnits() ? STR_VEHICLE_DETAILS_MINUTES : STR_VEHICLE_DETAILS_DAYS;
-		this->GetWidget<NWidgetCore>(WID_VD_SERVICE_INTERVAL_DROPDOWN)->widget_data = str;
+		this->GetWidget<NWidgetCore>(WID_VD_SERVICE_INTERVAL_DROPDOWN)->SetString(str);
 
 		this->DrawWidgets();
 	}
