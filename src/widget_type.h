@@ -17,15 +17,6 @@
 #include "gfx_type.h"
 #include "window_type.h"
 
-/** Bits of the #WWT_MATRIX widget data. */
-/* Number of column bits of the WWT_MATRIX widget data. */
-static constexpr uint8_t MAT_COL_START = 0; ///< Lowest bit of the number of columns.
-static constexpr uint8_t MAT_COL_BITS = 8; ///< Number of bits for the number of columns in the matrix.
-
-/* Number of row bits of the WWT_MATRIX widget data. */
-static constexpr uint8_t MAT_ROW_START = 8; ///< Lowest bit of the number of rows.
-static constexpr uint8_t MAT_ROW_BITS = 8; ///< Number of bits for the number of rows in the matrix.
-
 /** Values for an arrow widget */
 enum ArrowWidgetValues : uint8_t {
 	AWV_DECREASE, ///< Arrow to the left or in case of RTL to the right
@@ -364,13 +355,23 @@ enum NWidgetDisplay {
 };
 DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay)
 
+/** Container with the data associated to a single widget. */
+struct WidgetData {
+	StringID string{};
+	SpriteID sprite{};
+	ArrowWidgetValues arrow_widget_type{};
+	ResizeWidgetValues resize_widget_type{};
+	uint8_t matrix_columns{};
+	uint8_t matrix_rows{};
+};
+
 /**
  * Base class for a 'real' widget.
  * @ingroup NestedWidgets
  */
 class NWidgetCore : public NWidgetResizeBase {
 public:
-	NWidgetCore(WidgetType tp, Colours colour, WidgetID index, uint fill_x, uint fill_y, uint32_t widget_data, StringID tool_tip);
+	NWidgetCore(WidgetType tp, Colours colour, WidgetID index, uint fill_x, uint fill_y, const WidgetData &widget_data, StringID tool_tip);
 
 	void SetString(StringID string);
 	void SetStringTip(StringID string, StringID tool_tip);
@@ -399,7 +400,7 @@ public:
 	NWidgetDisplay disp_flags; ///< Flags that affect display and interaction with the widget.
 	Colours colour;            ///< Colour of this widget.
 	const WidgetID index;      ///< Index of the nested widget (\c -1 means 'not used').
-	uint32_t widget_data;        ///< Data of the widget. @see Widget::data
+	WidgetData widget_data; ///< Data of the widget. @see Widget::data
 	StringID tool_tip;         ///< Tooltip of the widget. @see Widget::tootips
 	WidgetID scrollbar_index;  ///< Index of an attached scrollbar.
 	TextColour highlight_colour; ///< Colour of highlight.
@@ -923,7 +924,7 @@ private:
  */
 class NWidgetLeaf : public NWidgetCore {
 public:
-	NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t data, StringID tip);
+	NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, const WidgetData &data, StringID tip);
 
 	void SetupSmallestSize(Window *w) override;
 	void Draw(const Window *w) override;
@@ -1010,7 +1011,7 @@ inline uint ComputeMaxSize(uint base, uint max_space, uint step)
  * @ingroup NestedWidgetParts
  */
 struct NWidgetPartDataTip {
-	uint32_t data;      ///< Data value of the widget.
+	WidgetData data; ///< Data value of the widget.
 	StringID tooltip; ///< Tooltip of the widget.
 };
 
@@ -1209,7 +1210,7 @@ constexpr NWidgetPart EndContainer()
  */
 constexpr NWidgetPart SetStringTip(StringID string, StringID tip = {})
 {
-	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{string, tip}};
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.string = string}, tip}};
 }
 
 /**
@@ -1220,7 +1221,7 @@ constexpr NWidgetPart SetStringTip(StringID string, StringID tip = {})
  */
 constexpr NWidgetPart SetSpriteTip(SpriteID sprite, StringID tip = {})
 {
-	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{sprite, tip}};
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.sprite = sprite}, tip}};
 }
 
 /**
@@ -1231,7 +1232,7 @@ constexpr NWidgetPart SetSpriteTip(SpriteID sprite, StringID tip = {})
  */
 constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetValues widget_type, StringID tip = {})
 {
-	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{widget_type, tip}};
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.arrow_widget_type = widget_type}, tip}};
 }
 
 /**
@@ -1242,7 +1243,7 @@ constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetValues widget_type, Strin
  */
 constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetValues widget_type, StringID tip)
 {
-	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{widget_type, tip}};
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.resize_widget_type = widget_type}, tip}};
 }
 
 /**
@@ -1254,7 +1255,7 @@ constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetValues widget_type, Str
  */
 constexpr NWidgetPart SetMatrixDataTip(uint8_t cols, uint8_t rows, StringID tip = {})
 {
-	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{static_cast<uint32_t>((rows << MAT_ROW_START) | (cols << MAT_COL_START)), tip}};
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.matrix_columns = cols, .matrix_rows = rows}, tip}};
 }
 
 /**
@@ -1264,7 +1265,7 @@ constexpr NWidgetPart SetMatrixDataTip(uint8_t cols, uint8_t rows, StringID tip 
  */
 constexpr NWidgetPart SetToolTip(StringID tip)
 {
-	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{0x0, tip}};
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{}, tip}};
 }
 
 /**
