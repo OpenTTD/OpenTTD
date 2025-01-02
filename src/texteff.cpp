@@ -120,11 +120,19 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 	/* Don't draw the text effects when zoomed out a lot */
 	if (dpi->zoom > ZOOM_LVL_TEXT_EFFECT) return;
 	if (IsTransparencySet(TO_TEXT)) return;
-	for (TextEffect &te : _text_effects) {
+
+	ViewportStringFlags flags{};
+	if (dpi->zoom >= ZOOM_LVL_TEXT_EFFECT) flags |= ViewportStringFlags::Small;
+
+	for (const TextEffect &te : _text_effects) {
 		if (te.string_id == INVALID_STRING_ID) continue;
+
 		if (te.mode == TE_RISING || _settings_client.gui.loading_indicators) {
+			std::string *str = ViewportAddString(dpi, &te, flags, INVALID_COLOUR);
+			if (str == nullptr) continue;
+
 			CopyInDParam(te.params);
-			ViewportAddString(dpi, ZOOM_LVL_TEXT_EFFECT, &te, te.string_id, te.string_id, STR_NULL);
+			*str = GetString(te.string_id);
 		}
 	}
 }
