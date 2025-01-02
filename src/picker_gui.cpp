@@ -177,7 +177,7 @@ void PickerWindow::ConstructWindow()
 	this->has_type_picker = isActive && this->GetWidget<NWidgetBase>(WID_PW_TYPE_MATRIX) != nullptr;
 
 	if (this->has_class_picker) {
-		this->GetWidget<NWidgetCore>(WID_PW_CLASS_LIST)->tool_tip = this->callbacks.GetClassTooltip();
+		this->GetWidget<NWidgetCore>(WID_PW_CLASS_LIST)->SetToolTip(this->callbacks.GetClassTooltip());
 
 		this->querystrings[WID_PW_CLASS_FILTER] = &this->class_editbox;
 	} else {
@@ -209,7 +209,7 @@ void PickerWindow::ConstructWindow()
 
 		SetWidgetDisabledState(WID_PW_MODE_ALL, !this->callbacks.HasClassChoice());
 
-		this->GetWidget<NWidgetCore>(WID_PW_TYPE_ITEM)->tool_tip = this->callbacks.GetTypeTooltip();
+		this->GetWidget<NWidgetCore>(WID_PW_TYPE_ITEM)->SetToolTip(this->callbacks.GetTypeTooltip());
 
 		auto *matrix = this->GetWidget<NWidgetMatrix>(WID_PW_TYPE_MATRIX);
 		matrix->SetScrollbar(this->GetScrollbar(WID_PW_TYPE_SCROLL));
