@@ -319,7 +319,7 @@ static constexpr NWidgetPart _nested_build_bridge_widgets[] = {
 			/* Sort order + criteria buttons */
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_BBS_DROPDOWN_ORDER), SetFill(1, 0), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
-				NWidget(WWT_DROPDOWN, COLOUR_DARK_GREEN, WID_BBS_DROPDOWN_CRITERIA), SetFill(1, 0), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIA),
+				NWidget(WWT_DROPDOWN, COLOUR_DARK_GREEN, WID_BBS_DROPDOWN_CRITERIA), SetFill(1, 0), SetToolTip(STR_TOOLTIP_SORT_CRITERIA),
 			EndContainer(),
 			/* Matrix. */
 			NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, WID_BBS_BRIDGE_LIST), SetFill(1, 0), SetResize(0, 22), SetMatrixDataTip(1, 0, STR_SELECT_BRIDGE_SELECTION_TOOLTIP), SetScrollbar(WID_BBS_SCROLLBAR),

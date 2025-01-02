@@ -914,7 +914,7 @@ static constexpr NWidgetPart _nested_network_game_widgets[] = {
 											SetStringTip(STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER, STR_NULL), SetResize(1, 0),
 						NWidget(NWID_HORIZONTAL),
 							NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, WID_NG_LASTJOINED), SetFill(1, 0), SetResize(1, 0),
-												SetDataTip(0x0, STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP),
+												SetToolTip(STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP),
 							EndContainer(),
 							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NG_LASTJOINED_SPACER), SetFill(0, 0),
 						EndContainer(),

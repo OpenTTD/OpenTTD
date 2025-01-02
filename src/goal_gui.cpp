@@ -293,7 +293,7 @@ static constexpr NWidgetPart _nested_goals_list_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, WID_GOAL_LIST), SetDataTip(0x0, STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetScrollbar(WID_GOAL_SCROLLBAR), SetResize(1, 1), SetMinimalTextLines(2, 0),
+		NWidget(WWT_PANEL, COLOUR_BROWN, WID_GOAL_LIST), SetToolTip(STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetScrollbar(WID_GOAL_SCROLLBAR), SetResize(1, 1), SetMinimalTextLines(2, 0),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_GOAL_SCROLLBAR),

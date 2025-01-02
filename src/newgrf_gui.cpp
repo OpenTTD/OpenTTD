@@ -2032,7 +2032,7 @@ static constexpr NWidgetPart _nested_save_preset_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_INSET, COLOUR_GREY, WID_SVP_PRESET_LIST), SetPadding(2, 1, 2, 2),
-					SetDataTip(0x0, STR_SAVE_PRESET_LIST_TOOLTIP), SetResize(1, 10), SetScrollbar(WID_SVP_SCROLLBAR), EndContainer(),
+					SetToolTip(STR_SAVE_PRESET_LIST_TOOLTIP), SetResize(1, 10), SetScrollbar(WID_SVP_SCROLLBAR), EndContainer(),
 			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SVP_SCROLLBAR),
 		EndContainer(),
 	EndContainer(),

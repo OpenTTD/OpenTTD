@@ -385,7 +385,7 @@ static constexpr NWidgetPart _nested_build_object_widgets[] = {
 					NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_STATION_BUILD_ORIENTATION, STR_NULL), SetFill(1, 0),
 					NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
 						NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_BO_OBJECT_MATRIX), SetPIP(0, 2, 0),
-							NWidget(WWT_PANEL, COLOUR_GREY, WID_BO_OBJECT_SPRITE), SetDataTip(0x0, STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
+							NWidget(WWT_PANEL, COLOUR_GREY, WID_BO_OBJECT_SPRITE), SetToolTip(STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
 							EndContainer(),
 						EndContainer(),
 						NWidget(WWT_TEXT, INVALID_COLOUR, WID_BO_OBJECT_SIZE), SetStringTip(STR_OBJECT_BUILD_SIZE, STR_NULL), SetAlignment(SA_CENTER),

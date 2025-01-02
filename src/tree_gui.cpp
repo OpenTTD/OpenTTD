@@ -275,7 +275,7 @@ static std::unique_ptr<NWidgetBase> MakeTreeTypeButtons()
 		for (int col = 0; col < num_columns; col++) {
 			if (cur_type > type_base + type_count) break;
 			auto button = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_BUTTON_FIRST + cur_type);
-			button->SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP);
+			button->SetToolTip(STR_PLANT_TREE_TOOLTIP);
 			hstack->Add(std::move(button));
 			cur_type++;
 		}

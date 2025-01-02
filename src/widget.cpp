@@ -2501,13 +2501,13 @@ NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, WidgetID index
 		case NWID_HSCROLLBAR:
 			this->SetResize(1, 0);
 			this->SetFill(1, 0);
-			this->SetDataTip(0x0, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
+			this->SetToolTip(STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
 			break;
 
 		case NWID_VSCROLLBAR:
 			this->SetResize(0, 1);
 			this->SetFill(0, 1);
-			this->SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST);
+			this->SetToolTip(STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST);
 			break;
 
 		default: NOT_REACHED();
@@ -3388,7 +3388,7 @@ std::unique_ptr<NWidgetBase> MakeCompanyButtonRows(WidgetID widget_first, Widget
 		panel->SetMinimalSize(sprite_size.width, sprite_size.height);
 		panel->SetFill(1, 1);
 		if (resizable) panel->SetResize(1, 0);
-		panel->SetDataTip(0x0, button_tooltip);
+		panel->SetToolTip(button_tooltip);
 		hor->Add(std::move(panel));
 		hor_length++;
 	}

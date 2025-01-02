@@ -125,7 +125,7 @@ static std::unique_ptr<NWidgetBase> MakeNWidgetCompanyLines()
 		panel->SetMinimalSize(246, sprite_height + WidgetDimensions::unscaled.framerect.Vertical());
 		panel->SetMinimalTextLines(1, WidgetDimensions::unscaled.framerect.Vertical(), FS_NORMAL);
 		panel->SetFill(1, 1);
-		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
+		panel->SetToolTip(STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
 		vert->Add(std::move(panel));
 	}
 	return vert;
@@ -1802,7 +1802,7 @@ static std::unique_ptr<NWidgetBase> MakePerformanceDetailPanels()
 	for (WidgetID widnum = WID_PRD_SCORE_FIRST; widnum <= WID_PRD_SCORE_LAST; widnum++) {
 		auto panel = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_BROWN, widnum);
 		panel->SetFill(1, 1);
-		panel->SetDataTip(0x0, performance_tips[widnum - WID_PRD_SCORE_FIRST]);
+		panel->SetToolTip(performance_tips[widnum - WID_PRD_SCORE_FIRST]);
 		vert->Add(std::move(panel));
 	}
 	return vert;

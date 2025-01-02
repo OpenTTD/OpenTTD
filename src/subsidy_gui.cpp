@@ -259,7 +259,7 @@ static constexpr NWidgetPart _nested_subsidies_list_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, WID_SUL_PANEL), SetDataTip(0x0, STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), SetScrollbar(WID_SUL_SCROLLBAR), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_BROWN, WID_SUL_PANEL), SetToolTip(STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), SetScrollbar(WID_SUL_SCROLLBAR), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_SUL_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
