@@ -1107,7 +1107,7 @@ static constexpr NWidgetPart _nested_network_content_list_widgets[] = {
 		/* Resize button. */
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE), SetDataTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
