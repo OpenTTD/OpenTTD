@@ -347,6 +347,39 @@ private:
 };
 
 /**
+ * Event Company Renamed, indicating a company has changed name.
+ * @api ai game
+ */
+class ScriptEventCompanyRenamed : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	/**
+	 * @param owner The company that is renamed.
+	 */
+	ScriptEventCompanyRenamed(Owner owner) :
+		ScriptEvent(ET_COMPANY_RENAMED),
+		owner((ScriptCompany::CompanyID)owner)
+	{}
+#endif /* DOXYGEN_API */
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventCompanyRenamed *Convert(ScriptEvent *instance) { return (ScriptEventCompanyRenamed *)instance; }
+
+	/**
+	 * Get the CompanyID of the company that has been created.
+	 * @return The CompanyID of the company.
+	 */
+	ScriptCompany::CompanyID GetCompanyID() { return this->owner; }
+
+private:
+	ScriptCompany::CompanyID owner; ///< The new company.
+};
+
+/**
  * Event Company In Trouble, indicating a company is in trouble and might go
  *  bankrupt soon.
  * @api ai game
