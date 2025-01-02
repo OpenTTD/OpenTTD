@@ -462,7 +462,7 @@ struct FramerateWindow : Window {
 		/* Check if the shaded state has changed, switch caption text if it has */
 		if (this->small != this->IsShaded()) {
 			this->small = this->IsShaded();
-			this->GetWidget<NWidgetLeaf>(WID_FRW_CAPTION)->SetDataTip(this->small ? STR_FRAMERATE_CAPTION_SMALL : STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
+			this->GetWidget<NWidgetLeaf>(WID_FRW_CAPTION)->SetStringTip(this->small ? STR_FRAMERATE_CAPTION_SMALL : STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 			this->UpdateData();
 			this->SetDirty();
 		}
