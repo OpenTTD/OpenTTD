@@ -1116,7 +1116,7 @@ NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, WidgetID index, uint fil
 {
 	this->colour = colour;
 	this->widget_data = widget_data;
-	this->tool_tip = tool_tip;
+	this->SetToolTip(tool_tip);
 	this->scrollbar_index = -1;
 	this->text_colour = tp == WWT_CAPTION ? TC_WHITE : TC_BLACK;
 	this->text_size = FS_NORMAL;
@@ -3115,7 +3115,7 @@ static void ApplyNWidgetPartAttribute(const NWidgetPart &nwid, NWidgetBase *dest
 			NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(dest);
 			if (nwc == nullptr) [[unlikely]] throw std::runtime_error("WPT_DATATIP requires NWidgetCore");
 			nwc->widget_data = nwid.u.data_tip.data;
-			nwc->tool_tip = nwid.u.data_tip.tooltip;
+			nwc->SetToolTip(nwid.u.data_tip.tooltip);
 			break;
 		}
 
