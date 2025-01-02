@@ -4464,6 +4464,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Cambiar 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} año{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} año{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Costo de mantenimiento: {LTBLUE}{CURRENCY_LONG}/año
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Edad: {LTBLUE}{STRING}{BLACK} Costo operación: {LTBLUE}{CURRENCY_LONG}/periodo
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidad máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Vel. máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING}

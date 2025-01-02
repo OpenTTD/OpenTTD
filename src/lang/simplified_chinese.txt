@@ -355,7 +355,7 @@ STR_SORT_BY_POWER                                               :功率
 STR_SORT_BY_TRACTIVE_EFFORT                                     :牵引力
 STR_SORT_BY_INTRO_DATE                                          :面世日期
 STR_SORT_BY_RUNNING_COST                                        :运行费用
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率/运行费用 比值
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率/运行费用
 STR_SORT_BY_CARGO_CAPACITY                                      :运载能力
 STR_SORT_BY_RANGE                                               :航行距离
 STR_SORT_BY_POPULATION                                          :人口
@@ -2344,7 +2344,7 @@ STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}选择�
 STR_FACE_EYECOLOUR                                              :眼睛
 STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}选择眼睛颜色
 STR_FACE_GLASSES                                                :眼镜
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}是否有 眼镜
+STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}增加眼镜
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}选择眼镜
 STR_FACE_NOSE                                                   :鼻子
 STR_FACE_NOSE_TOOLTIP                                           :{BLACK}选择鼻子
@@ -2787,7 +2787,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}建设�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}建设铁路信号。建造时按住 <Ctrl> 键切换信号灯的风格样式。{}建造时拖拽可以在拖拽区间内按照设定的信号间距均匀建造信号灯。按住 <Ctrl> 键拖拽以按设定的信号灯建造至下一个交叉点 / 车站 / 信号灯。按住 <Shift> 以显示预计费用
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}建设铁路桥梁。按住 <Shift> 键显示预计费用
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}建设铁路隧道。按住 <Shift> 键以显示预计费用
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建筑 / 拆除铁轨、信号机、路点以及车站。按住 <Ctrl> 键点选以同时移除路点及车站中的铁轨
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建设或拆除铁轨、信号机、路点以及车站。按住 <Ctrl> 键点选以同时移除路点及车站中的铁轨
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}转换或升级铁路类型。按住 <Shift> 键单击以显示预计费用
 
 STR_RAIL_NAME_RAILROAD                                          :铁路
@@ -2913,8 +2913,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}建设�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}建设电车桥梁。按住 <Shift> 键以显示预计费用
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}建设公路隧道。按住 <Shift> 键以显示预计费用
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}建设电车隧道。按住 <Shift> 键以显示预计费用
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}建设/拆除 公路
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}建设/拆除 电车轨道
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}切换建设或拆除公路
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}切换建设或拆除电车轨道
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}转换或升级道路类型。按住 <Shift> 键单击以显示预计费用
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}转换或升级电车轨道类型。按住 <Shift> 键单击以显示预计费用
 
@@ -3135,7 +3135,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :田地
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :雪地
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :沙漠
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :铁路 轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :铁路轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :有通过信号灯的铁路轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :有入口信号灯的铁路轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :有出口信号灯的铁路轨道
@@ -4352,7 +4352,7 @@ STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} 变老
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}停止更新
 STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}按下以停止替换左侧指定的载具
 
-STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}可以切换 机车/挂车 替换项目
+STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP                         :{BLACK}在机车及车厢替换窗口间切换
 STR_REPLACE_ENGINES                                             :机车
 STR_REPLACE_WAGONS                                              :挂车
 STR_REPLACE_ALL_RAILTYPE                                        :所有铁路载具
@@ -4421,10 +4421,10 @@ STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}显示�
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}显示飞机的详情
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}当前列车动作 - 点击以 停止/启动 列车
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}当前载具操作 - 点击以停止/启动载具
-STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}当前船只动作 - 点击以 停止/启动 船只
-STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}当前飞机动作 - 点击以 停止/启动 飞机
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}当前列车状态 - 点击以停止或启动列车
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}当前载具状态 - 点击以停止或启动载具
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}当前船舶状态 - 点击以停止或启动船舶
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}当前飞机状态 - 点击以停止或启动飞机
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}装载/卸货
