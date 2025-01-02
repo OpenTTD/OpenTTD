@@ -35,18 +35,18 @@ inline StringTab GetStringTab(StringID str)
  * @param str String identifier
  * @return StringIndex from \a str
  */
-inline uint GetStringIndex(StringID str)
+inline StringIndexInTab GetStringIndex(StringID str)
 {
-	return str - (GetStringTab(str) << TAB_SIZE_BITS);
+	return StringIndexInTab{str - (GetStringTab(str) << TAB_SIZE_BITS)};
 }
 
 /**
  * Create a StringID
  * @param tab StringTab
- * @param index StringIndex
+ * @param index Index of the string within the given tab.
  * @return StringID composed from \a tab and \a index
  */
-inline StringID MakeStringID(StringTab tab, uint index)
+inline StringID MakeStringID(StringTab tab, StringIndexInTab index)
 {
 	if (tab == TEXT_TAB_NEWGRF_START) {
 		assert(index < TAB_SIZE_NEWGRF);
@@ -56,7 +56,7 @@ inline StringID MakeStringID(StringTab tab, uint index)
 		assert(tab < TEXT_TAB_END);
 		assert(index < TAB_SIZE);
 	}
-	return (tab << TAB_SIZE_BITS) + index;
+	return (tab << TAB_SIZE_BITS) + index.base();
 }
 
 std::string GetString(StringID string);

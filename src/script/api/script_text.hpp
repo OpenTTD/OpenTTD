@@ -132,13 +132,13 @@ private:
 	using Param = std::variant<SQInteger, std::string, ScriptTextRef>;
 
 	struct ParamCheck {
-		StringID owner;
+		StringIndexInTab owner;
 		int idx;
 		Param *param;
 		bool used = false;
 		const char *cmd = nullptr;
 
-		ParamCheck(StringID owner, int idx, Param *param) : owner(owner), idx(idx), param(param) {}
+		ParamCheck(StringIndexInTab owner, int idx, Param *param) : owner(owner), idx(idx), param(param) {}
 
 		void Encode(std::back_insert_iterator<std::string> &output, const char *cmd);
 	};
@@ -146,7 +146,7 @@ private:
 	using ParamList = std::vector<ParamCheck>;
 	using ParamSpan = std::span<ParamCheck>;
 
-	StringID string;
+	StringIndexInTab string;
 	std::array<Param, SCRIPT_TEXT_MAX_PARAMETERS> param = {};
 	int paramc = 0;
 

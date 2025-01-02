@@ -315,10 +315,10 @@ GameStrings *_current_data = nullptr;
  * @param id The ID of the game string.
  * @return The encoded string.
  */
-const char *GetGameStringPtr(uint id)
+const char *GetGameStringPtr(StringIndexInTab id)
 {
-	if (_current_data == nullptr || _current_data->cur_language == nullptr || id >= _current_data->cur_language->lines.size()) return GetStringPtr(STR_UNDEFINED);
-	return _current_data->cur_language->lines[id].c_str();
+	if (_current_data == nullptr || _current_data->cur_language == nullptr || id.base() >= _current_data->cur_language->lines.size()) return GetStringPtr(STR_UNDEFINED);
+	return _current_data->cur_language->lines[id.base()].c_str();
 }
 
 /**
@@ -326,13 +326,13 @@ const char *GetGameStringPtr(uint id)
  * @param id The ID of the game string.
  * @return The string parameters.
  */
-const StringParams &GetGameStringParams(uint id)
+const StringParams &GetGameStringParams(StringIndexInTab id)
 {
 	/* An empty result for STR_UNDEFINED. */
 	static StringParams empty;
 
-	if (id >= _current_data->string_params.size()) return empty;
-	return _current_data->string_params[id];
+	if (id.base() >= _current_data->string_params.size()) return empty;
+	return _current_data->string_params[id.base()];
 }
 
 /**
@@ -340,13 +340,13 @@ const StringParams &GetGameStringParams(uint id)
  * @param id The ID of the game string.
  * @return The name of the string.
  */
-const std::string &GetGameStringName(uint id)
+const std::string &GetGameStringName(StringIndexInTab id)
 {
 	/* The name for STR_UNDEFINED. */
 	static const std::string undefined = "STR_UNDEFINED";
 
-	if (id >= _current_data->string_names.size()) return undefined;
-	return _current_data->string_names[id];
+	if (id.base() >= _current_data->string_names.size()) return undefined;
+	return _current_data->string_names[id.base()];
 }
 
 /**
