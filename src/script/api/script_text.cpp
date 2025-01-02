@@ -33,7 +33,7 @@ ScriptText::ScriptText(HSQUIRRELVM vm)
 	if (SQ_FAILED(sq_getinteger(vm, 2, &sqstring))) {
 		throw sq_throwerror(vm, "First argument must be a valid StringID");
 	}
-	this->string = sqstring;
+	this->string = StringIndexInTab(sqstring);
 
 	/* The rest of the parameters must be arguments. */
 	for (int i = 0; i < nparam - 1; i++) {
@@ -185,7 +185,7 @@ void ScriptText::_FillParamList(ParamList &params, ScriptTextList &seen_texts)
 		static Param dummy = 0;
 		int nb_extra = SCRIPT_TEXT_MAX_PARAMETERS - (int)params.size();
 		for (int i = 0; i < nb_extra; i++)
-			params.emplace_back(-1, i, &dummy);
+			params.emplace_back(StringIndexInTab(-1), i, &dummy);
 	}
 }
 

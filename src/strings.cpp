@@ -239,7 +239,7 @@ const char *GetStringPtr(StringID string)
 		case TEXT_TAB_OLD_NEWGRF: NOT_REACHED();
 		case TEXT_TAB_NEWGRF_START: return GetGRFStringPtr(GetStringIndex(string));
 		default: {
-			const uint offset = _langpack.langtab_start[GetStringTab(string)] + GetStringIndex(string);
+			const size_t offset = _langpack.langtab_start[GetStringTab(string)] + GetStringIndex(string).base();
 			if (offset < _langpack.offsets.size()) return _langpack.offsets[offset];
 			return nullptr;
 		}
@@ -261,14 +261,14 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 		return;
 	}
 
-	uint index = GetStringIndex(string);
+	StringIndexInTab index = GetStringIndex(string);
 	StringTab tab = GetStringTab(string);
 
 	switch (tab) {
 		case TEXT_TAB_TOWN:
 			if (index >= 0xC0 && !game_script) {
 				try {
-					GetSpecialTownNameString(builder, index - 0xC0, args.GetNextParameter<uint32_t>());
+					GetSpecialTownNameString(builder, index.base() - 0xC0, args.GetNextParameter<uint32_t>());
 				} catch (const std::runtime_error &e) {
 					Debug(misc, 0, "GetStringWithArgs: {}", e.what());
 					builder += "(invalid string parameter)";
@@ -280,7 +280,7 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 		case TEXT_TAB_SPECIAL:
 			if (index >= 0xE4 && !game_script) {
 				try {
-					GetSpecialNameString(builder, index - 0xE4, args);
+					GetSpecialNameString(builder, index.base() - 0xE4, args);
 				} catch (const std::runtime_error &e) {
 					Debug(misc, 0, "GetStringWithArgs: {}", e.what());
 					builder += "(invalid string parameter)";
@@ -987,7 +987,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					ArrayStringParameters<20> sub_args;
 
 					char *p;
-					uint32_t stringid = std::strtoul(str, &p, 16);
+					StringIndexInTab stringid(std::strtoul(str, &p, 16));
 					if (*p != ':' && *p != '\0') {
 						while (*p != '\0') p++;
 						str = p;
@@ -1048,7 +1048,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 									builder += "(invalid sub-StringID)";
 									break;
 								}
-								param = MakeStringID(TEXT_TAB_GAMESCRIPT_START, param);
+								param = MakeStringID(TEXT_TAB_GAMESCRIPT_START, StringIndexInTab(param));
 							}
 
 							sub_args.SetParam(i++, param);

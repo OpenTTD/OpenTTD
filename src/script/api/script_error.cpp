@@ -30,7 +30,7 @@ ScriptError::ScriptErrorMapString ScriptError::error_map_string = ScriptError::S
 
 /* static */ ScriptErrorType ScriptError::StringToError(StringID internal_string_id)
 {
-	uint index = GetStringIndex(internal_string_id);
+	StringIndexInTab index = GetStringIndex(internal_string_id);
 	switch (GetStringTab(internal_string_id)) {
 		case TEXT_TAB_NEWGRF_START:
 		case TEXT_TAB_GAMESCRIPT_START:

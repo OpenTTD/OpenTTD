@@ -571,7 +571,7 @@ StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid_to_ad
 		it->stringid   = stringid;
 		it->def_string = def_string;
 	}
-	uint id = static_cast<uint>(it - std::begin(_grf_text));
+	StringIndexInTab id(it - std::begin(_grf_text));
 
 	std::string newtext = TranslateTTDPatchCodes(grfid, langid_to_add, allow_newlines, text_to_add);
 	AddGRFTextToList(it->textholder, langid_to_add, newtext);
@@ -588,7 +588,7 @@ StringID GetGRFStringID(uint32_t grfid, GRFStringID stringid)
 {
 	auto it = std::ranges::find_if(_grf_text, [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
 	if (it != std::end(_grf_text)) {
-		uint id = static_cast<uint>(it - std::begin(_grf_text));
+		StringIndexInTab id(it - std::begin(_grf_text));
 		return MakeStringID(TEXT_TAB_NEWGRF_START, id);
 	}
 
@@ -636,16 +636,16 @@ const char *GetGRFStringFromGRFText(const GRFTextWrapper &text)
 /**
  * Get a C-string from a stringid set by a newgrf.
  */
-const char *GetGRFStringPtr(uint32_t stringid)
+const char *GetGRFStringPtr(StringIndexInTab stringid)
 {
-	assert(stringid < _grf_text.size());
-	assert(_grf_text[stringid].grfid != 0);
+	assert(stringid.base() < _grf_text.size());
+	assert(_grf_text[stringid.base()].grfid != 0);
 
-	const char *str = GetGRFStringFromGRFText(_grf_text[stringid].textholder);
+	const char *str = GetGRFStringFromGRFText(_grf_text[stringid.base()].textholder);
 	if (str != nullptr) return str;
 
 	/* Use the default string ID if the fallback string isn't available */
-	return GetStringPtr(_grf_text[stringid].def_string);
+	return GetStringPtr(_grf_text[stringid.base()].def_string);
 }
 
 /**

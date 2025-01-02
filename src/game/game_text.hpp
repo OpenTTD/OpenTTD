@@ -10,6 +10,8 @@
 #ifndef GAME_TEXT_HPP
 #define GAME_TEXT_HPP
 
+#include "../strings_type.h"
+
 struct StringParam {
 	enum ParamType {
 		UNUSED,
@@ -27,9 +29,9 @@ struct StringParam {
 using StringParams = std::vector<StringParam>;
 using StringParamsList = std::vector<StringParams>;
 
-const char *GetGameStringPtr(uint id);
-const StringParams &GetGameStringParams(uint id);
-const std::string &GetGameStringName(uint id);
+const char *GetGameStringPtr(StringIndexInTab id);
+const StringParams &GetGameStringParams(StringIndexInTab id);
+const std::string &GetGameStringName(StringIndexInTab id);
 void RegisterGameTranslation(class Squirrel *engine);
 void ReconsiderGameScriptLanguage();
 
