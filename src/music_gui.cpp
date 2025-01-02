@@ -736,9 +736,9 @@ struct MusicWindow : public Window {
 
 			/* Hack-ish: set the proper widget data; only needs to be done once
 			 * per (Re)Init as that's the only time the language changes. */
-			case WID_M_PREV: this->GetWidget<NWidgetCore>(WID_M_PREV)->widget_data = _current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_NEXT : SPR_IMG_SKIP_TO_PREV; break;
-			case WID_M_NEXT: this->GetWidget<NWidgetCore>(WID_M_NEXT)->widget_data = _current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_PREV : SPR_IMG_SKIP_TO_NEXT; break;
-			case WID_M_PLAY: this->GetWidget<NWidgetCore>(WID_M_PLAY)->widget_data = _current_text_dir == TD_RTL ? SPR_IMG_PLAY_MUSIC_RTL : SPR_IMG_PLAY_MUSIC; break;
+			case WID_M_PREV: this->GetWidget<NWidgetCore>(WID_M_PREV)->SetSprite(_current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_NEXT : SPR_IMG_SKIP_TO_PREV); break;
+			case WID_M_NEXT: this->GetWidget<NWidgetCore>(WID_M_NEXT)->SetSprite(_current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_PREV : SPR_IMG_SKIP_TO_NEXT); break;
+			case WID_M_PLAY: this->GetWidget<NWidgetCore>(WID_M_PLAY)->SetSprite(_current_text_dir == TD_RTL ? SPR_IMG_PLAY_MUSIC_RTL : SPR_IMG_PLAY_MUSIC); break;
 		}
 	}
 

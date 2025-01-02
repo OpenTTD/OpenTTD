@@ -612,36 +612,36 @@ struct DepotWindow : Window {
 				this->GetWidget<NWidgetCore>(WID_D_VEHICLE_LIST)->widget_data = STR_TRAIN;
 
 				/* Sprites */
-				this->GetWidget<NWidgetCore>(WID_D_SELL)->widget_data        = SPR_SELL_TRAIN;
-				this->GetWidget<NWidgetCore>(WID_D_SELL_ALL)->widget_data    = SPR_SELL_ALL_TRAIN;
-				this->GetWidget<NWidgetCore>(WID_D_AUTOREPLACE)->widget_data = SPR_REPLACE_TRAIN;
+				this->GetWidget<NWidgetCore>(WID_D_SELL)->SetSprite(SPR_SELL_TRAIN);
+				this->GetWidget<NWidgetCore>(WID_D_SELL_ALL)->SetSprite(SPR_SELL_ALL_TRAIN);
+				this->GetWidget<NWidgetCore>(WID_D_AUTOREPLACE)->SetSprite(SPR_REPLACE_TRAIN);
 				break;
 
 			case VEH_ROAD:
 				this->GetWidget<NWidgetCore>(WID_D_VEHICLE_LIST)->widget_data = STR_LORRY;
 
 				/* Sprites */
-				this->GetWidget<NWidgetCore>(WID_D_SELL)->widget_data        = SPR_SELL_ROADVEH;
-				this->GetWidget<NWidgetCore>(WID_D_SELL_ALL)->widget_data    = SPR_SELL_ALL_ROADVEH;
-				this->GetWidget<NWidgetCore>(WID_D_AUTOREPLACE)->widget_data = SPR_REPLACE_ROADVEH;
+				this->GetWidget<NWidgetCore>(WID_D_SELL)->SetSprite(SPR_SELL_ROADVEH);
+				this->GetWidget<NWidgetCore>(WID_D_SELL_ALL)->SetSprite(SPR_SELL_ALL_ROADVEH);
+				this->GetWidget<NWidgetCore>(WID_D_AUTOREPLACE)->SetSprite(SPR_REPLACE_ROADVEH);
 				break;
 
 			case VEH_SHIP:
 				this->GetWidget<NWidgetCore>(WID_D_VEHICLE_LIST)->widget_data = STR_SHIP;
 
 				/* Sprites */
-				this->GetWidget<NWidgetCore>(WID_D_SELL)->widget_data        = SPR_SELL_SHIP;
-				this->GetWidget<NWidgetCore>(WID_D_SELL_ALL)->widget_data    = SPR_SELL_ALL_SHIP;
-				this->GetWidget<NWidgetCore>(WID_D_AUTOREPLACE)->widget_data = SPR_REPLACE_SHIP;
+				this->GetWidget<NWidgetCore>(WID_D_SELL)->SetSprite(SPR_SELL_SHIP);
+				this->GetWidget<NWidgetCore>(WID_D_SELL_ALL)->SetSprite(SPR_SELL_ALL_SHIP);
+				this->GetWidget<NWidgetCore>(WID_D_AUTOREPLACE)->SetSprite(SPR_REPLACE_SHIP);
 				break;
 
 			case VEH_AIRCRAFT:
 				this->GetWidget<NWidgetCore>(WID_D_VEHICLE_LIST)->widget_data = STR_PLANE;
 
 				/* Sprites */
-				this->GetWidget<NWidgetCore>(WID_D_SELL)->widget_data        = SPR_SELL_AIRCRAFT;
-				this->GetWidget<NWidgetCore>(WID_D_SELL_ALL)->widget_data    = SPR_SELL_ALL_AIRCRAFT;
-				this->GetWidget<NWidgetCore>(WID_D_AUTOREPLACE)->widget_data = SPR_REPLACE_AIRCRAFT;
+				this->GetWidget<NWidgetCore>(WID_D_SELL)->SetSprite(SPR_SELL_AIRCRAFT);
+				this->GetWidget<NWidgetCore>(WID_D_SELL_ALL)->SetSprite(SPR_SELL_ALL_AIRCRAFT);
+				this->GetWidget<NWidgetCore>(WID_D_AUTOREPLACE)->SetSprite(SPR_REPLACE_AIRCRAFT);
 				break;
 		}
 	}

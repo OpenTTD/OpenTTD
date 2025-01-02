@@ -1135,6 +1135,15 @@ void NWidgetCore::SetDataTip(uint32_t widget_data, StringID tool_tip)
 }
 
 /**
+ * Set sprite of the nested widget.
+ * @param sprite The new sprite.
+ */
+void NWidgetCore::SetSprite(SpriteID sprite)
+{
+	this->widget_data = sprite;
+}
+
+/**
  * Set the text style of the nested widget.
  * @param colour TextColour to use.
  * @param size Font size to use.
