@@ -32,7 +32,7 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_NULL(1, SLV_97, SLV_110),
 	SLC_VAR("difficulty.number_towns"),
 	SLC_VAR("difficulty.industry_density"),
-	SLC_VAR("difficulty.max_loan"),
+	SLC_VAR("difficulty.max_loan_percentage"),
 	SLC_VAR("difficulty.initial_interest"),
 	SLC_VAR("difficulty.vehicle_costs"),
 	SLC_VAR("difficulty.competitor_speed"),

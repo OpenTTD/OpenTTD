@@ -63,6 +63,7 @@
 #include "../timer/timer_game_calendar.h"
 #include "../timer/timer_game_economy.h"
 #include "../timer/timer_game_tick.h"
+#include "../company_base.h"
 
 #include "saveload_internal.h"
 
@@ -2335,7 +2336,7 @@ bool AfterLoadGame()
 		 *       So taking the 16 bit fractional part into account there are plenty of bits left
 		 *       for unmodified savegames ...
 		 */
-		uint64_t aimed_inflation = (_economy.old_max_loan_unround << 16 | _economy.old_max_loan_unround_fract) / _settings_game.difficulty.max_loan;
+		uint64_t aimed_inflation = (_economy.old_max_loan_unround << 16 | _economy.old_max_loan_unround_fract) / GetMaxLoanFromPercentage();
 
 		/* ... well, just clamp it then. */
 		if (aimed_inflation > MAX_INFLATION) aimed_inflation = MAX_INFLATION;
