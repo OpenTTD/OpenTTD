@@ -27,7 +27,7 @@ static constexpr uint8_t MAT_ROW_START = 8; ///< Lowest bit of the number of row
 static constexpr uint8_t MAT_ROW_BITS = 8; ///< Number of bits for the number of rows in the matrix.
 
 /** Values for an arrow widget */
-enum ArrowWidgetValues {
+enum ArrowWidgetValues : uint8_t {
 	AWV_DECREASE, ///< Arrow to the left or in case of RTL to the right
 	AWV_INCREASE, ///< Arrow to the right or in case of RTL to the left
 	AWV_LEFT,     ///< Force the arrow to the left
@@ -35,7 +35,7 @@ enum ArrowWidgetValues {
 };
 
 /** WidgetData values for a resize box widget. */
-enum ResizeWidgetValues {
+enum ResizeWidgetValues : uint8_t {
 	RWV_SHOW_BEVEL, ///< Bevel of resize box is shown.
 	RWV_HIDE_BEVEL, ///< Bevel of resize box is hidden.
 };
@@ -373,6 +373,9 @@ public:
 	NWidgetCore(WidgetType tp, Colours colour, WidgetID index, uint fill_x, uint fill_y, uint32_t widget_data, StringID tool_tip);
 
 	void SetDataTip(uint32_t widget_data, StringID tool_tip);
+	void SetStringTip(StringID string, StringID tool_tip) { this->SetDataTip(string, tool_tip); }
+	void SetSpriteTip(SpriteID sprite, StringID tool_tip) { this->SetDataTip(sprite, tool_tip); }
+	void SetMatrixDataTip(uint8_t cols, uint8_t rows, StringID tip) { this->SetDataTip(static_cast<uint32_t>((rows << MAT_ROW_START) | (cols << MAT_COL_START)), tip); }
 	void SetToolTip(StringID tool_tip);
 	void SetTextStyle(TextColour colour, FontSize size);
 	void SetAlignment(StringAlignment align);
@@ -1205,6 +1208,50 @@ constexpr NWidgetPart SetDataTip(uint32_t data, StringID tip)
 }
 
 /**
+ * Widget part function for setting the string and tooltip.
+ * @param string String of the widget.
+ * @param tip  Tooltip of the widget.
+ * @ingroup NestedWidgetParts
+ */
+constexpr NWidgetPart SetStringTip(StringID string, StringID tip)
+{
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{string, tip}};
+}
+
+/**
+ * Widget part function for setting the sprite and tooltip.
+ * @param data Sprite of the widget.
+ * @param tip  Tooltip of the widget.
+ * @ingroup NestedWidgetParts
+ */
+constexpr NWidgetPart SetSpriteTip(SpriteID sprite, StringID tip)
+{
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{sprite, tip}};
+}
+
+/**
+ * Widget part function for setting the arrow widget type and tooltip.
+ * @param widget_type Type of the widget to draw.
+ * @param tip  Tooltip of the widget.
+ * @ingroup NestedWidgetParts
+ */
+constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetValues widget_type, StringID tip)
+{
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{widget_type, tip}};
+}
+
+/**
+ * Widget part function for setting the resize widget type and tooltip.
+ * @param widget_type Type of the widget to draw.
+ * @param tip  Tooltip of the widget.
+ * @ingroup NestedWidgetParts
+ */
+constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetValues widget_type, StringID tip)
+{
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{widget_type, tip}};
+}
+
+/**
  * Widget part function for setting the data and tooltip of WWT_MATRIX widgets
  * @param cols Number of columns. \c 0 means to use draw columns with width according to the resize step size.
  * @param rows Number of rows. \c 0 means to use draw rows with height according to the resize step size.
@@ -1213,7 +1260,17 @@ constexpr NWidgetPart SetDataTip(uint32_t data, StringID tip)
  */
 constexpr NWidgetPart SetMatrixDataTip(uint8_t cols, uint8_t rows, StringID tip)
 {
-	return SetDataTip((rows << MAT_ROW_START) | (cols << MAT_COL_START), tip);
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{static_cast<uint32_t>((rows << MAT_ROW_START) | (cols << MAT_COL_START)), tip}};
+}
+
+/**
+ * Widget part function for setting tooltip and clearing the widget data.
+ * @param tip  Tooltip of the widget.
+ * @ingroup NestedWidgetParts
+ */
+constexpr NWidgetPart SetToolTip(StringID tip)
+{
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{0x0, tip}};
 }
 
 /**
