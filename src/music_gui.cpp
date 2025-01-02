@@ -641,7 +641,7 @@ static constexpr NWidgetPart _nested_music_track_selection_widgets[] = {
 			/* Left panel. */
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_LABEL, INVALID_COLOUR), SetFill(1, 0), SetStringTip(STR_PLAYLIST_TRACK_INDEX, STR_NULL),
-				NWidget(WWT_PANEL, COLOUR_GREY, WID_MTS_LIST_LEFT), SetFill(1, 1), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK), EndContainer(),
+				NWidget(WWT_PANEL, COLOUR_GREY, WID_MTS_LIST_LEFT), SetFill(1, 1), SetMinimalSize(180, 194), SetToolTip(STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK), EndContainer(),
 				NWidget(NWID_SPACER), SetFill(1, 0), SetMinimalSize(0, 2),
 			EndContainer(),
 			/* Middle buttons. */
@@ -660,7 +660,7 @@ static constexpr NWidgetPart _nested_music_track_selection_widgets[] = {
 			/* Right panel. */
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_LABEL, INVALID_COLOUR, WID_MTS_PLAYLIST), SetFill(1, 0), SetStringTip(STR_PLAYLIST_PROGRAM, STR_NULL),
-				NWidget(WWT_PANEL, COLOUR_GREY, WID_MTS_LIST_RIGHT), SetFill(1, 1), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK), EndContainer(),
+				NWidget(WWT_PANEL, COLOUR_GREY, WID_MTS_LIST_RIGHT), SetFill(1, 1), SetMinimalSize(180, 194), SetToolTip(STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK), EndContainer(),
 				NWidget(NWID_SPACER), SetFill(1, 0), SetMinimalSize(0, 2),
 			EndContainer(),
 		EndContainer(),
@@ -885,11 +885,11 @@ static constexpr NWidgetPart _nested_music_window_widgets[] = {
 			NWidget(NWID_HORIZONTAL), SetPIP(4, 0, 4),
 				NWidget(NWID_VERTICAL),
 					NWidget(WWT_LABEL, INVALID_COLOUR, -1), SetFill(1, 0), SetStringTip(STR_MUSIC_MUSIC_VOLUME, STR_NULL),
-					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_M_MUSIC_VOL), SetMinimalSize(67, 0), SetPadding(2), SetMinimalTextLines(1, 0), SetFill(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
+					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_M_MUSIC_VOL), SetMinimalSize(67, 0), SetPadding(2), SetMinimalTextLines(1, 0), SetFill(1, 0), SetToolTip(STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 				EndContainer(),
 				NWidget(NWID_VERTICAL),
 					NWidget(WWT_LABEL, INVALID_COLOUR, -1), SetFill(1, 0), SetStringTip(STR_MUSIC_EFFECTS_VOLUME, STR_NULL),
-					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_M_EFFECT_VOL), SetMinimalSize(67, 0), SetPadding(2), SetMinimalTextLines(1, 0), SetFill(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
+					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_M_EFFECT_VOL), SetMinimalSize(67, 0), SetPadding(2), SetMinimalTextLines(1, 0), SetFill(1, 0), SetToolTip(STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),

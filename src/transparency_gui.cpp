@@ -144,7 +144,7 @@ static constexpr NWidgetPart _nested_transparency_widgets[] = {
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	/* Panel with 'invisibility' buttons. */
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_TT_BUTTONS), SetMinimalSize(219, 13), SetDataTip(0x0, STR_TRANSPARENT_INVISIBLE_TOOLTIP),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_TT_BUTTONS), SetMinimalSize(219, 13), SetToolTip(STR_TRANSPARENT_INVISIBLE_TOOLTIP),
 	EndContainer(),
 };
 

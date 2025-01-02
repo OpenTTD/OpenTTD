@@ -1271,7 +1271,7 @@ static constexpr NWidgetPart _nested_industry_directory_widgets[] = {
 				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_FILTER_BY_PROD_CARGO), SetMinimalSize(225, 12), SetFill(0, 1), SetStringTip(STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER, STR_TOOLTIP_FILTER_CRITERIA),
 				NWidget(WWT_PANEL, COLOUR_BROWN), SetResize(1, 0), EndContainer(),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_BROWN, WID_ID_INDUSTRY_LIST), SetDataTip(0x0, STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP), SetResize(1, 1), SetScrollbar(WID_ID_VSCROLLBAR),
+			NWidget(WWT_PANEL, COLOUR_BROWN, WID_ID_INDUSTRY_LIST), SetToolTip(STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP), SetResize(1, 1), SetScrollbar(WID_ID_VSCROLLBAR),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_ID_VSCROLLBAR),
