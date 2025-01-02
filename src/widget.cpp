@@ -1135,12 +1135,43 @@ void NWidgetCore::SetDataTip(uint32_t widget_data, StringID tool_tip)
 }
 
 /**
+ * Set string of the nested widget.
+ * @param string The new string.
+ */
+void NWidgetCore::SetString(StringID string)
+{
+	this->widget_data = string;
+}
+
+/**
+ * Set string and tool tip of the nested widget.
+ * @param stringThe new string.
+ * @param tool_tip The new tool_tip.
+ */
+void NWidgetCore::SetStringTip(StringID string, StringID tool_tip)
+{
+	this->SetString(string);
+	this->SetToolTip(tool_tip);
+}
+
+/**
  * Set sprite of the nested widget.
  * @param sprite The new sprite.
  */
 void NWidgetCore::SetSprite(SpriteID sprite)
 {
 	this->widget_data = sprite;
+}
+
+/**
+ * Set sprite and tool tip of the nested widget.
+ * @param sprite The new sprite.
+ * @param tool_tip The new tool_tip.
+ */
+void NWidgetCore::SetSpriteTip(SpriteID sprite, StringID tool_tip)
+{
+	this->SetSprite(sprite);
+	this->SetToolTip(tool_tip);
 }
 
 /**

@@ -408,7 +408,7 @@ public:
 			default:
 				NOT_REACHED();
 		}
-		this->GetWidget<NWidgetCore>(WID_SL_CAPTION)->widget_data = caption_string;
+		this->GetWidget<NWidgetCore>(WID_SL_CAPTION)->SetString(caption_string);
 
 		this->vscroll = this->GetScrollbar(WID_SL_SCROLLBAR);
 		this->FinishInitNested(0);
