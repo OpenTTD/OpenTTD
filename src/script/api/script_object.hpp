@@ -175,9 +175,19 @@ protected:
 	static void SetLastError(ScriptErrorType last_error);
 
 	/**
+	 * Set the DoCommand extra last error.
+	 */
+	static void SetExtraLastError(ScriptErrorType extra_last_error);
+
+	/**
 	 * Get the DoCommand last error.
 	 */
 	static ScriptErrorType GetLastError();
+
+	/**
+	 * Get the DoCommand extra last error.
+	 */
+	static ScriptErrorType GetExtraLastError();
 
 	/**
 	 * Set the road type.
