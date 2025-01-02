@@ -1197,17 +1197,6 @@ constexpr NWidgetPart EndContainer()
 }
 
 /**
- * Widget part function for setting the data and tooltip.
- * @param data Data of the widget.
- * @param tip  Tooltip of the widget.
- * @ingroup NestedWidgetParts
- */
-constexpr NWidgetPart SetDataTip(uint32_t data, StringID tip)
-{
-	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{data, tip}};
-}
-
-/**
  * Widget part function for setting the string and tooltip.
  * @param string String of the widget.
  * @param tip  Tooltip of the widget.
