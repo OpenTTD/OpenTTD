@@ -19,6 +19,11 @@
  *
  * API additions:
  * \li GSEventVehicleCrashed::GetVictims
+ * \li GSAirport::GetAirportPlaneCompatibility
+ * \li GSAirport::APC_INCOMPATIBLE
+ * \li GSAirport::APC_COMPATIBLE
+ * \li GSAirport::APC_SHORT_RUNWAY
+ * \li GSAirport::APC_INVALID
  *
  * \b 14.0
  *
