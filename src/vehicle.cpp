@@ -985,16 +985,17 @@ void CallVehicleTicks()
 {
 	_vehicles_to_autoreplace.clear();
 
+	PerformanceAccumulator::Reset(PFE_GL_TRAINS);
+	PerformanceAccumulator::Reset(PFE_GL_ROADVEHS);
+	PerformanceAccumulator::Reset(PFE_GL_SHIPS);
+	PerformanceAccumulator::Reset(PFE_GL_AIRCRAFT);
+
 	RunEconomyVehicleDayProc();
 
 	{
 		PerformanceMeasurer framerate(PFE_GL_ECONOMY);
 		for (Station *st : Station::Iterate()) LoadUnloadStation(st);
 	}
-	PerformanceAccumulator::Reset(PFE_GL_TRAINS);
-	PerformanceAccumulator::Reset(PFE_GL_ROADVEHS);
-	PerformanceAccumulator::Reset(PFE_GL_SHIPS);
-	PerformanceAccumulator::Reset(PFE_GL_AIRCRAFT);
 
 	for (Vehicle *v : Vehicle::Iterate()) {
 		[[maybe_unused]] size_t vehicle_index = v->index;
