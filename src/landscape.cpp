@@ -944,45 +944,146 @@ static void GenerateTerrain(int type, uint flag)
 }
 
 
-#include "table/genland.h"
-
 static void CreateDesertOrRainForest(uint desert_tropic_line)
 {
-	uint update_freq = Map::Size() / 4;
-
-	for (const auto tile : Map::Iterate()) {
-		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
-
-		if (!IsValidTile(tile)) continue;
-
-		auto allows_desert = [tile, desert_tropic_line](auto &offset) {
-			TileIndex t = AddTileIndexDiffCWrap(tile, offset);
-			return t == INVALID_TILE || (TileHeight(t) < desert_tropic_line && !IsTileType(t, MP_WATER));
-		};
-		if (std::all_of(std::begin(_make_desert_or_rainforest_data), std::end(_make_desert_or_rainforest_data), allows_desert)) {
-			SetTropicZone(tile, TROPICZONE_DESERT);
+	static const auto circle_offset_of_radius = [](int16_t r, int32_t r2) {
+		std::vector<TileIndexDiffC> circle;
+		for (int16_t x = -r; x <= r; ++x) {
+			int32_t my = r2 - x * x;
+			for (int16_t y = 0; y * y <= my; ++y) {
+				if (abs(x) > r || abs(y) > r) continue;
+				circle.push_back(TileIndexDiffC(x, y));
+				if (y > 0) circle.push_back(TileIndexDiffC(x, -y));
+			}
 		}
-	}
 
-	for (uint i = 0; i != TILE_UPDATE_FREQUENCY; i++) {
-		if ((i % 64) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		return circle;
+	};
+	static const auto &make_desert_or_rainforest_data = circle_offset_of_radius(6, 51);
 
-		RunTileLoop();
-	}
+	size_t update_freq = Map::Size() / 4;
 
+	/* Step 1: Iterate over all tiles in the map to set their tropic zones.
+	 * Tiles at or above the desert_tropic_line height, or at sea level, are set to TROPICZONE_RAINFOREST.
+	 * Tiles below the desert_tropic_line height are set to TROPICZONE_DESERT. */
+	std::vector<TileIndex> rainforest_tiles;
 	for (const auto tile : Map::Iterate()) {
-		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		if (tile % update_freq == 0) {
+			MarkWholeScreenDirty();
+			IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		}
 
-		if (!IsValidTile(tile)) continue;
+		const TileType type = GetTileType(tile);
+		if (type == MP_VOID) continue;
 
-		auto allows_rainforest = [tile](auto &offset) {
-			TileIndex t = AddTileIndexDiffCWrap(tile, offset);
-			return t == INVALID_TILE || !IsTileType(t, MP_CLEAR) || !IsClearGround(t, CLEAR_DESERT);
-		};
-		if (std::all_of(std::begin(_make_desert_or_rainforest_data), std::end(_make_desert_or_rainforest_data), allows_rainforest)) {
+		const uint height = TileHeight(tile);
+		if (height >= desert_tropic_line || type == MP_WATER) {
+			/* Only add tiles at the edge of the desert_tropic_line or adjacent to water to the rainforest_tiles vector. */
+			if (height == desert_tropic_line && type != MP_WATER) rainforest_tiles.push_back(tile);
+			if (type == MP_WATER) {
+				for (DiagDirection dir = DIAGDIR_BEGIN; dir != DIAGDIR_END; dir++) {
+					const TileIndex neighbour_tile = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDiagDir(dir));
+
+					if (neighbour_tile == INVALID_TILE) continue;
+					if (!IsTileType(neighbour_tile, MP_CLEAR)) continue;
+
+					rainforest_tiles.push_back(tile);
+					break;
+				}
+			}
+
 			SetTropicZone(tile, TROPICZONE_RAINFOREST);
+		} else {
+			SetTropicZone(tile, TROPICZONE_DESERT);
+
+			/* Assume maximum desert density at this step.
+			 * Adjustments will be made in the final step if needed. */
+			SetClearGroundDensity(tile, CLEAR_DESERT, 3);
 		}
 	}
+
+	MarkWholeScreenDirty();
+	update_freq = std::max<size_t>(1, (rainforest_tiles.size() / 4) + (((rainforest_tiles.size() % 4) != 0) ? 1 : 0));
+	size_t i = 0;
+
+	/* Step 2: Starting from each TROPICZONE_RAINFOREST tile, check neighboring tiles.
+	 * If a neighboring tile is TROPICZONE_DESERT, convert it to TROPICZONE_NORMAL
+	 * to create a buffer zone between the rainforest and the desert. */
+	std::vector<TileIndex> normal_tiles;
+	while (!rainforest_tiles.empty()) {
+		if (i % update_freq == 0) {
+			IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+			MarkWholeScreenDirty();
+		}
+		i++;
+
+		const TileIndex rainforest_tile = rainforest_tiles.back();
+		rainforest_tiles.pop_back();
+
+		for (const auto &offset : make_desert_or_rainforest_data) {
+			const TileIndex neighbour_tile = AddTileIndexDiffCWrap(rainforest_tile, offset);
+
+			if (neighbour_tile == INVALID_TILE) continue;
+			if (GetTropicZone(neighbour_tile) != TROPICZONE_DESERT) continue;
+
+			SetTropicZone(neighbour_tile, TROPICZONE_NORMAL);
+
+			/* Speed up the transition from desert to grass. */
+			SetClearGroundDensity(neighbour_tile, CLEAR_GRASS, 3);
+
+			normal_tiles.push_back(neighbour_tile);
+		}
+	}
+
+	MarkWholeScreenDirty();
+	update_freq = std::max<size_t>(1, (normal_tiles.size() / 4) + (((normal_tiles.size() % 4) != 0) ? 1 : 0));
+	i = 0;
+
+	/* Step 3: Process each normal tile collected in step 2:
+	 * Originally, these tiles were TROPICZONE_DESERT (from step 1).
+	 * They were then converted to TROPICZONE_NORMAL (in step 2).
+	 * Now, if none of the surrounding tiles are TROPICZONE_DESERT,
+	 * convert the normal tile to TROPICZONE_RAINFOREST. */
+	while (!normal_tiles.empty()) {
+		if (i % update_freq == 0) {
+			IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+			MarkWholeScreenDirty();
+		}
+		i++;
+
+		const TileIndex normal_tile = normal_tiles.back();
+		normal_tiles.pop_back();
+
+		bool allows_rainforest = true;
+		for (const auto &offset : make_desert_or_rainforest_data) {
+			const TileIndex neighbour_tile = AddTileIndexDiffCWrap(normal_tile, offset);
+
+			if (!IsValidTile(neighbour_tile)) continue;
+			if (GetTropicZone(neighbour_tile) != TROPICZONE_DESERT) continue;
+
+			allows_rainforest = false;
+			break;
+		}
+
+		if (!allows_rainforest) {
+			/* If the normal tile remains as such due to adjacent desert tiles,
+			 * correct their density in this step. */
+			for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+				const TileIndex t = normal_tile + TileOffsByDiagDir(dir);
+
+				if (!IsValidTile(t)) continue;
+				if (GetTropicZone(t) != TROPICZONE_DESERT) continue;
+
+				SetClearGroundDensity(t, CLEAR_DESERT, 1);
+			}
+
+			continue;
+		}
+
+		SetTropicZone(normal_tile, TROPICZONE_RAINFOREST);
+	}
+
+	MarkWholeScreenDirty();
 }
 
 /**
