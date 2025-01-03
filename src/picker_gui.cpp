@@ -631,7 +631,7 @@ std::unique_ptr<NWidgetBase> MakePickerClassWidgets()
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 						NWidget(WWT_MATRIX, COLOUR_GREY, WID_PW_CLASS_LIST), SetFill(1, 1), SetResize(1, 1), SetPadding(WidgetDimensions::unscaled.picker),
-								SetMatrixDataTip(1, 0, STR_NULL), SetScrollbar(WID_PW_CLASS_SCROLL),
+								SetMatrixDataTip(1, 0), SetScrollbar(WID_PW_CLASS_SCROLL),
 					EndContainer(),
 					NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_PW_CLASS_SCROLL),
 				EndContainer(),
