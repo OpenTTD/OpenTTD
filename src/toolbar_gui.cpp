@@ -1214,7 +1214,7 @@ static CallBackFunction ToolbarScenGenLand(Window *w)
 
 static CallBackFunction ToolbarScenGenTownClick(Window *w)
 {
-	PopupMainToolbarMenu(w, WID_TE_TOWN_GENERATE, {STR_SCENEDIT_TOWN_MENU_BUILD_TOWN, STR_SCENEDIT_TOWN_MENU_PACE_HOUSE});
+	PopupMainToolbarMenu(w, WID_TE_TOWN_GENERATE, {STR_SCENEDIT_TOWN_MENU_BUILD_TOWN, STR_SCENEDIT_TOWN_MENU_PLACE_HOUSE});
 	return CBF_NONE;
 }
 

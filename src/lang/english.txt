@@ -440,7 +440,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Exit
 
 STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generate towns
-STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Place houses
+STR_SCENEDIT_TOWN_MENU_PLACE_HOUSE                              :Place houses
 
 # Settings menu
 ###length 16
