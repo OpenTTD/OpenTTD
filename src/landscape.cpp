@@ -1200,14 +1200,21 @@ static bool FlowsDown(TileIndex begin, TileIndex end)
 {
 	assert(DistanceManhattan(begin, end) == 1);
 
-	auto [slope_begin, height_begin] = GetTileSlopeZ(begin);
 	auto [slope_end, height_end] = GetTileSlopeZ(end);
 
-	return height_end <= height_begin &&
-			/* Slope either is inclined or flat; rivers don't support other slopes. */
-			(slope_end == SLOPE_FLAT || IsInclinedSlope(slope_end)) &&
-			/* Slope continues, then it must be lower... or either end must be flat. */
-			((slope_end == slope_begin && height_end < height_begin) || slope_end == SLOPE_FLAT || slope_begin == SLOPE_FLAT);
+	/* Slope either is inclined or flat; rivers don't support other slopes. */
+	if (slope_end != SLOPE_FLAT && !IsInclinedSlope(slope_end)) return false;
+
+	auto [slope_begin, height_begin] = GetTileSlopeZ(begin);
+
+	/* It can't flow uphill. */
+	if (height_end > height_begin) return false;
+
+	/* Slope continues, then it must be lower... */
+	if (slope_end == slope_begin && height_end < height_begin) return true;
+
+	/* ... or either end must be flat. */
+	return slope_end == SLOPE_FLAT || slope_begin == SLOPE_FLAT;
 }
 
 /** Parameters for river generation to pass as AyStar user data. */
