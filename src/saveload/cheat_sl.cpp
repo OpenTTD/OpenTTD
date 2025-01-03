@@ -17,8 +17,8 @@
 #include "../safeguards.h"
 
 static const SaveLoad _cheats_desc[] = {
-	SLE_VAR(Cheats, magic_bulldozer.been_used, SLE_BOOL),
-	SLE_VAR(Cheats, magic_bulldozer.value, SLE_BOOL),
+	SLE_CONDVAR(Cheats, magic_bulldozer.been_used, SLE_BOOL, SL_MIN_VERSION, SLV_REMOVE_MAGIC_BULLDOZER),
+	SLE_CONDVAR(Cheats, magic_bulldozer.value, SLE_BOOL, SL_MIN_VERSION, SLV_REMOVE_MAGIC_BULLDOZER),
 	SLE_VAR(Cheats, switch_company.been_used, SLE_BOOL),
 	SLE_VAR(Cheats, switch_company.value, SLE_BOOL),
 	SLE_VAR(Cheats, money.been_used, SLE_BOOL),
