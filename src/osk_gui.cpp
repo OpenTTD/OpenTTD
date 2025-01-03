@@ -222,7 +222,7 @@ static const int KEY_PADDING = 6;     // Vertical padding for remaining key rows
  * @param widdata Data value of the key widget.
  * @note Key width is measured in 1/2 keys to allow for 1/2 key shifting between rows.
  */
-static void AddKey(std::unique_ptr<NWidgetHorizontal> &hor, int pad_y, int num_half, WidgetType widtype, WidgetID widnum, uint16_t widdata)
+static void AddKey(std::unique_ptr<NWidgetHorizontal> &hor, int pad_y, int num_half, WidgetType widtype, WidgetID widnum, const WidgetData &widdata)
 {
 	int key_width = HALF_KEY_WIDTH + (INTER_KEY_SPACE + HALF_KEY_WIDTH) * (num_half - 1);
 
@@ -244,9 +244,9 @@ static std::unique_ptr<NWidgetBase> MakeTopKeys()
 	auto hor = std::make_unique<NWidgetHorizontal>();
 	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
-	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_CANCEL,    STR_BUTTON_CANCEL);
-	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_OK,        STR_BUTTON_OK    );
-	AddKey(hor, TOP_KEY_PADDING, 2 * 2, WWT_PUSHIMGBTN, WID_OSK_BACKSPACE, SPR_OSK_BACKSPACE);
+	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_CANCEL,    WidgetData{.string = STR_BUTTON_CANCEL});
+	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_OK,        WidgetData{.string = STR_BUTTON_OK});
+	AddKey(hor, TOP_KEY_PADDING, 2 * 2, WWT_PUSHIMGBTN, WID_OSK_BACKSPACE, WidgetData{.sprite = SPR_OSK_BACKSPACE});
 	return hor;
 }
 
@@ -257,7 +257,7 @@ static std::unique_ptr<NWidgetBase> MakeNumberKeys()
 	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
 	for (WidgetID widnum = WID_OSK_NUMBERS_FIRST; widnum <= WID_OSK_NUMBERS_LAST; widnum++) {
-		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0);
+		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, {});
 	}
 	return hor;
 }
@@ -268,11 +268,11 @@ static std::unique_ptr<NWidgetBase> MakeQwertyKeys()
 	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
 	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
-	AddKey(hor, KEY_PADDING, 3, WWT_PUSHIMGBTN, WID_OSK_SPECIAL, SPR_OSK_SPECIAL);
+	AddKey(hor, KEY_PADDING, 3, WWT_PUSHIMGBTN, WID_OSK_SPECIAL, WidgetData{.sprite = SPR_OSK_SPECIAL});
 	for (WidgetID widnum = WID_OSK_QWERTY_FIRST; widnum <= WID_OSK_QWERTY_LAST; widnum++) {
-		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0);
+		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, {});
 	}
-	AddKey(hor, KEY_PADDING, 1, NWID_SPACER, 0, 0);
+	AddKey(hor, KEY_PADDING, 1, NWID_SPACER, 0, {});
 	return hor;
 }
 
@@ -282,9 +282,9 @@ static std::unique_ptr<NWidgetBase> MakeAsdfgKeys()
 	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
 	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
-	AddKey(hor, KEY_PADDING, 4, WWT_IMGBTN, WID_OSK_CAPS, SPR_OSK_CAPS);
+	AddKey(hor, KEY_PADDING, 4, WWT_IMGBTN, WID_OSK_CAPS, WidgetData{.sprite = SPR_OSK_CAPS});
 	for (WidgetID widnum = WID_OSK_ASDFG_FIRST; widnum <= WID_OSK_ASDFG_LAST; widnum++) {
-		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0);
+		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, {});
 	}
 	return hor;
 }
@@ -295,11 +295,11 @@ static std::unique_ptr<NWidgetBase> MakeZxcvbKeys()
 	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
 	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
-	AddKey(hor, KEY_PADDING, 3, WWT_IMGBTN, WID_OSK_SHIFT, SPR_OSK_SHIFT);
+	AddKey(hor, KEY_PADDING, 3, WWT_IMGBTN, WID_OSK_SHIFT, WidgetData{.sprite = SPR_OSK_SHIFT});
 	for (WidgetID widnum = WID_OSK_ZXCVB_FIRST; widnum <= WID_OSK_ZXCVB_LAST; widnum++) {
-		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0);
+		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, {});
 	}
-	AddKey(hor, KEY_PADDING, 1, NWID_SPACER, 0, 0);
+	AddKey(hor, KEY_PADDING, 1, NWID_SPACER, 0, {});
 	return hor;
 }
 
@@ -309,11 +309,11 @@ static std::unique_ptr<NWidgetBase> MakeSpacebarKeys()
 	auto hor = std::make_unique<NWidgetHorizontal>();
 	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
-	AddKey(hor, KEY_PADDING,  8, NWID_SPACER, 0, 0);
-	AddKey(hor, KEY_PADDING, 13, WWT_PUSHTXTBTN, WID_OSK_SPACE, STR_EMPTY);
-	AddKey(hor, KEY_PADDING,  3, NWID_SPACER, 0, 0);
-	AddKey(hor, KEY_PADDING,  2, WWT_PUSHIMGBTN, WID_OSK_LEFT,  SPR_OSK_LEFT);
-	AddKey(hor, KEY_PADDING,  2, WWT_PUSHIMGBTN, WID_OSK_RIGHT, SPR_OSK_RIGHT);
+	AddKey(hor, KEY_PADDING,  8, NWID_SPACER, 0, {});
+	AddKey(hor, KEY_PADDING, 13, WWT_PUSHTXTBTN, WID_OSK_SPACE, WidgetData{.string = STR_EMPTY});
+	AddKey(hor, KEY_PADDING,  3, NWID_SPACER, 0, {});
+	AddKey(hor, KEY_PADDING,  2, WWT_PUSHIMGBTN, WID_OSK_LEFT,  WidgetData{.sprite = SPR_OSK_LEFT});
+	AddKey(hor, KEY_PADDING,  2, WWT_PUSHIMGBTN, WID_OSK_RIGHT, WidgetData{.sprite = SPR_OSK_RIGHT});
 	return hor;
 }
 
