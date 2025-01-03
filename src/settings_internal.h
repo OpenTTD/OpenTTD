@@ -234,6 +234,7 @@ struct IntSettingDesc : SettingDesc {
 	StringID GetTitle() const;
 	StringID GetHelp() const;
 	void SetValueDParams(uint first_param, int32_t value) const;
+	int32_t GetDefaultValue() const;
 
 	/**
 	 * Check whether this setting is a boolean type setting.

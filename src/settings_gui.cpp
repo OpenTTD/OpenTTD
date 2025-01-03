@@ -1478,7 +1478,7 @@ void SettingEntry::Init(uint8_t level)
 /* Sets the given setting entry to its default value */
 void SettingEntry::ResetAll()
 {
-	SetSettingValue(this->setting, this->setting->def);
+	SetSettingValue(this->setting, this->setting->GetDefaultValue());
 }
 
 /**
@@ -1532,7 +1532,7 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 		/* This entry shall only be visible, if the value deviates from its default value. */
 
 		/* Read the default value. */
-		filter_value = sd->def;
+		filter_value = sd->GetDefaultValue();
 	} else {
 		assert(mode == RM_CHANGED_AGAINST_NEW);
 		/* This entry shall only be visible, if the value deviates from
@@ -2508,8 +2508,7 @@ struct GameSettingsWindow : Window {
 					DrawString(tr, STR_CONFIG_SETTING_TYPE);
 					tr.top += GetCharacterHeight(FS_NORMAL);
 
-					int32_t def_val = sd->get_def_cb != nullptr ? sd->get_def_cb() : sd->def;
-					sd->SetValueDParams(0, def_val);
+					sd->SetValueDParams(0, sd->GetDefaultValue());
 					DrawString(tr, STR_CONFIG_SETTING_DEFAULT_VALUE);
 					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 
@@ -2743,10 +2742,8 @@ struct GameSettingsWindow : Window {
 			if (sd->flags & SF_GUI_CURRENCY) llvalue /= GetCurrency().rate;
 
 			value = ClampTo<int32_t>(llvalue);
-		} else if (sd->get_def_cb != nullptr) {
-			value = sd->get_def_cb();
 		} else {
-			value = sd->def;
+			value = sd->GetDefaultValue();
 		}
 
 		SetSettingValue(this->valuewindow_entry->setting, value);

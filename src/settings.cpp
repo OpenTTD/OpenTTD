@@ -385,7 +385,7 @@ size_t IntSettingDesc::ParseValue(const char *str) const
 		msg.SetDParamStr(0, str);
 		msg.SetDParamStr(1, this->GetName());
 		_settings_error_list.push_back(msg);
-		return this->def;
+		return this->GetDefaultValue();
 	}
 	if (*end != '\0') {
 		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS);
@@ -407,7 +407,7 @@ size_t OneOfManySettingDesc::ParseValue(const char *str) const
 	msg.SetDParamStr(0, str);
 	msg.SetDParamStr(1, this->GetName());
 	_settings_error_list.push_back(msg);
-	return this->def;
+	return this->GetDefaultValue();
 }
 
 size_t ManyOfManySettingDesc::ParseValue(const char *str) const
@@ -418,7 +418,7 @@ size_t ManyOfManySettingDesc::ParseValue(const char *str) const
 	msg.SetDParamStr(0, str);
 	msg.SetDParamStr(1, this->GetName());
 	_settings_error_list.push_back(msg);
-	return this->def;
+	return this->GetDefaultValue();
 }
 
 size_t BoolSettingDesc::ParseValue(const char *str) const
@@ -430,7 +430,7 @@ size_t BoolSettingDesc::ParseValue(const char *str) const
 	msg.SetDParamStr(0, str);
 	msg.SetDParamStr(1, this->GetName());
 	_settings_error_list.push_back(msg);
-	return this->def;
+	return this->GetDefaultValue();
 }
 
 /**
@@ -471,6 +471,15 @@ void IntSettingDesc::SetValueDParams(uint first_param, int32_t value) const
 		}
 		SetDParam(first_param++, value);
 	}
+}
+
+/**
+ * Get the default value of the setting.
+ * @return The default value.
+ */
+int32_t IntSettingDesc::GetDefaultValue() const
+{
+	return this->get_def_cb != nullptr ? this->get_def_cb() : this->def;
 }
 
 /**
@@ -516,7 +525,7 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 					val = Clamp(val, this->min, this->max);
 				} else if (val < this->min || val > (int32_t)this->max) {
 					/* Reset invalid discrete setting (where different values change gameplay) to its default value */
-					val = this->def;
+					val = this->GetDefaultValue();
 				}
 			}
 			break;
@@ -530,7 +539,7 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 					uval = ClampU(uval, this->min, this->max);
 				} else if (uval < (uint)this->min || uval > this->max) {
 					/* Reset invalid discrete setting to its default value */
-					uval = (uint32_t)this->def;
+					uval = (uint32_t)this->GetDefaultValue();
 				}
 			}
 			val = (int32_t)uval;
@@ -654,7 +663,7 @@ static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, co
 
 void IntSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
-	size_t val = (item == nullptr) ? this->def : this->ParseValue(item->value.has_value() ? item->value->c_str() : "");
+	size_t val = (item == nullptr) ? this->GetDefaultValue() : this->ParseValue(item->value.has_value() ? item->value->c_str() : "");
 	this->MakeValueValidAndWrite(object, (int32_t)val);
 }
 
@@ -749,12 +758,12 @@ bool IntSettingDesc::IsSameValue(const IniItem *item, void *object) const
 bool IntSettingDesc::IsDefaultValue(void *object) const
 {
 	int32_t object_value = this->Read(object);
-	return this->def == object_value;
+	return this->GetDefaultValue() == object_value;
 }
 
 void IntSettingDesc::ResetToDefault(void *object) const
 {
-	this->Write(object, this->def);
+	this->Write(object, this->GetDefaultValue());
 }
 
 std::string StringSettingDesc::FormatValue(const void *object) const
@@ -1783,9 +1792,10 @@ bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame
 void SetDefaultCompanySettings(CompanyID cid)
 {
 	Company *c = Company::Get(cid);
+	AutoRestoreBackup backup(_current_company, cid);
 	for (auto &desc : _company_settings) {
 		const IntSettingDesc *int_setting = GetSettingDesc(desc)->AsIntSetting();
-		int_setting->MakeValueValidAndWrite(&c->settings, int_setting->def);
+		int_setting->MakeValueValidAndWrite(&c->settings, int_setting->GetDefaultValue());
 	}
 }
 
