@@ -1430,6 +1430,13 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Amount of flat 
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Allow multiple similar industries per town: {STRING2}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normally, a town does not want more than one industry of each type. With this setting, it will allow several industries of the same type in the same town
 
+STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES                          :Allow bulldozing industries: {STRING2}
+STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES_HELPTEXT                 :Allow industries to be demolished
+###length 3
+STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES_OFF                      :Off
+STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES_UNSERVED                 :Unserved only
+STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES_ON                       :On
+
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Show signals: {STRING2}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Select on which side of the track to place signals
 ###length 3
@@ -5092,6 +5099,8 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :land sloped in 
 STR_ERROR_CAN_T_DO_THIS                                         :Can't do this...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :building must be demolished first
 STR_ERROR_BUILDING_IS_PROTECTED                                 :building is protected
+STR_ERROR_INDUSTRY_IN_USE                                       :industry is in use
+STR_ERROR_INDUSTRIES_CANNOT_BE_REMOVED                          :industries cannot be removed
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Can't clear this area...
 STR_ERROR_SITE_UNSUITABLE                                       :site unsuitable
 STR_ERROR_ALREADY_BUILT                                         :already built
