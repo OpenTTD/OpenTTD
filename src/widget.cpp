@@ -398,15 +398,15 @@ static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colo
  * @param r       Rectangle of the matrix background.
  * @param colour  Colour of the background.
  * @param clicked Matrix is rendered lowered.
- * @param data    Data of the widget, number of rows and columns of the widget.
+ * @param num_columns The number of columns in the matrix.
+ * @param num_rows The number of rows in the matrix.
  * @param resize_x Matrix resize unit size.
  * @param resize_y Matrix resize unit size.
  */
-static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint16_t data, uint resize_x, uint resize_y)
+static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint32_t num_columns, uint32_t num_rows, uint resize_x, uint resize_y)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
-	int num_columns = GB(data, MAT_COL_START, MAT_COL_BITS);  // Lower 8 bits of the widget data: Number of columns in the matrix.
 	int column_width; // Width of a single column in the matrix.
 	if (num_columns == 0) {
 		column_width = resize_x;
@@ -415,7 +415,6 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
 		column_width = r.Width() / num_columns;
 	}
 
-	int num_rows = GB(data, MAT_ROW_START, MAT_ROW_BITS); // Upper 8 bits of the widget data: Number of rows in the matrix.
 	int row_height; // Height of a single row in the matrix.
 	if (num_rows == 0) {
 		row_height = resize_y;
@@ -1168,9 +1167,9 @@ void NWidgetCore::SetSpriteTip(SpriteID sprite, StringID tool_tip)
  * @param columns The number of columns in the matrix (0 for autoscaling).
  * @param rows The number of rows in the matrix (0 for autoscaling).
  */
-void NWidgetCore::SetMatrixDimension(uint8_t columns, uint8_t rows)
+void NWidgetCore::SetMatrixDimension(uint32_t columns, uint32_t rows)
 {
-	this->widget_data.matrix = static_cast<uint32_t>((rows << MAT_ROW_START) | (columns << MAT_COL_START));
+	this->widget_data.matrix = { columns, rows };
 }
 
 /**
@@ -3028,7 +3027,7 @@ void NWidgetLeaf::Draw(const Window *w)
 			break;
 
 		case WWT_MATRIX:
-			DrawMatrix(r, this->colour, clicked, this->widget_data.matrix, this->resize_x, this->resize_y);
+			DrawMatrix(r, this->colour, clicked, this->widget_data.matrix.width, this->widget_data.matrix.height, this->resize_x, this->resize_y);
 			break;
 
 		case WWT_EDITBOX: {

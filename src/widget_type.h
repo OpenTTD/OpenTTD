@@ -17,15 +17,6 @@
 #include "gfx_type.h"
 #include "window_type.h"
 
-/** Bits of the #WWT_MATRIX widget data. */
-/* Number of column bits of the WWT_MATRIX widget data. */
-static constexpr uint8_t MAT_COL_START = 0; ///< Lowest bit of the number of columns.
-static constexpr uint8_t MAT_COL_BITS = 8; ///< Number of bits for the number of columns in the matrix.
-
-/* Number of row bits of the WWT_MATRIX widget data. */
-static constexpr uint8_t MAT_ROW_START = 8; ///< Lowest bit of the number of rows.
-static constexpr uint8_t MAT_ROW_BITS = 8; ///< Number of bits for the number of rows in the matrix.
-
 /** Values for an arrow widget */
 enum ArrowWidgetValues : uint8_t {
 	AWV_DECREASE, ///< Arrow to the left or in case of RTL to the right
@@ -370,7 +361,7 @@ struct WidgetData {
 	SpriteID sprite{};
 	ArrowWidgetValues arrow_widget_type{};
 	ResizeWidgetValues resize_widget_type{};
-	uint32_t matrix{};
+	Dimension matrix{};
 };
 
 /**
@@ -385,7 +376,7 @@ public:
 	void SetStringTip(StringID string, StringID tool_tip);
 	void SetSprite(SpriteID sprite);
 	void SetSpriteTip(SpriteID sprite, StringID tool_tip);
-	void SetMatrixDimension(uint8_t columns, uint8_t rows);
+	void SetMatrixDimension(uint32_t columns, uint32_t rows);
 	void SetResizeWidgetType(ResizeWidgetValues type);
 	void SetToolTip(StringID tool_tip);
 	StringID GetToolTip() const;
@@ -1261,9 +1252,9 @@ constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetValues widget_type, Str
  * @param tip  Tooltip of the widget.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetMatrixDataTip(uint8_t cols, uint8_t rows, StringID tip = {})
+constexpr NWidgetPart SetMatrixDataTip(uint32_t cols, uint32_t rows, StringID tip = {})
 {
-	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.matrix = static_cast<uint32_t>((rows << MAT_ROW_START) | (cols << MAT_COL_START))}, tip}};
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.matrix{ cols, rows }}, tip}};
 }
 
 /**
