@@ -3142,7 +3142,7 @@ static bool IsAttributeWidgetPartType(WidgetType tp)
  * @param dest NWidget to apply attribute to.
  * @pre NWidgetPart must be an attribute NWidgetPart.
  */
-static void ApplyNWidgetPartAttribute(const NWidgetPart &nwid, NWidgetBase *dest)
+void ApplyNWidgetPartAttribute(const NWidgetPart &nwid, NWidgetBase *dest)
 {
 	switch (nwid.type) {
 		case WPT_RESIZE: {

@@ -400,14 +400,18 @@ public:
 
 	NWidgetDisplay disp_flags; ///< Flags that affect display and interaction with the widget.
 	Colours colour;            ///< Colour of this widget.
+protected:
 	const WidgetID index;      ///< Index of the nested widget (\c -1 means 'not used').
 	WidgetData widget_data; ///< Data of the widget. @see Widget::data
-	StringID tool_tip;         ///< Tooltip of the widget. @see Widget::tootips
+	StringID tool_tip; ///< Tooltip of the widget. @see Widget::tool_tips
 	WidgetID scrollbar_index;  ///< Index of an attached scrollbar.
 	TextColour highlight_colour; ///< Colour of highlight.
 	TextColour text_colour;    ///< Colour of text within widget.
 	FontSize text_size;        ///< Size of text within widget.
 	StringAlignment align;     ///< Alignment of text/image within widget.
+
+	/* This function constructs the widgets, so it should be able to write the variables. */
+	friend void ApplyNWidgetPartAttribute(const struct NWidgetPart &nwid, NWidgetBase *dest);
 };
 
 /**
