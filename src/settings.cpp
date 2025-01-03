@@ -1604,7 +1604,7 @@ void IntSettingDesc::ChangeValue(const void *object, int32_t newval) const
 	this->Write(object, newval);
 	if (this->post_callback != nullptr) this->post_callback(newval);
 
-	if (this->flags & SF_NO_NETWORK) {
+	if (HasFlag(this->flags, SF_NO_NETWORK) || HasFlag(this->flags, SF_SANDBOX)) {
 		_gamelog.StartAction(GLAT_SETTING);
 		_gamelog.Setting(this->GetName(), oldval, newval);
 		_gamelog.StopAction();
