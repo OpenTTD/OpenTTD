@@ -443,7 +443,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generate towns
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Place houses
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Game options
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Settings
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI settings
@@ -453,6 +452,11 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sandbox options
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency options
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Town names displayed
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Station names displayed
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :{TRAIN}  Train stations
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :{LORRY}  Lorry stops
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :{BUS}  Bus stops
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :{SHIP}  Docks
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :{PLANE}  Airports
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Waypoint names displayed
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Signs displayed
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Competitor signs and names displayed
