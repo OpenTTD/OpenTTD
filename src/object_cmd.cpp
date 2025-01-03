@@ -566,13 +566,13 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 			/* No further limitations for the editor. */
 		} else if (GetTileOwner(tile) == OWNER_NONE) {
 			/* Owned by nobody and unremovable, so we can only remove it with brute force! */
-			if (!_cheats.magic_bulldozer.value && (spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0) return CMD_ERROR;
+			if (!_settings_game.construction.bulldoze_objects && (spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0) return CMD_ERROR;
 		} else if (CheckTileOwnership(tile).Failed()) {
 			/* We don't own it!. */
 			return CommandCost(STR_ERROR_OWNED_BY);
 		} else if ((spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0 && (spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0) {
-			/* In the game editor or with cheats we can remove, otherwise we can't. */
-			if (!_cheats.magic_bulldozer.value) {
+			/* We might be allowed to remove immovable objects. */
+			if (!_settings_game.construction.bulldoze_objects) {
 				if (type == OBJECT_HQ) return CommandCost(STR_ERROR_COMPANY_HEADQUARTERS_IN);
 				return CMD_ERROR;
 			}

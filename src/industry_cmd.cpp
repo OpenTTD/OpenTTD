@@ -493,13 +493,33 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlag flags)
 	Industry *i = Industry::GetByTile(tile);
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 
+	/* Check if the player can bulldoze the industry. */
+	bool bulldoze_allowed = _settings_game.construction.bulldoze_industries;
+	if (bulldoze_allowed) {
+		/* Don't bulldoze industries that have recently had any cargo transported...*/
+		for (const auto &p : i->produced) {
+			if (p.history[LAST_MONTH].PctTransported() > 0) {
+				bulldoze_allowed = false;
+				break;
+			}
+		}
+
+		/* ...or received. */
+		for (const auto &a : i->accepted) {
+			if (a.last_accepted + EconomyTime::DAYS_IN_ECONOMY_YEAR > TimerGameEconomy::date) {
+				bulldoze_allowed = false;
+				break;
+			}
+		}
+	}
+
 	/* water can destroy industries
 	 * in editor you can bulldoze industries
 	 * with magic_bulldozer cheat you can destroy industries
 	 * (area around OILRIG is water, so water shouldn't flood it
 	 */
 	if ((_current_company != OWNER_WATER && _game_mode != GM_EDITOR &&
-			!_cheats.magic_bulldozer.value) ||
+			!bulldoze_allowed) ||
 			((flags & DC_AUTO) != 0) ||
 			(_current_company == OWNER_WATER &&
 				((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) ||
