@@ -1124,17 +1124,6 @@ NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, WidgetID index, uint fil
 }
 
 /**
- * Set data and tool tip of the nested widget.
- * @param widget_data Data to use.
- * @param tool_tip    Tool tip string to use.
- */
-void NWidgetCore::SetDataTip(uint32_t widget_data, StringID tool_tip)
-{
-	this->widget_data = widget_data;
-	this->tool_tip = tool_tip;
-}
-
-/**
  * Set string of the nested widget.
  * @param string The new string.
  */
@@ -1182,6 +1171,15 @@ void NWidgetCore::SetSpriteTip(SpriteID sprite, StringID tool_tip)
 void NWidgetCore::SetMatrixDimension(uint8_t columns, uint8_t rows)
 {
 	this->widget_data = static_cast<uint32_t>((rows << MAT_ROW_START) | (columns << MAT_COL_START));
+}
+
+/**
+ * Set the resize widget type of the nested widget.
+ * @param type The new resize widget.
+ */
+void NWidgetCore::SetResizeWidgetType(ResizeWidgetValues type)
+{
+	this->widget_data = type;
 }
 
 /**
@@ -2770,7 +2768,8 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t
 		case WWT_RESIZEBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WidgetDimensions::WD_RESIZEBOX_WIDTH, 12);
-			this->SetDataTip(RWV_SHOW_BEVEL, STR_TOOLTIP_RESIZE);
+			this->SetResizeWidgetType(RWV_SHOW_BEVEL);
+			this->SetToolTip(STR_TOOLTIP_RESIZE);
 			break;
 
 		case WWT_CLOSEBOX:

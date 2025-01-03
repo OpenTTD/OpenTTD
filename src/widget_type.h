@@ -372,12 +372,12 @@ class NWidgetCore : public NWidgetResizeBase {
 public:
 	NWidgetCore(WidgetType tp, Colours colour, WidgetID index, uint fill_x, uint fill_y, uint32_t widget_data, StringID tool_tip);
 
-	void SetDataTip(uint32_t widget_data, StringID tool_tip);
 	void SetString(StringID string);
 	void SetStringTip(StringID string, StringID tool_tip);
 	void SetSprite(SpriteID sprite);
 	void SetSpriteTip(SpriteID sprite, StringID tool_tip);
 	void SetMatrixDimension(uint8_t columns, uint8_t rows);
+	void SetResizeWidgetType(ResizeWidgetValues type);
 	void SetToolTip(StringID tool_tip);
 	StringID GetToolTip() const;
 	void SetTextStyle(TextColour colour, FontSize size);
