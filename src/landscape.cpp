@@ -1028,9 +1028,10 @@ static bool FindSpring(TileIndex tile, void *)
  */
 static bool MakeLake(TileIndex tile, void *user_data)
 {
+	if (_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) == TROPICZONE_DESERT) return false;
+
 	uint height_lake = *static_cast<uint *>(user_data);
 	if (!IsValidTile(tile) || TileHeight(tile) != height_lake || !IsTileFlat(tile)) return false;
-	if (_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) == TROPICZONE_DESERT) return false;
 
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 		TileIndex t = tile + TileOffsByDiagDir(d);
