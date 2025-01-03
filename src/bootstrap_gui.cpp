@@ -67,11 +67,11 @@ public:
 /** Nested widgets for the error window. */
 static constexpr NWidgetPart _nested_bootstrap_errmsg_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_BEM_CAPTION), SetStringTip(STR_MISSING_GRAPHICS_ERROR_TITLE, STR_NULL),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_BEM_CAPTION), SetStringTip(STR_MISSING_GRAPHICS_ERROR_TITLE),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_BEM_MESSAGE), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BEM_QUIT), SetStringTip(STR_MISSING_GRAPHICS_ERROR_QUIT, STR_NULL), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BEM_QUIT), SetStringTip(STR_MISSING_GRAPHICS_ERROR_QUIT), SetFill(1, 0),
 	EndContainer(),
 };
 
@@ -179,8 +179,8 @@ static constexpr NWidgetPart _bootstrap_query_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_BAFD_QUESTION), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BAFD_YES), SetStringTip(STR_MISSING_GRAPHICS_YES_DOWNLOAD, STR_NULL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BAFD_NO), SetStringTip(STR_MISSING_GRAPHICS_NO_QUIT, STR_NULL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BAFD_YES), SetStringTip(STR_MISSING_GRAPHICS_YES_DOWNLOAD),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BAFD_NO), SetStringTip(STR_MISSING_GRAPHICS_NO_QUIT),
 	EndContainer(),
 };
 

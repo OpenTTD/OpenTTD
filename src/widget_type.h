@@ -1207,7 +1207,7 @@ constexpr NWidgetPart EndContainer()
  * @param tip  Tooltip of the widget.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetStringTip(StringID string, StringID tip)
+constexpr NWidgetPart SetStringTip(StringID string, StringID tip = {})
 {
 	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{string, tip}};
 }
@@ -1218,7 +1218,7 @@ constexpr NWidgetPart SetStringTip(StringID string, StringID tip)
  * @param tip  Tooltip of the widget.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetSpriteTip(SpriteID sprite, StringID tip)
+constexpr NWidgetPart SetSpriteTip(SpriteID sprite, StringID tip = {})
 {
 	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{sprite, tip}};
 }
@@ -1229,7 +1229,7 @@ constexpr NWidgetPart SetSpriteTip(SpriteID sprite, StringID tip)
  * @param tip  Tooltip of the widget.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetValues widget_type, StringID tip)
+constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetValues widget_type, StringID tip = {})
 {
 	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{widget_type, tip}};
 }
@@ -1252,7 +1252,7 @@ constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetValues widget_type, Str
  * @param tip  Tooltip of the widget.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetMatrixDataTip(uint8_t cols, uint8_t rows, StringID tip)
+constexpr NWidgetPart SetMatrixDataTip(uint8_t cols, uint8_t rows, StringID tip = {})
 {
 	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{static_cast<uint32_t>((rows << MAT_ROW_START) | (cols << MAT_COL_START)), tip}};
 }

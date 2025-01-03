@@ -1644,7 +1644,7 @@ static constexpr NWidgetPart _nested_orders_train_widgets[] = {
 					NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_UNLOAD), SetMinimalSize(93, 12), SetFill(1, 0),
 															SetStringTip(STR_ORDER_TOGGLE_UNLOAD, STR_ORDER_TOOLTIP_UNLOAD), SetResize(1, 0),
 					NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_DEPOT_ACTION), SetMinimalSize(93, 12), SetFill(1, 0),
-															SetStringTip(STR_JUST_STRING, STR_NULL), SetResize(1, 0),
+															SetStringTip(STR_JUST_STRING), SetResize(1, 0),
 				EndContainer(),
 				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_O_SEL_TOP_RIGHT),
 					NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(93, 12), SetFill(1, 0), SetResize(1, 0), EndContainer(),
@@ -1722,7 +1722,7 @@ static constexpr NWidgetPart _nested_orders_widgets[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_O_REFIT), SetMinimalSize(186, 12), SetFill(1, 0),
 													SetStringTip(STR_ORDER_REFIT, STR_ORDER_REFIT_TOOLTIP), SetResize(1, 0),
 				NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_DEPOT_ACTION), SetMinimalSize(124, 12), SetFill(1, 0),
-													SetStringTip(STR_JUST_STRING, STR_NULL), SetResize(1, 0),
+													SetStringTip(STR_JUST_STRING), SetResize(1, 0),
 			EndContainer(),
 
 			/* Buttons for setting a condition. */
