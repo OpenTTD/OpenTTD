@@ -1987,6 +1987,13 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Forbidden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Allowed
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Allowed, custom town layout
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Placing individual town houses: {STRING2}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Enabling this setting allows players to place town houses manually
+###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Forbidden
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Allowed
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Allowed, fully constructed
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Town cargo generation: {STRING2}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :How much cargo is produced by houses in towns, relative to the overall population of the town.{}Quadratic growth: A town twice the size generates four times as many passengers.{}Linear growth: A town twice the size generates twice the amount of passengers
 ###length 2
