@@ -479,7 +479,7 @@ void IntSettingDesc::SetValueDParams(uint first_param, int32_t value) const
  */
 int32_t IntSettingDesc::GetDefaultValue() const
 {
-	return this->get_def_cb != nullptr ? this->get_def_cb() : this->def;
+	return this->get_def_cb != nullptr ? this->get_def_cb(*this) : this->def;
 }
 
 /**
