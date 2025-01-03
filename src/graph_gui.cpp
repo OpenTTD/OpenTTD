@@ -555,7 +555,7 @@ public:
 
 				resize.width = 0;
 				resize.height = 0;
-				this->GetWidget<NWidgetCore>(WID_GRAPH_RANGE_MATRIX)->SetMatrixDataTip(1, ClampTo<uint8_t>(std::size(this->ranges)), STR_NULL);
+				this->GetWidget<NWidgetCore>(WID_GRAPH_RANGE_MATRIX)->SetMatrixDimension(1, ClampTo<uint8_t>(std::size(this->ranges)));
 				break;
 
 			case WID_GRAPH_GRAPH: {
