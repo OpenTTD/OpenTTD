@@ -1028,7 +1028,7 @@ static bool FindSpring(TileIndex tile, void *)
  */
 static bool MakeLake(TileIndex tile, void *user_data)
 {
-	uint height_lake = *(uint*)user_data;
+	uint height_lake = *static_cast<uint *>(user_data);
 	if (!IsValidTile(tile) || TileHeight(tile) != height_lake || !IsTileFlat(tile)) return false;
 	if (_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) == TROPICZONE_DESERT) return false;
 
@@ -1060,7 +1060,7 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 	/* If the tile is at height 0 after terraforming but the ocean hasn't flooded yet, don't build river. */
 	if (GetTileMaxZ(tile) == 0) return false;
 
-	TileIndex origin_tile = *(TileIndex *)user_data;
+	TileIndex origin_tile = *static_cast<TileIndex *>(user_data);
 	Slope cur_slope = GetTileSlope(tile);
 	Slope desired_slope = GetTileSlope(origin_tile); // Initialize matching the origin tile as a shortcut if no terraforming is needed.
 
@@ -1219,7 +1219,7 @@ struct River_UserData {
 /* AyStar callback for checking whether we reached our destination. */
 static AyStarStatus River_EndNodeCheck(const AyStar *aystar, const PathNode *current)
 {
-	return current->GetTile() == *(TileIndex*)aystar->user_target ? AyStarStatus::FoundEndNode : AyStarStatus::Done;
+	return current->GetTile() == *static_cast<TileIndex *>(aystar->user_target) ? AyStarStatus::FoundEndNode : AyStarStatus::Done;
 }
 
 /* AyStar callback for getting the cost of the current node. */
@@ -1231,7 +1231,7 @@ static int32_t River_CalculateG(AyStar *, AyStarNode *, PathNode *)
 /* AyStar callback for getting the estimated cost to the destination. */
 static int32_t River_CalculateH(AyStar *aystar, AyStarNode *current, PathNode *)
 {
-	return DistanceManhattan(*(TileIndex*)aystar->user_target, current->tile);
+	return DistanceManhattan(*static_cast<TileIndex *>(aystar->user_target), current->tile);
 }
 
 /* AyStar callback for getting the neighbouring nodes of the given node. */
@@ -1253,7 +1253,7 @@ static void River_GetNeighbours(AyStar *aystar, PathNode *current)
 /* AyStar callback when an route has been found. */
 static void River_FoundEndNode(AyStar *aystar, PathNode *current)
 {
-	River_UserData *data = (River_UserData *)aystar->user_data;
+	River_UserData *data = static_cast<River_UserData *>(aystar->user_data);
 
 	/* First, build the river without worrying about its width. */
 	for (PathNode *path = current->parent; path != nullptr; path = path->parent) {
@@ -1276,7 +1276,7 @@ static void River_FoundEndNode(AyStar *aystar, PathNode *current)
 			uint current_river_length = DistanceManhattan(data->spring, tile);
 			uint radius = std::min(3u, (current_river_length / (long_river_length / 3u)) + 1u);
 
-			if (radius > 1) CircularTileSearch(&tile, radius, RiverMakeWider, (void *)&path->key.tile);
+			if (radius > 1) CircularTileSearch(&tile, radius, RiverMakeWider, &path->key.tile);
 		}
 	}
 }
