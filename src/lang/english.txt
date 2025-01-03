@@ -1395,6 +1395,9 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Amount of flat 
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Allow multiple similar industries per town: {STRING2}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normally, a town does not want more than one industry of each type. With this setting, it will allow several industries of the same type in the same town
 
+STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES                          :Allow bulldozing unserved industries
+STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES_HELPTEXT                 :Allow industries to be demolished if 0% of their output is currently being transported
+
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Show signals: {STRING2}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Select on which side of the track to place signals
 ###length 3

@@ -392,6 +392,7 @@ struct ConstructionSettings {
 	bool   crossing_with_competitor;         ///< allow building of level crossings with competitor roads or rails
 	uint8_t  raw_industry_construction;        ///< type of (raw) industry construction (none, "normal", prospecting)
 	uint8_t  industry_platform;                ///< the amount of flat land around an industry
+	bool     bulldoze_industries;              ///< whether players can bulldozed unserved industries
 	bool   freeform_edges;                   ///< allow terraforming the tiles at the map edges
 	uint8_t  extra_tree_placement;             ///< (dis)allow building extra trees in-game
 	uint8_t  command_pause_level;              ///< level/amount of commands that can't be executed while paused
