@@ -1925,7 +1925,9 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipo de economía: {STRING}
+###length 2
 STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :La economía estable provoca cambios menores pero continuos en la producción. La economía rígida impide el cierre de industrias y los cambios en la producción. Esta configuración podría tener efecto nulo si algún NewGRF incluye otras industrias
+
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Estable
@@ -2871,7 +2873,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Señal d
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Señal combo (eléctrica){}Hace lo mismo que las señales de entrada y de salida, lo que permite construir amplios "árboles" de señales condicionales
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Señal de ruta (eléctrica){}Permite a más de un tren entrar al mismo tiempo en un tramo de vía con señales, en tanto que el tren pueda reservar una ruta hasta un lugar seguro. Puede ser pasada por detrás
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Señal de ruta de un sentido (eléctrica){}Igual que una señal de ruta pero no puede ser pasada por detrás
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversión de señal{}Activar para pulsar sobre una señal existente y convertirla en el tipo y variante elegidos. Ctrl+Clic permite cambiar entre variantes de señales. Mayús+Clic muestra un costo estimado
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversión de señal{}Clic sobre una señal existente y convertirla al tipo y variante elegidos. Ctrl+Clic permite intercambiar variantes. Mayús+Clic muestra un costo estimado
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distancia entre señales
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Reducir distancia entre señales
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar distancia entre señales
@@ -4042,7 +4044,9 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administ
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Enviar instrucciones a todos los vehículos de la lista
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Reemplazar vehículos
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Enviar a mantenimiento
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Crear grupo
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Ganancias este año: {CURRENCY_LONG} (último año: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Ganancias de este periodo: {CURRENCY_LONG} (último periodo: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
@@ -4428,6 +4432,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Acción 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Cargando/Descargando
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Partiendo
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Esperando para espaciarse
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}¡Accidentado!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Averiado
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Detenido
@@ -4474,6 +4479,8 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {L
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Ganancias este año: {LTBLUE}{CURRENCY_LONG} (último año: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Ganancias este año: {LTBLUE}{CURRENCY_LONG} (último año: {CURRENCY_LONG}) {BLACK}Mín. rendimiento: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Ganancias de este periodo: {LTBLUE}{CURRENCY_LONG} (último periodo: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Ganancias de este periodo: {LTBLUE}{CURRENCY_LONG} (último periodo: {CURRENCY_LONG}){BLACK}Rendimiento mín.: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde el último mantenimiento: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construido: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
@@ -4485,12 +4492,21 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacida
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Créditos por transferencia: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Mantenimiento cada: {LTBLUE}{COMMA}{NBSP}días{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}{NBSP}minuto{P "" s}{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Mantenimiento cada: {LTBLUE}{COMMA}%{BLACK} {STRING}
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Último mantenimiento: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Último mantenimiento: {LTBLUE}hace {NUM} minuto{P "" s}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Incrementar intervalo de mantenimiento 10 días. Ctrl+clic para reducirlo 5 días
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Incrementar intervalo de mantenimiento 5 minutos. Ctrl+clic para reducirlo 1 minuto
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Incrementar intervalo de mantenimiento 10%. Ctrl+clic para reducirlo 5%
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Reducir intervalo de mantenimiento 10 días. Ctrl+clic para reducirlo 5 días
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Reducir intervalo de mantenimiento 5 minutos. Ctrl+clic para reducirlo 1 minuto
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Reducir intervalo de mantenimiento 10%. Ctrl+clic para reducirlo 5%
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Cambiar tipo de intervalo de mantenimiento
 STR_VEHICLE_DETAILS_DEFAULT                                     :Por defecto
 STR_VEHICLE_DETAILS_DAYS                                        :Días
+STR_VEHICLE_DETAILS_MINUTES                                     :Minutos
 STR_VEHICLE_DETAILS_PERCENT                                     :Porcentaje
 
 ###length VEHICLE_TYPES
@@ -4810,9 +4826,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Distingu
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar distinción de mayúsculas al comparar los mensajes registrados de la IA con el texto de interrupción
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Reanudar y que la IA continúe
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar salida de depuración de esta IA
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar salida de depuración de esta IA. Ctrl+Clic abre una vista aparte
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de juego
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Analizar el registro del script de juego
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Analizar el registro del script de juego. Ctrl+Clic abre una vista aparte
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró ninguna IA apropiada para cargar.{}Esta es una IA estándar que no hace nada.{}Se pueden descargar nuevas IA desde el "Contenido en línea"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno de los scripts ejecutados ha fallado. Por favor, informa del fallo al autor del script con una captura de la ventana de depuración
@@ -5815,18 +5831,7 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Espectador, {1:
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
-STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
-
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
-
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
-
-STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
