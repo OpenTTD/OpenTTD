@@ -1046,10 +1046,10 @@ static bool MakeLake(TileIndex tile, void *user_data)
 /**
  * Widen a river by expanding into adjacent tiles via circular tile search.
  * @param tile The tile to try expanding the river into.
- * @param data The tile to try surrounding the river around.
+ * @param user_data The tile to try surrounding the river around.
  * @return Always false, so it continues searching.
  */
-static bool RiverMakeWider(TileIndex tile, void *data)
+static bool RiverMakeWider(TileIndex tile, void *user_data)
 {
 	/* Don't expand into void tiles. */
 	if (!IsValidTile(tile)) return false;
@@ -1060,7 +1060,7 @@ static bool RiverMakeWider(TileIndex tile, void *data)
 	/* If the tile is at height 0 after terraforming but the ocean hasn't flooded yet, don't build river. */
 	if (GetTileMaxZ(tile) == 0) return false;
 
-	TileIndex origin_tile = *(TileIndex *)data;
+	TileIndex origin_tile = *(TileIndex *)user_data;
 	Slope cur_slope = GetTileSlope(tile);
 	Slope desired_slope = GetTileSlope(origin_tile); // Initialize matching the origin tile as a shortcut if no terraforming is needed.
 
@@ -1241,10 +1241,10 @@ static void River_GetNeighbours(AyStar *aystar, PathNode *current)
 
 	aystar->neighbours.clear();
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
-		TileIndex t2 = tile + TileOffsByDiagDir(d);
-		if (IsValidTile(t2) && FlowsDown(tile, t2)) {
+		TileIndex t = tile + TileOffsByDiagDir(d);
+		if (IsValidTile(t) && FlowsDown(tile, t)) {
 			auto &neighbour = aystar->neighbours.emplace_back();
-			neighbour.tile = t2;
+			neighbour.tile = t;
 			neighbour.td = INVALID_TRACKDIR;
 		}
 	}
