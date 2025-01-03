@@ -377,6 +377,7 @@ public:
 	void SetSpriteTip(SpriteID sprite, StringID tool_tip) { this->SetDataTip(sprite, tool_tip); }
 	void SetMatrixDataTip(uint8_t cols, uint8_t rows, StringID tip) { this->SetDataTip(static_cast<uint32_t>((rows << MAT_ROW_START) | (cols << MAT_COL_START)), tip); }
 	void SetToolTip(StringID tool_tip);
+	StringID GetToolTip() const;
 	void SetTextStyle(TextColour colour, FontSize size);
 	void SetAlignment(StringAlignment align);
 

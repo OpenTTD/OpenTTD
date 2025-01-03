@@ -1155,6 +1155,15 @@ void NWidgetCore::SetToolTip(StringID tool_tip)
 }
 
 /**
+ * Get the tool tip of the nested widget.
+ * @return The tool tip string.
+ */
+StringID NWidgetCore::GetToolTip() const
+{
+	return this->tool_tip;
+}
+
+/**
  * Set the text/image alignment of the nested widget.
  * @param align Alignment to use.
  */
