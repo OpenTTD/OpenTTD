@@ -27,6 +27,7 @@ enum SettingFlag : uint16_t {
 	SF_NOT_IN_SAVE             = 1 << 10, ///< Do not save with savegame, basically client-based.
 	SF_NOT_IN_CONFIG           = 1 << 11, ///< Do not save to config file.
 	SF_NO_NETWORK_SYNC         = 1 << 12, ///< Do not synchronize over network (but it is saved if SF_NOT_IN_SAVE is not set).
+	SF_SANDBOX                 = 1 << 13, ///< This setting is a sandbox setting.
 };
 DECLARE_ENUM_AS_BIT_SET(SettingFlag)
 
