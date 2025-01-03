@@ -106,6 +106,7 @@ int32_t ScriptEventEnginePreview::GetVehicleType()
 bool ScriptEventEnginePreview::AcceptPreview()
 {
 	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ScriptObject::GetCompany() == (::CompanyID)this->owner);
 	if (!this->IsEngineValid()) return false;
 	return ScriptObject::Command<CMD_WANT_ENGINE_PREVIEW>::Do(this->engine);
 }
@@ -113,6 +114,7 @@ bool ScriptEventEnginePreview::AcceptPreview()
 bool ScriptEventCompanyAskMerger::AcceptMerger()
 {
 	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ScriptObject::GetCompany() == (::CompanyID)this->buyer);
 	return ScriptObject::Command<CMD_BUY_COMPANY>::Do((::CompanyID)this->owner, false);
 }
 
