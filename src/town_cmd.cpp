@@ -729,7 +729,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 
 	if (Company::IsValidID(_current_company)) {
 		if (rating > t->ratings[_current_company] && !(flags & DC_NO_TEST_TOWN_RATING) &&
-				!_cheats.magic_bulldozer.value && _settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE) {
+				_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE) {
 			SetDParam(0, t->index);
 			return CommandCost(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
 		}
@@ -3974,12 +3974,8 @@ static int GetRating(const Town *t)
  */
 void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 {
-	/* if magic_bulldozer cheat is active, town doesn't penalize for removing stuff */
-	if (t == nullptr || (flags & DC_NO_MODIFY_TOWN_RATING) ||
-			!Company::IsValidID(_current_company) ||
-			(_cheats.magic_bulldozer.value && add < 0)) {
-		return;
-	}
+	if (t == nullptr || !Company::IsValidID(_current_company)) return;
+	if (flags & DC_NO_MODIFY_TOWN_RATING) return;
 
 	int rating = GetRating(t);
 	if (add < 0) {
@@ -4011,11 +4007,8 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
  */
 CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type)
 {
-	/* if magic_bulldozer cheat is active, town doesn't restrict your destructive actions */
-	if (t == nullptr || !Company::IsValidID(_current_company) ||
-			_cheats.magic_bulldozer.value || (flags & DC_NO_TEST_TOWN_RATING)) {
-		return CommandCost();
-	}
+	if (t == nullptr || !Company::IsValidID(_current_company)) return CommandCost();
+	if (flags & DC_NO_MODIFY_TOWN_RATING) return CommandCost();
 
 	/* minimum rating needed to be allowed to remove stuff */
 	static const int needed_rating[][TOWN_RATING_CHECK_TYPE_COUNT] = {
