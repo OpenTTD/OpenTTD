@@ -1321,9 +1321,6 @@ static void BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool ma
  */
 static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint min_river_length)
 {
-#	define SET_MARK(x) marks.insert(x)
-#	define IS_MARKED(x) (marks.find(x) != marks.end())
-
 	uint height_begin = TileHeight(begin);
 
 	if (IsWaterTile(begin)) {
@@ -1331,7 +1328,7 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 	}
 
 	std::set<TileIndex> marks;
-	SET_MARK(begin);
+	marks.insert(begin);
 
 	/* Breadth first search for the closest tile we can flow down to. */
 	std::list<TileIndex> queue;
@@ -1352,8 +1349,8 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 
 		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 			TileIndex t = end + TileOffsByDiagDir(d);
-			if (IsValidTile(t) && !IS_MARKED(t) && FlowsDown(end, t)) {
-				SET_MARK(t);
+			if (IsValidTile(t) && !marks.contains(t) && FlowsDown(end, t)) {
+				marks.insert(t);
 				count++;
 				queue.push_back(t);
 			}
