@@ -992,29 +992,26 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
  */
 static bool FindSpring(TileIndex tile, void *)
 {
-	int reference_height;
-	if (!IsTileFlat(tile, &reference_height) || IsWaterTile(tile)) return false;
-
 	/* In the tropics rivers start in the rainforest. */
 	if (_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) != TROPICZONE_RAINFOREST) return false;
 
+	int reference_height;
+	if (IsWaterTile(tile) || !IsTileFlat(tile, &reference_height)) return false;
+
 	/* Are there enough higher tiles to warrant a 'spring'? */
 	uint num = 0;
-	for (int dx = -1; dx <= 1; dx++) {
-		for (int dy = -1; dy <= 1; dy++) {
-			TileIndex t = TileAddWrap(tile, dx, dy);
-			if (t != INVALID_TILE && GetTileMaxZ(t) > reference_height) num++;
-		}
+	for (Direction d = DIR_BEGIN; d != DIR_END; d++) {
+		TileIndex t = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(d));
+		if (IsValidTile(t) && GetTileMaxZ(t) > reference_height) num++;
+		if (num == 4) break;
 	}
-
 	if (num < 4) return false;
 
 	/* Are we near the top of a hill? */
-	for (int dx = -16; dx <= 16; dx++) {
-		for (int dy = -16; dy <= 16; dy++) {
-			TileIndex t = TileAddWrap(tile, dx, dy);
-			if (t != INVALID_TILE && GetTileMaxZ(t) > reference_height + 2) return false;
-		}
+	reference_height += 2;
+	TileArea tile_area = TileArea(tile, 1, 1).Expand(16);
+	for (TileIndex t : tile_area) {
+		if (!IsTileType(t, MP_VOID) && GetTileMaxZ(t) > reference_height) return false;
 	}
 
 	return true;
