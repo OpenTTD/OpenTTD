@@ -2732,28 +2732,28 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t
 		case WWT_STICKYBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WidgetDimensions::WD_STICKYBOX_WIDTH, WidgetDimensions::WD_CAPTION_HEIGHT);
-			this->SetStringTip(STR_NULL, STR_TOOLTIP_STICKY);
+			this->SetToolTip(STR_TOOLTIP_STICKY);
 			this->SetAspect(this->min_x, this->min_y);
 			break;
 
 		case WWT_SHADEBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WidgetDimensions::WD_SHADEBOX_WIDTH, WidgetDimensions::WD_CAPTION_HEIGHT);
-			this->SetStringTip(STR_NULL, STR_TOOLTIP_SHADE);
+			this->SetToolTip(STR_TOOLTIP_SHADE);
 			this->SetAspect(this->min_x, this->min_y);
 			break;
 
 		case WWT_DEBUGBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WidgetDimensions::WD_DEBUGBOX_WIDTH, WidgetDimensions::WD_CAPTION_HEIGHT);
-			this->SetStringTip(STR_NULL, STR_TOOLTIP_DEBUG);
+			this->SetToolTip(STR_TOOLTIP_DEBUG);
 			this->SetAspect(this->min_x, this->min_y);
 			break;
 
 		case WWT_DEFSIZEBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WidgetDimensions::WD_DEFSIZEBOX_WIDTH, WidgetDimensions::WD_CAPTION_HEIGHT);
-			this->SetStringTip(STR_NULL, STR_TOOLTIP_DEFSIZE);
+			this->SetToolTip(STR_TOOLTIP_DEFSIZE);
 			this->SetAspect(this->min_x, this->min_y);
 			break;
 
@@ -2766,7 +2766,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t
 		case WWT_CLOSEBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WidgetDimensions::WD_CLOSEBOX_WIDTH, WidgetDimensions::WD_CAPTION_HEIGHT);
-			this->SetStringTip(STR_NULL, STR_TOOLTIP_CLOSE_WINDOW);
+			this->SetToolTip(STR_TOOLTIP_CLOSE_WINDOW);
 			this->SetAspect(this->min_x, this->min_y);
 			break;
 

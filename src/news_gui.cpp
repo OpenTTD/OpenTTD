@@ -264,7 +264,7 @@ static constexpr NWidgetPart _nested_small_news_widgets[] = {
 		NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_N_SHOW_GROUP),
 				SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON),
 				SetResize(1, 0),
-				SetStringTip(STR_NULL /* filled in later */, STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP),
+				SetToolTip(STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP),
 	EndContainer(),
 
 	/* Main part */
