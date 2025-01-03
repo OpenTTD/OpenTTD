@@ -150,6 +150,7 @@ struct IntSettingDesc : SettingDesc {
 	typedef StringID GetTitleCallback(const IntSettingDesc &sd);
 	typedef StringID GetHelpCallback(const IntSettingDesc &sd);
 	typedef void SetValueDParamsCallback(const IntSettingDesc &sd, uint first_param, int32_t value);
+	typedef int32_t GetDefaultValueCallback(const IntSettingDesc &sd);
 
 	/**
 	 * A check to be performed before the setting gets changed. The passed integer may be
@@ -165,12 +166,6 @@ struct IntSettingDesc : SettingDesc {
 	 * @param The new value for the setting.
 	 */
 	typedef void PostChangeCallback(int32_t value);
-	/**
-	 * A callback to get the correct default value. For example a default that can be measured in time
-	 * units or expressed as a percentage.
-	 * @return The correct default value for the setting.
-	 */
-	typedef int32_t GetDefaultValueCallback();
 
 	template <
 		typename Tdef,
