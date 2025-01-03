@@ -1540,6 +1540,80 @@ static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 	return nullptr;
 }
 
+struct EnsureNoIncompatibleRailtypeTrainOnGroundData {
+	int z;
+	RailType type;
+};
+
+static Vehicle *EnsureNoIncompatibleRailtypeTrainProc(Vehicle *v, void *data)
+{
+	if (v->type != VEH_TRAIN) {
+		if (v->type == VEH_DISASTER || v->type == VEH_AIRCRAFT) return nullptr; // Don't care about flying things
+		return v; // Non-trains are always in the way
+	}
+
+	const EnsureNoIncompatibleRailtypeTrainOnGroundData *procdata = (EnsureNoIncompatibleRailtypeTrainOnGroundData *)data;
+
+	if (v->z_pos > procdata->z) return nullptr;
+	Train *t = Train::From(v)->First();
+	if (HasBit(t->compatible_railtypes, procdata->type) && HasPowerOnRail(t->railtype, procdata->type)) return nullptr;
+
+	return v;
+}
+
+CommandCost EnsureNoIncompatibleRailtypeTrainOnGround(TileIndex tile, RailType type)
+{
+	EnsureNoIncompatibleRailtypeTrainOnGroundData data = {
+		GetTileMaxPixelZ(tile),
+		type
+	};
+
+	if (HasVehicleOnPos(tile, &data, &EnsureNoIncompatibleRailtypeTrainProc)) {
+		return_cmd_error(STR_ERROR_TRAIN_IN_THE_WAY);
+	}
+	return CommandCost();
+}
+
+struct EnsureNoIncompatibleRailtypeTrainOnTrackBitsData {
+	TrackBits track_bits;
+	RailType type;
+};
+
+static Vehicle *EnsureNoIncompatibleRailtypeTrainOnTrackProc(Vehicle *v, void *data)
+{
+	if (v->type != VEH_TRAIN) {
+		if (v->type == VEH_DISASTER || v->type == VEH_AIRCRAFT) return nullptr; // Don't care about flying things
+		return v; // Non-trains are always in the way
+	}
+
+	const EnsureNoIncompatibleRailtypeTrainOnTrackBitsData *procdata = (EnsureNoIncompatibleRailtypeTrainOnTrackBitsData *)data;
+
+	Train *t = Train::From(v);
+	for (Train *u = t->First(); u != nullptr; u = u->Next()) {
+		if (!HasBit(u->compatible_railtypes, procdata->type) || !HasPowerOnRail(u->railtype, procdata->type)) {
+			return u;
+		}
+	}
+
+	TrackBits rail_bits = procdata->track_bits;
+	if (t->track == rail_bits || TracksOverlap(t->track | rail_bits)) return v;
+
+	return nullptr;
+}
+
+CommandCost EnsureNoIncompatibleRailtypeTrainOnTrackBits(TileIndex tile, TrackBits track_bits, RailType type)
+{
+	EnsureNoIncompatibleRailtypeTrainOnTrackBitsData data = {
+		track_bits,
+		type
+	};
+
+	if (HasVehicleOnPos(tile, &data, &EnsureNoIncompatibleRailtypeTrainOnTrackProc)) {
+		return_cmd_error(STR_ERROR_TRAIN_IN_THE_WAY);
+	}
+	return CommandCost();
+}
+
 /**
  * Convert one rail type to the other. You can convert normal rail to
  * monorail/maglev easily or vice-versa.
@@ -1606,7 +1680,9 @@ CommandCost CmdConvertRail(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 		 * Tunnels and bridges have special check later */
 		if (tt != MP_TUNNELBRIDGE) {
 			if (!IsCompatibleRail(type, totype)) {
-				ret = IsPlainRailTile(tile) ? EnsureNoTrainOnTrackBits(tile, GetTrackBits(tile)) : EnsureNoVehicleOnGround(tile);
+				ret = IsPlainRailTile(tile)
+					? EnsureNoIncompatibleRailtypeTrainOnTrackBits(tile, GetTrackBits(tile), totype)
+					: EnsureNoIncompatibleRailtypeTrainOnGround(tile, totype);
 				if (ret.Failed()) {
 					error = ret;
 					continue;
