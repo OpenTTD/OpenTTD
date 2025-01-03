@@ -1175,6 +1175,16 @@ void NWidgetCore::SetSpriteTip(SpriteID sprite, StringID tool_tip)
 }
 
 /**
+ * Set the matrix dimension.
+ * @param columns The number of columns in the matrix (0 for autoscaling).
+ * @param rows The number of rows in the matrix (0 for autoscaling).
+ */
+void NWidgetCore::SetMatrixDimension(uint8_t columns, uint8_t rows)
+{
+	this->widget_data = static_cast<uint32_t>((rows << MAT_ROW_START) | (columns << MAT_COL_START));
+}
+
+/**
  * Set the text style of the nested widget.
  * @param colour TextColour to use.
  * @param size Font size to use.
