@@ -42,6 +42,8 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+#include <unordered_set>
+
 #include "safeguards.h"
 
 extern const TileTypeProcs
@@ -1018,8 +1020,8 @@ static bool FindSpring(TileIndex tile, void *)
  */
 static bool MakeLake(TileIndex tile, void *user_data)
 {
-	uint height_lake = *static_cast<uint *>(user_data);
-	if (!IsValidTile(tile) || TileHeight(tile) != height_lake || !IsTileFlat(tile)) return false;
+	int height_lake = *static_cast<int *>(user_data);
+	if (!IsValidTile(tile) || TileHeight(tile) != static_cast<uint>(height_lake) || !IsTileFlat(tile)) return false;
 	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_DESERT) return false;
 
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
@@ -1314,28 +1316,26 @@ static void BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool ma
  */
 static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint min_river_length)
 {
-	uint height_begin = TileHeight(begin);
-
 	if (IsWaterTile(begin)) {
 		return { DistanceManhattan(spring, begin) > min_river_length, GetTileZ(begin) == 0 };
 	}
 
-	std::set<TileIndex> marks;
+	int height_begin = TileHeight(begin);
+
+	std::unordered_set<TileIndex> marks;
 	marks.insert(begin);
 
-	/* Breadth first search for the closest tile we can flow down to. */
-	std::list<TileIndex> queue;
+	std::vector<TileIndex> queue;
 	queue.push_back(begin);
 
+	/* Breadth first search for the closest tile we can flow down to. */
 	bool found = false;
-	uint count = 0; // Number of tiles considered; to be used for lake location guessing.
 	TileIndex end;
-	do {
-		end = queue.front();
-		queue.pop_front();
+	for (size_t i = 0; i != queue.size(); i++) {
+		end = queue[i];
 
-		uint height_end = TileHeight(end);
-		if (IsTileFlat(end) && (height_end < height_begin || (height_end == height_begin && IsWaterTile(end)))) {
+		int height_end;
+		if (IsTileFlat(end, &height_end) && (height_end < height_begin || (height_end == height_begin && IsWaterTile(end)))) {
 			found = true;
 			break;
 		}
@@ -1344,45 +1344,42 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 			TileIndex t = end + TileOffsByDiagDir(d);
 			if (IsValidTile(t) && !marks.contains(t) && FlowsDown(end, t)) {
 				marks.insert(t);
-				count++;
 				queue.push_back(t);
 			}
 		}
-	} while (!queue.empty());
+	}
 
 	bool main_river = false;
 	if (found) {
 		/* Flow further down hill. */
 		std::tie(found, main_river) = FlowRiver(spring, end, min_river_length);
-	} else if (count > 32) {
+	} else if (queue.size() > 32) {
 		/* Maybe we can make a lake. Find the Nth of the considered tiles. */
-		std::set<TileIndex>::const_iterator cit = marks.cbegin();
-		std::advance(cit, RandomRange(count - 1));
-		TileIndex lake_centre = *cit;
+		TileIndex lake_centre = queue[RandomRange(static_cast<uint32_t>(queue.size()))];
+		int height_lake;
 
 		if (IsValidTile(lake_centre) &&
-				/* A river, or lake, can only be built on flat slopes. */
-				IsTileFlat(lake_centre) &&
-				/* We want the lake to be built at the height of the river. */
-				TileHeight(begin) == TileHeight(lake_centre) &&
 				/* We don't want the lake at the entry of the valley. */
 				lake_centre != begin &&
 				/* We don't want lakes in the desert. */
 				(_settings_game.game_creation.landscape != LandscapeType::Tropic || GetTropicZone(lake_centre) != TROPICZONE_DESERT) &&
+				/* A river, or lake, can only be built on flat slopes. */
+				IsTileFlat(lake_centre, &height_lake) &&
+				/* We want the lake to be built at the height of the river. */
+				height_lake == height_begin &&
 				/* We only want a lake if the river is long enough. */
 				DistanceManhattan(spring, lake_centre) > min_river_length) {
 			end = lake_centre;
 			MakeRiverAndModifyDesertZoneAround(lake_centre);
 			uint range = RandomRange(8) + 3;
-			CircularTileSearch(&lake_centre, range, MakeLake, &height_begin);
+			CircularTileSearch(&lake_centre, range, MakeLake, &height_lake);
 			/* Call the search a second time so artefacts from going circular in one direction get (mostly) hidden. */
 			lake_centre = end;
-			CircularTileSearch(&lake_centre, range, MakeLake, &height_begin);
+			CircularTileSearch(&lake_centre, range, MakeLake, &height_lake);
 			found = true;
 		}
 	}
 
-	marks.clear();
 	if (found) BuildRiver(begin, end, spring, main_river);
 	return { found, main_river };
 }
