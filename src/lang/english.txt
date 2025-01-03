@@ -1435,6 +1435,9 @@ STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES_OFF                      :Off
 STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES_UNSERVED                 :Unserved only
 STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES_ON                       :On
 
+STR_CONFIG_SETTING_BULLDOZE_OBJECTS                             :Allow bulldozing immovable objects
+STR_CONFIG_SETTING_BULLDOZE_OBJECTS_HELPTEXT                    :Allow lighthouses, transmitters, and NewGRF objects to be demolished
+
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Show signals: {STRING2}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Select on which side of the track to place signals
 ###length 3

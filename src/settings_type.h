@@ -408,6 +408,7 @@ struct ConstructionSettings {
 	uint8_t  raw_industry_construction;        ///< type of (raw) industry construction (none, "normal", prospecting)
 	uint8_t  industry_platform;                ///< the amount of flat land around an industry
 	uint8_t  bulldoze_industries;              ///< whether players can bulldozed industries
+	bool     bulldoze_objects;                 ///< whether players can bulldoze immovable objects
 	bool   freeform_edges;                   ///< allow terraforming the tiles at the map edges
 	uint8_t  extra_tree_placement;             ///< (dis)allow building extra trees in-game
 	uint8_t  command_pause_level;              ///< level/amount of commands that can't be executed while paused
