@@ -140,6 +140,13 @@ enum ScrollWheelScrollingSetting : uint8_t {
 	SWS_OFF = 2             ///< Scroll wheel has no effect.
 };
 
+/** Settings related to bulldozing industries. */
+enum BulldozeIndustriesSetting : uint8_t {
+	BIS_OFF = 0,      ///< Do not allow bulldozing industries.
+	BIS_UNSERVED = 1, ///< Allow bulldozing unserved industries only.
+	BIS_ON = 2,       ///< Allow bulldozing all industries.
+};
+
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
 struct GUISettings {
 	bool   sg_full_load_any;                 ///< new full load calculation, any cargo must be full read from pre v93 savegames
@@ -400,6 +407,7 @@ struct ConstructionSettings {
 	bool   crossing_with_competitor;         ///< allow building of level crossings with competitor roads or rails
 	uint8_t  raw_industry_construction;        ///< type of (raw) industry construction (none, "normal", prospecting)
 	uint8_t  industry_platform;                ///< the amount of flat land around an industry
+	uint8_t  bulldoze_industries;              ///< whether players can bulldozed industries
 	bool   freeform_edges;                   ///< allow terraforming the tiles at the map edges
 	uint8_t  extra_tree_placement;             ///< (dis)allow building extra trees in-game
 	uint8_t  command_pause_level;              ///< level/amount of commands that can't be executed while paused
