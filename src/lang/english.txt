@@ -2296,7 +2296,6 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Communit
 STR_CHEATS                                                      :{WHITE}Sandbox Options
 STR_CHEAT_MONEY                                                 :{LTBLUE}Increase money by {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Playing as company: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magic bulldozer (remove industries, unmovable objects): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Edit the maximum map height: {ORANGE}{NUM}
