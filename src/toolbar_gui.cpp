@@ -450,13 +450,25 @@ static CallBackFunction MenuClickMap(int index)
 
 /* --- Town button menu --- */
 
+enum TownMenuEntries {
+	TME_SHOW_DIRECTORY = 0,
+	TME_SHOW_FOUND_TOWN,
+	TME_SHOW_PLACE_HOUSES,
+};
+
 static CallBackFunction ToolbarTownClick(Window *w)
 {
-	if (_settings_game.economy.found_town == TF_FORBIDDEN) {
-		PopupMainToolbarMenu(w, WID_TN_TOWNS, {STR_TOWN_MENU_TOWN_DIRECTORY});
-	} else {
-		PopupMainToolbarMenu(w, WID_TN_TOWNS, {STR_TOWN_MENU_TOWN_DIRECTORY, STR_TOWN_MENU_FOUND_TOWN});
-	}
+	DropDownList list;
+	list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_TOWN_DIRECTORY, TME_SHOW_DIRECTORY));
+
+	/* Maybe allow founding towns. */
+	if (_settings_game.economy.found_town != TF_FORBIDDEN) list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_FOUND_TOWN, TME_SHOW_FOUND_TOWN));
+
+	/* Maybe allow placing houses. */
+	if (_settings_game.economy.place_houses) list.push_back(MakeDropDownListStringItem(STR_SCENEDIT_TOWN_MENU_PLACE_HOUSE, TME_SHOW_PLACE_HOUSES));
+
+	PopupMainToolbarMenu(w, WID_TN_TOWNS, std::move(list), 0);
+
 	return CBF_NONE;
 }
 
@@ -469,9 +481,12 @@ static CallBackFunction ToolbarTownClick(Window *w)
 static CallBackFunction MenuClickTown(int index)
 {
 	switch (index) {
-		case 0: ShowTownDirectory(); break;
-		case 1: // setting could be changed when the dropdown was open
+		case TME_SHOW_DIRECTORY: ShowTownDirectory(); break;
+		case TME_SHOW_FOUND_TOWN: // Setting could be changed when the dropdown was open
 			if (_settings_game.economy.found_town != TF_FORBIDDEN) ShowFoundTownWindow();
+			break;
+		case TME_SHOW_PLACE_HOUSES: // Setting could be changed when the dropdown was open
+			if (_settings_game.economy.place_houses) ShowBuildHousePicker(nullptr);
 			break;
 	}
 	return CBF_NONE;
@@ -1214,7 +1229,7 @@ static CallBackFunction ToolbarScenGenLand(Window *w)
 
 static CallBackFunction ToolbarScenGenTownClick(Window *w)
 {
-	PopupMainToolbarMenu(w, WID_TE_TOWN_GENERATE, {STR_SCENEDIT_TOWN_MENU_BUILD_TOWN, STR_SCENEDIT_TOWN_MENU_PACE_HOUSE});
+	PopupMainToolbarMenu(w, WID_TE_TOWN_GENERATE, {STR_SCENEDIT_TOWN_MENU_BUILD_TOWN, STR_SCENEDIT_TOWN_MENU_PLACE_HOUSE});
 	return CBF_NONE;
 }
 
