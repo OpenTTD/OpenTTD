@@ -1827,7 +1827,7 @@ static constexpr NWidgetPart _nested_newgrf_actives_widgets[] = {
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PANEL, COLOUR_MAUVE),
 					NWidget(WWT_INSET, COLOUR_MAUVE, WID_NS_FILE_LIST), SetMinimalSize(100, 1), SetPadding(2),
-							SetFill(1, 1), SetResize(1, 1), SetScrollbar(WID_NS_SCROLLBAR), SetStringTip(STR_NULL, STR_NEWGRF_SETTINGS_FILE_TOOLTIP),
+							SetFill(1, 1), SetResize(1, 1), SetScrollbar(WID_NS_SCROLLBAR), SetToolTip(STR_NEWGRF_SETTINGS_FILE_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
 				NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_NS_SCROLLBAR),

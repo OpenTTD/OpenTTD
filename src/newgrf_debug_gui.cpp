@@ -1156,7 +1156,7 @@ static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 						NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SA_LEFT), SetSpriteTip(SPR_ARROW_LEFT, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0), SetMinimalSize(11, 11),
 						NWidget(NWID_SPACER), SetFill(1, 1), SetResize(0, 1),
 					EndContainer(),
-					NWidget(WWT_PANEL, COLOUR_DARK_BLUE, WID_SA_SPRITE), SetStringTip(STR_NULL, STR_SPRITE_ALIGNER_SPRITE_TOOLTIP), SetResize(1, 1), SetFill(1, 1),
+					NWidget(WWT_PANEL, COLOUR_DARK_BLUE, WID_SA_SPRITE), SetToolTip(STR_SPRITE_ALIGNER_SPRITE_TOOLTIP), SetResize(1, 1), SetFill(1, 1),
 					EndContainer(),
 					NWidget(NWID_VERTICAL),
 						NWidget(NWID_SPACER), SetFill(1, 1), SetResize(0, 1),

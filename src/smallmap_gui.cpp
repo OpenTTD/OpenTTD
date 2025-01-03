@@ -1304,7 +1304,7 @@ protected:
 				break;
 		}
 
-		this->GetWidget<NWidgetCore>(WID_SM_LEGEND)->SetStringTip(STR_NULL, legend_tooltip);
+		this->GetWidget<NWidgetCore>(WID_SM_LEGEND)->SetToolTip(legend_tooltip);
 		this->GetWidget<NWidgetCore>(WID_SM_ENABLE_ALL)->SetStringTip(STR_SMALLMAP_ENABLE_ALL, enable_all_tooltip);
 		this->GetWidget<NWidgetCore>(WID_SM_DISABLE_ALL)->SetStringTip(STR_SMALLMAP_DISABLE_ALL, disable_all_tooltip);
 		this->GetWidget<NWidgetStacked>(WID_SM_SHOW_IND_NAMES_SEL)->SetDisplayedPlane(industry_names_select_plane);
