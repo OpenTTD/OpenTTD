@@ -10,6 +10,8 @@ What is simple to some might appear very complicated to others. Documentation he
 * Function names use [CamelCase](http://www.wikipedia.org/wiki/Camelcase) without underscores.
 * Opening curly bracket **{** for a function starts on the next line.
 * Use Foo() instead of Foo(void).
+* Prefer using "const" for reference and compound parameters when appropriate.
+* If a member function can be a const function, make it so.
 ```c++
 void ThisIsAFunction()
 {
@@ -292,7 +294,6 @@ OpenTTD used to vertically-align inline Doxygen comments as shown above. OpenTTD
 * Put a space before and after binary operators: "a + b", "a == b", "a & b", "a <<= b", etc.. Exceptions are ".", "->" and "[]" (no spaces) and "," (just space after it).
 * Put parenthesis where it improves readability: "*(b++)" instead of "*b++", and "if ((a & b) && c == 2)" instead of "if (a & b && c == 2)".
 * Do not put external declarations in implementation (i.e. cpp) files.
-* Use const where possible.
 * Do not typedef enums and structs.
 * Don't treat non-flags as flags: use "if (char_pointer != nullptr && *char_pointer != '\0')", not "if (char_pointer && *char_pointer)".
 * Use "free(p)" instead of "if (p != nullptr) free(p)". "free(nullptr)" doesn't hurt anyone.
