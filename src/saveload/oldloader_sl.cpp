@@ -147,7 +147,7 @@ static void FixOldTowns()
 	/* Convert town-names if needed */
 	for (Town *town : Town::Iterate()) {
 		if (IsInsideMM(town->townnametype, 0x20C1, 0x20C3)) {
-			town->townnametype = SPECSTR_TOWNNAME_ENGLISH + _settings_game.game_creation.town_name;
+			town->townnametype = SPECSTR_TOWNNAME_START + _settings_game.game_creation.town_name;
 			town->townnameparts = RemapOldTownName(town->townnameparts, _settings_game.game_creation.town_name);
 		}
 	}
