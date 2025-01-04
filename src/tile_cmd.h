@@ -15,6 +15,7 @@
 #include "cargo_type.h"
 #include "track_type.h"
 #include "tile_map.h"
+#include "house.h"
 #include "timer/timer_game_calendar.h"
 
 /** The returned bits of VehicleEnterTile. */
@@ -67,6 +68,7 @@ struct TileDesc {
 	uint16_t road_speed;          ///< Speed limit of road (bridges and track)
 	StringID tramtype;          ///< Type of tram on the tile.
 	uint16_t tram_speed;          ///< Speed limit of tram (bridges and track)
+	HouseProtectedDesc house_protected; ///< Is this house protected from demolition by towns and AI?
 };
 
 /**

@@ -32,6 +32,12 @@ static const HouseID NUM_HOUSES_PER_GRF = NUM_HOUSES; ///< Number of supported h
 static const uint HOUSE_NUM_ACCEPTS = 16; ///< Max number of cargoes accepted by a tile
 static const uint HOUSE_ORIGINAL_NUM_ACCEPTS = 3; ///< Original number of accepted cargo types.
 
+enum class HouseProtectedDesc {
+	INVALID,
+	NOT_PROTECTED,
+	PROTECTED,
+};
+
 enum BuildingFlags : uint8_t {
 	TILE_NO_FLAG         =       0,
 	TILE_SIZE_1x1        = 1U << 0,

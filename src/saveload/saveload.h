@@ -395,6 +395,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_PATH_CACHE_FORMAT,                  ///< 346  PR#12345 Vehicle path cache format changed.
 	SLV_ANIMATED_TILE_STATE_IN_MAP,         ///< 347  PR#13082 Animated tile state saved for improved performance.
 	SLV_INCREASE_HOUSE_LIMIT,               ///< 348  PR#12288 Increase house limit to 4096.
+	SLV_PROTECT_PLACED_HOUSES,              ///< 349  PR#13270 Manually-placed houses can be protected from town/AI removal.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
