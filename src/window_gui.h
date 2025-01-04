@@ -425,7 +425,7 @@ public:
 	 */
 	inline bool IsWidgetFocused(WidgetID widget_index) const
 	{
-		return this->nested_focus != nullptr && this->nested_focus->index == widget_index;
+		return this->nested_focus != nullptr && this->nested_focus->GetIndex() == widget_index;
 	}
 
 	/**
