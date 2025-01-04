@@ -1126,7 +1126,7 @@ STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Incremen
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ajustar el valor de cambio de la moneda por una Libra (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Establece el separador para la moneda
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Establecer el separador de la moneda
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefijo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Establecer el prefijo de la moneda
@@ -1305,7 +1305,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Establecer cuá
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Duración de subsidio: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Años que durará un subsidio otorgado
-STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Establezca el número de periodos para los que se concederá un subsidio
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :Periodos que durará un subsidio otorgado
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
@@ -1463,7 +1463,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducida
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
 STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Permitir pasos a nivel con carreteras o ferrocarriles propiedad de otras empresas: {STRING}
-STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Permite construir pasos a nivel en carreteras o ferrocarriles que sean propiedad de otras empresas
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Se podrán construir pasos a nivel en carreteras o ferrocarriles que sean propiedad de otras empresas
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir construcción de paradas de paso en localidades: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Se podrán construir paradas de paso en las carreteras que sean propiedad de las localidades
@@ -1926,7 +1926,8 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipo de economía: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :La economía estable provoca cambios menores pero continuos en la producción. La economía rígida impide el cierre de industrias y los cambios en la producción. Esta configuración podría tener efecto nulo si algún NewGRF incluye otras industrias
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :La economía estable provoca cambios menores pero continuos en la producción. La economía rígida impide el cierre de industrias y los cambios en la producción. Esta configuración podría tener efecto nulo si algún NewGRF incluye otras industrias.{}{}Puede que aun así la producción por mes luzca variable si la economía es rígida, pues se genera a intervalos fijos que no son meses exactos
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :La economía estable provoca cambios menores pero continuos en la producción. La economía rígida impide el cierre de industrias y los cambios en la producción. Esta configuración podría tener efecto nulo si algún NewGRF incluye otras industrias.{}{}Puede que aun así la producción por minuto luzca variable si la economía es rígida, pues se genera a intervalos fijos que no son minutos exactos
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
@@ -2248,7 +2249,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Reportar
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Comunidad
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Trucos
+STR_CHEATS                                                      :{WHITE}Opciones de sandbox
 STR_CHEAT_MONEY                                                 :{LTBLUE}Añadir {CURRENCY_LONG} en efectivo
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jugar como la empresa: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Excavadora mágica (elimina industrias y objetos inamovibles): {ORANGE}{STRING}

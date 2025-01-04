@@ -1925,7 +1925,8 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Ei koskaan
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Talouden laji: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Tasaisessa taloudessa tuotanto muuttuu useammin, ja pienemmissä askeleissa, kuin alkuperäisessä. Jäädytetty talous estää tuotantomuutokset ja laitosten sulkeutumiset. Tämä asetus ei välttämättä vaikuta, jos teollisuustyypit tulevat NewGRF:stä
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Tasaisessa taloudessa tuotanto muuttuu useammin, ja pienemmissä askeleissa, kuin alkuperäisessä. Jäädytetty talous estää tuotantomuutokset ja laitosten sulkeutumiset. Tämä asetus ei välttämättä vaikuta, jos teollisuustyypit tulevat NewGRF:stä.{}{}Jäädytetyssä taloudessa kuukausittainen tuotanto voi silti näyttää vaihtelevan, koska tuotanto käynnistyy kiintein väliajoin, jotka eivät täsmälleen vastaa kuukausia
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :Tasaisessa taloudessa tuotanto muuttuu useammin, ja pienemmissä askeleissa, kuin alkuperäisessä. Jäädytetty talous estää tuotantomuutokset ja laitosten sulkeutumiset. Tämä asetus ei välttämättä vaikuta, jos teollisuustyypit tulevat NewGRF:stä.{}{}Jäädytetyssä taloudessa minuuttikohtainen tuotanto voi silti näyttää vaihtelevan, koska tuotanto käynnistyy kiintein väliajoin, jotka eivät täsmälleen vastaa minuutteja
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Alkuperäinen
@@ -5829,7 +5830,7 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STR
 STR_SAVEGAME_NAME_SPECTATOR                                     :Katsoja, {1:STRING}
 
 # Viewport strings
-STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
