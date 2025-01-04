@@ -1395,27 +1395,29 @@ static void CreateRivers()
 	int amount = _settings_game.game_creation.amount_of_rivers;
 	if (amount == 0) return;
 
-	uint wells = Map::ScaleBySize(4 << _settings_game.game_creation.amount_of_rivers);
+	uint wells = Map::ScaleBySize(4 << amount);
 	const uint num_short_rivers = wells - std::max(1u, wells / 10);
 	SetGeneratingWorldProgress(GWP_RIVER, wells + TILE_UPDATE_FREQUENCY / 64); // Include the tile loop calls below.
 
-	/* Try to create long rivers. */
-	for (; wells > num_short_rivers; wells--) {
-		IncreaseGeneratingWorldProgress(GWP_RIVER);
-		for (int tries = 0; tries < 512; tries++) {
-			TileIndex t = RandomTile();
-			if (!CircularTileSearch(&t, 8, FindSpring, nullptr)) continue;
-			if (std::get<0>(FlowRiver(t, t, _settings_game.game_creation.min_river_length * 4))) break;
-		}
-	}
-
-	/* Try to create short rivers. */
+	/* Generate rivers in the world. */
 	for (; wells != 0; wells--) {
 		IncreaseGeneratingWorldProgress(GWP_RIVER);
-		for (int tries = 0; tries < 128; tries++) {
+
+		/* Determine the length and attempts multiplier based on river type. */
+		int multiplier = wells > num_short_rivers ? 4 : 1;
+
+		/* Set the minimum river length based on the multiplier. */
+		int min_river_length = _settings_game.game_creation.min_river_length * multiplier;
+
+		/* Try to find a suitable starting point for the river. */
+		for (int tries = 128 * multiplier; tries != 0; tries--) {
 			TileIndex t = RandomTile();
+
+			/* Search in a circular area for a suitable spring tile. */
 			if (!CircularTileSearch(&t, 8, FindSpring, nullptr)) continue;
-			if (std::get<0>(FlowRiver(t, t, _settings_game.game_creation.min_river_length))) break;
+
+			/* Attempt to build the river starting from the found spring tile. */
+			if (std::get<0>(FlowRiver(t, t, min_river_length))) break;
 		}
 	}
 
