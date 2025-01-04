@@ -1550,6 +1550,16 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_PROTECT_PLACED_HOUSES)) {
+		for (auto t : Map::Iterate()) {
+			if (IsTileType(t, MP_HOUSE)) {
+				/* House protected flag is stored in the map, instead of checked against GRF spec. */
+				const HouseSpec *hs = HouseSpec::Get(GetHouseType(t));
+				SetHouseProtected(t, HasFlag(hs->extra_flags, BUILDING_IS_PROTECTED));
+			}
+		}
+	}
+
 	/* Check and update house and town values */
 	UpdateHousesAndTowns();
 

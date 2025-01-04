@@ -865,6 +865,7 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 	bool house_completed = IsHouseCompleted(tile);
 
 	td->str = hs->building_name;
+	td->house_protected = IsHouseProtected(tile) ? HouseProtectedDesc::PROTECTED : HouseProtectedDesc::NOT_PROTECTED;
 
 	uint16_t callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, house_completed ? 1 : 0, 0, house, Town::GetByTile(tile), tile);
 	if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
@@ -2493,15 +2494,16 @@ HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile)
  * @param stage The current construction stage of the house.
  * @param type The type of house.
  * @param random_bits Random bits for newgrf houses to use.
+ * @param protect Is the house protected?
  * @pre The house can be built here.
  */
-static inline void ClearMakeHouseTile(TileIndex tile, Town *t, uint8_t counter, uint8_t stage, HouseID type, uint8_t random_bits)
+static inline void ClearMakeHouseTile(TileIndex tile, Town *t, uint8_t counter, uint8_t stage, HouseID type, uint8_t random_bits, bool protect)
 {
 	[[maybe_unused]] CommandCost cc = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_AUTO | DC_NO_WATER, tile);
 	assert(cc.Succeeded());
 
 	IncreaseBuildingCount(t, type);
-	MakeHouseTile(tile, t->index, counter, stage, type, random_bits);
+	MakeHouseTile(tile, t->index, counter, stage, type, random_bits, protect);
 	if (HouseSpec::Get(type)->building_flags & BUILDING_IS_ANIMATED) AddAnimatedTile(tile, false);
 
 	MarkTileDirtyByTile(tile);
@@ -2516,16 +2518,17 @@ static inline void ClearMakeHouseTile(TileIndex tile, Town *t, uint8_t counter, 
  * @param stage The current construction stage.
  * @param The type of house.
  * @param random_bits Random bits for newgrf houses to use.
+ * @param protect Is the house protected?
  * @pre The house can be built here.
  */
-static void MakeTownHouse(TileIndex tile, Town *t, uint8_t counter, uint8_t stage, HouseID type, uint8_t random_bits)
+static void MakeTownHouse(TileIndex tile, Town *t, uint8_t counter, uint8_t stage, HouseID type, uint8_t random_bits, bool protect)
 {
 	BuildingFlags size = HouseSpec::Get(type)->building_flags;
 
-	ClearMakeHouseTile(tile, t, counter, stage, type, random_bits);
-	if (size & BUILDING_2_TILES_Y)   ClearMakeHouseTile(tile + TileDiffXY(0, 1), t, counter, stage, ++type, random_bits);
-	if (size & BUILDING_2_TILES_X)   ClearMakeHouseTile(tile + TileDiffXY(1, 0), t, counter, stage, ++type, random_bits);
-	if (size & BUILDING_HAS_4_TILES) ClearMakeHouseTile(tile + TileDiffXY(1, 1), t, counter, stage, ++type, random_bits);
+	ClearMakeHouseTile(tile, t, counter, stage, type, random_bits, protect);
+	if (size & BUILDING_2_TILES_Y)   ClearMakeHouseTile(tile + TileDiffXY(0, 1), t, counter, stage, ++type, random_bits, protect);
+	if (size & BUILDING_2_TILES_X)   ClearMakeHouseTile(tile + TileDiffXY(1, 0), t, counter, stage, ++type, random_bits, protect);
+	if (size & BUILDING_HAS_4_TILES) ClearMakeHouseTile(tile + TileDiffXY(1, 1), t, counter, stage, ++type, random_bits, protect);
 
 	ForAllStationsAroundTiles(TileArea(tile, (size & BUILDING_2_TILES_X) ? 2 : 1, (size & BUILDING_2_TILES_Y) ? 2 : 1), [t](Station *st, TileIndex) {
 		t->stations_near.insert(st);
@@ -2721,8 +2724,9 @@ static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, int maxz, bool nosl
  * @param hs The @a HouseSpec of the house.
  * @param house The @a HouseID of the house.
  * @param random_bits The random data to be associated with the house.
+ * @param protect Is the house protected?
  */
-static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID house, uint8_t random_bits)
+static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID house, uint8_t random_bits, bool protect)
 {
 	/* build the house */
 	t->cache.num_houses++;
@@ -2743,7 +2747,7 @@ static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID
 		}
 	}
 
-	MakeTownHouse(tile, t, construction_counter, construction_stage, house, random_bits);
+	MakeTownHouse(tile, t, construction_counter, construction_stage, house, random_bits, protect);
 	UpdateTownRadius(t);
 	UpdateTownGrowthRate(t);
 }
@@ -2869,7 +2873,10 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 		/* Special houses that there can be only one of. */
 		t->flags |= oneof;
 
-		BuildTownHouse(t, tile, hs, house, random_bits);
+		/* Should the house be protected? */
+		bool protect = HasFlag(hs->extra_flags, BUILDING_IS_PROTECTED);
+
+		BuildTownHouse(t, tile, hs, house, random_bits, protect);
 
 		return true;
 	}
@@ -2877,7 +2884,15 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 	return false;
 }
 
-CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house)
+/**
+ * Place a house manually.
+ * @param flags Type of operation.
+ * @param tile Tile on which to place the house.
+ * @param HouseID The HouseID of the house spec.
+ * @param protect Should the house be protected?
+ * @return Empty cost or an error.
+ */
+CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house, bool protect)
 {
 	if (_game_mode != GM_EDITOR) return CMD_ERROR;
 	if (Town::GetNumItems() == 0) return CommandCost(STR_ERROR_MUST_FOUND_TOWN_FIRST);
@@ -2919,7 +2934,7 @@ CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house)
 	}
 
 	if (flags & DC_EXEC) {
-		BuildTownHouse(t, tile, hs, house, Random());
+		BuildTownHouse(t, tile, hs, house, Random(), protect);
 	}
 
 	return CommandCost();

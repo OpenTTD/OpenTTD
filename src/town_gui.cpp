@@ -1628,6 +1628,7 @@ public:
 
 struct BuildHouseWindow : public PickerWindow {
 	std::string house_info;
+	bool protect;
 
 	BuildHouseWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, 0, HousePickerCallbacks::instance)
 	{
@@ -1681,7 +1682,7 @@ struct BuildHouseWindow : public PickerWindow {
 
 	/**
 	 * Get information string for a house.
-	 * @param hs HosueSpec to get information string for.
+	 * @param hs HouseSpec to get information string for.
 	 * @return Formatted string with information for house.
 	 */
 	static std::string GetHouseInformation(const HouseSpec *hs)
@@ -1715,6 +1716,14 @@ struct BuildHouseWindow : public PickerWindow {
 		return line.str();
 	}
 
+	void OnInit() override
+	{
+		this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !this->protect);
+		this->SetWidgetLoweredState(WID_BH_PROTECT_ON, this->protect);
+
+		this->PickerWindow::OnInit();
+	}
+
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget == WID_BH_INFO) {
@@ -1724,22 +1733,52 @@ struct BuildHouseWindow : public PickerWindow {
 		}
 	}
 
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
+	{
+		switch (widget) {
+			case WID_BH_PROTECT_OFF:
+			case WID_BH_PROTECT_ON:
+				this->protect = (widget == WID_BH_PROTECT_ON);
+				this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !this->protect);
+				this->SetWidgetLoweredState(WID_BH_PROTECT_ON, this->protect);
+
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
+
+			default:
+				this->PickerWindow::OnClick(pt, widget, click_count);
+				break;
+		}
+	}
+
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		this->PickerWindow::OnInvalidateData(data, gui_scope);
 		if (!gui_scope) return;
 
+		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
+
 		if ((data & PickerWindow::PFI_POSITION) != 0) {
-			const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
 			UpdateSelectSize(spec);
 			this->house_info = GetHouseInformation(spec);
 		}
+
+		/* If house spec already has the protected flag, handle it automatically and disable the buttons. */
+		bool protect = HasFlag(spec->extra_flags, BUILDING_IS_PROTECTED);
+		if (protect) this->protect = true;
+
+		this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !this->protect);
+		this->SetWidgetLoweredState(WID_BH_PROTECT_ON, this->protect);
+
+		this->SetWidgetDisabledState(WID_BH_PROTECT_OFF, protect);
+		this->SetWidgetDisabledState(WID_BH_PROTECT_ON, protect);
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
-		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index());
+		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), this->protect);
 	}
 
 	IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {
@@ -1769,8 +1808,14 @@ static constexpr NWidgetPart _nested_build_house_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_picker, 0), SetPadding(WidgetDimensions::unscaled.picker),
 					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BH_INFO), SetFill(1, 1), SetMinimalTextLines(10, 0),
+					NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_HOUSE_PICKER_PROTECT_TITLE, STR_NULL), SetFill(1, 0),
+					NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_PROTECT_OFF), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_PROTECT_OFF, STR_HOUSE_PICKER_PROTECT_TOOLTIP),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BH_PROTECT_ON), SetMinimalSize(60, 12), SetStringTip(STR_HOUSE_PICKER_PROTECT_ON, STR_HOUSE_PICKER_PROTECT_TOOLTIP),
+					EndContainer(),
 				EndContainer(),
 			EndContainer(),
+
 		EndContainer(),
 		NWidgetFunction(MakePickerTypeWidgets),
 	EndContainer(),

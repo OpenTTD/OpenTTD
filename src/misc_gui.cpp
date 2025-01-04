@@ -168,6 +168,7 @@ public:
 		td.road_speed = 0;
 		td.tramtype = STR_NULL;
 		td.tram_speed = 0;
+		td.house_protected = HouseProtectedDesc::INVALID;
 
 		td.grf = nullptr;
 
@@ -298,6 +299,17 @@ public:
 		if (td.tram_speed != 0) {
 			SetDParam(0, PackVelocity(td.tram_speed, VEH_ROAD));
 			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT));
+		}
+
+		/* House protection status */
+		switch (td.house_protected) {
+			case HouseProtectedDesc::PROTECTED:
+				this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_HOUSE_PROTECTED));
+				break;
+			case HouseProtectedDesc::NOT_PROTECTED:
+				this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_HOUSE_NOT_PROTECTED));
+				break;
+			default: break;
 		}
 
 		/* NewGRF name */
