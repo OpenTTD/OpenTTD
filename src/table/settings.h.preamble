@@ -58,8 +58,8 @@ static StringID SettingHelpWallclock(const IntSettingDesc &sd);
 
 /* Macros for various objects to go in the configuration file.
  * This section is for global variables */
-#define SDTG_VAR(name, type, flags, var, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
-	NSD(Int, SLEG_GENERAL(name, SL_VAR, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
+#define SDTG_VAR(name, type, flags, var, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, get_range_hook, from, to, cat, extra, startup)\
+	NSD(Int, SLEG_GENERAL(name, SL_VAR, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, get_range_hook)
 
 #define SDTG_BOOL(name, flags, var, def, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
 	NSD(Bool, SLEG_GENERAL(name, SL_VAR, var, SLE_BOOL, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
@@ -78,8 +78,8 @@ static StringID SettingHelpWallclock(const IntSettingDesc &sd);
 
 /* Macros for various objects to go in the configuration file.
  * This section is for structures where their various members are saved */
-#define SDT_VAR(base, var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
-	NSD(Int, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
+#define SDT_VAR(base, var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, get_range_hook, from, to, cat, extra, startup)\
+	NSD(Int, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, get_range_hook)
 
 #define SDT_VAR_NAME(base, var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup, name)\
 	NSD(Int, SLE_GENERAL_NAME(SL_VAR, name, base, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
@@ -100,8 +100,8 @@ static StringID SettingHelpWallclock(const IntSettingDesc &sd);
 	NSD(ManyOfMany, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, full, nullptr)
 
 
-#define SDTC_VAR(var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
-	SDTG_VAR(#var, type, flags, _settings_client.var, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)
+#define SDTC_VAR(var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, get_range_hook, from, to, cat, extra, startup)\
+	SDTG_VAR(#var, type, flags, _settings_client.var, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, get_range_hook, from, to, cat, extra, startup)
 
 #define SDTC_BOOL(var, flags, def, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
 	SDTG_BOOL(#var, flags, _settings_client.var, def, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)
