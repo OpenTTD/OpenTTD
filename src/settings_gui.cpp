@@ -1621,6 +1621,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	bool editable = sd->IsEditable();
 
 	SetDParam(0, STR_CONFIG_SETTING_VALUE);
+	auto [min_val, max_val] = sd->GetRange();
 	int32_t value = sd->Read(ResolveObject(settings_ptr, sd));
 	if (sd->IsBoolSetting()) {
 		/* Draw checkbox for boolean-value either on/off */
@@ -1631,7 +1632,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	} else {
 		/* Draw [<][>] boxes for settings of an integer-type */
 		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state,
-				editable && value != (sd->flags & SF_GUI_0_IS_SPECIAL ? 0 : sd->min), editable && (uint32_t)value != sd->max);
+				editable && value != (sd->flags & SF_GUI_0_IS_SPECIAL ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
 	}
 	sd->SetValueDParams(1, value);
 	DrawString(text_left, text_right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, sd->GetTitle(), highlight ? TC_WHITE : TC_LIGHT_BLUE);
@@ -2607,6 +2608,7 @@ struct GameSettingsWindow : Window {
 			return;
 		}
 
+		auto [min_val, max_val] = sd->GetRange();
 		int32_t value = sd->Read(ResolveObject(settings_ptr, sd));
 
 		/* clicked on the icon on the left side. Either scroller, bool on/off or dropdown */
@@ -2638,7 +2640,7 @@ struct GameSettingsWindow : Window {
 					this->valuedropdown_entry->SetButtons(SEF_LEFT_DEPRESSED);
 
 					DropDownList list;
-					for (int i = sd->min; i <= (int)sd->max; i++) {
+					for (int32_t i = min_val; i <= static_cast<int32_t>(max_val); i++) {
 						sd->SetValueDParams(0, i);
 						list.push_back(MakeDropDownListStringItem(STR_JUST_STRING2, i));
 					}
@@ -2658,7 +2660,7 @@ struct GameSettingsWindow : Window {
 				 * 50-steps you should be able to get from min to max,
 				 * unless specified otherwise in the 'interval' variable
 				 * of the current setting. */
-				uint32_t step = (sd->interval == 0) ? ((sd->max - sd->min) / 50) : sd->interval;
+				uint32_t step = (sd->interval == 0) ? ((max_val - min_val) / 50) : sd->interval;
 				if (step == 0) step = 1;
 
 				/* don't allow too fast scrolling */
@@ -2670,16 +2672,16 @@ struct GameSettingsWindow : Window {
 				/* Increase or decrease the value and clamp it to extremes */
 				if (x >= SETTING_BUTTON_WIDTH / 2) {
 					value += step;
-					if (sd->min < 0) {
-						assert((int32_t)sd->max >= 0);
-						if (value > (int32_t)sd->max) value = (int32_t)sd->max;
+					if (min_val < 0) {
+						assert(static_cast<int32_t>(max_val) >= 0);
+						if (value > static_cast<int32_t>(max_val)) value = static_cast<int32_t>(max_val);
 					} else {
-						if ((uint32_t)value > sd->max) value = (int32_t)sd->max;
+						if (static_cast<uint32_t>(value) > max_val) value = static_cast<int32_t>(max_val);
 					}
-					if (value < sd->min) value = sd->min; // skip between "disabled" and minimum
+					if (value < min_val) value = min_val; // skip between "disabled" and minimum
 				} else {
 					value -= step;
-					if (value < sd->min) value = (sd->flags & SF_GUI_0_IS_SPECIAL) ? 0 : sd->min;
+					if (value < min_val) value = (sd->flags & SF_GUI_0_IS_SPECIAL) ? 0 : min_val;
 				}
 
 				/* Set up scroller timeout for numeric values */
@@ -2706,7 +2708,7 @@ struct GameSettingsWindow : Window {
 				if (sd->flags & SF_GUI_CURRENCY) value64 *= GetCurrency().rate;
 
 				CharSetFilter charset_filter = CS_NUMERAL; //default, only numeric input allowed
-				if (sd->min < 0) charset_filter = CS_NUMERAL_SIGNED; // special case, also allow '-' sign for negative input
+				if (min_val < 0) charset_filter = CS_NUMERAL_SIGNED; // special case, also allow '-' sign for negative input
 
 				this->valuewindow_entry = pe;
 				SetDParam(0, value64);
