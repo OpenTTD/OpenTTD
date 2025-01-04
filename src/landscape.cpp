@@ -1256,8 +1256,7 @@ static void River_FoundEndNode(AyStar *aystar, PathNode *current)
 	River_UserData *data = (River_UserData *)aystar->user_data;
 
 	/* First, build the river without worrying about its width. */
-	uint cur_pos = 0;
-	for (PathNode *path = current->parent; path != nullptr; path = path->parent, cur_pos++) {
+	for (PathNode *path = current->parent; path != nullptr; path = path->parent) {
 		TileIndex tile = path->GetTile();
 		if (!IsWaterTile(tile)) {
 			MakeRiverAndModifyDesertZoneAround(tile);
@@ -1269,16 +1268,13 @@ static void River_FoundEndNode(AyStar *aystar, PathNode *current)
 	 */
 	if (_settings_game.game_creation.land_generator != LG_ORIGINAL && data->main_river) {
 		const uint long_river_length = _settings_game.game_creation.min_river_length * 4;
-		uint current_river_length;
-		uint radius;
 
-		cur_pos = 0;
-		for (PathNode *path = current->parent; path != nullptr; path = path->parent, cur_pos++) {
+		for (PathNode *path = current->parent; path != nullptr; path = path->parent) {
 			TileIndex tile = path->GetTile();
 
 			/* Check if we should widen river depending on how far we are away from the source. */
-			current_river_length = DistanceManhattan(data->spring, tile);
-			radius = std::min(3u, (current_river_length / (long_river_length / 3u)) + 1u);
+			uint current_river_length = DistanceManhattan(data->spring, tile);
+			uint radius = std::min(3u, (current_river_length / (long_river_length / 3u)) + 1u);
 
 			if (radius > 1) CircularTileSearch(&tile, radius, RiverMakeWider, (void *)&path->key.tile);
 		}
