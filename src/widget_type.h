@@ -384,6 +384,8 @@ public:
 	void SetAlignment(StringAlignment align);
 
 	StringID GetString() const;
+	WidgetID GetIndex() const;
+	WidgetID GetScrollbarIndex() const;
 
 	inline void SetLowered(bool lowered);
 	inline bool IsLowered() const;

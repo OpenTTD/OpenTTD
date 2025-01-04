@@ -414,9 +414,9 @@ EventState PickerWindow::OnHotkey(int hotkey)
 	switch (hotkey) {
 		case PCWHK_FOCUS_FILTER_BOX:
 			/* Cycle between the two edit boxes. */
-			if (this->has_type_picker && (this->nested_focus == nullptr || this->nested_focus->index != WID_PW_TYPE_FILTER)) {
+			if (this->has_type_picker && (this->nested_focus == nullptr || this->nested_focus->GetIndex() != WID_PW_TYPE_FILTER)) {
 				this->SetFocusedWidget(WID_PW_TYPE_FILTER);
-			} else if (this->has_class_picker && (this->nested_focus == nullptr || this->nested_focus->index != WID_PW_CLASS_FILTER)) {
+			} else if (this->has_class_picker && (this->nested_focus == nullptr || this->nested_focus->GetIndex() != WID_PW_CLASS_FILTER)) {
 				this->SetFocusedWidget(WID_PW_CLASS_FILTER);
 			}
 			SetFocusedWindow(this);

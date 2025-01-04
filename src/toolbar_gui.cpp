@@ -1410,7 +1410,7 @@ public:
 			NWidgetBase *nwid = it->get();
 			nwid->current_x = 0; /* Hide widget, it will be revealed in the next step. */
 			if (nwid->type == NWID_SPACER) continue;
-			lookup[dynamic_cast<NWidgetCore *>(nwid)->index] = std::distance(this->children.begin(), it);
+			lookup[dynamic_cast<NWidgetCore *>(nwid)->GetIndex()] = std::distance(this->children.begin(), it);
 		}
 
 		/* Now assign the widgets to their rightful place */
