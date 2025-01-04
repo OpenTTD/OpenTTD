@@ -27,6 +27,9 @@
 #include <windows.h>
 #include <imm.h>
 #include <versionhelpers.h>
+#if defined(_MSC_VER) && defined(NTDDI_WIN10_RS4)
+#include <winrt/Windows.UI.ViewManagement.h>
+#endif
 
 #include "../safeguards.h"
 
@@ -397,6 +400,59 @@ static void CancelIMEComposition(HWND hwnd)
 	HandleTextInput(nullptr, true);
 }
 
+static bool IsDarkModeEnabled()
+{
+	/* Only build if SDK is Windows 10 1803 or later. */
+#if defined(_MSC_VER) && defined(NTDDI_WIN10_RS4)
+	if (IsWindows10OrGreater()) {
+		try {
+			/*
+			 * The official documented way to find out if the system is running in dark mode is to
+			 * check the brightness of the current theme's colour.
+			 * See: https://learn.microsoft.com/en-us/windows/apps/desktop/modernize/ui/apply-windows-themes#know-when-dark-mode-is-enabled
+			 *
+			 * There are other variants floating around on the Internet, but they all rely on internal,
+			 * undocumented Windows functions that may or may not work in the future.
+			 */
+			winrt::Windows::UI::ViewManagement::UISettings settings;
+			auto foreground = settings.GetColorValue(winrt::Windows::UI::ViewManagement::UIColorType::Foreground);
+
+			/* If the Foreground colour is a light colour, the system is running in dark mode. */
+			return ((5 * foreground.G) + (2 * foreground.R) + foreground.B) > (8 * 128);
+		} catch (...) {
+			/* Some kind of error, like a too old Windows version. Just return false. */
+			return false;
+		}
+	}
+#endif /* defined(_MSC_VER) && defined(NTDDI_WIN10_RS4) */
+
+	return false;
+}
+
+static void SetDarkModeForWindow(HWND hWnd, bool dark_mode)
+{
+	/* Only build if SDK is Windows 10+. */
+#if defined(NTDDI_WIN10)
+	if (!IsWindows10OrGreater()) return;
+
+	/* This function is documented, but not supported on all Windows 10/11 SDK builds. For this
+	 * reason, the code uses dynamic loading and ignores any errors for a best-effort result. */
+	static LibraryLoader _dwmapi("dwmapi.dll");
+	typedef HRESULT(WINAPI *PFNDWMSETWINDOWATTRIBUTE)(HWND, DWORD, LPCVOID, DWORD);
+	static PFNDWMSETWINDOWATTRIBUTE DwmSetWindowAttribute = _dwmapi.GetFunction("DwmSetWindowAttribute");
+
+	if (DwmSetWindowAttribute != nullptr) {
+		/* Contrary to the published documentation, DWMWA_USE_IMMERSIVE_DARK_MODE does not change the
+		 * window chrome according to the current theme, but forces it to either light or dark mode.
+		 * As such, the set value has to depend on the current theming mode.*/
+		BOOL value = dark_mode ? TRUE : FALSE;
+		if (DwmSetWindowAttribute(hWnd, 20 /* DWMWA_USE_IMMERSIVE_DARK_MODE */, &value, sizeof(value)) != S_OK) {
+			DwmSetWindowAttribute(hWnd, 19 /* DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1 */, &value, sizeof(value)); // Ignore errors. It works or it doesn't.
+		}
+	}
+#endif /* defined(NTDDI_WIN10) */
+}
+
 LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	static uint32_t keycode = 0;
@@ -410,6 +466,14 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			_cursor.in_window = false; // Win32 has mouse tracking.
 			SetCompositionPos(hwnd);
 			_imm_props = ImmGetProperty(GetKeyboardLayout(0), IGP_PROPERTY);
+
+			/* Enable dark mode theming for window chrome. */
+			SetDarkModeForWindow(hwnd, IsDarkModeEnabled());
+			break;
+
+		case WM_SETTINGCHANGE:
+			/* Synchronize dark mode theming state. */
+			SetDarkModeForWindow(hwnd, IsDarkModeEnabled());
 			break;
 
 		case WM_PAINT: {
