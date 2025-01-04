@@ -904,7 +904,7 @@ private:
 	CargoSortType type;
 	SortOrder order;
 
-	template<class Tid>
+	template <class Tid>
 	bool SortId(Tid st1, Tid st2) const;
 	bool SortCount(const CargoDataEntry *cd1, const CargoDataEntry *cd2) const;
 	bool SortStation (StationID st1, StationID st2) const;
@@ -1043,7 +1043,7 @@ private:
 
 	CargoDataEntry *Retrieve(CargoDataSet::iterator i) const;
 
-	template<class Tid>
+	template <class Tid>
 	CargoDataEntry *InsertOrRetrieve(Tid s);
 
 	void Remove(CargoDataEntry *comp);
@@ -1146,7 +1146,7 @@ void CargoDataEntry::Remove(CargoDataEntry *child)
  * @param child_id ID of the child to be inserted or retrieved.
  * @return the new or retrieved subentry
  */
-template<class Tid>
+template <class Tid>
 CargoDataEntry *CargoDataEntry::InsertOrRetrieve(Tid child_id)
 {
 	CargoDataEntry tmp(child_id);
@@ -1214,7 +1214,7 @@ bool CargoSorter::operator()(const CargoDataEntry *cd1, const CargoDataEntry *cd
 	}
 }
 
-template<class Tid>
+template <class Tid>
 bool CargoSorter::SortId(Tid st1, Tid st2) const
 {
 	return (this->order == SO_ASCENDING) ? st1 < st2 : st2 < st1;
@@ -1939,7 +1939,7 @@ struct StationViewWindow : public Window {
 	 * @param filter Parent of the row.
 	 * @param next ID pointing to the row.
 	 */
-	template<class Tid>
+	template <class Tid>
 	void HandleCargoWaitingClick(CargoDataEntry *filter, Tid next)
 	{
 		if (filter->Retrieve(next) != nullptr) {

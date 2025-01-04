@@ -453,7 +453,7 @@ struct CommandFunctionTraitHelper<Tret<CommandCost, Tretargs...>(*)(DoCommandFla
 template <Commands Tcmd> struct CommandTraits;
 
 #define DEF_CMD_TRAIT(cmd_, proc_, flags_, type_) \
-	template<> struct CommandTraits<cmd_> { \
+	template <> struct CommandTraits<cmd_> { \
 		using ProcType = decltype(&proc_); \
 		using Args = typename CommandFunctionTraitHelper<ProcType>::Args; \
 		using RetTypes = typename CommandFunctionTraitHelper<ProcType>::RetTypes; \

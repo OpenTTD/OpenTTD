@@ -18,7 +18,7 @@ private:
 	int32_t mod_dist;      ///< Distance modifier, determines how much demands decrease with distance.
 	int32_t accuracy;      ///< Accuracy of the calculation.
 
-	template<class Tscaler>
+	template <class Tscaler>
 	void CalcDemand(LinkGraphJob &job, Tscaler scaler);
 };
 

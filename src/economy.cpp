@@ -1361,7 +1361,7 @@ static uint GetLoadAmount(Vehicle *v)
  * @param action Instance of Taction.
  * @return false if any of the action invocations returned false, true otherwise.
  */
-template<class Taction>
+template <class Taction>
 bool IterateVehicleParts(Vehicle *v, Taction action)
 {
 	for (Vehicle *w = v; w != nullptr;

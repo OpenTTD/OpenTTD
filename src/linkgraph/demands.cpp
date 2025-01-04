@@ -161,7 +161,7 @@ inline void Scaler::SetDemands(LinkGraphJob &job, NodeID from_id, NodeID to_id, 
  * @param job Job to calculate the demands for.
  * @tparam Tscaler Scaler to be used for scaling demands.
  */
-template<class Tscaler>
+template <class Tscaler>
 void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)
 {
 	NodeList supplies;

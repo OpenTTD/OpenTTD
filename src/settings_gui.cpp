@@ -1304,7 +1304,7 @@ struct SettingsContainer {
 	typedef std::vector<BaseSettingEntry*> EntryVector;
 	EntryVector entries; ///< Settings on this page
 
-	template<typename T>
+	template <typename T>
 	T *Add(T *item)
 	{
 		this->entries.push_back(item);

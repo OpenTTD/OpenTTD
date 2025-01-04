@@ -92,7 +92,7 @@ protected:
 	 * @param cargo Cargo type to query for.
 	 * @param other_station Other station to restrict the query with.
 	 */
-	template<CargoSelector Tselector>
+	template <CargoSelector Tselector>
 	void Add(StationID station_id, CargoID cargo, StationID other_station = INVALID_STATION);
 
 public:
@@ -129,7 +129,7 @@ protected:
 	 * @param cargo Cargo type to query for.
 	 * @param other_station Other station to restrict the query with.
 	 */
-	template<CargoSelector Tselector>
+	template <CargoSelector Tselector>
 	void Add(StationID station_id, CargoID cargo, StationID other_station = INVALID_STATION);
 
 public:

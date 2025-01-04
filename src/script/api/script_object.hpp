@@ -116,7 +116,7 @@ public:
 	static void InitializeRandomizers();
 
 protected:
-	template<Commands TCmd, typename T> struct ScriptDoCommandHelper;
+	template <Commands TCmd, typename T> struct ScriptDoCommandHelper;
 
 	/**
 	 * Templated wrapper that exposes the command parameter arguments
@@ -346,7 +346,7 @@ namespace ScriptObjectInternal {
 	}
 
 	/** Helper function to perform validation on command data strings. */
-	template<class Ttuple, size_t... Tindices>
+	template <class Ttuple, size_t... Tindices>
 	static inline void SanitizeStringsHelper(Ttuple &values, std::index_sequence<Tindices...>)
 	{
 		((SanitizeSingleStringHelper(std::get<Tindices>(values))), ...);
@@ -362,7 +362,7 @@ namespace ScriptObjectInternal {
 	}
 
 	/** Set all invalid ClientID's to the proper value. */
-	template<class Ttuple, size_t... Tindices>
+	template <class Ttuple, size_t... Tindices>
 	static inline void SetClientIds(Ttuple &values, std::index_sequence<Tindices...>)
 	{
 		((SetClientIdHelper(std::get<Tindices>(values))), ...);

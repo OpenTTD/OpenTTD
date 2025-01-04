@@ -82,7 +82,7 @@ struct CommandInfo {
 template <typename T>
 inline constexpr CommandInfo CommandFromTrait() noexcept { return { T::name, T::flags, T::type }; };
 
-template<typename T, T... i>
+template <typename T, T... i>
 inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noexcept {
 	return std::array<CommandInfo, sizeof...(i)>{{ CommandFromTrait<CommandTraits<static_cast<Commands>(i)>>()... }};
 }

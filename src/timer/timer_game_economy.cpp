@@ -101,7 +101,7 @@ TimerGameEconomy::DateFract TimerGameEconomy::date_fract = {};
 	return (_settings_game.economy.timekeeping_units == TKU_WALLCLOCK);
 }
 
-template<>
+template <>
 void IntervalTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed trigger)
 {
 	if (trigger == this->period.trigger) {
@@ -109,7 +109,7 @@ void IntervalTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed trigger
 	}
 }
 
-template<>
+template <>
 void TimeoutTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed trigger)
 {
 	if (this->fired) return;
@@ -120,7 +120,7 @@ void TimeoutTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed trigger)
 	}
 }
 
-template<>
+template <>
 bool TimerManager<TimerGameEconomy>::Elapsed([[maybe_unused]] TimerGameEconomy::TElapsed delta)
 {
 	assert(delta == 1);
@@ -190,7 +190,7 @@ bool TimerManager<TimerGameEconomy>::Elapsed([[maybe_unused]] TimerGameEconomy::
 }
 
 #ifdef WITH_ASSERT
-template<>
+template <>
 void TimerManager<TimerGameEconomy>::Validate(TimerGameEconomy::TPeriod period)
 {
 	if (period.priority == TimerGameEconomy::Priority::NONE) return;

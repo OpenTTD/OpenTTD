@@ -104,16 +104,16 @@ void SetViewportCatchmentWaypoint(const Waypoint *wp, bool sel);
 void SetViewportCatchmentTown(const Town *t, bool sel);
 void MarkCatchmentTilesDirty();
 
-template<class T>
+template <class T>
 void SetViewportCatchmentSpecializedStation(const T *st, bool sel);
 
-template<>
+template <>
 inline void SetViewportCatchmentSpecializedStation(const Station *st, bool sel)
 {
 	SetViewportCatchmentStation(st, sel);
 }
 
-template<>
+template <>
 inline void SetViewportCatchmentSpecializedStation(const Waypoint *st, bool sel)
 {
 	SetViewportCatchmentWaypoint(st, sel);

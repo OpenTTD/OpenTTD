@@ -406,7 +406,7 @@ static inline void SetClientIdHelper(T &data, [[maybe_unused]] ClientID client_i
 }
 
 /** Set all invalid ClientID's to the proper value. */
-template<class Ttuple, size_t... Tindices>
+template <class Ttuple, size_t... Tindices>
 static inline void SetClientIds(Ttuple &values, ClientID client_id, std::index_sequence<Tindices...>)
 {
 	((SetClientIdHelper(std::get<Tindices>(values), client_id)), ...);
@@ -446,7 +446,7 @@ static inline void SanitizeSingleStringHelper([[maybe_unused]] CommandFlags cmd_
 }
 
 /** Helper function to perform validation on command data strings. */
-template<class Ttuple, size_t... Tindices>
+template <class Ttuple, size_t... Tindices>
 static inline void SanitizeStringsHelper(CommandFlags cmd_flags, Ttuple &values, std::index_sequence<Tindices...>)
 {
 	((SanitizeSingleStringHelper(cmd_flags, std::get<Tindices>(values))), ...);

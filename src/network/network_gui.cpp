@@ -1387,7 +1387,7 @@ public:
 /**
  * Template version of Button, with callback support.
  */
-template<typename T>
+template <typename T>
 class Button : public ButtonCommon {
 private:
 	typedef void (*ButtonCallback)(struct NetworkClientListWindow *w, Point pt, T id); ///< Callback function to call on click.

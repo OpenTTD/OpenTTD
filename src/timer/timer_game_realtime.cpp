@@ -17,7 +17,7 @@
 
 #include "../safeguards.h"
 
-template<>
+template <>
 void IntervalTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 {
 	if (this->period.period == std::chrono::milliseconds::zero()) return;
@@ -37,7 +37,7 @@ void IntervalTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta
 	}
 }
 
-template<>
+template <>
 void TimeoutTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 {
 	if (this->fired) return;
@@ -53,7 +53,7 @@ void TimeoutTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 	}
 }
 
-template<>
+template <>
 bool TimerManager<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 {
 	for (auto timer : TimerManager<TimerGameRealtime>::GetTimers()) {
@@ -64,7 +64,7 @@ bool TimerManager<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 }
 
 #ifdef WITH_ASSERT
-template<>
+template <>
 void TimerManager<TimerGameRealtime>::Validate(TimerGameRealtime::TPeriod)
 {
 }

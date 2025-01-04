@@ -333,7 +333,7 @@ static bool ReadTrackChunk(FileHandle &file, MidiFile &target)
 	NOT_REACHED();
 }
 
-template<typename T>
+template <typename T>
 bool TicktimeAscending(const T &a, const T &b)
 {
 	return a.ticktime < b.ticktime;
