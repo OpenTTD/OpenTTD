@@ -74,7 +74,7 @@ uint16_t TimerGameCalendar::sub_date_fract = {};
 	TimerGameCalendar::month = ymd.month;
 }
 
-template<>
+template <>
 void IntervalTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigger)
 {
 	if (trigger == this->period.trigger) {
@@ -82,7 +82,7 @@ void IntervalTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigg
 	}
 }
 
-template<>
+template <>
 void TimeoutTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigger)
 {
 	if (this->fired) return;
@@ -93,7 +93,7 @@ void TimeoutTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigge
 	}
 }
 
-template<>
+template <>
 bool TimerManager<TimerGameCalendar>::Elapsed([[maybe_unused]] TimerGameCalendar::TElapsed delta)
 {
 	assert(delta == 1);
@@ -166,7 +166,7 @@ bool TimerManager<TimerGameCalendar>::Elapsed([[maybe_unused]] TimerGameCalendar
 }
 
 #ifdef WITH_ASSERT
-template<>
+template <>
 void TimerManager<TimerGameCalendar>::Validate(TimerGameCalendar::TPeriod period)
 {
 	if (period.priority == TimerGameCalendar::Priority::NONE) return;

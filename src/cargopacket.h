@@ -356,10 +356,10 @@ protected:
 	Money feeder_share;                     ///< Cache for the feeder share.
 	uint action_counts[NUM_MOVE_TO_ACTION]; ///< Counts of cargo to be transferred, delivered, kept and loaded.
 
-	template<class Taction>
+	template <class Taction>
 	void ShiftCargo(Taction action);
 
-	template<class Taction>
+	template <class Taction>
 	void PopCargo(Taction action);
 
 	/**
@@ -393,7 +393,7 @@ public:
 	friend class CargoShift;
 	friend class CargoTransfer;
 	friend class CargoDelivery;
-	template<class Tsource>
+	template <class Tsource>
 	friend class CargoRemoval;
 	friend class CargoReturn;
 	friend class VehicleCargoReroute;
@@ -495,7 +495,7 @@ public:
 	 * amount of cargo to be moved. Second parameter is destination (if
 	 * applicable), return value is amount of cargo actually moved. */
 
-	template<MoveToAction Tfrom, MoveToAction Tto>
+	template <MoveToAction Tfrom, MoveToAction Tto>
 	uint Reassign(uint max_move);
 	uint Return(uint max_move, StationCargoList *dest, StationID next_station, TileIndex current_tile);
 	uint Unload(uint max_move, StationCargoList *dest, CargoID cargo, CargoPayment *payment, TileIndex current_tile);
@@ -541,7 +541,7 @@ public:
 
 	friend class CargoLoad;
 	friend class CargoTransfer;
-	template<class Tsource>
+	template <class Tsource>
 	friend class CargoRemoval;
 	friend class CargoReservation;
 	friend class CargoReturn;
@@ -549,10 +549,10 @@ public:
 
 	static void InvalidateAllFrom(SourceType src_type, SourceID src);
 
-	template<class Taction>
+	template <class Taction>
 	bool ShiftCargo(Taction &action, StationID next);
 
-	template<class Taction>
+	template <class Taction>
 	uint ShiftCargo(Taction action, StationIDStack next, bool include_invalid);
 
 	void Append(CargoPacket *cp, StationID next);

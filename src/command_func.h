@@ -80,7 +80,7 @@ private:
 #	define SILENCE_GCC_FUNCTION_POINTER_CAST
 #endif
 
-template<Commands TCmd, typename T, bool THasTile> struct CommandHelper;
+template <Commands TCmd, typename T, bool THasTile> struct CommandHelper;
 
 class CommandHelperBase {
 protected:
@@ -254,7 +254,7 @@ protected:
 	}
 
 	/** Set all invalid ClientID's to the proper value. */
-	template<class Ttuple, size_t... Tindices>
+	template <class Ttuple, size_t... Tindices>
 	static inline void SetClientIds(Ttuple &values, std::index_sequence<Tindices...>)
 	{
 		((SetClientIdHelper(std::get<Tindices>(values))), ...);
@@ -332,13 +332,13 @@ protected:
 	}
 
 	/** Check if all ClientID arguments are set to valid values. */
-	template<class Ttuple, size_t... Tindices>
+	template <class Ttuple, size_t... Tindices>
 	static inline bool AllClientIdsSet(Ttuple &values, std::index_sequence<Tindices...>)
 	{
 		return (ClientIdIsSet(std::get<Tindices>(values)) && ...);
 	}
 
-	template<class Ttuple>
+	template <class Ttuple>
 	static inline Money ExtractAdditionalMoney([[maybe_unused]] Ttuple &values)
 	{
 		if constexpr (std::is_same_v<std::tuple_element_t<1, Tret>, Money>) {

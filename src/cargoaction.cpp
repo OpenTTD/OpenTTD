@@ -20,7 +20,7 @@
  * @return Either new packet if splitting was necessary or the given one
  *         otherwise.
  */
-template<class Tsource, class Tdest>
+template <class Tsource, class Tdest>
 CargoPacket *CargoMovement<Tsource, Tdest>::Preprocess(CargoPacket *cp)
 {
 	if (this->max_move < cp->Count()) {
@@ -38,7 +38,7 @@ CargoPacket *CargoMovement<Tsource, Tdest>::Preprocess(CargoPacket *cp)
  * @param cp Packet to be removed completely or partially.
  * @return Amount of cargo to be removed.
  */
-template<class Tsource>
+template <class Tsource>
 uint CargoRemoval<Tsource>::Preprocess(CargoPacket *cp)
 {
 	if (this->max_move >= cp->Count()) {
@@ -57,7 +57,7 @@ uint CargoRemoval<Tsource>::Preprocess(CargoPacket *cp)
  * @param remove Amount of cargo to be removed.
  * @return True if the packet was deleted, False if it was reduced.
  */
-template<class Tsource>
+template <class Tsource>
 bool CargoRemoval<Tsource>::Postprocess(CargoPacket *cp, uint remove)
 {
 	if (remove == cp->Count()) {
@@ -75,7 +75,7 @@ bool CargoRemoval<Tsource>::Postprocess(CargoPacket *cp, uint remove)
  * @return True if the packet was completely delivered, false if only part of
  *         it was.
  */
-template<>
+template <>
 bool CargoRemoval<StationCargoList>::operator()(CargoPacket *cp)
 {
 	uint remove = this->Preprocess(cp);
@@ -89,7 +89,7 @@ bool CargoRemoval<StationCargoList>::operator()(CargoPacket *cp)
  * @return True if the packet was completely delivered, false if only part of
  *         it was.
  */
-template<>
+template <>
 bool CargoRemoval<VehicleCargoList>::operator()(CargoPacket *cp)
 {
 	uint remove = this->Preprocess(cp);

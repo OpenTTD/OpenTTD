@@ -253,7 +253,7 @@ bool CapacityAnnotation::IsBetter(const CapacityAnnotation *base, uint cap,
  * @param source_node Node where the algorithm starts.
  * @param paths Container for the paths to be calculated.
  */
-template<class Tannotation, class Tedge_iterator>
+template <class Tannotation, class Tedge_iterator>
 void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 {
 	typedef std::set<Tannotation *, typename Tannotation::Comparator> AnnoSet;

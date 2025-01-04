@@ -889,7 +889,7 @@ struct FrametimeGraphWindow : Window {
 	}
 
 	/** Scale and interpolate a value from a source range into a destination range */
-	template<typename T>
+	template <typename T>
 	static inline T Scinterlate(T dst_min, T dst_max, T src_min, T src_max, T value)
 	{
 		T dst_diff = dst_max - dst_min;

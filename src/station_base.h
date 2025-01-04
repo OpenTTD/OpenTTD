@@ -617,7 +617,7 @@ void RebuildStationKdtree();
  * @param func The function to call, must take two parameters: Station* and TileIndex and return true
  *             if coverage of that tile is acceptable for a given station or false if search should continue
  */
-template<typename Func>
+template <typename Func>
 void ForAllStationsAroundTiles(const TileArea &ta, Func func)
 {
 	/* There are no stations, so we will never find anything. */

@@ -16,7 +16,7 @@
  * Abstract action of removing cargo from a vehicle or a station.
  * @tparam Tsource CargoList subclass to remove cargo from.
  */
-template<class Tsource>
+template <class Tsource>
 class CargoRemoval {
 protected:
 	Tsource *source; ///< Source of the cargo.
@@ -52,7 +52,7 @@ public:
  * @tparam Tsource CargoList subclass to remove cargo from.
  * @tparam Tdest CargoList subclass to add cargo to.
  */
-template<class Tsource, class Tdest>
+template <class Tsource, class Tdest>
 class CargoMovement {
 protected:
 	Tsource *source;    ///< Source of the cargo.
@@ -117,7 +117,7 @@ public:
 };
 
 /** Action of rerouting cargo between different cargo lists and/or next hops. */
-template<class Tlist>
+template <class Tlist>
 class CargoReroute : public CargoMovement<Tlist, Tlist> {
 protected:
 	StationID avoid;

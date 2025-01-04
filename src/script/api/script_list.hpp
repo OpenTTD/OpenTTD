@@ -43,7 +43,7 @@ private:
 	int modifications;            ///< Number of modification that has been done. To prevent changing data while valuating.
 
 protected:
-	template<typename T, class ItemValid, class ItemFilter>
+	template <typename T, class ItemValid, class ItemFilter>
 	static void FillList(ScriptList *list, ItemValid item_valid, ItemFilter item_filter)
 	{
 		for (const T *item : T::Iterate()) {
@@ -53,19 +53,19 @@ protected:
 		}
 	}
 
-	template<typename T, class ItemValid>
+	template <typename T, class ItemValid>
 	static void FillList(ScriptList *list, ItemValid item_valid)
 	{
 		ScriptList::FillList<T>(list, item_valid, [](const T *) { return true; });
 	}
 
-	template<typename T>
+	template <typename T>
 	static void FillList(ScriptList *list)
 	{
 		ScriptList::FillList<T>(list, [](const T *) { return true; });
 	}
 
-	template<typename T, class ItemValid>
+	template <typename T, class ItemValid>
 	static void FillList(HSQUIRRELVM vm, ScriptList *list, ItemValid item_valid)
 	{
 		int nparam = sq_gettop(vm) - 1;
@@ -137,7 +137,7 @@ protected:
 		ScriptObject::SetAllowDoCommand(backup_allow);
 	}
 
-	template<typename T>
+	template <typename T>
 	static void FillList(HSQUIRRELVM vm, ScriptList *list)
 	{
 		ScriptList::FillList<T>(vm, list, [](const T *) { return true; });

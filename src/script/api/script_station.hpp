@@ -297,15 +297,15 @@ public:
 	static bool OpenCloseAirport(StationID station_id);
 
 private:
-	template<bool Tfrom, bool Tvia>
+	template <bool Tfrom, bool Tvia>
 	static bool IsCargoRequestValid(StationID station_id, StationID from_station_id,
 			StationID via_station_id, CargoID cargo_id);
 
-	template<bool Tfrom, bool Tvia>
+	template <bool Tfrom, bool Tvia>
 	static SQInteger CountCargoWaiting(StationID station_id, StationID from_station_id,
 			StationID via_station_id, CargoID cargo_id);
 
-	template<bool Tfrom, bool Tvia>
+	template <bool Tfrom, bool Tvia>
 	static SQInteger CountCargoPlanned(StationID station_id, StationID from_station_id,
 			StationID via_station_id, CargoID cargo_id);
 

@@ -154,7 +154,7 @@ class Layouter : public std::vector<std::unique_ptr<const ParagraphLayouter::Lin
 		using is_transparent = void; ///< Enable map queries with various key types
 
 		/** Comparison operator for LineCacheKey and LineCacheQuery */
-		template<typename Key1, typename Key2>
+		template <typename Key1, typename Key2>
 		bool operator()(const Key1 &lhs, const Key2 &rhs) const
 		{
 			if (lhs.state_before.fontsize != rhs.state_before.fontsize) return lhs.state_before.fontsize < rhs.state_before.fontsize;
