@@ -190,7 +190,6 @@ bool HaveDParamChanged(const std::span<const StringParameterData> backup)
 }
 
 static void StationGetSpecialString(StringBuilder &builder, StationFacility x);
-static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32_t seed);
 static bool GetSpecialNameString(StringBuilder &builder, StringID string, StringParameters &args);
 
 static void FormatString(StringBuilder &builder, const char *str, StringParameters &args, uint case_index = 0, bool game_script = false, bool dry_run = false);
@@ -266,9 +265,9 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 
 	switch (tab) {
 		case TEXT_TAB_TOWN:
-			if (index >= 0xC0 && !game_script) {
+			if (IsInsideMM(string, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_END) && !game_script) {
 				try {
-					GetSpecialTownNameString(builder, index.base() - 0xC0, args.GetNextParameter<uint32_t>());
+					GenerateTownNameString(builder, string - SPECSTR_TOWNNAME_START, args.GetNextParameter<uint32_t>());
 				} catch (const std::runtime_error &e) {
 					Debug(misc, 0, "GetStringWithArgs: {}", e.what());
 					builder += "(invalid string parameter)";
@@ -1762,11 +1761,6 @@ static void StationGetSpecialString(StringBuilder &builder, StationFacility x)
 	if ((x & FACIL_AIRPORT) != 0) builder.Utf8Encode(SCC_PLANE);
 }
 
-static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32_t seed)
-{
-	GenerateTownNameString(builder, ind, seed);
-}
-
 static const char * const _silly_company_names[] = {
 	"Bloggs Brothers",
 	"Tiny Transport Ltd.",
@@ -1891,7 +1885,7 @@ static bool GetSpecialNameString(StringBuilder &builder, StringID string, String
 
 	/* TownName Transport company names, with the appropriate town name. */
 	if (IsInsideMM(string, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_END)) {
-		GetSpecialTownNameString(builder, string - SPECSTR_COMPANY_NAME_START, args.GetNextParameter<uint32_t>());
+		GenerateTownNameString(builder, string - SPECSTR_COMPANY_NAME_START, args.GetNextParameter<uint32_t>());
 		builder += " Transport";
 		return true;
 	}
