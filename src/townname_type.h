@@ -19,7 +19,7 @@
 
 typedef std::set<std::string> TownNames;
 
-static constexpr uint BUILTIN_TOWNNAME_GENERATOR_COUNT = SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1; ///< Number of built-in town name generators.
+static constexpr uint BUILTIN_TOWNNAME_GENERATOR_COUNT = SPECSTR_TOWNNAME_END - SPECSTR_TOWNNAME_START; ///< Number of built-in town name generators.
 
 /**
  * Struct holding parameters used to generate town name.
