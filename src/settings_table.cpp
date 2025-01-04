@@ -247,7 +247,7 @@ static bool CanUpdateServiceInterval(VehicleType, int32_t &new_value)
 
 	/* Test if the interval is valid */
 	int32_t interval = GetServiceIntervalClamped(new_value, vds->servint_ispercent);
-	return interval == new_value;
+	return new_value == 0 || interval == new_value;
 }
 
 static void UpdateServiceInterval(VehicleType type, int32_t new_value)
@@ -288,6 +288,24 @@ static int32_t GetDefaultServiceInterval(const IntSettingDesc &sd, VehicleType t
 	}
 
 	return sd.def;
+}
+
+static std::tuple<int32_t, uint32_t> GetServiceIntervalRange(const IntSettingDesc &)
+{
+	VehicleDefaultSettings *vds;
+	if (_game_mode == GM_MENU || !Company::IsValidID(_current_company)) {
+		vds = &_settings_client.company.vehicle;
+	} else {
+		vds = &Company::Get(_current_company)->settings.vehicle;
+	}
+
+	if (vds->servint_ispercent) return { MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT };
+
+	if (TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU)) {
+		return { MIN_SERVINT_MINUTES, MAX_SERVINT_MINUTES };
+	}
+
+	return { MIN_SERVINT_DAYS, MAX_SERVINT_DAYS };
 }
 
 static void TrainAccelerationModelChanged(int32_t)
