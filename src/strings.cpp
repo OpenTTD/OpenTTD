@@ -1890,7 +1890,7 @@ static void GetSpecialNameString(StringBuilder &builder, int ind, StringParamete
 	}
 
 	/* town name? */
-	if (IsInsideMM(ind - 6, 0, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1)) {
+	if (IsInsideMM(ind - 6, 0, SPECSTR_TOWNNAME_END - SPECSTR_TOWNNAME_START)) {
 		GetSpecialTownNameString(builder, ind - 6, args.GetNextParameter<uint32_t>());
 		builder += " Transport";
 		return;
