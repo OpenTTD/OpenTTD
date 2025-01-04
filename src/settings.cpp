@@ -1861,7 +1861,8 @@ void StringSettingDesc::ChangeValue(const void *object, std::string &newval) con
 void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
-	if (sd == nullptr) {
+	/* Company settings are not in "list_settings", so don't try to modify them. */
+	if (sd == nullptr || sd->flags & SF_PER_COMPANY) {
 		IConsolePrint(CC_ERROR, "'{}' is an unknown setting.", name);
 		return;
 	}
@@ -1904,7 +1905,8 @@ void IConsoleSetSetting(const char *name, int value)
 void IConsoleGetSetting(const char *name, bool force_newgame)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
-	if (sd == nullptr) {
+	/* Company settings are not in "list_settings", so don't try to read them. */
+	if (sd == nullptr || sd->flags & SF_PER_COMPANY) {
 		IConsolePrint(CC_ERROR, "'{}' is an unknown setting.", name);
 		return;
 	}
