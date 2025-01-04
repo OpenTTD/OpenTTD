@@ -56,42 +56,20 @@ static const uint TAB_SIZE_GAMESCRIPT = TAB_SIZE * 32;
 /** Number of strings for NewGRFs */
 static const uint TAB_SIZE_NEWGRF     = TAB_SIZE * 256;
 
-/** Special string constants */
-enum SpecialStrings {
+/** The number of builtin generators for town names. */
+static constexpr uint32_t BUILTIN_TOWNNAME_GENERATOR_COUNT = 21;
 
-	/* special strings for town names. the town name is generated dynamically on request. */
-	SPECSTR_TOWNNAME_START     = 0x20C0,
-	SPECSTR_TOWNNAME_ENGLISH   = SPECSTR_TOWNNAME_START,
-	SPECSTR_TOWNNAME_FRENCH,
-	SPECSTR_TOWNNAME_GERMAN,
-	SPECSTR_TOWNNAME_AMERICAN,
-	SPECSTR_TOWNNAME_LATIN,
-	SPECSTR_TOWNNAME_SILLY,
-	SPECSTR_TOWNNAME_SWEDISH,
-	SPECSTR_TOWNNAME_DUTCH,
-	SPECSTR_TOWNNAME_FINNISH,
-	SPECSTR_TOWNNAME_POLISH,
-	SPECSTR_TOWNNAME_SLOVAK,
-	SPECSTR_TOWNNAME_NORWEGIAN,
-	SPECSTR_TOWNNAME_HUNGARIAN,
-	SPECSTR_TOWNNAME_AUSTRIAN,
-	SPECSTR_TOWNNAME_ROMANIAN,
-	SPECSTR_TOWNNAME_CZECH,
-	SPECSTR_TOWNNAME_SWISS,
-	SPECSTR_TOWNNAME_DANISH,
-	SPECSTR_TOWNNAME_TURKISH,
-	SPECSTR_TOWNNAME_ITALIAN,
-	SPECSTR_TOWNNAME_CATALAN,
-	SPECSTR_TOWNNAME_END = SPECSTR_TOWNNAME_CATALAN + 1,
+/** Special strings for town names. The town name is generated dynamically on request. */
+static constexpr StringID SPECSTR_TOWNNAME_START = 0x20C0;
+static constexpr StringID SPECSTR_TOWNNAME_END = SPECSTR_TOWNNAME_START + BUILTIN_TOWNNAME_GENERATOR_COUNT;
 
-	/* special strings for company names on the form "TownName transport". */
-	SPECSTR_COMPANY_NAME_START = 0x70EA,
-	SPECSTR_COMPANY_NAME_END = SPECSTR_COMPANY_NAME_START + SPECSTR_TOWNNAME_END - SPECSTR_TOWNNAME_START,
+/** Special strings for company names on the form "TownName transport". */
+static constexpr StringID SPECSTR_COMPANY_NAME_START = 0x70EA;
+static constexpr StringID SPECSTR_COMPANY_NAME_END = SPECSTR_COMPANY_NAME_START + BUILTIN_TOWNNAME_GENERATOR_COUNT;
 
-	SPECSTR_SILLY_NAME         = 0x70E5,
-	SPECSTR_ANDCO_NAME         = 0x70E6,
-	SPECSTR_PRESIDENT_NAME     = 0x70E7,
-};
+static constexpr StringID SPECSTR_SILLY_NAME = 0x70E5; ///< Special string for silly company names.
+static constexpr StringID SPECSTR_ANDCO_NAME = 0x70E6; ///< Special string for Surname & Co company names.
+static constexpr StringID SPECSTR_PRESIDENT_NAME = 0x70E7; ///< Special string for the president's name.
 
 using StringParameterData = std::variant<uint64_t, std::string>;
 
