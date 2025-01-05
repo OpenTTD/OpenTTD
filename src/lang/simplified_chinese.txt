@@ -1925,7 +1925,8 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :从不
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :经济类型：{STRING}
 ###length 2
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :平滑经济产生更小幅度更频繁的产量变动。冻结经济停止产量变动和工业倒闭。该设置可能对 NewGRF 提供的工业不起作用
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :平滑经济产生更小幅度更频繁的产量变动。冻结经济停止产量变动和工业倒闭。该设置可能对 NewGRF 提供的工业不起作用。{}{}即使冻结经济时，工业每分钟产量仍可能会变化，因为工业生产按照固定间隔，间隔并不完全对应分钟
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :平滑经济产生更小幅度更频繁的产量变动。冻结经济停止产量变动和工业倒闭。该设置可能对 NewGRF 提供的工业不起作用。{}{}即使冻结经济时，工业每分钟产量仍可能会变化，因为工业生产按照固定间隔，间隔并不完全对应分钟。
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :原版
@@ -3521,7 +3522,7 @@ STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}检查 -
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Parent
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}检查该对象的 Parent scope
 
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} 于 {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :于 {1:HEX} 的{0:STRING}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :物件
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :铁路类型
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :道路类型
@@ -5829,7 +5830,7 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STR
 STR_SAVEGAME_NAME_SPECTATOR                                     :观众，{1:STRING}
 
 # Viewport strings
-STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN}（{COMMA}）
+STR_VIEWPORT_TOWN_POP                                           :{TOWN}（{COMMA}）
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
