@@ -40,6 +40,7 @@
 #include "water_cmd.h"
 #include "landscape_cmd.h"
 #include "pathfinder/water_regions.h"
+#include "clear_func.h"
 
 #include "table/strings.h"
 
@@ -443,7 +444,23 @@ CommandCost CmdBuildLock(DoCommandFlag flags, TileIndex tile)
 /** Callback to create non-desert around a river tile. */
 static bool RiverModifyDesertZone(TileIndex tile, void *)
 {
-	if (GetTropicZone(tile) == TROPICZONE_DESERT) SetTropicZone(tile, TROPICZONE_NORMAL);
+	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
+		SetTropicZone(tile, TROPICZONE_NORMAL);
+
+		/* Speed up the transition from desert to grass. */
+		if (IsTileType(tile, MP_CLEAR)) TileLoopClearDesert(tile);
+
+		for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+			const TileIndex t = tile + TileOffsByDiagDir(dir);
+
+			if (!IsValidTile(t)) continue;
+			if (!IsTileType(t, MP_CLEAR)) continue;
+
+			/* Speed up the transition of adjacent desert tile density. */
+			TileLoopClearDesert(t);
+		}
+	}
+
 	return false;
 }
 

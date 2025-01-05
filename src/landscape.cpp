@@ -1400,7 +1400,7 @@ static void CreateRivers()
 
 	uint wells = Map::ScaleBySize(4 << _settings_game.game_creation.amount_of_rivers);
 	const uint num_short_rivers = wells - std::max(1u, wells / 10);
-	SetGeneratingWorldProgress(GWP_RIVER, wells + TILE_UPDATE_FREQUENCY / 64); // Include the tile loop calls below.
+	SetGeneratingWorldProgress(GWP_RIVER, wells);
 
 	/* Try to create long rivers. */
 	for (; wells > num_short_rivers; wells--) {
@@ -1424,12 +1424,6 @@ static void CreateRivers()
 
 	/* Widening rivers may have left some tiles requiring to be watered. */
 	ConvertGroundTilesIntoWaterTiles();
-
-	/* Run tile loop to update the ground density. */
-	for (uint i = 0; i != TILE_UPDATE_FREQUENCY; i++) {
-		if (i % 64 == 0) IncreaseGeneratingWorldProgress(GWP_RIVER);
-		RunTileLoop();
-	}
 }
 
 /**

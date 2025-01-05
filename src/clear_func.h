@@ -15,4 +15,6 @@
 void DrawHillyLandTile(const TileInfo *ti);
 void DrawClearLandTile(const TileInfo *ti, uint8_t set);
 
+void TileLoopClearDesert(TileIndex tile);
+
 #endif /* CLEAR_FUNC_H */

@@ -202,7 +202,7 @@ static inline bool NeighbourIsNormal(TileIndex tile)
 	return false;
 }
 
-static void TileLoopClearDesert(TileIndex tile)
+void TileLoopClearDesert(TileIndex tile)
 {
 	/* Current desert level - 0 if it is not desert */
 	uint current = 0;
