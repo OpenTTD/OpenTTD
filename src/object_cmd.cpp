@@ -783,7 +783,7 @@ static bool TryBuildLightHouse()
 	if (!IsTileType(tile, MP_WATER)) return false;
 
 	for (int j = 0; j < 19; j++) {
-		int h;
+		uint h;
 		if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h <= 2 && !IsBridgeAbove(tile)) {
 			BuildObject(OBJECT_LIGHTHOUSE, tile);
 			assert(tile < Map::Size());
@@ -802,7 +802,7 @@ static bool TryBuildLightHouse()
 static bool TryBuildTransmitter()
 {
 	TileIndex tile = RandomTile();
-	int h;
+	uint h;
 	if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h >= 4 && !IsBridgeAbove(tile)) {
 		TileIndex t = tile;
 		if (CircularTileSearch(&t, 9, HasTransmitter, nullptr)) return false;

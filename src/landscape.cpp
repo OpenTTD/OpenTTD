@@ -992,7 +992,7 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
  */
 static bool FindSpring(TileIndex tile, void *)
 {
-	int reference_height;
+	uint reference_height;
 	if (!IsTileFlat(tile, &reference_height) || IsWaterTile(tile)) return false;
 
 	/* In the tropics rivers start in the rainforest. */

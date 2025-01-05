@@ -269,7 +269,7 @@ std::tuple<Slope, int> GetTileSlopeZ(TileIndex tile);
 int GetTileZ(TileIndex tile);
 int GetTileMaxZ(TileIndex tile);
 
-bool IsTileFlat(TileIndex tile, int *h = nullptr);
+bool IsTileFlat(TileIndex tile, uint *h = nullptr);
 
 /**
  * Return the slope of a given tile inside the map.

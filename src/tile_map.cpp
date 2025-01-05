@@ -92,7 +92,7 @@ std::tuple<Slope, int> GetTilePixelSlopeOutsideMap(int x, int y)
  * @param h If not \c nullptr, pointer to storage of z height (only if tile is flat)
  * @return Whether the tile is flat
  */
-bool IsTileFlat(TileIndex tile, int *h)
+bool IsTileFlat(TileIndex tile, uint *h)
 {
 	uint x1 = TileX(tile);
 	uint y1 = TileY(tile);
