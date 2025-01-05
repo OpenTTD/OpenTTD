@@ -158,4 +158,31 @@ namespace StrongType {
 	};
 }
 
+/**
+ * Implementation of std::hash for StrongType::Typedef.
+ *
+ * This specialization of std::hash allows hashing of StrongType::Typedef instances
+ * by leveraging the hash of the base type.
+ *
+ * Example Usage:
+ *   using MyType = StrongType::Typedef<int, struct MyTypeTag>;
+ *   std::unordered_map<MyType, std::string> my_map;
+ *
+ * @tparam TBaseType The underlying type of the StrongType::Typedef.
+ * @tparam TProperties Additional properties for the StrongType::Typedef.
+ */
+template <typename TBaseType, typename... TProperties>
+struct std::hash<StrongType::Typedef<TBaseType, TProperties...>> {
+	/**
+	 * Computes the hash value for a StrongType::Typedef instance.
+	 *
+	 * @param t The StrongType::Typedef instance to hash.
+	 * @return The hash value of the base type of t.
+	 */
+	std::size_t operator()(const StrongType::Typedef<TBaseType, TProperties...> &t) const noexcept
+	{
+		return std::hash<TBaseType>()(t.base());
+	}
+};
+
 #endif /* STRONG_TYPEDEF_TYPE_HPP */
