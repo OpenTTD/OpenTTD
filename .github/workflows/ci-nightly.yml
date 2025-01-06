@@ -9,27 +9,6 @@ env:
   CTEST_OUTPUT_ON_FAILURE: 1
 
 jobs:
-  linux:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-        - name: GCC - SDL1.2
-          compiler: gcc
-          cxxcompiler: g++
-          libraries: libsdl1.2-dev
-
-    name: Linux (${{ matrix.name }})
-
-    uses: ./.github/workflows/ci-linux.yml
-    secrets: inherit
-
-    with:
-      compiler: ${{ matrix.compiler }}
-      cxxcompiler: ${{ matrix.cxxcompiler }}
-      libraries: ${{ matrix.libraries }}
-      extra-cmake-parameters:
-
   macos:
     strategy:
       fail-fast: false
