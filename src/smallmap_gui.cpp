@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "core/backup_type.hpp"
+#include "video/video_driver.hpp"
 #include "clear_map.h"
 #include "industry.h"
 #include "station_map.h"
@@ -1866,7 +1867,9 @@ public:
 
 	void OnScroll(Point delta) override
 	{
-		if (_settings_client.gui.scroll_mode == VSM_VIEWPORT_RMB_FIXED || _settings_client.gui.scroll_mode == VSM_MAP_RMB_FIXED) _cursor.fix_at = true;
+		if (_settings_client.gui.scroll_mode == VSM_VIEWPORT_RMB_FIXED || _settings_client.gui.scroll_mode == VSM_MAP_RMB_FIXED) {
+			VideoDriver::GetInstance()->FixMousePointer(true);
+		}
 
 		/* While tile is at (delta.x, delta.y)? */
 		int sub;

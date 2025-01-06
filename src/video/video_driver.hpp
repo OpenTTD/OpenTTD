@@ -88,6 +88,11 @@ public:
 	}
 
 	/**
+	 * Fix the mouse position position.
+	 */
+	virtual void FixMousePointer(bool fix_at) { _cursor.fix_at = fix_at; }
+
+	/**
 	 * Get whether the mouse cursor is drawn by the video driver.
 	 * @return True if cursor drawing is done by the video driver.
 	 */

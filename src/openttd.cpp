@@ -332,7 +332,7 @@ static void LoadIntroGame(bool load_newgrfs = true)
 
 	FixTitleGameZoom();
 	_pause_mode = PM_UNPAUSED;
-	_cursor.fix_at = false;
+	VideoDriver::GetInstance()->FixMousePointer(false);
 
 	CheckForMissingGlyphs();
 

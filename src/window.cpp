@@ -2365,7 +2365,7 @@ static EventState HandleViewportScroll()
 	if (_last_scroll_window == nullptr) _last_scroll_window = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
 	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != VSM_MAP_LMB && _right_button_down) || scrollwheel_scrolling || (_settings_client.gui.scroll_mode == VSM_MAP_LMB && _left_button_down))) {
-		_cursor.fix_at = false;
+		VideoDriver::GetInstance()->FixMousePointer(false);
 		_scrolling_viewport = false;
 		_last_scroll_window = nullptr;
 		return ES_NOT_HANDLED;
@@ -2820,7 +2820,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	if (vp != nullptr) {
 		if (scrollwheel_scrolling && !(w->flags & WF_DISABLE_VP_SCROLL)) {
 			_scrolling_viewport = true;
-			_cursor.fix_at = true;
+			VideoDriver::GetInstance()->FixMousePointer(true);
 			return;
 		}
 
@@ -2831,7 +2831,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 				if (!(w->flags & WF_DISABLE_VP_SCROLL) &&
 						_settings_client.gui.scroll_mode == VSM_MAP_LMB) {
 					_scrolling_viewport = true;
-					_cursor.fix_at = false;
+					VideoDriver::GetInstance()->FixMousePointer(false);
 					return;
 				}
 				break;
@@ -2840,8 +2840,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 				if (!(w->flags & WF_DISABLE_VP_SCROLL) &&
 						_settings_client.gui.scroll_mode != VSM_MAP_LMB) {
 					_scrolling_viewport = true;
-					_cursor.fix_at = (_settings_client.gui.scroll_mode == VSM_VIEWPORT_RMB_FIXED ||
-							_settings_client.gui.scroll_mode == VSM_MAP_RMB_FIXED);
+					VideoDriver::GetInstance()->FixMousePointer(_settings_client.gui.scroll_mode == VSM_VIEWPORT_RMB_FIXED || _settings_client.gui.scroll_mode == VSM_MAP_RMB_FIXED);
 					DispatchRightClickEvent(w, x - w->left, y - w->top);
 					return;
 				}
