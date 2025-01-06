@@ -1926,7 +1926,8 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :안 함
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :경제 변화: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :부드러운 경제에서는 생산량이 소량으로 자주 변하게 됩니다. 멈춘 경제에서는 생산량이 변하지 않고 산업시설의 폐쇄를 막습니다. 이 설정은 NewGRF로 추가한 산업시설에는 적용되지 않을 수 있습니다
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :부드러운 경제에서는 생산량이 소량으로 자주 변하게 됩니다. 멈춘 경제에서는 생산량이 변하지 않고 산업시설의 폐쇄를 막습니다. 이 설정은 NewGRF로 추가한 산업시설에는 적용되지 않을 수 있습니다.{}{}경제가 일시정지되어 있는 경우, 1개월당 산업시설 생산량은 (1개월과 정확히 같지 않지는 않은) 특정 고정 간격마다 계산되기 때문에 다르게 표시되어 보일 수 있습니다
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :부드러운 경제에서는 생산량이 소량으로 자주 변하게 됩니다. 멈춘 경제에서는 생산량이 변하지 않고 산업시설의 폐쇄를 막습니다. 이 설정은 NewGRF로 추가한 산업시설에는 적용되지 않을 수 있습니다.{}{}경제가 일시정지되어 있는 경우, 분당 산업시설 생산량은 (1분과 정확히 같지 않지는 않은) 특정 고정 간격마다 계산되기 때문에 다르게 표시되어 보일 수 있습니다
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :기본
@@ -5830,7 +5831,7 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}의 �
 STR_SAVEGAME_NAME_SPECTATOR                                     :관전자의 게임, {1:STRING}
 
 # Viewport strings
-STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
