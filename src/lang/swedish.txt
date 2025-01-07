@@ -1925,7 +1925,8 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldrig
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Typ av ekonomi: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Jämn ekonomi gör att produktionen ändrar sig oftare och i mindre steg. Frusen ekonomi förhindrar produktionsändringar och att industrier stänger. Denna inställning kan vara verkningslös om en NewGRF bidrar med industrityper
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Jämn ekonomi gör att produktionen ändrar sig oftare och i mindre steg. Frusen ekonomi förhindrar produktionsändringar och att industrier stänger. Denna inställning kan vara verkningslös om en NewGRF bidrar med industrityper.{}{}Om ekonomin är Frusen kan det ändå verka som att industriproduktionen per månad varierar eftersom att produktionen aktiveras med fasta intervall som inte helt överensstämmer med månaderna
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :Jämn ekonomi gör att produktionen ändrar sig oftare och i mindre steg. Frusen ekonomi förhindrar produktionsändringar och att industrier stänger. Denna inställning kan vara verkningslös om en NewGRF bidrar med industrityper.{}{}Om ekonomin är Frusen kan det ändå verka som att industriproduktionen per minut varierar eftersom att produktionen aktiveras med fasta intervall som inte helt överensstämmer med minuter
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
@@ -5829,7 +5830,7 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STR
 STR_SAVEGAME_NAME_SPECTATOR                                     :Åskådare, {1:STRING}
 
 # Viewport strings
-STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
