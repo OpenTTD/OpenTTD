@@ -15,7 +15,7 @@
 #include "station_type.h"
 #include "industry_type.h"
 
-void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1 = NR_NONE, uint32_t ref1 = UINT32_MAX, NewsReferenceType reftype2 = NR_NONE, uint32_t ref2 = UINT32_MAX, std::unique_ptr<NewsAllocatedData> &&data = nullptr);
+void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1 = NR_NONE, uint32_t ref1 = UINT32_MAX, NewsReferenceType reftype2 = NR_NONE, uint32_t ref2 = UINT32_MAX, std::unique_ptr<NewsAllocatedData> &&data = nullptr, AdviceType advice_type = AdviceType::Invalid);
 
 inline void AddCompanyNewsItem(StringID string, std::unique_ptr<CompanyNewsInformation> cni)
 {
@@ -37,9 +37,9 @@ inline void AddVehicleNewsItem(StringID string, NewsType type, VehicleID vehicle
  *
  * @warning DParam 0 must reference the vehicle!
  */
-inline void AddVehicleAdviceNewsItem(StringID string, VehicleID vehicle)
+inline void AddVehicleAdviceNewsItem(AdviceType advice_type, StringID string, VehicleID vehicle)
 {
-	AddNewsItem(string, NT_ADVICE, NF_INCOLOUR | NF_SMALL | NF_VEHICLE_PARAM0, NR_VEHICLE, vehicle);
+	AddNewsItem(string, NT_ADVICE, NF_INCOLOUR | NF_SMALL | NF_VEHICLE_PARAM0, NR_VEHICLE, vehicle, NR_NONE, {}, nullptr, advice_type);
 }
 
 inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, std::unique_ptr<NewsAllocatedData> &&data = nullptr, StationID station = INVALID_STATION)
@@ -58,7 +58,7 @@ void InitNewsItemStructs();
 const NewsItem *GetStatusbarNews();
 
 void DeleteInvalidEngineNews();
-void DeleteVehicleNews(VehicleID vid, StringID news);
+void DeleteVehicleNews(VehicleID vid, AdviceType advice_type = AdviceType::Invalid);
 void DeleteStationNews(StationID sid);
 void DeleteIndustryNews(IndustryID iid);
 
