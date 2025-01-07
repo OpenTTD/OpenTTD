@@ -10,6 +10,7 @@
 #ifndef LANDSCAPE_TYPE_H
 #define LANDSCAPE_TYPE_H
 
+#include "core/enum_type.hpp"
 typedef uint8_t LandscapeID; ///< Landscape type. @see LandscapeType
 
 /** Landscape types */
@@ -25,12 +26,15 @@ enum LandscapeType {
 /**
  * For storing the water borders which shall be retained.
  */
-enum Borders {
-	BORDER_NE = 0,
-	BORDER_SE = 1,
-	BORDER_SW = 2,
-	BORDER_NW = 3,
-	BORDERS_RANDOM = 16,
+enum class Borders : uint8_t {
+	None = 0,
+	NorthEast = 1U << 0, ///< Border on North East.
+	SouthEast = 1U << 1, ///< Border on South East.
+	SouthWest = 1U << 2, ///< Border on South West.
+	NorthWest = 1U << 3, ///< Border on North West.
+	Random = 1U << 4, ///< Randomise borders.
+	All = NorthEast | SouthEast | SouthWest | NorthWest, ///< Border on all sides.
 };
+DECLARE_ENUM_AS_BIT_SET(Borders)
 
 #endif /* LANDSCAPE_TYPE_H */
