@@ -148,7 +148,7 @@ Station::~Station()
 	RemoveOrderFromAllVehicles(OT_GOTO_STATION, this->index);
 
 	/* Remove all news items */
-	DeleteStationNews(this->index);
+	DeleteStationNews(this);
 
 	for (GoodsEntry &ge : this->goods) {
 		if (!ge.HasData()) continue;

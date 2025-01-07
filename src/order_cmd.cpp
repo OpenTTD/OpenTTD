@@ -626,7 +626,7 @@ static inline bool OrderGoesToStation(const Vehicle *v, const Order *o)
  */
 static void DeleteOrderWarnings(const Vehicle *v)
 {
-	DeleteVehicleNews(v->index, AdviceType::Order);
+	DeleteVehicleNews(v, AdviceType::Order);
 }
 
 /**
@@ -1768,7 +1768,7 @@ void CheckOrders(const Vehicle *v)
 		if (message == INVALID_STRING_ID) return;
 
 		SetDParam(0, v->index);
-		AddVehicleAdviceNewsItem(AdviceType::Order, message, v->index);
+		AddVehicleAdviceNewsItem(AdviceType::Order, message, v);
 	}
 }
 

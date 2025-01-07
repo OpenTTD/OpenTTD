@@ -11,11 +11,16 @@
 #define NEWS_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "engine_type.h"
 #include "gfx_type.h"
+#include "industry_type.h"
+#include "sound_type.h"
+#include "station_type.h"
+#include "strings_type.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
-#include "strings_type.h"
-#include "sound_type.h"
+#include "town_type.h"
+#include "vehicle_type.h"
 
 /**
  * Type of news.
@@ -73,6 +78,8 @@ enum NewsReferenceType : uint8_t {
 	NR_TOWN,      ///< Reference town.     Scroll to town when clicking on the news.
 	NR_ENGINE,    ///< Reference engine.
 };
+
+using NewsReference = std::variant<std::monostate, TileIndex, const Vehicle *, const Station *, const Industry *, const Town *, const Engine *>;
 
 /**
  * Various OR-able news-item flags.
@@ -148,16 +155,14 @@ struct NewsItem {
 	AdviceType advice_type; ///< The type of advice, to be able to remove specific advices later on.
 	NewsFlag flags;               ///< NewsFlags bits @see NewsFlag
 
-	NewsReferenceType reftype1;   ///< Type of ref1
-	NewsReferenceType reftype2;   ///< Type of ref2
-	uint32_t ref1;                  ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
-	uint32_t ref2;                  ///< Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
+	NewsReference ref1; ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
+	NewsReference ref2; ///< Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
 
 	std::unique_ptr<NewsAllocatedData> data; ///< Custom data for the news item that will be deallocated (deleted) when the news item has reached its end.
 
 	std::vector<StringParameterData> params; ///< Parameters for string resolving.
 
-	NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type);
+	NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type);
 };
 
 /**

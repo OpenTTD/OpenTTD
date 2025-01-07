@@ -34,7 +34,7 @@
 #include "safeguards.h"
 
 extern void ChangeVehicleViewports(VehicleID from_index, VehicleID to_index);
-extern void ChangeVehicleNews(VehicleID from_index, VehicleID to_index);
+extern void ChangeVehicleNews(const Vehicle *from, const Vehicle *to);
 extern void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index);
 
 /**
@@ -334,8 +334,8 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	if (!IsValidCargoID(refit_cargo)) {
 		if (!IsLocalCompany() || (flags & DC_EXEC) == 0) return CommandCost();
 
-		VehicleID old_veh_id = (old_veh->type == VEH_TRAIN) ? Train::From(old_veh)->First()->index : old_veh->index;
-		SetDParam(0, old_veh_id);
+		const Vehicle *old_front = (old_veh->type == VEH_TRAIN) ? Train::From(old_veh)->First() : old_veh;
+		SetDParam(0, old_front->index);
 
 		int order_id = GetIncompatibleRefitOrderIdForAutoreplace(old_veh, e);
 		if (order_id != -1) {
@@ -348,7 +348,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 			SetDParam(2, CargoSpec::Get(old_veh->cargo_type)->name);
 		}
 
-		AddVehicleAdviceNewsItem(AdviceType::AutorenewFailed, STR_NEWS_VEHICLE_AUTORENEW_FAILED, old_veh_id);
+		AddVehicleAdviceNewsItem(AdviceType::AutorenewFailed, STR_NEWS_VEHICLE_AUTORENEW_FAILED, old_front);
 		return CommandCost();
 	}
 
@@ -435,7 +435,7 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 		/* Switch vehicle windows/news to the new vehicle, so they are not closed/deleted when the old vehicle is sold */
 		ChangeVehicleViewports(old_head->index, new_head->index);
 		ChangeVehicleViewWindow(old_head->index, new_head->index);
-		ChangeVehicleNews(old_head->index, new_head->index);
+		ChangeVehicleNews(old_head, new_head);
 	}
 
 	return cost;

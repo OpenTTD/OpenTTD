@@ -475,8 +475,8 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
 		AddVehicleNewsItem(
 			STR_NEWS_FIRST_SHIP_ARRIVAL,
 			(v->owner == _local_company) ? NT_ARRIVAL_COMPANY : NT_ARRIVAL_OTHER,
-			v->index,
-			st->index
+			v,
+			st
 		);
 		AI::NewEvent(v->owner, new ScriptEventStationFirstVehicle(st->index, v->index));
 		Game::NewEvent(new ScriptEventStationFirstVehicle(st->index, v->index));

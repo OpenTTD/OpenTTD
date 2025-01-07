@@ -82,20 +82,43 @@ const NewsContainer &GetNews()
 }
 
 /**
+ * Encode a NewsReference for serialisation, e.g. for writing in the crash log.
+ * @param reference The reference to serialise.
+ * @return Reference serialised into a single uint32_t.
+ */
+uint32_t SerialiseNewsReference(const NewsReference &reference)
+{
+	struct visitor {
+		uint32_t operator()(const std::monostate &) { return 0; }
+		uint32_t operator()(const TileIndex &t) { return t.base(); }
+		uint32_t operator()(const Vehicle *v) { return v->index; }
+		uint32_t operator()(const Station *s) { return s->index; }
+		uint32_t operator()(const Industry *i) { return i->index; }
+		uint32_t operator()(const Town *t) { return t->index; }
+		uint32_t operator()(const Engine *e) { return e->index; }
+	};
+
+	return std::visit(visitor{}, reference);
+}
+
+/**
  * Get the position a news-reference is referencing.
- * @param reftype The type of reference.
- * @param ref     The reference.
+ * @param reference The reference.
  * @return A tile for the referenced object, or INVALID_TILE if none.
  */
-static TileIndex GetReferenceTile(NewsReferenceType reftype, uint32_t ref)
+static TileIndex GetReferenceTile(const NewsReference &reference)
 {
-	switch (reftype) {
-		case NR_TILE:     return (TileIndex)ref;
-		case NR_STATION:  return Station::Get((StationID)ref)->xy;
-		case NR_INDUSTRY: return Industry::Get((IndustryID)ref)->location.tile + TileDiffXY(1, 1);
-		case NR_TOWN:     return Town::Get((TownID)ref)->xy;
-		default:          return INVALID_TILE;
-	}
+	struct visitor {
+		TileIndex operator()(const std::monostate &) { return INVALID_TILE; }
+		TileIndex operator()(const TileIndex &t) { return t; }
+		TileIndex operator()(const Vehicle *) { return INVALID_TILE; }
+		TileIndex operator()(const Station *s) { return s->xy; }
+		TileIndex operator()(const Industry *i) { return i->location.tile + TileDiffXY(1, 1); }
+		TileIndex operator()(const Town *t) { return t->xy; }
+		TileIndex operator()(const Engine *) { return INVALID_TILE; }
+	};
+
+	return std::visit(visitor{}, reference);
 }
 
 /* Normal news items. */
@@ -366,8 +389,8 @@ struct NewsWindow : Window {
 		if (&desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->SetString(static_cast<StringID>(std::get<uint64_t>(this->ni->params[0])));
 
 		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP);
-		if (ni->reftype1 == NR_VEHICLE && nwid != nullptr) {
-			const Vehicle *v = Vehicle::Get(ni->ref1);
+		if (std::holds_alternative<const Vehicle *>(ni->ref1) && nwid != nullptr) {
+			const Vehicle *v = std::get<const Vehicle *>(ni->ref1);
 			switch (v->type) {
 				case VEH_TRAIN:
 					nwid->SetString(STR_TRAIN);
@@ -391,10 +414,10 @@ struct NewsWindow : Window {
 		/* Initialize viewport if it exists. */
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_N_VIEWPORT);
 		if (nvp != nullptr) {
-			if (ni->reftype1 == NR_VEHICLE) {
-				nvp->InitializeViewport(this, static_cast<VehicleID>(ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
+			if (std::holds_alternative<const Vehicle *>(ni->ref1)) {
+				nvp->InitializeViewport(this, std::get<const Vehicle *>(ni->ref1)->index, ScaleZoomGUI(ZOOM_LVL_NEWS));
 			} else {
-				nvp->InitializeViewport(this, GetReferenceTile(ni->reftype1, ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
+				nvp->InitializeViewport(this, GetReferenceTile(ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
 			}
 			if (this->ni->flags & NF_NO_TRANSPARENT) nvp->disp_flags |= ND_NO_TRANSPARENCY;
 			if ((this->ni->flags & NF_INCOLOUR) == 0) {
@@ -457,14 +480,13 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_VEH_INFO: {
-				assert(this->ni->reftype1 == NR_ENGINE);
-				EngineID engine = this->ni->ref1;
-				str = GetEngineInfoString(engine);
+				const Engine *engine = std::get<const Engine *>(this->ni->ref1);
+				str = GetEngineInfoString(engine->index);
 				break;
 			}
 
 			case WID_N_SHOW_GROUP:
-				if (this->ni->reftype1 == NR_VEHICLE) {
+				if (std::holds_alternative<const Vehicle *>(this->ni->ref1)) {
 					Dimension d2 = GetStringBoundingBox(this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP)->GetString());
 					d2.height += WidgetDimensions::scaled.captiontext.Vertical();
 					d2.width += WidgetDimensions::scaled.captiontext.Horizontal();
@@ -541,16 +563,14 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_VEH_SPR: {
-				assert(this->ni->reftype1 == NR_ENGINE);
-				EngineID engine = this->ni->ref1;
-				DrawVehicleEngine(r.left, r.right, CenterBounds(r.left, r.right, 0), CenterBounds(r.top, r.bottom, 0), engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
+				const Engine *engine = std::get<const Engine *>(this->ni->ref1);
+				DrawVehicleEngine(r.left, r.right, CenterBounds(r.left, r.right, 0), CenterBounds(r.top, r.bottom, 0), engine->index, GetEnginePalette(engine->index, _local_company), EIT_PREVIEW);
 				GfxFillRect(r.left, r.top, r.right, r.bottom, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}
 			case WID_N_VEH_INFO: {
-				assert(this->ni->reftype1 == NR_ENGINE);
-				EngineID engine = this->ni->ref1;
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, GetEngineInfoString(engine), TC_FROMSTRING, SA_CENTER);
+				const Engine *engine = std::get<const Engine *>(this->ni->ref1);
+				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, GetEngineInfoString(engine->index), TC_FROMSTRING, SA_CENTER);
 				break;
 			}
 		}
@@ -566,9 +586,8 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_CAPTION:
-				if (this->ni->reftype1 == NR_VEHICLE) {
-					const Vehicle *v = Vehicle::Get(this->ni->ref1);
-					ShowVehicleViewWindow(v);
+				if (std::holds_alternative<const Vehicle *>(this->ni->ref1)) {
+					ShowVehicleViewWindow(std::get<const Vehicle *>(this->ni->ref1));
 				}
 				break;
 
@@ -576,18 +595,17 @@ struct NewsWindow : Window {
 				break; // Ignore clicks
 
 			case WID_N_SHOW_GROUP:
-				if (this->ni->reftype1 == NR_VEHICLE) {
-					const Vehicle *v = Vehicle::Get(this->ni->ref1);
-					ShowCompanyGroupForVehicle(v);
+				if (std::holds_alternative<const Vehicle *>(this->ni->ref1)) {
+					ShowCompanyGroupForVehicle(std::get<const Vehicle *>(this->ni->ref1));
 				}
 				break;
 			default:
-				if (this->ni->reftype1 == NR_VEHICLE) {
-					const Vehicle *v = Vehicle::Get(this->ni->ref1);
+				if (std::holds_alternative<const Vehicle *>(this->ni->ref1)) {
+					const Vehicle *v = std::get<const Vehicle *>(this->ni->ref1);
 					ScrollMainWindowTo(v->x_pos, v->y_pos, v->z_pos);
 				} else {
-					TileIndex tile1 = GetReferenceTile(this->ni->reftype1, this->ni->ref1);
-					TileIndex tile2 = GetReferenceTile(this->ni->reftype2, this->ni->ref2);
+					TileIndex tile1 = GetReferenceTile(this->ni->ref1);
+					TileIndex tile2 = GetReferenceTile(this->ni->ref2);
 					if (_ctrl_pressed) {
 						if (tile1 != INVALID_TILE) ShowExtraViewportWindow(tile1);
 						if (tile2 != INVALID_TILE) ShowExtraViewportWindow(tile2);
@@ -607,8 +625,8 @@ struct NewsWindow : Window {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_N_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
 
-			if (ni->reftype1 != NR_VEHICLE) {
-				ScrollWindowToTile(GetReferenceTile(ni->reftype1, ni->ref1), this, true); // Re-center viewport.
+			if (!std::holds_alternative<const Vehicle *>(ni->ref1)) {
+				ScrollWindowToTile(GetReferenceTile(ni->ref1), this, true); // Re-center viewport.
 			}
 		}
 
@@ -677,16 +695,15 @@ private:
 
 	StringID GetNewVehicleMessageString(WidgetID widget) const
 	{
-		assert(this->ni->reftype1 == NR_ENGINE);
-		EngineID engine = this->ni->ref1;
+		const Engine *engine = std::get<const Engine *>(this->ni->ref1);
 
 		switch (widget) {
 			case WID_N_VEH_TITLE:
-				SetDParam(0, GetEngineCategoryName(engine));
+				SetDParam(0, GetEngineCategoryName(engine->index));
 				return STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE;
 
 			case WID_N_VEH_NAME:
-				SetDParam(0, PackEngineNameDParam(engine, EngineNameContext::PreviewNews));
+				SetDParam(0, PackEngineNameDParam(engine->index, EngineNameContext::PreviewNews));
 				return STR_NEWS_NEW_VEHICLE_TYPE;
 
 			default:
@@ -865,17 +882,15 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
  * @param string_id String to display.
  * @param type      The type of news.
  * @param flags     Flags related to how to display the news.
- * @param reftype1  Type of ref1.
  * @param ref1      Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
- * @param reftype2  Type of ref2.
  * @param ref2      Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
  * @param data      Pointer to data that must be released once the news message is cleared.
  * @param advice_type Sub-type in case the news type is #NT_ADVICE.
  *
  * @see NewsSubtype
  */
-NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
-	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), advice_type(advice_type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(std::move(data))
+NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
+	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), advice_type(advice_type), flags(flags), ref1(ref1), ref2(ref2), data(std::move(data))
 {
 	/* show this news message in colour? */
 	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
@@ -887,21 +902,19 @@ NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsRefere
  * @param string String to display
  * @param type news category
  * @param flags display flags for the news
- * @param reftype1 Type of ref1
  * @param ref1     Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
- * @param reftype2 Type of ref2
  * @param ref2     Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
  * @param data     Pointer to data that must be released once the news message is cleared.
  * @param advice_type Sub-type in case the news type is #NT_ADVICE.
  *
  * @see NewsSubtype
  */
-void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type)
+void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type)
 {
 	if (_game_mode == GM_MENU) return;
 
 	/* Create new news item node */
-	_news.emplace_front(string, type, flags, reftype1, ref1, reftype2, ref2, std::move(data), advice_type);
+	_news.emplace_front(string, type, flags, ref1, ref2, std::move(data), advice_type);
 
 	/* Keep the number of stored news items to a managable number */
 	if (std::size(_news) > MAX_NEWS_AMOUNT) {
@@ -929,30 +942,37 @@ CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceT
 	if (type >= NT_END) return CMD_ERROR;
 	if (text.empty()) return CMD_ERROR;
 
+	NewsReference news_reference{};
 	switch (reftype1) {
 		case NR_NONE: break;
 		case NR_TILE:
 			if (!IsValidTile(reference)) return CMD_ERROR;
+			news_reference = TileIndex{reference};
 			break;
 
 		case NR_VEHICLE:
 			if (!Vehicle::IsValidID(reference)) return CMD_ERROR;
+			news_reference = Vehicle::Get(reference);
 			break;
 
 		case NR_STATION:
 			if (!Station::IsValidID(reference)) return CMD_ERROR;
+			news_reference = Station::Get(reference);
 			break;
 
 		case NR_INDUSTRY:
 			if (!Industry::IsValidID(reference)) return CMD_ERROR;
+			news_reference = Industry::Get(reference);
 			break;
 
 		case NR_TOWN:
 			if (!Town::IsValidID(reference)) return CMD_ERROR;
+			news_reference = Town::Get(reference);
 			break;
 
 		case NR_ENGINE:
 			if (!Engine::IsValidID(reference)) return CMD_ERROR;
+			news_reference = Engine::Get(reference);
 			break;
 
 		default: return CMD_ERROR;
@@ -962,7 +982,7 @@ CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceT
 
 	if (flags & DC_EXEC) {
 		SetDParamStr(0, text);
-		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NF_NORMAL, reftype1, reference, NR_NONE, UINT32_MAX);
+		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NF_NORMAL, news_reference);
 	}
 
 	return CommandCost();
@@ -991,28 +1011,40 @@ void DeleteNews(Tpredicate predicate)
 	if (dirty) InvalidateWindowData(WC_MESSAGE_HISTORY, 0);
 }
 
+template <typename T>
+static bool IsReferenceObject(const NewsReference &reference, const T *object)
+{
+	return std::holds_alternative<const T *>(reference) && std::get<const T *>(reference) == object;
+}
+
+template <typename T>
+static bool HasReferenceObject(const NewsItem &ni, const T *object)
+{
+	return IsReferenceObject(ni.ref1, object) || IsReferenceObject(ni.ref2, object);
+}
+
 /**
  * Delete news with a given advice type about a vehicle.
  * When the advice_type is #AdviceType::Invalid all news about the vehicle gets deleted.
- * @param vid  The vehicle to remove the news for.
+ * @param v  The vehicle to remove the news for.
  * @param advice_type The advice type to remove for.
  */
-void DeleteVehicleNews(VehicleID vid, AdviceType advice_type)
+void DeleteVehicleNews(const Vehicle *v, AdviceType advice_type)
 {
 	DeleteNews([&](const auto &ni) {
-		return ((ni.reftype1 == NR_VEHICLE && ni.ref1 == vid) || (ni.reftype2 == NR_VEHICLE && ni.ref2 == vid)) && (advice_type == AdviceType::Invalid || ni.advice_type == advice_type);
+		return HasReferenceObject(ni, v) && (advice_type == AdviceType::Invalid || ni.advice_type == advice_type);
 	});
 }
 
 /**
  * Remove news regarding given station so there are no 'unknown station now accepts Mail'
  * or 'First train arrived at unknown station' news items.
- * @param sid station to remove news about
+ * @param s station to remove news about
  */
-void DeleteStationNews(StationID sid)
+void DeleteStationNews(const Station *s)
 {
 	DeleteNews([&](const auto &ni) {
-		return (ni.reftype1 == NR_STATION && ni.ref1 == sid) || (ni.reftype2 == NR_STATION && ni.ref2 == sid);
+		return HasReferenceObject(ni, s);
 	});
 }
 
@@ -1020,21 +1052,20 @@ void DeleteStationNews(StationID sid)
  * Remove news regarding given industry
  * @param iid industry to remove news about
  */
-void DeleteIndustryNews(IndustryID iid)
+void DeleteIndustryNews(const Industry *i)
 {
 	DeleteNews([&](const auto &ni) {
-		return (ni.reftype1 == NR_INDUSTRY && ni.ref1 == iid) || (ni.reftype2 == NR_INDUSTRY && ni.ref2 == iid);
+		return HasReferenceObject(ni, i);
 	});
 }
 
 /**
- * Remove engine announcements for invalid engines.
+ * Remove engine announcements.
  */
-void DeleteInvalidEngineNews()
+void DeleteEngineNews()
 {
 	DeleteNews([](const auto &ni) {
-		return (ni.reftype1 == NR_ENGINE && (!Engine::IsValidID(ni.ref1) || !Engine::Get(ni.ref1)->IsEnabled())) ||
-				(ni.reftype2 == NR_ENGINE && (!Engine::IsValidID(ni.ref2) || !Engine::Get(ni.ref2)->IsEnabled()));
+		return std::holds_alternative<const Engine *>(ni.ref1) || std::holds_alternative<const Engine *>(ni.ref2);
 	});
 }
 
@@ -1045,18 +1076,25 @@ static void RemoveOldNewsItems()
 	});
 }
 
+template <typename T>
+static void ChangeObject(NewsReference reference, const T *from, const T *to)
+{
+	if (!std::holds_alternative<const T *>(reference)) return;
+	if (std::get<const T *>(reference) == from) reference = to;
+}
+
 /**
  * Report a change in vehicle IDs (due to autoreplace) to affected vehicle news.
  * @note Viewports of currently displayed news is changed via #ChangeVehicleViewports
- * @param from_index the old vehicle ID
- * @param to_index the new vehicle ID
+ * @param from the old vehicle
+ * @param to the new vehicle
  */
-void ChangeVehicleNews(VehicleID from_index, VehicleID to_index)
+void ChangeVehicleNews(const Vehicle *from, const Vehicle *to)
 {
 	for (auto &ni : _news) {
-		if (ni.reftype1 == NR_VEHICLE && ni.ref1 == from_index) ni.ref1 = to_index;
-		if (ni.reftype2 == NR_VEHICLE && ni.ref2 == from_index) ni.ref2 = to_index;
-		if (ni.flags & NF_VEHICLE_PARAM0 && std::get<uint64_t>(ni.params[0]) == from_index) ni.params[0] = to_index;
+		ChangeObject(ni.ref1, from, to);
+		ChangeObject(ni.ref2, from, to);
+		if (ni.flags & NF_VEHICLE_PARAM0 && std::get<uint64_t>(ni.params[0]) == from->index) ni.params[0] = to->index;
 	}
 }
 

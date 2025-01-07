@@ -193,7 +193,7 @@ Industry::~Industry()
 	auto it = std::ranges::lower_bound(industries, this->index);
 	industries.erase(it);
 
-	DeleteIndustryNews(this->index);
+	DeleteIndustryNews(this);
 	CloseWindowById(WC_INDUSTRY_VIEW, this->index);
 	DeleteNewGRFInspectWindow(GSF_INDUSTRIES, this->index);
 
@@ -1722,7 +1722,7 @@ static void AdvertiseIndustryOpening(const Industry *ind)
 	} else {
 		SetDParam(1, ind->town->index);
 	}
-	AddIndustryNewsItem(ind_spc->new_industry_text, NT_INDUSTRY_OPEN, ind->index);
+	AddIndustryNewsItem(ind_spc->new_industry_text, NT_INDUSTRY_OPEN, ind);
 	AI::BroadcastNewEvent(new ScriptEventIndustryOpen(ind->index));
 	Game::NewEvent(new ScriptEventIndustryOpen(ind->index));
 }
@@ -2199,7 +2199,7 @@ CommandCost CmdIndustrySetProduction(DoCommandFlag flags, IndustryID ind_id, uin
 			} else {
 				SetDParam(0, ind->index);
 			}
-			AddIndustryNewsItem(str, nt, ind->index);
+			AddIndustryNewsItem(str, nt, ind);
 		}
 	}
 
@@ -2780,7 +2780,7 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 	AddIndustryNewsItem(
 		percent >= 0 ? STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH : STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH,
 		nt,
-		ind->index
+		ind
 	);
 }
 
@@ -2996,7 +2996,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		if (closeit) {
 			AddTileNewsItem(str, nt, i->location.tile + TileDiffXY(1, 1));
 		} else {
-			AddIndustryNewsItem(str, nt, i->index);
+			AddIndustryNewsItem(str, nt, i);
 		}
 	}
 }

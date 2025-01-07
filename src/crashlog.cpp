@@ -18,6 +18,7 @@
 #include "saveload/saveload.h"
 #include "screenshot.h"
 #include "network/network_survey.h"
+#include "news_func.h"
 #include "news_gui.h"
 #include "fileio_func.h"
 #include "fileio_type.h"
@@ -60,7 +61,8 @@ static void SurveyRecentNews(nlohmann::json &json)
 		TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(news.date);
 		json.push_back(fmt::format("({}-{:02}-{:02}) StringID: {}, Type: {}, Ref1: {}, {}, Ref2: {}, {}",
 		               ymd.year, ymd.month + 1, ymd.day, news.string_id, news.type,
-		               news.reftype1, news.ref1, news.reftype2, news.ref2));
+		               news.ref1.index(), SerialiseNewsReference(news.ref1),
+		               news.ref2.index(), SerialiseNewsReference(news.ref2)));
 		if (++i > 32) break;
 	}
 }

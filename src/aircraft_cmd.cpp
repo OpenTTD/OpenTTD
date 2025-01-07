@@ -1357,7 +1357,7 @@ static void CrashAirplane(Aircraft *v)
 		newstype = NT_ACCIDENT_OTHER;
 	}
 
-	AddTileNewsItem(newsitem, newstype, vt, nullptr, st != nullptr ? st->index : INVALID_STATION);
+	AddTileNewsItem(newsitem, newstype, vt, st);
 
 	ModifyStationRatingAround(vt, v->owner, -160, 30);
 	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, v);
@@ -1413,8 +1413,8 @@ static void AircraftEntersTerminal(Aircraft *v)
 		AddVehicleNewsItem(
 			STR_NEWS_FIRST_AIRCRAFT_ARRIVAL,
 			(v->owner == _local_company) ? NT_ARRIVAL_COMPANY : NT_ARRIVAL_OTHER,
-			v->index,
-			st->index
+			v,
+			st
 		);
 		AI::NewEvent(v->owner, new ScriptEventStationFirstVehicle(st->index, v->index));
 		Game::NewEvent(new ScriptEventStationFirstVehicle(st->index, v->index));
@@ -2064,7 +2064,7 @@ static void AircraftHandleDestTooFar(Aircraft *v, bool too_far)
 			if (v->owner == _local_company) {
 				/* Post a news message. */
 				SetDParam(0, v->index);
-				AddVehicleAdviceNewsItem(AdviceType::AircraftDestinationTooFar, STR_NEWS_AIRCRAFT_DEST_TOO_FAR, v->index);
+				AddVehicleAdviceNewsItem(AdviceType::AircraftDestinationTooFar, STR_NEWS_AIRCRAFT_DEST_TOO_FAR, v);
 			}
 		}
 		return;
@@ -2074,7 +2074,7 @@ static void AircraftHandleDestTooFar(Aircraft *v, bool too_far)
 		/* Not too far anymore, clear flag and message. */
 		ClrBit(v->flags, VAF_DEST_TOO_FAR);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
-		DeleteVehicleNews(v->index, AdviceType::AircraftDestinationTooFar);
+		DeleteVehicleNews(v, AdviceType::AircraftDestinationTooFar);
 	}
 }
 

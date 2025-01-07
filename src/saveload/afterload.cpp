@@ -3402,7 +3402,7 @@ void ReloadNewGRFData()
 	/* Check and update house and town values */
 	UpdateHousesAndTowns();
 	/* Delete news referring to no longer existing entities */
-	DeleteInvalidEngineNews();
+	DeleteEngineNews();
 	/* Update livery selection windows */
 	for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) InvalidateWindowData(WC_COMPANY_COLOUR, i);
 	/* Update company infrastructure counts. */
