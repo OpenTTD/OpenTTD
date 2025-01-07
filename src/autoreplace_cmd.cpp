@@ -348,7 +348,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 			SetDParam(2, CargoSpec::Get(old_veh->cargo_type)->name);
 		}
 
-		AddVehicleAdviceNewsItem(STR_NEWS_VEHICLE_AUTORENEW_FAILED, old_veh_id);
+		AddVehicleAdviceNewsItem(AdviceType::AutorenewFailed, STR_NEWS_VEHICLE_AUTORENEW_FAILED, old_veh_id);
 		return CommandCost();
 	}
 

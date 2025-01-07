@@ -4009,7 +4009,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 				/* Show message to player. */
 				if (_settings_client.gui.lost_vehicle_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
-					AddVehicleAdviceNewsItem(STR_NEWS_TRAIN_IS_STUCK, v->index);
+					AddVehicleAdviceNewsItem(AdviceType::TrainStuck, STR_NEWS_TRAIN_IS_STUCK, v->index);
 				}
 				v->wait_counter = 0;
 			}

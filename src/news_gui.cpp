@@ -870,11 +870,12 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
  * @param reftype2  Type of ref2.
  * @param ref2      Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
  * @param data      Pointer to data that must be released once the news message is cleared.
+ * @param advice_type Sub-type in case the news type is #NT_ADVICE.
  *
  * @see NewsSubtype
  */
-NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data) :
-	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(std::move(data))
+NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
+	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), advice_type(advice_type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(std::move(data))
 {
 	/* show this news message in colour? */
 	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
@@ -891,15 +892,16 @@ NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsRefere
  * @param reftype2 Type of ref2
  * @param ref2     Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
  * @param data     Pointer to data that must be released once the news message is cleared.
+ * @param advice_type Sub-type in case the news type is #NT_ADVICE.
  *
  * @see NewsSubtype
  */
-void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data)
+void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type)
 {
 	if (_game_mode == GM_MENU) return;
 
 	/* Create new news item node */
-	_news.emplace_front(string, type, flags, reftype1, ref1, reftype2, ref2, std::move(data));
+	_news.emplace_front(string, type, flags, reftype1, ref1, reftype2, ref2, std::move(data), advice_type);
 
 	/* Keep the number of stored news items to a managable number */
 	if (std::size(_news) > MAX_NEWS_AMOUNT) {
@@ -990,15 +992,15 @@ void DeleteNews(Tpredicate predicate)
 }
 
 /**
- * Delete a news item type about a vehicle.
- * When the news item type is INVALID_STRING_ID all news about the vehicle gets deleted.
+ * Delete news with a given advice type about a vehicle.
+ * When the advice_type is #AdviceType::Invalid all news about the vehicle gets deleted.
  * @param vid  The vehicle to remove the news for.
- * @param news The news type to remove.
+ * @param advice_type The advice type to remove for.
  */
-void DeleteVehicleNews(VehicleID vid, StringID news)
+void DeleteVehicleNews(VehicleID vid, AdviceType advice_type)
 {
 	DeleteNews([&](const auto &ni) {
-		return ((ni.reftype1 == NR_VEHICLE && ni.ref1 == vid) || (ni.reftype2 == NR_VEHICLE && ni.ref2 == vid)) && (news == INVALID_STRING_ID || ni.string_id == news);
+		return ((ni.reftype1 == NR_VEHICLE && ni.ref1 == vid) || (ni.reftype2 == NR_VEHICLE && ni.ref2 == vid)) && (advice_type == AdviceType::Invalid || ni.advice_type == advice_type);
 	});
 }
 

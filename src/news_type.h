@@ -40,6 +40,21 @@ enum NewsType : uint8_t {
 	NT_END,             ///< end-of-array marker
 };
 
+/** Sub type of the #NT_ADVICE to be able to remove specific news items. */
+enum class AdviceType : uint8_t {
+	AircraftDestinationTooFar, ///< Next (order) destination is too far for the aircraft type.
+	AutorenewFailed, ///< Autorenew or autoreplace failed.
+	Order, ///< Something wrong with the order, e.g. invalid or duplicate entries, too few entries
+	RefitFailed, ///< The refit order failed to execute.
+	TrainStuck, ///< The train got stuck and needs to be unstuck manually.
+	VehicleLost, ///< The vehicle has become lost.
+	VehicleOld, ///< The vehicle is starting to get old.
+	VehicleUnprofitable, ///< The vehicle is costing you money.
+	VehicleWaiting, ///< The vehicle is waiting in the depot.
+
+	Invalid
+};
+
 /**
  * References to objects in news.
  *
@@ -63,7 +78,7 @@ enum NewsReferenceType : uint8_t {
  * Various OR-able news-item flags.
  * @note #NF_INCOLOUR is set automatically if needed.
  */
-enum NewsFlag {
+enum NewsFlag : uint8_t {
 	NFB_INCOLOUR       = 0,                      ///< News item is shown in colour (otherwise it is shown in black & white).
 	NFB_NO_TRANSPARENT = 1,                      ///< News item disables transparency in the viewport.
 	NFB_SHADE          = 2,                      ///< News item uses shaded colours.
@@ -130,6 +145,7 @@ struct NewsItem {
 	TimerGameCalendar::Date date; ///< Calendar date to show for the news
 	TimerGameEconomy::Date economy_date; ///< Economy date of the news item, never shown but used to calculate age
 	NewsType type;                ///< Type of the news
+	AdviceType advice_type; ///< The type of advice, to be able to remove specific advices later on.
 	NewsFlag flags;               ///< NewsFlags bits @see NewsFlag
 
 	NewsReferenceType reftype1;   ///< Type of ref1
@@ -141,7 +157,7 @@ struct NewsItem {
 
 	std::vector<StringParameterData> params; ///< Parameters for string resolving.
 
-	NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data);
+	NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type);
 };
 
 /**
