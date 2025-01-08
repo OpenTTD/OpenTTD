@@ -127,7 +127,7 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 			}
 			if (callback >= 0x800 && callback < 0xC00) {
 				StartTextRefStackUsage(indspec->grf_prop.grffile, 6);
-				suffix.text = GetString(GetGRFStringID(indspec->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback));
+				suffix.text = GetString(GetGRFStringID(indspec->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback - 0x800));
 				StopTextRefStackUsage();
 				suffix.display = CSD_CARGO_TEXT;
 				return;
