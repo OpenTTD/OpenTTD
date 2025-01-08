@@ -479,11 +479,11 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_RIVER_PULLDOWN:      SetDParam(0, _rivers[_settings_newgame.game_creation.amount_of_rivers]); break;
 			case WID_GL_SMOOTHNESS_PULLDOWN: SetDParam(0, _smoothness[_settings_newgame.game_creation.tgen_smoothness]); break;
 			case WID_GL_VARIETY_PULLDOWN:    SetDParam(0, _variety[_settings_newgame.game_creation.variety]); break;
-			case WID_GL_BORDERS_RANDOM:      SetDParam(0, (_settings_newgame.game_creation.water_borders == BORDERS_RANDOM) ? STR_MAPGEN_BORDER_RANDOMIZE : STR_MAPGEN_BORDER_MANUAL); break;
-			case WID_GL_WATER_NE: SetDParam(0, (_settings_newgame.game_creation.water_borders == BORDERS_RANDOM) ? STR_MAPGEN_BORDER_RANDOM : HasBit(_settings_newgame.game_creation.water_borders, BORDER_NE) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM); break;
-			case WID_GL_WATER_NW: SetDParam(0, (_settings_newgame.game_creation.water_borders == BORDERS_RANDOM) ? STR_MAPGEN_BORDER_RANDOM : HasBit(_settings_newgame.game_creation.water_borders, BORDER_NW) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM); break;
-			case WID_GL_WATER_SE: SetDParam(0, (_settings_newgame.game_creation.water_borders == BORDERS_RANDOM) ? STR_MAPGEN_BORDER_RANDOM : HasBit(_settings_newgame.game_creation.water_borders, BORDER_SE) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM); break;
-			case WID_GL_WATER_SW: SetDParam(0, (_settings_newgame.game_creation.water_borders == BORDERS_RANDOM) ? STR_MAPGEN_BORDER_RANDOM : HasBit(_settings_newgame.game_creation.water_borders, BORDER_SW) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM); break;
+			case WID_GL_BORDERS_RANDOM:      SetDParam(0, (_settings_newgame.game_creation.water_borders == Borders::Random) ? STR_MAPGEN_BORDER_RANDOMIZE : STR_MAPGEN_BORDER_MANUAL); break;
+			case WID_GL_WATER_NE: SetDParam(0, (_settings_newgame.game_creation.water_borders == Borders::Random) ? STR_MAPGEN_BORDER_RANDOM : HasFlag(_settings_newgame.game_creation.water_borders, Borders::NorthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM); break;
+			case WID_GL_WATER_NW: SetDParam(0, (_settings_newgame.game_creation.water_borders == Borders::Random) ? STR_MAPGEN_BORDER_RANDOM : HasFlag(_settings_newgame.game_creation.water_borders, Borders::NorthWest) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM); break;
+			case WID_GL_WATER_SE: SetDParam(0, (_settings_newgame.game_creation.water_borders == Borders::Random) ? STR_MAPGEN_BORDER_RANDOM : HasFlag(_settings_newgame.game_creation.water_borders, Borders::SouthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM); break;
+			case WID_GL_WATER_SW: SetDParam(0, (_settings_newgame.game_creation.water_borders == Borders::Random) ? STR_MAPGEN_BORDER_RANDOM : HasFlag(_settings_newgame.game_creation.water_borders, Borders::SouthWest) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM); break;
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: SetDParam(0, _rotation[_settings_newgame.game_creation.heightmap_rotation]); break;
 
 			case WID_GL_HEIGHTMAP_SIZE_TEXT:
@@ -517,15 +517,15 @@ struct GenerateLandscapeWindow : public Window {
 			this->SetWidgetDisabledState(WID_GL_SMOOTHNESS_PULLDOWN, _settings_newgame.game_creation.land_generator == LG_ORIGINAL);
 			this->SetWidgetDisabledState(WID_GL_VARIETY_PULLDOWN, _settings_newgame.game_creation.land_generator == LG_ORIGINAL);
 			this->SetWidgetDisabledState(WID_GL_BORDERS_RANDOM, _settings_newgame.game_creation.land_generator == LG_ORIGINAL || !_settings_newgame.construction.freeform_edges);
-			this->SetWidgetsDisabledState(_settings_newgame.game_creation.land_generator == LG_ORIGINAL || !_settings_newgame.construction.freeform_edges || _settings_newgame.game_creation.water_borders == BORDERS_RANDOM,
+			this->SetWidgetsDisabledState(_settings_newgame.game_creation.land_generator == LG_ORIGINAL || !_settings_newgame.construction.freeform_edges || _settings_newgame.game_creation.water_borders == Borders::Random,
 					WID_GL_WATER_NW, WID_GL_WATER_NE, WID_GL_WATER_SE, WID_GL_WATER_SW);
 
-			this->SetWidgetLoweredState(WID_GL_BORDERS_RANDOM, _settings_newgame.game_creation.water_borders == BORDERS_RANDOM);
+			this->SetWidgetLoweredState(WID_GL_BORDERS_RANDOM, _settings_newgame.game_creation.water_borders == Borders::Random);
 
-			this->SetWidgetLoweredState(WID_GL_WATER_NW, HasBit(_settings_newgame.game_creation.water_borders, BORDER_NW));
-			this->SetWidgetLoweredState(WID_GL_WATER_NE, HasBit(_settings_newgame.game_creation.water_borders, BORDER_NE));
-			this->SetWidgetLoweredState(WID_GL_WATER_SE, HasBit(_settings_newgame.game_creation.water_borders, BORDER_SE));
-			this->SetWidgetLoweredState(WID_GL_WATER_SW, HasBit(_settings_newgame.game_creation.water_borders, BORDER_SW));
+			this->SetWidgetLoweredState(WID_GL_WATER_NW, HasFlag(_settings_newgame.game_creation.water_borders, Borders::NorthWest));
+			this->SetWidgetLoweredState(WID_GL_WATER_NE, HasFlag(_settings_newgame.game_creation.water_borders, Borders::NorthEast));
+			this->SetWidgetLoweredState(WID_GL_WATER_SE, HasFlag(_settings_newgame.game_creation.water_borders, Borders::SouthEast));
+			this->SetWidgetLoweredState(WID_GL_WATER_SW, HasFlag(_settings_newgame.game_creation.water_borders, Borders::SouthWest));
 
 			this->SetWidgetsDisabledState(_settings_newgame.game_creation.land_generator == LG_ORIGINAL && (_settings_newgame.game_creation.landscape == LT_ARCTIC || _settings_newgame.game_creation.landscape == LT_TROPIC),
 					WID_GL_TERRAIN_PULLDOWN, WID_GL_WATER_PULLDOWN);
@@ -829,27 +829,27 @@ struct GenerateLandscapeWindow : public Window {
 
 			/* Freetype map borders */
 			case WID_GL_WATER_NW:
-				_settings_newgame.game_creation.water_borders = ToggleBit(_settings_newgame.game_creation.water_borders, BORDER_NW);
+				ToggleFlag(_settings_newgame.game_creation.water_borders, Borders::NorthWest);
 				this->InvalidateData();
 				break;
 
 			case WID_GL_WATER_NE:
-				_settings_newgame.game_creation.water_borders = ToggleBit(_settings_newgame.game_creation.water_borders, BORDER_NE);
+				ToggleFlag(_settings_newgame.game_creation.water_borders, Borders::NorthEast);
 				this->InvalidateData();
 				break;
 
 			case WID_GL_WATER_SE:
-				_settings_newgame.game_creation.water_borders = ToggleBit(_settings_newgame.game_creation.water_borders, BORDER_SE);
+				ToggleFlag(_settings_newgame.game_creation.water_borders, Borders::SouthEast);
 				this->InvalidateData();
 				break;
 
 			case WID_GL_WATER_SW:
-				_settings_newgame.game_creation.water_borders = ToggleBit(_settings_newgame.game_creation.water_borders, BORDER_SW);
+				ToggleFlag(_settings_newgame.game_creation.water_borders, Borders::SouthWest);
 				this->InvalidateData();
 				break;
 
 			case WID_GL_BORDERS_RANDOM:
-				_settings_newgame.game_creation.water_borders = (_settings_newgame.game_creation.water_borders == BORDERS_RANDOM) ? 0 : BORDERS_RANDOM;
+				_settings_newgame.game_creation.water_borders = (_settings_newgame.game_creation.water_borders == Borders::Random) ? Borders::None : Borders::Random;
 				this->InvalidateData();
 				break;
 

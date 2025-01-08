@@ -60,4 +60,19 @@ debug_inline constexpr bool HasFlag(const T x, const T y)
 	return (x & y) == y;
 }
 
+/**
+ * Toggle a value in a bitset enum.
+ * @param x The value to change.
+ * @param y The flag to toggle.
+ */
+template <typename T, class = typename std::enable_if_t<std::is_enum_v<T>>>
+debug_inline constexpr void ToggleFlag(T &x, const T y)
+{
+	if (HasFlag(x, y)) {
+		x &= ~y;
+	} else {
+		x |= y;
+	}
+}
+
 #endif /* ENUM_TYPE_HPP */
