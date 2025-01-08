@@ -458,6 +458,8 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	static uint32_t keycode = 0;
 	static bool console = false;
 
+	const float SCROLL_BUILTIN_MULTIPLIER = 14.0f / WHEEL_DELTA;
+
 	VideoDriver_Win32Base *video_driver = (VideoDriver_Win32Base *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
 
 	switch (msg) {
@@ -768,6 +770,9 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 #if !defined(WM_MOUSEWHEEL)
 # define WM_MOUSEWHEEL 0x020A
 #endif  /* WM_MOUSEWHEEL */
+#if !defined(WM_MOUSEHWHEEL)
+# define WM_MOUSEHWHEEL 0x020E
+#endif  /* WM_MOUSEHWHEEL */
 #if !defined(GET_WHEEL_DELTA_WPARAM)
 # define GET_WHEEL_DELTA_WPARAM(wparam) ((short)HIWORD(wparam))
 #endif  /* GET_WHEEL_DELTA_WPARAM */
@@ -780,6 +785,18 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			} else if (delta > 0) {
 				_cursor.wheel--;
 			}
+
+			_cursor.v_wheel -= static_cast<float>(delta) * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
+			_cursor.wheel_moved = true;
+			HandleMouseEvents();
+			return 0;
+		}
+
+		case WM_MOUSEHWHEEL: {
+			int delta = GET_WHEEL_DELTA_WPARAM(wParam);
+
+			_cursor.h_wheel += static_cast<float>(delta) * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
+			_cursor.wheel_moved = true;
 			HandleMouseEvents();
 			return 0;
 		}
