@@ -829,14 +829,28 @@ bool DecrementTreeCounter()
 	return old_trees_tick_ctr <= _trees_tick_ctr;
 }
 
+/**
+ * Place a random tree on a random tile.
+ * @param rainforest If set the random tile must be in a rainforest zone.
+ */
+static void PlantRandomTree(bool rainforest)
+{
+	uint32_t r = Random();
+	TileIndex tile = RandomTileSeed(r);
+
+	if (rainforest && GetTropicZone(tile) != TROPICZONE_RAINFOREST) return;
+	if (!CanPlantTreesOnTile(tile, false)) return;
+
+	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8));
+	if (tree == TREE_INVALID) return;
+
+	PlantTreesOnTile(tile, tree, 0, TreeGrowthStage::Growing1);
+}
+
 void OnTick_Trees()
 {
 	/* Don't spread trees if that's not allowed */
 	if (_settings_game.construction.extra_tree_placement == ETP_NO_SPREAD || _settings_game.construction.extra_tree_placement == ETP_NO_GROWTH_NO_SPREAD) return;
-
-	uint32_t r;
-	TileIndex tile;
-	TreeType tree;
 
 	/* Skip some tree ticks for map sizes below 256 * 256. 64 * 64 is 16 times smaller, so
 	 * this is the maximum number of ticks that are skipped. Number of ticks to skip is
@@ -847,22 +861,14 @@ void OnTick_Trees()
 	/* place a tree at a random rainforest spot */
 	if (_settings_game.game_creation.landscape == LT_TROPIC) {
 		for (uint c = Map::ScaleBySize(1); c > 0; c--) {
-			if ((r = Random(), tile = RandomTileSeed(r), GetTropicZone(tile) == TROPICZONE_RAINFOREST) &&
-				CanPlantTreesOnTile(tile, false) &&
-				(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
-				PlantTreesOnTile(tile, tree, 0, TreeGrowthStage::Growing1);
-			}
+			PlantRandomTree(true);
 		}
 	}
 
 	if (!DecrementTreeCounter() || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST) return;
 
 	/* place a tree at a random spot */
-	r = Random();
-	tile = RandomTileSeed(r);
-	if (CanPlantTreesOnTile(tile, false) && (tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
-		PlantTreesOnTile(tile, tree, 0, TreeGrowthStage::Growing1);
-	}
+	PlantRandomTree(false);
 }
 
 static TrackStatus GetTileTrackStatus_Trees(TileIndex, TransportType, uint, DiagDirection)
