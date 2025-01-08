@@ -1925,7 +1925,8 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Không bao gi�
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Nền kinh tế: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Nền kinh tế vận hành trơn tru sẽ có nhiều thay đổi về mặt sản xuất, ở từng bước nhỏ. Nền kinh tế đóng băng sẽ không có thay đổi về mặt sản xuất và nhà máy sẽ không đóng cửa. Thiết lập này có thể không có tác dụng nếu các loại hình công nghiệp được cung cấp bởi NewGRF
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Kinh tế mượt mà (Smooth economy) làm thay đổi sản lượng thường xuyên hơn và theo từng bước nhỏ. Kinh tế đóng băng (Frozen economy) ngừng mọi thay đổi sản lượng và ngăn việc đóng cửa các ngành công nghiệp. Thiết lập này có thể không có hiệu lực nếu loại hình công nghiệp được cung cấp bởi NewGRF.{}{}Sản lượng ngành công nghiệp mỗi tháng vẫn có thể thay đổi khi nền kinh tế bị đóng băng, do sản lượng được kích hoạt ở các khoảng thời gian cố định, không hoàn toàn khớp với các tháng thực tế
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :Kinh tế mượt mà (Smooth economy) làm thay đổi sản lượng thường xuyên hơn và theo từng bước nhỏ. Kinh tế đóng băng (Frozen economy) ngừng mọi thay đổi sản lượng và ngăn việc đóng cửa các ngành công nghiệp. Thiết lập này có thể không có hiệu lực nếu loại hình công nghiệp được cung cấp bởi NewGRF.{}{}Sản lượng ngành công nghiệp mỗi phút vẫn có thể thay đổi khi nền kinh tế bị đóng băng, do sản lượng được kích hoạt ở các khoảng thời gian cố định, không hoàn toàn khớp với các phút thực tế
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Nguyên gốc
@@ -5829,7 +5830,7 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STR
 STR_SAVEGAME_NAME_SPECTATOR                                     :Tham quan, {1:STRING}
 
 # Viewport strings
-STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data

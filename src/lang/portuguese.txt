@@ -98,25 +98,25 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}pa
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de carvão
 STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correio
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petróleo
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} ite{P m ns} de gado
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}ite{P m ns} de gado
 STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}caixa{P "" s} de bens
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de cereais
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de madeira
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de minério de ferro
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} de aço
-STR_QUANTITY_VALUABLES                                          :{COMMA} saco{P "" s} de valores
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}saco{P "" s} de valores
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de minério de cobre
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de milho
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fruta
-STR_QUANTITY_DIAMONDS                                           :{COMMA} saco{P "" s} de diamantes
+STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}saco{P "" s} de diamantes
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de alimentos
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de papel
-STR_QUANTITY_GOLD                                               :{COMMA} saco{P "" s} de ouro
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}saco{P "" s} de ouro
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} de água
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} de trigo
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de borracha
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de açúcar
-STR_QUANTITY_TOYS                                               :{COMMA} brinquedo{P "" s}
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}brinquedo{P "" s}
 STR_QUANTITY_SWEETS                                             :{COMMA} saco{P "" s} de doces
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de bebida de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de algodão doce
@@ -2231,7 +2231,7 @@ STR_QUIT_YES                                                    :{BLACK}Sim
 STR_QUIT_NO                                                     :{BLACK}Não
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandonar jogo
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandonar Jogo
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Tem a certeza que deseja abandonar este jogo?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Tem a certeza que deseja abandonar este cenário?
 
@@ -4796,10 +4796,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Marcado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alternar entre tempo esperado e marcado
 
-STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
-STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DATE_TINY}
-STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} seg
-STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} seg
+STR_TIMETABLE_ARRIVAL_DATE                                      :C: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :P: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :C: {COLOUR}{COMMA} seg
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :P: {COLOUR}{COMMA} seg
 
 
 # Date window (for timetable)
@@ -5023,7 +5023,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Não é 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... o empréstimo máximo permitido é de {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Não é possível pedir mais dinheiro emprestado...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... não há empréstimo para pagar
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... necessário {CURRENCY_LONG}
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... é necessário {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Não é possível pagar empréstimo...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Não é possível ceder capital proveniente de empréstimo bancário...
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Não pode dar dinheiro a esta empresa...
@@ -5456,7 +5456,7 @@ STR_INDUSTRY_NAME_FARM                                          :{G=f}Quinta
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Mina de Cobre
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=mp}Poços de Petróleo
 STR_INDUSTRY_NAME_BANK                                          :{G=m}Banco
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Indústria Alimentar
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Indústria Alimentar
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Fábrica de Papel
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Mina de Ouro
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Banco
