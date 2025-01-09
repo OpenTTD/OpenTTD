@@ -63,9 +63,9 @@
 #ifdef WITH_LZO
 #include <lzo/lzo1x.h>
 #endif
-#if defined(WITH_SDL) || defined(WITH_SDL2)
-#	include <SDL.h>
-#endif /* WITH_SDL || WITH_SDL2 */
+#ifdef WITH_SDL2
+#include <SDL.h>
+#endif /* WITH_SDL2 */
 #ifdef WITH_ZLIB
 # include <zlib.h>
 #endif
@@ -436,10 +436,7 @@ void SurveyLibraries(nlohmann::json &survey)
 	survey["png"] = png_get_libpng_ver(nullptr);
 #endif /* WITH_PNG */
 
-#ifdef WITH_SDL
-	const SDL_version *sdl_v = SDL_Linked_Version();
-	survey["sdl"] = fmt::format("{}.{}.{}", sdl_v->major, sdl_v->minor, sdl_v->patch);
-#elif defined(WITH_SDL2)
+#ifdef WITH_SDL2
 	SDL_version sdl2_v;
 	SDL_GetVersion(&sdl2_v);
 	survey["sdl2"] = fmt::format("{}.{}.{}", sdl2_v.major, sdl2_v.minor, sdl2_v.patch);
