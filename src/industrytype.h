@@ -202,6 +202,4 @@ inline IndustryGfx GetTranslatedIndustryTileID(IndustryGfx gfx)
 	}
 }
 
-static const uint8_t IT_INVALID = 255;
-
 #endif /* INDUSTRYTYPE_H */

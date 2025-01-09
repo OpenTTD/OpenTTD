@@ -210,13 +210,13 @@ uint16_t GetAiPurchaseCallbackResult(uint8_t feature, CargoID cargo_type, uint8_
 	if (src_industry != IT_AI_UNKNOWN && src_industry != IT_AI_TOWN) {
 		const IndustrySpec *is = GetIndustrySpec(src_industry);
 		/* If this is no original industry, use the substitute type */
-		if (is->grf_prop.subst_id != INVALID_INDUSTRYTYPE) src_industry = is->grf_prop.subst_id;
+		if (is->grf_prop.subst_id != IT_INVALID) src_industry = is->grf_prop.subst_id;
 	}
 
 	if (dst_industry != IT_AI_UNKNOWN && dst_industry != IT_AI_TOWN) {
 		const IndustrySpec *is = GetIndustrySpec(dst_industry);
 		/* If this is no original industry, use the substitute type */
-		if (is->grf_prop.subst_id != INVALID_INDUSTRYTYPE) dst_industry = is->grf_prop.subst_id;
+		if (is->grf_prop.subst_id != IT_INVALID) dst_industry = is->grf_prop.subst_id;
 	}
 
 	object.generic_scope.cargo_type        = cargo_type;

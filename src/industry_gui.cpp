@@ -316,7 +316,7 @@ class BuildIndustryWindow : public Window {
 
 	void UpdateAvailability()
 	{
-		this->enabled = this->selected_type != INVALID_INDUSTRYTYPE && (_game_mode == GM_EDITOR || GetIndustryProbabilityCallback(this->selected_type, IACT_USERCREATION, 1) > 0);
+		this->enabled = this->selected_type != IT_INVALID && (_game_mode == GM_EDITOR || GetIndustryProbabilityCallback(this->selected_type, IACT_USERCREATION, 1) > 0);
 	}
 
 	void SetupArrays()
@@ -335,7 +335,7 @@ class BuildIndustryWindow : public Window {
 				 * and raw ones are loaded only when setting allows it */
 				if (_game_mode != GM_EDITOR && indsp->IsRawIndustry() && _settings_game.construction.raw_industry_construction == 0) {
 					/* Unselect if the industry is no longer in the list */
-					if (this->selected_type == ind) this->selected_type = INVALID_INDUSTRYTYPE;
+					if (this->selected_type == ind) this->selected_type = IT_INVALID;
 					continue;
 				}
 
@@ -344,7 +344,7 @@ class BuildIndustryWindow : public Window {
 		}
 
 		/* First industry type is selected if the current selection is invalid. */
-		if (this->selected_type == INVALID_INDUSTRYTYPE && !this->list.empty()) this->selected_type = this->list[0];
+		if (this->selected_type == IT_INVALID && !this->list.empty()) this->selected_type = this->list[0];
 
 		this->UpdateAvailability();
 
@@ -354,8 +354,8 @@ class BuildIndustryWindow : public Window {
 	/** Update status of the fund and display-chain widgets. */
 	void SetButtons()
 	{
-		this->SetWidgetDisabledState(WID_DPI_FUND_WIDGET, this->selected_type != INVALID_INDUSTRYTYPE && !this->enabled);
-		this->SetWidgetDisabledState(WID_DPI_DISPLAY_WIDGET, this->selected_type == INVALID_INDUSTRYTYPE && this->enabled);
+		this->SetWidgetDisabledState(WID_DPI_FUND_WIDGET, this->selected_type != IT_INVALID && !this->enabled);
+		this->SetWidgetDisabledState(WID_DPI_DISPLAY_WIDGET, this->selected_type == IT_INVALID && this->enabled);
 	}
 
 	/**
@@ -406,7 +406,7 @@ class BuildIndustryWindow : public Window {
 public:
 	BuildIndustryWindow() : Window(_build_industry_desc)
 	{
-		this->selected_type = INVALID_INDUSTRYTYPE;
+		this->selected_type = IT_INVALID;
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_DPI_SCROLLBAR);
@@ -512,7 +512,7 @@ public:
 					/* We've chosen many random industries but no industries have been specified */
 					SetDParam(0, STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY);
 				} else {
-					if (this->selected_type != INVALID_INDUSTRYTYPE) {
+					if (this->selected_type != IT_INVALID) {
 						const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
 						SetDParam(0, (_settings_game.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY : STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
 					} else {
@@ -558,7 +558,7 @@ public:
 			case WID_DPI_INFOPANEL: {
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 
-				if (this->selected_type == INVALID_INDUSTRYTYPE) {
+				if (this->selected_type == IT_INVALID) {
 					DrawStringMultiLine(ir, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP);
 					break;
 				}
@@ -676,11 +676,11 @@ public:
 			}
 
 			case WID_DPI_DISPLAY_WIDGET:
-				if (this->selected_type != INVALID_INDUSTRYTYPE) ShowIndustryCargoesWindow(this->selected_type);
+				if (this->selected_type != IT_INVALID) ShowIndustryCargoesWindow(this->selected_type);
 				break;
 
 			case WID_DPI_FUND_WIDGET: {
-				if (this->selected_type != INVALID_INDUSTRYTYPE) {
+				if (this->selected_type != IT_INVALID) {
 					if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && GetIndustrySpec(this->selected_type)->IsRawIndustry()) {
 						Command<CMD_BUILD_INDUSTRY>::Post(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY, TileIndex{}, this->selected_type, 0, false, InteractiveRandom());
 						this->HandleButtonClick(WID_DPI_FUND_WIDGET);
@@ -734,7 +734,7 @@ public:
 
 	IntervalTimer<TimerWindow> update_interval = {std::chrono::seconds(3), [this](auto) {
 		if (_game_mode == GM_EDITOR) return;
-		if (this->selected_type == INVALID_INDUSTRYTYPE) return;
+		if (this->selected_type == IT_INVALID) return;
 
 		bool enabled = this->enabled;
 		this->UpdateAvailability();

@@ -28,7 +28,7 @@
 /* Since the industry IDs defined by the GRF file don't necessarily correlate
  * to those used by the game, the IDs used for overriding old industries must be
  * translated when the idustry spec is set. */
-IndustryOverrideManager _industry_mngr(NEW_INDUSTRYOFFSET, NUM_INDUSTRYTYPES, INVALID_INDUSTRYTYPE);
+IndustryOverrideManager _industry_mngr(NEW_INDUSTRYOFFSET, NUM_INDUSTRYTYPES, IT_INVALID);
 IndustryTileOverrideManager _industile_mngr(NEW_INDUSTRYTILEOFFSET, NUM_INDUSTRYTILES, INVALID_INDUSTRYTILE);
 
 /**
