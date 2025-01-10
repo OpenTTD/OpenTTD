@@ -31,7 +31,7 @@ struct GRFFile;
 
 SpriteID GetCustomCargoSprite(const CargoSpec *cs);
 uint16_t GetCargoCallback(CallbackID callback, uint32_t param1, uint32_t param2, const CargoSpec *cs);
-CargoID GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit = false);
+CargoID GetCargoTranslation(uint16_t cargo, const GRFFile *grffile, bool usebit = false);
 
 std::span<const CargoLabel> GetClimateDependentCargoTranslationTable();
 std::span<const CargoLabel> GetClimateIndependentCargoTranslationTable();

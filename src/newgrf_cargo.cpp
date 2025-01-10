@@ -77,7 +77,7 @@ uint16_t GetCargoCallback(CallbackID callback, uint32_t param1, uint32_t param2,
  *                For GRF version >= 7 \a cargo is always a translated cargo bit.
  * @return CargoID or INVALID_CARGO if the cargo is not available.
  */
-CargoID GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit)
+CargoID GetCargoTranslation(uint16_t cargo, const GRFFile *grffile, bool usebit)
 {
 	/* We can't use GetCargoTranslationTable here as the usebit flag changes behviour. */
 	/* Pre-version 7 uses the bitnum lookup from (standard in v8) instead of climate dependent in some places.. */

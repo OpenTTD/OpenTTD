@@ -148,8 +148,8 @@ struct DeterministicSpriteGroupAdjust {
 	DeterministicSpriteGroupAdjustOperation operation;
 	DeterministicSpriteGroupAdjustType type;
 	uint8_t variable;
-	uint8_t parameter; ///< Used for variables between 0x60 and 0x7F inclusive.
 	uint8_t shift_num;
+	uint32_t parameter; ///< Used for variables between 0x60 and 0x7F inclusive.
 	uint32_t and_mask;
 	uint32_t add_val;
 	uint32_t divmod_val;

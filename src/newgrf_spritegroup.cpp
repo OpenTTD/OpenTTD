@@ -268,7 +268,7 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 	}
 
 	uint32_t mask = ((uint)this->groups.size() - 1) << this->lowest_randbit;
-	uint8_t index = (scope->GetRandomBits() & mask) >> this->lowest_randbit;
+	uint16_t index = (scope->GetRandomBits() & mask) >> this->lowest_randbit;
 
 	return SpriteGroup::Resolve(this->groups[index], object, false);
 }

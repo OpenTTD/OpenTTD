@@ -97,11 +97,11 @@ enum GrfSpecFeature {
 static const uint32_t INVALID_GRFID = 0xFFFFFFFF;
 
 struct GRFLabel {
-	uint8_t label;
+	uint16_t label;
 	uint32_t nfo_line;
 	size_t pos;
 
-	GRFLabel(uint8_t label, uint32_t nfo_line, size_t pos) : label(label), nfo_line(nfo_line), pos(pos) {}
+	GRFLabel(uint16_t label, uint32_t nfo_line, size_t pos) : label(label), nfo_line(nfo_line), pos(pos) {}
 };
 
 /** Dynamic data of a loaded NewGRF */
