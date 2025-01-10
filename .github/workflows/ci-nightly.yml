@@ -48,7 +48,6 @@ jobs:
   check_annotations:
     name: Check Annotations
     needs:
-    - linux
     - macos
     - mingw
 
