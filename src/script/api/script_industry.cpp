@@ -214,7 +214,7 @@
 
 /* static */ IndustryType ScriptIndustry::GetIndustryType(IndustryID industry_id)
 {
-	if (!IsValidIndustry(industry_id)) return INVALID_INDUSTRYTYPE;
+	if (!IsValidIndustry(industry_id)) return IT_INVALID;
 
 	return ::Industry::Get(industry_id)->type;
 }

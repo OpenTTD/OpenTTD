@@ -160,7 +160,7 @@
 
 /* static */ IndustryType ScriptIndustryType::ResolveNewGRFID(SQInteger grfid, SQInteger grf_local_id)
 {
-	EnforcePrecondition(INVALID_INDUSTRYTYPE, IsInsideBS(grf_local_id, 0x00, NUM_INDUSTRYTYPES_PER_GRF));
+	EnforcePrecondition(IT_INVALID, IsInsideBS(grf_local_id, 0x00, NUM_INDUSTRYTYPES_PER_GRF));
 
 	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
 	return _industry_mngr.GetID(grf_local_id, grfid);

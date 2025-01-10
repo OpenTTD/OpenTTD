@@ -23,8 +23,8 @@ static const IndustryID INVALID_INDUSTRY = 0xFFFF;
 static const IndustryType NUM_INDUSTRYTYPES_PER_GRF = 128;            ///< maximum number of industry types per NewGRF; limited to 128 because bit 7 has a special meaning in some variables/callbacks (see MapNewGRFIndustryType).
 
 static const IndustryType NEW_INDUSTRYOFFSET     = 37;                ///< original number of industry types
-static const IndustryType NUM_INDUSTRYTYPES      = 240;               ///< total number of industry types, new and old; limited to 240 because we need some special ids like INVALID_INDUSTRYTYPE, IT_AI_UNKNOWN, IT_AI_TOWN, ...
-static const IndustryType INVALID_INDUSTRYTYPE   = NUM_INDUSTRYTYPES; ///< one above amount is considered invalid
+static const IndustryType NUM_INDUSTRYTYPES      = 240;               ///< total number of industry types, new and old; limited to 240 because we need some special ids like IT_INVALID, IT_AI_UNKNOWN, IT_AI_TOWN, ...
+static const IndustryType IT_INVALID             = 0xFF;
 
 static const IndustryGfx  NUM_INDUSTRYTILES_PER_GRF = 255;            ///< Maximum number of industry tiles per NewGRF; limited to 255 to allow extending Action3 with an extended byte later on.
 
