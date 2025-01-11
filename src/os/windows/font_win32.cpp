@@ -64,7 +64,18 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	if (info->callback->Monospace() && (logfont->elfLogFont.lfPitchAndFamily & (FF_MODERN | FIXED_PITCH)) != (FF_MODERN | FIXED_PITCH)) return 1;
 
 	/* The font has to have at least one of the supported locales to be usable. */
-	if ((metric->ntmFontSig.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (metric->ntmFontSig.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
+	auto check_bitfields = [&]() {
+		/* First try Unicode Subset Bitfield. */
+		for (uint8_t i = 0; i < 4; i++) {
+			if ((metric->ntmFontSig.fsUsb[i] & info->locale.lsUsb[i]) != 0) return true;
+		}
+		/* Keep Code Page Bitfield as a fallback. */
+		for (uint8_t i = 0; i < 2; i++) {
+			if ((metric->ntmFontSig.fsCsb[i] & info->locale.lsCsbSupported[i]) != 0) return true;
+		}
+		return false;
+	};
+	if (!check_bitfields()) return 1;
 
 	char font_name[MAX_PATH];
 	convert_from_fs(logfont->elfFullName, font_name);
