@@ -5051,8 +5051,8 @@ static void ReserveChangeInfo(ByteReader &buf)
 	if (feature != GSF_CARGOES && feature != GSF_GLOBALVAR && feature != GSF_RAILTYPES && feature != GSF_ROADTYPES && feature != GSF_TRAMTYPES) return;
 
 	uint8_t numprops = buf.ReadByte();
-	uint8_t numinfo  = buf.ReadByte();
-	uint8_t index    = buf.ReadExtendedByte();
+	uint8_t numinfo = buf.ReadByte();
+	uint16_t index = buf.ReadExtendedByte();
 
 	while (numprops-- && buf.HasData()) {
 		uint8_t prop = buf.ReadByte();
