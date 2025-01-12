@@ -23,25 +23,13 @@
 
 /** A tile child sprite and palette to draw for stations etc, with 3D bounding box */
 struct DrawTileSeqStruct {
-	int8_t delta_x; ///< \c 0x80 is sequence terminator
-	int8_t delta_y;
-	int8_t delta_z; ///< \c 0x80 identifies child sprites
-	uint8_t size_x;
-	uint8_t size_y;
-	uint8_t size_z;
-	PalSpriteID image;
-
-	/** Make this struct a sequence terminator. */
-	void MakeTerminator()
-	{
-		this->delta_x = (int8_t)0x80;
-	}
-
-	/** Check whether this is a sequence terminator. */
-	bool IsTerminator() const
-	{
-		return (uint8_t)this->delta_x == 0x80;
-	}
+	int8_t delta_x = 0;
+	int8_t delta_y = 0;
+	int8_t delta_z = 0; ///< \c 0x80 identifies child sprites
+	uint8_t size_x = 0;
+	uint8_t size_y = 0;
+	uint8_t size_z = 0;
+	PalSpriteID image{};
 
 	/** Check whether this is a parent sprite with a boundingbox. */
 	bool IsParentSprite() const
@@ -95,9 +83,6 @@ struct DrawBuildingsTileStruct {
 	uint8_t dz;
 	uint8_t draw_proc;  // this allows to specify a special drawing procedure.
 };
-
-/** Iterate through all DrawTileSeqStructs in DrawTileSprites. */
-#define foreach_draw_tile_seq(idx, list) for (idx = list.data(); !idx->IsTerminator(); idx++)
 
 void DrawCommonTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
 void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);

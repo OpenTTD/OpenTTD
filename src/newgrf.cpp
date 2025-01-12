@@ -2010,12 +2010,12 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 
 					std::vector<DrawTileSeqStruct> tmp_layout;
 					for (;;) {
+						uint8_t delta_x = buf.ReadByte();
+						if (delta_x == 0x80) break;
+
 						/* no relative bounding box support */
 						DrawTileSeqStruct &dtss = tmp_layout.emplace_back();
-						MemSetT(&dtss, 0);
-
-						dtss.delta_x = buf.ReadByte();
-						if (dtss.IsTerminator()) break;
+						dtss.delta_x = delta_x;
 						dtss.delta_y = buf.ReadByte();
 						dtss.delta_z = buf.ReadByte();
 						dtss.size_x = buf.ReadByte();
