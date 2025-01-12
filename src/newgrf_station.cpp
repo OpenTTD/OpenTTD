@@ -794,7 +794,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	uint32_t relocation = 0;
 	uint32_t ground_relocation = 0;
 	const NewGRFSpriteLayout *layout = nullptr;
-	DrawTileSprites tmp_rail_layout;
+	DrawTileSpriteSpan tmp_rail_layout;
 
 	if (statspec->renderdata.empty()) {
 		sprites = GetStationTileLayout(StationType::Rail, tile + axis);

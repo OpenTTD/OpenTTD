@@ -293,7 +293,7 @@ const DrawTileSprites *TileLayoutSpriteGroup::ProcessRegisters(uint8_t *stage) c
 		return &this->dts;
 	}
 
-	static DrawTileSprites result;
+	static DrawTileSpriteSpan result;
 	uint8_t actual_stage = stage != nullptr ? *stage : 0;
 	this->dts.PrepareLayout(0, 0, 0, actual_stage, false);
 	this->dts.ProcessRegisters(0, 0, false);

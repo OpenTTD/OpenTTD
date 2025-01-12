@@ -32,7 +32,7 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 	bool parent_sprite_encountered = false;
 	const DrawTileSeqStruct *dtss;
 	bool skip_childs = false;
-	foreach_draw_tile_seq(dtss, dts->seq) {
+	foreach_draw_tile_seq(dtss, dts->GetSequence()) {
 		SpriteID image = dtss->image.sprite;
 		PaletteID pal = dtss->image.pal;
 
@@ -95,7 +95,7 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32_t or
 	Point child_offset = {0, 0};
 
 	bool skip_childs = false;
-	foreach_draw_tile_seq(dtss, dts->seq) {
+	foreach_draw_tile_seq(dtss, dts->GetSequence()) {
 		SpriteID image = dtss->image.sprite;
 		PaletteID pal = dtss->image.pal;
 

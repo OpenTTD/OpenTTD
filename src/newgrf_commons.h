@@ -110,6 +110,7 @@ static const uint TLR_MAX_VAR10 = 7; ///< Maximum value for var 10.
  * layouts on the heap. It allocates data and frees them on destruction.
  */
 struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
+	std::vector<DrawTileSeqStruct> seq;
 	const TileLayoutRegisters *registers;
 
 	/**
@@ -120,7 +121,6 @@ struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 
 	void Allocate(uint num_sprites);
 	void AllocateRegisters();
-	void Clone(const DrawTileSeqStruct *source);
 	void Clone(const NewGRFSpriteLayout *source);
 
 	/**
@@ -130,13 +130,15 @@ struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 	void Clone(const DrawTileSprites *source)
 	{
 		assert(source != nullptr && this != source);
+
+		auto source_sequence = source->GetSequence();
+		assert(this->seq.empty() && !source_sequence.empty());
 		this->ground = source->ground;
-		this->Clone(source->seq);
+		this->seq.insert(this->seq.end(), source_sequence.begin(), source_sequence.end());
 	}
 
 	virtual ~NewGRFSpriteLayout()
 	{
-		free(this->seq);
 		free(this->registers);
 	}
 
@@ -159,12 +161,14 @@ struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 	 * @pre #PrepareLayout() and #ProcessRegisters() need calling first.
 	 * @return result spritelayout
 	 */
-	const DrawTileSeqStruct *GetLayout(PalSpriteID *ground) const
+	std::span<DrawTileSeqStruct> GetLayout(PalSpriteID *ground) const
 	{
-		DrawTileSeqStruct *front = result_seq.data();
-		*ground = front->image;
-		return front + 1;
+		*ground = result_seq[0].image;
+		return {++result_seq.begin(), result_seq.end()};
 	}
+
+	std::span<const DrawTileSeqStruct> GetSequence() const override { return {this->seq.begin(), this->seq.end()}; }
+
 
 private:
 	static std::vector<DrawTileSeqStruct> result_seq; ///< Temporary storage when preprocessing spritelayouts.

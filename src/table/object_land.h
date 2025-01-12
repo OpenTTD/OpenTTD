@@ -34,7 +34,7 @@ static const DrawTileSeqStruct _object_owned_land_seq[] = {
 	TILE_SEQ_END()
 };
 
-extern const DrawTileSprites _objects[] = {
+extern const DrawTileSpriteSpan _objects[] = {
 	{ { SPR_FLAT_2_THIRD_GRASS_TILE, PAL_NONE }, _object_transmitter_seq },
 	{ { SPR_FLAT_2_THIRD_GRASS_TILE, PAL_NONE }, _object_lighthouse_seq  },
 	{ { SPR_CONCRETE_GROUND,         PAL_NONE }, _object_statue_seq      },
@@ -92,7 +92,7 @@ static const DrawTileSeqStruct _object_hq_huge_west[] = {
 
 #define TILE_SPRITE_LINE(img, dtss) { {img | (1 << PALETTE_MODIFIER_COLOUR), PAL_NONE}, dtss },
 
-static const DrawTileSprites _object_hq[] = {
+static const DrawTileSpriteSpan _object_hq[] = {
 	TILE_SPRITE_LINE(SPR_TINYHQ_NORTH,         _object_nothing)
 	TILE_SPRITE_LINE(SPR_TINYHQ_WEST,          _object_nothing)
 	TILE_SPRITE_LINE(SPR_TINYHQ_EAST,          _object_nothing)

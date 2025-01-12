@@ -1999,7 +1999,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 
 					if (buf.HasData(4) && buf.PeekDWord() == 0) {
 						buf.Skip(4);
-						extern const DrawTileSprites _station_display_datas_rail[8];
+						extern const DrawTileSpriteSpan _station_display_datas_rail[8];
 						dts->Clone(&_station_display_datas_rail[t % 8]);
 						continue;
 					}
@@ -2008,8 +2008,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 					/* On error, bail out immediately. Temporary GRF data was already freed */
 					if (_cur.skip_sprites < 0) return CIR_DISABLED;
 
-					static std::vector<DrawTileSeqStruct> tmp_layout;
-					tmp_layout.clear();
+					std::vector<DrawTileSeqStruct> tmp_layout;
 					for (;;) {
 						/* no relative bounding box support */
 						DrawTileSeqStruct &dtss = tmp_layout.emplace_back();
@@ -2027,7 +2026,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 						/* On error, bail out immediately. Temporary GRF data was already freed */
 						if (_cur.skip_sprites < 0) return CIR_DISABLED;
 					}
-					dts->Clone(tmp_layout.data());
+					dts->seq = std::move(tmp_layout);
 				}
 
 				/* Number of layouts must be even, alternating X and Y */
