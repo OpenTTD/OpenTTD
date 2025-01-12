@@ -852,7 +852,7 @@ void Vehicle::PreDestructor()
 		Aircraft *a = Aircraft::From(this);
 		Station *st = GetTargetAirportIfValid(a);
 		if (st != nullptr) {
-			const AirportFTA *layout = st->airport.GetFTA()->layout;
+			const auto &layout = st->airport.GetFTA()->layout;
 			CLRBITS(st->airport.flags, layout[a->previous_pos].block | layout[a->pos].block);
 		}
 	}
