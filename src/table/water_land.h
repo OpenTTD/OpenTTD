@@ -23,7 +23,7 @@
 #define TILE_SEQ_END() { (int8_t)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
 /**
- * Constructor macro of a DrawTileSprites structure
+ * Constructor macro of a DrawTileSpriteSpan structure
  * @param img   Ground sprite without palette of the tile
  * @param dtss  Sequence child sprites of the tile
  */
@@ -51,7 +51,7 @@ static const DrawTileSeqStruct _shipdepot_display_seq_4[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSprites _shipdepot_display_data[][DEPOT_PART_END] = {
+static const DrawTileSpriteSpan _shipdepot_display_data[][DEPOT_PART_END] = {
 	{ // AXIS_X
 		TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_1) // DEPOT_PART_NORTH
 		TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_2) // DEPOT_PART_SOUTH
@@ -134,7 +134,7 @@ static const DrawTileSeqStruct _lock_display_seq_3t[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSprites _lock_display_data[][DIAGDIR_END] = {
+static const DrawTileSpriteSpan _lock_display_data[][DIAGDIR_END] = {
 	{ // LOCK_PART_MIDDLE
 		TILE_SPRITE_LINE(1, _lock_display_seq_0) // NE
 		TILE_SPRITE_LINE(0, _lock_display_seq_1) // SE

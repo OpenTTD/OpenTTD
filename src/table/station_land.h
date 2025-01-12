@@ -796,14 +796,14 @@ static const DrawTileSeqStruct _station_display_datas_waypoint_Y[] = {
 #undef TILE_SEQ_GROUND
 
 /**
- * Constructor macro of a DrawTileSprites structure
+ * Constructor macro of a DrawTileSpriteSpan structure
  * @param img   Ground sprite without palette of the tile
  * @param dtss  Sequence child sprites of the tile
  */
 #define TILE_SPRITE_LINE(img, dtss) { {img, PAL_NONE}, dtss },
-#define TILE_SPRITE_NULL() { {0, 0}, nullptr },
+#define TILE_SPRITE_NULL() { {0, 0} },
 
-extern const DrawTileSprites _station_display_datas_rail[] = {
+extern const DrawTileSpriteSpan _station_display_datas_rail[] = {
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_0)
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_Y,               _station_display_datas_1)
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_2)
@@ -814,7 +814,7 @@ extern const DrawTileSprites _station_display_datas_rail[] = {
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_Y,               _station_display_datas_7)
 };
 
-static const DrawTileSprites _station_display_datas_airport[] = {
+static const DrawTileSpriteSpan _station_display_datas_airport[] = {
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_nothing)  // APT_APRON
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_fence_nw) // APT_APRON_FENCE_NW
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_fence_sw) // APT_APRON_FENCE_SW
@@ -891,7 +891,7 @@ static const DrawTileSprites _station_display_datas_airport[] = {
 	TILE_SPRITE_NULL() // APT_GRASS_FENCE_NE_FLAG_2
 };
 
-static const DrawTileSprites _station_display_datas_airport_radar_grass_fence_sw[] = {
+static const DrawTileSpriteSpan _station_display_datas_airport_radar_grass_fence_sw[] = {
 	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_radar_1_fence_sw) // APT_RADAR_GRASS_FENCE_SW
 	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_radar_2_fence_sw)
 	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_radar_3_fence_sw)
@@ -906,14 +906,14 @@ static const DrawTileSprites _station_display_datas_airport_radar_grass_fence_sw
 	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_radar_12_fence_sw)
 };
 
-static const DrawTileSprites _station_display_datas_airport_flag_grass_fence_ne[] = {
+static const DrawTileSpriteSpan _station_display_datas_airport_flag_grass_fence_ne[] = {
 	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_D,           _station_display_flag_1_fence_ne) // APT_GRASS_FENCE_NE_FLAG
 	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_D,           _station_display_flag_2_fence_ne)
 	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_D,           _station_display_flag_3_fence_ne)
 	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_D,           _station_display_flag_4_fence_ne)
 };
 
-static const DrawTileSprites _station_display_datas_airport_radar_fence_sw[] = {
+static const DrawTileSpriteSpan _station_display_datas_airport_radar_fence_sw[] = {
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_radar_1_fence_sw) // APT_RADAR_FENCE_SW
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_radar_2_fence_sw)
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_radar_3_fence_sw)
@@ -928,7 +928,7 @@ static const DrawTileSprites _station_display_datas_airport_radar_fence_sw[] = {
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_radar_12_fence_sw)
 };
 
-static const DrawTileSprites _station_display_datas_airport_radar_fence_ne[] = {
+static const DrawTileSpriteSpan _station_display_datas_airport_radar_fence_ne[] = {
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_radar_1_fence_ne) // APT_RADAR_FENCE_NE
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_radar_2_fence_ne)
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_radar_3_fence_ne)
@@ -943,7 +943,7 @@ static const DrawTileSprites _station_display_datas_airport_radar_fence_ne[] = {
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_radar_12_fence_ne)
 };
 
-static const DrawTileSprites _station_display_datas_airport_flag_grass_fence_ne_2[] = {
+static const DrawTileSpriteSpan _station_display_datas_airport_flag_grass_fence_ne_2[] = {
 	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_flag_1_fence_ne) // APT_GRASS_FENCE_NE_FLAG_2
 	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_flag_2_fence_ne)
 	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_flag_3_fence_ne)
@@ -951,7 +951,7 @@ static const DrawTileSprites _station_display_datas_airport_flag_grass_fence_ne_
 };
 
 
-static const DrawTileSprites _station_display_datas_truck[] = {
+static const DrawTileSpriteSpan _station_display_datas_truck[] = {
 	TILE_SPRITE_LINE(SPR_TRUCK_STOP_NE_GROUND | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_67)
 	TILE_SPRITE_LINE(SPR_TRUCK_STOP_SE_GROUND | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_68)
 	TILE_SPRITE_LINE(SPR_TRUCK_STOP_SW_GROUND | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_69)
@@ -960,7 +960,7 @@ static const DrawTileSprites _station_display_datas_truck[] = {
 	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_Y,      _station_display_datas_0169)
 };
 
-static const DrawTileSprites _station_display_datas_bus[] = {
+static const DrawTileSpriteSpan _station_display_datas_bus[] = {
 	TILE_SPRITE_LINE(SPR_BUS_STOP_NE_GROUND   | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_71)
 	TILE_SPRITE_LINE(SPR_BUS_STOP_SE_GROUND   | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_72)
 	TILE_SPRITE_LINE(SPR_BUS_STOP_SW_GROUND   | (1U << PALETTE_MODIFIER_COLOUR), _station_display_datas_73)
@@ -969,20 +969,20 @@ static const DrawTileSprites _station_display_datas_bus[] = {
 	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_Y,      _station_display_datas_0171)
 };
 
-static const DrawTileSprites _station_display_datas_road_waypoint[] = {
-	TILE_SPRITE_LINE(0, nullptr)
-	TILE_SPRITE_LINE(0, nullptr)
-	TILE_SPRITE_LINE(0, nullptr)
-	TILE_SPRITE_LINE(0, nullptr)
+static const DrawTileSpriteSpan _station_display_datas_road_waypoint[] = {
+	TILE_SPRITE_NULL()
+	TILE_SPRITE_NULL()
+	TILE_SPRITE_NULL()
+	TILE_SPRITE_NULL()
 	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_X,      _station_display_datas_road_waypoint_X)
 	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_Y,      _station_display_datas_road_waypoint_Y)
 };
 
-static const DrawTileSprites _station_display_datas_oilrig[] = {
+static const DrawTileSpriteSpan _station_display_datas_oilrig[] = {
 	TILE_SPRITE_LINE(SPR_FLAT_WATER_TILE,            _station_display_nothing)
 };
 
-static const DrawTileSprites _station_display_datas_dock[] = {
+static const DrawTileSpriteSpan _station_display_datas_dock[] = {
 	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_SW,      _station_display_datas_76)
 	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_NW,      _station_display_datas_77)
 	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_NE,      _station_display_datas_78)
@@ -991,11 +991,11 @@ static const DrawTileSprites _station_display_datas_dock[] = {
 	TILE_SPRITE_LINE(SPR_FLAT_WATER_TILE,            _station_display_datas_81)
 };
 
-static const DrawTileSprites _station_display_datas_buoy[] = {
+static const DrawTileSpriteSpan _station_display_datas_buoy[] = {
 	TILE_SPRITE_LINE(SPR_FLAT_WATER_TILE,            _station_display_datas_82)
 };
 
-static const DrawTileSprites _station_display_datas_waypoint[] = {
+static const DrawTileSpriteSpan _station_display_datas_waypoint[] = {
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_waypoint_X)
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_Y,               _station_display_datas_waypoint_Y)
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_waypoint_X)
@@ -1013,7 +1013,7 @@ static const DrawTileSprites _station_display_datas_waypoint[] = {
  * As these are drawn/build like stations, they may use the same number of layouts. */
 static_assert(lengthof(_station_display_datas_rail) == lengthof(_station_display_datas_waypoint));
 
-static const std::array<std::span<const DrawTileSprites>, to_underlying(StationType::End)> _station_display_datas = {{
+static const std::array<std::span<const DrawTileSpriteSpan>, to_underlying(StationType::End)> _station_display_datas = {{
 	_station_display_datas_rail,
 	_station_display_datas_airport,
 	_station_display_datas_truck,

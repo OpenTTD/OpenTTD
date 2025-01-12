@@ -52,12 +52,33 @@ struct DrawTileSeqStruct {
 
 /**
  * Ground palette sprite of a tile, together with its sprite layout.
- * This struct is used for static sprite layouts in the code.
+ * For static sprite layouts see #DrawTileSpriteSpan.
  * For allocated ones from NewGRF see #NewGRFSpriteLayout.
  */
 struct DrawTileSprites {
-	PalSpriteID ground;           ///< Palette and sprite for the ground
-	const DrawTileSeqStruct *seq; ///< Array of child sprites. Terminated with a terminator entry
+	PalSpriteID ground; ///< Palette and sprite for the ground
+
+	DrawTileSprites(PalSpriteID ground) : ground(ground) {}
+	DrawTileSprites() = default;
+
+	virtual ~DrawTileSprites() = default;
+	virtual std::span<const DrawTileSeqStruct> GetSequence() const = 0;
+};
+
+/**
+ * Ground palette sprite of a tile, together with its sprite layout.
+ * This struct is used for static sprite layouts in the code.
+ * For allocated ones from NewGRF see #NewGRFSpriteLayout.
+ */
+struct DrawTileSpriteSpan : DrawTileSprites {
+	std::span<const DrawTileSeqStruct> seq; ///< Child sprites,
+
+	template <size_t N>
+	DrawTileSpriteSpan(PalSpriteID ground, const DrawTileSeqStruct (&seq)[N]) : DrawTileSprites(ground), seq(std::begin(seq), std::end(seq)) {}
+	DrawTileSpriteSpan(PalSpriteID ground) : DrawTileSprites(ground) {};
+	DrawTileSpriteSpan() = default;
+
+	std::span<const DrawTileSeqStruct> GetSequence() const override { return this->seq; }
 };
 
 /**
@@ -76,7 +97,7 @@ struct DrawBuildingsTileStruct {
 };
 
 /** Iterate through all DrawTileSeqStructs in DrawTileSprites. */
-#define foreach_draw_tile_seq(idx, list) for (idx = list; !idx->IsTerminator(); idx++)
+#define foreach_draw_tile_seq(idx, list) for (idx = list.data(); !idx->IsTerminator(); idx++)
 
 void DrawCommonTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
 void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
