@@ -1668,7 +1668,7 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 		 * if it is an airplane, look for LANDING, for helicopter HELILANDING
 		 * it is possible to choose from multiple landing runways, so loop until a free one is found */
 		uint8_t landingtype = (v->subtype == AIR_HELICOPTER) ? HELILANDING : LANDING;
-		const AirportFTA *current = apc->layout[v->pos].next;
+		const AirportFTA *current = apc->layout[v->pos].next.get();
 		while (current != nullptr) {
 			if (current->heading == landingtype) {
 				/* save speed before, since if AirportHasBlock is false, it resets them to 0
@@ -1689,7 +1689,7 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 				v->cur_speed = tcur_speed;
 				v->subspeed = tsubspeed;
 			}
-			current = current->next;
+			current = current->next.get();
 		}
 	}
 	v->state = FLYING;
@@ -1843,7 +1843,7 @@ static bool AirportMove(Aircraft *v, const AirportFTAClass *apc)
 			} // move to next position
 			return false;
 		}
-		current = current->next;
+		current = current->next.get();
 	} while (current != nullptr);
 
 	Debug(misc, 0, "[Ap] cannot move further on Airport! (pos {} state {}) for vehicle {}", v->pos, v->state, v->index);
@@ -1893,13 +1893,13 @@ static bool AirportSetBlocks(Aircraft *v, const AirportFTA *current_pos, const A
 		/* search for all all elements in the list with the same state, and blocks != N
 		 * this means more blocks should be checked/set */
 		const AirportFTA *current = current_pos;
-		if (current == reference) current = current->next;
+		if (current == reference) current = current->next.get();
 		while (current != nullptr) {
 			if (current->heading == current_pos->heading && current->block != 0) {
 				airport_flags |= current->block;
 				break;
 			}
-			current = current->next;
+			current = current->next.get();
 		}
 
 		/* if the block to be checked is in the next position, then exclude that from
@@ -2000,7 +2000,7 @@ static bool AirportFindFreeTerminal(Aircraft *v, const AirportFTAClass *apc)
 	 */
 	if (apc->terminals[0] > 1) {
 		const Station *st = Station::Get(v->targetairport);
-		const AirportFTA *temp = apc->layout[v->pos].next;
+		const AirportFTA *temp = apc->layout[v->pos].next.get();
 
 		while (temp != nullptr) {
 			if (temp->heading == TERMGROUP) {
@@ -2025,7 +2025,7 @@ static bool AirportFindFreeTerminal(Aircraft *v, const AirportFTAClass *apc)
 				 * So we cannot move */
 				return false;
 			}
-			temp = temp->next;
+			temp = temp->next.get();
 		}
 	}
 

@@ -139,6 +139,17 @@ AirportMovingData RotateAirportMovingData(const AirportMovingData *orig, Directi
 
 struct AirportFTAbuildup;
 
+/** Internal structure used in openttd - Finite sTate mAchine --> FTA */
+struct AirportFTA {
+	AirportFTA(const AirportFTAbuildup&);
+
+	std::unique_ptr<AirportFTA> next; ///< possible extra movement choices from this position
+	uint64_t block; ///< bitmap of blocks that could be reserved
+	uint8_t position; ///< the position that an airplane is at
+	uint8_t next_position; ///< next position from this position
+	uint8_t heading; ///< heading (current orders), guiding an airplane to its target on an airport
+};
+
 /** Finite sTate mAchine (FTA) of an airport. */
 struct AirportFTAClass {
 public:
@@ -160,8 +171,6 @@ public:
 		uint8_t delta_z
 	);
 
-	~AirportFTAClass();
-
 	/**
 	 * Get movement data at a position.
 	 * @param position Element number to get movement data about.
@@ -174,7 +183,7 @@ public:
 	}
 
 	const AirportMovingData *moving_data; ///< Movement data.
-	struct AirportFTA *layout;            ///< state machine for airport
+	std::vector<AirportFTA> layout; ///< state machine for airport
 	const uint8_t *terminals;                ///< %Array with the number of terminal groups, followed by the number of terminals in each group.
 	const uint8_t num_helipads;              ///< Number of helipads on this airport. When 0 helicopters will go to normal terminals.
 	Flags flags;                          ///< Flags for this airport type.
@@ -185,15 +194,6 @@ public:
 
 DECLARE_ENUM_AS_BIT_SET(AirportFTAClass::Flags)
 
-
-/** Internal structure used in openttd - Finite sTate mAchine --> FTA */
-struct AirportFTA {
-	AirportFTA *next;        ///< possible extra movement choices from this position
-	uint64_t block;            ///< 64 bit blocks (st->airport.flags), should be enough for the most complex airports
-	uint8_t position;           ///< the position that an airplane is at
-	uint8_t next_position;      ///< next position from this position
-	uint8_t heading;            ///< heading (current orders), guiding an airplane to its target on an airport
-};
 
 const AirportFTAClass *GetAirport(const uint8_t airport_type);
 uint8_t GetVehiclePosOnBuild(TileIndex hangar_tile);
