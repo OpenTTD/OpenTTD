@@ -111,7 +111,7 @@ static const uint TLR_MAX_VAR10 = 7; ///< Maximum value for var 10.
  */
 struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 	std::vector<DrawTileSeqStruct> seq;
-	const TileLayoutRegisters *registers;
+	std::vector<TileLayoutRegisters> registers;
 
 	/**
 	 * Number of sprites in all referenced spritesets.
@@ -137,11 +137,6 @@ struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 		this->seq.insert(this->seq.end(), source_sequence.begin(), source_sequence.end());
 	}
 
-	virtual ~NewGRFSpriteLayout()
-	{
-		free(this->registers);
-	}
-
 	/**
 	 * Tests whether this spritelayout needs preprocessing by
 	 * #PrepareLayout() and #ProcessRegisters(), or whether it can be
@@ -150,7 +145,7 @@ struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 	 */
 	bool NeedsPreprocessing() const
 	{
-		return this->registers != nullptr;
+		return !this->registers.empty();
 	}
 
 	uint32_t PrepareLayout(uint32_t orig_offset, uint32_t newgrf_ground_offset, uint32_t newgrf_offset, uint constr_stage, bool separate_ground) const;

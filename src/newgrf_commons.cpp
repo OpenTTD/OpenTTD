@@ -573,14 +573,7 @@ bool Convert8bitBooleanCallback(const GRFFile *grffile, uint16_t cbid, uint16_t 
 void NewGRFSpriteLayout::Clone(const NewGRFSpriteLayout *source)
 {
 	this->Clone((const DrawTileSprites*)source);
-
-	if (source->registers != nullptr) {
-		size_t count = 1 + source->seq.size(); // 1 for the ground sprite
-
-		TileLayoutRegisters *regs = MallocT<TileLayoutRegisters>(count);
-		MemCpyT(regs, source->registers, count);
-		this->registers = regs;
-	}
+	this->registers = source->registers;
 }
 
 
@@ -601,10 +594,9 @@ void NewGRFSpriteLayout::Allocate(uint num_sprites)
 void NewGRFSpriteLayout::AllocateRegisters()
 {
 	assert(!this->seq.empty());
-	assert(this->registers == nullptr);
+	assert(this->registers.empty());
 
-	size_t count = 1 + this->seq.size(); // 1 for the ground sprite
-	this->registers = CallocT<TileLayoutRegisters>(count);
+	this->registers.resize(1 + this->seq.size(), {}); // 1 for the ground sprite
 }
 
 /**
@@ -635,7 +627,7 @@ uint32_t NewGRFSpriteLayout::PrepareLayout(uint32_t orig_offset, uint32_t newgrf
 	}
 	/* Determine the var10 values the action-1-2-3 chains needs to be resolved for,
 	 * and apply the default sprite offsets (unless disabled). */
-	const TileLayoutRegisters *regs = this->registers;
+	const TileLayoutRegisters *regs = this->registers.empty() ? nullptr : this->registers.data();
 	bool ground = true;
 	for (DrawTileSeqStruct result : result_seq) {
 		TileLayoutFlags flags = TLF_NOTHING;
@@ -688,7 +680,7 @@ uint32_t NewGRFSpriteLayout::PrepareLayout(uint32_t orig_offset, uint32_t newgrf
  */
 void NewGRFSpriteLayout::ProcessRegisters(uint8_t resolved_var10, uint32_t resolved_sprite, bool separate_ground) const
 {
-	const TileLayoutRegisters *regs = this->registers;
+	const TileLayoutRegisters *regs = this->registers.empty() ? nullptr : this->registers.data();
 	bool ground = true;
 	for (DrawTileSeqStruct &result : result_seq) {
 		TileLayoutFlags flags = TLF_NOTHING;

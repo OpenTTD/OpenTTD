@@ -818,7 +818,7 @@ static void ReadSpriteLayoutRegisters(ByteReader &buf, TileLayoutFlags flags, bo
 {
 	if (!(flags & TLF_DRAWING_FLAGS)) return;
 
-	if (dts->registers == nullptr) dts->AllocateRegisters();
+	if (dts->registers.empty()) dts->AllocateRegisters();
 	TileLayoutRegisters &regs = const_cast<TileLayoutRegisters&>(dts->registers[index]);
 	regs.flags = flags & TLF_DRAWING_FLAGS;
 
@@ -943,9 +943,9 @@ static bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool us
 	/* When the Action1 sets are unknown, everything should be 0 (no spriteset usage) or UINT16_MAX (some spriteset usage) */
 	assert(use_cur_spritesets || (is_consistent && (dts->consistent_max_offset == 0 || dts->consistent_max_offset == UINT16_MAX)));
 
-	if (!is_consistent || dts->registers != nullptr) {
+	if (!is_consistent || !dts->registers.empty()) {
 		dts->consistent_max_offset = 0;
-		if (dts->registers == nullptr) dts->AllocateRegisters();
+		if (dts->registers.empty()) dts->AllocateRegisters();
 
 		for (uint i = 0; i < num_building_sprites + 1; i++) {
 			TileLayoutRegisters &regs = const_cast<TileLayoutRegisters&>(dts->registers[i]);
