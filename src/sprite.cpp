@@ -30,21 +30,20 @@
 void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned)
 {
 	bool parent_sprite_encountered = false;
-	const DrawTileSeqStruct *dtss;
 	bool skip_childs = false;
-	foreach_draw_tile_seq(dtss, dts->GetSequence()) {
-		SpriteID image = dtss->image.sprite;
-		PaletteID pal = dtss->image.pal;
+	for (const DrawTileSeqStruct &dtss : dts->GetSequence()) {
+		SpriteID image = dtss.image.sprite;
+		PaletteID pal = dtss.image.pal;
 
 		if (skip_childs) {
-			if (!dtss->IsParentSprite()) continue;
+			if (!dtss.IsParentSprite()) continue;
 			skip_childs = false;
 		}
 
 		/* TTD sprite 0 means no sprite */
 		if ((GB(image, 0, SPRITE_WIDTH) == 0 && !HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) ||
 				(IsInvisibilitySet(to) && !HasBit(image, SPRITE_MODIFIER_OPAQUE))) {
-			skip_childs = dtss->IsParentSprite();
+			skip_childs = dtss.IsParentSprite();
 			continue;
 		}
 
@@ -53,18 +52,18 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 
 		pal = SpriteLayoutPaletteTransform(image, pal, default_palette);
 
-		if (dtss->IsParentSprite()) {
+		if (dtss.IsParentSprite()) {
 			parent_sprite_encountered = true;
 			AddSortableSpriteToDraw(
 				image, pal,
-				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
-				dtss->size_x, dtss->size_y,
-				dtss->size_z, ti->z + dtss->delta_z,
+				ti->x + dtss.delta_x, ti->y + dtss.delta_y,
+				dtss.size_x, dtss.size_y,
+				dtss.size_z, ti->z + dtss.delta_z,
 				!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to)
 			);
 		} else {
-			int offs_x = child_offset_is_unsigned ? (uint8_t)dtss->delta_x : dtss->delta_x;
-			int offs_y = child_offset_is_unsigned ? (uint8_t)dtss->delta_y : dtss->delta_y;
+			int offs_x = child_offset_is_unsigned ? static_cast<uint8_t>(dtss.delta_x) : dtss.delta_x;
+			int offs_y = child_offset_is_unsigned ? static_cast<uint8_t>(dtss.delta_y) : dtss.delta_y;
 			bool transparent = !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to);
 			if (parent_sprite_encountered) {
 				AddChildSpriteScreen(image, pal, offs_x, offs_y, transparent);
@@ -91,22 +90,21 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
  */
 void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned)
 {
-	const DrawTileSeqStruct *dtss;
 	Point child_offset = {0, 0};
 
 	bool skip_childs = false;
-	foreach_draw_tile_seq(dtss, dts->GetSequence()) {
-		SpriteID image = dtss->image.sprite;
-		PaletteID pal = dtss->image.pal;
+	for (const DrawTileSeqStruct &dtss : dts->GetSequence()) {
+		SpriteID image = dtss.image.sprite;
+		PaletteID pal = dtss.image.pal;
 
 		if (skip_childs) {
-			if (!dtss->IsParentSprite()) continue;
+			if (!dtss.IsParentSprite()) continue;
 			skip_childs = false;
 		}
 
 		/* TTD sprite 0 means no sprite */
 		if (GB(image, 0, SPRITE_WIDTH) == 0 && !HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
-			skip_childs = dtss->IsParentSprite();
+			skip_childs = dtss.IsParentSprite();
 			continue;
 		}
 
@@ -115,16 +113,16 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32_t or
 
 		pal = SpriteLayoutPaletteTransform(image, pal, default_palette);
 
-		if (dtss->IsParentSprite()) {
-			Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
+		if (dtss.IsParentSprite()) {
+			Point pt = RemapCoords(dtss.delta_x, dtss.delta_y, dtss.delta_z);
 			DrawSprite(image, pal, x + UnScaleGUI(pt.x), y + UnScaleGUI(pt.y));
 
 			const Sprite *spr = GetSprite(image & SPRITE_MASK, SpriteType::Normal);
 			child_offset.x = UnScaleGUI(pt.x + spr->x_offs);
 			child_offset.y = UnScaleGUI(pt.y + spr->y_offs);
 		} else {
-			int offs_x = child_offset_is_unsigned ? (uint8_t)dtss->delta_x : dtss->delta_x;
-			int offs_y = child_offset_is_unsigned ? (uint8_t)dtss->delta_y : dtss->delta_y;
+			int offs_x = child_offset_is_unsigned ? static_cast<uint8_t>(dtss.delta_x) : dtss.delta_x;
+			int offs_y = child_offset_is_unsigned ? static_cast<uint8_t>(dtss.delta_y) : dtss.delta_y;
 			DrawSprite(image, pal, x + child_offset.x + ScaleSpriteTrad(offs_x), y + child_offset.y + ScaleSpriteTrad(offs_y));
 		}
 	}

@@ -472,13 +472,12 @@ static void DrawTile_Object(TileInfo *ti)
 		}
 
 		if (!IsInvisibilitySet(TO_STRUCTURES)) {
-			const DrawTileSeqStruct *dtss;
-			foreach_draw_tile_seq(dtss, dts->GetSequence()) {
+			for (const DrawTileSeqStruct &dtss : dts->GetSequence()) {
 				AddSortableSpriteToDraw(
-					dtss->image.sprite, palette,
-					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
-					dtss->size_x, dtss->size_y,
-					dtss->size_z, ti->z + dtss->delta_z,
+					dtss.image.sprite, palette,
+					ti->x + dtss.delta_x, ti->y + dtss.delta_y,
+					dtss.size_x, dtss.size_y,
+					dtss.size_z, ti->z + dtss.delta_z,
 					IsTransparencySet(TO_STRUCTURES)
 				);
 			}

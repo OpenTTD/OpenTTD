@@ -570,9 +570,7 @@ void NewGRFSpriteLayout::Clone(const NewGRFSpriteLayout *source)
 	this->Clone((const DrawTileSprites*)source);
 
 	if (source->registers != nullptr) {
-		size_t count = 1; // 1 for the ground sprite
-		const DrawTileSeqStruct *element;
-		foreach_draw_tile_seq(element, source->seq) count++;
+		size_t count = 1 + source->seq.size(); // 1 for the ground sprite
 
 		TileLayoutRegisters *regs = MallocT<TileLayoutRegisters>(count);
 		MemCpyT(regs, source->registers, count);
@@ -589,8 +587,7 @@ void NewGRFSpriteLayout::Allocate(uint num_sprites)
 {
 	assert(this->seq.empty());
 
-	this->seq.resize(num_sprites + 1, {});
-	this->seq[num_sprites].MakeTerminator();
+	this->seq.resize(num_sprites, {});
 }
 
 /**
@@ -601,10 +598,7 @@ void NewGRFSpriteLayout::AllocateRegisters()
 	assert(!this->seq.empty());
 	assert(this->registers == nullptr);
 
-	size_t count = 1; // 1 for the ground sprite
-	const DrawTileSeqStruct *element;
-	foreach_draw_tile_seq(element, this->seq) count++;
-
+	size_t count = 1 + this->seq.size(); // 1 for the ground sprite
 	this->registers = CallocT<TileLayoutRegisters>(count);
 }
 
@@ -627,52 +621,48 @@ uint32_t NewGRFSpriteLayout::PrepareLayout(uint32_t orig_offset, uint32_t newgrf
 
 	/* Create a copy of the spritelayout, so we can modify some values.
 	 * Also include the groundsprite into the sequence for easier processing. */
-	DrawTileSeqStruct *result = &result_seq.emplace_back();
-	result->image = ground;
-	result->delta_x = 0;
-	result->delta_y = 0;
-	result->delta_z = (int8_t)0x80;
+	DrawTileSeqStruct &copy = result_seq.emplace_back();
+	copy.image = ground;
+	copy.delta_z = static_cast<int8_t>(0x80);
 
-	const DrawTileSeqStruct *dtss;
-	foreach_draw_tile_seq(dtss, this->seq) {
-		result_seq.push_back(*dtss);
+	for (const DrawTileSeqStruct &dtss : this->seq) {
+		result_seq.emplace_back(dtss);
 	}
-	result_seq.emplace_back().MakeTerminator();
 	/* Determine the var10 values the action-1-2-3 chains needs to be resolved for,
 	 * and apply the default sprite offsets (unless disabled). */
 	const TileLayoutRegisters *regs = this->registers;
 	bool ground = true;
-	foreach_draw_tile_seq(result, result_seq) {
+	for (DrawTileSeqStruct result : result_seq) {
 		TileLayoutFlags flags = TLF_NOTHING;
 		if (regs != nullptr) flags = regs->flags;
 
 		/* Record var10 value for the sprite */
-		if (HasBit(result->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_SPRITE_REG_FLAGS)) {
+		if (HasBit(result.image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_SPRITE_REG_FLAGS)) {
 			uint8_t var10 = (flags & TLF_SPRITE_VAR10) ? regs->sprite_var10 : (ground && separate_ground ? 1 : 0);
 			SetBit(var10_values, var10);
 		}
 
 		/* Add default sprite offset, unless there is a custom one */
 		if (!(flags & TLF_SPRITE)) {
-			if (HasBit(result->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
-				result->image.sprite += ground ? newgrf_ground_offset : newgrf_offset;
-				if (constr_stage > 0 && regs != nullptr) result->image.sprite += GetConstructionStageOffset(constr_stage, regs->max_sprite_offset);
+			if (HasBit(result.image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
+				result.image.sprite += ground ? newgrf_ground_offset : newgrf_offset;
+				if (constr_stage > 0 && regs != nullptr) result.image.sprite += GetConstructionStageOffset(constr_stage, regs->max_sprite_offset);
 			} else {
-				result->image.sprite += orig_offset;
+				result.image.sprite += orig_offset;
 			}
 		}
 
 		/* Record var10 value for the palette */
-		if (HasBit(result->image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_PALETTE_REG_FLAGS)) {
+		if (HasBit(result.image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_PALETTE_REG_FLAGS)) {
 			uint8_t var10 = (flags & TLF_PALETTE_VAR10) ? regs->palette_var10 : (ground && separate_ground ? 1 : 0);
 			SetBit(var10_values, var10);
 		}
 
 		/* Add default palette offset, unless there is a custom one */
 		if (!(flags & TLF_PALETTE)) {
-			if (HasBit(result->image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
-				result->image.sprite += ground ? newgrf_ground_offset : newgrf_offset;
-				if (constr_stage > 0 && regs != nullptr) result->image.sprite += GetConstructionStageOffset(constr_stage, regs->max_palette_offset);
+			if (HasBit(result.image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
+				result.image.sprite += ground ? newgrf_ground_offset : newgrf_offset;
+				if (constr_stage > 0 && regs != nullptr) result.image.sprite += GetConstructionStageOffset(constr_stage, regs->max_palette_offset);
 			}
 		}
 
@@ -693,60 +683,59 @@ uint32_t NewGRFSpriteLayout::PrepareLayout(uint32_t orig_offset, uint32_t newgrf
  */
 void NewGRFSpriteLayout::ProcessRegisters(uint8_t resolved_var10, uint32_t resolved_sprite, bool separate_ground) const
 {
-	DrawTileSeqStruct *result;
 	const TileLayoutRegisters *regs = this->registers;
 	bool ground = true;
-	foreach_draw_tile_seq(result, result_seq) {
+	for (DrawTileSeqStruct &result : result_seq) {
 		TileLayoutFlags flags = TLF_NOTHING;
 		if (regs != nullptr) flags = regs->flags;
 
 		/* Is the sprite or bounding box affected by an action-1-2-3 chain? */
-		if (HasBit(result->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_SPRITE_REG_FLAGS)) {
+		if (HasBit(result.image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_SPRITE_REG_FLAGS)) {
 			/* Does the var10 value apply to this sprite? */
 			uint8_t var10 = (flags & TLF_SPRITE_VAR10) ? regs->sprite_var10 : (ground && separate_ground ? 1 : 0);
 			if (var10 == resolved_var10) {
 				/* Apply registers */
 				if ((flags & TLF_DODRAW) && GetRegister(regs->dodraw) == 0) {
-					result->image.sprite = 0;
+					result.image.sprite = 0;
 				} else {
-					if (HasBit(result->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE)) result->image.sprite += resolved_sprite;
+					if (HasBit(result.image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE)) result.image.sprite += resolved_sprite;
 					if (flags & TLF_SPRITE) {
 						int16_t offset = (int16_t)GetRegister(regs->sprite); // mask to 16 bits to avoid trouble
-						if (!HasBit(result->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE) || (offset >= 0 && offset < regs->max_sprite_offset)) {
-							result->image.sprite += offset;
+						if (!HasBit(result.image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE) || (offset >= 0 && offset < regs->max_sprite_offset)) {
+							result.image.sprite += offset;
 						} else {
-							result->image.sprite = SPR_IMG_QUERY;
+							result.image.sprite = SPR_IMG_QUERY;
 						}
 					}
 
-					if (result->IsParentSprite()) {
+					if (result.IsParentSprite()) {
 						if (flags & TLF_BB_XY_OFFSET) {
-							result->delta_x += (int32_t)GetRegister(regs->delta.parent[0]);
-							result->delta_y += (int32_t)GetRegister(regs->delta.parent[1]);
+							result.delta_x += static_cast<int32_t>(GetRegister(regs->delta.parent[0]));
+							result.delta_y += static_cast<int32_t>(GetRegister(regs->delta.parent[1]));
 						}
-						if (flags & TLF_BB_Z_OFFSET)    result->delta_z += (int32_t)GetRegister(regs->delta.parent[2]);
+						if (flags & TLF_BB_Z_OFFSET)    result.delta_z += static_cast<int32_t>(GetRegister(regs->delta.parent[2]));
 					} else {
-						if (flags & TLF_CHILD_X_OFFSET) result->delta_x += (int32_t)GetRegister(regs->delta.child[0]);
-						if (flags & TLF_CHILD_Y_OFFSET) result->delta_y += (int32_t)GetRegister(regs->delta.child[1]);
+						if (flags & TLF_CHILD_X_OFFSET) result.delta_x += static_cast<int32_t>(GetRegister(regs->delta.child[0]));
+						if (flags & TLF_CHILD_Y_OFFSET) result.delta_y += static_cast<int32_t>(GetRegister(regs->delta.child[1]));
 					}
 				}
 			}
 		}
 
 		/* Is the palette affected by an action-1-2-3 chain? */
-		if (result->image.sprite != 0 && (HasBit(result->image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_PALETTE_REG_FLAGS))) {
+		if (result.image.sprite != 0 && (HasBit(result.image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_PALETTE_REG_FLAGS))) {
 			/* Does the var10 value apply to this sprite? */
 			uint8_t var10 = (flags & TLF_PALETTE_VAR10) ? regs->palette_var10 : (ground && separate_ground ? 1 : 0);
 			if (var10 == resolved_var10) {
 				/* Apply registers */
-				if (HasBit(result->image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) result->image.pal += resolved_sprite;
+				if (HasBit(result.image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) result.image.pal += resolved_sprite;
 				if (flags & TLF_PALETTE) {
 					int16_t offset = (int16_t)GetRegister(regs->palette); // mask to 16 bits to avoid trouble
-					if (!HasBit(result->image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (offset >= 0 && offset < regs->max_palette_offset)) {
-						result->image.pal += offset;
+					if (!HasBit(result.image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (offset >= 0 && offset < regs->max_palette_offset)) {
+						result.image.pal += offset;
 					} else {
-						result->image.sprite = SPR_IMG_QUERY;
-						result->image.pal = PAL_NONE;
+						result.image.sprite = SPR_IMG_QUERY;
+						result.image.pal = PAL_NONE;
 					}
 				}
 			}

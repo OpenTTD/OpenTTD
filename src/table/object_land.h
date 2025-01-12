@@ -8,30 +8,21 @@
 /** @file object_land.h Sprites to use and how to display them for object tiles. */
 
 #define TILE_SEQ_LINE(sz, img) { 0, 0, 0, 16, 16, sz, {img, PAL_NONE} },
-#define TILE_SEQ_END() { (int8_t)0x80, 0, 0, 0, 0, 0, {0, 0} }
-
-static const DrawTileSeqStruct _object_nothing[] = {
-	TILE_SEQ_END()
-};
 
 static const DrawTileSeqStruct _object_transmitter_seq[] = {
 	{   7,  7,  0,  2,  2, 70, {SPR_TRANSMITTER, PAL_NONE}},
-	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _object_lighthouse_seq[] = {
 	{   4,  4,  0,  7,  7, 61, {SPR_LIGHTHOUSE, PAL_NONE}},
-	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _object_statue_seq[] = {
 	{   0,  0,  0, 16, 16, 25, {SPR_STATUE_COMPANY | (1 << PALETTE_MODIFIER_COLOUR), PAL_NONE}},
-	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _object_owned_land_seq[] = {
 	{   8,  8,  0,  1,  1,  6, {SPR_BOUGHT_LAND    | (1 << PALETTE_MODIFIER_COLOUR), PAL_NONE}},
-	TILE_SEQ_END()
 };
 
 extern const DrawTileSpriteSpan _objects[] = {
@@ -44,82 +35,74 @@ extern const DrawTileSpriteSpan _objects[] = {
 
 static const DrawTileSeqStruct _object_hq_medium_north[] = {
 	TILE_SEQ_LINE(20, SPR_MEDIUMHQ_NORTH_WALL | (1 << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _object_hq_medium_east[] = {
 	TILE_SEQ_LINE(20, SPR_MEDIUMHQ_EAST_WALL  | (1 << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _object_hq_medium_west[] = {
 	TILE_SEQ_LINE(20, SPR_MEDIUMHQ_WEST_WALL  | (1 << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _object_hq_large_north[] = {
 	TILE_SEQ_LINE(50, SPR_LARGEHQ_NORTH_BUILD | (1 << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _object_hq_large_east[] = {
 	TILE_SEQ_LINE(50, SPR_LARGEHQ_EAST_BUILD  | (1 << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _object_hq_large_west[] = {
 	TILE_SEQ_LINE(50, SPR_LARGEHQ_WEST_BUILD  | (1 << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _object_hq_huge_north[] = {
 	TILE_SEQ_LINE(60, SPR_HUGEHQ_NORTH_BUILD  | (1 << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _object_hq_huge_east[] = {
 	TILE_SEQ_LINE(60, SPR_HUGEHQ_EAST_BUILD   | (1 << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _object_hq_huge_west[] = {
 	TILE_SEQ_LINE(60, SPR_HUGEHQ_WEST_BUILD   | (1 << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_END()
 };
 
 #undef TILE_SEQ_LINE
-#undef TILE_SEQ_END
 
 #define TILE_SPRITE_LINE(img, dtss) { {img | (1 << PALETTE_MODIFIER_COLOUR), PAL_NONE}, dtss },
+#define TILE_SPRITE_LINE_NOTHING(img) { {img | (1 << PALETTE_MODIFIER_COLOUR), PAL_NONE} },
 
 static const DrawTileSpriteSpan _object_hq[] = {
-	TILE_SPRITE_LINE(SPR_TINYHQ_NORTH,         _object_nothing)
-	TILE_SPRITE_LINE(SPR_TINYHQ_WEST,          _object_nothing)
-	TILE_SPRITE_LINE(SPR_TINYHQ_EAST,          _object_nothing)
-	TILE_SPRITE_LINE(SPR_TINYHQ_SOUTH,         _object_nothing)
+	TILE_SPRITE_LINE_NOTHING(SPR_TINYHQ_NORTH)
+	TILE_SPRITE_LINE_NOTHING(SPR_TINYHQ_WEST)
+	TILE_SPRITE_LINE_NOTHING(SPR_TINYHQ_EAST)
+	TILE_SPRITE_LINE_NOTHING(SPR_TINYHQ_SOUTH)
 
-	TILE_SPRITE_LINE(SPR_SMALLHQ_NORTH,        _object_nothing)
-	TILE_SPRITE_LINE(SPR_SMALLHQ_WEST,         _object_nothing)
-	TILE_SPRITE_LINE(SPR_SMALLHQ_EAST,         _object_nothing)
-	TILE_SPRITE_LINE(SPR_SMALLHQ_SOUTH,        _object_nothing)
+	TILE_SPRITE_LINE_NOTHING(SPR_SMALLHQ_NORTH)
+	TILE_SPRITE_LINE_NOTHING(SPR_SMALLHQ_WEST)
+	TILE_SPRITE_LINE_NOTHING(SPR_SMALLHQ_EAST)
+	TILE_SPRITE_LINE_NOTHING(SPR_SMALLHQ_SOUTH)
 
 	TILE_SPRITE_LINE(SPR_MEDIUMHQ_NORTH,       _object_hq_medium_north)
 	TILE_SPRITE_LINE(SPR_MEDIUMHQ_WEST,        _object_hq_medium_west)
 	TILE_SPRITE_LINE(SPR_MEDIUMHQ_EAST,        _object_hq_medium_east)
-	TILE_SPRITE_LINE(SPR_MEDIUMHQ_SOUTH,       _object_nothing)
+	TILE_SPRITE_LINE_NOTHING(SPR_MEDIUMHQ_SOUTH)
 
 	TILE_SPRITE_LINE(SPR_LARGEHQ_NORTH_GROUND, _object_hq_large_north)
 	TILE_SPRITE_LINE(SPR_LARGEHQ_WEST_GROUND,  _object_hq_large_west)
 	TILE_SPRITE_LINE(SPR_LARGEHQ_EAST_GROUND,  _object_hq_large_east)
-	TILE_SPRITE_LINE(SPR_LARGEHQ_SOUTH,        _object_nothing)
+	TILE_SPRITE_LINE_NOTHING(SPR_LARGEHQ_SOUTH)
 
 	TILE_SPRITE_LINE(SPR_HUGEHQ_NORTH_GROUND,  _object_hq_huge_north)
 	TILE_SPRITE_LINE(SPR_HUGEHQ_WEST_GROUND,   _object_hq_huge_west)
 	TILE_SPRITE_LINE(SPR_HUGEHQ_EAST_GROUND,   _object_hq_huge_east)
-	TILE_SPRITE_LINE(SPR_HUGEHQ_SOUTH,         _object_nothing)
+	TILE_SPRITE_LINE_NOTHING(SPR_HUGEHQ_SOUTH)
 };
 
 #undef TILE_SPRITE_LINE
+#undef TILE_SPRITE_LINE_NOTHING
 
 #define M(name, size, build_cost_multiplier, clear_cost_multiplier, height, climate, gen_amount, flags) {{INVALID_OBJECT_CLASS, 0}, GRFFilePropsBase<2>(), {0, 0, 0, 0}, name, climate, size, build_cost_multiplier, clear_cost_multiplier, TimerGameCalendar::Date{}, CalendarTime::MAX_DATE + 1, flags, ObjectCallbackMasks{}, height, 1, gen_amount}
 
