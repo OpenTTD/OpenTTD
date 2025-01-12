@@ -566,16 +566,6 @@ bool Convert8bitBooleanCallback(const GRFFile *grffile, uint16_t cbid, uint16_t 
 
 /* static */ std::vector<DrawTileSeqStruct> NewGRFSpriteLayout::result_seq;
 
-/**
- * Clone a spritelayout.
- * @param source The spritelayout to copy.
- */
-void NewGRFSpriteLayout::Clone(const NewGRFSpriteLayout *source)
-{
-	this->Clone((const DrawTileSprites*)source);
-	this->registers = source->registers;
-}
-
 
 /**
  * Allocate a spritelayout for \a num_sprites building sprites.
