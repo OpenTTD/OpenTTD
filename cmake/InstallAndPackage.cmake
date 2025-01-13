@@ -62,6 +62,7 @@ install(FILES
                 ${CMAKE_SOURCE_DIR}/docs/desync.md
                 ${CMAKE_SOURCE_DIR}/docs/directory_structure.md
                 ${CMAKE_SOURCE_DIR}/docs/eints.md
+                ${CMAKE_SOURCE_DIR}/docs/fonts.md
                 ${CMAKE_SOURCE_DIR}/docs/game_coordinator.md
                 ${CMAKE_SOURCE_DIR}/docs/linkgraph.md
                 ${CMAKE_SOURCE_DIR}/docs/logging_and_performance_metrics.md
