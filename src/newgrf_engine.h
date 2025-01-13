@@ -78,7 +78,7 @@ struct VehicleSpriteSeq;
 
 void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const struct SpriteGroup *group, std::span<EngineID> engine_ids);
 const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine);
-void SetCustomEngineSprites(EngineID engine, uint8_t cargo, const struct SpriteGroup *group);
+void SetCustomEngineSprites(EngineID engine, CargoID cargo, const struct SpriteGroup *group);
 
 void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction, EngineImageType image_type, VehicleSpriteSeq *result);
 #define GetCustomVehicleSprite(v, direction, image_type, result) GetCustomEngineSprite(v->engine_type, v, direction, image_type, result)

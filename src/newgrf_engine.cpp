@@ -50,7 +50,7 @@ const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, Eng
 	return nullptr;
 }
 
-void SetCustomEngineSprites(EngineID engine, uint8_t cargo, const SpriteGroup *group)
+void SetCustomEngineSprites(EngineID engine, CargoID cargo, const SpriteGroup *group)
 {
 	Engine *e = Engine::Get(engine);
 	assert(cargo < std::size(e->grf_prop.spritegroup));
