@@ -1291,6 +1291,13 @@ static void ViewportAddLandscape()
 				/* Outside of map. If we are on the north border of the map, there may still be a bridge visible,
 				 * so we need to loop over more rows to possibly find one. */
 				if ((tilecoord.x <= 0 || tilecoord.y <= 0) && min_visible_height < potential_bridge_height + MAX_TILE_EXTENT_TOP) last_row = false;
+
+				/* If all borders are water, draw infinite water off the edges of the map. */
+				if (_settings_game.game_creation.water_borders == BORDERFLAGS_ALL && min_visible_height <= 0) {
+					last_row = false;
+					AddTileSpriteToDraw(SPR_FLAT_WATER_TILE, PAL_NONE, _cur_ti.x, _cur_ti.y, _cur_ti.z);
+					continue;
+				}
 			}
 
 			if (tile_visible) {

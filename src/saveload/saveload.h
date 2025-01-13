@@ -397,6 +397,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_INCREASE_HOUSE_LIMIT,               ///< 348  PR#12288 Increase house limit to 4096.
 	SLV_COMPANY_INAUGURATED_PERIOD_V2,      ///< 349  PR#13448 Fix savegame storage for company inaugurated year in wallclock mode.
 
+	SLV_INFINITE_WATER_BORDERS,             ///< 350  PR#13289 Draw infinite water when all borders are water.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 
