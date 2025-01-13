@@ -3201,12 +3201,11 @@ bool AfterLoadGame()
 			if (c->settings.renew_keep_length) SetBit(wagon_removal, c->index);
 		}
 		for (Group *g : Group::Iterate()) {
-			if (g->flags != 0) {
+			if (to_underlying(g->flags) != 0) {
 				/* Convert old replace_protection value to flag. */
-				g->flags = 0;
-				SetBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION);
+				g->flags = GroupFlags::ReplaceProtection;
 			}
-			if (HasBit(wagon_removal, g->owner)) SetBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL);
+			if (HasBit(wagon_removal, g->owner)) g->flags |= GroupFlags::ReplaceWagonRemoval;
 		}
 	}
 
