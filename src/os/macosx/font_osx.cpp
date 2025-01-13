@@ -24,7 +24,7 @@
 
 #include "safeguards.h"
 
-bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int, MissingGlyphSearcher *callback)
+bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback)
 {
 	/* Determine fallback font using CoreText. This uses the language isocode
 	 * to find a suitable font. CoreText is available from 10.5 onwards. */

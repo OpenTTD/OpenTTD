@@ -33,10 +33,9 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face);
  * This function must set all fonts of settings.
  * @param settings the settings to overwrite the fontname of.
  * @param language_isocode the language, e.g. en_GB.
- * @param winlangid the language ID windows style.
  * @param callback The function to call to check for missing glyphs.
  * @return true if a font has been set, false otherwise.
  */
-bool SetFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, int winlangid, class MissingGlyphSearcher *callback);
+bool SetFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, class MissingGlyphSearcher *callback);
 
 #endif
