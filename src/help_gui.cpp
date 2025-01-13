@@ -26,6 +26,7 @@ static const std::string README_FILENAME = "README.md";
 static const std::string CHANGELOG_FILENAME = "changelog.md";
 static const std::string KNOWN_BUGS_FILENAME = "known-bugs.md";
 static const std::string LICENSE_FILENAME = "COPYING.md";
+static const std::string FONTS_FILENAME = "fonts.md";
 
 static const std::string WEBSITE_LINK = "https://www.openttd.org/";
 static const std::string WIKI_LINK = "https://wiki.openttd.org/";
@@ -41,14 +42,14 @@ static constexpr size_t CHANGELOG_VERSIONS_LIMIT = 20;
  * @param filename The filename to find.
  * @return std::string The path to the filename if found.
  */
-static std::optional<std::string> FindGameManualFilePath(std::string_view filename)
+static std::optional<std::string> FindGameManualFilePath(std::string_view filename, Subdirectory subdir)
 {
 	static const Searchpath searchpaths[] = {
 		SP_APPLICATION_BUNDLE_DIR, SP_INSTALLATION_DIR, SP_SHARED_DIR, SP_BINARY_DIR, SP_WORKING_DIR
 	};
 
 	for (Searchpath sp : searchpaths) {
-		auto file_path = FioGetDirectory(sp, BASE_DIR) + filename.data();
+		auto file_path = FioGetDirectory(sp, subdir) + filename.data();
 		if (FioCheckFileExists(file_path, NO_DIRECTORY)) return file_path;
 	}
 
@@ -57,14 +58,14 @@ static std::optional<std::string> FindGameManualFilePath(std::string_view filena
 
 /** Window class displaying the game manual textfile viewer. */
 struct GameManualTextfileWindow : public TextfileWindow {
-	GameManualTextfileWindow(std::string_view filename) : TextfileWindow(TFT_GAME_MANUAL)
+	GameManualTextfileWindow(std::string_view filename, Subdirectory subdir) : TextfileWindow(TFT_GAME_MANUAL)
 	{
 		this->ConstructWindow();
 
 		/* Mark the content of these files as trusted. */
 		this->trusted = true;
 
-		auto filepath = FindGameManualFilePath(filename);
+		auto filepath = FindGameManualFilePath(filename, subdir);
 		/* The user could, in theory, have moved the file. So just show an empty window if that is the case. */
 		if (!filepath.has_value()) {
 			return;
@@ -122,26 +123,30 @@ struct HelpWindow : public Window {
 	{
 		this->InitNested(number);
 
-		this->EnableTextfileButton(README_FILENAME, WID_HW_README);
-		this->EnableTextfileButton(CHANGELOG_FILENAME, WID_HW_CHANGELOG);
-		this->EnableTextfileButton(KNOWN_BUGS_FILENAME, WID_HW_KNOWN_BUGS);
-		this->EnableTextfileButton(LICENSE_FILENAME, WID_HW_LICENSE);
+		this->EnableTextfileButton(README_FILENAME, BASE_DIR, WID_HW_README);
+		this->EnableTextfileButton(CHANGELOG_FILENAME, BASE_DIR, WID_HW_CHANGELOG);
+		this->EnableTextfileButton(KNOWN_BUGS_FILENAME, BASE_DIR, WID_HW_KNOWN_BUGS);
+		this->EnableTextfileButton(LICENSE_FILENAME, BASE_DIR, WID_HW_LICENSE);
+		this->EnableTextfileButton(FONTS_FILENAME, DOCS_DIR, WID_HW_FONTS);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_HW_README:
-				new GameManualTextfileWindow(README_FILENAME);
+				new GameManualTextfileWindow(README_FILENAME, BASE_DIR);
 				break;
 			case WID_HW_CHANGELOG:
-				new GameManualTextfileWindow(CHANGELOG_FILENAME);
+				new GameManualTextfileWindow(CHANGELOG_FILENAME, BASE_DIR);
 				break;
 			case WID_HW_KNOWN_BUGS:
-				new GameManualTextfileWindow(KNOWN_BUGS_FILENAME);
+				new GameManualTextfileWindow(KNOWN_BUGS_FILENAME, BASE_DIR);
 				break;
 			case WID_HW_LICENSE:
-				new GameManualTextfileWindow(LICENSE_FILENAME);
+				new GameManualTextfileWindow(LICENSE_FILENAME, BASE_DIR);
+				break;
+			case WID_HW_FONTS:
+				new GameManualTextfileWindow(FONTS_FILENAME, DOCS_DIR);
 				break;
 			case WID_HW_WEBSITE:
 				OpenBrowser(WEBSITE_LINK);
@@ -159,9 +164,9 @@ struct HelpWindow : public Window {
 	}
 
 private:
-	void EnableTextfileButton(std::string_view filename, WidgetID button_widget)
+	void EnableTextfileButton(std::string_view filename, Subdirectory subdir, WidgetID button_widget)
 	{
-		this->GetWidget<NWidgetLeaf>(button_widget)->SetDisabled(!FindGameManualFilePath(filename).has_value());
+		this->GetWidget<NWidgetLeaf>(button_widget)->SetDisabled(!FindGameManualFilePath(filename, subdir).has_value());
 	}
 };
 
@@ -185,6 +190,7 @@ static constexpr NWidgetPart _nested_helpwin_widgets[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_CHANGELOG), SetStringTip(STR_HELP_WINDOW_CHANGELOG), SetMinimalSize(128, 12), SetFill(1, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_KNOWN_BUGS),SetStringTip(STR_HELP_WINDOW_KNOWN_BUGS), SetMinimalSize(128, 12), SetFill(1, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_LICENSE), SetStringTip(STR_HELP_WINDOW_LICENSE), SetMinimalSize(128, 12), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_FONTS), SetStringTip(STR_HELP_WINDOW_FONTS), SetMinimalSize(128, 12), SetFill(1, 0),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
