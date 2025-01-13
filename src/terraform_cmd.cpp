@@ -111,16 +111,25 @@ static std::tuple<CommandCost, TileIndex> TerraformTileHeight(TerraformerState *
 	 */
 	if (height == TerraformGetHeightOfTile(ts, tile)) return { CMD_ERROR, INVALID_TILE };
 
-	/* Check "too close to edge of map". Only possible when freeform-edges is off. */
-	uint x = TileX(tile);
-	uint y = TileY(tile);
-	if (!_settings_game.construction.freeform_edges && ((x <= 1) || (y <= 1) || (x >= Map::MaxX() - 1) || (y >= Map::MaxY() - 1))) {
-		/*
-		 * Determine a sensible error tile
-		 */
-		if (x == 1) x = 0;
-		if (y == 1) y = 0;
-		return { CommandCost(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP), TileXY(x, y) };
+	/* If the map has infinite water borders, don't allow terraforming the outer ring of tiles to avoid blocking ships in a confusing way. */
+	if (_settings_game.game_creation.water_borders == BORDERFLAGS_ALL) {
+		uint x = TileX(tile);
+		uint y = TileY(tile);
+
+		auto check_tile = [&](uint x_min, uint y_min, uint x_max, uint y_max) -> bool {
+			return ((x <= x_min) || (y <= y_min) || (x >= Map::MaxX() - x_max) || (y >= Map::MaxY() - y_max));
+		};
+
+		/* If free-form edges is off, distances are a bit different. */
+		if (!_settings_game.construction.freeform_edges && check_tile(1, 1, 1, 1)) {
+			/* Determine a sensible error tile. */
+			if (x == 1) x = 0;
+			if (y == 1) y = 0;
+			return { CommandCost(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP), TileXY(x, y) };
+		}
+
+		/* Freeform edges are enabled. */
+		if (check_tile(2, 2, 1, 1)) return { CommandCost(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP), TileXY(x, y) };
 	}
 
 	/* Mark incident tiles that are involved in the terraforming. */
@@ -209,7 +218,11 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlags flags,
 			assert(t < Map::Size());
 			/* MP_VOID tiles can be terraformed but as tunnels and bridges
 			 * cannot go under / over these tiles they don't need checking. */
-			if (IsTileType(t, MP_VOID)) continue;
+			if (IsTileType(t, MP_VOID)) {
+				/* All water borders are drawn with infinite water, so don't allow terraforming off the map edge. */
+				if (_settings_game.game_creation.water_borders == BORDERFLAGS_ALL) return { CommandCost(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP), 0, t };
+				continue;
+			}
 
 			/* Find new heights of tile corners */
 			int z_N = TerraformGetHeightOfTile(&ts, t + TileDiffXY(0, 0));
