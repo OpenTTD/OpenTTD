@@ -2248,6 +2248,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Readme
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Changelog
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Known Bugs
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}License
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Fonts
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Report a Bug
