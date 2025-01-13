@@ -401,6 +401,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_PROTECT_PLACED_HOUSES,              ///< 351  PR#13270 Houses individually placed by players can be protected from town/AI removal.
 	SLV_SCRIPT_SAVE_INSTANCES,              ///< 352  PR#13556 Scripts are allowed to save instances.
 	SLV_FIX_SCC_ENCODED_NEGATIVE,           ///< 353  PR#14049 Fix encoding of negative parameters.
+	SLV_INFINITE_WATER_BORDERS,             ///< 354  PR#13289 Draw infinite water when all borders are water.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
