@@ -41,39 +41,14 @@ static const SaveLoad _engine_desc[] = {
 	SLE_CONDSSTR(Engine, name,                SLE_STR,                    SLV_84, SL_MAX_VERSION),
 };
 
-static std::vector<Engine*> _temp_engine;
-
-/**
- * Allocate an Engine structure, but not using the pools.
- * The allocated Engine must be freed using FreeEngine;
- * @return Allocated engine.
- */
-static Engine *CallocEngine()
-{
-	uint8_t *zero = CallocT<uint8_t>(sizeof(Engine));
-	Engine *engine = new (zero) Engine();
-	return engine;
-}
-
-/**
- * Deallocate an Engine constructed by CallocEngine.
- * @param e Engine to free.
- */
-static void FreeEngine(Engine *e)
-{
-	if (e != nullptr) {
-		e->~Engine();
-		free(e);
-	}
-}
+static std::vector<Engine> _temp_engine;
 
 Engine *GetTempDataEngine(EngineID index)
 {
 	if (index < _temp_engine.size()) {
-		return _temp_engine[index];
+		return &_temp_engine[index];
 	} else if (index == _temp_engine.size()) {
-		_temp_engine.push_back(CallocEngine());
-		return _temp_engine[index];
+		return &_temp_engine.emplace_back();
 	} else {
 		NOT_REACHED();
 	}
@@ -148,11 +123,8 @@ void CopyTempEngineData()
 
 void ResetTempEngineData()
 {
-	/* Get rid of temporary data */
-	for (std::vector<Engine*>::iterator it = _temp_engine.begin(); it != _temp_engine.end(); ++it) {
-		FreeEngine(*it);
-	}
 	_temp_engine.clear();
+	_temp_engine.shrink_to_fit();
 }
 
 struct ENGSChunkHandler : ChunkHandler {
