@@ -2873,24 +2873,28 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				} else if (buf.Remaining() < SNOW_LINE_MONTHS * SNOW_LINE_DAYS) {
 					GrfMsg(1, "GlobalVarChangeInfo: Not enough entries set in the snowline table ({})", buf.Remaining());
 				} else {
-					uint8_t table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS];
+					auto snow_line = std::make_unique<SnowLine>();
 
 					for (uint i = 0; i < SNOW_LINE_MONTHS; i++) {
 						for (uint j = 0; j < SNOW_LINE_DAYS; j++) {
-							table[i][j] = buf.ReadByte();
+							uint8_t &level = snow_line->table[i][j];
+							level = buf.ReadByte();
 							if (_cur.grffile->grf_version >= 8) {
-								if (table[i][j] != 0xFF) table[i][j] = table[i][j] * (1 + _settings_game.construction.map_height_limit) / 256;
+								if (level != 0xFF) level = level * (1 + _settings_game.construction.map_height_limit) / 256;
 							} else {
-								if (table[i][j] >= 128) {
+								if (level >= 128) {
 									/* no snow */
-									table[i][j] = 0xFF;
+									level = 0xFF;
 								} else {
-									table[i][j] = table[i][j] * (1 + _settings_game.construction.map_height_limit) / 128;
+									level = level * (1 + _settings_game.construction.map_height_limit) / 128;
 								}
 							}
+
+							snow_line->highest_value = std::max(snow_line->highest_value, level);
+							snow_line->lowest_value = std::min(snow_line->lowest_value, level);
 						}
 					}
-					SetSnowLine(table);
+					SetSnowLine(std::move(snow_line));
 				}
 				break;
 
