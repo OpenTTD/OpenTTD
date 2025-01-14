@@ -1448,6 +1448,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 			case ViewportSignKdtreeItem::VKI_STATION: {
 				if (!show_stations) break;
 				const BaseStation *st = BaseStation::Get(item.id.station);
+				if ((_facility_display_opt & st->facilities) == 0) break;
 
 				/* Don't draw if station is owned by another company and competitor station names are hidden. Stations owned by none are never ignored. */
 				if (!show_competitors && _local_company != st->owner && st->owner != OWNER_NONE) break;
