@@ -9711,6 +9711,16 @@ ERROR: IsEnd() is invalid as Begin() is never called
         GetDestinationType():  1
         GetDestinationIndex(): 7
         GetCargoType():        0
+  GetNextEvent:          instance
+    GetEventType:        33
+      EventName:         CompanyRenamed
+      CompanyID:         1
+      CompanyName:       Regression
+  GetNextEvent:          instance
+    GetEventType:        33
+      EventName:         CompanyRenamed
+      CompanyID:         1
+      CompanyName:       Little Frutford Transport
   IsEventWaiting:        false
 
 --Math--
@@ -9748,9 +9758,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Valuate() with excessive CPU usage--
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [unknown()] regression/main.nut line [2051]
+*FUNCTION [unknown()] regression/main.nut line [2058]
 *FUNCTION [Valuate()] NATIVE line [-1]
-*FUNCTION [Start()] regression/main.nut line [2052]
+*FUNCTION [Start()] regression/main.nut line [2059]
 
 [id] 0
 [this] TABLE
@@ -9759,7 +9769,7 @@ Your script made an error: excessive CPU usage in valuator function
 [this] INSTANCE
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2052]
+*FUNCTION [Start()] regression/main.nut line [2059]
 
 [Infinite] CLOSURE
 [list] INSTANCE

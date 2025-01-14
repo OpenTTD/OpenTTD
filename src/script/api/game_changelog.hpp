@@ -19,6 +19,7 @@
  *
  * API additions:
  * \li GSEventVehicleCrashed::GetVictims
+ * \li GSEventCompanyRenamed
  *
  * \b 14.0
  *

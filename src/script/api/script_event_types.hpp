@@ -347,6 +347,48 @@ private:
 };
 
 /**
+ * Event Company Renamed, indicating a company has changed name.
+ * @api ai game
+ */
+class ScriptEventCompanyRenamed : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	/**
+	 * @param owner The company that is renamed.
+	 */
+	ScriptEventCompanyRenamed(CompanyID company, const std::string &new_name) :
+		ScriptEvent(ET_COMPANY_RENAMED),
+		company(static_cast<ScriptCompany::CompanyID>(company)),
+		new_name(new_name)
+	{}
+#endif /* DOXYGEN_API */
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventCompanyRenamed *Convert(ScriptEvent *instance) { return static_cast<ScriptEventCompanyRenamed *>(instance); }
+
+	/**
+	 * Get the CompanyID of the company that has been renamed.
+	 * @return The CompanyID of the company.
+	 */
+	ScriptCompany::CompanyID GetCompanyID() { return this->company; }
+
+	/**
+	 * Get the new name of the company.
+	 * @return The new name of the company.
+	 */
+	std::optional<std::string> GetNewName() { return this->new_name; }
+
+private:
+
+	ScriptCompany::CompanyID company; ///< The company that was renamed.
+	std::string new_name; ///< The new name of the company.
+};
+
+/**
  * Event Company In Trouble, indicating a company is in trouble and might go
  *  bankrupt soon.
  * @api ai game

@@ -424,6 +424,8 @@ set_name:;
 		c->name_2 = strp;
 
 		MarkWholeScreenDirty();
+		AI::BroadcastNewEvent(new ScriptEventCompanyRenamed(c->index, name));
+		Game::NewEvent(new ScriptEventCompanyRenamed(c->index, name));
 
 		if (c->is_ai) {
 			auto cni = std::make_unique<CompanyNewsInformation>(c);
@@ -1184,6 +1186,11 @@ CommandCost CmdRenameCompany(DoCommandFlag flags, const std::string &text)
 		}
 		MarkWholeScreenDirty();
 		CompanyAdminUpdate(c);
+
+		SetDParam(0, c->index);
+		std::string new_name = GetString(STR_COMPANY_NAME);
+		AI::BroadcastNewEvent(new ScriptEventCompanyRenamed(c->index, new_name));
+		Game::NewEvent(new ScriptEventCompanyRenamed(c->index, new_name));
 	}
 
 	return CommandCost();
