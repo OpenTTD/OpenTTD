@@ -41,25 +41,15 @@
 
 /** Read some packets, and when do use that data as initial load filter. */
 struct PacketReader : LoadFilter {
-	static const size_t CHUNK = 32 * 1024;  ///< 32 KiB chunks of memory.
+	using Buffer = std::deque<uint8_t>; ///< The underlying buffer type that's being use.
 
-	std::vector<uint8_t *> blocks;             ///< Buffer with blocks of allocated memory.
-	uint8_t *buf;                              ///< Buffer we're going to write to/read from.
-	uint8_t *bufe;                             ///< End of the buffer we write to/read from.
-	uint8_t **block;                           ///< The block we're reading from/writing to.
-	size_t written_bytes;                   ///< The total number of bytes we've written.
-	size_t read_bytes;                      ///< The total number of read bytes.
+	Buffer buffer; ///< Buffer with the raw save game data.
+	Buffer::const_iterator iterator; ///< Buffer we're going to write to/read from.
+	size_t read_bytes = 0; ///< The total number of read bytes.
 
 	/** Initialise everything. */
-	PacketReader() : LoadFilter(nullptr), buf(nullptr), bufe(nullptr), block(nullptr), written_bytes(0), read_bytes(0)
+	PacketReader() : LoadFilter(nullptr)
 	{
-	}
-
-	~PacketReader() override
-	{
-		for (auto p : this->blocks) {
-			free(p);
-		}
 	}
 
 	/**
@@ -71,9 +61,7 @@ struct PacketReader : LoadFilter {
 	 */
 	static inline ssize_t TransferOutMemCopy(PacketReader *destination, const char *source, size_t amount)
 	{
-		memcpy(destination->buf, source, amount);
-		destination->buf += amount;
-		destination->written_bytes += amount;
+		std::copy_n(source, amount, std::back_inserter(destination->buffer));
 		return amount;
 	}
 
@@ -84,47 +72,25 @@ struct PacketReader : LoadFilter {
 	void AddPacket(Packet &p)
 	{
 		assert(this->read_bytes == 0);
-		p.TransferOutWithLimit(TransferOutMemCopy, this->bufe - this->buf, this);
-
-		/* Did everything fit in the current chunk, then we're done. */
-		if (p.RemainingBytesToTransfer() == 0) return;
-
-		/* Allocate a new chunk and add the remaining data. */
-		this->blocks.push_back(this->buf = CallocT<uint8_t>(CHUNK));
-		this->bufe = this->buf + CHUNK;
-
-		p.TransferOutWithLimit(TransferOutMemCopy, this->bufe - this->buf, this);
+		p.TransferOut(TransferOutMemCopy, this);
 	}
 
 	size_t Read(uint8_t *rbuf, size_t size) override
 	{
 		/* Limit the amount to read to whatever we still have. */
-		size_t ret_size = size = std::min(this->written_bytes - this->read_bytes, size);
-		this->read_bytes += ret_size;
-		const uint8_t *rbufe = rbuf + ret_size;
+		size_t read_size = std::min(this->buffer.size() - this->read_bytes, size);
 
-		while (rbuf != rbufe) {
-			if (this->buf == this->bufe) {
-				this->buf = *this->block++;
-				this->bufe = this->buf + CHUNK;
-			}
+		std::copy_n(this->iterator, read_size, rbuf);
+		std::advance(this->iterator, read_size);
+		this->read_bytes += read_size;
 
-			size_t to_write = std::min(this->bufe - this->buf, rbufe - rbuf);
-			memcpy(rbuf, this->buf, to_write);
-			rbuf += to_write;
-			this->buf += to_write;
-		}
-
-		return ret_size;
+		return read_size;
 	}
 
 	void Reset() override
 	{
 		this->read_bytes = 0;
-
-		this->block = this->blocks.data();
-		this->buf   = *this->block++;
-		this->bufe  = this->buf + CHUNK;
+		this->iterator = this->buffer.cbegin();
 	}
 };
 
@@ -833,7 +799,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DATA(Packet
 	/* We are still receiving data, put it to the file */
 	this->savegame->AddPacket(p);
 
-	_network_join_bytes = (uint32_t)this->savegame->written_bytes;
+	_network_join_bytes = static_cast<uint32_t>(this->savegame->buffer.size());
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 	return NETWORK_RECV_STATUS_OKAY;
