@@ -18,9 +18,8 @@
 
 #include "../safeguards.h"
 
-static const int NUM_OLD_STRINGS     = 512; ///< The number of custom strings stored in old savegames.
-static const int LEN_OLD_STRINGS     =  32; ///< The number of characters per string.
-static const int LEN_OLD_STRINGS_TTO =  24; ///< The number of characters per string in TTO savegames.
+static const int NUM_OLD_STRINGS = 512; ///< The number of custom strings stored in old savegames.
+static const size_t LEN_OLD_STRINGS = 32; ///< The number of characters per string.
 
 /**
  * Remap a string ID from the old format to the new format
@@ -49,7 +48,7 @@ StringID RemapOldStringID(StringID s)
 }
 
 /** Location to load the old names to. */
-char *_old_name_array = nullptr;
+std::unique_ptr<std::string[]> _old_name_array;
 
 /**
  * Copy and convert old custom names to UTF-8.
@@ -64,13 +63,12 @@ std::string CopyFromOldName(StringID id)
 	if (GetStringTab(id) != TEXT_TAB_OLD_CUSTOM) return std::string();
 
 	if (IsSavegameVersionBefore(SLV_37)) {
-		uint offs = _savegame_type == SGT_TTO ? LEN_OLD_STRINGS_TTO * GB(id, 0, 8) : LEN_OLD_STRINGS * GB(id, 0, 9);
-		const char *strfrom = &_old_name_array[offs];
+		const std::string &strfrom = _old_name_array[GB(id, 0, 9)];
 
 		std::ostringstream tmp;
 		std::ostreambuf_iterator<char> strto(tmp);
-		for (; *strfrom != '\0'; strfrom++) {
-			char32_t c = (uint8_t)*strfrom;
+		for (char32_t c : strfrom) {
+			if (c == '\0') break;
 
 			/* Map from non-ISO8859-15 characters to UTF-8. */
 			switch (c) {
@@ -85,13 +83,13 @@ std::string CopyFromOldName(StringID id)
 				default: break;
 			}
 
-			Utf8Encode(strto, c);
+			if (IsPrintable(c)) Utf8Encode(strto, c);
 		}
 
 		return tmp.str();
 	} else {
 		/* Name will already be in UTF-8. */
-		return std::string(&_old_name_array[LEN_OLD_STRINGS * GB(id, 0, 9)]);
+		return StrMakeValid(_old_name_array[GB(id, 0, 9)]);
 	}
 }
 
@@ -101,7 +99,6 @@ std::string CopyFromOldName(StringID id)
  */
 void ResetOldNames()
 {
-	free(_old_name_array);
 	_old_name_array = nullptr;
 }
 
@@ -110,8 +107,7 @@ void ResetOldNames()
  */
 void InitializeOldNames()
 {
-	free(_old_name_array);
-	_old_name_array = CallocT<char>(NUM_OLD_STRINGS * LEN_OLD_STRINGS); // 200 * 24 would be enough for TTO savegames
+	_old_name_array = std::make_unique<std::string[]>(NUM_OLD_STRINGS); // 200 would be enough for TTO savegames
 }
 
 struct NAMEChunkHandler : ChunkHandler {
@@ -123,11 +119,10 @@ struct NAMEChunkHandler : ChunkHandler {
 
 		while ((index = SlIterateArray()) != -1) {
 			if (index >= NUM_OLD_STRINGS) SlErrorCorrupt("Invalid old name index");
-			if (SlGetFieldLength() > (uint)LEN_OLD_STRINGS) SlErrorCorrupt("Invalid old name length");
+			size_t length = SlGetFieldLength();
+			if (length > LEN_OLD_STRINGS) SlErrorCorrupt("Invalid old name length");
 
-			SlCopy(&_old_name_array[LEN_OLD_STRINGS * index], SlGetFieldLength(), SLE_UINT8);
-			/* Make sure the old name is null terminated */
-			_old_name_array[LEN_OLD_STRINGS * index + LEN_OLD_STRINGS - 1] = '\0';
+			SlReadString(_old_name_array[index], length);
 		}
 	}
 };

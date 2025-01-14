@@ -483,7 +483,7 @@ static inline uint RemapOrderIndex(uint x)
 
 extern std::vector<TileIndex> _animated_tiles;
 extern TimeoutTimer<TimerGameTick> _new_competitor_timeout;
-extern char *_old_name_array;
+extern std::unique_ptr<std::string[]> _old_name_array;
 
 static uint32_t _old_town_index;
 static uint16_t _old_string_id;
@@ -1384,6 +1384,25 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 	return true;
 }
 
+/**
+ * Read a single string from the savegame.
+ * @param ls The state for loading this save game.
+ * @param index The index of the loaded custom string.
+ * @return Always true.
+ */
+bool LoadOldCustomString(LoadgameState *ls, int index)
+{
+	/*
+	 * Data is stored in fixed size "cells"; read these completely.
+	 * Validation and conversion to UTF-8 are happening at a later stage.
+	 */
+	std::string &str = _old_name_array[index];
+	str.resize(_savegame_type == SGT_TTO ? 24 : 32);
+	for (auto &c : str) c = ReadByte(ls);
+
+	return true;
+}
+
 static const OldChunks sign_chunk[] = {
 	OCL_VAR ( OC_UINT16, 1, &_old_string_id ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Sign, x ),
@@ -1680,8 +1699,8 @@ static const OldChunks main_chunk[] = {
 	OCL_ASSERT( OC_TTD, 0x6F0F2 ),
 	OCL_ASSERT( OC_TTO, 0x45746 ),
 
-	OCL_VAR ( OC_TTD | OC_UINT8 | OC_DEREFERENCE_POINTER, 32 * 500, &_old_name_array ),
-	OCL_VAR ( OC_TTO | OC_UINT8 | OC_DEREFERENCE_POINTER, 24 * 200, &_old_name_array ),
+	OCL_CCHUNK( OC_TTD, 500, LoadOldCustomString ),
+	OCL_CCHUNK( OC_TTO, 200, LoadOldCustomString ),
 
 	OCL_ASSERT( OC_TTO, 0x46A06 ),
 
