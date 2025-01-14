@@ -70,12 +70,6 @@ enum OldChunkType : uint32_t {
 
 	OC_TILE      = OC_VAR_U32  | OC_FILE_U16,
 
-	/**
-	 * Dereference the pointer once before writing to it,
-	 * so we do not have to use big static arrays.
-	 */
-	OC_DEREFERENCE_POINTER = 1U << 31,
-
 	OC_END       = 0, ///< End of the whole chunk, all 32 bits set to zero
 };
 

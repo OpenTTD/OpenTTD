@@ -129,7 +129,6 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 		}
 
 		uint8_t *ptr = (uint8_t*)chunk->ptr;
-		if (chunk->type & OC_DEREFERENCE_POINTER) ptr = *(uint8_t**)ptr;
 
 		for (uint i = 0; i < chunk->amount; i++) {
 			/* Handle simple types */
