@@ -355,7 +355,7 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlag flags, VehicleType
 		if (pg == nullptr) {
 			g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
 			g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
-			if (c->settings.renew_keep_length) SetBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL);
+			if (c->settings.renew_keep_length) g->flags |= GroupFlags::ReplaceWagonRemoval;
 		} else {
 			g->parent = pg->index;
 			g->livery.colour1 = pg->livery.colour1;
@@ -698,9 +698,9 @@ CommandCost CmdSetGroupLivery(DoCommandFlag flags, GroupID group_id, bool primar
 static void SetGroupFlag(Group *g, GroupFlags flag, bool set, bool children)
 {
 	if (set) {
-		SetBit(g->flags, flag);
+		g->flags |= flag;
 	} else {
-		ClrBit(g->flags, flag);
+		g->flags &= ~flag;
 	}
 
 	if (!children) return;
@@ -724,7 +724,7 @@ CommandCost CmdSetGroupFlag(DoCommandFlag flags, GroupID group_id, GroupFlags fl
 	Group *g = Group::GetIfValid(group_id);
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
-	if (flag >= GroupFlags::GF_END) return CMD_ERROR;
+	if (flag != GroupFlags::ReplaceProtection && flag != GroupFlags::ReplaceWagonRemoval) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		SetGroupFlag(g, flag, value, recursive);

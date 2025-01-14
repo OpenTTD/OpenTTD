@@ -405,7 +405,7 @@ public:
 				bool remove_wagon;
 				const Group *g = Group::GetIfValid(this->sel_group);
 				if (g != nullptr) {
-					remove_wagon = HasBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL);
+					remove_wagon = HasFlag(g->flags, GroupFlags::ReplaceWagonRemoval);
 					SetDParam(0, STR_GROUP_NAME);
 					SetDParam(1, sel_group);
 				} else {
@@ -554,7 +554,7 @@ public:
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
 				const Group *g = Group::GetIfValid(this->sel_group);
 				if (g != nullptr) {
-					Command<CMD_SET_GROUP_FLAG>::Post(this->sel_group, GroupFlags::GF_REPLACE_WAGON_REMOVAL, !HasBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL), _ctrl_pressed);
+					Command<CMD_SET_GROUP_FLAG>::Post(this->sel_group, GroupFlags::ReplaceWagonRemoval, !HasFlag(g->flags, GroupFlags::ReplaceWagonRemoval), _ctrl_pressed);
 				} else {
 					// toggle renew_keep_length
 					Command<CMD_CHANGE_COMPANY_SETTING>::Post("company.renew_keep_length", Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1);

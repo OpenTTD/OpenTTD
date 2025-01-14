@@ -62,11 +62,12 @@ struct GroupStatistics {
 	static void UpdateAutoreplace(CompanyID company);
 };
 
-enum GroupFlags : uint8_t {
-	GF_REPLACE_PROTECTION,    ///< If set to true, the global autoreplace has no effect on the group
-	GF_REPLACE_WAGON_REMOVAL, ///< If set, autoreplace will perform wagon removal on vehicles in this group.
-	GF_END,
+enum class GroupFlags : uint8_t {
+	None = 0,
+	ReplaceProtection = 1U << 0, ///< If set, the global autoreplace has no effect on the group
+	ReplaceWagonRemoval = 1U << 1, ///< If set, autoreplace will perform wagon removal on vehicles in this group.
 };
+DECLARE_ENUM_AS_BIT_SET(GroupFlags)
 
 /** Group data. */
 struct Group : GroupPool::PoolItem<&_group_pool> {
@@ -74,7 +75,7 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	Owner owner;                ///< Group Owner
 	VehicleType vehicle_type;   ///< Vehicle type of the group
 
-	uint8_t flags;                ///< Group flags
+	GroupFlags flags = GroupFlags::None; ///< Group flags
 	Livery livery;              ///< Custom colour scheme for vehicles in this group
 	GroupStatistics statistics; ///< NOSAVE: Statistics and caches on the vehicles in the group.
 
