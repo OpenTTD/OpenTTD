@@ -325,12 +325,11 @@ protected:
 	/** Set this->list_pos to match this->server */
 	void UpdateListPos()
 	{
-		this->list_pos = SLP_INVALID;
-		for (uint i = 0; i != this->servers.size(); i++) {
-			if (this->servers[i] == this->server) {
-				this->list_pos = i;
-				break;
-			}
+		auto it = std::ranges::find(this->servers, this->server);
+		if (it == std::end(this->servers)) {
+			this->list_pos = SLP_INVALID;
+		} else {
+			this->list_pos = static_cast<ServerListPosition>(std::distance(std::begin(this->servers), it));
 		}
 	}
 
