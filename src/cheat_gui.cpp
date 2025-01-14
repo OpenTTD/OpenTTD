@@ -12,6 +12,7 @@
 #include "cheat_type.h"
 #include "company_base.h"
 #include "company_func.h"
+#include "currency.h"
 #include "saveload/saveload.h"
 #include "vehicle_base.h"
 #include "textbuf_gui.h"
@@ -29,6 +30,8 @@
 #include "error.h"
 #include "misc_cmd.h"
 #include "core/geometry_func.hpp"
+#include "settings_type.h"
+#include "settings_internal.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
@@ -221,18 +224,29 @@ static constexpr NWidgetPart _nested_cheat_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_C_PANEL), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.framerect),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_PANEL),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_SETTINGS),
+		EndContainer(),
+	EndContainer(),
 };
 
 /** GUI for the cheats. */
 struct CheatWindow : Window {
 	int clicked;
-	int clicked_widget;
+	int clicked_cheat;
 	uint line_height;
 	Dimension icon;     ///< Dimension of company icon sprite
 
+	std::vector<const SettingDesc *> sandbox_settings;
+	const SettingDesc *clicked_setting;
+	const SettingDesc *last_clicked_setting;
+	const SettingDesc *valuewindow_entry;
+
 	CheatWindow(WindowDesc &desc) : Window(desc)
 	{
+		this->sandbox_settings = GetFilteredSettingCollection([](const SettingDesc &sd) { return HasFlag(sd.flags, SF_SANDBOX); });
 		this->InitNested();
 	}
 
@@ -243,9 +257,15 @@ struct CheatWindow : Window {
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
-		if (widget != WID_C_PANEL) return;
+		switch (widget) {
+			case WID_C_PANEL: DrawCheatWidget(r); break;
+			case WID_C_SETTINGS: DrawSettingsWidget(r); break;
+		}
+	}
 
-		const Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
+	void DrawCheatWidget(const Rect &r) const
+	{
+		const Rect ir = r;
 		int y = ir.top;
 
 		bool rtl = _current_text_dir == TD_RTL;
@@ -270,7 +290,7 @@ struct CheatWindow : Window {
 				}
 
 				default: {
-					int32_t val = (int32_t)ReadValue(ce->variable, ce->type);
+					int32_t val = static_cast<int32_t>(ReadValue(ce->variable, ce->type));
 
 					/* Draw [<][>] boxes for settings of an integer-type */
 					DrawArrowButtons(button_left, y + button_y_offset, COLOUR_YELLOW, clicked - (i * 2), true, true);
@@ -299,10 +319,58 @@ struct CheatWindow : Window {
 		}
 	}
 
+	void DrawSettingsWidget(const Rect &r) const
+	{
+		Rect ir = r.WithHeight(this->line_height);
+
+		for (const auto &desc : this->sandbox_settings) {
+			DrawSetting(ir, desc);
+			ir = ir.Translate(0, this->line_height);
+		}
+	}
+
+	void DrawSetting(const Rect r, const SettingDesc *desc) const
+	{
+		const IntSettingDesc *sd = desc->AsIntSetting();
+		int state = this->clicked_setting == sd ? this->clicked : 0;
+
+		bool rtl = _current_text_dir == TD_RTL;
+
+		Rect buttons = r.WithWidth(SETTING_BUTTON_WIDTH, rtl);
+		Rect text = r.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
+		buttons.top += (r.Height() - SETTING_BUTTON_HEIGHT) / 2;
+		text.top += (r.Height() - GetCharacterHeight(FS_NORMAL)) / 2;
+
+		/* We do not allow changes of some items when we are a client in a network game */
+		bool editable = sd->IsEditable();
+
+		SetDParam(0, STR_CONFIG_SETTING_VALUE);
+		int32_t value = sd->Read(&GetGameSettings());
+		if (sd->IsBoolSetting()) {
+			/* Draw checkbox for boolean-value either on/off */
+			DrawBoolButton(buttons.left, buttons.top, value != 0, editable);
+		} else if (HasFlag(sd->flags, SF_GUI_DROPDOWN)) {
+			/* Draw [v] button for settings of an enum-type */
+			DrawDropDownButton(buttons.left, buttons.top, COLOUR_YELLOW, state != 0, editable);
+		} else {
+			/* Draw [<][>] boxes for settings of an integer-type */
+			DrawArrowButtons(buttons.left, buttons.top, COLOUR_YELLOW, state,
+					editable && value != (HasFlag(sd->flags, SF_GUI_0_IS_SPECIAL) ? 0 : sd->min), editable && static_cast<uint32_t>(value) != sd->max);
+		}
+		sd->SetValueDParams(1, value);
+		DrawString(text.left, text.right, text.top, sd->GetTitle(), TC_LIGHT_BLUE);
+	}
+
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		if (widget != WID_C_PANEL) return;
+		switch (widget) {
+			case WID_C_PANEL: UpdateCheatPanelSize(size); break;
+			case WID_C_SETTINGS: UpdateSettingsPanelSize(size); break;
+		}
+	}
 
+	void UpdateCheatPanelSize(Dimension &size)
+	{
 		uint width = 0;
 		for (const auto &ce : _cheats_ui) {
 			switch (ce.type) {
@@ -340,13 +408,34 @@ struct CheatWindow : Window {
 		this->line_height = std::max<uint>(this->line_height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.framerect.Vertical();
 
 		size.width = width + WidgetDimensions::scaled.hsep_wide * 2 + SETTING_BUTTON_WIDTH;
-		size.height = WidgetDimensions::scaled.framerect.Vertical() + this->line_height * lengthof(_cheats_ui);
+		size.height = this->line_height * lengthof(_cheats_ui);
+	}
+
+	void UpdateSettingsPanelSize(Dimension &size)
+	{
+		uint width = 0;
+		for (const auto &desc : this->sandbox_settings) {
+			const IntSettingDesc *sd = desc->AsIntSetting();
+
+			SetDParam(0, STR_CONFIG_SETTING_VALUE);
+			sd->SetValueDParams(1, sd->max);
+			width = std::max(width, GetStringBoundingBox(sd->GetTitle()).width);
+		}
+
+		size.width = width + WidgetDimensions::scaled.hsep_wide * 2 + SETTING_BUTTON_WIDTH;
+		size.height = this->line_height * static_cast<uint>(std::size(this->sandbox_settings));
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
-		if (widget != WID_C_PANEL) return;
+		switch (widget) {
+			case WID_C_PANEL: CheatPanelClick(pt); break;
+			case WID_C_SETTINGS: SettingsPanelClick(pt); break;
+		}
+	}
 
+	void CheatPanelClick(Point pt)
+	{
 		Rect r = this->GetWidget<NWidgetBase>(WID_C_PANEL)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 		uint btn = (pt.y - r.top) / this->line_height;
 		int x = pt.x - r.left;
@@ -356,17 +445,17 @@ struct CheatWindow : Window {
 		if (btn >= lengthof(_cheats_ui)) return;
 
 		const CheatEntry *ce = &_cheats_ui[btn];
-		int value = (int32_t)ReadValue(ce->variable, ce->type);
+		int value = static_cast<int32_t>(ReadValue(ce->variable, ce->type));
 		int oldvalue = value;
 
 		if (btn == CHT_CHANGE_DATE && x >= SETTING_BUTTON_WIDTH) {
 			/* Click at the date text directly. */
-			clicked_widget = CHT_CHANGE_DATE;
+			clicked_cheat = CHT_CHANGE_DATE;
 			SetDParam(0, value);
 			ShowQueryString(STR_JUST_INT, STR_CHEAT_CHANGE_DATE_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
 			return;
 		} else if (btn == CHT_EDIT_MAX_HL && x >= SETTING_BUTTON_WIDTH) {
-			clicked_widget = CHT_EDIT_MAX_HL;
+			clicked_cheat = CHT_EDIT_MAX_HL;
 			SetDParam(0, value);
 			ShowQueryString(STR_JUST_INT, STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
 			return;
@@ -375,6 +464,7 @@ struct CheatWindow : Window {
 		/* Not clicking a button? */
 		if (!IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) return;
 
+		this->clicked_setting = nullptr;
 		*ce->been_used = true;
 
 		switch (ce->type) {
@@ -392,15 +482,120 @@ struct CheatWindow : Window {
 				break;
 		}
 
-		if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64_t)value);
+		if (value != oldvalue) WriteValue(ce->variable, ce->type, static_cast<int64_t>(value));
 
 		this->SetTimeout();
 
 		this->SetDirty();
 	}
 
+	void SettingsPanelClick(Point pt)
+	{
+		int row = this->GetRowFromWidget(pt.y, WID_C_SETTINGS, WidgetDimensions::scaled.framerect.top, this->line_height);
+		if (row == INT_MAX) return;
+
+		const SettingDesc *desc = this->sandbox_settings[row];
+		const IntSettingDesc *sd = desc->AsIntSetting();
+
+		if (!sd->IsEditable()) return;
+
+		Rect r = this->GetWidget<NWidgetBase>(WID_C_SETTINGS)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
+		int x = pt.x - r.left;
+		bool rtl = _current_text_dir == TD_RTL;
+		if (rtl) x = r.Width() - 1 - x;
+
+		if (x < SETTING_BUTTON_WIDTH) {
+			ChangeSettingValue(sd, x);
+		} else {
+			/* Only open editbox if clicked for the second time, and only for types where it is sensible for. */
+			if (this->last_clicked_setting == sd && !sd->IsBoolSetting() && !HasFlag(sd->flags, SF_GUI_DROPDOWN)) {
+				int64_t value64 = sd->Read(&GetGameSettings());
+
+				/* Show the correct currency-translated value */
+				if (HasFlag(sd->flags, SF_GUI_CURRENCY)) value64 *= GetCurrency().rate;
+
+				CharSetFilter charset_filter = CS_NUMERAL; //default, only numeric input allowed
+				if (sd->min < 0) charset_filter = CS_NUMERAL_SIGNED; // special case, also allow '-' sign for negative input
+
+				this->valuewindow_entry = sd;
+				SetDParam(0, value64);
+
+				/* Limit string length to 14 so that MAX_INT32 * max currency rate doesn't exceed MAX_INT64. */
+				ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 15, this, charset_filter, QSF_ENABLE_DEFAULT);
+			}
+
+			this->clicked_setting = sd;
+		}
+	}
+
+	void ChangeSettingValue(const IntSettingDesc *sd, int x)
+	{
+		int32_t value = sd->Read(&GetGameSettings());
+		int32_t oldvalue = value;
+		if (sd->IsBoolSetting()) {
+			value ^= 1;
+		} else {
+			/* don't allow too fast scrolling */
+			if ((this->flags & WF_TIMEOUT) && this->timeout_timer > 1) {
+				_left_button_clicked = false;
+				return;
+			}
+
+			/* Add a dynamic step-size to the scroller. In a maximum of
+			 * 50-steps you should be able to get from min to max,
+			 * unless specified otherwise in the 'interval' variable
+			 * of the current setting. */
+			uint32_t step = (sd->interval == 0) ? ((sd->max - sd->min) / 50) : sd->interval;
+			if (step == 0) step = 1;
+
+			/* Increase or decrease the value and clamp it to extremes */
+			if (x >= SETTING_BUTTON_WIDTH / 2) {
+				value += step;
+				if (sd->min < 0) {
+					assert(static_cast<int32_t>(sd->max) >= 0);
+					if (value > static_cast<int32_t>(sd->max)) value = static_cast<int32_t>(sd->max);
+				} else {
+					if (static_cast<uint32_t>(value) > sd->max) value = static_cast<int32_t>(sd->max);
+				}
+				if (value < sd->min) value = sd->min; // skip between "disabled" and minimum
+			} else {
+				value -= step;
+				if (value < sd->min) value = HasFlag(sd->flags, SF_GUI_0_IS_SPECIAL) ? 0 : sd->min;
+			}
+
+			/* Set up scroller timeout for numeric values */
+			if (value != oldvalue) {
+				this->last_clicked_setting = nullptr;
+				this->clicked_setting = sd;
+				this->clicked =  (x >= SETTING_BUTTON_WIDTH / 2) != (_current_text_dir == TD_RTL) ? 2 : 1;
+				this->SetTimeout();
+				_left_button_clicked = false;
+			}
+		}
+
+		if (value != oldvalue) {
+			SetSettingValue(sd, value);
+			this->SetDirty();
+		}
+	}
+
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override
+	{
+		if (widget != WID_C_SETTINGS) return false;
+
+		int row = GetRowFromWidget(pt.y, widget, WidgetDimensions::scaled.framerect.top, this->line_height);
+		if (row == INT_MAX) return false;
+
+		const SettingDesc *desc = this->sandbox_settings[row];
+		const IntSettingDesc *sd = desc->AsIntSetting();
+		GuiShowTooltips(this, sd->GetHelp(), close_cond);
+
+		return true;
+	}
+
 	void OnTimeout() override
 	{
+		this->clicked_setting = nullptr;
 		this->clicked = 0;
 		this->SetDirty();
 	}
@@ -410,13 +605,33 @@ struct CheatWindow : Window {
 		/* Was 'cancel' pressed or nothing entered? */
 		if (!str.has_value() || str->empty()) return;
 
-		const CheatEntry *ce = &_cheats_ui[clicked_widget];
-		int oldvalue = (int32_t)ReadValue(ce->variable, ce->type);
-		int value = atoi(str->c_str());
-		*ce->been_used = true;
-		value = ce->proc(value, value - oldvalue);
+		if (this->valuewindow_entry != nullptr) {
+			const IntSettingDesc *sd = this->valuewindow_entry->AsIntSetting();
 
-		if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64_t)value);
+			int32_t value;
+			if (!str->empty()) {
+				long long llvalue = atoll(str->c_str());
+
+				/* Save the correct currency-translated value */
+				if (HasFlag(sd->flags, SF_GUI_CURRENCY)) llvalue /= GetCurrency().rate;
+
+				value = ClampTo<int32_t>(llvalue);
+			} else {
+				value = sd->GetDefaultValue();
+			}
+
+			SetSettingValue(sd, value);
+		} else {
+			const CheatEntry *ce = &_cheats_ui[clicked_cheat];
+			int oldvalue = static_cast<int32_t>(ReadValue(ce->variable, ce->type));
+			int value = atoi(str->c_str());
+			*ce->been_used = true;
+			value = ce->proc(value, value - oldvalue);
+
+			if (value != oldvalue) WriteValue(ce->variable, ce->type, static_cast<int64_t>(value));
+		}
+
+		this->valuewindow_entry = nullptr;
 		this->SetDirty();
 	}
 
