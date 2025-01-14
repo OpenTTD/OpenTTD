@@ -401,4 +401,6 @@ void GetSaveLoadFromSettingTable(SettingTable settings, std::vector<SaveLoad> &s
 bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame = false);
 bool SetSettingValue(const StringSettingDesc *sd, const std::string value, bool force_newgame = false);
 
+std::vector<const SettingDesc *> GetFilteredSettingCollection(std::function<bool(const SettingDesc &desc)> func);
+
 #endif /* SETTINGS_INTERNAL_H */

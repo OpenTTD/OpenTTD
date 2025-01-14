@@ -1622,6 +1622,7 @@ void IntSettingDesc::ChangeValue(const void *object, int32_t newval) const
 	}
 
 	SetWindowClassesDirty(WC_GAME_OPTIONS);
+	if (HasFlag(this->flags, SF_SANDBOX)) SetWindowClassesDirty(WC_CHEATS);
 
 	if (_save_config) SaveToConfig();
 }
@@ -1702,6 +1703,27 @@ const SettingDesc *GetSettingFromName(const std::string_view name)
 	}
 
 	return GetCompanySettingFromName(name);
+}
+
+/**
+ * Get a collection of settings matching a custom filter.
+ * @param func Function to filter each setting.
+ * @returns Vector containing the list of collections.
+ */
+std::vector<const SettingDesc *> GetFilteredSettingCollection(std::function<bool(const SettingDesc &desc)> func)
+{
+	std::vector<const SettingDesc *> collection;
+
+	for (const auto &table : GenericSettingTables()) {
+		for (const auto &desc : table) {
+			const auto sd = GetSettingDesc(desc);
+			if (!func(*sd)) continue;
+
+			collection.push_back(sd);
+		}
+	}
+
+	return collection;
 }
 
 /**
