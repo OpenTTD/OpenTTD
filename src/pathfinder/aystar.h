@@ -16,12 +16,6 @@
 #ifndef AYSTAR_H
 #define AYSTAR_H
 
-#include "../track_func.h"
-
-#include "../misc/hashtable.hpp"
-#include "../misc/binaryheap.hpp"
-#include "../misc/dbg_helpers.h"
-
 #include "yapf/nodelist.hpp"
 #include "yapf/yapf_node.hpp"
 
@@ -43,8 +37,6 @@ using AyStarNode = CYapfNodeKeyTrackDir;
 
 struct PathNode : CYapfNodeT<AyStarNode, PathNode> {
 };
-
-bool CheckIgnoreFirstTile(const PathNode *node);
 
 struct AyStar;
 
