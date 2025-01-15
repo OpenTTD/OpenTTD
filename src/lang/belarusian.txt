@@ -753,7 +753,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Выхад
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Наладкі гульні
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Наладкі
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Наладкі ШІ

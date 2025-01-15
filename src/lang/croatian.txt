@@ -488,7 +488,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izlaz
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Postavke igre
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Postavke
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Postavke za NewGRF

@@ -442,7 +442,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :{BLACK}Generaț
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Plasează case
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opțiunile jocului
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Setări
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Setările AI

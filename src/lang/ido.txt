@@ -295,7 +295,6 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Plene detaloza
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Diafana konstrukturi
 

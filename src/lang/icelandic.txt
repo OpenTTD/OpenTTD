@@ -363,7 +363,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Hætta
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Stillingar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gegnsæisstillingar

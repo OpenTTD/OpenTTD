@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :도시 생성
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :건물 건설
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 기본 설정
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :설정
 STR_SETTINGS_MENU_AI_SETTINGS                                   :인공지능 설정

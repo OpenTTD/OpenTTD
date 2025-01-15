@@ -234,7 +234,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Вӗҫле
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Вӑййи майлаштару
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF майлаштару
 

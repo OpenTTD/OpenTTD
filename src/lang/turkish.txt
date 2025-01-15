@@ -441,7 +441,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Oyundan Çık
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Seçenekler
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ayarlar
 STR_SETTINGS_MENU_AI_SETTINGS                                   :YZ ayarları

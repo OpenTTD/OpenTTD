@@ -445,7 +445,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generer byer
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Plasser hus
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spillinnstillinger
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Innstillinger
 STR_SETTINGS_MENU_AI_SETTINGS                                   :KI-innstilinger

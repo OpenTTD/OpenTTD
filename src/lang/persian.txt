@@ -379,7 +379,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :تنظیمات NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :گزینه های شفافیت

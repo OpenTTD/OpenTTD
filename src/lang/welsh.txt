@@ -442,7 +442,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Cynhyrchu trefi
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Gosod tai
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Dewisiadau Gêm
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Gosodiadau
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Gosodiadau AI

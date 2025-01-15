@@ -369,7 +369,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکل
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :کھیل کے اختیارات
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF اختیارات
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency کے اختیارات

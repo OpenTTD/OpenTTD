@@ -411,7 +411,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :انهاء
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :إعدادات اللعبه
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :الإعدادات
 STR_SETTINGS_MENU_AI_SETTINGS                                   :اعدادات االذكاء الاصطناعي

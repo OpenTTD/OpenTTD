@@ -398,7 +398,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Scoir
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghanna an chluiche
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Socruithe
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Socruithe NewGRF

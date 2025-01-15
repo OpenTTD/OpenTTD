@@ -822,7 +822,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Tworzenie miast
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Stawianie budynków
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcje gry
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ustawienia
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Ustawienia SI

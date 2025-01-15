@@ -571,7 +571,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Fàg an-seo
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghainnean a' gheama
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Roghainnean
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Roghainnean NewGRF

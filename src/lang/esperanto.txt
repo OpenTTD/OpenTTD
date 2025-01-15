@@ -522,7 +522,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Forlasi
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludaj agordoj
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Agordoj
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI agordoj

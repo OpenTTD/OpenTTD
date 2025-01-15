@@ -430,7 +430,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終�
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプション設定
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :設定
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI設定

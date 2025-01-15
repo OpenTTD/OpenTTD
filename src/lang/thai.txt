@@ -388,7 +388,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :ออก
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ตัวเลือกเกม
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :การตั้งค่า
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :กำหนดค่า NewGRF

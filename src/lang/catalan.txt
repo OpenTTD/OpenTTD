@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Genera poblacio
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Posa cases
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcions de la partida
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Configuració
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Configuració de la IA

@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Xerar vilas
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Colocar casas
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcións do xogo
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Opcións
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Axustes da IA

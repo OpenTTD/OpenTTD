@@ -497,7 +497,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Välju
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Mängu seadistus
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Seaded
 STR_SETTINGS_MENU_AI_SETTINGS                                   :TI seaded

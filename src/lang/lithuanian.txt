@@ -628,7 +628,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Išeiti
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pagrindinės nuostatos
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Išplėstinės nuostatos
 STR_SETTINGS_MENU_AI_SETTINGS                                   :DI nustatymai

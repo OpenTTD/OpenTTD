@@ -425,7 +425,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :יציאה
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :אפשרויות המשחק
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :הגדרות
 STR_SETTINGS_MENU_AI_SETTINGS                                   :הגדרות בינה מלאכותית

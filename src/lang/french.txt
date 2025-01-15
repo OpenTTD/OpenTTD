@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Générer des v
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Placer des maisons
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Options du Jeu
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Paramètres
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Configuration des IAs

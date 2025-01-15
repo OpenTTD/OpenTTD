@@ -443,7 +443,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Stied generéir
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Haiser plazéiren
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilloptiounen
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Astellungen
 STR_SETTINGS_MENU_AI_SETTINGS                                   :KI Astellungen

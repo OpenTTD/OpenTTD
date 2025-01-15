@@ -380,7 +380,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Irten
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Jokoaren aukerak
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ezarpenak
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ezarpenak

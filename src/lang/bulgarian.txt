@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Генерир�
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Постави къщи
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Игрови настройки
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Разширени настройки
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Настройки на ИИ

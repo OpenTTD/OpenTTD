@@ -623,7 +623,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izađi
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcije
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Podešavanja
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Podešavanja VI

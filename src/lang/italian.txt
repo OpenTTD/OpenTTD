@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generare città
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Mette case
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opzioni gioco
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Impostazioni
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Impostazioni IA

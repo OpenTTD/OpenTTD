@@ -505,7 +505,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Δημιουρ�
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Τοποθέτηση σπιτιών
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ρυθμίσεις
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Ρυθμίσεις AI

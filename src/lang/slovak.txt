@@ -504,7 +504,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ukončiť
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti hry
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Nastavenia
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Nastavenia AI

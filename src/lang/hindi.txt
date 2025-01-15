@@ -157,7 +157,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :निकास
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :समायोजन
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :पथ-संकेतों के नाम दिखायें
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :पारदर्शी संकेत

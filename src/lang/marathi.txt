@@ -355,7 +355,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :बंद क�
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :खेळाचे पर्याय
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF पर्याय
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :पारदर्शकता पर्याय

@@ -443,7 +443,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Khởi tạo đ
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Sắp xếp nhà
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Cấu hình trò chơi
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Thiết Lập
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Thiết lập AI

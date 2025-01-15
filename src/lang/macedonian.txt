@@ -361,7 +361,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Напушти
 
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :игра опции
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF подесувања
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :транспарентност опции

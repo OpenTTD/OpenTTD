@@ -505,7 +505,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Városok gener�
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Házak elhelyezése
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Játékbeállítások
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Beállítások
 STR_SETTINGS_MENU_AI_SETTINGS                                   :MI Beállítások

@@ -518,7 +518,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generovat měst
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Budovat domy
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti hry
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Nastavení
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Nastavení AI

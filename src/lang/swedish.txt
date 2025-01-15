@@ -443,7 +443,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Generera städe
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Placera ut hus
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinställningar
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Inställningar
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Inställningar för AI

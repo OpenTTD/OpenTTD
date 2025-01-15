@@ -443,7 +443,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :生成城镇
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :放置房屋
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :游戏选项
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :设置
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI 设置

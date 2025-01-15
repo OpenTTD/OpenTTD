@@ -275,7 +275,6 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 
 
 # Settings menu
-###length 16
 
 # File menu
 

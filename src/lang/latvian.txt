@@ -445,7 +445,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Izveidot pilsē
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Novietojiet mājas
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spēles opcijas
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Iestatījumi
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI iestatījumi

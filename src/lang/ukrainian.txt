@@ -576,7 +576,6 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Генерув�
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Розміщення будинків
 
 # Settings menu
-###length 16
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Налаштування гри
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Налаштування
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Налаштування ШІ
