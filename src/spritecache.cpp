@@ -33,8 +33,7 @@
 uint _sprite_cache_size = 4;
 
 
-static uint _spritecache_items = 0;
-static SpriteCache *_spritecache = nullptr;
+static std::vector<SpriteCache> _spritecache;
 static std::vector<std::unique_ptr<SpriteFile>> _sprite_files;
 
 static inline SpriteCache *GetSpriteCache(uint index)
@@ -44,17 +43,13 @@ static inline SpriteCache *GetSpriteCache(uint index)
 
 SpriteCache *AllocateSpriteCache(uint index)
 {
-	if (index >= _spritecache_items) {
+	if (index >= _spritecache.size()) {
 		/* Add another 1024 items to the 'pool' */
 		uint items = Align(index + 1, 1024);
 
-		Debug(sprite, 4, "Increasing sprite cache to {} items ({} bytes)", items, items * sizeof(*_spritecache));
+		Debug(sprite, 4, "Increasing sprite cache to {} items ({} bytes)", items, items * sizeof(SpriteCache));
 
-		_spritecache = ReallocT(_spritecache, items);
-
-		/* Reset the new items and update the count */
-		memset(_spritecache + _spritecache_items, 0, (items - _spritecache_items) * sizeof(*_spritecache));
-		_spritecache_items = items;
+		_spritecache.resize(items);
 	}
 
 	return GetSpriteCache(index);
@@ -145,7 +140,7 @@ bool SkipSpriteData(SpriteFile &file, uint8_t type, uint16_t num)
 /* Check if the given Sprite ID exists */
 bool SpriteExists(SpriteID id)
 {
-	if (id >= _spritecache_items) return false;
+	if (id >= _spritecache.size()) return false;
 
 	/* Special case for Sprite ID zero -- its position is also 0... */
 	if (id == 0) return true;
@@ -218,9 +213,9 @@ uint GetSpriteCountForFile(const std::string &filename, SpriteID begin, SpriteID
  * @note It's actually the number of spritecache items.
  * @return maximum SpriteID
  */
-uint GetMaxSpriteID()
+SpriteID GetMaxSpriteID()
 {
-	return _spritecache_items;
+	return static_cast<SpriteID>(_spritecache.size());
 }
 
 static bool ResizeSpriteIn(SpriteLoader::SpriteCollection &sprite, ZoomLevel src, ZoomLevel tgt)
@@ -747,17 +742,14 @@ void IncreaseSpriteLRU()
 {
 	/* Increase all LRU values */
 	if (_sprite_lru_counter > 16384) {
-		SpriteID i;
-
 		Debug(sprite, 5, "Fixing lru {}, inuse={}", _sprite_lru_counter, GetSpriteCacheUsage());
 
-		for (i = 0; i != _spritecache_items; i++) {
-			SpriteCache *sc = GetSpriteCache(i);
-			if (sc->ptr != nullptr) {
-				if (sc->lru >= 0) {
-					sc->lru = -1;
-				} else if (sc->lru != -32768) {
-					sc->lru--;
+		for (SpriteCache &sc : _spritecache) {
+			if (sc.ptr != nullptr) {
+				if (sc.lru >= 0) {
+					sc.lru = -1;
+				} else if (sc.lru != -32768) {
+					sc.lru--;
 				}
 			}
 		}
@@ -795,7 +787,7 @@ static void CompactSpriteCache()
 
 			/* Locate the sprite belonging to the next pointer. */
 			for (i = 0; GetSpriteCache(i)->ptr != next->data; i++) {
-				assert(i != _spritecache_items);
+				assert(i != _spritecache.size());
 			}
 
 			GetSpriteCache(i)->ptr = s->data; // Adjust sprite array entry
@@ -819,13 +811,13 @@ static void CompactSpriteCache()
  * Delete a single entry from the sprite cache.
  * @param item Entry to delete.
  */
-static void DeleteEntryFromSpriteCache(uint item)
+static void DeleteEntryFromSpriteCache(SpriteCache *item)
 {
 	/* Mark the block as free (the block must be in use) */
-	MemBlock *s = (MemBlock*)GetSpriteCache(item)->ptr - 1;
+	MemBlock *s = static_cast<MemBlock *>(item->ptr) - 1;
 	assert(!(s->size & S_FREE_MASK));
 	s->size |= S_FREE_MASK;
-	GetSpriteCache(item)->ptr = nullptr;
+	item->ptr = nullptr;
 
 	/* And coalesce adjacent free blocks */
 	for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s)) {
@@ -839,23 +831,20 @@ static void DeleteEntryFromSpriteCache(uint item)
 
 static void DeleteEntryFromSpriteCache()
 {
-	uint best = UINT_MAX;
-	int cur_lru;
-
 	Debug(sprite, 3, "DeleteEntryFromSpriteCache, inuse={}", GetSpriteCacheUsage());
 
-	cur_lru = 0xffff;
-	for (SpriteID i = 0; i != _spritecache_items; i++) {
-		SpriteCache *sc = GetSpriteCache(i);
-		if (sc->ptr != nullptr && sc->lru < cur_lru) {
-			cur_lru = sc->lru;
-			best = i;
+	SpriteCache *best = nullptr;
+	int cur_lru = 0xffff;
+	for (SpriteCache &sc : _spritecache) {
+		if (sc.ptr != nullptr && sc.lru < cur_lru) {
+			cur_lru = sc.lru;
+			best = &sc;
 		}
 	}
 
 	/* Display an error message and die, in case we found no sprite at all.
 	 * This shouldn't really happen, unless all sprites are locked. */
-	if (best == UINT_MAX) FatalError("Out of sprite memory");
+	if (best == nullptr) FatalError("Out of sprite memory");
 
 	DeleteEntryFromSpriteCache(best);
 }
@@ -1057,9 +1046,8 @@ void GfxInitSpriteMem()
 	GfxInitSpriteCache();
 
 	/* Reset the spritecache 'pool' */
-	free(_spritecache);
-	_spritecache_items = 0;
-	_spritecache = nullptr;
+	_spritecache.clear();
+	_spritecache.shrink_to_fit();
 
 	_compact_cache_counter = 0;
 	_sprite_files.clear();
@@ -1072,9 +1060,8 @@ void GfxInitSpriteMem()
 void GfxClearSpriteCache()
 {
 	/* Clear sprite ptr for all cached items */
-	for (uint i = 0; i != _spritecache_items; i++) {
-		SpriteCache *sc = GetSpriteCache(i);
-		if (sc->ptr != nullptr) DeleteEntryFromSpriteCache(i);
+	for (SpriteCache &sc : _spritecache) {
+		if (sc.ptr != nullptr) DeleteEntryFromSpriteCache(&sc);
 	}
 
 	VideoDriver::GetInstance()->ClearSystemSprites();
@@ -1087,9 +1074,8 @@ void GfxClearSpriteCache()
 void GfxClearFontSpriteCache()
 {
 	/* Clear sprite ptr for all cached font items */
-	for (uint i = 0; i != _spritecache_items; i++) {
-		SpriteCache *sc = GetSpriteCache(i);
-		if (sc->type == SpriteType::Font && sc->ptr != nullptr) DeleteEntryFromSpriteCache(i);
+	for (SpriteCache &sc : _spritecache) {
+		if (sc.type == SpriteType::Font && sc.ptr != nullptr) DeleteEntryFromSpriteCache(&sc);
 	}
 }
 
