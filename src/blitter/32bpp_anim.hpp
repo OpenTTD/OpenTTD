@@ -16,7 +16,7 @@
 class Blitter_32bppAnim : public Blitter_32bppOptimized {
 protected:
 	uint16_t *anim_buf;    ///< In this buffer we keep track of the 8bpp indexes so we can do palette animation
-	void *anim_alloc;    ///< The raw allocated buffer, not necessarily aligned correctly
+	std::unique_ptr<uint16_t[]> anim_alloc; ///< The raw allocated buffer, not necessarily aligned correctly
 	int anim_buf_width;  ///< The width of the animation buffer.
 	int anim_buf_height; ///< The height of the animation buffer.
 	int anim_buf_pitch;  ///< The pitch of the animation buffer (width rounded up to 16 byte boundary).
@@ -25,15 +25,12 @@ protected:
 public:
 	Blitter_32bppAnim() :
 		anim_buf(nullptr),
-		anim_alloc(nullptr),
 		anim_buf_width(0),
 		anim_buf_height(0),
 		anim_buf_pitch(0)
 	{
 		this->palette = _cur_palette;
 	}
-
-	~Blitter_32bppAnim();
 
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
 	void DrawColourMappingRect(void *dst, int width, int height, PaletteID pal) override;

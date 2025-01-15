@@ -20,11 +20,6 @@
 /** Instantiation of the 32bpp with animation blitter factory. */
 static FBlitter_32bppAnim iFBlitter_32bppAnim;
 
-Blitter_32bppAnim::~Blitter_32bppAnim()
-{
-	free(this->anim_alloc);
-}
-
 template <BlitterMode mode>
 inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
 {
@@ -545,13 +540,12 @@ void Blitter_32bppAnim::PostResize()
 	if (_screen.width != this->anim_buf_width || _screen.height != this->anim_buf_height ||
 			_screen.pitch != this->anim_buf_pitch) {
 		/* The size of the screen changed; we can assume we can wipe all data from our buffer */
-		free(this->anim_alloc);
 		this->anim_buf_width = _screen.width;
 		this->anim_buf_height = _screen.height;
 		this->anim_buf_pitch = (_screen.width + 7) & ~7;
-		this->anim_alloc = CallocT<uint16_t>(this->anim_buf_pitch * this->anim_buf_height + 8);
+		this->anim_alloc = std::make_unique<uint16_t[]>(this->anim_buf_pitch * this->anim_buf_height + 8);
 
 		/* align buffer to next 16 byte boundary */
-		this->anim_buf = reinterpret_cast<uint16_t *>((reinterpret_cast<uintptr_t>(this->anim_alloc) + 0xF) & (~0xF));
+		this->anim_buf = reinterpret_cast<uint16_t *>((reinterpret_cast<uintptr_t>(this->anim_alloc.get()) + 0xF) & (~0xF));
 	}
 }
