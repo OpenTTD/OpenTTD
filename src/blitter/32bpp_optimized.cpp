@@ -290,7 +290,7 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 	/* streams of pixels (a, r, g, b channels)
 	 *
 	 * stored in separated stream so data are always aligned on 4B boundary */
-	Colour *dst_px_orig[ZOOM_LVL_END];
+	std::array<std::unique_ptr<Colour[]>, ZOOM_LVL_END> dst_px_orig;
 
 	/* interleaved stream of 'm' channel and 'n' channel
 	 * 'n' is number of following pixels with the same alpha channel class
@@ -298,7 +298,7 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 	 *
 	 * it has to be stored in one stream so fewer registers are used -
 	 * x86 has problems with register allocation even with this solution */
-	uint16_t *dst_n_orig[ZOOM_LVL_END];
+	std::array<std::unique_ptr<uint16_t[]>, ZOOM_LVL_END> dst_n_orig;
 
 	/* lengths of streams */
 	uint32_t lengths[ZOOM_LVL_END][2];
@@ -320,11 +320,11 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 
 		uint size = src_orig->height * src_orig->width;
 
-		dst_px_orig[z] = CallocT<Colour>(size + src_orig->height * 2);
-		dst_n_orig[z]  = CallocT<uint16_t>(size * 2 + src_orig->height * 4 * 2);
+		dst_px_orig[z] = std::make_unique<Colour[]>(size + src_orig->height * 2);
+		dst_n_orig[z]  = std::make_unique<uint16_t[]>(size * 2 + src_orig->height * 4 * 2);
 
-		uint32_t *dst_px_ln = (uint32_t *)dst_px_orig[z];
-		uint32_t *dst_n_ln  = (uint32_t *)dst_n_orig[z];
+		uint32_t *dst_px_ln = reinterpret_cast<uint32_t *>(dst_px_orig[z].get());
+		uint32_t *dst_n_ln  = reinterpret_cast<uint32_t *>(dst_n_orig[z].get());
 
 		const SpriteLoader::CommonPixel *src = (const SpriteLoader::CommonPixel *)src_orig->data;
 
@@ -405,8 +405,8 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 			dst_n_ln =  (uint32_t *)dst_n;
 		}
 
-		lengths[z][0] = (uint8_t *)dst_px_ln - (uint8_t *)dst_px_orig[z]; // all are aligned to 4B boundary
-		lengths[z][1] = (uint8_t *)dst_n_ln  - (uint8_t *)dst_n_orig[z];
+		lengths[z][0] = reinterpret_cast<uint8_t *>(dst_px_ln) - reinterpret_cast<uint8_t *>(dst_px_orig[z].get()); // all are aligned to 4B boundary
+		lengths[z][1] = reinterpret_cast<uint8_t *>(dst_n_ln)  - reinterpret_cast<uint8_t *>(dst_n_orig[z].get());
 	}
 
 	uint len = 0; // total length of data
@@ -428,11 +428,8 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 		dst->offset[z][0] = z == zoom_min ? 0 : lengths[z - 1][1] + dst->offset[z - 1][1];
 		dst->offset[z][1] = lengths[z][0] + dst->offset[z][0];
 
-		memcpy(dst->data + dst->offset[z][0], dst_px_orig[z], lengths[z][0]);
-		memcpy(dst->data + dst->offset[z][1], dst_n_orig[z],  lengths[z][1]);
-
-		free(dst_px_orig[z]);
-		free(dst_n_orig[z]);
+		memcpy(dst->data + dst->offset[z][0], dst_px_orig[z].get(), lengths[z][0]);
+		memcpy(dst->data + dst->offset[z][1], dst_n_orig[z].get(),  lengths[z][1]);
 	}
 
 	return dest_sprite;
