@@ -120,7 +120,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 								*dst = src_px->data;
 							} else {
 								uint r = remap[GB(m, 0, 8)];
-								if (r != 0) *dst = this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8));
+								if (r != 0) *dst = AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8));
 							}
 							dst++;
 							src_px++;
@@ -133,7 +133,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 								*dst = ComposeColourRGBANoCheck(src_px->r, src_px->g, src_px->b, src_px->a, *dst);
 							} else {
 								uint r = remap[GB(m, 0, 8)];
-								if (r != 0) *dst = ComposeColourPANoCheck(this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8)), src_px->a, *dst);
+								if (r != 0) *dst = ComposeColourPANoCheck(AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8)), src_px->a, *dst);
 							}
 							dst++;
 							src_px++;
@@ -151,7 +151,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 								*dst = ComposeColourRGBA(g, g, g, src_px->a, *dst);
 							} else {
 								uint r = remap[GB(m, 0, 8)];
-								if (r != 0) *dst = this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8));
+								if (r != 0) *dst = AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8));
 							}
 							dst++;
 							src_px++;
@@ -167,7 +167,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 								}
 							} else {
 								uint r = remap[GB(m, 0, 8)];
-								if (r != 0) *dst = ComposeColourPANoCheck(this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8)), src_px->a, *dst);
+								if (r != 0) *dst = ComposeColourPANoCheck(AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8)), src_px->a, *dst);
 							}
 							dst++;
 							src_px++;
@@ -224,7 +224,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 						do {
 							if (Tpal_to_rgb && *src_n != 0) {
 								/* Convert the mapping channel to a RGB value */
-								*dst = this->AdjustBrightness(this->LookupColourInPalette(GB(*src_n, 0, 8)), GB(*src_n, 8, 8)).data;
+								*dst = AdjustBrightness(this->LookupColourInPalette(GB(*src_n, 0, 8)), GB(*src_n, 8, 8)).data;
 							} else {
 								*dst = src_px->data;
 							}
@@ -236,7 +236,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 						do {
 							if (Tpal_to_rgb && *src_n != 0) {
 								/* Convert the mapping channel to a RGB value */
-								Colour colour = this->AdjustBrightness(this->LookupColourInPalette(GB(*src_n, 0, 8)), GB(*src_n, 8, 8));
+								Colour colour = AdjustBrightness(this->LookupColourInPalette(GB(*src_n, 0, 8)), GB(*src_n, 8, 8));
 								*dst = ComposeColourRGBANoCheck(colour.r, colour.g, colour.b, src_px->a, *dst);
 							} else {
 								*dst = ComposeColourRGBANoCheck(src_px->r, src_px->g, src_px->b, src_px->a, *dst);
@@ -366,7 +366,7 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 
 						if (Tpal_to_rgb) {
 							/* Pre-convert the mapping channel to a RGB value */
-							Colour colour = this->AdjustBrightness(this->LookupColourInPalette(src->m), rgb_max);
+							Colour colour = AdjustBrightness(this->LookupColourInPalette(src->m), rgb_max);
 							dst_px->r = colour.r;
 							dst_px->g = colour.g;
 							dst_px->b = colour.b;

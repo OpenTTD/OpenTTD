@@ -123,7 +123,7 @@ INTERNAL_LINKAGE Colour ReallyAdjustBrightness(Colour colour, uint8_t brightness
 	uint64_t c16 = colour.b | (uint64_t) colour.g << 16 | (uint64_t) colour.r << 32;
 	c16 *= brightness;
 	uint64_t c16_ob = c16; // Helps out of order execution.
-	c16 /= Blitter_32bppBase::DEFAULT_BRIGHTNESS;
+	c16 /= DEFAULT_BRIGHTNESS;
 	c16 &= 0x01FF01FF01FFULL;
 
 	/* Sum overbright (maximum for each rgb is 508, 9 bits, -255 is changed in -256 so we just have to take the 8 lower bits into account). */
@@ -155,7 +155,7 @@ IGNORE_UNINITIALIZED_WARNING_STOP
 INTERNAL_LINKAGE inline Colour AdjustBrightneSSE(Colour colour, uint8_t brightness)
 {
 	/* Shortcut for normal brightness. */
-	if (brightness == Blitter_32bppBase::DEFAULT_BRIGHTNESS) return colour;
+	if (brightness == DEFAULT_BRIGHTNESS) return colour;
 
 	return ReallyAdjustBrightness(colour, brightness);
 }
@@ -171,7 +171,7 @@ INTERNAL_LINKAGE inline __m128i AdjustBrightnessOfTwoPixels([[maybe_unused]] __m
 	 * OK, not a 1 but DEFAULT_BRIGHTNESS to compensate the div.
 	 */
 	brightness &= 0xFF00FF00;
-	brightness += Blitter_32bppBase::DEFAULT_BRIGHTNESS;
+	brightness += DEFAULT_BRIGHTNESS;
 
 	__m128i colAB = _mm_unpacklo_epi8(from, _mm_setzero_si128());
 	__m128i briAB = _mm_cvtsi32_si128(brightness);
@@ -420,7 +420,7 @@ bmcr_alpha_blend_single:
 						}
 					} else {
 						uint r = remap[src_mv->m];
-						if (r != 0) *dst = ComposeColourPANoCheck(this->AdjustBrightness(this->LookupColourInPalette(r), src_mv->v), src->a, *dst);
+						if (r != 0) *dst = ComposeColourPANoCheck(AdjustBrightness(this->LookupColourInPalette(r), src_mv->v), src->a, *dst);
 					}
 					src_mv++;
 					dst++;

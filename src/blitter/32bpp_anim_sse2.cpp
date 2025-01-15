@@ -40,7 +40,7 @@ void Blitter_32bppSSE2_Anim::PaletteAnimate(const Palette &palette)
 	const int screen_pitch = _screen.pitch;
 	const int anim_pitch = this->anim_buf_pitch;
 	__m128i anim_cmp = _mm_set1_epi16(PALETTE_ANIM_START - 1);
-	__m128i brightness_cmp = _mm_set1_epi16(Blitter_32bppBase::DEFAULT_BRIGHTNESS);
+	__m128i brightness_cmp = _mm_set1_epi16(DEFAULT_BRIGHTNESS);
 	__m128i colour_mask = _mm_set1_epi16(0xFF);
 	for (int y = this->anim_buf_height; y != 0 ; y--) {
 		Colour *next_dst_ln = dst + screen_pitch;

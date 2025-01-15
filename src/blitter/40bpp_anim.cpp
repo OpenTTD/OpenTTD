@@ -243,7 +243,7 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							/* If the anim buffer contains a color value, the image composition will
 							 * only look at the RGB brightness value. As such, we can simply darken the
 							 * RGB value to darken the anim color. */
-							Colour b = *anim != 0 ? Colour(this->GetColourBrightness(*dst), 0, 0) : *dst;
+							Colour b = *anim != 0 ? Colour(GetColourBrightness(*dst), 0, 0) : *dst;
 							*dst = this->MakeTransparent(b, 3, 4);
 							anim++;
 							dst++;
@@ -365,7 +365,7 @@ void Blitter_40bppAnim::DrawColourMappingRect(void *dst, int width, int height, 
 		 * RGB value to darken the anim color. */
 		do {
 			for (int i = 0; i != width; i++) {
-				Colour b = *anim != 0 ? Colour(this->GetColourBrightness(*udst), 0, 0) : *udst;
+				Colour b = *anim != 0 ? Colour(GetColourBrightness(*udst), 0, 0) : *udst;
 				*udst = MakeTransparent(b, 154);
 				udst++;
 				anim++;

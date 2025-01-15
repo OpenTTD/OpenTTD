@@ -131,6 +131,42 @@ uint8_t GetNearestColourIndex(uint8_t r, uint8_t g, uint8_t b)
 	return _palette_lookup[key];
 }
 
+/**
+ * Adjust brightness of colour.
+ * @param colour Colour to adjust.
+ * @param brightness Brightness to apply to colour.
+ * @returns Adjusted colour.
+ */
+Colour ReallyAdjustBrightness(Colour colour, int brightness)
+{
+	if (brightness == DEFAULT_BRIGHTNESS) return colour;
+
+	uint64_t combined = (static_cast<uint64_t>(colour.r) << 32) | (static_cast<uint64_t>(colour.g) << 16) | static_cast<uint64_t>(colour.b);
+	combined *= brightness;
+
+	uint16_t r = GB(combined, 39, 9);
+	uint16_t g = GB(combined, 23, 9);
+	uint16_t b = GB(combined, 7, 9);
+
+	if ((combined & 0x800080008000L) == 0L) {
+		return Colour(r, g, b, colour.a);
+	}
+
+	uint16_t ob = 0;
+	/* Sum overbright */
+	if (r > 255) ob += r - 255;
+	if (g > 255) ob += g - 255;
+	if (b > 255) ob += b - 255;
+
+	/* Reduce overbright strength */
+	ob /= 2;
+	return Colour(
+		r >= 255 ? 255 : std::min(r + ob * (255 - r) / 256, 255),
+		g >= 255 ? 255 : std::min(g + ob * (255 - g) / 256, 255),
+		b >= 255 ? 255 : std::min(b + ob * (255 - b) / 256, 255),
+		colour.a);
+}
+
 void DoPaletteAnimations();
 
 void GfxInitPalettes()

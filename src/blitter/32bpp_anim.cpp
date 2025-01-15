@@ -114,7 +114,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							} else {
 								uint r = remap[GB(m, 0, 8)];
 								*anim = r | (m & 0xFF00);
-								if (r != 0) *dst = this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8));
+								if (r != 0) *dst = AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8));
 							}
 							anim++;
 							dst++;
@@ -130,7 +130,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							} else {
 								uint r = remap[GB(m, 0, 8)];
 								*anim = 0;
-								if (r != 0) *dst = ComposeColourPANoCheck(this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8)), src_px->a, *dst);
+								if (r != 0) *dst = ComposeColourPANoCheck(AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8)), src_px->a, *dst);
 							}
 							anim++;
 							dst++;
@@ -151,7 +151,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							} else {
 								uint r = remap[GB(m, 0, 8)];
 								*anim = r | (m & 0xFF00);
-								if (r != 0) *dst = this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8));
+								if (r != 0) *dst = AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8));
 							}
 							anim++;
 							dst++;
@@ -170,7 +170,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							} else {
 								uint r = remap[GB(m, 0, 8)];
 								*anim = 0;
-								if (r != 0) *dst = ComposeColourPANoCheck(this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8)), src_px->a, *dst);
+								if (r != 0) *dst = ComposeColourPANoCheck(AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8)), src_px->a, *dst);
 							}
 							anim++;
 							dst++;
@@ -237,7 +237,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							uint m = GB(*src_n, 0, 8);
 							/* Above PALETTE_ANIM_START is palette animation */
 							*anim++ = *src_n;
-							*dst++ = (m >= PALETTE_ANIM_START) ? this->AdjustBrightness(this->LookupColourInPalette(m), GB(*src_n, 8, 8)) : src_px->data;
+							*dst++ = (m >= PALETTE_ANIM_START) ? AdjustBrightness(this->LookupColourInPalette(m), GB(*src_n, 8, 8)) : src_px->data;
 							src_px++;
 							src_n++;
 						} while (--n != 0);
@@ -246,7 +246,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							uint m = GB(*src_n, 0, 8);
 							*anim++ = 0;
 							if (m >= PALETTE_ANIM_START) {
-								*dst = ComposeColourPANoCheck(this->AdjustBrightness(this->LookupColourInPalette(m), GB(*src_n, 8, 8)), src_px->a, *dst);
+								*dst = ComposeColourPANoCheck(AdjustBrightness(this->LookupColourInPalette(m), GB(*src_n, 8, 8)), src_px->a, *dst);
 							} else {
 								*dst = ComposeColourRGBANoCheck(src_px->r, src_px->g, src_px->b, src_px->a, *dst);
 							}
@@ -413,7 +413,7 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 			uint colour = GB(*anim_pal, 0, 8);
 			if (colour >= PALETTE_ANIM_START) {
 				/* Update this pixel */
-				*dst_pal = this->AdjustBrightness(LookupColourInPalette(colour), GB(*anim_pal, 8, 8));
+				*dst_pal = AdjustBrightness(LookupColourInPalette(colour), GB(*anim_pal, 8, 8));
 			}
 			dst_pal++;
 			anim_pal++;
@@ -522,7 +522,7 @@ void Blitter_32bppAnim::PaletteAnimate(const Palette &palette)
 			uint8_t colour = GB(value, 0, 8);
 			if (colour >= PALETTE_ANIM_START) {
 				/* Update this pixel */
-				*dst = this->AdjustBrightness(LookupColourInPalette(colour), GB(value, 8, 8));
+				*dst = AdjustBrightness(LookupColourInPalette(colour), GB(value, 8, 8));
 			}
 			dst++;
 			anim++;
