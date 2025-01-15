@@ -81,7 +81,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 
 						/* Get brightest value (or default brightness if it's a black pixel). */
 						const uint8_t rgb_max = std::max({src->r, src->g, src->b});
-						dst_mv->v = (rgb_max == 0) ? Blitter_32bppBase::DEFAULT_BRIGHTNESS : rgb_max;
+						dst_mv->v = (rgb_max == 0) ? DEFAULT_BRIGHTNESS : rgb_max;
 
 						/* Pre-convert the mapping channel to a RGB value. */
 						const Colour colour = AdjustBrightneSSE(Blitter_32bppBase::LookupColourInPalette(src->m), dst_mv->v);
@@ -92,7 +92,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 						dst_rgba->r = src->r;
 						dst_rgba->g = src->g;
 						dst_rgba->b = src->b;
-						dst_mv->v = Blitter_32bppBase::DEFAULT_BRIGHTNESS;
+						dst_mv->v = DEFAULT_BRIGHTNESS;
 					}
 				} else {
 					dst_rgba->data = 0;

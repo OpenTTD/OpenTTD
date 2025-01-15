@@ -11,9 +11,8 @@
 #define BLITTER_32BPP_BASE_HPP
 
 #include "base.hpp"
-#include "../core/bitmath_func.hpp"
-#include "../core/math_func.hpp"
 #include "../gfx_func.h"
+#include "../palette_func.h"
 
 /** Base for all 32bpp blitters. */
 class Blitter_32bppBase : public Blitter {
@@ -152,28 +151,6 @@ public:
 		uint grey = ((r * 19595) + (g * 38470) + (b * 7471)) / 65536;
 
 		return Colour(grey, grey, grey);
-	}
-
-	static const int DEFAULT_BRIGHTNESS = 128;
-
-	static Colour ReallyAdjustBrightness(Colour colour, uint8_t brightness);
-
-	static inline Colour AdjustBrightness(Colour colour, uint8_t brightness)
-	{
-		/* Shortcut for normal brightness */
-		if (brightness == DEFAULT_BRIGHTNESS) return colour;
-
-		return ReallyAdjustBrightness(colour, brightness);
-	}
-
-	static inline uint8_t GetColourBrightness(Colour colour)
-	{
-		uint8_t rgb_max = std::max(colour.r, std::max(colour.g, colour.b));
-
-		/* Black pixel (8bpp or old 32bpp image), so use default value */
-		if (rgb_max == 0) rgb_max = DEFAULT_BRIGHTNESS;
-
-		return rgb_max;
 	}
 };
 
