@@ -44,6 +44,9 @@ const uint PALETTE_BITS_OR = (1U << (PALETTE_SHIFT - 1));
 using PaletteLookup = std::array<uint8_t, 1U << (PALETTE_BITS * 3)>;
 static PaletteLookup _palette_lookup{};
 
+using ReshadeLookup = std::array<uint8_t, 1U << PALETTE_BITS>;
+static ReshadeLookup _reshade_lookup{};
+
 /**
  * Reduce bits per channel to PALETTE_BITS, and place value in the middle of the reduced range.
  * This is to counteract the information lost between bright and dark pixels, e.g if PALETTE_BITS was 2:
@@ -117,6 +120,27 @@ static uint8_t FindNearestColourIndex(uint8_t r, uint8_t g, uint8_t b)
 }
 
 /**
+ * Find nearest company colour palette index for a brightness level.
+ * @param pixel Pixel to find.
+ * @returns palette index of nearest colour.
+ */
+static uint8_t FindNearestColourReshadeIndex(uint8_t b)
+{
+	b = CrunchColour(b);
+
+	uint best_index = 0;
+	uint best_distance = UINT32_MAX;
+
+	for (uint i = PALETTE_INDEX_CC_START; i < PALETTE_INDEX_CC_END; i++) {
+		if (uint distance = CalculateColourDistance(_palette.palette[i], b, b, b); distance < best_distance) {
+			best_index = i;
+			best_distance = distance;
+		}
+	}
+	return best_index;
+}
+
+/**
  * Get nearest colour palette index from an RGB colour.
  * A search is performed if this colour is not already in the lookup table.
  * @param r Red component.
@@ -129,6 +153,19 @@ uint8_t GetNearestColourIndex(uint8_t r, uint8_t g, uint8_t b)
 	uint32_t key = (r >> PALETTE_SHIFT) | (g >> PALETTE_SHIFT) << PALETTE_BITS | (b >> PALETTE_SHIFT) << (PALETTE_BITS * 2);
 	if (_palette_lookup[key] == 0) _palette_lookup[key] = FindNearestColourIndex(r, g, b);
 	return _palette_lookup[key];
+}
+
+/**
+ * Get nearest colour palette index from a brightness level.
+ * A search is performed if this brightness level is not already in the lookup table.
+ * @param b Brightness component.
+ * @returns nearest colour palette index.
+ */
+uint8_t GetNearestColourReshadeIndex(uint8_t b)
+{
+	uint32_t key = (b >> PALETTE_SHIFT);
+	if (_reshade_lookup[key] == 0) _reshade_lookup[key] = FindNearestColourReshadeIndex(b);
+	return _reshade_lookup[key];
 }
 
 /**
