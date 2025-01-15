@@ -52,7 +52,7 @@ SpriteType GetSpriteType(SpriteID sprite);
 SpriteFile *GetOriginFile(SpriteID sprite);
 uint32_t GetSpriteLocalID(SpriteID sprite);
 uint GetSpriteCountForFile(const std::string &filename, SpriteID begin, SpriteID end);
-uint GetMaxSpriteID();
+SpriteID GetMaxSpriteID();
 
 
 inline const Sprite *GetSprite(SpriteID sprite, SpriteType type)
