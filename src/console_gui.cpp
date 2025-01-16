@@ -118,11 +118,7 @@ IConsoleModes _iconsole_mode;
 
 static void IConsoleClearCommand()
 {
-	memset(_iconsole_cmdline.buf, 0, ICON_CMDLN_SIZE);
-	_iconsole_cmdline.chars = _iconsole_cmdline.bytes = 1; // only terminating zero
-	_iconsole_cmdline.pixels = 0;
-	_iconsole_cmdline.caretpos = 0;
-	_iconsole_cmdline.caretxoffs = 0;
+	_iconsole_cmdline.DeleteAll();
 	_iconsole_tab_completion.Reset();
 	SetWindowDirty(WC_CONSOLE, 0);
 }
