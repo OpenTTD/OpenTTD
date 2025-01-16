@@ -29,7 +29,6 @@ enum HandleKeyPressResult
 /** Helper/buffer for input fields. */
 struct Textbuf {
 	CharSetFilter afilter;    ///< Allowed characters
-	char * const buf;         ///< buffer in which text is saved
 	uint16_t max_bytes;         ///< the maximum size of the buffer in bytes (including terminating '\0')
 	uint16_t max_chars;         ///< the maximum size of the buffer in characters (including terminating '\0')
 	uint16_t bytes;             ///< the current size of the string in bytes (including terminating '\0')
@@ -68,6 +67,7 @@ struct Textbuf {
 	const char *GetText() const;
 
 private:
+	char * const buf; ///< buffer in which text is saved
 	std::unique_ptr<StringIterator> char_iter;
 
 	bool CanDelChar(bool backspace);

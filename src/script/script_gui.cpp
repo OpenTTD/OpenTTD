@@ -1109,7 +1109,7 @@ struct ScriptDebugWindow : public Window {
 		if (wid != WID_SCRD_BREAK_STR_EDIT_BOX) return;
 
 		/* Save the current string to static member so it can be restored next time the window is opened. */
-		this->filter.break_string = this->break_editbox.text.buf;
+		this->filter.break_string = this->break_editbox.text.GetText();
 		this->break_string_filter.SetFilterTerm(this->filter.break_string);
 	}
 

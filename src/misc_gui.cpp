@@ -819,7 +819,7 @@ void QueryString::DrawEditBox(const Window *w, WidgetID wid) const
 	/* If we have a marked area, draw a background highlight. */
 	if (tb->marklength != 0) GfxFillRect(fr.left + tb->markxoffs, fr.top, fr.left + tb->markxoffs + tb->marklength - 1, fr.bottom, PC_GREY);
 
-	DrawString(fr.left, fr.right, CenterBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), tb->buf, TC_YELLOW);
+	DrawString(fr.left, fr.right, CenterBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), tb->GetText(), TC_YELLOW);
 	bool focussed = w->IsWidgetGloballyFocused(wid) || IsOSKOpenedFor(w, wid);
 	if (focussed && tb->caret) {
 		int caret_width = GetCaretWidth();
@@ -882,8 +882,8 @@ Rect QueryString::GetBoundingRect(const Window *w, WidgetID wid, const char *fro
 	r = ScrollEditBoxTextRect(r, *tb);
 
 	/* Get location of first and last character. */
-	const auto p1 = GetCharPosInString(tb->buf, from, FS_NORMAL);
-	const auto p2 = from != to ? GetCharPosInString(tb->buf, to, FS_NORMAL) : p1;
+	const auto p1 = GetCharPosInString(tb->GetText(), from, FS_NORMAL);
+	const auto p2 = from != to ? GetCharPosInString(tb->GetText(), to, FS_NORMAL) : p1;
 
 	return { Clamp(r.left + p1.left, r.left, r.right), r.top, Clamp(r.left + p2.right, r.left, r.right), r.bottom };
 }
@@ -913,7 +913,7 @@ ptrdiff_t QueryString::GetCharAtPosition(const Window *w, WidgetID wid, const Po
 	const Textbuf *tb = &this->text;
 	r = ScrollEditBoxTextRect(r, *tb);
 
-	return ::GetCharAtPosition(tb->buf, pt.x - r.left);
+	return ::GetCharAtPosition(tb->GetText(), pt.x - r.left);
 }
 
 void QueryString::ClickEditBox(Window *w, Point pt, WidgetID wid, int click_count, bool focus_changed)
@@ -956,7 +956,7 @@ struct QueryStringWindow : public Window
 	{
 		this->editbox.text.Assign(str);
 
-		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->editbox.orig = this->editbox.text.buf;
+		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->editbox.orig = this->editbox.text.GetText();
 
 		this->querystrings[WID_QS_TEXT] = &this->editbox;
 		this->editbox.caption = caption;
@@ -989,10 +989,10 @@ struct QueryStringWindow : public Window
 
 	void OnOk()
 	{
-		if (!this->editbox.orig.has_value() || this->editbox.text.buf != this->editbox.orig) {
+		if (!this->editbox.orig.has_value() || this->editbox.text.GetText() != this->editbox.orig) {
 			assert(this->parent != nullptr);
 
-			this->parent->OnQueryTextFinished(this->editbox.text.buf);
+			this->parent->OnQueryTextFinished(this->editbox.text.GetText());
 			this->editbox.handled = true;
 		}
 	}

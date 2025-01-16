@@ -189,7 +189,7 @@ void PickerWindow::ConstructWindow()
 	}
 
 	this->class_editbox.cancel_button = QueryString::ACTION_CLEAR;
-	this->class_string_filter.SetFilterTerm(this->class_editbox.text.buf);
+	this->class_string_filter.SetFilterTerm(this->class_editbox.text.GetText());
 	this->class_string_filter.callbacks = &this->callbacks;
 
 	this->classes.SetListing(this->callbacks.class_last_sorting);
@@ -224,7 +224,7 @@ void PickerWindow::ConstructWindow()
 	}
 
 	this->type_editbox.cancel_button = QueryString::ACTION_CLEAR;
-	this->type_string_filter.SetFilterTerm(this->type_editbox.text.buf);
+	this->type_string_filter.SetFilterTerm(this->type_editbox.text.GetText());
 	this->type_string_filter.callbacks = &this->callbacks;
 
 	this->types.SetListing(this->callbacks.type_last_sorting);
@@ -431,13 +431,13 @@ void PickerWindow::OnEditboxChanged(WidgetID wid)
 {
 	switch (wid) {
 		case WID_PW_CLASS_FILTER:
-			this->class_string_filter.SetFilterTerm(this->class_editbox.text.buf);
+			this->class_string_filter.SetFilterTerm(this->class_editbox.text.GetText());
 			this->classes.SetFilterState(!class_string_filter.IsEmpty());
 			this->InvalidateData(PFI_CLASS);
 			break;
 
 		case WID_PW_TYPE_FILTER:
-			this->type_string_filter.SetFilterTerm(this->type_editbox.text.buf);
+			this->type_string_filter.SetFilterTerm(this->type_editbox.text.GetText());
 			this->types.SetFilterState(!type_string_filter.IsEmpty());
 			this->InvalidateData(PFI_TYPE);
 			break;

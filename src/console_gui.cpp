@@ -212,7 +212,7 @@ struct IConsoleWindow : Window
 		/* If we have a marked area, draw a background highlight. */
 		if (_iconsole_cmdline.marklength != 0) GfxFillRect(this->line_offset + delta + _iconsole_cmdline.markxoffs, this->height - this->line_height, this->line_offset + delta + _iconsole_cmdline.markxoffs + _iconsole_cmdline.marklength, this->height - 1, PC_DARK_RED);
 
-		DrawString(this->line_offset + delta, right, this->height - this->line_height, _iconsole_cmdline.buf, (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
+		DrawString(this->line_offset + delta, right, this->height - this->line_height, _iconsole_cmdline.GetText(), static_cast<TextColour>(CC_COMMAND), SA_LEFT | SA_FORCE);
 
 		if (_focused_window == this && _iconsole_cmdline.caret) {
 			DrawString(this->line_offset + delta + _iconsole_cmdline.caretxoffs, right, this->height - this->line_height, "_", TC_WHITE, SA_LEFT | SA_FORCE);
@@ -276,8 +276,8 @@ struct IConsoleWindow : Window
 				/* We always want the ] at the left side; we always force these strings to be left
 				 * aligned anyway. So enforce this in all cases by adding a left-to-right marker,
 				 * otherwise it will be drawn at the wrong side with right-to-left texts. */
-				IConsolePrint(CC_COMMAND, LRM "] {}", _iconsole_cmdline.buf);
-				const char *cmd = IConsoleHistoryAdd(_iconsole_cmdline.buf);
+				IConsolePrint(CC_COMMAND, LRM "] {}", _iconsole_cmdline.GetText());
+				const char *cmd = IConsoleHistoryAdd(_iconsole_cmdline.GetText());
 				IConsoleClearCommand();
 
 				if (cmd != nullptr) IConsoleCmdExec(cmd);
@@ -345,8 +345,8 @@ struct IConsoleWindow : Window
 	{
 		int delta = std::min<int>(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
-		const auto p1 = GetCharPosInString(_iconsole_cmdline.buf, from, FS_NORMAL);
-		const auto p2 = from != to ? GetCharPosInString(_iconsole_cmdline.buf, to, FS_NORMAL) : p1;
+		const auto p1 = GetCharPosInString(_iconsole_cmdline.GetText(), from, FS_NORMAL);
+		const auto p2 = from != to ? GetCharPosInString(_iconsole_cmdline.GetText(), to, FS_NORMAL) : p1;
 
 		Rect r = {this->line_offset + delta + p1.left, this->height - this->line_height, this->line_offset + delta + p2.right, this->height};
 		return r;
@@ -358,7 +358,7 @@ struct IConsoleWindow : Window
 
 		if (!IsInsideMM(pt.y, this->height - this->line_height, this->height)) return -1;
 
-		return GetCharAtPosition(_iconsole_cmdline.buf, pt.x - delta);
+		return GetCharAtPosition(_iconsole_cmdline.GetText(), pt.x - delta);
 	}
 
 	void OnMouseWheel(int wheel) override
