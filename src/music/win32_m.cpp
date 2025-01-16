@@ -64,7 +64,7 @@ void CALLBACK MidiOutProc(HMIDIOUT hmo, UINT wMsg, DWORD_PTR, DWORD_PTR dwParam1
 	if (wMsg == MOM_DONE) {
 		MIDIHDR *hdr = (LPMIDIHDR)dwParam1;
 		midiOutUnprepareHeader(hmo, hdr, sizeof(*hdr));
-		free(hdr);
+		delete hdr;
 	}
 }
 
@@ -81,15 +81,13 @@ static void TransmitSysex(const uint8_t *&msg_start, size_t &remaining)
 	msg_end++; /* also include sysex end byte */
 
 	/* prepare header */
-	MIDIHDR *hdr = CallocT<MIDIHDR>(1);
+	auto hdr = std::make_unique<MIDIHDR>();
 	hdr->lpData = reinterpret_cast<LPSTR>(const_cast<uint8_t *>(msg_start));
-	hdr->dwBufferLength = msg_end - msg_start;
-	if (midiOutPrepareHeader(_midi.midi_out, hdr, sizeof(*hdr)) == MMSYSERR_NOERROR) {
+	hdr->dwBufferLength = static_cast<DWORD>(msg_end - msg_start);
+	if (midiOutPrepareHeader(_midi.midi_out, hdr.get(), sizeof(MIDIHDR)) == MMSYSERR_NOERROR) {
 		/* transmit - just point directly into the data buffer */
 		hdr->dwBytesRecorded = hdr->dwBufferLength;
-		midiOutLongMsg(_midi.midi_out, hdr, sizeof(*hdr));
-	} else {
-		free(hdr);
+		midiOutLongMsg(_midi.midi_out, hdr.release(), sizeof(MIDIHDR));
 	}
 
 	/* update position in buffer */
