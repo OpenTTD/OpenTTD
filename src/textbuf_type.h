@@ -31,7 +31,6 @@ struct Textbuf {
 	CharSetFilter afilter;    ///< Allowed characters
 	uint16_t max_bytes;         ///< the maximum size of the buffer in bytes (including terminating '\0')
 	uint16_t max_chars;         ///< the maximum size of the buffer in characters (including terminating '\0')
-	uint16_t bytes;             ///< the current size of the string in bytes (including terminating '\0')
 	uint16_t chars;             ///< the current size of the string in characters (including terminating '\0')
 	uint16_t pixels;            ///< the current size of the string in pixels
 	bool caret;               ///< is the caret ("_") visible or not
@@ -43,7 +42,6 @@ struct Textbuf {
 	uint16_t marklength;        ///< the length of the marked area in pixels
 
 	explicit Textbuf(uint16_t max_bytes, uint16_t max_chars = UINT16_MAX);
-	~Textbuf();
 
 	void Assign(const std::string_view text);
 
@@ -66,7 +64,7 @@ struct Textbuf {
 	const char *GetText() const;
 
 private:
-	char * const buf; ///< buffer in which text is saved
+	std::string buf; ///< buffer in which text is saved
 	std::unique_ptr<StringIterator> char_iter;
 
 	bool CanDelChar(bool backspace);
