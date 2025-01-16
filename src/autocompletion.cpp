@@ -21,7 +21,7 @@ bool AutoCompletion::AutoComplete()
 {
 	// We are pressing TAB for the first time after reset.
 	if (this->suggestions.empty()) {
-		this->InitSuggestions(this->textbuf->buf);
+		this->InitSuggestions(this->textbuf->GetText());
 		if (this->suggestions.empty()) {
 			return false;
 		}

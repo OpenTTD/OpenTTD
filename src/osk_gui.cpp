@@ -58,7 +58,7 @@ struct OskWindow : public Window {
 		this->querystrings[WID_OSK_TEXT] = this->qs;
 
 		/* make a copy in case we need to reset later */
-		this->orig_str = this->qs->text.buf;
+		this->orig_str = this->qs->text.GetText();
 
 		this->InitNested(0);
 		this->SetFocusedWidget(WID_OSK_TEXT);
@@ -157,7 +157,7 @@ struct OskWindow : public Window {
 				break;
 
 			case WID_OSK_OK:
-				if (!this->qs->orig.has_value() || this->qs->text.buf != this->qs->orig) {
+				if (!this->qs->orig.has_value() || this->qs->text.GetText() != this->qs->orig) {
 					/* pass information by simulating a button press on parent window */
 					if (this->qs->ok_button >= 0) {
 						this->parent->OnClick(pt, this->qs->ok_button, 1);
@@ -412,7 +412,7 @@ void UpdateOSKOriginalText(const Window *parent, WidgetID button)
 	OskWindow *osk = dynamic_cast<OskWindow *>(FindWindowById(WC_OSK, 0));
 	if (osk == nullptr || osk->parent != parent || osk->text_btn != button) return;
 
-	osk->orig_str = osk->qs->text.buf;
+	osk->orig_str = osk->qs->text.GetText();
 
 	osk->SetDirty();
 }

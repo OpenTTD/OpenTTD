@@ -1866,7 +1866,7 @@ public:
 	void OnEditboxChanged(WidgetID wid) override
 	{
 		if (wid == WID_ID_FILTER) {
-			this->string_filter.SetFilterTerm(this->industry_editbox.text.buf);
+			this->string_filter.SetFilterTerm(this->industry_editbox.text.GetText());
 			this->InvalidateData(IDIWD_FORCE_REBUILD);
 		}
 	}

@@ -228,7 +228,7 @@ protected:
 
 		/* Apply the filter condition immediately, if a search string has been provided. */
 		StringFilter sf;
-		sf.SetFilterTerm(this->filter_editbox.text.buf);
+		sf.SetFilterTerm(this->filter_editbox.text.GetText());
 
 		if (!sf.IsEmpty()) {
 			this->servers.SetFilterState(true);
@@ -837,7 +837,7 @@ public:
 			case WID_NG_CLIENT:
 				/* Validation of the name will happen once the user tries to join or start a game, as getting
 				 * error messages while typing (e.g. when you clear the name) defeats the purpose of the check. */
-				_settings_client.network.client_name = this->name_editbox.text.buf;
+				_settings_client.network.client_name = this->name_editbox.text.GetText();
 				break;
 		}
 	}
@@ -1129,7 +1129,7 @@ struct NetworkStartServerWindow : public Window {
 
 	bool CheckServerName()
 	{
-		std::string str = this->name_editbox.text.buf;
+		std::string str = this->name_editbox.text.GetText();
 		if (!NetworkValidateServerName(str)) return false;
 
 		SetSettingValue(GetSettingFromName("network.server_name")->AsStringSetting(), str);

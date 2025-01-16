@@ -1363,7 +1363,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		if (!this->editable) return;
 
 		if (widget == WID_NS_FILTER) {
-			string_filter.SetFilterTerm(this->filter_editbox.text.buf);
+			string_filter.SetFilterTerm(this->filter_editbox.text.GetText());
 			this->avails.SetFilterState(!string_filter.IsEmpty());
 			this->avails.ForceRebuild();
 			this->InvalidateData(0);
@@ -2155,7 +2155,7 @@ struct SavePresetWindow : public Window {
 
 			case WID_SVP_SAVE: {
 				Window *w = FindWindowById(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
-				if (w != nullptr && !StrEmpty(this->presetname_editbox.text.buf)) w->OnQueryTextFinished(this->presetname_editbox.text.buf);
+				if (w != nullptr && !StrEmpty(this->presetname_editbox.text.GetText())) w->OnQueryTextFinished(this->presetname_editbox.text.GetText());
 				this->Close();
 				break;
 			}

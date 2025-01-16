@@ -1893,7 +1893,7 @@ struct BuildVehicleWindow : Window {
 	void OnEditboxChanged(WidgetID wid) override
 	{
 		if (wid == WID_BV_FILTER) {
-			this->string_filter.SetFilterTerm(this->vehicle_editbox.text.buf);
+			this->string_filter.SetFilterTerm(this->vehicle_editbox.text.GetText());
 			this->InvalidateData();
 		}
 	}

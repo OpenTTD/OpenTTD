@@ -814,7 +814,7 @@ public:
 		if (this->fop != SLO_SAVE) return;
 
 		if (this->IsWidgetLowered(WID_SL_DELETE_SELECTION)) { // Delete button clicked
-			if (!FiosDelete(this->filename_editbox.text.buf)) {
+			if (!FiosDelete(this->filename_editbox.text.GetText())) {
 				ShowErrorMessage(STR_ERROR_UNABLE_TO_DELETE_FILE, INVALID_STRING_ID, WL_ERROR);
 			} else {
 				this->InvalidateData(SLIWD_RESCAN_FILES);
@@ -823,14 +823,14 @@ public:
 			}
 		} else if (this->IsWidgetLowered(WID_SL_SAVE_GAME)) { // Save button clicked
 			if (this->abstract_filetype == FT_SAVEGAME || this->abstract_filetype == FT_SCENARIO) {
-				_file_to_saveload.name = FiosMakeSavegameName(this->filename_editbox.text.buf);
+				_file_to_saveload.name = FiosMakeSavegameName(this->filename_editbox.text.GetText());
 				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::SAVE_DIR)) {
 					ShowQuery(STR_SAVELOAD_OVERWRITE_TITLE, STR_SAVELOAD_OVERWRITE_WARNING, this, SaveLoadWindow::SaveGameConfirmationCallback);
 				} else {
 					_switch_mode = SM_SAVE_GAME;
 				}
 			} else {
-				_file_to_saveload.name = FiosMakeHeightmapName(this->filename_editbox.text.buf);
+				_file_to_saveload.name = FiosMakeHeightmapName(this->filename_editbox.text.GetText());
 				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::SAVE_DIR)) {
 					ShowQuery(STR_SAVELOAD_OVERWRITE_TITLE, STR_SAVELOAD_OVERWRITE_WARNING, this, SaveLoadWindow::SaveHeightmapConfirmationCallback);
 				} else {
@@ -940,7 +940,7 @@ public:
 	void OnEditboxChanged(WidgetID wid) override
 	{
 		if (wid == WID_SL_FILTER) {
-			this->string_filter.SetFilterTerm(this->filter_editbox.text.buf);
+			this->string_filter.SetFilterTerm(this->filter_editbox.text.GetText());
 			this->InvalidateData(SLIWD_FILTER_CHANGES);
 		}
 	}

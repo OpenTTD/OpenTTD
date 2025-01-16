@@ -1019,7 +1019,7 @@ public:
 	void OnEditboxChanged(WidgetID wid) override
 	{
 		if (wid == WID_TD_FILTER) {
-			this->string_filter.SetFilterTerm(this->townname_editbox.text.buf);
+			this->string_filter.SetFilterTerm(this->townname_editbox.text.GetText());
 			this->InvalidateData(TDIWD_FORCE_REBUILD);
 		}
 	}
@@ -1240,11 +1240,11 @@ public:
 		std::string name;
 
 		if (!this->townnamevalid) {
-			name = this->townname_editbox.text.buf;
+			name = this->townname_editbox.text.GetText();
 		} else {
 			/* If user changed the name, send it */
 			std::string original_name = GetTownName(&this->params, this->townnameparts);
-			if (original_name != this->townname_editbox.text.buf) name = this->townname_editbox.text.buf;
+			if (original_name != this->townname_editbox.text.GetText()) name = this->townname_editbox.text.GetText();
 		}
 
 		bool success = Command<CMD_FOUND_TOWN>::Post(errstr, cc,
