@@ -25,19 +25,22 @@
 
 static FSoundDriver_Win32 iFSoundDriver_Win32;
 
+using HeaderDataPair = std::pair<WAVEHDR, std::unique_ptr<CHAR[]>>;
+
 static HWAVEOUT _waveout;
-static WAVEHDR _wave_hdr[2];
+static HeaderDataPair _wave_hdr[2];
 static int _bufsize;
 static HANDLE _thread;
 static DWORD _threadId;
 static HANDLE _event;
 
-static void PrepareHeader(WAVEHDR *hdr)
+static void PrepareHeader(HeaderDataPair &hdr)
 {
-	hdr->dwBufferLength = _bufsize * 4;
-	hdr->dwFlags = 0;
-	hdr->lpData = MallocT<char>(_bufsize * 4);
-	if (waveOutPrepareHeader(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) throw "waveOutPrepareHeader failed";
+	hdr.second = std::make_unique<CHAR[]>(_bufsize * 4);
+	hdr.first.dwBufferLength = _bufsize * 4;
+	hdr.first.dwFlags = 0;
+	hdr.first.lpData = hdr.second.get();
+	if (waveOutPrepareHeader(_waveout, &hdr.first, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) throw "waveOutPrepareHeader failed";
 }
 
 static DWORD WINAPI SoundThread(LPVOID)
@@ -46,9 +49,9 @@ static DWORD WINAPI SoundThread(LPVOID)
 
 	do {
 		for (auto &hdr : _wave_hdr) {
-			if ((hdr.dwFlags & WHDR_INQUEUE) != 0) continue;
-			MxMixSamples(hdr.lpData, hdr.dwBufferLength / 4);
-			if (waveOutWrite(_waveout, &hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) {
+			if ((hdr.first.dwFlags & WHDR_INQUEUE) != 0) continue;
+			MxMixSamples(hdr.first.lpData, hdr.first.dwBufferLength / 4);
+			if (waveOutWrite(_waveout, &hdr.first, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) {
 				MessageBox(nullptr, L"Sounds are disabled until restart.", L"waveOutWrite failed", MB_ICONINFORMATION);
 				return 0;
 			}
@@ -80,8 +83,7 @@ std::optional<std::string_view> SoundDriver_Win32::Start(const StringList &parm)
 
 		MxInitialize(wfex.nSamplesPerSec);
 
-		PrepareHeader(&_wave_hdr[0]);
-		PrepareHeader(&_wave_hdr[1]);
+		for (auto &hdr : _wave_hdr) PrepareHeader(hdr);
 
 		if (nullptr == (_thread = CreateThread(nullptr, 8192, SoundThread, 0, 0, &_threadId))) throw "Failed to create thread";
 	} catch (const char *error) {
@@ -102,8 +104,10 @@ void SoundDriver_Win32::Stop()
 
 	/* Close the sound device. */
 	waveOutReset(waveout);
-	waveOutUnprepareHeader(waveout, &_wave_hdr[0], sizeof(WAVEHDR));
-	waveOutUnprepareHeader(waveout, &_wave_hdr[1], sizeof(WAVEHDR));
+	for (auto &hdr : _wave_hdr) {
+		waveOutUnprepareHeader(waveout, &hdr.first, sizeof(WAVEHDR));
+		hdr.second.reset();
+	}
 	waveOutClose(waveout);
 
 	CloseHandle(_thread);
