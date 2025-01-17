@@ -8375,79 +8375,15 @@ typedef bool (*BranchHandler)(ByteReader &);        ///< Type of callback functi
  * 3. Text leaf nodes (identified by 'T').
  */
 struct AllowedSubtags {
-	/** Create empty subtags object used to identify the end of a list. */
-	AllowedSubtags() :
-		id(0),
-		type(0)
-	{}
+	/** Custom 'span' of subtags. Required because std::span with an incomplete type is UB. */
+	using Span = std::pair<const AllowedSubtags *, const AllowedSubtags *>;
 
-	/**
-	 * Create a binary leaf node.
-	 * @param id The id for this node.
-	 * @param handler The callback function to call.
-	 */
-	AllowedSubtags(uint32_t id, DataHandler handler) :
-		id(id),
-		type('B')
-	{
-		this->handler.data = handler;
-	}
-
-	/**
-	 * Create a text leaf node.
-	 * @param id The id for this node.
-	 * @param handler The callback function to call.
-	 */
-	AllowedSubtags(uint32_t id, TextHandler handler) :
-		id(id),
-		type('T')
-	{
-		this->handler.text = handler;
-	}
-
-	/**
-	 * Create a branch node with a callback handler
-	 * @param id The id for this node.
-	 * @param handler The callback function to call.
-	 */
-	AllowedSubtags(uint32_t id, BranchHandler handler) :
-		id(id),
-		type('C')
-	{
-		this->handler.call_handler = true;
-		this->handler.u.branch = handler;
-	}
-
-	/**
-	 * Create a branch node with a list of sub-nodes.
-	 * @param id The id for this node.
-	 * @param subtags Array with all valid subtags.
-	 */
-	AllowedSubtags(uint32_t id, AllowedSubtags *subtags) :
-		id(id),
-		type('C')
-	{
-		this->handler.call_handler = false;
-		this->handler.u.subtags = subtags;
-	}
-
-	uint32_t id; ///< The identifier for this node
-	uint8_t type; ///< The type of the node, must be one of 'C', 'B' or 'T'.
-	union {
-		DataHandler data; ///< Callback function for a binary node, only valid if type == 'B'.
-		TextHandler text; ///< Callback function for a text node, only valid if type == 'T'.
-		struct {
-			union {
-				BranchHandler branch;    ///< Callback function for a branch node, only valid if type == 'C' && call_handler.
-				AllowedSubtags *subtags; ///< Pointer to a list of subtags, only valid if type == 'C' && !call_handler.
-			} u;
-			bool call_handler; ///< True if there is a callback function for this node, false if there is a list of subnodes.
-		};
-	} handler;
+	uint32_t id; ///< The identifier for this node.
+	std::variant<DataHandler, TextHandler, BranchHandler, Span> handler; ///< The handler for this node.
 };
 
 static bool SkipUnknownInfo(ByteReader &buf, uint8_t type);
-static bool HandleNodes(ByteReader &buf, AllowedSubtags *tags);
+static bool HandleNodes(ByteReader &buf, std::span<const AllowedSubtags> tags);
 
 /**
  * Callback function for 'INFO'->'PARA'->param_num->'VALU' to set the names
@@ -8482,15 +8418,14 @@ static bool ChangeGRFParamValueNames(ByteReader &buf)
 }
 
 /** Action14 parameter tags */
-AllowedSubtags _tags_parameters[] = {
-	AllowedSubtags('NAME', ChangeGRFParamName),
-	AllowedSubtags('DESC', ChangeGRFParamDescription),
-	AllowedSubtags('TYPE', ChangeGRFParamType),
-	AllowedSubtags('LIMI', ChangeGRFParamLimits),
-	AllowedSubtags('MASK', ChangeGRFParamMask),
-	AllowedSubtags('VALU', ChangeGRFParamValueNames),
-	AllowedSubtags('DFLT', ChangeGRFParamDefault),
-	AllowedSubtags()
+static constexpr AllowedSubtags _tags_parameters[] = {
+	AllowedSubtags{'NAME', ChangeGRFParamName},
+	AllowedSubtags{'DESC', ChangeGRFParamDescription},
+	AllowedSubtags{'TYPE', ChangeGRFParamType},
+	AllowedSubtags{'LIMI', ChangeGRFParamLimits},
+	AllowedSubtags{'MASK', ChangeGRFParamMask},
+	AllowedSubtags{'VALU', ChangeGRFParamValueNames},
+	AllowedSubtags{'DFLT', ChangeGRFParamDefault},
 };
 
 /**
@@ -8526,23 +8461,21 @@ static bool HandleParameterInfo(ByteReader &buf)
 }
 
 /** Action14 tags for the INFO node */
-AllowedSubtags _tags_info[] = {
-	AllowedSubtags('NAME', ChangeGRFName),
-	AllowedSubtags('DESC', ChangeGRFDescription),
-	AllowedSubtags('URL_', ChangeGRFURL),
-	AllowedSubtags('NPAR', ChangeGRFNumUsedParams),
-	AllowedSubtags('PALS', ChangeGRFPalette),
-	AllowedSubtags('BLTR', ChangeGRFBlitter),
-	AllowedSubtags('VRSN', ChangeGRFVersion),
-	AllowedSubtags('MINV', ChangeGRFMinVersion),
-	AllowedSubtags('PARA', HandleParameterInfo),
-	AllowedSubtags()
+static constexpr AllowedSubtags _tags_info[] = {
+	AllowedSubtags{'NAME', ChangeGRFName},
+	AllowedSubtags{'DESC', ChangeGRFDescription},
+	AllowedSubtags{'URL_', ChangeGRFURL},
+	AllowedSubtags{'NPAR', ChangeGRFNumUsedParams},
+	AllowedSubtags{'PALS', ChangeGRFPalette},
+	AllowedSubtags{'BLTR', ChangeGRFBlitter},
+	AllowedSubtags{'VRSN', ChangeGRFVersion},
+	AllowedSubtags{'MINV', ChangeGRFMinVersion},
+	AllowedSubtags{'PARA', HandleParameterInfo},
 };
 
 /** Action14 root tags */
-AllowedSubtags _tags_root[] = {
-	AllowedSubtags('INFO', _tags_info),
-	AllowedSubtags()
+static constexpr AllowedSubtags _tags_root[] = {
+	AllowedSubtags{'INFO', std::make_pair(std::begin(_tags_info), std::end(_tags_info))},
 };
 
 
@@ -8592,34 +8525,49 @@ static bool SkipUnknownInfo(ByteReader &buf, uint8_t type)
  * @param subtags Allowed subtags.
  * @return Whether all tags could be handled.
  */
-static bool HandleNode(uint8_t type, uint32_t id, ByteReader &buf, AllowedSubtags subtags[])
+static bool HandleNode(uint8_t type, uint32_t id, ByteReader &buf, std::span<const AllowedSubtags> subtags)
 {
-	uint i = 0;
-	AllowedSubtags *tag;
-	while ((tag = &subtags[i++])->type != 0) {
-		if (tag->id != BSWAP32(id) || tag->type != type) continue;
-		switch (type) {
-			default: NOT_REACHED();
+	/* Visitor to get a subtag handler's type. */
+	struct type_visitor {
+		char operator()(const DataHandler &) { return 'B'; }
+		char operator()(const TextHandler &) { return 'T'; }
+		char operator()(const BranchHandler &) { return 'C'; }
+		char operator()(const AllowedSubtags::Span &) { return 'C'; }
+	};
 
-			case 'T': {
-				uint8_t langid = buf.ReadByte();
-				return tag->handler.text(langid, buf.ReadString());
-			}
+	/* Visitor to evaluate a subtag handler. */
+	struct evaluate_visitor {
+		ByteReader &buf;
 
-			case 'B': {
-				size_t len = buf.ReadWord();
-				if (buf.Remaining() < len) return false;
-				return tag->handler.data(len, buf);
-			}
-
-			case 'C': {
-				if (tag->handler.call_handler) {
-					return tag->handler.u.branch(buf);
-				}
-				return HandleNodes(buf, tag->handler.u.subtags);
-			}
+		bool operator()(const DataHandler &handler)
+		{
+			size_t len = buf.ReadWord();
+			if (buf.Remaining() < len) return false;
+			return handler(len, buf);
 		}
+
+		bool operator()(const TextHandler &handler)
+		{
+			uint8_t langid = buf.ReadByte();
+			return handler(langid, buf.ReadString());
+		}
+
+		bool operator()(const BranchHandler &handler)
+		{
+			return handler(buf);
+		}
+
+		bool operator()(const AllowedSubtags::Span &subtags)
+		{
+			return HandleNodes(buf, {subtags.first, subtags.second});
+		}
+	};
+
+	for (const auto &tag : subtags) {
+		if (tag.id != BSWAP32(id) || std::visit(type_visitor{}, tag.handler) != type) continue;
+		return std::visit(evaluate_visitor{buf}, tag.handler);
 	}
+
 	GrfMsg(2, "StaticGRFInfo: unknown type/id combination found, type={:c}, id={:x}", type, id);
 	return SkipUnknownInfo(buf, type);
 }
@@ -8630,7 +8578,7 @@ static bool HandleNode(uint8_t type, uint32_t id, ByteReader &buf, AllowedSubtag
  * @param subtags List of subtags.
  * @return Whether the nodes could all be handled.
  */
-static bool HandleNodes(ByteReader &buf, AllowedSubtags subtags[])
+static bool HandleNodes(ByteReader &buf, std::span<const AllowedSubtags> subtags)
 {
 	uint8_t type = buf.ReadByte();
 	while (type != 0) {
