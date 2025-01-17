@@ -831,6 +831,11 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opcje swobodnej
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcje przeźroczystości
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Wyświetlanie nazw miast
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Wyświetlanie nazw stacji
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Stacje kolejowe
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Stacje ciężarówek
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Przystanki autobusowe
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Porty
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Lotniska
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wyświetlanie nazw posterunków
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Wyświetlanie napisów
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Wyświetlanie napisów i nazw rywali

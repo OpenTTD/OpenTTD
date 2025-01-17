@@ -453,6 +453,11 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :치트
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :투명 설정
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :도시 이름을 표시함
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :역 이름을 표시함
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :기차역
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :트럭 적하장
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :버스 정류장
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :항구
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :공항
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :경유지의 이름을 표시함
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :팻말을 표시함
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :경쟁사의 팻말과 역 이름을 표시

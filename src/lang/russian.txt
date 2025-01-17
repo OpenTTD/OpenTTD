@@ -578,6 +578,11 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Настрой�
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настройки прозрачности
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показывать названия городов
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Показывать названия станций
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Ж/Д вокзалы
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Грузовые терминалы
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Остановки автобусов
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Пристани
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Аэропорты
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Показывать названия маршрутных точек
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показывать метки
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Показывать названия станций конкурентов
