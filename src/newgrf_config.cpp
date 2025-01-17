@@ -211,13 +211,13 @@ void GRFConfig::SetValue(const GRFParameterInfo &info, uint32_t value)
  */
 void GRFParameterInfo::Finalize()
 {
-	this->complete_labels = true;
-	for (uint32_t value = this->min_value; value <= this->max_value; value++) {
-		if (this->value_names.count(value) == 0) {
-			this->complete_labels = false;
-			break;
-		}
-	}
+	/* Remove value names outside of the permitted range of values. */
+	auto it = std::remove_if(std::begin(this->value_names), std::end(this->value_names),
+			[this](const ValueName &vn) { return vn.first < this->min_value || vn.first > this->max_value; });
+	this->value_names.erase(it, std::end(this->value_names));
+
+	/* Test if the number of named values matches the full ranges of values. -1 because the range is inclusive. */
+	this->complete_labels = (this->max_value - this->min_value) == std::size(this->value_names) - 1;
 }
 
 /**

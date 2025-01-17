@@ -8470,14 +8470,11 @@ static bool ChangeGRFParamValueNames(ByteReader &buf)
 		uint8_t langid = buf.ReadByte();
 		std::string_view name_string = buf.ReadString();
 
-		auto val_name = _cur_parameter->value_names.find(id);
-		if (val_name != _cur_parameter->value_names.end()) {
-			AddGRFTextToList(val_name->second, langid, _cur.grfconfig->ident.grfid, false, name_string);
-		} else {
-			GRFTextList list;
-			AddGRFTextToList(list, langid, _cur.grfconfig->ident.grfid, false, name_string);
-			_cur_parameter->value_names[id] = list;
+		auto it = std::ranges::lower_bound(_cur_parameter->value_names, id, std::less{}, &GRFParameterInfo::ValueName::first);
+		if (it == std::end(_cur_parameter->value_names) || it->first != id) {
+			it = _cur_parameter->value_names.emplace(it, id, GRFTextList{});
 		}
+		AddGRFTextToList(it->second, langid, _cur.grfconfig->ident.grfid, false, name_string);
 
 		type = buf.ReadByte();
 	}
