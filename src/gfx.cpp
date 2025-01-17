@@ -616,8 +616,6 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 				/* Check clipping (the "+ 1" is for the shadow). */
 				if (begin_x + sprite->x_offs > dpi_right || begin_x + sprite->x_offs + sprite->width /* - 1 + 1 */ < dpi_left) continue;
 
-				if (do_shadow && (glyph & SPRITE_GLYPH) != 0) continue;
-
 				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), BM_COLOUR_REMAP);
 			}
 		}

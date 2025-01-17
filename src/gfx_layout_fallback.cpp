@@ -51,7 +51,7 @@ public:
 		int GetGlyphCount() const override { return static_cast<int>(this->glyphs.size()); }
 		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
 		std::span<const Position> GetPositions() const override { return this->positions; }
-		int GetLeading() const override { return this->GetFont()->fc->GetHeight(); }
+		int GetLeading() const override { return GetCharacterHeight(this->GetFont()->fc->GetSize()); }
 		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
 	};
 
@@ -112,23 +112,16 @@ public:
 FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const char32_t *chars, int char_count, int char_offset, int x) :
 		font(font)
 {
-	const bool isbuiltin = font->fc->IsBuiltInFont();
-
 	this->glyphs.reserve(char_count);
 	this->glyph_to_char.reserve(char_count);
 	this->positions.reserve(char_count);
 
+	int y_offset = (GetCharacterHeight(this->font->fc->GetSize()) - this->font->fc->GetHeight()) / 2;
 	int advance = x;
 	for (int i = 0; i < char_count; i++) {
 		const GlyphID &glyph_id = this->glyphs.emplace_back(font->fc->MapCharToGlyph(chars[i]));
 		int x_advance = font->fc->GetGlyphWidth(glyph_id);
-		if (isbuiltin) {
-			this->positions.emplace_back(advance, advance + x_advance - 1, font->fc->GetAscender()); // Apply sprite font's ascender.
-		} else if (chars[i] >= SCC_SPRITE_START && chars[i] <= SCC_SPRITE_END) {
-			this->positions.emplace_back(advance, advance + x_advance - 1, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
-		} else {
-			this->positions.emplace_back(advance, advance + x_advance - 1, 0); // No ascender adjustment.
-		}
+		this->positions.emplace_back(advance, advance + x_advance - 1, y_offset); // No ascender adjustment.
 		advance += x_advance;
 		this->glyph_to_char.push_back(char_offset + i);
 	}
@@ -234,6 +227,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 	}
 
 	const FontCache *fc = iter->second->fc;
+	assert(fc != nullptr);
 	const char32_t *next_run = this->buffer_begin + iter->first;
 
 	const char32_t *begin = this->buffer;
@@ -251,6 +245,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 
 		if (this->buffer == next_run) {
 			int w = l->GetWidth();
+			assert(iter->second->fc != nullptr);
 			l->emplace_back(iter->second, begin, this->buffer - begin, begin - this->buffer_begin, w);
 			++iter;
 			assert(iter != this->runs.end());
