@@ -452,6 +452,11 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Zandbakopties
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Doorzichtigheidsopties
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Plaatsnamen weergeven
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamen weergeven
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Treinstations
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Vrachtwagenstations
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Bushaltes
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Dokken
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Vliegvelden
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Namen van routepunten weergeven
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Bordjes weergeven
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Bordjes en namen van tegenstanders weergeven
