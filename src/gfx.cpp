@@ -78,7 +78,7 @@ static const uint DIRTY_BLOCK_HEIGHT   = 8;
 static const uint DIRTY_BLOCK_WIDTH    = 64;
 
 static uint _dirty_bytes_per_line = 0;
-static uint8_t *_dirty_blocks = nullptr;
+static std::vector<uint8_t> _dirty_blocks;
 extern uint _dirty_block_colour;
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
@@ -1268,7 +1268,7 @@ void GetBroadestDigit(uint *front, uint *next, FontSize size)
 void ScreenSizeChanged()
 {
 	_dirty_bytes_per_line = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
-	_dirty_blocks = ReallocT<uint8_t>(_dirty_blocks, static_cast<size_t>(_dirty_bytes_per_line) * CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT));
+	_dirty_blocks.resize(static_cast<size_t>(_dirty_bytes_per_line) * CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT));
 
 	/* check the dirty rect */
 	if (_invalid_rect.right >= _screen.width) _invalid_rect.right = _screen.width;
@@ -1396,7 +1396,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
  */
 void DrawDirtyBlocks()
 {
-	uint8_t *b = _dirty_blocks;
+	auto b = _dirty_blocks.begin();
 	const int w = Align(_screen.width,  DIRTY_BLOCK_WIDTH);
 	const int h = Align(_screen.height, DIRTY_BLOCK_HEIGHT);
 	int x;
@@ -1411,7 +1411,7 @@ void DrawDirtyBlocks()
 				int top;
 				int right = x + DIRTY_BLOCK_WIDTH;
 				int bottom = y;
-				uint8_t *p = b;
+				auto p = b;
 				int h2;
 
 				/* First try coalescing downwards */
@@ -1427,7 +1427,7 @@ void DrawDirtyBlocks()
 				p = b;
 
 				while (right != w) {
-					uint8_t *p2 = ++p;
+					auto p2 = ++p;
 					int i = h2;
 					/* Check if a full line of dirty flags is set. */
 					do {
@@ -1485,10 +1485,6 @@ void DrawDirtyBlocks()
  */
 void AddDirtyBlock(int left, int top, int right, int bottom)
 {
-	uint8_t *b;
-	int width;
-	int height;
-
 	if (left < 0) left = 0;
 	if (top < 0) top = 0;
 	if (right > _screen.width) right = _screen.width;
@@ -1504,18 +1500,15 @@ void AddDirtyBlock(int left, int top, int right, int bottom)
 	left /= DIRTY_BLOCK_WIDTH;
 	top  /= DIRTY_BLOCK_HEIGHT;
 
-	b = _dirty_blocks + top * _dirty_bytes_per_line + left;
+	auto b = _dirty_blocks.begin() + top * _dirty_bytes_per_line + left;
 
-	width  = ((right  - 1) / DIRTY_BLOCK_WIDTH)  - left + 1;
-	height = ((bottom - 1) / DIRTY_BLOCK_HEIGHT) - top  + 1;
+	int width  = ((right  - 1) / DIRTY_BLOCK_WIDTH)  - left + 1;
+	int height = ((bottom - 1) / DIRTY_BLOCK_HEIGHT) - top  + 1;
 
 	assert(width > 0 && height > 0);
 
 	do {
-		int i = width;
-
-		do b[--i] = 0xFF; while (i != 0);
-
+		std::fill_n(b, width, 0xFF);
 		b += _dirty_bytes_per_line;
 	} while (--height != 0);
 }
