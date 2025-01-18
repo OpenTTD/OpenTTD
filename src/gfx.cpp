@@ -77,7 +77,8 @@ static uint8_t _string_colourremap[3]; ///< Recoloursprite for stringdrawing. Th
 static const uint DIRTY_BLOCK_HEIGHT   = 8;
 static const uint DIRTY_BLOCK_WIDTH    = 64;
 
-static uint _dirty_bytes_per_line = 0;
+static size_t _dirty_blocks_per_row = 0;
+static size_t _dirty_blocks_per_column = 0;
 static std::vector<uint8_t> _dirty_blocks;
 extern uint _dirty_block_colour;
 
@@ -1271,8 +1272,9 @@ std::pair<uint8_t, uint8_t> GetBroadestDigit(FontSize size)
 
 void ScreenSizeChanged()
 {
-	_dirty_bytes_per_line = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
-	_dirty_blocks.resize(static_cast<size_t>(_dirty_bytes_per_line) * CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT));
+	_dirty_blocks_per_row = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
+	_dirty_blocks_per_column = CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT);
+	_dirty_blocks.resize(_dirty_blocks_per_column * _dirty_blocks_per_row);
 
 	/* check the dirty rect */
 	if (_invalid_rect.right >= _screen.width) _invalid_rect.right = _screen.width;
@@ -1400,77 +1402,52 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
  */
 void DrawDirtyBlocks()
 {
-	uint8_t *b = _dirty_blocks.data();
-	const int w = Align(_screen.width,  DIRTY_BLOCK_WIDTH);
-	const int h = Align(_screen.height, DIRTY_BLOCK_HEIGHT);
-	int x;
-	int y;
+	auto is_dirty = [](auto block) -> bool { return block != 0; };
+	auto block = _dirty_blocks.begin();
 
-	y = 0;
-	do {
-		x = 0;
-		do {
-			if (*b != 0) {
-				int left;
-				int top;
-				int right = x + DIRTY_BLOCK_WIDTH;
-				int bottom = y;
-				uint8_t *p = b;
-				int h2;
+	for (size_t x = 0; x < _dirty_blocks_per_row; ++x) {
+		auto last_of_column = block + _dirty_blocks_per_column;
+		for (size_t y = 0; y < _dirty_blocks_per_column; ++y, ++block) {
+			if (!is_dirty(*block)) continue;
 
-				/* First try coalescing downwards */
-				do {
-					*p = 0;
-					p += _dirty_bytes_per_line;
-					bottom += DIRTY_BLOCK_HEIGHT;
-				} while (bottom != h && *p != 0);
+			/* First try coalescing downwards */
+			size_t height = std::find_if_not(block + 1, last_of_column, is_dirty) - block;
+			size_t width = 1;
 
-				/* Try coalescing to the right too. */
-				h2 = (bottom - y) / DIRTY_BLOCK_HEIGHT;
-				assert(h2 > 0);
-				p = b;
+			/* Clear dirty state. */
+			std::fill_n(block, height, 0);
 
-				while (right != w) {
-					uint8_t *p2 = ++p;
-					int i = h2;
-					/* Check if a full line of dirty flags is set. */
-					do {
-						if (!*p2) goto no_more_coalesc;
-						p2 += _dirty_bytes_per_line;
-					} while (--i != 0);
+			/* Try coalescing to the right too. */
+			auto block_right = block;
+			for (size_t x_right = x + 1; x_right < _dirty_blocks_per_row; ++x_right, ++width) {
+				block_right += _dirty_blocks_per_column;
+				auto last_right = block_right + height;
 
-					/* Wohoo, can combine it one step to the right!
-					 * Do that, and clear the bits. */
-					right += DIRTY_BLOCK_WIDTH;
+				if (std::find_if_not(block_right, last_right, is_dirty) != last_right) break;
 
-					i = h2;
-					p2 = p;
-					do {
-						*p2 = 0;
-						p2 += _dirty_bytes_per_line;
-					} while (--i != 0);
-				}
-				no_more_coalesc:
-
-				left = x;
-				top = y;
-
-				if (left   < _invalid_rect.left  ) left   = _invalid_rect.left;
-				if (top    < _invalid_rect.top   ) top    = _invalid_rect.top;
-				if (right  > _invalid_rect.right ) right  = _invalid_rect.right;
-				if (bottom > _invalid_rect.bottom) bottom = _invalid_rect.bottom;
-
-				if (left < right && top < bottom) {
-					RedrawScreenRect(left, top, right, bottom);
-				}
-
+				/* Clear dirty state. */
+				std::fill_n(block_right, height, 0);
 			}
-		} while (b++, (x += DIRTY_BLOCK_WIDTH) != w);
-	} while (b += -(int)(w / DIRTY_BLOCK_WIDTH) + _dirty_bytes_per_line, (y += DIRTY_BLOCK_HEIGHT) != h);
+
+			int left = static_cast<int>(x * DIRTY_BLOCK_WIDTH);
+			int top = static_cast<int>(y * DIRTY_BLOCK_HEIGHT);
+			int right = left + static_cast<int>(width * DIRTY_BLOCK_WIDTH);
+			int bottom = top + static_cast<int>(height * DIRTY_BLOCK_HEIGHT);
+
+			left = std::max(_invalid_rect.left, left);
+			top = std::max(_invalid_rect.top, top);
+			right = std::min(_invalid_rect.right, right);
+			bottom = std::min(_invalid_rect.bottom, bottom);
+
+			if (left < right && top < bottom) {
+				RedrawScreenRect(left, top, right, bottom);
+			}
+		}
+	}
 
 	++_dirty_block_colour;
-	_invalid_rect.left = w;
-	_invalid_rect.top = h;
+	_invalid_rect.left = _screen.width;
+	_invalid_rect.top = _screen.height;
 	_invalid_rect.right = 0;
 	_invalid_rect.bottom = 0;
 }
@@ -1489,10 +1466,6 @@ void DrawDirtyBlocks()
  */
 void AddDirtyBlock(int left, int top, int right, int bottom)
 {
-	uint8_t *b;
-	int width;
-	int height;
-
 	if (left < 0) left = 0;
 	if (top < 0) top = 0;
 	if (right > _screen.width) right = _screen.width;
@@ -1500,28 +1473,22 @@ void AddDirtyBlock(int left, int top, int right, int bottom)
 
 	if (left >= right || top >= bottom) return;
 
-	if (left   < _invalid_rect.left  ) _invalid_rect.left   = left;
-	if (top    < _invalid_rect.top   ) _invalid_rect.top    = top;
-	if (right  > _invalid_rect.right ) _invalid_rect.right  = right;
-	if (bottom > _invalid_rect.bottom) _invalid_rect.bottom = bottom;
+	_invalid_rect.left = std::min(_invalid_rect.left, left);
+	_invalid_rect.top = std::min(_invalid_rect.top, top);
+	_invalid_rect.right = std::max(_invalid_rect.right, right);
+	_invalid_rect.bottom = std::max(_invalid_rect.bottom, bottom);
 
 	left /= DIRTY_BLOCK_WIDTH;
 	top  /= DIRTY_BLOCK_HEIGHT;
+	right = CeilDiv(right, DIRTY_BLOCK_WIDTH);
+	int height = CeilDiv(bottom, DIRTY_BLOCK_HEIGHT) - top;
 
-	b = _dirty_blocks.data() + top * _dirty_bytes_per_line + left;
+	assert(left < right && height > 0);
 
-	width  = ((right  - 1) / DIRTY_BLOCK_WIDTH)  - left + 1;
-	height = ((bottom - 1) / DIRTY_BLOCK_HEIGHT) - top  + 1;
-
-	assert(width > 0 && height > 0);
-
-	do {
-		int i = width;
-
-		do b[--i] = 0xFF; while (i != 0);
-
-		b += _dirty_bytes_per_line;
-	} while (--height != 0);
+	for (; left < right; ++left) {
+		size_t offset = _dirty_blocks_per_column * left + top;
+		std::fill_n(_dirty_blocks.begin() + offset, height, 0xFF);
+	}
 }
 
 /**
