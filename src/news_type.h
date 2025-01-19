@@ -11,11 +11,16 @@
 #define NEWS_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "engine_type.h"
+#include "industry_type.h"
 #include "gfx_type.h"
+#include "sound_type.h"
+#include "station_type.h"
+#include "strings_type.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
-#include "strings_type.h"
-#include "sound_type.h"
+#include "town_type.h"
+#include "vehicle_type.h"
 
 /**
  * Type of news.
@@ -65,15 +70,7 @@ enum class AdviceType : uint8_t {
  * You have to make sure, #ChangeVehicleNews catches the DParams of your message.
  * This is NOT ensured by the references.
  */
-enum class NewsReferenceType : uint8_t {
-	None, ///< Empty reference
-	Tile, ///< Reference tile. Scroll to tile when clicking on the news.
-	Vehicle, ///< Reference vehicle. Scroll to vehicle when clicking on the news. Delete news when vehicle is deleted.
-	Station, ///< Reference station. Scroll to station when clicking on the news. Delete news when station is deleted.
-	Industry, ///< Reference industry. Scroll to industry when clicking on the news. Delete news when industry is deleted.
-	Town, ///< Reference town. Scroll to town when clicking on the news.
-	Engine, ///< Reference engine.
-};
+using NewsReference = std::variant<std::monostate, TileIndex, VehicleID, StationID, IndustryID, TownID, EngineID>;
 
 /** News Window Styles. */
 enum class NewsStyle : uint8_t {
@@ -145,16 +142,14 @@ struct NewsItem {
 	NewsStyle style; /// Window style for the news.
 	NewsFlags flags;               ///< NewsFlags bits @see NewsFlag
 
-	NewsReferenceType reftype1;   ///< Type of ref1
-	NewsReferenceType reftype2;   ///< Type of ref2
-	uint32_t ref1;                  ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
-	uint32_t ref2;                  ///< Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
+	NewsReference ref1; ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
+	NewsReference ref2; ///< Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
 
 	std::unique_ptr<NewsAllocatedData> data; ///< Custom data for the news item that will be deallocated (deleted) when the news item has reached its end.
 
 	std::vector<StringParameterData> params; ///< Parameters for string resolving.
 
-	NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlags flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type);
+	NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type);
 };
 
 /**

@@ -1357,7 +1357,7 @@ static void CrashAirplane(Aircraft *v)
 		newstype = NewsType::AccidentOther;
 	}
 
-	AddTileNewsItem(newsitem, newstype, vt, nullptr, st != nullptr ? st->index : INVALID_STATION);
+	AddTileNewsItem(newsitem, newstype, vt, st != nullptr ? st->index : INVALID_STATION);
 
 	ModifyStationRatingAround(vt, v->owner, -160, 30);
 	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, v);
