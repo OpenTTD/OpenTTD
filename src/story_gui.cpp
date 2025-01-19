@@ -557,7 +557,7 @@ protected:
 				this->SetTimeout();
 				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 
-				Command<CMD_STORY_PAGE_BUTTON>::Post(TileIndex{}, pe.index, 0);
+				Command<CMD_STORY_PAGE_BUTTON>::Post(TileIndex{}, pe.index, INVALID_VEHICLE);
 				break;
 
 			case SPET_BUTTON_TILE:
@@ -906,7 +906,7 @@ public:
 			return;
 		}
 
-		Command<CMD_STORY_PAGE_BUTTON>::Post(tile, pe->index, 0);
+		Command<CMD_STORY_PAGE_BUTTON>::Post(tile, pe->index, INVALID_VEHICLE);
 		ResetObjectToPlace();
 	}
 

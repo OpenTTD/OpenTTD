@@ -680,7 +680,7 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(vehicle_id));
 
-	return ScriptObject::Command<CMD_CLONE_ORDER>::Do(0, CO_UNSHARE, vehicle_id, 0);
+	return ScriptObject::Command<CMD_CLONE_ORDER>::Do(0, CO_UNSHARE, vehicle_id, ::INVALID_VEHICLE);
 }
 
 /* static */ SQInteger ScriptOrder::GetOrderDistance(ScriptVehicle::VehicleType vehicle_type, TileIndex origin_tile, TileIndex dest_tile)
