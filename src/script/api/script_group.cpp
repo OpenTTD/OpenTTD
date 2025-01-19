@@ -36,7 +36,7 @@
 	if (!ScriptObject::Command<CMD_CREATE_GROUP>::Do(&ScriptInstance::DoCommandReturnGroupID, (::VehicleType)vehicle_type, parent_group_id)) return GROUP_INVALID;
 
 	/* In case of test-mode, we return GroupID 0 */
-	return static_cast<GroupID>(0);
+	return GroupID::Begin();
 }
 
 /* static */ bool ScriptGroup::DeleteGroup(GroupID group_id)
@@ -65,7 +65,7 @@
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_GROUP_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
-	return ScriptObject::Command<CMD_ALTER_GROUP>::Do(AlterGroupMode::Rename, group_id, 0, text);
+	return ScriptObject::Command<CMD_ALTER_GROUP>::Do(AlterGroupMode::Rename, group_id, ::INVALID_GROUP, text);
 }
 
 /* static */ std::optional<std::string> ScriptGroup::GetName(GroupID group_id)

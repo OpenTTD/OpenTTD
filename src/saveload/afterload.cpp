@@ -3335,7 +3335,7 @@ bool AfterLoadGame()
 		Company *c = Company::Get(g->owner);
 		if (IsSavegameVersionBefore(SLV_GROUP_NUMBERS)) {
 			/* Use the index as group number when converting old savegames. */
-			g->number = c->freegroups.UseID(g->index);
+			g->number = c->freegroups.UseID(g->index.base());
 		} else {
 			c->freegroups.UseID(g->number);
 		}

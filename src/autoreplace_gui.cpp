@@ -381,12 +381,12 @@ public:
 		switch (widget) {
 			case WID_RV_CAPTION:
 				SetDParam(0, STR_REPLACE_VEHICLE_TRAIN + this->window_number);
-				switch (this->sel_group) {
-					case ALL_GROUP:
+				switch (this->sel_group.base()) {
+					case ALL_GROUP.base():
 						SetDParam(1, STR_GROUP_ALL_TRAINS + this->window_number);
 						break;
 
-					case DEFAULT_GROUP:
+					case DEFAULT_GROUP.base():
 						SetDParam(1, STR_GROUP_DEFAULT_TRAINS + this->window_number);
 						break;
 
