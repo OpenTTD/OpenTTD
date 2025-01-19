@@ -33,7 +33,6 @@
 DEFINE_POOL_METHOD(inline)::Pool(const char *name) :
 		PoolBase(Tpool_type),
 		name(name),
-		size(0),
 		first_free(0),
 		first_unused(0),
 		items(0),
@@ -41,7 +40,6 @@ DEFINE_POOL_METHOD(inline)::Pool(const char *name) :
 		checked(0),
 #endif /* WITH_ASSERT */
 		cleaning(false),
-		data(nullptr),
 		alloc_cache(nullptr)
 { }
 
@@ -53,25 +51,22 @@ DEFINE_POOL_METHOD(inline)::Pool(const char *name) :
  */
 DEFINE_POOL_METHOD(inline void)::ResizeFor(size_t index)
 {
-	assert(index >= this->size);
+	assert(index >= this->data.size());
 	assert(index < Tmax_size);
 
+	size_t old_size = this->data.size();
 	size_t new_size = std::min(Tmax_size, Align(index + 1, Tgrowth_step));
 
-	this->data = ReallocT(this->data, new_size);
-	MemSetT(this->data + this->size, 0, new_size - this->size);
-
+	this->data.resize(new_size);
 	this->used_bitmap.resize(Align(new_size, BITMAP_SIZE) / BITMAP_SIZE);
-	if (this->size % BITMAP_SIZE != 0) {
+	if (old_size % BITMAP_SIZE != 0) {
 		/* Already-allocated bits above old size are now unused. */
-		this->used_bitmap[this->size / BITMAP_SIZE] &= ~((~static_cast<BitmapStorage>(0)) << (this->size % BITMAP_SIZE));
+		this->used_bitmap[old_size / BITMAP_SIZE] &= ~((~static_cast<BitmapStorage>(0)) << (old_size % BITMAP_SIZE));
 	}
 	if (new_size % BITMAP_SIZE != 0) {
 		/* Bits above new size are considered used. */
 		this->used_bitmap[new_size / BITMAP_SIZE] |= (~static_cast<BitmapStorage>(0)) << (new_size % BITMAP_SIZE);
 	}
-
-	this->size = new_size;
 }
 
 /**
@@ -86,7 +81,7 @@ DEFINE_POOL_METHOD(inline size_t)::FindFirstFree()
 		return std::distance(std::begin(this->used_bitmap), it) * BITMAP_SIZE + FindFirstBit(available);
 	}
 
-	assert(this->first_unused == this->size);
+	assert(this->first_unused == this->data.size());
 
 	if (this->first_unused < Tmax_size) {
 		this->ResizeFor(this->first_unused);
@@ -168,7 +163,7 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size, size_t index)
 		SlErrorCorruptFmt("{} index {} out of range ({})", this->name, index, Tmax_size);
 	}
 
-	if (index >= this->size) this->ResizeFor(index);
+	if (index >= this->data.size()) this->ResizeFor(index);
 
 	if (this->data[index] != nullptr) {
 		SlErrorCorruptFmt("{} index {} already in use", this->name, index);
@@ -185,7 +180,7 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size, size_t index)
  */
 DEFINE_POOL_METHOD(void)::FreeItem(size_t index)
 {
-	assert(index < this->size);
+	assert(index < this->data.size());
 	assert(this->data[index] != nullptr);
 	if (Tcache) {
 		AllocCache *ac = reinterpret_cast<AllocCache *>(this->data[index]);
@@ -211,11 +206,11 @@ DEFINE_POOL_METHOD(void)::CleanPool()
 		delete this->Get(i); // 'delete nullptr;' is very valid
 	}
 	assert(this->items == 0);
-	free(this->data);
+	this->data.clear();
+	this->data.shrink_to_fit();
 	this->used_bitmap.clear();
 	this->used_bitmap.shrink_to_fit();
-	this->first_unused = this->first_free = this->size = 0;
-	this->data = nullptr;
+	this->first_unused = this->first_free = 0;
 	this->cleaning = false;
 
 	if (Tcache) {

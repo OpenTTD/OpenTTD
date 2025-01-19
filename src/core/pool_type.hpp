@@ -88,7 +88,6 @@ struct Pool : PoolBase {
 
 	const char * const name; ///< Name of this pool
 
-	size_t size;         ///< Current allocated size
 	size_t first_free;   ///< No item with index lower than this is free (doesn't say anything about this one!)
 	size_t first_unused; ///< This and all higher indexes are free (doesn't say anything about first_unused-1 !)
 	size_t items;        ///< Number of used indexes (non-nullptr)
@@ -97,7 +96,7 @@ struct Pool : PoolBase {
 #endif /* WITH_ASSERT */
 	bool cleaning;       ///< True if cleaning pool (deleting all items)
 
-	Titem **data;        ///< Pointer to array of pointers to Titem
+	std::vector<Titem *> data; ///< Pointers to Titem
 	std::vector<BitmapStorage> used_bitmap; ///< Bitmap of used indices.
 
 	Pool(const char *name);
