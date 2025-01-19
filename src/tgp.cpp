@@ -151,11 +151,11 @@
 
 /** Fixed point type for heights */
 using Height = int16_t;
-static const int height_decimal_bits = 4;
+static const int HEIGHT_DECIMAL_BITS = 4;
 
 /** Fixed point array for amplitudes (and percent values) */
 using Amplitude = int;
-static const int amplitude_decimal_bits = 10;
+static const int AMPLITUDE_DECIMAL_BITS = 10;
 
 /** Height map - allocated array of heights (MapSizeX() + 1) x (MapSizeY() + 1) */
 struct HeightMap
@@ -183,15 +183,15 @@ struct HeightMap
 static HeightMap _height_map = { {}, 0, 0, 0 };
 
 /** Conversion: int to Height */
-#define I2H(i) ((i) << height_decimal_bits)
+#define I2H(i) ((i) << HEIGHT_DECIMAL_BITS)
 /** Conversion: Height to int */
-#define H2I(i) ((i) >> height_decimal_bits)
+#define H2I(i) ((i) >> HEIGHT_DECIMAL_BITS)
 
 /** Conversion: Amplitude to int */
-#define A2I(i) ((i) >> amplitude_decimal_bits)
+#define A2I(i) ((i) >> AMPLITUDE_DECIMAL_BITS)
 
 /** Conversion: Amplitude to Height */
-#define A2H(a) ((a) >> (amplitude_decimal_bits - height_decimal_bits))
+#define A2H(a) ((a) >> (AMPLITUDE_DECIMAL_BITS - HEIGHT_DECIMAL_BITS))
 
 /** Maximum number of TGP noise frequencies. */
 static const int MAX_TGP_FREQUENCIES = 10;
