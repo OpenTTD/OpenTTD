@@ -11,7 +11,6 @@
 #define NEWGRF_CONFIG_H
 
 #include "strings_type.h"
-#include "core/alloc_type.hpp"
 #include "fileio_type.h"
 #include "textfile_type.h"
 #include "newgrf_text.h"
@@ -152,35 +151,36 @@ struct GRFParameterInfo {
 };
 
 /** Information about GRF, used in the game and (part of it) in savegames */
-struct GRFConfig : ZeroedMemoryAllocator {
+struct GRFConfig {
 	static constexpr uint8_t MAX_NUM_PARAMS = 0x80;
 
-	GRFConfig(const std::string &filename = std::string{});
+	GRFConfig() = default;
+	GRFConfig(const std::string &filename) : filename(filename) {}
 	GRFConfig(const GRFConfig &config);
 
 	/* Remove the copy assignment, as the default implementation will not do the right thing. */
 	GRFConfig &operator=(GRFConfig &rhs) = delete;
 
-	GRFIdentifier ident; ///< grfid and md5sum to uniquely identify newgrfs
-	MD5Hash original_md5sum; ///< MD5 checksum of original file if only a 'compatible' file was loaded
-	std::string filename; ///< Filename - either with or without full path
-	GRFTextWrapper name; ///< NOSAVE: GRF name (Action 0x08)
-	GRFTextWrapper info; ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
-	GRFTextWrapper url; ///< NOSAVE: URL belonging to this GRF.
-	std::optional<GRFError> error; ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
+	GRFIdentifier ident{}; ///< grfid and md5sum to uniquely identify newgrfs
+	MD5Hash original_md5sum{}; ///< MD5 checksum of original file if only a 'compatible' file was loaded
+	std::string filename{}; ///< Filename - either with or without full path
+	GRFTextWrapper name{}; ///< NOSAVE: GRF name (Action 0x08)
+	GRFTextWrapper info{}; ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
+	GRFTextWrapper url{}; ///< NOSAVE: URL belonging to this GRF.
+	std::optional<GRFError> error = std::nullopt; ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
 
-	uint32_t version; ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
-	uint32_t min_loadable_version; ///< NOSAVE: Minimum compatible version a NewGRF can define
-	uint8_t flags; ///< NOSAVE: GCF_Flags, bitset
-	GRFStatus status; ///< NOSAVE: GRFStatus, enum
-	uint32_t grf_bugs; ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
-	uint8_t num_valid_params; ///< NOSAVE: Number of valid parameters (action 0x14)
-	uint8_t palette; ///< GRFPalette, bitset
-	bool has_param_defaults; ///< NOSAVE: did this newgrf specify any defaults for it's parameters
+	uint32_t version = 0; ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
+	uint32_t min_loadable_version = 0; ///< NOSAVE: Minimum compatible version a NewGRF can define
+	uint8_t flags = 0; ///< NOSAVE: GCF_Flags, bitset
+	GRFStatus status = GCS_UNKNOWN; ///< NOSAVE: GRFStatus, enum
+	uint32_t grf_bugs = 0; ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
+	uint8_t num_valid_params = MAX_NUM_PARAMS; ///< NOSAVE: Number of valid parameters (action 0x14)
+	uint8_t palette = 0; ///< GRFPalette, bitset
+	bool has_param_defaults = false; ///< NOSAVE: did this newgrf specify any defaults for it's parameters
 	std::vector<std::optional<GRFParameterInfo>> param_info; ///< NOSAVE: extra information about the parameters
 	std::vector<uint32_t> param; ///< GRF parameters
 
-	struct GRFConfig *next; ///< NOSAVE: Next item in the linked list
+	struct GRFConfig *next = nullptr; ///< NOSAVE: Next item in the linked list
 
 	bool IsCompatible(uint32_t old_version) const;
 	void SetParams(std::span<const uint32_t> pars);
