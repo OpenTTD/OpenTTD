@@ -453,6 +453,11 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opcions del mod
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcions de transparència
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra els noms de les poblacions
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostra els noms de les estacions
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Estacions de tren
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Parades de camió
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Parades d'autobús
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Ports
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Aeroports
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostra els punts de pas
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostra els senyals
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostra noms i senyals dels competidors
