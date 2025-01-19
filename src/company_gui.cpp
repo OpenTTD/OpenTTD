@@ -1017,7 +1017,7 @@ public:
 			}
 		} else {
 			/* Setting group livery */
-			Command<CMD_SET_GROUP_LIVERY>::Post(this->sel, widget == WID_SCL_PRI_COL_DROPDOWN, colour);
+			Command<CMD_SET_GROUP_LIVERY>::Post(static_cast<GroupID>(this->sel), widget == WID_SCL_PRI_COL_DROPDOWN, colour);
 		}
 	}
 
