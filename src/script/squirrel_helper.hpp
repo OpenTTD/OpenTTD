@@ -44,6 +44,14 @@ namespace SQConvert {
 	template <> struct Return<void *>       { static inline int Set(HSQUIRRELVM vm, void *res)       { sq_pushuserpointer(vm, res); return 1; } };
 	template <> struct Return<HSQOBJECT>    { static inline int Set(HSQUIRRELVM vm, HSQOBJECT res)   { sq_pushobject(vm, res); return 1; } };
 
+	template <typename T> requires std::is_enum_v<T> struct Return<T> {
+		static inline int Set(HSQUIRRELVM vm, T res)
+		{
+			sq_pushinteger(vm, to_underlying(res));
+			return 1;
+		}
+	};
+
 	template <> struct Return<std::optional<std::string>> {
 		static inline int Set(HSQUIRRELVM vm, std::optional<std::string> res)
 		{
@@ -74,6 +82,15 @@ namespace SQConvert {
 	template <> struct Param<bool>         { static inline bool        Get(HSQUIRRELVM vm, int index) { SQBool        tmp; sq_getbool       (vm, index, &tmp); return tmp != 0; } };
 	template <> struct Param<const char *> { /* Do not use const char *, use std::string& instead. */ };
 	template <> struct Param<void *>       { static inline void       *Get(HSQUIRRELVM vm, int index) { SQUserPointer tmp; sq_getuserpointer(vm, index, &tmp); return tmp; } };
+
+	template <typename T> requires std::is_enum_v<T> struct Param<T> {
+		static inline T Get(HSQUIRRELVM vm, int index)
+		{
+			SQInteger tmp;
+			sq_getinteger(vm, index, &tmp);
+			return static_cast<T>(tmp);
+		}
+	};
 
 	template <> struct Param<const std::string &> {
 		static inline const std::string Get(HSQUIRRELVM vm, int index)
