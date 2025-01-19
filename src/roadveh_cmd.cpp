@@ -902,7 +902,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 			trackdirs = TRACKDIR_BIT_NONE;
 		} else {
 			/* Our station */
-			RoadStopType rstype = v->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK;
+			RoadStopType rstype = v->IsBus() ? RoadStopType::Bus : RoadStopType::Truck;
 
 			if (GetRoadStopType(tile) != rstype) {
 				/* Wrong station type */
@@ -1451,7 +1451,7 @@ again:
 			if (v->cur_speed == 0 && IsInsideMM(v->state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
 					v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile)) &&
 					v->owner == GetTileOwner(v->tile) && !v->current_order.IsType(OT_LEAVESTATION) &&
-					GetRoadStopType(v->tile) == (v->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK)) {
+					GetRoadStopType(v->tile) == (v->IsBus() ? RoadStopType::Bus : RoadStopType::Truck)) {
 				Station *st = Station::GetByTile(v->tile);
 				v->last_station_visited = st->index;
 				RoadVehArrivesAt(v, st);
@@ -1484,7 +1484,7 @@ again:
 			(IsInsideMM(v->state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
 			v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile)) &&
 			v->owner == GetTileOwner(v->tile) &&
-			GetRoadStopType(v->tile) == (v->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
+			GetRoadStopType(v->tile) == (v->IsBus() ? RoadStopType::Bus : RoadStopType::Truck) &&
 			v->frame == RVC_DRIVE_THROUGH_STOP_FRAME))) {
 
 		RoadStop *rs = RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile));

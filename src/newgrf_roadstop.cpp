@@ -523,11 +523,11 @@ bool GetIfStopIsForType(const RoadStopSpec *roadstopspec, RoadStopType rs, RoadT
 	if (roadstopspec->stop_type == ROADSTOPTYPE_ALL) return true;
 
 	switch (rs) {
-		case ROADSTOP_BUS:
+		case RoadStopType::Bus:
 			if (roadstopspec->stop_type == ROADSTOPTYPE_PASSENGER) return true;
 			break;
 
-		case ROADSTOP_TRUCK:
+		case RoadStopType::Truck:
 			if (roadstopspec->stop_type == ROADSTOPTYPE_FREIGHT) return true;
 			break;
 

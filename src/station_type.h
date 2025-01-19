@@ -42,10 +42,10 @@ enum class StationType : uint8_t {
 };
 
 /** Types of RoadStops */
-enum RoadStopType : uint8_t {
-	ROADSTOP_BUS,    ///< A standard stop for buses
-	ROADSTOP_TRUCK,  ///< A standard stop for trucks
-	ROADSTOP_END,    ///< End of valid types
+enum class RoadStopType : uint8_t {
+	Bus, ///< A standard stop for buses
+	Truck, ///< A standard stop for trucks
+	End, ///< End of valid types
 };
 
 /** The facilities a station might be having */
