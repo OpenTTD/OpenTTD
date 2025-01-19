@@ -723,7 +723,7 @@ public:
 			case VEH_AIRCRAFT: this->livery_class = LC_GROUP_AIRCRAFT; break;
 			default: NOT_REACHED();
 		}
-		this->sel = group;
+		this->sel = group.base();
 		this->LowerWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
 
 		this->groups.ForceRebuild();
@@ -944,12 +944,12 @@ public:
 						}
 					}
 				} else {
-					this->sel = INVALID_GROUP;
+					this->sel = INVALID_GROUP.base();
 					this->groups.ForceRebuild();
 					this->BuildGroupList(this->window_number);
 
 					if (!this->groups.empty()) {
-						this->sel = this->groups[0].group->index;
+						this->sel = this->groups[0].group->index.base();
 					}
 				}
 
@@ -986,7 +986,7 @@ public:
 					auto it = this->vscroll->GetScrolledItemFromWidget(this->groups, pt.y, this, widget);
 					if (it == std::end(this->groups)) return;
 
-					this->sel = it->group->index;
+					this->sel = it->group->index.base();
 				}
 				this->SetDirty();
 				break;
@@ -1017,7 +1017,7 @@ public:
 			}
 		} else {
 			/* Setting group livery */
-			Command<CMD_SET_GROUP_LIVERY>::Post(this->sel, widget == WID_SCL_PRI_COL_DROPDOWN, colour);
+			Command<CMD_SET_GROUP_LIVERY>::Post(static_cast<GroupID>(this->sel), widget == WID_SCL_PRI_COL_DROPDOWN, colour);
 		}
 	}
 
@@ -1038,8 +1038,8 @@ public:
 				this->SetRows();
 
 				if (!Group::IsValidID(this->sel)) {
-					this->sel = INVALID_GROUP;
-					if (!this->groups.empty()) this->sel = this->groups[0].group->index;
+					this->sel = INVALID_GROUP.base();
+					if (!this->groups.empty()) this->sel = this->groups[0].group->index.base();
 				}
 
 				this->SetDirty();
