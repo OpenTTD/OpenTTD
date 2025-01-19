@@ -899,7 +899,7 @@ struct DepotWindow : Window {
 		}
 
 		/* Show tooltip window */
-		SetDParam(0, whole_chain ? num : v->engine_type);
+		SetDParam(0, whole_chain ? num : static_cast<uint>(v->engine_type));
 		SetDParamStr(1, details);
 		GuiShowTooltips(this, whole_chain ? STR_DEPOT_VEHICLE_TOOLTIP_CHAIN : STR_DEPOT_VEHICLE_TOOLTIP, TCC_RIGHT_CLICK, 2);
 

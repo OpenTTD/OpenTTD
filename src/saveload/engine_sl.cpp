@@ -101,7 +101,7 @@ struct ENGNChunkHandler : ChunkHandler {
 		 * engine pool after processing NewGRFs by CopyTempEngineData(). */
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			Engine *e = GetTempDataEngine(index);
+			Engine *e = GetTempDataEngine(static_cast<EngineID>(index));
 			SlObject(e, slt);
 
 			if (IsSavegameVersionBefore(SLV_179)) {
@@ -167,7 +167,7 @@ struct ENGSChunkHandler : ChunkHandler {
 		SlCopy(names, lengthof(names), SLE_STRINGID);
 
 		/* Copy each string into the temporary engine array. */
-		for (EngineID engine = 0; engine < lengthof(names); engine++) {
+		for (EngineID engine = ENGINE_BEGIN; engine < lengthof(names); engine++) {
 			Engine *e = GetTempDataEngine(engine);
 			e->name = CopyFromOldName(names[engine]);
 		}
@@ -221,7 +221,7 @@ struct EIDSChunkHandler : ChunkHandler {
 		while ((index = SlIterateArray()) != -1) {
 			EngineIDMapping eid;
 			SlObject(&eid, slt);
-			_engine_mngr.SetID(eid.type, eid.internal_id, eid.grfid, eid.substitute_id, index);
+			_engine_mngr.SetID(eid.type, eid.internal_id, eid.grfid, eid.substitute_id, static_cast<EngineID>(index));
 		}
 	}
 };

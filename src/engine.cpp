@@ -508,7 +508,7 @@ bool Engine::IsVariantHidden(CompanyID c) const
  */
 void EngineOverrideManager::ResetToDefaultMapping()
 {
-	EngineID id = 0;
+	EngineID id = ENGINE_BEGIN;
 	for (VehicleType type = VEH_TRAIN; type <= VEH_AIRCRAFT; type++) {
 		auto &map = this->mappings[type];
 		map.clear();

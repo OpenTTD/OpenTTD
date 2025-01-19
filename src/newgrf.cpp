@@ -1336,7 +1336,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x2F: // Engine variant
-				ei->variant_id = buf.ReadWord();
+				ei->variant_id = static_cast<EngineID>(buf.ReadWord());
 				break;
 
 			case 0x30: // Extra miscellaneous flags
@@ -1547,7 +1547,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 			}
 
 			case 0x26: // Engine variant
-				ei->variant_id = buf.ReadWord();
+				ei->variant_id = static_cast<EngineID>(buf.ReadWord());
 				break;
 
 			case 0x27: // Extra miscellaneous flags
@@ -1736,7 +1736,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 			}
 
 			case 0x20: // Engine variant
-				ei->variant_id = buf.ReadWord();
+				ei->variant_id = static_cast<EngineID>(buf.ReadWord());
 				break;
 
 			case 0x21: // Extra miscellaneous flags
@@ -1919,7 +1919,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 				break;
 
 			case 0x20: // Engine variant
-				ei->variant_id = buf.ReadWord();
+				ei->variant_id = static_cast<EngineID>(buf.ReadWord());
 				break;
 
 			case 0x21: // Extra miscellaneous flags

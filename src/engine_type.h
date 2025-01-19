@@ -20,7 +20,13 @@
 #include "sound_type.h"
 #include "strings_type.h"
 
-typedef uint16_t EngineID; ///< Unique identification number of an engine.
+/** Unique identification number of an engine. */
+enum EngineID : uint16_t {
+	ENGINE_BEGIN = 0,
+	ENGINE_END = 64000,
+	INVALID_ENGINE = 0xFFFF ///< Constant denoting an invalid engine.
+};
+DECLARE_INCREMENT_DECREMENT_OPERATORS(EngineID)
 
 struct Engine;
 
@@ -212,7 +218,5 @@ inline uint64_t PackEngineNameDParam(EngineID engine_id, EngineNameContext conte
 }
 
 static const uint MAX_LENGTH_ENGINE_NAME_CHARS = 32; ///< The maximum length of an engine name in characters including '\0'
-
-static const EngineID INVALID_ENGINE = 0xFFFF; ///< Constant denoting an invalid engine.
 
 #endif /* ENGINE_TYPE_H */

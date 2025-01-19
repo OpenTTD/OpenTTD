@@ -83,7 +83,7 @@ struct EnginePreviewWindow : Window {
 		if (widget != WID_EP_QUESTION) return;
 
 		/* Get size of engine sprite, on loan from depot_gui.cpp */
-		EngineID engine = this->window_number;
+		EngineID engine = static_cast<EngineID>(this->window_number);
 		EngineImageType image_type = EIT_PURCHASE;
 		uint x, y;
 		int x_offs, y_offs;
@@ -109,7 +109,7 @@ struct EnginePreviewWindow : Window {
 	{
 		if (widget != WID_EP_QUESTION) return;
 
-		EngineID engine = this->window_number;
+		EngineID engine = static_cast<EngineID>(this->window_number);
 		SetDParam(0, GetEngineCategoryName(engine));
 		int y = DrawStringMultiLine(r, STR_ENGINE_PREVIEW_MESSAGE, TC_FROMSTRING, SA_HOR_CENTER | SA_TOP) + WidgetDimensions::scaled.vsep_wide;
 
@@ -127,7 +127,7 @@ struct EnginePreviewWindow : Window {
 	{
 		switch (widget) {
 			case WID_EP_YES:
-				Command<CMD_WANT_ENGINE_PREVIEW>::Post(this->window_number);
+				Command<CMD_WANT_ENGINE_PREVIEW>::Post(static_cast<EngineID>(this->window_number));
 				[[fallthrough]];
 			case WID_EP_NO:
 				if (!_shift_pressed) this->Close();
@@ -139,7 +139,7 @@ struct EnginePreviewWindow : Window {
 	{
 		if (!gui_scope) return;
 
-		EngineID engine = this->window_number;
+		EngineID engine = static_cast<EngineID>(this->window_number);
 		if (Engine::Get(engine)->preview_company != _local_company) this->Close();
 	}
 };

@@ -1333,7 +1333,7 @@ void CommitVehicleListOrderChanges()
 {
 	/* Build a list of EngineIDs. EngineIDs are sequential from 0 up to the number of pool items with no gaps. */
 	std::vector<EngineID> ordering(Engine::GetNumItems());
-	std::iota(std::begin(ordering), std::end(ordering), 0);
+	std::iota(std::begin(ordering), std::end(ordering), ENGINE_BEGIN);
 
 	/* Pre-sort engines by scope-grfid and local index */
 	std::ranges::sort(ordering, EnginePreSort);

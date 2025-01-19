@@ -458,7 +458,7 @@ struct NewsWindow : Window {
 
 			case WID_N_VEH_INFO: {
 				assert(this->ni->reftype1 == NewsReferenceType::Engine);
-				EngineID engine = this->ni->ref1;
+				EngineID engine = static_cast<EngineID>(this->ni->ref1);
 				str = GetEngineInfoString(engine);
 				break;
 			}
@@ -542,14 +542,14 @@ struct NewsWindow : Window {
 
 			case WID_N_VEH_SPR: {
 				assert(this->ni->reftype1 == NewsReferenceType::Engine);
-				EngineID engine = this->ni->ref1;
+				EngineID engine = static_cast<EngineID>(this->ni->ref1);
 				DrawVehicleEngine(r.left, r.right, CenterBounds(r.left, r.right, 0), CenterBounds(r.top, r.bottom, 0), engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
 				GfxFillRect(r.left, r.top, r.right, r.bottom, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}
 			case WID_N_VEH_INFO: {
 				assert(this->ni->reftype1 == NewsReferenceType::Engine);
-				EngineID engine = this->ni->ref1;
+				EngineID engine = static_cast<EngineID>(this->ni->ref1);
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, GetEngineInfoString(engine), TC_FROMSTRING, SA_CENTER);
 				break;
 			}
@@ -678,7 +678,7 @@ private:
 	StringID GetNewVehicleMessageString(WidgetID widget) const
 	{
 		assert(this->ni->reftype1 == NewsReferenceType::Engine);
-		EngineID engine = this->ni->ref1;
+		EngineID engine = static_cast<EngineID>(this->ni->ref1);
 
 		switch (widget) {
 			case WID_N_VEH_TITLE:
