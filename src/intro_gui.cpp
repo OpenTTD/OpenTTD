@@ -141,7 +141,7 @@ struct SelectGameWindow : public Window {
 				for (char c : match[2].str()) {
 					if (isdigit(c)) {
 						if (id_type == ID_VEHICLE) {
-							vc.vehicle = vc.vehicle * 10 + (c - '0');
+							vc.vehicle = static_cast<VehicleID>(vc.vehicle * 10 + (c - '0'));
 						}
 					} else {
 						id_type = ID_NONE;
@@ -155,7 +155,7 @@ struct SelectGameWindow : public Window {
 							case 'C': vc.align_h = IntroGameViewportCommand::CENTRE; break;
 							case 'R': vc.align_h = IntroGameViewportCommand::RIGHT; break;
 							case 'P': vc.pan_to_next = true; break;
-							case 'V': id_type = ID_VEHICLE; vc.vehicle = 0; break;
+							case 'V': id_type = ID_VEHICLE; vc.vehicle = VEHICLE_BEGIN; break;
 						}
 					}
 				}
