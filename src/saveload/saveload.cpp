@@ -929,6 +929,18 @@ static void FixSCCEncoded(std::string &str)
 }
 
 /**
+ * Read the given amount of bytes from the buffer into the string.
+ * @param str The string to write to.
+ * @param length The amount of bytes to read into the string.
+ * @note Does not perform any validation on validity of the string.
+ */
+void SlReadString(std::string &str, size_t length)
+{
+	str.resize(length);
+	SlCopyBytes(str.data(), length);
+}
+
+/**
  * Save/Load a \c std::string.
  * @param ptr the string being manipulated
  * @param conv must be SLE_FILE_STRING
@@ -953,8 +965,7 @@ static void SlStdString(void *ptr, VarType conv)
 				return;
 			}
 
-			str->resize(len);
-			SlCopyBytes(str->data(), len);
+			SlReadString(*str, len);
 
 			StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK;
 			if ((conv & SLF_ALLOW_CONTROL) != 0) {

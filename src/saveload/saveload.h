@@ -1327,6 +1327,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld);
 size_t SlCalcObjLength(const void *object, const SaveLoadTable &slt);
 
 uint8_t SlReadByte();
+void SlReadString(std::string &str, size_t length);
 void SlWriteByte(uint8_t b);
 
 void SlGlobList(const SaveLoadTable &slt);
