@@ -23,15 +23,6 @@ static_assert((int)CRR_AUTOCLEAN == (int)ADMIN_CRR_AUTOCLEAN);
 static_assert((int)CRR_BANKRUPT  == (int)ADMIN_CRR_BANKRUPT);
 static_assert((int)CRR_END       == (int)ADMIN_CRR_END);
 
-/**
- * Create the admin handler for the given socket.
- * @param s The socket to communicate over.
- */
-NetworkAdminSocketHandler::NetworkAdminSocketHandler(SOCKET s) : status(ADMIN_STATUS_INACTIVE)
-{
-	this->sock = s;
-}
-
 NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool)
 {
 	delete this;

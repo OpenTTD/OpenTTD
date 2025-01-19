@@ -9,7 +9,6 @@
 
 #include "../../stdafx.h"
 #include "../../debug.h"
-#include "../../core/alloc_func.hpp"
 #include "address.h"
 
 #include "../../safeguards.h"

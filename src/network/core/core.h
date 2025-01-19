@@ -42,16 +42,16 @@ struct Packet;
  */
 class NetworkSocketHandler {
 private:
-	bool has_quit; ///< Whether the current client has quit/send a bad packet
+	bool has_quit = false; ///< Whether the current client has quit/send a bad packet
 
 protected:
 	friend struct Packet;
-	std::unique_ptr<class NetworkEncryptionHandler> receive_encryption_handler; ///< The handler for decrypting received packets.
-	std::unique_ptr<class NetworkEncryptionHandler> send_encryption_handler; ///< The handler for encrypting sent packets.
+	std::unique_ptr<class NetworkEncryptionHandler> receive_encryption_handler = nullptr; ///< The handler for decrypting received packets.
+	std::unique_ptr<class NetworkEncryptionHandler> send_encryption_handler = nullptr; ///< The handler for encrypting sent packets.
 
 public:
 	/** Create a new unbound socket */
-	NetworkSocketHandler() { this->has_quit = false; }
+	NetworkSocketHandler() = default;
 
 	/** Close the socket when destructing the socket handler */
 	virtual ~NetworkSocketHandler() = default;

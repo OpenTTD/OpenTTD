@@ -16,16 +16,6 @@
 
 #include "../../safeguards.h"
 
-/**
- * Construct a socket handler for a TCP connection.
- * @param s The just opened TCP connection.
- */
-NetworkTCPSocketHandler::NetworkTCPSocketHandler(SOCKET s) :
-		NetworkSocketHandler(),
-		sock(s), writable(false)
-{
-}
-
 NetworkTCPSocketHandler::~NetworkTCPSocketHandler()
 {
 	this->CloseSocket();

@@ -38,9 +38,9 @@ static uint16_t _network_udp_broadcast;    ///< Timeout for the UDP broadcasts.
 /** Some information about a socket, which exists before the actual socket has been created to provide locking and the likes. */
 struct UDPSocket {
 	const std::string name;                     ///< The name of the socket.
-	NetworkUDPSocketHandler *socket;            ///< The actual socket, which may be nullptr when not initialized yet.
+	NetworkUDPSocketHandler *socket = nullptr; ///< The actual socket, which may be nullptr when not initialized yet.
 
-	UDPSocket(const std::string &name) : name(name), socket(nullptr) {}
+	UDPSocket(const std::string &name) : name(name) {}
 
 	void CloseSocket()
 	{
