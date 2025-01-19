@@ -14,21 +14,54 @@
 template <typename enum_type>
 constexpr std::underlying_type_t<enum_type> to_underlying(enum_type e) { return static_cast<std::underlying_type_t<enum_type>>(e); }
 
+/** Trait to enable prefix/postfix incrementing operators. */
+template <typename enum_type>
+struct is_enum_incrementable {
+	static constexpr bool value = false;
+};
+
+template <typename enum_type>
+constexpr bool is_enum_incrementable_v = is_enum_incrementable<enum_type>::value;
+
+/** Prefix increment. */
+template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
+inline constexpr enum_type &operator ++(enum_type &e)
+{
+	e = static_cast<enum_type>(to_underlying(e) + 1);
+	return e;
+}
+
+/** Postfix increment, uses prefix increment. */
+template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
+inline constexpr enum_type operator ++(enum_type &e, int)
+{
+	enum_type e_org = e;
+	++e;
+	return e_org;
+}
+
+/** Prefix decrement. */
+template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
+inline constexpr enum_type &operator --(enum_type &e)
+{
+	e = static_cast<enum_type>(to_underlying(e) - 1);
+	return e;
+}
+
+/** Postfix decrement, uses prefix decrement. */
+template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
+inline constexpr enum_type operator --(enum_type &e, int)
+{
+	enum_type e_org = e;
+	--e;
+	return e_org;
+}
+
 /** Some enums need to have allowed incrementing (i.e. StationClassID) */
 #define DECLARE_POSTFIX_INCREMENT(enum_type) \
-	inline constexpr enum_type operator ++(enum_type& e, int) \
-	{ \
-		enum_type e_org = e; \
-		e = static_cast<enum_type>(to_underlying(e) + 1); \
-		return e_org; \
-	} \
-	inline constexpr enum_type operator --(enum_type& e, int) \
-	{ \
-		enum_type e_org = e; \
-		e = static_cast<enum_type>(to_underlying(e) - 1); \
-		return e_org; \
-	}
-
+	template <> struct is_enum_incrementable<enum_type> { \
+		static const bool value = true; \
+	};
 
 
 /** Operators to allow to work with enum as with type safe bit set in C++ */
