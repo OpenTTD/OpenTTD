@@ -84,7 +84,7 @@
 	if (!ScriptObject::Command<CMD_BUILD_VEHICLE>::Do(&ScriptInstance::DoCommandReturnVehicleID, depot, engine_id, true, cargo, INVALID_CLIENT_ID)) return VEHICLE_INVALID;
 
 	/* In case of test-mode, we return VehicleID 0 */
-	return 0;
+	return ::VEHICLE_BEGIN;
 }
 
 /* static */ VehicleID ScriptVehicle::BuildVehicle(TileIndex depot, EngineID engine_id)
@@ -115,16 +115,16 @@
 	if (!ScriptObject::Command<CMD_CLONE_VEHICLE>::Do(&ScriptInstance::DoCommandReturnVehicleID, depot, vehicle_id, share_orders)) return VEHICLE_INVALID;
 
 	/* In case of test-mode, we return VehicleID 0 */
-	return 0;
+	return ::VEHICLE_BEGIN;
 }
 
 /* static */ bool ScriptVehicle::_MoveWagonInternal(VehicleID source_vehicle_id, SQInteger source_wagon, bool move_attached_wagons, SQInteger dest_vehicle_id, SQInteger dest_wagon)
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidVehicle(source_vehicle_id) && source_wagon < GetNumWagons(source_vehicle_id));
-	EnforcePrecondition(false, dest_vehicle_id == -1 || (IsValidVehicle(dest_vehicle_id) && dest_wagon < GetNumWagons(dest_vehicle_id)));
+	EnforcePrecondition(false, dest_vehicle_id == -1 || (IsValidVehicle(static_cast<VehicleID>(dest_vehicle_id)) && dest_wagon < GetNumWagons(static_cast<VehicleID>(dest_vehicle_id))));
 	EnforcePrecondition(false, ::Vehicle::Get(source_vehicle_id)->type == VEH_TRAIN);
-	EnforcePrecondition(false, dest_vehicle_id == -1 || ::Vehicle::Get(dest_vehicle_id)->type == VEH_TRAIN);
+	EnforcePrecondition(false, dest_vehicle_id == -1 || ::Vehicle::Get(static_cast<VehicleID>(dest_vehicle_id))->type == VEH_TRAIN);
 
 	const Train *v = ::Train::Get(source_vehicle_id);
 	while (source_wagon-- > 0) v = v->GetNextUnit();

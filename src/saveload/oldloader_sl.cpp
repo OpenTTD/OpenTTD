@@ -1250,7 +1250,7 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 	ReadTTDPatchFlags(ls);
 
 	for (uint i = 0; i < ls.vehicle_multiplier; i++) {
-		_current_vehicle_id = num * ls.vehicle_multiplier + i;
+		_current_vehicle_id = static_cast<VehicleID>(num * ls.vehicle_multiplier + i);
 
 		Vehicle *v;
 
