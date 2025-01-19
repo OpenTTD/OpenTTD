@@ -13,7 +13,11 @@
 #include "core/enum_type.hpp"
 
 /** The type all our vehicle IDs have. */
-typedef uint32_t VehicleID;
+enum VehicleID : uint32_t {
+	VEHICLE_BEGIN = 0,
+	VEHICLE_END = 0xFF000,
+	INVALID_VEHICLE = 0xFFFFF ///< Constant representing a non-existing vehicle.
+};
 
 static const int GROUND_ACCELERATION = 9800; ///< Acceleration due to gravity, 9.8 m/s^2
 
@@ -50,8 +54,6 @@ struct BaseVehicle
 {
 	VehicleType type; ///< Type of vehicle
 };
-
-static const VehicleID INVALID_VEHICLE = 0xFFFFF; ///< Constant representing a non-existing vehicle.
 
 /** Flags for goto depot commands. */
 enum class DepotCommandFlag : uint8_t {
