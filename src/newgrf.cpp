@@ -6366,6 +6366,9 @@ static void FeatureNewName(ByteReader &buf)
 	GrfMsg(6, "FeatureNewName: About to rename engines {}..{} (feature 0x{:02X}) in language 0x{:02X}",
 	               id, endid, feature, lang);
 
+	/* Feature overlay to make non-generic strings unique in their feature. We use feature + 1 so that generic strings stay as they are. */
+	uint32_t feature_overlay = generic ? 0 : ((feature + 1) << 16);
+
 	for (; id < endid && buf.HasData(); id++) {
 		const std::string_view name = buf.ReadString();
 		GrfMsg(8, "FeatureNewName: 0x{:04X} <- {}", id, StrMakeValid(name));
@@ -6378,7 +6381,7 @@ static void FeatureNewName(ByteReader &buf)
 				if (!generic) {
 					Engine *e = GetNewEngine(_cur.grffile, (VehicleType)feature, id, _cur.grfconfig->flags.Test(GRFConfigFlag::Static));
 					if (e == nullptr) break;
-					StringID string = AddGRFString(_cur.grffile->grfid, GRFStringID{e->index.base()}, lang, new_scheme, false, name, e->info.string_id);
+					StringID string = AddGRFString(_cur.grffile->grfid, GRFStringID{feature_overlay | e->index.base()}, lang, new_scheme, false, name, e->info.string_id);
 					e->info.string_id = string;
 				} else {
 					AddGRFString(_cur.grffile->grfid, GRFStringID{id}, lang, new_scheme, true, name, STR_UNDEFINED);
