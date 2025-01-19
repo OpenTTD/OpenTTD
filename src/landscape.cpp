@@ -1448,13 +1448,6 @@ static void CreateRivers()
  */
 static uint CalculateCoverageLine(uint coverage, uint edge_multiplier)
 {
-	const DiagDirection neighbour_dir[] = {
-		DIAGDIR_NE,
-		DIAGDIR_SE,
-		DIAGDIR_SW,
-		DIAGDIR_NW,
-	};
-
 	/* Histogram of how many tiles per height level exist. */
 	std::array<int, MAX_TILE_HEIGHT + 1> histogram = {};
 	/* Histogram of how many neighbour tiles are lower than the tiles of the height level. */
@@ -1467,7 +1460,7 @@ static uint CalculateCoverageLine(uint coverage, uint edge_multiplier)
 
 		if (edge_multiplier != 0) {
 			/* Check if any of our neighbours is below us. */
-			for (auto dir : neighbour_dir) {
+			for (DiagDirection dir = DIAGDIR_BEGIN; dir != DIAGDIR_END; dir++) {
 				TileIndex neighbour_tile = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDiagDir(dir));
 				if (IsValidTile(neighbour_tile) && TileHeight(neighbour_tile) < h) {
 					edge_histogram[h]++;
