@@ -3416,7 +3416,7 @@ static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlags flags)
 
 		AddNewsItem(
 			TimerGameEconomy::UsingWallclockUnits() ? STR_NEWS_ROAD_REBUILDING_MINUTES : STR_NEWS_ROAD_REBUILDING_MONTHS,
-			NewsType::General, NewsStyle::Normal, {}, NewsReferenceType::Town, t->index, NewsReferenceType::None, UINT32_MAX);
+			NewsType::General, NewsStyle::Normal, {}, t->index);
 		AI::BroadcastNewEvent(new ScriptEventRoadReconstruction(_current_company, t->index));
 		Game::NewEvent(new ScriptEventRoadReconstruction(_current_company, t->index));
 	}
@@ -3571,7 +3571,7 @@ static CommandCost TownActionBuyRights(Town *t, DoCommandFlags flags)
 		SetDParam(1, TimerGameEconomy::UsingWallclockUnits() ? STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES : STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS);
 		SetDParam(2, t->index);
 		SetDParamStr(3, cni->company_name);
-		AddNewsItem(STR_MESSAGE_NEWS_FORMAT, NewsType::General, NewsStyle::Company, {}, NewsReferenceType::Town, t->index, NewsReferenceType::None, UINT32_MAX, std::move(cni));
+		AddNewsItem(STR_MESSAGE_NEWS_FORMAT, NewsType::General, NewsStyle::Company, {}, t->index, {}, std::move(cni));
 		AI::BroadcastNewEvent(new ScriptEventExclusiveTransportRights(_current_company, t->index));
 		Game::NewEvent(new ScriptEventExclusiveTransportRights(_current_company, t->index));
 	}

@@ -20,6 +20,18 @@
 
 #include "../../safeguards.h"
 
+static NewsReference CreateReference(ScriptNews::NewsReferenceType ref_type, SQInteger reference)
+{
+	switch (ref_type) {
+		case ScriptNews::NR_NONE: return {};
+		case ScriptNews::NR_TILE: return ::TileIndex(reference);
+		case ScriptNews::NR_STATION: return static_cast<StationID>(reference);
+		case ScriptNews::NR_INDUSTRY: return static_cast<IndustryID>(reference);
+		case ScriptNews::NR_TOWN: return static_cast<TownID>(reference);
+		default: NOT_REACHED();
+	}
+}
+
 /* static */ bool ScriptNews::Create(NewsType type, Text *text, ScriptCompany::CompanyID company, NewsReferenceType ref_type, SQInteger reference)
 {
 	ScriptObjectRef counter(text);
@@ -38,6 +50,5 @@
 
 	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 
-	if (ref_type == NR_NONE) reference = 0;
-	return ScriptObject::Command<CMD_CUSTOM_NEWS_ITEM>::Do((::NewsType)type, (::NewsReferenceType)ref_type, c, reference, encoded);
+	return ScriptObject::Command<CMD_CUSTOM_NEWS_ITEM>::Do((::NewsType)type, c, CreateReference(ref_type, reference), encoded);
 }

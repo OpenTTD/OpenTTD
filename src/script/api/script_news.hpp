@@ -38,11 +38,11 @@ public:
 	 */
 	enum NewsReferenceType {
 		/* Selection of useful game elements to refer to. */
-		NR_NONE     = to_underlying(::NewsReferenceType::None),     ///< No reference supplied.
-		NR_TILE     = to_underlying(::NewsReferenceType::Tile),     ///< Reference location, scroll to the location when clicking on the news.
-		NR_STATION  = to_underlying(::NewsReferenceType::Station),  ///< Reference station, scroll to the station when clicking on the news. Delete news when the station is deleted.
-		NR_INDUSTRY = to_underlying(::NewsReferenceType::Industry), ///< Reference industry, scrolls to the industry when clicking on the news. Delete news when the industry is deleted.
-		NR_TOWN     = to_underlying(::NewsReferenceType::Town),     ///< Reference town, scroll to the town when clicking on the news.
+		NR_NONE, ///< No reference supplied.
+		NR_TILE, ///< Reference location, scroll to the location when clicking on the news.
+		NR_STATION, ///< Reference station, scroll to the station when clicking on the news. Delete news when the station is deleted.
+		NR_INDUSTRY, ///< Reference industry, scrolls to the industry when clicking on the news. Delete news when the industry is deleted.
+		NR_TOWN, ///< Reference town, scroll to the town when clicking on the news.
 	};
 
 	/**
