@@ -6448,7 +6448,7 @@ static constexpr auto _action5_types = std::to_array<Action5Type>({
 	/* 0x0A */ { A5BLOCK_ALLOW_OFFSET, SPR_2CCMAP_BASE,              1, TWOCCMAP_SPRITE_COUNT,                       "2CC colour maps"          },
 	/* 0x0B */ { A5BLOCK_ALLOW_OFFSET, SPR_TRAMWAY_BASE,             1, TRAMWAY_SPRITE_COUNT,                        "Tramway graphics"         },
 	/* 0x0C */ { A5BLOCK_INVALID,      0,                          133, 0,                                           "Snowy temperate tree"     }, // Not yet used by OTTD.
-	/* 0x0D */ { A5BLOCK_FIXED,        SPR_SHORE_BASE,              16, SPR_SHORE_SPRITE_COUNT,                      "Shore graphics"           },
+	/* 0x0D */ { A5BLOCK_FIXED,        SPR_SHORE_BASE,              16, SHORE_SPRITE_COUNT,                          "Shore graphics"           },
 	/* 0x0E */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "New Signals graphics"     }, // Not yet used by OTTD.
 	/* 0x0F */ { A5BLOCK_ALLOW_OFFSET, SPR_TRACKS_FOR_SLOPES_BASE,   1, TRACKS_FOR_SLOPES_SPRITE_COUNT,              "Sloped rail track"        },
 	/* 0x10 */ { A5BLOCK_ALLOW_OFFSET, SPR_AIRPORTX_BASE,            1, AIRPORTX_SPRITE_COUNT,                       "Airport graphics"         },
@@ -6457,7 +6457,7 @@ static constexpr auto _action5_types = std::to_array<Action5Type>({
 	/* 0x13 */ { A5BLOCK_ALLOW_OFFSET, SPR_AUTORAIL_BASE,            1, AUTORAIL_SPRITE_COUNT,                       "Autorail graphics"        },
 	/* 0x14 */ { A5BLOCK_INVALID,      0,                            1, 0,                                           "Flag graphics"            }, // deprecated, no longer used.
 	/* 0x15 */ { A5BLOCK_ALLOW_OFFSET, SPR_OPENTTD_BASE,             1, OPENTTD_SPRITE_COUNT,                        "OpenTTD GUI graphics"     },
-	/* 0x16 */ { A5BLOCK_ALLOW_OFFSET, SPR_AIRPORT_PREVIEW_BASE,     1, SPR_AIRPORT_PREVIEW_COUNT,                   "Airport preview graphics" },
+	/* 0x16 */ { A5BLOCK_ALLOW_OFFSET, SPR_AIRPORT_PREVIEW_BASE,     1, AIRPORT_PREVIEW_SPRITE_COUNT,                "Airport preview graphics" },
 	/* 0x17 */ { A5BLOCK_ALLOW_OFFSET, SPR_RAILTYPE_TUNNEL_BASE,     1, RAILTYPE_TUNNEL_BASE_COUNT,                  "Railtype tunnel base"     },
 	/* 0x18 */ { A5BLOCK_ALLOW_OFFSET, SPR_PALETTE_BASE,             1, PALETTE_SPRITE_COUNT,                        "Palette"                  },
 	/* 0x19 */ { A5BLOCK_ALLOW_OFFSET, SPR_ROAD_WAYPOINTS_BASE,      1, ROAD_WAYPOINTS_SPRITE_COUNT,                 "Road waypoints"           },
@@ -6546,15 +6546,15 @@ static void GraphicsNew(ByteReader &buf)
 	}
 
 	/* If the baseset or grf only provides sprites for flat tiles (pre #10282), duplicate those for use on slopes. */
-	bool dup_oneway_sprites = ((type == 0x09) && (offset + num <= SPR_ONEWAY_SLOPE_N_OFFSET));
+	bool dup_oneway_sprites = ((type == 0x09) && (offset + num <= ONEWAY_SLOPE_N_OFFSET));
 
 	for (; num > 0; num--) {
 		_cur.nfo_line++;
 		SpriteID load_index = (replace == 0 ? _cur.spriteid++ : replace++);
 		LoadNextSprite(load_index, *_cur.file, _cur.nfo_line);
 		if (dup_oneway_sprites) {
-			DupSprite(load_index, load_index + SPR_ONEWAY_SLOPE_N_OFFSET);
-			DupSprite(load_index, load_index + SPR_ONEWAY_SLOPE_S_OFFSET);
+			DupSprite(load_index, load_index + ONEWAY_SLOPE_N_OFFSET);
+			DupSprite(load_index, load_index + ONEWAY_SLOPE_S_OFFSET);
 		}
 	}
 
