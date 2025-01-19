@@ -3109,7 +3109,7 @@ StringID GetVehicleCannotUseStationReason(const Vehicle *v, const Station *st)
 
 		case VEH_ROAD: {
 			const RoadVehicle *rv = RoadVehicle::From(v);
-			RoadStop *rs = st->GetPrimaryRoadStop(rv->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK);
+			RoadStop *rs = st->GetPrimaryRoadStop(rv->IsBus() ? RoadStopType::Bus : RoadStopType::Truck);
 
 			StringID err = rv->IsBus() ? STR_ERROR_NO_BUS_STATION : STR_ERROR_NO_TRUCK_STATION;
 

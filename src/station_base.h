@@ -497,7 +497,7 @@ struct Station final : SpecializedStation<Station, false> {
 public:
 	RoadStop *GetPrimaryRoadStop(RoadStopType type) const
 	{
-		return type == ROADSTOP_BUS ? bus_stops : truck_stops;
+		return type == RoadStopType::Bus ? bus_stops : truck_stops;
 	}
 
 	RoadStop *GetPrimaryRoadStop(const struct RoadVehicle *v) const;

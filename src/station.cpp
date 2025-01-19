@@ -207,7 +207,7 @@ void BaseStation::RemoveRoadStopTileData(TileIndex tile)
  */
 RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
 {
-	RoadStop *rs = this->GetPrimaryRoadStop(v->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK);
+	RoadStop *rs = this->GetPrimaryRoadStop(v->IsBus() ? RoadStopType::Bus : RoadStopType::Truck);
 
 	for (; rs != nullptr; rs = rs->next) {
 		/* The vehicle cannot go to this roadstop (different roadtype) */

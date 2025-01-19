@@ -1867,7 +1867,7 @@ static CommandCost RemoveRailWaypoint(TileIndex tile, DoCommandFlag flags)
 
 
 /**
- * @param truck_station Determines whether a stop is #ROADSTOP_BUS or #ROADSTOP_TRUCK
+ * @param truck_station Determines whether a stop is #RoadStopType::Bus or #RoadStopType::Truck
  * @param st The Station to do the whole procedure for
  * @return a pointer to where to link a new RoadStop*
  */
@@ -1964,7 +1964,7 @@ CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlag flags, bool 
 CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8_t width, uint8_t length, RoadStopType stop_type, bool is_drive_through,
 		DiagDirection ddir, RoadType rt, RoadStopClassID spec_class, uint16_t spec_index, StationID station_to_join, bool adjacent)
 {
-	if (!ValParamRoadType(rt) || !IsValidDiagDirection(ddir) || stop_type >= ROADSTOP_END) return CMD_ERROR;
+	if (!ValParamRoadType(rt) || !IsValidDiagDirection(ddir) || stop_type >= RoadStopType::End) return CMD_ERROR;
 	bool reuse = (station_to_join != NEW_STATION);
 	if (!reuse) station_to_join = INVALID_STATION;
 	bool distant_join = (station_to_join != INVALID_STATION);
@@ -1977,8 +1977,8 @@ CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8_t width,
 
 	const RoadStopSpec *roadstopspec = cls->GetSpec(spec_index);
 	if (roadstopspec != nullptr) {
-		if (stop_type == ROADSTOP_TRUCK && roadstopspec->stop_type != ROADSTOPTYPE_FREIGHT && roadstopspec->stop_type != ROADSTOPTYPE_ALL) return CMD_ERROR;
-		if (stop_type == ROADSTOP_BUS && roadstopspec->stop_type != ROADSTOPTYPE_PASSENGER && roadstopspec->stop_type != ROADSTOPTYPE_ALL) return CMD_ERROR;
+		if (stop_type == RoadStopType::Truck && roadstopspec->stop_type != ROADSTOPTYPE_FREIGHT && roadstopspec->stop_type != ROADSTOPTYPE_ALL) return CMD_ERROR;
+		if (stop_type == RoadStopType::Bus && roadstopspec->stop_type != ROADSTOPTYPE_PASSENGER && roadstopspec->stop_type != ROADSTOPTYPE_ALL) return CMD_ERROR;
 		if (!is_drive_through && HasBit(roadstopspec->flags, RSF_DRIVE_THROUGH_ONLY)) return CMD_ERROR;
 	}
 
@@ -2001,7 +2001,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8_t width,
 	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile, flags);
 	if (ret.Failed()) return ret;
 
-	bool is_truck_stop = stop_type != ROADSTOP_BUS;
+	bool is_truck_stop = stop_type != RoadStopType::Bus;
 
 	/* Total road stop cost. */
 	Money unit_cost;
@@ -2073,7 +2073,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8_t width,
 
 			st->rect.BeforeAddTile(cur_tile, StationRect::ADD_TRY);
 
-			RoadStopType rs_type = is_truck_stop ? ROADSTOP_TRUCK : ROADSTOP_BUS;
+			RoadStopType rs_type = is_truck_stop ? RoadStopType::Truck : RoadStopType::Bus;
 			if (is_drive_through) {
 				/* Update company infrastructure counts. If the current tile is a normal road tile, remove the old
 				 * bits first. */
@@ -2085,7 +2085,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8_t width,
 				if (road_rt == INVALID_ROADTYPE && RoadTypeIsRoad(rt)) road_rt = rt;
 				if (tram_rt == INVALID_ROADTYPE && RoadTypeIsTram(rt)) tram_rt = rt;
 
-				MakeDriveThroughRoadStop(cur_tile, st->owner, road_owner, tram_owner, st->index, (rs_type == ROADSTOP_BUS ? StationType::Bus : StationType::Truck), road_rt, tram_rt, axis);
+				MakeDriveThroughRoadStop(cur_tile, st->owner, road_owner, tram_owner, st->index, (rs_type == RoadStopType::Bus ? StationType::Bus : StationType::Truck), road_rt, tram_rt, axis);
 				road_stop->MakeDriveThrough();
 			} else {
 				if (road_rt == INVALID_ROADTYPE && RoadTypeIsRoad(rt)) road_rt = rt;
@@ -2152,10 +2152,10 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags, int repla
 	RoadStop *cur_stop;
 	if (is_truck) { // truck stop
 		primary_stop = &st->truck_stops;
-		cur_stop = RoadStop::GetByTile(tile, ROADSTOP_TRUCK);
+		cur_stop = RoadStop::GetByTile(tile, RoadStopType::Truck);
 	} else {
 		primary_stop = &st->bus_stops;
-		cur_stop = RoadStop::GetByTile(tile, ROADSTOP_BUS);
+		cur_stop = RoadStop::GetByTile(tile, RoadStopType::Bus);
 	}
 
 	assert(cur_stop != nullptr);
@@ -2380,7 +2380,7 @@ static CommandCost RemoveGenericRoadStop(DoCommandFlag flags, const TileArea &ro
  */
 CommandCost CmdRemoveRoadStop(DoCommandFlag flags, TileIndex tile, uint8_t width, uint8_t height, RoadStopType stop_type, bool remove_road)
 {
-	if (stop_type >= ROADSTOP_END) return CMD_ERROR;
+	if (stop_type >= RoadStopType::End) return CMD_ERROR;
 	/* Check for incorrect width / height. */
 	if (width == 0 || height == 0) return CMD_ERROR;
 	/* Check if the first tile and the last tile are valid */
@@ -2390,7 +2390,7 @@ CommandCost CmdRemoveRoadStop(DoCommandFlag flags, TileIndex tile, uint8_t width
 
 	TileArea roadstop_area(tile, width, height);
 
-	return RemoveGenericRoadStop(flags, roadstop_area, stop_type == ROADSTOP_BUS ? StationType::Bus : StationType::Truck, remove_road);
+	return RemoveGenericRoadStop(flags, roadstop_area, stop_type == RoadStopType::Bus ? StationType::Bus : StationType::Truck, remove_road);
 }
 
 /**
@@ -4637,7 +4637,7 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 			if (IsRoadWaypoint(tile)) {
 				Command<CMD_REMOVE_FROM_ROAD_WAYPOINT>::Do(DC_EXEC | DC_BANKRUPT, tile, tile);
 			} else {
-				Command<CMD_REMOVE_ROAD_STOP>::Do(DC_EXEC | DC_BANKRUPT, tile, 1, 1, (GetStationType(tile) == StationType::Truck) ? ROADSTOP_TRUCK : ROADSTOP_BUS, false);
+				Command<CMD_REMOVE_ROAD_STOP>::Do(DC_EXEC | DC_BANKRUPT, tile, 1, 1, (GetStationType(tile) == StationType::Truck) ? RoadStopType::Truck : RoadStopType::Bus, false);
 			}
 			assert(IsTileType(tile, MP_ROAD));
 			/* Change owner of tile and all roadtypes */
