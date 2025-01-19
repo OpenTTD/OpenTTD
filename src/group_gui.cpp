@@ -1017,7 +1017,7 @@ public:
 						break;
 					case ADI_SERVICE: // Send for servicing
 					case ADI_DEPOT: { // Send to Depots
-						Command<CMD_SEND_VEHICLE_TO_DEPOT>::Post(GetCmdSendToDepotMsg(this->vli.vtype), 0, DepotCommand::MassSend | (index == ADI_SERVICE ? DepotCommand::Service : DepotCommand::None), this->vli);
+						Command<CMD_SEND_VEHICLE_TO_DEPOT>::Post(GetCmdSendToDepotMsg(this->vli.vtype), INVALID_VEHICLE, DepotCommand::MassSend | (index == ADI_SERVICE ? DepotCommand::Service : DepotCommand::None), this->vli);
 						break;
 					}
 
