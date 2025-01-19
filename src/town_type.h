@@ -13,6 +13,8 @@
 #include "core/enum_type.hpp"
 
 typedef uint16_t TownID;
+static const TownID INVALID_TOWN = 0xFFFF;
+
 struct Town;
 
 /** Supported initial town sizes */
