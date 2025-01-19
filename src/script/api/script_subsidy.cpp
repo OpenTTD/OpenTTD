@@ -37,8 +37,8 @@
 	EnforcePrecondition(false, ScriptCargo::IsValidCargo(cargo_type));
 	EnforcePrecondition(false, from_type == SPT_INDUSTRY || from_type == SPT_TOWN);
 	EnforcePrecondition(false, to_type == SPT_INDUSTRY || to_type == SPT_TOWN);
-	EnforcePrecondition(false, (from_type == SPT_INDUSTRY && ScriptIndustry::IsValidIndustry(from_id)) || (from_type == SPT_TOWN && ScriptTown::IsValidTown(static_cast<TownID>(from_id))));
-	EnforcePrecondition(false, (to_type == SPT_INDUSTRY && ScriptIndustry::IsValidIndustry(to_id)) || (to_type == SPT_TOWN && ScriptTown::IsValidTown(static_cast<TownID>(to_id))));
+	EnforcePrecondition(false, (from_type == SPT_INDUSTRY && ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(from_id))) || (from_type == SPT_TOWN && ScriptTown::IsValidTown(static_cast<TownID>(from_id))));
+	EnforcePrecondition(false, (to_type == SPT_INDUSTRY && ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(to_id))) || (to_type == SPT_TOWN && ScriptTown::IsValidTown(static_cast<TownID>(to_id))));
 
 	Source from{static_cast<SourceID>(from_id), static_cast<SourceType>(from_type)};
 	Source to{static_cast<SourceID>(to_id), static_cast<SourceType>(to_type)};

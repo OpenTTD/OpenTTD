@@ -10,15 +10,18 @@
 #ifndef INDUSTRY_TYPE_H
 #define INDUSTRY_TYPE_H
 
-typedef uint16_t IndustryID;
+enum IndustryID : uint16_t {
+	INDUSTRY_BEGIN = 0,
+	INDUSTRY_END = 64000,
+	INVALID_INDUSTRY = 0xFFFF
+};
+
 typedef uint16_t IndustryGfx;
 typedef uint8_t IndustryType;
 struct Industry;
 
 struct IndustrySpec;
 struct IndustryTileSpec;
-
-static const IndustryID INVALID_INDUSTRY = 0xFFFF;
 
 static const IndustryType NUM_INDUSTRYTYPES_PER_GRF = 128;            ///< maximum number of industry types per NewGRF; limited to 128 because bit 7 has a special meaning in some variables/callbacks (see MapNewGRFIndustryType).
 

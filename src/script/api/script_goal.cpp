@@ -35,7 +35,7 @@
 	if (type == GT_STORY_PAGE && ScriptStoryPage::IsValidStoryPage(static_cast<StoryPageID>(destination))) story_page = ::StoryPage::Get(static_cast<StoryPageID>(destination));
 	return (type == GT_NONE && destination == 0) ||
 			(type == GT_TILE && ScriptMap::IsValidTile(::TileIndex(destination))) ||
-			(type == GT_INDUSTRY && ScriptIndustry::IsValidIndustry(destination)) ||
+			(type == GT_INDUSTRY && ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(destination))) ||
 			(type == GT_TOWN && ScriptTown::IsValidTown(static_cast<TownID>(destination))) ||
 			(type == GT_COMPANY && ScriptCompany::ResolveCompanyID(ScriptCompany::ToScriptCompanyID(static_cast<::CompanyID>(destination))) != ScriptCompany::COMPANY_INVALID) ||
 			(type == GT_STORY_PAGE && story_page != nullptr && (c == INVALID_COMPANY ? story_page->company == INVALID_COMPANY : story_page->company == INVALID_COMPANY || story_page->company == c));
