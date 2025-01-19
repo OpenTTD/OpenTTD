@@ -470,11 +470,11 @@ static inline uint32_t GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 	switch (t) {
 		case MP_STATION:
 			switch (GetStationType(tile)) {
-				case STATION_RAIL:    return MKCOLOUR_XXXX(PC_VERY_DARK_BROWN);
-				case STATION_AIRPORT: return MKCOLOUR_XXXX(PC_RED);
-				case STATION_TRUCK:   return MKCOLOUR_XXXX(PC_ORANGE);
-				case STATION_BUS:     return MKCOLOUR_XXXX(PC_YELLOW);
-				case STATION_DOCK:    return MKCOLOUR_XXXX(PC_LIGHT_BLUE);
+				case StationType::Rail:    return MKCOLOUR_XXXX(PC_VERY_DARK_BROWN);
+				case StationType::Airport: return MKCOLOUR_XXXX(PC_RED);
+				case StationType::Truck:   return MKCOLOUR_XXXX(PC_ORANGE);
+				case StationType::Bus:     return MKCOLOUR_XXXX(PC_YELLOW);
+				case StationType::Dock:    return MKCOLOUR_XXXX(PC_LIGHT_BLUE);
 				default:              return MKCOLOUR_FFFF;
 			}
 

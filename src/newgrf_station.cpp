@@ -82,7 +82,7 @@ struct ETileArea : TileArea {
 			}
 
 			case TA_WHOLE:
-				st->GetTileArea(this, Station::IsExpected(st) ? STATION_RAIL : STATION_WAYPOINT);
+				st->GetTileArea(this, Station::IsExpected(st) ? StationType::Rail : StationType::RailWaypoint);
 				break;
 		}
 	}
@@ -797,7 +797,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	DrawTileSprites tmp_rail_layout;
 
 	if (statspec->renderdata.empty()) {
-		sprites = GetStationTileLayout(STATION_RAIL, tile + axis);
+		sprites = GetStationTileLayout(StationType::Rail, tile + axis);
 	} else {
 		layout = &statspec->renderdata[(tile < statspec->renderdata.size()) ? tile + axis : (uint)axis];
 		if (!layout->NeedsPreprocessing()) {

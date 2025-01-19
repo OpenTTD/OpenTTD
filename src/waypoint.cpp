@@ -28,22 +28,22 @@
 void DrawWaypointSprite(int x, int y, StationClassID station_class, uint16_t station_type, RailType railtype)
 {
 	if (!DrawStationTile(x, y, railtype, AXIS_X, station_class, station_type)) {
-		StationPickerDrawSprite(x, y, STATION_WAYPOINT, railtype, INVALID_ROADTYPE, AXIS_X);
+		StationPickerDrawSprite(x, y, StationType::RailWaypoint, railtype, INVALID_ROADTYPE, AXIS_X);
 	}
 }
 
 void Waypoint::GetTileArea(TileArea *ta, StationType type) const
 {
 	switch (type) {
-		case STATION_WAYPOINT:
+		case StationType::RailWaypoint:
 			*ta = this->train_station;
 			return;
 
-		case STATION_ROADWAYPOINT:
+		case StationType::RoadWaypoint:
 			*ta = this->road_waypoint_area;
 			return;
 
-		case STATION_BUOY:
+		case StationType::Buoy:
 			ta->tile = this->xy;
 			ta->w    = 1;
 			ta->h    = 1;

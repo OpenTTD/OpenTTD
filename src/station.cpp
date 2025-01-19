@@ -313,24 +313,24 @@ static uint GetTileCatchmentRadius(TileIndex tile, const Station *st)
 
 	if (_settings_game.station.modified_catchment) {
 		switch (GetStationType(tile)) {
-			case STATION_RAIL:    return CA_TRAIN;
-			case STATION_OILRIG:  return CA_UNMODIFIED;
-			case STATION_AIRPORT: return st->airport.GetSpec()->catchment;
-			case STATION_TRUCK:   return CA_TRUCK;
-			case STATION_BUS:     return CA_BUS;
-			case STATION_DOCK:    return CA_DOCK;
+			case StationType::Rail:    return CA_TRAIN;
+			case StationType::Oilrig:  return CA_UNMODIFIED;
+			case StationType::Airport: return st->airport.GetSpec()->catchment;
+			case StationType::Truck:   return CA_TRUCK;
+			case StationType::Bus:     return CA_BUS;
+			case StationType::Dock:    return CA_DOCK;
 
 			default: NOT_REACHED();
-			case STATION_BUOY:
-			case STATION_WAYPOINT:
-			case STATION_ROADWAYPOINT: return CA_NONE;
+			case StationType::Buoy:
+			case StationType::RailWaypoint:
+			case StationType::RoadWaypoint: return CA_NONE;
 		}
 	} else {
 		switch (GetStationType(tile)) {
 			default:               return CA_UNMODIFIED;
-			case STATION_BUOY:
-			case STATION_WAYPOINT:
-			case STATION_ROADWAYPOINT: return CA_NONE;
+			case StationType::Buoy:
+			case StationType::RailWaypoint:
+			case StationType::RoadWaypoint: return CA_NONE;
 		}
 	}
 }

@@ -88,8 +88,8 @@ static bool IsRoadStopEverAvailable(const RoadStopSpec *spec, StationType type)
 
 	switch (spec->stop_type) {
 		case ROADSTOPTYPE_ALL: return true;
-		case ROADSTOPTYPE_PASSENGER: return type == STATION_BUS;
-		case ROADSTOPTYPE_FREIGHT: return type == STATION_TRUCK;
+		case ROADSTOPTYPE_PASSENGER: return type == StationType::Bus;
+		case ROADSTOPTYPE_FREIGHT: return type == StationType::Truck;
 		default: NOT_REACHED();
 	}
 }
@@ -1223,25 +1223,25 @@ public:
 	StringID GetTypeName(int cls_id, int id) const override
 	{
 		const auto *spec = this->GetSpec(cls_id, id);
-		if (!IsRoadStopEverAvailable(spec, roadstoptype == ROADSTOP_BUS ? STATION_BUS : STATION_TRUCK)) return INVALID_STRING_ID;
+		if (!IsRoadStopEverAvailable(spec, roadstoptype == ROADSTOP_BUS ? StationType::Bus : StationType::Truck)) return INVALID_STRING_ID;
 		return (spec == nullptr) ? STR_STATION_CLASS_DFLT_ROADSTOP : spec->name;
 	}
 
 	bool IsTypeAvailable(int cls_id, int id) const override
 	{
 		const auto *spec = this->GetSpec(cls_id, id);
-		return IsRoadStopAvailable(spec, roadstoptype == ROADSTOP_BUS ? STATION_BUS : STATION_TRUCK);
+		return IsRoadStopAvailable(spec, roadstoptype == ROADSTOP_BUS ? StationType::Bus : StationType::Truck);
 	}
 
 	void DrawType(int x, int y, int cls_id, int id) const override
 	{
 		const auto *spec = this->GetSpec(cls_id, id);
 		if (spec == nullptr) {
-			StationPickerDrawSprite(x, y, roadstoptype == ROADSTOP_BUS ? STATION_BUS : STATION_TRUCK, INVALID_RAILTYPE, _cur_roadtype, _roadstop_gui.orientation);
+			StationPickerDrawSprite(x, y, roadstoptype == ROADSTOP_BUS ? StationType::Bus : StationType::Truck, INVALID_RAILTYPE, _cur_roadtype, _roadstop_gui.orientation);
 		} else {
 			DiagDirection orientation = _roadstop_gui.orientation;
 			if (orientation < DIAGDIR_END && HasBit(spec->flags, RSF_DRIVE_THROUGH_ONLY)) orientation = DIAGDIR_END;
-			DrawRoadStopTile(x, y, _cur_roadtype, spec, roadstoptype == ROADSTOP_BUS ? STATION_BUS : STATION_TRUCK, (uint8_t)orientation);
+			DrawRoadStopTile(x, y, _cur_roadtype, spec, roadstoptype == ROADSTOP_BUS ? StationType::Bus : StationType::Truck, (uint8_t)orientation);
 		}
 	}
 
@@ -1398,8 +1398,8 @@ public:
 	StationType GetRoadStationTypeByWindowClass(WindowClass window_class) const
 	{
 		switch (window_class) {
-			case WC_BUS_STATION:          return STATION_BUS;
-			case WC_TRUCK_STATION:        return STATION_TRUCK;
+			case WC_BUS_STATION:          return StationType::Bus;
+			case WC_TRUCK_STATION:        return StationType::Truck;
 			default: NOT_REACHED();
 		}
 	}
@@ -1639,16 +1639,16 @@ public:
 
 	bool IsTypeAvailable(int cls_id, int id) const override
 	{
-		return IsRoadStopAvailable(this->GetSpec(cls_id, id), STATION_ROADWAYPOINT);
+		return IsRoadStopAvailable(this->GetSpec(cls_id, id), StationType::RoadWaypoint);
 	}
 
 	void DrawType(int x, int y, int cls_id, int id) const override
 	{
 		const auto *spec = this->GetSpec(cls_id, id);
 		if (spec == nullptr) {
-			StationPickerDrawSprite(x, y, STATION_ROADWAYPOINT, INVALID_RAILTYPE, _cur_roadtype, RSV_DRIVE_THROUGH_X);
+			StationPickerDrawSprite(x, y, StationType::RoadWaypoint, INVALID_RAILTYPE, _cur_roadtype, RSV_DRIVE_THROUGH_X);
 		} else {
-			DrawRoadStopTile(x, y, _cur_roadtype, spec, STATION_ROADWAYPOINT, RSV_DRIVE_THROUGH_X);
+			DrawRoadStopTile(x, y, _cur_roadtype, spec, StationType::RoadWaypoint, RSV_DRIVE_THROUGH_X);
 		}
 	}
 

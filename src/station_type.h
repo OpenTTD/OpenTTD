@@ -28,17 +28,17 @@ static const StationID INVALID_STATION = 0xFFFF;
 typedef SmallStack<StationID, StationID, INVALID_STATION, 8, 0xFFFD> StationIDStack;
 
 /** Station types */
-enum StationType : uint8_t {
-	STATION_RAIL,
-	STATION_AIRPORT,
-	STATION_TRUCK,
-	STATION_BUS,
-	STATION_OILRIG,
-	STATION_DOCK,
-	STATION_BUOY,
-	STATION_WAYPOINT,
-	STATION_ROADWAYPOINT,
-	STATION_END,
+enum class StationType : uint8_t {
+	Rail,
+	Airport,
+	Truck,
+	Bus,
+	Oilrig,
+	Dock,
+	Buoy,
+	RailWaypoint,
+	RoadWaypoint,
+	End,
 };
 
 /** Types of RoadStops */

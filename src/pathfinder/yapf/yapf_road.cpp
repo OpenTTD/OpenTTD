@@ -242,13 +242,13 @@ public:
 	{
 		if (v->current_order.IsType(OT_GOTO_STATION)) {
 			this->dest_station = v->current_order.GetDestination();
-			this->station_type = v->IsBus() ? STATION_BUS : STATION_TRUCK;
+			this->station_type = v->IsBus() ? StationType::Bus : StationType::Truck;
 			this->dest_tile = CalcClosestStationTile(this->dest_station, v->tile, this->station_type);
 			this->non_artic = !v->HasArticulatedPart();
 			this->dest_trackdirs = INVALID_TRACKDIR_BIT;
 		} else if (v->current_order.IsType(OT_GOTO_WAYPOINT)) {
 			this->dest_station = v->current_order.GetDestination();
-			this->station_type = STATION_ROADWAYPOINT;
+			this->station_type = StationType::RoadWaypoint;
 			this->dest_tile = CalcClosestStationTile(this->dest_station, v->tile, this->station_type);
 			this->non_artic = !v->HasArticulatedPart();
 			this->dest_trackdirs = INVALID_TRACKDIR_BIT;

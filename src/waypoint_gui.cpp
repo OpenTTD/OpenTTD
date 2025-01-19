@@ -46,15 +46,15 @@ private:
 		StationType type;
 		switch (this->vt) {
 			case VEH_TRAIN:
-				type = STATION_WAYPOINT;
+				type = StationType::RailWaypoint;
 				break;
 
 			case VEH_ROAD:
-				type = STATION_ROADWAYPOINT;
+				type = StationType::RoadWaypoint;
 				break;
 
 			case VEH_SHIP:
-				type = STATION_BUOY;
+				type = StationType::Buoy;
 				break;
 
 			default:

@@ -46,7 +46,7 @@ public:
 	{
 		if (v->current_order.IsType(OT_GOTO_STATION)) {
 			this->dest_station = v->current_order.GetDestination();
-			this->dest_tile = CalcClosestStationTile(this->dest_station, v->tile, STATION_DOCK);
+			this->dest_tile = CalcClosestStationTile(this->dest_station, v->tile, StationType::Dock);
 			this->dest_trackdirs = INVALID_TRACKDIR_BIT;
 		} else {
 			this->dest_station = INVALID_STATION;

@@ -133,17 +133,17 @@ ScriptTileList_StationType::ScriptTileList_StationType(StationID station_id, Scr
 	uint station_type_value = 0;
 	/* Convert ScriptStation::StationType to ::StationType, but do it in a
 	 *  bitmask, so we can scan for multiple entries at the same time. */
-	if ((station_type & ScriptStation::STATION_TRAIN) != 0)      station_type_value |= (1 << ::STATION_RAIL);
-	if ((station_type & ScriptStation::STATION_TRUCK_STOP) != 0) station_type_value |= (1 << ::STATION_TRUCK);
-	if ((station_type & ScriptStation::STATION_BUS_STOP) != 0)   station_type_value |= (1 << ::STATION_BUS);
-	if ((station_type & ScriptStation::STATION_AIRPORT) != 0)    station_type_value |= (1 << ::STATION_AIRPORT) | (1 << ::STATION_OILRIG);
-	if ((station_type & ScriptStation::STATION_DOCK) != 0)       station_type_value |= (1 << ::STATION_DOCK)    | (1 << ::STATION_OILRIG);
+	if ((station_type & ScriptStation::STATION_TRAIN) != 0)      station_type_value |= (1 << to_underlying(::StationType::Rail));
+	if ((station_type & ScriptStation::STATION_TRUCK_STOP) != 0) station_type_value |= (1 << to_underlying(::StationType::Truck));
+	if ((station_type & ScriptStation::STATION_BUS_STOP) != 0)   station_type_value |= (1 << to_underlying(::StationType::Bus));
+	if ((station_type & ScriptStation::STATION_AIRPORT) != 0)    station_type_value |= (1 << to_underlying(::StationType::Airport)) | (1 << to_underlying(::StationType::Oilrig));
+	if ((station_type & ScriptStation::STATION_DOCK) != 0)       station_type_value |= (1 << to_underlying(::StationType::Dock))    | (1 << to_underlying(::StationType::Oilrig));
 
 	TileArea ta(::TileXY(rect->left, rect->top), rect->Width(), rect->Height());
 	for (TileIndex cur_tile : ta) {
 		if (!::IsTileType(cur_tile, MP_STATION)) continue;
 		if (::GetStationIndex(cur_tile) != station_id) continue;
-		if (!HasBit(station_type_value, ::GetStationType(cur_tile))) continue;
+		if (!HasBit(station_type_value, to_underlying(::GetStationType(cur_tile)))) continue;
 		this->AddTile(cur_tile);
 	}
 }
