@@ -23,7 +23,7 @@
 inline TownID GetTownIndex(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE) || (IsTileType(t, MP_ROAD) && !IsRoadDepot(t)));
-	return t.m2();
+	return static_cast<TownID>(t.m2());
 }
 
 /**
