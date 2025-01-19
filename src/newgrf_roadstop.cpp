@@ -86,8 +86,8 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 
 		/* Stop type: 0: bus, 1: truck, 2: waypoint */
 		case 0x41:
-			if (this->type == STATION_BUS) return 0;
-			if (this->type == STATION_TRUCK) return 1;
+			if (this->type == StationType::Bus) return 0;
+			if (this->type == StationType::Truck) return 1;
 			return 2;
 
 		/* Terrain type */
@@ -159,8 +159,8 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 			bool same_station = GetStationIndex(nearby_tile) == this->st->index;
 			uint32_t res = GetStationGfx(nearby_tile) << 12 | !same_orientation << 11 | !!same_station << 10;
 			StationType type = GetStationType(nearby_tile);
-			if (type == STATION_TRUCK) res |= (1 << 16);
-			if (type == STATION_ROADWAYPOINT) res |= (2 << 16);
+			if (type == StationType::Truck) res |= (1 << 16);
+			if (type == StationType::RoadWaypoint) res |= (2 << 16);
 			if (type == this->type) SetBit(res, 20);
 
 			if (IsCustomRoadStopSpecIndex(nearby_tile)) {
@@ -301,7 +301,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 		draw_mode = spec->draw_mode;
 	}
 
-	if (type == STATION_ROADWAYPOINT) {
+	if (type == StationType::RoadWaypoint) {
 		DrawSprite(SPR_ROAD_PAVED_STRAIGHT_X, PAL_NONE, x, y);
 		if ((draw_mode & ROADSTOP_DRAW_MODE_WAYP_GROUND) && GB(image, 0, SPRITE_WIDTH) != 0) {
 			DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
@@ -315,7 +315,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 		uint sprite_offset = 5 - view;
 
 		/* Road underlay takes precedence over tram */
-		if (type == STATION_ROADWAYPOINT || draw_mode & ROADSTOP_DRAW_MODE_OVERLAY) {
+		if (type == StationType::RoadWaypoint || draw_mode & ROADSTOP_DRAW_MODE_OVERLAY) {
 			if (rti->UsesOverlay()) {
 				SpriteID ground = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_GROUND);
 				DrawSprite(ground + sprite_offset, PAL_NONE, x, y);

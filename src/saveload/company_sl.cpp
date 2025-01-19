@@ -142,17 +142,17 @@ void AfterLoadCompanyStats()
 
 			case MP_STATION:
 				c = Company::GetIfValid(GetTileOwner(tile));
-				if (c != nullptr && GetStationType(tile) != STATION_AIRPORT && !IsBuoy(tile)) c->infrastructure.station++;
+				if (c != nullptr && GetStationType(tile) != StationType::Airport && !IsBuoy(tile)) c->infrastructure.station++;
 
 				switch (GetStationType(tile)) {
-					case STATION_RAIL:
-					case STATION_WAYPOINT:
+					case StationType::Rail:
+					case StationType::RailWaypoint:
 						if (c != nullptr && !IsStationTileBlocked(tile)) c->infrastructure.rail[GetRailType(tile)]++;
 						break;
 
-					case STATION_BUS:
-					case STATION_TRUCK:
-					case STATION_ROADWAYPOINT: {
+					case StationType::Bus:
+					case StationType::Truck:
+					case StationType::RoadWaypoint: {
 						/* Iterate all present road types as each can have a different owner. */
 						for (RoadTramType rtt : _roadtramtypes) {
 							RoadType rt = GetRoadType(tile, rtt);
@@ -163,8 +163,8 @@ void AfterLoadCompanyStats()
 						break;
 					}
 
-					case STATION_DOCK:
-					case STATION_BUOY:
+					case StationType::Dock:
+					case StationType::Buoy:
 						if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
 							if (c != nullptr) c->infrastructure.water++;
 						}

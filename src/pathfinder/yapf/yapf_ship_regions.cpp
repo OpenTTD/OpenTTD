@@ -188,7 +188,7 @@ public:
 			DestinationID station_id = v->current_order.GetDestination();
 			const BaseStation *station = BaseStation::Get(station_id);
 			TileArea tile_area;
-			station->GetTileArea(&tile_area, STATION_DOCK);
+			station->GetTileArea(&tile_area, StationType::Dock);
 			for (const auto &tile : tile_area) {
 				if (IsDockingTile(tile) && IsShipDestinationTile(tile, station_id)) {
 					pf.AddOrigin(GetWaterRegionPatchInfo(tile));

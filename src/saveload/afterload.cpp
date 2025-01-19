@@ -878,41 +878,41 @@ bool AfterLoadGame()
 					StationGfx gfx = GetStationGfx(t);
 					StationType st;
 					if (       IsInsideMM(gfx,   0,   8)) { // Rail station
-						st = STATION_RAIL;
+						st = StationType::Rail;
 						SetStationGfx(t, gfx - 0);
 					} else if (IsInsideMM(gfx,   8,  67)) { // Airport
-						st = STATION_AIRPORT;
+						st = StationType::Airport;
 						SetStationGfx(t, gfx - 8);
 					} else if (IsInsideMM(gfx,  67,  71)) { // Truck
-						st = STATION_TRUCK;
+						st = StationType::Truck;
 						SetStationGfx(t, gfx - 67);
 					} else if (IsInsideMM(gfx,  71,  75)) { // Bus
-						st = STATION_BUS;
+						st = StationType::Bus;
 						SetStationGfx(t, gfx - 71);
 					} else if (gfx == 75) {                 // Oil rig
-						st = STATION_OILRIG;
+						st = StationType::Oilrig;
 						SetStationGfx(t, gfx - 75);
 					} else if (IsInsideMM(gfx,  76,  82)) { // Dock
-						st = STATION_DOCK;
+						st = StationType::Dock;
 						SetStationGfx(t, gfx - 76);
 					} else if (gfx == 82) {                 // Buoy
-						st = STATION_BUOY;
+						st = StationType::Buoy;
 						SetStationGfx(t, gfx - 82);
 					} else if (IsInsideMM(gfx,  83, 168)) { // Extended airport
-						st = STATION_AIRPORT;
+						st = StationType::Airport;
 						SetStationGfx(t, gfx - 83 + 67 - 8);
 					} else if (IsInsideMM(gfx, 168, 170)) { // Drive through truck
-						st = STATION_TRUCK;
+						st = StationType::Truck;
 						SetStationGfx(t, gfx - 168 + GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET);
 					} else if (IsInsideMM(gfx, 170, 172)) { // Drive through bus
-						st = STATION_BUS;
+						st = StationType::Bus;
 						SetStationGfx(t, gfx - 170 + GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET);
 					} else {
 						/* Restore the signals */
 						ResetSignalHandlers();
 						return false;
 					}
-					SB(t.m6(), 3, 3, st);
+					SB(t.m6(), 3, 3, to_underlying(st));
 					break;
 				}
 			}
@@ -944,8 +944,8 @@ bool AfterLoadGame()
 				Station *st = Station::From(bst);
 
 				switch (GetStationType(t)) {
-					case STATION_TRUCK:
-					case STATION_BUS:
+					case StationType::Truck:
+					case StationType::Bus:
 						if (IsSavegameVersionBefore(SLV_6)) {
 							/* Before version 5 you could not have more than 250 stations.
 							 * Version 6 adds large maps, so you could only place 253*253
@@ -966,7 +966,7 @@ bool AfterLoadGame()
 						}
 						break;
 
-					case STATION_OILRIG: {
+					case StationType::Oilrig: {
 						/* The internal encoding of oil rigs was changed twice.
 						 * It was 3 (till 2.2) and later 5 (till 5.1).
 						 * DeleteOilRig asserts on the correct type, and
@@ -1820,9 +1820,9 @@ bool AfterLoadGame()
 			switch (GetTileType(t)) {
 				case MP_STATION:
 					switch (GetStationType(t)) {
-						case STATION_OILRIG:
-						case STATION_DOCK:
-						case STATION_BUOY:
+						case StationType::Oilrig:
+						case StationType::Dock:
+						case StationType::Buoy:
 							SetWaterClass(t, (WaterClass)GB(t.m3(), 0, 2));
 							SB(t.m3(), 0, 2, 0);
 							break;

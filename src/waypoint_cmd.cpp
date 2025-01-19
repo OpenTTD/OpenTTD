@@ -365,7 +365,7 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 		unit_cost = _price[PR_BUILD_STATION_TRUCK];
 	}
 	StationID est = INVALID_STATION;
-	CommandCost cost = CalculateRoadStopCost(roadstop_area, flags, true, STATION_ROADWAYPOINT, axis, AxisToDiagDir(axis), &est, INVALID_ROADTYPE, unit_cost);
+	CommandCost cost = CalculateRoadStopCost(roadstop_area, flags, true, StationType::RoadWaypoint, axis, AxisToDiagDir(axis), &est, INVALID_ROADTYPE, unit_cost);
 	if (cost.Failed()) return cost;
 
 	Waypoint *wp = nullptr;
@@ -446,7 +446,7 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 			UpdateCompanyRoadInfrastructure(road_rt, road_owner, ROAD_STOP_TRACKBIT_FACTOR);
 			UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, ROAD_STOP_TRACKBIT_FACTOR);
 
-			MakeDriveThroughRoadStop(cur_tile, wp->owner, road_owner, tram_owner, wp->index, STATION_ROADWAYPOINT, road_rt, tram_rt, axis);
+			MakeDriveThroughRoadStop(cur_tile, wp->owner, road_owner, tram_owner, wp->index, StationType::RoadWaypoint, road_rt, tram_rt, axis);
 			SetCustomRoadStopSpecIndex(cur_tile, map_spec_index);
 			if (roadstopspec != nullptr) wp->SetRoadStopRandomBits(cur_tile, 0);
 
