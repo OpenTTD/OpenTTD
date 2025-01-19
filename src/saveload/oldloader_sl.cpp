@@ -342,8 +342,9 @@ static Engine *_old_engines;
 
 static bool FixTTOEngines()
 {
+	using OldEngineID = uint8_t;
 	/** TTD->TTO remapping of engines; 255 means there is no equivalent. SVXConverter uses (almost) the same table. */
-	static const EngineID ttd_to_tto[] = {
+	static const OldEngineID ttd_to_tto[] = {
 		  0, 255, 255, 255, 255, 255, 255, 255,   5,   7,   8,   9,  10,  11,  12,  13,
 		255, 255, 255, 255, 255, 255,  15,  16,  17,  18,  19,  20,  21,  22,  23,  24,
 		25,   26,  27,  29,  28,  30, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255,
@@ -363,7 +364,7 @@ static bool FixTTOEngines()
 	};
 
 	/** TTO->TTD remapping of engines. SVXConverter uses the same table. */
-	static const EngineID tto_to_ttd[] = {
+	static const OldEngineID tto_to_ttd[] = {
 		  0,   0,   8,   8,   8,   8,   8,   9,  10,  11,  12,  13,  14,  15,  15,  22,
 		 23,  24,  25,  26,  27,  29,  28,  30,  31,  32,  33,  34,  35,  36,  37,  55,
 		 57,  59,  58,  60,  61,  62,  63,  64,  65,  66,  67, 116, 116, 117, 118, 123,
@@ -375,7 +376,7 @@ static bool FixTTOEngines()
 
 	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->engine_type >= lengthof(tto_to_ttd)) return false;
-		v->engine_type = tto_to_ttd[v->engine_type];
+		v->engine_type = static_cast<EngineID>(tto_to_ttd[v->engine_type]);
 	}
 
 	/* Load the default engine set. Many of them will be overridden later */
@@ -391,7 +392,7 @@ static bool FixTTOEngines()
 	TimerGameCalendar::YearMonthDay aging_ymd = TimerGameCalendar::ConvertDateToYMD(aging_date);
 
 	for (EngineID i = 0; i < 256; i++) {
-		int oi = ttd_to_tto[i];
+		OldEngineID oi = ttd_to_tto[i];
 		Engine *e = GetTempDataEngine(i);
 
 		if (oi == 255) {
