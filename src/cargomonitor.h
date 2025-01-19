@@ -125,7 +125,7 @@ inline bool MonitorMonitorsIndustry(CargoMonitorID num)
 inline IndustryID DecodeMonitorIndustry(CargoMonitorID num)
 {
 	if (!MonitorMonitorsIndustry(num)) return INVALID_INDUSTRY;
-	return GB(num, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH);
+	return static_cast<IndustryID>(GB(num, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH));
 }
 
 /**

@@ -1114,7 +1114,7 @@ static Money DeliverGoods(int num_pieces, CargoType cargo_type, StationID dest, 
 	Station *st = Station::Get(dest);
 
 	/* Give the goods to the industry. */
-	uint accepted_ind = DeliverGoodsToIndustry(st, cargo_type, num_pieces, src.type == SourceType::Industry ? src.id : INVALID_INDUSTRY, company->index);
+	uint accepted_ind = DeliverGoodsToIndustry(st, cargo_type, num_pieces, src.type == SourceType::Industry ? static_cast<IndustryID>(src.id) : INVALID_INDUSTRY, company->index);
 
 	/* If this cargo type is always accepted, accept all */
 	uint accepted_total = HasBit(st->always_accepted, cargo_type) ? num_pieces : accepted_ind;
