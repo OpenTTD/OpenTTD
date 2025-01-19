@@ -136,7 +136,7 @@ inline IndustryID DecodeMonitorIndustry(CargoMonitorID num)
 inline TownID DecodeMonitorTown(CargoMonitorID num)
 {
 	if (MonitorMonitorsIndustry(num)) return INVALID_TOWN;
-	return GB(num, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH);
+	return static_cast<TownID>(GB(num, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH));
 }
 
 void ClearCargoPickupMonitoring(CompanyID company = INVALID_OWNER);

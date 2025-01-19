@@ -34,7 +34,7 @@
 	                           (ref_type == NR_TILE     && ScriptMap::IsValidTile(::TileIndex(reference))) ||
 	                           (ref_type == NR_STATION  && ScriptStation::IsValidStation(reference)) ||
 	                           (ref_type == NR_INDUSTRY && ScriptIndustry::IsValidIndustry(reference)) ||
-	                           (ref_type == NR_TOWN     && ScriptTown::IsValidTown(reference)));
+	                           (ref_type == NR_TOWN     && ScriptTown::IsValidTown(static_cast<TownID>(reference))));
 
 	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 
