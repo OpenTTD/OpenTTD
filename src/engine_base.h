@@ -83,7 +83,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	std::vector<WagonOverride> overrides;
 
 	Engine() {}
-	Engine(VehicleType type, EngineID base);
+	Engine(VehicleType type, uint16_t local_id);
 	bool IsEnabled() const;
 
 	/**

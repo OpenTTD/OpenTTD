@@ -68,16 +68,16 @@ const uint8_t _engine_offsets[4] = {
 
 static_assert(lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info) + lengthof(_orig_ship_vehicle_info) + lengthof(_orig_aircraft_vehicle_info) == lengthof(_orig_engine_info));
 
-Engine::Engine(VehicleType type, EngineID base)
+Engine::Engine(VehicleType type, uint16_t local_id)
 {
 	this->type = type;
-	this->grf_prop.local_id = base;
-	this->list_position = base;
+	this->grf_prop.local_id = local_id;
+	this->list_position = local_id;
 	this->preview_company = INVALID_COMPANY;
 	this->display_last_variant = INVALID_ENGINE;
 
 	/* Check if this base engine is within the original engine data range */
-	if (base >= _engine_counts[type]) {
+	if (local_id >= _engine_counts[type]) {
 		/* 'power' defaults to zero, so we also have to default to 'wagon' */
 		if (type == VEH_TRAIN) this->u.rail.railveh_type = RAILVEH_WAGON;
 		/* Set model life to maximum to make wagons available */
@@ -104,16 +104,16 @@ Engine::Engine(VehicleType type, EngineID base)
 	}
 
 	/* Copy the original engine info for this slot */
-	this->info = _orig_engine_info[_engine_offsets[type] + base];
+	this->info = _orig_engine_info[_engine_offsets[type] + local_id];
 
 	/* Copy the original engine data for this slot */
 	switch (type) {
 		default: NOT_REACHED();
 
 		case VEH_TRAIN:
-			this->u.rail = _orig_rail_vehicle_info[base];
+			this->u.rail = _orig_rail_vehicle_info[local_id];
 			this->original_image_index = this->u.rail.image_index;
-			this->info.string_id = STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM + base;
+			this->info.string_id = STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM + local_id;
 
 			/* Set the default model life of original wagons to "infinite" */
 			if (this->u.rail.railveh_type == RAILVEH_WAGON) this->info.base_life = TimerGameCalendar::Year{0xFF};
@@ -121,21 +121,21 @@ Engine::Engine(VehicleType type, EngineID base)
 			break;
 
 		case VEH_ROAD:
-			this->u.road = _orig_road_vehicle_info[base];
+			this->u.road = _orig_road_vehicle_info[local_id];
 			this->original_image_index = this->u.road.image_index;
-			this->info.string_id = STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS + base;
+			this->info.string_id = STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS + local_id;
 			break;
 
 		case VEH_SHIP:
-			this->u.ship = _orig_ship_vehicle_info[base];
+			this->u.ship = _orig_ship_vehicle_info[local_id];
 			this->original_image_index = this->u.ship.image_index;
-			this->info.string_id = STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER + base;
+			this->info.string_id = STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER + local_id;
 			break;
 
 		case VEH_AIRCRAFT:
-			this->u.air = _orig_aircraft_vehicle_info[base];
+			this->u.air = _orig_aircraft_vehicle_info[local_id];
 			this->original_image_index = this->u.air.image_index;
-			this->info.string_id = STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52 + base;
+			this->info.string_id = STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52 + local_id;
 			break;
 	}
 }
