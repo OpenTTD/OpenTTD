@@ -157,7 +157,7 @@ static const int HEIGHT_DECIMAL_BITS = 4;
 using Amplitude = int;
 static const int AMPLITUDE_DECIMAL_BITS = 10;
 
-/** Height map - allocated array of heights (MapSizeX() + 1) x (MapSizeY() + 1) */
+/** Height map - allocated array of heights (Map::SizeX() + 1) x (Map::SizeY() + 1) */
 struct HeightMap
 {
 	std::vector<Height> h; //< array of heights
@@ -312,7 +312,7 @@ static inline bool IsValidXY(int x, int y)
 
 
 /**
- * Allocate array of (MapSizeX()+1)*(MapSizeY()+1) heights and init the _height_map structure members
+ * Allocate array of (Map::SizeX() + 1) * (Map::SizeY() + 1) heights and init the _height_map structure members
  * @return true on success
  */
 static inline bool AllocHeightMap()
