@@ -338,13 +338,13 @@ static inline void FreeHeightMap()
 
 /**
  * Generates new random height in given amplitude (generated numbers will range from - amplitude to + amplitude)
- * @param rMax Limit of result
+ * @param r_max Limit of result
  * @return generated height
  */
-static inline Height RandomHeight(Amplitude rMax)
+static inline Height RandomHeight(Amplitude r_max)
 {
-	/* Spread height into range -rMax..+rMax */
-	return A2H(RandomRange(2 * rMax + 1) - rMax);
+	/* Spread height into range -r_max..+r_max */
+	return A2H(RandomRange(2 * r_max + 1) - r_max);
 }
 
 /**
@@ -777,7 +777,7 @@ static void HeightMapCoastLines(Borders water_borders)
 static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int dir_y)
 {
 	const int max_coast_dist_from_edge = 35;
-	const int max_coast_Smooth_depth = 35;
+	const int max_coast_smooth_depth = 35;
 
 	int x, y;
 	int ed; // coast distance from edge
@@ -802,7 +802,7 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 
 	/* Coast found or max_coast_dist_from_edge has been reached.
 	 * Soften the coast slope */
-	for (depth = 0; IsValidXY(x, y) && depth <= max_coast_Smooth_depth; depth++, x += dir_x, y += dir_y) {
+	for (depth = 0; IsValidXY(x, y) && depth <= max_coast_smooth_depth; depth++, x += dir_x, y += dir_y) {
 		h = _height_map.height(x, y);
 		h = static_cast<Height>(std::min<uint>(h, h_prev + (4 + depth))); // coast softening formula
 		_height_map.height(x, y) = h;
@@ -916,21 +916,21 @@ static inline double linear_interpolate(const double a, const double b, const do
  */
 static double interpolated_noise(const double x, const double y, const int prime)
 {
-	const int integer_X = (int)x;
-	const int integer_Y = (int)y;
+	const int integer_x = (int)x;
+	const int integer_y = (int)y;
 
-	const double fractional_X = x - (double)integer_X;
-	const double fractional_Y = y - (double)integer_Y;
+	const double fractional_x = x - (double)integer_x;
+	const double fractional_y = y - (double)integer_y;
 
-	const double v1 = int_noise(integer_X,     integer_Y,     prime);
-	const double v2 = int_noise(integer_X + 1, integer_Y,     prime);
-	const double v3 = int_noise(integer_X,     integer_Y + 1, prime);
-	const double v4 = int_noise(integer_X + 1, integer_Y + 1, prime);
+	const double v1 = int_noise(integer_x,     integer_y,     prime);
+	const double v2 = int_noise(integer_x + 1, integer_y,     prime);
+	const double v3 = int_noise(integer_x,     integer_y + 1, prime);
+	const double v4 = int_noise(integer_x + 1, integer_y + 1, prime);
 
-	const double i1 = linear_interpolate(v1, v2, fractional_X);
-	const double i2 = linear_interpolate(v3, v4, fractional_X);
+	const double i1 = linear_interpolate(v1, v2, fractional_x);
+	const double i2 = linear_interpolate(v3, v4, fractional_y);
 
-	return linear_interpolate(i1, i2, fractional_Y);
+	return linear_interpolate(i1, i2, fractional_y);
 }
 
 
