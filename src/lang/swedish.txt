@@ -452,6 +452,10 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sandbox-instäl
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Inställningar för genomskinlighet
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stadsnamn visas
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamn visas
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Tågstationer
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Busshållplatser
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Hamnar
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Flygplatser
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Riktmärken visas
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Skyltar visas
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Motståndarnas skyltar och namn visas
