@@ -153,7 +153,7 @@
 using Height = int16_t;
 static const int HEIGHT_DECIMAL_BITS = 4;
 
-/** Fixed point array for amplitudes (and percent values) */
+/** Fixed point array for amplitudes */
 using Amplitude = int;
 static const int AMPLITUDE_DECIMAL_BITS = 10;
 
@@ -183,21 +183,30 @@ struct HeightMap
 static HeightMap _height_map = { {}, 0, 0, 0 };
 
 /** Conversion: int to Height */
-#define I2H(i) ((i) << HEIGHT_DECIMAL_BITS)
-/** Conversion: Height to int */
-#define H2I(i) ((i) >> HEIGHT_DECIMAL_BITS)
+static Height I2H(int i)
+{
+	return i << HEIGHT_DECIMAL_BITS;
+}
 
-/** Conversion: Amplitude to int */
-#define A2I(i) ((i) >> AMPLITUDE_DECIMAL_BITS)
+/** Conversion: Height to int */
+static int H2I(Height i)
+{
+	return i >> HEIGHT_DECIMAL_BITS;
+}
 
 /** Conversion: Amplitude to Height */
-#define A2H(a) ((a) >> (AMPLITUDE_DECIMAL_BITS - HEIGHT_DECIMAL_BITS))
+static Height A2H(Amplitude i)
+{
+	return i >> (AMPLITUDE_DECIMAL_BITS - HEIGHT_DECIMAL_BITS);
+}
 
 /** Maximum number of TGP noise frequencies. */
 static const int MAX_TGP_FREQUENCIES = 10;
 
+static constexpr int WATER_PERCENT_FACTOR = 1024;
+
 /** Desired water percentage (100% == 1024) - indexed by _settings_game.difficulty.quantity_sea_lakes */
-static const Amplitude _water_percent[4] = {70, 170, 270, 420};
+static const int64_t _water_percent[4] = {70, 170, 270, 420};
 
 /**
  * Gets the maximum allowed height while generating a map based on
@@ -659,7 +668,7 @@ static void HeightMapCurves(uint level)
 }
 
 /** Adjusts heights in height map to contain required amount of water tiles */
-static void HeightMapAdjustWaterLevel(Amplitude water_percent, Height h_max_new)
+static void HeightMapAdjustWaterLevel(int64_t water_percent, Height h_max_new)
 {
 	Height h_min, h_max, h_avg, h_water_level;
 	int64_t water_tiles, desired_water_tiles;
@@ -673,7 +682,7 @@ static void HeightMapAdjustWaterLevel(Amplitude water_percent, Height h_max_new)
 	hist = HeightMapMakeHistogram(h_min, h_max, hist_buf.data());
 
 	/* How many water tiles do we want? */
-	desired_water_tiles = A2I(((int64_t)water_percent) * (int64_t)(_height_map.size_x * _height_map.size_y));
+	desired_water_tiles = water_percent * _height_map.size_x * _height_map.size_y / WATER_PERCENT_FACTOR;
 
 	/* Raise water_level and accumulate values from histogram until we reach required number of water tiles */
 	for (h_water_level = h_min, water_tiles = 0; h_water_level < h_max; h_water_level++) {
@@ -858,8 +867,7 @@ static void HeightMapSmoothSlopes(Height dh_max)
  */
 static void HeightMapNormalize()
 {
-	int sea_level_setting = _settings_game.difficulty.quantity_sea_lakes;
-	const Amplitude water_percent = sea_level_setting != (int)CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[sea_level_setting] : _settings_game.game_creation.custom_sea_level * 1024 / 100;
+	const int64_t water_percent = _settings_game.difficulty.quantity_sea_lakes != CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[_settings_game.difficulty.quantity_sea_lakes] : _settings_game.game_creation.custom_sea_level * WATER_PERCENT_FACTOR / 100;
 	const Height h_max_new = TGPGetMaxHeight();
 	const Height roughness = 7 + 3 * _settings_game.game_creation.tgen_smoothness;
 
