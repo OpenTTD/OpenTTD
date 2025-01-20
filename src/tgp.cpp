@@ -84,7 +84,7 @@
  *
  * I will try to explain it on the example below:
  *
- * Have a map of 4 x 4 tiles, our simplified noise generator produces only two
+ * Have a map of 4x4 tiles, our simplified noise generator produces only two
  * values -1 and +1, use 3 octaves with wave length 1, 2 and 4, with amplitudes
  * 3, 2, 1. Original algorithm produces:
  *
@@ -157,7 +157,7 @@ static const int HEIGHT_DECIMAL_BITS = 4;
 using Amplitude = int;
 static const int AMPLITUDE_DECIMAL_BITS = 10;
 
-/** Height map - allocated array of heights (Map::SizeX() + 1) x (Map::SizeY() + 1) */
+/** Height map - allocated array of heights (Map::SizeX() + 1) * (Map::SizeY() + 1) */
 struct HeightMap
 {
 	std::vector<Height> h; //< array of heights
