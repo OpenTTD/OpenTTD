@@ -240,7 +240,7 @@ static void HandleLinkClick(Link link)
 		case LT_STORY_PAGE: {
 			if (!StoryPage::IsValidID(link.target)) return;
 			CompanyID story_company = StoryPage::Get(link.target)->company;
-			ShowStoryBook(story_company, link.target);
+			ShowStoryBook(story_company, static_cast<StoryPageID>(link.target));
 			return;
 		}
 

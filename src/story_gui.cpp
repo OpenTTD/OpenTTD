@@ -630,7 +630,7 @@ public:
 	 * Sets the selected page.
 	 * @param page_index pool index of the page to select.
 	 */
-	void SetSelectedPage(uint16_t page_index)
+	void SetSelectedPage(StoryPageID page_index)
 	{
 		if (this->selected_page_id != page_index) {
 			if (this->active_button_id) ResetObjectToPlace();
@@ -845,7 +845,7 @@ public:
 		if (widget != WID_SB_SEL_PAGE) return;
 
 		/* index (which is set in BuildDropDownList) is the page id. */
-		this->SetSelectedPage(index);
+		this->SetSelectedPage(static_cast<StoryPageID>(index));
 	}
 
 	/**
@@ -1048,7 +1048,7 @@ static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor)
  * @param page_id Page to open, may be #INVALID_STORY_PAGE.
  * @param centered Whether to open the window centered.
  */
-void ShowStoryBook(CompanyID company, uint16_t page_id, bool centered)
+void ShowStoryBook(CompanyID company, StoryPageID page_id, bool centered)
 {
 	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
 

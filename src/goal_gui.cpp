@@ -136,7 +136,7 @@ struct GoalListWindow : public Window {
 				CompanyID story_company = StoryPage::Get(s->dst)->company;
 				if (goal_company == INVALID_COMPANY ? story_company != INVALID_COMPANY : story_company != INVALID_COMPANY && story_company != goal_company) return;
 
-				ShowStoryBook((CompanyID)this->window_number, s->dst);
+				ShowStoryBook(static_cast<CompanyID>(this->window_number), static_cast<StoryPageID>(s->dst));
 				return;
 			}
 
