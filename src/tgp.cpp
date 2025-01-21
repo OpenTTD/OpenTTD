@@ -928,7 +928,7 @@ static double interpolated_noise(const double x, const double y, const int prime
 	const double v4 = int_noise(integer_x + 1, integer_y + 1, prime);
 
 	const double i1 = linear_interpolate(v1, v2, fractional_x);
-	const double i2 = linear_interpolate(v3, v4, fractional_y);
+	const double i2 = linear_interpolate(v3, v4, fractional_x);
 
 	return linear_interpolate(i1, i2, fractional_y);
 }
