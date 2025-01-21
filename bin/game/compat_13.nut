@@ -6,3 +6,6 @@
  */
 
 GSLog.Info("13 API compatibility in effect.");
+
+/* 15 renames GetBridgeID */
+AIBridge.GetBridgeID <- AIBridge.GetBridgeType;

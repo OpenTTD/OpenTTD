@@ -21,7 +21,7 @@
  *                           <th> acquired                                          </th>
  *                           <th> released                                          </th>
  *                           <th> reused                                            </th></tr>
- * <tr><td>#BridgeID    </td><td> bridge type                                       </td>
+ * <tr><td>#BridgeType  </td><td> bridge type                                       </td>
  *                           <td> introduction \ref newgrf_changes "(1)"            </td>
  *                           <td> never \ref newgrf_changes "(1)"                   </td>
  *                           <td> no \ref newgrf_changes "(1)"                      </td></tr>
@@ -110,7 +110,7 @@
 #include <squirrel.h>
 
 /* Define all types here, so they are added to the API docs. */
-typedef uint BridgeID;         ///< The ID of a bridge type.
+typedef uint BridgeType;       ///< The ID of a bridge type.
 typedef uint8_t CargoID;       ///< The ID of a cargo.
 typedef uint16_t EngineID;     ///< The ID of an engine.
 typedef uint16_t GoalID;       ///< The ID of a goal.

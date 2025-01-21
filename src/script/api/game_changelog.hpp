@@ -22,6 +22,9 @@
  * \li GSEventCompanyRenamed
  * \li GSEventPresidentRenamed
  *
+ * Other changes:
+ * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
+ *
  * \b 14.0
  *
  * API additions:
