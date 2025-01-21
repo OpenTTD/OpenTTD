@@ -11,10 +11,13 @@
 #define SIGNS_TYPE_H
 
 /** The type of the IDs of signs. */
-typedef uint16_t SignID;
-struct Sign;
+enum SignID : uint16_t {
+	SIGN_BEGIN = 0,
+	SIGN_END = 64000,
+	INVALID_SIGN = 0xFFFF ///< Sentinel for an invalid sign.
+};
 
-static const SignID INVALID_SIGN = 0xFFFF; ///< Sentinel for an invalid sign.
+struct Sign;
 
 static const uint MAX_LENGTH_SIGN_NAME_CHARS = 32; ///< The maximum length of a sign name in characters including '\0'
 
