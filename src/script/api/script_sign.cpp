@@ -84,5 +84,5 @@
 	if (!ScriptObject::Command<CMD_PLACE_SIGN>::Do(&ScriptInstance::DoCommandReturnSignID, location, text)) return INVALID_SIGN;
 
 	/* In case of test-mode, we return SignID 0 */
-	return 0;
+	return ::SIGN_BEGIN;
 }
