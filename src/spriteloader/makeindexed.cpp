@@ -52,7 +52,7 @@ uint8_t SpriteLoaderMakeIndexed::LoadSprite(SpriteLoader::SpriteCollection &spri
 {
 	uint8_t avail = this->baseloader.LoadSprite(sprite, file, file_pos, sprite_type, true, control_flags, avail_8bpp, avail_32bpp);
 
-	for (ZoomLevel zoom = ZOOM_LVL_NORMAL; zoom != ZOOM_LVL_END; zoom++) {
+	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
 		if (HasBit(avail, zoom)) Convert32bppTo8bpp(sprite[zoom]);
 	}
 
