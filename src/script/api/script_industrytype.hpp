@@ -11,6 +11,7 @@
 #define SCRIPT_INDUSTRYTYPE_HPP
 
 #include "script_list.hpp"
+#include "../../industry_type.h"
 
 /**
  * Class that handles all industry-type related functions.

@@ -12,6 +12,7 @@
 
 #include "script_station.hpp"
 #include "script_list.hpp"
+#include "../../industry_type.h"
 
 /**
  * Creates an empty list, in which you can add tiles.

@@ -11,6 +11,8 @@
 #define SCRIPT_CARGOLIST_HPP
 
 #include "script_list.hpp"
+#include "../../industry_type.h"
+#include "../../station_type.h"
 
 /**
  * Creates a list of cargoes that can be produced in the current game.
