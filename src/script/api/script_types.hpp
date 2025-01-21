@@ -104,11 +104,9 @@
 #ifndef SCRIPT_TYPES_HPP
 #define SCRIPT_TYPES_HPP
 
-#include "../../core/overflowsafe_type.hpp"
-#include "../../company_type.h"
-#include "../../tile_type.h"
 #include <squirrel.h>
 
+#ifdef DOXYGEN_API
 /* Define all types here, so they are added to the API docs. */
 typedef uint BridgeType;       ///< The ID of a bridge type.
 typedef uint8_t CargoType;     ///< The ID of a cargo type.
@@ -117,11 +115,7 @@ typedef uint16_t GoalID;       ///< The ID of a goal.
 typedef uint16_t GroupID;      ///< The ID of a group.
 typedef uint16_t IndustryID;   ///< The ID of an industry.
 typedef uint8_t IndustryType;  ///< The ID of an industry-type.
-#ifdef DOXYGEN_API
 typedef int64_t Money;         ///< Money, stored in a 32bit/64bit safe way. For scripts money is always in pounds.
-#else
-typedef OverflowSafeInt64 Money;
-#endif /* DOXYGEN_API */
 typedef uint16_t ObjectType;   ///< The ID of an object-type.
 typedef uint16_t SignID;       ///< The ID of a sign.
 typedef uint16_t StationID;    ///< The ID of a station.
@@ -129,11 +123,10 @@ typedef uint32_t StringID;     ///< The ID of a string.
 typedef uint16_t SubsidyID;    ///< The ID of a subsidy.
 typedef uint16_t StoryPageID;  ///< The ID of a story page.
 typedef uint16_t StoryPageElementID; ///< The ID of a story page element.
-#ifdef DOXYGEN_API
 typedef uint32_t TileIndex;    ///< The ID of a map location.
-#endif /* DOXYGEN_API */
 typedef uint16_t TownID;       ///< The ID of a town.
 typedef uint32_t VehicleID;    ///< The ID of a vehicle.
+#endif /* DOXYGEN_API */
 
 /**
  * The types of errors inside the script framework.

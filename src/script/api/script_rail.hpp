@@ -11,7 +11,9 @@
 #define SCRIPT_RAIL_HPP
 
 #include "script_tile.hpp"
+#include "../../industry_type.h"
 #include "../../signal_type.h"
+#include "../../station_type.h"
 #include "../../track_type.h"
 
 /**

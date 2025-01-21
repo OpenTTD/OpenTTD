@@ -11,6 +11,7 @@
 #define SCRIPT_BRIDGE_HPP
 
 #include "script_vehicle.hpp"
+#include "../../bridge.h"
 
 /**
  * Class that handles all bridge related functions.

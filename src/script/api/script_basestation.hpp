@@ -12,6 +12,7 @@
 
 #include "script_text.hpp"
 #include "script_date.hpp"
+#include "../../station_type.h"
 
 /**
  * Base class for stations and waypoints.

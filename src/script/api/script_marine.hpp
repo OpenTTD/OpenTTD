@@ -11,6 +11,7 @@
 #define SCRIPT_MARINE_HPP
 
 #include "script_error.hpp"
+#include "../../station_type.h"
 
 /**
  * Class that handles all marine related functions.

@@ -13,6 +13,12 @@
 #include "script_event.hpp"
 #include "script_goal.hpp"
 #include "script_window.hpp"
+#include "../../engine_type.h"
+#include "../../industry_type.h"
+#include "../../station_type.h"
+#include "../../story_type.h"
+#include "../../subsidy_type.h"
+#include "../../vehicle_type.h"
 
 /**
  * Event Vehicle Crash, indicating a vehicle of yours is crashed.
