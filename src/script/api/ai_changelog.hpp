@@ -22,6 +22,9 @@
  * \li AIEventCompanyRenamed
  * \li AIEventPresidentRenamed
  *
+ * Other changes:
+ * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
+ *
  * \b 14.0
  *
  * API additions:

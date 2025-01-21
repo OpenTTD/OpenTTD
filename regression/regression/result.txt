@@ -1051,15 +1051,15 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetMinLength():     -1
   Valid Bridges:        10
   IsBridgeTile():       false
-  GetBridgeID():        -1
+  GetBridgeType():      -1
   RemoveBridge():       false
   GetLastErrorString(): ERR_PRECONDITION_FAILED
   GetOtherBridgeEnd():  -1
   BuildBridge():        true
   IsBridgeTile():       true
-  GetBridgeID():        5
+  GetBridgeType():      5
   IsBridgeTile():       true
-  GetBridgeID():        5
+  GetBridgeType():      5
   GetOtherBridgeEnd():  33155
   BuildBridge():        false
   GetLastErrorString(): ERR_ALREADY_BUILT
