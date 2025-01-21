@@ -86,13 +86,14 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	return 0; // stop enumerating
 }
 
-bool SetFallbackFont(FontCacheSettings *settings, const std::string &, int winlangid, MissingGlyphSearcher *callback)
+bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback)
 {
 	Debug(fontcache, 1, "Trying fallback fonts");
 	EFCParam langInfo;
-	if (GetLocaleInfo(MAKELCID(winlangid, SORT_DEFAULT), LOCALE_FONTSIGNATURE, (LPTSTR)&langInfo.locale, sizeof(langInfo.locale) / sizeof(wchar_t)) == 0) {
-		/* Invalid langid or some other mysterious error, can't determine fallback font. */
-		Debug(fontcache, 1, "Can't get locale info for fallback font (langid=0x{:x})", winlangid);
+	std::wstring lang = OTTD2FS(language_isocode.substr(0, language_isocode.find('_')));
+	if (GetLocaleInfoEx(lang.c_str(), LOCALE_FONTSIGNATURE, reinterpret_cast<LPWSTR>(&langInfo.locale), sizeof(langInfo.locale) / sizeof(wchar_t)) == 0) {
+		/* Invalid isocode or some other mysterious error, can't determine fallback font. */
+		Debug(fontcache, 1, "Can't get locale info for fallback font (isocode={})", language_isocode);
 		return false;
 	}
 	langInfo.settings = settings;

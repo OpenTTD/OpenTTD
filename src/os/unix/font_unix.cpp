@@ -98,7 +98,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	return err;
 }
 
-bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int, MissingGlyphSearcher *callback)
+bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback)
 {
 	bool ret = false;
 

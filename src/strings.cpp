@@ -2297,7 +2297,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		_fcsettings.mono.os_handle = nullptr;
 		_fcsettings.medium.os_handle = nullptr;
 
-		bad_font = !SetFallbackFont(&_fcsettings, _langpack.langpack->isocode, _langpack.langpack->winlangid, searcher);
+		bad_font = !SetFallbackFont(&_fcsettings, _langpack.langpack->isocode, searcher);
 
 		_fcsettings = backup;
 
