@@ -101,8 +101,6 @@ namespace CargoFilterCriteria {
 	static constexpr CargoID CF_EXPAND_LIST = NUM_CARGO + 6; ///< Expand list to show all items (station list)
 };
 
-/** Test whether cargo type is not CT_INVALID */
-inline bool IsValidCargoType(CargoLabel t) { return t != CT_INVALID; }
 /** Test whether cargo type is not INVALID_CARGO */
 inline bool IsValidCargoID(CargoID t) { return t != INVALID_CARGO; }
 
