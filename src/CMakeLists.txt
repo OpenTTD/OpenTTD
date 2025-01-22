@@ -391,6 +391,8 @@ add_files(
     settings_gui.cpp
     settings_gui.h
     settings_internal.h
+    settings_internal_gui.cpp
+    settings_internal_gui.h
     settings_table.h
     settings_table.cpp
     settings_type.h

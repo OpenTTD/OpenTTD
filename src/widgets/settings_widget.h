@@ -16,6 +16,7 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_TAB_GRAPHICS,           ///< Graphics tab.
 	WID_GO_TAB_SOUND,              ///< Sound tab.
 	WID_GO_TAB_SOCIAL,             ///< Social tab.
+	WID_GO_TAB_ADVANCED,           ///< Advanced tab.
 	WID_GO_TAB_SELECTION,          ///< Background of the tab selection.
 	WID_GO_CURRENCY_DROPDOWN,      ///< Currency dropdown.
 	WID_GO_DISTANCE_DROPDOWN,      ///< Measuring unit dropdown.
@@ -61,23 +62,20 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_SOCIAL_PLUGIN_TITLE,    ///< Title of the frame of the social plugin.
 	WID_GO_SOCIAL_PLUGIN_PLATFORM, ///< Platform of the social plugin.
 	WID_GO_SOCIAL_PLUGIN_STATE,    ///< State of the social plugin.
-};
 
-/** Widgets of the #GameSettingsWindow class. */
-enum GameSettingsWidgets : WidgetID {
-	WID_GS_FILTER,             ///< Text filter.
-	WID_GS_OPTIONSPANEL,       ///< Panel widget containing the option lists.
-	WID_GS_SCROLLBAR,          ///< Scrollbar.
-	WID_GS_HELP_TEXT,          ///< Information area to display help text of the selected option.
-	WID_GS_EXPAND_ALL,         ///< Expand all button.
-	WID_GS_COLLAPSE_ALL,       ///< Collapse all button.
-	WID_GS_RESET_ALL,          ///< Reset all button.
-	WID_GS_RESTRICT_CATEGORY,  ///< Label upfront to the category drop-down box to restrict the list of settings to show
-	WID_GS_RESTRICT_TYPE,      ///< Label upfront to the type drop-down box to restrict the list of settings to show
-	WID_GS_RESTRICT_DROPDOWN,  ///< The drop down box to restrict the list of settings
-	WID_GS_TYPE_DROPDOWN,      ///< The drop down box to choose client/game/company/all settings
+	WID_GO_FILTER,             ///< Text filter.
+	WID_GO_OPTIONSPANEL,       ///< Panel widget containing the option lists.
+	WID_GO_SCROLLBAR,          ///< Scrollbar.
+	WID_GO_HELP_TEXT,          ///< Information area to display help text of the selected option.
+	WID_GO_EXPAND_ALL,         ///< Expand all button.
+	WID_GO_COLLAPSE_ALL,       ///< Collapse all button.
+	WID_GO_RESET_ALL,          ///< Reset all button.
+	WID_GO_RESTRICT_CATEGORY,  ///< Label upfront to the category drop-down box to restrict the list of settings to show
+	WID_GO_RESTRICT_TYPE,      ///< Label upfront to the type drop-down box to restrict the list of settings to show
+	WID_GO_RESTRICT_DROPDOWN,  ///< The drop down box to restrict the list of settings
+	WID_GO_TYPE_DROPDOWN,      ///< The drop down box to choose client/game/company/all settings
 
-	WID_GS_SETTING_DROPDOWN = -1, ///< Dynamically created dropdown for changing setting value.
+	WID_GO_SETTING_DROPDOWN = -1, ///< Dynamically created dropdown for changing setting value.
 };
 
 /** Widgets of the #CustomCurrencyWindow class. */
