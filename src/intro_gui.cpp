@@ -362,7 +362,7 @@ struct SelectGameWindow : public Window {
 			case WID_SGI_HIGHSCORE:       ShowHighscoreTable(); break;
 			case WID_SGI_HELP:            ShowHelpWindow(); break;
 			case WID_SGI_SETTINGS_OPTIONS:ShowGameSettings(); break;
-			case WID_SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
+			case WID_SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, _grfconfig_newgame); break;
 			case WID_SGI_CONTENT_DOWNLOAD:
 				if (!_network_available) {
 					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);

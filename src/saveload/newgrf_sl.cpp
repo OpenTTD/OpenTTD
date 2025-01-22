@@ -106,17 +106,17 @@ struct NGRFChunkHandler : ChunkHandler {
 		config.param.assign(std::begin(param), last);
 	}
 
-	void LoadCommon(GRFConfig *&grfconfig) const
+	void LoadCommon(GRFConfigList &grfconfig) const
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(description, _grfconfig_sl_compat);
 
-		ClearGRFConfigList(&grfconfig);
+		ClearGRFConfigList(grfconfig);
 		while (SlIterateArray() != -1) {
 			GRFConfig *c = new GRFConfig();
 			SlObject(c, slt);
 			if (IsSavegameVersionBefore(SLV_101)) c->SetSuitablePalette();
 			this->LoadParameters(*c);
-			AppendToGRFConfigList(&grfconfig, c);
+			AppendToGRFConfigList(grfconfig, c);
 		}
 	}
 
@@ -132,7 +132,7 @@ struct NGRFChunkHandler : ChunkHandler {
 			ResetGRFConfig(false);
 		} else {
 			/* Append static NewGRF configuration */
-			AppendStaticGRFConfigs(&_grfconfig);
+			AppendStaticGRFConfigs(_grfconfig);
 		}
 	}
 

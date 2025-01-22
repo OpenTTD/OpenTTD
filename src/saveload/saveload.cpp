@@ -3063,7 +3063,7 @@ static SaveOrLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_che
 			 * Note: this is done here because AfterLoadGame is also called
 			 * for TTO/TTD/TTDP savegames which have their own NewGRF logic.
 			 */
-			ClearGRFConfigList(&_grfconfig);
+			ClearGRFConfigList(_grfconfig);
 		}
 	}
 
@@ -3146,7 +3146,7 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 			 * and if so a new NewGRF list will be made in LoadOldSaveGame.
 			 * Note: this is done here because AfterLoadGame is also called
 			 * for OTTD savegames which have their own NewGRF logic. */
-			ClearGRFConfigList(&_grfconfig);
+			ClearGRFConfigList(_grfconfig);
 			_gamelog.Reset();
 			if (!LoadOldSaveGame(filename)) return SL_REINIT;
 			_sl_version = SL_MIN_VERSION;

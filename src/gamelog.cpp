@@ -505,9 +505,9 @@ bool Gamelog::GRFBugReverse(uint32_t grfid, uint16_t internal_id)
  * @param g grf to determine
  * @return true iff GRF is not static and is loaded
  */
-static inline bool IsLoggableGrfConfig(const GRFConfig *g)
+static inline bool IsLoggableGrfConfig(const GRFConfig &g)
 {
-	return !HasBit(g->flags, GCF_STATIC) && g->status != GCS_NOT_FOUND;
+	return !HasBit(g.flags, GCF_STATIC) && g.status != GCS_NOT_FOUND;
 }
 
 /**
@@ -525,13 +525,13 @@ void Gamelog::GRFRemove(uint32_t grfid)
  * Logs adding of a GRF
  * @param newg added GRF
  */
-void Gamelog::GRFAdd(const GRFConfig *newg)
+void Gamelog::GRFAdd(const GRFConfig &newg)
 {
 	assert(this->action_type == GLAT_LOAD || this->action_type == GLAT_START || this->action_type == GLAT_GRF);
 
 	if (!IsLoggableGrfConfig(newg)) return;
 
-	this->Change(std::make_unique<LoggedChangeGRFAdd>(newg->ident));
+	this->Change(std::make_unique<LoggedChangeGRFAdd>(newg.ident));
 }
 
 /**
@@ -539,11 +539,11 @@ void Gamelog::GRFAdd(const GRFConfig *newg)
  * (the same ID, but different MD5 hash)
  * @param newg new (updated) GRF
  */
-void Gamelog::GRFCompatible(const GRFIdentifier *newg)
+void Gamelog::GRFCompatible(const GRFIdentifier &newg)
 {
 	assert(this->action_type == GLAT_LOAD || this->action_type == GLAT_GRF);
 
-	this->Change(std::make_unique<LoggedChangeGRFChanged>(*newg));
+	this->Change(std::make_unique<LoggedChangeGRFChanged>(newg));
 }
 
 /**
@@ -573,26 +573,26 @@ void Gamelog::GRFParameters(uint32_t grfid)
 /**
  * Logs adding of list of GRFs.
  * Useful when old savegame is loaded or when new game is started
- * @param newg head of GRF linked list
+ * @param newg the GRFConfigList.
  */
-void Gamelog::GRFAddList(const GRFConfig *newg)
+void Gamelog::GRFAddList(const GRFConfigList &newg)
 {
 	assert(this->action_type == GLAT_START || this->action_type == GLAT_LOAD);
 
-	for (; newg != nullptr; newg = newg->next) {
-		this->GRFAdd(newg);
+	for (GRFConfig *gc = newg; gc != nullptr; gc = gc->next) {
+		this->GRFAdd(*gc);
 	}
 }
 
 /**
  * Generates GRFList
- * @param grfc head of GRF linked list
+ * @param grfc the GRFConfigList.
  */
-static std::vector<const GRFConfig *> GenerateGRFList(const GRFConfig *grfc)
+static std::vector<const GRFConfig *> GenerateGRFList(const GRFConfigList &grfc)
 {
 	std::vector<const GRFConfig *> list;
 	for (const GRFConfig *g = grfc; g != nullptr; g = g->next) {
-		if (IsLoggableGrfConfig(g)) list.push_back(g);
+		if (IsLoggableGrfConfig(*g)) list.push_back(g);
 	}
 
 	return list;
@@ -603,7 +603,7 @@ static std::vector<const GRFConfig *> GenerateGRFList(const GRFConfig *grfc)
  * @param oldc original GRF list
  * @param newc new GRF list
  */
-void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
+void Gamelog::GRFUpdate(const GRFConfigList &oldc, const GRFConfigList &newc)
 {
 	std::vector<const GRFConfig *> ol = GenerateGRFList(oldc);
 	std::vector<const GRFConfig *> nl = GenerateGRFList(newc);
@@ -611,10 +611,10 @@ void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 	uint o = 0, n = 0;
 
 	while (o < ol.size() && n < nl.size()) {
-		const GRFConfig *og = ol[o];
-		const GRFConfig *ng = nl[n];
+		const GRFConfig &og = *ol[o];
+		const GRFConfig &ng = *nl[n];
 
-		if (og->ident.grfid != ng->ident.grfid) {
+		if (og.ident.grfid != ng.ident.grfid) {
 			uint oi, ni;
 			for (oi = 0; oi < ol.size(); oi++) {
 				if (ol[oi]->ident.grfid == nl[n]->ident.grfid) break;
@@ -626,7 +626,7 @@ void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 			}
 			if (oi == ol.size()) {
 				/* GRF couldn't be found in the OLD list, GRF was ADDED */
-				this->GRFAdd(nl[n++]);
+				this->GRFAdd(*nl[n++]);
 				continue;
 			}
 			for (ni = 0; ni < nl.size(); ni++) {
@@ -658,12 +658,12 @@ void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 				this->GRFMove(nl[n++]->ident.grfid, -(int)oi);
 			}
 		} else {
-			if (og->ident.md5sum != ng->ident.md5sum) {
+			if (og.ident.md5sum != ng.ident.md5sum) {
 				/* md5sum changed, probably loading 'compatible' GRF */
-				this->GRFCompatible(&nl[n]->ident);
+				this->GRFCompatible(nl[n]->ident);
 			}
 
-			if (og->param != ng->param) {
+			if (og.param != ng.param) {
 				this->GRFParameters(ol[o]->ident.grfid);
 			}
 
@@ -673,7 +673,7 @@ void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 	}
 
 	while (o < ol.size()) this->GRFRemove(ol[o++]->ident.grfid); // remaining GRFs were removed ...
-	while (n < nl.size()) this->GRFAdd   (nl[n++]);              // ... or added
+	while (n < nl.size()) this->GRFAdd   (*nl[n++]);              // ... or added
 }
 
 /**
@@ -709,18 +709,17 @@ void Gamelog::Info(uint32_t *last_ottd_rev, uint8_t *ever_modified, bool *remove
  * @param c the GRF to get the 'previous' version of.
  * @return the GRF identifier or \a c if none could be found.
  */
-const GRFIdentifier *Gamelog::GetOverriddenIdentifier(const GRFConfig *c)
+const GRFIdentifier &Gamelog::GetOverriddenIdentifier(const GRFConfig &c)
 {
-	assert(c != nullptr);
 	const LoggedAction &la = this->data->action.back();
-	if (la.at != GLAT_LOAD) return &c->ident;
+	if (la.at != GLAT_LOAD) return c.ident;
 
 	for (const auto &lc : la.change) {
 		if (lc->ct != GLCT_GRFCOMPAT) continue;
 
-		const LoggedChangeGRFChanged *grf = static_cast<const LoggedChangeGRFChanged *>(lc.get());
-		if (grf->grfid == c->ident.grfid) return grf;
+		const LoggedChangeGRFChanged &grf = *static_cast<const LoggedChangeGRFChanged *>(lc.get());
+		if (grf.grfid == c.ident.grfid) return grf;
 	}
 
-	return &c->ident;
+	return c.ident;
 }
