@@ -13,7 +13,7 @@
 #if defined(_WIN32)
 	/* Minimum supported version is Windows 7. */
 #	define NTDDI_VERSION NTDDI_WIN7
-#	define _WIN32_WINNT _WIN32_WINNT_WIN7
+#	define _WIN32_WINNT 0x0601 // _WIN32_WINNT_WIN7
 #endif
 
 #ifdef _MSC_VER
