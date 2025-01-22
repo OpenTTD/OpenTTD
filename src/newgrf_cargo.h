@@ -20,9 +20,9 @@
  * e.g. in purchase lists, or if no specific cargo type sprite group is supplied.
  */
 namespace SpriteGroupCargo {
-	static constexpr CargoID SG_DEFAULT    = NUM_CARGO;     ///< Default type used when no more-specific cargo matches.
-	static constexpr CargoID SG_PURCHASE   = NUM_CARGO + 1; ///< Used in purchase lists before an item exists.
-	static constexpr CargoID SG_DEFAULT_NA = NUM_CARGO + 2; ///< Used only by stations and roads when no more-specific cargo matches.
+	static constexpr CargoType SG_DEFAULT    = NUM_CARGO;     ///< Default type used when no more-specific cargo matches.
+	static constexpr CargoType SG_PURCHASE   = NUM_CARGO + 1; ///< Used in purchase lists before an item exists.
+	static constexpr CargoType SG_DEFAULT_NA = NUM_CARGO + 2; ///< Used only by stations and roads when no more-specific cargo matches.
 };
 
 /* Forward declarations of structs used */
@@ -31,7 +31,7 @@ struct GRFFile;
 
 SpriteID GetCustomCargoSprite(const CargoSpec *cs);
 uint16_t GetCargoCallback(CallbackID callback, uint32_t param1, uint32_t param2, const CargoSpec *cs);
-CargoID GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit = false);
+CargoType GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit = false);
 
 std::span<const CargoLabel> GetClimateDependentCargoTranslationTable();
 std::span<const CargoLabel> GetClimateIndependentCargoTranslationTable();

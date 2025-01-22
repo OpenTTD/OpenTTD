@@ -25,7 +25,7 @@
  *                           <td> introduction \ref newgrf_changes "(1)"            </td>
  *                           <td> never \ref newgrf_changes "(1)"                   </td>
  *                           <td> no \ref newgrf_changes "(1)"                      </td></tr>
- * <tr><td>#CargoID     </td><td> cargo type                                        </td>
+ * <tr><td>#CargoType   </td><td> cargo type                                        </td>
  *                           <td> game start \ref newgrf_changes "(1)"              </td>
  *                           <td> never \ref newgrf_changes "(1)"                   </td>
  *                           <td> no \ref newgrf_changes "(1)"                      </td></tr>
@@ -111,7 +111,7 @@
 
 /* Define all types here, so they are added to the API docs. */
 typedef uint BridgeType;       ///< The ID of a bridge type.
-typedef uint8_t CargoID;       ///< The ID of a cargo.
+typedef uint8_t CargoType;     ///< The ID of a cargo type.
 typedef uint16_t EngineID;     ///< The ID of an engine.
 typedef uint16_t GoalID;       ///< The ID of a goal.
 typedef uint16_t GroupID;      ///< The ID of a group.

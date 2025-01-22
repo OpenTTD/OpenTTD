@@ -274,21 +274,21 @@ void BaseVehicleListWindow::BuildVehicleList()
  * Check whether a single vehicle should pass the filter.
  *
  * @param v The vehicle to check.
- * @param cid The cargo to filter for.
+ * @param cargo_type The cargo to filter for.
  * @return true iff the vehicle carries the cargo.
  */
-static bool CargoFilterSingle(const Vehicle *v, const CargoID cid)
+static bool CargoFilterSingle(const Vehicle *v, const CargoType cargo_type)
 {
-	if (cid == CargoFilterCriteria::CF_ANY) {
+	if (cargo_type == CargoFilterCriteria::CF_ANY) {
 		return true;
-	} else if (cid == CargoFilterCriteria::CF_NONE) {
+	} else if (cargo_type == CargoFilterCriteria::CF_NONE) {
 		for (const Vehicle *w = v; w != nullptr; w = w->Next()) {
 			if (w->cargo_cap > 0) {
 				return false;
 			}
 		}
 		return true;
-	} else if (cid == CargoFilterCriteria::CF_FREIGHT) {
+	} else if (cargo_type == CargoFilterCriteria::CF_FREIGHT) {
 		bool have_capacity = false;
 		for (const Vehicle *w = v; w != nullptr; w = w->Next()) {
 			if (w->cargo_cap > 0) {
@@ -302,7 +302,7 @@ static bool CargoFilterSingle(const Vehicle *v, const CargoID cid)
 		return have_capacity;
 	} else {
 		for (const Vehicle *w = v; w != nullptr; w = w->Next()) {
-			if (w->cargo_cap > 0 && w->cargo_type == cid) {
+			if (w->cargo_cap > 0 && w->cargo_type == cargo_type) {
 				return true;
 			}
 		}
@@ -314,16 +314,16 @@ static bool CargoFilterSingle(const Vehicle *v, const CargoID cid)
  * Check whether a vehicle can carry a specific cargo.
  *
  * @param vehgroup The vehicle group which contains the vehicle to be checked
- * @param cid The cargo what we are looking for
+ * @param cargo_type The cargo what we are looking for
  * @return Whether the vehicle can carry the specified cargo or not
  */
-static bool CargoFilter(const GUIVehicleGroup *vehgroup, const CargoID cid)
+static bool CargoFilter(const GUIVehicleGroup *vehgroup, const CargoType cargo_type)
 {
 	auto it = vehgroup->vehicles_begin;
 
 	/* Check if any vehicle in the group matches; if so, the whole group does. */
 	for (; it != vehgroup->vehicles_end; it++) {
-		if (CargoFilterSingle(*it, cid)) return true;
+		if (CargoFilterSingle(*it, cargo_type)) return true;
 	}
 
 	return false;
@@ -366,14 +366,14 @@ void AddCargoIconOverlay(std::vector<CargoIconOverlay> &overlays, int x, int wid
  * Draw a cargo icon overlaying an existing sprite, with a black contrast outline.
  * @param x Horizontal position from left.
  * @param y Vertical position from top.
- * @param cid Cargo ID to draw icon for.
+ * @param cargo_type Cargo type to draw icon for.
  */
-void DrawCargoIconOverlay(int x, int y, CargoID cid)
+void DrawCargoIconOverlay(int x, int y, CargoType cargo_type)
 {
 	if (!ShowCargoIconOverlay()) return;
-	if (!IsValidCargoID(cid)) return;
+	if (!IsValidCargoType(cargo_type)) return;
 
-	const CargoSpec *cs = CargoSpec::Get(cid);
+	const CargoSpec *cs = CargoSpec::Get(cargo_type);
 
 	SpriteID spr = cs->GetCargoIcon();
 	if (spr == 0) return;
@@ -411,12 +411,12 @@ static GUIVehicleGroupList::FilterFunction * const _vehicle_group_filter_funcs[]
 
 /**
  * Set cargo filter for the vehicle group list.
- * @param cid The cargo to be set.
+ * @param cargo_type The cargo to be set.
  */
-void BaseVehicleListWindow::SetCargoFilter(CargoID cid)
+void BaseVehicleListWindow::SetCargoFilter(CargoType cargo_type)
 {
-	if (this->cargo_filter_criteria != cid) {
-		this->cargo_filter_criteria = cid;
+	if (this->cargo_filter_criteria != cargo_type) {
+		this->cargo_filter_criteria = cargo_type;
 		/* Deactivate filter if criteria is 'Show All', activate it otherwise. */
 		this->vehgroups.SetFilterState(this->cargo_filter_criteria != CargoFilterCriteria::CF_ANY);
 		this->vehgroups.SetFilterType(0);
@@ -479,13 +479,13 @@ void BaseVehicleListWindow::OnInit()
 	this->SetCargoFilterArray();
 }
 
-StringID BaseVehicleListWindow::GetCargoFilterLabel(CargoID cid) const
+StringID BaseVehicleListWindow::GetCargoFilterLabel(CargoType cargo_type) const
 {
-	switch (cid) {
+	switch (cargo_type) {
 		case CargoFilterCriteria::CF_ANY: return STR_CARGO_TYPE_FILTER_ALL;
 		case CargoFilterCriteria::CF_FREIGHT: return STR_CARGO_TYPE_FILTER_FREIGHT;
 		case CargoFilterCriteria::CF_NONE: return STR_CARGO_TYPE_FILTER_NONE;
-		default: return CargoSpec::Get(cid)->name;
+		default: return CargoSpec::Get(cargo_type)->name;
 	}
 }
 
@@ -596,7 +596,7 @@ static const uint MAX_REFIT_CYCLE = 256;
  * @param dest_cargo_type Destination cargo type.
  * @return the best sub type
  */
-uint8_t GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_type)
+uint8_t GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoType dest_cargo_type)
 {
 	v_from = v_from->GetFirstEnginePart();
 	v_for = v_for->GetFirstEnginePart();
@@ -619,7 +619,7 @@ uint8_t GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_carg
 			if (!e->CanCarryCargo() || !HasBit(e->info.callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) continue;
 			if (!HasBit(e->info.refit_mask, dest_cargo_type) && v->cargo_type != dest_cargo_type) continue;
 
-			CargoID old_cargo_type = v->cargo_type;
+			CargoType old_cargo_type = v->cargo_type;
 			uint8_t old_cargo_subtype = v->cargo_subtype;
 
 			/* Set the 'destination' cargo */
@@ -661,7 +661,7 @@ uint8_t GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_carg
 
 /** Option to refit a vehicle chain */
 struct RefitOption {
-	CargoID cargo;    ///< Cargo to refit to
+	CargoType cargo;    ///< Cargo to refit to
 	uint8_t subtype;     ///< Subcargo to use
 	StringID string;  ///< GRF-local String to display for the cargo
 
@@ -686,7 +686,7 @@ struct RefitOption {
 	}
 };
 
-using RefitOptions = std::map<CargoID, std::vector<RefitOption>, CargoIDComparator>; ///< Available refit options (subtype and string) associated with each cargo type.
+using RefitOptions = std::map<CargoType, std::vector<RefitOption>, CargoTypeComparator>; ///< Available refit options (subtype and string) associated with each cargo type.
 
 /**
  * Draw the list of available refit options for a consist and highlight the selected refit option (if any).
@@ -799,15 +799,15 @@ struct RefitWindow : public Window {
 
 			/* Loop through all cargoes in the refit mask */
 			for (const auto &cs : _sorted_cargo_specs) {
-				CargoID cid = cs->Index();
+				CargoType cargo_type = cs->Index();
 				/* Skip cargo type if it's not listed */
-				if (!HasBit(cmask, cid)) continue;
+				if (!HasBit(cmask, cargo_type)) continue;
 
-				auto &list = this->refit_list[cid];
+				auto &list = this->refit_list[cargo_type];
 				bool first_vehicle = list.empty();
 				if (first_vehicle) {
 					/* Keeping the current subtype is always an option. It also serves as the option in case of no subtypes */
-					list.push_back({cid, UINT8_MAX, STR_EMPTY});
+					list.push_back({cargo_type, UINT8_MAX, STR_EMPTY});
 				}
 
 				/* Check the vehicle's callback mask for cargo suffixes.
@@ -817,10 +817,10 @@ struct RefitWindow : public Window {
 				if (this->order == INVALID_VEH_ORDER_ID && HasBit(callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) {
 					/* Make a note of the original cargo type. It has to be
 					 * changed to test the cargo & subtype... */
-					CargoID temp_cargo = v->cargo_type;
+					CargoType temp_cargo = v->cargo_type;
 					uint8_t temp_subtype  = v->cargo_subtype;
 
-					v->cargo_type = cid;
+					v->cargo_type = cargo_type;
 
 					for (uint refit_cyc = 0; refit_cyc < MAX_REFIT_CYCLE; refit_cyc++) {
 						v->cargo_subtype = refit_cyc;
@@ -836,7 +836,7 @@ struct RefitWindow : public Window {
 							if (subtype == STR_EMPTY) break;
 
 							RefitOption option;
-							option.cargo   = cid;
+							option.cargo   = cargo_type;
 							option.subtype = refit_cyc;
 							option.string  = subtype;
 							include(list, option);
@@ -898,7 +898,7 @@ struct RefitWindow : public Window {
 	{
 		size_t scroll_row = 0;
 		size_t rows = 0;
-		CargoID cargo = this->selected_refit == nullptr ? INVALID_CARGO : this->selected_refit->cargo;
+		CargoType cargo = this->selected_refit == nullptr ? INVALID_CARGO : this->selected_refit->cargo;
 
 		for (const auto &pair : this->refit_list) {
 			if (pair.first == cargo) {
@@ -1027,7 +1027,7 @@ struct RefitWindow : public Window {
 
 		Money money = cost.GetCost();
 		if (mail_capacity > 0) {
-			SetDParam(2, GetCargoIDByLabel(CT_MAIL));
+			SetDParam(2, GetCargoTypeByLabel(CT_MAIL));
 			SetDParam(3, mail_capacity);
 			if (this->order != INVALID_VEH_ORDER_ID) {
 				/* No predictable cost */

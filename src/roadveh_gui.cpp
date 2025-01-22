@@ -55,16 +55,16 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 
 		bool first = true;
 		for (const CargoSpec *cs : _sorted_cargo_specs) {
-			CargoID cid = cs->Index();
-			if (max_cargo[cid] > 0) {
+			CargoType cargo_type = cs->Index();
+			if (max_cargo[cargo_type] > 0) {
 				if (!first) capacity += list_separator;
 
-				SetDParam(0, cid);
-				SetDParam(1, max_cargo[cid]);
+				SetDParam(0, cargo_type);
+				SetDParam(1, max_cargo[cargo_type]);
 				AppendStringInPlace(capacity, STR_JUST_CARGO);
 
-				if (subtype_text[cid] != STR_NULL) {
-					AppendStringInPlace(capacity, subtype_text[cid]);
+				if (subtype_text[cargo_type] != STR_NULL) {
+					AppendStringInPlace(capacity, subtype_text[cargo_type]);
 				}
 
 				first = false;

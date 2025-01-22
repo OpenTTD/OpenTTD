@@ -61,7 +61,7 @@ public:
 	 * @param cargo Cargo type to query for.
 	 * @param other_station Other station to restrict the query with.
 	 */
-	ScriptStationList_Cargo(ScriptStationList_Cargo::CargoMode mode, ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoID cargo, StationID other_station);
+	ScriptStationList_Cargo(ScriptStationList_Cargo::CargoMode mode, ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoType cargo, StationID other_station);
 
 protected:
 
@@ -93,7 +93,7 @@ protected:
 	 * @param other_station Other station to restrict the query with.
 	 */
 	template <CargoSelector Tselector>
-	void Add(StationID station_id, CargoID cargo, StationID other_station = INVALID_STATION);
+	void Add(StationID station_id, CargoType cargo, StationID other_station = INVALID_STATION);
 
 public:
 
@@ -105,7 +105,7 @@ public:
 	 * @param cargo Cargo type to query for.
 	 * @param other_station Other station to restrict the query with.
 	 */
-	ScriptStationList_CargoWaiting(ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoID cargo, StationID other_station);
+	ScriptStationList_CargoWaiting(ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoType cargo, StationID other_station);
 };
 
 /**
@@ -130,7 +130,7 @@ protected:
 	 * @param other_station Other station to restrict the query with.
 	 */
 	template <CargoSelector Tselector>
-	void Add(StationID station_id, CargoID cargo, StationID other_station = INVALID_STATION);
+	void Add(StationID station_id, CargoType cargo, StationID other_station = INVALID_STATION);
 
 public:
 
@@ -142,7 +142,7 @@ public:
 	 * @param cargo Cargo type to query for.
 	 * @param other_station Other station to restrict the query with.
 	 */
-	ScriptStationList_CargoPlanned(ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoID cargo, StationID other_station);
+	ScriptStationList_CargoPlanned(ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoType cargo, StationID other_station);
 };
 
 /**
@@ -157,7 +157,7 @@ public:
 	 * @param station_id Station to query for waiting cargo.
 	 * @param cargo Cargo type to query for.
 	 */
-	ScriptStationList_CargoWaitingByFrom(StationID station_id, CargoID cargo);
+	ScriptStationList_CargoWaitingByFrom(StationID station_id, CargoType cargo);
 };
 
 /**
@@ -173,7 +173,7 @@ public:
 	 * @param cargo Cargo type to query for.
 	 * @param via Next hop to restrict the query with.
 	 */
-	ScriptStationList_CargoWaitingViaByFrom(StationID station_id, CargoID cargo, StationID via);
+	ScriptStationList_CargoWaitingViaByFrom(StationID station_id, CargoType cargo, StationID via);
 };
 
 /**
@@ -188,7 +188,7 @@ public:
 	 * @param station_id Station to query for waiting cargo.
 	 * @param cargo Cargo type to query for.
 	 */
-	ScriptStationList_CargoWaitingByVia(StationID station_id, CargoID cargo);
+	ScriptStationList_CargoWaitingByVia(StationID station_id, CargoType cargo);
 };
 
 /**
@@ -204,7 +204,7 @@ public:
 	 * @param cargo Cargo type to query for.
 	 * @param from Origin station to restrict the query with.
 	 */
-	ScriptStationList_CargoWaitingFromByVia(StationID station_id, CargoID cargo, StationID from);
+	ScriptStationList_CargoWaitingFromByVia(StationID station_id, CargoType cargo, StationID from);
 };
 
 /**
@@ -219,7 +219,7 @@ public:
 	 * @param station_id Station to query for planned flows.
 	 * @param cargo Cargo type to query for.
 	 */
-	ScriptStationList_CargoPlannedByFrom(StationID station_id, CargoID cargo);
+	ScriptStationList_CargoPlannedByFrom(StationID station_id, CargoType cargo);
 };
 
 /**
@@ -235,7 +235,7 @@ public:
 	 * @param cargo Cargo type to query for.
 	 * @param via Next hop to restrict the query with.
 	 */
-	ScriptStationList_CargoPlannedViaByFrom(StationID station_id, CargoID cargo, StationID via);
+	ScriptStationList_CargoPlannedViaByFrom(StationID station_id, CargoType cargo, StationID via);
 };
 
 /**
@@ -251,7 +251,7 @@ public:
 	 * @param station_id Station to query for planned flows.
 	 * @param cargo Cargo type to query for.
 	 */
-	ScriptStationList_CargoPlannedByVia(StationID station_id, CargoID cargo);
+	ScriptStationList_CargoPlannedByVia(StationID station_id, CargoType cargo);
 };
 
 /**
@@ -268,7 +268,7 @@ public:
 	 * @param cargo Cargo type to query for.
 	 * @param from Origin station to restrict the query with.
 	 */
-	ScriptStationList_CargoPlannedFromByVia(StationID station_id, CargoID cargo, StationID from);
+	ScriptStationList_CargoPlannedFromByVia(StationID station_id, CargoType cargo, StationID from);
 };
 
 /**

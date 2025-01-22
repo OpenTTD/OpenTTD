@@ -370,7 +370,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	return (ScriptOrder::StopLocation)order->GetStopLocation();
 }
 
-/* static */ CargoID ScriptOrder::GetOrderRefit(VehicleID vehicle_id, OrderPosition order_position)
+/* static */ CargoType ScriptOrder::GetOrderRefit(VehicleID vehicle_id, OrderPosition order_position)
 {
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return CARGO_NO_REFIT;
 	if (order_position != ORDER_CURRENT && !IsGotoStationOrder(vehicle_id, order_position) && !IsGotoDepotOrder(vehicle_id, order_position)) return CARGO_NO_REFIT;
@@ -437,7 +437,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	return ScriptObject::Command<CMD_MODIFY_ORDER>::Do(0, vehicle_id, order_pos, MOF_STOP_LOCATION, stop_location);
 }
 
-/* static */ bool ScriptOrder::SetOrderRefit(VehicleID vehicle_id, OrderPosition order_position, CargoID refit_cargo)
+/* static */ bool ScriptOrder::SetOrderRefit(VehicleID vehicle_id, OrderPosition order_position, CargoType refit_cargo)
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position));

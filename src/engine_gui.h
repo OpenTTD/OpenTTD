@@ -27,7 +27,7 @@ struct GUIEngineListItem {
 	GUIEngineListItem(EngineID engine_id, EngineID variant_id, EngineDisplayFlags flags, uint8_t indent) : engine_id(engine_id), variant_id(variant_id), flags(flags), indent(indent), level_mask(0) {}
 };
 
-typedef GUIList<GUIEngineListItem, std::nullptr_t, CargoID> GUIEngineList;
+typedef GUIList<GUIEngineListItem, std::nullptr_t, CargoType> GUIEngineList;
 
 typedef bool EngList_SortTypeFunction(const GUIEngineListItem&, const GUIEngineListItem&); ///< argument type for #EngList_Sort.
 void EngList_Sort(GUIEngineList &el, EngList_SortTypeFunction compare);

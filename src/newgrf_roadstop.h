@@ -90,7 +90,7 @@ struct RoadStopScopeResolver : public ScopeResolver {
 	TileIndex tile;                             ///< %Tile of the station.
 	struct BaseStation *st;                     ///< Instance of the station.
 	const struct RoadStopSpec *roadstopspec;    ///< Station (type) specification.
-	CargoID cargo_type;                         ///< Type of cargo of the station.
+	CargoType cargo_type;                         ///< Type of cargo of the station.
 	StationType type;                           ///< Station type.
 	uint8_t view;                                 ///< Station axis.
 	RoadType roadtype;                          ///< Road type (used when no tile)
@@ -180,8 +180,8 @@ uint16_t GetRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t para
 
 void AnimateRoadStopTile(TileIndex tile);
 uint8_t GetRoadStopTileAnimationSpeed(TileIndex tile);
-void TriggerRoadStopAnimation(BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoID cargo_type = INVALID_CARGO);
-void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTrigger trigger, CargoID cargo_type = INVALID_CARGO);
+void TriggerRoadStopAnimation(BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
+void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTrigger trigger, CargoType cargo_type = INVALID_CARGO);
 
 bool GetIfNewStopsByType(RoadStopType rs, RoadType roadtype);
 bool GetIfClassHasNewStopsByType(const RoadStopClass *roadstopclass, RoadStopType rs, RoadType roadtype);

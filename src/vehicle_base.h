@@ -216,10 +216,10 @@ struct GRFFile;
  * Simulated cargo type and capacity for prediction of future links.
  */
 struct RefitDesc {
-	CargoID cargo;    ///< Cargo type the vehicle will be carrying.
+	CargoType cargo;    ///< Cargo type the vehicle will be carrying.
 	uint16_t capacity;  ///< Capacity the vehicle will have.
 	uint16_t remaining; ///< Capacity remaining from before the previous refit.
-	RefitDesc(CargoID cargo, uint16_t capacity, uint16_t remaining) :
+	RefitDesc(CargoType cargo, uint16_t capacity, uint16_t remaining) :
 			cargo(cargo), capacity(capacity), remaining(remaining) {}
 };
 
@@ -339,7 +339,7 @@ public:
 	TimerGameTick::TickCounter last_loading_tick; ///< Last TimerGameTick::counter tick that the vehicle has stopped at a station and could possibly leave with any cargo loaded.
 
 	VehicleCargoList cargo;             ///< The cargo this vehicle is carrying
-	CargoID cargo_type;                 ///< type of cargo this vehicle is carrying
+	CargoType cargo_type;                 ///< type of cargo this vehicle is carrying
 	uint8_t cargo_subtype;                 ///< Used for livery refits (NewGRF variations)
 	uint16_t cargo_cap;                   ///< total capacity
 	uint16_t refit_cap;                   ///< Capacity left over from before last refit.

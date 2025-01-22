@@ -152,7 +152,7 @@ struct EngineInfo {
 	uint8_t decay_speed;
 	uint8_t load_amount;
 	uint8_t climates;      ///< Climates supported by the engine.
-	CargoID cargo_type;
+	CargoType cargo_type;
 	std::variant<CargoLabel, MixedCargoType> cargo_label;
 	CargoTypes refit_mask;
 	uint8_t refit_cost;

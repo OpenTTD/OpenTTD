@@ -194,7 +194,7 @@ public:
 	 * Real constructor.
 	 * @param cargo Cargo the link graph is about.
 	 */
-	LinkGraph(CargoID cargo) : cargo(cargo), last_compression(TimerGameEconomy::date) {}
+	LinkGraph(CargoType cargo) : cargo(cargo), last_compression(TimerGameEconomy::date) {}
 
 	void Init(uint size);
 	void ShiftDates(TimerGameEconomy::Date interval);
@@ -236,10 +236,10 @@ public:
 	inline TimerGameEconomy::Date LastCompression() const { return this->last_compression; }
 
 	/**
-	 * Get the cargo ID this component's link graph refers to.
-	 * @return Cargo ID.
+	 * Get the cargo type this component's link graph refers to.
+	 * @return Cargo type.
 	 */
-	inline CargoID Cargo() const { return this->cargo; }
+	inline CargoType Cargo() const { return this->cargo; }
 
 	/**
 	 * Scale a value to its monthly equivalent, based on last compression.
@@ -261,7 +261,7 @@ protected:
 	friend class SlLinkgraphEdge;
 	friend class LinkGraphJob;
 
-	CargoID cargo;         ///< Cargo of this component's link graph.
+	CargoType cargo;         ///< Cargo of this component's link graph.
 	TimerGameEconomy::Date last_compression; ///< Last time the capacities and supplies were compressed.
 	NodeVector nodes;      ///< Nodes in the component.
 };

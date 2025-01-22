@@ -91,7 +91,7 @@ uint32_t GetIndustryIDAtOffset(TileIndex new_tile, const Industry *i, uint32_t c
 void IndustryProductionCallback(Industry *ind, int reason);
 CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, size_t layout, uint32_t seed, uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type);
 uint32_t GetIndustryProbabilityCallback(IndustryType type, IndustryAvailabilityCallType creation_type, uint32_t default_prob);
-bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoID cargo_type);
+bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoType cargo_type);
 
 IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32_t grf_id);
 

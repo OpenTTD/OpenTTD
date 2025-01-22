@@ -95,7 +95,7 @@ ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID in
 		/* Only add the tile if it accepts the cargo (sometimes just 1 tile of an
 		 *  industry triggers the acceptance). */
 		CargoArray acceptance = ::GetAcceptanceAroundTiles(cur_tile, 1, 1, radius);
-		if (std::none_of(std::begin(i->accepted), std::end(i->accepted), [&acceptance](const auto &a) { return ::IsValidCargoID(a.cargo) && acceptance[a.cargo] != 0; })) continue;
+		if (std::none_of(std::begin(i->accepted), std::end(i->accepted), [&acceptance](const auto &a) { return ::IsValidCargoType(a.cargo) && acceptance[a.cargo] != 0; })) continue;
 
 		this->AddTile(cur_tile);
 	}

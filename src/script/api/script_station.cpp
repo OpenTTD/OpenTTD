@@ -41,25 +41,25 @@
 
 template <bool Tfrom, bool Tvia>
 /* static */ bool ScriptStation::IsCargoRequestValid(StationID station_id,
-		StationID from_station_id, StationID via_station_id, CargoID cargo_id)
+		StationID from_station_id, StationID via_station_id, CargoType cargo_type)
 {
 	if (!IsValidStation(station_id)) return false;
 	if (Tfrom && !IsValidStation(from_station_id) && from_station_id != STATION_INVALID) return false;
 	if (Tvia && !IsValidStation(via_station_id) && via_station_id != STATION_INVALID) return false;
-	if (!ScriptCargo::IsValidCargo(cargo_id)) return false;
+	if (!ScriptCargo::IsValidCargo(cargo_type)) return false;
 	return true;
 }
 
 template <bool Tfrom, bool Tvia>
 /* static */ SQInteger ScriptStation::CountCargoWaiting(StationID station_id,
-		StationID from_station_id, StationID via_station_id, CargoID cargo_id)
+		StationID from_station_id, StationID via_station_id, CargoType cargo_type)
 {
 	if (!ScriptStation::IsCargoRequestValid<Tfrom, Tvia>(station_id, from_station_id,
-			via_station_id, cargo_id)) {
+			via_station_id, cargo_type)) {
 		return -1;
 	}
 
-	const ::GoodsEntry &goods = ::Station::Get(station_id)->goods[cargo_id];
+	const ::GoodsEntry &goods = ::Station::Get(station_id)->goods[cargo_type];
 	if (!goods.HasData()) return 0;
 
 	const StationCargoList &cargo_list = goods.GetData().cargo;
@@ -78,39 +78,39 @@ template <bool Tfrom, bool Tvia>
 	return cargo_count;
 }
 
-/* static */ SQInteger ScriptStation::GetCargoWaiting(StationID station_id, CargoID cargo_id)
+/* static */ SQInteger ScriptStation::GetCargoWaiting(StationID station_id, CargoType cargo_type)
 {
-	return CountCargoWaiting<false, false>(station_id, STATION_INVALID, STATION_INVALID, cargo_id);
+	return CountCargoWaiting<false, false>(station_id, STATION_INVALID, STATION_INVALID, cargo_type);
 }
 
 /* static */ SQInteger ScriptStation::GetCargoWaitingFrom(StationID station_id,
-		StationID from_station_id, CargoID cargo_id)
+		StationID from_station_id, CargoType cargo_type)
 {
-	return CountCargoWaiting<true, false>(station_id, from_station_id, STATION_INVALID, cargo_id);
+	return CountCargoWaiting<true, false>(station_id, from_station_id, STATION_INVALID, cargo_type);
 }
 
 /* static */ SQInteger ScriptStation::GetCargoWaitingVia(StationID station_id,
-		StationID via_station_id, CargoID cargo_id)
+		StationID via_station_id, CargoType cargo_type)
 {
-	return CountCargoWaiting<false, true>(station_id, STATION_INVALID, via_station_id, cargo_id);
+	return CountCargoWaiting<false, true>(station_id, STATION_INVALID, via_station_id, cargo_type);
 }
 
 /* static */ SQInteger ScriptStation::GetCargoWaitingFromVia(StationID station_id,
-		StationID from_station_id, StationID via_station_id, CargoID cargo_id)
+		StationID from_station_id, StationID via_station_id, CargoType cargo_type)
 {
-	return CountCargoWaiting<true, true>(station_id, from_station_id, via_station_id, cargo_id);
+	return CountCargoWaiting<true, true>(station_id, from_station_id, via_station_id, cargo_type);
 }
 
 template <bool Tfrom, bool Tvia>
 /* static */ SQInteger ScriptStation::CountCargoPlanned(StationID station_id,
-		StationID from_station_id, StationID via_station_id, CargoID cargo_id)
+		StationID from_station_id, StationID via_station_id, CargoType cargo_type)
 {
 	if (!ScriptStation::IsCargoRequestValid<Tfrom, Tvia>(station_id, from_station_id,
-			via_station_id, cargo_id)) {
+			via_station_id, cargo_type)) {
 		return -1;
 	}
 
-	const ::GoodsEntry &goods = ::Station::Get(station_id)->goods[cargo_id];
+	const ::GoodsEntry &goods = ::Station::Get(station_id)->goods[cargo_type];
 	if (!goods.HasData()) return 0;
 
 	const FlowStatMap &flows = goods.GetData().flows;
@@ -122,42 +122,42 @@ template <bool Tfrom, bool Tvia>
 	}
 }
 
-/* static */ SQInteger ScriptStation::GetCargoPlanned(StationID station_id, CargoID cargo_id)
+/* static */ SQInteger ScriptStation::GetCargoPlanned(StationID station_id, CargoType cargo_type)
 {
-	return CountCargoPlanned<false, false>(station_id, STATION_INVALID, STATION_INVALID, cargo_id);
+	return CountCargoPlanned<false, false>(station_id, STATION_INVALID, STATION_INVALID, cargo_type);
 }
 
 /* static */ SQInteger ScriptStation::GetCargoPlannedFrom(StationID station_id,
-		StationID from_station_id, CargoID cargo_id)
+		StationID from_station_id, CargoType cargo_type)
 {
-	return CountCargoPlanned<true, false>(station_id, from_station_id, STATION_INVALID, cargo_id);
+	return CountCargoPlanned<true, false>(station_id, from_station_id, STATION_INVALID, cargo_type);
 }
 
 /* static */ SQInteger ScriptStation::GetCargoPlannedVia(StationID station_id,
-		StationID via_station_id, CargoID cargo_id)
+		StationID via_station_id, CargoType cargo_type)
 {
-	return CountCargoPlanned<false, true>(station_id, STATION_INVALID, via_station_id, cargo_id);
+	return CountCargoPlanned<false, true>(station_id, STATION_INVALID, via_station_id, cargo_type);
 }
 
 /* static */ SQInteger ScriptStation::GetCargoPlannedFromVia(StationID station_id,
-		StationID from_station_id, StationID via_station_id, CargoID cargo_id)
+		StationID from_station_id, StationID via_station_id, CargoType cargo_type)
 {
-	return CountCargoPlanned<true, true>(station_id, from_station_id, via_station_id, cargo_id);
+	return CountCargoPlanned<true, true>(station_id, from_station_id, via_station_id, cargo_type);
 }
 
-/* static */ bool ScriptStation::HasCargoRating(StationID station_id, CargoID cargo_id)
+/* static */ bool ScriptStation::HasCargoRating(StationID station_id, CargoType cargo_type)
 {
 	if (!IsValidStation(station_id)) return false;
-	if (!ScriptCargo::IsValidCargo(cargo_id)) return false;
+	if (!ScriptCargo::IsValidCargo(cargo_type)) return false;
 
-	return ::Station::Get(station_id)->goods[cargo_id].HasRating();
+	return ::Station::Get(station_id)->goods[cargo_type].HasRating();
 }
 
-/* static */ SQInteger ScriptStation::GetCargoRating(StationID station_id, CargoID cargo_id)
+/* static */ SQInteger ScriptStation::GetCargoRating(StationID station_id, CargoType cargo_type)
 {
-	if (!ScriptStation::HasCargoRating(station_id, cargo_id)) return -1;
+	if (!ScriptStation::HasCargoRating(station_id, cargo_type)) return -1;
 
-	return ::ToPercent8(::Station::Get(station_id)->goods[cargo_id].rating);
+	return ::ToPercent8(::Station::Get(station_id)->goods[cargo_type].rating);
 }
 
 /* static */ SQInteger ScriptStation::GetCoverageRadius(ScriptStation::StationType station_type)

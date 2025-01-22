@@ -50,7 +50,7 @@
 	return GetString(STR_ENGINE_NAME);
 }
 
-/* static */ CargoID ScriptEngine::GetCargoType(EngineID engine_id)
+/* static */ CargoType ScriptEngine::GetCargoType(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return INVALID_CARGO;
 
@@ -59,24 +59,24 @@
 	auto it = std::max_element(std::cbegin(cap), std::cend(cap));
 	if (*it == 0) return INVALID_CARGO;
 
-	return CargoID(std::distance(std::cbegin(cap), it));
+	return CargoType(std::distance(std::cbegin(cap), it));
 }
 
-/* static */ bool ScriptEngine::CanRefitCargo(EngineID engine_id, CargoID cargo_id)
+/* static */ bool ScriptEngine::CanRefitCargo(EngineID engine_id, CargoType cargo_type)
 {
 	if (!IsValidEngine(engine_id)) return false;
-	if (!ScriptCargo::IsValidCargo(cargo_id)) return false;
+	if (!ScriptCargo::IsValidCargo(cargo_type)) return false;
 
-	return HasBit(::GetUnionOfArticulatedRefitMasks(engine_id, true), cargo_id);
+	return HasBit(::GetUnionOfArticulatedRefitMasks(engine_id, true), cargo_type);
 }
 
-/* static */ bool ScriptEngine::CanPullCargo(EngineID engine_id, CargoID cargo_id)
+/* static */ bool ScriptEngine::CanPullCargo(EngineID engine_id, CargoType cargo_type)
 {
 	if (!IsValidEngine(engine_id)) return false;
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return false;
-	if (!ScriptCargo::IsValidCargo(cargo_id)) return false;
+	if (!ScriptCargo::IsValidCargo(cargo_type)) return false;
 
-	return (::RailVehInfo(engine_id)->ai_passenger_only != 1) || ScriptCargo::HasCargoClass(cargo_id, ScriptCargo::CC_PASSENGERS);
+	return (::RailVehInfo(engine_id)->ai_passenger_only != 1) || ScriptCargo::HasCargoClass(cargo_type, ScriptCargo::CC_PASSENGERS);
 }
 
 

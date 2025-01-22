@@ -31,7 +31,7 @@ public:
 	std::vector<Industry::AcceptedCargo> &GetVector(Industry *i) const override { return i->accepted; }
 
 	/* Old array structure used by INDYChunkHandler for savegames before SLV_INDUSTRY_CARGO_REORGANISE. */
-	static inline std::array<CargoID, INDUSTRY_NUM_INPUTS> old_cargo;
+	static inline std::array<CargoType, INDUSTRY_NUM_INPUTS> old_cargo;
 	static inline std::array<uint16_t, INDUSTRY_NUM_INPUTS> old_waiting;
 	static inline std::array<TimerGameEconomy::Date, INDUSTRY_NUM_INPUTS> old_last_accepted;
 
@@ -53,7 +53,7 @@ public:
 
 	void Save(Industry::ProducedCargo *p) const override
 	{
-		if (!IsValidCargoID(p->cargo)) {
+		if (!IsValidCargoType(p->cargo)) {
 			/* Don't save any history if cargo slot isn't used. */
 			SlSetStructListLength(0);
 			return;
@@ -90,7 +90,7 @@ public:
 	std::vector<Industry::ProducedCargo> &GetVector(Industry *i) const override { return i->produced; }
 
 	/* Old array structure used by INDYChunkHandler for savegames before SLV_INDUSTRY_CARGO_REORGANISE. */
-	static inline std::array<CargoID, INDUSTRY_NUM_OUTPUTS> old_cargo;
+	static inline std::array<CargoType, INDUSTRY_NUM_OUTPUTS> old_cargo;
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_waiting;
 	static inline std::array<uint8_t, INDUSTRY_NUM_OUTPUTS> old_rate;
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_this_month_production;

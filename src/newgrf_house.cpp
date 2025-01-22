@@ -446,8 +446,8 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 
 		/* Cargo acceptance history of nearby stations */
 		case 0x64: {
-			CargoID cid = GetCargoTranslation(parameter, this->ro.grffile);
-			if (!IsValidCargoID(cid)) return 0;
+			CargoType cargo_type = GetCargoTranslation(parameter, this->ro.grffile);
+			if (!IsValidCargoType(cargo_type)) return 0;
 
 			/* Extract tile offset. */
 			int8_t x_offs = GB(GetRegister(0x100), 0, 8);
@@ -459,14 +459,14 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 			/* Collect acceptance stats. */
 			uint32_t res = 0;
 			for (Station *st : stations.GetStations()) {
-				if (HasBit(st->goods[cid].status, GoodsEntry::GES_EVER_ACCEPTED))    SetBit(res, 0);
-				if (HasBit(st->goods[cid].status, GoodsEntry::GES_LAST_MONTH))       SetBit(res, 1);
-				if (HasBit(st->goods[cid].status, GoodsEntry::GES_CURRENT_MONTH))    SetBit(res, 2);
-				if (HasBit(st->goods[cid].status, GoodsEntry::GES_ACCEPTED_BIGTICK)) SetBit(res, 3);
+				if (HasBit(st->goods[cargo_type].status, GoodsEntry::GES_EVER_ACCEPTED))    SetBit(res, 0);
+				if (HasBit(st->goods[cargo_type].status, GoodsEntry::GES_LAST_MONTH))       SetBit(res, 1);
+				if (HasBit(st->goods[cargo_type].status, GoodsEntry::GES_CURRENT_MONTH))    SetBit(res, 2);
+				if (HasBit(st->goods[cargo_type].status, GoodsEntry::GES_ACCEPTED_BIGTICK)) SetBit(res, 3);
 			}
 
 			/* Cargo triggered CB 148? */
-			if (HasBit(this->watched_cargo_triggers, cid)) SetBit(res, 4);
+			if (HasBit(this->watched_cargo_triggers, cargo_type)) SetBit(res, 4);
 
 			return res;
 		}

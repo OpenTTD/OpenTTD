@@ -31,7 +31,7 @@
 	return ::Subsidy::Get(subsidy_id)->IsAwarded();
 }
 
-/* static */ bool ScriptSubsidy::Create(CargoID cargo_type, SubsidyParticipantType from_type, SQInteger from_id, SubsidyParticipantType to_type, SQInteger to_id)
+/* static */ bool ScriptSubsidy::Create(CargoType cargo_type, SubsidyParticipantType from_type, SQInteger from_id, SubsidyParticipantType to_type, SQInteger to_id)
 {
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, ScriptCargo::IsValidCargo(cargo_type));
@@ -63,7 +63,7 @@
 	return (ScriptDate::Date)TimerGameEconomy::ConvertYMDToDate(ymd.year, ymd.month, ymd.day).base();
 }
 
-/* static */ CargoID ScriptSubsidy::GetCargoType(SubsidyID subsidy_id)
+/* static */ CargoType ScriptSubsidy::GetCargoType(SubsidyID subsidy_id)
 {
 	if (!IsValidSubsidy(subsidy_id)) return INVALID_CARGO;
 

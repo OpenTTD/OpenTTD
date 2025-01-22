@@ -889,7 +889,7 @@ struct DepotWindow : Window {
 		details.clear();
 
 		for (const CargoSpec *cs : _sorted_cargo_specs) {
-			CargoID cargo_type = cs->Index();
+			CargoType cargo_type = cs->Index();
 			if (capacity[cargo_type] == 0) continue;
 
 			SetDParam(0, cargo_type);           // {CARGO} #1

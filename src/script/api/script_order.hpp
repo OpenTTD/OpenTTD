@@ -348,7 +348,7 @@ public:
 	 *  in the orderlist, but they can be the current order of a vehicle.
 	 * @return The refit cargo of the order or CT_NO_REFIT if no refit is set.
 	 */
-	static CargoID GetOrderRefit(VehicleID vehicle_id, OrderPosition order_position);
+	static CargoType GetOrderRefit(VehicleID vehicle_id, OrderPosition order_position);
 
 	/**
 	 * Sets the OrderPosition to jump to if the check succeeds of the given order for the given vehicle.
@@ -427,7 +427,7 @@ public:
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return Whether the order has been/can be changed.
 	 */
-	static bool SetOrderRefit(VehicleID vehicle_id, OrderPosition order_position, CargoID refit_cargo);
+	static bool SetOrderRefit(VehicleID vehicle_id, OrderPosition order_position, CargoType refit_cargo);
 
 	/**
 	 * Appends an order to the end of the vehicle's order list.

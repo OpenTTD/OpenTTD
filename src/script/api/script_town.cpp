@@ -86,33 +86,33 @@
 	return t->xy;
 }
 
-/* static */ SQInteger ScriptTown::GetLastMonthProduction(TownID town_id, CargoID cargo_id)
+/* static */ SQInteger ScriptTown::GetLastMonthProduction(TownID town_id, CargoType cargo_type)
 {
 	if (!IsValidTown(town_id)) return -1;
-	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_type)) return -1;
 
 	const Town *t = ::Town::Get(town_id);
 
-	return t->supplied[cargo_id].old_max;
+	return t->supplied[cargo_type].old_max;
 }
 
-/* static */ SQInteger ScriptTown::GetLastMonthSupplied(TownID town_id, CargoID cargo_id)
+/* static */ SQInteger ScriptTown::GetLastMonthSupplied(TownID town_id, CargoType cargo_type)
 {
 	if (!IsValidTown(town_id)) return -1;
-	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_type)) return -1;
 
 	const Town *t = ::Town::Get(town_id);
 
-	return t->supplied[cargo_id].old_act;
+	return t->supplied[cargo_type].old_act;
 }
 
-/* static */ SQInteger ScriptTown::GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id)
+/* static */ SQInteger ScriptTown::GetLastMonthTransportedPercentage(TownID town_id, CargoType cargo_type)
 {
 	if (!IsValidTown(town_id)) return -1;
-	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_type)) return -1;
 
 	const Town *t = ::Town::Get(town_id);
-	return ::ToPercent8(t->GetPercentTransported(cargo_id));
+	return ::ToPercent8(t->GetPercentTransported(cargo_type));
 }
 
 /* static */ SQInteger ScriptTown::GetLastMonthReceived(TownID town_id, ScriptCargo::TownEffect towneffect_id)

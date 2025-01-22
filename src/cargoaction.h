@@ -40,9 +40,9 @@ class CargoDelivery : public CargoRemoval<VehicleCargoList> {
 protected:
 	TileIndex current_tile; ///< Current tile cargo delivery is happening.
 	CargoPayment *payment; ///< Payment object where payments will be registered.
-	CargoID cargo; ///< The cargo type of the cargo.
+	CargoType cargo; ///< The cargo type of the cargo.
 public:
-	CargoDelivery(VehicleCargoList *source, uint max_move, CargoID cargo, CargoPayment *payment, TileIndex current_tile) :
+	CargoDelivery(VehicleCargoList *source, uint max_move, CargoType cargo, CargoPayment *payment, TileIndex current_tile) :
 			CargoRemoval<VehicleCargoList>(source, max_move), current_tile(current_tile), payment(payment), cargo(cargo) {}
 	bool operator()(CargoPacket *cp);
 };

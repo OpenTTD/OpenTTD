@@ -26,7 +26,7 @@ struct LinkProperties {
 	/** Return the usage of the link to display. */
 	uint Usage() const { return std::max(this->usage, this->planned); }
 
-	CargoID cargo; ///< Cargo type of the link.
+	CargoType cargo; ///< Cargo type of the link.
 	uint capacity; ///< Capacity of the link.
 	uint usage;    ///< Actual usage of the link.
 	uint planned;  ///< Planned usage of the link.
@@ -94,7 +94,7 @@ protected:
 	void GetWidgetDpi(DrawPixelInfo *dpi) const;
 	void RebuildCache();
 
-	static void AddStats(CargoID new_cargo, uint new_cap, uint new_usg, uint new_flow, uint32_t time, bool new_shared, LinkProperties &cargo);
+	static void AddStats(CargoType new_cargo, uint new_cap, uint new_usg, uint new_flow, uint32_t time, bool new_shared, LinkProperties &cargo);
 	static void DrawVertex(int x, int y, int size, int colour, int border_colour);
 };
 

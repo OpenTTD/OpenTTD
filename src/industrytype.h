@@ -105,14 +105,14 @@ struct IndustrySpec {
 	uint32_t prospecting_chance;                  ///< Chance prospecting succeeds
 	IndustryType conflicting[3];                ///< Industries this industry cannot be close to
 	uint8_t check_proc;                            ///< Index to a procedure to check for conflicting circumstances
-	std::array<CargoID, INDUSTRY_NUM_OUTPUTS> produced_cargo;
+	std::array<CargoType, INDUSTRY_NUM_OUTPUTS> produced_cargo;
 	uint8_t production_rate[INDUSTRY_NUM_OUTPUTS];
 	/**
 	 * minimum amount of cargo transported to the stations.
 	 * If the waiting cargo is less than this number, no cargo is moved to it.
 	 */
 	uint8_t minimal_cargo;
-	std::array<CargoID, INDUSTRY_NUM_INPUTS> accepts_cargo; ///< 16 accepted cargoes.
+	std::array<CargoType, INDUSTRY_NUM_INPUTS> accepts_cargo; ///< 16 accepted cargoes.
 	uint16_t input_cargo_multiplier[INDUSTRY_NUM_INPUTS][INDUSTRY_NUM_OUTPUTS]; ///< Input cargo multipliers (multiply amount of incoming cargo for the produced cargoes)
 	IndustryLifeType life_type;                 ///< This is also known as Industry production flag, in newgrf specs
 	uint8_t climate_availability;                  ///< Bitmask, giving landscape enums as bit position
@@ -147,7 +147,7 @@ struct IndustrySpec {
  * @note A tile can at most accept 3 types of cargo, even if an industry as a whole can accept more types.
  */
 struct IndustryTileSpec {
-	std::array<CargoID, INDUSTRY_NUM_INPUTS> accepts_cargo; ///< Cargo accepted by this tile
+	std::array<CargoType, INDUSTRY_NUM_INPUTS> accepts_cargo; ///< Cargo accepted by this tile
 	std::array<int8_t, INDUSTRY_NUM_INPUTS> acceptance; ///< Level of acceptance per cargo type (signed, may be negative!)
 	Slope slopes_refused;                 ///< slope pattern on which this tile cannot be built
 	uint8_t anim_production;                 ///< Animation frame to start when goods are produced

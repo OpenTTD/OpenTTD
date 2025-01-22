@@ -40,7 +40,7 @@ ScriptStationList_Vehicle::ScriptStationList_Vehicle(VehicleID vehicle_id)
 }
 
 ScriptStationList_Cargo::ScriptStationList_Cargo(ScriptStationList_Cargo::CargoMode mode,
-		ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoID cargo,
+		ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoType cargo,
 		StationID other_station)
 {
 	switch (mode) {
@@ -56,7 +56,7 @@ ScriptStationList_Cargo::ScriptStationList_Cargo(ScriptStationList_Cargo::CargoM
 }
 
 ScriptStationList_CargoWaiting::ScriptStationList_CargoWaiting(
-		ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoID cargo,
+		ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoType cargo,
 		StationID other_station)
 {
 	switch (selector) {
@@ -78,7 +78,7 @@ ScriptStationList_CargoWaiting::ScriptStationList_CargoWaiting(
 }
 
 ScriptStationList_CargoPlanned::ScriptStationList_CargoPlanned(
-		ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoID cargo,
+		ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoType cargo,
 		StationID other_station)
 {
 	switch (selector) {
@@ -101,7 +101,7 @@ ScriptStationList_CargoPlanned::ScriptStationList_CargoPlanned(
 
 class CargoCollector {
 public:
-	CargoCollector(ScriptStationList_Cargo *parent, StationID station_id, CargoID cargo,
+	CargoCollector(ScriptStationList_Cargo *parent, StationID station_id, CargoType cargo,
 			StationID other);
 	~CargoCollector() ;
 
@@ -121,7 +121,7 @@ private:
 };
 
 CargoCollector::CargoCollector(ScriptStationList_Cargo *parent,
-		StationID station_id, CargoID cargo, StationID other) :
+		StationID station_id, CargoType cargo, StationID other) :
 	list(parent), ge(nullptr), other_station(other), last_key(INVALID_STATION), amount(0)
 {
 	if (!ScriptStation::IsValidStation(station_id)) return;
@@ -175,7 +175,7 @@ void CargoCollector::Update(StationID from, StationID via, uint amount)
 
 
 template <ScriptStationList_Cargo::CargoSelector Tselector>
-void ScriptStationList_CargoWaiting::Add(StationID station_id, CargoID cargo, StationID other_station)
+void ScriptStationList_CargoWaiting::Add(StationID station_id, CargoType cargo, StationID other_station)
 {
 	CargoCollector collector(this, station_id, cargo, other_station);
 	if (collector.GE() == nullptr) return;
@@ -190,7 +190,7 @@ void ScriptStationList_CargoWaiting::Add(StationID station_id, CargoID cargo, St
 
 
 template <ScriptStationList_Cargo::CargoSelector Tselector>
-void ScriptStationList_CargoPlanned::Add(StationID station_id, CargoID cargo, StationID other_station)
+void ScriptStationList_CargoPlanned::Add(StationID station_id, CargoType cargo, StationID other_station)
 {
 	CargoCollector collector(this, station_id, cargo, other_station);
 	if (collector.GE() == nullptr) return;
@@ -210,13 +210,13 @@ void ScriptStationList_CargoPlanned::Add(StationID station_id, CargoID cargo, St
 }
 
 ScriptStationList_CargoWaitingByFrom::ScriptStationList_CargoWaitingByFrom(StationID station_id,
-		CargoID cargo)
+		CargoType cargo)
 {
 	this->Add<CS_BY_FROM>(station_id, cargo);
 }
 
 ScriptStationList_CargoWaitingViaByFrom::ScriptStationList_CargoWaitingViaByFrom(
-		StationID station_id, CargoID cargo, StationID via)
+		StationID station_id, CargoType cargo, StationID via)
 {
 	CargoCollector collector(this, station_id, cargo, via);
 	if (collector.GE() == nullptr) return;
@@ -231,39 +231,39 @@ ScriptStationList_CargoWaitingViaByFrom::ScriptStationList_CargoWaitingViaByFrom
 
 
 ScriptStationList_CargoWaitingByVia::ScriptStationList_CargoWaitingByVia(StationID station_id,
-		CargoID cargo)
+		CargoType cargo)
 {
 	this->Add<CS_BY_VIA>(station_id, cargo);
 }
 
 ScriptStationList_CargoWaitingFromByVia::ScriptStationList_CargoWaitingFromByVia(
-		StationID station_id, CargoID cargo, StationID from)
+		StationID station_id, CargoType cargo, StationID from)
 {
 	this->Add<CS_FROM_BY_VIA>(station_id, cargo, from);
 }
 
 ScriptStationList_CargoPlannedByFrom::ScriptStationList_CargoPlannedByFrom(StationID station_id,
-		CargoID cargo)
+		CargoType cargo)
 {
 	this->Add<CS_BY_FROM>(station_id, cargo);
 }
 
 ScriptStationList_CargoPlannedViaByFrom::ScriptStationList_CargoPlannedViaByFrom(
-		StationID station_id, CargoID cargo, StationID via)
+		StationID station_id, CargoType cargo, StationID via)
 {
 	this->Add<CS_VIA_BY_FROM>(station_id, cargo, via);
 }
 
 
 ScriptStationList_CargoPlannedByVia::ScriptStationList_CargoPlannedByVia(StationID station_id,
-		CargoID cargo)
+		CargoType cargo)
 {
 	this->Add<CS_BY_VIA>(station_id, cargo);
 }
 
 
 ScriptStationList_CargoPlannedFromByVia::ScriptStationList_CargoPlannedFromByVia(
-		StationID station_id, CargoID cargo, StationID from)
+		StationID station_id, CargoType cargo, StationID from)
 {
 	CargoCollector collector(this, station_id, cargo, from);
 	if (collector.GE() == nullptr) return;

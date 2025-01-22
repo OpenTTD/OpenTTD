@@ -18,16 +18,16 @@ ScriptIndustryList::ScriptIndustryList(HSQUIRRELVM vm)
 	ScriptList::FillList<Industry>(vm, this);
 }
 
-ScriptIndustryList_CargoAccepting::ScriptIndustryList_CargoAccepting(CargoID cargo_id)
+ScriptIndustryList_CargoAccepting::ScriptIndustryList_CargoAccepting(CargoType cargo_type)
 {
 	ScriptList::FillList<Industry>(this,
-		[cargo_id](const Industry *i) { return i->IsCargoAccepted(cargo_id); }
+		[cargo_type](const Industry *i) { return i->IsCargoAccepted(cargo_type); }
 	);
 }
 
-ScriptIndustryList_CargoProducing::ScriptIndustryList_CargoProducing(CargoID cargo_id)
+ScriptIndustryList_CargoProducing::ScriptIndustryList_CargoProducing(CargoType cargo_type)
 {
 	ScriptList::FillList<Industry>(this,
-		[cargo_id](const Industry *i) { return i->IsCargoProduced(cargo_id); }
+		[cargo_type](const Industry *i) { return i->IsCargoProduced(cargo_type); }
 	);
 }

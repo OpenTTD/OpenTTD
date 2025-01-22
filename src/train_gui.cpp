@@ -26,7 +26,7 @@
  * @param new_veh_id ID of the ne vehicle.
  * @param tile   The tile the command was executed on.
  */
-void CcBuildWagon(Commands, const CommandCost &result, VehicleID new_veh_id, uint, uint16_t, CargoArray, TileIndex tile, EngineID, bool, CargoID, ClientID)
+void CcBuildWagon(Commands, const CommandCost &result, VehicleID new_veh_id, uint, uint16_t, CargoArray, TileIndex tile, EngineID, bool, CargoType, ClientID)
 {
 	if (result.Failed()) return;
 
@@ -173,7 +173,7 @@ void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineIm
 
 /** Helper struct for the cargo details information */
 struct CargoSummaryItem {
-	CargoID cargo;    ///< The cargo that is carried
+	CargoType cargo;    ///< The cargo that is carried
 	StringID subtype; ///< STR_EMPTY if none
 	uint capacity;    ///< Amount that can be carried
 	uint amount;      ///< Amount that is carried
@@ -218,7 +218,7 @@ static void TrainDetailsCargoTab(const CargoSummaryItem *item, int left, int rig
 		SetDParam(3, _settings_game.vehicle.freight_trains);
 		str = FreightWagonMult(item->cargo) > 1 ? STR_VEHICLE_DETAILS_CARGO_FROM_MULT : STR_VEHICLE_DETAILS_CARGO_FROM;
 	} else {
-		str = !IsValidCargoID(item->cargo) ? STR_QUANTITY_N_A : STR_VEHICLE_DETAILS_CARGO_EMPTY;
+		str = !IsValidCargoType(item->cargo) ? STR_QUANTITY_N_A : STR_VEHICLE_DETAILS_CARGO_EMPTY;
 	}
 
 	DrawString(left, right, y, str, TC_LIGHT_BLUE);
@@ -257,7 +257,7 @@ static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
 static void TrainDetailsCapacityTab(const CargoSummaryItem *item, int left, int right, int y)
 {
 	StringID str;
-	if (IsValidCargoID(item->cargo)) {
+	if (IsValidCargoType(item->cargo)) {
 		SetDParam(0, item->cargo);
 		SetDParam(1, item->capacity);
 		SetDParam(4, item->subtype);
@@ -285,7 +285,7 @@ static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary &su
 		CargoSummaryItem new_item;
 		new_item.cargo = v->cargo_cap > 0 ? v->cargo_type : INVALID_CARGO;
 		new_item.subtype = GetCargoSubtypeText(v);
-		if (!IsValidCargoID(new_item.cargo) && new_item.subtype == STR_EMPTY) continue;
+		if (!IsValidCargoType(new_item.cargo) && new_item.subtype == STR_EMPTY) continue;
 
 		auto item = std::ranges::find(summary, new_item);
 		if (item == std::end(summary)) {
@@ -458,14 +458,14 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 		/* Indent the total cargo capacity details */
 		Rect ir = r.Indent(WidgetDimensions::scaled.hsep_indent, rtl);
 		for (const CargoSpec *cs : _sorted_cargo_specs) {
-			CargoID cid = cs->Index();
-			if (max_cargo[cid] > 0 && --vscroll_pos < 0 && vscroll_pos > -vscroll_cap) {
-				SetDParam(0, cid);            // {CARGO} #1
-				SetDParam(1, act_cargo[cid]); // {CARGO} #2
-				SetDParam(2, cid);            // {SHORTCARGO} #1
-				SetDParam(3, max_cargo[cid]); // {SHORTCARGO} #2
+			CargoType cargo_type = cs->Index();
+			if (max_cargo[cargo_type] > 0 && --vscroll_pos < 0 && vscroll_pos > -vscroll_cap) {
+				SetDParam(0, cargo_type);            // {CARGO} #1
+				SetDParam(1, act_cargo[cargo_type]); // {CARGO} #2
+				SetDParam(2, cargo_type);            // {SHORTCARGO} #1
+				SetDParam(3, max_cargo[cargo_type]); // {SHORTCARGO} #2
 				SetDParam(4, _settings_game.vehicle.freight_trains);
-				DrawString(ir.left, ir.right, y + text_y_offset, FreightWagonMult(cid) > 1 ? STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT : STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY);
+				DrawString(ir.left, ir.right, y + text_y_offset, FreightWagonMult(cargo_type) > 1 ? STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT : STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY);
 				y += line_height;
 			}
 		}
