@@ -100,7 +100,7 @@ public:
 	 * @pre ScriptCargo::IsValidCargo(cargo_type).
 	 * @return The road vehicle type needed to transport the cargo.
 	 */
-	static RoadVehicleType GetRoadVehicleTypeForCargo(CargoID cargo_type);
+	static RoadVehicleType GetRoadVehicleTypeForCargo(CargoType cargo_type);
 
 	/**
 	 * Checks whether the given tile is actually a tile with road that can be

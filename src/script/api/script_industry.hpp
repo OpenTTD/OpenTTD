@@ -23,9 +23,9 @@ class ScriptIndustry : public ScriptObject {
 public:
 	/** Ways for an industry to accept a cargo. */
 	enum CargoAcceptState {
-		CAS_NOT_ACCEPTED, ///< The CargoID is not accepted by this industry.
-		CAS_ACCEPTED,     ///< The industry currently accepts this CargoID.
-		CAS_TEMP_REFUSED, ///< The industry temporarily refuses to accept this CargoID but may do so again in the future.
+		CAS_NOT_ACCEPTED, ///< The CargoType is not accepted by this industry.
+		CAS_ACCEPTED,     ///< The industry currently accepts this CargoType.
+		CAS_TEMP_REFUSED, ///< The industry temporarily refuses to accept this CargoType but may do so again in the future.
 	};
 
 	/**
@@ -109,55 +109,55 @@ public:
 	/**
 	 * See whether an industry currently accepts a certain cargo.
 	 * @param industry_id The index of the industry.
-	 * @param cargo_id The index of the cargo.
+	 * @param cargo_type The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre ScriptCargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_type).
 	 * @return Whether the industry accepts, temporarily refuses or never accepts this cargo.
 	 */
-	static CargoAcceptState IsCargoAccepted(IndustryID industry_id, CargoID cargo_id);
+	static CargoAcceptState IsCargoAccepted(IndustryID industry_id, CargoType cargo_type);
 
 	/**
 	 * Get the amount of cargo stockpiled for processing.
 	 * @param industry_id The index of the industry.
-	 * @param cargo_id The index of the cargo.
+	 * @param cargo_type The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre ScriptCargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_type).
 	 * @return The amount of cargo that is waiting for processing.
 	 */
-	static SQInteger GetStockpiledCargo(IndustryID industry_id, CargoID cargo_id);
+	static SQInteger GetStockpiledCargo(IndustryID industry_id, CargoType cargo_type);
 
 	/**
 	 * Get the total last economy-month's production of the given cargo at an industry.
 	 * @param industry_id The index of the industry.
-	 * @param cargo_id The index of the cargo.
+	 * @param cargo_type The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre ScriptCargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_type).
 	 * @return The last economy-month's production of the given cargo for this industry.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static SQInteger GetLastMonthProduction(IndustryID industry_id, CargoID cargo_id);
+	static SQInteger GetLastMonthProduction(IndustryID industry_id, CargoType cargo_type);
 
 	/**
 	 * Get the total amount of cargo transported from an industry last economy-month.
 	 * @param industry_id The index of the industry.
-	 * @param cargo_id The index of the cargo.
+	 * @param cargo_type The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre ScriptCargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_type).
 	 * @return The amount of given cargo transported from this industry last economy-month.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static SQInteger GetLastMonthTransported(IndustryID industry_id, CargoID cargo_id);
+	static SQInteger GetLastMonthTransported(IndustryID industry_id, CargoType cargo_type);
 
 	/**
 	 * Get the percentage of cargo transported from an industry last economy-month.
 	 * @param industry_id The index of the industry.
-	 * @param cargo_id The index of the cargo.
+	 * @param cargo_type The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre ScriptCargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_type).
 	 * @return The percentage of given cargo transported from this industry last economy-month.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static SQInteger GetLastMonthTransportedPercentage(IndustryID industry_id, CargoID cargo_id);
+	static SQInteger GetLastMonthTransportedPercentage(IndustryID industry_id, CargoType cargo_type);
 
 	/**
 	 * Gets the location of the industry.
@@ -269,7 +269,7 @@ public:
 	 * @see \ref ScriptEconomyTime
 	 * @api -ai
 	 */
-	static ScriptDate::Date GetCargoLastAcceptedDate(IndustryID industry_id, CargoID cargo_type);
+	static ScriptDate::Date GetCargoLastAcceptedDate(IndustryID industry_id, CargoType cargo_type);
 
 	/**
 	 * Get the current control flags for an industry.

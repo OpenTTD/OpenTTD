@@ -55,7 +55,7 @@ static_assert(MAX_COMPANIES <= (1 << CCB_COMPANY_LENGTH));
  * @param ind %Industry providing or accepting the cargo.
  * @return The encoded cargo/company/industry number.
  */
-inline CargoMonitorID EncodeCargoIndustryMonitor(CompanyID company, CargoID ctype, IndustryID ind)
+inline CargoMonitorID EncodeCargoIndustryMonitor(CompanyID company, CargoType ctype, IndustryID ind)
 {
 	assert(ctype < (1 << CCB_CARGO_TYPE_LENGTH));
 	assert(company < (1 << CCB_COMPANY_LENGTH));
@@ -75,7 +75,7 @@ inline CargoMonitorID EncodeCargoIndustryMonitor(CompanyID company, CargoID ctyp
  * @param town %Town providing or accepting the cargo.
  * @return The encoded cargo/company/town number.
  */
-inline CargoMonitorID EncodeCargoTownMonitor(CompanyID company, CargoID ctype, TownID town)
+inline CargoMonitorID EncodeCargoTownMonitor(CompanyID company, CargoType ctype, TownID town)
 {
 	assert(ctype < (1 << CCB_CARGO_TYPE_LENGTH));
 	assert(company < (1 << CCB_COMPANY_LENGTH));
@@ -102,7 +102,7 @@ inline CompanyID DecodeMonitorCompany(CargoMonitorID num)
  * @param num Cargo monitoring number to decode.
  * @return The extracted cargo type.
  */
-inline CargoID DecodeMonitorCargoType(CargoMonitorID num)
+inline CargoType DecodeMonitorCargoType(CargoMonitorID num)
 {
 	return GB(num, CCB_CARGO_TYPE_START, CCB_CARGO_TYPE_LENGTH);
 }
@@ -143,6 +143,6 @@ void ClearCargoPickupMonitoring(CompanyID company = INVALID_OWNER);
 void ClearCargoDeliveryMonitoring(CompanyID company = INVALID_OWNER);
 int32_t GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring);
 int32_t GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring);
-void AddCargoDelivery(CargoID cargo_type, CompanyID company, uint32_t amount, SourceType src_type, SourceID src, const Station *st, IndustryID dest = INVALID_INDUSTRY);
+void AddCargoDelivery(CargoType cargo_type, CompanyID company, uint32_t amount, SourceType src_type, SourceID src, const Station *st, IndustryID dest = INVALID_INDUSTRY);
 
 #endif /* CARGOMONITOR_H */

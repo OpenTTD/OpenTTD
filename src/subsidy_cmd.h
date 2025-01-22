@@ -13,7 +13,7 @@
 #include "command_type.h"
 #include "cargo_type.h"
 
-CommandCost CmdCreateSubsidy(DoCommandFlag flags, CargoID cid, SourceType src_type, SourceID src, SourceType dst_type, SourceID dst);
+CommandCost CmdCreateSubsidy(DoCommandFlag flags, CargoType cargo_type, SourceType src_type, SourceID src, SourceType dst_type, SourceID dst);
 
 DEF_CMD_TRAIT(CMD_CREATE_SUBSIDY, CmdCreateSubsidy, CMD_DEITY, CMDT_OTHER_MANAGEMENT)
 

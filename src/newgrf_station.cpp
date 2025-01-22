@@ -422,9 +422,9 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 
 	/* Handle cargo variables with parameter, 0x60 to 0x65 and 0x69 */
 	if ((variable >= 0x60 && variable <= 0x65) || variable == 0x69) {
-		CargoID c = GetCargoTranslation(parameter, object.grffile);
+		CargoType c = GetCargoTranslation(parameter, object.grffile);
 
-		if (!IsValidCargoID(c)) {
+		if (!IsValidCargoType(c)) {
 			switch (variable) {
 				case 0x62: return 0xFFFFFFFF;
 				case 0x64: return 0xFF00;
@@ -577,7 +577,7 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 	/* Invalidate all cached vars */
 	_svc.valid = 0;
 
-	CargoID ctype = SpriteGroupCargo::SG_DEFAULT_NA;
+	CargoType ctype = SpriteGroupCargo::SG_DEFAULT_NA;
 
 	if (this->station_scope.st == nullptr) {
 		/* No station, so we are in a purchase list */
@@ -878,7 +878,7 @@ void AnimateStationTile(TileIndex tile)
 	StationAnimationBase::AnimateTile(ss, BaseStation::GetByTile(tile), tile, HasBit(ss->flags, SSF_CB141_RANDOM_BITS));
 }
 
-void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAnimationTrigger trigger, CargoID cargo_type)
+void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAnimationTrigger trigger, CargoType cargo_type)
 {
 	/* List of coverage areas for each animation trigger */
 	static const TriggerArea tas[] = {
@@ -900,8 +900,8 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 		if (st->TileBelongsToRailStation(tile)) {
 			const StationSpec *ss = GetStationSpec(tile);
 			if (ss != nullptr && HasBit(ss->animation.triggers, trigger)) {
-				CargoID cargo;
-				if (!IsValidCargoID(cargo_type)) {
+				CargoType cargo;
+				if (!IsValidCargoType(cargo_type)) {
 					cargo = INVALID_CARGO;
 				} else {
 					cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
@@ -919,7 +919,7 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
  * @param trigger trigger type
  * @param cargo_type cargo type causing trigger
  */
-void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRandomTrigger trigger, CargoID cargo_type)
+void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRandomTrigger trigger, CargoType cargo_type)
 {
 	/* List of coverage areas for each animation trigger */
 	static const TriggerArea tas[] = {
@@ -932,7 +932,7 @@ void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRan
 	/* Check the cached cargo trigger bitmask to see if we need
 	 * to bother with any further processing. */
 	if (st->cached_cargo_triggers == 0) return;
-	if (IsValidCargoID(cargo_type) && !HasBit(st->cached_cargo_triggers, cargo_type)) return;
+	if (IsValidCargoType(cargo_type) && !HasBit(st->cached_cargo_triggers, cargo_type)) return;
 
 	uint32_t whole_reseed = 0;
 	ETileArea area = ETileArea(st, trigger_tile, tas[trigger]);
@@ -956,7 +956,7 @@ void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRan
 				if ((ss->cargo_triggers & ~empty_mask) != 0) continue;
 			}
 
-			if (!IsValidCargoID(cargo_type) || HasBit(ss->cargo_triggers, cargo_type)) {
+			if (!IsValidCargoType(cargo_type) || HasBit(ss->cargo_triggers, cargo_type)) {
 				StationResolverObject object(ss, st, tile, CBID_RANDOM_TRIGGER, 0);
 				object.waiting_triggers = st->waiting_triggers;
 

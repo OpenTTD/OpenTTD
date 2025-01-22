@@ -19,7 +19,7 @@
 #include "window_gui.h"
 #include "dropdown_type.h"
 
-typedef GUIList<const Vehicle*, std::nullptr_t, CargoID> GUIVehicleList;
+typedef GUIList<const Vehicle*, std::nullptr_t, CargoType> GUIVehicleList;
 
 struct GUIVehicleGroup {
 	VehicleList::const_iterator vehicles_begin;    ///< Pointer to beginning element of this vehicle group.
@@ -62,7 +62,7 @@ struct GUIVehicleGroup {
 	}
 };
 
-typedef GUIList<GUIVehicleGroup, std::nullptr_t, CargoID> GUIVehicleGroupList;
+typedef GUIList<GUIVehicleGroup, std::nullptr_t, CargoType> GUIVehicleGroupList;
 
 struct BaseVehicleListWindow : public Window {
 
@@ -81,7 +81,7 @@ struct BaseVehicleListWindow : public Window {
 	Scrollbar *vscroll;
 	VehicleListIdentifier vli;                  ///< Identifier of the vehicle list we want to currently show.
 	VehicleID vehicle_sel;                      ///< Selected vehicle
-	CargoID cargo_filter_criteria;              ///< Selected cargo filter index
+	CargoType cargo_filter_criteria;              ///< Selected cargo filter index
 	uint order_arrow_width;                     ///< Width of the arrow in the small order list.
 	CargoTypes used_cargoes;
 
@@ -119,7 +119,7 @@ struct BaseVehicleListWindow : public Window {
 	void SetCargoFilter(uint8_t index);
 	void SetCargoFilterArray();
 	void FilterVehicleList();
-	StringID GetCargoFilterLabel(CargoID cid) const;
+	StringID GetCargoFilterLabel(CargoType cargo_type) const;
 	DropDownList BuildCargoDropDownList(bool full) const;
 	Dimension GetActionDropdownSize(bool show_autoreplace, bool show_group, bool show_create);
 	DropDownList BuildActionDropdownList(bool show_autoreplace, bool show_group, bool show_create);
@@ -142,17 +142,17 @@ struct BaseVehicleListWindow : public Window {
 struct CargoIconOverlay {
 	int left;
 	int right;
-	CargoID cargo_type;
+	CargoType cargo_type;
 	uint cargo_cap;
 
-	constexpr CargoIconOverlay(int left, int right, CargoID cargo_type, uint cargo_cap)
+	constexpr CargoIconOverlay(int left, int right, CargoType cargo_type, uint cargo_cap)
 		: left(left), right(right), cargo_type(cargo_type), cargo_cap(cargo_cap)
 	{ }
 };
 
 bool ShowCargoIconOverlay();
 void AddCargoIconOverlay(std::vector<CargoIconOverlay> &overlays, int x, int width, const Vehicle *v);
-void DrawCargoIconOverlay(int x, int y, CargoID cid);
+void DrawCargoIconOverlay(int x, int y, CargoType cargo_type);
 void DrawCargoIconOverlays(std::span<const CargoIconOverlay> overlays, int y);
 
 uint GetVehicleListHeight(VehicleType type, uint divisor = 1);

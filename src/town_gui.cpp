@@ -419,10 +419,10 @@ public:
 
 		for (auto tpe : {TPE_PASSENGERS, TPE_MAIL}) {
 			for (const CargoSpec *cs : CargoSpec::town_production_cargoes[tpe]) {
-				CargoID cid = cs->Index();
-				SetDParam(0, 1ULL << cid);
-				SetDParam(1, this->town->supplied[cid].old_act);
-				SetDParam(2, this->town->supplied[cid].old_max);
+				CargoType cargo_type = cs->Index();
+				SetDParam(0, 1ULL << cargo_type);
+				SetDParam(1, this->town->supplied[cargo_type].old_act);
+				SetDParam(2, this->town->supplied[cargo_type].old_max);
 				DrawString(tr, str_last_period);
 				tr.top += GetCharacterHeight(FS_NORMAL);
 			}

@@ -80,10 +80,10 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	std::string text; ///< General text with additional information.
 
-	inline uint8_t GetPercentTransported(CargoID cid) const
+	inline uint8_t GetPercentTransported(CargoType cargo_type) const
 	{
-		if (!IsValidCargoID(cid)) return 0;
-		return this->supplied[cid].old_act * 256 / (this->supplied[cid].old_max + 1);
+		if (!IsValidCargoType(cargo_type)) return 0;
+		return this->supplied[cargo_type].old_act * 256 / (this->supplied[cargo_type].old_max + 1);
 	}
 
 	StationList stations_near;       ///< NOSAVE: List of nearby stations.

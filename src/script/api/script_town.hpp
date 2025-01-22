@@ -196,42 +196,42 @@ public:
 	/**
 	 * Get the total last economy-month's production of the given cargo at a town.
 	 * @param town_id The index of the town.
-	 * @param cargo_id The index of the cargo.
+	 * @param cargo_type The index of the cargo.
 	 * @pre IsValidTown(town_id).
-	 * @pre ScriptCargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_type).
 	 * @return The last economy-month's production of the given cargo for this town.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static SQInteger GetLastMonthProduction(TownID town_id, CargoID cargo_id);
+	static SQInteger GetLastMonthProduction(TownID town_id, CargoType cargo_type);
 
 	/**
 	 * Get the total amount of cargo supplied from a town last economy-month.
 	 * @param town_id The index of the town.
-	 * @param cargo_id The index of the cargo.
+	 * @param cargo_type The index of the cargo.
 	 * @pre IsValidTown(town_id).
-	 * @pre ScriptCargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_type).
 	 * @return The amount of cargo supplied for transport from this town last economy-month.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static SQInteger GetLastMonthSupplied(TownID town_id, CargoID cargo_id);
+	static SQInteger GetLastMonthSupplied(TownID town_id, CargoType cargo_type);
 
 	/**
 	 * Get the percentage of transported production of the given cargo at a town last economy-month.
 	 * @param town_id The index of the town.
-	 * @param cargo_id The index of the cargo.
+	 * @param cargo_type The index of the cargo.
 	 * @pre IsValidTown(town_id).
-	 * @pre ScriptCargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_type).
 	 * @return The percentage of given cargo transported from this town last economy-month.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static SQInteger GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id);
+	static SQInteger GetLastMonthTransportedPercentage(TownID town_id, CargoType cargo_type);
 
 	/**
 	 * Get the total amount of cargo effects received by a town last economy-month.
 	 * @param town_id The index of the town.
 	 * @param towneffect_id The index of the cargo.
 	 * @pre IsValidTown(town_id).
-	 * @pre ScriptCargo::IsValidTownEffect(cargo_id).
+	 * @pre ScriptCargo::IsValidTownEffect(cargo_type).
 	 * @return The amount of cargo received by this town last economy-month for this cargo effect.
 	 * @see \ref ScriptEconomyTime
 	 */

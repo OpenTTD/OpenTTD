@@ -454,8 +454,8 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 	}
 
 	for (uint8_t i = 0; i < std::size(itspec->accepts_cargo); i++) {
-		CargoID a = accepts_cargo[i];
-		if (!IsValidCargoID(a) || cargo_acceptance[i] <= 0) continue; // work only with valid cargoes
+		CargoType a = accepts_cargo[i];
+		if (!IsValidCargoType(a) || cargo_acceptance[i] <= 0) continue; // work only with valid cargoes
 
 		/* Add accepted cargo */
 		acceptance[a] += cargo_acceptance[i];
@@ -529,7 +529,7 @@ static bool TransportIndustryGoods(TileIndex tile)
 
 	for (auto &p : i->produced) {
 		uint cw = ClampTo<uint8_t>(p.waiting);
-		if (cw > indspec->minimal_cargo && IsValidCargoID(p.cargo)) {
+		if (cw > indspec->minimal_cargo && IsValidCargoType(p.cargo)) {
 			p.waiting -= cw;
 
 			/* fluctuating economy? */
@@ -985,7 +985,7 @@ bool IsTileForestIndustry(TileIndex tile)
 	if ((GetIndustrySpec(ind->type)->life_type & INDUSTRYLIFE_ORGANIC) == 0) return false;
 
 	/* Check for wood production */
-	return std::any_of(std::begin(ind->produced), std::end(ind->produced), [](const auto &p) { return IsValidCargoID(p.cargo) && CargoSpec::Get(p.cargo)->label == CT_WOOD; });
+	return std::any_of(std::begin(ind->produced), std::end(ind->produced), [](const auto &p) { return IsValidCargoType(p.cargo) && CargoSpec::Get(p.cargo)->label == CT_WOOD; });
 }
 
 static const uint8_t _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
@@ -1130,7 +1130,7 @@ static void ChopLumberMillTrees(Industry *i)
 {
 	/* Don't process lumber mill if cargo is not set up correctly. */
 	auto itp = std::begin(i->produced);
-	if (itp == std::end(i->produced) || !IsValidCargoID(itp->cargo)) return;
+	if (itp == std::end(i->produced) || !IsValidCargoType(itp->cargo)) return;
 
 	/* We only want to cut trees if all tiles are completed. */
 	for (TileIndex tile_cur : i->location) {
@@ -1153,7 +1153,7 @@ static void ChopLumberMillTrees(Industry *i)
 static void ProduceIndustryGoodsHelper(Industry *i, bool scale)
 {
 	for (auto &p : i->produced) {
-		if (!IsValidCargoID(p.cargo)) continue;
+		if (!IsValidCargoType(p.cargo)) continue;
 
 		uint16_t amount = p.rate;
 		if (scale) amount = ScaleByCargoScale(amount, false);
@@ -1773,7 +1773,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	it = industries.emplace(it, i->index);
 
 	for (size_t index = 0; index < std::size(indspec->produced_cargo); ++index) {
-		if (!IsValidCargoID(indspec->produced_cargo[index])) break;
+		if (!IsValidCargoType(indspec->produced_cargo[index])) break;
 
 		Industry::ProducedCargo &p = i->produced.emplace_back();
 		p.cargo = indspec->produced_cargo[index];
@@ -1781,7 +1781,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	}
 
 	for (size_t index = 0; index < std::size(indspec->accepts_cargo); ++index) {
-		if (!IsValidCargoID(indspec->accepts_cargo[index])) break;
+		if (!IsValidCargoType(indspec->accepts_cargo[index])) break;
 
 		Industry::AcceptedCargo &a = i->accepted.emplace_back();
 		a.cargo = indspec->accepts_cargo[index];
@@ -1868,11 +1868,11 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 				ErrorUnknownCallbackResult(indspec->grf_prop.grfid, CBID_INDUSTRY_INPUT_CARGO_TYPES, res);
 				break;
 			}
-			CargoID cargo = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
+			CargoType cargo = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
 			/* Industries without "unlimited" cargo types support depend on the specific order/slots of cargo types.
 			 * They need to be able to blank out specific slots without aborting the callback sequence,
 			 * and solve this by returning undefined cargo indexes. Skip these. */
-			if (!IsValidCargoID(cargo) && !(indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED)) {
+			if (!IsValidCargoType(cargo) && !(indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED)) {
 				/* As slots are allocated as needed now, this means we do need to add a slot for the invalid cargo. */
 				Industry::AcceptedCargo &a = i->accepted.emplace_back();
 				a.cargo = INVALID_CARGO;
@@ -1906,9 +1906,9 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 				ErrorUnknownCallbackResult(indspec->grf_prop.grfid, CBID_INDUSTRY_OUTPUT_CARGO_TYPES, res);
 				break;
 			}
-			CargoID cargo = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
+			CargoType cargo = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
 			/* Allow older GRFs to skip slots. */
-			if (!IsValidCargoID(cargo) && !(indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED)) {
+			if (!IsValidCargoType(cargo) && !(indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED)) {
 				/* As slots are allocated as needed now, this means we do need to add a slot for the invalid cargo. */
 				Industry::ProducedCargo &p = i->produced.emplace_back();
 				p.cargo = INVALID_CARGO;
@@ -2496,7 +2496,7 @@ void GenerateIndustries()
 static void UpdateIndustryStatistics(Industry *i)
 {
 	for (auto &p : i->produced) {
-		if (IsValidCargoID(p.cargo)) {
+		if (IsValidCargoType(p.cargo)) {
 			if (p.history[THIS_MONTH].production != 0) i->last_prod_year = TimerGameEconomy::year;
 
 			/* Move history from this month to last month. */
@@ -2687,9 +2687,9 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
  * @return: \c *c_accepts is set when industry accepts the cargo type,
  *          \c *c_produces is set when the industry produces the cargo type
  */
-static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accepts, bool *c_produces)
+static void CanCargoServiceIndustry(CargoType cargo, Industry *ind, bool *c_accepts, bool *c_produces)
 {
-	if (!IsValidCargoID(cargo)) return;
+	if (!IsValidCargoType(cargo)) return;
 
 	/* Check for acceptance of cargo */
 	if (ind->IsCargoAccepted(cargo) && !IndustryTemporarilyRefusesCargo(ind, cargo)) *c_accepts = true;
@@ -2764,7 +2764,7 @@ int WhoCanServiceIndustry(Industry *ind)
  * @param type: Cargo type that has changed
  * @param percent: Percentage of change (>0 means increase, <0 means decrease)
  */
-static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int percent)
+static void ReportNewsProductionChangeIndustry(Industry *ind, CargoType type, int percent)
 {
 	NewsType nt;
 
@@ -2857,7 +2857,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		} else if (_settings_game.economy.type == ET_SMOOTH) {
 			closeit = !(i->ctlflags & (INDCTL_NO_CLOSURE | INDCTL_NO_PRODUCTION_DECREASE));
 			for (auto &p : i->produced) {
-				if (!IsValidCargoID(p.cargo)) continue;
+				if (!IsValidCargoType(p.cargo)) continue;
 				uint32_t r = Random();
 				int old_prod, new_prod, percent;
 				/* If over 60% is transported, mult is 1, else mult is -1. */
@@ -2883,7 +2883,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 				/* Prevent production to overflow or Oil Rig passengers to be over-"produced" */
 				new_prod = Clamp(new_prod, 1, 255);
-				if (IsValidCargoID(p.cargo) && p.cargo == GetCargoIDByLabel(CT_PASSENGERS) && !(indspec->behaviour & INDUSTRYBEH_NO_PAX_PROD_CLAMP)) {
+				if (IsValidCargoType(p.cargo) && p.cargo == GetCargoTypeByLabel(CT_PASSENGERS) && !(indspec->behaviour & INDUSTRYBEH_NO_PAX_PROD_CLAMP)) {
 					new_prod = Clamp(new_prod, 0, 16);
 				}
 
@@ -3212,11 +3212,11 @@ bool IndustryCompare::operator() (const IndustryListEntry &lhs, const IndustryLi
  */
 void TrimIndustryAcceptedProduced(Industry *ind)
 {
-	auto ita = std::find_if(std::rbegin(ind->accepted), std::rend(ind->accepted), [](const auto &a) { return IsValidCargoID(a.cargo); });
+	auto ita = std::find_if(std::rbegin(ind->accepted), std::rend(ind->accepted), [](const auto &a) { return IsValidCargoType(a.cargo); });
 	ind->accepted.erase(ita.base(), std::end(ind->accepted));
 	ind->accepted.shrink_to_fit();
 
-	auto itp = std::find_if(std::rbegin(ind->produced), std::rend(ind->produced), [](const auto &p) { return IsValidCargoID(p.cargo); });
+	auto itp = std::find_if(std::rbegin(ind->produced), std::rend(ind->produced), [](const auto &p) { return IsValidCargoType(p.cargo); });
 	ind->produced.erase(itp.base(), std::end(ind->produced));
 	ind->produced.shrink_to_fit();
 }

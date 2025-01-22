@@ -535,7 +535,7 @@ static void AdvanceHouseConstruction(TileIndex tile)
  * @param stations Available stations for this house.
  * @param affected_by_recession Is this cargo halved during recessions?
  */
-static void TownGenerateCargo(Town *t, CargoID ct, uint amount, StationFinder &stations, bool affected_by_recession)
+static void TownGenerateCargo(Town *t, CargoType ct, uint amount, StationFinder &stations, bool affected_by_recession)
 {
 	if (amount == 0) return;
 
@@ -564,10 +564,10 @@ static void TownGenerateCargoOriginal(Town *t, TownProductionEffect tpe, uint8_t
 	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[tpe]) {
 		uint32_t r = Random();
 		if (GB(r, 0, 8) < rate) {
-			CargoID cid = cs->Index();
+			CargoType cargo_type = cs->Index();
 			uint amt = (GB(r, 0, 8) * cs->town_production_multiplier / TOWN_PRODUCTION_DIVISOR) / 8 + 1;
 
-			TownGenerateCargo(t, cid, amt, stations, true);
+			TownGenerateCargo(t, cargo_type, amt, stations, true);
 		}
 	}
 }
@@ -582,7 +582,7 @@ static void TownGenerateCargoOriginal(Town *t, TownProductionEffect tpe, uint8_t
 static void TownGenerateCargoBinominal(Town *t, TownProductionEffect tpe, uint8_t rate, StationFinder &stations)
 {
 	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[tpe]) {
-		CargoID cid = cs->Index();
+		CargoType cargo_type = cs->Index();
 		uint32_t r = Random();
 
 		/* Make a bitmask with up to 32 bits set, one for each potential pax. */
@@ -592,7 +592,7 @@ static void TownGenerateCargoBinominal(Town *t, TownProductionEffect tpe, uint8_
 		/* Mask random value by potential pax and count number of actual pax. */
 		uint amt = CountBits(r & genmask) * cs->town_production_multiplier / TOWN_PRODUCTION_DIVISOR;
 
-		TownGenerateCargo(t, cid, amt, stations, true);
+		TownGenerateCargo(t, cargo_type, amt, stations, true);
 	}
 }
 
@@ -637,8 +637,8 @@ static void TileLoop_Town(TileIndex tile)
 
 			if (callback == CALLBACK_FAILED || callback == CALLBACK_HOUSEPRODCARGO_END) break;
 
-			CargoID cargo = GetCargoTranslation(GB(callback, 8, 7), hs->grf_prop.grffile);
-			if (!IsValidCargoID(cargo)) continue;
+			CargoType cargo = GetCargoTranslation(GB(callback, 8, 7), hs->grf_prop.grffile);
+			if (!IsValidCargoType(cargo)) continue;
 
 			uint amt = GB(callback, 0, 8);
 			if (amt == 0) continue;
@@ -755,9 +755,9 @@ static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 
 			if (callback == CALLBACK_FAILED || callback == CALLBACK_HOUSEPRODCARGO_END) break;
 
-			CargoID cargo = GetCargoTranslation(GB(callback, 8, 7), hs->grf_prop.grffile);
+			CargoType cargo = GetCargoTranslation(GB(callback, 8, 7), hs->grf_prop.grffile);
 
-			if (!IsValidCargoID(cargo)) continue;
+			if (!IsValidCargoType(cargo)) continue;
 			produced[cargo]++;
 		}
 	} else {
@@ -775,15 +775,15 @@ static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 }
 
 /**
- * Fill cargo acceptance array and always_accepted mask, if cargo ID is valid.
+ * Fill cargo acceptance array and always_accepted mask, if cargo type is valid.
  * @param cargo Cargo type to add.
  * @param amount Amount of cargo to add.
  * @param[out] acceptance Output array containing amount of cargo accepted.
  * @param[out] always_accepted Output mask of accepted cargo types.
  */
-static void AddAcceptedCargoSetMask(CargoID cargo, uint amount, CargoArray &acceptance, CargoTypes &always_accepted)
+static void AddAcceptedCargoSetMask(CargoType cargo, uint amount, CargoArray &acceptance, CargoTypes &always_accepted)
 {
-	if (!IsValidCargoID(cargo) || amount == 0) return;
+	if (!IsValidCargoType(cargo) || amount == 0) return;
 	acceptance[cargo] += amount;
 	SetBit(always_accepted, cargo);
 }
@@ -799,7 +799,7 @@ static void AddAcceptedCargoSetMask(CargoID cargo, uint amount, CargoArray &acce
  */
 void AddAcceptedCargoOfHouse(TileIndex tile, HouseID house, const HouseSpec *hs, Town *t, CargoArray &acceptance, CargoTypes &always_accepted)
 {
-	CargoID accepts[lengthof(hs->accepts_cargo)];
+	CargoType accepts[lengthof(hs->accepts_cargo)];
 
 	/* Set the initial accepted cargo types */
 	for (uint8_t i = 0; i < lengthof(accepts); i++) {
@@ -825,7 +825,7 @@ void AddAcceptedCargoOfHouse(TileIndex tile, HouseID house, const HouseSpec *hs,
 			AddAcceptedCargoSetMask(accepts[1], GB(callback, 4, 4), acceptance, always_accepted);
 			if (_settings_game.game_creation.landscape != LT_TEMPERATE && HasBit(callback, 12)) {
 				/* The 'S' bit indicates food instead of goods */
-				AddAcceptedCargoSetMask(GetCargoIDByLabel(CT_FOOD), GB(callback, 8, 4), acceptance, always_accepted);
+				AddAcceptedCargoSetMask(GetCargoTypeByLabel(CT_FOOD), GB(callback, 8, 4), acceptance, always_accepted);
 			} else {
 				AddAcceptedCargoSetMask(accepts[2], GB(callback, 8, 4), acceptance, always_accepted);
 			}

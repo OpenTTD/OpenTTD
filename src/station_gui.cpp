@@ -87,7 +87,7 @@ int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageTyp
 		}
 
 		/* Convert cargo counts to a set of cargo bits, and draw the result. */
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
+		for (CargoType i = 0; i < NUM_CARGO; i++) {
 			switch (sct) {
 				case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(i, CC_PASSENGERS)) continue; break;
 				case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(i, CC_PASSENGERS)) continue; break;
@@ -217,7 +217,7 @@ void CheckRedrawRoadWaypointCoverage(const Window *)
  * @param amount Cargo amount
  * @param rating ratings data for that particular cargo
  */
-static void StationsWndShowStationRating(int left, int right, int y, CargoID type, uint amount, uint8_t rating)
+static void StationsWndShowStationRating(int left, int right, int y, CargoType type, uint amount, uint8_t rating)
 {
 	static const uint units_full  = 576; ///< number of units to show station as 'full'
 	static const uint rating_full = 224; ///< rating needed so it is shown as 'full'
@@ -316,10 +316,10 @@ protected:
 				if (st->owner == owner || (st->owner == OWNER_NONE && HasStationInUse(st->index, true, owner))) {
 					bool has_rating = false;
 					/* Add to the station/cargo counts. */
-					for (CargoID j = 0; j < NUM_CARGO; j++) {
+					for (CargoType j = 0; j < NUM_CARGO; j++) {
 						if (st->goods[j].HasRating()) this->stations_per_cargo_type[j]++;
 					}
-					for (CargoID j = 0; j < NUM_CARGO; j++) {
+					for (CargoType j = 0; j < NUM_CARGO; j++) {
 						if (st->goods[j].HasRating()) {
 							has_rating = true;
 							if (HasBit(this->filter.cargoes, j)) {
@@ -361,7 +361,7 @@ protected:
 	{
 		int diff = 0;
 
-		for (CargoID j : SetCargoBitIterator(cargo_filter)) {
+		for (CargoType j : SetCargoBitIterator(cargo_filter)) {
 			diff += (a->goods[j].HasData() ? a->goods[j].GetData().cargo.TotalCount() : 0) - (b->goods[j].HasData() ? b->goods[j].GetData().cargo.TotalCount() : 0);
 		}
 
@@ -373,7 +373,7 @@ protected:
 	{
 		int diff = 0;
 
-		for (CargoID j : SetCargoBitIterator(cargo_filter)) {
+		for (CargoType j : SetCargoBitIterator(cargo_filter)) {
 			diff += (a->goods[j].HasData() ? a->goods[j].GetData().cargo.AvailableCount() : 0) - (b->goods[j].HasData() ? b->goods[j].GetData().cargo.AvailableCount() : 0);
 		}
 
@@ -386,7 +386,7 @@ protected:
 		uint8_t maxr1 = 0;
 		uint8_t maxr2 = 0;
 
-		for (CargoID j : SetCargoBitIterator(cargo_filter)) {
+		for (CargoType j : SetCargoBitIterator(cargo_filter)) {
 			if (a->goods[j].HasRating()) maxr1 = std::max(maxr1, a->goods[j].rating);
 			if (b->goods[j].HasRating()) maxr2 = std::max(maxr2, b->goods[j].rating);
 		}
@@ -400,7 +400,7 @@ protected:
 		uint8_t minr1 = 255;
 		uint8_t minr2 = 255;
 
-		for (CargoID j : SetCargoBitIterator(cargo_filter)) {
+		for (CargoType j : SetCargoBitIterator(cargo_filter)) {
 			if (a->goods[j].HasRating()) minr1 = std::min(minr1, a->goods[j].rating);
 			if (b->goods[j].HasRating()) minr2 = std::min(minr2, b->goods[j].rating);
 		}
@@ -526,8 +526,8 @@ public:
 
 					/* show cargo waiting and station ratings */
 					for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-						CargoID cid = cs->Index();
-						if (st->goods[cid].HasRating()) {
+						CargoType cargo_type = cs->Index();
+						if (st->goods[cargo_type].HasRating()) {
 							/* For RTL we work in exactly the opposite direction. So
 							 * decrement the space needed first, then draw to the left
 							 * instead of drawing to the left and then incrementing
@@ -536,7 +536,7 @@ public:
 								x -= rating_width + rating_spacing;
 								if (x < tr.left) break;
 							}
-							StationsWndShowStationRating(x, x + rating_width, tr.top, cid, st->goods[cid].HasData() ? st->goods[cid].GetData().cargo.TotalCount() : 0, st->goods[cid].rating);
+							StationsWndShowStationRating(x, x + rating_width, tr.top, cargo_type, st->goods[cargo_type].HasData() ? st->goods[cargo_type].GetData().cargo.TotalCount() : 0, st->goods[cargo_type].rating);
 							if (!rtl) {
 								x += rating_width + rating_spacing;
 								if (x > tr.right) break;
@@ -864,7 +864,7 @@ static constexpr NWidgetPart _nested_station_view_widgets[] = {
  * @param right right most coordinate to draw on
  * @param y y coordinate
  */
-static void DrawCargoIcons(CargoID i, uint waiting, int left, int right, int y)
+static void DrawCargoIcons(CargoType i, uint waiting, int left, int right, int y)
 {
 	int width = ScaleSpriteTrad(10);
 	uint num = std::min<uint>((waiting + (width / 2)) / width, (right - left) / width); // maximum is width / 10 icons so it won't overflow
@@ -891,7 +891,7 @@ enum class CargoSortType : uint8_t {
 	Count,         ///< by amount of cargo
 	StationString, ///< by station name
 	StationID,     ///< by station id
-	CargoID,       ///< by cargo id
+	CargoType,     ///< by cargo type
 };
 
 class CargoSorter {
@@ -933,13 +933,13 @@ public:
 	}
 
 	/**
-	 * Insert a new child or retrieve an existing child using a cargo ID as ID.
-	 * @param cargo ID of the cargo for which an entry shall be created or retrieved
+	 * Insert a new child or retrieve an existing child using a cargo type as ID.
+	 * @param cargo type of the cargo for which an entry shall be created or retrieved
 	 * @return a child entry associated with the given cargo.
 	 */
-	CargoDataEntry *InsertOrRetrieve(CargoID cargo)
+	CargoDataEntry *InsertOrRetrieve(CargoType cargo)
 	{
-		return this->InsertOrRetrieve<CargoID>(cargo);
+		return this->InsertOrRetrieve<CargoType>(cargo);
 	}
 
 	void Update(uint count);
@@ -956,9 +956,9 @@ public:
 
 	/**
 	 * Remove a child associated with the given cargo.
-	 * @param cargo ID of the cargo for which the child should be removed.
+	 * @param cargo type of the cargo for which the child should be removed.
 	 */
-	void Remove(CargoID cargo)
+	void Remove(CargoType cargo)
 	{
 		CargoDataEntry t(cargo);
 		this->Remove(&t);
@@ -977,10 +977,10 @@ public:
 
 	/**
 	 * Retrieve a child for the given cargo. Return nullptr if it doesn't exist.
-	 * @param cargo ID of the cargo the child we're looking for is associated with.
+	 * @param cargo type of the cargo the child we're looking for is associated with.
 	 * @return a child entry for the given cargo or nullptr.
 	 */
-	CargoDataEntry *Retrieve(CargoID cargo) const
+	CargoDataEntry *Retrieve(CargoType cargo) const
 	{
 		CargoDataEntry t(cargo);
 		return this->Retrieve(this->children->find(&t));
@@ -994,9 +994,9 @@ public:
 	StationID GetStation() const { return this->station; }
 
 	/**
-	 * Get the cargo ID for this entry.
+	 * Get the cargo type for this entry.
 	 */
-	CargoID GetCargo() const { return this->cargo; }
+	CargoType GetCargo() const { return this->cargo; }
 
 	/**
 	 * Get the cargo count for this entry.
@@ -1037,9 +1037,9 @@ public:
 private:
 
 	CargoDataEntry(StationID st, uint c, CargoDataEntry *p);
-	CargoDataEntry(CargoID car, uint c, CargoDataEntry *p);
+	CargoDataEntry(CargoType car, uint c, CargoDataEntry *p);
 	CargoDataEntry(StationID st);
-	CargoDataEntry(CargoID car);
+	CargoDataEntry(CargoType car);
 
 	CargoDataEntry *Retrieve(CargoDataSet::iterator i) const;
 
@@ -1053,7 +1053,7 @@ private:
 	const union {
 		StationID station;    ///< ID of the station this entry is associated with.
 		struct {
-			CargoID cargo;    ///< ID of the cargo this entry is associated with.
+			CargoType cargo;    ///< ID of the cargo this entry is associated with.
 			bool transfers;   ///< If there are transfers for this cargo.
 		};
 	};
@@ -1067,10 +1067,10 @@ CargoDataEntry::CargoDataEntry() :
 	station(INVALID_STATION),
 	num_children(0),
 	count(0),
-	children(new CargoDataSet(CargoSorter(CargoSortType::CargoID)))
+	children(new CargoDataSet(CargoSorter(CargoSortType::CargoType)))
 {}
 
-CargoDataEntry::CargoDataEntry(CargoID cargo, uint count, CargoDataEntry *parent) :
+CargoDataEntry::CargoDataEntry(CargoType cargo, uint count, CargoDataEntry *parent) :
 	parent(parent),
 	cargo(cargo),
 	num_children(0),
@@ -1094,7 +1094,7 @@ CargoDataEntry::CargoDataEntry(StationID station) :
 	children(nullptr)
 {}
 
-CargoDataEntry::CargoDataEntry(CargoID cargo) :
+CargoDataEntry::CargoDataEntry(CargoType cargo) :
 	parent(nullptr),
 	cargo(cargo),
 	num_children(0),
@@ -1142,7 +1142,7 @@ void CargoDataEntry::Remove(CargoDataEntry *child)
 
 /**
  * Retrieve a subentry or insert it if it doesn't exist, yet.
- * @tparam ID type of ID: either StationID or CargoID
+ * @tparam ID type of ID: either StationID or CargoType
  * @param child_id ID of the child to be inserted or retrieved.
  * @return the new or retrieved subentry
  */
@@ -1203,8 +1203,8 @@ bool CargoSorter::operator()(const CargoDataEntry *cd1, const CargoDataEntry *cd
 	switch (this->type) {
 		case CargoSortType::StationID:
 			return this->SortId<StationID>(cd1->GetStation(), cd2->GetStation());
-		case CargoSortType::CargoID:
-			return this->SortId<CargoID>(cd1->GetCargo(), cd2->GetCargo());
+		case CargoSortType::CargoType:
+			return this->SortId<CargoType>(cd1->GetCargo(), cd2->GetCargo());
 		case CargoSortType::Count:
 			return this->SortCount(cd1, cd2);
 		case CargoSortType::StationString:
@@ -1258,7 +1258,7 @@ struct StationViewWindow : public Window {
 	 */
 	struct RowDisplay {
 		RowDisplay(CargoDataEntry *f, StationID n) : filter(f), next_station(n) {}
-		RowDisplay(CargoDataEntry *f, CargoID n) : filter(f), next_cargo(n) {}
+		RowDisplay(CargoDataEntry *f, CargoType n) : filter(f), next_cargo(n) {}
 
 		/**
 		 * Parent of the cargo entry belonging to the row.
@@ -1273,7 +1273,7 @@ struct StationViewWindow : public Window {
 			/**
 			 * ID of the cargo belonging to the entry actually displayed if it's cargo.
 			 */
-			CargoID next_cargo;
+			CargoType next_cargo;
 		};
 	};
 
@@ -1385,16 +1385,16 @@ struct StationViewWindow : public Window {
 	}
 
 	/**
-	 * Show a certain cargo entry characterized by source/next/dest station, cargo ID and amount of cargo at the
+	 * Show a certain cargo entry characterized by source/next/dest station, cargo type and amount of cargo at the
 	 * right place in the cargo view. I.e. update as many rows as are expanded following that characterization.
 	 * @param data Root entry of the tree.
-	 * @param cargo Cargo ID of the entry to be shown.
+	 * @param cargo Cargo type of the entry to be shown.
 	 * @param source Source station of the entry to be shown.
 	 * @param next Next station the cargo to be shown will visit.
 	 * @param dest Final destination of the cargo to be shown.
 	 * @param count Amount of cargo to be shown.
 	 */
-	void ShowCargo(CargoDataEntry *data, CargoID cargo, StationID source, StationID next, StationID dest, uint count)
+	void ShowCargo(CargoDataEntry *data, CargoType cargo, StationID source, StationID next, StationID dest, uint count)
 	{
 		if (count == 0) return;
 		bool auto_distributed = _settings_game.linkgraph.GetDistributionType(cargo) != DT_MANUAL;
@@ -1528,7 +1528,7 @@ struct StationViewWindow : public Window {
 	 * even if we actually don't know the destination of a certain packet from just looking at it.
 	 * @param i Cargo to recalculate the cache for.
 	 */
-	void RecalcDestinations(CargoID i)
+	void RecalcDestinations(CargoType i)
 	{
 		const Station *st = Station::Get(this->window_number);
 		CargoDataEntry *cargo_entry = cached_destinations.InsertOrRetrieve(i);
@@ -1556,13 +1556,13 @@ struct StationViewWindow : public Window {
 	/**
 	 * Estimate the amounts of cargo per final destination for a given cargo, source station and next hop and
 	 * save the result as children of the given CargoDataEntry.
-	 * @param cargo ID of the cargo to estimate destinations for.
+	 * @param cargo type of the cargo to estimate destinations for.
 	 * @param source Source station of the given batch of cargo.
 	 * @param next Intermediate hop to start the calculation at ("next hop").
 	 * @param count Size of the batch of cargo.
 	 * @param dest CargoDataEntry to save the results in.
 	 */
-	void EstimateDestinations(CargoID cargo, StationID source, StationID next, uint count, CargoDataEntry *dest)
+	void EstimateDestinations(CargoType cargo, StationID source, StationID next, uint count, CargoDataEntry *dest)
 	{
 		if (Station::IsValidID(next) && Station::IsValidID(source)) {
 			GoodsEntry &ge = Station::Get(next)->goods[cargo];
@@ -1618,7 +1618,7 @@ struct StationViewWindow : public Window {
 	 * @param flows The current station's flows for that cargo.
 	 * @param cargo The CargoDataEntry to save the results in.
 	 */
-	void BuildFlowList(CargoID i, const FlowStatMap &flows, CargoDataEntry *cargo)
+	void BuildFlowList(CargoType i, const FlowStatMap &flows, CargoDataEntry *cargo)
 	{
 		const CargoDataEntry *source_dest = this->cached_destinations.Retrieve(i);
 		for (FlowStatMap::const_iterator it = flows.begin(); it != flows.end(); ++it) {
@@ -1641,7 +1641,7 @@ struct StationViewWindow : public Window {
 	 * @param packets The current station's cargo list for that cargo.
 	 * @param cargo The CargoDataEntry to save the result in.
 	 */
-	void BuildCargoList(CargoID i, const StationCargoList &packets, CargoDataEntry *cargo)
+	void BuildCargoList(CargoType i, const StationCargoList &packets, CargoDataEntry *cargo)
 	{
 		const CargoDataEntry *source_dest = this->cached_destinations.Retrieve(i);
 		for (StationCargoList::ConstIterator it = packets.Packets()->begin(); it != packets.Packets()->end(); it++) {
@@ -1690,7 +1690,7 @@ struct StationViewWindow : public Window {
 	 */
 	void BuildCargoList(CargoDataEntry *cargo, const Station *st)
 	{
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
+		for (CargoType i = 0; i < NUM_CARGO; i++) {
 
 			if (this->cached_destinations.Retrieve(i) == nullptr) {
 				this->RecalcDestinations(i);
@@ -1726,7 +1726,7 @@ struct StationViewWindow : public Window {
 			parent = parent->GetParent();
 		}
 
-		CargoID cargo = parent->GetCargo();
+		CargoType cargo = parent->GetCargo();
 		CargoDataEntry *filter = this->expanded_rows.Retrieve(cargo);
 		while (!stations.empty()) {
 			filter = filter->Retrieve(stations.back());
@@ -1802,7 +1802,7 @@ struct StationViewWindow : public Window {
 	 * @param cargo Current cargo being drawn (if cargo column has been passed).
 	 * @return row (in "pos" counting) after the one we have last drawn to.
 	 */
-	int DrawEntries(CargoDataEntry *entry, const Rect &r, int pos, int maxrows, int column, CargoID cargo = INVALID_CARGO)
+	int DrawEntries(CargoDataEntry *entry, const Rect &r, int pos, int maxrows, int column, CargoType cargo = INVALID_CARGO)
 	{
 		if (this->sortings[column] == CargoSortType::AsGrouping) {
 			if (this->groupings[column] != GR_CARGO) {
@@ -1961,7 +1961,7 @@ struct StationViewWindow : public Window {
 		} else {
 			RowDisplay &display = this->displayed_rows[row];
 			if (display.filter == &this->expanded_rows) {
-				this->HandleCargoWaitingClick<CargoID>(display.filter, display.next_cargo);
+				this->HandleCargoWaitingClick<CargoType>(display.filter, display.next_cargo);
 			} else {
 				this->HandleCargoWaitingClick<StationID>(display.filter, display.next_station);
 			}
@@ -2025,7 +2025,7 @@ struct StationViewWindow : public Window {
 			case WID_SV_SORT_BY: {
 				/* The initial selection is composed of current mode and
 				 * sorting criteria for columns 1, 2, and 3. Column 0 is always
-				 * sorted by cargo ID. The others can theoretically be sorted
+				 * sorted by cargo type. The others can theoretically be sorted
 				 * by different things but there is no UI for that. */
 				ShowDropDownMenu(this, StationViewWindow::sort_names,
 						this->current_mode * 2 + (this->sortings[1] == CargoSortType::Count ? 1 : 0),
@@ -2157,14 +2157,14 @@ struct StationViewWindow : public Window {
 
 	/**
 	 * Some data on this window has become invalid. Invalidate the cache for the given cargo if necessary.
-	 * @param data Information about the changed data. If it's a valid cargo ID, invalidate the cargo data.
+	 * @param data Information about the changed data. If it's a valid cargo type, invalidate the cargo data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (gui_scope) {
 			if (data >= 0 && data < NUM_CARGO) {
-				this->cached_destinations.Remove((CargoID)data);
+				this->cached_destinations.Remove((CargoType)data);
 			} else {
 				this->ReInit();
 			}

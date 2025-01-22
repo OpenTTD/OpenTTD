@@ -236,7 +236,7 @@ bool Vehicle::NeedsServicing() const
 		GetArticulatedRefitMasks(new_engine, true, &union_mask, &available_cargo_types);
 		/* Is there anything to refit? */
 		if (union_mask != 0) {
-			CargoID cargo_type;
+			CargoType cargo_type;
 			CargoTypes cargo_mask = GetCargoTypesOfArticulatedVehicle(v, &cargo_type);
 			if (!HasAtMostOneBit(cargo_mask)) {
 				CargoTypes new_engine_default_cargoes = GetCargoTypesOfArticulatedParts(new_engine);
@@ -247,7 +247,7 @@ bool Vehicle::NeedsServicing() const
 				/* engine_type is already a mixed cargo type which matches the incoming vehicle by default, no refit required */
 			} else {
 				/* Did the old vehicle carry anything? */
-				if (IsValidCargoID(cargo_type)) {
+				if (IsValidCargoType(cargo_type)) {
 					/* We can't refit the vehicle to carry the cargo we want */
 					if (!HasBit(available_cargo_types, cargo_type)) continue;
 				}
@@ -1969,7 +1969,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type, uint8_t subtype)
  */
 LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_type, const Vehicle *v)
 {
-	CargoID cargo_type = v == nullptr ? INVALID_CARGO : v->cargo_type;
+	CargoType cargo_type = v == nullptr ? INVALID_CARGO : v->cargo_type;
 	const Engine *e = Engine::Get(engine_type);
 	switch (e->type) {
 		default: NOT_REACHED();
@@ -1982,9 +1982,9 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 				/* Note: Luckily cargo_type is not needed for engines */
 			}
 
-			if (!IsValidCargoID(cargo_type)) cargo_type = e->GetDefaultCargoType();
-			if (!IsValidCargoID(cargo_type)) cargo_type = GetCargoIDByLabel(CT_GOODS); // The vehicle does not carry anything, let's pick some freight cargo
-			assert(IsValidCargoID(cargo_type));
+			if (!IsValidCargoType(cargo_type)) cargo_type = e->GetDefaultCargoType();
+			if (!IsValidCargoType(cargo_type)) cargo_type = GetCargoTypeByLabel(CT_GOODS); // The vehicle does not carry anything, let's pick some freight cargo
+			assert(IsValidCargoType(cargo_type));
 			if (e->u.rail.railveh_type == RAILVEH_WAGON) {
 				if (!CargoSpec::Get(cargo_type)->is_freight) {
 					if (parent_engine_type == INVALID_ENGINE) {
@@ -2023,9 +2023,9 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 				e = Engine::Get(engine_type);
 				cargo_type = v->First()->cargo_type;
 			}
-			if (!IsValidCargoID(cargo_type)) cargo_type = e->GetDefaultCargoType();
-			if (!IsValidCargoID(cargo_type)) cargo_type = GetCargoIDByLabel(CT_GOODS); // The vehicle does not carry anything, let's pick some freight cargo
-			assert(IsValidCargoID(cargo_type));
+			if (!IsValidCargoType(cargo_type)) cargo_type = e->GetDefaultCargoType();
+			if (!IsValidCargoType(cargo_type)) cargo_type = GetCargoTypeByLabel(CT_GOODS); // The vehicle does not carry anything, let's pick some freight cargo
+			assert(IsValidCargoType(cargo_type));
 
 			/* Important: Use Tram Flag of front part. Luckily engine_type refers to the front part here. */
 			if (HasBit(e->info.misc_flags, EF_ROAD_TRAM)) {
@@ -2037,9 +2037,9 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 			}
 
 		case VEH_SHIP:
-			if (!IsValidCargoID(cargo_type)) cargo_type = e->GetDefaultCargoType();
-			if (!IsValidCargoID(cargo_type)) cargo_type = GetCargoIDByLabel(CT_GOODS); // The vehicle does not carry anything, let's pick some freight cargo
-			assert(IsValidCargoID(cargo_type));
+			if (!IsValidCargoType(cargo_type)) cargo_type = e->GetDefaultCargoType();
+			if (!IsValidCargoType(cargo_type)) cargo_type = GetCargoTypeByLabel(CT_GOODS); // The vehicle does not carry anything, let's pick some freight cargo
+			assert(IsValidCargoType(cargo_type));
 			return IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_SHIP : LS_FREIGHT_SHIP;
 
 		case VEH_AIRCRAFT:

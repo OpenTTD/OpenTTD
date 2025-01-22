@@ -3081,7 +3081,7 @@ bool AfterLoadGame()
 			/* Make sure last_cargo_accepted_at is copied to elements for every valid input cargo.
 			 * The loading routine should put the original singular value into the first array element. */
 			for (auto &a : i->accepted) {
-				if (IsValidCargoID(a.cargo)) {
+				if (IsValidCargoType(a.cargo)) {
 					a.last_accepted = i->GetAccepted(0).last_accepted;
 				} else {
 					a.last_accepted = EconomyTime::MIN_DATE;

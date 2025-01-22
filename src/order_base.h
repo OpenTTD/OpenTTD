@@ -49,7 +49,7 @@ private:
 	uint8_t flags = 0; ///< Load/unload types, depot order/action types.
 	DestinationID dest = 0; ///< The destination of the order.
 
-	CargoID refit_cargo = CARGO_NO_REFIT; ///< Refit CargoID
+	CargoType refit_cargo = CARGO_NO_REFIT; ///< Refit CargoType
 
 	uint16_t wait_time = 0; ///< How long in ticks to wait at the destination.
 	uint16_t travel_time = 0; ///< How long in ticks the journey to this destination should take.
@@ -78,7 +78,7 @@ public:
 	void Free();
 
 	void MakeGoToStation(StationID destination);
-	void MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type = ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS, OrderDepotActionFlags action = ODATF_SERVICE_ONLY, CargoID cargo = CARGO_NO_REFIT);
+	void MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type = ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS, OrderDepotActionFlags action = ODATF_SERVICE_ONLY, CargoType cargo = CARGO_NO_REFIT);
 	void MakeGoToWaypoint(StationID destination);
 	void MakeLoading(bool ordered);
 	void MakeLeaveStation();
@@ -128,9 +128,9 @@ public:
 	 * @pre IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION)
 	 * @return the cargo type.
 	 */
-	inline CargoID GetRefitCargo() const { return this->refit_cargo; }
+	inline CargoType GetRefitCargo() const { return this->refit_cargo; }
 
-	void SetRefit(CargoID cargo);
+	void SetRefit(CargoType cargo);
 
 	/** How must the consist be loaded? */
 	inline OrderLoadFlags GetLoadType() const { return (OrderLoadFlags)GB(this->flags, 4, 3); }

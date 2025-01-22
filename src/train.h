@@ -54,7 +54,7 @@ enum ConsistChangeFlags {
 };
 DECLARE_ENUM_AS_BIT_SET(ConsistChangeFlags)
 
-uint8_t FreightWagonMult(CargoID cargo);
+uint8_t FreightWagonMult(CargoType cargo);
 
 void CheckTrainsLengths();
 

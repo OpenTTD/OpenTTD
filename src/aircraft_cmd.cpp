@@ -309,10 +309,10 @@ CommandCost CmdBuildAircraft(DoCommandFlag flags, TileIndex tile, const Engine *
 		u->refit_cap = 0;
 
 		v->cargo_type = e->GetDefaultCargoType();
-		assert(IsValidCargoID(v->cargo_type));
+		assert(IsValidCargoType(v->cargo_type));
 
-		CargoID mail = GetCargoIDByLabel(CT_MAIL);
-		if (IsValidCargoID(mail)) {
+		CargoType mail = GetCargoTypeByLabel(CT_MAIL);
+		if (IsValidCargoType(mail)) {
 			u->cargo_type = mail;
 			u->cargo_cap = avi->mail_capacity;
 		}

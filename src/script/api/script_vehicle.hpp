@@ -357,7 +357,7 @@ public:
 	 *   as the vehicle isn't really built yet. Build it for real first before
 	 *   assigning orders.
 	 */
-	static VehicleID BuildVehicleWithRefit(TileIndex depot, EngineID engine_id, CargoID cargo);
+	static VehicleID BuildVehicleWithRefit(TileIndex depot, EngineID engine_id, CargoType cargo);
 
 	/**
 	 * Gets the capacity of a vehicle built at the given depot with the given engine and refitted to the given cargo.
@@ -370,7 +370,7 @@ public:
 	 * @pre ScriptCargo::IsValidCargo(cargo).
 	 * @return The capacity the vehicle will have when refited.
 	 */
-	static SQInteger GetBuildWithRefitCapacity(TileIndex depot, EngineID engine_id, CargoID cargo);
+	static SQInteger GetBuildWithRefitCapacity(TileIndex depot, EngineID engine_id, CargoType cargo);
 
 	/**
 	 * Clones a vehicle at the given depot, copying or cloning its orders.
@@ -431,7 +431,7 @@ public:
 	 * @pre The vehicle must be stopped in the depot.
 	 * @return The capacity the vehicle will have when refited.
 	 */
-	static SQInteger GetRefitCapacity(VehicleID vehicle_id, CargoID cargo);
+	static SQInteger GetRefitCapacity(VehicleID vehicle_id, CargoType cargo);
 
 	/**
 	 * Refits a vehicle to the given cargo type.
@@ -447,7 +447,7 @@ public:
 	 * @exception ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT
 	 * @return True if and only if the refit succeeded.
 	 */
-	static bool RefitVehicle(VehicleID vehicle_id, CargoID cargo);
+	static bool RefitVehicle(VehicleID vehicle_id, CargoType cargo);
 
 	/**
 	 * Sells the given vehicle.
@@ -546,7 +546,7 @@ public:
 	 * @pre ScriptCargo::IsValidCargo(cargo).
 	 * @return The maximum amount of the given cargo the vehicle can transport.
 	 */
-	static SQInteger GetCapacity(VehicleID vehicle_id, CargoID cargo);
+	static SQInteger GetCapacity(VehicleID vehicle_id, CargoType cargo);
 
 	/**
 	 * Get the length of a the total vehicle in 1/16's of a tile.
@@ -565,7 +565,7 @@ public:
 	 * @pre ScriptCargo::IsValidCargo(cargo).
 	 * @return The amount of the given cargo the vehicle is currently transporting.
 	 */
-	static SQInteger GetCargoLoad(VehicleID vehicle_id, CargoID cargo);
+	static SQInteger GetCargoLoad(VehicleID vehicle_id, CargoType cargo);
 
 	/**
 	 * Get the group of a given vehicle.
@@ -619,7 +619,7 @@ private:
 	/**
 	 * Internal function used by BuildVehicle(WithRefit).
 	 */
-	static VehicleID _BuildVehicleInternal(TileIndex depot, EngineID engine_id, CargoID cargo);
+	static VehicleID _BuildVehicleInternal(TileIndex depot, EngineID engine_id, CargoType cargo);
 
 	/**
 	 * Internal function used by SellWagon(Chain).

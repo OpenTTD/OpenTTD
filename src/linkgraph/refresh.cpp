@@ -85,7 +85,7 @@ LinkRefresher::LinkRefresher(Vehicle *vehicle, HopSet *seen_hops, bool allow_mer
  * @param refit_cargo Cargo to refit to.
  * @return True if any vehicle was refit; false if none was.
  */
-bool LinkRefresher::HandleRefit(CargoID refit_cargo)
+bool LinkRefresher::HandleRefit(CargoType refit_cargo)
 {
 	this->cargo = refit_cargo;
 	RefitList::iterator refit_it = this->refit_capacities.begin();
@@ -99,7 +99,7 @@ bool LinkRefresher::HandleRefit(CargoID refit_cargo)
 		any_refit = true;
 
 		/* Back up the vehicle's cargo type */
-		CargoID temp_cid = v->cargo_type;
+		CargoType temp_cargo_type = v->cargo_type;
 		uint8_t temp_subtype = v->cargo_subtype;
 		v->cargo_type = this->cargo;
 		v->cargo_subtype = GetBestFittingSubType(v, v, this->cargo);
@@ -108,7 +108,7 @@ bool LinkRefresher::HandleRefit(CargoID refit_cargo)
 		uint amount = e->DetermineCapacity(v, &mail_capacity);
 
 		/* Restore the original cargo type */
-		v->cargo_type = temp_cid;
+		v->cargo_type = temp_cargo_type;
 		v->cargo_subtype = temp_subtype;
 
 		/* Skip on next refit. */
@@ -202,7 +202,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 	Station *st = Station::GetIfValid(cur->GetDestination());
 	if (st != nullptr && next_station != INVALID_STATION && next_station != st->index) {
 		Station *st_to = Station::Get(next_station);
-		for (CargoID c = 0; c < NUM_CARGO; c++) {
+		for (CargoType c = 0; c < NUM_CARGO; c++) {
 			/* Refresh the link and give it a minimum capacity. */
 
 			uint cargo_quantity = this->capacities[c];
@@ -271,7 +271,7 @@ void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8_t fl
 			} else if (!HasBit(flags, IN_AUTOREFIT)) {
 				SetBit(flags, IN_AUTOREFIT);
 				LinkRefresher backup(*this);
-				for (CargoID c = 0; c != NUM_CARGO; ++c) {
+				for (CargoType c = 0; c != NUM_CARGO; ++c) {
 					if (CargoSpec::Get(c)->IsValid() && this->HandleRefit(c)) {
 						this->RefreshLinks(cur, next, flags, num_hops);
 						*this = backup;

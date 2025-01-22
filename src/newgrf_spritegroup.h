@@ -260,10 +260,10 @@ struct IndustryProductionSpriteGroup : SpriteGroup {
 	uint8_t version;                              ///< Production callback version used, or 0xFF if marked invalid
 	uint8_t num_input;                            ///< How many subtract_input values are valid
 	int16_t subtract_input[INDUSTRY_NUM_INPUTS];  ///< Take this much of the input cargo (can be negative, is indirect in cb version 1+)
-	CargoID cargo_input[INDUSTRY_NUM_INPUTS];   ///< Which input cargoes to take from (only cb version 2)
+	CargoType cargo_input[INDUSTRY_NUM_INPUTS];   ///< Which input cargoes to take from (only cb version 2)
 	uint8_t num_output;                           ///< How many add_output values are valid
 	uint16_t add_output[INDUSTRY_NUM_OUTPUTS];    ///< Add this much output cargo when successful (unsigned, is indirect in cb version 1+)
-	CargoID cargo_output[INDUSTRY_NUM_OUTPUTS]; ///< Which output cargoes to add to (only cb version 2)
+	CargoType cargo_output[INDUSTRY_NUM_OUTPUTS]; ///< Which output cargoes to add to (only cb version 2)
 	uint8_t again;
 
 };

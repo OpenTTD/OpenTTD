@@ -322,8 +322,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 		case 0x6D:
 		case 0x70:
 		case 0x71: {
-			CargoID cargo = GetCargoTranslation(parameter, this->ro.grffile);
-			if (!IsValidCargoID(cargo)) return 0;
+			CargoType cargo = GetCargoTranslation(parameter, this->ro.grffile);
+			if (!IsValidCargoType(cargo)) return 0;
 			auto it = this->industry->GetCargoProduced(cargo);
 			if (it == std::end(this->industry->produced)) return 0; // invalid cargo
 			switch (variable) {
@@ -341,8 +341,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 
 		case 0x6E:
 		case 0x6F: {
-			CargoID cargo = GetCargoTranslation(parameter, this->ro.grffile);
-			if (!IsValidCargoID(cargo)) return 0;
+			CargoType cargo = GetCargoTranslation(parameter, this->ro.grffile);
+			if (!IsValidCargoType(cargo)) return 0;
 			auto it = this->industry->GetCargoAccepted(cargo);
 			if (it == std::end(this->industry->accepted)) return 0; // invalid cargo
 			if (variable == 0x6E) return it->last_accepted.base();
@@ -644,11 +644,11 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		if (group->version < 2) {
 			/* Callback parameters map directly to industry cargo slot indices */
 			for (uint i = 0; i < group->num_input && i < ind->accepted.size(); i++) {
-				if (!IsValidCargoID(ind->accepted[i].cargo)) continue;
+				if (!IsValidCargoType(ind->accepted[i].cargo)) continue;
 				ind->accepted[i].waiting = ClampTo<uint16_t>(ind->accepted[i].waiting - DerefIndProd(group->subtract_input[i], deref) * multiplier);
 			}
 			for (uint i = 0; i < group->num_output && i < ind->produced.size(); i++) {
-				if (!IsValidCargoID(ind->produced[i].cargo)) continue;
+				if (!IsValidCargoType(ind->produced[i].cargo)) continue;
 				ind->produced[i].waiting = ClampTo<uint16_t>(ind->produced[i].waiting + std::max(DerefIndProd(group->add_output[i], deref), 0) * multiplier);
 			}
 		} else {
@@ -681,7 +681,7 @@ void IndustryProductionCallback(Industry *ind, int reason)
  * @pre cargo_type is in ind->accepts_cargo.
  * @return Whether the given industry refuses to accept this cargo type.
  */
-bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoID cargo_type)
+bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoType cargo_type)
 {
 	assert(ind->IsCargoAccepted(cargo_type));
 

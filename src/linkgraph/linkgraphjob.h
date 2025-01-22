@@ -248,7 +248,7 @@ public:
 	 * Get the cargo of the underlying link graph.
 	 * @return Cargo.
 	 */
-	inline CargoID Cargo() const { return this->link_graph.Cargo(); }
+	inline CargoType Cargo() const { return this->link_graph.Cargo(); }
 
 	/**
 	 * Get the date when the underlying link graph was last compressed.

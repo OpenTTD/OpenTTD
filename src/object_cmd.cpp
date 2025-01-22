@@ -630,8 +630,8 @@ static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, Carg
 
 	/* Top town building generates 10, so to make HQ interesting, the top
 	 * type makes 20. */
-	CargoID pass = GetCargoIDByLabel(CT_PASSENGERS);
-	if (IsValidCargoID(pass)) {
+	CargoType pass = GetCargoTypeByLabel(CT_PASSENGERS);
+	if (IsValidCargoType(pass)) {
 		acceptance[pass] += std::max(1U, level);
 		SetBit(always_accepted, pass);
 	}
@@ -640,8 +640,8 @@ static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, Carg
 	 * proportion passengers:mail is different because such a huge
 	 * commercial building generates unusually high amount of mail
 	 * correspondence per physical visitor. */
-	CargoID mail = GetCargoIDByLabel(CT_MAIL);
-	if (IsValidCargoID(mail)) {
+	CargoType mail = GetCargoTypeByLabel(CT_MAIL);
+	if (IsValidCargoType(mail)) {
 		acceptance[mail] += std::max(1U, level / 2);
 		SetBit(always_accepted, mail);
 	}
@@ -651,10 +651,10 @@ static void AddProducedCargo_Object(TileIndex tile, CargoArray &produced)
 {
 	if (!IsObjectType(tile, OBJECT_HQ)) return;
 
-	CargoID pass = GetCargoIDByLabel(CT_PASSENGERS);
-	if (IsValidCargoID(pass)) produced[pass]++;
-	CargoID mail = GetCargoIDByLabel(CT_MAIL);
-	if (IsValidCargoID(mail)) produced[mail]++;
+	CargoType pass = GetCargoTypeByLabel(CT_PASSENGERS);
+	if (IsValidCargoType(pass)) produced[pass]++;
+	CargoType mail = GetCargoTypeByLabel(CT_MAIL);
+	if (IsValidCargoType(mail)) produced[mail]++;
 }
 
 
@@ -694,8 +694,8 @@ static void TileLoop_Object(TileIndex tile)
 
 	uint r = Random();
 	/* Top town buildings generate 250, so the top HQ type makes 256. */
-	CargoID pass = GetCargoIDByLabel(CT_PASSENGERS);
-	if (IsValidCargoID(pass) && GB(r, 0, 8) < (256 / 4 / (6 - level))) {
+	CargoType pass = GetCargoTypeByLabel(CT_PASSENGERS);
+	if (IsValidCargoType(pass) && GB(r, 0, 8) < (256 / 4 / (6 - level))) {
 		uint amt = GB(r, 0, 8) / 8 / 4 + 1;
 
 		/* Production is halved during recessions. */
@@ -710,8 +710,8 @@ static void TileLoop_Object(TileIndex tile)
 	/* Top town building generates 90, HQ can make up to 196. The
 	 * proportion passengers:mail is about the same as in the acceptance
 	 * equations. */
-	 CargoID mail = GetCargoIDByLabel(CT_MAIL);
-	if (IsValidCargoID(mail) && GB(r, 8, 8) < (196 / 4 / (6 - level))) {
+	 CargoType mail = GetCargoTypeByLabel(CT_MAIL);
+	if (IsValidCargoType(mail) && GB(r, 8, 8) < (196 / 4 / (6 - level))) {
 		uint amt = GB(r, 8, 8) / 8 / 4 + 1;
 
 		/* Production is halved during recessions. */

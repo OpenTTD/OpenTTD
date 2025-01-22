@@ -255,7 +255,7 @@ public:
 	 *  returns the first/main.
 	 * @return The cargo-type of the engine.
 	 */
-	CargoID GetCargoType();
+	CargoType GetCargoType();
 
 	/**
 	 * Get the capacity of the offered engine. In case it can transport multiple cargoes, it

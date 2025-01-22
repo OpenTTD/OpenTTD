@@ -46,7 +46,7 @@ static std::vector<CargoLabel> _default_cargo_labels;
 /**
  * Default cargo translation for upto version 7 NewGRFs.
  * This maps the original 12 cargo slots to their original label. If a climate dependent cargo is not present it will
- * map to CT_INVALID. For default cargoes this ends up as a 1:1 mapping via climate slot -> label -> cargo ID.
+ * map to CT_INVALID. For default cargoes this ends up as a 1:1 mapping via climate slot -> label -> cargo type.
  */
 static std::array<CargoLabel, 12> _climate_dependent_cargo_labels;
 
@@ -146,12 +146,12 @@ void BuildCargoLabelMap()
 
 /**
  * Test if a cargo is a default cargo type.
- * @param cid Cargo ID.
+ * @param cargo_type Cargo type.
  * @returns true iff the cargo type is a default cargo type.
  */
-bool IsDefaultCargo(CargoID cid)
+bool IsDefaultCargo(CargoType cargo_type)
 {
-	auto cs = CargoSpec::Get(cid);
+	auto cs = CargoSpec::Get(cargo_type);
 	if (!cs->IsValid()) return false;
 
 	CargoLabel label = cs->label;
@@ -188,7 +188,7 @@ SpriteID CargoSpec::GetCargoIcon() const
 	return sprite;
 }
 
-std::array<uint8_t, NUM_CARGO> _sorted_cargo_types; ///< Sort order of cargoes by cargo ID.
+std::array<uint8_t, NUM_CARGO> _sorted_cargo_types; ///< Sort order of cargoes by cargo type.
 std::vector<const CargoSpec *> _sorted_cargo_specs;   ///< Cargo specifications sorted alphabetically by name.
 std::span<const CargoSpec *> _sorted_standard_cargo_specs; ///< Standard cargo specifications sorted alphabetically by name.
 
@@ -276,15 +276,15 @@ std::optional<std::string> BuildCargoAcceptanceString(const CargoArray &acceptan
 
 	bool found = false;
 	for (const CargoSpec *cs : _sorted_cargo_specs) {
-		CargoID cid = cs->Index();
-		if (acceptance[cid] > 0) {
+		CargoType cargo_type = cs->Index();
+		if (acceptance[cargo_type] > 0) {
 			/* Add a comma between each item. */
 			if (found) line << list_separator;
 			found = true;
 
 			/* If the accepted value is less than 8, show it in 1/8:ths */
-			if (acceptance[cid] < 8) {
-				SetDParam(0, acceptance[cid]);
+			if (acceptance[cargo_type] < 8) {
+				SetDParam(0, acceptance[cargo_type]);
 				SetDParam(1, cs->name);
 				line << GetString(STR_LAND_AREA_INFORMATION_CARGO_EIGHTS);
 			} else {

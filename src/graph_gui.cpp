@@ -1518,7 +1518,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		int count = 0;
 		const Industry *i = Industry::Get(window_number);
 		for (const auto &p : i->produced) {
-			if (!IsValidCargoID(p.cargo)) continue;
+			if (!IsValidCargoType(p.cargo)) continue;
 			count++;
 		}
 		this->vscroll->SetCount(count);
@@ -1544,7 +1544,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 
 		const Industry *i = Industry::Get(this->window_number);
 		for (const auto &p : i->produced) {
-			if (!IsValidCargoID(p.cargo)) continue;
+			if (!IsValidCargoType(p.cargo)) continue;
 			if (HasBit(_legend_excluded_cargo_production_history, p.cargo)) SetBit(this->excluded_data, p.cargo);
 		}
 	}
@@ -1559,7 +1559,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		const Industry *i = Industry::Get(this->window_number);
 		const CargoSpec *cs;
 		for (const auto &p : i->produced) {
-			if (!IsValidCargoID(p.cargo)) continue;
+			if (!IsValidCargoType(p.cargo)) continue;
 
 			cs = CargoSpec::Get(p.cargo);
 			SetDParam(0, cs->name);
@@ -1593,7 +1593,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		const CargoSpec *cs;
 
 		for (const auto &p : i->produced) {
-			if (!IsValidCargoID(p.cargo)) continue;
+			if (!IsValidCargoType(p.cargo)) continue;
 
 			if (pos-- > 0) continue;
 			if (--max < 0) break;
@@ -1634,7 +1634,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 				/* Add all cargoes to the excluded lists. */
 				const Industry *i = Industry::Get(this->window_number);
 				for (const auto &p : i->produced) {
-					if (!IsValidCargoID(p.cargo)) continue;
+					if (!IsValidCargoType(p.cargo)) continue;
 
 					SetBit(_legend_excluded_cargo_production_history, p.cargo);
 					SetBit(this->excluded_data, p.cargo);
@@ -1649,7 +1649,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 
 				const Industry *i = Industry::Get(this->window_number);
 				for (const auto &p : i->produced) {
-					if (!IsValidCargoID(p.cargo)) continue;
+					if (!IsValidCargoType(p.cargo)) continue;
 					if (row-- > 0) continue;
 
 					ToggleBit(_legend_excluded_cargo_production_history, p.cargo);
@@ -1700,7 +1700,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 
 		this->data.clear();
 		for (const auto &p : i->produced) {
-			if (!IsValidCargoID(p.cargo)) continue;
+			if (!IsValidCargoType(p.cargo)) continue;
 			const CargoSpec *cs = CargoSpec::Get(p.cargo);
 
 			DataSet &produced = this->data.emplace_back();

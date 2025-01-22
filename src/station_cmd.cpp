@@ -181,7 +181,7 @@ static bool CMSAMine(TileIndex tile)
 	for (const auto &p : ind->produced) {
 		/* The industry extracts something non-liquid, i.e. no oil or plastic, so it is a mine.
 		 * Also the production of passengers and mail is ignored. */
-		if (IsValidCargoID(p.cargo) &&
+		if (IsValidCargoType(p.cargo) &&
 				(CargoSpec::Get(p.cargo)->classes & (CC_LIQUID | CC_PASSENGERS | CC_MAIL)) == 0) {
 			return true;
 		}
@@ -566,7 +566,7 @@ CargoArray GetProductionAroundTiles(TileIndex north_tile, int w, int h, int rad)
 		if (i->neutral_station != nullptr && !_settings_game.station.serve_neutral_industries) continue;
 
 		for (const auto &p : i->produced) {
-			if (IsValidCargoID(p.cargo)) produced[p.cargo]++;
+			if (IsValidCargoType(p.cargo)) produced[p.cargo]++;
 		}
 	}
 
@@ -634,7 +634,7 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 	}
 
 	/* Adjust in case our station only accepts fewer kinds of goods */
-	for (CargoID i = 0; i < NUM_CARGO; i++) {
+	for (CargoType i = 0; i < NUM_CARGO; i++) {
 		uint amt = acceptance[i];
 
 		/* Make sure the station can accept the goods type. */
@@ -3759,8 +3759,8 @@ void TriggerWatchedCargoCallbacks(Station *st)
 {
 	/* Collect cargoes accepted since the last big tick. */
 	CargoTypes cargoes = 0;
-	for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-		if (HasBit(st->goods[cid].status, GoodsEntry::GES_ACCEPTED_BIGTICK)) SetBit(cargoes, cid);
+	for (CargoType cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
+		if (HasBit(st->goods[cargo_type].status, GoodsEntry::GES_ACCEPTED_BIGTICK)) SetBit(cargoes, cargo_type);
 	}
 
 	/* Anything to do? */
@@ -3999,7 +3999,7 @@ static void UpdateStationRating(Station *st)
  * @param avoid Original next hop of cargo, avoid this.
  * @param avoid2 Another station to be avoided when rerouting.
  */
-void RerouteCargo(Station *st, CargoID c, StationID avoid, StationID avoid2)
+void RerouteCargo(Station *st, CargoType c, StationID avoid, StationID avoid2)
 {
 	GoodsEntry &ge = st->goods[c];
 
@@ -4025,7 +4025,7 @@ void RerouteCargo(Station *st, CargoID c, StationID avoid, StationID avoid2)
  */
 void DeleteStaleLinks(Station *from)
 {
-	for (CargoID c = 0; c < NUM_CARGO; ++c) {
+	for (CargoType c = 0; c < NUM_CARGO; ++c) {
 		const bool auto_distributed = (_settings_game.linkgraph.GetDistributionType(c) != DT_MANUAL);
 		GoodsEntry &ge = from->goods[c];
 		LinkGraph *lg = LinkGraph::GetIfValid(ge.link_graph);
@@ -4117,7 +4117,7 @@ void DeleteStaleLinks(Station *from)
  * @param usage Usage to add to link stat.
  * @param mode Update mode to be applied.
  */
-void IncreaseStats(Station *st, CargoID cargo, StationID next_station_id, uint capacity, uint usage, uint32_t time, EdgeUpdateMode mode)
+void IncreaseStats(Station *st, CargoType cargo, StationID next_station_id, uint capacity, uint usage, uint32_t time, EdgeUpdateMode mode)
 {
 	GoodsEntry &ge1 = st->goods[cargo];
 	Station *st2 = Station::Get(next_station_id);
@@ -4248,7 +4248,7 @@ void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint rad
 	});
 }
 
-static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceType source_type, SourceID source_id)
+static uint UpdateStationWaiting(Station *st, CargoType type, uint amount, SourceType source_type, SourceID source_id)
 {
 	/* We can't allocate a CargoPacket? Then don't do anything
 	 * at all; i.e. just discard the incoming cargo. */
@@ -4372,7 +4372,7 @@ const StationList &StationFinder::GetStations()
 }
 
 
-static bool CanMoveGoodsToStation(const Station *st, CargoID type)
+static bool CanMoveGoodsToStation(const Station *st, CargoType type)
 {
 	/* Is the station reserved exclusively for somebody else? */
 	if (st->owner != OWNER_NONE && st->town->exclusive_counter > 0 && st->town->exclusivity != st->owner) return false;
@@ -4393,7 +4393,7 @@ static bool CanMoveGoodsToStation(const Station *st, CargoID type)
 	return true;
 }
 
-uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, SourceID source_id, const StationList &all_stations, Owner exclusivity)
+uint MoveGoodsToStation(CargoType type, uint amount, SourceType source_type, SourceID source_id, const StationList &all_stations, Owner exclusivity)
 {
 	/* Return if nothing to do. Also the rounding below fails for 0. */
 	if (all_stations.empty()) return 0;

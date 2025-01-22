@@ -76,14 +76,14 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	};
 
 	struct ProducedCargo {
-		CargoID cargo; ///< Cargo type
+		CargoType cargo; ///< Cargo type
 		uint16_t waiting; ///< Amount of cargo produced
 		uint8_t rate; ///< Production rate
 		std::array<ProducedHistory, 25> history; ///< History of cargo produced and transported for this month and 24 previous months
 	};
 
 	struct AcceptedCargo {
-		CargoID cargo; ///< Cargo type
+		CargoType cargo; ///< Cargo type
 		uint16_t waiting; ///< Amount of cargo waiting to processed
 		TimerGameEconomy::Date last_accepted; ///< Last day cargo was accepted by this industry
 	};
@@ -161,45 +161,45 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	/**
 	 * Get produced cargo slot for a specific cargo type.
-	 * @param cargo CargoID to find.
+	 * @param cargo CargoType to find.
 	 * @return Iterator pointing to produced cargo slot if it exists, or the end iterator.
 	 */
-	inline ProducedCargoes::iterator GetCargoProduced(CargoID cargo)
+	inline ProducedCargoes::iterator GetCargoProduced(CargoType cargo)
 	{
-		if (!IsValidCargoID(cargo)) return std::end(this->produced);
+		if (!IsValidCargoType(cargo)) return std::end(this->produced);
 		return std::ranges::find(this->produced, cargo, &ProducedCargo::cargo);
 	}
 
 	/**
 	 * Get produced cargo slot for a specific cargo type (const-variant).
-	 * @param cargo CargoID to find.
+	 * @param cargo CargoType to find.
 	 * @return Iterator pointing to produced cargo slot if it exists, or the end iterator.
 	 */
-	inline ProducedCargoes::const_iterator GetCargoProduced(CargoID cargo) const
+	inline ProducedCargoes::const_iterator GetCargoProduced(CargoType cargo) const
 	{
-		if (!IsValidCargoID(cargo)) return std::end(this->produced);
+		if (!IsValidCargoType(cargo)) return std::end(this->produced);
 		return std::ranges::find(this->produced, cargo, &ProducedCargo::cargo);
 	}
 
 	/**
 	 * Get accepted cargo slot for a specific cargo type.
-	 * @param cargo CargoID to find.
+	 * @param cargo CargoType to find.
 	 * @return Iterator pointing to accepted cargo slot if it exists, or the end iterator.
 	 */
-	inline AcceptedCargoes::iterator GetCargoAccepted(CargoID cargo)
+	inline AcceptedCargoes::iterator GetCargoAccepted(CargoType cargo)
 	{
-		if (!IsValidCargoID(cargo)) return std::end(this->accepted);
+		if (!IsValidCargoType(cargo)) return std::end(this->accepted);
 		return std::ranges::find(this->accepted, cargo, &AcceptedCargo::cargo);
 	}
 
 	/**
 	 * Get accepted cargo slot for a specific cargo type (const-variant).
-	 * @param cargo CargoID to find.
+	 * @param cargo CargoType to find.
 	 * @return Iterator pointing to accepted cargo slot if it exists, or the end iterator.
 	 */
-	inline AcceptedCargoes::const_iterator GetCargoAccepted(CargoID cargo) const
+	inline AcceptedCargoes::const_iterator GetCargoAccepted(CargoType cargo) const
 	{
-		if (!IsValidCargoID(cargo)) return std::end(this->accepted);
+		if (!IsValidCargoType(cargo)) return std::end(this->accepted);
 		return std::ranges::find(this->accepted, cargo, &AcceptedCargo::cargo);
 	}
 
@@ -207,27 +207,27 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	 * Test if this industry accepts any cargo.
 	 * @return true iff the industry accepts any cargo.
 	 */
-	bool IsCargoAccepted() const { return std::any_of(std::begin(this->accepted), std::end(this->accepted), [](const auto &a) { return IsValidCargoID(a.cargo); }); }
+	bool IsCargoAccepted() const { return std::any_of(std::begin(this->accepted), std::end(this->accepted), [](const auto &a) { return IsValidCargoType(a.cargo); }); }
 
 	/**
 	 * Test if this industry produces any cargo.
 	 * @return true iff the industry produces any cargo.
 	 */
-	bool IsCargoProduced() const { return std::any_of(std::begin(this->produced), std::end(this->produced), [](const auto &p) { return IsValidCargoID(p.cargo); }); }
+	bool IsCargoProduced() const { return std::any_of(std::begin(this->produced), std::end(this->produced), [](const auto &p) { return IsValidCargoType(p.cargo); }); }
 
 	/**
 	 * Test if this industry accepts a specific cargo.
 	 * @param cargo Cargo type to test.
 	 * @return true iff the industry accepts the given cargo type.
 	 */
-	bool IsCargoAccepted(CargoID cargo) const { return std::any_of(std::begin(this->accepted), std::end(this->accepted), [&cargo](const auto &a) { return a.cargo == cargo; }); }
+	bool IsCargoAccepted(CargoType cargo) const { return std::any_of(std::begin(this->accepted), std::end(this->accepted), [&cargo](const auto &a) { return a.cargo == cargo; }); }
 
 	/**
 	 * Test if this industry produces a specific cargo.
 	 * @param cargo Cargo type to test.
 	 * @return true iff the industry produces the given cargo types.
 	 */
-	bool IsCargoProduced(CargoID cargo) const { return std::any_of(std::begin(this->produced), std::end(this->produced), [&cargo](const auto &p) { return p.cargo == cargo; }); }
+	bool IsCargoProduced(CargoType cargo) const { return std::any_of(std::begin(this->produced), std::end(this->produced), [&cargo](const auto &p) { return p.cargo == cargo; }); }
 
 	/**
 	 * Get the industry of the given tile

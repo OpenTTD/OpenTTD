@@ -22,7 +22,7 @@
 		return UINT_MAX;
 	}
 
-	CargoID cid;
+	CargoType cargo_type;
 	switch (variable) {
 		/* Larger towns */
 		case 0x40:
@@ -87,24 +87,24 @@
 		case 0xB2: return this->t->statues;
 		case 0xB6: return ClampTo<uint16_t>(this->t->cache.num_houses);
 		case 0xB9: return this->t->growth_rate / Ticks::TOWN_GROWTH_TICKS;
-		case 0xBA: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].new_max) : 0;
-		case 0xBB: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].new_max), 8, 8) : 0;
-		case 0xBC: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].new_max) : 0;
-		case 0xBD: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].new_max), 8, 8) : 0;
-		case 0xBE: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].new_act) : 0;
-		case 0xBF: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].new_act), 8, 8) : 0;
-		case 0xC0: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].new_act) : 0;
-		case 0xC1: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].new_act), 8, 8) : 0;
-		case 0xC2: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].old_max) : 0;
-		case 0xC3: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].old_max), 8, 8) : 0;
-		case 0xC4: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].old_max) : 0;
-		case 0xC5: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].old_max), 8, 8) : 0;
-		case 0xC6: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].old_act) : 0;
-		case 0xC7: cid = GetCargoIDByLabel(CT_PASSENGERS); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].old_act), 8, 8) : 0;
-		case 0xC8: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? ClampTo<uint16_t>(this->t->supplied[cid].old_act) : 0;
-		case 0xC9: cid = GetCargoIDByLabel(CT_MAIL); return IsValidCargoID(cid) ? GB(ClampTo<uint16_t>(this->t->supplied[cid].old_act), 8, 8) : 0;
-		case 0xCA: return this->t->GetPercentTransported(GetCargoIDByLabel(CT_PASSENGERS));
-		case 0xCB: return this->t->GetPercentTransported(GetCargoIDByLabel(CT_MAIL));
+		case 0xBA: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].new_max) : 0;
+		case 0xBB: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].new_max), 8, 8) : 0;
+		case 0xBC: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].new_max) : 0;
+		case 0xBD: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].new_max), 8, 8) : 0;
+		case 0xBE: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].new_act) : 0;
+		case 0xBF: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].new_act), 8, 8) : 0;
+		case 0xC0: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].new_act) : 0;
+		case 0xC1: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].new_act), 8, 8) : 0;
+		case 0xC2: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].old_max) : 0;
+		case 0xC3: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].old_max), 8, 8) : 0;
+		case 0xC4: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].old_max) : 0;
+		case 0xC5: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].old_max), 8, 8) : 0;
+		case 0xC6: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].old_act) : 0;
+		case 0xC7: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].old_act), 8, 8) : 0;
+		case 0xC8: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].old_act) : 0;
+		case 0xC9: cargo_type = GetCargoTypeByLabel(CT_MAIL); return IsValidCargoType(cargo_type) ? GB(ClampTo<uint16_t>(this->t->supplied[cargo_type].old_act), 8, 8) : 0;
+		case 0xCA: return this->t->GetPercentTransported(GetCargoTypeByLabel(CT_PASSENGERS));
+		case 0xCB: return this->t->GetPercentTransported(GetCargoTypeByLabel(CT_MAIL));
 		case 0xCC: return this->t->received[TAE_FOOD].new_act;
 		case 0xCD: return GB(this->t->received[TAE_FOOD].new_act, 8, 8);
 		case 0xCE: return this->t->received[TAE_WATER].new_act;

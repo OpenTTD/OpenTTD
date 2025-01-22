@@ -18,7 +18,7 @@
 
 struct WagonOverride {
 	std::vector<EngineID> engines;
-	CargoID cargo;
+	CargoType cargo;
 	const SpriteGroup *group;
 };
 
@@ -97,7 +97,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	 * @return The default cargo type.
 	 * @see CanCarryCargo
 	 */
-	CargoID GetDefaultCargoType() const
+	CargoType GetDefaultCargoType() const
 	{
 		return this->info.cargo_type;
 	}

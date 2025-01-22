@@ -42,22 +42,22 @@ public:
 	static std::optional<std::string> GetName(IndustryType industry_type);
 
 	/**
-	 * Get a list of CargoID possible produced by this industry-type.
+	 * Get a list of CargoType possible produced by this industry-type.
 	 * @warning This function only returns the default cargoes of the industry type.
 	 *          Industries can specify new cargotypes on construction.
-	 * @param industry_type The type to get the CargoIDs for.
+	 * @param industry_type The type to get the CargoTypes for.
 	 * @pre IsValidIndustryType(industry_type).
-	 * @return The CargoIDs of all cargotypes this industry could produce.
+	 * @return The CargoTypes of all cargotypes this industry could produce.
 	 */
 	static ScriptList *GetProducedCargo(IndustryType industry_type);
 
 	/**
-	 * Get a list of CargoID accepted by this industry-type.
+	 * Get a list of CargoType accepted by this industry-type.
 	 * @warning This function only returns the default cargoes of the industry type.
 	 *          Industries can specify new cargotypes on construction.
-	 * @param industry_type The type to get the CargoIDs for.
+	 * @param industry_type The type to get the CargoTypes for.
 	 * @pre IsValidIndustryType(industry_type).
-	 * @return The CargoIDs of all cargotypes this industry accepts.
+	 * @return The CargoTypes of all cargotypes this industry accepts.
 	 */
 	static ScriptList *GetAcceptedCargo(IndustryType industry_type);
 

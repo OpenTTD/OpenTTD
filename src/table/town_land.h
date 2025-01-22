@@ -1799,14 +1799,14 @@ static_assert(lengthof(_town_draw_tile_data) == (NEW_HOUSE_OFFSET) * 4 * 4);
  * @param bn  building name
  * @param rr  rating decrease if removed
  * @param mg  mail generation multiplier
- * @param ca1 acceptance for 1st CargoID
- * @param ca2 acceptance for 2nd CargoID
- * @param ca3 acceptance for 3rd CargoID
+ * @param ca1 acceptance for 1st CargoType
+ * @param ca2 acceptance for 2nd CargoType
+ * @param ca3 acceptance for 3rd CargoType
  * @param bf  building flags (size, stadium etc...)
  * @param ba  building availability (zone, climate...)
- * @param cg1 1st CargoID available
- * @param cg2 2nd CargoID available
- * @param cg3 3rd CargoID available
+ * @param cg1 1st CargoType available
+ * @param cg2 2nd CargoType available
+ * @param cg3 3rd CargoType available
  * @see HouseSpec
  */
 #define MS(mnd, mxd, p, rc, bn, rr, mg, ca1, ca2, ca3, bf, ba, cg1, cg2, cg3) \
@@ -1820,16 +1820,16 @@ extern const HouseSpec _original_house_specs[] = {
 	/**
 	 *                                                                              remove_rating_decrease
 	 *                                                                              |    mail_generation
-	 *     min_year                                                                 |    |    1st CargoID acceptance
-	 *     |         CalendarTime::MAX_YEAR                                                       |    |    |    2nd CargoID acceptance
-	 *     |         |    population                                                |    |    |    |    3th CargoID acceptance
+	 *     min_year                                                                 |    |    1st CargoType acceptance
+	 *     |         CalendarTime::MAX_YEAR                                         |    |    |    2nd CargoType acceptance
+	 *     |         |    population                                                |    |    |    |    3th CargoType acceptance
 	 *     |         |    |    removal_cost                                         |    |    |    |    |
 	 *     |         |    |    |    building_name                                   |    |    |    |    |
 	 *     |         |    |    |    |                                               |    |    |    |    |
 	 *     |         |    |    |    |                                               |    |    |    |    |
 	 * +-building_flags   |    |    |                                               |    |    |    |    |
 	 * +-building_availability |    |                                               |    |    |    |    |
-	 * +-cargoID accepted |    |    |                                               |    |    |    |    |
+	 * +-cargo type accepted   |    |                                               |    |    |    |    |
 	 * |   |         |    |    |    |                                               |    |    |    |    |
 	 */
 	MS(1963, CalendarTime::MAX_YEAR, 187, 150, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  70,   8,   3,   4,

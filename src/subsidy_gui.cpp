@@ -144,10 +144,10 @@ struct SubsidyListWindow : Window {
 		size = maxdim(size, d);
 	}
 
-	void DrawCargoIcon(const Rect &r, int y_offset, CargoID cid) const
+	void DrawCargoIcon(const Rect &r, int y_offset, CargoType cargo_type) const
 	{
 		bool rtl = _current_text_dir == TD_RTL;
-		SpriteID icon = CargoSpec::Get(cid)->GetCargoIcon();
+		SpriteID icon = CargoSpec::Get(cargo_type)->GetCargoIcon();
 		Dimension d = GetSpriteSize(icon);
 		Rect ir = r.WithWidth(this->cargo_icon_size.width, rtl).WithHeight(GetCharacterHeight(FS_NORMAL));
 		DrawSprite(icon, PAL_NONE, CenterBounds(ir.left, ir.right, d.width), CenterBounds(ir.top, ir.bottom, this->cargo_icon_size.height) + y_offset);
