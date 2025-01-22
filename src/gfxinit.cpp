@@ -186,7 +186,7 @@ static void LoadSpriteTables()
 	static const char *master_filename = "OPENTTD.GRF";
 	GRFConfig *master = new GRFConfig(master_filename);
 	master->palette |= GRFP_GRF_DOS;
-	FillGRFDetails(master, false, BASESET_DIR);
+	FillGRFDetails(*master, false, BASESET_DIR);
 	ClrBit(master->flags, GCF_INIT_ONLY);
 
 	/* Baseset extra graphics */
@@ -381,7 +381,7 @@ GRFConfig &GraphicsSet::GetOrCreateExtraConfig() const
 			case PAL_WINDOWS: this->extra_cfg->palette |= GRFP_GRF_WINDOWS; break;
 			default: break;
 		}
-		FillGRFDetails(this->extra_cfg.get(), false, BASESET_DIR);
+		FillGRFDetails(*this->extra_cfg, false, BASESET_DIR);
 	}
 	return *this->extra_cfg;
 }

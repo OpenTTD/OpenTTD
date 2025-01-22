@@ -6862,9 +6862,9 @@ static void CfgApply(ByteReader &buf)
  * best result as no NewGRF author can complain about that.
  * @param c The NewGRF to disable.
  */
-static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
+static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig &c)
 {
-	GRFError *error = DisableGrf(STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC, c);
+	GRFError *error = DisableGrf(STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC, &c);
 	error->data = _cur.grfconfig->GetName();
 }
 
@@ -6949,7 +6949,7 @@ static void SkipIf(ByteReader &buf)
 		GRFConfig *c = GetGRFConfig(cond_val, mask);
 
 		if (c != nullptr && HasBit(c->flags, GCF_STATIC) && !HasBit(_cur.grfconfig->flags, GCF_STATIC) && _networking) {
-			DisableStaticNewGRFInfluencingNonStaticNewGRFs(c);
+			DisableStaticNewGRFInfluencingNonStaticNewGRFs(*c);
 			c = nullptr;
 		}
 
@@ -7591,7 +7591,7 @@ static void ParamSet(ByteReader &buf)
 			GRFConfig *c = GetGRFConfig(data);
 			if (c != nullptr && HasBit(c->flags, GCF_STATIC) && !HasBit(_cur.grfconfig->flags, GCF_STATIC) && _networking) {
 				/* Disable the read GRF if it is a static NewGRF. */
-				DisableStaticNewGRFInfluencingNonStaticNewGRFs(c);
+				DisableStaticNewGRFInfluencingNonStaticNewGRFs(*c);
 				src1 = 0;
 			} else if (file == nullptr || c == nullptr || c->status == GCS_DISABLED) {
 				src1 = 0;
@@ -8905,9 +8905,9 @@ static void BuildCargoTranslationMap()
  * Prepare loading a NewGRF file with its config
  * @param config The NewGRF configuration struct with name, id, parameters and alike.
  */
-static void InitNewGRFFile(const GRFConfig *config)
+static void InitNewGRFFile(const GRFConfig &config)
 {
-	GRFFile *newfile = GetFileByFilename(config->filename);
+	GRFFile *newfile = GetFileByFilename(config.filename);
 	if (newfile != nullptr) {
 		/* We already loaded it once. */
 		_cur.grffile = newfile;
@@ -8922,10 +8922,10 @@ static void InitNewGRFFile(const GRFConfig *config)
  * Constructor for GRFFile
  * @param config GRFConfig to copy name, grfid and parameters from.
  */
-GRFFile::GRFFile(const GRFConfig *config)
+GRFFile::GRFFile(const GRFConfig &config)
 {
-	this->filename = config->filename;
-	this->grfid = config->ident.grfid;
+	this->filename = config.filename;
+	this->grfid = config.ident.grfid;
 
 	/* Initialise local settings to defaults */
 	this->traininfo_vehicle_pitch = 0;
@@ -8952,7 +8952,7 @@ GRFFile::GRFFile(const GRFConfig *config)
 	this->tramtype_map[0] = ROADTYPE_TRAM;
 
 	/* Copy the initial parameter list */
-	this->param = config->param;
+	this->param = config.param;
 }
 
 /**
@@ -9620,12 +9620,12 @@ static void DecodeSpecialSprite(uint8_t *buf, uint num, GrfLoadingStage stage)
  * @param stage  The loading stage of the NewGRF.
  * @param file   The file to load the GRF data from.
  */
-static void LoadNewGRFFileFromFile(GRFConfig *config, GrfLoadingStage stage, SpriteFile &file)
+static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, SpriteFile &file)
 {
 	_cur.file = &file;
-	_cur.grfconfig = config;
+	_cur.grfconfig = &config;
 
-	Debug(grf, 2, "LoadNewGRFFile: Reading NewGRF-file '{}'", config->filename);
+	Debug(grf, 2, "LoadNewGRFFile: Reading NewGRF-file '{}'", config.filename);
 
 	uint8_t grf_container_version = file.GetContainerVersion();
 	if (grf_container_version == 0) {
@@ -9709,9 +9709,9 @@ static void LoadNewGRFFileFromFile(GRFConfig *config, GrfLoadingStage stage, Spr
  * @param temporary  The NewGRF/sprite file is to be loaded temporarily and should be closed immediately,
  *                   contrary to loading the SpriteFile and having it cached by the SpriteCache.
  */
-void LoadNewGRFFile(GRFConfig *config, GrfLoadingStage stage, Subdirectory subdir, bool temporary)
+void LoadNewGRFFile(GRFConfig &config, GrfLoadingStage stage, Subdirectory subdir, bool temporary)
 {
-	const std::string &filename = config->filename;
+	const std::string &filename = config.filename;
 
 	/* A .grf file is activated only if it was active when the game was
 	 * started.  If a game is loaded, only its active .grfs will be
@@ -9725,11 +9725,11 @@ void LoadNewGRFFile(GRFConfig *config, GrfLoadingStage stage, Subdirectory subdi
 	if (stage != GLS_FILESCAN && stage != GLS_SAFETYSCAN && stage != GLS_LABELSCAN) {
 		_cur.grffile = GetFileByFilename(filename);
 		if (_cur.grffile == nullptr) UserError("File '{}' lost in cache.\n", filename);
-		if (stage == GLS_RESERVE && config->status != GCS_INITIALISED) return;
-		if (stage == GLS_ACTIVATION && !HasBit(config->flags, GCF_RESERVED)) return;
+		if (stage == GLS_RESERVE && config.status != GCS_INITIALISED) return;
+		if (stage == GLS_ACTIVATION && !HasBit(config.flags, GCF_RESERVED)) return;
 	}
 
-	bool needs_palette_remap = config->palette & GRFP_USE_MASK;
+	bool needs_palette_remap = config.palette & GRFP_USE_MASK;
 	if (temporary) {
 		SpriteFile temporarySpriteFile(filename, subdir, needs_palette_remap);
 		LoadNewGRFFileFromFile(config, stage, temporarySpriteFile);
@@ -10119,7 +10119,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 				continue;
 			}
 
-			if (stage == GLS_LABELSCAN) InitNewGRFFile(c);
+			if (stage == GLS_LABELSCAN) InitNewGRFFile(*c);
 
 			if (!HasBit(c->flags, GCF_STATIC) && !HasBit(c->flags, GCF_SYSTEM)) {
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
@@ -10133,7 +10133,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 			num_grfs++;
 
-			LoadNewGRFFile(c, stage, subdir, false);
+			LoadNewGRFFile(*c, stage, subdir, false);
 			if (stage == GLS_RESERVE) {
 				SetBit(c->flags, GCF_RESERVED);
 			} else if (stage == GLS_ACTIVATION) {

@@ -815,7 +815,7 @@ struct GameOptionsWindow : Window {
 				if (used_set == nullptr || !used_set->IsConfigurable()) break;
 				GRFConfig &extra_cfg = used_set->GetOrCreateExtraConfig();
 				if (extra_cfg.param.empty()) extra_cfg.SetParameterDefaults();
-				OpenGRFParameterWindow(true, &extra_cfg, _game_mode == GM_MENU);
+				OpenGRFParameterWindow(true, extra_cfg, _game_mode == GM_MENU);
 				if (_game_mode == GM_MENU) this->reload = true;
 				break;
 			}
