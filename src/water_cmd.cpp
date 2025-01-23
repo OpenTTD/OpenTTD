@@ -461,6 +461,18 @@ void MakeRiverAndModifyDesertZoneAround(TileIndex tile)
 }
 
 /**
+ * Remove desert directly around a river tile.
+ * @param tile The tile to create non-desert around
+ */
+void ModifyDesertZoneAroundRiver(TileIndex tile)
+{
+	assert(IsTileType(tile, MP_WATER) && IsRiver(tile));
+
+	/* Remove desert directly around the river tile. */
+	CircularTileSearch(&tile, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
+}
+
+/**
  * Build a piece of canal.
  * @param flags type of operation
  * @param tile end tile of stretch-dragging
