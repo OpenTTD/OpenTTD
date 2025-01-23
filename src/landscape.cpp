@@ -1297,6 +1297,7 @@ static void BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool ma
 	finder.FoundEndNode = River_FoundEndNode;
 	finder.user_target = &end;
 	finder.user_data = &user_data;
+	finder.max_search_nodes = 1000 * DistanceManhattan(begin, end);
 
 	AyStarNode start;
 	start.tile = begin;
