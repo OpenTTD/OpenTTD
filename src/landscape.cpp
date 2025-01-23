@@ -1063,7 +1063,7 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 		if (IsSteepSlope(cur_slope)) return false;
 
 		bool flat_river_found = false;
-		bool sloped_river_found = false;
+		std::vector<std::tuple<Slope, int, uint>> sloped_rivers;
 
 		/* There are two common possibilities:
 		 * 1. River flat, adjacent tile has one corner lowered.
@@ -1080,22 +1080,70 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 				/* If the adjacent river tile flows downhill, we need to check where we are relative to the slope. */
 				if (IsInclinedSlope(other_slope) && GetTileMaxZ(tile) == GetTileMaxZ(other_tile)) {
 					/* Check for a parallel slope. If we don't find one, we're above or below the slope instead. */
-					if (GetInclinedSlopeDirection(other_slope) == ChangeDiagDir(d, DIAGDIRDIFF_90RIGHT) ||
-							GetInclinedSlopeDirection(other_slope) == ChangeDiagDir(d, DIAGDIRDIFF_90LEFT)) {
-						desired_slope = other_slope;
-						sloped_river_found = true;
-						break;
+					for (DiagDirDiff dir_diff : { DIAGDIRDIFF_90RIGHT, DIAGDIRDIFF_90LEFT }) {
+						DiagDirection other_d = ChangeDiagDir(d, dir_diff);
+						if (GetInclinedSlopeDirection(other_slope) == other_d) {
+							/* Calculate the length of the parallel slope. */
+							int length = 0;
+							TileIndex parallel_tile = other_tile;
+							for (;;) {
+								length++;
+								parallel_tile = AddTileIndexDiffCWrap(parallel_tile, TileIndexDiffCByDiagDir(d));
+								if (parallel_tile == INVALID_TILE) break;
+								if (!IsWaterTile(parallel_tile) || !IsRiver(parallel_tile)) break;
+								if (GetTileMaxZ(parallel_tile) != GetTileMaxZ(tile)) break;
+								Slope parallel_slope = GetTileSlope(parallel_tile);
+								if (!IsInclinedSlope(parallel_slope) || GetInclinedSlopeDirection(parallel_slope) != other_d) break;
+							}
+							/* Store the slope, its length, and distance to the origin tile. */
+							sloped_rivers.push_back(std::make_tuple(other_slope, length, DistanceManhattan(other_tile, origin_tile)));
+							break;
+						}
 					}
 				}
 				/* If we find an adjacent river tile, remember it. We'll terraform to match it later if we don't find a slope. */
 				if (IsTileFlat(other_tile)) flat_river_found = true;
 			}
 		}
-		/* We didn't find either an inclined or flat river, so we're climbing the wrong slope. Bail out. */
-		if (!sloped_river_found && !flat_river_found) return false;
 
-		/* We didn't find an inclined river, but there is a flat river. */
-		if (!sloped_river_found && flat_river_found) desired_slope = SLOPE_FLAT;
+		if (sloped_rivers.empty()) {
+			/* We didn't find either an inclined or flat river, so we're climbing the wrong slope. Bail out. */
+			if (!flat_river_found) return false;
+
+			/* We didn't find an inclined river, but there is a flat river. */
+			desired_slope = SLOPE_FLAT;
+		} else if (sloped_rivers.size() == 1) {
+			/* We found an inclined river. */
+			desired_slope = std::get<0>(sloped_rivers[0]);
+		} else {
+			/* We found two inclined rivers. */
+			assert(sloped_rivers.size() == 2);
+
+			/* Initialize slopes. */
+			auto &[short_slope, short_length, short_dist] = sloped_rivers[0];
+			[[maybe_unused]] auto &[_, wider_length, wider_dist] = sloped_rivers[1];
+
+			/* Swap values if needed. */
+			if (short_length > wider_length) {
+				std::swap(sloped_rivers[0], sloped_rivers[1]);
+			}
+
+			if (short_dist <= wider_dist && desired_slope != short_slope) {
+				int length_difference = wider_length - short_length;
+
+				/* If the lengths of both slopes are equal, do nothing.
+				 * If one slope is shorter, decide whether to widen the shorter river slope at the cost of the longer one:
+				 * - If the difference in lengths is 1, there's a 50% chance to widen the shorter slope.
+				 * - If the difference in lengths is exactly 2, always widen the shorter slope to make them equal.
+				 * - If the difference in lengths is greater than 2, always widen the shorter slope, but they will not be equal.
+				 *   For example, if the lengths are 1 and 4, widening will result in lengths of 2 and 3. */
+				if (length_difference == 1) {
+					if (Chance16(1, 2)) desired_slope = short_slope;
+				} else if (length_difference >= 2) {
+					desired_slope = short_slope;
+				}
+			}
+		}
 
 		/* Now that we know the desired slope, it's time to terraform! */
 
