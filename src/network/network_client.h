@@ -13,12 +13,12 @@
 #include "network_internal.h"
 
 /** Class for handling the client side of the game connection. */
-class ClientNetworkGameSocketHandler : public ZeroedMemoryAllocator, public NetworkGameSocketHandler {
+class ClientNetworkGameSocketHandler : public NetworkGameSocketHandler {
 private:
 	std::unique_ptr<class NetworkAuthenticationClientHandler> authentication_handler; ///< The handler for the authentication.
 	std::string connection_string; ///< Address we are connected to.
 	std::shared_ptr<struct PacketReader> savegame; ///< Packet reader for reading the savegame.
-	uint8_t token;                    ///< The token we need to send back to the server to prove we're the right client.
+	uint8_t token = 0; ///< The token we need to send back to the server to prove we're the right client.
 
 	/** Status of the connection with the server. */
 	enum ServerStatus {
