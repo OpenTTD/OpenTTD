@@ -21,4 +21,4 @@ GSRoad.HasRoadType <- function(tile, road_type)
 }
 
 /* 15 renames GetBridgeID */
-AIBridge.GetBridgeID <- AIBridge.GetBridgeType;
+GSBridge.GetBridgeID <- GSBridge.GetBridgeType;
