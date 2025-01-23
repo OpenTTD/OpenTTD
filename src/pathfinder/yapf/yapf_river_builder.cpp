@@ -11,6 +11,7 @@
 
 #include "../../water.h"
 #include "../../genworld.h"
+#include "../../viewport_func.h"
 #include "yapf.hpp"
 
 #include "../../safeguards.h"
@@ -108,7 +109,8 @@ public:
 		for (Node *node = pf.GetBestNode(); node != nullptr; node = node->parent) {
 			TileIndex tile = node->GetTile();
 			if (!IsWaterTile(tile)) {
-				MakeRiverAndModifyDesertZoneAround(tile);
+				MakeRiver(tile, Random());
+				MarkTileDirtyByTile(tile);
 			}
 		}
 
