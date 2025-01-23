@@ -44,7 +44,7 @@ struct DrawTileSeqStruct {
  * For allocated ones from NewGRF see #NewGRFSpriteLayout.
  */
 struct DrawTileSprites {
-	PalSpriteID ground; ///< Palette and sprite for the ground
+	PalSpriteID ground{}; ///< Palette and sprite for the ground
 
 	DrawTileSprites(PalSpriteID ground) : ground(ground) {}
 	DrawTileSprites() = default;
