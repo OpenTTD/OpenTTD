@@ -109,9 +109,9 @@ static const uint TLR_MAX_VAR10 = 7; ///< Maximum value for var 10.
  * In contrast to #DrawTileSprites this struct is for allocated
  * layouts on the heap. It allocates data and frees them on destruction.
  */
-struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
-	std::vector<DrawTileSeqStruct> seq;
-	std::vector<TileLayoutRegisters> registers;
+struct NewGRFSpriteLayout : DrawTileSprites {
+	std::vector<DrawTileSeqStruct> seq{};
+	std::vector<TileLayoutRegisters> registers{};
 
 	/**
 	 * Number of sprites in all referenced spritesets.
