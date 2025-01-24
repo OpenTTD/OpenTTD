@@ -135,7 +135,7 @@ endif()
 
 # Breakpad doesn't support emscripten.
 if(NOT EMSCRIPTEN)
-    find_package(unofficial-breakpad)
+    find_package(unofficial-breakpad NO_MODULE)
 endif()
 
 if(NOT OPTION_DEDICATED)
@@ -317,7 +317,7 @@ if(NOT WIN32 AND NOT EMSCRIPTEN)
 endif()
 
 if(NOT EMSCRIPTEN)
-    link_package(unofficial-breakpad TARGET unofficial::breakpad::libbreakpad_client ENCOURAGED)
+    link_package(unofficial-breakpad TARGET unofficial::breakpad::libbreakpad_client)
 endif()
 
 if(NOT OPTION_DEDICATED)
