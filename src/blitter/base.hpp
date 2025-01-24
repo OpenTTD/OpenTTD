@@ -14,13 +14,13 @@
 #include "../spriteloader/spriteloader.hpp"
 
 /** The modes of blitting we can do. */
-enum BlitterMode {
-	BM_NORMAL,       ///< Perform the simple blitting.
-	BM_COLOUR_REMAP, ///< Perform a colour remapping.
-	BM_TRANSPARENT,  ///< Perform transparency darkening remapping.
-	BM_TRANSPARENT_REMAP, ///< Perform transparency colour remapping.
-	BM_CRASH_REMAP,  ///< Perform a crash remapping.
-	BM_BLACK_REMAP,  ///< Perform remapping to a completely blackened sprite
+enum class BlitterMode : uint8_t {
+	Normal, ///< Perform the simple blitting.
+	ColourRemap, ///< Perform a colour remapping.
+	Transparent, ///< Perform transparency darkening remapping.
+	TransparentRemap, ///< Perform transparency colour remapping.
+	CrashRemap, ///< Perform a crash remapping.
+	BlackRemap, ///< Perform remapping to a completely blackened sprite
 };
 
 /**

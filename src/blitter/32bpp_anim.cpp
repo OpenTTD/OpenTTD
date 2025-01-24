@@ -98,7 +98,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 			draw:;
 
 			switch (mode) {
-				case BM_COLOUR_REMAP:
+				case BlitterMode::ColourRemap:
 					if (src_px->a == 255) {
 						do {
 							uint m = *src_n;
@@ -135,7 +135,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					}
 					break;
 
-				case BM_CRASH_REMAP:
+				case BlitterMode::CrashRemap:
 					if (src_px->a == 255) {
 						do {
 							uint m = *src_n;
@@ -176,7 +176,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					break;
 
 
-				case BM_BLACK_REMAP:
+				case BlitterMode::BlackRemap:
 					do {
 						*dst++ = Colour(0, 0, 0);
 						*anim++ = 0;
@@ -185,7 +185,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					} while (--n != 0);
 					break;
 
-				case BM_TRANSPARENT:
+				case BlitterMode::Transparent:
 					/* Make the current colour a bit more black, so it looks like this image is transparent */
 					src_n += n;
 					if (src_px->a == 255) {
@@ -207,7 +207,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					}
 					break;
 
-				case BM_TRANSPARENT_REMAP:
+				case BlitterMode::TransparentRemap:
 					/* Apply custom transparency remap. */
 					src_n += n;
 					if (src_px->a != 0) {
@@ -271,12 +271,12 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 
 	switch (mode) {
 		default: NOT_REACHED();
-		case BM_NORMAL:       Draw<BM_NORMAL>      (bp, zoom); return;
-		case BM_COLOUR_REMAP: Draw<BM_COLOUR_REMAP>(bp, zoom); return;
-		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT> (bp, zoom); return;
-		case BM_TRANSPARENT_REMAP: Draw<BM_TRANSPARENT_REMAP>(bp, zoom); return;
-		case BM_CRASH_REMAP:  Draw<BM_CRASH_REMAP> (bp, zoom); return;
-		case BM_BLACK_REMAP:  Draw<BM_BLACK_REMAP> (bp, zoom); return;
+		case BlitterMode::Normal: Draw<BlitterMode::Normal>(bp, zoom); return;
+		case BlitterMode::ColourRemap: Draw<BlitterMode::ColourRemap>(bp, zoom); return;
+		case BlitterMode::Transparent: Draw<BlitterMode::Transparent>(bp, zoom); return;
+		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap>(bp, zoom); return;
+		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap>(bp, zoom); return;
+		case BlitterMode::BlackRemap: Draw<BlitterMode::BlackRemap>(bp, zoom); return;
 	}
 }
 
