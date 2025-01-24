@@ -653,7 +653,7 @@ struct TimetableWindow : Window {
 				if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
 					this->query_widget = WID_VT_START_DATE;
 					this->change_timetable_all = _ctrl_pressed;
-					ShowQueryString(STR_EMPTY, STR_TIMETABLE_START_SECONDS_QUERY, 6, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
+					ShowQueryString({}, STR_TIMETABLE_START_SECONDS_QUERY, 6, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
 				} else {
 					ShowSetDateWindow(this, v->index, TimerGameEconomy::date, TimerGameEconomy::year, TimerGameEconomy::year + MAX_TIMETABLE_START_YEARS, ChangeTimetableStartCallback, reinterpret_cast<void*>(static_cast<uintptr_t>(_ctrl_pressed)));
 				}
@@ -667,15 +667,14 @@ struct TimetableWindow : Window {
 				if (real >= v->GetNumOrders()) real = 0;
 
 				const Order *order = v->GetOrder(real);
-				StringID current = STR_EMPTY;
+				std::string current;
 
 				if (order != nullptr) {
 					uint time = (selected % 2 != 0) ? order->GetTravelTime() : order->GetWaitTime();
 					time /= TicksPerTimetableUnit();
 
 					if (time != 0) {
-						SetDParam(0, time);
-						current = STR_JUST_INT;
+						current = GetString(STR_JUST_INT, time);
 					}
 				}
 
@@ -691,12 +690,11 @@ struct TimetableWindow : Window {
 
 				if (real >= v->GetNumOrders()) real = 0;
 
-				StringID current = STR_EMPTY;
+				std::string current;
 				const Order *order = v->GetOrder(real);
 				if (order != nullptr) {
 					if (order->GetMaxSpeed() != UINT16_MAX) {
-						SetDParam(0, ConvertKmhishSpeedToDisplaySpeed(order->GetMaxSpeed(), v->type));
-						current = STR_JUST_INT;
+						current = GetString(STR_JUST_INT, ConvertKmhishSpeedToDisplaySpeed(order->GetMaxSpeed(), v->type));
 					}
 				}
 

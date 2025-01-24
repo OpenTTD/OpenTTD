@@ -1099,12 +1099,11 @@ public:
 	{
 		assert(Group::IsValidID(group));
 		this->group_rename = group;
+
 		/* Show empty query for new groups */
-		StringID str = STR_EMPTY;
-		if (!empty) {
-			SetDParam(0, group);
-			str = STR_GROUP_NAME;
-		}
+		std::string str;
+		if (!empty) str = GetString(STR_GROUP_NAME, group);
+
 		ShowQueryString(str, STR_GROUP_RENAME_CAPTION, MAX_LENGTH_GROUP_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
 	}
 
