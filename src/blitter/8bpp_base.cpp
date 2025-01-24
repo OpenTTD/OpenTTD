@@ -156,5 +156,5 @@ void Blitter_8bppBase::PaletteAnimate(const Palette &)
 
 Blitter::PaletteAnimation Blitter_8bppBase::UsePaletteAnimation()
 {
-	return Blitter::PALETTE_ANIMATION_VIDEO_BACKEND;
+	return Blitter::PaletteAnimation::VideoBackend;
 }

@@ -532,7 +532,7 @@ void Blitter_32bppAnim::PaletteAnimate(const Palette &palette)
 
 Blitter::PaletteAnimation Blitter_32bppAnim::UsePaletteAnimation()
 {
-	return Blitter::PALETTE_ANIMATION_BLITTER;
+	return Blitter::PaletteAnimation::Blitter;
 }
 
 void Blitter_32bppAnim::PostResize()

@@ -1242,16 +1242,16 @@ void VideoDriver_Win32GDI::Paint()
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
 		switch (blitter->UsePaletteAnimation()) {
-			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+			case Blitter::PaletteAnimation::VideoBackend:
 				this->UpdatePalette(dc2, _local_palette.first_dirty, _local_palette.count_dirty);
 				break;
 
-			case Blitter::PALETTE_ANIMATION_BLITTER: {
+			case Blitter::PaletteAnimation::Blitter: {
 				blitter->PaletteAnimate(_local_palette);
 				break;
 			}
 
-			case Blitter::PALETTE_ANIMATION_NONE:
+			case Blitter::PaletteAnimation::None:
 				break;
 
 			default:
@@ -1586,7 +1586,7 @@ void VideoDriver_Win32OpenGL::Paint()
 
 		/* Always push a changed palette to OpenGL. */
 		OpenGLBackend::Get()->UpdatePalette(_local_palette.palette, _local_palette.first_dirty, _local_palette.count_dirty);
-		if (blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_BLITTER) {
+		if (blitter->UsePaletteAnimation() == Blitter::PaletteAnimation::Blitter) {
 			blitter->PaletteAnimate(_local_palette);
 		}
 

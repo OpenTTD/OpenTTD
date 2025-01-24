@@ -152,5 +152,5 @@ void Blitter_32bppBase::PaletteAnimate(const Palette &)
 
 Blitter::PaletteAnimation Blitter_32bppBase::UsePaletteAnimation()
 {
-	return Blitter::PALETTE_ANIMATION_NONE;
+	return Blitter::PaletteAnimation::None;
 }
