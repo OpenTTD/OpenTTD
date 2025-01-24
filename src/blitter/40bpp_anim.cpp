@@ -528,7 +528,7 @@ size_t Blitter_40bppAnim::BufferSize(uint width, uint height)
 
 Blitter::PaletteAnimation Blitter_40bppAnim::UsePaletteAnimation()
 {
-	return Blitter::PALETTE_ANIMATION_VIDEO_BACKEND;
+	return Blitter::PaletteAnimation::VideoBackend;
 }
 
 bool Blitter_40bppAnim::NeedsAnimationBuffer()

@@ -47,10 +47,10 @@ public:
 	};
 
 	/** Types of palette animation. */
-	enum PaletteAnimation {
-		PALETTE_ANIMATION_NONE,           ///< No palette animation
-		PALETTE_ANIMATION_VIDEO_BACKEND,  ///< Palette animation should be done by video backend (8bpp only!)
-		PALETTE_ANIMATION_BLITTER,        ///< The blitter takes care of the palette animation
+	enum class PaletteAnimation : uint8_t {
+		None, ///< No palette animation
+		VideoBackend, ///< Palette animation should be done by video backend (8bpp only!)
+		Blitter, ///< The blitter takes care of the palette animation
 	};
 
 	/**

@@ -29,7 +29,7 @@ public:
 	void ScrollBuffer(void *, int &, int &, int &, int &, int, int) override {};
 	size_t BufferSize(uint, uint) override { return 0; };
 	void PaletteAnimate(const Palette &) override { };
-	Blitter::PaletteAnimation UsePaletteAnimation() override { return Blitter::PALETTE_ANIMATION_NONE; };
+	Blitter::PaletteAnimation UsePaletteAnimation() override { return Blitter::PaletteAnimation::None; };
 
 	std::string_view GetName() override { return "null"; }
 };
