@@ -81,15 +81,13 @@ enum HouseZones : uint16_t {
 };
 DECLARE_ENUM_AS_BIT_SET(HouseZones)
 
-enum HouseExtraFlags : uint8_t {
-	NO_EXTRA_FLAG            =       0,
-	BUILDING_IS_HISTORICAL   = 1U << 0,  ///< this house will only appear during town generation in random games, thus the historical
-	BUILDING_IS_PROTECTED    = 1U << 1,  ///< towns and AI will not remove this house, while human players will be able to
-	SYNCHRONISED_CALLBACK_1B = 1U << 2,  ///< synchronized callback 1B will be performed, on multi tile houses
-	CALLBACK_1A_RANDOM_BITS  = 1U << 3,  ///< callback 1A needs random bits
+enum class HouseExtraFlag : uint8_t {
+	BuildingIsHistorical   = 0, ///< this house will only appear during town generation in random games, thus the historical
+	BuildingIsProtected    = 1, ///< towns and AI will not remove this house, while human players will be able to
+	SynchronisedCallback1B = 2, ///< synchronized callback 1B will be performed, on multi tile houses
+	Callback1ARandomBits   = 3, ///< callback 1A needs random bits
 };
-
-DECLARE_ENUM_AS_BIT_SET(HouseExtraFlags)
+using HouseExtraFlags = EnumBitSet<HouseExtraFlag, uint8_t>;
 
 struct HouseSpec {
 	/* Standard properties */
@@ -111,7 +109,7 @@ struct HouseSpec {
 	HouseCallbackMasks callback_mask;                     ///< Bitmask of house callbacks that have to be called
 	Colours random_colour[4];                 ///< 4 "random" colours
 	uint8_t probability;                         ///< Relative probability of appearing (16 is the standard value)
-	HouseExtraFlags extra_flags;              ///< some more flags
+	HouseExtraFlags extra_flags{};              ///< some more flags
 	HouseClassID class_id;                    ///< defines the class this house has (not grf file based)
 	AnimationInfo animation;                  ///< information about the animation.
 	uint8_t processing_time;                     ///< Periodic refresh multiplier

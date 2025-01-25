@@ -2741,7 +2741,7 @@ static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID
 		uint32_t construction_random = Random();
 
 		construction_stage = TOWN_HOUSE_COMPLETED;
-		if (_generating_world && !HasFlag(hs->extra_flags, HouseExtraFlags::BUILDING_IS_HISTORICAL) && Chance16(1, 7)) construction_stage = GB(construction_random, 0, 2);
+		if (_generating_world && !hs->extra_flags.Test(HouseExtraFlag::BuildingIsHistorical) && Chance16(1, 7)) construction_stage = GB(construction_random, 0, 2);
 
 		if (construction_stage == TOWN_HOUSE_COMPLETED) {
 			ChangePopulation(t, hs->population);
@@ -2835,7 +2835,7 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 
 		const HouseSpec *hs = HouseSpec::Get(house);
 
-		if (!_generating_world && _game_mode != GM_EDITOR && (hs->extra_flags & BUILDING_IS_HISTORICAL) != 0) {
+		if (!_generating_world && _game_mode != GM_EDITOR && hs->extra_flags.Test(HouseExtraFlag::BuildingIsHistorical)) {
 			continue;
 		}
 
