@@ -2607,7 +2607,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				break;
 
 			case 0x19: // Extra flags
-				housespec->extra_flags = (HouseExtraFlags)buf.ReadByte();
+				housespec->extra_flags = static_cast<HouseExtraFlags>(buf.ReadByte());
 				break;
 
 			case 0x1A: // Animation frames

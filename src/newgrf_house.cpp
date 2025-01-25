@@ -596,7 +596,7 @@ void AnimateNewHouseTile(TileIndex tile)
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 	if (hs == nullptr) return;
 
-	HouseAnimationBase::AnimateTile(hs, Town::GetByTile(tile), tile, HasFlag(hs->extra_flags, CALLBACK_1A_RANDOM_BITS));
+	HouseAnimationBase::AnimateTile(hs, Town::GetByTile(tile), tile, hs->extra_flags.Test(HouseExtraFlag::Callback1ARandomBits));
 }
 
 void AnimateNewHouseConstruction(TileIndex tile)
@@ -622,7 +622,7 @@ bool CanDeleteHouse(TileIndex tile)
 		uint16_t callback_res = GetHouseCallback(CBID_HOUSE_DENY_DESTRUCTION, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		return (callback_res == CALLBACK_FAILED || !ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DENY_DESTRUCTION, callback_res));
 	} else {
-		return !(hs->extra_flags & BUILDING_IS_PROTECTED);
+		return !hs->extra_flags.Test(HouseExtraFlag::BuildingIsProtected);
 	}
 }
 
@@ -631,7 +631,7 @@ static void AnimationControl(TileIndex tile, uint16_t random_bits)
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
 	if (hs->callback_mask.Test(HouseCallbackMask::AnimationStartStop)) {
-		uint32_t param = (hs->extra_flags & SYNCHRONISED_CALLBACK_1B) ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
+		uint32_t param = hs->extra_flags.Test(HouseExtraFlag::SynchronisedCallback1B) ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
 		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_START_STOP, hs, Town::GetByTile(tile), tile, param, 0);
 	}
 }
@@ -653,7 +653,7 @@ bool NewHouseTileLoop(TileIndex tile)
 		 * tiles will have the callback called at once, rather than when the
 		 * tile loop reaches them. This should only be enabled for the northern
 		 * tile, or strange things will happen (here, and in TTDPatch). */
-		if (hs->extra_flags & SYNCHRONISED_CALLBACK_1B) {
+		if (hs->extra_flags.Test(HouseExtraFlag::SynchronisedCallback1B)) {
 			uint16_t random = GB(Random(), 0, 16);
 
 			if (hs->building_flags & BUILDING_HAS_1_TILE)  AnimationControl(tile, random);
