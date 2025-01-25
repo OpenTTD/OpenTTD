@@ -719,7 +719,7 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
  *
  * @note Magic constants are also used in #NWidgetLeaf::ButtonHit.
  */
-static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, std::string_view str, StringAlignment align)
+void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, std::string_view str, StringAlignment align)
 {
 	int dd_width  = NWidgetLeaf::dropdown_dimension.width;
 

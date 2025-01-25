@@ -425,3 +425,163 @@ void HandleBadgeConfigurationDropDownClick(GrfSpecFeature feature, BadgeClassID 
 		BadgeClassToggleVisibility(feature, *class_badge);
 	}
 }
+
+class NWidgetBadgeFilter : public NWidgetLeaf {
+public:
+	NWidgetBadgeFilter(Colours colour, WidgetID index, GrfSpecFeature feature, BadgeClassID badge_class)
+		: NWidgetLeaf(WWT_DROPDOWN, colour, index, WidgetData{ .string = STR_JUST_STRING }, STR_NULL)
+		, feature(feature)
+		, badge_class(badge_class)
+	{
+		this->SetFill(1, 0);
+		this->SetResize(1, 0);
+	}
+
+	BadgeClassID GetBadgeClassID() const { return this->badge_class; }
+
+	std::string GetStringParameter(const BadgeFilterConfiguration &conf) const
+	{
+		auto it = std::ranges::find(conf, this->badge_class, &std::pair<BadgeClassID, BadgeID>::first);
+		if (it == std::end(conf)) {
+			return ::GetString(STR_BADGE_FILTER_ANY_LABEL, GetClassBadge(this->badge_class)->name);
+		}
+		return ::GetString(STR_BADGE_FILTER_IS_LABEL, GetClassBadge(this->badge_class)->name, GetBadge(it->second)->name);
+	}
+
+	/**
+	 * Get the drop down list of badges for this filter.
+	 * @return Drop down list for filter.
+	 */
+	DropDownList GetDropDownList() const
+	{
+		DropDownList list;
+
+		/* Add item for disabling filtering. */
+		list.push_back(MakeDropDownListStringItem(::GetString(STR_BADGE_FILTER_ANY_LABEL, GetClassBadge(this->badge_class)->name), -1));
+		list.push_back(MakeDropDownListDividerItem());
+
+		/* Add badges */
+		Dimension d = GetBadgeMaximalDimension(this->badge_class, this->feature);
+		d.width = ScaleGUITrad(d.width);
+		d.height = ScaleGUITrad(d.height);
+
+		auto start = list.size();
+
+		const auto *bc = GetClassBadge(this->badge_class);
+
+		for (const Badge &badge : GetBadges()) {
+			if (badge.class_index != this->badge_class) continue;
+			if (badge.index == bc->index) continue;
+			if (badge.name == STR_NULL) continue;
+			if (!badge.features.Test(this->feature)) continue;
+
+			PalSpriteID ps = GetBadgeSprite(badge, this->feature, std::nullopt, PAL_NONE);
+			if (ps.sprite == 0) {
+				list.push_back(MakeDropDownListStringItem(badge.name, badge.index.base()));
+			} else {
+				list.push_back(MakeDropDownListIconItem(d, ps.sprite, ps.pal, badge.name, badge.index.base()));
+			}
+		}
+
+		std::sort(std::begin(list) + start, std::end(list), DropDownListStringItem::NatSortFunc);
+
+		return list;
+	}
+
+private:
+	GrfSpecFeature feature; ///< Feature of this dropdown.
+	BadgeClassID badge_class; ///< Badge class of this dropdown.
+};
+
+/**
+ * Add badge drop down filter widgets.
+ * @param container Container widget to hold filter widgets.
+ * @param widget Widget index to apply to first filter.
+ * @param colour Background colour of widgets.
+ * @param feature GRF feature for filters.
+ * @return First and last widget indexes of filter widgets.
+ */
+std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(NWidgetContainer &container, WidgetID widget, Colours colour, GrfSpecFeature feature)
+{
+	container.Clear();
+	WidgetID first = ++widget;
+
+	/* Get list of classes used by feature. */
+	UsedBadgeClasses used(feature);
+
+	for (BadgeClassID class_index : used.Classes()) {
+		const BadgeClassConfigItem &config = GetBadgeClassConfigItem(feature, GetClassBadge(class_index)->label);
+		if (!config.show_filter) continue;
+
+		container.Add(std::make_unique<NWidgetBadgeFilter>(colour, widget, feature, class_index));
+		++widget;
+	}
+
+	return {first, widget};
+}
+
+/**
+ * Get the badge class of a badge filter widget.
+ * @param nwid Filter widget.
+ * @return badge class index.
+ */
+BadgeClassID GetBadgeDropdownFilterClass(const NWidgetBase &nwid)
+{
+	return dynamic_cast<const NWidgetBadgeFilter &>(nwid).GetBadgeClassID();
+}
+
+/**
+ * Get the drop down list of a badge filter widget.
+ * @param nwid Filter widget.
+ * @return Drop down list.
+ */
+DropDownList GetBadgeDropdownFilterList(const NWidgetBase &nwid)
+{
+	return dynamic_cast<const NWidgetBadgeFilter &>(nwid).GetDropDownList();
+}
+
+/**
+ * Get the label string of a badge filter widget.
+ * @param nwid Filter widget.
+ * @return formatted string.
+ */
+std::string GetBadgeDropdownFilterString(const NWidgetBase &nwid, const BadgeFilterConfiguration &conf)
+{
+	return dynamic_cast<const NWidgetBadgeFilter &>(nwid).GetStringParameter(conf);
+}
+
+/**
+ * Reset badge filter configuration for a class.
+ * @param conf Badge filter configuration.
+ * @param badge_class_index Badge class to reset.
+ */
+void ResetBadgeFilter(BadgeFilterConfiguration &conf, BadgeClassID badge_class_index)
+{
+	auto it = std::ranges::find(conf, badge_class_index, &std::pair<BadgeClassID, BadgeID>::first);
+	if (it != std::end(conf)) conf.erase(it);
+}
+
+/**
+ * Set badge filter configuration for a class.
+ * @param conf Badge filter configuration.
+ * @param badge_index Badge to set. The badge class is inferred from the badge.
+ * @note if the badge_index is invalid, the filter will be reset instead.
+ */
+void SetBadgeFilter(BadgeFilterConfiguration &conf, BadgeID badge_index)
+{
+	const Badge *badge = GetBadge(badge_index);
+
+	auto it = std::ranges::find(conf, badge->class_index, &std::pair<BadgeClassID, BadgeID>::first);
+	if (badge == nullptr) {
+		/* Badge doesn't exist, remove the entry for this class if it exists. */
+		if (it != std::end(conf)) {
+			conf.erase(it);
+		}
+	} else {
+		if (it == std::end(conf)) {
+			conf.emplace_back(badge->class_index, badge->index);
+		} else {
+			it->second = badge->index;
+		}
+	}
+}

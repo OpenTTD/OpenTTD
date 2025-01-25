@@ -69,4 +69,13 @@ private:
 	std::vector<BadgeID> badges{};
 };
 
+class BadgeDropdownFilter {
+public:
+	BadgeDropdownFilter(const BadgeFilterConfiguration &conf) : badges(conf) {}
+	bool Filter(std::span<const BadgeID> badges) const;
+
+private:
+	const BadgeFilterConfiguration &badges;
+};
+
 #endif /* NEWGRF_BADGE_H */

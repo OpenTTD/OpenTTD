@@ -24,4 +24,6 @@ enum class BadgeFlag : uint8_t {
 };
 using BadgeFlags = EnumBitSet<BadgeFlag, uint8_t>;
 
+using BadgeFilterConfiguration = std::vector<std::pair<BadgeClassID, BadgeID>>;
+
 #endif /* NEWGRF_BADGE_TYPE_H */

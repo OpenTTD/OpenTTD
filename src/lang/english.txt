@@ -5929,3 +5929,5 @@ STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Open badge conf
 STR_BADGE_CONFIG_RESET                                          :Reset
 STR_BADGE_CONFIG_PREVIEW                                        :Preview Image
 STR_BADGE_CONFIG_NAME                                           :Name
+STR_BADGE_FILTER_ANY_LABEL                                      :Any {STRING}
+STR_BADGE_FILTER_IS_LABEL                                       :{STRING} is {STRING}

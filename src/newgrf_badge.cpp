@@ -345,3 +345,16 @@ bool BadgeTextFilter::Filter(std::span<const BadgeID> badges) const
 {
 	return std::ranges::any_of(badges, [this](const BadgeID &badge) { return std::ranges::binary_search(this->badges, badge); });
 }
+
+/**
+ * Test if the given badges matches the filtered badge list.
+ * @param badges List of badges.
+ * @return true iff all required badges are present in the provided list.
+ */
+bool BadgeDropdownFilter::Filter(std::span<const BadgeID> badges) const
+{
+	if (this->badges.empty()) return true;
+
+	/* We want all filtered badges to match. */
+	return std::ranges::all_of(this->badges, [&badges](const auto &badge) { return std::ranges::find(badges, badge.second) != std::end(badges); });
+}

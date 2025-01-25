@@ -55,4 +55,12 @@ std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::share
 DropDownList BuildBadgeClassConfigurationList(const class GUIBadgeClasses &badge_class, uint columns, std::span<const StringID> column_separators);
 void HandleBadgeConfigurationDropDownClick(GrfSpecFeature feature, BadgeClassID class_index, uint columns);
 
+std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(NWidgetContainer &container, WidgetID widget, Colours colour, GrfSpecFeature feature);
+BadgeClassID GetBadgeDropdownFilterClass(const NWidgetBase &nwid);
+DropDownList GetBadgeDropdownFilterList(const NWidgetBase &nwid);
+std::string GetBadgeDropdownFilterString(const NWidgetBase &nwid, const BadgeFilterConfiguration &conf);
+
+void ResetBadgeFilter(BadgeFilterConfiguration &conf, BadgeClassID badge_class_index);
+void SetBadgeFilter(BadgeFilterConfiguration &conf, BadgeID badge_index);
+
 #endif /* NEWGRF_BADGE_GUI_H */
