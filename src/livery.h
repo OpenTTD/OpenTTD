@@ -57,7 +57,7 @@ enum LiveryScheme : uint8_t {
 	LS_END
 };
 
-DECLARE_POSTFIX_INCREMENT(LiveryScheme)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(LiveryScheme)
 
 /** List of different livery classes, used only by the livery GUI. */
 enum LiveryClass : uint8_t {

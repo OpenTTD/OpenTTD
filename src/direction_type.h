@@ -36,7 +36,7 @@ enum Direction : uint8_t {
 };
 
 /** Allow incrementing of Direction variables */
-DECLARE_POSTFIX_INCREMENT(Direction)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(Direction)
 
 /**
  * Enumeration for the difference between two directions.
@@ -79,7 +79,7 @@ enum DiagDirection : uint8_t {
 	DIAGDIR_END,            ///< Used for iterations
 	INVALID_DIAGDIR = 0xFF, ///< Flag for an invalid DiagDirection
 };
-DECLARE_POSTFIX_INCREMENT(DiagDirection)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(DiagDirection)
 DECLARE_ENUM_AS_ADDABLE(DiagDirection)
 
 /**
@@ -102,7 +102,7 @@ enum DiagDirDiff {
 };
 
 /** Allow incrementing of DiagDirDiff variables */
-DECLARE_POSTFIX_INCREMENT(DiagDirDiff)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(DiagDirDiff)
 
 
 /**

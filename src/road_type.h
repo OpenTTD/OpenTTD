@@ -29,7 +29,7 @@ enum RoadType : uint8_t {
 	ROADTYPE_END     = 63,   ///< Used for iterations
 	INVALID_ROADTYPE = 63,   ///< flag for invalid roadtype
 };
-DECLARE_POSTFIX_INCREMENT(RoadType)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(RoadType)
 
 /**
  * The different roadtypes we support, but then a bitmask of them.

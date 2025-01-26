@@ -450,6 +450,6 @@ public:
 	static ScriptCompany::Colours GetSecondaryLiveryColour(LiveryScheme scheme);
 };
 
-DECLARE_POSTFIX_INCREMENT(ScriptCompany::CompanyID)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(ScriptCompany::CompanyID)
 
 #endif /* SCRIPT_COMPANY_HPP */

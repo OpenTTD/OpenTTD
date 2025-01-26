@@ -34,7 +34,7 @@ enum Owner : uint8_t {
 	COMPANY_NEW_COMPANY     = 254, ///< The client wants a new company
 	COMPANY_SPECTATOR       = 255, ///< The client is spectating
 };
-DECLARE_POSTFIX_INCREMENT(Owner)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(Owner)
 DECLARE_ENUM_AS_ADDABLE(Owner)
 
 static const uint MAX_LENGTH_PRESIDENT_NAME_CHARS = 32; ///< The maximum length of a president name in characters including '\0'

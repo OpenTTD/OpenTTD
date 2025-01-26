@@ -81,7 +81,7 @@ enum ColourShade : uint8_t {
 	SHADE_LIGHTEREST,
 	SHADE_END,
 };
-DECLARE_POSTFIX_INCREMENT(ColourShade)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(ColourShade)
 
 uint8_t GetColourGradient(Colours colour, ColourShade shade);
 void SetColourGradient(Colours colour, ColourShade shade, uint8_t palette_colour);

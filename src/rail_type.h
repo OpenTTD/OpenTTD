@@ -35,7 +35,7 @@ enum RailType : uint8_t {
 };
 
 /** Allow incrementing of Track variables */
-DECLARE_POSTFIX_INCREMENT(RailType)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(RailType)
 
 /**
  * The different railtypes we support, but then a bitmask of them.

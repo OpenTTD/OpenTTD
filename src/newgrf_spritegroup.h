@@ -103,7 +103,7 @@ enum VarSpriteGroupScope : uint8_t {
 
 	VSG_END
 };
-DECLARE_POSTFIX_INCREMENT(VarSpriteGroupScope)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(VarSpriteGroupScope)
 
 enum DeterministicSpriteGroupSize : uint8_t {
 	DSG_SIZE_BYTE,

@@ -77,7 +77,7 @@ enum PerformanceElement {
 	PFE_AI14,          ///< AI execution for player slot 15
 	PFE_MAX,           ///< End of enum, must be last.
 };
-DECLARE_POSTFIX_INCREMENT(PerformanceElement)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(PerformanceElement)
 
 /** Type used to hold a performance timing measurement */
 typedef uint64_t TimingMeasurement;

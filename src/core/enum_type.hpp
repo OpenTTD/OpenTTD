@@ -57,8 +57,8 @@ inline constexpr enum_type operator --(enum_type &e, int)
 	return e_org;
 }
 
-/** Some enums need to have allowed incrementing (i.e. StationClassID) */
-#define DECLARE_POSTFIX_INCREMENT(enum_type) \
+/** For some enums it is useful to have pre/post increment/decrement operators */
+#define DECLARE_INCREMENT_DECREMENT_OPERATORS(enum_type) \
 	template <> struct is_enum_incrementable<enum_type> { \
 		static const bool value = true; \
 	};

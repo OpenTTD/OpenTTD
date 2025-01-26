@@ -42,7 +42,7 @@
 
 /* This file handles all the server-commands */
 
-DECLARE_POSTFIX_INCREMENT(ClientID)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(ClientID)
 /** The identifier counter for new clients (is never decreased) */
 static ClientID _network_client_id = CLIENT_ID_FIRST;
 

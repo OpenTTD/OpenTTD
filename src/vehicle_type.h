@@ -34,7 +34,7 @@ enum VehicleType : uint8_t {
 	VEH_END,
 	VEH_INVALID = 0xFF,           ///< Non-existing type of vehicle.
 };
-DECLARE_POSTFIX_INCREMENT(VehicleType)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(VehicleType)
 DECLARE_ENUM_AS_ADDABLE(VehicleType)
 
 struct Vehicle;

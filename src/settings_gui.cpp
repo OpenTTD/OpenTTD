@@ -1227,7 +1227,7 @@ enum RestrictionMode {
 	RM_CHANGED_AGAINST_NEW,              ///< Show only settings which are different compared to the user's new game setting values.
 	RM_END,                              ///< End for iteration.
 };
-DECLARE_POSTFIX_INCREMENT(RestrictionMode)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(RestrictionMode)
 
 /** Filter for settings list. */
 struct SettingFilter {
