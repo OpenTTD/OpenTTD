@@ -91,7 +91,7 @@ enum StationClassID : uint16_t {
 };
 
 /** Allow incrementing of StationClassID variables */
-DECLARE_POSTFIX_INCREMENT(StationClassID)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(StationClassID)
 
 enum StationSpecFlags {
 	SSF_SEPARATE_GROUND,      ///< Use different sprite set for ground sprites.

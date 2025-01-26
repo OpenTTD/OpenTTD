@@ -153,7 +153,7 @@ enum Searchpath : unsigned {
 	NUM_SEARCHPATHS
 };
 
-DECLARE_POSTFIX_INCREMENT(Searchpath)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(Searchpath)
 
 class FileHandle {
 public:

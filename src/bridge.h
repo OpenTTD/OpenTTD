@@ -30,7 +30,7 @@ enum BridgePieces {
 	NUM_BRIDGE_PIECES,
 };
 
-DECLARE_POSTFIX_INCREMENT(BridgePieces)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(BridgePieces)
 
 static const uint MAX_BRIDGES = 13; ///< Maximal number of available bridge specs.
 constexpr uint SPRITES_PER_BRIDGE_PIECE = 32; ///< Number of sprites there are per bridge piece.

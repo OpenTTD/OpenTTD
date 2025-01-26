@@ -29,7 +29,7 @@ enum Track : uint8_t {
 };
 
 /** Allow incrementing of Track variables */
-DECLARE_POSTFIX_INCREMENT(Track)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(Track)
 
 /** Bitfield corresponding to Track */
 enum TrackBits : uint8_t {
@@ -87,7 +87,7 @@ enum Trackdir : uint8_t {
 };
 
 /** Allow incrementing of Trackdir variables */
-DECLARE_POSTFIX_INCREMENT(Trackdir)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(Trackdir)
 
 /**
  * Enumeration of bitmasks for the TrackDirs

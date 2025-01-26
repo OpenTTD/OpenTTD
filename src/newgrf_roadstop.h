@@ -31,7 +31,7 @@ enum RoadStopClassID : uint16_t {
 	ROADSTOP_CLASS_WAYP, ///< Waypoint class.
 	ROADSTOP_CLASS_MAX = UINT16_MAX, ///< Maximum number of classes.
 };
-DECLARE_POSTFIX_INCREMENT(RoadStopClassID)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(RoadStopClassID)
 
 /* Some Triggers etc. */
 enum RoadStopRandomTrigger {

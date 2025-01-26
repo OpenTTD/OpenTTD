@@ -61,7 +61,7 @@ enum HouseZonesBits : uint8_t {
 };
 static_assert(HZB_END == 5);
 
-DECLARE_POSTFIX_INCREMENT(HouseZonesBits)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(HouseZonesBits)
 
 enum HouseZones : uint16_t {
 	HZ_NOZNS             = 0x0000,  ///<       0          This is just to get rid of zeros, meaning none

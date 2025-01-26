@@ -74,7 +74,7 @@ enum ScoreID {
 	SCORE_MAX = 1000,      ///< The max score that can be in the performance history
 	/* the scores together of score_info is allowed to be more! */
 };
-DECLARE_POSTFIX_INCREMENT(ScoreID)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(ScoreID)
 
 /** Data structure for storing how the score is computed for a single score id. */
 struct ScoreInfo {
@@ -163,7 +163,7 @@ enum Price : uint8_t {
 	PR_END,
 	INVALID_PRICE = 0xFF
 };
-DECLARE_POSTFIX_INCREMENT(Price)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(Price)
 
 typedef Money Prices[PR_END]; ///< Prices of everything. @see Price
 typedef int8_t PriceMultipliers[PR_END];

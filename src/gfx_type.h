@@ -214,7 +214,7 @@ enum FontSize {
 
 	FS_BEGIN = FS_NORMAL, ///< First font.
 };
-DECLARE_POSTFIX_INCREMENT(FontSize)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(FontSize)
 
 inline const char *FontSizeToName(FontSize fs)
 {
@@ -253,7 +253,7 @@ enum Colours : uint8_t {
 	COLOUR_END,
 	INVALID_COLOUR = 0xFF,
 };
-DECLARE_POSTFIX_INCREMENT(Colours)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(Colours)
 DECLARE_ENUM_AS_ADDABLE(Colours)
 
 /** Colour of the strings, see _string_colourmap in table/string_colours.h or docs/ottd-colourtext-palette.png */

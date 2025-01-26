@@ -41,7 +41,7 @@ enum ZoomLevel : uint8_t {
 	ZOOM_LVL_MIN      = ZOOM_LVL_IN_4X, ///< Minimum zoom level.
 	ZOOM_LVL_MAX      = ZOOM_LVL_OUT_8X, ///< Maximum zoom level.
 };
-DECLARE_POSTFIX_INCREMENT(ZoomLevel)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(ZoomLevel)
 DECLARE_ENUM_AS_ADDABLE(ZoomLevel)
 
 static uint const ZOOM_BASE_SHIFT = static_cast<uint>(ZOOM_LVL_NORMAL);

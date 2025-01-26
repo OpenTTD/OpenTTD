@@ -50,7 +50,7 @@ enum CompanyManagerFaceVariable {
 	CMFV_GLASSES,
 	CMFV_END,
 };
-DECLARE_POSTFIX_INCREMENT(CompanyManagerFaceVariable)
+DECLARE_INCREMENT_DECREMENT_OPERATORS(CompanyManagerFaceVariable)
 
 /** Information about the valid values of CompanyManagerFace bitgroups as well as the sprites to draw */
 struct CompanyManagerFaceBitsInfo {
