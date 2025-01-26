@@ -1108,7 +1108,7 @@ static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is
 		}
 
 		/* Check if item is valid */
-		if (!FillGRFDetails(c, is_static) || HasBit(c->flags, GCF_INVALID)) {
+		if (!FillGRFDetails(*c, is_static) || HasBit(c->flags, GCF_INVALID)) {
 			if (c->status == GCS_NOT_FOUND) {
 				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND);
 			} else if (HasBit(c->flags, GCF_UNSAFE)) {
@@ -1242,7 +1242,7 @@ static void GraphicsSetSaveConfig(IniFile &ini)
 	const GRFConfig *extra_cfg = used_set->GetExtraConfig();
 	if (extra_cfg != nullptr && !extra_cfg->param.empty()) {
 		group.GetOrCreateItem("extra_version").SetValue(fmt::format("{}", extra_cfg->version));
-		group.GetOrCreateItem("extra_params").SetValue(GRFBuildParamList(extra_cfg));
+		group.GetOrCreateItem("extra_params").SetValue(GRFBuildParamList(*extra_cfg));
 	}
 }
 
@@ -1256,7 +1256,7 @@ static void GRFSaveConfig(IniFile &ini, const char *grpname, const GRFConfig *li
 	for (c = list; c != nullptr; c = c->next) {
 		std::string key = fmt::format("{:08X}|{}|{}", BSWAP32(c->ident.grfid),
 				FormatArrayAsHex(c->ident.md5sum), c->filename);
-		group.GetOrCreateItem(key).SetValue(GRFBuildParamList(c));
+		group.GetOrCreateItem(key).SetValue(GRFBuildParamList(*c));
 	}
 }
 

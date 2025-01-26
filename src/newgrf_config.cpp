@@ -258,14 +258,14 @@ size_t GRFGetSizeOfDataSection(FileHandle &f)
  * @param subdir The subdirectory to look in.
  * @return MD5 sum was successfully computed
  */
-static bool CalcGRFMD5Sum(GRFConfig *config, Subdirectory subdir)
+static bool CalcGRFMD5Sum(GRFConfig &config, Subdirectory subdir)
 {
 	Md5 checksum;
 	uint8_t buffer[1024];
 	size_t len, size;
 
 	/* open the file */
-	auto f = FioFOpenFile(config->filename, "rb", subdir, &size);
+	auto f = FioFOpenFile(config.filename, "rb", subdir, &size);
 	if (!f.has_value()) return false;
 
 	long start = ftell(*f);
@@ -280,7 +280,7 @@ static bool CalcGRFMD5Sum(GRFConfig *config, Subdirectory subdir)
 		size -= len;
 		checksum.Append(buffer, len);
 	}
-	checksum.Finish(config->ident.md5sum);
+	checksum.Finish(config.ident.md5sum);
 
 	return true;
 }
@@ -293,27 +293,27 @@ static bool CalcGRFMD5Sum(GRFConfig *config, Subdirectory subdir)
  * @param subdir    the subdirectory to search in.
  * @return Operation was successfully completed.
  */
-bool FillGRFDetails(GRFConfig *config, bool is_static, Subdirectory subdir)
+bool FillGRFDetails(GRFConfig &config, bool is_static, Subdirectory subdir)
 {
-	if (!FioCheckFileExists(config->filename, subdir)) {
-		config->status = GCS_NOT_FOUND;
+	if (!FioCheckFileExists(config.filename, subdir)) {
+		config.status = GCS_NOT_FOUND;
 		return false;
 	}
 
 	/* Find and load the Action 8 information */
 	LoadNewGRFFile(config, GLS_FILESCAN, subdir, true);
-	config->SetSuitablePalette();
-	config->FinalizeParameterInfo();
+	config.SetSuitablePalette();
+	config.FinalizeParameterInfo();
 
 	/* Skip if the grfid is 0 (not read) or if it is an internal GRF */
-	if (config->ident.grfid == 0 || HasBit(config->flags, GCF_SYSTEM)) return false;
+	if (config.ident.grfid == 0 || HasBit(config.flags, GCF_SYSTEM)) return false;
 
 	if (is_static) {
 		/* Perform a 'safety scan' for static GRFs */
 		LoadNewGRFFile(config, GLS_SAFETYSCAN, subdir, true);
 
 		/* GCF_UNSAFE is set if GLS_SAFETYSCAN finds unsafe actions */
-		if (HasBit(config->flags, GCF_UNSAFE)) return false;
+		if (HasBit(config.flags, GCF_UNSAFE)) return false;
 	}
 
 	return CalcGRFMD5Sum(config, subdir);
@@ -540,7 +540,7 @@ bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length
 	GRFConfig *c = new GRFConfig(filename.c_str() + basepath_length);
 
 	bool added = true;
-	if (FillGRFDetails(c, false)) {
+	if (FillGRFDetails(*c, false)) {
 		if (_all_grfs == nullptr) {
 			_all_grfs = c;
 		} else {
@@ -704,10 +704,10 @@ GRFConfig *GetGRFConfig(uint32_t grfid, uint32_t mask)
 
 
 /** Build a string containing space separated parameter values, and terminate */
-std::string GRFBuildParamList(const GRFConfig *c)
+std::string GRFBuildParamList(const GRFConfig &c)
 {
 	std::string result;
-	for (const uint32_t &value : c->param) {
+	for (const uint32_t &value : c.param) {
 		if (!result.empty()) result += ' ';
 		result += std::to_string(value);
 	}
