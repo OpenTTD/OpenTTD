@@ -86,6 +86,32 @@ inline std::string ComposeNameT(E value, T &t, const char *t_unk, E val_inv, con
 	return out;
 }
 
+/**
+ * Helper template function that returns compound bitfield name that is
+ * concatenation of names of each set bit in the given value
+ * or unknown_name when index is out of bounds.
+ */
+template <typename E>
+inline std::string ComposeNameT(E value, std::span<const std::string_view> names, std::string_view unknown_name)
+{
+	std::string out;
+	if (value.base() == 0) {
+		out = "<none>";
+	} else {
+		for (size_t i = 0; i < std::size(names); ++i) {
+			if (!value.Test(static_cast<E::EnumType>(i))) continue;
+			out += (!out.empty() ? "+" : "");
+			out += names[i];
+			value.Reset(static_cast<E::EnumType>(i));
+		}
+		if (value.base() != 0) {
+			out += (!out.empty() ? "+" : "");
+			out += unknown_name;
+		}
+	}
+	return out;
+}
+
 std::string ValueStr(Trackdir td);
 std::string ValueStr(TrackdirBits td_bits);
 std::string ValueStr(DiagDirection dd);

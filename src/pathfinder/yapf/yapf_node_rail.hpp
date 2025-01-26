@@ -74,7 +74,7 @@ struct CYapfRailSegment
 	int cost = -1;
 	TileIndex last_signal_tile = INVALID_TILE;
 	Trackdir last_signal_td = INVALID_TRACKDIR;
-	EndSegmentReasonBits end_segment_reason = ESRB_NONE;
+	EndSegmentReasons end_segment_reason{};
 	CYapfRailSegment *hash_next = nullptr;
 
 	inline CYapfRailSegment(const CYapfRailSegmentKey &key) : key(key) {}
