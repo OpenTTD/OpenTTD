@@ -2323,7 +2323,7 @@ static CommandCost RemoveGenericRoadStop(DoCommandFlag flags, const TileArea &ro
 
 	for (TileIndex cur_tile : roadstop_area) {
 		/* Make sure the specified tile is a road stop of the correct type */
-		if (!IsTileType(cur_tile, MP_STATION) || !IsAnyRoadStop(cur_tile) || GetStationType(cur_tile) != station_type) continue;
+		if (!IsTileType(cur_tile, MP_STATION) || !IsAnyRoadStop(cur_tile)) continue;
 
 		/* Save information on to-be-restored roads before the stop is removed. */
 		RoadBits road_bits = ROAD_NONE;
