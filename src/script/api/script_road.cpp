@@ -66,6 +66,14 @@
 	return ::IsDriveThroughStopTile(tile) && HasBit(::GetPresentRoadTypes(tile), (::RoadType)GetCurrentRoadType());
 }
 
+/* static */ bool ScriptRoad::IsRoadWaypointTile(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return false;
+	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
+
+	return ::IsRoadWaypointTile(tile) && HasBit(::GetPresentRoadTypes(tile), static_cast<::RoadType>(GetCurrentRoadType()));
+}
+
 /* static */ bool ScriptRoad::IsRoadTypeAvailable(RoadType road_type)
 {
 	EnforceDeityOrCompanyModeValid(false);
