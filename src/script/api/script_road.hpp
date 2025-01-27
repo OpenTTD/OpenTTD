@@ -142,6 +142,15 @@ public:
 	static bool IsDriveThroughRoadStationTile(TileIndex tile);
 
 	/**
+	 * Checks whether the given tile is actually a tile with a road waypoint.
+	 * @param tile The tile to check.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
+	 * @return True if and only if the tile has a road waypoint.
+	 */
+	static bool IsRoadWaypointTile(TileIndex tile);
+
+	/**
 	 * Check if a given RoadType is available.
 	 * @param road_type The RoadType to check for.
 	 * @game @pre ScriptCompanyMode::IsValid().

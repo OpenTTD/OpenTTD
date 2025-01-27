@@ -1325,6 +1325,15 @@ function Regression::Road()
 	print("    GetDriveThroughBackTile():     " + AIRoad.GetDriveThroughBackTile(33415));
 	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33415));
 	print("    IsRoadTile():                  " + AIRoad.IsRoadTile(33415));
+
+	print("  Waypoint");
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33411));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33412));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33413));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33414));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33415));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33416));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33417));
 }
 
 function Regression::Sign()

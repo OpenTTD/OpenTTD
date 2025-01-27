@@ -7944,6 +7944,14 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetDriveThroughBackTile():     33416
     GetRoadStationFrontTile():     33414
     IsRoadTile():                  true
+  Waypoint
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
 
 --Sign--
   BuildSign(33410, 'Some Sign'):       0
@@ -10116,7 +10124,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2184]
+*FUNCTION [Start()] regression/main.nut line [2193]
 
 [Infinite] CLOSURE
 [list] INSTANCE
