@@ -139,7 +139,9 @@ if(NOT EMSCRIPTEN)
 endif()
 
 if(NOT OPTION_DEDICATED)
-    if(NOT WIN32)
+    if(WIN32)
+        find_package(Xaudio2)
+    else()
         find_package(Allegro)
         if(NOT APPLE)
             find_package(Freetype)
@@ -174,7 +176,6 @@ if(MSVC)
 endif()
 
 find_package(SSE)
-find_package(Xaudio2)
 
 find_package(Grfcodec)
 
