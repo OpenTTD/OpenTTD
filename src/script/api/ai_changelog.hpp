@@ -21,6 +21,7 @@
  *
  * API additions:
  * \li AIRail.RemoveRailDepot
+ * \li AIRoad::IsRoadWaypointTile
  *
  * \b 15.0
  *
