@@ -1,6 +1,7 @@
 # Autodetect if xaudio2 can be used.
 
 include(CheckCXXSourceCompiles)
+set(OLD_CMAKE_REQUIRED_FLAGS ${CMAKE_REQUIRED_FLAGS})
 set(CMAKE_REQUIRED_FLAGS "")
 
 check_cxx_source_compiles("
@@ -17,3 +18,5 @@ check_cxx_source_compiles("
     int main() { printf(\"%s\\\\n\", XAUDIO2_DLL_A); return 0; }"
     XAUDIO2_FOUND
 )
+
+set(CMAKE_REQUIRED_FLAGS ${OLD_CMAKE_REQUIRED_FLAGS})
