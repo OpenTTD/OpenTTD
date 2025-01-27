@@ -7659,6 +7659,14 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetDriveThroughBackTile():     33416
     GetRoadStationFrontTile():     33414
     IsRoadTile():                  true
+  Waypoint
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
 
 --Sign--
   BuildSign(33410, 'Some Sign'):       0
@@ -9794,9 +9802,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Valuate() with excessive CPU usage--
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [unknown()] regression/main.nut line [2114]
+*FUNCTION [unknown()] regression/main.nut line [2123]
 *FUNCTION [Valuate()] NATIVE line [-1]
-*FUNCTION [Start()] regression/main.nut line [2115]
+*FUNCTION [Start()] regression/main.nut line [2124]
 
 [id] 0
 [this] TABLE
@@ -9805,7 +9813,7 @@ Your script made an error: excessive CPU usage in valuator function
 [this] INSTANCE
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2115]
+*FUNCTION [Start()] regression/main.nut line [2124]
 
 [Infinite] CLOSURE
 [list] INSTANCE
