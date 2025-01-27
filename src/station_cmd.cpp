@@ -2311,11 +2311,11 @@ CommandCost RemoveRoadWaypointStop(TileIndex tile, DoCommandFlag flags, int repl
  * Remove a tile area of road stop or road waypoints
  * @param flags operation to perform
  * @param roadstop_area tile area of road stop or road waypoint tiles to remove
- * @param station_type station type to remove
+ * @param road_waypoint Whether to remove road waypoints or road stops
  * @param remove_road Remove roads of drive-through stops?
  * @return the cost of this operation or an error
  */
-static CommandCost RemoveGenericRoadStop(DoCommandFlag flags, const TileArea &roadstop_area, StationType station_type, bool remove_road)
+static CommandCost RemoveGenericRoadStop(DoCommandFlag flags, const TileArea &roadstop_area, bool road_waypoint, bool remove_road)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost last_error(STR_ERROR_THERE_IS_NO_STATION);
@@ -2323,7 +2323,7 @@ static CommandCost RemoveGenericRoadStop(DoCommandFlag flags, const TileArea &ro
 
 	for (TileIndex cur_tile : roadstop_area) {
 		/* Make sure the specified tile is a road stop of the correct type */
-		if (!IsTileType(cur_tile, MP_STATION) || !IsAnyRoadStop(cur_tile)) continue;
+		if (!IsTileType(cur_tile, MP_STATION) || !IsAnyRoadStop(cur_tile) || IsRoadWaypoint(cur_tile) != road_waypoint) continue;
 
 		/* Save information on to-be-restored roads before the stop is removed. */
 		RoadBits road_bits = ROAD_NONE;
@@ -2341,7 +2341,7 @@ static CommandCost RemoveGenericRoadStop(DoCommandFlag flags, const TileArea &ro
 		}
 
 		CommandCost ret;
-		if (station_type == StationType::RoadWaypoint) {
+		if (road_waypoint) {
 			ret = RemoveRoadWaypointStop(cur_tile, flags);
 		} else {
 			ret = RemoveRoadStop(cur_tile, flags);
@@ -2390,7 +2390,7 @@ CommandCost CmdRemoveRoadStop(DoCommandFlag flags, TileIndex tile, uint8_t width
 
 	TileArea roadstop_area(tile, width, height);
 
-	return RemoveGenericRoadStop(flags, roadstop_area, stop_type == RoadStopType::Bus ? StationType::Bus : StationType::Truck, remove_road);
+	return RemoveGenericRoadStop(flags, roadstop_area, false, remove_road);
 }
 
 /**
@@ -2407,7 +2407,7 @@ CommandCost CmdRemoveFromRoadWaypoint(DoCommandFlag flags, TileIndex start, Tile
 
 	TileArea roadstop_area(start, end);
 
-	return RemoveGenericRoadStop(flags, roadstop_area, StationType::RoadWaypoint, false);
+	return RemoveGenericRoadStop(flags, roadstop_area, true, false);
 }
 
 /**
