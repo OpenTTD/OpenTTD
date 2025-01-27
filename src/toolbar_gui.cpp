@@ -241,6 +241,7 @@ enum OptionMenuEntries {
 	OME_SHOW_STATIONNAMES_BUS,
 	OME_SHOW_STATIONNAMES_SHIP,
 	OME_SHOW_STATIONNAMES_PLANE,
+	OME_SHOW_STATIONNAMES_GHOST,
 	OME_SHOW_WAYPOINTNAMES,
 	OME_SHOW_SIGNS,
 	OME_SHOW_COMPETITOR_SIGNS,
@@ -281,6 +282,7 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	list.push_back(MakeDropDownListCheckedItem((_facility_display_opt & FACIL_BUS_STOP) != 0, STR_SETTINGS_MENU_STATION_NAMES_BUS, OME_SHOW_STATIONNAMES_BUS, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem((_facility_display_opt & FACIL_DOCK) != 0, STR_SETTINGS_MENU_STATION_NAMES_SHIP, OME_SHOW_STATIONNAMES_SHIP, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem((_facility_display_opt & FACIL_AIRPORT) != 0, STR_SETTINGS_MENU_STATION_NAMES_PLANE, OME_SHOW_STATIONNAMES_PLANE, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem((_facility_display_opt & FACIL_GHOST) != 0, STR_SETTINGS_MENU_STATION_NAMES_GHOST, OME_SHOW_STATIONNAMES_GHOST, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES), STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED, OME_SHOW_WAYPOINTNAMES));
 	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_SIGNS), STR_SETTINGS_MENU_SIGNS_DISPLAYED, OME_SHOW_SIGNS));
 	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS), STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS, OME_SHOW_COMPETITOR_SIGNS));
@@ -331,6 +333,7 @@ static CallBackFunction MenuClickSettings(int index)
 		case OME_SHOW_STATIONNAMES_BUS: ToggleFacilityDisplay(FACIL_BUS_STOP); break;
 		case OME_SHOW_STATIONNAMES_SHIP: ToggleFacilityDisplay(FACIL_DOCK); break;
 		case OME_SHOW_STATIONNAMES_PLANE: ToggleFacilityDisplay(FACIL_AIRPORT); break;
+		case OME_SHOW_STATIONNAMES_GHOST: ToggleFacilityDisplay(FACIL_GHOST); break;
 		case OME_SHOW_WAYPOINTNAMES:   ToggleBit(_display_opt, DO_SHOW_WAYPOINT_NAMES); break;
 		case OME_SHOW_SIGNS:           ToggleBit(_display_opt, DO_SHOW_SIGNS);          break;
 		case OME_SHOW_COMPETITOR_SIGNS:
