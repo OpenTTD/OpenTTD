@@ -32,6 +32,7 @@
  * \li GSRoad::IsRoadWaypointTile
  * \li GSRoad::BuildRoadWaypoint
  * \li GSWaypoint::WAYPOINT_ROAD
+ * \li GSRoad::BT_WAYPOINT
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
