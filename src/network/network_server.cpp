@@ -190,7 +190,6 @@ struct PacketWriter : SaveFilter {
  */
 ServerNetworkGameSocketHandler::ServerNetworkGameSocketHandler(SOCKET s) : NetworkGameSocketHandler(s)
 {
-	this->status = STATUS_INACTIVE;
 	this->client_id = _network_client_id++;
 	this->receive_limit = _settings_client.network.bytes_per_frame_burst;
 

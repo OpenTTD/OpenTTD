@@ -116,9 +116,9 @@ enum AdminCompanyRemoveReason {
 /** Main socket handler for admin related connections. */
 class NetworkAdminSocketHandler : public NetworkTCPSocketHandler {
 protected:
-	std::string admin_name;    ///< Name of the admin.
+	std::string admin_name; ///< Name of the admin.
 	std::string admin_version; ///< Version string of the admin.
-	AdminStatus status;        ///< Status of this admin.
+	AdminStatus status = ADMIN_STATUS_INACTIVE; ///< Status of this admin.
 
 	NetworkRecvStatus ReceiveInvalidPacket(PacketAdminType type);
 
@@ -542,7 +542,11 @@ protected:
 public:
 	NetworkRecvStatus CloseConnection(bool error = true) override;
 
-	NetworkAdminSocketHandler(SOCKET s);
+	/**
+	 * Create the admin handler for the given socket.
+	 * @param s The socket to communicate over.
+	 */
+	NetworkAdminSocketHandler(SOCKET s) : NetworkTCPSocketHandler(s) {}
 
 	NetworkRecvStatus ReceivePackets();
 
