@@ -43,13 +43,19 @@ private:
 	int modifications;            ///< Number of modification that has been done. To prevent changing data while valuating.
 
 protected:
+	/* Temporary helper functions to get the raw index from either strongly and non-strongly typed pool items. */
+	template <typename T>
+	static auto GetRawIndex(const T &index) { return index; }
+	template <ConvertibleThroughBase T>
+	static auto GetRawIndex(const T &index) { return index.base(); }
+
 	template <typename T, class ItemValid, class ItemFilter>
 	static void FillList(ScriptList *list, ItemValid item_valid, ItemFilter item_filter)
 	{
 		for (const T *item : T::Iterate()) {
 			if (!item_valid(item)) continue;
 			if (!item_filter(item)) continue;
-			list->AddItem(item->index);
+			list->AddItem(GetRawIndex(item->index));
 		}
 	}
 
@@ -99,7 +105,7 @@ protected:
 					/* Push the root table as instance object, this is what squirrel does for meta-functions. */
 					sq_pushroottable(vm);
 					/* Push all arguments for the valuator function. */
-					sq_pushinteger(vm, item->index);
+					sq_pushinteger(vm, GetRawIndex(item->index));
 					for (int i = 0; i < nparam - 1; i++) {
 						sq_push(vm, i + 3);
 					}
