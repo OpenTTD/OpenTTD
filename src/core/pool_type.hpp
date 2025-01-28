@@ -24,6 +24,54 @@ static constexpr PoolTypes PT_ALL = {PoolType::Normal, PoolType::NetworkClient, 
 
 typedef std::vector<struct PoolBase *> PoolVector; ///< Vector of pointers to PoolBase
 
+/** Non-templated base for #PoolID for use with type trait queries. */
+struct PoolIDBase {};
+
+/**
+ * Templated helper to make a PoolID a single POD value.
+ *
+ * Example usage:
+ *
+ *   using MyType = PoolID<int, struct MyTypeTag, 16, 0xFF>;
+ *
+ * @tparam TBaseType Type of the derived class (i.e. the concrete usage of this class).
+ * @tparam TTag An unique struct to keep types of the same TBaseType distinct.
+ * @tparam TEnd The PoolID at the end of the pool (equivalent to size).
+ * @tparam TInvalid The PoolID denoting an invalid value.
+ */
+template <typename TBaseType, typename TTag, TBaseType TEnd, TBaseType TInvalid>
+struct EMPTY_BASES PoolID : PoolIDBase {
+	using BaseType = TBaseType;
+
+	constexpr PoolID() = default;
+	constexpr PoolID(const PoolID &) = default;
+	constexpr PoolID(PoolID &&) = default;
+
+	explicit constexpr PoolID(const TBaseType &value) : value(value) {}
+
+	constexpr PoolID &operator =(const PoolID &rhs) { this->value = rhs.value; return *this; }
+	constexpr PoolID &operator =(PoolID &&rhs) { this->value = std::move(rhs.value); return *this; }
+
+	/* Only allow conversion to BaseType via method. */
+	constexpr TBaseType base() const noexcept { return this->value; }
+
+	static constexpr PoolID Begin() { return PoolID{}; }
+	static constexpr PoolID End() { return PoolID{static_cast<TBaseType>(TEnd)}; }
+	static constexpr PoolID Invalid() { return PoolID{static_cast<TBaseType>(TInvalid)}; }
+
+	constexpr auto operator++() { ++this->value; return this; }
+	constexpr auto operator+(const std::integral auto &val) const { return this->value + val; }
+
+	constexpr bool operator==(const PoolID<TBaseType, TTag, TEnd, TInvalid> &rhs) const { return this->value == rhs.value; }
+	constexpr auto operator<=>(const PoolID<TBaseType, TTag, TEnd, TInvalid> &rhs) const { return this->value <=> rhs.value; }
+
+	constexpr bool operator==(const size_t &rhs) const { return this->value == rhs; }
+	constexpr auto operator<=>(const size_t &rhs) const { return this->value <=> rhs; }
+private:
+	/* Do not explicitly initialize. */
+	TBaseType value;
+};
+
 /** Base class for base of all pools. */
 struct PoolBase {
 	const PoolType type; ///< Type of this pool.
@@ -83,6 +131,8 @@ private:
 	static constexpr size_t GetMaxIndexValue(T) { return std::numeric_limits<T>::max(); }
 	template <typename T> requires std::is_enum_v<T>
 	static constexpr size_t GetMaxIndexValue(T) { return std::numeric_limits<std::underlying_type_t<T>>::max(); }
+	template <typename T> requires std::is_base_of_v<PoolIDBase, T>
+	static constexpr size_t GetMaxIndexValue(T) { return std::numeric_limits<typename T::BaseType>::max(); }
 public:
 	/* Ensure the highest possible index, i.e. Tmax_size -1, is within the bounds of Tindex. */
 	static_assert(Tmax_size - 1 <= GetMaxIndexValue(Tindex{}));
@@ -263,8 +313,8 @@ public:
 		{
 			if (p == nullptr) return;
 			Titem *pn = static_cast<Titem *>(p);
-			assert(pn == Tpool->Get(pn->index));
-			Tpool->FreeItem(pn->index);
+			assert(pn == Tpool->Get(Pool::GetRawIndex(pn->index)));
+			Tpool->FreeItem(Pool::GetRawIndex(pn->index));
 		}
 
 		/**
@@ -328,9 +378,9 @@ public:
 		 * @param index index to examine
 		 * @return true if PoolItem::Get(index) will return non-nullptr pointer
 		 */
-		static inline bool IsValidID(size_t index)
+		static inline bool IsValidID(auto index)
 		{
-			return Tpool->IsValidID(index);
+			return Tpool->IsValidID(GetRawIndex(index));
 		}
 
 		/**
@@ -339,9 +389,9 @@ public:
 		 * @return pointer to Titem
 		 * @pre index < this->first_unused
 		 */
-		static inline Titem *Get(size_t index)
+		static inline Titem *Get(auto index)
 		{
-			return Tpool->Get(index);
+			return Tpool->Get(GetRawIndex(index));
 		}
 
 		/**
@@ -350,9 +400,9 @@ public:
 		 * @return pointer to Titem
 		 * @note returns nullptr for invalid index
 		 */
-		static inline Titem *GetIfValid(size_t index)
+		static inline Titem *GetIfValid(auto index)
 		{
-			return index < Tpool->first_unused ? Tpool->Get(index) : nullptr;
+			return GetRawIndex(index) < Tpool->first_unused ? Tpool->Get(GetRawIndex(index)) : nullptr;
 		}
 
 		/**
@@ -414,6 +464,11 @@ private:
 	void *GetNew(size_t size, size_t index);
 
 	void FreeItem(size_t index);
+
+	/* Temporary helper functions to get the raw index from either strongly and non-strongly typed pool items. */
+	static constexpr size_t GetRawIndex(size_t index) { return index; }
+	template <typename T> requires std::is_base_of_v<PoolIDBase, T>
+	static constexpr size_t GetRawIndex(const T &index) { return index.base(); }
 };
 
 #endif /* POOL_TYPE_HPP */
