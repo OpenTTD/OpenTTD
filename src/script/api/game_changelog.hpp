@@ -23,6 +23,7 @@
  * \li GSEventPresidentRenamed
  * \li GSRoad::IsRoadWaypointTile
  * \li GSRoad::BuildRoadWaypoint
+ * \li GSWaypoint::WAYPOINT_ROAD
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
