@@ -46,7 +46,7 @@ endfunction()
 function(set_options)
     option(OPTION_PACKAGE_DEPENDENCIES "Copy dependencies into lib/ for easy packaging (Linux only)" OFF)
 
-    if(UNIX AND NOT APPLE AND NOT OPTION_PACKAGE_DEPENDENCIES)
+    if(((UNIX AND NOT APPLE) OR MINGW) AND NOT OPTION_PACKAGE_DEPENDENCIES)
         set(DEFAULT_OPTION_INSTALL_FHS ON)
     else()
         set(DEFAULT_OPTION_INSTALL_FHS OFF)
