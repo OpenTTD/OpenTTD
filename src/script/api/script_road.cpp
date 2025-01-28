@@ -670,6 +670,15 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	return ScriptObject::Command<CMD_REMOVE_ROAD_STOP>::Do(tile, 1, 1, GetRoadStopType(tile), false);
 }
 
+/* static */ bool ScriptRoad::RemoveRoadWaypointTileRectangle(TileIndex tile, TileIndex tile2)
+{
+	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, ::IsValidTile(tile2));
+
+	return ScriptObject::Command<CMD_REMOVE_FROM_ROAD_WAYPOINT>::Do(tile, tile2);
+}
+
 /* static */ Money ScriptRoad::GetBuildCost(RoadType roadtype, BuildType build_type)
 {
 	if (!ScriptRoad::IsRoadTypeAvailable(roadtype)) return -1;

@@ -570,6 +570,18 @@ public:
 	static bool RemoveRoadStation(TileIndex tile);
 
 	/**
+	 * Removes all road waypoint pieces within a rectangle on the map.
+	 * @param tile One corner of the rectangle to clear.
+	 * @param tile2 The opposite corner.
+	 * @note The road is kept after removal.
+	 * @pre IsValidTile(tile).
+	 * @pre IsValidTile(tile2).
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @return Whether at least one tile has been/can be cleared or not.
+	 */
+	static bool RemoveRoadWaypointTileRectangle(TileIndex tile, TileIndex tile2);
+
+	/**
 	 * Get the baseprice of building a road-related object.
 	 * @param roadtype the roadtype of the object to build
 	 * @param build_type the type of object to build

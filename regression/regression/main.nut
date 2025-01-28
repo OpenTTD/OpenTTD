@@ -1038,11 +1038,11 @@ function Regression::Order()
 	print("  GetStopLocation():     " + AIOrder.GetStopLocation(13, 0));
 	print("  BuildVehicle():        " + AIVehicle.BuildVehicle(23596, 8));
 	print("  BuildRailStation():    " + AIRail.BuildRailStation(7958, AIRail.RAILTRACK_NE_SW, 1, 1, AIStation.STATION_NEW));
-	print("  AppendOrder():         " + AIOrder.AppendOrder(21, 7958, AIOrder.OF_NONE));
-	print("  GetOrderCount():       " + AIOrder.GetOrderCount(21));
-	print("  GetStopLocation():     " + AIOrder.GetStopLocation(21, 0));
-	print("  SetStopLocation():     " + AIOrder.SetStopLocation(21, 0, AIOrder.STOPLOCATION_MIDDLE));
-	print("  GetStopLocation():     " + AIOrder.GetStopLocation(21, 0));
+	print("  AppendOrder():         " + AIOrder.AppendOrder(20, 7958, AIOrder.OF_NONE));
+	print("  GetOrderCount():       " + AIOrder.GetOrderCount(20));
+	print("  GetStopLocation():     " + AIOrder.GetStopLocation(20, 0));
+	print("  SetStopLocation():     " + AIOrder.SetStopLocation(20, 0, AIOrder.STOPLOCATION_MIDDLE));
+	print("  GetStopLocation():     " + AIOrder.GetStopLocation(20, 0));
 
 	local list = AIVehicleList_Station(3);
 
@@ -1363,6 +1363,8 @@ function Regression::Road()
 	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33666));
 	print("    IsBuildable():                 " + AITile.IsBuildable(33666));
 	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(41383, AIStation.STATION_NEW));
+	print("    RemoveRoadWaypointTileRectangle(): " + AIRoad.RemoveRoadWaypointTileRectangle(33666, 33666));
+	print("    RemoveRoadWaypointTileRectangle(): " + AIRoad.RemoveRoadWaypointTileRectangle(33666, 33669));
 	local list = AIWaypointList(AIWaypoint.WAYPOINT_ROAD);
 	print("");
 	print("--AIWaypointList(ROAD)--");

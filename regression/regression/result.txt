@@ -7981,13 +7981,15 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadStationFrontTile():     -1
     IsBuildable():                 false
     BuildRoadWaypoint():           false
+    RemoveRoadWaypointTileRectangle(): true
+    RemoveRoadWaypointTileRectangle(): false
 
 --AIWaypointList(ROAD)--
   Count():             3
   Location ListDump:
     33664
     33922
-    33666
+    33665
   HasWaypointType:
     false  true  false  false
     false  true  false  false
@@ -9868,7 +9870,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetWagonEngineType(): 9
   GetWagonAge():        1
   GetWagonEngineType(): 27
-  GetWagonAge():        1
+  GetWagonAge():        0
   GetWagonEngineType(): 27
   GetWagonAge():        0
   GetWagonEngineType(): 65535
@@ -10031,7 +10033,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   UnshareOrders():       true
   AppendOrder():         true
   GetStopLocation():     -1
-  BuildVehicle():        21
+  BuildVehicle():        20
   BuildRailStation():    true
   AppendOrder():         true
   GetOrderCount():       1
@@ -10042,17 +10044,17 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --VehicleList_Station--
   Count():             1
   Location ListDump:
-    21 => 23596
+    20 => 23596
   foreach():
-    21 => 23596
+    20 => 23596
   Count():             0
   Location ListDump:
   foreach():
   Count():             1
   Location ListDump:
-    21 => 23596
+    20 => 23596
   foreach():
-    21 => 23596
+    20 => 23596
 
 --Company Gender--
   GetPresidentGender():              1
@@ -10164,7 +10166,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2234]
+*FUNCTION [Start()] regression/main.nut line [2236]
 
 [Infinite] CLOSURE
 [list] INSTANCE

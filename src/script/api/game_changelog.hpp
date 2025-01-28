@@ -33,6 +33,7 @@
  * \li GSEngine::GetAllRailTypes
  * \li GSRoad::IsRoadWaypointTile
  * \li GSRoad::BuildRoadWaypoint
+ * \li GSRoad::RemoveRoadWaypointTileRectangle
  * \li GSWaypoint::WAYPOINT_ROAD
  * \li GSRoad::BT_WAYPOINT
  *
