@@ -7952,6 +7952,33 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsRoadWaypointTile():          false
     IsRoadWaypointTile():          false
     IsRoadWaypointTile():          false
+    BuildRoad():                   true
+    BuildRoadWaypoint():           true
+    BuildRoadWaypoint():           true
+    BuildRoadFull():               true
+    BuildRoadWaypoint():           true
+    BuildRoadWaypoint():           false
+    BuildRoadWaypoint():           true
+    BuildRoadWaypoint():           true
+    BuildOneWayRoadFull():         true
+    BuildRoadWaypoint():           true
+    IsRoadWaypointTile():          true
+    GetWaypointID():               8
+    IsValidWaypoint():             true
+    GetStationID():                8
+    IsValidStation():              false
+    IsValidBaseStation():          true
+    IsRoadWaypointTile():          true
+    IsRoadDepotTile():             false
+    IsRoadStationTile():           false
+    IsDriveThroughRoadStationTile(): true
+    IsRoadTile():                  true
+    GetNeighbourRoadCount():       2
+    AreRoadTilesConnected():       true
+    GetDriveThroughBackTile():     33922
+    GetRoadStationFrontTile():     -1
+    IsBuildable():                 false
+    BuildRoadWaypoint():           false
 
 --Sign--
   BuildSign(33410, 'Some Sign'):       0
@@ -9786,9 +9813,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():       33417
     GetEngineType():     153
     GetUnitNumber():     1
-    GetAge():            1
+    GetAge():            0
     GetMaxAge():         5490
-    GetAgeLeft():        5489
+    GetAgeLeft():        5490
     GetCurrentSpeed():   7
     GetRunningCost():    421
     GetProfitThisYear(): 0
@@ -9801,7 +9828,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsInDepot():         false
     GetNumWagons():      1
     GetWagonEngineType(): 153
-    GetWagonAge():       1
+    GetWagonAge():       0
     GetLength():         8
   GetOwner():           1
   BuildVehicle():       14
@@ -9826,9 +9853,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetNumWagons():       3
   GetLength():          24
   GetWagonEngineType(): 9
-  GetWagonAge():        0
+  GetWagonAge():        1
   GetWagonEngineType(): 27
-  GetWagonAge():        0
+  GetWagonAge():        1
   GetWagonEngineType(): 27
   GetWagonAge():        0
   GetWagonEngineType(): 65535
@@ -9876,11 +9903,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
+    17 => 1
+    16 => 1
+    14 => 1
+    13 => 1
     12 => 1
-    17 => 0
-    16 => 0
-    14 => 0
-    13 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -9888,10 +9915,10 @@ ERROR: IsEnd() is invalid as Begin() is never called
     13 => 5490
     12 => 5490
   AgeLeft ListDump:
-    16 => 10980
-    14 => 10980
-    17 => 7320
-    13 => 5490
+    16 => 10979
+    14 => 10979
+    17 => 7319
+    13 => 5489
     12 => 5489
   CurrentSpeed ListDump:
     12 => 27
@@ -9910,7 +9937,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     16 => 0
     14 => 0
     13 => 0
-    12 => 0
+    12 => -1
   ProfitLastYear ListDump:
     17 => 0
     16 => 0
@@ -9991,7 +10018,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   UnshareOrders():       true
   AppendOrder():         true
   GetStopLocation():     -1
-  BuildVehicle():        20
+  BuildVehicle():        21
   BuildRailStation():    true
   AppendOrder():         true
   GetOrderCount():       1
@@ -10002,17 +10029,17 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --VehicleList_Station--
   Count():             1
   Location ListDump:
-    20 => 23596
+    21 => 23596
   foreach():
-    20 => 23596
+    21 => 23596
   Count():             0
   Location ListDump:
   foreach():
   Count():             1
   Location ListDump:
-    20 => 23596
+    21 => 23596
   foreach():
-    20 => 23596
+    21 => 23596
 
 --Company Gender--
   GetPresidentGender():              1
@@ -10124,7 +10151,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2193]
+*FUNCTION [Start()] regression/main.nut line [2220]
 
 [Infinite] CLOSURE
 [list] INSTANCE

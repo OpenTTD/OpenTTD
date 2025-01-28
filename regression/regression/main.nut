@@ -1036,11 +1036,11 @@ function Regression::Order()
 	print("  GetStopLocation():     " + AIOrder.GetStopLocation(13, 0));
 	print("  BuildVehicle():        " + AIVehicle.BuildVehicle(23596, 8));
 	print("  BuildRailStation():    " + AIRail.BuildRailStation(7958, AIRail.RAILTRACK_NE_SW, 1, 1, AIStation.STATION_NEW));
-	print("  AppendOrder():         " + AIOrder.AppendOrder(20, 7958, AIOrder.OF_NONE));
-	print("  GetOrderCount():       " + AIOrder.GetOrderCount(20));
-	print("  GetStopLocation():     " + AIOrder.GetStopLocation(20, 0));
-	print("  SetStopLocation():     " + AIOrder.SetStopLocation(20, 0, AIOrder.STOPLOCATION_MIDDLE));
-	print("  GetStopLocation():     " + AIOrder.GetStopLocation(20, 0));
+	print("  AppendOrder():         " + AIOrder.AppendOrder(21, 7958, AIOrder.OF_NONE));
+	print("  GetOrderCount():       " + AIOrder.GetOrderCount(21));
+	print("  GetStopLocation():     " + AIOrder.GetStopLocation(21, 0));
+	print("  SetStopLocation():     " + AIOrder.SetStopLocation(21, 0, AIOrder.STOPLOCATION_MIDDLE));
+	print("  GetStopLocation():     " + AIOrder.GetStopLocation(21, 0));
 
 	local list = AIVehicleList_Station(3);
 
@@ -1334,6 +1334,33 @@ function Regression::Road()
 	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33415));
 	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33416));
 	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33417));
+	print("    BuildRoad():                   " + AIRoad.BuildRoad(33666, 33666 + 256));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33666, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33666 + 256, AIStation.STATION_NEW));
+	print("    BuildRoadFull():               " + AIRoad.BuildRoadFull(33665, 33663));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33664, AIStation.STATION_NEW));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33665, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33663, AIStation.STATION_JOIN_ADJACENT));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33665, 8));
+	print("    BuildOneWayRoadFull():         " + AIRoad.BuildOneWayRoadFull(33663, 33662));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(33662, AIStation.STATION_JOIN_ADJACENT));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33662));
+	print("    GetWaypointID():               " + AIWaypoint.GetWaypointID(33666));
+	print("    IsValidWaypoint():             " + AIWaypoint.IsValidWaypoint(8));
+	print("    GetStationID():                " + AIStation.GetStationID(33666));
+	print("    IsValidStation():              " + AIStation.IsValidStation(8));
+	print("    IsValidBaseStation():          " + AIBaseStation.IsValidBaseStation(8));
+	print("    IsRoadWaypointTile():          " + AIRoad.IsRoadWaypointTile(33666));
+	print("    IsRoadDepotTile():             " + AIRoad.IsRoadDepotTile(33666));
+	print("    IsRoadStationTile():           " + AIRoad.IsRoadStationTile(33666));
+	print("    IsDriveThroughRoadStationTile(): " + AIRoad.IsDriveThroughRoadStationTile(33666));
+	print("    IsRoadTile():                  " + AIRoad.IsRoadTile(33666));
+	print("    GetNeighbourRoadCount():       " + AIRoad.GetNeighbourRoadCount(33666));
+	print("    AreRoadTilesConnected():       " + AIRoad.AreRoadTilesConnected(33666, 33666 + 256));
+	print("    GetDriveThroughBackTile():     " + AIRoad.GetDriveThroughBackTile(33666));
+	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33666));
+	print("    IsBuildable():                 " + AITile.IsBuildable(33666));
+	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(41383, AIStation.STATION_NEW));
 }
 
 function Regression::Sign()

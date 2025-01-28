@@ -11,6 +11,7 @@
 #include "script_map.hpp"
 #include "script_station.hpp"
 #include "script_cargo.hpp"
+#include "script_waypoint.hpp"
 #include "../../station_base.h"
 #include "../../landscape_cmd.h"
 #include "../../road_cmd.h"
@@ -18,6 +19,7 @@
 #include "../../strings_func.h"
 #include "../../newgrf_roadstop.h"
 #include "../../script/squirrel_helper_type.hpp"
+#include "../../waypoint_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -600,6 +602,28 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 /* static */ bool ScriptRoad::BuildDriveThroughRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id)
 {
 	return _BuildRoadStationInternal(tile, front, road_veh_type, true, station_id);
+}
+
+/* static */ bool ScriptRoad::BuildRoadWaypoint(TileIndex tile, StationID waypoint_id)
+{
+	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, IsRoadTile(tile));
+	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
+	EnforcePrecondition(false, waypoint_id == ScriptBaseStation::STATION_NEW || waypoint_id == ScriptBaseStation::STATION_JOIN_ADJACENT || ScriptWaypoint::IsValidWaypoint(waypoint_id));
+
+	::RoadBits bits = ::GetAllRoadBits(tile);
+	::Axis axis = ::INVALID_AXIS;
+	if ((bits & ::ROAD_Y) == ::ROAD_NONE) {
+		axis = ::AXIS_X;
+	} else if ((bits & ::ROAD_X) == ::ROAD_NONE) {
+		axis = ::AXIS_Y;
+	}
+	EnforcePrecondition(false, ::IsValidAxis(axis));
+
+	StationID to_join = ScriptWaypoint::IsValidWaypoint(waypoint_id) ? waypoint_id : ::StationID::Invalid();
+	bool adjacent = waypoint_id != ScriptBaseStation::STATION_JOIN_ADJACENT;
+	return ScriptObject::Command<CMD_BUILD_ROAD_WAYPOINT>::Do(tile, axis, 1, 1, ::ROADSTOP_CLASS_WAYP, 0, to_join, adjacent);
 }
 
 /* static */ bool ScriptRoad::RemoveRoad(TileIndex start, TileIndex end)

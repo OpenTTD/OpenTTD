@@ -489,6 +489,23 @@ public:
 	static bool BuildDriveThroughRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id);
 
 	/**
+	 * Builds a road waypoint.
+	 * @param tile Place to build the waypoint.
+	 * @param waypoint_id The waypoint to join, ScriptBaseStation::STATION_NEW or ScriptBaseStation::STATION_JOIN_ADJACENT.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre IsRoadTile(tile).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
+	 * @pre 'tile' is a straight road.
+	 * @pre waypoint_id == ScriptBaseStation::STATION_NEW || waypoint_id == ScriptBaseStation::STATION_JOIN_ADJACENT || ScriptWaypoint::IsValidWaypoint(waypoint_id).
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
+	 * @exception ScriptRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
+	 * @return Whether the road waypoint has been/can be built or not.
+	 */
+	static bool BuildRoadWaypoint(TileIndex tile, StationID waypoint_id);
+
+	/**
 	 * Removes a road from the center of tile start to the center of tile end.
 	 * @param start The start tile of the road.
 	 * @param end The end tile of the road.

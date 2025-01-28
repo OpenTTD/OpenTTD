@@ -32,6 +32,7 @@
  * \li GSError::ERR_BRIDGE_TOO_LOW
  * \li GSEngine::GetAllRailTypes
  * \li GSRoad::IsRoadWaypointTile
+ * \li GSRoad::BuildRoadWaypoint
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
