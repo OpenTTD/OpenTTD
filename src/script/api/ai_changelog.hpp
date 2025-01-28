@@ -33,6 +33,7 @@
  * \li AIRoad::IsRoadWaypointTile
  * \li AIRoad::BuildRoadWaypoint
  * \li AIWaypoint::WAYPOINT_ROAD
+ * \li AIRoad::BT_WAYPOINT
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
