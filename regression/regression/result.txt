@@ -7972,7 +7972,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsRoadDepotTile():             false
     IsRoadStationTile():           false
     IsDriveThroughRoadStationTile(): false
-    IsRoadTile():                  false
+    IsRoadTile():                  true
     GetNeighbourRoadCount():       2
     AreRoadTilesConnected():       true
     GetDriveThroughBackTile():     -1
