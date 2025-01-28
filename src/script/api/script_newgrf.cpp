@@ -19,14 +19,14 @@ ScriptNewGRFList::ScriptNewGRFList()
 {
 	for (auto c = _grfconfig; c != nullptr; c = c->next) {
 		if (!HasBit(c->flags, GCF_STATIC)) {
-			this->AddItem(BSWAP32(c->ident.grfid));
+			this->AddItem(std::byteswap(c->ident.grfid));
 		}
 	}
 }
 
 /* static */ bool ScriptNewGRF::IsLoaded(SQInteger grfid)
 {
-	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
+	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
 
 	for (auto c = _grfconfig; c != nullptr; c = c->next) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
@@ -39,7 +39,7 @@ ScriptNewGRFList::ScriptNewGRFList()
 
 /* static */ SQInteger ScriptNewGRF::GetVersion(SQInteger grfid)
 {
-	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
+	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
 
 	for (auto c = _grfconfig; c != nullptr; c = c->next) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
@@ -52,7 +52,7 @@ ScriptNewGRFList::ScriptNewGRFList()
 
 /* static */ std::optional<std::string> ScriptNewGRF::GetName(SQInteger grfid)
 {
-	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
+	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
 
 	for (auto c = _grfconfig; c != nullptr; c = c->next) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {

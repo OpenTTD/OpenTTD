@@ -595,10 +595,10 @@ static void SetNewGRFOverride(uint32_t source_grfid, uint32_t target_grfid)
 {
 	if (target_grfid == 0) {
 		_grf_id_overrides.erase(source_grfid);
-		GrfMsg(5, "SetNewGRFOverride: Removed override of 0x{:X}", BSWAP32(source_grfid));
+		GrfMsg(5, "SetNewGRFOverride: Removed override of 0x{:X}", std::byteswap(source_grfid));
 	} else {
 		_grf_id_overrides[source_grfid] = target_grfid;
-		GrfMsg(5, "SetNewGRFOverride: Added override of 0x{:X} to 0x{:X}", BSWAP32(source_grfid), BSWAP32(target_grfid));
+		GrfMsg(5, "SetNewGRFOverride: Added override of 0x{:X} to 0x{:X}", std::byteswap(source_grfid), std::byteswap(target_grfid));
 	}
 }
 
@@ -636,9 +636,9 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 			scope_grfid = it->second;
 			const GRFFile *grf_match = GetFileByGRFID(scope_grfid);
 			if (grf_match == nullptr) {
-				GrfMsg(5, "Tried mapping from GRFID {:x} to {:x} but target is not loaded", BSWAP32(file->grfid), BSWAP32(scope_grfid));
+				GrfMsg(5, "Tried mapping from GRFID {:x} to {:x} but target is not loaded", std::byteswap(file->grfid), std::byteswap(scope_grfid));
 			} else {
-				GrfMsg(5, "Mapping from GRFID {:x} to {:x}", BSWAP32(file->grfid), BSWAP32(scope_grfid));
+				GrfMsg(5, "Mapping from GRFID {:x} to {:x}", std::byteswap(file->grfid), std::byteswap(scope_grfid));
 			}
 		}
 
@@ -662,7 +662,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 		if (!e->grf_prop.HasGrfFile()) {
 			e->grf_prop.grfid = file->grfid;
 			e->grf_prop.grffile = file;
-			GrfMsg(5, "Replaced engine at index {} for GRFID {:x}, type {}, index {}", e->index, BSWAP32(file->grfid), type, internal_id);
+			GrfMsg(5, "Replaced engine at index {} for GRFID {:x}, type {}, index {}", e->index, std::byteswap(file->grfid), type, internal_id);
 		}
 
 		return e;
@@ -693,7 +693,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 		_gted[e->index].railtypelabel = GetRailTypeInfo(e->u.rail.railtype)->label;
 	}
 
-	GrfMsg(5, "Created new engine at index {} for GRFID {:x}, type {}, index {}", e->index, BSWAP32(file->grfid), type, internal_id);
+	GrfMsg(5, "Created new engine at index {} for GRFID {:x}, type {}, index {}", e->index, std::byteswap(file->grfid), type, internal_id);
 
 	return e;
 }
@@ -1960,7 +1960,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
 				uint32_t classid = buf.ReadDWord();
-				statspec->class_index = StationClass::Allocate(BSWAP32(classid));
+				statspec->class_index = StationClass::Allocate(std::byteswap(classid));
 				break;
 			}
 
@@ -2716,13 +2716,13 @@ static ChangeInfoResult LoadTranslationTable(uint first, uint last, ByteReader &
 	translation_table.clear();
 	translation_table.reserve(last);
 	for (uint id = first; id < last; ++id) {
-		translation_table.push_back(T(BSWAP32(buf.ReadDWord())));
+		translation_table.push_back(T(std::byteswap(buf.ReadDWord())));
 	}
 
 	GRFFile *grf_override = GetCurrentGRFOverride();
 	if (grf_override != nullptr) {
 		/* GRF override is present, copy the translation table to the overridden GRF as well. */
-		GrfMsg(1, "LoadTranslationTable: Copying {} translation table to override GRFID '{}'", name, BSWAP32(grf_override->grfid));
+		GrfMsg(1, "LoadTranslationTable: Copying {} translation table to override GRFID '{}'", name, std::byteswap(grf_override->grfid));
 		std::vector<T> &override_table = gettable(*grf_override);
 		override_table = translation_table;
 	}
@@ -3141,7 +3141,7 @@ static ChangeInfoResult CargoChangeInfo(uint first, uint last, int prop, ByteRea
 				break;
 
 			case 0x17: // Cargo label
-				cs->label = CargoLabel{BSWAP32(buf.ReadDWord())};
+				cs->label = CargoLabel{std::byteswap(buf.ReadDWord())};
 				BuildCargoLabelMap();
 				break;
 
@@ -4170,7 +4170,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 
 				/* Swap classid because we read it in BE. */
 				uint32_t classid = buf.ReadDWord();
-				spec->class_index = ObjectClass::Allocate(BSWAP32(classid));
+				spec->class_index = ObjectClass::Allocate(std::byteswap(classid));
 				break;
 			}
 
@@ -4326,7 +4326,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint first, uint last, int prop, Byte
 				int n = buf.ReadByte();
 				for (int j = 0; j != n; j++) {
 					RailTypeLabel label = buf.ReadDWord();
-					RailType resolved_rt = GetRailTypeByLabel(BSWAP32(label), false);
+					RailType resolved_rt = GetRailTypeByLabel(std::byteswap(label), false);
 					if (resolved_rt != INVALID_RAILTYPE) {
 						switch (prop) {
 							case 0x0F: SetBit(rti->powered_railtypes, resolved_rt);               [[fallthrough]]; // Powered implies compatible.
@@ -4413,7 +4413,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint first, uint last, int prop, Byt
 			case 0x08: // Label of rail type
 			{
 				RailTypeLabel rtl = buf.ReadDWord();
-				rtl = BSWAP32(rtl);
+				rtl = std::byteswap(rtl);
 
 				RailType rt = GetRailTypeByLabel(rtl, false);
 				if (rt == INVALID_RAILTYPE) {
@@ -4441,7 +4441,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint first, uint last, int prop, Byt
 				if (_cur.grffile->railtype_map[id] != INVALID_RAILTYPE) {
 					int n = buf.ReadByte();
 					for (int j = 0; j != n; j++) {
-						_railtypes[_cur.grffile->railtype_map[id]].alternate_labels.push_back(BSWAP32(buf.ReadDWord()));
+						_railtypes[_cur.grffile->railtype_map[id]].alternate_labels.push_back(std::byteswap(buf.ReadDWord()));
 					}
 					break;
 				}
@@ -4538,7 +4538,7 @@ static ChangeInfoResult RoadTypeChangeInfo(uint first, uint last, int prop, Byte
 				int n = buf.ReadByte();
 				for (int j = 0; j != n; j++) {
 					RoadTypeLabel label = buf.ReadDWord();
-					RoadType resolved_rt = GetRoadTypeByLabel(BSWAP32(label), false);
+					RoadType resolved_rt = GetRoadTypeByLabel(std::byteswap(label), false);
 					if (resolved_rt != INVALID_ROADTYPE) {
 						switch (prop) {
 							case 0x0F:
@@ -4629,7 +4629,7 @@ static ChangeInfoResult RoadTypeReserveInfo(uint first, uint last, int prop, Byt
 		switch (prop) {
 			case 0x08: { // Label of road type
 				RoadTypeLabel rtl = buf.ReadDWord();
-				rtl = BSWAP32(rtl);
+				rtl = std::byteswap(rtl);
 
 				RoadType rt = GetRoadTypeByLabel(rtl, false);
 				if (rt == INVALID_ROADTYPE) {
@@ -4659,7 +4659,7 @@ static ChangeInfoResult RoadTypeReserveInfo(uint first, uint last, int prop, Byt
 				if (type_map[id] != INVALID_ROADTYPE) {
 					int n = buf.ReadByte();
 					for (int j = 0; j != n; j++) {
-						_roadtypes[type_map[id]].alternate_labels.push_back(BSWAP32(buf.ReadDWord()));
+						_roadtypes[type_map[id]].alternate_labels.push_back(std::byteswap(buf.ReadDWord()));
 					}
 					break;
 				}
@@ -4854,7 +4854,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 				}
 
 				uint32_t classid = buf.ReadDWord();
-				rs->class_index = RoadStopClass::Allocate(BSWAP32(classid));
+				rs->class_index = RoadStopClass::Allocate(std::byteswap(classid));
 				break;
 			}
 
@@ -6913,31 +6913,31 @@ static void SkipIf(ByteReader &buf)
 	if (condtype >= 0x0B) {
 		/* Tests that ignore 'param' */
 		switch (condtype) {
-			case 0x0B: result = !IsValidCargoType(GetCargoTypeByLabel(CargoLabel(BSWAP32(cond_val))));
+			case 0x0B: result = !IsValidCargoType(GetCargoTypeByLabel(CargoLabel(std::byteswap(cond_val))));
 				break;
-			case 0x0C: result = IsValidCargoType(GetCargoTypeByLabel(CargoLabel(BSWAP32(cond_val))));
+			case 0x0C: result = IsValidCargoType(GetCargoTypeByLabel(CargoLabel(std::byteswap(cond_val))));
 				break;
-			case 0x0D: result = GetRailTypeByLabel(BSWAP32(cond_val)) == INVALID_RAILTYPE;
+			case 0x0D: result = GetRailTypeByLabel(std::byteswap(cond_val)) == INVALID_RAILTYPE;
 				break;
-			case 0x0E: result = GetRailTypeByLabel(BSWAP32(cond_val)) != INVALID_RAILTYPE;
+			case 0x0E: result = GetRailTypeByLabel(std::byteswap(cond_val)) != INVALID_RAILTYPE;
 				break;
 			case 0x0F: {
-				RoadType rt = GetRoadTypeByLabel(BSWAP32(cond_val));
+				RoadType rt = GetRoadTypeByLabel(std::byteswap(cond_val));
 				result = rt == INVALID_ROADTYPE || !RoadTypeIsRoad(rt);
 				break;
 			}
 			case 0x10: {
-				RoadType rt = GetRoadTypeByLabel(BSWAP32(cond_val));
+				RoadType rt = GetRoadTypeByLabel(std::byteswap(cond_val));
 				result = rt != INVALID_ROADTYPE && RoadTypeIsRoad(rt);
 				break;
 			}
 			case 0x11: {
-				RoadType rt = GetRoadTypeByLabel(BSWAP32(cond_val));
+				RoadType rt = GetRoadTypeByLabel(std::byteswap(cond_val));
 				result = rt == INVALID_ROADTYPE || !RoadTypeIsTram(rt);
 				break;
 			}
 			case 0x12: {
-				RoadType rt = GetRoadTypeByLabel(BSWAP32(cond_val));
+				RoadType rt = GetRoadTypeByLabel(std::byteswap(cond_val));
 				result = rt != INVALID_ROADTYPE && RoadTypeIsTram(rt);
 				break;
 			}
@@ -6954,7 +6954,7 @@ static void SkipIf(ByteReader &buf)
 		}
 
 		if (condtype != 10 && c == nullptr) {
-			GrfMsg(7, "SkipIf: GRFID 0x{:08X} unknown, skipping test", BSWAP32(cond_val));
+			GrfMsg(7, "SkipIf: GRFID 0x{:08X} unknown, skipping test", std::byteswap(cond_val));
 			return;
 		}
 
@@ -7061,7 +7061,7 @@ static void ScanInfo(ByteReader &buf)
 
 	if (grf_version < 2 || grf_version > 8) {
 		SetBit(_cur.grfconfig->flags, GCF_INVALID);
-		Debug(grf, 0, "{}: NewGRF \"{}\" (GRFID {:08X}) uses GRF version {}, which is incompatible with this version of OpenTTD.", _cur.grfconfig->filename, StrMakeValid(name), BSWAP32(grfid), grf_version);
+		Debug(grf, 0, "{}: NewGRF \"{}\" (GRFID {:08X}) uses GRF version {}, which is incompatible with this version of OpenTTD.", _cur.grfconfig->filename, StrMakeValid(name), std::byteswap(grfid), grf_version);
 	}
 
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
@@ -7098,7 +7098,7 @@ static void GRFInfo(ByteReader &buf)
 	}
 
 	if (_cur.grffile->grfid != grfid) {
-		Debug(grf, 0, "GRFInfo: GRFID {:08X} in FILESCAN stage does not match GRFID {:08X} in INIT/RESERVE/ACTIVATION stage", BSWAP32(_cur.grffile->grfid), BSWAP32(grfid));
+		Debug(grf, 0, "GRFInfo: GRFID {:08X} in FILESCAN stage does not match GRFID {:08X} in INIT/RESERVE/ACTIVATION stage", std::byteswap(_cur.grffile->grfid), std::byteswap(grfid));
 		_cur.grffile->grfid = grfid;
 	}
 
@@ -7106,7 +7106,7 @@ static void GRFInfo(ByteReader &buf)
 	_cur.grfconfig->status = _cur.stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
-	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, BSWAP32(grfid), StrMakeValid(name), (_cur.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur.grfconfig->version);
+	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, std::byteswap(grfid), StrMakeValid(name), (_cur.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur.grfconfig->version);
 }
 
 /**
@@ -8120,7 +8120,7 @@ static void TranslateGRFStrings(ByteReader &buf)
 	uint32_t grfid = buf.ReadDWord();
 	const GRFConfig *c = GetGRFConfig(grfid);
 	if (c == nullptr || (c->status != GCS_INITIALISED && c->status != GCS_ACTIVATED)) {
-		GrfMsg(7, "TranslateGRFStrings: GRFID 0x{:08X} unknown, skipping action 13", BSWAP32(grfid));
+		GrfMsg(7, "TranslateGRFStrings: GRFID 0x{:08X} unknown, skipping action 13", std::byteswap(grfid));
 		return;
 	}
 
@@ -8564,7 +8564,7 @@ static bool HandleNode(uint8_t type, uint32_t id, ByteReader &buf, std::span<con
 	};
 
 	for (const auto &tag : subtags) {
-		if (tag.id != BSWAP32(id) || std::visit(type_visitor{}, tag.handler) != type) continue;
+		if (tag.id != std::byteswap(id) || std::visit(type_visitor{}, tag.handler) != type) continue;
 		return std::visit(evaluate_visitor{buf}, tag.handler);
 	}
 
@@ -10095,9 +10095,9 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 		if (stage == GLS_RESERVE) {
 			static const std::pair<uint32_t, uint32_t> default_grf_overrides[] = {
-				{ BSWAP32(0x44442202), BSWAP32(0x44440111) }, // UKRS addons modifies UKRS
-				{ BSWAP32(0x6D620402), BSWAP32(0x6D620401) }, // DBSetXL ECS extension modifies DBSetXL
-				{ BSWAP32(0x4D656f20), BSWAP32(0x4D656F17) }, // LV4cut modifies LV4
+				{ std::byteswap(0x44442202), std::byteswap(0x44440111) }, // UKRS addons modifies UKRS
+				{ std::byteswap(0x6D620402), std::byteswap(0x6D620401) }, // DBSetXL ECS extension modifies DBSetXL
+				{ std::byteswap(0x4D656f20), std::byteswap(0x4D656F17) }, // LV4cut modifies LV4
 			};
 			for (const auto &grf_override : default_grf_overrides) {
 				SetNewGRFOverride(grf_override.first, grf_override.second);

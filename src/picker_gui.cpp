@@ -97,7 +97,7 @@ static void PickerSaveConfig(IniFile &ini, const PickerCallbacks &callbacks)
 	group.Clear();
 
 	for (const PickerItem &item : callbacks.saved) {
-		std::string key = fmt::format("{:08X}|{}", BSWAP32(item.grfid), item.local_id);
+		std::string key = fmt::format("{:08X}|{}", std::byteswap(item.grfid), item.local_id);
 		group.CreateItem(key);
 	}
 }

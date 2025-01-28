@@ -360,7 +360,4 @@ namespace std {
 	}
 }
 
-constexpr uint32_t BSWAP32(uint32_t x) { return std::byteswap(x); }
-constexpr uint16_t BSWAP16(uint16_t x) { return std::byteswap(x); }
-
 #endif /* BITMATH_FUNC_HPP */

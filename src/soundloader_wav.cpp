@@ -28,16 +28,16 @@ public:
 		RandomAccessFile &file = *sound.file;
 
 		/* Check RIFF/WAVE header. */
-		if (file.ReadDword() != BSWAP32('RIFF')) return false;
+		if (file.ReadDword() != std::byteswap<uint32_t>('RIFF')) return false;
 		file.ReadDword(); // Skip data size
-		if (file.ReadDword() != BSWAP32('WAVE')) return false;
+		if (file.ReadDword() != std::byteswap<uint32_t>('WAVE')) return false;
 
 		/* Read riff tags */
 		for (;;) {
 			uint32_t tag = file.ReadDword();
 			uint32_t size = file.ReadDword();
 
-			if (tag == BSWAP32('fmt ')) {
+			if (tag == std::byteswap<uint32_t>('fmt ')) {
 				uint16_t format = file.ReadWord();
 				if (format != 1) return false; // File must be uncompressed PCM
 
@@ -55,7 +55,7 @@ public:
 
 				/* We've read 16 bytes of this chunk, we can skip anything extra. */
 				size -= 16;
-			} else if (tag == BSWAP32('data')) {
+			} else if (tag == std::byteswap<uint32_t>('data')) {
 				uint align = sound.channels * sound.bits_per_sample / 8;
 				if (Align(size, align) != size) return false; // Ensure length is aligned correctly for channels and BPS.
 

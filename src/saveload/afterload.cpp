@@ -391,11 +391,11 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 			if (HasBit(c->flags, GCF_COMPATIBLE)) {
 				const GRFIdentifier &replaced = _gamelog.GetOverriddenIdentifier(*c);
 				fmt::format_to(std::back_inserter(message), "NewGRF {:08X} (checksum {}) not found.\n  Loaded NewGRF \"{}\" (checksum {}) with same GRF ID instead.\n",
-						BSWAP32(c->ident.grfid), FormatArrayAsHex(c->original_md5sum), c->filename, FormatArrayAsHex(replaced.md5sum));
+						std::byteswap(c->ident.grfid), FormatArrayAsHex(c->original_md5sum), c->filename, FormatArrayAsHex(replaced.md5sum));
 			}
 			if (c->status == GCS_NOT_FOUND) {
 				fmt::format_to(std::back_inserter(message), "NewGRF {:08X} ({}) not found; checksum {}.\n",
-						BSWAP32(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
+						std::byteswap(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
 			}
 		}
 	} else {

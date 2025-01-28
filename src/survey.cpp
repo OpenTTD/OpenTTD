@@ -355,7 +355,7 @@ void SurveyTimers(nlohmann::json &survey)
 void SurveyGrfs(nlohmann::json &survey)
 {
 	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
-		auto grfid = fmt::format("{:08x}", BSWAP32(c->ident.grfid));
+		auto grfid = fmt::format("{:08x}", std::byteswap(c->ident.grfid));
 		auto &grf = survey[grfid];
 
 		grf["md5sum"] = FormatArrayAsHex(c->ident.md5sum);
