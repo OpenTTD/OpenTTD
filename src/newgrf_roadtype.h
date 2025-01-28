@@ -59,4 +59,8 @@ SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadTypeSp
 RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8_t tracktype, const GRFFile *grffile);
 uint8_t GetReverseRoadTypeTranslation(RoadType roadtype, const GRFFile *grffile);
 
+void ConvertRoadTypes();
+void SetCurrentRoadTypeLabelList();
+void ClearRoadTypeLabelList();
+
 #endif /* NEWGRF_ROADTYPE_H */

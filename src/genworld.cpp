@@ -37,6 +37,8 @@
 #include "error.h"
 #include "game/game.hpp"
 #include "game/game_instance.hpp"
+#include "newgrf_railtype.h"
+#include "newgrf_roadtype.h"
 #include "string_func.h"
 #include "thread.h"
 #include "tgp.h"
@@ -320,6 +322,8 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 
 	/* Load the right landscape stuff, and the NewGRFs! */
 	GfxLoadSprites();
+	SetCurrentRailTypeLabelList();
+	SetCurrentRoadTypeLabelList();
 	InitializeBuildingCounts();
 	LoadStringWidthTable();
 

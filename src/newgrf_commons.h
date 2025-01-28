@@ -329,4 +329,11 @@ struct GRFFileProps : GRFFilePropsBase<1> {
 	uint16_t override;                      ///< id of the entity been replaced by
 };
 
+/** Container for a label for rail or road type conversion. */
+template <typename T>
+struct LabelObject {
+	T label = {}; ///< Label of rail or road type.
+	uint8_t subtype = 0; ///< Subtype of type (road or tram).
+};
+
 #endif /* NEWGRF_COMMONS_H */

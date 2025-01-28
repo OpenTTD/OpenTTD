@@ -42,6 +42,9 @@
 #include "../string_func.h"
 #include "../fios.h"
 #include "../error.h"
+#include "../newgrf_railtype.h"
+#include "../newgrf_roadtype.h"
+
 #include <atomic>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
@@ -2789,7 +2792,8 @@ extern bool LoadOldSaveGame(const std::string &file);
 static void ResetSaveloadData()
 {
 	ResetTempEngineData();
-	ResetLabelMaps();
+	ClearRailTypeLabelList();
+	ClearRoadTypeLabelList();
 	ResetOldWaypoints();
 }
 
