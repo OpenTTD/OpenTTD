@@ -25,6 +25,7 @@
  * \li GSRoad::BuildRoadWaypoint
  * \li GSWaypoint::WAYPOINT_ROAD
  * \li GSRoad::BT_WAYPOINT
+ * \li GSRoad::RemoveRoadWaypointTileRectangle
  *
  * Other changes:
  * \li GSTown::ExpandTown Change to town expansion to match expected behaviour with the 'allow_town_roads' setting
