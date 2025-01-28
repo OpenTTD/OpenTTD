@@ -567,10 +567,12 @@ function Regression::Prices()
 	print("  ROADTYPE_ROAD,BT_DEPOT:      " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_DEPOT));
 	print("  ROADTYPE_ROAD,BT_BUS_STOP:   " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_BUS_STOP));
 	print("  ROADTYPE_ROAD,BT_TRUCK_STOP: " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_TRUCK_STOP));
+	print("  ROADTYPE_ROAD,BT_WAYPOINT:   " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_WAYPOINT));
 	print("  ROADTYPE_TRAM,BT_ROAD:       " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_ROAD));
 	print("  ROADTYPE_TRAM,BT_DEPOT:      " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_DEPOT));
 	print("  ROADTYPE_TRAM,BT_BUS_STOP:   " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_BUS_STOP));
 	print("  ROADTYPE_TRAM,BT_TRUCK_STOP: " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_TRUCK_STOP));
+	print("  ROADTYPE_TRAM,BT_WAYPOINT:   " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_WAYPOINT));
 	print(" -Water-");
 	print("  BT_DOCK:  " + AIMarine.GetBuildCost(AIMarine.BT_DOCK));
 	print("  BT_DEPOT: " + AIMarine.GetBuildCost(AIMarine.BT_DEPOT));

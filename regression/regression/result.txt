@@ -7709,10 +7709,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
   ROADTYPE_ROAD,BT_DEPOT:      375
   ROADTYPE_ROAD,BT_BUS_STOP:   150
   ROADTYPE_ROAD,BT_TRUCK_STOP: 150
+  ROADTYPE_ROAD,BT_WAYPOINT:   150
   ROADTYPE_TRAM,BT_ROAD:       -1
   ROADTYPE_TRAM,BT_DEPOT:      -1
   ROADTYPE_TRAM,BT_BUS_STOP:   -1
   ROADTYPE_TRAM,BT_TRUCK_STOP: -1
+  ROADTYPE_TRAM,BT_WAYPOINT:   -1
  -Water-
   BT_DOCK:  262
   BT_DEPOT: 525
@@ -10162,7 +10164,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2232]
+*FUNCTION [Start()] regression/main.nut line [2234]
 
 [Infinite] CLOSURE
 [list] INSTANCE

@@ -678,7 +678,8 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 		case BT_ROAD:       return ::RoadBuildCost((::RoadType)roadtype);
 		case BT_DEPOT:      return ::GetPrice(PR_BUILD_DEPOT_ROAD, 1, nullptr);
 		case BT_BUS_STOP:   return ::GetPrice(PR_BUILD_STATION_BUS, 1, nullptr);
-		case BT_TRUCK_STOP: return ::GetPrice(PR_BUILD_STATION_TRUCK, 1, nullptr);
+		case BT_TRUCK_STOP:
+		case BT_WAYPOINT: return ::GetPrice(PR_BUILD_STATION_TRUCK, 1, nullptr);
 		default: return -1;
 	}
 }
