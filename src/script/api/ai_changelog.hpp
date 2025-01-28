@@ -29,6 +29,7 @@
  * \li AICargo::CC_NON_POTABLE
  * \li AIVehicleList_Waypoint
  * \li AIRoad::IsRoadWaypointTile
+ * \li AIRoad::BuildRoadWaypoint
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType

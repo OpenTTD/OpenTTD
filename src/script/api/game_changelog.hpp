@@ -30,6 +30,7 @@
  * \li GSVehicleList_Waypoint
  * \li GSBaseStation::GetOwner
  * \li GSRoad::IsRoadWaypointTile
+ * \li GSRoad::BuildRoadWaypoint
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
