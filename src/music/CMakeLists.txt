@@ -38,6 +38,12 @@ if(NOT OPTION_DEDICATED)
     )
 
     add_files(
+        alsamidi.cpp
+        alsamidi.h
+        CONDITION ALSA_FOUND
+    )
+
+    add_files(
         midi.h
         midifile.cpp
         midifile.hpp
