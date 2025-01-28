@@ -30,6 +30,7 @@
  * \li AIVehicleList_Waypoint
  * \li AIRoad::IsRoadWaypointTile
  * \li AIRoad::BuildRoadWaypoint
+ * \li AIRoad::RemoveRoadWaypointTileRectangle
  * \li AIWaypoint::WAYPOINT_ROAD
  * \li AIRoad::BT_WAYPOINT
  *
