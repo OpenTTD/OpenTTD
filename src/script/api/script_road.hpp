@@ -106,7 +106,7 @@ public:
 	/**
 	 * Checks whether the given tile is actually a tile with road that can be
 	 *  used to traverse a tile. This excludes road depots and 'normal' road
-	 *  stations, but includes drive through stations.
+	 *  stations, but includes drive through stations and waypoints.
 	 * @param tile The tile to check.
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile has road.
