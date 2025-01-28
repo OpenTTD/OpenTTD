@@ -1302,6 +1302,8 @@ function Regression::Road()
 	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33666));
 	print("    IsBuildable():                 " + AITile.IsBuildable(33666));
 	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(41383, AIStation.STATION_NEW));
+	print("    RemoveRoadWaypointTileRectangle(): " + AIRoad.RemoveRoadWaypointTileRectangle(33666, 33666));
+	print("    RemoveRoadWaypointTileRectangle(): " + AIRoad.RemoveRoadWaypointTileRectangle(33666, 33669));
 	local list = AIWaypointList(AIWaypoint.WAYPOINT_ROAD);
 	print("");
 	print("--AIWaypointList(ROAD)--");
