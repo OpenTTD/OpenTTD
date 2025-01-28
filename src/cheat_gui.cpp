@@ -246,7 +246,7 @@ struct CheatWindow : Window {
 
 	CheatWindow(WindowDesc &desc) : Window(desc)
 	{
-		this->sandbox_settings = GetFilteredSettingCollection([](const SettingDesc &sd) { return HasFlag(sd.flags, SF_SANDBOX); });
+		this->sandbox_settings = GetFilteredSettingCollection([](const SettingDesc &sd) { return sd.flags.Test(SettingFlag::Sandbox); });
 		this->InitNested();
 	}
 
@@ -349,13 +349,13 @@ struct CheatWindow : Window {
 		if (sd->IsBoolSetting()) {
 			/* Draw checkbox for boolean-value either on/off */
 			DrawBoolButton(buttons.left, buttons.top, value != 0, editable);
-		} else if (HasFlag(sd->flags, SF_GUI_DROPDOWN)) {
+		} else if (sd->flags.Test(SettingFlag::GuiDropdown)) {
 			/* Draw [v] button for settings of an enum-type */
 			DrawDropDownButton(buttons.left, buttons.top, COLOUR_YELLOW, state != 0, editable);
 		} else {
 			/* Draw [<][>] boxes for settings of an integer-type */
 			DrawArrowButtons(buttons.left, buttons.top, COLOUR_YELLOW, state,
-					editable && value != (HasFlag(sd->flags, SF_GUI_0_IS_SPECIAL) ? 0 : sd->min), editable && static_cast<uint32_t>(value) != sd->max);
+					editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : sd->min), editable && static_cast<uint32_t>(value) != sd->max);
 		}
 		sd->SetValueDParams(1, value);
 		DrawString(text.left, text.right, text.top, sd->GetTitle(), TC_LIGHT_BLUE);
@@ -508,11 +508,11 @@ struct CheatWindow : Window {
 			ChangeSettingValue(sd, x);
 		} else {
 			/* Only open editbox if clicked for the second time, and only for types where it is sensible for. */
-			if (this->last_clicked_setting == sd && !sd->IsBoolSetting() && !HasFlag(sd->flags, SF_GUI_DROPDOWN)) {
+			if (this->last_clicked_setting == sd && !sd->IsBoolSetting() && !sd->flags.Test(SettingFlag::GuiDropdown)) {
 				int64_t value64 = sd->Read(&GetGameSettings());
 
 				/* Show the correct currency-translated value */
-				if (HasFlag(sd->flags, SF_GUI_CURRENCY)) value64 *= GetCurrency().rate;
+				if (sd->flags.Test(SettingFlag::GuiCurrency)) value64 *= GetCurrency().rate;
 
 				CharSetFilter charset_filter = CS_NUMERAL; //default, only numeric input allowed
 				if (sd->min < 0) charset_filter = CS_NUMERAL_SIGNED; // special case, also allow '-' sign for negative input
@@ -560,7 +560,7 @@ struct CheatWindow : Window {
 				if (value < sd->min) value = sd->min; // skip between "disabled" and minimum
 			} else {
 				value -= step;
-				if (value < sd->min) value = HasFlag(sd->flags, SF_GUI_0_IS_SPECIAL) ? 0 : sd->min;
+				if (value < sd->min) value = sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : sd->min;
 			}
 
 			/* Set up scroller timeout for numeric values */
@@ -613,7 +613,7 @@ struct CheatWindow : Window {
 				long long llvalue = atoll(str->c_str());
 
 				/* Save the correct currency-translated value */
-				if (HasFlag(sd->flags, SF_GUI_CURRENCY)) llvalue /= GetCurrency().rate;
+				if (sd->flags.Test(SettingFlag::GuiCurrency)) llvalue /= GetCurrency().rate;
 
 				value = ClampTo<int32_t>(llvalue);
 			} else {

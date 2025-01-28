@@ -39,7 +39,7 @@
 	const SettingDesc *sd = GetSettingFromName(setting);
 	assert(sd != nullptr);
 
-	if ((sd->flags & SF_NO_NETWORK_SYNC) != 0) return false;
+	if ((sd->flags.Test(SettingFlag::NoNetworkSync))) return false;
 
 	value = Clamp<SQInteger>(value, INT32_MIN, INT32_MAX);
 

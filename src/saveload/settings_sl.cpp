@@ -79,9 +79,9 @@ static std::vector<SaveLoad> GetSettingsDesc(const SettingTable &settings, bool 
 	std::vector<SaveLoad> saveloads;
 	for (auto &desc : settings) {
 		const SettingDesc *sd = GetSettingDesc(desc);
-		if (sd->flags & SF_NOT_IN_SAVE) continue;
+		if (sd->flags.Test(SettingFlag::NotInSave)) continue;
 
-		if (is_loading && (sd->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server) {
+		if (is_loading && sd->flags.Test(SettingFlag::NoNetworkSync) && _networking && !_network_server) {
 			if (IsSavegameVersionBefore(SLV_TABLE_CHUNKS)) {
 				/* We don't want to read this setting, so we do need to skip over it. */
 				saveloads.push_back({sd->GetName(), sd->save.cmd, GetVarFileType(sd->save.conv) | SLE_VAR_NULL, sd->save.length, sd->save.version_from, sd->save.version_to, nullptr, 0, nullptr});
@@ -112,8 +112,8 @@ static void LoadSettings(const SettingTable &settings, void *object, const SaveL
 	/* Ensure all IntSettings are valid (min/max could have changed between versions etc). */
 	for (auto &desc : settings) {
 		const SettingDesc *sd = GetSettingDesc(desc);
-		if (sd->flags & SF_NOT_IN_SAVE) continue;
-		if ((sd->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server) continue;
+		if (sd->flags.Test(SettingFlag::NotInSave)) continue;
+		if (sd->flags.Test(SettingFlag::NoNetworkSync) && _networking && !_network_server) continue;
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 
 		if (sd->IsIntSetting()) {
@@ -194,8 +194,8 @@ struct PATSChunkHandler : ChunkHandler {
 		 * up values to become non-default, depending on the saveload version. */
 		for (auto &desc : settings_table) {
 			const SettingDesc *sd = GetSettingDesc(desc);
-			if (sd->flags & SF_NOT_IN_SAVE) continue;
-			if ((sd->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server) continue;
+			if (sd->flags.Test(SettingFlag::NotInSave)) continue;
+			if (sd->flags.Test(SettingFlag::NoNetworkSync) && _networking && !_network_server) continue;
 
 			sd->ResetToDefault(&_settings_game);
 		}

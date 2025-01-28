@@ -465,10 +465,10 @@ void IntSettingDesc::SetValueDParams(uint first_param, int32_t value) const
 	} else if (this->IsBoolSetting()) {
 		SetDParam(first_param++, value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 	} else {
-		if ((this->flags & SF_GUI_DROPDOWN) != 0) {
+		if (this->flags.Test(SettingFlag::GuiDropdown)) {
 			SetDParam(first_param++, this->str_val - min_val + value);
 		} else {
-			SetDParam(first_param++, this->str_val + ((value == 0 && (this->flags & SF_GUI_0_IS_SPECIAL) != 0) ? 1 : 0));
+			SetDParam(first_param++, this->str_val + ((value == 0 && this->flags.Test(SettingFlag::GuiZeroIsSpecial)) ? 1 : 0));
 		}
 		SetDParam(first_param++, value);
 	}
@@ -508,9 +508,9 @@ void IntSettingDesc::MakeValueValidAndWrite(const void *object, int32_t val) con
  * Make the value valid given the limitations of this setting.
  *
  * In the case of int settings this is ensuring the value is between the minimum and
- * maximum value, with a special case for 0 if SF_GUI_0_IS_SPECIAL is set.
+ * maximum value, with a special case for 0 if SettingFlag::GuiZeroIsSpecial is set.
  * This is generally done by clamping the value so it is within the allowed value range.
- * However, for SF_GUI_DROPDOWN the default is used when the value is not valid.
+ * However, for SettingFlag::GuiDropdown the default is used when the value is not valid.
  * @param val The value to make valid.
  */
 void IntSettingDesc::MakeValueValid(int32_t &val) const
@@ -530,8 +530,8 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 		case SLE_VAR_U16:
 		case SLE_VAR_I32: {
 			/* Override the minimum value. No value below this->min, except special value 0 */
-			if (!(this->flags & SF_GUI_0_IS_SPECIAL) || val != 0) {
-				if (!(this->flags & SF_GUI_DROPDOWN)) {
+			if (!this->flags.Test(SettingFlag::GuiZeroIsSpecial) || val != 0) {
+				if (!this->flags.Test(SettingFlag::GuiDropdown)) {
 					/* Clamp value-type setting to its valid range */
 					val = Clamp(val, min_val, max_val);
 				} else if (val < min_val || val > static_cast<int32_t>(max_val)) {
@@ -544,8 +544,8 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 		case SLE_VAR_U32: {
 			/* Override the minimum value. No value below this->min, except special value 0 */
 			uint32_t uval = static_cast<uint32_t>(val);
-			if (!(this->flags & SF_GUI_0_IS_SPECIAL) || uval != 0) {
-				if (!(this->flags & SF_GUI_DROPDOWN)) {
+			if (!this->flags.Test(SettingFlag::GuiZeroIsSpecial) || uval != 0) {
+				if (!this->flags.Test(SettingFlag::GuiDropdown)) {
 					/* Clamp value-type setting to its valid range */
 					uval = ClampU(uval, min_val, max_val);
 				} else if (uval < static_cast<uint32_t>(min_val) || uval > max_val) {
@@ -720,7 +720,7 @@ static void IniSaveSettings(IniFile &ini, const SettingTable &settings_table, co
 		/* If the setting is not saved to the configuration
 		 * file, just continue with the next setting */
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (sd->flags & SF_NOT_IN_CONFIG) continue;
+		if (sd->flags.Test(SettingFlag::NotInConfig)) continue;
 
 		/* XXX - wtf is this?? (group override?) */
 		std::string s{ sd->GetName() };
@@ -902,14 +902,14 @@ void IniSaveWindowSettings(IniFile &ini, const char *grpname, void *desc)
  */
 bool SettingDesc::IsEditable(bool do_command) const
 {
-	if (!do_command && !(this->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server && !(this->flags & SF_PER_COMPANY)) return false;
-	if (do_command && (this->flags & SF_NO_NETWORK_SYNC)) return false;
-	if ((this->flags & SF_NETWORK_ONLY) && !_networking && _game_mode != GM_MENU) return false;
-	if ((this->flags & SF_NO_NETWORK) && _networking) return false;
-	if ((this->flags & SF_NEWGAME_ONLY) &&
+	if (!do_command && !this->flags.Test(SettingFlag::NoNetworkSync) && _networking && !_network_server && !this->flags.Test(SettingFlag::PerCompany)) return false;
+	if (do_command && this->flags.Test(SettingFlag::NoNetworkSync)) return false;
+	if (this->flags.Test(SettingFlag::NetworkOnly) && !_networking && _game_mode != GM_MENU) return false;
+	if (this->flags.Test(SettingFlag::NoNetwork) && _networking) return false;
+	if (this->flags.Test(SettingFlag::NewgameOnly) &&
 			(_game_mode == GM_NORMAL ||
-			(_game_mode == GM_EDITOR && !(this->flags & SF_SCENEDIT_TOO)))) return false;
-	if ((this->flags & SF_SCENEDIT_ONLY) && _game_mode != GM_EDITOR) return false;
+			(_game_mode == GM_EDITOR && !this->flags.Test(SettingFlag::SceneditToo)))) return false;
+	if (this->flags.Test(SettingFlag::SceneditOnly) && _game_mode != GM_EDITOR) return false;
 	return true;
 }
 
@@ -919,8 +919,8 @@ bool SettingDesc::IsEditable(bool do_command) const
  */
 SettingType SettingDesc::GetType() const
 {
-	if (this->flags & SF_PER_COMPANY) return ST_COMPANY;
-	return (this->flags & SF_NOT_IN_SAVE) ? ST_CLIENT : ST_GAME;
+	if (this->flags.Test(SettingFlag::PerCompany)) return ST_COMPANY;
+	return this->flags.Test(SettingFlag::NotInSave) ? ST_CLIENT : ST_GAME;
 }
 
 /**
@@ -1604,14 +1604,14 @@ void IntSettingDesc::ChangeValue(const void *object, int32_t newval) const
 	this->Write(object, newval);
 	if (this->post_callback != nullptr) this->post_callback(newval);
 
-	if (HasFlag(this->flags, SF_NO_NETWORK) || HasFlag(this->flags, SF_SANDBOX)) {
+	if (this->flags.Test(SettingFlag::NoNetwork) || this->flags.Test(SettingFlag::Sandbox)) {
 		_gamelog.StartAction(GLAT_SETTING);
 		_gamelog.Setting(this->GetName(), oldval, newval);
 		_gamelog.StopAction();
 	}
 
 	SetWindowClassesDirty(WC_GAME_OPTIONS);
-	if (HasFlag(this->flags, SF_SANDBOX)) SetWindowClassesDirty(WC_CHEATS);
+	if (this->flags.Test(SettingFlag::Sandbox)) SetWindowClassesDirty(WC_CHEATS);
 
 	if (_save_config) SaveToConfig();
 }
@@ -1775,7 +1775,7 @@ CommandCost CmdChangeCompanySetting(DoCommandFlag flags, const std::string &name
 bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame)
 {
 	const IntSettingDesc *setting = sd->AsIntSetting();
-	if ((setting->flags & SF_PER_COMPANY) != 0) {
+	if (setting->flags.Test(SettingFlag::PerCompany)) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
 			return Command<CMD_CHANGE_COMPANY_SETTING>::Post(setting->GetName(), value);
 		}
@@ -1788,7 +1788,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame
 	 * (if any) to change. Also *hack*hack* we update the _newgame version
 	 * of settings because changing a company-based setting in a game also
 	 * changes its defaults. At least that is the convention we have chosen */
-	if (setting->flags & SF_NO_NETWORK_SYNC) {
+	if (setting->flags.Test(SettingFlag::NoNetworkSync)) {
 		if (_game_mode != GM_MENU) {
 			setting->ChangeValue(&_settings_newgame, value);
 		}
@@ -1850,7 +1850,7 @@ void SyncCompanySettings()
  */
 bool SetSettingValue(const StringSettingDesc *sd, std::string value, bool force_newgame)
 {
-	assert(sd->flags & SF_NO_NETWORK_SYNC);
+	assert(sd->flags.Test(SettingFlag::NoNetworkSync));
 
 	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ && value.compare("(null)") == 0) {
 		value.clear();
@@ -1884,7 +1884,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	/* Company settings are not in "list_settings", so don't try to modify them. */
-	if (sd == nullptr || sd->flags & SF_PER_COMPANY) {
+	if (sd == nullptr || sd->flags.Test(SettingFlag::PerCompany)) {
 		IConsolePrint(CC_ERROR, "'{}' is an unknown setting.", name);
 		return;
 	}
@@ -1928,7 +1928,7 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	/* Company settings are not in "list_settings", so don't try to read them. */
-	if (sd == nullptr || sd->flags & SF_PER_COMPANY) {
+	if (sd == nullptr || sd->flags.Test(SettingFlag::PerCompany)) {
 		IConsolePrint(CC_ERROR, "'{}' is an unknown setting.", name);
 		return;
 	}
@@ -1942,7 +1942,7 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 		const IntSettingDesc *int_setting = sd->AsIntSetting();
 		auto [min_val, max_val] = int_setting->GetRange();
 		IConsolePrint(CC_INFO, "Current value for '{}' is '{}' (min: {}{}, max: {}).",
-			sd->GetName(), value, (sd->flags & SF_GUI_0_IS_SPECIAL) ? "(0) " : "", min_val, max_val);
+			sd->GetName(), value, sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? "(0) " : "", min_val, max_val);
 	}
 }
 

@@ -13,23 +13,22 @@
 #include <variant>
 #include "saveload/saveload.h"
 
-enum SettingFlag : uint16_t {
-	SF_NONE = 0,
-	SF_GUI_0_IS_SPECIAL        = 1 <<  0, ///< A value of zero is possible and has a custom string (the one after "strval").
-	SF_GUI_DROPDOWN            = 1 <<  2, ///< The value represents a limited number of string-options (internally integer) presented as dropdown.
-	SF_GUI_CURRENCY            = 1 <<  3, ///< The number represents money, so when reading value multiply by exchange rate.
-	SF_NETWORK_ONLY            = 1 <<  4, ///< This setting only applies to network games.
-	SF_NO_NETWORK              = 1 <<  5, ///< This setting does not apply to network games; it may not be changed during the game.
-	SF_NEWGAME_ONLY            = 1 <<  6, ///< This setting cannot be changed in a game.
-	SF_SCENEDIT_TOO            = 1 <<  7, ///< This setting can be changed in the scenario editor (only makes sense when SF_NEWGAME_ONLY is set).
-	SF_SCENEDIT_ONLY           = 1 <<  8, ///< This setting can only be changed in the scenario editor.
-	SF_PER_COMPANY             = 1 <<  9, ///< This setting can be different for each company (saved in company struct).
-	SF_NOT_IN_SAVE             = 1 << 10, ///< Do not save with savegame, basically client-based.
-	SF_NOT_IN_CONFIG           = 1 << 11, ///< Do not save to config file.
-	SF_NO_NETWORK_SYNC         = 1 << 12, ///< Do not synchronize over network (but it is saved if SF_NOT_IN_SAVE is not set).
-	SF_SANDBOX                 = 1 << 13, ///< This setting is a sandbox setting.
+enum class SettingFlag : uint8_t {
+	GuiZeroIsSpecial, ///< A value of zero is possible and has a custom string (the one after "strval").
+	GuiDropdown, ///< The value represents a limited number of string-options (internally integer) presented as dropdown.
+	GuiCurrency, ///< The number represents money, so when reading value multiply by exchange rate.
+	NetworkOnly, ///< This setting only applies to network games.
+	NoNetwork, ///< This setting does not apply to network games; it may not be changed during the game.
+	NewgameOnly, ///< This setting cannot be changed in a game.
+	SceneditToo, ///< This setting can be changed in the scenario editor (only makes sense when SettingFlag::NewgameOnly is set).
+	SceneditOnly, ///< This setting can only be changed in the scenario editor.
+	PerCompany, ///< This setting can be different for each company (saved in company struct).
+	NotInSave, ///< Do not save with savegame, basically client-based.
+	NotInConfig, ///< Do not save to config file.
+	NoNetworkSync, ///< Do not synchronize over network (but it is saved if SettingFlag::NotInSave is not set).
+	Sandbox, ///< This setting is a sandbox setting.
 };
-DECLARE_ENUM_AS_BIT_SET(SettingFlag)
+using SettingFlags = EnumBitSet<SettingFlag, uint16_t>;
 
 /**
  * A SettingCategory defines a grouping of the settings.
@@ -70,11 +69,11 @@ struct IniItem;
 
 /** Properties of config file settings. */
 struct SettingDesc {
-	SettingDesc(const SaveLoad &save, SettingFlag flags, bool startup) :
+	SettingDesc(const SaveLoad &save, SettingFlags flags, bool startup) :
 		flags(flags), startup(startup), save(save) {}
 	virtual ~SettingDesc() = default;
 
-	SettingFlag flags;  ///< Handles how a setting would show up in the GUI (text/currency, etc.).
+	SettingFlags flags;  ///< Handles how a setting would show up in the GUI (text/currency, etc.).
 	bool startup;       ///< Setting has to be loaded directly at startup?.
 	SaveLoad save;      ///< Internal structure (going to savegame, parts to config).
 
@@ -178,7 +177,7 @@ struct IntSettingDesc : SettingDesc {
 		std::enable_if_t<std::disjunction_v<std::is_convertible<Tmax, uint32_t>, std::is_base_of<StrongTypedefBase, Tmax>>, int> = 0,
 		std::enable_if_t<std::disjunction_v<std::is_convertible<Tinterval, int32_t>, std::is_base_of<StrongTypedefBase, Tinterval>>, int> = 0
 	>
-	IntSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, Tdef def,
+	IntSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def,
 			Tmin min, Tmax max, Tinterval interval, StringID str, StringID str_help, StringID str_val,
 			SettingCategory cat, PreChangeCheck pre_check, PostChangeCallback post_callback,
 			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, SetValueDParamsCallback set_value_dparams_cb,
@@ -260,7 +259,7 @@ private:
 
 /** Boolean setting. */
 struct BoolSettingDesc : IntSettingDesc {
-	BoolSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, bool def,
+	BoolSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, bool def,
 			StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback,
 			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, SetValueDParamsCallback set_value_dparams_cb,
@@ -279,7 +278,7 @@ struct BoolSettingDesc : IntSettingDesc {
 struct OneOfManySettingDesc : IntSettingDesc {
 	typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
 
-	OneOfManySettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, int32_t def,
+	OneOfManySettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, int32_t def,
 			int32_t max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback,
 			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, SetValueDParamsCallback set_value_dparams_cb,
@@ -302,7 +301,7 @@ struct OneOfManySettingDesc : IntSettingDesc {
 
 /** Many of many setting. */
 struct ManyOfManySettingDesc : OneOfManySettingDesc {
-	ManyOfManySettingDesc(const SaveLoad &save, SettingFlag flags, bool startup,
+	ManyOfManySettingDesc(const SaveLoad &save, SettingFlags flags, bool startup,
 		int32_t def, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 		PreChangeCheck pre_check, PostChangeCallback post_callback,
 		GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, SetValueDParamsCallback set_value_dparams_cb,
@@ -331,7 +330,7 @@ struct StringSettingDesc : SettingDesc {
 	 */
 	typedef void PostChangeCallback(const std::string &value);
 
-	StringSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, const char *def,
+	StringSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, const char *def,
 			uint32_t max_length, PreChangeCheck pre_check, PostChangeCallback post_callback) :
 		SettingDesc(save, flags, startup), def(def == nullptr ? "" : def), max_length(max_length),
 			pre_check(pre_check), post_callback(post_callback) {}
@@ -358,7 +357,7 @@ private:
 
 /** List/array settings. */
 struct ListSettingDesc : SettingDesc {
-	ListSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, const char *def) :
+	ListSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, const char *def) :
 		SettingDesc(save, flags, startup), def(def) {}
 
 	const char *def;        ///< default value given when none is present
@@ -373,7 +372,7 @@ struct ListSettingDesc : SettingDesc {
 /** Placeholder for settings that have been removed, but might still linger in the savegame. */
 struct NullSettingDesc : SettingDesc {
 	NullSettingDesc(const SaveLoad &save) :
-		SettingDesc(save, SF_NOT_IN_CONFIG, false) {}
+		SettingDesc(save, SettingFlag::NotInConfig, false) {}
 
 	std::string FormatValue(const void *) const override { NOT_REACHED(); }
 	void ParseValue(const IniItem *, void *) const override { NOT_REACHED(); }
