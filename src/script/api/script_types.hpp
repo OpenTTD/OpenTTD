@@ -29,6 +29,14 @@
  *                           <td> game start \ref newgrf_changes "(1)"              </td>
  *                           <td> never \ref newgrf_changes "(1)"                   </td>
  *                           <td> no \ref newgrf_changes "(1)"                      </td></tr>
+ * <tr><td>#ClientID    </td><td> network client (player)                           </td>
+ *                           <td> joining server                                    </td>
+ *                           <td> leaving server                                    </td>
+ *                           <td> no                                                </td></tr>
+ * <tr><td>#CompanyID   </td><td> company                                           </td>
+ *                           <td> launch                                            </td>
+ *                           <td> merger, bankruptcy                                </td>
+ *                           <td> yes                                               </td></tr>
  * <tr><td>#EngineID    </td><td> engine type                                       </td>
  *                           <td> introduction, preview \ref dynamic_engines "(2)"  </td>
  *                           <td> engines retires \ref dynamic_engines "(2)"        </td>
@@ -49,6 +57,14 @@
  *                           <td> game start \ref newgrf_changes "(1)"              </td>
  *                           <td> never \ref newgrf_changes "(1)"                   </td>
  *                           <td> no                                                </td></tr>
+ * <tr><td>#LeagueTableID</td><td> league table                                     </td>
+ *                           <td> creation                                          </td>
+ *                           <td> deletion                                          </td>
+ *                           <td> yes                                               </td></tr>
+ * <tr><td>#LeagueTableElementID</td><td> element of a league table                 </td>
+ *                           <td> creation                                          </td>
+ *                           <td> deletion                                          </td>
+ *                           <td> yes                                               </td></tr>
  * <tr><td>#ObjectType  </td><td> NewGRF object type                                </td>
  *                           <td> game start \ref newgrf_changes "(1)"              </td>
  *                           <td> never \ref newgrf_changes "(1)"                   </td>
@@ -110,12 +126,16 @@
 /* Define all types here, so they are added to the API docs. */
 using BridgeType = uint32_t; ///< The ID of a bridge type.
 using CargoType = uint8_t; ///< The ID of a cargo type.
+using ClientID = uint32_t; //< The ID of a (network) client.
+using CompanyID = uint8_t; ///< The ID of a company.
 using EngineID = uint16_t; ///< The ID of an engine.
 using GoalID = uint16_t; ///< The ID of a goal.
 using GroupID = uint16_t; ///< The ID of a group.
 using IndustryID = uint16_t; ///< The ID of an industry.
 using IndustryType = uint8_t; ///< The ID of an industry-type.
 using Money = int64_t; ///< Money, stored in a 32bit/64bit safe way. For scripts money is always in pounds.
+using LeagueTableID = uint8_t; ///< The ID of a league table.
+using LeagueTableElementID = uint16_t; ///< The ID of an element of a league table.
 using ObjectType = uint16_t; ///< The ID of an object-type.
 using SignID = uint16_t; ///< The ID of a sign.
 using StationID = uint16_t; ///< The ID of a station.
