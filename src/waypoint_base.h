@@ -15,7 +15,7 @@
 /**
  * Flags for Waypoint::waypoint_flags.
  */
-enum WaypointFlags {
+enum WaypointFlags : uint8_t {
 	WPF_ROAD                    = 0, ///< This is a road waypoint
 };
 

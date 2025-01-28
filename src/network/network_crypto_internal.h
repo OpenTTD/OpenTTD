@@ -49,7 +49,7 @@ using X25519Mac = std::array<uint8_t, X25519_MAC_SIZE>;
 using X25519KeyExchangeMessage = std::array<uint8_t, X25519_KEY_EXCHANGE_MESSAGE_SIZE>;
 
 /** The side of the key exchange. */
-enum class X25519KeyExchangeSide {
+enum class X25519KeyExchangeSide : uint8_t {
 	CLIENT, ///< We are the client.
 	SERVER, ///< We are the server.
 };

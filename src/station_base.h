@@ -165,7 +165,7 @@ public:
  */
 struct GoodsEntry {
 	/** Status of this cargo for the station. */
-	enum GoodsEntryStatus {
+	enum GoodsEntryStatus : uint8_t {
 		/**
 		 * Set when the station accepts the cargo currently for final deliveries.
 		 * It is updated every STATION_ACCEPTANCE_TICKS ticks by checking surrounding tiles for acceptance >= 8/8.

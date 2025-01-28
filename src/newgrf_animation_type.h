@@ -23,7 +23,7 @@ struct AnimationInfo {
 };
 
 /** Animation triggers for station. */
-enum StationAnimationTrigger {
+enum StationAnimationTrigger : uint8_t {
 	SAT_BUILT,         ///< Trigger tile when built.
 	SAT_NEW_CARGO,     ///< Trigger station on new cargo arrival.
 	SAT_CARGO_TAKEN,   ///< Trigger station when cargo is completely taken.
@@ -34,7 +34,7 @@ enum StationAnimationTrigger {
 };
 
 /** Animation triggers of the industries. */
-enum IndustryAnimationTrigger {
+enum IndustryAnimationTrigger : uint8_t {
 	IAT_CONSTRUCTION_STATE_CHANGE,  ///< Trigger whenever the construction state changes.
 	IAT_TILELOOP,                   ///< Trigger in the periodic tile loop.
 	IAT_INDUSTRY_TICK,              ///< Trigger every tick.
@@ -43,7 +43,7 @@ enum IndustryAnimationTrigger {
 };
 
 /** Animation triggers for airport tiles */
-enum AirpAnimationTrigger {
+enum AirpAnimationTrigger : uint8_t {
 	AAT_BUILT,                   ///< Triggered when the airport is built (for all tiles at the same time).
 	AAT_TILELOOP,                ///< Triggered in the periodic tile loop.
 	AAT_STATION_NEW_CARGO,       ///< Triggered when new cargo arrives at the station (for all tiles at the same time).
@@ -53,7 +53,7 @@ enum AirpAnimationTrigger {
 };
 
 /** Animation triggers for objects. */
-enum ObjectAnimationTrigger {
+enum ObjectAnimationTrigger : uint8_t {
 	OAT_BUILT,     ///< Triggered when the object is built (for all tiles at the same time).
 	OAT_TILELOOP,  ///< Triggered in the periodic tile loop.
 	OAT_256_TICKS, ///< Triggered every 256 ticks (for all tiles at the same time).

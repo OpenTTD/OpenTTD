@@ -12,7 +12,7 @@
 
 class SocialIntegrationPlugin {
 public:
-	enum State {
+	enum State : uint8_t {
 		RUNNING, ///< The plugin is successfully loaded and running.
 
 		FAILED, ///< The plugin failed to initialize.

@@ -43,7 +43,7 @@
 extern void MakeNewgameSettingsLive();
 
 /** Enum for the modes we can generate in. */
-enum GenerateLandscapeWindowMode {
+enum GenerateLandscapeWindowMode : uint8_t {
 	GLWM_GENERATE,  ///< Generate new game.
 	GLWM_HEIGHTMAP, ///< Load from heightmap.
 	GLWM_SCENARIO,  ///< Generate flat land.

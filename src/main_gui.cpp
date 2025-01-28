@@ -178,7 +178,7 @@ static constexpr NWidgetPart _nested_main_window_widgets[] = {
 	NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_M_VIEWPORT), SetResize(1, 1),
 };
 
-enum {
+enum GlobalHotKeys : int32_t {
 	GHK_QUIT,
 	GHK_ABANDON,
 	GHK_CONSOLE,

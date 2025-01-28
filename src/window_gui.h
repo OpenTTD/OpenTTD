@@ -21,7 +21,7 @@
 /**
  * Flags to describe the look of the frame
  */
-enum FrameFlags {
+enum FrameFlags : uint8_t {
 	FR_NONE         =  0,
 	FR_TRANSPARENT  =  1 << 0,  ///< Makes the background transparent if set
 	FR_BORDERONLY   =  1 << 4,  ///< Draw border only, no background
@@ -142,7 +142,7 @@ extern Window *_focused_window;
 
 
 /** How do we the window to be placed? */
-enum WindowPosition {
+enum WindowPosition : uint8_t {
 	WDP_MANUAL,        ///< Manually align the window (so no automatic location finding)
 	WDP_AUTO,          ///< Find a place automatically
 	WDP_CENTER,        ///< Center the window
@@ -199,7 +199,7 @@ private:
 /**
  * Window default widget/window handling flags
  */
-enum WindowDefaultFlag {
+enum WindowDefaultFlag : uint8_t {
 	WDF_CONSTRUCTION    =   1 << 0, ///< This window is used for construction; close it whenever changing company.
 	WDF_MODAL           =   1 << 1, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
 	WDF_NO_FOCUS        =   1 << 2, ///< This window won't get focus/make any other window lose focus when click
@@ -215,7 +215,7 @@ struct ResizeInfo {
 };
 
 /** State of a sort direction button. */
-enum SortButtonState {
+enum SortButtonState : uint8_t {
 	SBS_OFF,  ///< Do not sort (with this button).
 	SBS_DOWN, ///< Sort ascending.
 	SBS_UP,   ///< Sort descending.
@@ -224,7 +224,7 @@ enum SortButtonState {
 /**
  * Window flags.
  */
-enum WindowFlags {
+enum WindowFlags : uint16_t {
 	WF_TIMEOUT           = 1 <<  0, ///< Window timeout counter.
 
 	WF_DRAGGING          = 1 <<  3, ///< Window is being dragged.
@@ -260,7 +260,7 @@ struct ViewportData : Viewport {
 struct QueryString;
 
 /* misc_gui.cpp */
-enum TooltipCloseCondition {
+enum TooltipCloseCondition : uint8_t {
 	TCC_RIGHT_CLICK,
 	TCC_HOVER,
 	TCC_NONE,
@@ -1036,7 +1036,7 @@ extern bool _scrolling_viewport;
 extern bool _mouse_hovering;
 
 /** Mouse modes. */
-enum SpecialMouseMode {
+enum SpecialMouseMode : uint8_t {
 	WSM_NONE,     ///< No special mouse mode.
 	WSM_DRAGDROP, ///< Drag&drop an object.
 	WSM_SIZING,   ///< Sizing mode.

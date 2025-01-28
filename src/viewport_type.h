@@ -84,7 +84,7 @@ struct TrackedViewportSign : ViewportSign {
  * Directions of zooming.
  * @see DoZoomInOutWindow
  */
-enum ZoomStateChange {
+enum ZoomStateChange : uint8_t {
 	ZOOM_IN   = 0, ///< Zoom in (get more detailed view).
 	ZOOM_OUT  = 1, ///< Zoom out (get helicopter view).
 	ZOOM_NONE = 2, ///< Hack, used to update the button status.
@@ -100,7 +100,7 @@ static const uint BB_HEIGHT_UNDER_BRIDGE = 6; ///< Everything that can be built 
 static const uint BB_Z_SEPARATOR         = 7; ///< Separates the bridge/tunnel from the things under/above it.
 
 /** Viewport place method (type of highlighted area and placed objects) */
-enum ViewportPlaceMethod {
+enum ViewportPlaceMethod : uint8_t {
 	VPM_X_OR_Y          =    0, ///< drag in X or Y direction
 	VPM_FIX_X           =    1, ///< drag only in X axis
 	VPM_FIX_Y           =    2, ///< drag only in Y axis
@@ -119,7 +119,7 @@ DECLARE_ENUM_AS_BIT_SET(ViewportPlaceMethod)
  * Drag and drop selection process, or, what to do with an area of land when
  * you've selected it.
  */
-enum ViewportDragDropSelectionProcess {
+enum ViewportDragDropSelectionProcess : uint8_t {
 	DDSP_DEMOLISH_AREA,        ///< Clear area
 	DDSP_RAISE_AND_LEVEL_AREA, ///< Raise / level area
 	DDSP_LOWER_AND_LEVEL_AREA, ///< Lower / level area

@@ -11,7 +11,7 @@
 #define STATUSBAR_GUI_H
 
 /** What of the statusbar must be invalidated? */
-enum StatusBarInvalidate {
+enum StatusBarInvalidate : uint8_t {
 	SBI_SAVELOAD_START,  ///< started saving
 	SBI_SAVELOAD_FINISH, ///< finished saving
 	SBI_SHOW_TICKER,     ///< start scrolling news

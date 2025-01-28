@@ -32,7 +32,7 @@ struct LoadgameState {
 };
 
 /* OldChunk-Type */
-enum OldChunkType {
+enum OldChunkType : uint32_t {
 	OC_SIMPLE    = 0,
 	OC_NULL      = 1,
 	OC_CHUNK     = 2,
@@ -74,7 +74,7 @@ enum OldChunkType {
 	 * Dereference the pointer once before writing to it,
 	 * so we do not have to use big static arrays.
 	 */
-	OC_DEREFERENCE_POINTER = 1 << 31,
+	OC_DEREFERENCE_POINTER = 1U << 31,
 
 	OC_END       = 0, ///< End of the whole chunk, all 32 bits set to zero
 };

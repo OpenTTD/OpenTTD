@@ -19,7 +19,7 @@
 
 
 /** The different types of road tiles. */
-enum RoadTileType {
+enum RoadTileType : uint8_t {
 	ROAD_TILE_NORMAL,   ///< Normal road
 	ROAD_TILE_CROSSING, ///< Level crossing
 	ROAD_TILE_DEPOT,    ///< Depot (one entrance)

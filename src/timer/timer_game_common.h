@@ -94,7 +94,7 @@ public:
 		return Date{(365 * year_as_int) + number_of_leap_years};
 	}
 
-	enum Trigger {
+	enum Trigger : uint8_t {
 		DAY,
 		WEEK,
 		MONTH,
@@ -102,7 +102,7 @@ public:
 		YEAR,
 	};
 
-	enum Priority {
+	enum Priority : uint8_t {
 		NONE, ///< These timers can be executed in any order; there is no Random() in them, so order is not relevant.
 
 		/* All other may have a Random() call in them, so order is important.

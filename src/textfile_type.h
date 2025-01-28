@@ -11,7 +11,7 @@
 #define TEXTFILE_TYPE_H
 
 /** Additional text files accompanying Tar archives */
-enum TextfileType {
+enum TextfileType : uint8_t {
 	TFT_CONTENT_BEGIN,
 
 	TFT_README = TFT_CONTENT_BEGIN, ///< Content readme

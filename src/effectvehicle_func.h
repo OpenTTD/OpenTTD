@@ -13,7 +13,7 @@
 #include "vehicle_type.h"
 
 /** Effect vehicle types */
-enum EffectVehicleType {
+enum EffectVehicleType : uint8_t {
 	EV_CHIMNEY_SMOKE            =  0, ///< Smoke of power plant (industry).
 	EV_STEAM_SMOKE              =  1, ///< Smoke of steam engines.
 	EV_DIESEL_SMOKE             =  2, ///< Smoke of diesel engines.

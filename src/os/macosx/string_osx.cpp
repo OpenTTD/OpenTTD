@@ -36,7 +36,7 @@ extern "C" {
 		CTRunDelegateGetWidthCallback   getWidth;
 	} CTRunDelegateCallbacks;
 
-	enum {
+	enum : int32_t {
 		kCTRunDelegateVersion1 = 1,
 		kCTRunDelegateCurrentVersion = kCTRunDelegateVersion1
 	};

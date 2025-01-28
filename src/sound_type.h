@@ -42,7 +42,7 @@ struct SoundEntry {
  *  - The naming of the enum values includes the position in the baseset.
  * That is, for sound effects 0x02 to 0x28 the naming is off-by-two.
  */
-enum SoundFx {
+enum SoundFx : uint8_t {
 	SND_BEGIN = 0,
 	SND_02_CONSTRUCTION_WATER = 0,         ///<  0 == 0x00  Construction: water infrastructure
 	SND_03_FACTORY,                        ///<  1 == 0x01  Industry producing: factory: whistle

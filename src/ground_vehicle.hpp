@@ -18,7 +18,7 @@
 #include "widgets/vehicle_widget.h"
 
 /** What is the status of our acceleration? */
-enum AccelStatus {
+enum AccelStatus : uint8_t {
 	AS_ACCEL, ///< We want to go faster, if possible of course.
 	AS_BRAKE, ///< We want to stop.
 };
@@ -51,7 +51,7 @@ struct GroundVehicleCache {
 };
 
 /** Ground vehicle flags. */
-enum GroundVehicleFlags {
+enum GroundVehicleFlags : uint8_t {
 	GVF_GOINGUP_BIT              = 0,  ///< Vehicle is currently going uphill. (Cached track information for acceleration)
 	GVF_GOINGDOWN_BIT            = 1,  ///< Vehicle is currently going downhill. (Cached track information for acceleration)
 	GVF_SUPPRESS_IMPLICIT_ORDERS = 2,  ///< Disable insertion and removal of automatic orders until the vehicle completes the real order.

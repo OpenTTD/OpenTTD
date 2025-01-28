@@ -625,7 +625,7 @@ DECLARE_ENUM_AS_ADDABLE(SmallMapType)
 class SmallMapWindow : public Window {
 protected:
 	/** Available kinds of zoomlevel changes. */
-	enum ZoomLevelChange {
+	enum ZoomLevelChange : uint8_t {
 		ZLC_INITIALIZE, ///< Initialize zoom level.
 		ZLC_ZOOM_OUT,   ///< Zoom out.
 		ZLC_ZOOM_IN,    ///< Zoom in.

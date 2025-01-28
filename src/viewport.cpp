@@ -139,7 +139,7 @@ struct ChildScreenSpriteToDraw {
 };
 
 /** Enumeration of multi-part foundations */
-enum FoundationPart {
+enum FoundationPart : uint8_t {
 	FOUNDATION_PART_NONE     = 0xFF,  ///< Neither foundation nor groundsprite drawn yet.
 	FOUNDATION_PART_NORMAL   = 0,     ///< First part (normal foundation or no foundation)
 	FOUNDATION_PART_HALFTILE = 1,     ///< Second part (halftile foundation)
@@ -150,7 +150,7 @@ enum FoundationPart {
  * Mode of "sprite combining"
  * @see StartSpriteCombine
  */
-enum SpriteCombineMode {
+enum SpriteCombineMode : uint8_t {
 	SPRITE_COMBINE_NONE,     ///< Every #AddSortableSpriteToDraw start its own bounding box
 	SPRITE_COMBINE_PENDING,  ///< %Sprite combining will start with the next unclipped sprite.
 	SPRITE_COMBINE_ACTIVE,   ///< %Sprite combining is active. #AddSortableSpriteToDraw outputs child sprites.
@@ -1005,7 +1005,7 @@ static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
 	DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti, 7, foundation_part);
 }
 
-enum TileHighlightType {
+enum TileHighlightType : uint8_t {
 	THT_NONE,
 	THT_WHITE,
 	THT_BLUE,

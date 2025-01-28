@@ -25,7 +25,7 @@ static constexpr int HELICOPTER_HOLD_MAX_FLYING_ALTITUDE = 184; ///< holding fly
 struct Aircraft;
 
 /** An aircraft can be one of those types. */
-enum AircraftSubType {
+enum AircraftSubType : uint8_t {
 	AIR_HELICOPTER = 0, ///< an helicopter
 	AIR_AIRCRAFT   = 2, ///< an airplane
 	AIR_SHADOW     = 4, ///< shadow of the aircraft
@@ -33,7 +33,7 @@ enum AircraftSubType {
 };
 
 /** Flags for air vehicles; shared with disaster vehicles. */
-enum AirVehicleFlags {
+enum AirVehicleFlags : uint8_t {
 	VAF_DEST_TOO_FAR             = 0, ///< Next destination is too far away.
 
 	/* The next two flags are to prevent stair climbing of the aircraft. The idea is that the aircraft

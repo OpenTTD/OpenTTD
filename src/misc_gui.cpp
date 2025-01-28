@@ -42,7 +42,7 @@
 #include "safeguards.h"
 
 /** Method to open the OSK. */
-enum OskActivation {
+enum OskActivation : uint8_t {
 	OSKA_DISABLED,           ///< The OSK shall not be activated at all.
 	OSKA_DOUBLE_CLICK,       ///< Double click on the edit box opens OSK.
 	OSKA_SINGLE_CLICK,       ///< Single click after focus click opens OSK.

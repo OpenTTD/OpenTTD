@@ -22,7 +22,7 @@
 struct Train;
 
 /** Rail vehicle flags. */
-enum VehicleRailFlags {
+enum VehicleRailFlags : uint8_t {
 	VRF_REVERSING                     = 0,
 	VRF_POWEREDWAGON                  = 3, ///< Wagon is powered.
 	VRF_REVERSE_DIRECTION             = 4, ///< Reverse the visible direction of the vehicle.
@@ -41,7 +41,7 @@ enum TrainForceProceeding : uint8_t {
 };
 
 /** Flags for Train::ConsistChanged */
-enum ConsistChangeFlags {
+enum ConsistChangeFlags : uint8_t {
 	CCF_LENGTH     = 0x01,     ///< Allow vehicles to change length.
 	CCF_CAPACITY   = 0x02,     ///< Allow vehicles to change capacity.
 

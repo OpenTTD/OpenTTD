@@ -22,7 +22,7 @@
 #include "settings_type.h"
 
 /** Railtype flag bit numbers. */
-enum RailTypeFlag {
+enum RailTypeFlag : uint8_t {
 	RTF_CATENARY          = 0,                           ///< Bit number for drawing a catenary.
 	RTF_NO_LEVEL_CROSSING = 1,                           ///< Bit number for disallowing level crossings.
 	RTF_HIDDEN            = 2,                           ///< Bit number for hiding from selection.
@@ -46,7 +46,7 @@ DECLARE_ENUM_AS_BIT_SET(RailTypeFlags)
 struct SpriteGroup;
 
 /** Sprite groups for a railtype. */
-enum RailTypeSpriteGroup {
+enum RailTypeSpriteGroup : uint8_t {
 	RTSG_CURSORS,     ///< Cursor and toolbar icon images
 	RTSG_OVERLAY,     ///< Images for overlaying track
 	RTSG_GROUND,      ///< Main group of ground images
@@ -67,7 +67,7 @@ enum RailTypeSpriteGroup {
  * Offsets for sprites within an overlay/underlay set.
  * These are the same for overlay and underlay sprites.
  */
-enum RailTrackOffset {
+enum RailTrackOffset : uint8_t {
 	RTO_X,            ///< Piece of rail in X direction
 	RTO_Y,            ///< Piece of rail in Y direction
 	RTO_N,            ///< Piece of rail in northern corner
@@ -89,7 +89,7 @@ enum RailTrackOffset {
 /**
  * Offsets for sprites within a bridge surface overlay set.
  */
-enum RailTrackBridgeOffset {
+enum RailTrackBridgeOffset : uint8_t {
 	RTBO_X,     ///< Piece of rail in X direction
 	RTBO_Y,     ///< Piece of rail in Y direction
 	RTBO_SLOPE, ///< Sloped rail pieces, in order NE, SE, SW, NW
@@ -99,7 +99,7 @@ enum RailTrackBridgeOffset {
  * Offsets from base sprite for fence sprites. These are in the order of
  *  the sprites in the original data files.
  */
-enum RailFenceOffset {
+enum RailFenceOffset : uint8_t {
 	RFO_FLAT_X_NW,     //!< Slope FLAT, Track X,     Fence NW
 	RFO_FLAT_Y_NE,     //!< Slope FLAT, Track Y,     Fence NE
 	RFO_FLAT_LEFT,     //!< Slope FLAT, Track LEFT,  Fence E

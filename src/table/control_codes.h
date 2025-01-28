@@ -14,7 +14,7 @@
  * List of string control codes used for string formatting, displaying, and
  * by strgen to generate the language files.
  */
-enum StringControlCode {
+enum StringControlCode : uint16_t {
 	SCC_CONTROL_START = 0xE000,
 	SCC_CONTROL_END   = 0xE1FF,
 

@@ -25,7 +25,7 @@ static const uint SQUIRREL_MAX_DEPTH = 25; ///< The maximum recursive depth for 
 class ScriptInstance {
 private:
 	/** The type of the data that follows in the savegame. */
-	enum SQSaveLoadType {
+	enum SQSaveLoadType : uint8_t {
 		SQSL_INT             = 0x00, ///< The following data is an integer.
 		SQSL_STRING          = 0x01, ///< The following data is an string.
 		SQSL_ARRAY           = 0x02, ///< The following data is an array.

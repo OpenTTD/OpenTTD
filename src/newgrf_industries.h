@@ -68,7 +68,7 @@ struct IndustriesResolverObject : public ResolverObject {
 };
 
 /** When should the industry(tile) be triggered for random bits? */
-enum IndustryTrigger {
+enum IndustryTrigger : uint8_t {
 	/** Triggered each tile loop */
 	INDUSTRY_TRIGGER_TILELOOP_PROCESS = 1,
 	/** Triggered (whole industry) each 256 ticks */
@@ -78,7 +78,7 @@ enum IndustryTrigger {
 };
 
 /** From where has callback #CBID_INDUSTRY_PROBABILITY been called */
-enum IndustryAvailabilityCallType {
+enum IndustryAvailabilityCallType : uint8_t {
 	IACT_MAPGENERATION,    ///< during random map generation
 	IACT_RANDOMCREATION,   ///< during creation of random ingame industry
 	IACT_USERCREATION,     ///< from the Fund/build window

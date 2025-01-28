@@ -31,7 +31,7 @@ enum TrainDetailsWindowTabs : uint8_t {
 DECLARE_ENUM_AS_ADDABLE(TrainDetailsWindowTabs)
 
 /** Special values for vehicle-related windows for the data parameter of #InvalidateWindowData. */
-enum VehicleInvalidateWindowData {
+enum VehicleInvalidateWindowData : int {
 	VIWD_REMOVE_ALL_ORDERS = -1, ///< Removed / replaced all orders (after deleting / sharing).
 	VIWD_MODIFY_ORDERS     = -2, ///< Other order modifications.
 	VIWD_CONSIST_CHANGED   = -3, ///< Vehicle composition was changed.

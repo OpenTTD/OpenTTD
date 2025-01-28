@@ -44,7 +44,7 @@ enum DistributionType : uint8_t {
  * Refreshing a link makes just sure a minimum capacity is kept. Increasing
  * actually adds the given capacity.
  */
-enum EdgeUpdateMode {
+enum EdgeUpdateMode : uint8_t {
 	EUM_INCREASE     = 1,      ///< Increase capacity.
 	EUM_REFRESH      = 1 << 1, ///< Refresh capacity.
 	EUM_RESTRICTED   = 1 << 2, ///< Use restricted link.

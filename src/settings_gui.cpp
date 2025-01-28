@@ -1209,7 +1209,7 @@ static int SETTING_HEIGHT = 11;    ///< Height of a single setting in the tree v
  * Flags for #SettingEntry
  * @note The #SEF_BUTTONS_MASK matches expectations of the formal parameter 'state' of #DrawArrowButtons
  */
-enum SettingEntryFlags {
+enum SettingEntryFlags : uint8_t {
 	SEF_LEFT_DEPRESSED  = 0x01, ///< Of a numeric setting entry, the left button is depressed
 	SEF_RIGHT_DEPRESSED = 0x02, ///< Of a numeric setting entry, the right button is depressed
 	SEF_BUTTONS_MASK = (SEF_LEFT_DEPRESSED | SEF_RIGHT_DEPRESSED), ///< Bit-mask for button flags
@@ -1219,7 +1219,7 @@ enum SettingEntryFlags {
 };
 
 /** How the list of advanced settings is filtered. */
-enum RestrictionMode {
+enum RestrictionMode : uint8_t {
 	RM_BASIC,                            ///< Display settings associated to the "basic" list.
 	RM_ADVANCED,                         ///< Display settings associated to the "advanced" list.
 	RM_ALL,                              ///< List all settings regardless of the default/newgame/... values.
@@ -2298,7 +2298,7 @@ static const StringID _game_settings_restrict_dropdown[] = {
 static_assert(lengthof(_game_settings_restrict_dropdown) == RM_END);
 
 /** Warnings about hidden search results. */
-enum WarnHiddenResult {
+enum WarnHiddenResult : uint8_t {
 	WHR_NONE,          ///< Nothing was filtering matches away.
 	WHR_CATEGORY,      ///< Category setting filtered matches away.
 	WHR_TYPE,          ///< Type setting filtered matches away.

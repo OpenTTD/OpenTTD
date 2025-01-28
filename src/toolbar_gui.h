@@ -10,7 +10,7 @@
 #ifndef TOOLBAR_GUI_H
 #define TOOLBAR_GUI_H
 
-enum MainToolbarHotkeys {
+enum MainToolbarHotkeys : int32_t {
 	MTHK_PAUSE,
 	MTHK_FASTFORWARD,
 	MTHK_SETTINGS,

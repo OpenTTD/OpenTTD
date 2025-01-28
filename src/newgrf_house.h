@@ -109,7 +109,7 @@ bool CanDeleteHouse(TileIndex tile);
 
 bool NewHouseTileLoop(TileIndex tile);
 
-enum HouseTrigger {
+enum HouseTrigger : uint8_t {
 	/* The tile of the house has been triggered during the tileloop. */
 	HOUSE_TRIGGER_TILE_LOOP     = 0x01,
 	/*

@@ -17,7 +17,7 @@
 struct SpriteGroup;
 
 /** AI events for asking the NewGRF for information. */
-enum AIConstructionEvent {
+enum AIConstructionEvent : uint8_t {
 	AICE_TRAIN_CHECK_RAIL_ENGINE     = 0x00, ///< Check if we should build an engine
 	AICE_TRAIN_CHECK_ELRAIL_ENGINE   = 0x01, ///< Check if we should build an engine
 	AICE_TRAIN_CHECK_MONORAIL_ENGINE = 0x02, ///< Check if we should build an engine

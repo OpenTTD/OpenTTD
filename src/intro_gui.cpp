@@ -135,7 +135,7 @@ struct SelectGameWindow : public Window {
 				vc.delay = std::stoi(match[3].str()) * 1000; // milliseconds
 
 				/* Parse flags from second matching group. */
-				enum IdType {
+				enum IdType : uint8_t {
 					ID_NONE, ID_VEHICLE
 				} id_type = ID_NONE;
 				for (char c : match[2].str()) {

@@ -58,14 +58,14 @@ bool _ignore_restrictions;
 std::bitset<NUM_INDUSTRYTYPES> _displayed_industries; ///< Communication from the industry chain window to the smallmap window about what industries to display.
 
 /** Cargo suffix type (for which window is it requested) */
-enum CargoSuffixType {
+enum CargoSuffixType : uint8_t {
 	CST_FUND,  ///< Fund-industry window
 	CST_VIEW,  ///< View-industry window
 	CST_DIR,   ///< Industry-directory window
 };
 
 /** Ways of displaying the cargo. */
-enum CargoSuffixDisplay {
+enum CargoSuffixDisplay : uint8_t {
 	CSD_CARGO,             ///< Display the cargo without sub-type (cb37 result 401).
 	CSD_CARGO_AMOUNT,      ///< Display the cargo and amount (if useful), but no sub-type (cb37 result 400 or fail).
 	CSD_CARGO_TEXT,        ///< Display then cargo and supplied string (cb37 result 800-BFF).
@@ -138,7 +138,7 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 	}
 }
 
-enum CargoSuffixInOut {
+enum CargoSuffixInOut : uint8_t {
 	CARGOSUFFIX_OUT = 0,
 	CARGOSUFFIX_IN  = 1,
 };
@@ -789,14 +789,14 @@ static inline bool IsProductionAlterable(const Industry *i)
 class IndustryViewWindow : public Window
 {
 	/** Modes for changing production */
-	enum Editability {
+	enum Editability : uint8_t {
 		EA_NONE,              ///< Not alterable
 		EA_MULTIPLIER,        ///< Allow changing the production multiplier
 		EA_RATE,              ///< Allow changing the production rates
 	};
 
 	/** Specific lines in the info panel */
-	enum InfoLine {
+	enum InfoLine : uint8_t {
 		IL_NONE,              ///< No line
 		IL_MULTIPLIER,        ///< Production multiplier
 		IL_RATE1,             ///< Production rate of cargo 1
@@ -1334,7 +1334,7 @@ static bool CargoFilter(const Industry * const *industry, const std::pair<CargoT
 static GUIIndustryList::FilterFunction * const _industry_filter_funcs[] = { &CargoFilter };
 
 /** Enum referring to the Hotkeys in the industry directory window */
-enum IndustryDirectoryHotkeys {
+enum IndustryDirectoryHotkeys : int32_t {
 	IDHK_FOCUS_FILTER_BOX, ///< Focus the filter box
 };
 /**
@@ -1986,7 +1986,7 @@ static WindowDesc _industry_cargoes_desc(
 );
 
 /** Available types of field. */
-enum CargoesFieldType {
+enum CargoesFieldType : uint8_t {
 	CFT_EMPTY,       ///< Empty field.
 	CFT_SMALL_EMPTY, ///< Empty small field (for the header).
 	CFT_INDUSTRY,    ///< Display industry.

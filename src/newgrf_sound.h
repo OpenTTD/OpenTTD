@@ -15,7 +15,7 @@
 #include "vehicle_type.h"
 
 /** Events at which a sound might be played. */
-enum VehicleSoundEvent {
+enum VehicleSoundEvent : uint8_t {
 	VSE_START         = 1, ///< Vehicle starting, i.e. leaving, the station.
 	VSE_TUNNEL        = 2, ///< Train entering a tunnel.
 	VSE_BREAKDOWN     = 3, ///< Vehicle breaking down.

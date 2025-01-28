@@ -19,7 +19,7 @@
  * which is used to determine the proper sprite table to use
  * while drawing a given bridge part.
  */
-enum BridgePieces {
+enum BridgePieces : uint8_t {
 	BRIDGE_PIECE_NORTH = 0,
 	BRIDGE_PIECE_SOUTH,
 	BRIDGE_PIECE_INNER_NORTH,

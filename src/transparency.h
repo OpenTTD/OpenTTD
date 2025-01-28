@@ -19,7 +19,7 @@
  * If you change the order, change the order of the ShowTransparencyToolbar() stuff in transparency_gui.cpp too.
  * If you add or remove an option don't forget to change the transparency 'hot keys' in main_gui.cpp.
  */
-enum TransparencyOption {
+enum TransparencyOption : uint8_t {
 	TO_SIGNS = 0,  ///< signs
 	TO_TREES,      ///< trees
 	TO_HOUSES,     ///< town buildings

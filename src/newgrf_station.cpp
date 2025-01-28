@@ -49,7 +49,7 @@ template class NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX>;
 
 static const uint NUM_STATIONSSPECS_PER_STATION = 255; ///< Maximum number of parts per station.
 
-enum TriggerArea {
+enum TriggerArea : uint8_t {
 	TA_TILE,
 	TA_PLATFORM,
 	TA_WHOLE,

@@ -17,7 +17,7 @@
 
 
 /** Types of cargo to display for station coverage. */
-enum StationCoverageType {
+enum StationCoverageType : uint8_t {
 	SCT_PASSENGERS_ONLY,     ///< Draw only passenger class cargoes.
 	SCT_NON_PASSENGERS_ONLY, ///< Draw all non-passenger class cargoes.
 	SCT_ALL,                 ///< Draw all cargoes.

@@ -27,7 +27,7 @@
  */
 class TimerGameRealtime {
 public:
-	enum PeriodFlags {
+	enum PeriodFlags : uint8_t {
 		ALWAYS, ///< Always run, even when paused.
 		UNPAUSED, ///< Only run when not paused.
 		AUTOSAVE, ///< Only run when not paused or there was a Command executed recently.

@@ -18,7 +18,7 @@
 #include "timer/timer_game_calendar.h"
 
 /** The returned bits of VehicleEnterTile. */
-enum VehicleEnterTileStatus {
+enum VehicleEnterTileStatus : uint32_t {
 	VETS_ENTERED_STATION  = 1, ///< The vehicle entered a station
 	VETS_ENTERED_WORMHOLE = 2, ///< The vehicle either entered a bridge, tunnel or depot tile (this includes the last tile of the bridge/tunnel)
 	VETS_CANNOT_ENTER     = 3, ///< The vehicle cannot enter the tile

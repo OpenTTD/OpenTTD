@@ -9,7 +9,7 @@
 
 #include "../core/enum_type.hpp"
 
-enum CmdFlags {
+enum CmdFlags : uint8_t {
 	C_NONE      = 0x0, ///< Nothing special about this command
 	C_DONTCOUNT = 0x1, ///< These commands aren't counted for comparison
 	C_CASE      = 0x2, ///< These commands support cases

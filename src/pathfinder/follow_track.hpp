@@ -27,7 +27,7 @@
 template <TransportType Ttr_type_, typename VehicleType, bool T90deg_turns_allowed_ = true, bool Tmask_reserved_tracks = false>
 struct CFollowTrackT
 {
-	enum ErrorCode {
+	enum ErrorCode : uint8_t {
 		EC_NONE,
 		EC_OWNER,
 		EC_RAIL_ROAD_TYPE,

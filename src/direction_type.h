@@ -55,7 +55,7 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(Direction)
  *       modulo DIR_END or use the #ChangeDirDiff(DirDiff, DirDiff) function.
  * @see ChangeDirDiff(DirDiff, DirDiff)
  */
-enum DirDiff {
+enum DirDiff : uint8_t {
 	DIRDIFF_SAME    = 0,    ///< Both directions faces to the same direction
 	DIRDIFF_45RIGHT = 1,    ///< Angle of 45 degrees right
 	DIRDIFF_90RIGHT = 2,    ///< Angle of 90 degrees right
@@ -92,7 +92,7 @@ DECLARE_ENUM_AS_ADDABLE(DiagDirection)
  *
  * @see DirDiff
  */
-enum DiagDirDiff {
+enum DiagDirDiff : uint8_t {
 	DIAGDIRDIFF_BEGIN   = 0,        ///< Used for iterations
 	DIAGDIRDIFF_SAME    = 0,        ///< Same directions
 	DIAGDIRDIFF_90RIGHT = 1,        ///< 90 degrees right

@@ -21,7 +21,7 @@
 /**
  * Valid filter types for IsValidChar.
  */
-enum CharSetFilter {
+enum CharSetFilter : uint8_t {
 	CS_ALPHANUMERAL,      ///< Both numeric and alphabetic and spaces and stuff
 	CS_NUMERAL,           ///< Only numeric ones
 	CS_NUMERAL_SPACE,     ///< Only numbers and spaces
@@ -41,7 +41,7 @@ static const char32_t CHAR_TD_RLO = 0x202E; ///< Force the following characters 
 static const char32_t CHAR_TD_PDF = 0x202C; ///< Restore the text-direction state to before the last LRE, RLE, LRO or RLO.
 
 /** Settings for the string validation. */
-enum StringValidationSettings {
+enum StringValidationSettings : uint8_t {
 	SVS_NONE                       = 0,      ///< Allow nothing and replace nothing.
 	SVS_REPLACE_WITH_QUESTION_MARK = 1 << 0, ///< Replace the unknown/bad bits with question marks.
 	SVS_ALLOW_NEWLINE              = 1 << 1, ///< Allow newlines; replaces '\r\n' with '\n' during processing.

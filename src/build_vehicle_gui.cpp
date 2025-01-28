@@ -1159,7 +1159,7 @@ void GUIEngineListAddChildren(GUIEngineList &dst, const GUIEngineList &src, Engi
 }
 
 /** Enum referring to the Hotkeys in the build vehicle window */
-enum BuildVehicleHotkeys {
+enum BuildVehicleHotkeys : int32_t {
 	BVHK_FOCUS_FILTER_BOX, ///< Focus the edit box for editing the filter string
 };
 

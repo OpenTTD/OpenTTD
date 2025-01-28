@@ -2208,7 +2208,7 @@ struct CompanyWindow : Window
 	CompanyWidgets query_widget;
 
 	/** Display planes in the company window. */
-	enum CompanyWindowPlanes {
+	enum CompanyWindowPlanes : uint8_t {
 		/* Display planes of the #WID_C_SELECT_VIEW_BUILD_HQ selection widget. */
 		CWP_VB_VIEW = 0,  ///< Display the view button
 		CWP_VB_BUILD,     ///< Display the build button

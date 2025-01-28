@@ -24,7 +24,7 @@ struct ContentInfo;
 /** Structure holding filename and MD5 information about a single file */
 struct MD5File {
 	/** The result of a checksum check */
-	enum ChecksumResult {
+	enum ChecksumResult : uint8_t {
 		CR_UNKNOWN,  ///< The file has not been checked yet
 		CR_MATCH,    ///< The file did exist and the md5 checksum did match
 		CR_MISMATCH, ///< The file did exist, just the md5 checksum did not match
@@ -238,7 +238,7 @@ template <class Tbase_set>
 const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const Tbase_set *s);
 
 /** Types of graphics in the base graphics set */
-enum GraphicsFileType {
+enum GraphicsFileType : uint8_t {
 	GFT_BASE,     ///< Base sprites for all climates
 	GFT_LOGOS,    ///< Logos, landscape icons and original terrain generator sprites
 	GFT_ARCTIC,   ///< Landscape replacement sprites for arctic
@@ -249,7 +249,7 @@ enum GraphicsFileType {
 };
 
 /** Blitter type for base graphics sets. */
-enum BlitterType {
+enum BlitterType : uint8_t {
 	BLT_8BPP,       ///< Base set has 8 bpp sprites only.
 	BLT_32BPP,      ///< Base set has both 8 bpp and 32 bpp sprites.
 };
@@ -316,7 +316,7 @@ static const uint NUM_SONGS_PLAYLIST  = 32;
 std::optional<std::string> GetMusicCatEntryName(const std::string &filename, size_t entrynum);
 std::optional<std::vector<uint8_t>> GetMusicCatEntryData(const std::string &filename, size_t entrynum);
 
-enum MusicTrackType {
+enum MusicTrackType : uint8_t {
 	MTT_STANDARDMIDI, ///< Standard MIDI file
 	MTT_MPSMIDI,      ///< MPS GM driver MIDI format (contained in a CAT file)
 };

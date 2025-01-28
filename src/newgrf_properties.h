@@ -15,7 +15,7 @@
  * Names are formatted as PROP_<CLASS>_<NAME>
  * @todo Currently the list only contains properties which are used more than once in the code. I.e. they are available for callback 0x36.
  */
-enum PropertyID {
+enum PropertyID : uint8_t {
 	PROP_VEHICLE_LOAD_AMOUNT                    = 0x07, ///< Loading speed
 
 	PROP_TRAIN_SPEED                            = 0x09, ///< Max. speed: 1 unit = 1/1.6 mph = 1 km-ish/h

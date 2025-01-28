@@ -15,7 +15,7 @@ void InitializeScreenshotFormats();
 const char *GetCurrentScreenshotExtension();
 
 /** Type of requested screenshot */
-enum ScreenshotType {
+enum ScreenshotType : uint8_t {
 	SC_VIEWPORT,    ///< Screenshot of viewport.
 	SC_CRASHLOG,    ///< Raw screenshot from blitter buffer.
 	SC_ZOOMEDIN,    ///< Fully zoomed in screenshot of the visible area.

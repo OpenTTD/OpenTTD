@@ -1043,7 +1043,7 @@ static const std::initializer_list<uint8_t> _farm_sounds = { SND_24_FARM_1, SND_
 /** Array with... hem... a sound of toyland */
 static const std::initializer_list<uint8_t> _plastic_mine_sounds = { SND_33_PLASTIC_MINE };
 
-enum IndustryTypes {
+enum IndustryTypes : uint8_t {
 	IT_COAL_MINE           =   0,
 	IT_POWER_STATION       =   1,
 	IT_SAWMILL             =   2,

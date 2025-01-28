@@ -80,7 +80,7 @@ static const CargoType CARGO_NO_REFIT = 0xFE; ///< Do not refit cargo of a vehic
 static const CargoType INVALID_CARGO = UINT8_MAX;
 
 /** Mixed cargo types for definitions with cargo that can vary depending on climate. */
-enum MixedCargoType {
+enum MixedCargoType : uint8_t {
 	MCT_LIVESTOCK_FRUIT, ///< Cargo can be livestock or fruit.
 	MCT_GRAIN_WHEAT_MAIZE, ///< Cargo can be grain, wheat or maize.
 	MCT_VALUABLES_GOLD_DIAMONDS, ///< Cargo can be valuables, gold or diamonds.

@@ -69,13 +69,13 @@ static const uint MAX_LENGTH_VEHICLE_NAME_CHARS = 32; ///< The maximum length of
 static const uint VEHICLE_LENGTH = 8;
 
 /** Vehicle acceleration models. */
-enum AccelerationModel {
+enum AccelerationModel : uint8_t {
 	AM_ORIGINAL,
 	AM_REALISTIC,
 };
 
 /** Visualisation contexts of vehicles and engines. */
-enum EngineImageType {
+enum EngineImageType : uint8_t {
 	EIT_ON_MAP     = 0x00,  ///< Vehicle drawn in viewport.
 	EIT_IN_DEPOT   = 0x10,  ///< Vehicle drawn in depot.
 	EIT_IN_DETAILS = 0x11,  ///< Vehicle drawn in vehicle details, refit window, ...

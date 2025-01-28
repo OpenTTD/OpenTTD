@@ -37,14 +37,14 @@
  *
  * This enumeration defines all possible tree placer algorithm in the game.
  */
-enum TreePlacer {
+enum TreePlacer : uint8_t {
 	TP_NONE,     ///< No tree placer algorithm
 	TP_ORIGINAL, ///< The original algorithm
 	TP_IMPROVED, ///< A 'improved' algorithm
 };
 
 /** Where to place trees while in-game? */
-enum ExtraTreePlacement {
+enum ExtraTreePlacement : uint8_t {
 	ETP_NO_SPREAD,           ///< Grow trees on tiles that have them but don't spread to new ones
 	ETP_SPREAD_RAINFOREST,   ///< Grow trees on tiles that have them, only spread to new ones in rainforests
 	ETP_SPREAD_ALL,          ///< Grow trees and spread them without restrictions

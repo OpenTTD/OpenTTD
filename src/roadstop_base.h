@@ -20,7 +20,7 @@ extern RoadStopPool _roadstop_pool;
 
 /** A Stop for a Road Vehicle */
 struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
-	enum RoadStopStatusFlags {
+	enum RoadStopStatusFlags : uint8_t {
 		RSSFB_BAY0_FREE  = 0, ///< Non-zero when bay 0 is free
 		RSSFB_BAY1_FREE  = 1, ///< Non-zero when bay 1 is free
 		RSSFB_BASE_ENTRY = 6, ///< Non-zero when the entries on this road stop are the primary, i.e. the ones to delete

@@ -16,7 +16,7 @@
 /**
  * Describes the behaviour of a tile during flooding.
  */
-enum FloodingBehaviour {
+enum FloodingBehaviour : uint8_t {
 	FLOOD_NONE,    ///< The tile does not flood neighboured tiles.
 	FLOOD_ACTIVE,  ///< The tile floods neighboured tiles.
 	FLOOD_PASSIVE, ///< The tile does not actively flood neighboured tiles, but it prevents them from drying up.

@@ -27,7 +27,7 @@
 std::string _keyboard_opt[2];
 static char32_t _keyboard[2][OSK_KEYBOARD_ENTRIES];
 
-enum KeyStateBits {
+enum KeyStateBits : uint8_t {
 	KEYS_NONE,
 	KEYS_SHIFT,
 	KEYS_CAPS

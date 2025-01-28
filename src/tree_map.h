@@ -22,7 +22,7 @@
  * the tree list for a landscape. See the TREE_COUNT_* enumerations
  * for the amount of different trees for a specific landscape.
  */
-enum TreeType {
+enum TreeType : uint8_t {
 	TREE_TEMPERATE    = 0x00, ///< temperate tree
 	TREE_SUB_ARCTIC   = 0x0C, ///< tree on a sub_arctic landscape
 	TREE_RAINFOREST   = 0x14, ///< tree on the 'green part' on a sub-tropical map
@@ -49,7 +49,7 @@ static const uint TREE_COUNT_TOYLAND      = 9;                                  
  *
  * This enumeration defines the ground types for tiles with trees on it.
  */
-enum TreeGround {
+enum TreeGround : uint8_t {
 	TREE_GROUND_GRASS       = 0, ///< normal grass
 	TREE_GROUND_ROUGH       = 1, ///< some rough tile
 	TREE_GROUND_SNOW_DESERT = 2, ///< a desert or snow tile, depend on landscape
@@ -62,7 +62,7 @@ enum TreeGround {
  *
  * This enumeration defines the stages of tree growth for tiles with trees on it.
  */
-enum class TreeGrowthStage : uint {
+enum class TreeGrowthStage : uint8_t {
 	Growing1 = 0,  ///< First stage of growth
 	Growing2 = 1,  ///< Second stage of growth
 	Growing3 = 2,  ///< Third stage of growth

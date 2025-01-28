@@ -243,7 +243,7 @@ static inline bool MaybeAddToTodoSet(TileIndex t1, DiagDirection d1, TileIndex t
 
 
 /** Current signal block state flags */
-enum SigFlags {
+enum SigFlags : uint16_t {
 	SF_NONE   = 0,
 	SF_TRAIN  = 1 << 0, ///< train found in segment
 	SF_EXIT   = 1 << 1, ///< exitsignal found

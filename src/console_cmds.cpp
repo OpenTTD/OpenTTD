@@ -1959,7 +1959,7 @@ static std::vector<std::pair<std::string_view, NetworkAuthorizedKeys *>> _consol
 	{ "server", &_settings_client.network.server_authorized_keys },
 };
 
-enum ConNetworkAuthorizedKeyAction {
+enum ConNetworkAuthorizedKeyAction : uint8_t {
 	CNAKA_LIST,
 	CNAKA_ADD,
 	CNAKA_REMOVE,

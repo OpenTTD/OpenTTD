@@ -23,7 +23,7 @@
  * List of different canal 'features'.
  * Each feature gets an entry in the canal spritegroup table
  */
-enum CanalFeature {
+enum CanalFeature : uint8_t {
 	CF_WATERSLOPE,
 	CF_LOCKS,
 	CF_DIKES,
@@ -42,7 +42,7 @@ struct CanalProperties {
 	uint8_t flags;          ///< Flags controlling display.
 };
 
-enum GrfLoadingStage {
+enum GrfLoadingStage : uint8_t {
 	GLS_FILESCAN,
 	GLS_SAFETYSCAN,
 	GLS_LABELSCAN,
@@ -54,7 +54,7 @@ enum GrfLoadingStage {
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(GrfLoadingStage)
 
-enum GrfMiscBit {
+enum GrfMiscBit : uint8_t {
 	GMB_DESERT_TREES_FIELDS    = 0, // Unsupported.
 	GMB_DESERT_PAVED_ROADS     = 1,
 	GMB_FIELD_BOUNDING_BOX     = 2, // Unsupported.
@@ -64,7 +64,7 @@ enum GrfMiscBit {
 	GMB_SECOND_ROCKY_TILE_SET  = 6,
 };
 
-enum GrfSpecFeature {
+enum GrfSpecFeature : uint8_t {
 	GSF_TRAINS,
 	GSF_ROADVEHICLES,
 	GSF_SHIPS,
@@ -159,14 +159,14 @@ struct GRFFile : ZeroedMemoryAllocator {
 	}
 };
 
-enum ShoreReplacement {
+enum ShoreReplacement : uint8_t {
 	SHORE_REPLACE_NONE,       ///< No shore sprites were replaced.
 	SHORE_REPLACE_ACTION_5,   ///< Shore sprites were replaced by Action5.
 	SHORE_REPLACE_ACTION_A,   ///< Shore sprites were replaced by ActionA (using grass tiles for the corner-shores).
 	SHORE_REPLACE_ONLY_NEW,   ///< Only corner-shores were loaded by Action5 (openttd(w/d).grf only).
 };
 
-enum TramReplacement {
+enum TramReplacement : uint8_t {
 	TRAMWAY_REPLACE_DEPOT_NONE,       ///< No tram depot graphics were loaded.
 	TRAMWAY_REPLACE_DEPOT_WITH_TRACK, ///< Electrified depot graphics with tram track were loaded.
 	TRAMWAY_REPLACE_DEPOT_NO_TRACK,   ///< Electrified depot graphics without tram track were loaded.

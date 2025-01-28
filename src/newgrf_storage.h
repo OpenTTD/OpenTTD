@@ -17,7 +17,7 @@
 /**
  * Mode switches to the behaviour of persistent storage array.
  */
-enum PersistentStorageMode {
+enum PersistentStorageMode : uint8_t {
 	PSM_ENTER_GAMELOOP,   ///< Enter the gameloop, changes will be permanent.
 	PSM_LEAVE_GAMELOOP,   ///< Leave the gameloop, changes will be temporary.
 	PSM_ENTER_COMMAND,    ///< Enter command scope, changes will be permanent.

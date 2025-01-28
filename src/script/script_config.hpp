@@ -18,7 +18,7 @@
 static const int INT32_DIGITS_WITH_SIGN_AND_TERMINATION = 10 + 1 + 1;
 
 /** Bitmask of flags for Script settings. */
-enum ScriptConfigFlags {
+enum ScriptConfigFlags : uint8_t {
 	SCRIPTCONFIG_NONE      = 0x0, ///< No flags set.
 	// Unused flag 0x1.
 	SCRIPTCONFIG_BOOLEAN   = 0x2, ///< This value is a boolean (either 0 (false) or 1 (true) ).
@@ -90,7 +90,7 @@ public:
 	 * Where to get the config from, either default (depends on current game
 	 * mode) or force either newgame or normal
 	 */
-	enum ScriptSettingSource {
+	enum ScriptSettingSource : uint8_t {
 		SSS_DEFAULT,       ///< Get the Script config from the current game mode
 		SSS_FORCE_NEWGAME, ///< Get the newgame Script config
 		SSS_FORCE_GAME,    ///< Get the Script config from the current game

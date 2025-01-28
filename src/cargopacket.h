@@ -292,7 +292,7 @@ public:
 	typedef typename Tcont::const_reverse_iterator ConstReverseIterator;
 
 	/** Kind of actions that could be done with packets on move. */
-	enum MoveToAction {
+	enum MoveToAction : uint8_t {
 		MTA_BEGIN = 0,
 		MTA_TRANSFER = 0, ///< Transfer the cargo to the station.
 		MTA_DELIVER,      ///< Deliver the cargo to some town or industry.

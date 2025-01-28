@@ -14,7 +14,7 @@
 typedef uint8_t LandscapeID; ///< Landscape type. @see LandscapeType
 
 /** Landscape types */
-enum LandscapeType {
+enum LandscapeType : uint8_t {
 	LT_TEMPERATE  = 0,
 	LT_ARCTIC     = 1,
 	LT_TROPIC     = 2,

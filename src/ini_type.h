@@ -13,7 +13,7 @@
 #include "fileio_type.h"
 
 /** Types of groups */
-enum IniGroupType {
+enum IniGroupType : uint8_t {
 	IGT_VARIABLES = 0, ///< Values of the form "landscape = hilly".
 	IGT_LIST      = 1, ///< A list of values, separated by \n and terminated by the next group block.
 	IGT_SEQUENCE  = 2, ///< A list of uninterpreted lines, terminated by the next group block.

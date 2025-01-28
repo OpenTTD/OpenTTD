@@ -115,7 +115,7 @@ public:
 class OpenGLSprite {
 private:
 	/** Enum of all used OpenGL texture objects. */
-	enum Texture {
+	enum Texture : uint8_t {
 		TEX_RGBA,    ///< RGBA texture part.
 		TEX_REMAP,   ///< Remap texture part.
 		NUM_TEX

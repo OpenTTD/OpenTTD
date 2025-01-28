@@ -724,7 +724,7 @@ static constexpr NWidgetPart _nested_town_directory_widgets[] = {
 };
 
 /** Enum referring to the Hotkeys in the town directory window */
-enum TownDirectoryHotkeys {
+enum TownDirectoryHotkeys : int32_t {
 	TDHK_FOCUS_FILTER_BOX, ///< Focus the filter box
 };
 

@@ -15,7 +15,7 @@
 #include "network_type.h"
 
 /** The status a server can be in. */
-enum NetworkGameListStatus {
+enum NetworkGameListStatus : uint8_t {
 	NGLS_OFFLINE, ///< Server is offline (or cannot be queried).
 	NGLS_ONLINE,  ///< Server is online.
 	NGLS_FULL,    ///< Server is full and cannot be queried.

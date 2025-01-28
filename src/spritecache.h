@@ -22,7 +22,7 @@ struct Sprite {
 	uint8_t data[];   ///< Sprite data.
 };
 
-enum SpriteCacheCtrlFlags {
+enum SpriteCacheCtrlFlags : uint8_t {
 	SCCF_ALLOW_ZOOM_MIN_1X_PAL    = 0, ///< Allow use of sprite min zoom setting at 1x in palette mode.
 	SCCF_ALLOW_ZOOM_MIN_1X_32BPP  = 1, ///< Allow use of sprite min zoom setting at 1x in 32bpp mode.
 	SCCF_ALLOW_ZOOM_MIN_2X_PAL    = 2, ///< Allow use of sprite min zoom setting at 2x in palette mode.

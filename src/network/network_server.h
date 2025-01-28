@@ -50,7 +50,7 @@ protected:
 
 public:
 	/** Status of a client */
-	enum ClientStatus {
+	enum ClientStatus : uint8_t {
 		STATUS_INACTIVE,      ///< The client is not connected nor active.
 		STATUS_AUTH_GAME,     ///< The client is authorizing with game (server) password.
 		STATUS_IDENTIFY,      ///< The client is identifying itself.

@@ -14,7 +14,7 @@
 #include "tile_type.h"
 
 /** Flags controlling the display of canals. */
-enum CanalFeatureFlag {
+enum CanalFeatureFlag : uint8_t {
 	CFF_HAS_FLAT_SPRITE = 0, ///< Additional flat ground sprite in the beginning.
 };
 

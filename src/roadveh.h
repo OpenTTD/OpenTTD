@@ -21,7 +21,7 @@
 struct RoadVehicle;
 
 /** Road vehicle states */
-enum RoadVehicleStates {
+enum RoadVehicleStates : uint8_t {
 	/*
 	 * Lower 4 bits are used for vehicle track direction. (Trackdirs)
 	 * When in a road stop (bit 5 or bit 6 set) these bits give the

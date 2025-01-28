@@ -21,7 +21,7 @@ private:
 	uint8_t token = 0; ///< The token we need to send back to the server to prove we're the right client.
 
 	/** Status of the connection with the server. */
-	enum ServerStatus {
+	enum ServerStatus : uint8_t {
 		STATUS_INACTIVE,      ///< The client is not connected nor active.
 		STATUS_JOIN,          ///< We are trying to join a server.
 		STATUS_AUTH_GAME,     ///< Last action was requesting game (server) password.
