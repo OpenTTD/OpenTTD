@@ -11,6 +11,7 @@
 #define GOAL_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "core/pool_type.hpp"
 
 static const uint32_t GOAL_QUESTION_BUTTON_COUNT = 18; ///< Amount of buttons available.
 
@@ -34,8 +35,10 @@ enum GoalType : uint8_t {
 
 typedef uint32_t GoalTypeID; ///< Contains either tile, industry ID, town ID, company ID, or story page ID
 
-typedef uint16_t GoalID; ///< ID of a goal
+/** ID of a goal */
+using GoalID = PoolID<uint16_t, struct GoalIDTag, 64000, 0xFFFF>;
+
 struct Goal;
-static const GoalID INVALID_GOAL = 0xFFFF; ///< Constant representing a non-existing goal.
+static constexpr GoalID INVALID_GOAL = GoalID::Invalid(); ///< Constant representing a non-existing goal.
 
 #endif /* GOAL_TYPE_H */

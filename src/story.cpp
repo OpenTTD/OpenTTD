@@ -105,7 +105,7 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32_t referen
 			pe.referenced_id = tile.base();
 			break;
 		case SPET_GOAL:
-			pe.referenced_id = (GoalID)reference;
+			pe.referenced_id = reference;
 			break;
 		case SPET_BUTTON_PUSH:
 		case SPET_BUTTON_TILE:

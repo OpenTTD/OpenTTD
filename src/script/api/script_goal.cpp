@@ -55,7 +55,7 @@
 	if (!ScriptObject::Command<CMD_CREATE_GOAL>::Do(&ScriptInstance::DoCommandReturnGoalID, ScriptCompany::FromScriptCompanyID(company), (::GoalType)type, destination, text)) return GOAL_INVALID;
 
 	/* In case of test-mode, we return GoalID 0 */
-	return static_cast<GoalID>(0);
+	return GoalID::Begin();
 }
 
 /* static */ bool ScriptGoal::Remove(GoalID goal_id)
