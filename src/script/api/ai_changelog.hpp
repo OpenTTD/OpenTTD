@@ -22,6 +22,7 @@
  * \li AIEventCompanyRenamed
  * \li AIEventPresidentRenamed
  * \li AIRoad::IsRoadWaypointTile
+ * \li AIRoad::BuildRoadWaypoint
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
