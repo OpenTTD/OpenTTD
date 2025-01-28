@@ -7401,7 +7401,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   Location ListDump:
     28481
   HasWaypointType:
-    false  true  false
+    false  false  true  false
 
   RemoveWaterDepot():   true
   RemoveDock():         true
@@ -7707,6 +7707,17 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadStationFrontTile():     -1
     IsBuildable():                 false
     BuildRoadWaypoint():           false
+
+--AIWaypointList(ROAD)--
+  Count():             3
+  Location ListDump:
+    33664
+    33922
+    33666
+  HasWaypointType:
+    false  true  false  false
+    false  true  false  false
+    false  true  false  false
 
 --Sign--
   BuildSign(33410, 'Some Sign'):       0
@@ -9843,7 +9854,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2169]
+*FUNCTION [Start()] regression/main.nut line [2181]
 
 [Infinite] CLOSURE
 [list] INSTANCE
