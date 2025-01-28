@@ -12,6 +12,7 @@
 
 #include "script_text.hpp"
 #include "script_date.hpp"
+#include "../../station_type.h"
 
 /**
  * Base class for stations and waypoints.
@@ -19,15 +20,9 @@
  */
 class ScriptBaseStation : public ScriptObject {
 public:
-	/**
-	 * Special station IDs for building adjacent/new stations when
-	 * the adjacent/distant join features are enabled.
-	 */
-	enum SpecialStationIDs {
-		STATION_NEW = 0xFFFD,           ///< Build a new station
-		STATION_JOIN_ADJACENT = 0xFFFE, ///< Join an neighbouring station if one exists
-		STATION_INVALID = 0xFFFF,       ///< Invalid station id.
-	};
+	static const StationID STATION_NEW = ::NEW_STATION; ///< Build a new station
+	static const StationID STATION_JOIN_ADJACENT = ::ADJACENT_STATION; ///< Join an neighbouring station if one exists
+	static const StationID STATION_INVALID = ::INVALID_STATION; ///< Invalid station id.
 
 	/**
 	 * Checks whether the given basestation is valid and owned by you.
