@@ -24,6 +24,7 @@
  * \li AIRoad::IsRoadWaypointTile
  * \li AIRoad::BuildRoadWaypoint
  * \li AIWaypoint::WAYPOINT_ROAD
+ * \li AIRoad::BT_WAYPOINT
  *
  * \b 15.0
  *
