@@ -998,7 +998,7 @@ static void SlCopyInternal(void *object, size_t length, VarType conv)
 		/* used for conversion of Money 32bit->64bit */
 		if (conv == (SLE_FILE_I32 | SLE_VAR_I64)) {
 			for (uint i = 0; i < length; i++) {
-				((int64_t*)object)[i] = (int32_t)BSWAP32(SlReadUint32());
+				((int64_t*)object)[i] = (int32_t)std::byteswap(SlReadUint32());
 			}
 			return;
 		}

@@ -1025,7 +1025,7 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 		if (const IniItem *item = group->GetItem("name"); item != nullptr && item->value) BaseGraphics::ini_data.name = *item->value;
 
 		if (const IniItem *item = group->GetItem("shortname"); item != nullptr && item->value && item->value->size() == 8) {
-			BaseGraphics::ini_data.shortname = BSWAP32(std::strtoul(item->value->c_str(), nullptr, 16));
+			BaseGraphics::ini_data.shortname = std::byteswap<uint32_t>(std::strtoul(item->value->c_str(), nullptr, 16));
 		}
 
 		if (const IniItem *item = group->GetItem("extra_version"); item != nullptr && item->value) BaseGraphics::ini_data.extra_version = std::strtoul(item->value->c_str(), nullptr, 10);
@@ -1237,7 +1237,7 @@ static void GraphicsSetSaveConfig(IniFile &ini)
 	group.Clear();
 
 	group.GetOrCreateItem("name").SetValue(used_set->name);
-	group.GetOrCreateItem("shortname").SetValue(fmt::format("{:08X}", BSWAP32(used_set->shortname)));
+	group.GetOrCreateItem("shortname").SetValue(fmt::format("{:08X}", std::byteswap(used_set->shortname)));
 
 	const GRFConfig *extra_cfg = used_set->GetExtraConfig();
 	if (extra_cfg != nullptr && !extra_cfg->param.empty()) {
@@ -1254,7 +1254,7 @@ static void GRFSaveConfig(IniFile &ini, const char *grpname, const GRFConfig *li
 	const GRFConfig *c;
 
 	for (c = list; c != nullptr; c = c->next) {
-		std::string key = fmt::format("{:08X}|{}|{}", BSWAP32(c->ident.grfid),
+		std::string key = fmt::format("{:08X}|{}|{}", std::byteswap(c->ident.grfid),
 				FormatArrayAsHex(c->ident.md5sum), c->filename);
 		group.GetOrCreateItem(key).SetValue(GRFBuildParamList(*c));
 	}

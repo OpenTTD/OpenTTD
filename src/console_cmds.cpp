@@ -2459,7 +2459,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			bool active = selected && profiler->active;
 			TextColour tc = active ? TC_LIGHT_BLUE : selected ? TC_GREEN : CC_INFO;
 			const char *statustext = active ? " (active)" : selected ? " (selected)" : "";
-			IConsolePrint(tc, "{}: [{:08X}] {}{}", i, BSWAP32(grf->grfid), grf->filename, statustext);
+			IConsolePrint(tc, "{}: [{:08X}] {}{}", i, std::byteswap(grf->grfid), grf->filename, statustext);
 			i++;
 		}
 		return true;
@@ -2475,7 +2475,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			}
 			GRFFile *grf = files[grfnum - 1];
 			if (std::any_of(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; })) {
-				IConsolePrint(CC_WARNING, "GRF number {} [{:08X}] is already selected for profiling.", grfnum, BSWAP32(grf->grfid));
+				IConsolePrint(CC_WARNING, "GRF number {} [{:08X}] is already selected for profiling.", grfnum, std::byteswap(grf->grfid));
 				continue;
 			}
 			_newgrf_profilers.emplace_back(grf);
@@ -2511,7 +2511,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				started++;
 
 				if (!grfids.empty()) grfids += ", ";
-				fmt::format_to(std::back_inserter(grfids), "[{:08X}]", BSWAP32(pr.grffile->grfid));
+				fmt::format_to(std::back_inserter(grfids), "[{:08X}]", std::byteswap(pr.grffile->grfid));
 			}
 		}
 		if (started > 0) {
@@ -2601,7 +2601,7 @@ static std::string FormatLabel(uint32_t label)
 		return fmt::format("{:c}{:c}{:c}{:c}", GB(label, 24, 8), GB(label, 16, 8), GB(label, 8, 8), GB(label, 0, 8));
 	}
 
-	return fmt::format("{:08X}", BSWAP32(label));
+	return fmt::format("{:08X}", std::byteswap(label));
 }
 
 static void ConDumpRoadTypes()
@@ -2632,12 +2632,12 @@ static void ConDumpRoadTypes()
 				HasBit(rti->flags, ROTF_NO_HOUSES)         ? 'X' : '-',
 				HasBit(rti->flags, ROTF_HIDDEN)            ? 'h' : '-',
 				HasBit(rti->flags, ROTF_TOWN_BUILD)        ? 'T' : '-',
-				BSWAP32(grfid),
+				std::byteswap(grfid),
 				GetStringPtr(rti->strings.name)
 		);
 	}
 	for (const auto &grf : grfs) {
-		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", BSWAP32(grf.first), grf.second->filename);
+		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", std::byteswap(grf.first), grf.second->filename);
 	}
 }
 
@@ -2670,12 +2670,12 @@ static void ConDumpRailTypes()
 				HasBit(rti->flags, RTF_NO_SPRITE_COMBINE) ? 's' : '-',
 				HasBit(rti->flags, RTF_ALLOW_90DEG)       ? 'a' : '-',
 				HasBit(rti->flags, RTF_DISALLOW_90DEG)    ? 'd' : '-',
-				BSWAP32(grfid),
+				std::byteswap(grfid),
 				GetStringPtr(rti->strings.name)
 		);
 	}
 	for (const auto &grf : grfs) {
-		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", BSWAP32(grf.first), grf.second->filename);
+		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", std::byteswap(grf.first), grf.second->filename);
 	}
 }
 
@@ -2729,12 +2729,12 @@ static void ConDumpCargoTypes()
 				(spec->classes & CC_POTABLE)      != 0 ? 'e' : '-',
 				(spec->classes & CC_NON_POTABLE)  != 0 ? 'i' : '-',
 				(spec->classes & CC_SPECIAL)      != 0 ? 'S' : '-',
-				BSWAP32(grfid),
+				std::byteswap(grfid),
 				GetStringPtr(spec->name)
 		);
 	}
 	for (const auto &grf : grfs) {
-		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", BSWAP32(grf.first), grf.second->filename);
+		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", std::byteswap(grf.first), grf.second->filename);
 	}
 }
 

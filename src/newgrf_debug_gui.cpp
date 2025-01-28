@@ -464,7 +464,7 @@ struct NewGRFInspectWindow : Window {
 		auto psa = nih->GetPSA(index, this->caller_grfid);
 		if (!psa.empty()) {
 			if (nih->PSAWithParameter()) {
-				this->DrawString(r, i++, fmt::format("Persistent storage [{:08X}]:", BSWAP32(this->caller_grfid)));
+				this->DrawString(r, i++, fmt::format("Persistent storage [{:08X}]:", std::byteswap(this->caller_grfid)));
 			} else {
 				this->DrawString(r, i++, "Persistent storage:");
 			}

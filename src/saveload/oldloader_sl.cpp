@@ -1564,7 +1564,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int)
 						c->ident.grfid = grfid;
 
 						AppendToGRFConfigList(_grfconfig, c);
-						Debug(oldloader, 3, "TTDPatch game using GRF file with GRFID {:08X}", BSWAP32(c->ident.grfid));
+						Debug(oldloader, 3, "TTDPatch game using GRF file with GRFID {:08X}", std::byteswap(c->ident.grfid));
 					}
 					len -= 5;
 				}
