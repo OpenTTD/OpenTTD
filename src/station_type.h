@@ -61,6 +61,9 @@ enum StationFacility : uint8_t {
 };
 DECLARE_ENUM_AS_BIT_SET(StationFacility)
 
+/** Fake 'facility' to allow toggling display of recently-removed station signs. */
+static constexpr StationFacility FACIL_GHOST{1U << 6};
+
 /** The vehicles that may have visited a station */
 enum StationHadVehicleOfType : uint8_t {
 	HVOT_NONE     = 0,      ///< Station has seen no vehicles
