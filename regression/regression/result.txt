@@ -8715,6 +8715,33 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsRoadWaypointTile():          false
     IsRoadWaypointTile():          false
     IsRoadWaypointTile():          false
+    BuildRoad():                   true
+    BuildRoadWaypoint():           true
+    BuildRoadWaypoint():           true
+    BuildRoadFull():               true
+    BuildRoadWaypoint():           true
+    BuildRoadWaypoint():           false
+    BuildRoadWaypoint():           true
+    BuildRoadWaypoint():           true
+    BuildOneWayRoadFull():         true
+    BuildRoadWaypoint():           true
+    IsRoadWaypointTile():          true
+    GetWaypointID():               8
+    IsValidWaypoint():             true
+    GetStationID():                8
+    IsValidStation():              false
+    IsValidBaseStation():          true
+    IsRoadWaypointTile():          true
+    IsRoadDepotTile():             false
+    IsRoadStationTile():           false
+    IsDriveThroughRoadStationTile(): true
+    IsRoadTile():                  true
+    GetNeighbourRoadCount():       2
+    AreRoadTilesConnected():       true
+    GetDriveThroughBackTile():     33922
+    GetRoadStationFrontTile():     -1
+    IsBuildable():                 false
+    BuildRoadWaypoint():           false
 
 --Sign--
   BuildSign(33410, 'Some Sign'):       0
@@ -10639,11 +10666,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
+    16 => 1
     14 => 1
     13 => 1
     12 => 1
     17 => 0
-    16 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -10651,7 +10678,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     13 => 5490
     12 => 5490
   AgeLeft ListDump:
-    16 => 10980
+    16 => 10979
     14 => 10979
     17 => 7320
     13 => 5489
@@ -10887,21 +10914,21 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Terraforming--
   DemolishTile():       true
   DemolishTile():       true
-  GetBankBalance():     1999216100
+  GetBankBalance():     1999214152
   LowerTile():          false
   RaiseTile():          true
-  GetBankBalance():     1999155538
+  GetBankBalance():     1999153591
   LowerTile():          true
-  GetBankBalance():     1999154977
+  GetBankBalance():     1999153030
   LowerTile():          true
   RaiseTile():          true
-  GetBankBalance():     1999124019
+  GetBankBalance():     1999122057
   RaiseTile():          false
   LowerTile():          false
   LowerTile():          true
   RaiseTile():          true
   LowerTile():          true
-  GetBankBalance():     1999121541
+  GetBankBalance():     1999119579
   LowerTile():          false
   LowerTile():          true
   RaiseTile():          false
@@ -10909,37 +10936,37 @@ ERROR: IsEnd() is invalid as Begin() is never called
   LowerTile():          false
   RaiseTile():          true
   LowerTile():          true
-  GetBankBalance():     1999115990
+  GetBankBalance():     1999113713
   RaiseTile():          true
   LowerTile():          true
-  GetBankBalance():     1999099935
+  GetBankBalance():     1999097658
   RaiseTile():          false
   LowerTile():          true
-  GetBankBalance():     1999097859
+  GetBankBalance():     1999095582
   RaiseTile():          true
   RaiseTile():          true
-  GetBankBalance():     1999087637
+  GetBankBalance():     1999085360
   LevelTiles():         true
   LevelTiles():         false
-  GetBankBalance():     1999078009
+  GetBankBalance():     1999075732
   LevelTiles():         true
   LevelTiles():         true
-  GetBankBalance():     1998791930
+  GetBankBalance():     1998789653
   LowerTile():          false
   RaiseTile():          true
   RaiseTile():          false
   LowerTile():          true
-  GetBankBalance():     1998785830
+  GetBankBalance():     1998783554
   RaiseTile():          true
   LowerTile():          true
   LowerTile():          false
-  GetBankBalance():     1998784663
+  GetBankBalance():     1998782387
   RaiseTile():          false
   LowerTile():          true
   LowerTile():          false
   RaiseTile():          false
   RaiseTile():          true
-  GetBankBalance():     1998745667
+  GetBankBalance():     1998743391
 --Valuate() with excessive CPU usage--
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
@@ -10948,7 +10975,7 @@ CALLSTACK WITH LOCALS
 *FUNCTION [Valuate()] Valuate line [5]
   [args] ARRAY
   [this] INSTANCE
-*FUNCTION [Start()] regression/main.nut line [2486]
+*FUNCTION [Start()] regression/main.nut line [2513]
   [Infinite] CLOSURE
   [list] INSTANCE
   [this] INSTANCE
