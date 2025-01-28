@@ -1177,7 +1177,7 @@ struct SpecializedVehicle : public Vehicle {
 	 * @param index tested index
 	 * @return is this index valid index of T?
 	 */
-	static inline bool IsValidID(size_t index)
+	static inline bool IsValidID(auto index)
 	{
 		return Vehicle::IsValidID(index) && Vehicle::Get(index)->type == Type;
 	}
@@ -1186,7 +1186,7 @@ struct SpecializedVehicle : public Vehicle {
 	 * Gets vehicle with given index
 	 * @return pointer to vehicle with given index casted to T *
 	 */
-	static inline T *Get(size_t index)
+	static inline T *Get(auto index)
 	{
 		return (T *)Vehicle::Get(index);
 	}
@@ -1195,7 +1195,7 @@ struct SpecializedVehicle : public Vehicle {
 	 * Returns vehicle if the index is a valid index for this vehicle type
 	 * @return pointer to vehicle with given index if it's a vehicle of this type
 	 */
-	static inline T *GetIfValid(size_t index)
+	static inline T *GetIfValid(auto index)
 	{
 		return IsValidID(index) ? Get(index) : nullptr;
 	}
