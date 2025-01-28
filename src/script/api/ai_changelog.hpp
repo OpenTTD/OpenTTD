@@ -23,6 +23,7 @@
  * \li AIRail.RemoveRailDepot
  * \li AIRoad::IsRoadWaypointTile
  * \li AIRoad::BuildRoadWaypoint
+ * \li AIWaypoint::WAYPOINT_ROAD
  *
  * \b 15.0
  *

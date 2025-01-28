@@ -23,6 +23,7 @@
  * \li GSRail.RemoveRailDepot
  * \li GSRoad::IsRoadWaypointTile
  * \li GSRoad::BuildRoadWaypoint
+ * \li GSWaypoint::WAYPOINT_ROAD
  *
  * Other changes:
  * \li GSTown::ExpandTown Change to town expansion to match expected behaviour with the 'allow_town_roads' setting
