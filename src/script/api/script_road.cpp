@@ -39,7 +39,7 @@
 	if (!::IsValidTile(tile)) return false;
 
 	return (::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) != ROAD_TILE_DEPOT) ||
-			IsDriveThroughRoadStationTile(tile);
+			::IsDriveThroughStopTile(tile);
 }
 
 /* static */ bool ScriptRoad::IsRoadDepotTile(TileIndex tile)
