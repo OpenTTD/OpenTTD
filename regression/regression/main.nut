@@ -964,7 +964,7 @@ function Regression::Marine()
 	}
 	print("  HasWaypointType:");
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
-		print("    " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_RAIL) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_BUOY) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_ANY));
+		print("    " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_RAIL) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_ROAD) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_BUOY) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_ANY));
 	}
 	print("");
 
@@ -1361,6 +1361,18 @@ function Regression::Road()
 	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33666));
 	print("    IsBuildable():                 " + AITile.IsBuildable(33666));
 	print("    BuildRoadWaypoint():           " + AIRoad.BuildRoadWaypoint(41383, AIStation.STATION_NEW));
+	local list = AIWaypointList(AIWaypoint.WAYPOINT_ROAD);
+	print("");
+	print("--AIWaypointList(ROAD)--");
+	print("  Count():             " + list.Count());
+	print("  Location ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + AIWaypoint.GetLocation(i));
+	}
+	print("  HasWaypointType:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_RAIL) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_ROAD) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_BUOY) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_ANY));
+	}
 }
 
 function Regression::Sign()

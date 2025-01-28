@@ -42,6 +42,7 @@ public:
 	enum WaypointType {
 		/* Note: these values represent part of the in-game StationFacilities enum */
 		WAYPOINT_RAIL      = ::StationFacilities{::StationFacility::Train}.base(), ///< Rail waypoint
+		WAYPOINT_ROAD      = ::StationFacilities{::StationFacility::TruckStop, ::StationFacility::BusStop}.base(), ///< Road waypoint
 		WAYPOINT_BUOY      = ::StationFacilities{::StationFacility::Dock}.base(),  ///< Buoy
 		WAYPOINT_ANY       = WAYPOINT_RAIL | WAYPOINT_BUOY, ///< All waypoint types
 	};
@@ -66,6 +67,8 @@ public:
 	 * Check if any part of the waypoint contains a waypoint of the type waypoint_type
 	 * @param waypoint_id The waypoint to look at.
 	 * @param waypoint_type The WaypointType to look for.
+	 * @pre IsValidWaypoint(waypoint_id).
+	 * @pre waypoint_type == WAYPOINT_RAIL || waypoint_type == WAYPOINT_ROAD || waypoint_type == WAYPOINT_BUOY.
 	 * @return True if the waypoint has a waypoint part of the type waypoint_type.
 	 */
 	static bool HasWaypointType(StationID waypoint_id, WaypointType waypoint_type);
