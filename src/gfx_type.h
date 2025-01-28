@@ -10,7 +10,6 @@
 #ifndef GFX_TYPE_H
 #define GFX_TYPE_H
 
-#include "core/endian_type.hpp"
 #include "core/enum_type.hpp"
 #include "core/geometry_type.hpp"
 #include "zoom_type.h"
@@ -161,17 +160,11 @@ struct DrawPixelInfo {
 	ZoomLevel zoom;
 };
 
-/** Structure to access the alpha, red, green, and blue channels from a 32 bit number. */
-union Colour {
+/** Packed colour union to access the alpha, red, green, and blue channels from a 32 bit number for Emscripten build. */
+union ColourRGBA {
 	uint32_t data; ///< Conversion of the channel information to a 32 bit number.
 	struct {
-#if defined(__EMSCRIPTEN__)
-		uint8_t r, g, b, a;  ///< colour channels as used in browsers
-#elif TTD_ENDIAN == TTD_BIG_ENDIAN
-		uint8_t a, r, g, b; ///< colour channels in BE order
-#else
-		uint8_t b, g, r, a; ///< colour channels in LE order
-#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
+		uint8_t r, g, b, a; ///< colour channels as used in browsers
 	};
 
 	/**
@@ -181,25 +174,66 @@ union Colour {
 	 * @param b The channel for the blue colour.
 	 * @param a The channel for the alpha/transparency.
 	 */
-	Colour(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) :
-#if defined(__EMSCRIPTEN__)
-		r(r), g(g), b(b), a(a)
-#elif TTD_ENDIAN == TTD_BIG_ENDIAN
-		a(a), r(r), g(g), b(b)
-#else
-		b(b), g(g), r(r), a(a)
-#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
-	{
-	}
+	constexpr ColourRGBA(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) : r(r), g(g), b(b), a(a) { }
 
 	/**
 	 * Create a new colour.
 	 * @param data The colour in the correct packed format.
 	 */
-	Colour(uint data = 0) : data(data)
-	{
-	}
+	constexpr ColourRGBA(uint data = 0) : data(data) { }
 };
+
+/** Packed colour union to access the alpha, red, green, and blue channels from a 32 bit number for big-endian systems. */
+union ColourARGB {
+	uint32_t data; ///< Conversion of the channel information to a 32 bit number.
+	struct {
+		uint8_t a, r, g, b; ///< colour channels in BE order
+	};
+
+	/**
+	 * Create a new colour.
+	 * @param r The channel for the red colour.
+	 * @param g The channel for the green colour.
+	 * @param b The channel for the blue colour.
+	 * @param a The channel for the alpha/transparency.
+	 */
+	constexpr ColourARGB(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) : a(a), r(r), g(g), b(b) { }
+
+	/**
+	 * Create a new colour.
+	 * @param data The colour in the correct packed format.
+	 */
+	constexpr ColourARGB(uint data = 0) : data(data) { }
+};
+
+/** Packed colour union to access the alpha, red, green, and blue channels from a 32 bit number for little-endian systems. */
+union ColourBGRA {
+	uint32_t data; ///< Conversion of the channel information to a 32 bit number.
+	struct {
+		uint8_t b, g, r, a; ///< colour channels in LE order
+	};
+
+	/**
+	 * Create a new colour.
+	 * @param r The channel for the red colour.
+	 * @param g The channel for the green colour.
+	 * @param b The channel for the blue colour.
+	 * @param a The channel for the alpha/transparency.
+	 */
+	constexpr ColourBGRA(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) : b(b), g(g), r(r), a(a) { }
+
+	/**
+	 * Create a new colour.
+	 * @param data The colour in the correct packed format.
+	 */
+	constexpr ColourBGRA(uint data = 0) : data(data) { }
+};
+
+#if defined(__EMSCRIPTEN__)
+using Colour = ColourRGBA;
+#else
+using Colour = std::conditional_t<std::endian::native == std::endian::little, ColourBGRA, ColourARGB>;
+#endif /* defined(__EMSCRIPTEN__) */
 
 static_assert(sizeof(Colour) == sizeof(uint32_t));
 
