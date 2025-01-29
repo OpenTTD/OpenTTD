@@ -122,7 +122,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 	if (IsTransparencySet(TO_TEXT)) return;
 
 	ViewportStringFlags flags{};
-	if (dpi->zoom >= ZOOM_LVL_TEXT_EFFECT) flags |= ViewportStringFlags::Small;
+	if (dpi->zoom >= ZOOM_LVL_TEXT_EFFECT) flags.Set(ViewportStringFlag::Small);
 
 	for (const TextEffect &te : _text_effects) {
 		if (te.string_id == INVALID_STRING_ID) continue;
