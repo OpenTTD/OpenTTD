@@ -308,14 +308,14 @@ public:
 	static TileIndex GetRoadStationFrontTile(TileIndex station);
 
 	/**
-	 * Gets the tile at the back of a drive through road station.
-	 *  So, one side of the drive through station is retrieved with
-	 *  GetTileInFrontOfStation, the other with this function.
-	 * @param station The road station tile.
-	 * @pre IsDriveThroughRoadStationTile(station).
-	 * @return The tile at the back of the drive through road station.
+	 * Gets the tile at the back of a drive through road station or waypoint.
+	 *  So, one side of the drive through is retrieved with
+	 *  GetRoadStationFrontTile, the other with this function.
+	 * @param tile The drive through tile.
+	 * @pre IsDriveThroughRoadStationTile(tile) || IsRoadWaypointTile(tile).
+	 * @return The tile at the back of the drive through road station or waypoint.
 	 */
-	static TileIndex GetDriveThroughBackTile(TileIndex station);
+	static TileIndex GetDriveThroughBackTile(TileIndex tile);
 
 	/**
 	 * Builds a road from the center of tile start to the center of tile end.
