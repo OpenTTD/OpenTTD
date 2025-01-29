@@ -21,15 +21,13 @@
 /**
  * Flags to describe the look of the frame
  */
-enum FrameFlags : uint8_t {
-	FR_NONE         =  0,
-	FR_TRANSPARENT  =  1 << 0,  ///< Makes the background transparent if set
-	FR_BORDERONLY   =  1 << 4,  ///< Draw border only, no background
-	FR_LOWERED      =  1 << 5,  ///< If set the frame is lowered and the background colour brighter (ie. buttons when pressed)
-	FR_DARKENED     =  1 << 6,  ///< If set the background is darker, allows for lowered frames with normal background colour when used with FR_LOWERED (ie. dropdown boxes)
+enum class FrameFlag : uint8_t {
+	Transparent, ///< Makes the background transparent if set
+	BorderOnly, ///< Draw border only, no background
+	Lowered, ///< If set the frame is lowered and the background colour brighter (ie. buttons when pressed)
+	Darkened, ///< If set the background is darker, allows for lowered frames with normal background colour when used with FrameFlag::Lowered (ie. dropdown boxes)
 };
-
-DECLARE_ENUM_AS_BIT_SET(FrameFlags)
+using FrameFlags = EnumBitSet<FrameFlag, uint8_t>;
 
 class WidgetDimensions {
 public:

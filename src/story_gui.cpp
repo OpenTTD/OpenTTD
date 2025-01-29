@@ -734,7 +734,7 @@ public:
 				case SPET_BUTTON_TILE:
 				case SPET_BUTTON_VEHICLE: {
 					const int tmargin = WidgetDimensions::scaled.bevel.top + WidgetDimensions::scaled.frametext.top;
-					const FrameFlags frame = this->active_button_id == ce.pe->index ? FR_LOWERED : FR_NONE;
+					const FrameFlags frame = this->active_button_id == ce.pe->index ? FrameFlag::Lowered : FrameFlags{};
 					const Colours bgcolour = StoryPageButtonData{ ce.pe->referenced_id }.GetColour();
 
 					DrawFrameRect(ce.bounds.left, ce.bounds.top - scrollpos, ce.bounds.right, ce.bounds.bottom - scrollpos - 1, bgcolour, frame);

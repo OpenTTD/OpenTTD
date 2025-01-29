@@ -1104,7 +1104,7 @@ struct RefitWindow : public Window {
 
 								if (left != right) {
 									Rect hr = {left, highlight_top, right, highlight_bottom};
-									DrawFrameRect(hr.Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FR_BORDERONLY);
+									DrawFrameRect(hr.Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FrameFlag::BorderOnly);
 								}
 
 								left = INT32_MIN;

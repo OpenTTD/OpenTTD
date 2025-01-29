@@ -1920,7 +1920,7 @@ public:
 			r.top = y + offset;
 			r.bottom = r.top + button->height - 1;
 
-			DrawFrameRect(r, button->colour, FR_NONE);
+			DrawFrameRect(r, button->colour, {});
 			DrawSprite(button->sprite, PAL_NONE, r.left + WidgetDimensions::scaled.framerect.left, r.top + WidgetDimensions::scaled.framerect.top);
 			if (button->disabled) {
 				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(button->colour, SHADE_DARKER), FILLRECT_CHECKER);
@@ -2094,7 +2094,7 @@ struct NetworkJoinStatusWindow : Window {
 		switch (widget) {
 			case WID_NJS_PROGRESS_BAR: {
 				/* Draw the % complete with a bar and a text */
-				DrawFrameRect(r, COLOUR_GREY, FR_BORDERONLY | FR_LOWERED);
+				DrawFrameRect(r, COLOUR_GREY, {FrameFlag::BorderOnly, FrameFlag::Lowered});
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 				uint8_t progress; // used for progress bar
 				switch (_network_join_status) {
@@ -2117,7 +2117,7 @@ struct NetworkJoinStatusWindow : Window {
 						progress = 15 + _network_join_bytes * (100 - 15) / _network_join_bytes_total;
 						break;
 				}
-				DrawFrameRect(ir.WithWidth(ir.Width() * progress / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, FR_NONE);
+				DrawFrameRect(ir.WithWidth(ir.Width() * progress / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
 				DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}

@@ -50,7 +50,7 @@ void DrawShipImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineI
 		x += x_offs;
 		y += UnScaleGUI(rect.top);
 		Rect hr = {x, y, x + width - 1, y + UnScaleGUI(rect.Height()) - 1};
-		DrawFrameRect(hr.Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FR_BORDERONLY);
+		DrawFrameRect(hr.Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FrameFlag::BorderOnly);
 	}
 }
 
