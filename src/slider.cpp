@@ -75,7 +75,7 @@ void DrawSliderWidget(Rect r, int min_value, int max_value, int nmarks, int valu
 	value -= min_value;
 	if (_current_text_dir == TD_RTL) value = max_value - value;
 	x = r.left + (value * (r.right - r.left - sw) / max_value);
-	DrawFrameRect(x, r.top, x + sw, r.bottom, COLOUR_GREY, FR_NONE);
+	DrawFrameRect(x, r.top, x + sw, r.bottom, COLOUR_GREY, {});
 }
 
 /**

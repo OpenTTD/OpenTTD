@@ -1772,10 +1772,10 @@ static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *
 
 		TextColour colour = TC_WHITE;
 		if (ss.flags.Test(ViewportStringFlag::ColourRect)) {
-			if (ss.colour != INVALID_COLOUR) DrawFrameRect(x, y, x + w - 1, y + h - 1, ss.colour, FR_NONE);
+			if (ss.colour != INVALID_COLOUR) DrawFrameRect(x, y, x + w - 1, y + h - 1, ss.colour, {});
 			colour = TC_BLACK;
 		} else if (ss.flags.Test(ViewportStringFlag::TransparentRect)) {
-			DrawFrameRect(x, y, x + w - 1, y + h - 1, ss.colour, FR_TRANSPARENT);
+			DrawFrameRect(x, y, x + w - 1, y + h - 1, ss.colour, FrameFlag::Transparent);
 		}
 
 		if (ss.flags.Test(ViewportStringFlag::TextColour)) {

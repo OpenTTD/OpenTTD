@@ -282,7 +282,7 @@ WidgetID GetWidgetFromPos(const Window *w, int x, int y)
  */
 void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags)
 {
-	if (flags & FR_TRANSPARENT) {
+	if (flags.Test(FrameFlag::Transparent)) {
 		GfxFillRect(left, top, right, bottom, PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR);
 	} else {
 		assert(colour < COLOUR_END);
@@ -296,12 +296,12 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 		Rect outer = {left, top, right, bottom};                   // Outside rectangle
 		Rect inner = outer.Shrink(WidgetDimensions::scaled.bevel); // Inside rectangle
 
-		if (flags & FR_LOWERED) {
+		if (flags.Test(FrameFlag::Lowered)) {
 			GfxFillRect(outer.left,      outer.top,        inner.left - 1,  outer.bottom, dark);   // Left
 			GfxFillRect(inner.left,      outer.top,        outer.right,     inner.top - 1, dark);  // Top
 			GfxFillRect(inner.right + 1, inner.top,        outer.right,     inner.bottom,  light); // Right
 			GfxFillRect(inner.left,      inner.bottom + 1, outer.right,     outer.bottom, light);  // Bottom
-			interior = (flags & FR_DARKENED ? medium_dark : medium_light);
+			interior = (flags.Test(FrameFlag::Darkened) ? medium_dark : medium_light);
 		} else {
 			GfxFillRect(outer.left,      outer.top,        inner.left - 1, inner.bottom,  light); // Left
 			GfxFillRect(inner.left,      outer.top,        inner.right,    inner.top - 1, light); // Top
@@ -309,7 +309,7 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 			GfxFillRect(outer.left,      inner.bottom + 1, outer.right,    outer.bottom, dark);   // Bottom
 			interior = medium_dark;
 		}
-		if (!(flags & FR_BORDERONLY)) {
+		if (!flags.Test(FrameFlag::BorderOnly)) {
 			GfxFillRect(inner.left,  inner.top, inner.right, inner.bottom, interior); // Inner
 		}
 	}
@@ -338,7 +338,7 @@ void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, StringA
 static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colour, bool clicked, SpriteID img, StringAlignment align)
 {
 	assert(img != 0);
-	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FrameFlag::Lowered : FrameFlags{});
 
 	if ((type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++; // Show different image when clicked for #WWT_IMGBTN_2.
 	DrawSpriteIgnorePadding(img, PAL_NONE, r, align);
@@ -389,7 +389,7 @@ static inline void DrawText(const Rect &r, TextColour colour, StringID str, Stri
  */
 static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align, FontSize fs)
 {
-	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_LOWERED | FR_DARKENED);
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, {FrameFlag::Lowered, FrameFlag::Darkened});
 	if (str != STR_NULL) DrawString(r.Shrink(WidgetDimensions::scaled.inset), str, text_colour, align, false, fs);
 }
 
@@ -405,7 +405,7 @@ static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colo
  */
 static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint32_t num_columns, uint32_t num_rows, uint resize_x, uint resize_y)
 {
-	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FrameFlag::Lowered : FrameFlags{});
 
 	int column_width; // Width of a single column in the matrix.
 	if (num_columns == 0) {
@@ -489,7 +489,7 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
 	GfxFillRect(right,      r.top + height, right + br - 1, r.bottom - height, c2);
 
 	Point pt = HandleScrollbarHittest(scrollbar, r.top, r.bottom, false);
-	DrawFrameRect(r.left, pt.x, r.right, pt.y, colour, bar_dragged ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(r.left, pt.x, r.right, pt.y, colour, bar_dragged ? FrameFlag::Lowered : FrameFlags{});
 }
 
 /**
@@ -529,7 +529,7 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 
 	/* draw actual scrollbar */
 	Point pt = HandleScrollbarHittest(scrollbar, r.left, r.right, true);
-	DrawFrameRect(pt.x, r.top, pt.y, r.bottom, colour, bar_dragged ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(pt.x, r.top, pt.y, r.bottom, colour, bar_dragged ? FrameFlag::Lowered : FrameFlags{});
 }
 
 /**
@@ -643,7 +643,7 @@ static inline void DrawDebugBox(const Rect &r, Colours colour, bool clicked)
 static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bool clicked, bool bevel)
 {
 	if (bevel) {
-		DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
+		DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FrameFlag::Lowered : FrameFlags{});
 	} else if (clicked) {
 		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(colour, SHADE_LIGHTER));
 	}
@@ -657,7 +657,7 @@ static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bo
  */
 static inline void DrawCloseBox(const Rect &r, Colours colour)
 {
-	if (colour != COLOUR_WHITE) DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_NONE);
+	if (colour != COLOUR_WHITE) DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, {});
 	Point offset;
 	Dimension d = GetSpriteSize(SPR_CLOSEBOX, &offset);
 	d.width  -= offset.x;
@@ -680,9 +680,9 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
 {
 	bool company_owned = owner < MAX_COMPANIES;
 
-	DrawFrameRect(r, colour, FR_BORDERONLY);
+	DrawFrameRect(r, colour, FrameFlag::BorderOnly);
 	Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
-	DrawFrameRect(ir, colour, company_owned ? FR_LOWERED | FR_DARKENED | FR_BORDERONLY : FR_LOWERED | FR_DARKENED);
+	DrawFrameRect(ir, colour, company_owned ? FrameFlags{FrameFlag::Lowered, FrameFlag::Darkened, FrameFlag::BorderOnly} : FrameFlags{FrameFlag::Lowered, FrameFlag::Darkened});
 
 	if (company_owned) {
 		GfxFillRect(ir.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(_company_colours[owner], SHADE_NORMAL));
@@ -711,13 +711,13 @@ static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicke
 	int dd_width  = NWidgetLeaf::dropdown_dimension.width;
 
 	if (_current_text_dir == TD_LTR) {
-		DrawFrameRect(r.left, r.top, r.right - dd_width, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
+		DrawFrameRect(r.left, r.top, r.right - dd_width, r.bottom, colour, clicked_button ? FrameFlag::Lowered : FrameFlags{});
 		DrawImageButtons(r.WithWidth(dd_width, true), WWT_DROPDOWN, colour, clicked_dropdown, SPR_ARROW_DOWN, SA_CENTER);
 		if (str != STR_NULL) {
 			DrawString(r.left + WidgetDimensions::scaled.dropdowntext.left, r.right - dd_width - WidgetDimensions::scaled.dropdowntext.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), str, TC_BLACK, align);
 		}
 	} else {
-		DrawFrameRect(r.left + dd_width, r.top, r.right, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
+		DrawFrameRect(r.left + dd_width, r.top, r.right, r.bottom, colour, clicked_button ? FrameFlag::Lowered : FrameFlags{});
 		DrawImageButtons(r.WithWidth(dd_width, false), WWT_DROPDOWN, colour, clicked_dropdown, SPR_ARROW_DOWN, SA_CENTER);
 		if (str != STR_NULL) {
 			DrawString(r.left + dd_width + WidgetDimensions::scaled.dropdowntext.left, r.right - WidgetDimensions::scaled.dropdowntext.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), str, TC_BLACK, align);
@@ -733,7 +733,7 @@ void Window::DrawWidgets() const
 	this->nested_root->Draw(this);
 
 	if (this->flags.Test(WindowFlag::WhiteBorder)) {
-		DrawFrameRect(0, 0, this->width - 1, this->height - 1, COLOUR_WHITE, FR_BORDERONLY);
+		DrawFrameRect(0, 0, this->width - 1, this->height - 1, COLOUR_WHITE, FrameFlag::BorderOnly);
 	}
 
 	if (this->flags.Test(WindowFlag::Highlighted)) {
@@ -2341,7 +2341,7 @@ void NWidgetBackground::Draw(const Window *w)
 
 	switch (this->type) {
 		case WWT_PANEL:
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, this->IsLowered() ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, this->IsLowered() ? FrameFlag::Lowered : FrameFlags{});
 			break;
 
 		case WWT_FRAME:
@@ -3003,7 +3003,7 @@ void NWidgetLeaf::Draw(const Window *w)
 			break;
 
 		case WWT_PUSHBTN:
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FrameFlag::Lowered : FrameFlags{});
 			break;
 
 		case WWT_IMGBTN:
@@ -3016,7 +3016,7 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_PUSHTXTBTN:
 		case WWT_TEXTBTN_2:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FrameFlag::Lowered : FrameFlags{});
 			DrawLabel(r, this->type, clicked, this->text_colour, this->GetString(), this->align, this->text_size);
 			break;
 

@@ -63,7 +63,7 @@ public:
 
 					const Rect wr = this->GetWidget<NWidgetBase>(i)->GetCurrentRect().Shrink(WidgetDimensions::scaled.fullbevel);
 					DrawFrameRect(wr.left, fr.top, wr.right, fr.bottom, COLOUR_PALE_GREEN,
-							HasBit(_invisibility_opt, i - WID_TT_BEGIN) ? FR_LOWERED : FR_NONE);
+							HasBit(_invisibility_opt, i - WID_TT_BEGIN) ? FrameFlag::Lowered : FrameFlags{});
 				}
 				break;
 			}

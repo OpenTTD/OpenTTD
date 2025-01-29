@@ -425,9 +425,9 @@ struct NewGRFInspectWindow : Window {
 
 		/* Highlight the articulated part (this is different to the whole-vehicle highlighting of DrawVehicleImage */
 		if (_current_text_dir == TD_RTL) {
-			DrawFrameRect(r.right - sel_end + skip, y, r.right - sel_start + skip, y + h, COLOUR_WHITE, FR_BORDERONLY);
+			DrawFrameRect(r.right - sel_end + skip, y, r.right - sel_start + skip, y + h, COLOUR_WHITE, FrameFlag::BorderOnly);
 		} else {
-			DrawFrameRect(r.left + sel_start - skip, y, r.left + sel_end - skip, y + h, COLOUR_WHITE, FR_BORDERONLY);
+			DrawFrameRect(r.left + sel_start - skip, y, r.left + sel_end - skip, y + h, COLOUR_WHITE, FrameFlag::BorderOnly);
 		}
 	}
 

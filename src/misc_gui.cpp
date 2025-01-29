@@ -794,11 +794,11 @@ void QueryString::DrawEditBox(const Window *w, WidgetID wid) const
 	Rect cr = r.WithWidth(clearbtn_width, !rtl);
 	Rect fr = r.Indent(clearbtn_width, !rtl);
 
-	DrawFrameRect(cr, wi->colour, wi->IsLowered() ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(cr, wi->colour, wi->IsLowered() ? FrameFlag::Lowered : FrameFlags{});
 	DrawSpriteIgnorePadding(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT, PAL_NONE, cr, SA_CENTER);
 	if (StrEmpty(this->text.GetText())) GfxFillRect(cr.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(wi->colour, SHADE_DARKER), FILLRECT_CHECKER);
 
-	DrawFrameRect(fr, wi->colour, FR_LOWERED | FR_DARKENED);
+	DrawFrameRect(fr, wi->colour, {FrameFlag::Lowered, FrameFlag::Darkened});
 	GfxFillRect(fr.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK);
 
 	fr = fr.Shrink(WidgetDimensions::scaled.framerect);

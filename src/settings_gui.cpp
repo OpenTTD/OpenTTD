@@ -2931,8 +2931,8 @@ void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool c
 	Rect lr = {x,                  y, x + (int)dim.width     - 1, y + (int)dim.height - 1};
 	Rect rr = {x + (int)dim.width, y, x + (int)dim.width * 2 - 1, y + (int)dim.height - 1};
 
-	DrawFrameRect(lr, button_colour, (state == 1) ? FR_LOWERED : FR_NONE);
-	DrawFrameRect(rr, button_colour, (state == 2) ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(lr, button_colour, (state == 1) ? FrameFlag::Lowered : FrameFlags{});
+	DrawFrameRect(rr, button_colour, (state == 2) ? FrameFlag::Lowered : FrameFlags{});
 	DrawSpriteIgnorePadding(SPR_ARROW_LEFT,  PAL_NONE, lr, SA_CENTER);
 	DrawSpriteIgnorePadding(SPR_ARROW_RIGHT, PAL_NONE, rr, SA_CENTER);
 
@@ -2960,7 +2960,7 @@ void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool cl
 
 	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
 
-	DrawFrameRect(r, button_colour, state ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(r, button_colour, state ? FrameFlag::Lowered : FrameFlags{});
 	DrawSpriteIgnorePadding(SPR_ARROW_DOWN, PAL_NONE, r, SA_CENTER);
 
 	if (!clickable) {
@@ -2980,7 +2980,7 @@ void DrawBoolButton(int x, int y, bool state, bool clickable)
 	static const Colours _bool_ctabs[2][2] = {{COLOUR_CREAM, COLOUR_RED}, {COLOUR_DARK_GREEN, COLOUR_GREEN}};
 
 	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
-	DrawFrameRect(r, _bool_ctabs[state][clickable], state ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(r, _bool_ctabs[state][clickable], state ? FrameFlag::Lowered : FrameFlags{});
 }
 
 struct CustomCurrencyWindow : Window {

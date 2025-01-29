@@ -611,7 +611,7 @@ public:
 					bool lowered = !HasBit(this->excluded_range, index);
 
 					/* Redraw frame if lowered */
-					if (lowered) DrawFrameRect(line, COLOUR_BROWN, FR_LOWERED);
+					if (lowered) DrawFrameRect(line, COLOUR_BROWN, FrameFlag::Lowered);
 
 					const Rect text = line.Shrink(WidgetDimensions::scaled.framerect);
 					DrawString(text, str, TC_BLACK, SA_CENTER, false, FS_SMALL);
@@ -1106,7 +1106,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			bool lowered = !HasBit(_legend_excluded_cargo_payment_rates, cs->Index());
 
 			/* Redraw frame if lowered */
-			if (lowered) DrawFrameRect(line, COLOUR_BROWN, FR_LOWERED);
+			if (lowered) DrawFrameRect(line, COLOUR_BROWN, FrameFlag::Lowered);
 
 			const Rect text = line.Shrink(WidgetDimensions::scaled.framerect);
 
@@ -1603,7 +1603,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 			bool lowered = !HasBit(_legend_excluded_cargo_production_history, p.cargo);
 
 			/* Redraw frame if lowered */
-			if (lowered) DrawFrameRect(line, COLOUR_BROWN, FR_LOWERED);
+			if (lowered) DrawFrameRect(line, COLOUR_BROWN, FrameFlag::Lowered);
 
 			const Rect text = line.Shrink(WidgetDimensions::scaled.framerect);
 
