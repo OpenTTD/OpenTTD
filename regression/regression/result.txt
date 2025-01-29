@@ -7977,7 +7977,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsRoadTile():                  true
     GetNeighbourRoadCount():       2
     AreRoadTilesConnected():       true
-    GetDriveThroughBackTile():     -1
+    GetDriveThroughBackTile():     33922
     GetRoadStationFrontTile():     -1
     IsBuildable():                 false
     BuildRoadWaypoint():           false
