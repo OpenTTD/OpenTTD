@@ -754,7 +754,7 @@ CommandCost CmdAutoreplaceVehicle(DoCommandFlag flags, VehicleID veh_id)
 	bool wagon_removal = c->settings.renew_keep_length;
 
 	const Group *g = Group::GetIfValid(v->group_id);
-	if (g != nullptr) wagon_removal = HasFlag(g->flags, GroupFlags::ReplaceWagonRemoval);
+	if (g != nullptr) wagon_removal = g->flags.Test(GroupFlag::ReplaceWagonRemoval);
 
 	/* Test whether any replacement is set, before issuing a whole lot of commands that would end in nothing changed */
 	Vehicle *w = v;

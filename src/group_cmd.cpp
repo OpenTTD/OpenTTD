@@ -355,7 +355,7 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlag flags, VehicleType
 		if (pg == nullptr) {
 			g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
 			g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
-			if (c->settings.renew_keep_length) g->flags |= GroupFlags::ReplaceWagonRemoval;
+			if (c->settings.renew_keep_length) g->flags.Set(GroupFlag::ReplaceWagonRemoval);
 		} else {
 			g->parent = pg->index;
 			g->livery.colour1 = pg->livery.colour1;
@@ -695,12 +695,12 @@ CommandCost CmdSetGroupLivery(DoCommandFlag flags, GroupID group_id, bool primar
  * @param g initial group.
  * @param set 1 to set or 0 to clear protection.
  */
-static void SetGroupFlag(Group *g, GroupFlags flag, bool set, bool children)
+static void SetGroupFlag(Group *g, GroupFlag flag, bool set, bool children)
 {
 	if (set) {
-		g->flags |= flag;
+		g->flags.Set(flag);
 	} else {
-		g->flags &= ~flag;
+		g->flags.Reset(flag);
 	}
 
 	if (!children) return;
@@ -719,12 +719,12 @@ static void SetGroupFlag(Group *g, GroupFlags flag, bool set, bool children)
  * @param recursive to apply to sub-groups.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetGroupFlag(DoCommandFlag flags, GroupID group_id, GroupFlags flag, bool value, bool recursive)
+CommandCost CmdSetGroupFlag(DoCommandFlag flags, GroupID group_id, GroupFlag flag, bool value, bool recursive)
 {
 	Group *g = Group::GetIfValid(group_id);
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
-	if (flag != GroupFlags::ReplaceProtection && flag != GroupFlags::ReplaceWagonRemoval) return CMD_ERROR;
+	if (flag != GroupFlag::ReplaceProtection && flag != GroupFlag::ReplaceWagonRemoval) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		SetGroupFlag(g, flag, value, recursive);

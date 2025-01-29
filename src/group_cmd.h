@@ -17,7 +17,7 @@
 #include "vehiclelist_cmd.h"
 
 enum Colours : uint8_t;
-enum class GroupFlags : uint8_t;
+enum class GroupFlag : uint8_t;
 
 /** Action for \c CmdAlterGroup. */
 enum class AlterGroupMode : uint8_t {
@@ -31,7 +31,7 @@ CommandCost CmdDeleteGroup(DoCommandFlag flags, GroupID group_id);
 std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlag flags, GroupID group_id, VehicleID veh_id, bool add_shared, const VehicleListIdentifier &vli);
 CommandCost CmdAddSharedVehicleGroup(DoCommandFlag flags, GroupID id_g, VehicleType type);
 CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlag flags, GroupID group_id);
-CommandCost CmdSetGroupFlag(DoCommandFlag flags, GroupID group_id, GroupFlags flag, bool value, bool recursive);
+CommandCost CmdSetGroupFlag(DoCommandFlag flags, GroupID group_id, GroupFlag flag, bool value, bool recursive);
 CommandCost CmdSetGroupLivery(DoCommandFlag flags, GroupID group_id, bool primary, Colours colour);
 
 DEF_CMD_TRAIT(CMD_CREATE_GROUP,              CmdCreateGroup,            0, CMDT_ROUTE_MANAGEMENT)

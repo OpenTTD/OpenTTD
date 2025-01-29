@@ -98,14 +98,14 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidGroup(group_id));
 
-	return ScriptObject::Command<CMD_SET_GROUP_FLAG>::Do(group_id, GroupFlags::ReplaceProtection, enable, false);
+	return ScriptObject::Command<CMD_SET_GROUP_FLAG>::Do(group_id, GroupFlag::ReplaceProtection, enable, false);
 }
 
 /* static */ bool ScriptGroup::GetAutoReplaceProtection(GroupID group_id)
 {
 	if (!IsValidGroup(group_id)) return false;
 
-	return HasFlag(::Group::Get(group_id)->flags, GroupFlags::ReplaceProtection);
+	return ::Group::Get(group_id)->flags.Test(GroupFlag::ReplaceProtection);
 }
 
 /* static */ SQInteger ScriptGroup::GetNumEngines(GroupID group_id, EngineID engine_id)
