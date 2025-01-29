@@ -26,15 +26,15 @@ enum LandscapeType : uint8_t {
 /**
  * For storing the water borders which shall be retained.
  */
-enum class Borders : uint8_t {
-	None = 0,
-	NorthEast = 1U << 0, ///< Border on North East.
-	SouthEast = 1U << 1, ///< Border on South East.
-	SouthWest = 1U << 2, ///< Border on South West.
-	NorthWest = 1U << 3, ///< Border on North West.
-	Random = 1U << 4, ///< Randomise borders.
-	All = NorthEast | SouthEast | SouthWest | NorthWest, ///< Border on all sides.
+enum class BorderFlag : uint8_t {
+	NorthEast, ///< Border on North East.
+	SouthEast, ///< Border on South East.
+	SouthWest, ///< Border on South West.
+	NorthWest, ///< Border on North West.
+	Random, ///< Randomise borders.
 };
-DECLARE_ENUM_AS_BIT_SET(Borders)
+using BorderFlags = EnumBitSet<BorderFlag, uint8_t>;
+
+static constexpr BorderFlags BORDERFLAGS_ALL = BorderFlags{BorderFlag::NorthEast, BorderFlag::SouthEast, BorderFlag::SouthWest, BorderFlag::NorthWest}; ///< Border on all sides.
 
 #endif /* LANDSCAPE_TYPE_H */

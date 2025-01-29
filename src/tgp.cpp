@@ -727,7 +727,7 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
  * Please note that all the small numbers; 53, 101, 167, etc. are small primes
  * to help give the perlin noise a bit more of a random feel.
  */
-static void HeightMapCoastLines(Borders water_borders)
+static void HeightMapCoastLines(BorderFlags water_borders)
 {
 	int smallest_size = std::min(_settings_game.game_creation.map_x, _settings_game.game_creation.map_y);
 	const int margin = 4;
@@ -737,7 +737,7 @@ static void HeightMapCoastLines(Borders water_borders)
 
 	/* Lower to sea level */
 	for (y = 0; y <= _height_map.size_y; y++) {
-		if (HasFlag(water_borders, Borders::NorthEast)) {
+		if (water_borders.Test(BorderFlag::NorthEast)) {
 			/* Top right */
 			max_x = abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.9, 53) + 0.25) * 5 + (perlin_coast_noise_2D(y, y, 0.35, 179) + 1) * 12);
 			max_x = std::max((smallest_size * smallest_size / 64) + max_x, (smallest_size * smallest_size / 64) + margin - max_x);
@@ -747,7 +747,7 @@ static void HeightMapCoastLines(Borders water_borders)
 			}
 		}
 
-		if (HasFlag(water_borders, Borders::SouthWest)) {
+		if (water_borders.Test(BorderFlag::SouthWest)) {
 			/* Bottom left */
 			max_x = abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.85, 101) + 0.3) * 6 + (perlin_coast_noise_2D(y, y, 0.45,  67) + 0.75) * 8);
 			max_x = std::max((smallest_size * smallest_size / 64) + max_x, (smallest_size * smallest_size / 64) + margin - max_x);
@@ -760,7 +760,7 @@ static void HeightMapCoastLines(Borders water_borders)
 
 	/* Lower to sea level */
 	for (x = 0; x <= _height_map.size_x; x++) {
-		if (HasFlag(water_borders, Borders::NorthWest)) {
+		if (water_borders.Test(BorderFlag::NorthWest)) {
 			/* Top left */
 			max_y = abs((perlin_coast_noise_2D(x, _height_map.size_y / 2, 0.9, 167) + 0.4) * 5 + (perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.4, 211) + 0.7) * 9);
 			max_y = std::max((smallest_size * smallest_size / 64) + max_y, (smallest_size * smallest_size / 64) + margin - max_y);
@@ -770,7 +770,7 @@ static void HeightMapCoastLines(Borders water_borders)
 			}
 		}
 
-		if (HasFlag(water_borders, Borders::SouthEast)) {
+		if (water_borders.Test(BorderFlag::SouthEast)) {
 			/* Bottom right */
 			max_y = abs((perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.85, 71) + 0.25) * 6 + (perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.35, 193) + 0.75) * 12);
 			max_y = std::max((smallest_size * smallest_size / 64) + max_y, (smallest_size * smallest_size / 64) + margin - max_y);
@@ -820,18 +820,18 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 }
 
 /** Smooth coasts by modulating height of tiles close to map edges with cosine of distance from edge */
-static void HeightMapSmoothCoasts(Borders water_borders)
+static void HeightMapSmoothCoasts(BorderFlags water_borders)
 {
 	int x, y;
 	/* First Smooth NW and SE coasts (y close to 0 and y close to size_y) */
 	for (x = 0; x < _height_map.size_x; x++) {
-		if (HasFlag(water_borders, Borders::NorthWest)) HeightMapSmoothCoastInDirection(x, 0, 0, 1);
-		if (HasFlag(water_borders, Borders::SouthEast)) HeightMapSmoothCoastInDirection(x, _height_map.size_y - 1, 0, -1);
+		if (water_borders.Test(BorderFlag::NorthWest)) HeightMapSmoothCoastInDirection(x, 0, 0, 1);
+		if (water_borders.Test(BorderFlag::SouthEast)) HeightMapSmoothCoastInDirection(x, _height_map.size_y - 1, 0, -1);
 	}
 	/* First Smooth NE and SW coasts (x close to 0 and x close to size_x) */
 	for (y = 0; y < _height_map.size_y; y++) {
-		if (HasFlag(water_borders, Borders::NorthEast)) HeightMapSmoothCoastInDirection(0, y, 1, 0);
-		if (HasFlag(water_borders, Borders::SouthWest)) HeightMapSmoothCoastInDirection(_height_map.size_x - 1, y, -1, 0);
+		if (water_borders.Test(BorderFlag::NorthEast)) HeightMapSmoothCoastInDirection(0, y, 1, 0);
+		if (water_borders.Test(BorderFlag::SouthWest)) HeightMapSmoothCoastInDirection(_height_map.size_x - 1, y, -1, 0);
 	}
 }
 
@@ -873,8 +873,8 @@ static void HeightMapNormalize()
 
 	HeightMapAdjustWaterLevel(water_percent, h_max_new);
 
-	Borders water_borders = _settings_game.construction.freeform_edges ? _settings_game.game_creation.water_borders : Borders::All;
-	if (water_borders == Borders::Random) water_borders = static_cast<Borders>(GB(Random(), 0, 4));
+	BorderFlags water_borders = _settings_game.construction.freeform_edges ? _settings_game.game_creation.water_borders : BORDERFLAGS_ALL;
+	if (water_borders == BorderFlag::Random) water_borders = static_cast<BorderFlags>(GB(Random(), 0, 4));
 
 	HeightMapCoastLines(water_borders);
 	HeightMapSmoothSlopes(roughness);
