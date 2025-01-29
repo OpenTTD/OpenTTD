@@ -2090,9 +2090,9 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 				if (statspec->tileflags.size() < 8) statspec->tileflags.resize(8);
 				for (int j = 0; j < 8; ++j) {
 					if (HasBit(pylons, j)) {
-						statspec->tileflags[j] |= StationSpec::TileFlags::Pylons;
+						statspec->tileflags[j].Set(StationSpec::TileFlag::Pylons);
 					} else {
-						statspec->tileflags[j] &= ~StationSpec::TileFlags::Pylons;
+						statspec->tileflags[j].Reset(StationSpec::TileFlag::Pylons);
 					}
 				}
 				break;
@@ -2115,9 +2115,9 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 				if (statspec->tileflags.size() < 8) statspec->tileflags.resize(8);
 				for (int j = 0; j < 8; ++j) {
 					if (HasBit(wires, j)) {
-						statspec->tileflags[j] |= StationSpec::TileFlags::NoWires;
+						statspec->tileflags[j].Set(StationSpec::TileFlag::NoWires);
 					} else {
-						statspec->tileflags[j] &= ~StationSpec::TileFlags::NoWires;
+						statspec->tileflags[j].Reset(StationSpec::TileFlag::NoWires);
 					}
 				}
 				break;
@@ -2128,9 +2128,9 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 				if (statspec->tileflags.size() < 8) statspec->tileflags.resize(8);
 				for (int j = 0; j < 8; ++j) {
 					if (HasBit(blocked, j)) {
-						statspec->tileflags[j] |= StationSpec::TileFlags::Blocked;
+						statspec->tileflags[j].Set(StationSpec::TileFlag::Blocked);
 					} else {
-						statspec->tileflags[j] &= ~StationSpec::TileFlags::Blocked;
+						statspec->tileflags[j].Reset(StationSpec::TileFlag::Blocked);
 					}
 				}
 				break;

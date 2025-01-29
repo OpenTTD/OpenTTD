@@ -160,12 +160,12 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 
 	uint8_t flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
 
-	enum class TileFlags : uint8_t {
-		None = 0,
-		Pylons = 1U << 0, ///< Tile should contain catenary pylons.
-		NoWires = 1U << 1, ///< Tile should NOT contain catenary wires.
-		Blocked = 1U << 2, ///< Tile is blocked to vehicles.
+	enum class TileFlag : uint8_t {
+		Pylons = 0, ///< Tile should contain catenary pylons.
+		NoWires = 1, ///< Tile should NOT contain catenary wires.
+		Blocked = 2, ///< Tile is blocked to vehicles.
 	};
+	using TileFlags = EnumBitSet<TileFlag, uint8_t>;
 	std::vector<TileFlags> tileflags; ///< List of tile flags.
 
 	AnimationInfo animation;
@@ -173,7 +173,6 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 	/** Custom platform layouts, keyed by platform and length combined. */
 	std::unordered_map<uint16_t, std::vector<uint8_t>> layouts;
 };
-DECLARE_ENUM_AS_BIT_SET(StationSpec::TileFlags);
 
 /** Class containing information relating to station classes. */
 using StationClass = NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX>;
