@@ -132,14 +132,13 @@ struct RoadVehicleInfo {
  * Extra engine flags for NewGRF features.
  * This is defined in the specification a 32 bit value, but most bits are not currently used.
  */
-enum class ExtraEngineFlags : uint16_t {
-	None = 0,
-	NoNews          = (1U << 0), ///< No 'new vehicle' news will be generated.
-	NoPreview       = (1U << 1), ///< No exclusive preview will be offered.
-	JoinPreview     = (1U << 2), ///< Engine will join exclusive preview with variant parent.
-	SyncReliability = (1U << 3), ///< Engine reliability will be synced with variant parent.
+enum class ExtraEngineFlag : uint8_t {
+	NoNews          = 0, ///< No 'new vehicle' news will be generated.
+	NoPreview       = 1, ///< No exclusive preview will be offered.
+	JoinPreview     = 2, ///< Engine will join exclusive preview with variant parent.
+	SyncReliability = 3, ///< Engine reliability will be synced with variant parent.
 };
-DECLARE_ENUM_AS_BIT_SET(ExtraEngineFlags);
+using ExtraEngineFlags = EnumBitSet<ExtraEngineFlag, uint8_t>;
 
 /**
  * Information about a vehicle
