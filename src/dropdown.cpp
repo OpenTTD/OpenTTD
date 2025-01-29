@@ -64,7 +64,7 @@ static constexpr NWidgetPart _nested_dropdown_menu_widgets[] = {
 static WindowDesc _dropdown_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_DROPDOWN_MENU, WC_NONE,
-	WDF_NO_FOCUS,
+	WindowDefaultFlag::NoFocus,
 	_nested_dropdown_menu_widgets
 );
 

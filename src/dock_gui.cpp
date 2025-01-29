@@ -347,7 +347,7 @@ static constexpr NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 static WindowDesc _build_docks_toolbar_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_water", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_build_docks_toolbar_widgets,
 	&BuildDocksToolbarWindow::hotkeys
 );
@@ -391,7 +391,7 @@ static constexpr NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
 static WindowDesc _build_docks_scen_toolbar_desc(
 	WDP_AUTO, "toolbar_water_scen", 0, 0,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_build_docks_scen_toolbar_widgets
 );
 
@@ -501,7 +501,7 @@ static constexpr NWidgetPart _nested_build_dock_station_widgets[] = {
 static WindowDesc _build_dock_station_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_build_dock_station_widgets
 );
 
@@ -596,7 +596,7 @@ static constexpr NWidgetPart _nested_build_docks_depot_widgets[] = {
 static WindowDesc _build_docks_depot_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_build_docks_depot_widgets
 );
 

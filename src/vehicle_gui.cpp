@@ -1354,7 +1354,7 @@ static constexpr NWidgetPart _nested_vehicle_refit_widgets[] = {
 static WindowDesc _vehicle_refit_desc(
 	WDP_AUTO, "view_vehicle_refit", 240, 174,
 	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_vehicle_refit_widgets
 );
 
@@ -2304,25 +2304,25 @@ static WindowDesc _vehicle_list_desc[] = {
 	{
 		WDP_AUTO, "list_vehicles_train", 325, 246,
 		WC_TRAINS_LIST, WC_NONE,
-		0,
+		{},
 		_nested_vehicle_list
 	},
 	{
 		WDP_AUTO, "list_vehicles_roadveh", 260, 246,
 		WC_INVALID, WC_NONE,
-		0,
+		{},
 		_nested_vehicle_list
 	},
 	{
 		WDP_AUTO, "list_vehicles_ship", 260, 246,
 		WC_INVALID, WC_NONE,
-		0,
+		{},
 		_nested_vehicle_list
 	},
 	{
 		WDP_AUTO, "list_vehicles_aircraft", 260, 246,
 		WC_INVALID, WC_NONE,
-		0,
+		{},
 		_nested_vehicle_list
 	}
 };
@@ -2874,7 +2874,7 @@ struct VehicleDetailsWindow : Window {
 static WindowDesc _train_vehicle_details_desc(
 	WDP_AUTO, "view_vehicle_details_train", 405, 178,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
-	0,
+	{},
 	_nested_train_vehicle_details_widgets
 );
 
@@ -2882,7 +2882,7 @@ static WindowDesc _train_vehicle_details_desc(
 static WindowDesc _nontrain_vehicle_details_desc(
 	WDP_AUTO, "view_vehicle_details", 405, 113,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
-	0,
+	{},
 	_nested_nontrain_vehicle_details_widgets
 );
 
@@ -3494,7 +3494,7 @@ public:
 static WindowDesc _vehicle_view_desc(
 	WDP_AUTO, "view_vehicle", 250, 116,
 	WC_VEHICLE_VIEW, WC_NONE,
-	0,
+	{},
 	_nested_vehicle_view_widgets,
 	&VehicleViewWindow::hotkeys
 );
@@ -3506,7 +3506,7 @@ static WindowDesc _vehicle_view_desc(
 static WindowDesc _train_view_desc(
 	WDP_AUTO, "view_vehicle_train", 250, 134,
 	WC_VEHICLE_VIEW, WC_NONE,
-	0,
+	{},
 	_nested_vehicle_view_widgets,
 	&VehicleViewWindow::hotkeys
 );

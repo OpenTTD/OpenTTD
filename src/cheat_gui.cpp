@@ -644,7 +644,7 @@ struct CheatWindow : Window {
 static WindowDesc _cheats_desc(
 	WDP_AUTO, "cheats", 0, 0,
 	WC_CHEATS, WC_NONE,
-	0,
+	{},
 	_nested_cheat_widgets
 );
 

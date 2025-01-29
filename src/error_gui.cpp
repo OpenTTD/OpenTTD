@@ -46,7 +46,7 @@ static constexpr NWidgetPart _nested_errmsg_widgets[] = {
 static WindowDesc _errmsg_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_ERRMSG, WC_NONE,
-	0,
+	{},
 	_nested_errmsg_widgets
 );
 
@@ -66,7 +66,7 @@ static constexpr NWidgetPart _nested_errmsg_face_widgets[] = {
 static WindowDesc _errmsg_face_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_ERRMSG, WC_NONE,
-	0,
+	{},
 	_nested_errmsg_face_widgets
 );
 

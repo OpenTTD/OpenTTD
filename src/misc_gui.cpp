@@ -63,7 +63,7 @@ static constexpr NWidgetPart _nested_land_info_widgets[] = {
 static WindowDesc _land_info_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_LAND_INFO, WC_NONE,
-	0,
+	{},
 	_nested_land_info_widgets
 );
 
@@ -381,7 +381,7 @@ static constexpr NWidgetPart _nested_about_widgets[] = {
 static WindowDesc _about_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
-	0,
+	{},
 	_nested_about_widgets
 );
 
@@ -640,7 +640,7 @@ static constexpr NWidgetPart _nested_tooltips_widgets[] = {
 static WindowDesc _tool_tips_desc(
 	WDP_MANUAL, nullptr, 0, 0, // Coordinates and sizes are not used,
 	WC_TOOLTIPS, WC_NONE,
-	WDF_NO_FOCUS | WDF_NO_CLOSE,
+	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_tooltips_widgets
 );
 
@@ -1043,7 +1043,7 @@ static constexpr NWidgetPart _nested_query_string_widgets[] = {
 static WindowDesc _query_string_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_QUERY_STRING, WC_NONE,
-	0,
+	{},
 	_nested_query_string_widgets
 );
 
@@ -1186,7 +1186,7 @@ static constexpr NWidgetPart _nested_query_widgets[] = {
 static WindowDesc _query_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
-	WDF_MODAL,
+	WindowDefaultFlag::Modal,
 	_nested_query_widgets
 );
 

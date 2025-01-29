@@ -1685,7 +1685,7 @@ static constexpr NWidgetPart _nested_orders_train_widgets[] = {
 static WindowDesc _orders_train_desc(
 	WDP_AUTO, "view_vehicle_orders_train", 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_orders_train_widgets,
 	&OrdersWindow::hotkeys
 );
@@ -1758,7 +1758,7 @@ static constexpr NWidgetPart _nested_orders_widgets[] = {
 static WindowDesc _orders_desc(
 	WDP_AUTO, "view_vehicle_orders", 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_orders_widgets,
 	&OrdersWindow::hotkeys
 );
@@ -1785,7 +1785,7 @@ static constexpr NWidgetPart _nested_other_orders_widgets[] = {
 static WindowDesc _other_orders_desc(
 	WDP_AUTO, "view_vehicle_orders_competitor", 384, 86,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_other_orders_widgets,
 	&OrdersWindow::hotkeys
 );

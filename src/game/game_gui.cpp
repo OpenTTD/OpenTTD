@@ -77,7 +77,7 @@ static constexpr NWidgetPart _nested_gs_config_widgets[] = {
 static WindowDesc _gs_config_desc(
 	WDP_CENTER, "settings_gs_config", 500, 350,
 	WC_GAME_OPTIONS, WC_NONE,
-	0,
+	{},
 	_nested_gs_config_widgets
 );
 

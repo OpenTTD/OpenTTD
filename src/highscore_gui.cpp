@@ -217,14 +217,14 @@ static constexpr NWidgetPart _nested_highscore_widgets[] = {
 static WindowDesc _highscore_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_HIGHSCORE, WC_NONE,
-	0,
+	{},
 	_nested_highscore_widgets
 );
 
 static WindowDesc _endgame_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_ENDSCREEN, WC_NONE,
-	0,
+	{},
 	_nested_highscore_widgets
 );
 

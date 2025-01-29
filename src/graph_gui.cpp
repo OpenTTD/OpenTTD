@@ -146,7 +146,7 @@ static constexpr NWidgetPart _nested_graph_legend_widgets[] = {
 static WindowDesc _graph_legend_desc(
 	WDP_AUTO, "graph_legend", 0, 0,
 	WC_GRAPH_LEGEND, WC_NONE,
-	0,
+	{},
 	_nested_graph_legend_widgets
 );
 
@@ -775,7 +775,7 @@ static constexpr NWidgetPart _nested_operating_profit_widgets[] = {
 static WindowDesc _operating_profit_desc(
 	WDP_AUTO, "graph_operating_profit", 0, 0,
 	WC_OPERATING_PROFIT, WC_NONE,
-	0,
+	{},
 	_nested_operating_profit_widgets
 );
 
@@ -834,7 +834,7 @@ static constexpr NWidgetPart _nested_income_graph_widgets[] = {
 static WindowDesc _income_graph_desc(
 	WDP_AUTO, "graph_income", 0, 0,
 	WC_INCOME_GRAPH, WC_NONE,
-	0,
+	{},
 	_nested_income_graph_widgets
 );
 
@@ -891,7 +891,7 @@ static constexpr NWidgetPart _nested_delivered_cargo_graph_widgets[] = {
 static WindowDesc _delivered_cargo_graph_desc(
 	WDP_AUTO, "graph_delivered_cargo", 0, 0,
 	WC_DELIVERED_CARGO, WC_NONE,
-	0,
+	{},
 	_nested_delivered_cargo_graph_widgets
 );
 
@@ -955,7 +955,7 @@ static constexpr NWidgetPart _nested_performance_history_widgets[] = {
 static WindowDesc _performance_history_desc(
 	WDP_AUTO, "graph_performance", 0, 0,
 	WC_PERFORMANCE_HISTORY, WC_NONE,
-	0,
+	{},
 	_nested_performance_history_widgets
 );
 
@@ -1012,7 +1012,7 @@ static constexpr NWidgetPart _nested_company_value_graph_widgets[] = {
 static WindowDesc _company_value_graph_desc(
 	WDP_AUTO, "graph_company_value", 0, 0,
 	WC_COMPANY_VALUE, WC_NONE,
-	0,
+	{},
 	_nested_company_value_graph_widgets
 );
 
@@ -1246,7 +1246,7 @@ static constexpr NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 static WindowDesc _cargo_payment_rates_desc(
 	WDP_AUTO, "graph_cargo_payment_rates", 0, 0,
 	WC_PAYMENT_RATES, WC_NONE,
-	0,
+	{},
 	_nested_cargo_payment_rates_widgets
 );
 
@@ -1767,7 +1767,7 @@ static constexpr NWidgetPart _nested_industry_production_widgets[] = {
 static WindowDesc _industry_production_desc(
 	WDP_AUTO, "graph_industry_production", 0, 0,
 	WC_INDUSTRY_PRODUCTION, WC_INDUSTRY_VIEW,
-	0,
+	{},
 	_nested_industry_production_widgets
 );
 
@@ -1830,7 +1830,7 @@ static constexpr NWidgetPart _nested_performance_rating_detail_widgets[] = {
 static WindowDesc _performance_rating_detail_desc(
 	WDP_AUTO, "league_details", 0, 0,
 	WC_PERFORMANCE_DETAIL, WC_NONE,
-	0,
+	{},
 	_nested_performance_rating_detail_widgets
 );
 

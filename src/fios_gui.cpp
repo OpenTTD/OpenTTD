@@ -950,7 +950,7 @@ public:
 static WindowDesc _load_dialog_desc(
 	WDP_CENTER, "load_game", 500, 294,
 	WC_SAVELOAD, WC_NONE,
-	0,
+	{},
 	_nested_load_dialog_widgets
 );
 
@@ -958,7 +958,7 @@ static WindowDesc _load_dialog_desc(
 static WindowDesc _load_heightmap_dialog_desc(
 	WDP_CENTER, "load_heightmap", 257, 320,
 	WC_SAVELOAD, WC_NONE,
-	0,
+	{},
 	_nested_load_heightmap_dialog_widgets
 );
 
@@ -966,7 +966,7 @@ static WindowDesc _load_heightmap_dialog_desc(
 static WindowDesc _load_town_data_dialog_desc(
 	WDP_CENTER, "load_town_data", 257, 320,
 	WC_SAVELOAD, WC_NONE,
-	0,
+	{},
 	_nested_load_town_data_dialog_widgets
 );
 
@@ -974,7 +974,7 @@ static WindowDesc _load_town_data_dialog_desc(
 static WindowDesc _save_dialog_desc(
 	WDP_CENTER, "save_game", 500, 294,
 	WC_SAVELOAD, WC_NONE,
-	0,
+	{},
 	_nested_save_dialog_widgets
 );
 

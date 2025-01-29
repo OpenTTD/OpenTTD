@@ -212,7 +212,7 @@ static constexpr NWidgetPart _nested_waypoint_view_widgets[] = {
 static WindowDesc _waypoint_view_desc(
 	WDP_AUTO, "view_waypoint", 260, 118,
 	WC_WAYPOINT_VIEW, WC_NONE,
-	0,
+	{},
 	_nested_waypoint_view_widgets
 );
 

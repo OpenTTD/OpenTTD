@@ -193,7 +193,7 @@ static constexpr NWidgetPart _nested_helpwin_widgets[] = {
 static WindowDesc _helpwin_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_HELPWIN, WC_NONE,
-	0,
+	{},
 	_nested_helpwin_widgets
 );
 
