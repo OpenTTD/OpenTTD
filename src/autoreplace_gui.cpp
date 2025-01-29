@@ -152,7 +152,7 @@ class ReplaceVehicleWindow : public Window {
 				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_company)) continue;
 			}
 
-			list.emplace_back(eid, e->info.variant_id, (side == 0) ? EngineDisplayFlags::None : e->display_flags, 0);
+			list.emplace_back(eid, e->info.variant_id, (side == 0) ? EngineDisplayFlags{} : e->display_flags, 0);
 
 			if (side == 1) {
 				EngineID parent = e->info.variant_id;
@@ -169,7 +169,7 @@ class ReplaceVehicleWindow : public Window {
 			for (const auto &variant : variants) {
 				if (std::ranges::find(list, variant, &GUIEngineListItem::engine_id) == list.end()) {
 					const Engine *e = Engine::Get(variant);
-					list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlags::Shaded, 0);
+					list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlag::Shaded, 0);
 				}
 			}
 		}
@@ -593,17 +593,17 @@ public:
 				if (it != this->engines[click_side].end()) {
 					const auto &item = *it;
 					const Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix).WithWidth(WidgetDimensions::scaled.hsep_indent * (item.indent + 1), _current_text_dir == TD_RTL);
-					if (HasFlag(item.flags, EngineDisplayFlags::HasVariants) && IsInsideMM(r.left, r.right, pt.x)) {
+					if (item.flags.Test(EngineDisplayFlag::HasVariants) && IsInsideMM(r.left, r.right, pt.x)) {
 						/* toggle folded flag on engine */
 						assert(item.variant_id != INVALID_ENGINE);
 						Engine *engine = Engine::Get(item.variant_id);
-						engine->display_flags ^= EngineDisplayFlags::IsFolded;
+						engine->display_flags.Flip(EngineDisplayFlag::IsFolded);
 
 						InvalidateWindowData(WC_REPLACE_VEHICLE, (VehicleType)this->window_number, 0); // Update the autoreplace window
 						InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
 						return;
 					}
-					if (!HasFlag(item.flags, EngineDisplayFlags::Shaded)) e = item.engine_id;
+					if (!item.flags.Test(EngineDisplayFlag::Shaded)) e = item.engine_id;
 				}
 
 				/* If Ctrl is pressed on the left side and we don't have any engines of the selected type, stop autoreplacing.
