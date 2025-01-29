@@ -15,134 +15,13 @@
 #include "saveload_internal.h"
 #include "../rail.h"
 #include "../road.h"
-#include "../station_map.h"
-#include "../tunnelbridge_map.h"
+#include "../newgrf_railtype.h"
+#include "../newgrf_roadtype.h"
 
 #include "../safeguards.h"
 
-/** Container for a label for rail or road type conversion. */
-template <typename T>
-struct LabelObject {
-	T label = {}; ///< Label of rail or road type.
-	uint8_t subtype = 0; ///< Subtype of type (road or tram).
-};
-
-static std::vector<LabelObject<RailTypeLabel>> _railtype_list;
-static std::vector<LabelObject<RoadTypeLabel>> _roadtype_list;
-
-/**
- * Test if any saved rail type labels are different to the currently loaded
- * rail types. Rail types stored in the map will be converted if necessary.
- */
-static void ConvertRailTypes()
-{
-	std::vector<RailType> railtype_conversion_map;
-	bool needs_conversion = false;
-
-	for (auto it = std::begin(_railtype_list); it != std::end(_railtype_list); ++it) {
-		RailType rt = GetRailTypeByLabel(it->label);
-		if (rt == INVALID_RAILTYPE) {
-			rt = RAILTYPE_RAIL;
-		}
-
-		railtype_conversion_map.push_back(rt);
-
-		/* Conversion is needed if the rail type is in a different position than the list. */
-		if (it->label != 0 && rt != std::distance(std::begin(_railtype_list), it)) needs_conversion = true;
-	}
-	if (!needs_conversion) return;
-
-	for (const auto t : Map::Iterate()) {
-		switch (GetTileType(t)) {
-			case MP_RAILWAY:
-				SetRailType(t, railtype_conversion_map[GetRailType(t)]);
-				break;
-
-			case MP_ROAD:
-				if (IsLevelCrossing(t)) {
-					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
-				}
-				break;
-
-			case MP_STATION:
-				if (HasStationRail(t)) {
-					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
-				}
-				break;
-
-			case MP_TUNNELBRIDGE:
-				if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
-					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
-				}
-				break;
-
-			default:
-				break;
-		}
-	}
-}
-
-/**
- * Test if any saved road type labels are different to the currently loaded
- * road types. Road types stored in the map will be converted if necessary.
- */
-static void ConvertRoadTypes()
-{
-	std::vector<RoadType> roadtype_conversion_map;
-	bool needs_conversion = false;
-	for (auto it = std::begin(_roadtype_list); it != std::end(_roadtype_list); ++it) {
-		RoadType rt = GetRoadTypeByLabel(it->label);
-		if (rt == INVALID_ROADTYPE || GetRoadTramType(rt) != it->subtype) {
-			rt = it->subtype ? ROADTYPE_TRAM : ROADTYPE_ROAD;
-		}
-
-		roadtype_conversion_map.push_back(rt);
-
-		/* Conversion is needed if the road type is in a different position than the list. */
-		if (it->label != 0 && rt != std::distance(std::begin(_roadtype_list), it)) needs_conversion = true;
-	}
-	if (!needs_conversion) return;
-
-	for (TileIndex t : Map::Iterate()) {
-		switch (GetTileType(t)) {
-			case MP_ROAD:
-				if (RoadType rt = GetRoadTypeRoad(t); rt != INVALID_ROADTYPE) SetRoadTypeRoad(t, roadtype_conversion_map[rt]);
-				if (RoadType rt = GetRoadTypeTram(t); rt != INVALID_ROADTYPE) SetRoadTypeTram(t, roadtype_conversion_map[rt]);
-				break;
-
-			case MP_STATION:
-				if (IsStationRoadStop(t) || IsRoadWaypoint(t)) {
-					if (RoadType rt = GetRoadTypeRoad(t); rt != INVALID_ROADTYPE) SetRoadTypeRoad(t, roadtype_conversion_map[rt]);
-					if (RoadType rt = GetRoadTypeTram(t); rt != INVALID_ROADTYPE) SetRoadTypeTram(t, roadtype_conversion_map[rt]);
-				}
-				break;
-
-			case MP_TUNNELBRIDGE:
-				if (GetTunnelBridgeTransportType(t) == TRANSPORT_ROAD) {
-					if (RoadType rt = GetRoadTypeRoad(t); rt != INVALID_ROADTYPE) SetRoadTypeRoad(t, roadtype_conversion_map[rt]);
-					if (RoadType rt = GetRoadTypeTram(t); rt != INVALID_ROADTYPE) SetRoadTypeTram(t, roadtype_conversion_map[rt]);
-				}
-				break;
-
-			default:
-				break;
-		}
-	}
-}
-
-/** Populate label lists with current values. */
-static void SetCurrentLabelLists()
-{
-	_railtype_list.clear();
-	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		_railtype_list.push_back({GetRailTypeInfo(rt)->label, 0});
-	}
-
-	_roadtype_list.clear();
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		_roadtype_list.push_back({GetRoadTypeInfo(rt)->label, GetRoadTramType(rt)});
-	}
-}
+extern std::vector<LabelObject<RailTypeLabel>> _railtype_list;
+extern std::vector<LabelObject<RoadTypeLabel>> _roadtype_list;
 
 /** Perform rail type and road type conversion if necessary. */
 void AfterLoadLabelMaps()
@@ -150,13 +29,8 @@ void AfterLoadLabelMaps()
 	ConvertRailTypes();
 	ConvertRoadTypes();
 
-	SetCurrentLabelLists();
-}
-
-void ResetLabelMaps()
-{
-	_railtype_list.clear();
-	_roadtype_list.clear();
+	SetCurrentRailTypeLabelList();
+	SetCurrentRoadTypeLabelList();
 }
 
 struct RAILChunkHandler : ChunkHandler {
