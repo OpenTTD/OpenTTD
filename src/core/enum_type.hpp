@@ -108,4 +108,93 @@ debug_inline constexpr void ToggleFlag(T &x, const T y)
 	}
 }
 
+/**
+ * Enum-as-bit-set wrapper.
+ * Allows wrapping enum values as a bit set. Methods are loosely modelled on std::bitset.
+ * @tparam Tenum Enum values to wrap.
+ * @tparam Tsorage Storage type required to hold eenum values.
+ */
+template <typename Tenum, typename Tstorage>
+class EnumBitSet {
+public:
+	using enum_type = Tenum; ///< Enum type of this EnumBitSet.
+	using storage_type = Tstorage; ///< Storage type of this EnumBitSet.
+
+	constexpr EnumBitSet() : data(0) {}
+	constexpr EnumBitSet(Tenum value) : data(0) { this->Set(value); }
+	explicit constexpr EnumBitSet(Tstorage data) : data(data) {}
+
+	/**
+	 * Construct an EnumBitSet from a list of enum values.
+	 * @param values List of enum values.
+	 */
+	constexpr EnumBitSet(std::initializer_list<const Tenum> values) : data(0)
+	{
+		for (const Tenum &value : values) {
+			this->Set(value);
+		}
+	}
+
+	constexpr auto operator <=>(const EnumBitSet &) const noexcept = default;
+
+	/**
+	 * Set the enum value.
+	 * @param value Enum value to set.
+	 * @returns The EnumBitset
+	 */
+	inline constexpr EnumBitSet &Set(Tenum value)
+	{
+		this->data |= (1U << to_underlying(value));
+		return *this;
+	}
+
+	/**
+	 * Reset the enum value to not set.
+	 * @param value Enum value to reset.
+	 * @returns The EnumBitset
+	 */
+	inline constexpr EnumBitSet &Reset(Tenum value)
+	{
+		this->data &= ~(1U << to_underlying(value));
+		return *this;
+	}
+
+	/**
+	 * Flip the enum value.
+	 * @param value Enum value to flip.
+	 * @returns The EnumBitset
+	 */
+	inline constexpr EnumBitSet &Flip(Tenum value)
+	{
+		if (this->Test(value)) {
+			return this->Reset(value);
+		} else {
+			return this->Set(value);
+		}
+	}
+
+	/**
+	 * Test if the enum value is set.
+	 * @param value Enum value to check.
+	 * @returns true iff the requested value is set.
+	 */
+	inline constexpr bool Test(Tenum value) const
+	{
+		return (this->data & (1U << to_underlying(value))) != 0;
+	}
+
+	inline constexpr EnumBitSet operator |(const EnumBitSet &other) const
+	{
+		return EnumBitSet{static_cast<Tstorage>(this->data | other.data)};
+	}
+
+	inline constexpr EnumBitSet operator &(const EnumBitSet &other) const
+	{
+		return EnumBitSet{static_cast<Tstorage>(this->data & other.data)};
+	}
+
+private:
+	Tstorage data; ///< Bitmask of enum values.
+};
+
 #endif /* ENUM_TYPE_HPP */
