@@ -54,14 +54,13 @@ struct BaseVehicle
 static const VehicleID INVALID_VEHICLE = 0xFFFFF; ///< Constant representing a non-existing vehicle.
 
 /** Flags for goto depot commands. */
-enum class DepotCommand : uint8_t {
-	None         = 0,         ///< No special flags.
-	Service      = (1U << 0), ///< The vehicle will leave the depot right after arrival (service only)
-	MassSend     = (1U << 1), ///< Tells that it's a mass send to depot command (type in VLW flag)
-	DontCancel   = (1U << 2), ///< Don't cancel current goto depot command if any
-	LocateHangar = (1U << 3), ///< Find another airport if the target one lacks a hangar
+enum class DepotCommandFlag : uint8_t {
+	Service, ///< The vehicle will leave the depot right after arrival (service only)
+	MassSend, ///< Tells that it's a mass send to depot command (type in VLW flag)
+	DontCancel, ///< Don't cancel current goto depot command if any
+	LocateHangar, ///< Find another airport if the target one lacks a hangar
 };
-DECLARE_ENUM_AS_BIT_SET(DepotCommand)
+using DepotCommandFlags = EnumBitSet<DepotCommandFlag, uint8_t>;
 
 static const uint MAX_LENGTH_VEHICLE_NAME_CHARS = 32; ///< The maximum length of a vehicle name in characters including '\0'
 

@@ -1020,7 +1020,7 @@ static CommandCost SendAllVehiclesToDepot(DoCommandFlag flags, bool service, con
 	bool had_success = false;
 	for (uint i = 0; i < list.size(); i++) {
 		const Vehicle *v = list[i];
-		CommandCost ret = Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(flags, v->index, (service ? DepotCommand::Service : DepotCommand::None) | DepotCommand::DontCancel, {});
+		CommandCost ret = Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(flags, v->index, (service ? DepotCommandFlag::Service : DepotCommandFlags{}) | DepotCommandFlag::DontCancel, {});
 
 		if (ret.Succeeded()) {
 			had_success = true;
@@ -1044,12 +1044,12 @@ static CommandCost SendAllVehiclesToDepot(DoCommandFlag flags, bool service, con
  * @param vli VehicleListIdentifier.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSendVehicleToDepot(DoCommandFlag flags, VehicleID veh_id, DepotCommand depot_cmd, const VehicleListIdentifier &vli)
+CommandCost CmdSendVehicleToDepot(DoCommandFlag flags, VehicleID veh_id, DepotCommandFlags depot_cmd, const VehicleListIdentifier &vli)
 {
-	if (HasFlag(depot_cmd, DepotCommand::MassSend)) {
+	if (depot_cmd.Test(DepotCommandFlag::MassSend)) {
 		/* Mass goto depot requested */
 		if (!vli.Valid()) return CMD_ERROR;
-		return SendAllVehiclesToDepot(flags, HasFlag(depot_cmd, DepotCommand::Service), vli);
+		return SendAllVehiclesToDepot(flags, depot_cmd.Test(DepotCommandFlag::Service), vli);
 	}
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
