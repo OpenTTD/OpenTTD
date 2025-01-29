@@ -511,13 +511,13 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	return depot + ::TileOffsByDiagDir(::GetRoadDepotDirection(depot));
 }
 
-/* static */ TileIndex ScriptRoad::GetRoadStationFrontTile(TileIndex station)
+/* static */ TileIndex ScriptRoad::GetRoadStationFrontTile(TileIndex tile)
 {
-	if (!IsRoadStationTile(station)) return INVALID_TILE;
+	if (!IsRoadStationTile(tile) && !IsRoadWaypoint(tile)) return INVALID_TILE;
 
-	if (::IsBayRoadStopTile(station)) return station + ::TileOffsByDiagDir(::GetBayRoadStopDir(station));
+	if (::IsBayRoadStopTile(tile)) return tile + ::TileOffsByDiagDir(::GetBayRoadStopDir(tile));
 
-	return station - ::TileOffsByAxis(::GetDriveThroughStopAxis(station));
+	return tile - ::TileOffsByAxis(::GetDriveThroughStopAxis(tile));
 }
 
 /* static */ TileIndex ScriptRoad::GetDriveThroughBackTile(TileIndex tile)
