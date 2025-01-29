@@ -1056,7 +1056,7 @@ struct NetworkStartServerWindow : public Window {
 			case WID_NSS_CLIENTS_BTND:    case WID_NSS_CLIENTS_BTNU:    // Click on up/down button for number of clients
 			case WID_NSS_COMPANIES_BTND:  case WID_NSS_COMPANIES_BTNU:  // Click on up/down button for number of companies
 				/* Don't allow too fast scrolling. */
-				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
+				if (!this->flags.Test(WindowFlag::Timeout) || this->timeout_timer <= 1) {
 					this->HandleButtonClick(widget);
 					this->SetDirty();
 					switch (widget) {

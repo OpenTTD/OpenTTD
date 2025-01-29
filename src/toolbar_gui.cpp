@@ -1211,7 +1211,7 @@ static CallBackFunction ToolbarScenDatePanel(Window *w)
 static CallBackFunction ToolbarScenDateBackward(Window *w)
 {
 	/* don't allow too fast scrolling */
-	if (!(w->flags & WF_TIMEOUT) || w->timeout_timer <= 1) {
+	if (!w->flags.Test(WindowFlag::Timeout) || w->timeout_timer <= 1) {
 		w->HandleButtonClick(WID_TE_DATE_BACKWARD);
 		w->SetDirty();
 
@@ -1224,7 +1224,7 @@ static CallBackFunction ToolbarScenDateBackward(Window *w)
 static CallBackFunction ToolbarScenDateForward(Window *w)
 {
 	/* don't allow too fast scrolling */
-	if (!(w->flags & WF_TIMEOUT) || w->timeout_timer <= 1) {
+	if (!w->flags.Test(WindowFlag::Timeout) || w->timeout_timer <= 1) {
 		w->HandleButtonClick(WID_TE_DATE_FORWARD);
 		w->SetDirty();
 
@@ -1991,7 +1991,7 @@ struct MainToolbarWindow : Window {
 		this->InitNested(0);
 
 		_last_started_action = CBF_NONE;
-		CLRBITS(this->flags, WF_WHITE_BORDER);
+		this->flags.Reset(WindowFlag::WhiteBorder);
 		this->SetWidgetDisabledState(WID_TN_PAUSE, _networking && !_network_server); // if not server, disable pause button
 		this->SetWidgetDisabledState(WID_TN_FAST_FORWARD, _networking); // if networking, disable fast-forward button
 		PositionMainToolbar(this);
@@ -2332,7 +2332,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		this->InitNested(0);
 
 		_last_started_action = CBF_NONE;
-		CLRBITS(this->flags, WF_WHITE_BORDER);
+		this->flags.Reset(WindowFlag::WhiteBorder);
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
 	}

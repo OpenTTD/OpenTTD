@@ -36,7 +36,7 @@ struct EndGameHighScoreBaseWindow : Window {
 	EndGameHighScoreBaseWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->InitNested();
-		CLRBITS(this->flags, WF_WHITE_BORDER);
+		this->flags.Reset(WindowFlag::WhiteBorder);
 		ResizeWindow(this, _screen.width - this->width, _screen.height - this->height);
 	}
 

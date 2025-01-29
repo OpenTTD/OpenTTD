@@ -68,7 +68,7 @@ struct StatusBarWindow : Window {
 		this->ticker_scroll = TICKER_STOP;
 
 		this->InitNested();
-		CLRBITS(this->flags, WF_WHITE_BORDER);
+		this->flags.Reset(WindowFlag::WhiteBorder);
 		PositionStatusbar(this);
 	}
 

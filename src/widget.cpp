@@ -732,11 +732,11 @@ void Window::DrawWidgets() const
 {
 	this->nested_root->Draw(this);
 
-	if (this->flags & WF_WHITE_BORDER) {
+	if (this->flags.Test(WindowFlag::WhiteBorder)) {
 		DrawFrameRect(0, 0, this->width - 1, this->height - 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 
-	if (this->flags & WF_HIGHLIGHTED) {
+	if (this->flags.Test(WindowFlag::Highlighted)) {
 		extern bool _window_highlight_colour;
 		for (const auto &pair : this->widget_lookup) {
 			const NWidgetBase *widget = pair.second;
@@ -3068,7 +3068,7 @@ void NWidgetLeaf::Draw(const Window *w)
 			break;
 
 		case WWT_STICKYBOX:
-			DrawStickyBox(r, this->colour, !!(w->flags & WF_STICKY));
+			DrawStickyBox(r, this->colour, w->flags.Test(WindowFlag::Sticky));
 			break;
 
 		case WWT_DEFSIZEBOX:
@@ -3076,7 +3076,7 @@ void NWidgetLeaf::Draw(const Window *w)
 			break;
 
 		case WWT_RESIZEBOX:
-			DrawResizeBox(r, this->colour, this->pos_x < (w->width / 2), !!(w->flags & WF_SIZING), this->widget_data.resize_widget_type == RWV_SHOW_BEVEL);
+			DrawResizeBox(r, this->colour, this->pos_x < (w->width / 2), w->flags.Test(WindowFlag::SizingLeft) || w->flags.Test(WindowFlag::SizingRight), this->widget_data.resize_widget_type == RWV_SHOW_BEVEL);
 			break;
 
 		case WWT_CLOSEBOX:
