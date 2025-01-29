@@ -116,7 +116,7 @@ struct DropdownWindow : Window {
 		this->UpdateSizeAndPosition();
 
 		this->FinishInitNested(0);
-		CLRBITS(this->flags, WF_WHITE_BORDER);
+		this->flags.Reset(WindowFlag::WhiteBorder);
 	}
 
 	void Close([[maybe_unused]] int data = 0) override

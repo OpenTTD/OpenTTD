@@ -53,7 +53,7 @@ public:
 	BootstrapBackground() : Window(_background_desc)
 	{
 		this->InitNested(0);
-		CLRBITS(this->flags, WF_WHITE_BORDER);
+		this->flags.Reset(WindowFlag::WhiteBorder);
 		ResizeWindow(this, _screen.width, _screen.height);
 	}
 

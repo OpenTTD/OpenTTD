@@ -224,23 +224,23 @@ enum SortButtonState : uint8_t {
 /**
  * Window flags.
  */
-enum WindowFlags : uint16_t {
-	WF_TIMEOUT           = 1 <<  0, ///< Window timeout counter.
+enum class WindowFlag : uint8_t {
+	Timeout,          ///< Window timeout counter.
 
-	WF_DRAGGING          = 1 <<  3, ///< Window is being dragged.
-	WF_SIZING_RIGHT      = 1 <<  4, ///< Window is being resized towards the right.
-	WF_SIZING_LEFT       = 1 <<  5, ///< Window is being resized towards the left.
-	WF_SIZING            = WF_SIZING_RIGHT | WF_SIZING_LEFT, ///< Window is being resized.
-	WF_STICKY            = 1 <<  6, ///< Window is made sticky by user
-	WF_DISABLE_VP_SCROLL = 1 <<  7, ///< Window does not do autoscroll, @see HandleAutoscroll().
-	WF_WHITE_BORDER      = 1 <<  8, ///< Window white border counter bit mask.
-	WF_HIGHLIGHTED       = 1 <<  9, ///< Window has a widget that has a highlight.
-	WF_CENTERED          = 1 << 10, ///< Window is centered and shall stay centered after ReInit.
+	Dragging,         ///< Window is being dragged.
+	SizingRight,      ///< Window is being resized towards the right.
+	SizingLeft,       ///< Window is being resized towards the left.
+
+	Sticky,           ///< Window is made sticky by user
+	DisableVpScroll,  ///< Window does not do autoscroll, @see HandleAutoscroll().
+	WhiteBorder,      ///< Window white border counter bit mask.
+	Highlighted,      ///< Window has a widget that has a highlight.
+	Centred,          ///< Window is centered and shall stay centered after ReInit.
 };
-DECLARE_ENUM_AS_BIT_SET(WindowFlags)
+using WindowFlags = EnumBitSet<WindowFlag, uint16_t>;
 
-static const int TIMEOUT_DURATION = 7; ///< The initial timeout value for WF_TIMEOUT.
-static const int WHITE_BORDER_DURATION = 3; ///< The initial timeout value for WF_WHITE_BORDER.
+static const int TIMEOUT_DURATION = 7; ///< The initial timeout value for WindowFlag::Timeout.
+static const int WHITE_BORDER_DURATION = 3; ///< The initial timeout value for WindowFlag::WhiteBorder.
 
 /**
  * Data structure for a window viewport.
@@ -303,8 +303,8 @@ public:
 
 	int scale; ///< Scale of this window -- used to determine how to resize.
 
-	uint8_t timeout_timer;      ///< Timer value of the WF_TIMEOUT for flags.
-	uint8_t white_border_timer; ///< Timer value of the WF_WHITE_BORDER for flags.
+	uint8_t timeout_timer;      ///< Timer value of the WindowFlag::Timeout for flags.
+	uint8_t white_border_timer; ///< Timer value of the WindowFlag::WhiteBorder for flags.
 
 	int left;   ///< x position of left edge of the window
 	int top;    ///< y position of top edge of the window
@@ -360,7 +360,7 @@ public:
 	 */
 	inline void SetTimeout()
 	{
-		this->flags |= WF_TIMEOUT;
+		this->flags.Set(WindowFlag::Timeout);
 		this->timeout_timer = TIMEOUT_DURATION;
 	}
 
@@ -369,7 +369,7 @@ public:
 	 */
 	inline void SetWhiteBorder()
 	{
-		this->flags |= WF_WHITE_BORDER;
+		this->flags.Set(WindowFlag::WhiteBorder);
 		this->white_border_timer = WHITE_BORDER_DURATION;
 	}
 

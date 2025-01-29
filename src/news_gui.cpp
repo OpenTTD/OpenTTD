@@ -358,7 +358,7 @@ struct NewsWindow : Window {
 		this->chat_height = (w != nullptr) ? w->height : 0;
 		this->status_height = FindWindowById(WC_STATUS_BAR, 0)->height;
 
-		this->flags |= WF_DISABLE_VP_SCROLL;
+		this->flags.Set(WindowFlag::DisableVpScroll);
 
 		this->CreateNestedTree();
 

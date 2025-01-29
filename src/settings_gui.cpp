@@ -634,7 +634,7 @@ struct GameOptionsWindow : Window {
 		y = GetStringHeight(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, wid->current_x);
 		changed |= wid->UpdateVerticalSize(y);
 
-		if (changed) this->ReInit(0, 0, this->flags & WF_CENTERED);
+		if (changed) this->ReInit(0, 0, this->flags.Test(WindowFlag::Centred));
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -2664,7 +2664,7 @@ struct GameSettingsWindow : Window {
 				if (step == 0) step = 1;
 
 				/* don't allow too fast scrolling */
-				if ((this->flags & WF_TIMEOUT) && this->timeout_timer > 1) {
+				if (this->flags.Test(WindowFlag::Timeout) && this->timeout_timer > 1) {
 					_left_button_clicked = false;
 					return;
 				}
