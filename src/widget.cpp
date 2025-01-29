@@ -932,8 +932,8 @@ void NWidgetBase::ApplyAspectRatio()
 
 	uint x = this->smallest_x;
 	uint y = this->smallest_y;
-	if (HasFlag(this->aspect_flags, AspectFlags::ResizeX)) x = std::max(this->smallest_x, static_cast<uint>(this->smallest_y * std::abs(this->aspect_ratio)));
-	if (HasFlag(this->aspect_flags, AspectFlags::ResizeY)) y = std::max(this->smallest_y, static_cast<uint>(this->smallest_x / std::abs(this->aspect_ratio)));
+	if (this->aspect_flags.Test(AspectFlag::ResizeX)) x = std::max(this->smallest_x, static_cast<uint>(this->smallest_y * std::abs(this->aspect_ratio)));
+	if (this->aspect_flags.Test(AspectFlag::ResizeY)) y = std::max(this->smallest_y, static_cast<uint>(this->smallest_x / std::abs(this->aspect_ratio)));
 
 	this->smallest_x = x;
 	this->smallest_y = y;
