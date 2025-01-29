@@ -12,6 +12,7 @@
 
 #include "engine_type.h"
 #include "vehicle_type.h"
+#include "core/enum_type.hpp"
 #include "core/pool_type.hpp"
 #include "newgrf_commons.h"
 #include "timer/timer_game_calendar.h"
@@ -23,13 +24,13 @@ struct WagonOverride {
 };
 
 /** Flags used client-side in the purchase/autorenew engine list. */
-enum class EngineDisplayFlags : uint8_t {
-	None        = 0,         ///< No flag set.
-	HasVariants = (1U << 0), ///< Set if engine has variants.
-	IsFolded    = (1U << 1), ///< Set if display of variants should be folded (hidden).
-	Shaded      = (1U << 2), ///< Set if engine should be masked.
+enum class EngineDisplayFlag : uint8_t {
+	HasVariants, ///< Set if engine has variants.
+	IsFolded, ///< Set if display of variants should be folded (hidden).
+	Shaded, ///< Set if engine should be masked.
 };
-DECLARE_ENUM_AS_BIT_SET(EngineDisplayFlags)
+
+using EngineDisplayFlags = EnumBitSet<EngineDisplayFlag, uint8_t>;
 
 typedef Pool<Engine, EngineID, 64, 64000> EnginePool;
 extern EnginePool _engine_pool;

@@ -1048,9 +1048,9 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 	for (auto it = first; it != last; ++it) {
 		const auto &item = *it;
 		uint indent       = item.indent * WidgetDimensions::scaled.hsep_indent;
-		bool has_variants = HasFlag(item.flags, EngineDisplayFlags::HasVariants);
-		bool is_folded    = HasFlag(item.flags, EngineDisplayFlags::IsFolded);
-		bool shaded       = HasFlag(item.flags, EngineDisplayFlags::Shaded);
+		bool has_variants = item.flags.Test(EngineDisplayFlag::HasVariants);
+		bool is_folded    = item.flags.Test(EngineDisplayFlag::IsFolded);
+		bool shaded       = item.flags.Test(EngineDisplayFlag::Shaded);
 
 		if (item.indent > 0) {
 			/* Draw tree continuation lines. */
@@ -1134,14 +1134,14 @@ void GUIEngineListAddChildren(GUIEngineList &dst, const GUIEngineList &src, Engi
 
 		const Engine *e = Engine::Get(item.engine_id);
 		EngineDisplayFlags flags = item.flags;
-		if (e->display_last_variant != INVALID_ENGINE) flags &= ~EngineDisplayFlags::Shaded;
+		if (e->display_last_variant != INVALID_ENGINE) flags.Reset(EngineDisplayFlag::Shaded);
 		dst.emplace_back(e->display_last_variant == INVALID_ENGINE ? item.engine_id : e->display_last_variant, item.engine_id, flags, indent);
 
 		/* Add variants if not folded */
-		if (HasFlag(item.flags, EngineDisplayFlags::HasVariants) && !HasFlag(item.flags, EngineDisplayFlags::IsFolded)) {
+		if (item.flags.Test(EngineDisplayFlag::HasVariants) && !item.flags.Test(EngineDisplayFlag::IsFolded)) {
 			/* Add this engine again as a child */
-			if (!HasFlag(item.flags, EngineDisplayFlags::Shaded)) {
-				dst.emplace_back(item.engine_id, item.engine_id, EngineDisplayFlags::None, indent + 1);
+			if (!item.flags.Test(EngineDisplayFlag::Shaded)) {
+				dst.emplace_back(item.engine_id, item.engine_id, EngineDisplayFlags{}, indent + 1);
 			}
 			GUIEngineListAddChildren(dst, src, item.engine_id, indent + 1);
 		}
@@ -1252,7 +1252,7 @@ struct BuildVehicleWindow : Window {
 
 		/* Select the first unshaded engine in the list as default when opening the window */
 		EngineID engine = INVALID_ENGINE;
-		auto it = std::ranges::find_if(this->eng_list, [&](GUIEngineListItem &item) { return !HasFlag(item.flags, EngineDisplayFlags::Shaded); });
+		auto it = std::ranges::find_if(this->eng_list, [](const GUIEngineListItem &item) { return !item.flags.Test(EngineDisplayFlag::Shaded); });
 		if (it != this->eng_list.end()) engine = it->engine_id;
 		this->SelectEngine(engine);
 	}
@@ -1357,7 +1357,7 @@ struct BuildVehicleWindow : Window {
 	/** Filter a single engine */
 	bool FilterSingleEngine(EngineID eid)
 	{
-		GUIEngineListItem item = {eid, eid, EngineDisplayFlags::None, 0};
+		GUIEngineListItem item = {eid, eid, EngineDisplayFlags{}, 0};
 		return CargoAndEngineFilter(&item, this->cargo_filter_criteria);
 	}
 
@@ -1424,7 +1424,7 @@ struct BuildVehicleWindow : Window {
 		for (const auto &variant : variants) {
 			if (std::ranges::find(list, variant, &GUIEngineListItem::engine_id) == list.end()) {
 				const Engine *e = Engine::Get(variant);
-				list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlags::Shaded, 0);
+				list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlag::Shaded, 0);
 				if (e->u.rail.railveh_type != RAILVEH_WAGON) num_engines++;
 			}
 		}
@@ -1566,7 +1566,7 @@ struct BuildVehicleWindow : Window {
 		for (const auto &variant : variants) {
 			if (std::ranges::find(this->eng_list, variant, &GUIEngineListItem::engine_id) == this->eng_list.end()) {
 				const Engine *e = Engine::Get(variant);
-				this->eng_list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlags::Shaded, 0);
+				this->eng_list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlag::Shaded, 0);
 			}
 		}
 
@@ -1655,17 +1655,17 @@ struct BuildVehicleWindow : Window {
 				if (it != this->eng_list.end()) {
 					const auto &item = *it;
 					const Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix).WithWidth(WidgetDimensions::scaled.hsep_indent * (item.indent + 1), _current_text_dir == TD_RTL);
-					if (HasFlag(item.flags, EngineDisplayFlags::HasVariants) && IsInsideMM(r.left, r.right, pt.x)) {
+					if (item.flags.Test(EngineDisplayFlag::HasVariants) && IsInsideMM(r.left, r.right, pt.x)) {
 						/* toggle folded flag on engine */
 						assert(item.variant_id != INVALID_ENGINE);
 						Engine *engine = Engine::Get(item.variant_id);
-						engine->display_flags ^= EngineDisplayFlags::IsFolded;
+						engine->display_flags.Flip(EngineDisplayFlag::IsFolded);
 
 						InvalidateWindowData(WC_REPLACE_VEHICLE, this->vehicle_type, 0); // Update the autoreplace window
 						InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
 						return;
 					}
-					if (!HasFlag(item.flags, EngineDisplayFlags::Shaded)) e = item.engine_id;
+					if (!item.flags.Test(EngineDisplayFlag::Shaded)) e = item.engine_id;
 				}
 				this->SelectEngine(e);
 				this->SetDirty();
