@@ -806,7 +806,7 @@ public:
 
 	virtual void SetDestTile(TileIndex tile) { this->dest_tile = tile; }
 
-	CommandCost SendToDepot(DoCommandFlag flags, DepotCommand command);
+	CommandCost SendToDepot(DoCommandFlag flags, DepotCommandFlags command);
 
 	void UpdateVisualEffect(bool allow_power_change = true);
 	void ShowVisualEffect() const;
