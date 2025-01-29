@@ -338,7 +338,7 @@ static constexpr NWidgetPart _nested_osk_widgets[] = {
 static WindowDesc _osk_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_OSK, WC_NONE,
-	0,
+	{},
 	_nested_osk_widgets
 );
 

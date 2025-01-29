@@ -1154,25 +1154,25 @@ static WindowDesc _vehicle_group_desc[] = {
 	{
 		WDP_AUTO, "list_groups_train", 525, 246,
 		WC_TRAINS_LIST, WC_NONE,
-		0,
+		{},
 		_nested_group_widgets
 	},
 	{
 		WDP_AUTO, "list_groups_roadveh", 460, 246,
 		WC_ROADVEH_LIST, WC_NONE,
-		0,
+		{},
 		_nested_group_widgets
 	},
 	{
 		WDP_AUTO, "list_groups_ship", 460, 246,
 		WC_SHIPS_LIST, WC_NONE,
-		0,
+		{},
 		_nested_group_widgets
 	},
 	{
 		WDP_AUTO, "list_groups_aircraft", 460, 246,
 		WC_AIRCRAFT_LIST, WC_NONE,
-		0,
+		{},
 		_nested_group_widgets
 	},
 };

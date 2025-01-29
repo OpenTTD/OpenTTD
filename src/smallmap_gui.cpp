@@ -2054,7 +2054,7 @@ static constexpr NWidgetPart _nested_smallmap_widgets[] = {
 static WindowDesc _smallmap_desc(
 	WDP_AUTO, "smallmap", 484, 314,
 	WC_SMALLMAP, WC_NONE,
-	0,
+	{},
 	_nested_smallmap_widgets
 );
 

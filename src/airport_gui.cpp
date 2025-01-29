@@ -211,7 +211,7 @@ static constexpr NWidgetPart _nested_air_toolbar_widgets[] = {
 static WindowDesc _air_toolbar_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_air", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_air_toolbar_widgets,
 	&BuildAirToolbarWindow::hotkeys
 );
@@ -620,7 +620,7 @@ static constexpr NWidgetPart _nested_build_airport_widgets[] = {
 static WindowDesc _build_airport_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_build_airport_widgets
 );
 

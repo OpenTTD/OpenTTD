@@ -85,7 +85,7 @@ static constexpr NWidgetPart _nested_ai_config_widgets[] = {
 static WindowDesc _ai_config_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
-	0,
+	{},
 	_nested_ai_config_widgets
 );
 

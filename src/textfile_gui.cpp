@@ -78,7 +78,7 @@ static constexpr NWidgetPart _nested_textfile_widgets[] = {
 static WindowDesc _textfile_desc(
 	WDP_CENTER, "textfile", 630, 460,
 	WC_TEXTFILE, WC_NONE,
-	0,
+	{},
 	_nested_textfile_widgets
 );
 

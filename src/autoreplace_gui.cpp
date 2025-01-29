@@ -764,7 +764,7 @@ static constexpr NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 static WindowDesc _replace_rail_vehicle_desc(
 	WDP_AUTO, "replace_vehicle_train", 500, 140,
 	WC_REPLACE_VEHICLE, WC_NONE,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_replace_rail_vehicle_widgets
 );
 
@@ -822,7 +822,7 @@ static constexpr NWidgetPart _nested_replace_road_vehicle_widgets[] = {
 static WindowDesc _replace_road_vehicle_desc(
 	WDP_AUTO, "replace_vehicle_road", 500, 140,
 	WC_REPLACE_VEHICLE, WC_NONE,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_replace_road_vehicle_widgets
 );
 
@@ -876,7 +876,7 @@ static constexpr NWidgetPart _nested_replace_vehicle_widgets[] = {
 static WindowDesc _replace_vehicle_desc(
 	WDP_AUTO, "replace_vehicle", 456, 118,
 	WC_REPLACE_VEHICLE, WC_NONE,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_replace_vehicle_widgets
 );
 

@@ -969,14 +969,14 @@ static constexpr NWidgetPart _nested_story_book_widgets[] = {
 static WindowDesc _story_book_desc(
 	WDP_AUTO, "view_story", 400, 300,
 	WC_STORY_BOOK, WC_NONE,
-	0,
+	{},
 	_nested_story_book_widgets
 );
 
 static WindowDesc _story_book_gs_desc(
 	WDP_CENTER, "view_story_gs", 400, 300,
 	WC_STORY_BOOK, WC_NONE,
-	0,
+	{},
 	_nested_story_book_widgets
 );
 

@@ -270,7 +270,7 @@ static constexpr NWidgetPart _nested_subsidies_list_widgets[] = {
 static WindowDesc _subsidies_list_desc(
 	WDP_AUTO, "list_subsidies", 500, 127,
 	WC_SUBSIDIES_LIST, WC_NONE,
-	0,
+	{},
 	_nested_subsidies_list_widgets
 );
 

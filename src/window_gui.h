@@ -149,6 +149,17 @@ enum WindowPosition : uint8_t {
 	WDP_ALIGN_TOOLBAR, ///< Align toward the toolbar
 };
 
+/**
+ * Window default widget/window handling flags
+ */
+enum class WindowDefaultFlag : uint8_t {
+	Construction, ///< This window is used for construction; close it whenever changing company.
+	Modal, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
+	NoFocus, ///< This window won't get focus/make any other window lose focus when click
+	NoClose, ///< This window can't be interactively closed
+};
+using WindowDefaultFlags = EnumBitSet<WindowDefaultFlag, uint8_t>;
+
 Point GetToolbarAlignedWindowPosition(int window_width);
 
 struct HotkeyList;
@@ -159,7 +170,7 @@ struct HotkeyList;
 struct WindowDesc {
 
 	WindowDesc(WindowPosition default_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
-			WindowClass window_class, WindowClass parent_class, uint32_t flags,
+			WindowClass window_class, WindowClass parent_class, WindowDefaultFlags flags,
 			const std::span<const NWidgetPart> nwid_parts, HotkeyList *hotkeys = nullptr,
 			const std::source_location location = std::source_location::current());
 
@@ -170,7 +181,7 @@ struct WindowDesc {
 	const WindowClass cls; ///< Class of the window, @see WindowClass.
 	const WindowClass parent_cls; ///< Class of the parent window. @see WindowClass
 	const char *ini_key; ///< Key to store window defaults in openttd.cfg. \c nullptr if nothing shall be stored.
-	const uint32_t flags; ///< Flags. @see WindowDefaultFlag
+	const WindowDefaultFlags flags; ///< Flags. @see WindowDefaultFlag
 	const std::span<const NWidgetPart> nwid_parts; ///< Span of nested widget parts describing the window.
 	const HotkeyList *hotkeys; ///< Hotkeys for the window.
 
@@ -194,16 +205,6 @@ private:
 	 */
 	WindowDesc(const WindowDesc &) = delete;
 	WindowDesc& operator=(const WindowDesc &) = delete;
-};
-
-/**
- * Window default widget/window handling flags
- */
-enum WindowDefaultFlag : uint8_t {
-	WDF_CONSTRUCTION    =   1 << 0, ///< This window is used for construction; close it whenever changing company.
-	WDF_MODAL           =   1 << 1, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
-	WDF_NO_FOCUS        =   1 << 2, ///< This window won't get focus/make any other window lose focus when click
-	WDF_NO_CLOSE        =   1 << 3, ///< This window can't be interactively closed
 };
 
 /**

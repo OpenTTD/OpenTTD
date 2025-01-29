@@ -299,7 +299,7 @@ static constexpr NWidgetPart _nested_build_industry_widgets[] = {
 static WindowDesc _build_industry_desc(
 	WDP_AUTO, "build_industry", 170, 212,
 	WC_BUILD_INDUSTRY, WC_NONE,
-	WDF_CONSTRUCTION,
+	WindowDefaultFlag::Construction,
 	_nested_build_industry_widgets
 );
 
@@ -1241,7 +1241,7 @@ static constexpr NWidgetPart _nested_industry_view_widgets[] = {
 static WindowDesc _industry_view_desc(
 	WDP_AUTO, "view_industry", 260, 120,
 	WC_INDUSTRY_VIEW, WC_NONE,
-	0,
+	{},
 	_nested_industry_view_widgets
 );
 
@@ -1942,7 +1942,7 @@ CargoType IndustryDirectoryWindow::produced_cargo_filter = CargoFilterCriteria::
 static WindowDesc _industry_directory_desc(
 	WDP_AUTO, "list_industries", 428, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
-	0,
+	{},
 	_nested_industry_directory_widgets,
 	&IndustryDirectoryWindow::hotkeys
 );
@@ -1981,7 +1981,7 @@ static constexpr NWidgetPart _nested_industry_cargoes_widgets[] = {
 static WindowDesc _industry_cargoes_desc(
 	WDP_AUTO, "industry_cargoes", 300, 210,
 	WC_INDUSTRY_CARGOES, WC_NONE,
-	0,
+	{},
 	_nested_industry_cargoes_widgets
 );
 

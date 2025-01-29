@@ -43,7 +43,7 @@ static constexpr NWidgetPart _background_widgets[] = {
 static WindowDesc _background_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
-	WDF_NO_CLOSE,
+	WindowDefaultFlag::NoClose,
 	_background_widgets
 );
 
@@ -79,7 +79,7 @@ static constexpr NWidgetPart _nested_bootstrap_errmsg_widgets[] = {
 static WindowDesc _bootstrap_errmsg_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
-	WDF_MODAL | WDF_NO_CLOSE,
+	{WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose},
 	_nested_bootstrap_errmsg_widgets
 );
 
@@ -136,7 +136,7 @@ static constexpr NWidgetPart _nested_bootstrap_download_status_window_widgets[] 
 static WindowDesc _bootstrap_download_status_window_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
-	WDF_MODAL | WDF_NO_CLOSE,
+	{WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose},
 	_nested_bootstrap_download_status_window_widgets
 );
 
@@ -188,7 +188,7 @@ static constexpr NWidgetPart _bootstrap_query_widgets[] = {
 static WindowDesc _bootstrap_query_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
-	WDF_NO_CLOSE,
+	WindowDefaultFlag::NoClose,
 	_bootstrap_query_widgets
 );
 
