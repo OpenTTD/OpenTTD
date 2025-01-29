@@ -300,12 +300,12 @@ public:
 	static TileIndex GetRoadDepotFrontTile(TileIndex depot);
 
 	/**
-	 * Gets the tile in front of a road station.
-	 * @param station The road station tile.
-	 * @pre IsRoadStationTile(station).
-	 * @return The tile in front of the road station.
+	 * Gets the tile in front of a road station, drive through road station or waypoint.
+	 * @param tile The road station, drive through road station or waypoint tile.
+	 * @pre IsRoadStationTile(tile) || IsRoadWaypoint(tile).
+	 * @return The tile in front of the road station, drive through road station or waypoint.
 	 */
-	static TileIndex GetRoadStationFrontTile(TileIndex station);
+	static TileIndex GetRoadStationFrontTile(TileIndex tile);
 
 	/**
 	 * Gets the tile at the back of a drive through road station or waypoint.
