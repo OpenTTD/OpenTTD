@@ -113,12 +113,11 @@ enum SizingType : uint8_t {
 	ST_RESIZE,   ///< Resize the nested widget tree.
 };
 
-enum class AspectFlags : uint8_t {
-	ResizeX = 1U << 0,
-	ResizeY = 1U << 1,
-	ResizeXY = ResizeX | ResizeY,
+enum class AspectFlag : uint8_t {
+	ResizeX,
+	ResizeY,
 };
-DECLARE_ENUM_AS_BIT_SET(AspectFlags)
+using AspectFlags = EnumBitSet<AspectFlag, uint8_t>;
 
 /* Forward declarations. */
 class NWidgetCore;
@@ -235,7 +234,7 @@ public:
 	uint current_x;       ///< Current horizontal size (after resizing).
 	uint current_y;       ///< Current vertical size (after resizing).
 	float aspect_ratio = 0; ///< Desired aspect ratio of widget.
-	AspectFlags aspect_flags = AspectFlags::ResizeX; ///< Which dimensions can be resized.
+	AspectFlags aspect_flags = AspectFlag::ResizeX; ///< Which dimensions can be resized.
 
 	int pos_x;            ///< Horizontal position of top-left corner of the widget in the window.
 	int pos_y;            ///< Vertical position of top-left corner of the widget in the window.
@@ -302,8 +301,8 @@ public:
 	void SetMinimalTextLines(uint8_t min_lines, uint8_t spacing, FontSize size);
 	void SetFill(uint fill_x, uint fill_y);
 	void SetResize(uint resize_x, uint resize_y);
-	void SetAspect(float ratio, AspectFlags flags = AspectFlags::ResizeX);
-	void SetAspect(int x_ratio, int y_ratio, AspectFlags flags = AspectFlags::ResizeX);
+	void SetAspect(float ratio, AspectFlags flags = AspectFlag::ResizeX);
+	void SetAspect(int x_ratio, int y_ratio, AspectFlags flags = AspectFlag::ResizeX);
 
 	bool UpdateMultilineWidgetSize(const std::string &str, int max_lines);
 	bool UpdateSize(uint min_x, uint min_y);
@@ -1360,7 +1359,7 @@ constexpr NWidgetPart SetScrollbar(WidgetID index)
  * @param flags Dimensions which should be resized.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetAspect(float ratio, AspectFlags flags = AspectFlags::ResizeX)
+constexpr NWidgetPart SetAspect(float ratio, AspectFlags flags = AspectFlag::ResizeX)
 {
 	return NWidgetPart{WPT_ASPECT, NWidgetPartAspect{ratio, flags}};
 }
