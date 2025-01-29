@@ -193,6 +193,15 @@ public:
 		return EnumBitSet{static_cast<Tstorage>(this->data & other.data)};
 	}
 
+	/**
+	 * Retrieve the raw value behind this EnumBitSet.
+	 * @returns the raw value.
+	 */
+	inline constexpr Tstorage base() const noexcept
+	{
+		return this->data;
+	}
+
 private:
 	Tstorage data; ///< Bitmask of enum values.
 };
