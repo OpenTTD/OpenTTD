@@ -18,14 +18,14 @@
 class LinkGraphOverlay;
 
 /** Flags to control how Viewport Strings are rendered. */
-enum class ViewportStringFlags : uint8_t {
-	Small           = (1U << 0), ///< Draw using the small font.
-	Shadow          = (1U << 1), ///< Draw an extra text shadow. Should only be used with ViewportStringFlags::Small, as normal font already has a shadow.
-	ColourRect      = (1U << 2), ///< Draw a colour rect around the sign.
-	TransparentRect = (1U << 3), ///< Draw a transparent rect around the sign.
-	TextColour      = (1U << 4), ///< Draw text in colour.
+enum class ViewportStringFlag : uint8_t {
+	Small, ///< Draw using the small font.
+	Shadow, ///< Draw an extra text shadow. Should only be used with ViewportStringFlag::Small, as normal font already has a shadow.
+	ColourRect, ///< Draw a colour rect around the sign.
+	TransparentRect, ///< Draw a transparent rect around the sign.
+	TextColour, ///< Draw text in colour.
 };
-DECLARE_ENUM_AS_BIT_SET(ViewportStringFlags)
+using ViewportStringFlags = EnumBitSet<ViewportStringFlag, uint8_t>;
 
 /**
  * Data structure for viewport, display of a part of the world
