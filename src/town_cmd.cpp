@@ -360,7 +360,7 @@ static void AnimateTile_Town(TileIndex tile)
 	 * Not exactly sure when this happens, but probably when a house changes.
 	 * Before this was just a return...so it'd leak animated tiles..
 	 * That bug seems to have been here since day 1?? */
-	if (!(HouseSpec::Get(GetHouseType(tile))->building_flags & BUILDING_IS_ANIMATED)) {
+	if (!HouseSpec::Get(GetHouseType(tile))->building_flags.Test(BuildingFlag::IsAnimated)) {
 		DeleteAnimatedTile(tile);
 		return;
 	}
@@ -479,9 +479,9 @@ static void RemoveNearbyStations(Town *t, TileIndex tile, BuildingFlags flags)
 		const Station *st = *it;
 
 		bool covers_area = st->TileIsInCatchment(tile);
-		if (flags & BUILDING_2_TILES_Y)   covers_area |= st->TileIsInCatchment(tile + TileDiffXY(0, 1));
-		if (flags & BUILDING_2_TILES_X)   covers_area |= st->TileIsInCatchment(tile + TileDiffXY(1, 0));
-		if (flags & BUILDING_HAS_4_TILES) covers_area |= st->TileIsInCatchment(tile + TileDiffXY(1, 1));
+		if (flags.Any(BUILDING_2_TILES_Y))   covers_area |= st->TileIsInCatchment(tile + TileDiffXY(0, 1));
+		if (flags.Any(BUILDING_2_TILES_X))   covers_area |= st->TileIsInCatchment(tile + TileDiffXY(1, 0));
+		if (flags.Any(BUILDING_HAS_4_TILES)) covers_area |= st->TileIsInCatchment(tile + TileDiffXY(1, 1));
 
 		if (covers_area && !st->CatchmentCoversTown(t->index)) {
 			it = t->stations_near.erase(it);
@@ -520,11 +520,11 @@ static void AdvanceSingleHouseConstruction(TileIndex tile)
  */
 static void AdvanceHouseConstruction(TileIndex tile)
 {
-	uint flags = HouseSpec::Get(GetHouseType(tile))->building_flags;
-	if (flags & BUILDING_HAS_1_TILE)  AdvanceSingleHouseConstruction(TileAddXY(tile, 0, 0));
-	if (flags & BUILDING_2_TILES_Y)   AdvanceSingleHouseConstruction(TileAddXY(tile, 0, 1));
-	if (flags & BUILDING_2_TILES_X)   AdvanceSingleHouseConstruction(TileAddXY(tile, 1, 0));
-	if (flags & BUILDING_HAS_4_TILES) AdvanceSingleHouseConstruction(TileAddXY(tile, 1, 1));
+	BuildingFlags flags = HouseSpec::Get(GetHouseType(tile))->building_flags;
+	if (flags.Any(BUILDING_HAS_1_TILE))  AdvanceSingleHouseConstruction(TileAddXY(tile, 0, 0));
+	if (flags.Any(BUILDING_2_TILES_Y))   AdvanceSingleHouseConstruction(TileAddXY(tile, 0, 1));
+	if (flags.Any(BUILDING_2_TILES_X))   AdvanceSingleHouseConstruction(TileAddXY(tile, 1, 0));
+	if (flags.Any(BUILDING_HAS_4_TILES)) AdvanceSingleHouseConstruction(TileAddXY(tile, 1, 1));
 }
 
 /**
@@ -619,7 +619,7 @@ static void TileLoop_Town(TileIndex tile)
 	const HouseSpec *hs = HouseSpec::Get(house_id);
 
 	/* If the lift has a destination, it is already an animated tile. */
-	if ((hs->building_flags & BUILDING_IS_ANIMATED) &&
+	if (hs->building_flags.Test(BuildingFlag::IsAnimated) &&
 			house_id < NEW_HOUSE_OFFSET &&
 			!LiftHasDestination(tile) &&
 			Chance16(1, 2)) {
@@ -671,7 +671,7 @@ static void TileLoop_Town(TileIndex tile)
 
 	Backup<CompanyID> cur_company(_current_company, OWNER_TOWN);
 
-	if ((hs->building_flags & BUILDING_HAS_1_TILE) &&
+	if (hs->building_flags.Any(BUILDING_HAS_1_TILE) &&
 			HasBit(t->flags, TOWN_IS_GROWING) &&
 			CanDeleteHouse(tile) &&
 			GetHouseAge(tile) >= hs->minimum_life &&
@@ -685,18 +685,18 @@ static void TileLoop_Town(TileIndex tile)
 			/* If we are multi-tile houses, make sure to replace the house
 			 * closest to city center. If we do not do this, houses tend to
 			 * wander away from roads and other houses. */
-			if (hs->building_flags & BUILDING_HAS_2_TILES) {
+			if (hs->building_flags.Any(BUILDING_HAS_2_TILES)) {
 				/* House tiles are always the most north tile. Move the new
 				 * house to the south if we are north of the city center. */
 				TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
 				int x = Clamp(grid_pos.x, 0, 1);
 				int y = Clamp(grid_pos.y, 0, 1);
 
-				if (hs->building_flags & TILE_SIZE_2x2) {
+				if (hs->building_flags.Test(BuildingFlag::Size2x2)) {
 					tile = TileAddXY(tile, x, y);
-				} else if (hs->building_flags & TILE_SIZE_1x2) {
+				} else if (hs->building_flags.Test(BuildingFlag::Size1x2)) {
 					tile = TileAddXY(tile, 0, y);
-				} else if (hs->building_flags & TILE_SIZE_2x1) {
+				} else if (hs->building_flags.Test(BuildingFlag::Size2x1)) {
 					tile = TileAddXY(tile, x, 0);
 				}
 			}
@@ -2509,7 +2509,7 @@ static inline void ClearMakeHouseTile(TileIndex tile, Town *t, uint8_t counter, 
 
 	IncreaseBuildingCount(t, type);
 	MakeHouseTile(tile, t->index, counter, stage, type, random_bits);
-	if (HouseSpec::Get(type)->building_flags & BUILDING_IS_ANIMATED) AddAnimatedTile(tile, false);
+	if (HouseSpec::Get(type)->building_flags.Test(BuildingFlag::IsAnimated)) AddAnimatedTile(tile, false);
 
 	MarkTileDirtyByTile(tile);
 }
@@ -2530,11 +2530,11 @@ static void MakeTownHouse(TileIndex tile, Town *t, uint8_t counter, uint8_t stag
 	BuildingFlags size = HouseSpec::Get(type)->building_flags;
 
 	ClearMakeHouseTile(tile, t, counter, stage, type, random_bits);
-	if (size & BUILDING_2_TILES_Y)   ClearMakeHouseTile(tile + TileDiffXY(0, 1), t, counter, stage, ++type, random_bits);
-	if (size & BUILDING_2_TILES_X)   ClearMakeHouseTile(tile + TileDiffXY(1, 0), t, counter, stage, ++type, random_bits);
-	if (size & BUILDING_HAS_4_TILES) ClearMakeHouseTile(tile + TileDiffXY(1, 1), t, counter, stage, ++type, random_bits);
+	if (size.Any(BUILDING_2_TILES_Y))   ClearMakeHouseTile(tile + TileDiffXY(0, 1), t, counter, stage, ++type, random_bits);
+	if (size.Any(BUILDING_2_TILES_X))   ClearMakeHouseTile(tile + TileDiffXY(1, 0), t, counter, stage, ++type, random_bits);
+	if (size.Any(BUILDING_HAS_4_TILES)) ClearMakeHouseTile(tile + TileDiffXY(1, 1), t, counter, stage, ++type, random_bits);
 
-	ForAllStationsAroundTiles(TileArea(tile, (size & BUILDING_2_TILES_X) ? 2 : 1, (size & BUILDING_2_TILES_Y) ? 2 : 1), [t](Station *st, TileIndex) {
+	ForAllStationsAroundTiles(TileArea(tile, size.Any(BUILDING_2_TILES_X) ? 2 : 1, size.Any(BUILDING_2_TILES_Y) ? 2 : 1), [t](Station *st, TileIndex) {
 		t->stations_near.insert(st);
 		return true;
 	});
@@ -2844,23 +2844,23 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 		/* Special houses that there can be only one of. */
 		uint oneof = 0;
 
-		if (hs->building_flags & BUILDING_IS_CHURCH) {
+		if (hs->building_flags.Test(BuildingFlag::IsChurch)) {
 			SetBit(oneof, TOWN_HAS_CHURCH);
-		} else if (hs->building_flags & BUILDING_IS_STADIUM) {
+		} else if (hs->building_flags.Test(BuildingFlag::IsStadium)) {
 			SetBit(oneof, TOWN_HAS_STADIUM);
 		}
 
 		if (t->flags & oneof) continue;
 
 		/* Make sure there is no slope? */
-		bool noslope = (hs->building_flags & TILE_NOT_SLOPED) != 0;
+		bool noslope = hs->building_flags.Test(BuildingFlag::NotSloped);
 		if (noslope && slope != SLOPE_FLAT) continue;
 
-		if (hs->building_flags & TILE_SIZE_2x2) {
+		if (hs->building_flags.Test(BuildingFlag::Size2x2)) {
 			if (!CheckTownBuild2x2House(&tile, t, maxz, noslope)) continue;
-		} else if (hs->building_flags & TILE_SIZE_2x1) {
+		} else if (hs->building_flags.Test(BuildingFlag::Size2x1)) {
 			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DIAGDIR_SW)) continue;
-		} else if (hs->building_flags & TILE_SIZE_1x2) {
+		} else if (hs->building_flags.Test(BuildingFlag::Size1x2)) {
 			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DIAGDIR_SE)) continue;
 		} else {
 			/* 1x1 house checks are already done */
@@ -2909,13 +2909,13 @@ CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house)
 	int maxz = GetTileMaxZ(tile);
 
 	/* Make sure there is no slope? */
-	bool noslope = (hs->building_flags & TILE_NOT_SLOPED) != 0;
+	bool noslope = hs->building_flags.Test(BuildingFlag::NotSloped);
 	if (noslope && slope != SLOPE_FLAT) return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
 
 	TileArea ta = tile;
-	if (hs->building_flags & TILE_SIZE_2x2) ta.Add(TileAddXY(tile, 1, 1));
-	if (hs->building_flags & TILE_SIZE_2x1) ta.Add(TileAddByDiagDir(tile, DIAGDIR_SW));
-	if (hs->building_flags & TILE_SIZE_1x2) ta.Add(TileAddByDiagDir(tile, DIAGDIR_SE));
+	if (hs->building_flags.Test(BuildingFlag::Size2x2)) ta.Add(TileAddXY(tile, 1, 1));
+	if (hs->building_flags.Test(BuildingFlag::Size2x1)) ta.Add(TileAddByDiagDir(tile, DIAGDIR_SW));
+	if (hs->building_flags.Test(BuildingFlag::Size1x2)) ta.Add(TileAddByDiagDir(tile, DIAGDIR_SE));
 
 	/* Check additonal tiles covered by this house. */
 	for (const TileIndex &subtile : ta) {
@@ -2957,16 +2957,16 @@ static void DoClearTownHouseHelper(TileIndex tile, Town *t, HouseID house)
 TileIndexDiff GetHouseNorthPart(HouseID &house)
 {
 	if (house >= 3) { // house id 0,1,2 MUST be single tile houses, or this code breaks.
-		if (HouseSpec::Get(house - 1)->building_flags & TILE_SIZE_2x1) {
+		if (HouseSpec::Get(house - 1)->building_flags.Test(BuildingFlag::Size2x1)) {
 			house--;
 			return TileDiffXY(-1, 0);
-		} else if (HouseSpec::Get(house - 1)->building_flags & BUILDING_2_TILES_Y) {
+		} else if (HouseSpec::Get(house - 1)->building_flags.Any(BUILDING_2_TILES_Y)) {
 			house--;
 			return TileDiffXY(0, -1);
-		} else if (HouseSpec::Get(house - 2)->building_flags & BUILDING_HAS_4_TILES) {
+		} else if (HouseSpec::Get(house - 2)->building_flags.Any(BUILDING_HAS_4_TILES)) {
 			house -= 2;
 			return TileDiffXY(-1, 0);
-		} else if (HouseSpec::Get(house - 3)->building_flags & BUILDING_HAS_4_TILES) {
+		} else if (HouseSpec::Get(house - 3)->building_flags.Any(BUILDING_HAS_4_TILES)) {
 			house -= 3;
 			return TileDiffXY(-1, -1);
 		}
@@ -2998,17 +2998,17 @@ void ClearTownHouse(Town *t, TileIndex tile)
 	t->cache.num_houses--;
 
 	/* Clear flags for houses that only may exist once/town. */
-	if (hs->building_flags & BUILDING_IS_CHURCH) {
+	if (hs->building_flags.Test(BuildingFlag::IsChurch)) {
 		ClrBit(t->flags, TOWN_HAS_CHURCH);
-	} else if (hs->building_flags & BUILDING_IS_STADIUM) {
+	} else if (hs->building_flags.Test(BuildingFlag::IsStadium)) {
 		ClrBit(t->flags, TOWN_HAS_STADIUM);
 	}
 
 	/* Do the actual clearing of tiles */
 	DoClearTownHouseHelper(tile, t, house);
-	if (hs->building_flags & BUILDING_2_TILES_Y)   DoClearTownHouseHelper(tile + TileDiffXY(0, 1), t, ++house);
-	if (hs->building_flags & BUILDING_2_TILES_X)   DoClearTownHouseHelper(tile + TileDiffXY(1, 0), t, ++house);
-	if (hs->building_flags & BUILDING_HAS_4_TILES) DoClearTownHouseHelper(tile + TileDiffXY(1, 1), t, ++house);
+	if (hs->building_flags.Any(BUILDING_2_TILES_Y))   DoClearTownHouseHelper(tile + TileDiffXY(0, 1), t, ++house);
+	if (hs->building_flags.Any(BUILDING_2_TILES_X))   DoClearTownHouseHelper(tile + TileDiffXY(1, 0), t, ++house);
+	if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) DoClearTownHouseHelper(tile + TileDiffXY(1, 1), t, ++house);
 
 	RemoveNearbyStations(t, tile, hs->building_flags);
 
@@ -4090,8 +4090,8 @@ static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, int z
 		GetHouseNorthPart(house); // modifies house to the ID of the north tile
 		const HouseSpec *hs = HouseSpec::Get(house);
 
-		/* Here we differ from TTDP by checking TILE_NOT_SLOPED */
-		if (((hs->building_flags & TILE_NOT_SLOPED) == 0) && !IsSteepSlope(tileh_new) &&
+		/* Here we differ from TTDP by checking BuildingFlag::NotSloped */
+		if (!hs->building_flags.Test(BuildingFlag::NotSloped) && !IsSteepSlope(tileh_new) &&
 				(GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) {
 			bool allow_terraform = true;
 

@@ -2502,7 +2502,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 					housespec->random_colour[3] = COLOUR_GREEN;
 
 					/* House flags 40 and 80 are exceptions; these flags are never set automatically. */
-					housespec->building_flags &= ~(BUILDING_IS_CHURCH | BUILDING_IS_STADIUM);
+					housespec->building_flags.Reset(BuildingFlag::IsChurch).Reset(BuildingFlag::IsStadium);
 
 					/* Make sure that the third cargo type is valid in this
 					 * climate. This can cause problems when copying the properties
@@ -9332,11 +9332,11 @@ void FinaliseCargoArray()
  */
 static bool IsHouseSpecValid(HouseSpec *hs, const HouseSpec *next1, const HouseSpec *next2, const HouseSpec *next3, const std::string &filename)
 {
-	if (((hs->building_flags & BUILDING_HAS_2_TILES) != 0 &&
-				(next1 == nullptr || !next1->enabled || (next1->building_flags & BUILDING_HAS_1_TILE) != 0)) ||
-			((hs->building_flags & BUILDING_HAS_4_TILES) != 0 &&
-				(next2 == nullptr || !next2->enabled || (next2->building_flags & BUILDING_HAS_1_TILE) != 0 ||
-				next3 == nullptr || !next3->enabled || (next3->building_flags & BUILDING_HAS_1_TILE) != 0))) {
+	if ((hs->building_flags.Any(BUILDING_HAS_2_TILES) &&
+				(next1 == nullptr || !next1->enabled || next1->building_flags.Any(BUILDING_HAS_1_TILE))) ||
+			(hs->building_flags.Any(BUILDING_HAS_4_TILES) &&
+				(next2 == nullptr || !next2->enabled || next2->building_flags.Any(BUILDING_HAS_1_TILE) ||
+				next3 == nullptr || !next3->enabled || next3->building_flags.Any(BUILDING_HAS_1_TILE)))) {
 		hs->enabled = false;
 		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines house {} as multitile, but no suitable tiles follow. Disabling house.", filename, hs->grf_prop.local_id);
 		return false;
@@ -9345,8 +9345,8 @@ static bool IsHouseSpecValid(HouseSpec *hs, const HouseSpec *next1, const HouseS
 	/* Some places sum population by only counting north tiles. Other places use all tiles causing desyncs.
 	 * As the newgrf specs define population to be zero for non-north tiles, we just disable the offending house.
 	 * If you want to allow non-zero populations somewhen, make sure to sum the population of all tiles in all places. */
-	if (((hs->building_flags & BUILDING_HAS_2_TILES) != 0 && next1->population != 0) ||
-			((hs->building_flags & BUILDING_HAS_4_TILES) != 0 && (next2->population != 0 || next3->population != 0))) {
+	if ((hs->building_flags.Any(BUILDING_HAS_2_TILES) && next1->population != 0) ||
+			(hs->building_flags.Any(BUILDING_HAS_4_TILES) && (next2->population != 0 || next3->population != 0))) {
 		hs->enabled = false;
 		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines multitile house {} with non-zero population on additional tiles. Disabling house.", filename, hs->grf_prop.local_id);
 		return false;
@@ -9361,7 +9361,7 @@ static bool IsHouseSpecValid(HouseSpec *hs, const HouseSpec *next1, const HouseS
 	}
 
 	/* Make sure that additional parts of multitile houses are not available. */
-	if ((hs->building_flags & BUILDING_HAS_1_TILE) == 0 && (hs->building_availability & HZ_ZONALL) != 0 && (hs->building_availability & HZ_CLIMALL) != 0) {
+	if (!hs->building_flags.Any(BUILDING_HAS_1_TILE) && (hs->building_availability & HZ_ZONALL) != 0 && (hs->building_availability & HZ_CLIMALL) != 0) {
 		hs->enabled = false;
 		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines house {} without a size but marked it as available. Disabling house.", filename, hs->grf_prop.local_id);
 		return false;
@@ -9447,7 +9447,7 @@ static void FinaliseHouseArray()
 			 * don't want to have them influencing valid tiles. As such set
 			 * building_flags to zero here to make sure any house following
 			 * this one in the pool is properly handled as 1x1 house. */
-			hs->building_flags = TILE_NO_FLAG;
+			hs->building_flags = {};
 		}
 
 		/* Apply default cargo translation map for unset cargo slots */
