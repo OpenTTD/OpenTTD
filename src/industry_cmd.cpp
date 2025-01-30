@@ -224,7 +224,7 @@ void Industry::PostDestructor(size_t)
 {
 	if (Industry::GetNumItems() == 0) return nullptr;
 	int num = RandomRange((uint16_t)Industry::GetNumItems());
-	size_t index = MAX_UVALUE(size_t);
+	size_t index = std::numeric_limits<size_t>::max();
 
 	while (num >= 0) {
 		num--;

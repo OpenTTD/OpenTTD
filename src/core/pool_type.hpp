@@ -78,8 +78,15 @@ private:
  */
 template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, PoolType Tpool_type = PT_NORMAL, bool Tcache = false, bool Tzero = true>
 struct Pool : PoolBase {
+private:
+	/** Some helper functions to get the maximum value of the provided index. */
+	template <typename T>
+	static constexpr size_t GetMaxIndexValue(T) { return std::numeric_limits<T>::max(); }
+	template <typename T> requires std::is_enum_v<T>
+	static constexpr size_t GetMaxIndexValue(T) { return std::numeric_limits<std::underlying_type_t<T>>::max(); }
+public:
 	/* Ensure the highest possible index, i.e. Tmax_size -1, is within the bounds of Tindex. */
-	static_assert(Tmax_size - 1 <= MAX_UVALUE(Tindex));
+	static_assert(Tmax_size - 1 <= GetMaxIndexValue(Tindex{}));
 
 	static constexpr size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
 
@@ -388,7 +395,7 @@ struct Pool : PoolBase {
 	};
 
 private:
-	static const size_t NO_FREE_ITEM = MAX_UVALUE(size_t); ///< Constant to indicate we can't allocate any more items
+	static const size_t NO_FREE_ITEM = std::numeric_limits<size_t>::max(); ///< Constant to indicate we can't allocate any more items
 
 	/**
 	 * Helper struct to cache 'freed' PoolItems so we

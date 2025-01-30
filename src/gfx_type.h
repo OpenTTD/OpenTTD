@@ -106,7 +106,7 @@ enum WindowKeyCodes : uint16_t {
 
 /** A single sprite of a list of animated cursors */
 struct AnimCursor {
-	static const CursorID LAST = MAX_UVALUE(CursorID);
+	static const CursorID LAST = std::numeric_limits<CursorID>::max();
 	CursorID sprite;   ///< Must be set to LAST_ANIM when it is the last sprite of the loop
 	uint8_t display_time; ///< Amount of ticks this sprite will be shown
 };

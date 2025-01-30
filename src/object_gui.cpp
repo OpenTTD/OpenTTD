@@ -300,7 +300,7 @@ public:
 	{
 		switch (widget) {
 			case WID_BO_OBJECT_SPRITE:
-				if (_object_gui.sel_type != MAX_UVALUE(uint16_t)) {
+				if (_object_gui.sel_type != std::numeric_limits<uint16_t>::max()) {
 					_object_gui.sel_view = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
 					this->InvalidateData(PickerWindow::PFI_POSITION);
 					if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
