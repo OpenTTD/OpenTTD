@@ -557,7 +557,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			return (cs->classes << 16) | (cs->weight << 8) | object->ro.grffile->cargo_map[v->cargo_type];
 		}
 
-		case 0x48: return v->GetEngine()->flags; // Vehicle Type Info
+		case 0x48: return v->GetEngine()->flags.base(); // Vehicle Type Info
 		case 0x49: return v->build_year.base();
 
 		case 0x4A:
@@ -957,7 +957,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 					return 0x000000FF;
 				}
 			}
-			case 0x48: return Engine::Get(this->self_type)->flags; // Vehicle Type Info
+			case 0x48: return Engine::Get(this->self_type)->flags.base(); // Vehicle Type Info
 			case 0x49: return TimerGameCalendar::year.base(); // 'Long' format build year
 			case 0x4B: return TimerGameCalendar::date.base(); // Long date of last service
 			case 0x92: return ClampTo<uint16_t>(TimerGameCalendar::date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // Date of last service

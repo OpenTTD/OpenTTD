@@ -720,7 +720,7 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 	const EngineInfo *ei = &e->info;
 
 	e->age = 0;
-	e->flags = 0;
+	e->flags = {};
 	e->company_avail = 0;
 	e->company_hidden = 0;
 
@@ -745,7 +745,7 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 		if (intro_ymd.day > 1) intro_months++; // Engines are introduced at the first month start at/after intro date.
 		e->age = aging_months - intro_months;
 		e->company_avail = MAX_UVALUE(CompanyMask);
-		e->flags |= ENGINE_AVAILABLE;
+		e->flags.Set(EngineFlag::Available);
 	}
 
 	/* Get parent variant index for syncing reliability via random seed. */
@@ -787,7 +787,7 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 
 	/* prevent certain engines from ever appearing. */
 	if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) {
-		e->flags |= ENGINE_AVAILABLE;
+		e->flags.Set(EngineFlag::Available);
 		e->company_avail = 0;
 	}
 }
@@ -970,7 +970,7 @@ static IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalend
 
 	for (Engine *e : Engine::Iterate()) {
 		EngineID i = e->index;
-		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) {
+		if (e->flags.Test(EngineFlag::ExclusivePreview)) {
 			if (e->preview_company != INVALID_COMPANY) {
 				if (!--e->preview_wait) {
 					CloseWindowById(WC_ENGINE_PREVIEW, i);
@@ -1040,7 +1040,7 @@ CommandCost CmdSetVehicleVisibility(DoCommandFlag flags, EngineID engine_id, boo
 CommandCost CmdWantEnginePreview(DoCommandFlag flags, EngineID engine_id)
 {
 	Engine *e = Engine::GetIfValid(engine_id);
-	if (e == nullptr || !(e->flags & ENGINE_EXCLUSIVE_PREVIEW) || e->preview_company != _current_company) return CMD_ERROR;
+	if (e == nullptr || !e->flags.Test(EngineFlag::ExclusivePreview) || e->preview_company != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) AcceptEnginePreview(engine_id, _current_company);
 
@@ -1083,7 +1083,7 @@ static void NewVehicleAvailable(Engine *e)
 
 	/* In case the company didn't build the vehicle during the intro period,
 	 * prevent that company from getting future intro periods for a while. */
-	if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) {
+	if (e->flags.Test(EngineFlag::ExclusivePreview)) {
 		for (Company *c : Company::Iterate()) {
 			uint block_preview = c->block_preview;
 
@@ -1105,7 +1105,7 @@ static void NewVehicleAvailable(Engine *e)
 		}
 	}
 
-	e->flags = (e->flags & ~ENGINE_EXCLUSIVE_PREVIEW) | ENGINE_AVAILABLE;
+	e->flags.Reset(EngineFlag::ExclusivePreview).Set(EngineFlag::Available);
 	AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 
 	/* Now available for all companies */
@@ -1150,7 +1150,7 @@ void CalendarEnginesMonthlyLoop()
 		bool refresh = false;
 		for (Engine *e : Engine::Iterate()) {
 			/* Age the vehicle */
-			if ((e->flags & ENGINE_AVAILABLE) && e->age != INT32_MAX) {
+			if (e->flags.Test(EngineFlag::Available) && e->age != INT32_MAX) {
 				e->age++;
 				CalcEngineReliability(e, true);
 				refresh = true;
@@ -1159,10 +1159,10 @@ void CalendarEnginesMonthlyLoop()
 			/* Do not introduce invalid engines */
 			if (!e->IsEnabled()) continue;
 
-			if (!(e->flags & ENGINE_AVAILABLE) && TimerGameCalendar::date >= (e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
+			if (!e->flags.Test(EngineFlag::Available) && TimerGameCalendar::date >= (e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
 				/* Introduce it to all companies */
 				NewVehicleAvailable(e);
-			} else if (!(e->flags & (ENGINE_AVAILABLE | ENGINE_EXCLUSIVE_PREVIEW)) && TimerGameCalendar::date >= e->intro_date) {
+			} else if (!e->flags.Any({EngineFlag::Available, EngineFlag::ExclusivePreview}) && TimerGameCalendar::date >= e->intro_date) {
 				/* Introduction date has passed...
 				 * Check if it is allowed to build this vehicle type at all
 				 * based on the current game settings. If not, it does not
@@ -1176,7 +1176,7 @@ void CalendarEnginesMonthlyLoop()
 				if (e->info.extra_flags.Test(ExtraEngineFlag::NoPreview)) continue;
 
 				/* Show preview dialog to one of the companies. */
-				e->flags |= ENGINE_EXCLUSIVE_PREVIEW;
+				e->flags.Set(EngineFlag::ExclusivePreview);
 				e->preview_company = INVALID_COMPANY;
 				e->preview_asked = 0;
 			}
@@ -1264,7 +1264,7 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 	/* check if it's available ... */
 	if (company == OWNER_DEITY) {
 		/* ... for any company (preview does not count) */
-		if (!(e->flags & ENGINE_AVAILABLE) || e->company_avail == 0) return false;
+		if (!e->flags.Test(EngineFlag::Available) || e->company_avail == 0) return false;
 	} else {
 		/* ... for this company */
 		if (!HasBit(e->company_avail, company)) return false;
@@ -1329,7 +1329,7 @@ void CheckEngines()
 		if (e->type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON) continue;
 
 		/* We have an available engine... yay! */
-		if ((e->flags & ENGINE_AVAILABLE) != 0 && e->company_avail != 0) return;
+		if (e->flags.Test(EngineFlag::Available) && e->company_avail != 0) return;
 
 		/* Okay, try to find the earliest date. */
 		min_date = std::min(min_date, e->info.base_intro);
