@@ -20,15 +20,15 @@ enum CanalFeatureFlag : uint8_t {
 
 /** Information about a water feature. */
 struct WaterFeature {
-	const SpriteGroup *group; ///< Sprite group to start resolving.
-	const GRFFile *grffile;   ///< NewGRF where 'group' belongs to.
-	uint8_t callback_mask;      ///< Bitmask of canal callbacks that have to be called.
-	uint8_t flags;              ///< Flags controlling display.
+	const SpriteGroup *group = nullptr; ///< Sprite group to start resolving.
+	const GRFFile *grffile = nullptr; ///< NewGRF where 'group' belongs to.
+	uint8_t callback_mask = 0; ///< Bitmask of canal callbacks that have to be called.
+	uint8_t flags = 0; ///< Flags controlling display.
 };
 
 
 /** Table of canal 'feature' sprite groups */
-extern WaterFeature _water_feature[CF_END];
+extern std::array<WaterFeature, CF_END> _water_feature;
 
 
 SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile);

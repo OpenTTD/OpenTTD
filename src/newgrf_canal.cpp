@@ -18,7 +18,7 @@
 #include "safeguards.h"
 
 /** Table of canal 'feature' sprite groups */
-WaterFeature _water_feature[CF_END];
+std::array<WaterFeature, CF_END> _water_feature;
 
 /** Scope resolver of a canal tile. */
 struct CanalScopeResolver : public ScopeResolver {
