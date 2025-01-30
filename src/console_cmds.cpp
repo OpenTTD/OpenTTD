@@ -2712,7 +2712,7 @@ static void ConDumpCargoTypes()
 				spec->Index(),
 				spec->bitnum,
 				FormatLabel(spec->label.base()),
-				spec->callback_mask,
+				spec->callback_mask.base(),
 				(spec->classes & CC_PASSENGERS)   != 0 ? 'p' : '-',
 				(spec->classes & CC_MAIL)         != 0 ? 'm' : '-',
 				(spec->classes & CC_EXPRESS)      != 0 ? 'x' : '-',

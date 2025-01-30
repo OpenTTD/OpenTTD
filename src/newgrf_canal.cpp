@@ -170,7 +170,7 @@ static uint16_t GetCanalCallback(CallbackID callback, uint32_t param1, uint32_t 
  */
 uint GetCanalSpriteOffset(CanalFeature feature, TileIndex tile, uint cur_offset)
 {
-	if (HasBit(_water_feature[feature].callback_mask, CBM_CANAL_SPRITE_OFFSET)) {
+	if (_water_feature[feature].callback_mask.Test(CanalCallbackMask::SpriteOffset)) {
 		uint16_t cb = GetCanalCallback(CBID_CANALS_SPRITE_OFFSET, cur_offset, 0, feature, tile);
 		if (cb != CALLBACK_FAILED) return cur_offset + cb;
 	}

@@ -70,7 +70,7 @@ struct ObjectSpec : NewGRFSpecBase<ObjectClassID> {
 	TimerGameCalendar::Date introduction_date; ///< From when can this object be built.
 	TimerGameCalendar::Date end_of_life_date;  ///< When can't this object be built anymore.
 	ObjectFlags flags;            ///< Flags/settings related to the object.
-	uint16_t callback_mask;         ///< Bitmask of requested/allowed callbacks.
+	ObjectCallbackMasks callback_mask;         ///< Bitmask of requested/allowed callbacks.
 	uint8_t height;                 ///< The height of this structure, in heightlevels; max MAX_TILE_HEIGHT.
 	uint8_t views;                  ///< The number of views.
 	uint8_t generate_amount;        ///< Number of objects which are attempted to be generated per 256^2 map during world generation.

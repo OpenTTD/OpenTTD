@@ -16,6 +16,7 @@
 #include "landscape_type.h"
 #include "cargo_type.h"
 #include "newgrf_animation_type.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_commons.h"
 
 /** Available types of industry lifetimes. */
@@ -127,7 +128,7 @@ struct IndustrySpec {
 	uint8_t appear_ingame[NUM_LANDSCAPE];          ///< Probability of appearance in game
 	uint8_t appear_creation[NUM_LANDSCAPE];        ///< Probability of appearance during map creation
 	/* Newgrf data */
-	uint16_t callback_mask;                       ///< Bitmask of industry callbacks that have to be called
+	IndustryCallbackMasks callback_mask;                       ///< Bitmask of industry callbacks that have to be called
 	bool enabled;                               ///< entity still available (by default true).newgrf can disable it, though
 	GRFFileProps grf_prop;                      ///< properties related to the grf file
 	std::vector<uint8_t> random_sounds; ///< Random sounds;
@@ -158,7 +159,7 @@ struct IndustryTileSpec {
 	 */
 	bool anim_state;
 	/* Newgrf data */
-	uint8_t callback_mask;                  ///< Bitmask of industry tile callbacks that have to be called
+	IndustryTileCallbackMasks callback_mask;                  ///< Bitmask of industry tile callbacks that have to be called
 	AnimationInfo animation;              ///< Information about the animation (is it looping, how many loops etc)
 	IndustryTileSpecialFlags special_flags; ///< Bitmask of extra flags used by the tile
 	bool enabled;                         ///< entity still available (by default true).newgrf can disable it, though

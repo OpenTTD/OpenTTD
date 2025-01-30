@@ -26,21 +26,21 @@
 
 #define NICV(cb_id, bit) NIC(cb_id, Engine, info.callback_mask, bit)
 static const NICallback _nic_vehicles[] = {
-	NICV(CBID_VEHICLE_VISUAL_EFFECT,         CBM_VEHICLE_VISUAL_EFFECT),
-	NICV(CBID_VEHICLE_LENGTH,                CBM_VEHICLE_LENGTH),
-	NICV(CBID_VEHICLE_LOAD_AMOUNT,           CBM_VEHICLE_LOAD_AMOUNT),
-	NICV(CBID_VEHICLE_REFIT_CAPACITY,        CBM_VEHICLE_REFIT_CAPACITY),
-	NICV(CBID_VEHICLE_ARTIC_ENGINE,          CBM_VEHICLE_ARTIC_ENGINE),
-	NICV(CBID_VEHICLE_CARGO_SUFFIX,          CBM_VEHICLE_CARGO_SUFFIX),
-	NICV(CBID_TRAIN_ALLOW_WAGON_ATTACH,      CBM_NO_BIT),
-	NICV(CBID_VEHICLE_ADDITIONAL_TEXT,       CBM_NO_BIT),
-	NICV(CBID_VEHICLE_COLOUR_MAPPING,        CBM_VEHICLE_COLOUR_REMAP),
-	NICV(CBID_VEHICLE_START_STOP_CHECK,      CBM_NO_BIT),
-	NICV(CBID_VEHICLE_32DAY_CALLBACK,        CBM_NO_BIT),
-	NICV(CBID_VEHICLE_SOUND_EFFECT,          CBM_VEHICLE_SOUND_EFFECT),
-	NICV(CBID_VEHICLE_AUTOREPLACE_SELECTION, CBM_NO_BIT),
-	NICV(CBID_VEHICLE_MODIFY_PROPERTY,       CBM_NO_BIT),
-	NICV(CBID_VEHICLE_NAME,                  CBM_VEHICLE_NAME),
+	NICV(CBID_VEHICLE_VISUAL_EFFECT,         VehicleCallbackMask::VisualEffect),
+	NICV(CBID_VEHICLE_LENGTH,                VehicleCallbackMask::Length),
+	NICV(CBID_VEHICLE_LOAD_AMOUNT,           VehicleCallbackMask::LoadAmount),
+	NICV(CBID_VEHICLE_REFIT_CAPACITY,        VehicleCallbackMask::RefitCapacity),
+	NICV(CBID_VEHICLE_ARTIC_ENGINE,          VehicleCallbackMask::ArticEngine),
+	NICV(CBID_VEHICLE_CARGO_SUFFIX,          VehicleCallbackMask::CargoSuffix),
+	NICV(CBID_TRAIN_ALLOW_WAGON_ATTACH,      std::monostate{}),
+	NICV(CBID_VEHICLE_ADDITIONAL_TEXT,       std::monostate{}),
+	NICV(CBID_VEHICLE_COLOUR_MAPPING,        VehicleCallbackMask::ColourRemap),
+	NICV(CBID_VEHICLE_START_STOP_CHECK,      std::monostate{}),
+	NICV(CBID_VEHICLE_32DAY_CALLBACK,        std::monostate{}),
+	NICV(CBID_VEHICLE_SOUND_EFFECT,          VehicleCallbackMask::SoundEffect),
+	NICV(CBID_VEHICLE_AUTOREPLACE_SELECTION, std::monostate{}),
+	NICV(CBID_VEHICLE_MODIFY_PROPERTY,       std::monostate{}),
+	NICV(CBID_VEHICLE_NAME,                  VehicleCallbackMask::Name),
 };
 
 
@@ -93,13 +93,13 @@ static const NIFeature _nif_vehicle = {
 
 #define NICS(cb_id, bit) NIC(cb_id, StationSpec, callback_mask, bit)
 static const NICallback _nic_stations[] = {
-	NICS(CBID_STATION_AVAILABILITY,     CBM_STATION_AVAIL),
-	NICS(CBID_STATION_DRAW_TILE_LAYOUT, CBM_STATION_DRAW_TILE_LAYOUT),
-	NICS(CBID_STATION_BUILD_TILE_LAYOUT,CBM_NO_BIT),
-	NICS(CBID_STATION_ANIM_START_STOP,  CBM_NO_BIT),
-	NICS(CBID_STATION_ANIM_NEXT_FRAME,  CBM_STATION_ANIMATION_NEXT_FRAME),
-	NICS(CBID_STATION_ANIMATION_SPEED,  CBM_STATION_ANIMATION_SPEED),
-	NICS(CBID_STATION_LAND_SLOPE_CHECK, CBM_STATION_SLOPE_CHECK),
+	NICS(CBID_STATION_AVAILABILITY,     StationCallbackMask::Avail),
+	NICS(CBID_STATION_DRAW_TILE_LAYOUT, StationCallbackMask::DrawTileLayout),
+	NICS(CBID_STATION_BUILD_TILE_LAYOUT,std::monostate{}),
+	NICS(CBID_STATION_ANIM_START_STOP,  std::monostate{}),
+	NICS(CBID_STATION_ANIM_NEXT_FRAME,  StationCallbackMask::AnimationNextFrame),
+	NICS(CBID_STATION_ANIMATION_SPEED,  StationCallbackMask::AnimationSpeed),
+	NICS(CBID_STATION_LAND_SLOPE_CHECK, StationCallbackMask::SlopeCheck),
 };
 
 static const NIVariable _niv_stations[] = {
@@ -156,21 +156,21 @@ static const NIFeature _nif_station = {
 
 #define NICH(cb_id, bit) NIC(cb_id, HouseSpec, callback_mask, bit)
 static const NICallback _nic_house[] = {
-	NICH(CBID_HOUSE_ALLOW_CONSTRUCTION,        CBM_HOUSE_ALLOW_CONSTRUCTION),
-	NICH(CBID_HOUSE_ANIMATION_NEXT_FRAME,      CBM_HOUSE_ANIMATION_NEXT_FRAME),
-	NICH(CBID_HOUSE_ANIMATION_START_STOP,      CBM_HOUSE_ANIMATION_START_STOP),
-	NICH(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, CBM_HOUSE_CONSTRUCTION_STATE_CHANGE),
-	NICH(CBID_HOUSE_COLOUR,                    CBM_HOUSE_COLOUR),
-	NICH(CBID_HOUSE_CARGO_ACCEPTANCE,          CBM_HOUSE_CARGO_ACCEPTANCE),
-	NICH(CBID_HOUSE_ANIMATION_SPEED,           CBM_HOUSE_ANIMATION_SPEED),
-	NICH(CBID_HOUSE_DESTRUCTION,               CBM_HOUSE_DESTRUCTION),
-	NICH(CBID_HOUSE_ACCEPT_CARGO,              CBM_HOUSE_ACCEPT_CARGO),
-	NICH(CBID_HOUSE_PRODUCE_CARGO,             CBM_HOUSE_PRODUCE_CARGO),
-	NICH(CBID_HOUSE_DENY_DESTRUCTION,          CBM_HOUSE_DENY_DESTRUCTION),
-	NICH(CBID_HOUSE_WATCHED_CARGO_ACCEPTED,    CBM_NO_BIT),
-	NICH(CBID_HOUSE_CUSTOM_NAME,               CBM_NO_BIT),
-	NICH(CBID_HOUSE_DRAW_FOUNDATIONS,          CBM_HOUSE_DRAW_FOUNDATIONS),
-	NICH(CBID_HOUSE_AUTOSLOPE,                 CBM_HOUSE_AUTOSLOPE),
+	NICH(CBID_HOUSE_ALLOW_CONSTRUCTION,        HouseCallbackMask::AllowConstruction),
+	NICH(CBID_HOUSE_ANIMATION_NEXT_FRAME,      HouseCallbackMask::AnimationNextFrame),
+	NICH(CBID_HOUSE_ANIMATION_START_STOP,      HouseCallbackMask::AnimationStartStop),
+	NICH(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, HouseCallbackMask::ConstructionStateChange),
+	NICH(CBID_HOUSE_COLOUR,                    HouseCallbackMask::Colour),
+	NICH(CBID_HOUSE_CARGO_ACCEPTANCE,          HouseCallbackMask::CargoAcceptance),
+	NICH(CBID_HOUSE_ANIMATION_SPEED,           HouseCallbackMask::AnimationSpeed),
+	NICH(CBID_HOUSE_DESTRUCTION,               HouseCallbackMask::Destruction),
+	NICH(CBID_HOUSE_ACCEPT_CARGO,              HouseCallbackMask::AcceptCargo),
+	NICH(CBID_HOUSE_PRODUCE_CARGO,             HouseCallbackMask::ProduceCargo),
+	NICH(CBID_HOUSE_DENY_DESTRUCTION,          HouseCallbackMask::DenyDestruction),
+	NICH(CBID_HOUSE_WATCHED_CARGO_ACCEPTED,    std::monostate{}),
+	NICH(CBID_HOUSE_CUSTOM_NAME,               std::monostate{}),
+	NICH(CBID_HOUSE_DRAW_FOUNDATIONS,          HouseCallbackMask::DrawFoundations),
+	NICH(CBID_HOUSE_AUTOSLOPE,                 HouseCallbackMask::Autoslope),
 };
 
 static const NIVariable _niv_house[] = {
@@ -220,14 +220,14 @@ static const NIFeature _nif_house = {
 
 #define NICIT(cb_id, bit) NIC(cb_id, IndustryTileSpec, callback_mask, bit)
 static const NICallback _nic_industrytiles[] = {
-	NICIT(CBID_INDTILE_ANIM_START_STOP,  CBM_NO_BIT),
-	NICIT(CBID_INDTILE_ANIM_NEXT_FRAME,  CBM_INDT_ANIM_NEXT_FRAME),
-	NICIT(CBID_INDTILE_ANIMATION_SPEED,  CBM_INDT_ANIM_SPEED),
-	NICIT(CBID_INDTILE_CARGO_ACCEPTANCE, CBM_INDT_CARGO_ACCEPTANCE),
-	NICIT(CBID_INDTILE_ACCEPT_CARGO,     CBM_INDT_ACCEPT_CARGO),
-	NICIT(CBID_INDTILE_SHAPE_CHECK,      CBM_INDT_SHAPE_CHECK),
-	NICIT(CBID_INDTILE_DRAW_FOUNDATIONS, CBM_INDT_DRAW_FOUNDATIONS),
-	NICIT(CBID_INDTILE_AUTOSLOPE,        CBM_INDT_AUTOSLOPE),
+	NICIT(CBID_INDTILE_ANIM_START_STOP,  std::monostate{}),
+	NICIT(CBID_INDTILE_ANIM_NEXT_FRAME,  IndustryTileCallbackMask::AnimationNextFrame),
+	NICIT(CBID_INDTILE_ANIMATION_SPEED,  IndustryTileCallbackMask::AnimationSpeed),
+	NICIT(CBID_INDTILE_CARGO_ACCEPTANCE, IndustryTileCallbackMask::CargoAcceptance),
+	NICIT(CBID_INDTILE_ACCEPT_CARGO,     IndustryTileCallbackMask::AcceptCargo),
+	NICIT(CBID_INDTILE_SHAPE_CHECK,      IndustryTileCallbackMask::ShapeCheck),
+	NICIT(CBID_INDTILE_DRAW_FOUNDATIONS, IndustryTileCallbackMask::DrawFoundations),
+	NICIT(CBID_INDTILE_AUTOSLOPE,        IndustryTileCallbackMask::Autoslope),
 };
 
 static const NIVariable _niv_industrytiles[] = {
@@ -309,19 +309,19 @@ static const NIProperty _nip_industries[] = {
 
 #define NICI(cb_id, bit) NIC(cb_id, IndustrySpec, callback_mask, bit)
 static const NICallback _nic_industries[] = {
-	NICI(CBID_INDUSTRY_PROBABILITY,          CBM_IND_PROBABILITY),
-	NICI(CBID_INDUSTRY_LOCATION,             CBM_IND_LOCATION),
-	NICI(CBID_INDUSTRY_PRODUCTION_CHANGE,    CBM_IND_PRODUCTION_CHANGE),
-	NICI(CBID_INDUSTRY_MONTHLYPROD_CHANGE,   CBM_IND_MONTHLYPROD_CHANGE),
-	NICI(CBID_INDUSTRY_CARGO_SUFFIX,         CBM_IND_CARGO_SUFFIX),
-	NICI(CBID_INDUSTRY_FUND_MORE_TEXT,       CBM_IND_FUND_MORE_TEXT),
-	NICI(CBID_INDUSTRY_WINDOW_MORE_TEXT,     CBM_IND_WINDOW_MORE_TEXT),
-	NICI(CBID_INDUSTRY_SPECIAL_EFFECT,       CBM_IND_SPECIAL_EFFECT),
-	NICI(CBID_INDUSTRY_REFUSE_CARGO,         CBM_IND_REFUSE_CARGO),
-	NICI(CBID_INDUSTRY_DECIDE_COLOUR,        CBM_IND_DECIDE_COLOUR),
-	NICI(CBID_INDUSTRY_INPUT_CARGO_TYPES,    CBM_IND_INPUT_CARGO_TYPES),
-	NICI(CBID_INDUSTRY_OUTPUT_CARGO_TYPES,   CBM_IND_OUTPUT_CARGO_TYPES),
-	NICI(CBID_INDUSTRY_PROD_CHANGE_BUILD,    CBM_IND_PROD_CHANGE_BUILD),
+	NICI(CBID_INDUSTRY_PROBABILITY,          IndustryCallbackMask::Probability),
+	NICI(CBID_INDUSTRY_LOCATION,             IndustryCallbackMask::Location),
+	NICI(CBID_INDUSTRY_PRODUCTION_CHANGE,    IndustryCallbackMask::ProductionChange),
+	NICI(CBID_INDUSTRY_MONTHLYPROD_CHANGE,   IndustryCallbackMask::MonthlyProdChange),
+	NICI(CBID_INDUSTRY_CARGO_SUFFIX,         IndustryCallbackMask::CargoSuffix),
+	NICI(CBID_INDUSTRY_FUND_MORE_TEXT,       IndustryCallbackMask::FundMoreText),
+	NICI(CBID_INDUSTRY_WINDOW_MORE_TEXT,     IndustryCallbackMask::WindowMoreText),
+	NICI(CBID_INDUSTRY_SPECIAL_EFFECT,       IndustryCallbackMask::SpecialEffect),
+	NICI(CBID_INDUSTRY_REFUSE_CARGO,         IndustryCallbackMask::RefuseCargo),
+	NICI(CBID_INDUSTRY_DECIDE_COLOUR,        IndustryCallbackMask::DecideColour),
+	NICI(CBID_INDUSTRY_INPUT_CARGO_TYPES,    IndustryCallbackMask::InputCargoTypes),
+	NICI(CBID_INDUSTRY_OUTPUT_CARGO_TYPES,   IndustryCallbackMask::OutputCargoTypes),
+	NICI(CBID_INDUSTRY_PROD_CHANGE_BUILD,    IndustryCallbackMask::ProdChangeBuild),
 };
 
 static const NIVariable _niv_industries[] = {
@@ -387,13 +387,13 @@ static const NIFeature _nif_industry = {
 
 #define NICO(cb_id, bit) NIC(cb_id, ObjectSpec, callback_mask, bit)
 static const NICallback _nic_objects[] = {
-	NICO(CBID_OBJECT_LAND_SLOPE_CHECK,     CBM_OBJ_SLOPE_CHECK),
-	NICO(CBID_OBJECT_ANIMATION_NEXT_FRAME, CBM_OBJ_ANIMATION_NEXT_FRAME),
-	NICO(CBID_OBJECT_ANIMATION_START_STOP, CBM_NO_BIT),
-	NICO(CBID_OBJECT_ANIMATION_SPEED,      CBM_OBJ_ANIMATION_SPEED),
-	NICO(CBID_OBJECT_COLOUR,               CBM_OBJ_COLOUR),
-	NICO(CBID_OBJECT_FUND_MORE_TEXT,       CBM_OBJ_FUND_MORE_TEXT),
-	NICO(CBID_OBJECT_AUTOSLOPE,            CBM_OBJ_AUTOSLOPE),
+	NICO(CBID_OBJECT_LAND_SLOPE_CHECK,     ObjectCallbackMask::SlopeCheck),
+	NICO(CBID_OBJECT_ANIMATION_NEXT_FRAME, ObjectCallbackMask::AnimationNextFrame),
+	NICO(CBID_OBJECT_ANIMATION_START_STOP, std::monostate{}),
+	NICO(CBID_OBJECT_ANIMATION_SPEED,      ObjectCallbackMask::AnimationSpeed),
+	NICO(CBID_OBJECT_COLOUR,               ObjectCallbackMask::Colour),
+	NICO(CBID_OBJECT_FUND_MORE_TEXT,       ObjectCallbackMask::FundMoreText),
+	NICO(CBID_OBJECT_AUTOSLOPE,            ObjectCallbackMask::Autoslope),
 };
 
 static const NIVariable _niv_objects[] = {
@@ -476,10 +476,10 @@ static const NIFeature _nif_railtype = {
 
 #define NICAT(cb_id, bit) NIC(cb_id, AirportTileSpec, callback_mask, bit)
 static const NICallback _nic_airporttiles[] = {
-	NICAT(CBID_AIRPTILE_DRAW_FOUNDATIONS, CBM_AIRT_DRAW_FOUNDATIONS),
-	NICAT(CBID_AIRPTILE_ANIM_START_STOP,  CBM_NO_BIT),
-	NICAT(CBID_AIRPTILE_ANIM_NEXT_FRAME,  CBM_AIRT_ANIM_NEXT_FRAME),
-	NICAT(CBID_AIRPTILE_ANIMATION_SPEED,  CBM_AIRT_ANIM_SPEED),
+	NICAT(CBID_AIRPTILE_DRAW_FOUNDATIONS, AirportTileCallbackMask::DrawFoundations),
+	NICAT(CBID_AIRPTILE_ANIM_START_STOP,  std::monostate{}),
+	NICAT(CBID_AIRPTILE_ANIM_NEXT_FRAME,  AirportTileCallbackMask::AnimationNextFrame),
+	NICAT(CBID_AIRPTILE_ANIMATION_SPEED,  AirportTileCallbackMask::AnimationSpeed),
 };
 
 class NIHAirportTile : public NIHelper {
@@ -645,10 +645,10 @@ static const NIFeature _nif_tramtype = {
 
 #define NICRS(cb_id, bit) NIC(cb_id, RoadStopSpec, callback_mask, bit)
 static const NICallback _nic_roadstops[] = {
-	NICRS(CBID_STATION_AVAILABILITY,     CBM_ROAD_STOP_AVAIL),
-	NICRS(CBID_STATION_ANIM_START_STOP,  CBM_NO_BIT),
-	NICRS(CBID_STATION_ANIM_NEXT_FRAME,  CBM_ROAD_STOP_ANIMATION_NEXT_FRAME),
-	NICRS(CBID_STATION_ANIMATION_SPEED,  CBM_ROAD_STOP_ANIMATION_SPEED),
+	NICRS(CBID_STATION_AVAILABILITY,     RoadStopCallbackMask::Avail),
+	NICRS(CBID_STATION_ANIM_START_STOP,  std::monostate{}),
+	NICRS(CBID_STATION_ANIM_NEXT_FRAME,  RoadStopCallbackMask::AnimationNextFrame),
+	NICRS(CBID_STATION_ANIMATION_SPEED,  RoadStopCallbackMask::AnimationSpeed),
 };
 
 static const NIVariable _nif_roadstops[] = {

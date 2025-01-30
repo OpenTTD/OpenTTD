@@ -531,8 +531,8 @@ struct ObjectAnimationBase : public AnimationBase<ObjectAnimationBase, ObjectSpe
 	static const CallbackID cb_animation_speed      = CBID_OBJECT_ANIMATION_SPEED;
 	static const CallbackID cb_animation_next_frame = CBID_OBJECT_ANIMATION_NEXT_FRAME;
 
-	static const ObjectCallbackMask cbm_animation_speed      = CBM_OBJ_ANIMATION_SPEED;
-	static const ObjectCallbackMask cbm_animation_next_frame = CBM_OBJ_ANIMATION_NEXT_FRAME;
+	static const ObjectCallbackMask cbm_animation_speed      = ObjectCallbackMask::AnimationSpeed;
+	static const ObjectCallbackMask cbm_animation_next_frame = ObjectCallbackMask::AnimationNextFrame;
 };
 
 /**

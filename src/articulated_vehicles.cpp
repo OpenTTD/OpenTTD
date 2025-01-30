@@ -63,7 +63,7 @@ static EngineID GetNextArticulatedPart(uint index, EngineID front_type, Vehicle 
  */
 bool IsArticulatedEngine(EngineID engine_type)
 {
-	return HasBit(EngInfo(engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE);
+	return EngInfo(engine_type)->callback_mask.Test(VehicleCallbackMask::ArticEngine);
 }
 
 /**
@@ -74,7 +74,7 @@ bool IsArticulatedEngine(EngineID engine_type)
  */
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 {
-	if (!HasBit(EngInfo(engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return 0;
+	if (!EngInfo(engine_type)->callback_mask.Test(VehicleCallbackMask::ArticEngine)) return 0;
 
 	/* If we can't allocate a vehicle now, we can't allocate it in the command
 	 * either, so it doesn't matter how many articulated parts there are. */
@@ -146,7 +146,7 @@ CargoArray GetCapacityOfArticulatedParts(EngineID engine)
 
 	if (!e->IsGroundVehicle()) return capacity;
 
-	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return capacity;
+	if (!e->info.callback_mask.Test(VehicleCallbackMask::ArticEngine)) return capacity;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
 		EngineID artic_engine = GetNextArticulatedPart(i, engine);
@@ -176,7 +176,7 @@ CargoTypes GetCargoTypesOfArticulatedParts(EngineID engine)
 
 	if (!e->IsGroundVehicle()) return cargoes;
 
-	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return cargoes;
+	if (!e->info.callback_mask.Test(VehicleCallbackMask::ArticEngine)) return cargoes;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
 		EngineID artic_engine = GetNextArticulatedPart(i, engine);
@@ -202,7 +202,7 @@ bool IsArticulatedVehicleRefittable(EngineID engine)
 	const Engine *e = Engine::Get(engine);
 	if (!e->IsGroundVehicle()) return false;
 
-	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return false;
+	if (!e->info.callback_mask.Test(VehicleCallbackMask::ArticEngine)) return false;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
 		EngineID artic_engine = GetNextArticulatedPart(i, engine);
@@ -229,7 +229,7 @@ void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, 
 	*intersection_mask = (veh_cargoes != 0) ? veh_cargoes : ALL_CARGOTYPES;
 
 	if (!e->IsGroundVehicle()) return;
-	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return;
+	if (!e->info.callback_mask.Test(VehicleCallbackMask::ArticEngine)) return;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
 		EngineID artic_engine = GetNextArticulatedPart(i, engine);
@@ -338,7 +338,7 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 void AddArticulatedParts(Vehicle *first)
 {
 	VehicleType type = first->type;
-	if (!HasBit(EngInfo(first->engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return;
+	if (!EngInfo(first->engine_type)->callback_mask.Test(VehicleCallbackMask::ArticEngine)) return;
 
 	Vehicle *v = first;
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {

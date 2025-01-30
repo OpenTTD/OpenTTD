@@ -212,7 +212,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 			if (veh_len != CALLBACK_FAILED && veh_len >= VEHICLE_LENGTH) {
 				ErrorUnknownCallbackResult(e_u->GetGRFID(), CBID_VEHICLE_LENGTH, veh_len);
 			}
-		} else if (HasBit(e_u->info.callback_mask, CBM_VEHICLE_LENGTH)) {
+		} else if (e_u->info.callback_mask.Test(VehicleCallbackMask::Length)) {
 			/* Use callback 11 */
 			veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
 		}
@@ -2067,7 +2067,7 @@ CommandCost CmdReverseTrainDirection(DoCommandFlag flags, VehicleID veh_id, bool
 	if (reverse_single_veh) {
 		/* turn a single unit around */
 
-		if (v->IsMultiheaded() || HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) {
+		if (v->IsMultiheaded() || EngInfo(v->engine_type)->callback_mask.Test(VehicleCallbackMask::ArticEngine)) {
 			return CommandCost(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS);
 		}
 

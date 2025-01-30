@@ -214,7 +214,7 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16_t *mail_capacity) const
 	}
 
 	/* Check the refit capacity callback if we are not in the default configuration, or if we are using the new multiplier algorithm. */
-	if (HasBit(this->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY) &&
+	if (this->info.callback_mask.Test(VehicleCallbackMask::RefitCapacity) &&
 			(new_multipliers || default_cargo != cargo_type || (v != nullptr && v->cargo_subtype != 0))) {
 		uint16_t callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, this->index, v);
 		if (callback != CALLBACK_FAILED) return callback;
@@ -1306,7 +1306,7 @@ bool IsEngineRefittable(EngineID engine)
 
 	/* Are there suffixes?
 	 * Note: This does not mean the suffixes are actually available for every consist at any time. */
-	if (HasBit(ei->callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) return true;
+	if (ei->callback_mask.Test(VehicleCallbackMask::CargoSuffix)) return true;
 
 	/* Is there any cargo except the default cargo? */
 	CargoType default_cargo = e->GetDefaultCargoType();

@@ -13,6 +13,7 @@
 #include "economy_type.h"
 #include "cargo_type.h"
 #include "gfx_type.h"
+#include "newgrf_callbacks.h"
 #include "strings_type.h"
 #include "landscape_type.h"
 #include "core/bitmath_func.hpp"
@@ -88,7 +89,7 @@ struct CargoSpec {
 	TownAcceptanceEffect town_acceptance_effect; ///< The effect that delivering this cargo type has on towns. Also affects destination of subsidies.
 	TownProductionEffect town_production_effect = INVALID_TPE; ///< The effect on town cargo production.
 	uint16_t town_production_multiplier = TOWN_PRODUCTION_DIVISOR; ///< Town production multipler, if commanded by TownProductionEffect.
-	uint8_t callback_mask;             ///< Bitmask of cargo callbacks that have to be called
+	CargoCallbackMasks callback_mask;             ///< Bitmask of cargo callbacks that have to be called
 
 	StringID name;                   ///< Name of this type of cargo.
 	StringID name_single;            ///< Name of a single entity of this type of cargo.

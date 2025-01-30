@@ -350,11 +350,11 @@ struct RoadStopAnimationFrameAnimationHelper {
 
 /** Helper class for animation control. */
 struct RoadStopAnimationBase : public AnimationBase<RoadStopAnimationBase, RoadStopSpec, BaseStation, int, GetAnimRoadStopCallback, RoadStopAnimationFrameAnimationHelper> {
-	static const CallbackID cb_animation_speed      = CBID_STATION_ANIMATION_SPEED;
-	static const CallbackID cb_animation_next_frame = CBID_STATION_ANIM_NEXT_FRAME;
+	static constexpr CallbackID cb_animation_speed      = CBID_STATION_ANIMATION_SPEED;
+	static constexpr CallbackID cb_animation_next_frame = CBID_STATION_ANIM_NEXT_FRAME;
 
-	static const RoadStopCallbackMask cbm_animation_speed      = CBM_ROAD_STOP_ANIMATION_SPEED;
-	static const RoadStopCallbackMask cbm_animation_next_frame = CBM_ROAD_STOP_ANIMATION_NEXT_FRAME;
+	static constexpr RoadStopCallbackMask cbm_animation_speed      = RoadStopCallbackMask::AnimationSpeed;
+	static constexpr RoadStopCallbackMask cbm_animation_next_frame = RoadStopCallbackMask::AnimationNextFrame;
 };
 
 void AnimateRoadStopTile(TileIndex tile)

@@ -529,7 +529,7 @@ static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *grou
 
 	const HouseSpec *hs = HouseSpec::Get(house_id);
 	PaletteID palette = GENERAL_SPRITE_COLOUR(hs->random_colour[TileHash2Bit(ti->x, ti->y)]);
-	if (HasBit(hs->callback_mask, CBM_HOUSE_COLOUR)) {
+	if (hs->callback_mask.Test(HouseCallbackMask::Colour)) {
 		uint16_t callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, Town::GetByTile(ti->tile), ti->tile);
 		if (callback != CALLBACK_FAILED) {
 			/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */
@@ -556,7 +556,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 
 	if (ti->tileh != SLOPE_FLAT) {
 		bool draw_old_one = true;
-		if (HasBit(hs->callback_mask, CBM_HOUSE_DRAW_FOUNDATIONS)) {
+		if (hs->callback_mask.Test(HouseCallbackMask::DrawFoundations)) {
 			/* Called to determine the type (if any) of foundation to draw for the house tile */
 			uint32_t callback_res = GetHouseCallback(CBID_HOUSE_DRAW_FOUNDATIONS, 0, 0, house_id, Town::GetByTile(ti->tile), ti->tile);
 			if (callback_res != CALLBACK_FAILED) draw_old_one = ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DRAW_FOUNDATIONS, callback_res);
@@ -584,11 +584,11 @@ uint16_t GetSimpleHouseCallback(CallbackID callback, uint32_t param1, uint32_t p
 
 /** Helper class for animation control. */
 struct HouseAnimationBase : public AnimationBase<HouseAnimationBase, HouseSpec, Town, CargoTypes, GetSimpleHouseCallback, TileAnimationFrameAnimationHelper<Town> > {
-	static const CallbackID cb_animation_speed      = CBID_HOUSE_ANIMATION_SPEED;
-	static const CallbackID cb_animation_next_frame = CBID_HOUSE_ANIMATION_NEXT_FRAME;
+	static constexpr CallbackID cb_animation_speed      = CBID_HOUSE_ANIMATION_SPEED;
+	static constexpr CallbackID cb_animation_next_frame = CBID_HOUSE_ANIMATION_NEXT_FRAME;
 
-	static const HouseCallbackMask cbm_animation_speed      = CBM_HOUSE_ANIMATION_SPEED;
-	static const HouseCallbackMask cbm_animation_next_frame = CBM_HOUSE_ANIMATION_NEXT_FRAME;
+	static constexpr HouseCallbackMask cbm_animation_speed      = HouseCallbackMask::AnimationSpeed;
+	static constexpr HouseCallbackMask cbm_animation_next_frame = HouseCallbackMask::AnimationNextFrame;
 };
 
 void AnimateNewHouseTile(TileIndex tile)
@@ -603,7 +603,7 @@ void AnimateNewHouseConstruction(TileIndex tile)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
-	if (HasBit(hs->callback_mask, CBM_HOUSE_CONSTRUCTION_STATE_CHANGE)) {
+	if (hs->callback_mask.Test(HouseCallbackMask::ConstructionStateChange)) {
 		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, hs, Town::GetByTile(tile), tile, 0, 0);
 	}
 }
@@ -618,7 +618,7 @@ bool CanDeleteHouse(TileIndex tile)
 		return true;
 	}
 
-	if (HasBit(hs->callback_mask, CBM_HOUSE_DENY_DESTRUCTION)) {
+	if (hs->callback_mask.Test(HouseCallbackMask::DenyDestruction)) {
 		uint16_t callback_res = GetHouseCallback(CBID_HOUSE_DENY_DESTRUCTION, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		return (callback_res == CALLBACK_FAILED || !ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DENY_DESTRUCTION, callback_res));
 	} else {
@@ -630,7 +630,7 @@ static void AnimationControl(TileIndex tile, uint16_t random_bits)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
-	if (HasBit(hs->callback_mask, CBM_HOUSE_ANIMATION_START_STOP)) {
+	if (hs->callback_mask.Test(HouseCallbackMask::AnimationStartStop)) {
 		uint32_t param = (hs->extra_flags & SYNCHRONISED_CALLBACK_1B) ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
 		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_START_STOP, hs, Town::GetByTile(tile), tile, param, 0);
 	}
@@ -648,7 +648,7 @@ bool NewHouseTileLoop(TileIndex tile)
 	TriggerHouse(tile, HOUSE_TRIGGER_TILE_LOOP);
 	if (hs->building_flags & BUILDING_HAS_1_TILE) TriggerHouse(tile, HOUSE_TRIGGER_TILE_LOOP_TOP);
 
-	if (HasBit(hs->callback_mask, CBM_HOUSE_ANIMATION_START_STOP)) {
+	if (hs->callback_mask.Test(HouseCallbackMask::AnimationStartStop)) {
 		/* If this house is marked as having a synchronised callback, all the
 		 * tiles will have the callback called at once, rather than when the
 		 * tile loop reaches them. This should only be enabled for the northern
@@ -666,7 +666,7 @@ bool NewHouseTileLoop(TileIndex tile)
 	}
 
 	/* Check callback 21, which determines if a house should be destroyed. */
-	if (HasBit(hs->callback_mask, CBM_HOUSE_DESTRUCTION)) {
+	if (hs->callback_mask.Test(HouseCallbackMask::Destruction)) {
 		uint16_t callback_res = GetHouseCallback(CBID_HOUSE_DESTRUCTION, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		if (callback_res != CALLBACK_FAILED && Convert8bitBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DESTRUCTION, callback_res)) {
 			ClearTownHouse(Town::GetByTile(tile), tile);

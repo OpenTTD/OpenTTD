@@ -1241,9 +1241,12 @@ static ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 			}
 
-			case 0x1E: // Callback
-				SB(ei->callback_mask, 0, 8, buf.ReadByte());
+			case 0x1E: { // Callback
+				auto mask = ei->callback_mask.base();
+				SB(mask, 0, 8, buf.ReadByte());
+				ei->callback_mask = VehicleCallbackMasks{mask};
 				break;
+			}
 
 			case PROP_TRAIN_TRACTIVE_EFFORT: // 0x1F Tractive effort coefficient
 				rvi->tractive_effort = buf.ReadByte();
@@ -1340,9 +1343,12 @@ static ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, B
 				ei->extra_flags = static_cast<ExtraEngineFlags>(buf.ReadDWord());
 				break;
 
-			case 0x31: // Callback additional mask
-				SB(ei->callback_mask, 8, 8, buf.ReadByte());
+			case 0x31: { // Callback additional mask
+				auto mask = ei->callback_mask.base();
+				SB(mask, 8, 8, buf.ReadByte());
+				ei->callback_mask = VehicleCallbackMasks{mask};
 				break;
+			}
 
 			case 0x32: // Cargo classes required for a refit.
 				_gted[e->index].cargo_allowed_required = buf.ReadWord();
@@ -1461,9 +1467,12 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 			}
 
-			case 0x17: // Callback mask
-				SB(ei->callback_mask, 0, 8, buf.ReadByte());
+			case 0x17: { // Callback mask
+				auto mask = ei->callback_mask.base();
+				SB(mask, 0, 8, buf.ReadByte());
+				ei->callback_mask = VehicleCallbackMasks{mask};
 				break;
+			}
 
 			case PROP_ROADVEH_TRACTIVE_EFFORT: // Tractive effort coefficient in 1/256.
 				rvi->tractive_effort = buf.ReadByte();
@@ -1545,9 +1554,12 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 				ei->extra_flags = static_cast<ExtraEngineFlags>(buf.ReadDWord());
 				break;
 
-			case 0x28: // Callback additional mask
-				SB(ei->callback_mask, 8, 8, buf.ReadByte());
+			case 0x28: { // Callback additional mask
+				auto mask = ei->callback_mask.base();
+				SB(mask, 8, 8, buf.ReadByte());
+				ei->callback_mask = VehicleCallbackMasks{mask};
 				break;
+			}
 
 			case 0x29: // Cargo classes required for a refit.
 				_gted[e->index].cargo_allowed_required = buf.ReadWord();
@@ -1648,9 +1660,12 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 			}
 
-			case 0x12: // Callback mask
-				SB(ei->callback_mask, 0, 8, buf.ReadByte());
+			case 0x12: { // Callback mask
+				auto mask = ei->callback_mask.base();
+				SB(mask, 0, 8, buf.ReadByte());
+				ei->callback_mask = VehicleCallbackMasks{mask};
 				break;
+			}
 
 			case 0x13: // Refit cost
 				ei->refit_cost = buf.ReadByte();
@@ -1728,9 +1743,12 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				ei->extra_flags = static_cast<ExtraEngineFlags>(buf.ReadDWord());
 				break;
 
-			case 0x22: // Callback additional mask
-				SB(ei->callback_mask, 8, 8, buf.ReadByte());
+			case 0x22: { // Callback additional mask
+				auto mask = ei->callback_mask.base();
+				SB(mask, 8, 8, buf.ReadByte());
+				ei->callback_mask = VehicleCallbackMasks{mask};
 				break;
+			}
 
 			case 0x23: // Speed (1 unit is 0.5 km-ish/h)
 				svi->max_speed = buf.ReadWord();
@@ -1839,9 +1857,12 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 				break;
 			}
 
-			case 0x14: // Callback mask
-				SB(ei->callback_mask, 0, 8, buf.ReadByte());
+			case 0x14: { // Callback mask
+				auto mask = ei->callback_mask.base();
+				SB(mask, 0, 8, buf.ReadByte());
+				ei->callback_mask = VehicleCallbackMasks{mask};
 				break;
+			}
 
 			case 0x15: // Refit cost
 				ei->refit_cost = buf.ReadByte();
@@ -1905,9 +1926,12 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 				ei->extra_flags = static_cast<ExtraEngineFlags>(buf.ReadDWord());
 				break;
 
-			case 0x22: // Callback additional mask
-				SB(ei->callback_mask, 8, 8, buf.ReadByte());
+			case 0x22: { // Callback additional mask
+				auto mask = ei->callback_mask.base();
+				SB(mask, 8, 8, buf.ReadByte());
+				ei->callback_mask = VehicleCallbackMasks{mask};
 				break;
+			}
 
 			case 0x23: // Cargo classes required for a refit.
 				_gted[e->index].cargo_allowed_required = buf.ReadWord();
@@ -2034,7 +2058,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 			}
 
 			case 0x0B: // Callback mask
-				statspec->callback_mask = buf.ReadByte();
+				statspec->callback_mask = static_cast<StationCallbackMasks>(buf.ReadByte());
 				break;
 
 			case 0x0C: // Disallowed number of platforms
@@ -2224,7 +2248,7 @@ static ChangeInfoResult CanalChangeInfo(uint first, uint last, int prop, ByteRea
 
 		switch (prop) {
 			case 0x08:
-				cp->callback_mask = buf.ReadByte();
+				cp->callback_mask = static_cast<CanalCallbackMasks>(buf.ReadByte());
 				break;
 
 			case 0x09:
@@ -2550,9 +2574,12 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				housespec->building_availability = (HouseZones)buf.ReadWord();
 				break;
 
-			case 0x14: // House callback mask
-				housespec->callback_mask |= buf.ReadByte();
+			case 0x14: { // House callback mask
+				auto mask = housespec->callback_mask.base();
+				SB(mask, 0, 8, buf.ReadByte());
+				housespec->callback_mask = HouseCallbackMasks{mask};
 				break;
+			}
 
 			case 0x15: { // House override byte
 				uint8_t override = buf.ReadByte();
@@ -2597,9 +2624,12 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				housespec->class_id = AllocateHouseClassID(buf.ReadByte(), _cur.grffile->grfid);
 				break;
 
-			case 0x1D: // Callback mask part 2
-				housespec->callback_mask |= (buf.ReadByte() << 8);
+			case 0x1D: { // Callback mask part 2
+				auto mask = housespec->callback_mask.base();
+				SB(mask, 8, 8, buf.ReadByte());
+				housespec->callback_mask = HouseCallbackMasks{mask};
 				break;
+			}
 
 			case 0x1E: { // Accepted cargo types
 				uint32_t cargotypes = buf.ReadDWord();
@@ -3167,7 +3197,7 @@ static ChangeInfoResult CargoChangeInfo(uint first, uint last, int prop, ByteRea
 				break;
 
 			case 0x1A: // Bitmask of callbacks to use
-				cs->callback_mask = buf.ReadByte();
+				cs->callback_mask = static_cast<CargoCallbackMasks>(buf.ReadByte());
 				break;
 
 			case 0x1D: // Vehicle capacity muliplier
@@ -3384,7 +3414,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint first, uint last, int prop,
 				break;
 
 			case 0x0E: // Callback mask
-				tsp->callback_mask = buf.ReadByte();
+				tsp->callback_mask = static_cast<IndustryTileCallbackMasks>(buf.ReadByte());
 				break;
 
 			case 0x0F: // Animation information
@@ -3828,8 +3858,9 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 
 			case 0x21:   // Callback mask
 			case 0x22: { // Callback additional mask
-				uint8_t aflag = buf.ReadByte();
-				SB(indsp->callback_mask, (prop - 0x21) * 8, 8, aflag);
+				auto mask = indsp->callback_mask.base();
+				SB(mask, (prop - 0x21) * 8, 8, buf.ReadByte());
+				indsp->callback_mask = IndustryCallbackMasks{mask};
 				break;
 			}
 
@@ -4231,7 +4262,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 				break;
 
 			case 0x15: // Callback mask
-				spec->callback_mask = buf.ReadWord();
+				spec->callback_mask = static_cast<ObjectCallbackMasks>(buf.ReadWord());
 				break;
 
 			case 0x16: // Building height
@@ -4761,7 +4792,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 			}
 
 			case 0x0E: // Callback mask
-				tsp->callback_mask = buf.ReadByte();
+				tsp->callback_mask = static_cast<AirportTileCallbackMasks>(buf.ReadByte());
 				break;
 
 			case 0x0F: // Animation information
@@ -4892,7 +4923,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 				break;
 
 			case 0x11: // Callback mask
-				rs->callback_mask = buf.ReadByte();
+				rs->callback_mask = static_cast<RoadStopCallbackMasks>(buf.ReadByte());
 				break;
 
 			case 0x12: // General flags
@@ -9124,7 +9155,7 @@ static void CalculateRefitMasks()
 			/* Custom refit mask callback. */
 			const GRFFile *file = _gted[e->index].defaultcargo_grf;
 			if (file == nullptr) file = e->GetGRF();
-			if (file != nullptr && HasBit(e->info.callback_mask, CBM_VEHICLE_CUSTOM_REFIT)) {
+			if (file != nullptr && e->info.callback_mask.Test(VehicleCallbackMask::CustomRefit)) {
 				for (const CargoSpec *cs : CargoSpec::Iterate()) {
 					uint8_t local_slot = file->cargo_map[cs->Index()];
 					uint16_t callback = GetVehicleCallback(CBID_VEHICLE_CUSTOM_REFIT, cs->classes, local_slot, engine, nullptr);

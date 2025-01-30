@@ -109,7 +109,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	/* If the object wants only one colour, then give it that colour. */
 	if ((spec->flags & OBJECT_FLAG_2CC_COLOUR) == 0) o->colour &= 0xF;
 
-	if (HasBit(spec->callback_mask, CBM_OBJ_COLOUR)) {
+	if (spec->callback_mask.Test(ObjectCallbackMask::Colour)) {
 		uint16_t res = GetObjectCallback(CBID_OBJECT_COLOUR, o->colour, 0, spec, o, tile);
 		if (res != CALLBACK_FAILED) {
 			if (res >= 0x100) ErrorUnknownCallbackResult(spec->grf_prop.grfid, CBID_OBJECT_COLOUR, res);
@@ -189,7 +189,7 @@ void UpdateObjectColours(const Company *c)
 
 		const ObjectSpec *spec = ObjectSpec::GetByTile(obj->location.tile);
 		/* Using the object colour callback, so not using company colour. */
-		if (HasBit(spec->callback_mask, CBM_OBJ_COLOUR)) continue;
+		if (spec->callback_mask.Test(ObjectCallbackMask::Colour)) continue;
 
 		const Livery *l = c->livery;
 		obj->colour = ((spec->flags & OBJECT_FLAG_2CC_COLOUR) ? (l->colour2 * 16) : 0) + l->colour1;
@@ -274,7 +274,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 
 		for (TileIndex t : ta) {
 			uint16_t callback = CALLBACK_FAILED;
-			if (HasBit(spec->callback_mask, CBM_OBJ_SLOPE_CHECK)) {
+			if (spec->callback_mask.Test(ObjectCallbackMask::SlopeCheck)) {
 				TileIndex diff = t - tile;
 				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t), TileY(diff) << 4 | TileX(diff), spec, nullptr, t, view);
 			}
@@ -929,7 +929,7 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlag flags, int
 			const ObjectSpec *spec = ObjectSpec::Get(type);
 
 			/* Call callback 'disable autosloping for objects'. */
-			if (HasBit(spec->callback_mask, CBM_OBJ_AUTOSLOPE)) {
+			if (spec->callback_mask.Test(ObjectCallbackMask::Autoslope)) {
 				/* If the callback fails, allow autoslope. */
 				uint16_t res = GetObjectCallback(CBID_OBJECT_AUTOSLOPE, 0, 0, spec, Object::GetByTile(tile), tile);
 				if (res == CALLBACK_FAILED || !ConvertBooleanCallback(spec->grf_prop.grffile, CBID_OBJECT_AUTOSLOPE, res)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
