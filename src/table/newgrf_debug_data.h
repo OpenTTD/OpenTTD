@@ -14,15 +14,12 @@
 
 /* Helper for filling property tables */
 #define NIP(prop, base, variable, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->variable); }, cpp_sizeof(base, variable), prop, type }
-#define NIP_END() { nullptr, 0, 0, 0, 0 }
 
 /* Helper for filling callback tables */
 #define NIC(cb_id, base, variable, bit) { #cb_id, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->variable); }, cpp_sizeof(base, variable), bit, cb_id }
-#define NIC_END() { nullptr, 0, 0, 0, 0 }
 
 /* Helper for filling variable tables */
 #define NIV(var, name) { name, var }
-#define NIV_END() { nullptr, 0 }
 
 
 /*** NewGRF Vehicles ***/
@@ -44,7 +41,6 @@ static const NICallback _nic_vehicles[] = {
 	NICV(CBID_VEHICLE_AUTOREPLACE_SELECTION, CBM_NO_BIT),
 	NICV(CBID_VEHICLE_MODIFY_PROPERTY,       CBM_NO_BIT),
 	NICV(CBID_VEHICLE_NAME,                  CBM_VEHICLE_NAME),
-	NIC_END()
 };
 
 
@@ -67,7 +63,6 @@ static const NIVariable _niv_vehicles[] = {
 	// 0x61 not useful, since it requires register 0x10F
 	NIV(0x62, "curvature/position difference to other vehicle"),
 	NIV(0x63, "tile compatibility wrt. track-type"),
-	NIV_END()
 };
 
 class NIHVehicle : public NIHelper {
@@ -87,10 +82,10 @@ class NIHVehicle : public NIHelper {
 };
 
 static const NIFeature _nif_vehicle = {
-	nullptr,
+	{},
 	_nic_vehicles,
 	_niv_vehicles,
-	new NIHVehicle(),
+	std::make_unique<NIHVehicle>(),
 };
 
 
@@ -105,7 +100,6 @@ static const NICallback _nic_stations[] = {
 	NICS(CBID_STATION_ANIM_NEXT_FRAME,  CBM_STATION_ANIMATION_NEXT_FRAME),
 	NICS(CBID_STATION_ANIMATION_SPEED,  CBM_STATION_ANIMATION_SPEED),
 	NICS(CBID_STATION_LAND_SLOPE_CHECK, CBM_STATION_SLOPE_CHECK),
-	NIC_END()
 };
 
 static const NIVariable _niv_stations[] = {
@@ -132,7 +126,6 @@ static const NIVariable _niv_stations[] = {
 	NIV(0x69, "information about cargo accepted in the past"),
 	NIV(0x6A, "GRFID of nearby station tiles"),
 	NIV(0x6B, "station ID of nearby tiles"),
-	NIV_END()
 };
 
 class NIHStation : public NIHelper {
@@ -152,10 +145,10 @@ class NIHStation : public NIHelper {
 };
 
 static const NIFeature _nif_station = {
-	nullptr,
+	{},
 	_nic_stations,
 	_niv_stations,
-	new NIHStation(),
+	std::make_unique<NIHStation>(),
 };
 
 
@@ -178,7 +171,6 @@ static const NICallback _nic_house[] = {
 	NICH(CBID_HOUSE_CUSTOM_NAME,               CBM_NO_BIT),
 	NICH(CBID_HOUSE_DRAW_FOUNDATIONS,          CBM_HOUSE_DRAW_FOUNDATIONS),
 	NICH(CBID_HOUSE_AUTOSLOPE,                 CBM_HOUSE_AUTOSLOPE),
-	NIC_END()
 };
 
 static const NIVariable _niv_house[] = {
@@ -198,7 +190,6 @@ static const NIVariable _niv_house[] = {
 	NIV(0x65, "distance of nearest house matching a given criterion"),
 	NIV(0x66, "class and ID of nearby house tile"),
 	NIV(0x67, "GRFID of nearby house tile"),
-	NIV_END()
 };
 
 class NIHHouse : public NIHelper {
@@ -218,10 +209,10 @@ class NIHHouse : public NIHelper {
 };
 
 static const NIFeature _nif_house = {
-	nullptr,
+	{},
 	_nic_house,
 	_niv_house,
-	new NIHHouse(),
+	std::make_unique<NIHHouse>(),
 };
 
 
@@ -237,7 +228,6 @@ static const NICallback _nic_industrytiles[] = {
 	NICIT(CBID_INDTILE_SHAPE_CHECK,      CBM_INDT_SHAPE_CHECK),
 	NICIT(CBID_INDTILE_DRAW_FOUNDATIONS, CBM_INDT_DRAW_FOUNDATIONS),
 	NICIT(CBID_INDTILE_AUTOSLOPE,        CBM_INDT_AUTOSLOPE),
-	NIC_END()
 };
 
 static const NIVariable _niv_industrytiles[] = {
@@ -249,7 +239,6 @@ static const NIVariable _niv_industrytiles[] = {
 	NIV(0x60, "land info of nearby tiles"),
 	NIV(0x61, "animation stage of nearby tiles"),
 	NIV(0x62, "get industry or airport tile ID at offset"),
-	NIV_END()
 };
 
 class NIHIndustryTile : public NIHelper {
@@ -269,10 +258,10 @@ class NIHIndustryTile : public NIHelper {
 };
 
 static const NIFeature _nif_industrytile = {
-	nullptr,
+	{},
 	_nic_industrytiles,
 	_niv_industrytiles,
-	new NIHIndustryTile(),
+	std::make_unique<NIHIndustryTile>(),
 };
 
 
@@ -313,7 +302,6 @@ static const NIProperty _nip_industries[] = {
 	NIP_ACCEPTED_CARGO(0x26, Industry, 13, NIT_CARGO, "accepted cargo 13"),
 	NIP_ACCEPTED_CARGO(0x26, Industry, 14, NIT_CARGO, "accepted cargo 14"),
 	NIP_ACCEPTED_CARGO(0x26, Industry, 15, NIT_CARGO, "accepted cargo 15"),
-	NIP_END()
 };
 
 #undef NIP_PRODUCED_CARGO
@@ -334,7 +322,6 @@ static const NICallback _nic_industries[] = {
 	NICI(CBID_INDUSTRY_INPUT_CARGO_TYPES,    CBM_IND_INPUT_CARGO_TYPES),
 	NICI(CBID_INDUSTRY_OUTPUT_CARGO_TYPES,   CBM_IND_OUTPUT_CARGO_TYPES),
 	NICI(CBID_INDUSTRY_PROD_CHANGE_BUILD,    CBM_IND_PROD_CHANGE_BUILD),
-	NIC_END()
 };
 
 static const NIVariable _niv_industries[] = {
@@ -363,7 +350,6 @@ static const NIVariable _niv_industries[] = {
 	NIV(0x6F, "waiting input cargo"),
 	NIV(0x70, "production rate"),
 	NIV(0x71, "percentage of cargo transported last month"),
-	NIV_END()
 };
 
 class NIHIndustry : public NIHelper {
@@ -393,7 +379,7 @@ static const NIFeature _nif_industry = {
 	_nip_industries,
 	_nic_industries,
 	_niv_industries,
-	new NIHIndustry(),
+	std::make_unique<NIHIndustry>(),
 };
 
 
@@ -408,7 +394,6 @@ static const NICallback _nic_objects[] = {
 	NICO(CBID_OBJECT_COLOUR,               CBM_OBJ_COLOUR),
 	NICO(CBID_OBJECT_FUND_MORE_TEXT,       CBM_OBJ_FUND_MORE_TEXT),
 	NICO(CBID_OBJECT_AUTOSLOPE,            CBM_OBJ_AUTOSLOPE),
-	NIC_END()
 };
 
 static const NIVariable _niv_objects[] = {
@@ -426,7 +411,6 @@ static const NIVariable _niv_objects[] = {
 	NIV(0x62, "land info of nearby tiles"),
 	NIV(0x63, "animation stage of nearby tiles"),
 	NIV(0x64, "distance on nearest object with given type"),
-	NIV_END()
 };
 
 class NIHObject : public NIHelper {
@@ -446,10 +430,10 @@ class NIHObject : public NIHelper {
 };
 
 static const NIFeature _nif_object = {
-	nullptr,
+	{},
 	_nic_objects,
 	_niv_objects,
-	new NIHObject(),
+	std::make_unique<NIHObject>(),
 };
 
 
@@ -461,7 +445,6 @@ static const NIVariable _niv_railtypes[] = {
 	NIV(0x42, "level crossing status"),
 	NIV(0x43, "construction date"),
 	NIV(0x44, "town zone"),
-	NIV_END()
 };
 
 class NIHRailType : public NIHelper {
@@ -482,10 +465,10 @@ class NIHRailType : public NIHelper {
 };
 
 static const NIFeature _nif_railtype = {
-	nullptr,
-	nullptr,
+	{},
+	{},
 	_niv_railtypes,
-	new NIHRailType(),
+	std::make_unique<NIHRailType>(),
 };
 
 
@@ -497,7 +480,6 @@ static const NICallback _nic_airporttiles[] = {
 	NICAT(CBID_AIRPTILE_ANIM_START_STOP,  CBM_NO_BIT),
 	NICAT(CBID_AIRPTILE_ANIM_NEXT_FRAME,  CBM_AIRT_ANIM_NEXT_FRAME),
 	NICAT(CBID_AIRPTILE_ANIMATION_SPEED,  CBM_AIRT_ANIM_SPEED),
-	NIC_END()
 };
 
 class NIHAirportTile : public NIHelper {
@@ -517,10 +499,10 @@ class NIHAirportTile : public NIHelper {
 };
 
 static const NIFeature _nif_airporttile = {
-	nullptr,
+	{},
 	_nic_airporttiles,
 	_niv_industrytiles, // Yes, they share this (at least now)
-	new NIHAirportTile(),
+	std::make_unique<NIHAirportTile>(),
 };
 
 
@@ -539,7 +521,6 @@ static const NIVariable _niv_airports[] = {
 	NIV(0xF1, "type of the airport"),
 	NIV(0xF6, "airport block status"),
 	NIV(0xFA, "built date"),
-	NIV_END()
 };
 
 class NIHAirport : public NIHelper {
@@ -566,10 +547,10 @@ class NIHAirport : public NIHelper {
 };
 
 static const NIFeature _nif_airport = {
-	nullptr,
-	nullptr,
+	{},
+	{},
 	_niv_airports,
-	new NIHAirport(),
+	std::make_unique<NIHAirport>(),
 };
 
 
@@ -585,7 +566,6 @@ static const NIVariable _niv_towns[] = {
 	NIV(0x9A, "zone radius 3"),
 	NIV(0x9C, "zone radius 4"),
 	NIV(0xB6, "number of buildings"),
-	NIV_END()
 };
 
 class NIHTown : public NIHelper {
@@ -616,10 +596,10 @@ class NIHTown : public NIHelper {
 };
 
 static const NIFeature _nif_town = {
-	nullptr,
-	nullptr,
+	{},
+	{},
 	_niv_towns,
-	new NIHTown(),
+	std::make_unique<NIHTown>(),
 };
 
 /*** NewGRF road types ***/
@@ -630,7 +610,6 @@ static const NIVariable _niv_roadtypes[] = {
 	NIV(0x42, "level crossing status"),
 	NIV(0x43, "construction date"),
 	NIV(0x44, "town zone"),
-	NIV_END()
 };
 
 class NIHRoadType : public NIHelper {
@@ -651,17 +630,17 @@ class NIHRoadType : public NIHelper {
 };
 
 static const NIFeature _nif_roadtype = {
-	nullptr,
-	nullptr,
+	{},
+	{},
 	_niv_roadtypes,
-	new NIHRoadType(),
+	std::make_unique<NIHRoadType>(),
 };
 
 static const NIFeature _nif_tramtype = {
-	nullptr,
-	nullptr,
+	{},
+	{},
 	_niv_roadtypes,
-	new NIHRoadType(),
+	std::make_unique<NIHRoadType>(),
 };
 
 #define NICRS(cb_id, bit) NIC(cb_id, RoadStopSpec, callback_mask, bit)
@@ -670,7 +649,6 @@ static const NICallback _nic_roadstops[] = {
 	NICRS(CBID_STATION_ANIM_START_STOP,  CBM_NO_BIT),
 	NICRS(CBID_STATION_ANIM_NEXT_FRAME,  CBM_ROAD_STOP_ANIMATION_NEXT_FRAME),
 	NICRS(CBID_STATION_ANIMATION_SPEED,  CBM_ROAD_STOP_ANIMATION_SPEED),
-	NIC_END()
 };
 
 static const NIVariable _nif_roadstops[] = {
@@ -696,7 +674,6 @@ static const NIVariable _nif_roadstops[] = {
 	NIV(0x69, "information about cargo accepted in the past"),
 	NIV(0x6A, "GRFID of nearby road stop tiles"),
 	NIV(0x6B, "road stop ID of nearby tiles"),
-	NIV_END(),
 };
 
 class NIHRoadStop : public NIHelper {
@@ -717,10 +694,10 @@ class NIHRoadStop : public NIHelper {
 };
 
 static const NIFeature _nif_roadstop = {
-	nullptr,
+	{},
 	_nic_roadstops,
 	_nif_roadstops,
-	new NIHRoadStop(),
+	std::make_unique<NIHRoadStop>(),
 };
 
 /** Table with all NIFeatures. */
