@@ -2309,19 +2309,19 @@ static WindowDesc _vehicle_list_desc[] = {
 	},
 	{
 		WDP_AUTO, "list_vehicles_roadveh", 260, 246,
-		WC_INVALID, WC_NONE,
+		WC_ROADVEH_LIST, WC_NONE,
 		{},
 		_nested_vehicle_list
 	},
 	{
 		WDP_AUTO, "list_vehicles_ship", 260, 246,
-		WC_INVALID, WC_NONE,
+		WC_SHIPS_LIST, WC_NONE,
 		{},
 		_nested_vehicle_list
 	},
 	{
 		WDP_AUTO, "list_vehicles_aircraft", 260, 246,
-		WC_INVALID, WC_NONE,
+		WC_AIRCRAFT_LIST, WC_NONE,
 		{},
 		_nested_vehicle_list
 	}
