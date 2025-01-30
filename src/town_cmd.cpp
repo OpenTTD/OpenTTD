@@ -972,7 +972,7 @@ RoadType GetTownRoadType()
 		if (rti->label == 0) continue;
 
 		/* Can town build this road. */
-		if (!HasBit(rti->flags, ROTF_TOWN_BUILD)) continue;
+		if (!rti->flags.Test(RoadTypeFlag::TownBuild)) continue;
 
 		/* Not yet introduced at this date. */
 		if (IsInsideMM(rti->introduction_date, 0, CalendarTime::MAX_DATE.base()) && rti->introduction_date > TimerGameCalendar::date) continue;
@@ -999,7 +999,7 @@ static TimerGameCalendar::Date GetTownRoadTypeFirstIntroductionDate()
 		if (RoadTypeIsTram(rt)) continue;
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 		if (rti->label == 0) continue; // Unused road type.
-		if (!HasBit(rti->flags, ROTF_TOWN_BUILD)) continue; // Town can't build this road type.
+		if (!rti->flags.Test(RoadTypeFlag::TownBuild)) continue; // Town can't build this road type.
 
 		if (best != nullptr && rti->introduction_date >= best->introduction_date) continue;
 		best = rti;
@@ -1496,8 +1496,8 @@ static inline bool RoadTypesAllowHouseHere(TileIndex t)
 
 		RoadType road_rt = GetRoadTypeRoad(cur_tile);
 		RoadType tram_rt = GetRoadTypeTram(cur_tile);
-		if (road_rt != INVALID_ROADTYPE && !HasBit(GetRoadTypeInfo(road_rt)->flags, ROTF_NO_HOUSES)) return true;
-		if (tram_rt != INVALID_ROADTYPE && !HasBit(GetRoadTypeInfo(tram_rt)->flags, ROTF_NO_HOUSES)) return true;
+		if (road_rt != INVALID_ROADTYPE && !GetRoadTypeInfo(road_rt)->flags.Test(RoadTypeFlag::NoHouses)) return true;
+		if (tram_rt != INVALID_ROADTYPE && !GetRoadTypeInfo(tram_rt)->flags.Test(RoadTypeFlag::NoHouses)) return true;
 	}
 
 	/* If no road was found surrounding the tile we can allow building the house since there is
@@ -1516,7 +1516,7 @@ static bool TownCanGrowRoad(TileIndex tile)
 
 	/* Allow extending on roadtypes which can be built by town, or if the road type matches the type the town will build. */
 	RoadType rt = GetRoadTypeRoad(tile);
-	return HasBit(GetRoadTypeInfo(rt)->flags, ROTF_TOWN_BUILD) || GetTownRoadType() == rt;
+	return GetRoadTypeInfo(rt)->flags.Test(RoadTypeFlag::TownBuild) || GetTownRoadType() == rt;
 }
 
 /**

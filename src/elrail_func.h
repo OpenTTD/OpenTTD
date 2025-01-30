@@ -20,7 +20,7 @@
  */
 inline bool HasRailCatenary(RailType rt)
 {
-	return HasBit(GetRailTypeInfo(rt)->flags, RTF_CATENARY);
+	return GetRailTypeInfo(rt)->flags.Test(RailTypeFlag::Catenary);
 }
 
 /**
