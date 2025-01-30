@@ -457,6 +457,7 @@ STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Lastauslaiturit
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Linja-autopysäkit
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Satamat
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Lentokentät
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Haamuasemat
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Reittipisteitten nimet näkyvissä
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Kyltit näkyvissä
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Vastustajien kyltit ja nimet näkyvissä

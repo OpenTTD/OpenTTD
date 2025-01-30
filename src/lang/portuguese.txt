@@ -458,6 +458,7 @@ STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Paragens de cam
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Paragens de autocarro
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Docas
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Aeroportos
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Fantasma
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostrar nomes dos pontos de controlo
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostrar sinais
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostrar sinais e nomes dos oponentes

@@ -519,6 +519,7 @@ STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Σταθμοί 
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Στάσεις λεωφορείων
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Λιμάνια
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Αεροδρόμια
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Φάντασμα
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Εμφάνιση ονομάτων σημείων καθοδήγησης
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Εμφάνιση πινακίδων
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Εμφανίζονται τα σήματα και τα ονόματα των ανταγωνιστών
