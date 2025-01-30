@@ -369,9 +369,7 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 	message.reserve(1024);
 	message += "Loading your savegame caused OpenTTD to crash.\n";
 
-	for (const GRFConfig *c = _grfconfig; !_saveload_crash_with_missing_newgrfs && c != nullptr; c = c->next) {
-		_saveload_crash_with_missing_newgrfs = HasBit(c->flags, GCF_COMPATIBLE) || c->status == GCS_NOT_FOUND;
-	}
+	_saveload_crash_with_missing_newgrfs = std::ranges::any_of(_grfconfig, [](const auto &c) { return HasBit(c->flags, GCF_COMPATIBLE) || c->status == GCS_NOT_FOUND; });
 
 	if (_saveload_crash_with_missing_newgrfs) {
 		message +=
@@ -387,7 +385,7 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 			"Please load the savegame with the appropriate NewGRFs installed.\n"
 			"The missing/compatible NewGRFs are:\n";
 
-		for (const GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+		for (const auto &c : _grfconfig) {
 			if (HasBit(c->flags, GCF_COMPATIBLE)) {
 				const GRFIdentifier &replaced = _gamelog.GetOverriddenIdentifier(*c);
 				fmt::format_to(std::back_inserter(message), "NewGRF {:08X} (checksum {}) not found.\n  Loaded NewGRF \"{}\" (checksum {}) with same GRF ID instead.\n",
@@ -707,7 +705,7 @@ bool AfterLoadGame()
 
 	/* Check if all NewGRFs are present, we are very strict in MP mode */
 	GRFListCompatibility gcf_res = IsGoodGRFConfigList(_grfconfig);
-	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		if (c->status == GCS_NOT_FOUND) {
 			_gamelog.GRFRemove(c->ident.grfid);
 		} else if (HasBit(c->flags, GCF_COMPATIBLE)) {

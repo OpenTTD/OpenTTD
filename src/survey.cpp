@@ -354,7 +354,7 @@ void SurveyTimers(nlohmann::json &survey)
  */
 void SurveyGrfs(nlohmann::json &survey)
 {
-	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		auto grfid = fmt::format("{:08x}", std::byteswap(c->ident.grfid));
 		auto &grf = survey[grfid];
 

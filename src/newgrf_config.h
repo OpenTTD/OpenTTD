@@ -180,8 +180,6 @@ struct GRFConfig {
 	std::vector<std::optional<GRFParameterInfo>> param_info; ///< NOSAVE: extra information about the parameters
 	std::vector<uint32_t> param; ///< GRF parameters
 
-	struct GRFConfig *next = nullptr; ///< NOSAVE: Next item in the linked list
-
 	bool IsCompatible(uint32_t old_version) const;
 	void SetParams(std::span<const uint32_t> pars);
 	void CopyParams(const GRFConfig &src);
@@ -199,7 +197,7 @@ struct GRFConfig {
 	void FinalizeParameterInfo();
 };
 
-using GRFConfigList = GRFConfig *;
+using GRFConfigList = std::vector<std::unique_ptr<GRFConfig>>;
 
 /** Method to find GRFs using FindGRFConfig */
 enum FindGRFConfigMode : uint8_t {
@@ -231,7 +229,7 @@ const GRFConfig *FindGRFConfig(uint32_t grfid, FindGRFConfigMode mode, const MD5
 GRFConfig *GetGRFConfig(uint32_t grfid, uint32_t mask = 0xFFFFFFFF);
 void CopyGRFConfigList(GRFConfigList &dst, const GRFConfigList &src, bool init_only);
 void AppendStaticGRFConfigs(GRFConfigList &dst);
-void AppendToGRFConfigList(GRFConfigList &dst, GRFConfig *el);
+void AppendToGRFConfigList(GRFConfigList &dst, std::unique_ptr<GRFConfig> &&el);
 void ClearGRFConfigList(GRFConfigList &config);
 void ResetGRFConfig(bool defaults);
 GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig);

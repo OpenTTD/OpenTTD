@@ -579,8 +579,8 @@ void Gamelog::GRFAddList(const GRFConfigList &newg)
 {
 	assert(this->action_type == GLAT_START || this->action_type == GLAT_LOAD);
 
-	for (GRFConfig *gc = newg; gc != nullptr; gc = gc->next) {
-		this->GRFAdd(*gc);
+	for (const auto &c : newg) {
+		this->GRFAdd(*c);
 	}
 }
 
@@ -591,8 +591,8 @@ void Gamelog::GRFAddList(const GRFConfigList &newg)
 static std::vector<const GRFConfig *> GenerateGRFList(const GRFConfigList &grfc)
 {
 	std::vector<const GRFConfig *> list;
-	for (const GRFConfig *g = grfc; g != nullptr; g = g->next) {
-		if (IsLoggableGrfConfig(*g)) list.push_back(g);
+	for (const auto &g : grfc) {
+		if (IsLoggableGrfConfig(*g)) list.push_back(g.get());
 	}
 
 	return list;

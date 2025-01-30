@@ -1048,17 +1048,16 @@ static void GraphicsSetLoadConfig(IniFile &ini)
  * @param grpname   Group name containing the configuration of the GRF.
  * @param is_static GRF is static.
  */
-static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is_static)
+static GRFConfigList GRFLoadConfig(const IniFile &ini, const char *grpname, bool is_static)
 {
 	const IniGroup *group = ini.GetGroup(grpname);
-	GRFConfig *first = nullptr;
-	GRFConfig **curr = &first;
+	GRFConfigList list;
 
-	if (group == nullptr) return nullptr;
+	if (group == nullptr) return list;
 
 	uint num_grfs = 0;
 	for (const IniItem &item : group->items) {
-		GRFConfig *c = nullptr;
+		std::unique_ptr<GRFConfig> c{};
 
 		std::array<uint8_t, 4> grfid_buf;
 		MD5Hash md5sum;
@@ -1084,17 +1083,17 @@ static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is
 				uint32_t grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
 				if (has_md5sum) {
 					const GRFConfig *s = FindGRFConfig(grfid, FGCM_EXACT, &md5sum);
-					if (s != nullptr) c = new GRFConfig(*s);
+					if (s != nullptr) c = std::make_unique<GRFConfig>(*s);
 				}
 				if (c == nullptr && !FioCheckFileExists(std::string(item_name), NEWGRF_DIR)) {
 					const GRFConfig *s = FindGRFConfig(grfid, FGCM_NEWEST_VALID);
-					if (s != nullptr) c = new GRFConfig(*s);
+					if (s != nullptr) c = std::make_unique<GRFConfig>(*s);
 				}
 			}
 		}
 		std::string filename = std::string(item_name);
 
-		if (c == nullptr) c = new GRFConfig(filename);
+		if (c == nullptr) c = std::make_unique<GRFConfig>(filename);
 
 		/* Parse parameters */
 		if (item.value.has_value() && !item.value->empty()) {
@@ -1123,23 +1122,15 @@ static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is
 
 			SetDParamStr(0, filename.empty() ? item.name.c_str() : filename);
 			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_GRF, WL_CRITICAL);
-			delete c;
 			continue;
 		}
 
 		/* Check for duplicate GRFID (will also check for duplicate filenames) */
-		bool duplicate = false;
-		for (const GRFConfig *gc = first; gc != nullptr; gc = gc->next) {
-			if (gc->ident.grfid == c->ident.grfid) {
-				SetDParamStr(0, c->filename);
-				SetDParamStr(1, gc->filename);
-				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_DUPLICATE_GRFID, WL_CRITICAL);
-				duplicate = true;
-				break;
-			}
-		}
-		if (duplicate) {
-			delete c;
+		auto found = std::ranges::find_if(list, [&c](const auto &gc) { return gc->ident.grfid == c->ident.grfid; });
+		if (found != std::end(list)) {
+			SetDParamStr(0, c->filename);
+			SetDParamStr(1, (*found)->filename);
+			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_DUPLICATE_GRFID, WL_CRITICAL);
 			continue;
 		}
 
@@ -1153,11 +1144,10 @@ static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is
 		}
 
 		/* Add item to list */
-		*curr = c;
-		curr = &c->next;
+		list.push_back(std::move(c));
 	}
 
-	return first;
+	return list;
 }
 
 static IniFileVersion LoadVersionFromConfig(const IniFile &ini)
@@ -1247,13 +1237,12 @@ static void GraphicsSetSaveConfig(IniFile &ini)
 }
 
 /* Save a GRF configuration to the given group name */
-static void GRFSaveConfig(IniFile &ini, const char *grpname, const GRFConfig *list)
+static void GRFSaveConfig(IniFile &ini, const char *grpname, const GRFConfigList &list)
 {
 	IniGroup &group = ini.GetOrCreateGroup(grpname);
 	group.Clear();
-	const GRFConfig *c;
 
-	for (c = list; c != nullptr; c = c->next) {
+	for (const auto &c : list) {
 		std::string key = fmt::format("{:08X}|{}|{}", std::byteswap(c->ident.grfid),
 				FormatArrayAsHex(c->ident.md5sum), c->filename);
 		group.GetOrCreateItem(key).SetValue(GRFBuildParamList(*c));
@@ -1558,13 +1547,13 @@ StringList GetGRFPresetList()
  * @return NewGRF configuration.
  * @see GetGRFPresetList
  */
-GRFConfig *LoadGRFPresetFromConfig(const char *config_name)
+GRFConfigList LoadGRFPresetFromConfig(const char *config_name)
 {
 	std::string section("preset-");
 	section += config_name;
 
 	ConfigIniFile ini(_config_file);
-	GRFConfig *config = GRFLoadConfig(ini, section.c_str(), false);
+	GRFConfigList config = GRFLoadConfig(ini, section.c_str(), false);
 
 	return config;
 }
@@ -1575,7 +1564,7 @@ GRFConfig *LoadGRFPresetFromConfig(const char *config_name)
  * @param config      NewGRF configuration to save.
  * @see GetGRFPresetList
  */
-void SaveGRFPresetToConfig(const char *config_name, GRFConfig *config)
+void SaveGRFPresetToConfig(const char *config_name, GRFConfigList &config)
 {
 	std::string section("preset-");
 	section += config_name;

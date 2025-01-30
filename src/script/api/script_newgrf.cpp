@@ -17,7 +17,7 @@
 
 ScriptNewGRFList::ScriptNewGRFList()
 {
-	for (auto c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		if (!HasBit(c->flags, GCF_STATIC)) {
 			this->AddItem(std::byteswap(c->ident.grfid));
 		}
@@ -28,24 +28,15 @@ ScriptNewGRFList::ScriptNewGRFList()
 {
 	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
 
-	for (auto c = _grfconfig; c != nullptr; c = c->next) {
-		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
-			return true;
-		}
-	}
-
-	return false;
+	return std::ranges::any_of(_grfconfig, [grfid](const auto &c) { return !HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid; });
 }
 
 /* static */ SQInteger ScriptNewGRF::GetVersion(SQInteger grfid)
 {
 	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
 
-	for (auto c = _grfconfig; c != nullptr; c = c->next) {
-		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
-			return c->version;
-		}
-	}
+	auto it = std::ranges::find_if(_grfconfig, [grfid](const auto &c) { return !HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid; });
+	if (it != std::end(_grfconfig)) return (*it)->version;
 
 	return 0;
 }
@@ -54,11 +45,8 @@ ScriptNewGRFList::ScriptNewGRFList()
 {
 	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
 
-	for (auto c = _grfconfig; c != nullptr; c = c->next) {
-		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
-			return c->GetName();
-		}
-	}
+	auto it = std::ranges::find_if(_grfconfig, [grfid](const auto &c) { return !HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid; });
+	if (it != std::end(_grfconfig)) return (*it)->GetName();
 
 	return std::nullopt;
 }

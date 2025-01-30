@@ -242,7 +242,7 @@ static void WriteSavegameInfo(const std::string &name)
 
 	message += "NewGRFs:\n";
 	if (_load_check_data.HasNewGrfs()) {
-		for (GRFConfig *c = _load_check_data.grfconfig; c != nullptr; c = c->next) {
+		for (const auto &c : _load_check_data.grfconfig) {
 			fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", std::byteswap(c->ident.grfid),
 				FormatArrayAsHex(HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum), c->filename);
 		}
