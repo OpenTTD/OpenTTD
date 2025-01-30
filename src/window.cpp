@@ -610,12 +610,17 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 	if (nw != nullptr) ClrBit(nw->disp_flags, NDB_DROPDOWN_CLOSED);
 
 	bool focused_widget_changed = false;
+
 	/* If clicked on a window that previously did not have focus */
-	if (_focused_window != w &&                 // We already have focus, right?
-			(w->window_desc.flags & WDF_NO_FOCUS) == 0 &&  // Don't lose focus to toolbars
-			widget_type != WWT_CLOSEBOX) {          // Don't change focused window if 'X' (close button) was clicked
-		focused_widget_changed = true;
-		SetFocusedWindow(w);
+	if (_focused_window != w) {
+		/* Don't switch focus to an unfocusable window, or if the 'X' (close button) was clicked. */
+		if ((w->window_desc.flags & WDF_NO_FOCUS) == 0 && widget_type != WWT_CLOSEBOX) {
+			focused_widget_changed = true;
+			SetFocusedWindow(w);
+		} else if (_focused_window != nullptr && _focused_window->window_class == WC_DROPDOWN_MENU) {
+			/* Previously focused window was a dropdown menu, close it even if clicked window is unfocusable. */
+			SetFocusedWindow(nullptr);
+		}
 	}
 
 	if (nw == nullptr) return; // exit if clicked outside of widgets
@@ -1383,7 +1388,7 @@ void Window::InitializeData(WindowNumber window_number)
 	 * (so we don't interrupt typing) unless the new window has a text box. */
 	bool dropdown_active = _focused_window != nullptr && _focused_window->window_class == WC_DROPDOWN_MENU;
 	bool editbox_active = EditBoxInGlobalFocus() && this->nested_root->GetWidgetOfType(WWT_EDITBOX) == nullptr;
-	if (!dropdown_active && !editbox_active) SetFocusedWindow(this);
+	if (this->window_class == WC_DROPDOWN_MENU || (!dropdown_active && !editbox_active)) SetFocusedWindow(this);
 
 	/* Insert the window into the correct location in the z-ordering. */
 	BringWindowToFront(this, false);
