@@ -1348,7 +1348,6 @@ struct GenWorldStatus {
 	StringID cls;
 	uint current;
 	uint total;
-	std::chrono::steady_clock::time_point next_update;
 };
 
 static GenWorldStatus _gws;
@@ -1456,7 +1455,6 @@ void PrepareGenerateWorldProgress()
 	_gws.current = 0;
 	_gws.total = 0;
 	_gws.percent = 0;
-	_gws.next_update = std::chrono::steady_clock::now();
 }
 
 /**
