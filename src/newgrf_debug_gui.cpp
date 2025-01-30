@@ -86,7 +86,7 @@ typedef const void *NIOffsetProc(const void *b);
 
 /** Representation of the data from a NewGRF property. */
 struct NIProperty {
-	const char *name;          ///< A (human readable) name for the property
+	std::string_view name;          ///< A (human readable) name for the property
 	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
 	uint8_t read_size;            ///< Number of bytes (i.e. byte, word, dword etc)
 	uint8_t prop;                 ///< The number of the property
@@ -99,7 +99,7 @@ struct NIProperty {
  * information on when they actually apply.
  */
 struct NICallback {
-	const char *name;          ///< The human readable name of the callback
+	std::string_view name;          ///< The human readable name of the callback
 	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
 	uint8_t read_size;            ///< The number of bytes (i.e. byte, word, dword etc) to read
 	uint8_t cb_bit;               ///< The bit that needs to be set for this callback to be enabled
@@ -110,7 +110,7 @@ static const int CBM_NO_BIT = UINT8_MAX;
 
 /** Representation on the NewGRF variables. */
 struct NIVariable {
-	const char *name;
+	std::string_view name;
 	uint8_t var;
 };
 
@@ -222,10 +222,10 @@ protected:
 
 /** Container for all information for a given feature. */
 struct NIFeature {
-	const NIProperty *properties; ///< The properties associated with this feature.
-	const NICallback *callbacks;  ///< The callbacks associated with this feature.
-	const NIVariable *variables;  ///< The variables associated with this feature.
-	const NIHelper   *helper;     ///< The class container all helper functions.
+	std::span<const NIProperty> properties; ///< The properties associated with this feature.
+	std::span<const NICallback> callbacks; ///< The callbacks associated with this feature.
+	std::span<const NIVariable> variables; ///< The variables associated with this feature.
+	std::unique_ptr<const NIHelper> helper; ///< The class container all helper functions.
 };
 
 /* Load all the NewGRF debug data; externalised as it is just a huge bunch of tables. */
@@ -258,9 +258,9 @@ static inline const NIFeature *GetFeature(uint window_number)
  * @pre GetFeature(window_number) != nullptr
  * @return the NIHelper
  */
-static inline const NIHelper *GetFeatureHelper(uint window_number)
+static inline const NIHelper &GetFeatureHelper(uint window_number)
 {
-	return GetFeature(window_number)->helper;
+	return *GetFeature(window_number)->helper;
 }
 
 /** Window used for inspecting NewGRFs. */
@@ -345,7 +345,7 @@ struct NewGRFInspectWindow : Window {
 		this->FinishInitNested(wno);
 
 		this->vscroll->SetCount(0);
-		this->SetWidgetDisabledState(WID_NGRFI_PARENT, GetFeatureHelper(this->window_number)->GetParent(this->GetFeatureIndex()) == UINT32_MAX);
+		this->SetWidgetDisabledState(WID_NGRFI_PARENT, GetFeatureHelper(this->window_number).GetParent(this->GetFeatureIndex()) == UINT32_MAX);
 
 		this->OnInvalidateData(0, true);
 	}
@@ -354,7 +354,7 @@ struct NewGRFInspectWindow : Window {
 	{
 		if (widget != WID_NGRFI_CAPTION) return;
 
-		GetFeatureHelper(this->window_number)->SetStringParameters(this->GetFeatureIndex());
+		GetFeatureHelper(this->window_number).SetStringParameters(this->GetFeatureIndex());
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -439,31 +439,31 @@ struct NewGRFInspectWindow : Window {
 	{
 		uint index = this->GetFeatureIndex();
 		const NIFeature *nif  = GetFeature(this->window_number);
-		const NIHelper *nih   = nif->helper;
-		const void *base      = nih->GetInstance(index);
-		const void *base_spec = nih->GetSpec(index);
+		const NIHelper &nih   = *nif->helper;
+		const void *base      = nih.GetInstance(index);
+		const void *base_spec = nih.GetSpec(index);
 
 		uint i = 0;
-		if (nif->variables != nullptr) {
+		if (!nif->variables.empty()) {
 			this->DrawString(r, i++, "Variables:");
-			for (const NIVariable *niv = nif->variables; niv->name != nullptr; niv++) {
+			for (const NIVariable &niv : nif->variables) {
 				bool avail = true;
-				uint param = HasVariableParameter(niv->var) ? NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][niv->var - 0x60] : 0;
-				uint value = nih->Resolve(index, niv->var, param, avail);
+				uint param = HasVariableParameter(niv.var) ? NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][niv.var - 0x60] : 0;
+				uint value = nih.Resolve(index, niv.var, param, avail);
 
 				if (!avail) continue;
 
-				if (HasVariableParameter(niv->var)) {
-					this->DrawString(r, i++, fmt::format("  {:02x}[{:02x}]: {:08x} ({})", niv->var, param, value, niv->name));
+				if (HasVariableParameter(niv.var)) {
+					this->DrawString(r, i++, fmt::format("  {:02x}[{:02x}]: {:08x} ({})", niv.var, param, value, niv.name));
 				} else {
-					this->DrawString(r, i++, fmt::format("  {:02x}: {:08x} ({})", niv->var, value, niv->name));
+					this->DrawString(r, i++, fmt::format("  {:02x}: {:08x} ({})", niv.var, value, niv.name));
 				}
 			}
 		}
 
-		auto psa = nih->GetPSA(index, this->caller_grfid);
+		auto psa = nih.GetPSA(index, this->caller_grfid);
 		if (!psa.empty()) {
-			if (nih->PSAWithParameter()) {
+			if (nih.PSAWithParameter()) {
 				this->DrawString(r, i++, fmt::format("Persistent storage [{:08X}]:", std::byteswap(this->caller_grfid)));
 			} else {
 				this->DrawString(r, i++, "Persistent storage:");
@@ -474,12 +474,12 @@ struct NewGRFInspectWindow : Window {
 			}
 		}
 
-		if (nif->properties != nullptr) {
+		if (!nif->properties.empty()) {
 			this->DrawString(r, i++, "Properties:");
-			for (const NIProperty *nip = nif->properties; nip->name != nullptr; nip++) {
-				const void *ptr = nip->offset_proc(base);
+			for (const NIProperty &nip : nif->properties) {
+				const void *ptr = nip.offset_proc(base);
 				uint value;
-				switch (nip->read_size) {
+				switch (nip.read_size) {
 					case 1: value = *(const uint8_t  *)ptr; break;
 					case 2: value = *(const uint16_t *)ptr; break;
 					case 4: value = *(const uint32_t *)ptr; break;
@@ -488,7 +488,7 @@ struct NewGRFInspectWindow : Window {
 
 				StringID string;
 				SetDParam(0, value);
-				switch (nip->type) {
+				switch (nip.type) {
 					case NIT_INT:
 						string = STR_JUST_INT;
 						break;
@@ -501,27 +501,27 @@ struct NewGRFInspectWindow : Window {
 						NOT_REACHED();
 				}
 
-				this->DrawString(r, i++, fmt::format("  {:02x}: {} ({})", nip->prop, GetString(string), nip->name));
+				this->DrawString(r, i++, fmt::format("  {:02x}: {} ({})", nip.prop, GetString(string), nip.name));
 			}
 		}
 
-		if (nif->callbacks != nullptr) {
+		if (!nif->callbacks.empty()) {
 			this->DrawString(r, i++, "Callbacks:");
-			for (const NICallback *nic = nif->callbacks; nic->name != nullptr; nic++) {
-				if (nic->cb_bit != CBM_NO_BIT) {
-					const void *ptr = nic->offset_proc(base_spec);
+			for (const NICallback &nic : nif->callbacks) {
+				if (nic.cb_bit != CBM_NO_BIT) {
+					const void *ptr = nic.offset_proc(base_spec);
 					uint value;
-					switch (nic->read_size) {
+					switch (nic.read_size) {
 						case 1: value = *(const uint8_t  *)ptr; break;
 						case 2: value = *(const uint16_t *)ptr; break;
 						case 4: value = *(const uint32_t *)ptr; break;
 						default: NOT_REACHED();
 					}
 
-					if (!HasBit(value, nic->cb_bit)) continue;
-					this->DrawString(r, i++, fmt::format("  {:03x}: {}", nic->cb_id, nic->name));
+					if (!HasBit(value, nic.cb_bit)) continue;
+					this->DrawString(r, i++, fmt::format("  {:03x}: {}", nic.cb_id, nic.name));
 				} else {
-					this->DrawString(r, i++, fmt::format("  {:03x}: {} (unmasked)", nic->cb_id, nic->name));
+					this->DrawString(r, i++, fmt::format("  {:03x}: {} (unmasked)", nic.cb_id, nic.name));
 				}
 			}
 		}
@@ -549,9 +549,9 @@ struct NewGRFInspectWindow : Window {
 	{
 		switch (widget) {
 			case WID_NGRFI_PARENT: {
-				const NIHelper *nih   = GetFeatureHelper(this->window_number);
-				uint index = nih->GetParent(this->GetFeatureIndex());
-				::ShowNewGRFInspectWindow(GetFeatureNum(index), ::GetFeatureIndex(index), nih->GetGRFID(this->GetFeatureIndex()));
+				const NIHelper &nih = GetFeatureHelper(this->window_number);
+				uint index = nih.GetParent(this->GetFeatureIndex());
+				::ShowNewGRFInspectWindow(GetFeatureNum(index), ::GetFeatureIndex(index), nih.GetGRFID(this->GetFeatureIndex()));
 				break;
 			}
 
@@ -576,19 +576,19 @@ struct NewGRFInspectWindow : Window {
 			case WID_NGRFI_MAINPANEL: {
 				/* Does this feature have variables? */
 				const NIFeature *nif  = GetFeature(this->window_number);
-				if (nif->variables == nullptr) return;
+				if (nif->variables.empty()) return;
 
 				/* Get the line, make sure it's within the boundaries. */
 				int32_t line = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NGRFI_MAINPANEL, WidgetDimensions::scaled.frametext.top);
 				if (line == INT32_MAX) return;
 
 				/* Find the variable related to the line */
-				for (const NIVariable *niv = nif->variables; niv->name != nullptr; niv++, line--) {
-					if (line != 1) continue; // 1 because of the "Variables:" line
+				for (const NIVariable &niv : nif->variables) {
+					if (--line != 0) continue; // 0 because of the "Variables:" line
 
-					if (!HasVariableParameter(niv->var)) break;
+					if (!HasVariableParameter(niv.var)) break;
 
-					this->current_edit_param = niv->var;
+					this->current_edit_param = niv.var;
 					ShowQueryString(STR_EMPTY, STR_NEWGRF_INSPECT_QUERY_CAPTION, 9, this, CS_HEXADECIMAL, QSF_NONE);
 				}
 			}
