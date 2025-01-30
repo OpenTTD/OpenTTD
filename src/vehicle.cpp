@@ -1391,7 +1391,7 @@ bool Vehicle::HandleBreakdown()
 						(train_or_ship ? SND_3A_BREAKDOWN_TRAIN_SHIP_TOYLAND : SND_35_BREAKDOWN_ROADVEHICLE_TOYLAND), this);
 				}
 
-				if (!(this->vehstatus & VS_HIDDEN) && !HasBit(EngInfo(this->engine_type)->misc_flags, EF_NO_BREAKDOWN_SMOKE)) {
+				if (!(this->vehstatus & VS_HIDDEN) && !EngInfo(this->engine_type)->misc_flags.Test(EngineMiscFlag::NoBreakdownSmoke)) {
 					EffectVehicle *u = CreateEffectVehicleRel(this, 4, 4, 5, EV_BREAKDOWN_SMOKE);
 					if (u != nullptr) u->animation_state = this->breakdown_delay * 2;
 				}
@@ -1990,7 +1990,7 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 					if (parent_engine_type == INVALID_ENGINE) {
 						return LS_PASSENGER_WAGON_STEAM;
 					} else {
-						bool is_mu = HasBit(EngInfo(parent_engine_type)->misc_flags, EF_RAIL_IS_MU);
+						bool is_mu = EngInfo(parent_engine_type)->misc_flags.Test(EngineMiscFlag::RailIsMU);
 						switch (RailVehInfo(parent_engine_type)->engclass) {
 							default: NOT_REACHED();
 							case EC_STEAM:    return LS_PASSENGER_WAGON_STEAM;
@@ -2004,7 +2004,7 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 					return LS_FREIGHT_WAGON;
 				}
 			} else {
-				bool is_mu = HasBit(e->info.misc_flags, EF_RAIL_IS_MU);
+				bool is_mu = e->info.misc_flags.Test(EngineMiscFlag::RailIsMU);
 
 				switch (e->u.rail.engclass) {
 					default: NOT_REACHED();
@@ -2028,7 +2028,7 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 			assert(IsValidCargoType(cargo_type));
 
 			/* Important: Use Tram Flag of front part. Luckily engine_type refers to the front part here. */
-			if (HasBit(e->info.misc_flags, EF_ROAD_TRAM)) {
+			if (e->info.misc_flags.Test(EngineMiscFlag::RoadIsTram)) {
 				/* Tram */
 				return IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_TRAM : LS_FREIGHT_TRAM;
 			} else {
@@ -2116,7 +2116,7 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 		}
 	}
 
-	bool twocc = HasBit(e->info.misc_flags, EF_USES_2CC);
+	bool twocc = e->info.misc_flags.Test(EngineMiscFlag::Uses2CC);
 
 	if (map == PAL_NONE) map = twocc ? (PaletteID)SPR_2CCMAP_BASE : (PaletteID)PALETTE_RECOLOUR_START;
 

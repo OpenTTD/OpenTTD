@@ -1294,8 +1294,8 @@ static ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x27: // Miscellaneous flags
-				ei->misc_flags = buf.ReadByte();
-				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
+				ei->misc_flags = static_cast<EngineMiscFlags>(buf.ReadByte());
+				_loaded_newgrf_features.has_2CC |= ei->misc_flags.Test(EngineMiscFlag::Uses2CC);
 				break;
 
 			case 0x28: // Cargo classes allowed
@@ -1491,8 +1491,8 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x1C: // Miscellaneous flags
-				ei->misc_flags = buf.ReadByte();
-				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
+				ei->misc_flags = static_cast<EngineMiscFlags>(buf.ReadByte());
+				_loaded_newgrf_features.has_2CC |= ei->misc_flags.Test(EngineMiscFlag::Uses2CC);
 				break;
 
 			case 0x1D: // Cargo classes allowed
@@ -1684,8 +1684,8 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x17: // Miscellaneous flags
-				ei->misc_flags = buf.ReadByte();
-				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
+				ei->misc_flags = static_cast<EngineMiscFlags>(buf.ReadByte());
+				_loaded_newgrf_features.has_2CC |= ei->misc_flags.Test(EngineMiscFlag::Uses2CC);
 				break;
 
 			case 0x18: // Cargo classes allowed
@@ -1873,8 +1873,8 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 				break;
 
 			case 0x17: // Miscellaneous flags
-				ei->misc_flags = buf.ReadByte();
-				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
+				ei->misc_flags = static_cast<EngineMiscFlags>(buf.ReadByte());
+				_loaded_newgrf_features.has_2CC |= ei->misc_flags.Test(EngineMiscFlag::Uses2CC);
 				break;
 
 			case 0x18: // Cargo classes allowed
@@ -10016,7 +10016,7 @@ static void AfterLoadGRFs()
 			e->u.road.max_speed = _gted[e->index].rv_max_speed * 4;
 		}
 
-		RoadTramType rtt = HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? RTT_TRAM : RTT_ROAD;
+		RoadTramType rtt = e->info.misc_flags.Test(EngineMiscFlag::RoadIsTram) ? RTT_TRAM : RTT_ROAD;
 
 		const GRFFile *file = e->GetGRF();
 		if (file == nullptr || _gted[e->index].roadtramtype == 0) {

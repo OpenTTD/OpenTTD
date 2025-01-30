@@ -205,7 +205,7 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16_t *mail_capacity) const
 
 	if (!this->CanCarryCargo()) return 0;
 
-	bool new_multipliers = HasBit(this->info.misc_flags, EF_NO_DEFAULT_CARGO_MULTIPLIER);
+	bool new_multipliers = this->info.misc_flags.Test(EngineMiscFlag::NoDefaultCargoMultiplier);
 	CargoType default_cargo = this->GetDefaultCargoType();
 	CargoType cargo_type = (v != nullptr) ? v->cargo_type : default_cargo;
 

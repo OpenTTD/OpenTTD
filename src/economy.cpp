@@ -1346,7 +1346,7 @@ static uint GetLoadAmount(Vehicle *v)
 	}
 
 	/* Scale load amount the same as capacity */
-	if (HasBit(e->info.misc_flags, EF_NO_DEFAULT_CARGO_MULTIPLIER) && !air_mail) load_amount = CeilDiv(load_amount * CargoSpec::Get(v->cargo_type)->multiplier, 0x100);
+	if (e->info.misc_flags.Test(EngineMiscFlag::NoDefaultCargoMultiplier) && !air_mail) load_amount = CeilDiv(load_amount * CargoSpec::Get(v->cargo_type)->multiplier, 0x100);
 
 	/* Zero load amount breaks a lot of things. */
 	return std::max(1u, load_amount);

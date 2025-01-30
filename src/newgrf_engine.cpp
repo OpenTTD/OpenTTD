@@ -1076,7 +1076,7 @@ void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction directio
 	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_CACHED, false, CBID_NO_CALLBACK);
 	result->Clear();
 
-	bool sprite_stack = HasBit(EngInfo(engine)->misc_flags, EF_SPRITE_STACK);
+	bool sprite_stack = EngInfo(engine)->misc_flags.Test(EngineMiscFlag::SpriteStack);
 	uint max_stack = sprite_stack ? lengthof(result->seq) : 1;
 	for (uint stack = 0; stack < max_stack; ++stack) {
 		object.ResetState();
@@ -1110,7 +1110,7 @@ void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, EngineIma
 	result->Clear();
 	uint rotor_pos = v == nullptr || rotor_in_gui ? 0 : v->Next()->Next()->state;
 
-	bool sprite_stack = HasBit(e->info.misc_flags, EF_SPRITE_STACK);
+	bool sprite_stack = e->info.misc_flags.Test(EngineMiscFlag::SpriteStack);
 	uint max_stack = sprite_stack ? lengthof(result->seq) : 1;
 	for (uint stack = 0; stack < max_stack; ++stack) {
 		object.ResetState();

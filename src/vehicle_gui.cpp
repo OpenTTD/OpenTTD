@@ -795,7 +795,7 @@ struct RefitWindow : public Window {
 			/* Skip this engine if it does not carry anything */
 			if (!e->CanCarryCargo()) continue;
 			/* Skip this engine if we build the list for auto-refitting and engine doesn't allow it. */
-			if (this->auto_refit && !HasBit(e->info.misc_flags, EF_AUTO_REFIT)) continue;
+			if (this->auto_refit && !e->info.misc_flags.Test(EngineMiscFlag::AutoRefit)) continue;
 
 			/* Loop through all cargoes in the refit mask */
 			for (const auto &cs : _sorted_cargo_specs) {
