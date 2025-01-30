@@ -183,6 +183,26 @@ public:
 		return (this->data & (1U << to_underlying(value))) != 0;
 	}
 
+	/**
+	 * Test if all of the enum values are set.
+	 * @param other BitSet of enum values to test.
+	 * @returns true iff all of the enum values are set.
+	 */
+	inline constexpr bool All(const EnumBitSet &other) const
+	{
+		return (this->data & other.data) == other.data;
+	}
+
+	/**
+	 * Test if any of the enum values are set.
+	 * @param other BitSet of enum values to test.
+	 * @returns true iff any of the enum values are set.
+	 */
+	inline constexpr bool Any(const EnumBitSet &other) const
+	{
+		return (this->data & other.data) != 0;
+	}
+
 	inline constexpr EnumBitSet operator |(const EnumBitSet &other) const
 	{
 		return EnumBitSet{static_cast<Tstorage>(this->data | other.data)};
