@@ -393,6 +393,16 @@ TownScopeResolver *StationResolverObject::GetTown()
 			return 0xFFFE;
 		}
 
+		case 0x6C: { // 16 bit Station ID of nearby tiles, without GRFID check
+			TileIndex nearby_tile = GetNearbyTile(parameter, this->tile);
+
+			if (!HasStationTileRail(nearby_tile)) return 0xFFFFFFFF;
+			if (!IsCustomStationSpecIndex(nearby_tile)) return 0xFFFE;
+
+			const auto &sm = BaseStation::GetByTile(nearby_tile)->speclist[GetCustomStationSpecIndex(nearby_tile)];
+			return sm.localidx;
+		}
+
 		/* General station variables */
 		case 0x82: return 50;
 		case 0x84: return this->st->string_id;
