@@ -11,6 +11,7 @@
 #define SCRIPT_WAYPOINT_HPP
 
 #include "script_basestation.hpp"
+#include "script_company.hpp"
 #include "script_error.hpp"
 #include "../../station_type.h"
 
@@ -52,6 +53,15 @@ public:
 	 * @return True if and only if the waypoint is valid.
 	 */
 	static bool IsValidWaypoint(StationID waypoint_id);
+
+	/**
+	 * Get the owner of a waypoint.
+	 * @param waypoint_id The waypoint to get the owner of.
+	 * @pre IsValidWaypoint(waypoint_id).
+	 * @return The owner the waypoint has.
+	 * @api -ai
+	 */
+	static ScriptCompany::CompanyID GetOwner(StationID waypoint_id);
 
 	/**
 	 * Get the StationID of a tile.
