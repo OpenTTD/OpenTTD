@@ -36,3 +36,10 @@ AITown.FoundTown <- function(tile, size, city, layout, name) { return AITown.Fou
 
 AIVehicle.SetNameCompat14 <- AIVehicle.SetName;
 AIVehicle.SetName <- function(id, name) { return AIVehicle.SetNameCompat14(id, AICompat14.Text(name)); }
+
+AIStation.GetStationIDCompat14 <- AIStation.GetStationID;
+AIStation.GetStationID <- function(tile) {
+	local id = AIStation.GetStationIDCompat14(tile);
+	if (id == AIBaseStation.STATION_INVALID) return AIWaypoint.GetWaypointID(tile);
+	return id;
+}
