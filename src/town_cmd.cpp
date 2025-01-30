@@ -197,7 +197,7 @@ void Town::InitializeLayout(TownLayout layout)
 {
 	if (Town::GetNumItems() == 0) return nullptr;
 	int num = RandomRange((uint16_t)Town::GetNumItems());
-	size_t index = MAX_UVALUE(size_t);
+	size_t index = std::numeric_limits<size_t>::max();
 
 	while (num >= 0) {
 		num--;

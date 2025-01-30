@@ -718,7 +718,7 @@ static void HandleBankruptcyTakeover(Company *c)
 	}
 
 	/* Did we ask everyone for bankruptcy? If so, bail out. */
-	if (c->bankrupt_asked == MAX_UVALUE(CompanyMask)) return;
+	if (c->bankrupt_asked == std::numeric_limits<CompanyMask>::max()) return;
 
 	Company *best = nullptr;
 	int32_t best_performance = -1;
@@ -736,7 +736,7 @@ static void HandleBankruptcyTakeover(Company *c)
 
 	/* Asked all companies? */
 	if (best_performance == -1) {
-		c->bankrupt_asked = MAX_UVALUE(CompanyMask);
+		c->bankrupt_asked = std::numeric_limits<CompanyMask>::max();
 		return;
 	}
 

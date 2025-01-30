@@ -724,7 +724,7 @@ protected:
 	 */
 	inline CompanyMask GetOverlayCompanyMask() const
 	{
-		return Company::IsValidID(_local_company) ? 1U << _local_company : MAX_UVALUE(CompanyMask);
+		return Company::IsValidID(_local_company) ? 1U << _local_company : std::numeric_limits<CompanyMask>::max();
 	}
 
 	/** Blink the industries (if selected) on a regular interval. */
