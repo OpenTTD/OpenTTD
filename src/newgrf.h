@@ -14,6 +14,7 @@
 #include "rail_type.h"
 #include "road_type.h"
 #include "fileio_type.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_text_type.h"
 #include "core/bitmath_func.hpp"
 #include "core/alloc_type.hpp"
@@ -38,7 +39,7 @@ enum CanalFeature : uint8_t {
 
 /** Canal properties local to the NewGRF */
 struct CanalProperties {
-	uint8_t callback_mask;  ///< Bitmask of canal callbacks that have to be called.
+	CanalCallbackMasks callback_mask;  ///< Bitmask of canal callbacks that have to be called.
 	uint8_t flags;          ///< Flags controlling display.
 };
 

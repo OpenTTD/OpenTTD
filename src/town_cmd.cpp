@@ -333,7 +333,7 @@ static Foundation GetFoundation_Town(TileIndex tile, Slope tileh)
 	 */
 	if (hid >= NEW_HOUSE_OFFSET) {
 		const HouseSpec *hs = HouseSpec::Get(hid);
-		if (hs->grf_prop.spritegroup[0] != nullptr && HasBit(hs->callback_mask, CBM_HOUSE_DRAW_FOUNDATIONS)) {
+		if (hs->grf_prop.spritegroup[0] != nullptr && hs->callback_mask.Test(HouseCallbackMask::DrawFoundations)) {
 			uint32_t callback_res = GetHouseCallback(CBID_HOUSE_DRAW_FOUNDATIONS, 0, 0, hid, Town::GetByTile(tile), tile);
 			if (callback_res != CALLBACK_FAILED && !ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DRAW_FOUNDATIONS, callback_res)) return FOUNDATION_NONE;
 		}
@@ -631,7 +631,7 @@ static void TileLoop_Town(TileIndex tile)
 
 	StationFinder stations(TileArea(tile, 1, 1));
 
-	if (HasBit(hs->callback_mask, CBM_HOUSE_PRODUCE_CARGO)) {
+	if (hs->callback_mask.Test(HouseCallbackMask::ProduceCargo)) {
 		for (uint i = 0; i < 256; i++) {
 			uint16_t callback = GetHouseCallback(CBID_HOUSE_PRODUCE_CARGO, i, r, house_id, t, tile);
 
@@ -756,7 +756,7 @@ static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 	const HouseSpec *hs = HouseSpec::Get(house_id);
 	Town *t = Town::GetByTile(tile);
 
-	if (HasBit(hs->callback_mask, CBM_HOUSE_PRODUCE_CARGO)) {
+	if (hs->callback_mask.Test(HouseCallbackMask::ProduceCargo)) {
 		for (uint i = 0; i < 256; i++) {
 			uint16_t callback = GetHouseCallback(CBID_HOUSE_PRODUCE_CARGO, i, 0, house_id, t, tile);
 
@@ -814,7 +814,7 @@ void AddAcceptedCargoOfHouse(TileIndex tile, HouseID house, const HouseSpec *hs,
 	}
 
 	/* Check for custom accepted cargo types */
-	if (HasBit(hs->callback_mask, CBM_HOUSE_ACCEPT_CARGO)) {
+	if (hs->callback_mask.Test(HouseCallbackMask::AcceptCargo)) {
 		uint16_t callback = GetHouseCallback(CBID_HOUSE_ACCEPT_CARGO, 0, 0, house, t, tile, tile == INVALID_TILE);
 		if (callback != CALLBACK_FAILED) {
 			/* Replace accepted cargo types with translated values from callback */
@@ -825,7 +825,7 @@ void AddAcceptedCargoOfHouse(TileIndex tile, HouseID house, const HouseSpec *hs,
 	}
 
 	/* Check for custom cargo acceptance */
-	if (HasBit(hs->callback_mask, CBM_HOUSE_CARGO_ACCEPTANCE)) {
+	if (hs->callback_mask.Test(HouseCallbackMask::CargoAcceptance)) {
 		uint16_t callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, 0, house, t, tile, tile == INVALID_TILE);
 		if (callback != CALLBACK_FAILED) {
 			AddAcceptedCargoSetMask(accepts[0], GB(callback, 0, 4), acceptance, always_accepted);
@@ -2868,7 +2868,7 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 
 		uint8_t random_bits = Random();
 
-		if (HasBit(hs->callback_mask, CBM_HOUSE_ALLOW_CONSTRUCTION)) {
+		if (hs->callback_mask.Test(HouseCallbackMask::AllowConstruction)) {
 			uint16_t callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, 0, house, t, tile, true, random_bits);
 			if (callback_res != CALLBACK_FAILED && !Convert8bitBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_ALLOW_CONSTRUCTION, callback_res)) continue;
 		}
@@ -4098,7 +4098,7 @@ static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, int z
 			/* Call the autosloping callback per tile, not for the whole building at once. */
 			house = GetHouseType(tile);
 			hs = HouseSpec::Get(house);
-			if (HasBit(hs->callback_mask, CBM_HOUSE_AUTOSLOPE)) {
+			if (hs->callback_mask.Test(HouseCallbackMask::Autoslope)) {
 				/* If the callback fails, allow autoslope. */
 				uint16_t res = GetHouseCallback(CBID_HOUSE_AUTOSLOPE, 0, 0, house, Town::GetByTile(tile), tile);
 				if (res != CALLBACK_FAILED && ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_AUTOSLOPE, res)) allow_terraform = false;

@@ -214,8 +214,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 		case 0x40:
 		case 0x41:
 		case 0x42: { // waiting cargo, but only if those two callback flags are set
-			uint16_t callback = indspec->callback_mask;
-			if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(callback, CBM_IND_PRODUCTION_256_TICKS)) {
+			IndustryCallbackMasks callback = indspec->callback_mask;
+			if (callback.Any({IndustryCallbackMask::ProductionCargoArrival, IndustryCallbackMask::Production256Ticks})) {
 				if ((indspec->behaviour & INDUSTRYBEH_PROD_MULTI_HNDLING) != 0) {
 					if (this->industry->prod_level == 0) return 0;
 					return ClampTo<uint16_t>(this->industry->GetAccepted(variable - 0x40).waiting / this->industry->prod_level);
@@ -572,7 +572,7 @@ uint32_t GetIndustryProbabilityCallback(IndustryType type, IndustryAvailabilityC
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
-	if (HasBit(indspec->callback_mask, CBM_IND_PROBABILITY)) {
+	if (indspec->callback_mask.Test(IndustryCallbackMask::Probability)) {
 		uint16_t res = GetIndustryCallback(CBID_INDUSTRY_PROBABILITY, 0, creation_type, nullptr, type, INVALID_TILE);
 		if (res != CALLBACK_FAILED) {
 			if (indspec->grf_prop.grffile->grf_version < 8) {
@@ -686,7 +686,7 @@ bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoType cargo_type)
 	assert(ind->IsCargoAccepted(cargo_type));
 
 	const IndustrySpec *indspec = GetIndustrySpec(ind->type);
-	if (HasBit(indspec->callback_mask, CBM_IND_REFUSE_CARGO)) {
+	if (indspec->callback_mask.Test(IndustryCallbackMask::RefuseCargo)) {
 		uint16_t res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO,
 				0, indspec->grf_prop.grffile->cargo_map[cargo_type],
 				ind, ind->type, ind->location.tile);

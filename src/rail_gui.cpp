@@ -83,7 +83,7 @@ static void ShowSignalBuilder(Window *parent);
  */
 static bool IsStationAvailable(const StationSpec *statspec)
 {
-	if (statspec == nullptr || !HasBit(statspec->callback_mask, CBM_STATION_AVAIL)) return true;
+	if (statspec == nullptr || !statspec->callback_mask.Test(StationCallbackMask::Avail)) return true;
 
 	uint16_t cb_res = GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, nullptr, INVALID_TILE);
 	if (cb_res == CALLBACK_FAILED) return true;

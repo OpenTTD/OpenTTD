@@ -156,7 +156,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 
 	CargoTypes cargo_triggers; ///< Bitmask of cargo types which cause trigger re-randomizing
 
-	uint8_t callback_mask; ///< Bitmask of station callbacks that have to be called
+	StationCallbackMasks callback_mask; ///< Bitmask of station callbacks that have to be called
 
 	uint8_t flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
 

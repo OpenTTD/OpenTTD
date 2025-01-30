@@ -14,6 +14,7 @@
 #include "timer/timer_game_calendar.h"
 #include "house_type.h"
 #include "newgrf_animation_type.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_commons.h"
 
 /**
@@ -107,7 +108,7 @@ struct HouseSpec {
 
 	/* NewHouses properties */
 	GRFFileProps grf_prop;                    ///< Properties related the the grf file
-	uint16_t callback_mask;                     ///< Bitmask of house callbacks that have to be called
+	HouseCallbackMasks callback_mask;                     ///< Bitmask of house callbacks that have to be called
 	Colours random_colour[4];                 ///< 4 "random" colours
 	uint8_t probability;                         ///< Relative probability of appearing (16 is the standard value)
 	HouseExtraFlags extra_flags;              ///< some more flags

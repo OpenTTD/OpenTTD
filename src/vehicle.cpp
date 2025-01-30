@@ -2100,7 +2100,7 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 	const Engine *e = Engine::Get(engine_type);
 
 	/* Check if we should use the colour map callback */
-	if (HasBit(e->info.callback_mask, CBM_VEHICLE_COLOUR_REMAP)) {
+	if (e->info.callback_mask.Test(VehicleCallbackMask::ColourRemap)) {
 		uint16_t callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
 		/* Failure means "use the default two-colour" */
 		if (callback != CALLBACK_FAILED) {
@@ -2676,7 +2676,7 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 	}
 
 	/* Check powered wagon / visual effect callback */
-	if (HasBit(e->info.callback_mask, CBM_VEHICLE_VISUAL_EFFECT)) {
+	if (e->info.callback_mask.Test(VehicleCallbackMask::VisualEffect)) {
 		uint16_t callback = GetVehicleCallback(CBID_VEHICLE_VISUAL_EFFECT, 0, 0, this->engine_type, this);
 
 		if (callback != CALLBACK_FAILED) {

@@ -259,7 +259,7 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
 {
 	if (ti->tileh != SLOPE_FLAT) {
 		bool draw_old_one = true;
-		if (HasBit(airts->callback_mask, CBM_AIRT_DRAW_FOUNDATIONS)) {
+		if (airts->callback_mask.Test(AirportTileCallbackMask::DrawFoundations)) {
 			/* Called to determine the type (if any) of foundation to draw */
 			uint32_t callback_res = GetAirportTileCallback(CBID_AIRPTILE_DRAW_FOUNDATIONS, 0, 0, airts, st, ti->tile);
 			if (callback_res != CALLBACK_FAILED) draw_old_one = ConvertBooleanCallback(airts->grf_prop.grffile, CBID_AIRPTILE_DRAW_FOUNDATIONS, callback_res);
@@ -281,11 +281,11 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
 
 /** Helper class for animation control. */
 struct AirportTileAnimationBase : public AnimationBase<AirportTileAnimationBase, AirportTileSpec, Station, int, GetAirportTileCallback, TileAnimationFrameAnimationHelper<Station> > {
-	static const CallbackID cb_animation_speed      = CBID_AIRPTILE_ANIMATION_SPEED;
-	static const CallbackID cb_animation_next_frame = CBID_AIRPTILE_ANIM_NEXT_FRAME;
+	static constexpr CallbackID cb_animation_speed      = CBID_AIRPTILE_ANIMATION_SPEED;
+	static constexpr CallbackID cb_animation_next_frame = CBID_AIRPTILE_ANIM_NEXT_FRAME;
 
-	static const AirportTileCallbackMask cbm_animation_speed      = CBM_AIRT_ANIM_SPEED;
-	static const AirportTileCallbackMask cbm_animation_next_frame = CBM_AIRT_ANIM_NEXT_FRAME;
+	static constexpr AirportTileCallbackMask cbm_animation_speed      = AirportTileCallbackMask::AnimationSpeed;
+	static constexpr AirportTileCallbackMask cbm_animation_next_frame = AirportTileCallbackMask::AnimationNextFrame;
 };
 
 void AnimateAirportTile(TileIndex tile)

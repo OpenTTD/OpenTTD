@@ -1813,7 +1813,7 @@ static_assert(lengthof(_town_draw_tile_data) == (NEW_HOUSE_OFFSET) * 4 * 4);
 	{TimerGameCalendar::Year{mnd}, TimerGameCalendar::Year{mxd}, p, rc, bn, rr, mg, \
 	{ca1, ca2, ca3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, \
 	{INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO}, \
-	bf, ba, true, GRFFileProps(INVALID_HOUSE_ID), 0, {COLOUR_BEGIN, COLOUR_BEGIN, COLOUR_BEGIN, COLOUR_BEGIN}, \
+	bf, ba, true, GRFFileProps(INVALID_HOUSE_ID), HouseCallbackMasks{}, {COLOUR_BEGIN, COLOUR_BEGIN, COLOUR_BEGIN, COLOUR_BEGIN}, \
 	16, NO_EXTRA_FLAG, HOUSE_NO_CLASS, {0, 2, 0, 0}, 0, 0, 0, {cg1, cg2, cg3}, }
 /** House specifications from original data */
 extern const HouseSpec _original_house_specs[] = {

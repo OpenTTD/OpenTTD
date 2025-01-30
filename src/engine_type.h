@@ -11,6 +11,7 @@
 #define ENGINE_TYPE_H
 
 #include "economy_type.h"
+#include "newgrf_callbacks.h"
 #include "rail_type.h"
 #include "road_type.h"
 #include "cargo_type.h"
@@ -156,7 +157,7 @@ struct EngineInfo {
 	CargoTypes refit_mask;
 	uint8_t refit_cost;
 	uint8_t misc_flags;         ///< Miscellaneous flags. @see EngineMiscFlags
-	uint16_t callback_mask;    ///< Bitmask of vehicle callbacks that have to be called
+	VehicleCallbackMasks callback_mask;    ///< Bitmask of vehicle callbacks that have to be called
 	int8_t retire_early;       ///< Number of years early to retire vehicle
 	ExtraEngineFlags extra_flags;
 	StringID string_id;      ///< Default name of engine

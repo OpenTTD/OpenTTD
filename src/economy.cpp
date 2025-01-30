@@ -988,7 +988,7 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, uint16_t transit_per
 	}
 
 	/* Use callback to calculate cargo profit, if available */
-	if (HasBit(cs->callback_mask, CBM_CARGO_PROFIT_CALC)) {
+	if (cs->callback_mask.Test(CargoCallbackMask::ProfitCalc)) {
 		uint32_t var18 = ClampTo<uint16_t>(dist) | (ClampTo<uint8_t>(num_pieces) << 16) | (ClampTo<uint8_t>(transit_periods) << 24);
 		uint16_t callback = GetCargoCallback(CBID_CARGO_PROFIT_CALC, 0, var18, cs);
 		if (callback != CALLBACK_FAILED) {
@@ -1161,12 +1161,12 @@ static Money DeliverGoods(int num_pieces, CargoType cargo_type, StationID dest, 
 static void TriggerIndustryProduction(Industry *i)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
-	uint16_t callback = indspec->callback_mask;
+	IndustryCallbackMasks cbm = indspec->callback_mask;
 
 	i->was_cargo_delivered = true;
 
-	if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(callback, CBM_IND_PRODUCTION_256_TICKS)) {
-		if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) {
+	if (cbm.Test(IndustryCallbackMask::ProductionCargoArrival) || cbm.Test(IndustryCallbackMask::Production256Ticks)) {
+		if (cbm.Test(IndustryCallbackMask::ProductionCargoArrival)) {
 			IndustryProductionCallback(i, 0);
 		} else {
 			SetWindowDirty(WC_INDUSTRY_VIEW, i->index);
@@ -1331,7 +1331,7 @@ static uint GetLoadAmount(Vehicle *v)
 		if (e->GetGRF() != nullptr && e->GetGRF()->grf_version >= 8) {
 			/* Use callback 36 */
 			cb_load_amount = GetVehicleProperty(v, PROP_VEHICLE_LOAD_AMOUNT, CALLBACK_FAILED);
-		} else if (HasBit(e->info.callback_mask, CBM_VEHICLE_LOAD_AMOUNT)) {
+		} else if (e->info.callback_mask.Test(VehicleCallbackMask::LoadAmount)) {
 			/* Use callback 12 */
 			cb_load_amount = GetVehicleCallback(CBID_VEHICLE_LOAD_AMOUNT, 0, 0, v->engine_type, v);
 		}

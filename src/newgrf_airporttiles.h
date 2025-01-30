@@ -13,6 +13,7 @@
 #include "airport.h"
 #include "station_map.h"
 #include "newgrf_animation_type.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
 #include "station_base.h"
@@ -68,7 +69,7 @@ struct AirportTileResolverObject : public ResolverObject {
 struct AirportTileSpec {
 	AnimationInfo animation;              ///< Information about the animation.
 	StringID name;                        ///< Tile Subname string, land information on this tile will give you "AirportName (TileSubname)"
-	uint8_t callback_mask;                  ///< Bitmask telling which grf callback is set
+	AirportTileCallbackMasks callback_mask;                  ///< Bitmask telling which grf callback is set
 	uint8_t animation_special_flags;        ///< Extra flags to influence the animation
 	bool enabled;                         ///< entity still available (by default true). newgrf can disable it, though
 	GRFFileProps grf_prop;                ///< properties related the the grf file

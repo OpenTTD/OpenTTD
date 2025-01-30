@@ -11,6 +11,7 @@
 #define NEWGRF_CANAL_H
 
 #include "newgrf.h"
+#include "newgrf_callbacks.h"
 #include "tile_type.h"
 
 /** Flags controlling the display of canals. */
@@ -22,7 +23,7 @@ enum CanalFeatureFlag : uint8_t {
 struct WaterFeature {
 	const SpriteGroup *group = nullptr; ///< Sprite group to start resolving.
 	const GRFFile *grffile = nullptr; ///< NewGRF where 'group' belongs to.
-	uint8_t callback_mask = 0; ///< Bitmask of canal callbacks that have to be called.
+	CanalCallbackMasks callback_mask = {}; ///< Bitmask of canal callbacks that have to be called.
 	uint8_t flags = 0; ///< Flags controlling display.
 };
 

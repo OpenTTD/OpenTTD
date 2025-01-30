@@ -1374,7 +1374,7 @@ void DrawNewHouseTileInGUI(int x, int y, const HouseSpec *spec, HouseID house_id
 	const DrawTileSprites *dts = reinterpret_cast<const TileLayoutSpriteGroup *>(group)->ProcessRegisters(&stage);
 
 	PaletteID palette = GENERAL_SPRITE_COLOUR(spec->random_colour[0]);
-	if (HasBit(spec->callback_mask, CBM_HOUSE_COLOUR)) {
+	if (spec->callback_mask.Test(HouseCallbackMask::Colour)) {
 		uint16_t callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, nullptr, INVALID_TILE, true, view);
 		if (callback != CALLBACK_FAILED) {
 			/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */

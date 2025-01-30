@@ -103,7 +103,7 @@ static bool IsRoadStopAvailable(const RoadStopSpec *spec, StationType type)
 	if (spec == nullptr) return true;
 	if (!IsRoadStopEverAvailable(spec, type)) return false;
 
-	if (!HasBit(spec->callback_mask, CBM_ROAD_STOP_AVAIL)) return true;
+	if (!spec->callback_mask.Test(RoadStopCallbackMask::Avail)) return true;
 
 	uint16_t cb_res = GetRoadStopCallback(CBID_STATION_AVAILABILITY, 0, 0, spec, nullptr, INVALID_TILE, _cur_roadtype, type, 0);
 	if (cb_res == CALLBACK_FAILED) return true;

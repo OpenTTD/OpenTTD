@@ -14,6 +14,7 @@
 
 #include "newgrf_animation_type.h"
 #include "newgrf_spritegroup.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
 #include "newgrf_town.h"
@@ -144,7 +145,7 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 
 	RoadStopAvailabilityType stop_type = ROADSTOPTYPE_ALL;
 	RoadStopDrawMode draw_mode = ROADSTOP_DRAW_MODE_ROAD | ROADSTOP_DRAW_MODE_OVERLAY;
-	uint8_t callback_mask = 0;
+	RoadStopCallbackMasks callback_mask{};
 	uint16_t flags = 0;
 
 	CargoTypes cargo_triggers = 0; ///< Bitmask of cargo types which cause trigger re-randomizing

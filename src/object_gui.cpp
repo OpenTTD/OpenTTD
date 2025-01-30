@@ -224,7 +224,7 @@ public:
 				if (spec == nullptr) break;
 
 				/* Get the extra message for the GUI */
-				if (HasBit(spec->callback_mask, CBM_OBJ_FUND_MORE_TEXT)) {
+				if (spec->callback_mask.Test(ObjectCallbackMask::FundMoreText)) {
 					uint16_t callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, nullptr, INVALID_TILE, _object_gui.sel_view);
 					if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
 						if (callback_res > 0x400) {

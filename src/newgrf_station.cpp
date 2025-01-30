@@ -785,7 +785,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	const StationSpec *statspec = StationClass::Get(sclass)->GetSpec(station);
 	if (statspec == nullptr) return false;
 
-	if (HasBit(statspec->callback_mask, CBM_STATION_DRAW_TILE_LAYOUT)) {
+	if (statspec->callback_mask.Test(StationCallbackMask::DrawTileLayout)) {
 		uint16_t callback = GetStationCallback(CBID_STATION_DRAW_TILE_LAYOUT, 0, 0, statspec, nullptr, INVALID_TILE);
 		if (callback != CALLBACK_FAILED) tile = callback & ~1;
 	}
@@ -863,11 +863,11 @@ uint16_t GetAnimStationCallback(CallbackID callback, uint32_t param1, uint32_t p
 
 /** Helper class for animation control. */
 struct StationAnimationBase : public AnimationBase<StationAnimationBase, StationSpec, BaseStation, int, GetAnimStationCallback, TileAnimationFrameAnimationHelper<BaseStation> > {
-	static const CallbackID cb_animation_speed      = CBID_STATION_ANIMATION_SPEED;
-	static const CallbackID cb_animation_next_frame = CBID_STATION_ANIM_NEXT_FRAME;
+	static constexpr CallbackID cb_animation_speed      = CBID_STATION_ANIMATION_SPEED;
+	static constexpr CallbackID cb_animation_next_frame = CBID_STATION_ANIM_NEXT_FRAME;
 
-	static const StationCallbackMask cbm_animation_speed      = CBM_STATION_ANIMATION_SPEED;
-	static const StationCallbackMask cbm_animation_next_frame = CBM_STATION_ANIMATION_NEXT_FRAME;
+	static constexpr StationCallbackMask cbm_animation_speed      = StationCallbackMask::AnimationSpeed;
+	static constexpr StationCallbackMask cbm_animation_next_frame = StationCallbackMask::AnimationNextFrame;
 };
 
 void AnimateStationTile(TileIndex tile)
