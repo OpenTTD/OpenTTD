@@ -1472,7 +1472,7 @@ static const OldChunks game_difficulty_chunk[] = {
 	OCL_NULL( 2), // competitor_start_time
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, number_towns ),
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, industry_density ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, DifficultySettings, max_loan ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, DifficultySettings, max_loan_percentage ),
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, initial_interest ),
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, vehicle_costs ),
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, competitor_speed ),
@@ -1491,7 +1491,7 @@ static const OldChunks game_difficulty_chunk[] = {
 static bool LoadOldGameDifficulty(LoadgameState *ls, int)
 {
 	bool ret = LoadChunk(ls, &_settings_game.difficulty, game_difficulty_chunk);
-	_settings_game.difficulty.max_loan *= 1000;
+	_settings_game.difficulty.max_loan_percentage *= 1000;
 	return ret;
 }
 

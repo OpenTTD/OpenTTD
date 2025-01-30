@@ -100,7 +100,7 @@ struct DifficultySettings {
 	uint16_t competitors_interval;             ///< the interval (in minutes) between adding competitors
 	uint8_t number_towns;                     ///< the amount of towns
 	uint8_t industry_density;                 ///< The industry density. @see IndustryDensity
-	uint32_t max_loan;                         ///< the maximum initial loan
+	uint32_t max_loan_percentage;		   ///< the percentage of the maximum intial loan
 	uint8_t initial_interest;                 ///< amount of interest (to pay over the loan)
 	uint8_t vehicle_costs;                    ///< amount of money spent on vehicle running cost
 	uint8_t competitor_speed;                 ///< the speed at which the AI builds
@@ -635,5 +635,6 @@ inline GameSettings &GetGameSettings()
 {
 	return (_game_mode == GM_MENU) ? _settings_newgame : _settings_game;
 }
+
 
 #endif /* SETTINGS_TYPE_H */

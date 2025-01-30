@@ -2106,7 +2106,7 @@ static SettingsContainer &GetSettingsTree()
 			accounting->Add(new SettingEntry("difficulty.infinite_money"));
 			accounting->Add(new SettingEntry("economy.inflation"));
 			accounting->Add(new SettingEntry("difficulty.initial_interest"));
-			accounting->Add(new SettingEntry("difficulty.max_loan"));
+			accounting->Add(new SettingEntry("difficulty.max_loan_percentage"));
 			accounting->Add(new SettingEntry("difficulty.subsidy_multiplier"));
 			accounting->Add(new SettingEntry("difficulty.subsidy_duration"));
 			accounting->Add(new SettingEntry("economy.feeder_payment_share"));
