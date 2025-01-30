@@ -28,6 +28,7 @@
  * \li GSCargo::CC_POTABLE
  * \li GSCargo::CC_NON_POTABLE
  * \li GSVehicleList_Waypoint
+ * \li GSBaseStation::GetOwner
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
