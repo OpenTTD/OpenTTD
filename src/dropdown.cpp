@@ -74,7 +74,6 @@ struct DropdownWindow : Window {
 	Rect wi_rect;                 ///< Rect of the button that opened the dropdown.
 	DropDownList list;            ///< List with dropdown menu items.
 	int selected_result;          ///< Result value of the selected item in the list.
-	uint8_t click_delay = 0;         ///< Timer to delay selection.
 	bool drag_mode = true;
 	bool instant_close;           ///< Close the window when the mouse button is raised.
 	bool persist;                 ///< Persist dropdown menu.
@@ -281,12 +280,7 @@ struct DropdownWindow : Window {
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget != WID_DM_ITEMS) return;
-		int item;
-		if (this->GetDropDownItem(item)) {
-			this->click_delay = 4;
-			this->selected_result = item;
-			this->SetDirty();
-		}
+		this->drag_mode = true;
 	}
 
 	/** Rate limit how fast scrolling happens. */
@@ -300,41 +294,39 @@ struct DropdownWindow : Window {
 
 	void OnMouseLoop() override
 	{
-		if (this->click_delay != 0 && --this->click_delay == 0) {
-			/* Close the dropdown, so it doesn't affect new window placement.
-			 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
-			if (!this->persist) this->Close();
-			this->parent->OnDropdownSelect(this->parent_button, this->selected_result);
-			return;
+		/* Scrolling logic */
+		if (_cursor.pos.y <= this->top + WidgetDimensions::scaled.dropdownlist.top) {
+			/* Cursor is above the list, set scroll up */
+			this->scrolling = -1;
+		} else if (_cursor.pos.y >= this->top + this->height - WidgetDimensions::scaled.dropdownlist.bottom) {
+			/* Cursor is below list, set scroll down */
+			this->scrolling = 1;
 		}
 
-		if (this->drag_mode) {
-			int item;
-
-			if (!_left_button_clicked) {
-				this->drag_mode = false;
-				if (!this->GetDropDownItem(item)) {
-					if (this->instant_close) this->Close();
-					return;
-				}
-				this->click_delay = 2;
-			} else {
-				if (_cursor.pos.y <= this->top + WidgetDimensions::scaled.dropdownlist.top) {
-					/* Cursor is above the list, set scroll up */
-					this->scrolling = -1;
-					return;
-				} else if (_cursor.pos.y >= this->top + this->height - WidgetDimensions::scaled.dropdownlist.bottom) {
-					/* Cursor is below list, set scroll down */
-					this->scrolling = 1;
-					return;
-				}
-
-				if (!this->GetDropDownItem(item)) return;
-			}
-
-			if (this->selected_result != item) {
+		/* Hover item under the cursor */
+		int item = -1;
+		const bool item_is_valid = this->GetDropDownItem(item);
+		if (item_is_valid) {
+			if (item != this->selected_result) {
 				this->selected_result = item;
 				this->SetDirty();
+			}
+		}
+
+		/* Select option logic */
+		if (!_left_button_clicked) {
+			bool released_on_item = false;
+
+			if (this->drag_mode) {
+				this->drag_mode = false;
+
+				if ((instant_close || item_is_valid) && !this->persist) {
+					this->Close();
+				}
+
+				if (item_is_valid) {
+					this->parent->OnDropdownSelect(this->parent_button, this->selected_result);
+				}
 			}
 		}
 	}
