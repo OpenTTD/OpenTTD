@@ -187,10 +187,11 @@ struct EngineInfo {
 /**
  * Engine.flags is a bitmask, with the following values.
  */
-enum EngineFlags : uint8_t {
-	ENGINE_AVAILABLE         = 1, ///< This vehicle is available to everyone.
-	ENGINE_EXCLUSIVE_PREVIEW = 2, ///< This vehicle is in the exclusive preview stage, either being used or being offered to a company.
+enum class EngineFlag : uint8_t {
+	Available        = 1, ///< This vehicle is available to everyone.
+	ExclusivePreview = 2, ///< This vehicle is in the exclusive preview stage, either being used or being offered to a company.
 };
+using EngineFlags = EnumBitSet<EngineFlag, uint8_t>;
 
 /**
  * Contexts an engine name can be shown in.

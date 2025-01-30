@@ -405,7 +405,7 @@ static bool FixTTOEngines()
 
 			/* Make sure for example monorail and maglev are available when they should be */
 			if (TimerGameCalendar::date >= e->intro_date && HasBit(e->info.climates, 0)) {
-				e->flags |= ENGINE_AVAILABLE;
+				e->flags.Set(EngineFlag::Available);
 				e->company_avail = MAX_UVALUE(CompanyMask);
 				e->age = TimerGameCalendar::date > e->intro_date ? (TimerGameCalendar::date - e->intro_date).base() / 30 : 0;
 			}
@@ -432,7 +432,7 @@ static bool FixTTOEngines()
 			for (uint j = 0; j < lengthof(tto_to_ttd); j++) {
 				if (tto_to_ttd[j] == i && _old_engines[j].company_avail != 0) {
 					e->company_avail = MAX_UVALUE(CompanyMask);
-					e->flags |= ENGINE_AVAILABLE;
+					e->flags.Set(EngineFlag::Available);
 					break;
 				}
 			}

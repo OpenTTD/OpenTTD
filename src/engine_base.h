@@ -53,7 +53,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint16_t duration_phase_1;    ///< First reliability phase in months, increasing reliability from #reliability_start to #reliability_max.
 	uint16_t duration_phase_2;    ///< Second reliability phase in months, keeping #reliability_max.
 	uint16_t duration_phase_3;    ///< Third reliability phase in months, decaying to #reliability_final.
-	uint8_t flags;                 ///< Flags of the engine. @see EngineFlags
+	EngineFlags flags;                 ///< Flags of the engine. @see EngineFlags
 
 	CompanyID preview_company;  ///< Company which is currently being offered a preview \c INVALID_COMPANY means no company.
 	uint8_t preview_wait;          ///< Daily countdown timer for timeout of offering the engine to the #preview_company company.
