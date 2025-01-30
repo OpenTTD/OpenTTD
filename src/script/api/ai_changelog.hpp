@@ -30,6 +30,7 @@
  * \li AIVehicleList_Waypoint
  * \li AIError::ERR_BRIDGE_TOO_LOW
  * \li AIEngine::GetAllRailTypes
+ * \li AIBaseStation::GetBaseStationID
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType

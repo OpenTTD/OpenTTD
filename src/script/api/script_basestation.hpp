@@ -43,6 +43,15 @@ public:
 	static ScriptCompany::CompanyID GetOwner(StationID station_id);
 
 	/**
+	 * Get the StationID of a tile, if there is a basestation.
+	 * @param tile The tile to find the StationID of.
+	 * @pre IsValidTile(tile).
+	 * @return StationID of the basestation.
+	 * @post Use IsValidBaseStation() to see if the basestation is valid.
+	 */
+	static StationID GetBaseStationID(TileIndex tile);
+
+	/**
 	 * Get the name of a basestation.
 	 * @param station_id The basestation to get the name of.
 	 * @pre IsValidBaseStation(station_id).
