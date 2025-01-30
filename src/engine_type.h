@@ -190,7 +190,7 @@ enum EngineFlags : uint8_t {
 /**
  * Contexts an engine name can be shown in.
  */
-enum EngineNameContext : uint8_t {
+enum class EngineNameContext : uint8_t {
 	Generic                 = 0x00, ///< No specific context available.
 	VehicleDetails          = 0x11, ///< Name is shown in the vehicle details GUI.
 	PurchaseList            = 0x20, ///< Name is shown in the purchase list (including autoreplace window 'Available vehicles' panel).
