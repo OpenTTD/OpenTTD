@@ -8838,7 +8838,7 @@ void ResetNewGRFData()
 	ResetCustomRoadStops();
 
 	/* Reset canal sprite groups and flags */
-	memset(_water_feature, 0, sizeof(_water_feature));
+	_water_feature.fill({});
 
 	/* Reset the snowline table. */
 	ClearSnowLine();
