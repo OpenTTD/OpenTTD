@@ -142,6 +142,25 @@ enum class ExtraEngineFlag : uint8_t {
 using ExtraEngineFlags = EnumBitSet<ExtraEngineFlag, uint8_t>;
 
 /**
+ * EngineInfo.misc_flags is a bitmask, with the following values
+ */
+enum class EngineMiscFlag : uint8_t {
+	RailTilts  = 0, ///< Rail vehicle tilts in curves
+	RoadIsTram = 0, ///< Road vehicle is a tram/light rail vehicle
+
+	Uses2CC    = 1, ///< Vehicle uses two company colours
+
+	RailIsMU   = 2, ///< Rail vehicle is a multiple-unit (DMU/EMU)
+	RailFlips  = 3, ///< Rail vehicle has old depot-flip handling
+
+	AutoRefit                = 4, ///< Automatic refitting is allowed
+	NoDefaultCargoMultiplier = 5, ///< Use the new capacity algorithm. The default cargotype of the vehicle does not affect capacity multipliers. CB 15 is also called in purchase list.
+	NoBreakdownSmoke         = 6, ///< Do not show black smoke during a breakdown.
+	SpriteStack              = 7, ///< Draw vehicle by stacking multiple sprites.
+};
+using EngineMiscFlags = EnumBitSet<EngineMiscFlag, uint8_t>;
+
+/**
  * Information about a vehicle
  *  @see table/engines.h
  */
@@ -156,28 +175,13 @@ struct EngineInfo {
 	std::variant<CargoLabel, MixedCargoType> cargo_label;
 	CargoTypes refit_mask;
 	uint8_t refit_cost;
-	uint8_t misc_flags;         ///< Miscellaneous flags. @see EngineMiscFlags
+	EngineMiscFlags misc_flags; ///< Miscellaneous flags. @see EngineMiscFlags
 	VehicleCallbackMasks callback_mask;    ///< Bitmask of vehicle callbacks that have to be called
 	int8_t retire_early;       ///< Number of years early to retire vehicle
 	ExtraEngineFlags extra_flags;
 	StringID string_id;      ///< Default name of engine
 	uint16_t cargo_age_period; ///< Number of ticks before carried cargo is aged.
 	EngineID variant_id;     ///< Engine variant ID. If set, will be treated specially in purchase lists.
-};
-
-/**
- * EngineInfo.misc_flags is a bitmask, with the following values
- */
-enum EngineMiscFlags : uint8_t {
-	EF_RAIL_TILTS = 0, ///< Rail vehicle tilts in curves
-	EF_ROAD_TRAM  = 0, ///< Road vehicle is a tram/light rail vehicle
-	EF_USES_2CC   = 1, ///< Vehicle uses two company colours
-	EF_RAIL_IS_MU = 2, ///< Rail vehicle is a multiple-unit (DMU/EMU)
-	EF_RAIL_FLIPS = 3, ///< Rail vehicle has old depot-flip handling
-	EF_AUTO_REFIT = 4, ///< Automatic refitting is allowed
-	EF_NO_DEFAULT_CARGO_MULTIPLIER = 5, ///< Use the new capacity algorithm. The default cargotype of the vehicle does not affect capacity multipliers. CB 15 is also called in purchase list.
-	EF_NO_BREAKDOWN_SMOKE          = 6, ///< Do not show black smoke during a breakdown.
-	EF_SPRITE_STACK                = 7, ///< Draw vehicle by stacking multiple sprites.
 };
 
 /**
