@@ -25,6 +25,7 @@
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
  * \li AIWaypoint::GetWaypointID now returns the StationID of any type of waypoint
+ * \li AIStation::GetStationID can no longer return the StationID of waypoints
  *
  * \b 14.0
  *
