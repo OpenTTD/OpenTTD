@@ -61,7 +61,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		ROADTYPES_ROAD,
 
 		/* flags */
-		ROTFB_TOWN_BUILD,
+		{RoadTypeFlag::TownBuild},
 
 		/* cost multiplier */
 		8,
@@ -141,7 +141,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		ROADTYPES_TRAM,
 
 		/* flags */
-		ROTFB_CATENARY | ROTFB_NO_HOUSES,
+		{RoadTypeFlag::Catenary, RoadTypeFlag::NoHouses},
 
 		/* cost multiplier */
 		16,

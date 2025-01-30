@@ -135,7 +135,7 @@ inline Money RoadMaintenanceCost(RoadType roadtype, uint32_t num, uint32_t total
 inline bool HasRoadCatenary(RoadType roadtype)
 {
 	assert(roadtype < ROADTYPE_END);
-	return HasBit(GetRoadTypeInfo(roadtype)->flags, ROTF_CATENARY);
+	return GetRoadTypeInfo(roadtype)->flags.Test(RoadTypeFlag::Catenary);
 }
 
 /**

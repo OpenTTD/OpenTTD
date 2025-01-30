@@ -33,25 +33,15 @@ DECLARE_ENUM_AS_BIT_SET(RoadTramTypes)
 
 static const RoadTramType _roadtramtypes[] = { RTT_ROAD, RTT_TRAM };
 
-/** Roadtype flag bit numbers. Starts with RO instead of R because R is used for rails */
-enum RoadTypeFlag {
-	ROTF_CATENARY = 0,                                     ///< Bit number for adding catenary
-	ROTF_NO_LEVEL_CROSSING,                                ///< Bit number for disabling level crossing
-	ROTF_NO_HOUSES,                                        ///< Bit number for setting this roadtype as not house friendly
-	ROTF_HIDDEN,                                           ///< Bit number for hidden from construction.
-	ROTF_TOWN_BUILD,                                       ///< Bit number for allowing towns to build this roadtype.
+/** Roadtype flag bit numbers. */
+enum class RoadTypeFlag : uint8_t {
+	Catenary        = 0, ///< Bit number for adding catenary
+	NoLevelCrossing = 1, ///< Bit number for disabling level crossing
+	NoHouses        = 2, ///< Bit number for setting this roadtype as not house friendly
+	Hidden          = 3, ///< Bit number for hidden from construction.
+	TownBuild       = 4, ///< Bit number for allowing towns to build this roadtype.
 };
-
-/** Roadtype flags. Starts with RO instead of R because R is used for rails */
-enum RoadTypeFlags : uint8_t {
-	ROTFB_NONE = 0,                                        ///< All flags cleared.
-	ROTFB_CATENARY          = 1 << ROTF_CATENARY,          ///< Value for drawing a catenary.
-	ROTFB_NO_LEVEL_CROSSING = 1 << ROTF_NO_LEVEL_CROSSING, ///< Value for disabling a level crossing.
-	ROTFB_NO_HOUSES         = 1 << ROTF_NO_HOUSES,         ///< Value for for setting this roadtype as not house friendly.
-	ROTFB_HIDDEN            = 1 << ROTF_HIDDEN,            ///< Value for hidden from construction.
-	ROTFB_TOWN_BUILD        = 1 << ROTF_TOWN_BUILD,        ///< Value for allowing towns to build this roadtype.
-};
-DECLARE_ENUM_AS_BIT_SET(RoadTypeFlags)
+using RoadTypeFlags = EnumBitSet<RoadTypeFlag, uint8_t>;
 
 struct SpriteGroup;
 
@@ -295,7 +285,7 @@ inline Money RoadConvertCost(RoadType from, RoadType to)
 inline bool RoadNoLevelCrossing(RoadType roadtype)
 {
 	assert(roadtype < ROADTYPE_END);
-	return HasBit(GetRoadTypeInfo(roadtype)->flags, ROTF_NO_LEVEL_CROSSING);
+	return GetRoadTypeInfo(roadtype)->flags.Test(RoadTypeFlag::NoLevelCrossing);
 }
 
 RoadType GetRoadTypeByLabel(RoadTypeLabel label, bool allow_alternate_labels = true);
