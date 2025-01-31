@@ -14,7 +14,7 @@
 #include "company_type.h"
 
 /** Type of pool to store cargo payments in; little over 1 million. */
-typedef Pool<CargoPayment, CargoPaymentID, 512, 0xFF000> CargoPaymentPool;
+using CargoPaymentPool = Pool<CargoPayment, CargoPaymentID, 512, CargoPaymentID::End().base()>;
 /** The actual pool to store cargo payments in. */
 extern CargoPaymentPool _cargo_payment_pool;
 
