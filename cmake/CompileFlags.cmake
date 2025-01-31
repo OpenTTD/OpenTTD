@@ -80,6 +80,10 @@ macro(compile_flags)
 
             # We use 'ABCD' multichar for SaveLoad chunks identifiers
             -Wno-multichar
+
+            # Prevent optimisation supposing enums are in a range specified by the standard
+            # For details, see http://gcc.gnu.org/PR43680 and PR#5246.
+            -fno-strict-enums
         )
 
         # Ninja processes the output so the output from the compiler
@@ -105,10 +109,6 @@ macro(compile_flags)
                 # sure that they will not happen. It furthermore complains
                 # about its own optimized code in some places.
                 "-fno-strict-overflow"
-
-                # Prevent optimisation supposing enums are in a range specified by the standard
-                # For details, see http://gcc.gnu.org/PR43680
-                "-fno-tree-vrp"
 
                 # -flifetime-dse=2 (default since GCC 6) doesn't play
                 # well with our custom pool item allocator
