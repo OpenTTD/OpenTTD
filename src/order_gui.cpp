@@ -380,7 +380,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 {
 	/* Override the index as it is not coming from a pool, so would not be initialised correctly. */
 	Order order;
-	order.index = 0;
+	order.index = OrderID::Begin();
 
 	/* check depot first */
 	if (IsDepotTypeTile(tile, (TransportType)(uint)v->type) && IsTileOwner(tile, _local_company)) {
@@ -665,7 +665,7 @@ private:
 	{
 		Order order;
 		order.next = nullptr;
-		order.index = 0;
+		order.index = OrderID::Begin();
 		order.MakeGoToDepot(INVALID_DEPOT, ODTFB_PART_OF_ORDERS,
 				_settings_client.gui.new_nonstop && this->vehicle->IsGroundVehicle() ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 		order.SetDepotActionType(ODATFB_NEAREST_DEPOT);
@@ -1221,7 +1221,7 @@ public:
 					if (order_id != INVALID_VEH_ORDER_ID) {
 						Order order;
 						order.next = nullptr;
-						order.index = 0;
+						order.index = OrderID::Begin();
 						order.MakeConditional(order_id);
 
 						Command<CMD_INSERT_ORDER>::Post(STR_ERROR_CAN_T_INSERT_NEW_ORDER, this->vehicle->tile, this->vehicle->index, this->OrderGetSel(), order);
