@@ -20,11 +20,11 @@
 #include "saveload/saveload.h"
 
 /** Unique identifier for a single cargo packet. */
-typedef uint32_t CargoPacketID;
+using CargoPacketID = PoolID<uint32_t, struct CargoPacketIDTag, 0xFFF000, 0xFFFFFF>;
 struct CargoPacket;
 
 /** Type of the pool for cargo packets for a little over 16 million packets. */
-using CargoPacketPool = Pool<CargoPacket, CargoPacketID, 1024, 0xFFF000, PoolType::Normal, true, false>;
+using CargoPacketPool = Pool<CargoPacket, CargoPacketID, 1024, CargoPacketID::End().base(), PoolType::Normal, true, false>;
 /** The actual pool with cargo packets. */
 extern CargoPacketPool _cargopacket_pool;
 
