@@ -10,6 +10,8 @@
 #ifndef OBJECT_TYPE_H
 #define OBJECT_TYPE_H
 
+#include "core/pool_type.hpp"
+
 /** Types of objects. */
 typedef uint16_t ObjectType;
 
@@ -25,11 +27,11 @@ static const ObjectType NUM_OBJECTS_PER_GRF = NUM_OBJECTS; ///< Number of suppor
 static const ObjectType INVALID_OBJECT_TYPE = 0xFFFF; ///< An invalid object
 
 /** Unique identifier for an object. */
-typedef uint32_t ObjectID;
+using ObjectID = PoolID<uint32_t, struct ObjectIDTag, 0xFF0000, 0xFFFFFFFF>;
 
 struct Object;
 struct ObjectSpec;
 
-static const ObjectID INVALID_OBJECT = 0xFFFFFFFF; ///< An invalid object
+static constexpr ObjectID INVALID_OBJECT = ObjectID::Invalid(); ///< An invalid object
 
 #endif /* OBJECT_TYPE_H */

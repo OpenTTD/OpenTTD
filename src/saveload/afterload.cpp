@@ -2113,7 +2113,7 @@ bool AfterLoadGame()
 					o->location.h    = size;
 					o->build_date    = TimerGameCalendar::date;
 					o->town          = type == OBJECT_STATUE ? Town::Get(t.m2()) : CalcClosestTownFromTile(t, UINT_MAX);
-					t.m2() = o->index;
+					t.m2() = o->index.base();
 					Object::IncTypeCount(type);
 				} else {
 					/* We're at an offset, so get the ID from our "root". */
