@@ -36,6 +36,7 @@ void InputLoop();
 
 void InvalidateWindowData(WindowClass cls, WindowNumber number, int data = 0, bool gui_scope = false);
 void InvalidateWindowClassesData(WindowClass cls, int data = 0, bool gui_scope = false);
+void InvalidateWindowClassesData(WindowClass cls, ConvertibleThroughBase auto data, bool gui_scope = false) { InvalidateWindowClassesData(cls, data.base(), gui_scope); }
 
 void CloseNonVitalWindows();
 void CloseAllNonVitalWindows();

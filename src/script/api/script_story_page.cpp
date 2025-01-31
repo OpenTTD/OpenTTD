@@ -56,7 +56,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 		c, title != nullptr ? title->GetEncodedText() : std::string{})) return STORY_PAGE_INVALID;
 
 	/* In case of test-mode, we return StoryPageID 0 */
-	return static_cast<StoryPageID>(0);
+	return StoryPageID::Begin();
 }
 
 /* static */ StoryPageElementID ScriptStoryPage::NewElement(StoryPageID story_page_id, StoryPageElementType type, SQInteger reference, Text *text)
@@ -103,7 +103,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 			encoded_text)) return STORY_PAGE_ELEMENT_INVALID;
 
 	/* In case of test-mode, we return StoryPageElementID 0 */
-	return static_cast<StoryPageElementID>(0);
+	return StoryPageElementID::Begin();
 }
 
 /* static */ bool ScriptStoryPage::UpdateElement(StoryPageElementID story_page_element_id, SQInteger reference, Text *text)

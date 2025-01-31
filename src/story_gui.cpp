@@ -251,11 +251,11 @@ protected:
 		for (const StoryPage *p : this->story_pages) {
 			bool current_page = p->index == this->selected_page_id;
 			if (!p->title.empty()) {
-				list.push_back(MakeDropDownListStringItem(p->title, p->index, current_page));
+				list.push_back(MakeDropDownListStringItem(p->title, p->index.base(), current_page));
 			} else {
 				/* No custom title => use a generic page title with page number. */
 				SetDParam(0, page_num);
-				list.push_back(MakeDropDownListStringItem(STR_STORY_BOOK_GENERIC_PAGE_ITEM, p->index, current_page));
+				list.push_back(MakeDropDownListStringItem(STR_STORY_BOOK_GENERIC_PAGE_ITEM, p->index.base(), current_page));
 			}
 			page_num++;
 		}
@@ -633,7 +633,7 @@ public:
 	void SetSelectedPage(StoryPageID page_index)
 	{
 		if (this->selected_page_id != page_index) {
-			if (this->active_button_id) ResetObjectToPlace();
+			if (this->active_button_id != 0) ResetObjectToPlace();
 			this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
 			this->selected_page_id = page_index;
 			this->RefreshSelectedPage();
