@@ -17,10 +17,10 @@
 
 bool IsValidLink(Link link);
 
-typedef Pool<LeagueTableElement, LeagueTableElementID, 64, 64000> LeagueTableElementPool;
+using LeagueTableElementPool = Pool<LeagueTableElement, LeagueTableElementID, 64, LeagueTableElementID::End().base()>;
 extern LeagueTableElementPool _league_table_element_pool;
 
-typedef Pool<LeagueTable, LeagueTableID, 4, 255> LeagueTablePool;
+using LeagueTablePool = Pool<LeagueTable, LeagueTableID, 4, LeagueTableID::End().base()>;
 extern LeagueTablePool _league_table_pool;
 
 

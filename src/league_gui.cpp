@@ -298,9 +298,8 @@ private:
 	}
 
 public:
-	ScriptLeagueWindow(WindowDesc &desc, LeagueTableID table) : Window(desc)
+	ScriptLeagueWindow(WindowDesc &desc, WindowNumber table) : Window(desc), table(table)
 	{
-		this->table = table;
 		this->BuildTable();
 		this->InitNested(table);
 	}
