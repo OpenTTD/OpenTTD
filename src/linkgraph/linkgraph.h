@@ -24,7 +24,7 @@ class LinkGraph;
  * Type of the pool for link graph components. Each station can be in at up to
  * 32 link graphs. So we allow for plenty of them to be created.
  */
-typedef Pool<LinkGraph, LinkGraphID, 32, 0xFFFF> LinkGraphPool;
+using LinkGraphPool = Pool<LinkGraph, LinkGraphID, 32, LinkGraphID::End().base()>;
 /** The actual pool with link graphs. */
 extern LinkGraphPool _link_graph_pool;
 

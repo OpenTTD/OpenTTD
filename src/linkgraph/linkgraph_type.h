@@ -10,11 +10,13 @@
 #ifndef LINKGRAPH_TYPE_H
 #define LINKGRAPH_TYPE_H
 
-typedef uint16_t LinkGraphID;
-static const LinkGraphID INVALID_LINK_GRAPH = UINT16_MAX;
+#include "../core/pool_type.hpp"
 
-typedef uint16_t LinkGraphJobID;
-static const LinkGraphJobID INVALID_LINK_GRAPH_JOB = UINT16_MAX;
+using LinkGraphID = PoolID<uint16_t, struct LinkGraphIDTag, 0xFFFF, 0xFFFF>;
+static constexpr LinkGraphID INVALID_LINK_GRAPH = LinkGraphID::Invalid();
+
+using LinkGraphJobID = PoolID<uint16_t, struct LinkGraphJobIDTag, 0xFFFF, 0xFFFF>;
+static constexpr LinkGraphJobID INVALID_LINK_GRAPH_JOB = LinkGraphJobID::Invalid();
 
 typedef uint16_t NodeID;
 static const NodeID INVALID_NODE = UINT16_MAX;

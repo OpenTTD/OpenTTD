@@ -19,7 +19,7 @@ class Path;
 typedef std::list<Path *> PathList;
 
 /** Type of the pool for link graph jobs. */
-typedef Pool<LinkGraphJob, LinkGraphJobID, 32, 0xFFFF> LinkGraphJobPool;
+using LinkGraphJobPool = Pool<LinkGraphJob, LinkGraphJobID, 32, LinkGraphJobID::End().base()>;
 /** The actual pool with link graph jobs. */
 extern LinkGraphJobPool _link_graph_job_pool;
 
