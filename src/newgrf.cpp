@@ -5063,7 +5063,7 @@ static void SafeChangeInfo(ByteReader &buf)
 				uint32_t s = buf.ReadDWord();
 				buf.ReadDWord(); // dest
 				const GRFConfig *grfconfig = GetGRFConfig(s);
-				if (grfconfig != nullptr && !HasBit(grfconfig->flags, GCF_STATIC)) {
+				if (grfconfig != nullptr && !grfconfig->flags.Test(GRFConfigFlag::Static)) {
 					is_safe = false;
 					break;
 				}
@@ -5072,7 +5072,7 @@ static void SafeChangeInfo(ByteReader &buf)
 		}
 	}
 
-	SetBit(_cur.grfconfig->flags, GCF_UNSAFE);
+	_cur.grfconfig->flags.Set(GRFConfigFlag::Unsafe);
 
 	/* Skip remainder of GRF */
 	_cur.skip_sprites = -1;
@@ -6376,7 +6376,7 @@ static void FeatureNewName(ByteReader &buf)
 			case GSF_SHIPS:
 			case GSF_AIRCRAFT:
 				if (!generic) {
-					Engine *e = GetNewEngine(_cur.grffile, (VehicleType)feature, id, HasBit(_cur.grfconfig->flags, GCF_STATIC));
+					Engine *e = GetNewEngine(_cur.grffile, (VehicleType)feature, id, _cur.grfconfig->flags.Test(GRFConfigFlag::Static));
 					if (e == nullptr) break;
 					StringID string = AddGRFString(_cur.grffile->grfid, GRFStringID{e->index}, lang, new_scheme, false, name, e->info.string_id);
 					e->info.string_id = string;
@@ -6517,7 +6517,7 @@ static void GraphicsNew(ByteReader &buf)
 	uint16_t offset = HasBit(type, 7) ? buf.ReadExtendedByte() : 0;
 	ClrBit(type, 7); // Clear the high bit as that only indicates whether there is an offset.
 
-	if ((type == 0x0D) && (num == 10) && HasBit(_cur.grfconfig->flags, GCF_SYSTEM)) {
+	if ((type == 0x0D) && (num == 10) && _cur.grfconfig->flags.Test(GRFConfigFlag::System)) {
 		/* Special not-TTDP-compatible case used in openttd.grf
 		 * Missing shore sprites and initialisation of SPR_SHORE_BASE */
 		GrfMsg(2, "GraphicsNew: Loading 10 missing shore sprites from extra grf.");
@@ -6979,7 +6979,7 @@ static void SkipIf(ByteReader &buf)
 
 		GRFConfig *c = GetGRFConfig(cond_val, mask);
 
-		if (c != nullptr && HasBit(c->flags, GCF_STATIC) && !HasBit(_cur.grfconfig->flags, GCF_STATIC) && _networking) {
+		if (c != nullptr && c->flags.Test(GRFConfigFlag::Static) && !_cur.grfconfig->flags.Test(GRFConfigFlag::Static) && _networking) {
 			DisableStaticNewGRFInfluencingNonStaticNewGRFs(*c);
 			c = nullptr;
 		}
@@ -7091,12 +7091,12 @@ static void ScanInfo(ByteReader &buf)
 	_cur.grfconfig->ident.grfid = grfid;
 
 	if (grf_version < 2 || grf_version > 8) {
-		SetBit(_cur.grfconfig->flags, GCF_INVALID);
+		_cur.grfconfig->flags.Set(GRFConfigFlag::Invalid);
 		Debug(grf, 0, "{}: NewGRF \"{}\" (GRFID {:08X}) uses GRF version {}, which is incompatible with this version of OpenTTD.", _cur.grfconfig->filename, StrMakeValid(name), std::byteswap(grfid), grf_version);
 	}
 
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
-	if (GB(grfid, 0, 8) == 0xFF) SetBit(_cur.grfconfig->flags, GCF_SYSTEM);
+	if (GB(grfid, 0, 8) == 0xFF) _cur.grfconfig->flags.Set(GRFConfigFlag::System);
 
 	AddGRFTextToList(_cur.grfconfig->name, 0x7F, grfid, false, name);
 
@@ -7351,7 +7351,7 @@ static void SafeParamSet(ByteReader &buf)
 	 * reserved, it would be marked unsafe anyway. GRM for (e.g. bridge)
 	 * sprites  is considered safe. */
 
-	SetBit(_cur.grfconfig->flags, GCF_UNSAFE);
+	_cur.grfconfig->flags.Set(GRFConfigFlag::Unsafe);
 
 	/* Skip remainder of GRF */
 	_cur.skip_sprites = -1;
@@ -7620,7 +7620,7 @@ static void ParamSet(ByteReader &buf)
 			/* Read another GRF File's parameter */
 			const GRFFile *file = GetFileByGRFID(data);
 			GRFConfig *c = GetGRFConfig(data);
-			if (c != nullptr && HasBit(c->flags, GCF_STATIC) && !HasBit(_cur.grfconfig->flags, GCF_STATIC) && _networking) {
+			if (c != nullptr && c->flags.Test(GRFConfigFlag::Static) && !_cur.grfconfig->flags.Test(GRFConfigFlag::Static) && _networking) {
 				/* Disable the read GRF if it is a static NewGRF. */
 				DisableStaticNewGRFInfluencingNonStaticNewGRFs(*c);
 				src1 = 0;
@@ -7759,7 +7759,7 @@ static void ParamSet(ByteReader &buf)
 			ClrBit(res, GMB_TRAIN_WIDTH_32_PIXELS);
 
 			/* Only copy safe bits for static grfs */
-			if (HasBit(_cur.grfconfig->flags, GCF_STATIC)) {
+			if (_cur.grfconfig->flags.Test(GRFConfigFlag::Static)) {
 				uint32_t safe_bits = 0;
 				SetBit(safe_bits, GMB_SECOND_ROCKY_TILE_SET);
 
@@ -7800,7 +7800,7 @@ static void SafeGRFInhibit(ByteReader &buf)
 
 		/* GRF is unsafe it if tries to deactivate other GRFs */
 		if (grfid != _cur.grfconfig->ident.grfid) {
-			SetBit(_cur.grfconfig->flags, GCF_UNSAFE);
+			_cur.grfconfig->flags.Set(GRFConfigFlag::Unsafe);
 
 			/* Skip remainder of GRF */
 			_cur.skip_sprites = -1;
@@ -8636,7 +8636,7 @@ static void StaticGRFInfo(ByteReader &buf)
  */
 static void GRFUnsafe(ByteReader &)
 {
-	SetBit(_cur.grfconfig->flags, GCF_UNSAFE);
+	_cur.grfconfig->flags.Set(GRFConfigFlag::Unsafe);
 
 	/* Skip remainder of GRF */
 	_cur.skip_sprites = -1;
@@ -9757,7 +9757,7 @@ void LoadNewGRFFile(GRFConfig &config, GrfLoadingStage stage, Subdirectory subdi
 		_cur.grffile = GetFileByFilename(filename);
 		if (_cur.grffile == nullptr) UserError("File '{}' lost in cache.\n", filename);
 		if (stage == GLS_RESERVE && config.status != GCS_INITIALISED) return;
-		if (stage == GLS_ACTIVATION && !HasBit(config.flags, GCF_RESERVED)) return;
+		if (stage == GLS_ACTIVATION && !config.flags.Test(GRFConfigFlag::Reserved)) return;
 	}
 
 	bool needs_palette_remap = config.palette & GRFP_USE_MASK;
@@ -10141,7 +10141,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 		_cur.stage = stage;
 		for (const auto &c : _grfconfig) {
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
-			if (stage > GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) continue;
+			if (stage > GLS_INIT && c->flags.Test(GRFConfigFlag::InitOnly)) continue;
 
 			Subdirectory subdir = num_grfs < num_baseset ? BASESET_DIR : NEWGRF_DIR;
 			if (!FioCheckFileExists(c->filename, subdir)) {
@@ -10152,7 +10152,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(*c);
 
-			if (!HasBit(c->flags, GCF_STATIC) && !HasBit(c->flags, GCF_SYSTEM)) {
+			if (!c->flags.Test(GRFConfigFlag::Static) && !c->flags.Test(GRFConfigFlag::System)) {
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
 					Debug(grf, 0, "'{}' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
 					c->status = GCS_DISABLED;
@@ -10166,14 +10166,14 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 			LoadNewGRFFile(*c, stage, subdir, false);
 			if (stage == GLS_RESERVE) {
-				SetBit(c->flags, GCF_RESERVED);
+				c->flags.Set(GRFConfigFlag::Reserved);
 			} else if (stage == GLS_ACTIVATION) {
-				ClrBit(c->flags, GCF_RESERVED);
+				c->flags.Reset(GRFConfigFlag::Reserved);
 				assert(GetFileByGRFID(c->ident.grfid) == _cur.grffile);
 				ClearTemporaryNewGRFData(_cur.grffile);
 				BuildCargoTranslationMap();
 				Debug(sprite, 2, "LoadNewGRF: Currently {} sprites are loaded", _cur.spriteid);
-			} else if (stage == GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) {
+			} else if (stage == GLS_INIT && c->flags.Test(GRFConfigFlag::InitOnly)) {
 				/* We're not going to activate this, so free whatever data we allocated */
 				ClearTemporaryNewGRFData(_cur.grffile);
 			}

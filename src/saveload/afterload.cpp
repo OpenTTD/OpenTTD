@@ -369,7 +369,7 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 	message.reserve(1024);
 	message += "Loading your savegame caused OpenTTD to crash.\n";
 
-	_saveload_crash_with_missing_newgrfs = std::ranges::any_of(_grfconfig, [](const auto &c) { return HasBit(c->flags, GCF_COMPATIBLE) || c->status == GCS_NOT_FOUND; });
+	_saveload_crash_with_missing_newgrfs = std::ranges::any_of(_grfconfig, [](const auto &c) { return c->flags.Test(GRFConfigFlag::Compatible) || c->status == GCS_NOT_FOUND; });
 
 	if (_saveload_crash_with_missing_newgrfs) {
 		message +=
@@ -386,7 +386,7 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 			"The missing/compatible NewGRFs are:\n";
 
 		for (const auto &c : _grfconfig) {
-			if (HasBit(c->flags, GCF_COMPATIBLE)) {
+			if (c->flags.Test(GRFConfigFlag::Compatible)) {
 				const GRFIdentifier &replaced = _gamelog.GetOverriddenIdentifier(*c);
 				fmt::format_to(std::back_inserter(message), "NewGRF {:08X} (checksum {}) not found.\n  Loaded NewGRF \"{}\" (checksum {}) with same GRF ID instead.\n",
 						std::byteswap(c->ident.grfid), FormatArrayAsHex(c->original_md5sum), c->filename, FormatArrayAsHex(replaced.md5sum));
@@ -708,7 +708,7 @@ bool AfterLoadGame()
 	for (const auto &c : _grfconfig) {
 		if (c->status == GCS_NOT_FOUND) {
 			_gamelog.GRFRemove(c->ident.grfid);
-		} else if (HasBit(c->flags, GCF_COMPATIBLE)) {
+		} else if (c->flags.Test(GRFConfigFlag::Compatible)) {
 			_gamelog.GRFCompatible(c->ident);
 		}
 	}

@@ -17,16 +17,17 @@
 #include "3rdparty/md5/md5.h"
 
 /** GRF config bit flags */
-enum GCF_Flags : uint8_t {
-	GCF_SYSTEM,     ///< GRF file is an openttd-internal system grf
-	GCF_UNSAFE,     ///< GRF file is unsafe for static usage
-	GCF_STATIC,     ///< GRF file is used statically (can be used in any MP game)
-	GCF_COMPATIBLE, ///< GRF file does not exactly match the requested GRF (different MD5SUM), but grfid matches)
-	GCF_COPY,       ///< The data is copied from a grf in _all_grfs
-	GCF_INIT_ONLY,  ///< GRF file is processed up to GLS_INIT
-	GCF_RESERVED,   ///< GRF file passed GLS_RESERVE stage
-	GCF_INVALID,    ///< GRF is unusable with this version of OpenTTD
+enum GRFConfigFlag : uint8_t {
+	System,     ///< GRF file is an openttd-internal system grf
+	Unsafe,     ///< GRF file is unsafe for static usage
+	Static,     ///< GRF file is used statically (can be used in any MP game)
+	Compatible, ///< GRF file does not exactly match the requested GRF (different MD5SUM), but grfid matches)
+	Copy,       ///< The data is copied from a grf in _all_grfs
+	InitOnly,   ///< GRF file is processed up to GLS_INIT
+	Reserved,   ///< GRF file passed GLS_RESERVE stage
+	Invalid,    ///< GRF is unusable with this version of OpenTTD
 };
+using GRFConfigFlags = EnumBitSet<GRFConfigFlag, uint8_t>;
 
 /** Status of GRF */
 enum GRFStatus : uint8_t {
@@ -172,7 +173,7 @@ struct GRFConfig {
 
 	uint32_t version = 0; ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
 	uint32_t min_loadable_version = 0; ///< NOSAVE: Minimum compatible version a NewGRF can define
-	uint8_t flags = 0; ///< NOSAVE: GCF_Flags, bitset
+	GRFConfigFlags flags = {}; ///< NOSAVE: GCF_Flags, bitset
 	GRFStatus status = GCS_UNKNOWN; ///< NOSAVE: GRFStatus, enum
 	GRFBugs grf_bugs = {}; ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
 	uint8_t num_valid_params = MAX_NUM_PARAMS; ///< NOSAVE: Number of valid parameters (action 0x14)
@@ -205,7 +206,7 @@ enum FindGRFConfigMode : uint8_t {
 	FGCM_EXACT,       ///< Only find Grfs matching md5sum
 	FGCM_COMPATIBLE,  ///< Find best compatible Grf wrt. desired_version
 	FGCM_NEWEST,      ///< Find newest Grf
-	FGCM_NEWEST_VALID,///< Find newest Grf, ignoring Grfs with GCF_INVALID set
+	FGCM_NEWEST_VALID,///< Find newest Grf, ignoring Grfs with GRFConfigFlag::Invalid set
 	FGCM_ANY,         ///< Use first found
 };
 

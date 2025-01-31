@@ -118,7 +118,7 @@ void NetworkAfterNewGRFScan()
 		item->info.compatible = item->info.version_compatible;
 
 		for (auto &c : item->info.grfconfig) {
-			assert(HasBit(c->flags, GCF_COPY));
+			assert(c->flags.Test(GRFConfigFlag::Copy));
 
 			const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, &c->ident.md5sum);
 			if (f == nullptr) {

@@ -153,7 +153,7 @@ static std::unique_ptr<GRFConfig> GetDefaultExtraGRFConfig()
 	auto gc = std::make_unique<GRFConfig>("OPENTTD.GRF");
 	gc->palette |= GRFP_GRF_DOS;
 	FillGRFDetails(*gc, false, BASESET_DIR);
-	ClrBit(gc->flags, GCF_INIT_ONLY);
+	gc->flags.Reset(GRFConfigFlag::InitOnly);
 	return gc;
 }
 
@@ -165,7 +165,7 @@ static std::unique_ptr<GRFConfig> GetBasesetExtraGRFConfig()
 {
 	auto gc = std::make_unique<GRFConfig>(BaseGraphics::GetUsedSet()->GetOrCreateExtraConfig());
 	if (gc->param.empty()) gc->SetParameterDefaults();
-	ClrBit(gc->flags, GCF_INIT_ONLY);
+	gc->flags.Reset(GRFConfigFlag::InitOnly);
 	return gc;
 }
 
@@ -272,7 +272,7 @@ static bool SwitchNewGRFBlitter()
 	uint depth_wanted_by_base = BaseGraphics::GetUsedSet()->blitter == BLT_32BPP ? 32 : 8;
 	uint depth_wanted_by_grf = _support8bpp != S8BPP_NONE ? 8 : 32;
 	for (const auto &c : _grfconfig) {
-		if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND || HasBit(c->flags, GCF_INIT_ONLY)) continue;
+		if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND || c->flags.Test(GRFConfigFlag::InitOnly)) continue;
 		if (c->palette & GRFP_BLT_32BPP) depth_wanted_by_grf = 32;
 	}
 	/* We need a 32bpp blitter for font anti-alias. */

@@ -369,7 +369,7 @@ void SurveyGrfs(nlohmann::json &survey)
 		if ((c->palette & GRFP_BLT_MASK) == GRFP_BLT_UNSET) grf["blitter"] = "unset";
 		if ((c->palette & GRFP_BLT_MASK) == GRFP_BLT_32BPP) grf["blitter"] = "32bpp";
 
-		grf["is_static"] = HasBit(c->flags, GCF_STATIC);
+		grf["is_static"] = c->flags.Test(GRFConfigFlag::Static);
 		grf["parameters"] = std::span<const uint32_t>(c->param);
 	}
 }

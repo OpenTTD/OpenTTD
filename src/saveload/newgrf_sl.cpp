@@ -92,7 +92,7 @@ struct NGRFChunkHandler : ChunkHandler {
 		int index = 0;
 
 		for (const auto &c : _grfconfig) {
-			if (HasBit(c->flags, GCF_STATIC) || HasBit(c->flags, GCF_INIT_ONLY)) continue;
+			if (c->flags.Any({GRFConfigFlag::Static, GRFConfigFlag::InitOnly})) continue;
 			this->SaveParameters(*c);
 			SlSetArrayIndex(index++);
 			SlObject(c.get(), description);
