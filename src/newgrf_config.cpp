@@ -43,7 +43,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	error(config.error),
 	version(config.version),
 	min_loadable_version(config.min_loadable_version),
-	flags(config.flags & ~(1 << GCF_COPY)),
+	flags(config.flags),
 	status(config.status),
 	grf_bugs(config.grf_bugs),
 	num_valid_params(config.num_valid_params),
@@ -52,6 +52,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	param_info(config.param_info),
 	param(config.param)
 {
+	this->flags.Reset(GRFConfigFlag::Copy);
 }
 
 void GRFConfig::SetParams(std::span<const uint32_t> pars)
@@ -306,14 +307,14 @@ bool FillGRFDetails(GRFConfig &config, bool is_static, Subdirectory subdir)
 	config.FinalizeParameterInfo();
 
 	/* Skip if the grfid is 0 (not read) or if it is an internal GRF */
-	if (config.ident.grfid == 0 || HasBit(config.flags, GCF_SYSTEM)) return false;
+	if (config.ident.grfid == 0 || config.flags.Test(GRFConfigFlag::System)) return false;
 
 	if (is_static) {
 		/* Perform a 'safety scan' for static GRFs */
 		LoadNewGRFFile(config, GLS_SAFETYSCAN, subdir, true);
 
-		/* GCF_UNSAFE is set if GLS_SAFETYSCAN finds unsafe actions */
-		if (HasBit(config.flags, GCF_UNSAFE)) return false;
+		/* GRFConfigFlag::Unsafe is set if GLS_SAFETYSCAN finds unsafe actions */
+		if (config.flags.Test(GRFConfigFlag::Unsafe)) return false;
 	}
 
 	return CalcGRFMD5Sum(config, subdir);
@@ -340,7 +341,11 @@ static void AppendGRFConfigList(GRFConfigList &dst, const GRFConfigList &src, bo
 {
 	for (const auto &s : src) {
 		auto &c = dst.emplace_back(std::make_unique<GRFConfig>(*s));
-		AssignBit(c->flags, GCF_INIT_ONLY, init_only);
+		if (init_only) {
+			c->flags.Set(GRFConfigFlag::InitOnly);
+		} else {
+			c->flags.Reset(GRFConfigFlag::InitOnly);
+		}
 	}
 }
 
@@ -428,15 +433,15 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig)
 
 	for (auto &c : grfconfig) {
 		const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, &c->ident.md5sum);
-		if (f == nullptr || HasBit(f->flags, GCF_INVALID)) {
+		if (f == nullptr || f->flags.Test(GRFConfigFlag::Invalid)) {
 			/* If we have not found the exactly matching GRF try to find one with the
 			 * same grfid, as it most likely is compatible */
 			f = FindGRFConfig(c->ident.grfid, FGCM_COMPATIBLE, nullptr, c->version);
 			if (f != nullptr) {
 				Debug(grf, 1, "NewGRF {:08X} ({}) not found; checksum {}. Compatibility mode on", std::byteswap(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
-				if (!HasBit(c->flags, GCF_COMPATIBLE)) {
+				if (!c->flags.Test(GRFConfigFlag::Compatible)) {
 					/* Preserve original_md5sum after it has been assigned */
-					SetBit(c->flags, GCF_COMPATIBLE);
+					c->flags.Set(GRFConfigFlag::Compatible);
 					c->original_md5sum = c->ident.md5sum;
 				}
 
@@ -456,9 +461,9 @@ compatible_grf:
 			/* The filename could be the filename as in the savegame. As we need
 			 * to load the GRF here, we need the correct filename, so overwrite that
 			 * in any case and set the name and info when it is not set already.
-			 * When the GCF_COPY flag is set, it is certain that the filename is
+			 * When the GRFConfigFlag::Copy flag is set, it is certain that the filename is
 			 * already a local one, so there is no need to replace it. */
-			if (!HasBit(c->flags, GCF_COPY)) {
+			if (!c->flags.Test(GRFConfigFlag::Copy)) {
 				c->filename = f->filename;
 				c->ident.md5sum = f->ident.md5sum;
 				c->name = f->name;
@@ -605,7 +610,7 @@ const GRFConfig *FindGRFConfig(uint32_t grfid, FindGRFConfigMode mode, const MD5
 		/* return it, if the exact same newgrf is found, or if we do not care about finding "the best" */
 		if (md5sum != nullptr || mode == FGCM_ANY) return c.get();
 		/* Skip incompatible stuff, unless explicitly allowed */
-		if (mode != FGCM_NEWEST && HasBit(c->flags, GCF_INVALID)) continue;
+		if (mode != FGCM_NEWEST && c->flags.Test(GRFConfigFlag::Invalid)) continue;
 		/* check version compatibility */
 		if (mode == FGCM_COMPATIBLE && !c->IsCompatible(desired_version)) continue;
 		/* remember the newest one as "the best" */

@@ -128,8 +128,8 @@ static void ShowNewGRFInfo(const GRFConfig &c, const Rect &r, bool show_params)
 	/* Show flags */
 	if (c.status == GCS_NOT_FOUND)       tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NOT_FOUND);
 	if (c.status == GCS_DISABLED)        tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_DISABLED);
-	if (HasBit(c.flags, GCF_INVALID))    tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_INCOMPATIBLE);
-	if (HasBit(c.flags, GCF_COMPATIBLE)) tr.top = DrawStringMultiLine(tr, STR_NEWGRF_COMPATIBLE_LOADED);
+	if (c.flags.Test(GRFConfigFlag::Invalid))    tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_INCOMPATIBLE);
+	if (c.flags.Test(GRFConfigFlag::Compatible)) tr.top = DrawStringMultiLine(tr, STR_NEWGRF_COMPATIBLE_LOADED);
 
 	/* Draw GRF info if it exists */
 	if (!StrEmpty(c.GetDescription())) {
@@ -834,9 +834,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		/* Do not show a "not-failure" colour when it actually failed to load */
 		if (pal != PALETTE_TO_RED) {
-			if (HasBit(c.flags, GCF_STATIC)) {
+			if (c.flags.Test(GRFConfigFlag::Static)) {
 				pal = PALETTE_TO_GREY;
-			} else if (HasBit(c.flags, GCF_COMPATIBLE)) {
+			} else if (c.flags.Test(GRFConfigFlag::Compatible)) {
 				pal = PALETTE_TO_ORANGE;
 			}
 		}
@@ -1081,7 +1081,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				}
 				this->InvalidateData();
 				if (click_count == 1) {
-					if (this->editable && this->avail_sel != nullptr && !HasBit(this->avail_sel->flags, GCF_INVALID)) SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
+					if (this->editable && this->avail_sel != nullptr && !this->avail_sel->flags.Test(GRFConfigFlag::Invalid)) SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 					break;
 				}
 				/* With double click, continue */
@@ -1089,7 +1089,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			}
 
 			case WID_NS_ADD:
-				if (this->avail_sel == nullptr || !this->editable || HasBit(this->avail_sel->flags, GCF_INVALID)) break;
+				if (this->avail_sel == nullptr || !this->editable || this->avail_sel->flags.Test(GRFConfigFlag::Invalid)) break;
 
 				this->AddGRFToActive();
 				break;
@@ -1221,11 +1221,11 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case GOID_NEWGRF_RESCANNED:
 				/* Search the list for items that are now found and mark them as such. */
 				for (auto &c : this->actives) {
-					bool compatible = HasBit(c->flags, GCF_COMPATIBLE);
+					bool compatible = c->flags.Test(GRFConfigFlag::Compatible);
 					if (c->status != GCS_NOT_FOUND && !compatible) continue;
 
 					const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, compatible ? &c->original_md5sum : &c->ident.md5sum);
-					if (f == nullptr || HasBit(f->flags, GCF_INVALID)) continue;
+					if (f == nullptr || f->flags.Test(GRFConfigFlag::Invalid)) continue;
 
 					c = std::make_unique<GRFConfig>(*f);
 				}
@@ -1263,7 +1263,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			WID_NS_PRESET_LIST,
 			WID_NS_TOGGLE_PALETTE
 		);
-		this->SetWidgetDisabledState(WID_NS_ADD, !this->editable || this->avail_sel == nullptr || HasBit(this->avail_sel->flags, GCF_INVALID));
+		this->SetWidgetDisabledState(WID_NS_ADD, !this->editable || this->avail_sel == nullptr || this->avail_sel->flags.Test(GRFConfigFlag::Invalid));
 		this->SetWidgetDisabledState(WID_NS_UPGRADE, !this->editable || this->actives.empty() || !this->CanUpgradeCurrent());
 
 		bool disable_all = this->active_sel == nullptr || !this->editable;
@@ -1296,7 +1296,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		bool has_compatible = false;
 		for (const auto &c : this->actives) {
 			has_missing    |= c->status == GCS_NOT_FOUND;
-			has_compatible |= HasBit(c->flags, GCF_COMPATIBLE);
+			has_compatible |= c->flags.Test(GRFConfigFlag::Compatible);
 		}
 		StringID text;
 		StringID tool_tip;
@@ -1443,7 +1443,7 @@ private:
 			if (_settings_client.gui.newgrf_show_old_versions) {
 				this->avails.push_back(c.get());
 			} else {
-				const GRFConfig *best = FindGRFConfig(c->ident.grfid, HasBit(c->flags, GCF_INVALID) ? FGCM_NEWEST : FGCM_NEWEST_VALID);
+				const GRFConfig *best = FindGRFConfig(c->ident.grfid, c->flags.Test(GRFConfigFlag::Invalid) ? FGCM_NEWEST : FGCM_NEWEST_VALID);
 				/* Never triggers; FindGRFConfig returns either c, or a newer version of c. */
 				assert(best != nullptr);
 
@@ -1481,12 +1481,12 @@ private:
 	 */
 	bool AddGRFToActive(int ins_pos = -1)
 	{
-		if (this->avail_sel == nullptr || !this->editable || HasBit(this->avail_sel->flags, GCF_INVALID)) return false;
+		if (this->avail_sel == nullptr || !this->editable || this->avail_sel->flags.Test(GRFConfigFlag::Invalid)) return false;
 
 		CloseWindowByClass(WC_TEXTFILE);
 
 		/* Get number of non-static NewGRFs. */
-		size_t count = std::ranges::count_if(this->actives, [](const auto &gc) { return !HasBit(gc->flags, GCF_STATIC); });
+		size_t count = std::ranges::count_if(this->actives, [](const auto &gc) { return !gc->flags.Test(GRFConfigFlag::Static); });
 		if (count >= NETWORK_MAX_GRF_COUNT) {
 			ShowErrorMessage(STR_NEWGRF_TOO_MANY_NEWGRFS, INVALID_STRING_ID, WL_INFO);
 			return false;
@@ -1527,14 +1527,14 @@ void ShowMissingContentWindow(const GRFConfigList &list)
 	/* Only show the things in the current list, or everything when nothing's selected */
 	ContentVector cv;
 	for (const auto &c : list) {
-		if (c->status != GCS_NOT_FOUND && !HasBit(c->flags, GCF_COMPATIBLE)) continue;
+		if (c->status != GCS_NOT_FOUND && !c->flags.Test(GRFConfigFlag::Compatible)) continue;
 
 		ContentInfo *ci = new ContentInfo();
 		ci->type = CONTENT_TYPE_NEWGRF;
 		ci->state = ContentInfo::DOES_NOT_EXIST;
 		ci->name = c->GetName();
 		ci->unique_id = std::byteswap(c->ident.grfid);
-		ci->md5sum = HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum;
+		ci->md5sum = c->flags.Test(GRFConfigFlag::Compatible) ? c->original_md5sum : c->ident.md5sum;
 		cv.push_back(ci);
 	}
 	ShowNetworkContentListWindow(cv.empty() ? nullptr : &cv, CONTENT_TYPE_NEWGRF);

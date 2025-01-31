@@ -1107,14 +1107,14 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, const char *grpname, bool
 		}
 
 		/* Check if item is valid */
-		if (!FillGRFDetails(*c, is_static) || HasBit(c->flags, GCF_INVALID)) {
+		if (!FillGRFDetails(*c, is_static) || c->flags.Test(GRFConfigFlag::Invalid)) {
 			if (c->status == GCS_NOT_FOUND) {
 				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND);
-			} else if (HasBit(c->flags, GCF_UNSAFE)) {
+			} else if (c->flags.Test(GRFConfigFlag::Unsafe)) {
 				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_UNSAFE);
-			} else if (HasBit(c->flags, GCF_SYSTEM)) {
+			} else if (c->flags.Test(GRFConfigFlag::System)) {
 				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_SYSTEM);
-			} else if (HasBit(c->flags, GCF_INVALID)) {
+			} else if (c->flags.Test(GRFConfigFlag::Invalid)) {
 				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE);
 			} else {
 				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN);
@@ -1136,7 +1136,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, const char *grpname, bool
 
 		if (is_static) {
 			/* Mark file as static to avoid saving in savegame. */
-			SetBit(c->flags, GCF_STATIC);
+			c->flags.Set(GRFConfigFlag::Static);
 		} else if (++num_grfs > NETWORK_MAX_GRF_COUNT) {
 			/* Check we will not load more non-static NewGRFs than allowed. This could trigger issues for game servers. */
 			ShowErrorMessage(STR_CONFIG_ERROR, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED, WL_CRITICAL);

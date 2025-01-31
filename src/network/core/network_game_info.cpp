@@ -193,7 +193,7 @@ static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig &config, std::strin
 		config.info = f->info;
 		config.url = f->url;
 	}
-	SetBit(config.flags, GCF_COPY);
+	config.flags.Set(GRFConfigFlag::Copy);
 }
 
 /**
@@ -230,12 +230,12 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
 		 * the GRFs that are needed, i.e. the ones that the server has
 		 * selected in the NewGRF GUI and not the ones that are used due
 		 * to the fact that they are in [newgrf-static] in openttd.cfg */
-		uint count = std::ranges::count_if(info.grfconfig, [](const auto &c) { return !HasBit(c->flags, GCF_STATIC); });
+		uint count = std::ranges::count_if(info.grfconfig, [](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static); });
 		p.Send_uint8 (count); // Send number of GRFs
 
 		/* Send actual GRF Identifications */
 		for (const auto &c : info.grfconfig) {
-			if (HasBit(c->flags, GCF_STATIC)) continue;
+			if (c->flags.Test(GRFConfigFlag::Static)) continue;
 
 			SerializeGRFIdentifier(p, c->ident);
 			if (send_newgrf_names) p.Send_string(c->GetName());
