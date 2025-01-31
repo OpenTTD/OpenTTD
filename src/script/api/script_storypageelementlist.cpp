@@ -13,7 +13,7 @@
 
 #include "../../safeguards.h"
 
-ScriptStoryPageElementList::ScriptStoryPageElementList(ScriptStoryPage::StoryPageID story_page_id)
+ScriptStoryPageElementList::ScriptStoryPageElementList(StoryPageID story_page_id)
 {
 	if (!ScriptStoryPage::IsValidStoryPage(story_page_id)) return;
 

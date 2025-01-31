@@ -24,7 +24,7 @@ public:
 	/**
 	 * @param story_page_id The page id of the story page of which all page elements should be included in the list.
 	 */
-	ScriptStoryPageElementList(ScriptStoryPage::StoryPageID story_page_id);
+	ScriptStoryPageElementList(StoryPageID story_page_id);
 };
 
 #endif /* SCRIPT_STORYPAGEELEMENTLIST_HPP */

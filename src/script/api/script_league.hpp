@@ -25,19 +25,9 @@
  */
 class ScriptLeagueTable : public ScriptObject {
 public:
-	/**
-	 * The league table IDs.
-	 */
-	enum LeagueTableID {
-		LEAGUE_TABLE_INVALID = ::INVALID_LEAGUE_TABLE, ///< An invalid league table id.
-	};
+	static constexpr LeagueTableID LEAGUE_TABLE_INVALID = ::INVALID_LEAGUE_TABLE; ///< An invalid league table id.
 
-	/**
-	 * The league table element IDs.
-	 */
-	enum LeagueTableElementID {
-		LEAGUE_TABLE_ELEMENT_INVALID = ::INVALID_LEAGUE_TABLE_ELEMENT, ///< An invalid league table element id.
-	};
+	static constexpr LeagueTableElementID LEAGUE_TABLE_ELEMENT_INVALID = ::INVALID_LEAGUE_TABLE_ELEMENT; ///< An invalid league table element id.
 
 	/**
 	 * The type of a link.

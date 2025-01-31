@@ -19,15 +19,9 @@
  */
 class ScriptGroup : public ScriptObject {
 public:
-	/**
-	 * The group IDs of some special groups.
-	 */
-	enum GroupID {
-		/* Note: these values represent part of the in-game static values */
-		GROUP_ALL     = ::ALL_GROUP,     ///< All vehicles are in this group.
-		GROUP_DEFAULT = ::DEFAULT_GROUP, ///< Vehicles not put in any other group are in this one.
-		GROUP_INVALID = ::INVALID_GROUP, ///< An invalid group id.
-	};
+	static constexpr GroupID GROUP_ALL = ::ALL_GROUP; ///< All vehicles are in this group.
+	static constexpr GroupID GROUP_DEFAULT = ::DEFAULT_GROUP; ///< Vehicles not put in any other group are in this one.
+	static constexpr GroupID GROUP_INVALID = ::INVALID_GROUP; ///< An invalid group id.
 
 	/**
 	 * Checks whether the given group is valid.

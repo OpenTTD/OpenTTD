@@ -30,13 +30,13 @@
 	return g != nullptr && g->owner == ScriptObject::GetCompany();
 }
 
-/* static */ ScriptGroup::GroupID ScriptGroup::CreateGroup(ScriptVehicle::VehicleType vehicle_type, GroupID parent_group_id)
+/* static */ GroupID ScriptGroup::CreateGroup(ScriptVehicle::VehicleType vehicle_type, GroupID parent_group_id)
 {
 	EnforceCompanyModeValid(GROUP_INVALID);
 	if (!ScriptObject::Command<CMD_CREATE_GROUP>::Do(&ScriptInstance::DoCommandReturnGroupID, (::VehicleType)vehicle_type, parent_group_id)) return GROUP_INVALID;
 
 	/* In case of test-mode, we return GroupID 0 */
-	return (ScriptGroup::GroupID)0;
+	return static_cast<GroupID>(0);
 }
 
 /* static */ bool ScriptGroup::DeleteGroup(GroupID group_id)
@@ -85,12 +85,12 @@
 	return ScriptObject::Command<CMD_ALTER_GROUP>::Do(AlterGroupMode::SetParent, group_id, parent_group_id, {});
 }
 
-/* static */ ScriptGroup::GroupID ScriptGroup::GetParent(GroupID group_id)
+/* static */ GroupID ScriptGroup::GetParent(GroupID group_id)
 {
-	EnforcePrecondition((ScriptGroup::GroupID)INVALID_GROUP, IsValidGroup(group_id));
+	EnforcePrecondition(INVALID_GROUP, IsValidGroup(group_id));
 
 	const Group *g = ::Group::GetIfValid(group_id);
-	return (ScriptGroup::GroupID)g->parent;
+	return g->parent;
 }
 
 /* static */ bool ScriptGroup::EnableAutoReplaceProtection(GroupID group_id, bool enable)
