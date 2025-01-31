@@ -80,7 +80,7 @@ public:
 	void GRFAddList(const GRFConfigList &newg);
 	void GRFRemove(uint32_t grfid);
 	void GRFAdd(const GRFConfig &newg);
-	void GRFBug(uint32_t grfid, uint8_t bug, uint64_t data);
+	void GRFBug(uint32_t grfid, ::GRFBug bug, uint64_t data);
 	bool GRFBugReverse(uint32_t grfid, uint16_t internal_id);
 	void GRFCompatible(const GRFIdentifier &newg);
 	void GRFMove(uint32_t grfid, int32_t offset);

@@ -38,13 +38,14 @@ enum GRFStatus : uint8_t {
 };
 
 /** Encountered GRF bugs */
-enum GRFBugs : uint8_t {
-	GBUG_VEH_LENGTH,        ///< Length of rail vehicle changes when not inside a depot
-	GBUG_VEH_REFIT,         ///< Articulated vehicles carry different cargoes resp. are differently refittable than specified in purchase list
-	GBUG_VEH_POWERED_WAGON, ///< Powered wagon changed poweredness state when not inside a depot
-	GBUG_UNKNOWN_CB_RESULT, ///< A callback returned an unknown/invalid result
-	GBUG_VEH_CAPACITY,      ///< Capacity of vehicle changes when not refitting or arranging
+enum class GRFBug : uint8_t {
+	VehLength       = 0, ///< Length of rail vehicle changes when not inside a depot
+	VehRefit        = 1, ///< Articulated vehicles carry different cargoes resp. are differently refittable than specified in purchase list
+	VehPoweredWagon = 2, ///< Powered wagon changed poweredness state when not inside a depot
+	UnknownCbResult = 3, ///< A callback returned an unknown/invalid result
+	VehCapacity     = 4, ///< Capacity of vehicle changes when not refitting or arranging
 };
+using GRFBugs = EnumBitSet<GRFBug, uint8_t>;
 
 /** Status of post-gameload GRF compatibility check */
 enum GRFListCompatibility : uint8_t {
@@ -173,7 +174,7 @@ struct GRFConfig {
 	uint32_t min_loadable_version = 0; ///< NOSAVE: Minimum compatible version a NewGRF can define
 	uint8_t flags = 0; ///< NOSAVE: GCF_Flags, bitset
 	GRFStatus status = GCS_UNKNOWN; ///< NOSAVE: GRFStatus, enum
-	uint32_t grf_bugs = 0; ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
+	GRFBugs grf_bugs = {}; ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
 	uint8_t num_valid_params = MAX_NUM_PARAMS; ///< NOSAVE: Number of valid parameters (action 0x14)
 	uint8_t palette = 0; ///< GRFPalette, bitset
 	bool has_param_defaults = false; ///< NOSAVE: did this newgrf specify any defaults for it's parameters
