@@ -292,7 +292,7 @@ static bool CargoFilterSingle(const Vehicle *v, const CargoType cargo_type)
 		bool have_capacity = false;
 		for (const Vehicle *w = v; w != nullptr; w = w->Next()) {
 			if (w->cargo_cap > 0) {
-				if (IsCargoInClass(w->cargo_type, CC_PASSENGERS)) {
+				if (IsCargoInClass(w->cargo_type, CargoClass::Passengers)) {
 					return false;
 				} else {
 					have_capacity = true;

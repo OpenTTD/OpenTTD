@@ -1888,7 +1888,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 			if (front->current_order.GetLoadType() == OLF_FULL_LOAD_ANY) {
 				/* if the aircraft carries passengers and is NOT full, then
 				 * continue loading, no matter how much mail is in */
-				if ((front->type == VEH_AIRCRAFT && IsCargoInClass(front->cargo_type, CC_PASSENGERS) && front->cargo_cap > front->cargo.StoredCount()) ||
+				if ((front->type == VEH_AIRCRAFT && IsCargoInClass(front->cargo_type, CargoClass::Passengers) && front->cargo_cap > front->cargo.StoredCount()) ||
 						(cargo_not_full != 0 && (cargo_full & ~cargo_not_full) == 0)) { // There are still non-full cargoes
 					finished_loading = false;
 				}

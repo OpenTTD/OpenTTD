@@ -288,7 +288,7 @@ uint Vehicle::Crash(bool)
 	/* crash all wagons, and count passengers */
 	for (Vehicle *v = this; v != nullptr; v = v->Next()) {
 		/* We do not transfer reserver cargo back, so TotalCount() instead of StoredCount() */
-		if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo.TotalCount();
+		if (IsCargoInClass(v->cargo_type, CargoClass::Passengers)) pass += v->cargo.TotalCount();
 		v->vehstatus |= VS_CRASHED;
 		v->MarkAllViewportsDirty();
 	}
@@ -2030,17 +2030,17 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 			/* Important: Use Tram Flag of front part. Luckily engine_type refers to the front part here. */
 			if (e->info.misc_flags.Test(EngineMiscFlag::RoadIsTram)) {
 				/* Tram */
-				return IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_TRAM : LS_FREIGHT_TRAM;
+				return IsCargoInClass(cargo_type, CargoClass::Passengers) ? LS_PASSENGER_TRAM : LS_FREIGHT_TRAM;
 			} else {
 				/* Bus or truck */
-				return IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_BUS : LS_TRUCK;
+				return IsCargoInClass(cargo_type, CargoClass::Passengers) ? LS_BUS : LS_TRUCK;
 			}
 
 		case VEH_SHIP:
 			if (!IsValidCargoType(cargo_type)) cargo_type = e->GetDefaultCargoType();
 			if (!IsValidCargoType(cargo_type)) cargo_type = GetCargoTypeByLabel(CT_GOODS); // The vehicle does not carry anything, let's pick some freight cargo
 			assert(IsValidCargoType(cargo_type));
-			return IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_SHIP : LS_FREIGHT_SHIP;
+			return IsCargoInClass(cargo_type, CargoClass::Passengers) ? LS_PASSENGER_SHIP : LS_FREIGHT_SHIP;
 
 		case VEH_AIRCRAFT:
 			switch (e->u.air.subtype) {

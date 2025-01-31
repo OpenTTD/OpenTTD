@@ -46,28 +46,25 @@ enum TownProductionEffect : uint8_t {
 };
 
 /** Cargo classes. */
-enum CargoClass : uint16_t {
-	CC_NOAVAILABLE  = 0,       ///< No cargo class has been specified
-	CC_PASSENGERS   = 1 <<  0, ///< Passengers
-	CC_MAIL         = 1 <<  1, ///< Mail
-	CC_EXPRESS      = 1 <<  2, ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
-	CC_ARMOURED     = 1 <<  3, ///< Armoured cargo (Valuables, Gold, Diamonds)
-	CC_BULK         = 1 <<  4, ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
-	CC_PIECE_GOODS  = 1 <<  5, ///< Piece goods (Livestock, Wood, Steel, Paper)
-	CC_LIQUID       = 1 <<  6, ///< Liquids (Oil, Water, Rubber)
-	CC_REFRIGERATED = 1 <<  7, ///< Refrigerated cargo (Food, Fruit)
-	CC_HAZARDOUS    = 1 <<  8, ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
-	CC_COVERED      = 1 <<  9, ///< Covered/Sheltered Freight (Transportation in Box Vans, Silo Wagons, etc.)
-	CC_OVERSIZED    = 1 << 10, ///< Oversized (stake/flatbed wagon)
-	CC_POWDERIZED   = 1 << 11, ///< Powderized, moist protected (powder/silo wagon)
-	CC_NOT_POURABLE = 1 << 12, ///< Not Pourable (open wagon, but not hopper wagon)
-	CC_POTABLE      = 1 << 13, ///< Potable / food / clean.
-	CC_NON_POTABLE  = 1 << 14, ///< Non-potable / non-food / dirty.
-	CC_SPECIAL      = 1 << 15, ///< Special bit used for livery refit tricks instead of normal cargoes.
+enum class CargoClass : uint8_t {
+	Passengers   =  0, ///< Passengers
+	Mail         =  1, ///< Mail
+	Express      =  2, ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
+	Armoured     =  3, ///< Armoured cargo (Valuables, Gold, Diamonds)
+	Bulk         =  4, ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
+	PieceGoods   =  5, ///< Piece goods (Livestock, Wood, Steel, Paper)
+	Liquid       =  6, ///< Liquids (Oil, Water, Rubber)
+	Refrigerated =  7, ///< Refrigerated cargo (Food, Fruit)
+	Hazardous    =  8, ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
+	Covered      =  9, ///< Covered/Sheltered Freight (Transportation in Box Vans, Silo Wagons, etc.)
+	Oversized    = 10, ///< Oversized (stake/flatbed wagon)
+	Powderized   = 11, ///< Powderized, moist protected (powder/silo wagon)
+	NotPourable  = 12, ///< Not Pourable (open wagon, but not hopper wagon)
+	Potable      = 13, ///< Potable / food / clean.
+	NonPotable   = 14, ///< Non-potable / non-food / dirty.
+	Special      = 15, ///< Special bit used for livery refit tricks instead of normal cargoes.
 };
-
-/** Bitmask of cargo classes. */
-using CargoClasses = uint16_t;
+using CargoClasses = EnumBitSet<CargoClass, uint16_t>;
 
 static const uint8_t INVALID_CARGO_BITNUM = 0xFF; ///< Constant representing invalid cargo
 
@@ -237,9 +234,9 @@ extern std::span<const CargoSpec *> _sorted_standard_cargo_specs;
  * @param cc Cargo class.
  * @return The type fits in the class.
  */
-inline bool IsCargoInClass(CargoType c, CargoClass cc)
+inline bool IsCargoInClass(CargoType c, CargoClasses cc)
 {
-	return (CargoSpec::Get(c)->classes & cc) != 0;
+	return CargoSpec::Get(c)->classes.Any(cc);
 }
 
 using SetCargoBitIterator = SetBitIterator<CargoType, CargoTypes>;

@@ -60,7 +60,7 @@
 /* static */ bool ScriptCargo::HasCargoClass(CargoType cargo_type, CargoClass cargo_class)
 {
 	if (!IsValidCargo(cargo_type)) return false;
-	return ::IsCargoInClass(cargo_type, (::CargoClass)cargo_class);
+	return ::IsCargoInClass(cargo_type, ::CargoClasses(to_underlying(cargo_class)));
 }
 
 /* static */ ScriptCargo::TownEffect ScriptCargo::GetTownEffect(CargoType cargo_type)

@@ -553,9 +553,9 @@ struct LinkGraphSettings {
 
 	inline DistributionType GetDistributionType(CargoType cargo) const
 	{
-		if (IsCargoInClass(cargo, CC_PASSENGERS)) return this->distribution_pax;
-		if (IsCargoInClass(cargo, CC_MAIL)) return this->distribution_mail;
-		if (IsCargoInClass(cargo, CC_ARMOURED)) return this->distribution_armoured;
+		if (IsCargoInClass(cargo, CargoClass::Passengers)) return this->distribution_pax;
+		if (IsCargoInClass(cargo, CargoClass::Mail)) return this->distribution_mail;
+		if (IsCargoInClass(cargo, CargoClass::Armoured)) return this->distribution_armoured;
 		return this->distribution_default;
 	}
 };

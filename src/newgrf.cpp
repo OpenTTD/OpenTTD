@@ -1299,13 +1299,13 @@ static ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x28: // Cargo classes allowed
-				_gted[e->index].cargo_allowed = buf.ReadWord();
-				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != 0);
+				_gted[e->index].cargo_allowed = CargoClasses{buf.ReadWord()};
+				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != CargoClasses{});
 				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 
 			case 0x29: // Cargo classes disallowed
-				_gted[e->index].cargo_disallowed = buf.ReadWord();
+				_gted[e->index].cargo_disallowed = CargoClasses{buf.ReadWord()};
 				_gted[e->index].UpdateRefittability(false);
 				break;
 
@@ -1351,7 +1351,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, B
 			}
 
 			case 0x32: // Cargo classes required for a refit.
-				_gted[e->index].cargo_allowed_required = buf.ReadWord();
+				_gted[e->index].cargo_allowed_required = CargoClasses{buf.ReadWord()};
 				break;
 
 			default:
@@ -1496,13 +1496,13 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x1D: // Cargo classes allowed
-				_gted[e->index].cargo_allowed = buf.ReadWord();
-				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != 0);
+				_gted[e->index].cargo_allowed = CargoClasses{buf.ReadWord()};
+				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != CargoClasses{});
 				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 
 			case 0x1E: // Cargo classes disallowed
-				_gted[e->index].cargo_disallowed = buf.ReadWord();
+				_gted[e->index].cargo_disallowed = CargoClasses{buf.ReadWord()};
 				_gted[e->index].UpdateRefittability(false);
 				break;
 
@@ -1562,7 +1562,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 			}
 
 			case 0x29: // Cargo classes required for a refit.
-				_gted[e->index].cargo_allowed_required = buf.ReadWord();
+				_gted[e->index].cargo_allowed_required = CargoClasses{buf.ReadWord()};
 				break;
 
 			default:
@@ -1689,13 +1689,13 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x18: // Cargo classes allowed
-				_gted[e->index].cargo_allowed = buf.ReadWord();
-				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != 0);
+				_gted[e->index].cargo_allowed = CargoClasses{buf.ReadWord()};
+				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != CargoClasses{});
 				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 
 			case 0x19: // Cargo classes disallowed
-				_gted[e->index].cargo_disallowed = buf.ReadWord();
+				_gted[e->index].cargo_disallowed = CargoClasses{buf.ReadWord()};
 				_gted[e->index].UpdateRefittability(false);
 				break;
 
@@ -1759,7 +1759,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x25: // Cargo classes required for a refit.
-				_gted[e->index].cargo_allowed_required = buf.ReadWord();
+				_gted[e->index].cargo_allowed_required = CargoClasses{buf.ReadWord()};
 				break;
 
 			default:
@@ -1878,13 +1878,13 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 				break;
 
 			case 0x18: // Cargo classes allowed
-				_gted[e->index].cargo_allowed = buf.ReadWord();
-				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != 0);
+				_gted[e->index].cargo_allowed = CargoClasses{buf.ReadWord()};
+				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != CargoClasses{});
 				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 
 			case 0x19: // Cargo classes disallowed
-				_gted[e->index].cargo_disallowed = buf.ReadWord();
+				_gted[e->index].cargo_disallowed = CargoClasses{buf.ReadWord()};
 				_gted[e->index].UpdateRefittability(false);
 				break;
 
@@ -1934,7 +1934,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 			}
 
 			case 0x23: // Cargo classes required for a refit.
-				_gted[e->index].cargo_allowed_required = buf.ReadWord();
+				_gted[e->index].cargo_allowed_required = CargoClasses{buf.ReadWord()};
 				break;
 
 			default:
@@ -3167,7 +3167,7 @@ static ChangeInfoResult CargoChangeInfo(uint first, uint last, int prop, ByteRea
 				break;
 
 			case 0x16: // Cargo classes
-				cs->classes = buf.ReadWord();
+				cs->classes = CargoClasses{buf.ReadWord()};
 				break;
 
 			case 0x17: // Cargo label
@@ -9057,47 +9057,47 @@ static void CalculateRefitMasks()
 					CargoClasses cargo_allowed;
 					CargoClasses cargo_disallowed;
 				} _default_refit_masks[] = {
-					{{T, A, S, Y}, CT_PASSENGERS, CC_PASSENGERS,               0},
-					{{T, A, S   }, CT_MAIL,       CC_MAIL,                     0},
-					{{T, A, S   }, CT_VALUABLES,  CC_ARMOURED,                 CC_LIQUID},
-					{{         Y}, CT_MAIL,       CC_MAIL | CC_ARMOURED,       CC_LIQUID},
-					{{T, A      }, CT_COAL,       CC_BULK,                     0},
-					{{      S   }, CT_COPPER_ORE, CC_BULK,                     0},
-					{{         Y}, CT_SUGAR,      CC_BULK,                     0},
-					{{T, A, S   }, CT_OIL,        CC_LIQUID,                   0},
-					{{         Y}, CT_COLA,       CC_LIQUID,                   0},
-					{{T         }, CT_GOODS,      CC_PIECE_GOODS | CC_EXPRESS, CC_LIQUID | CC_PASSENGERS},
-					{{   A, S   }, CT_GOODS,      CC_PIECE_GOODS | CC_EXPRESS, CC_LIQUID | CC_PASSENGERS | CC_REFRIGERATED},
-					{{   A, S   }, CT_FOOD,       CC_REFRIGERATED,             0},
-					{{         Y}, CT_CANDY,      CC_PIECE_GOODS | CC_EXPRESS, CC_LIQUID | CC_PASSENGERS},
+					{{T, A, S, Y}, CT_PASSENGERS, {CargoClass::Passengers},                      {}},
+					{{T, A, S   }, CT_MAIL,       {CargoClass::Mail},                            {}},
+					{{T, A, S   }, CT_VALUABLES,  {CargoClass::Armoured},                        {CargoClass::Liquid}},
+					{{         Y}, CT_MAIL,       {CargoClass::Mail, CargoClass::Armoured},      {CargoClass::Liquid}},
+					{{T, A      }, CT_COAL,       {CargoClass::Bulk},                            {}},
+					{{      S   }, CT_COPPER_ORE, {CargoClass::Bulk},                            {}},
+					{{         Y}, CT_SUGAR,      {CargoClass::Bulk},                            {}},
+					{{T, A, S   }, CT_OIL,        {CargoClass::Liquid},                          {}},
+					{{         Y}, CT_COLA,       {CargoClass::Liquid},                          {}},
+					{{T         }, CT_GOODS,      {CargoClass::PieceGoods, CargoClass::Express}, {CargoClass::Liquid, CargoClass::Passengers}},
+					{{   A, S   }, CT_GOODS,      {CargoClass::PieceGoods, CargoClass::Express}, {CargoClass::Liquid, CargoClass::Passengers, CargoClass::Refrigerated}},
+					{{   A, S   }, CT_FOOD,       {CargoClass::Refrigerated},                    {}},
+					{{         Y}, CT_CANDY,      {CargoClass::PieceGoods, CargoClass::Express}, {CargoClass::Liquid, CargoClass::Passengers}},
 				};
 
 				if (e->type == VEH_AIRCRAFT) {
 					/* Aircraft default to "light" cargoes */
-					_gted[engine].cargo_allowed = CC_PASSENGERS | CC_MAIL | CC_ARMOURED | CC_EXPRESS;
-					_gted[engine].cargo_disallowed = CC_LIQUID;
+					_gted[engine].cargo_allowed = {CargoClass::Passengers, CargoClass::Mail, CargoClass::Armoured, CargoClass::Express};
+					_gted[engine].cargo_disallowed = {CargoClass::Liquid};
 				} else if (e->type == VEH_SHIP) {
 					CargoLabel label = GetActiveCargoLabel(ei->cargo_label);
 					switch (label.base()) {
 						case CT_PASSENGERS.base():
 							/* Ferries */
-							_gted[engine].cargo_allowed = CC_PASSENGERS;
-							_gted[engine].cargo_disallowed = 0;
+							_gted[engine].cargo_allowed = {CargoClass::Passengers};
+							_gted[engine].cargo_disallowed = {};
 							break;
 						case CT_OIL.base():
 							/* Tankers */
-							_gted[engine].cargo_allowed = CC_LIQUID;
-							_gted[engine].cargo_disallowed = 0;
+							_gted[engine].cargo_allowed = {CargoClass::Liquid};
+							_gted[engine].cargo_disallowed = {};
 							break;
 						default:
 							/* Cargo ships */
 							if (_settings_game.game_creation.landscape == LandscapeType::Toyland) {
 								/* No tanker in toyland :( */
-								_gted[engine].cargo_allowed = CC_MAIL | CC_ARMOURED | CC_EXPRESS | CC_BULK | CC_PIECE_GOODS | CC_LIQUID;
-								_gted[engine].cargo_disallowed = CC_PASSENGERS;
+								_gted[engine].cargo_allowed = {CargoClass::Mail, CargoClass::Armoured, CargoClass::Express, CargoClass::Bulk, CargoClass::PieceGoods, CargoClass::Liquid};
+								_gted[engine].cargo_disallowed = {CargoClass::Passengers};
 							} else {
-								_gted[engine].cargo_allowed = CC_MAIL | CC_ARMOURED | CC_EXPRESS | CC_BULK | CC_PIECE_GOODS;
-								_gted[engine].cargo_disallowed = CC_LIQUID | CC_PASSENGERS;
+								_gted[engine].cargo_allowed = {CargoClass::Mail, CargoClass::Armoured, CargoClass::Express, CargoClass::Bulk, CargoClass::PieceGoods};
+								_gted[engine].cargo_disallowed = {CargoClass::Liquid, CargoClass::Passengers};
 							}
 							break;
 					}
@@ -9105,8 +9105,8 @@ static void CalculateRefitMasks()
 				} else if (e->type == VEH_TRAIN && e->u.rail.railveh_type != RAILVEH_WAGON) {
 					/* Train engines default to all cargoes, so you can build single-cargo consists with fast engines.
 					 * Trains loading multiple cargoes may start stations accepting unwanted cargoes. */
-					_gted[engine].cargo_allowed = CC_PASSENGERS | CC_MAIL | CC_ARMOURED | CC_EXPRESS | CC_BULK | CC_PIECE_GOODS | CC_LIQUID;
-					_gted[engine].cargo_disallowed = 0;
+					_gted[engine].cargo_allowed = {CargoClass::Passengers, CargoClass::Mail, CargoClass::Armoured, CargoClass::Express, CargoClass::Bulk, CargoClass::PieceGoods, CargoClass::Liquid};
+					_gted[engine].cargo_disallowed = {};
 				} else {
 					/* Train wagons and road vehicles are classified by their default cargo type */
 					CargoLabel label = GetActiveCargoLabel(ei->cargo_label);
@@ -9123,7 +9123,7 @@ static void CalculateRefitMasks()
 					_gted[engine].ctt_exclude_mask = original_known_cargoes;
 				}
 			}
-			_gted[engine].UpdateRefittability(_gted[engine].cargo_allowed != 0);
+			_gted[engine].UpdateRefittability(_gted[engine].cargo_allowed != CargoClasses{});
 
 			if (IsValidCargoType(ei->cargo_type)) ClrBit(_gted[engine].ctt_exclude_mask, ei->cargo_type);
 		}
@@ -9138,11 +9138,11 @@ static void CalculateRefitMasks()
 			 * Note: After applying the translations, the vehicle may end up carrying no defined cargo. It becomes unavailable in that case. */
 			only_defaultcargo = _gted[engine].refittability != GRFTempEngineData::NONEMPTY;
 
-			if (_gted[engine].cargo_allowed != 0) {
+			if (_gted[engine].cargo_allowed != CargoClasses{}) {
 				/* Build up the list of cargo types from the set cargo classes. */
 				for (const CargoSpec *cs : CargoSpec::Iterate()) {
-					if ((_gted[engine].cargo_allowed & cs->classes) != 0 && (_gted[engine].cargo_allowed_required & cs->classes) == _gted[engine].cargo_allowed_required) SetBit(mask, cs->Index());
-					if (_gted[engine].cargo_disallowed & cs->classes) SetBit(not_mask, cs->Index());
+					if (cs->classes.Any(_gted[engine].cargo_allowed) && cs->classes.All(_gted[engine].cargo_allowed_required)) SetBit(mask, cs->Index());
+					if (cs->classes.Any(_gted[engine].cargo_disallowed)) SetBit(not_mask, cs->Index());
 				}
 			}
 
@@ -9158,7 +9158,7 @@ static void CalculateRefitMasks()
 			if (file != nullptr && e->info.callback_mask.Test(VehicleCallbackMask::CustomRefit)) {
 				for (const CargoSpec *cs : CargoSpec::Iterate()) {
 					uint8_t local_slot = file->cargo_map[cs->Index()];
-					uint16_t callback = GetVehicleCallback(CBID_VEHICLE_CUSTOM_REFIT, cs->classes, local_slot, engine, nullptr);
+					uint16_t callback = GetVehicleCallback(CBID_VEHICLE_CUSTOM_REFIT, cs->classes.base(), local_slot, engine, nullptr);
 					switch (callback) {
 						case CALLBACK_FAILED:
 						case 0:

@@ -182,7 +182,7 @@ static bool CMSAMine(TileIndex tile)
 		/* The industry extracts something non-liquid, i.e. no oil or plastic, so it is a mine.
 		 * Also the production of passengers and mail is ignored. */
 		if (IsValidCargoType(p.cargo) &&
-				(CargoSpec::Get(p.cargo)->classes & (CC_LIQUID | CC_PASSENGERS | CC_MAIL)) == 0) {
+				!CargoSpec::Get(p.cargo)->classes.Any({CargoClass::Liquid, CargoClass::Passengers, CargoClass::Mail})) {
 			return true;
 		}
 	}
@@ -636,7 +636,7 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 		uint amt = acceptance[i];
 
 		/* Make sure the station can accept the goods type. */
-		bool is_passengers = IsCargoInClass(i, CC_PASSENGERS);
+		bool is_passengers = IsCargoInClass(i, CargoClass::Passengers);
 		if ((!is_passengers && !(st->facilities & ~FACIL_BUS_STOP)) ||
 				(is_passengers && !(st->facilities & ~FACIL_TRUCK_STOP))) {
 			amt = 0;
@@ -4381,7 +4381,7 @@ static bool CanMoveGoodsToStation(const Station *st, CargoType type)
 	/* Selectively servicing stations, and not this one. */
 	if (_settings_game.order.selectgoods && !st->goods[type].HasVehicleEverTriedLoading()) return false;
 
-	if (IsCargoInClass(type, CC_PASSENGERS)) {
+	if (IsCargoInClass(type, CargoClass::Passengers)) {
 		/* Passengers are never served by just a truck stop. */
 		if (st->facilities == FACIL_TRUCK_STOP) return false;
 	} else {
