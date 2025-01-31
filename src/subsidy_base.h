@@ -15,7 +15,7 @@
 #include "subsidy_type.h"
 #include "core/pool_type.hpp"
 
-typedef Pool<Subsidy, SubsidyID, 1, 256> SubsidyPool;
+using SubsidyPool = Pool<Subsidy, SubsidyID, 1, SubsidyID::End().base()>;
 extern SubsidyPool _subsidy_pool;
 
 /** Struct about subsidies, offered and awarded */
