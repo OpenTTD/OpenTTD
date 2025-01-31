@@ -506,8 +506,8 @@ void ErrorUnknownCallbackResult(uint32_t grfid, uint16_t cbid, uint16_t cb_res)
 {
 	GRFConfig *grfconfig = GetGRFConfig(grfid);
 
-	if (!HasBit(grfconfig->grf_bugs, GBUG_UNKNOWN_CB_RESULT)) {
-		SetBit(grfconfig->grf_bugs, GBUG_UNKNOWN_CB_RESULT);
+	if (grfconfig->grf_bugs.Test(GRFBug::UnknownCbResult)) {
+		grfconfig->grf_bugs.Set(GRFBug::UnknownCbResult);
 		SetDParamStr(0, grfconfig->GetName());
 		SetDParam(1, cbid);
 		SetDParam(2, cb_res);

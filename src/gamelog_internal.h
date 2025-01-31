@@ -124,13 +124,13 @@ struct LoggedChangeSettingChanged : LoggedChange {
 
 struct LoggedChangeGRFBug : LoggedChange {
 	LoggedChangeGRFBug() : LoggedChange(GLCT_GRFBUG) {}
-	LoggedChangeGRFBug(uint64_t data, uint32_t grfid, uint8_t bug) :
+	LoggedChangeGRFBug(uint64_t data, uint32_t grfid, GRFBug bug) :
 		LoggedChange(GLCT_GRFBUG), data(data), grfid(grfid), bug(bug) {}
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	uint64_t data;  ///< additional data
 	uint32_t grfid; ///< ID of problematic GRF
-	uint8_t bug;       ///< type of bug, @see enum GRFBugs
+	GRFBug bug; ///< type of bug, @see enum GRFBugs
 };
 
 struct LoggedChangeEmergencySave : LoggedChange {
