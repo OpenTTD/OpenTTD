@@ -68,6 +68,7 @@ enum Currencies : uint8_t {
 	CURRENCY_MYR,       ///< Malaysian Ringgit
 	CURRENCY_LVL,       ///< Latvian Lats
 	CURRENCY_PTE,       ///< Portuguese Escudo
+	CURRENCY_UAH,       ///< Ukrainian Hryvnia
 	CURRENCY_END,       ///< always the last item
 };
 
