@@ -214,7 +214,7 @@ std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlag flags, Com
 	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return { CMD_ERROR, INVALID_STORY_PAGE };
 
 	if (flags & DC_EXEC) {
-		if (_story_page_pool.items == 0) {
+		if (StoryPage::GetNumItems() == 0) {
 			/* Initialize the next sort value variable. */
 			_story_page_next_sort_value = 0;
 		}
@@ -262,7 +262,7 @@ std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandF
 
 
 	if (flags & DC_EXEC) {
-		if (_story_page_element_pool.items == 0) {
+		if (StoryPageElement::GetNumItems() == 0) {
 			/* Initialize the next sort value variable. */
 			_story_page_element_next_sort_value = 0;
 		}
