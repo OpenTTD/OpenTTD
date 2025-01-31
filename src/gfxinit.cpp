@@ -144,6 +144,31 @@ void CheckExternalFiles()
 	if (!error_msg.empty()) ShowInfoI(error_msg);
 }
 
+/**
+ * Get GRFConfig for the default extra graphics.
+ * @return Managed pointer to default extra GRFConfig.
+ */
+static std::unique_ptr<GRFConfig> GetDefaultExtraGRFConfig()
+{
+	auto gc = std::make_unique<GRFConfig>("OPENTTD.GRF");
+	gc->palette |= GRFP_GRF_DOS;
+	FillGRFDetails(*gc, false, BASESET_DIR);
+	ClrBit(gc->flags, GCF_INIT_ONLY);
+	return gc;
+}
+
+/**
+ * Get GRFConfig for the baseset extra graphics.
+ * @return Managed pointer to baseset extra GRFConfig.
+ */
+static std::unique_ptr<GRFConfig> GetBasesetExtraGRFConfig()
+{
+	auto gc = std::make_unique<GRFConfig>(BaseGraphics::GetUsedSet()->GetOrCreateExtraConfig());
+	if (gc->param.empty()) gc->SetParameterDefaults();
+	ClrBit(gc->flags, GCF_INIT_ONLY);
+	return gc;
+}
+
 /** Actually load the sprite tables. */
 static void LoadSpriteTables()
 {
@@ -180,39 +205,27 @@ static void LoadSpriteTables()
 	 * However, we do not want it to show up in the list of used NewGRFs,
 	 * so we have to manually add it, and then remove it later.
 	 */
-	GRFConfig *top = _grfconfig;
 
-	/* Default extra graphics */
-	static const char *master_filename = "OPENTTD.GRF";
-	GRFConfig *master = new GRFConfig(master_filename);
-	master->palette |= GRFP_GRF_DOS;
-	FillGRFDetails(*master, false, BASESET_DIR);
-	ClrBit(master->flags, GCF_INIT_ONLY);
+	auto default_extra = GetDefaultExtraGRFConfig();
+	auto baseset_extra = GetBasesetExtraGRFConfig();
+	std::string baseset_filename = baseset_extra->filename;
 
-	/* Baseset extra graphics */
-	GRFConfig *extra = new GRFConfig(used_set->GetOrCreateExtraConfig());
-	if (extra->param.empty()) extra->SetParameterDefaults();
-	ClrBit(extra->flags, GCF_INIT_ONLY);
-
-	extra->next = top;
-	master->next = extra;
-	_grfconfig = master;
+	_grfconfig.insert(std::begin(_grfconfig), std::move(default_extra));
+	_grfconfig.insert(std::next(std::begin(_grfconfig)), std::move(baseset_extra));
 
 	LoadNewGRF(SPR_NEWGRFS_BASE, 2);
 
 	uint total_extra_graphics = SPR_NEWGRFS_BASE - SPR_OPENTTD_BASE;
 	Debug(sprite, 4, "Checking sprites from fallback grf");
-	_missing_extra_graphics = GetSpriteCountForFile(master_filename, SPR_OPENTTD_BASE, SPR_NEWGRFS_BASE);
+	_missing_extra_graphics = GetSpriteCountForFile(baseset_filename, SPR_OPENTTD_BASE, SPR_NEWGRFS_BASE);
 	Debug(sprite, 1, "{} extra sprites, {} from baseset, {} from fallback", total_extra_graphics, total_extra_graphics - _missing_extra_graphics, _missing_extra_graphics);
 
 	/* The original baseset extra graphics intentionally make use of the fallback graphics.
 	 * Let's say everything which provides less than 500 sprites misses the rest intentionally. */
 	if (500 + _missing_extra_graphics > total_extra_graphics) _missing_extra_graphics = 0;
 
-	/* Free and remove the top element. */
-	delete extra;
-	delete master;
-	_grfconfig = top;
+	/* Remove the default and baseset extra graphics from the config. */
+	_grfconfig.erase(std::begin(_grfconfig), std::next(std::begin(_grfconfig), 2));
 }
 
 
@@ -258,7 +271,7 @@ static bool SwitchNewGRFBlitter()
 	 */
 	uint depth_wanted_by_base = BaseGraphics::GetUsedSet()->blitter == BLT_32BPP ? 32 : 8;
 	uint depth_wanted_by_grf = _support8bpp != S8BPP_NONE ? 8 : 32;
-	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND || HasBit(c->flags, GCF_INIT_ONLY)) continue;
 		if (c->palette & GRFP_BLT_32BPP) depth_wanted_by_grf = 32;
 	}

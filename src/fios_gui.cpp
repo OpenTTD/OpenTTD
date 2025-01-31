@@ -590,7 +590,7 @@ public:
 				if (tr.top > tr.bottom) return;
 
 				/* NewGrf compatibility */
-				SetDParam(0, _load_check_data.grfconfig == nullptr ? STR_NEWGRF_LIST_NONE :
+				SetDParam(0, _load_check_data.grfconfig.empty() ? STR_NEWGRF_LIST_NONE :
 						STR_NEWGRF_LIST_ALL_FOUND + _load_check_data.grf_compatibility);
 				DrawString(tr, STR_SAVELOAD_DETAIL_GRFSTATUS);
 				tr.top += GetCharacterHeight(FS_NORMAL);

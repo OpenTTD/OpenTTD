@@ -307,8 +307,10 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	message.reserve(1024);
 	fmt::format_to(std::back_inserter(message), "Graphics set: {} ({})\n", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
 	message += "NewGRFs:\n";
-	for (const GRFConfig *c = _game_mode == GM_MENU ? nullptr : _grfconfig; c != nullptr; c = c->next) {
-		fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", std::byteswap(c->ident.grfid), FormatArrayAsHex(c->ident.md5sum), c->filename);
+	if (_game_mode != GM_MENU) {
+		for (const auto &c : _grfconfig) {
+			fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", std::byteswap(c->ident.grfid), FormatArrayAsHex(c->ident.md5sum), c->filename);
+		}
 	}
 	message += "\nCompanies:\n";
 	for (const Company *c : Company::Iterate()) {

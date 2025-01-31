@@ -411,21 +411,17 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 	Debug(net, 9, "client[{}] status = NEWGRFS_CHECK", this->client_id);
 	this->status = STATUS_NEWGRFS_CHECK;
 
-	if (_grfconfig == nullptr) {
+	if (_grfconfig.empty()) {
 		/* There are no NewGRFs, so they're welcome. */
 		return this->SendWelcome();
 	}
 
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_CHECK_NEWGRFS, TCP_MTU);
-	const GRFConfig *c;
-	uint grf_count = 0;
 
-	for (c = _grfconfig; c != nullptr; c = c->next) {
-		if (!HasBit(c->flags, GCF_STATIC)) grf_count++;
-	}
-
+	uint grf_count = std::ranges::count_if(_grfconfig, [](const auto &c){ return !HasBit(c->flags, GCF_STATIC); });
 	p->Send_uint8 (grf_count);
-	for (c = _grfconfig; c != nullptr; c = c->next) {
+
+	for (const auto &c : _grfconfig) {
 		if (!HasBit(c->flags, GCF_STATIC)) SerializeGRFIdentifier(*p, c->ident);
 	}
 
