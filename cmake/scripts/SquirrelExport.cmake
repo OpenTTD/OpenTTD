@@ -574,6 +574,10 @@ foreach(LINE IN LISTS SOURCE_LINES)
         list(APPEND CONST_VALUES "${CMAKE_MATCH_1}")
         continue()
     endif()
+    if("${LINE}" MATCHES "^[ 	]*static constexpr [^ ]+ ([^ ]+) = -?\\(?[^ ]*\\)?[^ ]+;")
+        list(APPEND CONST_VALUES "${CMAKE_MATCH_1}")
+        continue()
+    endif()
 
     # Add a method to the list
     if("${LINE}" MATCHES "^.*\\(.*\\).*$")

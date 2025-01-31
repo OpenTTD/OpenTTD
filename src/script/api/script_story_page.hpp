@@ -38,21 +38,8 @@
  */
 class ScriptStoryPage : public ScriptObject {
 public:
-	/**
-	 * The story page IDs.
-	 */
-	enum StoryPageID {
-		/* Note: these values represent part of the in-game StoryPageID enum */
-		STORY_PAGE_INVALID = ::INVALID_STORY_PAGE, ///< An invalid story page id.
-	};
-
-	/**
-	 * The story page element IDs.
-	 */
-	enum StoryPageElementID {
-		/* Note: these values represent part of the in-game StoryPageElementID enum */
-		STORY_PAGE_ELEMENT_INVALID = ::INVALID_STORY_PAGE_ELEMENT, ///< An invalid story page element id.
-	};
+	static constexpr StoryPageID STORY_PAGE_INVALID = ::INVALID_STORY_PAGE; ///< An invalid story page id.
+	static constexpr StoryPageElementID STORY_PAGE_ELEMENT_INVALID = ::INVALID_STORY_PAGE_ELEMENT; ///< An invalid story page element id.
 
 	/**
 	 * Story page element types.

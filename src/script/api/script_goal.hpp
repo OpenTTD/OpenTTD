@@ -25,13 +25,7 @@
  */
 class ScriptGoal : public ScriptObject {
 public:
-	/**
-	 * The goal IDs.
-	 */
-	enum GoalID : uint16_t {
-		/* Note: these values represent part of the in-game GoalID enum */
-		GOAL_INVALID = ::INVALID_GOAL, ///< An invalid goal id.
-	};
+	static constexpr GoalID GOAL_INVALID = ::INVALID_GOAL; ///< An invalid goal id.
 
 	/**
 	 * Goal types that can be given to a goal.

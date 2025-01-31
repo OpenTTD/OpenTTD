@@ -107,7 +107,7 @@ ScriptVehicleList_SharedOrders::ScriptVehicleList_SharedOrders(VehicleID vehicle
 ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 {
 	EnforceCompanyModeValid_Void();
-	if (!ScriptGroup::IsValidGroup((ScriptGroup::GroupID)group_id)) return;
+	if (!ScriptGroup::IsValidGroup(group_id)) return;
 
 	CompanyID owner = ScriptObject::GetCompany();
 
