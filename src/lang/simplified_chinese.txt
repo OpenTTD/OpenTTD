@@ -453,10 +453,11 @@ STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明选项
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :显示城镇名称
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :显示车站名称
 STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :火车站
-STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :汽车货场
-STR_SETTINGS_MENU_STATION_NAMES_BUS                             :公共汽车站
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :货车站
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :汽车站
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :码头
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :机场
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :无类型
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :显示路点
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :显示标志
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :显示其他公司放置的标志

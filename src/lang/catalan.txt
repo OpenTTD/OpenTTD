@@ -458,6 +458,7 @@ STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Parades de cami
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Parades d'autobús
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Ports
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Aeroports
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Fantasma
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostra els punts de pas
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostra els senyals
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostra noms i senyals dels competidors

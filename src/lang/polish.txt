@@ -836,6 +836,7 @@ STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Stacje ciężar
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Przystanki autobusowe
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Porty
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Lotniska
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Usunięte stacje
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wyświetlanie nazw posterunków
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Wyświetlanie napisów
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Wyświetlanie napisów i nazw rywali

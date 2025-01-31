@@ -457,6 +457,7 @@ STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :貨運站
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :公車站
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :碼頭
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :機場
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :虛設站
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :顯示號誌站名稱
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :顯示標誌
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :顯示競手對手的標誌和車站名稱
