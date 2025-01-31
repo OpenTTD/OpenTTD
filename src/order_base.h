@@ -20,8 +20,8 @@
 #include "timer/timer_game_tick.h"
 #include "saveload/saveload.h"
 
-typedef Pool<Order, OrderID, 256, 0xFF0000> OrderPool;
-typedef Pool<OrderList, OrderListID, 128, 64000> OrderListPool;
+using OrderPool = Pool<Order, OrderID, 256, OrderID::End().base()>;
+using OrderListPool = Pool<OrderList, OrderListID, 128, OrderListID::End().base()>;
 extern OrderPool _order_pool;
 extern OrderListPool _orderlist_pool;
 

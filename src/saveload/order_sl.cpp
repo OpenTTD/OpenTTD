@@ -164,7 +164,7 @@ struct ORDRChunkHandler : ChunkHandler {
 
 			/* Update all the next pointer */
 			for (Order *o : Order::Iterate()) {
-				size_t order_index = o->index;
+				size_t order_index = o->index.base();
 				/* Delete invalid orders */
 				if (o->IsType(OT_NOTHING)) {
 					delete o;
