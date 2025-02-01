@@ -2205,7 +2205,7 @@ public:
 				break;
 
 			case WID_VL_MANAGE_VEHICLES_DROPDOWN: {
-				ShowDropDownList(this, this->BuildActionDropdownList(VehicleListIdentifier::UnPack(this->window_number).type == VL_STANDARD, false, true), 0, WID_VL_MANAGE_VEHICLES_DROPDOWN);
+				ShowDropDownList(this, this->BuildActionDropdownList(this->vli.type == VL_STANDARD, false, true), 0, WID_VL_MANAGE_VEHICLES_DROPDOWN);
 				break;
 			}
 
