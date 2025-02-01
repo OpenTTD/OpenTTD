@@ -1838,7 +1838,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		if (indspec->callback_mask.Test(IndustryCallbackMask::Production256Ticks)) {
 			IndustryProductionCallback(i, 1);
 			for (auto &p : i->produced) {
-				p.history[LAST_MONTH].production = p.waiting * 8;
+				p.history[LAST_MONTH].production = ScaleByCargoScale(p.waiting * 8, false);
 				p.waiting = 0;
 			}
 		}
