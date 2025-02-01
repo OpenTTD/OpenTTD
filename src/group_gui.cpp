@@ -388,7 +388,7 @@ private:
 	}
 
 public:
-	VehicleGroupWindow(WindowDesc &desc, WindowNumber window_number) : BaseVehicleListWindow(desc, window_number)
+	VehicleGroupWindow(WindowDesc &desc, WindowNumber window_number, const VehicleListIdentifier &vli) : BaseVehicleListWindow(desc, vli)
 	{
 		this->CreateNestedTree();
 
@@ -1190,8 +1190,8 @@ static void ShowCompanyGroupInternal(CompanyID company, VehicleType vehicle_type
 	if (!Company::IsValidID(company)) return;
 
 	assert(vehicle_type < std::size(_vehicle_group_desc));
-	const WindowNumber num = VehicleListIdentifier(VL_GROUP_LIST, vehicle_type, company).Pack();
-	VehicleGroupWindow *w = AllocateWindowDescFront<VehicleGroupWindow, Tneed_existing_window>(_vehicle_group_desc[vehicle_type], num);
+	VehicleListIdentifier vli(VL_GROUP_LIST, vehicle_type, company);
+	VehicleGroupWindow *w = AllocateWindowDescFront<VehicleGroupWindow, Tneed_existing_window>(_vehicle_group_desc[vehicle_type], vli.Pack(), vli);
 	if (w != nullptr) w->SelectGroup(group);
 }
 
