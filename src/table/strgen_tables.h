@@ -9,13 +9,12 @@
 
 #include "../core/enum_type.hpp"
 
-enum CmdFlags : uint8_t {
-	C_NONE      = 0x0, ///< Nothing special about this command
-	C_DONTCOUNT = 0x1, ///< These commands aren't counted for comparison
-	C_CASE      = 0x2, ///< These commands support cases
-	C_GENDER    = 0x4, ///< These commands support genders
+enum class CmdFlag : uint8_t {
+	DontCount, ///< These commands aren't counted for comparison
+	Case, ///< These commands support cases
+	Gender, ///< These commands support genders
 };
-DECLARE_ENUM_AS_BIT_SET(CmdFlags)
+using CmdFlags = EnumBitSet<CmdFlag, uint8_t>;
 
 struct Buffer;
 typedef void (*ParseCmdProc)(Buffer *buffer, char *buf, int value);
@@ -35,127 +34,127 @@ extern void EmitGender(Buffer *buffer, char *buf, int value);
 
 static const CmdStruct _cmd_structs[] = {
 	/* Font size */
-	{"NORMAL_FONT",       EmitSingleChar, SCC_NORMALFONT,         0, -1, C_NONE},
-	{"TINY_FONT",         EmitSingleChar, SCC_TINYFONT,           0, -1, C_NONE},
-	{"BIG_FONT",          EmitSingleChar, SCC_BIGFONT,            0, -1, C_NONE},
-	{"MONO_FONT",         EmitSingleChar, SCC_MONOFONT,           0, -1, C_NONE},
+	{"NORMAL_FONT",       EmitSingleChar, SCC_NORMALFONT,         0, -1, {}},
+	{"TINY_FONT",         EmitSingleChar, SCC_TINYFONT,           0, -1, {}},
+	{"BIG_FONT",          EmitSingleChar, SCC_BIGFONT,            0, -1, {}},
+	{"MONO_FONT",         EmitSingleChar, SCC_MONOFONT,           0, -1, {}},
 
 	/* Colours */
-	{"BLUE",              EmitSingleChar, SCC_BLUE,               0, -1, C_DONTCOUNT},
-	{"SILVER",            EmitSingleChar, SCC_SILVER,             0, -1, C_DONTCOUNT},
-	{"GOLD",              EmitSingleChar, SCC_GOLD,               0, -1, C_DONTCOUNT},
-	{"RED",               EmitSingleChar, SCC_RED,                0, -1, C_DONTCOUNT},
-	{"PURPLE",            EmitSingleChar, SCC_PURPLE,             0, -1, C_DONTCOUNT},
-	{"LTBROWN",           EmitSingleChar, SCC_LTBROWN,            0, -1, C_DONTCOUNT},
-	{"ORANGE",            EmitSingleChar, SCC_ORANGE,             0, -1, C_DONTCOUNT},
-	{"GREEN",             EmitSingleChar, SCC_GREEN,              0, -1, C_DONTCOUNT},
-	{"YELLOW",            EmitSingleChar, SCC_YELLOW,             0, -1, C_DONTCOUNT},
-	{"DKGREEN",           EmitSingleChar, SCC_DKGREEN,            0, -1, C_DONTCOUNT},
-	{"CREAM",             EmitSingleChar, SCC_CREAM,              0, -1, C_DONTCOUNT},
-	{"BROWN",             EmitSingleChar, SCC_BROWN,              0, -1, C_DONTCOUNT},
-	{"WHITE",             EmitSingleChar, SCC_WHITE,              0, -1, C_DONTCOUNT},
-	{"LTBLUE",            EmitSingleChar, SCC_LTBLUE,             0, -1, C_DONTCOUNT},
-	{"GRAY",              EmitSingleChar, SCC_GRAY,               0, -1, C_DONTCOUNT},
-	{"DKBLUE",            EmitSingleChar, SCC_DKBLUE,             0, -1, C_DONTCOUNT},
-	{"BLACK",             EmitSingleChar, SCC_BLACK,              0, -1, C_DONTCOUNT},
-	{"COLOUR",            EmitSingleChar, SCC_COLOUR,             1, -1, C_NONE},
-	{"PUSH_COLOUR",       EmitSingleChar, SCC_PUSH_COLOUR,        0, -1, C_DONTCOUNT},
-	{"POP_COLOUR",        EmitSingleChar, SCC_POP_COLOUR,         0, -1, C_DONTCOUNT},
+	{"BLUE",              EmitSingleChar, SCC_BLUE,               0, -1, {CmdFlag::DontCount}},
+	{"SILVER",            EmitSingleChar, SCC_SILVER,             0, -1, {CmdFlag::DontCount}},
+	{"GOLD",              EmitSingleChar, SCC_GOLD,               0, -1, {CmdFlag::DontCount}},
+	{"RED",               EmitSingleChar, SCC_RED,                0, -1, {CmdFlag::DontCount}},
+	{"PURPLE",            EmitSingleChar, SCC_PURPLE,             0, -1, {CmdFlag::DontCount}},
+	{"LTBROWN",           EmitSingleChar, SCC_LTBROWN,            0, -1, {CmdFlag::DontCount}},
+	{"ORANGE",            EmitSingleChar, SCC_ORANGE,             0, -1, {CmdFlag::DontCount}},
+	{"GREEN",             EmitSingleChar, SCC_GREEN,              0, -1, {CmdFlag::DontCount}},
+	{"YELLOW",            EmitSingleChar, SCC_YELLOW,             0, -1, {CmdFlag::DontCount}},
+	{"DKGREEN",           EmitSingleChar, SCC_DKGREEN,            0, -1, {CmdFlag::DontCount}},
+	{"CREAM",             EmitSingleChar, SCC_CREAM,              0, -1, {CmdFlag::DontCount}},
+	{"BROWN",             EmitSingleChar, SCC_BROWN,              0, -1, {CmdFlag::DontCount}},
+	{"WHITE",             EmitSingleChar, SCC_WHITE,              0, -1, {CmdFlag::DontCount}},
+	{"LTBLUE",            EmitSingleChar, SCC_LTBLUE,             0, -1, {CmdFlag::DontCount}},
+	{"GRAY",              EmitSingleChar, SCC_GRAY,               0, -1, {CmdFlag::DontCount}},
+	{"DKBLUE",            EmitSingleChar, SCC_DKBLUE,             0, -1, {CmdFlag::DontCount}},
+	{"BLACK",             EmitSingleChar, SCC_BLACK,              0, -1, {CmdFlag::DontCount}},
+	{"COLOUR",            EmitSingleChar, SCC_COLOUR,             1, -1, {}},
+	{"PUSH_COLOUR",       EmitSingleChar, SCC_PUSH_COLOUR,        0, -1, {CmdFlag::DontCount}},
+	{"POP_COLOUR",        EmitSingleChar, SCC_POP_COLOUR,         0, -1, {CmdFlag::DontCount}},
 
-	{"REV",               EmitSingleChar, SCC_REVISION,           0, -1, C_NONE}, // openttd revision string
+	{"REV",               EmitSingleChar, SCC_REVISION,           0, -1, {}}, // openttd revision string
 
-	{"STRING1",           EmitSingleChar, SCC_STRING1,            2, -1, C_CASE | C_GENDER}, // included string that consumes the string id and ONE argument
-	{"STRING2",           EmitSingleChar, SCC_STRING2,            3, -1, C_CASE | C_GENDER}, // included string that consumes the string id and TWO arguments
-	{"STRING3",           EmitSingleChar, SCC_STRING3,            4, -1, C_CASE | C_GENDER}, // included string that consumes the string id and THREE arguments
-	{"STRING4",           EmitSingleChar, SCC_STRING4,            5, -1, C_CASE | C_GENDER}, // included string that consumes the string id and FOUR arguments
-	{"STRING5",           EmitSingleChar, SCC_STRING5,            6, -1, C_CASE | C_GENDER}, // included string that consumes the string id and FIVE arguments
-	{"STRING6",           EmitSingleChar, SCC_STRING6,            7, -1, C_CASE | C_GENDER}, // included string that consumes the string id and SIX arguments
-	{"STRING7",           EmitSingleChar, SCC_STRING7,            8, -1, C_CASE | C_GENDER}, // included string that consumes the string id and SEVEN arguments
+	{"STRING1",           EmitSingleChar, SCC_STRING1,            2, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and ONE argument
+	{"STRING2",           EmitSingleChar, SCC_STRING2,            3, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and TWO arguments
+	{"STRING3",           EmitSingleChar, SCC_STRING3,            4, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and THREE arguments
+	{"STRING4",           EmitSingleChar, SCC_STRING4,            5, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and FOUR arguments
+	{"STRING5",           EmitSingleChar, SCC_STRING5,            6, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and FIVE arguments
+	{"STRING6",           EmitSingleChar, SCC_STRING6,            7, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and SIX arguments
+	{"STRING7",           EmitSingleChar, SCC_STRING7,            8, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and SEVEN arguments
 
-	{"STATION_FEATURES",  EmitSingleChar, SCC_STATION_FEATURES,   1, -1, C_NONE}, // station features string, icons of the features
-	{"INDUSTRY",          EmitSingleChar, SCC_INDUSTRY_NAME,      1, -1, C_CASE | C_GENDER}, // industry, takes an industry #, can have cases
-	{"CARGO_LONG",        EmitSingleChar, SCC_CARGO_LONG,         2,  1, C_NONE | C_GENDER},
-	{"CARGO_SHORT",       EmitSingleChar, SCC_CARGO_SHORT,        2,  1, C_NONE | C_GENDER}, // short cargo description, only ### tons, or ### litres
-	{"CARGO_TINY",        EmitSingleChar, SCC_CARGO_TINY,         2,  1, C_NONE}, // tiny cargo description with only the amount, not a specifier for the amount or the actual cargo name
-	{"CARGO_LIST",        EmitSingleChar, SCC_CARGO_LIST,         1, -1, C_CASE},
-	{"POWER",             EmitSingleChar, SCC_POWER,              1,  0, C_NONE},
-	{"POWER_TO_WEIGHT",   EmitSingleChar, SCC_POWER_TO_WEIGHT,    1,  0, C_NONE},
-	{"VOLUME_LONG",       EmitSingleChar, SCC_VOLUME_LONG,        1,  0, C_NONE},
-	{"VOLUME_SHORT",      EmitSingleChar, SCC_VOLUME_SHORT,       1,  0, C_NONE},
-	{"WEIGHT_LONG",       EmitSingleChar, SCC_WEIGHT_LONG,        1,  0, C_NONE},
-	{"WEIGHT_SHORT",      EmitSingleChar, SCC_WEIGHT_SHORT,       1,  0, C_NONE},
-	{"FORCE",             EmitSingleChar, SCC_FORCE,              1,  0, C_NONE},
-	{"VELOCITY",          EmitSingleChar, SCC_VELOCITY,           1,  0, C_NONE},
-	{"HEIGHT",            EmitSingleChar, SCC_HEIGHT,             1,  0, C_NONE},
+	{"STATION_FEATURES",  EmitSingleChar, SCC_STATION_FEATURES,   1, -1, {}}, // station features string, icons of the features
+	{"INDUSTRY",          EmitSingleChar, SCC_INDUSTRY_NAME,      1, -1, {CmdFlag::Case, CmdFlag::Gender}}, // industry, takes an industry #, can have cases
+	{"CARGO_LONG",        EmitSingleChar, SCC_CARGO_LONG,         2,  1, {CmdFlag::Gender}},
+	{"CARGO_SHORT",       EmitSingleChar, SCC_CARGO_SHORT,        2,  1, {CmdFlag::Gender}}, // short cargo description, only ### tons, or ### litres
+	{"CARGO_TINY",        EmitSingleChar, SCC_CARGO_TINY,         2,  1, {}}, // tiny cargo description with only the amount, not a specifier for the amount or the actual cargo name
+	{"CARGO_LIST",        EmitSingleChar, SCC_CARGO_LIST,         1, -1, {CmdFlag::Case}},
+	{"POWER",             EmitSingleChar, SCC_POWER,              1,  0, {}},
+	{"POWER_TO_WEIGHT",   EmitSingleChar, SCC_POWER_TO_WEIGHT,    1,  0, {}},
+	{"VOLUME_LONG",       EmitSingleChar, SCC_VOLUME_LONG,        1,  0, {}},
+	{"VOLUME_SHORT",      EmitSingleChar, SCC_VOLUME_SHORT,       1,  0, {}},
+	{"WEIGHT_LONG",       EmitSingleChar, SCC_WEIGHT_LONG,        1,  0, {}},
+	{"WEIGHT_SHORT",      EmitSingleChar, SCC_WEIGHT_SHORT,       1,  0, {}},
+	{"FORCE",             EmitSingleChar, SCC_FORCE,              1,  0, {}},
+	{"VELOCITY",          EmitSingleChar, SCC_VELOCITY,           1,  0, {}},
+	{"HEIGHT",            EmitSingleChar, SCC_HEIGHT,             1,  0, {}},
 
-	{"UNITS_DAYS_OR_SECONDS",   EmitSingleChar, SCC_UNITS_DAYS_OR_SECONDS,   1,  0, C_GENDER},
-	{"UNITS_MONTHS_OR_MINUTES", EmitSingleChar, SCC_UNITS_MONTHS_OR_MINUTES, 1,  0, C_GENDER},
-	{"UNITS_YEARS_OR_PERIODS",  EmitSingleChar, SCC_UNITS_YEARS_OR_PERIODS,  1,  0, C_GENDER},
-	{"UNITS_YEARS_OR_MINUTES",  EmitSingleChar, SCC_UNITS_YEARS_OR_MINUTES,  1,  0, C_GENDER},
+	{"UNITS_DAYS_OR_SECONDS",   EmitSingleChar, SCC_UNITS_DAYS_OR_SECONDS,   1,  0, {CmdFlag::Gender}},
+	{"UNITS_MONTHS_OR_MINUTES", EmitSingleChar, SCC_UNITS_MONTHS_OR_MINUTES, 1,  0, {CmdFlag::Gender}},
+	{"UNITS_YEARS_OR_PERIODS",  EmitSingleChar, SCC_UNITS_YEARS_OR_PERIODS,  1,  0, {CmdFlag::Gender}},
+	{"UNITS_YEARS_OR_MINUTES",  EmitSingleChar, SCC_UNITS_YEARS_OR_MINUTES,  1,  0, {CmdFlag::Gender}},
 
-	{"P",                 EmitPlural,     0,                      0, -1, C_DONTCOUNT}, // plural specifier
-	{"G",                 EmitGender,     0,                      0, -1, C_DONTCOUNT}, // gender specifier
+	{"P",                 EmitPlural,     0,                      0, -1, {CmdFlag::DontCount}}, // plural specifier
+	{"G",                 EmitGender,     0,                      0, -1, {CmdFlag::DontCount}}, // gender specifier
 
-	{"DATE_TINY",         EmitSingleChar, SCC_DATE_TINY,          1, -1, C_NONE},
-	{"DATE_SHORT",        EmitSingleChar, SCC_DATE_SHORT,         1, -1, C_CASE},
-	{"DATE_LONG",         EmitSingleChar, SCC_DATE_LONG,          1, -1, C_CASE},
-	{"DATE_ISO",          EmitSingleChar, SCC_DATE_ISO,           1, -1, C_NONE},
+	{"DATE_TINY",         EmitSingleChar, SCC_DATE_TINY,          1, -1, {}},
+	{"DATE_SHORT",        EmitSingleChar, SCC_DATE_SHORT,         1, -1, {CmdFlag::Case}},
+	{"DATE_LONG",         EmitSingleChar, SCC_DATE_LONG,          1, -1, {CmdFlag::Case}},
+	{"DATE_ISO",          EmitSingleChar, SCC_DATE_ISO,           1, -1, {}},
 
-	{"STRING",            EmitSingleChar, SCC_STRING,             1, -1, C_CASE | C_GENDER},
-	{"RAW_STRING",        EmitSingleChar, SCC_RAW_STRING_POINTER, 1, -1, C_NONE | C_GENDER},
+	{"STRING",            EmitSingleChar, SCC_STRING,             1, -1, {CmdFlag::Case, CmdFlag::Gender}},
+	{"RAW_STRING",        EmitSingleChar, SCC_RAW_STRING_POINTER, 1, -1, {CmdFlag::Gender}},
 
 	/* Numbers */
-	{"COMMA",             EmitSingleChar, SCC_COMMA,              1,  0, C_NONE}, // Number with comma
-	{"DECIMAL",           EmitSingleChar, SCC_DECIMAL,            2,  0, C_NONE}, // Number with comma and fractional part. Second parameter is number of fractional digits, first parameter is number times 10**(second parameter).
-	{"NUM",               EmitSingleChar, SCC_NUM,                1,  0, C_NONE}, // Signed number
-	{"ZEROFILL_NUM",      EmitSingleChar, SCC_ZEROFILL_NUM,       2,  0, C_NONE}, // Unsigned number with zero fill, e.g. "02". First parameter is number, second minimum length
-	{"BYTES",             EmitSingleChar, SCC_BYTES,              1,  0, C_NONE}, // Unsigned number with "bytes", i.e. "1.02 MiB or 123 KiB"
-	{"HEX",               EmitSingleChar, SCC_HEX,                1,  0, C_NONE}, // Hexadecimally printed number
+	{"COMMA",             EmitSingleChar, SCC_COMMA,              1,  0, {}}, // Number with comma
+	{"DECIMAL",           EmitSingleChar, SCC_DECIMAL,            2,  0, {}}, // Number with comma and fractional part. Second parameter is number of fractional digits, first parameter is number times 10**(second parameter).
+	{"NUM",               EmitSingleChar, SCC_NUM,                1,  0, {}}, // Signed number
+	{"ZEROFILL_NUM",      EmitSingleChar, SCC_ZEROFILL_NUM,       2,  0, {}}, // Unsigned number with zero fill, e.g. "02". First parameter is number, second minimum length
+	{"BYTES",             EmitSingleChar, SCC_BYTES,              1,  0, {}}, // Unsigned number with "bytes", i.e. "1.02 MiB or 123 KiB"
+	{"HEX",               EmitSingleChar, SCC_HEX,                1,  0, {}}, // Hexadecimally printed number
 
-	{"CURRENCY_LONG",     EmitSingleChar, SCC_CURRENCY_LONG,      1,  0, C_NONE},
-	{"CURRENCY_SHORT",    EmitSingleChar, SCC_CURRENCY_SHORT,     1,  0, C_NONE}, // compact currency
+	{"CURRENCY_LONG",     EmitSingleChar, SCC_CURRENCY_LONG,      1,  0, {}},
+	{"CURRENCY_SHORT",    EmitSingleChar, SCC_CURRENCY_SHORT,     1,  0, {}}, // compact currency
 
-	{"WAYPOINT",          EmitSingleChar, SCC_WAYPOINT_NAME,      1, -1, C_NONE | C_GENDER}, // waypoint name
-	{"STATION",           EmitSingleChar, SCC_STATION_NAME,       1, -1, C_NONE | C_GENDER},
-	{"DEPOT",             EmitSingleChar, SCC_DEPOT_NAME,         2, -1, C_NONE | C_GENDER},
-	{"TOWN",              EmitSingleChar, SCC_TOWN_NAME,          1, -1, C_NONE | C_GENDER},
-	{"GROUP",             EmitSingleChar, SCC_GROUP_NAME,         1, -1, C_NONE | C_GENDER},
-	{"SIGN",              EmitSingleChar, SCC_SIGN_NAME,          1, -1, C_NONE | C_GENDER},
-	{"ENGINE",            EmitSingleChar, SCC_ENGINE_NAME,        1, -1, C_NONE | C_GENDER},
-	{"VEHICLE",           EmitSingleChar, SCC_VEHICLE_NAME,       1, -1, C_NONE | C_GENDER},
-	{"COMPANY",           EmitSingleChar, SCC_COMPANY_NAME,       1, -1, C_NONE | C_GENDER},
-	{"COMPANY_NUM",       EmitSingleChar, SCC_COMPANY_NUM,        1, -1, C_NONE},
-	{"PRESIDENT_NAME",    EmitSingleChar, SCC_PRESIDENT_NAME,     1, -1, C_NONE | C_GENDER},
+	{"WAYPOINT",          EmitSingleChar, SCC_WAYPOINT_NAME,      1, -1, {CmdFlag::Gender}}, // waypoint name
+	{"STATION",           EmitSingleChar, SCC_STATION_NAME,       1, -1, {CmdFlag::Gender}},
+	{"DEPOT",             EmitSingleChar, SCC_DEPOT_NAME,         2, -1, {CmdFlag::Gender}},
+	{"TOWN",              EmitSingleChar, SCC_TOWN_NAME,          1, -1, {CmdFlag::Gender}},
+	{"GROUP",             EmitSingleChar, SCC_GROUP_NAME,         1, -1, {CmdFlag::Gender}},
+	{"SIGN",              EmitSingleChar, SCC_SIGN_NAME,          1, -1, {CmdFlag::Gender}},
+	{"ENGINE",            EmitSingleChar, SCC_ENGINE_NAME,        1, -1, {CmdFlag::Gender}},
+	{"VEHICLE",           EmitSingleChar, SCC_VEHICLE_NAME,       1, -1, {CmdFlag::Gender}},
+	{"COMPANY",           EmitSingleChar, SCC_COMPANY_NAME,       1, -1, {CmdFlag::Gender}},
+	{"COMPANY_NUM",       EmitSingleChar, SCC_COMPANY_NUM,        1, -1, {}},
+	{"PRESIDENT_NAME",    EmitSingleChar, SCC_PRESIDENT_NAME,     1, -1, {CmdFlag::Gender}},
 
-	{"SPACE",             EmitSingleChar, ' ',                    0, -1, C_DONTCOUNT},
-	{"",                  EmitSingleChar, '\n',                   0, -1, C_DONTCOUNT},
-	{"{",                 EmitSingleChar, '{',                    0, -1, C_DONTCOUNT},
-	{"UP_ARROW",          EmitSingleChar, SCC_UP_ARROW,           0, -1, C_DONTCOUNT},
-	{"SMALL_UP_ARROW",    EmitSingleChar, SCC_SMALL_UP_ARROW,     0, -1, C_DONTCOUNT},
-	{"SMALL_DOWN_ARROW",  EmitSingleChar, SCC_SMALL_DOWN_ARROW,   0, -1, C_DONTCOUNT},
-	{"TRAIN",             EmitSingleChar, SCC_TRAIN,              0, -1, C_DONTCOUNT},
-	{"LORRY",             EmitSingleChar, SCC_LORRY,              0, -1, C_DONTCOUNT},
-	{"BUS",               EmitSingleChar, SCC_BUS,                0, -1, C_DONTCOUNT},
-	{"PLANE",             EmitSingleChar, SCC_PLANE,              0, -1, C_DONTCOUNT},
-	{"SHIP",              EmitSingleChar, SCC_SHIP,               0, -1, C_DONTCOUNT},
-	{"NBSP",              EmitSingleChar, 0xA0,                   0, -1, C_DONTCOUNT},
-	{"COPYRIGHT",         EmitSingleChar, 0xA9,                   0, -1, C_DONTCOUNT},
-	{"DOWN_ARROW",        EmitSingleChar, SCC_DOWN_ARROW,         0, -1, C_DONTCOUNT},
-	{"CHECKMARK",         EmitSingleChar, SCC_CHECKMARK,          0, -1, C_DONTCOUNT},
-	{"CROSS",             EmitSingleChar, SCC_CROSS,              0, -1, C_DONTCOUNT},
-	{"RIGHT_ARROW",       EmitSingleChar, SCC_RIGHT_ARROW,        0, -1, C_DONTCOUNT},
-	{"SMALL_LEFT_ARROW",  EmitSingleChar, SCC_LESS_THAN,          0, -1, C_DONTCOUNT},
-	{"SMALL_RIGHT_ARROW", EmitSingleChar, SCC_GREATER_THAN,       0, -1, C_DONTCOUNT},
+	{"SPACE",             EmitSingleChar, ' ',                    0, -1, {CmdFlag::DontCount}},
+	{"",                  EmitSingleChar, '\n',                   0, -1, {CmdFlag::DontCount}},
+	{"{",                 EmitSingleChar, '{',                    0, -1, {CmdFlag::DontCount}},
+	{"UP_ARROW",          EmitSingleChar, SCC_UP_ARROW,           0, -1, {CmdFlag::DontCount}},
+	{"SMALL_UP_ARROW",    EmitSingleChar, SCC_SMALL_UP_ARROW,     0, -1, {CmdFlag::DontCount}},
+	{"SMALL_DOWN_ARROW",  EmitSingleChar, SCC_SMALL_DOWN_ARROW,   0, -1, {CmdFlag::DontCount}},
+	{"TRAIN",             EmitSingleChar, SCC_TRAIN,              0, -1, {CmdFlag::DontCount}},
+	{"LORRY",             EmitSingleChar, SCC_LORRY,              0, -1, {CmdFlag::DontCount}},
+	{"BUS",               EmitSingleChar, SCC_BUS,                0, -1, {CmdFlag::DontCount}},
+	{"PLANE",             EmitSingleChar, SCC_PLANE,              0, -1, {CmdFlag::DontCount}},
+	{"SHIP",              EmitSingleChar, SCC_SHIP,               0, -1, {CmdFlag::DontCount}},
+	{"NBSP",              EmitSingleChar, 0xA0,                   0, -1, {CmdFlag::DontCount}},
+	{"COPYRIGHT",         EmitSingleChar, 0xA9,                   0, -1, {CmdFlag::DontCount}},
+	{"DOWN_ARROW",        EmitSingleChar, SCC_DOWN_ARROW,         0, -1, {CmdFlag::DontCount}},
+	{"CHECKMARK",         EmitSingleChar, SCC_CHECKMARK,          0, -1, {CmdFlag::DontCount}},
+	{"CROSS",             EmitSingleChar, SCC_CROSS,              0, -1, {CmdFlag::DontCount}},
+	{"RIGHT_ARROW",       EmitSingleChar, SCC_RIGHT_ARROW,        0, -1, {CmdFlag::DontCount}},
+	{"SMALL_LEFT_ARROW",  EmitSingleChar, SCC_LESS_THAN,          0, -1, {CmdFlag::DontCount}},
+	{"SMALL_RIGHT_ARROW", EmitSingleChar, SCC_GREATER_THAN,       0, -1, {CmdFlag::DontCount}},
 
 	/* The following are directional formatting codes used to get the RTL strings right:
 	 * http://www.unicode.org/unicode/reports/tr9/#Directional_Formatting_Codes */
-	{"LRM",               EmitSingleChar, CHAR_TD_LRM,            0, -1, C_DONTCOUNT},
-	{"RLM",               EmitSingleChar, CHAR_TD_RLM,            0, -1, C_DONTCOUNT},
-	{"LRE",               EmitSingleChar, CHAR_TD_LRE,            0, -1, C_DONTCOUNT},
-	{"RLE",               EmitSingleChar, CHAR_TD_RLE,            0, -1, C_DONTCOUNT},
-	{"LRO",               EmitSingleChar, CHAR_TD_LRO,            0, -1, C_DONTCOUNT},
-	{"RLO",               EmitSingleChar, CHAR_TD_RLO,            0, -1, C_DONTCOUNT},
-	{"PDF",               EmitSingleChar, CHAR_TD_PDF,            0, -1, C_DONTCOUNT},
+	{"LRM",               EmitSingleChar, CHAR_TD_LRM,            0, -1, {CmdFlag::DontCount}},
+	{"RLM",               EmitSingleChar, CHAR_TD_RLM,            0, -1, {CmdFlag::DontCount}},
+	{"LRE",               EmitSingleChar, CHAR_TD_LRE,            0, -1, {CmdFlag::DontCount}},
+	{"RLE",               EmitSingleChar, CHAR_TD_RLE,            0, -1, {CmdFlag::DontCount}},
+	{"LRO",               EmitSingleChar, CHAR_TD_LRO,            0, -1, {CmdFlag::DontCount}},
+	{"RLO",               EmitSingleChar, CHAR_TD_RLO,            0, -1, {CmdFlag::DontCount}},
+	{"PDF",               EmitSingleChar, CHAR_TD_PDF,            0, -1, {CmdFlag::DontCount}},
 };
 
 /** Description of a plural form */

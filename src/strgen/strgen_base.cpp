@@ -145,7 +145,7 @@ uint StringData::Version() const
 
 			s = ls->english.c_str();
 			while ((cs = ParseCommandString(&s, buf, &argno, &casei)) != nullptr) {
-				if (cs->flags & C_DONTCOUNT) continue;
+				if (cs->flags.Test(CmdFlag::DontCount)) continue;
 
 				hash ^= (cs - _cmd_structs) * 0x1234567;
 				hash = (hash & 1 ? hash >> 1 ^ 0xF00BAA4 : hash >> 1);
@@ -407,7 +407,7 @@ void EmitGender(Buffer *buffer, char *buf, int)
 		ParseRelNum(&buf, &argidx, &offset);
 
 		const CmdStruct *cmd = _cur_pcs.consuming_commands[argidx];
-		if (cmd == nullptr || (cmd->flags & C_GENDER) == 0) {
+		if (cmd == nullptr || !cmd->flags.Test(CmdFlag::Gender)) {
 			StrgenFatal("Command '{}' can't have a gender", cmd == nullptr ? "<empty>" : cmd->cmd);
 		}
 
@@ -486,7 +486,7 @@ static const CmdStruct *ParseCommandString(const char **str, std::string &param,
 	if (c == '.') {
 		const char *casep = s;
 
-		if (!(cmd->flags & C_CASE)) {
+		if (!cmd->flags.Test(CmdFlag::Case)) {
 			StrgenFatal("Command '{}' can't have a case", cmd->cmd);
 		}
 
@@ -558,7 +558,7 @@ ParsedCommandStruct ExtractCommandString(const char *s, bool)
 			if (p.consuming_commands[argidx] != nullptr && p.consuming_commands[argidx] != ar) StrgenFatal("duplicate param idx {}", argidx);
 
 			p.consuming_commands[argidx++] = ar;
-		} else if (!(ar->flags & C_DONTCOUNT)) { // Ignore some of them
+		} else if (!ar->flags.Test(CmdFlag::DontCount)) { // Ignore some of them
 			p.non_consuming_commands.emplace_back(CmdPair{ar, std::move(param)});
 		}
 	}

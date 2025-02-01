@@ -339,7 +339,7 @@ int CDECL main(int argc, char *argv[])
 						flags = 'g'; // Command needs number of parameters defined by number of genders
 					} else if (cs.proc == EmitPlural) {
 						flags = 'p'; // Command needs number of parameters defined by plural value
-					} else if (cs.flags & C_DONTCOUNT) {
+					} else if (cs.flags.Test(CmdFlag::DontCount)) {
 						flags = 'i'; // Command may be in the translation when it is not in base
 					} else {
 						flags = '0'; // Command needs no parameters
