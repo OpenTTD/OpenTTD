@@ -52,8 +52,8 @@ enum ClientID : uint32_t {
 	CLIENT_ID_FIRST   = 2, ///< The first client ID
 };
 
-/** Indices into the client tables */
-typedef uint8_t ClientIndex;
+/** Indices into the client related pools */
+typedef uint8_t ClientPoolID;
 
 /** Indices into the admin tables. */
 typedef uint8_t AdminID;

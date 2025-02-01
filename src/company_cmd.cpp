@@ -872,7 +872,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 			/* This command is only executed in a multiplayer game */
 			if (!_networking) return CMD_ERROR;
 
-			/* Has the network client a correct ClientIndex? */
+			/* Has the network client a correct ClientID? */
 			if (!(flags & DC_EXEC)) return CommandCost();
 
 			NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
