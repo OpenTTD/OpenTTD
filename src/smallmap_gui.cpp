@@ -329,7 +329,7 @@ void BuildLandLegend()
 		_legend_land_contours[i].col_break = j % rows == 0;
 		_legend_land_contours[i].end = false;
 		_legend_land_contours[i].height = j * delta;
-		_legend_land_contours[i].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[j * delta];
+		_legend_land_contours[i].colour = static_cast<uint8_t>(_heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[_legend_land_contours[i].height]);
 		j++;
 	}
 	_legend_land_contours[i].end = true;
@@ -340,7 +340,7 @@ void BuildLandLegend()
  */
 void BuildOwnerLegend()
 {
-	_legend_land_owners[1].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].default_colour;
+	_legend_land_owners[1].colour = static_cast<uint8_t>(_heightmap_schemes[_settings_client.gui.smallmap_land_colour].default_colour);
 
 	int i = NUM_NO_COMPANY_ENTRIES;
 	for (const Company *c : Company::Iterate()) {
