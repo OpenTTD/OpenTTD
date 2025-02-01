@@ -167,16 +167,7 @@ struct IntSettingDesc : SettingDesc {
 	 */
 	typedef void PostChangeCallback(int32_t value);
 
-	template <
-		typename Tdef,
-		typename Tmin,
-		typename Tmax,
-		typename Tinterval,
-		std::enable_if_t<std::disjunction_v<std::is_convertible<Tdef, int32_t>, std::is_base_of<StrongTypedefBase, Tdef>>, int> = 0,
-		std::enable_if_t<std::disjunction_v<std::is_convertible<Tmin, int32_t>, std::is_base_of<StrongTypedefBase, Tmin>>, int> = 0,
-		std::enable_if_t<std::disjunction_v<std::is_convertible<Tmax, uint32_t>, std::is_base_of<StrongTypedefBase, Tmax>>, int> = 0,
-		std::enable_if_t<std::disjunction_v<std::is_convertible<Tinterval, int32_t>, std::is_base_of<StrongTypedefBase, Tinterval>>, int> = 0
-	>
+	template <ConvertibleThroughBaseOrTo<int32_t> Tdef, ConvertibleThroughBaseOrTo<int32_t> Tmin, ConvertibleThroughBaseOrTo<uint32_t> Tmax, ConvertibleThroughBaseOrTo<int32_t> Tinterval>
 	IntSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def,
 			Tmin min, Tmax max, Tinterval interval, StringID str, StringID str_help, StringID str_val,
 			SettingCategory cat, PreChangeCheck pre_check, PostChangeCallback post_callback,
@@ -187,25 +178,25 @@ struct IntSettingDesc : SettingDesc {
 			post_callback(post_callback),
 			get_title_cb(get_title_cb), get_help_cb(get_help_cb), set_value_dparams_cb(set_value_dparams_cb),
 			get_def_cb(get_def_cb), get_range_cb(get_range_cb) {
-		if constexpr (std::is_base_of_v<StrongTypedefBase, Tdef>) {
+		if constexpr (ConvertibleThroughBase<Tdef>) {
 			this->def = def.base();
 		} else {
 			this->def = def;
 		}
 
-		if constexpr (std::is_base_of_v<StrongTypedefBase, Tmin>) {
+		if constexpr (ConvertibleThroughBase<Tmin>) {
 			this->min = min.base();
 		} else {
 			this->min = min;
 		}
 
-		if constexpr (std::is_base_of_v<StrongTypedefBase, Tmax>) {
+		if constexpr (ConvertibleThroughBase<Tmax>) {
 			this->max = max.base();
 		} else {
 			this->max = max;
 		}
 
-		if constexpr (std::is_base_of_v<StrongTypedefBase, Tinterval>) {
+		if constexpr (ConvertibleThroughBase<Tinterval>) {
 			this->interval = interval.base();
 		} else {
 			this->interval = interval;

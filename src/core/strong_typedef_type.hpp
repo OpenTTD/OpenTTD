@@ -12,9 +12,6 @@
 
 #include "../3rdparty/fmt/format.h"
 
-/** Non-templated base for #StrongType::Typedef for use with type trait queries. */
-struct StrongTypedefBase {};
-
 namespace StrongType {
 	/**
 	 * Mix-in which makes the new Typedef comparable with itself and its base type.
@@ -147,7 +144,7 @@ namespace StrongType {
 	 * @tparam TProperties A list of mixins to add to the class.
 	 */
 	template <typename TBaseType, typename TTag, typename... TProperties>
-	struct EMPTY_BASES Typedef : public StrongTypedefBase, public TProperties::template mixin<Typedef<TBaseType, TTag, TProperties...>, TBaseType>... {
+	struct EMPTY_BASES Typedef : public TProperties::template mixin<Typedef<TBaseType, TTag, TProperties...>, TBaseType>... {
 		using BaseType = TBaseType;
 
 		constexpr Typedef() = default;

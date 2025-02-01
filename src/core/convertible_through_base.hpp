@@ -21,4 +21,12 @@ concept ConvertibleThroughBase = requires(T const a) {
 	{ a.base() } noexcept -> std::convertible_to<int64_t>;
 };
 
+/**
+ * Type is convertible to TTo, either directly or through ConvertibleThroughBase.
+ * @tparam T The type under consideration.
+ * @tparam TTo The type to convert to.
+ */
+template <typename T, typename TTo>
+concept ConvertibleThroughBaseOrTo = std::is_convertible_v<T, TTo> || ConvertibleThroughBase<T>;
+
 #endif /* CONVERTIBLE_THROUGH_BASE_HPP */
