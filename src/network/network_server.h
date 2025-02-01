@@ -17,7 +17,7 @@ class ServerNetworkGameSocketHandler;
 /** Make the code look slightly nicer/simpler. */
 typedef ServerNetworkGameSocketHandler NetworkClientSocket;
 /** Pool with all client sockets. */
-using NetworkClientSocketPool = Pool<NetworkClientSocket, ClientPoolID, 8, MAX_CLIENT_SLOTS, PoolType::NetworkClient>;
+using NetworkClientSocketPool = Pool<NetworkClientSocket, ClientPoolID, 8, ClientPoolID::End().base(), PoolType::NetworkClient>;
 extern NetworkClientSocketPool _networkclientsocket_pool;
 
 /** Class for handling the server side of the game connection. */
