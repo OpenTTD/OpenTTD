@@ -134,11 +134,11 @@ static const DrawTileSprites _object_hq[] = {
 #define Y LandscapeType::Toyland
 /** Specification of the original object structures. */
 extern const ObjectSpec _original_objects[] = {
-	M(STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER,          0x11,   0,   0, 10, LandscapeTypes({T,A,S  }), 15, OBJECT_FLAG_CANNOT_REMOVE | OBJECT_FLAG_ONLY_IN_SCENEDIT),
-	M(STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE,           0x11,   0,   0,  8, LandscapeTypes({T,A    }),  8, OBJECT_FLAG_CANNOT_REMOVE | OBJECT_FLAG_ONLY_IN_SCENEDIT | OBJECT_FLAG_SCALE_BY_WATER),
-	M(STR_TOWN_BUILDING_NAME_STATUE_1,                 0x11,   0,   0,  5, LandscapeTypes({T,S,A,Y}),  0, OBJECT_FLAG_CANNOT_REMOVE | OBJECT_FLAG_ONLY_IN_GAME | OBJECT_FLAG_ONLY_IN_SCENEDIT), // Yes, we disallow building this everywhere. Happens in "special" case!
-	M(STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND,   0x11,  10,  10,  0, LandscapeTypes({T,S,A,Y}),  0, OBJECT_FLAG_AUTOREMOVE | OBJECT_FLAG_ONLY_IN_GAME | OBJECT_FLAG_CLEAR_INCOME | OBJECT_FLAG_HAS_NO_FOUNDATION ), // Only non-silly use case is to use it when you cannot build a station, so disallow bridges
-	M(STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS, 0x22,   0,   0,  7, LandscapeTypes({T,S,A,Y}),  0, OBJECT_FLAG_CANNOT_REMOVE | OBJECT_FLAG_ONLY_IN_GAME),
+	M(STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER,          0x11,   0,   0, 10, LandscapeTypes({T,A,S  }), 15, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInScenedit})),
+	M(STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE,           0x11,   0,   0,  8, LandscapeTypes({T,A    }),  8, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInScenedit, ObjectFlag::ScaleByWater})),
+	M(STR_TOWN_BUILDING_NAME_STATUE_1,                 0x11,   0,   0,  5, LandscapeTypes({T,S,A,Y}),  0, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInGame, ObjectFlag::OnlyInScenedit})), // Yes, we disallow building this everywhere. Happens in "special" case!
+	M(STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND,   0x11,  10,  10,  0, LandscapeTypes({T,S,A,Y}),  0, ObjectFlags({ObjectFlag::Autoremove, ObjectFlag::OnlyInGame, ObjectFlag::ClearIncome, ObjectFlag::HasNoFoundation})), // Only non-silly use case is to use it when you cannot build a station, so disallow bridges
+	M(STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS, 0x22,   0,   0,  7, LandscapeTypes({T,S,A,Y}),  0, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInGame})),
 };
 
 #undef M

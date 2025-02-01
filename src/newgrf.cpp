@@ -4241,7 +4241,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 
 			case 0x10: // Flags
 				spec->flags = (ObjectFlags)buf.ReadWord();
-				_loaded_newgrf_features.has_2CC |= (spec->flags & OBJECT_FLAG_2CC_COLOUR) != 0;
+				_loaded_newgrf_features.has_2CC |= spec->flags.Test(ObjectFlag::Uses2CC);
 				break;
 
 			case 0x11: // Animation info

@@ -21,24 +21,23 @@
 #include "newgrf_commons.h"
 
 /** Various object behaviours. */
-enum ObjectFlags : uint16_t {
-	OBJECT_FLAG_NONE               =       0, ///< Just nothing.
-	OBJECT_FLAG_ONLY_IN_SCENEDIT   = 1 <<  0, ///< Object can only be constructed in the scenario editor.
-	OBJECT_FLAG_CANNOT_REMOVE      = 1 <<  1, ///< Object can not be removed.
-	OBJECT_FLAG_AUTOREMOVE         = 1 <<  2, ///< Object get automatically removed (like "owned land").
-	OBJECT_FLAG_BUILT_ON_WATER     = 1 <<  3, ///< Object can be built on water (not required).
-	OBJECT_FLAG_CLEAR_INCOME       = 1 <<  4, ///< When object is cleared a positive income is generated instead of a cost.
-	OBJECT_FLAG_HAS_NO_FOUNDATION  = 1 <<  5, ///< Do not display foundations when on a slope.
-	OBJECT_FLAG_ANIMATION          = 1 <<  6, ///< Object has animated tiles.
-	OBJECT_FLAG_ONLY_IN_GAME       = 1 <<  7, ///< Object can only be built in game.
-	OBJECT_FLAG_2CC_COLOUR         = 1 <<  8, ///< Object wants 2CC colour mapping.
-	OBJECT_FLAG_NOT_ON_LAND        = 1 <<  9, ///< Object can not be on land, implicitly sets #OBJECT_FLAG_BUILT_ON_WATER.
-	OBJECT_FLAG_DRAW_WATER         = 1 << 10, ///< Object wants to be drawn on water.
-	OBJECT_FLAG_ALLOW_UNDER_BRIDGE = 1 << 11, ///< Object can built under a bridge.
-	OBJECT_FLAG_ANIM_RANDOM_BITS   = 1 << 12, ///< Object wants random bits in "next animation frame" callback.
-	OBJECT_FLAG_SCALE_BY_WATER     = 1 << 13, ///< Object count is roughly scaled by water amount at edges.
+enum class ObjectFlag : uint8_t {
+	OnlyInScenedit   =  0, ///< Object can only be constructed in the scenario editor.
+	CannotRemove     =  1, ///< Object can not be removed.
+	Autoremove       =  2, ///< Object get automatically removed (like "owned land").
+	BuiltOnWater     =  3, ///< Object can be built on water (not required).
+	ClearIncome      =  4, ///< When object is cleared a positive income is generated instead of a cost.
+	HasNoFoundation  =  5, ///< Do not display foundations when on a slope.
+	Animation        =  6, ///< Object has animated tiles.
+	OnlyInGame       =  7, ///< Object can only be built in game.
+	Uses2CC          =  8, ///< Object wants 2CC colour mapping.
+	NotOnLand        =  9, ///< Object can not be on land, implicitly sets #ObjectFlag::BuiltOnWater.
+	DrawWater        = 10, ///< Object wants to be drawn on water.
+	AllowUnderBridge = 11, ///< Object can built under a bridge.
+	AnimRandomBits   = 12, ///< Object wants random bits in "next animation frame" callback.
+	ScaleByWater     = 13, ///< Object count is roughly scaled by water amount at edges.
 };
-DECLARE_ENUM_AS_BIT_SET(ObjectFlags)
+using ObjectFlags = EnumBitSet<ObjectFlag, uint16_t>;
 
 static const uint8_t OBJECT_SIZE_1X1 = 0x11; ///< The value of a NewGRF's size property when the object is 1x1 tiles: low nibble for X, high nibble for Y.
 
