@@ -3005,12 +3005,12 @@ void Vehicle::RemoveFromShared()
 
 	if (this->orders->GetNumVehicles() == 1) {
 		/* When there is only one vehicle, remove the shared order list window. */
-		CloseWindowById(GetWindowClassForVehicleType(this->type), vli.Pack());
+		CloseWindowById(GetWindowClassForVehicleType(this->type), vli.ToWindowNumber());
 		InvalidateVehicleOrder(this->FirstShared(), VIWD_MODIFY_ORDERS);
 	} else if (were_first) {
 		/* If we were the first one, update to the new first one.
 		 * Note: FirstShared() is already the new first */
-		InvalidateWindowData(GetWindowClassForVehicleType(this->type), vli.Pack(), this->FirstShared()->index | (1U << 31));
+		InvalidateWindowData(GetWindowClassForVehicleType(this->type), vli.ToWindowNumber(), this->FirstShared()->index | (1U << 31));
 	}
 
 	this->next_shared     = nullptr;
