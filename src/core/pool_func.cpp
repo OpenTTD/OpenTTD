@@ -27,9 +27,9 @@
  * Clean all pools of given type.
  * @param pt pool types to clean.
  */
-/* static */ void PoolBase::Clean(PoolType pt)
+/* static */ void PoolBase::Clean(PoolTypes pt)
 {
 	for (PoolBase *pool : *PoolBase::GetPools()) {
-		if (pool->type & pt) pool->CleanPool();
+		if (pt.Test(pool->type)) pool->CleanPool();
 	}
 }
