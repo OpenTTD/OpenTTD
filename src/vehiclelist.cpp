@@ -17,10 +17,10 @@
 #include "safeguards.h"
 
 /**
- * Pack a VehicleListIdentifier in a single uint32.
- * @return The packed identifier.
+ * Pack a VehicleListIdentifier in 32 bits so it can be used as unique WindowNumber.
+ * @return The window number.
  */
-uint32_t VehicleListIdentifier::Pack() const
+WindowNumber VehicleListIdentifier::ToWindowNumber() const
 {
 	uint8_t c = this->company == OWNER_NONE ? 0xF : (uint8_t)this->company;
 	assert(c             < (1 <<  4));

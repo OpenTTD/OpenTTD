@@ -2281,7 +2281,7 @@ public:
 		if (!gui_scope && HasBit(data, 31) && this->vli.type == VL_SHARED_ORDERS) {
 			/* Needs to be done in command-scope, so everything stays valid */
 			this->vli.index = GB(data, 0, 20);
-			this->window_number = this->vli.Pack();
+			this->window_number = this->vli.ToWindowNumber();
 			this->vehgroups.ForceRebuild();
 			return;
 		}
@@ -2328,7 +2328,7 @@ static void ShowVehicleListWindowLocal(CompanyID company, VehicleListType vlt, V
 
 	assert(vehicle_type < std::size(_vehicle_list_desc));
 	VehicleListIdentifier vli(vlt, vehicle_type, company, unique_number);
-	AllocateWindowDescFront<VehicleListWindow>(_vehicle_list_desc[vehicle_type], vli.Pack(), vli);
+	AllocateWindowDescFront<VehicleListWindow>(_vehicle_list_desc[vehicle_type], vli.ToWindowNumber(), vli);
 }
 
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
