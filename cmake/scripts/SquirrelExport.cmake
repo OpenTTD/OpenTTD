@@ -307,11 +307,6 @@ foreach(LINE IN LISTS SOURCE_LINES)
                     string(APPEND SQUIRREL_EXPORT "\nnamespace SQConvert {")
                     set(NAMESPACE_OPENED TRUE)
                 endif()
-                string(APPEND SQUIRREL_EXPORT "\n	/* Allow enums to be used as Squirrel parameters */")
-                foreach(ENUM IN LISTS ENUMS)
-                    string(APPEND SQUIRREL_EXPORT "\n	template <> struct Param<${ENUM}> { static inline ${ENUM} Get(HSQUIRRELVM vm, int index) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (${ENUM})tmp; } };")
-                    string(APPEND SQUIRREL_EXPORT "\n	template <> struct Return<${ENUM}> { static inline int Set(HSQUIRRELVM vm, ${ENUM} res) { sq_pushinteger(vm, res); return 1; } };")
-                endforeach()
             endif()
 
             # Then check whether we have structs/classes to print
