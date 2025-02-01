@@ -11,6 +11,7 @@
 #define NETWORK_TYPE_H
 
 #include "../core/enum_type.hpp"
+#include "../core/pool_type.hpp"
 
 /** How many clients can we have */
 static const uint MAX_CLIENTS = 255;
@@ -56,10 +57,10 @@ enum ClientID : uint32_t {
 typedef uint8_t ClientPoolID;
 
 /** Indices into the admin tables. */
-typedef uint8_t AdminID;
+using AdminID = PoolID<uint8_t, struct AdminIDTag, 16, 0xFF>;
 
 /** An invalid admin marker. */
-static const AdminID INVALID_ADMIN_ID = UINT8_MAX;
+static constexpr AdminID INVALID_ADMIN_ID = AdminID::Invalid();
 
 /** Simple calculated statistics of a company */
 struct NetworkCompanyStats {
