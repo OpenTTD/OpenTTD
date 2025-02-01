@@ -167,8 +167,7 @@ public:
 		this->parameters[n].data = v;
 	}
 
-	template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
-	void SetParam(size_t n, T v)
+	void SetParam(size_t n, ConvertibleThroughBase auto v)
 	{
 		SetParam(n, v.base());
 	}

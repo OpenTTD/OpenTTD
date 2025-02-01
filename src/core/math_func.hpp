@@ -10,7 +10,7 @@
 #ifndef MATH_FUNC_HPP
 #define MATH_FUNC_HPP
 
-#include "strong_typedef_type.hpp"
+#include "convertible_through_base.hpp"
 
 /**
  * Returns the absolute value of (scalar) variable.
@@ -217,8 +217,8 @@ constexpr To ClampTo(From value)
 /**
  * Specialization of ClampTo for #StrongType::Typedef.
  */
-template <typename To, typename From, std::enable_if_t<std::is_base_of<StrongTypedefBase, From>::value, int> = 0>
-constexpr To ClampTo(From value)
+template <typename To>
+constexpr To ClampTo(ConvertibleThroughBase auto value)
 {
 	return ClampTo<To>(value.base());
 }
@@ -264,15 +264,12 @@ constexpr bool IsInsideBS(const T x, const size_t base, const size_t size)
  * @param max The maximum of the interval
  * @see IsInsideBS()
  */
-template <typename T, std::enable_if_t<std::disjunction_v<std::is_convertible<T, size_t>, std::is_base_of<StrongTypedefBase, T>>, int> = 0>
-constexpr bool IsInsideMM(const T x, const size_t min, const size_t max) noexcept
+constexpr bool IsInsideMM(const size_t x, const size_t min, const size_t max) noexcept
 {
-	if constexpr (std::is_base_of_v<StrongTypedefBase, T>) {
-		return static_cast<size_t>(x.base() - min) < (max - min);
-	} else {
-		return static_cast<size_t>(x - min) < (max - min);
-	}
+	return static_cast<size_t>(x - min) < (max - min);
 }
+
+constexpr bool IsInsideMM(const ConvertibleThroughBase auto x, const size_t min, const size_t max) noexcept { return IsInsideMM(x.base(), min, max); }
 
 /**
  * Type safe swap operation

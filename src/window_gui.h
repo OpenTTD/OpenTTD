@@ -348,8 +348,7 @@ public:
 	void CreateNestedTree();
 	void FinishInitNested(WindowNumber window_number = 0);
 
-	template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
-	void FinishInitNested(T number)
+	void FinishInitNested(ConvertibleThroughBase auto number)
 	{
 		this->FinishInitNested(number.base());
 	}
@@ -996,8 +995,7 @@ public:
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
 Window *FindWindowFromPt(int x, int y);
 
-template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
-Window *BringWindowToFrontById(WindowClass cls, T number)
+Window *BringWindowToFrontById(WindowClass cls, ConvertibleThroughBase auto number)
 {
 	return BringWindowToFrontById(cls, number.base());
 }

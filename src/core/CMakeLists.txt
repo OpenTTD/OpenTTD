@@ -4,6 +4,7 @@ add_files(
     alloc_type.hpp
     backup_type.hpp
     bitmath_func.hpp
+    convertible_through_base.hpp
     endian_func.hpp
     enum_type.hpp
     format.hpp
