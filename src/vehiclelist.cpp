@@ -32,34 +32,6 @@ uint32_t VehicleListIdentifier::Pack() const
 	return c << 28 | this->type << 23 | this->vtype << 26 | this->index;
 }
 
-/**
- * Unpack a VehicleListIdentifier from a single uint32.
- * @param data The data to unpack.
- * @return true iff the data was valid (enough).
- */
-bool VehicleListIdentifier::UnpackIfValid(uint32_t data)
-{
-	uint8_t c        = GB(data, 28, 4);
-	this->company = c == 0xF ? OWNER_NONE : (CompanyID)c;
-	this->type    = (VehicleListType)GB(data, 23, 3);
-	this->vtype   = (VehicleType)GB(data, 26, 2);
-	this->index   = GB(data, 0, 20);
-
-	return this->type < VLT_END;
-}
-
-/**
- * Decode a packed vehicle list identifier into a new one.
- * @param data The data to unpack.
- */
-/* static */ VehicleListIdentifier VehicleListIdentifier::UnPack(uint32_t data)
-{
-	VehicleListIdentifier result;
-	[[maybe_unused]] bool ret = result.UnpackIfValid(data);
-	assert(ret);
-	return result;
-}
-
 /** Data for building a depot vehicle list. */
 struct BuildDepotVehicleListData
 {
