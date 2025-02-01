@@ -63,7 +63,7 @@ struct ObjectSpec : NewGRFSpecBase<ObjectClassID> {
 	AnimationInfo animation;      ///< Information about the animation.
 	StringID name;                ///< The name for this object.
 
-	uint8_t climate;                ///< In which climates is this object available?
+	LandscapeTypes climate; ///< In which climates is this object available?
 	uint8_t size;                   ///< The size of this objects; low nibble for X, high nibble for Y.
 	uint8_t build_cost_multiplier;  ///< Build cost multiplier per tile.
 	uint8_t clear_cost_multiplier;  ///< Clear cost multiplier per tile.

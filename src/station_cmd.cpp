@@ -335,7 +335,7 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 				CountMapSquareAround(tile, CMSATree) >= 8 ||
 				CountMapSquareAround(tile, IsTileForestIndustry) >= 2)
 			) {
-		return _settings_game.game_creation.landscape == LT_TROPIC ? STR_SV_STNAME_FOREST : STR_SV_STNAME_WOODS;
+		return _settings_game.game_creation.landscape == LandscapeType::Tropic ? STR_SV_STNAME_FOREST : STR_SV_STNAME_WOODS;
 	}
 
 	/* check elevation compared to town */
@@ -3066,11 +3066,11 @@ bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrack
 	if (ti != nullptr) {
 		/* Decide snow/desert from tile */
 		switch (_settings_game.game_creation.landscape) {
-			case LT_ARCTIC:
+			case LandscapeType::Arctic:
 				snow_desert = (uint)ti->z > GetSnowLine() * TILE_HEIGHT;
 				break;
 
-			case LT_TROPIC:
+			case LandscapeType::Tropic:
 				snow_desert = GetTropicZone(ti->tile) == TROPICZONE_DESERT;
 				break;
 
@@ -3630,14 +3630,14 @@ static void TileLoop_Station(TileIndex tile)
 
 		case StationType::RoadWaypoint: {
 			switch (_settings_game.game_creation.landscape) {
-				case LT_ARCTIC:
+				case LandscapeType::Arctic:
 					if (IsRoadWaypointOnSnowOrDesert(tile) != (GetTileZ(tile) > GetSnowLine())) {
 						ToggleRoadWaypointOnSnowOrDesert(tile);
 						MarkTileDirtyByTile(tile);
 					}
 					break;
 
-				case LT_TROPIC:
+				case LandscapeType::Tropic:
 					if (GetTropicZone(tile) == TROPICZONE_DESERT && !IsRoadWaypointOnSnowOrDesert(tile)) {
 						ToggleRoadWaypointOnSnowOrDesert(tile);
 						MarkTileDirtyByTile(tile);

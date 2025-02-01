@@ -1807,7 +1807,7 @@ struct CompanyInfrastructureWindow : Window
 
 		/* Find the used railtypes. */
 		for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
-			if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
+			if (!e->info.climates.Test(_settings_game.game_creation.landscape)) continue;
 
 			this->railtypes |= GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes;
 		}
@@ -1817,7 +1817,7 @@ struct CompanyInfrastructureWindow : Window
 
 		/* Find the used roadtypes. */
 		for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
-			if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
+			if (!e->info.climates.Test(_settings_game.game_creation.landscape)) continue;
 
 			this->roadtypes |= GetRoadTypeInfo(e->u.road.roadtype)->introduces_roadtypes;
 		}

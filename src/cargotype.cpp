@@ -61,9 +61,9 @@ static std::array<CargoLabel, 32> _climate_independent_cargo_labels;
  * Set up the default cargo types for the given landscape type.
  * @param l Landscape
  */
-void SetupCargoForClimate(LandscapeID l)
+void SetupCargoForClimate(LandscapeType l)
 {
-	assert(l < lengthof(_default_climate_cargo));
+	assert(to_underlying(l) < std::size(_default_climate_cargo));
 
 	_cargo_mask = 0;
 	_default_cargo_labels.clear();
@@ -72,7 +72,7 @@ void SetupCargoForClimate(LandscapeID l)
 
 	/* Copy from default cargo by label or index. */
 	auto insert = std::begin(CargoSpec::array);
-	for (const auto &cl : _default_climate_cargo[l]) {
+	for (const auto &cl : _default_climate_cargo[to_underlying(l)]) {
 
 		struct visitor {
 			const CargoSpec &operator()(const int &index)

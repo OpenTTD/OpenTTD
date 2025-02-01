@@ -1831,7 +1831,7 @@ static const char _initial_name_letters[] = {
 
 static std::span<const char * const> GetSurnameOptions()
 {
-	if (_settings_game.game_creation.landscape == LT_TOYLAND) return _silly_surname_list;
+	if (_settings_game.game_creation.landscape == LandscapeType::Toyland) return _silly_surname_list;
 	return _surname_list;
 }
 

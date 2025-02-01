@@ -2596,7 +2596,7 @@ static void TileLoop_Track(TileIndex tile)
 	}
 
 	switch (_settings_game.game_creation.landscape) {
-		case LT_ARCTIC: {
+		case LandscapeType::Arctic: {
 			auto [slope, z] = GetTileSlopeZ(tile);
 			bool half = false;
 
@@ -2652,11 +2652,14 @@ static void TileLoop_Track(TileIndex tile)
 			break;
 			}
 
-		case LT_TROPIC:
+		case LandscapeType::Tropic:
 			if (GetTropicZone(tile) == TROPICZONE_DESERT) {
 				new_ground = RAIL_GROUND_ICE_DESERT;
 				goto set_ground;
 			}
+			break;
+
+		default:
 			break;
 	}
 

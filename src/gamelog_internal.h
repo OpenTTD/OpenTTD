@@ -11,6 +11,7 @@
 #define GAMELOG_INTERNAL_H
 
 #include "gamelog.h"
+#include "landscape_type.h"
 
 /**
  * Information about the presence of a Grf at a certain point during gamelog history
@@ -38,12 +39,12 @@ struct LoggedChange {
 
 struct LoggedChangeMode : LoggedChange {
 	LoggedChangeMode() : LoggedChange(GLCT_MODE) {}
-	LoggedChangeMode(uint8_t mode, uint8_t landscape) :
+	LoggedChangeMode(uint8_t mode, LandscapeType landscape) :
 		LoggedChange(GLCT_MODE), mode(mode), landscape(landscape) {}
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	uint8_t mode;      ///< new game mode - Editor x Game
-	uint8_t landscape; ///< landscape (temperate, arctic, ...)
+	LandscapeType landscape; ///< landscape (temperate, arctic, ...)
 };
 
 struct LoggedChangeRevision : LoggedChange {

@@ -1366,7 +1366,7 @@ static uint GetRoadSpriteOffset(Slope slope, RoadBits bits)
 static bool DrawRoadAsSnowDesert(bool snow_or_desert, Roadside roadside)
 {
 	return (snow_or_desert &&
-			!(_settings_game.game_creation.landscape == LT_TROPIC && HasGrfMiscBit(GMB_DESERT_PAVED_ROADS) &&
+			!(_settings_game.game_creation.landscape == LandscapeType::Tropic && HasGrfMiscBit(GMB_DESERT_PAVED_ROADS) &&
 				roadside != ROADSIDE_BARREN && roadside != ROADSIDE_GRASS && roadside != ROADSIDE_GRASS_ROAD_WORKS));
 }
 
@@ -1979,7 +1979,7 @@ static_assert(lengthof(_town_road_types_2) == HZB_END);
 static void TileLoop_Road(TileIndex tile)
 {
 	switch (_settings_game.game_creation.landscape) {
-		case LT_ARCTIC: {
+		case LandscapeType::Arctic: {
 			/* Roads on flat foundations use the snow level of the height they are elevated to. All others use the snow level of their minimum height. */
 			int tile_z = (std::get<Slope>(GetFoundationSlope(tile)) == SLOPE_FLAT) ? GetTileMaxZ(tile) : GetTileZ(tile);
 			if (IsOnSnow(tile) != (tile_z > GetSnowLine())) {
@@ -1989,11 +1989,14 @@ static void TileLoop_Road(TileIndex tile)
 			break;
 		}
 
-		case LT_TROPIC:
+		case LandscapeType::Tropic:
 			if (GetTropicZone(tile) == TROPICZONE_DESERT && !IsOnDesert(tile)) {
 				ToggleDesert(tile);
 				MarkTileDirtyByTile(tile);
 			}
+			break;
+
+		default:
 			break;
 	}
 
@@ -2027,7 +2030,7 @@ static void TileLoop_Road(TileIndex tile)
 
 		{
 			/* Adjust road ground type depending on 'grp' (grp is the distance to the center) */
-			const Roadside *new_rs = (_settings_game.game_creation.landscape == LT_TOYLAND) ? _town_road_types_2[grp] : _town_road_types[grp];
+			const Roadside *new_rs = (_settings_game.game_creation.landscape == LandscapeType::Toyland) ? _town_road_types_2[grp] : _town_road_types[grp];
 			Roadside cur_rs = GetRoadside(tile);
 
 			/* We have our desired type, do nothing */

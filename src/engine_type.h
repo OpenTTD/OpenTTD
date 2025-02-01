@@ -11,6 +11,7 @@
 #define ENGINE_TYPE_H
 
 #include "economy_type.h"
+#include "landscape_type.h"
 #include "newgrf_callbacks.h"
 #include "rail_type.h"
 #include "road_type.h"
@@ -170,7 +171,7 @@ struct EngineInfo {
 	TimerGameCalendar::Year base_life;     ///< Basic duration of engine availability (without random parts). \c 0xFF means infinite life.
 	uint8_t decay_speed;
 	uint8_t load_amount;
-	uint8_t climates;      ///< Climates supported by the engine.
+	LandscapeTypes climates;      ///< Climates supported by the engine.
 	CargoType cargo_type;
 	std::variant<CargoLabel, MixedCargoType> cargo_label;
 	CargoTypes refit_mask;

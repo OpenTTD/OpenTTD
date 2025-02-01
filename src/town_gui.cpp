@@ -1483,10 +1483,10 @@ public:
 	void SetClimateMask()
 	{
 		switch (_settings_game.game_creation.landscape) {
-			case LT_TEMPERATE: this->climate_mask = HZ_TEMP; break;
-			case LT_ARCTIC:    this->climate_mask = HZ_SUBARTC_ABOVE | HZ_SUBARTC_BELOW; break;
-			case LT_TROPIC:    this->climate_mask = HZ_SUBTROPIC; break;
-			case LT_TOYLAND:   this->climate_mask = HZ_TOYLND; break;
+			case LandscapeType::Temperate: this->climate_mask = HZ_TEMP; break;
+			case LandscapeType::Arctic:    this->climate_mask = HZ_SUBARTC_ABOVE | HZ_SUBARTC_BELOW; break;
+			case LandscapeType::Tropic:    this->climate_mask = HZ_SUBTROPIC; break;
+			case LandscapeType::Toyland:   this->climate_mask = HZ_TOYLND; break;
 			default: NOT_REACHED();
 		}
 

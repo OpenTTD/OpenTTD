@@ -2717,10 +2717,10 @@ struct IndustryCargoesWindow : public Window {
 	{
 		HouseZones climate_mask;
 		switch (_settings_game.game_creation.landscape) {
-			case LT_TEMPERATE: climate_mask = HZ_TEMP; break;
-			case LT_ARCTIC:    climate_mask = HZ_SUBARTC_ABOVE | HZ_SUBARTC_BELOW; break;
-			case LT_TROPIC:    climate_mask = HZ_SUBTROPIC; break;
-			case LT_TOYLAND:   climate_mask = HZ_TOYLND; break;
+			case LandscapeType::Temperate: climate_mask = HZ_TEMP; break;
+			case LandscapeType::Arctic:    climate_mask = HZ_SUBARTC_ABOVE | HZ_SUBARTC_BELOW; break;
+			case LandscapeType::Tropic:    climate_mask = HZ_SUBTROPIC; break;
+			case LandscapeType::Toyland:   climate_mask = HZ_TOYLND; break;
 			default: NOT_REACHED();
 		}
 		for (const CargoType cargo_type : cargoes) {

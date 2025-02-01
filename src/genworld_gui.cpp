@@ -62,7 +62,7 @@ static uint GetMapHeightLimit()
  * Changes landscape type and sets genworld window dirty
  * @param landscape new landscape type
  */
-void SetNewLandscapeType(uint8_t landscape)
+void SetNewLandscapeType(LandscapeType landscape)
 {
 	_settings_newgame.game_creation.landscape = landscape;
 	InvalidateWindowClassesData(WC_SELECT_GAME);
@@ -395,7 +395,7 @@ struct GenerateLandscapeWindow : public Window {
 	{
 		this->InitNested(number);
 
-		this->LowerWidget(_settings_newgame.game_creation.landscape + WID_GL_TEMPERATE);
+		this->LowerWidget(to_underlying(_settings_newgame.game_creation.landscape) + WID_GL_TEMPERATE);
 
 		this->mode = (GenerateLandscapeWindowMode)this->window_number;
 
@@ -507,10 +507,10 @@ struct GenerateLandscapeWindow : public Window {
 	{
 		if (!gui_scope) return;
 		/* Update the climate buttons */
-		this->SetWidgetLoweredState(WID_GL_TEMPERATE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
-		this->SetWidgetLoweredState(WID_GL_ARCTIC,    _settings_newgame.game_creation.landscape == LT_ARCTIC);
-		this->SetWidgetLoweredState(WID_GL_TROPICAL,  _settings_newgame.game_creation.landscape == LT_TROPIC);
-		this->SetWidgetLoweredState(WID_GL_TOYLAND,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
+		this->SetWidgetLoweredState(WID_GL_TEMPERATE, _settings_newgame.game_creation.landscape == LandscapeType::Temperate);
+		this->SetWidgetLoweredState(WID_GL_ARCTIC,    _settings_newgame.game_creation.landscape == LandscapeType::Arctic);
+		this->SetWidgetLoweredState(WID_GL_TROPICAL,  _settings_newgame.game_creation.landscape == LandscapeType::Tropic);
+		this->SetWidgetLoweredState(WID_GL_TOYLAND,   _settings_newgame.game_creation.landscape == LandscapeType::Toyland);
 
 		/* You can't select smoothness / non-water borders if not terragenesis */
 		if (mode == GLWM_GENERATE) {
@@ -527,22 +527,22 @@ struct GenerateLandscapeWindow : public Window {
 			this->SetWidgetLoweredState(WID_GL_WATER_SE, _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthEast));
 			this->SetWidgetLoweredState(WID_GL_WATER_SW, _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthWest));
 
-			this->SetWidgetsDisabledState(_settings_newgame.game_creation.land_generator == LG_ORIGINAL && (_settings_newgame.game_creation.landscape == LT_ARCTIC || _settings_newgame.game_creation.landscape == LT_TROPIC),
+			this->SetWidgetsDisabledState(_settings_newgame.game_creation.land_generator == LG_ORIGINAL && (_settings_newgame.game_creation.landscape == LandscapeType::Arctic || _settings_newgame.game_creation.landscape == LandscapeType::Tropic),
 					WID_GL_TERRAIN_PULLDOWN, WID_GL_WATER_PULLDOWN);
 		}
 
 		/* Disable snowline if not arctic */
-		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_TEXT, _settings_newgame.game_creation.landscape != LT_ARCTIC);
+		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_TEXT, _settings_newgame.game_creation.landscape != LandscapeType::Arctic);
 		/* Disable desert if not tropic */
-		this->SetWidgetDisabledState(WID_GL_DESERT_COVERAGE_TEXT, _settings_newgame.game_creation.landscape != LT_TROPIC);
+		this->SetWidgetDisabledState(WID_GL_DESERT_COVERAGE_TEXT, _settings_newgame.game_creation.landscape != LandscapeType::Tropic);
 
 		/* Set snow/rainforest selections */
 		int climate_plane = 0;
 		switch (_settings_newgame.game_creation.landscape) {
-			case LT_TEMPERATE: climate_plane = 2; break;
-			case LT_ARCTIC:    climate_plane = 0; break;
-			case LT_TROPIC:    climate_plane = 1; break;
-			case LT_TOYLAND:   climate_plane = 2; break;
+			case LandscapeType::Temperate: climate_plane = 2; break;
+			case LandscapeType::Arctic:    climate_plane = 0; break;
+			case LandscapeType::Tropic:    climate_plane = 1; break;
+			case LandscapeType::Toyland:   climate_plane = 2; break;
 		}
 		this->GetWidget<NWidgetStacked>(WID_GL_CLIMATE_SEL_LABEL)->SetDisplayedPlane(climate_plane);
 		this->GetWidget<NWidgetStacked>(WID_GL_CLIMATE_SEL_SELECTOR)->SetDisplayedPlane(climate_plane);
@@ -554,10 +554,10 @@ struct GenerateLandscapeWindow : public Window {
 		}
 		this->SetWidgetDisabledState(WID_GL_START_DATE_DOWN, _settings_newgame.game_creation.starting_year <= CalendarTime::MIN_YEAR);
 		this->SetWidgetDisabledState(WID_GL_START_DATE_UP,   _settings_newgame.game_creation.starting_year >= CalendarTime::MAX_YEAR);
-		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_DOWN, _settings_newgame.game_creation.snow_coverage <= 0 || _settings_newgame.game_creation.landscape != LT_ARCTIC);
-		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_UP,   _settings_newgame.game_creation.snow_coverage >= 100 || _settings_newgame.game_creation.landscape != LT_ARCTIC);
-		this->SetWidgetDisabledState(WID_GL_DESERT_COVERAGE_DOWN, _settings_newgame.game_creation.desert_coverage <= 0 || _settings_newgame.game_creation.landscape != LT_TROPIC);
-		this->SetWidgetDisabledState(WID_GL_DESERT_COVERAGE_UP,   _settings_newgame.game_creation.desert_coverage >= 100 || _settings_newgame.game_creation.landscape != LT_TROPIC);
+		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_DOWN, _settings_newgame.game_creation.snow_coverage <= 0 || _settings_newgame.game_creation.landscape != LandscapeType::Arctic);
+		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_UP,   _settings_newgame.game_creation.snow_coverage >= 100 || _settings_newgame.game_creation.landscape != LandscapeType::Arctic);
+		this->SetWidgetDisabledState(WID_GL_DESERT_COVERAGE_DOWN, _settings_newgame.game_creation.desert_coverage <= 0 || _settings_newgame.game_creation.landscape != LandscapeType::Tropic);
+		this->SetWidgetDisabledState(WID_GL_DESERT_COVERAGE_UP,   _settings_newgame.game_creation.desert_coverage >= 100 || _settings_newgame.game_creation.landscape != LandscapeType::Tropic);
 
 		/* Do not allow a custom sea level or terrain type with the original land generator. */
 		if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL) {
@@ -673,7 +673,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_ARCTIC:
 			case WID_GL_TROPICAL:
 			case WID_GL_TOYLAND:
-				SetNewLandscapeType(widget - WID_GL_TEMPERATE);
+				SetNewLandscapeType(LandscapeType(widget - WID_GL_TEMPERATE));
 				break;
 
 			case WID_GL_MAPSIZE_X_PULLDOWN: // Mapsize X
@@ -1078,7 +1078,7 @@ struct CreateScenarioWindow : public Window
 	CreateScenarioWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
-		this->LowerWidget(_settings_newgame.game_creation.landscape + WID_CS_TEMPERATE);
+		this->LowerWidget(to_underlying(_settings_newgame.game_creation.landscape) + WID_CS_TEMPERATE);
 	}
 
 	void SetStringParameters(WidgetID widget) const override
@@ -1109,10 +1109,10 @@ struct CreateScenarioWindow : public Window
 		this->SetWidgetDisabledState(WID_CS_FLAT_LAND_HEIGHT_DOWN, _settings_newgame.game_creation.se_flat_world_height <= 0);
 		this->SetWidgetDisabledState(WID_CS_FLAT_LAND_HEIGHT_UP,   _settings_newgame.game_creation.se_flat_world_height >= GetMapHeightLimit());
 
-		this->SetWidgetLoweredState(WID_CS_TEMPERATE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
-		this->SetWidgetLoweredState(WID_CS_ARCTIC,    _settings_newgame.game_creation.landscape == LT_ARCTIC);
-		this->SetWidgetLoweredState(WID_CS_TROPICAL,  _settings_newgame.game_creation.landscape == LT_TROPIC);
-		this->SetWidgetLoweredState(WID_CS_TOYLAND,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
+		this->SetWidgetLoweredState(WID_CS_TEMPERATE, _settings_newgame.game_creation.landscape == LandscapeType::Temperate);
+		this->SetWidgetLoweredState(WID_CS_ARCTIC,    _settings_newgame.game_creation.landscape == LandscapeType::Arctic);
+		this->SetWidgetLoweredState(WID_CS_TROPICAL,  _settings_newgame.game_creation.landscape == LandscapeType::Tropic);
+		this->SetWidgetLoweredState(WID_CS_TOYLAND,   _settings_newgame.game_creation.landscape == LandscapeType::Toyland);
 
 		this->DrawWidgets();
 	}
@@ -1157,8 +1157,8 @@ struct CreateScenarioWindow : public Window
 			case WID_CS_ARCTIC:
 			case WID_CS_TROPICAL:
 			case WID_CS_TOYLAND:
-				this->RaiseWidget(_settings_newgame.game_creation.landscape + WID_CS_TEMPERATE);
-				SetNewLandscapeType(widget - WID_CS_TEMPERATE);
+				this->RaiseWidget(to_underlying(_settings_newgame.game_creation.landscape) + WID_CS_TEMPERATE);
+				SetNewLandscapeType(LandscapeType(widget - WID_CS_TEMPERATE));
 				break;
 
 			case WID_CS_MAPSIZE_X_PULLDOWN: // Mapsize X

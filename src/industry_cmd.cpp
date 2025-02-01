@@ -84,7 +84,7 @@ void ResetIndustries()
 
 	/* Enable only the current climate industries */
 	for (auto it = std::begin(_industry_specs); it != industry_insert; ++it) {
-		it->enabled = HasBit(it->climate_availability, _settings_game.game_creation.landscape);
+		it->enabled = it->climate_availability.Test(_settings_game.game_creation.landscape);
 	}
 
 	auto industry_tile_insert = std::copy(std::begin(_origin_industry_tile_specs), std::end(_origin_industry_tile_specs), std::begin(_industry_tile_specs));
@@ -1039,13 +1039,13 @@ static void SetupFarmFieldFence(TileIndex tile, int size, uint8_t type, DiagDire
 
 static void PlantFarmField(TileIndex tile, IndustryID industry)
 {
-	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
+	if (_settings_game.game_creation.landscape == LandscapeType::Arctic) {
 		if (GetTileZ(tile) + 2 >= GetSnowLine()) return;
 	}
 
 	/* determine field size */
 	uint32_t r = (Random() & 0x303) + 0x404;
-	if (_settings_game.game_creation.landscape == LT_ARCTIC) r += 0x404;
+	if (_settings_game.game_creation.landscape == LandscapeType::Arctic) r += 0x404;
 	uint size_x = GB(r, 0, 8);
 	uint size_y = GB(r, 8, 8);
 
@@ -1078,7 +1078,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	}
 
 	int type = 3;
-	if (_settings_game.game_creation.landscape != LT_ARCTIC && _settings_game.game_creation.landscape != LT_TROPIC) {
+	if (_settings_game.game_creation.landscape != LandscapeType::Arctic && _settings_game.game_creation.landscape != LandscapeType::Tropic) {
 		type = _plantfarmfield_type[Random() & 0xF];
 	}
 
@@ -1271,7 +1271,7 @@ static CommandCost CheckNewIndustry_NULL(TileIndex)
  */
 static CommandCost CheckNewIndustry_Forest(TileIndex tile)
 {
-	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
+	if (_settings_game.game_creation.landscape == LandscapeType::Arctic) {
 		if (GetTileZ(tile) < HighestSnowLine() + 2) {
 			return CommandCost(STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED);
 		}
@@ -1340,7 +1340,7 @@ static CommandCost CheckNewIndustry_OilRig(TileIndex tile)
  */
 static CommandCost CheckNewIndustry_Farm(TileIndex tile)
 {
-	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
+	if (_settings_game.game_creation.landscape == LandscapeType::Arctic) {
 		if (GetTileZ(tile) + 2 >= HighestSnowLine()) {
 			return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 		}
@@ -2289,7 +2289,7 @@ static Industry *CreateNewIndustry(TileIndex tile, IndustryType type, IndustryAv
 static uint32_t GetScaledIndustryGenerationProbability(IndustryType it, bool *force_at_least_one)
 {
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
-	uint32_t chance = ind_spc->appear_creation[_settings_game.game_creation.landscape];
+	uint32_t chance = ind_spc->appear_creation[to_underlying(_settings_game.game_creation.landscape)];
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
 			(_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == ID_FUND_ONLY) ||
 			(chance = GetIndustryProbabilityCallback(it, IACT_MAPGENERATION, chance)) == 0) {
@@ -2320,7 +2320,7 @@ static uint16_t GetIndustryGamePlayProbability(IndustryType it, uint8_t *min_num
 	}
 
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
-	uint8_t chance = ind_spc->appear_ingame[_settings_game.game_creation.landscape];
+	uint8_t chance = ind_spc->appear_ingame[to_underlying(_settings_game.game_creation.landscape)];
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
 			((ind_spc->behaviour & INDUSTRYBEH_BEFORE_1950) && TimerGameCalendar::year > 1950) ||
 			((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && TimerGameCalendar::year < 1960) ||
@@ -2674,7 +2674,7 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
 	/* oil wells (or the industries with that flag set) are always allowed to closedown */
-	if ((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings_game.game_creation.landscape == LT_TEMPERATE) return false;
+	if ((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings_game.game_creation.landscape == LandscapeType::Temperate) return false;
 	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE) == 0 && Industry::GetIndustryTypeCount(type) <= 1;
 }
 
@@ -2843,7 +2843,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 	if (standard || (!callback_enabled && (indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0)) {
 		/* decrease or increase */
-		bool only_decrease = (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings_game.game_creation.landscape == LT_TEMPERATE;
+		bool only_decrease = (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings_game.game_creation.landscape == LandscapeType::Temperate;
 
 		if (original_economy) {
 			if (only_decrease || Chance16(1, 3)) {

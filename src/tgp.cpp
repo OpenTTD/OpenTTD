@@ -471,8 +471,8 @@ static void HeightMapSineTransform(Height h_min, Height h_max)
 		fheight = (double)(h - h_min) / (double)(h_max - h_min);
 		/* Apply sine transform depending on landscape type */
 		switch (_settings_game.game_creation.landscape) {
-			case LT_TOYLAND:
-			case LT_TEMPERATE:
+			case LandscapeType::Toyland:
+			case LandscapeType::Temperate:
 				/* Move and scale 0..1 into -1..+1 */
 				fheight = 2 * fheight - 1;
 				/* Sine transform */
@@ -481,7 +481,7 @@ static void HeightMapSineTransform(Height h_min, Height h_max)
 				fheight = 0.5 * (fheight + 1);
 				break;
 
-			case LT_ARCTIC:
+			case LandscapeType::Arctic:
 				{
 					/* Arctic terrain needs special height distribution.
 					 * Redistribute heights to have more tiles at highest (75%..100%) range */
@@ -502,7 +502,7 @@ static void HeightMapSineTransform(Height h_min, Height h_max)
 				}
 				break;
 
-			case LT_TROPIC:
+			case LandscapeType::Tropic:
 				{
 					/* Desert terrain needs special height distribution.
 					 * Half of tiles should be at lowest (0..25%) heights */

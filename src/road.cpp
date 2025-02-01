@@ -203,7 +203,7 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 	for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 		const EngineInfo *ei = &e->info;
 
-		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
+		if (ei->climates.Test(_settings_game.game_creation.landscape) &&
 				(HasBit(e->company_avail, company) || TimerGameCalendar::date >= e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
 			const RoadVehicleInfo *rvi = &e->u.road;
 			assert(rvi->roadtype < ROADTYPE_END);
@@ -230,7 +230,7 @@ RoadTypes GetRoadTypes(bool introduces)
 
 	for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 		const EngineInfo *ei = &e->info;
-		if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) continue;
+		if (!ei->climates.Test(_settings_game.game_creation.landscape)) continue;
 
 		const RoadVehicleInfo *rvi = &e->u.road;
 		assert(rvi->roadtype < ROADTYPE_END);
