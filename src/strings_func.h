@@ -14,7 +14,7 @@
 #include "string_type.h"
 #include "gfx_type.h"
 #include "core/bitmath_func.hpp"
-#include "core/strong_typedef_type.hpp"
+#include "core/convertible_through_base.hpp"
 #include "vehicle_type.h"
 
 /**
@@ -83,14 +83,12 @@ void SetDParam(size_t n, uint64_t v);
 void SetDParamMaxValue(size_t n, uint64_t max_value, uint min_count = 0, FontSize size = FS_NORMAL);
 void SetDParamMaxDigits(size_t n, uint count, FontSize size = FS_NORMAL);
 
-template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
-void SetDParam(size_t n, T v)
+void SetDParam(size_t n, ConvertibleThroughBase auto v)
 {
 	SetDParam(n, v.base());
 }
 
-template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
-void SetDParamMaxValue(size_t n, T max_value, uint min_count = 0, FontSize size = FS_NORMAL)
+void SetDParamMaxValue(size_t n, ConvertibleThroughBase auto max_value, uint min_count = 0, FontSize size = FS_NORMAL)
 {
 	SetDParamMaxValue(n, max_value.base(), min_count, size);
 }

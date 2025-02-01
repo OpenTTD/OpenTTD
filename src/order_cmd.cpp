@@ -1949,8 +1949,7 @@ static bool OrderConditionCompare(OrderConditionComparator occ, int variable, in
 	}
 }
 
-template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
-static bool OrderConditionCompare(OrderConditionComparator occ, T variable, int value)
+static bool OrderConditionCompare(OrderConditionComparator occ, ConvertibleThroughBase auto variable, int value)
 {
 	return OrderConditionCompare(occ, variable.base(), value);
 }

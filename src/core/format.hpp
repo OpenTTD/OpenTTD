@@ -11,11 +11,11 @@
 #define FORMAT_HPP
 
 #include "../3rdparty/fmt/format.h"
-#include "strong_typedef_type.hpp"
+#include "convertible_through_base.hpp"
 
-template <typename E, typename Char>
-struct fmt::formatter<E, Char, std::enable_if_t<std::is_enum<E>::value>> : fmt::formatter<typename std::underlying_type<E>::type> {
-	using underlying_type = typename std::underlying_type<E>::type;
+template <typename E, typename Char> requires std::is_enum_v<E>
+struct fmt::formatter<E, Char> : fmt::formatter<typename std::underlying_type_t<E>> {
+	using underlying_type = typename std::underlying_type_t<E>;
 	using parent = typename fmt::formatter<underlying_type>;
 
 	constexpr fmt::format_parse_context::iterator parse(fmt::format_parse_context &ctx)
@@ -23,14 +23,14 @@ struct fmt::formatter<E, Char, std::enable_if_t<std::is_enum<E>::value>> : fmt::
 		return parent::parse(ctx);
 	}
 
-	fmt::format_context::iterator format(const E &e, format_context &ctx) const
+	fmt::format_context::iterator format(const E &e, fmt::format_context &ctx) const
 	{
 		return parent::format(underlying_type(e), ctx);
 	}
 };
 
-template <typename T, typename Char>
-struct fmt::formatter<T, Char, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value>> : fmt::formatter<typename T::BaseType> {
+template <ConvertibleThroughBase T, typename Char>
+struct fmt::formatter<T, Char> : fmt::formatter<typename T::BaseType> {
 	using underlying_type = typename T::BaseType;
 	using parent = typename fmt::formatter<underlying_type>;
 
@@ -39,7 +39,7 @@ struct fmt::formatter<T, Char, std::enable_if_t<std::is_base_of<StrongTypedefBas
 		return parent::parse(ctx);
 	}
 
-	fmt::format_context::iterator format(const T &t, format_context &ctx) const
+	fmt::format_context::iterator format(const T &t, fmt::format_context &ctx) const
 	{
 		return parent::format(t.base(), ctx);
 	}
