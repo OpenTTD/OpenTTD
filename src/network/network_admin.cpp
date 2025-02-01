@@ -29,7 +29,7 @@
 /* This file handles all the admin network commands. */
 
 /** Redirection of the (remote) console to the admin. */
-AdminIndex _redirect_console_to_admin = INVALID_ADMIN_ID;
+AdminID _redirect_console_to_admin = INVALID_ADMIN_ID;
 
 /** The pool with sockets/clients. */
 NetworkAdminSocketPool _networkadminsocket_pool("NetworkAdminSocket");
@@ -1000,7 +1000,7 @@ void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_i
  * @param colour_code The colour of the string.
  * @param string      The string to show.
  */
-void NetworkServerSendAdminRcon(AdminIndex admin_index, TextColour colour_code, const std::string_view string)
+void NetworkServerSendAdminRcon(AdminID admin_index, TextColour colour_code, const std::string_view string)
 {
 	ServerNetworkAdminSocketHandler::Get(admin_index)->SendRcon(colour_code, string);
 }
