@@ -382,26 +382,26 @@ uint TarScanner::DoScan(Subdirectory sd)
 	return num;
 }
 
-/* static */ uint TarScanner::DoScan(TarScanner::Mode mode)
+/* static */ uint TarScanner::DoScan(TarScanner::Modes modes)
 {
 	Debug(misc, 2, "Scanning for tars");
 	TarScanner fs;
 	uint num = 0;
-	if (mode & TarScanner::BASESET) {
+	if (modes.Test(TarScanner::Mode::Baseset)) {
 		num += fs.DoScan(BASESET_DIR);
 	}
-	if (mode & TarScanner::NEWGRF) {
+	if (modes.Test(TarScanner::Mode::NewGRF)) {
 		num += fs.DoScan(NEWGRF_DIR);
 	}
-	if (mode & TarScanner::AI) {
+	if (modes.Test(TarScanner::Mode::AI)) {
 		num += fs.DoScan(AI_DIR);
 		num += fs.DoScan(AI_LIBRARY_DIR);
 	}
-	if (mode & TarScanner::GAME) {
+	if (modes.Test(TarScanner::Mode::Game)) {
 		num += fs.DoScan(GAME_DIR);
 		num += fs.DoScan(GAME_LIBRARY_DIR);
 	}
-	if (mode & TarScanner::SCENARIO) {
+	if (modes.Test(TarScanner::Mode::Scenario)) {
 		num += fs.DoScan(SCENARIO_DIR);
 		num += fs.DoScan(HEIGHTMAP_DIR);
 	}

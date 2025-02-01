@@ -61,7 +61,7 @@
 	Game::frame_counter = 0;
 
 	if (Game::scanner_info == nullptr) {
-		TarScanner::DoScan(TarScanner::GAME);
+		TarScanner::DoScan(TarScanner::Mode::Game);
 		Game::scanner_info = new GameScannerInfo();
 		Game::scanner_info->Initialize();
 		Game::scanner_library = new GameScannerLibrary();
@@ -190,7 +190,7 @@
 
 /* static */ void Game::Rescan()
 {
-	TarScanner::DoScan(TarScanner::GAME);
+	TarScanner::DoScan(TarScanner::Mode::Game);
 
 	Game::scanner_info->RescanDir();
 	Game::scanner_library->RescanDir();

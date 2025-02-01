@@ -399,7 +399,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	{
 		ResetGRFConfig(false);
 
-		TarScanner::DoScan(TarScanner::SCENARIO);
+		TarScanner::DoScan(TarScanner::Mode::Scenario);
 
 		AI::Initialize();
 		Game::Initialize();
@@ -654,7 +654,7 @@ int openttd_main(std::span<char * const> arguments)
 		 * The next two functions are needed to list the graphics sets. We can't do them earlier
 		 * because then we cannot show it on the debug console as that hasn't been configured yet. */
 		DeterminePaths(arguments[0], only_local_path);
-		TarScanner::DoScan(TarScanner::BASESET);
+		TarScanner::DoScan(TarScanner::Mode::Baseset);
 		BaseGraphics::FindSets();
 		BaseSounds::FindSets();
 		BaseMusic::FindSets();
@@ -663,7 +663,7 @@ int openttd_main(std::span<char * const> arguments)
 	}
 
 	DeterminePaths(arguments[0], only_local_path);
-	TarScanner::DoScan(TarScanner::BASESET);
+	TarScanner::DoScan(TarScanner::Mode::Baseset);
 
 	if (dedicated) Debug(net, 3, "Starting dedicated server, version {}", _openttd_revision);
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
