@@ -17,13 +17,6 @@
 static const uint MAX_CLIENTS = 255;
 
 /**
- * The number of slots; must be at least 1 more than MAX_CLIENTS. It must
- * furthermore be less than or equal to 256 as client indices (sent over
- * the network) are 8 bits. It needs 1 more for the dedicated server.
- */
-static const uint MAX_CLIENT_SLOTS = 256;
-
-/**
  * Vehicletypes in the order they are send in info packets.
  */
 enum NetworkVehicleType : uint8_t {
@@ -54,7 +47,7 @@ enum ClientID : uint32_t {
 };
 
 /** Indices into the client related pools */
-typedef uint8_t ClientPoolID;
+using ClientPoolID = PoolID<uint16_t, struct ClientPoolIDTag, MAX_CLIENTS + 1 /* dedicated server. */, 0xFFFF>;
 
 /** Indices into the admin tables. */
 using AdminID = PoolID<uint8_t, struct AdminIDTag, 16, 0xFF>;
