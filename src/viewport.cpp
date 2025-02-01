@@ -1447,7 +1447,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 		switch (item.type) {
 			case ViewportSignKdtreeItem::VKI_STATION: {
 				if (!show_stations) break;
-				const BaseStation *st = BaseStation::Get(item.id.station);
+				const BaseStation *st = BaseStation::Get(std::get<StationID>(item.id));
 
 				/* If no facilities are present the station is a ghost station. */
 				StationFacility facilities = st->facilities;
@@ -1464,7 +1464,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 
 			case ViewportSignKdtreeItem::VKI_WAYPOINT: {
 				if (!show_waypoints) break;
-				const BaseStation *st = BaseStation::Get(item.id.station);
+				const BaseStation *st = BaseStation::Get(std::get<StationID>(item.id));
 
 				/* Don't draw if station is owned by another company and competitor station names are hidden. Stations owned by none are never ignored. */
 				if (!show_competitors && _local_company != st->owner && st->owner != OWNER_NONE) break;
@@ -1475,12 +1475,12 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 
 			case ViewportSignKdtreeItem::VKI_TOWN:
 				if (!show_towns) break;
-				towns.push_back(Town::Get(item.id.town));
+				towns.push_back(Town::Get(std::get<TownID>(item.id)));
 				break;
 
 			case ViewportSignKdtreeItem::VKI_SIGN: {
 				if (!show_signs) break;
-				const Sign *si = Sign::Get(item.id.sign);
+				const Sign *si = Sign::Get(std::get<SignID>(item.id));
 
 				/* Don't draw if sign is owned by another company and competitor signs should be hidden.
 				 * Note: It is intentional that also signs owned by OWNER_NONE are hidden. Bankrupt
@@ -2297,27 +2297,27 @@ static bool CheckClickOnViewportSign(const Viewport *vp, int x, int y)
 		switch (item.type) {
 			case ViewportSignKdtreeItem::VKI_STATION:
 				if (!show_stations) break;
-				st = BaseStation::Get(item.id.station);
+				st = BaseStation::Get(std::get<StationID>(item.id));
 				if (!show_competitors && _local_company != st->owner && st->owner != OWNER_NONE) break;
 				if (CheckClickOnViewportSign(vp, x, y, &st->sign)) last_st = st;
 				break;
 
 			case ViewportSignKdtreeItem::VKI_WAYPOINT:
 				if (!show_waypoints) break;
-				st = BaseStation::Get(item.id.station);
+				st = BaseStation::Get(std::get<StationID>(item.id));
 				if (!show_competitors && _local_company != st->owner && st->owner != OWNER_NONE) break;
 				if (CheckClickOnViewportSign(vp, x, y, &st->sign)) last_st = st;
 				break;
 
 			case ViewportSignKdtreeItem::VKI_TOWN:
 				if (!show_towns) break;
-				t = Town::Get(item.id.town);
+				t = Town::Get(std::get<TownID>(item.id));
 				if (CheckClickOnViewportSign(vp, x, y, &t->cache.sign)) last_t = t;
 				break;
 
 			case ViewportSignKdtreeItem::VKI_SIGN:
 				if (!show_signs) break;
-				si = Sign::Get(item.id.sign);
+				si = Sign::Get(std::get<SignID>(item.id));
 				if (!show_competitors && _local_company != si->owner && si->owner != OWNER_DEITY) break;
 				if (CheckClickOnViewportSign(vp, x, y, &si->sign)) last_si = si;
 				break;
@@ -2351,7 +2351,7 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeStation(StationID id)
 {
 	ViewportSignKdtreeItem item;
 	item.type = VKI_STATION;
-	item.id.station = id;
+	item.id = id;
 
 	const Station *st = Station::Get(id);
 	assert(st->sign.kdtree_valid);
@@ -2368,7 +2368,7 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeWaypoint(StationID id)
 {
 	ViewportSignKdtreeItem item;
 	item.type = VKI_WAYPOINT;
-	item.id.station = id;
+	item.id = id;
 
 	const Waypoint *st = Waypoint::Get(id);
 	assert(st->sign.kdtree_valid);
@@ -2385,7 +2385,7 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeTown(TownID id)
 {
 	ViewportSignKdtreeItem item;
 	item.type = VKI_TOWN;
-	item.id.town = id;
+	item.id = id;
 
 	const Town *town = Town::Get(id);
 	assert(town->cache.sign.kdtree_valid);
@@ -2402,7 +2402,7 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeSign(SignID id)
 {
 	ViewportSignKdtreeItem item;
 	item.type = VKI_SIGN;
-	item.id.sign = id;
+	item.id = id;
 
 	const Sign *sign = Sign::Get(id);
 	assert(sign->sign.kdtree_valid);
