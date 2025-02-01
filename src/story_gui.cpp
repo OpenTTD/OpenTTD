@@ -1052,6 +1052,6 @@ void ShowStoryBook(CompanyID company, StoryPageID page_id, bool centered)
 {
 	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
 
-	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow>(centered ? _story_book_gs_desc : _story_book_desc, company, true);
+	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow, true>(centered ? _story_book_gs_desc : _story_book_desc, company);
 	if (page_id != INVALID_STORY_PAGE) w->SetSelectedPage(page_id);
 }

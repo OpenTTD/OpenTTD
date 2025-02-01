@@ -1002,18 +1002,18 @@ Window *BringWindowToFrontById(WindowClass cls, ConvertibleThroughBase auto numb
 
 /**
  * Open a new window.
- * @tparam Wcls %Window class to use if the window does not exist.
+ * @tparam Twindow %Window class to use if the window does not exist.
+ * @tparam Treturn_existing If set, also return the window if it already existed.
  * @param desc The pointer to the WindowDesc to be created
  * @param window_number the window number of the new window
- * @param return_existing If set, also return the window if it already existed.
- * @return %Window pointer of the newly created window, or the existing one if \a return_existing is set, or \c nullptr.
+ * @return %Window pointer of the newly created window, or the existing one if \a Treturn_existing is set, or \c nullptr.
  */
-template <typename Wcls>
-Wcls *AllocateWindowDescFront(WindowDesc &desc, int window_number, bool return_existing = false)
+template <typename Twindow, bool Treturn_existing = false>
+Twindow *AllocateWindowDescFront(WindowDesc &desc, WindowNumber window_number)
 {
-	Wcls *w = static_cast<Wcls *>(BringWindowToFrontById(desc.cls, window_number));
-	if (w != nullptr) return return_existing ? w : nullptr;
-	return new Wcls(desc, window_number);
+	Twindow *w = static_cast<Twindow *>(BringWindowToFrontById(desc.cls, window_number));
+	if (w != nullptr) return Treturn_existing ? w : nullptr;
+	return new Twindow(desc, window_number);
 }
 
 void RelocateAllWindows(int neww, int newh);
