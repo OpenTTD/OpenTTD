@@ -935,7 +935,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}நா�
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 44
+###length 45
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :பிரித்தானிய பவுண்டு
 STR_GAME_OPTIONS_CURRENCY_USD                                   :அமெரிக்கன் டாலர்
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :யுரோ
@@ -2393,7 +2393,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :இணைப்
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :விட்டுச்செல்கிறார்
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} விளையாட்டில் சேர்ந்து உள்ளார்
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} விளையாட்டில் சேர்ந்து உள்ளார் (Client #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} நிறுவனம் #{2:NUM}இல் சேர்ந்துள்ளார்
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} பார்வையாளராக சேர்ந்துள்ளார்
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} புதிய நிறுவனம் (#{2:NUM})வை துவக்கி உள்ளார்
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} ஆட்டத்தை விட்டு வெளியேரினார் ({2:STRING})

@@ -458,6 +458,7 @@ STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :트럭 적하�
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :버스 정류장
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :항구
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :공항
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :제거된 역
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :경유지의 이름을 표시함
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :팻말을 표시함
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :경쟁사의 팻말과 역 이름을 표시
@@ -979,7 +980,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}화폐 �
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 44
+###length 45
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :영국 파운드
 STR_GAME_OPTIONS_CURRENCY_USD                                   :미국 달러
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :유로
@@ -2635,7 +2636,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :연결 상태�
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :게임 종료
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} 님이 입장하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} 님이 입장하셨습니다 ({2:NUM}번 접속자)
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} 님이 {2:NUM}번 회사에 참여하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} 님이 관전을 시작하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} 님이 새로운 회사({2:NUM}번)를 창설하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} 님이 퇴장하셨습니다 (사유: {2:STRING})

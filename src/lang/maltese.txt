@@ -400,7 +400,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 
 
-###length 44
+###length 45
 
 
 # Autosave dropdown

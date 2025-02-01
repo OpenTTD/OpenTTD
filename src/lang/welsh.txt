@@ -968,7 +968,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Dewis un
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 44
+###length 45
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punnoedd Prydeinig
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Doler America
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ewro
@@ -2623,7 +2623,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :yn aros am ddiw
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :wrthi'n gadael
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** Mae {STRING} wedi ymuno â'r gêm
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Mae {0:STRING} wedi ymuno a'r gêm (Gwestai #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** Mae {0:STRING} wedi ymuno â chwmni #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** Mae {STRING} wedi ymuno â'r gwylwyr
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Mae {0:STRING} wedi dechrau cwmni newydd (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Mae {0:STRING} wedi gadael y gêm ({2:STRING})

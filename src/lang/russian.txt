@@ -583,6 +583,7 @@ STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Грузовы�
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Остановки автобусов
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Пристани
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Аэропорты
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Удалённые станции
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Показывать названия маршрутных точек
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показывать метки
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Показывать названия станций конкурентов
@@ -1123,7 +1124,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Смен
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
-###length 44
+###length 45
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Английский фунт
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Доллар США
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Евро
@@ -2785,7 +2786,6 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :ожидает 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :отключение
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} подключился к игре
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} подключился к игре (клиент #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} подключился к компании #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} подключился в качестве зрителя
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} основал новую компанию (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} покинул игру ({2:STRING})
@@ -5187,7 +5187,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... до
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... достигнуто ограничение по количеству очищаемых клеток
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... достигнут лимит высадки деревьев
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Имя должно быть уникальным
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} на пути
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} мешает
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Запрещено во время паузы
 
 # Local authority errors
