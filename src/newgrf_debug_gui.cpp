@@ -723,7 +723,7 @@ void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index, const uint32_t 
 
 	WindowNumber wno = GetInspectWindowNumber(feature, index);
 	WindowDesc &desc = (feature == GSF_TRAINS || feature == GSF_ROADVEHICLES) ? _newgrf_inspect_chain_desc : _newgrf_inspect_desc;
-	NewGRFInspectWindow *w = AllocateWindowDescFront<NewGRFInspectWindow>(desc, wno, true);
+	NewGRFInspectWindow *w = AllocateWindowDescFront<NewGRFInspectWindow, true>(desc, wno);
 	w->SetCallerGRFID(grfid);
 }
 

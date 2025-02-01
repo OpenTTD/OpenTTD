@@ -1182,16 +1182,28 @@ static WindowDesc _vehicle_group_desc[] = {
  * @param company The company to show the window for.
  * @param vehicle_type The type of vehicle to show it for.
  * @param group The group to be selected. Defaults to INVALID_GROUP.
- * @param need_existing_window Whether the existing window is needed. Defaults to false.
+ * @tparam Tneed_existing_window Whether the existing window is needed.
  */
-void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type, GroupID group, bool need_existing_window)
+template <bool Tneed_existing_window>
+static void ShowCompanyGroupInternal(CompanyID company, VehicleType vehicle_type, GroupID group)
 {
 	if (!Company::IsValidID(company)) return;
 
 	assert(vehicle_type < std::size(_vehicle_group_desc));
 	const WindowNumber num = VehicleListIdentifier(VL_GROUP_LIST, vehicle_type, company).Pack();
-	VehicleGroupWindow *w = AllocateWindowDescFront<VehicleGroupWindow>(_vehicle_group_desc[vehicle_type], num, need_existing_window);
+	VehicleGroupWindow *w = AllocateWindowDescFront<VehicleGroupWindow, Tneed_existing_window>(_vehicle_group_desc[vehicle_type], num);
 	if (w != nullptr) w->SelectGroup(group);
+}
+
+/**
+ * Show the group window for the given company and vehicle type.
+ * @param company The company to show the window for.
+ * @param vehicle_type The type of vehicle to show it for.
+ * @param group The group to be selected. Defaults to INVALID_GROUP.
+ */
+void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type, GroupID group)
+{
+	ShowCompanyGroupInternal<false>(company, vehicle_type, group);
 }
 
 /**
@@ -1200,7 +1212,7 @@ void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type, GroupID group
  */
 void ShowCompanyGroupForVehicle(const Vehicle *v)
 {
-	ShowCompanyGroup(v->owner, v->type, v->group_id, true);
+	ShowCompanyGroupInternal<true>(v->owner, v->type, v->group_id);
 }
 
 /**

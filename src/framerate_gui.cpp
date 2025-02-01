@@ -1030,7 +1030,7 @@ void ShowFramerateWindow()
 void ShowFrametimeGraphWindow(PerformanceElement elem)
 {
 	if (elem < PFE_FIRST || elem >= PFE_MAX) return; // maybe warn?
-	AllocateWindowDescFront<FrametimeGraphWindow>(_frametime_graph_window_desc, elem, true);
+	AllocateWindowDescFront<FrametimeGraphWindow>(_frametime_graph_window_desc, elem);
 }
 
 /** Print performance statistics to game console */
