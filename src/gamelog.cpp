@@ -223,7 +223,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 
 /* virtual */ void LoggedChangeSettingChanged::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &, GamelogActionType)
 {
-	/* A setting with the SF_NO_NETWORK flag got changed; these settings usually affect NewGRFs, such as road side or wagon speed limits. */
+	/* A setting with the SettingFlag::NoNetwork flag got changed; these settings usually affect NewGRFs, such as road side or wagon speed limits. */
 	fmt::format_to(output_iterator, "Setting changed: {} : {} -> {}", this->name, this->oldval, this->newval);
 }
 

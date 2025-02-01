@@ -1589,7 +1589,7 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 
 static const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc *sd)
 {
-	if ((sd->flags & SF_PER_COMPANY) != 0) {
+	if (sd->flags.Test(SettingFlag::PerCompany)) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
 			return &Company::Get(_local_company)->settings;
 		}
@@ -1626,13 +1626,13 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	if (sd->IsBoolSetting()) {
 		/* Draw checkbox for boolean-value either on/off */
 		DrawBoolButton(buttons_left, button_y, value != 0, editable);
-	} else if ((sd->flags & SF_GUI_DROPDOWN) != 0) {
+	} else if (sd->flags.Test(SettingFlag::GuiDropdown)) {
 		/* Draw [v] button for settings of an enum-type */
 		DrawDropDownButton(buttons_left, button_y, COLOUR_YELLOW, state != 0, editable);
 	} else {
 		/* Draw [<][>] boxes for settings of an integer-type */
 		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state,
-				editable && value != (sd->flags & SF_GUI_0_IS_SPECIAL ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
+				editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
 	}
 	sd->SetValueDParams(1, value);
 	DrawString(text_left, text_right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, sd->GetTitle(), highlight ? TC_WHITE : TC_LIGHT_BLUE);
@@ -2612,7 +2612,7 @@ struct GameSettingsWindow : Window {
 		int32_t value = sd->Read(ResolveObject(settings_ptr, sd));
 
 		/* clicked on the icon on the left side. Either scroller, bool on/off or dropdown */
-		if (x < SETTING_BUTTON_WIDTH && (sd->flags & SF_GUI_DROPDOWN)) {
+		if (x < SETTING_BUTTON_WIDTH && sd->flags.Test(SettingFlag::GuiDropdown)) {
 			this->SetDisplayedHelpText(pe);
 
 			if (this->valuedropdown_entry == pe) {
@@ -2681,7 +2681,7 @@ struct GameSettingsWindow : Window {
 					if (value < min_val) value = min_val; // skip between "disabled" and minimum
 				} else {
 					value -= step;
-					if (value < min_val) value = (sd->flags & SF_GUI_0_IS_SPECIAL) ? 0 : min_val;
+					if (value < min_val) value = sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val;
 				}
 
 				/* Set up scroller timeout for numeric values */
@@ -2702,10 +2702,10 @@ struct GameSettingsWindow : Window {
 			}
 		} else {
 			/* Only open editbox if clicked for the second time, and only for types where it is sensible for. */
-			if (this->last_clicked == pe && !sd->IsBoolSetting() && !(sd->flags & SF_GUI_DROPDOWN)) {
+			if (this->last_clicked == pe && !sd->IsBoolSetting() && !sd->flags.Test(SettingFlag::GuiDropdown)) {
 				int64_t value64 = value;
 				/* Show the correct currency-translated value */
-				if (sd->flags & SF_GUI_CURRENCY) value64 *= GetCurrency().rate;
+				if (sd->flags.Test(SettingFlag::GuiCurrency)) value64 *= GetCurrency().rate;
 
 				CharSetFilter charset_filter = CS_NUMERAL; //default, only numeric input allowed
 				if (min_val < 0) charset_filter = CS_NUMERAL_SIGNED; // special case, also allow '-' sign for negative input
@@ -2741,7 +2741,7 @@ struct GameSettingsWindow : Window {
 			long long llvalue = atoll(str->c_str());
 
 			/* Save the correct currency-translated value */
-			if (sd->flags & SF_GUI_CURRENCY) llvalue /= GetCurrency().rate;
+			if (sd->flags.Test(SettingFlag::GuiCurrency)) llvalue /= GetCurrency().rate;
 
 			value = ClampTo<int32_t>(llvalue);
 		} else {
@@ -2781,7 +2781,7 @@ struct GameSettingsWindow : Window {
 				/* Deal with drop down boxes on the panel. */
 				assert(this->valuedropdown_entry != nullptr);
 				const IntSettingDesc *sd = this->valuedropdown_entry->setting;
-				assert(sd->flags & SF_GUI_DROPDOWN);
+				assert(sd->flags.Test(SettingFlag::GuiDropdown));
 
 				SetSettingValue(sd, index);
 				this->SetDirty();
