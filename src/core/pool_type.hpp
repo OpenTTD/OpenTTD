@@ -13,15 +13,14 @@
 #include "enum_type.hpp"
 
 /** Various types of a pool. */
-enum PoolType : uint8_t {
-	PT_NONE    = 0x00, ///< No pool is selected.
-	PT_NORMAL  = 0x01, ///< Normal pool containing game objects.
-	PT_NCLIENT = 0x02, ///< Network client pools.
-	PT_NADMIN  = 0x04, ///< Network admin pool.
-	PT_DATA    = 0x08, ///< NewGRF or other data, that is not reset together with normal pools.
-	PT_ALL     = 0x0F, ///< All pool types.
+enum class PoolType : uint8_t {
+	Normal, ///< Normal pool containing game objects.
+	NetworkClient, ///< Network client pools.
+	NetworkAdmin, ///< Network admin pool.
+	Data, ///< NewGRF or other data, that is not reset together with normal pools.
 };
-DECLARE_ENUM_AS_BIT_SET(PoolType)
+using PoolTypes = EnumBitSet<PoolType, uint8_t>;
+static constexpr PoolTypes PT_ALL = {PoolType::Normal, PoolType::NetworkClient, PoolType::NetworkAdmin, PoolType::Data};
 
 typedef std::vector<struct PoolBase *> PoolVector; ///< Vector of pointers to PoolBase
 
@@ -39,7 +38,7 @@ struct PoolBase {
 		return pools;
 	}
 
-	static void Clean(PoolType);
+	static void Clean(PoolTypes);
 
 	/**
 	 * Constructor registers this object in the pool vector.
@@ -76,7 +75,7 @@ private:
  * @tparam Tzero        Whether to zero the memory
  * @warning when Tcache is enabled *all* instances of this pool's item must be of the same size.
  */
-template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, PoolType Tpool_type = PT_NORMAL, bool Tcache = false, bool Tzero = true>
+template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, PoolType Tpool_type = PoolType::Normal, bool Tcache = false, bool Tzero = true>
 struct Pool : PoolBase {
 private:
 	/** Some helper functions to get the maximum value of the provided index. */

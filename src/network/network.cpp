@@ -582,7 +582,9 @@ NetworkAddress ParseConnectionString(const std::string &connection_string, uint1
  */
 static void InitializeNetworkPools(bool close_admins = true)
 {
-	PoolBase::Clean(PT_NCLIENT | (close_admins ? PT_NADMIN : PT_NONE));
+	PoolTypes to_clean{PoolType::NetworkClient};
+	if (close_admins) to_clean.Set(PoolType::NetworkAdmin);
+	PoolBase::Clean(to_clean);
 }
 
 /**

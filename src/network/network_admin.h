@@ -18,7 +18,7 @@ extern AdminID _redirect_console_to_admin;
 
 class ServerNetworkAdminSocketHandler;
 /** Pool with all admin connections. */
-typedef Pool<ServerNetworkAdminSocketHandler, AdminID, 2, 16, PT_NADMIN> NetworkAdminSocketPool;
+using NetworkAdminSocketPool = Pool<ServerNetworkAdminSocketHandler, AdminID, 2, 16, PoolType::NetworkAdmin>;
 extern NetworkAdminSocketPool _networkadminsocket_pool;
 
 /** Class for handling the server side of the game connection. */
