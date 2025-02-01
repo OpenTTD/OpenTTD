@@ -14,11 +14,11 @@
 #include "core/tcp_listen.h"
 #include "core/tcp_admin.h"
 
-extern AdminIndex _redirect_console_to_admin;
+extern AdminID _redirect_console_to_admin;
 
 class ServerNetworkAdminSocketHandler;
 /** Pool with all admin connections. */
-typedef Pool<ServerNetworkAdminSocketHandler, AdminIndex, 2, MAX_ADMINS, PT_NADMIN> NetworkAdminSocketPool;
+typedef Pool<ServerNetworkAdminSocketHandler, AdminID, 2, 16, PT_NADMIN> NetworkAdminSocketPool;
 extern NetworkAdminSocketPool _networkadminsocket_pool;
 
 /** Class for handling the server side of the game connection. */
@@ -115,7 +115,7 @@ void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bc
 
 void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, const std::string &msg, int64_t data = 0, bool from_admin = false);
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
-void NetworkServerSendAdminRcon(AdminIndex admin_index, TextColour colour_code, const std::string_view string);
+void NetworkServerSendAdminRcon(AdminID admin_index, TextColour colour_code, const std::string_view string);
 void NetworkAdminConsole(const std::string_view origin, const std::string_view string);
 void NetworkAdminGameScript(const std::string_view json);
 void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacket &cp);
