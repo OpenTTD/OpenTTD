@@ -1006,14 +1006,15 @@ Window *BringWindowToFrontById(WindowClass cls, ConvertibleThroughBase auto numb
  * @tparam Treturn_existing If set, also return the window if it already existed.
  * @param desc The pointer to the WindowDesc to be created
  * @param window_number the window number of the new window
+ * @param extra_arguments optional extra arguments to pass to the window's constructor.
  * @return %Window pointer of the newly created window, or the existing one if \a Treturn_existing is set, or \c nullptr.
  */
-template <typename Twindow, bool Treturn_existing = false>
-Twindow *AllocateWindowDescFront(WindowDesc &desc, WindowNumber window_number)
+template <typename Twindow, bool Treturn_existing = false, typename... Targs>
+Twindow *AllocateWindowDescFront(WindowDesc &desc, WindowNumber window_number, Targs... extra_arguments)
 {
 	Twindow *w = static_cast<Twindow *>(BringWindowToFrontById(desc.cls, window_number));
 	if (w != nullptr) return Treturn_existing ? w : nullptr;
-	return new Twindow(desc, window_number);
+	return new Twindow(desc, window_number, std::forward<Targs>(extra_arguments)...);
 }
 
 void RelocateAllWindows(int neww, int newh);
