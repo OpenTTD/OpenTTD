@@ -190,17 +190,6 @@ bool Order::Equals(const Order &other) const
 }
 
 /**
- * Pack this order into a 32 bits integer, or actually only
- * the type, flags and destination.
- * @return the packed representation.
- * @note unpacking is done in the constructor.
- */
-uint32_t Order::Pack() const
-{
-	return this->dest << 16 | this->flags << 8 | this->type;
-}
-
-/**
  * Pack this order into a 16 bits integer as close to the TTD
  * representation as possible.
  * @return the TTD-like packed representation.
