@@ -117,8 +117,8 @@ debug_inline constexpr void ToggleFlag(T &x, const T y)
 template <typename Tenum, typename Tstorage>
 class EnumBitSet {
 public:
-	using enum_type = Tenum; ///< Enum type of this EnumBitSet.
-	using storage_type = Tstorage; ///< Storage type of this EnumBitSet.
+	using EnumType = Tenum; ///< Enum type of this EnumBitSet.
+	using BaseType = Tstorage; ///< Storage type of this EnumBitSet, be ConvertibleThroughBase
 
 	constexpr EnumBitSet() : data(0) {}
 	constexpr EnumBitSet(Tenum value) : data(0) { this->Set(value); }

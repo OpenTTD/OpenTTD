@@ -35,9 +35,6 @@ public:
 	EndianBufferWriter &operator <<(std::string_view data) { this->Write(data); return *this; }
 	EndianBufferWriter &operator <<(bool data) { return *this << static_cast<uint8_t>(data ? 1 : 0); }
 
-	template <typename Tenum, typename Tstorage>
-	EndianBufferWriter &operator <<(const EnumBitSet<Tenum, Tstorage> &data) { return *this << data.base(); }
-
 	template <typename T>
 	EndianBufferWriter &operator <<(const OverflowSafeInt<T> &data) { return *this << static_cast<T>(data); };
 
@@ -135,9 +132,6 @@ public:
 
 	EndianBufferReader &operator >>(std::string &data) { data = this->ReadStr(); return *this; }
 	EndianBufferReader &operator >>(bool &data) { data = this->Read<uint8_t>() != 0; return *this; }
-
-	template <typename Tenum, typename Tstorage>
-	EndianBufferReader &operator >>(EnumBitSet<Tenum, Tstorage> &data) { data = Tenum{this->Read<Tstorage>()}; return *this; }
 
 	template <typename T>
 	EndianBufferReader &operator >>(OverflowSafeInt<T> &data) { data = this->Read<T>(); return *this; };
