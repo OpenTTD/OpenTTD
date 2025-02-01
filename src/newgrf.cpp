@@ -1034,7 +1034,7 @@ static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteRe
 			break;
 
 		case 0x06: // Climates available
-			ei->climates = buf.ReadByte();
+			ei->climates = LandscapeTypes{buf.ReadByte()};
 			break;
 
 		case PROP_VEHICLE_LOAD_AMOUNT: // 0x07 Loading speed
@@ -2546,8 +2546,8 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 
 				/* If value of goods is negative, it means in fact food or, if in toyland, fizzy_drink acceptance.
 				 * Else, we have "standard" 3rd cargo type, goods or candy, for toyland once more */
-				CargoType cargo_type = (goods >= 0) ? ((_settings_game.game_creation.landscape == LT_TOYLAND) ? GetCargoTypeByLabel(CT_CANDY) : GetCargoTypeByLabel(CT_GOODS)) :
-						((_settings_game.game_creation.landscape == LT_TOYLAND) ? GetCargoTypeByLabel(CT_FIZZY_DRINKS) : GetCargoTypeByLabel(CT_FOOD));
+				CargoType cargo_type = (goods >= 0) ? ((_settings_game.game_creation.landscape == LandscapeType::Toyland) ? GetCargoTypeByLabel(CT_CANDY) : GetCargoTypeByLabel(CT_GOODS)) :
+						((_settings_game.game_creation.landscape == LandscapeType::Toyland) ? GetCargoTypeByLabel(CT_FIZZY_DRINKS) : GetCargoTypeByLabel(CT_FOOD));
 
 				/* Make sure the cargo type is valid in this climate. */
 				if (!IsValidCargoType(cargo_type)) goods = 0;
@@ -3820,11 +3820,11 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 				break;
 
 			case 0x17: // Probability in random game
-				indsp->appear_creation[_settings_game.game_creation.landscape] = buf.ReadByte();
+				indsp->appear_creation[to_underlying(_settings_game.game_creation.landscape)] = buf.ReadByte();
 				break;
 
 			case 0x18: // Probability during gameplay
-				indsp->appear_ingame[_settings_game.game_creation.landscape] = buf.ReadByte();
+				indsp->appear_ingame[to_underlying(_settings_game.game_creation.landscape)] = buf.ReadByte();
 				break;
 
 			case 0x19: // Map colour
@@ -4215,7 +4215,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 				break;
 
 			case 0x0B: // Climate mask
-				spec->climate = buf.ReadByte();
+				spec->climate = LandscapeTypes{buf.ReadByte()};
 				break;
 
 			case 0x0C: // Size
@@ -6634,7 +6634,7 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 		}
 
 		case 0x03: // current climate, 0=temp, 1=arctic, 2=trop, 3=toyland
-			*value = _settings_game.game_creation.landscape;
+			*value = to_underlying(_settings_game.game_creation.landscape);
 			return true;
 
 		case 0x06: // road traffic side, bit 4 clear=left, set=right
@@ -6717,7 +6717,7 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 
 		case 0x20: { // snow line height
 			uint8_t snowline = GetSnowLine();
-			if (_settings_game.game_creation.landscape == LT_ARCTIC && snowline <= _settings_game.construction.map_height_limit) {
+			if (_settings_game.game_creation.landscape == LandscapeType::Arctic && snowline <= _settings_game.construction.map_height_limit) {
 				*value = Clamp(snowline * (grffile->grf_version >= 8 ? 1 : TILE_HEIGHT), 0, 0xFE);
 			} else {
 				/* No snow */
@@ -9047,29 +9047,29 @@ static void CalculateRefitMasks()
 		if (_gted[engine].defaultcargo_grf == nullptr) {
 			/* If the vehicle has any capacity, apply the default refit masks */
 			if (e->type != VEH_TRAIN || e->u.rail.capacity != 0) {
-				static constexpr uint8_t T = 1 << LT_TEMPERATE;
-				static constexpr uint8_t A = 1 << LT_ARCTIC;
-				static constexpr uint8_t S = 1 << LT_TROPIC;
-				static constexpr uint8_t Y = 1 << LT_TOYLAND;
+				static constexpr LandscapeType T = LandscapeType::Temperate;
+				static constexpr LandscapeType A = LandscapeType::Arctic;
+				static constexpr LandscapeType S = LandscapeType::Tropic;
+				static constexpr LandscapeType Y = LandscapeType::Toyland;
 				static const struct DefaultRefitMasks {
-					uint8_t climate;
+					LandscapeTypes climate;
 					CargoLabel cargo_label;
 					CargoClasses cargo_allowed;
 					CargoClasses cargo_disallowed;
 				} _default_refit_masks[] = {
-					{T | A | S | Y, CT_PASSENGERS, CC_PASSENGERS,               0},
-					{T | A | S    , CT_MAIL,       CC_MAIL,                     0},
-					{T | A | S    , CT_VALUABLES,  CC_ARMOURED,                 CC_LIQUID},
-					{            Y, CT_MAIL,       CC_MAIL | CC_ARMOURED,       CC_LIQUID},
-					{T | A        , CT_COAL,       CC_BULK,                     0},
-					{        S    , CT_COPPER_ORE, CC_BULK,                     0},
-					{            Y, CT_SUGAR,      CC_BULK,                     0},
-					{T | A | S    , CT_OIL,        CC_LIQUID,                   0},
-					{            Y, CT_COLA,       CC_LIQUID,                   0},
-					{T            , CT_GOODS,      CC_PIECE_GOODS | CC_EXPRESS, CC_LIQUID | CC_PASSENGERS},
-					{    A | S    , CT_GOODS,      CC_PIECE_GOODS | CC_EXPRESS, CC_LIQUID | CC_PASSENGERS | CC_REFRIGERATED},
-					{    A | S    , CT_FOOD,       CC_REFRIGERATED,             0},
-					{            Y, CT_CANDY,      CC_PIECE_GOODS | CC_EXPRESS, CC_LIQUID | CC_PASSENGERS},
+					{{T, A, S, Y}, CT_PASSENGERS, CC_PASSENGERS,               0},
+					{{T, A, S   }, CT_MAIL,       CC_MAIL,                     0},
+					{{T, A, S   }, CT_VALUABLES,  CC_ARMOURED,                 CC_LIQUID},
+					{{         Y}, CT_MAIL,       CC_MAIL | CC_ARMOURED,       CC_LIQUID},
+					{{T, A      }, CT_COAL,       CC_BULK,                     0},
+					{{      S   }, CT_COPPER_ORE, CC_BULK,                     0},
+					{{         Y}, CT_SUGAR,      CC_BULK,                     0},
+					{{T, A, S   }, CT_OIL,        CC_LIQUID,                   0},
+					{{         Y}, CT_COLA,       CC_LIQUID,                   0},
+					{{T         }, CT_GOODS,      CC_PIECE_GOODS | CC_EXPRESS, CC_LIQUID | CC_PASSENGERS},
+					{{   A, S   }, CT_GOODS,      CC_PIECE_GOODS | CC_EXPRESS, CC_LIQUID | CC_PASSENGERS | CC_REFRIGERATED},
+					{{   A, S   }, CT_FOOD,       CC_REFRIGERATED,             0},
+					{{         Y}, CT_CANDY,      CC_PIECE_GOODS | CC_EXPRESS, CC_LIQUID | CC_PASSENGERS},
 				};
 
 				if (e->type == VEH_AIRCRAFT) {
@@ -9091,7 +9091,7 @@ static void CalculateRefitMasks()
 							break;
 						default:
 							/* Cargo ships */
-							if (_settings_game.game_creation.landscape == LT_TOYLAND) {
+							if (_settings_game.game_creation.landscape == LandscapeType::Toyland) {
 								/* No tanker in toyland :( */
 								_gted[engine].cargo_allowed = CC_MAIL | CC_ARMOURED | CC_EXPRESS | CC_BULK | CC_PIECE_GOODS | CC_LIQUID;
 								_gted[engine].cargo_disallowed = CC_PASSENGERS;
@@ -9111,7 +9111,7 @@ static void CalculateRefitMasks()
 					/* Train wagons and road vehicles are classified by their default cargo type */
 					CargoLabel label = GetActiveCargoLabel(ei->cargo_label);
 					for (const auto &drm : _default_refit_masks) {
-						if (!HasBit(drm.climate, _settings_game.game_creation.landscape)) continue;
+						if (!drm.climate.Test(_settings_game.game_creation.landscape)) continue;
 						if (drm.cargo_label != label) continue;
 
 						_gted[engine].cargo_allowed = drm.cargo_allowed;
@@ -9212,7 +9212,7 @@ static void CalculateRefitMasks()
 				ei->cargo_type = static_cast<CargoType>(FindFirstBit(_standard_cargo_mask));
 			}
 		}
-		if (!IsValidCargoType(ei->cargo_type)) ei->climates = 0;
+		if (!IsValidCargoType(ei->cargo_type)) ei->climates = {};
 
 		/* Clear refit_mask for not refittable ships */
 		if (e->type == VEH_SHIP && !e->u.ship.old_refittable) {
@@ -9248,7 +9248,7 @@ static void FinaliseEngineArray()
 			e->info.variant_id = GetNewEngineID(e->grf_prop.grffile, e->type, e->info.variant_id);
 		}
 
-		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
+		if (!e->info.climates.Test(_settings_game.game_creation.landscape)) continue;
 
 		/* Skip wagons, there livery is defined via the engine */
 		if (e->type != VEH_TRAIN || e->u.rail.railveh_type != RAILVEH_WAGON) {
@@ -9458,14 +9458,14 @@ static void FinaliseHouseArray()
 		}
 	}
 
-	HouseZones climate_mask = (HouseZones)(1 << (_settings_game.game_creation.landscape + 12));
+	HouseZones climate_mask = (HouseZones)(1 << (to_underlying(_settings_game.game_creation.landscape) + 12));
 	EnsureEarlyHouse(HZ_ZON1 | climate_mask);
 	EnsureEarlyHouse(HZ_ZON2 | climate_mask);
 	EnsureEarlyHouse(HZ_ZON3 | climate_mask);
 	EnsureEarlyHouse(HZ_ZON4 | climate_mask);
 	EnsureEarlyHouse(HZ_ZON5 | climate_mask);
 
-	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
+	if (_settings_game.game_creation.landscape == LandscapeType::Arctic) {
 		EnsureEarlyHouse(HZ_ZON1 | HZ_SUBARTC_ABOVE);
 		EnsureEarlyHouse(HZ_ZON2 | HZ_SUBARTC_ABOVE);
 		EnsureEarlyHouse(HZ_ZON3 | HZ_SUBARTC_ABOVE);
@@ -10039,14 +10039,14 @@ static void AfterLoadGRFs()
 		}
 
 		/* Road type is not available, so disable this engine */
-		e->info.climates = 0;
+		e->info.climates = {};
 	}
 
 	for (Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		RailType railtype = GetRailTypeByLabel(_gted[e->index].railtypelabel);
 		if (railtype == INVALID_RAILTYPE) {
 			/* Rail type is not available, so disable this engine */
-			e->info.climates = 0;
+			e->info.climates = {};
 		} else {
 			e->u.rail.railtype = railtype;
 			e->u.rail.intended_railtype = railtype;

@@ -146,7 +146,7 @@ Engine::Engine(VehicleType type, uint16_t local_id)
  */
 bool Engine::IsEnabled() const
 {
-	return this->info.string_id != STR_NEWGRF_INVALID_ENGINE && HasBit(this->info.climates, _settings_game.game_creation.landscape);
+	return this->info.string_id != STR_NEWGRF_INVALID_ENGINE && this->info.climates.Test(_settings_game.game_creation.landscape);
 }
 
 /**
@@ -699,7 +699,7 @@ void SetYearEngineAgingStops()
 		const EngineInfo *ei = &e->info;
 
 		/* Exclude certain engines */
-		if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) continue;
+		if (!ei->climates.Test(_settings_game.game_creation.landscape)) continue;
 		if (e->type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON) continue;
 
 		/* Base year ending date on half the model life */
@@ -786,7 +786,7 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 	e->reliability_spd_dec = ei->decay_speed << 2;
 
 	/* prevent certain engines from ever appearing. */
-	if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) {
+	if (!ei->climates.Test(_settings_game.game_creation.landscape)) {
 		e->flags.Set(EngineFlag::Available);
 		e->company_avail = 0;
 	}

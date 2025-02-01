@@ -11,17 +11,17 @@
 #define LANDSCAPE_TYPE_H
 
 #include "core/enum_type.hpp"
-typedef uint8_t LandscapeID; ///< Landscape type. @see LandscapeType
 
 /** Landscape types */
-enum LandscapeType : uint8_t {
-	LT_TEMPERATE  = 0,
-	LT_ARCTIC     = 1,
-	LT_TROPIC     = 2,
-	LT_TOYLAND    = 3,
-
-	NUM_LANDSCAPE = 4,
+enum class LandscapeType : uint8_t {
+	Temperate = 0,
+	Arctic    = 1,
+	Tropic    = 2,
+	Toyland   = 3,
 };
+using LandscapeTypes = EnumBitSet<LandscapeType, uint8_t>;
+
+static constexpr uint NUM_LANDSCAPE = 4;
 
 /**
  * For storing the water borders which shall be retained.

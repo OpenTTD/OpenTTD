@@ -540,7 +540,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	{
 		this->CreateNestedTree();
 		NWidgetStacked *show_desert = this->GetWidget<NWidgetStacked>(WID_ETT_SHOW_PLACE_DESERT);
-		show_desert->SetDisplayedPlane(_settings_game.game_creation.landscape == LT_TROPIC ? 0 : SZSP_NONE);
+		show_desert->SetDisplayedPlane(_settings_game.game_creation.landscape == LandscapeType::Tropic ? 0 : SZSP_NONE);
 		this->FinishInitNested(window_number);
 		this->last_user_action = INVALID_WID_ETT;
 	}

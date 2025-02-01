@@ -558,9 +558,9 @@ public:
 			if (tr.top > tr.bottom) return;
 
 			/* Climate */
-			uint8_t landscape = _load_check_data.settings.game_creation.landscape;
-			if (landscape < NUM_LANDSCAPE) {
-				SetDParam(0, STR_CLIMATE_TEMPERATE_LANDSCAPE + landscape);
+			LandscapeType landscape = _load_check_data.settings.game_creation.landscape;
+			if (to_underlying(landscape) < NUM_LANDSCAPE) {
+				SetDParam(0, STR_CLIMATE_TEMPERATE_LANDSCAPE + to_underlying(landscape));
 				DrawString(tr, STR_NETWORK_SERVER_LIST_LANDSCAPE);
 				tr.top += GetCharacterHeight(FS_NORMAL);
 			}

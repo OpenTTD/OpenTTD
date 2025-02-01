@@ -135,13 +135,13 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, Tree
 static TreeType GetRandomTreeType(TileIndex tile, uint seed)
 {
 	switch (_settings_game.game_creation.landscape) {
-		case LT_TEMPERATE:
+		case LandscapeType::Temperate:
 			return static_cast<TreeType>(seed * TREE_COUNT_TEMPERATE / 256 + TREE_TEMPERATE);
 
-		case LT_ARCTIC:
+		case LandscapeType::Arctic:
 			return static_cast<TreeType>(seed * TREE_COUNT_SUB_ARCTIC / 256 + TREE_SUB_ARCTIC);
 
-		case LT_TROPIC:
+		case LandscapeType::Tropic:
 			switch (GetTropicZone(tile)) {
 				case TROPICZONE_NORMAL:  return static_cast<TreeType>(seed * TREE_COUNT_SUB_TROPICAL / 256 + TREE_SUB_TROPICAL);
 				case TROPICZONE_DESERT:  return static_cast<TreeType>((seed > 12) ? TREE_INVALID : TREE_CACTUS);
@@ -267,7 +267,7 @@ void PlaceTreesRandomly()
 			/* The higher we get, the more trees we plant */
 			j = GetTileZ(tile) * 2;
 			/* Above snowline more trees! */
-			if (_settings_game.game_creation.landscape == LT_ARCTIC && ht > GetSnowLine()) j *= 3;
+			if (_settings_game.game_creation.landscape == LandscapeType::Arctic && ht > GetSnowLine()) j *= 3;
 			while (j--) {
 				PlaceTreeAtSameHeight(tile, ht);
 			}
@@ -275,7 +275,7 @@ void PlaceTreesRandomly()
 	} while (--i);
 
 	/* place extra trees at rainforest area */
-	if (_settings_game.game_creation.landscape == LT_TROPIC) {
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
 		i = Map::ScaleBySize(DEFAULT_RAINFOREST_TREE_STEPS);
 		if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
 
@@ -358,15 +358,15 @@ void GenerateTrees()
 	if (_settings_game.game_creation.tree_placer == TP_NONE) return;
 
 	switch (_settings_game.game_creation.tree_placer) {
-		case TP_ORIGINAL: i = _settings_game.game_creation.landscape == LT_ARCTIC ? 15 : 6; break;
-		case TP_IMPROVED: i = _settings_game.game_creation.landscape == LT_ARCTIC ?  4 : 2; break;
+		case TP_ORIGINAL: i = _settings_game.game_creation.landscape == LandscapeType::Arctic ? 15 : 6; break;
+		case TP_IMPROVED: i = _settings_game.game_creation.landscape == LandscapeType::Arctic ?  4 : 2; break;
 		default: NOT_REACHED();
 	}
 
 	total = Map::ScaleBySize(DEFAULT_TREE_STEPS);
-	if (_settings_game.game_creation.landscape == LT_TROPIC) total += Map::ScaleBySize(DEFAULT_RAINFOREST_TREE_STEPS);
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic) total += Map::ScaleBySize(DEFAULT_RAINFOREST_TREE_STEPS);
 	total *= i;
-	uint num_groups = (_settings_game.game_creation.landscape != LT_TOYLAND) ? Map::ScaleBySize(GB(Random(), 0, 5) + 25) : 0;
+	uint num_groups = (_settings_game.game_creation.landscape != LandscapeType::Toyland) ? Map::ScaleBySize(GB(Random(), 0, 5) + 25) : 0;
 	total += num_groups * DEFAULT_TREE_STEPS;
 	SetGeneratingWorldProgress(GWP_TREE, total);
 
@@ -393,7 +393,7 @@ CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 
 	if (start_tile >= Map::Size()) return CMD_ERROR;
 	/* Check the tree type within the current climate */
-	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[_settings_game.game_creation.landscape], _tree_count_by_landscape[_settings_game.game_creation.landscape])) return CMD_ERROR;
+	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)], _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)])) return CMD_ERROR;
 
 	Company *c = (_game_mode != GM_EDITOR) ? Company::GetIfValid(_current_company) : nullptr;
 	int limit = (c == nullptr ? INT32_MAX : GB(c->tree_limit, 16, 16));
@@ -439,7 +439,7 @@ CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 
 				TreeType treetype = (TreeType)tree_to_plant;
 				/* Be a bit picky about which trees go where. */
-				if (_settings_game.game_creation.landscape == LT_TROPIC && treetype != TREE_INVALID && (
+				if (_settings_game.game_creation.landscape == LandscapeType::Tropic && treetype != TREE_INVALID && (
 						/* No cacti outside the desert */
 						(treetype == TREE_CACTUS && GetTropicZone(current_tile) != TROPICZONE_DESERT) ||
 						/* No rain forest trees outside the rain forest, except in the editor mode where it makes those tiles rain forest tile */
@@ -689,7 +689,7 @@ static void TileLoopTreesAlps(TileIndex tile)
 
 static bool CanPlantExtraTrees(TileIndex tile)
 {
-	return ((_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) == TROPICZONE_RAINFOREST) ?
+	return ((_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_RAINFOREST) ?
 		(_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST) :
 		_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
@@ -700,8 +700,9 @@ static void TileLoop_Trees(TileIndex tile)
 		TileLoop_Water(tile);
 	} else {
 		switch (_settings_game.game_creation.landscape) {
-			case LT_TROPIC: TileLoopTreesDesert(tile); break;
-			case LT_ARCTIC: TileLoopTreesAlps(tile);   break;
+			case LandscapeType::Tropic: TileLoopTreesDesert(tile); break;
+			case LandscapeType::Arctic: TileLoopTreesAlps(tile);   break;
+			default: break;
 		}
 	}
 
@@ -729,7 +730,7 @@ static void TileLoop_Trees(TileIndex tile)
 
 	switch (GetTreeGrowth(tile)) {
 		case TreeGrowthStage::Grown: // regular sized tree
-			if (_settings_game.game_creation.landscape == LT_TROPIC &&
+			if (_settings_game.game_creation.landscape == LandscapeType::Tropic &&
 					GetTreeType(tile) != TREE_CACTUS &&
 					GetTropicZone(tile) == TROPICZONE_DESERT) {
 				AddTreeGrowth(tile, 1);
@@ -792,7 +793,7 @@ static void TileLoop_Trees(TileIndex tile)
 						break;
 					}
 					default: // snow or desert
-						if (_settings_game.game_creation.landscape == LT_TROPIC) {
+						if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
 							MakeClear(tile, CLEAR_DESERT, GetTreeDensity(tile));
 						} else {
 							uint density = GetTreeDensity(tile);
@@ -859,7 +860,7 @@ void OnTick_Trees()
 	if (skip < 16 && (TimerGameTick::counter & (16 / skip - 1)) != 0) return;
 
 	/* place a tree at a random rainforest spot */
-	if (_settings_game.game_creation.landscape == LT_TROPIC) {
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
 		for (uint c = Map::ScaleBySize(1); c > 0; c--) {
 			PlantRandomTree(true);
 		}

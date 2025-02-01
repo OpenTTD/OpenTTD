@@ -645,7 +645,7 @@ public:
 			SetDParam(3, sel->info.companies_max);
 			tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_CLIENTS);
 
-			SetDParam(0, STR_CLIMATE_TEMPERATE_LANDSCAPE + sel->info.landscape);
+			SetDParam(0, STR_CLIMATE_TEMPERATE_LANDSCAPE + to_underlying(sel->info.landscape));
 			tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_LANDSCAPE); // landscape
 
 			SetDParam(0, sel->info.map_width);

@@ -73,7 +73,7 @@ size_t ObjectSpec::Count()
  */
 bool ObjectSpec::IsEverAvailable() const
 {
-	return this->IsEnabled() && HasBit(this->climate, _settings_game.game_creation.landscape) &&
+	return this->IsEnabled() && this->climate.Test(_settings_game.game_creation.landscape) &&
 			(this->flags & ((_game_mode != GM_EDITOR && !_generating_world) ? OBJECT_FLAG_ONLY_IN_SCENEDIT : OBJECT_FLAG_ONLY_IN_GAME)) == 0;
 }
 

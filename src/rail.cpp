@@ -255,7 +255,7 @@ RailTypes GetCompanyRailTypes(CompanyID company, bool introduces)
 	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		const EngineInfo *ei = &e->info;
 
-		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
+		if (ei->climates.Test(_settings_game.game_creation.landscape) &&
 				(HasBit(e->company_avail, company) || TimerGameCalendar::date >= e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
 			const RailVehicleInfo *rvi = &e->u.rail;
 
@@ -285,7 +285,7 @@ RailTypes GetRailTypes(bool introduces)
 
 	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		const EngineInfo *ei = &e->info;
-		if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) continue;
+		if (!ei->climates.Test(_settings_game.game_creation.landscape)) continue;
 
 		const RailVehicleInfo *rvi = &e->u.rail;
 		if (rvi->railveh_type != RAILVEH_WAGON) {

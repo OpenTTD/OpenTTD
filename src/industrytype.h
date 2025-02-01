@@ -116,7 +116,7 @@ struct IndustrySpec {
 	std::array<CargoType, INDUSTRY_NUM_INPUTS> accepts_cargo; ///< 16 accepted cargoes.
 	uint16_t input_cargo_multiplier[INDUSTRY_NUM_INPUTS][INDUSTRY_NUM_OUTPUTS]; ///< Input cargo multipliers (multiply amount of incoming cargo for the produced cargoes)
 	IndustryLifeType life_type;                 ///< This is also known as Industry production flag, in newgrf specs
-	uint8_t climate_availability;                  ///< Bitmask, giving landscape enums as bit position
+	LandscapeTypes climate_availability; ///< Bitmask, giving landscape enums as bit position
 	IndustryBehaviour behaviour;                ///< How this industry will behave, and how others entities can use it
 	uint8_t map_colour;                            ///< colour used for the small map
 	StringID name;                              ///< Displayed name of the industry

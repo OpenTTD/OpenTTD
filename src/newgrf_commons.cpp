@@ -335,8 +335,8 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
 uint32_t GetTerrainType(TileIndex tile, TileContext context)
 {
 	switch (_settings_game.game_creation.landscape) {
-		case LT_TROPIC: return GetTropicZone(tile);
-		case LT_ARCTIC: {
+		case LandscapeType::Tropic: return GetTropicZone(tile);
+		case LandscapeType::Arctic: {
 			bool has_snow;
 			switch (GetTileType(tile)) {
 				case MP_CLEAR:

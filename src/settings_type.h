@@ -365,7 +365,7 @@ struct GameCreationSettings {
 	uint8_t heightmap_rotation;               ///< rotation director for the heightmap
 	uint8_t se_flat_world_height;             ///< land height a flat world gets in SE
 	uint8_t town_name;                        ///< the town name generator used for town names
-	uint8_t landscape;                        ///< the landscape we're currently in
+	LandscapeType landscape;                        ///< the landscape we're currently in
 	BorderFlags water_borders;                    ///< bitset of the borders that are water
 	uint16_t custom_town_number;               ///< manually entered number of towns
 	uint16_t custom_industry_number;           ///< manually entered number of industries

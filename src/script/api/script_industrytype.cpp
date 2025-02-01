@@ -45,7 +45,7 @@
 {
 	if (!IsValidIndustryType(industry_type)) return false;
 
-	if (_settings_game.game_creation.landscape != LT_TEMPERATE) return true;
+	if (_settings_game.game_creation.landscape != LandscapeType::Temperate) return true;
 	return (::GetIndustrySpec(industry_type)->behaviour & INDUSTRYBEH_DONT_INCR_PROD) == 0;
 }
 

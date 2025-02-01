@@ -260,7 +260,7 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
 	p.Send_uint8 (info.spectators_on);
 	p.Send_uint16(info.map_width);
 	p.Send_uint16(info.map_height);
-	p.Send_uint8 (info.landscape);
+	p.Send_uint8 (to_underlying(info.landscape));
 	p.Send_bool  (info.dedicated);
 }
 
@@ -365,10 +365,10 @@ void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfo
 			if (game_info_version < 6) while (p.Recv_uint8() != 0) {} // Used to contain the map-name.
 			info.map_width      = p.Recv_uint16();
 			info.map_height     = p.Recv_uint16();
-			info.landscape      = p.Recv_uint8 ();
+			info.landscape      = LandscapeType{p.Recv_uint8()};
 			info.dedicated      = p.Recv_bool  ();
 
-			if (info.landscape >= NUM_LANDSCAPE) info.landscape = 0;
+			if (to_underlying(info.landscape) >= NUM_LANDSCAPE) info.landscape = LandscapeType::Temperate;
 	}
 
 	/* For older servers, estimate the ticks running based on the calendar date. */

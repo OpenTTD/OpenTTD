@@ -11,6 +11,7 @@
 #define GENWORLD_H
 
 #include "company_type.h"
+#include "landscape_type.h"
 #include <thread>
 
 /** Constants related to world generation */
@@ -92,7 +93,7 @@ void HandleGeneratingWorldAbortion();
 void LoadTownData();
 
 /* genworld_gui.cpp */
-void SetNewLandscapeType(uint8_t landscape);
+void SetNewLandscapeType(LandscapeType landscape);
 void SetGeneratingWorldProgress(GenWorldProgress cls, uint total);
 void IncreaseGeneratingWorldProgress(GenWorldProgress cls);
 void PrepareGenerateWorldProgress();

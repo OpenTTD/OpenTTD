@@ -1386,7 +1386,7 @@ bool Vehicle::HandleBreakdown()
 
 				if (!PlayVehicleSound(this, VSE_BREAKDOWN)) {
 					bool train_or_ship = this->type == VEH_TRAIN || this->type == VEH_SHIP;
-					SndPlayVehicleFx((_settings_game.game_creation.landscape != LT_TOYLAND) ?
+					SndPlayVehicleFx((_settings_game.game_creation.landscape != LandscapeType::Toyland) ?
 						(train_or_ship ? SND_10_BREAKDOWN_TRAIN_SHIP : SND_0F_BREAKDOWN_ROADVEHICLE) :
 						(train_or_ship ? SND_3A_BREAKDOWN_TRAIN_SHIP_TOYLAND : SND_35_BREAKDOWN_ROADVEHICLE_TOYLAND), this);
 				}

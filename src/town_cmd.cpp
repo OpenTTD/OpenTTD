@@ -830,7 +830,7 @@ void AddAcceptedCargoOfHouse(TileIndex tile, HouseID house, const HouseSpec *hs,
 		if (callback != CALLBACK_FAILED) {
 			AddAcceptedCargoSetMask(accepts[0], GB(callback, 0, 4), acceptance, always_accepted);
 			AddAcceptedCargoSetMask(accepts[1], GB(callback, 4, 4), acceptance, always_accepted);
-			if (_settings_game.game_creation.landscape != LT_TEMPERATE && HasBit(callback, 12)) {
+			if (_settings_game.game_creation.landscape != LandscapeType::Temperate && HasBit(callback, 12)) {
 				/* The 'S' bit indicates food instead of goods */
 				AddAcceptedCargoSetMask(GetCargoTypeByLabel(CT_FOOD), GB(callback, 8, 4), acceptance, always_accepted);
 			} else {
@@ -2042,13 +2042,16 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 
 	/* Set the default cargo requirement for town growth */
 	switch (_settings_game.game_creation.landscape) {
-		case LT_ARCTIC:
+		case LandscapeType::Arctic:
 			if (FindFirstCargoWithTownAcceptanceEffect(TAE_FOOD) != nullptr) t->goal[TAE_FOOD] = TOWN_GROWTH_WINTER;
 			break;
 
-		case LT_TROPIC:
+		case LandscapeType::Tropic:
 			if (FindFirstCargoWithTownAcceptanceEffect(TAE_FOOD) != nullptr) t->goal[TAE_FOOD] = TOWN_GROWTH_DESERT;
 			if (FindFirstCargoWithTownAcceptanceEffect(TAE_WATER) != nullptr) t->goal[TAE_WATER] = TOWN_GROWTH_DESERT;
+			break;
+
+		default:
 			break;
 	}
 
@@ -2777,8 +2780,8 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 	HouseZonesBits rad = GetTownRadiusGroup(t, tile);
 
 	/* Above snow? */
-	int land = _settings_game.game_creation.landscape;
-	if (land == LT_ARCTIC && maxz > HighestSnowLine()) land = -1;
+	int land = to_underlying(_settings_game.game_creation.landscape);
+	if (_settings_game.game_creation.landscape == LandscapeType::Arctic && maxz > HighestSnowLine()) land = -1;
 
 	uint bitmask = (1 << rad) + (1 << (land + 12));
 
