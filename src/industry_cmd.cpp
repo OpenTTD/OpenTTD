@@ -1375,7 +1375,7 @@ static CommandCost CheckNewIndustry_Water(TileIndex tile)
 }
 
 /**
- * Check the conditions of #CHECK_LUMBERMILL (Industry should be in the rain forest).
+ * Check the conditions of #CHECK_LUMBERMILL (Industry should be in the rainforest).
  * @param tile %Tile to perform the checking.
  * @return Succeeded or failed command.
  */

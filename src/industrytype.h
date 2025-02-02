@@ -38,7 +38,7 @@ enum CheckProc : uint8_t {
 	CHECK_FARM,       ///< %Industry should be below snow-line in arctic.
 	CHECK_PLANTATION, ///< %Industry should NOT be in the desert.
 	CHECK_WATER,      ///< %Industry should be in the desert.
-	CHECK_LUMBERMILL, ///< %Industry should be in the rain forest.
+	CHECK_LUMBERMILL, ///< %Industry should be in the rainforest.
 	CHECK_BUBBLEGEN,  ///< %Industry should be in low land.
 	CHECK_OIL_RIG,    ///< Industries at sea should be positioned near edge of the map.
 	CHECK_END,        ///< End marker of the industry check procedures.
