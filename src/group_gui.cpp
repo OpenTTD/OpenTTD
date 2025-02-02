@@ -395,7 +395,7 @@ public:
 		this->vscroll = this->GetScrollbar(WID_GL_LIST_VEHICLE_SCROLLBAR);
 		this->group_sb = this->GetScrollbar(WID_GL_LIST_GROUP_SCROLLBAR);
 
-		this->vli.index = ALL_GROUP;
+		this->vli.SetIndex(ALL_GROUP);
 		this->group_sel = INVALID_GROUP;
 		this->group_rename = INVALID_GROUP;
 		this->group_over = INVALID_GROUP;
@@ -505,7 +505,7 @@ public:
 
 		GroupID group = this->vli.ToGroupID();
 		if (!(IsAllGroupID(group) || IsDefaultGroupID(group) || Group::IsValidID(group))) {
-			this->vli.index = ALL_GROUP;
+			this->vli.SetIndex(ALL_GROUP);
 			this->CloseChildWindows(WC_DROPDOWN_MENU);
 		}
 		this->SetDirty();
@@ -689,7 +689,7 @@ public:
 	{
 		if (confirmed) {
 			VehicleGroupWindow *w = (VehicleGroupWindow*)win;
-			w->vli.index = ALL_GROUP;
+			w->vli.SetIndex(ALL_GROUP);
 			Command<CMD_DELETE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_DELETE, w->group_confirm);
 		}
 	}
@@ -725,7 +725,7 @@ public:
 
 			case WID_GL_ALL_VEHICLES: // All vehicles button
 				if (!IsAllGroupID(this->vli.ToGroupID())) {
-					this->vli.index = ALL_GROUP;
+					this->vli.SetIndex(ALL_GROUP);
 					this->vehgroups.ForceRebuild();
 					this->SetDirty();
 				}
@@ -733,7 +733,7 @@ public:
 
 			case WID_GL_DEFAULT_VEHICLES: // Ungrouped vehicles button
 				if (!IsDefaultGroupID(this->vli.ToGroupID())) {
-					this->vli.index = DEFAULT_GROUP;
+					this->vli.SetIndex(DEFAULT_GROUP);
 					this->vehgroups.ForceRebuild();
 					this->SetDirty();
 				}
@@ -756,7 +756,7 @@ public:
 							do {
 								g = Group::Get(g)->parent;
 								if (g == it->group->index) {
-									this->vli.index = g;
+									this->vli.SetIndex(g);
 									break;
 								}
 							} while (g != INVALID_GROUP);
@@ -770,7 +770,8 @@ public:
 					}
 				}
 
-				this->group_sel = this->vli.index = it->group->index;
+				this->vli.SetIndex(it->group->index);
+				this->group_sel = it->group->index;
 
 				SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 
@@ -1129,7 +1130,7 @@ public:
 	{
 		if (g_id == INVALID_GROUP || g_id == this->vli.ToGroupID()) return;
 
-		this->vli.index = g_id;
+		this->vli.SetIndex(g_id);
 		if (g_id != ALL_GROUP && g_id != DEFAULT_GROUP) {
 			const Group *g = Group::Get(g_id);
 
