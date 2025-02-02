@@ -109,8 +109,8 @@
 
 /* static */ VehicleID ScriptVehicle::CloneVehicle(TileIndex depot, VehicleID vehicle_id, bool share_orders)
 {
-	EnforceCompanyModeValid(false);
-	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
+	EnforceCompanyModeValid(VEHICLE_INVALID);
+	EnforcePrecondition(VEHICLE_INVALID, IsPrimaryVehicle(vehicle_id));
 
 	if (!ScriptObject::Command<CMD_CLONE_VEHICLE>::Do(&ScriptInstance::DoCommandReturnVehicleID, depot, vehicle_id, share_orders)) return VEHICLE_INVALID;
 
