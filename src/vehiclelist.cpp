@@ -96,14 +96,14 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 		case VL_STATION_LIST:
 			FindVehiclesWithOrder(
 				[&vli](const Vehicle *v) { return v->type == vli.vtype; },
-				[&vli](const Order *order) { return (order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT) || order->IsType(OT_IMPLICIT)) && order->GetDestination() == vli.index; },
+				[&vli](const Order *order) { return (order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT) || order->IsType(OT_IMPLICIT)) && order->GetDestination() == vli.ToStationID(); },
 				[&list](const Vehicle *v) { list->push_back(v); }
 			);
 			break;
 
 		case VL_SHARED_ORDERS: {
 			/* Add all vehicles from this vehicle's shared order list */
-			const Vehicle *v = Vehicle::GetIfValid(vli.index);
+			const Vehicle *v = Vehicle::GetIfValid(vli.ToVehicleID());
 			if (v == nullptr || v->type != vli.vtype || !v->IsPrimaryVehicle()) return false;
 
 			for (; v != nullptr; v = v->NextShared()) {
@@ -113,10 +113,10 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 		}
 
 		case VL_GROUP_LIST:
-			if (vli.index != ALL_GROUP) {
+			if (vli.ToGroupID() != ALL_GROUP) {
 				for (const Vehicle *v : Vehicle::Iterate()) {
 					if (v->type == vli.vtype && v->IsPrimaryVehicle() &&
-							v->owner == vli.company && GroupIsInGroup(v->group_id, vli.index)) {
+							v->owner == vli.company && GroupIsInGroup(v->group_id, vli.ToGroupID())) {
 						list->push_back(v);
 					}
 				}
@@ -135,7 +135,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 		case VL_DEPOT_LIST:
 			FindVehiclesWithOrder(
 				[&vli](const Vehicle *v) { return v->type == vli.vtype; },
-				[&vli](const Order *order) { return order->IsType(OT_GOTO_DEPOT) && !(order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) && order->GetDestination() == vli.index; },
+				[&vli](const Order *order) { return order->IsType(OT_GOTO_DEPOT) && !(order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) && order->GetDestination() == vli.ToDestinationID(); },
 				[&list](const Vehicle *v) { list->push_back(v); }
 			);
 			break;

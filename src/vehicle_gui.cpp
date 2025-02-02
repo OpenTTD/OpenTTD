@@ -2050,20 +2050,20 @@ public:
 
 					case VL_STANDARD: // Company Name
 						SetDParam(0, STR_COMPANY_NAME);
-						SetDParam(1, this->vli.index);
+						SetDParam(1, this->vli.ToCompanyID());
 						SetDParam(3, this->vehicles.size());
 						break;
 
 					case VL_STATION_LIST: // Station/Waypoint Name
-						SetDParam(0, Station::IsExpected(BaseStation::Get(this->vli.index)) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
-						SetDParam(1, this->vli.index);
+						SetDParam(0, Station::IsExpected(BaseStation::Get(this->vli.ToStationID())) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
+						SetDParam(1, this->vli.ToStationID());
 						SetDParam(3, this->vehicles.size());
 						break;
 
 					case VL_DEPOT_LIST:
 						SetDParam(0, STR_DEPOT_CAPTION);
 						SetDParam(1, this->vli.vtype);
-						SetDParam(2, this->vli.index);
+						SetDParam(2, this->vli.ToDestinationID());
 						SetDParam(3, this->vehicles.size());
 						break;
 					default: NOT_REACHED();
@@ -2259,7 +2259,7 @@ public:
 	void OnGameTick() override
 	{
 		if (this->vehgroups.NeedResort()) {
-			StationID station = (this->vli.type == VL_STATION_LIST) ? this->vli.index : INVALID_STATION;
+			StationID station = (this->vli.type == VL_STATION_LIST) ? this->vli.ToStationID() : INVALID_STATION;
 
 			Debug(misc, 3, "Periodic resort {} list company {} at station {}", this->vli.vtype, this->owner, station);
 			this->SetDirty();
