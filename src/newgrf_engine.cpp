@@ -734,7 +734,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x08: break; // not implemented
 		case 0x09: break; // not implemented
 		case 0x0A: return v->current_order.MapOldOrder();
-		case 0x0B: return v->current_order.GetDestination();
+		case 0x0B: return v->current_order.GetDestination().value;
 		case 0x0C: return v->GetNumOrders();
 		case 0x0D: return v->cur_real_order_index;
 		case 0x0E: break; // not implemented

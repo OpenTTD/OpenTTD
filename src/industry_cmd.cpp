@@ -2741,7 +2741,7 @@ int WhoCanServiceIndustry(Industry *ind)
 		for (const Order *o : v->Orders()) {
 			if (o->IsType(OT_GOTO_STATION) && !(o->GetUnloadType() & OUFB_TRANSFER)) {
 				/* Vehicle visits a station to load or unload */
-				Station *st = Station::Get(o->GetDestination());
+				Station *st = Station::Get(o->GetDestination().ToStationID());
 				assert(st != nullptr);
 
 				/* Same cargo produced by industry is dropped here => not serviced by vehicle v */

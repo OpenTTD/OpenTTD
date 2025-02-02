@@ -35,12 +35,12 @@ DEF_CMD_TRAIT(CMD_CLEAR_ORDER_BACKUP, CmdClearOrderBackup,  CMD_CLIENT_ID, CMDT_
 template <typename Tcont, typename Titer>
 inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &order)
 {
-	return buffer << order.type << order.flags << order.dest << order.refit_cargo << order.wait_time << order.travel_time << order.max_speed;
+	return buffer << order.type << order.flags << order.dest.value << order.refit_cargo << order.wait_time << order.travel_time << order.max_speed;
 }
 
 inline EndianBufferReader &operator >>(EndianBufferReader &buffer, Order &order)
 {
-	return buffer >> order.type >> order.flags >> order.dest >> order.refit_cargo >> order.wait_time >> order.travel_time >> order.max_speed;
+	return buffer >> order.type >> order.flags >> order.dest.value >> order.refit_cargo >> order.wait_time >> order.travel_time >> order.max_speed;
 }
 
 #endif /* ORDER_CMD_H */

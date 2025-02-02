@@ -32,10 +32,10 @@ static void UpdateWaypointOrder(Order *o)
 {
 	if (!o->IsType(OT_GOTO_STATION)) return;
 
-	const Station *st = Station::Get(o->GetDestination());
+	const Station *st = Station::Get(o->GetDestination().ToStationID());
 	if ((st->had_vehicle_of_type & HVOT_WAYPOINT) == 0) return;
 
-	o->MakeGoToWaypoint(o->GetDestination());
+	o->MakeGoToWaypoint(o->GetDestination().ToStationID());
 }
 
 /**

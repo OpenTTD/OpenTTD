@@ -1369,7 +1369,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		v->current_order.AssignOrder(UnpackOldOrder(_old_order));
 
 		if (v->type == VEH_DISASTER) {
-			DisasterVehicle::From(v)->state = UnpackOldOrder(_old_order).GetDestination();
+			DisasterVehicle::From(v)->state = UnpackOldOrder(_old_order).GetDestination().value;
 		}
 
 		v->next = (Vehicle *)(size_t)_old_next_ptr;

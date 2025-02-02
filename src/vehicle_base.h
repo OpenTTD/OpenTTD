@@ -228,13 +228,12 @@ struct RefitDesc {
  * and whether it could be found.
  */
 struct ClosestDepot {
-	TileIndex location;
-	DestinationID destination; ///< The DestinationID as used for orders.
-	bool reverse;
-	bool found;
+	TileIndex location = INVALID_TILE;
+	DestinationID destination{}; ///< The DestinationID as used for orders.
+	bool reverse = false;
+	bool found = false;
 
-	ClosestDepot() :
-		location(INVALID_TILE), destination(0), reverse(false), found(false) {}
+	ClosestDepot() = default;
 
 	ClosestDepot(TileIndex location, DestinationID destination, bool reverse = false) :
 		location(location), destination(destination), reverse(reverse), found(true) {}

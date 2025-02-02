@@ -47,7 +47,7 @@ private:
 
 	uint8_t type = 0; ///< The type of order + non-stop flags
 	uint8_t flags = 0; ///< Load/unload types, depot order/action types.
-	DestinationID dest = 0; ///< The destination of the order.
+	DestinationID dest{}; ///< The destination of the order.
 
 	CargoType refit_cargo = CARGO_NO_REFIT; ///< Refit CargoType
 
@@ -145,13 +145,13 @@ public:
 	/** What are we going to do when in the depot. */
 	inline OrderDepotActionFlags GetDepotActionType() const { return (OrderDepotActionFlags)GB(this->flags, 3, 4); }
 	/** What variable do we have to compare? */
-	inline OrderConditionVariable GetConditionVariable() const { return (OrderConditionVariable)GB(this->dest, 11, 5); }
+	inline OrderConditionVariable GetConditionVariable() const { return static_cast<OrderConditionVariable>(GB(this->dest.value, 11, 5)); }
 	/** What is the comparator to use? */
 	inline OrderConditionComparator GetConditionComparator() const { return (OrderConditionComparator)GB(this->type, 5, 3); }
 	/** Get the order to skip to. */
 	inline VehicleOrderID GetConditionSkipToOrder() const { return this->flags; }
 	/** Get the value to base the skip on. */
-	inline uint16_t GetConditionValue() const { return GB(this->dest, 0, 11); }
+	inline uint16_t GetConditionValue() const { return GB(this->dest.value, 0, 11); }
 
 	/** Set how the consist must be loaded. */
 	inline void SetLoadType(OrderLoadFlags load_type) { SB(this->flags, 4, 3, load_type); }
@@ -166,13 +166,13 @@ public:
 	/** Set what we are going to do in the depot. */
 	inline void SetDepotActionType(OrderDepotActionFlags depot_service_type) { SB(this->flags, 3, 4, depot_service_type); }
 	/** Set variable we have to compare. */
-	inline void SetConditionVariable(OrderConditionVariable condition_variable) { SB(this->dest, 11, 5, condition_variable); }
+	inline void SetConditionVariable(OrderConditionVariable condition_variable) { SB(this->dest.value, 11, 5, condition_variable); }
 	/** Set the comparator to use. */
 	inline void SetConditionComparator(OrderConditionComparator condition_comparator) { SB(this->type, 5, 3, condition_comparator); }
 	/** Get the order to skip to. */
 	inline void SetConditionSkipToOrder(VehicleOrderID order_id) { this->flags = order_id; }
 	/** Set the value to base the skip on. */
-	inline void SetConditionValue(uint16_t value) { SB(this->dest, 0, 11, value); }
+	inline void SetConditionValue(uint16_t value) { SB(this->dest.value, 0, 11, value); }
 
 	/* As conditional orders write their "skip to" order all over the flags, we cannot check the
 	 * flags to find out if timetabling is enabled. However, as conditional orders are never
