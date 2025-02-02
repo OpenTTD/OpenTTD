@@ -107,7 +107,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	}
 
 	/* If the object wants only one colour, then give it that colour. */
-	if ((spec->flags & OBJECT_FLAG_2CC_COLOUR) == 0) o->colour &= 0xF;
+	if (!spec->flags.Test(ObjectFlag::Uses2CC)) o->colour &= 0xF;
 
 	if (spec->callback_mask.Test(ObjectCallbackMask::Colour)) {
 		uint16_t res = GetObjectCallback(CBID_OBJECT_COLOUR, o->colour, 0, spec, o, tile);
@@ -135,7 +135,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	}
 
 	Object::IncTypeCount(type);
-	if (spec->flags & OBJECT_FLAG_ANIMATION) TriggerObjectAnimation(o, OAT_BUILT, spec);
+	if (spec->flags.Test(ObjectFlag::Animation)) TriggerObjectAnimation(o, OAT_BUILT, spec);
 }
 
 /**
@@ -192,7 +192,7 @@ void UpdateObjectColours(const Company *c)
 		if (spec->callback_mask.Test(ObjectCallbackMask::Colour)) continue;
 
 		const Livery *l = c->livery;
-		obj->colour = ((spec->flags & OBJECT_FLAG_2CC_COLOUR) ? (l->colour2 * 16) : 0) + l->colour1;
+		obj->colour = (spec->flags.Test(ObjectFlag::Uses2CC) ? (l->colour2 * 16) : 0) + l->colour1;
 	}
 }
 
@@ -216,8 +216,8 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 	if (_game_mode == GM_NORMAL && !spec->IsAvailable() && !_generating_world) return CMD_ERROR;
 	if ((_game_mode == GM_EDITOR || _generating_world) && !spec->WasEverAvailable()) return CMD_ERROR;
 
-	if ((spec->flags & OBJECT_FLAG_ONLY_IN_SCENEDIT) != 0 && ((!_generating_world && _game_mode != GM_EDITOR) || _current_company != OWNER_NONE)) return CMD_ERROR;
-	if ((spec->flags & OBJECT_FLAG_ONLY_IN_GAME) != 0 && (_generating_world || _game_mode != GM_NORMAL || _current_company > MAX_COMPANIES)) return CMD_ERROR;
+	if (spec->flags.Test(ObjectFlag::OnlyInScenedit) && ((!_generating_world && _game_mode != GM_EDITOR) || _current_company != OWNER_NONE)) return CMD_ERROR;
+	if (spec->flags.Test(ObjectFlag::OnlyInGame) && (_generating_world || _game_mode != GM_NORMAL || _current_company > MAX_COMPANIES)) return CMD_ERROR;
 	if (view >= spec->views) return CMD_ERROR;
 
 	if (!Object::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_OBJECTS);
@@ -237,8 +237,8 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 		/* Check the surface to build on. At this time we can't actually execute the
 		 * the CLEAR_TILE commands since the newgrf callback later on can check
 		 * some information about the tiles. */
-		bool allow_water = (spec->flags & (OBJECT_FLAG_BUILT_ON_WATER | OBJECT_FLAG_NOT_ON_LAND)) != 0;
-		bool allow_ground = (spec->flags & OBJECT_FLAG_NOT_ON_LAND) == 0;
+		bool allow_water = spec->flags.Any({ObjectFlag::BuiltOnWater, ObjectFlag::NotOnLand});
+		bool allow_ground = !spec->flags.Test(ObjectFlag::NotOnLand);
 		for (TileIndex t : ta) {
 			if (HasTileWaterGround(t)) {
 				if (!allow_water) return CommandCost(STR_ERROR_CAN_T_BUILD_ON_WATER);
@@ -308,7 +308,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 	/* Finally do a check for bridges. */
 	for (TileIndex t : ta) {
 		if (IsBridgeAbove(t) && (
-				!(spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) ||
+				!spec->flags.Test(ObjectFlag::AllowUnderBridge) ||
 				(GetTileMaxZ(t) + spec->height >= GetBridgeHeight(GetSouthernBridgeEnd(t))))) {
 			return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
@@ -443,7 +443,7 @@ static void DrawTile_Object(TileInfo *ti)
 	/* Fall back for when the object doesn't exist anymore. */
 	if (!spec->IsEnabled()) type = OBJECT_TRANSMITTER;
 
-	if ((spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) == 0) DrawFoundation(ti, GetFoundation_Object(ti->tile, ti->tileh));
+	if (!spec->flags.Test(ObjectFlag::HasNoFoundation)) DrawFoundation(ti, GetFoundation_Object(ti->tile, ti->tileh));
 
 	if (type < NEW_OBJECT_OFFSET) {
 		const DrawTileSprites *dts = nullptr;
@@ -457,7 +457,7 @@ static void DrawTile_Object(TileInfo *ti)
 			dts = &_objects[type];
 		}
 
-		if (spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) {
+		if (spec->flags.Test(ObjectFlag::HasNoFoundation)) {
 			/* If an object has no foundation, but tries to draw a (flat) ground
 			 * type... we have to be nice and convert that for them. */
 			switch (dts->ground.sprite) {
@@ -549,7 +549,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	CommandCost cost(EXPENSES_CONSTRUCTION, spec->GetClearCost() * ta.w * ta.h / 5);
-	if (spec->flags & OBJECT_FLAG_CLEAR_INCOME) cost.MultiplyCost(-1); // They get an income!
+	if (spec->flags.Test(ObjectFlag::ClearIncome)) cost.MultiplyCost(-1); // They get an income!
 
 	/* Towns can't remove any objects. */
 	if (_current_company == OWNER_TOWN) return CMD_ERROR;
@@ -559,18 +559,18 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 		if ((flags & DC_NO_WATER) && IsTileOnWater(tile)) {
 			/* There is water under the object, treat it as water tile. */
 			return CommandCost(STR_ERROR_CAN_T_BUILD_ON_WATER);
-		} else if (!(spec->flags & OBJECT_FLAG_AUTOREMOVE) && (flags & DC_AUTO)) {
+		} else if (!spec->flags.Test(ObjectFlag::Autoremove) && (flags & DC_AUTO)) {
 			/* No automatic removal by overbuilding stuff. */
 			return CommandCost(type == OBJECT_HQ ? STR_ERROR_COMPANY_HEADQUARTERS_IN : STR_ERROR_OBJECT_IN_THE_WAY);
 		} else if (_game_mode == GM_EDITOR) {
 			/* No further limitations for the editor. */
 		} else if (GetTileOwner(tile) == OWNER_NONE) {
 			/* Owned by nobody and unremovable, so we can only remove it with brute force! */
-			if (!_cheats.magic_bulldozer.value && (spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0) return CMD_ERROR;
+			if (!_cheats.magic_bulldozer.value && spec->flags.Test(ObjectFlag::CannotRemove)) return CMD_ERROR;
 		} else if (CheckTileOwnership(tile).Failed()) {
 			/* We don't own it!. */
 			return CommandCost(STR_ERROR_OWNED_BY);
-		} else if ((spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0 && (spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0) {
+		} else if (spec->flags.All({ObjectFlag::CannotRemove, ObjectFlag::Autoremove})) {
 			/* In the game editor or with cheats we can remove, otherwise we can't. */
 			if (!_cheats.magic_bulldozer.value) {
 				if (type == OBJECT_HQ) return CommandCost(STR_ERROR_COMPANY_HEADQUARTERS_IN);
@@ -580,7 +580,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 			/* Removing with the cheat costs more in TTDPatch / the specs. */
 			cost.MultiplyCost(25);
 		}
-	} else if ((spec->flags & (OBJECT_FLAG_BUILT_ON_WATER | OBJECT_FLAG_NOT_ON_LAND)) != 0) {
+	} else if (spec->flags.Any({ObjectFlag::BuiltOnWater, ObjectFlag::NotOnLand})) {
 		/* Water can't remove objects that are buildable on water. */
 		return CMD_ERROR;
 	}
@@ -673,7 +673,7 @@ static void GetTileDesc_Object(TileIndex tile, TileDesc *td)
 static void TileLoop_Object(TileIndex tile)
 {
 	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
-	if (spec->flags & OBJECT_FLAG_ANIMATION) {
+	if (spec->flags.Test(ObjectFlag::Animation)) {
 		Object *o = Object::GetByTile(tile);
 		TriggerObjectTileAnimation(o, tile, OAT_TILELOOP, spec);
 		if (o->location.tile == tile) TriggerObjectAnimation(o, OAT_256_TICKS, spec);
@@ -840,12 +840,12 @@ void GenerateObjects()
 		uint16_t amount = spec.generate_amount;
 
 		/* Scale by map size */
-		if ((spec.flags & OBJECT_FLAG_SCALE_BY_WATER) && _settings_game.construction.freeform_edges) {
+		if (spec.flags.Test(ObjectFlag::ScaleByWater) && _settings_game.construction.freeform_edges) {
 			/* Scale the amount of lighthouses with the amount of land at the borders.
 			 * The -6 is because the top borders are MP_VOID (-2) and all corners
 			 * are counted twice (-4). */
 			amount = Map::ScaleBySize1D(amount * num_water_tiles) / (2 * Map::MaxY() + 2 * Map::MaxX() - 6);
-		} else if (spec.flags & OBJECT_FLAG_SCALE_BY_WATER) {
+		} else if (spec.flags.Test(ObjectFlag::ScaleByWater)) {
 			amount = Map::ScaleBySize1D(amount);
 		} else {
 			amount = Map::ScaleBySize(amount);
