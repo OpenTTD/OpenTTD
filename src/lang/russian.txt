@@ -1169,6 +1169,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Индонез�
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Малайзийский ринггит
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Латвийский лат
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Португальский эскудо
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Украинская гривна
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автосохранение
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Интервал автосохранения игры
@@ -2786,6 +2787,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :ожидает 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :отключение
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} подключился к игре
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} подключился к игре (клиент #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} присоединился к компании {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} подключился в качестве зрителя
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} основал новую компанию (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} покинул игру ({2:STRING})

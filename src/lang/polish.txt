@@ -1404,6 +1404,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonezyj
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malezyjski
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Łat łotewski
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portugalskie
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hrywna ukraińska
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autozapis
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Częstotliwość automatycznego zapisu stanu gry
@@ -3015,6 +3016,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :oczekiwanie na 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :opuszczanie
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} dołączył do gry.
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} dołączył do gry (Klient #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} dołączył do {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} dołączył do obserwatorów
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} założył nową firmę (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} opuścił grę ({2:STRING})

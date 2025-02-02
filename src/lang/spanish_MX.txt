@@ -453,6 +453,12 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opciones de san
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de transparencia
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostrar nombres de localidades
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostrar nombres de estaciones
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Estaciones de trenes
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Paradas de camiones
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Paradas de autobuses
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Muelles
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Aeropuertos
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Vestigios
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostrar puntos de ruta
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostrar carteles propios
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostrar carteles y nombres del competidor
@@ -1019,6 +1025,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonesia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats letón
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portugués
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Grivna ucraniana
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Guardado automático
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Elegir el intervalo de guardados automáticos
@@ -2630,6 +2637,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :esperando actua
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :saliendo
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se unió a la partida
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} se unió a la partida (Cliente #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} se unió a {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se unió como espectador
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} creó una nueva empresa (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} salió de la partida ({2:STRING})
@@ -3112,7 +3120,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Ayuntami
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ninguno
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordenadas: {LTBLUE}{NUM}×{NUM}×{NUM}
 STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}Índice de casilla: {LTBLUE}{NUM} ({HEX})
-STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construido: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construido/renovado: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Clase de estación: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipo de estación: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Tipo de aeropuerto: {LTBLUE}{STRING}
