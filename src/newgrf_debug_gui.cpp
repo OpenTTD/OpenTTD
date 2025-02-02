@@ -335,7 +335,7 @@ struct NewGRFInspectWindow : Window {
 			assert(this->HasChainIndex());
 			const Vehicle *v = Vehicle::Get(index);
 			v = v->Move(this->chain_index);
-			if (v != nullptr) index = v->index;
+			if (v != nullptr) index = v->index.base();
 		}
 		return index;
 	}

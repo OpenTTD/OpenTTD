@@ -994,7 +994,7 @@ void CallVehicleTicks()
 	PerformanceAccumulator::Reset(PFE_GL_AIRCRAFT);
 
 	for (Vehicle *v : Vehicle::Iterate()) {
-		[[maybe_unused]] size_t vehicle_index = v->index;
+		[[maybe_unused]] VehicleID vehicle_index = v->index;
 
 		/* Vehicle could be deleted in this tick */
 		if (!v->Tick()) {
@@ -3007,7 +3007,7 @@ void Vehicle::RemoveFromShared()
 	} else if (were_first) {
 		/* If we were the first one, update to the new first one.
 		 * Note: FirstShared() is already the new first */
-		InvalidateWindowData(GetWindowClassForVehicleType(this->type), vli.ToWindowNumber(), this->FirstShared()->index | (1U << 31));
+		InvalidateWindowData(GetWindowClassForVehicleType(this->type), vli.ToWindowNumber(), this->FirstShared()->index.base() | (1U << 31));
 	}
 
 	this->next_shared     = nullptr;

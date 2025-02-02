@@ -176,7 +176,7 @@ void FixOldVehicles(LoadgameState &ls)
 		/* Vehicle-subtype is different in TTD(Patch) */
 		if (v->type == VEH_EFFECT) v->subtype = v->subtype >> 1;
 
-		v->name = CopyFromOldName(ls.vehicle_names[v->index]);
+		v->name = CopyFromOldName(ls.vehicle_names[v->index.base()]);
 
 		/* We haven't used this bit for stations for ages */
 		if (v->type == VEH_ROAD) {
@@ -1048,7 +1048,7 @@ static bool LoadOldCompany(LoadgameState &ls, int num)
 
 static uint32_t _old_order_ptr;
 static uint16_t _old_next_ptr;
-static VehicleID _current_vehicle_id;
+static typename VehicleID::BaseType _current_vehicle_id;
 
 static const OldChunks vehicle_train_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Train, track ),
@@ -1250,7 +1250,7 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 	ReadTTDPatchFlags(ls);
 
 	for (uint i = 0; i < ls.vehicle_multiplier; i++) {
-		_current_vehicle_id = static_cast<VehicleID>(num * ls.vehicle_multiplier + i);
+		_current_vehicle_id = num * ls.vehicle_multiplier + i;
 
 		Vehicle *v;
 
