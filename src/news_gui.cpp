@@ -396,10 +396,10 @@ struct NewsWindow : Window {
 			} else {
 				nvp->InitializeViewport(this, GetReferenceTile(ni->reftype1, ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
 			}
-			if (this->ni->flags & NF_NO_TRANSPARENT) nvp->disp_flags.Set(NWidgetDisplayFlag::NoTransparency);
-			if ((this->ni->flags & NF_INCOLOUR) == 0) {
+			if (this->ni->flags.Test(NewsFlag::NoTransparency)) nvp->disp_flags.Set(NWidgetDisplayFlag::NoTransparency);
+			if (!this->ni->flags.Test(NewsFlag::InColour)) {
 				nvp->disp_flags.Set(NWidgetDisplayFlag::ShadeGrey);
-			} else if (this->ni->flags & NF_SHADE) {
+			} else if (this->ni->flags.Test(NewsFlag::Shaded)) {
 				nvp->disp_flags.Set(NWidgetDisplayFlag::ShadeDimmed);
 			}
 		}
@@ -874,11 +874,11 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
  *
  * @see NewsSubtype
  */
-NewsItem::NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
+NewsItem::NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlags flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
 	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), advice_type(advice_type), style(style), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(std::move(data))
 {
 	/* show this news message in colour? */
-	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
+	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags.Set(NewsFlag::InColour);
 	CopyOutDParam(this->params, 10);
 }
 
@@ -896,7 +896,7 @@ NewsItem::NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlag 
  *
  * @see NewsSubtype
  */
-void AddNewsItem(StringID string, NewsType type, NewsStyle style, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type)
+void AddNewsItem(StringID string, NewsType type, NewsStyle style, NewsFlags flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type)
 {
 	if (_game_mode == GM_MENU) return;
 
@@ -1056,7 +1056,7 @@ void ChangeVehicleNews(VehicleID from_index, VehicleID to_index)
 	for (auto &ni : _news) {
 		if (ni.reftype1 == NR_VEHICLE && ni.ref1 == from_index) ni.ref1 = to_index;
 		if (ni.reftype2 == NR_VEHICLE && ni.ref2 == from_index) ni.ref2 = to_index;
-		if (ni.flags & NF_VEHICLE_PARAM0 && std::get<uint64_t>(ni.params[0]) == from_index) ni.params[0] = to_index;
+		if (ni.flags.Test(NewsFlag::VehicleParam0) && std::get<uint64_t>(ni.params[0]) == from_index) ni.params[0] = to_index;
 	}
 }
 

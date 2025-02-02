@@ -85,21 +85,15 @@ enum class NewsStyle : uint8_t {
 
 /**
  * Various OR-able news-item flags.
- * @note #NF_INCOLOUR is set automatically if needed.
+ * @note #NewsFlag::InColour is set automatically if needed.
  */
-enum NewsFlag : uint8_t {
-	NFB_INCOLOUR       = 0,                      ///< News item is shown in colour (otherwise it is shown in black & white).
-	NFB_NO_TRANSPARENT = 1,                      ///< News item disables transparency in the viewport.
-	NFB_SHADE          = 2,                      ///< News item uses shaded colours.
-	NFB_VEHICLE_PARAM0 = 6,                      ///< String param 0 contains a vehicle ID. (special autoreplace behaviour)
-
-	NF_INCOLOUR       = 1 << NFB_INCOLOUR,       ///< Bit value for coloured news.
-	NF_NO_TRANSPARENT = 1 << NFB_NO_TRANSPARENT, ///< Bit value for disabling transparency.
-	NF_SHADE          = 1 << NFB_SHADE,          ///< Bit value for enabling shading.
-	NF_VEHICLE_PARAM0 = 1 << NFB_VEHICLE_PARAM0, ///< Bit value for specifying that string param 0 contains a vehicle ID. (special autoreplace behaviour)
+enum class NewsFlag : uint8_t {
+	InColour, ///< News item is shown in colour (otherwise it is shown in black & white).
+	NoTransparency, ///< News item disables transparency in the viewport.
+	Shaded, ///< News item uses shaded colours.
+	VehicleParam0, ///< String param 0 contains a vehicle ID. (special autoreplace behaviour)
 };
-DECLARE_ENUM_AS_BIT_SET(NewsFlag)
-
+using NewsFlags = EnumBitSet<NewsFlag, uint8_t>;
 
 /**
  * News display options
@@ -148,7 +142,7 @@ struct NewsItem {
 	NewsType type;                ///< Type of the news
 	AdviceType advice_type; ///< The type of advice, to be able to remove specific advices later on.
 	NewsStyle style; /// Window style for the news.
-	NewsFlag flags;               ///< NewsFlags bits @see NewsFlag
+	NewsFlags flags;               ///< NewsFlags bits @see NewsFlag
 
 	NewsReferenceType reftype1;   ///< Type of ref1
 	NewsReferenceType reftype2;   ///< Type of ref2
@@ -159,7 +153,7 @@ struct NewsItem {
 
 	std::vector<StringParameterData> params; ///< Parameters for string resolving.
 
-	NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type);
+	NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlags flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type);
 };
 
 /**
