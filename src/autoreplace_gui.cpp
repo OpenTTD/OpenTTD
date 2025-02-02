@@ -119,7 +119,7 @@ class ReplaceVehicleWindow : public Window {
 	{
 		std::vector<EngineID> variants;
 		EngineID selected_engine = INVALID_ENGINE;
-		VehicleType type = (VehicleType)this->window_number;
+		VehicleType type = this->window_number;
 		uint8_t side = draw_left ? 0 : 1;
 
 		GUIEngineList list;
@@ -304,7 +304,7 @@ public:
 
 			case WID_RV_LEFT_MATRIX:
 			case WID_RV_RIGHT_MATRIX:
-				resize.height = GetEngineListHeight((VehicleType)this->window_number);
+				resize.height = GetEngineListHeight(this->window_number);
 				size.height = (this->window_number <= VEH_ROAD ? 8 : 4) * resize.height;
 				break;
 
@@ -463,7 +463,7 @@ public:
 				int side = (widget == WID_RV_LEFT_MATRIX) ? 0 : 1;
 
 				/* Do the actual drawing */
-				DrawEngineList((VehicleType)this->window_number, r, this->engines[side], *this->vscroll[side], this->sel_engine[side], side == 0, this->sel_group);
+				DrawEngineList(this->window_number, r, this->engines[side], *this->vscroll[side], this->sel_engine[side], side == 0, this->sel_group);
 				break;
 			}
 		}
@@ -532,7 +532,7 @@ public:
 				break;
 
 			case WID_RV_SORT_DROPDOWN:
-				DisplayVehicleSortDropDown(this, static_cast<VehicleType>(this->window_number), this->sort_criteria, WID_RV_SORT_DROPDOWN);
+				DisplayVehicleSortDropDown(this, this->window_number, this->sort_criteria, WID_RV_SORT_DROPDOWN);
 				break;
 
 			case WID_RV_TRAIN_ENGINEWAGON_DROPDOWN: {
@@ -599,7 +599,7 @@ public:
 						Engine *engine = Engine::Get(item.variant_id);
 						engine->display_flags.Flip(EngineDisplayFlag::IsFolded);
 
-						InvalidateWindowData(WC_REPLACE_VEHICLE, (VehicleType)this->window_number, 0); // Update the autoreplace window
+						InvalidateWindowData(WC_REPLACE_VEHICLE, this->window_number, 0); // Update the autoreplace window
 						InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
 						return;
 					}

@@ -548,7 +548,7 @@ protected:
 				break;
 
 			case SPET_GOAL:
-				ShowGoalsList((CompanyID)this->window_number);
+				ShowGoalsList(this->window_number);
 				break;
 
 			case SPET_BUTTON_PUSH:
@@ -604,7 +604,7 @@ public:
 		/* story_page_elements will get built by SetSelectedPage */
 
 		this->FinishInitNested(window_number);
-		this->owner = (Owner)this->window_number;
+		this->owner = this->window_number;
 
 		/* Initialize selected vars. */
 		this->selected_generic_title.clear();
