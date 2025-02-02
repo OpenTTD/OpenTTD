@@ -198,8 +198,8 @@ const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next
  */
 void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 {
-	StationID next_station = next->GetDestination();
-	Station *st = Station::GetIfValid(cur->GetDestination());
+	StationID next_station = next->GetDestination().ToStationID();
+	Station *st = Station::GetIfValid(cur->GetDestination().ToStationID());
 	if (st != nullptr && next_station != INVALID_STATION && next_station != st->index) {
 		Station *st_to = Station::Get(next_station);
 		for (CargoType c = 0; c < NUM_CARGO; c++) {

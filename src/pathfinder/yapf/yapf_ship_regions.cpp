@@ -185,7 +185,7 @@ public:
 		pf.SetDestination(start_water_region_patch);
 
 		if (v->current_order.IsType(OT_GOTO_STATION)) {
-			DestinationID station_id = v->current_order.GetDestination();
+			StationID station_id = v->current_order.GetDestination().ToStationID();
 			const BaseStation *station = BaseStation::Get(station_id);
 			TileArea tile_area;
 			station->GetTileArea(&tile_area, StationType::Dock);

@@ -2635,7 +2635,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommandFlags command)
 		}
 
 		this->SetDestTile(closestDepot.location);
-		this->current_order.MakeGoToDepot(closestDepot.destination, ODTF_MANUAL);
+		this->current_order.MakeGoToDepot(closestDepot.destination.ToDepotID(), ODTF_MANUAL);
 		if (!command.Test(DepotCommandFlag::Service)) this->current_order.SetDepotActionType(ODATFB_HALT);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 
