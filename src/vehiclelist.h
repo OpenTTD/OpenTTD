@@ -45,6 +45,8 @@ struct VehicleListIdentifier {
 	constexpr StationID ToStationID() const { assert(this->type == VL_STATION_LIST); return StationID(this->index); }
 	constexpr VehicleID ToVehicleID() const { assert(this->type == VL_SHARED_ORDERS); return VehicleID(this->index); }
 
+	constexpr void SetIndex(uint32_t index) { this->index = index; }
+
 	/**
 	 * Create a simple vehicle list.
 	 * @param type    List type.

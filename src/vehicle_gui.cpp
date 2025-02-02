@@ -2270,7 +2270,7 @@ public:
 	{
 		if (!gui_scope && HasBit(data, 31) && this->vli.type == VL_SHARED_ORDERS) {
 			/* Needs to be done in command-scope, so everything stays valid */
-			this->vli.index = GB(data, 0, 20);
+			this->vli.SetIndex(GB(data, 0, 20));
 			this->window_number = this->vli.ToWindowNumber();
 			this->vehgroups.ForceRebuild();
 			return;
