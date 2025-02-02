@@ -728,7 +728,7 @@ public:
 	void OnGameTick() override
 	{
 		if (this->stations.NeedResort()) {
-			Debug(misc, 3, "Periodic rebuild station list company {}", this->window_number);
+			Debug(misc, 3, "Periodic rebuild station list company {}", static_cast<int>(this->window_number));
 			this->SetDirty();
 		}
 	}

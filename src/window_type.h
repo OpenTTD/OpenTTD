@@ -10,6 +10,8 @@
 #ifndef WINDOW_TYPE_H
 #define WINDOW_TYPE_H
 
+#include "core/convertible_through_base.hpp"
+
 /**
  * Widget ID.
  * Even though the ID is signed, actual IDs must be non-negative.
@@ -736,8 +738,32 @@ enum GameOptionsInvalidationData : uint8_t {
 
 struct Window;
 
-/** Number to differentiate different windows of the same class */
-typedef int32_t WindowNumber;
+/**
+ * Number to differentiate different windows of the same class. This number generally
+ * implicitly passes some information, e.g. the TileIndex or Company associated with
+ * the window. To ease this use, the window number is lenient with what it accepts and
+ * broad with what it returns.
+ *
+ * Anything that converts into a number and ConvertibleThroughBase types will be accepted.
+ * When it's being used it returns int32_t or any other type when that's specifically
+ * requested, e.g. `VehicleType type = window_number` or `GetEngineListHeight(window_number)`
+ * in which the returned value will be a `VehicleType`.
+ */
+struct WindowNumber {
+private:
+	int32_t value = 0;
+public:
+	WindowNumber() = default;
+	WindowNumber(int32_t value) : value(value) {}
+	WindowNumber(ConvertibleThroughBase auto value) : value(value.base()) {}
+
+	/* Automatically convert to int32_t. */
+	operator int32_t() const { return value; }
+
+	/* Automatically convert to any other type that might be requested. */
+	template <typename T> requires (std::is_enum_v<T> || std::is_class_v<T>)
+	operator T() const { return static_cast<T>(value); };
+};
 
 /** State of handling an event. */
 enum EventState : uint8_t {
