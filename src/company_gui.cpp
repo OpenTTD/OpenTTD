@@ -346,7 +346,7 @@ struct CompanyFinancesWindow : Window {
 		this->SetupWidgets();
 		this->FinishInitNested(company);
 
-		this->owner = (Owner)this->window_number;
+		this->owner = this->window_number;
 		this->InvalidateData();
 	}
 
@@ -354,24 +354,24 @@ struct CompanyFinancesWindow : Window {
 	{
 		switch (widget) {
 			case WID_CF_CAPTION:
-				SetDParam(0, (CompanyID)this->window_number);
-				SetDParam(1, (CompanyID)this->window_number);
+				SetDParam(0, this->window_number);
+				SetDParam(1, this->window_number);
 				break;
 
 			case WID_CF_BALANCE_VALUE: {
-				const Company *c = Company::Get((CompanyID)this->window_number);
+				const Company *c = Company::Get(this->window_number);
 				SetDParam(0, c->money);
 				break;
 			}
 
 			case WID_CF_LOAN_VALUE: {
-				const Company *c = Company::Get((CompanyID)this->window_number);
+				const Company *c = Company::Get(this->window_number);
 				SetDParam(0, c->current_loan);
 				break;
 			}
 
 			case WID_CF_OWN_VALUE: {
-				const Company *c = Company::Get((CompanyID)this->window_number);
+				const Company *c = Company::Get(this->window_number);
 				SetDParam(0, c->money - c->current_loan);
 				break;
 			}
@@ -381,7 +381,7 @@ struct CompanyFinancesWindow : Window {
 				break;
 
 			case WID_CF_MAXLOAN_VALUE: {
-				const Company *c = Company::Get((CompanyID)this->window_number);
+				const Company *c = Company::Get(this->window_number);
 				SetDParam(0, c->GetMaxLoan());
 				break;
 			}
@@ -433,7 +433,7 @@ struct CompanyFinancesWindow : Window {
 				int period = widget - WID_CF_EXPS_PRICE1;
 				if (period < this->first_visible) break;
 
-				const Company *c = Company::Get((CompanyID)this->window_number);
+				const Company *c = Company::Get(this->window_number);
 				const auto &expenses = c->yearly_expenses[NUM_PERIODS - period - 1];
 				DrawYearColumn(r, TimerGameEconomy::year - (NUM_PERIODS - period - 1), expenses);
 				break;
@@ -455,7 +455,7 @@ struct CompanyFinancesWindow : Window {
 		this->GetWidget<NWidgetStacked>(WID_CF_SEL_PANEL)->SetDisplayedPlane(plane);
 		this->GetWidget<NWidgetStacked>(WID_CF_SEL_MAXLOAN)->SetDisplayedPlane(plane);
 
-		CompanyID company = (CompanyID)this->window_number;
+		CompanyID company = this->window_number;
 		plane = (company != _local_company) ? SZSP_NONE : 0;
 		this->GetWidget<NWidgetStacked>(WID_CF_SEL_BUTTONS)->SetDisplayedPlane(plane);
 	}
@@ -473,7 +473,7 @@ struct CompanyFinancesWindow : Window {
 			}
 
 			/* Check that the loan buttons are shown only when the user owns the company. */
-			CompanyID company = (CompanyID)this->window_number;
+			CompanyID company = this->window_number;
 			int req_plane = (company != _local_company) ? SZSP_NONE : 0;
 			if (req_plane != this->GetWidget<NWidgetStacked>(WID_CF_SEL_BUTTONS)->shown_plane) {
 				this->SetupWidgets();
@@ -513,7 +513,7 @@ struct CompanyFinancesWindow : Window {
 				break;
 
 			case WID_CF_INFRASTRUCTURE: // show infrastructure details
-				ShowCompanyInfrastructure((CompanyID)this->window_number);
+				ShowCompanyInfrastructure(this->window_number);
 				break;
 		}
 	}
@@ -521,7 +521,7 @@ struct CompanyFinancesWindow : Window {
 	void RefreshVisibleColumns()
 	{
 		for (uint period = 0; period < this->first_visible; ++period) {
-			const Company *c = Company::Get((CompanyID)this->window_number);
+			const Company *c = Company::Get(this->window_number);
 			const Expenses &expenses = c->yearly_expenses[NUM_PERIODS - period - 1];
 			/* Show expenses column if it has any non-zero value in it. */
 			if (std::ranges::any_of(expenses, [](const Money &value) { return value != 0; })) {
@@ -541,7 +541,7 @@ struct CompanyFinancesWindow : Window {
 	 * If it has, rescale the window to fit the new amount.
 	 */
 	IntervalTimer<TimerWindow> rescale_interval = {std::chrono::seconds(3), [this](auto) {
-		const Company *c = Company::Get((CompanyID)this->window_number);
+		const Company *c = Company::Get(this->window_number);
 		if (c->money > CompanyFinancesWindow::max_money) {
 			CompanyFinancesWindow::max_money = std::max(c->money * 2, CompanyFinancesWindow::max_money * 4);
 			this->SetupWidgets();
@@ -620,7 +620,7 @@ private:
 			}
 		}
 
-		const Company *c = Company::Get((CompanyID)this->window_number);
+		const Company *c = Company::Get(this->window_number);
 
 		if (this->livery_class < LC_GROUP_RAIL) {
 			/* Get the first selected livery to use as the default dropdown item */
@@ -751,7 +751,7 @@ public:
 
 				/* And group names */
 				for (const Group *g : Group::Iterate()) {
-					if (g->owner == (CompanyID)this->window_number) {
+					if (g->owner == this->window_number) {
 						SetDParam(0, g->index);
 						d = maxdim(d, GetStringBoundingBox(STR_GROUP_NAME));
 					}
@@ -793,14 +793,14 @@ public:
 
 	void OnPaint() override
 	{
-		bool local = (CompanyID)this->window_number == _local_company;
+		bool local = this->window_number == _local_company;
 
 		/* Disable dropdown controls if no scheme is selected */
 		bool disabled = this->livery_class < LC_GROUP_RAIL ? (this->sel == 0) : (this->sel == INVALID_GROUP);
 		this->SetWidgetDisabledState(WID_SCL_PRI_COL_DROPDOWN, !local || disabled);
 		this->SetWidgetDisabledState(WID_SCL_SEC_COL_DROPDOWN, !local || disabled);
 
-		this->BuildGroupList((CompanyID)this->window_number);
+		this->BuildGroupList(this->window_number);
 
 		this->DrawWidgets();
 	}
@@ -809,12 +809,12 @@ public:
 	{
 		switch (widget) {
 			case WID_SCL_CAPTION:
-				SetDParam(0, (CompanyID)this->window_number);
+				SetDParam(0, this->window_number);
 				break;
 
 			case WID_SCL_PRI_COL_DROPDOWN:
 			case WID_SCL_SEC_COL_DROPDOWN: {
-				const Company *c = Company::Get((CompanyID)this->window_number);
+				const Company *c = Company::Get(this->window_number);
 				bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
 				StringID colour = STR_COLOUR_DEFAULT;
 
@@ -891,7 +891,7 @@ public:
 			y += this->line_height;
 		};
 
-		const Company *c = Company::Get((CompanyID)this->window_number);
+		const Company *c = Company::Get(this->window_number);
 
 		if (livery_class < LC_GROUP_RAIL) {
 			int pos = this->vscroll->GetPosition();
@@ -946,7 +946,7 @@ public:
 				} else {
 					this->sel = INVALID_GROUP;
 					this->groups.ForceRebuild();
-					this->BuildGroupList((CompanyID)this->window_number);
+					this->BuildGroupList(this->window_number);
 
 					if (!this->groups.empty()) {
 						this->sel = this->groups[0].group->index;
@@ -1001,7 +1001,7 @@ public:
 
 	void OnDropdownSelect(WidgetID widget, int index) override
 	{
-		bool local = (CompanyID)this->window_number == _local_company;
+		bool local = this->window_number == _local_company;
 		if (!local) return;
 
 		Colours colour = static_cast<Colours>(index);
@@ -1034,7 +1034,7 @@ public:
 			/* data contains a VehicleType, rebuild list if it displayed */
 			if (this->livery_class == data + LC_GROUP_RAIL) {
 				this->groups.ForceRebuild();
-				this->BuildGroupList((CompanyID)this->window_number);
+				this->BuildGroupList(this->window_number);
 				this->SetRows();
 
 				if (!Group::IsValidID(this->sel)) {
@@ -1378,8 +1378,8 @@ public:
 		this->SelectDisplayPlanes(this->advanced);
 		this->FinishInitNested(parent->window_number);
 		this->parent = parent;
-		this->owner = (Owner)this->window_number;
-		this->face = Company::Get((CompanyID)this->window_number)->face;
+		this->owner = this->window_number;
+		this->face = Company::Get(this->window_number)->face;
 
 		this->UpdateData();
 	}
@@ -1594,7 +1594,7 @@ public:
 	{
 		switch (widget) {
 			case WID_SCMF_FACE:
-				DrawCompanyManagerFace(this->face, Company::Get((CompanyID)this->window_number)->colour, r);
+				DrawCompanyManagerFace(this->face, Company::Get(this->window_number)->colour, r);
 				break;
 		}
 	}
@@ -1739,7 +1739,7 @@ static WindowDesc _select_company_manager_face_desc(
  */
 static void DoSelectCompanyManagerFace(Window *parent)
 {
-	if (!Company::IsValidID((CompanyID)parent->window_number)) return;
+	if (!Company::IsValidID(parent->window_number)) return;
 
 	if (BringWindowToFrontById(WC_COMPANY_MANAGER_FACE, parent->window_number)) return;
 	new SelectCompanyManagerFaceWindow(_select_company_manager_face_desc, parent);
@@ -1797,7 +1797,7 @@ struct CompanyInfrastructureWindow : Window
 		this->UpdateRailRoadTypes();
 
 		this->InitNested(window_number);
-		this->owner = (Owner)this->window_number;
+		this->owner = this->window_number;
 	}
 
 	void UpdateRailRoadTypes()
@@ -1830,7 +1830,7 @@ struct CompanyInfrastructureWindow : Window
 	/** Get total infrastructure maintenance cost. */
 	Money GetTotalMaintenanceCost() const
 	{
-		const Company *c = Company::Get((CompanyID)this->window_number);
+		const Company *c = Company::Get(this->window_number);
 		Money total;
 
 		uint32_t rail_total = c->infrastructure.GetRailTotal();
@@ -1856,14 +1856,14 @@ struct CompanyInfrastructureWindow : Window
 	{
 		switch (widget) {
 			case WID_CI_CAPTION:
-				SetDParam(0, (CompanyID)this->window_number);
+				SetDParam(0, this->window_number);
 				break;
 		}
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		const Company *c = Company::Get((CompanyID)this->window_number);
+		const Company *c = Company::Get(this->window_number);
 
 		switch (widget) {
 			case WID_CI_RAIL_DESC: {
@@ -1991,7 +1991,7 @@ struct CompanyInfrastructureWindow : Window
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
-		const Company *c = Company::Get((CompanyID)this->window_number);
+		const Company *c = Company::Get(this->window_number);
 
 		int y = r.top;
 
@@ -2221,13 +2221,13 @@ struct CompanyWindow : Window
 	CompanyWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
-		this->owner = (Owner)this->window_number;
+		this->owner = this->window_number;
 		this->OnInvalidateData();
 	}
 
 	void OnPaint() override
 	{
-		const Company *c = Company::Get((CompanyID)this->window_number);
+		const Company *c = Company::Get(this->window_number);
 		bool local = this->window_number == _local_company;
 
 		if (!this->IsShaded()) {
@@ -2385,7 +2385,7 @@ struct CompanyWindow : Window
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
-		const Company *c = Company::Get((CompanyID)this->window_number);
+		const Company *c = Company::Get(this->window_number);
 		switch (widget) {
 			case WID_C_FACE:
 				DrawCompanyManagerFace(c->face, c->colour, r);
@@ -2418,8 +2418,8 @@ struct CompanyWindow : Window
 	{
 		switch (widget) {
 			case WID_C_CAPTION:
-				SetDParam(0, (CompanyID)this->window_number);
-				SetDParam(1, (CompanyID)this->window_number);
+				SetDParam(0, this->window_number);
+				SetDParam(1, this->window_number);
 				break;
 
 			case WID_C_DESC_INAUGURATION:
@@ -2434,7 +2434,7 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_DESC_COMPANY_VALUE:
-				SetDParam(0, CalculateCompanyValue(Company::Get((CompanyID)this->window_number)));
+				SetDParam(0, CalculateCompanyValue(Company::Get(this->window_number)));
 				break;
 		}
 	}
@@ -2453,7 +2453,7 @@ struct CompanyWindow : Window
 			case WID_C_NEW_FACE: DoSelectCompanyManagerFace(this); break;
 
 			case WID_C_COLOUR_SCHEME:
-				ShowCompanyLiveryWindow((CompanyID)this->window_number, INVALID_GROUP);
+				ShowCompanyLiveryWindow(this->window_number, INVALID_GROUP);
 				break;
 
 			case WID_C_PRESIDENT_NAME:
@@ -2469,7 +2469,7 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_VIEW_HQ: {
-				TileIndex tile = Company::Get((CompanyID)this->window_number)->location_of_HQ;
+				TileIndex tile = Company::Get(this->window_number)->location_of_HQ;
 				if (_ctrl_pressed) {
 					ShowExtraViewportWindow(tile);
 				} else {
@@ -2479,7 +2479,7 @@ struct CompanyWindow : Window
 			}
 
 			case WID_C_BUILD_HQ:
-				if ((uint8_t)this->window_number != _local_company) return;
+				if (this->window_number != _local_company) return;
 				if (this->IsWidgetLowered(WID_C_BUILD_HQ)) {
 					ResetObjectToPlace();
 					this->RaiseButtons();
@@ -2504,7 +2504,7 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_VIEW_INFRASTRUCTURE:
-				ShowCompanyInfrastructure((CompanyID)this->window_number);
+				ShowCompanyInfrastructure(this->window_number);
 				break;
 
 			case WID_C_GIVE_MONEY:
@@ -2513,12 +2513,12 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_HOSTILE_TAKEOVER:
-				ShowBuyCompanyDialog((CompanyID)this->window_number, true);
+				ShowBuyCompanyDialog(this->window_number, true);
 				break;
 
 			case WID_C_COMPANY_JOIN: {
 				this->query_widget = WID_C_COMPANY_JOIN;
-				CompanyID company = (CompanyID)this->window_number;
+				CompanyID company = this->window_number;
 				if (_network_server) {
 					NetworkServerDoMove(CLIENT_ID_SERVER, company);
 					MarkWholeScreenDirty();
@@ -2558,7 +2558,7 @@ struct CompanyWindow : Window
 
 			case WID_C_GIVE_MONEY: {
 				Money money = std::strtoull(str->c_str(), nullptr, 10) / GetCurrency().rate;
-				Command<CMD_GIVE_MONEY>::Post(STR_ERROR_CAN_T_GIVE_MONEY, money, (CompanyID)this->window_number);
+				Command<CMD_GIVE_MONEY>::Post(STR_ERROR_CAN_T_GIVE_MONEY, money, this->window_number);
 				break;
 			}
 
@@ -2614,7 +2614,7 @@ struct BuyCompanyWindow : Window {
 	{
 		this->InitNested(window_number);
 
-		const Company *c = Company::Get((CompanyID)this->window_number);
+		const Company *c = Company::Get(this->window_number);
 		this->company_value = hostile_takeover ? CalculateHostileTakeoverValue(c) : c->bankrupt_value;
 	}
 
@@ -2626,7 +2626,7 @@ struct BuyCompanyWindow : Window {
 				break;
 
 			case WID_BC_QUESTION:
-				const Company *c = Company::Get((CompanyID)this->window_number);
+				const Company *c = Company::Get(this->window_number);
 				SetDParam(0, c->index);
 				SetDParam(1, this->company_value);
 				size.height = GetStringHeight(this->hostile_takeover ? STR_BUY_COMPANY_HOSTILE_TAKEOVER : STR_BUY_COMPANY_MESSAGE, size.width);
@@ -2639,7 +2639,7 @@ struct BuyCompanyWindow : Window {
 		switch (widget) {
 			case WID_BC_CAPTION:
 				SetDParam(0, STR_COMPANY_NAME);
-				SetDParam(1, Company::Get((CompanyID)this->window_number)->index);
+				SetDParam(1, Company::Get(this->window_number)->index);
 				break;
 		}
 	}
@@ -2648,13 +2648,13 @@ struct BuyCompanyWindow : Window {
 	{
 		switch (widget) {
 			case WID_BC_FACE: {
-				const Company *c = Company::Get((CompanyID)this->window_number);
+				const Company *c = Company::Get(this->window_number);
 				DrawCompanyManagerFace(c->face, c->colour, r);
 				break;
 			}
 
 			case WID_BC_QUESTION: {
-				const Company *c = Company::Get((CompanyID)this->window_number);
+				const Company *c = Company::Get(this->window_number);
 				SetDParam(0, c->index);
 				SetDParam(1, this->company_value);
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->hostile_takeover ? STR_BUY_COMPANY_HOSTILE_TAKEOVER : STR_BUY_COMPANY_MESSAGE, TC_FROMSTRING, SA_CENTER);
@@ -2671,7 +2671,7 @@ struct BuyCompanyWindow : Window {
 				break;
 
 			case WID_BC_YES:
-				Command<CMD_BUY_COMPANY>::Post(STR_ERROR_CAN_T_BUY_COMPANY, (CompanyID)this->window_number, this->hostile_takeover);
+				Command<CMD_BUY_COMPANY>::Post(STR_ERROR_CAN_T_BUY_COMPANY, this->window_number, this->hostile_takeover);
 				break;
 		}
 	}
@@ -2683,7 +2683,7 @@ struct BuyCompanyWindow : Window {
 		/* Value can't change when in bankruptcy. */
 		if (!this->hostile_takeover) return;
 
-		const Company *c = Company::Get((CompanyID)this->window_number);
+		const Company *c = Company::Get(this->window_number);
 		auto new_value = CalculateHostileTakeoverValue(c);
 		if (new_value != this->company_value) {
 			this->company_value = new_value;

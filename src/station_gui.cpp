@@ -431,7 +431,7 @@ public:
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_STL_SCROLLBAR);
 		this->FinishInitNested(window_number);
-		this->owner = (Owner)this->window_number;
+		this->owner = this->window_number;
 
 		if (this->filter.cargoes == ALL_CARGOTYPES) this->filter.cargoes = _cargo_mask;
 
@@ -485,7 +485,7 @@ public:
 
 	void OnPaint() override
 	{
-		this->BuildStationsList((Owner)this->window_number);
+		this->BuildStationsList(this->window_number);
 		this->SortStationsList();
 
 		this->DrawWidgets();
@@ -618,7 +618,7 @@ public:
 
 				const Station *st = *it;
 				/* do not check HasStationInUse - it is slow and may be invalid */
-				assert(st->owner == (Owner)this->window_number || st->owner == OWNER_NONE);
+				assert(st->owner == this->window_number || st->owner == OWNER_NONE);
 
 				if (_ctrl_pressed) {
 					ShowExtraViewportWindow(st->xy);
@@ -2016,7 +2016,7 @@ struct StationViewWindow : public Window {
 			case WID_SV_SHIPS:    // Show list of scheduled ships to this station
 			case WID_SV_PLANES: { // Show list of scheduled aircraft to this station
 				Owner owner = Station::Get(this->window_number)->owner;
-				ShowVehicleListWindow(owner, (VehicleType)(widget - WID_SV_TRAINS), (StationID)this->window_number);
+				ShowVehicleListWindow(owner, (VehicleType)(widget - WID_SV_TRAINS), static_cast<StationID>(this->window_number));
 				break;
 			}
 

@@ -45,7 +45,7 @@ struct GoalListWindow : public Window {
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_GOAL_SCROLLBAR);
 		this->FinishInitNested(window_number);
-		this->owner = (Owner)this->window_number;
+		this->owner = this->window_number;
 		NWidgetStacked *wi = this->GetWidget<NWidgetStacked>(WID_GOAL_SELECT_BUTTONS);
 		wi->SetDisplayedPlane(window_number == INVALID_COMPANY ? 1 : 0);
 		this->OnInvalidateData(0);

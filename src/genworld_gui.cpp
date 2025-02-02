@@ -330,7 +330,7 @@ static void StartGeneratingLandscape(GenerateLandscapeWindowMode mode)
 
 static void LandscapeGenerationCallback(Window *w, bool confirmed)
 {
-	if (confirmed) StartGeneratingLandscape((GenerateLandscapeWindowMode)w->window_number);
+	if (confirmed) StartGeneratingLandscape(w->window_number);
 }
 
 static DropDownList BuildMapsizeDropDown()
@@ -397,7 +397,7 @@ struct GenerateLandscapeWindow : public Window {
 
 		this->LowerWidget(to_underlying(_settings_newgame.game_creation.landscape) + WID_GL_TEMPERATE);
 
-		this->mode = (GenerateLandscapeWindowMode)this->window_number;
+		this->mode = this->window_number;
 
 		/* Disable town and industry in SE */
 		this->SetWidgetDisabledState(WID_GL_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
