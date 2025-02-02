@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file genland.h Table used to generate deserts and/or rain forests. */
+/** @file genland.h Table used to generate deserts and/or rainforests. */
 
 #define M(x, y) {x,  y}
 
