@@ -20,27 +20,28 @@
 /**
  * Type of news.
  */
-enum NewsType : uint8_t {
-	NT_ARRIVAL_COMPANY, ///< First vehicle arrived for company
-	NT_ARRIVAL_OTHER,   ///< First vehicle arrived for competitor
-	NT_ACCIDENT,        ///< An accident or disaster has occurred
-	NT_ACCIDENT_OTHER,  ///< An accident or disaster has occurred
-	NT_COMPANY_INFO,    ///< Company info (new companies, bankruptcy messages)
-	NT_INDUSTRY_OPEN,   ///< Opening of industries
-	NT_INDUSTRY_CLOSE,  ///< Closing of industries
-	NT_ECONOMY,         ///< Economic changes (recession, industry up/dowm)
-	NT_INDUSTRY_COMPANY,///< Production changes of industry serviced by local company
-	NT_INDUSTRY_OTHER,  ///< Production changes of industry serviced by competitor(s)
-	NT_INDUSTRY_NOBODY, ///< Other industry production changes
-	NT_ADVICE,          ///< Bits of news about vehicles of the company
-	NT_NEW_VEHICLES,    ///< New vehicle has become available
-	NT_ACCEPTANCE,      ///< A type of cargo is (no longer) accepted
-	NT_SUBSIDIES,       ///< News about subsidies (announcements, expirations, acceptance)
-	NT_GENERAL,         ///< General news (from towns)
-	NT_END,             ///< end-of-array marker
+enum class NewsType : uint8_t {
+	ArrivalCompany, ///< First vehicle arrived for company
+	ArrivalOther, ///< First vehicle arrived for competitor
+	Accident, ///< An accident or disaster has occurred
+	AccidentOther, ///< An accident or disaster has occurred
+	CompanyInfo, ///< Company info (new companies, bankruptcy messages)
+	IndustryOpen, ///< Opening of industries
+	IndustryClose, ///< Closing of industries
+	Economy, ///< Economic changes (recession, industry up/dowm)
+	IndustryCompany, ///< Production changes of industry serviced by local company
+	IndustryOther, ///< Production changes of industry serviced by competitor(s)
+	IndustryNobody, ///< Other industry production changes
+	Advice, ///< Bits of news about vehicles of the company
+	NewVehicles, ///< New vehicle has become available
+	Acceptance, ///< A type of cargo is (no longer) accepted
+	Subsidies, ///< News about subsidies (announcements, expirations, acceptance)
+	General, ///< General news (from towns)
+
+	End, ///< end-of-array marker
 };
 
-/** Sub type of the #NT_ADVICE to be able to remove specific news items. */
+/** Sub type of the #NewsType::Advice to be able to remove specific news items. */
 enum class AdviceType : uint8_t {
 	AircraftDestinationTooFar, ///< Next (order) destination is too far for the aircraft type.
 	AutorenewFailed, ///< Autorenew or autoreplace failed.
@@ -98,10 +99,10 @@ using NewsFlags = EnumBitSet<NewsFlag, uint8_t>;
 /**
  * News display options
  */
-enum NewsDisplay : uint8_t {
-	ND_OFF,        ///< Only show a reminder in the status bar
-	ND_SUMMARY,    ///< Show ticker
-	ND_FULL,       ///< Show newspaper
+enum class NewsDisplay : uint8_t {
+	Off, ///< Only show a reminder in the status bar
+	Summary, ///< Show ticker
+	Full, ///< Show newspaper
 };
 
 /**

@@ -246,7 +246,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 				v->age = CalendarTime::MIN_DATE;
 
 				SetDParam(0, GetStationIndex(v->tile));
-				AddTileNewsItem(STR_NEWS_DISASTER_ZEPPELIN, NT_ACCIDENT, v->tile);
+				AddTileNewsItem(STR_NEWS_DISASTER_ZEPPELIN, NewsType::Accident, v->tile);
 				AI::NewEvent(GetTileOwner(v->tile), new ScriptEventDisasterZeppelinerCrashed(GetStationIndex(v->tile)));
 			}
 		}
@@ -387,7 +387,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 				uint victims = u->Crash();
 				u->disaster_vehicle = INVALID_VEHICLE;
 
-				AddTileNewsItem(STR_NEWS_DISASTER_SMALL_UFO, NT_ACCIDENT, u->tile);
+				AddTileNewsItem(STR_NEWS_DISASTER_SMALL_UFO, NewsType::Accident, u->tile);
 
 				AI::NewEvent(u->owner, new ScriptEventVehicleCrashed(u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO, victims));
 				Game::NewEvent(new ScriptEventVehicleCrashed(u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO, victims));
@@ -466,7 +466,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, b
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
-			AddIndustryNewsItem(news_message, NT_ACCIDENT, i->index);
+			AddIndustryNewsItem(news_message, NewsType::Accident, i->index);
 			if (_settings_client.sound.disaster) SndPlayTileFx(SND_12_EXPLOSION, i->location.tile);
 		}
 	} else if (v->state == 0) {
@@ -562,7 +562,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 
 		Town *t = ClosestTownFromTile(v->dest_tile, UINT_MAX);
 		SetDParam(0, t->index);
-		AddTileNewsItem(STR_NEWS_DISASTER_BIG_UFO, NT_ACCIDENT, v->tile);
+		AddTileNewsItem(STR_NEWS_DISASTER_BIG_UFO, NewsType::Accident, v->tile);
 
 		if (!Vehicle::CanAllocateItem(2)) {
 			delete v;
@@ -888,7 +888,7 @@ static void Disaster_CoalMine_Init()
 		for (const Industry *i : Industry::Iterate()) {
 			if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::CanSubsidence) && --index < 0) {
 				SetDParam(0, i->town->index);
-				AddTileNewsItem(STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE, NT_ACCIDENT, i->location.tile + TileDiffXY(1, 1)); // keep the news, even when the mine closes
+				AddTileNewsItem(STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE, NewsType::Accident, i->location.tile + TileDiffXY(1, 1)); // keep the news, even when the mine closes
 
 				{
 					TileIndex tile = i->location.tile;

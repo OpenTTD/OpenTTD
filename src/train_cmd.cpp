@@ -3011,7 +3011,7 @@ static void TrainEnterStation(Train *v, StationID station)
 		SetDParam(0, st->index);
 		AddVehicleNewsItem(
 			STR_NEWS_FIRST_TRAIN_ARRIVAL,
-			v->owner == _local_company ? NT_ARRIVAL_COMPANY : NT_ARRIVAL_OTHER,
+			v->owner == _local_company ? NewsType::ArrivalCompany : NewsType::ArrivalOther,
 			v->index,
 			st->index
 		);
@@ -3246,7 +3246,7 @@ static bool CheckTrainCollision(Train *v)
 	if (tcc.num == 0) return false;
 
 	SetDParam(0, tcc.num);
-	AddTileNewsItem(STR_NEWS_TRAIN_CRASH, NT_ACCIDENT, v->tile);
+	AddTileNewsItem(STR_NEWS_TRAIN_CRASH, NewsType::Accident, v->tile);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 30);
 	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_13_TRAIN_COLLISION, v);

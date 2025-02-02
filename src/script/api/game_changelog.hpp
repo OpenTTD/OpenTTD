@@ -293,7 +293,7 @@
  * \li GSEngine::IsValidEngine and GSEngine::IsBuildable when outside GSCompanyMode scope
  * \li GSEventExclusiveTransportRights
  * \li GSEventRoadReconstruction
- * \li GSNews::NT_ACCIDENT, GSNews::NT_COMPANY_INFO, GSNews::NT_ADVICE, GSNews::NT_ACCEPTANCE
+ * \li GSNews::NewsType::Accident, GSNews::NewsType::CompanyInfo, GSNews::NewsType::Advice, GSNews::NewsType::Acceptance
  * \li GSIndustryType::IsProcessingIndustry
  * \li GSStation::IsAirportClosed
  * \li GSStation::OpenCloseAirport
