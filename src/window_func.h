@@ -12,18 +12,12 @@
 
 #include "window_type.h"
 #include "company_type.h"
-#include "core/convertible_through_base.hpp"
 #include "core/geometry_type.hpp"
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
 Window *FindWindowByClass(WindowClass cls);
 Window *GetMainWindow();
 void ChangeWindowOwner(Owner old_owner, Owner new_owner);
-
-Window *FindWindowById(WindowClass cls, ConvertibleThroughBase auto number)
-{
-	return FindWindowById(cls, number.base());
-}
 
 void ResizeWindow(Window *w, int x, int y, bool clamp_to_screen = true, bool schedule_resize = true);
 int PositionMainToolbar(Window *w);
@@ -43,11 +37,6 @@ void InputLoop();
 void InvalidateWindowData(WindowClass cls, WindowNumber number, int data = 0, bool gui_scope = false);
 void InvalidateWindowClassesData(WindowClass cls, int data = 0, bool gui_scope = false);
 
-void InvalidateWindowData(WindowClass cls, ConvertibleThroughBase auto number, int data = 0, bool gui_scope = false)
-{
-	InvalidateWindowData(cls, number.base(), data, gui_scope);
-}
-
 void CloseNonVitalWindows();
 void CloseAllNonVitalWindows();
 void DeleteAllMessages();
@@ -65,18 +54,8 @@ void SetWindowWidgetDirty(WindowClass cls, WindowNumber number, WidgetID widget_
 void SetWindowDirty(WindowClass cls, WindowNumber number);
 void SetWindowClassesDirty(WindowClass cls);
 
-void SetWindowDirty(WindowClass cls, ConvertibleThroughBase auto number)
-{
-	SetWindowDirty(cls, number.base());
-}
-
 void CloseWindowById(WindowClass cls, WindowNumber number, bool force = true, int data = 0);
 void CloseWindowByClass(WindowClass cls, int data = 0);
-
-void CloseWindowById(WindowClass cls, ConvertibleThroughBase auto number, bool force = true, int data = 0)
-{
-	CloseWindowById(cls, number.base(), force, data);
-}
 
 bool EditBoxInGlobalFocus();
 bool FocusedWindowIsConsole();

@@ -348,11 +348,6 @@ public:
 	void CreateNestedTree();
 	void FinishInitNested(WindowNumber window_number = 0);
 
-	void FinishInitNested(ConvertibleThroughBase auto number)
-	{
-		this->FinishInitNested(number.base());
-	}
-
 	/**
 	 * Set the timeout flag of the window and initiate the timer.
 	 */
@@ -994,11 +989,6 @@ public:
 
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
 Window *FindWindowFromPt(int x, int y);
-
-Window *BringWindowToFrontById(WindowClass cls, ConvertibleThroughBase auto number)
-{
-	return BringWindowToFrontById(cls, number.base());
-}
 
 /**
  * Open a new window.
