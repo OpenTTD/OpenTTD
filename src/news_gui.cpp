@@ -294,16 +294,16 @@ static WindowDesc _small_news_desc(
  * Window layouts for news items.
  */
 static WindowDesc *_news_window_layout[] = {
-	&_thin_news_desc,    ///< NF_THIN
-	&_small_news_desc,   ///< NF_SMALL
-	&_normal_news_desc,  ///< NF_NORMAL
-	&_vehicle_news_desc, ///< NF_VEHICLE
-	&_company_news_desc, ///< NF_COMPANY
+	&_thin_news_desc,    // NewsStyle::Thin
+	&_small_news_desc,   // NewsStyle::Small
+	&_normal_news_desc,  // NewsStyle::Normal
+	&_vehicle_news_desc, // NewsStyle::Vehicle
+	&_company_news_desc, // NewsStyle::Company
 };
 
-WindowDesc &GetNewsWindowLayout(NewsFlag flags)
+static WindowDesc &GetNewsWindowLayout(NewsStyle style)
 {
-	uint layout = GB(flags, NFB_WINDOW_LAYOUT, NFB_WINDOW_LAYOUT_COUNT);
+	uint layout = to_underlying(style);
 	assert(layout < lengthof(_news_window_layout));
 	return *_news_window_layout[layout];
 }
@@ -703,7 +703,7 @@ static void ShowNewspaper(const NewsItem *ni)
 	SoundFx sound = _news_type_data[ni->type].sound;
 	if (sound != 0 && _settings_client.sound.news_full) SndPlayFx(sound);
 
-	new NewsWindow(GetNewsWindowLayout(ni->flags), ni);
+	new NewsWindow(GetNewsWindowLayout(ni->style), ni);
 }
 
 /** Show news item in the ticker */
@@ -874,8 +874,8 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
  *
  * @see NewsSubtype
  */
-NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
-	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), advice_type(advice_type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(std::move(data))
+NewsItem::NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
+	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), advice_type(advice_type), style(style), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(std::move(data))
 {
 	/* show this news message in colour? */
 	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
@@ -896,12 +896,12 @@ NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsRefere
  *
  * @see NewsSubtype
  */
-void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type)
+void AddNewsItem(StringID string, NewsType type, NewsStyle style, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type)
 {
 	if (_game_mode == GM_MENU) return;
 
 	/* Create new news item node */
-	_news.emplace_front(string, type, flags, reftype1, ref1, reftype2, ref2, std::move(data), advice_type);
+	_news.emplace_front(string, type, style, flags, reftype1, ref1, reftype2, ref2, std::move(data), advice_type);
 
 	/* Keep the number of stored news items to a managable number */
 	if (std::size(_news) > MAX_NEWS_AMOUNT) {
@@ -962,7 +962,7 @@ CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceT
 
 	if (flags & DC_EXEC) {
 		SetDParamStr(0, text);
-		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NF_NORMAL, reftype1, reference, NR_NONE, UINT32_MAX);
+		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NewsStyle::Normal, {}, reftype1, reference, NR_NONE, UINT32_MAX);
 	}
 
 	return CommandCost();

@@ -74,6 +74,15 @@ enum NewsReferenceType : uint8_t {
 	NR_ENGINE,    ///< Reference engine.
 };
 
+/** News Window Styles. */
+enum class NewsStyle : uint8_t {
+	Thin, ///< Thin news item. (Newspaper with headline and viewport)
+	Small, ///< Small news item. (Information window with text and viewport)
+	Normal, ///< Normal news item. (Newspaper with text only)
+	Vehicle, ///< Vehicle news item. (new engine available)
+	Company, ///< Company news item. (Newspaper with face)
+};
+
 /**
  * Various OR-able news-item flags.
  * @note #NF_INCOLOUR is set automatically if needed.
@@ -82,20 +91,12 @@ enum NewsFlag : uint8_t {
 	NFB_INCOLOUR       = 0,                      ///< News item is shown in colour (otherwise it is shown in black & white).
 	NFB_NO_TRANSPARENT = 1,                      ///< News item disables transparency in the viewport.
 	NFB_SHADE          = 2,                      ///< News item uses shaded colours.
-	NFB_WINDOW_LAYOUT  = 3,                      ///< First bit for window layout.
-	NFB_WINDOW_LAYOUT_COUNT = 3,                 ///< Number of bits for window layout.
 	NFB_VEHICLE_PARAM0 = 6,                      ///< String param 0 contains a vehicle ID. (special autoreplace behaviour)
 
 	NF_INCOLOUR       = 1 << NFB_INCOLOUR,       ///< Bit value for coloured news.
 	NF_NO_TRANSPARENT = 1 << NFB_NO_TRANSPARENT, ///< Bit value for disabling transparency.
 	NF_SHADE          = 1 << NFB_SHADE,          ///< Bit value for enabling shading.
 	NF_VEHICLE_PARAM0 = 1 << NFB_VEHICLE_PARAM0, ///< Bit value for specifying that string param 0 contains a vehicle ID. (special autoreplace behaviour)
-
-	NF_THIN           = 0 << NFB_WINDOW_LAYOUT,  ///< Thin news item. (Newspaper with headline and viewport)
-	NF_SMALL          = 1 << NFB_WINDOW_LAYOUT,  ///< Small news item. (Information window with text and viewport)
-	NF_NORMAL         = 2 << NFB_WINDOW_LAYOUT,  ///< Normal news item. (Newspaper with text only)
-	NF_VEHICLE        = 3 << NFB_WINDOW_LAYOUT,  ///< Vehicle news item. (new engine available)
-	NF_COMPANY        = 4 << NFB_WINDOW_LAYOUT,  ///< Company news item. (Newspaper with face)
 };
 DECLARE_ENUM_AS_BIT_SET(NewsFlag)
 
@@ -146,6 +147,7 @@ struct NewsItem {
 	TimerGameEconomy::Date economy_date; ///< Economy date of the news item, never shown but used to calculate age
 	NewsType type;                ///< Type of the news
 	AdviceType advice_type; ///< The type of advice, to be able to remove specific advices later on.
+	NewsStyle style; /// Window style for the news.
 	NewsFlag flags;               ///< NewsFlags bits @see NewsFlag
 
 	NewsReferenceType reftype1;   ///< Type of ref1
@@ -157,7 +159,7 @@ struct NewsItem {
 
 	std::vector<StringParameterData> params; ///< Parameters for string resolving.
 
-	NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type);
+	NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type);
 };
 
 /**
