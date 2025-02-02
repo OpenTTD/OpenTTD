@@ -35,6 +35,13 @@ jobs:
         git config --global --add safe.directory ${GITHUB_WORKSPACE}
         git checkout -b pr${{ github.event.pull_request.number }}
 
+    - name: Update to modern GCC
+      run: |
+        apt-get update
+        apt-get install -y gcc-12 g++-12
+        update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100
+        update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 100
+
     - name: Setup cache
       uses: actions/cache@v4
       with:
