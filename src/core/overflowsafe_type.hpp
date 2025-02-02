@@ -35,6 +35,8 @@ private:
 	/** The non-overflow safe backend to store the value in. */
 	T m_value;
 public:
+	using BaseType = T;
+
 	constexpr OverflowSafeInt() : m_value(0) { }
 
 	constexpr OverflowSafeInt(const OverflowSafeInt &other) : m_value(other.m_value) { }
@@ -178,6 +180,8 @@ public:
 
 	static inline constexpr OverflowSafeInt<T> max() { return T_MAX; }
 	static inline constexpr OverflowSafeInt<T> min() { return T_MIN; }
+
+	BaseType base() const noexcept { return this->m_value; }
 };
 
 
