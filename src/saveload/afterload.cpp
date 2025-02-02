@@ -3320,7 +3320,7 @@ bool AfterLoadGame()
 		ScriptObject::InitializeRandomizers();
 	}
 
-	if (IsSavegameVersionBefore(SLV_COMPANY_INAUGURATED_PERIOD)) {
+	if (IsSavegameVersionBefore(SLV_COMPANY_INAUGURATED_PERIOD_V2)) {
 		for (Company *c : Company::Iterate()) {
 			c->inaugurated_year_calendar = _settings_game.game_creation.starting_year;
 		}
