@@ -421,7 +421,7 @@ uint32_t CommandCost::textref_stack[16];
  */
 void CommandCost::UseTextRefStack(const GRFFile *grffile, uint num_registers)
 {
-	extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
+	extern TemporaryStorageArray _temp_store;
 
 	assert(num_registers < lengthof(textref_stack));
 	this->textref_stack_grffile = grffile;

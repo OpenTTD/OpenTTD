@@ -901,6 +901,8 @@ Vehicle::~Vehicle()
 	 * it may happen that vehicle chain is deleted when visible */
 	if (!(this->vehstatus & VS_HIDDEN)) this->MarkAllViewportsDirty();
 
+	delete this->psa;
+
 	Vehicle *v = this->Next();
 	this->SetNext(nullptr);
 

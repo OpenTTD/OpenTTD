@@ -48,6 +48,7 @@
 #include "../subsidy_base.h"
 #include "../subsidy_func.h"
 #include "../newgrf.h"
+#include "../newgrf_debug.h"
 #include "../newgrf_station.h"
 #include "../engine_func.h"
 #include "../rail_gui.h"
@@ -288,6 +289,11 @@ static void InitializeWindowsAndCaches()
 		for (auto &it : t->psa_list) {
 			it->feature = GSF_FAKE_TOWNS;
 			it->tile = t->xy;
+		}
+	}
+	for (Vehicle *v : Vehicle::Iterate()) {
+		if (v->psa != nullptr) {
+			v->psa->feature = GetGrfSpecFeature(v->type);
 		}
 	}
 	for (RoadVehicle *rv : RoadVehicle::Iterate()) {
@@ -2798,16 +2804,7 @@ bool AfterLoadGame()
 			for (Industry *ind : Industry::Iterate()) {
 				assert(ind->psa != nullptr);
 
-				/* Check if the old storage was empty. */
-				bool is_empty = true;
-				for (uint i = 0; i < sizeof(ind->psa->storage); i++) {
-					if (ind->psa->GetValue(i) != 0) {
-						is_empty = false;
-						break;
-					}
-				}
-
-				if (!is_empty) {
+				if (!ind->psa->storage.empty()) {
 					ind->psa->grfid = _industry_mngr.GetGRFID(ind->type);
 				} else {
 					delete ind->psa;
@@ -2821,21 +2818,11 @@ bool AfterLoadGame()
 				if (!(st->facilities & FACIL_AIRPORT)) continue;
 				assert(st->airport.psa != nullptr);
 
-				/* Check if the old storage was empty. */
-				bool is_empty = true;
-				for (uint i = 0; i < sizeof(st->airport.psa->storage); i++) {
-					if (st->airport.psa->GetValue(i) != 0) {
-						is_empty = false;
-						break;
-					}
-				}
-
-				if (!is_empty) {
+				if (!st->airport.psa->storage.empty()) {
 					st->airport.psa->grfid = _airport_mngr.GetGRFID(st->airport.type);
 				} else {
 					delete st->airport.psa;
 					st->airport.psa = nullptr;
-
 				}
 			}
 		}
