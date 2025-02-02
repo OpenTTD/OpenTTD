@@ -90,11 +90,11 @@ const NewsContainer &GetNews()
 static TileIndex GetReferenceTile(NewsReferenceType reftype, uint32_t ref)
 {
 	switch (reftype) {
-		case NR_TILE:     return (TileIndex)ref;
-		case NR_STATION:  return Station::Get((StationID)ref)->xy;
-		case NR_INDUSTRY: return Industry::Get((IndustryID)ref)->location.tile + TileDiffXY(1, 1);
-		case NR_TOWN:     return Town::Get((TownID)ref)->xy;
-		default:          return INVALID_TILE;
+		case NewsReferenceType::Tile:     return (TileIndex)ref;
+		case NewsReferenceType::Station:  return Station::Get((StationID)ref)->xy;
+		case NewsReferenceType::Industry: return Industry::Get((IndustryID)ref)->location.tile + TileDiffXY(1, 1);
+		case NewsReferenceType::Town:     return Town::Get((TownID)ref)->xy;
+		default: return INVALID_TILE;
 	}
 }
 
@@ -366,7 +366,7 @@ struct NewsWindow : Window {
 		if (&desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->SetString(static_cast<StringID>(std::get<uint64_t>(this->ni->params[0])));
 
 		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP);
-		if (ni->reftype1 == NR_VEHICLE && nwid != nullptr) {
+		if (ni->reftype1 == NewsReferenceType::Vehicle && nwid != nullptr) {
 			const Vehicle *v = Vehicle::Get(ni->ref1);
 			switch (v->type) {
 				case VEH_TRAIN:
@@ -391,7 +391,7 @@ struct NewsWindow : Window {
 		/* Initialize viewport if it exists. */
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_N_VIEWPORT);
 		if (nvp != nullptr) {
-			if (ni->reftype1 == NR_VEHICLE) {
+			if (ni->reftype1 == NewsReferenceType::Vehicle) {
 				nvp->InitializeViewport(this, static_cast<VehicleID>(ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
 			} else {
 				nvp->InitializeViewport(this, GetReferenceTile(ni->reftype1, ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
@@ -457,14 +457,14 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_VEH_INFO: {
-				assert(this->ni->reftype1 == NR_ENGINE);
+				assert(this->ni->reftype1 == NewsReferenceType::Engine);
 				EngineID engine = this->ni->ref1;
 				str = GetEngineInfoString(engine);
 				break;
 			}
 
 			case WID_N_SHOW_GROUP:
-				if (this->ni->reftype1 == NR_VEHICLE) {
+				if (this->ni->reftype1 == NewsReferenceType::Vehicle) {
 					Dimension d2 = GetStringBoundingBox(this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP)->GetString());
 					d2.height += WidgetDimensions::scaled.captiontext.Vertical();
 					d2.width += WidgetDimensions::scaled.captiontext.Horizontal();
@@ -541,14 +541,14 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_VEH_SPR: {
-				assert(this->ni->reftype1 == NR_ENGINE);
+				assert(this->ni->reftype1 == NewsReferenceType::Engine);
 				EngineID engine = this->ni->ref1;
 				DrawVehicleEngine(r.left, r.right, CenterBounds(r.left, r.right, 0), CenterBounds(r.top, r.bottom, 0), engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
 				GfxFillRect(r.left, r.top, r.right, r.bottom, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}
 			case WID_N_VEH_INFO: {
-				assert(this->ni->reftype1 == NR_ENGINE);
+				assert(this->ni->reftype1 == NewsReferenceType::Engine);
 				EngineID engine = this->ni->ref1;
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, GetEngineInfoString(engine), TC_FROMSTRING, SA_CENTER);
 				break;
@@ -566,7 +566,7 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_CAPTION:
-				if (this->ni->reftype1 == NR_VEHICLE) {
+				if (this->ni->reftype1 == NewsReferenceType::Vehicle) {
 					const Vehicle *v = Vehicle::Get(this->ni->ref1);
 					ShowVehicleViewWindow(v);
 				}
@@ -576,13 +576,13 @@ struct NewsWindow : Window {
 				break; // Ignore clicks
 
 			case WID_N_SHOW_GROUP:
-				if (this->ni->reftype1 == NR_VEHICLE) {
+				if (this->ni->reftype1 == NewsReferenceType::Vehicle) {
 					const Vehicle *v = Vehicle::Get(this->ni->ref1);
 					ShowCompanyGroupForVehicle(v);
 				}
 				break;
 			default:
-				if (this->ni->reftype1 == NR_VEHICLE) {
+				if (this->ni->reftype1 == NewsReferenceType::Vehicle) {
 					const Vehicle *v = Vehicle::Get(this->ni->ref1);
 					ScrollMainWindowTo(v->x_pos, v->y_pos, v->z_pos);
 				} else {
@@ -607,7 +607,7 @@ struct NewsWindow : Window {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_N_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
 
-			if (ni->reftype1 != NR_VEHICLE) {
+			if (ni->reftype1 != NewsReferenceType::Vehicle) {
 				ScrollWindowToTile(GetReferenceTile(ni->reftype1, ni->ref1), this, true); // Re-center viewport.
 			}
 		}
@@ -677,7 +677,7 @@ private:
 
 	StringID GetNewVehicleMessageString(WidgetID widget) const
 	{
-		assert(this->ni->reftype1 == NR_ENGINE);
+		assert(this->ni->reftype1 == NewsReferenceType::Engine);
 		EngineID engine = this->ni->ref1;
 
 		switch (widget) {
@@ -930,28 +930,28 @@ CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceT
 	if (text.empty()) return CMD_ERROR;
 
 	switch (reftype1) {
-		case NR_NONE: break;
-		case NR_TILE:
+		case NewsReferenceType::None: break;
+		case NewsReferenceType::Tile:
 			if (!IsValidTile(reference)) return CMD_ERROR;
 			break;
 
-		case NR_VEHICLE:
+		case NewsReferenceType::Vehicle:
 			if (!Vehicle::IsValidID(reference)) return CMD_ERROR;
 			break;
 
-		case NR_STATION:
+		case NewsReferenceType::Station:
 			if (!Station::IsValidID(reference)) return CMD_ERROR;
 			break;
 
-		case NR_INDUSTRY:
+		case NewsReferenceType::Industry:
 			if (!Industry::IsValidID(reference)) return CMD_ERROR;
 			break;
 
-		case NR_TOWN:
+		case NewsReferenceType::Town:
 			if (!Town::IsValidID(reference)) return CMD_ERROR;
 			break;
 
-		case NR_ENGINE:
+		case NewsReferenceType::Engine:
 			if (!Engine::IsValidID(reference)) return CMD_ERROR;
 			break;
 
@@ -962,7 +962,7 @@ CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceT
 
 	if (flags & DC_EXEC) {
 		SetDParamStr(0, text);
-		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NewsStyle::Normal, {}, reftype1, reference, NR_NONE, UINT32_MAX);
+		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NewsStyle::Normal, {}, reftype1, reference, NewsReferenceType::None, UINT32_MAX);
 	}
 
 	return CommandCost();
@@ -1000,7 +1000,7 @@ void DeleteNews(Tpredicate predicate)
 void DeleteVehicleNews(VehicleID vid, AdviceType advice_type)
 {
 	DeleteNews([&](const auto &ni) {
-		return ((ni.reftype1 == NR_VEHICLE && ni.ref1 == vid) || (ni.reftype2 == NR_VEHICLE && ni.ref2 == vid)) && (advice_type == AdviceType::Invalid || ni.advice_type == advice_type);
+		return ((ni.reftype1 == NewsReferenceType::Vehicle && ni.ref1 == vid) || (ni.reftype2 == NewsReferenceType::Vehicle && ni.ref2 == vid)) && (advice_type == AdviceType::Invalid || ni.advice_type == advice_type);
 	});
 }
 
@@ -1012,7 +1012,7 @@ void DeleteVehicleNews(VehicleID vid, AdviceType advice_type)
 void DeleteStationNews(StationID sid)
 {
 	DeleteNews([&](const auto &ni) {
-		return (ni.reftype1 == NR_STATION && ni.ref1 == sid) || (ni.reftype2 == NR_STATION && ni.ref2 == sid);
+		return (ni.reftype1 == NewsReferenceType::Station && ni.ref1 == sid) || (ni.reftype2 == NewsReferenceType::Station && ni.ref2 == sid);
 	});
 }
 
@@ -1023,7 +1023,7 @@ void DeleteStationNews(StationID sid)
 void DeleteIndustryNews(IndustryID iid)
 {
 	DeleteNews([&](const auto &ni) {
-		return (ni.reftype1 == NR_INDUSTRY && ni.ref1 == iid) || (ni.reftype2 == NR_INDUSTRY && ni.ref2 == iid);
+		return (ni.reftype1 == NewsReferenceType::Industry && ni.ref1 == iid) || (ni.reftype2 == NewsReferenceType::Industry && ni.ref2 == iid);
 	});
 }
 
@@ -1033,8 +1033,8 @@ void DeleteIndustryNews(IndustryID iid)
 void DeleteInvalidEngineNews()
 {
 	DeleteNews([](const auto &ni) {
-		return (ni.reftype1 == NR_ENGINE && (!Engine::IsValidID(ni.ref1) || !Engine::Get(ni.ref1)->IsEnabled())) ||
-				(ni.reftype2 == NR_ENGINE && (!Engine::IsValidID(ni.ref2) || !Engine::Get(ni.ref2)->IsEnabled()));
+		return (ni.reftype1 == NewsReferenceType::Engine && (!Engine::IsValidID(ni.ref1) || !Engine::Get(ni.ref1)->IsEnabled())) ||
+				(ni.reftype2 == NewsReferenceType::Engine && (!Engine::IsValidID(ni.ref2) || !Engine::Get(ni.ref2)->IsEnabled()));
 	});
 }
 
@@ -1054,8 +1054,8 @@ static void RemoveOldNewsItems()
 void ChangeVehicleNews(VehicleID from_index, VehicleID to_index)
 {
 	for (auto &ni : _news) {
-		if (ni.reftype1 == NR_VEHICLE && ni.ref1 == from_index) ni.ref1 = to_index;
-		if (ni.reftype2 == NR_VEHICLE && ni.ref2 == from_index) ni.ref2 = to_index;
+		if (ni.reftype1 == NewsReferenceType::Vehicle && ni.ref1 == from_index) ni.ref1 = to_index;
+		if (ni.reftype2 == NewsReferenceType::Vehicle && ni.ref2 == from_index) ni.ref2 = to_index;
 		if (ni.flags.Test(NewsFlag::VehicleParam0) && std::get<uint64_t>(ni.params[0]) == from_index) ni.params[0] = to_index;
 	}
 }

@@ -65,14 +65,14 @@ enum class AdviceType : uint8_t {
  * You have to make sure, #ChangeVehicleNews catches the DParams of your message.
  * This is NOT ensured by the references.
  */
-enum NewsReferenceType : uint8_t {
-	NR_NONE,      ///< Empty reference
-	NR_TILE,      ///< Reference tile.     Scroll to tile when clicking on the news.
-	NR_VEHICLE,   ///< Reference vehicle.  Scroll to vehicle when clicking on the news. Delete news when vehicle is deleted.
-	NR_STATION,   ///< Reference station.  Scroll to station when clicking on the news. Delete news when station is deleted.
-	NR_INDUSTRY,  ///< Reference industry. Scroll to industry when clicking on the news. Delete news when industry is deleted.
-	NR_TOWN,      ///< Reference town.     Scroll to town when clicking on the news.
-	NR_ENGINE,    ///< Reference engine.
+enum class NewsReferenceType : uint8_t {
+	None, ///< Empty reference
+	Tile, ///< Reference tile. Scroll to tile when clicking on the news.
+	Vehicle, ///< Reference vehicle. Scroll to vehicle when clicking on the news. Delete news when vehicle is deleted.
+	Station, ///< Reference station. Scroll to station when clicking on the news. Delete news when station is deleted.
+	Industry, ///< Reference industry. Scroll to industry when clicking on the news. Delete news when industry is deleted.
+	Town, ///< Reference town. Scroll to town when clicking on the news.
+	Engine, ///< Reference engine.
 };
 
 /** News Window Styles. */

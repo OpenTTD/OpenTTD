@@ -74,8 +74,8 @@ void Subsidy::AwardTo(CompanyID company)
  */
 std::pair<NewsReferenceType, NewsReferenceType> SetupSubsidyDecodeParam(const Subsidy *s, SubsidyDecodeParamType mode, uint parameter_offset)
 {
-	NewsReferenceType reftype1 = NR_NONE;
-	NewsReferenceType reftype2 = NR_NONE;
+	NewsReferenceType reftype1 = NewsReferenceType::None;
+	NewsReferenceType reftype2 = NewsReferenceType::None;
 
 	/* Always use the plural form of the cargo name - trying to decide between plural or singular causes issues for translations */
 	const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
@@ -83,11 +83,11 @@ std::pair<NewsReferenceType, NewsReferenceType> SetupSubsidyDecodeParam(const Su
 
 	switch (s->src_type) {
 		case SourceType::Industry:
-			reftype1 = NR_INDUSTRY;
+			reftype1 = NewsReferenceType::Industry;
 			SetDParam(parameter_offset + 1, STR_INDUSTRY_NAME);
 			break;
 		case SourceType::Town:
-			reftype1 = NR_TOWN;
+			reftype1 = NewsReferenceType::Town;
 			SetDParam(parameter_offset + 1, STR_TOWN_NAME);
 			break;
 		default: NOT_REACHED();
@@ -96,11 +96,11 @@ std::pair<NewsReferenceType, NewsReferenceType> SetupSubsidyDecodeParam(const Su
 
 	switch (s->dst_type) {
 		case SourceType::Industry:
-			reftype2 = NR_INDUSTRY;
+			reftype2 = NewsReferenceType::Industry;
 			SetDParam(parameter_offset + 4, STR_INDUSTRY_NAME);
 			break;
 		case SourceType::Town:
-			reftype2 = NR_TOWN;
+			reftype2 = NewsReferenceType::Town;
 			SetDParam(parameter_offset + 4, STR_TOWN_NAME);
 			break;
 		default: NOT_REACHED();

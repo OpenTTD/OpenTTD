@@ -15,11 +15,11 @@
 #include "station_type.h"
 #include "industry_type.h"
 
-void AddNewsItem(StringID string, NewsType type, NewsStyle style, NewsFlags flags, NewsReferenceType reftype1 = NR_NONE, uint32_t ref1 = UINT32_MAX, NewsReferenceType reftype2 = NR_NONE, uint32_t ref2 = UINT32_MAX, std::unique_ptr<NewsAllocatedData> &&data = nullptr, AdviceType advice_type = AdviceType::Invalid);
+void AddNewsItem(StringID string, NewsType type, NewsStyle style, NewsFlags flags, NewsReferenceType reftype1 = NewsReferenceType::None, uint32_t ref1 = UINT32_MAX, NewsReferenceType reftype2 = NewsReferenceType::None, uint32_t ref2 = UINT32_MAX, std::unique_ptr<NewsAllocatedData> &&data = nullptr, AdviceType advice_type = AdviceType::Invalid);
 
 inline void AddCompanyNewsItem(StringID string, std::unique_ptr<CompanyNewsInformation> cni)
 {
-	AddNewsItem(string, NewsType::CompanyInfo, NewsStyle::Company, {}, NR_NONE, UINT32_MAX, NR_NONE, UINT32_MAX, std::move(cni));
+	AddNewsItem(string, NewsType::CompanyInfo, NewsStyle::Company, {}, NewsReferenceType::None, UINT32_MAX, NewsReferenceType::None, UINT32_MAX, std::move(cni));
 }
 
 /**
@@ -29,7 +29,7 @@ inline void AddCompanyNewsItem(StringID string, std::unique_ptr<CompanyNewsInfor
  */
 inline void AddVehicleNewsItem(StringID string, NewsType type, VehicleID vehicle, StationID station = INVALID_STATION)
 {
-	AddNewsItem(string, type, NewsStyle::Thin, {NewsFlag::NoTransparency, NewsFlag::Shaded}, NR_VEHICLE, vehicle, station == INVALID_STATION ? NR_NONE : NR_STATION, station);
+	AddNewsItem(string, type, NewsStyle::Thin, {NewsFlag::NoTransparency, NewsFlag::Shaded}, NewsReferenceType::Vehicle, vehicle, station == INVALID_STATION ? NewsReferenceType::None : NewsReferenceType::Station, station);
 }
 
 /**
@@ -39,17 +39,17 @@ inline void AddVehicleNewsItem(StringID string, NewsType type, VehicleID vehicle
  */
 inline void AddVehicleAdviceNewsItem(AdviceType advice_type, StringID string, VehicleID vehicle)
 {
-	AddNewsItem(string, NewsType::Advice, NewsStyle::Small, {NewsFlag::InColour, NewsFlag::VehicleParam0}, NR_VEHICLE, vehicle, NR_NONE, {}, nullptr, advice_type);
+	AddNewsItem(string, NewsType::Advice, NewsStyle::Small, {NewsFlag::InColour, NewsFlag::VehicleParam0}, NewsReferenceType::Vehicle, vehicle, NewsReferenceType::None, {}, nullptr, advice_type);
 }
 
 inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, std::unique_ptr<NewsAllocatedData> &&data = nullptr, StationID station = INVALID_STATION)
 {
-	AddNewsItem(string, type, NewsStyle::Thin, {NewsFlag::NoTransparency, NewsFlag::Shaded}, NR_TILE, tile.base(), station == INVALID_STATION ? NR_NONE : NR_STATION, station, std::move(data));
+	AddNewsItem(string, type, NewsStyle::Thin, {NewsFlag::NoTransparency, NewsFlag::Shaded}, NewsReferenceType::Tile, tile.base(), station == INVALID_STATION ? NewsReferenceType::None : NewsReferenceType::Station, station, std::move(data));
 }
 
 inline void AddIndustryNewsItem(StringID string, NewsType type, IndustryID industry, std::unique_ptr<NewsAllocatedData> &&data = nullptr)
 {
-	AddNewsItem(string, type, NewsStyle::Thin, {NewsFlag::NoTransparency, NewsFlag::Shaded}, NR_INDUSTRY, industry, NR_NONE, UINT32_MAX, std::move(data));
+	AddNewsItem(string, type, NewsStyle::Thin, {NewsFlag::NoTransparency, NewsFlag::Shaded}, NewsReferenceType::Industry, industry, NewsReferenceType::None, UINT32_MAX, std::move(data));
 }
 
 void NewsLoop();
