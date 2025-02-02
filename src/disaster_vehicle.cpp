@@ -354,7 +354,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 					return false;
 				}
 				/* Target it. */
-				v->dest_tile = TileIndex{u->index};
+				v->dest_tile = TileIndex{u->index.base()};
 				v->age = CalendarTime::MIN_DATE;
 				u->disaster_vehicle = v->index;
 				break;

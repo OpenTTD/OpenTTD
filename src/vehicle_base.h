@@ -196,7 +196,7 @@ struct MutableSpriteCache {
 };
 
 /** A vehicle pool for a little over 1 million vehicles. */
-typedef Pool<Vehicle, VehicleID, 512, VEHICLE_END> VehiclePool;
+typedef Pool<Vehicle, VehicleID, 512, VehicleID::End().base()> VehiclePool;
 extern VehiclePool _vehicle_pool;
 
 /* Some declarations of functions, so we can make them friendly */

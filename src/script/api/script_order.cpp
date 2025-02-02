@@ -633,7 +633,7 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 
 /* static */ bool ScriptOrder::SetOrderFlags(VehicleID vehicle_id, OrderPosition order_position, ScriptOrder::ScriptOrderFlags order_flags)
 {
-	ScriptObject::SetCallbackVariable(0, vehicle_id);
+	ScriptObject::SetCallbackVariable(0, vehicle_id.base());
 	ScriptObject::SetCallbackVariable(1, order_position);
 	ScriptObject::SetCallbackVariable(2, order_flags);
 	/* In case another client(s) change orders at the same time we could

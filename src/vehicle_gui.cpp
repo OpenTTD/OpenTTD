@@ -1578,7 +1578,7 @@ static inline void ChangeVehicleWindow(WindowClass window_class, VehicleID from_
 		if (w->viewport != nullptr) w->viewport->follow_vehicle = to_index;
 
 		/* Update vehicle drag data */
-		if (_thd.window_class == window_class && _thd.window_number == (WindowNumber)from_index) {
+		if (_thd.window_class == window_class && _thd.window_number == from_index) {
 			_thd.window_number = to_index;
 		}
 
@@ -2335,7 +2335,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
 
 void ShowVehicleListWindow(const Vehicle *v)
 {
-	ShowVehicleListWindowLocal(v->owner, VL_SHARED_ORDERS, v->type, v->FirstShared()->index);
+	ShowVehicleListWindowLocal(v->owner, VL_SHARED_ORDERS, v->type, v->FirstShared()->index.base());
 }
 
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, StationID station)

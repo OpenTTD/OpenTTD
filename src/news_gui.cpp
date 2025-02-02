@@ -920,7 +920,7 @@ uint32_t SerialiseNewsReference(const NewsReference &reference)
 	struct visitor {
 		uint32_t operator()(const std::monostate &) { return 0; }
 		uint32_t operator()(const TileIndex &t) { return t.base(); }
-		uint32_t operator()(const VehicleID v) { return v; }
+		uint32_t operator()(const VehicleID v) { return v.base(); }
 		uint32_t operator()(const StationID s) { return s; }
 		uint32_t operator()(const IndustryID i) { return i.base(); }
 		uint32_t operator()(const TownID t) { return t.base(); }
@@ -1084,7 +1084,7 @@ void ChangeVehicleNews(VehicleID from_index, VehicleID to_index)
 	for (auto &ni : _news) {
 		ChangeObject(ni.ref1, from_index, to_index);
 		ChangeObject(ni.ref2, from_index, to_index);
-		if (ni.flags.Test(NewsFlag::VehicleParam0) && std::get<uint64_t>(ni.params[0]) == from_index) ni.params[0] = to_index;
+		if (ni.flags.Test(NewsFlag::VehicleParam0) && std::get<uint64_t>(ni.params[0]) == from_index) ni.params[0] = to_index.base();
 	}
 }
 
