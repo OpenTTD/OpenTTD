@@ -313,25 +313,25 @@ static WindowDesc &GetNewsWindowLayout(NewsStyle style)
  */
 static NewsTypeData _news_type_data[] = {
 	/*            name,                           age, sound,          */
-	NewsTypeData("news_display.arrival_player",    60, SND_1D_APPLAUSE ),  ///< NT_ARRIVAL_COMPANY
-	NewsTypeData("news_display.arrival_other",     60, SND_1D_APPLAUSE ),  ///< NT_ARRIVAL_OTHER
-	NewsTypeData("news_display.accident",          90, SND_BEGIN       ),  ///< NT_ACCIDENT
-	NewsTypeData("news_display.accident_other",    90, SND_BEGIN       ),  ///< NT_ACCIDENT_OTHER
-	NewsTypeData("news_display.company_info",      60, SND_BEGIN       ),  ///< NT_COMPANY_INFO
-	NewsTypeData("news_display.open",              90, SND_BEGIN       ),  ///< NT_INDUSTRY_OPEN
-	NewsTypeData("news_display.close",             90, SND_BEGIN       ),  ///< NT_INDUSTRY_CLOSE
-	NewsTypeData("news_display.economy",           30, SND_BEGIN       ),  ///< NT_ECONOMY
-	NewsTypeData("news_display.production_player", 30, SND_BEGIN       ),  ///< NT_INDUSTRY_COMPANY
-	NewsTypeData("news_display.production_other",  30, SND_BEGIN       ),  ///< NT_INDUSTRY_OTHER
-	NewsTypeData("news_display.production_nobody", 30, SND_BEGIN       ),  ///< NT_INDUSTRY_NOBODY
-	NewsTypeData("news_display.advice",           150, SND_BEGIN       ),  ///< NT_ADVICE
-	NewsTypeData("news_display.new_vehicles",      30, SND_1E_NEW_ENGINE), ///< NT_NEW_VEHICLES
-	NewsTypeData("news_display.acceptance",        90, SND_BEGIN       ),  ///< NT_ACCEPTANCE
-	NewsTypeData("news_display.subsidies",        180, SND_BEGIN       ),  ///< NT_SUBSIDIES
-	NewsTypeData("news_display.general",           60, SND_BEGIN       ),  ///< NT_GENERAL
+	NewsTypeData("news_display.arrival_player",    60, SND_1D_APPLAUSE ),  ///< NewsType::ArrivalCompany
+	NewsTypeData("news_display.arrival_other",     60, SND_1D_APPLAUSE ),  ///< NewsType::ArrivalOther
+	NewsTypeData("news_display.accident",          90, SND_BEGIN       ),  ///< NewsType::Accident
+	NewsTypeData("news_display.accident_other",    90, SND_BEGIN       ),  ///< NewsType::AccidentOther
+	NewsTypeData("news_display.company_info",      60, SND_BEGIN       ),  ///< NewsType::CompanyInfo
+	NewsTypeData("news_display.open",              90, SND_BEGIN       ),  ///< NewsType::IndustryOpen
+	NewsTypeData("news_display.close",             90, SND_BEGIN       ),  ///< NewsType::IndustryClose
+	NewsTypeData("news_display.economy",           30, SND_BEGIN       ),  ///< NewsType::Economy
+	NewsTypeData("news_display.production_player", 30, SND_BEGIN       ),  ///< NewsType::IndustryCompany
+	NewsTypeData("news_display.production_other",  30, SND_BEGIN       ),  ///< NewsType::IndustryOther
+	NewsTypeData("news_display.production_nobody", 30, SND_BEGIN       ),  ///< NewsType::IndustryNobody
+	NewsTypeData("news_display.advice",           150, SND_BEGIN       ),  ///< NewsType::Advice
+	NewsTypeData("news_display.new_vehicles",      30, SND_1E_NEW_ENGINE), ///< NewsType::NewVehicles
+	NewsTypeData("news_display.acceptance",        90, SND_BEGIN       ),  ///< NewsType::Acceptance
+	NewsTypeData("news_display.subsidies",        180, SND_BEGIN       ),  ///< NewsType::Subsidies
+	NewsTypeData("news_display.general",           60, SND_BEGIN       ),  ///< NewsType::General
 };
 
-static_assert(lengthof(_news_type_data) == NT_END);
+static_assert(std::size(_news_type_data) == to_underlying(NewsType::End));
 
 /**
  * Return the news display option.
@@ -341,7 +341,7 @@ NewsDisplay NewsTypeData::GetDisplay() const
 {
 	const SettingDesc *sd = GetSettingFromName(this->name);
 	assert(sd != nullptr && sd->IsIntSetting());
-	return (NewsDisplay)sd->AsIntSetting()->Read(nullptr);
+	return static_cast<NewsDisplay>(sd->AsIntSetting()->Read(nullptr));
 }
 
 /** Window class displaying a news item. */
@@ -700,7 +700,7 @@ private:
 /** Open up an own newspaper window for the news item */
 static void ShowNewspaper(const NewsItem *ni)
 {
-	SoundFx sound = _news_type_data[ni->type].sound;
+	SoundFx sound = _news_type_data[to_underlying(ni->type)].sound;
 	if (sound != 0 && _settings_client.sound.news_full) SndPlayFx(sound);
 
 	new NewsWindow(GetNewsWindowLayout(ni->style), ni);
@@ -768,19 +768,19 @@ static void MoveToNextTickerItem()
 		const NewsType type = _statusbar_news->type;
 
 		/* check the date, don't show too old items */
-		if (TimerGameEconomy::date - _news_type_data[type].age > _statusbar_news->economy_date) continue;
+		if (TimerGameEconomy::date - _news_type_data[to_underlying(type)].age > _statusbar_news->economy_date) continue;
 
-		switch (_news_type_data[type].GetDisplay()) {
+		switch (_news_type_data[to_underlying(type)].GetDisplay()) {
 			default: NOT_REACHED();
-			case ND_OFF: // Off - show nothing only a small reminder in the status bar
+			case NewsDisplay::Off: // Show nothing only a small reminder in the status bar.
 				InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_REMINDER);
 				return;
 
-			case ND_SUMMARY: // Summary - show ticker
+			case NewsDisplay::Summary: // Show ticker.
 				ShowTicker(_statusbar_news);
 				return;
 
-			case ND_FULL: // Full - show newspaper, skipped here
+			case NewsDisplay::Full: // Show newspaper, skipped here.
 				break;;
 		}
 	}
@@ -806,17 +806,17 @@ static void MoveToNextNewsItem()
 		const NewsType type = _current_news->type;
 
 		/* check the date, don't show too old items */
-		if (TimerGameEconomy::date - _news_type_data[type].age > _current_news->economy_date) continue;
+		if (TimerGameEconomy::date - _news_type_data[to_underlying(type)].age > _current_news->economy_date) continue;
 
-		switch (_news_type_data[type].GetDisplay()) {
+		switch (_news_type_data[to_underlying(type)].GetDisplay()) {
 			default: NOT_REACHED();
-			case ND_OFF: // Off - show nothing only a small reminder in the status bar, skipped here
+			case NewsDisplay::Off: // Show nothing only a small reminder in the status bar, skipped here.
 				break;
 
-			case ND_SUMMARY: // Summary - show ticker, skipped here
-				break;;
+			case NewsDisplay::Summary: // Show ticker, skipped here.
+				break;
 
-			case ND_FULL: // Full - show newspaper
+			case NewsDisplay::Full: // Sshow newspaper.
 				ShowNewspaper(&*_current_news);
 				return;
 		}
@@ -870,7 +870,7 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
  * @param reftype2  Type of ref2.
  * @param ref2      Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
  * @param data      Pointer to data that must be released once the news message is cleared.
- * @param advice_type Sub-type in case the news type is #NT_ADVICE.
+ * @param advice_type Sub-type in case the news type is #NewsType::Advice.
  *
  * @see NewsSubtype
  */
@@ -892,7 +892,7 @@ NewsItem::NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlags
  * @param reftype2 Type of ref2
  * @param ref2     Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
  * @param data     Pointer to data that must be released once the news message is cleared.
- * @param advice_type Sub-type in case the news type is #NT_ADVICE.
+ * @param advice_type Sub-type in case the news type is #NewsType::Advice.
  *
  * @see NewsSubtype
  */
@@ -926,7 +926,7 @@ CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceT
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
 	if (company != INVALID_OWNER && !Company::IsValidID(company)) return CMD_ERROR;
-	if (type >= NT_END) return CMD_ERROR;
+	if (type >= NewsType::End) return CMD_ERROR;
 	if (text.empty()) return CMD_ERROR;
 
 	switch (reftype1) {
@@ -1041,7 +1041,7 @@ void DeleteInvalidEngineNews()
 static void RemoveOldNewsItems()
 {
 	DeleteNews<MIN_NEWS_AMOUNT>([](const auto &ni) {
-		return TimerGameEconomy::date - _news_type_data[ni.type].age * _settings_client.gui.news_message_timeout > ni.economy_date;
+		return TimerGameEconomy::date - _news_type_data[to_underlying(ni.type)].age * _settings_client.gui.news_message_timeout > ni.economy_date;
 	});
 }
 
@@ -1131,7 +1131,7 @@ void ShowLastNewsMessage()
 	}
 	bool wrap = false;
 	for (;;) {
-		if (_news_type_data[ni->type].GetDisplay() != ND_OFF) {
+		if (_news_type_data[to_underlying(ni->type)].GetDisplay() != NewsDisplay::Off) {
 			ShowNewsMessage(ni);
 			break;
 		}

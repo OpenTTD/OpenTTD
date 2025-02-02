@@ -873,10 +873,10 @@ static void HandleEconomyFluctuations()
 
 	if (_economy.fluct == 0) {
 		_economy.fluct = -(int)GB(Random(), 0, 2);
-		AddNewsItem(STR_NEWS_BEGIN_OF_RECESSION, NT_ECONOMY, NewsStyle::Normal, {});
+		AddNewsItem(STR_NEWS_BEGIN_OF_RECESSION, NewsType::Economy, NewsStyle::Normal, {});
 	} else if (_economy.fluct == -12) {
 		_economy.fluct = GB(Random(), 0, 8) + 312;
-		AddNewsItem(STR_NEWS_END_OF_RECESSION, NT_ECONOMY, NewsStyle::Normal, {});
+		AddNewsItem(STR_NEWS_END_OF_RECESSION, NewsType::Economy, NewsStyle::Normal, {});
 	}
 }
 

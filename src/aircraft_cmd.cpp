@@ -1352,9 +1352,9 @@ static void CrashAirplane(Aircraft *v)
 	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING, victims));
 	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING, victims));
 
-	NewsType newstype = NT_ACCIDENT;
+	NewsType newstype = NewsType::Accident;
 	if (v->owner != _local_company) {
-		newstype = NT_ACCIDENT_OTHER;
+		newstype = NewsType::AccidentOther;
 	}
 
 	AddTileNewsItem(newsitem, newstype, vt, nullptr, st != nullptr ? st->index : INVALID_STATION);
@@ -1412,7 +1412,7 @@ static void AircraftEntersTerminal(Aircraft *v)
 		/* show newsitem of celebrating citizens */
 		AddVehicleNewsItem(
 			STR_NEWS_FIRST_AIRCRAFT_ARRIVAL,
-			(v->owner == _local_company) ? NT_ARRIVAL_COMPANY : NT_ARRIVAL_OTHER,
+			(v->owner == _local_company) ? NewsType::ArrivalCompany : NewsType::ArrivalOther,
 			v->index,
 			st->index
 		);

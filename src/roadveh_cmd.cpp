@@ -550,10 +550,10 @@ static void RoadVehCrash(RoadVehicle *v)
 
 	SetDParam(0, victims);
 	StringID newsitem = (victims == 1) ? STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER : STR_NEWS_ROAD_VEHICLE_CRASH;
-	NewsType newstype = NT_ACCIDENT;
+	NewsType newstype = NewsType::Accident;
 
 	if (v->owner != _local_company) {
-		newstype = NT_ACCIDENT_OTHER;
+		newstype = NewsType::AccidentOther;
 	}
 
 	AddTileNewsItem(newsitem, newstype, v->tile);
@@ -692,7 +692,7 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 			SetDParam(0, st->index);
 			AddVehicleNewsItem(
 				RoadTypeIsRoad(v->roadtype) ? STR_NEWS_FIRST_BUS_ARRIVAL : STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL,
-				(v->owner == _local_company) ? NT_ARRIVAL_COMPANY : NT_ARRIVAL_OTHER,
+				(v->owner == _local_company) ? NewsType::ArrivalCompany : NewsType::ArrivalOther,
 				v->index,
 				st->index
 			);
@@ -706,7 +706,7 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 			SetDParam(0, st->index);
 			AddVehicleNewsItem(
 				RoadTypeIsRoad(v->roadtype) ? STR_NEWS_FIRST_TRUCK_ARRIVAL : STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL,
-				(v->owner == _local_company) ? NT_ARRIVAL_COMPANY : NT_ARRIVAL_OTHER,
+				(v->owner == _local_company) ? NewsType::ArrivalCompany : NewsType::ArrivalOther,
 				v->index,
 				st->index
 			);
