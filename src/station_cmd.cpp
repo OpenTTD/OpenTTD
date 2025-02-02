@@ -532,7 +532,7 @@ static void ShowRejectOrAcceptNews(const Station *st, CargoTypes cargoes, bool r
 	SetDParam(0, st->index);
 	SetDParam(1, cargoes);
 	StringID msg = reject ? STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST : STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST;
-	AddNewsItem(msg, NewsType::Acceptance, NewsStyle::Small, NewsFlag::InColour, NR_STATION, st->index);
+	AddNewsItem(msg, NewsType::Acceptance, NewsStyle::Small, NewsFlag::InColour, NewsReferenceType::Station, st->index);
 }
 
 /**
