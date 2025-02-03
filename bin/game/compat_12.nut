@@ -7,18 +7,5 @@
 
 GSLog.Info("12 API compatibility in effect.");
 
-/* 13 really checks RoadType against RoadType */
-GSRoad._HasRoadType <- GSRoad.HasRoadType;
-GSRoad.HasRoadType <- function(tile, road_type)
-{
-	local list = GSRoadTypeList(GSRoad.GetRoadTramType(road_type));
-	foreach (rt, _ in list) {
-		if (GSRoad._HasRoadType(tile, rt)) {
-			return true;
-		}
-	}
-	return false;
-}
-
-/* 15 renames GetBridgeID */
-GSBridge.GetBridgeID <- GSBridge.GetBridgeType;
+require("compat.nut")
+GSCompatibility.Add(12, 0)

@@ -7,18 +7,5 @@
 
 AILog.Info("1.9 API compatibility in effect.");
 
-/* 13 really checks RoadType against RoadType */
-AIRoad._HasRoadType <- AIRoad.HasRoadType;
-AIRoad.HasRoadType <- function(tile, road_type)
-{
-	local list = AIRoadTypeList(AIRoad.GetRoadTramType(road_type));
-	foreach (rt, _ in list) {
-		if (AIRoad._HasRoadType(tile, rt)) {
-			return true;
-		}
-	}
-	return false;
-}
-
-/* 15 renames GetBridgeID */
-AIBridge.GetBridgeID <- AIBridge.GetBridgeType;
+require("compat.nut")
+AICompatibility.Add(1, 9)

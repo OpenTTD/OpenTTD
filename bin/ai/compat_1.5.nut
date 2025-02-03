@@ -7,32 +7,5 @@
 
 AILog.Info("1.5 API compatibility in effect.");
 
-/* 1.9 adds a vehicle type parameter. */
-AIBridge._GetName <- AIBridge.GetName;
-AIBridge.GetName <- function(bridge_id)
-{
-	return AIBridge._GetName(bridge_id, AIVehicle.VT_RAIL);
-}
-
-/* 1.9 adds parent_group_id to CreateGroup function */
-AIGroup._CreateGroup <- AIGroup.CreateGroup;
-AIGroup.CreateGroup <- function(vehicle_type)
-{
-	return AIGroup._CreateGroup(vehicle_type, AIGroup.GROUP_INVALID);
-}
-
-/* 13 really checks RoadType against RoadType */
-AIRoad._HasRoadType <- AIRoad.HasRoadType;
-AIRoad.HasRoadType <- function(tile, road_type)
-{
-	local list = AIRoadTypeList(AIRoad.GetRoadTramType(road_type));
-	foreach (rt, _ in list) {
-		if (AIRoad._HasRoadType(tile, rt)) {
-			return true;
-		}
-	}
-	return false;
-}
-
-/* 15 renames GetBridgeID */
-AIBridge.GetBridgeID <- AIBridge.GetBridgeType;
+require("compat.nut")
+AICompatibility.Add(1, 5)

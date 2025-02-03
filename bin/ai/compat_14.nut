@@ -7,5 +7,5 @@
 
 AILog.Info("14 API compatibility in effect.");
 
-/* 15 renames GetBridgeID */
-AIBridge.GetBridgeID <- AIBridge.GetBridgeType;
+require("compat.nut")
+AICompatibility.Add(14, 0)

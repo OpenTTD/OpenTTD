@@ -7,32 +7,5 @@
 
 GSLog.Info("1.5 API compatibility in effect.");
 
-/* 1.9 adds a vehicle type parameter. */
-GSBridge._GetName <- GSBridge.GetName;
-GSBridge.GetName <- function(bridge_id)
-{
-	return GSBridge._GetName(bridge_id, GSVehicle.VT_RAIL);
-}
-
-/* 1.11 adds a tile parameter. */
-GSCompany._ChangeBankBalance <- GSCompany.ChangeBankBalance;
-GSCompany.ChangeBankBalance <- function(company, delta, expenses_type)
-{
-	return GSCompany._ChangeBankBalance(company, delta, expenses_type, GSMap.TILE_INVALID);
-}
-
-/* 13 really checks RoadType against RoadType */
-GSRoad._HasRoadType <- GSRoad.HasRoadType;
-GSRoad.HasRoadType <- function(tile, road_type)
-{
-	local list = GSRoadTypeList(GSRoad.GetRoadTramType(road_type));
-	foreach (rt, _ in list) {
-		if (GSRoad._HasRoadType(tile, rt)) {
-			return true;
-		}
-	}
-	return false;
-}
-
-/* 15 renames GetBridgeID */
-GSBridge.GetBridgeID <- GSBridge.GetBridgeType;
+require("compat.nut")
+GSCompatibility.Add(1, 5)

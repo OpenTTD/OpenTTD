@@ -7,5 +7,5 @@
 
 GSLog.Info("13 API compatibility in effect.");
 
-/* 15 renames GetBridgeID */
-GSBridge.GetBridgeID <- GSBridge.GetBridgeType;
+require("compat.nut")
+GSCompatibility.Add(13, 0)
