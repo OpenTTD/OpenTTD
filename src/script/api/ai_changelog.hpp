@@ -38,6 +38,7 @@
  * \li AIVehicleList_Station accepts an optional AIVehicle::VehicleType parameter
  * \li AIList instances can now be cloned
  * \li AIEngine::GetRailType will only return the first RailType of an engine, use AIEngine::GetAllRailTypes instead
+ * \li AIVehicleList_Station no longer works for waypoints
  *
  * \b 14.0
  *

@@ -9990,6 +9990,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetStopLocation():     2
   SetStopLocation():     true
   GetStopLocation():     1
+  AppendOrder():         true
+  IsGotoWaypointOrder(): true
 
 --VehicleList_Station--
   Count():             1
@@ -10005,6 +10007,16 @@ ERROR: IsEnd() is invalid as Begin() is never called
     20 => 23596
   foreach():
     20 => 23596
+  Count():             0
+  Location ListDump:
+  foreach():
+
+--VehicleList_Waypoint--
+  Count():             1
+  Location ListDump:
+    16 => 28479
+  foreach():
+    16 => 28479
 
 --Company Gender--
   GetPresidentGender():              1
@@ -10116,7 +10128,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2184]
+*FUNCTION [Start()] regression/main.nut line [2213]
 
 [Infinite] CLOSURE
 [list] INSTANCE
