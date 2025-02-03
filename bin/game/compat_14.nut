@@ -8,3 +8,8 @@
 /* This file contains code to downgrade the API from 15 to 14. */
 
 GSBridge.GetBridgeID <- GSBridge.GetBridgeType;
+
+GSBaseStation.IsValidBaseStation <- function(station_id)
+{
+	return GSStation.IsValidStation(station_id) || GSWaypoint.IsValidWaypoint(station_id);
+}
