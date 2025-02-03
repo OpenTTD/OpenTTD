@@ -12,6 +12,7 @@
 #include "script_group.hpp"
 #include "script_map.hpp"
 #include "script_station.hpp"
+#include "script_waypoint.hpp"
 #include "../../depot_map.h"
 #include "../../vehicle_base.h"
 #include "../../vehiclelist_func.h"
@@ -44,6 +45,21 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 	FindVehiclesWithOrder(
 		[is_deity, owner](const Vehicle *v) { return is_deity || v->owner == owner; },
 		[station_id](const Order *order) { return (order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id; },
+		[this](const Vehicle *v) { this->AddItem(v->index.base()); }
+	);
+}
+
+ScriptVehicleList_Waypoint::ScriptVehicleList_Waypoint(StationID waypoint_id)
+{
+	EnforceDeityOrCompanyModeValid_Void();
+	if (!ScriptWaypoint::IsValidWaypoint(waypoint_id)) return;
+
+	bool is_deity = ScriptCompanyMode::IsDeity();
+	::CompanyID owner = ScriptObject::GetCompany();
+
+	FindVehiclesWithOrder(
+		[is_deity, owner](const Vehicle *v) { return is_deity || v->owner == owner; },
+		[waypoint_id](const Order *order) { return order->IsType(OT_GOTO_WAYPOINT) && order->GetDestination() == waypoint_id; },
 		[this](const Vehicle *v) { this->AddItem(v->index.base()); }
 	);
 }
