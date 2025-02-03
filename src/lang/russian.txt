@@ -2399,6 +2399,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Readme
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}История изменений
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Известные ошибки
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Лицензия
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Шрифты
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Инструкция / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Сообщить об ошибке

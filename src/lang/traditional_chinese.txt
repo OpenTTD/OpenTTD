@@ -1024,6 +1024,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :印尼盾
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :馬來西亞令吉
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :拉脫維亞勒斯
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :葡萄牙埃斯庫多
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :烏克蘭赫里夫尼亞
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動存檔
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}選擇自動存檔頻率
@@ -2247,6 +2248,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Readme
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}修訂紀錄
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}已知漏洞
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}許可協議
+STR_HELP_WINDOW_FONTS                                           :{BLACK}字體
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}手冊／維基
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}回報漏洞
@@ -2635,6 +2637,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :等待連結圖
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :離開中
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} 已加入遊戲
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} 已加入此遊戲 (用戶端 #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} 已加入 {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} 已加入為觀眾
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} 已建立新公司 (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} 已離開遊戲 ({2:STRING})

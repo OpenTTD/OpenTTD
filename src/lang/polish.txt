@@ -2624,10 +2624,11 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Czy na 
 STR_HELP_WINDOW_CAPTION                                         :{WHITE}Pomoc i Instrukcje
 STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Strony internetowe
 STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Dokumenty
-STR_HELP_WINDOW_README                                          :{BLACK}Plik „readme”
+STR_HELP_WINDOW_README                                          :{BLACK}Plik „Readme”
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Lista Zmian
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Znane Błędy
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licencja
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Fonty
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Podręcznik / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Zgłoś Błąd
@@ -5286,7 +5287,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
-STR_TEXTFILE_JUMPLIST                                           :{WHITE}Spi
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Spis Treści
 STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Przeskocz do wybranej sekcji w wyświetlanym pliku za pomocą tej listy
 STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Cofnij się w historii nawigacji

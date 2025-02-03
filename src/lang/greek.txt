@@ -2341,6 +2341,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Εμφά
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Ιστορικό αλλαγών
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Γνωστά σφάλματα/bugs
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Άδεια
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Γραμματοσειρές
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Εγχειρίδιο / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Αναφορά σφάλματος/bug

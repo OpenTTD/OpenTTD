@@ -2248,6 +2248,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Lueminut
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Muutosloki
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Tiedossa olevat virheet
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Lisenssi
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Fontit
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Käyttöopas/wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Ilmoita virheestä

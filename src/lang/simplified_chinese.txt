@@ -1024,6 +1024,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :印尼盾
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :马来西亚林吉特
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :拉脱维亚拉特
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :葡萄牙埃斯库多
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :乌克兰格里夫纳
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自动保存
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}选择自动保存的周期
@@ -2247,6 +2248,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}查看�
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}更新日志
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}已知漏洞
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}许可证
+STR_HELP_WINDOW_FONTS                                           :{BLACK}字体
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}手册 / 百科
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}反馈游戏漏洞
@@ -2635,6 +2637,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :等待货物分
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :离开
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} 已加入游戏
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} 加入了游戏（Client #{2:NUM}）
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} 已加入 {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} 已作为观众加入
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} 成立了新公司（#{2:NUM}）
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} 已离开游戏（{2:STRING}）
