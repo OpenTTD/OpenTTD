@@ -26,6 +26,7 @@
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
  * \li GSWaypoint::GetWaypointID now returns the StationID of any type of waypoint
  * \li GSList instances can now be saved
+ * \li GSVehicleList_Station no longer works for waypoints
  *
  * \b 14.0
  *
