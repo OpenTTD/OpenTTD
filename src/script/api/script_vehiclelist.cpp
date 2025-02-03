@@ -47,7 +47,7 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(HSQUIRRELVM vm)
 		throw sq_throwerror(vm, "parameter 1 must be an integer");
 	}
 	StationID station_id = static_cast<StationID>(sqstationid);
-	if (!ScriptBaseStation::IsValidBaseStation(station_id)) return;
+	if (!ScriptStation::IsValidStation(station_id)) return;
 
 	bool is_deity = ScriptCompanyMode::IsDeity();
 	::CompanyID owner = ScriptObject::GetCompany();
@@ -64,7 +64,7 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(HSQUIRRELVM vm)
 
 	FindVehiclesWithOrder(
 		[is_deity, owner, type](const Vehicle *v) { return (is_deity || v->owner == owner) && (type == VEH_INVALID || v->type == type); },
-		[station_id](const Order *order) { return (order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id; },
+		[station_id](const Order *order) { return order->IsType(OT_GOTO_STATION) && order->GetDestination() == station_id; },
 		[this](const Vehicle *v) { this->AddItem(v->index.base()); }
 	);
 }
