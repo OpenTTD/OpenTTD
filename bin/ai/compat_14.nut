@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-AILog.Info("14 API compatibility in effect.");
-
 /* 15 renames GetBridgeID */
 AIBridge.GetBridgeID <- AIBridge.GetBridgeType;
+
+require("compat_15.nut")

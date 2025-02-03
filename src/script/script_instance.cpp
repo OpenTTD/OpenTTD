@@ -124,6 +124,7 @@ bool ScriptInstance::LoadCompatibilityScripts(const std::string &api_version, Su
 		buf += script_name;
 		if (!FileExists(buf)) continue;
 
+		ScriptLog::Info(fmt::format("{} API compatibility in effect.", api_version));
 		if (this->engine->LoadScript(buf)) return true;
 
 		ScriptLog::Error("Failed to load API compatibility script");

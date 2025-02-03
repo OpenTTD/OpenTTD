@@ -5,8 +5,6 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-AILog.Info("1.8 API compatibility in effect.");
-
 /* 1.9 adds a vehicle type parameter. */
 AIBridge._GetName <- AIBridge.GetName;
 AIBridge.GetName <- function(bridge_id)
@@ -21,18 +19,4 @@ AIGroup.CreateGroup <- function(vehicle_type)
 	return AIGroup._CreateGroup(vehicle_type, AIGroup.GROUP_INVALID);
 }
 
-/* 13 really checks RoadType against RoadType */
-AIRoad._HasRoadType <- AIRoad.HasRoadType;
-AIRoad.HasRoadType <- function(tile, road_type)
-{
-	local list = AIRoadTypeList(AIRoad.GetRoadTramType(road_type));
-	foreach (rt, _ in list) {
-		if (AIRoad._HasRoadType(tile, rt)) {
-			return true;
-		}
-	}
-	return false;
-}
-
-/* 15 renames GetBridgeID */
-AIBridge.GetBridgeID <- AIBridge.GetBridgeType;
+require("compat_1.9.nut")
