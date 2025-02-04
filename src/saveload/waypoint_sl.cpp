@@ -22,9 +22,11 @@
 
 #include "../safeguards.h"
 
+using OldWaypointID = uint16_t;
+
 /** Helper structure to convert from the old waypoint system. */
 struct OldWaypoint {
-	size_t index;
+	OldWaypointID index;
 	TileIndex xy;
 	TownID town_index;
 	Town *town;
@@ -38,7 +40,7 @@ struct OldWaypoint {
 	const StationSpec *spec;
 	Owner owner;
 
-	size_t new_index;
+	StationID new_index;
 };
 
 /** Temporary array with old waypoints. */
@@ -55,7 +57,7 @@ static void UpdateWaypointOrder(Order *o)
 	for (OldWaypoint &wp : _old_waypoints) {
 		if (wp.index != o->GetDestination()) continue;
 
-		o->SetDestination((DestinationID)wp.new_index);
+		o->SetDestination(wp.new_index);
 		return;
 	}
 }
@@ -76,7 +78,7 @@ void MoveWaypointsToBaseStations()
 
 			/* Waypoint indices were not added to the map prior to this. */
 			Tile tile = wp.xy;
-			tile.m2() = (StationID)wp.index;
+			tile.m2() = wp.index;
 
 			if (HasBit(tile.m3(), 4)) {
 				wp.spec = StationClass::Get(STAT_CLASS_WAYP)->GetSpec(tile.m4() + 1);
@@ -195,7 +197,7 @@ struct CHKPChunkHandler : ChunkHandler {
 		while ((index = SlIterateArray()) != -1) {
 			OldWaypoint *wp = &_old_waypoints.emplace_back();
 
-			wp->index = index;
+			wp->index = static_cast<OldWaypointID>(index);
 			SlObject(wp, _old_waypoint_desc);
 		}
 	}
