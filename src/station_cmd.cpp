@@ -3173,7 +3173,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	/* don't show foundation for docks */
 	if (ti->tileh != SLOPE_FLAT && !IsDock(ti->tile)) {
-		if (statspec != nullptr && HasBit(statspec->flags, SSF_CUSTOM_FOUNDATIONS)) {
+		if (statspec != nullptr && statspec->flags.Test(StationSpecFlag::CustomFoundations)) {
 			/* Station has custom foundations.
 			 * Check whether the foundation continues beyond the tile's upper sides. */
 			uint edge_info = 0;
@@ -3183,7 +3183,7 @@ static void DrawTile_Station(TileInfo *ti)
 			SpriteID image = GetCustomStationFoundationRelocation(statspec, st, ti->tile, tile_layout, edge_info);
 			if (image == 0) goto draw_default_foundation;
 
-			if (HasBit(statspec->flags, SSF_EXTENDED_FOUNDATIONS)) {
+			if (statspec->flags.Test(StationSpecFlag::ExtendedFoundations)) {
 				/* Station provides extended foundations. */
 
 				static const uint8_t foundation_parts[] = {
@@ -3277,7 +3277,7 @@ draw_default_foundation:
 	} else {
 		if (layout != nullptr) {
 			/* Sprite layout which needs preprocessing */
-			bool separate_ground = HasBit(statspec->flags, SSF_SEPARATE_GROUND);
+			bool separate_ground = statspec->flags.Test(StationSpecFlag::SeparateGround);
 			uint32_t var10_values = layout->PrepareLayout(total_offset, rti->fallback_railtype, 0, 0, separate_ground);
 			for (uint8_t var10 : SetBitIterator(var10_values)) {
 				uint32_t var10_relocation = GetCustomStationRelocation(statspec, st, ti->tile, var10);
@@ -3289,7 +3289,7 @@ draw_default_foundation:
 		} else if (statspec != nullptr) {
 			/* Simple sprite layout */
 			ground_relocation = relocation = GetCustomStationRelocation(statspec, st, ti->tile, 0);
-			if (HasBit(statspec->flags, SSF_SEPARATE_GROUND)) {
+			if (statspec->flags.Test(StationSpecFlag::SeparateGround)) {
 				ground_relocation = GetCustomStationRelocation(statspec, st, ti->tile, 1);
 			}
 			ground_relocation += rti->fallback_railtype;

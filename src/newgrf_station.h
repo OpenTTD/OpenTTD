@@ -93,13 +93,14 @@ enum StationClassID : uint16_t {
 /** Allow incrementing of StationClassID variables */
 DECLARE_INCREMENT_DECREMENT_OPERATORS(StationClassID)
 
-enum StationSpecFlags : uint8_t {
-	SSF_SEPARATE_GROUND,      ///< Use different sprite set for ground sprites.
-	SSF_DIV_BY_STATION_SIZE,  ///< Divide cargo amount by station size.
-	SSF_CB141_RANDOM_BITS,    ///< Callback 141 needs random bits.
-	SSF_CUSTOM_FOUNDATIONS,   ///< Draw custom foundations.
-	SSF_EXTENDED_FOUNDATIONS, ///< Extended foundation block instead of simple.
+enum class StationSpecFlag : uint8_t {
+	SeparateGround = 0, ///< Use different sprite set for ground sprites.
+	DivByStationSize = 1, ///< Divide cargo amount by station size.
+	Cb141RandomBits = 2, ///< Callback 141 needs random bits.
+	CustomFoundations = 3, ///< Draw custom foundations.
+	ExtendedFoundations = 4, ///< Extended foundation block instead of simple.
 };
+using StationSpecFlags = EnumBitSet<StationSpecFlag, uint8_t>;
 
 /** Randomisation triggers for stations */
 enum StationRandomTrigger : uint8_t {
@@ -158,7 +159,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 
 	StationCallbackMasks callback_mask; ///< Bitmask of station callbacks that have to be called
 
-	uint8_t flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
+	StationSpecFlags flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
 
 	enum class TileFlag : uint8_t {
 		Pylons = 0, ///< Tile should contain catenary pylons.
