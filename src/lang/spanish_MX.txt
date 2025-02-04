@@ -2249,6 +2249,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Léeme
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Registro de cambios
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Errores conocidos
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licencia
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Fuentes
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Reportar un error

@@ -457,7 +457,7 @@ STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :貨運站
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :公車站
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :碼頭
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :機場
-STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :虛設站
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :廢置
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :顯示號誌站名稱
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :顯示標誌
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :顯示競手對手的標誌和車站名稱
@@ -1997,7 +1997,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :遊戲中產生
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :控制遊戲內是否隨意種植樹木。此選項可能會影響一些依賴樹木的工業 (例如熱帶氣候的伐木場)。
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :生長但不擴散{RED}（令伐木場失效）
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :在所有地方生長但只在雨林中擴散
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :僅在雨林生長與擴散
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :在任意地點皆可生長與擴散
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :不生長，亦不擴散{RED}（令伐木場失效）
 
