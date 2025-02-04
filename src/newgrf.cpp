@@ -2131,7 +2131,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 				break;
 
 			case 0x13: // General flags
-				statspec->flags = buf.ReadByte();
+				statspec->flags = StationSpecFlags{buf.ReadByte()};
 				break;
 
 			case 0x14: { // Overhead wire placement
