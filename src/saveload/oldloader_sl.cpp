@@ -373,23 +373,23 @@ static bool FixTTOEngines()
 
 	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->engine_type >= lengthof(tto_to_ttd)) return false;
-		v->engine_type = static_cast<EngineID>(tto_to_ttd[v->engine_type]);
+		v->engine_type = static_cast<EngineID>(tto_to_ttd[v->engine_type.base()]);
 	}
 
 	/* Load the default engine set. Many of them will be overridden later */
 	{
-		EngineID j = ENGINE_BEGIN;
-		for (uint16_t i = 0; i < lengthof(_orig_rail_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_TRAIN, i);
-		for (uint16_t i = 0; i < lengthof(_orig_road_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_ROAD, i);
-		for (uint16_t i = 0; i < lengthof(_orig_ship_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_SHIP, i);
-		for (uint16_t i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
+		EngineID j = EngineID::Begin();
+		for (uint16_t i = 0; i < lengthof(_orig_rail_vehicle_info); ++i, ++j) new (GetTempDataEngine(j)) Engine(VEH_TRAIN, i);
+		for (uint16_t i = 0; i < lengthof(_orig_road_vehicle_info); ++i, ++j) new (GetTempDataEngine(j)) Engine(VEH_ROAD, i);
+		for (uint16_t i = 0; i < lengthof(_orig_ship_vehicle_info); ++i, ++j) new (GetTempDataEngine(j)) Engine(VEH_SHIP, i);
+		for (uint16_t i = 0; i < lengthof(_orig_aircraft_vehicle_info); ++i, ++j) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
 	}
 
 	TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR, TimerGameCalendar::ConvertYMDToDate(TimerGameCalendar::Year{2050}, 0, 1));
 	TimerGameCalendar::YearMonthDay aging_ymd = TimerGameCalendar::ConvertDateToYMD(aging_date);
 
-	for (EngineID i = ENGINE_BEGIN; i < 256; i++) {
-		OldEngineID oi = ttd_to_tto[i];
+	for (EngineID i = EngineID::Begin(); i < 256; ++i) {
+		OldEngineID oi = ttd_to_tto[i.base()];
 		Engine *e = GetTempDataEngine(i);
 
 		if (oi == 255) {

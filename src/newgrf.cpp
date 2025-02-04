@@ -345,7 +345,7 @@ struct GRFTempEngineData {
 	}
 };
 
-static std::vector<GRFTempEngineData> _gted;  ///< Temporary engine data used during NewGRF loading
+static ReferenceThroughBaseContainer<std::vector<GRFTempEngineData>> _gted;  ///< Temporary engine data used during NewGRF loading
 
 /**
  * Contains the GRF ID of the owner of a vehicle if it has been reserved.
@@ -6378,7 +6378,7 @@ static void FeatureNewName(ByteReader &buf)
 				if (!generic) {
 					Engine *e = GetNewEngine(_cur.grffile, (VehicleType)feature, id, _cur.grfconfig->flags.Test(GRFConfigFlag::Static));
 					if (e == nullptr) break;
-					StringID string = AddGRFString(_cur.grffile->grfid, GRFStringID{e->index}, lang, new_scheme, false, name, e->info.string_id);
+					StringID string = AddGRFString(_cur.grffile->grfid, GRFStringID{e->index.base()}, lang, new_scheme, false, name, e->info.string_id);
 					e->info.string_id = string;
 				} else {
 					AddGRFString(_cur.grffile->grfid, GRFStringID{id}, lang, new_scheme, true, name, STR_UNDEFINED);
@@ -9245,7 +9245,7 @@ static void FinaliseEngineArray()
 
 		/* Do final mapping on variant engine ID. */
 		if (e->info.variant_id != INVALID_ENGINE) {
-			e->info.variant_id = GetNewEngineID(e->grf_prop.grffile, e->type, e->info.variant_id);
+			e->info.variant_id = GetNewEngineID(e->grf_prop.grffile, e->type, e->info.variant_id.base());
 		}
 
 		if (!e->info.climates.Test(_settings_game.game_creation.landscape)) continue;

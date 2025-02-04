@@ -508,11 +508,11 @@ bool Engine::IsVariantHidden(CompanyID c) const
  */
 void EngineOverrideManager::ResetToDefaultMapping()
 {
-	EngineID id = ENGINE_BEGIN;
+	EngineID id = EngineID::Begin();
 	for (VehicleType type = VEH_TRAIN; type <= VEH_AIRCRAFT; type++) {
 		auto &map = this->mappings[type];
 		map.clear();
-		for (uint internal_id = 0; internal_id < _engine_counts[type]; internal_id++, id++) {
+		for (uint internal_id = 0; internal_id < _engine_counts[type]; internal_id++, ++id) {
 			map.emplace_back(INVALID_GRFID, internal_id, type, internal_id, id);
 		}
 	}
@@ -610,7 +610,7 @@ void SetupEngines()
 		assert(std::size(mapping) >= _engine_counts[type]);
 
 		for (const EngineIDMapping &eid : mapping) {
-			new (eid.engine) Engine(type, eid.internal_id);
+			new (eid.engine.base()) Engine(type, eid.internal_id);
 		}
 	}
 }
@@ -755,7 +755,7 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 	}
 
 	SetRandomSeed(_settings_game.game_creation.generation_seed ^ seed ^
-	              (re->index << 16) ^ (re->info.base_intro.base() << 12) ^ (re->info.decay_speed << 8) ^
+	              (re->index.base() << 16) ^ (re->info.base_intro.base() << 12) ^ (re->info.decay_speed << 8) ^
 	              (re->info.lifelength.base() << 4) ^ re->info.retire_early ^
 	              e->type ^
 	              e->GetGRFID());

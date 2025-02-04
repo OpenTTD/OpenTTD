@@ -21,12 +21,8 @@
 #include "strings_type.h"
 
 /** Unique identification number of an engine. */
-enum EngineID : uint16_t {
-	ENGINE_BEGIN = 0,
-	ENGINE_END = 64000,
-	INVALID_ENGINE = 0xFFFF ///< Constant denoting an invalid engine.
-};
-DECLARE_INCREMENT_DECREMENT_OPERATORS(EngineID)
+using EngineID = PoolID<uint16_t, struct EngineIDTag, 64000, 0xFFFF>;
+static constexpr EngineID INVALID_ENGINE = EngineID::Invalid(); ///< Constant denoting an invalid engine.
 
 struct Engine;
 
@@ -214,7 +210,7 @@ enum class EngineNameContext : uint8_t {
 /** Combine an engine ID and a name context to an engine name dparam. */
 inline uint64_t PackEngineNameDParam(EngineID engine_id, EngineNameContext context, uint32_t extra_data = 0)
 {
-	return engine_id | (static_cast<uint64_t>(context) << 32) | (static_cast<uint64_t>(extra_data) << 40);
+	return engine_id.base() | (static_cast<uint64_t>(context) << 32) | (static_cast<uint64_t>(extra_data) << 40);
 }
 
 static const uint MAX_LENGTH_ENGINE_NAME_CHARS = 32; ///< The maximum length of an engine name in characters including '\0'

@@ -924,7 +924,7 @@ uint32_t SerialiseNewsReference(const NewsReference &reference)
 		uint32_t operator()(const StationID s) { return s; }
 		uint32_t operator()(const IndustryID i) { return i; }
 		uint32_t operator()(const TownID t) { return t; }
-		uint32_t operator()(const EngineID e) { return e; }
+		uint32_t operator()(const EngineID e) { return e.base(); }
 	};
 
 	return std::visit(visitor{}, reference);
