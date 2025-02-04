@@ -294,7 +294,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 	SpriteID image = dts->ground.sprite;
 	PaletteID pal  = dts->ground.pal;
 
-	RoadStopDrawMode draw_mode;
+	RoadStopDrawModes draw_mode;
 	if (spec->flags.Test(RoadStopSpecFlag::DrawModeRegister)) {
 		draw_mode = static_cast<RoadStopDrawMode>(GetRegister(0x100));
 	} else {
@@ -303,7 +303,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 
 	if (type == StationType::RoadWaypoint) {
 		DrawSprite(SPR_ROAD_PAVED_STRAIGHT_X, PAL_NONE, x, y);
-		if ((draw_mode & ROADSTOP_DRAW_MODE_WAYP_GROUND) && GB(image, 0, SPRITE_WIDTH) != 0) {
+		if (draw_mode.Test(RoadStopDrawMode::WaypGround) && GB(image, 0, SPRITE_WIDTH) != 0) {
 			DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
 		}
 	} else if (GB(image, 0, SPRITE_WIDTH) != 0) {
@@ -315,7 +315,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 		uint sprite_offset = 5 - view;
 
 		/* Road underlay takes precedence over tram */
-		if (type == StationType::RoadWaypoint || draw_mode & ROADSTOP_DRAW_MODE_OVERLAY) {
+		if (type == StationType::RoadWaypoint || draw_mode.Test(RoadStopDrawMode::Overlay)) {
 			if (rti->UsesOverlay()) {
 				SpriteID ground = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_GROUND);
 				DrawSprite(ground + sprite_offset, PAL_NONE, x, y);
@@ -328,7 +328,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 		}
 	} else {
 		/* Bay stop */
-		if ((draw_mode & ROADSTOP_DRAW_MODE_ROAD) && rti->UsesOverlay()) {
+		if (draw_mode.Test(RoadStopDrawMode::Road) && rti->UsesOverlay()) {
 			SpriteID ground = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_ROADSTOP);
 			DrawSprite(ground + view, PAL_NONE, x, y);
 		}
