@@ -41,7 +41,7 @@ static const SaveLoad _engine_desc[] = {
 	SLE_CONDSSTR(Engine, name,                SLE_STR,                    SLV_84, SL_MAX_VERSION),
 };
 
-static std::vector<Engine> _temp_engine;
+static ReferenceThroughBaseContainer<std::vector<Engine>> _temp_engine;
 
 Engine *GetTempDataEngine(EngineID index)
 {
@@ -134,12 +134,12 @@ struct ENGSChunkHandler : ChunkHandler {
 	{
 		/* Load old separate String ID list into a temporary array. This
 		 * was always 256 entries. */
-		StringID names[256];
+		ReferenceThroughBaseContainer<std::array<StringID, 256>> names{};
 
-		SlCopy(names, lengthof(names), SLE_STRINGID);
+		SlCopy(names.data(), std::size(names), SLE_STRINGID);
 
 		/* Copy each string into the temporary engine array. */
-		for (EngineID engine = ENGINE_BEGIN; engine < lengthof(names); engine++) {
+		for (EngineID engine = EngineID::Begin(); engine < std::size(names); ++engine) {
 			Engine *e = GetTempDataEngine(engine);
 			e->name = CopyFromOldName(names[engine]);
 		}

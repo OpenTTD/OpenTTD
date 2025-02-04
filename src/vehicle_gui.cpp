@@ -1519,7 +1519,7 @@ static bool VehicleMaxSpeedSorter(const Vehicle * const &a, const Vehicle * cons
 /** Sort vehicles by model */
 static bool VehicleModelSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
-	int r = a->engine_type - b->engine_type;
+	int r = a->engine_type.base() - b->engine_type.base();
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 
