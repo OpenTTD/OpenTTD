@@ -295,7 +295,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 	PaletteID pal  = dts->ground.pal;
 
 	RoadStopDrawMode draw_mode;
-	if (HasBit(spec->flags, RSF_DRAW_MODE_REGISTER)) {
+	if (spec->flags.Test(RoadStopSpecFlag::DrawModeRegister)) {
 		draw_mode = static_cast<RoadStopDrawMode>(GetRegister(0x100));
 	} else {
 		draw_mode = spec->draw_mode;
@@ -362,7 +362,7 @@ void AnimateRoadStopTile(TileIndex tile)
 	const RoadStopSpec *ss = GetRoadStopSpec(tile);
 	if (ss == nullptr) return;
 
-	RoadStopAnimationBase::AnimateTile(ss, BaseStation::GetByTile(tile), tile, HasBit(ss->flags, RSF_CB141_RANDOM_BITS));
+	RoadStopAnimationBase::AnimateTile(ss, BaseStation::GetByTile(tile), tile, ss->flags.Test(RoadStopSpecFlag::Cb141RandomBits));
 }
 
 void TriggerRoadStopAnimation(BaseStation *st, TileIndex trigger_tile, StationAnimationTrigger trigger, CargoType cargo_type)
@@ -517,8 +517,8 @@ bool GetIfStopIsForType(const RoadStopSpec *roadstopspec, RoadStopType rs, RoadT
 	// The roadstopspec is nullptr, must be the default station, always return true.
 	if (roadstopspec == nullptr) return true;
 
-	if (HasBit(roadstopspec->flags, RSF_BUILD_MENU_ROAD_ONLY) && !RoadTypeIsRoad(roadtype)) return false;
-	if (HasBit(roadstopspec->flags, RSF_BUILD_MENU_TRAM_ONLY) && !RoadTypeIsTram(roadtype)) return false;
+	if (roadstopspec->flags.Test(RoadStopSpecFlag::RoadOnly) && !RoadTypeIsRoad(roadtype)) return false;
+	if (roadstopspec->flags.Test(RoadStopSpecFlag::TramOnly) && !RoadTypeIsTram(roadtype)) return false;
 
 	if (roadstopspec->stop_type == ROADSTOPTYPE_ALL) return true;
 

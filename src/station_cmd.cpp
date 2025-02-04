@@ -1979,7 +1979,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8_t width,
 	if (roadstopspec != nullptr) {
 		if (stop_type == RoadStopType::Truck && roadstopspec->stop_type != ROADSTOPTYPE_FREIGHT && roadstopspec->stop_type != ROADSTOPTYPE_ALL) return CMD_ERROR;
 		if (stop_type == RoadStopType::Bus && roadstopspec->stop_type != ROADSTOPTYPE_PASSENGER && roadstopspec->stop_type != ROADSTOPTYPE_ALL) return CMD_ERROR;
-		if (!is_drive_through && HasBit(roadstopspec->flags, RSF_DRIVE_THROUGH_ONLY)) return CMD_ERROR;
+		if (!is_drive_through && roadstopspec->flags.Test(RoadStopSpecFlag::DriveThroughOnly)) return CMD_ERROR;
 	}
 
 	/* Check if the requested road stop is too big */
@@ -3342,7 +3342,7 @@ draw_default_foundation:
 			RoadStopResolverObject object(stopspec, st, ti->tile, INVALID_ROADTYPE, type, view);
 			const SpriteGroup *group = object.Resolve();
 			if (group != nullptr && group->type == SGT_TILELAYOUT) {
-				if (HasBit(stopspec->flags, RSF_DRAW_MODE_REGISTER)) {
+				if (stopspec->flags.Test(RoadStopSpecFlag::DrawModeRegister)) {
 					stop_draw_mode = static_cast<RoadStopDrawMode>(GetRegister(0x100));
 				}
 				if (type == StationType::RoadWaypoint && (stop_draw_mode & ROADSTOP_DRAW_MODE_WAYP_GROUND)) {
@@ -3378,7 +3378,7 @@ draw_default_foundation:
 			}
 		}
 
-		if (stopspec == nullptr || !HasBit(stopspec->flags, RSF_NO_CATENARY)) {
+		if (stopspec == nullptr || !stopspec->flags.Test(RoadStopSpecFlag::NoCatenary)) {
 			/* Draw road, tram catenary */
 			DrawRoadCatenary(ti);
 		}

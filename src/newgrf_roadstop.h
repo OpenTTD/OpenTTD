@@ -67,15 +67,16 @@ enum RoadStopDrawMode : uint8_t {
 };
 DECLARE_ENUM_AS_BIT_SET(RoadStopDrawMode)
 
-enum RoadStopSpecFlags : uint8_t {
-	RSF_CB141_RANDOM_BITS       = 0, ///< Callback 141 needs random bits.
-	RSF_NO_CATENARY             = 2, ///< Do not show catenary.
-	RSF_DRIVE_THROUGH_ONLY      = 3, ///< Stop is drive-through only.
-	RSF_NO_AUTO_ROAD_CONNECTION = 4, ///< No auto road connection.
-	RSF_BUILD_MENU_ROAD_ONLY    = 5, ///< Only show in the road build menu (not tram).
-	RSF_BUILD_MENU_TRAM_ONLY    = 6, ///< Only show in the tram build menu (not road).
-	RSF_DRAW_MODE_REGISTER      = 8, ///< Read draw mode from register 0x100.
+enum class RoadStopSpecFlag : uint8_t {
+	Cb141RandomBits = 0, ///< Callback 141 needs random bits.
+	NoCatenary = 2, ///< Do not show catenary.
+	DriveThroughOnly = 3, ///< Stop is drive-through only.
+	NoAutoRoadConnection = 4, ///< No auto road connection.
+	RoadOnly = 5, ///< Only show in the road build menu (not tram).
+	TramOnly = 6, ///< Only show in the tram build menu (not road).
+	DrawModeRegister = 8, ///< Read draw mode from register 0x100.
 };
+using RoadStopSpecFlags = EnumBitSet<RoadStopSpecFlag, uint8_t>;
 
 enum RoadStopView : uint8_t {
 	RSV_BAY_NE                  = 0, ///< Bay road stop, facing Northeast
@@ -146,7 +147,7 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 	RoadStopAvailabilityType stop_type = ROADSTOPTYPE_ALL;
 	RoadStopDrawMode draw_mode = ROADSTOP_DRAW_MODE_ROAD | ROADSTOP_DRAW_MODE_OVERLAY;
 	RoadStopCallbackMasks callback_mask{};
-	uint16_t flags = 0;
+	RoadStopSpecFlags flags{};
 
 	CargoTypes cargo_triggers = 0; ///< Bitmask of cargo types which cause trigger re-randomizing
 
