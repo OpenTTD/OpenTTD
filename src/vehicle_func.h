@@ -111,6 +111,8 @@ SpriteID GetVehiclePalette(const Vehicle *v);
 
 extern const StringID _veh_build_msg_table[];
 extern const StringID _veh_sell_msg_table[];
+extern const StringID _veh_sell_all_msg_table[];
+extern const StringID _veh_autoreplace_msg_table[];
 extern const StringID _veh_refit_msg_table[];
 extern const StringID _send_to_depot_msg_table[];
 
@@ -133,6 +135,16 @@ inline StringID GetCmdSellVehMsg(VehicleType type)
 inline StringID GetCmdSellVehMsg(const BaseVehicle *v)
 {
 	return GetCmdSellVehMsg(v->type);
+}
+
+inline StringID GetCmdSellAllVehMsg(VehicleType type)
+{
+	return _veh_sell_all_msg_table[type];
+}
+
+inline StringID GetCmdAutoreplaceVehMsg(VehicleType type)
+{
+	return _veh_autoreplace_msg_table[type];
 }
 
 inline StringID GetCmdRefitVehMsg(VehicleType type)
