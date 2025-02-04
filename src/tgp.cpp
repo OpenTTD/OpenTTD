@@ -322,9 +322,8 @@ static inline bool IsValidXY(int x, int y)
 
 /**
  * Allocate array of (Map::SizeX() + 1) * (Map::SizeY() + 1) heights and init the _height_map structure members
- * @return true on success
  */
-static inline bool AllocHeightMap()
+static inline void AllocHeightMap()
 {
 	assert(_height_map.h.empty());
 
@@ -335,8 +334,6 @@ static inline bool AllocHeightMap()
 	size_t total_size = static_cast<size_t>(_height_map.size_x + 1) * (_height_map.size_y + 1);
 	_height_map.dim_x = _height_map.size_x + 1;
 	_height_map.h.resize(total_size);
-
-	return true;
 }
 
 /** Free height map */
@@ -983,7 +980,7 @@ static void TgenSetTileHeight(TileIndex tile, int height)
  */
 void GenerateTerrainPerlin()
 {
-	if (!AllocHeightMap()) return;
+	AllocHeightMap();
 	GenerateWorldSetAbortCallback(FreeHeightMap);
 
 	HeightMapGenerate();
