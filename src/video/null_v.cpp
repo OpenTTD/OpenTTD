@@ -50,7 +50,7 @@ void VideoDriver_Null::MainLoop()
 {
 	uint i;
 
-	for (i = 0; i < this->ticks; i++) {
+	for (i = 0; i < this->ticks && ! _exit_game; i++) {
 		::GameLoop();
 		::InputLoop();
 		::UpdateWindows();
