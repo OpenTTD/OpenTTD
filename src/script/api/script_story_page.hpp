@@ -256,7 +256,7 @@ public:
 	 * @pre IsValidStoryPage(story_page_id).
 	 * @see \ref ScriptCalendarTime
 	 */
-	static ScriptDate::Date GetDate(StoryPageID story_page_id);
+	static ScriptDate *GetDate(StoryPageID story_page_id);
 
 	/**
 	 * Update date of a story page. The date is shown in the top left of the page
@@ -267,7 +267,7 @@ public:
 	 * @pre IsValidStoryPage(story_page_id).
 	 * @see \ref ScriptCalendarTime
 	 */
-	static bool SetDate(StoryPageID story_page_id, ScriptDate::Date date);
+	static bool SetDate(StoryPageID story_page_id, ScriptDate &date);
 
 	/**
 	 * Update title of a story page. The title is shown in the page selector drop down.

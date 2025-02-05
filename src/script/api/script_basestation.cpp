@@ -60,9 +60,9 @@
 	return ::BaseStation::Get(station_id)->xy;
 }
 
-/* static */ ScriptDate::Date ScriptBaseStation::GetConstructionDate(StationID station_id)
+/* static */ ScriptDate *ScriptBaseStation::GetConstructionDate(StationID station_id)
 {
-	if (!IsValidBaseStation(station_id)) return ScriptDate::DATE_INVALID;
+	if (!IsValidBaseStation(station_id)) return new ScriptDate(ScriptDate::DATE_INVALID, ScriptDate::DT_CALENDAR);
 
-	return (ScriptDate::Date)::BaseStation::Get(station_id)->build_date.base();
+	return new ScriptDate(static_cast<ScriptDate::Date>(::BaseStation::Get(station_id)->build_date.base()), ScriptDate::DT_CALENDAR);
 }
