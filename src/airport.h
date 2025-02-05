@@ -154,12 +154,12 @@ struct AirportFTA {
 struct AirportFTAClass {
 public:
 	/** Bitmask of airport flags. */
-	enum Flags : uint8_t {
-		AIRPLANES   = 0x1,                     ///< Can planes land on this airport type?
-		HELICOPTERS = 0x2,                     ///< Can helicopters land on this airport type?
-		ALL         = AIRPLANES | HELICOPTERS, ///< Mask to check for both planes and helicopters.
-		SHORT_STRIP = 0x4,                     ///< This airport has a short landing strip, dangerous for fast aircraft.
+	enum class Flag : uint8_t {
+		Airplanes   = 0, ///< Can planes land on this airport type?
+		Helicopters = 1, ///< Can helicopters land on this airport type?
+		ShortStrip  = 2, ///< This airport has a short landing strip, dangerous for fast aircraft.
 	};
+	using Flags = EnumBitSet<Flag, uint8_t>;
 
 	AirportFTAClass(
 		const AirportMovingData *moving_data,
@@ -191,8 +191,6 @@ public:
 	const uint8_t *entry_points;             ///< when an airplane arrives at this airport, enter it at position entry_point, index depends on direction
 	uint8_t delta_z;                         ///< Z adjustment for helicopter pads
 };
-
-DECLARE_ENUM_AS_BIT_SET(AirportFTAClass::Flags)
 
 
 const AirportFTAClass *GetAirport(const uint8_t airport_type);
