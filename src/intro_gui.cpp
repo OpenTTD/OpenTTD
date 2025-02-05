@@ -384,19 +384,19 @@ static constexpr NWidgetPart _nested_select_game_widgets[] = {
 
 			NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
 				/* 'New Game' and 'Load Game' buttons */
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_GENERATE_GAME), SetStringTip(STR_INTRO_NEW_GAME, STR_INTRO_TOOLTIP_NEW_GAME), SetFill(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_LOAD_GAME), SetStringTip(STR_INTRO_LOAD_GAME, STR_INTRO_TOOLTIP_LOAD_GAME), SetFill(1, 0),
 				EndContainer(),
 
 				/* 'Play Scenario' and 'Play Heightmap' buttons */
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_PLAY_SCENARIO), SetStringTip(STR_INTRO_PLAY_SCENARIO, STR_INTRO_TOOLTIP_PLAY_SCENARIO), SetFill(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_PLAY_HEIGHTMAP), SetStringTip(STR_INTRO_PLAY_HEIGHTMAP, STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP), SetFill(1, 0),
 				EndContainer(),
 
 				/* 'Scenario Editor' and 'Multiplayer' buttons */
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_EDIT_SCENARIO), SetStringTip(STR_INTRO_SCENARIO_EDITOR, STR_INTRO_TOOLTIP_SCENARIO_EDITOR), SetFill(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_PLAY_NETWORK), SetStringTip(STR_INTRO_MULTIPLAYER, STR_INTRO_TOOLTIP_MULTIPLAYER), SetFill(1, 0),
 				EndContainer(),
@@ -424,26 +424,26 @@ static constexpr NWidgetPart _nested_select_game_widgets[] = {
 
 			NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
 				/* 'Game Options' and 'Settings' buttons */
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_OPTIONS), SetStringTip(STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS), SetFill(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_SETTINGS_OPTIONS), SetStringTip(STR_INTRO_CONFIG_SETTINGS_TREE, STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE), SetFill(1, 0),
 				EndContainer(),
 
 				/* 'AI Settings' and 'Game Script Settings' buttons */
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_AI_SETTINGS), SetStringTip(STR_INTRO_AI_SETTINGS, STR_INTRO_TOOLTIP_AI_SETTINGS), SetFill(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_GS_SETTINGS), SetStringTip(STR_INTRO_GAMESCRIPT_SETTINGS, STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS), SetFill(1, 0),
 				EndContainer(),
 
 				/* 'Check Online Content' and 'NewGRF Settings' buttons */
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_CONTENT_DOWNLOAD), SetStringTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT), SetFill(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_GRF_SETTINGS), SetStringTip(STR_INTRO_NEWGRF_SETTINGS, STR_INTRO_TOOLTIP_NEWGRF_SETTINGS), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 
 			/* 'Help and Manuals' and 'Highscore Table' buttons */
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_HELP), SetStringTip(STR_INTRO_HELP, STR_INTRO_TOOLTIP_HELP), SetFill(1, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_HIGHSCORE), SetStringTip(STR_INTRO_HIGHSCORE, STR_INTRO_TOOLTIP_HIGHSCORE), SetFill(1, 0),
 			EndContainer(),

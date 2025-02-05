@@ -704,7 +704,7 @@ struct MusicWindow : public Window {
 	{
 		switch (widget) {
 			/* Make sure that WID_M_SHUFFLE and WID_M_PROGRAMME have the same size.
-			 * This can't be done by using NC_EQUALSIZE as the WID_M_INFO is
+			 * This can't be done by using NWidContainerFlag::EqualSize as the WID_M_INFO is
 			 * between those widgets and of different size. */
 			case WID_M_SHUFFLE: case WID_M_PROGRAMME: {
 				Dimension d = maxdim(GetStringBoundingBox(STR_MUSIC_PROGRAM), GetStringBoundingBox(STR_MUSIC_SHUFFLE));
@@ -916,7 +916,7 @@ static constexpr NWidgetPart _nested_music_window_widgets[] = {
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_M_ALL), SetFill(1, 0), SetStringTip(STR_MUSIC_PLAYLIST_ALL, STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_M_OLD), SetFill(1, 0), SetStringTip(STR_MUSIC_PLAYLIST_OLD_STYLE, STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_M_NEW), SetFill(1, 0), SetStringTip(STR_MUSIC_PLAYLIST_NEW_STYLE, STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC),

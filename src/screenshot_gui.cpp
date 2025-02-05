@@ -54,7 +54,7 @@ static constexpr NWidgetPart _nested_screenshot[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+	NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_SCREENSHOT), SetMinimalTextLines(2, 0),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE_ZOOMIN), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_ZOOMIN_SCREENSHOT), SetMinimalTextLines(2, 0),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE_DEFAULTZOOM), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT), SetMinimalTextLines(2, 0),

@@ -529,20 +529,16 @@ private:
 };
 
 /** Nested widget container flags, */
-enum NWidContainerFlags : uint8_t {
-	NCB_EQUALSIZE = 0, ///< Containers should keep all their (resizing) children equally large.
-	NCB_BIGFIRST  = 1, ///< Allocate space to biggest resize first.
-
-	NC_NONE = 0,                       ///< All flags cleared.
-	NC_EQUALSIZE = 1 << NCB_EQUALSIZE, ///< Value of the #NCB_EQUALSIZE flag.
-	NC_BIGFIRST  = 1 << NCB_BIGFIRST,  ///< Value of the #NCB_BIGFIRST flag.
+enum NWidContainerFlag : uint8_t {
+	EqualSize, ///< Containers should keep all their (resizing) children equally large.
+	BigFirst, ///< Allocate space to biggest resize first.
 };
-DECLARE_ENUM_AS_BIT_SET(NWidContainerFlags)
+using NWidContainerFlags = EnumBitSet<NWidContainerFlag, uint8_t>;
 
 /** Container with pre/inter/post child space. */
 class NWidgetPIPContainer : public NWidgetContainer {
 public:
-	NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags = NC_NONE);
+	NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags = {});
 
 	void AdjustPaddingForZoom() override;
 	void SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post);
@@ -570,7 +566,7 @@ protected:
  */
 class NWidgetHorizontal : public NWidgetPIPContainer {
 public:
-	NWidgetHorizontal(NWidContainerFlags flags = NC_NONE);
+	NWidgetHorizontal(NWidContainerFlags flags = {});
 
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
@@ -582,7 +578,7 @@ public:
  */
 class NWidgetHorizontalLTR : public NWidgetHorizontal {
 public:
-	NWidgetHorizontalLTR(NWidContainerFlags flags = NC_NONE);
+	NWidgetHorizontalLTR(NWidContainerFlags flags = {});
 
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 };
@@ -593,7 +589,7 @@ public:
  */
 class NWidgetVertical : public NWidgetPIPContainer {
 public:
-	NWidgetVertical(NWidContainerFlags flags = NC_NONE);
+	NWidgetVertical(NWidContainerFlags flags = {});
 
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
@@ -1384,7 +1380,7 @@ constexpr NWidgetPart NWidget(WidgetType tp, Colours col, WidgetID idx = -1)
  * @param cont_flags Flags for the containers (#NWID_HORIZONTAL and #NWID_VERTICAL).
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart NWidget(WidgetType tp, NWidContainerFlags cont_flags = NC_NONE)
+constexpr NWidgetPart NWidget(WidgetType tp, NWidContainerFlags cont_flags = {})
 {
 	return NWidgetPart{tp, NWidContainerFlags{cont_flags}};
 }

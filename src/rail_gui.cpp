@@ -1630,16 +1630,16 @@ static constexpr NWidgetPart _nested_signal_builder_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		/* Block signals (can be hidden). */
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BS_BLOCK_SEL),
-			NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+			NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
 				/* Semaphore block signals. */
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BS_SEMAPHORE_NORM), SetToolTip(STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP), SetMinimalSize(22, 22), EndContainer(),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BS_SEMAPHORE_ENTRY), SetToolTip(STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP), SetMinimalSize(22, 22), EndContainer(),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BS_SEMAPHORE_EXIT), SetToolTip(STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP), SetMinimalSize(22, 22), EndContainer(),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BS_SEMAPHORE_COMBO), SetToolTip(STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP), SetMinimalSize(22, 22), EndContainer(),
 				EndContainer(),
 				/* Electric block signals. */
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BS_ELECTRIC_NORM), SetToolTip(STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP), SetMinimalSize(22, 22), EndContainer(),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BS_ELECTRIC_ENTRY), SetToolTip(STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP), SetMinimalSize(22, 22), EndContainer(),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BS_ELECTRIC_EXIT), SetToolTip(STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP), SetMinimalSize(22, 22), EndContainer(),
@@ -1654,21 +1654,21 @@ static constexpr NWidgetPart _nested_signal_builder_widgets[] = {
 		EndContainer(),
 
 		/* Path signals. */
-		NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+		NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
 			/* Semaphore path signals. */
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 				NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BS_SEMAPHORE_PBS), SetToolTip(STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP), SetMinimalSize(22, 22), EndContainer(),
 				NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BS_SEMAPHORE_PBS_OWAY), SetToolTip(STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP), SetMinimalSize(22, 22), EndContainer(),
 			EndContainer(),
 			/* Electric path signals. */
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 				NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BS_ELECTRIC_PBS), SetToolTip(STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP), SetMinimalSize(22, 22), EndContainer(),
 				NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BS_ELECTRIC_PBS_OWAY), SetToolTip(STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP), SetMinimalSize(22, 22), EndContainer(),
 			EndContainer(),
 		EndContainer(),
 
 		/* Convert/autofill buttons. */
-		NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+		NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
 			NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_BS_CONVERT), SetSpriteTip(SPR_IMG_SIGNAL_CONVERT, STR_BUILD_SIGNAL_CONVERT_TOOLTIP), SetFill(0, 1),
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetToolTip(STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP), SetFill(0, 1),
 				NWidget(NWID_VERTICAL), SetPadding(2), SetPIPRatio(1, 0, 1),

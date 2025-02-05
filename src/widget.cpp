@@ -1588,7 +1588,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w)
 		child_wid->ApplyAspectRatio();
 		longest = std::max(longest, child_wid->smallest_x);
 	}
-	if (this->flags & NC_EQUALSIZE) {
+	if (this->flags.Test(NWidContainerFlag::EqualSize)) {
 		for (const auto &child_wid : this->children) {
 			if (child_wid->fill_x == 1) child_wid->smallest_x = longest;
 		}
@@ -1642,7 +1642,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 	for (const auto &child_wid : this->children) {
 		uint hor_step = child_wid->GetHorizontalStepSize(sizing);
 		if (hor_step > 0) {
-			if (!(flags & NC_BIGFIRST)) num_changing_childs++;
+			if (!flags.Test(NWidContainerFlag::BigFirst)) num_changing_childs++;
 			biggest_stepsize = std::max(biggest_stepsize, hor_step);
 		} else {
 			child_wid->current_x = child_wid->smallest_x;
@@ -1653,7 +1653,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 	}
 
 	/* First.5 loop: count how many children are of the biggest step size. */
-	if ((flags & NC_BIGFIRST) && biggest_stepsize > 0) {
+	if (flags.Test(NWidContainerFlag::BigFirst) && biggest_stepsize > 0) {
 		for (const auto &child_wid : this->children) {
 			uint hor_step = child_wid->GetHorizontalStepSize(sizing);
 			if (hor_step == biggest_stepsize) {
@@ -1680,7 +1680,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 		}
 		biggest_stepsize = next_biggest_stepsize;
 
-		if (num_changing_childs == 0 && (flags & NC_BIGFIRST) && biggest_stepsize > 0) {
+		if (num_changing_childs == 0 && flags.Test(NWidContainerFlag::BigFirst) && biggest_stepsize > 0) {
 			/* Second.5 loop: count how many children are of the updated biggest step size. */
 			for (const auto &child_wid : this->children) {
 				uint hor_step = child_wid->GetHorizontalStepSize(sizing);
@@ -1782,7 +1782,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w)
 		child_wid->ApplyAspectRatio();
 		highest = std::max(highest, child_wid->smallest_y);
 	}
-	if (this->flags & NC_EQUALSIZE) {
+	if (this->flags.Test(NWidContainerFlag::EqualSize)) {
 		for (const auto &child_wid : this->children) {
 			if (child_wid->fill_y == 1) child_wid->smallest_y = highest;
 		}
@@ -1827,7 +1827,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
 	for (const auto &child_wid : this->children) {
 		uint vert_step = child_wid->GetVerticalStepSize(sizing);
 		if (vert_step > 0) {
-			if (!(flags & NC_BIGFIRST)) num_changing_childs++;
+			if (!flags.Test(NWidContainerFlag::BigFirst)) num_changing_childs++;
 			biggest_stepsize = std::max(biggest_stepsize, vert_step);
 		} else {
 			child_wid->current_y = child_wid->smallest_y;
@@ -1838,7 +1838,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
 	}
 
 	/* First.5 loop: count how many children are of the biggest step size. */
-	if ((this->flags & NC_BIGFIRST) && biggest_stepsize > 0) {
+	if (this->flags.Test(NWidContainerFlag::BigFirst) && biggest_stepsize > 0) {
 		for (const auto &child_wid : this->children) {
 			uint vert_step = child_wid->GetVerticalStepSize(sizing);
 			if (vert_step == biggest_stepsize) {
@@ -1865,7 +1865,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
 		}
 		biggest_stepsize = next_biggest_stepsize;
 
-		if (num_changing_childs == 0 && (flags & NC_BIGFIRST) && biggest_stepsize > 0) {
+		if (num_changing_childs == 0 && flags.Test(NWidContainerFlag::BigFirst) && biggest_stepsize > 0) {
 			/* Second.5 loop: count how many children are of the updated biggest step size. */
 			for (const auto &child_wid : this->children) {
 				uint vert_step = child_wid->GetVerticalStepSize(sizing);
@@ -1947,7 +1947,7 @@ NWidgetCore *NWidgetSpacer::GetWidgetFromPos(int, int)
 	return nullptr;
 }
 
-NWidgetMatrix::NWidgetMatrix(Colours colour, WidgetID index) : NWidgetPIPContainer(NWID_MATRIX, NC_EQUALSIZE), index(index), clicked(-1), count(-1)
+NWidgetMatrix::NWidgetMatrix(Colours colour, WidgetID index) : NWidgetPIPContainer(NWID_MATRIX, NWidContainerFlag::EqualSize), index(index), clicked(-1), count(-1)
 {
 	this->colour = colour;
 }

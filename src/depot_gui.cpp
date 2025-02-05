@@ -75,7 +75,7 @@ static constexpr NWidgetPart _nested_train_depot_widgets[] = {
 		EndContainer(),
 		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_D_V_SCROLL),
 	EndContainer(),
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_D_BUILD), SetFill(1, 1), SetResize(1, 0),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_D_CLONE), SetFill(1, 1), SetResize(1, 0),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_D_VEHICLE_LIST), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1),

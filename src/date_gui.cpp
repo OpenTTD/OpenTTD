@@ -181,7 +181,7 @@ static constexpr NWidgetPart _nested_set_date_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN),
 		NWidget(NWID_VERTICAL), SetPIP(6, 6, 6),
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(6, 6, 6),
+			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(6, 6, 6),
 				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_SD_DAY), SetFill(1, 0), SetStringTip(STR_JUST_STRING, STR_DATE_DAY_TOOLTIP),
 				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_SD_MONTH), SetFill(1, 0), SetStringTip(STR_JUST_STRING, STR_DATE_MONTH_TOOLTIP),
 				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_SD_YEAR), SetFill(1, 0), SetStringTip(STR_JUST_INT, STR_DATE_YEAR_TOOLTIP),
