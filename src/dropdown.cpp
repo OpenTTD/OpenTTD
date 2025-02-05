@@ -132,7 +132,7 @@ struct DropdownWindow : Window {
 
 		/* Set flag on parent widget to indicate that we have just closed. */
 		NWidgetCore *nwc = this->parent->GetWidget<NWidgetCore>(this->parent_button);
-		if (nwc != nullptr) SetBit(nwc->disp_flags, NDB_DROPDOWN_CLOSED);
+		if (nwc != nullptr) nwc->disp_flags.Set(NWidgetDisplayFlag::DropdownClosed);
 	}
 
 	void OnFocusLost(bool closing) override
@@ -410,7 +410,7 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID but
 	Colours wi_colour = nwi->colour;
 
 	if ((nwi->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {
-		nwi->disp_flags |= ND_DROPDOWN_ACTIVE;
+		nwi->disp_flags.Set(NWidgetDisplayFlag::DropdownActive);
 	} else {
 		nwi->SetLowered(true);
 	}

@@ -194,7 +194,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 	}
 	if (pos < mi + button_size) {
 		/* Pressing the upper button? */
-		SetBit(sb->disp_flags, NDB_SCROLLBAR_UP);
+		sb->disp_flags.Set(NWidgetDisplayFlag::ScrollbarUp);
 		if (_scroller_click_timeout <= 1) {
 			_scroller_click_timeout = 3;
 			changed = sb->UpdatePosition(rtl ? 1 : -1);
@@ -202,7 +202,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 		w->mouse_capture_widget = sb->GetIndex();
 	} else if (pos >= ma - button_size) {
 		/* Pressing the lower button? */
-		SetBit(sb->disp_flags, NDB_SCROLLBAR_DOWN);
+		sb->disp_flags.Set(NWidgetDisplayFlag::ScrollbarDown);
 
 		if (_scroller_click_timeout <= 1) {
 			_scroller_click_timeout = 3;
@@ -2401,7 +2401,7 @@ void NWidgetViewport::Draw(const Window *w)
 {
 	if (this->current_x == 0 || this->current_y == 0) return;
 
-	if (this->disp_flags & ND_NO_TRANSPARENCY) {
+	if (this->disp_flags.Test(NWidgetDisplayFlag::NoTransparency)) {
 		TransparencyOptionBits to_backup = _transparency_opt;
 		_transparency_opt &= (1 << TO_SIGNS) | (1 << TO_TEXT); // Disable all transparency, except textual stuff
 		w->DrawViewport();
@@ -2411,8 +2411,8 @@ void NWidgetViewport::Draw(const Window *w)
 	}
 
 	/* Optionally shade the viewport. */
-	if (this->disp_flags & (ND_SHADE_GREY | ND_SHADE_DIMMED)) {
-		GfxFillRect(this->GetCurrentRect(), (this->disp_flags & ND_SHADE_DIMMED) ? PALETTE_TO_TRANSPARENT : PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
+	if (this->disp_flags.Any({NWidgetDisplayFlag::ShadeGrey, NWidgetDisplayFlag::ShadeDimmed})) {
+		GfxFillRect(this->GetCurrentRect(), this->disp_flags.Test(NWidgetDisplayFlag::ShadeDimmed) ? PALETTE_TO_TRANSPARENT : PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 	}
 
 	DrawOutline(w, this);
@@ -2626,9 +2626,9 @@ void NWidgetScrollbar::Draw(const Window *w)
 	const DrawPixelInfo *dpi = _cur_dpi;
 	if (dpi->left > r.right || dpi->left + dpi->width <= r.left || dpi->top > r.bottom || dpi->top + dpi->height <= r.top) return;
 
-	bool up_lowered = HasBit(this->disp_flags, NDB_SCROLLBAR_UP);
-	bool down_lowered = HasBit(this->disp_flags, NDB_SCROLLBAR_DOWN);
-	bool middle_lowered = !(this->disp_flags & ND_SCROLLBAR_BTN) && w->mouse_capture_widget == this->index;
+	bool up_lowered = this->disp_flags.Test(NWidgetDisplayFlag::ScrollbarUp);
+	bool down_lowered = this->disp_flags.Test(NWidgetDisplayFlag::ScrollbarDown);
+	bool middle_lowered = !this->disp_flags.Any({NWidgetDisplayFlag::ScrollbarUp, NWidgetDisplayFlag::ScrollbarDown}) && w->mouse_capture_widget == this->index;
 
 	if (this->type == NWID_HSCROLLBAR) {
 		DrawHorizontalScrollbar(r, this->colour, up_lowered, middle_lowered, down_lowered, this);
@@ -3091,7 +3091,7 @@ void NWidgetLeaf::Draw(const Window *w)
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_PUSHBUTTON_DROPDOWN:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawButtonDropdown(r, this->colour, clicked, (this->disp_flags & ND_DROPDOWN_ACTIVE) != 0, this->GetString(), this->align);
+			DrawButtonDropdown(r, this->colour, clicked, this->disp_flags.Test(NWidgetDisplayFlag::DropdownActive), this->GetString(), this->align);
 			break;
 
 		default:

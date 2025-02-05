@@ -296,7 +296,7 @@ void Window::OnDropdownClose(Point pt, WidgetID widget, int index, bool instant_
 	/* Raise the dropdown button */
 	NWidgetCore *nwi2 = this->GetWidget<NWidgetCore>(widget);
 	if ((nwi2->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {
-		nwi2->disp_flags &= ~ND_DROPDOWN_ACTIVE;
+		nwi2->disp_flags.Reset(NWidgetDisplayFlag::DropdownActive);
 	} else {
 		this->RaiseWidget(widget);
 	}
@@ -607,7 +607,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 	WidgetType widget_type = (nw != nullptr) ? nw->type : WWT_EMPTY;
 
 	/* Allow dropdown close flag detection to work. */
-	if (nw != nullptr) ClrBit(nw->disp_flags, NDB_DROPDOWN_CLOSED);
+	if (nw != nullptr) nw->disp_flags.Reset(NWidgetDisplayFlag::DropdownClosed);
 
 	bool focused_widget_changed = false;
 	/* If clicked on a window that previously did not have focus */
@@ -642,7 +642,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 	}
 
 	/* Dropdown window of this widget was closed so don't process click this time. */
-	if (HasBit(nw->disp_flags, NDB_DROPDOWN_CLOSED)) return;
+	if (nw->disp_flags.Test(NWidgetDisplayFlag::DropdownClosed)) return;
 
 	if ((widget_type & ~WWB_PUSHBUTTON) < WWT_LAST && (widget_type & WWB_PUSHBUTTON)) w->HandleButtonClick(widget_index);
 
@@ -1830,8 +1830,8 @@ static void DecreaseWindowCounters()
 				NWidgetBase *nwid = pair.second;
 				if (nwid->type == NWID_HSCROLLBAR || nwid->type == NWID_VSCROLLBAR) {
 					NWidgetScrollbar *sb = static_cast<NWidgetScrollbar*>(nwid);
-					if (sb->disp_flags & (ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN)) {
-						sb->disp_flags &= ~(ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN);
+					if (sb->disp_flags.Any({NWidgetDisplayFlag::ScrollbarUp, NWidgetDisplayFlag::ScrollbarDown})) {
+						sb->disp_flags.Reset(NWidgetDisplayFlag::ScrollbarUp).Reset(NWidgetDisplayFlag::ScrollbarDown);
 						w->mouse_capture_widget = -1;
 						sb->SetDirty(w);
 					}
@@ -2297,10 +2297,10 @@ static void HandleScrollbarScrolling(Window *w)
 		i = _cursor.pos.y - _cursorpos_drag_start.y;
 	}
 
-	if (sb->disp_flags & ND_SCROLLBAR_BTN) {
+	if (sb->disp_flags.Any({NWidgetDisplayFlag::ScrollbarUp, NWidgetDisplayFlag::ScrollbarDown})) {
 		if (_scroller_click_timeout == 1) {
 			_scroller_click_timeout = 3;
-			if (sb->UpdatePosition(rtl == HasBit(sb->disp_flags, NDB_SCROLLBAR_UP) ? 1 : -1)) w->SetDirty();
+			if (sb->UpdatePosition(rtl == sb->disp_flags.Test(NWidgetDisplayFlag::ScrollbarUp) ? 1 : -1)) w->SetDirty();
 		}
 		return;
 	}

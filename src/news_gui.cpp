@@ -396,11 +396,11 @@ struct NewsWindow : Window {
 			} else {
 				nvp->InitializeViewport(this, GetReferenceTile(ni->reftype1, ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
 			}
-			if (this->ni->flags & NF_NO_TRANSPARENT) nvp->disp_flags |= ND_NO_TRANSPARENCY;
+			if (this->ni->flags & NF_NO_TRANSPARENT) nvp->disp_flags.Set(NWidgetDisplayFlag::NoTransparency);
 			if ((this->ni->flags & NF_INCOLOUR) == 0) {
-				nvp->disp_flags |= ND_SHADE_GREY;
+				nvp->disp_flags.Set(NWidgetDisplayFlag::ShadeGrey);
 			} else if (this->ni->flags & NF_SHADE) {
-				nvp->disp_flags |= ND_SHADE_DIMMED;
+				nvp->disp_flags.Set(NWidgetDisplayFlag::ShadeDimmed);
 			}
 		}
 
