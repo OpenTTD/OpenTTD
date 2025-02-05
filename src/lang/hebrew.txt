@@ -4828,6 +4828,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}לא נ�
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}לא ניתן למכור כלי שייט זה...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}לא ניתן למכור את כלי הטייס...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}יותר מידי כלי תעבורה במשחק
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}לא ניתן לשנות את מרווחי הטיפול...
 

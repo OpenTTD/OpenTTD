@@ -4582,6 +4582,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan nie 
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Skip kan nie verkoop word nie...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Vliegtuig kan nie verkoop word nie...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Te veel voertuie in spel
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan nie diens interval verander nie...
 

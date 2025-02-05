@@ -5011,6 +5011,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}車両�
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}船舶を売却できません
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}航空機を売却できません
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}輸送機器数の上限を超えています
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}点検周期を変更できません
 

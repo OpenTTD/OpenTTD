@@ -2884,6 +2884,10 @@ STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}ھوائ
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}ھوائی جہاز فروخت نہیں کر سکتے
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}کھیل میں بہت زیادہ سواریاں
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}مرمت کا دورانیہ تبدیل نہین کرسکتے
 

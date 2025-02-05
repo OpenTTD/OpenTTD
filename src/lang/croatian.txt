@@ -4770,6 +4770,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nije mog
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nije moguće prodati brod...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nije moguće prodati zrakoplov...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Previše vozila u igri
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nije moguće promijeniti servisni interval...
 

@@ -5314,6 +5314,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan inte
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan inte sälja skepp...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan inte sälja flygplan...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}För många fordon i spelet
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan inte ändra service-intervall...
 

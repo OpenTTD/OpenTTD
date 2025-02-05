@@ -1574,6 +1574,10 @@ STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}वि�
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}रेल वाहन नहीं बेच सकते...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 
 
 

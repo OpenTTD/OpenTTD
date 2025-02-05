@@ -4128,6 +4128,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kenderaa
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kapal tidak dapat dijual...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Pesawat tidak dapat dijual...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Terlalu banyak kenderaan dalam permainan
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak boleh tukar tempoh perkhidmatan...
 

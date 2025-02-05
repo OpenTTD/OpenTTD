@@ -4720,6 +4720,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Cha ghab
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Cha ghabh an long reic...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Cha ghabh an carbad-adhair reic...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tha cus charbadan sa gheama
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Cha ghabh tricead na h-obrach-glèidhidh atharrachadh...
 

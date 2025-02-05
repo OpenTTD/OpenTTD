@@ -1600,6 +1600,10 @@ STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Ne povas
 
 ###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro multa vehili en la ludo
 
 

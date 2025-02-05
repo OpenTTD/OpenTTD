@@ -5576,6 +5576,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Не а�
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Не атрымалася прадаць карабель...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не атрымалася прадаць самалёт...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Занадта шмат транспарту ў гульні
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не атрымалася зьмяніць інтэрвал абслугоўваньня...
 

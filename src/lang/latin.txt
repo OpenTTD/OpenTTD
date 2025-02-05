@@ -4711,6 +4711,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Non lice
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Non licet vendere navem...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Non licet vendere aeroplanum...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Nimis vehicula adsunt in ludo
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Non licet intervallum ministrationis mutare...
 

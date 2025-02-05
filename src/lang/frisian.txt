@@ -4171,6 +4171,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kin wein
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kin skip net ferkeapje...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kin fleantúch net ferkeapje...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Te folle fartugen yn it spul
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kin tiid tusken ûnderhâldsbeurten net feroarje...
 

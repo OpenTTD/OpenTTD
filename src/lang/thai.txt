@@ -4559,6 +4559,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}ไม�
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}ไม่สามารถขายเรือ...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}ไม่สามารถขายอากาศยาน...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ขณะนี้มียานยนต์มากเกินไปแล้วในเกม
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}ไม่สามารถเปลี่ยนระยะเวลาการซ่อมบำรุงได้...
 

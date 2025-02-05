@@ -5320,6 +5320,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}No pots 
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}No es pot vendre el vaixell...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}No es pot vendre l'avió...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Massa vehicles en joc
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No es pot canviar l'interval de les revisions...
 

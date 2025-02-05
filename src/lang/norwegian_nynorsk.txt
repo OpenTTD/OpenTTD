@@ -4386,6 +4386,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan ikkje selje skip...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan ikkje selje luftfartøy...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}For mange køyretøy i spelet
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikkje endre vedlikehaldsintervall...
 

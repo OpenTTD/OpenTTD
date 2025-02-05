@@ -5106,6 +5106,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Tidak da
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Tidak dapat menjual kapal...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Tidak dapat menjual pesawat...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Terlalu banyak kendaraan dalam permainan
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak dapat mengubah waktu perbaikan...
 

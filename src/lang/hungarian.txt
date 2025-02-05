@@ -5343,6 +5343,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nem adha
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nem adhatod el a hajót...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nem adhatod el a repülőgépet...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Túl sok jármű van a játékban
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nem változtathatod meg a javítási időközt...
 

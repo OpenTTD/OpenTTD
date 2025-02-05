@@ -4331,6 +4331,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ezin da 
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ezin da itsasontzia saldu...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ezin da hegazkina saldu...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Jokoan ibilgailu gehiegi
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ezin da garraio tartea aldatu...
 

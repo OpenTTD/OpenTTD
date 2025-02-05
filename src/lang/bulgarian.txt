@@ -5307,6 +5307,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Авто
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Корабът не може да се продаде...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Летателното средство не може да се продаде...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Прекалено много превозни средства
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Интервалът на техн. преглед не може да се промени...
 

@@ -5319,6 +5319,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ajoneuvo
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Laivaa ei voi myydä...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ilma-alusta ei voi myydä...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Liian monta kulkuneuvoa pelissä.
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Huoltoväliä ei voi muuttaa.
 

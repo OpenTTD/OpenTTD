@@ -5100,6 +5100,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ne povas
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ne povas vendi ŝipon...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ne povas vendi aviadilon...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro da veturiloj en la ludo
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ne povas ŝanĝi prizorgintervalon...
 

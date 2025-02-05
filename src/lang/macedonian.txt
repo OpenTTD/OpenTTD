@@ -2116,6 +2116,10 @@ STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Не м�
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не може да се продаде авионот...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Има премногу возила во играта
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не може да се смени интервалот за сервисирање...
 

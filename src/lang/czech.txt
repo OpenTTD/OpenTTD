@@ -5383,6 +5383,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nelze pr
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nelze prodat loď...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nelze prodat letadlo...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Příliš mnoho vozidel ve hře
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nelze změnit interval oprav...
 

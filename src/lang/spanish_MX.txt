@@ -5320,6 +5320,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}No se pu
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}No se puede vender barco...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}No se puede vender aeronave...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Demasiados vehículos en el juego
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No se puede cambiar el intervalo de mantenimiento...
 

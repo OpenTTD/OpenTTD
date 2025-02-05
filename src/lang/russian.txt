@@ -5506,6 +5506,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Нево
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Невозможно продать судно...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Невозможно продать самолёт...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Слишком много транспорта в игре
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Невозможно изменить частоту технического обслуживания...
 

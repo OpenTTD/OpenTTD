@@ -5319,6 +5319,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}不能�
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}不能出售船只……
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}不能出售飞机……
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}游戏中的载具过多
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能改变维护周期……
 

@@ -3989,6 +3989,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kann ikk
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kann ikki selja skip...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kann ikki selja flogfar...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Ov nógv akfør í spæli
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kann ikki broyta tænastu títtleika...
 

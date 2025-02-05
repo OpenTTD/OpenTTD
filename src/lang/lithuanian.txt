@@ -5407,6 +5407,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Automobi
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Laivo parduoti negalima...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Negalima parduoti lėktuvo...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Per daug transporto priemonių žaidime
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Aptarnavimo intervalo keisti negalima...
 

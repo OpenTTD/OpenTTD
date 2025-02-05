@@ -3752,6 +3752,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}نمیش
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}کشتی فروخته نمی شود...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}نمیتوان هواپیما را فروخت
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ماشین‌های زیادی در بازی هستند
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}امکان تغییر فواصل زمانی سرویس وجود ندارد...
 

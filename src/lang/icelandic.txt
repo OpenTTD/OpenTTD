@@ -4216,6 +4216,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Get ekki
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Get ekki selt skip...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Get ekki selt flugvélina...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Of mörg farartæki í leiknum
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Get ekki breytt viðgerðarmillibili...
 

@@ -5278,6 +5278,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nu se po
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nu pot vinde nava...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nu se poate vinde aeronava...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Prea multe vehicule în joc
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nu se poate schimba intervalul de întreținere...
 

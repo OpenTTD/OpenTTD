@@ -4821,6 +4821,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ní féi
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ní féidir an long a dhíol...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ní féidir an t-aerárthach a dhíol...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}An iomarca feithiclí sa chluiche
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ní féidir an t-eatramh seirbhísithe a athrú...
 

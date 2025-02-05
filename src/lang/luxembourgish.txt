@@ -5309,6 +5309,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kann d'S
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kann Schëff net verkafen...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kann de Fliger net verkafen...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Ze vill Gefierer am Spill
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}De Service-Intervall kann net geännert ginn...
 

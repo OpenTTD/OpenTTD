@@ -5308,6 +5308,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nemožno
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nemožno predať loď...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nie je možné predať lietadlo...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}V hre je príliš veľa dopravných prostriedkov
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nemožno zmeniť servisný interval...
 

@@ -5325,6 +5325,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nemoguć
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Brod se ne može prodati...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Letelica se ne može prodati...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Previše je vozila u igri
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Interval servisiranja nije moguće promeniti...
 

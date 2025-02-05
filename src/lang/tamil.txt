@@ -4823,6 +4823,10 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}சா�
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}கப்பலை விற்க இயலாது...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}விமானத்தை விற்க இயலாது...
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ஆட்டத்தில் நிறைய வாகனங்கள் உள்ளன
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}சர்வீஸ் இடைவேளியினை மாற்ற இயலாது...
 
