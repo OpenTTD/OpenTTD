@@ -51,7 +51,10 @@ void VideoDriver_Null::MainLoop()
 	uint i;
 
 	for (i = 0; i < this->ticks && ! _exit_game; i++) {
-		::GameLoop();
+		{
+			std::lock_guard<std::mutex> lock(this->game_state_mutex);
+			::GameLoop();
+		}
 		::InputLoop();
 		::UpdateWindows();
 	}
