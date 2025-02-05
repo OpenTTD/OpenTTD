@@ -110,26 +110,25 @@ int32_t GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring)
  * @param cargo_type type of cargo.
  * @param company company delivering the cargo.
  * @param amount Amount of cargo delivered.
- * @param src_type type of \a src.
- * @param src index of source.
+ * @param src source of cargo.
  * @param st station where the cargo is delivered to.
  * @param dest industry index where the cargo is delivered to.
  */
-void AddCargoDelivery(CargoType cargo_type, CompanyID company, uint32_t amount, SourceType src_type, SourceID src, const Station *st, IndustryID dest)
+void AddCargoDelivery(CargoType cargo_type, CompanyID company, uint32_t amount, Source src, const Station *st, IndustryID dest)
 {
 	if (amount == 0) return;
 
-	if (src != INVALID_SOURCE) {
+	if (src.id != INVALID_SOURCE) {
 		/* Handle pickup update. */
-		switch (src_type) {
+		switch (src.type) {
 			case SourceType::Industry: {
-				CargoMonitorID num = EncodeCargoIndustryMonitor(company, cargo_type, src);
+				CargoMonitorID num = EncodeCargoIndustryMonitor(company, cargo_type, src.id);
 				CargoMonitorMap::iterator iter = _cargo_pickups.find(num);
 				if (iter != _cargo_pickups.end()) iter->second += amount;
 				break;
 			}
 			case SourceType::Town: {
-				CargoMonitorID num = EncodeCargoTownMonitor(company, cargo_type, src);
+				CargoMonitorID num = EncodeCargoTownMonitor(company, cargo_type, src.id);
 				CargoMonitorMap::iterator iter = _cargo_pickups.find(num);
 				if (iter != _cargo_pickups.end()) iter->second += amount;
 				break;

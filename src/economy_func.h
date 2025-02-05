@@ -31,7 +31,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update);
 void StartupIndustryDailyChanges(bool init_counter);
 
 Money GetTransportedGoodsIncome(uint num_pieces, uint dist, uint16_t transit_periods, CargoType cargo_type);
-uint MoveGoodsToStation(CargoType type, uint amount, SourceType source_type, SourceID source_id, const StationList &all_stations, Owner exclusivity = INVALID_OWNER);
+uint MoveGoodsToStation(CargoType type, uint amount, Source source, const StationList &all_stations, Owner exclusivity = INVALID_OWNER);
 
 void PrepareUnload(Vehicle *front_v);
 void LoadUnloadStation(Station *st);
