@@ -458,7 +458,7 @@ std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsLinkGraphGUI()
 
 std::unique_ptr<NWidgetBase> MakeSaturationLegendLinkGraphGUI()
 {
-	auto panel = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
+	auto panel = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 	for (uint i = 0; i < lengthof(LinkGraphOverlay::LINK_COLOURS[0]); ++i) {
 		auto wid = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_DARK_GREEN, i + WID_LGL_SATURATION_FIRST);
 		wid->SetMinimalSize(50, 0);
@@ -474,13 +474,13 @@ std::unique_ptr<NWidgetBase> MakeCargoesLegendLinkGraphGUI()
 {
 	uint num_cargo = static_cast<uint>(_sorted_cargo_specs.size());
 	static const uint ENTRIES_PER_COL = 5;
-	auto panel = std::make_unique<NWidgetHorizontal>(NC_EQUALSIZE);
+	auto panel = std::make_unique<NWidgetHorizontal>(NWidContainerFlag::EqualSize);
 	std::unique_ptr<NWidgetVertical> col = nullptr;
 
 	for (uint i = 0; i < num_cargo; ++i) {
 		if (i % ENTRIES_PER_COL == 0) {
 			if (col != nullptr) panel->Add(std::move(col));
-			col = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
+			col = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 		}
 		auto wid = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_GREY, i + WID_LGL_CARGO_FIRST);
 		wid->SetMinimalSize(25, 0);
@@ -516,14 +516,14 @@ static constexpr NWidgetPart _nested_linkgraph_legend_widgets[] = {
 				NWidgetFunction(MakeSaturationLegendLinkGraphGUI),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_LGL_COMPANIES),
-				NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+				NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
 					NWidgetFunction(MakeCompanyButtonRowsLinkGraphGUI),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_LGL_COMPANIES_ALL), SetStringTip(STR_LINKGRAPH_LEGEND_ALL),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_LGL_COMPANIES_NONE), SetStringTip(STR_LINKGRAPH_LEGEND_NONE),
 				EndContainer(),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_LGL_CARGOES),
-				NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+				NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
 					NWidgetFunction(MakeCargoesLegendLinkGraphGUI),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_LGL_CARGOES_ALL), SetStringTip(STR_LINKGRAPH_LEGEND_ALL),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_LGL_CARGOES_NONE), SetStringTip(STR_LINKGRAPH_LEGEND_NONE),

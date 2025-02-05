@@ -266,11 +266,11 @@ static std::unique_ptr<NWidgetBase> MakeTreeTypeButtons()
 	const int num_rows = CeilDiv(type_count, num_columns);
 	uint8_t cur_type = type_base;
 
-	auto vstack = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
+	auto vstack = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 	vstack->SetPIP(0, 1, 0);
 
 	for (int row = 0; row < num_rows; row++) {
-		auto hstack = std::make_unique<NWidgetHorizontal>(NC_EQUALSIZE);
+		auto hstack = std::make_unique<NWidgetHorizontal>(NWidContainerFlag::EqualSize);
 		hstack->SetPIP(0, 1, 0);
 		for (int col = 0; col < num_columns; col++) {
 			if (cur_type > type_base + type_count) break;
@@ -298,7 +298,7 @@ static constexpr NWidgetPart _nested_build_trees_widgets[] = {
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_TYPE_RANDOM), SetStringTip(STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TOOLTIP),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BT_SE_PANE),
 				NWidget(NWID_VERTICAL), SetPIP(0, 1, 0),
-					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_MODE_NORMAL), SetFill(1, 0), SetStringTip(STR_TREES_MODE_NORMAL_BUTTON, STR_TREES_MODE_NORMAL_TOOLTIP),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_MODE_FOREST_SM), SetFill(1, 0), SetStringTip(STR_TREES_MODE_FOREST_SM_BUTTON, STR_TREES_MODE_FOREST_SM_TOOLTIP),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_MODE_FOREST_LG), SetFill(1, 0), SetStringTip(STR_TREES_MODE_FOREST_LG_BUTTON, STR_TREES_MODE_FOREST_LG_TOOLTIP),

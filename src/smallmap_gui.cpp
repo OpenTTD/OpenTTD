@@ -1975,7 +1975,7 @@ static constexpr NWidgetPart _nested_smallmap_bar[] = {
 			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SM_LEGEND), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
 				/* Top button row. */
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_SM_ZOOM_IN),
 							SetSpriteTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN), SetFill(1, 1),
 					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_SM_CENTERMAP),
@@ -1990,7 +1990,7 @@ static constexpr NWidgetPart _nested_smallmap_bar[] = {
 							SetSpriteTip(SPR_IMG_INDUSTRY, STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP), SetFill(1, 1),
 				EndContainer(),
 				/* Bottom button row. */
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_SM_ZOOM_OUT),
 							SetSpriteTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT), SetFill(1, 1),
 					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_TOGGLETOWNNAME),
@@ -2031,7 +2031,7 @@ static constexpr NWidgetPart _nested_smallmap_widgets[] = {
 	/* Bottom button row and resize box. */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SM_SELECT_BUTTONS),
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_SM_ENABLE_ALL), SetStringTip(STR_SMALLMAP_ENABLE_ALL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_SM_DISABLE_ALL), SetStringTip(STR_SMALLMAP_DISABLE_ALL),
 				NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_SM_SHOW_HEIGHT), SetStringTip(STR_SMALLMAP_SHOW_HEIGHT, STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT),

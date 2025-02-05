@@ -116,7 +116,7 @@ struct GraphLegendWindow : Window {
  */
 static std::unique_ptr<NWidgetBase> MakeNWidgetCompanyLines()
 {
-	auto vert = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
+	auto vert = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 	vert->SetPadding(2, 2, 2, 2);
 	uint sprite_height = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_NORMAL).height;
 
@@ -1798,7 +1798,7 @@ static std::unique_ptr<NWidgetBase> MakePerformanceDetailPanels()
 
 	static_assert(lengthof(performance_tips) == SCORE_END - SCORE_BEGIN);
 
-	auto vert = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
+	auto vert = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 	for (WidgetID widnum = WID_PRD_SCORE_FIRST; widnum <= WID_PRD_SCORE_LAST; widnum++) {
 		auto panel = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_BROWN, widnum);
 		panel->SetFill(1, 1);

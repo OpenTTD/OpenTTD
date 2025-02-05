@@ -74,7 +74,7 @@ static constexpr NWidgetPart _nested_load_dialog_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_BACKGROUND), SetFill(1, 0), SetResize(1, 0),
 	EndContainer(),
 
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 		/* Left side : filter box and available files */
 		NWidget(NWID_VERTICAL),
 			/* Filter box with label */
@@ -88,7 +88,7 @@ static constexpr NWidgetPart _nested_load_dialog_widgets[] = {
 			EndContainer(),
 			/* Sort buttons */
 			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYNAME), SetStringTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYDATE), SetStringTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
 				EndContainer(),
@@ -116,7 +116,7 @@ static constexpr NWidgetPart _nested_load_dialog_widgets[] = {
 			EndContainer(),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_MISSING_NEWGRFS), SetStringTip(STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON, STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_NEWGRF_INFO), SetStringTip(STR_INTRO_NEWGRF_SETTINGS), SetFill(1, 0), SetResize(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_LOAD_BUTTON), SetStringTip(STR_SAVELOAD_LOAD_BUTTON, STR_SAVELOAD_LOAD_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 				EndContainer(),
@@ -148,7 +148,7 @@ static constexpr NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
 	EndContainer(),
 	/* Sort Buttons */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYNAME), SetStringTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYDATE), SetStringTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
 		EndContainer(),
@@ -164,7 +164,7 @@ static constexpr NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
 		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SL_SCROLLBAR),
 	EndContainer(),
 	/* Online Content and Load button */
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_CONTENT_DOWNLOAD), SetResize(1, 0), SetFill(1, 0),
 				SetStringTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_LOAD_BUTTON), SetResize(1, 0), SetFill(1, 0),
@@ -193,7 +193,7 @@ static constexpr NWidgetPart _nested_load_town_data_dialog_widgets[] = {
 	EndContainer(),
 	/* Sort Buttons */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYNAME), SetStringTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYDATE), SetStringTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
 		EndContainer(),
@@ -208,7 +208,7 @@ static constexpr NWidgetPart _nested_load_town_data_dialog_widgets[] = {
 		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SL_SCROLLBAR),
 	EndContainer(),
 	/* Load button */
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_LOAD_BUTTON), SetResize(1, 0), SetFill(1, 0),
 				SetStringTip(STR_SAVELOAD_LOAD_BUTTON, STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
@@ -226,7 +226,7 @@ static constexpr NWidgetPart _nested_save_dialog_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_BACKGROUND), SetFill(1, 0), SetResize(1, 0),
 	EndContainer(),
 
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 		/* Left side : filter box and available files */
 		NWidget(NWID_VERTICAL),
 			/* Filter box with label */
@@ -240,7 +240,7 @@ static constexpr NWidgetPart _nested_save_dialog_widgets[] = {
 			EndContainer(),
 			/* Sort buttons */
 			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYNAME), SetStringTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYDATE), SetStringTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
 				EndContainer(),
