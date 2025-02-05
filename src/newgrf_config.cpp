@@ -559,7 +559,7 @@ static bool GRFSorter(std::unique_ptr<GRFConfig> const &c1, std::unique_ptr<GRFC
 void DoScanNewGRFFiles(NewGRFScanCallback *callback)
 {
 	ClearGRFConfigList(_all_grfs);
-	TarScanner::DoScan(TarScanner::NEWGRF);
+	TarScanner::DoScan(TarScanner::Mode::NewGRF);
 
 	Debug(grf, 1, "Scanning for NewGRFs");
 	uint num = GRFFileScanner::DoScan();

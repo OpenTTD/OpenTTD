@@ -60,24 +60,23 @@ class TarScanner : FileScanner {
 	uint DoScan(Subdirectory sd);
 public:
 	/** The mode of tar scanning. */
-	enum Mode : uint8_t {
-		NONE     = 0,      ///< Scan nothing.
-		BASESET  = 1 << 0, ///< Scan for base sets.
-		NEWGRF   = 1 << 1, ///< Scan for non-base sets.
-		AI       = 1 << 2, ///< Scan for AIs and its libraries.
-		SCENARIO = 1 << 3, ///< Scan for scenarios and heightmaps.
-		GAME     = 1 << 4, ///< Scan for game scripts.
-		ALL      = BASESET | NEWGRF | AI | SCENARIO | GAME, ///< Scan for everything.
+	enum class Mode : uint8_t {
+		Baseset, ///< Scan for base sets.
+		NewGRF, ///< Scan for non-base sets.
+		AI, ///< Scan for AIs and its libraries.
+		Scenario, ///< Scan for scenarios and heightmaps.
+		Game, ///< Scan for game scripts.
 	};
+	using Modes = EnumBitSet<Mode, uint8_t>;
+
+	static constexpr Modes MODES_ALL = {Mode::Baseset, Mode::NewGRF, Mode::AI, Mode::Scenario, Mode::Game}; ///< Scan for everything.
 
 	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename = {}) override;
 
 	bool AddFile(Subdirectory sd, const std::string &filename);
 
 	/** Do the scan for Tars. */
-	static uint DoScan(TarScanner::Mode mode);
+	static uint DoScan(TarScanner::Modes modes);
 };
-
-DECLARE_ENUM_AS_BIT_SET(TarScanner::Mode)
 
 #endif /* FILEIO_FUNC_H */

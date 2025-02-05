@@ -204,7 +204,7 @@ public:
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		TarScanner::Mode mode = TarScanner::NONE;
+		TarScanner::Modes modes{};
 		for (auto ctype : this->receivedTypes) {
 			switch (ctype) {
 				case CONTENT_TYPE_AI:
@@ -219,7 +219,7 @@ public:
 				case CONTENT_TYPE_BASE_GRAPHICS:
 				case CONTENT_TYPE_BASE_SOUNDS:
 				case CONTENT_TYPE_BASE_MUSIC:
-					mode |= TarScanner::BASESET;
+					modes.Set(TarScanner::Mode::Baseset);
 					break;
 
 				case CONTENT_TYPE_NEWGRF:
@@ -228,7 +228,7 @@ public:
 
 				case CONTENT_TYPE_SCENARIO:
 				case CONTENT_TYPE_HEIGHTMAP:
-					mode |= TarScanner::SCENARIO;
+					modes.Set(TarScanner::Mode::Scenario);
 					break;
 
 				default:
@@ -236,7 +236,7 @@ public:
 			}
 		}
 
-		TarScanner::DoScan(mode);
+		TarScanner::DoScan(modes);
 
 		/* Tell all the backends about what we've downloaded */
 		for (auto ctype : this->receivedTypes) {

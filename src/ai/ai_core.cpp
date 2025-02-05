@@ -168,7 +168,7 @@
 
 	AI::frame_counter = 0;
 	if (AI::scanner_info == nullptr) {
-		TarScanner::DoScan(TarScanner::AI);
+		TarScanner::DoScan(TarScanner::Mode::AI);
 		AI::scanner_info = new AIScannerInfo();
 		AI::scanner_info->Initialize();
 		AI::scanner_library = new AIScannerLibrary();
@@ -325,7 +325,7 @@
 
 /* static */ void AI::Rescan()
 {
-	TarScanner::DoScan(TarScanner::AI);
+	TarScanner::DoScan(TarScanner::Mode::AI);
 
 	AI::scanner_info->RescanDir();
 	AI::scanner_library->RescanDir();
