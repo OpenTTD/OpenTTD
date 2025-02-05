@@ -141,4 +141,12 @@ enum class SourceType : uint8_t {
 typedef uint16_t SourceID; ///< Contains either industry ID, town ID or company ID (or INVALID_SOURCE)
 static const SourceID INVALID_SOURCE = 0xFFFF; ///< Invalid/unknown index of source
 
+/** A location from where cargo can come from (or go to). Specifically industries, towns and headquarters. */
+struct Source {
+	SourceID id; ///< Index of industry/town/HQ, INVALID_SOURCE if unknown/invalid.
+	SourceType type; ///< Type of \c source_id.
+
+	auto operator<=>(const Source &source) const = default;
+};
+
 #endif /* CARGO_TYPE_H */

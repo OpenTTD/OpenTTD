@@ -4246,7 +4246,7 @@ void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint rad
 	});
 }
 
-static uint UpdateStationWaiting(Station *st, CargoType type, uint amount, SourceType source_type, SourceID source_id)
+static uint UpdateStationWaiting(Station *st, CargoType type, uint amount, Source source)
 {
 	/* We can't allocate a CargoPacket? Then don't do anything
 	 * at all; i.e. just discard the incoming cargo. */
@@ -4261,7 +4261,7 @@ static uint UpdateStationWaiting(Station *st, CargoType type, uint amount, Sourc
 	if (amount == 0) return 0;
 
 	StationID next = ge.GetVia(st->index);
-	ge.GetOrCreateData().cargo.Append(new CargoPacket(st->index, amount, source_type, source_id), next);
+	ge.GetOrCreateData().cargo.Append(new CargoPacket(st->index, amount, source), next);
 	LinkGraph *lg = nullptr;
 	if (ge.link_graph == INVALID_LINK_GRAPH) {
 		if (LinkGraph::CanAllocateItem()) {
@@ -4391,7 +4391,7 @@ static bool CanMoveGoodsToStation(const Station *st, CargoType type)
 	return true;
 }
 
-uint MoveGoodsToStation(CargoType type, uint amount, SourceType source_type, SourceID source_id, const StationList &all_stations, Owner exclusivity)
+uint MoveGoodsToStation(CargoType type, uint amount, Source source, const StationList &all_stations, Owner exclusivity)
 {
 	/* Return if nothing to do. Also the rounding below fails for 0. */
 	if (all_stations.empty()) return 0;
@@ -4424,7 +4424,7 @@ uint MoveGoodsToStation(CargoType type, uint amount, SourceType source_type, Sou
 	if (used_stations.empty()) {
 		/* only one station around */
 		amount *= first_station->goods[type].rating + 1;
-		return UpdateStationWaiting(first_station, type, amount, source_type, source_id);
+		return UpdateStationWaiting(first_station, type, amount, source);
 	}
 
 	uint company_best[OWNER_NONE + 1] = {};  // best rating for each company, including OWNER_NONE
@@ -4470,7 +4470,7 @@ uint MoveGoodsToStation(CargoType type, uint amount, SourceType source_type, Sou
 
 	uint moved = 0;
 	for (auto &p : used_stations) {
-		moved += UpdateStationWaiting(p.first, type, p.second, source_type, source_id);
+		moved += UpdateStationWaiting(p.first, type, p.second, source);
 	}
 
 	return moved;

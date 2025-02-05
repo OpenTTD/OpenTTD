@@ -53,8 +53,7 @@ private:
 	TileIndex source_xy = INVALID_TILE; ///< The origin of the cargo.
 	Vector travelled{0, 0}; ///< If cargo is in station: the vector from the unload tile to the source tile. If in vehicle: an intermediate value.
 
-	SourceID source_id = INVALID_SOURCE; ///< Index of industry/town/HQ, INVALID_SOURCE if unknown/invalid.
-	SourceType source_type = SourceType::Industry; ///< Type of \c source_id.
+	Source source{INVALID_SOURCE, SourceType::Industry}; ///< Source of the cargo
 
 #ifdef WITH_ASSERT
 	bool in_vehicle = false; ///< NOSAVE: Whether this cargo is in a vehicle or not.
@@ -74,7 +73,7 @@ public:
 	static const uint16_t MAX_COUNT = UINT16_MAX;
 
 	CargoPacket();
-	CargoPacket(StationID first_station, uint16_t count, SourceType source_type, SourceID source_id);
+	CargoPacket(StationID first_station, uint16_t count, Source source);
 	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, TileIndex source_xy, Money feeder_share);
 	CargoPacket(uint16_t count, Money feeder_share, CargoPacket &original);
 
@@ -194,21 +193,12 @@ public:
 	}
 
 	/**
-	 * Gets the type of the cargo's source. industry, town or head quarter.
-	 * @return Source type.
+	 * Gets the source of the packet for subsidy purposes.
+	 * @return The source.
 	 */
-	inline SourceType GetSourceType() const
+	inline Source GetSource() const
 	{
-		return this->source_type;
-	}
-
-	/**
-	 * Gets the ID of the cargo's source. An IndustryID, TownID or CompanyID.
-	 * @return Source ID.
-	 */
-	inline SourceID GetSourceID() const
-	{
-		return this->source_id;
+		return this->source;
 	}
 
 	/**
@@ -270,7 +260,7 @@ public:
 		return this->next_hop;
 	}
 
-	static void InvalidateAllFrom(SourceType src_type, SourceID src);
+	static void InvalidateAllFrom(Source src);
 	static void InvalidateAllFrom(StationID sid);
 	static void AfterLoad();
 };
@@ -514,9 +504,9 @@ public:
 	{
 		return cp1->source_xy == cp2->source_xy &&
 				cp1->periods_in_transit == cp2->periods_in_transit &&
-				cp1->source_type == cp2->source_type &&
+				cp1->source.type == cp2->source.type &&
 				cp1->first_station == cp2->first_station &&
-				cp1->source_id == cp2->source_id;
+				cp1->source.id == cp2->source.id;
 	}
 };
 
@@ -547,7 +537,7 @@ public:
 	friend class CargoReturn;
 	friend class StationCargoReroute;
 
-	static void InvalidateAllFrom(SourceType src_type, SourceID src);
+	static void InvalidateAllFrom(Source src);
 
 	template <class Taction>
 	bool ShiftCargo(Taction &action, StationID next);
@@ -629,9 +619,8 @@ public:
 	{
 		return cp1->source_xy == cp2->source_xy &&
 				cp1->periods_in_transit == cp2->periods_in_transit &&
-				cp1->source_type == cp2->source_type &&
 				cp1->first_station == cp2->first_station &&
-				cp1->source_id == cp2->source_id;
+				cp1->source == cp2->source;
 	}
 };
 

@@ -591,7 +591,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 			if (flags & DC_EXEC) {
 				c->location_of_HQ = INVALID_TILE; // reset HQ position
 				SetWindowDirty(WC_COMPANY, c->index);
-				CargoPacket::InvalidateAllFrom(SourceType::Headquarters, c->index);
+				CargoPacket::InvalidateAllFrom({c->index, SourceType::Headquarters});
 			}
 
 			/* cost of relocating company is 1% of company value */
@@ -704,13 +704,13 @@ static void TileLoop_Object(TileIndex tile)
 		/* Scale by cargo scale setting. */
 		amt = ScaleByCargoScale(amt, true);
 
-		MoveGoodsToStation(pass, amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
+		MoveGoodsToStation(pass, amt, {GetTileOwner(tile), SourceType::Headquarters}, stations.GetStations());
 	}
 
 	/* Top town building generates 90, HQ can make up to 196. The
 	 * proportion passengers:mail is about the same as in the acceptance
 	 * equations. */
-	 CargoType mail = GetCargoTypeByLabel(CT_MAIL);
+	CargoType mail = GetCargoTypeByLabel(CT_MAIL);
 	if (IsValidCargoType(mail) && GB(r, 8, 8) < (196 / 4 / (6 - level))) {
 		uint amt = GB(r, 8, 8) / 8 / 4 + 1;
 
@@ -720,7 +720,7 @@ static void TileLoop_Object(TileIndex tile)
 		/* Scale by cargo scale setting. */
 		amt = ScaleByCargoScale(amt, true);
 
-		MoveGoodsToStation(mail, amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
+		MoveGoodsToStation(mail, amt, {GetTileOwner(tile), SourceType::Headquarters}, stations.GetStations());
 	}
 }
 

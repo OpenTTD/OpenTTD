@@ -134,8 +134,8 @@ SaveLoadTable GetCargoPacketDesc()
 		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", SLE_UINT16, SLV_MORE_CARGO_AGE, SLV_PERIODS_IN_TRANSIT_RENAME),
 		SLE_CONDVAR(CargoPacket, periods_in_transit, SLE_UINT16, SLV_PERIODS_IN_TRANSIT_RENAME, SL_MAX_VERSION),
 		SLE_VAR(CargoPacket, feeder_share,    SLE_INT64),
-		SLE_CONDVAR(CargoPacket, source_type,     SLE_UINT8,  SLV_125, SL_MAX_VERSION),
-		SLE_CONDVAR(CargoPacket, source_id,       SLE_UINT16, SLV_125, SL_MAX_VERSION),
+		SLE_CONDVARNAME(CargoPacket, source.type, "source_type", SLE_UINT8, SLV_125, SL_MAX_VERSION),
+		SLE_CONDVARNAME(CargoPacket, source.id, "source_id", SLE_UINT16, SLV_125, SL_MAX_VERSION),
 		SLE_CONDVAR(CargoPacket, travelled.x, SLE_INT16, SLV_CARGO_TRAVELLED, SL_MAX_VERSION),
 		SLE_CONDVAR(CargoPacket, travelled.y, SLE_INT16, SLV_CARGO_TRAVELLED, SL_MAX_VERSION),
 	};

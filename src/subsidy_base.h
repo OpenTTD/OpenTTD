@@ -23,10 +23,8 @@ struct Subsidy : SubsidyPool::PoolItem<&_subsidy_pool> {
 	CargoType cargo_type;  ///< Cargo type involved in this subsidy, INVALID_CARGO for invalid subsidy
 	uint16_t remaining;    ///< Remaining months when this subsidy is valid
 	CompanyID awarded;   ///< Subsidy is awarded to this company; INVALID_COMPANY if it's not awarded to anyone
-	SourceType src_type; ///< Source of subsidised path (SourceType::Industry or SourceType::Town)
-	SourceType dst_type; ///< Destination of subsidised path (SourceType::Industry or SourceType::Town)
-	SourceID src;        ///< Index of source. Either TownID or IndustryID
-	SourceID dst;        ///< Index of destination. Either TownID or IndustryID
+	Source src; ///< Source of subsidised path
+	Source dst; ///< Destination of subsidised path
 
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)

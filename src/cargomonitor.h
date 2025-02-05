@@ -143,6 +143,6 @@ void ClearCargoPickupMonitoring(CompanyID company = INVALID_OWNER);
 void ClearCargoDeliveryMonitoring(CompanyID company = INVALID_OWNER);
 int32_t GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring);
 int32_t GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring);
-void AddCargoDelivery(CargoType cargo_type, CompanyID company, uint32_t amount, SourceType src_type, SourceID src, const Station *st, IndustryID dest = INVALID_INDUSTRY);
+void AddCargoDelivery(CargoType cargo_type, CompanyID company, uint32_t amount, Source src, const Station *st, IndustryID dest = INVALID_INDUSTRY);
 
 #endif /* CARGOMONITOR_H */
