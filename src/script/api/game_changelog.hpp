@@ -21,6 +21,8 @@
  * \li GSEventVehicleCrashed::GetVictims
  * \li GSEventCompanyRenamed
  * \li GSEventPresidentRenamed
+ * \li GSVehicle::GetEconomyAge
+ * \li GSVehicle::GetWagonEconomyAge
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
