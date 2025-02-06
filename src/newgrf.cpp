@@ -3431,7 +3431,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint first, uint last, int prop,
 				break;
 
 			case 0x12: // Special flags
-				tsp->special_flags = (IndustryTileSpecialFlags)buf.ReadByte();
+				tsp->special_flags = IndustryTileSpecialFlags{buf.ReadByte()};
 				break;
 
 			case 0x13: { // variable length cargo acceptance
@@ -3444,7 +3444,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint first, uint last, int prop,
 				for (uint i = 0; i < std::size(tsp->acceptance); i++) {
 					if (i < num_cargoes) {
 						tsp->accepts_cargo[i] = GetCargoTranslation(buf.ReadByte(), _cur.grffile);
-						/* Tile acceptance can be negative to counteract the INDTILE_SPECIAL_ACCEPTS_ALL_CARGO flag */
+						/* Tile acceptance can be negative to counteract the IndustryTileSpecialFlag::AcceptsAllCargo flag */
 						tsp->acceptance[i] = (int8_t)buf.ReadByte();
 					} else {
 						tsp->accepts_cargo[i] = INVALID_CARGO;

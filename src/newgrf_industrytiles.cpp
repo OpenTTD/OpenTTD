@@ -270,7 +270,7 @@ void AnimateNewIndustryTile(TileIndex tile)
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(GetIndustryGfx(tile));
 	if (itspec == nullptr) return;
 
-	IndustryAnimationBase::AnimateTile(itspec, Industry::GetByTile(tile), tile, (itspec->special_flags & INDTILE_SPECIAL_NEXTFRAME_RANDOMBITS) != 0);
+	IndustryAnimationBase::AnimateTile(itspec, Industry::GetByTile(tile), tile, itspec->special_flags.Test(IndustryTileSpecialFlag::NextFrameRandomBits));
 }
 
 bool StartStopIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32_t random)
