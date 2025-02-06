@@ -3832,7 +3832,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 				break;
 
 			case 0x1A: // Special industry flags to define special behavior
-				indsp->behaviour = (IndustryBehaviour)buf.ReadDWord();
+				indsp->behaviour = IndustryBehaviours{buf.ReadDWord()};
 				break;
 
 			case 0x1B: // New industry text ID

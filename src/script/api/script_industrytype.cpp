@@ -46,7 +46,7 @@
 	if (!IsValidIndustryType(industry_type)) return false;
 
 	if (_settings_game.game_creation.landscape != LandscapeType::Temperate) return true;
-	return (::GetIndustrySpec(industry_type)->behaviour & INDUSTRYBEH_DONT_INCR_PROD) == 0;
+	return !::GetIndustrySpec(industry_type)->behaviour.Test(IndustryBehaviour::DontIncrProd);
 }
 
 /* static */ Money ScriptIndustryType::GetConstructionCost(IndustryType industry_type)
@@ -141,21 +141,21 @@
 {
 	if (!IsValidIndustryType(industry_type)) return false;
 
-	return (::GetIndustrySpec(industry_type)->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
+	return ::GetIndustrySpec(industry_type)->behaviour.Test(IndustryBehaviour::BuiltOnWater);
 }
 
 /* static */ bool ScriptIndustryType::HasHeliport(IndustryType industry_type)
 {
 	if (!IsValidIndustryType(industry_type)) return false;
 
-	return (::GetIndustrySpec(industry_type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
+	return ::GetIndustrySpec(industry_type)->behaviour.Test(IndustryBehaviour::AIAirShipRoutes);
 }
 
 /* static */ bool ScriptIndustryType::HasDock(IndustryType industry_type)
 {
 	if (!IsValidIndustryType(industry_type)) return false;
 
-	return (::GetIndustrySpec(industry_type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
+	return ::GetIndustrySpec(industry_type)->behaviour.Test(IndustryBehaviour::AIAirShipRoutes);
 }
 
 /* static */ IndustryType ScriptIndustryType::ResolveNewGRFID(SQInteger grfid, SQInteger grf_local_id)
