@@ -81,12 +81,11 @@ enum class IndustryBehaviour : uint8_t {
 using IndustryBehaviours = EnumBitSet<IndustryBehaviour, uint32_t>;
 
 /** Flags for miscellaneous industry tile specialities */
-enum IndustryTileSpecialFlags : uint8_t {
-	INDTILE_SPECIAL_NONE                  = 0,
-	INDTILE_SPECIAL_NEXTFRAME_RANDOMBITS  = 1 << 0, ///< Callback 0x26 needs random bits
-	INDTILE_SPECIAL_ACCEPTS_ALL_CARGO     = 1 << 1, ///< Tile always accepts all cargoes the associated industry accepts
+enum class IndustryTileSpecialFlag : uint8_t {
+	NextFrameRandomBits = 0, ///< Callback 0x26 needs random bits
+	AcceptsAllCargo = 1, ///< Tile always accepts all cargoes the associated industry accepts
 };
-DECLARE_ENUM_AS_BIT_SET(IndustryTileSpecialFlags)
+using IndustryTileSpecialFlags = EnumBitSet<IndustryTileSpecialFlag, uint8_t>;
 
 /** Definition of one tile in an industry tile layout */
 struct IndustryTileLayoutTile {

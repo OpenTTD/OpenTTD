@@ -421,7 +421,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 	auto accepts_cargo = itspec->accepts_cargo;
 	auto cargo_acceptance = itspec->acceptance;
 
-	if (itspec->special_flags & INDTILE_SPECIAL_ACCEPTS_ALL_CARGO) {
+	if (itspec->special_flags.Test(IndustryTileSpecialFlag::AcceptsAllCargo)) {
 		/* Copy all accepted cargoes from industry itself */
 		for (const auto &a : ind->accepted) {
 			auto pos = std::ranges::find(accepts_cargo, a.cargo);
