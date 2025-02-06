@@ -39,23 +39,20 @@ static constexpr uint8_t PRODLEVEL_MAXIMUM = 0x80; ///< the industry is running 
  * Flags to control/override the behaviour of an industry.
  * These flags are controlled by game scripts.
  */
-enum IndustryControlFlags : uint8_t {
-	/** No flags in effect */
-	INDCTL_NONE                   = 0,
+enum class IndustryControlFlag : uint8_t {
 	/** When industry production change is evaluated, rolls to decrease are ignored. */
-	INDCTL_NO_PRODUCTION_DECREASE = 1 << 0,
+	NoProductionDecrease = 0,
 	/** When industry production change is evaluated, rolls to increase are ignored. */
-	INDCTL_NO_PRODUCTION_INCREASE = 1 << 1,
+	NoProductionIncrease = 1,
 	/**
 	 * Industry can not close regardless of production level or time since last delivery.
 	 * This does not prevent a closure already announced. */
-	INDCTL_NO_CLOSURE             = 1 << 2,
+	NoClosure = 2,
 	/** Indicates that the production level of the industry is externally controlled. */
-	INDCTL_EXTERNAL_PROD_LEVEL    = 1 << 3,
-	/** Mask of all flags set */
-	INDCTL_MASK = INDCTL_NO_PRODUCTION_DECREASE | INDCTL_NO_PRODUCTION_INCREASE | INDCTL_NO_CLOSURE | INDCTL_EXTERNAL_PROD_LEVEL,
+	ExternalProdLevel = 3,
+	End,
 };
-DECLARE_ENUM_AS_BIT_SET(IndustryControlFlags);
+using IndustryControlFlags = EnumBitSet<IndustryControlFlag, uint8_t, IndustryControlFlag::End>;
 
 static const int THIS_MONTH = 0;
 static const int LAST_MONTH = 1;

@@ -37,20 +37,20 @@ public:
 		 * When industry production change is evaluated, rolls to decrease are ignored.
 		 * This also prevents industry closure due to production dropping to the lowest level.
 		 */
-		INDCTL_NO_PRODUCTION_DECREASE = ::INDCTL_NO_PRODUCTION_DECREASE,
+		INDCTL_NO_PRODUCTION_DECREASE = ::IndustryControlFlags{::IndustryControlFlag::NoProductionDecrease}.base(),
 		/**
 		 * When industry production change is evaluated, rolls to increase are ignored.
 		 */
-		INDCTL_NO_PRODUCTION_INCREASE = ::INDCTL_NO_PRODUCTION_INCREASE,
+		INDCTL_NO_PRODUCTION_INCREASE = ::IndustryControlFlags{::IndustryControlFlag::NoProductionIncrease}.base(),
 		/**
 		 * Industry can not close regardless of production level or time since last delivery.
 		 * This does not prevent a closure already announced.
 		 */
-		INDCTL_NO_CLOSURE             = ::INDCTL_NO_CLOSURE,
+		INDCTL_NO_CLOSURE             = ::IndustryControlFlags{::IndustryControlFlag::NoClosure}.base(),
 		/**
 		 * Indicates that the production level of the industry is controlled by a game script.
 		 */
-		INDCTL_EXTERNAL_PROD_LEVEL    = ::INDCTL_EXTERNAL_PROD_LEVEL,
+		INDCTL_EXTERNAL_PROD_LEVEL    = ::IndustryControlFlags{::IndustryControlFlag::ExternalProdLevel}.base(),
 	};
 
 	/**

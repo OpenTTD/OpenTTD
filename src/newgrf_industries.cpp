@@ -254,7 +254,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 		case 0x46: return this->industry->construction_date.base(); // Date when built - long format - (in days)
 
 		/* Override flags from GS */
-		case 0x47: return this->industry->ctlflags;
+		case 0x47: return this->industry->ctlflags.base();
 
 		/* Get industry ID at offset param */
 		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, this->industry->location.tile, false), this->industry, this->ro.grffile->grfid);
