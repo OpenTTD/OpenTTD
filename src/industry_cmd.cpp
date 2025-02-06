@@ -982,7 +982,7 @@ bool IsTileForestIndustry(TileIndex tile)
 	const Industry *ind = Industry::GetByTile(tile);
 
 	/* Check for organic industry (i.e. not processing or extractive) */
-	if ((GetIndustrySpec(ind->type)->life_type & INDUSTRYLIFE_ORGANIC) == 0) return false;
+	if (!GetIndustrySpec(ind->type)->life_type.Test(IndustryLifeType::Organic)) return false;
 
 	/* Check for wood production */
 	return std::any_of(std::begin(ind->produced), std::end(ind->produced), [](const auto &p) { return IsValidCargoType(p.cargo) && CargoSpec::Get(p.cargo)->label == CT_WOOD; });
@@ -2841,7 +2841,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		if (indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
 	}
 
-	if (standard || (!callback_enabled && (indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0)) {
+	if (standard || (!callback_enabled && indspec->life_type.Any({IndustryLifeType::Organic, IndustryLifeType::Extractive}))) {
 		/* decrease or increase */
 		bool only_decrease = indspec->behaviour.Test(IndustryBehaviour::DontIncrProd) && _settings_game.game_creation.landscape == LandscapeType::Temperate;
 
@@ -2919,7 +2919,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		increment = 0;
 	}
 
-	if (!callback_enabled && (indspec->life_type & INDUSTRYLIFE_PROCESSING)) {
+	if (!callback_enabled && indspec->life_type.Test(IndustryLifeType::Processing)) {
 		if (TimerGameEconomy::year - i->last_prod_year >= PROCESSING_INDUSTRY_ABANDONMENT_YEARS && Chance16(1, original_economy ? 2 : 180)) {
 			closeit = true;
 		}
@@ -3107,7 +3107,7 @@ void CheckIndustries()
  */
 bool IndustrySpec::IsRawIndustry() const
 {
-	return (this->life_type & (INDUSTRYLIFE_EXTRACTIVE | INDUSTRYLIFE_ORGANIC)) != 0;
+	return this->life_type.Any({IndustryLifeType::Extractive, IndustryLifeType::Organic});
 }
 
 /**
@@ -3117,7 +3117,7 @@ bool IndustrySpec::IsRawIndustry() const
 bool IndustrySpec::IsProcessingIndustry() const
 {
 	/* Lumber mills are neither raw nor processing */
-	return (this->life_type & INDUSTRYLIFE_PROCESSING) != 0 &&
+	return this->life_type.Test(IndustryLifeType::Processing) &&
 			!this->behaviour.Test(IndustryBehaviour::CutTrees);
 }
 
