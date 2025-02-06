@@ -111,18 +111,21 @@ debug_inline constexpr void ToggleFlag(T &x, const T y)
 /**
  * Enum-as-bit-set wrapper.
  * Allows wrapping enum values as a bit set. Methods are loosely modelled on std::bitset.
+ * @note Only set Tend_value if the bitset needs to be automatically masked to valid values.
  * @tparam Tenum Enum values to wrap.
- * @tparam Tsorage Storage type required to hold eenum values.
+ * @tparam Tstorage Storage type required to hold eenum values.
+ * @tparam Tend_value Last valid value + 1.
  */
-template <typename Tenum, typename Tstorage>
+template <typename Tenum, typename Tstorage, Tenum Tend_value = Tenum{std::numeric_limits<Tstorage>::digits}>
 class EnumBitSet {
 public:
 	using EnumType = Tenum; ///< Enum type of this EnumBitSet.
 	using BaseType = Tstorage; ///< Storage type of this EnumBitSet, be ConvertibleThroughBase
+	static constexpr Tstorage MASK = std::numeric_limits<Tstorage>::max() >> (std::numeric_limits<Tstorage>::digits - to_underlying(Tend_value)); ///< Mask of valid values.
 
 	constexpr EnumBitSet() : data(0) {}
 	constexpr EnumBitSet(Tenum value) : data(0) { this->Set(value); }
-	explicit constexpr EnumBitSet(Tstorage data) : data(data) {}
+	explicit constexpr EnumBitSet(Tstorage data) : data(data & MASK) {}
 
 	/**
 	 * Construct an EnumBitSet from a list of enum values.
@@ -211,6 +214,15 @@ public:
 	inline constexpr EnumBitSet operator &(const EnumBitSet &other) const
 	{
 		return EnumBitSet{static_cast<Tstorage>(this->data & other.data)};
+	}
+
+	/**
+	 * Test that the raw value of this EnumBitSet is valid.
+	 * @returns true iff the no bits outside the masked value are set.
+	 */
+	inline constexpr bool IsValid() const
+	{
+		return (this->data & MASK) == this->data;
 	}
 
 	/**
