@@ -457,7 +457,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Εμφά
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Εμφάνιση εταιρικών γραφημάτων και ποσοστών πληρωμής φορτίου
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Εμφάνιση πίνακα κατάταξης των εταιριών
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Εμφάνιση λίστας βιομηχανιών ή χρηματοδότηση κατασκευής νέας βιομηχανίας
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας με τα τραίνα της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας με τα τρένα της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται η εμφάνιση/απόκρυψη των ομάδων οχημάτων
@@ -2369,14 +2369,14 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Εμφά
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Εμφάνιση χρωματικών μοτίβων οδικών οχημάτων
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Εμφάνιση χρωματικών μοτίβων πλοίων
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Εμφάνιση χρωματικών μοτίβων αεροσκαφών
-STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Εμφάνιση χρωμάτων ομάδων τραίνων
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Εμφάνιση χρωμάτων ομάδων τρένων
 STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Εμφάνιση χρωμάτων ομάδων οδικών οχημάτων
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Εμφάνιση χρωμάτων ομάδων πλοίων
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Εμφάνιση χρωμάτων ομάδων αεροσκαφών
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Επιλογή του βασικού χρώματος για το επιλεγμένο θέμα. Ctrl+Κλικ για ορισμό αυτού του χρώματος για κάθε θέμα
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Επιλογή του δευτερεύοντος χρώματος για το επιλεγμένο θέμα. Ctrl+Κλικ για ορισμό αυτού του χρώματος για κάθε θέμα
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Επιλέξτε το χρωματικό μοτίβο για αλλαγή ή πολλαπλά μοτίβα με Ctrl+Κλικ. Πατήστε στο κουτάκι για να επιλέξετε τη χρήση του μοτίβου
-STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Δεν έχουν οριστεί ομάδες τραίνων
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Δεν έχουν οριστεί ομάδες τρένων
 STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Δεν έχουν οριστεί ομάδες οδικών οχημάτων
 STR_LIVERY_SHIP_GROUP_EMPTY                                     :Δεν έχουν οριστεί ομάδες πλοίων
 STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Δεν έχουν οριστεί ομάδες αεροσκαφών
@@ -5421,8 +5421,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Δεν �
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Δεν μπορεί να πωληθεί το αεροσκάφος...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Δεν είναι δυνατή η πώληση όλων των σιδηροδρομικών οχημάτων...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Δεν είναι δυνατή η πώληση όλων των οδικών οχημάτων...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Δεν είναι δυνατή η πώληση όλων των πλοίων...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Δεν είναι δυνατή η πώληση όλων των αεροπλάνων...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Δεν είναι δυνατή η αυτόματη αντικατάσταση σιδηροδρομικών οχημάτων...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Δεν είναι δυνατή η αυτόματη αντικατάσταση οδικών οχημάτων...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Δεν είναι δυνατή η αυτόματη αντικατάσταση πλοίων...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Δεν είναι δυνατή η αυτόματη αντικατάσταση αεροσκαφών ...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Πάρα πολλά οχήματα στο παιχνίδι
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Δεν μπορεί να αλλάξει το διάστημα μεταξύ συντηρήσεων...
@@ -5472,7 +5480,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... πο
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... δεν επαρκεί η εμβέλεια του αεροσκάφους
 
 # Extra messages which go on the third line of errors, explaining why orders failed
-STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Δεν υπάρχει σταθμός τραίνου
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Δεν υπάρχει σταθμός τρένου
 STR_ERROR_NO_BUS_STATION                                        :{WHITE}Δεν υπάρχει σταθμός λεωφορείων
 STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Δεν υπάρχει σταθμός φορτηγών
 STR_ERROR_NO_DOCK                                               :{WHITE}Δεν υπάρχει λιμάνι
