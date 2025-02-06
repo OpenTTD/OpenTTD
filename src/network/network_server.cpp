@@ -932,9 +932,9 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet
 static NetworkErrorCode GetErrorForAuthenticationMethod(NetworkAuthenticationMethod method)
 {
 	switch (method) {
-		case NETWORK_AUTH_METHOD_X25519_PAKE:
+		case NetworkAuthenticationMethod::X25519_PAKE:
 			return NETWORK_ERROR_WRONG_PASSWORD;
-		case NETWORK_AUTH_METHOD_X25519_AUTHORIZED_KEY:
+		case NetworkAuthenticationMethod::X25519_AuthorizedKey:
 			return NETWORK_ERROR_NOT_ON_ALLOW_LIST;
 
 		default:
