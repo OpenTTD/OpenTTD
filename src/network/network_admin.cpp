@@ -802,10 +802,10 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN_SECURE(Pac
 
 	this->admin_name = p.Recv_string(NETWORK_CLIENT_NAME_LENGTH);
 	this->admin_version = p.Recv_string(NETWORK_REVISION_LENGTH);
-	NetworkAuthenticationMethodMask method_mask = p.Recv_uint16();
+	NetworkAuthenticationMethodMask method_mask{p.Recv_uint16()};
 
 	/* Always exclude key exchange only, as that provides no credential checking. */
-	ClrBit(method_mask, NETWORK_AUTH_METHOD_X25519_KEY_EXCHANGE_ONLY);
+	method_mask.Reset(NetworkAuthenticationMethod::X25519_KeyExchangeOnly);
 
 	if (this->admin_name.empty() || this->admin_version.empty()) {
 		/* No name or version supplied. */
