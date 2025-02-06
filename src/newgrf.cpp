@@ -3759,7 +3759,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 			}
 
 			case 0x0B: // Industry production flags
-				indsp->life_type = (IndustryLifeType)buf.ReadByte();
+				indsp->life_type = IndustryLifeTypes{buf.ReadByte()};
 				break;
 
 			case 0x0C: // Industry closure message

@@ -20,12 +20,14 @@
 #include "newgrf_commons.h"
 
 /** Available types of industry lifetimes. */
-enum IndustryLifeType : uint8_t {
-	INDUSTRYLIFE_BLACK_HOLE =      0, ///< Like power plants and banks
-	INDUSTRYLIFE_EXTRACTIVE = 1 << 0, ///< Like mines
-	INDUSTRYLIFE_ORGANIC    = 1 << 1, ///< Like forests
-	INDUSTRYLIFE_PROCESSING = 1 << 2, ///< Like factories
+enum class IndustryLifeType : uint8_t {
+	Extractive = 0, ///< Like mines
+	Organic = 1, ///< Like forests
+	Processing = 2, ///< Like factories
 };
+using IndustryLifeTypes = EnumBitSet<IndustryLifeType, uint8_t>;
+
+static constexpr IndustryLifeTypes INDUSTRYLIFE_BLACK_HOLE{}; ///< Like power plants and banks
 
 /**
  * Available procedures to check whether an industry may build at a given location.
@@ -114,7 +116,7 @@ struct IndustrySpec {
 	uint8_t minimal_cargo;
 	std::array<CargoType, INDUSTRY_NUM_INPUTS> accepts_cargo; ///< 16 accepted cargoes.
 	uint16_t input_cargo_multiplier[INDUSTRY_NUM_INPUTS][INDUSTRY_NUM_OUTPUTS]; ///< Input cargo multipliers (multiply amount of incoming cargo for the produced cargoes)
-	IndustryLifeType life_type;                 ///< This is also known as Industry production flag, in newgrf specs
+	IndustryLifeTypes life_type;                 ///< This is also known as Industry production flag, in newgrf specs
 	LandscapeTypes climate_availability; ///< Bitmask, giving landscape enums as bit position
 	IndustryBehaviours behaviour;                ///< How this industry will behave, and how others entities can use it
 	uint8_t map_colour;                            ///< colour used for the small map
