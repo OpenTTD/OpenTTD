@@ -140,7 +140,7 @@ public:
 	 */
 	X25519KeyExchangeOnlyClientHandler(const X25519SecretKey &secret_key) : X25519AuthenticationHandler(secret_key) {}
 
-	virtual RequestResult ReceiveRequest(struct Packet &p) override { return this->X25519AuthenticationHandler::ReceiveRequest(p) ? READY_FOR_RESPONSE : INVALID; }
+	virtual RequestResult ReceiveRequest(struct Packet &p) override { return this->X25519AuthenticationHandler::ReceiveRequest(p) ? RequestResult::ReadyForResponse : RequestResult::Invalid; }
 	virtual bool SendResponse(struct Packet &p) override { return this->X25519AuthenticationHandler::SendResponse(p, {}); }
 
 	virtual std::string_view GetName() const override { return "X25519-KeyExchangeOnly-client"; }
@@ -249,7 +249,7 @@ public:
 	 */
 	X25519AuthorizedKeyClientHandler(const X25519SecretKey &secret_key) : X25519AuthenticationHandler(secret_key) {}
 
-	virtual RequestResult ReceiveRequest(struct Packet &p) override { return this->X25519AuthenticationHandler::ReceiveRequest(p) ? READY_FOR_RESPONSE : INVALID; }
+	virtual RequestResult ReceiveRequest(struct Packet &p) override { return this->X25519AuthenticationHandler::ReceiveRequest(p) ? RequestResult::ReadyForResponse : RequestResult::Invalid; }
 	virtual bool SendResponse(struct Packet &p) override { return this->X25519AuthenticationHandler::SendResponse(p, {}); }
 
 	virtual std::string_view GetName() const override { return "X25519-AuthorizedKey-client"; }

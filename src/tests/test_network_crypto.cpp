@@ -86,7 +86,7 @@ TEST_CASE("Authentication_KeyExchangeOnly")
 	X25519KeyExchangeOnlyServerHandler server(X25519SecretKey::CreateRandom());
 	X25519KeyExchangeOnlyClientHandler client(X25519SecretKey::CreateRandom());
 
-	TestAuthentication(server, client, NetworkAuthenticationServerHandler::AUTHENTICATED, NetworkAuthenticationClientHandler::READY_FOR_RESPONSE);
+	TestAuthentication(server, client, NetworkAuthenticationServerHandler::ResponseResult::Authenticated, NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse);
 }
 
 
@@ -97,21 +97,21 @@ static void TestAuthenticationPAKE(std::string server_password, std::string clie
 	X25519PAKEServerHandler server(X25519SecretKey::CreateRandom(), &server_password_provider);
 	X25519PAKEClientHandler client(X25519SecretKey::CreateRandom(), std::make_shared<TestPasswordRequestHandler>(client_password));
 
-	TestAuthentication(server, client, expected_response_result, NetworkAuthenticationClientHandler::AWAIT_USER_INPUT);
+	TestAuthentication(server, client, expected_response_result, NetworkAuthenticationClientHandler::RequestResult::AwaitUserInput);
 }
 
 TEST_CASE("Authentication_PAKE")
 {
 	SECTION("Correct password") {
-		TestAuthenticationPAKE("sikrit", "sikrit", NetworkAuthenticationServerHandler::AUTHENTICATED);
+		TestAuthenticationPAKE("sikrit", "sikrit", NetworkAuthenticationServerHandler::ResponseResult::Authenticated);
 	}
 
 	SECTION("Empty password") {
-		TestAuthenticationPAKE("", "", NetworkAuthenticationServerHandler::AUTHENTICATED);
+		TestAuthenticationPAKE("", "", NetworkAuthenticationServerHandler::ResponseResult::Authenticated);
 	}
 
 	SECTION("Wrong password") {
-		TestAuthenticationPAKE("sikrit", "secret", NetworkAuthenticationServerHandler::NOT_AUTHENTICATED);
+		TestAuthenticationPAKE("sikrit", "secret", NetworkAuthenticationServerHandler::ResponseResult::NotAuthenticated);
 	}
 }
 
@@ -126,7 +126,7 @@ static void TestAuthenticationAuthorizedKey(const X25519SecretKey &client_secret
 	X25519AuthorizedKeyServerHandler server(X25519SecretKey::CreateRandom(), &authorized_key_handler);
 	X25519AuthorizedKeyClientHandler client(client_secret_key);
 
-	TestAuthentication(server, client, expected_response_result, NetworkAuthenticationClientHandler::READY_FOR_RESPONSE);
+	TestAuthentication(server, client, expected_response_result, NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse);
 }
 
 TEST_CASE("Authentication_AuthorizedKey")
@@ -136,11 +136,11 @@ TEST_CASE("Authentication_AuthorizedKey")
 	auto invalid_client_public_key = X25519SecretKey::CreateRandom().CreatePublicKey();
 
 	SECTION("Correct public key") {
-		TestAuthenticationAuthorizedKey(client_secret_key, valid_client_public_key, NetworkAuthenticationServerHandler::AUTHENTICATED);
+		TestAuthenticationAuthorizedKey(client_secret_key, valid_client_public_key, NetworkAuthenticationServerHandler::ResponseResult::Authenticated);
 	}
 
 	SECTION("Incorrect public key") {
-		TestAuthenticationAuthorizedKey(client_secret_key, invalid_client_public_key, NetworkAuthenticationServerHandler::NOT_AUTHENTICATED);
+		TestAuthenticationAuthorizedKey(client_secret_key, invalid_client_public_key, NetworkAuthenticationServerHandler::ResponseResult::NotAuthenticated);
 	}
 }
 
@@ -175,39 +175,39 @@ TEST_CASE("Authentication_Combined")
 	SECTION("Invalid authorized keys, invalid password") {
 		auto server = NetworkAuthenticationServerHandler::Create(&invalid_password_provider, &invalid_authorized_key_handler);
 
-		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::RETRY_NEXT_METHOD, NetworkAuthenticationClientHandler::READY_FOR_RESPONSE);
-		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::NOT_AUTHENTICATED, NetworkAuthenticationClientHandler::AWAIT_USER_INPUT);
+		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::RetryNextMethod, NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse);
+		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::NotAuthenticated, NetworkAuthenticationClientHandler::RequestResult::AwaitUserInput);
 	}
 
 	SECTION("Invalid authorized keys, valid password") {
 		auto server = NetworkAuthenticationServerHandler::Create(&valid_password_provider, &invalid_authorized_key_handler);
 
-		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::RETRY_NEXT_METHOD, NetworkAuthenticationClientHandler::READY_FOR_RESPONSE);
-		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::AUTHENTICATED, NetworkAuthenticationClientHandler::AWAIT_USER_INPUT);
+		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::RetryNextMethod, NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse);
+		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::Authenticated, NetworkAuthenticationClientHandler::RequestResult::AwaitUserInput);
 	}
 
 	SECTION("Valid authorized keys, valid password") {
 		auto server = NetworkAuthenticationServerHandler::Create(&valid_password_provider, &valid_authorized_key_handler);
 
-		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::AUTHENTICATED, NetworkAuthenticationClientHandler::READY_FOR_RESPONSE);
+		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::Authenticated, NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse);
 	}
 
 	SECTION("No authorized keys, invalid password") {
 		auto server = NetworkAuthenticationServerHandler::Create(&invalid_password_provider, &no_authorized_key_handler);
 
-		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::NOT_AUTHENTICATED, NetworkAuthenticationClientHandler::AWAIT_USER_INPUT);
+		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::NotAuthenticated, NetworkAuthenticationClientHandler::RequestResult::AwaitUserInput);
 	}
 
 	SECTION("No authorized keys, valid password") {
 		auto server = NetworkAuthenticationServerHandler::Create(&valid_password_provider, &no_authorized_key_handler);
 
-		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::AUTHENTICATED, NetworkAuthenticationClientHandler::AWAIT_USER_INPUT);
+		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::Authenticated, NetworkAuthenticationClientHandler::RequestResult::AwaitUserInput);
 	}
 
 	SECTION("No authorized keys, no password") {
 		auto server = NetworkAuthenticationServerHandler::Create(&no_password_provider, &no_authorized_key_handler);
 
-		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::AUTHENTICATED, NetworkAuthenticationClientHandler::READY_FOR_RESPONSE);
+		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::Authenticated, NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse);
 	}
 }
 
@@ -248,7 +248,7 @@ TEST_CASE("Encryption handling")
 	X25519KeyExchangeOnlyServerHandler server(X25519SecretKey::CreateRandom());
 	X25519KeyExchangeOnlyClientHandler client(X25519SecretKey::CreateRandom());
 
-	TestAuthentication(server, client, NetworkAuthenticationServerHandler::AUTHENTICATED, NetworkAuthenticationClientHandler::READY_FOR_RESPONSE);
+	TestAuthentication(server, client, NetworkAuthenticationServerHandler::ResponseResult::Authenticated, NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse);
 
 	Packet packet(&mock_socket_handler, PacketType{});
 	server.SendEnableEncryption(packet);
