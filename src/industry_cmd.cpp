@@ -1804,7 +1804,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->was_cargo_delivered = false;
 	i->last_prod_year = TimerGameEconomy::year;
 	i->founder = founder;
-	i->ctlflags = INDCTL_NONE;
+	i->ctlflags = {};
 
 	i->construction_date = TimerGameCalendar::date;
 	i->construction_type = (_game_mode == GM_EDITOR) ? ICT_SCENARIO_EDITOR :
@@ -2143,8 +2143,9 @@ CommandCost CmdIndustrySetFlags(DoCommandFlag flags, IndustryID ind_id, Industry
 
 	Industry *ind = Industry::GetIfValid(ind_id);
 	if (ind == nullptr) return CMD_ERROR;
+	if (!ctlflags.IsValid()) return CMD_ERROR;
 
-	if (flags & DC_EXEC) ind->ctlflags = ctlflags & INDCTL_MASK;
+	if (flags & DC_EXEC) ind->ctlflags = ctlflags;
 
 	return CommandCost();
 }
@@ -2175,7 +2176,7 @@ CommandCost CmdIndustrySetProduction(DoCommandFlag flags, IndustryID ind_id, uin
 		}
 		if (prod_level != ind->prod_level && !custom_news.empty()) str = STR_NEWS_CUSTOM_ITEM;
 
-		ind->ctlflags |= INDCTL_EXTERNAL_PROD_LEVEL;
+		ind->ctlflags.Set(IndustryControlFlag::ExternalProdLevel);
 		ind->prod_level = prod_level;
 		ind->RecomputeProductionMultipliers();
 
@@ -2855,7 +2856,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				}
 			}
 		} else if (_settings_game.economy.type == ET_SMOOTH) {
-			closeit = !(i->ctlflags & (INDCTL_NO_CLOSURE | INDCTL_NO_PRODUCTION_DECREASE));
+			closeit = !i->ctlflags.Any({IndustryControlFlag::NoClosure, IndustryControlFlag::NoProductionDecrease});
 			for (auto &p : i->produced) {
 				if (!IsValidCargoType(p.cargo)) continue;
 				uint32_t r = Random();
@@ -2888,8 +2889,8 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				}
 
 				/* If override flags are set, prevent actually changing production if any was decided on */
-				if ((i->ctlflags & INDCTL_NO_PRODUCTION_DECREASE) && new_prod < old_prod) continue;
-				if ((i->ctlflags & INDCTL_NO_PRODUCTION_INCREASE) && new_prod > old_prod) continue;
+				if (i->ctlflags.Test(IndustryControlFlag::NoProductionDecrease) && new_prod < old_prod) continue;
+				if (i->ctlflags.Test(IndustryControlFlag::NoProductionIncrease) && new_prod > old_prod) continue;
 
 				/* Do not stop closing the industry when it has the lowest possible production rate */
 				if (new_prod == old_prod && old_prod > 1) {
@@ -2911,9 +2912,9 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	}
 
 	/* If override flags are set, prevent actually changing production if any was decided on */
-	if ((i->ctlflags & INDCTL_NO_PRODUCTION_DECREASE) && (div > 0 || increment < 0)) return;
-	if ((i->ctlflags & INDCTL_NO_PRODUCTION_INCREASE) && (mul > 0 || increment > 0)) return;
-	if (i->ctlflags & INDCTL_EXTERNAL_PROD_LEVEL) {
+	if (i->ctlflags.Test(IndustryControlFlag::NoProductionDecrease) && (div > 0 || increment < 0)) return;
+	if (i->ctlflags.Test(IndustryControlFlag::NoProductionIncrease) && (mul > 0 || increment > 0)) return;
+	if (i->ctlflags.Test(IndustryControlFlag::ExternalProdLevel)) {
 		div = 0;
 		mul = 0;
 		increment = 0;
@@ -2959,7 +2960,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	if (recalculate_multipliers) i->RecomputeProductionMultipliers();
 
 	/* Close if needed and allowed */
-	if (closeit && !CheckIndustryCloseDownProtection(i->type) && !(i->ctlflags & INDCTL_NO_CLOSURE)) {
+	if (closeit && !CheckIndustryCloseDownProtection(i->type) && !i->ctlflags.Test(IndustryControlFlag::NoClosure)) {
 		i->prod_level = PRODLEVEL_CLOSURE;
 		SetWindowDirty(WC_INDUSTRY_VIEW, i->index);
 		str = indspec->closure_text;
