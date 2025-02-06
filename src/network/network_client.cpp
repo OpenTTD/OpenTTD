@@ -694,13 +694,13 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_AUTH_REQUEST(Pa
 				_settings_client.network.client_secret_key, _settings_client.network.client_public_key);
 	}
 	switch (this->authentication_handler->ReceiveRequest(p)) {
-		case NetworkAuthenticationClientHandler::READY_FOR_RESPONSE:
+		case NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse:
 			return SendAuthResponse();
 
-		case NetworkAuthenticationClientHandler::AWAIT_USER_INPUT:
+		case NetworkAuthenticationClientHandler::RequestResult::AwaitUserInput:
 			return NETWORK_RECV_STATUS_OKAY;
 
-		case NetworkAuthenticationClientHandler::INVALID:
+		case NetworkAuthenticationClientHandler::RequestResult::Invalid:
 		default:
 			return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
