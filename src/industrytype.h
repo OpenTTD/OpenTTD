@@ -53,31 +53,30 @@ enum IndustryConstructionType : uint8_t {
 };
 
 /** Various industry behaviours mostly to represent original TTD specialities */
-enum IndustryBehaviour : uint32_t {
-	INDUSTRYBEH_NONE                  =      0,
-	INDUSTRYBEH_PLANT_FIELDS          = 1 << 0,  ///< periodically plants fields around itself (temp and arctic farms)
-	INDUSTRYBEH_CUT_TREES             = 1 << 1,  ///< cuts trees and produce first output cargo from them (lumber mill)
-	INDUSTRYBEH_BUILT_ONWATER         = 1 << 2,  ///< is built on water (oil rig)
-	INDUSTRYBEH_TOWN1200_MORE         = 1 << 3,  ///< can only be built in towns larger than 1200 inhabitants (temperate bank)
-	INDUSTRYBEH_ONLY_INTOWN           = 1 << 4,  ///< can only be built in towns (arctic/tropic banks, water tower)
-	INDUSTRYBEH_ONLY_NEARTOWN         = 1 << 5,  ///< is always built near towns (toy shop)
-	INDUSTRYBEH_PLANT_ON_BUILT        = 1 << 6,  ///< Fields are planted around when built (all farms)
-	INDUSTRYBEH_DONT_INCR_PROD        = 1 << 7,  ///< do not increase production (oil wells) in the temperate climate
-	INDUSTRYBEH_BEFORE_1950           = 1 << 8,  ///< can only be built before 1950 (oil wells)
-	INDUSTRYBEH_AFTER_1960            = 1 << 9,  ///< can only be built after 1960 (oil rigs)
-	INDUSTRYBEH_AI_AIRSHIP_ROUTES     = 1 << 10, ///< ai will attempt to establish air/ship routes to this industry (oil rig)
-	INDUSTRYBEH_AIRPLANE_ATTACKS      = 1 << 11, ///< can be exploded by a military airplane (oil refinery)
-	INDUSTRYBEH_CHOPPER_ATTACKS       = 1 << 12, ///< can be exploded by a military helicopter (factory)
-	INDUSTRYBEH_CAN_SUBSIDENCE        = 1 << 13, ///< can cause a subsidence (coal mine, shaft that collapses)
+enum class IndustryBehaviour : uint8_t {
+	PlantFields = 0, ///< periodically plants fields around itself (temp and arctic farms)
+	CutTrees = 1, ///< cuts trees and produce first output cargo from them (lumber mill)
+	BuiltOnWater = 2, ///< is built on water (oil rig)
+	Town1200More = 3, ///< can only be built in towns larger than 1200 inhabitants (temperate bank)
+	OnlyInTown = 4, ///< can only be built in towns (arctic/tropic banks, water tower)
+	OnlyNearTown = 5, ///< is always built near towns (toy shop)
+	PlantOnBuild = 6, ///< Fields are planted around when built (all farms)
+	DontIncrProd = 7, ///< do not increase production (oil wells) in the temperate climate
+	Before1950 = 8, ///< can only be built before 1950 (oil wells)
+	After1960 = 9, ///< can only be built after 1960 (oil rigs)
+	AIAirShipRoutes = 10, ///< ai will attempt to establish air/ship routes to this industry (oil rig)
+	AirplaneAttacks = 11, ///< can be exploded by a military airplane (oil refinery)
+	ChopperAttacks = 12, ///< can be exploded by a military helicopter (factory)
+	CanSubsidence = 13, ///< can cause a subsidence (coal mine, shaft that collapses)
 	/* The following flags are only used for newindustries and do no represent any normal behaviour */
-	INDUSTRYBEH_PROD_MULTI_HNDLING    = 1 << 14, ///< Automatic production multiplier handling
-	INDUSTRYBEH_PRODCALLBACK_RANDOM   = 1 << 15, ///< Production callback needs random bits in var 10
-	INDUSTRYBEH_NOBUILT_MAPCREATION   = 1 << 16, ///< Do not force one instance of this type to appear on map generation
-	INDUSTRYBEH_CANCLOSE_LASTINSTANCE = 1 << 17, ///< Allow closing down the last instance of this type
-	INDUSTRYBEH_CARGOTYPES_UNLIMITED  = 1 << 18, ///< Allow produced/accepted cargoes callbacks to supply more than 2 and 3 types
-	INDUSTRYBEH_NO_PAX_PROD_CLAMP     = 1 << 19, ///< Do not clamp production of passengers. (smooth economy only)
+	ProdMultiHandling = 14, ///< Automatic production multiplier handling
+	ProdCallbackRandom = 15, ///< Production callback needs random bits in var 10
+	NoBuildMapCreation = 16, ///< Do not force one instance of this type to appear on map generation
+	CanCloseLastInstance = 17, ///< Allow closing down the last instance of this type
+	CargoTypesUnlimited = 18, ///< Allow produced/accepted cargoes callbacks to supply more than 2 and 3 types
+	NoPaxProdClamp = 19, ///< Do not clamp production of passengers. (smooth economy only)
 };
-DECLARE_ENUM_AS_BIT_SET(IndustryBehaviour)
+using IndustryBehaviours = EnumBitSet<IndustryBehaviour, uint32_t>;
 
 /** Flags for miscellaneous industry tile specialities */
 enum IndustryTileSpecialFlags : uint8_t {
@@ -117,7 +116,7 @@ struct IndustrySpec {
 	uint16_t input_cargo_multiplier[INDUSTRY_NUM_INPUTS][INDUSTRY_NUM_OUTPUTS]; ///< Input cargo multipliers (multiply amount of incoming cargo for the produced cargoes)
 	IndustryLifeType life_type;                 ///< This is also known as Industry production flag, in newgrf specs
 	LandscapeTypes climate_availability; ///< Bitmask, giving landscape enums as bit position
-	IndustryBehaviour behaviour;                ///< How this industry will behave, and how others entities can use it
+	IndustryBehaviours behaviour;                ///< How this industry will behave, and how others entities can use it
 	uint8_t map_colour;                            ///< colour used for the small map
 	StringID name;                              ///< Displayed name of the industry
 	StringID new_industry_text;                 ///< Message appearing when the industry is built

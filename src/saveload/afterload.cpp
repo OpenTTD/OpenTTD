@@ -1477,7 +1477,7 @@ bool AfterLoadGame()
 		for (Industry *i : Industry::Iterate()) {
 			uint j;
 
-			if (GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_PLANT_ON_BUILT) {
+			if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::PlantOnBuild)) {
 				for (j = 0; j != 50; j++) PlantRandomFarmField(i);
 			}
 		}
@@ -1954,7 +1954,7 @@ bool AfterLoadGame()
 				SetWaterClassDependingOnSurroundings(t, true);
 			}
 			if (IsTileType(t, MP_INDUSTRY)) {
-				if ((GetIndustrySpec(GetIndustryType(t))->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0) {
+				if (GetIndustrySpec(GetIndustryType(t))->behaviour.Test(IndustryBehaviour::BuiltOnWater)) {
 					SetWaterClassDependingOnSurroundings(t, true);
 				} else {
 					SetWaterClass(t, WATER_CLASS_INVALID);

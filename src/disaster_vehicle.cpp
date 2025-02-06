@@ -427,9 +427,9 @@ static void DestructIndustry(Industry *i)
  * @param image_override The image at the time the aircraft is firing.
  * @param leave_at_top True iff the vehicle leaves the map at the north side.
  * @param news_message The string that's used as news message.
- * @param industry_flag Only attack industries that have this flag set.
+ * @param behaviour Only attack industries that have this behaviour set.
  */
-static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, bool leave_at_top, StringID news_message, IndustryBehaviour industry_flag)
+static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, bool leave_at_top, StringID news_message, IndustryBehaviour behaviour)
 {
 	v->tick_counter++;
 	v->image_override = (v->state == 1 && HasBit(v->tick_counter, 2)) ? image_override : 0;
@@ -481,7 +481,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, b
 		IndustryID ind = GetIndustryIndex(tile);
 		v->dest_tile = TileIndex{ind};
 
-		if (GetIndustrySpec(Industry::Get(ind)->type)->behaviour & industry_flag) {
+		if (GetIndustrySpec(Industry::Get(ind)->type)->behaviour.Test(behaviour)) {
 			v->state = 1;
 			v->age = CalendarTime::MIN_DATE;
 		}
@@ -493,13 +493,13 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, b
 /** Airplane handling. */
 static bool DisasterTick_Airplane(DisasterVehicle *v)
 {
-	return DisasterTick_Aircraft(v, SPR_F_15_FIRING, true, STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY, INDUSTRYBEH_AIRPLANE_ATTACKS);
+	return DisasterTick_Aircraft(v, SPR_F_15_FIRING, true, STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY, IndustryBehaviour::AirplaneAttacks);
 }
 
 /** Helicopter handling. */
 static bool DisasterTick_Helicopter(DisasterVehicle *v)
 {
-	return DisasterTick_Aircraft(v, SPR_AH_64A_FIRING, false, STR_NEWS_DISASTER_HELICOPTER_FACTORY, INDUSTRYBEH_CHOPPER_ATTACKS);
+	return DisasterTick_Aircraft(v, SPR_AH_64A_FIRING, false, STR_NEWS_DISASTER_HELICOPTER_FACTORY, IndustryBehaviour::ChopperAttacks);
 }
 
 /** Helicopter rotor blades; keep these spinning */
@@ -775,7 +775,7 @@ static void Disaster_Airplane_Init()
 	Industry *found = nullptr;
 
 	for (Industry *i : Industry::Iterate()) {
-		if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_AIRPLANE_ATTACKS) &&
+		if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::AirplaneAttacks) &&
 				(found == nullptr || Chance16(1, 2))) {
 			found = i;
 		}
@@ -801,7 +801,7 @@ static void Disaster_Helicopter_Init()
 	Industry *found = nullptr;
 
 	for (Industry *i : Industry::Iterate()) {
-		if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CHOPPER_ATTACKS) &&
+		if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::ChopperAttacks) &&
 				(found == nullptr || Chance16(1, 2))) {
 			found = i;
 		}
@@ -886,7 +886,7 @@ static void Disaster_CoalMine_Init()
 
 	for (m = 0; m < 15; m++) {
 		for (const Industry *i : Industry::Iterate()) {
-			if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CAN_SUBSIDENCE) && --index < 0) {
+			if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::CanSubsidence) && --index < 0) {
 				SetDParam(0, i->town->index);
 				AddTileNewsItem(STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE, NT_ACCIDENT, i->location.tile + TileDiffXY(1, 1)); // keep the news, even when the mine closes
 

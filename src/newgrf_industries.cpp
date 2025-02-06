@@ -191,7 +191,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 			case 0x8A: return ClampTo<uint8_t>(GetTileZ(this->tile) * (this->ro.grffile->grf_version >= 8 ? 1 : TILE_HEIGHT));
 
 			/* Distance to the nearest water/land tile */
-			case 0x8B: return GetClosestWaterDistance(this->tile, (GetIndustrySpec(this->industry->type)->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
+			case 0x8B: return GetClosestWaterDistance(this->tile, !GetIndustrySpec(this->industry->type)->behaviour.Test(IndustryBehaviour::BuiltOnWater));
 
 			/* Square of Euclidian distance from town */
 			case 0x8D: return ClampTo<uint16_t>(DistanceSquare(this->industry->town->xy, this->tile));
@@ -216,7 +216,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 		case 0x42: { // waiting cargo, but only if those two callback flags are set
 			IndustryCallbackMasks callback = indspec->callback_mask;
 			if (callback.Any({IndustryCallbackMask::ProductionCargoArrival, IndustryCallbackMask::Production256Ticks})) {
-				if ((indspec->behaviour & INDUSTRYBEH_PROD_MULTI_HNDLING) != 0) {
+				if (indspec->behaviour.Test(IndustryBehaviour::ProdMultiHandling)) {
 					if (this->industry->prod_level == 0) return 0;
 					return ClampTo<uint16_t>(this->industry->GetAccepted(variable - 0x40).waiting / this->industry->prod_level);
 				} else {
@@ -230,7 +230,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 		/* Manhattan distance of closes dry/water tile */
 		case 0x43:
 			if (this->tile == INVALID_TILE) break;
-			return GetClosestWaterDistance(this->tile, (indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
+			return GetClosestWaterDistance(this->tile, !indspec->behaviour.Test(IndustryBehaviour::BuiltOnWater));
 
 		/* Layout number */
 		case 0x44: return this->industry->selected_layout;
@@ -605,9 +605,9 @@ void IndustryProductionCallback(Industry *ind, int reason)
 {
 	const IndustrySpec *spec = GetIndustrySpec(ind->type);
 	IndustriesResolverObject object(ind->location.tile, ind, ind->type);
-	if ((spec->behaviour & INDUSTRYBEH_PRODCALLBACK_RANDOM) != 0) object.callback_param1 = Random();
+	if (spec->behaviour.Test(IndustryBehaviour::ProdCallbackRandom)) object.callback_param1 = Random();
 	int multiplier = 1;
-	if ((spec->behaviour & INDUSTRYBEH_PROD_MULTI_HNDLING) != 0) multiplier = ind->prod_level;
+	if (spec->behaviour.Test(IndustryBehaviour::ProdMultiHandling)) multiplier = ind->prod_level;
 	object.callback_param2 = reason;
 
 	for (uint loop = 0;; loop++) {

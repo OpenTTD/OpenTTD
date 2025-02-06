@@ -165,14 +165,14 @@
 {
 	if (!IsValidIndustry(industry_id)) return false;
 
-	return (::GetIndustrySpec(::Industry::Get(industry_id)->type)->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
+	return ::GetIndustrySpec(::Industry::Get(industry_id)->type)->behaviour.Test(IndustryBehaviour::BuiltOnWater);
 }
 
 /* static */ bool ScriptIndustry::HasHeliport(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return false;
 
-	return (::GetIndustrySpec(::Industry::Get(industry_id)->type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
+	return ::GetIndustrySpec(::Industry::Get(industry_id)->type)->behaviour.Test(IndustryBehaviour::AIAirShipRoutes);
 }
 
 /* static */ TileIndex ScriptIndustry::GetHeliportLocation(IndustryID industry_id)
@@ -194,7 +194,7 @@
 {
 	if (!IsValidIndustry(industry_id)) return false;
 
-	return (::GetIndustrySpec(::Industry::Get(industry_id)->type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
+	return ::GetIndustrySpec(::Industry::Get(industry_id)->type)->behaviour.Test(IndustryBehaviour::AIAirShipRoutes);
 }
 
 /* static */ TileIndex ScriptIndustry::GetDockLocation(IndustryID industry_id)

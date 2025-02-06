@@ -171,7 +171,7 @@ Industry::~Industry()
 		}
 	}
 
-	if (GetIndustrySpec(this->type)->behaviour & INDUSTRYBEH_PLANT_FIELDS) {
+	if (GetIndustrySpec(this->type)->behaviour.Test(IndustryBehaviour::PlantFields)) {
 		TileArea ta = TileArea(this->location.tile, 0, 0).Expand(21);
 
 		/* Remove the farmland and convert it to regular tiles over time. */
@@ -502,7 +502,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlag flags)
 			!_cheats.magic_bulldozer.value) ||
 			((flags & DC_AUTO) != 0) ||
 			(_current_company == OWNER_WATER &&
-				((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) ||
+				(indspec->behaviour.Test(IndustryBehaviour::BuiltOnWater) ||
 				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
 		SetDParam(1, indspec->name);
 		return CommandCost(flags & DC_AUTO ? STR_ERROR_GENERIC_OBJECT_IN_THE_WAY : INVALID_STRING_ID);
@@ -1197,9 +1197,9 @@ static void ProduceIndustryGoods(Industry *i)
 		/* Handle non-callback cargo production. */
 		if (!indsp->callback_mask.Test(IndustryCallbackMask::Production256Ticks)) ProduceIndustryGoodsHelper(i, true);
 
-		IndustryBehaviour indbehav = indsp->behaviour;
+		IndustryBehaviours indbehav = indsp->behaviour;
 
-		if ((indbehav & INDUSTRYBEH_PLANT_FIELDS) != 0) {
+		if (indbehav.Test(IndustryBehaviour::PlantFields)) {
 			uint16_t cb_res = CALLBACK_FAILED;
 			if (indsp->callback_mask.Test(IndustryCallbackMask::SpecialEffect)) {
 				cb_res = GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, Random(), 0, i, i->type, i->location.tile);
@@ -1214,7 +1214,7 @@ static void ProduceIndustryGoods(Industry *i)
 
 			if (plant) PlantRandomFarmField(i);
 		}
-		if ((indbehav & INDUSTRYBEH_CUT_TREES) != 0) {
+		if (indbehav.Test(IndustryBehaviour::CutTrees)) {
 			uint16_t cb_res = CALLBACK_FAILED;
 			if (indsp->callback_mask.Test(IndustryCallbackMask::SpecialEffect)) {
 				cb_res = GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, Random(), 1, i, i->type, i->location.tile);
@@ -1472,7 +1472,7 @@ bool IsSlopeRefused(Slope current, Slope refused)
  */
 static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileLayout &layout, IndustryType type)
 {
-	IndustryBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
+	IndustryBehaviours ind_behav = GetIndustrySpec(type)->behaviour;
 
 	for (const IndustryTileLayoutTile &it : layout) {
 		IndustryGfx gfx = GetTranslatedIndustryTileID(it.gfx);
@@ -1495,10 +1495,10 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 			const IndustryTileSpec *its = GetIndustryTileSpec(gfx);
 
 			/* Perform land/water check if not disabled */
-			if (!HasBit(its->slopes_refused, 5) && ((HasTileWaterClass(cur_tile) && IsTileOnWater(cur_tile)) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
+			if (!HasBit(its->slopes_refused, 5) && ((HasTileWaterClass(cur_tile) && IsTileOnWater(cur_tile)) != ind_behav.Test(IndustryBehaviour::BuiltOnWater))) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 
-			if ((ind_behav & (INDUSTRYBEH_ONLY_INTOWN | INDUSTRYBEH_TOWN1200_MORE)) || // Tile must be a house
-					((ind_behav & INDUSTRYBEH_ONLY_NEARTOWN) && IsTileType(cur_tile, MP_HOUSE))) { // Tile is allowed to be a house (and it is a house)
+			if (ind_behav.Any({IndustryBehaviour::OnlyInTown, IndustryBehaviour::Town1200More}) || // Tile must be a house
+					(ind_behav.Test(IndustryBehaviour::OnlyNearTown) && IsTileType(cur_tile, MP_HOUSE))) { // Tile is allowed to be a house (and it is a house)
 				if (!IsTileType(cur_tile, MP_HOUSE)) {
 					return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS);
 				}
@@ -1576,11 +1576,11 @@ static CommandCost CheckIfIndustryTileSlopes(TileIndex tile, const IndustryTileL
  */
 static CommandCost CheckIfIndustryIsAllowed(TileIndex tile, IndustryType type, const Town *t)
 {
-	if ((GetIndustrySpec(type)->behaviour & INDUSTRYBEH_TOWN1200_MORE) && t->cache.population < 1200) {
+	if (GetIndustrySpec(type)->behaviour.Test(IndustryBehaviour::Town1200More) && t->cache.population < 1200) {
 		return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200);
 	}
 
-	if ((GetIndustrySpec(type)->behaviour & INDUSTRYBEH_ONLY_NEARTOWN) && DistanceMax(t->xy, tile) > 9) {
+	if (GetIndustrySpec(type)->behaviour.Test(IndustryBehaviour::OnlyNearTown) && DistanceMax(t->xy, tile) > 9) {
 		return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER);
 	}
 
@@ -1860,7 +1860,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		/* Clear all input cargo types */
 		i->accepted.clear();
 		/* Query actual types */
-		uint maxcargoes = (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) ? INDUSTRY_NUM_INPUTS : 3;
+		uint maxcargoes = indspec->behaviour.Test(IndustryBehaviour::CargoTypesUnlimited) ? INDUSTRY_NUM_INPUTS : 3;
 		for (uint j = 0; j < maxcargoes; j++) {
 			uint16_t res = GetIndustryCallback(CBID_INDUSTRY_INPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
 			if (res == CALLBACK_FAILED || GB(res, 0, 8) == UINT8_MAX) break;
@@ -1872,7 +1872,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 			/* Industries without "unlimited" cargo types support depend on the specific order/slots of cargo types.
 			 * They need to be able to blank out specific slots without aborting the callback sequence,
 			 * and solve this by returning undefined cargo indexes. Skip these. */
-			if (!IsValidCargoType(cargo) && !(indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED)) {
+			if (!IsValidCargoType(cargo) && !indspec->behaviour.Test(IndustryBehaviour::CargoTypesUnlimited)) {
 				/* As slots are allocated as needed now, this means we do need to add a slot for the invalid cargo. */
 				Industry::AcceptedCargo &a = i->accepted.emplace_back();
 				a.cargo = INVALID_CARGO;
@@ -1898,7 +1898,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		/* Clear all output cargo types */
 		i->produced.clear();
 		/* Query actual types */
-		uint maxcargoes = (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) ? INDUSTRY_NUM_OUTPUTS : 2;
+		uint maxcargoes = indspec->behaviour.Test(IndustryBehaviour::CargoTypesUnlimited) ? INDUSTRY_NUM_OUTPUTS : 2;
 		for (uint j = 0; j < maxcargoes; j++) {
 			uint16_t res = GetIndustryCallback(CBID_INDUSTRY_OUTPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
 			if (res == CALLBACK_FAILED || GB(res, 0, 8) == UINT8_MAX) break;
@@ -1908,7 +1908,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 			}
 			CargoType cargo = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
 			/* Allow older GRFs to skip slots. */
-			if (!IsValidCargoType(cargo) && !(indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED)) {
+			if (!IsValidCargoType(cargo) && !indspec->behaviour.Test(IndustryBehaviour::CargoTypesUnlimited)) {
 				/* As slots are allocated as needed now, this means we do need to add a slot for the invalid cargo. */
 				Industry::ProducedCargo &p = i->produced.emplace_back();
 				p.cargo = INVALID_CARGO;
@@ -1956,7 +1956,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		}
 	}
 
-	if (GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_PLANT_ON_BUILT) {
+	if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::PlantOnBuild)) {
 		for (uint j = 0; j != 50; j++) PlantRandomFarmField(i);
 	}
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_FORCE_REBUILD);
@@ -2301,7 +2301,7 @@ static uint32_t GetScaledIndustryGenerationProbability(IndustryType it, bool *fo
 		 * For simplicity we scale in both cases, though scaling the probabilities of all industries has no effect. */
 		chance = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? Map::ScaleBySize1D(chance) : Map::ScaleBySize(chance);
 
-		*force_at_least_one = (chance > 0) && !(ind_spc->behaviour & INDUSTRYBEH_NOBUILT_MAPCREATION) && (_game_mode != GM_EDITOR);
+		*force_at_least_one = (chance > 0) && !ind_spc->behaviour.Test(IndustryBehaviour::NoBuildMapCreation) && (_game_mode != GM_EDITOR);
 		return chance;
 	}
 }
@@ -2322,13 +2322,13 @@ static uint16_t GetIndustryGamePlayProbability(IndustryType it, uint8_t *min_num
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
 	uint8_t chance = ind_spc->appear_ingame[to_underlying(_settings_game.game_creation.landscape)];
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
-			((ind_spc->behaviour & INDUSTRYBEH_BEFORE_1950) && TimerGameCalendar::year > 1950) ||
-			((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && TimerGameCalendar::year < 1960) ||
+			(ind_spc->behaviour.Test(IndustryBehaviour::Before1950) && TimerGameCalendar::year > 1950) ||
+			(ind_spc->behaviour.Test(IndustryBehaviour::After1960) && TimerGameCalendar::year < 1960) ||
 			(chance = GetIndustryProbabilityCallback(it, IACT_RANDOMCREATION, chance)) == 0) {
 		*min_number = 0;
 		return 0;
 	}
-	*min_number = (ind_spc->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE) ? 1 : 0;
+	*min_number = ind_spc->behaviour.Test(IndustryBehaviour::CanCloseLastInstance) ? 1 : 0;
 	return chance;
 }
 
@@ -2663,7 +2663,7 @@ void IndustryBuildData::TryBuildNewIndustry()
 
 /**
  * Protects an industry from closure if the appropriate flags and conditions are met
- * INDUSTRYBEH_CANCLOSE_LASTINSTANCE must be set (which, by default, it is not) and the
+ * CanCloseLastInstance must be set (which, by default, it is not) and the
  * count of industries of this type must one (or lower) in order to be protected
  * against closure.
  * @param type IndustryType been queried
@@ -2674,8 +2674,8 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
 	/* oil wells (or the industries with that flag set) are always allowed to closedown */
-	if ((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings_game.game_creation.landscape == LandscapeType::Temperate) return false;
-	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE) == 0 && Industry::GetIndustryTypeCount(type) <= 1;
+	if (indspec->behaviour.Test(IndustryBehaviour::DontIncrProd) && _settings_game.game_creation.landscape == LandscapeType::Temperate) return false;
+	return !indspec->behaviour.Test(IndustryBehaviour::CanCloseLastInstance) && Industry::GetIndustryTypeCount(type) <= 1;
 }
 
 /**
@@ -2843,7 +2843,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 	if (standard || (!callback_enabled && (indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0)) {
 		/* decrease or increase */
-		bool only_decrease = (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings_game.game_creation.landscape == LandscapeType::Temperate;
+		bool only_decrease = indspec->behaviour.Test(IndustryBehaviour::DontIncrProd) && _settings_game.game_creation.landscape == LandscapeType::Temperate;
 
 		if (original_economy) {
 			if (only_decrease || Chance16(1, 3)) {
@@ -2883,7 +2883,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 				/* Prevent production to overflow or Oil Rig passengers to be over-"produced" */
 				new_prod = Clamp(new_prod, 1, 255);
-				if (IsValidCargoType(p.cargo) && p.cargo == GetCargoTypeByLabel(CT_PASSENGERS) && !(indspec->behaviour & INDUSTRYBEH_NO_PAX_PROD_CLAMP)) {
+				if (IsValidCargoType(p.cargo) && p.cargo == GetCargoTypeByLabel(CT_PASSENGERS) && !indspec->behaviour.Test(IndustryBehaviour::NoPaxProdClamp)) {
 					new_prod = Clamp(new_prod, 0, 16);
 				}
 
@@ -3118,7 +3118,7 @@ bool IndustrySpec::IsProcessingIndustry() const
 {
 	/* Lumber mills are neither raw nor processing */
 	return (this->life_type & INDUSTRYLIFE_PROCESSING) != 0 &&
-			(this->behaviour & INDUSTRYBEH_CUT_TREES) == 0;
+			!this->behaviour.Test(IndustryBehaviour::CutTrees);
 }
 
 /**
