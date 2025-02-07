@@ -196,7 +196,7 @@ public:
 	void PruneIntermediateNodeBranch(Node *n)
 	{
 		bool intermediate_on_branch = false;
-		while (n != nullptr && (n->segment->end_segment_reason & ESRB_CHOICE_FOLLOWS) == 0) {
+		while (n != nullptr && !n->segment->end_segment_reason.Test(EndSegmentReason::ChoiceFollows)) {
 			if (n == Yapf().best_intermediate_node) intermediate_on_branch = true;
 			n = n->parent;
 		}
