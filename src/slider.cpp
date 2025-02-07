@@ -56,18 +56,18 @@ void DrawSliderWidget(Rect r, int min_value, int max_value, int nmarks, int valu
 		for (int mark = 0; mark < nmarks; ++mark) {
 			const int mark_value = (max_value * mark) / (nmarks - 1);
 
-			const StringID str = mark_func(nmarks, mark, mark_value + min_value);
-			if (str == INVALID_STRING_ID) continue;
+			auto str = mark_func(nmarks, mark, mark_value + min_value);
+			if (!str.has_value()) continue;
 
 			x = mark_value;
 			if (_current_text_dir == TD_RTL) x = max_value - mark_value;
 			x = r.left + (x * (r.right - r.left - sw) / max_value) + sw / 2;
-			GfxDrawLine(x, r.bottom - ha + 1, x, r.bottom + (str == STR_NULL ? 0 : WidgetDimensions::scaled.hsep_normal), shadow, t);
-			if (str == STR_NULL) continue;
+			GfxDrawLine(x, r.bottom - ha + 1, x, r.bottom + (str->empty() ? 0 : WidgetDimensions::scaled.hsep_normal), shadow, t);
+			if (str->empty()) continue;
 
-			Dimension d = GetStringBoundingBox(str, FS_SMALL);
+			Dimension d = GetStringBoundingBox(*str, FS_SMALL);
 			x = Clamp(x - d.width / 2, r.left, r.right - d.width);
-			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, str, TC_BLACK, SA_CENTER, false, FS_SMALL);
+			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, *str, TC_BLACK, SA_CENTER, false, FS_SMALL);
 		}
 	}
 

@@ -13,7 +13,7 @@
 #include "core/geometry_type.hpp"
 #include "strings_type.h"
 
-using SliderMarkFunc = StringID(int nmarks, int mark, int value);
+using SliderMarkFunc = std::optional<std::string>(int nmarks, int mark, int value);
 void DrawSliderWidget(Rect r, int min_value, int max_value, int nmarks, int value, SliderMarkFunc *mark_func);
 bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int nmarks, int &value);
 

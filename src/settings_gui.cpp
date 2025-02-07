@@ -156,23 +156,21 @@ static void AddCustomRefreshRates()
 static const int SCALE_NMARKS = (MAX_INTERFACE_SCALE - MIN_INTERFACE_SCALE) / 25 + 1; // Show marks at 25% increments
 static const int VOLUME_NMARKS = 9; // Show 5 values and 4 empty marks.
 
-static StringID ScaleMarkFunc(int, int, int value)
+static std::optional<std::string> ScaleMarkFunc(int, int, int value)
 {
 	/* Label only every 100% mark. */
-	if (value % 100 != 0) return STR_NULL;
+	if (value % 100 != 0) return std::string{};
 
-	SetDParam(0, value / 100);
-	SetDParam(1, 0);
-	return STR_GAME_OPTIONS_GUI_SCALE_MARK;
+	return GetString(STR_GAME_OPTIONS_GUI_SCALE_MARK, value / 100, 0);
 }
 
-static StringID VolumeMarkFunc(int, int mark, int value)
+static std::optional<std::string> VolumeMarkFunc(int, int mark, int value)
 {
 	/* Label only every other mark. */
-	if (mark % 2 != 0) return STR_NULL;
+	if (mark % 2 != 0) return std::string{};
 
-	SetDParam(0, value / 31 * 25); // 0-127 does not map nicely to 0-100. Dividing first gives us nice round numbers.
-	return STR_GAME_OPTIONS_VOLUME_MARK;
+	// 0-127 does not map nicely to 0-100. Dividing first gives us nice round numbers.
+	return GetString(STR_GAME_OPTIONS_VOLUME_MARK, value / 31 * 25);
 }
 
 static constexpr NWidgetPart _nested_social_plugins_widgets[] = {
