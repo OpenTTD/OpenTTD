@@ -614,7 +614,7 @@ struct NewGRFInspectWindow : Window {
 					if (!HasVariableParameter(niv.var)) break;
 
 					this->current_edit_param = niv.var;
-					ShowQueryString(STR_EMPTY, STR_NEWGRF_INSPECT_QUERY_CAPTION, 9, this, CS_HEXADECIMAL, QSF_NONE);
+					ShowQueryString({}, STR_NEWGRF_INSPECT_QUERY_CAPTION, 9, this, CS_HEXADECIMAL, QSF_NONE);
 				}
 			}
 		}
@@ -1007,7 +1007,7 @@ struct SpriteAlignerWindow : Window {
 				break;
 
 			case WID_SA_GOTO:
-				ShowQueryString(STR_EMPTY, STR_SPRITE_ALIGNER_GOTO_CAPTION, 7, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString({}, STR_SPRITE_ALIGNER_GOTO_CAPTION, 7, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case WID_SA_NEXT:

@@ -1090,13 +1090,11 @@ public:
 					this->editbox_line = line;
 					switch (this->editable) {
 						case EA_MULTIPLIER:
-							SetDParam(0, RoundDivSU(i->prod_level * 100, PRODLEVEL_DEFAULT));
-							ShowQueryString(STR_JUST_INT, STR_CONFIG_GAME_PRODUCTION_LEVEL, 10, this, CS_ALPHANUMERAL, QSF_NONE);
+							ShowQueryString(GetString(STR_JUST_INT, RoundDivSU(i->prod_level * 100, PRODLEVEL_DEFAULT)), STR_CONFIG_GAME_PRODUCTION_LEVEL, 10, this, CS_ALPHANUMERAL, QSF_NONE);
 							break;
 
 						case EA_RATE:
-							SetDParam(0, i->produced[line - IL_RATE1].rate * 8);
-							ShowQueryString(STR_JUST_INT, STR_CONFIG_GAME_PRODUCTION, 10, this, CS_ALPHANUMERAL, QSF_NONE);
+							ShowQueryString(GetString(STR_JUST_INT, i->produced[line - IL_RATE1].rate * 8), STR_CONFIG_GAME_PRODUCTION, 10, this, CS_ALPHANUMERAL, QSF_NONE);
 							break;
 
 						default: NOT_REACHED();

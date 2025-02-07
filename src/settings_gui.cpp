@@ -2711,9 +2711,8 @@ struct GameSettingsWindow : Window {
 				if (min_val < 0) charset_filter = CS_NUMERAL_SIGNED; // special case, also allow '-' sign for negative input
 
 				this->valuewindow_entry = pe;
-				SetDParam(0, value64);
 				/* Limit string length to 14 so that MAX_INT32 * max currency rate doesn't exceed MAX_INT64. */
-				ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 15, this, charset_filter, QSF_ENABLE_DEFAULT);
+				ShowQueryString(GetString(STR_JUST_INT, value64), STR_CONFIG_SETTING_QUERY_CAPTION, 15, this, charset_filter, QSF_ENABLE_DEFAULT);
 			}
 			this->SetDisplayedHelpText(pe);
 		}
@@ -3050,7 +3049,7 @@ struct CustomCurrencyWindow : Window {
 	{
 		int line = 0;
 		int len = 0;
-		StringID str = STR_NULL;
+		std::string str;
 		CharSetFilter afilter = CS_ALPHANUMERAL;
 
 		switch (widget) {
@@ -3067,8 +3066,7 @@ struct CustomCurrencyWindow : Window {
 				break;
 
 			case WID_CC_RATE:
-				SetDParam(0, GetCustomCurrency().rate);
-				str = STR_JUST_INT;
+				str = GetString(STR_JUST_INT, GetCustomCurrency().rate);
 				len = 5;
 				line = WID_CC_RATE;
 				afilter = CS_NUMERAL;
@@ -3076,24 +3074,21 @@ struct CustomCurrencyWindow : Window {
 
 			case WID_CC_SEPARATOR_EDIT:
 			case WID_CC_SEPARATOR:
-				SetDParamStr(0, GetCustomCurrency().separator);
-				str = STR_JUST_RAW_STRING;
+				str = GetCustomCurrency().separator;
 				len = 7;
 				line = WID_CC_SEPARATOR;
 				break;
 
 			case WID_CC_PREFIX_EDIT:
 			case WID_CC_PREFIX:
-				SetDParamStr(0, GetCustomCurrency().prefix);
-				str = STR_JUST_RAW_STRING;
+				str = GetCustomCurrency().prefix;
 				len = 15;
 				line = WID_CC_PREFIX;
 				break;
 
 			case WID_CC_SUFFIX_EDIT:
 			case WID_CC_SUFFIX:
-				SetDParamStr(0, GetCustomCurrency().suffix);
-				str = STR_JUST_RAW_STRING;
+				str = GetCustomCurrency().suffix;
 				len = 15;
 				line = WID_CC_SUFFIX;
 				break;
@@ -3111,8 +3106,7 @@ struct CustomCurrencyWindow : Window {
 				break;
 
 			case WID_CC_YEAR:
-				SetDParam(0, GetCustomCurrency().to_euro);
-				str = STR_JUST_INT;
+				str = GetString(STR_JUST_INT, GetCustomCurrency().to_euro);
 				len = 7;
 				line = WID_CC_YEAR;
 				afilter = CS_NUMERAL;
