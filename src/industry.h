@@ -20,7 +20,7 @@
 #include "timer/timer_game_economy.h"
 
 
-typedef Pool<Industry, IndustryID, 64, INDUSTRY_END> IndustryPool;
+typedef Pool<Industry, IndustryID, 64, IndustryID::End().base()> IndustryPool;
 extern IndustryPool _industry_pool;
 
 static const TimerGameEconomy::Year PROCESSING_INDUSTRY_ABANDONMENT_YEARS{5}; ///< If a processing industry doesn't produce for this many consecutive economy years, it may close.

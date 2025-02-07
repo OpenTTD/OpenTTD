@@ -10,11 +10,8 @@
 #ifndef INDUSTRY_TYPE_H
 #define INDUSTRY_TYPE_H
 
-enum IndustryID : uint16_t {
-	INDUSTRY_BEGIN = 0,
-	INDUSTRY_END = 64000,
-	INVALID_INDUSTRY = 0xFFFF
-};
+using IndustryID = PoolID<uint16_t, struct IndustryIDTag, 64000, 0xFFFF>;
+static constexpr IndustryID INVALID_INDUSTRY = IndustryID::Invalid();
 
 typedef uint16_t IndustryGfx;
 typedef uint8_t IndustryType;

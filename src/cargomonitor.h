@@ -61,7 +61,7 @@ inline CargoMonitorID EncodeCargoIndustryMonitor(CompanyID company, CargoType ct
 	assert(company < (1 << CCB_COMPANY_LENGTH));
 
 	uint32_t ret = 0;
-	SB(ret, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH, ind);
+	SB(ret, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH, ind.base());
 	SetBit(ret, CCB_IS_INDUSTRY_BIT);
 	SB(ret, CCB_CARGO_TYPE_START, CCB_CARGO_TYPE_LENGTH, ctype);
 	SB(ret, CCB_COMPANY_START, CCB_COMPANY_LENGTH, company.base());

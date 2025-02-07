@@ -207,7 +207,7 @@ inline IndustryID GetIndustryIndexOfField(Tile t)
 inline void SetIndustryIndexOfField(Tile t, IndustryID i)
 {
 	assert(GetClearGround(t) == CLEAR_FIELDS);
-	t.m2() = i;
+	t.m2() = i.base();
 }
 
 
@@ -282,7 +282,7 @@ inline void MakeField(Tile t, uint field_type, IndustryID industry)
 	SetTileType(t, MP_CLEAR);
 	t.m1() = 0;
 	SetTileOwner(t, OWNER_NONE);
-	t.m2() = industry;
+	t.m2() = industry.base();
 	t.m3() = field_type;
 	t.m4() = 0 << 5 | 0 << 2;
 	SetClearGroundDensity(t, CLEAR_FIELDS, 3);
