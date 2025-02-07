@@ -80,16 +80,28 @@ public:
 	 * will be read.
 	 * @return The next parameter's value.
 	 */
-	template <typename T>
-	T GetNextParameter()
+	uint64_t GetNextParameter()
 	{
 		struct visitor {
 			uint64_t operator()(const uint64_t &arg) { return arg; }
 			uint64_t operator()(const std::string &) { throw std::out_of_range("Attempt to read string parameter as integer"); }
 		};
 
-		const auto &param = GetNextParameterReference();
-		return static_cast<T>(std::visit(visitor{}, param.data));
+		const auto &param = this->GetNextParameterReference();
+		return std::visit(visitor{}, param.data);
+	}
+
+	/**
+	 * Get the next parameter from our parameters.
+	 * This updates the offset, so the next time this is called the next parameter
+	 * will be read.
+	 * @tparam T The return type of the parameter.
+	 * @return The next parameter's value.
+	 */
+	template <typename T>
+	T GetNextParameter()
+	{
+		return static_cast<T>(this->GetNextParameter());
 	}
 
 	/**
