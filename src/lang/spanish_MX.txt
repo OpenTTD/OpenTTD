@@ -680,8 +680,8 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstam
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ###next-name-looks-similar
 
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Número de vehículos que consiguieron beneficios el último año. Se incluyen vehículos de carretera, trenes, barcos y aeronaves
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Número de vehículos que consiguieron beneficios en el último periodo. Se incluyen vehículos de carretera, trenes, barcos y aeronaves
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Número de vehículos que consiguieron beneficios el último año. Se incluyen autotransportes, trenes, barcos y aeronaves
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Número de vehículos que consiguieron beneficios en el último periodo. Se incluyen autotransportes, trenes, barcos y aeronaves
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de estaciones abastecidas recientemente. Las estaciones de tren, paradas de autobuses, aeropuertos y demás se contabilizan aparte, aun si pertenecen a la misma estación
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}La ganancia del vehículo con menos ingresos (solo se consideran los vehículos con más de dos años de antigüedad)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}La ganancia del vehículo con menos ingresos (solo se consideran los vehículos con más de dos periodos de antigüedad)
@@ -2278,14 +2278,14 @@ STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Mostrar 
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Mostrar cromáticas para barcos
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Mostrar cromáticas para aeronaves
 STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Muestra los colores de los grupos de trenes
-STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Muestra los colores de los grupos de vehículos de carretera
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Muestra los colores de los grupos de autotransportes
 STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Muestra los colores de los grupos de barcos
 STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Muestra los colores de los grupos de aeronaves
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Elegir el color principal para la cromática elegida. Ctrl+Clic para establecerlo como cromática general
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Elegir el color secundario para el diseño seleccionado. Ctrl+Clic para establecerlo como cromática general
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Elegir un solo tipo de cromática, o Ctrl+Clic para elegir varios. Marcar las casillas para establecer diferentes combinaciones según el tipo de vehículo
 STR_LIVERY_TRAIN_GROUP_EMPTY                                    :No se han definido grupos de trenes
-STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :No se han definido grupos de vehículos de carretera
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :No se han definido grupos de autotransportes
 STR_LIVERY_SHIP_GROUP_EMPTY                                     :No se han definido grupos de barcos
 STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :No se han definido grupos de aeronaves
 
@@ -5323,7 +5323,7 @@ STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}No se pu
 ###length VEHICLE_TYPES
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}No se pueden reemplazar automáticamente los vehículos de carretera...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}No se pueden reemplazar automáticamente los autotransportes...
 STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}No se puede reemplazar automáticamente los barcos...
 STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}No se puede reemplazar automáticamente la aeronave...
 
@@ -5382,7 +5382,7 @@ STR_ERROR_NO_DOCK                                               :{WHITE}No hay p
 STR_ERROR_NO_AIRPORT                                            :{WHITE}No hay aeropuerto/helipuerto
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}No hay paradas con un tipo de carretera compatible
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}No hay paradas con un tipo de tramo compatible
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}No hay paradas aptas para vehículos de carretera articulados.{}Estos vehículos requieren una parada de paso y no una de entrada única
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}No hay paradas aptas para autotransportes articulados.{}Estos vehículos requieren una parada de paso y no una de entrada única
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}El avión no puede aterrizar en este helipuerto
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}El helicóptero no puede aterrizar en este aeropuerto
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}No hay punto de ruta de ferrocarril

@@ -1024,6 +1024,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian Rupi
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvian Lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portuguese Escudo
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainian Hryvnia
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosave
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Select interval between automatic game saves
@@ -1996,7 +1997,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :In-game placeme
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Control random appearance of trees during the game. This might affect industries which rely on tree growth, for example lumber mills
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Grow but don't spread {RED}(breaks lumber mill)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Grow but only spread in rain forests
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Grow but only spread in rainforests
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Grow and spread everywhere
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Don't grow, don't spread {RED}(breaks lumber mill)
 
@@ -2247,6 +2248,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Readme
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Changelog
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Known Bugs
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}License
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Fonts
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Report a Bug
@@ -2635,6 +2637,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :waiting for lin
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :leaving
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} has joined the game
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} has joined the game (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} has joined {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} has joined spectators
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} has started a new company (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} has left the game ({2:STRING})
@@ -5317,8 +5320,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Can't se
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Can't sell aircraft...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Can't sell all railroad vehicles...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Can't sell all road vehicles...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Can't sell all ships...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Can't sell all aircraft...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Can't autoreplace railroad vehicles...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Can't autoreplace road vehicles...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Can't autoreplace ships...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Can't autoreplace aircraft...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Too many vehicles in game
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Can't change maintenance interval...
