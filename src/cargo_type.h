@@ -12,6 +12,7 @@
 
 #include "core/enum_type.hpp"
 #include "core/strong_typedef_type.hpp"
+#include "core/convertible_through_base.hpp"
 
 /** Globally unique label of a cargo type. */
 using CargoLabel = StrongType::Typedef<uint32_t, struct CargoLabelTag, StrongType::Compare>;
