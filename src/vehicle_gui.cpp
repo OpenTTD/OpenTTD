@@ -2347,14 +2347,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, StationI
 
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileIndex depot_tile)
 {
-	uint16_t depot_airport_index;
-
-	if (vehicle_type == VEH_AIRCRAFT) {
-		depot_airport_index = GetStationIndex(depot_tile);
-	} else {
-		depot_airport_index = GetDepotIndex(depot_tile);
-	}
-	ShowVehicleListWindowLocal(company, VL_DEPOT_LIST, vehicle_type, depot_airport_index);
+	ShowVehicleListWindowLocal(company, VL_DEPOT_LIST, vehicle_type, GetDepotDestinationIndex(depot_tile).base());
 }
 
 

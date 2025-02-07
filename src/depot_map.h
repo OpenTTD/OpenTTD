@@ -10,6 +10,7 @@
 #ifndef DEPOT_MAP_H
 #define DEPOT_MAP_H
 
+#include "order_type.h"
 #include "station_map.h"
 
 /**
@@ -54,6 +55,18 @@ inline DepotID GetDepotIndex(Tile t)
 	/* Hangars don't have a Depot class, thus store no DepotID. */
 	assert(IsRailDepotTile(t) || IsRoadDepotTile(t) || IsShipDepotTile(t));
 	return t.m2();
+}
+
+/**
+ * Get the destination index of a 'depot'. For hangars that's the station index, for the rest a depot index.
+ * @param t the tile
+ * @pre IsRailDepotTile(t) || IsRoadDepotTile(t) || IsShipDepotTile(t) || IsHangarTile(t)
+ * @return DepotID
+ */
+inline DestinationID GetDepotDestinationIndex(Tile t)
+{
+	if (IsHangarTile(t)) return GetStationIndex(t);
+	return GetDepotIndex(t);
 }
 
 /**

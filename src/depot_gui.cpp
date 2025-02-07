@@ -299,7 +299,7 @@ struct DepotWindow : Window {
 	void Close([[maybe_unused]] int data = 0) override
 	{
 		CloseWindowById(WC_BUILD_VEHICLE, this->window_number);
-		CloseWindowById(GetWindowClassForVehicleType(this->type), VehicleListIdentifier(VL_DEPOT_LIST, this->type, this->owner, this->GetDepotIndex()).ToWindowNumber(), false);
+		CloseWindowById(GetWindowClassForVehicleType(this->type), VehicleListIdentifier(VL_DEPOT_LIST, this->type, this->owner, this->GetDestinationIndex().base()).ToWindowNumber(), false);
 		OrderBackup::Reset(TileIndex(this->window_number));
 		this->Window::Close();
 	}
@@ -428,7 +428,7 @@ struct DepotWindow : Window {
 		if (widget != WID_D_CAPTION) return;
 
 		SetDParam(0, this->type);
-		SetDParam(1, this->GetDepotIndex());
+		SetDParam(1, this->GetDestinationIndex());
 	}
 
 	struct GetDepotVehiclePtData {
@@ -823,7 +823,7 @@ struct DepotWindow : Window {
 				/* Only open the confirmation window if there are anything to sell */
 				if (!this->vehicle_list.empty() || !this->wagon_list.empty()) {
 					SetDParam(0, this->type);
-					SetDParam(1, this->GetDepotIndex());
+					SetDParam(1, this->GetDestinationIndex());
 					ShowQuery(
 						STR_DEPOT_CAPTION,
 						STR_DEPOT_SELL_CONFIRMATION_TEXT,
@@ -849,7 +849,7 @@ struct DepotWindow : Window {
 		if (!str.has_value()) return;
 
 		/* Do depot renaming */
-		Command<CMD_RENAME_DEPOT>::Post(STR_ERROR_CAN_T_RENAME_DEPOT, this->GetDepotIndex(), *str);
+		Command<CMD_RENAME_DEPOT>::Post(STR_ERROR_CAN_T_RENAME_DEPOT, this->GetDestinationIndex().ToDepotID(), *str);
 	}
 
 	bool OnRightClick([[maybe_unused]] Point pt, WidgetID widget) override
@@ -1139,9 +1139,9 @@ struct DepotWindow : Window {
 	 * In the case of airports, this is the station ID.
 	 * @return Depot or station ID of this window.
 	 */
-	inline uint16_t GetDepotIndex() const
+	inline DestinationID GetDestinationIndex() const
 	{
-		return (this->type == VEH_AIRCRAFT) ? ::GetStationIndex(this->window_number) : ::GetDepotIndex(this->window_number);
+		return GetDepotDestinationIndex(this->window_number);
 	}
 };
 
