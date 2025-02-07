@@ -30,7 +30,6 @@ struct WaterRegionPatchDesc
 	TWaterRegionPatchLabel label; ///< Unique label identifying the patch within the region
 
 	bool operator==(const WaterRegionPatchDesc &other) const { return x == other.x && y == other.y && label == other.label; }
-	bool operator!=(const WaterRegionPatchDesc &other) const { return !(*this == other); }
 };
 
 
@@ -46,7 +45,6 @@ struct WaterRegionDesc
 	WaterRegionDesc(const WaterRegionPatchDesc &water_region_patch) : x(water_region_patch.x), y(water_region_patch.y) {}
 
 	bool operator==(const WaterRegionDesc &other) const { return x == other.x && y == other.y; }
-	bool operator!=(const WaterRegionDesc &other) const { return !(*this == other); }
 };
 
 int CalculateWaterRegionPatchHash(const WaterRegionPatchDesc &water_region_patch);

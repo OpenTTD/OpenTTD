@@ -162,7 +162,6 @@ public:
 		};
 
 		bool operator==(const PoolIterator &other) const { return this->index == other.index; }
-		bool operator!=(const PoolIterator &other) const { return !(*this == other); }
 		T * operator*() const { return T::Get(this->index); }
 		PoolIterator & operator++() { this->index++; this->ValidateIndex(); return *this; }
 
@@ -206,7 +205,6 @@ public:
 		};
 
 		bool operator==(const PoolIteratorFiltered &other) const { return this->index == other.index; }
-		bool operator!=(const PoolIteratorFiltered &other) const { return !(*this == other); }
 		T * operator*() const { return T::Get(this->index); }
 		PoolIteratorFiltered & operator++() { this->index++; this->ValidateIndex(); return *this; }
 

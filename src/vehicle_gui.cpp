@@ -666,16 +666,6 @@ struct RefitOption {
 	StringID string;  ///< GRF-local String to display for the cargo
 
 	/**
-	 * Inequality operator for #RefitOption.
-	 * @param other Compare to this #RefitOption.
-	 * @return True if both #RefitOption are different.
-	 */
-	inline bool operator != (const RefitOption &other) const
-	{
-		return other.cargo != this->cargo || other.string != this->string;
-	}
-
-	/**
 	 * Equality operator for #RefitOption.
 	 * @param other Compare to this #RefitOption.
 	 * @return True if both #RefitOption are equal.

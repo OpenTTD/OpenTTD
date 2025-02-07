@@ -152,13 +152,6 @@ public:
 	{
 		return this->tile == rhs.tile;
 	}
-	/**
-	 * Inequality comparison.
-	 */
-	bool operator !=(const TileIterator &rhs) const
-	{
-		return this->tile != rhs.tile;
-	}
 
 	/**
 	 * Equality comparison.
@@ -166,13 +159,6 @@ public:
 	bool operator ==(const TileIndex &rhs) const
 	{
 		return this->tile == rhs;
-	}
-	/**
-	 * Inequality comparison.
-	 */
-	bool operator !=(const TileIndex &rhs) const
-	{
-		return this->tile != rhs;
 	}
 
 	static std::unique_ptr<TileIterator> Create(TileIndex corner1, TileIndex corner2, bool diagonal);
