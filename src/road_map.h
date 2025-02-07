@@ -657,7 +657,7 @@ inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadType tra
  * @param tram_rt The tram roadtype to set for the tile.
  * @param town    Town ID if the road is a town-owned road.
  */
-inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis roaddir, RailType rat, RoadType road_rt, RoadType tram_rt, uint town)
+inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis roaddir, RailType rat, RoadType road_rt, RoadType tram_rt, TownID town)
 {
 	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, rail);
