@@ -14,7 +14,7 @@
 #include "core/pool_type.hpp"
 #include "timer/timer_game_calendar.h"
 
-typedef Pool<Depot, DepotID, 64, 64000> DepotPool;
+typedef Pool<Depot, DepotID, 64, DepotID::End().base()> DepotPool;
 extern DepotPool _depot_pool;
 
 struct Depot : DepotPool::PoolItem<&_depot_pool> {

@@ -554,7 +554,7 @@ inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 	SetTileType(tile, MP_RAILWAY);
 	SetTileOwner(tile, owner);
 	SetDockingTile(tile, false);
-	tile.m2() = depot_id;
+	tile.m2() = depot_id.base();
 	tile.m3() = 0;
 	tile.m4() = 0;
 	tile.m5() = RAIL_TILE_DEPOT << 6 | dir;
