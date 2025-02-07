@@ -162,19 +162,11 @@ public:
 
 	/* Operators for (in)equality when comparing overflow safe ints. */
 	inline constexpr bool operator == (const OverflowSafeInt& other) const { return this->m_value == other.m_value; }
-	inline constexpr bool operator != (const OverflowSafeInt& other) const { return !(*this == other); }
-	inline constexpr bool operator >  (const OverflowSafeInt& other) const { return this->m_value > other.m_value; }
-	inline constexpr bool operator >= (const OverflowSafeInt& other) const { return this->m_value >= other.m_value; }
-	inline constexpr bool operator <  (const OverflowSafeInt& other) const { return !(*this >= other); }
-	inline constexpr bool operator <= (const OverflowSafeInt& other) const { return !(*this > other); }
+	inline constexpr auto operator <=>(const OverflowSafeInt& other) const { return this->m_value <=> other.m_value; }
 
 	/* Operators for (in)equality when comparing non-overflow safe ints. */
 	inline constexpr bool operator == (const int other) const { return this->m_value == other; }
-	inline constexpr bool operator != (const int other) const { return !(*this == other); }
-	inline constexpr bool operator >  (const int other) const { return this->m_value > other; }
-	inline constexpr bool operator >= (const int other) const { return this->m_value >= other; }
-	inline constexpr bool operator <  (const int other) const { return !(*this >= other); }
-	inline constexpr bool operator <= (const int other) const { return !(*this > other); }
+	inline constexpr auto operator <=>(const int other) const { return this->m_value <=> other; }
 
 	inline constexpr operator T () const { return this->m_value; }
 

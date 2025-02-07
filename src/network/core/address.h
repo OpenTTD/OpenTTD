@@ -150,23 +150,14 @@ public:
 	{
 		return const_cast<NetworkAddress*>(this)->CompareTo(address) == 0;
 	}
-	/**
-	 * Compare the address of this class with the address of another.
-	 * @param address the other address.
-	 * @return true if both do not match.
-	 */
-	bool operator != (NetworkAddress address) const
-	{
-		return const_cast<NetworkAddress*>(this)->CompareTo(address) != 0;
-	}
 
 	/**
 	 * Compare the address of this class with the address of another.
 	 * @param address the other address.
 	 */
-	bool operator < (NetworkAddress &address)
+	auto operator <=>(NetworkAddress &address)
 	{
-		return this->CompareTo(address) < 0;
+		return this->CompareTo(address) <=> 0;
 	}
 
 	void Listen(int socktype, SocketList *sockets);
