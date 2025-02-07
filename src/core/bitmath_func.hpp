@@ -315,7 +315,6 @@ struct SetBitIterator {
 		{
 			return this->bitset == other.bitset;
 		}
-		bool operator!=(const Iterator &other) const { return !(*this == other); }
 		Tbitpos operator*() const { return this->bitpos; }
 		Iterator & operator++() { this->Next(); this->Validate(); return *this; }
 

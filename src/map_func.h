@@ -217,7 +217,6 @@ private:
 
 		explicit Iterator(TileIndex index) : index(index) {}
 		bool operator==(const Iterator &other) const { return this->index == other.index; }
-		bool operator!=(const Iterator &other) const { return !(*this == other); }
 		Tile operator*() const { return this->index; }
 		Iterator & operator++() { this->index++; return *this; }
 	private:

@@ -618,11 +618,6 @@ struct ScenarioIdentifier {
 	{
 		return this->scenid == other.scenid && this->md5sum == other.md5sum;
 	}
-
-	bool operator != (const ScenarioIdentifier &other) const
-	{
-		return !(*this == other);
-	}
 };
 
 /**

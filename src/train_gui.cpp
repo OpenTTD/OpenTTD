@@ -179,12 +179,6 @@ struct CargoSummaryItem {
 	uint amount;      ///< Amount that is carried
 	StationID source; ///< One of the source stations
 
-	/** Used by CargoSummary::Find() and similar functions */
-	inline bool operator != (const CargoSummaryItem &other) const
-	{
-		return this->cargo != other.cargo || this->subtype != other.subtype;
-	}
-
 	/** Used by std::find() and similar functions */
 	inline bool operator == (const CargoSummaryItem &other) const
 	{

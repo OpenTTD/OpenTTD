@@ -872,7 +872,6 @@ public:
 		explicit WindowIterator(const Window *w) : it(w->z_position) {}
 
 		bool operator==(const WindowIterator &other) const { return this->it == other.it; }
-		bool operator!=(const WindowIterator &other) const { return !(*this == other); }
 		Window * operator*() const { return *this->it; }
 		WindowIterator & operator++() { this->Next(); this->Validate(); return *this; }
 

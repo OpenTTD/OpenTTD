@@ -168,7 +168,6 @@ struct CargoSpec {
 		};
 
 		bool operator==(const Iterator &other) const { return this->index == other.index; }
-		bool operator!=(const Iterator &other) const { return !(*this == other); }
 		CargoSpec * operator*() const { return CargoSpec::Get(this->index); }
 		Iterator & operator++() { this->index++; this->ValidateIndex(); return *this; }
 

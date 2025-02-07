@@ -141,11 +141,6 @@ struct VehicleSpriteSeq {
 		return this->count == other.count && MemCmpT<PalSpriteID>(this->seq, other.seq, this->count) == 0;
 	}
 
-	bool operator!=(const VehicleSpriteSeq &other) const
-	{
-		return !this->operator==(other);
-	}
-
 	/**
 	 * Check whether the sequence contains any sprites.
 	 */
@@ -1050,7 +1045,6 @@ public:
 		}
 
 		bool operator==(const OrderIterator &other) const { return this->order == other.order; }
-		bool operator!=(const OrderIterator &other) const { return !(*this == other); }
 		Order * operator*() const { return this->order; }
 		OrderIterator & operator++()
 		{

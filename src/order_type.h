@@ -30,13 +30,8 @@ struct DestinationID {
 	constexpr BaseType base() const noexcept { return this->value; }
 
 	constexpr bool operator ==(const DestinationID &destination) const { return this->value == destination.value; }
-	constexpr bool operator !=(const DestinationID &destination) const { return this->value != destination.value; }
 	constexpr bool operator ==(const StationID &station) const { return this->value == station; }
-	constexpr bool operator !=(const StationID &station) const { return this->value != station; }
 };
-
-constexpr bool operator ==(const StationID &station, const DestinationID &destination) { return destination == station; }
-constexpr bool operator !=(const StationID &station, const DestinationID &destination) { return destination != station; }
 
 /** Invalid vehicle order index (sentinel) */
 static const VehicleOrderID INVALID_VEH_ORDER_ID = 0xFF;
