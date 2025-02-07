@@ -453,25 +453,25 @@ StringID IntSettingDesc::GetHelp() const
 }
 
 /**
- * Set the DParams for drawing the value of the setting.
- * @param first_param First DParam to use
+ * Get parameters for drawing the value of the setting.
  * @param value Setting value to set params for.
  */
-void IntSettingDesc::SetValueDParams(uint first_param, int32_t value) const
+std::pair<StringParameter, StringParameter> IntSettingDesc::GetValueParams(int32_t value) const
 {
-	auto [min_val, _] = this->GetRange();
-	if (this->set_value_dparams_cb != nullptr) {
-		this->set_value_dparams_cb(*this, first_param, value);
-	} else if (this->IsBoolSetting()) {
-		SetDParam(first_param++, value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
-	} else {
-		if (this->flags.Test(SettingFlag::GuiDropdown)) {
-			SetDParam(first_param++, this->str_val - min_val + value);
-		} else {
-			SetDParam(first_param++, this->str_val + ((value == 0 && this->flags.Test(SettingFlag::GuiZeroIsSpecial)) ? 1 : 0));
-		}
-		SetDParam(first_param++, value);
+	if (this->get_value_params_cb != nullptr) {
+		return this->get_value_params_cb(*this, value);
 	}
+
+	if (this->IsBoolSetting()) {
+		return {value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF, {}};
+	}
+
+	if (this->flags.Test(SettingFlag::GuiDropdown)) {
+		auto [min_val, _] = this->GetRange();
+		return {this->str_val - min_val + value, value};
+	}
+
+	return {this->str_val + ((value == 0 && this->flags.Test(SettingFlag::GuiZeroIsSpecial)) ? 1 : 0), value};
 }
 
 /**
