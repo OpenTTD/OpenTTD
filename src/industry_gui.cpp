@@ -1243,7 +1243,7 @@ static WindowDesc _industry_view_desc(
 	_nested_industry_view_widgets
 );
 
-void ShowIndustryViewWindow(int industry)
+void ShowIndustryViewWindow(IndustryID industry)
 {
 	AllocateWindowDescFront<IndustryViewWindow>(_industry_view_desc, industry);
 }

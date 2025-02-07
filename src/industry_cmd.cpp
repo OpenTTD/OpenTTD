@@ -57,7 +57,7 @@
 IndustryPool _industry_pool("Industry");
 INSTANTIATE_POOL_METHODS(Industry)
 
-void ShowIndustryViewWindow(int industry);
+void ShowIndustryViewWindow(IndustryID industry);
 void BuildOilRig(TileIndex tile);
 
 static uint8_t _industry_sound_ctr;
