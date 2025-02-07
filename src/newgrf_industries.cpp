@@ -170,7 +170,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 			case 0x81: return GB(this->tile.base(), 8, 8);
 
 			/* Pointer to the town the industry is associated with */
-			case 0x82: return this->industry->town->index;
+			case 0x82: return this->industry->town->index.base();
 			case 0x83:
 			case 0x84:
 			case 0x85: Debug(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
@@ -357,7 +357,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 		case 0x80: return this->industry->location.tile.base();
 		case 0x81: return GB(this->industry->location.tile.base(), 8, 8);
 		/* Pointer to the town the industry is associated with */
-		case 0x82: return this->industry->town->index;
+		case 0x82: return this->industry->town->index.base();
 		case 0x83:
 		case 0x84:
 		case 0x85: Debug(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported

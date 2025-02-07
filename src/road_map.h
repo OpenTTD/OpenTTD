@@ -636,7 +636,7 @@ inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadType tra
 {
 	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, road);
-	t.m2() = town;
+	t.m2() = town.base();
 	t.m3() = (tram_rt != INVALID_ROADTYPE ? bits : 0);
 	t.m5() = (road_rt != INVALID_ROADTYPE ? bits : 0) | ROAD_TILE_NORMAL << 6;
 	SB(t.m6(), 2, 4, 0);
@@ -661,7 +661,7 @@ inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis ro
 {
 	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, rail);
-	t.m2() = town;
+	t.m2() = town.base();
 	t.m3() = 0;
 	t.m4() = INVALID_ROADTYPE;
 	t.m5() = ROAD_TILE_CROSSING << 6 | roaddir;

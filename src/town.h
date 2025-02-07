@@ -33,7 +33,7 @@ static const uint TOWN_GROWTH_DESERT = 0xFFFFFFFF; ///< The town needs the cargo
 static const uint16_t TOWN_GROWTH_RATE_NONE = 0xFFFF; ///< Special value for Town::growth_rate to disable town growth.
 static const uint16_t MAX_TOWN_GROWTH_TICKS = 930; ///< Max amount of original town ticks that still fit into uint16_t, about equal to UINT16_MAX / TOWN_GROWTH_TICKS but slightly less to simplify calculations
 
-typedef Pool<Town, TownID, 64, TOWN_END> TownPool;
+typedef Pool<Town, TownID, 64, TownID::End().base()> TownPool;
 extern TownPool _town_pool;
 
 /** Data structure with cached data of towns. */

@@ -53,7 +53,7 @@ struct DEPTChunkHandler : ChunkHandler {
 			SlObject(depot, slt);
 
 			/* Set the town 'pointer' so we can restore it later. */
-			if (IsSavegameVersionBefore(SLV_141)) depot->town = (Town *)(size_t)_town_index;
+			if (IsSavegameVersionBefore(SLV_141)) depot->town = reinterpret_cast<Town *>(static_cast<size_t>(_town_index.base()));
 		}
 	}
 
