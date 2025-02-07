@@ -695,7 +695,7 @@ inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 {
 	SetTileType(tile, MP_ROAD);
 	SetTileOwner(tile, owner);
-	tile.m2() = depot_id;
+	tile.m2() = depot_id.base();
 	tile.m3() = 0;
 	tile.m4() = INVALID_ROADTYPE;
 	tile.m5() = ROAD_TILE_DEPOT << 6 | dir;

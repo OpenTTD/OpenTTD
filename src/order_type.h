@@ -25,6 +25,7 @@ struct DestinationID {
 
 	explicit DestinationID() = default;
 	constexpr DestinationID(size_t index) : value(static_cast<BaseType>(index)) {}
+	constexpr DestinationID(DepotID depot) : value(depot.base()) {}
 
 	constexpr DepotID ToDepotID() const noexcept { return static_cast<DepotID>(this->value); }
 	constexpr StationID ToStationID() const noexcept { return static_cast<StationID>(this->value); }

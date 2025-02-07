@@ -2355,8 +2355,8 @@ bool AfterLoadGame()
 				d = nullptr;
 				continue;
 			}
-			tile.m2() = d->index;
-			if (IsTileType(tile, MP_WATER)) Tile(GetOtherShipDepotTile(tile)).m2() = d->index;
+			tile.m2() = d->index.base();
+			if (IsTileType(tile, MP_WATER)) Tile(GetOtherShipDepotTile(tile)).m2() = d->index.base();
 		}
 	}
 
