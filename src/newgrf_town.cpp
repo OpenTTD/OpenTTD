@@ -31,7 +31,7 @@
 			return 0;
 
 		/* Town index */
-		case 0x41: return this->t->index;
+		case 0x41: return this->t->index.base();
 
 		/* Get a variable from the persistent storage */
 		case 0x7C: {

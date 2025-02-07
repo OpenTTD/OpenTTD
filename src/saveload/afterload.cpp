@@ -1010,7 +1010,7 @@ bool AfterLoadGame()
 					if ((GB(t.m5(), 4, 2) == ROAD_TILE_CROSSING ? (Owner)t.m3() : GetTileOwner(t)) == OWNER_TOWN) {
 						SetTownIndex(t, CalcClosestTownFromTile(t)->index);
 					} else {
-						SetTownIndex(t, TOWN_BEGIN);
+						SetTownIndex(t, TownID::Begin());
 					}
 					break;
 
@@ -1234,11 +1234,11 @@ bool AfterLoadGame()
 								GetRailType(t)
 							);
 						} else {
-							TownID town = IsTileOwner(t, OWNER_TOWN) ? ClosestTownFromTile(t, UINT_MAX)->index : TOWN_BEGIN;
+							TownID town = IsTileOwner(t, OWNER_TOWN) ? ClosestTownFromTile(t, UINT_MAX)->index : TownID::Begin();
 
 							/* MakeRoadNormal */
 							SetTileType(t, MP_ROAD);
-							t.m2() = town;
+							t.m2() = town.base();
 							t.m3() = 0;
 							t.m5() = (axis == AXIS_X ? ROAD_Y : ROAD_X) | ROAD_TILE_NORMAL << 6;
 							SB(t.m6(), 2, 4, 0);
@@ -1626,7 +1626,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_52)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, MP_OBJECT) && t.m5() == OBJECT_STATUE) {
-				t.m2() = CalcClosestTownFromTile(t)->index;
+				t.m2() = CalcClosestTownFromTile(t)->index.base();
 			}
 		}
 	}

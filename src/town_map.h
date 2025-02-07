@@ -35,7 +35,7 @@ inline TownID GetTownIndex(Tile t)
 inline void SetTownIndex(Tile t, TownID index)
 {
 	assert(IsTileType(t, MP_HOUSE) || (IsTileType(t, MP_ROAD) && !IsRoadDepot(t)));
-	t.m2() = index;
+	t.m2() = index.base();
 }
 
 /**
@@ -378,7 +378,7 @@ inline void MakeHouseTile(Tile t, TownID tid, uint8_t counter, uint8_t stage, Ho
 
 	SetTileType(t, MP_HOUSE);
 	t.m1() = random_bits;
-	t.m2() = tid;
+	t.m2() = tid.base();
 	t.m3() = 0;
 	SetHouseType(t, type);
 	SetHouseCompleted(t, stage == TOWN_HOUSE_COMPLETED);
