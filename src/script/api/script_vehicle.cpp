@@ -46,7 +46,7 @@
 {
 	if (!IsValidVehicle(vehicle_id)) return ScriptCompany::COMPANY_INVALID;
 
-	return static_cast<ScriptCompany::CompanyID>((int)::Vehicle::Get(vehicle_id)->owner);
+	return ScriptCompany::ToScriptCompanyID(::Vehicle::Get(vehicle_id)->owner);
 }
 
 /* static */ SQInteger ScriptVehicle::GetNumWagons(VehicleID vehicle_id)

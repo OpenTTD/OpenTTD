@@ -17,7 +17,7 @@
 
 /* static */ SQInteger ScriptCargoMonitor::GetTownDeliveryAmount(ScriptCompany::CompanyID company, CargoType cargo, TownID town_id, bool keep_monitoring)
 {
-	CompanyID cid = static_cast<CompanyID>(company);
+	::CompanyID cid = ScriptCompany::FromScriptCompanyID(ScriptCompany::ResolveCompanyID((company)));
 	if (cid >= MAX_COMPANIES) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 	if (!::Town::IsValidID(town_id)) return -1;
@@ -28,7 +28,7 @@
 
 /* static */ SQInteger ScriptCargoMonitor::GetIndustryDeliveryAmount(ScriptCompany::CompanyID company, CargoType cargo, IndustryID industry_id, bool keep_monitoring)
 {
-	CompanyID cid = static_cast<CompanyID>(company);
+	::CompanyID cid = ScriptCompany::FromScriptCompanyID(ScriptCompany::ResolveCompanyID((company)));
 	if (cid >= MAX_COMPANIES) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 	if (!::Industry::IsValidID(industry_id)) return -1;
@@ -39,7 +39,7 @@
 
 /* static */ SQInteger ScriptCargoMonitor::GetTownPickupAmount(ScriptCompany::CompanyID company, CargoType cargo, TownID town_id, bool keep_monitoring)
 {
-	CompanyID cid = static_cast<CompanyID>(company);
+	::CompanyID cid = ScriptCompany::FromScriptCompanyID(ScriptCompany::ResolveCompanyID((company)));
 	if (cid >= MAX_COMPANIES) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 	if (!::Town::IsValidID(town_id)) return -1;
@@ -50,7 +50,7 @@
 
 /* static */ SQInteger ScriptCargoMonitor::GetIndustryPickupAmount(ScriptCompany::CompanyID company, CargoType cargo, IndustryID industry_id, bool keep_monitoring)
 {
-	CompanyID cid = static_cast<CompanyID>(company);
+	::CompanyID cid = ScriptCompany::FromScriptCompanyID(ScriptCompany::ResolveCompanyID((company)));
 	if (cid >= MAX_COMPANIES) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 	if (!::Industry::IsValidID(industry_id)) return -1;

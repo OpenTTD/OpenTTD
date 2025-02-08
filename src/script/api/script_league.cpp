@@ -59,8 +59,7 @@
 	EnforcePrecondition(LEAGUE_TABLE_ELEMENT_INVALID, IsValidLeagueTable(table));
 
 	EnforcePrecondition(LEAGUE_TABLE_ELEMENT_INVALID, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
-	CompanyID c = (::CompanyID)company;
-	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
+	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 
 	EnforcePrecondition(LEAGUE_TABLE_ELEMENT_INVALID, text != nullptr);
 	std::string encoded_text = text->GetEncodedText();
@@ -86,8 +85,7 @@
 	EnforcePrecondition(false, IsValidLeagueTableElement(element));
 
 	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
-	CompanyID c = (::CompanyID)company;
-	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
+	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 
 	EnforcePrecondition(false, text != nullptr);
 	std::string encoded_text = text->GetEncodedText();

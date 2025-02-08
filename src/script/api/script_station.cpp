@@ -30,7 +30,7 @@
 {
 	if (!IsValidStation(station_id)) return ScriptCompany::COMPANY_INVALID;
 
-	return static_cast<ScriptCompany::CompanyID>((int)::Station::Get(station_id)->owner);
+	return ScriptCompany::ToScriptCompanyID(::Station::Get(station_id)->owner);
 }
 
 /* static */ StationID ScriptStation::GetStationID(TileIndex tile)

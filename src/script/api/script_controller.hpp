@@ -52,7 +52,7 @@ public:
 	 * Initializer of the ScriptController.
 	 * @param company The company this Script is normally serving.
 	 */
-	ScriptController(CompanyID company);
+	ScriptController(::CompanyID company);
 
 #else
 	/**

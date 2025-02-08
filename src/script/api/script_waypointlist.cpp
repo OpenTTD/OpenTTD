@@ -20,7 +20,7 @@ ScriptWaypointList::ScriptWaypointList(ScriptWaypoint::WaypointType waypoint_typ
 	EnforceDeityOrCompanyModeValid_Void();
 
 	bool is_deity = ScriptCompanyMode::IsDeity();
-	CompanyID owner = ScriptObject::GetCompany();
+	::CompanyID owner = ScriptObject::GetCompany();
 	ScriptList::FillList<Waypoint>(this,
 		[is_deity, owner, waypoint_type](const Waypoint *wp) {
 			return (is_deity || wp->owner == owner || wp->owner == OWNER_NONE) && (wp->facilities & static_cast<StationFacility>(waypoint_type)) != 0;

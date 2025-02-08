@@ -28,20 +28,35 @@
 
 #include "../../safeguards.h"
 
+/* static */ ::CompanyID ScriptCompany::FromScriptCompanyID(ScriptCompany::CompanyID company)
+{
+	/* If this assert gets triggered, then ScriptCompany::ResolveCompanyID needed to be called before. */
+	assert(company != ScriptCompany::COMPANY_SELF && company != ScriptCompany::COMPANY_SPECTATOR);
+
+	if (company == ScriptCompany::COMPANY_INVALID) return ::INVALID_COMPANY;
+	return static_cast<::CompanyID>(company);
+}
+
+/* static */ ScriptCompany::CompanyID ScriptCompany::ToScriptCompanyID(::CompanyID company)
+{
+	if (company == ::INVALID_COMPANY) return ScriptCompany::COMPANY_INVALID;
+	return static_cast<::ScriptCompany::CompanyID>(company);
+}
+
 /* static */ ScriptCompany::CompanyID ScriptCompany::ResolveCompanyID(ScriptCompany::CompanyID company)
 {
-	if (company == COMPANY_SELF) {
-		if (!::Company::IsValidID(_current_company)) return COMPANY_INVALID;
-		return (CompanyID)((uint8_t)_current_company);
+	if (company == ScriptCompany::COMPANY_SELF) {
+		if (!::Company::IsValidID(_current_company)) return ScriptCompany::COMPANY_INVALID;
+		return ScriptCompany::ToScriptCompanyID(_current_company);
 	}
 
-	return ::Company::IsValidID(company) ? company : COMPANY_INVALID;
+	return ::Company::IsValidID(ScriptCompany::FromScriptCompanyID(company)) ? company : ScriptCompany::COMPANY_INVALID;
 }
 
 /* static */ bool ScriptCompany::IsMine(ScriptCompany::CompanyID company)
 {
 	EnforceCompanyModeValid(false);
-	return ResolveCompanyID(company) == ResolveCompanyID(COMPANY_SELF);
+	return ResolveCompanyID(company) == ResolveCompanyID(ScriptCompany::COMPANY_SELF);
 }
 
 /* static */ bool ScriptCompany::SetName(Text *name)
@@ -60,9 +75,9 @@
 /* static */ std::optional<std::string> ScriptCompany::GetName(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return std::nullopt;
+	if (company == ScriptCompany::COMPANY_INVALID) return std::nullopt;
 
-	::SetDParam(0, company);
+	::SetDParam(0, ScriptCompany::FromScriptCompanyID(company));
 	return GetString(STR_COMPANY_NAME);
 }
 
@@ -82,9 +97,9 @@
 /* static */ std::optional<std::string> ScriptCompany::GetPresidentName(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return std::nullopt;
+	if (company == ScriptCompany::COMPANY_INVALID) return std::nullopt;
 
-	::SetDParam(0, company);
+	::SetDParam(0, ScriptCompany::FromScriptCompanyID(company));
 	return GetString(STR_PRESIDENT_NAME);
 }
 
@@ -102,124 +117,124 @@
 	return ScriptObject::Command<CMD_SET_COMPANY_MANAGER_FACE>::Do(cmf);
 }
 
-/* static */ ScriptCompany::Gender ScriptCompany::GetPresidentGender(CompanyID company)
+/* static */ ScriptCompany::Gender ScriptCompany::GetPresidentGender(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return GENDER_INVALID;
+	if (company == ScriptCompany::COMPANY_INVALID) return GENDER_INVALID;
 
-	GenderEthnicity ge = (GenderEthnicity)GetCompanyManagerFaceBits(Company::Get(company)->face, CMFV_GEN_ETHN, GE_WM);
+	GenderEthnicity ge = (GenderEthnicity)GetCompanyManagerFaceBits(Company::Get(ScriptCompany::FromScriptCompanyID(company))->face, CMFV_GEN_ETHN, GE_WM);
 	return HasBit(ge, ::GENDER_FEMALE) ? GENDER_FEMALE : GENDER_MALE;
 }
 
 /* static */ Money ScriptCompany::GetQuarterlyIncome(ScriptCompany::CompanyID company, SQInteger quarter)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return -1;
+	if (company == ScriptCompany::COMPANY_INVALID) return -1;
 	if (quarter > EARLIEST_QUARTER) return -1;
 	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
-		return ::Company::Get(company)->cur_economy.income;
+		return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->cur_economy.income;
 	}
-	return ::Company::Get(company)->old_economy[quarter - 1].income;
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].income;
 }
 
 /* static */ Money ScriptCompany::GetQuarterlyExpenses(ScriptCompany::CompanyID company, SQInteger quarter)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return -1;
+	if (company == ScriptCompany::COMPANY_INVALID) return -1;
 	if (quarter > EARLIEST_QUARTER) return -1;
 	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
-		return ::Company::Get(company)->cur_economy.expenses;
+		return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->cur_economy.expenses;
 	}
-	return ::Company::Get(company)->old_economy[quarter - 1].expenses;
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].expenses;
 }
 
 /* static */ SQInteger ScriptCompany::GetQuarterlyCargoDelivered(ScriptCompany::CompanyID company, SQInteger quarter)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return -1;
+	if (company == ScriptCompany::COMPANY_INVALID) return -1;
 	if (quarter > EARLIEST_QUARTER) return -1;
 	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
-		return ::Company::Get(company)->cur_economy.delivered_cargo.GetSum<OverflowSafeInt32>();
+		return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->cur_economy.delivered_cargo.GetSum<OverflowSafeInt32>();
 	}
-	return ::Company::Get(company)->old_economy[quarter - 1].delivered_cargo.GetSum<OverflowSafeInt32>();
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].delivered_cargo.GetSum<OverflowSafeInt32>();
 }
 
 /* static */ SQInteger ScriptCompany::GetQuarterlyPerformanceRating(ScriptCompany::CompanyID company, SQInteger quarter)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return -1;
+	if (company == ScriptCompany::COMPANY_INVALID) return -1;
 	if (quarter > EARLIEST_QUARTER) return -1;
 	if (quarter <= CURRENT_QUARTER) return -1;
 
-	return ::Company::Get(company)->old_economy[quarter - 1].performance_history;
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].performance_history;
 }
 
 /* static */ Money ScriptCompany::GetQuarterlyCompanyValue(ScriptCompany::CompanyID company, SQInteger quarter)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return -1;
+	if (company == ScriptCompany::COMPANY_INVALID) return -1;
 	if (quarter > EARLIEST_QUARTER) return -1;
 	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
-		return ::CalculateCompanyValue(::Company::Get(company));
+		return ::CalculateCompanyValue(::Company::Get(ScriptCompany::FromScriptCompanyID(company)));
 	}
-	return ::Company::Get(company)->old_economy[quarter - 1].company_value;
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].company_value;
 }
 
 
 /* static */ Money ScriptCompany::GetBankBalance(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return -1;
+	if (company == ScriptCompany::COMPANY_INVALID) return -1;
 	/* If we return INT64_MAX as usual, overflows may occur in the script. So return a smaller value. */
 	if (_settings_game.difficulty.infinite_money) return INT32_MAX;
 
-	return GetAvailableMoney((::CompanyID)company);
+	return GetAvailableMoney(ScriptCompany::FromScriptCompanyID(company));
 }
 
 /* static */ Money ScriptCompany::GetLoanAmount()
 {
-	ScriptCompany::CompanyID company = ResolveCompanyID(COMPANY_SELF);
-	if (company == COMPANY_INVALID) return -1;
+	ScriptCompany::CompanyID company = ResolveCompanyID(ScriptCompany::COMPANY_SELF);
+	if (company == ScriptCompany::COMPANY_INVALID) return -1;
 
-	return ::Company::Get(company)->current_loan;
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->current_loan;
 }
 
 /* static */ Money ScriptCompany::GetMaxLoanAmount()
 {
 	if (ScriptCompanyMode::IsDeity()) return _economy.max_loan;
 
-	ScriptCompany::CompanyID company = ResolveCompanyID(COMPANY_SELF);
-	if (company == COMPANY_INVALID) return -1;
+	ScriptCompany::CompanyID company = ResolveCompanyID(ScriptCompany::COMPANY_SELF);
+	if (company == ScriptCompany::COMPANY_INVALID) return -1;
 
-	return ::Company::Get(company)->GetMaxLoan();
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->GetMaxLoan();
 }
 
-/* static */ bool ScriptCompany::SetMaxLoanAmountForCompany(CompanyID company, Money amount)
+/* static */ bool ScriptCompany::SetMaxLoanAmountForCompany(ScriptCompany::CompanyID company, Money amount)
 {
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, amount >= 0 && amount <= (Money)MAX_LOAN_LIMIT);
 
 	company = ResolveCompanyID(company);
-	EnforcePrecondition(false, company != COMPANY_INVALID);
-	return ScriptObject::Command<CMD_SET_COMPANY_MAX_LOAN>::Do((::CompanyID)company, amount);
+	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
+	return ScriptObject::Command<CMD_SET_COMPANY_MAX_LOAN>::Do(ScriptCompany::FromScriptCompanyID(company), amount);
 }
 
-/* static */ bool ScriptCompany::ResetMaxLoanAmountForCompany(CompanyID company)
+/* static */ bool ScriptCompany::ResetMaxLoanAmountForCompany(ScriptCompany::CompanyID company)
 {
 	EnforceDeityMode(false);
 
 	company = ResolveCompanyID(company);
-	EnforcePrecondition(false, company != COMPANY_INVALID);
+	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
 
-	return ScriptObject::Command<CMD_SET_COMPANY_MAX_LOAN>::Do((::CompanyID)company, COMPANY_MAX_LOAN_DEFAULT);
+	return ScriptObject::Command<CMD_SET_COMPANY_MAX_LOAN>::Do(ScriptCompany::FromScriptCompanyID(company), COMPANY_MAX_LOAN_DEFAULT);
 }
 
 /* static */ Money ScriptCompany::GetLoanInterval()
@@ -233,7 +248,7 @@
 	EnforcePrecondition(false, loan >= 0);
 	EnforcePrecondition(false, ((int64_t)loan % GetLoanInterval()) == 0);
 	EnforcePrecondition(false, loan <= GetMaxLoanAmount());
-	EnforcePrecondition(false, (loan - GetLoanAmount() + GetBankBalance(COMPANY_SELF)) >= 0);
+	EnforcePrecondition(false, (loan - GetLoanAmount() + GetBankBalance(ScriptCompany::COMPANY_SELF)) >= 0);
 
 	if (loan == GetLoanAmount()) return true;
 
@@ -261,17 +276,17 @@
 	return GetLoanAmount() == loan;
 }
 
-/* static */ bool ScriptCompany::ChangeBankBalance(CompanyID company, Money delta, ExpensesType expenses_type, TileIndex tile)
+/* static */ bool ScriptCompany::ChangeBankBalance(ScriptCompany::CompanyID company, Money delta, ExpensesType expenses_type, TileIndex tile)
 {
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, expenses_type < (ExpensesType)::EXPENSES_END);
 	EnforcePrecondition(false, tile == INVALID_TILE || ::IsValidTile(tile));
 
 	company = ResolveCompanyID(company);
-	EnforcePrecondition(false, company != COMPANY_INVALID);
+	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
 
 	/* Network commands only allow 0 to indicate invalid tiles, not INVALID_TILE */
-	return ScriptObject::Command<CMD_CHANGE_BANK_BALANCE>::Do(tile == INVALID_TILE ? (TileIndex)0U : tile, delta, (::CompanyID)company, (::ExpensesType)expenses_type);
+	return ScriptObject::Command<CMD_CHANGE_BANK_BALANCE>::Do(tile == INVALID_TILE ? (TileIndex)0U : tile, delta, ScriptCompany::FromScriptCompanyID(company), (::ExpensesType)expenses_type);
 }
 
 /* static */ bool ScriptCompany::BuildCompanyHQ(TileIndex tile)
@@ -282,12 +297,12 @@
 	return ScriptObject::Command<CMD_BUILD_OBJECT>::Do(tile, OBJECT_HQ, 0);
 }
 
-/* static */ TileIndex ScriptCompany::GetCompanyHQ(CompanyID company)
+/* static */ TileIndex ScriptCompany::GetCompanyHQ(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return INVALID_TILE;
+	if (company == ScriptCompany::COMPANY_INVALID) return INVALID_TILE;
 
-	TileIndex loc = ::Company::Get(company)->location_of_HQ;
+	TileIndex loc = ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->location_of_HQ;
 	return (loc == 0) ? INVALID_TILE : loc;
 }
 
@@ -297,12 +312,12 @@
 	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do("company.engine_renew", autorenew ? 1 : 0);
 }
 
-/* static */ bool ScriptCompany::GetAutoRenewStatus(CompanyID company)
+/* static */ bool ScriptCompany::GetAutoRenewStatus(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return false;
+	if (company == ScriptCompany::COMPANY_INVALID) return false;
 
-	return ::Company::Get(company)->settings.engine_renew;
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->settings.engine_renew;
 }
 
 /* static */ bool ScriptCompany::SetAutoRenewMonths(SQInteger months)
@@ -313,12 +328,12 @@
 	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do("company.engine_renew_months", months);
 }
 
-/* static */ SQInteger ScriptCompany::GetAutoRenewMonths(CompanyID company)
+/* static */ SQInteger ScriptCompany::GetAutoRenewMonths(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return 0;
+	if (company == ScriptCompany::COMPANY_INVALID) return 0;
 
-	return ::Company::Get(company)->settings.engine_renew_months;
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->settings.engine_renew_months;
 }
 
 /* static */ bool ScriptCompany::SetAutoRenewMoney(Money money)
@@ -329,12 +344,12 @@
 	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do("company.engine_renew_money", money);
 }
 
-/* static */ Money ScriptCompany::GetAutoRenewMoney(CompanyID company)
+/* static */ Money ScriptCompany::GetAutoRenewMoney(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return 0;
+	if (company == ScriptCompany::COMPANY_INVALID) return 0;
 
-	return ::Company::Get(company)->settings.engine_renew_money;
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->settings.engine_renew_money;
 }
 
 /* static */ bool ScriptCompany::SetPrimaryLiveryColour(LiveryScheme scheme, Colours colour)

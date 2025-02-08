@@ -331,7 +331,7 @@ public:
 	 */
 	ScriptEventCompanyNew(Owner owner) :
 		ScriptEvent(ET_COMPANY_NEW),
-		owner((ScriptCompany::CompanyID)owner)
+		owner(ScriptCompany::ToScriptCompanyID(owner))
 	{}
 #endif /* DOXYGEN_API */
 
@@ -362,9 +362,9 @@ public:
 	/**
 	 * @param owner The company that is renamed.
 	 */
-	ScriptEventCompanyRenamed(CompanyID company, const std::string &new_name) :
+	ScriptEventCompanyRenamed(::CompanyID company, const std::string &new_name) :
 		ScriptEvent(ET_COMPANY_RENAMED),
-		company(static_cast<ScriptCompany::CompanyID>(company)),
+		company(ScriptCompany::ToScriptCompanyID(company)),
 		new_name(new_name)
 	{}
 #endif /* DOXYGEN_API */
@@ -407,7 +407,7 @@ public:
 	 */
 	ScriptEventCompanyInTrouble(Owner owner) :
 		ScriptEvent(ET_COMPANY_IN_TROUBLE),
-		owner((ScriptCompany::CompanyID)owner)
+		owner(ScriptCompany::ToScriptCompanyID(owner))
 	{}
 #endif /* DOXYGEN_API */
 
@@ -441,7 +441,7 @@ public:
 	 */
 	ScriptEventCompanyAskMerger(Owner owner, Money value) :
 		ScriptEvent(ET_COMPANY_ASK_MERGER),
-		owner((ScriptCompany::CompanyID)owner),
+		owner(ScriptCompany::ToScriptCompanyID(owner)),
 		value(value)
 	{}
 #endif /* DOXYGEN_API */
@@ -492,8 +492,8 @@ public:
 	 */
 	ScriptEventCompanyMerger(Owner old_owner, Owner new_owner) :
 		ScriptEvent(ET_COMPANY_MERGER),
-		old_owner((ScriptCompany::CompanyID)old_owner),
-		new_owner((ScriptCompany::CompanyID)new_owner)
+		old_owner(ScriptCompany::ToScriptCompanyID(old_owner)),
+		new_owner(ScriptCompany::ToScriptCompanyID(new_owner))
 	{}
 #endif /* DOXYGEN_API */
 
@@ -536,7 +536,7 @@ public:
 	 */
 	ScriptEventCompanyBankrupt(Owner owner) :
 		ScriptEvent(ET_COMPANY_BANKRUPT),
-		owner((ScriptCompany::CompanyID)owner)
+		owner(ScriptCompany::ToScriptCompanyID(owner))
 	{}
 #endif /* DOXYGEN_API */
 
@@ -1220,9 +1220,9 @@ public:
 	 * @param page_id     Which page was the clicked button on.
 	 * @param element_id  Which button element was clicked.
 	 */
-	ScriptEventStoryPageButtonClick(CompanyID company_id, StoryPageID page_id, StoryPageElementID element_id) :
+	ScriptEventStoryPageButtonClick(::CompanyID company_id, StoryPageID page_id, StoryPageElementID element_id) :
 		ScriptEvent(ET_STORYPAGE_BUTTON_CLICK),
-		company_id((ScriptCompany::CompanyID)company_id),
+		company_id(ScriptCompany::ToScriptCompanyID(company_id)),
 		page_id(page_id),
 		element_id(element_id)
 	{}
@@ -1272,9 +1272,9 @@ public:
 	 * @param element_id  Which button element was used to select the tile.
 	 * @param tile_index  Which tile was selected by the player.
 	 */
-	ScriptEventStoryPageTileSelect(CompanyID company_id, StoryPageID page_id, StoryPageElementID element_id, TileIndex tile_index) :
+	ScriptEventStoryPageTileSelect(::CompanyID company_id, StoryPageID page_id, StoryPageElementID element_id, TileIndex tile_index) :
 		ScriptEvent(ET_STORYPAGE_TILE_SELECT),
-		company_id((ScriptCompany::CompanyID)company_id),
+		company_id(ScriptCompany::ToScriptCompanyID(company_id)),
 		page_id(page_id),
 		element_id(element_id),
 		tile_index(tile_index)
@@ -1332,9 +1332,9 @@ public:
 	 * @param element_id  Which button element was used to select the tile.
 	 * @param vehicle_id  Which vehicle was selected by the player.
 	 */
-	ScriptEventStoryPageVehicleSelect(CompanyID company_id, StoryPageID page_id, StoryPageElementID element_id, VehicleID vehicle_id) :
+	ScriptEventStoryPageVehicleSelect(::CompanyID company_id, StoryPageID page_id, StoryPageElementID element_id, VehicleID vehicle_id) :
 		ScriptEvent(ET_STORYPAGE_VEHICLE_SELECT),
-		company_id((ScriptCompany::CompanyID)company_id),
+		company_id(ScriptCompany::ToScriptCompanyID(company_id)),
 		page_id(page_id),
 		element_id(element_id),
 		vehicle_id(vehicle_id)
@@ -1392,9 +1392,9 @@ public:
 	 * @param company The company of the president.
 	 * @param new_name The new name of the president.
 	 */
-	ScriptEventPresidentRenamed(CompanyID company, const std::string &new_name) :
+	ScriptEventPresidentRenamed(::CompanyID company, const std::string &new_name) :
 		ScriptEvent(ET_PRESIDENT_RENAMED),
-		company(static_cast<ScriptCompany::CompanyID>(company)),
+		company(ScriptCompany::ToScriptCompanyID(company)),
 		new_name(new_name)
 	{}
 #endif /* DOXYGEN_API */
