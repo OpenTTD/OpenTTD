@@ -76,9 +76,11 @@ inline size_t ttd_strnlen(const char *str, size_t maxlen)
 bool IsValidChar(char32_t key, CharSetFilter afilter);
 
 size_t Utf8Decode(char32_t *c, const char *s);
+inline size_t Utf8Decode(char32_t *c, std::string::iterator &s) { return Utf8Decode(c, &*s); }
 size_t Utf8Encode(char *buf, char32_t c);
 size_t Utf8Encode(std::ostreambuf_iterator<char> &buf, char32_t c);
 size_t Utf8Encode(std::back_insert_iterator<std::string> &buf, char32_t c);
+inline size_t Utf8Encode(std::string::iterator &s, char32_t c) { return Utf8Encode(&*s, c); }
 size_t Utf8TrimString(char *s, size_t maxlen);
 
 
@@ -158,6 +160,13 @@ inline const char *Utf8PrevChar(const char *s)
 	const char *ret = s;
 	while (IsUtf8Part(*--ret)) {}
 	return ret;
+}
+
+inline std::string::iterator Utf8PrevChar(std::string::iterator &s)
+{
+	auto *cur = &*s;
+	auto *prev = Utf8PrevChar(cur);
+	return s - (cur - prev);
 }
 
 size_t Utf8StringLength(const char *s);
