@@ -32,7 +32,7 @@ enum class EngineDisplayFlag : uint8_t {
 
 using EngineDisplayFlags = EnumBitSet<EngineDisplayFlag, uint8_t>;
 
-typedef Pool<Engine, EngineID, 64, EngineID::End().base()> EnginePool;
+typedef Pool<Engine, EngineID, 64> EnginePool;
 extern EnginePool _engine_pool;
 
 struct Engine : EnginePool::PoolItem<&_engine_pool> {

@@ -189,7 +189,7 @@ typedef PersistentStorageArray<int32_t, 16> OldPersistentStorage;
 using PersistentStorageID = PoolID<uint32_t, struct PersistentStorageIDTag, 0xFF000, 0xFFFFF>;
 
 struct PersistentStorage;
-using PersistentStoragePool = Pool<PersistentStorage, PersistentStorageID, 1, PersistentStorageID::End().base()>;
+using PersistentStoragePool = Pool<PersistentStorage, PersistentStorageID, 1>;
 
 extern PersistentStoragePool _persistent_storage_pool;
 

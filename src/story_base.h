@@ -17,8 +17,8 @@
 #include "vehicle_type.h"
 #include "core/pool_type.hpp"
 
-using StoryPageElementPool = Pool<StoryPageElement, StoryPageElementID, 64, StoryPageElementID::End().base()>;
-using StoryPagePool = Pool<StoryPage, StoryPageID, 64, StoryPageID::End().base()>;
+using StoryPageElementPool = Pool<StoryPageElement, StoryPageElementID, 64>;
+using StoryPagePool = Pool<StoryPage, StoryPageID, 64>;
 extern StoryPageElementPool _story_page_element_pool;
 extern StoryPagePool _story_page_pool;
 extern uint32_t _story_page_element_next_sort_value;
