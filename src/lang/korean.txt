@@ -1025,6 +1025,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :인도네시아
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :말레이시아 링깃
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :라트비아 라츠
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :포르투갈 이스쿠두
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :우크라이나 흐리우냐
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동 저장
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동 저장 간격을 선택
@@ -2248,6 +2249,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Readme
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}변경기록
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}알려진 버그
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}라이선스
+STR_HELP_WINDOW_FONTS                                           :{BLACK}글씨체
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}매뉴얼 / 위키
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}버그 신고
@@ -2636,6 +2638,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :연결 상태�
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :게임 종료
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} 님이 입장하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} 님이 입장하셨습니다 ({2:NUM}번 접속자)
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} 님이 {STRING} 회사에 참여하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} 님이 관전을 시작하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} 님이 새로운 회사({2:NUM}번)를 창설하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} 님이 퇴장하셨습니다 (사유: {2:STRING})
@@ -5318,8 +5321,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}선박�
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}항공기를 팔 수 없습니다...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}열차 차량을 모두 팔 수 없습니다...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}차량을 모두 팔 수 없습니다...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}선박을 모두 팔 수 없습니다...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}항공기를 모두 팔 수 없습니다...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}열차 차량을 자동 교체할 수 없습니다...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}차량을 자동 교체할 수 없습니다...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}선박을 자동 교체할 수 없습니다...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}항공기를 자동 교체할 수 없습니다...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}게임에 차량이 너무 많습니다!
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}점검 간격 설정을 바꿀 수 없습니다...
