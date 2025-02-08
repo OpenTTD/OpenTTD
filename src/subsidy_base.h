@@ -12,6 +12,7 @@
 
 #include "cargo_type.h"
 #include "company_type.h"
+#include "source_type.h"
 #include "subsidy_type.h"
 #include "core/pool_type.hpp"
 

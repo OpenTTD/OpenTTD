@@ -2280,19 +2280,19 @@ bool AfterLoadGame()
 					case TAE_MAIL:
 						/* Town -> Town */
 						s->src.type = s->dst.type = SourceType::Town;
-						if (Town::IsValidID(s->src.id) && Town::IsValidID(s->dst.id)) continue;
+						if (Town::IsValidID(s->src.ToTownID()) && Town::IsValidID(s->dst.ToTownID())) continue;
 						break;
 					case TAE_GOODS:
 					case TAE_FOOD:
 						/* Industry -> Town */
 						s->src.type = SourceType::Industry;
 						s->dst.type = SourceType::Town;
-						if (Industry::IsValidID(s->src.id) && Town::IsValidID(s->dst.id)) continue;
+						if (Industry::IsValidID(s->src.ToIndustryID()) && Town::IsValidID(s->dst.ToTownID())) continue;
 						break;
 					default:
 						/* Industry -> Industry */
 						s->src.type = s->dst.type = SourceType::Industry;
-						if (Industry::IsValidID(s->src.id) && Industry::IsValidID(s->dst.id)) continue;
+						if (Industry::IsValidID(s->src.ToIndustryID()) && Industry::IsValidID(s->dst.ToIndustryID())) continue;
 						break;
 				}
 			} else {
@@ -2310,8 +2310,8 @@ bool AfterLoadGame()
 						if (ss != nullptr && sd != nullptr && ss->owner == sd->owner &&
 								Company::IsValidID(ss->owner)) {
 							s->src.type = s->dst.type = SourceType::Town;
-							s->src.id = ss->town->index;
-							s->dst.id = sd->town->index;
+							s->src.SetIndex(ss->town->index);
+							s->dst.SetIndex(sd->town->index);
 							s->awarded = ss->owner;
 							continue;
 						}
