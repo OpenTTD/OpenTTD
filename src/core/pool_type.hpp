@@ -124,27 +124,16 @@ private:
  * @tparam Titem        Type of the class/struct that is going to be pooled
  * @tparam Tindex       Type of the index for this pool
  * @tparam Tgrowth_step Size of growths; if the pool is full increase the size by this amount
- * @tparam Tmax_size    Maximum size of the pool
  * @tparam Tpool_type   Type of this pool
  * @tparam Tcache       Whether to perform 'alloc' caching, i.e. don't actually free/malloc just reuse the memory
  * @tparam Tzero        Whether to zero the memory
  * @warning when Tcache is enabled *all* instances of this pool's item must be of the same size.
  */
-template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, PoolType Tpool_type = PoolType::Normal, bool Tcache = false, bool Tzero = true>
+template <class Titem, typename Tindex, size_t Tgrowth_step, PoolType Tpool_type = PoolType::Normal, bool Tcache = false, bool Tzero = true>
+requires std::is_base_of_v<PoolIDBase, Tindex>
 struct Pool : PoolBase {
-private:
-	/** Some helper functions to get the maximum value of the provided index. */
-	template <typename T>
-	static constexpr size_t GetMaxIndexValue(T) { return std::numeric_limits<T>::max(); }
-	template <typename T> requires std::is_enum_v<T>
-	static constexpr size_t GetMaxIndexValue(T) { return std::numeric_limits<std::underlying_type_t<T>>::max(); }
-	template <typename T> requires std::is_base_of_v<PoolIDBase, T>
-	static constexpr size_t GetMaxIndexValue(T) { return std::numeric_limits<typename T::BaseType>::max(); }
 public:
-	/* Ensure the highest possible index, i.e. Tmax_size -1, is within the bounds of Tindex. */
-	static_assert(Tmax_size - 1 <= GetMaxIndexValue(Tindex{}));
-
-	static constexpr size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
+	static constexpr size_t MAX_SIZE = Tindex::End().base(); ///< Make template parameter accessible from outside
 
 	using BitmapStorage = size_t;
 	static constexpr size_t BITMAP_SIZE = std::numeric_limits<BitmapStorage>::digits;
@@ -194,7 +183,7 @@ public:
 	 */
 	inline bool CanAllocate(size_t n = 1)
 	{
-		bool ret = this->items <= Tmax_size - n;
+		bool ret = this->items <= MAX_SIZE - n;
 #ifdef WITH_ASSERT
 		this->checked = ret ? n : 0;
 #endif /* WITH_ASSERT */
@@ -293,12 +282,12 @@ public:
 	 * Base class for all PoolItems
 	 * @tparam Tpool The pool this item is going to be part of
 	 */
-	template <struct Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tpool_type, Tcache, Tzero> *Tpool>
+	template <struct Pool<Titem, Tindex, Tgrowth_step, Tpool_type, Tcache, Tzero> *Tpool>
 	struct PoolItem {
 		Tindex index; ///< Index of this pool item
 
 		/** Type of the pool this item is going to be part of */
-		typedef struct Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tpool_type, Tcache, Tzero> Pool;
+		typedef struct Pool<Titem, Tindex, Tgrowth_step, Tpool_type, Tcache, Tzero> Pool;
 
 		/**
 		 * Allocates space for new Titem
@@ -472,7 +461,6 @@ private:
 
 	void FreeItem(size_t index);
 
-	/* Temporary helper functions to get the raw index from either strongly and non-strongly typed pool items. */
 	static constexpr size_t GetRawIndex(size_t index) { return index; }
 	template <typename T> requires std::is_base_of_v<PoolIDBase, T>
 	static constexpr size_t GetRawIndex(const T &index) { return index.base(); }

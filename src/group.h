@@ -17,7 +17,7 @@
 #include "engine_type.h"
 #include "livery.h"
 
-using GroupPool = Pool<Group, GroupID, 16, GroupID::End().base()>;
+using GroupPool = Pool<Group, GroupID, 16>;
 extern GroupPool _group_pool; ///< Pool of groups.
 
 /** Statistics and caches on the vehicles in a group. */

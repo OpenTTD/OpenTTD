@@ -23,8 +23,9 @@
  * @param type The return type of the method.
  */
 #define DEFINE_POOL_METHOD(type) \
-	template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, PoolType Tpool_type, bool Tcache, bool Tzero> \
-	type Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tpool_type, Tcache, Tzero>
+	template <class Titem, typename Tindex, size_t Tgrowth_step, PoolType Tpool_type, bool Tcache, bool Tzero> \
+	requires std::is_base_of_v<PoolIDBase, Tindex> \
+	type Pool<Titem, Tindex, Tgrowth_step, Tpool_type, Tcache, Tzero>
 
 /**
  * Create a clean pool.
@@ -47,15 +48,15 @@ DEFINE_POOL_METHOD(inline)::Pool(const char *name) :
  * Resizes the pool so 'index' can be addressed
  * @param index index we will allocate later
  * @pre index >= this->size
- * @pre index < Tmax_size
+ * @pre index < Tindex::End()
  */
 DEFINE_POOL_METHOD(inline void)::ResizeFor(size_t index)
 {
 	assert(index >= this->data.size());
-	assert(index < Tmax_size);
+	assert(index < MAX_SIZE);
 
 	size_t old_size = this->data.size();
-	size_t new_size = std::min(Tmax_size, Align(index + 1, Tgrowth_step));
+	size_t new_size = std::min(MAX_SIZE, Align(index + 1, Tgrowth_step));
 
 	this->data.resize(new_size);
 	this->used_bitmap.resize(Align(new_size, BITMAP_SIZE) / BITMAP_SIZE);
@@ -83,12 +84,12 @@ DEFINE_POOL_METHOD(inline size_t)::FindFirstFree()
 
 	assert(this->first_unused == this->data.size());
 
-	if (this->first_unused < Tmax_size) {
+	if (this->first_unused < MAX_SIZE) {
 		this->ResizeFor(this->first_unused);
 		return this->first_unused;
 	}
 
-	assert(this->first_unused == Tmax_size);
+	assert(this->first_unused == MAX_SIZE);
 
 	return NO_FREE_ITEM;
 }
@@ -124,12 +125,8 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 	}
 	this->data[index] = item;
 	SetBit(this->used_bitmap[index / BITMAP_SIZE], index % BITMAP_SIZE);
-	if constexpr (std::is_base_of_v<PoolIDBase, Tindex>) {
-		/* MSVC complains about casting to narrower type, so first cast to the base type... then to the strong type. */
-		item->index = static_cast<Tindex>(static_cast<Tindex::BaseType>(index));
-	} else {
-		item->index = static_cast<Tindex>(index);
-	}
+	/* MSVC complains about casting to narrower type, so first cast to the base type... then to the strong type. */
+	item->index = static_cast<Tindex>(static_cast<Tindex::BaseType>(index));
 	return item;
 }
 
@@ -164,8 +161,8 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size)
  */
 DEFINE_POOL_METHOD(void *)::GetNew(size_t size, size_t index)
 {
-	if (index >= Tmax_size) {
-		SlErrorCorruptFmt("{} index {} out of range ({})", this->name, index, Tmax_size);
+	if (index >= MAX_SIZE) {
+		SlErrorCorruptFmt("{} index {} out of range ({})", this->name, index, MAX_SIZE);
 	}
 
 	if (index >= this->data.size()) this->ResizeFor(index);
