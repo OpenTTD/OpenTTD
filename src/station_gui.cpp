@@ -87,8 +87,8 @@ int DrawStationCoverageAreaText(const Rect &r, StationCoverageType sct, int rad,
 		/* Convert cargo counts to a set of cargo bits, and draw the result. */
 		for (CargoType i = 0; i < NUM_CARGO; i++) {
 			switch (sct) {
-				case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(i, CC_PASSENGERS)) continue; break;
-				case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(i, CC_PASSENGERS)) continue; break;
+				case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(i, CargoClass::Passengers)) continue; break;
+				case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(i, CargoClass::Passengers)) continue; break;
 				case SCT_ALL: break;
 				default: NOT_REACHED();
 			}

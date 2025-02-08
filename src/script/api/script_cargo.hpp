@@ -25,16 +25,16 @@ public:
 	 */
 	enum CargoClass {
 		/* Note: these values represent part of the in-game CargoClass enum */
-		CC_PASSENGERS   = ::CC_PASSENGERS,   ///< Passengers. Cargoes of this class appear at bus stops. Cargoes not of this class appear at truck stops.
-		CC_MAIL         = ::CC_MAIL,         ///< Mail
-		CC_EXPRESS      = ::CC_EXPRESS,      ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
-		CC_ARMOURED     = ::CC_ARMOURED,     ///< Armoured cargo (Valuables, Gold, Diamonds)
-		CC_BULK         = ::CC_BULK,         ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
-		CC_PIECE_GOODS  = ::CC_PIECE_GOODS,  ///< Piece goods (Livestock, Wood, Steel, Paper)
-		CC_LIQUID       = ::CC_LIQUID,       ///< Liquids (Oil, Water, Rubber)
-		CC_REFRIGERATED = ::CC_REFRIGERATED, ///< Refrigerated cargo (Food, Fruit)
-		CC_HAZARDOUS    = ::CC_HAZARDOUS,    ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
-		CC_COVERED      = ::CC_COVERED,      ///< Covered/Sheltered Freight (Transportation in Box Vans, Silo Wagons, etc.)
+		CC_PASSENGERS   = ::CargoClasses{::CargoClass::Passengers}.base(),   ///< Passengers. Cargoes of this class appear at bus stops. Cargoes not of this class appear at truck stops.
+		CC_MAIL         = ::CargoClasses{::CargoClass::Mail}.base(),         ///< Mail
+		CC_EXPRESS      = ::CargoClasses{::CargoClass::Express}.base(),      ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
+		CC_ARMOURED     = ::CargoClasses{::CargoClass::Armoured}.base(),     ///< Armoured cargo (Valuables, Gold, Diamonds)
+		CC_BULK         = ::CargoClasses{::CargoClass::Bulk}.base(),         ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
+		CC_PIECE_GOODS  = ::CargoClasses{::CargoClass::PieceGoods}.base(),  ///< Piece goods (Livestock, Wood, Steel, Paper)
+		CC_LIQUID       = ::CargoClasses{::CargoClass::Liquid}.base(),       ///< Liquids (Oil, Water, Rubber)
+		CC_REFRIGERATED = ::CargoClasses{::CargoClass::Refrigerated}.base(), ///< Refrigerated cargo (Food, Fruit)
+		CC_HAZARDOUS    = ::CargoClasses{::CargoClass::Hazardous}.base(),    ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
+		CC_COVERED      = ::CargoClasses{::CargoClass::Covered}.base(),      ///< Covered/Sheltered Freight (Transportation in Box Vans, Silo Wagons, etc.)
 	};
 
 	/**

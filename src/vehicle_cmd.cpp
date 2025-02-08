@@ -289,7 +289,7 @@ static int GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoType 
 	/* Is this vehicle a NewGRF vehicle? */
 	if (e->GetGRF() != nullptr) {
 		const CargoSpec *cs = CargoSpec::Get(new_cargo_type);
-		uint32_t param1 = (cs->classes << 16) | (new_subtype << 8) | e->GetGRF()->cargo_map[new_cargo_type];
+		uint32_t param1 = (cs->classes.base() << 16) | (new_subtype << 8) | e->GetGRF()->cargo_map[new_cargo_type];
 
 		uint16_t cb_res = GetVehicleCallback(CBID_VEHICLE_REFIT_COST, param1, 0, engine_type, v);
 		if (cb_res != CALLBACK_FAILED) {

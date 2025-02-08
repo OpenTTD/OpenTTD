@@ -285,9 +285,9 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 			/* Prioritize the fastest route for passengers, mail and express cargo,
 			 * and the shortest route for other classes of cargo.
 			 * In-between stops are punished with a 1 tile or 1 day penalty. */
-			bool express = IsCargoInClass(this->job.Cargo(), CC_PASSENGERS) ||
-				IsCargoInClass(this->job.Cargo(), CC_MAIL) ||
-				IsCargoInClass(this->job.Cargo(), CC_EXPRESS);
+			bool express = IsCargoInClass(this->job.Cargo(), CargoClass::Passengers) ||
+				IsCargoInClass(this->job.Cargo(), CargoClass::Mail) ||
+				IsCargoInClass(this->job.Cargo(), CargoClass::Express);
 			uint distance = DistanceMaxPlusManhattan(this->job[from].base.xy, this->job[to].base.xy) + 1;
 			/* Compute a default travel time from the distance and an average speed of 1 tile/day. */
 			uint time = (edge.base.TravelTime() != 0) ? edge.base.TravelTime() + Ticks::DAY_TICKS : distance * Ticks::DAY_TICKS;
