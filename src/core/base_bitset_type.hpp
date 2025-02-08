@@ -42,6 +42,17 @@ public:
 	}
 
 	/**
+	 * Assign the value-th bit.
+	 * @param value Bit to assign to.
+	 * @param set true if the bit should be set, false if the bit should be reset.
+	 * @returns The EnumBitset
+	 */
+	inline constexpr Timpl &Set(Tvalue_type value, bool set)
+	{
+		return set ? this->Set(value) : this->Reset(value);
+	}
+
+	/**
 	 * Reset the value-th bit.
 	 * @param value Bit to reset.
 	 * @returns The bit set

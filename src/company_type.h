@@ -47,7 +47,13 @@ static const uint MAX_COMPETITORS_INTERVAL = 500; ///< The maximum interval (in 
 
 typedef Owner CompanyID;
 
-typedef uint16_t CompanyMask;
+class CompanyMask : public BaseBitSet<CompanyMask, CompanyID, uint16_t> {
+public:
+	constexpr CompanyMask() : BaseBitSet<CompanyMask, CompanyID, uint16_t>() {}
+	static constexpr size_t DecayValueType(CompanyID value) { return to_underlying(value); }
+
+	constexpr auto operator <=>(const CompanyMask &) const noexcept = default;
+};
 
 struct Company;
 typedef uint32_t CompanyManagerFace; ///< Company manager face bits, info see in company_manager_face.h

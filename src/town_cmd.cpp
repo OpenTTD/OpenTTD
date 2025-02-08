@@ -2059,10 +2059,10 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 
 	for (uint i = 0; i != MAX_COMPANIES; i++) t->ratings[i] = RATING_INITIAL;
 
-	t->have_ratings = 0;
+	t->have_ratings = {};
 	t->exclusivity = INVALID_COMPANY;
 	t->exclusive_counter = 0;
-	t->statues = 0;
+	t->statues = {};
 
 	{
 		TownNameParams tnp(_settings_game.game_creation.town_name);
@@ -3479,7 +3479,7 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 		Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, statue_data.best_position);
 		cur_company.Restore();
 		BuildObject(OBJECT_STATUE, statue_data.best_position, _current_company, t);
-		SetBit(t->statues, _current_company); // Once found and built, "inform" the Town.
+		t->statues.Set(_current_company); // Once found and built, "inform" the Town.
 		MarkTileDirtyByTile(statue_data.best_position);
 	}
 	return CommandCost();
@@ -3649,7 +3649,7 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 			if (cur == TACT_ROAD_REBUILD && !_settings_game.economy.fund_roads) continue;
 
 			/* Is the company not able to build a statue ? */
-			if (cur == TACT_BUILD_STATUE && HasBit(t->statues, cid)) continue;
+			if (cur == TACT_BUILD_STATUE && t->statues.Test(cid)) continue;
 
 			if (avail >= _town_action_costs[i] * _price[PR_TOWN_ACTION] >> 8) {
 				buttons |= cur;
@@ -4006,7 +4006,7 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 	if (_town_rating_test) {
 		_town_test_ratings[t] = rating;
 	} else {
-		SetBit(t->have_ratings, _current_company);
+		t->have_ratings.Set(_current_company);
 		t->ratings[_current_company] = rating;
 		SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
 	}

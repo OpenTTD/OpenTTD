@@ -1070,7 +1070,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		const uint num_engines = GetGroupNumEngines(_local_company, selected_group, item.engine_id);
 
 		const Engine *e = Engine::Get(item.engine_id);
-		bool hidden = HasBit(e->company_hidden, _local_company);
+		bool hidden = e->company_hidden.Test(_local_company);
 		StringID str = hidden ? STR_HIDDEN_ENGINE_NAME : STR_ENGINE_NAME;
 		TextColour tc = (item.engine_id == selected_id) ? TC_WHITE : ((hidden | shaded) ? (TC_GREY | TC_FORCED | TC_NO_SHADE) : TC_BLACK);
 

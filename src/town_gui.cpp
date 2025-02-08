@@ -186,7 +186,7 @@ public:
 
 		/* Draw list of companies */
 		for (const Company *c : Company::Iterate()) {
-			if ((HasBit(this->town->have_ratings, c->index) || this->town->exclusivity == c->index)) {
+			if ((this->town->have_ratings.Test(c->index) || this->town->exclusivity == c->index)) {
 				DrawCompanyIcon(c->index, icon.left, text.top + icon_y_offset);
 
 				SetDParam(0, c->index);
@@ -793,8 +793,8 @@ private:
 		bool before = !order; // Value to get 'a' before 'b'.
 
 		/* Towns without rating are always after towns with rating. */
-		if (HasBit(a->have_ratings, _local_company)) {
-			if (HasBit(b->have_ratings, _local_company)) {
+		if (a->have_ratings.Test(_local_company)) {
+			if (b->have_ratings.Test(_local_company)) {
 				int16_t a_rating = a->ratings[_local_company];
 				int16_t b_rating = b->ratings[_local_company];
 				if (a_rating == b_rating) return TownDirectoryWindow::TownNameSorter(a, b, order);
@@ -802,7 +802,7 @@ private:
 			}
 			return before;
 		}
-		if (HasBit(b->have_ratings, _local_company)) return !before;
+		if (b->have_ratings.Test(_local_company)) return !before;
 
 		/* Sort unrated towns always on ascending town name. */
 		if (before) return TownDirectoryWindow::TownNameSorter(a, b, order);
@@ -881,7 +881,7 @@ public:
 					assert(t->xy != INVALID_TILE);
 
 					/* Draw rating icon. */
-					if (_game_mode == GM_EDITOR || !HasBit(t->have_ratings, _local_company)) {
+					if (_game_mode == GM_EDITOR || !t->have_ratings.Test(_local_company)) {
 						DrawSprite(SPR_TOWN_RATING_NA, PAL_NONE, icon_x, tr.top + (this->resize.step_height - icon_size.height) / 2);
 					} else {
 						SpriteID icon = SPR_TOWN_RATING_APALLING;

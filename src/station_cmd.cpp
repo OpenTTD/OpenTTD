@@ -720,7 +720,7 @@ static CommandCost BuildStationPart(Station **st, DoCommandFlag flags, bool reus
 			(*st)->string_id = GenerateStationName(*st, area.tile, name_class);
 
 			if (Company::IsValidID(_current_company)) {
-				SetBit((*st)->town->have_ratings, _current_company);
+				(*st)->town->have_ratings.Set(_current_company);
 			}
 		}
 	}
@@ -3918,7 +3918,7 @@ static void UpdateStationRating(Station *st)
 				if (ge->max_waiting_cargo <= 100) rating += 10;
 			}
 
-			if (Company::IsValidID(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
+			if (Company::IsValidID(st->owner) && st->town->statues.Test(st->owner)) rating += 26;
 
 			uint8_t age = ge->last_age;
 			if (age < 3) rating += 10;
