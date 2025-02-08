@@ -57,6 +57,8 @@ public:
 		this->buffer.resize(buffer_length);
 	}
 
+	virtual ~StreamingVoiceContext() = default;
+
 	HRESULT SubmitBuffer()
 	{
 		// Ensure we do have a valid voice
