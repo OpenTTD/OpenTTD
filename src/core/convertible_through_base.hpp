@@ -29,4 +29,18 @@ concept ConvertibleThroughBase = requires(T const a) {
 template <typename T, typename TTo>
 concept ConvertibleThroughBaseOrTo = std::is_convertible_v<T, TTo> || ConvertibleThroughBase<T>;
 
+/**
+ * A sort-of mixin that adds 'at(pos)' and 'operator[](pos)' implementations for 'ConvertibleThroughBase' types.
+ * This to prevent having to call '.base()' for many container accesses.
+ */
+template <typename Container>
+class ReferenceThroughBaseContainer : public Container {
+public:
+	Container::reference at(ConvertibleThroughBase auto pos) { return this->Container::at(pos.base()); }
+	Container::const_reference at(ConvertibleThroughBase auto pos) const { return this->Container::at(pos.base()); }
+
+	Container::reference operator[](ConvertibleThroughBase auto pos) { return this->Container::operator[](pos.base()); }
+	Container::const_reference operator[](ConvertibleThroughBase auto pos) const { return this->Container::operator[](pos.base()); }
+};
+
 #endif /* CONVERTIBLE_THROUGH_BASE_HPP */

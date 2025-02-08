@@ -71,7 +71,7 @@ struct GRFTextEntry {
 };
 
 
-static std::vector<GRFTextEntry> _grf_text;
+static ReferenceThroughBaseContainer<std::vector<GRFTextEntry>> _grf_text;
 static uint8_t _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
 
 /**
@@ -639,13 +639,13 @@ const char *GetGRFStringFromGRFText(const GRFTextWrapper &text)
 const char *GetGRFStringPtr(StringIndexInTab stringid)
 {
 	assert(stringid.base() < _grf_text.size());
-	assert(_grf_text[stringid.base()].grfid != 0);
+	assert(_grf_text[stringid].grfid != 0);
 
-	const char *str = GetGRFStringFromGRFText(_grf_text[stringid.base()].textholder);
+	const char *str = GetGRFStringFromGRFText(_grf_text[stringid].textholder);
 	if (str != nullptr) return str;
 
 	/* Use the default string ID if the fallback string isn't available */
-	return GetStringPtr(_grf_text[stringid.base()].def_string);
+	return GetStringPtr(_grf_text[stringid].def_string);
 }
 
 /**

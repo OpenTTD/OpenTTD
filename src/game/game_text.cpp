@@ -318,7 +318,7 @@ GameStrings *_current_data = nullptr;
 const char *GetGameStringPtr(StringIndexInTab id)
 {
 	if (_current_data == nullptr || _current_data->cur_language == nullptr || id.base() >= _current_data->cur_language->lines.size()) return GetStringPtr(STR_UNDEFINED);
-	return _current_data->cur_language->lines[id.base()].c_str();
+	return _current_data->cur_language->lines[id].c_str();
 }
 
 /**
@@ -332,7 +332,7 @@ const StringParams &GetGameStringParams(StringIndexInTab id)
 	static StringParams empty;
 
 	if (id.base() >= _current_data->string_params.size()) return empty;
-	return _current_data->string_params[id.base()];
+	return _current_data->string_params[id];
 }
 
 /**
@@ -346,7 +346,7 @@ const std::string &GetGameStringName(StringIndexInTab id)
 	static const std::string undefined = "STR_UNDEFINED";
 
 	if (id.base() >= _current_data->string_names.size()) return undefined;
-	return _current_data->string_names[id.base()];
+	return _current_data->string_names[id];
 }
 
 /**
