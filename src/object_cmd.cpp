@@ -602,7 +602,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 		case OBJECT_STATUE:
 			if (flags & DC_EXEC) {
 				Town *town = o->town;
-				ClrBit(town->statues, GetTileOwner(tile));
+				town->statues.Reset(GetTileOwner(tile));
 				SetWindowDirty(WC_TOWN_AUTHORITY, town->index);
 			}
 			break;
@@ -887,10 +887,10 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 		}
 	} else if (type == OBJECT_STATUE) {
 		Town *t = Object::GetByTile(tile)->town;
-		ClrBit(t->statues, old_owner);
-		if (new_owner != INVALID_OWNER && !HasBit(t->statues, new_owner)) {
+		t->statues.Reset(old_owner);
+		if (new_owner != INVALID_OWNER && !t->statues.Test(new_owner)) {
 			/* Transfer ownership to the new company */
-			SetBit(t->statues, new_owner);
+			t->statues.Set(new_owner);
 			SetTileOwner(tile, new_owner);
 		} else {
 			do_clear = true;

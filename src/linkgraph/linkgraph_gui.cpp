@@ -72,7 +72,7 @@ void LinkGraphOverlay::RebuildCache()
 {
 	this->cached_links.clear();
 	this->cached_stations.clear();
-	if (this->company_mask == 0) return;
+	if (this->company_mask.None()) return;
 
 	DrawPixelInfo dpi;
 	this->GetWidgetDpi(&dpi);
@@ -103,7 +103,7 @@ void LinkGraphOverlay::RebuildCache()
 				assert(sta != stb);
 
 				/* Show links between stations of selected companies or "neutral" ones like oilrigs. */
-				if (stb->owner != OWNER_NONE && sta->owner != OWNER_NONE && !HasBit(this->company_mask, stb->owner)) continue;
+				if (stb->owner != OWNER_NONE && sta->owner != OWNER_NONE && !this->company_mask.Test(stb->owner)) continue;
 				if (stb->rect.IsEmpty()) continue;
 
 				if (!this->IsLinkVisible(pta, this->GetStationMiddle(stb), &dpi)) continue;
@@ -568,9 +568,9 @@ void LinkGraphLegendWindow::SetOverlay(std::shared_ptr<LinkGraphOverlay> overlay
 {
 	this->overlay = overlay;
 	CompanyMask companies = this->overlay->GetCompanyMask();
-	for (uint c = 0; c < MAX_COMPANIES; c++) {
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		if (!this->IsWidgetDisabled(WID_LGL_COMPANY_FIRST + c)) {
-			this->SetWidgetLoweredState(WID_LGL_COMPANY_FIRST + c, HasBit(companies, c));
+			this->SetWidgetLoweredState(WID_LGL_COMPANY_FIRST + c, companies.Test(c));
 		}
 	}
 	CargoTypes cargoes = this->overlay->GetCargoMask();
@@ -662,11 +662,11 @@ bool LinkGraphLegendWindow::OnTooltip([[maybe_unused]] Point, WidgetID widget, T
  */
 void LinkGraphLegendWindow::UpdateOverlayCompanies()
 {
-	uint32_t mask = 0;
+	CompanyMask mask;
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		if (this->IsWidgetDisabled(WID_LGL_COMPANY_FIRST + c)) continue;
 		if (!this->IsWidgetLowered(WID_LGL_COMPANY_FIRST + c)) continue;
-		SetBit(mask, c);
+		mask.Set(c);
 	}
 	this->overlay->SetCompanyMask(mask);
 }

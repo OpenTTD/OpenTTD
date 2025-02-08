@@ -83,8 +83,8 @@
 		case 0xAB: return GB(this->t->ratings[6], 8, 8);
 		case 0xAC: return this->t->ratings[7];
 		case 0xAD: return GB(this->t->ratings[7], 8, 8);
-		case 0xAE: return this->t->have_ratings;
-		case 0xB2: return this->t->statues;
+		case 0xAE: return this->t->have_ratings.base();
+		case 0xB2: return this->t->statues.base();
 		case 0xB6: return ClampTo<uint16_t>(this->t->cache.num_houses);
 		case 0xB9: return this->t->growth_rate / Ticks::TOWN_GROWTH_TICKS;
 		case 0xBA: cargo_type = GetCargoTypeByLabel(CT_PASSENGERS); return IsValidCargoType(cargo_type) ? ClampTo<uint16_t>(this->t->supplied[cargo_type].new_max) : 0;

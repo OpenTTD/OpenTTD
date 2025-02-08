@@ -151,7 +151,7 @@ static const int CTMN_SPECTATOR   = -3; ///< Show a company window as spectator
  * @param widget The button widget id.
  * @param grey A bitmask of which companies to mark as disabled.
  */
-static void PopupMainCompanyToolbMenu(Window *w, WidgetID widget, CompanyMask grey = 0)
+static void PopupMainCompanyToolbMenu(Window *w, WidgetID widget, CompanyMask grey = {})
 {
 	DropDownList list;
 
@@ -177,7 +177,7 @@ static void PopupMainCompanyToolbMenu(Window *w, WidgetID widget, CompanyMask gr
 
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		if (!Company::IsValidID(c)) continue;
-		list.push_back(std::make_unique<DropDownListCompanyItem>(c, HasBit(grey, c)));
+		list.push_back(std::make_unique<DropDownListCompanyItem>(c, grey.Test(c)));
 	}
 
 	PopupMainToolbarMenu(w, widget, std::move(list), _local_company == COMPANY_SPECTATOR ? (widget == WID_TN_COMPANIES ? CTMN_CLIENT_LIST : CTMN_SPECTATOR) : (int)_local_company);
@@ -571,7 +571,7 @@ static CallBackFunction MenuClickFinances(int index)
 
 static CallBackFunction ToolbarCompaniesClick(Window *w)
 {
-	PopupMainCompanyToolbMenu(w, WID_TN_COMPANIES, 0);
+	PopupMainCompanyToolbMenu(w, WID_TN_COMPANIES);
 	return CBF_NONE;
 }
 
@@ -607,7 +607,7 @@ static CallBackFunction MenuClickCompany(int index)
 
 static CallBackFunction ToolbarStoryClick(Window *w)
 {
-	PopupMainCompanyToolbMenu(w, WID_TN_STORY, 0);
+	PopupMainCompanyToolbMenu(w, WID_TN_STORY);
 	return CBF_NONE;
 }
 
@@ -627,7 +627,7 @@ static CallBackFunction MenuClickStory(int index)
 
 static CallBackFunction ToolbarGoalClick(Window *w)
 {
-	PopupMainCompanyToolbMenu(w, WID_TN_GOAL, 0);
+	PopupMainCompanyToolbMenu(w, WID_TN_GOAL);
 	return CBF_NONE;
 }
 
@@ -768,10 +768,10 @@ static CallBackFunction MenuClickIndustry(int index)
 
 static void ToolbarVehicleClick(Window *w, VehicleType veh)
 {
-	CompanyMask dis = 0;
+	CompanyMask dis{};
 
 	for (const Company *c : Company::Iterate()) {
-		if (c->group_all[veh].num_vehicle == 0) SetBit(dis, c->index);
+		if (c->group_all[veh].num_vehicle == 0) dis.Set(c->index);
 	}
 	PopupMainCompanyToolbMenu(w, WID_TN_VEHICLE_START + veh, dis);
 }

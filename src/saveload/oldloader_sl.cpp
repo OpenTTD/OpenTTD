@@ -425,12 +425,12 @@ static bool FixTTOEngines()
 			e->duration_phase_3    = oe->duration_phase_3;
 			e->flags               = oe->flags;
 
-			e->company_avail = 0;
+			e->company_avail = CompanyMask{};
 
 			/* One or more engines were remapped to this one. Make this engine available
 			 * if at least one of them was available. */
 			for (uint j = 0; j < lengthof(tto_to_ttd); j++) {
-				if (tto_to_ttd[j] == i && _old_engines[j].company_avail != 0) {
+				if (tto_to_ttd[j] == i && _old_engines[j].company_avail.Any()) {
 					e->company_avail = std::numeric_limits<CompanyMask>::max();
 					e->flags.Set(EngineFlag::Available);
 					break;

@@ -55,7 +55,7 @@ struct GraphLegendWindow : Window {
 		this->InitNested(window_number);
 
 		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-			if (!HasBit(_legend_excluded_companies, c)) this->LowerWidget(WID_GL_FIRST_COMPANY + c);
+			if (!_legend_excluded_companies.Test(c)) this->LowerWidget(WID_GL_FIRST_COMPANY + c);
 
 			this->OnInvalidateData(c);
 		}
@@ -78,14 +78,14 @@ struct GraphLegendWindow : Window {
 		const Rect tr = ir.Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
 		SetDParam(0, cid);
 		SetDParam(1, cid);
-		DrawString(tr.left, tr.right, CenterBounds(tr.top, tr.bottom, GetCharacterHeight(FS_NORMAL)), STR_COMPANY_NAME_COMPANY_NUM, HasBit(_legend_excluded_companies, cid) ? TC_BLACK : TC_WHITE);
+		DrawString(tr.left, tr.right, CenterBounds(tr.top, tr.bottom, GetCharacterHeight(FS_NORMAL)), STR_COMPANY_NAME_COMPANY_NUM, _legend_excluded_companies.Test(cid) ? TC_BLACK : TC_WHITE);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (!IsInsideMM(widget, WID_GL_FIRST_COMPANY, WID_GL_FIRST_COMPANY + MAX_COMPANIES)) return;
 
-		ToggleBit(_legend_excluded_companies, widget - WID_GL_FIRST_COMPANY);
+		_legend_excluded_companies.Flip(static_cast<CompanyID>(widget - WID_GL_FIRST_COMPANY));
 		this->ToggleWidgetLoweredState(widget);
 		this->SetDirty();
 		InvalidateWindowData(WC_INCOME_GRAPH, 0);
@@ -105,7 +105,7 @@ struct GraphLegendWindow : Window {
 		if (!gui_scope) return;
 		if (Company::IsValidID(data)) return;
 
-		SetBit(_legend_excluded_companies, data);
+		_legend_excluded_companies.Set(static_cast<CompanyID>(data));
 		this->RaiseWidget(data + WID_GL_FIRST_COMPANY);
 	}
 };
@@ -677,7 +677,7 @@ public:
 
 		/* Exclude the companies which aren't valid */
 		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-			if (!Company::IsValidID(c)) SetBit(excluded_companies, c);
+			if (!Company::IsValidID(c)) excluded_companies.Set(c);
 		}
 
 		uint8_t nums = 0;
@@ -692,13 +692,13 @@ public:
 			mo += 12;
 		}
 
-		if (!initialize && this->excluded_data == excluded_companies && this->num_on_x_axis == nums &&
+		if (!initialize && this->excluded_data == excluded_companies.base() && this->num_on_x_axis == nums &&
 				this->year == yr && this->month == mo) {
 			/* There's no reason to get new stats */
 			return;
 		}
 
-		this->excluded_data = excluded_companies;
+		this->excluded_data = excluded_companies.base();
 		this->num_on_x_axis = nums;
 		this->year = yr;
 		this->month = mo;
@@ -1841,7 +1841,7 @@ void ShowPerformanceRatingDetail()
 
 void InitializeGraphGui()
 {
-	_legend_excluded_companies = 0;
+	_legend_excluded_companies = CompanyMask{};
 	_legend_excluded_cargo_payment_rates = 0;
 	_legend_excluded_cargo_production_history = 0;
 }

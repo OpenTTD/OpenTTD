@@ -706,7 +706,7 @@ static void HandleBankruptcyTakeover(Company *c)
 	 * Note that the company going bankrupt can't buy itself. */
 	static const int TAKE_OVER_TIMEOUT = 3 * 30 * Ticks::DAY_TICKS / (MAX_COMPANIES - 1);
 
-	assert(c->bankrupt_asked != 0);
+	assert(c->bankrupt_asked.Any());
 
 	/* We're currently asking some company to buy 'us' */
 	if (c->bankrupt_timeout != 0) {
@@ -725,8 +725,8 @@ static void HandleBankruptcyTakeover(Company *c)
 
 	/* Ask the company with the highest performance history first */
 	for (Company *c2 : Company::Iterate()) {
-		if (c2->bankrupt_asked == 0 && // Don't ask companies going bankrupt themselves
-				!HasBit(c->bankrupt_asked, c2->index) &&
+		if (c2->bankrupt_asked.None() && // Don't ask companies going bankrupt themselves
+				!c->bankrupt_asked.Test(c2->index) &&
 				best_performance < c2->old_economy[1].performance_history &&
 				CheckTakeoverVehicleLimit(c2->index, c->index)) {
 			best_performance = c2->old_economy[1].performance_history;
@@ -740,7 +740,7 @@ static void HandleBankruptcyTakeover(Company *c)
 		return;
 	}
 
-	SetBit(c->bankrupt_asked, best->index);
+	c->bankrupt_asked.Set(best->index);
 
 	c->bankrupt_timeout = TAKE_OVER_TIMEOUT;
 
@@ -758,7 +758,7 @@ void OnTick_Companies()
 	Company *c = Company::GetIfValid(_cur_company_tick_index);
 	if (c != nullptr) {
 		if (c->name_1 != 0) GenerateCompanyName(c);
-		if (c->bankrupt_asked != 0) HandleBankruptcyTakeover(c);
+		if (c->bankrupt_asked.Any()) HandleBankruptcyTakeover(c);
 	}
 
 	if (_new_competitor_timeout.HasFired() && _game_mode != GM_MENU && AI::CanStartNew()) {

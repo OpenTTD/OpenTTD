@@ -214,7 +214,7 @@
 	EnforceCompanyModeValid(false);
 	if (!IsValidTown(town_id)) return false;
 
-	return ::HasBit(::Town::Get(town_id)->statues, ScriptObject::GetCompany());
+	return ::Town::Get(town_id)->statues.Test(ScriptObject::GetCompany());
 }
 
 /* static */ bool ScriptTown::IsCity(TownID town_id)
@@ -319,7 +319,7 @@
 
 	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 	const Town *t = ::Town::Get(town_id);
-	if (!HasBit(t->have_ratings, c)) {
+	if (!t->have_ratings.Test(c)) {
 		return TOWN_RATING_NONE;
 	} else if (t->ratings[c] <= RATING_APPALLING) {
 		return TOWN_RATING_APPALLING;
