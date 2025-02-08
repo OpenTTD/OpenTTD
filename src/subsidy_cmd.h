@@ -12,6 +12,7 @@
 
 #include "command_type.h"
 #include "cargo_type.h"
+#include "source_type.h"
 #include "misc/endian_buffer.hpp"
 
 CommandCost CmdCreateSubsidy(DoCommandFlag flags, CargoType cargo_type, Source src, Source dst);

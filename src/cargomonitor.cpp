@@ -118,17 +118,17 @@ void AddCargoDelivery(CargoType cargo_type, CompanyID company, uint32_t amount, 
 {
 	if (amount == 0) return;
 
-	if (src.id != INVALID_SOURCE) {
+	if (src.IsValid()) {
 		/* Handle pickup update. */
 		switch (src.type) {
 			case SourceType::Industry: {
-				CargoMonitorID num = EncodeCargoIndustryMonitor(company, cargo_type, src.id);
+				CargoMonitorID num = EncodeCargoIndustryMonitor(company, cargo_type, src.ToIndustryID());
 				CargoMonitorMap::iterator iter = _cargo_pickups.find(num);
 				if (iter != _cargo_pickups.end()) iter->second += amount;
 				break;
 			}
 			case SourceType::Town: {
-				CargoMonitorID num = EncodeCargoTownMonitor(company, cargo_type, src.id);
+				CargoMonitorID num = EncodeCargoTownMonitor(company, cargo_type, src.ToTownID());
 				CargoMonitorMap::iterator iter = _cargo_pickups.find(num);
 				if (iter != _cargo_pickups.end()) iter->second += amount;
 				break;

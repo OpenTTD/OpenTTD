@@ -427,6 +427,7 @@ add_files(
     soundloader_type.h
     soundloader_raw.cpp
     soundloader_wav.cpp
+    source_type.h
     sprite.cpp
     sprite.h
     spritecache.cpp

@@ -82,7 +82,7 @@
 
 /* static */ SQInteger ScriptSubsidy::GetSourceIndex(SubsidyID subsidy_id)
 {
-	if (!IsValidSubsidy(subsidy_id)) return INVALID_SOURCE;
+	if (!IsValidSubsidy(subsidy_id)) return Source::Invalid;
 
 	return ::Subsidy::Get(subsidy_id)->src.id;
 }
@@ -96,7 +96,7 @@
 
 /* static */ SQInteger ScriptSubsidy::GetDestinationIndex(SubsidyID subsidy_id)
 {
-	if (!IsValidSubsidy(subsidy_id)) return INVALID_SOURCE;
+	if (!IsValidSubsidy(subsidy_id)) return Source::Invalid;
 
 	return ::Subsidy::Get(subsidy_id)->dst.id;
 }

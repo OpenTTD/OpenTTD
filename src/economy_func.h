@@ -16,6 +16,7 @@
 #include "vehicle_type.h"
 #include "company_type.h"
 #include "settings_type.h"
+#include "source_type.h"
 #include "core/random_func.hpp"
 
 void ResetPriceBaseMultipliers();
