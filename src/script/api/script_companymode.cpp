@@ -13,13 +13,12 @@
 
 #include "../../safeguards.h"
 
-ScriptCompanyMode::ScriptCompanyMode(SQInteger company)
+ScriptCompanyMode::ScriptCompanyMode(ScriptCompany::CompanyID company)
 {
-	if (company < OWNER_BEGIN || company >= MAX_COMPANIES) company = INVALID_COMPANY;
-	if (!::Company::IsValidID(company)) company = INVALID_COMPANY;
+	company = ScriptCompany::ResolveCompanyID(company);
 
 	this->last_company = ScriptObject::GetCompany();
-	ScriptObject::SetCompany((::CompanyID)company);
+	ScriptObject::SetCompany(ScriptCompany::FromScriptCompanyID(company));
 }
 
 ScriptCompanyMode::~ScriptCompanyMode()

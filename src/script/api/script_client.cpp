@@ -43,7 +43,7 @@ static NetworkClientInfo *FindClientInfo(ScriptClient::ClientID client)
 {
 	NetworkClientInfo *ci = FindClientInfo(client);
 	if (ci == nullptr) return ScriptCompany::COMPANY_INVALID;
-	return (ScriptCompany::CompanyID)ci->client_playas;
+	return ScriptCompany::ToScriptCompanyID(ci->client_playas);
 }
 
 /* static */ ScriptDate::Date ScriptClient::GetJoinDate(ScriptClient::ClientID client)

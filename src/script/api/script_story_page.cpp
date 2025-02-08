@@ -50,11 +50,10 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforceDeityMode(STORY_PAGE_INVALID);
 	EnforcePrecondition(STORY_PAGE_INVALID, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 
-	uint8_t c = company;
-	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
+	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 
 	if (!ScriptObject::Command<CMD_CREATE_STORY_PAGE>::Do(&ScriptInstance::DoCommandReturnStoryPageID,
-		(::CompanyID)c, title != nullptr ? title->GetEncodedText() : std::string{})) return STORY_PAGE_INVALID;
+		c, title != nullptr ? title->GetEncodedText() : std::string{})) return STORY_PAGE_INVALID;
 
 	/* In case of test-mode, we return StoryPageID 0 */
 	return static_cast<StoryPageID>(0);
@@ -177,10 +176,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 {
 	EnforcePrecondition(ScriptCompany::COMPANY_INVALID, IsValidStoryPage(story_page_id));
 
-	CompanyID c = StoryPage::Get(story_page_id)->company;
-	ScriptCompany::CompanyID company = c == INVALID_COMPANY ? ScriptCompany::COMPANY_INVALID : (ScriptCompany::CompanyID)c;
-
-	return company;
+	return ScriptCompany::ToScriptCompanyID(StoryPage::Get(story_page_id)->company);
 }
 
 /* static */ ScriptDate::Date ScriptStoryPage::GetDate(StoryPageID story_page_id)

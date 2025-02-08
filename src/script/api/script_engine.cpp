@@ -31,7 +31,7 @@
 
 	/* AIs have only access to engines they can purchase or still have in use.
 	 * Deity has access to all engined that will be or were available ever. */
-	CompanyID company = ScriptObject::GetCompany();
+	::CompanyID company = ScriptObject::GetCompany();
 	return ScriptCompanyMode::IsDeity() || ::IsEngineBuildable(engine_id, e->type, company) || ::Company::Get(company)->group_all[e->type].GetNumEngines(engine_id) > 0;
 }
 
@@ -277,7 +277,7 @@
 	EnforcePrecondition(false, IsValidEngine(engine_id));
 	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
 
-	return ScriptObject::Command<CMD_ENGINE_CTRL>::Do(engine_id, (::CompanyID)company, true);
+	return ScriptObject::Command<CMD_ENGINE_CTRL>::Do(engine_id, ScriptCompany::FromScriptCompanyID(company), true);
 }
 
 /* static */ bool ScriptEngine::DisableForCompany(EngineID engine_id, ScriptCompany::CompanyID company)
@@ -288,5 +288,5 @@
 	EnforcePrecondition(false, IsValidEngine(engine_id));
 	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
 
-	return ScriptObject::Command<CMD_ENGINE_CTRL>::Do(engine_id, (::CompanyID)company, false);
+	return ScriptObject::Command<CMD_ENGINE_CTRL>::Do(engine_id, ScriptCompany::FromScriptCompanyID(company), false);
 }

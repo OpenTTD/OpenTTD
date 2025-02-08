@@ -17,7 +17,7 @@
 ScriptGroupList::ScriptGroupList(HSQUIRRELVM vm)
 {
 	EnforceCompanyModeValid_Void();
-	CompanyID owner = ScriptObject::GetCompany();
+	::CompanyID owner = ScriptObject::GetCompany();
 	ScriptList::FillList<Group>(vm, this,
 		[owner](const Group *g) { return g->owner == owner; }
 	);

@@ -17,7 +17,7 @@ ScriptEngineList::ScriptEngineList(ScriptVehicle::VehicleType vehicle_type)
 {
 	EnforceDeityOrCompanyModeValid_Void();
 	bool is_deity = ScriptCompanyMode::IsDeity();
-	CompanyID owner = ScriptObject::GetCompany();
+	::CompanyID owner = ScriptObject::GetCompany();
 	for (const Engine *e : Engine::IterateType((::VehicleType)vehicle_type)) {
 		if (is_deity || HasBit(e->company_avail, owner)) this->AddItem(e->index);
 	}

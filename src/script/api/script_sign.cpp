@@ -30,7 +30,7 @@
 {
 	if (!IsValidSign(sign_id)) return ScriptCompany::COMPANY_INVALID;
 
-	return static_cast<ScriptCompany::CompanyID>((int)::Sign::Get(sign_id)->owner);
+	return ScriptCompany::ToScriptCompanyID(::Sign::Get(sign_id)->owner);
 }
 
 /* static */ bool ScriptSign::SetName(SignID sign_id, Text *name)

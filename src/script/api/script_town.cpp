@@ -243,7 +243,7 @@
 	EnforceCompanyModeValid(ScriptCompany::COMPANY_INVALID);
 	if (!IsValidTown(town_id)) return ScriptCompany::COMPANY_INVALID;
 
-	return (ScriptCompany::CompanyID)(int8_t)::Town::Get(town_id)->exclusivity;
+	return ScriptCompany::ToScriptCompanyID(::Town::Get(town_id)->exclusivity);
 }
 
 /* static */ SQInteger ScriptTown::GetExclusiveRightsDuration(TownID town_id)
@@ -317,22 +317,23 @@
 	ScriptCompany::CompanyID company = ScriptCompany::ResolveCompanyID(company_id);
 	if (company == ScriptCompany::COMPANY_INVALID) return TOWN_RATING_INVALID;
 
+	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 	const Town *t = ::Town::Get(town_id);
-	if (!HasBit(t->have_ratings, company)) {
+	if (!HasBit(t->have_ratings, c)) {
 		return TOWN_RATING_NONE;
-	} else if (t->ratings[company] <= RATING_APPALLING) {
+	} else if (t->ratings[c] <= RATING_APPALLING) {
 		return TOWN_RATING_APPALLING;
-	} else if (t->ratings[company] <= RATING_VERYPOOR) {
+	} else if (t->ratings[c] <= RATING_VERYPOOR) {
 		return TOWN_RATING_VERY_POOR;
-	} else if (t->ratings[company] <= RATING_POOR) {
+	} else if (t->ratings[c] <= RATING_POOR) {
 		return TOWN_RATING_POOR;
-	} else if (t->ratings[company] <= RATING_MEDIOCRE) {
+	} else if (t->ratings[c] <= RATING_MEDIOCRE) {
 		return TOWN_RATING_MEDIOCRE;
-	} else if (t->ratings[company] <= RATING_GOOD) {
+	} else if (t->ratings[c] <= RATING_GOOD) {
 		return TOWN_RATING_GOOD;
-	} else if (t->ratings[company] <= RATING_VERYGOOD) {
+	} else if (t->ratings[c] <= RATING_VERYGOOD) {
 		return TOWN_RATING_VERY_GOOD;
-	} else if (t->ratings[company] <= RATING_EXCELLENT) {
+	} else if (t->ratings[c] <= RATING_EXCELLENT) {
 		return TOWN_RATING_EXCELLENT;
 	} else {
 		return TOWN_RATING_OUTSTANDING;
@@ -346,21 +347,22 @@
 	if (company == ScriptCompany::COMPANY_INVALID) return TOWN_RATING_INVALID;
 
 	const Town *t = ::Town::Get(town_id);
-	return t->ratings[company];
+	return t->ratings[ScriptCompany::FromScriptCompanyID(company)];
 }
 
-/* static */ bool ScriptTown::ChangeRating(TownID town_id, ScriptCompany::CompanyID company_id, SQInteger delta)
+/* static */ bool ScriptTown::ChangeRating(TownID town_id, ScriptCompany::CompanyID company, SQInteger delta)
 {
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidTown(town_id));
-	ScriptCompany::CompanyID company = ScriptCompany::ResolveCompanyID(company_id);
+	company = ScriptCompany::ResolveCompanyID(company);
 	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
 
+	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 	const Town *t = ::Town::Get(town_id);
-	int16_t new_rating = Clamp(t->ratings[company] + delta, RATING_MINIMUM, RATING_MAXIMUM);
-	if (new_rating == t->ratings[company]) return false;
+	int16_t new_rating = Clamp(t->ratings[c] + delta, RATING_MINIMUM, RATING_MAXIMUM);
+	if (new_rating == t->ratings[c]) return false;
 
-	return ScriptObject::Command<CMD_TOWN_RATING>::Do(town_id, (::CompanyID)company_id, new_rating);
+	return ScriptObject::Command<CMD_TOWN_RATING>::Do(town_id, c, new_rating);
 }
 
 /* static */ SQInteger ScriptTown::GetAllowedNoise(TownID town_id)

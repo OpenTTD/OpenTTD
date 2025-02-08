@@ -26,13 +26,13 @@ ScriptClientList::ScriptClientList()
 ScriptClientList_Company::ScriptClientList_Company(ScriptCompany::CompanyID company)
 {
 	if (!_networking) return;
-	CompanyID c;
+	::CompanyID c;
 	if (company == ScriptCompany::COMPANY_SPECTATOR) {
 		c = ::COMPANY_SPECTATOR;
 	} else {
 		company = ScriptCompany::ResolveCompanyID(company);
 		if (company == ScriptCompany::COMPANY_INVALID) return;
-		c = (CompanyID)company;
+		c = ScriptCompany::FromScriptCompanyID(company);
 	}
 
 	for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {

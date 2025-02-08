@@ -42,7 +42,7 @@
 	company = ScriptCompany::ResolveCompanyID(company);
 	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
 
-	return ScriptObject::Command<CMD_SCROLL_VIEWPORT>::Do(tile, VST_COMPANY, company);
+	return ScriptObject::Command<CMD_SCROLL_VIEWPORT>::Do(tile, VST_COMPANY, ScriptCompany::FromScriptCompanyID(company));
 }
 
 /* static */ bool ScriptViewport::ScrollClientTo(ScriptClient::ClientID client, TileIndex tile)

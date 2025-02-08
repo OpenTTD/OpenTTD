@@ -39,6 +39,18 @@ public:
 		COMPANY_SPECTATOR = 255,               ///< Constant indicating that player is spectating (gets resolved to COMPANY_INVALID)
 	};
 
+	/**
+	 * Internal helper to convert from the script's company to the game's internal company.
+	 * @api none
+	 */
+	static ::CompanyID FromScriptCompanyID(ScriptCompany::CompanyID company);
+
+	/**
+	 * Internal helper to convert from the game's internal company to the script's company.
+	 * @api none
+	 */
+	static ScriptCompany::CompanyID ToScriptCompanyID(::CompanyID company);
+
 	/** Possible genders for company presidents. */
 	enum Gender {
 		GENDER_MALE,         ///< A male person.
@@ -124,7 +136,7 @@ public:
 	 * @param company The company index to resolve.
 	 * @return The resolved company index.
 	 */
-	static CompanyID ResolveCompanyID(CompanyID company);
+	static ScriptCompany::CompanyID ResolveCompanyID(ScriptCompany::CompanyID company);
 
 	/**
 	 * Check if a CompanyID is your CompanyID, to ease up checks.
@@ -132,7 +144,7 @@ public:
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if and only if this company is your CompanyID.
 	 */
-	static bool IsMine(CompanyID company);
+	static bool IsMine(ScriptCompany::CompanyID company);
 
 	/**
 	 * Set the name of your company.
@@ -150,7 +162,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The name of the given company.
 	 */
-	static std::optional<std::string> GetName(CompanyID company);
+	static std::optional<std::string> GetName(ScriptCompany::CompanyID company);
 
 	/**
 	 * Set the name of your president.
@@ -168,7 +180,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The name of the president of the given company.
 	 */
-	static std::optional<std::string> GetPresidentName(CompanyID company);
+	static std::optional<std::string> GetPresidentName(ScriptCompany::CompanyID company);
 
 	/**
 	 * Set the gender of the president of your company.
@@ -185,7 +197,7 @@ public:
 	 * @param company The company to get the presidents gender off.
 	 * @return The gender of the president.
 	 */
-	static Gender GetPresidentGender(CompanyID company);
+	static Gender GetPresidentGender(ScriptCompany::CompanyID company);
 
 	/**
 	 * Sets the amount to loan.
@@ -235,7 +247,7 @@ public:
 	 * @note Max loan value set with this method is not affected by inflation.
 	 * @api -ai
 	 */
-	static bool SetMaxLoanAmountForCompany(CompanyID company, Money amount);
+	static bool SetMaxLoanAmountForCompany(ScriptCompany::CompanyID company, Money amount);
 
 	/**
 	 * Makes the max amount of money company can loan follow the global max loan setting.
@@ -247,7 +259,7 @@ public:
 	 * @note You need to create your own news message to inform about max loan change.
 	 * @api -ai
 	 */
-	static bool ResetMaxLoanAmountForCompany(CompanyID company);
+	static bool ResetMaxLoanAmountForCompany(ScriptCompany::CompanyID company);
 
 	/**
 	 * Gets the interval/loan step.
@@ -263,7 +275,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The actual bank balance or INT32_MAX.
 	 */
-	static Money GetBankBalance(CompanyID company);
+	static Money GetBankBalance(ScriptCompany::CompanyID company);
 
 	/**
 	 * Changes the bank balance by a delta value. This method does not affect the loan but instead
@@ -278,7 +290,7 @@ public:
 	 * @note You need to create your own news message to inform about costs/gifts that you create using this command.
 	 * @api -ai
 	 */
-	static bool ChangeBankBalance(CompanyID company, Money delta, ExpensesType expenses_type, TileIndex tile);
+	static bool ChangeBankBalance(ScriptCompany::CompanyID company, Money delta, ExpensesType expenses_type, TileIndex tile);
 
 	/**
 	 * Get the income of the company in the given economy-quarter.
@@ -291,7 +303,7 @@ public:
 	 * @return The gross income of the company in the given economy-quarter.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static Money GetQuarterlyIncome(CompanyID company, SQInteger quarter);
+	static Money GetQuarterlyIncome(ScriptCompany::CompanyID company, SQInteger quarter);
 
 	/**
 	 * Get the expenses of the company in the given economy-quarter.
@@ -305,7 +317,7 @@ public:
 	 * @return The expenses of the company in the given economy-quarter.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static Money GetQuarterlyExpenses(CompanyID company, SQInteger quarter);
+	static Money GetQuarterlyExpenses(ScriptCompany::CompanyID company, SQInteger quarter);
 
 	/**
 	 * Get the amount of cargo delivered by the given company in the given economy-quarter.
@@ -316,7 +328,7 @@ public:
 	 * @return The amount of cargo delivered by the given company in the given economy-quarter.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static SQInteger GetQuarterlyCargoDelivered(CompanyID company, SQInteger quarter);
+	static SQInteger GetQuarterlyCargoDelivered(ScriptCompany::CompanyID company, SQInteger quarter);
 
 	/**
 	 * Get the performance rating of the given company in the given economy-quarter.
@@ -329,7 +341,7 @@ public:
 	 * @return The performance rating of the given company in the given economy-quarter.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static SQInteger GetQuarterlyPerformanceRating(CompanyID company, SQInteger quarter);
+	static SQInteger GetQuarterlyPerformanceRating(ScriptCompany::CompanyID company, SQInteger quarter);
 
 	/**
 	 * Get the value of the company in the given economy-quarter.
@@ -340,7 +352,7 @@ public:
 	 * @return The value of the company in the given economy-quarter.
 	 * @see \ref ScriptEconomyTime
 	 */
-	static Money GetQuarterlyCompanyValue(CompanyID company, SQInteger quarter);
+	static Money GetQuarterlyCompanyValue(ScriptCompany::CompanyID company, SQInteger quarter);
 
 	/**
 	 * Build your company's HQ on the given tile.
@@ -362,7 +374,7 @@ public:
 	 * @return The tile of the company's HQ, this tile is the most northern tile
 	 *  of that HQ, or ScriptMap::TILE_INVALID if there is no HQ yet.
 	 */
-	static TileIndex GetCompanyHQ(CompanyID company);
+	static TileIndex GetCompanyHQ(ScriptCompany::CompanyID company);
 
 	/**
 	 * Set whether autorenew is enabled for your company.
@@ -378,7 +390,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return True if autorenew is enabled.
 	 */
-	static bool GetAutoRenewStatus(CompanyID company);
+	static bool GetAutoRenewStatus(ScriptCompany::CompanyID company);
 
 	/**
 	 * Set the number of months before/after max age to autorenew an engine for your company.
@@ -397,7 +409,7 @@ public:
 	 * @return The number of calendar-months before/after max age of engine.
 	 * @see \ref ScriptCalendarTime
 	 */
-	static SQInteger GetAutoRenewMonths(CompanyID company);
+	static SQInteger GetAutoRenewMonths(ScriptCompany::CompanyID company);
 
 	/**
 	 * Set the minimum money needed to autorenew an engine for your company.
@@ -415,7 +427,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The minimum required money for autorenew to work.
 	 */
-	static Money GetAutoRenewMoney(CompanyID company);
+	static Money GetAutoRenewMoney(ScriptCompany::CompanyID company);
 
 	/**
 	 * Set primary colour for your company.

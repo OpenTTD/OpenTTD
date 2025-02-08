@@ -269,21 +269,21 @@ protected:
 	 *  information about.
 	 * @param company The new company.
 	 */
-	static void SetCompany(CompanyID company);
+	static void SetCompany(::CompanyID company);
 
 	/**
 	 * Get the current company we are executing commands for or
 	 *  requesting information about.
 	 * @return The current company.
 	 */
-	static CompanyID GetCompany();
+	static ::CompanyID GetCompany();
 
 	/**
 	 * Get the root company, the company that the script really
 	 *  runs under / for.
 	 * @return The root company.
 	 */
-	static CompanyID GetRootCompany();
+	static ::CompanyID GetRootCompany();
 
 	/**
 	 * Set the cost of the last command.

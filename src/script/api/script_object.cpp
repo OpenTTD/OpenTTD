@@ -215,7 +215,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->allow_do_command;
 }
 
-/* static */ void ScriptObject::SetCompany(CompanyID company)
+/* static */ void ScriptObject::SetCompany(::CompanyID company)
 {
 	if (GetStorage()->root_company == INVALID_OWNER) GetStorage()->root_company = company;
 	GetStorage()->company = company;
@@ -223,12 +223,12 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	_current_company = company;
 }
 
-/* static */ CompanyID ScriptObject::GetCompany()
+/* static */ ::CompanyID ScriptObject::GetCompany()
 {
 	return GetStorage()->company;
 }
 
-/* static */ CompanyID ScriptObject::GetRootCompany()
+/* static */ ::CompanyID ScriptObject::GetRootCompany()
 {
 	return GetStorage()->root_company;
 }
