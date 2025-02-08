@@ -22,7 +22,7 @@ using EngineRenewID = PoolID<uint16_t, struct EngineRenewIDTag, 64000, 0xFFFF>;
  * placed here so the only exception to this rule, the saveload code, can use
  * it.
  */
-using EngineRenewPool = Pool<EngineRenew, EngineRenewID, 16, EngineRenewID::End().base()>;
+using EngineRenewPool = Pool<EngineRenew, EngineRenewID, 16>;
 extern EngineRenewPool _enginerenew_pool;
 
 /**

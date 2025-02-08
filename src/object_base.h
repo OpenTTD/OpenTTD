@@ -16,7 +16,7 @@
 #include "town_type.h"
 #include "timer/timer_game_calendar.h"
 
-using ObjectPool = Pool<Object, ObjectID, 64, ObjectID::End().base()>;
+using ObjectPool = Pool<Object, ObjectID, 64>;
 extern ObjectPool _object_pool;
 
 /** An object, such as transmitter, on the map. */

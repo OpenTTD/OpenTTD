@@ -62,7 +62,7 @@ private:
 	std::vector<BitmapStorage> used_bitmap;
 };
 
-typedef Pool<Company, CompanyID, 1, CompanyID::End().base()> CompanyPool;
+typedef Pool<Company, CompanyID, 1> CompanyPool;
 extern CompanyPool _company_pool;
 
 /** Statically loadable part of Company pool item */

@@ -17,7 +17,7 @@
 #include "../timer/timer_game_economy.h"
 
 /** Type for the pool with client information. */
-using NetworkClientInfoPool = Pool<NetworkClientInfo, ClientPoolID, 8, ClientPoolID::End().base(), PoolType::NetworkClient>;
+using NetworkClientInfoPool = Pool<NetworkClientInfo, ClientPoolID, 8, PoolType::NetworkClient>;
 extern NetworkClientInfoPool _networkclientinfo_pool;
 
 /** Container for all information known about a client. */
