@@ -10,6 +10,8 @@
 #ifndef ENUM_TYPE_HPP
 #define ENUM_TYPE_HPP
 
+#include "base_bitset_type.hpp"
+
 /** Implementation of std::to_underlying (from C++23) */
 template <typename enum_type>
 constexpr std::underlying_type_t<enum_type> to_underlying(enum_type e) { return static_cast<std::underlying_type_t<enum_type>>(e); }
@@ -117,21 +119,21 @@ debug_inline constexpr void ToggleFlag(T &x, const T y)
  * @tparam Tend_value Last valid value + 1.
  */
 template <typename Tenum, typename Tstorage, Tenum Tend_value = Tenum{std::numeric_limits<Tstorage>::digits}>
-class EnumBitSet {
+class EnumBitSet : public BaseBitSet<EnumBitSet<Tenum, Tstorage, Tend_value>, Tenum, Tstorage> {
+	using BaseClass = BaseBitSet<EnumBitSet<Tenum, Tstorage, Tend_value>, Tenum, Tstorage>;
 public:
-	using EnumType = Tenum; ///< Enum type of this EnumBitSet.
-	using BaseType = Tstorage; ///< Storage type of this EnumBitSet, be ConvertibleThroughBase
+	using EnumType = BaseClass::ValueType;
 	static constexpr Tstorage MASK = std::numeric_limits<Tstorage>::max() >> (std::numeric_limits<Tstorage>::digits - to_underlying(Tend_value)); ///< Mask of valid values.
 
-	constexpr EnumBitSet() : data(0) {}
-	constexpr EnumBitSet(Tenum value) : data(0) { this->Set(value); }
-	explicit constexpr EnumBitSet(Tstorage data) : data(data & MASK) {}
+	constexpr EnumBitSet() : BaseClass() {}
+	constexpr EnumBitSet(Tenum value) : BaseClass() { this->Set(value); }
+	explicit constexpr EnumBitSet(Tstorage data) : BaseClass(data & MASK) {}
 
 	/**
 	 * Construct an EnumBitSet from a list of enum values.
 	 * @param values List of enum values.
 	 */
-	constexpr EnumBitSet(std::initializer_list<const Tenum> values) : data(0)
+	constexpr EnumBitSet(std::initializer_list<const Tenum> values) : BaseClass()
 	{
 		for (const Tenum &value : values) {
 			this->Set(value);
@@ -141,101 +143,15 @@ public:
 	constexpr auto operator <=>(const EnumBitSet &) const noexcept = default;
 
 	/**
-	 * Set the enum value.
-	 * @param value Enum value to set.
-	 * @returns The EnumBitset
-	 */
-	inline constexpr EnumBitSet &Set(Tenum value)
-	{
-		this->data |= (1ULL << to_underlying(value));
-		return *this;
-	}
-
-	/**
-	 * Reset the enum value to not set.
-	 * @param value Enum value to reset.
-	 * @returns The EnumBitset
-	 */
-	inline constexpr EnumBitSet &Reset(Tenum value)
-	{
-		this->data &= ~(1ULL << to_underlying(value));
-		return *this;
-	}
-
-	/**
-	 * Flip the enum value.
-	 * @param value Enum value to flip.
-	 * @returns The EnumBitset
-	 */
-	inline constexpr EnumBitSet &Flip(Tenum value)
-	{
-		if (this->Test(value)) {
-			return this->Reset(value);
-		} else {
-			return this->Set(value);
-		}
-	}
-
-	/**
-	 * Test if the enum value is set.
-	 * @param value Enum value to check.
-	 * @returns true iff the requested value is set.
-	 */
-	inline constexpr bool Test(Tenum value) const
-	{
-		return (this->data & (1ULL << to_underlying(value))) != 0;
-	}
-
-	/**
-	 * Test if all of the enum values are set.
-	 * @param other BitSet of enum values to test.
-	 * @returns true iff all of the enum values are set.
-	 */
-	inline constexpr bool All(const EnumBitSet &other) const
-	{
-		return (this->data & other.data) == other.data;
-	}
-
-	/**
-	 * Test if any of the enum values are set.
-	 * @param other BitSet of enum values to test.
-	 * @returns true iff any of the enum values are set.
-	 */
-	inline constexpr bool Any(const EnumBitSet &other) const
-	{
-		return (this->data & other.data) != 0;
-	}
-
-	inline constexpr EnumBitSet operator |(const EnumBitSet &other) const
-	{
-		return EnumBitSet{static_cast<Tstorage>(this->data | other.data)};
-	}
-
-	inline constexpr EnumBitSet operator &(const EnumBitSet &other) const
-	{
-		return EnumBitSet{static_cast<Tstorage>(this->data & other.data)};
-	}
-
-	/**
 	 * Test that the raw value of this EnumBitSet is valid.
 	 * @returns true iff the no bits outside the masked value are set.
 	 */
 	inline constexpr bool IsValid() const
 	{
-		return (this->data & MASK) == this->data;
+		return (this->base() & MASK) == this->base();
 	}
 
-	/**
-	 * Retrieve the raw value behind this EnumBitSet.
-	 * @returns the raw value.
-	 */
-	inline constexpr Tstorage base() const noexcept
-	{
-		return this->data;
-	}
-
-private:
-	Tstorage data; ///< Bitmask of enum values.
+	static constexpr size_t DecayValueType(const BaseClass::ValueType &value) { return to_underlying(value); }
 };
 
 #endif /* ENUM_TYPE_HPP */
