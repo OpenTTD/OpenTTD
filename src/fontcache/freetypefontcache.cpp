@@ -246,7 +246,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_MIN];
 	sprite.AllocateData(ZOOM_LVL_MIN, static_cast<size_t>(width) * height);
 	sprite.type = SpriteType::Font;
-	sprite.colours = (aa ? SCC_PAL | SCC_ALPHA : SCC_PAL);
+	sprite.colours = SpriteComponent::Palette;
+	if (aa) sprite.colours.Set(SpriteComponent::Alpha);
 	sprite.width = width;
 	sprite.height = height;
 	sprite.x_offs = slot->bitmap_left;

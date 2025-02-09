@@ -1412,7 +1412,7 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
  * @param levels Number of mip-map levels.
  * @param components Indicates which sprite components are used.
  */
-OpenGLSprite::OpenGLSprite(uint width, uint height, uint levels, SpriteColourComponent components)
+OpenGLSprite::OpenGLSprite(uint width, uint height, uint levels, SpriteComponents components)
 {
 	assert(levels > 0);
 	(void)_glGetError();
@@ -1426,8 +1426,8 @@ OpenGLSprite::OpenGLSprite(uint width, uint height, uint levels, SpriteColourCom
 
 	for (int t = TEX_RGBA; t < NUM_TEX; t++) {
 		/* Sprite component present? */
-		if (t == TEX_RGBA && components == SCC_PAL) continue;
-		if (t == TEX_REMAP && (components & SCC_PAL) != SCC_PAL) continue;
+		if (t == TEX_RGBA && components == SpriteComponent::Palette) continue;
+		if (t == TEX_REMAP && !components.Test(SpriteComponent::Palette)) continue;
 
 		/* Allocate texture. */
 		_glGenTextures(1, &this->tex[t]);

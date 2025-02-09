@@ -589,17 +589,17 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
 			prev_id = id;
 			uint length = file.ReadDword();
 			if (length > 0) {
-				uint8_t colour = file.ReadByte() & SCC_MASK;
+				SpriteComponents colour{file.ReadByte()};
 				length--;
 				if (length > 0) {
 					uint8_t zoom = file.ReadByte();
 					length--;
-					if (colour != 0 && zoom == 0) { // ZOOM_LVL_NORMAL (normal zoom)
-						SetBit(offset.control_flags, (colour != SCC_PAL) ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL);
-						SetBit(offset.control_flags, (colour != SCC_PAL) ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL);
+					if (colour != SpriteComponents{} && zoom == 0) { // ZOOM_LVL_NORMAL (normal zoom)
+						SetBit(offset.control_flags, (colour != SpriteComponent::Palette) ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL);
+						SetBit(offset.control_flags, (colour != SpriteComponent::Palette) ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL);
 					}
-					if (colour != 0 && zoom == 2) { // ZOOM_LVL_IN_2X (2x zoomed in)
-						SetBit(offset.control_flags, (colour != SCC_PAL) ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL);
+					if (colour != SpriteComponents{} && zoom == 2) { // ZOOM_LVL_IN_2X (2x zoomed in)
+						SetBit(offset.control_flags, (colour != SpriteComponent::Palette) ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL);
 					}
 				}
 			}

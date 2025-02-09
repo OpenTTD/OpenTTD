@@ -57,7 +57,7 @@ static bool WarnCorruptSprite(const SpriteFile &file, size_t file_pos, int line)
  * @param container_format Container format of the GRF this sprite is in.
  * @return True if the sprite was successfully loaded.
  */
-bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, int64_t num, uint8_t type, ZoomLevel zoom_lvl, uint8_t colour_fmt, uint8_t container_format)
+bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, int64_t num, uint8_t type, ZoomLevel zoom_lvl, SpriteComponents colour_fmt, uint8_t container_format)
 {
 	/*
 	 * Original sprite height was max 255 pixels, with 4x extra zoom => 1020 pixels.
@@ -105,9 +105,9 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 
 	/* Convert colour depth to pixel size. */
 	int bpp = 0;
-	if (colour_fmt & SCC_RGB)   bpp += 3; // Has RGB data.
-	if (colour_fmt & SCC_ALPHA) bpp++;    // Has alpha data.
-	if (colour_fmt & SCC_PAL)   bpp++;    // Has palette data.
+	if (colour_fmt.Test(SpriteComponent::RGB))     bpp += 3; // Has RGB data.
+	if (colour_fmt.Test(SpriteComponent::Alpha))   bpp++;    // Has alpha data.
+	if (colour_fmt.Test(SpriteComponent::Palette)) bpp++;    // Has palette data.
 
 	/* When there are transparency pixels, this format has another trick.. decode it */
 	if (type & 0x08) {
@@ -156,20 +156,20 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 				}
 
 				for (int x = 0; x < length; x++) {
-					if (colour_fmt & SCC_RGB) {
+					if (colour_fmt.Test(SpriteComponent::RGB)) {
 						data->r = *dest++;
 						data->g = *dest++;
 						data->b = *dest++;
 					}
-					data->a = (colour_fmt & SCC_ALPHA) ? *dest++ : 0xFF;
-					if (colour_fmt & SCC_PAL) {
+					data->a = colour_fmt.Test(SpriteComponent::Alpha) ? *dest++ : 0xFF;
+					if (colour_fmt.Test(SpriteComponent::Palette)) {
 						switch (sprite_type) {
 							case SpriteType::Normal: data->m = file.NeedsPaletteRemap() ? _palmap_w2d[*dest] : *dest; break;
 							case SpriteType::Font:   data->m = std::min<uint8_t>(*dest, 2u); break;
 							default:        data->m = *dest; break;
 						}
 						/* Magic blue. */
-						if (colour_fmt == SCC_PAL && *dest == 0) data->a = 0x00;
+						if (colour_fmt == SpriteComponent::Palette && *dest == 0) data->a = 0x00;
 						dest++;
 					}
 					data++;
@@ -193,20 +193,20 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 		for (int i = 0; i < sprite->width * sprite->height; i++) {
 			uint8_t *pixel = &dest[i * bpp];
 
-			if (colour_fmt & SCC_RGB) {
+			if (colour_fmt.Test(SpriteComponent::RGB)) {
 				sprite->data[i].r = *pixel++;
 				sprite->data[i].g = *pixel++;
 				sprite->data[i].b = *pixel++;
 			}
-			sprite->data[i].a = (colour_fmt & SCC_ALPHA) ? *pixel++ : 0xFF;
-			if (colour_fmt & SCC_PAL) {
+			sprite->data[i].a = colour_fmt.Test(SpriteComponent::Alpha) ? *pixel++ : 0xFF;
+			if (colour_fmt.Test(SpriteComponent::Palette)) {
 				switch (sprite_type) {
 					case SpriteType::Normal: sprite->data[i].m = file.NeedsPaletteRemap() ? _palmap_w2d[*pixel] : *pixel; break;
 					case SpriteType::Font:   sprite->data[i].m = std::min<uint8_t>(*pixel, 2u); break;
 					default:        sprite->data[i].m = *pixel; break;
 				}
 				/* Magic blue. */
-				if (colour_fmt == SCC_PAL && *pixel == 0) sprite->data[i].a = 0x00;
+				if (colour_fmt == SpriteComponent::Palette && *pixel == 0) sprite->data[i].a = 0x00;
 				pixel++;
 			}
 		}
@@ -236,7 +236,7 @@ uint8_t LoadSpriteV1(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 	sprite[zoom_lvl].width  = file.ReadWord();
 	sprite[zoom_lvl].x_offs = file.ReadWord();
 	sprite[zoom_lvl].y_offs = file.ReadWord();
-	sprite[zoom_lvl].colours = SCC_PAL;
+	sprite[zoom_lvl].colours = SpriteComponent::Palette;
 
 	if (sprite[zoom_lvl].width > INT16_MAX) {
 		WarnCorruptSprite(file, file_pos, __LINE__);
@@ -247,7 +247,7 @@ uint8_t LoadSpriteV1(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 	 * In case it is uncompressed, the size is 'num' - 8 (header-size). */
 	num = (type & 0x02) ? sprite[zoom_lvl].width * sprite[zoom_lvl].height : num - 8;
 
-	if (DecodeSingleSprite(&sprite[zoom_lvl], file, file_pos, sprite_type, num, type, zoom_lvl, SCC_PAL, 1)) {
+	if (DecodeSingleSprite(&sprite[zoom_lvl], file, file_pos, sprite_type, num, type, zoom_lvl, SpriteComponent::Palette, 1)) {
 		SetBit(avail_8bpp, zoom_lvl);
 		return avail_8bpp;
 	}
@@ -276,16 +276,19 @@ uint8_t LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 		/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here. */
 		if (type == 0xFF) return 0;
 
-		uint8_t colour = type & SCC_MASK;
+		SpriteComponents colour{type};
+		/* Mask out colour component information from type. */
+		type &= ~SpriteComponents::MASK;
+
 		uint8_t zoom = file.ReadByte();
 
-		bool is_wanted_colour_depth = (colour != 0 && (load_32bpp ? colour != SCC_PAL : colour == SCC_PAL));
+		bool is_wanted_colour_depth = (colour != SpriteComponents{} && (load_32bpp ? colour != SpriteComponent::Palette : colour == SpriteComponent::Palette));
 		bool is_wanted_zoom_lvl;
 
 		if (sprite_type != SpriteType::MapGen) {
 			if (zoom < lengthof(zoom_lvl_map)) {
-				if (colour == SCC_PAL) SetBit(avail_8bpp, zoom_lvl_map[zoom]);
-				if (colour != SCC_PAL) SetBit(avail_32bpp, zoom_lvl_map[zoom]);
+				if (colour == SpriteComponent::Palette) SetBit(avail_8bpp, zoom_lvl_map[zoom]);
+				if (colour != SpriteComponent::Palette) SetBit(avail_32bpp, zoom_lvl_map[zoom]);
 
 				is_wanted_zoom_lvl = true;
 				ZoomLevel zoom_min = sprite_type == SpriteType::Font ? ZOOM_LVL_MIN : _settings_client.gui.sprite_zoom_min;
@@ -324,16 +327,13 @@ uint8_t LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 				return 0;
 			}
 
-			/* Mask out colour information. */
-			type = type & ~SCC_MASK;
-
-			/* Convert colour depth to pixel size. */
+			/* Convert colour components to pixel size. */
 			int bpp = 0;
-			if (colour & SCC_RGB)   bpp += 3; // Has RGB data.
-			if (colour & SCC_ALPHA) bpp++;    // Has alpha data.
-			if (colour & SCC_PAL)   bpp++;    // Has palette data.
+			if (colour.Test(SpriteComponent::RGB)) bpp += 3;
+			if (colour.Test(SpriteComponent::Alpha)) bpp++;
+			if (colour.Test(SpriteComponent::Palette)) bpp++;
 
-			sprite[zoom_lvl].colours = (SpriteColourComponent)colour;
+			sprite[zoom_lvl].colours = colour;
 
 			/* For chunked encoding we store the decompressed size in the file,
 			 * otherwise we can calculate it from the image dimensions. */

@@ -136,7 +136,7 @@ private:
 	bool BindTextures();
 
 public:
-	OpenGLSprite(uint width, uint height, uint levels, SpriteColourComponent components);
+	OpenGLSprite(uint width, uint height, uint levels, SpriteComponents components);
 	~OpenGLSprite();
 
 	void Update(uint width, uint height, uint level, const SpriteLoader::CommonPixel *data);
