@@ -453,6 +453,12 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Options de bac-
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Options de transparence
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afficher le nom des villes
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Afficher le nom des stations
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Stations
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Aires de chargement
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Arrêts de bus
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Docks
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Aéroports
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Fantômes
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Afficher le nom des points de contrôle
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Afficher les panneaux
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Afficher les noms et les panneaux des concurrents
@@ -1019,6 +1025,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Roupie indonés
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats letton
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portugais
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hryvnia Ukrainienne
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sauvegarde automatique
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Sélectionner l'intervalle de temps entre les sauvegardes automatiques
@@ -1925,7 +1932,8 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Jamais
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Type d'économie{NBSP}: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Une économie stable entraîne des changements de production plus fréquents, mais de plus faible intensité. Une économie gelée bloque les changements de production et les fermetures d'industries. Ce paramètre peut n'avoir aucun effet si les types d'industries proviennent d'un NewGRF
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Une économie stable entraîne des changements de production plus fréquents, mais de plus faible intensité. Une économie gelée bloque les changements de production et les fermetures d'industries. Ce paramètre peut n'avoir aucun effet si les types d'industries proviennent d'un NewGRF.{}{}La production mensuelle peut encore sembler varier si l'économie est gelée, parce qu'elle est déclenchée à intervalles fixes ne correspondant pas exactement aux mois
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :Une économie stable entraîne des changements de production plus fréquents, mais de plus faible intensité. Une économie gelée bloque les changements de production et les fermetures d'industries. Ce paramètre peut n'avoir aucun effet si les types d'industries proviennent d'un NewGRF.{}{}La production par minute peut encore sembler varier si l'économie est gelée, parce qu'elle est déclenchée à intervalles fixes ne correspondant pas exactement aux minutes
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
@@ -2241,6 +2249,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Lisez-mo
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Journal des modifications
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Bugs connus
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licence
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Polices d'écriture
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manuel / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Rapporter un bug
@@ -2629,6 +2638,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :en attente du r
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :départ
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} a rejoint la partie
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} a rejoint la partie (Client n°{NBSP}{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} a rejoint {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} a rejoint les spectateurs
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} a lancé une nouvelle compagnie (n°{NBSP}{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} a quitté la partie ({2:STRING})
@@ -5311,8 +5321,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Impossib
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Impossible de vendre l'aéronef...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Impossible de vendre tous les véhicules ferroviaires...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Impossible de vendre tous les véhicules routiers...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Impossible de vendre tous les navires...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Impossible de vendre tous les aéronefs...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Impossible d'autoremplacer les véhicules ferroviaires...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Impossible d'autoremplacer les véhicules routiers...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Impossible d'autoremplacer les navires...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Impossible d'autoremplacer les aéronefs...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Trop de véhicules en jeu
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossible de modifier l'intervalle de service...
@@ -5364,7 +5382,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... l'a�
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_RAIL_STATION                                       :Il n'y a pas de gare
 STR_ERROR_NO_BUS_STATION                                        :Il n'y a pas de gare routière
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Il n'y a pas de station de camion
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Il n'y a pas d'aire de chargement
 STR_ERROR_NO_DOCK                                               :{WHITE}Il n'y a pas de quai
 STR_ERROR_NO_AIRPORT                                            :{WHITE}Il n'y a pas d'aéroport/héliport
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Il n'y a pas d'arrêts avec un type de route compatible
@@ -5832,7 +5850,7 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STR
 STR_SAVEGAME_NAME_SPECTATOR                                     :Spectateur, {1:STRING}
 
 # Viewport strings
-STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
