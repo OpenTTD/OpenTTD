@@ -90,6 +90,24 @@ std::string FormatArrayAsHex(std::span<const uint8_t> data)
 	return str;
 }
 
+/**
+ * Test if a character is (only) part of an encoded string.
+ * @param c Character to test.
+ * @returns True iff the character is an encoded string control code.
+ */
+static bool IsSccEncodedCode(char32_t c)
+{
+	switch (c) {
+		case SCC_RECORD_SEPARATOR:
+		case SCC_ENCODED:
+		case SCC_ENCODED_NUMERIC:
+		case SCC_ENCODED_STRING:
+			return true;
+
+		default:
+			return false;
+	}
+}
 
 /**
  * Copies the valid (UTF-8) characters from \c str up to \c last to the \c dst.
@@ -140,7 +158,7 @@ static void StrMakeValid(T &dst, const char *str, const char *last, StringValida
 			continue;
 		}
 
-		if ((IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) || ((settings & SVS_ALLOW_CONTROL_CODE) != 0 && c == SCC_ENCODED)) {
+		if ((IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) || ((settings & SVS_ALLOW_CONTROL_CODE) != 0 && IsSccEncodedCode(c))) {
 			/* Copy the character back. Even if dst is current the same as str
 			 * (i.e. no characters have been changed) this is quicker than
 			 * moving the pointers ahead by len */

@@ -915,17 +915,69 @@ static inline size_t SlCalcStdStringLen(const void *ptr)
  * just bail out and do not continue trying to replace the tokens.
  * @param str the string to fix.
  */
-static void FixSCCEncoded(std::string &str)
+void FixSCCEncoded(std::string &str, bool fix_code)
 {
-	for (size_t i = 0; i < str.size(); /* nothing. */) {
-		size_t len = Utf8EncodedCharLen(str[i]);
-		if (len == 0 || i + len > str.size()) break;
+	if (str.empty()) return;
+
+	/* We need to convert from old escape-style encoding to record separator encoding.
+	 * Initial `<SCC_ENCODED><STRINGID>` stays the same.
+	 *
+	 * `:<SCC_ENCODED><STRINGID>` becomes `<RS><SCC_ENCODED><STRINGID>`
+	 * `:<HEX>`                   becomes `<RS><SCC_ENCODED_NUMERIC><HEX>`
+	 * `:"<STRING>"`              becomes `<RS><SCC_ENCODED_STRING><STRING>`
+	 */
+	std::string result;
+	auto output = std::back_inserter(result);
+
+	bool is_encoded = false; // Set if we determine by the presence of SCC_ENCODED that the string is an encoded string.
+	bool in_string = false; // Set if we in a string, between double-quotes.
+	bool need_type = true; // Set if a parameter type needs to be emitted.
+
+	for (auto it = std::begin(str); it != std::end(str); /* nothing */) {
+		size_t len = Utf8EncodedCharLen(*it);
+		if (len == 0 || it + len > std::end(str)) break;
 
 		char32_t c;
-		Utf8Decode(&c, &str[i]);
-		if (c == 0xE028 || c == 0xE02A) Utf8Encode(&str[i], SCC_ENCODED);
-		i += len;
+		Utf8Decode(&c, &*it);
+		if (c == SCC_ENCODED || (fix_code && (c == 0xE028 || c == 0xE02A))) {
+			Utf8Encode(output, SCC_ENCODED);
+			need_type = false;
+			is_encoded = true;
+			it += len;
+			continue;
+		}
+
+		/* If the first character is not SCC_ENCODED then we don't have to do any conversion. */
+		if (!is_encoded) return;
+
+		if (c == '"') {
+			in_string = !in_string;
+			if (in_string && need_type) {
+				/* Started a new string parameter. */
+				Utf8Encode(output, SCC_ENCODED_STRING);
+				need_type = false;
+			}
+			it += len;
+			continue;
+		}
+
+		if (!in_string && c == ':') {
+			*output = SCC_RECORD_SEPARATOR;
+			need_type = true;
+			it += len;
+			continue;
+		}
+		if (need_type) {
+			/* Started a new numeric parameter. */
+			Utf8Encode(output, SCC_ENCODED_NUMERIC);
+			need_type = false;
+		}
+
+		Utf8Encode(output, c);
+		it += len;
 	}
+
+	str = result;
 }
 
 /**
@@ -970,7 +1022,7 @@ static void SlStdString(void *ptr, VarType conv)
 			StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK;
 			if ((conv & SLF_ALLOW_CONTROL) != 0) {
 				settings = settings | SVS_ALLOW_CONTROL_CODE;
-				if (IsSavegameVersionBefore(SLV_169)) FixSCCEncoded(*str);
+				if (IsSavegameVersionBefore(SLV_ENCODED_STRING_FORMAT)) FixSCCEncoded(*str, IsSavegameVersionBefore(SLV_169));
 			}
 			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
 				settings = settings | SVS_ALLOW_NEWLINE;

@@ -954,6 +954,79 @@ uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type)
 }
 
 /**
+ * Decodes an encoded string during FormatString.
+ * @param str The buffer of the encoded string.
+ * @param builder The string builder to write the string to.
+ * @returns Updated position position in input buffer.
+ */
+static const char *DecodeEncodedString(const char *str, StringBuilder &builder)
+{
+	ArrayStringParameters<20> sub_args;
+
+	char *p;
+	StringIndexInTab id(std::strtoul(str, &p, 16));
+	if (*p != SCC_RECORD_SEPARATOR && *p != '\0') {
+		while (*p != '\0') p++;
+		builder += "(invalid SCC_ENCODED)";
+		return p;
+	}
+	if (id >= TAB_SIZE_GAMESCRIPT) {
+		while (*p != '\0') p++;
+		builder += "(invalid StringID)";
+		return p;
+	}
+
+	int i = 0;
+	while (*p != '\0' && i < 20) {
+		/* The start of parameter. */
+		const char *s = ++p;
+
+		/* Find end of the parameter. */
+		for (; *p != '\0' && *p != SCC_RECORD_SEPARATOR; ++p) {}
+
+		/* Get the parameter type. */
+		char32_t parameter_type;
+		size_t len = Utf8Decode(&parameter_type, s);
+		s += len;
+
+		switch (parameter_type) {
+			case SCC_ENCODED: {
+				uint64_t param = std::strtoull(s, &p, 16);
+				if (param >= TAB_SIZE_GAMESCRIPT) {
+					while (*p != '\0') p++;
+					builder += "(invalid sub-StringID)";
+					return p;
+				}
+				param = MakeStringID(TEXT_TAB_GAMESCRIPT_START, StringIndexInTab(param));
+				sub_args.SetParam(i++, param);
+				break;
+			}
+
+			case SCC_ENCODED_NUMERIC: {
+				uint64_t param = std::strtoull(s, &p, 16);
+				sub_args.SetParam(i++, param);
+				break;
+			}
+
+			case SCC_ENCODED_STRING: {
+				sub_args.SetParam(i++, std::string(s, p - s));
+				break;
+			}
+
+			default:
+				/* Skip unknown parameter. */
+				i++;
+				break;
+		}
+	}
+
+	StringID stringid = MakeStringID(TEXT_TAB_GAMESCRIPT_START, id);
+	GetStringWithArgs(builder, stringid, sub_args, true);
+
+	return p;
+}
+
+/**
  * Parse most format codes within a string and write the result to a buffer.
  * @param builder The string builder to write the final string to.
  * @param str_arg The original string with format codes.
@@ -1018,87 +1091,9 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 			args.SetTypeOfNextParameter(b);
 			switch (b) {
-				case SCC_ENCODED: {
-					ArrayStringParameters<20> sub_args;
-
-					char *p;
-					StringIndexInTab stringid(std::strtoul(str, &p, 16));
-					if (*p != ':' && *p != '\0') {
-						while (*p != '\0') p++;
-						str = p;
-						builder += "(invalid SCC_ENCODED)";
-						break;
-					}
-					if (stringid >= TAB_SIZE_GAMESCRIPT) {
-						while (*p != '\0') p++;
-						str = p;
-						builder += "(invalid StringID)";
-						break;
-					}
-
-					int i = 0;
-					while (*p != '\0' && i < 20) {
-						uint64_t param;
-						const char *s = ++p;
-
-						/* Find the next value */
-						bool instring = false;
-						bool escape = false;
-						for (;; p++) {
-							if (*p == '\\') {
-								escape = true;
-								continue;
-							}
-							if (*p == '"' && escape) {
-								escape = false;
-								continue;
-							}
-							escape = false;
-
-							if (*p == '"') {
-								instring = !instring;
-								continue;
-							}
-							if (instring) {
-								continue;
-							}
-
-							if (*p == ':') break;
-							if (*p == '\0') break;
-						}
-
-						if (*s != '"') {
-							/* Check if we want to look up another string */
-							char32_t l;
-							size_t len = Utf8Decode(&l, s);
-							bool lookup = (l == SCC_ENCODED);
-							if (lookup) s += len;
-
-							param = std::strtoull(s, &p, 16);
-
-							if (lookup) {
-								if (param >= TAB_SIZE_GAMESCRIPT) {
-									while (*p != '\0') p++;
-									str = p;
-									builder += "(invalid sub-StringID)";
-									break;
-								}
-								param = MakeStringID(TEXT_TAB_GAMESCRIPT_START, StringIndexInTab(param));
-							}
-
-							sub_args.SetParam(i++, param);
-						} else {
-							s++; // skip the leading \"
-							sub_args.SetParam(i++, std::string(s, p - s - 1)); // also skip the trailing \".
-						}
-					}
-					/* If we didn't error out, we can actually print the string. */
-					if (*str != '\0') {
-						str = p;
-						GetStringWithArgs(builder, MakeStringID(TEXT_TAB_GAMESCRIPT_START, stringid), sub_args, true);
-					}
+				case SCC_ENCODED:
+					str = DecodeEncodedString(str, builder);
 					break;
-				}
 
 				case SCC_NEWGRF_STRINL: {
 					StringID substr = Utf8Consume(&str);
