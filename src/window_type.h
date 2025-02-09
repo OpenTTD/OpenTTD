@@ -763,6 +763,9 @@ public:
 	/* Automatically convert to any other type that might be requested. */
 	template <typename T> requires (std::is_enum_v<T> || std::is_class_v<T>)
 	operator T() const { return static_cast<T>(value); };
+
+	constexpr bool operator==(const std::integral auto &rhs) const { return this->value == static_cast<int32_t>(rhs); }
+	constexpr bool operator==(const ConvertibleThroughBase auto &rhs) const { return this->value == static_cast<int32_t>(rhs.base()); }
 };
 
 /** State of handling an event. */
