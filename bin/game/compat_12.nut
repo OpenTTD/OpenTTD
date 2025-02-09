@@ -5,9 +5,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-GSLog.Info("12 API compatibility in effect.");
+/* This file contains code to downgrade the API from 13 to 12. */
 
-/* 13 really checks RoadType against RoadType */
 GSRoad._HasRoadType <- GSRoad.HasRoadType;
 GSRoad.HasRoadType <- function(tile, road_type)
 {
@@ -19,6 +18,3 @@ GSRoad.HasRoadType <- function(tile, road_type)
 	}
 	return false;
 }
-
-/* 15 renames GetBridgeID */
-GSBridge.GetBridgeID <- GSBridge.GetBridgeType;
