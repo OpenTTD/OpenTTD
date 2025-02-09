@@ -156,7 +156,7 @@ the array so you can quickly see what is used and what is not.
       <td class="caption">finished house</td>
       <td class="bits" rowspan=2><span class="used" title="House random bits">XXXX XXXX</span></td>
       <td class="bits" rowspan=2><span class="pool" title="Town index on pool">XXXX XXXX XXXX XXXX</span></td>
-      <td class="bits"><span class="used" title="House is complete/in construction (see m5)">1</span><span class="free">OO</span><span class="usable" title="Activated triggers (bits 2..4 don't have a meaning)">X XX</span><span class="used" title="Activated triggers (bits 2..4 don't have a meaning)">XX</span></td>
+      <td class="bits"><span class="used" title="House is complete/in construction (see m5)">1</span><span class="free">O</span><span class="used" title="The house is protected from the town upgrading it.">X</span><span class="usable" title="Activated triggers (bits 2..4 don't have a meaning)">X XX</span><span class="used" title="Activated triggers (bits 2..4 don't have a meaning)">XX</span></td>
       <td class="bits" rowspan=2><span class="free">OOOO OOOO</span></td>
       <td class="bits"><span class="used" title="Age in years, clamped at 255">XXXX XXXX</span></td>
       <td class="bits" rowspan=2><span class="abuse" title="Newhouses activated: periodic processing time remaining; if not, lift position for houses 04 and 05">XXXX XX</span><span class="used" title="Animated tile state">XX</span></td>
@@ -165,7 +165,7 @@ the array so you can quickly see what is used and what is not.
     </tr>
     <tr>
       <td class="caption">house under construction</td>
-      <td class="bits"><span class="used" title="House is complete/in construction (see m5)">O</span><span class="used" title="House type (m4 + m3[6])">X</span><span class="free">O</span><span class="usable" title="Activated triggers (bits 2..4 don't have a meaning)">X XX</span><span class="used" title="Activated triggers (bits 2..4 don't have a meaning)">XX</span></td>
+      <td class="bits"><span class="used" title="House is complete/in construction (see m5)">O</span><span class="used" title="House type (m4 + m3[6])">X</span><span class="used" title="The house is protected from the town upgrading it.">X</span><span class="usable" title="Activated triggers (bits 2..4 don't have a meaning)">X XX</span><span class="used" title="Activated triggers (bits 2..4 don't have a meaning)">XX</span></td>
       <td class="bits"><span class="free">OOO</span><span class="used" title="Construction stage">X X</span><span class="used" title="Construction counter">XXX</span></td>
     </tr>
     <tr>

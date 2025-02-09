@@ -1548,6 +1548,16 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_PROTECT_PLACED_HOUSES)) {
+		for (auto t : Map::Iterate()) {
+			if (IsTileType(t, MP_HOUSE)) {
+				/* We now store house protection status in the map. Set this based on the house spec flags. */
+				const HouseSpec *hs = HouseSpec::Get(GetHouseType(t));
+				SetHouseProtected(t, hs->extra_flags.Test(HouseExtraFlag::BuildingIsProtected));
+			}
+		}
+	}
+
 	/* Check and update house and town values */
 	UpdateHousesAndTowns();
 

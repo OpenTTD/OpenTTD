@@ -72,6 +72,8 @@ enum TownFoundingWidgets : WidgetID {
 /** Widgets of the #BuildHouseWindow class. */
 enum BuildHouseWidgets : WidgetID {
 	WID_BH_INFO, ///< Information panel of selected house.
+	WID_BH_PROTECT_OFF, ///< Button to protect the next house built.
+	WID_BH_PROTECT_ON, ///< Button to not protect the next house built.
 };
 
 #endif /* WIDGETS_TOWN_WIDGET_H */

@@ -168,6 +168,7 @@ public:
 		td.road_speed = 0;
 		td.tramtype = STR_NULL;
 		td.tram_speed = 0;
+		td.town_can_upgrade = std::nullopt;
 
 		td.grf = nullptr;
 
@@ -298,6 +299,11 @@ public:
 		if (td.tram_speed != 0) {
 			SetDParam(0, PackVelocity(td.tram_speed, VEH_ROAD));
 			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT));
+		}
+
+		/* Tile protection status */
+		if (td.town_can_upgrade.has_value()) {
+			this->landinfo_data.push_back(GetString(td.town_can_upgrade.value() ? STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE : STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE));
 		}
 
 		/* NewGRF name */

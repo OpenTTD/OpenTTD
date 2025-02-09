@@ -67,6 +67,7 @@ struct TileDesc {
 	uint16_t road_speed;          ///< Speed limit of road (bridges and track)
 	StringID tramtype;          ///< Type of tram on the tile.
 	uint16_t tram_speed;          ///< Speed limit of tram (bridges and track)
+	std::optional<bool> town_can_upgrade; ///< Whether the town can upgrade this house during town growth.
 };
 
 /**

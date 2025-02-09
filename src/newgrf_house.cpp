@@ -622,7 +622,7 @@ bool CanDeleteHouse(TileIndex tile)
 		uint16_t callback_res = GetHouseCallback(CBID_HOUSE_DENY_DESTRUCTION, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		return (callback_res == CALLBACK_FAILED || !ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DENY_DESTRUCTION, callback_res));
 	} else {
-		return !hs->extra_flags.Test(HouseExtraFlag::BuildingIsProtected);
+		return !IsHouseProtected(tile);
 	}
 }
 
