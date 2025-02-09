@@ -1300,7 +1300,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, B
 
 			case 0x28: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = CargoClasses{buf.ReadWord()};
-				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != CargoClasses{});
+				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed.Any());
 				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 
@@ -1497,7 +1497,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 
 			case 0x1D: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = CargoClasses{buf.ReadWord()};
-				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != CargoClasses{});
+				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed.Any());
 				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 
@@ -1690,7 +1690,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 
 			case 0x18: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = CargoClasses{buf.ReadWord()};
-				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != CargoClasses{});
+				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed.Any());
 				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 
@@ -1879,7 +1879,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 
 			case 0x18: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = CargoClasses{buf.ReadWord()};
-				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != CargoClasses{});
+				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed.Any());
 				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 
@@ -9123,7 +9123,7 @@ static void CalculateRefitMasks()
 					_gted[engine].ctt_exclude_mask = original_known_cargoes;
 				}
 			}
-			_gted[engine].UpdateRefittability(_gted[engine].cargo_allowed != CargoClasses{});
+			_gted[engine].UpdateRefittability(_gted[engine].cargo_allowed.Any());
 
 			if (IsValidCargoType(ei->cargo_type)) ClrBit(_gted[engine].ctt_exclude_mask, ei->cargo_type);
 		}
@@ -9138,7 +9138,7 @@ static void CalculateRefitMasks()
 			 * Note: After applying the translations, the vehicle may end up carrying no defined cargo. It becomes unavailable in that case. */
 			only_defaultcargo = _gted[engine].refittability != GRFTempEngineData::NONEMPTY;
 
-			if (_gted[engine].cargo_allowed != CargoClasses{}) {
+			if (_gted[engine].cargo_allowed.Any()) {
 				/* Build up the list of cargo types from the set cargo classes. */
 				for (const CargoSpec *cs : CargoSpec::Iterate()) {
 					if (cs->classes.Any(_gted[engine].cargo_allowed) && cs->classes.All(_gted[engine].cargo_allowed_required)) SetBit(mask, cs->Index());

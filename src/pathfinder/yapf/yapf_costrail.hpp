@@ -546,7 +546,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			}
 
 			/* Any other reason bit set? */
-			if (end_segment_reason != EndSegmentReasons{}) {
+			if (end_segment_reason.Any()) {
 				break;
 			}
 

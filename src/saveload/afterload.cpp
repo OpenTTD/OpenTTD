@@ -3202,7 +3202,7 @@ bool AfterLoadGame()
 			if (c->settings.renew_keep_length) wagon_removal.Set(c->index);
 		}
 		for (Group *g : Group::Iterate()) {
-			if (g->flags != GroupFlags{}) {
+			if (g->flags.Any()) {
 				/* Convert old replace_protection value to flag. */
 				g->flags = GroupFlag::ReplaceProtection;
 			}
