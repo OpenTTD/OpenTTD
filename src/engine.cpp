@@ -744,7 +744,7 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 		int intro_months = intro_ymd.year.base() * 12 + intro_ymd.month;
 		if (intro_ymd.day > 1) intro_months++; // Engines are introduced at the first month start at/after intro date.
 		e->age = aging_months - intro_months;
-		e->company_avail = std::numeric_limits<CompanyMask>::max();
+		e->company_avail.Set();
 		e->flags.Set(EngineFlag::Available);
 	}
 
@@ -885,7 +885,7 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company, int recursion_d
 	Engine *e = Engine::Get(eid);
 
 	e->preview_company = INVALID_COMPANY;
-	e->preview_asked = std::numeric_limits<CompanyMask>::max();
+	e->preview_asked.Set();
 
 	EnableEngineForCompany(eid, company);
 
@@ -980,7 +980,7 @@ static IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalend
 				e->preview_company = GetPreviewCompany(e);
 
 				if (e->preview_company == INVALID_COMPANY) {
-					e->preview_asked = std::numeric_limits<CompanyMask>::max();
+					e->preview_asked.Set();
 					continue;
 				}
 
@@ -1109,7 +1109,7 @@ static void NewVehicleAvailable(Engine *e)
 	AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 
 	/* Now available for all companies */
-	e->company_avail = std::numeric_limits<CompanyMask>::max();
+	e->company_avail.Set();
 
 	/* Do not introduce new rail wagons */
 	if (IsWagon(index)) return;

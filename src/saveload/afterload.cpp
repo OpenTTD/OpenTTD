@@ -2051,15 +2051,15 @@ bool AfterLoadGame()
 
 		/* More companies ... */
 		for (Company *c : Company::Iterate()) {
-			if (c->bankrupt_asked.base() == 0xFF) c->bankrupt_asked = std::numeric_limits<CompanyMask>::max();
+			if (c->bankrupt_asked.base() == 0xFF) c->bankrupt_asked.Set();
 		}
 
 		for (Engine *e : Engine::Iterate()) {
-			if (e->company_avail.base() == 0xFF) e->company_avail = std::numeric_limits<CompanyMask>::max();
+			if (e->company_avail.base() == 0xFF) e->company_avail.Set();
 		}
 
 		for (Town *t : Town::Iterate()) {
-			if (t->have_ratings.base() == 0xFF) t->have_ratings = std::numeric_limits<CompanyMask>::max();
+			if (t->have_ratings.base() == 0xFF) t->have_ratings.Set();
 			for (uint i = 8; i != MAX_COMPANIES; i++) t->ratings[i] = RATING_INITIAL;
 		}
 	}
