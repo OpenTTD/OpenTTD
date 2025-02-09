@@ -7,6 +7,7 @@
 
 /** @file tree_cmd.cpp Handling of tree tiles. */
 
+#include "core/geometry_type.hpp"
 #include "stdafx.h"
 #include "clear_map.h"
 #include "landscape.h"
@@ -31,9 +32,6 @@
 #include "table/clear_land.h"
 
 #include "safeguards.h"
-#include <cassert>
-#include <cstdint>
-#include <vector>
 
 /**
  * List of tree placer algorithm.
@@ -191,19 +189,6 @@ struct BlobHarmonic
 	int frequency;
 };
 
-struct BlobPosition
-{
-	int x;
-	int y;
-};
-
-BlobPosition operator-(BlobPosition lhs, BlobPosition rhs)
-{
-	int x = lhs.x - rhs.x;
-	int y = lhs.y - rhs.y;
-	return {x, y};
-}
-
 /**
  * Creates a star-shaped[sic] polygon originating from (0, 0) as defined by the given harmonics.
  *
@@ -211,9 +196,9 @@ BlobPosition operator-(BlobPosition lhs, BlobPosition rhs)
  * @param harmonics a std::vector of the harmonics data.
  * @param noOfSegments How many segments make up the polygon.
  */
-std::vector<BlobPosition> createStarShapedPolygon(const int radius, std::vector<BlobHarmonic> harmonics, const int noOfSegments)
+std::vector<Point> CreateStarShapedPolygon(const int radius, std::vector<BlobHarmonic> harmonics, const int noOfSegments)
 {
-	std::vector<BlobPosition> result;
+	std::vector<Point> result;
 
 	float theta = 0;
 	auto step = (M_PI * 2) / noOfSegments; //tau best circle constant
@@ -231,7 +216,7 @@ std::vector<BlobPosition> createStarShapedPolygon(const int radius, std::vector<
 		auto adjustedRadius = (radius / 2.0) + (deviation / 2);
 
 		// add to the final polygon
-		BlobPosition vertex;
+		Point vertex;
 		vertex.x = cos(theta) * adjustedRadius;
 		vertex.y = sin(theta) * adjustedRadius;
 		result.push_back(vertex);
@@ -249,18 +234,18 @@ std::vector<BlobPosition> createStarShapedPolygon(const int radius, std::vector<
  * @param radius The maximum radius of the blob. May be smaller, but will not be larger.
  * @param noOfSegments How many segments make up the blob.
  */
-std::vector<BlobPosition> createRandomStarShapedPolygon(const int radius, const int noOfSegments)
+std::vector<Point> CreateRandomStarShapedPolygon(const int radius, const int noOfSegments)
 {
 	std::vector<BlobHarmonic> harmonics;
 
-	// these values are ones i found in my testing that result in suitable- looking polygons that did not self-intersect and fit within a square of radius * radius dimensions.
+	// these values are ones i found in my testing that result in suitable-looking polygons that did not self-intersect and fit within a square of radius * radius dimensions.
 
 	harmonics.push_back(BlobHarmonic(radius / 2, Random() / PHASE_DIVISOR, 1));
 	harmonics.push_back(BlobHarmonic(radius / 4, Random() / PHASE_DIVISOR, 2));
 	harmonics.push_back(BlobHarmonic(radius / 8, Random() / PHASE_DIVISOR, 3));
 	harmonics.push_back(BlobHarmonic(radius / 16, Random() / PHASE_DIVISOR, 4));
 
-	return createStarShapedPolygon(radius, harmonics, noOfSegments);
+	return CreateStarShapedPolygon(radius, harmonics, noOfSegments);
 }
 
 /**
@@ -268,15 +253,12 @@ std::vector<BlobPosition> createRandomStarShapedPolygon(const int radius, const 
  *
  * @param x x.
  * @param y y.
- * @param triangle the triangle to check against, a std::vector of three BlobPositions.
+ * @param vertex0
+ * @param vertex1
+ * @param vertex2 the triangle to check against.
  */
-bool pointInTriangle(const int x, const int y, std::vector<BlobPosition> triangle)
+bool IsPointInTriangle(const int x, const int y, Point vertex0, Point vertex1, Point vertex2)
 {
-	assert(triangle.size() == 3);
-	const auto vertex0 = triangle.at(0);
-	const auto vertex1 = triangle.at(1);
-	const auto vertex2 = triangle.at(2);
-
 	const int s = ((vertex0.x - vertex2.x) * (y - vertex2.y)) - ((vertex0.y - vertex2.y) * (x - vertex2.x));
 	const int t = ((vertex1.x - vertex0.x) * (y - vertex0.y)) - ((vertex1.y - vertex0.y) * (x - vertex0.x));
 
@@ -297,18 +279,13 @@ bool pointInTriangle(const int x, const int y, std::vector<BlobPosition> triangl
  *
  * @param x x.
  * @param y y.
- * @param polygon the polygon to check against, a std::vector of multiple BlobPositions.
+ * @param polygon the polygon to check against, a std::vector of multiple Points.
  */
-bool pointInStarShapedPolygon(int x, int y, std::vector<BlobPosition> polygon)
+bool IsPointInStarShapedPolygon(int x, int y, std::vector<Point> polygon)
 {
 	for(int i = 0; i < polygon.size(); ++i)
 	{
-		std::vector<BlobPosition> triangle;
-		triangle.push_back(polygon.at(i));
-		triangle.push_back(polygon.at((i + 1) % polygon.size()));
-		triangle.push_back({0, 0});
-
-		if (pointInTriangle(x, y, triangle))
+		if (IsPointInTriangle(x, y, polygon.at(i), polygon.at((i + 1) % polygon.size()), {0, 0}))
 		{
 			return true;
 		}
@@ -328,7 +305,7 @@ static void PlaceTreeGroups(uint num_groups)
 	do {
 		TileIndex center_tile = RandomTile();
 
-		std::vector<BlobPosition> grove = createRandomStarShapedPolygon(GROVE_RADIUS, GROVE_RESOLUTION);
+		std::vector<Point> grove = CreateRandomStarShapedPolygon(GROVE_RADIUS, GROVE_RESOLUTION);
 
 		for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
 			IncreaseGeneratingWorldProgress(GWP_TREE);
@@ -339,7 +316,7 @@ static void PlaceTreeGroups(uint num_groups)
 			TileIndex cur_tile = TileAddWrap(center_tile, x, y);
 
 			if (cur_tile != INVALID_TILE && CanPlantTreesOnTile(cur_tile, true)) {
-				if(pointInStarShapedPolygon(x, y, grove)) {
+				if(IsPointInStarShapedPolygon(x, y, grove)) {
 					PlaceTree(cur_tile, r);
 				}
 			}
