@@ -110,6 +110,12 @@ debug_inline constexpr void ToggleFlag(T &x, const T y)
 	}
 }
 
+/** Helper template structure to get the mask for an EnumBitSet from the end enum value. */
+template <typename Tstorage, typename Tenum, Tenum Tend_value>
+struct EnumBitSetMask {
+	static constexpr Tstorage value = std::numeric_limits<Tstorage>::max() >> (std::numeric_limits<Tstorage>::digits - to_underlying(Tend_value));
+};
+
 /**
  * Enum-as-bit-set wrapper.
  * Allows wrapping enum values as a bit set. Methods are loosely modelled on std::bitset.
@@ -119,15 +125,14 @@ debug_inline constexpr void ToggleFlag(T &x, const T y)
  * @tparam Tend_value Last valid value + 1.
  */
 template <typename Tenum, typename Tstorage, Tenum Tend_value = Tenum{std::numeric_limits<Tstorage>::digits}>
-class EnumBitSet : public BaseBitSet<EnumBitSet<Tenum, Tstorage, Tend_value>, Tenum, Tstorage> {
-	using BaseClass = BaseBitSet<EnumBitSet<Tenum, Tstorage, Tend_value>, Tenum, Tstorage>;
+class EnumBitSet : public BaseBitSet<EnumBitSet<Tenum, Tstorage, Tend_value>, Tenum, Tstorage, EnumBitSetMask<Tstorage, Tenum, Tend_value>::value> {
+	using BaseClass = BaseBitSet<EnumBitSet<Tenum, Tstorage, Tend_value>, Tenum, Tstorage, EnumBitSetMask<Tstorage, Tenum, Tend_value>::value>;
 public:
 	using EnumType = BaseClass::ValueType;
-	static constexpr Tstorage MASK = std::numeric_limits<Tstorage>::max() >> (std::numeric_limits<Tstorage>::digits - to_underlying(Tend_value)); ///< Mask of valid values.
 
 	constexpr EnumBitSet() : BaseClass() {}
 	constexpr EnumBitSet(Tenum value) : BaseClass() { this->Set(value); }
-	explicit constexpr EnumBitSet(Tstorage data) : BaseClass(data & MASK) {}
+	explicit constexpr EnumBitSet(Tstorage data) : BaseClass(data) {}
 
 	/**
 	 * Construct an EnumBitSet from a list of enum values.
@@ -141,15 +146,6 @@ public:
 	}
 
 	constexpr auto operator <=>(const EnumBitSet &) const noexcept = default;
-
-	/**
-	 * Test that the raw value of this EnumBitSet is valid.
-	 * @returns true iff the no bits outside the masked value are set.
-	 */
-	inline constexpr bool IsValid() const
-	{
-		return (this->base() & MASK) == this->base();
-	}
 
 	static constexpr size_t DecayValueType(const BaseClass::ValueType &value) { return to_underlying(value); }
 };

@@ -19,16 +19,27 @@
  * @tparam Tvalue_type Type of values to wrap.
  * @tparam Tstorage Storage type required to hold values.
  */
-template <typename Timpl, typename Tvalue_type, typename Tstorage>
+template <typename Timpl, typename Tvalue_type, typename Tstorage, Tstorage Tmask = std::numeric_limits<Tstorage>::max()>
 class BaseBitSet {
 public:
 	using ValueType = Tvalue_type; ///< Value type of this BaseBitSet.
 	using BaseType = Tstorage; ///< Storage type of this BaseBitSet, be ConvertibleThroughBase
+	static constexpr Tstorage MASK = Tmask; ///< Mask of valid values.
 
 	constexpr BaseBitSet() : data(0) {}
-	explicit constexpr BaseBitSet(Tstorage data) : data(data) {}
+	explicit constexpr BaseBitSet(Tstorage data) : data(data & Tmask) {}
 
 	constexpr auto operator <=>(const BaseBitSet &) const noexcept = default;
+
+	/**
+	 * Set all bits.
+	 * @returns The bit set
+	 */
+	inline constexpr Timpl &Set()
+	{
+		this->data = Tmask;
+		return static_cast<Timpl&>(*this);
+	}
 
 	/**
 	 * Set the value-th bit.
@@ -98,6 +109,15 @@ public:
 	}
 
 	/**
+	 * Test if all of the values are set.
+	 * @returns true iff all of the values are set.
+	 */
+	inline constexpr bool All() const
+	{
+		return this->data == Tmask;
+	}
+
+	/**
 	 * Test if any of the given values are set.
 	 * @param other BitSet of values to test.
 	 * @returns true iff any of the given values are set.
@@ -142,6 +162,15 @@ public:
 	inline constexpr Tstorage base() const noexcept
 	{
 		return this->data;
+	}
+
+	/**
+	 * Test that the raw value of this bit set is valid.
+	 * @returns true iff the no bits outside the masked value are set.
+	 */
+	inline constexpr bool IsValid() const
+	{
+		return (this->base() & Tmask) == this->base();
 	}
 
 private:
