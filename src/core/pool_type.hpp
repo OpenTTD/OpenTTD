@@ -61,6 +61,8 @@ struct EMPTY_BASES PoolID : PoolIDBase {
 
 	constexpr auto operator++() { ++this->value; return this; }
 	constexpr auto operator+(const std::integral auto &val) const { return this->value + val; }
+	constexpr auto operator-(const std::integral auto &val) const { return this->value - val; }
+	constexpr auto operator%(const std::integral auto &val) const { return this->value % val; }
 
 	constexpr bool operator==(const PoolID<TBaseType, TTag, TEnd, TInvalid> &rhs) const { return this->value == rhs.value; }
 	constexpr auto operator<=>(const PoolID<TBaseType, TTag, TEnd, TInvalid> &rhs) const { return this->value <=> rhs.value; }
@@ -71,6 +73,11 @@ private:
 	/* Do not explicitly initialize. */
 	TBaseType value;
 };
+
+template <typename T> requires std::is_base_of_v<PoolIDBase, T>
+constexpr auto operator+(const std::integral auto &val, const T &pool_id) { return pool_id + val; }
+template <typename Te, typename Tp> requires std::is_enum_v<Te> && std::is_base_of_v<PoolIDBase, Tp>
+constexpr auto operator+(const Te &val, const Tp &pool_id) { return pool_id + to_underlying(val); }
 
 /** Base class for base of all pools. */
 struct PoolBase {

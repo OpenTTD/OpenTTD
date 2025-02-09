@@ -73,6 +73,8 @@ static inline uint GetInspectWindowNumber(GrfSpecFeature feature, uint index)
 	return (feature << 24) | index;
 }
 
+static inline uint GetInspectWindowNumber(GrfSpecFeature feature, ConvertibleThroughBase auto index) { return GetInspectWindowNumber(feature, index.base()); }
+
 /**
  * The type of a property to show. This is used to
  * provide an appropriate representation in the GUI.
@@ -225,6 +227,11 @@ protected:
 		SetDParam(1, string);
 		SetDParam(2, index);
 		SetDParam(3, tile);
+	}
+
+	void SetObjectAtStringParameters(StringID string, ConvertibleThroughBase auto index, TileIndex tile) const
+	{
+		this->SetObjectAtStringParameters(string, index.base(), tile);
 	}
 };
 

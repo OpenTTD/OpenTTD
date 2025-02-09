@@ -15,6 +15,7 @@
 #include "os_abstraction.h"
 #include "config.h"
 #include "core.h"
+#include "../../core/convertible_through_base.hpp"
 #include "../../string_type.h"
 
 typedef uint16_t PacketSize; ///< Size of the whole packet.
@@ -63,6 +64,7 @@ public:
 	bool   CanWriteToPacket(size_t bytes_to_write);
 	void   Send_bool  (bool   data);
 	void   Send_uint8 (uint8_t  data);
+	void   Send_uint8 (const ConvertibleThroughBase auto &data) { this->Send_uint8(data.base()); }
 	void   Send_uint16(uint16_t data);
 	void   Send_uint32(uint32_t data);
 	void   Send_uint64(uint64_t data);
