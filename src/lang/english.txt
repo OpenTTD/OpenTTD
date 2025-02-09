@@ -2199,7 +2199,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Highscor
 STR_INTRO_HELP                                                  :{BLACK}Help & Manuals
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Settings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Settings
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Content
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online Content
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI Settings
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Game Script Settings
 STR_INTRO_QUIT                                                  :{BLACK}Exit
@@ -2653,7 +2653,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Your ser
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Other players won't be able to connect to your server
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Content downloading
+STR_CONTENT_TITLE                                               :{WHITE}Online Content
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Type of the content
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Name
