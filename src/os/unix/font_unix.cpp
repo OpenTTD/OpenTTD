@@ -15,7 +15,7 @@
 
 #include <fontconfig/fontconfig.h>
 
-#include "safeguards.h"
+#include "../../safeguards.h"
 
 #include <ft2build.h>
 #include FT_FREETYPE_H

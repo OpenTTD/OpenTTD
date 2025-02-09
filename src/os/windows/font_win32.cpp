@@ -27,10 +27,10 @@
 
 #include <windows.h>
 #include <shlobj.h> /* SHGetFolderPath */
-#include "os/windows/win32.h"
+#include "win32.h"
 #undef small // Say what, Windows?
 
-#include "safeguards.h"
+#include "../../safeguards.h"
 
 struct EFCParam {
 	FontCacheSettings *settings;

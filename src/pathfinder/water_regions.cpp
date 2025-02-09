@@ -7,17 +7,17 @@
 
  /** @file water_regions.cpp Handles dividing the water in the map into square regions to assist pathfinding. */
 
-#include "stdafx.h"
-#include "map_func.h"
+#include "../stdafx.h"
+#include "../map_func.h"
 #include "water_regions.h"
-#include "tilearea_type.h"
-#include "track_func.h"
-#include "transport_type.h"
-#include "landscape.h"
-#include "tunnelbridge_map.h"
+#include "../tilearea_type.h"
+#include "../track_func.h"
+#include "../transport_type.h"
+#include "../landscape.h"
+#include "../tunnelbridge_map.h"
 #include "follow_track.hpp"
-#include "ship.h"
-#include "debug.h"
+#include "../ship.h"
+#include "../debug.h"
 
 using TWaterRegionTraversabilityBits = uint16_t;
 constexpr TWaterRegionPatchLabel FIRST_REGION_LABEL = 1;

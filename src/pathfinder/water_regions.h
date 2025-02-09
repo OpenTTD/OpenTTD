@@ -10,8 +10,8 @@
 #ifndef WATER_REGIONS_H
 #define WATER_REGIONS_H
 
-#include "tile_type.h"
-#include "map_func.h"
+#include "../tile_type.h"
+#include "../map_func.h"
 
 using TWaterRegionPatchLabel = uint8_t;
 using TWaterRegionIndex = uint;
