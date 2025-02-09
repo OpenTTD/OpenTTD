@@ -261,11 +261,11 @@ protected:
 
 	/**
 	 * Load squirrel scripts to emulate an older API.
-	 * @param api_version: API version to load scripts for
-	 * @param dir Subdirectory to find the scripts in
-	 * @return true iff script loading should proceed
+	 * @param dir Subdirectory to find the scripts in.
+	 * @param api_versions List of available versions of the script type.
+	 * @return true iff script loading should proceed.
 	 */
-	bool LoadCompatibilityScripts(const std::string &api_version, Subdirectory dir);
+	bool LoadCompatibilityScripts(Subdirectory dir, std::span<const std::string_view> api_versions);
 
 	/**
 	 * Tell the script it died.
@@ -301,6 +301,14 @@ private:
 	 *  from a savegame.
 	 */
 	bool CallLoad();
+
+	/**
+	 * Load squirrel script for a specific version to emulate an older API.
+	 * @param api_version: API version to load scripts for.
+	 * @param dir Subdirectory to find the scripts in.
+	 * @return true iff script loading should proceed.
+	 */
+	bool LoadCompatibilityScript(std::string_view api_version, Subdirectory dir);
 
 	/**
 	 * Save one object (int / string / array / table) to the savegame.

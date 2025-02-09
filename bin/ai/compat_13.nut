@@ -5,7 +5,4 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-AILog.Info("13 API compatibility in effect.");
-
-/* 15 renames GetBridgeID */
-AIBridge.GetBridgeID <- AIBridge.GetBridgeType;
+/* This file contains code to downgrade the API from 14 to 13. */
