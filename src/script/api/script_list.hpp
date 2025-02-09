@@ -36,7 +36,7 @@ public:
 	static const bool SORT_DESCENDING = false;
 
 private:
-	ScriptListSorter *sorter;     ///< Sorting algorithm
+	std::unique_ptr<ScriptListSorter> sorter; ///< Sorting algorithm
 	SorterType sorter_type;       ///< Sorting type
 	bool sort_ascending;          ///< Whether to sort ascending or descending
 	bool initialized;             ///< Whether an iteration has been started
