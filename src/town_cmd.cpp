@@ -2731,8 +2731,9 @@ static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, int maxz, bool nosl
  * @param hs The @a HouseSpec of the house.
  * @param house The @a HouseID of the house.
  * @param random_bits The random data to be associated with the house.
+ * @param house_completed Should the house be placed already complete, instead of under construction?
  */
-static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID house, uint8_t random_bits)
+static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID house, uint8_t random_bits, bool house_completed)
 {
 	/* build the house */
 	t->cache.num_houses++;
@@ -2740,7 +2741,7 @@ static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID
 	uint8_t construction_counter = 0;
 	uint8_t construction_stage = 0;
 
-	if (_generating_world || _game_mode == GM_EDITOR) {
+	if (_generating_world || _game_mode == GM_EDITOR || house_completed) {
 		uint32_t construction_random = Random();
 
 		construction_stage = TOWN_HOUSE_COMPLETED;
@@ -2879,7 +2880,7 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 		/* Special houses that there can be only one of. */
 		t->flags |= oneof;
 
-		BuildTownHouse(t, tile, hs, house, random_bits);
+		BuildTownHouse(t, tile, hs, house, random_bits, false);
 
 		return true;
 	}
@@ -2889,7 +2890,8 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 
 CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house)
 {
-	if (_game_mode != GM_EDITOR) return CMD_ERROR;
+	if (_game_mode != GM_EDITOR && _settings_game.economy.place_houses == PH_FORBIDDEN) return CMD_ERROR;
+
 	if (Town::GetNumItems() == 0) return CommandCost(STR_ERROR_MUST_FOUND_TOWN_FIRST);
 
 	if (static_cast<size_t>(house) >= HouseSpec::Specs().size()) return CMD_ERROR;
@@ -2929,7 +2931,8 @@ CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house)
 	}
 
 	if (flags & DC_EXEC) {
-		BuildTownHouse(t, tile, hs, house, Random());
+		bool house_completed = _settings_game.economy.place_houses == PH_ALLOWED_CONSTRUCTED;
+		BuildTownHouse(t, tile, hs, house, Random(), house_completed);
 	}
 
 	return CommandCost();
