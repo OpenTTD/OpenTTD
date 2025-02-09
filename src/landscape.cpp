@@ -1535,7 +1535,7 @@ bool GenerateLandscape(uint8_t mode)
 {
 	/* Number of steps of landscape generation */
 	static constexpr uint GLS_HEIGHTMAP = 3; ///< Loading a heightmap
-	static constexpr uint GLS_TERRAGENESIS = 5; ///< Terragenesis generator
+	static constexpr uint GLS_TERRAGENESIS = 4; ///< Terragenesis generator
 	static constexpr uint GLS_ORIGINAL = 2; ///< Original generator
 	static constexpr uint GLS_TROPIC = 12; ///< Extra steps needed for tropic landscape
 	static constexpr uint GLS_OTHER = 0; ///< Extra steps for other landscapes
