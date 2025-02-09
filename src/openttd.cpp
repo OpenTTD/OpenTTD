@@ -770,9 +770,6 @@ int openttd_main(std::span<char * const> arguments)
 
 	VideoDriver::GetInstance()->ClaimMousePointer();
 
-	/* initialize screenshot formats */
-	InitializeScreenshotFormats();
-
 	BaseSounds::FindSets();
 	if (sounds_set.empty() && !BaseSounds::ini_set.empty()) sounds_set = BaseSounds::ini_set;
 	if (!BaseSounds::SetSetByName(sounds_set)) {
