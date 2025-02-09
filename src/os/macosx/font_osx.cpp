@@ -231,7 +231,8 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_MIN];
 	sprite.AllocateData(ZOOM_LVL_MIN, width * height);
 	sprite.type = SpriteType::Font;
-	sprite.colours = (use_aa ? SCC_PAL | SCC_ALPHA : SCC_PAL);
+	sprite.colours = SpriteComponent::Palette;
+	if (use_aa) sprite.colours.Set(SpriteComponent::Alpha);
 	sprite.width = width;
 	sprite.height = height;
 	sprite.x_offs = (int16_t)std::round(CGRectGetMinX(bounds));
