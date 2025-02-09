@@ -215,6 +215,7 @@ public:
 };
 
 CommandCost CommandCostWithParam(StringID str, uint64_t value);
+CommandCost CommandCostWithParam(StringID str, ConvertibleThroughBase auto value) { return CommandCostWithParam(str, value.base()); }
 
 /**
  * List of commands.
