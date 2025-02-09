@@ -209,7 +209,11 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, 
 			assert(t < Map::Size());
 			/* MP_VOID tiles can be terraformed but as tunnels and bridges
 			 * cannot go under / over these tiles they don't need checking. */
-			if (IsTileType(t, MP_VOID)) continue;
+			if (IsTileType(t, MP_VOID)) {
+				/* All water borders are drawn with infinite water, so don't allow terraforming off the map edge. */
+				if (_settings_game.game_creation.water_borders == BORDERFLAGS_ALL) return { CommandCost(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP), 0, t };
+				continue;
+			}
 
 			/* Find new heights of tile corners */
 			int z_N = TerraformGetHeightOfTile(&ts, t + TileDiffXY(0, 0));
