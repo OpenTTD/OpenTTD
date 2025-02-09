@@ -69,7 +69,7 @@
 #include <signal.h>
 
 #include "../safeguards.h"
-#include "window_func.h"
+#include "../window_func.h"
 
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
 

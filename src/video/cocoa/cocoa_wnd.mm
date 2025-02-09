@@ -35,7 +35,7 @@
 #include "../../textbuf_type.h"
 #include "../../toolbar_gui.h"
 
-#include "table/sprites.h"
+#include "../../table/sprites.h"
 
 /* Table data for key mapping. */
 #include "cocoa_keys.h"

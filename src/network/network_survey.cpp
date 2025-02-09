@@ -9,7 +9,7 @@
 
 #include "../stdafx.h"
 #include "network_survey.h"
-#include "settings_table.h"
+#include "../settings_table.h"
 #include "network.h"
 #include "network_func.h"
 #include "../debug.h"

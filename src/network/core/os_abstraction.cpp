@@ -16,7 +16,7 @@
  * that the behaviour is usually Unix/BSD-like with occasional variation.
  */
 
-#include "stdafx.h"
+#include "../../stdafx.h"
 #include "os_abstraction.h"
 #include "../../string_func.h"
 #include "../../3rdparty/fmt/format.h"
