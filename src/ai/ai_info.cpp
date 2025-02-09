@@ -24,7 +24,7 @@
  */
 static bool CheckAPIVersion(const std::string &api_version)
 {
-	return std::ranges::find(AIInfo::ApiVersions, api_version) != AIInfo::ApiVersions.end();
+	return std::ranges::find(AIInfo::ApiVersions, api_version) != std::end(AIInfo::ApiVersions);
 }
 
 #if defined(_WIN32)
