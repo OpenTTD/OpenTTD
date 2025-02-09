@@ -1034,10 +1034,10 @@ public:
 	 * @param company The company that is replying.
 	 * @param button The button the company pressed.
 	 */
-	ScriptEventGoalQuestionAnswer(uint16_t uniqueid, ScriptCompany::CompanyID company, ScriptGoal::QuestionButton button) :
+	ScriptEventGoalQuestionAnswer(uint16_t uniqueid, ::CompanyID company, ScriptGoal::QuestionButton button) :
 		ScriptEvent(ET_GOAL_QUESTION_ANSWER),
 		uniqueid(uniqueid),
-		company(company),
+		company(ScriptCompany::ToScriptCompanyID(company)),
 		button(button)
 	{}
 #endif /* DOXYGEN_API */
@@ -1085,9 +1085,9 @@ public:
 	 * @param company The company.
 	 * @param town The town.
 	 */
-	ScriptEventCompanyTown(ScriptEventType event, ScriptCompany::CompanyID company, TownID town) :
+	ScriptEventCompanyTown(ScriptEventType event, ::CompanyID company, TownID town) :
 		ScriptEvent(event),
-		company(company),
+		company(ScriptCompany::ToScriptCompanyID(company)),
 		town(town)
 	{}
 #endif /* DOXYGEN_API */
@@ -1128,7 +1128,7 @@ public:
 	 * @param company The company.
 	 * @param town The town.
 	 */
-	ScriptEventExclusiveTransportRights(ScriptCompany::CompanyID company, TownID town) :
+	ScriptEventExclusiveTransportRights(::CompanyID company, TownID town) :
 		ScriptEventCompanyTown(ET_EXCLUSIVE_TRANSPORT_RIGHTS, company, town)
 	{}
 #endif /* DOXYGEN_API */
@@ -1153,7 +1153,7 @@ public:
 	 * @param company The company.
 	 * @param town The town.
 	 */
-	ScriptEventRoadReconstruction(ScriptCompany::CompanyID company, TownID town) :
+	ScriptEventRoadReconstruction(::CompanyID company, TownID town) :
 		ScriptEventCompanyTown(ET_ROAD_RECONSTRUCTION, company, town)
 	{}
 #endif /* DOXYGEN_API */
