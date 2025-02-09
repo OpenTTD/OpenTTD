@@ -3197,16 +3197,16 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_GROUP_REPLACE_WAGON_REMOVAL)) {
 		/* Propagate wagon removal flag for compatibility */
 		/* Temporary bitmask of company wagon removal setting */
-		uint16_t wagon_removal = 0;
+		CompanyMask wagon_removal{};
 		for (const Company *c : Company::Iterate()) {
-			if (c->settings.renew_keep_length) SetBit(wagon_removal, c->index);
+			if (c->settings.renew_keep_length) wagon_removal.Set(c->index);
 		}
 		for (Group *g : Group::Iterate()) {
 			if (g->flags != GroupFlags{}) {
 				/* Convert old replace_protection value to flag. */
 				g->flags = GroupFlag::ReplaceProtection;
 			}
-			if (HasBit(wagon_removal, g->owner)) g->flags.Set(GroupFlag::ReplaceWagonRemoval);
+			if (wagon_removal.Test(g->owner)) g->flags.Set(GroupFlag::ReplaceWagonRemoval);
 		}
 	}
 
