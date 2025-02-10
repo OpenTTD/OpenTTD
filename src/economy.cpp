@@ -100,7 +100,7 @@ const ScoreInfo _score_info[] = {
 	{       0,   0}  // SCORE_TOTAL
 };
 
-int64_t _score_part[MAX_COMPANIES][SCORE_END];
+ReferenceThroughBaseContainer<std::array<std::array<int64_t, SCORE_END>, MAX_COMPANIES>> _score_part;
 Economy _economy;
 Prices _price;
 static PriceMultipliers _price_base_multiplier;
@@ -203,7 +203,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 	Owner owner = c->index;
 	int score = 0;
 
-	memset(_score_part[owner], 0, sizeof(_score_part[owner]));
+	_score_part[owner] = {};
 
 	/* Count vehicles */
 	{

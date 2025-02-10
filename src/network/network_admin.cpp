@@ -407,8 +407,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyEconomy()
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyStats()
 {
 	/* Fetch the latest version of the stats. */
-	NetworkCompanyStats company_stats[MAX_COMPANIES];
-	NetworkPopulateCompanyStats(company_stats);
+	NetworkCompanyStatsArray company_stats = NetworkGetCompanyStats();
 
 	/* Go through all the companies. */
 	for (const Company *company : Company::Iterate()) {

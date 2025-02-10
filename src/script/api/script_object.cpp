@@ -347,7 +347,7 @@ bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_Suspend
 }
 
 
-/* static */ Randomizer ScriptObject::random_states[OWNER_END];
+/* static */ ScriptObject::RandomizerArray ScriptObject::random_states;
 
 Randomizer &ScriptObject::GetRandomizer(Owner owner)
 {

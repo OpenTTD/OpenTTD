@@ -181,7 +181,7 @@ static IndustryType _smallmap_industry_highlight = IT_INVALID;
 /** State of highlight blinking */
 static bool _smallmap_industry_highlight_state;
 /** For connecting company ID to position in owner list (small map legend) */
-static uint _company_to_list_pos[MAX_COMPANIES];
+static ReferenceThroughBaseContainer<std::array<uint32_t, MAX_COMPANIES>> _company_to_list_pos;
 
 /**
  * Fills an array for the industries legends.
