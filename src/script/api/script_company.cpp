@@ -40,7 +40,7 @@
 /* static */ ScriptCompany::CompanyID ScriptCompany::ToScriptCompanyID(::CompanyID company)
 {
 	if (company == ::INVALID_COMPANY) return ScriptCompany::COMPANY_INVALID;
-	return static_cast<::ScriptCompany::CompanyID>(company);
+	return static_cast<::ScriptCompany::CompanyID>(company.base());
 }
 
 /* static */ ScriptCompany::CompanyID ScriptCompany::ResolveCompanyID(ScriptCompany::CompanyID company)

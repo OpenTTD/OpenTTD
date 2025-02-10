@@ -4426,8 +4426,8 @@ uint MoveGoodsToStation(CargoType type, uint amount, Source source, const Statio
 		return UpdateStationWaiting(first_station, type, amount, source);
 	}
 
-	ReferenceThroughBaseContainer<std::array<uint32_t, OWNER_END>> company_best = {};  // best rating for each company, including OWNER_NONE
-	ReferenceThroughBaseContainer<std::array<uint32_t, OWNER_END>> company_sum = {};   // sum of ratings for each company
+	ReferenceThroughBaseContainer<std::array<uint32_t, OWNER_END.base()>> company_best = {};  // best rating for each company, including OWNER_NONE
+	ReferenceThroughBaseContainer<std::array<uint32_t, OWNER_END.base()>> company_sum = {};   // sum of ratings for each company
 	uint best_rating = 0;
 	uint best_sum = 0;  // sum of best ratings for each company
 
@@ -4448,7 +4448,7 @@ uint MoveGoodsToStation(CargoType type, uint amount, Source source, const Statio
 
 	uint moving = 0;
 	for (auto &p : used_stations) {
-		uint owner = p.first->owner;
+		Owner owner = p.first->owner;
 		/* Multiply the amount by (company best / sum of best for each company) to get cargo allocated to a company
 		 * and by (station rating / sum of ratings in a company) to get the result for a single station. */
 		p.second = amount * company_best[owner] * p.first->goods[type].rating / best_sum / company_sum[owner];

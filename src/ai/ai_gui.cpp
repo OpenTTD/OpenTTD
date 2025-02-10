@@ -169,7 +169,7 @@ struct AIConfigWindow : public Window {
 					for (const Company *c : Company::Iterate()) {
 						if (c->is_ai) max_slot--;
 					}
-					for (CompanyID cid = COMPANY_FIRST; cid < (CompanyID)max_slot && cid < MAX_COMPANIES; cid++) {
+					for (CompanyID cid = COMPANY_FIRST; cid < max_slot && cid < MAX_COMPANIES; ++cid) {
 						if (Company::IsValidID(cid)) max_slot++;
 					}
 				} else {
@@ -219,7 +219,7 @@ struct AIConfigWindow : public Window {
 				if (widget == WID_AIC_DECREASE_NUMBER) {
 					new_value = std::max(0, GetGameSettings().difficulty.max_no_competitors - 1);
 				} else {
-					new_value = std::min(MAX_COMPANIES - 1, GetGameSettings().difficulty.max_no_competitors + 1);
+					new_value = std::min<int>(MAX_COMPANIES - 1, GetGameSettings().difficulty.max_no_competitors + 1);
 				}
 				IConsoleSetSetting("difficulty.max_no_competitors", new_value);
 				this->InvalidateData();
@@ -249,8 +249,8 @@ struct AIConfigWindow : public Window {
 			case WID_AIC_MOVE_UP:
 				if (IsEditable(this->selected_slot) && IsEditable((CompanyID)(this->selected_slot - 1))) {
 					Swap(GetGameSettings().ai_config[this->selected_slot], GetGameSettings().ai_config[this->selected_slot - 1]);
-					this->selected_slot--;
-					this->vscroll->ScrollTowards(this->selected_slot);
+					this->selected_slot = CompanyID(this->selected_slot - 1);
+					this->vscroll->ScrollTowards(this->selected_slot.base());
 					this->InvalidateData();
 				}
 				break;
@@ -258,8 +258,8 @@ struct AIConfigWindow : public Window {
 			case WID_AIC_MOVE_DOWN:
 				if (IsEditable(this->selected_slot) && IsEditable((CompanyID)(this->selected_slot + 1))) {
 					Swap(GetGameSettings().ai_config[this->selected_slot], GetGameSettings().ai_config[this->selected_slot + 1]);
-					this->selected_slot++;
-					this->vscroll->ScrollTowards(this->selected_slot);
+					++this->selected_slot;
+					this->vscroll->ScrollTowards(this->selected_slot.base());
 					this->InvalidateData();
 				}
 				break;

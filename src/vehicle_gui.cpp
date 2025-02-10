@@ -2329,7 +2329,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
 	if ((_settings_client.gui.advanced_vehicle_list > (uint)(company != _local_company)) != _ctrl_pressed) {
 		ShowCompanyGroup(company, vehicle_type);
 	} else {
-		ShowVehicleListWindowLocal(company, VL_STANDARD, vehicle_type, company);
+		ShowVehicleListWindowLocal(company, VL_STANDARD, vehicle_type, company.base());
 	}
 }
 

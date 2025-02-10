@@ -75,12 +75,12 @@ static int32_t ClickChangeCompanyCheat(int32_t new_value, int32_t change_directi
 	while ((uint)new_value < Company::GetPoolSize()) {
 		if (Company::IsValidID((CompanyID)new_value)) {
 			SetLocalCompany((CompanyID)new_value);
-			return _local_company;
+			return _local_company.base();
 		}
 		new_value += change_direction;
 	}
 
-	return _local_company;
+	return _local_company.base();
 }
 
 /**

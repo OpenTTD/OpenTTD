@@ -136,7 +136,7 @@
 /* static */ bool ScriptGoal::Question(SQInteger uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, SQInteger buttons)
 {
 	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
-	return DoQuestion(uniqueid, ScriptCompany::FromScriptCompanyID(company), false, question, type, buttons);
+	return DoQuestion(uniqueid, ScriptCompany::FromScriptCompanyID(company).base(), false, question, type, buttons);
 }
 
 /* static */ bool ScriptGoal::QuestionClient(SQInteger uniqueid, ScriptClient::ClientID client, Text *question, QuestionType type, SQInteger buttons)

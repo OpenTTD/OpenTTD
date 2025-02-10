@@ -742,9 +742,9 @@ struct ScriptDebugWindow : public Window {
 	 */
 	bool IsValidDebugCompany(CompanyID company) const
 	{
-		switch (company) {
-			case INVALID_COMPANY: return false;
-			case OWNER_DEITY:     return Game::GetInstance() != nullptr;
+		switch (company.base()) {
+			case INVALID_COMPANY.base(): return false;
+			case OWNER_DEITY.base(): return Game::GetInstance() != nullptr;
 			default:              return Company::IsValidAiID(company);
 		}
 	}

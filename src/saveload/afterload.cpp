@@ -162,7 +162,7 @@ static void ConvertTownOwner()
 		switch (GetTileType(tile)) {
 			case MP_ROAD:
 				if (GB(tile.m5(), 4, 2) == ROAD_TILE_CROSSING && HasBit(tile.m3(), 7)) {
-					tile.m3() = OWNER_TOWN;
+					tile.m3() = OWNER_TOWN.base();
 				}
 				[[fallthrough]];
 
@@ -1160,7 +1160,7 @@ bool AfterLoadGame()
 					if (!IsStationRoadStop(t)) break;
 
 					if (fix_roadtypes) SB(t.m7(), 6, 2, (RoadTypes)GB(t.m3(), 0, 3));
-					SB(t.m7(), 0, 5, HasBit(t.m6(), 2) ? OWNER_TOWN : GetTileOwner(t));
+					SB(t.m7(), 0, 5, (HasBit(t.m6(), 2) ? OWNER_TOWN : GetTileOwner(t)).base());
 					SB(t.m3(), 4, 4, t.m1());
 					t.m4() = 0;
 					break;
@@ -1171,8 +1171,8 @@ bool AfterLoadGame()
 						if (fix_roadtypes) SB(t.m7(), 6, 2, (RoadTypes)GB(t.m3(), 0, 3));
 
 						Owner o = GetTileOwner(t);
-						SB(t.m7(), 0, 5, o); // road owner
-						SB(t.m3(), 4, 4, o == OWNER_NONE ? OWNER_TOWN : o); // tram owner
+						SB(t.m7(), 0, 5, o.base()); // road owner
+						SB(t.m3(), 4, 4, (o == OWNER_NONE ? OWNER_TOWN : o).base()); // tram owner
 					}
 					SB(t.m6(), 2, 4, GB(t.m2(), 4, 4)); // bridge type
 					SB(t.m7(), 5, 1, GB(t.m4(), 7, 1)); // snow/desert
@@ -1731,7 +1731,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_83)) {
 		for (auto t : Map::Iterate()) {
 			if (IsShipDepotTile(t)) {
-				t.m4() = (TileHeight(t) == 0) ? OWNER_WATER : OWNER_NONE;
+				t.m4() = (TileHeight(t) == 0 ? OWNER_WATER : OWNER_NONE).base();
 			}
 		}
 	}

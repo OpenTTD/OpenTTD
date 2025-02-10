@@ -281,7 +281,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t local_id, uint32_t 
 			case 0x42: return TimerGameCalendar::date.base();
 
 			/* Object founder information */
-			case 0x44: return _current_company;
+			case 0x44: return _current_company.base();
 
 			/* Object view */
 			case 0x48: return this->view;
@@ -322,7 +322,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t local_id, uint32_t 
 		case 0x43: return GetAnimationFrame(this->tile);
 
 		/* Object founder information */
-		case 0x44: return GetTileOwner(this->tile);
+		case 0x44: return GetTileOwner(this->tile).base();
 
 		/* Get town zone and Manhattan distance of closest town */
 		case 0x45: return GetTownRadiusGroup(t, this->tile) << 16 | ClampTo<uint16_t>(DistanceManhattan(this->tile, t->xy));

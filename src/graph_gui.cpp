@@ -57,7 +57,7 @@ struct GraphLegendWindow : Window {
 		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
 			if (!_legend_excluded_companies.Test(c)) this->LowerWidget(WID_GL_FIRST_COMPANY + c);
 
-			this->OnInvalidateData(c);
+			this->OnInvalidateData(c.base());
 		}
 	}
 
@@ -710,7 +710,7 @@ public:
 
 			DataSet &dataset = this->data.emplace_back();
 			dataset.colour = GetColourGradient(c->colour, SHADE_LIGHTER);
-			dataset.exclude_bit = k;
+			dataset.exclude_bit = k.base();
 
 			for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
 				if (j >= c->num_valid_stat_ent) {
@@ -1269,7 +1269,7 @@ struct PerformanceRatingDetailWindow : Window {
 		this->UpdateCompanyStats();
 
 		this->InitNested(window_number);
-		this->OnInvalidateData(INVALID_COMPANY);
+		this->OnInvalidateData(INVALID_COMPANY.base());
 	}
 
 	void UpdateCompanyStats()

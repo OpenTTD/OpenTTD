@@ -1436,7 +1436,7 @@ private:
 	 */
 	static void OnClickCompanyChat([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, CompanyID company_id)
 	{
-		ShowNetworkChatQueryWindow(DESTTYPE_TEAM, company_id);
+		ShowNetworkChatQueryWindow(DESTTYPE_TEAM, company_id.base());
 	}
 
 	/**

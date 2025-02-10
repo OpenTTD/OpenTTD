@@ -162,7 +162,7 @@ struct AIPLChunkHandler : ChunkHandler {
 
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; ++i) {
 			SlSetArrayIndex(i);
-			SlAutolength(SaveReal_AIPL, i);
+			SlAutolength(SaveReal_AIPL, i.base());
 		}
 	}
 };

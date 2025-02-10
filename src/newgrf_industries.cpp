@@ -248,7 +248,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 				colours = l->colour1 + l->colour2 * 16;
 			}
 
-			return this->industry->founder | (is_ai ? 0x10000 : 0) | (colours << 24);
+			return this->industry->founder.base() | (is_ai ? 0x10000 : 0) | (colours << 24);
 		}
 
 		case 0x46: return this->industry->construction_date.base(); // Date when built - long format - (in days)
@@ -401,7 +401,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 		case 0xA5: return GB(this->industry->GetProduced(1).history[LAST_MONTH].transported, 8, 8);
 
 		case 0xA6: return indspec->grf_prop.local_id;
-		case 0xA7: return this->industry->founder;
+		case 0xA7: return this->industry->founder.base();
 		case 0xA8: return this->industry->random_colour;
 		case 0xA9: return ClampTo<uint8_t>(this->industry->last_prod_year - EconomyTime::ORIGINAL_BASE_YEAR);
 		case 0xAA: return this->industry->counter;

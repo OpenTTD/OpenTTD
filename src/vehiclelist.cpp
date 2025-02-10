@@ -22,7 +22,7 @@
  */
 WindowNumber VehicleListIdentifier::ToWindowNumber() const
 {
-	uint8_t c = this->company == OWNER_NONE ? 0xF : (uint8_t)this->company;
+	uint8_t c = this->company == OWNER_NONE ? 0xF : this->company.base();
 	assert(c             < (1 <<  4));
 	assert(this->vtype   < (1 <<  2));
 	assert(this->index   < (1 << 20));
