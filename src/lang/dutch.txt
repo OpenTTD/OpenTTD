@@ -1986,6 +1986,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verboden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Toestaan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Toestaan, eigen wegpatroon
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Genereren van vracht in steden: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hoeveel vracht wordt geproduceerd door huizen in steden, in relatie tot de totale bevolking van de stad.{}Kwadratische groei: een stad die twee keer zo groot is, genereert vier keer zo veel passagiers.{}Lineaire groei: een stad die twee keer zo groot is, genereert twee keer zo veel passagiers
 ###length 2
@@ -2855,6 +2857,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Buitenwijken
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Buitenste voorsteden
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Binnenste voorsteden
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadscentrum
+
 
 STR_STATION_CLASS_DFLT                                          :Standaard
 STR_STATION_CLASS_DFLT_STATION                                  :Standaard station

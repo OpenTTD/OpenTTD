@@ -1988,6 +1988,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Proibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, estrutura personalizada da localidade
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Geração de carga citadina: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Quantidade de carga produzida por casas em localidades, relativa à população total da mesma.{}Crescimento quadrático: Uma localidade do dobro do tamanho gera quatro vezes mais passageiros.{}Crescimento linear: Uma localidade do dobro do tamanho gera duas vezes a quantidade de passageiros
 ###length 2
@@ -2859,6 +2861,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Arredores
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Subúrbios Externos
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Subúrbios Internos
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro da localidade
+
 
 STR_STATION_CLASS_DFLT                                          :Padrão
 STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão

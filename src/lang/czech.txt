@@ -527,6 +527,8 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Možnosti písk
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavení průhlednosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Zobrazení jmen měst
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Zobrazení jmen stanic
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Nákladové rampy
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Autobusové zastávky
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Zobrazení jmen směrování
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Zobrazení popisků
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Zobrazovat popisky a jména protivníků
@@ -895,6 +897,7 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Vypnout všechny
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Zapnout všechny
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Zobrazit výšku
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Zobrazit názvy průmyslu
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nezobrazit na mapě žádný průmysl
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Zobrazit na mapě veškerý průmysl
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Zapnout zobrazení výškové mapy
@@ -1103,6 +1106,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonéská rup
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malajsijský Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lotyšský lat
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugalské escudo
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrajinská hřivna
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatické ukládání
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Volba intervalu mezi automatickým ukládáním hry
@@ -1550,7 +1554,7 @@ STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Povolit výstav
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Povolit průjezd zastávkami na silnicích vlastněných městy: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Povolit stavbu průjezdních zastávek na silnicích vlastněných městy
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Stavba průjezdných zastávek na silnicích vlastněných konkurencí: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Povolit stavění průjezných stanic na silnicích vlastněných jinými společnostmi.
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Povolit stavění průjezných zastávek na silnicích vlastněných jinými společnostmi.
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Toto nastavení nemůže být změněno, když jsou ve hře již nějaká vozidla
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Udržování infrastruktury: {STRING}
@@ -1581,6 +1585,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Pokud je zapnut
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Pokud je zapnuto, budou zobrazovány zprávy o vozidlech, která v posledním období neměla žádný zisk.
 
 STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Varovat pokud stárne: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Je-li zapnuto, zobrazí se zpráva, když vozidlo začne zastarávat
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozidlům se nikdy nezastaví výroba ('nezastarají'): {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pokud je zapnuto, všechny modely vlaků zůstanou po uvedení dostupné napořád. (nezastarají)
@@ -2059,6 +2064,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Zakázáno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Povoleno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Povoleno s výběrem rozložení a velikosti města
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Produkce nákladu městy: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Určuje, kolik nákladu je produkováno domy ve městě relativně k celkovému počtu obyvatel města.{}Kvadratická závislost: Dvakrát větší město produkuje čtyřikrát více cestujících.{}Lineární závislost: Dvakrát větší město produkuje dvakrát více cestujících.
 ###length 2
@@ -2127,7 +2134,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Průměrná vel
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Aktualizovat graf spojení každých: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Čas mezi dvěma po sobě jdoucími přepočty grafu (distribučních) spojení. Každý přepočet se týká jedné části grafu; hodnota X tohoto nastavení tedy neznamená, že by se celý graf aktualizoval každých X sekund, jen jeho určitá část. Čím kratší čas nastavíš, tím více procesorového času bude na přepočet třeba. Čím delší čas nastavíš, tím déle potrvá, než distribuce začne působit na nových trasách.
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Přepočet grafu distribuce trvá {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Čas potřebný pro každý přepočet komponenty grafu spojení. Když je přepočet spuštěn, vytvoří se vlákno, kterému je dovoleno běžet po tuto dobu v sekundách. Čím kratší dobu nastavíte, tím pravděpodobnější je, že vlákno neskončí včas, jak by mělo. Poté hra stojí, dokud není dokončeno ("lag"). Čím déle dobu nastavíte, tím déle trvá aktualizace distribuce, když se změní trasy.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Čas potřebný pro každý přepočet komponenty grafu spojení. Když je přepočet spuštěn, vytvoří se vlákno, kterému je dovoleno běžet po tuto dobu v sekundách. Čím kratší dobu nastavíš, tím pravděpodobnější je, že vlákno neskončí včas, jak by mělo. Poté hra stojí, dokud není dokončeno ("lag"). Čím delší dobu nastavíš, tím déle trvá aktualizace distribuce, když se změní trasy
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Mód distribuce pro cestující: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Rovnoměrný" znamená, že téměř stejné množství cestujících chce cestovat ze stanice A do stanice B, jako ze stanice B do A. "Nerovnoměrný" znamená, že libovolné množství cestujících může cestovat v jakémkoliv směru. "Manuální" znamená, že zde nebude žádná automatická distribuce pro cestující.
@@ -2708,6 +2715,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :čekám na aktu
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odpojování
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se připojil do hry
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} se připojil do hry (klient č. {2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} se přidal ke {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se stává pozorovatelem
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} zakládá novou společnost (č. {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} opouští hru ({2:STRING})
@@ -2922,6 +2930,7 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Vnější před
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Vnitní předměstí
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrum města
 
+
 STR_STATION_CLASS_DFLT                                          :Původní
 STR_STATION_CLASS_DFLT_STATION                                  :Původní stanice
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Původní silniční stanoviště
@@ -2977,10 +2986,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Postavit
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}POstavit tramvajové depo (na nákup a servis tramvají). Podrž Shift pro zobrazení odhadu ceny
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :Postavit na silnici směrování. Podrž Ctrl pro sloučení s jiným směrováním. Podrž Shift pro zobrazení odhadu ceny.
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Postavit tramvajové směrování. Podrž Ctrl pro sloučení s jiným směrováním. Podrž Shift pro zobrazení odhadu ceny.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Postavit stanici autobusů. Pomocí Ctrl ji připojíš k jiné. Podrž Shift pro zobrazení odhadu ceny
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Postavit autobusovou zastávku. Pomocí Ctrl ji připojíš k jiné. Podrž Shift pro zobrazení odhadu ceny
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Postavit tramvajovou zastávku pro cestující. Pomocí Ctrl ji připojíš k jiné. Podrž Shift pro zobrazení odhadu ceny
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Postavit nákladovou rampu. Pomocí Ctrl ji připojíš k jiné. Podrž Shift pro zobrazení odhadu ceny
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Postavit nákladní tramvajovou stanici. S Ctrl ji připojíš k jiné. Podrž Shift pro zobrazení odhadu ceny
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Postavit nákladovou rampu pro tramvaj. Pomocí Ctrl ji připojíš k jiné. Podrž Shift pro zobrazení odhadu ceny
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Stavět nebo nestavět jednosměrné silnice
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Postavit silniční most. Podrž Shift pro zobrazení odhadu ceny
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Postavit tramvajový most. Podrž Shift pro zobrazení odhadu ceny
@@ -3031,7 +3040,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Přísta
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Letiště
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Postavit letiště. Pomocí Ctrl ho připojíš k jinému. Podrž Shift pro zobrazení odhadu ceny
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Postavit letiště. Pomocí Ctrl ho připojíš k existující stanici. Podrž Shift pro zobrazení odhadu ceny
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Výběr letiště
@@ -3187,6 +3196,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Majitel 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Majitel tratě: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Místní správa: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nic
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Souřadnice: {LTBLUE}{NUM} x {NUM} x {NUM}
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Postaveno/obnoveno: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Třída stanice: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Druh stanice: {LTBLUE}{STRING}
@@ -3513,6 +3523,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Připrav
 
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Soubor JSON má nespravný formát
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} data mají nesprávný formát
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} souřadnice mají nesprávný formát. Musejí být od 0 do 1 jako poměrná část celkového rozměru výškové mapy
 
 
 # NewGRF settings
@@ -3717,6 +3728,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Na před
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Zadej název pro značku
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Města ({COMMA} z {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nic -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (velkoměsto){BLACK} ({COMMA})
@@ -4050,6 +4062,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/období
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Průmysl ({COMMA} z {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nic -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% přepraveno){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -5000,7 +5013,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Odhadova
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ukládání ještě běží,{}počkej prosím, než doběhne!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatické uložení selhalo
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Nelze číst z jednotky
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Uložení hry selhalo...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Nelze smazat soubor
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Nelze načíst hru...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Vnitřní chyba: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Poškozená hra - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Uložená hra je z novější verze
@@ -5161,7 +5176,7 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... prů
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nelze odstranit část stanice...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Je nejprve nutno odstranit stanici
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nelze odstranit autobusovou zastávku...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nelze odstranit nakládací rampu...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nelze odstranit nákladovou rampu...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nelze zbourat tramvajovou stanici pro cestující...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nelze odstranit nákladní tramvajovou stanici...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Je nutné nejprve odstranit konec silnice
@@ -5384,6 +5399,10 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nelze pr
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nelze prodat letadlo...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Nelze prodat všechna železniční vozidla...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Nelze prodat všechna silniční vozidla...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Nelze prodat všechny lodě...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Nelze prodat všechna letadla...
 
 ###length VEHICLE_TYPES
 
@@ -5397,10 +5416,12 @@ STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... vše
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Žádná vozidla nejsou dostupná
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Zmeň nastavení NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Zatím nejsou dostupná žádná vozidla
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Začít hru po {DATE_SHORT} nebo použít NewGRF, která zajistí dřívější vozidla
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Začni hrát po {DATE_SHORT} nebo použij NewGRF, které zajistí dřívější vozidla
 
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Nejsou k dispozici žádné obcemi budovatelné typy silnic
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Změň si svoji konfiguraci NewGRF
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Zatím nejsou k dispozici žádné obcemi budovatelné typy silnic
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Začni hrát po {DATE_SHORT} nebo použij NewGRF, které zajistí dřívější obcemi budovatelné typy silnic
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nelze nechat vlak projet semafory v nebezpečí...

@@ -2032,6 +2032,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zakázané
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :povolené
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :povolené, vlastné rozloženie mesta
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generovanie nákladu v mestách: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Množstvo nákladu produkovaného domami v mestách, podmienené celkovou populáciou mesta.{}Kvadratický rast: Mesto s dvojnásobnou veľkosťou produkuje štvornásobné množstvo cestujúcich.{}Lineárny rast: Mesto s dvojnásobnou veľkosťou produkuje dvojnásobné množstvo cestujúcich
 ###length 2
@@ -2872,6 +2874,7 @@ STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Zvoľ veľkosť
 
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Okraj
+
 
 STR_STATION_CLASS_DFLT                                          :Pôvodná
 STR_STATION_CLASS_DFLT_STATION                                  :Predvolená stanica

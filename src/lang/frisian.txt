@@ -1683,6 +1683,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Ferbean
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tastean
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tastean, oanpast strittepatroan
 
+###length 3
+
 ###length 2
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Bouen fan beamen yn it spul: {STRING}
@@ -2277,6 +2279,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selektea
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Stasjon lengte
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selektear lengte fan treinstasjon
 STR_STATION_BUILD_DRAG_DROP                                     :Sleepe en los litte
+
 
 
 

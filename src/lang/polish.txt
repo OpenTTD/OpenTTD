@@ -2367,6 +2367,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Zabronione
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Dozwolone
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Dozwolone, dowolny układ miasta
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generowanie ładunku przez miasta: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Ilość ładunku produkowanego przez domy w mieście względem ogólnej populacji miasta.{}Wzrost kwadratowy: miasto dwa razy większe generuje czterokrotnie więcej pasażerów.{}Wzrost liniowy: miasto dwa razy większe generuje dwukrotnie więcej pasażerów
 ###length 2
@@ -3238,6 +3240,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Peryferia
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Przedmieścia zewnętrzne
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Przedmieścia wewnętrzne
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrum miasta
+
 
 STR_STATION_CLASS_DFLT                                          :Standardowa
 STR_STATION_CLASS_DFLT_STATION                                  :Standardowa stacja

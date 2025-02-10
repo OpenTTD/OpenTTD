@@ -1620,6 +1620,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Bannað
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Loyvt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Loyvt, sjálvgjørd bygda uppseting
 
+###length 3
+
 ###length 2
 
 ###length 4
@@ -2173,6 +2175,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Pall lon
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vel hvussu lang tokstøðin skal verða
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Toga & Slepp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg eina støð vi at nýta toga & slepp
+
 
 
 

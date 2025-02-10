@@ -1781,6 +1781,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :coiscthe
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :ceadaithe
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :ceadaithe, leagan amach bailte saincheaptha
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Giniúint lastais na mbailte: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :An méid lastais a chruthaíonn tithe sna bailte, i gcomparáid le daonra iomlán an bhaile.{}Fás cearnach: Cruthaíonn baile atá dhá oiread níos mó ceithre oiread líon na bpaisinéirí.{}Fás líneach: Cruthaíonn baile atá dhá oiread níos mó dhá oiread líon na bpaisinéirí.
 ###length 2
@@ -2553,6 +2555,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Fad an a
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Roghnaigh fad an stáisiúin iarnróid
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Tarraing & Scaoil
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tóg stáisiún ag úsáid tarraing & scaoil
+
 
 
 

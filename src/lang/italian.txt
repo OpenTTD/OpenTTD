@@ -2008,6 +2008,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Non permessa
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permessa
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permessa, disposizione strade personalizzata
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generazione passeggeri e posta: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Quantità di carichi (passeggeri e posta) prodotta dalle case in relazione alla popolazione della città.{}Quadratica: Una città grande il doppio genera il quadruplo di passeggeri.{}Lineare: Una città grande il doppio genera il doppio di passeggeri
 ###length 2
@@ -2869,6 +2871,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferie
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Sobborghi esterni
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Sobborghi interni
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro città
+
 
 STR_STATION_CLASS_DFLT                                          :Predefinita
 STR_STATION_CLASS_DFLT_STATION                                  :Stazione predefinita

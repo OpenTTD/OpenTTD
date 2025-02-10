@@ -1805,6 +1805,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :இயலாத
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :அனுமதிக்கப்படுகிறது
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :அனுமதிக்கப்படுகிறது, ஆனால் மாற்றியமைக்கப்பட்ட நகர அமைப்பு
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :நகரத்தின் சரக்கு உற்பத்தி: {STRING}
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :இருபடி (அசல்)
@@ -2560,6 +2562,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}நி�
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}இரயில் நிலையத்தின் நீளத்தினை தேர்ந்தெடு
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}இழுத்து விடவும்
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}இழுத்து விடுவதன் மூலம் நிலையத்தினைக் கட்டவும்
+
 
 
 

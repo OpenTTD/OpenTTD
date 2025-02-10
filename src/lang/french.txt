@@ -1988,6 +1988,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Interdit
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Autorisé
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Autorisé, y compris l'agencement personnalisé des routes
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Génération des marchandises des villes{NBSP}: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Combien de marchandises sont produites par les maisons dans les villes, relativement à la population globale de la ville.{}Croissance quadratique{NBSP}: une ville deux fois plus grande génère quatre fois plus de passagers.{}Croissance linéaire{NBSP}: une ville deux fois plus grande génère deux fois plus de passagers
 ###length 2
@@ -2859,6 +2861,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Périphérie
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Banlieue extérieure
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Banlieue intérieure
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centre-ville
+
 
 STR_STATION_CLASS_DFLT                                          :Par défaut
 STR_STATION_CLASS_DFLT_STATION                                  :Stations par défaut

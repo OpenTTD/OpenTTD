@@ -1841,6 +1841,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prepovedano
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Dovoljeno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Dovoljeno, oblika mesta po meri
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Ustvarjanje mestnega tovora: {STRING}
 ###length 2
 
@@ -2523,6 +2525,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Dolžina
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Izberi dolžino železniške postaje
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vleci in spusti
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Zgradi postajo s povleci in spusti
+
 
 
 

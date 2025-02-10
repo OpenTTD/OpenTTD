@@ -1988,6 +1988,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, diseño urbano personalizado
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generación de carga en localidades: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Cantidad de carga producida por las casas con relación a la población.{}Crecimiento cuadrado: una localidad de doble tamaño genera el cuádruple de pasajeros.{}Crecimiento lineal: una localidad de doble tamaño genera el doble de pasajeros.
 ###length 2
@@ -2859,6 +2861,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Afueras
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbios exteriores
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbios interiores
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Zona centro
+
 
 STR_STATION_CLASS_DFLT                                          :por defecto
 STR_STATION_CLASS_DFLT_STATION                                  :Estación por defecto

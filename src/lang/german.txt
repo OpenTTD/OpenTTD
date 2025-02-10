@@ -1977,6 +1977,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verboten
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Erlaubt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Erlaubt, mit wählbarem Straßenbauplan
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Güterproduktion in Städten: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Die Gütermenge, die von Häusern einer Stadt relativ zur Gesamtbevölkerung der Stadt produziert wird.{}Quadratisch: eine doppelt so große Stadt generiert viermal so viele Passagiere.{}Linear: eine doppelt so große Stadt generiert doppelt so viele Passagiere
 ###length 2
@@ -2838,6 +2840,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Peripherie
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Äußere Vororte
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Innere Vororte
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadtmitte
+
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standart-Haltestelle

@@ -1986,6 +1986,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, patrón de estradas personalizado
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Xeración de mercadorías da vila: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Cantidade de mercadorías producidas nas casas da vila, segundo a poboación total da mesma.{}Crecemento cadrático: Unha vila o dobre de grande produce catro veces máis pasaxeiros.{}Linear growth: Unha vila o dobre de grande produce dúas veces máis pasaxeiros
 ###length 2
@@ -2855,6 +2857,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferia
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbios da periferia
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbios interiores
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro da vila
+
 
 STR_STATION_CLASS_DFLT                                          :Por defecto
 STR_STATION_CLASS_DFLT_STATION                                  :Estación por defecto

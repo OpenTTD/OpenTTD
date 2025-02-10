@@ -1974,6 +1974,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Gwahardd
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Caniatáu
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Caniatáu, cynllun tref addasiedig
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Cynhyrchiant cargo tref: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Faint o gargo sy'n cael ei greu gan dai mewn trefi, o gymharu efo poblogaeth cyfansymiol y dref.{}Tyfiant cwadratig: Mae tref dwywaith y main yn creu pedair gwaith gymaint o deithwyr.{}Tyfiant llinol: Mae tref dwywaith y main yn creu dwywaith gymaint o deithwyr
 ###length 2
@@ -2835,6 +2837,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Cyrion
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Maestrefi Allanol
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Maestrefi Mewnol
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Canol y ddinas
+
 
 STR_STATION_CLASS_DFLT                                          :Rhagosodiad
 STR_STATION_CLASS_DFLT_STATION                                  :Gorsaf rhagosodedig

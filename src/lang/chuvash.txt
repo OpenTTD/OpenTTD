@@ -808,6 +808,8 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
 
 ###length 3
 
+###length 3
+
 ###length 2
 
 ###length 4
@@ -1058,6 +1060,7 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 # Rail waypoint construction window
 
 # Rail station construction window
+
 
 
 

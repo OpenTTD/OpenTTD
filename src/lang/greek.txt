@@ -2080,6 +2080,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Δεν επιτ
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Επιτρέπεται
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Επιτρέπεται, προσαρμοσμένο σχέδιο πόλης
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Δημιουργία εμπορευμάτων πόλης: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Η ποσότητα εμπορευμάτων που παράγεται απο σπίτια σε πόλεις, σε σχέση με τον συνολικό πληθυσμό της πόλης.{}Τετραγωνική ανάπτυξη: Μια πόλη διπλού μεγέθους παράγει τετραπλάσιο αριθμό επιβατών.{}Γραμμική ανάπτυξη: Μια πόλη διπλού μεγέθους παράγει διπλάσιο αριθμό επιβατών
 ###length 2
@@ -2951,6 +2953,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Περίχωρ�
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Εξωτερικά Προάστια
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Εσωτερικά Προάστια
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Κέντρο της πόλης
+
 
 STR_STATION_CLASS_DFLT                                          :Προεπιλεγμένος
 STR_STATION_CLASS_DFLT_STATION                                  :Προεπιλεγμένος σταθμός

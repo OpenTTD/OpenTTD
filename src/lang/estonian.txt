@@ -2023,6 +2023,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Keelatud
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Lubatud
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Lubatud, koos asulaskeemi valimisega
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Kauba tekkimine asulates: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Kui palju kaupa toodavad majad asulates, võrreldes elanike arvuga.{}Ruutfunktsioon: kaks korda suurem asula tekitab neli korda rohkem reisijaid.{}Lineaarne: kaks korda suurem asula tekitab kaks korda rohkem reisijaid.
 ###length 2
@@ -2870,6 +2872,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Äärealad
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Äärelinnad
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Eeslinnad
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Kesklinn
+
 
 STR_STATION_CLASS_DFLT                                          :Vaikimisi
 STR_STATION_CLASS_DFLT_STATION                                  :Vaikimisi jaam

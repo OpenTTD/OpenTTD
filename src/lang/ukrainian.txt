@@ -2113,6 +2113,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Заборон�
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Дозволено
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Дозволено (з вибором дорожньої сітки)
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Кількість вантажів та пасажирів у містах: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Скільки вантажів створюється будинками в містах відносно населення.{}Квадратична залежність: Вдвічі більше місто створює вчетверо більше вантажів.{}Лінійна:  Вдвічі більше місто створює вдвічі більше вантажів.
 ###length 2
@@ -2976,6 +2978,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Окраїна
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Передмістя
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Щільне передмістя
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Центр міста
+
 
 STR_STATION_CLASS_DFLT                                          :Звичайна
 STR_STATION_CLASS_DFLT_STATION                                  :Звичайна станція

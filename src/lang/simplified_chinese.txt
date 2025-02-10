@@ -1987,6 +1987,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允许
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允许，自定义城镇布局
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :城镇货物生成：{STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :城镇建筑的客货产出与人口的关系。{}平方增长：城镇人口规模增长为原来的两倍时旅客的生成量为原来的四倍。{}线性增长：城镇人口规模增长为原来的两倍时旅客的生成量为原来的两倍
 ###length 2
@@ -2858,6 +2860,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :郊区边缘
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :外郊区
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :内郊区
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :城镇中心
+
 
 STR_STATION_CLASS_DFLT                                          :默认
 STR_STATION_CLASS_DFLT_STATION                                  :默认车站

@@ -2274,6 +2274,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :забарон�
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :дазволена
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :дазволена з выбарам дарожнай сеткі
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Колькасць грузаў і пасажыраў у гарадах: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Залежнасць колькасці грузаў і пасажыраў ад памеру горада.{}Лінейная: у горадзе двухразовага памеру з'яўляецца ў 2 разу больш пасажыраў.{}Квадратычная: у горадзе двухразовага памеру з'яўляецца ў 4 разу больш пасажыраў.
 ###length 2
@@ -3119,6 +3121,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Даўж
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Выберыце даўжыню станцыйных каляінаў
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Участак
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Пабудаваць станцыю на выбраным участку зямлі
+
 
 
 

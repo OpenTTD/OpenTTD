@@ -1531,6 +1531,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Dilarang
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Dibenarkan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Dibenarkan, susunan bandar sendiri
 
+###length 3
+
 ###length 2
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Peletakan pokok-pokok dalam permainan: {STRING}
@@ -2122,6 +2124,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Kepanjan
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Pilih kepanjangan stesen keretapi
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Seret & Lepas
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bina stesen menggunakan kaedah seret & lepas
+
 
 
 

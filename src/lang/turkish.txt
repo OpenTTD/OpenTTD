@@ -1963,6 +1963,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Yasak
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :İzin verildi
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :İzin verildi, özel kasaba yerleşimi
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Şehrin kargo üretimi: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Şehrin genel nüfusuna oranla, şehirlerdeki evler tarafından ne kadar kargo üretiliyor.{}Üstel büyüme: İki katı büyüklükteki bir şehir dört katı büyüklükte yolcuya sahip olur.{}Lineer büyüme: İki katı büyüklükteki bir şehir iki katı büyüklükte yolcuya sahip olur.
 ###length 2
@@ -2821,6 +2823,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Banliyöler
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Dış banliyöler
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :İç banliyöler
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Şehir merkezi
+
 
 STR_STATION_CLASS_DFLT                                          :Varsayılan
 STR_STATION_CLASS_DFLT_STATION                                  :Varsayılan istasyon

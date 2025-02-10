@@ -1812,6 +1812,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :אסור
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :מותר
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :מותר, מתווה עיר מותאם אישית
 
+###length 3
+
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :לינארי
 
@@ -2569,6 +2571,7 @@ STR_PICKER_MODE_USED                                            :בשימוש
 STR_PICKER_MODE_USED_TOOLTIP                                    :החלף הצגת פריטים קיימים בלבד
 STR_PICKER_MODE_SAVED                                           :נשמר
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :החלף הצגת פריטים שמורים בלבד
+
 
 
 

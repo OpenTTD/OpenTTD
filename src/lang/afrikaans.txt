@@ -1715,6 +1715,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verbode
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Toegelaat
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Toegelaat, eie dorp uitleg
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Stad-vragproduksie: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hoeveel vrag word deur huise in dorpe geproduseer, relatief tot die algemene bevolking van die stad.{} Kwadratiese groei: 'n Dorp wat twee keer so groot is, genereer vier keer soveel passasiers.{} Lineêre groei: 'n Stad twee keer so groot, genereer twee keer soveel passasiers.
 ###length 2
@@ -2397,6 +2399,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Perron l
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Kies treinstasie lengte
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Sleep & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bou 'n stasie gebruikend sleep & drop
+
 
 
 

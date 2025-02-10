@@ -1966,6 +1966,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :malpermesita
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permesate
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permesate, kutimo urbomapo
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Urba ŝarĝogenerado: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Kiom da ŝarĝoj produktas domoj en urboj, rilate al la loĝantaro de la tuta urbo.{}Kvadrata kresko: Urbo duoble pli granda generas kvaroblan nombron da pasaĝeroj.{}Lineara kresko: Urbo duoble pli granda generas duoblan nombron da pasaĝeroj.
 ###length 2
@@ -2765,6 +2767,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tiru por
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Rando
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferioj
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Eksteraj Antaŭurboj
+
 
 STR_STATION_CLASS_DFLT                                          :Defaŭlta
 STR_STATION_CLASS_DFLT_STATION                                  :Defaŭlta stacio

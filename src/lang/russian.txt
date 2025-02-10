@@ -2138,6 +2138,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :запреще�
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :разрешено
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :разрешено с выбором сети дорог
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Количество грузов и пассажиров в городах: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Зависимость количества грузов и пассажиров от размера города.{}Линейная: в городе двукратного размера появляется в 2 раза больше пассажиров.{}Квадратичная: в городе двукратного размера появляется в 4 раза больше пассажиров.
 ###length 2
@@ -3029,6 +3031,7 @@ STR_HOUSE_PICKER_CLASS_ZONE2                                    :Окраина
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Периферия
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Центральные районы
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Центр
+
 
 STR_STATION_CLASS_DFLT                                          :Стандартная станция
 STR_STATION_CLASS_DFLT_STATION                                  :Стандартная ж/д станция

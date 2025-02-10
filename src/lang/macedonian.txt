@@ -1088,6 +1088,8 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Градови 
 
 ###length 3
 
+###length 3
+
 ###length 2
 
 ###length 4
@@ -1289,6 +1291,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Изгр
 # Rail waypoint construction window
 
 # Rail station construction window
+
 
 
 

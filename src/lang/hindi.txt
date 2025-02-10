@@ -673,6 +673,8 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :शोर स�
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :खेल में कस्बों की स्थापना: {STRING}
 ###length 3
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :नगर में माल उत्पादन: {STRING}
 ###length 2
 
@@ -871,6 +873,7 @@ STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}अक�
 # Rail waypoint construction window
 
 # Rail station construction window
+
 
 
 

@@ -1705,6 +1705,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ห้าม
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :ยอม
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :ยอม, รูปแบบเมืองกำหนดเอง
 
+###length 3
+
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :กำลังสอง (แบบดั้งเดิม)
 
@@ -2413,6 +2415,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}คว�
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}เลือกความยาวของชานชาลา
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}ลากและวาง
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}สร้างสถานีโดยใช้การลากและวาง
+
 
 
 

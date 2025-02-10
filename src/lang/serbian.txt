@@ -2114,6 +2114,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabranjeno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dozvoljeno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dozvoljeno, zaseban plan gradnje
 
+###length 3
+
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Proizvodnja tereta u naselju: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Koliko tereta se proizvede od strane kuća u naseljima, u odnosu na ukupan broj stanovnika u naselju.{}Kvadratni rast: naselje dvostruke veličine stvara četvorostruko više putnika.{}Linearan rast: naselje dvostruke veličine stvara dvostruko više putnika.
 ###length 2
@@ -2931,6 +2933,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Dužina 
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Odabir dužine stanice
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Prevlačenje
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Gradnja stanice prevlačenjem
+
 
 
 
