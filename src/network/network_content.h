@@ -130,7 +130,7 @@ public:
 
 	void ReverseLookupDependency(ConstContentVector &parents, const ContentInfo *child) const;
 	void ReverseLookupTreeDependency(ConstContentVector &tree, const ContentInfo *child) const;
-	void CheckDependencyState(ContentInfo *ci);
+	void CheckDependencyState(const ContentInfo *ci);
 
 	/** Get the number of content items we know locally. */
 	uint Length() const { return (uint)this->infos.size(); }
