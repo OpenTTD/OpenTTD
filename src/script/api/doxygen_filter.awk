@@ -258,7 +258,7 @@ BEGIN {
 }
 
 # Add a const (non-enum) value
-/^[ 	]*static const \w+ \w+ = [^;]+;/ {
+/^[ 	]*static const(expr)? \w+ \w+ = [^;]+;/ {
 	if (api_selected == "") api_selected = cls_in_api
 	if (api_selected == "false") {
 		api_selected = ""
