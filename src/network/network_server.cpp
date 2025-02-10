@@ -1485,12 +1485,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet &p)
 }
 
 /**
- * Populate the company stats.
- * @param stats the stats to update
+ * Get the company stats.
  */
-void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
+NetworkCompanyStatsArray NetworkGetCompanyStats()
 {
-	memset(stats, 0, sizeof(*stats) * MAX_COMPANIES);
+	NetworkCompanyStatsArray stats = {};
 
 	/* Go through all vehicles and count the type of vehicles */
 	for (const Vehicle *v : Vehicle::Iterate()) {
@@ -1518,6 +1517,8 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 			if (s->facilities.Test(StationFacility::Dock))      npi->num_station[NETWORK_VEH_SHIP]++;
 		}
 	}
+
+	return stats;
 }
 
 /**

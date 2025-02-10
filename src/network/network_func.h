@@ -18,6 +18,7 @@
 // #define DEBUG_FAILED_DUMP_COMMANDS
 
 #include "network_type.h"
+#include "../core/convertible_through_base.hpp"
 #include "../console_type.h"
 #include "../gfx_type.h"
 #include "../openttd.h"
@@ -44,7 +45,8 @@ void NetworkDisconnect(bool close_admins = true);
 void NetworkGameLoop();
 void NetworkBackgroundLoop();
 std::string_view ParseFullConnectionString(const std::string &connection_string, uint16_t &port, CompanyID *company_id = nullptr);
-void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
+using NetworkCompanyStatsArray = ReferenceThroughBaseContainer<std::array<NetworkCompanyStats, MAX_COMPANIES>>;
+NetworkCompanyStatsArray NetworkGetCompanyStats();
 
 void NetworkUpdateClientInfo(ClientID client_id);
 void NetworkClientsToSpectators(CompanyID cid);

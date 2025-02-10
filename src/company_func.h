@@ -37,7 +37,7 @@ CommandCost CheckTileOwnership(TileIndex tile);
 extern CompanyID _local_company;
 extern CompanyID _current_company;
 
-extern Colours _company_colours[MAX_COMPANIES];
+extern ReferenceThroughBaseContainer<std::array<Colours, MAX_COMPANIES>> _company_colours;
 extern CompanyManagerFace _company_manager_face;
 
 /**

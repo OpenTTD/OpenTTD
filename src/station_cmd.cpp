@@ -4427,8 +4427,8 @@ uint MoveGoodsToStation(CargoType type, uint amount, Source source, const Statio
 		return UpdateStationWaiting(first_station, type, amount, source);
 	}
 
-	uint company_best[OWNER_NONE + 1] = {};  // best rating for each company, including OWNER_NONE
-	uint company_sum[OWNER_NONE + 1] = {};   // sum of ratings for each company
+	ReferenceThroughBaseContainer<std::array<uint32_t, OWNER_END>> company_best = {};  // best rating for each company, including OWNER_NONE
+	ReferenceThroughBaseContainer<std::array<uint32_t, OWNER_END>> company_sum = {};   // sum of ratings for each company
 	uint best_rating = 0;
 	uint best_sum = 0;  // sum of best ratings for each company
 

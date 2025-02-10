@@ -69,10 +69,10 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	/* Company ratings. */
 	CompanyMask have_ratings;      ///< which companies have a rating
-	uint8_t unwanted[MAX_COMPANIES]; ///< how many months companies aren't wanted by towns (bribe)
+	ReferenceThroughBaseContainer<std::array<uint8_t, MAX_COMPANIES>> unwanted; ///< how many months companies aren't wanted by towns (bribe)
 	CompanyID exclusivity;         ///< which company has exclusivity
 	uint8_t exclusive_counter;       ///< months till the exclusivity expires
-	int16_t ratings[MAX_COMPANIES];  ///< ratings of each company for this town
+	ReferenceThroughBaseContainer<std::array<int16_t, MAX_COMPANIES>> ratings;  ///< ratings of each company for this town
 
 	TransportedCargoStat<uint32_t> supplied[NUM_CARGO]; ///< Cargo statistics about supplied cargo.
 	TransportedCargoStat<uint16_t> received[NUM_TAE]; ///< Cargo statistics about received cargotypes.
