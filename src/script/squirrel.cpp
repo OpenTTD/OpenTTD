@@ -510,6 +510,22 @@ bool Squirrel::CreateClassInstance(const std::string &class_name, void *real_ins
 	return Squirrel::CreateClassInstanceVM(this->vm, class_name, real_instance, instance, nullptr);
 }
 
+/* static */ SQUserPointer Squirrel::GetRealInstance(HSQUIRRELVM vm, int index, const char *tag)
+{
+	Squirrel *engine = static_cast<Squirrel *>(sq_getforeignptr(vm));
+	std::string class_name = fmt::format("{}{}", engine->GetAPIName(), tag);
+	sq_pushroottable(vm);
+	sq_pushstring(vm, class_name);
+	sq_get(vm, -2);
+	sq_push(vm, index);
+	if (sq_instanceof(vm)) {
+		sq_pop(vm, 3);
+		SQUserPointer ptr = nullptr;
+		if (SQ_SUCCEEDED(sq_getinstanceup(vm, index, &ptr, nullptr))) return ptr;
+	}
+	throw sq_throwerror(vm, fmt::format("parameter {} has an invalid type ; expected: '{}'", index - 1, class_name));
+}
+
 Squirrel::Squirrel(const char *APIName) :
 	APIName(APIName), allocator(new ScriptAllocator())
 {

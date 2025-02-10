@@ -39,7 +39,6 @@ namespace SQConvert {
 	template <> struct Return<bool>         { static inline int Set(HSQUIRRELVM vm, bool res)        { sq_pushbool   (vm, res); return 1; } };
 	template <> struct Return<char *>       { /* Do not use char *, use std::optional<std::string> instead. */ };
 	template <> struct Return<const char *> { /* Do not use const char *, use std::optional<std::string> instead. */ };
-	template <> struct Return<void *>       { static inline int Set(HSQUIRRELVM vm, void *res)       { sq_pushuserpointer(vm, res); return 1; } };
 	template <> struct Return<HSQOBJECT>    { static inline int Set(HSQUIRRELVM vm, HSQOBJECT res)   { sq_pushobject(vm, res); return 1; } };
 
 	template <typename T> requires std::is_enum_v<T> struct Return<T> {
@@ -86,7 +85,6 @@ namespace SQConvert {
 	template <> struct Param<TileIndex>    { static inline TileIndex   Get(HSQUIRRELVM vm, int index) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return TileIndex((uint32_t)(int32_t)tmp); } };
 	template <> struct Param<bool>         { static inline bool        Get(HSQUIRRELVM vm, int index) { SQBool        tmp; sq_getbool       (vm, index, &tmp); return tmp != 0; } };
 	template <> struct Param<const char *> { /* Do not use const char *, use std::string& instead. */ };
-	template <> struct Param<void *>       { static inline void       *Get(HSQUIRRELVM vm, int index) { SQUserPointer tmp; sq_getuserpointer(vm, index, &tmp); return tmp; } };
 
 	template <typename T> requires std::is_enum_v<T> struct Param<T> {
 		static inline T Get(HSQUIRRELVM vm, int index)
@@ -259,7 +257,9 @@ namespace SQConvert {
 
 		try {
 			/* Delegate it to a template that can handle this specific function */
-			return HelperT<Tmethod>::SQCall((Tcls *)real_instance, *(Tmethod *)ptr, vm);
+			auto cls_instance = static_cast<Tcls *>(real_instance);
+			auto method = *static_cast<Tmethod *>(ptr);
+			return HelperT<Tmethod>::SQCall(cls_instance, method, vm);
 		} catch (SQInteger &e) {
 			return e;
 		}
@@ -299,8 +299,14 @@ namespace SQConvert {
 		/* Remove the userdata from the stack */
 		sq_pop(vm, 1);
 
-		/* Call the function, which its only param is always the VM */
-		return (SQInteger)(((Tcls *)real_instance)->*(*(Tmethod *)ptr))(vm);
+		try {
+			/* Call the function, which its only param is always the VM */
+			auto cls_instance = static_cast<Tcls *>(real_instance);
+			auto method = *static_cast<Tmethod *>(ptr);
+			return static_cast<SQInteger>((cls_instance->*method)(vm));
+		} catch (SQInteger &e) {
+			return e;
+		}
 	}
 
 	/**
@@ -320,7 +326,9 @@ namespace SQConvert {
 
 		try {
 			/* Delegate it to a template that can handle this specific function */
-			return HelperT<Tmethod>::SQCall((Tcls *)nullptr, *(Tmethod *)ptr, vm);
+			auto cls_instance = static_cast<Tcls *>(nullptr);
+			auto method = *static_cast<Tmethod *>(ptr);
+			return HelperT<Tmethod>::SQCall(cls_instance, method, vm);
 		} catch (SQInteger &e) {
 			return e;
 		}
@@ -344,8 +352,13 @@ namespace SQConvert {
 		/* Remove the userdata from the stack */
 		sq_pop(vm, 1);
 
-		/* Call the function, which its only param is always the VM */
-		return (SQInteger)(*(*(Tmethod *)ptr))(vm);
+		try {
+			/* Call the function, which its only param is always the VM */
+			auto method = *static_cast<Tmethod *>(ptr);
+			return static_cast<SQInteger>((*method)(vm));
+		} catch (SQInteger &e) {
+			return e;
+		}
 	}
 
 	/**
