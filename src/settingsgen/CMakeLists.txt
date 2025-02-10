@@ -5,6 +5,7 @@ if (NOT HOST_BINARY_DIR)
 
     set(sourcefiles
             settingsgen.cpp
+            ../3rdparty/fmt/format.cc
             ../core/alloc_func.cpp
             ../misc/getoptdata.cpp
             ../error.cpp
