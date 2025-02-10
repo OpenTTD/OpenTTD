@@ -92,9 +92,9 @@ public:
 		message += "\nCompanies:\n";
 		for (const Company *c : Company::Iterate()) {
 			if (c->ai_info == nullptr) {
-				fmt::format_to(std::back_inserter(message), "{:2d}: Human\n", (int)c->index);
+				fmt::format_to(std::back_inserter(message), "{:2d}: Human\n", c->index);
 			} else {
-				fmt::format_to(std::back_inserter(message), "{:2d}: {} (v{})\n", (int)c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
+				fmt::format_to(std::back_inserter(message), "{:2d}: {} (v{})\n", c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
 			}
 		}
 		text[1].key = const_cast<char *>("Description");

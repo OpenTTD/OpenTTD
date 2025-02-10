@@ -456,7 +456,7 @@ uint32_t GetNearbyTileInformation(TileIndex tile, bool grf_version8)
 uint32_t GetCompanyInfo(CompanyID owner, const Livery *l)
 {
 	if (l == nullptr && Company::IsValidID(owner)) l = &Company::Get(owner)->livery[LS_DEFAULT];
-	return owner | (Company::IsValidAiID(owner) ? 0x10000 : 0) | (l != nullptr ? (l->colour1 << 24) | (l->colour2 << 28) : 0);
+	return owner.base() | (Company::IsValidAiID(owner) ? 0x10000 : 0) | (l != nullptr ? (l->colour1 << 24) | (l->colour2 << 28) : 0);
 }
 
 /**

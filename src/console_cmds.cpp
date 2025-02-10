@@ -1082,9 +1082,9 @@ DEF_CONSOLE_CMD(ConNetworkReconnect)
 	}
 
 	CompanyID playas = (argc >= 2) ? (CompanyID)atoi(argv[1]) : COMPANY_SPECTATOR;
-	switch (playas) {
+	switch (playas.base()) {
 		case 0: playas = COMPANY_NEW_COMPANY; break;
-		case COMPANY_SPECTATOR: /* nothing to do */ break;
+		case COMPANY_SPECTATOR.base(): /* nothing to do */ break;
 		default:
 			/* From a user pov 0 is a new company, internally it's different and all
 			 * companies are offset by one to ease up on users (eg companies 1-8 not 0-7) */
@@ -1922,10 +1922,10 @@ DEF_CONSOLE_CMD(ConSayCompany)
 	}
 
 	if (!_network_server) {
-		NetworkClientSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id, argv[2]);
+		NetworkClientSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id.base(), argv[2]);
 	} else {
 		bool from_admin = (_redirect_console_to_admin < INVALID_ADMIN_ID);
-		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id, argv[2], CLIENT_ID_SERVER, from_admin);
+		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id.base(), argv[2], CLIENT_ID_SERVER, from_admin);
 	}
 
 	return true;

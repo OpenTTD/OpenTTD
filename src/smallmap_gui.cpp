@@ -219,7 +219,7 @@ void BuildIndustriesLegend()
 void BuildLinkStatsLegend()
 {
 	/* Clear the legend */
-	memset(_legend_linkstats, 0, sizeof(_legend_linkstats));
+	std::fill(std::begin(_legend_linkstats), std::end(_legend_linkstats), LegendAndColour{});
 
 	uint i = 0;
 	for (; i < _sorted_cargo_specs.size(); ++i) {

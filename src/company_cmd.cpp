@@ -593,7 +593,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 		c = new Company(STR_SV_UNNAMED, is_ai);
 	} else {
 		if (Company::IsValidID(company)) return nullptr;
-		c = new (company) Company(STR_SV_UNNAMED, is_ai);
+		c = new (company.base()) Company(STR_SV_UNNAMED, is_ai);
 	}
 
 	c->colour = colour;

@@ -62,7 +62,7 @@ private:
 	std::vector<BitmapStorage> used_bitmap;
 };
 
-typedef Pool<Company, CompanyID, 1, MAX_COMPANIES> CompanyPool;
+typedef Pool<Company, CompanyID, 1, CompanyID::End().base()> CompanyPool;
 extern CompanyPool _company_pool;
 
 /** Statically loadable part of Company pool item */
@@ -156,7 +156,7 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 	 * @param index Index in the pool.
 	 * @return \c true if it is a valid, computer controlled company, else \c false.
 	 */
-	static inline bool IsValidAiID(size_t index)
+	static inline bool IsValidAiID(auto index)
 	{
 		const Company *c = Company::GetIfValid(index);
 		return c != nullptr && c->is_ai;
@@ -168,7 +168,7 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 	 * @return \c true if it is a valid, human controlled company, else \c false.
 	 * @note If you know that \a index refers to a valid company, you can use #IsHumanID() instead.
 	 */
-	static inline bool IsValidHumanID(size_t index)
+	static inline bool IsValidHumanID(auto index)
 	{
 		const Company *c = Company::GetIfValid(index);
 		return c != nullptr && !c->is_ai;
@@ -181,7 +181,7 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 	 * @pre \a index must be a valid CompanyID.
 	 * @note If you don't know whether \a index refers to a valid company, you should use #IsValidHumanID() instead.
 	 */
-	static inline bool IsHumanID(size_t index)
+	static inline bool IsHumanID(auto index)
 	{
 		return !Company::Get(index)->is_ai;
 	}

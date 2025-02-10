@@ -103,7 +103,7 @@ public:
 	/**
 	 * Broadcast a new event to all active AIs.
 	 */
-	static void BroadcastNewEvent(ScriptEvent *event, CompanyID skip_company = MAX_COMPANIES);
+	static void BroadcastNewEvent(ScriptEvent *event, CompanyID skip_company = CompanyID::Invalid());
 
 	/**
 	 * Save data from an AI to a savegame.

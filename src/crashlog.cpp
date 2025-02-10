@@ -134,8 +134,8 @@ void CrashLog::FillCrashLog()
 
 	{
 		auto &game = this->survey["game"];
-		game["local_company"] = _local_company;
-		game["current_company"] = _current_company;
+		game["local_company"] = _local_company.base();
+		game["current_company"] = _current_company.base();
 
 		if (!this->TryExecute("timers", [&game]() { SurveyTimers(game["timers"]); return true; })) {
 			game["libraries"] = "crashed while gathering information";

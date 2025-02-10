@@ -201,7 +201,7 @@ inline void SetTileOwner(Tile tile, Owner owner)
 	assert(!IsTileType(tile, MP_HOUSE));
 	assert(!IsTileType(tile, MP_INDUSTRY));
 
-	SB(tile.m1(), 0, 5, owner);
+	SB(tile.m1(), 0, 5, owner.base());
 }
 
 /**

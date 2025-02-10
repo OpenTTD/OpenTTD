@@ -2417,8 +2417,8 @@ static void ConvertRoadTypeOwner(TileIndex tile, uint num_pieces, Owner owner, R
 
 	Company *c;
 
-	switch (owner) {
-	case OWNER_NONE:
+	switch (owner.base()) {
+	case OWNER_NONE.base():
 		SetRoadOwner(tile, GetRoadTramType(to_type), (Owner)_current_company);
 		UpdateCompanyRoadInfrastructure(to_type, _current_company, num_pieces);
 		break;
