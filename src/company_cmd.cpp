@@ -1337,7 +1337,7 @@ CompanyID GetFirstPlayableCompanyID()
 	}
 
 	if (Company::CanAllocateItem()) {
-		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
 			if (!Company::IsValidID(c)) {
 				return c;
 			}

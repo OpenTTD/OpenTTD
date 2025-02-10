@@ -977,7 +977,7 @@ struct ScriptDebugWindow : public Window {
 	void UpdateAIButtonsState()
 	{
 		/* Update company buttons */
-		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; ++i) {
 			/* Mark dead/paused AIs by setting the background colour. */
 			bool valid = Company::IsValidAiID(i);
 			bool dead = valid && Company::Get(i)->ai_instance->IsDead();

@@ -357,7 +357,7 @@ Randomizer &ScriptObject::GetRandomizer(Owner owner)
 void ScriptObject::InitializeRandomizers()
 {
 	Randomizer random = _random;
-	for (Owner owner = OWNER_BEGIN; owner < OWNER_END; owner++) {
+	for (Owner owner = OWNER_BEGIN; owner < OWNER_END; ++owner) {
 		ScriptObject::GetRandomizer(owner).SetSeed(random.Next());
 	}
 }

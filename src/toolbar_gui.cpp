@@ -173,7 +173,7 @@ static void PopupMainCompanyToolbMenu(Window *w, WidgetID widget, CompanyMask gr
 			break;
 	}
 
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
 		if (!Company::IsValidID(c)) continue;
 		list.push_back(std::make_unique<DropDownListCompanyItem>(c, grey.Test(c)));
 	}

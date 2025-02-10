@@ -960,7 +960,7 @@ static void AILoadConfig(const IniFile &ini, const char *grpname)
 	const IniGroup *group = ini.GetGroup(grpname);
 
 	/* Clean any configured AI */
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
 		AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME)->Change(std::nullopt);
 	}
 
@@ -979,7 +979,7 @@ static void AILoadConfig(const IniFile &ini, const char *grpname)
 			}
 		}
 		if (item.value.has_value()) config->StringToSettings(*item.value);
-		c++;
+		++c;
 		if (c >= MAX_COMPANIES) break;
 	}
 }
@@ -1173,7 +1173,7 @@ static void AISaveConfig(IniFile &ini, const char *grpname)
 	IniGroup &group = ini.GetOrCreateGroup(grpname);
 	group.Clear();
 
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
 		std::string name;
 		std::string value = config->SettingsToString();

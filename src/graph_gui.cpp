@@ -54,7 +54,7 @@ struct GraphLegendWindow : Window {
 	{
 		this->InitNested(window_number);
 
-		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
 			if (!_legend_excluded_companies.Test(c)) this->LowerWidget(WID_GL_FIRST_COMPANY + c);
 
 			this->OnInvalidateData(c);
@@ -676,7 +676,7 @@ public:
 		CompanyMask excluded_companies = _legend_excluded_companies;
 
 		/* Exclude the companies which aren't valid */
-		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
 			if (!Company::IsValidID(c)) excluded_companies.Set(c);
 		}
 
@@ -704,7 +704,7 @@ public:
 		this->month = mo;
 
 		this->data.clear();
-		for (CompanyID k = COMPANY_FIRST; k < MAX_COMPANIES; k++) {
+		for (CompanyID k = COMPANY_FIRST; k < MAX_COMPANIES; ++k) {
 			const Company *c = Company::GetIfValid(k);
 			if (c == nullptr) continue;
 
@@ -1460,7 +1460,7 @@ struct PerformanceRatingDetailWindow : Window {
 	{
 		if (!gui_scope) return;
 		/* Disable the companies who are not active */
-		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; ++i) {
 			this->SetWidgetDisabledState(WID_PRD_COMPANY_FIRST + i, !Company::IsValidID(i));
 		}
 
