@@ -341,7 +341,7 @@ static void LoadIntroGame(bool load_newgrfs = true)
 
 void MakeNewgameSettingsLive()
 {
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
 		if (_settings_game.ai_config[c] != nullptr) {
 			delete _settings_game.ai_config[c];
 		}
@@ -355,7 +355,7 @@ void MakeNewgameSettingsLive()
 	_settings_game = _settings_newgame;
 	_old_vds = _settings_client.company.vehicle;
 
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
 		_settings_game.ai_config[c] = nullptr;
 		if (_settings_newgame.ai_config[c] != nullptr) {
 			_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c]);
