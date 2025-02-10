@@ -13,6 +13,8 @@
 #ifndef BASE_BITSET_TYPE_HPP
 #define BASE_BITSET_TYPE_HPP
 
+#include "bitmath_func.hpp"
+
 /**
  * Base for bit set wrapper.
  * Allows wrapping strong type values as a bit set. Methods are loosely modelled on std::bitset.
@@ -205,6 +207,9 @@ public:
 	{
 		return (this->base() & Tmask) == this->base();
 	}
+
+	auto begin() const { return SetBitIterator<Tvalue_type>(this->data).begin(); }
+	auto end() const { return SetBitIterator<Tvalue_type>(this->data).end(); }
 
 private:
 	Tstorage data; ///< Bitmask of values.
