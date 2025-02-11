@@ -149,10 +149,10 @@ static StationID FindNearestHangar(const Aircraft *v)
 		const AirportFTAClass *afc = st->airport.GetFTA();
 
 		/* don't crash the plane if we know it can't land at the airport */
-		if ((afc->flags & AirportFTAClass::SHORT_STRIP) && (avi->subtype & AIR_FAST) && !_cheats.no_jetcrash.value) continue;
+		if (afc->flags.Test(AirportFTAClass::Flag::ShortStrip) && (avi->subtype & AIR_FAST) && !_cheats.no_jetcrash.value) continue;
 
 		/* the plane won't land at any helicopter station */
-		if (!(afc->flags & AirportFTAClass::AIRPLANES) && (avi->subtype & AIR_CTOL)) continue;
+		if (!afc->flags.Test(AirportFTAClass::Flag::Airplanes) && (avi->subtype & AIR_CTOL)) continue;
 
 		/* Check if our last and next destinations can be reached from the depot airport. */
 		if (max_range != 0) {
@@ -1373,7 +1373,7 @@ static void MaybeCrashAirplane(Aircraft *v)
 	Station *st = Station::Get(v->targetairport);
 
 	uint32_t prob;
-	if ((st->airport.GetFTA()->flags & AirportFTAClass::SHORT_STRIP) &&
+	if (st->airport.GetFTA()->flags.Test(AirportFTAClass::Flag::ShortStrip) &&
 			(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
 			!_cheats.no_jetcrash.value) {
 		prob = 3276;
